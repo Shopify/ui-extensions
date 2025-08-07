@@ -212,68 +212,9 @@ function extractWebComponents(content) {
   return Array.from(components).sort();
 }
 
-// Helper function to extract property names from union types
-function extractPropsFromUnionType(unionType, propsSet) {
-  if (ts.isUnionTypeNode(unionType)) {
-    for (const type of unionType.types) {
-      if (ts.isLiteralTypeNode(type) && ts.isStringLiteral(type.literal)) {
-        propsSet.add(type.literal.text);
-      }
-    }
-  } else if (
-    ts.isLiteralTypeNode(unionType) &&
-    ts.isStringLiteral(unionType.literal)
-  ) {
-    propsSet.add(unionType.literal.text);
-  }
-}
-
-// Helper function to extract props from type references like Required<Pick<...>>
-function extractPropsFromTypeReference(typeRef, propsSet) {
-  if (ts.isTypeReferenceNode(typeRef)) {
-    const typeName = typeRef.typeName;
-
-    // Handle Required<Pick<...>> patterns
-    if (
-      ts.isIdentifier(typeName) &&
-      typeName.text === 'Required' &&
-      typeRef.typeArguments
-    ) {
-      for (const arg of typeRef.typeArguments) {
-        extractPropsFromTypeReference(arg, propsSet);
-      }
-      return;
-    }
-
-    // Handle Pick<Interface, 'prop1' | 'prop2' | ...> patterns
-    if (
-      ts.isIdentifier(typeName) &&
-      typeName.text === 'Pick' &&
-      typeRef.typeArguments &&
-      typeRef.typeArguments.length >= 2
-    ) {
-      const unionType = typeRef.typeArguments[1];
-      extractPropsFromUnionType(unionType, propsSet);
-    }
-  } else if (ts.isExpressionWithTypeArguments(typeRef)) {
-    // Handle ExpressionWithTypeArguments (heritage clauses)
-    if (ts.isIdentifier(typeRef.expression)) {
-      const typeName = typeRef.expression;
-
-      // Handle Required<Pick<...>> patterns
-      if (typeName.text === 'Required' && typeRef.typeArguments) {
-        for (const arg of typeRef.typeArguments) {
-          extractPropsFromTypeReference(arg, propsSet);
-        }
-      }
-    }
-  }
-}
-
-// Extract component props using TypeScript AST parsing
-function extractComponentProps(content, componentName) {
+// Enhanced prop extraction to capture detailed information
+function extractDetailedComponentProps(content, componentName) {
   try {
-    // Create a source file from the content
     const sourceFile = ts.createSourceFile(
       'temp.ts',
       content,
@@ -281,102 +222,190 @@ function extractComponentProps(content, componentName) {
       true,
     );
 
-    const props = new Set();
-    visitNodeForProps(sourceFile, componentName, props);
-    return Array.from(props).sort();
+    const propsDetails = {};
+    visitNodeForDetailedProps(sourceFile, componentName, propsDetails);
+    return propsDetails;
   } catch (error) {
     console.warn(
       `⚠️  Error parsing TypeScript for ${componentName}:`,
       error.message,
     );
-    // Fall back to regex as a last resort
-    return extractComponentPropsRegex(content, componentName);
+    return {};
   }
 }
 
-// Visit AST nodes to extract props
-function visitNodeForProps(node, componentName, props) {
-  // Look for interface declarations
+// Extract detailed prop information including types, descriptions, and defaults
+function visitNodeForDetailedProps(node, componentName, propsDetails) {
   if (ts.isInterfaceDeclaration(node)) {
     const interfaceName = node.name.text;
 
-    // Check if this is a component props interface
     if (
       interfaceName === `${componentName}Props` ||
       interfaceName.match(new RegExp(`^${componentName}Props\\$\\d+$`))
     ) {
-      // Extract props from direct members
+      // Extract detailed props from direct members
       for (const member of node.members) {
         if (
           ts.isPropertySignature(member) &&
           member.name &&
           ts.isIdentifier(member.name)
         ) {
-          props.add(member.name.text);
+          const propName = member.name.text;
+          const propInfo = {
+            name: propName,
+            type: getTypeString(member.type),
+            optional: Boolean(member.questionToken),
+            description: extractJSDocComment(member),
+            defaultValue: extractDefaultValue(member),
+          };
+          propsDetails[propName] = propInfo;
         }
       }
 
-      // Handle extends clauses (like extends Required<Pick<...>>)
+      // Handle extends clauses
       if (node.heritageClauses) {
         for (const heritage of node.heritageClauses) {
           for (const type of heritage.types) {
-            extractPropsFromTypeReference(type, props);
+            // For now, just note that it extends something
+            // Could be enhanced to resolve inherited props
+            if (
+              ts.isExpressionWithTypeArguments(type) &&
+              ts.isIdentifier(type.expression)
+            ) {
+              const extendedType = type.expression.text;
+              if (!propsDetails._extends) {
+                propsDetails._extends = [];
+              }
+              propsDetails._extends.push(extendedType);
+            }
           }
         }
       }
     }
   }
 
-  // Continue visiting child nodes
   ts.forEachChild(node, (child) =>
-    visitNodeForProps(child, componentName, props),
+    visitNodeForDetailedProps(child, componentName, propsDetails),
   );
 }
 
-// Fallback regex-based extraction (keep the original as backup)
-function extractComponentPropsRegex(content, componentName) {
-  const props = new Set();
+// Helper to extract JSDoc comments
+function extractJSDocComment(node) {
+  if (node.jsDoc && node.jsDoc.length > 0) {
+    const jsDoc = node.jsDoc[0];
+    if (jsDoc.comment) {
+      return typeof jsDoc.comment === 'string'
+        ? jsDoc.comment
+        : jsDoc.comment.map((part) => part.text || part).join('');
+    }
+  }
+  return '';
+}
 
-  // Look for interface definitions like "ComponentNameProps"
-  const interfaceRegex = new RegExp(
-    `interface\\s+${componentName}Props(?:\\$\\d+)?\\s*(?:extends[^{]*)?\\s*\\{([^}]*(?:\\{[^}]*\\}[^}]*)*)\\}`,
-    'gs',
-  );
-
-  const interfaceMatches = content.match(interfaceRegex);
-
-  if (interfaceMatches) {
-    for (const match of interfaceMatches) {
-      // Extract property names from the interface
-      // Match patterns like: propertyName?: type; or propertyName: type;
-      const propRegex = /^\s*(?:\/\*\*[\s\S]*?\*\/\s*)?(\w+)\s*[?:]?\s*:/gm;
-      let propMatch;
-
-      while ((propMatch = propRegex.exec(match)) !== null) {
-        const propName = propMatch[1];
-        // Skip common TypeScript keywords and inherited props
-        if (
-          !['extends', 'interface', 'export', 'declare', 'type'].includes(
-            propName,
-          )
-        ) {
-          props.add(propName);
+// Helper to extract default values from JSDoc @default tags
+function extractDefaultValue(node) {
+  if (node.jsDoc && node.jsDoc.length > 0) {
+    const jsDoc = node.jsDoc[0];
+    if (jsDoc.tags) {
+      for (const tag of jsDoc.tags) {
+        if (ts.isJSDocTag(tag) && tag.tagName.text === 'default') {
+          return tag.comment?.toString() || '';
         }
       }
     }
   }
-
-  return Array.from(props).sort();
+  return '';
 }
 
-// Extract props for all components in a surface
-function extractAllComponentProps(content, componentNames) {
+// Helper to get type string representation
+function getTypeString(typeNode) {
+  if (!typeNode) return 'any';
+
+  if (ts.isTypeReferenceNode(typeNode)) {
+    return ts.isIdentifier(typeNode.typeName)
+      ? typeNode.typeName.text
+      : 'unknown';
+  }
+
+  if (ts.isUnionTypeNode(typeNode)) {
+    return typeNode.types.map((type) => getTypeString(type)).join(' | ');
+  }
+
+  if (ts.isLiteralTypeNode(typeNode)) {
+    if (ts.isStringLiteral(typeNode.literal)) {
+      return `'${typeNode.literal.text}'`;
+    }
+    if (ts.isNumericLiteral(typeNode.literal)) {
+      return typeNode.literal.text;
+    }
+    if (typeNode.literal.kind === ts.SyntaxKind.TrueKeyword) {
+      return 'true';
+    }
+    if (typeNode.literal.kind === ts.SyntaxKind.FalseKeyword) {
+      return 'false';
+    }
+  }
+
+  if (typeNode.kind === ts.SyntaxKind.StringKeyword) return 'string';
+  if (typeNode.kind === ts.SyntaxKind.NumberKeyword) return 'number';
+  if (typeNode.kind === ts.SyntaxKind.BooleanKeyword) return 'boolean';
+  if (typeNode.kind === ts.SyntaxKind.AnyKeyword) return 'any';
+
+  return 'unknown';
+}
+
+// Get canonical component specs from ui-api-design
+async function getCanonicalComponentSpecs() {
+  try {
+    const canonicalSpecs = {};
+    const componentsDir = join(
+      __dirname,
+      '../node_modules/@shopify/ui-api-design/dist/components',
+    );
+
+    const componentDirs = await readdir(componentsDir, {withFileTypes: true});
+
+    for (const dir of componentDirs) {
+      if (dir.isDirectory()) {
+        const componentSpecPath = join(componentsDir, dir.name, 'index.d.ts');
+        try {
+          const specContent = await readFile(componentSpecPath, 'utf-8');
+          const componentName = dir.name;
+          const specDetails = extractDetailedComponentProps(
+            specContent,
+            componentName,
+          );
+          if (Object.keys(specDetails).length > 0) {
+            canonicalSpecs[componentName] = specDetails;
+          }
+        } catch (error) {
+          // Component spec file doesn't exist or can't be read
+          console.warn(
+            `⚠️  Could not read spec for ${dir.name}:`,
+            error.message,
+          );
+        }
+      }
+    }
+
+    return canonicalSpecs;
+  } catch (error) {
+    console.warn(
+      '⚠️  Could not load canonical component specs:',
+      error.message,
+    );
+    return {};
+  }
+}
+
+// Enhanced function to extract props for all components with detailed info
+function extractAllDetailedComponentProps(content, componentNames) {
   const componentProps = {};
 
   for (const componentName of componentNames) {
-    const props = extractComponentProps(content, componentName);
-    if (props.length > 0) {
-      componentProps[componentName] = props;
+    const propsDetails = extractDetailedComponentProps(content, componentName);
+    if (Object.keys(propsDetails).length > 0) {
+      componentProps[componentName] = propsDetails;
     }
   }
 
@@ -418,26 +447,24 @@ async function generateHTMLPage(masterList, outputDir) {
       props: masterList.props[component] || {},
       hasPropsDifferences: (() => {
         const componentProps = masterList.props[component] || {};
-        const allProps = Object.values(componentProps).flat();
-        const uniqueProps = [...new Set(allProps)];
 
-        // Check if there are differences across surfaces
-        if (uniqueProps.length === 0) return false;
+        // Skip if component has no prop data
+        if (!componentProps.surfaces) return false;
 
-        const implementedSurfaces = surfaces.filter(
-          (surface) =>
-            componentProps[surface] && componentProps[surface].length > 0,
-        );
+        const surfacesWithProps = Object.entries(
+          componentProps.surfaces,
+        ).filter(([, props]) => Object.keys(props).length > 0);
 
-        if (implementedSurfaces.length <= 1) return false;
+        if (surfacesWithProps.length <= 1) return false;
 
-        // Check if all implemented surfaces have the same props
-        const firstSurfaceProps = componentProps[implementedSurfaces[0]] || [];
-        return !implementedSurfaces.every(
-          (surface) =>
-            JSON.stringify(componentProps[surface]?.sort()) ===
-            JSON.stringify(firstSurfaceProps.sort()),
-        );
+        // Check if all surfaces have the same props
+        const [, firstProps] = surfacesWithProps[0];
+        const firstPropNames = Object.keys(firstProps).sort();
+
+        return !surfacesWithProps.every(([, surfaceProps]) => {
+          const propNames = Object.keys(surfaceProps).sort();
+          return JSON.stringify(propNames) === JSON.stringify(firstPropNames);
+        });
       })(),
     });
   });
@@ -456,7 +483,7 @@ async function generateHTMLPage(masterList, outputDir) {
   <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
 </head>
 <body>
-  <s-page>
+  <s-page inlineSize="large">
     <s-stack gap="large">
         
         <s-section heading="Polaris Web Components">
@@ -534,7 +561,6 @@ async function generateHTMLPage(masterList, outputDir) {
                 </s-stack>
                 <s-stack direction="inline" gap="small-200" alignContent="center" alignItems="center">
                   <s-button id="search-toggle" variant="secondary" icon="search"></s-button>
-                  <s-button id="view-toggle" variant="secondary" icon="view">Props View</s-button>
                   <s-button variant="secondary" icon="sort"></s-button>
                 </s-stack>
               </s-grid>
@@ -569,7 +595,7 @@ async function generateHTMLPage(masterList, outputDir) {
                 .join('')}
               <s-table-header>Total</s-table-header>
               <s-table-header>Spec</s-table-header>
-              <s-table-header id="props-header" style="display: none;">Props Details</s-table-header>
+              <s-table-header>Details</s-table-header>
             </s-table-header-row>
           
           <s-table-body>
@@ -591,9 +617,11 @@ async function generateHTMLPage(masterList, outputDir) {
                   <s-checkbox class="row-checkbox" data-component="${
                     row.component
                   }"></s-checkbox>
-                                    <s-text type="strong" ${
-                                      row.isImplemented ? '' : 'color="subdued"'
-                                    }>${row.component}</s-text>
+                  <a href="${row.component.toLowerCase()}.html" style="text-decoration: none; color: inherit;">
+                    <s-text type="strong" ${
+                      row.isImplemented ? '' : 'color="subdued"'
+                    }>${row.component}</s-text>
+                  </a>
                   ${(() => {
                     if (!row.isImplemented)
                       return '<s-badge tone="subdued">Not Implemented</s-badge>';
@@ -620,26 +648,22 @@ async function generateHTMLPage(masterList, outputDir) {
                 ${
                   row.specUrl
                     ? `
-                <s-link href="${row.specUrl}" target="_blank">
+                <a href="${row.specUrl}" target="_blank" style="text-decoration: none; color: inherit;">
                   <s-stack direction="inline" gap="small-200" alignContent="center" alignItems="center">
                     <s-text>View Spec</s-text>
                     <s-icon type="external" />
                   </s-stack>
-                </s-link>
+                </a>
                 `
                     : `
                 <s-text color="subdued">—</s-text>
                 `
                 }
               </s-table-cell>
-              <s-table-cell class="props-cell" style="display: none;">
-                <div class="props-data" data-props='${JSON.stringify(
-                  row.props,
-                )}' data-implemented="${row.isImplemented}">
-                  ${
-                    row.isImplemented ? 'Props details will be shown here' : '—'
-                  }
-                </div>
+              <s-table-cell>
+                <a href="${row.component.toLowerCase()}.html" style="text-decoration: none; color: inherit;">
+                  <s-text>View Details</s-text>
+                </a>
               </s-table-cell>
             </s-table-row>`;
               })
@@ -674,8 +698,7 @@ async function generateHTMLPage(masterList, outputDir) {
     const filterSingle = document.getElementById('filter-single');
     const filterUnimplemented = document.getElementById('filter-unimplemented');
     const filterPropsDiff = document.getElementById('filter-props-diff');
-    const viewToggle = document.getElementById('view-toggle');
-    const propsHeader = document.getElementById('props-header');
+
     
     // Initialize row checkboxes state
     document.querySelectorAll('.component-row').forEach(row => {
@@ -683,65 +706,7 @@ async function generateHTMLPage(masterList, outputDir) {
       rowsChecked[component] = false;
     });
     
-    // Props view toggle
-    let showPropsView = false;
-    
-    function togglePropsView() {
-      showPropsView = !showPropsView;
-      const propsCells = document.querySelectorAll('.props-cell');
-      
-      if (showPropsView) {
-        propsHeader.style.display = '';
-        propsCells.forEach(cell => {
-          cell.style.display = '';
-          // Render props data
-          const propsData = cell.querySelector('.props-data');
-          if (propsData && propsData.dataset.implemented === 'true') {
-            const props = JSON.parse(propsData.dataset.props);
-            renderPropsData(propsData, props);
-          }
-        });
-        viewToggle.textContent = 'Hide Props';
-      } else {
-        propsHeader.style.display = 'none';
-        propsCells.forEach(cell => {
-          cell.style.display = 'none';
-        });
-        viewToggle.textContent = 'Props View';
-      }
-    }
-    
-    function renderPropsData(container, propsBySurface) {
-      const implementedSurfaces = Object.keys(propsBySurface).filter(surface => 
-        propsBySurface[surface] && propsBySurface[surface].length > 0
-      );
-      
-      if (implementedSurfaces.length === 0) {
-        container.innerHTML = '<s-text color="subdued">No props detected</s-text>';
-        return;
-      }
-      
-      let html = '<s-stack gap="small-200">';
-      
-      for (const surface of implementedSurfaces) {
-        const props = propsBySurface[surface] || [];
-        const uniqueProps = [...new Set(props)];
-        
-        html += \`
-          <s-box padding="small-200" background="base" borderRadius="small">
-            <s-stack gap="small-100">
-              <s-text type="strong" size="small">\${surface}</s-text>
-              <s-text size="small" color="subdued">
-                \${uniqueProps.length > 0 ? uniqueProps.join(', ') : 'No props'}
-              </s-text>
-            </s-stack>
-          </s-box>
-        \`;
-      }
-      
-      html += '</s-stack>';
-      container.innerHTML = html;
-    }
+
 
     // Filter functions
     function updateFilterButtons() {
@@ -867,10 +832,7 @@ async function generateHTMLPage(masterList, outputDir) {
       });
     }
     
-    // View toggle event listener
-    if (viewToggle) {
-      viewToggle.addEventListener('click', togglePropsView);
-    }
+
 
     // Filter button event listeners
     [filterAll, filterImplemented, filterShared, filterSingle, filterUnimplemented, filterPropsDiff].forEach(btn => {
@@ -903,13 +865,433 @@ async function generateHTMLPage(masterList, outputDir) {
   await writeFile(htmlPath, html);
 }
 
-async function main() {
-  console.log('🔍 Getting canonical component list from ui-api-design...\n');
+// Generate individual component pages
+async function generateComponentPages(masterList, outputDir) {
+  const componentPages = [];
 
-  // Get the canonical list of components from ui-api-design
+  for (const [componentName, surfaces] of Object.entries(
+    masterList.components,
+  )) {
+    const componentProps = masterList.props[componentName] || {};
+    const canonicalProps = componentProps.canonical || {};
+    const surfaceProps = componentProps.surfaces || {};
+
+    const isImplemented = surfaces.length > 0;
+    const specUrl = generateSpecUrl(componentName);
+
+    // Calculate prop differences
+    const hasPropsDifferences = (() => {
+      if (!surfaceProps) return false;
+
+      const surfacesWithProps = Object.entries(surfaceProps).filter(
+        ([, props]) => Object.keys(props).length > 0,
+      );
+
+      if (surfacesWithProps.length <= 1) return false;
+
+      const [, firstProps] = surfacesWithProps[0];
+      const firstPropNames = Object.keys(firstProps).sort();
+
+      return !surfacesWithProps.every(([, props]) => {
+        const propNames = Object.keys(props).sort();
+        return JSON.stringify(propNames) === JSON.stringify(firstPropNames);
+      });
+    })();
+
+    const html = generateComponentPageHTML(componentName, {
+      surfaces,
+      isImplemented,
+      specUrl,
+      canonicalProps,
+      surfaceProps,
+      hasPropsDifferences,
+      allSurfaces: Object.keys(masterList.surfaces).sort(),
+      metadata: masterList.metadata,
+    });
+
+    const fileName = `${componentName.toLowerCase()}.html`;
+    const filePath = join(outputDir, fileName);
+    await writeFile(filePath, html);
+
+    componentPages.push({
+      name: componentName,
+      fileName,
+      isImplemented,
+      surfaces: surfaces.length,
+      hasPropsDifferences,
+    });
+  }
+
+  return componentPages;
+}
+
+// Generate HTML for individual component page
+function generateComponentPageHTML(componentName, data) {
+  const {
+    surfaces,
+    isImplemented,
+    specUrl,
+    canonicalProps,
+    surfaceProps,
+    hasPropsDifferences,
+    allSurfaces,
+    metadata,
+  } = data;
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${componentName} - Polaris Web Components</title>
+  <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
+</head>
+<body>
+  <s-page inlineSize="large">
+    <s-stack gap="large">
+      
+      <!-- Header with navigation -->
+      <s-section>
+        <s-stack gap="small-200">
+          <s-stack direction="inline" gap="small-200" alignItems="center">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+              <s-text>← Back to Components List</s-text>
+            </a>
+            <s-divider direction="vertical"></s-divider>
+            <s-text color="subdued" size="small">Component Details</s-text>
+          </s-stack>
+          
+          <s-stack direction="inline" gap="base" alignItems="center">
+            <s-heading level="1">${componentName}</s-heading>
+            ${
+              isImplemented
+                ? ''
+                : '<s-badge tone="subdued">Not Implemented</s-badge>'
+            }
+            ${
+              hasPropsDifferences
+                ? '<s-badge tone="warning">Props Differ</s-badge>'
+                : ''
+            }
+          </s-stack>
+          
+          <s-stack direction="inline" gap="small-200">
+            ${
+              specUrl
+                ? `<a href="${specUrl}" target="_blank" style="text-decoration: none; color: inherit;">
+              <s-stack direction="inline" gap="small-200" alignItems="center">
+                <s-text>View Official Spec</s-text>
+                <s-icon type="external" />
+              </s-stack>
+            </a>`
+                : ''
+            }
+          </s-stack>
+        </s-stack>
+      </s-section>
+
+      <!-- Implementation Overview -->
+      <s-section heading="Implementation Overview">
+        <s-stack gap="base">
+          <s-stack direction="inline" gap="base">
+            <s-box padding="base" background="base" borderRadius="base">
+              <s-stack gap="small">
+                <s-text type="strong">${surfaces.length}</s-text>
+                <s-text color="subdued">Surfaces</s-text>
+              </s-stack>
+            </s-box>
+            
+            <s-box padding="base" background="base" borderRadius="base">
+              <s-stack gap="small">
+                                 <s-text type="strong">${
+                                   Object.keys(canonicalProps).filter(
+                                     (key) => !key.startsWith('_'),
+                                   ).length
+                                 }</s-text>
+                <s-text color="subdued">Canonical Props</s-text>
+              </s-stack>
+            </s-box>
+            
+            <s-box padding="base" background="base" borderRadius="base">
+              <s-stack gap="small">
+                <s-text type="strong">${isImplemented ? 'Yes' : 'No'}</s-text>
+                <s-text color="subdued">Implemented</s-text>
+              </s-stack>
+            </s-box>
+          </s-stack>
+          
+          <!-- Surface Implementation Grid -->
+          <s-grid gridTemplateColumns="repeat(auto-fit, minmax(200px, 1fr))" gap="small-200">
+            ${allSurfaces
+              .map(
+                (surface) => `
+              <s-box padding="base" background="${
+                surfaces.includes(surface) ? 'success' : 'subdued'
+              }" borderRadius="base">
+                <s-stack gap="small-100" alignItems="center">
+                  <s-icon type="${
+                    surfaces.includes(surface) ? 'check' : 'x'
+                  }" />
+                  <s-text type="strong" color="${
+                    surfaces.includes(surface) ? 'base' : 'subdued'
+                  }">${surface}</s-text>
+                  ${
+                    surfaces.includes(surface) && surfaceProps[surface]
+                      ? `<s-text size="small" color="subdued">${
+                          Object.keys(surfaceProps[surface]).filter(
+                            (key) => !key.startsWith('_'),
+                          ).length
+                        } props</s-text>`
+                      : ''
+                  }
+                </s-stack>
+              </s-box>
+            `,
+              )
+              .join('')}
+          </s-grid>
+        </s-stack>
+      </s-section>
+
+      <!-- Canonical Specification -->
+      ${
+        Object.keys(canonicalProps).filter((key) => !key.startsWith('_'))
+          .length > 0
+          ? `
+      <s-section heading="📋 Canonical Specification">
+        <s-stack gap="base">
+          <s-text color="subdued">
+            This is the official specification from the ui-api-design package.
+          </s-text>
+          
+          <s-stack gap="small-200">
+            ${Object.entries(canonicalProps)
+              .filter(([key]) => !key.startsWith('_'))
+              .sort(([propA], [propB]) => propA.localeCompare(propB))
+              .map(
+                ([propName, propInfo]) => `
+                <s-box padding="base" background="base" borderRadius="base">
+                  <s-stack gap="small-200">
+                    <s-stack direction="inline" gap="small-200" alignItems="center">
+                      <s-text type="strong">${propName}${
+                  propInfo.optional ? '?' : ''
+                }</s-text>
+                      <s-badge tone="info" size="small">${
+                        propInfo.type || 'unknown'
+                      }</s-badge>
+                      ${
+                        propInfo.optional
+                          ? '<s-badge tone="neutral" size="small">Optional</s-badge>'
+                          : '<s-badge tone="warning" size="small">Required</s-badge>'
+                      }
+                    </s-stack>
+                    
+                    ${
+                      propInfo.description
+                        ? `<s-text>${propInfo.description}</s-text>`
+                        : ''
+                    }
+                    
+                    ${
+                      propInfo.defaultValue
+                        ? `
+                      <s-stack gap="small-100">
+                        <s-text size="small" type="strong" color="subdued">Default:</s-text>
+                        <s-box padding="small-200" background="strong" borderRadius="small">
+                          <s-text size="small" style="font-family: monospace;">${propInfo.defaultValue}</s-text>
+                        </s-box>
+                      </s-stack>
+                    `
+                        : ''
+                    }
+                  </s-stack>
+                </s-box>
+              `,
+              )
+              .join('')}
+          </s-stack>
+        </s-stack>
+      </s-section>
+      `
+          : ''
+      }
+
+      <!-- Surface Implementations -->
+      ${
+        surfaces.length > 0
+          ? `
+      <s-section heading="🔧 Surface Implementations">
+        <s-stack gap="large">
+          ${surfaces
+            .map((surface) => {
+              const props = surfaceProps[surface] || {};
+              const propsEntries = Object.entries(props).filter(
+                ([key]) => !key.startsWith('_'),
+              );
+
+              return `
+              <s-stack gap="base">
+                <s-heading level="3">${surface}</s-heading>
+                
+                ${
+                  propsEntries.length > 0
+                    ? `
+                  <s-stack gap="small-200">
+                    ${propsEntries
+                      .sort(([propA], [propB]) => propA.localeCompare(propB))
+                      .map(([propName, propInfo]) => {
+                        const canonicalProp = canonicalProps[propName];
+                        const matchesSpec =
+                          canonicalProp &&
+                          canonicalProp.type === propInfo.type &&
+                          canonicalProp.optional === propInfo.optional;
+
+                        return `
+                          <s-box padding="base" background="${
+                            matchesSpec ? 'base' : 'caution'
+                          }" borderRadius="base">
+                            <s-stack gap="small-200">
+                              <s-stack direction="inline" gap="small-200" alignItems="center">
+                                <s-text type="strong">${propName}${
+                          propInfo.optional ? '?' : ''
+                        }</s-text>
+                                <s-badge tone="info" size="small">${
+                                  propInfo.type || 'unknown'
+                                }</s-badge>
+                                ${
+                                  propInfo.optional
+                                    ? '<s-badge tone="neutral" size="small">Optional</s-badge>'
+                                    : '<s-badge tone="warning" size="small">Required</s-badge>'
+                                }
+                                
+                                ${
+                                  canonicalProp
+                                    ? ''
+                                    : '<s-badge tone="info" size="small">Surface-specific</s-badge>'
+                                }
+                                ${
+                                  canonicalProp && !matchesSpec
+                                    ? '<s-badge tone="warning" size="small">Differs from spec</s-badge>'
+                                    : ''
+                                }
+                                ${
+                                  matchesSpec
+                                    ? '<s-badge tone="success" size="small">Matches spec</s-badge>'
+                                    : ''
+                                }
+                              </s-stack>
+                              
+                              ${
+                                propInfo.description
+                                  ? `<s-text>${propInfo.description}</s-text>`
+                                  : ''
+                              }
+                              
+                              ${
+                                canonicalProp && !matchesSpec
+                                  ? `
+                                <s-box padding="small-200" background="warning" borderRadius="small">
+                                  <s-stack gap="small-100">
+                                    <s-text size="small" type="strong" color="critical">Specification Difference:</s-text>
+                                    <s-text size="small">
+                                      Spec: <strong>${canonicalProp.type}${
+                                      canonicalProp.optional ? '?' : ''
+                                    }</strong> vs 
+                                      Implementation: <strong>${propInfo.type}${
+                                      propInfo.optional ? '?' : ''
+                                    }</strong>
+                                    </s-text>
+                                  </s-stack>
+                                </s-box>
+                              `
+                                  : ''
+                              }
+                              
+                              ${
+                                propInfo.defaultValue
+                                  ? `
+                                <s-stack gap="small-100">
+                                  <s-text size="small" type="strong" color="subdued">Default:</s-text>
+                                  <s-box padding="small-200" background="strong" borderRadius="small">
+                                    <s-text size="small" style="font-family: monospace;">${propInfo.defaultValue}</s-text>
+                                  </s-box>
+                                </s-stack>
+                              `
+                                  : ''
+                              }
+                            </s-stack>
+                          </s-box>
+                        `;
+                      })
+                      .join('')}
+                  </s-stack>
+                `
+                    : '<s-text color="subdued">No detailed props information available for this surface.</s-text>'
+                }
+              </s-stack>
+            `;
+            })
+            .join('')}
+        </s-stack>
+      </s-section>
+      `
+          : `
+      <s-section heading="Implementation Status">
+        <s-box padding="large" background="subdued" borderRadius="base">
+          <s-stack gap="base" alignItems="center">
+            <s-icon type="alert-circle" />
+            <s-heading level="3">Component Not Implemented</s-heading>
+            <s-text color="subdued">This component is defined in the canonical specification but is not yet implemented in any surface.</s-text>
+            ${
+              specUrl
+                ? `<a href="${specUrl}" target="_blank" style="text-decoration: none; color: inherit;">
+                    <s-text>View Specification</s-text>
+                  </a>`
+                : ''
+            }
+          </s-stack>
+        </s-box>
+      </s-section>
+      `
+      }
+
+      <!-- Footer -->
+      <s-section>
+        <s-divider></s-divider>
+        <s-stack direction="inline" gap="small-200" alignItems="center">
+          <s-text size="small" color="subdued">Generated on ${new Date(
+            metadata.generatedAt,
+          ).toLocaleString()}</s-text>
+          <a href="index.html" style="text-decoration: none; color: inherit;">
+            <s-text>← Back to Components List</s-text>
+          </a>
+        </s-stack>
+      </s-section>
+
+    </s-stack>
+  </s-page>
+</body>
+</html>`;
+}
+
+// Remove unused helper functions and integrate canonical specs
+async function main() {
+  console.log(
+    '🔍 Getting canonical component list and specs from ui-api-design...\n',
+  );
+
+  // Get the canonical list of components and their detailed specs from ui-api-design
   const canonicalComponents = await getCanonicalComponents();
   console.log(
     `📦 Found ${canonicalComponents.length} canonical components from ui-api-design`,
+  );
+
+  // Get detailed specifications for each component
+  const canonicalSpecs = await getCanonicalComponentSpecs();
+  console.log(
+    `📋 Loaded detailed specs for ${
+      Object.keys(canonicalSpecs).length
+    } components`,
   );
 
   console.log('\n🔍 Scanning surfaces for component implementations...\n');
@@ -945,8 +1327,8 @@ async function main() {
           canonicalComponents.includes(component),
         );
 
-        // Extract props for implemented components
-        const surfaceProps = extractAllComponentProps(
+        // Extract detailed props for implemented components
+        const surfaceProps = extractAllDetailedComponentProps(
           content,
           implementedComponents,
         );
@@ -999,23 +1381,27 @@ async function main() {
     }
   }
 
-  // Build props comparison data
+  // Build enhanced props comparison data with detailed information
   const componentPropsComparison = {};
   const allSurfaces = Object.keys(surfaceComponents).filter(
     (key) => !key.endsWith('_props'),
   );
 
   for (const component of canonicalComponents) {
-    componentPropsComparison[component] = {};
+    componentPropsComparison[component] = {
+      canonical: canonicalSpecs[component] || {},
+      surfaces: {},
+    };
 
     for (const surface of allSurfaces) {
       const surfacePropsKey = `${surface}_props`;
       const surfaceProps = surfaceComponents[surfacePropsKey];
 
       if (surfaceProps && surfaceProps[component]) {
-        componentPropsComparison[component][surface] = surfaceProps[component];
+        componentPropsComparison[component].surfaces[surface] =
+          surfaceProps[component];
       } else {
-        componentPropsComparison[component][surface] = [];
+        componentPropsComparison[component].surfaces[surface] = {};
       }
     }
   }
@@ -1028,7 +1414,7 @@ async function main() {
     }
   }
 
-  // Generate the master list
+  // Generate the master list with enhanced prop information
   const masterList = {
     surfaces: cleanSurfaces,
     components: componentToSurfaces,
@@ -1041,6 +1427,7 @@ async function main() {
       totalSurfaces: Object.keys(cleanSurfaces).length,
       generatedAt: new Date().toISOString(),
       specBaseUrl: UI_API_DESIGN_BASE_URL,
+      hasDetailedSpecs: Object.keys(canonicalSpecs).length > 0,
     },
   };
 
@@ -1094,6 +1481,9 @@ async function main() {
 
   // Generate HTML page in temp directory
   await generateHTMLPage(masterList, tempDir);
+
+  // Generate individual component pages
+  await generateComponentPages(masterList, tempDir);
 
   console.log(
     `\n✅ Complete! Results saved to: .temp-deploy/components-list.json and .temp-deploy/index.html`,
