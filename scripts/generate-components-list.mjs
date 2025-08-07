@@ -12,6 +12,33 @@ const __dirname = dirname(__filename);
 
 const SURFACES_DIR = join(__dirname, '../packages/ui-extensions/src/surfaces');
 const UI_API_DESIGN_BASE_URL = 'https://ui-api-design.shopify.io/components';
+// Helper function to convert kebab-case to PascalCase with proper acronym handling
+function convertKebabToPascal(kebabName) {
+  // Special cases for common acronyms
+  const acronymMap = {
+    url: 'URL',
+    api: 'API',
+    ui: 'UI',
+    id: 'ID',
+    html: 'HTML',
+    css: 'CSS',
+    js: 'JS',
+    qr: 'QR',
+    pos: 'POS',
+  };
+
+  return kebabName
+    .split('-')
+    .map((part) => {
+      const lowerPart = part.toLowerCase();
+      if (acronymMap[lowerPart]) {
+        return acronymMap[lowerPart];
+      }
+      return part.charAt(0).toUpperCase() + part.slice(1);
+    })
+    .join('');
+}
+
 // Helper function to generate component spec URL
 function generateSpecUrl(componentName) {
   // Convert PascalCase to kebab-case for URL
@@ -134,10 +161,7 @@ function extractWebComponents(content) {
       let componentMatch;
       while ((componentMatch = componentRegex.exec(match)) !== null) {
         const kebabName = componentMatch[1];
-        const pascalName = kebabName
-          .split('-')
-          .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-          .join('');
+        const pascalName = convertKebabToPascal(kebabName);
         components.add(pascalName);
       }
     }
@@ -159,20 +183,14 @@ function extractWebComponents(content) {
       // Pattern 1: ['s-component-name']: ComponentJSXProps
       while ((componentMatch = componentRegex1.exec(match)) !== null) {
         const kebabName = componentMatch[1];
-        const pascalName = kebabName
-          .split('-')
-          .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-          .join('');
+        const pascalName = convertKebabToPascal(kebabName);
         components.add(pascalName);
       }
 
       // Pattern 2: 's-component-name': ComponentJSXProps
       while ((componentMatch = componentRegex2.exec(match)) !== null) {
         const kebabName = componentMatch[1];
-        const pascalName = kebabName
-          .split('-')
-          .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-          .join('');
+        const pascalName = convertKebabToPascal(kebabName);
         components.add(pascalName);
       }
     }
@@ -185,10 +203,7 @@ function extractWebComponents(content) {
   while ((tagNameMatch = tagNameRegex.exec(content)) !== null) {
     const fullTagName = tagNameMatch[1];
     const kebabName = fullTagName.replace('s-', '');
-    const pascalName = kebabName
-      .split('-')
-      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-      .join('');
+    const pascalName = convertKebabToPascal(kebabName);
     components.add(pascalName);
   }
 
