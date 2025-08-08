@@ -6,6 +6,7 @@ node_modules
 packages/**/*.esnext
 packages/**/*.node
 packages/**/*.mjs
+!packages/**/build-doc*.mjs
 !components/*.d.ts
 !components.d.ts
 packages/**/*.js
