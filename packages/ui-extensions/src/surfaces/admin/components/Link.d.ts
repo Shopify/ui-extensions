@@ -1,4 +1,4 @@
-/** VERSION: 1.3.0 **/
+/** VERSION: 1.6.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -13,40 +13,30 @@ import type {
 } from './shared.d.ts';
 
 export type RequiredLinkProps = Required<LinkProps$1>;
-export interface LinkProps
-  extends Pick<
+export type LinkBaseProps = Required<
+  Pick<
     LinkProps$1,
     | 'accessibilityLabel'
     | 'command'
     | 'commandFor'
+    | 'interestFor'
     | 'download'
     | 'href'
     | 'lang'
     | 'target'
     | 'tone'
-  > {
-  accessibilityLabel: RequiredLinkProps['accessibilityLabel'];
-  command: RequiredLinkProps['command'];
-  commandFor: RequiredLinkProps['commandFor'];
-  download: RequiredLinkProps['download'];
-  href: RequiredLinkProps['href'];
-  lang: RequiredLinkProps['lang'];
-  target: RequiredLinkProps['target'];
+  >
+>;
+export interface LinkProps extends LinkBaseProps {
   tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
 }
 
-export type CallbackEvent<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends Event = Event,
-> = TEvent & {
-  currentTarget: HTMLElementTagNameMap[TTagName];
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
 };
-export type CallbackEventListener<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends Event = Event,
-> =
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
-      (event: CallbackEvent<TTagName, TEvent>): void;
+      (event: CallbackEvent<T>): void;
     })
   | null;
 /** Used when an element does not have children. */
@@ -125,7 +115,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 export interface PreactOverlayControlProps
-  extends Pick<InteractionProps, 'commandFor'> {
+  extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
   /**
    * Sets the action the `commandFor` should take when this clickable is activated.
    *
@@ -144,6 +134,7 @@ export interface PreactOverlayControlProps
     '--show' | '--hide' | '--toggle' | '--auto'
   >;
   commandFor: Extract<InteractionProps['commandFor'], string>;
+  interestFor: Extract<InteractionProps['interestFor'], string>;
 }
 
 declare const Link_base: (abstract new (

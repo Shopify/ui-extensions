@@ -1,4 +1,4 @@
-/** VERSION: 1.3.0 **/
+/** VERSION: 1.6.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -23,21 +23,15 @@ export interface DatePickerProps
       | 'name'
     >
   > {
-  type: Extract<DatePickerProps$1['type'], 'single' | 'multiple' | 'range'>;
+  type: Extract<DatePickerProps$1['type'], 'single' | 'range'>;
 }
 
-export type CallbackEvent<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends Event = Event,
-> = TEvent & {
-  currentTarget: HTMLElementTagNameMap[TTagName];
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
 };
-export type CallbackEventListener<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends Event = Event,
-> =
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
-      (event: CallbackEvent<TTagName, TEvent>): void;
+      (event: CallbackEvent<T>): void;
     })
   | null;
 /** Used when an element does not have children. */
@@ -110,12 +104,6 @@ declare abstract class PreactCustomElement extends BaseClass$1 {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-declare class ViewChangeEvent extends Event {
-  /** The new month to display in `YYYY-MM` format. */
-  view: string;
-  constructor(view: string);
-}
-
 declare const internals: unique symbol;
 declare const dirtyStateSymbol: unique symbol;
 declare class BaseClass extends PreactCustomElement {
@@ -141,11 +129,7 @@ declare class DatePicker extends BaseClass implements DatePickerProps {
   [dirtyStateSymbol]: boolean;
   /** @private */
   formResetCallback(): void;
-  accessor onviewchange: CallbackEventListener<
-    typeof tagName,
-    HTMLElementEventMap['viewchange']
-  > | null;
-
+  accessor onviewchange: CallbackEventListener<typeof tagName> | null;
   accessor onfocus: CallbackEventListener<typeof tagName> | null;
   accessor onblur: CallbackEventListener<typeof tagName> | null;
   accessor oninput: CallbackEventListener<typeof tagName> | null;
@@ -155,9 +139,6 @@ declare class DatePicker extends BaseClass implements DatePickerProps {
 declare global {
   interface HTMLElementTagNameMap {
     [tagName]: DatePicker;
-  }
-  interface HTMLElementEventMap {
-    viewchange: ViewChangeEvent;
   }
 }
 declare module 'preact' {
@@ -172,11 +153,7 @@ declare const tagName = 's-date-picker';
 export interface DatePickerJSXProps
   extends Partial<DatePickerProps>,
     Pick<DatePickerProps$1, 'id'> {
-  onViewChange?:
-    | ((
-        event: CallbackEvent<typeof tagName, HTMLElementEventMap['viewchange']>,
-      ) => void)
-    | null;
+  onViewChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;

@@ -7,12 +7,106 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
+  MenuProps$1,
   BoxProps$1,
-  ClickableProps$1,
-  MaybeAllValuesShorthandProperty,
-  InteractionProps,
+  PopoverProps$1,
   ComponentChild,
+  InteractionProps,
+  MaybeAllValuesShorthandProperty,
 } from './shared.d.ts';
+
+export interface MenuProps
+  extends Required<Pick<MenuProps$1, 'id' | 'accessibilityLabel'>> {
+  /**
+   * @implementation only accepts `s-button` and `s-section`
+   */
+  chilren?: ComponentChild;
+}
+
+export type Styles = string;
+export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  ShadowRoot: (element: any) => ComponentChild;
+  styles?: Styles;
+};
+export interface ActivationEventEsque {
+  shiftKey: boolean;
+  metaKey: boolean;
+  ctrlKey: boolean;
+  button: number;
+}
+export interface ClickOptions {
+  /**
+   * The event you want to influence the synthetic click.
+   */
+  sourceEvent?: ActivationEventEsque;
+}
+/**
+ * Base class for creating custom elements with Preact.
+ * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
+ * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
+ */
+declare const BaseClass: typeof globalThis.HTMLElement;
+declare abstract class PreactCustomElement extends BaseClass {
+  /** @private */
+  static get observedAttributes(): string[];
+  constructor({
+    styles,
+    ShadowRoot: renderFunction,
+    delegatesFocus,
+    ...options
+  }: RenderImpl);
+
+  /** @private */
+  setAttribute(name: string, value: string): void;
+  /** @private */
+  attributeChangedCallback(name: string): void;
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
+  /** @private */
+  adoptedCallback(): void;
+  /**
+   * Queue a run of the render function.
+   * You shouldn't need to call this manually - it should be handled by changes to @property values.
+   * @private
+   */
+  queueRender(): void;
+  /**
+   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
+   *
+   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
+   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
+   * @private
+   * @param options
+   */
+  click({sourceEvent}?: ClickOptions): void;
+}
+
+/**
+ * Shared symbols for overlay control functionality.
+ * These symbols are used by components that implement overlay behavior
+ * (like Popover, Tooltip, etc.) to communicate with the overlay control system.
+ */
+declare const overlayCommand: unique symbol;
+declare const overlayHidden: unique symbol;
+declare const overlayActivator: unique symbol;
+
+declare class PreactOverlayElement extends PreactCustomElement {
+  constructor(renderImpl: RenderImpl);
+  [overlayHidden]: boolean;
+  [overlayActivator]: HTMLElement | null | undefined;
+  [overlayCommand](command: InteractionProps['command']): void;
+}
+
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
 export type MakeResponsive<T> = T | `@container${string}`;
 /**
@@ -211,198 +305,70 @@ export interface BoxProps
   display: ResponsiveBoxProps['display'];
 }
 
-export type ClickableBaseProps = Required<
-  Pick<
-    ClickableProps$1,
-    | 'command'
-    | 'commandFor'
-    | 'interestFor'
-    | 'disabled'
-    | 'download'
-    | 'href'
-    | 'lang'
-    | 'loading'
-    | 'overflow'
-    | 'target'
-    | 'type'
-  >
->;
-export interface ClickableProps
-  extends Required<BoxProps>,
-    ClickableBaseProps {}
+export interface PopoverProps
+  extends Required<
+    Pick<
+      PopoverProps$1,
+      | 'blockSize'
+      | 'inlineSize'
+      | 'maxBlockSize'
+      | 'maxInlineSize'
+      | 'minBlockSize'
+      | 'minInlineSize'
+    >
+  > {}
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
-};
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
-  | (EventListener & {
-      (event: CallbackEvent<T>): void;
-    })
-  | null;
-/** Used when an element does not have children. */
-export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
-  key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
-  ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
-  slot?: Lowercase<string>;
-}
-/** Used when an element has children. */
-export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
-  extends PreactBaseElementProps<TClass> {
-  children?: preact.ComponentChildren;
-}
-
-export type Styles = string;
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
-  styles?: Styles;
-};
-export interface ActivationEventEsque {
-  shiftKey: boolean;
-  metaKey: boolean;
-  ctrlKey: boolean;
-  button: number;
-}
-export interface ClickOptions {
-  /**
-   * The event you want to influence the synthetic click.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
-}
-
-export interface PreactOverlayControlProps
-  extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
-  /**
-   * Sets the action the `commandFor` should take when this clickable is activated.
-   *
-   * See the documentation of particular components for the actions they support.
-   *
-   * - `--auto`: a default action for the target component.
-   * - `--show`: shows the target component.
-   * - `--hide`: hides the target component.
-   * - `--toggle`: toggles the target component.
-   *
-   * @default '--auto'
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
-   */
-  command: Extract<
-    InteractionProps['command'],
-    '--show' | '--hide' | '--toggle' | '--auto'
-  >;
-  commandFor: Extract<InteractionProps['commandFor'], string>;
-  interestFor: Extract<InteractionProps['interestFor'], string>;
-}
-
-declare class BoxElement extends PreactCustomElement implements BoxProps {
+declare class PreactPopoverElement<TTagName extends keyof HTMLElementTagNameMap>
+  extends PreactOverlayElement
+  implements PopoverProps
+{
   constructor(renderImpl: RenderImpl);
-  accessor accessibilityRole: BoxProps['accessibilityRole'];
-  accessor background: BoxProps['background'];
   accessor blockSize: BoxProps['blockSize'];
   accessor minBlockSize: BoxProps['minBlockSize'];
   accessor maxBlockSize: BoxProps['maxBlockSize'];
   accessor inlineSize: BoxProps['inlineSize'];
   accessor minInlineSize: BoxProps['minInlineSize'];
   accessor maxInlineSize: BoxProps['maxInlineSize'];
-  accessor overflow: BoxProps['overflow'];
-  accessor padding: BoxProps['padding'];
-  accessor paddingBlock: BoxProps['paddingBlock'];
-  accessor paddingBlockStart: BoxProps['paddingBlockStart'];
-  accessor paddingBlockEnd: BoxProps['paddingBlockEnd'];
-  accessor paddingInline: BoxProps['paddingInline'];
-  accessor paddingInlineStart: BoxProps['paddingInlineStart'];
-  accessor paddingInlineEnd: BoxProps['paddingInlineEnd'];
-  accessor border: BoxProps['border'];
-  accessor borderWidth: BoxProps['borderWidth'];
-  accessor borderStyle: BoxProps['borderStyle'];
-  accessor borderColor: BoxProps['borderColor'];
-  accessor borderRadius: BoxProps['borderRadius'];
-  accessor accessibilityLabel: BoxProps['accessibilityLabel'];
-  accessor accessibilityVisibility: BoxProps['accessibilityVisibility'];
-  accessor display: BoxProps['display'];
+  accessor onshow: CallbackEventListener<TTagName> | null;
+  accessor onhide: CallbackEventListener<TTagName> | null;
+  accessor onaftershow: CallbackEventListener<TTagName> | null;
+  accessor onafterhide: CallbackEventListener<TTagName> | null;
+  accessor ontoggle: CallbackEventListener<TTagName> | null;
+  accessor onaftertoggle: CallbackEventListener<TTagName> | null;
 }
 
-declare const Clickable_base: (abstract new (
-  renderImpl: RenderImpl,
-) => BoxElement & PreactOverlayControlProps) &
-  Pick<typeof BoxElement, 'prototype' | 'observedAttributes'>;
-declare class Clickable extends Clickable_base implements ClickableProps {
-  accessor disabled: ClickableProps['disabled'];
-  accessor loading: ClickableProps['loading'];
-  accessor target: ClickableProps['target'];
-  accessor href: ClickableProps['href'];
-  accessor download: ClickableProps['download'];
-  accessor onclick: CallbackEventListener<typeof tagName> | null;
-  accessor onblur: CallbackEventListener<typeof tagName> | null;
-  accessor onfocus: CallbackEventListener<typeof tagName> | null;
-  accessor type: ClickableProps['type'];
+declare class Menu
+  extends PreactPopoverElement<typeof tagName>
+  implements MenuProps
+{
+  accessor accessibilityLabel: string;
   constructor();
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Clickable;
+    [tagName]: Menu;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ClickableJSXProps &
-        PreactBaseElementPropsWithChildren<Clickable>;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        MenuJSXProps;
     }
   }
 }
 
-declare const tagName = 's-clickable';
-export interface ClickableJSXProps
-  extends Partial<ClickableProps>,
-    Pick<ClickableProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
+declare const tagName = 's-menu';
+export interface MenuJSXProps
+  extends Partial<MenuProps>,
+    Pick<MenuProps$1, 'id'> {}
 
-export {Clickable};
-export type {ClickableJSXProps};
+export {Menu};
+export type {MenuJSXProps};

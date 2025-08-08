@@ -1,4 +1,4 @@
-/** VERSION: 1.3.0 **/
+/** VERSION: 1.6.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -41,6 +41,7 @@ export type ButtonBaseProps = Required<
     | 'disabled'
     | 'command'
     | 'commandFor'
+    | 'interestFor'
     | 'lang'
     | 'loading'
     | 'type'
@@ -56,18 +57,12 @@ export interface ButtonProps extends ButtonBaseProps {
   icon: IconProps['type'];
 }
 
-export type CallbackEvent<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends Event = Event,
-> = TEvent & {
-  currentTarget: HTMLElementTagNameMap[TTagName];
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
 };
-export type CallbackEventListener<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends Event = Event,
-> =
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
-      (event: CallbackEvent<TTagName, TEvent>): void;
+      (event: CallbackEvent<T>): void;
     })
   | null;
 /** Used when an element does not have children. */
@@ -146,7 +141,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 export interface PreactOverlayControlProps
-  extends Pick<InteractionProps, 'commandFor'> {
+  extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
   /**
    * Sets the action the `commandFor` should take when this clickable is activated.
    *
@@ -165,6 +160,7 @@ export interface PreactOverlayControlProps
     '--show' | '--hide' | '--toggle' | '--auto'
   >;
   commandFor: Extract<InteractionProps['commandFor'], string>;
+  interestFor: Extract<InteractionProps['interestFor'], string>;
 }
 
 declare const Button_base: (abstract new (

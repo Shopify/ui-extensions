@@ -1,4 +1,4 @@
-/** VERSION: 1.3.0 **/
+/** VERSION: 1.6.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -8,22 +8,15 @@
 import type {
   FunctionSettingsProps$1,
   ExtendableEvent,
-  FunctionSettingsError,
   ComponentChild,
 } from './shared.d.ts';
 
-export type CallbackEvent<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends Event = Event,
-> = TEvent & {
-  currentTarget: HTMLElementTagNameMap[TTagName];
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
 };
-export type CallbackEventListener<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends Event = Event,
-> =
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
-      (event: CallbackEvent<TTagName, TEvent>): void;
+      (event: CallbackEvent<T>): void;
     })
   | null;
 export type CallbackErrorEventListener<
@@ -133,6 +126,9 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
+export type FunctionSettingsErrorEvent = Parameters<
+  NonNullable<FunctionSettingsProps$1['onError']>
+>[0];
 declare class FunctionSettings
   extends PreactCustomElement
   implements FunctionSettingsProps
@@ -160,7 +156,7 @@ declare class FunctionSettings
    */
   accessor onerror: CallbackErrorEventListener<
     typeof tagName,
-    FunctionSettingsError
+    FunctionSettingsErrorEvent['error']['errors'][0]
   > | null;
 
   /**

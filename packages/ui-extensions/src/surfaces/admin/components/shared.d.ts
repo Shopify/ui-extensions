@@ -1,4 +1,4 @@
-/** VERSION: 1.3.0 **/
+/** VERSION: 1.6.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -14,6 +14,51 @@ export interface GlobalProps {
    * A unique identifier for the element.
    */
   id?: string;
+}
+export interface ActionProps {
+  /**
+   * The text to use as the Action modal’s title. If not provided, the name of the extension will be used.
+   */
+  heading?: string;
+}
+export interface ActionSlots {
+  /**
+   * The primary action to perform, provided as a button or link type element.
+   */
+  primaryAction?: ComponentChildren;
+  /**
+   * The secondary actions to perform, provided as button or link type elements.
+   */
+  secondaryActions?: ComponentChildren;
+}
+interface AdminActionProps$1 extends GlobalProps, ActionProps, ActionSlots {
+  /**
+   * Whether the action is in a loading state, such as initial page load or action opening.
+   * When true, the action could be in an inert state, which prevents user interaction.
+   *
+   * @default false
+   */
+  loading?: boolean;
+}
+interface AdminBlockProps$1 extends GlobalProps {
+  /**
+   * The text to use as the Block title in the block header. If not provided, the name of the
+   * extension will be used.
+   */
+  heading?: string;
+  /**
+   * The summary to display when the app block is collapsed.
+   * Summary longer than 30 characters will be truncated.
+   */
+  collapsedSummary?: string;
+}
+interface AdminPrintActionProps$1 extends GlobalProps {
+  /**
+   * Sets the src URL of the preview and the document to print.
+   * If not provided, the preview will show an empty state and the print button will be disabled.
+   * HTML, PDFs and images are supported.
+   */
+  src?: string;
 }
 export type SizeKeyword =
   | 'small-500'
@@ -46,13 +91,13 @@ interface AvatarProps$1 extends GlobalProps {
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
    */
-  onLoad?: () => void;
+  onLoad?: (event: Event) => void;
   /**
    * Invoked on load error of provided image.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
    */
-  onError?: () => void;
+  onError?: (event: Event) => void;
   /**
    * Size of the avatar.
    *
@@ -103,8 +148,8 @@ declare const privateIconArray: readonly [
   'alert-location',
   'alert-octagon-filled',
   'alert-octagon',
-  'alert-triangle',
   'alert-triangle-filled',
+  'alert-triangle',
   'app-extension',
   'apps',
   'archive',
@@ -147,9 +192,9 @@ declare const privateIconArray: readonly [
   'camera-flip',
   'camera',
   'caret-down',
-  'caret-up',
   'caret-left',
   'caret-right',
+  'caret-up',
   'cart-abandoned',
   'cart-discount',
   'cart-down',
@@ -329,8 +374,9 @@ declare const privateIconArray: readonly [
   'incentive',
   'incoming',
   'incomplete',
-  'info',
   'info-filled',
+  'info',
+  'inheritance',
   'inventory-updated',
   'inventory',
   'iq',
@@ -454,14 +500,15 @@ declare const privateIconArray: readonly [
   'phone-in',
   'phone-out',
   'phone',
-  'pin',
   'pin-remove',
+  'pin',
   'plan',
   'play-circle',
   'play',
-  'plus-circle',
   'plus-circle-down',
+  'plus-circle-filled',
   'plus-circle-up',
+  'plus-circle',
   'plus',
   'point-of-sale',
   'price-list',
@@ -504,6 +551,7 @@ declare const privateIconArray: readonly [
   'sandbox',
   'save',
   'savings',
+  'search-add',
   'search-list',
   'search-recent',
   'search-resource',
@@ -629,6 +677,13 @@ export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
  * //   ^? 'foo' | 'bar' | (string & {})
  */
 export type AnyString = string & {};
+/**
+ * This is purely to give the ability
+ * to have a space or not in the string literal types.
+ *
+ * For example in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.
+ */
+export type optionalSpace = '' | ' ';
 interface BadgeProps$1 extends GlobalProps {
   /**
    * The content of the Badge.
@@ -662,22 +717,6 @@ interface BadgeProps$1 extends GlobalProps {
    * @default 'base'
    */
   size?: SizeKeyword;
-}
-export interface ActionProps {
-  /**
-   * The text to use as the Action modal’s title. If not provided, the name of the extension will be used.
-   */
-  heading?: string;
-}
-export interface ActionSlots {
-  /**
-   * The primary action to perform, provided as a button or link type element.
-   */
-  primaryAction?: ComponentChildren;
-  /**
-   * The secondary actions to perform, provided as button or link type elements.
-   */
-  secondaryActions?: ComponentChildren;
 }
 interface BannerProps$1 extends GlobalProps, ActionSlots {
   /**
@@ -730,7 +769,7 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
    *
    * The `hidden` property will be `false` when this event fires.
    */
-  onDismiss?: () => void;
+  onDismiss?: (event: Event) => void;
   /**
    * Event handler when the banner has fully hidden.
    *
@@ -740,7 +779,7 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
    * this event must fire after the banner has fully hidden.
    * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
    */
-  onAfterHide?: () => void;
+  onAfterHide?: (event: Event) => void;
   /**
    * Determines whether the banner is hidden.
    *
@@ -1162,8 +1201,7 @@ export interface OverflowProps {
   overflow?: 'hidden' | 'visible';
 }
 export interface BaseBoxProps
-  extends GlobalProps,
-    AccessibilityVisibilityProps,
+  extends AccessibilityVisibilityProps,
     BackgroundProps,
     DisplayProps,
     SizingProps,
@@ -1185,16 +1223,52 @@ export interface BaseBoxProps
 export interface BaseBoxPropsWithRole
   extends BaseBoxProps,
     AccessibilityRoleProps {}
-interface BoxProps$1 extends BaseBoxPropsWithRole {}
+interface BoxProps$1 extends BaseBoxPropsWithRole, GlobalProps {}
 export interface FocusEventProps {
   /**
    * Callback when the element loses focus.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
    */
-  onBlur?: () => void;
+  onBlur?: (event: FocusEvent) => void;
   /**
    * Callback when the element receives focus.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
    */
-  onFocus?: () => void;
+  onFocus?: (event: FocusEvent) => void;
+}
+export interface ToggleEventProps {
+  /**
+   * Callback fired when the element state changes **after** any animations have finished.
+   *
+   * - If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the
+   *   `newState` property will be set to `open`.
+   * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
+   *   `newState` will be `closed`.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
+   */
+  onAfterToggle?: (event: ToggleEvent$1) => void;
+  /**
+   * Callback straight after the element state changes.
+   *
+   * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
+   *   `newState` property will be set to `open`.
+   * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the
+   *   `newState` will be `closed`.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
+   */
+  onToggle?: (event: ToggleEvent$1) => void;
+}
+export type ToggleState = 'open' | 'closed';
+interface ToggleEvent$1 extends Event {
+  readonly newState: ToggleState;
+  readonly oldState: ToggleState;
 }
 export interface ExtendableEvent extends Event {
   /**
@@ -1205,7 +1279,7 @@ export interface ExtendableEvent extends Event {
    * However, this may only be called synchronously during the dispatch of the event.
    * As in, you cannot call it after a `setTimeout` or microtask.
    */
-  waitUntil: (promise: Promise<void>) => void;
+  waitUntil?: (promise: Promise<void>) => void;
 }
 interface AggregateError$1<T extends Error> extends Error {
   errors: T[];
@@ -1229,8 +1303,10 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * Callback when the button is activated.
    * This will be called before the action indicated by `type`.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
    */
-  onClick?: () => void;
+  onClick?: (event: Event) => void;
   /**
    * Disables the button, meaning it cannot be clicked or receive focus.
    *
@@ -1277,8 +1353,10 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * Callback when the link is activated.
    * This will be called before navigating to the location specified by `href`.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
    */
-  onClick?: () => void;
+  onClick?: (event: Event) => void;
 }
 export interface InteractionProps {
   /**
@@ -1305,6 +1383,10 @@ export interface InteractionProps {
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
   command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';
+  /**
+   * ID of a component that should respond to interest (e.g. hover and focus) on this component.
+   */
+  interestFor?: string;
 }
 export interface BaseClickableProps
   extends ButtonBehaviorProps,
@@ -1371,12 +1453,16 @@ export interface BaseInputProps {
 export interface InputProps extends BaseInputProps {
   /**
    * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
    */
-  onChange?: (newValue: string) => void;
+  onChange?: (event: Event) => void;
   /**
    * Callback when the user makes any changes in the field.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
    */
-  onInput?: (newValue: string) => void;
+  onInput?: (event: Event) => void;
   /**
    * The current value for the field. If omitted, the field will be empty.
    */
@@ -1390,13 +1476,17 @@ export interface InputProps extends BaseInputProps {
 }
 export interface MultipleInputProps extends BaseInputProps {
   /**
-   * Callback when the user has selected file(s).
+   * Callback when the user has selected option(s).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
    */
-  onChange?: (newValue: string[]) => void;
+  onChange?: (event: Event) => void;
   /**
-   * Callback when the user has selected file(s).
+   * Callback when the user has selected option(s).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
    */
-  onInput?: (newValue: string[]) => void;
+  onInput?: (event: Event) => void;
   /**
    * An array of the `value`s of the selected options.
    *
@@ -1612,12 +1702,16 @@ export interface BaseCheckableProps
   name?: string;
   /**
    * A callback that is run whenever the control is changed.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
    */
-  onChange?: (checked: boolean) => void;
+  onChange?: (event: Event) => void;
   /**
    * A callback that is run whenever the control is changed.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
    */
-  onInput?: (checked: boolean) => void;
+  onInput?: (event: Event) => void;
 }
 interface CheckboxProps$1
   extends GlobalProps,
@@ -1704,7 +1798,10 @@ interface ChoiceListProps$1
    */
   disabled?: MultipleInputProps['disabled'];
 }
-interface ClickableProps$1 extends BaseBoxProps, BaseClickableProps {
+interface ClickableProps$1
+  extends GlobalProps,
+    BaseBoxProps,
+    BaseClickableProps {
   /**
    * Disables the clickable, and indicates to assistive technology that the loading is in progress.
    *
@@ -1732,6 +1829,151 @@ interface ClickableProps$1 extends BaseBoxProps, BaseClickableProps {
    */
   lang?: string;
 }
+export interface AutocompleteProps<
+  AutocompleteField extends AnyAutocompleteField,
+> {
+  /**
+   * A hint as to the intended content of the field.
+   *
+   * When set to `on` (the default), this property indicates that the field should support
+   * autofill, but you do not have any more semantic information on the intended
+   * contents.
+   *
+   * When set to `off`, you are indicating that this field contains sensitive
+   * information, or contents that are never saved, like one-time codes.
+   *
+   * Alternatively, you can provide value which describes the
+   * specific data you would like to be entered into this field during autofill.
+   *
+   * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
+   *
+   * @default 'tel' for PhoneField
+   * @default 'email' for EmailField
+   * @default 'url' for URLField
+   * @default 'on' for everything else
+   */
+  autocomplete?:
+    | AutocompleteField
+    | `${AutocompleteSection} ${AutocompleteField}`
+    | `${AutocompleteGroup} ${AutocompleteField}`
+    | `${AutocompleteSection} ${AutocompleteGroup} ${AutocompleteField}`
+    | 'on'
+    | 'off';
+}
+/**
+ * The “section” scopes the autocomplete data that should be inserted
+ * to a specific area of the page.
+ *
+ * Commonly used when there are multiple fields with the same autocomplete needs
+ * in the same page. For example: 2 shipping address forms in the same page.
+ */
+export type AutocompleteSection = `section-${string}`;
+/**
+ * The contact information group the autocomplete data should be sourced from.
+ */
+export type AutocompleteGroup = 'shipping' | 'billing';
+/**
+ * The contact information subgroup the autocomplete data should be sourced from.
+ */
+export type AutocompleteAddressGroup = 'fax' | 'home' | 'mobile' | 'pager';
+export type AnyAutocompleteField =
+  | 'additional-name'
+  | 'address-level1'
+  | 'address-level2'
+  | 'address-level3'
+  | 'address-level4'
+  | 'address-line1'
+  | 'address-line2'
+  | 'address-line3'
+  | 'country-name'
+  | 'country'
+  | 'current-password'
+  | 'email'
+  | 'family-name'
+  | 'given-name'
+  | 'honorific-prefix'
+  | 'honorific-suffix'
+  | 'language'
+  | 'name'
+  | 'new-password'
+  | 'nickname'
+  | 'one-time-code'
+  | 'organization-title'
+  | 'organization'
+  | 'photo'
+  | 'postal-code'
+  | 'sex'
+  | 'street-address'
+  | 'transaction-amount'
+  | 'transaction-currency'
+  | 'url'
+  | 'username'
+  | 'bday-day'
+  | 'bday-month'
+  | 'bday-year'
+  | 'bday'
+  | 'cc-additional-name'
+  | 'cc-expiry-month'
+  | 'cc-expiry-year'
+  | 'cc-expiry'
+  | 'cc-family-name'
+  | 'cc-given-name'
+  | 'cc-name'
+  | 'cc-number'
+  | 'cc-csc'
+  | 'cc-type'
+  | `${AutocompleteAddressGroup} email`
+  | 'impp'
+  | `${AutocompleteAddressGroup} impp`
+  | 'tel'
+  | 'tel-area-code'
+  | 'tel-country-code'
+  | 'tel-extension'
+  | 'tel-local-prefix'
+  | 'tel-local-suffix'
+  | 'tel-local'
+  | 'tel-national'
+  | `${AutocompleteAddressGroup} tel`
+  | `${AutocompleteAddressGroup} tel-area-code`
+  | `${AutocompleteAddressGroup} tel-country-code`
+  | `${AutocompleteAddressGroup} tel-extension`
+  | `${AutocompleteAddressGroup} tel-local-prefix`
+  | `${AutocompleteAddressGroup} tel-local-suffix`
+  | `${AutocompleteAddressGroup} tel-local`
+  | `${AutocompleteAddressGroup} tel-national`;
+export type TextAutocompleteField = ExtractStrict<
+  AnyAutocompleteField,
+  | 'additional-name'
+  | 'address-level1'
+  | 'address-level2'
+  | 'address-level3'
+  | 'address-level4'
+  | 'address-line1'
+  | 'address-line2'
+  | 'address-line3'
+  | 'country-name'
+  | 'country'
+  | 'family-name'
+  | 'given-name'
+  | 'honorific-prefix'
+  | 'honorific-suffix'
+  | 'language'
+  | 'name'
+  | 'nickname'
+  | 'one-time-code'
+  | 'organization-title'
+  | 'organization'
+  | 'postal-code'
+  | 'sex'
+  | 'street-address'
+  | 'transaction-currency'
+  | 'username'
+  | 'cc-name'
+  | 'cc-given-name'
+  | 'cc-additional-name'
+  | 'cc-family-name'
+  | 'cc-type'
+>;
 interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
   /**
    * Default month to display in `YYYY-MM` format.
@@ -1885,151 +2127,6 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    */
   value?: string;
 }
-export interface AutocompleteProps<
-  AutocompleteField extends AnyAutocompleteField,
-> {
-  /**
-   * A hint as to the intended content of the field.
-   *
-   * When set to `on` (the default), this property indicates that the field should support
-   * autofill, but you do not have any more semantic information on the intended
-   * contents.
-   *
-   * When set to `off`, you are indicating that this field contains sensitive
-   * information, or contents that are never saved, like one-time codes.
-   *
-   * Alternatively, you can provide value which describes the
-   * specific data you would like to be entered into this field during autofill.
-   *
-   * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
-   *
-   * @default 'tel' for PhoneField
-   * @default 'email' for EmailField
-   * @default 'url' for URLField
-   * @default 'on' for everything else
-   */
-  autocomplete?:
-    | AutocompleteField
-    | `${AutocompleteSection} ${AutocompleteField}`
-    | `${AutocompleteGroup} ${AutocompleteField}`
-    | `${AutocompleteSection} ${AutocompleteGroup} ${AutocompleteField}`
-    | 'on'
-    | 'off';
-}
-/**
- * The “section” scopes the autocomplete data that should be inserted
- * to a specific area of the page.
- *
- * Commonly used when there are multiple fields with the same autocomplete needs
- * in the same page. For example: 2 shipping address forms in the same page.
- */
-export type AutocompleteSection = `section-${string}`;
-/**
- * The contact information group the autocomplete data should be sourced from.
- */
-export type AutocompleteGroup = 'shipping' | 'billing';
-/**
- * The contact information subgroup the autocomplete data should be sourced from.
- */
-export type AutocompleteAddressGroup = 'fax' | 'home' | 'mobile' | 'pager';
-export type AnyAutocompleteField =
-  | 'additional-name'
-  | 'address-level1'
-  | 'address-level2'
-  | 'address-level3'
-  | 'address-level4'
-  | 'address-line1'
-  | 'address-line2'
-  | 'address-line3'
-  | 'country-name'
-  | 'country'
-  | 'current-password'
-  | 'email'
-  | 'family-name'
-  | 'given-name'
-  | 'honorific-prefix'
-  | 'honorific-suffix'
-  | 'language'
-  | 'name'
-  | 'new-password'
-  | 'nickname'
-  | 'one-time-code'
-  | 'organization-title'
-  | 'organization'
-  | 'photo'
-  | 'postal-code'
-  | 'sex'
-  | 'street-address'
-  | 'transaction-amount'
-  | 'transaction-currency'
-  | 'url'
-  | 'username'
-  | 'bday-day'
-  | 'bday-month'
-  | 'bday-year'
-  | 'bday'
-  | 'cc-additional-name'
-  | 'cc-expiry-month'
-  | 'cc-expiry-year'
-  | 'cc-expiry'
-  | 'cc-family-name'
-  | 'cc-given-name'
-  | 'cc-name'
-  | 'cc-number'
-  | 'cc-csc'
-  | 'cc-type'
-  | `${AutocompleteAddressGroup} email`
-  | 'impp'
-  | `${AutocompleteAddressGroup} impp`
-  | 'tel'
-  | 'tel-area-code'
-  | 'tel-country-code'
-  | 'tel-extension'
-  | 'tel-local-prefix'
-  | 'tel-local-suffix'
-  | 'tel-local'
-  | 'tel-national'
-  | `${AutocompleteAddressGroup} tel`
-  | `${AutocompleteAddressGroup} tel-area-code`
-  | `${AutocompleteAddressGroup} tel-country-code`
-  | `${AutocompleteAddressGroup} tel-extension`
-  | `${AutocompleteAddressGroup} tel-local-prefix`
-  | `${AutocompleteAddressGroup} tel-local-suffix`
-  | `${AutocompleteAddressGroup} tel-local`
-  | `${AutocompleteAddressGroup} tel-national`;
-export type TextAutocompleteField = ExtractStrict<
-  AnyAutocompleteField,
-  | 'additional-name'
-  | 'address-level1'
-  | 'address-level2'
-  | 'address-level3'
-  | 'address-level4'
-  | 'address-line1'
-  | 'address-line2'
-  | 'address-line3'
-  | 'country-name'
-  | 'country'
-  | 'family-name'
-  | 'given-name'
-  | 'honorific-prefix'
-  | 'honorific-suffix'
-  | 'language'
-  | 'name'
-  | 'nickname'
-  | 'one-time-code'
-  | 'organization-title'
-  | 'organization'
-  | 'postal-code'
-  | 'sex'
-  | 'street-address'
-  | 'transaction-currency'
-  | 'username'
-  | 'cc-name'
-  | 'cc-given-name'
-  | 'cc-additional-name'
-  | 'cc-family-name'
-  | 'cc-type'
->;
 interface DividerProps$1 extends GlobalProps {
   /**
    * Specify the direction of the divider.
@@ -2061,6 +2158,21 @@ export type EmailAutocompleteField = ExtractStrict<
 >;
 interface FormProps$1 extends GlobalProps {
   /**
+   * The content of the form.
+   */
+  children?: ComponentChildren;
+  /**
+   * Whether the form is able to be submitted.
+   *
+   * When set to `true`, this will also disable the implicit submit behavior of the form.
+   *
+   * @default false
+   *
+   * @deprecated Prevent default within the onSubmit callback using a local state instead. Deprecated in v1.6.0
+   * @private
+   */
+  disabled?: boolean;
+  /**
    * A callback that is run when the form is submitted.
    *
    * Use `event.waitUntil` to signal how long it takes to save the data,
@@ -2071,10 +2183,40 @@ interface FormProps$1 extends GlobalProps {
    * A callback that is run when the form is reset.
    */
   onReset?: (event: Event) => void;
+}
+interface FunctionSettingsProps$1 extends GlobalProps, FormProps$1 {
   /**
-   * The content of the form.
+   * An optional callback function that will be run by the admin when the user
+   * commits their changes in the admin-rendered part of the function settings
+   * experience. If `event.waitUntil` is called with a promise, the admin will wait for the
+   * promise to resolve before committing any changes to Shopify’s servers. If
+   * the promise rejects, the admin will abort the changes and display an error,
+   * using the `message` property of the error you reject with.
    */
-  children?: ComponentChildren;
+  onSubmit?: (event: ExtendableEvent) => void;
+  /**
+   * An optional callback function that will be run by the admin when
+   * committing the changes to Shopify’s servers fails. The error event you receive includes
+   * an `error` property that is an `AggregateError` object. This object includes
+   * an array of errors that were caused by data your extension provided.
+   * Network errors and user errors that are out of your control will not be reported here.
+   *
+   * In the `onError` callback, you should update your extension’s UI to
+   * highlight the fields that caused the errors, and display the error messages
+   * to the user.
+   */
+  onError?: (event: ArgregatedErrorEvent<FunctionSettingsError>) => void;
+}
+export interface FunctionSettingsError extends Error {
+  /**
+   * A unique identifier describing the “class” of error. These will match
+   * the GraphQL error codes as closely as possible. For example the enums
+   * returned by the `metafieldsSet` mutation
+   *
+   * @see https://shopify.dev/docs/api/admin-graphql/latest/enums/MetafieldsSetUserErrorCode
+   */
+  code: string;
+  name: 'FunctionSettingsError';
 }
 export type SpacingKeyword = SizeKeyword | 'none';
 export interface GapProps {
@@ -2157,7 +2299,7 @@ export type AlignContentKeyword =
   | ContentDistribution
   | OverflowPosition
   | ContentPosition;
-interface GridProps$1 extends BaseBoxPropsWithRole, GapProps {
+interface GridProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
   /**
 	  Define columns and specify their size.
   
@@ -2227,7 +2369,7 @@ interface GridProps$1 extends BaseBoxPropsWithRole, GapProps {
     | `${AlignContentKeyword} ${JustifyContentKeyword}`
     | AlignContentKeyword;
 }
-interface GridItemProps$1 extends BaseBoxPropsWithRole {
+interface GridItemProps$1 extends GlobalProps, BaseBoxPropsWithRole {
   /**
    * Number of columns the item will span across
    *
@@ -2395,13 +2537,6 @@ export interface BaseImageProps {
    */
   srcSet?: string;
 }
-/**
- * This is purely to give the ability
- * to have a space or not in the string literal types.
- *
- * For example in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.
- */
-export type optionalSpace = '' | ' ';
 interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
   /**
    * Sets the semantic meaning of the component’s content. When set,
@@ -2469,13 +2604,13 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
    */
-  onLoad?: () => void;
+  onLoad?: (event: Event) => void;
   /**
    * Invoked on load error.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
    */
-  onError?: () => void;
+  onError?: (event: Event) => void;
 }
 interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
   /**
@@ -2508,6 +2643,63 @@ interface ListItemProps$1 extends GlobalProps {
    */
   children?: ComponentChildren;
 }
+interface MenuProps$1 extends GlobalProps {
+  /**
+   * A label that describes the purpose or contents of the element. When set,
+   * it will be announced using assistive technologies and provide additional context.
+   */
+  accessibilityLabel?: string;
+  /**
+   * The children define the actions to render inside the Menu. Only Button components are allowed as children of a Menu, and these Buttons can perform actions (using `onClick`) or link to other parts of the application (using `to`/ `href`). Any other component placed here will be ignored.
+   */
+  children?: ComponentChildren;
+}
+export interface BaseOverlayProps {
+  /**
+   * Callback fired after the overlay is shown.
+   */
+  onShow?: (event: Event) => void;
+  /**
+   * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
+   */
+  onAfterShow?: (event: Event) => void;
+  /**
+   * Callback fired after the overlay is hidden.
+   */
+  onHide?: (event: Event) => void;
+  /**
+   * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
+   */
+  onAfterHide?: (event: Event) => void;
+}
+/**
+ * Shared interfaces for web component methods.
+ *
+ * Methods are required (not optional) because:
+ * - Components implementing this interface must provide all methods
+ * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
+ * - Consumers expect these methods to be consistently available on all instances
+ */
+export interface BaseOverlayMethods {
+  /**
+   * Method to show an overlay.
+   *
+   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+   */
+  showOverlay: () => void;
+  /**
+   * Method to hide an overlay.
+   *
+   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+   */
+  hideOverlay: () => void;
+  /**
+   * Method to toggle the visiblity of an overlay.
+   *
+   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+   */
+  toggleOverlay: () => void;
+}
 interface MoneyFieldProps$1
   extends GlobalProps,
     BaseTextFieldProps,
@@ -2516,9 +2708,13 @@ interface MoneyFieldProps$1
   /**
    * Specifies the currency code that will be displayed.
    *
-   * @default ''
+   * - `auto`: the currency code will be determined by context. If a currency code cannot be found in the context, no currency code or symbol will be displayed in the field.
+   *
+   * @implementation when no currency can be found in the context, fallback to `XXX` which denotes an unknown or unrecognized currency.
+   *
+   * @default 'auto'
    */
-  currencyCode?: CurrencyCode | AnyString;
+  currencyCode?: CurrencyCode | 'auto' | AnyString;
 }
 export type MoneyAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -2820,6 +3016,17 @@ export type PasswordAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'new-password' | 'current-password'
 >;
+interface PopoverProps$1
+  extends GlobalProps,
+    BaseOverlayProps,
+    BaseOverlayMethods,
+    ToggleEventProps,
+    SizingProps {
+  /**
+   * The content of the popover.
+   */
+  children?: ComponentChildren;
+}
 interface QueryContainerProps$1 extends GlobalProps {
   /**
    * The content of the container.
@@ -2840,7 +3047,7 @@ interface QueryContainerProps$1 extends GlobalProps {
    */
   containerName?: string;
 }
-interface SectionProps$1 extends GlobalProps {
+interface SectionProps$1 extends GlobalProps, ActionSlots {
   /**
    * The content of the Section.
    */
@@ -2899,7 +3106,7 @@ interface SpinnerProps$1 extends GlobalProps {
    */
   accessibilityLabel?: string;
 }
-interface StackProps$1 extends BaseBoxPropsWithRole, GapProps {
+interface StackProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
   /**
    * The content of the Stack.
    */
@@ -2950,11 +3157,11 @@ export interface PaginationProps {
   /**
    * Called when the previous page button is clicked.
    */
-  onPreviousPage?: () => void;
+  onPreviousPage?: (event: Event) => void;
   /**
    * Called when the next page button is clicked.
    */
-  onNextPage?: () => void;
+  onNextPage?: (event: Event) => void;
   /**
    * Whether there's an additional page of data.
    *
@@ -2999,7 +3206,7 @@ interface TableBodyProps$1 extends GlobalProps {
   /**
    * The body of the table. May not have any semantic meaning in the Table's `list` variant.
    */
-  children: ComponentChildren;
+  children?: ComponentChildren;
 }
 interface TableCellProps$1 extends GlobalProps {
   /**
@@ -3167,19 +3374,25 @@ interface ThumbnailProps$1 extends GlobalProps, BaseImageProps {
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
    */
-  onLoad?: () => void;
+  onLoad?: (event: Event) => void;
   /**
    * Invoked on load error of provided image.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
    */
-  onError?: () => void;
+  onError?: (event: Event) => void;
   /**
    * Adjusts the size the product thumbnail image.
    *
    * @default 'base'
    */
   size?: SizeKeyword;
+}
+interface TooltipProps$1 extends GlobalProps {
+  /**
+   * The content of the Tooltip.
+   */
+  children?: ComponentChildren;
 }
 interface UnorderedListProps$1 extends GlobalProps {}
 interface URLFieldProps$1
@@ -3390,6 +3603,7 @@ type IconType$1 =
   | 'book-open'
   | 'bug'
   | 'bullet'
+  | 'business-entity'
   | 'button'
   | 'button-press'
   | 'calculator'
@@ -3578,6 +3792,7 @@ type IconType$1 =
   | 'incoming'
   | 'incomplete'
   | 'info'
+  | 'inheritance'
   | 'inventory'
   | 'inventory-updated'
   | 'iq'
@@ -3708,6 +3923,7 @@ type IconType$1 =
   | 'plus'
   | 'plus-circle'
   | 'plus-circle-down'
+  | 'plus-circle-filled'
   | 'plus-circle-up'
   | 'point-of-sale'
   | 'price-list'
@@ -3748,6 +3964,7 @@ type IconType$1 =
   | 'sandbox'
   | 'save'
   | 'search'
+  | 'search-add'
   | 'search-list'
   | 'search-recent'
   | 'search-resource'
@@ -3847,66 +4064,3 @@ type IconType$1 =
   | 'wrench'
   | 'x'
   | 'x-circle';
-interface AdminActionProps$1 extends GlobalProps, ActionProps, ActionSlots {
-  /**
-   * Whether the action is in a loading state, such as initial page load or action opening.
-   * When true, the action could be in an inert state, which prevents user interaction.
-   *
-   * @default false
-   */
-  loading?: boolean;
-}
-interface AdminBlockProps$1 extends GlobalProps {
-  /**
-   * The text to use as the Block title in the block header. If not provided, the name of the
-   * extension will be used.
-   */
-  heading?: string;
-  /**
-   * The summary to display when the app block is collapsed.
-   * Summary longer than 30 characters will be truncated.
-   */
-  collapsedSummary?: string;
-}
-interface AdminPrintActionProps$1 extends GlobalProps {
-  /**
-   * Sets the src URL of the preview and the document to print.
-   * If not provided, the preview will show an empty state and the print button will be disabled.
-   * HTML, PDFs and images are supported.
-   */
-  src?: string;
-}
-interface FunctionSettingsProps$1 extends GlobalProps, FormProps$1 {
-  /**
-   * An optional callback function that will be run by the admin when the user
-   * commits their changes in the admin-rendered part of the function settings
-   * experience. If `event.waitUntil` is called with a promise, the admin will wait for the
-   * promise to resolve before committing any changes to Shopify’s servers. If
-   * the promise rejects, the admin will abort the changes and display an error,
-   * using the `message` property of the error you reject with.
-   */
-  onSubmit?: (event: ExtendableEvent) => void;
-  /**
-   * An optional callback function that will be run by the admin when
-   * committing the changes to Shopify’s servers fails. The error event you receive includes
-   * an `error` property that is an `AggregateError` object. This object includes
-   * an array of errors that were caused by data your extension provided.
-   * Network errors and user errors that are out of your control will not be reported here.
-   *
-   * In the `onError` callback, you should update your extension’s UI to
-   * highlight the fields that caused the errors, and display the error messages
-   * to the user.
-   */
-  onError?: (event: ArgregatedErrorEvent<FunctionSettingsError>) => void;
-}
-export interface FunctionSettingsError extends Error {
-  /**
-   * A unique identifier describing the “class” of error. These will match
-   * the GraphQL error codes as closely as possible. For example the enums
-   * returned by the `metafieldsSet` mutation
-   *
-   * @see https://shopify.dev/docs/api/admin-graphql/latest/enums/MetafieldsSetUserErrorCode
-   */
-  code: string;
-  name: 'FunctionSettingsError';
-}
