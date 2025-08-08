@@ -18,6 +18,7 @@ module.exports = {
     'packages/*/*.esnext',
     'packages/ui-extensions/src/surfaces/checkout/**/*.d.ts',
     'packages/ui-extensions/src/surfaces/checkout/preact/tests/',
+    'packages/ui-extensions/src/surfaces/point-of-sale/**/*.d.ts',
   ],
   rules: {
     // Codebase was originally written without some strict Shopify conventions

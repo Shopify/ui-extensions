@@ -1,64 +1,52 @@
-/** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+/** VERSION: undefined **/
+/* eslint-disable import-x/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  PreactBaseElementPropsWithChildren,
-  PreactCustomElement,
-} from './shared.d.ts';
+import type {BadgeProps, Key, Ref} from './components-shared.d.ts';
 
-export type BadgeVariant = 'info' | 'success' | 'warning' | 'critical';
-export type BadgeStatus = 'new' | 'active' | 'complete';
-
+export type ComponentChildren = any;
 /**
- * Badges are used to inform merchants of the status of an item or action that's been taken.
+ * Used when an element does not have children.
  */
-export interface BadgeProps {
-  /**
-   * The text displayed within the badge.
-   */
-  text: string;
-  /**
-   * The visual style variant of the badge.
-   */
-  variant?: BadgeVariant;
-  /**
-   * The status represented by the badge.
-   */
-  status?: BadgeStatus;
+export interface BaseElementProps<TClass = HTMLElement> {
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren;
 }
 
-declare class Badge extends PreactCustomElement implements BadgeProps {
-  accessor text: BadgeProps['text'];
-  accessor variant: BadgeProps['variant'];
-  accessor status: BadgeProps['status'];
-  constructor();
+declare const tagName = 's-badge';
+export interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
+  tone?: Extract<
+    BadgeProps['tone'],
+    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical'
+  >;
+  children?: ComponentChildren;
 }
-
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Badge;
+    [tagName]: BadgeJSXProps;
   }
 }
-
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BadgeJSXProps & PreactBaseElementPropsWithChildren<Badge>;
+      [tagName]: BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
 
-declare const tagName = 's-badge';
-
-export interface BadgeJSXProps extends Partial<Omit<BadgeProps, 'text'>> {
-  // text is required, so we add it back without Partial
-  text: string;
-  id?: string;
-}
-
-export {Badge};
+export {tagName};
 export type {BadgeJSXProps};

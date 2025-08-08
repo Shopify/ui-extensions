@@ -1,6 +1,6 @@
 import type {LandingTemplateSchema} from '@shopify/generate-docs';
 
-const examplePath = '../examples/print-example';
+const examplePath = './examples/print-example';
 
 const data: LandingTemplateSchema = {
   title: 'Build a print extension',

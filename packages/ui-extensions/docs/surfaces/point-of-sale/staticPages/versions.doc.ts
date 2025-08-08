@@ -1,5 +1,5 @@
 import type {LandingTemplateSchema} from '@shopify/generate-docs';
-import {TargetLink} from '../../reference/types/ExtensionTargetType';
+import {TargetLink} from '../reference/types/ExtensionTargetType';
 
 const data: LandingTemplateSchema = {
   title: 'Versions',
@@ -13,6 +13,21 @@ const data: LandingTemplateSchema = {
   mobileImage: '/assets/landing-pages/templated-apis/hero.png',
   mobileDarkImage: '/assets/landing-pages/templated-apis/hero-dark.png',
   sections: [
+    {
+      type: 'Generic',
+      anchorLink: '202510',
+      title: '2025.10',
+      sectionContent: `
+- Added in POS version: N/A
+- Release day: N/A
+
+### Important Fixes
+
+- **POS 10.10.0**:
+
+- Fixed an issue where the \`addLineItem\` function in the [Cart API](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-addlineitem) would throw an error if the POS displayed an oversell guard modal. It will now return \`undefined\` if the user dismisses the oversell guard modal without adding anything.
+      `,
+    },
     {
       type: 'Generic',
       anchorLink: '202507',

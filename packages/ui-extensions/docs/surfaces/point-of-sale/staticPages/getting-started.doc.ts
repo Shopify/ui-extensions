@@ -1,6 +1,6 @@
 import type {LandingTemplateSchema} from '@shopify/generate-docs';
 
-const examplePath = '../examples/getting-started';
+const examplePath = './examples/getting-started';
 
 const data: LandingTemplateSchema = {
   title: 'Getting started with POS UI extensions',

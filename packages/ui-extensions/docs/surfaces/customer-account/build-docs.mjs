@@ -85,7 +85,7 @@ const generateExtensionsDocs = async () => {
     path.join(docsPath, 'screenshots'),
     path.join(
       shopifyDevPath,
-      'app/assets/images/templated-apis-screenshots/customer-account-ui-extensions',
+      'react-app/public/images/templated-apis-screenshots/customer-account-ui-extensions',
       EXTENSIONS_API_VERSION,
     ),
     {recursive: true},

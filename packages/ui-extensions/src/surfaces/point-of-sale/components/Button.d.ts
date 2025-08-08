@@ -1,80 +1,71 @@
-/** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+/** VERSION: undefined **/
+/* eslint-disable import-x/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  CallbackEvent,
-  CallbackEventListener,
-  PreactBaseElementPropsWithChildren,
-  PreactCustomElement,
-} from './shared.d.ts';
+import type {ButtonProps, Key, Ref} from './components-shared.d.ts';
 
-export type ButtonType = 'primary' | 'secondary' | 'basic' | 'destructive';
-
+export type ComponentChildren = any;
 /**
- * @property `title` the text set on the `Button`.
- * @property `type` the type of `Button` to render. Determines the appearance of the button.
- * @property `onPress` the callback that is executed when the user taps the button.
- * @property `isDisabled` sets whether the `Button` can be tapped.
- * @property `isLoading` sets whether the `Button` is displaying an animated loading state.
+ * Used when an element does not have children.
  */
-export interface ButtonProps {
-  /**
-   * The text set on the `Button`.
-   *
-   * Note: When using a Button for menu-item targets, the title will be ignored. The text on the menu-item will be the extension's description.
-   */
-  title?: string;
-  /**
-   * The type of `Button` to render. Determines the appearance of the button.
-   */
-  type?: ButtonType;
-  /**
-   * The callback that is executed when the user taps the button.
-   */
-  onPress?: () => void;
-  /**
-   * Sets whether the `Button` can be tapped.
-   */
-  isDisabled?: boolean;
-  /**
-   * Sets whether the `Button` is displaying an animated loading state.
-   */
-  isLoading?: boolean;
+export interface BaseElementProps<TClass = HTMLElement> {
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren;
+}
+export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
+  currentTarget: HTMLElementTagNameMap[T];
+  bubbles?: boolean;
+  cancelable?: boolean;
+  composed?: boolean;
+  detail?: any;
+  eventPhase: number;
+  target: HTMLElementTagNameMap[T] | null;
 }
 
-declare class Button extends PreactCustomElement implements ButtonProps {
-  accessor title: ButtonProps['title'];
-  accessor type: ButtonProps['type'];
-  accessor isDisabled: ButtonProps['isDisabled'];
-  accessor isLoading: ButtonProps['isLoading'];
-  accessor onpress: CallbackEventListener<typeof tagName> | null;
-  constructor();
+declare const tagName = 's-button';
+export interface ButtonJSXProps
+  extends Pick<
+    ButtonProps,
+    | 'accessibilityLabel'
+    | 'disabled'
+    | 'command'
+    | 'commandFor'
+    | 'loading'
+    | 'tone'
+    | 'variant'
+    | 'id'
+  > {
+  tone?: Extract<ButtonProps['tone'], 'auto' | 'critical'>;
+  variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
+  onClick?: (event: CallbackEvent<typeof tagName>) => void;
+  children?: ComponentChildren;
 }
-
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Button;
+    [tagName]: ButtonJSXProps;
   }
 }
-
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ButtonJSXProps & PreactBaseElementPropsWithChildren<Button>;
+      [tagName]: BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
 }
 
-declare const tagName = 's-button';
-
-export interface ButtonJSXProps extends Partial<ButtonProps> {
-  onPress?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
-}
-
-export {Button};
+export {tagName};
 export type {ButtonJSXProps};

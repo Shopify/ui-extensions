@@ -8,12 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  BannerProps,
-  Key,
-  Ref,
-  ComponentChild,
-} from './components-shared.d.ts';
+import type {ScrollBoxProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -32,30 +27,22 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   children?: ComponentChildren;
 }
 
-declare const tagName = 's-banner';
-export interface BannerJSXProps
-  extends Pick<BannerProps, 'heading' | 'hidden' | 'tone' | 'id'> {
-  tone?: Extract<
-    BannerProps['tone'],
-    'success' | 'info' | 'warning' | 'critical'
-  >;
-  primaryAction?: ComponentChild;
+declare const tagName = 's-scroll-box';
+export interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: BannerJSXProps;
+    [tagName]: ScrollBoxJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<
-        Omit<BannerJSXProps, 'primaryAction'>
-      >;
+      [tagName]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {BannerJSXProps};
+export type {ScrollBoxJSXProps};

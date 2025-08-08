@@ -1,59 +1,64 @@
-/** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+/** VERSION: undefined **/
+/* eslint-disable import-x/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  PreactBaseElementPropsWithChildren,
-  PreactCustomElement,
-} from './shared.d.ts';
+import type {BoxProps, Key, Ref} from './components-shared.d.ts';
 
+export type ComponentChildren = any;
 /**
- * Box is a generic container component for layout purposes.
+ * Used when an element does not have children.
  */
-export interface BoxProps {
-  /**
-   * The padding inside the box.
-   */
-  padding?: string;
-  /**
-   * The margin outside the box.
-   */
-  margin?: string;
-  /**
-   * The background color of the box.
-   */
-  backgroundColor?: string;
+export interface BaseElementProps<TClass = HTMLElement> {
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren;
 }
 
-declare class Box extends PreactCustomElement implements BoxProps {
-  accessor padding: BoxProps['padding'];
-  accessor margin: BoxProps['margin'];
-  accessor backgroundColor: BoxProps['backgroundColor'];
-  constructor();
+declare const tagName = 's-box';
+export interface BoxJSXProps
+  extends Pick<
+    BoxProps,
+    | 'padding'
+    | 'paddingBlock'
+    | 'paddingBlockStart'
+    | 'paddingBlockEnd'
+    | 'paddingInline'
+    | 'paddingInlineStart'
+    | 'paddingInlineEnd'
+    | 'blockSize'
+    | 'minBlockSize'
+    | 'maxBlockSize'
+    | 'inlineSize'
+    | 'minInlineSize'
+    | 'maxInlineSize'
+  > {
+  children?: ComponentChildren;
 }
-
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Box;
+    [tagName]: BoxJSXProps;
   }
 }
-
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BoxJSXProps & PreactBaseElementPropsWithChildren<Box>;
+      [tagName]: BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
 
-declare const tagName = 's-box';
-
-export interface BoxJSXProps extends Partial<BoxProps> {
-  id?: string;
-}
-
-export {Box};
+export {tagName};
 export type {BoxJSXProps};
