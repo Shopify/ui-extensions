@@ -55,6 +55,7 @@ You can configure more than one type of extension within a configuration file.
 
 Along with the \`target\`, Shopify needs to know which code to execute for it. You specify the path to your code file by using the  \`module\` property.
 
+For block extension targets, you can [define the default placement](/docs/apps/build/customer-accounts/extension-placement#define-default-placement) for your extension.
 
       `,
       accordionContent: [
