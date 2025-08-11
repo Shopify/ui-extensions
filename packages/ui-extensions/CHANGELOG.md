@@ -1,5 +1,27 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.18
+
+### Minor Changes
+
+- [#3126](https://github.com/Shopify/ui-extensions/pull/3126) [`1b0a1de43fd52ccfaeb254b1f53195f96ef3059c`](https://github.com/Shopify/ui-extensions/commit/1b0a1de43fd52ccfaeb254b1f53195f96ef3059c) Thanks [@oliverigor](https://github.com/oliverigor)! - Add checkout components:
+
+  - Badge
+  - Clickable
+  - Details
+  - Divider
+  - Grid
+  - GridItem
+  - PasswordField
+  - Popover
+  - ProductThumbnail
+  - ScrollBox
+  - Sheet
+  - SkeletonParagraph
+  - Summary
+  - Switch
+  - UrlField
+
 ## 2025.10.0-rc.17
 
 ### Minor Changes
