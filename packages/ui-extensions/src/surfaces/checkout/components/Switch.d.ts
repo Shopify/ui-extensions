@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {QRCodeProps$1} from './components-shared.d.ts';
+import type {SwitchProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -25,34 +25,36 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
     (event: CallbackEvent<TTagName, TEvent>): void;
 }) | null;
 
-declare const tagName = "s-qr-code";
-export interface QRCodeElementProps extends QRCodeProps$1 {
+declare const tagName = "s-switch";
+export interface SwitchElementProps extends Pick<SwitchProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'id' | 'label' | 'name' | 'value'> {
+    command?: Extract<SwitchProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
-export interface QRCodeEvents extends Pick<QRCodeProps$1, 'onError'> {
+export interface SwitchEvents extends Pick<SwitchProps$1, 'onChange'> {
 }
-export interface QRCodeElementEvents {
+export interface SwitchElementEvents {
     /**
-     * Invoked when the conversion of `content` to a QR code fails.
-     * If an error occurs, the QR code and its child elements will not be displayed.
+     * A callback that is run whenever the control is changed.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
      */
-    error?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface QRCodelement extends QRCodeElementProps, Omit<HTMLElement, 'id' | 'onerror'> {
-    onerror: QRCodeEvents['onError'];
+export interface SwitchElement extends SwitchElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
+    onchange: SwitchEvents['onChange'];
 }
-export interface QRCodeProps extends QRCodeElementProps, QRCodeEvents {
+export interface SwitchProps extends SwitchElementProps, SwitchEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: QRCodelement;
+        [tagName]: SwitchElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: QRCodeProps & BaseElementProps<QRCodelement>;
+            [tagName]: SwitchProps & BaseElementProps<SwitchElement>;
         }
     }
 }
 
-export type { QRCodeElementEvents, QRCodeElementProps, QRCodeEvents, QRCodeProps, QRCodelement };
+export type { SwitchElement, SwitchElementEvents, SwitchElementProps, SwitchEvents, SwitchProps };

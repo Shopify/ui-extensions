@@ -8,8 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {PhoneFieldProps$1} from './components-shared.d.ts';
-import { ReactNode } from 'react';
+import type {NumberFieldProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -26,17 +25,17 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
     (event: CallbackEvent<TTagName, TEvent>): void;
 }) | null;
 
-declare const tagName = "s-phone-field";
-export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value' | 'type'> {
+declare const tagName = "s-number-field";
+export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'accessory' | 'autocomplete' | 'controls' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'icon' | 'id' | 'inputMode' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
     /**
      * @deprecated Use `label` instead.
      * @private
      */
     placeholder?: string;
 }
-export interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
+export interface NumberFieldEvents extends Pick<NumberFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-export interface PhoneFieldElementEvents {
+export interface NumberFieldElementEvents {
     /**
      * Callback when the element loses focus.
      *
@@ -62,39 +61,25 @@ export interface PhoneFieldElementEvents {
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface PhoneFieldSlots extends Pick<PhoneFieldProps$1, 'accessory'> {
-    /**
-     * Additional content to be displayed in the field.
-     * Commonly used to display an icon that activates a tooltip providing more information.
-     */
-    accessory?: ReactNode;
+export interface NumberFieldElement extends NumberFieldElementProps, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+    onblur: NumberFieldEvents['onBlur'];
+    onchange: NumberFieldEvents['onChange'];
+    onfocus: NumberFieldEvents['onFocus'];
+    oninput: NumberFieldEvents['onInput'];
 }
-export interface PhoneFieldElementSlots {
-    /**
-     * Additional content to be displayed in the field.
-     * Commonly used to display an icon that activates a tooltip providing more information.
-     */
-    accessory?: HTMLElement;
-}
-export interface PhoneFieldElement extends PhoneFieldElementProps, PhoneFieldSlots, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
-    onblur: PhoneFieldEvents['onBlur'];
-    onchange: PhoneFieldEvents['onChange'];
-    onfocus: PhoneFieldEvents['onFocus'];
-    oninput: PhoneFieldEvents['onInput'];
-}
-export interface PhoneFieldProps extends PhoneFieldElementProps, PhoneFieldSlots, PhoneFieldEvents {
+export interface NumberFieldProps extends NumberFieldElementProps, NumberFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: PhoneFieldElement;
+        [tagName]: NumberFieldElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: PhoneFieldProps & BaseElementProps<PhoneFieldElement>;
+            [tagName]: NumberFieldProps & BaseElementProps<NumberFieldElement>;
         }
     }
 }
 
-export type { PhoneFieldElement, PhoneFieldElementEvents, PhoneFieldElementProps, PhoneFieldElementSlots, PhoneFieldEvents, PhoneFieldProps, PhoneFieldSlots };
+export type { NumberFieldElement, NumberFieldElementEvents, NumberFieldElementProps, NumberFieldEvents, NumberFieldProps };

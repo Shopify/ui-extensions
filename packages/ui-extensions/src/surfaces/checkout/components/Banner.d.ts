@@ -57,7 +57,7 @@ export interface BannerElementEvents {
      */
     dismiss?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface BannerElement extends BannerElementProps, Omit<BannerEvents, 'onAfterHide' | 'onDismiss'>, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {
+export interface BannerElement extends BannerElementProps, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {
     onafterhide: BannerEvents['onAfterHide'];
     ondismiss: BannerEvents['onDismiss'];
 }

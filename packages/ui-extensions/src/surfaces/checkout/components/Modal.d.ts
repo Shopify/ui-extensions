@@ -56,7 +56,7 @@ export interface ModalElementSlots {
      */
     'secondary-actions'?: HTMLElement;
 }
-export interface ModalEvents extends Pick<ModalProps$1, 'onHide' | 'onShow' | 'onAfterHide' | 'onAfterShow'> {
+export interface ModalEvents extends Pick<ModalProps$1, 'onHide' | 'onShow'> {
 }
 export interface ModalElementEvents {
     /**
@@ -68,7 +68,7 @@ export interface ModalElementEvents {
      */
     show?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface ModalElement extends ModalElementProps, ModalSlots, Omit<ModalEvents, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
+export interface ModalElement extends ModalElementProps, ModalSlots, Omit<HTMLElement, 'id'> {
     onhide: ModalEvents['onHide'];
     onshow: ModalEvents['onShow'];
 }

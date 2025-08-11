@@ -40,7 +40,7 @@ export interface DropZoneElementEvents {
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface DropZoneElement extends DropZoneElementProps, Omit<DropZoneEvents, 'onDropRejected' | 'onInput'>, Omit<HTMLElement, 'id' | 'oninput'> {
+export interface DropZoneElement extends DropZoneElementProps, Omit<HTMLElement, 'id' | 'oninput'> {
     ondroprejected: DropZoneEvents['onDropRejected'];
     oninput: DropZoneEvents['onInput'];
 }

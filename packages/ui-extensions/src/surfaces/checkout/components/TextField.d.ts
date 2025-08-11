@@ -54,26 +54,39 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-text-field";
-export interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'icon' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'placeholder' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
+export interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'icon' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
+    /**
+     * @deprecated Use `label` instead.
+     * @private
+     */
+    placeholder?: string;
 }
 export interface TextFieldEvents extends Pick<TextFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 export interface TextFieldElementEvents {
     /**
      * Callback when the element loses focus.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
      */
     blur?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
      */
     change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the element receives focus.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
      */
     focus?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user makes any changes in the field.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
@@ -91,7 +104,7 @@ export interface TextFieldElementSlots {
      */
     accessory?: HTMLElement;
 }
-export interface TextFieldElement extends TextFieldElementProps, TextFieldSlots, Omit<TextFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+export interface TextFieldElement extends TextFieldElementProps, TextFieldSlots, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: TextFieldEvents['onBlur'];
     onchange: TextFieldEvents['onChange'];
     onfocus: TextFieldEvents['onFocus'];

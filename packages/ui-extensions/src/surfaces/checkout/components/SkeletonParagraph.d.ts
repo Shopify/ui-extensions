@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {AbbreviationProps$1} from './components-shared.d.ts';
+import type {SkeletonParagraphProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -18,29 +18,23 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
-/**
- * Used when an element has children.
- */
-export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
-    children?: preact.ComponentChildren;
-}
 
-declare const tagName = "s-abbreviation";
-export interface AbbreviationProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {
+declare const tagName = "s-skeleton-paragraph";
+export interface SkeletonParagraphProps extends SkeletonParagraphProps$1 {
 }
-export interface AbbreviationElement extends AbbreviationProps, Omit<HTMLElement, 'id' | 'title'> {
+export interface SkeletonParagraphElement extends SkeletonParagraphProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: AbbreviationElement;
+        [tagName]: SkeletonParagraphElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: AbbreviationProps & BaseElementPropsWithChildren<AbbreviationElement>;
+            [tagName]: SkeletonParagraphProps & BaseElementProps<SkeletonParagraphElement>;
         }
     }
 }
 
-export type { AbbreviationElement, AbbreviationProps };
+export type { SkeletonParagraphElement, SkeletonParagraphProps };

@@ -8,8 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {PhoneFieldProps$1} from './components-shared.d.ts';
-import { ReactNode } from 'react';
+import type {PasswordFieldProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -26,17 +25,16 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
     (event: CallbackEvent<TTagName, TEvent>): void;
 }) | null;
 
-declare const tagName = "s-phone-field";
-export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value' | 'type'> {
-    /**
-     * @deprecated Use `label` instead.
-     * @private
-     */
-    placeholder?: string;
+declare const tagName = "s-password-field";
+export interface PasswordFieldElementProps extends Pick<PasswordFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength'
+/** @todo: implement `minLength` */
+ | 'name'
+/** @todo: implement `placeholder` */
+ | 'readOnly' | 'required' | 'value'> {
 }
-export interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
+export interface PasswordFieldEvents extends Pick<PasswordFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-export interface PhoneFieldElementEvents {
+export interface PasswordFieldElementEvents {
     /**
      * Callback when the element loses focus.
      *
@@ -62,39 +60,25 @@ export interface PhoneFieldElementEvents {
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface PhoneFieldSlots extends Pick<PhoneFieldProps$1, 'accessory'> {
-    /**
-     * Additional content to be displayed in the field.
-     * Commonly used to display an icon that activates a tooltip providing more information.
-     */
-    accessory?: ReactNode;
+export interface PasswordFieldElement extends PasswordFieldProps, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+    onblur: PasswordFieldEvents['onBlur'];
+    onchange: PasswordFieldEvents['onChange'];
+    onfocus: PasswordFieldEvents['onFocus'];
+    oninput: PasswordFieldEvents['onInput'];
 }
-export interface PhoneFieldElementSlots {
-    /**
-     * Additional content to be displayed in the field.
-     * Commonly used to display an icon that activates a tooltip providing more information.
-     */
-    accessory?: HTMLElement;
-}
-export interface PhoneFieldElement extends PhoneFieldElementProps, PhoneFieldSlots, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
-    onblur: PhoneFieldEvents['onBlur'];
-    onchange: PhoneFieldEvents['onChange'];
-    onfocus: PhoneFieldEvents['onFocus'];
-    oninput: PhoneFieldEvents['onInput'];
-}
-export interface PhoneFieldProps extends PhoneFieldElementProps, PhoneFieldSlots, PhoneFieldEvents {
+export interface PasswordFieldProps extends PasswordFieldElementProps, PasswordFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: PhoneFieldElement;
+        [tagName]: PasswordFieldElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: PhoneFieldProps & BaseElementProps<PhoneFieldElement>;
+            [tagName]: PasswordFieldProps & BaseElementProps<PasswordFieldElement>;
         }
     }
 }
 
-export type { PhoneFieldElement, PhoneFieldElementEvents, PhoneFieldElementProps, PhoneFieldElementSlots, PhoneFieldEvents, PhoneFieldProps, PhoneFieldSlots };
+export type { PasswordFieldElement, PasswordFieldElementEvents, PasswordFieldElementProps, PasswordFieldEvents, PasswordFieldProps };

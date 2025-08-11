@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {AbbreviationProps$1} from './components-shared.d.ts';
+import type {OptionProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -25,22 +25,22 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
     children?: preact.ComponentChildren;
 }
 
-declare const tagName = "s-abbreviation";
-export interface AbbreviationProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {
+declare const tagName = "s-option";
+export interface OptionProps extends Pick<OptionProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'value'> {
 }
-export interface AbbreviationElement extends AbbreviationProps, Omit<HTMLElement, 'id' | 'title'> {
+export interface OptionElement extends OptionProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: AbbreviationElement;
+        [tagName]: OptionElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: AbbreviationProps & BaseElementPropsWithChildren<AbbreviationElement>;
+            [tagName]: OptionProps & BaseElementPropsWithChildren<OptionElement>;
         }
     }
 }
 
-export type { AbbreviationElement, AbbreviationProps };
+export type { OptionElement, OptionProps };
