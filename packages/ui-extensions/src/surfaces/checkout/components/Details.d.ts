@@ -32,7 +32,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-details";
-export interface DetailsProps extends Pick<DetailsProps$1, 'defaultOpen' | 'open' | 'id' | 'toggleTransition'> {
+export interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'open' | 'id' | 'toggleTransition'> {
 }
 export interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle'> {
 }
@@ -54,6 +54,8 @@ export interface DetailsElementEvents {
 export interface DetailsElement extends Omit<HTMLElement, 'ontoggle' | 'id'> {
     ontoggle: DetailsEvents['onToggle'];
 }
+export interface DetailsProps extends DetailsElementProps, DetailsEvents {
+}
 declare global {
     interface HTMLElementTagNameMap {
         [tagName]: DetailsElement;
@@ -67,4 +69,4 @@ declare module 'preact' {
     }
 }
 
-export type { DetailsElement, DetailsElementEvents, DetailsEvents, DetailsProps };
+export type { DetailsElement, DetailsElementEvents, DetailsElementProps, DetailsEvents, DetailsProps };

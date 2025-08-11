@@ -2496,6 +2496,9 @@ export type ParagraphType =
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
  */
  | "small";
+interface PasswordFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<PasswordAutocompleteField> {
+}
+export type PasswordAutocompleteField = ExtractStrict<AnyAutocompleteField, "new-password" | "current-password">;
 interface PaymentIconProps$1 extends GlobalProps {
 	/**
 	 * The icon type of the payment method
