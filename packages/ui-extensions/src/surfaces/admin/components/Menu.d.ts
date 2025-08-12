@@ -6,32 +6,18 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ThumbnailProps$1, ComponentChild} from './shared.d.ts';
+import type {
+  MenuProps$1,
+  ComponentChild,
+  InteractionProps,
+} from './shared.d.ts';
 
-export interface ThumbnailProps
-  extends Required<Pick<ThumbnailProps$1, 'src' | 'alt' | 'size'>> {
-  size: Extract<
-    ThumbnailProps$1['size'],
-    'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100'
-  >;
-}
-
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
-};
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
-  | (EventListener & {
-      (event: CallbackEvent<T>): void;
-    })
-  | null;
-/** Used when an element does not have children. */
-export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
-  key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
-  ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
-  slot?: Lowercase<string>;
+export interface MenuProps
+  extends Required<Pick<MenuProps$1, 'id' | 'accessibilityLabel'>> {
+  /**
+   * @implementation only accepts `s-button` and `s-section`
+   */
+  chilren?: ComponentChild;
 }
 
 export type Styles = string;
@@ -94,34 +80,54 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-declare class Thumbnail extends PreactCustomElement implements ThumbnailProps {
-  accessor src: ThumbnailProps['src'];
-  accessor alt: ThumbnailProps['alt'];
-  accessor size: ThumbnailProps['size'];
-  accessor onload: CallbackEventListener<typeof tagName> | null;
-  accessor onerror: OnErrorEventHandler;
+/**
+ * Shared symbols for overlay control functionality.
+ * These symbols are used by components that implement overlay behavior
+ * (like Popover, Tooltip, etc.) to communicate with the overlay control system.
+ */
+declare const overlayCommand: unique symbol;
+declare const overlayHidden: unique symbol;
+declare const overlayActivator: unique symbol;
+
+declare class PreactOverlayElement extends PreactCustomElement {
+  constructor(renderImpl: RenderImpl);
+  /** @private */
+  [overlayHidden]: boolean;
+  /** @private */
+  [overlayActivator]: HTMLElement | null | undefined;
+  /** @private */
+  [overlayCommand](command: InteractionProps['command']): void;
+}
+
+declare class Menu extends PreactOverlayElement implements MenuProps {
+  accessor accessibilityLabel: string;
   constructor();
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Thumbnail;
+    [tagName]: Menu;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ThumbnailJSXProps & PreactBaseElementProps<Thumbnail>;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        MenuJSXProps;
     }
   }
 }
 
-declare const tagName = 's-thumbnail';
-export interface ThumbnailJSXProps
-  extends Partial<ThumbnailProps>,
-    Pick<ThumbnailProps$1, 'id'> {
-  onLoad?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onError?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
+declare const tagName = 's-menu';
+export interface MenuJSXProps
+  extends Partial<MenuProps>,
+    Pick<MenuProps$1, 'id'> {}
 
-export {Thumbnail};
-export type {ThumbnailJSXProps};
+export {Menu};
+export type {MenuJSXProps};
