@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.19
+
+### Minor Changes
+
+- [#3134](https://github.com/Shopify/ui-extensions/pull/3134) [`7a98f44d8d178dd4f91ac5c998c8d0df1604dd6e`](https://github.com/Shopify/ui-extensions/commit/7a98f44d8d178dd4f91ac5c998c8d0df1604dd6e) Thanks [@thunderfern](https://github.com/thunderfern)! - Updated the navigation function in Navigation API to allow for navigation to POS native screen and added a canNavigate function to allow partners to check if they can navigate to the specified POS native screen
+
 ## 2025.10.0-rc.18
 
 ### Minor Changes
