@@ -191,6 +191,19 @@ export interface RenderExtensionTargets {
     {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,
     ReceiptComponents
   >;
+  'pos.cash-tracking-session-details.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.cash-tracking-session-details.action.menu-item.render'> &
+      ActionApi,
+    ActionExtensionComponents
+  >;
+  'pos.cash-tracking-session-details.action.render': RenderExtension<
+    ActionTargetApi<'pos.cash-tracking-session-details.action.render'>,
+    BasicComponents
+  >;
+  'pos.cash-tracking-session-details.block.render': RenderExtension<
+    StandardApi<'pos.cash-tracking-session-details.block.render'> & ActionApi,
+    BlockExtensionComponents
+  >;
 }
 
 export interface ExtensionTargets
