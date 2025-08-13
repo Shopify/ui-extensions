@@ -95,7 +95,7 @@ export interface RenderExtensionTargets {
     BlockExtensionComponents
   >;
   'pos.purchase.post.banner.render': RenderExtension<
-    // TODO: Include RegisterApi
+    // Note: include RegisterApi
     StandardApi<'pos.purchase.post.banner.render'> & ActionApi,
     BannerExtensionComponents
   >;
