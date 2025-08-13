@@ -25,6 +25,10 @@ const data: ReferenceEntityTemplateSchema = {
       name: ExtensionTargetType.PosPurchasePostBlockRender,
       url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-block-render',
     },
+    {
+      name: ExtensionTargetType.PosPurchasePostBannerRender,
+      url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-banner-render',
+    },
   ],
   type: 'Target',
 };

@@ -22,6 +22,7 @@ import type {
 } from './api';
 import type {ActionExtensionComponents} from './components/targets/ActionExtensionComponents';
 import type {BlockExtensionComponents} from './components/targets/BlockExtensionComponents';
+import type {BannerExtensionComponents} from './components/targets/BannerExtensionComponents';
 import type {SmartGridComponents} from './components/targets/SmartGridComponents';
 import type {ReceiptComponents} from './components/targets/ReceiptComponents';
 import type {BasicComponents} from './components/targets/BasicComponents';
@@ -92,6 +93,11 @@ export interface RenderExtensionTargets {
   'pos.purchase.post.block.render': RenderExtension<
     StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,
     BlockExtensionComponents
+  >;
+  'pos.purchase.post.banner.render': RenderExtension<
+    // TODO: Include RegisterApi
+    StandardApi<'pos.purchase.post.banner.render'> & ActionApi,
+    BannerExtensionComponents
   >;
   'pos.product-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.product-details.action.menu-item.render'> &
@@ -203,6 +209,14 @@ export interface RenderExtensionTargets {
   'pos.cash-tracking-session-details.block.render': RenderExtension<
     StandardApi<'pos.cash-tracking-session-details.block.render'> & ActionApi,
     BlockExtensionComponents
+  >;
+  'pos.cash-tracking-session-details.banner.render': RenderExtension<
+    StandardApi<'pos.cash-tracking-session-details.banner.render'> & ActionApi,
+    BannerExtensionComponents
+  >;
+  'pos.cash-tracking-session-float.banner.render': RenderExtension<
+    StandardApi<'pos.cash-tracking-session-float.banner.render'>,
+    BannerExtensionComponents
   >;
 }
 

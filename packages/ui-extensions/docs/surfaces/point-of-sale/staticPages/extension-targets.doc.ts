@@ -68,6 +68,14 @@ Renders a custom section within the native post purchase screen.
 Review [all extension targets](/docs/api/pos-ui-extensions/targets).
 `,
         },
+        {
+          title: 'Banner',
+          description: `
+Renders a custom banner within the native post purchase screen.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
       ],
     },
 
@@ -225,6 +233,30 @@ Review [all extension targets](/docs/api/pos-ui-extensions/targets).
           title: 'Block',
           description: `
 Renders a custom section within the native register details screen.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
+        {
+          title: 'Banner',
+          description: `
+Renders a custom banner within the native register details screen.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
+      ],
+    },
+    {
+      type: 'GenericAccordion',
+      title: 'Cash tracking set desired float',
+      anchorLink: 'cash-tracking-session-float',
+      sectionContent: 'The set desired float screen',
+      accordionContent: [
+        {
+          title: 'Banner',
+          description: `
+Renders a custom banner within the set desired float screen.
 
 Review [all extension targets](/docs/api/pos-ui-extensions/targets).
 `,

@@ -3,14 +3,13 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: ExtensionTargetType.PosPurchasePostActionMenuItemRender,
-  description:
-    'A static extension target that renders as a menu item on the post-purchase screen',
+  name: ExtensionTargetType.PosPurchasePostBannerRender,
+  description: 'Renders a custom banner within post-purchase screen',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Menu item',
+      'Banner',
       'targets',
-      'pos-purchase-post-action-menu-item-render',
+      'pos-purchase-post-banner-render',
     ),
   },
   category: 'Targets',
@@ -18,16 +17,16 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   related: [
     {
+      name: ExtensionTargetType.PosPurchasePostActionMenuItemRender,
+      url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-action-menu-item-render',
+    },
+    {
       name: ExtensionTargetType.PosPurchasePostActionRender,
       url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-action-render',
     },
     {
       name: ExtensionTargetType.PosPurchasePostBlockRender,
       url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-block-render',
-    },
-    {
-      name: ExtensionTargetType.PosPurchasePostBannerRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-banner-render',
     },
   ],
   type: 'Target',

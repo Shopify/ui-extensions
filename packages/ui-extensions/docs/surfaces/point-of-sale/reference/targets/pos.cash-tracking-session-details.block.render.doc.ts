@@ -24,6 +24,10 @@ const data: ReferenceEntityTemplateSchema = {
       name: ExtensionTargetType.PosCashTrackingSessionDetailsActionRender,
       url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-details-action-render',
     },
+    {
+      name: ExtensionTargetType.PosCashTrackingSessionDetailsBannerRender,
+      url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-details-banner-render',
+    },
   ],
   type: 'Target',
 };

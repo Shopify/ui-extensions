@@ -3,14 +3,13 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: ExtensionTargetType.PosCashTrackingSessionDetailsActionRender,
-  description:
-    'A full-screen extension target that renders when a `pos.cash-tracking-session-details.action.menu-item.render` target calls for it',
+  name: ExtensionTargetType.PosCashTrackingSessionDetailsBannerRender,
+  description: 'Renders a custom banner within register details screen',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Action',
+      'Banner',
       'targets',
-      'cash-tracking-session-details-action',
+      'pos-cash-tracking-session-details-banner-render',
     ),
   },
   category: 'Targets',
@@ -22,12 +21,12 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-details-action-menu-item-render',
     },
     {
-      name: ExtensionTargetType.PosCashTrackingSessionDetailsBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-details-block-render',
+      name: ExtensionTargetType.PosCashTrackingSessionDetailsActionRender,
+      url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-details-action-render',
     },
     {
-      name: ExtensionTargetType.PosCashTrackingSessionDetailsBannerRender,
-      url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-details-banner-render',
+      name: ExtensionTargetType.PosCashTrackingSessionDetailsBlockRender,
+      url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-details-block-render',
     },
   ],
   type: 'Target',
