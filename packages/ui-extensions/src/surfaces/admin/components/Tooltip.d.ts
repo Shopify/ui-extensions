@@ -6,24 +6,14 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ThumbnailProps$1, ComponentChild} from './shared.d.ts';
+import type {
+  TooltipProps$1,
+  InteractionProps,
+  ComponentChild,
+} from './shared.d.ts';
 
-export interface ThumbnailProps
-  extends Required<Pick<ThumbnailProps$1, 'src' | 'alt' | 'size'>> {
-  size: Extract<
-    ThumbnailProps$1['size'],
-    'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100'
-  >;
-}
+export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
-};
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
-  | (EventListener & {
-      (event: CallbackEvent<T>): void;
-    })
-  | null;
 /** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
@@ -32,6 +22,11 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   ref?: preact.Ref<TClass>;
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
+}
+/** Used when an element has children. */
+export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
+  extends PreactBaseElementProps<TClass> {
+  children?: preact.ComponentChildren;
 }
 
 export type Styles = string;
@@ -94,34 +89,42 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-declare class Thumbnail extends PreactCustomElement implements ThumbnailProps {
-  accessor src: ThumbnailProps['src'];
-  accessor alt: ThumbnailProps['alt'];
-  accessor size: ThumbnailProps['size'];
-  accessor onload: CallbackEventListener<typeof tagName> | null;
-  accessor onerror: OnErrorEventHandler;
+/**
+ * Shared symbols for overlay control functionality.
+ * These symbols are used by components that implement overlay behavior
+ * (like Popover, Tooltip, etc.) to communicate with the overlay control system.
+ */
+declare const overlayCommand: unique symbol;
+declare const overlayHidden: unique symbol;
+declare const overlayActivator: unique symbol;
+
+declare class PreactOverlayElement extends PreactCustomElement {
+  constructor(renderImpl: RenderImpl);
+  [overlayHidden]: boolean;
+  [overlayActivator]: HTMLElement | null | undefined;
+  [overlayCommand](command: InteractionProps['command']): void;
+}
+
+declare class Tooltip extends PreactOverlayElement implements TooltipProps {
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Thumbnail;
+    [tagName]: Tooltip;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ThumbnailJSXProps & PreactBaseElementProps<Thumbnail>;
+      [tagName]: TooltipJSXProps & PreactBaseElementPropsWithChildren<Tooltip>;
     }
   }
 }
 
-declare const tagName = 's-thumbnail';
-export interface ThumbnailJSXProps
-  extends Partial<ThumbnailProps>,
-    Pick<ThumbnailProps$1, 'id'> {
-  onLoad?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onError?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
+declare const tagName = 's-tooltip';
+export interface TooltipJSXProps
+  extends Partial<TooltipProps>,
+    Pick<TooltipProps$1, 'id'> {}
 
-export {Thumbnail};
-export type {ThumbnailJSXProps};
+export {Tooltip};
+export type {TooltipJSXProps};

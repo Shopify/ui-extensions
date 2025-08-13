@@ -1,4 +1,4 @@
-/** VERSION: 1.3.0 **/
+/** VERSION: 1.8.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -99,18 +99,12 @@ declare const actualTableVariantSymbol: unique symbol;
 declare const tableHeadersSharedDataSymbol: unique symbol;
 export type ActualTableVariant = 'table' | 'list';
 
-export type CallbackEvent<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends Event = Event,
-> = TEvent & {
-  currentTarget: HTMLElementTagNameMap[TTagName];
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
 };
-export type CallbackEventListener<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends Event = Event,
-> =
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
-      (event: CallbackEvent<TTagName, TEvent>): void;
+      (event: CallbackEvent<T>): void;
     })
   | null;
 /** Used when an element does not have children. */
