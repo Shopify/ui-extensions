@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.22
+
+### Patch Changes
+
+- [#3141](https://github.com/Shopify/ui-extensions/pull/3141) [`45b2718a936e7bf99beb14f2f04ffcbfd16d6b47`](https://github.com/Shopify/ui-extensions/commit/45b2718a936e7bf99beb14f2f04ffcbfd16d6b47) Thanks [@Bruno125](https://github.com/Bruno125)! - Expose additional selling plan-related fields in POS UI extensions models
+
 ## 2025.10.0-rc.21
 
 ### Patch Changes
