@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.20
+
+### Minor Changes
+
+- [#3146](https://github.com/Shopify/ui-extensions/pull/3146) [`3a28bd78c433bb1cc2ab85032d994ad4c98f4541`](https://github.com/Shopify/ui-extensions/commit/3a28bd78c433bb1cc2ab85032d994ad4c98f4541) Thanks [@thunderfern](https://github.com/thunderfern)! - The function canNavigate of Navigation API will return a Promise instead of a boolean since it throws an error if the user is on a version of POS extensions that is lower than 2025-10.
+
 ## 2025.10.0-rc.19
 
 ### Minor Changes
