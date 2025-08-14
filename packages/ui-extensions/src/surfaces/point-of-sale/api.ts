@@ -87,6 +87,7 @@ export type {
   LineItemDiscount,
   CustomSale,
   Address,
+  SellingPlan,
 } from './types/cart';
 
 export type {OrderLineItem, LineItemRefund} from './types/order';
