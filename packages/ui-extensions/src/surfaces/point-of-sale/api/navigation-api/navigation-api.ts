@@ -31,9 +31,9 @@ export interface NavigationApiContent {
 
   /** Checks if the user has permission to navigate to the specified screen.
    * @param uri the uri to check if the user has permission to navigate to.
-   * @returns false if the uri is a valid uri to navigate to a POS screen and the user does not have permission to navigate to the specified screen, true otherwise.
+   * @returns false if the uri is a valid uri to navigate to a POS screen and the user does not have permission to navigate to the specified screen, true otherwise. The promise rejects if the user is not on the correct API version of POS extensions.
    */
-  canNavigate(uri: string | URL): boolean;
+  canNavigate(uri: string | URL): Promise<boolean>;
 }
 
 /**
