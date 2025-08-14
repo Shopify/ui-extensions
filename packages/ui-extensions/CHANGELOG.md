@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.21
+
+### Patch Changes
+
+- [#3149](https://github.com/Shopify/ui-extensions/pull/3149) [`551bf034e32a02932e4148508e50027aed77571a`](https://github.com/Shopify/ui-extensions/commit/551bf034e32a02932e4148508e50027aed77571a) Thanks [@thunderfern](https://github.com/thunderfern)! - Updated the comment in Navigation API to align with the documentation of the uri
+
 ## 2025.10.0-rc.20
 
 ### Minor Changes
