@@ -8,9 +8,33 @@
 /// <reference lib="DOM" />
 import type {
   TextFieldProps,
-  MoneyFieldProps$1,
+  ColorFieldProps$1,
   ComponentChild,
 } from './shared.d.ts';
+
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
+export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
+  onInput?: ((event: CallbackEvent<T>) => void) | null;
+  onChange?: ((event: CallbackEvent<T>) => void) | null;
+  onFocus?: ((event: CallbackEvent<T>) => void) | null;
+  onBlur?: ((event: CallbackEvent<T>) => void) | null;
+}
+/** Used when an element does not have children. */
+export interface PreactBaseElementProps<TClass extends HTMLElement> {
+  /** Assigns a unique key to this element. */
+  key?: preact.Key;
+  /** Assigns a ref (generally from `useRef()`) to this element. */
+  ref?: preact.Ref<TClass>;
+  /** Assigns this element to a parent's slot. */
+  slot?: Lowercase<string>;
+}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -70,30 +94,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    * @param options
    */
   click({sourceEvent}?: ClickOptions): void;
-}
-
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
-};
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
-  | (EventListener & {
-      (event: CallbackEvent<T>): void;
-    })
-  | null;
-export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
-  onInput?: ((event: CallbackEvent<T>) => void) | null;
-  onChange?: ((event: CallbackEvent<T>) => void) | null;
-  onFocus?: ((event: CallbackEvent<T>) => void) | null;
-  onBlur?: ((event: CallbackEvent<T>) => void) | null;
-}
-/** Used when an element does not have children. */
-export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
-  key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
-  ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
-  slot?: Lowercase<string>;
 }
 
 declare const internals: unique symbol;
@@ -196,42 +196,43 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   constructor(renderImpl: RenderImpl);
 }
 
-export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
-export interface MoneyFieldProps
-  extends Omit<PreactFieldProps, 'value'>,
-    Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step'> {
-  value: Required<MoneyFieldProps$1>['value'];
-}
+export type ColorFieldProps = PreactFieldProps<
+  Required<ColorFieldProps$1>['autocomplete']
+> &
+  Required<Pick<ColorFieldProps$1, 'alpha' | 'value' | 'defaultValue'>>;
 
-declare class MoneyField
-  extends PreactFieldElement<MoneyFieldProps['autocomplete']>
-  implements MoneyFieldProps
+declare class ColorField
+  extends PreactFieldElement<ColorFieldProps['autocomplete']>
+  implements ColorFieldProps
 {
-  accessor max: MoneyFieldProps['max'];
-  accessor min: MoneyFieldProps['min'];
-  accessor step: MoneyFieldProps['step'];
-  get value(): MoneyFieldProps['value'];
-  set value(value: MoneyFieldProps['value']);
+  accessor alpha: ColorFieldProps['alpha'];
+  get value(): string;
+  set value(value: string);
+  /** @private */
+  formResetCallback(): void;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: MoneyField;
+    [tagName]: ColorField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: MoneyFieldJSXProps & PreactBaseElementProps<MoneyField>;
+      [tagName]: ColorFieldJSXProps & PreactBaseElementProps<ColorField>;
     }
   }
 }
 
-declare const tagName = 's-money-field';
-export interface MoneyFieldJSXProps
-  extends Partial<MoneyFieldProps>,
-    FieldReactProps<typeof tagName>,
-    Pick<MoneyFieldProps$1, 'id'> {}
+declare const tagName = 's-unstable-color-field';
+export interface ColorFieldJSXProps
+  extends Partial<Omit<ColorFieldProps, 'accessory'>>,
+    Pick<ColorFieldProps$1, 'id' | 'alpha' | 'value' | 'defaultValue'>,
+    FieldReactProps<typeof tagName> {
+  onInput?: (event: CallbackEvent<typeof tagName>) => void;
+  onChange?: (event: CallbackEvent<typeof tagName>) => void;
+}
 
-export {MoneyField};
-export type {MoneyFieldJSXProps};
+export {ColorField};
+export type {ColorFieldJSXProps};

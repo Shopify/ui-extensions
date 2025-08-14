@@ -6,7 +6,7 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ChoiceProps$1, ComponentChild} from './shared.d.ts';
+import type {ComponentChild, ChoiceProps$1} from './shared.d.ts';
 
 export interface ChoiceProps
   extends Required<
@@ -17,10 +17,10 @@ export interface ChoiceProps
       | 'disabled'
       | 'accessibilityLabel'
       | 'value'
-      | 'label'
-      | 'details'
     >
-  > {}
+  > {
+  label: string;
+}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -99,7 +99,6 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 
 declare class Choice extends PreactCustomElement implements ChoiceProps {
   accessor disabled: ChoiceProps['disabled'];
-  accessor details: ChoiceProps['details'];
   get selected(): boolean;
   set selected(selected: ChoiceProps['selected']);
   accessor value: ChoiceProps['value'];
@@ -107,6 +106,8 @@ declare class Choice extends PreactCustomElement implements ChoiceProps {
   accessor label: ChoiceProps['label'];
   accessor defaultSelected: ChoiceProps['defaultSelected'];
   constructor();
+  connectedCallback(): void;
+  disconnectedCallback(): void;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -124,7 +125,9 @@ declare module 'preact' {
 declare const tagName = 's-choice';
 export interface ChoiceJSXProps
   extends Partial<ChoiceProps>,
-    Pick<ChoiceProps$1, 'id'> {}
+    Pick<ChoiceProps$1, 'id'> {
+  details?: ComponentChild;
+}
 
 export {Choice};
 export type {ChoiceJSXProps};

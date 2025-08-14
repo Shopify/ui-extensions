@@ -6,28 +6,21 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  TooltipProps$1,
-  InteractionProps,
-  ComponentChild,
-} from './shared.d.ts';
+import type {ColorPickerProps$1, ComponentChild} from './shared.d.ts';
 
-export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
+export interface ColorPickerProps
+  extends Required<
+    Pick<ColorPickerProps$1, 'id' | 'alpha' | 'value' | 'defaultValue' | 'name'>
+  > {}
 
-/** Used when an element does not have children. */
-export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
-  key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
-  ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
-  slot?: Lowercase<string>;
-}
-/** Used when an element has children. */
-export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
-  extends PreactBaseElementProps<TClass> {
-  children?: preact.ComponentChildren;
-}
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -51,8 +44,8 @@ export interface ClickOptions {
  * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
  * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
  */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
+declare const BaseClass$1: typeof globalThis.HTMLElement;
+declare abstract class PreactCustomElement extends BaseClass$1 {
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -89,45 +82,51 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-/**
- * Shared symbols for overlay control functionality.
- * These symbols are used by components that implement overlay behavior
- * (like Popover, Tooltip, etc.) to communicate with the overlay control system.
- */
-declare const overlayCommand: unique symbol;
-declare const overlayHidden: unique symbol;
-declare const overlayActivator: unique symbol;
-
-declare class PreactOverlayElement extends PreactCustomElement {
+declare const internals: unique symbol;
+declare class BaseClass extends PreactCustomElement {
+  static formAssociated: boolean;
   constructor(renderImpl: RenderImpl);
   /** @private */
-  [overlayHidden]: boolean;
-  /** @private */
-  [overlayActivator]: HTMLElement | null | undefined;
-  /** @private */
-  [overlayCommand](command: InteractionProps['command']): void;
+  [internals]: ElementInternals;
 }
-
-declare class Tooltip extends PreactOverlayElement implements TooltipProps {
+declare class ColorPicker extends BaseClass implements ColorPickerProps {
+  accessor alpha: boolean;
+  accessor onchange: CallbackEventListener<typeof tagName> | null;
+  accessor oninput: CallbackEventListener<typeof tagName> | null;
+  accessor name: string;
+  accessor defaultValue: string;
+  get value(): string;
+  set value(value: string);
+  formResetCallback(): void;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Tooltip;
+    [tagName]: ColorPicker;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: TooltipJSXProps & PreactBaseElementPropsWithChildren<Tooltip>;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ColorPickerJSXProps;
     }
   }
 }
 
-declare const tagName = 's-tooltip';
-export interface TooltipJSXProps
-  extends Partial<TooltipProps>,
-    Pick<TooltipProps$1, 'id'> {}
+declare const tagName = 's-unstable-color-picker';
+export interface ColorPickerJSXProps
+  extends Partial<ColorPickerProps>,
+    Pick<
+      ColorPickerProps$1,
+      'id' | 'alpha' | 'value' | 'defaultValue' | 'name'
+    > {
+  onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
+}
 
-export {Tooltip};
-export type {TooltipJSXProps};
+export {ColorPicker};
+export type {ColorPickerJSXProps};
