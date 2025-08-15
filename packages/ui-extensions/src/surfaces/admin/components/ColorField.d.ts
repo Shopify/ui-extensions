@@ -225,7 +225,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName = 's-unstable-color-field';
+declare const tagName = 's-color-field';
 export interface ColorFieldJSXProps
   extends Partial<Omit<ColorFieldProps, 'accessory'>>,
     Pick<ColorFieldProps$1, 'id' | 'alpha' | 'value' | 'defaultValue'>,

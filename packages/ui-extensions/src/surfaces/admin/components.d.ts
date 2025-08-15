@@ -5094,7 +5094,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$L = 's-unstable-color-field';
+declare const tagName$L = 's-color-field';
 export interface ColorFieldJSXProps
   extends Partial<Omit<ColorFieldProps, 'accessory'>>,
     Pick<ColorFieldProps$1, 'id' | 'alpha' | 'value' | 'defaultValue'>,
@@ -5143,7 +5143,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$K = 's-unstable-color-picker';
+declare const tagName$K = 's-color-picker';
 export interface ColorPickerJSXProps
   extends Partial<ColorPickerProps>,
     Pick<

@@ -117,7 +117,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName = 's-unstable-color-picker';
+declare const tagName = 's-color-picker';
 export interface ColorPickerJSXProps
   extends Partial<ColorPickerProps>,
     Pick<
