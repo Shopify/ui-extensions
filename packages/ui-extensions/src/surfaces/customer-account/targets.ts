@@ -11,7 +11,7 @@ import {
   FulfillmentApi,
   ReturnApi,
 } from './api/standard-api/standard-api';
-import {Announcement} from './api/announcement/announcement';
+import {AnnouncementApi} from './api/announcement/announcement';
 
 type Components = typeof import('./components');
 
@@ -97,7 +97,7 @@ export interface OrderStatusExtensionTargets {
   'customer-account.order-status.announcement.render': RenderExtension<
     OrderStatusApi<'customer-account.order-status.announcement.render'> &
       StandardApi<'customer-account.order-status.announcement.render'> &
-      Announcement,
+      AnnouncementApi,
     AnyComponent
   >;
   'customer-account.order.page.render': RenderExtension<
@@ -129,7 +129,7 @@ export interface CustomerAccountExtensionTargets {
   >;
   'customer-account.order-index.announcement.render': RenderExtension<
     StandardApi<'customer-account.order-index.announcement.render'> &
-      Announcement,
+      AnnouncementApi,
     AllComponents
   >;
   'customer-account.profile.block.render': RenderExtension<
@@ -137,7 +137,8 @@ export interface CustomerAccountExtensionTargets {
     AllComponents
   >;
   'customer-account.profile.announcement.render': RenderExtension<
-    StandardApi<'customer-account.profile.announcement.render'> & Announcement,
+    StandardApi<'customer-account.profile.announcement.render'> &
+      AnnouncementApi,
     AllComponents
   >;
   'customer-account.profile.addresses.render-after': RenderExtension<

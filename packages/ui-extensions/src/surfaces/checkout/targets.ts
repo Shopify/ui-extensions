@@ -18,13 +18,13 @@ import type {RedeemableApi} from './api/redeemable/redeemable';
 import type {StandardApi} from './api/standard/standard';
 import type {ShippingOptionItemApi} from './api/shipping/shipping-option-item';
 import type {ShippingOptionListApi} from './api/shipping/shipping-option-list';
+import {AnnouncementApi} from './api/announcement/announcement';
 import type {RenderExtension, RunnableExtension} from './extension';
 import type {
   AnyComponent,
   AllowedComponents,
   AnyComponentExcept,
 } from './shared';
-import type {Announcement} from './api/announcement/announcement';
 
 /**
  * A UI extension will register for one or more extension targets using `shopify.extend()`.
@@ -654,7 +654,7 @@ export interface RenderExtensionTargets {
   'purchase.thank-you.announcement.render': RenderExtension<
     OrderConfirmationApi &
       StandardApi<'purchase.thank-you.announcement.render'> &
-      Announcement,
+      AnnouncementApi,
     AnyComponent
   >;
 }
