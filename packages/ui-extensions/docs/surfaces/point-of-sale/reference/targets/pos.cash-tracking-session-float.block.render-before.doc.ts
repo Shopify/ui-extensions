@@ -3,13 +3,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: ExtensionTargetType.PosCashTrackingSessionFloatBannerRender,
-  description: 'Renders a custom banner within set desired float screen',
+  name: ExtensionTargetType.PosCashTrackingSessionFloatBlockRenderBefore,
+  description:
+    'Renders a custom block before the cash tracking session float screen',
   defaultExample: {
     codeblock: generateCodeBlock(
       'Banner',
       'targets',
-      'pos-cash-tracking-session-float-banner-render',
+      'pos-cash-tracking-session-float-block-render-before',
     ),
   },
   category: 'Targets',

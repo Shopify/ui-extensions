@@ -7,12 +7,11 @@ import {
 } from '@shopify/ui-extensions-react/point-of-sale';
 
 const BannerComponent = () => {
-  const api = useApi<'pos.cash-tracking-session-details.banner.render'>();
+  const api = useApi<'pos.purchase.post.block.render-before'>();
 
   return <Banner title="This is a banner extension" variant="alert" visible />;
 };
 
-export default reactExtension(
-  'pos.cash-tracking-session-details.banner.render',
-  () => <BannerComponent />,
-);
+export default reactExtension('pos.purchase.post.block.render-before', () => (
+  <BannerComponent />
+));

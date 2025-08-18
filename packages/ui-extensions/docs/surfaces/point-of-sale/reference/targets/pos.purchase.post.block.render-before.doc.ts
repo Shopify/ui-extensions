@@ -3,13 +3,13 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: ExtensionTargetType.PosPurchasePostBannerRender,
-  description: 'Renders a custom banner within post-purchase screen',
+  name: ExtensionTargetType.PosPurchasePostBlockRenderBefore,
+  description: 'Renders a custom block before the post-purchase screen',
   defaultExample: {
     codeblock: generateCodeBlock(
       'Banner',
       'targets',
-      'pos-purchase-post-banner-render',
+      'pos-purchase-post-block-render-before',
     ),
   },
   category: 'Targets',

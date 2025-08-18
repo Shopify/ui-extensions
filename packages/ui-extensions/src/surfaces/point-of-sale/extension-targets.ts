@@ -94,9 +94,9 @@ export interface RenderExtensionTargets {
     StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,
     BlockExtensionComponents
   >;
-  'pos.purchase.post.banner.render': RenderExtension<
+  'pos.purchase.post.block.render-before': RenderExtension<
     // Note: include RegisterApi
-    StandardApi<'pos.purchase.post.banner.render'> & ActionApi,
+    StandardApi<'pos.purchase.post.block.render-before'> & ActionApi,
     BannerExtensionComponents
   >;
   'pos.product-details.action.menu-item.render': RenderExtension<
@@ -210,12 +210,13 @@ export interface RenderExtensionTargets {
     StandardApi<'pos.cash-tracking-session-details.block.render'> & ActionApi,
     BlockExtensionComponents
   >;
-  'pos.cash-tracking-session-details.banner.render': RenderExtension<
-    StandardApi<'pos.cash-tracking-session-details.banner.render'> & ActionApi,
+  'pos.cash-tracking-session-details.block.render-before': RenderExtension<
+    StandardApi<'pos.cash-tracking-session-details.block.render-before'> &
+      ActionApi,
     BannerExtensionComponents
   >;
-  'pos.cash-tracking-session-float.banner.render': RenderExtension<
-    StandardApi<'pos.cash-tracking-session-float.banner.render'>,
+  'pos.cash-tracking-session-float.block.render-before': RenderExtension<
+    StandardApi<'pos.cash-tracking-session-float.block.render-before'>,
     BannerExtensionComponents
   >;
 }
