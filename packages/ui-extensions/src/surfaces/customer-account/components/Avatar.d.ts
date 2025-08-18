@@ -1,6 +1,15 @@
 import {BaseElementPropsWithChildren, IdProps, SizeKeyword} from './shared';
 
-export interface AvatarProps extends IdProps {
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
+  | (EventListener & {
+      (event: CallbackEvent<TTagName, TEvent>): void;
+    })
+  | null;
+
+export interface AvatarElementProps extends IdProps {
   /**
    * Initials to display in the avatar.
    */
@@ -12,20 +21,6 @@ export interface AvatarProps extends IdProps {
    * Initials will be rendered as a fallback if `src` is not provided, fails to load or does not load quickly.
    */
   src?: string;
-
-  /**
-   * Invoked when load of provided image completes successfully.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
-   */
-  onLoad?(event: Event): void;
-
-  /**
-   * Invoked on load error of provided image.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
-   */
-  onError?(event: Event): void;
 
   /**
    * Size of the avatar.
@@ -44,7 +39,42 @@ export interface AvatarProps extends IdProps {
   alt?: string;
 }
 
-export interface AvatarElement extends AvatarProps, Omit<HTMLElement, 'id'> {}
+export interface AvatarElementEvents {
+  /**
+   * Invoked when load of provided image completes successfully.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+   */
+  onLoad?(event: Event): void;
+
+  /**
+   * Invoked on load error of provided image.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+   */
+  onError?(event: Event): void;
+}
+
+export interface AvatarElement
+  extends AvatarElementProps,
+    Omit<HTMLElement, 'id'> {
+  onload: AvatarElementEvents['onLoad'];
+  onerror: AvatarElementEvents['onError'];
+}
+
+export interface AvatarEvents {
+  /**
+   * Callback when the image loads successfully.
+   */
+  load?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+
+  /**
+   * Callback when the image fails to load.
+   */
+  error?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+}
+
+export type AvatarProps = AvatarElementProps & AvatarElementEvents;
 
 declare global {
   interface HTMLElementTagNameMap {

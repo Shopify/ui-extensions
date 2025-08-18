@@ -12,7 +12,13 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'AvatarProps',
       description: '',
-      type: 'AvatarProps',
+      type: 'AvatarElementPropsDocs',
+    },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'AvatarEventsDocs',
     },
   ],
   category: 'Polaris web components',
