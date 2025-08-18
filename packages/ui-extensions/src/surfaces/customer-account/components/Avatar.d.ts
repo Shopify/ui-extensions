@@ -1,4 +1,4 @@
-import {BaseElementPropsWithChildren, Size, IdProps} from './shared';
+import {BaseElementPropsWithChildren, IdProps, SizeKeyword} from './shared';
 
 export interface AvatarProps extends IdProps {
   /**
@@ -18,21 +18,24 @@ export interface AvatarProps extends IdProps {
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
    */
-  onLoad?(): void;
+  onLoad?(event: Event): void;
 
   /**
    * Invoked on load error of provided image.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
    */
-  onError?(): void;
+  onError?(event: Event): void;
 
   /**
    * Size of the avatar.
    *
    * @default 'base'
    */
-  size?: Extract<Size, 'base' | 'large' | 'extraLarge' | 'fill'>;
+  size?: Extract<
+    SizeKeyword,
+    'small-200' | 'small' | 'base' | 'large' | 'large-200'
+  >;
 
   /**
    * An alternative text description that describe the image for the reader
