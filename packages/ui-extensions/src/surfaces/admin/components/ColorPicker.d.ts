@@ -6,38 +6,21 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  IconProps$1,
-  BadgeProps$1,
-  IconType,
-  ComponentChild,
-} from './shared.d.ts';
+import type {ColorPickerProps$1, ComponentChild} from './shared.d.ts';
 
-export interface IconProps
-  extends Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size'> {
-  /**
-   * Specifies the type of icon that will be displayed.
-   */
-  type: '' | IconType | 'empty';
-  tone: Extract<
-    IconProps$1['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
-  >;
-  color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
-  size: Extract<IconProps$1['size'], 'small' | 'base'>;
-  interestFor?: string;
-}
+export interface ColorPickerProps
+  extends Required<
+    Pick<ColorPickerProps$1, 'id' | 'alpha' | 'value' | 'defaultValue' | 'name'>
+  > {}
 
-export interface BadgeProps
-  extends Pick<BadgeProps$1, 'color' | 'size' | 'tone'> {
-  color: Extract<BadgeProps$1['color'], 'base' | 'strong'>;
-  icon: IconProps['type'] | '';
-  size: Extract<BadgeProps$1['size'], 'base' | 'large' | 'large-100'>;
-  tone: Extract<
-    BadgeProps$1['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
-  >;
-}
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -61,8 +44,8 @@ export interface ClickOptions {
  * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
  * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
  */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
+declare const BaseClass$1: typeof globalThis.HTMLElement;
+declare abstract class PreactCustomElement extends BaseClass$1 {
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -99,45 +82,51 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-/** Used when an element does not have children. */
-export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
-  key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
-  ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
-  slot?: Lowercase<string>;
+declare const internals: unique symbol;
+declare class BaseClass extends PreactCustomElement {
+  static formAssociated: boolean;
+  constructor(renderImpl: RenderImpl);
+  /** @private */
+  [internals]: ElementInternals;
 }
-/** Used when an element has children. */
-export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
-  extends PreactBaseElementProps<TClass> {
-  children?: preact.ComponentChildren;
-}
-
-declare class Badge extends PreactCustomElement implements BadgeProps {
-  accessor color: BadgeProps['color'];
-  accessor icon: BadgeProps['icon'];
-  accessor size: BadgeProps['size'];
-  accessor tone: BadgeProps['tone'];
+declare class ColorPicker extends BaseClass implements ColorPickerProps {
+  accessor alpha: boolean;
+  accessor onchange: CallbackEventListener<typeof tagName> | null;
+  accessor oninput: CallbackEventListener<typeof tagName> | null;
+  accessor name: string;
+  accessor defaultValue: string;
+  get value(): string;
+  set value(value: string);
+  formResetCallback(): void;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Badge;
+    [tagName]: ColorPicker;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BadgeJSXProps & PreactBaseElementPropsWithChildren<Badge>;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ColorPickerJSXProps;
     }
   }
 }
 
-declare const tagName = 's-badge';
-export interface BadgeJSXProps
-  extends Partial<BadgeProps>,
-    Pick<BadgeProps$1, 'id'> {}
+declare const tagName = 's-color-picker';
+export interface ColorPickerJSXProps
+  extends Partial<ColorPickerProps>,
+    Pick<
+      ColorPickerProps$1,
+      'id' | 'alpha' | 'value' | 'defaultValue' | 'name'
+    > {
+  onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
+}
 
-export {Badge};
-export type {BadgeJSXProps};
+export {ColorPicker};
+export type {ColorPickerJSXProps};

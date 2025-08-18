@@ -60,6 +60,52 @@ interface AdminPrintActionProps$1 extends GlobalProps {
    */
   src?: string;
 }
+export interface BaseOverlayProps {
+  /**
+   * Callback fired after the overlay is shown.
+   */
+  onShow?: (event: Event) => void;
+  /**
+   * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
+   */
+  onAfterShow?: (event: Event) => void;
+  /**
+   * Callback fired after the overlay is hidden.
+   */
+  onHide?: (event: Event) => void;
+  /**
+   * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
+   */
+  onAfterHide?: (event: Event) => void;
+}
+/**
+ * Shared interfaces for web component methods.
+ *
+ * Methods are required (not optional) because:
+ * - Components implementing this interface must provide all methods
+ * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
+ * - Consumers expect these methods to be consistently available on all instances
+ */
+export interface BaseOverlayMethods {
+  /**
+   * Method to show an overlay.
+   *
+   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+   */
+  showOverlay: () => void;
+  /**
+   * Method to hide an overlay.
+   *
+   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+   */
+  hideOverlay: () => void;
+  /**
+   * Method to toggle the visiblity of an overlay.
+   *
+   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+   */
+  toggleOverlay: () => void;
+}
 export type SizeKeyword =
   | 'small-500'
   | 'small-400'
@@ -324,6 +370,7 @@ declare const privateIconArray: readonly [
   'favicon',
   'file-list',
   'file',
+  'filter-active',
   'filter',
   'flag',
   'flip-horizontal',
@@ -1494,6 +1541,35 @@ export interface MultipleInputProps extends BaseInputProps {
    */
   values?: string[];
 }
+export interface FileInputProps extends BaseInputProps {
+  /**
+   * Callback when the user has **finished selecting** a file or files.
+   */
+  onChange?: (event: Event) => void;
+  /**
+   * Callback when the user makes any changes in the file selection.
+   */
+  onInput?: (event: Event) => void;
+  /**
+   * A string that represents the path to the selected file(s). If no file is selected yet, the value is an empty string ("").
+   * When the user selected multiple files, the value represents the first file in the list of files they selected.
+   * The value is always the file's name prefixed with "C:\fakepath\", which isn't the real path of the file.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file#value
+   *
+   * @default ''
+   */
+  value?: string;
+  /**
+   * An array of File objects representing the files currently selected by the user.
+   *
+   * This property is read-only and cannot be directly modified.
+   * To clear the selected files, set the `value` prop to an empty string or null.
+   *
+   * @default []
+   */
+  files?: ReadonlyArray<File>;
+}
 export interface FieldErrorProps {
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
@@ -1751,11 +1827,34 @@ interface CheckboxProps$1
    */
   required?: boolean;
 }
+export interface ChipProps$1 {
+  /**
+   * The content of the chip.
+   */
+  children?: ComponentChildren;
+  /**
+   * The graphic to display inside of the chip.
+   *
+   * @implementation Only `s-icon` is supported.
+   */
+  graphic?: ComponentChildren;
+  /**
+   * A label that describes the purpose or contents of the Chip. It will be read to users using assistive technologies such as screen readers.
+   */
+  accessibilityLabel?: string;
+  /**
+   * Modify the color to be more or less intense.
+   *
+   * @default 'base'
+   */
+  color?: ColorKeyword;
+}
+interface ChipProps$1 extends ChipProps$1, GlobalProps {}
 interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
   /**
    * Content to use as the choice label.
    */
-  label?: string;
+  children?: ComponentChildren;
   /**
    * Additional text to provide context or guidance for the input.
    *
@@ -1764,13 +1863,23 @@ interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
    *
    * @implementation this content should be linked to the input with an `aria-describedby` attribute.
    */
-  details?: string;
+  details?: ComponentChildren;
   /**
    * Set to `true` to associate a choice with the error passed to `ChoiceList`
    *
    * @default false
    */
   error?: boolean;
+  /**
+   * Secondary content for a choice.
+   */
+  secondaryContent?: ComponentChildren;
+  /**
+   * Content to display when the option is selected.
+   *
+   * This can be used to provide additional information or options related to the choice.
+   */
+  selectedContent?: ComponentChildren;
 }
 interface ChoiceListProps$1
   extends GlobalProps,
@@ -1797,6 +1906,21 @@ interface ChoiceListProps$1
    * @default false
    */
   disabled?: MultipleInputProps['disabled'];
+  /**
+   * The variant of the choice grid.
+   *
+   * - `auto`: The variant is determined by the context.
+   * - `list`: The choices are displayed in a list.
+   * - `inline`: The choices are displayed on the inline axis.
+   * - `block`: The choices are displayed on the block axis.
+   * - `grid`: The choices are displayed in a grid.
+   *
+   * @implementation The `block`, `inline` and `grid` variants are more suitable for button looking choices, but it's at the
+   * discretion of each surface.
+   *
+   * @default 'auto'
+   */
+  variant?: 'auto' | 'list' | 'inline' | 'block' | 'grid';
 }
 interface ClickableProps$1
   extends GlobalProps,
@@ -1828,6 +1952,96 @@ interface ClickableProps$1
    * @default ''
    */
   lang?: string;
+}
+interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
+  /**
+   * Callback when the chip is clicked.
+   */
+  onClick?: (event: Event) => void;
+  /**
+   * The URL to link to.
+   *
+   * - If set, it will navigate to the location specified by `href` after executing the `click` event.
+   */
+  href?: string;
+  /**
+   * Whether the chip is removable.
+   *
+   * @default false
+   */
+  removable?: boolean;
+  /**
+   * Callback when the chip is removed.
+   */
+  onRemove?: (event: Event) => void;
+  /**
+   * Determines whether the chip is hidden.
+   *
+   * If this property is being set on each framework render (as in 'controlled' usage),
+   * and the chip is `removable`,
+   * ensure you update app state for this property when the `remove` event fires.
+   *
+   * If the chip is not `removable`, it can still be hidden by setting this property.
+   *
+   * @default false
+   */
+  hidden?: boolean;
+  /**
+   * Event handler when the chip has fully hidden.
+   *
+   * The `hidden` property will be `true` when this event fires.
+   *
+   * @implementation If implementations animate the hiding of the chip,
+   * this event must fire after the chip has fully hidden.
+   * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
+   */
+  onAfterHide?: (event: Event) => void;
+  /**
+   * Disables the chip, disallowing any interaction.
+   *
+   * @default false
+   */
+  disabled?: boolean;
+}
+interface ColorPickerProps$1 extends GlobalProps, InputProps {
+  /**
+   * Allow user to select an alpha value.
+   *
+   * @default false
+   */
+  alpha?: boolean;
+  /**
+   * This callback will emit the value in hex.
+   *
+   * If the `alpha` prop is `true`, `onChange` will emit an 8-value hex (#RRGGBBAA).
+   * If the `alpha` prop is `false`, `onChange` will emit a 6-value hex (#RRGGBB).
+   */
+  onChange?: InputProps['onChange'];
+  /**
+   * This callback will emit the value in hex.
+   *
+   * If the `alpha` prop is `true`, `onInput` will emit an 8-value hex (#RRGGBBAA).
+   * If the `alpha` prop is `false`, `onInput` will emit a 6-value hex (#RRGGBB).
+   */
+  onInput?: InputProps['onChange'];
+  /**
+   * The currently selected color.
+   *
+   * Supported formats include:
+   * - HSL @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsl
+   * - HSLA @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla
+   * - RGB @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb
+   * - RGBA @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb
+   * - Hex (3-value, 4-value, 6-value, 8-value) @see https://developer.mozilla.org/en-US/docs/Web/CSS/hex-color
+   *
+   * For RGB and RGBA, both the legacy syntax (comma-separated) and modern syntax (space-separate) are supported.
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb
+   *
+   * If the value is invalid, the component will select rgb(0, 0, 0).
+   *
+   * Note that the `onChange` handler will emit the value in hex.
+   */
+  value?: InputProps['value'];
 }
 export interface AutocompleteProps<
   AutocompleteField extends AnyAutocompleteField,
@@ -1974,6 +2188,15 @@ export type TextAutocompleteField = ExtractStrict<
   | 'cc-family-name'
   | 'cc-type'
 >;
+interface ColorFieldProps$1
+  extends GlobalProps,
+    BaseTextFieldProps,
+    Pick<ColorPickerProps$1, 'alpha' | 'value' | 'defaultValue'> {
+  autocomplete?: Extract<
+    AutocompleteProps<never>['autocomplete'],
+    'on' | 'off'
+  >;
+}
 interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
   /**
    * Default month to display in `YYYY-MM` format.
@@ -2035,11 +2258,11 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    */
   allow?: string;
   /**
-   * Dates that cannot be selected. These subtract from `allowDates`.
+   * Dates that cannot be selected. These subtract from `allow`.
    *
    * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
    *
-   * The default `''` has no effect on `allowDates`.
+   * The default `''` has no effect on `allow`.
    *
    * - Dates in `YYYY-MM-DD` format disallow a single date.
    * - Dates in `YYYY-MM` format disallow a whole month.
@@ -2061,24 +2284,24 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    */
   disallow?: string;
   /**
-   * Days of the week that can be selected. These intersect with the result of `allowDates` and `disallowDates`.
+   * Days of the week that can be selected. These intersect with the result of `allow` and `disallow`.
    *
-   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   * A comma-separated list of days. Whitespace is allowed after commas.
    *
-   * The default `''` has no effect on the result of `allowDates` and `disallowDates`.
+   * The default `''` has no effect on the result of `allow` and `disallow`.
    *
    * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
    *
    * @default ""
    *
    * @example
-   * 'saturday, sunday' // allow only weekends within the result of `allowDates` and `disallowDates`.
+   * 'saturday, sunday' // allow only weekends within the result of `allow` and `disallow`.
    */
   allowDays?: string;
   /**
-   * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allowDates` and `disallowDates`.
+   * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allow` and `disallow`.
    *
-   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   * A comma-separated list of days. Whitespace is allowed after commas.
    *
    * The default `''` has no effect on `allowDays`.
    *
@@ -2087,7 +2310,7 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    * @default ""
    *
    * @example
-   * 'saturday, sunday' // disallow weekends within the result of `allowDates` and `disallowDates`.
+   * 'saturday, sunday' // disallow weekends within the result of `allow` and `disallow`.
    */
   disallowDays?: string;
   /**
@@ -2146,6 +2369,37 @@ interface DividerProps$1 extends GlobalProps {
    * @default 'base'
    */
   color?: ColorKeyword;
+}
+interface DropZoneProps$1 extends GlobalProps, FileInputProps, BasicFieldProps {
+  /**
+   * A string representing the types of files that are accepted by the drop zone.
+   * This string is a comma-separated list of unique file type specifiers which can be one of the following:
+   * - A file extension starting with a period (".") character (e.g. .jpg, .pdf, .doc)
+   * - A valid MIME type string with no extensions
+   *
+   * If omitted, all file types are accepted.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept
+   * @default ''
+   */
+  accept?: string;
+  /**
+   * A label that describes the purpose or contents of the item. When set,
+   * it will be announced to buyers using assistive technologies and will
+   * provide them with more context.
+   */
+  accessibilityLabel?: string;
+  /**
+   * Whether multiple files can be selected or dropped at once.
+   *
+   * @default false
+   */
+  multiple?: boolean;
+  /**
+   * Callback fired when rejected files are dropped.
+   * Files are rejected based on the `accept` prop and are not added to `files`.
+   */
+  onDropRejected?: (event: Event) => void;
 }
 interface EmailFieldProps$1
   extends GlobalProps,
@@ -2471,7 +2725,9 @@ interface HeadingProps$1
     | 'heading'
     | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
 }
-interface IconProps$1 extends GlobalProps {
+interface IconProps$1
+  extends GlobalProps,
+    Pick<InteractionProps, 'interestFor'> {
   /**
    * Sets the tone of the icon, based on the intention of the information being conveyed.
    *
@@ -2654,239 +2910,15 @@ interface MenuProps$1 extends GlobalProps {
    */
   children?: ComponentChildren;
 }
-export interface BaseOverlayProps {
-  /**
-   * Callback fired after the overlay is shown.
-   */
-  onShow?: (event: Event) => void;
-  /**
-   * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
-   */
-  onAfterShow?: (event: Event) => void;
-  /**
-   * Callback fired after the overlay is hidden.
-   */
-  onHide?: (event: Event) => void;
-  /**
-   * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
-   */
-  onAfterHide?: (event: Event) => void;
-}
-/**
- * Shared interfaces for web component methods.
- *
- * Methods are required (not optional) because:
- * - Components implementing this interface must provide all methods
- * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
- * - Consumers expect these methods to be consistently available on all instances
- */
-export interface BaseOverlayMethods {
-  /**
-   * Method to show an overlay.
-   *
-   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
-   */
-  showOverlay: () => void;
-  /**
-   * Method to hide an overlay.
-   *
-   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
-   */
-  hideOverlay: () => void;
-  /**
-   * Method to toggle the visiblity of an overlay.
-   *
-   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
-   */
-  toggleOverlay: () => void;
-}
 interface MoneyFieldProps$1
   extends GlobalProps,
     BaseTextFieldProps,
     NumberConstraintsProps,
-    AutocompleteProps<MoneyAutocompleteField> {
-  /**
-   * Specifies the currency code that will be displayed.
-   *
-   * - `auto`: the currency code will be determined by context. If a currency code cannot be found in the context, no currency code or symbol will be displayed in the field.
-   *
-   * @implementation when no currency can be found in the context, fallback to `XXX` which denotes an unknown or unrecognized currency.
-   *
-   * @default 'auto'
-   */
-  currencyCode?: CurrencyCode | 'auto' | AnyString;
-}
+    AutocompleteProps<MoneyAutocompleteField> {}
 export type MoneyAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'transaction-amount'
 >;
-/**
- * Supported monetary currencies from [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html).
- *
- * @see https://www.iso.org/iso-4217-currency-codes.html
- */
-export type CurrencyCode =
-  | 'USD'
-  | 'EUR'
-  | 'GBP'
-  | 'CAD'
-  | 'AFN'
-  | 'ALL'
-  | 'DZD'
-  | 'AOA'
-  | 'ARS'
-  | 'AMD'
-  | 'AWG'
-  | 'AUD'
-  | 'BBD'
-  | 'AZN'
-  | 'BDT'
-  | 'BSD'
-  | 'BHD'
-  | 'BIF'
-  | 'BZD'
-  | 'BMD'
-  | 'BTN'
-  | 'BAM'
-  | 'BRL'
-  | 'BOB'
-  | 'BWP'
-  | 'BND'
-  | 'BGN'
-  | 'MMK'
-  | 'KHR'
-  | 'CVE'
-  | 'KYD'
-  | 'XAF'
-  | 'CLP'
-  | 'CNY'
-  | 'COP'
-  | 'KMF'
-  | 'CDF'
-  | 'CRC'
-  | 'HRK'
-  | 'CZK'
-  | 'DKK'
-  | 'DOP'
-  | 'XCD'
-  | 'EGP'
-  | 'ETB'
-  | 'XPF'
-  | 'FJD'
-  | 'GMD'
-  | 'GHS'
-  | 'GTQ'
-  | 'GYD'
-  | 'GEL'
-  | 'HTG'
-  | 'HNL'
-  | 'HKD'
-  | 'HUF'
-  | 'ISK'
-  | 'INR'
-  | 'IDR'
-  | 'ILS'
-  | 'IQD'
-  | 'JMD'
-  | 'JPY'
-  | 'JEP'
-  | 'JOD'
-  | 'KZT'
-  | 'KES'
-  | 'KWD'
-  | 'KGS'
-  | 'LAK'
-  | 'LVL'
-  | 'LBP'
-  | 'LSL'
-  | 'LRD'
-  | 'LTL'
-  | 'MGA'
-  | 'MKD'
-  | 'MOP'
-  | 'MWK'
-  | 'MVR'
-  | 'MXN'
-  | 'MYR'
-  | 'MUR'
-  | 'MDL'
-  | 'MAD'
-  | 'MNT'
-  | 'MZN'
-  | 'NAD'
-  | 'NPR'
-  | 'ANG'
-  | 'NZD'
-  | 'NIO'
-  | 'NGN'
-  | 'NOK'
-  | 'OMR'
-  | 'PAB'
-  | 'PKR'
-  | 'PGK'
-  | 'PYG'
-  | 'PEN'
-  | 'PHP'
-  | 'PLN'
-  | 'QAR'
-  | 'RON'
-  | 'RUB'
-  | 'RWF'
-  | 'WST'
-  | 'SAR'
-  | 'RSD'
-  | 'SCR'
-  | 'SGD'
-  | 'SDG'
-  | 'SYP'
-  | 'ZAR'
-  | 'KRW'
-  | 'SSP'
-  | 'SBD'
-  | 'LKR'
-  | 'SRD'
-  | 'SZL'
-  | 'SEK'
-  | 'CHF'
-  | 'TWD'
-  | 'THB'
-  | 'TZS'
-  | 'TTD'
-  | 'TND'
-  | 'TRY'
-  | 'TMT'
-  | 'UGX'
-  | 'UAH'
-  | 'AED'
-  | 'UYU'
-  | 'UZS'
-  | 'VUV'
-  | 'VND'
-  | 'XOF'
-  | 'YER'
-  | 'ZMW'
-  | 'BYN'
-  | 'BYR'
-  | 'DJF'
-  | 'ERN'
-  | 'FKP'
-  | 'GIP'
-  | 'GNF'
-  | 'IRR'
-  | 'KID'
-  | 'LYD'
-  | 'MRU'
-  | 'SLL'
-  | 'SHP'
-  | 'SOS'
-  | 'STD'
-  | 'STN'
-  | 'TJS'
-  | 'TOP'
-  | 'VED'
-  | 'VEF'
-  | 'VES'
-  | 'XXX';
 interface NumberFieldProps$1
   extends GlobalProps,
     BaseTextFieldProps,
@@ -2943,6 +2975,10 @@ interface PageProps$1 extends GlobalProps {
    * The text to be used as subtitle.
    */
   subheading?: string;
+  /**
+   * Additional contextual information about the page.
+   */
+  accessory?: ComponentChildren;
   /**
    * The primary action to perform, provided as a button or link type element.
    * When a `Button` is added to the `primaryAction` it's variant is set to `primary`
@@ -3254,7 +3290,8 @@ interface TextProps$1
   extends GlobalProps,
     AccessibilityVisibilityProps,
     BaseTypographyProps,
-    DisplayProps {
+    DisplayProps,
+    Pick<InteractionProps, 'interestFor'> {
   /**
    * The content of the Text.
    */
@@ -3744,6 +3781,7 @@ type IconType$1 =
   | 'file'
   | 'file-list'
   | 'filter'
+  | 'filter-active'
   | 'flag'
   | 'flip-horizontal'
   | 'flip-vertical'

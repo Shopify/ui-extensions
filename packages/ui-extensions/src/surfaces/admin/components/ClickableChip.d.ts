@@ -6,14 +6,29 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  TooltipProps$1,
-  InteractionProps,
-  ComponentChild,
-} from './shared.d.ts';
+import type {ClickableChipProps$1, ComponentChild} from './shared.d.ts';
 
-export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
+export interface ClickableChipProps
+  extends Required<
+    Pick<
+      ClickableChipProps$1,
+      | 'color'
+      | 'accessibilityLabel'
+      | 'removable'
+      | 'hidden'
+      | 'href'
+      | 'disabled'
+    >
+  > {}
 
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 /** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
@@ -89,45 +104,48 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-/**
- * Shared symbols for overlay control functionality.
- * These symbols are used by components that implement overlay behavior
- * (like Popover, Tooltip, etc.) to communicate with the overlay control system.
- */
-declare const overlayCommand: unique symbol;
-declare const overlayHidden: unique symbol;
-declare const overlayActivator: unique symbol;
-
-declare class PreactOverlayElement extends PreactCustomElement {
-  constructor(renderImpl: RenderImpl);
-  /** @private */
-  [overlayHidden]: boolean;
-  /** @private */
-  [overlayActivator]: HTMLElement | null | undefined;
-  /** @private */
-  [overlayCommand](command: InteractionProps['command']): void;
-}
-
-declare class Tooltip extends PreactOverlayElement implements TooltipProps {
+declare class ClickableChip
+  extends PreactCustomElement
+  implements ClickableChipProps
+{
+  accessor color: ClickableChipProps['color'];
+  accessor accessibilityLabel: ClickableChipProps['accessibilityLabel'];
+  accessor removable: ClickableChipProps['removable'];
+  accessor hidden: ClickableChipProps['hidden'];
+  accessor disabled: ClickableChipProps['disabled'];
+  accessor href: ClickableChipProps['href'];
+  accessor onclick: CallbackEventListener<typeof tagName> | null;
+  accessor onremove: CallbackEventListener<typeof tagName> | null;
+  accessor onafterhide: CallbackEventListener<typeof tagName> | null;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Tooltip;
+    [tagName]: ClickableChip;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: TooltipJSXProps & PreactBaseElementPropsWithChildren<Tooltip>;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        Omit<ClickableChipJSXProps, 'graphic'> &
+        PreactBaseElementPropsWithChildren<ClickableChip>;
     }
   }
 }
 
-declare const tagName = 's-tooltip';
-export interface TooltipJSXProps
-  extends Partial<TooltipProps>,
-    Pick<TooltipProps$1, 'id'> {}
+declare const tagName = 's-clickable-chip';
+export interface ClickableChipJSXProps
+  extends Partial<ClickableChipProps>,
+    Pick<ClickableChipProps$1, 'id'> {
+  graphic?: ComponentChild;
+  onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onRemove?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
 
-export {Tooltip};
-export type {TooltipJSXProps};
+export {ClickableChip};
+export type {ClickableChipJSXProps};

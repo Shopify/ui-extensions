@@ -6,19 +6,34 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  MenuProps$1,
-  ComponentChild,
-  InteractionProps,
-} from './shared.d.ts';
+import type {DropZoneProps$1, ComponentChild} from './shared.d.ts';
 
-export interface MenuProps
-  extends Required<Pick<MenuProps$1, 'id' | 'accessibilityLabel'>> {
-  /**
-   * @implementation only accepts `s-button` and `s-section`
-   */
-  children?: ComponentChild;
-}
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
+
+export interface DropZoneProps
+  extends Required<
+    Pick<
+      DropZoneProps$1,
+      | 'accept'
+      | 'accessibilityLabel'
+      | 'disabled'
+      | 'files'
+      | 'name'
+      | 'error'
+      | 'label'
+      | 'labelAccessibilityVisibility'
+      | 'multiple'
+      | 'required'
+      | 'value'
+    >
+  > {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -42,8 +57,8 @@ export interface ClickOptions {
  * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
  * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
  */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
+declare const BaseClass$1: typeof globalThis.HTMLElement;
+declare abstract class PreactCustomElement extends BaseClass$1 {
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -80,36 +95,44 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-/**
- * Shared symbols for overlay control functionality.
- * These symbols are used by components that implement overlay behavior
- * (like Popover, Tooltip, etc.) to communicate with the overlay control system.
- */
-declare const overlayCommand: unique symbol;
-declare const overlayHidden: unique symbol;
-declare const overlayActivator: unique symbol;
+declare const setFiles: unique symbol;
 
-declare class PreactOverlayElement extends PreactCustomElement {
+declare const internals: unique symbol;
+declare const getFileInput: unique symbol;
+declare class BaseClass extends PreactCustomElement {
+  static formAssociated: boolean;
   constructor(renderImpl: RenderImpl);
   /** @private */
-  [overlayHidden]: boolean;
-  /** @private */
-  [overlayActivator]: HTMLElement | null | undefined;
-  /** @private */
-  [overlayCommand](command: InteractionProps['command']): void;
+  [internals]: ElementInternals;
 }
-
-declare class Menu extends PreactOverlayElement implements MenuProps {
-  accessor accessibilityLabel: string;
+declare class DropZone extends BaseClass implements DropZoneProps {
+  accessor accept: DropZoneProps['accept'];
+  accessor accessibilityLabel: DropZoneProps['accessibilityLabel'];
+  accessor disabled: DropZoneProps['disabled'];
+  accessor error: DropZoneProps['error'];
+  accessor label: DropZoneProps['label'];
+  accessor labelAccessibilityVisibility: DropZoneProps['labelAccessibilityVisibility'];
+  accessor multiple: DropZoneProps['multiple'];
+  accessor name: DropZoneProps['name'];
+  accessor required: DropZoneProps['required'];
+  accessor onchange: CallbackEventListener<typeof tagName>;
+  accessor oninput: CallbackEventListener<typeof tagName>;
+  accessor ondroprejected: CallbackEventListener<typeof tagName>;
+  get value(): string;
+  set value(value: string);
+  get files(): File[];
+  set files(files: File[]);
+  /** @private */
+  [setFiles](files: File[]): void;
+  /** @private */
+  [getFileInput](): HTMLInputElement | null;
+  /** @private */
+  formResetCallback(): void;
   constructor();
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Menu;
+    [tagName]: DropZone;
   }
 }
 declare module 'preact' {
@@ -119,15 +142,19 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        MenuJSXProps;
+        DropZoneJSXProps;
     }
   }
 }
 
-declare const tagName = 's-menu';
-export interface MenuJSXProps
-  extends Partial<MenuProps>,
-    Pick<MenuProps$1, 'id'> {}
+declare const tagName = 's-drop-zone';
+export interface DropZoneJSXProps
+  extends Partial<DropZoneProps>,
+    Pick<DropZoneProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onDropRejected?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
 
-export {Menu};
-export type {MenuJSXProps};
+export {DropZone};
+export type {DropZoneJSXProps};
