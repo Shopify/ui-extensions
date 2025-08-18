@@ -7,6 +7,7 @@ export type StandardComponents =
   | 'CustomerAccountAction'
   | 'ImageGroup'
   | 'Menu'
-  | 'Page';
+  | 'Page'
+  | 'Section';
 
 export default StandardComponents;
