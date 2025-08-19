@@ -33,6 +33,7 @@ export interface TextProps
     TextProps$1['fontVariantNumeric'],
     'auto' | 'normal' | 'tabular-nums'
   >;
+  interestFor?: string;
 }
 
 export type Styles = string;
@@ -117,6 +118,7 @@ declare class Text extends PreactCustomElement implements TextProps {
   accessor type: TextProps['type'];
   accessor dir: TextProps['dir'];
   accessor accessibilityVisibility: TextProps['accessibilityVisibility'];
+  accessor interestFor: string;
   constructor();
 }
 declare global {

@@ -26,6 +26,7 @@ export interface IconProps
   >;
   color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
   size: Extract<IconProps$1['size'], 'small' | 'base'>;
+  interestFor?: string;
 }
 
 export type ButtonOnlyProps = Extract<

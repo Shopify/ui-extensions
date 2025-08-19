@@ -20,6 +20,7 @@ export interface IconProps
   >;
   color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
   size: Extract<IconProps$1['size'], 'small' | 'base'>;
+  interestFor?: string;
 }
 
 export type Styles = string;
@@ -97,6 +98,7 @@ declare class Icon extends PreactCustomElement implements IconProps {
   accessor tone: IconProps['tone'];
   accessor type: IconProps['type'];
   accessor size: IconProps['size'];
+  accessor interestFor: string;
   constructor();
 }
 declare global {

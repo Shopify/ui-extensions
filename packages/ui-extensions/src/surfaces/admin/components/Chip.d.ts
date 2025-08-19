@@ -6,38 +6,10 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  IconProps$1,
-  BadgeProps$1,
-  IconType,
-  ComponentChild,
-} from './shared.d.ts';
+import type {ComponentChild, ChipProps$1} from './shared.d.ts';
 
-export interface IconProps
-  extends Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size'> {
-  /**
-   * Specifies the type of icon that will be displayed.
-   */
-  type: '' | IconType | 'empty';
-  tone: Extract<
-    IconProps$1['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
-  >;
-  color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
-  size: Extract<IconProps$1['size'], 'small' | 'base'>;
-  interestFor?: string;
-}
-
-export interface BadgeProps
-  extends Pick<BadgeProps$1, 'color' | 'size' | 'tone'> {
-  color: Extract<BadgeProps$1['color'], 'base' | 'strong'>;
-  icon: IconProps['type'] | '';
-  size: Extract<BadgeProps$1['size'], 'base' | 'large' | 'large-100'>;
-  tone: Extract<
-    BadgeProps$1['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
-  >;
-}
+export interface ChipProps
+  extends Required<Pick<ChipProps$1, 'color' | 'accessibilityLabel'>> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -114,30 +86,35 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
-declare class Badge extends PreactCustomElement implements BadgeProps {
-  accessor color: BadgeProps['color'];
-  accessor icon: BadgeProps['icon'];
-  accessor size: BadgeProps['size'];
-  accessor tone: BadgeProps['tone'];
+declare class Chip extends PreactCustomElement implements ChipProps {
+  accessor color: ChipProps['color'];
+  accessor accessibilityLabel: ChipProps['accessibilityLabel'];
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Badge;
+    [tagName]: Chip;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BadgeJSXProps & PreactBaseElementPropsWithChildren<Badge>;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        Omit<ChipJSXProps, 'graphic'> &
+        PreactBaseElementPropsWithChildren<Chip>;
     }
   }
 }
 
-declare const tagName = 's-badge';
-export interface BadgeJSXProps
-  extends Partial<BadgeProps>,
-    Pick<BadgeProps$1, 'id'> {}
+declare const tagName = 's-chip';
+export interface ChipJSXProps
+  extends Partial<ChipProps>,
+    Pick<ChipProps$1, 'id'> {
+  graphic?: ComponentChild;
+}
 
-export {Badge};
-export type {BadgeJSXProps};
+export {Chip};
+export type {ChipJSXProps};
