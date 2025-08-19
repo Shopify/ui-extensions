@@ -7,7 +7,7 @@
 /// <reference lib="DOM" />
 import type {TableRowProps$1, ComponentChild} from './shared.d.ts';
 
-export interface TableRowProps extends TableRowProps$1 {}
+export interface TableRowProps extends Pick<TableRowProps$1, 'children'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
