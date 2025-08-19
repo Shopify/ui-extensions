@@ -12,7 +12,13 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'AvatarProps',
       description: '',
-      type: 'AvatarProps',
+      type: 'AvatarElementPropsDocs',
+    },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'AvatarEventsDocs',
     },
   ],
   category: 'Polaris web components',
@@ -38,11 +44,12 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best Practices',
       sectionContent: `
   - By default, if a user does not provide their first or last name, the avatar component will display a placeholder icon. However, if at least one of the names is provided, the avatar will be replaced with one or two initials representing the user.
-  - There are 4 sizes for the avatar component:
-    * Base (32x32 px): Use by default.
-    * Large (39×39 px): Use when the avatar is a focal point, such as a customer details card.
-    * Extra-large (47x47 px): Use when placing more emphasis on the avatar
-    * Fill to fit: Use when there is a particular size that does not match any of the three sizes provided. If using images please ensure the resolution meets the size requirements.
+  - There are 5 sizes for the avatar component:
+    * small-200 (21x21 px): Use when showing avatars in tables / lists where space is limited.
+    * small (26x26 px): Use when you want to conserve space but want a larger size than small-200.
+    * base (32x32 px): Use by default.
+    * large (39×39 px): Use when the avatar is a focal point, such as a customer details card.
+    * large-200 (47x47 px): Use when placing more emphasis on the avatar.
 
   - Provide alt text for avatars to assist customers using assistive technologies.
 

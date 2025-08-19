@@ -1,4 +1,10 @@
-import {Size, IdProps} from './components/shared';
+import {SizeKeyword, IdProps} from './components/shared';
+import {
+  AvatarProps,
+  AvatarElementProps,
+  AvatarElement,
+  AvatarEvents,
+} from './components/Avatar';
 
 export interface CustomerAccountActionProps extends IdProps {
   /**
@@ -91,52 +97,14 @@ declare module 'preact' {
   }
 }
 
-export interface AvatarProps extends IdProps {
-  /**
-   * Initials to display in the avatar.
-   */
-  initials?: string;
-
-  /**
-   * The URL or path to the image.
-   *
-   * Initials will be rendered as a fallback if `src` is not provided, fails to load or does not load quickly.
-   */
-  src?: string;
-
-  /**
-   * Invoked when load of provided image completes successfully.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
-   */
-  onLoad?(): void;
-
-  /**
-   * Invoked on load error of provided image.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
-   */
-  onError?(): void;
-
-  /**
-   * Size of the avatar.
-   *
-   * @default 'base'
-   */
-  size?: Extract<Size, 'base' | 'large' | 'extraLarge' | 'fill'>;
-
-  /**
-   * An alternative text description that describe the image for the reader
-   * to understand what it is about or identify the user the avatar belongs to.
-   */
-  alt?: string;
-}
-
-export interface AvatarElement extends AvatarProps, Omit<HTMLElement, 'id'> {}
+export type AvatarElementPropsDocs = AvatarElementProps;
+export type AvatarPropsDocs = AvatarProps;
+export type AvatarElementDocs = AvatarElement;
+export type AvatarEventsDocs = AvatarEvents;
 
 declare global {
   interface HTMLElementTagNameMap {
-    ['s-avatar']: AvatarElement;
+    ['s-avatar']: AvatarElementDocs;
   }
 }
 
@@ -144,7 +112,8 @@ declare module 'preact' {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace createElement.JSX {
     interface IntrinsicElements {
-      ['s-avatar']: BaseElementPropsWithChildren<AvatarElement> & AvatarProps;
+      ['s-avatar']: BaseElementPropsWithChildren<AvatarElementDocs> &
+        AvatarPropsDocs;
     }
   }
 }

@@ -5,13 +5,20 @@ export interface IdProps {
   id?: string;
 }
 
-export type Size =
-  | 'extraSmall'
+export type SizeKeyword =
+  | 'small-500'
+  | 'small-400'
+  | 'small-300'
+  | 'small-200'
+  | 'small-100'
   | 'small'
   | 'base'
   | 'large'
-  | 'extraLarge'
-  | 'fill';
+  | 'large-100'
+  | 'large-200'
+  | 'large-300'
+  | 'large-400'
+  | 'large-500';
 
 export interface BaseElementProps<TClass = HTMLElement> {
   // Assigns a unique key to this element.
