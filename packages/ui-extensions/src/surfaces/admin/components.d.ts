@@ -4236,8 +4236,6 @@ declare class Avatar extends PreactCustomElement implements AvatarProps {
   accessor src: AvatarProps['src'];
   accessor size: AvatarProps['size'];
   accessor alt: AvatarProps['alt'];
-  accessor onload: CallbackEventListener<typeof tagName$X> | null;
-  accessor onerror: OnErrorEventHandler;
   constructor();
 }
 declare global {
@@ -4329,8 +4327,6 @@ declare class Banner extends PreactCustomElement implements BannerProps {
   accessor tone: BannerProps['tone'];
   accessor hidden: BannerProps['hidden'];
   accessor dismissible: BannerProps['dismissible'];
-  accessor ondismiss: CallbackEventListener<typeof tagName$V> | null;
-  accessor onafterhide: CallbackEventListener<typeof tagName$V> | null;
   constructor();
 }
 declare global {
@@ -4672,9 +4668,6 @@ declare class Button extends Button_base implements ButtonProps {
   accessor target: ButtonProps['target'];
   accessor href: ButtonProps['href'];
   accessor download: ButtonProps['download'];
-  accessor onclick: CallbackEventListener<typeof tagName$T> | null;
-  accessor onblur: CallbackEventListener<typeof tagName$T> | null;
-  accessor onfocus: CallbackEventListener<typeof tagName$T> | null;
   accessor type: ButtonProps['type'];
   accessor accessibilityLabel: ButtonProps['accessibilityLabel'];
   constructor();
@@ -4971,9 +4964,6 @@ declare class Clickable extends Clickable_base implements ClickableProps {
   accessor target: ClickableProps['target'];
   accessor href: ClickableProps['href'];
   accessor download: ClickableProps['download'];
-  accessor onclick: CallbackEventListener<typeof tagName$O> | null;
-  accessor onblur: CallbackEventListener<typeof tagName$O> | null;
-  accessor onfocus: CallbackEventListener<typeof tagName$O> | null;
   accessor type: ClickableProps['type'];
   constructor();
 }
@@ -5023,9 +5013,6 @@ declare class ClickableChip
   accessor hidden: ClickableChipProps['hidden'];
   accessor disabled: ClickableChipProps['disabled'];
   accessor href: ClickableChipProps['href'];
-  accessor onclick: CallbackEventListener<typeof tagName$N> | null;
-  accessor onremove: CallbackEventListener<typeof tagName$N> | null;
-  accessor onafterhide: CallbackEventListener<typeof tagName$N> | null;
   constructor();
 }
 declare global {
@@ -5185,8 +5172,6 @@ declare class BaseClass$2 extends PreactCustomElement {
 }
 declare class ColorPicker extends BaseClass$2 implements ColorPickerProps {
   accessor alpha: boolean;
-  accessor onchange: CallbackEventListener<typeof tagName$L> | null;
-  accessor oninput: CallbackEventListener<typeof tagName$L> | null;
   accessor name: string;
   accessor defaultValue: string;
   get value(): string;
@@ -5265,11 +5250,6 @@ declare class DatePicker extends BaseClass$1 implements DatePickerProps {
   [dirtyStateSymbol]: boolean;
   /** @private */
   formResetCallback(): void;
-  accessor onviewchange: CallbackEventListener<typeof tagName$K> | null;
-  accessor onfocus: CallbackEventListener<typeof tagName$K> | null;
-  accessor onblur: CallbackEventListener<typeof tagName$K> | null;
-  accessor oninput: CallbackEventListener<typeof tagName$K> | null;
-  accessor onchange: CallbackEventListener<typeof tagName$K> | null;
   constructor();
 }
 declare global {
@@ -5363,9 +5343,6 @@ declare class DropZone extends BaseClass implements DropZoneProps {
   accessor multiple: DropZoneProps['multiple'];
   accessor name: DropZoneProps['name'];
   accessor required: DropZoneProps['required'];
-  accessor onchange: CallbackEventListener<typeof tagName$I>;
-  accessor oninput: CallbackEventListener<typeof tagName$I>;
-  accessor ondroprejected: CallbackEventListener<typeof tagName$I>;
   get value(): string;
   set value(value: string);
   get files(): File[];
@@ -5659,8 +5636,6 @@ declare class Image extends PreactCustomElement implements ImageProps {
   accessor borderStyle: ImageProps['borderStyle'];
   accessor borderColor: ImageProps['borderColor'];
   accessor borderRadius: ImageProps['borderRadius'];
-  accessor onload: CallbackEventListener<typeof tagName$C> | null;
-  accessor onerror: OnErrorEventHandler;
   constructor();
 }
 declare global {
@@ -5714,7 +5689,6 @@ declare class Link extends Link_base implements LinkProps {
   accessor target: LinkProps['target'];
   accessor download: LinkProps['download'];
   accessor lang: LinkProps['lang'];
-  accessor onclick: CallbackEventListener<typeof tagName$B> | null;
   constructor();
 }
 declare global {
@@ -6544,8 +6518,6 @@ declare class Table extends PreactCustomElement implements TableProps {
   accessor paginate: TableProps['paginate'];
   accessor hasPreviousPage: TableProps['hasPreviousPage'];
   accessor hasNextPage: TableProps['hasNextPage'];
-  accessor onpreviouspage: CallbackEventListener<typeof tagName$i> | null;
-  accessor onnextpage: CallbackEventListener<typeof tagName$i> | null;
   /**
    * @private
    * The actual table variant, which is either 'table' or 'list'.
@@ -6689,7 +6661,7 @@ export interface TableHeaderRowJSXProps
   extends Partial<TableHeaderRowProps>,
     Pick<TableHeaderRowProps$1, 'id'> {}
 
-export interface TableRowProps extends TableRowProps$1 {}
+export interface TableRowProps extends Pick<TableRowProps$1, 'children'> {}
 
 declare class TableRow extends PreactCustomElement implements TableRowProps {
   constructor();
@@ -6861,8 +6833,6 @@ declare class Thumbnail extends PreactCustomElement implements ThumbnailProps {
   accessor src: ThumbnailProps['src'];
   accessor alt: ThumbnailProps['alt'];
   accessor size: ThumbnailProps['size'];
-  accessor onload: CallbackEventListener<typeof tagName$9> | null;
-  accessor onerror: OnErrorEventHandler;
   constructor();
 }
 declare global {
@@ -7157,14 +7127,6 @@ export interface FormJSXProps extends Partial<FormProps> {
 
 declare class Form extends PreactCustomElement implements FormProps {
   constructor();
-  /**
-   * A callback that is run when the form is submitted.
-   */
-  accessor onsubmit: CallbackExtendableEventListener<typeof tagName$1> | null;
-  /**
-   * A callback that is run when the form is reset.
-   */
-  accessor onreset: CallbackEventListener<typeof tagName$1> | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -7212,35 +7174,6 @@ declare class FunctionSettings
   implements FunctionSettingsProps
 {
   constructor();
-  /**
-   * An optional callback function that will be run by the admin when the user
-   * commits their changes in the admin-rendered part of the function settings
-   * experience. If `event.waitUntil` is called with a promise, the admin will wait for the
-   * promise to resolve before committing any changes to Shopify’s servers. If
-   * the promise rejects, the admin will abort the changes and display an error,
-   * using the `message` property of the error you reject with.
-   */
-  accessor onsubmit: CallbackExtendableEventListener<typeof tagName> | null;
-  /**
-   * An optional callback function that will be run by the admin when
-   * committing the changes to Shopify’s servers fails. The error event you receive includes
-   * an `error` property that is an `AggregateError` object. This object includes
-   * an array of errors that were caused by data your extension provided.
-   * Network errors and user errors that are out of your control will not be reported here.
-   *
-   * In the `onError` callback, you should update your extension’s UI to
-   * highlight the fields that caused the errors, and display the error messages
-   * to the user.
-   */
-  accessor onerror: CallbackErrorEventListener<
-    typeof tagName,
-    FunctionSettingsErrorEvent['error']['errors'][0]
-  > | null;
-
-  /**
-   * A callback that is run when the function settings form is reset.
-   */
-  accessor onreset: CallbackEventListener<typeof tagName> | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
