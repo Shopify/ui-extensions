@@ -1,14 +1,12 @@
 export interface NavigationApiContent {
-  /**
-   * Using `(screenName: string, params?: any)` navigates to a route in current navigation tree.
+  /** Navigate to a route in current navigation tree.
    * Pushes the specified screen if it isn't present in the navigation tree, goes back to a created screen otherwise.
    * @param screenName the name of the screen you want to navigate to.
    * @param params the parameters you want to pass to that screen.
    */
-  navigate(screenName: string, params?: any): Promise<void>;
+  navigate(screenName: string, params?: any): void;
 
-  /**
-   * Using `(uri: string | URL)` opens a POS Native screen modally.
+  /** Opens a POS Native screen modally.
    * If the uri starts with `shopify:point-of-sale/` it will be treated as a POS Native screen. Otherwise it will try to navigate to an extension screen.
    * Available POS Native screens:
    * - `shopify:point-of-sale/products/{product_id}` to present product details.
