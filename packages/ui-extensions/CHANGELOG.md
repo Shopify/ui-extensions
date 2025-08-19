@@ -1,5 +1,15 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.23
+
+### Minor Changes
+
+- [#3159](https://github.com/Shopify/ui-extensions/pull/3159) [`1419068b5fada8a93bb26724aee1014c1cb8a415`](https://github.com/Shopify/ui-extensions/commit/1419068b5fada8a93bb26724aee1014c1cb8a415) Thanks [@thunderfern](https://github.com/thunderfern)! - Updated comments for documentation and adjusted the return value of the previous navigate function
+
+### Patch Changes
+
+- [#3155](https://github.com/Shopify/ui-extensions/pull/3155) [`4556253253d42d76accd96f533bb8c54ca4f2f44`](https://github.com/Shopify/ui-extensions/commit/4556253253d42d76accd96f533bb8c54ca4f2f44) Thanks [@oluwatimio](https://github.com/oluwatimio)! - Update Customer Account Avatar size prop to SizeKeyword
+
 ## 2025.10.0-rc.22
 
 ### Patch Changes
