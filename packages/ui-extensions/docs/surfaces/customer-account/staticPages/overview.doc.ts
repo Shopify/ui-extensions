@@ -149,13 +149,13 @@ const data: LandingTemplateSchema = {
         {
           name: 'Checkout components',
           subtitle: 'API Reference',
-          url: '/api/checkout-ui-extensions/components',
+          url: '/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components',
           type: 'blocks',
         },
         {
           name: 'Customer account components',
           subtitle: 'API Reference',
-          url: '/api/customer-account-ui-extensions/components',
+          url: '/docs/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components',
           type: 'blocks',
         },
         {
