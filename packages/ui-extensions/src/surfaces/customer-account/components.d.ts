@@ -6,6 +6,11 @@ import {
   AvatarEvents,
 } from './components/Avatar';
 import {
+  ButtonGroupProps,
+  ButtonGroupElement,
+  ButtonGroupElementSlots,
+} from './components/ButtonGroup';
+import {
   CustomerAccountActionProps,
   CustomerAccountActionElement,
   CustomerAccountActionElementSlots,
@@ -120,6 +125,29 @@ declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
       ['s-menu']: BaseProps & MenuProps;
+    }
+  }
+}
+
+export type ButtonGroupPropsDocs = ButtonGroupProps;
+export type ButtonGroupElementDocs = ButtonGroupElement;
+export type ButtonGroupElementSlotsDocs = ButtonGroupElementSlots;
+
+declare global {
+  interface HTMLElementTagNameMap {
+    ['s-button-group']: ButtonGroupElement;
+  }
+}
+
+declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      ['s-button-group']: BaseProps & ButtonGroupProps;
     }
   }
 }
