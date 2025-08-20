@@ -1,78 +1,80 @@
-/** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+/** VERSION: undefined **/
+/* eslint-disable import-x/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  CallbackEvent,
-  CallbackEventListener,
-  PreactBaseElementPropsWithChildren,
-  PreactCustomElement,
-} from './shared.d.ts';
+  TextAreaProps,
+  Key,
+  Ref,
+  ComponentChild,
+} from './components-shared.d.ts';
 
+export type ComponentChildren = any;
 /**
- * Use a text area to allow merchants to input or modify multiline text.
+ * Used when an element does not have children.
  */
-export interface TextAreaProps {
-  /**
-   * The label displayed above the text area.
-   */
-  label?: string;
-  /**
-   * The current value of the text area.
-   */
-  value?: string;
-  /**
-   * Callback executed when the text changes.
-   */
-  onChange?: (value: string) => void;
-  /**
-   * The initial number of lines to be displayed. Maximum of 8 lines.
-   */
-  rows?: number;
-  /**
-   * The placeholder text shown when the field is empty.
-   */
-  placeholder?: string;
-  /**
-   * Whether the field is required.
-   */
-  required?: boolean;
+export interface BaseElementProps<TClass = HTMLElement> {
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren;
+}
+export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
+  currentTarget: HTMLElementTagNameMap[T];
+  bubbles?: boolean;
+  cancelable?: boolean;
+  composed?: boolean;
+  detail?: any;
+  eventPhase: number;
+  target: HTMLElementTagNameMap[T] | null;
 }
 
-declare class TextArea extends PreactCustomElement implements TextAreaProps {
-  accessor label: TextAreaProps['label'];
-  accessor value: TextAreaProps['value'];
-  accessor onchange: CallbackEventListener<typeof tagName> | null;
-  accessor rows: TextAreaProps['rows'];
-  accessor placeholder: TextAreaProps['placeholder'];
-  accessor required: TextAreaProps['required'];
-  constructor();
+declare const tagName = 's-text-area';
+export interface TextAreaJSXProps
+  extends Pick<
+    TextAreaProps,
+    | 'label'
+    | 'details'
+    | 'value'
+    | 'placeholder'
+    | 'disabled'
+    | 'error'
+    | 'required'
+    | 'maxLength'
+    | 'rows'
+  > {
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  accessory?: ComponentChild;
 }
-
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: TextArea;
+    [tagName]: TextAreaJSXProps;
   }
 }
-
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: TextAreaJSXProps &
-        PreactBaseElementPropsWithChildren<TextArea>;
+      [tagName]: BaseElementPropsWithChildren<
+        Omit<TextAreaJSXProps, 'accessory'>
+      >;
     }
   }
 }
 
-declare const tagName = 's-text-area';
-
-export interface TextAreaJSXProps extends Partial<TextAreaProps> {
-  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
-}
-
-export {TextArea};
+export {tagName};
 export type {TextAreaJSXProps};

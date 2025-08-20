@@ -8,12 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  NumberFieldProps,
-  Key,
-  Ref,
-  ComponentChild,
-} from './components-shared.d.ts';
+import type {SearchFieldProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -41,41 +36,29 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   target: HTMLElementTagNameMap[T] | null;
 }
 
-declare const tagName = 's-number-field';
-export interface NumberFieldJSXProps
+declare const tagName = 's-search-field';
+export interface SearchFieldJSXProps
   extends Pick<
-    NumberFieldProps,
-    | 'label'
-    | 'details'
-    | 'value'
-    | 'placeholder'
-    | 'disabled'
-    | 'error'
-    | 'required'
-    | 'max'
-    | 'min'
+    SearchFieldProps,
+    'disabled' | 'defaultValue' | 'placeholder' | 'value'
   > {
-  inputMode?: Extract<NumberFieldProps['inputMode'], 'decimal' | 'numeric'>;
-  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  accessory?: ComponentChild;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: NumberFieldJSXProps;
+    [tagName]: SearchFieldJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<
-        Omit<NumberFieldJSXProps, 'accessory'>
-      >;
+      [tagName]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {NumberFieldJSXProps};
+export type {SearchFieldJSXProps};

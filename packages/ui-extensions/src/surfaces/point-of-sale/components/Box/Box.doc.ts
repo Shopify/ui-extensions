@@ -1,23 +1,23 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Badge',
+  name: 'Box',
   description:
-    "Use `s-badge` to inform merchants of the status of an item or action that's been taken. Badges display text with visual styling to communicate status information.",
-  thumbnail: 'badge-thumbnail.png',
+    'Use `s-box` to create flexible layout containers with consistent spacing and styling. Box provides a foundation for building structured layouts.',
+  thumbnail: 'box-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
       description: '',
-      type: 'Badge',
+      type: 'Box',
     },
   ],
   category: 'Polaris web components',
-  subCategory: 'Titles and text',
+  subCategory: 'Structure',
   defaultExample: {
-    image: 'badge-default.png',
+    image: 'box-default.png',
     codeblock: {
       title: 'Code',
       tabs: [

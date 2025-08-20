@@ -49,8 +49,14 @@ export interface ButtonJSXProps
     | 'variant'
     | 'id'
   > {
-  tone?: Extract<ButtonProps['tone'], 'auto' | 'critical'>;
+  tone?: Extract<
+    ButtonProps['tone'],
+    'auto' | 'critical' | 'warning' | 'caution'
+  >;
   variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
+  /**
+   * test
+   */
   onClick?: (event: CallbackEvent<typeof tagName>) => void;
   children?: ComponentChildren;
 }

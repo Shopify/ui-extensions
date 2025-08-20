@@ -1,23 +1,33 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Badge',
+  name: 'TextField',
   description:
-    "Use `s-badge` to inform merchants of the status of an item or action that's been taken. Badges display text with visual styling to communicate status information.",
-  thumbnail: 'badge-thumbnail.png',
+    'Use `s-text-field` to capture single-line text input from users. Provides a standard input field with validation and accessibility features.',
+  thumbnail: 'text-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
       description: '',
-      type: 'Badge',
+      type: 'TextField',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'TextFieldSlots',
+    },
+    {
+      title: 'Events',
+      description: '',
+      type: 'TextFieldEvents',
     },
   ],
   category: 'Polaris web components',
-  subCategory: 'Titles and text',
+  subCategory: 'Forms',
   defaultExample: {
-    image: 'badge-default.png',
+    image: 'text-field-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
