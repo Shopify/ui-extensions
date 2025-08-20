@@ -152,6 +152,7 @@ export function getExamples(
     ...createExample('purchase.thank-you.footer.render-after/default'),
     ...createExample('purchase.checkout.chat.render/default'),
     ...createExample('purchase.thank-you.chat.render/default'),
+    ...createExample('purchase.thank-you.announcement.render/default'),
     'analytics-publish': {
       description:
         'You can publish analytics events to the Shopify analytics frameworks and they will be propagated to all web pixels on the page.',
@@ -768,6 +769,13 @@ const SHIPPING_OPTION_LIST_API_DEFINITION = {
   type: 'ShippingOptionListApi',
 };
 
+const ANNOUNCEMENT_API_DEFINITION = {
+  title: 'AnnouncementApi',
+  description:
+    'The API object provided to the `purchase.thank-you.announcement.render` extension target.',
+  type: 'AnnouncementApi',
+};
+
 const COMMON_API = {
   category: 'Targets',
   isVisualComponent: false,
@@ -821,6 +829,15 @@ export const CHECKOUT_CART_LINE_ITEM_API = {
 
 export const THANK_YOU_API = {
   definitions: [ORDER_CONFIRMATION_API_DEFINITION, STANDARD_API_DEFINITION],
+  ...COMMON_API,
+};
+
+export const THANK_YOU_ANNOUNCEMENT_API = {
+  definitions: [
+    ANNOUNCEMENT_API_DEFINITION,
+    ORDER_CONFIRMATION_API_DEFINITION,
+    STANDARD_API_DEFINITION,
+  ],
   ...COMMON_API,
 };
 

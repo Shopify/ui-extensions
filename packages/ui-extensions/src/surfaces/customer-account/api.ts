@@ -97,3 +97,5 @@ export type {
   OrderApi,
   ExtensionSettings,
 } from './api/standard-api/standard-api';
+
+export type {AnnouncementApi} from './api/announcement/announcement';

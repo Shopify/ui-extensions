@@ -59,6 +59,13 @@ const FULFILLMENT_API_DEFINITION = {
   type: 'FulfillmentApi',
 };
 
+const ANNOUNCEMENT_API_DEFINITION = {
+  title: 'AnnouncementApi',
+  description:
+    'The API object provided to this and other `announcement` extension targets.',
+  type: 'AnnouncementApi',
+};
+
 export const REQUIRES_PROTECTED_CUSTOMER_DATA =
   'access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) for some properties.';
 
@@ -95,6 +102,29 @@ export const ORDER_STATUS_API = {
     CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION,
   ],
   ...COMMON_API,
+};
+
+export const ORDER_STATUS_ANNOUNCEMENT_API = {
+  definitions: [
+    ANNOUNCEMENT_API_DEFINITION,
+    ORDER_STATUS_API_DEFINITION,
+    CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION,
+  ],
+  ...COMMON_API,
+};
+
+export const ORDER_INDEX_ANNOUNCEMENT_API = {
+  definitions: [
+    ANNOUNCEMENT_API_DEFINITION,
+    CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION,
+  ],
+};
+
+export const PROFILE_ANNOUNCEMENT_API = {
+  definitions: [
+    ANNOUNCEMENT_API_DEFINITION,
+    CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION,
+  ],
 };
 
 export const FULFILLMENT_DETAILS_APIS = {
