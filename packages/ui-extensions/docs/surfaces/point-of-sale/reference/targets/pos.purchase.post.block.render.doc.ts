@@ -14,7 +14,7 @@ const data: ReferenceEntityTemplateSchema = {
     ),
   },
   category: 'Targets',
-  subCategory: 'Post-purchase',
+  subCategory: 'Block',
   isVisualComponent: false,
   related: [
     {

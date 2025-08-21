@@ -9,7 +9,7 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: generateCodeBlock('Modal', 'targets', 'pos-home-modal-render'),
   },
   category: 'Targets',
-  subCategory: 'Smart grid',
+  subCategory: 'Tile',
   isVisualComponent: false,
   related: [
     {
