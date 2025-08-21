@@ -5,6 +5,7 @@ import {
   AvatarElement,
   AvatarEvents,
 } from './components/Avatar';
+import {MenuProps, MenuElement} from './components/Menu';
 
 export interface CustomerAccountActionProps extends IdProps {
   /**
@@ -114,6 +115,27 @@ declare module 'preact' {
     interface IntrinsicElements {
       ['s-avatar']: BaseElementPropsWithChildren<AvatarElementDocs> &
         AvatarPropsDocs;
+    }
+  }
+}
+
+export type MenuPropsDocs = MenuProps;
+export type MenuElementDocs = MenuElement;
+
+declare global {
+  interface HTMLElementTagNameMap {
+    ['s-menu']: MenuElementDocs;
+  }
+}
+
+declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+  }
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      ['s-menu']: BaseProps & MenuProps;
     }
   }
 }
