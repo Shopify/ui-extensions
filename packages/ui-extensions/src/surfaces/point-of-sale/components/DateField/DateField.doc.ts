@@ -1,23 +1,33 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Badge',
+  name: 'DateField',
   description:
-    "Use `s-badge` to inform merchants of the status of an item or action that's been taken. Badges display text with visual styling to communicate status information.",
-  thumbnail: 'badge-thumbnail.png',
+    'Use `s-date-field` to capture date input from users. Provides a consistent interface for date selection with proper validation.',
+  thumbnail: 'date-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
       description: '',
-      type: 'Badge',
+      type: 'DateField',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'DateFieldSlots',
+    },
+    {
+      title: 'Events',
+      description: '',
+      type: 'DateFieldEvents',
     },
   ],
   category: 'Polaris web components',
-  subCategory: 'Titles and text',
+  subCategory: 'Forms',
   defaultExample: {
-    image: 'badge-default.png',
+    image: 'date-field-default.png',
     codeblock: {
       title: 'Code',
       tabs: [

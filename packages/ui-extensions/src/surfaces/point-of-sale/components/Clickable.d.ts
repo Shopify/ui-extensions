@@ -8,12 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  NumberFieldProps,
-  Key,
-  Ref,
-  ComponentChild,
-} from './components-shared.d.ts';
+import type {ClickableProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -41,41 +36,23 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   target: HTMLElementTagNameMap[T] | null;
 }
 
-declare const tagName = 's-number-field';
-export interface NumberFieldJSXProps
-  extends Pick<
-    NumberFieldProps,
-    | 'label'
-    | 'details'
-    | 'value'
-    | 'placeholder'
-    | 'disabled'
-    | 'error'
-    | 'required'
-    | 'max'
-    | 'min'
-  > {
-  inputMode?: Extract<NumberFieldProps['inputMode'], 'decimal' | 'numeric'>;
-  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  accessory?: ComponentChild;
+declare const tagName = 's-clickable';
+export interface ClickableJSXProps extends Pick<ClickableProps, 'disabled'> {
+  children?: ComponentChildren;
+  onClick?: (event: CallbackEvent<typeof tagName>) => void;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: NumberFieldJSXProps;
+    [tagName]: ClickableJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<
-        Omit<NumberFieldJSXProps, 'accessory'>
-      >;
+      [tagName]: BaseElementPropsWithChildren<ClickableJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {NumberFieldJSXProps};
+export type {ClickableJSXProps};

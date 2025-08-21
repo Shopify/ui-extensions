@@ -8,7 +8,12 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {TextFieldProps, Key, Ref} from './components-shared.d.ts';
+import type {
+  TextFieldProps,
+  Key,
+  Ref,
+  ComponentChild,
+} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -38,11 +43,22 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 
 declare const tagName = 's-text-field';
 export interface TextFieldJSXProps
-  extends Pick<TextFieldProps, 'label' | 'details' | 'value' | 'placeholder'> {
+  extends Pick<
+    TextFieldProps,
+    | 'label'
+    | 'details'
+    | 'value'
+    | 'placeholder'
+    | 'disabled'
+    | 'error'
+    | 'required'
+    | 'maxLength'
+  > {
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  accessory?: ComponentChild;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -52,7 +68,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<TextFieldJSXProps>;
+      [tagName]: BaseElementPropsWithChildren<
+        Omit<TextFieldJSXProps, 'accessory'>
+      >;
     }
   }
 }

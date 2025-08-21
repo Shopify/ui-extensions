@@ -1,23 +1,28 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Badge',
+  name: 'SearchField',
   description:
-    "Use `s-badge` to inform merchants of the status of an item or action that's been taken. Badges display text with visual styling to communicate status information.",
-  thumbnail: 'badge-thumbnail.png',
+    'Use `s-search-field` to provide search functionality within your application. Includes built-in search styling and behavior optimized for filtering content.',
+  thumbnail: 'search-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
       description: '',
-      type: 'Badge',
+      type: 'SearchField',
+    },
+    {
+      title: 'Events',
+      description: '',
+      type: 'SearchFieldEvents',
     },
   ],
   category: 'Polaris web components',
-  subCategory: 'Titles and text',
+  subCategory: 'Forms',
   defaultExample: {
-    image: 'badge-default.png',
+    image: 'search-field-default.png',
     codeblock: {
       title: 'Code',
       tabs: [

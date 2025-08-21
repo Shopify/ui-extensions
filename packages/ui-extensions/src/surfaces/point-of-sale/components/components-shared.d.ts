@@ -1508,6 +1508,48 @@ export interface FieldDecorationProps {
    */
   accessory?: ComponentChildren;
 }
+export interface NumberConstraintsProps {
+  /**
+   * The highest decimal or integer to be accepted for the field.
+   * When used with `step` the value will round down to the max number.
+   *
+   * Note: a user will still be able to use the keyboard to input a number higher than
+   * the max. It is up to the developer to add appropriate validation.
+   *
+   * @default Infinity
+   */
+  max?: number;
+  /**
+   * The lowest decimal or integer to be accepted for the field.
+   * When used with `step` the value will round up to the min number.
+   *
+   * Note: a user will still be able to use the keyboard to input a number lower than
+   * the min. It is up to the developer to add appropriate validation.
+   *
+   * @default -Infinity
+   */
+  min?: number;
+  /**
+   * The amount the value can increase or decrease by. This can be an integer or decimal.
+   * If a `max` or `min` is specified with `step` when increasing/decreasing the value
+   * via the buttons, the final value will always round to the `max` or `min`
+   * rather than the closest valid amount.
+   *
+   * @default 1
+   */
+  step?: number;
+  /**
+   * Sets the type of controls displayed in the field.
+   *
+   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property.
+   * Appropriate mouse and [keyboard interactions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/spinbutton_role#keyboard_interactions) to control the value of the field are enabled.
+   * - `none`: no controls are displayed and users must input the value manually. Arrow keys and scroll wheels can’t be used either to avoid accidental changes.
+   * - `auto`: the presence of the controls depends on the surface and context.
+   *
+   * @default 'auto'
+   */
+  controls?: 'auto' | 'stepper' | 'none';
+}
 export interface MinMaxLengthProps {
   /**
    * Specifies the maximum number of characters allowed.
@@ -1626,6 +1668,37 @@ export interface ChoiceListProps
    * @default 'auto'
    */
   variant?: 'auto' | 'list' | 'inline' | 'block' | 'grid';
+}
+export interface ClickableProps
+  extends GlobalProps,
+    BaseBoxProps,
+    BaseClickableProps {
+  /**
+   * Disables the clickable, and indicates to assistive technology that the loading is in progress.
+   *
+   * This also disables the clickable.
+   */
+  loading?: BaseClickableProps['loading'];
+  /**
+   * Disables the clickable, meaning it cannot be clicked or receive focus.
+   *
+   * In this state, onClick will not fire.
+   * If the click event originates from a child element, the event will immediately stop propagating from this element.
+   *
+   * However, items within the clickable can still receive focus and be interacted with.
+   *
+   * This has no impact on the visual state by default,
+   * but developers are encouraged to style the clickable accordingly.
+   */
+  disabled?: BaseClickableProps['disabled'];
+  /**
+   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
+   *
+   * @default ''
+   */
+  lang?: string;
 }
 export interface AutocompleteProps<
   AutocompleteField extends AnyAutocompleteField,
@@ -1771,6 +1844,212 @@ export type TextAutocompleteField = ExtractStrict<
   | 'cc-additional-name'
   | 'cc-family-name'
   | 'cc-type'
+>;
+export interface DatePickerProps
+  extends GlobalProps,
+    InputProps,
+    FocusEventProps {
+  /**
+   * Default month to display in `YYYY-MM` format.
+   *
+   * This value is used until `view` is set, either directly or as a result of user interaction.
+   *
+   * Defaults to the current month in the user's locale.
+   */
+  defaultView?: string;
+  /**
+   * Displayed month in `YYYY-MM` format.
+   *
+   * `onViewChange` is called when this value changes.
+   *
+   * Defaults to `defaultView`.
+   */
+  view?: string;
+  /**
+   * Called whenever the month to display changes.
+   *
+   * @param view The new month to display in `YYYY-MM` format.
+   */
+  onViewChange?: (view: string) => void;
+  /**
+   * The type of selection the date picker allows.
+   *
+   * - `single` allows selecting a single date.
+   * - `multiple` allows selecting multiple non-contiguous dates.
+   * - `range` allows selecting a single range of dates.
+   *
+   * @default "single"
+   */
+  type?: 'single' | 'multiple' | 'range';
+  /**
+   * Dates that can be selected.
+   *
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   *
+   * The default `''` allows all dates.
+   *
+   * - Dates in `YYYY-MM-DD` format allow a single date.
+   * - Dates in `YYYY-MM` format allow a whole month.
+   * - Dates in `YYYY` format allow a whole year.
+   * - Ranges are expressed as `start--end`.
+   *     - Ranges are inclusive.
+   *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
+   *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+   *       So `2024--` is equivalent to `2024-01-01--`.
+   *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+   *       So `--2024` is equivalent to `--2024-12-31`.
+   *     - Whitespace is allowed either side of `--`.
+   *
+   * @default ""
+   *
+   * @example
+   * `2024-02--2025` // allow any date from February 2024 to the end of 2025
+   * `2024-02--` // allow any date from February 2024 to the end of the month
+   * `2024-05-09, 2024-05-11` // allow only the 9th and 11th of May 2024
+   */
+  allow?: string;
+  /**
+   * Dates that cannot be selected. These subtract from `allowDates`.
+   *
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   *
+   * The default `''` has no effect on `allowDates`.
+   *
+   * - Dates in `YYYY-MM-DD` format disallow a single date.
+   * - Dates in `YYYY-MM` format disallow a whole month.
+   * - Dates in `YYYY` format disallow a whole year.
+   * - Ranges are expressed as `start--end`.
+   *     - Ranges are inclusive.
+   *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
+   *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+   *       So `2024--` is equivalent to `2024-01-01--`.
+   *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+   *       So `--2024` is equivalent to `--2024-12-31`.
+   *     - Whitespace is allowed either side of `--`.
+   *
+   * @default ""
+   *
+   * @example
+   * `--2024-02` // disallow any date before February 2024
+   * `2024-05-09, 2024-05-11` // disallow the 9th and 11th of May 2024
+   */
+  disallow?: string;
+  /**
+   * Days of the week that can be selected. These intersect with the result of `allowDates` and `disallowDates`.
+   *
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   *
+   * The default `''` has no effect on the result of `allowDates` and `disallowDates`.
+   *
+   * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
+   *
+   * @default ""
+   *
+   * @example
+   * 'saturday, sunday' // allow only weekends within the result of `allowDates` and `disallowDates`.
+   */
+  allowDays?: string;
+  /**
+   * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allowDates` and `disallowDates`.
+   *
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   *
+   * The default `''` has no effect on `allowDays`.
+   *
+   * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
+   *
+   * @default ""
+   *
+   * @example
+   * 'saturday, sunday' // disallow weekends within the result of `allowDates` and `disallowDates`.
+   */
+  disallowDays?: string;
+  /**
+   * Default selected value.
+   *
+   * The default means no date is selected.
+   *
+   * If the provided value is invalid, no date is selected.
+   *
+   * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+   * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+   * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+   *
+   * @default ""
+   */
+  defaultValue?: string;
+  /**
+   * Current selected value.
+   *
+   * The default means no date is selected.
+   *
+   * If the provided value is invalid, no date is selected.
+   *
+   * Otherwise:
+   *
+   * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+   * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+   * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+   *
+   * Events:
+   *
+   * - `onInput` - Invoked when any date is selected. Will fire before `onChange`.
+   * - `onChange` - Invoked when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
+   *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
+   *
+   * @default ""
+   */
+  value?: string;
+}
+export interface DateFieldProps
+  extends GlobalProps,
+    BaseTextFieldProps,
+    Pick<
+      DatePickerProps,
+      | 'view'
+      | 'defaultView'
+      | 'value'
+      | 'defaultValue'
+      | 'allow'
+      | 'disallow'
+      | 'onViewChange'
+    >,
+    AutocompleteProps<DateAutocompleteField> {
+  /**
+   * Callback when the field has an invalid date.
+   * This callback will be called, if the date typed is invalid or disabled.
+   *
+   * Dates that don’t exist or have formatting errors are considered invalid. Some examples of invalid dates are:
+   * - 2021-02-31: February doesn’t have 31 days
+   * - 2021-02-00: The day can’t be 00
+   *
+   * Disallowed dates are considered invalid.
+   *
+   * It’s important to note that this callback will be called only when the user **finishes editing** the date,
+   * and it’s called right after the `onChange` callback.
+   * The field is **not** validated on every change to the input. Once the buyer has signalled that
+   * they have finished editing the field (typically, by blurring the field), the field gets validated and the callback is run if the value is invalid.
+   */
+  onInvalid?: (event: Event) => void;
+}
+export type DateAutocompleteField = ExtractStrict<
+  AnyAutocompleteField,
+  | 'bday'
+  | 'bday-day'
+  | 'bday-month'
+  | 'bday-year'
+  | 'cc-expiry'
+  | 'cc-expiry-month'
+  | 'cc-expiry-year'
+>;
+export interface EmailFieldProps
+  extends GlobalProps,
+    BaseTextFieldProps,
+    MinMaxLengthProps,
+    AutocompleteProps<EmailAutocompleteField> {}
+export type EmailAutocompleteField = ExtractStrict<
+  AnyAutocompleteField,
+  'email' | `${AutocompleteAddressGroup} email`
 >;
 export type SpacingKeyword = SizeKeyword | 'none';
 export interface GapProps {
@@ -1951,6 +2230,24 @@ export interface ModalProps
    */
   children?: ComponentChildren;
 }
+export interface NumberFieldProps
+  extends GlobalProps,
+    BaseTextFieldProps,
+    AutocompleteProps<NumberAutocompleteField>,
+    NumberConstraintsProps,
+    FieldDecorationProps {
+  /**
+   * Sets the virtual keyboard.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
+   * @default 'decimal'
+   */
+  inputMode?: 'decimal' | 'numeric';
+}
+export type NumberAutocompleteField = ExtractStrict<
+  AnyAutocompleteField,
+  'one-time-code' | 'cc-number' | 'cc-csc'
+>;
 export type OverflowKeyword = 'auto' | 'hidden';
 export interface ScrollBoxProps
   extends GlobalProps,
@@ -1971,6 +2268,12 @@ export interface ScrollBoxProps
    */
   overflow?: OverflowKeyword | `${OverflowKeyword} ${OverflowKeyword}`;
 }
+export interface SearchFieldProps
+  extends GlobalProps,
+    BaseTextFieldProps,
+    MinMaxLengthProps,
+    AutocompleteProps<SearchAutocompleteField> {}
+export type SearchAutocompleteField = TextAutocompleteField;
 export interface StackProps
   extends GlobalProps,
     BaseBoxPropsWithRole,
@@ -2109,6 +2412,18 @@ export type TextType =
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
    */
   | 'generic';
+export interface TextAreaProps
+  extends GlobalProps,
+    BaseTextFieldProps,
+    MinMaxLengthProps,
+    AutocompleteProps<TextAutocompleteField> {
+  /**
+   * A number of visible text lines.
+   *
+   * @default 2
+   */
+  rows?: number;
+}
 export interface TextFieldProps
   extends GlobalProps,
     BaseTextFieldProps,

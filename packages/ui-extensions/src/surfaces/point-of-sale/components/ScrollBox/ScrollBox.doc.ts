@@ -1,23 +1,23 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Badge',
+  name: 'ScrollBox',
   description:
-    "Use `s-badge` to inform merchants of the status of an item or action that's been taken. Badges display text with visual styling to communicate status information.",
-  thumbnail: 'badge-thumbnail.png',
+    'Use `s-scroll-box` to create scrollable content areas with fixed dimensions. Provides controlled scrolling behavior for content that exceeds container bounds.',
+  thumbnail: 'scroll-box-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
       description: '',
-      type: 'Badge',
+      type: 'ScrollBox',
     },
   ],
   category: 'Polaris web components',
-  subCategory: 'Titles and text',
+  subCategory: 'Structure',
   defaultExample: {
-    image: 'badge-default.png',
+    image: 'scroll-box-default.png',
     codeblock: {
       title: 'Code',
       tabs: [

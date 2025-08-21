@@ -8,7 +8,13 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ModalProps, Key, Ref} from './components-shared.d.ts';
+import type {
+  ModalProps,
+  Key,
+  Ref,
+  ComponentChild,
+} from './components-shared.d.ts';
+import {ReactNode} from 'react';
 
 export type ComponentChildren = any;
 /**
@@ -35,22 +41,25 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   eventPhase: number;
   target: HTMLElementTagNameMap[T] | null;
 }
-export type CallbackToggleEvent<
+export interface CallbackToggleEvent<
   TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends ToggleEvent = ToggleEvent,
-> = TEvent & {
-  currentTarget: HTMLElementTagNameMap[TTagName];
-};
+> extends CallbackEvent<TTagName> {
+  newState?: 'open' | 'closed';
+  oldState?: 'open' | 'closed';
+  detail: {
+    newState: 'open' | 'closed';
+    oldState: 'open' | 'closed';
+  };
+}
 
 declare const tagName = 's-modal';
-export interface ModalJSXProps extends Pick<ModalProps, 'id'> {
+export interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
+  primaryAction?: ComponentChild;
+  secondaryActions?: ComponentChild;
   onHide?: (event: CallbackEvent<typeof tagName>) => void | null;
   onShow?: (event: CallbackEvent<typeof tagName>) => void | null;
-  onAfterHide?: (event: CallbackEvent<typeof tagName>) => void | null;
-  onAfterShow?: (event: CallbackEvent<typeof tagName>) => void | null;
   onToggle?: (event: CallbackToggleEvent<typeof tagName>) => void | null;
-  onAfterToggle?: (event: CallbackToggleEvent<typeof tagName>) => void | null;
-  children?: ComponentChildren;
+  children?: ReactNode;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -60,7 +69,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<ModalJSXProps>;
+      [tagName]: BaseElementPropsWithChildren<
+        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
+      >;
     }
   }
 }

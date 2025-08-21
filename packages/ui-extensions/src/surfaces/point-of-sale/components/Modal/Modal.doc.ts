@@ -1,23 +1,33 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Badge',
+  name: 'Modal',
   description:
-    "Use `s-badge` to inform merchants of the status of an item or action that's been taken. Badges display text with visual styling to communicate status information.",
-  thumbnail: 'badge-thumbnail.png',
+    "Use `s-modal` to display content in a full-screen overlay. Modals are used to display important information that requires the merchant's attention.",
+  thumbnail: 'modal-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
       description: '',
-      type: 'Badge',
+      type: 'Modal',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'ModalSlots',
+    },
+    {
+      title: 'Events',
+      description: '',
+      type: 'ModalEvents',
     },
   ],
   category: 'Polaris web components',
-  subCategory: 'Titles and text',
+  subCategory: 'Structure',
   defaultExample: {
-    image: 'badge-default.png',
+    image: 'modal-default.png',
     codeblock: {
       title: 'Code',
       tabs: [

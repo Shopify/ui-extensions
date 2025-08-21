@@ -30,10 +30,10 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 declare const tagName = 's-text';
 export interface TextJSXProps extends Pick<TextProps, 'tone' | 'type'> {
   color?: 'subdued' | 'base' | 'strong';
-  type?: Extract<TextProps['type'], 'emphasis' | 'strong' | 'small' | 'offset'>;
+  type?: Extract<TextProps['type'], 'strong' | 'small' | 'generic'>;
   tone?: Extract<
     TextProps['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical'
+    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
   >;
   children?: ComponentChildren;
 }
