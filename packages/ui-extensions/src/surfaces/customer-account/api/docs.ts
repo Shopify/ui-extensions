@@ -3,6 +3,24 @@ import {StandardApi} from './standard-api/standard-api';
 import {CartLineItemApi} from './cart-line/cart-line-item';
 import {FullPageApi} from '../extension-targets';
 
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
+};
+
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
+  | (EventListener & {
+      (event: CallbackEvent<TTagName, TEvent>): void;
+    })
+  | null;
+
+declare const buttonTagName = 's-button';
+
 interface ButtonProps {
   /**
    * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
@@ -72,8 +90,10 @@ interface ButtonProps {
   /**
    * Callback when the button is activated.
    * This will be called before the action indicated by `type`.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
    */
-  onClick?(): void;
+  click?: ((event: CallbackEventListener<typeof buttonTagName>) => void) | null;
 }
 
 export interface Docs_OrderStatus_MetafieldsApi
@@ -167,16 +187,16 @@ export interface Docs_FullPageApi extends FullPageApi {}
 export interface Docs_Page_Button_PrimaryAction
   extends Pick<
     ButtonProps,
-    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+    'click' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
   > {}
 export interface Docs_Page_Button_SecondaryAction
   extends Pick<
     ButtonProps,
-    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+    'click' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
   > {}
 
 export interface Docs_Page_Button_BreadcrumbAction
-  extends Pick<ButtonProps, 'onClick' | 'href'> {
+  extends Pick<ButtonProps, 'click' | 'href'> {
   /**
    * A label used for buyers using assistive technologies. Needed because `children` passed to this component will be discarded.
    */
@@ -186,19 +206,19 @@ export interface Docs_Page_Button_BreadcrumbAction
 export interface Docs_ResourceItem_Button_Action
   extends Pick<
     ButtonProps,
-    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+    'click' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
   > {}
 
 export interface Docs_Menu_Button_Action
   extends Omit<
     ButtonProps,
-    'kind' | 'textDecoration' | 'inlineAlignment' | 'inlineSize' | 'size'
+    'variant' | 'textDecoration' | 'inlineAlignment' | 'inlineSize' | 'size'
   > {}
 
 export interface Docs_OrderActionMenu_Button
   extends Pick<
     ButtonProps,
-    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href' | 'tone'
+    'click' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href' | 'tone'
   > {
   /**
    * Destination URL to link to.
@@ -211,11 +231,11 @@ export interface Docs_OrderActionMenu_Button
 export interface Docs_CustomerAccountAction_Button_PrimaryAction
   extends Pick<
     ButtonProps,
-    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+    'click' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
   > {}
 
 export interface Docs_CustomerAccountAction_Button_SecondaryAction
   extends Pick<
     ButtonProps,
-    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+    'click' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
   > {}
