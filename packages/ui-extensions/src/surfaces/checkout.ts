@@ -84,6 +84,7 @@ export type {
   ValidationError,
   MailingAddress,
   ShippingAddress,
+  StatefulRemoteSubscribable,
 } from './checkout/api/shared';
 
 export type {

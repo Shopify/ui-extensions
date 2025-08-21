@@ -1,5 +1,4 @@
-import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
-
+import type {StatefulRemoteSubscribable} from '../shared';
 import type {PickupLocationOption} from '../standard/standard';
 
 export interface PickupLocationItemApi {

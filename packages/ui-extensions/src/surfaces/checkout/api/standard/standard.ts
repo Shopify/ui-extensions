@@ -1,11 +1,10 @@
-import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
-
 import type {
   ValidationError,
   SellingPlan,
   Attribute,
   MailingAddress,
   ShippingAddress,
+  StatefulRemoteSubscribable,
 } from '../shared';
 import type {ExtensionTarget} from '../../extension-targets';
 import type {
@@ -983,6 +982,7 @@ export interface CartLine {
    */
   parentRelationship: CartLineParentRelationship | null;
 }
+
 export interface CartLineParentRelationship {
   /**
    * The parent cart line that a cart line is associated with.

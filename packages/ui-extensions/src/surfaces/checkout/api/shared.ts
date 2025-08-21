@@ -1,4 +1,4 @@
-import type {CountryCode} from '../../../shared';
+import type {CountryCode, ReadonlySignalLike} from '../../../shared';
 
 export interface ValidationError {
   /**
@@ -147,4 +147,15 @@ export interface ShippingAddress extends MailingAddress {
    * Specifies whether the address should be saved to the buyer's account.
    */
   oneTimeUse?: boolean;
+}
+
+/**
+ * A remote-subscribable object exposed to a sandboxed web worker.
+ *
+ * Example: extensions use this to get updates about an object
+ * managed by Checkout on the main thread.
+ */
+export interface StatefulRemoteSubscribable<T> extends ReadonlySignalLike<T> {
+  readonly current: T;
+  destroy(): Promise<void>;
 }
