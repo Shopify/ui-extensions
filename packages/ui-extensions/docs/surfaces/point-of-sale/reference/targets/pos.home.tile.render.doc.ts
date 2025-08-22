@@ -8,7 +8,7 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: generateCodeBlock('Tile', 'targets', 'pos-home-tile-render'),
   },
   category: 'Targets',
-  subCategory: 'Smart grid',
+  subCategory: 'Tile',
   isVisualComponent: false,
   related: [
     {

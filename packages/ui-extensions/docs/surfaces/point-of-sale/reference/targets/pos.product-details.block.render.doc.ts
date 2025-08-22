@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
     ),
   },
   category: 'Targets',
-  subCategory: 'Product details',
+  subCategory: 'Block',
   isVisualComponent: false,
   related: [
     {

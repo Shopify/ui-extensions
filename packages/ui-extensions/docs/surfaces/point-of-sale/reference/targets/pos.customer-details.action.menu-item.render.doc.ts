@@ -14,7 +14,7 @@ const data: ReferenceEntityTemplateSchema = {
     ),
   },
   category: 'Targets',
-  subCategory: 'Customer details',
+  subCategory: 'Action',
   isVisualComponent: false,
   related: [
     {

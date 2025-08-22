@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: generateCodeBlock('Action', 'targets', 'product-details-action'),
   },
   category: 'Targets',
-  subCategory: 'Product details',
+  subCategory: 'Action',
   isVisualComponent: false,
   related: [
     {
