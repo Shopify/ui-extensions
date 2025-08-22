@@ -21,6 +21,9 @@ const data: LandingTemplateSchema = {
 - Added in POS version: N/A
 - Release day: N/A
 
+### Features
+- Added capability to navigate to POS native resource details screens like product, order, draft order, customer and staff details using the [Navigation API](apis/navigation-api?example=example-navigate-to-a-pos-native-screen-with-uri).
+
 ### Important Fixes
 
 - **POS 10.10.0**:
