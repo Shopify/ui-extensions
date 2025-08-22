@@ -5,7 +5,11 @@ export default extension(
   (root, api) => {
     const button = root.createComponent(Button, {
       onPress: () => {
-        api.cart.addLineItemSellingPlan(api.cartLineItem.uuid);
+        api.cart.addLineItemSellingPlan({
+          lineItemUuid: api.cartLineItem.uuid,
+          sellingPlanId: 123,
+          sellingPlanName: 'My Selling Plan',
+        });
       },
     });
 
