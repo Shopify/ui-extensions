@@ -277,11 +277,6 @@ export interface FullExtensionNavigation extends StandardExtensionNavigation {
   ): void;
 }
 
-export type ExtensionNavigation<Target extends keyof ExtensionTargets> =
-  Target extends RenderCustomerAccountFullPageExtensionTarget
-    ? FullExtensionNavigation
-    : StandardExtensionNavigation;
-
 export interface NavigateFunction {
   /**
    * Navigates to a specific URL, updating any provided state in the history entries list.
