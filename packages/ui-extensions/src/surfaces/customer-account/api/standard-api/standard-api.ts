@@ -200,13 +200,13 @@ export interface Localization {
 /**
  * An enumerated value representing the type of navigation.
  */
-export type NavigationType = 'push' | 'replace' | 'traverse';
+export type NavigationTypeString = 'push' | 'replace' | 'traverse';
 
-export interface NavigationOptions {
+export interface NavigationNavigateOptions {
   /**
    * Developer-defined information to be stored in the associated NavigationHistoryEntry once the navigation is complete, retrievable via getState().
    */
-  state?: Record<string, any>;
+  state?: unknown;
   /**
    * An enumerated value that sets the history behavior of this navigation.
    */
@@ -222,11 +222,15 @@ export interface NavigationHistoryEntry {
   /**
    * Returns the URL of this history entry.
    */
-  url: string;
+  url: string | null;
   /**
    * Returns a clone of the available state associated with this history entry.
    */
-  getState(): Record<string, any>;
+  getState(): unknown;
+}
+
+export interface NavigationUpdateCurrentEntryOptions {
+  state: unknown;
 }
 
 /**
@@ -236,7 +240,7 @@ export interface NavigationCurrentEntryChangeEvent {
   /**
    * Returns the type of the navigation that resulted in the change.
    */
-  navigationType: NavigationType;
+  navigationType?: NavigationTypeString;
   /**
    * Returns the NavigationHistoryEntry that was navigated from.
    */
@@ -258,7 +262,7 @@ export interface FullExtensionNavigation extends StandardExtensionNavigation {
   /**
    * The updateCurrentEntry() method of the Navigation interface updates the state of the currentEntry; used in cases where the state change will be independent of a navigation or reload.
    */
-  updateCurrentEntry(options: {state: Record<string, any>}): void;
+  updateCurrentEntry(options: NavigationUpdateCurrentEntryOptions): void;
   addEventListener(
     type: 'currententrychange',
     cb: (event: NavigationCurrentEntryChangeEvent) => void,
@@ -274,7 +278,7 @@ export interface NavigateFunction {
    * Navigates to a specific URL, updating any provided state in the history entries list.
    * @param url The destination URL to navigate to.
    */
-  (url: string, options?: NavigationOptions): void;
+  (url: string, options?: NavigationNavigateOptions): void;
 }
 
 export type Version = string;

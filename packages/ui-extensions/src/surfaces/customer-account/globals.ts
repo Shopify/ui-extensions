@@ -1,3 +1,4 @@
+import {FullExtensionNavigation} from './api';
 import type {ExtensionTargets} from './extension-targets';
 
 export interface ShopifyGlobal {
@@ -13,4 +14,5 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const shopify: ShopifyGlobal;
+  const navigation: FullExtensionNavigation;
 }
