@@ -18,6 +18,7 @@ export type StandardComponents =
   | 'Image'
   | 'Link'
   | 'ListItem'
+  | 'Menu'
   | 'MoneyField'
   | 'NumberField'
   | 'Option'

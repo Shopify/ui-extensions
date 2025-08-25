@@ -11,6 +11,7 @@
  * https://github.com/Shopify/ui-api-design/issues/139
  */
 export type ComponentChildren = any;
+export type StringChildren = string;
 export interface GlobalProps {
   /**
    * A unique identifier for the element.
@@ -1855,8 +1856,16 @@ interface ChipProps$1 extends ChipProps$1, GlobalProps {}
 interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
   /**
    * Content to use as the choice label.
+   *
+   * @implementation (StringChildren) The label is produced by extracting and
+   * concatenating the text nodes from the provided content; any markup or
+   * element structure is ignored.
+   *
+   * @implementation (ComponentChildren) Behaves as a slot: any elements passed
+   * are rendered as the label content (subject to surface constraints); there
+   * is no coercion to a string.
    */
-  children?: ComponentChildren;
+  children?: ComponentChildren | StringChildren;
   /**
    * Additional text to provide context or guidance for the input.
    *
@@ -3248,7 +3257,7 @@ interface TableBodyProps$1 extends GlobalProps {
 }
 interface TableCellProps$1 extends GlobalProps {
   /**
-   * The content of the table data.
+   * The content of the table cell.
    */
   children?: ComponentChildren;
 }
@@ -3275,6 +3284,16 @@ interface TableHeaderProps$1 extends GlobalProps {
    * @default 'labeled'
    */
   listSlot?: ListSlotType;
+  /**
+   * The format of the column. Will automatically apply styling and alignment to cell content based on the value.
+   *
+   * - `base`: The base format for columns.
+   * - `currency`: Formats the column as currency.
+   * - `numeric`: Formats the column as a number.
+   *
+   * @default 'base'
+   */
+  format?: 'base' | 'currency' | 'numeric';
 }
 interface TableHeaderRowProps$1 extends GlobalProps {
   /**
@@ -3287,6 +3306,17 @@ interface TableRowProps$1 extends GlobalProps {
    * The content of a TableRow, which should be `TableCell` components.
    */
   children?: ComponentChildren;
+  /**
+   * The ID of an interactive element (e.g. `s-link`) in the row that will be the target of the click when the row is clicked.
+   * This is the primary action for the row; it should not be used for secondary actions.
+   *
+   * This is a click-only affordance, and does not introduce any keyboard or screen reader affordances.
+   * Which is why the target element must be in the table; so that keyboard and screen reader users can interact with it normally.
+   *
+   * @implementation no focus or keyboard affordances are introduced by this property. No aria attributes need to be added to the table row.
+   * @implementation the row and/or delegate should have some affordance that indicates it is clickable. This may be a background color, a border, a hover effect, etc.
+   */
+  clickDelegate?: string;
 }
 interface TextProps$1
   extends GlobalProps,
