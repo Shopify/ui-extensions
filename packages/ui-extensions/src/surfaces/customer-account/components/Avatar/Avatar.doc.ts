@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'AvatarProps',
+      title: 'Properties',
       description: '',
       type: 'AvatarElementPropsDocs',
     },

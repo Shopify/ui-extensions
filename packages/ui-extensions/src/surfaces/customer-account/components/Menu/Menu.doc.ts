@@ -10,12 +10,12 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'MenuProps',
+      title: 'Properties',
       description: '',
       type: 'MenuPropsDocs',
     },
     {
-      title: 'ButtonProps children',
+      title: 'Children button properties',
       description:
         'The Menu component exclusively accepts Button elements with restricted props as its children. The `tone` prop will always be set to monochrome by default.',
       type: 'Docs_Menu_Button_Action',

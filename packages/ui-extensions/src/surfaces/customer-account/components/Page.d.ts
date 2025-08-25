@@ -12,6 +12,21 @@ export interface PageProps extends IdProps {
   subheading?: string;
 }
 
+export interface PageElementSlots {
+  /**
+   * The breadcrumb actions to perform, provided as button type elements.
+   */
+  'breadcrumb-actions'?: HTMLElement;
+  /**
+   * The primary action to perform, provided as a button type element.
+   */
+  'primary-action'?: HTMLElement;
+  /**
+   * The secondary actions to perform, provided as button type elements.
+   */
+  'secondary-actions'?: HTMLElement;
+}
+
 export interface PageElement extends HTMLElement, PageProps {}
 
 declare global {

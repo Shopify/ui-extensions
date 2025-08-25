@@ -29,8 +29,30 @@ interface ButtonProps {
    * for users using assistive technologies.
    */
   accessibilityLabel?: string;
-  command?: '--auto' | '--toggle' | '--copy';
+  /**
+   * ID of a component that should respond to activations (e.g. clicks) on this component.
+   *
+   * See `command` for how to control the behavior of the target.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
+   */
   commandFor?: string;
+  /**
+   * Sets the action the `commandFor` should take when this clickable is activated.
+   *
+   * See the documentation of particular components for the actions they support.
+   *
+   * - `--auto`: a default action for the target component.
+   * - `--show`: shows the target component.
+   * - `--hide`: hides the target component.
+   * - `--toggle`: toggles the target component.
+   * - `--copy`: copies the target ClipboardItem.
+   *
+   * @default '--auto'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
+   */
+  command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';
   /**
    * Disables the button, disallowing any interaction.
    *
@@ -44,6 +66,9 @@ interface ButtonProps {
    * - If a `commandFor` is set, the `command` will be executed instead of the navigation.
    */
   href?: string;
+  /**
+   * A unique identifier for the element.
+   */
   id?: string;
   /**
    * Replaces content with a loading indicator.
@@ -187,12 +212,24 @@ export interface Docs_FullPageApi extends FullPageApi {}
 export interface Docs_Page_Button_PrimaryAction
   extends Pick<
     ButtonProps,
-    'click' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+    | 'click'
+    | 'loading'
+    | 'disabled'
+    | 'accessibilityLabel'
+    | 'href'
+    | 'command'
+    | 'commandFor'
   > {}
 export interface Docs_Page_Button_SecondaryAction
   extends Pick<
     ButtonProps,
-    'click' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+    | 'click'
+    | 'loading'
+    | 'disabled'
+    | 'accessibilityLabel'
+    | 'href'
+    | 'command'
+    | 'commandFor'
   > {}
 
 export interface Docs_Page_Button_BreadcrumbAction
@@ -202,12 +239,6 @@ export interface Docs_Page_Button_BreadcrumbAction
    */
   accessibilityLabel: ButtonProps['accessibilityLabel'];
 }
-
-export interface Docs_ResourceItem_Button_Action
-  extends Pick<
-    ButtonProps,
-    'click' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
-  > {}
 
 export interface Docs_Menu_Button_Action
   extends Omit<
@@ -228,14 +259,14 @@ export interface Docs_OrderActionMenu_Button
   href: ButtonProps['href'];
 }
 
-export interface Docs_CustomerAccountAction_Button_PrimaryAction
+export interface Docs_CustomerAccountAction_SlotButton
   extends Pick<
     ButtonProps,
-    'click' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
-  > {}
-
-export interface Docs_CustomerAccountAction_Button_SecondaryAction
-  extends Pick<
-    ButtonProps,
-    'click' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+    | 'click'
+    | 'loading'
+    | 'disabled'
+    | 'accessibilityLabel'
+    | 'href'
+    | 'command'
+    | 'commandFor'
   > {}

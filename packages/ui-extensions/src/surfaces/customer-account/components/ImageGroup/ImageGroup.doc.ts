@@ -10,9 +10,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'ImageGroupProps',
+      title: 'Properties',
       description: '',
-      type: 'ImageGroupProps',
+      type: 'ImageGroupPropsDocs',
     },
   ],
   category: 'Polaris web components',
