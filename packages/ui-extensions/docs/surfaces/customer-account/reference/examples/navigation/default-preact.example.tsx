@@ -8,9 +8,7 @@ function App() {
   return (
     <s-button
       onClick={() => {
-        shopify.navigation.navigate(
-          'extension://orders',
-        );
+        navigation.navigate('extension://orders');
       }}
     >
       Navigate to orders path
