@@ -69,14 +69,15 @@ export interface SellingPlan {
   name: string;
   /**
    * The fingerprint of the applied selling plan within this cart session.
+   * Provided by POS. Not available during refund / exchanges.
    */
-  digest: string;
+  digest?: string;
   /**
-   * The interval of the selling plan. i.e. "every 2 weeks"
+   * The delivery frequency, it can be either: day, week, month or year.
    */
   deliveryInterval?: string;
   /**
-   * The interval count of the selling plan. i.e. "2"
+   * The number of intervals between deliveries.
    */
   deliveryIntervalCount?: number;
 }
@@ -152,4 +153,19 @@ export interface Address {
   name?: string;
   provinceCode?: string;
   countryCode?: CountryCode;
+}
+
+export interface SetLineItemSellingPlanInput {
+  /**
+   * The uuid of the line item to which the selling plan should be applied.
+   */
+  lineItemUuid: string;
+  /**
+   * The ID of the selling plan to apply to the line item.
+   */
+  sellingPlanId: number;
+  /**
+   * The name of the selling plan to apply to the line item.
+   */
+  sellingPlanName: string;
 }
