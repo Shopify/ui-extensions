@@ -1,15 +1,22 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import sharedContent from '../../../../docs/shared/components/Menu';
+import sharedContent from '../../../../docs/shared/components/Popover';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  thumbnail: '/assets/templated-apis-screenshots/admin/components/menu.png',
+  category: 'Polaris web components',
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/popover.png',
   isVisualComponent: true,
   definitions: [
     {
       title: 'Properties',
       description: '',
-      type: 'Menu',
+      type: 'Popover',
+    },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'PopoverEvents',
     },
   ],
   defaultExample: {
