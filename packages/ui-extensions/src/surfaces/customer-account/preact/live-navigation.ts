@@ -1,14 +1,7 @@
-import type {RenderCustomerAccountFullPageExtensionTarget} from '../extension-targets';
 import type {NavigationHistoryEntry} from '../api';
-
-import {useApi} from './api';
 import {useEffect, useReducer} from 'preact/hooks';
 
-export function useNavigationCurrentEntry<
-  Target extends RenderCustomerAccountFullPageExtensionTarget = RenderCustomerAccountFullPageExtensionTarget,
->(): NavigationHistoryEntry {
-  const navigation = useApi<Target>().navigation;
-
+export function useNavigationCurrentEntry(): NavigationHistoryEntry {
   const [entry, update] = useReducer(
     () => navigation.currentEntry,
     navigation.currentEntry,

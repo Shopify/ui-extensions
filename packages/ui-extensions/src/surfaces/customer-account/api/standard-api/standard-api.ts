@@ -121,8 +121,6 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    */
   toast: ToastApi;
 
-  navigation: Navigation;
-
   /**
    * Used to query the Storefront GraphQL API with a prefetched token.
    *
