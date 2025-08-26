@@ -1,5 +1,8 @@
 import type {LandingTemplateSchema} from '@shopify/generate-docs';
-import {generateCodeBlock} from '../reference/helpers/generateCodeBlock-staticpages';
+import {
+  generateCodeBlock,
+  generateJsxCodeBlock,
+} from '../reference/helpers/generateCodeBlock-staticpages';
 
 const examplePath = './examples/discount-example';
 
@@ -63,24 +66,14 @@ The rest of the tutorial walks through this sample code step-by-step.
         title: 'Discount extension',
         tabs: [
           {
-            title: 'Tile (React)',
-            code: `${examplePath}/tile.tsx`,
-            language: 'tsx',
+            title: 'Tile (JSX)',
+            code: `${examplePath}/tile.jsx`,
+            language: 'jsx',
           },
           {
-            title: 'Modal (React)',
-            code: `${examplePath}/modal.tsx`,
-            language: 'tsx',
-          },
-          {
-            title: 'Tile (TS)',
-            code: `${examplePath}/tile.ts`,
-            language: 'ts',
-          },
-          {
-            title: 'Modal (TS)',
-            code: `${examplePath}/modal.ts`,
-            language: 'ts',
+            title: 'Modal (JSX)',
+            code: `${examplePath}/modal.jsx`,
+            language: 'jsx',
           },
         ],
       },
@@ -90,24 +83,34 @@ The rest of the tutorial walks through this sample code step-by-step.
       anchorLink: 'step-1-enable-the-tile',
       title: 'Step 1: Enable or disable the tile based on cart contents',
       sectionContent: `
-You can enable or disable the tile based on cart contents by accessing its \`subscribable\`. In the tile code, initialize state based on the \`initial\` value of the \`subscribable\`.
+You can enable or disable the tile based on cart contents by accessing its cart subscribable. In the tile code, initialize state based on the current value using \`cart.current.value\`.
       `,
-      codeblock: generateCodeBlock(
-        'Enable the tile based on cart contents',
-        'discount-example',
-        '1-enable-the-tile',
-      ),
+      codeblock: {
+        title: 'Enable the tile based on cart contents',
+        tabs: [
+          {
+            title: 'JSX',
+            code: `${examplePath}/1-enable-the-tile.jsx`,
+            language: 'jsx',
+          },
+        ],
+      },
     },
     {
       type: 'Generic',
       anchorLink: 'step-2-subscribe-to-cart',
       title: 'Step 2: Subscribe to cart changes',
       sectionContent: `In the tile code, subscribe to cart changes and mutate state based on the updated cart.`,
-      codeblock: generateCodeBlock(
-        'Subscribe to cart changes',
-        'discount-example',
-        '2-subscribe-to-cart',
-      ),
+      codeblock: {
+        title: 'Subscribe to cart changes',
+        tabs: [
+          {
+            title: 'JSX',
+            code: `${examplePath}/2-subscribe-to-cart.jsx`,
+            language: 'jsx',
+          },
+        ],
+      },
     },
     {
       type: 'Generic',
@@ -119,11 +122,16 @@ You can add buttons to the modal that trigger some action on press.
 
 Create the buttons on the modal. Note that most components belong in a ScrollView.
       `,
-      codeblock: generateCodeBlock(
-        'Add buttons to the modal',
-        'discount-example',
-        '3-add-buttons',
-      ),
+      codeblock: {
+        title: 'Add buttons to the modal',
+        tabs: [
+          {
+            title: 'JSX',
+            code: `${examplePath}/3-add-buttons.jsx`,
+            language: 'jsx',
+          },
+        ],
+      },
     },
     {
       type: 'Generic',
@@ -132,11 +140,16 @@ Create the buttons on the modal. Note that most components belong in a ScrollVie
       sectionContent: `
 Define an \`onPress\` function to apply the discount and show the toast.
       `,
-      codeblock: generateCodeBlock(
-        'Define onPress',
-        'discount-example',
-        '4-define-onpress',
-      ),
+      codeblock: {
+        title: 'Define onPress',
+        tabs: [
+          {
+            title: 'JSX',
+            code: `${examplePath}/4-define-onpress.jsx`,
+            language: 'jsx',
+          },
+        ],
+      },
     },
     {
       type: 'Generic',

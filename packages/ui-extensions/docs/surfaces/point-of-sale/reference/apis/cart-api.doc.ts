@@ -1,9 +1,15 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {
+  generateCodeBlock,
+  generateJsxCodeBlock,
+} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
 
 const generateCodeBlockForCartApi = (title: string, fileName: string) =>
   generateCodeBlock(title, 'cart-api', fileName);
+
+const generateJsxCodeBlockForCartApi = (title: string, fileName: string) =>
+  generateJsxCodeBlock(title, 'cart-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Cart API',
@@ -40,13 +46,13 @@ The Cart API enables UI Extensions to manage and interact with POS cart contents
     description: 'Examples of using the Cart API',
     examples: [
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Subscribe to cart changes.',
-          'subscribable',
+          'subscribe',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Check editable state of the cart',
           'check-cart-editable',
         ),

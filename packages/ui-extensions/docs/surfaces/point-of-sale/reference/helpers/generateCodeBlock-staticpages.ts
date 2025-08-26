@@ -1,3 +1,20 @@
+export const generateJsxCodeBlock = (
+  title: string,
+  functionality: string,
+  filename: string,
+) => {
+  return {
+    title,
+    tabs: [
+      {
+        title: 'jsx',
+        code: `./examples/${functionality}/${filename}.jsx`,
+        language: 'jsx',
+      },
+    ],
+  };
+};
+
 export const generateCodeBlock = (
   title: string,
   functionality: string,
