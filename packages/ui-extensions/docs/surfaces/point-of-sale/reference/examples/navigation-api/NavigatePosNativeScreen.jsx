@@ -21,7 +21,7 @@ function Extension() {
       <s-screen name="Featured" title="Featured">
         <s-scroll-box>
           <s-button
-            isDisabled={!canNavigate}
+            disabled={!canNavigate}
             onClick={() => {
               shopify.navigation.navigate(productUri);
             }}
