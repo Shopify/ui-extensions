@@ -85,8 +85,7 @@ export type {CartLineItemApi} from './api/cart-line/cart-line-item';
 export type {
   Version,
   StandardApi,
-  FullExtensionNavigation,
-  StandardExtensionNavigation,
+  Navigation,
   NavigationCurrentEntryChangeEvent,
   NavigationHistoryEntry,
   NavigationNavigateOptions,
@@ -96,5 +95,4 @@ export type {
   CompanyLocationApi,
   OrderApi,
   ExtensionSettings,
-  ExtensionNavigation,
 } from './api/standard-api/standard-api';

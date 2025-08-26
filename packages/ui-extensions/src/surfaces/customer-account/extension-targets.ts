@@ -5,7 +5,6 @@ import type {OrderStatusApi} from './api/order-status/order-status';
 import type {RenderExtension} from '../../extension';
 import {
   StandardApi,
-  FullExtensionNavigation,
   CompanyLocationApi,
   OrderApi,
   FulfillmentApi,
@@ -89,8 +88,7 @@ export interface OrderStatusExtensionTargets {
   >;
   'customer-account.order.page.render': RenderExtension<
     OrderStatusApi<'customer-account.order.page.render'> &
-      Omit<StandardApi<'customer-account.order.page.render'>, 'navigation'> &
-      FullPageApi,
+      StandardApi<'customer-account.order.page.render'>,
     StandardComponents
   >;
 }
@@ -102,8 +100,7 @@ export type RenderCustomerAccountFullPageExtensionTarget =
 
 export interface CustomerAccountExtensionTargets {
   'customer-account.page.render': RenderExtension<
-    Omit<StandardApi<'customer-account.page.render'>, 'navigation'> &
-      FullPageApi,
+    StandardApi<'customer-account.page.render'>,
     StandardComponents
   >;
   'customer-account.order-index.block.render': RenderExtension<
@@ -253,10 +250,6 @@ export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
 export type AllowedComponentsForRenderExtension<
   Target extends keyof RenderExtensions,
 > = ExtractedAllowedComponentsFromRenderExtension<RenderExtensions[Target]>;
-
-export interface FullPageApi {
-  navigation: FullExtensionNavigation;
-}
 
 export interface ActionExtensionApi {
   close(): void;

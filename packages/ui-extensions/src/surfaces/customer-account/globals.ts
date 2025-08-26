@@ -1,3 +1,4 @@
+import {Navigation} from './api';
 import type {ExtensionTargets} from './extension-targets';
 
 export interface ShopifyGlobal {
@@ -6,4 +7,8 @@ export interface ShopifyGlobal {
     extend: ExtensionTargets[ExtensionTarget],
   ): void;
   reload(): void;
+}
+
+declare global {
+  const navigation: Navigation;
 }

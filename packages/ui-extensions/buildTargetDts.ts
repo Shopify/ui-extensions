@@ -80,15 +80,10 @@ export type Output = Target['output'];
 
   if (surface === 'customer-account') {
     template = `import type {ExtensionTargets} from '../extension-targets';
-import {ExtensionNavigation} from '../api';
+import '../globals';
 type Target = ExtensionTargets[${name}];
 export type Api = Target['api'];
 export type Output = Target['output'];
-export type Navigation = ExtensionNavigation<${name}>;
-
-declare global {
-  var navigation: Navigation;
-}
 \n`;
   }
 

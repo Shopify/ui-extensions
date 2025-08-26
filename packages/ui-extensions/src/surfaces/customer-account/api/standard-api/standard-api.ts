@@ -15,11 +15,7 @@ import {
   ToastApi,
 } from '../shared';
 
-import type {
-  ExtensionTarget,
-  ExtensionTargets,
-  RenderCustomerAccountFullPageExtensionTarget,
-} from '../../extension-targets';
+import type {ExtensionTarget} from '../../extension-targets';
 import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 /**
@@ -125,7 +121,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    */
   toast: ToastApi;
 
-  navigation: StandardExtensionNavigation;
+  navigation: Navigation;
 
   /**
    * Used to query the Storefront GraphQL API with a prefetched token.
@@ -251,14 +247,11 @@ export interface NavigationCurrentEntryChangeEvent {
   from: NavigationHistoryEntry;
 }
 
-export interface StandardExtensionNavigation {
+export interface Navigation {
   /**
    * The navigate() method navigates to a specific URL, updating any provided state in the history entries list.
    */
   navigate: NavigateFunction;
-}
-
-export interface FullExtensionNavigation extends StandardExtensionNavigation {
   /**
    * The currentEntry read-only property of the Navigation interface returns a NavigationHistoryEntry object representing the location the user is currently navigated to right now.
    */
@@ -276,11 +269,6 @@ export interface FullExtensionNavigation extends StandardExtensionNavigation {
     cb: (event: NavigationCurrentEntryChangeEvent) => void,
   ): void;
 }
-
-export type ExtensionNavigation<Target extends keyof ExtensionTargets> =
-  Target extends RenderCustomerAccountFullPageExtensionTarget
-    ? FullExtensionNavigation
-    : StandardExtensionNavigation;
 
 export interface NavigateFunction {
   /**

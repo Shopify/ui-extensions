@@ -19,13 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Navigation',
       description:
         'Navigation API for all extensions. [Refer to supported protocols](/docs/api/customer-account-ui-extensions/unstable#custom-protocols)',
-      type: 'StandardExtensionNavigation',
-    },
-    {
-      title: 'Full-Page Navigation',
-      description:
-        'Only available for full-page extension `customer-account.page.render`',
-      type: 'FullExtensionNavigation',
+      type: 'Navigation',
     },
   ],
   defaultExample: {
