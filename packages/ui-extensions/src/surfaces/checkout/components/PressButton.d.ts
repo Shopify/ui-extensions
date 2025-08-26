@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ButtonProps$1} from './components-shared.d.ts';
+import type {PressButtonProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -31,40 +31,49 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
     (event: CallbackEvent<TTagName, TEvent>): void;
 }) | null;
 
-declare const tagName = "s-button";
-export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
-    target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;
-    tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
-    type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;
-    variant?: Extract<ButtonProps$1['variant'], 'auto' | 'primary' | 'secondary'>;
+declare const tagName = "s-press-button";
+export interface PressButtonElementProps extends Pick<PressButtonProps$1, 'accessibilityLabel' | 'id' | 'children' | 'inlineSize' | 'lang' | 'disabled' | 'loading' | 'pressed' | 'defaultPressed'> {
 }
-export interface ButtonEvents extends Pick<ButtonProps$1, 'onClick'> {
+export interface PressButtonEvents extends Pick<PressButtonProps$1, 'onClick' | 'onBlur' | 'onFocus'> {
 }
-export interface ButtonElementEvents {
+export interface PressButtonElementEvents {
     /**
      * Callback when the button is activated.
-     * This will be called before the action indicated by `type`.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
      */
     click?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    /**
+     * Callback when the button has lost focus.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
+     */
+    blur?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    /**
+     * Callback when the button has received focus.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
+     */
+    focus?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface ButtonElement extends ButtonElementProps, Omit<HTMLElement, 'id' | 'onclick'> {
-    onclick: ButtonEvents['onClick'];
+export interface PressButtonElement extends PressButtonElementProps, Omit<HTMLElement, 'children' | 'lang' | 'id' | 'onblur' | 'onclick' | 'onfocus'> {
+    onblur: PressButtonEvents['onBlur'];
+    onclick: PressButtonEvents['onClick'];
+    onfocus: PressButtonEvents['onFocus'];
 }
-export interface ButtonProps extends ButtonElementProps, ButtonEvents {
+export interface PressButtonProps extends PressButtonElementProps, PressButtonEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: ButtonElement;
+        [tagName]: PressButtonElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: ButtonProps & BaseElementPropsWithChildren<ButtonElement>;
+            [tagName]: PressButtonProps & BaseElementPropsWithChildren<PressButtonElement>;
         }
     }
 }
 
-export type { ButtonElement, ButtonElementEvents, ButtonElementProps, ButtonEvents, ButtonProps };
+export type { PressButtonElement, PressButtonElementEvents, PressButtonElementProps, PressButtonEvents, PressButtonProps };

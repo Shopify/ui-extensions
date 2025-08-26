@@ -1336,6 +1336,65 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 	 */
 	lang?: string;
 }
+interface ChatProps$1 extends GlobalProps {
+	/**
+	 * The URL to embed within the Chat component iframe.
+	 */
+	src?: string;
+	/**
+	 * Adjust the inline size.
+	 *
+	 * Surfaces may impose sizing restrictions for the component, therefore the size set
+	 * may not be the actual size rendered.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
+	 */
+	inlineSize?: SizeUnits;
+	/**
+	 * Adjust the block size.
+	 *
+	 * Surface may impose sizing restrictions for the component, therefore the size set
+	 * may not be the actual size rendered.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+	 */
+	blockSize?: SizeUnits;
+	/**
+	 * A label that describes the purpose or contents of the component. When set,
+	 * it will be announced to users using assistive technologies and will
+	 * provide them with more context.
+	 */
+	accessibilityLabel?: string;
+	/**
+	 * Callback when the embedded page sends a message.
+	 */
+	onMessage?: (event: MessageEvent$1) => void;
+	/**
+	 * Callback when the embedded page is ready and a message port has been created to
+	 * communicate with the host page.
+	 */
+	onReady?: (event: ReadyEvent) => void;
+}
+interface MessageEvent$1 {
+	/**
+	 * The data sent by the message emitter (the embedded page).
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/data
+	 */
+	data?: any;
+	/**
+	 * A string representing the origin of the message emitter (the embedded page).
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/origin
+	 */
+	origin?: string;
+}
+export interface ReadyEvent {
+	/**
+	 * A function to send messages to the embedded page.
+	 */
+	postMessage?: (message: any, transfer?: Transferable[]) => void;
+}
 export interface BaseInputProps {
 	/**
 	 * An identifier for the field that is unique within the nearest containing form.
@@ -1371,6 +1430,26 @@ export interface InputProps extends BaseInputProps {
 	 * @implementation `defaultValue` reflects to the `value` attribute.
 	 */
 	defaultValue?: string;
+}
+export interface MultipleInputProps extends BaseInputProps {
+	/**
+	 * Callback when the user has selected option(s).
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+	 */
+	onChange?: (event: Event) => void;
+	/**
+	 * Callback when the user has selected option(s).
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+	 */
+	onInput?: (event: Event) => void;
+	/**
+	 * An array of the `value`s of the selected options.
+	 *
+	 * This is a convenience prop for setting the `selected` prop on child options.
+	 */
+	values?: string[];
 }
 export interface FileInputProps<T extends File[] | File = File[]> extends BaseInputProps {
 	/**
@@ -1634,6 +1713,74 @@ interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps, FieldErrorPro
 	 */
 	required?: boolean;
 }
+interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
+	/**
+	 * Content to use as the choice label.
+	 */
+	children?: ComponentChildren;
+	/**
+	 * Additional text to provide context or guidance for the input.
+	 *
+	 * This text is displayed along with the input and its label
+	 * to offer more information or instructions to the user.
+	 *
+	 * @implementation this content should be linked to the input with an `aria-describedby` attribute.
+	 */
+	details?: ComponentChildren;
+	/**
+	 * Set to `true` to associate a choice with the error passed to `ChoiceList`
+	 *
+	 * @default false
+	 */
+	error?: boolean;
+	/**
+	 * Secondary content for a choice.
+	 */
+	secondaryContent?: ComponentChildren;
+	/**
+	 * Content to display when the option is selected.
+	 *
+	 * This can be used to provide additional information or options related to the choice.
+	 */
+	selectedContent?: ComponentChildren;
+}
+interface ChoiceListProps$1 extends GlobalProps, Pick<BasicFieldProps, "label" | "labelAccessibilityVisibility" | "error">, MultipleInputProps, FieldDetailsProps {
+	/**
+	 * Whether multiple choices can be selected.
+	 *
+	 * @default false
+	 */
+	multiple?: boolean;
+	/**
+	 * The choices a user can select from.
+	 *
+	 * Accepts `Choice` components.
+	 */
+	children?: ComponentChildren;
+	/**
+	 * Disables the field, disallowing any interaction.
+	 *
+	 * `disabled` on any child choices is ignored when this is true.
+	 *
+	 * @default false
+	 */
+	disabled?: MultipleInputProps["disabled"];
+	/**
+	 * The variant of the choice grid.
+	 *
+	 * - `auto`: The variant is determined by the context.
+	 * - `list`: The choices are displayed in a list.
+	 * - `inline`: The choices are displayed on the inline axis.
+	 * - `block`: The choices are displayed on the block axis.
+	 * - `grid`: The choices are displayed in a grid.
+	 *
+	 * @implementation The `block`, `inline` and `grid` variants are more suitable for button looking choices, but it's at the
+	 * discretion of each surface.
+	 *
+	 * @default 'auto'
+	 */
+	variant?: "auto" | "list" | "inline" | "block" | "grid";
+}
 interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps {
 	/**
 	 * Disables the clickable, and indicates to assistive technology that the loading is in progress.
@@ -1730,6 +1877,178 @@ interface PhoneFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<FieldD
 	 */
 	type?: "mobile" | "";
 }
+interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
+	/**
+	 * Default month to display in `YYYY-MM` format.
+	 *
+	 * This value is used until `view` is set, either directly or as a result of user interaction.
+	 *
+	 * Defaults to the current month in the user's locale.
+	 */
+	defaultView?: string;
+	/**
+	 * Displayed month in `YYYY-MM` format.
+	 *
+	 * `onViewChange` is called when this value changes.
+	 *
+	 * Defaults to `defaultView`.
+	 */
+	view?: string;
+	/**
+	 * Called whenever the month to display changes.
+	 *
+	 * @param view The new month to display in `YYYY-MM` format.
+	 */
+	onViewChange?: (view: string) => void;
+	/**
+	 * The type of selection the date picker allows.
+	 *
+	 * - `single` allows selecting a single date.
+	 * - `multiple` allows selecting multiple non-contiguous dates.
+	 * - `range` allows selecting a single range of dates.
+	 *
+	 * @default "single"
+	 */
+	type?: "single" | "multiple" | "range";
+	/**
+	 * Dates that can be selected.
+	 *
+	 * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+	 *
+	 * The default `''` allows all dates.
+	 *
+	 * - Dates in `YYYY-MM-DD` format allow a single date.
+	 * - Dates in `YYYY-MM` format allow a whole month.
+	 * - Dates in `YYYY` format allow a whole year.
+	 * - Ranges are expressed as `start--end`.
+	 *     - Ranges are inclusive.
+	 *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
+	 *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+	 *       So `2024--` is equivalent to `2024-01-01--`.
+	 *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+	 *       So `--2024` is equivalent to `--2024-12-31`.
+	 *     - Whitespace is allowed either side of `--`.
+	 *
+	 * @default ""
+	 *
+	 * @example
+	 * `2024-02--2025` // allow any date from February 2024 to the end of 2025
+	 * `2024-02--` // allow any date from February 2024 to the end of the month
+	 * `2024-05-09, 2024-05-11` // allow only the 9th and 11th of May 2024
+	 */
+	allow?: string;
+	/**
+	 * Dates that cannot be selected. These subtract from `allowDates`.
+	 *
+	 * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+	 *
+	 * The default `''` has no effect on `allowDates`.
+	 *
+	 * - Dates in `YYYY-MM-DD` format disallow a single date.
+	 * - Dates in `YYYY-MM` format disallow a whole month.
+	 * - Dates in `YYYY` format disallow a whole year.
+	 * - Ranges are expressed as `start--end`.
+	 *     - Ranges are inclusive.
+	 *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
+	 *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+	 *       So `2024--` is equivalent to `2024-01-01--`.
+	 *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+	 *       So `--2024` is equivalent to `--2024-12-31`.
+	 *     - Whitespace is allowed either side of `--`.
+	 *
+	 * @default ""
+	 *
+	 * @example
+	 * `--2024-02` // disallow any date before February 2024
+	 * `2024-05-09, 2024-05-11` // disallow the 9th and 11th of May 2024
+	 */
+	disallow?: string;
+	/**
+	 * Days of the week that can be selected. These intersect with the result of `allowDates` and `disallowDates`.
+	 *
+	 * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+	 *
+	 * The default `''` has no effect on the result of `allowDates` and `disallowDates`.
+	 *
+	 * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
+	 *
+	 * @default ""
+	 *
+	 * @example
+	 * 'saturday, sunday' // allow only weekends within the result of `allowDates` and `disallowDates`.
+	 */
+	allowDays?: string;
+	/**
+	 * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allowDates` and `disallowDates`.
+	 *
+	 * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+	 *
+	 * The default `''` has no effect on `allowDays`.
+	 *
+	 * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
+	 *
+	 * @default ""
+	 *
+	 * @example
+	 * 'saturday, sunday' // disallow weekends within the result of `allowDates` and `disallowDates`.
+	 */
+	disallowDays?: string;
+	/**
+	 * Default selected value.
+	 *
+	 * The default means no date is selected.
+	 *
+	 * If the provided value is invalid, no date is selected.
+	 *
+	 * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+	 * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+	 * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+	 *
+	 * @default ""
+	 */
+	defaultValue?: string;
+	/**
+	 * Current selected value.
+	 *
+	 * The default means no date is selected.
+	 *
+	 * If the provided value is invalid, no date is selected.
+	 *
+	 * Otherwise:
+	 *
+	 * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+	 * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+	 * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+	 *
+	 * Events:
+	 *
+	 * - `onInput` - Invoked when any date is selected. Will fire before `onChange`.
+	 * - `onChange` - Invoked when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
+	 *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
+	 *
+	 * @default ""
+	 */
+	value?: string;
+}
+interface DateFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<DatePickerProps$1, "view" | "defaultView" | "value" | "defaultValue" | "allow" | "disallow" | "onViewChange">, AutocompleteProps<DateAutocompleteField> {
+	/**
+	 * Callback when the field has an invalid date.
+	 * This callback will be called, if the date typed is invalid or disabled.
+	 *
+	 * Dates that don’t exist or have formatting errors are considered invalid. Some examples of invalid dates are:
+	 * - 2021-02-31: February doesn’t have 31 days
+	 * - 2021-02-00: The day can’t be 00
+	 *
+	 * Disallowed dates are considered invalid.
+	 *
+	 * It’s important to note that this callback will be called only when the user **finishes editing** the date,
+	 * and it’s called right after the `onChange` callback.
+	 * The field is **not** validated on every change to the input. Once the buyer has signalled that
+	 * they have finished editing the field (typically, by blurring the field), the field gets validated and the callback is run if the value is invalid.
+	 */
+	onInvalid?: (event: Event) => void;
+}
+export type DateAutocompleteField = ExtractStrict<AnyAutocompleteField, "bday" | "bday-day" | "bday-month" | "bday-year" | "cc-expiry" | "cc-expiry-month" | "cc-expiry-year">;
 interface DetailsProps$1 extends GlobalProps, ToggleEventProps {
 	/**
 	 * The content of the details.
@@ -2446,6 +2765,9 @@ interface ModalProps$1 extends GlobalProps, BaseOverlayProps, BaseOverlayMethods
 	 */
 	children?: ComponentChildren;
 }
+interface MoneyFieldProps$1 extends GlobalProps, BaseTextFieldProps, NumberConstraintsProps, AutocompleteProps<MoneyAutocompleteField> {
+}
+export type MoneyAutocompleteField = ExtractStrict<AnyAutocompleteField, "transaction-amount">;
 interface NumberFieldProps$1 extends GlobalProps, BaseTextFieldProps, AutocompleteProps<NumberAutocompleteField>, NumberConstraintsProps, FieldDecorationProps {
 	/**
 	 * Sets the virtual keyboard.
@@ -2521,6 +2843,22 @@ interface PopoverProps$1 extends GlobalProps, BaseOverlayProps, BaseOverlayMetho
 	 * The content of the popover.
 	 */
 	children?: ComponentChildren;
+}
+interface PressButtonProps$1 extends GlobalProps, Pick<ButtonProps$1, "accessibilityLabel" | "children" | "icon" | "inlineSize" | "lang" | "tone" | "variant" | "disabled" | "loading" | "onClick" | "onBlur" | "onFocus"> {
+	/**
+	 * Whether the button is pressed.
+	 *
+	 * @default false
+	 */
+	pressed?: boolean;
+	/**
+	 * Whether the button is pressed by default.
+	 *
+	 * @default false
+	 *
+	 * @implementation `defaultPressed` reflects to the `pressed` attribute.
+	 */
+	defaultPressed?: boolean;
 }
 interface ProductThumbnailProps$1 extends GlobalProps, BaseImageProps {
 	/**
@@ -2630,6 +2968,26 @@ interface QRCodeProps$1 extends GlobalProps {
 	 * By default, no image is displayed.
 	 */
 	logo?: string;
+}
+interface QueryContainerProps$1 extends GlobalProps {
+	/**
+	 * The content of the container.
+	 */
+	children?: ComponentChildren;
+	/**
+	 * The name of the container, which can be used in your container queries to target this container specifically.
+	 *
+	 * We place the container name of `s-default` on every container. Because of this, it is not required to add a `containerName` identifier in your queries. For example, a `@container (inline-size <= 300px) none, auto` query is equivalent to `@container s-default (inline-size <= 300px) none, auto`.
+	 *
+	 * Any value set in `containerName` will be set alongside alongside `s-default`. For example, `containerName="my-container-name"` will result in a value of `s-default my-container-name` set on the `container-name` CSS property of the rendered HTML.
+	 *
+	 * @default ''
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/container-name
+	 *
+	 * @implementation You must always have a CSS `container-name` of `s-default` for this component.
+	 */
+	containerName?: string;
 }
 export type OverflowKeyword = "auto" | "hidden";
 interface ScrollBoxProps$1 extends GlobalProps, Omit<BaseBoxPropsWithRole, "overflow"> {
@@ -2937,6 +3295,12 @@ interface TimeProps$1 extends GlobalProps {
 	 * @default ''
 	 */
 	dateTime?: string;
+}
+interface TooltipProps$1 extends GlobalProps {
+	/**
+	 * The content of the Tooltip.
+	 */
+	children?: ComponentChildren;
 }
 interface UnorderedListProps$1 extends GlobalProps {
 }
