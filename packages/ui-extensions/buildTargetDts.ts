@@ -91,8 +91,12 @@ export type Navigation = ExtensionNavigation<${name}>;
 
 export type GlobalThis = typeof globalThis & {
   shopify: Api;
-  navigation: Navigation;
-}\n`;
+}\n
+
+declare global {
+  var navigation: Navigation;
+}
+`;
   }
 
   if (!existsSync(directory)) {
