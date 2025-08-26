@@ -72,20 +72,12 @@ function createInitialTargetDefinition({
   const directory = join(buildPath, `ts/surfaces/${surface}/targets`);
   const targetPath = join(directory, fileName);
 
-  let template = `import type {ExtensionTargets} from '../extension-targets';
+  const template = `import type {ExtensionTargets} from '../extension-targets';
+  ${surface === 'customer-account' ? `import '../globals';\n` : ''}
 type Target = ExtensionTargets[${name}];
 export type Api = Target['api'];
 export type Output = Target['output'];
 \n`;
-
-  if (surface === 'customer-account') {
-    template = `import type {ExtensionTargets} from '../extension-targets';
-import '../globals';
-type Target = ExtensionTargets[${name}];
-export type Api = Target['api'];
-export type Output = Target['output'];
-\n`;
-  }
 
   if (!existsSync(directory)) {
     mkdirSync(directory);
