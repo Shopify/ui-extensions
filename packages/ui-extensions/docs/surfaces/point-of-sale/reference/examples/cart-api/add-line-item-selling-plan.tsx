@@ -13,7 +13,6 @@ const Modal = () => {
   const api = useApi<'pos.cart.line-item-details.action.render'>();
   // Your app determines the selling plan ID to add to the line item
   const sellingPlanId = 123456;
-  const sellingPlanName = 'My Selling Plan';
 
   return (
     <Navigator>
@@ -21,11 +20,10 @@ const Modal = () => {
         <ScrollView>
           <Button
             onPress={() =>
-              api.cart.addLineItemSellingPlan({
-                lineItemUuid: api.cartLineItem.uuid,
+              api.cart.addLineItemSellingPlan(
+                api.cartLineItem.uuid,
                 sellingPlanId,
-                sellingPlanName,
-              })
+              )
             }
           />
         </ScrollView>
