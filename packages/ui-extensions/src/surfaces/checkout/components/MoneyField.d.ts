@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {NumberFieldProps$1} from './components-shared.d.ts';
+import type {MoneyFieldProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -18,12 +18,6 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
-/**
- * Used when an element has children.
- */
-export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
-    children?: preact.ComponentChildren;
-}
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
@@ -31,17 +25,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
     (event: CallbackEvent<TTagName, TEvent>): void;
 }) | null;
 
-declare const tagName = "s-number-field";
-export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'accessory' | 'autocomplete' | 'controls' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'icon' | 'id' | 'inputMode' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
-    /**
-     * @deprecated Use `label` instead.
-     * @private
-     */
-    placeholder?: string;
+declare const tagName = "s-money-field";
+export interface MoneyFieldElementProps extends Pick<MoneyFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'readOnly' | 'required' | 'step' | 'value'> {
 }
-export interface NumberFieldEvents extends Pick<NumberFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
+export interface MoneyFieldEvents extends Pick<MoneyFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-export interface NumberFieldElementEvents {
+export interface MoneyFieldElementEvents {
     /**
      * Callback when the element loses focus.
      *
@@ -67,25 +56,25 @@ export interface NumberFieldElementEvents {
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface NumberFieldElement extends NumberFieldElementProps, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
-    onblur: NumberFieldEvents['onBlur'];
-    onchange: NumberFieldEvents['onChange'];
-    onfocus: NumberFieldEvents['onFocus'];
-    oninput: NumberFieldEvents['onInput'];
+export interface MoneyFieldElement extends MoneyFieldElementProps {
+    onblur: MoneyFieldEvents['onBlur'];
+    onchange: MoneyFieldEvents['onChange'];
+    onfocus: MoneyFieldEvents['onFocus'];
+    oninput: MoneyFieldEvents['onInput'];
 }
-export interface NumberFieldProps extends NumberFieldElementProps, NumberFieldEvents {
+export interface MoneyFieldProps extends MoneyFieldElementProps, MoneyFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: NumberFieldElement;
+        [tagName]: MoneyFieldElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: NumberFieldProps & BaseElementPropsWithChildren<NumberFieldElement>;
+            [tagName]: MoneyFieldProps & BaseElementProps<MoneyFieldElement>;
         }
     }
 }
 
-export type { NumberFieldElement, NumberFieldElementEvents, NumberFieldElementProps, NumberFieldEvents, NumberFieldProps };
+export type { MoneyFieldElement, MoneyFieldElementEvents, MoneyFieldElementProps, MoneyFieldEvents, MoneyFieldProps };

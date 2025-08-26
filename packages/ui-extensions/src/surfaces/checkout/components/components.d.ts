@@ -13,6 +13,7 @@
  * https://github.com/Shopify/ui-api-design/issues/139
  */
 export type ComponentChildren = any;
+export type StringChildren = string;
 export interface GlobalProps {
 	/**
 	 * A unique identifier for the element.
@@ -44,6 +45,52 @@ export interface ActionSlots {
 	 * The secondary actions to perform, provided as button or link type elements.
 	 */
 	secondaryActions?: ComponentChildren;
+}
+export interface BaseOverlayProps {
+	/**
+	 * Callback fired after the overlay is shown.
+	 */
+	onShow?: (event: Event) => void;
+	/**
+	 * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
+	 */
+	onAfterShow?: (event: Event) => void;
+	/**
+	 * Callback fired after the overlay is hidden.
+	 */
+	onHide?: (event: Event) => void;
+	/**
+	 * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
+	 */
+	onAfterHide?: (event: Event) => void;
+}
+/**
+ * Shared interfaces for web component methods.
+ *
+ * Methods are required (not optional) because:
+ * - Components implementing this interface must provide all methods
+ * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
+ * - Consumers expect these methods to be consistently available on all instances
+ */
+export interface BaseOverlayMethods {
+	/**
+	 * Method to show an overlay.
+	 *
+	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+	 */
+	showOverlay: () => void;
+	/**
+	 * Method to hide an overlay.
+	 *
+	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+	 */
+	hideOverlay: () => void;
+	/**
+	 * Method to toggle the visiblity of an overlay.
+	 *
+	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+	 */
+	toggleOverlay: () => void;
 }
 export type SizeKeyword = "small-500" | "small-400" | "small-300" | "small-200" | "small-100" | "small" | "base" | "large" | "large-100" | "large-200" | "large-300" | "large-400" | "large-500";
 export type ColorKeyword = "subdued" | "base" | "strong";
@@ -253,6 +300,7 @@ declare const privateIconArray: readonly [
 	"favicon",
 	"file-list",
 	"file",
+	"filter-active",
 	"filter",
 	"flag",
 	"flip-horizontal",
@@ -1338,6 +1386,65 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 	 */
 	lang?: string;
 }
+interface ChatProps$1 extends GlobalProps {
+	/**
+	 * The URL to embed within the Chat component iframe.
+	 */
+	src?: string;
+	/**
+	 * Adjust the inline size.
+	 *
+	 * Surfaces may impose sizing restrictions for the component, therefore the size set
+	 * may not be the actual size rendered.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
+	 */
+	inlineSize?: SizeUnits;
+	/**
+	 * Adjust the block size.
+	 *
+	 * Surface may impose sizing restrictions for the component, therefore the size set
+	 * may not be the actual size rendered.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+	 */
+	blockSize?: SizeUnits;
+	/**
+	 * A label that describes the purpose or contents of the component. When set,
+	 * it will be announced to users using assistive technologies and will
+	 * provide them with more context.
+	 */
+	accessibilityLabel?: string;
+	/**
+	 * Callback when the embedded page sends a message.
+	 */
+	onMessage?: (event: MessageEvent$1) => void;
+	/**
+	 * Callback when the embedded page is ready and a message port has been created to
+	 * communicate with the host page.
+	 */
+	onReady?: (event: ReadyEvent) => void;
+}
+interface MessageEvent$1 {
+	/**
+	 * The data sent by the message emitter (the embedded page).
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/data
+	 */
+	data?: any;
+	/**
+	 * A string representing the origin of the message emitter (the embedded page).
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/origin
+	 */
+	origin?: string;
+}
+export interface ReadyEvent {
+	/**
+	 * A function to send messages to the embedded page.
+	 */
+	postMessage?: (message: any, transfer?: Transferable[]) => void;
+}
 export interface BaseInputProps {
 	/**
 	 * An identifier for the field that is unique within the nearest containing form.
@@ -1374,22 +1481,54 @@ export interface InputProps extends BaseInputProps {
 	 */
 	defaultValue?: string;
 }
-export interface FileInputProps<T extends File[] | File = File[]> extends BaseInputProps {
+export interface MultipleInputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
-	 */
-	onChange?: (newValue: T) => void;
-	/**
-	 * Callback when the user makes any changes in the field.
-	 */
-	onInput?: (newValue: T) => void;
-	/**
-	 * The current value for the field.
+	 * Callback when the user has selected option(s).
 	 *
-	 * TODO: This is a read-only getter.
-	 * We haven't agreed how to represent that yet.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
 	 */
-	value?: T;
+	onChange?: (event: Event) => void;
+	/**
+	 * Callback when the user has selected option(s).
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+	 */
+	onInput?: (event: Event) => void;
+	/**
+	 * An array of the `value`s of the selected options.
+	 *
+	 * This is a convenience prop for setting the `selected` prop on child options.
+	 */
+	values?: string[];
+}
+export interface FileInputProps extends BaseInputProps {
+	/**
+	 * Callback when the user has **finished selecting** a file or files.
+	 */
+	onChange?: (event: Event) => void;
+	/**
+	 * Callback when the user makes any changes in the file selection.
+	 */
+	onInput?: (event: Event) => void;
+	/**
+	 * A string that represents the path to the selected file(s). If no file is selected yet, the value is an empty string ("").
+	 * When the user selected multiple files, the value represents the first file in the list of files they selected.
+	 * The value is always the file's name prefixed with "C:\fakepath\", which isn't the real path of the file.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file#value
+	 *
+	 * @default ''
+	 */
+	value?: string;
+	/**
+	 * An array of File objects representing the files currently selected by the user.
+	 *
+	 * This property is read-only and cannot be directly modified.
+	 * To clear the selected files, set the `value` prop to an empty string or null.
+	 *
+	 * @default []
+	 */
+	files?: readonly File[];
 }
 export interface FieldErrorProps {
 	/**
@@ -1636,6 +1775,82 @@ interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps, FieldErrorPro
 	 */
 	required?: boolean;
 }
+interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
+	/**
+	 * Content to use as the choice label.
+	 *
+	 * @implementation (StringChildren) The label is produced by extracting and
+	 * concatenating the text nodes from the provided content; any markup or
+	 * element structure is ignored.
+	 *
+	 * @implementation (ComponentChildren) Behaves as a slot: any elements passed
+	 * are rendered as the label content (subject to surface constraints); there
+	 * is no coercion to a string.
+	 */
+	children?: ComponentChildren | StringChildren;
+	/**
+	 * Additional text to provide context or guidance for the input.
+	 *
+	 * This text is displayed along with the input and its label
+	 * to offer more information or instructions to the user.
+	 *
+	 * @implementation this content should be linked to the input with an `aria-describedby` attribute.
+	 */
+	details?: ComponentChildren;
+	/**
+	 * Set to `true` to associate a choice with the error passed to `ChoiceList`
+	 *
+	 * @default false
+	 */
+	error?: boolean;
+	/**
+	 * Secondary content for a choice.
+	 */
+	secondaryContent?: ComponentChildren;
+	/**
+	 * Content to display when the option is selected.
+	 *
+	 * This can be used to provide additional information or options related to the choice.
+	 */
+	selectedContent?: ComponentChildren;
+}
+interface ChoiceListProps$1 extends GlobalProps, Pick<BasicFieldProps, "label" | "labelAccessibilityVisibility" | "error">, MultipleInputProps, FieldDetailsProps {
+	/**
+	 * Whether multiple choices can be selected.
+	 *
+	 * @default false
+	 */
+	multiple?: boolean;
+	/**
+	 * The choices a user can select from.
+	 *
+	 * Accepts `Choice` components.
+	 */
+	children?: ComponentChildren;
+	/**
+	 * Disables the field, disallowing any interaction.
+	 *
+	 * `disabled` on any child choices is ignored when this is true.
+	 *
+	 * @default false
+	 */
+	disabled?: MultipleInputProps["disabled"];
+	/**
+	 * The variant of the choice grid.
+	 *
+	 * - `auto`: The variant is determined by the context.
+	 * - `list`: The choices are displayed in a list.
+	 * - `inline`: The choices are displayed on the inline axis.
+	 * - `block`: The choices are displayed on the block axis.
+	 * - `grid`: The choices are displayed in a grid.
+	 *
+	 * @implementation The `block`, `inline` and `grid` variants are more suitable for button looking choices, but it's at the
+	 * discretion of each surface.
+	 *
+	 * @default 'auto'
+	 */
+	variant?: "auto" | "list" | "inline" | "block" | "grid";
+}
 interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps {
 	/**
 	 * Disables the clickable, and indicates to assistive technology that the loading is in progress.
@@ -1732,6 +1947,181 @@ interface PhoneFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<FieldD
 	 */
 	type?: "mobile" | "";
 }
+interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
+	/**
+	 * Default month to display in `YYYY-MM` format.
+	 *
+	 * This value is used until `view` is set, either directly or as a result of user interaction.
+	 *
+	 * Defaults to the current month in the user's locale.
+	 */
+	defaultView?: string;
+	/**
+	 * Displayed month in `YYYY-MM` format.
+	 *
+	 * `onViewChange` is called when this value changes.
+	 *
+	 * Defaults to `defaultView`.
+	 */
+	view?: string;
+	/**
+	 * Called whenever the month to display changes.
+	 *
+	 * @param view The new month to display in `YYYY-MM` format.
+	 */
+	onViewChange?: (view: string) => void;
+	/**
+	 * The type of selection the date picker allows.
+	 *
+	 * - `single` allows selecting a single date.
+	 * - `multiple` allows selecting multiple non-contiguous dates.
+	 * - `range` allows selecting a single range of dates.
+	 *
+	 * @default "single"
+	 */
+	type?: "single" | "multiple" | "range";
+	/**
+	 * Dates that can be selected.
+	 *
+	 * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+	 *
+	 * The default `''` allows all dates.
+	 *
+	 * - Dates in `YYYY-MM-DD` format allow a single date.
+	 * - Dates in `YYYY-MM` format allow a whole month.
+	 * - Dates in `YYYY` format allow a whole year.
+	 * - Ranges are expressed as `start--end`.
+	 *     - Ranges are inclusive.
+	 *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
+	 *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+	 *       So `2024--` is equivalent to `2024-01-01--`.
+	 *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+	 *       So `--2024` is equivalent to `--2024-12-31`.
+	 *     - Whitespace is allowed either side of `--`.
+	 *
+	 * @default ""
+	 *
+	 * @example
+	 * `2024-02--2025` // allow any date from February 2024 to the end of 2025
+	 * `2024-02--` // allow any date from February 2024 to the end of the month
+	 * `2024-05-09, 2024-05-11` // allow only the 9th and 11th of May 2024
+	 */
+	allow?: string;
+	/**
+	 * Dates that cannot be selected. These subtract from `allow`.
+	 *
+	 * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+	 *
+	 * The default `''` has no effect on `allow`.
+	 *
+	 * - Dates in `YYYY-MM-DD` format disallow a single date.
+	 * - Dates in `YYYY-MM` format disallow a whole month.
+	 * - Dates in `YYYY` format disallow a whole year.
+	 * - Ranges are expressed as `start--end`.
+	 *     - Ranges are inclusive.
+	 *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
+	 *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+	 *       So `2024--` is equivalent to `2024-01-01--`.
+	 *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+	 *       So `--2024` is equivalent to `--2024-12-31`.
+	 *     - Whitespace is allowed either side of `--`.
+	 *
+	 * @default ""
+	 *
+	 * @example
+	 * `--2024-02` // disallow any date before February 2024
+	 * `2024-05-09, 2024-05-11` // disallow the 9th and 11th of May 2024
+	 */
+	disallow?: string;
+	/**
+	 * Days of the week that can be selected. These intersect with the result of `allow` and `disallow`.
+	 *
+	 * A comma-separated list of days. Whitespace is allowed after commas.
+	 *
+	 * The default `''` has no effect on the result of `allow` and `disallow`.
+	 *
+	 * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
+	 *
+	 * @default ""
+	 *
+	 * @example
+	 * 'saturday, sunday' // allow only weekends within the result of `allow` and `disallow`.
+	 */
+	allowDays?: string;
+	/**
+	 * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allow` and `disallow`.
+	 *
+	 * A comma-separated list of days. Whitespace is allowed after commas.
+	 *
+	 * The default `''` has no effect on `allowDays`.
+	 *
+	 * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
+	 *
+	 * @default ""
+	 *
+	 * @example
+	 * 'saturday, sunday' // disallow weekends within the result of `allow` and `disallow`.
+	 */
+	disallowDays?: string;
+	/**
+	 * Default selected value.
+	 *
+	 * The default means no date is selected.
+	 *
+	 * If the provided value is invalid, no date is selected.
+	 *
+	 * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+	 * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+	 * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+	 *
+	 * @default ""
+	 */
+	defaultValue?: string;
+	/**
+	 * Current selected value.
+	 *
+	 * The default means no date is selected.
+	 *
+	 * If the provided value is invalid, no date is selected.
+	 *
+	 * Otherwise:
+	 *
+	 * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+	 * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+	 * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+	 *
+	 * @default ""
+	 */
+	value?: string;
+	/**
+	 * Callback when any date is selected. Will fire before `onChange`.
+	 */
+	onInput?: (event: Event) => void;
+	/**
+	 * Callback when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
+	 *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
+	 */
+	onChange?: (event: Event) => void;
+}
+interface DateFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<DatePickerProps$1, "view" | "defaultView" | "value" | "defaultValue" | "allow" | "disallow" | "allowDays" | "disallowDays" | "onViewChange">, AutocompleteProps<DateAutocompleteField> {
+	/**
+	 * Callback when the field has an invalid date.
+	 * This callback will be called, if the date typed is invalid or disabled.
+	 *
+	 * Dates that don’t exist or have formatting errors are considered invalid. Some examples of invalid dates are:
+	 * - 2021-02-31: February doesn’t have 31 days
+	 * - 2021-02-00: The day can’t be 00
+	 *
+	 * Disallowed dates are considered invalid.
+	 *
+	 * It’s important to note that this callback will be called only when the user **finishes editing** the date,
+	 * and it’s called right after the `onChange` callback.
+	 * The field is **not** validated on every change to the input. Once the buyer has signalled that
+	 * they have finished editing the field (typically, by blurring the field), the field gets validated and the callback is run if the value is invalid.
+	 */
+	onInvalid?: (event: Event) => void;
+}
+export type DateAutocompleteField = ExtractStrict<AnyAutocompleteField, "bday" | "bday-day" | "bday-month" | "bday-year" | "cc-expiry" | "cc-expiry-month" | "cc-expiry-year">;
 interface DetailsProps$1 extends GlobalProps, ToggleEventProps {
 	/**
 	 * The content of the details.
@@ -1790,16 +2180,17 @@ interface DividerProps$1 extends GlobalProps {
 	 */
 	color?: ColorKeyword;
 }
-interface DropZoneProps$1 extends GlobalProps, FileInputProps<File[]>, BasicFieldProps {
+interface DropZoneProps$1 extends GlobalProps, FileInputProps, BasicFieldProps {
 	/**
-	 * A string representing the types of files that are accepted by the dropzone.
+	 * A string representing the types of files that are accepted by the drop zone.
 	 * This string is a comma-separated list of unique file type specifiers which can be one of the following:
 	 * - A file extension starting with a period (".") character (e.g. .jpg, .pdf, .doc)
 	 * - A valid MIME type string with no extensions
 	 *
-	 * If left empty, the dropzone will accept all files.
+	 * If omitted, all file types are accepted.
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept
+	 * @default ''
 	 */
 	accept?: string;
 	/**
@@ -1809,15 +2200,16 @@ interface DropZoneProps$1 extends GlobalProps, FileInputProps<File[]>, BasicFiel
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Defines if the user can select or drop multiple files at once.
+	 * Whether multiple files can be selected or dropped at once.
 	 *
 	 * @default false
 	 */
 	multiple?: boolean;
 	/**
-	 * Callback when rejected files are dropped. Files are rejected based on the `accept` prop.
+	 * Callback fired when rejected files are dropped.
+	 * Files are rejected based on the `accept` prop and are not added to `files`.
 	 */
-	onDropRejected?: (files: File[]) => void;
+	onDropRejected?: (event: Event) => void;
 }
 interface EmailFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<EmailAutocompleteField> {
 }
@@ -2069,7 +2461,7 @@ interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps, Bloc
 	 */
 	accessibilityRole?: "heading" | ExtractStrict<AccessibilityRole, "presentation" | "none">;
 }
-interface IconProps$1 extends GlobalProps {
+interface IconProps$1 extends GlobalProps, Pick<InteractionProps, "interestFor"> {
 	/**
 	 * Sets the tone of the icon, based on the intention of the information being conveyed.
 	 *
@@ -2363,52 +2755,6 @@ interface MapMarkerProps$1 extends GlobalProps, InteractionProps, Pick<SizingPro
 	 */
 	onClick?: (event: Event) => void;
 }
-export interface BaseOverlayProps {
-	/**
-	 * Callback fired after the overlay is shown.
-	 */
-	onShow?: (event: Event) => void;
-	/**
-	 * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
-	 */
-	onAfterShow?: (event: Event) => void;
-	/**
-	 * Callback fired after the overlay is hidden.
-	 */
-	onHide?: (event: Event) => void;
-	/**
-	 * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
-	 */
-	onAfterHide?: (event: Event) => void;
-}
-/**
- * Shared interfaces for web component methods.
- *
- * Methods are required (not optional) because:
- * - Components implementing this interface must provide all methods
- * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
- * - Consumers expect these methods to be consistently available on all instances
- */
-export interface BaseOverlayMethods {
-	/**
-	 * Method to show an overlay.
-	 *
-	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
-	 */
-	showOverlay: () => void;
-	/**
-	 * Method to hide an overlay.
-	 *
-	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
-	 */
-	hideOverlay: () => void;
-	/**
-	 * Method to toggle the visiblity of an overlay.
-	 *
-	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
-	 */
-	toggleOverlay: () => void;
-}
 interface ModalProps$1 extends GlobalProps, BaseOverlayProps, BaseOverlayMethods, ActionSlots {
 	/**
 	 * A label that describes the purpose of the modal. When set,
@@ -2448,6 +2794,9 @@ interface ModalProps$1 extends GlobalProps, BaseOverlayProps, BaseOverlayMethods
 	 */
 	children?: ComponentChildren;
 }
+interface MoneyFieldProps$1 extends GlobalProps, BaseTextFieldProps, NumberConstraintsProps, AutocompleteProps<MoneyAutocompleteField> {
+}
+export type MoneyAutocompleteField = ExtractStrict<AnyAutocompleteField, "transaction-amount">;
 interface NumberFieldProps$1 extends GlobalProps, BaseTextFieldProps, AutocompleteProps<NumberAutocompleteField>, NumberConstraintsProps, FieldDecorationProps {
 	/**
 	 * Sets the virtual keyboard.
@@ -2523,6 +2872,22 @@ interface PopoverProps$1 extends GlobalProps, BaseOverlayProps, BaseOverlayMetho
 	 * The content of the popover.
 	 */
 	children?: ComponentChildren;
+}
+interface PressButtonProps$1 extends GlobalProps, Pick<ButtonProps$1, "accessibilityLabel" | "children" | "icon" | "inlineSize" | "lang" | "tone" | "variant" | "disabled" | "loading" | "onClick" | "onBlur" | "onFocus"> {
+	/**
+	 * Whether the button is pressed.
+	 *
+	 * @default false
+	 */
+	pressed?: boolean;
+	/**
+	 * Whether the button is pressed by default.
+	 *
+	 * @default false
+	 *
+	 * @implementation `defaultPressed` reflects to the `pressed` attribute.
+	 */
+	defaultPressed?: boolean;
 }
 interface ProductThumbnailProps$1 extends GlobalProps, BaseImageProps {
 	/**
@@ -2632,6 +2997,26 @@ interface QRCodeProps$1 extends GlobalProps {
 	 * By default, no image is displayed.
 	 */
 	logo?: string;
+}
+interface QueryContainerProps$1 extends GlobalProps {
+	/**
+	 * The content of the container.
+	 */
+	children?: ComponentChildren;
+	/**
+	 * The name of the container, which can be used in your container queries to target this container specifically.
+	 *
+	 * We place the container name of `s-default` on every container. Because of this, it is not required to add a `containerName` identifier in your queries. For example, a `@container (inline-size <= 300px) none, auto` query is equivalent to `@container s-default (inline-size <= 300px) none, auto`.
+	 *
+	 * Any value set in `containerName` will be set alongside alongside `s-default`. For example, `containerName="my-container-name"` will result in a value of `s-default my-container-name` set on the `container-name` CSS property of the rendered HTML.
+	 *
+	 * @default ''
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/container-name
+	 *
+	 * @implementation You must always have a CSS `container-name` of `s-default` for this component.
+	 */
+	containerName?: string;
 }
 export type OverflowKeyword = "auto" | "hidden";
 interface ScrollBoxProps$1 extends GlobalProps, Omit<BaseBoxPropsWithRole, "overflow"> {
@@ -2818,7 +3203,7 @@ interface SummaryProps$1 extends GlobalProps {
 }
 interface SwitchProps$1 extends GlobalProps, BaseCheckableProps, BasicFieldProps, FieldDetailsProps, FieldErrorProps {
 }
-interface TextProps$1 extends GlobalProps, AccessibilityVisibilityProps, BaseTypographyProps, DisplayProps {
+interface TextProps$1 extends GlobalProps, AccessibilityVisibilityProps, BaseTypographyProps, DisplayProps, Pick<InteractionProps, "interestFor"> {
 	/**
 	 * The content of the Text.
 	 */
@@ -2940,6 +3325,12 @@ interface TimeProps$1 extends GlobalProps {
 	 */
 	dateTime?: string;
 }
+interface TooltipProps$1 extends GlobalProps {
+	/**
+	 * The content of the Tooltip.
+	 */
+	children?: ComponentChildren;
+}
 interface UnorderedListProps$1 extends GlobalProps {
 }
 export interface URLFieldProps extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<URLAutocompleteField> {
@@ -2977,8 +3368,9 @@ interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElement
  * @see https://github.com/Shopify/ui-api-design/blob/main/packages/ui-api-design/src/components/Icon/Icon.ts#L10
  */
 type ReducedIconTypes = Extract<IconType, 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'circle' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'filter' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'image' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'map' | 'menu-horizontal' | 'menu-vertical' | 'menu' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'reset' | 'return' | 'savings' | 'search' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'>;
+type MaybeResponsive<T> = T | `@container${string}`;
 
-declare const tagName$M = "s-abbreviation";
+declare const tagName$S = "s-abbreviation";
 interface AbbreviationProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {
 }
 interface AbbreviationElement extends AbbreviationProps, Omit<HTMLElement, 'id' | 'title'> {
@@ -2990,12 +3382,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$M]: AbbreviationProps & BaseElementPropsWithChildren<AbbreviationElement>;
+            [tagName$S]: AbbreviationProps & BaseElementPropsWithChildren<AbbreviationElement>;
         }
     }
 }
 
-declare const tagName$L = "s-badge";
+declare const tagName$R = "s-badge";
 interface BadgeProps extends Pick<BadgeProps$1, 'id' | 'tone' | 'iconPosition'> {
     size?: Extract<BadgeProps$1['size'], 'small' | 'small-100' | 'base'>;
     tone?: Extract<BadgeProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
@@ -3006,18 +3398,18 @@ interface BadgeElement extends BadgeProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$L]: BadgeElement;
+        [tagName$R]: BadgeElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$L]: BadgeProps & BaseElementPropsWithChildren<BadgeElement>;
+            [tagName$R]: BadgeProps & BaseElementPropsWithChildren<BadgeElement>;
         }
     }
 }
 
-declare const tagName$K = "s-banner";
+declare const tagName$Q = "s-banner";
 interface BannerElementProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {
     tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;
 }
@@ -3036,12 +3428,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$K]: BannerProps & BaseElementPropsWithChildren<BannerElement>;
+            [tagName$Q]: BannerProps & BaseElementPropsWithChildren<BannerElement>;
         }
     }
 }
 
-declare const tagName$J = "s-box";
+declare const tagName$P = "s-box";
 interface BoxProps extends Pick<BoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<BoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -3057,13 +3449,13 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$J]: BoxProps & BaseElementPropsWithChildren<BoxElement>;
+            [tagName$P]: BoxProps & BaseElementPropsWithChildren<BoxElement>;
         }
     }
 }
 
-declare const tagName$I = "s-button";
-interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
+declare const tagName$O = "s-button";
+interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
     type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;
@@ -3083,12 +3475,17 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$I]: ButtonProps & BaseElementPropsWithChildren<ButtonElement>;
+            [tagName$O]: ButtonProps & BaseElementPropsWithChildren<ButtonElement>;
         }
     }
 }
 
-declare const tagName$H = "s-checkbox";
+interface ChatProps extends Pick<ChatProps$1, 'accessibilityLabel' | 'blockSize' | 'id' | 'inlineSize' | 'onMessage' | 'onReady'> {
+    blockSize?: Extract<ChatProps$1['blockSize'], `${number}px` | '0'>;
+    inlineSize?: Extract<ChatProps$1['inlineSize'], `${number}px` | '0'>;
+}
+
+declare const tagName$N = "s-checkbox";
 interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
     command?: Extract<CheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
@@ -3101,19 +3498,25 @@ interface CheckboxProps extends CheckboxElementProps, CheckboxEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$H]: CheckboxElement;
+        [tagName$N]: CheckboxElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$H]: CheckboxProps & BaseElementProps<CheckboxElement>;
+            [tagName$N]: CheckboxProps & BaseElementProps<CheckboxElement>;
         }
     }
 }
 
-declare const tagName$G = "s-clickable";
-interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibilityLabel' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'command' | 'commandFor' | 'disabled' | 'display' | 'href' | 'id' | 'inlineSize' | 'lang' | 'loading' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'target' | 'type'> {
+interface ChoiceProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'secondaryContent' | 'selected' | 'selectedContent' | 'value'> {
+}
+
+interface ChoiceListProps extends Pick<ChoiceListProps$1, 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'multiple' | 'name' | 'onChange' | 'values' | 'variant'> {
+}
+
+declare const tagName$M = "s-clickable";
+interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibilityLabel' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'command' | 'commandFor' | 'disabled' | 'display' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'lang' | 'loading' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'target' | 'type'> {
     background?: Extract<ClickableProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
@@ -3132,18 +3535,18 @@ interface ClickableProps extends ClickableElementProps, ClickableEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$G]: ClickableElement;
+        [tagName$M]: ClickableElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$G]: ClickableProps & BaseElementPropsWithChildren<ClickableElement>;
+            [tagName$M]: ClickableProps & BaseElementPropsWithChildren<ClickableElement>;
         }
     }
 }
 
-declare const tagName$F = "s-clipboard-item";
+declare const tagName$L = "s-clipboard-item";
 interface ClipboardItemElementProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
 }
 interface ClipboardItemEvents extends Pick<ClipboardItemProps$1, 'onCopy' | 'onCopyError'> {
@@ -3161,12 +3564,67 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$F]: ClipboardItemProps & BaseElementProps<ClipboardItemElement>;
+            [tagName$L]: ClipboardItemProps & BaseElementProps<ClipboardItemElement>;
         }
     }
 }
 
-declare const tagName$E = "s-details";
+declare const tagName$K = "s-date-field";
+interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 'allowDays' | 'autocomplete' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'readOnly' | 'required' | 'value' | 'view'> {
+}
+interface DateFieldEvents extends Pick<DateFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'> {
+}
+interface DateFieldElement extends DateFieldElementProps, Omit<DateFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'oninvalid' | 'prefix'> {
+    onblur: DateFieldEvents['onBlur'];
+    onchange: DateFieldEvents['onChange'];
+    onfocus: DateFieldEvents['onFocus'];
+    oninput: DateFieldEvents['onInput'];
+    oninvalid: DateFieldEvents['onInvalid'];
+    onviewchange: DateFieldEvents['onViewChange'];
+}
+interface DateFieldProps extends DateFieldElementProps, DateFieldEvents {
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        [tagName$K]: DateFieldElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            [tagName$K]: DateFieldProps & BaseElementProps<DateFieldElement>;
+        }
+    }
+}
+
+declare const tagName$J = "s-date-picker";
+interface DatePickerElementProps extends Pick<DatePickerProps$1, 'allow' | 'allowDays' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'id' | 'name' | 'type' | 'value' | 'view'> {
+}
+interface DatePickerEvents extends Pick<DatePickerProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'> {
+}
+interface DatePickerElement extends DatePickerElementProps, Omit<DatePickerEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
+    onblur: DatePickerEvents['onBlur'];
+    onchange: DatePickerEvents['onChange'];
+    onfocus: DatePickerEvents['onFocus'];
+    oninput: DatePickerEvents['onInput'];
+    onviewchange: DatePickerEvents['onViewChange'];
+}
+interface DatePickerProps extends DatePickerElementProps, DatePickerEvents {
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        [tagName$J]: DatePickerElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            [tagName$J]: DatePickerProps & BaseElementProps<DatePickerElement>;
+        }
+    }
+}
+
+declare const tagName$I = "s-details";
 interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'open' | 'id' | 'toggleTransition'> {
 }
 interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle'> {
@@ -3178,37 +3636,37 @@ interface DetailsProps extends DetailsElementProps, DetailsEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$E]: DetailsElement;
+        [tagName$I]: DetailsElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$E]: DetailsProps & BaseElementPropsWithChildren<DetailsElement>;
+            [tagName$I]: DetailsProps & BaseElementPropsWithChildren<DetailsElement>;
         }
     }
 }
 
-declare const tagName$D = "s-divider";
+declare const tagName$H = "s-divider";
 interface DividerProps extends DividerProps$1 {
 }
 interface DividerElement extends DividerProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$D]: DividerElement;
+        [tagName$H]: DividerElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$D]: DividerProps$1;
+            [tagName$H]: DividerProps$1;
         }
     }
 }
 
-declare const tagName$C = "s-drop-zone";
-interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required'> {
+declare const tagName$G = "s-drop-zone";
+interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required' | 'value'> {
 }
 interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput'> {
 }
@@ -3225,12 +3683,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$C]: DropZoneProps & BaseElementProps<DropZoneElement>;
+            [tagName$G]: DropZoneProps & BaseElementProps<DropZoneElement>;
         }
     }
 }
 
-declare const tagName$B = "s-email-field";
+declare const tagName$F = "s-email-field";
 interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'maxLength' | 'minLength' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value'> {
     /**
      * @deprecated Use `label` instead.
@@ -3250,18 +3708,18 @@ interface EmailFieldProps extends EmailFieldElementProps, EmailFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$B]: EmailFieldElement;
+        [tagName$F]: EmailFieldElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$B]: EmailFieldProps & BaseElementProps<EmailFieldElement>;
+            [tagName$F]: EmailFieldProps & BaseElementProps<EmailFieldElement>;
         }
     }
 }
 
-declare const tagName$A = "s-form";
+declare const tagName$E = "s-form";
 interface FormElementProps extends Pick<FormProps$1, 'disabled' | 'id'> {
 }
 interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
@@ -3282,12 +3740,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$A]: FormProps & BaseElementPropsWithChildren<FormElement>;
+            [tagName$E]: FormProps & BaseElementPropsWithChildren<FormElement>;
         }
     }
 }
 
-declare const tagName$z = "s-grid-item";
+declare const tagName$D = "s-grid-item";
 interface GridItemProps extends Pick<GridItemProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'gridColumn' | 'gridRow' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<GridItemProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -3299,18 +3757,18 @@ interface GridItemElement extends GridItemProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$z]: GridItemElement;
+        [tagName$D]: GridItemElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$z]: GridItemProps & BaseElementPropsWithChildren<GridItemElement>;
+            [tagName$D]: GridItemProps & BaseElementPropsWithChildren<GridItemElement>;
         }
     }
 }
 
-declare const tagName$y = "s-grid";
+declare const tagName$C = "s-grid";
 interface GridProps extends Pick<GridProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'display' | 'gap' | 'gridTemplateColumns' | 'gridTemplateRows' | 'id' | 'inlineSize' | 'justifyContent' | 'justifyItems' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'placeContent' | 'placeItems' | 'rowGap'> {
     alignContent?: ReducedAlignContentKeyword | '';
     alignItems?: ReducedAlignItemsKeyword | '';
@@ -3328,18 +3786,18 @@ interface GridElement extends GridProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$y]: GridElement;
+        [tagName$C]: GridElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$y]: GridProps & BaseElementPropsWithChildren<GridElement>;
+            [tagName$C]: GridProps & BaseElementPropsWithChildren<GridElement>;
         }
     }
 }
 
-declare const tagName$x = "s-heading";
+declare const tagName$B = "s-heading";
 interface HeadingProps extends Pick<HeadingProps$1, 'accessibilityRole' | 'id'> {
 }
 interface HeadingElement extends HeadingProps, Omit<HTMLElement, 'id'> {
@@ -3351,12 +3809,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$x]: HeadingProps & BaseElementPropsWithChildren<HeadingElement>;
+            [tagName$B]: HeadingProps & BaseElementPropsWithChildren<HeadingElement>;
         }
     }
 }
 
-declare const tagName$w = "s-icon";
+declare const tagName$A = "s-icon";
 interface IconProps extends Pick<IconProps$1, 'id' | 'size' | 'tone' | 'type'> {
     tone?: Extract<IconProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
     size?: Extract<IconProps$1['size'], 'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
@@ -3371,12 +3829,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$w]: IconProps & BaseElementProps<IconElement>;
+            [tagName$A]: IconProps & BaseElementProps<IconElement>;
         }
     }
 }
 
-declare const tagName$v = "s-image";
+declare const tagName$z = "s-image";
 interface ImageProps extends Pick<ImageProps$1, 'accessibilityRole' | 'alt' | 'aspectRatio' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'id' | 'inlineSize' | 'loading' | 'objectFit' | 'sizes' | 'src' | 'srcSet'> {
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
@@ -3391,13 +3849,13 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$v]: ImageProps & BaseElementProps<ImageElement>;
+            [tagName$z]: ImageProps & BaseElementProps<ImageElement>;
         }
     }
 }
 
-declare const tagName$u = "s-link";
-interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'lang' | 'target' | 'tone'> {
+declare const tagName$y = "s-link";
+interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'interestFor' | 'lang' | 'target' | 'tone'> {
     target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
 }
@@ -3415,12 +3873,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$u]: LinkProps & BaseElementPropsWithChildren<LinkElement>;
+            [tagName$y]: LinkProps & BaseElementPropsWithChildren<LinkElement>;
         }
     }
 }
 
-declare const tagName$t = "s-list-item";
+declare const tagName$x = "s-list-item";
 interface ListItemProps extends Pick<ListItemProps$1, 'id'> {
 }
 interface ListItemElement extends ListItemProps, Omit<HTMLElement, 'id'> {
@@ -3432,12 +3890,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$t]: ListItemProps & BaseElementPropsWithChildren<ListItemElement>;
+            [tagName$x]: ListItemProps & BaseElementPropsWithChildren<ListItemElement>;
         }
     }
 }
 
-declare const tagName$s = "s-map-marker";
+declare const tagName$w = "s-map-marker";
 interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'command' | 'commandFor' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
     command?: Extract<MapMarkerProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
@@ -3458,18 +3916,18 @@ interface MapMarkerProps extends MapMarkerElementProps, MapMarkerEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$s]: MapMarkerElement;
+        [tagName$w]: MapMarkerElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$s]: MapMarkerProps & BaseElementProps<MapMarkerElement>;
+            [tagName$w]: MapMarkerProps & BaseElementProps<MapMarkerElement>;
         }
     }
 }
 
-declare const tagName$r = "s-map";
+declare const tagName$v = "s-map";
 interface MapElementProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'zoom'> {
 }
 interface MapEvents extends Pick<MapProps$1, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'> {
@@ -3484,18 +3942,18 @@ interface MapProps extends MapElementProps, MapEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$r]: MapElement;
+        [tagName$v]: MapElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$r]: MapProps & BaseElementPropsWithChildren<MapElement>;
+            [tagName$v]: MapProps & BaseElementPropsWithChildren<MapElement>;
         }
     }
 }
 
-declare const tagName$q = "s-modal";
+declare const tagName$u = "s-modal";
 interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
     size?: Extract<ModalProps$1['size'], 'small-100' | 'small' | 'base' | 'large-100' | 'large' | 'max'>;
 }
@@ -3519,18 +3977,44 @@ interface ModalProps extends ModalElementProps, ModalSlots, ModalEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$q]: ModalElement;
+        [tagName$u]: ModalElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$q]: ModalProps & BaseElementPropsWithChildren<ModalElement>;
+            [tagName$u]: ModalProps & BaseElementPropsWithChildren<ModalElement>;
         }
     }
 }
 
-declare const tagName$p = "s-number-field";
+declare const tagName$t = "s-money-field";
+interface MoneyFieldElementProps extends Pick<MoneyFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'readOnly' | 'required' | 'step' | 'value'> {
+}
+interface MoneyFieldEvents extends Pick<MoneyFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
+}
+interface MoneyFieldElement extends MoneyFieldElementProps {
+    onblur: MoneyFieldEvents['onBlur'];
+    onchange: MoneyFieldEvents['onChange'];
+    onfocus: MoneyFieldEvents['onFocus'];
+    oninput: MoneyFieldEvents['onInput'];
+}
+interface MoneyFieldProps extends MoneyFieldElementProps, MoneyFieldEvents {
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        [tagName$t]: MoneyFieldElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            [tagName$t]: MoneyFieldProps & BaseElementProps<MoneyFieldElement>;
+        }
+    }
+}
+
+declare const tagName$s = "s-number-field";
 interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'accessory' | 'autocomplete' | 'controls' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'icon' | 'id' | 'inputMode' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
     /**
      * @deprecated Use `label` instead.
@@ -3550,36 +4034,36 @@ interface NumberFieldProps extends NumberFieldElementProps, NumberFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$p]: NumberFieldElement;
+        [tagName$s]: NumberFieldElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$p]: NumberFieldProps & BaseElementProps<NumberFieldElement>;
+            [tagName$s]: NumberFieldProps & BaseElementPropsWithChildren<NumberFieldElement>;
         }
     }
 }
 
-declare const tagName$o = "s-option";
+declare const tagName$r = "s-option";
 interface OptionProps extends Pick<OptionProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'value'> {
 }
 interface OptionElement extends OptionProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$o]: OptionElement;
+        [tagName$r]: OptionElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$o]: OptionProps & BaseElementPropsWithChildren<OptionElement>;
+            [tagName$r]: OptionProps & BaseElementPropsWithChildren<OptionElement>;
         }
     }
 }
 
-declare const tagName$n = "s-ordered-list";
+declare const tagName$q = "s-ordered-list";
 interface OrderedListProps extends OrderedListProps$1 {
 }
 interface OrderedListElement extends OrderedListProps, Omit<HTMLElement, 'id'> {
@@ -3591,12 +4075,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$n]: OrderedListProps & BaseElementPropsWithChildren<OrderedListElement>;
+            [tagName$q]: OrderedListProps & BaseElementPropsWithChildren<OrderedListElement>;
         }
     }
 }
 
-declare const tagName$m = "s-paragraph";
+declare const tagName$p = "s-paragraph";
 interface ParagraphProps extends Pick<ParagraphProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<ParagraphProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<ParagraphProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'custom'>;
@@ -3610,12 +4094,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$m]: ParagraphProps & BaseElementPropsWithChildren<ParagraphElement>;
+            [tagName$p]: ParagraphProps & BaseElementPropsWithChildren<ParagraphElement>;
         }
     }
 }
 
-declare const tagName$l = "s-password-field";
+declare const tagName$o = "s-password-field";
 interface PasswordFieldElementProps extends Pick<PasswordFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength'
 /** @todo: implement `minLength` */
  | 'name'
@@ -3634,18 +4118,18 @@ interface PasswordFieldProps extends PasswordFieldElementProps, PasswordFieldEve
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$l]: PasswordFieldElement;
+        [tagName$o]: PasswordFieldElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$l]: PasswordFieldProps & BaseElementProps<PasswordFieldElement>;
+            [tagName$o]: PasswordFieldProps & BaseElementProps<PasswordFieldElement>;
         }
     }
 }
 
-declare const tagName$k = "s-payment-icon";
+declare const tagName$n = "s-payment-icon";
 interface PaymentIconProps extends PaymentIconProps$1 {
 }
 interface PaymentIconElement extends PaymentIconProps, Omit<HTMLElement, 'id'> {
@@ -3657,12 +4141,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$k]: PaymentIconProps & BaseElementProps<PaymentIconElement>;
+            [tagName$n]: PaymentIconProps & BaseElementProps<PaymentIconElement>;
         }
     }
 }
 
-declare const tagName$j = "s-phone-field";
+declare const tagName$m = "s-phone-field";
 interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value' | 'type'> {
     /**
      * @deprecated Use `label` instead.
@@ -3689,18 +4173,18 @@ interface PhoneFieldProps extends PhoneFieldElementProps, PhoneFieldSlots, Phone
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$j]: PhoneFieldElement;
+        [tagName$m]: PhoneFieldElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$j]: PhoneFieldProps & BaseElementProps<PhoneFieldElement>;
+            [tagName$m]: PhoneFieldProps & BaseElementProps<PhoneFieldElement>;
         }
     }
 }
 
-declare const tagName$i = "s-popover";
+declare const tagName$l = "s-popover";
 interface PopoverElementProps extends Pick<PopoverProps$1, 'blockSize' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize'> {
 }
 interface PopoverEvents extends Pick<PopoverProps$1, 'onHide' | 'onShow'> {
@@ -3713,18 +4197,43 @@ interface PopoverProps extends PopoverElementProps, PopoverEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$i]: PopoverElement;
+        [tagName$l]: PopoverElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$i]: PopoverProps & BaseElementPropsWithChildren<PopoverElement>;
+            [tagName$l]: PopoverProps & BaseElementPropsWithChildren<PopoverElement>;
         }
     }
 }
 
-declare const tagName$h = "s-product-thumbnail";
+declare const tagName$k = "s-press-button";
+interface PressButtonElementProps extends Pick<PressButtonProps$1, 'accessibilityLabel' | 'id' | 'children' | 'inlineSize' | 'lang' | 'disabled' | 'loading' | 'pressed' | 'defaultPressed'> {
+}
+interface PressButtonEvents extends Pick<PressButtonProps$1, 'onClick' | 'onBlur' | 'onFocus'> {
+}
+interface PressButtonElement extends PressButtonElementProps, Omit<HTMLElement, 'children' | 'lang' | 'id' | 'onblur' | 'onclick' | 'onfocus'> {
+    onblur: PressButtonEvents['onBlur'];
+    onclick: PressButtonEvents['onClick'];
+    onfocus: PressButtonEvents['onFocus'];
+}
+interface PressButtonProps extends PressButtonElementProps, PressButtonEvents {
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        [tagName$k]: PressButtonElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            [tagName$k]: PressButtonProps & BaseElementPropsWithChildren<PressButtonElement>;
+        }
+    }
+}
+
+declare const tagName$j = "s-product-thumbnail";
 interface ProductThumbnailProps extends Pick<ProductThumbnailProps$1, 'alt' | 'size' | 'sizes' | 'src' | 'srcSet' | 'totalItems'> {
     size?: Extract<ProductThumbnailProps$1['size'], 'small-100' | 'small' | 'base'>;
 }
@@ -3732,18 +4241,18 @@ interface ProductThumbnailElement extends ProductThumbnailProps, Omit<HTMLElemen
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$h]: ProductThumbnailElement;
+        [tagName$j]: ProductThumbnailElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$h]: ProductThumbnailProps & BaseElementProps<ProductThumbnailElement>;
+            [tagName$j]: ProductThumbnailProps & BaseElementProps<ProductThumbnailElement>;
         }
     }
 }
 
-declare const tagName$g = "s-progress";
+declare const tagName$i = "s-progress";
 interface ProgressProps extends Pick<ProgressProps$1, 'accessibilityLabel' | 'id' | 'max' | 'tone' | 'value'> {
     tone?: Extract<ProgressProps$1['tone'], 'auto' | 'critical'>;
 }
@@ -3756,12 +4265,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$g]: ProgressProps & BaseElementProps<ProgressElement>;
+            [tagName$i]: ProgressProps & BaseElementProps<ProgressElement>;
         }
     }
 }
 
-declare const tagName$f = "s-qr-code";
+declare const tagName$h = "s-qr-code";
 interface QRCodeElementProps extends QRCodeProps$1 {
 }
 interface QRCodeEvents extends Pick<QRCodeProps$1, 'onError'> {
@@ -3773,18 +4282,38 @@ interface QRCodeProps extends QRCodeElementProps, QRCodeEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$f]: QRCodelement;
+        [tagName$h]: QRCodelement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$f]: QRCodeProps & BaseElementProps<QRCodelement>;
+            [tagName$h]: QRCodeProps & BaseElementProps<QRCodelement>;
         }
     }
 }
 
-declare const tagName$e = "s-scroll-box";
+declare const tagName$g = "s-query-container";
+interface QueryContainerElementProps extends Pick<QueryContainerProps$1, 'containerName' | 'id'> {
+}
+interface QueryContainerElement extends QueryContainerElementProps, Omit<HTMLElement, 'id'> {
+}
+interface QueryContainerProps extends QueryContainerElementProps {
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        [tagName$g]: QueryContainerElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            [tagName$g]: QueryContainerProps & BaseElementPropsWithChildren<QueryContainerElement>;
+        }
+    }
+}
+
+declare const tagName$f = "s-scroll-box";
 interface ScrollBoxProps extends Pick<ScrollBoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<ScrollBoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -3796,36 +4325,36 @@ interface ScrollBoxElement extends ScrollBoxProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$e]: ScrollBoxElement;
+        [tagName$f]: ScrollBoxElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$e]: ScrollBoxProps & BaseElementPropsWithChildren<ScrollBoxElement>;
+            [tagName$f]: ScrollBoxProps & BaseElementPropsWithChildren<ScrollBoxElement>;
         }
     }
 }
 
-declare const tagName$d = "s-section";
+declare const tagName$e = "s-section";
 interface SectionProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id'> {
 }
 interface SectionElement extends SectionProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$d]: SectionElement;
+        [tagName$e]: SectionElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$d]: SectionProps & BaseElementPropsWithChildren<SectionElement>;
+            [tagName$e]: SectionProps & BaseElementPropsWithChildren<SectionElement>;
         }
     }
 }
 
-declare const tagName$c = "s-select";
+declare const tagName$d = "s-select";
 interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value'> {
 }
 interface SelectEvents extends Pick<SelectProps$1, 'onBlur' | 'onChange' | 'onFocus'> {
@@ -3839,18 +4368,18 @@ interface SelectProps extends SelectElementProps, SelectEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$c]: SelectElement;
+        [tagName$d]: SelectElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$c]: SelectProps & BaseElementPropsWithChildren<SelectElement>;
+            [tagName$d]: SelectProps & BaseElementPropsWithChildren<SelectElement>;
         }
     }
 }
 
-declare const tagName$b = "s-sheet";
+declare const tagName$c = "s-sheet";
 interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'heading' | 'id'> {
     /**
      * A label that describes the purpose of the modal. When set,
@@ -3881,36 +4410,36 @@ interface SheetProps extends SheetElementProps, SheetEvents, SheetSlots {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$b]: SheetElement;
+        [tagName$c]: SheetElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$b]: SheetProps & BaseElementPropsWithChildren<SheetElement>;
+            [tagName$c]: SheetProps & BaseElementPropsWithChildren<SheetElement>;
         }
     }
 }
 
-declare const tagName$a = "s-skeleton-paragraph";
+declare const tagName$b = "s-skeleton-paragraph";
 interface SkeletonParagraphProps extends SkeletonParagraphProps$1 {
 }
 interface SkeletonParagraphElement extends SkeletonParagraphProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$a]: SkeletonParagraphElement;
+        [tagName$b]: SkeletonParagraphElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$a]: SkeletonParagraphProps & BaseElementProps<SkeletonParagraphElement>;
+            [tagName$b]: SkeletonParagraphProps & BaseElementProps<SkeletonParagraphElement>;
         }
     }
 }
 
-declare const tagName$9 = "s-spinner";
+declare const tagName$a = "s-spinner";
 interface SpinnerProps extends SpinnerProps$1 {
     size?: Extract<SpinnerProps$1['size'], 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
 }
@@ -3923,18 +4452,19 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$9]: SpinnerProps & BaseElementProps<SpinnerElement>;
+            [tagName$a]: SpinnerProps & BaseElementProps<SpinnerElement>;
         }
     }
 }
 
-declare const tagName$8 = "s-stack";
-interface StackProps extends Pick<StackProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'direction' | 'display' | 'gap' | 'id' | 'inlineSize' | 'justifyContent' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'rowGap'> {
+declare const tagName$9 = "s-stack";
+interface StackProps extends Pick<StackProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'display' | 'gap' | 'id' | 'inlineSize' | 'justifyContent' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'rowGap'> {
     accessibilityRole?: Extract<StackProps$1['accessibilityRole'], 'main' | 'header' | 'footer' | 'section' | 'aside' | 'navigation' | 'ordered-list' | 'list-item' | 'list-item-separator' | 'unordered-list' | 'separator' | 'status' | 'alert' | 'generic' | 'none'>;
     background?: Extract<StackProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<StackProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
+    direction?: MaybeResponsive<Extract<StackProps$1['direction'], 'inline' | 'block'>>;
     alignContent?: Extract<StackProps$1['alignContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
     alignItems?: Extract<StackProps$1['alignItems'], 'normal' | 'stretch' | 'center' | 'start' | 'end'>;
     justifyContent?: Extract<StackProps$1['justifyContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
@@ -3948,19 +4478,19 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$8]: StackProps & BaseElementPropsWithChildren<StackElement>;
+            [tagName$9]: StackProps & BaseElementPropsWithChildren<StackElement>;
         }
     }
 }
 
-declare const tagName$7 = "s-summary";
+declare const tagName$8 = "s-summary";
 interface SummaryProps extends Pick<SummaryProps$1, 'id'> {
 }
 interface SummaryElement extends SummaryProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$7]: SummaryElement;
+        [tagName$8]: SummaryElement;
     }
 }
 declare module 'preact' {
@@ -3970,12 +4500,12 @@ declare module 'preact' {
     }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$7]: SummaryProps & BaseProps;
+            [tagName$8]: SummaryProps & BaseProps;
         }
     }
 }
 
-declare const tagName$6 = "s-switch";
+declare const tagName$7 = "s-switch";
 interface SwitchElementProps extends Pick<SwitchProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'id' | 'label' | 'name' | 'value'> {
     command?: Extract<SwitchProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
@@ -3988,18 +4518,18 @@ interface SwitchProps extends SwitchElementProps, SwitchEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$6]: SwitchElement;
+        [tagName$7]: SwitchElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$6]: SwitchProps & BaseElementProps<SwitchElement>;
+            [tagName$7]: SwitchProps & BaseElementProps<SwitchElement>;
         }
     }
 }
 
-declare const tagName$5 = "s-text-area";
+declare const tagName$6 = "s-text-area";
 interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'name' | 'required' | 'value' | 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'readOnly' | 'rows' | 'maxLength' | 'minLength' | 'labelAccessibilityVisibility'> {
     /**
      * @deprecated Use `label` instead.
@@ -4019,18 +4549,18 @@ interface TextAreaProps extends TextAreaElementProps, TextAreaEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$5]: TextAreaElement;
+        [tagName$6]: TextAreaElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$5]: TextAreaProps & BaseElementProps<TextAreaElement>;
+            [tagName$6]: TextAreaProps & BaseElementProps<TextAreaElement>;
         }
     }
 }
 
-declare const tagName$4 = "s-text-field";
+declare const tagName$5 = "s-text-field";
 interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'icon' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
     /**
@@ -4063,12 +4593,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$4]: TextFieldProps & BaseElementProps<TextFieldElement>;
+            [tagName$5]: TextFieldProps & BaseElementProps<TextFieldElement>;
         }
     }
 }
 
-declare const tagName$3 = "s-text";
+declare const tagName$4 = "s-text";
 interface TextProps extends Pick<TextProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'display' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<TextProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<TextProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
@@ -4083,12 +4613,12 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$3]: TextProps & BaseElementPropsWithChildren<TextElement>;
+            [tagName$4]: TextProps & BaseElementPropsWithChildren<TextElement>;
         }
     }
 }
 
-declare const tagName$2 = "s-time";
+declare const tagName$3 = "s-time";
 interface TimeProps extends Pick<TimeProps$1, 'dateTime' | 'id'> {
 }
 interface TimeElement extends TimeProps, Omit<HTMLElement, 'id'> {
@@ -4100,7 +4630,27 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$2]: TimeProps & BaseElementPropsWithChildren<TimeElement>;
+            [tagName$3]: TimeProps & BaseElementPropsWithChildren<TimeElement>;
+        }
+    }
+}
+
+declare const tagName$2 = "s-tooltip";
+interface TooltipElementProps extends Pick<TooltipProps$1, 'id'> {
+}
+interface TooltipElement extends TooltipElementProps {
+}
+interface TooltipProps extends TooltipElementProps {
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        [tagName$2]: TooltipElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            [tagName$2]: TooltipProps & BaseElementPropsWithChildren<TooltipElement>;
         }
     }
 }
@@ -4152,4 +4702,4 @@ declare module 'preact' {
     }
 }
 
-export type { AbbreviationProps, BadgeProps, BannerProps, BoxProps, ButtonProps, CheckboxProps, ClickableProps, ClipboardItemProps, DetailsProps, DividerProps, DropZoneProps, EmailFieldProps, FormProps, GridItemProps, GridProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, MapMarkerProps, MapProps, ModalProps, NumberFieldProps, OptionProps, OrderedListProps, ParagraphProps, PasswordFieldProps, PaymentIconProps, PhoneFieldProps, PopoverProps, ProductThumbnailProps, ProgressProps, QRCodeProps, ScrollBoxProps, SectionProps, SelectProps, SheetProps, SkeletonParagraphProps, SpinnerProps, StackProps, SummaryProps, SwitchProps, TextAreaProps, TextFieldProps, TextProps, TimeProps, UnorderedListProps, UrlFieldProps };
+export type { AbbreviationProps, BadgeProps, BannerProps, BoxProps, ButtonProps, ChatProps, CheckboxProps, ChoiceListProps, ChoiceProps, ClickableProps, ClipboardItemProps, DateFieldProps, DatePickerProps, DetailsProps, DividerProps, DropZoneProps, EmailFieldProps, FormProps, GridItemProps, GridProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, MapMarkerProps, MapProps, ModalProps, MoneyFieldProps, NumberFieldProps, OptionProps, OrderedListProps, ParagraphProps, PasswordFieldProps, PaymentIconProps, PhoneFieldProps, PopoverProps, PressButtonProps, ProductThumbnailProps, ProgressProps, QRCodeProps, QueryContainerProps, ScrollBoxProps, SectionProps, SelectProps, SheetProps, SkeletonParagraphProps, SpinnerProps, StackProps, SummaryProps, SwitchProps, TextAreaProps, TextFieldProps, TextProps, TimeProps, TooltipProps, UnorderedListProps, UrlFieldProps };
