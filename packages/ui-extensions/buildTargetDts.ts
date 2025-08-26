@@ -72,7 +72,7 @@ function createInitialTargetDefinition({
   const directory = join(buildPath, `ts/surfaces/${surface}/targets`);
   const targetPath = join(directory, fileName);
 
-  const template = `import type {ExtensionTargets} from '../extension-targets';
+  let template = `import type {ExtensionTargets} from '../extension-targets';
 type Target = ExtensionTargets[${name}];
 export type Api = Target['api'];
 export type Output = Target['output'];
@@ -80,6 +80,20 @@ export type Output = Target['output'];
 export type GlobalThis = typeof globalThis & {
   shopify: Api;
 }\n`;
+
+  if (surface === 'customer-account') {
+    template = `import type {ExtensionTargets} from '../extension-targets';
+import {ExtensionNavigation} from '../api';
+type Target = ExtensionTargets[${name}];
+export type Api = Target['api'];
+export type Output = Target['output'];
+export type Navigation = ExtensionNavigation<${name}>;
+
+export type GlobalThis = typeof globalThis & {
+  shopify: Api;
+  navigation: Navigation;
+}\n`;
+  }
 
   if (!existsSync(directory)) {
     mkdirSync(directory);

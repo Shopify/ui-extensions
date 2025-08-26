@@ -96,4 +96,5 @@ export type {
   CompanyLocationApi,
   OrderApi,
   ExtensionSettings,
+  ExtensionNavigation,
 } from './api/standard-api/standard-api';

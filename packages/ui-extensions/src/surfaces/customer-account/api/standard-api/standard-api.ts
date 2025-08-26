@@ -15,7 +15,11 @@ import {
   ToastApi,
 } from '../shared';
 
-import type {ExtensionTarget} from '../../extension-targets';
+import type {
+  ExtensionTarget,
+  ExtensionTargets,
+  RenderCustomerAccountFullPageExtensionTarget,
+} from '../../extension-targets';
 import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 /**
@@ -272,6 +276,11 @@ export interface FullExtensionNavigation extends StandardExtensionNavigation {
     cb: (event: NavigationCurrentEntryChangeEvent) => void,
   ): void;
 }
+
+export type ExtensionNavigation<Target extends keyof ExtensionTargets> =
+  Target extends RenderCustomerAccountFullPageExtensionTarget
+    ? FullExtensionNavigation
+    : StandardExtensionNavigation;
 
 export interface NavigateFunction {
   /**
