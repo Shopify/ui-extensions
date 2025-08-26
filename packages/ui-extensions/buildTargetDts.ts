@@ -76,10 +76,7 @@ function createInitialTargetDefinition({
 type Target = ExtensionTargets[${name}];
 export type Api = Target['api'];
 export type Output = Target['output'];
-
-export type GlobalThis = typeof globalThis & {
-  shopify: Api;
-}\n`;
+\n`;
 
   if (surface === 'customer-account') {
     template = `import type {ExtensionTargets} from '../extension-targets';
@@ -89,14 +86,10 @@ export type Api = Target['api'];
 export type Output = Target['output'];
 export type Navigation = ExtensionNavigation<${name}>;
 
-export type GlobalThis = typeof globalThis & {
-  shopify: Api;
-}\n
-
 declare global {
   var navigation: Navigation;
 }
-`;
+\n`;
   }
 
   if (!existsSync(directory)) {
