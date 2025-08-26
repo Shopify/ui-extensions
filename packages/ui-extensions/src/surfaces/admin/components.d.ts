@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.9.1 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -11,7 +11,6 @@
  * https://github.com/Shopify/ui-api-design/issues/139
  */
 export type ComponentChildren = any;
-export type StringChildren = string;
 export interface GlobalProps {
   /**
    * A unique identifier for the element.
@@ -1488,6 +1487,23 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   lang?: string;
 }
+interface ButtonGroupProps$1 extends GlobalProps, ActionSlots {
+  /**
+   * The content of the ButtonGroup.
+   */
+  children?: ComponentChildren;
+  /**
+   * The gap between elements.
+   * @default 'base'
+   */
+  gap?: 'base' | 'none';
+  /**
+   * Label for the button group that describes the content of the group for screen reader users to understand what's included.
+   *
+   * @implementation Used as a hidden heading or an aria-label on the wrapping element.
+   */
+  accessibilityLabel?: string;
+}
 export interface BaseInputProps {
   /**
    * An identifier for the field that is unique within the nearest containing form.
@@ -1856,16 +1872,8 @@ interface ChipProps$1 extends ChipProps$1, GlobalProps {}
 interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
   /**
    * Content to use as the choice label.
-   *
-   * @implementation (StringChildren) The label is produced by extracting and
-   * concatenating the text nodes from the provided content; any markup or
-   * element structure is ignored.
-   *
-   * @implementation (ComponentChildren) Behaves as a slot: any elements passed
-   * are rendered as the label content (subject to surface constraints); there
-   * is no coercion to a string.
    */
-  children?: ComponentChildren | StringChildren;
+  children?: ComponentChildren;
   /**
    * Additional text to provide context or guidance for the input.
    *
@@ -3257,7 +3265,7 @@ interface TableBodyProps$1 extends GlobalProps {
 }
 interface TableCellProps$1 extends GlobalProps {
   /**
-   * The content of the table cell.
+   * The content of the table data.
    */
   children?: ComponentChildren;
 }
@@ -3284,16 +3292,6 @@ interface TableHeaderProps$1 extends GlobalProps {
    * @default 'labeled'
    */
   listSlot?: ListSlotType;
-  /**
-   * The format of the column. Will automatically apply styling and alignment to cell content based on the value.
-   *
-   * - `base`: The base format for columns.
-   * - `currency`: Formats the column as currency.
-   * - `numeric`: Formats the column as a number.
-   *
-   * @default 'base'
-   */
-  format?: 'base' | 'currency' | 'numeric';
 }
 interface TableHeaderRowProps$1 extends GlobalProps {
   /**
@@ -3306,17 +3304,6 @@ interface TableRowProps$1 extends GlobalProps {
    * The content of a TableRow, which should be `TableCell` components.
    */
   children?: ComponentChildren;
-  /**
-   * The ID of an interactive element (e.g. `s-link`) in the row that will be the target of the click when the row is clicked.
-   * This is the primary action for the row; it should not be used for secondary actions.
-   *
-   * This is a click-only affordance, and does not introduce any keyboard or screen reader affordances.
-   * Which is why the target element must be in the table; so that keyboard and screen reader users can interact with it normally.
-   *
-   * @implementation no focus or keyboard affordances are introduced by this property. No aria attributes need to be added to the table row.
-   * @implementation the row and/or delegate should have some affordance that indicates it is clickable. This may be a background color, a border, a hover effect, etc.
-   */
-  clickDelegate?: string;
 }
 interface TextProps$1
   extends GlobalProps,
@@ -4270,18 +4257,18 @@ declare class Avatar extends PreactCustomElement implements AvatarProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$X]: Avatar;
+    [tagName$Y]: Avatar;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$X]: AvatarJSXProps & PreactBaseElementPropsWithChildren<Avatar>;
+      [tagName$Y]: AvatarJSXProps & PreactBaseElementPropsWithChildren<Avatar>;
     }
   }
 }
 
-declare const tagName$X = 's-avatar';
+declare const tagName$Y = 's-avatar';
 export interface AvatarJSXProps
   extends Partial<AvatarProps>,
     Pick<AvatarProps$1, 'id'> {
@@ -4290,7 +4277,10 @@ export interface AvatarJSXProps
 }
 
 export interface IconProps
-  extends Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size'> {
+  extends Pick<
+    IconProps$1,
+    'type' | 'tone' | 'color' | 'size' | 'interestFor'
+  > {
   /**
    * Specifies the type of icon that will be displayed.
    */
@@ -4301,7 +4291,6 @@ export interface IconProps
   >;
   color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
   size: Extract<IconProps$1['size'], 'small' | 'base'>;
-  interestFor?: string;
 }
 
 export interface BadgeProps
@@ -4324,18 +4313,18 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$W]: Badge;
+    [tagName$X]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$W]: BadgeJSXProps & PreactBaseElementPropsWithChildren<Badge>;
+      [tagName$X]: BadgeJSXProps & PreactBaseElementPropsWithChildren<Badge>;
     }
   }
 }
 
-declare const tagName$W = 's-badge';
+declare const tagName$X = 's-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id'> {}
@@ -4361,19 +4350,19 @@ declare class Banner extends PreactCustomElement implements BannerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$V]: Banner;
+    [tagName$W]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$V]: Omit<BannerJSXProps, 'secondaryActions'> &
+      [tagName$W]: Omit<BannerJSXProps, 'secondaryActions'> &
         PreactBaseElementPropsWithChildren<Banner>;
     }
   }
 }
 
-declare const tagName$V = 's-banner';
+declare const tagName$W = 's-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id'> {
@@ -4383,8 +4372,8 @@ export interface BannerJSXProps
    * A maximum of two `s-button` components are allowed, and only buttons with the `variant` of "secondary" are permitted.
    */
   secondaryActions?: ComponentChild;
-  onDismiss?: ((event: CallbackEvent<typeof tagName$V>) => void) | null;
-  onAfterHide?: ((event: CallbackEvent<typeof tagName$V>) => void) | null;
+  onDismiss?: ((event: CallbackEvent<typeof tagName$W>) => void) | null;
+  onAfterHide?: ((event: CallbackEvent<typeof tagName$W>) => void) | null;
 }
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -4617,18 +4606,18 @@ declare class Box extends BoxElement implements BoxProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$U]: Box;
+    [tagName$V]: Box;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$U]: BoxJSXProps & PreactBaseElementPropsWithChildren<Box>;
+      [tagName$V]: BoxJSXProps & PreactBaseElementPropsWithChildren<Box>;
     }
   }
 }
 
-declare const tagName$U = 's-box';
+declare const tagName$V = 's-box';
 export interface BoxJSXProps
   extends Partial<BoxProps>,
     Pick<BoxProps$1, 'id'> {}
@@ -4704,25 +4693,55 @@ declare class Button extends Button_base implements ButtonProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$T]: Button;
+    [tagName$U]: Button;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$T]: ButtonJSXProps & PreactBaseElementPropsWithChildren<Button>;
+      [tagName$U]: ButtonJSXProps & PreactBaseElementPropsWithChildren<Button>;
     }
   }
 }
 
-declare const tagName$T = 's-button';
+declare const tagName$U = 's-button';
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
     Pick<ButtonProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$T>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$T>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$T>) => void) | null;
+  onClick?: ((event: CallbackEvent<typeof tagName$U>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$U>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$U>) => void) | null;
 }
+
+export interface ButtonGroupProps
+  extends Required<Pick<ButtonGroupProps$1, 'gap' | 'accessibilityLabel'>> {}
+
+declare class ButtonGroup
+  extends PreactCustomElement
+  implements ButtonGroupProps
+{
+  accessor gap: ButtonGroupProps['gap'];
+  accessor accessibilityLabel: ButtonGroupProps['accessibilityLabel'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$T]: ButtonGroup;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$T]: ButtonGroupJSXProps &
+        PreactBaseElementPropsWithChildren<ButtonGroup>;
+    }
+  }
+}
+
+declare const tagName$T = 's-button-group';
+export interface ButtonGroupJSXProps
+  extends Partial<ButtonGroupProps>,
+    Pick<ButtonGroupProps$1, 'id'> {}
 
 declare const internals$4: unique symbol;
 export type PreactInputProps = Required<
@@ -6670,6 +6689,7 @@ declare class TableHeaderRow
   constructor();
   /** @private */
   connectedCallback(): void;
+  /** @private */
   disconnectedCallback(): void;
 }
 declare global {
@@ -6725,6 +6745,7 @@ export interface TextProps
       | 'type'
       | 'tone'
       | 'fontVariantNumeric'
+      | 'interestFor'
     >
   > {
   color: Extract<TextProps$1['color'], 'base' | 'subdued'>;
@@ -6740,7 +6761,6 @@ export interface TextProps
     TextProps$1['fontVariantNumeric'],
     'auto' | 'normal' | 'tabular-nums'
   >;
-  interestFor?: string;
 }
 
 declare class Text extends PreactCustomElement implements TextProps {
@@ -7229,6 +7249,7 @@ export {
   Banner,
   Box,
   Button,
+  ButtonGroup,
   Checkbox,
   Chip,
   Choice,
@@ -7290,6 +7311,7 @@ export type {
   BadgeJSXProps,
   BannerJSXProps,
   BoxJSXProps,
+  ButtonGroupJSXProps,
   ButtonJSXProps,
   CheckboxJSXProps,
   ChipJSXProps,
@@ -7602,35 +7624,35 @@ export interface FunctionSettingsEvents {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$X]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
+      [tagName$Y]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$X]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
+      [tagName$Y]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$W]: BadgeJSXProps & ReactBaseElementPropsWithChildren<Badge>;
+      [tagName$X]: BadgeJSXProps & ReactBaseElementPropsWithChildren<Badge>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$W]: BadgeJSXProps & ReactBaseElementPropsWithChildren<Badge>;
+      [tagName$X]: BadgeJSXProps & ReactBaseElementPropsWithChildren<Badge>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$V]: Omit<BannerJSXProps, 'secondaryActions'> &
+      [tagName$W]: Omit<BannerJSXProps, 'secondaryActions'> &
         ReactBaseElementPropsWithChildren<Banner>;
     }
   }
@@ -7638,7 +7660,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$V]: Omit<BannerJSXProps, 'secondaryActions'> &
+      [tagName$W]: Omit<BannerJSXProps, 'secondaryActions'> &
         ReactBaseElementPropsWithChildren<Banner>;
     }
   }
@@ -7646,28 +7668,44 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$U]: BoxJSXProps & ReactBaseElementPropsWithChildren<Box>;
+      [tagName$V]: BoxJSXProps & ReactBaseElementPropsWithChildren<Box>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$U]: BoxJSXProps & ReactBaseElementPropsWithChildren<Box>;
+      [tagName$V]: BoxJSXProps & ReactBaseElementPropsWithChildren<Box>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$T]: ButtonJSXProps & ReactBaseElementPropsWithChildren<Button>;
+      [tagName$U]: ButtonJSXProps & ReactBaseElementPropsWithChildren<Button>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$T]: ButtonJSXProps & ReactBaseElementPropsWithChildren<Button>;
+      [tagName$U]: ButtonJSXProps & ReactBaseElementPropsWithChildren<Button>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$T]: ButtonGroupJSXProps &
+        ReactBaseElementPropsWithChildren<ButtonGroup>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$T]: ButtonGroupJSXProps &
+        ReactBaseElementPropsWithChildren<ButtonGroup>;
     }
   }
 }

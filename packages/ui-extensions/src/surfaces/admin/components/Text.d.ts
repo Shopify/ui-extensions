@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.9.1 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -18,6 +18,7 @@ export interface TextProps
       | 'type'
       | 'tone'
       | 'fontVariantNumeric'
+      | 'interestFor'
     >
   > {
   color: Extract<TextProps$1['color'], 'base' | 'subdued'>;
@@ -33,7 +34,6 @@ export interface TextProps
     TextProps$1['fontVariantNumeric'],
     'auto' | 'normal' | 'tabular-nums'
   >;
-  interestFor?: string;
 }
 
 export type Styles = string;
