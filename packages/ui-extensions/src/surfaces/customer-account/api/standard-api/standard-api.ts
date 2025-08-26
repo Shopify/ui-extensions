@@ -15,11 +15,7 @@ import {
   ToastApi,
 } from '../shared';
 
-import type {
-  ExtensionTarget,
-  ExtensionTargets,
-  RenderCustomerAccountFullPageExtensionTarget,
-} from '../../extension-targets';
+import type {ExtensionTarget} from '../../extension-targets';
 import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 /**
