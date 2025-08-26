@@ -1,11 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
-// import {
-//   getExample,
-//   getLinksByTag,
-//   REQUIRES_PROTECTED_CUSTOMER_DATA,
-// } from '../helper.docs';
-
 const data: ReferenceEntityTemplateSchema = {
   name: 'Navigation',
   overviewPreviewDescription:
@@ -35,14 +29,7 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [
-    {
-      name: 'StandardApi',
-      subtitle: 'APIs',
-      url: '/docs/api/customer-account-ui-extensions/apis/standardapi',
-      type: 'StandardApi',
-    },
-  ],
+  related: [],
 };
 
 export default data;
