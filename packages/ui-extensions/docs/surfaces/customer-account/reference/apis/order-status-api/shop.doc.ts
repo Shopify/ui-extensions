@@ -15,11 +15,6 @@ const data: ReferenceEntityTemplateSchema = {
       description: ORDER_STATUS_API_DEFINITION.description,
       type: 'Docs_OrderStatus_ShopApi',
     },
-    // {
-    //   title: 'useShop',
-    //   description: 'Returns the `shop` where the checkout is taking place.',
-    //   type: 'UseShopGeneratedType',
-    // },
   ],
   related: [],
 };

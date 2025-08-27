@@ -15,11 +15,6 @@ const data: ReferenceEntityTemplateSchema = {
       description: ORDER_STATUS_API_DEFINITION.description,
       type: 'Docs_OrderStatus_NoteApi',
     },
-    // {
-    //   title: 'useNote',
-    //   description: 'Returns the proposed `note` applied to the checkout.',
-    //   type: 'UseNoteGeneratedType',
-    // },
   ],
   related: [],
 };
