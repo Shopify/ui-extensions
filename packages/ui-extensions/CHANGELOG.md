@@ -1,5 +1,25 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.24
+
+### Minor Changes
+
+- [#3169](https://github.com/Shopify/ui-extensions/pull/3169) [`2be55775a56666304f932920187f543c43214ce4`](https://github.com/Shopify/ui-extensions/commit/2be55775a56666304f932920187f543c43214ce4) Thanks [@lrsterrett](https://github.com/lrsterrett)! - add signal-like value property to checkout api
+
+- [#3167](https://github.com/Shopify/ui-extensions/pull/3167) [`7db40afb20aa058552f2d29deaab1e7b7070b41e`](https://github.com/Shopify/ui-extensions/commit/7db40afb20aa058552f2d29deaab1e7b7070b41e) Thanks [@lsit](https://github.com/lsit)! - Add Menu component to customer account
+
+- [#3180](https://github.com/Shopify/ui-extensions/pull/3180) [`e239a0cbf53759d3a39eda8a6a04db16cf5ab62c`](https://github.com/Shopify/ui-extensions/commit/e239a0cbf53759d3a39eda8a6a04db16cf5ab62c) Thanks [@mayasarena](https://github.com/mayasarena)! - Add ButtonGroup to Admin UI Extensions
+
+- [#3175](https://github.com/Shopify/ui-extensions/pull/3175) [`4fcbe092da5d70a63daddde7a8208f0e843e96c0`](https://github.com/Shopify/ui-extensions/commit/4fcbe092da5d70a63daddde7a8208f0e843e96c0) Thanks [@oluwatimio](https://github.com/oluwatimio)! - Update Navigation Api docs and typings for customer accounts
+
+- [#3178](https://github.com/Shopify/ui-extensions/pull/3178) [`c2ea40c169984a14a7c01591793f1302190d5897`](https://github.com/Shopify/ui-extensions/commit/c2ea40c169984a14a7c01591793f1302190d5897) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Modified transaction data interface fields to include returnId and refundId to Return and Exchange TransactionData.
+
+### Patch Changes
+
+- [#3176](https://github.com/Shopify/ui-extensions/pull/3176) [`edcbcb816253847ad29bf2585a2b4aef5f1117db`](https://github.com/Shopify/ui-extensions/commit/edcbcb816253847ad29bf2585a2b4aef5f1117db) Thanks [@lsit](https://github.com/lsit)! - Update customer account component docs
+
+- [#3184](https://github.com/Shopify/ui-extensions/pull/3184) [`3d4aee370588c022567c65470d963f86d583b887`](https://github.com/Shopify/ui-extensions/commit/3d4aee370588c022567c65470d963f86d583b887) Thanks [@lsit](https://github.com/lsit)! - Update mapping of legacy components to Polaris web components for customer accounts
+
 ## 2025.10.0-rc.23
 
 ### Minor Changes
