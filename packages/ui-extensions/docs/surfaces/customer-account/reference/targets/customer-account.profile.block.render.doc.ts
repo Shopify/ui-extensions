@@ -20,11 +20,6 @@ const data: ReferenceEntityTemplateSchema = {
   //         language: 'jsx',
   //         title: 'React',
   //       },
-  //       {
-  //         code: '../examples/targets/customer-account.profile.block.render/default.example.ts',
-  //         language: 'js',
-  //         title: 'Javascript',
-  //       },
   //     ],
   //   },
   // },

@@ -19,11 +19,6 @@ const data: ReferenceEntityTemplateSchema = {
   //         language: 'jsx',
   //         title: 'React',
   //       },
-  //       {
-  //         code: '../examples/targets/customer-account.order-status.unfulfilled-items.render-after/default.example.ts',
-  //         language: 'js',
-  //         title: 'Javascript',
-  //       },
   //     ],
   //   },
   // },
