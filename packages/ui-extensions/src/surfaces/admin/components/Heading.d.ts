@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.9.1 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */

@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.9.1 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -14,7 +14,10 @@ import type {
 } from './shared.d.ts';
 
 export interface IconProps
-  extends Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size'> {
+  extends Pick<
+    IconProps$1,
+    'type' | 'tone' | 'color' | 'size' | 'interestFor'
+  > {
   /**
    * Specifies the type of icon that will be displayed.
    */
@@ -25,7 +28,6 @@ export interface IconProps
   >;
   color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
   size: Extract<IconProps$1['size'], 'small' | 'base'>;
-  interestFor?: string;
 }
 
 export interface BadgeProps

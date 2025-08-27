@@ -6,12 +6,10 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {OptionProps$1, ComponentChild} from './shared.d.ts';
+import type {ButtonGroupProps$1, ComponentChild} from './shared.d.ts';
 
-export interface OptionProps
-  extends Required<
-    Pick<OptionProps$1, 'disabled' | 'value' | 'selected' | 'defaultSelected'>
-  > {}
+export interface ButtonGroupProps
+  extends Required<Pick<ButtonGroupProps$1, 'gap' | 'accessibilityLabel'>> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -88,28 +86,32 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
-declare class Option extends PreactCustomElement implements OptionProps {
-  accessor selected: OptionProps['selected'];
-  accessor defaultSelected: OptionProps['defaultSelected'];
-  accessor value: OptionProps['value'];
-  accessor disabled: OptionProps['disabled'];
+declare class ButtonGroup
+  extends PreactCustomElement
+  implements ButtonGroupProps
+{
+  accessor gap: ButtonGroupProps['gap'];
+  accessor accessibilityLabel: ButtonGroupProps['accessibilityLabel'];
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Option;
+    [tagName]: ButtonGroup;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: OptionJSXProps & PreactBaseElementPropsWithChildren<Option>;
+      [tagName]: ButtonGroupJSXProps &
+        PreactBaseElementPropsWithChildren<ButtonGroup>;
     }
   }
 }
 
-declare const tagName = 's-option';
-export interface OptionJSXProps extends Partial<OptionProps> {}
+declare const tagName = 's-button-group';
+export interface ButtonGroupJSXProps
+  extends Partial<ButtonGroupProps>,
+    Pick<ButtonGroupProps$1, 'id'> {}
 
-export {Option};
-export type {OptionJSXProps};
+export {ButtonGroup};
+export type {ButtonGroupJSXProps};

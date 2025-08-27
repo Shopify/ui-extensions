@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.9.1 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -9,7 +9,6 @@
  * https://github.com/Shopify/ui-api-design/issues/139
  */
 export type ComponentChildren = any;
-export type StringChildren = string;
 export interface GlobalProps {
   /**
    * A unique identifier for the element.
@@ -1486,6 +1485,23 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   lang?: string;
 }
+interface ButtonGroupProps$1 extends GlobalProps, ActionSlots {
+  /**
+   * The content of the ButtonGroup.
+   */
+  children?: ComponentChildren;
+  /**
+   * The gap between elements.
+   * @default 'base'
+   */
+  gap?: 'base' | 'none';
+  /**
+   * Label for the button group that describes the content of the group for screen reader users to understand what's included.
+   *
+   * @implementation Used as a hidden heading or an aria-label on the wrapping element.
+   */
+  accessibilityLabel?: string;
+}
 export interface BaseInputProps {
   /**
    * An identifier for the field that is unique within the nearest containing form.
@@ -1854,16 +1870,8 @@ interface ChipProps$1 extends ChipProps$1, GlobalProps {}
 interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
   /**
    * Content to use as the choice label.
-   *
-   * @implementation (StringChildren) The label is produced by extracting and
-   * concatenating the text nodes from the provided content; any markup or
-   * element structure is ignored.
-   *
-   * @implementation (ComponentChildren) Behaves as a slot: any elements passed
-   * are rendered as the label content (subject to surface constraints); there
-   * is no coercion to a string.
    */
-  children?: ComponentChildren | StringChildren;
+  children?: ComponentChildren;
   /**
    * Additional text to provide context or guidance for the input.
    *
@@ -3255,7 +3263,7 @@ interface TableBodyProps$1 extends GlobalProps {
 }
 interface TableCellProps$1 extends GlobalProps {
   /**
-   * The content of the table cell.
+   * The content of the table data.
    */
   children?: ComponentChildren;
 }
@@ -3282,16 +3290,6 @@ interface TableHeaderProps$1 extends GlobalProps {
    * @default 'labeled'
    */
   listSlot?: ListSlotType;
-  /**
-   * The format of the column. Will automatically apply styling and alignment to cell content based on the value.
-   *
-   * - `base`: The base format for columns.
-   * - `currency`: Formats the column as currency.
-   * - `numeric`: Formats the column as a number.
-   *
-   * @default 'base'
-   */
-  format?: 'base' | 'currency' | 'numeric';
 }
 interface TableHeaderRowProps$1 extends GlobalProps {
   /**
@@ -3304,17 +3302,6 @@ interface TableRowProps$1 extends GlobalProps {
    * The content of a TableRow, which should be `TableCell` components.
    */
   children?: ComponentChildren;
-  /**
-   * The ID of an interactive element (e.g. `s-link`) in the row that will be the target of the click when the row is clicked.
-   * This is the primary action for the row; it should not be used for secondary actions.
-   *
-   * This is a click-only affordance, and does not introduce any keyboard or screen reader affordances.
-   * Which is why the target element must be in the table; so that keyboard and screen reader users can interact with it normally.
-   *
-   * @implementation no focus or keyboard affordances are introduced by this property. No aria attributes need to be added to the table row.
-   * @implementation the row and/or delegate should have some affordance that indicates it is clickable. This may be a background color, a border, a hover effect, etc.
-   */
-  clickDelegate?: string;
 }
 interface TextProps$1
   extends GlobalProps,
