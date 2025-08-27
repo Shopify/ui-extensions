@@ -6,7 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
   requires: '',
   isVisualComponent: true,
-  thumbnail: 'qrcode-thumbnail.png',
+  thumbnail: 'qr-code-thumbnail.png',
   type: '',
   definitions: [
     {
@@ -21,12 +21,12 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'qrcode-default.png',
+    image: 'qr-code-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
-          code: './examples/basic-qrcode.example.html',
+          code: './examples/basic-qr-code.example.html',
           language: 'html',
         },
       ],

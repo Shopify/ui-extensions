@@ -15,12 +15,12 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'clipboard-basic.png',
+    image: 'clipboard-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
-          code: './examples/basic-clipboarditem.example.html',
+          code: './examples/basic-clipboard-item.example.html',
           language: 'html',
         },
       ],

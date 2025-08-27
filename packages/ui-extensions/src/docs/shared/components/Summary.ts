@@ -1,11 +1,11 @@
 import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
-  name: 'Menu',
+  name: 'Summary',
   description:
-    'Use Menu to display a list of actions that can be performed on a resource.',
+    'Provides a clickable label for collapsible Details content. Use to create clear, accessible disclosure controls that show or hide additional information.',
   category: 'Polaris web components',
-  subCategory: 'Actions',
+  subCategory: 'Interactive',
   related: [],
 };
 

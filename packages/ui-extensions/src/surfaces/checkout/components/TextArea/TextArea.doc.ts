@@ -4,7 +4,7 @@ import sharedContent from '../../../../docs/shared/components/TextArea';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  thumbnail: 'textarea-thumbnail.png',
+  thumbnail: 'text-area-thumbnail.png',
   requires: '',
   isVisualComponent: true,
   type: '',
@@ -21,12 +21,12 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'textarea-default.png',
+    image: 'text-area-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
-          code: './examples/basic-textarea.example.html',
+          code: './examples/basic-text-area.example.html',
           language: 'html',
         },
       ],

@@ -4,7 +4,7 @@ import sharedContent from '../../../../docs/shared/components/ProductThumbnail';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  thumbnail: 'productthumbnail-thumbnail.png',
+  thumbnail: 'product-thumbnail-thumbnail.png',
   requires: '',
   isVisualComponent: true,
   type: '',
@@ -16,12 +16,12 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'productthumbnail-default.png',
+    image: 'product-thumbnail-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
-          code: './examples/basic-productthumbnail.example.html',
+          code: './examples/basic-product-thumbnail.example.html',
           language: 'html',
         },
       ],

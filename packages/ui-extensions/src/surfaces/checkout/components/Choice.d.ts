@@ -10,7 +10,37 @@
 /// <reference lib="DOM" />
 import type {ChoiceProps$1} from './components-shared.d.ts';
 
-export interface ChoiceProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'secondaryContent' | 'selected' | 'selectedContent' | 'value'> {
+/**
+ * Used when an element does not have children.
+ */
+export interface BaseElementProps<TClass = HTMLElement> {
+    key?: preact.Key;
+    ref?: preact.Ref<TClass>;
+    slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    children?: preact.ComponentChildren;
 }
 
-export type { ChoiceProps };
+declare const tagName = "s-choice";
+export interface ChoiceProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'secondaryContent' | 'selected' | 'selectedContent' | 'value'> {
+}
+export interface ChoiceElement extends ChoiceProps, Omit<HTMLElement, 'id'> {
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        [tagName]: ChoiceElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            [tagName]: ChoiceProps & BaseElementPropsWithChildren<ChoiceElement>;
+        }
+    }
+}
+
+export type { ChoiceElement, ChoiceProps };

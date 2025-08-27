@@ -30,7 +30,7 @@ export interface DatePickerElementProps extends Pick<DatePickerProps$1, 'allow' 
 }
 export interface DatePickerEvents extends Pick<DatePickerProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'> {
 }
-export interface DateFieldElementEvents {
+export interface DatePickerElementEvents {
     /**
      * Callback when the element loses focus.
      */
@@ -74,4 +74,4 @@ declare module 'preact' {
     }
 }
 
-export type { DateFieldElementEvents, DatePickerElement, DatePickerElementProps, DatePickerEvents, DatePickerProps };
+export type { DatePickerElement, DatePickerElementEvents, DatePickerElementProps, DatePickerEvents, DatePickerProps };
