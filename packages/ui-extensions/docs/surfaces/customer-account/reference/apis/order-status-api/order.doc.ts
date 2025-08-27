@@ -16,12 +16,6 @@ const data: ReferenceEntityTemplateSchema = {
       description: ORDER_STATUS_API_DEFINITION.description,
       type: 'Docs_OrderStatus_OrderApi',
     },
-    // {
-    //   title: 'useOrder',
-    //   description:
-    //     "Returns the order information that's available on the Order Status Page.",
-    //   type: 'UseOrderGeneratedType',
-    // },
   ],
   related: [],
 };

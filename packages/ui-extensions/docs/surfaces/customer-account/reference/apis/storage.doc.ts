@@ -14,12 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       description: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.description,
       type: 'Docs_Standard_StorageApi',
     },
-    // {
-    //   title: 'useStorage',
-    //   description:
-    //     'Returns the key-value `Storage` interface for the extension target.',
-    //   type: 'UseStorageGeneratedType',
-    // },
   ],
   related: [
     {
