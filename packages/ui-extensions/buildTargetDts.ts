@@ -73,13 +73,11 @@ function createInitialTargetDefinition({
   const targetPath = join(directory, fileName);
 
   const template = `import type {ExtensionTargets} from '../extension-targets';
+  ${surface === 'customer-account' ? `import '../globals';\n` : ''}
 type Target = ExtensionTargets[${name}];
 export type Api = Target['api'];
 export type Output = Target['output'];
-
-export type GlobalThis = typeof globalThis & {
-  shopify: Api;
-}\n`;
+\n`;
 
   if (!existsSync(directory)) {
     mkdirSync(directory);

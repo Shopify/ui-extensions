@@ -121,8 +121,6 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    */
   toast: ToastApi;
 
-  navigation: StandardExtensionNavigation;
-
   /**
    * Used to query the Storefront GraphQL API with a prefetched token.
    *
@@ -200,13 +198,13 @@ export interface Localization {
 /**
  * An enumerated value representing the type of navigation.
  */
-export type NavigationType = 'push' | 'replace' | 'traverse';
+export type NavigationTypeString = 'push' | 'replace' | 'traverse';
 
-export interface NavigationOptions {
+export interface NavigationNavigateOptions {
   /**
    * Developer-defined information to be stored in the associated NavigationHistoryEntry once the navigation is complete, retrievable via getState().
    */
-  state?: Record<string, any>;
+  state?: unknown;
   /**
    * An enumerated value that sets the history behavior of this navigation.
    */
@@ -222,11 +220,15 @@ export interface NavigationHistoryEntry {
   /**
    * Returns the URL of this history entry.
    */
-  url: string;
+  url: string | null;
   /**
    * Returns a clone of the available state associated with this history entry.
    */
-  getState(): Record<string, any>;
+  getState(): unknown;
+}
+
+export interface NavigationUpdateCurrentEntryOptions {
+  state: unknown;
 }
 
 /**
@@ -236,21 +238,18 @@ export interface NavigationCurrentEntryChangeEvent {
   /**
    * Returns the type of the navigation that resulted in the change.
    */
-  navigationType: NavigationType;
+  navigationType?: NavigationTypeString;
   /**
    * Returns the NavigationHistoryEntry that was navigated from.
    */
   from: NavigationHistoryEntry;
 }
 
-export interface StandardExtensionNavigation {
+export interface Navigation {
   /**
    * The navigate() method navigates to a specific URL, updating any provided state in the history entries list.
    */
   navigate: NavigateFunction;
-}
-
-export interface FullExtensionNavigation extends StandardExtensionNavigation {
   /**
    * The currentEntry read-only property of the Navigation interface returns a NavigationHistoryEntry object representing the location the user is currently navigated to right now.
    */
@@ -258,7 +257,7 @@ export interface FullExtensionNavigation extends StandardExtensionNavigation {
   /**
    * The updateCurrentEntry() method of the Navigation interface updates the state of the currentEntry; used in cases where the state change will be independent of a navigation or reload.
    */
-  updateCurrentEntry(options: {state: Record<string, any>}): void;
+  updateCurrentEntry(options: NavigationUpdateCurrentEntryOptions): void;
   addEventListener(
     type: 'currententrychange',
     cb: (event: NavigationCurrentEntryChangeEvent) => void,
@@ -274,7 +273,7 @@ export interface NavigateFunction {
    * Navigates to a specific URL, updating any provided state in the history entries list.
    * @param url The destination URL to navigate to.
    */
-  (url: string, options?: NavigationOptions): void;
+  (url: string, options?: NavigationNavigateOptions): void;
 }
 
 export type Version = string;

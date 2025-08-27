@@ -1,12 +1,5 @@
-import type {
-  RenderCustomerAccountExtensionTarget,
-  ApiForExtension,
-} from '../extension-targets';
+import {Navigation} from '../api';
 
-import {useApi} from './api';
-
-export function useNavigation<
-  Target extends RenderCustomerAccountExtensionTarget = RenderCustomerAccountExtensionTarget,
->(): ApiForExtension<Target>['navigation'] {
-  return useApi<Target>().navigation;
+export function useNavigation(): Navigation {
+  return navigation;
 }
