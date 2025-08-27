@@ -126,8 +126,8 @@
     "./build/cjs/preact.js"
   ],
   "devDependencies": {
-    "@remote-ui/async-subscription": "^2.1.16",
     "@shopify/generate-docs": "0.17.1",
+    "@remote-ui/async-subscription": "^2.1.16",
     "typescript": "^4.9.0",
     "@faker-js/faker": "^8.4.1"
   },

@@ -28,6 +28,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-sheet";
 export interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'heading' | 'id'> {
@@ -40,17 +43,25 @@ export interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'h
      */
     accessibilityLabel?: string;
 }
-export interface SheetEvents extends Pick<SheetProps$1, 'onHide' | 'onShow' | 'onAfterHide' | 'onAfterShow'> {
+export interface SheetEvents extends Pick<SheetProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
 export interface SheetElementEvents {
     /**
+     * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
+     */
+    afterhide?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    /**
+     * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
+     */
+    aftershow?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    /**
      * Callback fired after the overlay is hidden.
      */
-    hide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    hide?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback fired after the overlay is shown.
      */
-    show?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    show?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
 export interface SheetSlots {
     /**
@@ -72,9 +83,15 @@ export interface SheetElementSlots {
      */
     'secondary-actions'?: HTMLElement;
 }
-export interface SheetElement extends SheetElementProps, SheetSlots, Omit<HTMLElement, 'id'> {
+export interface SheetElementMethods extends Pick<SheetProps$1, 'hideOverlay'> {
+}
+export interface SheetElement extends SheetElementProps, SheetSlots, SheetElementMethods, Omit<HTMLElement, 'id'> {
+    afterhide: SheetEvents['onAfterHide'];
+    aftershow: SheetEvents['onAfterShow'];
     onhide: SheetEvents['onHide'];
     onshow: SheetEvents['onShow'];
+    onafterhide: SheetEvents['onAfterHide'];
+    onaftershow: SheetEvents['onAfterShow'];
 }
 export interface SheetProps extends SheetElementProps, SheetEvents, SheetSlots {
 }

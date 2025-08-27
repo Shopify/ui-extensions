@@ -4,7 +4,7 @@ import sharedContent from '../../../../docs/shared/components/EmailField';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  thumbnail: 'emailfield-thumbnail.png',
+  thumbnail: 'email-field-thumbnail.png',
   requires: '',
   isVisualComponent: true,
   type: '',
@@ -21,12 +21,12 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'emailfield-default.png',
+    image: 'email-field-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
-          code: './examples/basic-emailfield.example.html',
+          code: './examples/basic-email-field.example.html',
           language: 'html',
         },
       ],

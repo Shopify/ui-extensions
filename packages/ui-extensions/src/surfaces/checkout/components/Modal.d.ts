@@ -56,9 +56,19 @@ export interface ModalElementSlots {
      */
     'secondary-actions'?: HTMLElement;
 }
-export interface ModalEvents extends Pick<ModalProps$1, 'onHide' | 'onShow'> {
+export interface ModalEvents extends Pick<ModalProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
+}
+export interface ModalElementMethods extends Pick<ModalProps$1, 'hideOverlay'> {
 }
 export interface ModalElementEvents {
+    /**
+     * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
+     */
+    afterhide?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    /**
+     * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
+     */
+    aftershow?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback fired after the overlay is hidden.
      */
@@ -68,7 +78,9 @@ export interface ModalElementEvents {
      */
     show?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface ModalElement extends ModalElementProps, ModalSlots, Omit<HTMLElement, 'id'> {
+export interface ModalElement extends ModalElementProps, ModalSlots, ModalElementMethods, Omit<HTMLElement, 'id'> {
+    onafterhide: ModalEvents['onAfterHide'];
+    onaftershow: ModalEvents['onAfterShow'];
     onhide: ModalEvents['onHide'];
     onshow: ModalEvents['onShow'];
 }

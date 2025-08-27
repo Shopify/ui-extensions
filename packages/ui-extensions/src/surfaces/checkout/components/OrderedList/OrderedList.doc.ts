@@ -6,7 +6,7 @@ import listItemSharedContent from '../../../../docs/shared/components/ListItem';
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
   isVisualComponent: true,
-  thumbnail: 'orderedlist-thumbnail.png',
+  thumbnail: 'ordered-list-thumbnail.png',
   requires: '',
   type: '',
   definitions: [
@@ -22,12 +22,12 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'orderedlist-default.png',
+    image: 'ordered-list-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
-          code: './examples/basic-orderedlist.example.html',
+          code: './examples/basic-ordered-list.example.html',
           language: 'html',
         },
       ],
