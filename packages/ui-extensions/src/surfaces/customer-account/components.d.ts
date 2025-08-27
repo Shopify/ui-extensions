@@ -5,22 +5,23 @@ import {
   AvatarElement,
   AvatarEvents,
 } from './components/Avatar';
+import {
+  CustomerAccountActionProps,
+  CustomerAccountActionElement,
+  CustomerAccountActionElementSlots,
+} from './components/CustomerAccountAction';
+import {ImageGroupProps, ImageGroupElement} from './components/ImageGroup';
 import {MenuProps, MenuElement} from './components/Menu';
+import {PageProps, PageElement, PageElementSlots} from './components/Page';
 
-export interface CustomerAccountActionProps extends IdProps {
-  /**
-   * Sets the heading of the Action container.
-   */
-  heading: string;
-}
-
-export interface CustomerAccountActionElement
-  extends HTMLElement,
-    CustomerAccountActionProps {}
+export type CustomerAccountActionPropsDocs = CustomerAccountActionProps;
+export type CustomerAccountActionElementDocs = CustomerAccountActionElement;
+export type CustomerAccountActionElementSlotsDocs =
+  CustomerAccountActionElementSlots;
 
 declare global {
   interface HTMLElementTagNameMap {
-    ['s-customer-account-action']: CustomerAccountActionElement;
+    ['s-customer-account-action']: CustomerAccountActionElementDocs;
   }
 }
 
@@ -32,24 +33,17 @@ declare module 'preact' {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace createElement.JSX {
     interface IntrinsicElements {
-      ['s-customer-account-action']: BaseProps & CustomerAccountActionProps;
+      ['s-customer-account-action']: BaseProps & CustomerAccountActionPropsDocs;
     }
   }
 }
 
-export interface ImageGroupProps extends IdProps {
-  /**
-   * Indicates the total number of items that could be displayed in the image group.
-   * It is used to determine the remaining number to show when all the available image slots have been filled.
-   */
-  totalItems?: number;
-}
-
-export interface ImageGroupElement extends HTMLElement, ImageGroupProps {}
+export type ImageGroupPropsDocs = ImageGroupProps;
+export type ImageGroupElementDocs = ImageGroupElement;
 
 declare global {
   interface HTMLElementTagNameMap {
-    ['s-image-group']: ImageGroupElement;
+    ['s-image-group']: ImageGroupElementDocs;
   }
 }
 
@@ -60,28 +54,18 @@ declare module 'preact' {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace createElement.JSX {
     interface IntrinsicElements {
-      ['s-image-group']: BaseProps & ImageGroupProps;
+      ['s-image-group']: BaseProps & ImageGroupPropsDocs;
     }
   }
 }
 
-export interface PageProps extends IdProps {
-  /**
-   * The main page heading
-   */
-  heading?: string;
-
-  /**
-   * The text to be used as subheading.
-   */
-  subheading?: string;
-}
-
-export interface PageElement extends HTMLElement, PageProps {}
+export type PagePropsDocs = PageProps;
+export type PageElementDocs = PageElement;
+export type PageElementSlotsDocs = PageElementSlots;
 
 declare global {
   interface HTMLElementTagNameMap {
-    ['s-page']: PageElement;
+    ['s-page']: PageElementDocs;
   }
 }
 
@@ -93,7 +77,7 @@ declare module 'preact' {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace createElement.JSX {
     interface IntrinsicElements {
-      ['s-page']: BaseProps & PageProps;
+      ['s-page']: BaseProps & PagePropsDocs;
     }
   }
 }
