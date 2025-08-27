@@ -24,11 +24,6 @@ the footer on all customer account pages (**Order index**, **Order status**, **P
   //         language: 'jsx',
   //         title: 'React',
   //       },
-  //       {
-  //         code: '../examples/targets/customer-account.footer.render-after/default.example.ts',
-  //         language: 'js',
-  //         title: 'Javascript',
-  //       },
   //     ],
   //   },
   // },

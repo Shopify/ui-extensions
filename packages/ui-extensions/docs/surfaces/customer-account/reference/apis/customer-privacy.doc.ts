@@ -53,11 +53,6 @@ const data: ReferenceEntityTemplateSchema = {
   //               language: 'jsx',
   //               title: 'React',
   //             },
-  //             {
-  //               code: '../examples/apis/sheet-consent-banner-with-form.example.ts',
-  //               language: 'js',
-  //               title: 'JavaScript',
-  //             },
   //           ],
   //         },
   //       },
