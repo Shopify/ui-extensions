@@ -1,11 +1,11 @@
-import type {RemoteSubscribable} from '@remote-ui/async-subscription';
+import type {ReadonlySignalLike} from '../../../../shared';
 
 export interface LocaleApiContent {
-  /** IETF-formatted locale at time of page load and a callback to subscribe to value changes. Current supports only one subscription.
-   * You can utilize `makeStatefulSubscribable` on a `RemoteSubscribable` to implement multiple subscriptions.
-   * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
+  /**
+   * Provides access to the current IETF-formatted locale and allows subscribing to locale changes.
+   * The `value` property provides the current locale, and `subscribe` allows listening to changes.
    */
-  subscribable: RemoteSubscribable<string>;
+  current: ReadonlySignalLike<string>;
 }
 
 /**

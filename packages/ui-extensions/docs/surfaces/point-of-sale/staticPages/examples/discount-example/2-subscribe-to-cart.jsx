@@ -1,3 +1,3 @@
-api.cart.subscribable.subscribe((cart) => {
+shopify.cart.current.subscribe((cart) => {
   setEnabled(shouldEnable(cart.subtotal));
 });

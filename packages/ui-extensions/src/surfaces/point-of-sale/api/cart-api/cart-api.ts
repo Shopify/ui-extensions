@@ -1,4 +1,4 @@
-import type {RemoteSubscribable} from '@remote-ui/async-subscription';
+import type {ReadonlySignalLike} from '../../../../shared';
 import type {
   Address,
   Cart,
@@ -22,12 +22,10 @@ export type LineItemDiscountType = 'Percentage' | 'FixedAmount';
 
 export interface CartApiContent {
   /**
-   * Provides a subscription to POS cart changes.
-   * Provides an initial value and a callback to subscribe to value changes. Currently supports only one subscription.
-   * You can utilize `makeStatefulSubscribable` on a `RemoteSubscribable` to implement multiple subscriptions.
-   * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
+   * Provides read-only access to the current cart state and allows subscribing to cart changes.
+   * The `value` property provides the current cart state, and `subscribe` allows listening to changes.
    */
-  subscribable: RemoteSubscribable<Cart>;
+  current: ReadonlySignalLike<Cart>;
 
   /** Bulk update the cart
    *
