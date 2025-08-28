@@ -59,7 +59,7 @@ const data: ReferenceEntityTemplateSchema = {
   **Don'ts**
   - Don't use different size avatars on the same page.
 
-  <img src='/assets/templated-apis-screenshots/customer-account-ui-extensions/unstable/avatar-best-practices.png' alt="An example showing dos and don'ts of the Avatar component" />
+  ![An example showing dos and don'ts of the Avatar component](/assets/templated-apis-screenshots/customer-account-ui-extensions/unstable/avatar-best-practices.png)
   `,
     },
   ],
