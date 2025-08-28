@@ -33,12 +33,12 @@ We advise against migrating your production customer account UI extension to Pol
 |   **Legacy Component**   |   **Polaris Web Component**   |   **Migration Notes**   |
 | :----------------------: | :-------------------------------: | :---------------------: |
 |   \`Avatar\`                |   [Avatar](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/avatar)   |   Available today.   |
-|   \`Card\`                  |  [Section](/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/section)                                             |   Available today.                     |
+|   \`Card\`                  |  [Section](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/section)   |   Available today.   |
 |   \`CustomerAccountAction\`  |  [CustomerAccountAction](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/customeraccountaction)   |   Available today.       |
 |   \`ImageGroup\`            |  [ImageGroup](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/imagegroup)                         |   Available today.       |
 |   \`Menu\`                  |  [Menu](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/menu)    |   Available today.   |
 |   \`Page\`                  |  [Page](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/page)    |   Available today. |
-|   \`ResourceItem\`          |                                        |   Coming soon.  |
+|   \`ResourceItem\`          |                                |   Use [Section](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/section).   |
 `,
     },
     {
