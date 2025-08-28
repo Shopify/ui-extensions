@@ -11,7 +11,7 @@ export interface ConnectivityState {
 
 export interface ConnectivityApiContent {
   /**
-   * Provides access to the current connectivity state and allows subscribing to connectivity changes.
+   * Provides read-only access to the current connectivity state and allows subscribing to connectivity changes.
    * The `value` property provides the current connectivity state, and `subscribe` allows listening to changes.
    */
   current: ReadonlySignalLike<ConnectivityState>;
