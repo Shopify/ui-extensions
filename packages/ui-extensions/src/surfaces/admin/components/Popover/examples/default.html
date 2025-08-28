@@ -1,6 +1,8 @@
 <s-button commandFor="product-options-popover">Product options</s-button>
 
 <s-popover id="product-options-popover" accessibilityLabel="Product options">
-  <s-button variant="tertiary">Import</s-button>
-  <s-button variant="tertiary">Export</s-button>
+  <s-stack direction="column" gap="small-500" padding="small-200 small-300">
+    <s-button variant="tertiary">Import</s-button>
+    <s-button variant="tertiary">Export</s-button>
+  </s-stack>
 </s-popover>
