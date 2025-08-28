@@ -4,7 +4,6 @@ import sharedContent from '../../../../docs/shared/components/Section';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  subCategory: undefined,
   thumbnail: 'section-thumbnail.png',
   isVisualComponent: true,
   subSections: [
