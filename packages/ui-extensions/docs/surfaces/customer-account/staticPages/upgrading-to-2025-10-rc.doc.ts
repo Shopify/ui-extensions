@@ -32,13 +32,14 @@ We advise against migrating your production customer account UI extension to Pol
       sectionContent: `
 |   **Legacy Component**   |   **Polaris Web Component**   |   **Migration Notes**   |
 | :----------------------: | :-------------------------------: | :---------------------: |
-|   \`Avatar\`                |   [Avatar](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/avatar)   |   Available today.   |
-|   \`Card\`                  |  [Section](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/section)   |   Available today.   |
-|   \`CustomerAccountAction\`  |  [CustomerAccountAction](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/customeraccountaction)   |   Available today.       |
-|   \`ImageGroup\`            |  [ImageGroup](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/imagegroup)                         |   Available today.       |
-|   \`Menu\`                  |  [Menu](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/menu)    |   Available today.   |
-|   \`Page\`                  |  [Page](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/page)    |   Available today. |
-|   \`ResourceItem\`          |                                |   Use [Section](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/section).   |
+|   \`Avatar\`                |   [Avatar](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/avatar)   |   Available today   |
+|                             |  [ButtonGroup](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/buttongroup)   |   Available today   |
+|   \`Card\`                  |  [Section](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/section)   |   Available today   |
+|   \`CustomerAccountAction\`  |  [CustomerAccountAction](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/customeraccountaction)   |   Available today       |
+|   \`ImageGroup\`            |  [ImageGroup](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/imagegroup)                         |   Available today       |
+|   \`Menu\`                  |  [Menu](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/menu)    |   Available today   |
+|   \`Page\`                  |  [Page](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/page)    |   Available today |
+|   \`ResourceItem\`          |                                |   Use [Section](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/section)   |
 `,
     },
     {
