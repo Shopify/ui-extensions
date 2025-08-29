@@ -1,4 +1,4 @@
-import type {StatefulRemoteSubscribable} from '../shared';
+import type {StatefulRemoteSubscribable} from '../../../../shared';
 import type {PickupLocationOption} from '../standard/standard';
 
 export interface PickupLocationItemApi {
