@@ -1,4 +1,4 @@
-/** VERSION: 1.9.1 **/
+/** VERSION: 1.10.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -10,7 +10,8 @@
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
  */
-export type ComponentChildren = any;
+type ComponentChildren = any;
+export type StringChildren = string;
 export interface GlobalProps {
   /**
    * A unique identifier for the element.
@@ -1868,12 +1869,20 @@ export interface ChipProps$1 {
    */
   color?: ColorKeyword;
 }
-interface ChipProps$1 extends ChipProps$1, GlobalProps {}
+interface ChipProps$2 extends ChipProps$1, GlobalProps {}
 interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
   /**
    * Content to use as the choice label.
+   *
+   * @implementation (StringChildren) The label is produced by extracting and
+   * concatenating the text nodes from the provided content; any markup or
+   * element structure is ignored.
+   *
+   * @implementation (ComponentChildren) Behaves as a slot: any elements passed
+   * are rendered as the label content (subject to surface constraints); there
+   * is no coercion to a string.
    */
-  children?: ComponentChildren;
+  children?: ComponentChildren | StringChildren;
   /**
    * Additional text to provide context or guidance for the input.
    *
@@ -3265,7 +3274,7 @@ interface TableBodyProps$1 extends GlobalProps {
 }
 interface TableCellProps$1 extends GlobalProps {
   /**
-   * The content of the table data.
+   * The content of the table cell.
    */
   children?: ComponentChildren;
 }
@@ -3292,6 +3301,16 @@ interface TableHeaderProps$1 extends GlobalProps {
    * @default 'labeled'
    */
   listSlot?: ListSlotType;
+  /**
+   * The format of the column. Will automatically apply styling and alignment to cell content based on the value.
+   *
+   * - `base`: The base format for columns.
+   * - `currency`: Formats the column as currency.
+   * - `numeric`: Formats the column as a number.
+   *
+   * @default 'base'
+   */
+  format?: 'base' | 'currency' | 'numeric';
 }
 interface TableHeaderRowProps$1 extends GlobalProps {
   /**
@@ -3304,6 +3323,17 @@ interface TableRowProps$1 extends GlobalProps {
    * The content of a TableRow, which should be `TableCell` components.
    */
   children?: ComponentChildren;
+  /**
+   * The ID of an interactive element (e.g. `s-link`) in the row that will be the target of the click when the row is clicked.
+   * This is the primary action for the row; it should not be used for secondary actions.
+   *
+   * This is a click-only affordance, and does not introduce any keyboard or screen reader affordances.
+   * Which is why the target element must be in the table; so that keyboard and screen reader users can interact with it normally.
+   *
+   * @implementation no focus or keyboard affordances are introduced by this property. No aria attributes need to be added to the table row.
+   * @implementation the row and/or delegate should have some affordance that indicates it is clickable. This may be a background color, a border, a hover effect, etc.
+   */
+  clickDelegate?: string;
 }
 interface TextProps$1
   extends GlobalProps,
@@ -4467,8 +4497,7 @@ export interface BoxProps
   /**
    * Adjust the padding of all edges.
    *
-   * 1-to-4-value syntax (@see https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
-   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
    *
    * - 4 values: `block-start inline-end block-end inline-start`
    * - 3 values: `block-start inline block-end`
@@ -4482,9 +4511,7 @@ export interface BoxProps
    *
    * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
    *
-   * `padding` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   *
-   * This also accepts up to 4 values (e.g. `@container (inline-size > 500px) large-300 small-300 large-100 small-100, small-200`)
+   * `padding` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default 'none'
    */
@@ -4496,9 +4523,7 @@ export interface BoxProps
    *
    * This overrides the block value of `padding`.
    *
-   * `paddingBlock` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   *
-   * This also accepts up to 2 values (e.g. `@container (inline-size > 500px) large-300 small-300, small-200`)
+   * `paddingBlock` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -4508,9 +4533,8 @@ export interface BoxProps
    *
    * This overrides the block-start value of `paddingBlock`.
    *
-   * `paddingBlockStart` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   * `paddingBlockStart` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
-   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
    * @default '' - meaning no override
    */
   paddingBlockStart: ResponsiveBoxProps['paddingBlockStart'];
@@ -4519,9 +4543,8 @@ export interface BoxProps
    *
    * This overrides the block-end value of `paddingBlock`.
    *
-   * `paddingBlockEnd` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   * `paddingBlockEnd` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
-   * This only accepts up to 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
    * @default '' - meaning no override
    */
   paddingBlockEnd: ResponsiveBoxProps['paddingBlockEnd'];
@@ -4532,9 +4555,7 @@ export interface BoxProps
    *
    * This overrides the inline value of `padding`.
    *
-   * `paddingInline` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   *
-   * This also accepts up to 2 values (e.g. `@container (inline-size > 500px) large-300 small-300, small-200`)
+   * `paddingInline` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -4544,8 +4565,7 @@ export interface BoxProps
    *
    * This overrides the inline-start value of `paddingInline`.
    *
-   * `paddingInlineStart` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   * `paddingInlineStart` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -4555,19 +4575,17 @@ export interface BoxProps
    *
    * This overrides the inline-end value of `paddingInline`.
    *
-   * `paddingInlineEnd` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   * `paddingInlineEnd` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
   paddingInlineEnd: ResponsiveBoxProps['paddingInlineEnd'];
   /**
-   * Sets the outer display type of the component. The outer type sets a component's participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
+   * Sets the outer [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) type of the component. The outer type sets a component's participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
    *
    * - `auto` the component's initial value. The actual value depends on the component and context.
    * - `none` hides the component from display and removes it from the accessibility tree, making it invisible to screen readers.
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
    * @default 'auto'
    */
   display: ResponsiveBoxProps['display'];
@@ -4654,7 +4672,7 @@ export interface ButtonProps extends ButtonBaseProps {
 export interface PreactOverlayControlProps
   extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
   /**
-   * Sets the action the `commandFor` should take when this clickable is activated.
+   * Sets the action the [command](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this clickable is activated.
    *
    * See the documentation of particular components for the actions they support.
    *
@@ -4664,13 +4682,18 @@ export interface PreactOverlayControlProps
    * - `--toggle`: toggles the target component.
    *
    * @default '--auto'
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
   command: Extract<
     InteractionProps['command'],
     '--show' | '--hide' | '--toggle' | '--auto'
   >;
+  /**
+   * Sets the element the [commandFor](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor) should act on when this clickable is activated.
+   */
   commandFor: Extract<InteractionProps['commandFor'], string>;
+  /**
+   * Sets the element the [interestFor](https://open-ui.org/components/interest-invokers.explainer/#the-pitch-in-code) should act on when this clickable is activated.
+   */
   interestFor: Extract<InteractionProps['interestFor'], string>;
 }
 
@@ -4798,6 +4821,7 @@ declare class PreactCheckboxElement
   accessor required: PreactCheckboxProps['required'];
   /** @private */
   formResetCallback(): void;
+  static get observedAttributes(): string[];
   constructor(renderImpl: RenderImpl);
 }
 
@@ -4835,7 +4859,7 @@ export interface CheckboxJSXProps
 }
 
 export interface ChipProps
-  extends Required<Pick<ChipProps$1, 'color' | 'accessibilityLabel'>> {}
+  extends Required<Pick<ChipProps$2, 'color' | 'accessibilityLabel'>> {}
 
 declare class Chip extends PreactCustomElement implements ChipProps {
   accessor color: ChipProps['color'];
@@ -4863,7 +4887,7 @@ declare module 'preact' {
 declare const tagName$R = 's-chip';
 export interface ChipJSXProps
   extends Partial<ChipProps>,
-    Pick<ChipProps$1, 'id'> {
+    Pick<ChipProps$2, 'id'> {
   graphic?: ComponentChild;
 }
 
@@ -5487,9 +5511,9 @@ export interface GridProps
    * Adjust spacing between elements.
    *
    * `gap` can either accept:
-   * * a single SpacingKeyword value applied to both axes (e.g. `large-100`).
-   * *OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
-   * OR a container query string with supported SpacingKeyword values as query values (e.g.@container (inline-size > 500px) large-300, small-300)
+   * - a single SpacingKeyword value applied to both axes (e.g. `large-100`)
+   * - OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default 'none'
    */
@@ -5499,8 +5523,8 @@ export interface GridProps
    *
    * This overrides the row value of `gap`.
    * `rowGap` either accepts:
-   * * a single SpacingKeyword value (e.g. `large-100`)
-   * *OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -5510,8 +5534,8 @@ export interface GridProps
    *
    * This overrides the column value of `gap`.
    * `columnGap` either accepts:
-   * * a single SpacingKeyword value (e.g. `large-100`)
-   * * OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -6435,9 +6459,9 @@ export interface StackProps
    * Adjust spacing between elements.
    *
    * `gap` can either accept:
-   * * a single SpacingKeyword value applied to both axes (e.g. `large-100`).
-   * * OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
-   * * OR a container query string with supported SpacingKeyword values as query values (e.g.@container (inline-size > 500px) large-300, small-300)
+   * - a single SpacingKeyword value applied to both axes (e.g. `large-100`)
+   * - OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default 'none'
    */
@@ -6446,8 +6470,9 @@ export interface StackProps
    * Adjust spacing between elements in the block axis.
    *
    * This overrides the row value of `gap`.
-   * `rowGap` either accepts a single SpacingKeyword value (e.g. `large-100`)
-   * OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   * `rowGap` either accepts:
+   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -6457,23 +6482,23 @@ export interface StackProps
    *
    * This overrides the column value of `gap`.
    * `columnGap` either accepts:
-   * * a single SpacingKeyword value (e.g. `large-100`)
-   * OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
   columnGap: ResponsiveStackProps['columnGap'];
   /**
-     * Sets how the Stack's children are placed within the Stack.
-     *
-     * `direction` either accepts:
-     * * a single value either `inline` or `block`
-     * *OR a container query string with either of these values as a query value (e.g. `@container (inline-size > 500px) inline, block`)
-  
-    * @default 'block'
-     *
-     * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
-     */
+   * Sets how the Stack's children are placed within the Stack.
+   *
+   * `direction` either accepts:
+   * - a single value either `inline` or `block`
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
+   *
+   * @default 'block'
+   *
+   * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
+   */
   direction: ResponsiveStackProps['direction'];
 }
 
@@ -6544,11 +6569,16 @@ export interface TableProps
   variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
 }
 
+export type HeaderFormat = Extract<
+  TableHeaderProps$1['format'],
+  'base' | 'currency' | 'numeric'
+>;
 export interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
   listSlot: Extract<
     TableHeaderProps$1['listSlot'],
     'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'
   >;
+  format: HeaderFormat;
 }
 
 declare class AddedContext<T> extends EventTarget {
@@ -6577,6 +6607,7 @@ declare class Table extends PreactCustomElement implements TableProps {
     {
       listSlot: TableHeaderProps['listSlot'];
       textContent: string;
+      format: HeaderFormat;
     }[]
   >;
 
@@ -6632,8 +6663,14 @@ export interface TableBodyJSXProps
 
 export interface TableCellProps extends TableCellProps$1 {}
 
+declare const headerFormatSymbol: unique symbol;
+
 declare class TableCell extends PreactCustomElement implements TableCellProps {
   constructor();
+  /** @private */
+  get [headerFormatSymbol](): HeaderFormat;
+  /** @private */
+  set [headerFormatSymbol](format: HeaderFormat);
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -6659,6 +6696,7 @@ declare class TableHeader
   implements TableHeaderProps
 {
   accessor listSlot: TableHeaderProps['listSlot'];
+  accessor format: TableHeaderProps['format'];
   constructor();
 }
 declare global {
@@ -6711,10 +6749,12 @@ export interface TableHeaderRowJSXProps
   extends Partial<TableHeaderRowProps>,
     Pick<TableHeaderRowProps$1, 'id'> {}
 
-export interface TableRowProps extends Pick<TableRowProps$1, 'children'> {}
+export interface TableRowProps
+  extends Pick<TableRowProps$1, 'children' | 'clickDelegate'> {}
 
 declare class TableRow extends PreactCustomElement implements TableRowProps {
   constructor();
+  accessor clickDelegate: string;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -6906,7 +6946,14 @@ export interface ThumbnailJSXProps
   onError?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
 }
 
-export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
+export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {
+  /**
+   * The content of the Tooltip.
+   *
+   * @implementation Accepts s-text, s-paragraph, and raw text content
+   */
+  children: ComponentChildren$1;
+}
 
 declare class Tooltip extends PreactOverlayElement implements TooltipProps {
   constructor();

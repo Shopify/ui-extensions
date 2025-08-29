@@ -1,4 +1,4 @@
-/** VERSION: 1.9.1 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -8,11 +8,19 @@
 /// <reference lib="DOM" />
 import type {
   TooltipProps$1,
+  ComponentChildren,
   InteractionProps,
   ComponentChild,
 } from './shared.d.ts';
 
-export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
+export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {
+  /**
+   * The content of the Tooltip.
+   *
+   * @implementation Accepts s-text, s-paragraph, and raw text content
+   */
+  children: ComponentChildren;
+}
 
 /** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
