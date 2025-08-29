@@ -6,11 +6,7 @@ import {
   copyFileSync,
 } from 'fs';
 import {join, resolve} from 'path';
-import type {
-  InterfaceDeclaration,
-  ModuleDeclaration,
-  SourceFile,
-} from 'ts-morph';
+import type {SourceFile} from 'ts-morph';
 import {Project} from 'ts-morph';
 
 function copyComponentDefinitions({
@@ -88,9 +84,7 @@ export type Output = Target['output'];
 
 function processComponentDefinitions({
   srcPaths,
-  project,
   componentName,
-  names,
   targetFile,
 }: {
   srcPaths: string[];
@@ -111,59 +105,9 @@ function processComponentDefinitions({
     return;
   }
 
-  const componentSource = project.addSourceFileAtPath(componentSourcePath);
-  const variablesAliasMap = new Map<string, string>();
-
-  // Process variable statements
-  componentSource.getVariableStatements().forEach((variable) => {
-    const structure = variable.getStructure();
-    structure.declarations.forEach((declaration) => {
-      let name = declaration.name;
-      if (names.has(name)) {
-        name = `${componentName}${name}`;
-        variable.replaceWithText(
-          variable.getText().replace(declaration.name, name),
-        );
-        variablesAliasMap.set(declaration.name, name);
-      }
-      names.add(name);
-    });
-
-    targetFile.insertVariableStatement(0, variable.getStructure());
+  targetFile.addImportDeclaration({
+    moduleSpecifier: `../components/${componentName}.d.ts`,
   });
-
-  // Process interfaces
-  componentSource.getInterfaces().forEach((componentInterface) => {
-    let name = componentInterface.getName();
-    if (names.has(name)) {
-      name = `${componentName}${name}`;
-      componentInterface.rename(name, {
-        usePrefixAndSuffixText: true,
-        renameInStrings: true,
-      });
-    }
-    names.add(name);
-
-    updateReferences(componentInterface, variablesAliasMap);
-    targetFile.insertInterface(0, componentInterface.getStructure());
-  });
-
-  // Process modules
-  componentSource.getModules().forEach((module) => {
-    updateReferences(module, variablesAliasMap);
-    targetFile.insertModule(0, module.getStructure());
-  });
-}
-
-function updateReferences(
-  node: ModuleDeclaration | InterfaceDeclaration,
-  aliasMap: Map<string, string>,
-) {
-  let text = node.getText();
-  aliasMap.forEach((alias, original) => {
-    text = text.replace(original, alias);
-  });
-  node.replaceWithText(text);
 }
 
 function getTargets(sourceFile: SourceFile) {
