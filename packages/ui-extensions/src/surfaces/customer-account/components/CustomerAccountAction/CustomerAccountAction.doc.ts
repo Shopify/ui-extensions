@@ -27,6 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Polaris web components',
+  subCategory: 'Actions',
   defaultExample: {
     image: 'customeraccountaction-preview.png',
     altText:
