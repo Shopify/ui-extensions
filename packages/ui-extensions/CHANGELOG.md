@@ -1,5 +1,23 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.25
+
+### Minor Changes
+
+- [#3164](https://github.com/Shopify/ui-extensions/pull/3164) [`5b31df78919a64b14cf04009d7c3dfb9494c55c1`](https://github.com/Shopify/ui-extensions/commit/5b31df78919a64b14cf04009d7c3dfb9494c55c1) Thanks [@lsit](https://github.com/lsit)! - Add ButtonGroup component to customer account
+
+- [#3156](https://github.com/Shopify/ui-extensions/pull/3156) [`03dd2771e5a6cd5cb10fe7ad7c2be7964527d77a`](https://github.com/Shopify/ui-extensions/commit/03dd2771e5a6cd5cb10fe7ad7c2be7964527d77a) Thanks [@lsit](https://github.com/lsit)! - Add Section component with `primary-action` and `secondary-actions` slots to customer account
+
+### Patch Changes
+
+- [#3198](https://github.com/Shopify/ui-extensions/pull/3198) [`b1666ed134b9aa5257c01900d3882795ed6454da`](https://github.com/Shopify/ui-extensions/commit/b1666ed134b9aa5257c01900d3882795ed6454da) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Fix component.d.ts files not properly deduping non-unique references.
+
+- [#3186](https://github.com/Shopify/ui-extensions/pull/3186) [`2b7dcaa84677cdf231cb6e6821301fb0da84caf3`](https://github.com/Shopify/ui-extensions/commit/2b7dcaa84677cdf231cb6e6821301fb0da84caf3) Thanks [@lsit](https://github.com/lsit)! - Remove hook docs completely from customer account
+
+- [#3192](https://github.com/Shopify/ui-extensions/pull/3192) [`564f9588bde6963c4534d85c5b25d72f26ff47c5`](https://github.com/Shopify/ui-extensions/commit/564f9588bde6963c4534d85c5b25d72f26ff47c5) Thanks [@lsit](https://github.com/lsit)! - Fix broken image in customer account Avatar docs
+
+- [#3185](https://github.com/Shopify/ui-extensions/pull/3185) [`331bb59ea2813ae0a1a96ec3a34fddcf5442fb42`](https://github.com/Shopify/ui-extensions/commit/331bb59ea2813ae0a1a96ec3a34fddcf5442fb42) Thanks [@lsit](https://github.com/lsit)! - Remove unused JavaScript examples from customer account
+
 ## 2025.10.0-rc.24
 
 ### Minor Changes
