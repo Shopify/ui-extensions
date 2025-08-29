@@ -44,6 +44,7 @@ export type StandardComponents =
   | 'TextArea'
   | 'TextField'
   | 'Thumbnail'
+  | 'Tooltip'
   | 'UnorderedList'
   | 'URLField';
 
