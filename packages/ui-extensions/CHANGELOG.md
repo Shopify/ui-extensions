@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.26
+
+### Patch Changes
+
+- [#3199](https://github.com/Shopify/ui-extensions/pull/3199) [`f945269a47b791edd94e089a6e6596d6391ae4c3`](https://github.com/Shopify/ui-extensions/commit/f945269a47b791edd94e089a6e6596d6391ae4c3) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Add ButtonGroup, Chip and ClickableChip to StandardComponents.ts
+
 ## 2025.10.0-rc.25
 
 ### Minor Changes
