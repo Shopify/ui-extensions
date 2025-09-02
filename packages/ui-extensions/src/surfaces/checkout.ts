@@ -38,6 +38,7 @@ export type {
   CartCodeDiscountAllocation,
   CartAutomaticDiscountAllocation,
   CartCustomDiscountAllocation,
+  CartDiscountHint,
   AppliedGiftCard,
   I18n,
   I18nTranslate,

@@ -584,6 +584,11 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   discountAllocations: StatefulRemoteSubscribable<CartDiscountAllocation[]>;
 
   /**
+   * A list of discount hints applied to the cart.
+   */
+  discountHints: StatefulRemoteSubscribable<CartDiscountHint[]>;
+
+  /**
    * The meta information about the extension.
    */
   extension: Extension<Target>;
@@ -1240,6 +1245,13 @@ export interface CartCustomDiscountAllocation
    * The type of the custom discount
    */
   type: 'custom';
+}
+
+export interface CartDiscountHint {
+  /**
+   * The metafields associated with this discount hint
+   */
+  metafields: Metafield[];
 }
 
 type InterceptorResult = InterceptorResultAllow | InterceptorResultBlock;

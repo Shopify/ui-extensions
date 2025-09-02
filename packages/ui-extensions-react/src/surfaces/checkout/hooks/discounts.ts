@@ -1,6 +1,7 @@
 import type {
   CartDiscountAllocation,
   CartDiscountCode,
+  CartDiscountHint,
   RenderExtensionTarget,
   DiscountCodeChange,
   DiscountCodeChangeResult,
@@ -54,4 +55,16 @@ export function useApplyDiscountCodeChange<
     'applyDiscountCodeChange',
     api.extension.target,
   );
+}
+
+/**
+ * Returns the current discount hints applied to the cart, and automatically re-renders
+ * your component if discount hints changed.
+ */
+export function useDiscountHints<
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
+>(): CartDiscountHint[] {
+  const {discountHints} = useApi<Target>();
+
+  return useSubscription(discountHints);
 }

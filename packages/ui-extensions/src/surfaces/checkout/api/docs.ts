@@ -83,7 +83,10 @@ export interface Docs_Checkout_GiftCardsApi
   extends Pick<CheckoutApi, 'applyGiftCardChange'> {}
 
 export interface Docs_Standard_DiscountsApi
-  extends Pick<StandardApi, 'discountAllocations' | 'discountCodes'> {}
+  extends Pick<
+    StandardApi,
+    'discountAllocations' | 'discountCodes' | 'discountHints'
+  > {}
 
 export interface Docs_Checkout_DiscountsApi
   extends Pick<CheckoutApi, 'applyDiscountCodeChange'> {}

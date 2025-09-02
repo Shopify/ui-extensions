@@ -1,9 +1,14 @@
 import type {
   CartDiscountCode,
   CartDiscountAllocation,
+  CartDiscountHint,
 } from '@shopify/ui-extensions/checkout';
 
-import {useDiscountAllocations, useDiscountCodes} from '../discounts';
+import {
+  useDiscountAllocations,
+  useDiscountCodes,
+  useDiscountHints,
+} from '../discounts';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 import type {PartialExtensionApi} from './mount';
@@ -74,6 +79,31 @@ describe('Discounts API hooks', () => {
       });
 
       expect(value).toBe(discountAllocations);
+    });
+  });
+
+  describe('useDiscountHints', () => {
+    it('returns the current discount hints', async () => {
+      const discountHints: CartDiscountHint[] = [
+        {
+          metafields: [
+            {
+              key: 'some-key',
+              namespace: 'some-namespace',
+              value: 'some-value',
+              valueType: 'string',
+            },
+          ],
+        },
+      ];
+
+      const extensionApi: PartialExtensionApi = {
+        discountHints: createMockStatefulRemoteSubscribable(discountHints),
+      };
+
+      const {value} = mount.hook(() => useDiscountHints(), {extensionApi});
+
+      expect(value).toBe(discountHints);
     });
   });
 });
