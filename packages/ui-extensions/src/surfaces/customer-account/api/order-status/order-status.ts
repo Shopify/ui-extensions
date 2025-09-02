@@ -778,6 +778,11 @@ export interface CartDiscountAllocationBase {
    * The money amount that has been discounted from the order
    */
   discountedAmount: Money;
+
+  /**
+   * The metafields associated with this discount allocation
+   */
+  metafields: Metafield[];
 }
 
 export interface CartCodeDiscountAllocation extends CartDiscountAllocationBase {

@@ -36,6 +36,14 @@ describe('Discounts API hooks', () => {
             currencyCode: 'USD',
           },
           type: 'code',
+          metafields: [
+            {
+              key: 'some-key',
+              namespace: 'some-namespace',
+              value: 'some-value',
+              valueType: 'string',
+            },
+          ],
         },
         {
           title: '10% off',
@@ -44,6 +52,7 @@ describe('Discounts API hooks', () => {
             currencyCode: 'USD',
           },
           type: 'automatic',
+          metafields: [],
         },
         {
           title: '15% off',
