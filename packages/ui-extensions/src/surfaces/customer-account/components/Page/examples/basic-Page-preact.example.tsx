@@ -2,7 +2,7 @@ import {render} from 'preact';
 
 export default async () => {
   render(<App />, document.body);
-}
+};
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         slot="primary-action"
         onClick={() => console.log('Primary action')}
       >
-        Primary action
+        Buy again
       </s-button>
       <s-button
         slot="secondary-actions"

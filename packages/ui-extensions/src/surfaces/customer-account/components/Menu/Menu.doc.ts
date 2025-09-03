@@ -25,7 +25,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Actions',
   defaultExample: {
     image: 'menu-preview.png',
-    altText: 'An example of a Menu with three actions.',
+    altText:
+      'An example of a Menu component shows three actions: Submit problem, Request return, and Cancel order.',
     codeblock: {
       title: 'Basic Menu',
       tabs: [

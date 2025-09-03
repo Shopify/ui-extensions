@@ -26,7 +26,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'avatar-preview.png',
     altText:
-      'An example of the avatar with two variants: one with initials and the other with an icon.',
+      'An example of the Avatar component shows the default avatar in four sizes.',
     codeblock: {
       title: 'Basic Avatar',
       tabs: [
