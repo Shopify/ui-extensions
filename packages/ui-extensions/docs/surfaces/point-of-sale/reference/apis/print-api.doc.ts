@@ -1,11 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {
-  generateCodeBlock,
-  generateTSXCodeBlock,
-} from '../helpers/generateCodeBlock';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
 
-const generateCodeBlockForPrintApi = (title: string, fileName: string) =>
-  generateCodeBlock(title, 'print-api', fileName);
+const generateJsxCodeBlockForPrintApi = (title: string, fileName: string) =>
+  generateJsxCodeBlock(title, 'print-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Print API',
@@ -46,22 +43,20 @@ Supported document types:
     description: 'Examples of using the Print API',
     examples: [
       {
-        codeblock: generateCodeBlockForPrintApi(
+        codeblock: generateJsxCodeBlockForPrintApi(
           'Print directly from the tile',
           'print',
         ),
       },
       {
-        codeblock: generateTSXCodeBlock(
+        codeblock: generateJsxCodeBlockForPrintApi(
           'Print with relative path',
-          'print-api',
           'print-relative',
         ),
       },
       {
-        codeblock: generateTSXCodeBlock(
+        codeblock: generateJsxCodeBlockForPrintApi(
           'Print with full URL',
-          'print-api',
           'print-full-url',
         ),
       },

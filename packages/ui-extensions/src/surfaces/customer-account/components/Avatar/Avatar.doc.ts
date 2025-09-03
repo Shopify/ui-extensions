@@ -22,10 +22,11 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Polaris web components',
+  subCategory: 'Media',
   defaultExample: {
     image: 'avatar-preview.png',
     altText:
-      'An example of the avatar with two variants: one with initials and the other with an icon.',
+      'An example of the Avatar component shows the default avatar in four sizes.',
     codeblock: {
       title: 'Basic Avatar',
       tabs: [
@@ -59,7 +60,7 @@ const data: ReferenceEntityTemplateSchema = {
   **Don'ts**
   - Don't use different size avatars on the same page.
 
-  <img src='/assets/templated-apis-screenshots/customer-account-ui-extensions/unstable/avatar-best-practices.png' alt="An example showing dos and don'ts of the Avatar component" />
+  ![An example showing dos and don'ts of the Avatar component](/assets/templated-apis-screenshots/customer-account-ui-extensions/unstable/avatar-best-practices.png)
   `,
     },
   ],

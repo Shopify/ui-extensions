@@ -3,9 +3,11 @@ import {AnyComponent} from '../../checkout';
 export type StandardComponents =
   | AnyComponent
   | 'Avatar'
+  | 'ButtonGroup'
   | 'CustomerAccountAction'
   | 'ImageGroup'
   | 'Menu'
-  | 'Page';
+  | 'Page'
+  | 'Section';
 
 export default StandardComponents;

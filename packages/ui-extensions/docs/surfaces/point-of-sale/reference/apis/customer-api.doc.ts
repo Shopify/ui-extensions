@@ -1,9 +1,9 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
-import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
 
-const generateCodeBlockForCustomerApi = (title: string, fileName: string) =>
-  generateCodeBlock(title, 'customer-api', fileName);
+const generateJsxCodeBlockForCustomerApi = (title: string, fileName: string) =>
+  generateJsxCodeBlock(title, 'customer-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Customer API',
@@ -28,7 +28,7 @@ The customer API provides an extension with data about the current customer.
     description: 'Examples of using the Customer API.',
     examples: [
       {
-        codeblock: generateCodeBlockForCustomerApi(
+        codeblock: generateJsxCodeBlockForCustomerApi(
           'Retrieve the ID of the customer.',
           'id',
         ),

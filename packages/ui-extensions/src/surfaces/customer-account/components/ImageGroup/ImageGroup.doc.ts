@@ -16,10 +16,11 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Polaris web components',
+  subCategory: 'Media',
   defaultExample: {
     image: 'imagegroup-preview.png',
     altText:
-      'An example of the ImageGroup component shows 3 circular images of plants displayed in a row, each one slightly overlapping the previous image—in a horizontal stacked pattern. To the right, there is another group of 3 images of plants, arranged in a 2x2 grid. There is one square image in the upper-left quadrant, one square image in the lower-left quadrant, and the entire right half of the grid is occupied by one image.',
+      'An example of the ImageGroup component shows a group of four images of plants, arranged in a 2x2 grid.',
     codeblock: {
       title: 'Basic ImageGroup',
       tabs: [

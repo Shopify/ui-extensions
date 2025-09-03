@@ -1,5 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A full-screen extension target that renders when a `pos.draft-order-details.action.render` target calls for it',
   defaultExample: {
-    codeblock: generateCodeBlock(
+    codeblock: generateJsxCodeBlock(
       'Draft order details action',
       'targets',
       'pos-draft-order-details-action',
@@ -19,15 +19,15 @@ const data: ReferenceEntityTemplateSchema = {
   related: [
     {
       name: ExtensionTargetType.PosDraftOrderDetailsActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-draft-order-details-action-menu-item-render',
+      url: 'pos-draft-order-details-action-menu-item-render',
     },
     {
       name: ExtensionTargetType.PosDraftOrderDetailsBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-draft-order-details-block-render',
+      url: '../block/pos-draft-order-details-block-render',
     },
     {
       name: 'Draft order details API',
-      url: '/docs/api/pos-ui-extensions/apis/draft-order-api',
+      url: '../../apis/draft-order-api',
     },
   ],
   type: 'Target',

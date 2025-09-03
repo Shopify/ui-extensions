@@ -15,11 +15,6 @@ const data: ReferenceEntityTemplateSchema = {
       description: ORDER_STATUS_API_DEFINITION.description,
       type: 'Docs_OrderStatus_CheckoutSettingsApi',
     },
-    // {
-    //   title: 'useCheckoutSettings',
-    //   description: 'Returns the `checkoutSettings` applied to the checkout.',
-    //   type: 'UseAttributesGeneratedType',
-    // },
   ],
   related: [],
 };

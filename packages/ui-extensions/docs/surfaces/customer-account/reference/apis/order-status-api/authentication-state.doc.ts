@@ -15,11 +15,6 @@ const data: ReferenceEntityTemplateSchema = {
       description: ORDER_STATUS_API_DEFINITION.description,
       type: 'Docs_OrderStatus_AuthenticationStateApi',
     },
-    // {
-    //   title: 'useAuthenticationState',
-    //   description: 'Returns authentication state of Order status page.',
-    //   type: 'UseAuthenticationStateGeneratedType',
-    // },
   ],
   related: [],
 };

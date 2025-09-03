@@ -1,7 +1,7 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 import sharedContent from '../../../../docs/shared/components/Popover';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   category: 'Polaris web components',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/popover.png',
@@ -26,6 +26,7 @@ const data: ReferenceEntityTemplateSchema = {
         {
           code: './examples/default.html',
           language: 'preview',
+          layout: 'alignStart',
         },
       ],
     },

@@ -951,3 +951,14 @@ export interface ReadonlySignalLike<T> {
   readonly value: T;
   subscribe(fn: (value: T) => void): () => void;
 }
+
+/**
+ * A remote-subscribable object exposed to a sandboxed web worker.
+ *
+ * Example: extensions use this to get updates about an object
+ * managed by Checkout on the main thread.
+ */
+export interface StatefulRemoteSubscribable<T> extends ReadonlySignalLike<T> {
+  readonly current: T;
+  destroy(): Promise<void>;
+}

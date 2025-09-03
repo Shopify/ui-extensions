@@ -1,8 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
 
-const generateCodeBlockForToastApi = (title: string, fileName: string) =>
-  generateCodeBlock(title, 'toast-api', fileName);
+const generateJsxCodeBlockForToastApi = (title: string, fileName: string) =>
+  generateJsxCodeBlock(title, 'toast-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Toast API',
@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
     description: 'Examples of using the Toast API',
     examples: [
       {
-        codeblock: generateCodeBlockForToastApi(
+        codeblock: generateJsxCodeBlockForToastApi(
           'Display a Toast component from the tile',
           'show',
         ),

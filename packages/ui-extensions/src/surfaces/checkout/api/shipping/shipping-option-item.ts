@@ -1,4 +1,4 @@
-import type {StatefulRemoteSubscribable} from '../shared';
+import type {StatefulRemoteSubscribable} from '../../../../shared';
 import type {ShippingOption} from '../standard/standard';
 
 export interface ShippingOptionItemApi {

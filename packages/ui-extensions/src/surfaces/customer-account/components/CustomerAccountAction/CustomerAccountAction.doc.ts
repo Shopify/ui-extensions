@@ -27,10 +27,11 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Polaris web components',
+  subCategory: 'Actions',
   defaultExample: {
     image: 'customeraccountaction-preview.png',
     altText:
-      'An example of the CustomerAccountAction component shows a dismissible modal with a header that says "Edit order", a field for adjusting quantities, and a Save button.',
+      'An example of the CustomerAccountAction component shows a dismissible modal with a header that says "Edit order", a field for adjusting quantities, and a Close button.',
     codeblock: {
       title: 'Basic CustomerAccountAction',
       tabs: [

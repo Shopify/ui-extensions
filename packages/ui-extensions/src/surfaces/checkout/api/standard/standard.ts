@@ -4,7 +4,6 @@ import type {
   Attribute,
   MailingAddress,
   ShippingAddress,
-  StatefulRemoteSubscribable,
 } from '../shared';
 import type {ExtensionTarget} from '../../extension-targets';
 import type {
@@ -17,6 +16,7 @@ import type {
   GraphQLError,
   StorefrontApiVersion,
   LocalizedFieldKey,
+  StatefulRemoteSubscribable,
 } from '../../../../shared';
 
 export type {ApiVersion, Capability} from '../../../../shared';

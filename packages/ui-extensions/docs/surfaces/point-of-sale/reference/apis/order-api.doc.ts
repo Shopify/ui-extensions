@@ -1,5 +1,9 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
+
+const generateJsxCodeBlockForOrderApi = (title: string, fileName: string) =>
+  generateJsxCodeBlock(title, 'order-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Order API',
@@ -25,6 +29,17 @@ The Order API provides an extension with data about the current order.
   ],
   category: 'APIs',
   related: [],
+  examples: {
+    description: 'Examples of using the Order API.',
+    examples: [
+      {
+        codeblock: generateJsxCodeBlockForOrderApi(
+          'Retrieve the ID of the order.',
+          'id',
+        ),
+      },
+    ],
+  },
 };
 
 export default data;

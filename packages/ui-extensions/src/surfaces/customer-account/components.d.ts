@@ -1,10 +1,14 @@
-import {SizeKeyword, IdProps} from './components/shared';
 import {
   AvatarProps,
   AvatarElementProps,
   AvatarElement,
   AvatarEvents,
 } from './components/Avatar';
+import {
+  ButtonGroupProps,
+  ButtonGroupElement,
+  ButtonGroupElementSlots,
+} from './components/ButtonGroup';
 import {
   CustomerAccountActionProps,
   CustomerAccountActionElement,
@@ -13,6 +17,11 @@ import {
 import {ImageGroupProps, ImageGroupElement} from './components/ImageGroup';
 import {MenuProps, MenuElement} from './components/Menu';
 import {PageProps, PageElement, PageElementSlots} from './components/Page';
+import {
+  SectionProps,
+  SectionElement,
+  SectionElementSlots,
+} from './components/Section';
 
 export type CustomerAccountActionPropsDocs = CustomerAccountActionProps;
 export type CustomerAccountActionElementDocs = CustomerAccountActionElement;
@@ -120,6 +129,52 @@ declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
       ['s-menu']: BaseProps & MenuProps;
+    }
+  }
+}
+
+export type ButtonGroupPropsDocs = ButtonGroupProps;
+export type ButtonGroupElementDocs = ButtonGroupElement;
+export type ButtonGroupElementSlotsDocs = ButtonGroupElementSlots;
+
+declare global {
+  interface HTMLElementTagNameMap {
+    ['s-button-group']: ButtonGroupElement;
+  }
+}
+
+declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      ['s-button-group']: BaseProps & ButtonGroupProps;
+    }
+  }
+}
+
+export type SectionPropsDocs = SectionProps;
+export type SectionElementDocs = SectionElement;
+export type SectionElementSlotsDocs = SectionElementSlots;
+
+declare global {
+  interface HTMLElementTagNameMap {
+    ['s-section']: SectionElementDocs;
+  }
+}
+
+declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      ['s-section']: BaseProps & SectionPropsDocs;
     }
   }
 }

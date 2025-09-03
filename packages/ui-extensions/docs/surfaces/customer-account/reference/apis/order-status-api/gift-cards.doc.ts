@@ -15,11 +15,6 @@ const data: ReferenceEntityTemplateSchema = {
       description: ORDER_STATUS_API_DEFINITION.description,
       type: 'Docs_OrderStatus_GiftCardsApi',
     },
-    // {
-    //   title: 'useAppliedGiftCards',
-    //   description: 'Returns the current gift cards applied to the cart.',
-    //   type: 'UseAppliedGiftCardsGeneratedType',
-    // },
   ],
   related: [],
 };
