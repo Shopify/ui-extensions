@@ -1,5 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A full-screen extension target that renders when a `pos.customer-details.action.menu-item.render` target calls for it',
   defaultExample: {
-    codeblock: generateCodeBlock(
+    codeblock: generateJsxCodeBlock(
       'Action',
       'targets',
       'customer-details-action',
@@ -19,15 +19,15 @@ const data: ReferenceEntityTemplateSchema = {
   related: [
     {
       name: ExtensionTargetType.PosCustomerDetailsActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-customer-details-action-menu-item-render',
+      url: 'pos-customer-details-action-menu-item-render',
     },
     {
       name: ExtensionTargetType.PosCustomerDetailsBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-customer-details-block-render',
+      url: '../block/pos-customer-details-block-render',
     },
     {
       name: 'Customer API',
-      url: '/docs/api/pos-ui-extensions/apis/customer-api',
+      url: '../../apis/customer-api',
     },
   ],
   type: 'Target',
