@@ -298,43 +298,44 @@ Use the comparison table below to see which Polaris web components are available
       sectionContent: `
 |   **Legacy&nbsp;Component**   |   **Polaris&nbsp;Web&nbsp;Component**   |   **Migration&nbsp;Notes**   |
 | :----------------------: | :-------------------------------: | :---------------------: |
-|   \`Badge\`                  |                                                           |   Coming soon                          |
-|   \`Banner\`                 |                                                           |   Coming soon                          |
-|   \`Box\`                    |                                                           |   Coming soon                          |
-|   \`Button\`                 |                                                           |   Coming soon                          |
-|   \`CameraScanner\`          |                                                           |   Coming soon                          |
-|   \`DateField\`              |                                                           |   Coming soon                          |
-|   \`DatePicker\`             |                                                           |   Coming soon                          |
-|   \`Dialog\`                 |                                                           |   Coming soon                          |
-|   \`EmailField\`             |                                                           |   Coming soon                          |
-|   \`Icon\`                   |                                                           |   Coming soon                          |
-|   \`Image\`                  |                                                           |   Coming soon                          |
-|   \`List\`                   |                                                           |   Coming soon                          |
-|   \`Navigator\`              |                                                           |   Coming soon                          |
-|   \`NumberField\`            |                                                           |   Coming soon                          |
-|   \`PinPad\`                 |                                                           |   Coming soon                          |
-|   \`POSBlock\`               |                                                           |   Coming soon                          |
-|   \`POSBlockRow\`            |                                                           |   Coming soon                          |
-|   \`POSReceiptBlock\`        |                                                           |   Coming soon                          |
-|   \`PrintPreview\`           |                                                           |   Coming soon                          |
-|   \`QRCode\`                 |                                                           |   Coming soon                          |
-|   \`RadioButtonList\`        |                                                           |   Coming soon                          |
-|   \`Screen\`                 |                                                           |   Coming soon                          |
-|   \`ScrollView\`             |                                                           |   Coming soon                          |
-|   \`SearchBar\`              |                                                           |   Coming soon                          |
-|   \`Section\`                |                                                           |   Coming soon                          |
-|   \`SectionHeader\`          |                                                           |   Coming soon                          |
-|   \`SegmentedControl\`       |                                                           |   Coming soon                          |
-|   \`Selectable\`             |                                                           |   Coming soon                          |
-|   \`Spacing\`                |                                                           |   Coming soon                          |
-|   \`Stack\`                  |                                                           |   Coming soon                          |
-|   \`Stepper\`                |                                                           |   Coming soon                          |
-|   \`Text\`                   |                                                           |   Coming soon                          |
-|   \`TextArea\`               |                                                           |   Coming soon                          |
-|   \`TextField\`              |                                                           |   Coming soon                          |
-|   \`Tile\`                   |                                                           |   Coming soon                          |
-|   \`TimeField\`              |                                                           |   Coming soon                          |
-|   \`TimePicker\`             |                                                           |   Coming soon                          |
+|   \`Badge\`                  |   [\`Badge\`](polaris-web-components/titles-and-text/badge)   |   Available   |
+|   \`Banner\`                 |   [\`Banner\`](polaris-web-components/feedback/banner)   |   Available   |
+|   \`Box\`                    |   [\`Box\`](polaris-web-components/structure/box)   |   Available   |
+|   \`Button\`                 |   [\`Button\`](polaris-web-components/actions/button)   |   Available   |
+|   \`CameraScanner\`          |   \`CameraScanner\`   |   Coming soon   |
+|   \`DateField\`              |   [\`DateField\`](polaris-web-components/forms/datefield)   |   Available   |
+|   \`DatePicker\`             |   \`DatePicker\`   |   Coming soon   |
+|   \`DateSpinner\`            |   \`DateSpinner\`   |   Coming soon   |
+|   \`Dialog\`                 |   [\`Modal\`](polaris-web-components/structure/modal)   |   Available   |
+|   \`EmailField\`             |   [\`EmailField\`](/polaris-web-components/forms/emailfield)   |   Available   |
+|   \`Heading\`                |   \`Heading\`   |   Coming soon   |
+|   \`Icon\`                   |   [\`Icon\`](polaris-web-components/media/icon)   |  Available, more icons coming soon.  |
+|   \`Image\`                  |   \`Image\`   |   Coming soon   |
+|   \`List\`                   |      |  Removed. Use \`Array.map()\`   |
+|   \`Navigator\`              |      |   Removed.   |
+|   \`NumberField\`            |   [\`NumberField\`](polaris-web-components/forms/numberfield)   |   Available   |
+|   \`PinPad\`                 |     |   Coming soon   |
+|   \`POSBlock\`               |   \`POSBlock\`   |   Coming soon   |
+|   \`POSBlockRow\`            |    |   Replaced by \`POSBlock\`  |
+|   \`POSReceiptBlock\`        |     |   Replaced by \`POSBlock\`   |
+|   \`PrintPreview\`           |   \`DocumentPreview\`   |   Coming soon   |
+|   \`QRCode\`                 |   \`QRCode\`   |   Coming soon   |
+|   \`RadioButtonList\`        |   [\`ChoiceList\`](polaris-web-components/forms/choicelist)   |   Available   |
+|   \`Screen\`                 |   \`Page\`   |   Coming soon   |
+|   \`ScrollView\`             |   [\`ScrollBox\`](polaris-web-components/structure/scrollbox)   |   Available  |
+|   \`SearchBar\`              |   [\`SearchField\`](polaris-web-components/forms/searchfield)   |   Available   |
+|   \`Section\`                |   \`Section\`   |   Coming soon   |
+|   \`SectionHeader\`          |     |   Use \`Section.heading\`   |
+|   \`SegmentedControl\`       |   \`Tabs\`/\`Tab\`   |   Coming soon   |
+|   \`Selectable\`             |   [\`Clickable\`](polaris-web-components/actions/clickable)   |   Available   |
+|   \`Stack\`                  |   [\`Stack\`](polaris-web-components/structure/stack)   |   Available   |
+|   \`Stepper\`                |   [\`NumberField\`](polaris-web-components/forms/numberfield)   |   Use \`NumberField\` with stepper controls   |
+|   \`Text\`                   |   [\`Text\`](polaris-web-components/titles-and-text/text)   |   Available   |
+|   \`TextArea\`               |   [\`TextArea\`](polaris-web-components/forms/textarea)   |   Available   |
+|   \`TextField\`              |   [\`TextField\`](polaris-web-components/forms/textfield)   |   Available   |
+|   \`Tile\`                   | [\`Tile\`](polaris-web-components/actions/tile)  |  Available   |
+|   \`TimeField\`              |   \`TimeField\`   |   Coming soon   |
+|   \`TimePicker\`             |   \`TimePicker\`   |   Coming soon   |
 `,
     },
   ],

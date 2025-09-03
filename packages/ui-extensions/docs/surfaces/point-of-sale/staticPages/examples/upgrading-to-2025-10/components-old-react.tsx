@@ -1,6 +1,6 @@
 import {
   reactExtension,
-  InlineStack,
+  Stack,
   TextField,
   Button,
 } from '@shopify/ui-extensions-react/point-of-sale';
@@ -9,9 +9,9 @@ export default reactExtension('pos.home.modal.render', () => <Extension />);
 
 function Extension() {
   return (
-    <InlineStack>
+    <Stack direction="inline" gap="200">
       <TextField label="Gift message" />
-      <Button>Save</Button>
-    </InlineStack>
+      <Button title="Save" variant="primary" />
+    </Stack>
   );
 }

@@ -13,10 +13,10 @@ import {
   CustomerPrivacy,
   ApplyTrackingConsentChangeType,
   ToastApi,
+  StatefulRemoteSubscribable,
 } from '../shared';
 
 import type {ExtensionTarget} from '../../extension-targets';
-import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 /**
  * The merchant-defined setting values for the extension.
