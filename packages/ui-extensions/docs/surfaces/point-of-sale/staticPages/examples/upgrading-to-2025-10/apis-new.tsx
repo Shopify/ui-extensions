@@ -6,26 +6,10 @@ export default function extension() {
 }
 
 function Extension() {
-  return (
-    <s-checkbox
-      onChange={onCheckboxChange}
-      label="Include a complimentary gift"
-    />
-  );
+  return <s-button onClick={onButtonClick}>Print</s-button>;
 }
 
-async function onCheckboxChange(event) {
-  const isChecked = event.target.checked;
-
-  const result =
-    await shopify.applyAttributeChange({
-      type: 'updateAttribute',
-      key: 'includeGift',
-      value: isChecked ? 'yes' : 'no',
-    });
-
-  console.log(
-    'applyAttributeChange result',
-    result,
-  );
+async function onButtonClick() {
+  await shopify.print.print('documents/test-print');
+  console.log('print completed');
 }
