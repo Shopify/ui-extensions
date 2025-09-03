@@ -1,5 +1,4 @@
 import type {ExtensionTarget} from '../extension-targets';
-import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 import type {
   ApiVersion,
@@ -10,6 +9,7 @@ import type {
   CountryCode,
   GraphQLError,
   StorefrontApiVersion,
+  StatefulRemoteSubscribable,
 } from '../../../shared';
 
 export {
@@ -21,6 +21,7 @@ export {
   CountryCode,
   GraphQLError,
   StorefrontApiVersion,
+  StatefulRemoteSubscribable,
 };
 
 /**

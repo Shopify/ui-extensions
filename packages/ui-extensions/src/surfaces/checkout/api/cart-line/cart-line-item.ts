@@ -1,4 +1,4 @@
-import type {StatefulRemoteSubscribable} from '../shared';
+import type {StatefulRemoteSubscribable} from '../../../../shared';
 import type {CartLine} from '../standard/standard';
 
 export interface CartLineItemApi {

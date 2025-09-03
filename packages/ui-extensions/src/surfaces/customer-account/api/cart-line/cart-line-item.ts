@@ -1,6 +1,5 @@
-import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
-
 import {CartLine} from '../order-status/order-status';
+import {StatefulRemoteSubscribable} from '../shared';
 
 export interface CartLineItemApi {
   /**
