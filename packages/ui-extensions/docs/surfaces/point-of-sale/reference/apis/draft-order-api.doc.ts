@@ -1,6 +1,11 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
-import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
+
+const generateJsxCodeBlockForDraftOrderApi = (
+  title: string,
+  fileName: string,
+) => generateJsxCodeBlock(title, 'draft-order-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Draft Order API',
@@ -26,9 +31,8 @@ The Draft Order API provides an extension with data about the current draft orde
     description: 'Examples of using the Draft Order API.',
     examples: [
       {
-        codeblock: generateCodeBlock(
+        codeblock: generateJsxCodeBlockForDraftOrderApi(
           'Retrieve the ID of the draft order.',
-          'draft-order-api',
           'id',
         ),
       },
