@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.10.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -10,7 +10,8 @@
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
  */
-export type ComponentChildren = any;
+type ComponentChildren = any;
+export type StringChildren = string;
 export interface GlobalProps {
   /**
    * A unique identifier for the element.
@@ -61,6 +62,52 @@ interface AdminPrintActionProps$1 extends GlobalProps {
    * HTML, PDFs and images are supported.
    */
   src?: string;
+}
+export interface BaseOverlayProps {
+  /**
+   * Callback fired after the overlay is shown.
+   */
+  onShow?: (event: Event) => void;
+  /**
+   * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
+   */
+  onAfterShow?: (event: Event) => void;
+  /**
+   * Callback fired after the overlay is hidden.
+   */
+  onHide?: (event: Event) => void;
+  /**
+   * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
+   */
+  onAfterHide?: (event: Event) => void;
+}
+/**
+ * Shared interfaces for web component methods.
+ *
+ * Methods are required (not optional) because:
+ * - Components implementing this interface must provide all methods
+ * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
+ * - Consumers expect these methods to be consistently available on all instances
+ */
+export interface BaseOverlayMethods {
+  /**
+   * Method to show an overlay.
+   *
+   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+   */
+  showOverlay: () => void;
+  /**
+   * Method to hide an overlay.
+   *
+   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+   */
+  hideOverlay: () => void;
+  /**
+   * Method to toggle the visiblity of an overlay.
+   *
+   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+   */
+  toggleOverlay: () => void;
 }
 export type SizeKeyword =
   | 'small-500'
@@ -326,6 +373,7 @@ declare const privateIconArray: readonly [
   'favicon',
   'file-list',
   'file',
+  'filter-active',
   'filter',
   'flag',
   'flip-horizontal',
@@ -1440,6 +1488,23 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   lang?: string;
 }
+interface ButtonGroupProps$1 extends GlobalProps, ActionSlots {
+  /**
+   * The content of the ButtonGroup.
+   */
+  children?: ComponentChildren;
+  /**
+   * The gap between elements.
+   * @default 'base'
+   */
+  gap?: 'base' | 'none';
+  /**
+   * Label for the button group that describes the content of the group for screen reader users to understand what's included.
+   *
+   * @implementation Used as a hidden heading or an aria-label on the wrapping element.
+   */
+  accessibilityLabel?: string;
+}
 export interface BaseInputProps {
   /**
    * An identifier for the field that is unique within the nearest containing form.
@@ -1495,6 +1560,35 @@ export interface MultipleInputProps extends BaseInputProps {
    * This is a convenience prop for setting the `selected` prop on child options.
    */
   values?: string[];
+}
+export interface FileInputProps extends BaseInputProps {
+  /**
+   * Callback when the user has **finished selecting** a file or files.
+   */
+  onChange?: (event: Event) => void;
+  /**
+   * Callback when the user makes any changes in the file selection.
+   */
+  onInput?: (event: Event) => void;
+  /**
+   * A string that represents the path to the selected file(s). If no file is selected yet, the value is an empty string ("").
+   * When the user selected multiple files, the value represents the first file in the list of files they selected.
+   * The value is always the file's name prefixed with "C:\fakepath\", which isn't the real path of the file.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file#value
+   *
+   * @default ''
+   */
+  value?: string;
+  /**
+   * An array of File objects representing the files currently selected by the user.
+   *
+   * This property is read-only and cannot be directly modified.
+   * To clear the selected files, set the `value` prop to an empty string or null.
+   *
+   * @default []
+   */
+  files?: ReadonlyArray<File>;
 }
 export interface FieldErrorProps {
   /**
@@ -1753,11 +1847,42 @@ interface CheckboxProps$1
    */
   required?: boolean;
 }
+export interface ChipProps$1 {
+  /**
+   * The content of the chip.
+   */
+  children?: ComponentChildren;
+  /**
+   * The graphic to display inside of the chip.
+   *
+   * @implementation Only `s-icon` is supported.
+   */
+  graphic?: ComponentChildren;
+  /**
+   * A label that describes the purpose or contents of the Chip. It will be read to users using assistive technologies such as screen readers.
+   */
+  accessibilityLabel?: string;
+  /**
+   * Modify the color to be more or less intense.
+   *
+   * @default 'base'
+   */
+  color?: ColorKeyword;
+}
+interface ChipProps$2 extends ChipProps$1, GlobalProps {}
 interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
   /**
    * Content to use as the choice label.
+   *
+   * @implementation (StringChildren) The label is produced by extracting and
+   * concatenating the text nodes from the provided content; any markup or
+   * element structure is ignored.
+   *
+   * @implementation (ComponentChildren) Behaves as a slot: any elements passed
+   * are rendered as the label content (subject to surface constraints); there
+   * is no coercion to a string.
    */
-  label?: string;
+  children?: ComponentChildren | StringChildren;
   /**
    * Additional text to provide context or guidance for the input.
    *
@@ -1766,13 +1891,23 @@ interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
    *
    * @implementation this content should be linked to the input with an `aria-describedby` attribute.
    */
-  details?: string;
+  details?: ComponentChildren;
   /**
    * Set to `true` to associate a choice with the error passed to `ChoiceList`
    *
    * @default false
    */
   error?: boolean;
+  /**
+   * Secondary content for a choice.
+   */
+  secondaryContent?: ComponentChildren;
+  /**
+   * Content to display when the option is selected.
+   *
+   * This can be used to provide additional information or options related to the choice.
+   */
+  selectedContent?: ComponentChildren;
 }
 interface ChoiceListProps$1
   extends GlobalProps,
@@ -1799,6 +1934,21 @@ interface ChoiceListProps$1
    * @default false
    */
   disabled?: MultipleInputProps['disabled'];
+  /**
+   * The variant of the choice grid.
+   *
+   * - `auto`: The variant is determined by the context.
+   * - `list`: The choices are displayed in a list.
+   * - `inline`: The choices are displayed on the inline axis.
+   * - `block`: The choices are displayed on the block axis.
+   * - `grid`: The choices are displayed in a grid.
+   *
+   * @implementation The `block`, `inline` and `grid` variants are more suitable for button looking choices, but it's at the
+   * discretion of each surface.
+   *
+   * @default 'auto'
+   */
+  variant?: 'auto' | 'list' | 'inline' | 'block' | 'grid';
 }
 interface ClickableProps$1
   extends GlobalProps,
@@ -1830,6 +1980,96 @@ interface ClickableProps$1
    * @default ''
    */
   lang?: string;
+}
+interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
+  /**
+   * Callback when the chip is clicked.
+   */
+  onClick?: (event: Event) => void;
+  /**
+   * The URL to link to.
+   *
+   * - If set, it will navigate to the location specified by `href` after executing the `click` event.
+   */
+  href?: string;
+  /**
+   * Whether the chip is removable.
+   *
+   * @default false
+   */
+  removable?: boolean;
+  /**
+   * Callback when the chip is removed.
+   */
+  onRemove?: (event: Event) => void;
+  /**
+   * Determines whether the chip is hidden.
+   *
+   * If this property is being set on each framework render (as in 'controlled' usage),
+   * and the chip is `removable`,
+   * ensure you update app state for this property when the `remove` event fires.
+   *
+   * If the chip is not `removable`, it can still be hidden by setting this property.
+   *
+   * @default false
+   */
+  hidden?: boolean;
+  /**
+   * Event handler when the chip has fully hidden.
+   *
+   * The `hidden` property will be `true` when this event fires.
+   *
+   * @implementation If implementations animate the hiding of the chip,
+   * this event must fire after the chip has fully hidden.
+   * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
+   */
+  onAfterHide?: (event: Event) => void;
+  /**
+   * Disables the chip, disallowing any interaction.
+   *
+   * @default false
+   */
+  disabled?: boolean;
+}
+interface ColorPickerProps$1 extends GlobalProps, InputProps {
+  /**
+   * Allow user to select an alpha value.
+   *
+   * @default false
+   */
+  alpha?: boolean;
+  /**
+   * This callback will emit the value in hex.
+   *
+   * If the `alpha` prop is `true`, `onChange` will emit an 8-value hex (#RRGGBBAA).
+   * If the `alpha` prop is `false`, `onChange` will emit a 6-value hex (#RRGGBB).
+   */
+  onChange?: InputProps['onChange'];
+  /**
+   * This callback will emit the value in hex.
+   *
+   * If the `alpha` prop is `true`, `onInput` will emit an 8-value hex (#RRGGBBAA).
+   * If the `alpha` prop is `false`, `onInput` will emit a 6-value hex (#RRGGBB).
+   */
+  onInput?: InputProps['onChange'];
+  /**
+   * The currently selected color.
+   *
+   * Supported formats include:
+   * - HSL @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsl
+   * - HSLA @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla
+   * - RGB @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb
+   * - RGBA @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb
+   * - Hex (3-value, 4-value, 6-value, 8-value) @see https://developer.mozilla.org/en-US/docs/Web/CSS/hex-color
+   *
+   * For RGB and RGBA, both the legacy syntax (comma-separated) and modern syntax (space-separate) are supported.
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb
+   *
+   * If the value is invalid, the component will select rgb(0, 0, 0).
+   *
+   * Note that the `onChange` handler will emit the value in hex.
+   */
+  value?: InputProps['value'];
 }
 export interface AutocompleteProps<
   AutocompleteField extends AnyAutocompleteField,
@@ -1976,6 +2216,15 @@ export type TextAutocompleteField = ExtractStrict<
   | 'cc-family-name'
   | 'cc-type'
 >;
+interface ColorFieldProps$1
+  extends GlobalProps,
+    BaseTextFieldProps,
+    Pick<ColorPickerProps$1, 'alpha' | 'value' | 'defaultValue'> {
+  autocomplete?: Extract<
+    AutocompleteProps<never>['autocomplete'],
+    'on' | 'off'
+  >;
+}
 interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
   /**
    * Default month to display in `YYYY-MM` format.
@@ -2037,11 +2286,11 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    */
   allow?: string;
   /**
-   * Dates that cannot be selected. These subtract from `allowDates`.
+   * Dates that cannot be selected. These subtract from `allow`.
    *
    * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
    *
-   * The default `''` has no effect on `allowDates`.
+   * The default `''` has no effect on `allow`.
    *
    * - Dates in `YYYY-MM-DD` format disallow a single date.
    * - Dates in `YYYY-MM` format disallow a whole month.
@@ -2063,24 +2312,24 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    */
   disallow?: string;
   /**
-   * Days of the week that can be selected. These intersect with the result of `allowDates` and `disallowDates`.
+   * Days of the week that can be selected. These intersect with the result of `allow` and `disallow`.
    *
-   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   * A comma-separated list of days. Whitespace is allowed after commas.
    *
-   * The default `''` has no effect on the result of `allowDates` and `disallowDates`.
+   * The default `''` has no effect on the result of `allow` and `disallow`.
    *
    * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
    *
    * @default ""
    *
    * @example
-   * 'saturday, sunday' // allow only weekends within the result of `allowDates` and `disallowDates`.
+   * 'saturday, sunday' // allow only weekends within the result of `allow` and `disallow`.
    */
   allowDays?: string;
   /**
-   * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allowDates` and `disallowDates`.
+   * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allow` and `disallow`.
    *
-   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   * A comma-separated list of days. Whitespace is allowed after commas.
    *
    * The default `''` has no effect on `allowDays`.
    *
@@ -2089,7 +2338,7 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    * @default ""
    *
    * @example
-   * 'saturday, sunday' // disallow weekends within the result of `allowDates` and `disallowDates`.
+   * 'saturday, sunday' // disallow weekends within the result of `allow` and `disallow`.
    */
   disallowDays?: string;
   /**
@@ -2148,6 +2397,37 @@ interface DividerProps$1 extends GlobalProps {
    * @default 'base'
    */
   color?: ColorKeyword;
+}
+interface DropZoneProps$1 extends GlobalProps, FileInputProps, BasicFieldProps {
+  /**
+   * A string representing the types of files that are accepted by the drop zone.
+   * This string is a comma-separated list of unique file type specifiers which can be one of the following:
+   * - A file extension starting with a period (".") character (e.g. .jpg, .pdf, .doc)
+   * - A valid MIME type string with no extensions
+   *
+   * If omitted, all file types are accepted.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept
+   * @default ''
+   */
+  accept?: string;
+  /**
+   * A label that describes the purpose or contents of the item. When set,
+   * it will be announced to buyers using assistive technologies and will
+   * provide them with more context.
+   */
+  accessibilityLabel?: string;
+  /**
+   * Whether multiple files can be selected or dropped at once.
+   *
+   * @default false
+   */
+  multiple?: boolean;
+  /**
+   * Callback fired when rejected files are dropped.
+   * Files are rejected based on the `accept` prop and are not added to `files`.
+   */
+  onDropRejected?: (event: Event) => void;
 }
 interface EmailFieldProps$1
   extends GlobalProps,
@@ -2473,7 +2753,9 @@ interface HeadingProps$1
     | 'heading'
     | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
 }
-interface IconProps$1 extends GlobalProps {
+interface IconProps$1
+  extends GlobalProps,
+    Pick<InteractionProps, 'interestFor'> {
   /**
    * Sets the tone of the icon, based on the intention of the information being conveyed.
    *
@@ -2656,239 +2938,15 @@ interface MenuProps$1 extends GlobalProps {
    */
   children?: ComponentChildren;
 }
-export interface BaseOverlayProps {
-  /**
-   * Callback fired after the overlay is shown.
-   */
-  onShow?: (event: Event) => void;
-  /**
-   * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
-   */
-  onAfterShow?: (event: Event) => void;
-  /**
-   * Callback fired after the overlay is hidden.
-   */
-  onHide?: (event: Event) => void;
-  /**
-   * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
-   */
-  onAfterHide?: (event: Event) => void;
-}
-/**
- * Shared interfaces for web component methods.
- *
- * Methods are required (not optional) because:
- * - Components implementing this interface must provide all methods
- * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
- * - Consumers expect these methods to be consistently available on all instances
- */
-export interface BaseOverlayMethods {
-  /**
-   * Method to show an overlay.
-   *
-   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
-   */
-  showOverlay: () => void;
-  /**
-   * Method to hide an overlay.
-   *
-   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
-   */
-  hideOverlay: () => void;
-  /**
-   * Method to toggle the visiblity of an overlay.
-   *
-   * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
-   */
-  toggleOverlay: () => void;
-}
 interface MoneyFieldProps$1
   extends GlobalProps,
     BaseTextFieldProps,
     NumberConstraintsProps,
-    AutocompleteProps<MoneyAutocompleteField> {
-  /**
-   * Specifies the currency code that will be displayed.
-   *
-   * - `auto`: the currency code will be determined by context. If a currency code cannot be found in the context, no currency code or symbol will be displayed in the field.
-   *
-   * @implementation when no currency can be found in the context, fallback to `XXX` which denotes an unknown or unrecognized currency.
-   *
-   * @default 'auto'
-   */
-  currencyCode?: CurrencyCode | 'auto' | AnyString;
-}
+    AutocompleteProps<MoneyAutocompleteField> {}
 export type MoneyAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'transaction-amount'
 >;
-/**
- * Supported monetary currencies from [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html).
- *
- * @see https://www.iso.org/iso-4217-currency-codes.html
- */
-export type CurrencyCode =
-  | 'USD'
-  | 'EUR'
-  | 'GBP'
-  | 'CAD'
-  | 'AFN'
-  | 'ALL'
-  | 'DZD'
-  | 'AOA'
-  | 'ARS'
-  | 'AMD'
-  | 'AWG'
-  | 'AUD'
-  | 'BBD'
-  | 'AZN'
-  | 'BDT'
-  | 'BSD'
-  | 'BHD'
-  | 'BIF'
-  | 'BZD'
-  | 'BMD'
-  | 'BTN'
-  | 'BAM'
-  | 'BRL'
-  | 'BOB'
-  | 'BWP'
-  | 'BND'
-  | 'BGN'
-  | 'MMK'
-  | 'KHR'
-  | 'CVE'
-  | 'KYD'
-  | 'XAF'
-  | 'CLP'
-  | 'CNY'
-  | 'COP'
-  | 'KMF'
-  | 'CDF'
-  | 'CRC'
-  | 'HRK'
-  | 'CZK'
-  | 'DKK'
-  | 'DOP'
-  | 'XCD'
-  | 'EGP'
-  | 'ETB'
-  | 'XPF'
-  | 'FJD'
-  | 'GMD'
-  | 'GHS'
-  | 'GTQ'
-  | 'GYD'
-  | 'GEL'
-  | 'HTG'
-  | 'HNL'
-  | 'HKD'
-  | 'HUF'
-  | 'ISK'
-  | 'INR'
-  | 'IDR'
-  | 'ILS'
-  | 'IQD'
-  | 'JMD'
-  | 'JPY'
-  | 'JEP'
-  | 'JOD'
-  | 'KZT'
-  | 'KES'
-  | 'KWD'
-  | 'KGS'
-  | 'LAK'
-  | 'LVL'
-  | 'LBP'
-  | 'LSL'
-  | 'LRD'
-  | 'LTL'
-  | 'MGA'
-  | 'MKD'
-  | 'MOP'
-  | 'MWK'
-  | 'MVR'
-  | 'MXN'
-  | 'MYR'
-  | 'MUR'
-  | 'MDL'
-  | 'MAD'
-  | 'MNT'
-  | 'MZN'
-  | 'NAD'
-  | 'NPR'
-  | 'ANG'
-  | 'NZD'
-  | 'NIO'
-  | 'NGN'
-  | 'NOK'
-  | 'OMR'
-  | 'PAB'
-  | 'PKR'
-  | 'PGK'
-  | 'PYG'
-  | 'PEN'
-  | 'PHP'
-  | 'PLN'
-  | 'QAR'
-  | 'RON'
-  | 'RUB'
-  | 'RWF'
-  | 'WST'
-  | 'SAR'
-  | 'RSD'
-  | 'SCR'
-  | 'SGD'
-  | 'SDG'
-  | 'SYP'
-  | 'ZAR'
-  | 'KRW'
-  | 'SSP'
-  | 'SBD'
-  | 'LKR'
-  | 'SRD'
-  | 'SZL'
-  | 'SEK'
-  | 'CHF'
-  | 'TWD'
-  | 'THB'
-  | 'TZS'
-  | 'TTD'
-  | 'TND'
-  | 'TRY'
-  | 'TMT'
-  | 'UGX'
-  | 'UAH'
-  | 'AED'
-  | 'UYU'
-  | 'UZS'
-  | 'VUV'
-  | 'VND'
-  | 'XOF'
-  | 'YER'
-  | 'ZMW'
-  | 'BYN'
-  | 'BYR'
-  | 'DJF'
-  | 'ERN'
-  | 'FKP'
-  | 'GIP'
-  | 'GNF'
-  | 'IRR'
-  | 'KID'
-  | 'LYD'
-  | 'MRU'
-  | 'SLL'
-  | 'SHP'
-  | 'SOS'
-  | 'STD'
-  | 'STN'
-  | 'TJS'
-  | 'TOP'
-  | 'VED'
-  | 'VEF'
-  | 'VES'
-  | 'XXX';
 interface NumberFieldProps$1
   extends GlobalProps,
     BaseTextFieldProps,
@@ -2945,6 +3003,10 @@ interface PageProps$1 extends GlobalProps {
    * The text to be used as subtitle.
    */
   subheading?: string;
+  /**
+   * Additional contextual information about the page.
+   */
+  accessory?: ComponentChildren;
   /**
    * The primary action to perform, provided as a button or link type element.
    * When a `Button` is added to the `primaryAction` it's variant is set to `primary`
@@ -3212,7 +3274,7 @@ interface TableBodyProps$1 extends GlobalProps {
 }
 interface TableCellProps$1 extends GlobalProps {
   /**
-   * The content of the table data.
+   * The content of the table cell.
    */
   children?: ComponentChildren;
 }
@@ -3239,6 +3301,16 @@ interface TableHeaderProps$1 extends GlobalProps {
    * @default 'labeled'
    */
   listSlot?: ListSlotType;
+  /**
+   * The format of the column. Will automatically apply styling and alignment to cell content based on the value.
+   *
+   * - `base`: The base format for columns.
+   * - `currency`: Formats the column as currency.
+   * - `numeric`: Formats the column as a number.
+   *
+   * @default 'base'
+   */
+  format?: 'base' | 'currency' | 'numeric';
 }
 interface TableHeaderRowProps$1 extends GlobalProps {
   /**
@@ -3251,12 +3323,24 @@ interface TableRowProps$1 extends GlobalProps {
    * The content of a TableRow, which should be `TableCell` components.
    */
   children?: ComponentChildren;
+  /**
+   * The ID of an interactive element (e.g. `s-link`) in the row that will be the target of the click when the row is clicked.
+   * This is the primary action for the row; it should not be used for secondary actions.
+   *
+   * This is a click-only affordance, and does not introduce any keyboard or screen reader affordances.
+   * Which is why the target element must be in the table; so that keyboard and screen reader users can interact with it normally.
+   *
+   * @implementation no focus or keyboard affordances are introduced by this property. No aria attributes need to be added to the table row.
+   * @implementation the row and/or delegate should have some affordance that indicates it is clickable. This may be a background color, a border, a hover effect, etc.
+   */
+  clickDelegate?: string;
 }
 interface TextProps$1
   extends GlobalProps,
     AccessibilityVisibilityProps,
     BaseTypographyProps,
-    DisplayProps {
+    DisplayProps,
+    Pick<InteractionProps, 'interestFor'> {
   /**
    * The content of the Text.
    */
@@ -3746,6 +3830,7 @@ type IconType$1 =
   | 'file'
   | 'file-list'
   | 'filter'
+  | 'filter-active'
   | 'flag'
   | 'flip-horizontal'
   | 'flip-vertical'
@@ -4097,8 +4182,8 @@ export interface ClickOptions {
  * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
  * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
  */
-declare const BaseClass$2: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass$2 {
+declare const BaseClass$4: typeof globalThis.HTMLElement;
+declare abstract class PreactCustomElement extends BaseClass$4 {
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -4202,18 +4287,18 @@ declare class Avatar extends PreactCustomElement implements AvatarProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$S]: Avatar;
+    [tagName$Y]: Avatar;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$S]: AvatarJSXProps & PreactBaseElementPropsWithChildren<Avatar>;
+      [tagName$Y]: AvatarJSXProps & PreactBaseElementPropsWithChildren<Avatar>;
     }
   }
 }
 
-declare const tagName$S = 's-avatar';
+declare const tagName$Y = 's-avatar';
 export interface AvatarJSXProps
   extends Partial<AvatarProps>,
     Pick<AvatarProps$1, 'id'> {
@@ -4222,7 +4307,10 @@ export interface AvatarJSXProps
 }
 
 export interface IconProps
-  extends Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size'> {
+  extends Pick<
+    IconProps$1,
+    'type' | 'tone' | 'color' | 'size' | 'interestFor'
+  > {
   /**
    * Specifies the type of icon that will be displayed.
    */
@@ -4255,18 +4343,18 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$R]: Badge;
+    [tagName$X]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$R]: BadgeJSXProps & PreactBaseElementPropsWithChildren<Badge>;
+      [tagName$X]: BadgeJSXProps & PreactBaseElementPropsWithChildren<Badge>;
     }
   }
 }
 
-declare const tagName$R = 's-badge';
+declare const tagName$X = 's-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id'> {}
@@ -4292,19 +4380,19 @@ declare class Banner extends PreactCustomElement implements BannerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$Q]: Banner;
+    [tagName$W]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$Q]: Omit<BannerJSXProps, 'secondaryActions'> &
+      [tagName$W]: Omit<BannerJSXProps, 'secondaryActions'> &
         PreactBaseElementPropsWithChildren<Banner>;
     }
   }
 }
 
-declare const tagName$Q = 's-banner';
+declare const tagName$W = 's-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id'> {
@@ -4314,8 +4402,8 @@ export interface BannerJSXProps
    * A maximum of two `s-button` components are allowed, and only buttons with the `variant` of "secondary" are permitted.
    */
   secondaryActions?: ComponentChild;
-  onDismiss?: ((event: CallbackEvent<typeof tagName$Q>) => void) | null;
-  onAfterHide?: ((event: CallbackEvent<typeof tagName$Q>) => void) | null;
+  onDismiss?: ((event: CallbackEvent<typeof tagName$W>) => void) | null;
+  onAfterHide?: ((event: CallbackEvent<typeof tagName$W>) => void) | null;
 }
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -4409,8 +4497,7 @@ export interface BoxProps
   /**
    * Adjust the padding of all edges.
    *
-   * 1-to-4-value syntax (@see https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
-   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
    *
    * - 4 values: `block-start inline-end block-end inline-start`
    * - 3 values: `block-start inline block-end`
@@ -4424,9 +4511,7 @@ export interface BoxProps
    *
    * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
    *
-   * `padding` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   *
-   * This also accepts up to 4 values (e.g. `@container (inline-size > 500px) large-300 small-300 large-100 small-100, small-200`)
+   * `padding` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default 'none'
    */
@@ -4438,9 +4523,7 @@ export interface BoxProps
    *
    * This overrides the block value of `padding`.
    *
-   * `paddingBlock` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   *
-   * This also accepts up to 2 values (e.g. `@container (inline-size > 500px) large-300 small-300, small-200`)
+   * `paddingBlock` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -4450,9 +4533,8 @@ export interface BoxProps
    *
    * This overrides the block-start value of `paddingBlock`.
    *
-   * `paddingBlockStart` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   * `paddingBlockStart` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
-   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
    * @default '' - meaning no override
    */
   paddingBlockStart: ResponsiveBoxProps['paddingBlockStart'];
@@ -4461,9 +4543,8 @@ export interface BoxProps
    *
    * This overrides the block-end value of `paddingBlock`.
    *
-   * `paddingBlockEnd` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   * `paddingBlockEnd` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
-   * This only accepts up to 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
    * @default '' - meaning no override
    */
   paddingBlockEnd: ResponsiveBoxProps['paddingBlockEnd'];
@@ -4474,9 +4555,7 @@ export interface BoxProps
    *
    * This overrides the inline value of `padding`.
    *
-   * `paddingInline` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   *
-   * This also accepts up to 2 values (e.g. `@container (inline-size > 500px) large-300 small-300, small-200`)
+   * `paddingInline` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -4486,8 +4565,7 @@ export interface BoxProps
    *
    * This overrides the inline-start value of `paddingInline`.
    *
-   * `paddingInlineStart` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   * `paddingInlineStart` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -4497,19 +4575,17 @@ export interface BoxProps
    *
    * This overrides the inline-end value of `paddingInline`.
    *
-   * `paddingInlineEnd` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   * `paddingInlineEnd` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
   paddingInlineEnd: ResponsiveBoxProps['paddingInlineEnd'];
   /**
-   * Sets the outer display type of the component. The outer type sets a component's participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
+   * Sets the outer [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) type of the component. The outer type sets a component's participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
    *
    * - `auto` the component's initial value. The actual value depends on the component and context.
    * - `none` hides the component from display and removes it from the accessibility tree, making it invisible to screen readers.
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
    * @default 'auto'
    */
   display: ResponsiveBoxProps['display'];
@@ -4548,18 +4624,18 @@ declare class Box extends BoxElement implements BoxProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$P]: Box;
+    [tagName$V]: Box;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$P]: BoxJSXProps & PreactBaseElementPropsWithChildren<Box>;
+      [tagName$V]: BoxJSXProps & PreactBaseElementPropsWithChildren<Box>;
     }
   }
 }
 
-declare const tagName$P = 's-box';
+declare const tagName$V = 's-box';
 export interface BoxJSXProps
   extends Partial<BoxProps>,
     Pick<BoxProps$1, 'id'> {}
@@ -4596,7 +4672,7 @@ export interface ButtonProps extends ButtonBaseProps {
 export interface PreactOverlayControlProps
   extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
   /**
-   * Sets the action the `commandFor` should take when this clickable is activated.
+   * Sets the action the [command](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this clickable is activated.
    *
    * See the documentation of particular components for the actions they support.
    *
@@ -4606,13 +4682,18 @@ export interface PreactOverlayControlProps
    * - `--toggle`: toggles the target component.
    *
    * @default '--auto'
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
   command: Extract<
     InteractionProps['command'],
     '--show' | '--hide' | '--toggle' | '--auto'
   >;
+  /**
+   * Sets the element the [commandFor](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor) should act on when this clickable is activated.
+   */
   commandFor: Extract<InteractionProps['commandFor'], string>;
+  /**
+   * Sets the element the [interestFor](https://open-ui.org/components/interest-invokers.explainer/#the-pitch-in-code) should act on when this clickable is activated.
+   */
   interestFor: Extract<InteractionProps['interestFor'], string>;
 }
 
@@ -4635,27 +4716,57 @@ declare class Button extends Button_base implements ButtonProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$O]: Button;
+    [tagName$U]: Button;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$O]: ButtonJSXProps & PreactBaseElementPropsWithChildren<Button>;
+      [tagName$U]: ButtonJSXProps & PreactBaseElementPropsWithChildren<Button>;
     }
   }
 }
 
-declare const tagName$O = 's-button';
+declare const tagName$U = 's-button';
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
     Pick<ButtonProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$O>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$O>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$O>) => void) | null;
+  onClick?: ((event: CallbackEvent<typeof tagName$U>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$U>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$U>) => void) | null;
 }
 
-declare const internals$2: unique symbol;
+export interface ButtonGroupProps
+  extends Required<Pick<ButtonGroupProps$1, 'gap' | 'accessibilityLabel'>> {}
+
+declare class ButtonGroup
+  extends PreactCustomElement
+  implements ButtonGroupProps
+{
+  accessor gap: ButtonGroupProps['gap'];
+  accessor accessibilityLabel: ButtonGroupProps['accessibilityLabel'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$T]: ButtonGroup;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$T]: ButtonGroupJSXProps &
+        PreactBaseElementPropsWithChildren<ButtonGroup>;
+    }
+  }
+}
+
+declare const tagName$T = 's-button-group';
+export interface ButtonGroupJSXProps
+  extends Partial<ButtonGroupProps>,
+    Pick<ButtonGroupProps$1, 'id'> {}
+
+declare const internals$4: unique symbol;
 export type PreactInputProps = Required<
   Pick<TextFieldProps$1, 'disabled' | 'id' | 'name' | 'value'>
 >;
@@ -4665,7 +4776,7 @@ declare class PreactInputElement
 {
   static formAssociated: boolean;
   /** @private */
-  [internals$2]: ElementInternals;
+  [internals$4]: ElementInternals;
   accessor disabled: PreactInputProps['disabled'];
   accessor id: PreactInputProps['id'];
   accessor name: PreactInputProps['name'];
@@ -4710,6 +4821,7 @@ declare class PreactCheckboxElement
   accessor required: PreactCheckboxProps['required'];
   /** @private */
   formResetCallback(): void;
+  static get observedAttributes(): string[];
   constructor(renderImpl: RenderImpl);
 }
 
@@ -4726,24 +4838,57 @@ declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$N]: Checkbox;
+    [tagName$S]: Checkbox;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$N]: CheckboxJSXProps &
+      [tagName$S]: CheckboxJSXProps &
         PreactBaseElementPropsWithChildren<Checkbox>;
     }
   }
 }
 
-declare const tagName$N = 's-checkbox';
+declare const tagName$S = 's-checkbox';
 export interface CheckboxJSXProps
   extends Partial<CheckboxProps>,
     Pick<CheckboxProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$N>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$N>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$S>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$S>) => void) | null;
+}
+
+export interface ChipProps
+  extends Required<Pick<ChipProps$2, 'color' | 'accessibilityLabel'>> {}
+
+declare class Chip extends PreactCustomElement implements ChipProps {
+  accessor color: ChipProps['color'];
+  accessor accessibilityLabel: ChipProps['accessibilityLabel'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$R]: Chip;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$R]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        Omit<ChipJSXProps, 'graphic'> &
+        PreactBaseElementPropsWithChildren<Chip>;
+    }
+  }
+}
+
+declare const tagName$R = 's-chip';
+export interface ChipJSXProps
+  extends Partial<ChipProps>,
+    Pick<ChipProps$2, 'id'> {
+  graphic?: ComponentChild;
 }
 
 export interface ChoiceProps
@@ -4755,39 +4900,50 @@ export interface ChoiceProps
       | 'disabled'
       | 'accessibilityLabel'
       | 'value'
-      | 'label'
-      | 'details'
     >
-  > {}
+  > {
+  /**
+   * Content to use as the choice label.
+   *
+   * The label is produced by extracting and
+   * concatenating the text nodes from the provided content;
+   * any markup or element structure is ignored.
+   */
+  children: ComponentChildren;
+}
 
 declare class Choice extends PreactCustomElement implements ChoiceProps {
   accessor disabled: ChoiceProps['disabled'];
-  accessor details: ChoiceProps['details'];
   get selected(): boolean;
   set selected(selected: ChoiceProps['selected']);
   accessor value: ChoiceProps['value'];
   accessor accessibilityLabel: ChoiceProps['accessibilityLabel'];
-  accessor label: ChoiceProps['label'];
   accessor defaultSelected: ChoiceProps['defaultSelected'];
   constructor();
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$M]: Choice;
+    [tagName$Q]: Choice;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$M]: ChoiceJSXProps & PreactBaseElementPropsWithChildren<Choice>;
+      [tagName$Q]: ChoiceJSXProps & PreactBaseElementPropsWithChildren<Choice>;
     }
   }
 }
 
-declare const tagName$M = 's-choice';
+declare const tagName$Q = 's-choice';
 export interface ChoiceJSXProps
   extends Partial<ChoiceProps>,
-    Pick<ChoiceProps$1, 'id'> {}
+    Pick<ChoiceProps$1, 'id'> {
+  details?: ComponentChild;
+}
 
 export interface ChoiceListProps
   extends Required<
@@ -4804,14 +4960,14 @@ export interface ChoiceListProps
     >
   > {}
 
-declare const internals$1: unique symbol;
-declare class BaseClass$1 extends PreactCustomElement {
+declare const internals$3: unique symbol;
+declare class BaseClass$3 extends PreactCustomElement {
   static formAssociated: boolean;
   constructor(renderImpl: RenderImpl);
   /** @private */
-  [internals$1]: ElementInternals;
+  [internals$3]: ElementInternals;
 }
-declare class ChoiceList extends BaseClass$1 implements ChoiceListProps {
+declare class ChoiceList extends BaseClass$3 implements ChoiceListProps {
   accessor disabled: ChoiceListProps['disabled'];
   accessor name: ChoiceListProps['name'];
   accessor error: ChoiceListProps['error'];
@@ -4831,24 +4987,24 @@ declare class ChoiceList extends BaseClass$1 implements ChoiceListProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$L]: ChoiceList;
+    [tagName$P]: ChoiceList;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$L]: ChoiceListJSXProps &
+      [tagName$P]: ChoiceListJSXProps &
         PreactBaseElementPropsWithChildren<ChoiceList>;
     }
   }
 }
 
-declare const tagName$L = 's-choice-list';
+declare const tagName$P = 's-choice-list';
 export interface ChoiceListJSXProps
   extends Partial<ChoiceListProps>,
     Pick<ChoiceListProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$L>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$L>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$P>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$P>) => void) | null;
 }
 
 export type ClickableBaseProps = Required<
@@ -4886,124 +5042,79 @@ declare class Clickable extends Clickable_base implements ClickableProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$K]: Clickable;
+    [tagName$O]: Clickable;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$K]: ClickableJSXProps &
+      [tagName$O]: ClickableJSXProps &
         PreactBaseElementPropsWithChildren<Clickable>;
     }
   }
 }
 
-declare const tagName$K = 's-clickable';
+declare const tagName$O = 's-clickable';
 export interface ClickableJSXProps
   extends Partial<ClickableProps>,
     Pick<ClickableProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
+  onClick?: ((event: CallbackEvent<typeof tagName$O>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$O>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$O>) => void) | null;
 }
 
-export interface DatePickerProps
+export interface ClickableChipProps
   extends Required<
     Pick<
-      DatePickerProps$1,
-      | 'defaultView'
-      | 'view'
-      | 'allow'
-      | 'disallow'
-      | 'allowDays'
-      | 'disallowDays'
-      | 'value'
-      | 'defaultValue'
-      | 'name'
+      ClickableChipProps$1,
+      | 'color'
+      | 'accessibilityLabel'
+      | 'removable'
+      | 'hidden'
+      | 'href'
+      | 'disabled'
     >
-  > {
-  type: Extract<DatePickerProps$1['type'], 'single' | 'range'>;
-}
+  > {}
 
-declare const internals: unique symbol;
-declare const dirtyStateSymbol: unique symbol;
-declare class BaseClass extends PreactCustomElement {
-  static formAssociated: boolean;
-  constructor(renderImpl: RenderImpl);
-  /** @private */
-  [internals]: ElementInternals;
-}
-declare class DatePicker extends BaseClass implements DatePickerProps {
-  accessor defaultView: string;
-  set view(view: string);
-  get view(): string;
-  accessor allow: DatePickerProps['allow'];
-  accessor disallow: DatePickerProps['disallow'];
-  accessor allowDays: DatePickerProps['allowDays'];
-  accessor disallowDays: DatePickerProps['disallowDays'];
-  accessor type: DatePickerProps['type'];
-  accessor defaultValue: DatePickerProps['defaultValue'];
-  accessor name: DatePickerProps['name'];
-  set value(value: string);
-  get value(): string;
-  /** @private */
-  [dirtyStateSymbol]: boolean;
-  /** @private */
-  formResetCallback(): void;
+declare class ClickableChip
+  extends PreactCustomElement
+  implements ClickableChipProps
+{
+  accessor color: ClickableChipProps['color'];
+  accessor accessibilityLabel: ClickableChipProps['accessibilityLabel'];
+  accessor removable: ClickableChipProps['removable'];
+  accessor hidden: ClickableChipProps['hidden'];
+  accessor disabled: ClickableChipProps['disabled'];
+  accessor href: ClickableChipProps['href'];
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$J]: DatePicker;
+    [tagName$N]: ClickableChip;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$J]: DatePickerJSXProps & PreactBaseElementProps<DatePicker>;
+      [tagName$N]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        Omit<ClickableChipJSXProps, 'graphic'> &
+        PreactBaseElementPropsWithChildren<ClickableChip>;
     }
   }
 }
 
-declare const tagName$J = 's-date-picker';
-export interface DatePickerJSXProps
-  extends Partial<DatePickerProps>,
-    Pick<DatePickerProps$1, 'id'> {
-  onViewChange?: ((event: CallbackEvent<typeof tagName$J>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$J>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$J>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$J>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$J>) => void) | null;
+declare const tagName$N = 's-clickable-chip';
+export interface ClickableChipJSXProps
+  extends Partial<ClickableChipProps>,
+    Pick<ClickableChipProps$1, 'id'> {
+  graphic?: ComponentChild;
+  onClick?: ((event: CallbackEvent<typeof tagName$N>) => void) | null;
+  onRemove?: ((event: CallbackEvent<typeof tagName$N>) => void) | null;
+  onAfterHide?: ((event: CallbackEvent<typeof tagName$N>) => void) | null;
 }
-
-export interface DividerProps
-  extends Pick<DividerProps$1, 'direction' | 'color'> {
-  direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
-  color: Extract<DividerProps$1['color'], 'base' | 'strong'>;
-}
-
-declare class Divider extends PreactCustomElement implements DividerProps {
-  accessor direction: DividerProps['direction'];
-  accessor color: DividerProps['color'];
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$I]: Divider;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$I]: DividerJSXProps & PreactBaseElementProps<Divider>;
-    }
-  }
-}
-
-declare const tagName$I = 's-divider';
-export interface DividerJSXProps
-  extends Partial<DividerProps>,
-    Pick<DividerProps$1, 'id'> {}
 
 export type PreactFieldProps<Autocomplete extends string = string> =
   PreactInputProps &
@@ -5082,6 +5193,267 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   constructor(renderImpl: RenderImpl);
 }
 
+export type ColorFieldProps = PreactFieldProps<
+  Required<ColorFieldProps$1>['autocomplete']
+> &
+  Required<Pick<ColorFieldProps$1, 'alpha' | 'value' | 'defaultValue'>>;
+
+declare class ColorField
+  extends PreactFieldElement<ColorFieldProps['autocomplete']>
+  implements ColorFieldProps
+{
+  accessor alpha: ColorFieldProps['alpha'];
+  get value(): string;
+  set value(value: string);
+  /** @private */
+  formResetCallback(): void;
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$M]: ColorField;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$M]: ColorFieldJSXProps & PreactBaseElementProps<ColorField>;
+    }
+  }
+}
+
+declare const tagName$M = 's-color-field';
+export interface ColorFieldJSXProps
+  extends Partial<Omit<ColorFieldProps, 'accessory'>>,
+    Pick<ColorFieldProps$1, 'id' | 'alpha' | 'value' | 'defaultValue'>,
+    FieldReactProps<typeof tagName$M> {
+  onInput?: (event: CallbackEvent<typeof tagName$M>) => void;
+  onChange?: (event: CallbackEvent<typeof tagName$M>) => void;
+}
+
+export interface ColorPickerProps
+  extends Required<
+    Pick<ColorPickerProps$1, 'id' | 'alpha' | 'value' | 'defaultValue' | 'name'>
+  > {}
+
+declare const internals$2: unique symbol;
+declare class BaseClass$2 extends PreactCustomElement {
+  static formAssociated: boolean;
+  constructor(renderImpl: RenderImpl);
+  /** @private */
+  [internals$2]: ElementInternals;
+}
+declare class ColorPicker extends BaseClass$2 implements ColorPickerProps {
+  accessor alpha: boolean;
+  accessor name: string;
+  accessor defaultValue: string;
+  get value(): string;
+  set value(value: string);
+  formResetCallback(): void;
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$L]: ColorPicker;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$L]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ColorPickerJSXProps;
+    }
+  }
+}
+
+declare const tagName$L = 's-color-picker';
+export interface ColorPickerJSXProps
+  extends Partial<ColorPickerProps>,
+    Pick<
+      ColorPickerProps$1,
+      'id' | 'alpha' | 'value' | 'defaultValue' | 'name'
+    > {
+  onInput?: (event: CallbackEvent<typeof tagName$L>) => void | null;
+  onChange?: (event: CallbackEvent<typeof tagName$L>) => void | null;
+}
+
+export interface DatePickerProps
+  extends Required<
+    Pick<
+      DatePickerProps$1,
+      | 'defaultView'
+      | 'view'
+      | 'allow'
+      | 'disallow'
+      | 'allowDays'
+      | 'disallowDays'
+      | 'value'
+      | 'defaultValue'
+      | 'name'
+    >
+  > {
+  type: Extract<DatePickerProps$1['type'], 'single' | 'range'>;
+}
+
+declare const internals$1: unique symbol;
+declare const dirtyStateSymbol: unique symbol;
+declare class BaseClass$1 extends PreactCustomElement {
+  static formAssociated: boolean;
+  constructor(renderImpl: RenderImpl);
+  /** @private */
+  [internals$1]: ElementInternals;
+}
+declare class DatePicker extends BaseClass$1 implements DatePickerProps {
+  accessor defaultView: string;
+  set view(view: string);
+  get view(): string;
+  accessor allow: DatePickerProps['allow'];
+  accessor disallow: DatePickerProps['disallow'];
+  accessor allowDays: DatePickerProps['allowDays'];
+  accessor disallowDays: DatePickerProps['disallowDays'];
+  accessor type: DatePickerProps['type'];
+  accessor defaultValue: DatePickerProps['defaultValue'];
+  accessor name: DatePickerProps['name'];
+  set value(value: string);
+  get value(): string;
+  /** @private */
+  [dirtyStateSymbol]: boolean;
+  /** @private */
+  formResetCallback(): void;
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$K]: DatePicker;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$K]: DatePickerJSXProps & PreactBaseElementProps<DatePicker>;
+    }
+  }
+}
+
+declare const tagName$K = 's-date-picker';
+export interface DatePickerJSXProps
+  extends Partial<DatePickerProps>,
+    Pick<DatePickerProps$1, 'id'> {
+  onViewChange?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
+}
+
+export interface DividerProps
+  extends Pick<DividerProps$1, 'direction' | 'color'> {
+  direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
+  color: Extract<DividerProps$1['color'], 'base' | 'strong'>;
+}
+
+declare class Divider extends PreactCustomElement implements DividerProps {
+  accessor direction: DividerProps['direction'];
+  accessor color: DividerProps['color'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$J]: Divider;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$J]: DividerJSXProps & PreactBaseElementProps<Divider>;
+    }
+  }
+}
+
+declare const tagName$J = 's-divider';
+export interface DividerJSXProps
+  extends Partial<DividerProps>,
+    Pick<DividerProps$1, 'id'> {}
+
+export interface DropZoneProps
+  extends Required<
+    Pick<
+      DropZoneProps$1,
+      | 'accept'
+      | 'accessibilityLabel'
+      | 'disabled'
+      | 'files'
+      | 'name'
+      | 'error'
+      | 'label'
+      | 'labelAccessibilityVisibility'
+      | 'multiple'
+      | 'required'
+      | 'value'
+    >
+  > {}
+
+declare const setFiles: unique symbol;
+
+declare const internals: unique symbol;
+declare const getFileInput: unique symbol;
+declare class BaseClass extends PreactCustomElement {
+  static formAssociated: boolean;
+  constructor(renderImpl: RenderImpl);
+  /** @private */
+  [internals]: ElementInternals;
+}
+declare class DropZone extends BaseClass implements DropZoneProps {
+  accessor accept: DropZoneProps['accept'];
+  accessor accessibilityLabel: DropZoneProps['accessibilityLabel'];
+  accessor disabled: DropZoneProps['disabled'];
+  accessor error: DropZoneProps['error'];
+  accessor label: DropZoneProps['label'];
+  accessor labelAccessibilityVisibility: DropZoneProps['labelAccessibilityVisibility'];
+  accessor multiple: DropZoneProps['multiple'];
+  accessor name: DropZoneProps['name'];
+  accessor required: DropZoneProps['required'];
+  get value(): string;
+  set value(value: string);
+  get files(): File[];
+  set files(files: File[]);
+  /** @private */
+  [setFiles](files: File[]): void;
+  /** @private */
+  [getFileInput](): HTMLInputElement | null;
+  /** @private */
+  formResetCallback(): void;
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$I]: DropZone;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$I]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        DropZoneJSXProps;
+    }
+  }
+}
+
+declare const tagName$I = 's-drop-zone';
+export interface DropZoneJSXProps
+  extends Partial<DropZoneProps>,
+    Pick<DropZoneProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
+  onDropRejected?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
+}
+
 export type EmailFieldProps = PreactFieldProps<
   Required<EmailFieldProps$1>['autocomplete']
 > &
@@ -5139,9 +5511,9 @@ export interface GridProps
    * Adjust spacing between elements.
    *
    * `gap` can either accept:
-   * * a single SpacingKeyword value applied to both axes (e.g. `large-100`).
-   * *OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
-   * OR a container query string with supported SpacingKeyword values as query values (e.g.@container (inline-size > 500px) large-300, small-300)
+   * - a single SpacingKeyword value applied to both axes (e.g. `large-100`)
+   * - OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default 'none'
    */
@@ -5151,8 +5523,8 @@ export interface GridProps
    *
    * This overrides the row value of `gap`.
    * `rowGap` either accepts:
-   * * a single SpacingKeyword value (e.g. `large-100`)
-   * *OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -5162,8 +5534,8 @@ export interface GridProps
    *
    * This overrides the column value of `gap`.
    * `columnGap` either accepts:
-   * * a single SpacingKeyword value (e.g. `large-100`)
-   * * OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -5275,6 +5647,7 @@ declare class Icon extends PreactCustomElement implements IconProps {
   accessor tone: IconProps['tone'];
   accessor type: IconProps['type'];
   accessor size: IconProps['size'];
+  accessor interestFor: string;
   constructor();
 }
 declare global {
@@ -5440,7 +5813,7 @@ export interface MenuProps
   /**
    * @implementation only accepts `s-button` and `s-section`
    */
-  chilren?: ComponentChild;
+  children?: ComponentChild;
 }
 
 /**
@@ -5495,7 +5868,7 @@ export interface MenuJSXProps
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 export interface MoneyFieldProps
   extends Omit<PreactFieldProps, 'value'>,
-    Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step' | 'currencyCode'> {
+    Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step'> {
   value: Required<MoneyFieldProps$1>['value'];
 }
 
@@ -5506,7 +5879,6 @@ declare class MoneyField
   accessor max: MoneyFieldProps['max'];
   accessor min: MoneyFieldProps['min'];
   accessor step: MoneyFieldProps['step'];
-  accessor currencyCode: MoneyFieldProps['currencyCode'];
   get value(): MoneyFieldProps['value'];
   set value(value: MoneyFieldProps['value']);
   constructor();
@@ -5816,12 +6188,6 @@ declare class PreactPopoverElement<TTagName extends keyof HTMLElementTagNameMap>
   accessor inlineSize: BoxProps['inlineSize'];
   accessor minInlineSize: BoxProps['minInlineSize'];
   accessor maxInlineSize: BoxProps['maxInlineSize'];
-  accessor onshow: CallbackEventListener<TTagName> | null;
-  accessor onhide: CallbackEventListener<TTagName> | null;
-  accessor onaftershow: CallbackEventListener<TTagName> | null;
-  accessor onafterhide: CallbackEventListener<TTagName> | null;
-  accessor ontoggle: CallbackEventListener<TTagName> | null;
-  accessor onaftertoggle: CallbackEventListener<TTagName> | null;
 }
 
 declare class Popover
@@ -6093,9 +6459,9 @@ export interface StackProps
    * Adjust spacing between elements.
    *
    * `gap` can either accept:
-   * * a single SpacingKeyword value applied to both axes (e.g. `large-100`).
-   * * OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
-   * * OR a container query string with supported SpacingKeyword values as query values (e.g.@container (inline-size > 500px) large-300, small-300)
+   * - a single SpacingKeyword value applied to both axes (e.g. `large-100`)
+   * - OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default 'none'
    */
@@ -6104,8 +6470,9 @@ export interface StackProps
    * Adjust spacing between elements in the block axis.
    *
    * This overrides the row value of `gap`.
-   * `rowGap` either accepts a single SpacingKeyword value (e.g. `large-100`)
-   * OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   * `rowGap` either accepts:
+   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -6115,23 +6482,23 @@ export interface StackProps
    *
    * This overrides the column value of `gap`.
    * `columnGap` either accepts:
-   * * a single SpacingKeyword value (e.g. `large-100`)
-   * OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
   columnGap: ResponsiveStackProps['columnGap'];
   /**
-     * Sets how the Stack's children are placed within the Stack.
-     *
-     * `direction` either accepts:
-     * * a single value either `inline` or `block`
-     * *OR a container query string with either of these values as a query value (e.g. `@container (inline-size > 500px) inline, block`)
-  
-    * @default 'block'
-     *
-     * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
-     */
+   * Sets how the Stack's children are placed within the Stack.
+   *
+   * `direction` either accepts:
+   * - a single value either `inline` or `block`
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
+   *
+   * @default 'block'
+   *
+   * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
+   */
   direction: ResponsiveStackProps['direction'];
 }
 
@@ -6202,11 +6569,16 @@ export interface TableProps
   variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
 }
 
+export type HeaderFormat = Extract<
+  TableHeaderProps$1['format'],
+  'base' | 'currency' | 'numeric'
+>;
 export interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
   listSlot: Extract<
     TableHeaderProps$1['listSlot'],
     'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'
   >;
+  format: HeaderFormat;
 }
 
 declare class AddedContext<T> extends EventTarget {
@@ -6235,6 +6607,7 @@ declare class Table extends PreactCustomElement implements TableProps {
     {
       listSlot: TableHeaderProps['listSlot'];
       textContent: string;
+      format: HeaderFormat;
     }[]
   >;
 
@@ -6290,8 +6663,14 @@ export interface TableBodyJSXProps
 
 export interface TableCellProps extends TableCellProps$1 {}
 
+declare const headerFormatSymbol: unique symbol;
+
 declare class TableCell extends PreactCustomElement implements TableCellProps {
   constructor();
+  /** @private */
+  get [headerFormatSymbol](): HeaderFormat;
+  /** @private */
+  set [headerFormatSymbol](format: HeaderFormat);
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -6317,6 +6696,7 @@ declare class TableHeader
   implements TableHeaderProps
 {
   accessor listSlot: TableHeaderProps['listSlot'];
+  accessor format: TableHeaderProps['format'];
   constructor();
 }
 declare global {
@@ -6347,6 +6727,7 @@ declare class TableHeaderRow
   constructor();
   /** @private */
   connectedCallback(): void;
+  /** @private */
   disconnectedCallback(): void;
 }
 declare global {
@@ -6368,10 +6749,12 @@ export interface TableHeaderRowJSXProps
   extends Partial<TableHeaderRowProps>,
     Pick<TableHeaderRowProps$1, 'id'> {}
 
-export interface TableRowProps extends TableRowProps$1 {}
+export interface TableRowProps
+  extends Pick<TableRowProps$1, 'children' | 'clickDelegate'> {}
 
 declare class TableRow extends PreactCustomElement implements TableRowProps {
   constructor();
+  accessor clickDelegate: string;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -6402,6 +6785,7 @@ export interface TextProps
       | 'type'
       | 'tone'
       | 'fontVariantNumeric'
+      | 'interestFor'
     >
   > {
   color: Extract<TextProps$1['color'], 'base' | 'subdued'>;
@@ -6426,6 +6810,7 @@ declare class Text extends PreactCustomElement implements TextProps {
   accessor type: TextProps['type'];
   accessor dir: TextProps['dir'];
   accessor accessibilityVisibility: TextProps['accessibilityVisibility'];
+  accessor interestFor: string;
   constructor();
 }
 declare global {
@@ -6561,7 +6946,14 @@ export interface ThumbnailJSXProps
   onError?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
 }
 
-export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
+export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {
+  /**
+   * The content of the Tooltip.
+   *
+   * @implementation Accepts s-text, s-paragraph, and raw text content
+   */
+  children: ComponentChildren$1;
+}
 
 declare class Tooltip extends PreactOverlayElement implements TooltipProps {
   constructor();
@@ -6879,21 +7271,6 @@ declare class FunctionSettings
   implements FunctionSettingsProps
 {
   constructor();
-  /**
-   * An optional callback function that will be run by the admin when
-   * committing the changes to Shopify’s servers fails. The error event you receive includes
-   * an `error` property that is an `AggregateError` object. This object includes
-   * an array of errors that were caused by data your extension provided.
-   * Network errors and user errors that are out of your control will not be reported here.
-   *
-   * In the `onError` callback, you should update your extension’s UI to
-   * highlight the fields that caused the errors, and display the error messages
-   * to the user.
-   */
-  accessor onerror: CallbackErrorEventListener<
-    typeof tagName,
-    FunctionSettingsErrorEvent['error']['errors'][0]
-  > | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -6919,13 +7296,19 @@ export {
   Banner,
   Box,
   Button,
+  ButtonGroup,
   Checkbox,
+  Chip,
   Choice,
   ChoiceList,
   Clickable,
+  ClickableChip,
+  ColorField,
+  ColorPicker,
   CustomerSegmentTemplate,
   DatePicker,
   Divider,
+  DropZone,
   EmailField,
   Form,
   FunctionSettings,
@@ -6975,14 +7358,20 @@ export type {
   BadgeJSXProps,
   BannerJSXProps,
   BoxJSXProps,
+  ButtonGroupJSXProps,
   ButtonJSXProps,
   CheckboxJSXProps,
+  ChipJSXProps,
   ChoiceJSXProps,
   ChoiceListJSXProps,
+  ClickableChipJSXProps,
   ClickableJSXProps,
+  ColorFieldJSXProps,
+  ColorPickerJSXProps,
   CustomerSegmentTemplateJSXProps,
   DatePickerJSXProps,
   DividerJSXProps,
+  DropZoneJSXProps,
   EmailFieldJSXProps,
   FormJSXProps,
   FunctionSettingsJSXProps,
@@ -7055,6 +7444,14 @@ export interface CheckboxEvents {
   input: CallbackEventListener<'input'>;
 }
 
+export interface ChipSlots {
+  graphic?: HTMLElement;
+}
+
+export interface ChoiceSlots {
+  details?: HTMLElement;
+}
+
 export interface ChoiceListEvents {
   change: CallbackEventListener<typeof tagName> | null = null;
   input: CallbackEventListener<typeof tagName> | null = null;
@@ -7066,12 +7463,40 @@ export interface ClickableEvents {
   focus: CallbackEventListener<typeof tagName> | null = null;
 }
 
+export interface ClickableChipEvents {
+  click: CallbackEventListener<typeof tagName> | null = null;
+  remove: CallbackEventListener<typeof tagName> | null = null;
+  afterhide: CallbackEventListener<typeof tagName> | null = null;
+}
+
+export interface ClickableChipSlots {
+  graphic?: HTMLElement;
+}
+
+export interface ColorFieldEvents {
+  change: CallbackEventListener<'input'>;
+  input: CallbackEventListener<'input'>;
+  blur: CallbackEventListener<'input'>;
+  focus: CallbackEventListener<'input'>;
+}
+
+export interface ColorPickerEvents {
+  change: CallbackEventListener<typeof tagName> | null = null;
+  input: CallbackEventListener<typeof tagName> | null = null;
+}
+
 export interface DatePickerEvents {
   viewchange: CallbackEventListener<typeof tagName> | null = null;
   focus: CallbackEventListener<typeof tagName> | null = null;
   blur: CallbackEventListener<typeof tagName> | null = null;
   input: CallbackEventListener<typeof tagName> | null = null;
   change: CallbackEventListener<typeof tagName> | null = null;
+}
+
+export interface DropZoneEvents {
+  change: CallbackEventListener<typeof tagName> = null;
+  input: CallbackEventListener<typeof tagName> = null;
+  droprejected: CallbackEventListener<typeof tagName> = null;
 }
 
 export interface EmailFieldEvents {
@@ -7224,6 +7649,21 @@ export interface FunctionSettingsEvents {
    */
   submit: CallbackExtendableEventListener<typeof tagName> | null = null;
   /**
+   * An optional callback function that will be run by the admin when
+   * committing the changes to Shopify’s servers fails. The error event you receive includes
+   * an `error` property that is an `AggregateError` object. This object includes
+   * an array of errors that were caused by data your extension provided.
+   * Network errors and user errors that are out of your control will not be reported here.
+   *
+   * In the `onError` callback, you should update your extension’s UI to
+   * highlight the fields that caused the errors, and display the error messages
+   * to the user.
+   */
+  error: CallbackErrorEventListener<
+    typeof tagName,
+    FunctionSettingsErrorEvent['error']['errors'][0]
+  > | null = null;
+  /**
    * A callback that is run when the function settings form is reset.
    */
   reset: CallbackEventListener<typeof tagName> | null = null;
@@ -7231,35 +7671,35 @@ export interface FunctionSettingsEvents {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$S]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
+      [tagName$Y]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$S]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
+      [tagName$Y]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$R]: BadgeJSXProps & ReactBaseElementPropsWithChildren<Badge>;
+      [tagName$X]: BadgeJSXProps & ReactBaseElementPropsWithChildren<Badge>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$R]: BadgeJSXProps & ReactBaseElementPropsWithChildren<Badge>;
+      [tagName$X]: BadgeJSXProps & ReactBaseElementPropsWithChildren<Badge>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$Q]: Omit<BannerJSXProps, 'secondaryActions'> &
+      [tagName$W]: Omit<BannerJSXProps, 'secondaryActions'> &
         ReactBaseElementPropsWithChildren<Banner>;
     }
   }
@@ -7267,7 +7707,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$Q]: Omit<BannerJSXProps, 'secondaryActions'> &
+      [tagName$W]: Omit<BannerJSXProps, 'secondaryActions'> &
         ReactBaseElementPropsWithChildren<Banner>;
     }
   }
@@ -7275,35 +7715,51 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$P]: BoxJSXProps & ReactBaseElementPropsWithChildren<Box>;
+      [tagName$V]: BoxJSXProps & ReactBaseElementPropsWithChildren<Box>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$P]: BoxJSXProps & ReactBaseElementPropsWithChildren<Box>;
+      [tagName$V]: BoxJSXProps & ReactBaseElementPropsWithChildren<Box>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$O]: ButtonJSXProps & ReactBaseElementPropsWithChildren<Button>;
+      [tagName$U]: ButtonJSXProps & ReactBaseElementPropsWithChildren<Button>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$O]: ButtonJSXProps & ReactBaseElementPropsWithChildren<Button>;
+      [tagName$U]: ButtonJSXProps & ReactBaseElementPropsWithChildren<Button>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$N]: CheckboxJSXProps &
+      [tagName$T]: ButtonGroupJSXProps &
+        ReactBaseElementPropsWithChildren<ButtonGroup>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$T]: ButtonGroupJSXProps &
+        ReactBaseElementPropsWithChildren<ButtonGroup>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$S]: CheckboxJSXProps &
         ReactBaseElementPropsWithChildren<Checkbox>;
     }
   }
@@ -7311,7 +7767,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$N]: CheckboxJSXProps &
+      [tagName$S]: CheckboxJSXProps &
         ReactBaseElementPropsWithChildren<Checkbox>;
     }
   }
@@ -7319,21 +7775,48 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$M]: ChoiceJSXProps & ReactBaseElementPropsWithChildren<Choice>;
+      [tagName$R]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        Omit<ChipJSXProps, 'graphic'> &
+        ReactBaseElementPropsWithChildren<Chip>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$M]: ChoiceJSXProps & ReactBaseElementPropsWithChildren<Choice>;
+      [tagName$R]: Omit<
+        React.HTMLAttributes<HTMLElement>,
+        Extract<
+          keyof React.HTMLAttributes<HTMLElement>,
+          `on${Capitalize<string>}`
+        >
+      > &
+        Omit<ChipJSXProps, 'graphic'> &
+        ReactBaseElementPropsWithChildren<Chip>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$L]: ChoiceListJSXProps &
+      [tagName$Q]: ChoiceJSXProps & ReactBaseElementPropsWithChildren<Choice>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$Q]: ChoiceJSXProps & ReactBaseElementPropsWithChildren<Choice>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$P]: ChoiceListJSXProps &
         ReactBaseElementPropsWithChildren<ChoiceList>;
     }
   }
@@ -7341,7 +7824,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$L]: ChoiceListJSXProps &
+      [tagName$P]: ChoiceListJSXProps &
         ReactBaseElementPropsWithChildren<ChoiceList>;
     }
   }
@@ -7349,7 +7832,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$K]: ClickableJSXProps &
+      [tagName$O]: ClickableJSXProps &
         ReactBaseElementPropsWithChildren<Clickable>;
     }
   }
@@ -7357,7 +7840,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$K]: ClickableJSXProps &
+      [tagName$O]: ClickableJSXProps &
         ReactBaseElementPropsWithChildren<Clickable>;
     }
   }
@@ -7365,28 +7848,119 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$J]: DatePickerJSXProps & ReactBaseElementProps<DatePicker>;
+      [tagName$N]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        Omit<ClickableChipJSXProps, 'graphic'> &
+        ReactBaseElementPropsWithChildren<ClickableChip>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$J]: DatePickerJSXProps & ReactBaseElementProps<DatePicker>;
+      [tagName$N]: Omit<
+        React.HTMLAttributes<HTMLElement>,
+        Extract<
+          keyof React.HTMLAttributes<HTMLElement>,
+          `on${Capitalize<string>}`
+        >
+      > &
+        Omit<ClickableChipJSXProps, 'graphic'> &
+        ReactBaseElementPropsWithChildren<ClickableChip>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$I]: DividerJSXProps & ReactBaseElementProps<Divider>;
+      [tagName$M]: ColorFieldJSXProps & ReactBaseElementProps<ColorField>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$I]: DividerJSXProps & ReactBaseElementProps<Divider>;
+      [tagName$M]: ColorFieldJSXProps & ReactBaseElementProps<ColorField>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$L]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ColorPickerJSXProps;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$L]: Omit<
+        React.HTMLAttributes<HTMLElement>,
+        Extract<
+          keyof React.HTMLAttributes<HTMLElement>,
+          `on${Capitalize<string>}`
+        >
+      > &
+        ColorPickerJSXProps;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$K]: DatePickerJSXProps & ReactBaseElementProps<DatePicker>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$K]: DatePickerJSXProps & ReactBaseElementProps<DatePicker>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$J]: DividerJSXProps & ReactBaseElementProps<Divider>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$J]: DividerJSXProps & ReactBaseElementProps<Divider>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$I]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        DropZoneJSXProps;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$I]: Omit<
+        React.HTMLAttributes<HTMLElement>,
+        Extract<
+          keyof React.HTMLAttributes<HTMLElement>,
+          `on${Capitalize<string>}`
+        >
+      > &
+        DropZoneJSXProps;
     }
   }
 }

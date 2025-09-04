@@ -1,3 +1,4 @@
+import {Navigation} from './api';
 import type {ExtensionTargets} from './extension-targets';
 
 export interface ShopifyGlobal {
@@ -9,8 +10,5 @@ export interface ShopifyGlobal {
 }
 
 declare global {
-  // conflicts with build/ts/globals.d.ts
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const shopify: ShopifyGlobal;
+  const navigation: Navigation;
 }

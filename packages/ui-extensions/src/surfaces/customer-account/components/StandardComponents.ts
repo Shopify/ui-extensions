@@ -2,9 +2,12 @@ import {AnyComponent} from '../../checkout';
 
 export type StandardComponents =
   | AnyComponent
-  | 'Page'
   | 'Avatar'
+  | 'ButtonGroup'
   | 'CustomerAccountAction'
-  | 'ImageGroup';
+  | 'ImageGroup'
+  | 'Menu'
+  | 'Page'
+  | 'Section';
 
 export default StandardComponents;

@@ -22,6 +22,8 @@ export interface Product {
   hasOnlyDefaultVariant: boolean;
   hasInStockVariants?: boolean;
   onlineStoreUrl?: string;
+  requiresSellingPlan?: boolean;
+  hasSellingPlanGroups?: boolean;
 }
 
 export interface ProductVariant {

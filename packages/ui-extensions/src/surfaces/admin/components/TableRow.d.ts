@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -7,7 +7,8 @@
 /// <reference lib="DOM" />
 import type {TableRowProps$1, ComponentChild} from './shared.d.ts';
 
-export interface TableRowProps extends TableRowProps$1 {}
+export interface TableRowProps
+  extends Pick<TableRowProps$1, 'children' | 'clickDelegate'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -86,6 +87,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 
 declare class TableRow extends PreactCustomElement implements TableRowProps {
   constructor();
+  accessor clickDelegate: string;
 }
 declare global {
   interface HTMLElementTagNameMap {

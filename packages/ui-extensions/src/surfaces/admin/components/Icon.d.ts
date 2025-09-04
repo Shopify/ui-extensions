@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -9,7 +9,10 @@
 import type {IconProps$1, IconType, ComponentChild} from './shared.d.ts';
 
 export interface IconProps
-  extends Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size'> {
+  extends Pick<
+    IconProps$1,
+    'type' | 'tone' | 'color' | 'size' | 'interestFor'
+  > {
   /**
    * Specifies the type of icon that will be displayed.
    */
@@ -97,6 +100,7 @@ declare class Icon extends PreactCustomElement implements IconProps {
   accessor tone: IconProps['tone'];
   accessor type: IconProps['type'];
   accessor size: IconProps['size'];
+  accessor interestFor: string;
   constructor();
 }
 declare global {

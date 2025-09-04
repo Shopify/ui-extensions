@@ -1,4 +1,4 @@
-import type {RemoteSubscribable} from '@remote-ui/async-subscription';
+import type {ReadonlySignalLike} from '../../../../shared';
 
 /** The scanner source the POS device supports. */
 export type ScannerSource = 'camera' | 'external' | 'embedded';
@@ -10,19 +10,31 @@ export interface ScannerSubscriptionResult {
   source?: ScannerSource;
 }
 
+export interface ScannerSources {
+  /**
+   * The current available scanner sources.
+   * The `value` property provides the current sources, and `subscribe` allows listening to changes.
+   */
+  current: ReadonlySignalLike<ScannerSource[]>;
+}
+
+export interface ScannerData {
+  /**
+   * The current scan data.
+   * The `value` property provides the current scan result, and `subscribe` allows listening to new scans.
+   */
+  current: ReadonlySignalLike<ScannerSubscriptionResult>;
+}
+
 export interface ScannerApiContent {
-  /** Creates a subscription to scan events
-   * Provides an initial value and a callback to subscribe to value changes. Currently supports only one subscription.
-   * You can utilize `makeStatefulSubscribable` on a `RemoteSubscribable` to implement multiple subscriptions.
-   * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
+  /**
+   * Provides read-only access to scanner data and allows subscribing to new scan events.
    */
-  scannerDataSubscribable: RemoteSubscribable<ScannerSubscriptionResult>;
-  /** Creates a subscription to the scanning sources available on the POS device.
-   * Provides an initial value and a callback to subscribe to value changes. Currently supports only one subscription.
-   * You can utilize `makeStatefulSubscribable` on a `RemoteSubscribable` to implement multiple subscriptions.
-   * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
+  scannerData: ScannerData;
+  /**
+   * Provides read-only access to the available scanner sources on the POS device.
    */
-  scannerSourcesSubscribable: RemoteSubscribable<ScannerSource[]>;
+  sources: ScannerSources;
 }
 
 export interface ScannerApi {

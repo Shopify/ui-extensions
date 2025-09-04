@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -103,8 +103,7 @@ export interface BoxProps
   /**
    * Adjust the padding of all edges.
    *
-   * 1-to-4-value syntax (@see https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
-   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
    *
    * - 4 values: `block-start inline-end block-end inline-start`
    * - 3 values: `block-start inline block-end`
@@ -118,9 +117,7 @@ export interface BoxProps
    *
    * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
    *
-   * `padding` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   *
-   * This also accepts up to 4 values (e.g. `@container (inline-size > 500px) large-300 small-300 large-100 small-100, small-200`)
+   * `padding` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default 'none'
    */
@@ -132,9 +129,7 @@ export interface BoxProps
    *
    * This overrides the block value of `padding`.
    *
-   * `paddingBlock` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   *
-   * This also accepts up to 2 values (e.g. `@container (inline-size > 500px) large-300 small-300, small-200`)
+   * `paddingBlock` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -144,9 +139,8 @@ export interface BoxProps
    *
    * This overrides the block-start value of `paddingBlock`.
    *
-   * `paddingBlockStart` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   * `paddingBlockStart` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
-   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
    * @default '' - meaning no override
    */
   paddingBlockStart: ResponsiveBoxProps['paddingBlockStart'];
@@ -155,9 +149,8 @@ export interface BoxProps
    *
    * This overrides the block-end value of `paddingBlock`.
    *
-   * `paddingBlockEnd` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   * `paddingBlockEnd` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
-   * This only accepts up to 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
    * @default '' - meaning no override
    */
   paddingBlockEnd: ResponsiveBoxProps['paddingBlockEnd'];
@@ -168,9 +161,7 @@ export interface BoxProps
    *
    * This overrides the inline value of `padding`.
    *
-   * `paddingInline` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   *
-   * This also accepts up to 2 values (e.g. `@container (inline-size > 500px) large-300 small-300, small-200`)
+   * `paddingInline` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -180,8 +171,7 @@ export interface BoxProps
    *
    * This overrides the inline-start value of `paddingInline`.
    *
-   * `paddingInlineStart` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   * `paddingInlineStart` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -191,19 +181,17 @@ export interface BoxProps
    *
    * This overrides the inline-end value of `paddingInline`.
    *
-   * `paddingInlineEnd` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
-   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   * `paddingInlineEnd` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
   paddingInlineEnd: ResponsiveBoxProps['paddingInlineEnd'];
   /**
-   * Sets the outer display type of the component. The outer type sets a component's participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
+   * Sets the outer [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) type of the component. The outer type sets a component's participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
    *
    * - `auto` the component's initial value. The actual value depends on the component and context.
    * - `none` hides the component from display and removes it from the accessibility tree, making it invisible to screen readers.
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
    * @default 'auto'
    */
   display: ResponsiveBoxProps['display'];
@@ -224,9 +212,9 @@ export interface StackProps
    * Adjust spacing between elements.
    *
    * `gap` can either accept:
-   * * a single SpacingKeyword value applied to both axes (e.g. `large-100`).
-   * * OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
-   * * OR a container query string with supported SpacingKeyword values as query values (e.g.@container (inline-size > 500px) large-300, small-300)
+   * - a single SpacingKeyword value applied to both axes (e.g. `large-100`)
+   * - OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default 'none'
    */
@@ -235,8 +223,9 @@ export interface StackProps
    * Adjust spacing between elements in the block axis.
    *
    * This overrides the row value of `gap`.
-   * `rowGap` either accepts a single SpacingKeyword value (e.g. `large-100`)
-   * OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   * `rowGap` either accepts:
+   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -246,23 +235,23 @@ export interface StackProps
    *
    * This overrides the column value of `gap`.
    * `columnGap` either accepts:
-   * * a single SpacingKeyword value (e.g. `large-100`)
-   * OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
   columnGap: ResponsiveStackProps['columnGap'];
   /**
-     * Sets how the Stack's children are placed within the Stack.
-     *
-     * `direction` either accepts:
-     * * a single value either `inline` or `block`
-     * *OR a container query string with either of these values as a query value (e.g. `@container (inline-size > 500px) inline, block`)
-  
-    * @default 'block'
-     *
-     * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
-     */
+   * Sets how the Stack's children are placed within the Stack.
+   *
+   * `direction` either accepts:
+   * - a single value either `inline` or `block`
+   * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
+   *
+   * @default 'block'
+   *
+   * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
+   */
   direction: ResponsiveStackProps['direction'];
 }
 

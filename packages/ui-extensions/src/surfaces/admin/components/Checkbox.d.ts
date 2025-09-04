@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -152,6 +152,7 @@ declare class PreactCheckboxElement
   accessor required: PreactCheckboxProps['required'];
   /** @private */
   formResetCallback(): void;
+  static get observedAttributes(): string[];
   constructor(renderImpl: RenderImpl);
 }
 

@@ -10,28 +10,28 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'CustomerAccountActionProps',
+      title: 'Properties',
       description: '',
-      type: 'CustomerAccountActionProps',
+      type: 'CustomerAccountActionPropsDocs',
     },
     {
-      title: 'Button slot primary-action',
-      description:
-        'Supported props for Buttons used inside CustomerAccountAction `primary-action` slot.<br><br>`children` only support text.',
-      type: 'Docs_CustomerAccountAction_Button_PrimaryAction',
+      title: 'Slots',
+      description: '',
+      type: 'CustomerAccountActionElementSlotsDocs',
     },
     {
-      title: 'Button slot secondary-actions',
+      title: 'Slot button properties',
       description:
-        'Supported props for Button used inside CustomerAccountAction `secondary-actions` slot.<br><br>`children` only support text.',
-      type: 'Docs_CustomerAccountAction_Button_SecondaryAction',
+        'Supported props for Buttons used inside CustomerAccountAction slots.<br><br>`children` only support text.',
+      type: 'Docs_CustomerAccountAction_SlotButton',
     },
   ],
   category: 'Polaris web components',
+  subCategory: 'Actions',
   defaultExample: {
     image: 'customeraccountaction-preview.png',
     altText:
-      'An example of the CustomerAccountAction component shows a dismissible modal with a header that says "Edit order", a field for adjusting quantities, and a Save button.',
+      'An example of the CustomerAccountAction component shows a dismissible modal with a header that says "Edit order", a field for adjusting quantities, and a Close button.',
     codeblock: {
       title: 'Basic CustomerAccountAction',
       tabs: [

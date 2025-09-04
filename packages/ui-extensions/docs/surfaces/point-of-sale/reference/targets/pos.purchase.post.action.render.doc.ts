@@ -1,5 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -7,23 +7,23 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A full-screen extension target that renders when a `pos.purchase.post.action.menu-item.render` target calls for it',
   defaultExample: {
-    codeblock: generateCodeBlock(
+    codeblock: generateJsxCodeBlock(
       'Action',
       'targets',
       'pos-purchase-post-action-render',
     ),
   },
   category: 'Targets',
-  subCategory: 'Post-purchase',
+  subCategory: 'Action',
   isVisualComponent: false,
   related: [
     {
       name: ExtensionTargetType.PosPurchasePostActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-action-menu-item-render',
+      url: 'pos-purchase-post-action-menu-item-render',
     },
     {
       name: ExtensionTargetType.PosPurchasePostBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-block-render',
+      url: '../block/pos-purchase-post-block-render',
     },
   ],
   type: 'Target',

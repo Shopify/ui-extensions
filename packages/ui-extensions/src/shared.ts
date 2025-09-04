@@ -937,3 +937,28 @@ export interface GraphQLError {
     code: string;
   };
 }
+
+/**
+ * Represents a read-only value managed on the main thread that an extension can subscribe to.
+ *
+ * Example: Checkout uses this to manage the state of an object and
+ * communicate state changes to extensions running in a sandboxed web worker.
+ *
+ * This interface is compatible with Preact's ReadonlySignal:
+ * https://github.com/preactjs/signals/blob/a023a132a81bd4ba4a0bebb8cbbeffbd8c8bbafc/packages/core/src/index.ts#L700-L709
+ */
+export interface ReadonlySignalLike<T> {
+  readonly value: T;
+  subscribe(fn: (value: T) => void): () => void;
+}
+
+/**
+ * A remote-subscribable object exposed to a sandboxed web worker.
+ *
+ * Example: extensions use this to get updates about an object
+ * managed by Checkout on the main thread.
+ */
+export interface StatefulRemoteSubscribable<T> extends ReadonlySignalLike<T> {
+  readonly current: T;
+  destroy(): Promise<void>;
+}

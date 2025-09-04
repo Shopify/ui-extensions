@@ -11,10 +11,11 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'BadgeProps',
+      type: 'Badge',
     },
   ],
-  category: 'Components',
+  category: 'Polaris web components',
+  subCategory: 'Titles and text',
   defaultExample: {
     image: 'badge-default.png',
     codeblock: {

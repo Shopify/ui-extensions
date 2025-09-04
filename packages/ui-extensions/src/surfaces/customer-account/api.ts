@@ -78,6 +78,7 @@ export type {
   VisitorResult,
   VisitorSuccess,
   VisitorError,
+  StatefulRemoteSubscribable,
 } from './api/shared';
 
 export type {CartLineItemApi} from './api/cart-line/cart-line-item';
@@ -85,12 +86,11 @@ export type {CartLineItemApi} from './api/cart-line/cart-line-item';
 export type {
   Version,
   StandardApi,
-  FullExtensionNavigation,
-  StandardExtensionNavigation,
+  Navigation,
   NavigationCurrentEntryChangeEvent,
   NavigationHistoryEntry,
-  NavigationOptions,
-  NavigationType,
+  NavigationNavigateOptions,
+  NavigationTypeString,
   NavigateFunction,
   Localization,
   CompanyLocationApi,

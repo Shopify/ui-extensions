@@ -28,40 +28,86 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 }
 
 declare const tagName = 's-stack';
-export interface StackJSXProps
-  extends Pick<
-    StackProps,
-    | 'id'
-    | 'accessibilityLabel'
-    | 'alignItems'
-    | 'alignContent'
-    | 'gap'
-    | 'background'
-    | 'blockSize'
-    | 'border'
-    | 'borderColor'
-    | 'borderRadius'
-    | 'borderStyle'
-    | 'borderWidth'
-    | 'columnGap'
-    | 'direction'
-    | 'inlineSize'
-    | 'justifyContent'
-    | 'maxBlockSize'
-    | 'maxInlineSize'
-    | 'minBlockSize'
-    | 'minInlineSize'
-    | 'overflow'
-    | 'padding'
-    | 'paddingBlock'
-    | 'paddingBlockStart'
-    | 'paddingBlockEnd'
-    | 'paddingInline'
-    | 'paddingInlineStart'
-    | 'paddingInlineEnd'
-    | 'rowGap'
-  > {
+export type PickedProps = Pick<
+  StackProps,
+  | 'alignItems'
+  | 'alignContent'
+  | 'gap'
+  | 'columnGap'
+  | 'direction'
+  | 'blockSize'
+  | 'maxBlockSize'
+  | 'maxInlineSize'
+  | 'minBlockSize'
+  | 'minInlineSize'
+  | 'inlineSize'
+  | 'justifyContent'
+  | 'padding'
+  | 'paddingBlock'
+  | 'paddingBlockStart'
+  | 'paddingBlockEnd'
+  | 'paddingInline'
+  | 'paddingInlineStart'
+  | 'paddingInlineEnd'
+  | 'rowGap'
+>;
+export interface StackJSXProps extends PickedProps {
   children?: ComponentChildren;
+  /**
+   * Adjust the block size.
+   *
+   * @remarks
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+   *
+   * @default 'auto'
+   */
+  blockSize?: PickedProps['blockSize'];
+  /**
+   * Adjust the maximum block size.
+   *
+   * @remarks
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
+   *
+   * @default 'none'
+   */
+  maxBlockSize?: PickedProps['maxBlockSize'];
+  /**
+   * Adjust the maximum inline size.
+   *
+   * @remarks
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
+   *
+   * @default 'none'
+   */
+  maxInlineSize?: PickedProps['maxInlineSize'];
+  /**
+   * Adjust the minimum block size.
+   *
+   * @remarks
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
+   *
+   * @default '0'
+   */
+  minBlockSize?: PickedProps['minBlockSize'];
+  /**
+   * Adjust the minimum inline size.
+   *
+   * @remarks
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
+   *
+   * @default '0'
+   */
+  minInlineSize?: PickedProps['minInlineSize'];
 }
 declare global {
   interface HTMLElementTagNameMap {

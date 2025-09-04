@@ -1510,6 +1510,48 @@ export interface FieldDecorationProps {
    */
   accessory?: ComponentChildren;
 }
+export interface NumberConstraintsProps {
+  /**
+   * The highest decimal or integer to be accepted for the field.
+   * When used with `step` the value will round down to the max number.
+   *
+   * Note: a user will still be able to use the keyboard to input a number higher than
+   * the max. It is up to the developer to add appropriate validation.
+   *
+   * @default Infinity
+   */
+  max?: number;
+  /**
+   * The lowest decimal or integer to be accepted for the field.
+   * When used with `step` the value will round up to the min number.
+   *
+   * Note: a user will still be able to use the keyboard to input a number lower than
+   * the min. It is up to the developer to add appropriate validation.
+   *
+   * @default -Infinity
+   */
+  min?: number;
+  /**
+   * The amount the value can increase or decrease by. This can be an integer or decimal.
+   * If a `max` or `min` is specified with `step` when increasing/decreasing the value
+   * via the buttons, the final value will always round to the `max` or `min`
+   * rather than the closest valid amount.
+   *
+   * @default 1
+   */
+  step?: number;
+  /**
+   * Sets the type of controls displayed in the field.
+   *
+   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property.
+   * Appropriate mouse and [keyboard interactions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/spinbutton_role#keyboard_interactions) to control the value of the field are enabled.
+   * - `none`: no controls are displayed and users must input the value manually. Arrow keys and scroll wheels can’t be used either to avoid accidental changes.
+   * - `auto`: the presence of the controls depends on the surface and context.
+   *
+   * @default 'auto'
+   */
+  controls?: 'auto' | 'stepper' | 'none';
+}
 export interface MinMaxLengthProps {
   /**
    * Specifies the maximum number of characters allowed.
@@ -1628,6 +1670,37 @@ export interface ChoiceListProps
    * @default 'auto'
    */
   variant?: 'auto' | 'list' | 'inline' | 'block' | 'grid';
+}
+export interface ClickableProps
+  extends GlobalProps,
+    BaseBoxProps,
+    BaseClickableProps {
+  /**
+   * Disables the clickable, and indicates to assistive technology that the loading is in progress.
+   *
+   * This also disables the clickable.
+   */
+  loading?: BaseClickableProps['loading'];
+  /**
+   * Disables the clickable, meaning it cannot be clicked or receive focus.
+   *
+   * In this state, onClick will not fire.
+   * If the click event originates from a child element, the event will immediately stop propagating from this element.
+   *
+   * However, items within the clickable can still receive focus and be interacted with.
+   *
+   * This has no impact on the visual state by default,
+   * but developers are encouraged to style the clickable accordingly.
+   */
+  disabled?: BaseClickableProps['disabled'];
+  /**
+   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
+   *
+   * @default ''
+   */
+  lang?: string;
 }
 export interface AutocompleteProps<
   AutocompleteField extends AnyAutocompleteField,
@@ -1773,6 +1846,212 @@ export type TextAutocompleteField = ExtractStrict<
   | 'cc-additional-name'
   | 'cc-family-name'
   | 'cc-type'
+>;
+export interface DatePickerProps
+  extends GlobalProps,
+    InputProps,
+    FocusEventProps {
+  /**
+   * Default month to display in `YYYY-MM` format.
+   *
+   * This value is used until `view` is set, either directly or as a result of user interaction.
+   *
+   * Defaults to the current month in the user's locale.
+   */
+  defaultView?: string;
+  /**
+   * Displayed month in `YYYY-MM` format.
+   *
+   * `onViewChange` is called when this value changes.
+   *
+   * Defaults to `defaultView`.
+   */
+  view?: string;
+  /**
+   * Called whenever the month to display changes.
+   *
+   * @param view The new month to display in `YYYY-MM` format.
+   */
+  onViewChange?: (view: string) => void;
+  /**
+   * The type of selection the date picker allows.
+   *
+   * - `single` allows selecting a single date.
+   * - `multiple` allows selecting multiple non-contiguous dates.
+   * - `range` allows selecting a single range of dates.
+   *
+   * @default "single"
+   */
+  type?: 'single' | 'multiple' | 'range';
+  /**
+   * Dates that can be selected.
+   *
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   *
+   * The default `''` allows all dates.
+   *
+   * - Dates in `YYYY-MM-DD` format allow a single date.
+   * - Dates in `YYYY-MM` format allow a whole month.
+   * - Dates in `YYYY` format allow a whole year.
+   * - Ranges are expressed as `start--end`.
+   *     - Ranges are inclusive.
+   *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
+   *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+   *       So `2024--` is equivalent to `2024-01-01--`.
+   *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+   *       So `--2024` is equivalent to `--2024-12-31`.
+   *     - Whitespace is allowed either side of `--`.
+   *
+   * @default ""
+   *
+   * @example
+   * `2024-02--2025` // allow any date from February 2024 to the end of 2025
+   * `2024-02--` // allow any date from February 2024 to the end of the month
+   * `2024-05-09, 2024-05-11` // allow only the 9th and 11th of May 2024
+   */
+  allow?: string;
+  /**
+   * Dates that cannot be selected. These subtract from `allowDates`.
+   *
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   *
+   * The default `''` has no effect on `allowDates`.
+   *
+   * - Dates in `YYYY-MM-DD` format disallow a single date.
+   * - Dates in `YYYY-MM` format disallow a whole month.
+   * - Dates in `YYYY` format disallow a whole year.
+   * - Ranges are expressed as `start--end`.
+   *     - Ranges are inclusive.
+   *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
+   *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+   *       So `2024--` is equivalent to `2024-01-01--`.
+   *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+   *       So `--2024` is equivalent to `--2024-12-31`.
+   *     - Whitespace is allowed either side of `--`.
+   *
+   * @default ""
+   *
+   * @example
+   * `--2024-02` // disallow any date before February 2024
+   * `2024-05-09, 2024-05-11` // disallow the 9th and 11th of May 2024
+   */
+  disallow?: string;
+  /**
+   * Days of the week that can be selected. These intersect with the result of `allowDates` and `disallowDates`.
+   *
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   *
+   * The default `''` has no effect on the result of `allowDates` and `disallowDates`.
+   *
+   * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
+   *
+   * @default ""
+   *
+   * @example
+   * 'saturday, sunday' // allow only weekends within the result of `allowDates` and `disallowDates`.
+   */
+  allowDays?: string;
+  /**
+   * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allowDates` and `disallowDates`.
+   *
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   *
+   * The default `''` has no effect on `allowDays`.
+   *
+   * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
+   *
+   * @default ""
+   *
+   * @example
+   * 'saturday, sunday' // disallow weekends within the result of `allowDates` and `disallowDates`.
+   */
+  disallowDays?: string;
+  /**
+   * Default selected value.
+   *
+   * The default means no date is selected.
+   *
+   * If the provided value is invalid, no date is selected.
+   *
+   * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+   * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+   * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+   *
+   * @default ""
+   */
+  defaultValue?: string;
+  /**
+   * Current selected value.
+   *
+   * The default means no date is selected.
+   *
+   * If the provided value is invalid, no date is selected.
+   *
+   * Otherwise:
+   *
+   * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+   * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+   * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+   *
+   * Events:
+   *
+   * - `onInput` - Invoked when any date is selected. Will fire before `onChange`.
+   * - `onChange` - Invoked when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
+   *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
+   *
+   * @default ""
+   */
+  value?: string;
+}
+export interface DateFieldProps
+  extends GlobalProps,
+    BaseTextFieldProps,
+    Pick<
+      DatePickerProps,
+      | 'view'
+      | 'defaultView'
+      | 'value'
+      | 'defaultValue'
+      | 'allow'
+      | 'disallow'
+      | 'onViewChange'
+    >,
+    AutocompleteProps<DateAutocompleteField> {
+  /**
+   * Callback when the field has an invalid date.
+   * This callback will be called, if the date typed is invalid or disabled.
+   *
+   * Dates that don’t exist or have formatting errors are considered invalid. Some examples of invalid dates are:
+   * - 2021-02-31: February doesn’t have 31 days
+   * - 2021-02-00: The day can’t be 00
+   *
+   * Disallowed dates are considered invalid.
+   *
+   * It’s important to note that this callback will be called only when the user **finishes editing** the date,
+   * and it’s called right after the `onChange` callback.
+   * The field is **not** validated on every change to the input. Once the buyer has signalled that
+   * they have finished editing the field (typically, by blurring the field), the field gets validated and the callback is run if the value is invalid.
+   */
+  onInvalid?: (event: Event) => void;
+}
+export type DateAutocompleteField = ExtractStrict<
+  AnyAutocompleteField,
+  | 'bday'
+  | 'bday-day'
+  | 'bday-month'
+  | 'bday-year'
+  | 'cc-expiry'
+  | 'cc-expiry-month'
+  | 'cc-expiry-year'
+>;
+export interface EmailFieldProps
+  extends GlobalProps,
+    BaseTextFieldProps,
+    MinMaxLengthProps,
+    AutocompleteProps<EmailAutocompleteField> {}
+export type EmailAutocompleteField = ExtractStrict<
+  AnyAutocompleteField,
+  'email' | `${AutocompleteAddressGroup} email`
 >;
 export type SpacingKeyword = SizeKeyword | 'none';
 export interface GapProps {
@@ -1953,6 +2232,24 @@ export interface ModalProps
    */
   children?: ComponentChildren;
 }
+export interface NumberFieldProps
+  extends GlobalProps,
+    BaseTextFieldProps,
+    AutocompleteProps<NumberAutocompleteField>,
+    NumberConstraintsProps,
+    FieldDecorationProps {
+  /**
+   * Sets the virtual keyboard.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
+   * @default 'decimal'
+   */
+  inputMode?: 'decimal' | 'numeric';
+}
+export type NumberAutocompleteField = ExtractStrict<
+  AnyAutocompleteField,
+  'one-time-code' | 'cc-number' | 'cc-csc'
+>;
 export type OverflowKeyword = 'auto' | 'hidden';
 export interface ScrollBoxProps
   extends GlobalProps,
@@ -1973,6 +2270,12 @@ export interface ScrollBoxProps
    */
   overflow?: OverflowKeyword | `${OverflowKeyword} ${OverflowKeyword}`;
 }
+export interface SearchFieldProps
+  extends GlobalProps,
+    BaseTextFieldProps,
+    MinMaxLengthProps,
+    AutocompleteProps<SearchAutocompleteField> {}
+export type SearchAutocompleteField = TextAutocompleteField;
 export interface StackProps
   extends GlobalProps,
     BaseBoxPropsWithRole,
@@ -2111,6 +2414,18 @@ export type TextType =
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
    */
   | 'generic';
+export interface TextAreaProps
+  extends GlobalProps,
+    BaseTextFieldProps,
+    MinMaxLengthProps,
+    AutocompleteProps<TextAutocompleteField> {
+  /**
+   * A number of visible text lines.
+   *
+   * @default 2
+   */
+  rows?: number;
+}
 export interface TextFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
@@ -2275,6 +2590,8 @@ export interface Context<T> extends Provider<T> {
   displayName?: string;
 }
 
+import {ReactNode} from 'react';
+
 type ComponentChildren = any;
 /**
  * Used when an element does not have children.
@@ -2300,14 +2617,17 @@ interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   eventPhase: number;
   target: HTMLElementTagNameMap[T] | null;
 }
-type CallbackToggleEvent<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends ToggleEvent = ToggleEvent,
-> = TEvent & {
-  currentTarget: HTMLElementTagNameMap[TTagName];
-};
+interface CallbackToggleEvent<TTagName extends keyof HTMLElementTagNameMap>
+  extends CallbackEvent<TTagName> {
+  newState?: 'open' | 'closed';
+  oldState?: 'open' | 'closed';
+  detail: {
+    newState: 'open' | 'closed';
+    oldState: 'open' | 'closed';
+  };
+}
 
-declare const tagName$e = 's-button';
+declare const tagName$k = 's-button';
 interface ButtonJSXProps
   extends Pick<
     ButtonProps,
@@ -2320,65 +2640,71 @@ interface ButtonJSXProps
     | 'variant'
     | 'id'
   > {
-  tone?: Extract<ButtonProps['tone'], 'auto' | 'critical'>;
+  tone?: Extract<
+    ButtonProps['tone'],
+    'auto' | 'critical' | 'warning' | 'caution'
+  >;
   variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
-  onClick?: (event: CallbackEvent<typeof tagName$e>) => void;
+  /**
+   * test
+   */
+  onClick?: (event: CallbackEvent<typeof tagName$k>) => void;
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$e]: ButtonJSXProps;
+    [tagName$k]: ButtonJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: BaseElementPropsWithChildren<ButtonJSXProps>;
+      [tagName$k]: BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
 }
 
-declare const tagName$d = 's-text';
+declare const tagName$j = 's-text';
 interface TextJSXProps extends Pick<TextProps, 'tone' | 'type'> {
   color?: 'subdued' | 'base' | 'strong';
-  type?: Extract<TextProps['type'], 'emphasis' | 'strong' | 'small' | 'offset'>;
+  type?: Extract<TextProps['type'], 'strong' | 'small' | 'generic'>;
   tone?: Extract<
     TextProps['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical'
+    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
   >;
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$d]: TextJSXProps;
+    [tagName$j]: TextJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: BaseElementPropsWithChildren<TextJSXProps>;
+      [tagName$j]: BaseElementPropsWithChildren<TextJSXProps>;
     }
   }
 }
 
-declare const tagName$c = 's-scroll-box';
+declare const tagName$i = 's-scroll-box';
 interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$c]: ScrollBoxJSXProps;
+    [tagName$i]: ScrollBoxJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
+      [tagName$i]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
 }
 
-declare const tagName$b = 's-tile';
+declare const tagName$h = 's-tile';
 interface TileJSXProps {
   title: string;
   subtitle?: string;
@@ -2390,36 +2716,36 @@ interface TileJSXProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$b]: TileJSXProps;
+    [tagName$h]: TileJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName$h]: BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }
 
-declare const tagName$a = 's-navigator';
+declare const tagName$g = 's-navigator';
 interface NavigatorJSXProps {
   initialScreenName?: string;
   children?: React.ReactNode;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$a]: NavigatorJSXProps;
+    [tagName$g]: NavigatorJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: BaseElementPropsWithChildren<NavigatorJSXProps>;
+      [tagName$g]: BaseElementPropsWithChildren<NavigatorJSXProps>;
     }
   }
 }
 
-declare const tagName$9 = 's-screen';
+declare const tagName$f = 's-screen';
 interface ScreenJSXProps {
   /**
    * Used to identify this screen as a destination in the navigation stack.
@@ -2467,18 +2793,18 @@ interface ScreenPresentationProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$9]: ScreenJSXProps;
+    [tagName$f]: ScreenJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: BaseElementPropsWithChildren<ScreenJSXProps>;
+      [tagName$f]: BaseElementPropsWithChildren<ScreenJSXProps>;
     }
   }
 }
 
-declare const tagName$8 = 's-banner';
+declare const tagName$e = 's-banner';
 interface BannerJSXProps
   extends Pick<BannerProps, 'heading' | 'hidden' | 'tone' | 'id'> {
   tone?: Extract<
@@ -2490,20 +2816,20 @@ interface BannerJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$8]: BannerJSXProps;
+    [tagName$e]: BannerJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: BaseElementPropsWithChildren<
+      [tagName$e]: BaseElementPropsWithChildren<
         Omit<BannerJSXProps, 'primaryAction'>
       >;
     }
   }
 }
 
-declare const tagName$7 = 's-box';
+declare const tagName$d = 's-box';
 interface BoxJSXProps
   extends Pick<
     BoxProps,
@@ -2525,18 +2851,18 @@ interface BoxJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$7]: BoxJSXProps;
+    [tagName$d]: BoxJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$7]: BaseElementPropsWithChildren<BoxJSXProps>;
+      [tagName$d]: BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
 
-declare const tagName$6 = 's-icon';
+declare const tagName$c = 's-icon';
 type SupportedIconNames = Extract<
   IconProps['type'],
   | 'arrow-down'
@@ -2602,67 +2928,113 @@ interface IconJSXProps extends Pick<IconProps, 'tone' | 'color'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$6]: IconJSXProps;
+    [tagName$c]: IconJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: BaseElementProps<IconJSXProps>;
+      [tagName$c]: BaseElementProps<IconJSXProps>;
     }
   }
 }
 
-declare const tagName$5 = 's-stack';
-interface StackJSXProps
-  extends Pick<
-    StackProps,
-    | 'id'
-    | 'accessibilityLabel'
-    | 'alignItems'
-    | 'alignContent'
-    | 'gap'
-    | 'background'
-    | 'blockSize'
-    | 'border'
-    | 'borderColor'
-    | 'borderRadius'
-    | 'borderStyle'
-    | 'borderWidth'
-    | 'columnGap'
-    | 'direction'
-    | 'inlineSize'
-    | 'justifyContent'
-    | 'maxBlockSize'
-    | 'maxInlineSize'
-    | 'minBlockSize'
-    | 'minInlineSize'
-    | 'overflow'
-    | 'padding'
-    | 'paddingBlock'
-    | 'paddingBlockStart'
-    | 'paddingBlockEnd'
-    | 'paddingInline'
-    | 'paddingInlineStart'
-    | 'paddingInlineEnd'
-    | 'rowGap'
-  > {
+declare const tagName$b = 's-stack';
+type PickedProps = Pick<
+  StackProps,
+  | 'alignItems'
+  | 'alignContent'
+  | 'gap'
+  | 'columnGap'
+  | 'direction'
+  | 'blockSize'
+  | 'maxBlockSize'
+  | 'maxInlineSize'
+  | 'minBlockSize'
+  | 'minInlineSize'
+  | 'inlineSize'
+  | 'justifyContent'
+  | 'padding'
+  | 'paddingBlock'
+  | 'paddingBlockStart'
+  | 'paddingBlockEnd'
+  | 'paddingInline'
+  | 'paddingInlineStart'
+  | 'paddingInlineEnd'
+  | 'rowGap'
+>;
+interface StackJSXProps extends PickedProps {
   children?: ComponentChildren;
+  /**
+   * Adjust the block size.
+   *
+   * @remarks
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+   *
+   * @default 'auto'
+   */
+  blockSize?: PickedProps['blockSize'];
+  /**
+   * Adjust the maximum block size.
+   *
+   * @remarks
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
+   *
+   * @default 'none'
+   */
+  maxBlockSize?: PickedProps['maxBlockSize'];
+  /**
+   * Adjust the maximum inline size.
+   *
+   * @remarks
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
+   *
+   * @default 'none'
+   */
+  maxInlineSize?: PickedProps['maxInlineSize'];
+  /**
+   * Adjust the minimum block size.
+   *
+   * @remarks
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
+   *
+   * @default '0'
+   */
+  minBlockSize?: PickedProps['minBlockSize'];
+  /**
+   * Adjust the minimum inline size.
+   *
+   * @remarks
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
+   *
+   * @default '0'
+   */
+  minInlineSize?: PickedProps['minInlineSize'];
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$5]: StackJSXProps;
+    [tagName$b]: StackJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$5]: BaseElementPropsWithChildren<StackJSXProps>;
+      [tagName$b]: BaseElementPropsWithChildren<StackJSXProps>;
     }
   }
 }
 
-declare const tagName$4 = 's-badge';
+declare const tagName$a = 's-badge';
 interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
   tone?: Extract<
     BadgeProps['tone'],
@@ -2672,95 +3044,283 @@ interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$4]: BadgeJSXProps;
+    [tagName$a]: BadgeJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$4]: BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName$a]: BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
 
-declare const tagName$3 = 's-choice-list';
+declare const tagName$9 = 's-choice-list';
 interface ChoiceListJSXProps
   extends Pick<ChoiceListProps, 'values' | 'multiple'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$3>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$3>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$3]: ChoiceListJSXProps;
+    [tagName$9]: ChoiceListJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$3]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
+      [tagName$9]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
 }
 
-declare const tagName$2 = 's-choice';
+declare const tagName$8 = 's-choice';
 interface ChoiceJSXProps
   extends Pick<ChoiceProps, 'value' | 'disabled' | 'selected'> {
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$2]: ChoiceJSXProps;
+    [tagName$8]: ChoiceJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$2]: BaseElementPropsWithChildren<ChoiceJSXProps>;
+      [tagName$8]: BaseElementPropsWithChildren<ChoiceJSXProps>;
     }
   }
 }
 
-declare const tagName$1 = 's-modal';
-interface ModalJSXProps extends Pick<ModalProps, 'id'> {
-  onHide?: (event: CallbackEvent<typeof tagName$1>) => void | null;
-  onShow?: (event: CallbackEvent<typeof tagName$1>) => void | null;
-  onAfterHide?: (event: CallbackEvent<typeof tagName$1>) => void | null;
-  onAfterShow?: (event: CallbackEvent<typeof tagName$1>) => void | null;
-  onToggle?: (event: CallbackToggleEvent<typeof tagName$1>) => void | null;
-  onAfterToggle?: (event: CallbackToggleEvent<typeof tagName$1>) => void | null;
-  children?: ComponentChildren;
+declare const tagName$7 = 's-modal';
+interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
+  primaryAction?: ComponentChild;
+  secondaryActions?: ComponentChild;
+  onHide?: (event: CallbackEvent<typeof tagName$7>) => void | null;
+  onShow?: (event: CallbackEvent<typeof tagName$7>) => void | null;
+  onToggle?: (event: CallbackToggleEvent<typeof tagName$7>) => void | null;
+  children?: ReactNode;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$1]: ModalJSXProps;
+    [tagName$7]: ModalJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$1]: BaseElementPropsWithChildren<ModalJSXProps>;
+      [tagName$7]: BaseElementPropsWithChildren<
+        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
+      >;
     }
   }
 }
 
-declare const tagName = 's-text-field';
+declare const tagName$6 = 's-text-field';
 interface TextFieldJSXProps
-  extends Pick<TextFieldProps, 'label' | 'details' | 'value' | 'placeholder'> {
+  extends Pick<
+    TextFieldProps,
+    | 'label'
+    | 'details'
+    | 'value'
+    | 'placeholder'
+    | 'disabled'
+    | 'error'
+    | 'required'
+    | 'maxLength'
+  > {
+  onInput?: ((event: CallbackEvent<typeof tagName$6>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$6>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$6>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$6>) => void) | null;
+  accessory?: ComponentChild;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$6]: TextFieldJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$6]: BaseElementPropsWithChildren<
+        Omit<TextFieldJSXProps, 'accessory'>
+      >;
+    }
+  }
+}
+
+declare const tagName$5 = 's-search-field';
+interface SearchFieldJSXProps
+  extends Pick<
+    SearchFieldProps,
+    'disabled' | 'defaultValue' | 'placeholder' | 'value'
+  > {
+  onFocus?: ((event: CallbackEvent<typeof tagName$5>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$5>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$5>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$5>) => void) | null;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$5]: SearchFieldJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$5]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
+    }
+  }
+}
+
+declare const tagName$4 = 's-email-field';
+interface EmailFieldJSXProps
+  extends Pick<
+    EmailFieldProps,
+    | 'label'
+    | 'value'
+    | 'placeholder'
+    | 'disabled'
+    | 'error'
+    | 'required'
+    | 'maxLength'
+    | 'details'
+  > {
+  onInput?: ((event: CallbackEvent<typeof tagName$4>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$4>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$4>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$4>) => void) | null;
+  accessory?: ComponentChild;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$4]: EmailFieldJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$4]: BaseElementPropsWithChildren<
+        Omit<EmailFieldJSXProps, 'accessory'>
+      >;
+    }
+  }
+}
+
+declare const tagName$3 = 's-clickable';
+interface ClickableJSXProps extends Pick<ClickableProps, 'disabled'> {
+  children?: ComponentChildren;
+  onClick?: (event: CallbackEvent<typeof tagName$3>) => void;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$3]: ClickableJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$3]: BaseElementPropsWithChildren<ClickableJSXProps>;
+    }
+  }
+}
+
+declare const tagName$2 = 's-text-area';
+interface TextAreaJSXProps
+  extends Pick<
+    TextAreaProps,
+    | 'label'
+    | 'details'
+    | 'value'
+    | 'placeholder'
+    | 'disabled'
+    | 'error'
+    | 'required'
+    | 'maxLength'
+    | 'rows'
+  > {
+  onInput?: ((event: CallbackEvent<typeof tagName$2>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$2>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$2>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$2>) => void) | null;
+  accessory?: ComponentChild;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$2]: TextAreaJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$2]: BaseElementPropsWithChildren<
+        Omit<TextAreaJSXProps, 'accessory'>
+      >;
+    }
+  }
+}
+
+declare const tagName$1 = 's-number-field';
+interface NumberFieldJSXProps
+  extends Pick<
+    NumberFieldProps,
+    | 'label'
+    | 'details'
+    | 'value'
+    | 'placeholder'
+    | 'disabled'
+    | 'error'
+    | 'required'
+    | 'max'
+    | 'min'
+  > {
+  inputMode?: Extract<NumberFieldProps['inputMode'], 'decimal' | 'numeric'>;
+  onInput?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  accessory?: ComponentChild;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$1]: NumberFieldJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$1]: BaseElementPropsWithChildren<
+        Omit<NumberFieldJSXProps, 'accessory'>
+      >;
+    }
+  }
+}
+
+declare const tagName = 's-date-field';
+interface DateFieldJSXProps
+  extends Pick<
+    DateFieldProps,
+    'label' | 'details' | 'value' | 'disabled' | 'error'
+  > {
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  accessory?: ComponentChild;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: TextFieldJSXProps;
+    [tagName]: DateFieldJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<TextFieldJSXProps>;
+      [tagName]: BaseElementPropsWithChildren<
+        Omit<DateFieldJSXProps, 'accessory'>
+      >;
     }
   }
 }
@@ -2772,115 +3332,506 @@ export type {
   ButtonJSXProps,
   ChoiceJSXProps,
   ChoiceListJSXProps,
+  ClickableJSXProps,
+  DateFieldJSXProps,
+  EmailFieldJSXProps,
   IconJSXProps,
   ModalJSXProps,
   NavigatorJSXProps,
+  NumberFieldJSXProps,
   ScreenJSXProps,
   ScrollBoxJSXProps,
+  SearchFieldJSXProps,
   StackJSXProps,
+  TextAreaJSXProps,
   TextFieldJSXProps,
   TextJSXProps,
   TileJSXProps,
 };
 
+interface Badge extends Pick<BadgeProps, 'tone' | 'id'> {
+  tone?: BadgeJSXProps['tone'];
+  id?: BadgeJSXProps['id'];
+}
+
 interface BannerSlots {
   'primary-action'?: HTMLElement;
 }
 
-interface ScreenSlots {
-  /**
-   * Displays a secondary action button on the screen.
-   */
+interface Banner
+  extends Pick<BannerProps, 'tone' | 'heading' | 'hidden' | 'id'> {
+  tone?: BannerJSXProps['tone'];
+  heading?: BannerJSXProps['heading'];
+  hidden?: BannerJSXProps['hidden'];
+  id?: BannerJSXProps['id'];
+}
+
+interface Box
+  extends Pick<
+    BoxProps,
+    | 'padding'
+    | 'paddingBlock'
+    | 'paddingBlockStart'
+    | 'paddingBlockEnd'
+    | 'paddingInline'
+    | 'paddingInlineStart'
+    | 'paddingInlineEnd'
+    | 'blockSize'
+    | 'minBlockSize'
+    | 'maxBlockSize'
+    | 'inlineSize'
+    | 'minInlineSize'
+    | 'maxInlineSize'
+  > {
+  padding?: BoxJSXProps['padding'];
+  paddingBlock?: BoxJSXProps['paddingBlock'];
+  paddingBlockStart?: BoxJSXProps['paddingBlockStart'];
+  paddingBlockEnd?: BoxJSXProps['paddingBlockEnd'];
+  paddingInline?: BoxJSXProps['paddingInline'];
+  paddingInlineStart?: BoxJSXProps['paddingInlineStart'];
+  paddingInlineEnd?: BoxJSXProps['paddingInlineEnd'];
+  blockSize?: BoxJSXProps['blockSize'];
+  minBlockSize?: BoxJSXProps['minBlockSize'];
+  maxBlockSize?: BoxJSXProps['maxBlockSize'];
+  inlineSize?: BoxJSXProps['inlineSize'];
+  minInlineSize?: BoxJSXProps['minInlineSize'];
+  maxInlineSize?: BoxJSXProps['maxInlineSize'];
+}
+
+interface ButtonEvents {
+  click?: ButtonJSXProps['onClick'];
+}
+
+interface Button
+  extends Pick<
+    ButtonProps,
+    | 'tone'
+    | 'variant'
+    | 'accessibilityLabel'
+    | 'disabled'
+    | 'command'
+    | 'commandFor'
+    | 'loading'
+    | 'id'
+  > {
+  tone?: ButtonJSXProps['tone'];
+  variant?: ButtonJSXProps['variant'];
+  accessibilityLabel?: ButtonJSXProps['accessibilityLabel'];
+  disabled?: ButtonJSXProps['disabled'];
+  command?: ButtonJSXProps['command'];
+  commandFor?: ButtonJSXProps['commandFor'];
+  loading?: ButtonJSXProps['loading'];
+  id?: ButtonJSXProps['id'];
+}
+
+interface Choice extends Pick<ChoiceProps, 'value' | 'disabled' | 'selected'> {
+  value?: ChoiceJSXProps['value'];
+  disabled?: ChoiceJSXProps['disabled'];
+  selected?: ChoiceJSXProps['selected'];
+}
+
+interface ChoiceListEvents {
+  change?: ChoiceListJSXProps['onChange'];
+  input?: ChoiceListJSXProps['onInput'];
+}
+
+interface ChoiceList extends Pick<ChoiceListProps, 'values' | 'multiple'> {
+  values?: ChoiceListJSXProps['values'];
+  multiple?: ChoiceListJSXProps['multiple'];
+}
+
+interface ClickableEvents {
+  click?: ClickableJSXProps['onClick'];
+}
+
+interface Clickable extends Pick<ClickableProps, 'disabled'> {
+  disabled?: ClickableJSXProps['disabled'];
+}
+
+interface DateFieldEvents {
+  input?: DateFieldJSXProps['onInput'];
+  focus?: DateFieldJSXProps['onFocus'];
+  blur?: DateFieldJSXProps['onBlur'];
+  change?: DateFieldJSXProps['onChange'];
+}
+
+interface DateFieldSlots {
+  accessory?: HTMLElement;
+}
+
+interface DateField
+  extends Pick<
+    DateFieldProps,
+    'label' | 'details' | 'value' | 'disabled' | 'error'
+  > {
+  label?: DateFieldJSXProps['label'];
+  details?: DateFieldJSXProps['details'];
+  value?: DateFieldJSXProps['value'];
+  disabled?: DateFieldJSXProps['disabled'];
+  error?: DateFieldJSXProps['error'];
+}
+
+interface EmailFieldEvents {
+  input?: EmailFieldJSXProps['onInput'];
+  focus?: EmailFieldJSXProps['onFocus'];
+  blur?: EmailFieldJSXProps['onBlur'];
+  change?: EmailFieldJSXProps['onChange'];
+}
+
+interface EmailFieldSlots {
+  accessory?: HTMLElement;
+}
+
+interface EmailField
+  extends Pick<
+    EmailFieldProps,
+    | 'label'
+    | 'value'
+    | 'placeholder'
+    | 'disabled'
+    | 'error'
+    | 'required'
+    | 'maxLength'
+    | 'details'
+  > {
+  label?: EmailFieldJSXProps['label'];
+  value?: EmailFieldJSXProps['value'];
+  placeholder?: EmailFieldJSXProps['placeholder'];
+  disabled?: EmailFieldJSXProps['disabled'];
+  error?: EmailFieldJSXProps['error'];
+  required?: EmailFieldJSXProps['required'];
+  maxLength?: EmailFieldJSXProps['maxLength'];
+  details?: EmailFieldJSXProps['details'];
+}
+
+interface Icon extends Pick<IconProps, 'type' | 'size' | 'tone' | 'color'> {
+  type?: IconJSXProps['type'];
+  size?: IconJSXProps['size'];
+  tone?: IconJSXProps['tone'];
+  color?: IconJSXProps['color'];
+}
+
+interface ModalEvents {
+  hide?: ModalJSXProps['onHide'];
+  show?: ModalJSXProps['onShow'];
+  toggle?: ModalJSXProps['onToggle'];
+}
+
+interface ModalSlots {
+  'primary-action'?: HTMLElement;
   'secondary-actions'?: HTMLElement;
 }
+
+interface Modal extends Pick<ModalProps, 'id' | 'heading'> {
+  id?: ModalJSXProps['id'];
+  heading?: ModalJSXProps['heading'];
+}
+
+interface Navigator extends Pick<NavigatorProps, 'initialScreenName'> {
+  initialScreenName?: NavigatorJSXProps['initialScreenName'];
+}
+
+interface NumberFieldEvents {
+  input?: NumberFieldJSXProps['onInput'];
+  focus?: NumberFieldJSXProps['onFocus'];
+  blur?: NumberFieldJSXProps['onBlur'];
+  change?: NumberFieldJSXProps['onChange'];
+}
+
+interface NumberFieldSlots {
+  accessory?: HTMLElement;
+}
+
+interface NumberField
+  extends Pick<
+    NumberFieldProps,
+    | 'inputMode'
+    | 'label'
+    | 'details'
+    | 'value'
+    | 'placeholder'
+    | 'disabled'
+    | 'error'
+    | 'required'
+    | 'max'
+    | 'min'
+  > {
+  inputMode?: NumberFieldJSXProps['inputMode'];
+  label?: NumberFieldJSXProps['label'];
+  details?: NumberFieldJSXProps['details'];
+  value?: NumberFieldJSXProps['value'];
+  placeholder?: NumberFieldJSXProps['placeholder'];
+  disabled?: NumberFieldJSXProps['disabled'];
+  error?: NumberFieldJSXProps['error'];
+  required?: NumberFieldJSXProps['required'];
+  max?: NumberFieldJSXProps['max'];
+  min?: NumberFieldJSXProps['min'];
+}
+
+interface ScreenEvents {
+  navigate?: ScreenJSXProps['onNavigate'];
+  navigateback?: ScreenJSXProps['onNavigateBack'];
+  receiveparams?: ScreenJSXProps['onReceiveParams'];
+}
+
+interface ScreenSlots {
+  'secondary-actions'?: HTMLElement;
+}
+
+interface Screen
+  extends Pick<ScreenProps, 'name' | 'title' | 'isLoading' | 'presentation'> {
+  name: ScreenJSXProps['name'];
+  title: ScreenJSXProps['title'];
+  isLoading?: ScreenJSXProps['isLoading'];
+  presentation?: ScreenJSXProps['presentation'];
+}
+
+interface ScrollBox extends Pick<ScrollBoxProps, 'id'> {
+  id?: ScrollBoxJSXProps['id'];
+}
+
+interface SearchFieldEvents {
+  focus?: SearchFieldJSXProps['onFocus'];
+  blur?: SearchFieldJSXProps['onBlur'];
+  input?: SearchFieldJSXProps['onInput'];
+  change?: SearchFieldJSXProps['onChange'];
+}
+
+interface SearchField
+  extends Pick<
+    SearchFieldProps,
+    'disabled' | 'defaultValue' | 'placeholder' | 'value'
+  > {
+  disabled?: SearchFieldJSXProps['disabled'];
+  defaultValue?: SearchFieldJSXProps['defaultValue'];
+  placeholder?: SearchFieldJSXProps['placeholder'];
+  value?: SearchFieldJSXProps['value'];
+}
+
+interface Stack
+  extends Pick<
+    StackProps,
+    | 'blockSize'
+    | 'maxBlockSize'
+    | 'maxInlineSize'
+    | 'minBlockSize'
+    | 'minInlineSize'
+    | 'alignItems'
+    | 'alignContent'
+    | 'gap'
+    | 'columnGap'
+    | 'direction'
+    | 'inlineSize'
+    | 'justifyContent'
+    | 'padding'
+    | 'paddingBlock'
+    | 'paddingBlockStart'
+    | 'paddingBlockEnd'
+    | 'paddingInline'
+    | 'paddingInlineStart'
+    | 'paddingInlineEnd'
+    | 'rowGap'
+  > {
+  blockSize?: StackJSXProps['blockSize'];
+  maxBlockSize?: StackJSXProps['maxBlockSize'];
+  maxInlineSize?: StackJSXProps['maxInlineSize'];
+  minBlockSize?: StackJSXProps['minBlockSize'];
+  minInlineSize?: StackJSXProps['minInlineSize'];
+  alignItems?: StackJSXProps['alignItems'];
+  alignContent?: StackJSXProps['alignContent'];
+  gap?: StackJSXProps['gap'];
+  columnGap?: StackJSXProps['columnGap'];
+  direction?: StackJSXProps['direction'];
+  inlineSize?: StackJSXProps['inlineSize'];
+  justifyContent?: StackJSXProps['justifyContent'];
+  padding?: StackJSXProps['padding'];
+  paddingBlock?: StackJSXProps['paddingBlock'];
+  paddingBlockStart?: StackJSXProps['paddingBlockStart'];
+  paddingBlockEnd?: StackJSXProps['paddingBlockEnd'];
+  paddingInline?: StackJSXProps['paddingInline'];
+  paddingInlineStart?: StackJSXProps['paddingInlineStart'];
+  paddingInlineEnd?: StackJSXProps['paddingInlineEnd'];
+  rowGap?: StackJSXProps['rowGap'];
+}
+
+interface Text extends Pick<TextProps, 'color' | 'type' | 'tone'> {
+  color?: TextJSXProps['color'];
+  type?: TextJSXProps['type'];
+  tone?: TextJSXProps['tone'];
+}
+
+interface TextAreaEvents {
+  input?: TextAreaJSXProps['onInput'];
+  focus?: TextAreaJSXProps['onFocus'];
+  blur?: TextAreaJSXProps['onBlur'];
+  change?: TextAreaJSXProps['onChange'];
+}
+
+interface TextAreaSlots {
+  accessory?: HTMLElement;
+}
+
+interface TextArea
+  extends Pick<
+    TextAreaProps,
+    | 'label'
+    | 'details'
+    | 'value'
+    | 'placeholder'
+    | 'disabled'
+    | 'error'
+    | 'required'
+    | 'maxLength'
+    | 'rows'
+  > {
+  label?: TextAreaJSXProps['label'];
+  details?: TextAreaJSXProps['details'];
+  value?: TextAreaJSXProps['value'];
+  placeholder?: TextAreaJSXProps['placeholder'];
+  disabled?: TextAreaJSXProps['disabled'];
+  error?: TextAreaJSXProps['error'];
+  required?: TextAreaJSXProps['required'];
+  maxLength?: TextAreaJSXProps['maxLength'];
+  rows?: TextAreaJSXProps['rows'];
+}
+
+interface TextFieldEvents {
+  input?: TextFieldJSXProps['onInput'];
+  focus?: TextFieldJSXProps['onFocus'];
+  blur?: TextFieldJSXProps['onBlur'];
+  change?: TextFieldJSXProps['onChange'];
+}
+
+interface TextFieldSlots {
+  accessory?: HTMLElement;
+}
+
+interface TextField
+  extends Pick<
+    TextFieldProps,
+    | 'label'
+    | 'details'
+    | 'value'
+    | 'placeholder'
+    | 'disabled'
+    | 'error'
+    | 'required'
+    | 'maxLength'
+  > {
+  label?: TextFieldJSXProps['label'];
+  details?: TextFieldJSXProps['details'];
+  value?: TextFieldJSXProps['value'];
+  placeholder?: TextFieldJSXProps['placeholder'];
+  disabled?: TextFieldJSXProps['disabled'];
+  error?: TextFieldJSXProps['error'];
+  required?: TextFieldJSXProps['required'];
+  maxLength?: TextFieldJSXProps['maxLength'];
+}
+
+interface TileEvents {
+  press?: TileJSXProps['onPress'];
+}
+
+interface Tile
+  extends Pick<
+    TileProps,
+    'title' | 'subtitle' | 'enabled' | 'destructive' | 'badgeValue' | 'testID'
+  > {
+  title: TileJSXProps['title'];
+  subtitle?: TileJSXProps['subtitle'];
+  enabled?: TileJSXProps['enabled'];
+  destructive?: TileJSXProps['destructive'];
+  badgeValue?: TileJSXProps['badgeValue'];
+  testID?: TileJSXProps['testID'];
+}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$e]: BaseElementPropsWithChildren<ButtonJSXProps>;
+      [tagName$k]: BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$e]: BaseElementPropsWithChildren<ButtonJSXProps>;
+      [tagName$k]: BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$d]: BaseElementPropsWithChildren<TextJSXProps>;
+      [tagName$j]: BaseElementPropsWithChildren<TextJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$d]: BaseElementPropsWithChildren<TextJSXProps>;
+      [tagName$j]: BaseElementPropsWithChildren<TextJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$c]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
+      [tagName$i]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$c]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
+      [tagName$i]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$b]: BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName$h]: BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$b]: BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName$h]: BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$a]: BaseElementPropsWithChildren<NavigatorJSXProps>;
+      [tagName$g]: BaseElementPropsWithChildren<NavigatorJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$a]: BaseElementPropsWithChildren<NavigatorJSXProps>;
+      [tagName$g]: BaseElementPropsWithChildren<NavigatorJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$9]: BaseElementPropsWithChildren<ScreenJSXProps>;
+      [tagName$f]: BaseElementPropsWithChildren<ScreenJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$9]: BaseElementPropsWithChildren<ScreenJSXProps>;
+      [tagName$f]: BaseElementPropsWithChildren<ScreenJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$8]: BaseElementPropsWithChildren<
+      [tagName$e]: BaseElementPropsWithChildren<
         Omit<BannerJSXProps, 'primaryAction'>
       >;
     }
@@ -2889,7 +3840,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$8]: BaseElementPropsWithChildren<
+      [tagName$e]: BaseElementPropsWithChildren<
         Omit<BannerJSXProps, 'primaryAction'>
       >;
     }
@@ -2898,112 +3849,220 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$7]: BaseElementPropsWithChildren<BoxJSXProps>;
+      [tagName$d]: BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$7]: BaseElementPropsWithChildren<BoxJSXProps>;
+      [tagName$d]: BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$6]: BaseElementProps<IconJSXProps>;
+      [tagName$c]: BaseElementProps<IconJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$6]: BaseElementProps<IconJSXProps>;
+      [tagName$c]: BaseElementProps<IconJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$5]: BaseElementPropsWithChildren<StackJSXProps>;
+      [tagName$b]: BaseElementPropsWithChildren<StackJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$5]: BaseElementPropsWithChildren<StackJSXProps>;
+      [tagName$b]: BaseElementPropsWithChildren<StackJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$4]: BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName$a]: BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$4]: BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName$a]: BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$3]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
+      [tagName$9]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$3]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
+      [tagName$9]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$2]: BaseElementPropsWithChildren<ChoiceJSXProps>;
+      [tagName$8]: BaseElementPropsWithChildren<ChoiceJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$2]: BaseElementPropsWithChildren<ChoiceJSXProps>;
+      [tagName$8]: BaseElementPropsWithChildren<ChoiceJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$1]: BaseElementPropsWithChildren<ModalJSXProps>;
+      [tagName$7]: BaseElementPropsWithChildren<
+        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
+      >;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$1]: BaseElementPropsWithChildren<ModalJSXProps>;
+      [tagName$7]: BaseElementPropsWithChildren<
+        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
+      >;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<TextFieldJSXProps>;
+      [tagName$6]: BaseElementPropsWithChildren<
+        Omit<TextFieldJSXProps, 'accessory'>
+      >;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<TextFieldJSXProps>;
+      [tagName$6]: BaseElementPropsWithChildren<
+        Omit<TextFieldJSXProps, 'accessory'>
+      >;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$5]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$5]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$4]: BaseElementPropsWithChildren<
+        Omit<EmailFieldJSXProps, 'accessory'>
+      >;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$4]: BaseElementPropsWithChildren<
+        Omit<EmailFieldJSXProps, 'accessory'>
+      >;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$3]: BaseElementPropsWithChildren<ClickableJSXProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$3]: BaseElementPropsWithChildren<ClickableJSXProps>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$2]: BaseElementPropsWithChildren<
+        Omit<TextAreaJSXProps, 'accessory'>
+      >;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$2]: BaseElementPropsWithChildren<
+        Omit<TextAreaJSXProps, 'accessory'>
+      >;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$1]: BaseElementPropsWithChildren<
+        Omit<NumberFieldJSXProps, 'accessory'>
+      >;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$1]: BaseElementPropsWithChildren<
+        Omit<NumberFieldJSXProps, 'accessory'>
+      >;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName]: BaseElementPropsWithChildren<
+        Omit<DateFieldJSXProps, 'accessory'>
+      >;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName]: BaseElementPropsWithChildren<
+        Omit<DateFieldJSXProps, 'accessory'>
+      >;
     }
   }
 }

@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -199,7 +199,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 export interface MoneyFieldProps
   extends Omit<PreactFieldProps, 'value'>,
-    Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step' | 'currencyCode'> {
+    Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step'> {
   value: Required<MoneyFieldProps$1>['value'];
 }
 
@@ -210,7 +210,6 @@ declare class MoneyField
   accessor max: MoneyFieldProps['max'];
   accessor min: MoneyFieldProps['min'];
   accessor step: MoneyFieldProps['step'];
-  accessor currencyCode: MoneyFieldProps['currencyCode'];
   get value(): MoneyFieldProps['value'];
   set value(value: MoneyFieldProps['value']);
   constructor();

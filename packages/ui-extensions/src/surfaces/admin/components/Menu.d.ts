@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -17,7 +17,7 @@ export interface MenuProps
   /**
    * @implementation only accepts `s-button` and `s-section`
    */
-  chilren?: ComponentChild;
+  children?: ComponentChild;
 }
 
 export type Styles = string;

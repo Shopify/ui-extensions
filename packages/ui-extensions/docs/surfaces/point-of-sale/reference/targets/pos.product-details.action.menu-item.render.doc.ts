@@ -1,5 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -7,27 +7,27 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A static extension target that renders as a menu item on the product details screen',
   defaultExample: {
-    codeblock: generateCodeBlock(
+    codeblock: generateJsxCodeBlock(
       'Menu item',
       'targets',
       'product-details-menu-item',
     ),
   },
   category: 'Targets',
-  subCategory: 'Product details',
+  subCategory: 'Action',
   isVisualComponent: false,
   related: [
     {
       name: ExtensionTargetType.PosProductDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-product-details-action-render',
+      url: 'pos-product-details-action-render',
     },
     {
       name: ExtensionTargetType.PosProductDetailsBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-product-details-block-render',
+      url: '../block/pos-product-details-block-render',
     },
     {
       name: 'ProductAPI',
-      url: '/docs/api/pos-ui-extensions/apis/product-api',
+      url: '../../apis/product-api',
     },
   ],
   type: 'Target',

@@ -1,4 +1,4 @@
-import type {RemoteSubscribable} from '@remote-ui/async-subscription';
+import type {ReadonlySignalLike} from '../../../../shared';
 
 export type ConnectivityStateSeverity = 'Connected' | 'Disconnected';
 
@@ -11,10 +11,10 @@ export interface ConnectivityState {
 
 export interface ConnectivityApiContent {
   /**
-   * Creates a subscription to changes in connectivity.
-   * Provides an initial value and a callback to subscribe to value changes.
+   * Provides read-only access to the current connectivity state and allows subscribing to connectivity changes.
+   * The `value` property provides the current connectivity state, and `subscribe` allows listening to changes.
    */
-  subscribable: RemoteSubscribable<ConnectivityState>;
+  current: ReadonlySignalLike<ConnectivityState>;
 }
 
 /**

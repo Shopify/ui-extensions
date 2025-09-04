@@ -1,11 +1,15 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {TableCellProps$1, ComponentChild} from './shared.d.ts';
+import type {
+  TableCellProps$1,
+  TableHeaderProps,
+  ComponentChild,
+} from './shared.d.ts';
 
 export interface TableCellProps extends TableCellProps$1 {}
 
@@ -84,8 +88,19 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+declare const headerFormatSymbol: unique symbol;
+
+export type HeaderFormat = Extract<
+  TableHeaderProps['format'],
+  'base' | 'currency' | 'numeric'
+>;
+
 declare class TableCell extends PreactCustomElement implements TableCellProps {
   constructor();
+  /** @private */
+  get [headerFormatSymbol](): HeaderFormat;
+  /** @private */
+  set [headerFormatSymbol](format: HeaderFormat);
 }
 declare global {
   interface HTMLElementTagNameMap {

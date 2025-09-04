@@ -14,12 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       description: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.description,
       type: 'Docs_Standard_SettingsApi',
     },
-    // {
-    //   title: 'useSettings',
-    //   description:
-    //     'Returns the setting values defined by the merchant for the extension.',
-    //   type: 'UseSettingsGeneratedType',
-    // },
   ],
   defaultExample: {
     codeblock: {

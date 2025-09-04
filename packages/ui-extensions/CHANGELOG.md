@@ -1,5 +1,65 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.26
+
+### Patch Changes
+
+- [#3199](https://github.com/Shopify/ui-extensions/pull/3199) [`f945269a47b791edd94e089a6e6596d6391ae4c3`](https://github.com/Shopify/ui-extensions/commit/f945269a47b791edd94e089a6e6596d6391ae4c3) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Add ButtonGroup, Chip and ClickableChip to StandardComponents.ts
+
+## 2025.10.0-rc.25
+
+### Minor Changes
+
+- [#3164](https://github.com/Shopify/ui-extensions/pull/3164) [`5b31df78919a64b14cf04009d7c3dfb9494c55c1`](https://github.com/Shopify/ui-extensions/commit/5b31df78919a64b14cf04009d7c3dfb9494c55c1) Thanks [@lsit](https://github.com/lsit)! - Add ButtonGroup component to customer account
+
+- [#3156](https://github.com/Shopify/ui-extensions/pull/3156) [`03dd2771e5a6cd5cb10fe7ad7c2be7964527d77a`](https://github.com/Shopify/ui-extensions/commit/03dd2771e5a6cd5cb10fe7ad7c2be7964527d77a) Thanks [@lsit](https://github.com/lsit)! - Add Section component with `primary-action` and `secondary-actions` slots to customer account
+
+### Patch Changes
+
+- [#3198](https://github.com/Shopify/ui-extensions/pull/3198) [`b1666ed134b9aa5257c01900d3882795ed6454da`](https://github.com/Shopify/ui-extensions/commit/b1666ed134b9aa5257c01900d3882795ed6454da) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Fix component.d.ts files not properly deduping non-unique references.
+
+- [#3186](https://github.com/Shopify/ui-extensions/pull/3186) [`2b7dcaa84677cdf231cb6e6821301fb0da84caf3`](https://github.com/Shopify/ui-extensions/commit/2b7dcaa84677cdf231cb6e6821301fb0da84caf3) Thanks [@lsit](https://github.com/lsit)! - Remove hook docs completely from customer account
+
+- [#3192](https://github.com/Shopify/ui-extensions/pull/3192) [`564f9588bde6963c4534d85c5b25d72f26ff47c5`](https://github.com/Shopify/ui-extensions/commit/564f9588bde6963c4534d85c5b25d72f26ff47c5) Thanks [@lsit](https://github.com/lsit)! - Fix broken image in customer account Avatar docs
+
+- [#3185](https://github.com/Shopify/ui-extensions/pull/3185) [`331bb59ea2813ae0a1a96ec3a34fddcf5442fb42`](https://github.com/Shopify/ui-extensions/commit/331bb59ea2813ae0a1a96ec3a34fddcf5442fb42) Thanks [@lsit](https://github.com/lsit)! - Remove unused JavaScript examples from customer account
+
+## 2025.10.0-rc.24
+
+### Minor Changes
+
+- [#3169](https://github.com/Shopify/ui-extensions/pull/3169) [`2be55775a56666304f932920187f543c43214ce4`](https://github.com/Shopify/ui-extensions/commit/2be55775a56666304f932920187f543c43214ce4) Thanks [@lrsterrett](https://github.com/lrsterrett)! - add signal-like value property to checkout api
+
+- [#3167](https://github.com/Shopify/ui-extensions/pull/3167) [`7db40afb20aa058552f2d29deaab1e7b7070b41e`](https://github.com/Shopify/ui-extensions/commit/7db40afb20aa058552f2d29deaab1e7b7070b41e) Thanks [@lsit](https://github.com/lsit)! - Add Menu component to customer account
+
+- [#3180](https://github.com/Shopify/ui-extensions/pull/3180) [`e239a0cbf53759d3a39eda8a6a04db16cf5ab62c`](https://github.com/Shopify/ui-extensions/commit/e239a0cbf53759d3a39eda8a6a04db16cf5ab62c) Thanks [@mayasarena](https://github.com/mayasarena)! - Add ButtonGroup to Admin UI Extensions
+
+- [#3175](https://github.com/Shopify/ui-extensions/pull/3175) [`4fcbe092da5d70a63daddde7a8208f0e843e96c0`](https://github.com/Shopify/ui-extensions/commit/4fcbe092da5d70a63daddde7a8208f0e843e96c0) Thanks [@oluwatimio](https://github.com/oluwatimio)! - Update Navigation Api docs and typings for customer accounts
+
+- [#3178](https://github.com/Shopify/ui-extensions/pull/3178) [`c2ea40c169984a14a7c01591793f1302190d5897`](https://github.com/Shopify/ui-extensions/commit/c2ea40c169984a14a7c01591793f1302190d5897) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Modified transaction data interface fields to include returnId and refundId to Return and Exchange TransactionData.
+
+### Patch Changes
+
+- [#3176](https://github.com/Shopify/ui-extensions/pull/3176) [`edcbcb816253847ad29bf2585a2b4aef5f1117db`](https://github.com/Shopify/ui-extensions/commit/edcbcb816253847ad29bf2585a2b4aef5f1117db) Thanks [@lsit](https://github.com/lsit)! - Update customer account component docs
+
+- [#3184](https://github.com/Shopify/ui-extensions/pull/3184) [`3d4aee370588c022567c65470d963f86d583b887`](https://github.com/Shopify/ui-extensions/commit/3d4aee370588c022567c65470d963f86d583b887) Thanks [@lsit](https://github.com/lsit)! - Update mapping of legacy components to Polaris web components for customer accounts
+
+## 2025.10.0-rc.23
+
+### Minor Changes
+
+- [#3159](https://github.com/Shopify/ui-extensions/pull/3159) [`1419068b5fada8a93bb26724aee1014c1cb8a415`](https://github.com/Shopify/ui-extensions/commit/1419068b5fada8a93bb26724aee1014c1cb8a415) Thanks [@thunderfern](https://github.com/thunderfern)! - Updated comments for documentation and adjusted the return value of the previous navigate function
+
+### Patch Changes
+
+- [#3155](https://github.com/Shopify/ui-extensions/pull/3155) [`4556253253d42d76accd96f533bb8c54ca4f2f44`](https://github.com/Shopify/ui-extensions/commit/4556253253d42d76accd96f533bb8c54ca4f2f44) Thanks [@oluwatimio](https://github.com/oluwatimio)! - Update Customer Account Avatar size prop to SizeKeyword
+
+## 2025.10.0-rc.22
+
+### Patch Changes
+
+- [#3141](https://github.com/Shopify/ui-extensions/pull/3141) [`45b2718a936e7bf99beb14f2f04ffcbfd16d6b47`](https://github.com/Shopify/ui-extensions/commit/45b2718a936e7bf99beb14f2f04ffcbfd16d6b47) Thanks [@Bruno125](https://github.com/Bruno125)! - Expose additional selling plan-related fields in POS UI extensions models
+
 ## 2025.10.0-rc.21
 
 ### Patch Changes

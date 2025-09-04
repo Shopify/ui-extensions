@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,7 +6,11 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ChoiceProps$1, ComponentChild} from './shared.d.ts';
+import type {
+  ComponentChildren,
+  ComponentChild,
+  ChoiceProps$1,
+} from './shared.d.ts';
 
 export interface ChoiceProps
   extends Required<
@@ -17,10 +21,17 @@ export interface ChoiceProps
       | 'disabled'
       | 'accessibilityLabel'
       | 'value'
-      | 'label'
-      | 'details'
     >
-  > {}
+  > {
+  /**
+   * Content to use as the choice label.
+   *
+   * The label is produced by extracting and
+   * concatenating the text nodes from the provided content;
+   * any markup or element structure is ignored.
+   */
+  children: ComponentChildren;
+}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -99,14 +110,16 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 
 declare class Choice extends PreactCustomElement implements ChoiceProps {
   accessor disabled: ChoiceProps['disabled'];
-  accessor details: ChoiceProps['details'];
   get selected(): boolean;
   set selected(selected: ChoiceProps['selected']);
   accessor value: ChoiceProps['value'];
   accessor accessibilityLabel: ChoiceProps['accessibilityLabel'];
-  accessor label: ChoiceProps['label'];
   accessor defaultSelected: ChoiceProps['defaultSelected'];
   constructor();
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -124,7 +137,9 @@ declare module 'preact' {
 declare const tagName = 's-choice';
 export interface ChoiceJSXProps
   extends Partial<ChoiceProps>,
-    Pick<ChoiceProps$1, 'id'> {}
+    Pick<ChoiceProps$1, 'id'> {
+  details?: ComponentChild;
+}
 
 export {Choice};
 export type {ChoiceJSXProps};

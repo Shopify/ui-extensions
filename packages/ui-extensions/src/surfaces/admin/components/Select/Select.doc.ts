@@ -1,5 +1,7 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 import sharedContent from '../../../../docs/shared/components/Select';
+import optionSharedContent from '../../../../docs/shared/components/Option';
+import optionGroupSharedContent from '../../../../docs/shared/components/OptionGroup';
 
 const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
@@ -16,6 +18,16 @@ const data: AdminReferenceEntityTemplateSchema = {
       description:
         'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
       type: 'SelectEvents',
+    },
+    {
+      title: optionSharedContent.name,
+      description: optionSharedContent.description,
+      type: 'Option',
+    },
+    {
+      title: optionGroupSharedContent.name,
+      description: optionGroupSharedContent.description,
+      type: 'OptionGroup',
     },
   ],
   defaultExample: {

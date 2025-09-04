@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -91,6 +91,7 @@ declare class TableHeaderRow
   constructor();
   /** @private */
   connectedCallback(): void;
+  /** @private */
   disconnectedCallback(): void;
 }
 declare global {

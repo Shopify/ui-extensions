@@ -10,34 +10,40 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'PageProps',
+      title: 'Properties',
       description: '',
-      type: 'PageProps',
+      type: 'PagePropsDocs',
     },
     {
-      title: 'Button slot primary-action',
+      title: 'Slots',
+      description: '',
+      type: 'PageElementSlotsDocs',
+    },
+    {
+      title: 'Breadcrumb-actions slot button properties',
+      description:
+        'Supported props for Button used inside Page `breadcrumb-actions` slot.<br><br>`children` are not supported.<br>Use `accessibilityLabel` instead.',
+      type: 'Docs_Page_Button_BreadcrumbAction',
+    },
+    {
+      title: 'Primary-action slot button properties',
       description:
         'Supported props for Buttons used inside Page `primary-action` slot.<br><br>`children` only support text.',
       type: 'Docs_Page_Button_PrimaryAction',
     },
     {
-      title: 'Button slot secondary-actions',
+      title: 'Secondary-actions slot button properties',
       description:
-        'Supported props for Button used inside Page `secondary-actions` slot.<br><br>`children` are not supported.<br>Use `accessibilityLabel` instead.',
+        'Supported props for Button used inside Page `secondary-actions` slot.<br><br>`children` only support text.',
       type: 'Docs_Page_Button_SecondaryAction',
-    },
-    {
-      title: 'Button slot breadcrumb-actions',
-      description:
-        'Supported props for Button used inside Page `breadcrumb-actions` slot.<br><br>`children` are not supported.<br>Use `accessibilityLabel` instead.',
-      type: 'Docs_Page_Button_BreadcrumbAction',
     },
   ],
   category: 'Polaris web components',
+  subCategory: 'Structure',
   defaultExample: {
     image: 'page-preview.png',
     altText:
-      'An example of how the Page component is used to structure the page title, description, order action buttons on the Order status page.',
+      'An example of the Page component shows the page title, description, and order action buttons on the Order status page.',
     codeblock: {
       title: 'Basic Page',
       tabs: [

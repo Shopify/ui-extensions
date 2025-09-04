@@ -7,6 +7,17 @@ export interface CustomerAccountActionProps extends IdProps {
   heading: string;
 }
 
+export interface CustomerAccountActionElementSlots {
+  /**
+   * The primary action to perform, provided as a button type element.
+   */
+  'primary-action'?: HTMLElement;
+  /**
+   * The secondary actions to perform, provided as button type elements.
+   */
+  'secondary-actions'?: HTMLElement;
+}
+
 export interface CustomerAccountActionElement
   extends HTMLElement,
     CustomerAccountActionProps {}

@@ -1,105 +1,79 @@
-/** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+/** VERSION: undefined **/
+/* eslint-disable import-x/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  CallbackEvent,
-  CallbackEventListener,
-  PreactBaseElementPropsWithChildren,
-  PreactCustomElement,
-} from './shared.d.ts';
+  EmailFieldProps,
+  Key,
+  Ref,
+  ComponentChild,
+} from './components-shared.d.ts';
 
+export type ComponentChildren = any;
 /**
- * The action button configuration for the email field.
+ * Used when an element does not have children.
  */
-export interface EmailFieldAction {
-  /**
-   * The label text for the action button.
-   */
-  label: string;
-  /**
-   * The callback executed when the action button is pressed.
-   */
-  onPress: () => void;
+export interface BaseElementProps<TClass = HTMLElement> {
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
 }
-
 /**
- * Use an email field to conveniently and accurately capture merchant email addresses.
+ * Used when an element has children.
  */
-export interface EmailFieldProps {
-  /**
-   * The label displayed above the email field.
-   */
-  label?: string;
-  /**
-   * The current value of the email field.
-   */
-  value?: string;
-  /**
-   * Action button configuration.
-   */
-  action?: EmailFieldAction;
-  /**
-   * Callback executed when the email changes.
-   */
-  onChange?: (value: string) => void;
-  /**
-   * Whether the field is editable.
-   */
-  editable?: boolean;
-  /**
-   * Whether the field is required.
-   */
-  required?: boolean;
-  /**
-   * The placeholder text shown when the field is empty.
-   */
-  placeholder?: string;
-  /**
-   * Help text displayed below the field.
-   */
-  helpText?: string;
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren;
+}
+export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
+  currentTarget: HTMLElementTagNameMap[T];
+  bubbles?: boolean;
+  cancelable?: boolean;
+  composed?: boolean;
+  detail?: any;
+  eventPhase: number;
+  target: HTMLElementTagNameMap[T] | null;
 }
 
-declare class EmailField
-  extends PreactCustomElement
-  implements EmailFieldProps
-{
-  accessor label: EmailFieldProps['label'];
-  accessor value: EmailFieldProps['value'];
-  accessor action: EmailFieldProps['action'];
-  accessor onchange: CallbackEventListener<typeof tagName> | null;
-  accessor editable: EmailFieldProps['editable'];
-  accessor required: EmailFieldProps['required'];
-  accessor placeholder: EmailFieldProps['placeholder'];
-  accessor helpText: EmailFieldProps['helpText'];
-  constructor();
+declare const tagName = 's-email-field';
+export interface EmailFieldJSXProps
+  extends Pick<
+    EmailFieldProps,
+    | 'label'
+    | 'value'
+    | 'placeholder'
+    | 'disabled'
+    | 'error'
+    | 'required'
+    | 'maxLength'
+    | 'details'
+  > {
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  accessory?: ComponentChild;
 }
-
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: EmailField;
+    [tagName]: EmailFieldJSXProps;
   }
 }
-
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: EmailFieldJSXProps &
-        PreactBaseElementPropsWithChildren<EmailField>;
+      [tagName]: BaseElementPropsWithChildren<
+        Omit<EmailFieldJSXProps, 'accessory'>
+      >;
     }
   }
 }
 
-declare const tagName = 's-email-field';
-
-export interface EmailFieldJSXProps extends Partial<EmailFieldProps> {
-  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
-}
-
-export {EmailField};
+export {tagName};
 export type {EmailFieldJSXProps};

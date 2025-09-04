@@ -18,12 +18,6 @@ const data: ReferenceEntityTemplateSchema = {
       description: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.description,
       type: 'Docs_Standard_CustomerPrivacyApi',
     },
-    // {
-    //   title: 'useCustomerPrivacy',
-    //   description:
-    //     'Returns the current customer privacy settings and metadata and re-renders your component if the customer privacy settings change.',
-    //   type: 'UseCustomerPrivacyGeneratedType',
-    // },
   ],
   defaultExample: {
     codeblock: {
@@ -52,11 +46,6 @@ const data: ReferenceEntityTemplateSchema = {
   //               code: '../examples/apis/sheet-consent-banner-with-form.example.tsx',
   //               language: 'jsx',
   //               title: 'React',
-  //             },
-  //             {
-  //               code: '../examples/apis/sheet-consent-banner-with-form.example.ts',
-  //               language: 'js',
-  //               title: 'JavaScript',
   //             },
   //           ],
   //         },

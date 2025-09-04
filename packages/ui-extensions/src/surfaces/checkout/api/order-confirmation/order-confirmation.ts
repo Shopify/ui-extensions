@@ -1,4 +1,4 @@
-import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
+import type {StatefulRemoteSubscribable} from '../../../../shared';
 
 export interface OrderConfirmation {
   order: {

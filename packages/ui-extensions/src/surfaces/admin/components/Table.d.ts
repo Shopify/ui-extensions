@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -22,11 +22,16 @@ export interface TableProps
   variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
 }
 
+export type HeaderFormat = Extract<
+  TableHeaderProps$1['format'],
+  'base' | 'currency' | 'numeric'
+>;
 export interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
   listSlot: Extract<
     TableHeaderProps$1['listSlot'],
     'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'
   >;
+  format: HeaderFormat;
 }
 
 export type Styles = string;
@@ -140,6 +145,7 @@ declare class Table extends PreactCustomElement implements TableProps {
     {
       listSlot: TableHeaderProps['listSlot'];
       textContent: string;
+      format: HeaderFormat;
     }[]
   >;
 

@@ -1,9 +1,9 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {generateCodeBlock} from '../helpers/generateCodeBlock';
-import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
+import {TargetLink} from '../types/ExtensionTargetType';
 
-const generateCodeBlockForCartApi = (title: string, fileName: string) =>
-  generateCodeBlock(title, 'cart-api', fileName);
+const generateJsxCodeBlockForCartApi = (title: string, fileName: string) =>
+  generateJsxCodeBlock(title, 'cart-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Cart API',
@@ -15,6 +15,7 @@ The Cart API enables UI Extensions to manage and interact with POS cart contents
 - ${TargetLink.PosHomeModalRender}
 - ${TargetLink.PosProductDetailsActionMenuItemRender}
 - ${TargetLink.PosProductDetailsActionRender}
+- ${TargetLink.PosProductDetailsBlockRender}
 - ${TargetLink.PosCustomerDetailsActionMenuItemRender}
 - ${TargetLink.PosCustomerDetailsActionRender}
 - ${TargetLink.PosCustomerDetailsBlockRender}
@@ -40,157 +41,157 @@ The Cart API enables UI Extensions to manage and interact with POS cart contents
     description: 'Examples of using the Cart API',
     examples: [
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Subscribe to cart changes.',
-          'subscribable',
+          'subscribe',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Check editable state of the cart',
           'check-cart-editable',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Apply a cart level discount',
           'apply-cart-discount',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Apply a cart level discount code',
           'apply-cart-code-discount',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Remove all the discounts on the cart and line items',
           'remove-all-discounts',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Set a custom discount on a line item',
           'set-line-item-discount',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Set a custom discount on multiple line items',
           'bulk-set-line-item-discounts',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Remove a discount on a line item',
           'remove-line-item-discount',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Clear the entire cart',
           'clear-cart',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Set the customer in the cart',
           'set-customer',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Remove the customer in the cart',
           'remove-customer',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Add a custom sale to the cart',
           'add-custom-sale',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Add a line item to the cart',
           'add-line-item',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Remove a line item from the cart',
           'remove-line-item',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Add custom properties to the cart',
           'add-cart-properties',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Remove custom properties from the cart',
           'remove-cart-properties',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Add custom properties to a line item',
           'add-line-item-properties',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Add custom properties to multiple line items',
           'bulk-add-line-item-properties',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Remove custom properties from a line item',
           'remove-line-item-properties',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Set an attributed staff member on the cart',
           'set-attributed-staff',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Set an attributed staff member on a line item',
           'set-attributed-staff-to-line-item',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Add an address to the customer in the cart',
           'add-address',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Delete an address corresponding to an ID',
           'delete-address',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Set the default address of the customer in the cart',
           'update-default-address',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Add a selling plan to a line item in the cart',
           'add-line-item-selling-plan',
         ),
       },
       {
-        codeblock: generateCodeBlockForCartApi(
+        codeblock: generateJsxCodeBlockForCartApi(
           'Remove a selling plan from a line item in the cart',
           'remove-line-item-selling-plan',
         ),

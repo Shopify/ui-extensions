@@ -4,9 +4,12 @@ export type StandardComponents =
   | 'Banner'
   | 'Box'
   | 'Button'
+  | 'ButtonGroup'
   | 'Checkbox'
   | 'Choice'
   | 'ChoiceList'
+  | 'Chip'
+  | 'ClickableChip'
   | 'Clickable'
   | 'DatePicker'
   | 'Divider'
@@ -18,6 +21,7 @@ export type StandardComponents =
   | 'Image'
   | 'Link'
   | 'ListItem'
+  | 'Menu'
   | 'MoneyField'
   | 'NumberField'
   | 'Option'
@@ -40,6 +44,7 @@ export type StandardComponents =
   | 'TextArea'
   | 'TextField'
   | 'Thumbnail'
+  | 'Tooltip'
   | 'UnorderedList'
   | 'URLField';
 

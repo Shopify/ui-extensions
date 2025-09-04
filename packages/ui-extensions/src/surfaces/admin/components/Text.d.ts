@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -18,6 +18,7 @@ export interface TextProps
       | 'type'
       | 'tone'
       | 'fontVariantNumeric'
+      | 'interestFor'
     >
   > {
   color: Extract<TextProps$1['color'], 'base' | 'subdued'>;
@@ -117,6 +118,7 @@ declare class Text extends PreactCustomElement implements TextProps {
   accessor type: TextProps['type'];
   accessor dir: TextProps['dir'];
   accessor accessibilityVisibility: TextProps['accessibilityVisibility'];
+  accessor interestFor: string;
   constructor();
 }
 declare global {

@@ -6,13 +6,6 @@ export const CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION = {
   filePath: 'api/docs.ts',
 };
 
-export const CUSTOMER_ACCOUNT_FULL_PAGE_API_DEFINITION = {
-  title: 'FullPageApi',
-  description: 'The api for full-page extension targets',
-  type: 'Docs_FullPageApi',
-  filePath: 'api/docs.ts',
-};
-
 export const COMPANY_LOCATION_API = {
   title: 'CompanyLocationApi',
   description:

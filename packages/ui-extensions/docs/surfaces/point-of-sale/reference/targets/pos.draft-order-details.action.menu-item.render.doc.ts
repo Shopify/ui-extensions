@@ -1,5 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -7,23 +7,23 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A static extension target that renders as a menu item on the draft order details screen',
   defaultExample: {
-    codeblock: generateCodeBlock(
+    codeblock: generateJsxCodeBlock(
       'Menu item',
       'targets',
       'pos-draft-order-details-action-menu-item',
     ),
   },
   category: 'Targets',
-  subCategory: 'Draft order details',
+  subCategory: 'Action',
   isVisualComponent: false,
   related: [
     {
       name: ExtensionTargetType.PosDraftOrderDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-draft-order-details-action-render',
+      url: 'pos-draft-order-details-action-render',
     },
     {
       name: ExtensionTargetType.PosDraftOrderDetailsBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-draft-order-details-block-render',
+      url: '../block/pos-draft-order-details-block-render',
     },
   ],
   type: 'Target',

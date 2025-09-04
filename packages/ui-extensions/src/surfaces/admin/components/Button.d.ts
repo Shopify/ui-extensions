@@ -1,4 +1,4 @@
-/** VERSION: 1.8.0 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -15,7 +15,10 @@ import type {
 } from './shared.d.ts';
 
 export interface IconProps
-  extends Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size'> {
+  extends Pick<
+    IconProps$1,
+    'type' | 'tone' | 'color' | 'size' | 'interestFor'
+  > {
   /**
    * Specifies the type of icon that will be displayed.
    */
@@ -143,7 +146,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 export interface PreactOverlayControlProps
   extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
   /**
-   * Sets the action the `commandFor` should take when this clickable is activated.
+   * Sets the action the [command](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this clickable is activated.
    *
    * See the documentation of particular components for the actions they support.
    *
@@ -153,13 +156,18 @@ export interface PreactOverlayControlProps
    * - `--toggle`: toggles the target component.
    *
    * @default '--auto'
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
   command: Extract<
     InteractionProps['command'],
     '--show' | '--hide' | '--toggle' | '--auto'
   >;
+  /**
+   * Sets the element the [commandFor](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor) should act on when this clickable is activated.
+   */
   commandFor: Extract<InteractionProps['commandFor'], string>;
+  /**
+   * Sets the element the [interestFor](https://open-ui.org/components/interest-invokers.explainer/#the-pitch-in-code) should act on when this clickable is activated.
+   */
   interestFor: Extract<InteractionProps['interestFor'], string>;
 }
 
