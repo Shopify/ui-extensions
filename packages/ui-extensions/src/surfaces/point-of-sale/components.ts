@@ -53,12 +53,8 @@ export type {NavigatorProps} from './render/components/Navigator/Navigator';
 export {NumberField} from './render/components/NumberField/NumberField';
 export type {NumberFieldProps} from './render/components/NumberField/NumberField';
 export {PinPad} from './render/components/PinPad/PinPad';
-export type {
-  PinPadProps,
-  PinLength,
-  PinPadActionType,
-  PinValidationResult,
-} from './render/components/PinPad/PinPad';
+export type {PinPadProps} from './render/components/PinPad/PinPad';
+export type {PinValidationResult} from './types/pin-pad';
 export {POSBlock} from './render/components/POSBlock/POSBlock';
 export type {POSBlockProps} from './render/components/POSBlock/POSBlock';
 export {POSBlockRow} from './render/components/POSBlock/POSBlockRow';

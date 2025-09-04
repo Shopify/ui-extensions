@@ -127,3 +127,12 @@ export type {CountryCode} from './types/country-code';
 
 export type {Session} from './types/session';
 export type {Storage, StorageError} from './types/storage';
+
+export type {
+  PinPadApiContent,
+  PinPadApi,
+  PinPadOptions,
+  PinPadApiActionType,
+} from './render/api/pin-pad-api/pin-pad-api';
+
+export type {PinPadResult, PinLength, PinPadActionType} from './types/pin-pad';
