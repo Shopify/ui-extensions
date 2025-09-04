@@ -1,10 +1,11 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 
-export default function extension() {
-  render(<App />, document.body);
-}
+export default async () => {
+  render(<Extension />, document.body);
+};
 
-function App() {
+function Extension() {
   return (
     <s-section heading="Rewards">
       <s-button slot="primary-action" variant="primary">

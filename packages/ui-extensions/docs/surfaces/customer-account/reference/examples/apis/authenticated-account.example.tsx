@@ -1,15 +1,16 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 
-export default async function () {
+export default async () => {
   render(<Extension />, document.body);
-}
+};
 
 function Extension() {
   const orderStatusCustomerId =
-    shopify.authenticatedAccount.customer.current
+    shopify.authenticatedAccount.customer.value
       .id;
   const authenticatedCustomerId =
-    shopify.authenticatedAccount.customer.current
+    shopify.authenticatedAccount.customer.value
       .id;
 
   if (

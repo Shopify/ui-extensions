@@ -1,9 +1,10 @@
-import { render } from 'preact';
-import { useState } from 'preact/hooks';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
+import {useState} from 'preact/hooks';
 
 export default async () => {
   render(<Extension />, document.body);
-}
+};
 
 const defaultValues = {
   text: 'default value',
