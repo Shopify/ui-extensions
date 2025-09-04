@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'ChoiceList',
   description:
     'Use `s-choice-list` to group related choices together, allowing single or multiple selections. Provides a structured way to present options to users.',
-  thumbnail: 'choice-list-thumbnail.png',
+  thumbnail: 'radio-button-list-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -28,13 +28,13 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Forms',
   defaultExample: {
-    image: 'choice-list-default.png',
+    image: 'radio-button-list-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'HTML',
+          language: 'html',
         },
       ],
     },
