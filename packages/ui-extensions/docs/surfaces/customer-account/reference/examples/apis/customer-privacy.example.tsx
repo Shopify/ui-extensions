@@ -1,26 +1,14 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {useEffect, useState} from 'preact/hooks';
 
 export default async () => {
-  render(<App />, document.body);
-}
+  render(<Extension />, document.body);
+};
 
-function App() {
-  const [visitorConsent, setVisitorConsent] =
-    useState(
-      shopify.customerPrivacy.current
-        .visitorConsent || {},
-    );
-
-  useEffect(() => {
-    shopify.customerPrivacy.subscribe(
-      (updatedConsent) => {
-        setVisitorConsent(
-          updatedConsent.visitorConsent,
-        );
-      },
-    );
-  }, []);
+function Extension() {
+  const visitorConsent =
+    shopify.customerPrivacy.value
+      .visitorConsent || {};
 
   // Use consent values
   console.log(

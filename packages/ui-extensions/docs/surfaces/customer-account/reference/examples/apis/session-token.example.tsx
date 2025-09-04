@@ -1,11 +1,12 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 import {useEffect} from 'preact/hooks';
 
 export default async () => {
-  render(<App />, document.body);
-}
+  render(<Extension />, document.body);
+};
 
-function App() {
+function Extension() {
   useEffect(() => {
     async function queryApi() {
       // Request a new (or cached) session token from Shopify

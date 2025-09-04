@@ -1,18 +1,13 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {useEffect, useState} from 'preact/hooks';
-export default async () => {
-  render(<App />, document.body);
-}
 
-function App() {
-  const [title, setTitle] = useState(
-    shopify.target.current.merchandise?.title,
-  );
-  useEffect(() => {
-    shopify.target.subscribe((updatedTarget) => {
-      setTitle(updatedTarget.merchandise?.title);
-    });
-  }, []);
+export default async () => {
+  render(<Extension />, document.body);
+};
+
+function Extension() {
+  const title =
+    shopify.target.value.merchandise?.title;
 
   return (
     <s-text>Line item title: {title}</s-text>

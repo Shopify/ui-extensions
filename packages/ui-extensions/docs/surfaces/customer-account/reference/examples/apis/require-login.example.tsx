@@ -1,10 +1,11 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 
 export default async () => {
-  render(<App />, document.body);
-}
+  render(<Extension />, document.body);
+};
 
-function App() {
+function Extension() {
   async function reportAnIssue() {
     await shopify.requireLogin();
     // send a request to backend
