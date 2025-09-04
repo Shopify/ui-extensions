@@ -1,9 +1,10 @@
 /* See the locales/en.default.json tab for the translation keys and values for this example */
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 
 export default async () => {
   render(<Extension />, document.body);
-}
+};
 
 function Extension() {
   const purchasingCompany =

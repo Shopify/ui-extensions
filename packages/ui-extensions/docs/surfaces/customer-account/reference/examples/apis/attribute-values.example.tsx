@@ -1,34 +1,16 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {useEffect, useState} from 'preact/hooks';
 
 export default async () => {
-  render(<App />, document.body);
-}
+  render(<Extension />, document.body);
+};
 
-function App() {
-  const [
-    buyerSelectedFreeTShirt,
-    setBuyerSelectedFreeTShirt,
-  ] = useState(
-    shopify.attributes.current
-      ?.buyerSelectedFreeTShirt || false,
-  );
-  const [tshirtSize, setTshirtSize] = useState(
-    shopify.attributes.current?.tshirtSize || '',
-  );
-
-  useEffect(() => {
-    shopify.attributes.subscribe(
-      (updatedAttributes) => {
-        setBuyerSelectedFreeTShirt(
-          updatedAttributes.buyerSelectedFreeTShirt,
-        );
-        setTshirtSize(
-          updatedAttributes.tshirtSize,
-        );
-      },
-    );
-  }, []);
+function Extension() {
+  const buyerSelectedFreeTShirt =
+    shopify.attributes.value
+      ?.buyerSelectedFreeTShirt || false;
+  const tshirtSize =
+    shopify.attributes.value?.tshirtSize || '';
 
   if (Boolean(buyerSelectedFreeTShirt) === true) {
     return (
