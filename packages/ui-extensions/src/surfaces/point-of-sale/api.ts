@@ -15,6 +15,8 @@ export type {
 export type {StandardApi} from './render/api/standard/standard-api';
 export type {ActionTargetApi} from './render/api/action-target-api/action-target-api';
 
+export type {CashDrawerApi} from './render/api/cash-drawer-api/cash-drawer-api';
+
 export type {
   ConnectivityStateSeverity,
   ConnectivityState,
