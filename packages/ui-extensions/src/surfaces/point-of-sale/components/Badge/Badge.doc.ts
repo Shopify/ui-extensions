@@ -6,7 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
     "Use `s-badge` to inform merchants of the status of an item or action that's been taken. Badges display text with visual styling to communicate status information.",
   thumbnail: 'badge-thumbnail.png',
   isVisualComponent: true,
-  type: '',
+  type: 'component',
   definitions: [
     {
       title: 'Properties',
