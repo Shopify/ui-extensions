@@ -28,11 +28,11 @@ export interface ScannerData {
 
 export interface ScannerApiContent {
   /**
-   * Provides access to scanner data and allows subscribing to new scan events.
+   * Provides read-only access to scanner data and allows subscribing to new scan events.
    */
   scannerData: ScannerData;
   /**
-   * Provides access to the available scanner sources on the POS device.
+   * Provides read-only access to the available scanner sources on the POS device.
    */
   sources: ScannerSources;
 }

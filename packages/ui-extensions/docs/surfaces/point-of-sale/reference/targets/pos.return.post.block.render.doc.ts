@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -6,7 +7,13 @@ const data: ReferenceEntityTemplateSchema = {
   description: `Renders a custom section within the native post return screen
   > Note:
   > This is part of a POS UI Extensions developer preview. More information to come.`,
-
+  defaultExample: {
+    codeblock: generateJsxCodeBlock(
+      'Return Post Block',
+      'targets',
+      'pos-return-post-block-render',
+    ),
+  },
   category: 'Targets',
   subCategory: 'Block',
   isVisualComponent: false,
@@ -15,13 +22,13 @@ const data: ReferenceEntityTemplateSchema = {
       name: ExtensionTargetType.PosReturnPostActionMenuItemRender,
       subtitle: 'Target',
       type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/post-return/pos-return-post-action-menu-item-render',
+      url: '../action/pos-return-post-action-menu-item-render',
     },
     {
       name: ExtensionTargetType.PosReturnPostActionRender,
       subtitle: 'Target',
       type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/post-return/pos-return-post-action-render',
+      url: '../action/pos-return-post-action-render',
     },
   ],
   type: 'Target',

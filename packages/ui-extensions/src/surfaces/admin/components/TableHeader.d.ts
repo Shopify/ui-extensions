@@ -1,4 +1,4 @@
-/** VERSION: 1.9.1 **/
+/** VERSION: 1.10.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -8,11 +8,16 @@
 /// <reference lib="DOM" />
 import type {TableHeaderProps$1, ComponentChild} from './shared.d.ts';
 
+export type HeaderFormat = Extract<
+  TableHeaderProps$1['format'],
+  'base' | 'currency' | 'numeric'
+>;
 export interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
   listSlot: Extract<
     TableHeaderProps$1['listSlot'],
     'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'
   >;
+  format: HeaderFormat;
 }
 
 export type Styles = string;
@@ -95,6 +100,7 @@ declare class TableHeader
   implements TableHeaderProps
 {
   accessor listSlot: TableHeaderProps['listSlot'];
+  accessor format: TableHeaderProps['format'];
   constructor();
 }
 declare global {

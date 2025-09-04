@@ -1,5 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -7,7 +7,11 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A full-screen extension target that renders when a `pos.product-details.action.menu-item.render` target calls for it',
   defaultExample: {
-    codeblock: generateCodeBlock('Action', 'targets', 'product-details-action'),
+    codeblock: generateJsxCodeBlock(
+      'Action',
+      'targets',
+      'product-details-action',
+    ),
   },
   category: 'Targets',
   subCategory: 'Action',
@@ -15,15 +19,15 @@ const data: ReferenceEntityTemplateSchema = {
   related: [
     {
       name: ExtensionTargetType.PosProductDetailsActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-product-details-action-menu-item-render',
+      url: 'pos-product-details-action-menu-item-render',
     },
     {
       name: ExtensionTargetType.PosProductDetailsBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-product-details-block-render',
+      url: 'pos-product-details-block-render',
     },
     {
       name: 'ProductAPI',
-      url: '/docs/api/pos-ui-extensions/apis/product-api',
+      url: '../../apis/product-api',
     },
   ],
   type: 'Target',

@@ -1,23 +1,15 @@
-import {extension, Checkbox} from '@shopify/ui-extensions/point-of-sale';
+import {extension, Button} from '@shopify/ui-extensions/point-of-sale';
 
 export default extension('pos.home.modal.render', (root, api) => {
-  async function onCheckboxChange(isChecked) {
-    const result = await api.applyAttributeChange({
-      type: 'updateAttribute',
-      key: 'includeGift',
-      value: isChecked ? 'yes' : 'no',
-    });
-
-    console.log('applyAttributeChange result', result);
+  async function onButtonClick() {
+    await api.print.print('documents/test-print');
+    console.log('print completed');
   }
 
   root.replaceChildren(
-    root.createComponent(
-      Checkbox,
-      {
-        onChange: onCheckboxChange,
-      },
-      'Include a complimentary gift',
-    ),
+    root.createComponent(Button, {
+      onPress: onButtonClick,
+      title: 'Print',
+    }),
   );
 });

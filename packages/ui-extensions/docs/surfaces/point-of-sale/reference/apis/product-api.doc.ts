@@ -1,9 +1,9 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
-import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
 
-const generateCodeBlockForProductApi = (title: string, fileName: string) =>
-  generateCodeBlock(title, 'product-api', fileName);
+const generateJsxCodeBlockForProductApi = (title: string, fileName: string) =>
+  generateJsxCodeBlock(title, 'product-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Product API',
@@ -13,6 +13,7 @@ The Product API provides an extension with data about the current Product.
 #### Supporting targets
 - ${TargetLink.PosProductDetailsActionMenuItemRender}
 - ${TargetLink.PosProductDetailsActionRender}
+- ${TargetLink.PosProductDetailsBlockRender}
 `,
   isVisualComponent: false,
   type: 'APIs',
@@ -27,7 +28,7 @@ The Product API provides an extension with data about the current Product.
     description: 'Examples of using the Product API.',
     examples: [
       {
-        codeblock: generateCodeBlockForProductApi(
+        codeblock: generateJsxCodeBlockForProductApi(
           'Retrieve the ID of the product.',
           'id',
         ),

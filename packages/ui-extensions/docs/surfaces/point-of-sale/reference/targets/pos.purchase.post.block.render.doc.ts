@@ -1,5 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'Renders a custom section within the native post purchase screen',
   defaultExample: {
-    codeblock: generateCodeBlock(
+    codeblock: generateJsxCodeBlock(
       'Block',
       'targets',
       'pos-purchase-post-block-render',
@@ -19,11 +19,11 @@ const data: ReferenceEntityTemplateSchema = {
   related: [
     {
       name: ExtensionTargetType.PosPurchasePostActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-action-menu-item-render',
+      url: '../action/pos-purchase-post-action-menu-item-render',
     },
     {
       name: ExtensionTargetType.PosPurchasePostActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-action-render',
+      url: '../action/pos-purchase-post-action-render',
     },
   ],
   type: 'Target',

@@ -16,7 +16,7 @@ The Scanner API enables an extension to access scanner data and available scanni
 - ${TargetLink.PosProductDetailsActionRender}
 - ${TargetLink.PosOrderDetailsActionRender}
 - ${TargetLink.PosDraftOrderDetailsActionRender}
-- ${TargetLink.PosCustomerDetailsActionMenuItemRender}
+- ${TargetLink.PosCustomerDetailsActionRender}
 `,
   isVisualComponent: false,
   type: 'APIs',

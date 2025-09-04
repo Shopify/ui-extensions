@@ -15,17 +15,6 @@ const data: ReferenceEntityTemplateSchema = {
       description: ORDER_STATUS_API_DEFINITION.description,
       type: 'Docs_OrderStatus_AttributesApi',
     },
-    // {
-    //   title: 'useAttributes',
-    //   description: 'Returns the proposed `attributes` applied to the checkout.',
-    //   type: 'UseAttributesGeneratedType',
-    // },
-    // {
-    //   title: 'useAttributeValues',
-    //   description:
-    //     'Returns the values for the specified `attributes` applied to the checkout.',
-    //   type: 'UseAttributeValuesGeneratedType',
-    // },
   ],
   defaultExample: {
     codeblock: {

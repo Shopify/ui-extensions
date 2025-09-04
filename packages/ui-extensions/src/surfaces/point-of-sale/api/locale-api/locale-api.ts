@@ -2,7 +2,7 @@ import type {ReadonlySignalLike} from '../../../../shared';
 
 export interface LocaleApiContent {
   /**
-   * Provides access to the current IETF-formatted locale and allows subscribing to locale changes.
+   * Provides read-only access to the current IETF-formatted locale and allows subscribing to locale changes.
    * The `value` property provides the current locale, and `subscribe` allows listening to changes.
    */
   current: ReadonlySignalLike<string>;

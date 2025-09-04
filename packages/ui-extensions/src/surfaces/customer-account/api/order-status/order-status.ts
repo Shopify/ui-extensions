@@ -1,5 +1,3 @@
-import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
-
 import type {
   CurrencyCode,
   Country,
@@ -8,6 +6,7 @@ import type {
   Attribute,
   MailingAddress,
   Language,
+  StatefulRemoteSubscribable,
 } from '../shared';
 import type {ExtensionTarget} from '../../extension-targets';
 import {Extension} from '../shared';

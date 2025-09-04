@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -6,7 +7,13 @@ const data: ReferenceEntityTemplateSchema = {
   description: `A static extension target that renders as a menu item on the post-exchange screen
   > Note:
   > This is part of a POS UI Extensions developer preview. More information to come.`,
-
+  defaultExample: {
+    codeblock: generateJsxCodeBlock(
+      'Exchange Post Action Menu Item',
+      'targets',
+      'pos-exchange-post-action-menu-item-render',
+    ),
+  },
   category: 'Targets',
   subCategory: 'Action',
   isVisualComponent: false,
@@ -15,13 +22,13 @@ const data: ReferenceEntityTemplateSchema = {
       name: ExtensionTargetType.PosExchangePostActionRender,
       subtitle: 'Target',
       type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/post-exchange/pos-exchange-post-action-render',
+      url: 'pos-exchange-post-action-render',
     },
     {
       name: ExtensionTargetType.PosExchangePostBlockRender,
       subtitle: 'Target',
       type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/post-exchange/pos-exchange-post-block-render',
+      url: '../block/pos-exchange-post-block-render',
     },
   ],
   type: 'Target',
