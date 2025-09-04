@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'preact/hooks';
 
-import {StatefulRemoteSubscribable} from '../api/shared';
+import {ReadonlySignalLike} from '../api/shared';
 
-type Subscriber<T> = Parameters<StatefulRemoteSubscribable<T>['subscribe']>[0];
+type Subscriber<T> = Parameters<ReadonlySignalLike<T>['subscribe']>[0];
 
 /**
  * Subscribes to the special wrapper type that all “changeable” values in the
@@ -14,9 +14,9 @@ type Subscriber<T> = Parameters<StatefulRemoteSubscribable<T>['subscribe']>[0];
  * > for accessing the current value of each individual resource in the checkout.
  */
 export function useSubscription<Value>(
-  subscription: StatefulRemoteSubscribable<Value>,
+  subscription: ReadonlySignalLike<Value>,
 ): Value {
-  const [, setValue] = useState(subscription.current);
+  const [, setValue] = useState(subscription.value);
 
   useEffect(() => {
     let didUnsubscribe = false;
@@ -34,7 +34,7 @@ export function useSubscription<Value>(
     // Because we're subscribing in a passive effect,
     // it's possible for an update to occur between render and the effect handler.
     // Check for this and schedule an update if work has occurred.
-    checkForUpdates(subscription.current);
+    checkForUpdates(subscription.value);
 
     return () => {
       didUnsubscribe = true;
@@ -42,5 +42,5 @@ export function useSubscription<Value>(
     };
   }, [subscription]);
 
-  return subscription.current;
+  return subscription.value;
 }
