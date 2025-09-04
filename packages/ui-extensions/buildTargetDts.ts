@@ -134,12 +134,22 @@ function extractTargetComponents(
   return extensionTargetArray
     .map((extensionTargets) => {
       return extensionTargets.getProperties().map((property) => {
-        const components = property
+        const componentsType = property
           .getType()
           .getProperty('components')
-          ?.getTypeAtLocation(extensionTargets)
-          .getUnionTypes()
-          .map((t) => t.getText().replaceAll('"', ''));
+          ?.getTypeAtLocation(extensionTargets);
+
+        let components: string[] | undefined;
+        if (componentsType) {
+          if (componentsType.isUnion()) {
+            components = componentsType
+              .getUnionTypes()
+              .map((t) => t.getText().replaceAll('"', ''));
+            // Single component targets like SmartGridComponents = 'Tile' return an empty array for getUnionTypes, so we need to handle that case
+          } else if (componentsType.isLiteral()) {
+            components = [componentsType.getText().replaceAll('"', '')];
+          }
+        }
 
         return {
           name: property.getName(),
