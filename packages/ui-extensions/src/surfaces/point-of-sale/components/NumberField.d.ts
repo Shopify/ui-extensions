@@ -42,7 +42,7 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-number-field';
-export interface NumberFieldJSXProps
+export interface PickedJSXProps
   extends Pick<
     NumberFieldProps,
     | 'label'
@@ -55,12 +55,37 @@ export interface NumberFieldJSXProps
     | 'max'
     | 'min'
   > {
+  /**
+   * Sets the type of controls displayed in the field.
+   *
+   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property.
+   * - `none`: no controls are displayed and users must input the value manually.
+   * - `auto`: the presence of the controls depends on the surface and context.
+   *
+   * @default 'auto'
+   */
+  controls?: NumberFieldProps['controls'];
   inputMode?: Extract<NumberFieldProps['inputMode'], 'decimal' | 'numeric'>;
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   accessory?: ComponentChild;
+}
+export interface NumberFieldJSXProps extends PickedJSXProps {
+  /**
+   * A short hint that describes the expected value of the field.
+   *
+   * Placeholder text is not supported when using Stepper controls due to constrained space for the number field, especially on phones.
+   */
+  placeholder?: PickedJSXProps['placeholder'];
+  /**
+   * Additional content to be displayed in the field.
+   * Commonly used to display an icon that activates a tooltip providing more information.
+   *
+   * Accessory is not supported when using Stepper controls
+   */
+  accessory?: PickedJSXProps['accessory'];
 }
 declare global {
   interface HTMLElementTagNameMap {

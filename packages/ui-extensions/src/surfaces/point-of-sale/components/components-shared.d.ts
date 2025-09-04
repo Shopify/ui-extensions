@@ -11,6 +11,7 @@
  * https://github.com/Shopify/ui-api-design/issues/139
  */
 export type ComponentChildren = any;
+export type StringChildren = string;
 export interface GlobalProps {
   /**
    * A unique identifier for the element.
@@ -656,6 +657,13 @@ export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
  * //   ^? 'foo' | 'bar' | (string & {})
  */
 export type AnyString = string & {};
+/**
+ * This is purely to give the ability
+ * to have a space or not in the string literal types.
+ *
+ * For example in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.
+ */
+export type optionalSpace = '' | ' ';
 export interface BadgeProps extends GlobalProps {
   /**
    * The content of the Badge.
@@ -1600,8 +1608,16 @@ export interface BaseOptionProps extends BaseSelectableProps {
 export interface ChoiceProps extends GlobalProps, BaseOptionProps {
   /**
    * Content to use as the choice label.
+   *
+   * @implementation (StringChildren) The label is produced by extracting and
+   * concatenating the text nodes from the provided content; any markup or
+   * element structure is ignored.
+   *
+   * @implementation (ComponentChildren) Behaves as a slot: any elements passed
+   * are rendered as the label content (subject to surface constraints); there
+   * is no coercion to a string.
    */
-  children?: ComponentChildren;
+  children?: ComponentChildren | StringChildren;
   /**
    * Additional text to provide context or guidance for the input.
    *
@@ -1909,11 +1925,11 @@ export interface DatePickerProps
    */
   allow?: string;
   /**
-   * Dates that cannot be selected. These subtract from `allowDates`.
+   * Dates that cannot be selected. These subtract from `allow`.
    *
    * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
    *
-   * The default `''` has no effect on `allowDates`.
+   * The default `''` has no effect on `allow`.
    *
    * - Dates in `YYYY-MM-DD` format disallow a single date.
    * - Dates in `YYYY-MM` format disallow a whole month.
@@ -1935,24 +1951,24 @@ export interface DatePickerProps
    */
   disallow?: string;
   /**
-   * Days of the week that can be selected. These intersect with the result of `allowDates` and `disallowDates`.
+   * Days of the week that can be selected. These intersect with the result of `allow` and `disallow`.
    *
-   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   * A comma-separated list of days. Whitespace is allowed after commas.
    *
-   * The default `''` has no effect on the result of `allowDates` and `disallowDates`.
+   * The default `''` has no effect on the result of `allow` and `disallow`.
    *
    * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
    *
    * @default ""
    *
    * @example
-   * 'saturday, sunday' // allow only weekends within the result of `allowDates` and `disallowDates`.
+   * 'saturday, sunday' // allow only weekends within the result of `allow` and `disallow`.
    */
   allowDays?: string;
   /**
-   * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allowDates` and `disallowDates`.
+   * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allow` and `disallow`.
    *
-   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   * A comma-separated list of days. Whitespace is allowed after commas.
    *
    * The default `''` has no effect on `allowDays`.
    *
@@ -1961,7 +1977,7 @@ export interface DatePickerProps
    * @default ""
    *
    * @example
-   * 'saturday, sunday' // disallow weekends within the result of `allowDates` and `disallowDates`.
+   * 'saturday, sunday' // disallow weekends within the result of `allow` and `disallow`.
    */
   disallowDays?: string;
   /**
@@ -1991,15 +2007,18 @@ export interface DatePickerProps
    * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
    * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
    *
-   * Events:
-   *
-   * - `onInput` - Invoked when any date is selected. Will fire before `onChange`.
-   * - `onChange` - Invoked when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
-   *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
-   *
    * @default ""
    */
   value?: string;
+  /**
+   * Callback when any date is selected. Will fire before `onChange`.
+   */
+  onInput?: (event: Event) => void;
+  /**
+   * Callback when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
+   *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
+   */
+  onChange?: (event: Event) => void;
 }
 export interface DateFieldProps
   extends GlobalProps,
@@ -2012,6 +2031,8 @@ export interface DateFieldProps
       | 'defaultValue'
       | 'allow'
       | 'disallow'
+      | 'allowDays'
+      | 'disallowDays'
       | 'onViewChange'
     >,
     AutocompleteProps<DateAutocompleteField> {
@@ -2042,6 +2063,44 @@ export type DateAutocompleteField = ExtractStrict<
   | 'cc-expiry-month'
   | 'cc-expiry-year'
 >;
+export interface DateSpinnerProps
+  extends GlobalProps,
+    Pick<
+      DatePickerProps,
+      'defaultValue' | 'value' | 'onInput' | 'onChange' | 'onBlur' | 'onFocus'
+    > {
+  /**
+   * Default selected value for the spinner.
+   *
+   * This uses a date in `YYYY-MM-DD` format.
+   *
+   * @default ""
+   */
+  defaultValue?: string;
+  /**
+   * Current selected value for the spinner.
+   *
+   * This uses a date in `YYYY-MM-DD` format.
+   *
+   * @default ""
+   */
+  value?: string;
+  /**
+   * Callback after the wheels have finished spinning and the value has
+   * settled.
+   *
+   * Fires once when inertial/momentum scrolling stops and the selection snaps
+   * into place.
+   */
+  onInput?: (event: Event) => void;
+  /**
+   * Callback when the selection has been confirmed by the user.
+   *
+   * Fires only when the user explicitly commits the selection (for example, by
+   * pressing a confirmation control).
+   */
+  onChange?: (event: Event) => void;
+}
 export interface EmailFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
@@ -2166,7 +2225,9 @@ export interface BaseTypographyProps {
    */
   dir?: 'ltr' | 'rtl' | 'auto' | '';
 }
-export interface IconProps extends GlobalProps {
+export interface IconProps
+  extends GlobalProps,
+    Pick<InteractionProps, 'interestFor'> {
   /**
    * Sets the tone of the icon, based on the intention of the information being conveyed.
    *
@@ -2186,6 +2247,126 @@ export interface IconProps extends GlobalProps {
    */
   size?: SizeKeyword;
   type?: IconType | AnyString;
+}
+export interface BaseImageProps {
+  /**
+   * An alternative text description that describe the image for the reader to
+   * understand what it is about. It is extremely useful for both users using
+   * assistive technology and sighted users. A well written description
+   * provides people with visual impairments the ability to participate in
+   * consuming non-text content. When a screen readers encounters an `s-image`,
+   * the description is read and announced aloud. If an image fails to load,
+   * potentially due to a poor connection, the `alt` is displayed on
+   * screen instead. This has the benefit of letting a sighted buyer know an
+   * image was meant to load here, but as an alternative, they’re still able to
+   * consume the text content. Read
+   * [considerations when writing alternative text](https://www.shopify.com/ca/blog/image-alt-text#4)
+   * to learn more.
+   *
+   * @default `''`
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
+   */
+  alt?: string;
+  /**
+   * A set of media conditions and their corresponding sizes.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes
+   */
+  sizes?: string;
+  /**
+   * The image source (either a remote URL or a local file resource).
+   *
+   * When the image is loading or no `src` is provided, a placeholder will be rendered.
+   *
+   * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
+   * reserved, except in cases where the image area does not have a contextual inline or block size, which should be rare.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
+   */
+  src?: string;
+  /**
+   * A set of image sources and their width or pixel density descriptors.
+   *
+   * This overrides the `src` property.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset
+   */
+  srcSet?: string;
+}
+export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
+  /**
+   * Sets the semantic meaning of the component’s content. When set,
+   * the role will be used by assistive technologies to help users
+   * navigate the page.
+   *
+   * @default 'img'
+   *
+   * @implementation The `img` role doesn't need to be applied if
+   * the host applies it for you; for example, an HTML host rendering
+   * an `<img>` element should not apply the `img` role.
+   */
+  accessibilityRole?:
+    | 'img'
+    | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
+  /**
+   * The displayed inline width of the image.
+   *
+   * - `fill`: the image will takes up 100% of the available inline size.
+   * - `auto`: the image will be displayed at its natural size.
+   *
+   * @default 'fill'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
+   */
+  inlineSize?: 'fill' | 'auto';
+  /**
+   * The aspect ratio of the image.
+   *
+   * The rendering of the image will depend on the `inlineSize` value:
+   *
+   * - `inlineSize="fill"`: the aspect ratio will be respected and the image will take the necessary space.
+   * - `inlineSize="auto"`: the image will not render until it has loaded and the aspect ratio will be ignored.
+   *
+   * For example, if the value is set as `50 / 100`, the getter returns `50 / 100`.
+   * If the value is set as `0.5`, the getter returns `0.5 / 1`.
+   *
+   * @default '1/1'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
+   */
+  aspectRatio?:
+    | `${number}${optionalSpace}/${optionalSpace}${number}`
+    | `${number}`;
+  /**
+   * Determines how the content of the image is resized to fit its container.
+   * The image is positioned in the center of the container.
+   *
+   * @default 'contain'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
+   */
+  objectFit?: 'contain' | 'cover';
+  /**
+   * Determines the loading behavior of the image:
+   * - `eager`: Immediately loads the image, irrespective of its position within the visible viewport.
+   * - `lazy`: Delays loading the image until it approaches a specified distance from the viewport.
+   *
+   * @default 'eager'
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading
+   */
+  loading?: 'eager' | 'lazy';
+  /**
+   * Invoked when load completes successfully.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+   */
+  onLoad?: (event: Event) => void;
+  /**
+   * Invoked on load error.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+   */
+  onError?: (event: Event) => void;
 }
 export interface ModalProps
   extends GlobalProps,
@@ -2248,6 +2429,51 @@ export type NumberAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'one-time-code' | 'cc-number' | 'cc-csc'
 >;
+export interface PageProps extends GlobalProps {
+  /**
+   * The content of the Page.
+   */
+  children?: ComponentChildren;
+  /**
+   * The main page heading
+   */
+  heading?: string;
+  /**
+   * The text to be used as subtitle.
+   */
+  subheading?: string;
+  /**
+   * Additional contextual information about the page.
+   */
+  accessory?: ComponentChildren;
+  /**
+   * The primary action to perform, provided as a button or link type element.
+   * When a `Button` is added to the `primaryAction` it's variant is set to `primary`
+   */
+  primaryAction?: ComponentChildren;
+  /**
+   * The breadcrumb actions to perform, provided as link elements.
+   */
+  breadcrumbActions?: ComponentChildren;
+  /**
+   * Secondary actions. These are `Button`s that will be contextually the 'secondary' variant.
+   */
+  secondaryActions?: ComponentChildren;
+  /**
+   * The aside element is section of a page that contains content that is tangentially related to the content around the aside element, and which could be considered separate from that content.
+   * Such sections are often represented as sidebars in printed typography.
+   * @implementation surfaces built ontop of the web platform should implement this using the <aside> element https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
+   */
+  aside?: ComponentChildren;
+  /**
+   * The inline size of the page
+   * - `base` corresponds to a set default inline size
+   * - `large` full width with whitespace
+   *
+   * @default 'base'
+   */
+  inlineSize?: SizeKeyword;
+}
 export type OverflowKeyword = 'auto' | 'hidden';
 export interface ScrollBoxProps
   extends GlobalProps,
@@ -2274,6 +2500,36 @@ export interface SearchFieldProps
     MinMaxLengthProps,
     AutocompleteProps<SearchAutocompleteField> {}
 export type SearchAutocompleteField = TextAutocompleteField;
+export interface SectionProps extends GlobalProps, ActionSlots {
+  /**
+   * The content of the Section.
+   */
+  children?: ComponentChildren;
+  /**
+   * A label used to describe the section that will be announced by assistive technologies.
+   *
+   * When no `heading` property is provided or included as a children of the Section, you **must** provide an
+   * `accessibilityLabel` to describe the Section. This is important as it allows assistive technologies to provide
+   * the right context to users.
+   */
+  accessibilityLabel?: string;
+  /**
+   * A title that describes the content of the section.
+   */
+  heading?: string;
+  /**
+   * Adjust the padding of all edges.
+   *
+   * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
+   * this is the right design decision in a particular context.
+   * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
+   * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
+   * to bring back the desired padding for the rest of the content.
+   *
+   * @default 'base'
+   */
+  padding?: 'base' | 'none';
+}
 export interface StackProps
   extends GlobalProps,
     BaseBoxPropsWithRole,
@@ -2316,7 +2572,8 @@ export interface TextProps
   extends GlobalProps,
     AccessibilityVisibilityProps,
     BaseTypographyProps,
-    DisplayProps {
+    DisplayProps,
+    Pick<InteractionProps, 'interestFor'> {
   /**
    * The content of the Text.
    */
@@ -2430,6 +2687,84 @@ export interface TextFieldProps
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField>,
     FieldDecorationProps {}
+export interface TimePickerProps
+  extends GlobalProps,
+    InputProps,
+    FocusEventProps {
+  /**
+   * Times that can be selected.
+   *
+   * A comma-separated list of allowed time ranges. Whitespace is allowed after commas.
+   *
+   * The default `''` allows all times.
+   *
+   * Each time range is in `HH:MM--HH:MM` format.
+   *
+   * The end of the range is exclusive, so `09:00--10:00` allows selecting `09:00` but not `10:00`.
+   *
+   * Either side of `--` can be omitted to create an unbounded range.
+   *
+   * Whitespace is allowed either side of `--`.
+   *
+   * @default ''
+   *
+   * @example
+   * `09:00--10:00, 13:00--14:00` - assuming the step is 1 hour, this allows selecting `09:00` or `13:00`.
+   * `12:00--` - allows selecting `12:00` and all times after it.
+   */
+  allow?: string;
+  /**
+   * Times that cannot be selected. This subtracts from `allow`.
+   *
+   * A comma-separated list of allowed time ranges. Whitespace is allowed after commas.
+   *
+   * The default `''` has no effect on `allow`.
+   *
+   * Each time range is in `HH:MM--HH:MM` format.
+   *
+   * The end of the range is exclusive, so `09:00--10:00` disallows selecting `09:00` but not `10:00`.
+   *
+   * Either side of `--` can be omitted to create an unbounded range.
+   *
+   * Whitespace is allowed either side of `--`.
+   *
+   * @default ''
+   *
+   * @example
+   * `09:00--10:00, 13:00--14:00` - assuming the step is 1 hour, this disallows selecting `09:00` or `13:00`.
+   */
+  disallow?: string;
+  /**
+   * Default selected value.
+   *
+   * The default, `''`, means no time is selected.
+   *
+   * The value must be in `HH:MM` format.
+   *
+   * If the provided value is invalid, '' is used as the value.
+   *
+   * @default ''
+   */
+  defaultValue?: string;
+  /**
+   * Current selected value.
+   *
+   * The default, `''`, means no time is selected.
+   *
+   * The value must be in `HH:MM` format.
+   *
+   * If the provided value is invalid, '' is used as the value.
+   *
+   * @default ''
+   */
+  value?: string;
+  /**
+   * The step between selectable times, in seconds.
+   *
+   * @default 60
+   */
+  step?: number;
+}
 //
 // Preact Virtual DOM
 // -----------------------------------

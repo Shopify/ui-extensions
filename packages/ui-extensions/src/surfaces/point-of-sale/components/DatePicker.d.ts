@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ButtonProps, Key, Ref} from './components-shared.d.ts';
+import type {DatePickerProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -36,50 +36,26 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   target: HTMLElementTagNameMap[T] | null;
 }
 
-declare const tagName = 's-button';
-export interface ButtonJSXProps
-  extends Pick<
-    ButtonProps,
-    'disabled' | 'command' | 'commandFor' | 'loading' | 'tone' | 'variant'
-  > {
-  /**
-   * Sets the action the `commandFor` should take when this clickable is activated.
-   *
-   * See the documentation of particular components for the actions they support.
-   *
-   * - `--auto`: a default action for the target component.
-   * - `--show`: shows the target component.
-   * - `--hide`: hides the target component.
-   * - `--toggle`: toggles the target component.
-   *
-   * @default '--auto'
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
-   */
-  command?: Extract<
-    ButtonProps['command'],
-    '--auto' | '--hide' | '--show' | '--toggle'
-  >;
-  tone?: Extract<
-    ButtonProps['tone'],
-    'auto' | 'critical' | 'neutral' | 'warning' | 'caution'
-  >;
-  variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
-  onClick?: (event: CallbackEvent<typeof tagName>) => void;
-  children?: ComponentChildren;
+declare const tagName = 's-date-picker';
+export interface DatePickerJSXProps
+  extends Pick<DatePickerProps, 'id' | 'value'> {
+  onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ButtonJSXProps;
+    [tagName]: DatePickerJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<ButtonJSXProps>;
+      [tagName]: BaseElementPropsWithChildren<DatePickerJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {ButtonJSXProps};
+export type {DatePickerJSXProps};
