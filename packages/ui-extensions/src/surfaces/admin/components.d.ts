@@ -1,4 +1,4 @@
-/** VERSION: 1.10.0 **/
+/** VERSION: 1.12.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -4324,7 +4324,7 @@ export interface IconProps
 }
 
 export interface BadgeProps
-  extends Pick<BadgeProps$1, 'color' | 'size' | 'tone'> {
+  extends Pick<BadgeProps$1, 'color' | 'icon' | 'size' | 'tone'> {
   color: Extract<BadgeProps$1['color'], 'base' | 'strong'>;
   icon: IconProps['type'] | '';
   size: Extract<BadgeProps$1['size'], 'base' | 'large' | 'large-100'>;
@@ -4653,6 +4653,7 @@ export type ButtonBaseProps = Required<
     | 'disabled'
     | 'command'
     | 'commandFor'
+    | 'icon'
     | 'interestFor'
     | 'lang'
     | 'loading'
@@ -6032,12 +6033,14 @@ export interface OrderedListJSXProps
   extends Partial<OrderedListProps>,
     Pick<OrderedListProps$1, 'id'> {}
 
-export interface PageProps extends Required<Pick<PageProps$1, 'inlineSize'>> {
+export interface PageProps
+  extends Required<Pick<PageProps$1, 'inlineSize' | 'heading'>> {
   inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large' | 'small'>;
 }
 
 declare class Page extends PreactCustomElement implements PageProps {
   accessor inlineSize: PageProps['inlineSize'];
+  accessor heading: PageProps['heading'];
   constructor();
   connectedCallback(): void;
   disconnectedCallback(): void;
@@ -6064,6 +6067,17 @@ export interface PageJSXProps extends Partial<PageProps> {
    * This slot is only rendered when `inlineSize` is "base".
    */
   aside?: ComponentChild;
+  /**
+   * The primary action to perform on the page.
+   * Accepts a single `Button` with a `variant` of `primary`.
+   *
+   */
+  primaryAction?: ComponentChild;
+  /**
+   * Secondary actions on the page. Accepts `ButtonGroup` with nested `Button`s or a single `Button`.
+   * `Button`s must have a `variant` of `secondary` or `auto`.
+   */
+  secondaryActions?: ComponentChild;
 }
 
 export interface ParagraphProps
@@ -7536,6 +7550,17 @@ export interface PageSlots {
    * This slot is only rendered when `inlineSize` is "base".
    */
   aside?: HTMLElement;
+  /**
+   * The primary action to perform on the page.
+   * Accepts a single `Button` with a `variant` of `primary`.
+   *
+   */
+  'primary-action'?: HTMLElement;
+  /**
+   * Secondary actions on the page. Accepts `ButtonGroup` with nested `Button`s or a single `Button`.
+   * `Button`s must have a `variant` of `secondary` or `auto`.
+   */
+  'secondary-actions'?: HTMLElement;
 }
 
 export interface PasswordFieldEvents {
