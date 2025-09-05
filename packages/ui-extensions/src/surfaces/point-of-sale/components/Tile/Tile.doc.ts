@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Tile',
   description:
-    'Use `s-tile` to create interactive cards that group related content and actions. Provides a structured way to present information with clear interaction areas.',
+    "Tiles are customizable buttons that allow staff to complete actions quickly. Think of them as shortcuts--adding a 10% discount to an order, for example. Tiles provide contextual information and let merchants quickly access workflows, actions, and information from the smart grid and the top of detail pages. They're dynamic and can change based on surrounding context, such as what's in the cart.",
   thumbnail: 'tile-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -28,7 +28,7 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'HTML',
+          language: 'html',
         },
       ],
     },
