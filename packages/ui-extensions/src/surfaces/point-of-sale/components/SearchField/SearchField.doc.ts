@@ -3,8 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'SearchField',
   description:
-    'Use `s-search-field` to provide search functionality within your application. Includes built-in search styling and behavior optimized for filtering content.',
-  thumbnail: 'search-field-thumbnail.png',
+    'Let users enter search terms or find specific items using a single-line input field.',
+  thumbnail: 'search-bar-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -22,13 +22,13 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Forms',
   defaultExample: {
-    image: 'search-field-default.png',
+    image: 'search-bar-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'HTML',
+          language: 'html',
         },
       ],
     },
