@@ -3,8 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'ScrollBox',
   description:
-    'Use `s-scroll-box` to create scrollable content areas with fixed dimensions. Provides controlled scrolling behavior for content that exceeds container bounds.',
-  thumbnail: 'scroll-box-thumbnail.png',
+    'Use `s-scroll-box` to create scrollable areas for content that exceeds container bounds.',
+  thumbnail: 'scroll-view-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -17,13 +17,13 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Structure',
   defaultExample: {
-    image: 'scroll-box-default.png',
+    image: 'scroll-view-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'HTML',
+          language: 'html',
         },
       ],
     },

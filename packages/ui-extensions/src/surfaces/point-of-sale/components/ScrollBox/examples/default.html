@@ -1,3 +1,7 @@
 <s-scroll-box>
-  <s-text>Scrollable content goes here</s-text>
+  <s-choice-list multiple>
+    {data.map((item) => (
+      <s-choice value={item.value}>{item.label}</s-choice>
+    ))}
+  </s-choice-list>
 </s-scroll-box>
