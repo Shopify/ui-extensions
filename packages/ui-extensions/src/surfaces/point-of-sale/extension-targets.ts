@@ -19,6 +19,7 @@ import type {
   ProductApi,
   OrderApi,
   StorageApi,
+  CashDrawerApi,
 } from './api';
 import type {ActionExtensionComponents} from './components/targets/ActionExtensionComponents';
 import type {BlockExtensionComponents} from './components/targets/BlockExtensionComponents';
@@ -190,6 +191,22 @@ export interface RenderExtensionTargets {
   'pos.receipt-header.block.render': RenderExtension<
     {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,
     ReceiptComponents
+  >;
+  'pos.register-details.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.register-details.action.menu-item.render'> &
+      ActionApi &
+      CashDrawerApi,
+    ActionComponents
+  >;
+  'pos.register-details.action.render': RenderExtension<
+    ActionTargetApi<'pos.register-details.action.render'> & CashDrawerApi,
+    BasicComponents
+  >;
+  'pos.register-details.block.render': RenderExtension<
+    StandardApi<'pos.register-details.block.render'> &
+      ActionApi &
+      CashDrawerApi,
+    BlockComponents
   >;
 }
 
