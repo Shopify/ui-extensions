@@ -1,13 +1,12 @@
-import {
-  reactExtension,
-  Text,
-} from '@shopify/ui-extensions-react/customer-account';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-export default reactExtension(
-  'customer-account.profile.addresses.render-after',
-  () => <Extension />,
-);
+export default async () => {
+  render(<Extension />, document.body);
+};
 
 function Extension() {
-  return <Text>I am an addresses extension</Text>;
+  return (
+    <s-text>I am an addresses extension</s-text>
+  );
 }

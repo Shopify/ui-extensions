@@ -1,13 +1,14 @@
-import {
-  reactExtension,
-  Text,
-} from '@shopify/ui-extensions-react/customer-account';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-export default reactExtension(
-  'customer-account.profile.payment.render-after',
-  () => <Extension />,
-);
+export default async () => {
+  render(<Extension />, document.body);
+};
 
 function Extension() {
-  return <Text>I am a company location staff extension</Text>;
+  return (
+    <s-text>
+      I am a company location staff extension
+    </s-text>
+  );
 }

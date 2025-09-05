@@ -12,19 +12,19 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   isVisualComponent: false,
   subCategory: 'Order action menu',
-  // defaultExample: {
-  //   description: '',
-  //   codeblock: {
-  //     title: 'Customer account order menu item extension example',
-  //     tabs: [
-  //       {
-  //         code: '../examples/targets/customer-account.order.action.menu-item.render/default.example.tsx',
-  //         language: 'jsx',
-  //         title: 'React',
-  //       },
-  //     ],
-  //   },
-  // },
+  defaultExample: {
+    description: '',
+    codeblock: {
+      title: 'Customer account order menu item extension example',
+      tabs: [
+        {
+          code: '../examples/targets/customer-account.order.action.menu-item.render/default.example.tsx',
+          language: 'tsx',
+          title: 'Preact',
+        },
+      ],
+    },
+  },
   examples: {
     description: 'Additional examples for menu item extensions.',
     examples: [
@@ -34,8 +34,8 @@ const data: ReferenceEntityTemplateSchema = {
           tabs: [
             {
               code: '../examples/targets/customer-account.order.action.menu-item.render/load-data-upfront.example.tsx',
-              language: 'jsx',
-              title: 'React',
+              language: 'tsx',
+              title: 'Preact',
             },
           ],
         },

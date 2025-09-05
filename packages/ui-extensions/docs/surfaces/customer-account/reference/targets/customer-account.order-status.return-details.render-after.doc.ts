@@ -8,19 +8,19 @@ const data: ReferenceEntityTemplateSchema = {
   A [static extension target](/docs/api/customer-account-ui-extensions/extension-targets-overview#static-extension-targets) that renders in the return status card on the Order Status page. This card only shows when a return has been requested.
   `,
   subCategory: 'Order status',
-  // defaultExample: {
-  //   description: '',
-  //   codeblock: {
-  //     title: 'Customer account order status return details extension example',
-  //     tabs: [
-  //       {
-  //         code: '../examples/targets/customer-account.order-status.return-details.render-after/default.example.tsx',
-  //         language: 'jsx',
-  //         title: 'React',
-  //       },
-  //     ],
-  //   },
-  // },
+  defaultExample: {
+    description: '',
+    codeblock: {
+      title: 'Customer account order status return details extension example',
+      tabs: [
+        {
+          code: '../examples/targets/customer-account.order-status.return-details.render-after/default.example.tsx',
+          language: 'tsx',
+          title: 'Preact',
+        },
+      ],
+    },
+  },
   related: [],
   ...ORDER_STATUS_API,
 };

@@ -11,19 +11,19 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   isVisualComponent: false,
   subCategory: 'Profile (B2B)',
-  // defaultExample: {
-  //   description: '',
-  //   codeblock: {
-  //     title: 'Customer account company location payment extension example',
-  //     tabs: [
-  //       {
-  //         code: '../examples/targets/customer-account.profile.company-location-payment.render-after/default.example.tsx',
-  //         language: 'jsx',
-  //         title: 'React',
-  //       },
-  //     ],
-  //   },
-  // },
+  defaultExample: {
+    description: '',
+    codeblock: {
+      title: 'Customer account company location payment extension example',
+      tabs: [
+        {
+          code: '../examples/targets/customer-account.profile.company-location-payment.render-after/default.example.tsx',
+          language: 'tsx',
+          title: 'Preact',
+        },
+      ],
+    },
+  },
   related: [],
   definitions: [COMPANY_LOCATION_API, CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION],
   type: 'Target',

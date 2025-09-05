@@ -1,13 +1,15 @@
-import {
-  reactExtension,
-  Banner,
-} from '@shopify/ui-extensions-react/customer-account';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-export default reactExtension(
-  'customer-account.order-status.return-details.render-after',
-  () => <Extension />,
-);
+export default async () => {
+  render(<Extension />, document.body);
+};
 
 function Extension() {
-  return <Banner>Your return request has been received and is processing</Banner>;
+  return (
+    <s-banner>
+      Your return request has been received and is
+      processing
+    </s-banner>
+  );
 }

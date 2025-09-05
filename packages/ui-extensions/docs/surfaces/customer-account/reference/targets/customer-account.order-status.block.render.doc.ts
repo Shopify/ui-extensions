@@ -13,19 +13,19 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'A [block extension target](/docs/api/customer-account-ui-extensions/extension-targets-overview#block-extension-targets) that renders exclusively on the Order Status Page.',
   subCategory: 'Order status',
-  // defaultExample: {
-  //   description: '',
-  //   codeblock: {
-  //     title: 'Customer account order status extension example',
-  //     tabs: [
-  //       {
-  //         code: '../examples/targets/customer-account.order-status.block.render/default.example.tsx',
-  //         language: 'jsx',
-  //         title: 'React',
-  //       },
-  //     ],
-  //   },
-  // },
+  defaultExample: {
+    description: '',
+    codeblock: {
+      title: 'Customer account order status extension example',
+      tabs: [
+        {
+          code: '../examples/targets/customer-account.order-status.block.render/default.example.tsx',
+          language: 'tsx',
+          title: 'Preact',
+        },
+      ],
+    },
+  },
   related: [
     {
       name: 'Placement references',
