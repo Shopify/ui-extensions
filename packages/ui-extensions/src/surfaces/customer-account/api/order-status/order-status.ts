@@ -6,7 +6,7 @@ import type {
   Attribute,
   MailingAddress,
   Language,
-  StatefulRemoteSubscribable,
+  ReadonlySignalLike,
 } from '../shared';
 import type {ExtensionTarget} from '../../extension-targets';
 import {Extension} from '../shared';
@@ -137,17 +137,17 @@ export interface OrderStatusLocalization {
   /**
    * The currency that the buyer sees for money amounts in the checkout.
    */
-  currency: StatefulRemoteSubscribable<Currency>;
+  currency: ReadonlySignalLike<Currency>;
 
   /**
    * The buyer’s time zone.
    */
-  timezone: StatefulRemoteSubscribable<Timezone>;
+  timezone: ReadonlySignalLike<Timezone>;
 
   /**
    * The language the buyer sees in the checkout.
    */
-  language: StatefulRemoteSubscribable<Language>;
+  language: ReadonlySignalLike<Language>;
 
   /**
    * This is the buyer's language, as supported by the extension.
@@ -160,7 +160,7 @@ export interface OrderStatusLocalization {
    * translations at all, this value is the default locale for your
    * extension (that is, the one matching your .default.json file).
    */
-  extensionLanguage: StatefulRemoteSubscribable<Language>;
+  extensionLanguage: ReadonlySignalLike<Language>;
 
   /**
    * The country context of the checkout. This value carries over from the
@@ -168,7 +168,7 @@ export interface OrderStatusLocalization {
    * experience. It will update if the buyer changes the country of their
    * shipping address. The value is undefined if unknown.
    */
-  country: StatefulRemoteSubscribable<Country | undefined>;
+  country: ReadonlySignalLike<Country | undefined>;
 
   /**
    * The [market](https://shopify.dev/docs/apps/markets) context of the
@@ -177,7 +177,7 @@ export interface OrderStatusLocalization {
    * buyer changes the country of their shipping address. The value is undefined
    * if unknown.
    */
-  market: StatefulRemoteSubscribable<Market | undefined>;
+  market: ReadonlySignalLike<Market | undefined>;
 }
 
 export type AuthenticationState = 'fully_authenticated' | 'pre_authenticated';
@@ -186,7 +186,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
    * Gift Cards that have been applied to the order.
    */
-  appliedGiftCards: StatefulRemoteSubscribable<AppliedGiftCard[]>;
+  appliedGiftCards: ReadonlySignalLike<AppliedGiftCard[]>;
 
   /**
    * The metafields requested in the
@@ -196,12 +196,12 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
+  appMetafields: ReadonlySignalLike<AppMetafieldEntry[]>;
 
   /**
    * Custom attributes left by the customer to the merchant, either in their cart or during checkout.
    */
-  attributes: StatefulRemoteSubscribable<Attribute[] | undefined>;
+  attributes: ReadonlySignalLike<Attribute[] | undefined>;
 
   /**
    * Information about the buyer that is interacting with the order.
@@ -213,7 +213,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
    * Settings applied to the buyer's checkout.
    */
-  checkoutSettings: StatefulRemoteSubscribable<CheckoutSettings>;
+  checkoutSettings: ReadonlySignalLike<CheckoutSettings>;
 
   /**
    * Details on the costs of the purchase for the buyer.
@@ -223,12 +223,12 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
    * A list of discount codes applied to the purchase.
    */
-  discountCodes: StatefulRemoteSubscribable<CartDiscountCode[]>;
+  discountCodes: ReadonlySignalLike<CartDiscountCode[]>;
 
   /**
    * Discounts that have been applied to the entire cart.
    */
-  discountAllocations: StatefulRemoteSubscribable<CartDiscountAllocation[]>;
+  discountAllocations: ReadonlySignalLike<CartDiscountAllocation[]>;
 
   /**
    * Meta information about the extension.
@@ -251,7 +251,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
    * A list of lines containing information about the items the customer intends to purchase.
    */
-  lines: StatefulRemoteSubscribable<CartLine[]>;
+  lines: ReadonlySignalLike<CartLine[]>;
 
   /**
    * Details about the location, language, and currency of the buyer. For utilities to easily
@@ -281,17 +281,17 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * Once the order is created, you can query these metafields using the
    * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
    */
-  metafields: StatefulRemoteSubscribable<Metafield[]>;
+  metafields: ReadonlySignalLike<Metafield[]>;
 
   /**
    * A note left by the customer to the merchant, either in their cart or during checkout.
    */
-  note: StatefulRemoteSubscribable<string | undefined>;
+  note: ReadonlySignalLike<string | undefined>;
 
   /**
    * Information about the order that was placed.
    */
-  order: StatefulRemoteSubscribable<Order | undefined>;
+  order: ReadonlySignalLike<Order | undefined>;
 
   /**
    * id that represents the checkout used to create the order.
@@ -299,21 +299,21 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * Matches the `token` field in the [WebPixel checkout payload](https://shopify.dev/docs/api/pixels/customer-events#checkout)
    * and the `checkout_token` field in the [Admin REST API Order resource](https://shopify.dev/docs/api/admin-rest/unstable/resources/order#resource-object).
    */
-  checkoutToken: StatefulRemoteSubscribable<CheckoutToken | undefined>;
+  checkoutToken: ReadonlySignalLike<CheckoutToken | undefined>;
 
   /**
    * The buyer shipping address used for the order.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  shippingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
+  shippingAddress?: ReadonlySignalLike<MailingAddress | undefined>;
 
   /**
    * The buyer billing address used for the order.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  billingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
+  billingAddress?: ReadonlySignalLike<MailingAddress | undefined>;
 
   /** Shop where the purchase took place. */
   shop: Shop;
@@ -333,7 +333,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
    * The authentication state of Order status page.
    */
-  authenticationState: StatefulRemoteSubscribable<AuthenticationState>;
+  authenticationState: ReadonlySignalLike<AuthenticationState>;
 }
 
 export interface OrderStatusBuyerIdentity {
@@ -343,7 +343,7 @@ export interface OrderStatusBuyerIdentity {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  customer: StatefulRemoteSubscribable<OrderStatusCustomer | undefined>;
+  customer: ReadonlySignalLike<OrderStatusCustomer | undefined>;
 
   /**
    * The email address of the buyer that is interacting with the cart.
@@ -351,7 +351,7 @@ export interface OrderStatusBuyerIdentity {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  email: StatefulRemoteSubscribable<string | undefined>;
+  email: ReadonlySignalLike<string | undefined>;
 
   /**
    * The phone number of the buyer that is interacting with the cart.
@@ -359,7 +359,7 @@ export interface OrderStatusBuyerIdentity {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  phone: StatefulRemoteSubscribable<string | undefined>;
+  phone: ReadonlySignalLike<string | undefined>;
 
   /**
    * Provides details of the company and the company location that the business customer is purchasing on behalf of.
@@ -368,7 +368,7 @@ export interface OrderStatusBuyerIdentity {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  purchasingCompany: StatefulRemoteSubscribable<
+  purchasingCompany: ReadonlySignalLike<
     OrderStatusPurchasingCompany | undefined
   >;
 }
@@ -479,28 +479,28 @@ export interface CartCost {
    * A `Money` value representing the subtotal value of the items in the cart at the current
    * step of checkout.
    */
-  subtotalAmount: StatefulRemoteSubscribable<Money>;
+  subtotalAmount: ReadonlySignalLike<Money>;
 
   /**
    * A `Money` value representing the total shipping a buyer can expect to pay at the current
    * step of checkout. This value includes shipping discounts. Returns undefined if shipping
    * has not been negotiated yet, such as on the information step.
    */
-  totalShippingAmount: StatefulRemoteSubscribable<Money | undefined>;
+  totalShippingAmount: ReadonlySignalLike<Money | undefined>;
 
   /**
    * A `Money` value representing the total tax a buyer can expect to pay at the current
    * step of checkout or the total tax included in product and shipping prices. Returns
    * undefined if taxes are unavailable.
    */
-  totalTaxAmount: StatefulRemoteSubscribable<Money | undefined>;
+  totalTaxAmount: ReadonlySignalLike<Money | undefined>;
 
   /**
    * A `Money` value representing the minimum a buyer can expect to pay at the current
    * step of checkout. This value excludes amounts yet to be negotiated. For example,
    * the information step might not have delivery costs calculated.
    */
-  totalAmount: StatefulRemoteSubscribable<Money>;
+  totalAmount: ReadonlySignalLike<Money>;
 }
 
 export interface CartLine {

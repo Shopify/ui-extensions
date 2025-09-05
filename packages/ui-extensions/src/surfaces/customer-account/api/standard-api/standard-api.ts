@@ -13,7 +13,7 @@ import {
   CustomerPrivacy,
   ApplyTrackingConsentChangeType,
   ToastApi,
-  StatefulRemoteSubscribable,
+  ReadonlySignalLike,
 } from '../shared';
 
 import type {ExtensionTarget} from '../../extension-targets';
@@ -97,7 +97,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * > Note: When an extension is being installed in the editor, the settings will be empty until
    * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
    */
-  settings: StatefulRemoteSubscribable<ExtensionSettings>;
+  settings: ReadonlySignalLike<ExtensionSettings>;
 
   /**
    * Methods to interact with the extension's UI.
@@ -134,7 +134,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Customer privacy consent settings and a flag denoting if consent has previously been collected.
    */
-  customerPrivacy: StatefulRemoteSubscribable<CustomerPrivacy>;
+  customerPrivacy: ReadonlySignalLike<CustomerPrivacy>;
 
   /**
    * Allows setting and updating customer privacy consent settings and tracking consent metafields.
@@ -172,7 +172,7 @@ export interface Localization {
   /**
    * The language the buyer sees in the customer account hub.
    */
-  language: StatefulRemoteSubscribable<Language>;
+  language: ReadonlySignalLike<Language>;
 
   /**
    * This is the buyer's language, as supported by the extension.
@@ -185,14 +185,14 @@ export interface Localization {
    * translations at all, this value is the default locale for your
    * extension (that is, the one matching your .default.json file).
    */
-  extensionLanguage: StatefulRemoteSubscribable<Language>;
+  extensionLanguage: ReadonlySignalLike<Language>;
 
   /**
    * The country context of the buyer sees in the customer account.
    * It will update if the buyer changes the country in the customer account
    * If the country is unknown, then the value is undefined.
    */
-  country: StatefulRemoteSubscribable<Country | undefined>;
+  country: ReadonlySignalLike<Country | undefined>;
 }
 
 /**
