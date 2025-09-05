@@ -304,14 +304,14 @@ Use the comparison table below to see which Polaris web components are available
 |   \`Button\`                 |   [\`Button\`](polaris-web-components/actions/button)   |   Available   |
 |   \`CameraScanner\`          |   \`CameraScanner\`   |   Coming soon   |
 |   \`DateField\`              |   [\`DateField\`](polaris-web-components/forms/datefield)   |   Available   |
-|   \`DatePicker\`             |   \`DatePicker\`   |   Coming soon   |
-|   \`DateSpinner\`            |   \`DateSpinner\`   |   Coming soon   |
+|   \`DatePicker\`             |   [\`DatePicker\`](polaris-web-components/forms/datepicker)   |   Available   |
+|   \`DatePicker\`            |   [\`DateSpinner\`](polaris-web-components/forms/datespinner)   |   Available, Replaces \`DatePicker.inputMode="spinner"\`   |
 |   \`Dialog\`                 |   [\`Modal\`](polaris-web-components/structure/modal)   |   Available   |
-|   \`EmailField\`             |   [\`EmailField\`](/polaris-web-components/forms/emailfield)   |   Available   |
-|   \`Heading\`                |   \`Heading\`   |   Coming soon   |
+|   \`EmailField\`             |   [\`EmailField\`](polaris-web-components/forms/emailfield)   |   Available   |
+|   \`Heading\`                |   [\`Heading\`](polaris-web-components/titles-and-text/heading)   |   Available   |
 |   \`Icon\`                   |   [\`Icon\`](polaris-web-components/media/icon)   |  Available, more icons coming soon.  |
-|   \`Image\`                  |   \`Image\`   |   Coming soon   |
-|   \`List\`                   |      |  Removed. Use \`Array.map()\`   |
+|   \`Image\`                  |   [\`Image\`](polaris-web-components/media/image)   |   Available   |
+|   \`List\`                   |   VirtualizedList   |  Coming soon   |
 |   \`Navigator\`              |      |   Removed.   |
 |   \`NumberField\`            |   [\`NumberField\`](polaris-web-components/forms/numberfield)   |   Available   |
 |   \`PinPad\`                 |     |   Coming soon   |
@@ -321,10 +321,10 @@ Use the comparison table below to see which Polaris web components are available
 |   \`PrintPreview\`           |   \`DocumentPreview\`   |   Coming soon   |
 |   \`QRCode\`                 |   \`QRCode\`   |   Coming soon   |
 |   \`RadioButtonList\`        |   [\`ChoiceList\`](polaris-web-components/forms/choicelist)   |   Available   |
-|   \`Screen\`                 |   \`Page\`   |   Coming soon   |
+|   \`Screen\`                 |   [\`Page\`](polaris-web-components/structure/page)   |   Available   |
 |   \`ScrollView\`             |   [\`ScrollBox\`](polaris-web-components/structure/scrollbox)   |   Available  |
 |   \`SearchBar\`              |   [\`SearchField\`](polaris-web-components/forms/searchfield)   |   Available   |
-|   \`Section\`                |   \`Section\`   |   Coming soon   |
+|   \`Section\`                |   [\`Section\`](polaris-web-components/structure/section)   |   Available   |
 |   \`SectionHeader\`          |     |   Use \`Section.heading\`   |
 |   \`SegmentedControl\`       |   \`Tabs\`/\`Tab\`   |   Coming soon   |
 |   \`Selectable\`             |   [\`Clickable\`](polaris-web-components/actions/clickable)   |   Available   |
@@ -335,7 +335,7 @@ Use the comparison table below to see which Polaris web components are available
 |   \`TextField\`              |   [\`TextField\`](polaris-web-components/forms/textfield)   |   Available   |
 |   \`Tile\`                   | [\`Tile\`](polaris-web-components/actions/tile)  |  Available   |
 |   \`TimeField\`              |   \`TimeField\`   |   Coming soon   |
-|   \`TimePicker\`             |   \`TimePicker\`   |   Coming soon   |
+|   \`TimePicker\`             |   [\`TimePicker\`](polaris-web-components/forms/timepicker)   |   Available   |
 `,
     },
   ],
