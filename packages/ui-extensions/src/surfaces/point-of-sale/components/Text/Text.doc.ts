@@ -2,8 +2,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Text',
-  description:
-    'Use `s-text` to display text content with consistent typography and styling. Provides semantic text rendering with proper hierarchy.',
+  description: `Displays text with specific visual styles or tones. Use to emphasize or differentiate words or phrases within a Paragraph or other block-level components.
+  > Note: Text on mobile surfaces is blockish, rather than inline.`,
   thumbnail: 'text-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -23,7 +23,7 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'HTML',
+          language: 'html',
         },
       ],
     },
