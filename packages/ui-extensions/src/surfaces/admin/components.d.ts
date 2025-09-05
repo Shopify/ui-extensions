@@ -11,6 +11,19 @@
  * https://github.com/Shopify/ui-api-design/issues/139
  */
 export type ComponentChildren = any;
+
+export interface SignalLike<T> {
+  value: T;
+  peek(): T;
+  subscribe(fn: (value: T) => void): () => void;
+}
+
+export type Signalish<T> = T | SignalLike<T>;
+
+export type SignalishProps<T> = {
+  [K in keyof T]: K extends `on${string}` ? T[K] : Signalish<T[K]>;
+};
+
 export interface GlobalProps {
   /**
    * A unique identifier for the element.
@@ -19,7 +32,7 @@ export interface GlobalProps {
 }
 export interface ActionProps {
   /**
-   * The text to use as the Action modal’s title. If not provided, the name of the extension will be used.
+   * The text to use as the Action modal's title. If not provided, the name of the extension will be used.
    */
   heading?: string;
 }
@@ -4246,7 +4259,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$X]: AvatarJSXProps & PreactBaseElementPropsWithChildren<Avatar>;
+      [tagName$X]: SignalishProps<AvatarJSXProps> &
+        PreactBaseElementPropsWithChildren<Avatar>;
     }
   }
 }
@@ -4300,7 +4314,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$W]: BadgeJSXProps & PreactBaseElementPropsWithChildren<Badge>;
+      [tagName$W]: SignalishProps<BadgeJSXProps> &
+        PreactBaseElementPropsWithChildren<Badge>;
     }
   }
 }
@@ -4337,7 +4352,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$V]: Omit<BannerJSXProps, 'secondaryActions'> &
+      [tagName$V]: SignalishProps<Omit<BannerJSXProps, 'secondaryActions'>> &
         PreactBaseElementPropsWithChildren<Banner>;
     }
   }
@@ -4593,7 +4608,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$U]: BoxJSXProps & PreactBaseElementPropsWithChildren<Box>;
+      [tagName$U]: SignalishProps<BoxJSXProps> &
+        PreactBaseElementPropsWithChildren<Box>;
     }
   }
 }
@@ -4680,7 +4696,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$T]: ButtonJSXProps & PreactBaseElementPropsWithChildren<Button>;
+      [tagName$T]: SignalishProps<ButtonJSXProps> &
+        PreactBaseElementPropsWithChildren<Button>;
     }
   }
 }
@@ -4771,7 +4788,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$S]: CheckboxJSXProps &
+      [tagName$S]: SignalishProps<CheckboxJSXProps> &
         PreactBaseElementPropsWithChildren<Checkbox>;
     }
   }
@@ -4860,7 +4877,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$Q]: ChoiceJSXProps & PreactBaseElementPropsWithChildren<Choice>;
+      [tagName$Q]: SignalishProps<ChoiceJSXProps> &
+        PreactBaseElementPropsWithChildren<Choice>;
     }
   }
 }
@@ -4920,7 +4938,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$P]: ChoiceListJSXProps &
+      [tagName$P]: SignalishProps<ChoiceListJSXProps> &
         PreactBaseElementPropsWithChildren<ChoiceList>;
     }
   }
@@ -4975,7 +4993,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$O]: ClickableJSXProps &
+      [tagName$O]: SignalishProps<ClickableJSXProps> &
         PreactBaseElementPropsWithChildren<Clickable>;
     }
   }
@@ -5144,7 +5162,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$M]: ColorFieldJSXProps & PreactBaseElementProps<ColorField>;
+      [tagName$M]: SignalishProps<ColorFieldJSXProps> &
+        PreactBaseElementProps<ColorField>;
     }
   }
 }
@@ -5260,7 +5279,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$K]: DatePickerJSXProps & PreactBaseElementProps<DatePicker>;
+      [tagName$K]: SignalishProps<DatePickerJSXProps> &
+        PreactBaseElementProps<DatePicker>;
     }
   }
 }
@@ -5295,7 +5315,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$J]: DividerJSXProps & PreactBaseElementProps<Divider>;
+      [tagName$J]: SignalishProps<DividerJSXProps> &
+        PreactBaseElementProps<Divider>;
     }
   }
 }
@@ -5403,7 +5424,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$H]: EmailFieldJSXProps & PreactBaseElementProps<EmailField>;
+      [tagName$H]: SignalishProps<EmailFieldJSXProps> &
+        PreactBaseElementProps<EmailField>;
     }
   }
 }
@@ -5491,7 +5513,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$G]: GridJSXProps & PreactBaseElementPropsWithChildren<Grid>;
+      [tagName$G]: SignalishProps<GridJSXProps> &
+        PreactBaseElementPropsWithChildren<Grid>;
     }
   }
 }
@@ -5522,7 +5545,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$F]: GridItemJSXProps &
+      [tagName$F]: SignalishProps<GridItemJSXProps> &
         PreactBaseElementPropsWithChildren<GridItem>;
     }
   }
@@ -5558,7 +5581,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$E]: HeadingJSXProps &
+      [tagName$E]: SignalishProps<HeadingJSXProps> &
         PreactBaseElementPropsWithChildren<Heading>;
     }
   }
@@ -5585,7 +5608,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$D]: IconJSXProps & PreactBaseElementProps<Icon>;
+      [tagName$D]: SignalishProps<IconJSXProps> & PreactBaseElementProps<Icon>;
     }
   }
 }
@@ -5646,7 +5669,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$C]: ImageJSXProps & PreactBaseElementProps<Image>;
+      [tagName$C]: SignalishProps<ImageJSXProps> &
+        PreactBaseElementProps<Image>;
     }
   }
 }
@@ -5699,7 +5723,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$B]: LinkJSXProps & PreactBaseElementPropsWithChildren<Link>;
+      [tagName$B]: SignalishProps<LinkJSXProps> &
+        PreactBaseElementPropsWithChildren<Link>;
     }
   }
 }
@@ -5724,7 +5749,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$A]: ListItemJSXProps &
+      [tagName$A]: SignalishProps<ListItemJSXProps> &
         PreactBaseElementPropsWithChildren<ListItem>;
     }
   }
@@ -5818,7 +5843,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$y]: MoneyFieldJSXProps & PreactBaseElementProps<MoneyField>;
+      [tagName$y]: SignalishProps<MoneyFieldJSXProps> &
+        PreactBaseElementProps<MoneyField>;
     }
   }
 }
@@ -5865,7 +5891,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$x]: NumberFieldJSXProps & PreactBaseElementProps<NumberField>;
+      [tagName$x]: SignalishProps<NumberFieldJSXProps> &
+        PreactBaseElementProps<NumberField>;
     }
   }
 }
@@ -5896,7 +5923,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$w]: OptionJSXProps & PreactBaseElementPropsWithChildren<Option>;
+      [tagName$w]: SignalishProps<OptionJSXProps> &
+        PreactBaseElementPropsWithChildren<Option>;
     }
   }
 }
@@ -5923,7 +5951,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$v]: OptionGroupJSXProps &
+      [tagName$v]: SignalishProps<OptionGroupJSXProps> &
         PreactBaseElementPropsWithChildren<OptionGroup>;
     }
   }
@@ -5948,7 +5976,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$u]: OrderedListJSXProps &
+      [tagName$u]: SignalishProps<OrderedListJSXProps> &
         PreactBaseElementPropsWithChildren<OrderedList>;
     }
   }
@@ -5977,7 +6005,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$t]: Omit<PageJSXProps, 'aside'> &
+      [tagName$t]: SignalishProps<Omit<PageJSXProps, 'aside'>> &
         PreactBaseElementPropsWithChildren<Page>;
     }
   }
@@ -6030,7 +6058,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$s]: ParagraphJSXProps &
+      [tagName$s]: SignalishProps<ParagraphJSXProps> &
         PreactBaseElementPropsWithChildren<Paragraph>;
     }
   }
@@ -6079,7 +6107,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$r]: PasswordFieldJSXProps &
+      [tagName$r]: SignalishProps<PasswordFieldJSXProps> &
         PreactBaseElementProps<PasswordField>;
     }
   }
@@ -6131,7 +6159,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$q]: PopoverJSXProps &
+      [tagName$q]: SignalishProps<PopoverJSXProps> &
         PreactBaseElementPropsWithChildren<Popover>;
     }
   }
@@ -6223,7 +6251,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$o]: SearchFieldJSXProps & PreactBaseElementProps<SearchField>;
+      [tagName$o]: SignalishProps<SearchFieldJSXProps> &
+        PreactBaseElementProps<SearchField>;
     }
   }
 }
@@ -6261,7 +6290,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$n]: SectionJSXProps &
+      [tagName$n]: SignalishProps<SectionJSXProps> &
         PreactBaseElementPropsWithChildren<Section>;
     }
   }
@@ -6330,7 +6359,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$m]: SelectJSXProps & PreactBaseElementPropsWithChildren<Select>;
+      [tagName$m]: SignalishProps<SelectJSXProps> &
+        PreactBaseElementPropsWithChildren<Select>;
     }
   }
 }
@@ -6361,7 +6391,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$l]: SpinnerJSXProps & PreactBaseElementProps<Spinner>;
+      [tagName$l]: SignalishProps<SpinnerJSXProps> &
+        PreactBaseElementProps<Spinner>;
     }
   }
 }
@@ -6446,7 +6477,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$k]: StackJSXProps & PreactBaseElementPropsWithChildren<Stack>;
+      [tagName$k]: SignalishProps<StackJSXProps> &
+        PreactBaseElementPropsWithChildren<Stack>;
     }
   }
 }
@@ -6472,7 +6504,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$j]: SwitchJSXProps & PreactBaseElementProps<Switch>;
+      [tagName$j]: SignalishProps<SwitchJSXProps> &
+        PreactBaseElementProps<Switch>;
     }
   }
 }
@@ -6541,7 +6574,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$i]: Omit<TableJSXProps, 'filters'> &
+      [tagName$i]: SignalishProps<Omit<TableJSXProps, 'filters'>> &
         PreactBaseElementPropsWithChildren<Table>;
     }
   }
@@ -6570,7 +6603,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$h]: TableBodyJSXProps &
+      [tagName$h]: SignalishProps<TableBodyJSXProps> &
         PreactBaseElementPropsWithChildren<TableBody>;
     }
   }
@@ -6594,7 +6627,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$g]: TableCellJSXProps &
+      [tagName$g]: SignalishProps<TableCellJSXProps> &
         PreactBaseElementPropsWithChildren<TableCell>;
     }
   }
@@ -6620,7 +6653,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: TableHeaderJSXProps &
+      [tagName$f]: SignalishProps<TableHeaderJSXProps> &
         PreactBaseElementPropsWithChildren<TableHeader>;
     }
   }
@@ -6650,7 +6683,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: TableHeaderRowJSXProps &
+      [tagName$e]: SignalishProps<TableHeaderRowJSXProps> &
         PreactBaseElementPropsWithChildren<TableHeaderRow>;
     }
   }
@@ -6674,7 +6707,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: TableRowJSXProps &
+      [tagName$d]: SignalishProps<TableRowJSXProps> &
         PreactBaseElementPropsWithChildren<TableRow>;
     }
   }
@@ -6731,7 +6764,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: TextJSXProps & PreactBaseElementPropsWithChildren<Text>;
+      [tagName$c]: SignalishProps<TextJSXProps> &
+        PreactBaseElementPropsWithChildren<Text>;
     }
   }
 }
@@ -6763,7 +6797,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: TextAreaJSXProps & PreactBaseElementProps<TextArea>;
+      [tagName$b]: SignalishProps<TextAreaJSXProps> &
+        PreactBaseElementProps<TextArea>;
     }
   }
 }
@@ -6804,7 +6839,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: Omit<TextFieldJSXProps, 'accessory'> &
+      [tagName$a]: SignalishProps<Omit<TextFieldJSXProps, 'accessory'>> &
         PreactBaseElementProps<TextField>;
     }
   }
@@ -6843,7 +6878,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: ThumbnailJSXProps & PreactBaseElementProps<Thumbnail>;
+      [tagName$9]: SignalishProps<ThumbnailJSXProps> &
+        PreactBaseElementProps<Thumbnail>;
     }
   }
 }
@@ -6869,7 +6905,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: TooltipJSXProps &
+      [tagName$8]: SignalishProps<TooltipJSXProps> &
         PreactBaseElementPropsWithChildren<Tooltip>;
     }
   }
@@ -6902,7 +6938,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$7]: URLFieldJSXProps & PreactBaseElementProps<URLField>;
+      [tagName$7]: SignalishProps<URLFieldJSXProps> &
+        PreactBaseElementProps<URLField>;
     }
   }
 }
@@ -6929,7 +6966,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: UnorderedListJSXProps &
+      [tagName$6]: SignalishProps<UnorderedListJSXProps> &
         PreactBaseElementPropsWithChildren<UnorderedList>;
     }
   }
@@ -7007,7 +7044,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$4]: AdminBlockJSXProps & {
+      [tagName$4]: SignalishProps<AdminBlockJSXProps> & {
         children?: preact.ComponentChildren;
       };
     }
@@ -7037,7 +7074,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$3]: AdminPrintActionJSXProps & {
+      [tagName$3]: SignalishProps<AdminPrintActionJSXProps> & {
         children?: preact.ComponentChildren;
       };
     }
@@ -7097,7 +7134,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$2]: CustomerSegmentTemplateJSXProps & {
+      [tagName$2]: SignalishProps<CustomerSegmentTemplateJSXProps> & {
         children?: preact.ComponentChildren;
       };
     }
@@ -7136,7 +7173,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$1]: FormJSXProps & {
+      [tagName$1]: SignalishProps<FormJSXProps> & {
         children?: preact.ComponentChildren;
       };
     }
@@ -7183,7 +7220,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: FunctionSettingsJSXProps & {
+      [tagName]: SignalishProps<FunctionSettingsJSXProps> & {
         children?: preact.ComponentChildren;
       };
     }
@@ -7572,35 +7609,40 @@ export interface FunctionSettingsEvents {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$X]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
+      [tagName$X]: SignalishProps<AvatarJSXProps> &
+        ReactBaseElementPropsWithChildren<Avatar>;
     }
   }
 }
+
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$X]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
+      [tagName$X]: SignalishProps<AvatarJSXProps> &
+        ReactBaseElementPropsWithChildren<Avatar>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$W]: BadgeJSXProps & ReactBaseElementPropsWithChildren<Badge>;
+      [tagName$W]: SignalishProps<BadgeJSXProps> &
+        ReactBaseElementPropsWithChildren<Badge>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$W]: BadgeJSXProps & ReactBaseElementPropsWithChildren<Badge>;
+      [tagName$W]: SignalishProps<BadgeJSXProps> &
+        ReactBaseElementPropsWithChildren<Badge>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$V]: Omit<BannerJSXProps, 'secondaryActions'> &
+      [tagName$V]: SignalishProps<Omit<BannerJSXProps, 'secondaryActions'>> &
         ReactBaseElementPropsWithChildren<Banner>;
     }
   }
@@ -7608,7 +7650,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$V]: Omit<BannerJSXProps, 'secondaryActions'> &
+      [tagName$V]: SignalishProps<Omit<BannerJSXProps, 'secondaryActions'>> &
         ReactBaseElementPropsWithChildren<Banner>;
     }
   }
@@ -7616,35 +7658,39 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$U]: BoxJSXProps & ReactBaseElementPropsWithChildren<Box>;
+      [tagName$U]: SignalishProps<BoxJSXProps> &
+        ReactBaseElementPropsWithChildren<Box>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$U]: BoxJSXProps & ReactBaseElementPropsWithChildren<Box>;
+      [tagName$U]: SignalishProps<BoxJSXProps> &
+        ReactBaseElementPropsWithChildren<Box>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$T]: ButtonJSXProps & ReactBaseElementPropsWithChildren<Button>;
+      [tagName$T]: SignalishProps<ButtonJSXProps> &
+        ReactBaseElementPropsWithChildren<Button>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$T]: ButtonJSXProps & ReactBaseElementPropsWithChildren<Button>;
+      [tagName$T]: SignalishProps<ButtonJSXProps> &
+        ReactBaseElementPropsWithChildren<Button>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$S]: CheckboxJSXProps &
+      [tagName$S]: SignalishProps<CheckboxJSXProps> &
         ReactBaseElementPropsWithChildren<Checkbox>;
     }
   }
@@ -7652,7 +7698,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$S]: CheckboxJSXProps &
+      [tagName$S]: SignalishProps<CheckboxJSXProps> &
         ReactBaseElementPropsWithChildren<Checkbox>;
     }
   }
@@ -7687,21 +7733,23 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$Q]: ChoiceJSXProps & ReactBaseElementPropsWithChildren<Choice>;
+      [tagName$Q]: SignalishProps<ChoiceJSXProps> &
+        ReactBaseElementPropsWithChildren<Choice>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$Q]: ChoiceJSXProps & ReactBaseElementPropsWithChildren<Choice>;
+      [tagName$Q]: SignalishProps<ChoiceJSXProps> &
+        ReactBaseElementPropsWithChildren<Choice>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$P]: ChoiceListJSXProps &
+      [tagName$P]: SignalishProps<ChoiceListJSXProps> &
         ReactBaseElementPropsWithChildren<ChoiceList>;
     }
   }
@@ -7709,7 +7757,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$P]: ChoiceListJSXProps &
+      [tagName$P]: SignalishProps<ChoiceListJSXProps> &
         ReactBaseElementPropsWithChildren<ChoiceList>;
     }
   }
@@ -7717,7 +7765,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$O]: ClickableJSXProps &
+      [tagName$O]: SignalishProps<ClickableJSXProps> &
         ReactBaseElementPropsWithChildren<Clickable>;
     }
   }
@@ -7725,7 +7773,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$O]: ClickableJSXProps &
+      [tagName$O]: SignalishProps<ClickableJSXProps> &
         ReactBaseElementPropsWithChildren<Clickable>;
     }
   }
@@ -7760,14 +7808,16 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$M]: ColorFieldJSXProps & ReactBaseElementProps<ColorField>;
+      [tagName$M]: SignalishProps<ColorFieldJSXProps> &
+        ReactBaseElementProps<ColorField>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$M]: ColorFieldJSXProps & ReactBaseElementProps<ColorField>;
+      [tagName$M]: SignalishProps<ColorFieldJSXProps> &
+        ReactBaseElementProps<ColorField>;
     }
   }
 }
@@ -7799,28 +7849,32 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$K]: DatePickerJSXProps & ReactBaseElementProps<DatePicker>;
+      [tagName$K]: SignalishProps<DatePickerJSXProps> &
+        ReactBaseElementProps<DatePicker>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$K]: DatePickerJSXProps & ReactBaseElementProps<DatePicker>;
+      [tagName$K]: SignalishProps<DatePickerJSXProps> &
+        ReactBaseElementProps<DatePicker>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$J]: DividerJSXProps & ReactBaseElementProps<Divider>;
+      [tagName$J]: SignalishProps<DividerJSXProps> &
+        ReactBaseElementProps<Divider>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$J]: DividerJSXProps & ReactBaseElementProps<Divider>;
+      [tagName$J]: SignalishProps<DividerJSXProps> &
+        ReactBaseElementProps<Divider>;
     }
   }
 }
@@ -7852,35 +7906,39 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$H]: EmailFieldJSXProps & ReactBaseElementProps<EmailField>;
+      [tagName$H]: SignalishProps<EmailFieldJSXProps> &
+        ReactBaseElementProps<EmailField>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$H]: EmailFieldJSXProps & ReactBaseElementProps<EmailField>;
+      [tagName$H]: SignalishProps<EmailFieldJSXProps> &
+        ReactBaseElementProps<EmailField>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$G]: GridJSXProps & ReactBaseElementPropsWithChildren<Grid>;
+      [tagName$G]: SignalishProps<GridJSXProps> &
+        ReactBaseElementPropsWithChildren<Grid>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$G]: GridJSXProps & ReactBaseElementPropsWithChildren<Grid>;
+      [tagName$G]: SignalishProps<GridJSXProps> &
+        ReactBaseElementPropsWithChildren<Grid>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$F]: GridItemJSXProps &
+      [tagName$F]: SignalishProps<GridItemJSXProps> &
         ReactBaseElementPropsWithChildren<GridItem>;
     }
   }
@@ -7888,7 +7946,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$F]: GridItemJSXProps &
+      [tagName$F]: SignalishProps<GridItemJSXProps> &
         ReactBaseElementPropsWithChildren<GridItem>;
     }
   }
@@ -7896,63 +7954,67 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$E]: HeadingJSXProps & ReactBaseElementPropsWithChildren<Heading>;
+      [tagName$E]: SignalishProps<HeadingJSXProps> &
+        ReactBaseElementPropsWithChildren<Heading>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$E]: HeadingJSXProps & ReactBaseElementPropsWithChildren<Heading>;
+      [tagName$E]: SignalishProps<HeadingJSXProps> &
+        ReactBaseElementPropsWithChildren<Heading>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$D]: IconJSXProps & ReactBaseElementProps<Icon>;
+      [tagName$D]: SignalishProps<IconJSXProps> & ReactBaseElementProps<Icon>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$D]: IconJSXProps & ReactBaseElementProps<Icon>;
+      [tagName$D]: SignalishProps<IconJSXProps> & ReactBaseElementProps<Icon>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$C]: ImageJSXProps & ReactBaseElementProps<Image>;
+      [tagName$C]: SignalishProps<ImageJSXProps> & ReactBaseElementProps<Image>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$C]: ImageJSXProps & ReactBaseElementProps<Image>;
+      [tagName$C]: SignalishProps<ImageJSXProps> & ReactBaseElementProps<Image>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$B]: LinkJSXProps & ReactBaseElementPropsWithChildren<Link>;
+      [tagName$B]: SignalishProps<LinkJSXProps> &
+        ReactBaseElementPropsWithChildren<Link>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$B]: LinkJSXProps & ReactBaseElementPropsWithChildren<Link>;
+      [tagName$B]: SignalishProps<LinkJSXProps> &
+        ReactBaseElementPropsWithChildren<Link>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$A]: ListItemJSXProps &
+      [tagName$A]: SignalishProps<ListItemJSXProps> &
         ReactBaseElementPropsWithChildren<ListItem>;
     }
   }
@@ -7960,7 +8022,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$A]: ListItemJSXProps &
+      [tagName$A]: SignalishProps<ListItemJSXProps> &
         ReactBaseElementPropsWithChildren<ListItem>;
     }
   }
@@ -7993,49 +8055,55 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$y]: MoneyFieldJSXProps & ReactBaseElementProps<MoneyField>;
+      [tagName$y]: SignalishProps<MoneyFieldJSXProps> &
+        ReactBaseElementProps<MoneyField>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$y]: MoneyFieldJSXProps & ReactBaseElementProps<MoneyField>;
+      [tagName$y]: SignalishProps<MoneyFieldJSXProps> &
+        ReactBaseElementProps<MoneyField>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$x]: NumberFieldJSXProps & ReactBaseElementProps<NumberField>;
+      [tagName$x]: SignalishProps<NumberFieldJSXProps> &
+        ReactBaseElementProps<NumberField>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$x]: NumberFieldJSXProps & ReactBaseElementProps<NumberField>;
+      [tagName$x]: SignalishProps<NumberFieldJSXProps> &
+        ReactBaseElementProps<NumberField>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$w]: OptionJSXProps & ReactBaseElementPropsWithChildren<Option>;
+      [tagName$w]: SignalishProps<OptionJSXProps> &
+        ReactBaseElementPropsWithChildren<Option>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$w]: OptionJSXProps & ReactBaseElementPropsWithChildren<Option>;
+      [tagName$w]: SignalishProps<OptionJSXProps> &
+        ReactBaseElementPropsWithChildren<Option>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$v]: OptionGroupJSXProps &
+      [tagName$v]: SignalishProps<OptionGroupJSXProps> &
         ReactBaseElementPropsWithChildren<OptionGroup>;
     }
   }
@@ -8043,7 +8111,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$v]: OptionGroupJSXProps &
+      [tagName$v]: SignalishProps<OptionGroupJSXProps> &
         ReactBaseElementPropsWithChildren<OptionGroup>;
     }
   }
@@ -8051,7 +8119,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$u]: OrderedListJSXProps &
+      [tagName$u]: SignalishProps<OrderedListJSXProps> &
         ReactBaseElementPropsWithChildren<OrderedList>;
     }
   }
@@ -8059,7 +8127,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$u]: OrderedListJSXProps &
+      [tagName$u]: SignalishProps<OrderedListJSXProps> &
         ReactBaseElementPropsWithChildren<OrderedList>;
     }
   }
@@ -8067,7 +8135,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$t]: Omit<PageJSXProps, 'aside'> &
+      [tagName$t]: SignalishProps<Omit<PageJSXProps, 'aside'>> &
         ReactBaseElementPropsWithChildren<Page>;
     }
   }
@@ -8075,7 +8143,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$t]: Omit<PageJSXProps, 'aside'> &
+      [tagName$t]: SignalishProps<Omit<PageJSXProps, 'aside'>> &
         ReactBaseElementPropsWithChildren<Page>;
     }
   }
@@ -8083,7 +8151,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$s]: ParagraphJSXProps &
+      [tagName$s]: SignalishProps<ParagraphJSXProps> &
         ReactBaseElementPropsWithChildren<Paragraph>;
     }
   }
@@ -8091,7 +8159,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$s]: ParagraphJSXProps &
+      [tagName$s]: SignalishProps<ParagraphJSXProps> &
         ReactBaseElementPropsWithChildren<Paragraph>;
     }
   }
@@ -8099,28 +8167,32 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$r]: PasswordFieldJSXProps & ReactBaseElementProps<PasswordField>;
+      [tagName$r]: SignalishProps<PasswordFieldJSXProps> &
+        ReactBaseElementProps<PasswordField>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$r]: PasswordFieldJSXProps & ReactBaseElementProps<PasswordField>;
+      [tagName$r]: SignalishProps<PasswordFieldJSXProps> &
+        ReactBaseElementProps<PasswordField>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$q]: PopoverJSXProps & ReactBaseElementPropsWithChildren<Popover>;
+      [tagName$q]: SignalishProps<PopoverJSXProps> &
+        ReactBaseElementPropsWithChildren<Popover>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$q]: PopoverJSXProps & ReactBaseElementPropsWithChildren<Popover>;
+      [tagName$q]: SignalishProps<PopoverJSXProps> &
+        ReactBaseElementPropsWithChildren<Popover>;
     }
   }
 }
@@ -8152,91 +8224,103 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: SearchFieldJSXProps & ReactBaseElementProps<SearchField>;
+      [tagName$o]: SignalishProps<SearchFieldJSXProps> &
+        ReactBaseElementProps<SearchField>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: SearchFieldJSXProps & ReactBaseElementProps<SearchField>;
+      [tagName$o]: SignalishProps<SearchFieldJSXProps> &
+        ReactBaseElementProps<SearchField>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$n]: SectionJSXProps & ReactBaseElementPropsWithChildren<Section>;
+      [tagName$n]: SignalishProps<SectionJSXProps> &
+        ReactBaseElementPropsWithChildren<Section>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$n]: SectionJSXProps & ReactBaseElementPropsWithChildren<Section>;
+      [tagName$n]: SignalishProps<SectionJSXProps> &
+        ReactBaseElementPropsWithChildren<Section>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$m]: SelectJSXProps & ReactBaseElementPropsWithChildren<Select>;
+      [tagName$m]: SignalishProps<SelectJSXProps> &
+        ReactBaseElementPropsWithChildren<Select>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$m]: SelectJSXProps & ReactBaseElementPropsWithChildren<Select>;
+      [tagName$m]: SignalishProps<SelectJSXProps> &
+        ReactBaseElementPropsWithChildren<Select>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$l]: SpinnerJSXProps & ReactBaseElementProps<Spinner>;
+      [tagName$l]: SignalishProps<SpinnerJSXProps> &
+        ReactBaseElementProps<Spinner>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$l]: SpinnerJSXProps & ReactBaseElementProps<Spinner>;
+      [tagName$l]: SignalishProps<SpinnerJSXProps> &
+        ReactBaseElementProps<Spinner>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$k]: StackJSXProps & ReactBaseElementPropsWithChildren<Stack>;
+      [tagName$k]: SignalishProps<StackJSXProps> &
+        ReactBaseElementPropsWithChildren<Stack>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$k]: StackJSXProps & ReactBaseElementPropsWithChildren<Stack>;
+      [tagName$k]: SignalishProps<StackJSXProps> &
+        ReactBaseElementPropsWithChildren<Stack>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$j]: SwitchJSXProps & ReactBaseElementProps<Switch>;
+      [tagName$j]: SignalishProps<SwitchJSXProps> &
+        ReactBaseElementProps<Switch>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$j]: SwitchJSXProps & ReactBaseElementProps<Switch>;
+      [tagName$j]: SignalishProps<SwitchJSXProps> &
+        ReactBaseElementProps<Switch>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$i]: Omit<TableJSXProps, 'filters'> &
+      [tagName$i]: SignalishProps<Omit<TableJSXProps, 'filters'>> &
         ReactBaseElementPropsWithChildren<Table>;
     }
   }
@@ -8244,7 +8328,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$i]: Omit<TableJSXProps, 'filters'> &
+      [tagName$i]: SignalishProps<Omit<TableJSXProps, 'filters'>> &
         ReactBaseElementPropsWithChildren<Table>;
     }
   }
@@ -8252,7 +8336,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$h]: TableBodyJSXProps &
+      [tagName$h]: SignalishProps<TableBodyJSXProps> &
         ReactBaseElementPropsWithChildren<TableBody>;
     }
   }
@@ -8260,7 +8344,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$h]: TableBodyJSXProps &
+      [tagName$h]: SignalishProps<TableBodyJSXProps> &
         ReactBaseElementPropsWithChildren<TableBody>;
     }
   }
@@ -8268,7 +8352,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$g]: TableCellJSXProps &
+      [tagName$g]: SignalishProps<TableCellJSXProps> &
         ReactBaseElementPropsWithChildren<TableCell>;
     }
   }
@@ -8276,7 +8360,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$g]: TableCellJSXProps &
+      [tagName$g]: SignalishProps<TableCellJSXProps> &
         ReactBaseElementPropsWithChildren<TableCell>;
     }
   }
@@ -8284,7 +8368,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$f]: TableHeaderJSXProps &
+      [tagName$f]: SignalishProps<TableHeaderJSXProps> &
         ReactBaseElementPropsWithChildren<TableHeader>;
     }
   }
@@ -8292,7 +8376,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$f]: TableHeaderJSXProps &
+      [tagName$f]: SignalishProps<TableHeaderJSXProps> &
         ReactBaseElementPropsWithChildren<TableHeader>;
     }
   }
@@ -8300,7 +8384,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$e]: TableHeaderRowJSXProps &
+      [tagName$e]: SignalishProps<TableHeaderRowJSXProps> &
         ReactBaseElementPropsWithChildren<TableHeaderRow>;
     }
   }
@@ -8308,7 +8392,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$e]: TableHeaderRowJSXProps &
+      [tagName$e]: SignalishProps<TableHeaderRowJSXProps> &
         ReactBaseElementPropsWithChildren<TableHeaderRow>;
     }
   }
@@ -8316,7 +8400,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$d]: TableRowJSXProps &
+      [tagName$d]: SignalishProps<TableRowJSXProps> &
         ReactBaseElementPropsWithChildren<TableRow>;
     }
   }
@@ -8324,7 +8408,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$d]: TableRowJSXProps &
+      [tagName$d]: SignalishProps<TableRowJSXProps> &
         ReactBaseElementPropsWithChildren<TableRow>;
     }
   }
@@ -8332,35 +8416,39 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$c]: TextJSXProps & ReactBaseElementPropsWithChildren<Text>;
+      [tagName$c]: SignalishProps<TextJSXProps> &
+        ReactBaseElementPropsWithChildren<Text>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$c]: TextJSXProps & ReactBaseElementPropsWithChildren<Text>;
+      [tagName$c]: SignalishProps<TextJSXProps> &
+        ReactBaseElementPropsWithChildren<Text>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$b]: TextAreaJSXProps & ReactBaseElementProps<TextArea>;
+      [tagName$b]: SignalishProps<TextAreaJSXProps> &
+        ReactBaseElementProps<TextArea>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$b]: TextAreaJSXProps & ReactBaseElementProps<TextArea>;
+      [tagName$b]: SignalishProps<TextAreaJSXProps> &
+        ReactBaseElementProps<TextArea>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$a]: Omit<TextFieldJSXProps, 'accessory'> &
+      [tagName$a]: SignalishProps<Omit<TextFieldJSXProps, 'accessory'>> &
         ReactBaseElementProps<TextField>;
     }
   }
@@ -8368,7 +8456,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$a]: Omit<TextFieldJSXProps, 'accessory'> &
+      [tagName$a]: SignalishProps<Omit<TextFieldJSXProps, 'accessory'>> &
         ReactBaseElementProps<TextField>;
     }
   }
@@ -8376,49 +8464,55 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$9]: ThumbnailJSXProps & ReactBaseElementProps<Thumbnail>;
+      [tagName$9]: SignalishProps<ThumbnailJSXProps> &
+        ReactBaseElementProps<Thumbnail>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$9]: ThumbnailJSXProps & ReactBaseElementProps<Thumbnail>;
+      [tagName$9]: SignalishProps<ThumbnailJSXProps> &
+        ReactBaseElementProps<Thumbnail>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$8]: TooltipJSXProps & ReactBaseElementPropsWithChildren<Tooltip>;
+      [tagName$8]: SignalishProps<TooltipJSXProps> &
+        ReactBaseElementPropsWithChildren<Tooltip>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$8]: TooltipJSXProps & ReactBaseElementPropsWithChildren<Tooltip>;
+      [tagName$8]: SignalishProps<TooltipJSXProps> &
+        ReactBaseElementPropsWithChildren<Tooltip>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$7]: URLFieldJSXProps & ReactBaseElementProps<URLField>;
+      [tagName$7]: SignalishProps<URLFieldJSXProps> &
+        ReactBaseElementProps<URLField>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$7]: URLFieldJSXProps & ReactBaseElementProps<URLField>;
+      [tagName$7]: SignalishProps<URLFieldJSXProps> &
+        ReactBaseElementProps<URLField>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$6]: UnorderedListJSXProps &
+      [tagName$6]: SignalishProps<UnorderedListJSXProps> &
         ReactBaseElementPropsWithChildren<UnorderedList>;
     }
   }
@@ -8426,7 +8520,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$6]: UnorderedListJSXProps &
+      [tagName$6]: SignalishProps<UnorderedListJSXProps> &
         ReactBaseElementPropsWithChildren<UnorderedList>;
     }
   }
@@ -8458,7 +8552,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$4]: AdminBlockJSXProps & {
+      [tagName$4]: SignalishProps<AdminBlockJSXProps> & {
         children?: React.ReactNode;
       };
     }
@@ -8467,7 +8561,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$4]: AdminBlockJSXProps & {
+      [tagName$4]: SignalishProps<AdminBlockJSXProps> & {
         children?: React.ReactNode;
       };
     }
@@ -8476,7 +8570,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$3]: AdminPrintActionJSXProps & {
+      [tagName$3]: SignalishProps<AdminPrintActionJSXProps> & {
         children?: React.ReactNode;
       };
     }
@@ -8485,7 +8579,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$3]: AdminPrintActionJSXProps & {
+      [tagName$3]: SignalishProps<AdminPrintActionJSXProps> & {
         children?: React.ReactNode;
       };
     }
@@ -8494,7 +8588,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$2]: CustomerSegmentTemplateJSXProps & {
+      [tagName$2]: SignalishProps<CustomerSegmentTemplateJSXProps> & {
         children?: React.ReactNode;
       };
     }
@@ -8503,7 +8597,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$2]: CustomerSegmentTemplateJSXProps & {
+      [tagName$2]: SignalishProps<CustomerSegmentTemplateJSXProps> & {
         children?: React.ReactNode;
       };
     }
@@ -8512,7 +8606,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$1]: FormJSXProps & {
+      [tagName$1]: SignalishProps<FormJSXProps> & {
         children?: React.ReactNode;
       };
     }
@@ -8521,7 +8615,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$1]: FormJSXProps & {
+      [tagName$1]: SignalishProps<FormJSXProps> & {
         children?: React.ReactNode;
       };
     }
@@ -8530,7 +8624,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName]: FunctionSettingsJSXProps & {
+      [tagName]: SignalishProps<FunctionSettingsJSXProps> & {
         children?: React.ReactNode;
       };
     }
@@ -8539,7 +8633,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName]: FunctionSettingsJSXProps & {
+      [tagName]: SignalishProps<FunctionSettingsJSXProps> & {
         children?: React.ReactNode;
       };
     }
