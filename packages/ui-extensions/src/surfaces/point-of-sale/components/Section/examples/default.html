@@ -1,0 +1,10 @@
+<s-section heading="Section header">
+  <s-button slot="secondary-actions" onClick={onActionClick}>
+    Action
+  </s-button>
+  <s-choice-list>
+    {data.map((item) => (
+      <s-choice value={item.value}>{item.label}</s-choice>
+    ))}
+  </s-choice-list>
+</s-section>
