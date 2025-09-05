@@ -3,8 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Clickable',
   description:
-    'Use `s-clickable` to make any content interactive and accessible. Provides consistent click behavior and keyboard navigation support.',
-  thumbnail: 'clickable-thumbnail.png',
+    'Use Clickable to make any content interactive and accessible. Provides consistent click behavior.',
+  thumbnail: 'selectable-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -22,13 +22,13 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Actions',
   defaultExample: {
-    image: 'clickable-default.png',
+    image: 'selectable-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'HTML',
+          language: 'html',
         },
       ],
     },
