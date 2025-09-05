@@ -55,7 +55,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
+      [tagName]: SearchFieldJSXProps &
+        BaseElementPropsWithChildren<SearchFieldJSXProps>;
     }
   }
 }

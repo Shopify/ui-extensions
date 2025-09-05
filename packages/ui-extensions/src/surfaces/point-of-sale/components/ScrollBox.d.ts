@@ -39,7 +39,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
+      [tagName]: ScrollBoxJSXProps &
+        BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
 }

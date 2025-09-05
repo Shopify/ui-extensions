@@ -83,7 +83,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementProps<IconJSXProps>;
+      [tagName]: IconJSXProps & BaseElementProps<IconJSXProps>;
     }
   }
 }

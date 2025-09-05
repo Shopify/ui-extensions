@@ -52,7 +52,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<TimePickerJSXProps>;
+      [tagName]: TimePickerJSXProps &
+        BaseElementPropsWithChildren<TimePickerJSXProps>;
     }
   }
 }

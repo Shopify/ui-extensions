@@ -68,9 +68,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<
-        Omit<TextFieldJSXProps, 'accessory'>
-      >;
+      [tagName]: Omit<TextFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<TextFieldJSXProps, 'accessory'>>;
     }
   }
 }

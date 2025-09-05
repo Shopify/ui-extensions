@@ -52,7 +52,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<DatePickerJSXProps>;
+      [tagName]: DatePickerJSXProps &
+        BaseElementPropsWithChildren<DatePickerJSXProps>;
     }
   }
 }

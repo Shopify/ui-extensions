@@ -43,7 +43,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName]: BadgeJSXProps & BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
