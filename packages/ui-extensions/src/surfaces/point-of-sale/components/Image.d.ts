@@ -8,13 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  ModalProps,
-  Key,
-  Ref,
-  ComponentChild,
-} from './components-shared.d.ts';
-import {ReactNode} from 'react';
+import type {ImageProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -32,38 +26,39 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
-export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
-  currentTarget: HTMLElementTagNameMap[T];
-  bubbles?: boolean;
-  cancelable?: boolean;
-  composed?: boolean;
-  detail?: any;
-  eventPhase: number;
-  target: HTMLElementTagNameMap[T] | null;
-}
 
-declare const tagName = 's-modal';
-export interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
-  primaryAction?: ComponentChild;
-  secondaryActions?: ComponentChild;
-  onHide?: (event: CallbackEvent<typeof tagName>) => void | null;
-  onShow?: (event: CallbackEvent<typeof tagName>) => void | null;
-  children?: ReactNode;
+declare const tagName = 's-image';
+export type PickedProps = Pick<ImageProps, 'src' | 'inlineSize' | 'objectFit'>;
+export interface ImageJSXProps extends PickedProps {
+  children?: ComponentChildren;
+  /**
+   * The displayed inline width of the image.
+   *
+   * - `fill`: the image will takes up 100% of the available inline size.
+   * - `auto`: the image will be displayed at its natural size.
+   *
+   * **Mobile surfaces:** Always wrap your image in a box with a set width and height.
+   * ScrollViews on mobile have a dynamic height, which can cause images to appear
+   * inconsistently without defined dimensions.
+   *
+   * @default 'fill'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
+   */
+  inlineSize?: PickedProps['inlineSize'];
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ModalJSXProps;
+    [tagName]: ImageJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<
-        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
-      >;
+      [tagName]: BaseElementPropsWithChildren<ImageJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {ModalJSXProps};
+export type {ImageJSXProps};

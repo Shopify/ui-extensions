@@ -55,8 +55,6 @@ export interface StackJSXProps extends PickedProps {
   children?: ComponentChildren;
   /**
    * Adjust the block size.
-   *
-   * @remarks
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
@@ -66,8 +64,6 @@ export interface StackJSXProps extends PickedProps {
   blockSize?: PickedProps['blockSize'];
   /**
    * Adjust the maximum block size.
-   *
-   * @remarks
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
@@ -77,8 +73,6 @@ export interface StackJSXProps extends PickedProps {
   maxBlockSize?: PickedProps['maxBlockSize'];
   /**
    * Adjust the maximum inline size.
-   *
-   * @remarks
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
@@ -88,8 +82,6 @@ export interface StackJSXProps extends PickedProps {
   maxInlineSize?: PickedProps['maxInlineSize'];
   /**
    * Adjust the minimum block size.
-   *
-   * @remarks
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
@@ -99,8 +91,6 @@ export interface StackJSXProps extends PickedProps {
   minBlockSize?: PickedProps['minBlockSize'];
   /**
    * Adjust the minimum inline size.
-   *
-   * @remarks
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size

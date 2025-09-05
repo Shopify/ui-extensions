@@ -67,21 +67,13 @@ export type SupportedIconNames = Extract<
   | 'customers'
   | 'collection'
 >;
-export type SupportedSizes = Extract<
-  IconProps['size'],
-  'small' | 'base' | 'large' | 'large-100'
->;
-export interface IconJSXProps extends Pick<IconProps, 'tone' | 'color'> {
+export interface IconJSXProps
+  extends Pick<IconProps, 'tone' | 'color' | 'size'> {
   /**
    * The type of icon to display. Maps to PDS icon names.
    * @default ''
    */
   type?: SupportedIconNames;
-  /**
-   * The size of the icon.
-   * @default 'base'
-   */
-  size?: SupportedSizes;
 }
 declare global {
   interface HTMLElementTagNameMap {

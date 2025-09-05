@@ -8,13 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  ModalProps,
-  Key,
-  Ref,
-  ComponentChild,
-} from './components-shared.d.ts';
-import {ReactNode} from 'react';
+import type {Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -32,38 +26,23 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
-export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
-  currentTarget: HTMLElementTagNameMap[T];
-  bubbles?: boolean;
-  cancelable?: boolean;
-  composed?: boolean;
-  detail?: any;
-  eventPhase: number;
-  target: HTMLElementTagNameMap[T] | null;
-}
 
-declare const tagName = 's-modal';
-export interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
-  primaryAction?: ComponentChild;
-  secondaryActions?: ComponentChild;
-  onHide?: (event: CallbackEvent<typeof tagName>) => void | null;
-  onShow?: (event: CallbackEvent<typeof tagName>) => void | null;
-  children?: ReactNode;
+declare const tagName = 's-heading';
+export interface HeadingJSXProps {
+  children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ModalJSXProps;
+    [tagName]: HeadingJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<
-        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
-      >;
+      [tagName]: BaseElementPropsWithChildren<HeadingJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {ModalJSXProps};
+export type {HeadingJSXProps};

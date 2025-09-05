@@ -13,6 +13,7 @@
  * https://github.com/Shopify/ui-api-design/issues/139
  */
 export type ComponentChildren = any;
+export type StringChildren = string;
 export interface GlobalProps {
   /**
    * A unique identifier for the element.
@@ -658,6 +659,13 @@ export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
  * //   ^? 'foo' | 'bar' | (string & {})
  */
 export type AnyString = string & {};
+/**
+ * This is purely to give the ability
+ * to have a space or not in the string literal types.
+ *
+ * For example in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.
+ */
+export type optionalSpace = '' | ' ';
 export interface BadgeProps extends GlobalProps {
   /**
    * The content of the Badge.
@@ -1602,8 +1610,16 @@ export interface BaseOptionProps extends BaseSelectableProps {
 export interface ChoiceProps extends GlobalProps, BaseOptionProps {
   /**
    * Content to use as the choice label.
+   *
+   * @implementation (StringChildren) The label is produced by extracting and
+   * concatenating the text nodes from the provided content; any markup or
+   * element structure is ignored.
+   *
+   * @implementation (ComponentChildren) Behaves as a slot: any elements passed
+   * are rendered as the label content (subject to surface constraints); there
+   * is no coercion to a string.
    */
-  children?: ComponentChildren;
+  children?: ComponentChildren | StringChildren;
   /**
    * Additional text to provide context or guidance for the input.
    *
@@ -1911,11 +1927,11 @@ export interface DatePickerProps
    */
   allow?: string;
   /**
-   * Dates that cannot be selected. These subtract from `allowDates`.
+   * Dates that cannot be selected. These subtract from `allow`.
    *
    * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
    *
-   * The default `''` has no effect on `allowDates`.
+   * The default `''` has no effect on `allow`.
    *
    * - Dates in `YYYY-MM-DD` format disallow a single date.
    * - Dates in `YYYY-MM` format disallow a whole month.
@@ -1937,24 +1953,24 @@ export interface DatePickerProps
    */
   disallow?: string;
   /**
-   * Days of the week that can be selected. These intersect with the result of `allowDates` and `disallowDates`.
+   * Days of the week that can be selected. These intersect with the result of `allow` and `disallow`.
    *
-   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   * A comma-separated list of days. Whitespace is allowed after commas.
    *
-   * The default `''` has no effect on the result of `allowDates` and `disallowDates`.
+   * The default `''` has no effect on the result of `allow` and `disallow`.
    *
    * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
    *
    * @default ""
    *
    * @example
-   * 'saturday, sunday' // allow only weekends within the result of `allowDates` and `disallowDates`.
+   * 'saturday, sunday' // allow only weekends within the result of `allow` and `disallow`.
    */
   allowDays?: string;
   /**
-   * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allowDates` and `disallowDates`.
+   * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allow` and `disallow`.
    *
-   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   * A comma-separated list of days. Whitespace is allowed after commas.
    *
    * The default `''` has no effect on `allowDays`.
    *
@@ -1963,7 +1979,7 @@ export interface DatePickerProps
    * @default ""
    *
    * @example
-   * 'saturday, sunday' // disallow weekends within the result of `allowDates` and `disallowDates`.
+   * 'saturday, sunday' // disallow weekends within the result of `allow` and `disallow`.
    */
   disallowDays?: string;
   /**
@@ -1993,15 +2009,18 @@ export interface DatePickerProps
    * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
    * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
    *
-   * Events:
-   *
-   * - `onInput` - Invoked when any date is selected. Will fire before `onChange`.
-   * - `onChange` - Invoked when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
-   *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
-   *
    * @default ""
    */
   value?: string;
+  /**
+   * Callback when any date is selected. Will fire before `onChange`.
+   */
+  onInput?: (event: Event) => void;
+  /**
+   * Callback when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
+   *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
+   */
+  onChange?: (event: Event) => void;
 }
 export interface DateFieldProps
   extends GlobalProps,
@@ -2014,6 +2033,8 @@ export interface DateFieldProps
       | 'defaultValue'
       | 'allow'
       | 'disallow'
+      | 'allowDays'
+      | 'disallowDays'
       | 'onViewChange'
     >,
     AutocompleteProps<DateAutocompleteField> {
@@ -2044,6 +2065,44 @@ export type DateAutocompleteField = ExtractStrict<
   | 'cc-expiry-month'
   | 'cc-expiry-year'
 >;
+export interface DateSpinnerProps
+  extends GlobalProps,
+    Pick<
+      DatePickerProps,
+      'defaultValue' | 'value' | 'onInput' | 'onChange' | 'onBlur' | 'onFocus'
+    > {
+  /**
+   * Default selected value for the spinner.
+   *
+   * This uses a date in `YYYY-MM-DD` format.
+   *
+   * @default ""
+   */
+  defaultValue?: string;
+  /**
+   * Current selected value for the spinner.
+   *
+   * This uses a date in `YYYY-MM-DD` format.
+   *
+   * @default ""
+   */
+  value?: string;
+  /**
+   * Callback after the wheels have finished spinning and the value has
+   * settled.
+   *
+   * Fires once when inertial/momentum scrolling stops and the selection snaps
+   * into place.
+   */
+  onInput?: (event: Event) => void;
+  /**
+   * Callback when the selection has been confirmed by the user.
+   *
+   * Fires only when the user explicitly commits the selection (for example, by
+   * pressing a confirmation control).
+   */
+  onChange?: (event: Event) => void;
+}
 export interface EmailFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
@@ -2168,7 +2227,9 @@ export interface BaseTypographyProps {
    */
   dir?: 'ltr' | 'rtl' | 'auto' | '';
 }
-export interface IconProps extends GlobalProps {
+export interface IconProps
+  extends GlobalProps,
+    Pick<InteractionProps, 'interestFor'> {
   /**
    * Sets the tone of the icon, based on the intention of the information being conveyed.
    *
@@ -2188,6 +2249,126 @@ export interface IconProps extends GlobalProps {
    */
   size?: SizeKeyword;
   type?: IconType | AnyString;
+}
+export interface BaseImageProps {
+  /**
+   * An alternative text description that describe the image for the reader to
+   * understand what it is about. It is extremely useful for both users using
+   * assistive technology and sighted users. A well written description
+   * provides people with visual impairments the ability to participate in
+   * consuming non-text content. When a screen readers encounters an `s-image`,
+   * the description is read and announced aloud. If an image fails to load,
+   * potentially due to a poor connection, the `alt` is displayed on
+   * screen instead. This has the benefit of letting a sighted buyer know an
+   * image was meant to load here, but as an alternative, they’re still able to
+   * consume the text content. Read
+   * [considerations when writing alternative text](https://www.shopify.com/ca/blog/image-alt-text#4)
+   * to learn more.
+   *
+   * @default `''`
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
+   */
+  alt?: string;
+  /**
+   * A set of media conditions and their corresponding sizes.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes
+   */
+  sizes?: string;
+  /**
+   * The image source (either a remote URL or a local file resource).
+   *
+   * When the image is loading or no `src` is provided, a placeholder will be rendered.
+   *
+   * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
+   * reserved, except in cases where the image area does not have a contextual inline or block size, which should be rare.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
+   */
+  src?: string;
+  /**
+   * A set of image sources and their width or pixel density descriptors.
+   *
+   * This overrides the `src` property.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset
+   */
+  srcSet?: string;
+}
+export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
+  /**
+   * Sets the semantic meaning of the component’s content. When set,
+   * the role will be used by assistive technologies to help users
+   * navigate the page.
+   *
+   * @default 'img'
+   *
+   * @implementation The `img` role doesn't need to be applied if
+   * the host applies it for you; for example, an HTML host rendering
+   * an `<img>` element should not apply the `img` role.
+   */
+  accessibilityRole?:
+    | 'img'
+    | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
+  /**
+   * The displayed inline width of the image.
+   *
+   * - `fill`: the image will takes up 100% of the available inline size.
+   * - `auto`: the image will be displayed at its natural size.
+   *
+   * @default 'fill'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
+   */
+  inlineSize?: 'fill' | 'auto';
+  /**
+   * The aspect ratio of the image.
+   *
+   * The rendering of the image will depend on the `inlineSize` value:
+   *
+   * - `inlineSize="fill"`: the aspect ratio will be respected and the image will take the necessary space.
+   * - `inlineSize="auto"`: the image will not render until it has loaded and the aspect ratio will be ignored.
+   *
+   * For example, if the value is set as `50 / 100`, the getter returns `50 / 100`.
+   * If the value is set as `0.5`, the getter returns `0.5 / 1`.
+   *
+   * @default '1/1'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
+   */
+  aspectRatio?:
+    | `${number}${optionalSpace}/${optionalSpace}${number}`
+    | `${number}`;
+  /**
+   * Determines how the content of the image is resized to fit its container.
+   * The image is positioned in the center of the container.
+   *
+   * @default 'contain'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
+   */
+  objectFit?: 'contain' | 'cover';
+  /**
+   * Determines the loading behavior of the image:
+   * - `eager`: Immediately loads the image, irrespective of its position within the visible viewport.
+   * - `lazy`: Delays loading the image until it approaches a specified distance from the viewport.
+   *
+   * @default 'eager'
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading
+   */
+  loading?: 'eager' | 'lazy';
+  /**
+   * Invoked when load completes successfully.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+   */
+  onLoad?: (event: Event) => void;
+  /**
+   * Invoked on load error.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+   */
+  onError?: (event: Event) => void;
 }
 export interface ModalProps
   extends GlobalProps,
@@ -2250,6 +2431,51 @@ export type NumberAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'one-time-code' | 'cc-number' | 'cc-csc'
 >;
+export interface PageProps extends GlobalProps {
+  /**
+   * The content of the Page.
+   */
+  children?: ComponentChildren;
+  /**
+   * The main page heading
+   */
+  heading?: string;
+  /**
+   * The text to be used as subtitle.
+   */
+  subheading?: string;
+  /**
+   * Additional contextual information about the page.
+   */
+  accessory?: ComponentChildren;
+  /**
+   * The primary action to perform, provided as a button or link type element.
+   * When a `Button` is added to the `primaryAction` it's variant is set to `primary`
+   */
+  primaryAction?: ComponentChildren;
+  /**
+   * The breadcrumb actions to perform, provided as link elements.
+   */
+  breadcrumbActions?: ComponentChildren;
+  /**
+   * Secondary actions. These are `Button`s that will be contextually the 'secondary' variant.
+   */
+  secondaryActions?: ComponentChildren;
+  /**
+   * The aside element is section of a page that contains content that is tangentially related to the content around the aside element, and which could be considered separate from that content.
+   * Such sections are often represented as sidebars in printed typography.
+   * @implementation surfaces built ontop of the web platform should implement this using the <aside> element https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
+   */
+  aside?: ComponentChildren;
+  /**
+   * The inline size of the page
+   * - `base` corresponds to a set default inline size
+   * - `large` full width with whitespace
+   *
+   * @default 'base'
+   */
+  inlineSize?: SizeKeyword;
+}
 export type OverflowKeyword = 'auto' | 'hidden';
 export interface ScrollBoxProps
   extends GlobalProps,
@@ -2276,6 +2502,36 @@ export interface SearchFieldProps
     MinMaxLengthProps,
     AutocompleteProps<SearchAutocompleteField> {}
 export type SearchAutocompleteField = TextAutocompleteField;
+export interface SectionProps extends GlobalProps, ActionSlots {
+  /**
+   * The content of the Section.
+   */
+  children?: ComponentChildren;
+  /**
+   * A label used to describe the section that will be announced by assistive technologies.
+   *
+   * When no `heading` property is provided or included as a children of the Section, you **must** provide an
+   * `accessibilityLabel` to describe the Section. This is important as it allows assistive technologies to provide
+   * the right context to users.
+   */
+  accessibilityLabel?: string;
+  /**
+   * A title that describes the content of the section.
+   */
+  heading?: string;
+  /**
+   * Adjust the padding of all edges.
+   *
+   * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
+   * this is the right design decision in a particular context.
+   * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
+   * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
+   * to bring back the desired padding for the rest of the content.
+   *
+   * @default 'base'
+   */
+  padding?: 'base' | 'none';
+}
 export interface StackProps
   extends GlobalProps,
     BaseBoxPropsWithRole,
@@ -2318,7 +2574,8 @@ export interface TextProps
   extends GlobalProps,
     AccessibilityVisibilityProps,
     BaseTypographyProps,
-    DisplayProps {
+    DisplayProps,
+    Pick<InteractionProps, 'interestFor'> {
   /**
    * The content of the Text.
    */
@@ -2432,6 +2689,84 @@ export interface TextFieldProps
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField>,
     FieldDecorationProps {}
+export interface TimePickerProps
+  extends GlobalProps,
+    InputProps,
+    FocusEventProps {
+  /**
+   * Times that can be selected.
+   *
+   * A comma-separated list of allowed time ranges. Whitespace is allowed after commas.
+   *
+   * The default `''` allows all times.
+   *
+   * Each time range is in `HH:MM--HH:MM` format.
+   *
+   * The end of the range is exclusive, so `09:00--10:00` allows selecting `09:00` but not `10:00`.
+   *
+   * Either side of `--` can be omitted to create an unbounded range.
+   *
+   * Whitespace is allowed either side of `--`.
+   *
+   * @default ''
+   *
+   * @example
+   * `09:00--10:00, 13:00--14:00` - assuming the step is 1 hour, this allows selecting `09:00` or `13:00`.
+   * `12:00--` - allows selecting `12:00` and all times after it.
+   */
+  allow?: string;
+  /**
+   * Times that cannot be selected. This subtracts from `allow`.
+   *
+   * A comma-separated list of allowed time ranges. Whitespace is allowed after commas.
+   *
+   * The default `''` has no effect on `allow`.
+   *
+   * Each time range is in `HH:MM--HH:MM` format.
+   *
+   * The end of the range is exclusive, so `09:00--10:00` disallows selecting `09:00` but not `10:00`.
+   *
+   * Either side of `--` can be omitted to create an unbounded range.
+   *
+   * Whitespace is allowed either side of `--`.
+   *
+   * @default ''
+   *
+   * @example
+   * `09:00--10:00, 13:00--14:00` - assuming the step is 1 hour, this disallows selecting `09:00` or `13:00`.
+   */
+  disallow?: string;
+  /**
+   * Default selected value.
+   *
+   * The default, `''`, means no time is selected.
+   *
+   * The value must be in `HH:MM` format.
+   *
+   * If the provided value is invalid, '' is used as the value.
+   *
+   * @default ''
+   */
+  defaultValue?: string;
+  /**
+   * Current selected value.
+   *
+   * The default, `''`, means no time is selected.
+   *
+   * The value must be in `HH:MM` format.
+   *
+   * If the provided value is invalid, '' is used as the value.
+   *
+   * @default ''
+   */
+  value?: string;
+  /**
+   * The step between selectable times, in seconds.
+   *
+   * @default 60
+   */
+  step?: number;
+}
 //
 // Preact Virtual DOM
 // -----------------------------------
@@ -2617,54 +2952,53 @@ interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   eventPhase: number;
   target: HTMLElementTagNameMap[T] | null;
 }
-interface CallbackToggleEvent<TTagName extends keyof HTMLElementTagNameMap>
-  extends CallbackEvent<TTagName> {
-  newState?: 'open' | 'closed';
-  oldState?: 'open' | 'closed';
-  detail: {
-    newState: 'open' | 'closed';
-    oldState: 'open' | 'closed';
-  };
-}
 
-declare const tagName$k = 's-button';
+declare const tagName$r = 's-button';
 interface ButtonJSXProps
   extends Pick<
     ButtonProps,
-    | 'accessibilityLabel'
-    | 'disabled'
-    | 'command'
-    | 'commandFor'
-    | 'loading'
-    | 'tone'
-    | 'variant'
-    | 'id'
+    'disabled' | 'command' | 'commandFor' | 'loading' | 'tone' | 'variant'
   > {
+  /**
+   * Sets the action the `commandFor` should take when this clickable is activated.
+   *
+   * See the documentation of particular components for the actions they support.
+   *
+   * - `--auto`: a default action for the target component.
+   * - `--show`: shows the target component.
+   * - `--hide`: hides the target component.
+   * - `--toggle`: toggles the target component.
+   *
+   * @default '--auto'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
+   */
+  command?: Extract<
+    ButtonProps['command'],
+    '--auto' | '--hide' | '--show' | '--toggle'
+  >;
   tone?: Extract<
     ButtonProps['tone'],
-    'auto' | 'critical' | 'warning' | 'caution'
+    'auto' | 'critical' | 'neutral' | 'warning' | 'caution'
   >;
   variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
-  /**
-   * test
-   */
-  onClick?: (event: CallbackEvent<typeof tagName$k>) => void;
+  onClick?: (event: CallbackEvent<typeof tagName$r>) => void;
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$k]: ButtonJSXProps;
+    [tagName$r]: ButtonJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$k]: BaseElementPropsWithChildren<ButtonJSXProps>;
+      [tagName$r]: BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
 }
 
-declare const tagName$j = 's-text';
+declare const tagName$q = 's-text';
 interface TextJSXProps extends Pick<TextProps, 'tone' | 'type'> {
   color?: 'subdued' | 'base' | 'strong';
   type?: Extract<TextProps['type'], 'strong' | 'small' | 'generic'>;
@@ -2676,76 +3010,106 @@ interface TextJSXProps extends Pick<TextProps, 'tone' | 'type'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$j]: TextJSXProps;
+    [tagName$q]: TextJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$j]: BaseElementPropsWithChildren<TextJSXProps>;
+      [tagName$q]: BaseElementPropsWithChildren<TextJSXProps>;
     }
   }
 }
 
-declare const tagName$i = 's-scroll-box';
+declare const tagName$p = 's-scroll-box';
 interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$i]: ScrollBoxJSXProps;
+    [tagName$p]: ScrollBoxJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$i]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
+      [tagName$p]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
 }
 
-declare const tagName$h = 's-tile';
-interface TileJSXProps {
-  title: string;
-  subtitle?: string;
-  enabled?: boolean;
-  destructive?: boolean;
-  badgeValue?: string;
-  onPress?: () => void;
-  testID?: string;
+interface TileProps
+  extends GlobalProps,
+    Pick<BaseClickableProps, 'onClick' | 'disabled'> {
+  /**
+   * The primary text displayed on the Tile.
+   *
+   * @default ''
+   */
+  heading?: string;
+  /**
+   * Secondary supporting text displayed below the heading.
+   *
+   * @default ''
+   */
+  subheading?: string;
+  /**
+   * A numeric indicator rendered within the Tile (for example, a count or a step number).
+   *
+   * - When provided, the indicator is displayed inside the tile.
+   * - Intended for small integers. Implementations may clamp, truncate, or abbreviate larger values.
+   * - Omit to render the tile without a numeric indicator.
+   *
+   */
+  itemCount?: number;
+  /**
+   * Changes the visual appearance of the Tile.
+   *
+   * @default 'auto'
+   */
+  tone?: 'accent' | 'auto' | 'neutral';
+}
+
+declare const tagName$o = 's-tile';
+interface TileJSXProps
+  extends Pick<
+    TileProps,
+    'disabled' | 'heading' | 'id' | 'itemCount' | 'tone' | 'subheading'
+  > {
+  onClick?: (event: CallbackEvent<typeof tagName$o>) => void;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$h]: TileJSXProps;
+    [tagName$o]: TileJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$h]: BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName$o]: BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }
 
-declare const tagName$g = 's-navigator';
+declare const tagName$n = 's-navigator';
 interface NavigatorJSXProps {
   initialScreenName?: string;
   children?: React.ReactNode;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$g]: NavigatorJSXProps;
+    [tagName$n]: NavigatorJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$g]: BaseElementPropsWithChildren<NavigatorJSXProps>;
+      [tagName$n]: BaseElementPropsWithChildren<NavigatorJSXProps>;
     }
   }
 }
 
-declare const tagName$f = 's-screen';
+declare const tagName$m = 's-screen';
 interface ScreenJSXProps {
   /**
    * Used to identify this screen as a destination in the navigation stack.
@@ -2793,18 +3157,18 @@ interface ScreenPresentationProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$f]: ScreenJSXProps;
+    [tagName$m]: ScreenJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: BaseElementPropsWithChildren<ScreenJSXProps>;
+      [tagName$m]: BaseElementPropsWithChildren<ScreenJSXProps>;
     }
   }
 }
 
-declare const tagName$e = 's-banner';
+declare const tagName$l = 's-banner';
 interface BannerJSXProps
   extends Pick<BannerProps, 'heading' | 'hidden' | 'tone' | 'id'> {
   tone?: Extract<
@@ -2816,20 +3180,20 @@ interface BannerJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$e]: BannerJSXProps;
+    [tagName$l]: BannerJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: BaseElementPropsWithChildren<
+      [tagName$l]: BaseElementPropsWithChildren<
         Omit<BannerJSXProps, 'primaryAction'>
       >;
     }
   }
 }
 
-declare const tagName$d = 's-box';
+declare const tagName$k = 's-box';
 interface BoxJSXProps
   extends Pick<
     BoxProps,
@@ -2851,18 +3215,18 @@ interface BoxJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$d]: BoxJSXProps;
+    [tagName$k]: BoxJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: BaseElementPropsWithChildren<BoxJSXProps>;
+      [tagName$k]: BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
 
-declare const tagName$c = 's-icon';
+declare const tagName$j = 's-icon';
 type SupportedIconNames = Extract<
   IconProps['type'],
   | 'arrow-down'
@@ -2910,37 +3274,28 @@ type SupportedIconNames = Extract<
   | 'customers'
   | 'collection'
 >;
-type SupportedSizes = Extract<
-  IconProps['size'],
-  'small' | 'base' | 'large' | 'large-100'
->;
-interface IconJSXProps extends Pick<IconProps, 'tone' | 'color'> {
+interface IconJSXProps extends Pick<IconProps, 'tone' | 'color' | 'size'> {
   /**
    * The type of icon to display. Maps to PDS icon names.
    * @default ''
    */
   type?: SupportedIconNames;
-  /**
-   * The size of the icon.
-   * @default 'base'
-   */
-  size?: SupportedSizes;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$c]: IconJSXProps;
+    [tagName$j]: IconJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: BaseElementProps<IconJSXProps>;
+      [tagName$j]: BaseElementProps<IconJSXProps>;
     }
   }
 }
 
-declare const tagName$b = 's-stack';
-type PickedProps = Pick<
+declare const tagName$i = 's-stack';
+type PickedProps$2 = Pick<
   StackProps,
   | 'alignItems'
   | 'alignContent'
@@ -2963,78 +3318,68 @@ type PickedProps = Pick<
   | 'paddingInlineEnd'
   | 'rowGap'
 >;
-interface StackJSXProps extends PickedProps {
+interface StackJSXProps extends PickedProps$2 {
   children?: ComponentChildren;
   /**
    * Adjust the block size.
-   *
-   * @remarks
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
    *
    * @default 'auto'
    */
-  blockSize?: PickedProps['blockSize'];
+  blockSize?: PickedProps$2['blockSize'];
   /**
    * Adjust the maximum block size.
-   *
-   * @remarks
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
    *
    * @default 'none'
    */
-  maxBlockSize?: PickedProps['maxBlockSize'];
+  maxBlockSize?: PickedProps$2['maxBlockSize'];
   /**
    * Adjust the maximum inline size.
-   *
-   * @remarks
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
    *
    * @default 'none'
    */
-  maxInlineSize?: PickedProps['maxInlineSize'];
+  maxInlineSize?: PickedProps$2['maxInlineSize'];
   /**
    * Adjust the minimum block size.
-   *
-   * @remarks
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
    *
    * @default '0'
    */
-  minBlockSize?: PickedProps['minBlockSize'];
+  minBlockSize?: PickedProps$2['minBlockSize'];
   /**
    * Adjust the minimum inline size.
-   *
-   * @remarks
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
    *
    * @default '0'
    */
-  minInlineSize?: PickedProps['minInlineSize'];
+  minInlineSize?: PickedProps$2['minInlineSize'];
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$b]: StackJSXProps;
+    [tagName$i]: StackJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: BaseElementPropsWithChildren<StackJSXProps>;
+      [tagName$i]: BaseElementPropsWithChildren<StackJSXProps>;
     }
   }
 }
 
-declare const tagName$a = 's-badge';
+declare const tagName$h = 's-badge';
 interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
   tone?: Extract<
     BadgeProps['tone'],
@@ -3044,80 +3389,79 @@ interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$a]: BadgeJSXProps;
+    [tagName$h]: BadgeJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName$h]: BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
 
-declare const tagName$9 = 's-choice-list';
+declare const tagName$g = 's-choice-list';
 interface ChoiceListJSXProps
   extends Pick<ChoiceListProps, 'values' | 'multiple'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$9]: ChoiceListJSXProps;
+    [tagName$g]: ChoiceListJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
+      [tagName$g]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
 }
 
-declare const tagName$8 = 's-choice';
+declare const tagName$f = 's-choice';
 interface ChoiceJSXProps
   extends Pick<ChoiceProps, 'value' | 'disabled' | 'selected'> {
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$8]: ChoiceJSXProps;
+    [tagName$f]: ChoiceJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: BaseElementPropsWithChildren<ChoiceJSXProps>;
+      [tagName$f]: BaseElementPropsWithChildren<ChoiceJSXProps>;
     }
   }
 }
 
-declare const tagName$7 = 's-modal';
+declare const tagName$e = 's-modal';
 interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
   primaryAction?: ComponentChild;
   secondaryActions?: ComponentChild;
-  onHide?: (event: CallbackEvent<typeof tagName$7>) => void | null;
-  onShow?: (event: CallbackEvent<typeof tagName$7>) => void | null;
-  onToggle?: (event: CallbackToggleEvent<typeof tagName$7>) => void | null;
+  onHide?: (event: CallbackEvent<typeof tagName$e>) => void | null;
+  onShow?: (event: CallbackEvent<typeof tagName$e>) => void | null;
   children?: ReactNode;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$7]: ModalJSXProps;
+    [tagName$e]: ModalJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$7]: BaseElementPropsWithChildren<
+      [tagName$e]: BaseElementPropsWithChildren<
         Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
       >;
     }
   }
 }
 
-declare const tagName$6 = 's-text-field';
+declare const tagName$d = 's-text-field';
 interface TextFieldJSXProps
   extends Pick<
     TextFieldProps,
@@ -3130,52 +3474,52 @@ interface TextFieldJSXProps
     | 'required'
     | 'maxLength'
   > {
-  onInput?: ((event: CallbackEvent<typeof tagName$6>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$6>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$6>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$6>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
   accessory?: ComponentChild;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$6]: TextFieldJSXProps;
+    [tagName$d]: TextFieldJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: BaseElementPropsWithChildren<
+      [tagName$d]: BaseElementPropsWithChildren<
         Omit<TextFieldJSXProps, 'accessory'>
       >;
     }
   }
 }
 
-declare const tagName$5 = 's-search-field';
+declare const tagName$c = 's-search-field';
 interface SearchFieldJSXProps
   extends Pick<
     SearchFieldProps,
     'disabled' | 'defaultValue' | 'placeholder' | 'value'
   > {
-  onFocus?: ((event: CallbackEvent<typeof tagName$5>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$5>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$5>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$5>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$5]: SearchFieldJSXProps;
+    [tagName$c]: SearchFieldJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$5]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
+      [tagName$c]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
     }
   }
 }
 
-declare const tagName$4 = 's-email-field';
+declare const tagName$b = 's-email-field';
 interface EmailFieldJSXProps
   extends Pick<
     EmailFieldProps,
@@ -3188,46 +3532,46 @@ interface EmailFieldJSXProps
     | 'maxLength'
     | 'details'
   > {
-  onInput?: ((event: CallbackEvent<typeof tagName$4>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$4>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$4>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$4>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
   accessory?: ComponentChild;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$4]: EmailFieldJSXProps;
+    [tagName$b]: EmailFieldJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$4]: BaseElementPropsWithChildren<
+      [tagName$b]: BaseElementPropsWithChildren<
         Omit<EmailFieldJSXProps, 'accessory'>
       >;
     }
   }
 }
 
-declare const tagName$3 = 's-clickable';
+declare const tagName$a = 's-clickable';
 interface ClickableJSXProps extends Pick<ClickableProps, 'disabled'> {
   children?: ComponentChildren;
-  onClick?: (event: CallbackEvent<typeof tagName$3>) => void;
+  onClick?: (event: CallbackEvent<typeof tagName$a>) => void;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$3]: ClickableJSXProps;
+    [tagName$a]: ClickableJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$3]: BaseElementPropsWithChildren<ClickableJSXProps>;
+      [tagName$a]: BaseElementPropsWithChildren<ClickableJSXProps>;
     }
   }
 }
 
-declare const tagName$2 = 's-text-area';
+declare const tagName$9 = 's-text-area';
 interface TextAreaJSXProps
   extends Pick<
     TextAreaProps,
@@ -3241,29 +3585,29 @@ interface TextAreaJSXProps
     | 'maxLength'
     | 'rows'
   > {
-  onInput?: ((event: CallbackEvent<typeof tagName$2>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$2>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$2>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$2>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
   accessory?: ComponentChild;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$2]: TextAreaJSXProps;
+    [tagName$9]: TextAreaJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$2]: BaseElementPropsWithChildren<
+      [tagName$9]: BaseElementPropsWithChildren<
         Omit<TextAreaJSXProps, 'accessory'>
       >;
     }
   }
 }
 
-declare const tagName$1 = 's-number-field';
-interface NumberFieldJSXProps
+declare const tagName$8 = 's-number-field';
+interface PickedJSXProps
   extends Pick<
     NumberFieldProps,
     | 'label'
@@ -3276,51 +3620,234 @@ interface NumberFieldJSXProps
     | 'max'
     | 'min'
   > {
+  /**
+   * Sets the type of controls displayed in the field.
+   *
+   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property.
+   * - `none`: no controls are displayed and users must input the value manually.
+   * - `auto`: the presence of the controls depends on the surface and context.
+   *
+   * @default 'auto'
+   */
+  controls?: NumberFieldProps['controls'];
   inputMode?: Extract<NumberFieldProps['inputMode'], 'decimal' | 'numeric'>;
-  onInput?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$8>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$8>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$8>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$8>) => void) | null;
   accessory?: ComponentChild;
+}
+interface NumberFieldJSXProps extends PickedJSXProps {
+  /**
+   * A short hint that describes the expected value of the field.
+   *
+   * Placeholder text is not supported when using Stepper controls due to constrained space for the number field, especially on phones.
+   */
+  placeholder?: PickedJSXProps['placeholder'];
+  /**
+   * Additional content to be displayed in the field.
+   * Commonly used to display an icon that activates a tooltip providing more information.
+   *
+   * Accessory is not supported when using Stepper controls
+   */
+  accessory?: PickedJSXProps['accessory'];
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$1]: NumberFieldJSXProps;
+    [tagName$8]: NumberFieldJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$1]: BaseElementPropsWithChildren<
+      [tagName$8]: BaseElementPropsWithChildren<
         Omit<NumberFieldJSXProps, 'accessory'>
       >;
     }
   }
 }
 
-declare const tagName = 's-date-field';
+declare const tagName$7 = 's-date-field';
 interface DateFieldJSXProps
   extends Pick<
     DateFieldProps,
     'label' | 'details' | 'value' | 'disabled' | 'error'
   > {
-  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$7>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$7>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$7>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$7>) => void) | null;
   accessory?: ComponentChild;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: DateFieldJSXProps;
+    [tagName$7]: DateFieldJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<
+      [tagName$7]: BaseElementPropsWithChildren<
         Omit<DateFieldJSXProps, 'accessory'>
       >;
+    }
+  }
+}
+
+declare const tagName$6 = 's-date-picker';
+interface DatePickerJSXProps extends Pick<DatePickerProps, 'id' | 'value'> {
+  onBlur?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  onFocus?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  onChange?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  onInput?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$6]: DatePickerJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$6]: BaseElementPropsWithChildren<DatePickerJSXProps>;
+    }
+  }
+}
+
+declare const tagName$5 = 's-date-spinner';
+interface DateSpinnerJSXProps extends Pick<DateSpinnerProps, 'id' | 'value'> {
+  onBlur?: (event: CallbackEvent<typeof tagName$5>) => void | null;
+  onFocus?: (event: CallbackEvent<typeof tagName$5>) => void | null;
+  onChange?: (event: CallbackEvent<typeof tagName$5>) => void | null;
+  onInput?: (event: CallbackEvent<typeof tagName$5>) => void | null;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$5]: DateSpinnerJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$5]: BaseElementPropsWithChildren<DateSpinnerJSXProps>;
+    }
+  }
+}
+
+declare const tagName$4 = 's-section';
+interface SectionJSXProps extends Pick<SectionProps, 'children'> {
+  secondaryActions?: ComponentChild;
+  /**
+   * Adds title text displayed at the top left of the section
+   *
+   * **Mobile surfaces:** Uses the standard POS Design System heading style for a section (not h2).
+   *
+   * @default undefined
+   */
+  heading?: string;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$4]: SectionJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$4]: BaseElementPropsWithChildren<SectionJSXProps>;
+    }
+  }
+}
+
+declare const tagName$3 = 's-heading';
+interface HeadingJSXProps {
+  children?: ComponentChildren;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$3]: HeadingJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$3]: BaseElementPropsWithChildren<HeadingJSXProps>;
+    }
+  }
+}
+
+declare const tagName$2 = 's-time-picker';
+interface TimePickerJSXProps extends Pick<TimePickerProps, 'id' | 'value'> {
+  onBlur?: (event: CallbackEvent<typeof tagName$2>) => void | null;
+  onFocus?: (event: CallbackEvent<typeof tagName$2>) => void | null;
+  onChange?: (event: CallbackEvent<typeof tagName$2>) => void | null;
+  onInput?: (event: CallbackEvent<typeof tagName$2>) => void | null;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$2]: TimePickerJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$2]: BaseElementPropsWithChildren<TimePickerJSXProps>;
+    }
+  }
+}
+
+declare const tagName$1 = 's-image';
+type PickedProps$1 = Pick<ImageProps, 'src' | 'inlineSize' | 'objectFit'>;
+interface ImageJSXProps extends PickedProps$1 {
+  children?: ComponentChildren;
+  /**
+   * The displayed inline width of the image.
+   *
+   * - `fill`: the image will takes up 100% of the available inline size.
+   * - `auto`: the image will be displayed at its natural size.
+   *
+   * **Mobile surfaces:** Always wrap your image in a box with a set width and height.
+   * ScrollViews on mobile have a dynamic height, which can cause images to appear
+   * inconsistently without defined dimensions.
+   *
+   * @default 'fill'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
+   */
+  inlineSize?: PickedProps$1['inlineSize'];
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$1]: ImageJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$1]: BaseElementPropsWithChildren<ImageJSXProps>;
+    }
+  }
+}
+
+declare const tagName = 's-page';
+type PickedProps = Pick<
+  PageProps,
+  'heading' | 'subheading' | 'secondaryActions'
+>;
+interface PageJSXProps extends PickedProps {
+  children?: ComponentChildren;
+  secondaryActions?: ComponentChild;
+  primaryAction?: ComponentChild;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName]: PageJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName]: BaseElementPropsWithChildren<PageJSXProps>;
     }
   }
 }
@@ -3334,187 +3861,450 @@ export type {
   ChoiceListJSXProps,
   ClickableJSXProps,
   DateFieldJSXProps,
+  DatePickerJSXProps,
+  DateSpinnerJSXProps,
   EmailFieldJSXProps,
+  HeadingJSXProps,
   IconJSXProps,
+  ImageJSXProps,
   ModalJSXProps,
   NavigatorJSXProps,
   NumberFieldJSXProps,
+  PageJSXProps,
   ScreenJSXProps,
   ScrollBoxJSXProps,
   SearchFieldJSXProps,
+  SectionJSXProps,
   StackJSXProps,
   TextAreaJSXProps,
   TextFieldJSXProps,
   TextJSXProps,
   TileJSXProps,
+  TimePickerJSXProps,
 };
 
-interface Badge extends Pick<BadgeProps, 'tone' | 'id'> {
-  tone?: BadgeJSXProps['tone'];
-  id?: BadgeJSXProps['id'];
+interface Badge {
+  tone?: 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical';
+  /** A unique identifier for the element. */
+  id?: string;
 }
 
 interface BannerSlots {
   'primary-action'?: HTMLElement;
 }
 
-interface Banner
-  extends Pick<BannerProps, 'tone' | 'heading' | 'hidden' | 'id'> {
-  tone?: BannerJSXProps['tone'];
-  heading?: BannerJSXProps['heading'];
-  hidden?: BannerJSXProps['hidden'];
-  id?: BannerJSXProps['id'];
+interface Banner {
+  tone?: 'info' | 'success' | 'warning' | 'critical';
+  /**
+   * The title of the banner.
+   * @default ''
+   */
+  heading?: string;
+  /**
+   * Determines whether the banner is hidden.
+   *
+   * If this property is being set on each framework render (as in 'controlled' usage),
+   * and the banner is `dismissible`,
+   * ensure you update app state for this property when the `dismiss` event fires.
+   *
+   * If the banner is not `dismissible`, it can still be hidden by setting this property.
+   * @default false
+   */
+  hidden?: boolean;
+  /** A unique identifier for the element. */
+  id?: string;
 }
 
-interface Box
-  extends Pick<
-    BoxProps,
-    | 'padding'
-    | 'paddingBlock'
-    | 'paddingBlockStart'
-    | 'paddingBlockEnd'
-    | 'paddingInline'
-    | 'paddingInlineStart'
-    | 'paddingInlineEnd'
-    | 'blockSize'
-    | 'minBlockSize'
-    | 'maxBlockSize'
-    | 'inlineSize'
-    | 'minInlineSize'
-    | 'maxInlineSize'
-  > {
-  padding?: BoxJSXProps['padding'];
-  paddingBlock?: BoxJSXProps['paddingBlock'];
-  paddingBlockStart?: BoxJSXProps['paddingBlockStart'];
-  paddingBlockEnd?: BoxJSXProps['paddingBlockEnd'];
-  paddingInline?: BoxJSXProps['paddingInline'];
-  paddingInlineStart?: BoxJSXProps['paddingInlineStart'];
-  paddingInlineEnd?: BoxJSXProps['paddingInlineEnd'];
-  blockSize?: BoxJSXProps['blockSize'];
-  minBlockSize?: BoxJSXProps['minBlockSize'];
-  maxBlockSize?: BoxJSXProps['maxBlockSize'];
-  inlineSize?: BoxJSXProps['inlineSize'];
-  minInlineSize?: BoxJSXProps['minInlineSize'];
-  maxInlineSize?: BoxJSXProps['maxInlineSize'];
+interface Box {
+  /**
+   * Adjust the padding of all edges.
+   *
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
+   * @default 'none'
+   */
+  padding?: MaybeAllValuesShorthandProperty<SizeKeyword | 'none'>;
+  /**
+   * Adjust the block-padding.
+   *
+   * - `large none` means block-start padding is `large`, block-end padding is `none`.
+   *
+   * This overrides the block value of `padding`.
+   * @default '' - meaning no override
+   */
+  paddingBlock?: '' | MaybeTwoValuesShorthandProperty<SizeKeyword | 'none'>;
+  /**
+   * Adjust the block-start padding.
+   *
+   * This overrides the block-start value of `paddingBlock`.
+   * @default '' - meaning no override
+   */
+  paddingBlockStart?: '' | (SizeKeyword | 'none');
+  /**
+   * Adjust the block-end padding.
+   *
+   * This overrides the block-end value of `paddingBlock`.
+   * @default '' - meaning no override
+   */
+  paddingBlockEnd?: '' | (SizeKeyword | 'none');
+  /**
+   * Adjust the inline padding.
+   *
+   * - `large none` means inline-start padding is `large`, inline-end padding is `none`.
+   *
+   * This overrides the inline value of `padding`.
+   * @default '' - meaning no override
+   */
+  paddingInline?: '' | MaybeTwoValuesShorthandProperty<SizeKeyword | 'none'>;
+  /**
+   * Adjust the inline-start padding.
+   *
+   * This overrides the inline-start value of `paddingInline`.
+   * @default '' - meaning no override
+   */
+  paddingInlineStart?: '' | (SizeKeyword | 'none');
+  /**
+   * Adjust the inline-end padding.
+   *
+   * This overrides the inline-end value of `paddingInline`.
+   * @default '' - meaning no override
+   */
+  paddingInlineEnd?: '' | (SizeKeyword | 'none');
+  /**
+   * Adjust the block size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+   * @default 'auto'
+   */
+  blockSize?: SizeUnitsOrAuto;
+  /**
+   * Adjust the minimum block size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
+   * @default '0'
+   */
+  minBlockSize?: SizeUnits;
+  /**
+   * Adjust the maximum block size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
+   * @default 'none'
+   */
+  maxBlockSize?: SizeUnitsOrNone;
+  /**
+   * Adjust the inline size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
+   * @default 'auto'
+   */
+  inlineSize?: SizeUnitsOrAuto;
+  /**
+   * Adjust the minimum inline size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
+   * @default '0'
+   */
+  minInlineSize?: SizeUnits;
+  /**
+   * Adjust the maximum inline size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
+   * @default 'none'
+   */
+  maxInlineSize?: SizeUnitsOrNone;
 }
 
 interface ButtonEvents {
-  click?: ButtonJSXProps['onClick'];
+  click?: (event: CallbackEvent<typeof tagName>) => void;
 }
 
-interface Button
-  extends Pick<
-    ButtonProps,
-    | 'tone'
-    | 'variant'
-    | 'accessibilityLabel'
-    | 'disabled'
-    | 'command'
-    | 'commandFor'
-    | 'loading'
-    | 'id'
-  > {
-  tone?: ButtonJSXProps['tone'];
-  variant?: ButtonJSXProps['variant'];
-  accessibilityLabel?: ButtonJSXProps['accessibilityLabel'];
-  disabled?: ButtonJSXProps['disabled'];
-  command?: ButtonJSXProps['command'];
-  commandFor?: ButtonJSXProps['commandFor'];
-  loading?: ButtonJSXProps['loading'];
-  id?: ButtonJSXProps['id'];
+interface Button {
+  /**
+   * Sets the action the `commandFor` should take when this clickable is activated.
+   *
+   * See the documentation of particular components for the actions they support.
+   *
+   * - `--auto`: a default action for the target component.
+   * - `--show`: shows the target component.
+   * - `--hide`: hides the target component.
+   * - `--toggle`: toggles the target component.
+   * @default '--auto'
+   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
+   */
+  command?: '--auto' | '--show' | '--hide' | '--toggle';
+  tone?: 'auto' | 'neutral' | 'caution' | 'warning' | 'critical';
+  variant?: 'primary' | 'secondary';
+  /**
+   * Disables the button, meaning it cannot be clicked or receive focus.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * ID of a component that should respond to activations (e.g. clicks) on this component.
+   *
+   * See `command` for how to control the behavior of the target.
+   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
+   */
+  commandFor?: string;
+  /**
+   * Replaces content with a loading indicator while a background action is being performed.
+   *
+   * This also disables the button.
+   * @default false
+   */
+  loading?: boolean;
 }
 
-interface Choice extends Pick<ChoiceProps, 'value' | 'disabled' | 'selected'> {
-  value?: ChoiceJSXProps['value'];
-  disabled?: ChoiceJSXProps['disabled'];
-  selected?: ChoiceJSXProps['selected'];
+interface Choice {
+  /** The value used in form data when the control is checked. */
+  value?: string;
+  /**
+   * Disables the control, disallowing any interaction.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * Whether the control is active.
+   * @default false
+   */
+  selected?: boolean;
 }
 
 interface ChoiceListEvents {
-  change?: ChoiceListJSXProps['onChange'];
-  input?: ChoiceListJSXProps['onInput'];
+  change?: (event: CallbackEvent<typeof tagName>) => void;
+  input?: (event: CallbackEvent<typeof tagName>) => void;
 }
 
-interface ChoiceList extends Pick<ChoiceListProps, 'values' | 'multiple'> {
-  values?: ChoiceListJSXProps['values'];
-  multiple?: ChoiceListJSXProps['multiple'];
+interface ChoiceList {
+  /**
+   * An array of the `value`s of the selected options.
+   *
+   * This is a convenience prop for setting the `selected` prop on child options.
+   */
+  values?: string[];
+  /**
+   * Whether multiple choices can be selected.
+   * @default false
+   */
+  multiple?: boolean;
 }
 
 interface ClickableEvents {
-  click?: ClickableJSXProps['onClick'];
+  click?: (event: CallbackEvent<typeof tagName>) => void;
 }
 
-interface Clickable extends Pick<ClickableProps, 'disabled'> {
-  disabled?: ClickableJSXProps['disabled'];
+interface Clickable {
+  /**
+   * Disables the clickable, meaning it cannot be clicked or receive focus.
+   *
+   * In this state, onClick will not fire.
+   * If the click event originates from a child element, the event will immediately stop propagating from this element.
+   *
+   * However, items within the clickable can still receive focus and be interacted with.
+   *
+   * This has no impact on the visual state by default,
+   * but developers are encouraged to style the clickable accordingly.
+   */
+  disabled?: boolean;
 }
 
 interface DateFieldEvents {
-  input?: DateFieldJSXProps['onInput'];
-  focus?: DateFieldJSXProps['onFocus'];
-  blur?: DateFieldJSXProps['onBlur'];
-  change?: DateFieldJSXProps['onChange'];
+  input?: (event: CallbackEvent<typeof tagName>) => void;
+  focus?: (event: CallbackEvent<typeof tagName>) => void;
+  blur?: (event: CallbackEvent<typeof tagName>) => void;
+  change?: (event: CallbackEvent<typeof tagName>) => void;
 }
 
 interface DateFieldSlots {
   accessory?: HTMLElement;
 }
 
-interface DateField
-  extends Pick<
-    DateFieldProps,
-    'label' | 'details' | 'value' | 'disabled' | 'error'
-  > {
-  label?: DateFieldJSXProps['label'];
-  details?: DateFieldJSXProps['details'];
-  value?: DateFieldJSXProps['value'];
-  disabled?: DateFieldJSXProps['disabled'];
-  error?: DateFieldJSXProps['error'];
+interface DateField {
+  /** Content to use as the field label. */
+  label?: string;
+  /**
+   * Additional text to provide context or guidance for the field.
+   * This text is displayed along with the field and its label
+   * to offer more information or instructions to the user.
+   *
+   * This will also be exposed to screen reader users.
+   */
+  details?: string;
+  /** The current value for the field. If omitted, the field will be empty. */
+  value?: string;
+  /**
+   * Disables the field, disallowing any interaction.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string;
+}
+
+interface DatePickerEvents {
+  blur?: (event: CallbackEvent<typeof tagName>) => void | null;
+  focus?: (event: CallbackEvent<typeof tagName>) => void | null;
+  change?: (event: CallbackEvent<typeof tagName>) => void | null;
+  input?: (event: CallbackEvent<typeof tagName>) => void | null;
+}
+
+interface DatePicker {
+  /** A unique identifier for the element. */
+  id?: string;
+  /**
+   * Current selected value.
+   *
+   * The default means no date is selected.
+   *
+   * If the provided value is invalid, no date is selected.
+   *
+   * Otherwise:
+   *
+   * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+   * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+   * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+   * @default ""
+   */
+  value?: string;
+}
+
+interface DateSpinnerEvents {
+  blur?: (event: CallbackEvent<typeof tagName>) => void | null;
+  focus?: (event: CallbackEvent<typeof tagName>) => void | null;
+  change?: (event: CallbackEvent<typeof tagName>) => void | null;
+  input?: (event: CallbackEvent<typeof tagName>) => void | null;
+}
+
+interface DateSpinner {
+  /** A unique identifier for the element. */
+  id?: string;
+  /**
+   * Current selected value for the spinner.
+   *
+   * This uses a date in `YYYY-MM-DD` format.
+   * @default ""
+   */
+  value?: string;
 }
 
 interface EmailFieldEvents {
-  input?: EmailFieldJSXProps['onInput'];
-  focus?: EmailFieldJSXProps['onFocus'];
-  blur?: EmailFieldJSXProps['onBlur'];
-  change?: EmailFieldJSXProps['onChange'];
+  input?: (event: CallbackEvent<typeof tagName>) => void;
+  focus?: (event: CallbackEvent<typeof tagName>) => void;
+  blur?: (event: CallbackEvent<typeof tagName>) => void;
+  change?: (event: CallbackEvent<typeof tagName>) => void;
 }
 
 interface EmailFieldSlots {
   accessory?: HTMLElement;
 }
 
-interface EmailField
-  extends Pick<
-    EmailFieldProps,
-    | 'label'
-    | 'value'
-    | 'placeholder'
-    | 'disabled'
-    | 'error'
-    | 'required'
-    | 'maxLength'
-    | 'details'
-  > {
-  label?: EmailFieldJSXProps['label'];
-  value?: EmailFieldJSXProps['value'];
-  placeholder?: EmailFieldJSXProps['placeholder'];
-  disabled?: EmailFieldJSXProps['disabled'];
-  error?: EmailFieldJSXProps['error'];
-  required?: EmailFieldJSXProps['required'];
-  maxLength?: EmailFieldJSXProps['maxLength'];
-  details?: EmailFieldJSXProps['details'];
+interface EmailField {
+  /** Content to use as the field label. */
+  label?: string;
+  /** The current value for the field. If omitted, the field will be empty. */
+  value?: string;
+  /** A short hint that describes the expected value of the field. */
+  placeholder?: string;
+  /**
+   * Disables the field, disallowing any interaction.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string;
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` property.
+   * @default false
+   */
+  required?: boolean;
+  /**
+   * Specifies the maximum number of characters allowed.
+   * @default Infinity
+   */
+  maxLength?: number;
+  /**
+   * Additional text to provide context or guidance for the field.
+   * This text is displayed along with the field and its label
+   * to offer more information or instructions to the user.
+   *
+   * This will also be exposed to screen reader users.
+   */
+  details?: string;
 }
 
-interface Icon extends Pick<IconProps, 'type' | 'size' | 'tone' | 'color'> {
-  type?: IconJSXProps['type'];
-  size?: IconJSXProps['size'];
-  tone?: IconJSXProps['tone'];
-  color?: IconJSXProps['color'];
+interface Icon {
+  /**
+   * The type of icon to display. Maps to PDS icon names.
+   * @default ''
+   */
+  type?: SupportedIconNames;
+  /**
+   * Sets the tone of the icon, based on the intention of the information being conveyed.
+   * @default 'auto'
+   */
+  tone?: ToneKeyword;
+  /**
+   * Modify the color to be more or less intense.
+   * @default 'base'
+   */
+  color?: ColorKeyword;
+  /**
+   * Adjusts the size of the icon.
+   * @default 'base'
+   */
+  size?: SizeKeyword;
+}
+
+interface Image {
+  /**
+   * The displayed inline width of the image.
+   *
+   * - `fill`: the image will takes up 100% of the available inline size.
+   * - `auto`: the image will be displayed at its natural size.
+   *
+   * **Mobile surfaces:** Always wrap your image in a box with a set width and height.
+   * ScrollViews on mobile have a dynamic height, which can cause images to appear
+   * inconsistently without defined dimensions.
+   * @default 'fill'
+   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
+   */
+  inlineSize?: 'fill' | 'auto';
+  /**
+   * The image source (either a remote URL or a local file resource).
+   *
+   * When the image is loading or no `src` is provided, a placeholder will be rendered.
+   * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
+   * reserved, except in cases where the image area does not have a contextual inline or block size, which should be rare.
+   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
+   */
+  src?: string;
+  /**
+   * Determines how the content of the image is resized to fit its container.
+   * The image is positioned in the center of the container.
+   * @default 'contain'
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
+   */
+  objectFit?: 'contain' | 'cover';
 }
 
 interface ModalEvents {
-  hide?: ModalJSXProps['onHide'];
-  show?: ModalJSXProps['onShow'];
-  toggle?: ModalJSXProps['onToggle'];
+  hide?: (event: CallbackEvent<typeof tagName>) => void | null;
+  show?: (event: CallbackEvent<typeof tagName>) => void | null;
 }
 
 interface ModalSlots {
@@ -3522,316 +4312,607 @@ interface ModalSlots {
   'secondary-actions'?: HTMLElement;
 }
 
-interface Modal extends Pick<ModalProps, 'id' | 'heading'> {
-  id?: ModalJSXProps['id'];
-  heading?: ModalJSXProps['heading'];
+interface Modal {
+  /** A unique identifier for the element. */
+  id?: string;
+  /** A title that describes the content of the Modal. */
+  heading?: string;
 }
 
-interface Navigator extends Pick<NavigatorProps, 'initialScreenName'> {
-  initialScreenName?: NavigatorJSXProps['initialScreenName'];
+interface Navigator {
+  initialScreenName?: string;
 }
 
 interface NumberFieldEvents {
-  input?: NumberFieldJSXProps['onInput'];
-  focus?: NumberFieldJSXProps['onFocus'];
-  blur?: NumberFieldJSXProps['onBlur'];
-  change?: NumberFieldJSXProps['onChange'];
+  input?: (event: CallbackEvent<typeof tagName>) => void;
+  focus?: (event: CallbackEvent<typeof tagName>) => void;
+  blur?: (event: CallbackEvent<typeof tagName>) => void;
+  change?: (event: CallbackEvent<typeof tagName>) => void;
 }
 
 interface NumberFieldSlots {
+  /**
+   * Additional content to be displayed in the field.
+   * Commonly used to display an icon that activates a tooltip providing more information.
+   *
+   * Accessory is not supported when using Stepper controls
+   */
   accessory?: HTMLElement;
 }
 
-interface NumberField
-  extends Pick<
-    NumberFieldProps,
-    | 'inputMode'
-    | 'label'
-    | 'details'
-    | 'value'
-    | 'placeholder'
-    | 'disabled'
-    | 'error'
-    | 'required'
-    | 'max'
-    | 'min'
-  > {
-  inputMode?: NumberFieldJSXProps['inputMode'];
-  label?: NumberFieldJSXProps['label'];
-  details?: NumberFieldJSXProps['details'];
-  value?: NumberFieldJSXProps['value'];
-  placeholder?: NumberFieldJSXProps['placeholder'];
-  disabled?: NumberFieldJSXProps['disabled'];
-  error?: NumberFieldJSXProps['error'];
-  required?: NumberFieldJSXProps['required'];
-  max?: NumberFieldJSXProps['max'];
-  min?: NumberFieldJSXProps['min'];
+interface NumberField {
+  /**
+   * A short hint that describes the expected value of the field.
+   *
+   * Placeholder text is not supported when using Stepper controls due to constrained space for the number field, especially on phones.
+   */
+  placeholder?: string;
+  /**
+   * Sets the type of controls displayed in the field.
+   *
+   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property.
+   * - `none`: no controls are displayed and users must input the value manually.
+   * - `auto`: the presence of the controls depends on the surface and context.
+   * @default 'auto'
+   */
+  controls?: 'auto' | 'stepper' | 'none';
+  inputMode?: 'decimal' | 'numeric';
+  /** Content to use as the field label. */
+  label?: string;
+  /**
+   * Additional text to provide context or guidance for the field.
+   * This text is displayed along with the field and its label
+   * to offer more information or instructions to the user.
+   *
+   * This will also be exposed to screen reader users.
+   */
+  details?: string;
+  /** The current value for the field. If omitted, the field will be empty. */
+  value?: string;
+  /**
+   * Disables the field, disallowing any interaction.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string;
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` property.
+   * @default false
+   */
+  required?: boolean;
+  /**
+   * The highest decimal or integer to be accepted for the field.
+   * When used with `step` the value will round down to the max number.
+   *
+   * Note: a user will still be able to use the keyboard to input a number higher than
+   * the max. It is up to the developer to add appropriate validation.
+   * @default Infinity
+   */
+  max?: number;
+  /**
+   * The lowest decimal or integer to be accepted for the field.
+   * When used with `step` the value will round up to the min number.
+   *
+   * Note: a user will still be able to use the keyboard to input a number lower than
+   * the min. It is up to the developer to add appropriate validation.
+   * @default -Infinity
+   */
+  min?: number;
+}
+
+interface PageSlots {
+  'secondary-actions'?: HTMLElement;
+  'primary-action'?: HTMLElement;
+}
+
+interface Page {
+  /** The main page heading */
+  heading?: string;
+  /** The text to be used as subtitle. */
+  subheading?: string;
 }
 
 interface ScreenEvents {
-  navigate?: ScreenJSXProps['onNavigate'];
-  navigateback?: ScreenJSXProps['onNavigateBack'];
-  receiveparams?: ScreenJSXProps['onReceiveParams'];
+  /** Triggered when the screen is navigated to. */
+  navigate?: () => void;
+  /** Triggered when the user navigates back from this screen. Runs after screen is unmounted. */
+  navigateback?: () => void;
+  /** A callback that gets triggered when the navigation event completes and the screen receives the parameters. */
+  receiveparams?: (params: any) => void;
 }
 
 interface ScreenSlots {
+  /** Displays a secondary action button on the screen. */
   'secondary-actions'?: HTMLElement;
 }
 
-interface Screen
-  extends Pick<ScreenProps, 'name' | 'title' | 'isLoading' | 'presentation'> {
-  name: ScreenJSXProps['name'];
-  title: ScreenJSXProps['title'];
-  isLoading?: ScreenJSXProps['isLoading'];
-  presentation?: ScreenJSXProps['presentation'];
+interface Screen {
+  /** Used to identify this screen as a destination in the navigation stack. */
+  name: string;
+  /** The title of the screen which will be displayed on the UI. */
+  title: string;
+  /**
+   * Displays a loading indicator when `true`.
+   * Set this to `true` when performing an asynchronous task, and then to false when the data becomes available to the UI.
+   */
+  isLoading?: boolean;
+  /** Dictates how the `Screen` will be presented when navigated to. */
+  presentation?: ScreenPresentationProps;
 }
 
-interface ScrollBox extends Pick<ScrollBoxProps, 'id'> {
-  id?: ScrollBoxJSXProps['id'];
+interface ScrollBox {
+  /** A unique identifier for the element. */
+  id?: string;
 }
 
 interface SearchFieldEvents {
-  focus?: SearchFieldJSXProps['onFocus'];
-  blur?: SearchFieldJSXProps['onBlur'];
-  input?: SearchFieldJSXProps['onInput'];
-  change?: SearchFieldJSXProps['onChange'];
+  focus?: (event: CallbackEvent<typeof tagName>) => void;
+  blur?: (event: CallbackEvent<typeof tagName>) => void;
+  input?: (event: CallbackEvent<typeof tagName>) => void;
+  change?: (event: CallbackEvent<typeof tagName>) => void;
 }
 
-interface SearchField
-  extends Pick<
-    SearchFieldProps,
-    'disabled' | 'defaultValue' | 'placeholder' | 'value'
-  > {
-  disabled?: SearchFieldJSXProps['disabled'];
-  defaultValue?: SearchFieldJSXProps['defaultValue'];
-  placeholder?: SearchFieldJSXProps['placeholder'];
-  value?: SearchFieldJSXProps['value'];
+interface SearchField {
+  /**
+   * Disables the field, disallowing any interaction.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * The default value for the field.
+   * @implementation `defaultValue` reflects to the `value` attribute.
+   */
+  defaultValue?: string;
+  /** A short hint that describes the expected value of the field. */
+  placeholder?: string;
+  /** The current value for the field. If omitted, the field will be empty. */
+  value?: string;
 }
 
-interface Stack
-  extends Pick<
-    StackProps,
-    | 'blockSize'
-    | 'maxBlockSize'
-    | 'maxInlineSize'
-    | 'minBlockSize'
-    | 'minInlineSize'
-    | 'alignItems'
-    | 'alignContent'
-    | 'gap'
-    | 'columnGap'
-    | 'direction'
-    | 'inlineSize'
-    | 'justifyContent'
-    | 'padding'
-    | 'paddingBlock'
-    | 'paddingBlockStart'
-    | 'paddingBlockEnd'
-    | 'paddingInline'
-    | 'paddingInlineStart'
-    | 'paddingInlineEnd'
-    | 'rowGap'
-  > {
-  blockSize?: StackJSXProps['blockSize'];
-  maxBlockSize?: StackJSXProps['maxBlockSize'];
-  maxInlineSize?: StackJSXProps['maxInlineSize'];
-  minBlockSize?: StackJSXProps['minBlockSize'];
-  minInlineSize?: StackJSXProps['minInlineSize'];
-  alignItems?: StackJSXProps['alignItems'];
-  alignContent?: StackJSXProps['alignContent'];
-  gap?: StackJSXProps['gap'];
-  columnGap?: StackJSXProps['columnGap'];
-  direction?: StackJSXProps['direction'];
-  inlineSize?: StackJSXProps['inlineSize'];
-  justifyContent?: StackJSXProps['justifyContent'];
-  padding?: StackJSXProps['padding'];
-  paddingBlock?: StackJSXProps['paddingBlock'];
-  paddingBlockStart?: StackJSXProps['paddingBlockStart'];
-  paddingBlockEnd?: StackJSXProps['paddingBlockEnd'];
-  paddingInline?: StackJSXProps['paddingInline'];
-  paddingInlineStart?: StackJSXProps['paddingInlineStart'];
-  paddingInlineEnd?: StackJSXProps['paddingInlineEnd'];
-  rowGap?: StackJSXProps['rowGap'];
+interface SectionSlots {
+  'secondary-actions'?: HTMLElement;
 }
 
-interface Text extends Pick<TextProps, 'color' | 'type' | 'tone'> {
-  color?: TextJSXProps['color'];
-  type?: TextJSXProps['type'];
-  tone?: TextJSXProps['tone'];
+interface Section {
+  /**
+   * Adds title text displayed at the top left of the section
+   *
+   * **Mobile surfaces:** Uses the standard POS Design System heading style for a section (not h2).
+   * @default undefined
+   */
+  heading?: string;
+}
+
+interface Stack {
+  /**
+   * Adjust the block size.
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+   * @default 'auto'
+   */
+  blockSize?: SizeUnitsOrAuto;
+  /**
+   * Adjust the maximum block size.
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
+   * @default 'none'
+   */
+  maxBlockSize?: SizeUnitsOrNone;
+  /**
+   * Adjust the maximum inline size.
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
+   * @default 'none'
+   */
+  maxInlineSize?: SizeUnitsOrNone;
+  /**
+   * Adjust the minimum block size.
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
+   * @default '0'
+   */
+  minBlockSize?: SizeUnits;
+  /**
+   * Adjust the minimum inline size.
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
+   * @default '0'
+   */
+  minInlineSize?: SizeUnits;
+  /**
+   * Aligns the Stack's children along the cross axis.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+   * @default 'normal'
+   */
+  alignItems?: AlignItemsKeyword;
+  /**
+   * Aligns the Stack along the cross axis.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+   * @default 'normal'
+   */
+  alignContent?: AlignContentKeyword;
+  /**
+   * Adjust spacing between elements.
+   *
+   * A single value applies to both axes.
+   * A pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
+   * @default 'none'
+   */
+  gap?: MaybeTwoValuesShorthandProperty<SpacingKeyword>;
+  /**
+   * Adjust spacing between elements in the inline axis.
+   *
+   * This overrides the column value of `gap`.
+   * @default '' - meaning no override
+   */
+  columnGap?: '' | SpacingKeyword;
+  /**
+   * Sets how the children are placed within the Stack.
+   * @default 'block'
+   * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
+   */
+  direction?: 'block' | 'inline';
+  /**
+   * Adjust the inline size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
+   * @default 'auto'
+   */
+  inlineSize?: SizeUnitsOrAuto;
+  /**
+   * Aligns the Stack along the main axis.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+   * @default 'normal'
+   */
+  justifyContent?: JustifyContentKeyword;
+  /**
+   * Adjust the padding of all edges.
+   *
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
+   * @default 'none'
+   */
+  padding?: MaybeAllValuesShorthandProperty<'none' | SizeKeyword>;
+  /**
+   * Adjust the block-padding.
+   *
+   * - `large none` means block-start padding is `large`, block-end padding is `none`.
+   *
+   * This overrides the block value of `padding`.
+   * @default '' - meaning no override
+   */
+  paddingBlock?: '' | MaybeTwoValuesShorthandProperty<'none' | SizeKeyword>;
+  /**
+   * Adjust the block-start padding.
+   *
+   * This overrides the block-start value of `paddingBlock`.
+   * @default '' - meaning no override
+   */
+  paddingBlockStart?: '' | ('none' | SizeKeyword);
+  /**
+   * Adjust the block-end padding.
+   *
+   * This overrides the block-end value of `paddingBlock`.
+   * @default '' - meaning no override
+   */
+  paddingBlockEnd?: '' | ('none' | SizeKeyword);
+  /**
+   * Adjust the inline padding.
+   *
+   * - `large none` means inline-start padding is `large`, inline-end padding is `none`.
+   *
+   * This overrides the inline value of `padding`.
+   * @default '' - meaning no override
+   */
+  paddingInline?: '' | MaybeTwoValuesShorthandProperty<'none' | SizeKeyword>;
+  /**
+   * Adjust the inline-start padding.
+   *
+   * This overrides the inline-start value of `paddingInline`.
+   * @default '' - meaning no override
+   */
+  paddingInlineStart?: '' | ('none' | SizeKeyword);
+  /**
+   * Adjust the inline-end padding.
+   *
+   * This overrides the inline-end value of `paddingInline`.
+   * @default '' - meaning no override
+   */
+  paddingInlineEnd?: '' | ('none' | SizeKeyword);
+  /**
+   * Adjust spacing between elements in the block axis.
+   *
+   * This overrides the row value of `gap`.
+   * @default '' - meaning no override
+   */
+  rowGap?: '' | SpacingKeyword;
+}
+
+interface Text {
+  color?: 'subdued' | 'base' | 'strong';
+  type?: 'strong' | 'small' | 'generic';
+  tone?:
+    | 'auto'
+    | 'neutral'
+    | 'info'
+    | 'success'
+    | 'caution'
+    | 'warning'
+    | 'critical';
 }
 
 interface TextAreaEvents {
-  input?: TextAreaJSXProps['onInput'];
-  focus?: TextAreaJSXProps['onFocus'];
-  blur?: TextAreaJSXProps['onBlur'];
-  change?: TextAreaJSXProps['onChange'];
+  input?: (event: CallbackEvent<typeof tagName>) => void;
+  focus?: (event: CallbackEvent<typeof tagName>) => void;
+  blur?: (event: CallbackEvent<typeof tagName>) => void;
+  change?: (event: CallbackEvent<typeof tagName>) => void;
 }
 
 interface TextAreaSlots {
   accessory?: HTMLElement;
 }
 
-interface TextArea
-  extends Pick<
-    TextAreaProps,
-    | 'label'
-    | 'details'
-    | 'value'
-    | 'placeholder'
-    | 'disabled'
-    | 'error'
-    | 'required'
-    | 'maxLength'
-    | 'rows'
-  > {
-  label?: TextAreaJSXProps['label'];
-  details?: TextAreaJSXProps['details'];
-  value?: TextAreaJSXProps['value'];
-  placeholder?: TextAreaJSXProps['placeholder'];
-  disabled?: TextAreaJSXProps['disabled'];
-  error?: TextAreaJSXProps['error'];
-  required?: TextAreaJSXProps['required'];
-  maxLength?: TextAreaJSXProps['maxLength'];
-  rows?: TextAreaJSXProps['rows'];
+interface TextArea {
+  /** Content to use as the field label. */
+  label?: string;
+  /**
+   * Additional text to provide context or guidance for the field.
+   * This text is displayed along with the field and its label
+   * to offer more information or instructions to the user.
+   *
+   * This will also be exposed to screen reader users.
+   */
+  details?: string;
+  /** The current value for the field. If omitted, the field will be empty. */
+  value?: string;
+  /** A short hint that describes the expected value of the field. */
+  placeholder?: string;
+  /**
+   * Disables the field, disallowing any interaction.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string;
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` property.
+   * @default false
+   */
+  required?: boolean;
+  /**
+   * Specifies the maximum number of characters allowed.
+   * @default Infinity
+   */
+  maxLength?: number;
+  /**
+   * A number of visible text lines.
+   * @default 2
+   */
+  rows?: number;
 }
 
 interface TextFieldEvents {
-  input?: TextFieldJSXProps['onInput'];
-  focus?: TextFieldJSXProps['onFocus'];
-  blur?: TextFieldJSXProps['onBlur'];
-  change?: TextFieldJSXProps['onChange'];
+  input?: (event: CallbackEvent<typeof tagName>) => void;
+  focus?: (event: CallbackEvent<typeof tagName>) => void;
+  blur?: (event: CallbackEvent<typeof tagName>) => void;
+  change?: (event: CallbackEvent<typeof tagName>) => void;
 }
 
 interface TextFieldSlots {
   accessory?: HTMLElement;
 }
 
-interface TextField
-  extends Pick<
-    TextFieldProps,
-    | 'label'
-    | 'details'
-    | 'value'
-    | 'placeholder'
-    | 'disabled'
-    | 'error'
-    | 'required'
-    | 'maxLength'
-  > {
-  label?: TextFieldJSXProps['label'];
-  details?: TextFieldJSXProps['details'];
-  value?: TextFieldJSXProps['value'];
-  placeholder?: TextFieldJSXProps['placeholder'];
-  disabled?: TextFieldJSXProps['disabled'];
-  error?: TextFieldJSXProps['error'];
-  required?: TextFieldJSXProps['required'];
-  maxLength?: TextFieldJSXProps['maxLength'];
+interface TextField {
+  /** Content to use as the field label. */
+  label?: string;
+  /**
+   * Additional text to provide context or guidance for the field.
+   * This text is displayed along with the field and its label
+   * to offer more information or instructions to the user.
+   *
+   * This will also be exposed to screen reader users.
+   */
+  details?: string;
+  /** The current value for the field. If omitted, the field will be empty. */
+  value?: string;
+  /** A short hint that describes the expected value of the field. */
+  placeholder?: string;
+  /**
+   * Disables the field, disallowing any interaction.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string;
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` property.
+   * @default false
+   */
+  required?: boolean;
+  /**
+   * Specifies the maximum number of characters allowed.
+   * @default Infinity
+   */
+  maxLength?: number;
 }
 
 interface TileEvents {
-  press?: TileJSXProps['onPress'];
+  click?: (event: CallbackEvent<typeof tagName>) => void;
 }
 
-interface Tile
-  extends Pick<
-    TileProps,
-    'title' | 'subtitle' | 'enabled' | 'destructive' | 'badgeValue' | 'testID'
-  > {
-  title: TileJSXProps['title'];
-  subtitle?: TileJSXProps['subtitle'];
-  enabled?: TileJSXProps['enabled'];
-  destructive?: TileJSXProps['destructive'];
-  badgeValue?: TileJSXProps['badgeValue'];
-  testID?: TileJSXProps['testID'];
+interface Tile {
+  /**
+   * Disables the button, meaning it cannot be clicked or receive focus.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * The primary text displayed on the Tile.
+   * @default ''
+   */
+  heading?: string;
+  /** A unique identifier for the element. */
+  id?: string;
+  /**
+   * A numeric indicator rendered within the Tile (for example, a count or a step number).
+   *
+   * - When provided, the indicator is displayed inside the tile.
+   * - Intended for small integers. Implementations may clamp, truncate, or abbreviate larger values.
+   * - Omit to render the tile without a numeric indicator.
+   */
+  itemCount?: number;
+  /**
+   * Changes the visual appearance of the Tile.
+   * @default 'auto'
+   */
+  tone?: 'accent' | 'auto' | 'neutral';
+  /**
+   * Secondary supporting text displayed below the heading.
+   * @default ''
+   */
+  subheading?: string;
+}
+
+interface TimePickerEvents {
+  blur?: (event: CallbackEvent<typeof tagName>) => void | null;
+  focus?: (event: CallbackEvent<typeof tagName>) => void | null;
+  change?: (event: CallbackEvent<typeof tagName>) => void | null;
+  input?: (event: CallbackEvent<typeof tagName>) => void | null;
+}
+
+interface TimePicker {
+  /** A unique identifier for the element. */
+  id?: string;
+  /**
+   * Current selected value.
+   *
+   * The default, `''`, means no time is selected.
+   *
+   * The value must be in `HH:MM` format.
+   *
+   * If the provided value is invalid, '' is used as the value.
+   * @default ''
+   */
+  value?: string;
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$k]: BaseElementPropsWithChildren<ButtonJSXProps>;
+      [tagName$r]: BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$k]: BaseElementPropsWithChildren<ButtonJSXProps>;
+      [tagName$r]: BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$j]: BaseElementPropsWithChildren<TextJSXProps>;
+      [tagName$q]: BaseElementPropsWithChildren<TextJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$j]: BaseElementPropsWithChildren<TextJSXProps>;
+      [tagName$q]: BaseElementPropsWithChildren<TextJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$i]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
+      [tagName$p]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$i]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
+      [tagName$p]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$h]: BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName$o]: BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$h]: BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName$o]: BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$g]: BaseElementPropsWithChildren<NavigatorJSXProps>;
+      [tagName$n]: BaseElementPropsWithChildren<NavigatorJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$g]: BaseElementPropsWithChildren<NavigatorJSXProps>;
+      [tagName$n]: BaseElementPropsWithChildren<NavigatorJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$f]: BaseElementPropsWithChildren<ScreenJSXProps>;
+      [tagName$m]: BaseElementPropsWithChildren<ScreenJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$f]: BaseElementPropsWithChildren<ScreenJSXProps>;
+      [tagName$m]: BaseElementPropsWithChildren<ScreenJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$e]: BaseElementPropsWithChildren<
+      [tagName$l]: BaseElementPropsWithChildren<
         Omit<BannerJSXProps, 'primaryAction'>
       >;
     }
@@ -3840,7 +4921,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$e]: BaseElementPropsWithChildren<
+      [tagName$l]: BaseElementPropsWithChildren<
         Omit<BannerJSXProps, 'primaryAction'>
       >;
     }
@@ -3849,91 +4930,91 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$d]: BaseElementPropsWithChildren<BoxJSXProps>;
+      [tagName$k]: BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$d]: BaseElementPropsWithChildren<BoxJSXProps>;
+      [tagName$k]: BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$c]: BaseElementProps<IconJSXProps>;
+      [tagName$j]: BaseElementProps<IconJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$c]: BaseElementProps<IconJSXProps>;
+      [tagName$j]: BaseElementProps<IconJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$b]: BaseElementPropsWithChildren<StackJSXProps>;
+      [tagName$i]: BaseElementPropsWithChildren<StackJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$b]: BaseElementPropsWithChildren<StackJSXProps>;
+      [tagName$i]: BaseElementPropsWithChildren<StackJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$a]: BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName$h]: BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$a]: BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName$h]: BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$9]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
+      [tagName$g]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$9]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
+      [tagName$g]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$8]: BaseElementPropsWithChildren<ChoiceJSXProps>;
+      [tagName$f]: BaseElementPropsWithChildren<ChoiceJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$8]: BaseElementPropsWithChildren<ChoiceJSXProps>;
+      [tagName$f]: BaseElementPropsWithChildren<ChoiceJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$7]: BaseElementPropsWithChildren<
+      [tagName$e]: BaseElementPropsWithChildren<
         Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
       >;
     }
@@ -3942,7 +5023,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$7]: BaseElementPropsWithChildren<
+      [tagName$e]: BaseElementPropsWithChildren<
         Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
       >;
     }
@@ -3951,7 +5032,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$6]: BaseElementPropsWithChildren<
+      [tagName$d]: BaseElementPropsWithChildren<
         Omit<TextFieldJSXProps, 'accessory'>
       >;
     }
@@ -3960,7 +5041,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$6]: BaseElementPropsWithChildren<
+      [tagName$d]: BaseElementPropsWithChildren<
         Omit<TextFieldJSXProps, 'accessory'>
       >;
     }
@@ -3969,21 +5050,21 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$5]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
+      [tagName$c]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$5]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
+      [tagName$c]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$4]: BaseElementPropsWithChildren<
+      [tagName$b]: BaseElementPropsWithChildren<
         Omit<EmailFieldJSXProps, 'accessory'>
       >;
     }
@@ -3992,7 +5073,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$4]: BaseElementPropsWithChildren<
+      [tagName$b]: BaseElementPropsWithChildren<
         Omit<EmailFieldJSXProps, 'accessory'>
       >;
     }
@@ -4001,21 +5082,21 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$3]: BaseElementPropsWithChildren<ClickableJSXProps>;
+      [tagName$a]: BaseElementPropsWithChildren<ClickableJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$3]: BaseElementPropsWithChildren<ClickableJSXProps>;
+      [tagName$a]: BaseElementPropsWithChildren<ClickableJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$2]: BaseElementPropsWithChildren<
+      [tagName$9]: BaseElementPropsWithChildren<
         Omit<TextAreaJSXProps, 'accessory'>
       >;
     }
@@ -4024,7 +5105,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$2]: BaseElementPropsWithChildren<
+      [tagName$9]: BaseElementPropsWithChildren<
         Omit<TextAreaJSXProps, 'accessory'>
       >;
     }
@@ -4033,7 +5114,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$1]: BaseElementPropsWithChildren<
+      [tagName$8]: BaseElementPropsWithChildren<
         Omit<NumberFieldJSXProps, 'accessory'>
       >;
     }
@@ -4042,7 +5123,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$1]: BaseElementPropsWithChildren<
+      [tagName$8]: BaseElementPropsWithChildren<
         Omit<NumberFieldJSXProps, 'accessory'>
       >;
     }
@@ -4051,7 +5132,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<
+      [tagName$7]: BaseElementPropsWithChildren<
         Omit<DateFieldJSXProps, 'accessory'>
       >;
     }
@@ -4060,9 +5141,107 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<
+      [tagName$7]: BaseElementPropsWithChildren<
         Omit<DateFieldJSXProps, 'accessory'>
       >;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$6]: BaseElementPropsWithChildren<DatePickerJSXProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$6]: BaseElementPropsWithChildren<DatePickerJSXProps>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$5]: BaseElementPropsWithChildren<DateSpinnerJSXProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$5]: BaseElementPropsWithChildren<DateSpinnerJSXProps>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$4]: BaseElementPropsWithChildren<SectionJSXProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$4]: BaseElementPropsWithChildren<SectionJSXProps>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$3]: BaseElementPropsWithChildren<HeadingJSXProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$3]: BaseElementPropsWithChildren<HeadingJSXProps>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$2]: BaseElementPropsWithChildren<TimePickerJSXProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$2]: BaseElementPropsWithChildren<TimePickerJSXProps>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$1]: BaseElementPropsWithChildren<ImageJSXProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$1]: BaseElementPropsWithChildren<ImageJSXProps>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName]: BaseElementPropsWithChildren<PageJSXProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName]: BaseElementPropsWithChildren<PageJSXProps>;
     }
   }
 }
