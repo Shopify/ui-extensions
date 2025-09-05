@@ -1,1 +1,9 @@
-  <s-modal></s-modal>
+<s-button command="--show" commandFor="modal">Open modal</s-button>
+<s-modal id="modal" heading="Header">
+  <s-stack alignItems="center" justifyContent="center" gap="base">
+    <s-text color="subdued">Subheader</s-text>
+  </s-stack>
+  <s-button slot="primary-action" onClick={handlePrimaryAction}>
+    Label
+  </s-button>
+</s-modal>

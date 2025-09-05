@@ -3,8 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Modal',
   description:
-    "Use `s-modal` to display content in a full-screen overlay. Modals are used to display important information that requires the merchant's attention.",
-  thumbnail: 'modal-thumbnail.png',
+    "Use `s-modal` to display content in an overlay. Modals are used to display important information that requires the merchant's attention.",
+  thumbnail: 'dialog-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -27,13 +27,13 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Structure',
   defaultExample: {
-    image: 'modal-default.png',
+    image: 'dialog-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'HTML',
+          language: 'html',
         },
       ],
     },
