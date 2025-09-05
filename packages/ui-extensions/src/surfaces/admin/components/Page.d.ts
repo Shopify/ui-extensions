@@ -1,4 +1,4 @@
-/** VERSION: 1.10.0 **/
+/** VERSION: 1.11.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -8,7 +8,8 @@
 /// <reference lib="DOM" />
 import type {PageProps$1, ComponentChild} from './shared.d.ts';
 
-export interface PageProps extends Required<Pick<PageProps$1, 'inlineSize'>> {
+export interface PageProps
+  extends Required<Pick<PageProps$1, 'inlineSize' | 'heading'>> {
   inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large' | 'small'>;
 }
 
@@ -89,6 +90,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 
 declare class Page extends PreactCustomElement implements PageProps {
   accessor inlineSize: PageProps['inlineSize'];
+  accessor heading: PageProps['heading'];
   constructor();
   connectedCallback(): void;
   disconnectedCallback(): void;
@@ -115,6 +117,21 @@ export interface PageJSXProps extends Partial<PageProps> {
    * This slot is only rendered when `inlineSize` is "base".
    */
   aside?: ComponentChild;
+  /**
+   * The primary action to perform on the page.
+   * Accepts a single `Button` with a `variant` of `primary`.
+   *
+   */
+  primaryAction?: ComponentChild;
+  /**
+   * Secondary actions on the page. Accepts `ButtonGroup` with nested `Button`s or a single `Button`.
+   * `Button`s must have a `variant` of `secondary` or `auto`.
+   */
+  secondaryActions?: ComponentChild;
+  /**
+   * The breadcrumb actions to display a trail of navigation items.
+   */
+  breadcrumbActions?: ComponentChild;
 }
 
 export {Page};

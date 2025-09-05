@@ -1,0 +1,9 @@
+<s-drop-zone
+  label="Upload"
+  accessibilityLabel="Upload image of type jpg, png, or gif"
+  accept=".jpg,.png,.gif"
+  multiple
+  onInput="console.log('onInput', event.currentTarget?.value)"
+  onChange="console.log('onChange', event.currentTarget?.value)"
+  onDropRejected="console.log('onDropRejected', event.currentTarget?.value)"
+></s-drop-zone>
