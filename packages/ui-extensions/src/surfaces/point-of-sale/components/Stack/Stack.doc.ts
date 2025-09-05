@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Stack',
   description:
-    'Use `s-stack` to arrange elements in vertical or horizontal layouts with consistent spacing. Provides flexible arrangement options for content organization.',
+    'Organizes elements horizontally or vertically along the block or inline axis. Use to structure layouts, group related components, or control spacing between elements.',
   thumbnail: 'stack-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -23,7 +23,7 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'HTML',
+          language: 'html',
         },
       ],
     },
