@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Button',
   description:
-    'Use `s-button` to trigger actions or navigate between screens. Buttons communicate what action will occur when the user touches them.',
+    'Triggers actions or events, such as opening dialogs or navigating to other pages. Use Button to let users perform specific tasks or initiate interactions throughout the interface.',
   thumbnail: 'button-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -28,7 +28,7 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'HTML',
+          language: 'html',
         },
       ],
     },
