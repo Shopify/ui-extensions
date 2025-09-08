@@ -1,0 +1,31 @@
+import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {CUSTOM_DATA} from '../helpers/helper.docs';
+import {ExtensionTargetType} from '../types/ExtensionTargetType';
+
+const data: ReferenceEntityTemplateSchema = {
+  name: ExtensionTargetType.PosCashTrackingObserve,
+  description: `An event extension target that observes cash tracking events.
+  > Note:
+  > This is part of a POS UI Extensions developer preview. More information to come.`,
+  category: 'Targets',
+  subCategory: 'Cash tracking',
+  isVisualComponent: false,
+  related: [
+    {
+      name: ExtensionTargetType.PosCashTrackingSessionCompleteObserve,
+      subtitle: 'Target',
+      type: 'blocks',
+      url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-complete-event-observe',
+    },
+    {
+      name: ExtensionTargetType.PosCashTrackingSessionStartObserve,
+      subtitle: 'Target',
+      type: 'blocks',
+      url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-start-event-observe',
+    },
+  ],
+  type: 'Target',
+  definitions: [CUSTOM_DATA('CashTrackingData')],
+};
+
+export default data;

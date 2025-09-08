@@ -2,6 +2,7 @@ import {BaseOutput} from '../output';
 import {
   CashTrackingSessionStartData,
   CashTrackingSessionCompleteData,
+  CashTrackingData,
 } from './data/CashTrackingSessionData';
 import {TransactionCompleteData} from './data/TransactionCompleteData';
 import {CartUpdateEventData} from './data/CartUpdateEventData';
@@ -18,6 +19,9 @@ export interface EventExtensionTargets {
   ) => Promise<BaseOutput>;
   'pos.cart-update.event.observe': (
     data: CartUpdateEventData,
+  ) => Promise<BaseOutput>;
+  'pos.cash-tracking.event.observe': (
+    data: CashTrackingData,
   ) => Promise<BaseOutput>;
 }
 
