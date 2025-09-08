@@ -7,6 +7,7 @@ export {default as Checkbox} from './Checkbox';
 export {default as ChoiceList} from './ChoiceList';
 export {default as Clickable} from './Clickable';
 export {default as ClipboardItem} from './ClipboardItem';
+export {default as DateField} from './DateField';
 export {default as DatePicker} from './DatePicker';
 export {default as Divider} from './Divider';
 export {default as DropZone} from './DropZone';
