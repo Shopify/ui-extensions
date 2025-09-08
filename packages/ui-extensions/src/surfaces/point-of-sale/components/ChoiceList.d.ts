@@ -51,7 +51,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
+      [tagName]: ChoiceListJSXProps &
+        BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
 }

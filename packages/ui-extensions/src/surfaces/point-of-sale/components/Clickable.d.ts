@@ -49,7 +49,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<ClickableJSXProps>;
+      [tagName]: ClickableJSXProps &
+        BaseElementPropsWithChildren<ClickableJSXProps>;
     }
   }
 }

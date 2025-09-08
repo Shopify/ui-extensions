@@ -58,9 +58,10 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<
-        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
-      >;
+      [tagName]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
+        BaseElementPropsWithChildren<
+          Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
+        >;
     }
   }
 }

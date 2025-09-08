@@ -89,7 +89,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName]: TileJSXProps & BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }

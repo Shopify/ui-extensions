@@ -42,24 +42,6 @@ export interface ButtonJSXProps
     ButtonProps,
     'disabled' | 'command' | 'commandFor' | 'loading' | 'tone' | 'variant'
   > {
-  /**
-   * Sets the action the `commandFor` should take when this clickable is activated.
-   *
-   * See the documentation of particular components for the actions they support.
-   *
-   * - `--auto`: a default action for the target component.
-   * - `--show`: shows the target component.
-   * - `--hide`: hides the target component.
-   * - `--toggle`: toggles the target component.
-   *
-   * @default '--auto'
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
-   */
-  command?: Extract<
-    ButtonProps['command'],
-    '--auto' | '--hide' | '--show' | '--toggle'
-  >;
   tone?: Extract<
     ButtonProps['tone'],
     'auto' | 'critical' | 'neutral' | 'warning' | 'caution'
@@ -76,7 +58,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<ButtonJSXProps>;
+      [tagName]: ButtonJSXProps & BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
 }

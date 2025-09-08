@@ -2959,24 +2959,6 @@ interface ButtonJSXProps
     ButtonProps,
     'disabled' | 'command' | 'commandFor' | 'loading' | 'tone' | 'variant'
   > {
-  /**
-   * Sets the action the `commandFor` should take when this clickable is activated.
-   *
-   * See the documentation of particular components for the actions they support.
-   *
-   * - `--auto`: a default action for the target component.
-   * - `--show`: shows the target component.
-   * - `--hide`: hides the target component.
-   * - `--toggle`: toggles the target component.
-   *
-   * @default '--auto'
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
-   */
-  command?: Extract<
-    ButtonProps['command'],
-    '--auto' | '--hide' | '--show' | '--toggle'
-  >;
   tone?: Extract<
     ButtonProps['tone'],
     'auto' | 'critical' | 'neutral' | 'warning' | 'caution'
@@ -2993,7 +2975,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$r]: BaseElementPropsWithChildren<ButtonJSXProps>;
+      [tagName$r]: ButtonJSXProps &
+        BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
 }
@@ -3016,7 +2999,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$q]: BaseElementPropsWithChildren<TextJSXProps>;
+      [tagName$q]: TextJSXProps & BaseElementPropsWithChildren<TextJSXProps>;
     }
   }
 }
@@ -3033,7 +3016,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$p]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
+      [tagName$p]: ScrollBoxJSXProps &
+        BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
 }
@@ -3086,7 +3070,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$o]: BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName$o]: TileJSXProps & BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }
@@ -3104,7 +3088,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$n]: BaseElementPropsWithChildren<NavigatorJSXProps>;
+      [tagName$n]: NavigatorJSXProps &
+        BaseElementPropsWithChildren<NavigatorJSXProps>;
     }
   }
 }
@@ -3163,7 +3148,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$m]: BaseElementPropsWithChildren<ScreenJSXProps>;
+      [tagName$m]: Omit<ScreenJSXProps, 'secondaryActions'> &
+        BaseElementPropsWithChildren<Omit<ScreenJSXProps, 'secondaryActions'>>;
     }
   }
 }
@@ -3186,9 +3172,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$l]: BaseElementPropsWithChildren<
-        Omit<BannerJSXProps, 'primaryAction'>
-      >;
+      [tagName$l]: Omit<BannerJSXProps, 'primaryAction'> &
+        BaseElementPropsWithChildren<Omit<BannerJSXProps, 'primaryAction'>>;
     }
   }
 }
@@ -3221,7 +3206,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$k]: BaseElementPropsWithChildren<BoxJSXProps>;
+      [tagName$k]: BoxJSXProps & BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
@@ -3289,7 +3274,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$j]: BaseElementProps<IconJSXProps>;
+      [tagName$j]: IconJSXProps & BaseElementProps<IconJSXProps>;
     }
   }
 }
@@ -3374,7 +3359,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$i]: BaseElementPropsWithChildren<StackJSXProps>;
+      [tagName$i]: StackJSXProps & BaseElementPropsWithChildren<StackJSXProps>;
     }
   }
 }
@@ -3395,7 +3380,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$h]: BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName$h]: BadgeJSXProps & BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
@@ -3415,7 +3400,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$g]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
+      [tagName$g]: ChoiceListJSXProps &
+        BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
 }
@@ -3433,7 +3419,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: BaseElementPropsWithChildren<ChoiceJSXProps>;
+      [tagName$f]: ChoiceJSXProps &
+        BaseElementPropsWithChildren<ChoiceJSXProps>;
     }
   }
 }
@@ -3454,9 +3441,10 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: BaseElementPropsWithChildren<
-        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
-      >;
+      [tagName$e]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
+        BaseElementPropsWithChildren<
+          Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
+        >;
     }
   }
 }
@@ -3488,9 +3476,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: BaseElementPropsWithChildren<
-        Omit<TextFieldJSXProps, 'accessory'>
-      >;
+      [tagName$d]: Omit<TextFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<TextFieldJSXProps, 'accessory'>>;
     }
   }
 }
@@ -3514,7 +3501,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
+      [tagName$c]: SearchFieldJSXProps &
+        BaseElementPropsWithChildren<SearchFieldJSXProps>;
     }
   }
 }
@@ -3546,9 +3534,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: BaseElementPropsWithChildren<
-        Omit<EmailFieldJSXProps, 'accessory'>
-      >;
+      [tagName$b]: Omit<EmailFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<EmailFieldJSXProps, 'accessory'>>;
     }
   }
 }
@@ -3566,7 +3553,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: BaseElementPropsWithChildren<ClickableJSXProps>;
+      [tagName$a]: ClickableJSXProps &
+        BaseElementPropsWithChildren<ClickableJSXProps>;
     }
   }
 }
@@ -3599,9 +3587,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: BaseElementPropsWithChildren<
-        Omit<TextAreaJSXProps, 'accessory'>
-      >;
+      [tagName$9]: Omit<TextAreaJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<TextAreaJSXProps, 'accessory'>>;
     }
   }
 }
@@ -3619,17 +3606,8 @@ interface PickedJSXProps
     | 'required'
     | 'max'
     | 'min'
+    | 'controls'
   > {
-  /**
-   * Sets the type of controls displayed in the field.
-   *
-   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property.
-   * - `none`: no controls are displayed and users must input the value manually.
-   * - `auto`: the presence of the controls depends on the surface and context.
-   *
-   * @default 'auto'
-   */
-  controls?: NumberFieldProps['controls'];
   inputMode?: Extract<NumberFieldProps['inputMode'], 'decimal' | 'numeric'>;
   onInput?: ((event: CallbackEvent<typeof tagName$8>) => void) | null;
   onFocus?: ((event: CallbackEvent<typeof tagName$8>) => void) | null;
@@ -3638,6 +3616,49 @@ interface PickedJSXProps
   accessory?: ComponentChild;
 }
 interface NumberFieldJSXProps extends PickedJSXProps {
+  /**
+   * Content to use as the field label.
+   *
+   * Label is not supported when using Stepper controls
+   */
+  label?: PickedJSXProps['label'];
+  /**
+   * Additional text to provide context or guidance for the field.
+   * This text is displayed along with the field and its label
+   * to offer more information or instructions to the user.
+   *
+   * This will also be exposed to screen reader users.
+   *
+   * Details are not supported when using Stepper controls
+   */
+  details?: PickedJSXProps['details'];
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` property.
+   *
+   * @default false
+   *
+   * Required is not supported when using Stepper controls
+   */
+  required?: PickedJSXProps['required'];
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   *
+   * Error is not supported when using Stepper controls
+   */
+  error?: PickedJSXProps['error'];
+  /**
+   * Sets the virtual keyboard.
+   *
+   * Input mode is not supported when using Stepper controls
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
+   * @default 'decimal'
+   */
+  inputMode?: PickedJSXProps['inputMode'];
   /**
    * A short hint that describes the expected value of the field.
    *
@@ -3651,6 +3672,17 @@ interface NumberFieldJSXProps extends PickedJSXProps {
    * Accessory is not supported when using Stepper controls
    */
   accessory?: PickedJSXProps['accessory'];
+  /**
+   * Sets the type of controls displayed for the field.
+   *
+   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property. Note that in POS
+   *   adding stepper controls simplifies the behaviour of the Number Field itself. The field supports only integer values, is always-populated and automatically
+   *   validates the value to be within the min and max bounds. Validation, label, details and placeholder are not supported when using Stepper controls.
+   *
+   * - `none`: no controls are displayed and users must input the value manually.
+   * - `auto`: the presence of the controls depends on the surface and context.
+   */
+  controls?: PickedJSXProps['controls'];
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -3660,9 +3692,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: BaseElementPropsWithChildren<
-        Omit<NumberFieldJSXProps, 'accessory'>
-      >;
+      [tagName$8]: Omit<NumberFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<NumberFieldJSXProps, 'accessory'>>;
     }
   }
 }
@@ -3687,9 +3718,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$7]: BaseElementPropsWithChildren<
-        Omit<DateFieldJSXProps, 'accessory'>
-      >;
+      [tagName$7]: Omit<DateFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<DateFieldJSXProps, 'accessory'>>;
     }
   }
 }
@@ -3709,7 +3739,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: BaseElementPropsWithChildren<DatePickerJSXProps>;
+      [tagName$6]: DatePickerJSXProps &
+        BaseElementPropsWithChildren<DatePickerJSXProps>;
     }
   }
 }
@@ -3729,7 +3760,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$5]: BaseElementPropsWithChildren<DateSpinnerJSXProps>;
+      [tagName$5]: DateSpinnerJSXProps &
+        BaseElementPropsWithChildren<DateSpinnerJSXProps>;
     }
   }
 }
@@ -3754,7 +3786,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$4]: BaseElementPropsWithChildren<SectionJSXProps>;
+      [tagName$4]: Omit<SectionJSXProps, 'secondaryActions'> &
+        BaseElementPropsWithChildren<Omit<SectionJSXProps, 'secondaryActions'>>;
     }
   }
 }
@@ -3771,7 +3804,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$3]: BaseElementPropsWithChildren<HeadingJSXProps>;
+      [tagName$3]: HeadingJSXProps &
+        BaseElementPropsWithChildren<HeadingJSXProps>;
     }
   }
 }
@@ -3791,7 +3825,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$2]: BaseElementPropsWithChildren<TimePickerJSXProps>;
+      [tagName$2]: TimePickerJSXProps &
+        BaseElementPropsWithChildren<TimePickerJSXProps>;
     }
   }
 }
@@ -3824,7 +3859,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$1]: BaseElementPropsWithChildren<ImageJSXProps>;
+      [tagName$1]: ImageJSXProps & BaseElementPropsWithChildren<ImageJSXProps>;
     }
   }
 }
@@ -3847,7 +3882,10 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<PageJSXProps>;
+      [tagName]: Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'> &
+        BaseElementPropsWithChildren<
+          Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'>
+        >;
     }
   }
 }
@@ -4025,6 +4063,13 @@ interface ButtonEvents {
 }
 
 interface Button {
+  tone?: 'auto' | 'neutral' | 'caution' | 'warning' | 'critical';
+  variant?: 'primary' | 'secondary';
+  /**
+   * Disables the button, meaning it cannot be clicked or receive focus.
+   * @default false
+   */
+  disabled?: boolean;
   /**
    * Sets the action the `commandFor` should take when this clickable is activated.
    *
@@ -4034,17 +4079,11 @@ interface Button {
    * - `--show`: shows the target component.
    * - `--hide`: hides the target component.
    * - `--toggle`: toggles the target component.
+   * - `--copy`: copies the target ClipboardItem.
    * @default '--auto'
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
-  command?: '--auto' | '--show' | '--hide' | '--toggle';
-  tone?: 'auto' | 'neutral' | 'caution' | 'warning' | 'critical';
-  variant?: 'primary' | 'secondary';
-  /**
-   * Disables the button, meaning it cannot be clicked or receive focus.
-   * @default false
-   */
-  disabled?: boolean;
+  command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';
   /**
    * ID of a component that should respond to activations (e.g. clicks) on this component.
    *
@@ -4342,22 +4381,10 @@ interface NumberFieldSlots {
 
 interface NumberField {
   /**
-   * A short hint that describes the expected value of the field.
+   * Content to use as the field label.
    *
-   * Placeholder text is not supported when using Stepper controls due to constrained space for the number field, especially on phones.
+   * Label is not supported when using Stepper controls
    */
-  placeholder?: string;
-  /**
-   * Sets the type of controls displayed in the field.
-   *
-   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property.
-   * - `none`: no controls are displayed and users must input the value manually.
-   * - `auto`: the presence of the controls depends on the surface and context.
-   * @default 'auto'
-   */
-  controls?: 'auto' | 'stepper' | 'none';
-  inputMode?: 'decimal' | 'numeric';
-  /** Content to use as the field label. */
   label?: string;
   /**
    * Additional text to provide context or guidance for the field.
@@ -4365,8 +4392,52 @@ interface NumberField {
    * to offer more information or instructions to the user.
    *
    * This will also be exposed to screen reader users.
+   *
+   * Details are not supported when using Stepper controls
    */
   details?: string;
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` property.
+   * @default false
+   *
+   * Required is not supported when using Stepper controls
+   */
+  required?: boolean;
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   *
+   * Error is not supported when using Stepper controls
+   */
+  error?: string;
+  /**
+   * Sets the virtual keyboard.
+   *
+   * Input mode is not supported when using Stepper controls
+   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
+   * @default 'decimal'
+   */
+  inputMode?: 'decimal' | 'numeric';
+  /**
+   * A short hint that describes the expected value of the field.
+   *
+   * Placeholder text is not supported when using Stepper controls due to constrained space for the number field, especially on phones.
+   */
+  placeholder?: string;
+  /**
+   * Sets the type of controls displayed for the field.
+   *
+   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property. Note that in POS
+   *   adding stepper controls simplifies the behaviour of the Number Field itself. The field supports only integer values, is always-populated and automatically
+   *   validates the value to be within the min and max bounds. Validation, label, details and placeholder are not supported when using Stepper controls.
+   *
+   * - `none`: no controls are displayed and users must input the value manually.
+   * - `auto`: the presence of the controls depends on the surface and context.
+   */
+  controls?: 'auto' | 'stepper' | 'none';
   /** The current value for the field. If omitted, the field will be empty. */
   value?: string;
   /**
@@ -4374,19 +4445,6 @@ interface NumberField {
    * @default false
    */
   disabled?: boolean;
-  /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
-   */
-  error?: string;
-  /**
-   * Whether the field needs a value. This requirement adds semantic value
-   * to the field, but it will not cause an error to appear automatically.
-   * If you want to present an error when this field is empty, you can do
-   * so with the `error` property.
-   * @default false
-   */
-  required?: boolean;
   /**
    * The highest decimal or integer to be accepted for the field.
    * When used with `step` the value will round down to the max number.
@@ -4828,420 +4886,442 @@ interface TimePicker {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$r]: BaseElementPropsWithChildren<ButtonJSXProps>;
+      [tagName$r]: ButtonJSXProps &
+        BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$r]: BaseElementPropsWithChildren<ButtonJSXProps>;
+      [tagName$r]: ButtonJSXProps &
+        BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$q]: BaseElementPropsWithChildren<TextJSXProps>;
+      [tagName$q]: TextJSXProps & BaseElementPropsWithChildren<TextJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$q]: BaseElementPropsWithChildren<TextJSXProps>;
+      [tagName$q]: TextJSXProps & BaseElementPropsWithChildren<TextJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$p]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
+      [tagName$p]: ScrollBoxJSXProps &
+        BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$p]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
+      [tagName$p]: ScrollBoxJSXProps &
+        BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName$o]: TileJSXProps & BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName$o]: TileJSXProps & BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$n]: BaseElementPropsWithChildren<NavigatorJSXProps>;
+      [tagName$n]: NavigatorJSXProps &
+        BaseElementPropsWithChildren<NavigatorJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$n]: BaseElementPropsWithChildren<NavigatorJSXProps>;
+      [tagName$n]: NavigatorJSXProps &
+        BaseElementPropsWithChildren<NavigatorJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$m]: BaseElementPropsWithChildren<ScreenJSXProps>;
+      [tagName$m]: Omit<ScreenJSXProps, 'secondaryActions'> &
+        BaseElementPropsWithChildren<Omit<ScreenJSXProps, 'secondaryActions'>>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$m]: BaseElementPropsWithChildren<ScreenJSXProps>;
+      [tagName$m]: Omit<ScreenJSXProps, 'secondaryActions'> &
+        BaseElementPropsWithChildren<Omit<ScreenJSXProps, 'secondaryActions'>>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$l]: BaseElementPropsWithChildren<
-        Omit<BannerJSXProps, 'primaryAction'>
-      >;
+      [tagName$l]: Omit<BannerJSXProps, 'primaryAction'> &
+        BaseElementPropsWithChildren<Omit<BannerJSXProps, 'primaryAction'>>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$l]: BaseElementPropsWithChildren<
-        Omit<BannerJSXProps, 'primaryAction'>
-      >;
+      [tagName$l]: Omit<BannerJSXProps, 'primaryAction'> &
+        BaseElementPropsWithChildren<Omit<BannerJSXProps, 'primaryAction'>>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$k]: BaseElementPropsWithChildren<BoxJSXProps>;
+      [tagName$k]: BoxJSXProps & BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$k]: BaseElementPropsWithChildren<BoxJSXProps>;
+      [tagName$k]: BoxJSXProps & BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$j]: BaseElementProps<IconJSXProps>;
+      [tagName$j]: IconJSXProps & BaseElementProps<IconJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$j]: BaseElementProps<IconJSXProps>;
+      [tagName$j]: IconJSXProps & BaseElementProps<IconJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$i]: BaseElementPropsWithChildren<StackJSXProps>;
+      [tagName$i]: StackJSXProps & BaseElementPropsWithChildren<StackJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$i]: BaseElementPropsWithChildren<StackJSXProps>;
+      [tagName$i]: StackJSXProps & BaseElementPropsWithChildren<StackJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$h]: BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName$h]: BadgeJSXProps & BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$h]: BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName$h]: BadgeJSXProps & BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$g]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
+      [tagName$g]: ChoiceListJSXProps &
+        BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$g]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
+      [tagName$g]: ChoiceListJSXProps &
+        BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$f]: BaseElementPropsWithChildren<ChoiceJSXProps>;
+      [tagName$f]: ChoiceJSXProps &
+        BaseElementPropsWithChildren<ChoiceJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$f]: BaseElementPropsWithChildren<ChoiceJSXProps>;
+      [tagName$f]: ChoiceJSXProps &
+        BaseElementPropsWithChildren<ChoiceJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$e]: BaseElementPropsWithChildren<
-        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
-      >;
+      [tagName$e]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
+        BaseElementPropsWithChildren<
+          Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
+        >;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$e]: BaseElementPropsWithChildren<
-        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
-      >;
+      [tagName$e]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
+        BaseElementPropsWithChildren<
+          Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
+        >;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$d]: BaseElementPropsWithChildren<
-        Omit<TextFieldJSXProps, 'accessory'>
-      >;
+      [tagName$d]: Omit<TextFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<TextFieldJSXProps, 'accessory'>>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$d]: BaseElementPropsWithChildren<
-        Omit<TextFieldJSXProps, 'accessory'>
-      >;
+      [tagName$d]: Omit<TextFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<TextFieldJSXProps, 'accessory'>>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$c]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
+      [tagName$c]: SearchFieldJSXProps &
+        BaseElementPropsWithChildren<SearchFieldJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$c]: BaseElementPropsWithChildren<SearchFieldJSXProps>;
+      [tagName$c]: SearchFieldJSXProps &
+        BaseElementPropsWithChildren<SearchFieldJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$b]: BaseElementPropsWithChildren<
-        Omit<EmailFieldJSXProps, 'accessory'>
-      >;
+      [tagName$b]: Omit<EmailFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<EmailFieldJSXProps, 'accessory'>>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$b]: BaseElementPropsWithChildren<
-        Omit<EmailFieldJSXProps, 'accessory'>
-      >;
+      [tagName$b]: Omit<EmailFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<EmailFieldJSXProps, 'accessory'>>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$a]: BaseElementPropsWithChildren<ClickableJSXProps>;
+      [tagName$a]: ClickableJSXProps &
+        BaseElementPropsWithChildren<ClickableJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$a]: BaseElementPropsWithChildren<ClickableJSXProps>;
+      [tagName$a]: ClickableJSXProps &
+        BaseElementPropsWithChildren<ClickableJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$9]: BaseElementPropsWithChildren<
-        Omit<TextAreaJSXProps, 'accessory'>
-      >;
+      [tagName$9]: Omit<TextAreaJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<TextAreaJSXProps, 'accessory'>>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$9]: BaseElementPropsWithChildren<
-        Omit<TextAreaJSXProps, 'accessory'>
-      >;
+      [tagName$9]: Omit<TextAreaJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<TextAreaJSXProps, 'accessory'>>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$8]: BaseElementPropsWithChildren<
-        Omit<NumberFieldJSXProps, 'accessory'>
-      >;
+      [tagName$8]: Omit<NumberFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<NumberFieldJSXProps, 'accessory'>>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$8]: BaseElementPropsWithChildren<
-        Omit<NumberFieldJSXProps, 'accessory'>
-      >;
+      [tagName$8]: Omit<NumberFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<NumberFieldJSXProps, 'accessory'>>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$7]: BaseElementPropsWithChildren<
-        Omit<DateFieldJSXProps, 'accessory'>
-      >;
+      [tagName$7]: Omit<DateFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<DateFieldJSXProps, 'accessory'>>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$7]: BaseElementPropsWithChildren<
-        Omit<DateFieldJSXProps, 'accessory'>
-      >;
+      [tagName$7]: Omit<DateFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<DateFieldJSXProps, 'accessory'>>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$6]: BaseElementPropsWithChildren<DatePickerJSXProps>;
+      [tagName$6]: DatePickerJSXProps &
+        BaseElementPropsWithChildren<DatePickerJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$6]: BaseElementPropsWithChildren<DatePickerJSXProps>;
+      [tagName$6]: DatePickerJSXProps &
+        BaseElementPropsWithChildren<DatePickerJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$5]: BaseElementPropsWithChildren<DateSpinnerJSXProps>;
+      [tagName$5]: DateSpinnerJSXProps &
+        BaseElementPropsWithChildren<DateSpinnerJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$5]: BaseElementPropsWithChildren<DateSpinnerJSXProps>;
+      [tagName$5]: DateSpinnerJSXProps &
+        BaseElementPropsWithChildren<DateSpinnerJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$4]: BaseElementPropsWithChildren<SectionJSXProps>;
+      [tagName$4]: Omit<SectionJSXProps, 'secondaryActions'> &
+        BaseElementPropsWithChildren<Omit<SectionJSXProps, 'secondaryActions'>>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$4]: BaseElementPropsWithChildren<SectionJSXProps>;
+      [tagName$4]: Omit<SectionJSXProps, 'secondaryActions'> &
+        BaseElementPropsWithChildren<Omit<SectionJSXProps, 'secondaryActions'>>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$3]: BaseElementPropsWithChildren<HeadingJSXProps>;
+      [tagName$3]: HeadingJSXProps &
+        BaseElementPropsWithChildren<HeadingJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$3]: BaseElementPropsWithChildren<HeadingJSXProps>;
+      [tagName$3]: HeadingJSXProps &
+        BaseElementPropsWithChildren<HeadingJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$2]: BaseElementPropsWithChildren<TimePickerJSXProps>;
+      [tagName$2]: TimePickerJSXProps &
+        BaseElementPropsWithChildren<TimePickerJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$2]: BaseElementPropsWithChildren<TimePickerJSXProps>;
+      [tagName$2]: TimePickerJSXProps &
+        BaseElementPropsWithChildren<TimePickerJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$1]: BaseElementPropsWithChildren<ImageJSXProps>;
+      [tagName$1]: ImageJSXProps & BaseElementPropsWithChildren<ImageJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$1]: BaseElementPropsWithChildren<ImageJSXProps>;
+      [tagName$1]: ImageJSXProps & BaseElementPropsWithChildren<ImageJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<PageJSXProps>;
+      [tagName]: Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'> &
+        BaseElementPropsWithChildren<
+          Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'>
+        >;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<PageJSXProps>;
+      [tagName]: Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'> &
+        BaseElementPropsWithChildren<
+          Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'>
+        >;
     }
   }
 }

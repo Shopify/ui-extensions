@@ -54,17 +54,8 @@ export interface PickedJSXProps
     | 'required'
     | 'max'
     | 'min'
+    | 'controls'
   > {
-  /**
-   * Sets the type of controls displayed in the field.
-   *
-   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property.
-   * - `none`: no controls are displayed and users must input the value manually.
-   * - `auto`: the presence of the controls depends on the surface and context.
-   *
-   * @default 'auto'
-   */
-  controls?: NumberFieldProps['controls'];
   inputMode?: Extract<NumberFieldProps['inputMode'], 'decimal' | 'numeric'>;
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
@@ -73,6 +64,49 @@ export interface PickedJSXProps
   accessory?: ComponentChild;
 }
 export interface NumberFieldJSXProps extends PickedJSXProps {
+  /**
+   * Content to use as the field label.
+   *
+   * Label is not supported when using Stepper controls
+   */
+  label?: PickedJSXProps['label'];
+  /**
+   * Additional text to provide context or guidance for the field.
+   * This text is displayed along with the field and its label
+   * to offer more information or instructions to the user.
+   *
+   * This will also be exposed to screen reader users.
+   *
+   * Details are not supported when using Stepper controls
+   */
+  details?: PickedJSXProps['details'];
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` property.
+   *
+   * @default false
+   *
+   * Required is not supported when using Stepper controls
+   */
+  required?: PickedJSXProps['required'];
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   *
+   * Error is not supported when using Stepper controls
+   */
+  error?: PickedJSXProps['error'];
+  /**
+   * Sets the virtual keyboard.
+   *
+   * Input mode is not supported when using Stepper controls
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
+   * @default 'decimal'
+   */
+  inputMode?: PickedJSXProps['inputMode'];
   /**
    * A short hint that describes the expected value of the field.
    *
@@ -86,6 +120,17 @@ export interface NumberFieldJSXProps extends PickedJSXProps {
    * Accessory is not supported when using Stepper controls
    */
   accessory?: PickedJSXProps['accessory'];
+  /**
+   * Sets the type of controls displayed for the field.
+   *
+   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property. Note that in POS
+   *   adding stepper controls simplifies the behaviour of the Number Field itself. The field supports only integer values, is always-populated and automatically
+   *   validates the value to be within the min and max bounds. Validation, label, details and placeholder are not supported when using Stepper controls.
+   *
+   * - `none`: no controls are displayed and users must input the value manually.
+   * - `auto`: the presence of the controls depends on the surface and context.
+   */
+  controls?: PickedJSXProps['controls'];
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -95,9 +140,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<
-        Omit<NumberFieldJSXProps, 'accessory'>
-      >;
+      [tagName]: Omit<NumberFieldJSXProps, 'accessory'> &
+        BaseElementPropsWithChildren<Omit<NumberFieldJSXProps, 'accessory'>>;
     }
   }
 }
