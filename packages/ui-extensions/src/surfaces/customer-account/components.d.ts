@@ -1,3 +1,6 @@
+/**
+ * @fileoverview This file is used to generate the documentation for the customer-account surface. For component types, see the components folder.
+ */
 import {
   AvatarProps,
   AvatarElementProps,
