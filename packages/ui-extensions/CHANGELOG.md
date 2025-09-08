@@ -1,5 +1,15 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.28
+
+### Patch Changes
+
+- [#3252](https://github.com/Shopify/ui-extensions/pull/3252) [`fd917567f9be40a671701a66326d37d3aa5dbaa2`](https://github.com/Shopify/ui-extensions/commit/fd917567f9be40a671701a66326d37d3aa5dbaa2) Thanks [@lsit](https://github.com/lsit)! - Migrate customer account target examples to Preact
+
+- [#3249](https://github.com/Shopify/ui-extensions/pull/3249) [`c9a7f39a38f86ad9cbaa714b1a4177a168380bee`](https://github.com/Shopify/ui-extensions/commit/c9a7f39a38f86ad9cbaa714b1a4177a168380bee) Thanks [@lsit](https://github.com/lsit)! - Delete unused examples in customer account
+
+- [#3254](https://github.com/Shopify/ui-extensions/pull/3254) [`3f712879b91e5270ce06e385be0c18c8113032b0`](https://github.com/Shopify/ui-extensions/commit/3f712879b91e5270ce06e385be0c18c8113032b0) Thanks [@brianshen1990](https://github.com/brianshen1990)! - [customer account] add announcement targets
+
 ## 2025.10.0-rc.27
 
 ### Minor Changes
