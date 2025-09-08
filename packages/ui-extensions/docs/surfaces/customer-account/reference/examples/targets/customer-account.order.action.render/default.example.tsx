@@ -1,35 +1,26 @@
-import React from "react";
-import {
-  Button,
-  CustomerAccountAction,
-  TextBlock,
-  reactExtension,
-  useApi,
-} from "@shopify/ui-extensions-react/customer-account";
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-export default reactExtension(
-  "customer-account.order.action.render",
-  ( ) => <MenuActionExtension />
-);
+export default async () => {
+  render(<MenuActionExtension />, document.body);
+};
 
-function MenuActionExtension( ) {
-  const api = useApi<"customer-account.order.action.render">()
-  const translate = api.i18n.translate;
+function MenuActionExtension() {
+  const translate = shopify.i18n.translate;
 
   return (
-    <CustomerAccountAction
-      title={translate("menuAction.title")}
-      primaryAction={
-        <Button
-          onPress={() => {
-            api.close();
-          }}
-        >
-          {translate("menuAction.primaryAction")}
-        </Button>
-      }
+    <s-customer-account-action
+      heading={translate('menuAction.title')}
     >
-      <TextBlock>{translate("menuAction.content")}</TextBlock>
-    </CustomerAccountAction>
+      <s-button
+        slot="primary-action"
+        onClick={() => shopify.close()}
+      >
+        {translate('menuAction.primaryAction')}
+      </s-button>
+      <s-paragraph>
+        {translate('menuAction.content')}
+      </s-paragraph>
+    </s-customer-account-action>
   );
 }

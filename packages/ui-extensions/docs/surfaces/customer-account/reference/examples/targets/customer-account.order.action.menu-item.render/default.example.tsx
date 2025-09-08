@@ -1,16 +1,17 @@
-import React from "react";
-import {
-  Button,
-  reactExtension,
-  useApi,
-} from "@shopify/ui-extensions-react/customer-account";
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-export default reactExtension(
-  "customer-account.order.action.menu-item.render",
-  () => <MenuActionItemExtension />
-);
+export default async () => {
+  render(
+    <MenuActionItemExtension />,
+    document.body,
+  );
+};
 
 function MenuActionItemExtension() {
-  const {i18n} = useApi<"customer-account.order.action.menu-item.render">()
-  return <Button>{i18n.translate("menuItem.button")}</Button>;
+  return (
+    <s-button>
+      {shopify.i18n.translate('menuItem.button')}
+    </s-button>
+  );
 }

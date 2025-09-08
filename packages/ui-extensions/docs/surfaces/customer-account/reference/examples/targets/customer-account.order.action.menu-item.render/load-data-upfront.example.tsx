@@ -1,28 +1,26 @@
-import React from "react";
-import {
-  Button,
-  reactExtension,
-  useApi,
-} from "@shopify/ui-extensions-react/customer-account";
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-export default reactExtension(
-  "customer-account.order.action.menu-item.render",
-  async () => {
-    const data = await fetchMenuItems();
-
-    return <MenuActionItemExtension data={data}/>
-  }
-);
+export default async () => {
+  const data = await fetchMenuItems();
+  render(
+    <MenuActionItemExtension data={data} />,
+    document.body,
+  );
+};
 
 interface Props {
   data: any;
 }
 
 function MenuActionItemExtension(props: Props) {
-  return <Button to={props.data.url}>{props.data.itemName}</Button>;
+  return (
+    <s-button href={props.data.url}>
+      {props.data.itemName}
+    </s-button>
+  );
 }
 
 function fetchMenuItems() {
-  throw new Error("Function not implemented.");
+  throw new Error('Function not implemented.');
 }
-

@@ -14,19 +14,19 @@ the footer on all customer account pages (**Order index**, **Order status**, **P
   category: 'Targets',
   isVisualComponent: false,
   subCategory: 'Footer',
-  // defaultExample: {
-  //   description: '',
-  //   codeblock: {
-  //     title: 'Customer account footer extension example',
-  //     tabs: [
-  //       {
-  //         code: '../examples/targets/customer-account.footer.render-after/default.example.tsx',
-  //         language: 'jsx',
-  //         title: 'React',
-  //       },
-  //     ],
-  //   },
-  // },
+  defaultExample: {
+    description: '',
+    codeblock: {
+      title: 'Customer account footer extension example',
+      tabs: [
+        {
+          code: '../examples/targets/customer-account.footer.render-after/default.example.tsx',
+          language: 'tsx',
+          title: 'Preact',
+        },
+      ],
+    },
+  },
   definitions: [CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION],
   related: [],
   type: 'Target',

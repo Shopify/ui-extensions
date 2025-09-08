@@ -13,19 +13,19 @@ const data: ReferenceEntityTemplateSchema = {
   ${ORDER_STATUS_SURFACE_NOTE}
   `,
   subCategory: 'Order status',
-  // defaultExample: {
-  //   description: '',
-  //   codeblock: {
-  //     title: 'Customer account order status card line item extension example',
-  //     tabs: [
-  //       {
-  //         code: '../examples/targets/customer-account.order-status.cart-line-item.render-after/default.example.tsx',
-  //         language: 'jsx',
-  //         title: 'React',
-  //       },
-  //     ],
-  //   },
-  // },
+  defaultExample: {
+    description: '',
+    codeblock: {
+      title: 'Customer account order status card line item extension example',
+      tabs: [
+        {
+          code: '../examples/targets/customer-account.order-status.cart-line-item.render-after/default.example.tsx',
+          language: 'tsx',
+          title: 'Preact',
+        },
+      ],
+    },
+  },
   related: [],
   ...ORDER_STATUS_CART_LINE_ITEM_API,
 };

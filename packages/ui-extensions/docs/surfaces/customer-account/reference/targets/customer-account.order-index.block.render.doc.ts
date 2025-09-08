@@ -9,19 +9,19 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   isVisualComponent: false,
   subCategory: 'Order index',
-  // defaultExample: {
-  //   description: '',
-  //   codeblock: {
-  //     title: 'Customer account order index extension example',
-  //     tabs: [
-  //       {
-  //         code: '../examples/targets/customer-account.order-index.block.render/default.example.tsx',
-  //         language: 'jsx',
-  //         title: 'React',
-  //       },
-  //     ],
-  //   },
-  // },
+  defaultExample: {
+    description: '',
+    codeblock: {
+      title: 'Customer account order index extension example',
+      tabs: [
+        {
+          code: '../examples/targets/customer-account.order-index.block.render/default.example.tsx',
+          language: 'tsx',
+          title: 'Preact',
+        },
+      ],
+    },
+  },
   related: [
     {
       name: 'Placement references',

@@ -1,24 +1,16 @@
-import {
-  BlockStack,
-  reactExtension,
-  Text,
-  useApi,
-} from '@shopify/ui-extensions-react/customer-account';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-// 1. Choose an extension target
-export default reactExtension(
-  'customer-account.footer.render-after',
-  () => <Extension />,
-);
+export default async () => {
+  render(<Extension />, document.body);
+};
 
 function Extension() {
-  // 2. Use the extension API to gather context from extension
-  const {extension} = useApi();
-
-  // 3. Render a UI
   return (
-    <BlockStack>
-      <Text>target: {extension.target}</Text>
-    </BlockStack>
+    <s-stack direction="block">
+      <s-text>
+        target: {shopify.extension.target}
+      </s-text>
+    </s-stack>
   );
 }

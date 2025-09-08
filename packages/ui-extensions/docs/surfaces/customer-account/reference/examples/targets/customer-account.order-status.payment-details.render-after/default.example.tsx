@@ -1,13 +1,15 @@
-import {
-  reactExtension,
-  Banner,
-} from '@shopify/ui-extensions-react/customer-account';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-export default reactExtension(
-  'customer-account.order-status.fulfillment-details.render-after',
-  () => <Extension />,
-);
+export default async () => {
+  render(<Extension />, document.body);
+};
 
 function Extension() {
-  return <Banner>Contact the merchant to complete your payment.</Banner>;
+  return (
+    <s-banner>
+      Contact the merchant to complete your
+      payment.
+    </s-banner>
+  );
 }

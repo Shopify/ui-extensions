@@ -1,17 +1,16 @@
-import {
-  reactExtension,
-  Text,
-  useTarget,
-} from '@shopify/ui-extensions-react/customer-account';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-export default reactExtension(
-  'customer-account.order-status.cart-line-item.render-after',
-  () => <Extension />,
-);
+export default async () => {
+  render(<Extension />, document.body);
+};
 
 function Extension() {
   const {
     merchandise: {title},
-  } = useTarget();
-  return <Text>Line item title: {title}</Text>;
+  } = shopify.target.value;
+
+  return (
+    <s-text>Line item title: {title}</s-text>
+  );
 }

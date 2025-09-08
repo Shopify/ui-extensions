@@ -10,19 +10,19 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   isVisualComponent: false,
   subCategory: 'Profile (Default)',
-  // defaultExample: {
-  //   description: '',
-  //   codeblock: {
-  //     title: 'Customer account profile extension example',
-  //     tabs: [
-  //       {
-  //         code: '../examples/targets/customer-account.profile.block.render/default.example.tsx',
-  //         language: 'jsx',
-  //         title: 'React',
-  //       },
-  //     ],
-  //   },
-  // },
+  defaultExample: {
+    description: '',
+    codeblock: {
+      title: 'Customer account profile extension example',
+      tabs: [
+        {
+          code: '../examples/targets/customer-account.profile.block.render/default.example.tsx',
+          language: 'tsx',
+          title: 'Preact',
+        },
+      ],
+    },
+  },
   related: [
     {
       name: 'Placement references',

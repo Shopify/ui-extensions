@@ -8,20 +8,20 @@ const data: ReferenceEntityTemplateSchema = {
   A [static extension target](/docs/api/customer-account-ui-extensions/extension-targets-overview#static-extension-targets) that renders in the delivery status card for unfulfilled items on the Order Status page.
   `,
   subCategory: 'Order status',
-  // defaultExample: {
-  //   description: '',
-  //   codeblock: {
-  //     title:
-  //       'Customer account order status unfulfilled details extension example',
-  //     tabs: [
-  //       {
-  //         code: '../examples/targets/customer-account.order-status.unfulfilled-items.render-after/default.example.tsx',
-  //         language: 'jsx',
-  //         title: 'React',
-  //       },
-  //     ],
-  //   },
-  // },
+  defaultExample: {
+    description: '',
+    codeblock: {
+      title:
+        'Customer account order status unfulfilled details extension example',
+      tabs: [
+        {
+          code: '../examples/targets/customer-account.order-status.unfulfilled-items.render-after/default.example.tsx',
+          language: 'tsx',
+          title: 'Preact',
+        },
+      ],
+    },
+  },
   related: [],
   ...ORDER_STATUS_API,
 };
