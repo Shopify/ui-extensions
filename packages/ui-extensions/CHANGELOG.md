@@ -1,5 +1,29 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.27
+
+### Minor Changes
+
+- [#3203](https://github.com/Shopify/ui-extensions/pull/3203) [`5d44360f94b8c5f5fc32590ec3cd8833af00a3dc`](https://github.com/Shopify/ui-extensions/commit/5d44360f94b8c5f5fc32590ec3cd8833af00a3dc) Thanks [@lsit](https://github.com/lsit)! - Add signal-like value property to customer account api
+
+### Patch Changes
+
+- [#3195](https://github.com/Shopify/ui-extensions/pull/3195) [`95c0542d98ea8674ff561e1915f4f9a4d0a3b725`](https://github.com/Shopify/ui-extensions/commit/95c0542d98ea8674ff561e1915f4f9a4d0a3b725) Thanks [@lsit](https://github.com/lsit)! - Add customer account components to subcategories
+
+- [#3251](https://github.com/Shopify/ui-extensions/pull/3251) [`80a5305ece11f404d0a8bdbb47c7bc31dbf97b5a`](https://github.com/Shopify/ui-extensions/commit/80a5305ece11f404d0a8bdbb47c7bc31dbf97b5a) Thanks [@awoodall](https://github.com/awoodall)! - Fix typing for polaris web components to include properties and exclude slots in POS UI Extensions
+
+- [#3179](https://github.com/Shopify/ui-extensions/pull/3179) [`5d3f25817d17c93b676864e0dc0f3136b826e191`](https://github.com/Shopify/ui-extensions/commit/5d3f25817d17c93b676864e0dc0f3136b826e191) Thanks [@vividviolet](https://github.com/vividviolet)! - Import component types instead of inlining them to reduce file size
+
+- [#3215](https://github.com/Shopify/ui-extensions/pull/3215) [`f9b2086477ec205c9b0cdb00f8d0f19c0ecab57c`](https://github.com/Shopify/ui-extensions/commit/f9b2086477ec205c9b0cdb00f8d0f19c0ecab57c) Thanks [@lsit](https://github.com/lsit)! - Update signal-like type for customer account
+
+- [#3210](https://github.com/Shopify/ui-extensions/pull/3210) [`5fc245fe684973c779109d507a2bf8bdce9f2c88`](https://github.com/Shopify/ui-extensions/commit/5fc245fe684973c779109d507a2bf8bdce9f2c88) Thanks [@lsit](https://github.com/lsit)! - Update customer account examples to use signals
+
+- [#3196](https://github.com/Shopify/ui-extensions/pull/3196) [`77b062f2166bb1403d793ac373380a4cc7497293`](https://github.com/Shopify/ui-extensions/commit/77b062f2166bb1403d793ac373380a4cc7497293) Thanks [@lsit](https://github.com/lsit)! - Add ButtonGroup to customer account component mapping
+
+- [#3253](https://github.com/Shopify/ui-extensions/pull/3253) [`a9f8e775679a1b5a652e3b766c4466806cab0a88`](https://github.com/Shopify/ui-extensions/commit/a9f8e775679a1b5a652e3b766c4466806cab0a88) Thanks [@steved-shopify](https://github.com/steved-shopify)! - 2025-10 RC 27
+
+- [#3250](https://github.com/Shopify/ui-extensions/pull/3250) [`17090e0678b58898d48cab5e16b57d5614a6bd89`](https://github.com/Shopify/ui-extensions/commit/17090e0678b58898d48cab5e16b57d5614a6bd89) Thanks [@lsit](https://github.com/lsit)! - Migrate some customer account examples to Preact
+
 ## 2025.10.0-rc.26
 
 ### Patch Changes
