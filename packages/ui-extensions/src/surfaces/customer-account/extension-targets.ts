@@ -38,6 +38,11 @@ export interface OrderStatusExtensionTargets {
       StandardApi<'customer-account.order-status.block.render'>,
     StandardComponents
   >;
+  'customer-account.order-status.announcement.render': RenderExtension<
+    OrderStatusApi<'customer-account.order-status.announcement.render'> &
+      StandardApi<'customer-account.order-status.announcement.render'>,
+    StandardComponents
+  >;
   /**
    * A static extension target that renders on every line item, inside the details
    * under the line item properties element on the **Order status** page.
@@ -107,8 +112,16 @@ export interface CustomerAccountExtensionTargets {
     StandardApi<'customer-account.order-index.block.render'>,
     StandardComponents
   >;
+  'customer-account.order-index.announcement.render': RenderExtension<
+    StandardApi<'customer-account.order-index.announcement.render'>,
+    StandardComponents
+  >;
   'customer-account.profile.block.render': RenderExtension<
     StandardApi<'customer-account.profile.block.render'>,
+    StandardComponents
+  >;
+  'customer-account.profile.announcement.render': RenderExtension<
+    StandardApi<'customer-account.profile.announcement.render'>,
     StandardComponents
   >;
   'customer-account.profile.addresses.render-after': RenderExtension<
