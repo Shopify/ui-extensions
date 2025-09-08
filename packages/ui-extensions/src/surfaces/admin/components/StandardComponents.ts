@@ -11,6 +11,7 @@ export type StandardComponents =
   | 'Chip'
   | 'ClickableChip'
   | 'Clickable'
+  | 'DateField'
   | 'DatePicker'
   | 'Divider'
   | 'EmailField'
