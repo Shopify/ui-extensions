@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'preact/hooks';
 
-import type {StatefulRemoteSubscribable} from '../../../shared';
+import type {StatefulRemoteSubscribable} from '../api/shared';
 
 type Subscriber<T> = Parameters<StatefulRemoteSubscribable<T>['subscribe']>[0];
 
@@ -10,8 +10,9 @@ type Subscriber<T> = Parameters<StatefulRemoteSubscribable<T>['subscribe']>[0];
  * and subscribes to update the value when changes occur in the checkout.
  *
  * > Note:
- * > You generally shouldn't need to use this directly, as there are dedicated hooks
- * > for accessing the current value of each individual resource in the checkout.
+ * > As of version 2025-10, you no longer need this hook. When you access `.value`
+ * > (instead of `.current`) on subscribable properties, Preact will automatically
+ * > re-render as `.value` changes.
  */
 export function useSubscription<Value>(
   subscription: StatefulRemoteSubscribable<Value>,

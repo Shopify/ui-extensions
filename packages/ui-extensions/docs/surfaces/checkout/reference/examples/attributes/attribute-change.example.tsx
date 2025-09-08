@@ -1,9 +1,6 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {
-  useAttributeValues,
-  useApplyAttributeChange,
-  useInstructions,
-} from '@shopify/ui-extensions/checkout/preact';
+import {useAttributeValues} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
@@ -14,17 +11,14 @@ function Extension() {
     'giftWrap',
   ]);
   const giftWrap = Boolean(giftWrapValue);
-  const applyAttributeChange =
-    useApplyAttributeChange();
-  const instructions = useInstructions();
 
   async function toggleGiftWrap() {
     const result = giftWrap
-      ? await applyAttributeChange({
+      ? await shopify.applyAttributeChange({
           type: 'removeAttribute',
           key: 'giftWrap',
         })
-      : await applyAttributeChange({
+      : await shopify.applyAttributeChange({
           type: 'updateAttribute',
           key: 'giftWrap',
           value: 'true',
@@ -43,7 +37,7 @@ function Extension() {
       <s-button
         onClick={toggleGiftWrap}
         disabled={
-          !instructions.attributes
+          !shopify.instructions.value.attributes
             .canUpdateAttributes
         }
       >

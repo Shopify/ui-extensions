@@ -1,25 +1,19 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {
-  useApplyMetafieldChange,
-  useInstructions,
-} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  const applyMetafieldChange =
-    useApplyMetafieldChange();
-  const instructions = useInstructions();
-
   if (
-    instructions.metafields.canSetCartMetafields
+    shopify.instructions.value.metafields
+      .canSetCartMetafields
   ) {
     return (
       <s-button
         onClick={() =>
-          applyMetafieldChange({
+          shopify.applyMetafieldChange({
             type: 'updateCartMetafield',
             metafield: {
               namespace: 'loyalty',

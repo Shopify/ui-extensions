@@ -1,15 +1,13 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {useSelectedPaymentOptions} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  const options = useSelectedPaymentOptions();
-
   if (
-    options.some(
+    shopify.selectedPaymentOptions.value.some(
       (option) => option.type === 'creditCard',
     )
   ) {

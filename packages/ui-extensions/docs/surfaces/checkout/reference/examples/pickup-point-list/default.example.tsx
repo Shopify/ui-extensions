@@ -1,16 +1,12 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {useSubscription} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  const locationFormShown = useSubscription(
-    shopify.isLocationFormVisible,
-  );
-
-  if (locationFormShown) {
+  if (shopify.isLocationFormVisible.value) {
     return (
       <s-text>
         The customer is being asked to provide

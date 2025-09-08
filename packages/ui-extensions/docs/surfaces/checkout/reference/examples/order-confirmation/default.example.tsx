@@ -1,14 +1,13 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {useSubscription} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  const {id} = useSubscription(
-    shopify.orderConfirmation,
-  );
+  const {id} =
+    shopify.orderConfirmation.value.order;
 
   if (id) {
     return (

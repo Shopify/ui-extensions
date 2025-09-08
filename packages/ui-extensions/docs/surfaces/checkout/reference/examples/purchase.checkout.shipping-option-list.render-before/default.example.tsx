@@ -1,9 +1,5 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {
-  useDeliverySelectionGroups,
-  useDeliveryGroupListTarget,
-  useApplyMetafieldsChange,
-} from '@shopify/ui-extensions/checkout/preact';
 import {useState} from 'preact/hooks';
 
 export default function extension() {
@@ -12,27 +8,21 @@ export default function extension() {
 
 function Extension() {
   const metafieldNamespace = 'yourAppNamespace';
-  const deliveryGroupList =
-    useDeliveryGroupListTarget();
-  const deliverySelectionGroups =
-    useDeliverySelectionGroups();
-  const applyMetafieldsChange =
-    useApplyMetafieldsChange();
   const [checked, setChecked] = useState(false);
 
   // 1. Render a UI
-  if (!deliveryGroupList) {
+  if (!shopify.target.value) {
     return null;
   }
 
   const {groupType, deliveryGroups} =
-    deliveryGroupList;
+    shopify.target.value;
   const metafieldKey =
     groupType === 'oneTimePurchase'
       ? 'isGift-oneTimePurchase'
       : 'isGift-subscription';
   const selectedDeliverySelectionGroup =
-    deliverySelectionGroups?.find(
+    shopify.deliverySelectionGroups.value?.find(
       ({selected}) => selected,
     );
 
@@ -68,13 +58,14 @@ function Extension() {
   // 2. Call API methods to modify the checkout
   async function onCheckboxChange(isChecked) {
     setChecked(isChecked);
-    const result = await applyMetafieldsChange({
-      type: 'updateMetafield',
-      namespace: metafieldNamespace,
-      key: metafieldKey,
-      value: isChecked ? 'yes' : 'no',
-      valueType: 'string',
-    });
+    const result =
+      await shopify.applyMetafieldsChange({
+        type: 'updateMetafield',
+        namespace: metafieldNamespace,
+        key: metafieldKey,
+        value: isChecked ? 'yes' : 'no',
+        valueType: 'string',
+      });
     console.log(
       'applyMetafieldsChange result',
       result,
