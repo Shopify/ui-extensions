@@ -8,33 +8,10 @@
 /// <reference lib="DOM" />
 import type {
   TextFieldProps,
-  ColorFieldProps$1,
+  DateAutocompleteField,
+  DateFieldProps$1,
   ComponentChild,
 } from './shared.d.ts';
-
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
-};
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
-  | (EventListener & {
-      (event: CallbackEvent<T>): void;
-    })
-  | null;
-export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
-  onInput?: ((event: CallbackEvent<T>) => void) | null;
-  onChange?: ((event: CallbackEvent<T>) => void) | null;
-  onFocus?: ((event: CallbackEvent<T>) => void) | null;
-  onBlur?: ((event: CallbackEvent<T>) => void) | null;
-}
-/** Used when an element does not have children. */
-export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
-  key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
-  ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
-  slot?: Lowercase<string>;
-}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -95,6 +72,15 @@ declare abstract class PreactCustomElement extends BaseClass {
    */
   click({sourceEvent}?: ClickOptions): void;
 }
+
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
 declare const internals: unique symbol;
 export type PreactInputProps = Required<
@@ -196,43 +182,65 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   constructor(renderImpl: RenderImpl);
 }
 
-export type ColorFieldProps = PreactFieldProps<
-  Required<ColorFieldProps$1>['autocomplete']
-> &
-  Required<Pick<ColorFieldProps$1, 'alpha' | 'value' | 'defaultValue'>>;
+export interface DateFieldProps
+  extends PreactFieldProps<DateAutocompleteField>,
+    Required<
+      Pick<
+        DateFieldProps$1,
+        | 'allow'
+        | 'allowDays'
+        | 'disallow'
+        | 'disallowDays'
+        | 'value'
+        | 'defaultValue'
+        | 'view'
+        | 'defaultView'
+      >
+    > {}
 
-declare class ColorField
-  extends PreactFieldElement<ColorFieldProps['autocomplete']>
-  implements ColorFieldProps
+declare class DateField
+  extends PreactFieldElement<DateFieldProps['autocomplete']>
+  implements DateFieldProps
 {
-  accessor alpha: ColorFieldProps['alpha'];
-  get value(): string;
-  set value(value: string);
-  /** @private */
-  formResetCallback(): void;
+  accessor allow: DateFieldProps['allow'];
+  accessor disallow: DateFieldProps['disallow'];
+  accessor allowDays: DateFieldProps['allowDays'];
+  accessor disallowDays: DateFieldProps['disallowDays'];
+  set view(view: string);
+  get view(): string;
+  accessor defaultView: DateFieldProps['defaultView'];
+  accessor onviewchange: CallbackEventListener<typeof tagName> | null;
+  accessor oninvalid: CallbackEventListener<typeof tagName> | null;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ColorField;
+    [tagName]: DateField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ColorFieldJSXProps & PreactBaseElementProps<ColorField>;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        DateFieldJSXProps;
     }
   }
 }
 
-declare const tagName = 's-color-field';
-export interface ColorFieldJSXProps
-  extends Partial<Omit<ColorFieldProps, 'accessory'>>,
-    Pick<ColorFieldProps$1, 'id' | 'alpha' | 'value' | 'defaultValue'>,
-    FieldReactProps<typeof tagName> {
-  onInput?: (event: CallbackEvent<typeof tagName>) => void;
-  onChange?: (event: CallbackEvent<typeof tagName>) => void;
+declare const tagName = 's-date-field';
+export interface DateFieldJSXProps
+  extends Partial<DateFieldProps>,
+    Pick<DateFieldProps$1, 'id'> {
+  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInvalid?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onViewChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 
-export {ColorField};
-export type {ColorFieldJSXProps};
+export {DateField};
+export type {DateFieldJSXProps};

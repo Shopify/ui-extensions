@@ -1,4 +1,4 @@
-/** VERSION: 1.11.0 **/
+/** VERSION: 1.12.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -128,10 +128,6 @@ export interface PageJSXProps extends Partial<PageProps> {
    * `Button`s must have a `variant` of `secondary` or `auto`.
    */
   secondaryActions?: ComponentChild;
-  /**
-   * The breadcrumb actions to display a trail of navigation items.
-   */
-  breadcrumbActions?: ComponentChild;
 }
 
 export {Page};
