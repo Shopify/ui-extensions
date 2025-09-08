@@ -1,7 +1,5 @@
-import {
-  reactExtension,
-  Banner,
-} from '@shopify/ui-extensions-react/customer-account';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 import * as Sentry from '@sentry/browser';
 
 Sentry.init({
@@ -25,11 +23,10 @@ self.addEventListener('error', (error) => {
 });
 
 // Your normal extension code.
-export default reactExtension(
-  'customer-account.order-status.block.render',
-  () => <Extension />,
-);
+export default async () => {
+  render(<Extension />, document.body);
+};
 
 function Extension() {
-  return <Banner>Your extension</Banner>;
+  return <s-banner>Your extension</s-banner>;
 }

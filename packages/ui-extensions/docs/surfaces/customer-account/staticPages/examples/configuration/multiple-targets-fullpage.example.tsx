@@ -1,10 +1,9 @@
 // ...
 
 // ./FullPageExtension.jsx
-export default reactExtension(
-  'customer-account.page.render',
-  <FullPageExtension />,
-);
+export default async () => {
+  render(<FullPageExtension />, document.body);
+};
 
 function FullPageExtension() {
   // ...

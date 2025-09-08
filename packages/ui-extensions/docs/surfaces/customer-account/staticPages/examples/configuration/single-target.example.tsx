@@ -1,10 +1,8 @@
 // ...
 
-export default reactExtension(
-  'customer-account.order-status.block.render',
-  <Extension />,
-);
-
+export default async () => {
+  render(<Extension />, document.body);
+};
 function Extension() {
   // ...
 }
