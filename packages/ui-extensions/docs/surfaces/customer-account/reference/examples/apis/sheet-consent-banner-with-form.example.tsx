@@ -1,30 +1,13 @@
-import {useState} from 'react';
-import {
-  reactExtension,
-  BlockStack,
-  Button,
-  Checkbox,
-  Form,
-  Grid,
-  Link,
-  Modal,
-  Sheet,
-  TextBlock,
-  useApi,
-  useCustomerPrivacy,
-} from '@shopify/ui-extensions-react/customer-account';
-
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
+import {useState, useRef} from 'preact/hooks';
 import type {VisitorConsent} from '@shopify/ui-extensions/customer-account';
 
-export default reactExtension(
-  'customer-account.footer.render-after',
-  () => <Extension />,
-);
+export default async () => {
+  render(<Extension />, document.body);
+};
 
 function Extension() {
-  const {applyTrackingConsentChange, ui} =
-    useApi();
-
   const {
     shouldShowBanner,
     visitorConsent: {
@@ -33,7 +16,7 @@ function Extension() {
       preferences,
       saleOfData,
     },
-  } = useCustomerPrivacy();
+  } = shopify.customerPrivacy.value;
 
   const [
     consentFormValues,
@@ -47,14 +30,16 @@ function Extension() {
 
   const sheetId = 'sheet-consent';
   const modalId = 'modal-consent';
+  const sheetRef = useRef();
+  const modalRef = useRef();
 
   const getCheckboxOnChangeHandler = (
     key: string,
   ) => {
-    return function (checked: boolean) {
+    return function (event) {
       setConsentFormValues({
         ...consentFormValues,
-        [key]: checked,
+        [key]: event.target.checked,
       });
     };
   };
@@ -64,7 +49,7 @@ function Extension() {
   ) => {
     try {
       const result =
-        await applyTrackingConsentChange({
+        await shopify.applyTrackingConsentChange({
           ...(visitorConsent
             ? visitorConsent
             : consentFormValues),
@@ -73,8 +58,8 @@ function Extension() {
 
       // Check if operation was successful
       if (result.type === 'success') {
-        ui.overlay.close(modalId);
-        ui.overlay.close(sheetId);
+        modalRef.current?.hideOverlay();
+        sheetRef.current?.hideOverlay();
       } else {
         // Handle failure case here
       }
@@ -84,108 +69,100 @@ function Extension() {
   };
 
   const consentFormMarkup = (
-    <Form onSubmit={() => handleConsentChange()}>
-      <BlockStack>
-        <Grid spacing="base">
-          <Checkbox
+    <s-form
+      onSubmit={() => handleConsentChange()}
+    >
+      <s-stack direction="block">
+        <s-grid gap="base">
+          <s-checkbox
             id="marketing"
-            checked={consentFormValues.marketing}
+            label="Marketing"
+            value={consentFormValues.marketing}
             onChange={getCheckboxOnChangeHandler(
               'marketing',
             )}
-          >
-            Marketing
-          </Checkbox>
-          <Checkbox
+          />
+          <s-checkbox
             id="analytics"
-            checked={consentFormValues.analytics}
+            label="Analytics"
+            value={consentFormValues.analytics}
             onChange={getCheckboxOnChangeHandler(
               'analytics',
             )}
-          >
-            Analytics
-          </Checkbox>
-          <Checkbox
+          />
+          <s-checkbox
             id="preferences"
-            checked={
-              consentFormValues.preferences
-            }
+            label="Preferences"
+            value={consentFormValues.preferences}
             onChange={getCheckboxOnChangeHandler(
               'preferences',
             )}
-          >
-            Preferences
-          </Checkbox>
-          <Checkbox
+          />
+          <s-checkbox
             id="saleOfData"
-            checked={consentFormValues.saleOfData}
+            label="Sale of data"
+            value={consentFormValues.saleOfData}
             onChange={getCheckboxOnChangeHandler(
               'saleOfData',
             )}
-          >
-            Sale of data
-          </Checkbox>
-        </Grid>
-        <Button accessibilityRole="submit">
-          Save
-        </Button>
-      </BlockStack>
-    </Form>
+          />
+        </s-grid>
+        <s-button type="submit">Save</s-button>
+      </s-stack>
+    </s-form>
   );
 
   return (
-    <Sheet
+    <s-sheet
       id={sheetId}
+      ref={sheetRef}
       accessibilityLabel="A sheet that collects privacy consent preferences"
       defaultOpen={shouldShowBanner}
-      primaryAction={
-        <>
-          <Button
-            kind="secondary"
-            onPress={() =>
-              handleConsentChange({
-                analytics: false,
-                marketing: false,
-                preferences: false,
-                saleOfData: false,
-              })
-            }
-          >
-            I decline
-          </Button>
-          <Button
-            kind="secondary"
-            onPress={() =>
-              handleConsentChange({
-                analytics: true,
-                marketing: true,
-                preferences: true,
-                saleOfData: true,
-              })
-            }
-          >
-            I agree
-          </Button>
-        </>
-      }
-      secondaryAction={
-        <Button
-          kind="plain"
-          overlay={
-            <Modal id={modalId} padding>
-              {consentFormMarkup}
-            </Modal>
-          }
-        >
-          Settings
-        </Button>
-      }
     >
-      <TextBlock>
+      <s-button
+        slot="primary-action"
+        variant="secondary"
+        onClick={() =>
+          handleConsentChange({
+            analytics: false,
+            marketing: false,
+            preferences: false,
+            saleOfData: false,
+          })
+        }
+      >
+        I decline
+      </s-button>
+      <s-button
+        slot="primary-action"
+        variant="secondary"
+        onClick={() =>
+          handleConsentChange({
+            analytics: true,
+            marketing: true,
+            preferences: true,
+            saleOfData: true,
+          })
+        }
+      >
+        I agree
+      </s-button>
+
+      <s-button
+        slot="secondary-action"
+        commandFor={modalId}
+      >
+        Settings
+      </s-button>
+      <s-modal id={modalId} ref={modalRef}>
+        {consentFormMarkup}
+      </s-modal>
+
+      <s-paragraph>
         This website uses cookies to ensure you
         get the best experience on our website.{' '}
-        <Link>Privacy Policy</Link>
-      </TextBlock>
-    </Sheet>
+        <s-link>Privacy Policy</s-link>
+      </s-paragraph>
+    </s-sheet>
   );
 }

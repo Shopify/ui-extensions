@@ -31,27 +31,27 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  //   examples: {
-  //     description: '',
-  //     examples: [
-  //       {
-  //         description: `
-  //         You can apply changes to customer consent by using the \`applyTrackingConsentChanges\` API.
+  examples: {
+    description: '',
+    examples: [
+      {
+        description: `
+        You can apply changes to customer consent by using the \`applyTrackingConsentChanges\` API.
 
-  // > Note: Requires the [\`customer_privacy\` capability](/docs/api/customer-account-ui-extensions/configuration#collect-buyer-consent) to be set to \`true\`.`,
-  //         codeblock: {
-  //           title: 'Use a Sheet to manage customer privacy consent',
-  //           tabs: [
-  //             {
-  //               code: '../examples/apis/sheet-consent-banner-with-form.example.tsx',
-  //               language: 'jsx',
-  //               title: 'React',
-  //             },
-  //           ],
-  //         },
-  //       },
-  //     ],
-  //   },
+> Note: Requires the [\`customer_privacy\` capability](/docs/api/customer-account-ui-extensions/configuration#collect-buyer-consent) to be set to \`true\`.`,
+        codeblock: {
+          title: 'Use a Sheet to manage customer privacy consent',
+          tabs: [
+            {
+              code: '../examples/apis/sheet-consent-banner-with-form.example.tsx',
+              language: 'tsx',
+              title: 'Preact',
+            },
+          ],
+        },
+      },
+    ],
+  },
   related: [],
 };
 
