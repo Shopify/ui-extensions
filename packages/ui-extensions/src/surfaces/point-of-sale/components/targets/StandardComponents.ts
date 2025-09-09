@@ -18,6 +18,7 @@ export type StandardComponents =
   | 'NumberField'
   | 'Page'
   | 'POSBlock'
+  | 'PosBlock' // Case is important in 2025-10
   | 'QRCode'
   | 'Route'
   | 'Router'
