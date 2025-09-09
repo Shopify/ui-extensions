@@ -1,5 +1,6 @@
 import {CountryCode} from './country-code';
 import {TaxLine} from './tax-line';
+import {Money} from './money';
 
 export interface Cart {
   /**
@@ -53,6 +54,24 @@ export interface LineItem {
    * The currently selected selling plan for this line item.
    */
   sellingPlan?: SellingPlan;
+  /**
+   * The components associated if LineItem represents a product bundle.
+   */
+  components?: LineItemComponent[];
+}
+
+/**
+ * Product data for a single component in a line item bundle. Not including
+ * uuid because we do not want any chance of these components being mutated.
+ */
+export interface LineItemComponent {
+  title: string;
+  quantity: number;
+  price: Money;
+  taxable: boolean;
+  taxLines: TaxLine[];
+  variantId?: string;
+  productId?: string;
 }
 
 /**
