@@ -69,16 +69,24 @@ export interface SellingPlan {
   name: string;
   /**
    * The fingerprint of the applied selling plan within this cart session.
+   * Provided by POS. Not available during refund / exchanges.
    */
-  digest: string;
+  digest?: string;
   /**
-   * The interval of the selling plan. i.e. "every 2 weeks"
+   * The interval of the selling plan. (DAY, WEEK, MONTH, YEAR).
    */
-  deliveryInterval?: string;
+  deliveryInterval?: SellingPlanDeliveryInterval;
   /**
-   * The interval count of the selling plan. i.e. "2"
+   * The number of intervals between deliveries.
    */
   deliveryIntervalCount?: number;
+}
+
+export enum SellingPlanDeliveryInterval {
+  Day = 'DAY',
+  Week = 'WEEK',
+  Month = 'MONTH',
+  Year = 'YEAR',
 }
 
 export interface Discount {
@@ -152,4 +160,29 @@ export interface Address {
   name?: string;
   provinceCode?: string;
   countryCode?: CountryCode;
+}
+
+export interface SetLineItemSellingPlanInput {
+  /**
+   * The uuid of the line item to which the selling plan should be applied.
+   */
+  lineItemUuid: string;
+  /**
+   * The ID of the selling plan to apply to the line item.
+   */
+  sellingPlanId: number;
+  /**
+   * The name of the selling plan to apply to the line item.
+   */
+  sellingPlanName: string;
+  /**
+   * The interval of the selling plan. (DAY, WEEK, MONTH, YEAR).
+   * If not provided, POS will try to fetch it from the server after syncing the cart.
+   */
+  sellingPlanDeliveryInterval?: SellingPlanDeliveryInterval;
+  /**
+   * The number of intervals between deliveries.
+   * If not provided, POS will try to fetch it from the server after syncing the cart.
+   */
+  sellingPlanDeliveryIntervalCount?: number;
 }

@@ -7,6 +7,7 @@ import type {
   CustomSale,
   SetLineItemDiscountInput,
   SetLineItemPropertiesInput,
+  SetLineItemSellingPlanInput,
 } from '../../types/cart';
 
 /**
@@ -227,7 +228,7 @@ export interface CartApiContent {
    * @param uuid the uuid of the line item that should receive the selling plan
    * @param sellingPlanId the ID of the selling plan to add to the line item
    */
-  addLineItemSellingPlan(uuid: string, sellingPlanId: number): Promise<void>;
+  addLineItemSellingPlan(input: SetLineItemSellingPlanInput): Promise<void>;
 
   /**
    * Remove the selling plan from a line item in the cart.

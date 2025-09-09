@@ -10,7 +10,13 @@ const Extension = () => {
       heading="My App"
       subheading="Call cart function"
       onClick={() => {
-        shopify.cart.addLineItemSellingPlan('aa-1234567', 123);
+        shopify.cart.addLineItemSellingPlan({
+          lineItemUuid: 'aa-1234567',
+          sellingPlanId: 123,
+          sellingPlanName: 'My Exclusive Subscription',
+          sellingPlanDeliveryInterval: 'MONTH', // optional
+          sellingPlanDeliveryIntervalCount: 2, // optional
+        });
       }}
     />
   );
