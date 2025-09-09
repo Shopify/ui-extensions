@@ -1,5 +1,15 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.29
+
+### Minor Changes
+
+- [#3261](https://github.com/Shopify/ui-extensions/pull/3261) [`39bbc17234bfa59e4aca424f0e5c60ed8e8ef835`](https://github.com/Shopify/ui-extensions/commit/39bbc17234bfa59e4aca424f0e5c60ed8e8ef835) Thanks [@Bruno125](https://github.com/Bruno125)! - Update POS Cart API selling plan method to support more fields
+
+### Patch Changes
+
+- [#3262](https://github.com/Shopify/ui-extensions/pull/3262) [`8293a12cc57ca9c7c0068ffd54557d9219d50812`](https://github.com/Shopify/ui-extensions/commit/8293a12cc57ca9c7c0068ffd54557d9219d50812) Thanks [@lsit](https://github.com/lsit)! - Migrate consent sheet example in customer account
+
 ## 2025.10.0-rc.28
 
 ### Patch Changes
