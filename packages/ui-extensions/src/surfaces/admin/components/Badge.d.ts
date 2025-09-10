@@ -1,4 +1,4 @@
-/** VERSION: 1.10.0 **/
+/** VERSION: 1.12.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -31,7 +31,7 @@ export interface IconProps
 }
 
 export interface BadgeProps
-  extends Pick<BadgeProps$1, 'color' | 'size' | 'tone'> {
+  extends Pick<BadgeProps$1, 'color' | 'icon' | 'size' | 'tone'> {
   color: Extract<BadgeProps$1['color'], 'base' | 'strong'>;
   icon: IconProps['type'] | '';
   size: Extract<BadgeProps$1['size'], 'base' | 'large' | 'large-100'>;

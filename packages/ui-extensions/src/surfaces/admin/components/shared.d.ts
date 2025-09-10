@@ -1,4 +1,4 @@
-/** VERSION: 1.10.0 **/
+/** VERSION: 1.12.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -2376,6 +2376,49 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    */
   value?: string;
 }
+interface DateFieldProps$1
+  extends GlobalProps,
+    BaseTextFieldProps,
+    Pick<
+      DatePickerProps$1,
+      | 'view'
+      | 'defaultView'
+      | 'value'
+      | 'defaultValue'
+      | 'allow'
+      | 'disallow'
+      | 'allowDays'
+      | 'disallowDays'
+      | 'onViewChange'
+    >,
+    AutocompleteProps<DateAutocompleteField> {
+  /**
+   * Callback when the field has an invalid date.
+   * This callback will be called, if the date typed is invalid or disabled.
+   *
+   * Dates that don’t exist or have formatting errors are considered invalid. Some examples of invalid dates are:
+   * - 2021-02-31: February doesn’t have 31 days
+   * - 2021-02-00: The day can’t be 00
+   *
+   * Disallowed dates are considered invalid.
+   *
+   * It’s important to note that this callback will be called only when the user **finishes editing** the date,
+   * and it’s called right after the `onChange` callback.
+   * The field is **not** validated on every change to the input. Once the buyer has signalled that
+   * they have finished editing the field (typically, by blurring the field), the field gets validated and the callback is run if the value is invalid.
+   */
+  onInvalid?: (event: Event) => void;
+}
+export type DateAutocompleteField = ExtractStrict<
+  AnyAutocompleteField,
+  | 'bday'
+  | 'bday-day'
+  | 'bday-month'
+  | 'bday-year'
+  | 'cc-expiry'
+  | 'cc-expiry-month'
+  | 'cc-expiry-year'
+>;
 interface DividerProps$1 extends GlobalProps {
   /**
    * Specify the direction of the divider.
