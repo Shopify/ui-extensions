@@ -15,6 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
 `,
   isVisualComponent: true,
   category: 'Patterns',
+  subCategory: 'Compositions',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/setupGuide.png',
   defaultExample: {
     codeblock: {

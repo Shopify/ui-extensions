@@ -53,6 +53,7 @@ const data: ReferenceEntityTemplateSchema = {
   </style>`,
   isVisualComponent: true,
   category: 'Patterns',
+  subCategory: 'Templates',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/homepage.png',
   defaultExample: {
     codeblock: {
