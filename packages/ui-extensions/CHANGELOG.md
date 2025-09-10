@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.30
+
+### Patch Changes
+
+- [#3270](https://github.com/Shopify/ui-extensions/pull/3270) [`33d37cd81e902bce4b80d42eecb77988ba44fedd`](https://github.com/Shopify/ui-extensions/commit/33d37cd81e902bce4b80d42eecb77988ba44fedd) Thanks [@steved-shopify](https://github.com/steved-shopify)! - Pin Pad API updates
+
+- [#3269](https://github.com/Shopify/ui-extensions/pull/3269) [`8dc83df31b93b2f215868c8a0632d95d412cdc76`](https://github.com/Shopify/ui-extensions/commit/8dc83df31b93b2f215868c8a0632d95d412cdc76) Thanks [@Bruno125](https://github.com/Bruno125)! - Export selling plan related types
+
 ## 2025.10.0-rc.29
 
 ### Minor Changes
