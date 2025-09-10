@@ -100,11 +100,6 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   settings: ReadonlySignalLike<ExtensionSettings>;
 
   /**
-   * Methods to interact with the extension's UI.
-   */
-  ui: Ui;
-
-  /**
    * The Toast API displays a non-disruptive message that displays at the bottom
    * of the interface to provide quick, at-a-glance feedback on the outcome
    * of an action.
