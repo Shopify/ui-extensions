@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.31
+
+### Patch Changes
+
+- [#3272](https://github.com/Shopify/ui-extensions/pull/3272) [`cb101cb96d3e8e52a028f709e46717cb1100373b`](https://github.com/Shopify/ui-extensions/commit/cb101cb96d3e8e52a028f709e46717cb1100373b) Thanks [@oluwatimio](https://github.com/oluwatimio)! - Remove ui typings from 2025-10
+
 ## 2025.10.0-rc.30
 
 ### Patch Changes
