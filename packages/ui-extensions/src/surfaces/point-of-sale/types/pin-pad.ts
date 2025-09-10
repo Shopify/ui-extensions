@@ -24,6 +24,10 @@ export interface PinPadActionType {
 
 export interface PinPadOptions {
   /**
+   * The function to be called when a pin is entered
+   */
+  onPinEntry?: (pin: number[]) => void;
+  /**
    * The function to be called when the pin pad modal is dismissed
    */
   onDismissed?: (result: PinPadResult) => void;
