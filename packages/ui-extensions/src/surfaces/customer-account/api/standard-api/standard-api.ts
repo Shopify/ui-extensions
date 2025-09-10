@@ -7,7 +7,6 @@ import {
   AuthenticatedAccount,
   GraphQLError,
   StorefrontApiVersion,
-  Ui,
   SessionToken,
   Analytics,
   CustomerPrivacy,
