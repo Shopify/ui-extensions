@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.32
+
+### Minor Changes
+
+- [#3259](https://github.com/Shopify/ui-extensions/pull/3259) [`1617a265c168606a1b5fb93426184d959856a331`](https://github.com/Shopify/ui-extensions/commit/1617a265c168606a1b5fb93426184d959856a331) Thanks [@laurkim](https://github.com/laurkim)! - Add DateField to Admin UI Extensions
+
 ## 2025.10.0-rc.31
 
 ### Patch Changes
