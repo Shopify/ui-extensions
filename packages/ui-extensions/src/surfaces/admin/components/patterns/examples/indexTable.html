@@ -1,5 +1,5 @@
 <s-section padding="none" accessibilityLabel="Puzzles table section">
-  <s-table fullwidth>
+  <s-table>
     <s-grid slot="filters" gap="small-200" gridTemplateColumns="1fr auto">
       <s-text-field
         icon="search"
@@ -17,28 +17,21 @@
       <s-popover id="sort-actions">
         <s-stack gap="none">
           <s-box padding="small">
-            <s-choice-list label="Sort by" name="Sort by" details="">
-              <s-choice
-                label="Product title"
-                value="product-title"
-                selected
-              ></s-choice>
-              <s-choice label="Created" value="created"></s-choice>
-              <s-choice label="Updated" value="updated"></s-choice>
-              <s-choice label="Inventory" value="inventory"></s-choice>
-              <s-choice label="Product type" value="product-type"></s-choice>
-              <s-choice
-                label="Publishing error"
-                value="publishing-error"
-              ></s-choice>
-              <s-choice label="Vendor" value="vendor"></s-choice>
+            <s-choice-list label="Sort by" name="Sort by">
+              <s-choice value="product-title" selected>Product title</s-choice>
+              <s-choice value="created">Created</s-choice>
+              <s-choice value="updated">Updated</s-choice>
+              <s-choice value="inventory">Inventory</s-choice>
+              <s-choice value="product-type">Product type</s-choice>
+              <s-choice value="publishing-error">Publishing error</s-choice>
+              <s-choice value="vendor">Vendor</s-choice>
             </s-choice-list>
           </s-box>
           <s-divider></s-divider>
           <s-box padding="small">
             <s-choice-list label="Order by" name="Order by" details="">
-              <s-choice label="A-Z" value="product-title" selected></s-choice>
-              <s-choice label="Z-A" value="created"></s-choice>
+              <s-choice value="product-title" selected>A-Z</s-choice>
+              <s-choice value="created">Z-A</s-choice>
             </s-choice-list>
           </s-box>
         </s-stack>
@@ -46,7 +39,7 @@
     </s-grid>
     <s-table-header-row>
       <s-table-header listSlot="primary">
-        <s-stack direction="inline" gap="small-200" align="center">
+        <s-stack direction="inline" gap="small-200" alignItems="center">
           <s-checkbox accessibilityLabel="Select all puzzles"></s-checkbox>
           <s-text>Puzzle</s-text>
         </s-stack>

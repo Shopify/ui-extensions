@@ -10,7 +10,7 @@
         <s-paragraph>
           Start by uploading an image to your gallery or choose from one of our templates.
         </s-paragraph>
-        <s-stack direction="inline" gap="small-200" wrap="nowrap">
+        <s-stack direction="inline" gap="small-200">
           <s-button onClick="console.log('clicked')"> Upload image </s-button>
           <s-button tone="neutral" variant="tertiary"> Browse templates </s-button>
         </s-stack>
@@ -26,7 +26,6 @@
       </s-stack>
     </s-grid>
     <s-button
-      onClick="window.puzzleApp.dismissSection(document.getElementById('callout-section'))"
       icon="x"
       tone="neutral"
       variant="tertiary"

@@ -118,16 +118,13 @@
             <s-paragraph>
               Use this personalized guide to get your store ready for sales.
             </s-paragraph>
-            <s-stack direction="inline" gap="small-200" alignItems="center">
               <s-paragraph id="progress-text" tone="subdued">0 out of 3 steps completed</s-paragraph>
-            </s-stack>
           </s-grid>
           <!-- Steps Container -->
           <s-box id="steps-container" borderRadius="base" border="base" background="base">
             <!-- Step 1 -->
             <s-box>
-              <s-box padding="small">
-                <s-grid gridTemplateColumns="1fr auto" gap="base">
+                <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
                   <s-checkbox
                     label="Upload an image for your puzzle"
                     onInput="window.puzzleApp.updateProgress(this, document.getElementById('progress-text'))"
@@ -140,7 +137,6 @@
                     icon="chevron-down"
                   ></s-button>
                 </s-grid>
-              </s-box>
               <s-box id="step1-details" padding="small" paddingBlockStart="none" style="display: none;">
                 <s-box padding="base" background="subdued" borderRadius="base">
                   <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
@@ -169,8 +165,7 @@
             <!-- Step 2 -->
             <s-divider></s-divider>
             <s-box>
-              <s-box padding="small">
-                <s-grid gridTemplateColumns="1fr auto" gap="base">
+                <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
                   <s-checkbox
                     label="Choose a puzzle template"
                     onInput="window.puzzleApp.updateProgress(this, document.getElementById('progress-text'))"
@@ -183,7 +178,6 @@
                     icon="chevron-down"
                   ></s-button>
                 </s-grid>
-              </s-box>
               <s-box id="step2-details" padding="small" paddingBlockStart="none" style="display: none;">
                 <s-box padding="base" background="subdued" borderRadius="base">
                   <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
@@ -210,8 +204,7 @@
             <!-- Step 3 -->
             <s-divider></s-divider>
             <s-box>
-              <s-box padding="small">
-                <s-grid gridTemplateColumns="1fr auto" gap="base">
+                <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
                   <s-checkbox
                     label="Customize puzzle piece shapes"
                     onInput="window.puzzleApp.updateProgress(this, document.getElementById('progress-text'))"
@@ -224,7 +217,6 @@
                     icon="chevron-down"
                   ></s-button>
                 </s-grid>
-              </s-box>
               <s-box id="step3-details" padding="small" paddingBlockStart="none" style="display: none;">
                 <s-box padding="base" background="subdued" borderRadius="base">
                   <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
@@ -327,7 +319,7 @@
               <s-paragraph>
                 Start by uploading an image to your gallery or choose from one of our templates.
               </s-paragraph>
-              <s-stack direction="inline" gap="small-200" wrap="nowrap">
+              <s-stack direction="inline" gap="small-200">
                 <s-button onClick="console.log('clicked')"> Upload image </s-button>
                 <s-button tone="neutral" variant="tertiary"> Browse templates </s-button>
               </s-stack>

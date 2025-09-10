@@ -30,8 +30,6 @@ export default function IndexPage() {
           </s-box>
           <s-grid
             justifyItems="center"
-            maxBlockSize="450px"
-            maxInlineSize="450px"
           >
             <s-heading>Start creating puzzles</s-heading>
             <s-paragraph>
@@ -60,7 +58,7 @@ export default function IndexPage() {
       {/* This should only be visible if the merchant has created one or more puzzles. */}
       {/* === */}
       <s-section padding="none" accessibilityLabel="Puzzles table section">
-        <s-table fullwidth>
+        <s-table>
           <s-table-header-row>
             <s-table-header listSlot="primary">Puzzle</s-table-header>
             <s-table-header>Type</s-table-header>

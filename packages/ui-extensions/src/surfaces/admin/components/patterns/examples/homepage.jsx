@@ -88,11 +88,9 @@ export default function HomePage() {
               <s-paragraph>
                 Use this personalized guide to get your store ready for sales.
               </s-paragraph>
-              <s-stack direction="inline" gap="small-200" alignItems="center">
                 <s-paragraph tone="subdued">
                   {progress} out of 3 steps completed
                 </s-paragraph>
-              </s-stack>
             </s-grid>
             {/* Steps Container */}
             <s-box
@@ -103,8 +101,7 @@ export default function HomePage() {
             >
               {/* Step 1 */}
               <s-box>
-                <s-box padding="small">
-                  <s-grid gridTemplateColumns="1fr auto" gap="base">
+                  <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
                     <s-checkbox
                       label="Upload an image for your puzzle"
                       onInput={(e) =>
@@ -124,7 +121,6 @@ export default function HomePage() {
                       icon={expanded.step1 ? "chevron-up" : "chevron-down"}
                     ></s-button>
                   </s-grid>
-                </s-box>
                 <s-box
                   padding="small"
                   paddingBlockStart="none"
@@ -164,8 +160,7 @@ export default function HomePage() {
               {/* Step 2 */}
               <s-divider></s-divider>
               <s-box>
-                <s-box padding="small">
-                  <s-grid gridTemplateColumns="1fr auto" gap="base">
+                  <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
                     <s-checkbox
                       label="Choose a puzzle template"
                       onInput={(e) =>
@@ -183,7 +178,6 @@ export default function HomePage() {
                       icon={expanded.step2 ? "chevron-up" : "chevron-down"}
                     ></s-button>
                   </s-grid>
-                </s-box>
                 <s-box
                   padding="small"
                   paddingBlockStart="none"
@@ -221,8 +215,7 @@ export default function HomePage() {
               {/* Step 3 */}
               <s-divider></s-divider>
               <s-box>
-                <s-box padding="small">
-                  <s-grid gridTemplateColumns="1fr auto" gap="base">
+                  <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
                     <s-checkbox
                       label="Customize puzzle piece shapes"
                       onInput={(e) =>
@@ -240,7 +233,6 @@ export default function HomePage() {
                       icon={expanded.step3 ? "chevron-up" : "chevron-down"}
                     ></s-button>
                   </s-grid>
-                </s-box>
                 <s-box
                   padding="small"
                   paddingBlockStart="none"
@@ -367,7 +359,7 @@ export default function HomePage() {
                   Start by uploading an image to your gallery or choose from one
                   of our templates.
                 </s-paragraph>
-                <s-stack direction="inline" gap="small-200" wrap="nowrap">
+                <s-stack direction="inline" gap="small-200">
                   <s-button onClick={() => console.log("Handle upload here")}>
                     Upload image
                   </s-button>

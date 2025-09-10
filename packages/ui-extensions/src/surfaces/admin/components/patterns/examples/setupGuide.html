@@ -1,12 +1,10 @@
 <s-section id="setup-guide-section">
   <s-grid gap="base">
-    <!-- Header -->
     <s-grid gap="small-200">
       <s-grid gridTemplateColumns="1fr auto auto" gap="small-300" alignItems="center">
         <s-heading>Setup Guide</s-heading>
         <s-button
           accessibilityLabel="Dismiss Guide"
-          onClick="window.puzzleApp.dismissGuide(document.getElementById('setup-guide-section'))"
           variant="tertiary"
           tone="neutral"
           icon="x"
@@ -14,7 +12,6 @@
         <s-button
           id="toggle-guide-button"
           accessibilityLabel="Toggle setup guide"
-          onClick="window.puzzleApp.toggleGuide(this, document.getElementById('steps-container'))"
           variant="tertiary"
           tone="neutral"
           icon="chevron-up"
@@ -23,29 +20,21 @@
       <s-paragraph>
         Use this personalized guide to get your store ready for sales.
       </s-paragraph>
-      <s-stack direction="inline" gap="small-200" alignItems="center">
         <s-paragraph id="progress-text" tone="subdued">0 out of 3 steps completed</s-paragraph>
-      </s-stack>
     </s-grid>
-    <!-- Steps Container -->
     <s-box id="steps-container" borderRadius="base" border="base" background="base">
-      <!-- Step 1 -->
       <s-box>
-        <s-box padding="small">
-          <s-grid gridTemplateColumns="1fr auto" gap="base">
+          <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
             <s-checkbox
               label="Upload an image for your puzzle"
-              onInput="window.puzzleApp.updateProgress(this, document.getElementById('progress-text'))"
             ></s-checkbox>
             <s-button
               id="toggle-step1-button"
-              onClick="window.puzzleApp.toggleStep(this, document.getElementById('step1-details'))"
               accessibilityLabel="Toggle step 1 details"
               variant="tertiary"
               icon="chevron-down"
             ></s-button>
           </s-grid>
-        </s-box>
         <s-box id="step1-details" padding="small" paddingBlockStart="none" style="display: none;">
           <s-box padding="base" background="subdued" borderRadius="base">
             <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
@@ -71,24 +60,19 @@
           </s-box>
         </s-box>
       </s-box>
-      <!-- Step 2 -->
       <s-divider></s-divider>
       <s-box>
-        <s-box padding="small">
-          <s-grid gridTemplateColumns="1fr auto" gap="base">
+          <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
             <s-checkbox
               label="Choose a puzzle template"
-              onInput="window.puzzleApp.updateProgress(this, document.getElementById('progress-text'))"
             ></s-checkbox>
             <s-button
               id="toggle-step2-button"
-              onClick="window.puzzleApp.toggleStep(this, document.getElementById('step2-details'))"
               accessibilityLabel="Toggle step 2 details"
               variant="tertiary"
               icon="chevron-down"
             ></s-button>
           </s-grid>
-        </s-box>
         <s-box id="step2-details" padding="small" paddingBlockStart="none" style="display: none;">
           <s-box padding="base" background="subdued" borderRadius="base">
             <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
@@ -112,24 +96,19 @@
           </s-box>
         </s-box>
       </s-box>
-      <!-- Step 3 -->
       <s-divider></s-divider>
       <s-box>
-        <s-box padding="small">
-          <s-grid gridTemplateColumns="1fr auto" gap="base">
+          <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
             <s-checkbox
               label="Customize puzzle piece shapes"
-              onInput="window.puzzleApp.updateProgress(this, document.getElementById('progress-text'))"
             ></s-checkbox>
             <s-button
               id="toggle-step3-button"
-              onClick="window.puzzleApp.toggleStep(this, document.getElementById('step3-details'))"
               accessibilityLabel="Toggle step 3 details"
               variant="tertiary"
               icon="chevron-down"
             ></s-button>
           </s-grid>
-        </s-box>
         <s-box id="step3-details" padding="small" paddingBlockStart="none" style="display: none;">
           <s-box padding="base" background="subdued" borderRadius="base">
             <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
@@ -155,7 +134,6 @@
           </s-box>
         </s-box>
       </s-box>
-      <!-- Add additional steps here... -->
     </s-box>
   </s-grid>
 </s-section>

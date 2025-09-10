@@ -5,12 +5,12 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'Design your app homepage for daily merchant value.',
   description: `The app URL specified in the Partner Dashboard should point to your app homepage. The home page of your app is the first thing merchants will see, and it should provide daily value to them. Design the page to provide status updates and show merchants what actions they can take.
-
-  | Used to    | Examples |
-| -------- | ------- |
-| Teach merchants how to use the app  | Onboarding, how-to guides    |
-| Display app functionalities | Call-to-actions to app features, resource tables     |
-| Show updates     | Status banners, company news    |
+ 
+  | Used to | Examples |
+  | --- | --- |
+  | Teach merchants how to use the app | Onboarding, how-to guides |
+  | Display app functionalities | Call-to-actions to app features, resource tables |
+  | Show updates | Status banners, company news |
 
   ![Preview of the homepage pattern](/assets/templated-apis-screenshots/admin/patterns/homepage-example.png)
 

@@ -5,10 +5,9 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'Edit and view objects with efficient dual-column layout.',
   description: `The details page allows merchants to view, create and edit objects. Use the right column to provide editable fields, and the right column for supporting information such as status, metadata, and summaries.
-
-  | Used to    | Examples |
-| -------- | ------- |
-| View, edit and create objects  | Discounts, shipping labels, newsletters, templates.    |
+  | Used to | Examples |
+  | --- | --- |
+  | View, edit and create objects  | Discounts, shipping labels, newsletters, templates. |
 
   ![Preview of the details page pattern](/assets/templated-apis-screenshots/admin/patterns/details-example.png)
 

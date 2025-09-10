@@ -6,16 +6,11 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'Provide guidance and encourage action when no data or items are available.',
   description: `Empty states are used when a list, table, or chart has no items or data to show. This is an opportunity to provide explanation or guidance to help merchants progress. The empty state component is intended for use when a full page in the admin is empty, and not for individual elements or areas in the interface.
-
-  | Used to    | Examples |
-  | -------- | ------- |
-  | Offer a clear next step when no data is present      | Prompt merchants to create their first campaign   |
-  | Encourage activation of features         | Suggest setting up a subscription plan when none exist      |
-
+  | Used to | Examples |
+  | --- | --- |
+  | Offer a clear next step when no data is present | Prompt merchants to create their first campaign |
+  | Encourage activation of features | Suggest setting up a subscription plan when none exist |
   ---
-  
-
-  
 `,
   isVisualComponent: true,
   category: 'Patterns',

@@ -7,10 +7,10 @@ const data: ReferenceEntityTemplateSchema = {
     'Present visual information alongside actionable, educational content.',
   description: `Media cards provide a consistent layout to present visual information to merchants. Visual media is used to provide additional context to the written information it's paired with.
 
-  | Used to    | Examples |
-  | -------- | ------- |
-  | Educate merchants on key actions  | Show how to connect a social account with a demo image   |
-  | Provide clear calls to action     | Show campaign preview with a "Send campaign" button      |
+  | Used to | Examples |
+  | --- | --- |
+  | Educate merchants on key actions | Show how to connect a social account with a demo image |
+  | Provide clear calls to action | Show campaign preview with a "Send campaign" button |
 
   ---
   

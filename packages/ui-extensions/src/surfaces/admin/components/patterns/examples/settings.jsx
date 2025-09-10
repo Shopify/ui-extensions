@@ -70,7 +70,7 @@ export default function SettingsPage() {
         {/* Preferences */}
         {/* === */}
         <s-section heading="Preferences">
-          <s-stack gap="none" border="base" borderRadius="base" overflow="hidden">
+          <s-box border="base" borderRadius="base">
             <s-clickable
               padding="small-100"
               href="/app/settings/shipping"
@@ -124,7 +124,7 @@ export default function SettingsPage() {
                 <s-icon type="chevron-right"></s-icon>
               </s-grid>
             </s-clickable>
-          </s-stack>
+          </s-box>
         </s-section>
 
         {/* === */}

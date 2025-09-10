@@ -6,11 +6,10 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'Guide merchants through onboarding and setup with interactive checklists and progress tracking.',
   description: `SetupGuide provides an interactive checklist to guide merchants through essential onboarding or configuration tasks. Progress is tracked visually, helping merchants complete all required steps and understand what remains.
-  | Used to    | Examples |
-  | -------- | ------- |
-  | Onboard merchants  | Initial app setup   |
-  | Track completion of multi-step processes | Necessary setup steps      |
-
+  | Used to | Examples |
+  | --- | --- |
+  | Onboard merchants | Initial app setup |
+  | Track completion of multi-step processes | Necessary setup steps |
   ---
 `,
   isVisualComponent: true,

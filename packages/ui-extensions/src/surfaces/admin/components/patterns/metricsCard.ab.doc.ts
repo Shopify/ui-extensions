@@ -8,11 +8,10 @@ const data: ReferenceEntityTemplateSchema = {
   description: `Metrics cards are used to highlight important numbers, statistics, or trends from your app, so merchants can quickly understand their activity and performance.
   
   
-  | Used to    | Examples |
-  | -------- | ------- |
-  | Show app-specific metrics	  | Email open rates, active subscribers  |
-  | Visualize user engagement | Social media followers, campaign clicks    |
-
+  | Used to | Examples |
+  | --- | --- |
+  | Show app-specific metrics | Email open rates, active subscribers |
+  | Visualize user engagement | Social media followers, campaign clicks |
   ---
 `,
   isVisualComponent: true,
