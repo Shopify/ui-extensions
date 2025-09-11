@@ -1,4 +1,4 @@
-/** VERSION: 1.12.0 **/
+/** VERSION: 1.14.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -7,20 +7,12 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  TooltipProps$1,
-  ComponentChildren,
-  InteractionProps,
   ComponentChild,
+  TooltipProps$1,
+  InteractionProps,
 } from './shared.d.ts';
 
-export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {
-  /**
-   * The content of the Tooltip.
-   *
-   * @implementation Accepts s-text, s-paragraph, and raw text content
-   */
-  children: ComponentChildren;
-}
+export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
 
 /** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
@@ -135,7 +127,14 @@ declare module 'preact' {
 declare const tagName = 's-tooltip';
 export interface TooltipJSXProps
   extends Partial<TooltipProps>,
-    Pick<TooltipProps$1, 'id'> {}
+    Pick<TooltipProps$1, 'id'> {
+  /**
+   * The content of the Tooltip.
+   *
+   * Only accepts `Text`, `Paragraph` components, and raw `textContent`.
+   */
+  children: ComponentChild;
+}
 
 export {Tooltip};
 export type {TooltipJSXProps};

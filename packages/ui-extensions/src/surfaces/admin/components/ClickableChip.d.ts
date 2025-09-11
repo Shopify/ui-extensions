@@ -1,4 +1,4 @@
-/** VERSION: 1.12.0 **/
+/** VERSION: 1.14.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -141,6 +141,11 @@ declare const tagName = 's-clickable-chip';
 export interface ClickableChipJSXProps
   extends Partial<ClickableChipProps>,
     Pick<ClickableChipProps$1, 'id'> {
+  /**
+   * The graphic to display in the clickable chip.
+   *
+   * Only accepts `Icon` components.
+   */
   graphic?: ComponentChild;
   onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onRemove?: ((event: CallbackEvent<typeof tagName>) => void) | null;

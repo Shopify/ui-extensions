@@ -1,4 +1,4 @@
-/** VERSION: 1.12.0 **/
+/** VERSION: 1.14.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -113,6 +113,11 @@ declare const tagName = 's-chip';
 export interface ChipJSXProps
   extends Partial<ChipProps>,
     Pick<ChipProps$1, 'id'> {
+  /**
+   * The graphic to display in the chip.
+   *
+   * Only accepts `Icon` components.
+   */
   graphic?: ComponentChild;
 }
 

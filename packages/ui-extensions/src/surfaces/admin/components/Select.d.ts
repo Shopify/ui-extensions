@@ -1,4 +1,4 @@
-/** VERSION: 1.12.0 **/
+/** VERSION: 1.14.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -8,8 +8,10 @@
 /// <reference lib="DOM" />
 import type {
   TextFieldProps,
+  IconProps$1,
   SelectProps$1,
   ComponentChild,
+  IconType,
 } from './shared.d.ts';
 
 export type Styles = string;
@@ -116,6 +118,23 @@ declare class PreactInputElement
   constructor(renderImpl: RenderImpl);
 }
 
+export interface IconProps
+  extends Pick<
+    IconProps$1,
+    'type' | 'tone' | 'color' | 'size' | 'interestFor'
+  > {
+  /**
+   * Specifies the type of icon that will be displayed.
+   */
+  type: '' | IconType | 'empty';
+  tone: Extract<
+    IconProps$1['tone'],
+    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
+  >;
+  color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
+  size: Extract<IconProps$1['size'], 'small' | 'base'>;
+}
+
 export interface SelectProps
   extends Omit<PreactInputProps, 'value'>,
     Required<
@@ -133,6 +152,7 @@ export interface SelectProps
       >
     > {
   value: Required<SelectProps$1>['value'];
+  icon: IconProps['type'];
 }
 
 declare const usedFirstOptionSymbol: unique symbol;
