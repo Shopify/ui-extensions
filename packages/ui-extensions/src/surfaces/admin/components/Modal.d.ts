@@ -7,27 +7,31 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
+  ModalProps$1,
   ComponentChild,
-  TooltipProps$1,
   InteractionProps,
 } from './shared.d.ts';
 
-export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
+export type RequiredAlignedModalProps = Required<ModalProps$1>;
+export interface ModalProps
+  extends Pick<
+    RequiredAlignedModalProps,
+    'accessibilityLabel' | 'heading' | 'padding' | 'size'
+  > {
+  size: Extract<
+    ModalProps$1['size'],
+    'small-100' | 'small' | 'base' | 'large' | 'large-100'
+  >;
+}
 
-/** Used when an element does not have children. */
-export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
-  key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
-  ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
-  slot?: Lowercase<string>;
-}
-/** Used when an element has children. */
-export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
-  extends PreactBaseElementProps<TClass> {
-  children?: preact.ComponentChildren;
-}
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -123,33 +127,96 @@ declare class PreactOverlayElement extends PreactCustomElement {
   ): void;
 }
 
-declare class Tooltip extends PreactOverlayElement implements TooltipProps {
+declare const hasOpenChildModal: unique symbol;
+
+declare const open: unique symbol;
+declare const show: unique symbol;
+declare const hide: unique symbol;
+declare const dialog: unique symbol;
+declare const onEscape: unique symbol;
+declare const nestedModals: unique symbol;
+declare const onBackdropClick: unique symbol;
+declare const abortController: unique symbol;
+declare const onChildModalChange: unique symbol;
+declare const childrenRerenderObserver: unique symbol;
+declare class Modal extends PreactOverlayElement implements ModalProps {
+  accessor accessibilityLabel: ModalProps['accessibilityLabel'];
+  accessor heading: ModalProps['heading'];
+  accessor padding: ModalProps['padding'];
+  accessor size: ModalProps['size'];
+  accessor onhide: CallbackEventListener<typeof tagName> | null;
+  accessor onshow: CallbackEventListener<typeof tagName> | null;
+  accessor onafterhide: CallbackEventListener<typeof tagName> | null;
+  accessor onaftershow: CallbackEventListener<typeof tagName> | null;
+  /** @private */
+  [abortController]: AbortController;
+  /** @private */
+  [dialog]: HTMLDialogElement | null;
+  /** @private */
+  [nestedModals]: Map<Modal, boolean>;
+  /** @private */
+  [childrenRerenderObserver]: MutationObserver;
+  /** @private */
+  [onEscape]: (event: KeyboardEvent) => void;
+  /** @private */
+  [onBackdropClick]: (event: MouseEvent) => void;
+  /** @private */
+  [onChildModalChange]: EventListenerOrEventListenerObject;
+  /** @private */
+  get [open](): boolean;
+  /** @private */
+  get [hasOpenChildModal](): boolean;
+  /** @private */
+  [show](): Promise<void>;
+  /** @private */
+  [hide](): Promise<void>;
+  showOverlay(): void;
+  hideOverlay(): void;
+  toggleOverlay(): void;
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Tooltip;
+    [tagName]: Modal;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: TooltipJSXProps & PreactBaseElementPropsWithChildren<Tooltip>;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ModalJSXProps;
     }
   }
 }
 
-declare const tagName = 's-tooltip';
-export interface TooltipJSXProps
-  extends Partial<TooltipProps>,
-    Pick<TooltipProps$1, 'id'> {
+declare const tagName = 's-modal';
+export interface ModalJSXProps
+  extends Partial<ModalProps>,
+    Pick<ModalProps$1, 'id' | 'children'> {
   /**
-   * The content of the Tooltip.
+   * The primary action to perform.
    *
-   * Only accepts `Text`, `Paragraph` components, and raw `textContent`.
+   * Only a `Button` with a variant of `primary` is allowed.
    */
-  children: ComponentChild;
+  primaryAction: ComponentChild;
+  /**
+   * The secondary actions to perform.
+   *
+   * Only `ButtonGroup` or `Button` with a variant of `secondary` or `auto` are allowed.
+   */
+  secondaryActions: ComponentChild;
+  onHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onShow?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onAfterShow?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 
-export {Tooltip};
-export type {TooltipJSXProps};
+export {Modal};
+export type {ModalJSXProps};

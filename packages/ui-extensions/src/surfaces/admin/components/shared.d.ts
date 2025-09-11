@@ -1,4 +1,4 @@
-/** VERSION: 1.14.0 **/
+/** VERSION: 1.16.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -2976,6 +2976,49 @@ interface MenuProps$1 extends GlobalProps {
   accessibilityLabel?: string;
   /**
    * The children define the actions to render inside the Menu. Only Button components are allowed as children of a Menu, and these Buttons can perform actions (using `onClick`) or link to other parts of the application (using `to`/ `href`). Any other component placed here will be ignored.
+   */
+  children?: ComponentChildren;
+}
+interface ModalProps$1
+  extends GlobalProps,
+    BaseOverlayProps,
+    BaseOverlayMethods,
+    ActionSlots {
+  /**
+   * A label that describes the purpose of the modal. When set,
+   * it will be announced to users using assistive technologies and will
+   * provide them with more context.
+   *
+   * This overrides the `heading` prop for screen readers.
+   */
+  accessibilityLabel?: string;
+  /**
+   * A title that describes the content of the Modal.
+   *
+   */
+  heading?: string;
+  /**
+   * Adjust the padding around the Modal content.
+   *
+   * `base`: applies padding that is appropriate for the element.
+   *
+   * `none`: removes all padding from the element. This can be useful when elements inside the Modal need to span
+   * to the edge of the Modal. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
+   * to bring back the desired padding for the rest of the content.
+   *
+   * @default 'base'
+   */
+  padding?: 'base' | 'none';
+  /**
+   * Adjust the size of the Modal.
+   *
+   * `max`: expands the Modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
+   *
+   * @default 'base'
+   */
+  size?: SizeKeyword | 'max';
+  /**
+   * The content of the Modal.
    */
   children?: ComponentChildren;
 }
