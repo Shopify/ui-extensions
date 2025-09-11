@@ -1,4 +1,4 @@
-/** VERSION: 1.14.0 **/
+/** VERSION: 1.16.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -78,11 +78,21 @@ declare abstract class PreactCustomElement extends BaseClass {
 /**
  * Shared symbols for overlay control functionality.
  * These symbols are used by components that implement overlay behavior
- * (like Popover, Tooltip, etc.) to communicate with the overlay control system.
+ * (like Popover, Tooltip, Modal, etc.) to communicate with the overlay control system.
+ */
+/**
+ * Symbol used to invoke the method for overlay commands, e.g. `--show`, `--hide`, etc.
  */
 declare const overlayCommand: unique symbol;
+/**
+ * Symbol used to track the open or closed state of the overlay.
+ */
 declare const overlayHidden: unique symbol;
+/**
+ * Symbol used to track the element that opened the overlay. In some cases, like tooltips and popovers, the overlay is positioned against this element. In all cases, focus should be restored to this element when the overlay is closed.
+ */
 declare const overlayActivator: unique symbol;
+declare const overlayHideFrameId: unique symbol;
 
 declare class PreactOverlayElement extends PreactCustomElement {
   constructor(renderImpl: RenderImpl);
@@ -91,7 +101,12 @@ declare class PreactOverlayElement extends PreactCustomElement {
   /** @private */
   [overlayActivator]: HTMLElement | null | undefined;
   /** @private */
-  [overlayCommand](command: InteractionProps['command']): void;
+  [overlayHideFrameId]?: number;
+  /** @private */
+  [overlayCommand](
+    command: InteractionProps['command'],
+    overlayActivatorEl: HTMLElement | null | undefined,
+  ): void;
 }
 
 declare class Menu extends PreactOverlayElement implements MenuProps {
