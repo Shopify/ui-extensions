@@ -19,7 +19,7 @@ export type PinLength = 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 export interface PinPadActionType {
   label: string;
-  onClick: () => Promise<number[]>;
+  onClick: () => Promise<number[]> | number[];
 }
 
 export interface PinPadOptions {
@@ -55,4 +55,8 @@ export interface PinPadOptions {
    * Title shown in the modal header
    */
   title?: string;
+  /**
+   * Whether the pin should be automatically submitted when the user has entered the maximum PIN length
+   */
+  autoSubmit?: boolean;
 }
