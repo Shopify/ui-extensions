@@ -1,4 +1,4 @@
-/** VERSION: 1.12.0 **/
+/** VERSION: 1.14.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -10,7 +10,7 @@
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
  */
-type ComponentChildren = any;
+export type ComponentChildren = any;
 export type StringChildren = string;
 export interface GlobalProps {
   /**
@@ -4932,6 +4932,11 @@ declare const tagName$S = 's-chip';
 export interface ChipJSXProps
   extends Partial<ChipProps>,
     Pick<ChipProps$2, 'id'> {
+  /**
+   * The graphic to display in the chip.
+   *
+   * Only accepts `Icon` components.
+   */
   graphic?: ComponentChild;
 }
 
@@ -5154,6 +5159,11 @@ declare const tagName$O = 's-clickable-chip';
 export interface ClickableChipJSXProps
   extends Partial<ClickableChipProps>,
     Pick<ClickableChipProps$1, 'id'> {
+  /**
+   * The graphic to display in the clickable chip.
+   *
+   * Only accepts `Icon` components.
+   */
   graphic?: ComponentChild;
   onClick?: ((event: CallbackEvent<typeof tagName$O>) => void) | null;
   onRemove?: ((event: CallbackEvent<typeof tagName$O>) => void) | null;
@@ -5911,12 +5921,7 @@ export interface ListItemJSXProps
     Pick<ListItemProps$1, 'id'> {}
 
 export interface MenuProps
-  extends Required<Pick<MenuProps$1, 'id' | 'accessibilityLabel'>> {
-  /**
-   * @implementation only accepts `s-button` and `s-section`
-   */
-  children?: ComponentChild;
-}
+  extends Required<Pick<MenuProps$1, 'id' | 'accessibilityLabel'>> {}
 
 /**
  * Shared symbols for overlay control functionality.
@@ -5965,7 +5970,14 @@ declare module 'preact' {
 declare const tagName$z = 's-menu';
 export interface MenuJSXProps
   extends Partial<MenuProps>,
-    Pick<MenuProps$1, 'id'> {}
+    Pick<MenuProps$1, 'id'> {
+  /**
+   * The Menu items.
+   *
+   * Only accepts `Button` and `Section` components.
+   */
+  children?: ComponentChild;
+}
 
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 export interface MoneyFieldProps
@@ -6169,16 +6181,24 @@ export interface PageJSXProps extends Partial<PageProps> {
    */
   aside?: ComponentChild;
   /**
-   * The primary action to perform on the page.
-   * Accepts a single `Button` with a `variant` of `primary`.
+   * The primary action for the page.
+   *
+   * Only accepts a single `Button` component with a `variant` of `primary`.
    *
    */
   primaryAction?: ComponentChild;
   /**
-   * Secondary actions on the page. Accepts `ButtonGroup` with nested `Button`s or a single `Button`.
-   * `Button`s must have a `variant` of `secondary` or `auto`.
+   * Secondary actions for the page.
+   *
+   * Only accepts `ButtonGroup` and `Button` components with a `variant` of `secondary` or `auto`.
    */
   secondaryActions?: ComponentChild;
+  /**
+   * Navigations back actions for the page.
+   *
+   * Only accepts `Link` components.
+   */
+  breadcrumbActions?: ComponentChild;
 }
 
 export interface ParagraphProps
@@ -6477,6 +6497,7 @@ export interface SelectProps
       >
     > {
   value: Required<SelectProps$1>['value'];
+  icon: IconProps['type'];
 }
 
 declare const usedFirstOptionSymbol: unique symbol;
@@ -7061,14 +7082,7 @@ export interface ThumbnailJSXProps
   onError?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
 }
 
-export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {
-  /**
-   * The content of the Tooltip.
-   *
-   * @implementation Accepts s-text, s-paragraph, and raw text content
-   */
-  children: ComponentChildren$1;
-}
+export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
 
 declare class Tooltip extends PreactOverlayElement implements TooltipProps {
   constructor();
@@ -7090,7 +7104,14 @@ declare module 'preact' {
 declare const tagName$8 = 's-tooltip';
 export interface TooltipJSXProps
   extends Partial<TooltipProps>,
-    Pick<TooltipProps$1, 'id'> {}
+    Pick<TooltipProps$1, 'id'> {
+  /**
+   * The content of the Tooltip.
+   *
+   * Only accepts `Text`, `Paragraph` components, and raw `textContent`.
+   */
+  children: ComponentChild;
+}
 
 export type URLFieldProps = PreactFieldProps<
   Required<URLFieldProps$1>['autocomplete']
@@ -7562,6 +7583,11 @@ export interface CheckboxEvents {
 }
 
 export interface ChipSlots {
+  /**
+   * The graphic to display in the chip.
+   *
+   * Only accepts `Icon` components.
+   */
   graphic?: HTMLElement;
 }
 
@@ -7587,6 +7613,11 @@ export interface ClickableChipEvents {
 }
 
 export interface ClickableChipSlots {
+  /**
+   * The graphic to display in the clickable chip.
+   *
+   * Only accepts `Icon` components.
+   */
   graphic?: HTMLElement;
 }
 
@@ -7641,6 +7672,15 @@ export interface LinkEvents {
   click: CallbackEventListener<typeof tagName> | null = null;
 }
 
+export interface MenuSlots {
+  /**
+   * The Menu items.
+   *
+   * Only accepts `Button` and `Section` components.
+   */
+  children?: HTMLElement;
+}
+
 export interface MoneyFieldEvents {
   change: CallbackEventListener<'input'>;
   input: CallbackEventListener<'input'>;
@@ -7663,16 +7703,24 @@ export interface PageSlots {
    */
   aside?: HTMLElement;
   /**
-   * The primary action to perform on the page.
-   * Accepts a single `Button` with a `variant` of `primary`.
+   * The primary action for the page.
+   *
+   * Only accepts a single `Button` component with a `variant` of `primary`.
    *
    */
   'primary-action'?: HTMLElement;
   /**
-   * Secondary actions on the page. Accepts `ButtonGroup` with nested `Button`s or a single `Button`.
-   * `Button`s must have a `variant` of `secondary` or `auto`.
+   * Secondary actions for the page.
+   *
+   * Only accepts `ButtonGroup` and `Button` components with a `variant` of `secondary` or `auto`.
    */
   'secondary-actions'?: HTMLElement;
+  /**
+   * Navigations back actions for the page.
+   *
+   * Only accepts `Link` components.
+   */
+  'breadcrumb-actions'?: HTMLElement;
 }
 
 export interface PasswordFieldEvents {
@@ -7744,6 +7792,15 @@ export interface TextFieldSlots {
 export interface ThumbnailEvents {
   load: CallbackEventListener<typeof tagName> | null = null;
   error: OnErrorEventHandler = null;
+}
+
+export interface TooltipSlots {
+  /**
+   * The content of the Tooltip.
+   *
+   * Only accepts `Text`, `Paragraph` components, and raw `textContent`.
+   */
+  children: HTMLElement;
 }
 
 export interface URLFieldEvents {

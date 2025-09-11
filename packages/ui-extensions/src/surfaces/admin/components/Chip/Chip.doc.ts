@@ -11,6 +11,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: '',
       type: 'Chip',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'ChipSlots',
+    },
   ],
   defaultExample: {
     image: 'chip-default.png',

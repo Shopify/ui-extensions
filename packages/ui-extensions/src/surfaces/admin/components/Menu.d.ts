@@ -1,4 +1,4 @@
-/** VERSION: 1.12.0 **/
+/** VERSION: 1.14.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -7,18 +7,13 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  MenuProps$1,
   ComponentChild,
+  MenuProps$1,
   InteractionProps,
 } from './shared.d.ts';
 
 export interface MenuProps
-  extends Required<Pick<MenuProps$1, 'id' | 'accessibilityLabel'>> {
-  /**
-   * @implementation only accepts `s-button` and `s-section`
-   */
-  children?: ComponentChild;
-}
+  extends Required<Pick<MenuProps$1, 'id' | 'accessibilityLabel'>> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -127,7 +122,14 @@ declare module 'preact' {
 declare const tagName = 's-menu';
 export interface MenuJSXProps
   extends Partial<MenuProps>,
-    Pick<MenuProps$1, 'id'> {}
+    Pick<MenuProps$1, 'id'> {
+  /**
+   * The Menu items.
+   *
+   * Only accepts `Button` and `Section` components.
+   */
+  children?: ComponentChild;
+}
 
 export {Menu};
 export type {MenuJSXProps};

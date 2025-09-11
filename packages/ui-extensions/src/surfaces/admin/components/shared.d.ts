@@ -1,4 +1,4 @@
-/** VERSION: 1.12.0 **/
+/** VERSION: 1.14.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -8,7 +8,7 @@
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
  */
-type ComponentChildren = any;
+export type ComponentChildren = any;
 export type StringChildren = string;
 export interface GlobalProps {
   /**
