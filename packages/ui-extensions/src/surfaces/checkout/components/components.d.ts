@@ -13,6 +13,7 @@
  * https://github.com/Shopify/ui-api-design/issues/139
  */
 export type ComponentChildren = any;
+export type StringChildren = string;
 export interface GlobalProps {
 	/**
 	 * A unique identifier for the element.
@@ -44,6 +45,52 @@ export interface ActionSlots {
 	 * The secondary actions to perform, provided as button or link type elements.
 	 */
 	secondaryActions?: ComponentChildren;
+}
+export interface BaseOverlayProps {
+	/**
+	 * Callback fired after the overlay is shown.
+	 */
+	onShow?: (event: Event) => void;
+	/**
+	 * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
+	 */
+	onAfterShow?: (event: Event) => void;
+	/**
+	 * Callback fired after the overlay is hidden.
+	 */
+	onHide?: (event: Event) => void;
+	/**
+	 * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
+	 */
+	onAfterHide?: (event: Event) => void;
+}
+/**
+ * Shared interfaces for web component methods.
+ *
+ * Methods are required (not optional) because:
+ * - Components implementing this interface must provide all methods
+ * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
+ * - Consumers expect these methods to be consistently available on all instances
+ */
+export interface BaseOverlayMethods {
+	/**
+	 * Method to show an overlay.
+	 *
+	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+	 */
+	showOverlay: () => void;
+	/**
+	 * Method to hide an overlay.
+	 *
+	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+	 */
+	hideOverlay: () => void;
+	/**
+	 * Method to toggle the visiblity of an overlay.
+	 *
+	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
+	 */
+	toggleOverlay: () => void;
 }
 export type SizeKeyword = "small-500" | "small-400" | "small-300" | "small-200" | "small-100" | "small" | "base" | "large" | "large-100" | "large-200" | "large-300" | "large-400" | "large-500";
 export type ColorKeyword = "subdued" | "base" | "strong";
@@ -253,6 +300,7 @@ declare const privateIconArray: readonly [
 	"favicon",
 	"file-list",
 	"file",
+	"filter-active",
 	"filter",
 	"flag",
 	"flip-horizontal",
@@ -1338,65 +1386,6 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 	 */
 	lang?: string;
 }
-interface ChatProps$1 extends GlobalProps {
-	/**
-	 * The URL to embed within the Chat component iframe.
-	 */
-	src?: string;
-	/**
-	 * Adjust the inline size.
-	 *
-	 * Surfaces may impose sizing restrictions for the component, therefore the size set
-	 * may not be the actual size rendered.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
-	 */
-	inlineSize?: SizeUnits;
-	/**
-	 * Adjust the block size.
-	 *
-	 * Surface may impose sizing restrictions for the component, therefore the size set
-	 * may not be the actual size rendered.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
-	 */
-	blockSize?: SizeUnits;
-	/**
-	 * A label that describes the purpose or contents of the component. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide them with more context.
-	 */
-	accessibilityLabel?: string;
-	/**
-	 * Callback when the embedded page sends a message.
-	 */
-	onMessage?: (event: MessageEvent$1) => void;
-	/**
-	 * Callback when the embedded page is ready and a message port has been created to
-	 * communicate with the host page.
-	 */
-	onReady?: (event: ReadyEvent) => void;
-}
-interface MessageEvent$1 {
-	/**
-	 * The data sent by the message emitter (the embedded page).
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/data
-	 */
-	data?: any;
-	/**
-	 * A string representing the origin of the message emitter (the embedded page).
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/origin
-	 */
-	origin?: string;
-}
-export interface ReadyEvent {
-	/**
-	 * A function to send messages to the embedded page.
-	 */
-	postMessage?: (message: any, transfer?: Transferable[]) => void;
-}
 export interface BaseInputProps {
 	/**
 	 * An identifier for the field that is unique within the nearest containing form.
@@ -1453,22 +1442,34 @@ export interface MultipleInputProps extends BaseInputProps {
 	 */
 	values?: string[];
 }
-export interface FileInputProps<T extends File[] | File = File[]> extends BaseInputProps {
+export interface FileInputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+	 * Callback when the user has **finished selecting** a file or files.
 	 */
-	onChange?: (newValue: T) => void;
+	onChange?: (event: Event) => void;
 	/**
-	 * Callback when the user makes any changes in the field.
+	 * Callback when the user makes any changes in the file selection.
 	 */
-	onInput?: (newValue: T) => void;
+	onInput?: (event: Event) => void;
 	/**
-	 * The current value for the field.
+	 * A string that represents the path to the selected file(s). If no file is selected yet, the value is an empty string ("").
+	 * When the user selected multiple files, the value represents the first file in the list of files they selected.
+	 * The value is always the file's name prefixed with "C:\fakepath\", which isn't the real path of the file.
 	 *
-	 * TODO: This is a read-only getter.
-	 * We haven't agreed how to represent that yet.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file#value
+	 *
+	 * @default ''
 	 */
-	value?: T;
+	value?: string;
+	/**
+	 * An array of File objects representing the files currently selected by the user.
+	 *
+	 * This property is read-only and cannot be directly modified.
+	 * To clear the selected files, set the `value` prop to an empty string or null.
+	 *
+	 * @default []
+	 */
+	files?: readonly File[];
 }
 export interface FieldErrorProps {
 	/**
@@ -1718,8 +1719,16 @@ interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps, FieldErrorPro
 interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
 	/**
 	 * Content to use as the choice label.
+	 *
+	 * @implementation (StringChildren) The label is produced by extracting and
+	 * concatenating the text nodes from the provided content; any markup or
+	 * element structure is ignored.
+	 *
+	 * @implementation (ComponentChildren) Behaves as a slot: any elements passed
+	 * are rendered as the label content (subject to surface constraints); there
+	 * is no coercion to a string.
 	 */
-	children?: ComponentChildren;
+	children?: ComponentChildren | StringChildren;
 	/**
 	 * Additional text to provide context or guidance for the input.
 	 *
@@ -1940,11 +1949,11 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 */
 	allow?: string;
 	/**
-	 * Dates that cannot be selected. These subtract from `allowDates`.
+	 * Dates that cannot be selected. These subtract from `allow`.
 	 *
 	 * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
 	 *
-	 * The default `''` has no effect on `allowDates`.
+	 * The default `''` has no effect on `allow`.
 	 *
 	 * - Dates in `YYYY-MM-DD` format disallow a single date.
 	 * - Dates in `YYYY-MM` format disallow a whole month.
@@ -1966,24 +1975,24 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 */
 	disallow?: string;
 	/**
-	 * Days of the week that can be selected. These intersect with the result of `allowDates` and `disallowDates`.
+	 * Days of the week that can be selected. These intersect with the result of `allow` and `disallow`.
 	 *
-	 * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+	 * A comma-separated list of days. Whitespace is allowed after commas.
 	 *
-	 * The default `''` has no effect on the result of `allowDates` and `disallowDates`.
+	 * The default `''` has no effect on the result of `allow` and `disallow`.
 	 *
 	 * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
 	 *
 	 * @default ""
 	 *
 	 * @example
-	 * 'saturday, sunday' // allow only weekends within the result of `allowDates` and `disallowDates`.
+	 * 'saturday, sunday' // allow only weekends within the result of `allow` and `disallow`.
 	 */
 	allowDays?: string;
 	/**
-	 * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allowDates` and `disallowDates`.
+	 * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allow` and `disallow`.
 	 *
-	 * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+	 * A comma-separated list of days. Whitespace is allowed after commas.
 	 *
 	 * The default `''` has no effect on `allowDays`.
 	 *
@@ -1992,7 +2001,7 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 * @default ""
 	 *
 	 * @example
-	 * 'saturday, sunday' // disallow weekends within the result of `allowDates` and `disallowDates`.
+	 * 'saturday, sunday' // disallow weekends within the result of `allow` and `disallow`.
 	 */
 	disallowDays?: string;
 	/**
@@ -2022,17 +2031,20 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
 	 * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
 	 *
-	 * Events:
-	 *
-	 * - `onInput` - Invoked when any date is selected. Will fire before `onChange`.
-	 * - `onChange` - Invoked when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
-	 *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
-	 *
 	 * @default ""
 	 */
 	value?: string;
+	/**
+	 * Callback when any date is selected. Will fire before `onChange`.
+	 */
+	onInput?: (event: Event) => void;
+	/**
+	 * Callback when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
+	 *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
+	 */
+	onChange?: (event: Event) => void;
 }
-interface DateFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<DatePickerProps$1, "view" | "defaultView" | "value" | "defaultValue" | "allow" | "disallow" | "onViewChange">, AutocompleteProps<DateAutocompleteField> {
+interface DateFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<DatePickerProps$1, "view" | "defaultView" | "value" | "defaultValue" | "allow" | "disallow" | "allowDays" | "disallowDays" | "onViewChange">, AutocompleteProps<DateAutocompleteField> {
 	/**
 	 * Callback when the field has an invalid date.
 	 * This callback will be called, if the date typed is invalid or disabled.
@@ -2109,16 +2121,17 @@ interface DividerProps$1 extends GlobalProps {
 	 */
 	color?: ColorKeyword;
 }
-interface DropZoneProps$1 extends GlobalProps, FileInputProps<File[]>, BasicFieldProps {
+interface DropZoneProps$1 extends GlobalProps, FileInputProps, BasicFieldProps {
 	/**
-	 * A string representing the types of files that are accepted by the dropzone.
+	 * A string representing the types of files that are accepted by the drop zone.
 	 * This string is a comma-separated list of unique file type specifiers which can be one of the following:
 	 * - A file extension starting with a period (".") character (e.g. .jpg, .pdf, .doc)
 	 * - A valid MIME type string with no extensions
 	 *
-	 * If left empty, the dropzone will accept all files.
+	 * If omitted, all file types are accepted.
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept
+	 * @default ''
 	 */
 	accept?: string;
 	/**
@@ -2128,15 +2141,16 @@ interface DropZoneProps$1 extends GlobalProps, FileInputProps<File[]>, BasicFiel
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Defines if the user can select or drop multiple files at once.
+	 * Whether multiple files can be selected or dropped at once.
 	 *
 	 * @default false
 	 */
 	multiple?: boolean;
 	/**
-	 * Callback when rejected files are dropped. Files are rejected based on the `accept` prop.
+	 * Callback fired when rejected files are dropped.
+	 * Files are rejected based on the `accept` prop and are not added to `files`.
 	 */
-	onDropRejected?: (files: File[]) => void;
+	onDropRejected?: (event: Event) => void;
 }
 interface EmailFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<EmailAutocompleteField> {
 }
@@ -2388,7 +2402,7 @@ interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps, Bloc
 	 */
 	accessibilityRole?: "heading" | ExtractStrict<AccessibilityRole, "presentation" | "none">;
 }
-interface IconProps$1 extends GlobalProps {
+interface IconProps$1 extends GlobalProps, Pick<InteractionProps, "interestFor"> {
 	/**
 	 * Sets the tone of the icon, based on the intention of the information being conveyed.
 	 *
@@ -2681,52 +2695,6 @@ interface MapMarkerProps$1 extends GlobalProps, InteractionProps, Pick<SizingPro
 	 * It does not trigger a click event on the map itself.
 	 */
 	onClick?: (event: Event) => void;
-}
-export interface BaseOverlayProps {
-	/**
-	 * Callback fired after the overlay is shown.
-	 */
-	onShow?: (event: Event) => void;
-	/**
-	 * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
-	 */
-	onAfterShow?: (event: Event) => void;
-	/**
-	 * Callback fired after the overlay is hidden.
-	 */
-	onHide?: (event: Event) => void;
-	/**
-	 * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
-	 */
-	onAfterHide?: (event: Event) => void;
-}
-/**
- * Shared interfaces for web component methods.
- *
- * Methods are required (not optional) because:
- * - Components implementing this interface must provide all methods
- * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
- * - Consumers expect these methods to be consistently available on all instances
- */
-export interface BaseOverlayMethods {
-	/**
-	 * Method to show an overlay.
-	 *
-	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
-	 */
-	showOverlay: () => void;
-	/**
-	 * Method to hide an overlay.
-	 *
-	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
-	 */
-	hideOverlay: () => void;
-	/**
-	 * Method to toggle the visiblity of an overlay.
-	 *
-	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
-	 */
-	toggleOverlay: () => void;
 }
 interface ModalProps$1 extends GlobalProps, BaseOverlayProps, BaseOverlayMethods, ActionSlots {
 	/**
@@ -3176,7 +3144,7 @@ interface SummaryProps$1 extends GlobalProps {
 }
 interface SwitchProps$1 extends GlobalProps, BaseCheckableProps, BasicFieldProps, FieldDetailsProps, FieldErrorProps {
 }
-interface TextProps$1 extends GlobalProps, AccessibilityVisibilityProps, BaseTypographyProps, DisplayProps {
+interface TextProps$1 extends GlobalProps, AccessibilityVisibilityProps, BaseTypographyProps, DisplayProps, Pick<InteractionProps, "interestFor"> {
 	/**
 	 * The content of the Text.
 	 */
@@ -3361,7 +3329,7 @@ declare module 'preact' {
 }
 
 declare const tagName$T = "s-badge";
-interface BadgeProps extends Pick<BadgeProps$1, 'id' | 'tone' | 'iconPosition'> {
+interface BadgeProps extends Pick<BadgeProps$1, 'color' | 'icon' | 'iconPosition' | 'id' | 'size' | 'tone'> {
     size?: Extract<BadgeProps$1['size'], 'small' | 'small-100' | 'base'>;
     tone?: Extract<BadgeProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
     color?: Extract<BadgeProps$1['color'], 'base' | 'subdued'>;
@@ -3451,11 +3419,6 @@ declare module 'preact' {
             [tagName$Q]: ButtonProps & BaseElementPropsWithChildren<ButtonElement>;
         }
     }
-}
-
-interface ChatProps extends Pick<ChatProps$1, 'accessibilityLabel' | 'blockSize' | 'id' | 'inlineSize' | 'onMessage' | 'onReady'> {
-    blockSize?: Extract<ChatProps$1['blockSize'], `${number}px` | '0'>;
-    inlineSize?: Extract<ChatProps$1['inlineSize'], `${number}px` | '0'>;
 }
 
 declare const tagName$P = "s-checkbox";
@@ -4191,7 +4154,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$m]: PhoneFieldProps & BaseElementProps<PhoneFieldElement>;
+            [tagName$m]: PhoneFieldProps & BaseElementPropsWithChildren<PhoneFieldElement>;
         }
     }
 }
@@ -4720,4 +4683,4 @@ declare module 'preact' {
     }
 }
 
-export type { AbbreviationProps, BadgeProps, BannerProps, BoxProps, ButtonProps, ChatProps, CheckboxProps, ChoiceListProps, ChoiceProps, ClickableProps, ClipboardItemProps, DateFieldProps, DatePickerProps, DetailsProps, DividerProps, DropZoneProps, EmailFieldProps, FormProps, GridItemProps, GridProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, MapMarkerProps, MapProps, ModalProps, MoneyFieldProps, NumberFieldProps, OptionProps, OrderedListProps, ParagraphProps, PasswordFieldProps, PaymentIconProps, PhoneFieldProps, PopoverProps, PressButtonProps, ProductThumbnailProps, ProgressProps, QRCodeProps, QueryContainerProps, ScrollBoxProps, SectionProps, SelectProps, SheetProps, SkeletonParagraphProps, SpinnerProps, StackProps, SummaryProps, SwitchProps, TextAreaProps, TextFieldProps, TextProps, TimeProps, TooltipProps, UnorderedListProps, UrlFieldProps };
+export type { AbbreviationProps, BadgeProps, BannerProps, BoxProps, ButtonProps, CheckboxProps, ChoiceListProps, ChoiceProps, ClickableProps, ClipboardItemProps, DateFieldProps, DatePickerProps, DetailsProps, DividerProps, DropZoneProps, EmailFieldProps, FormProps, GridItemProps, GridProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, MapMarkerProps, MapProps, ModalProps, MoneyFieldProps, NumberFieldProps, OptionProps, OrderedListProps, ParagraphProps, PasswordFieldProps, PaymentIconProps, PhoneFieldProps, PopoverProps, PressButtonProps, ProductThumbnailProps, ProgressProps, QRCodeProps, QueryContainerProps, ScrollBoxProps, SectionProps, SelectProps, SheetProps, SkeletonParagraphProps, SpinnerProps, StackProps, SummaryProps, SwitchProps, TextAreaProps, TextFieldProps, TextProps, TimeProps, TooltipProps, UnorderedListProps, UrlFieldProps };
