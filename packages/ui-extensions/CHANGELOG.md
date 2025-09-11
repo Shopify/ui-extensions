@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.33
+
+### Patch Changes
+
+- [#3275](https://github.com/Shopify/ui-extensions/pull/3275) [`92a77497c5d4290ef53579c258779dc7e1173e93`](https://github.com/Shopify/ui-extensions/commit/92a77497c5d4290ef53579c258779dc7e1173e93) Thanks [@steved-shopify](https://github.com/steved-shopify)! - Add autoSubmit to POS PinPad API and improve PinPadActionType
+
 ## 2025.10.0-rc.32
 
 ### Minor Changes
