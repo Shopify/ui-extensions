@@ -137,6 +137,22 @@ const transformJson = async (filePath, isExtensions) => {
     }
   });
 
+  // Ensure Patterns subcategories appear in the desired order in the sidebar.
+  // We want "Templates" to come before "Compositions".
+  if (isExtensions) {
+    const PATTERNS_SUBCATEGORY_ORDER = ['Templates', 'Compositions'];
+    jsonData.sort((first, second) => {
+      if (first.category === 'Patterns' && second.category === 'Patterns') {
+        const firstIndex = PATTERNS_SUBCATEGORY_ORDER.indexOf(first.subCategory);
+        const secondIndex = PATTERNS_SUBCATEGORY_ORDER.indexOf(second.subCategory);
+        const a = firstIndex === -1 ? Number.MAX_SAFE_INTEGER : firstIndex;
+        const b = secondIndex === -1 ? Number.MAX_SAFE_INTEGER : secondIndex;
+        if (a !== b) return a - b;
+      }
+      return 0;
+    });
+  }
+
   // Merge the App Bridge docs with the Shopify Dev docs
   if (!isExtensions && shopifyDevExists) {
     const shopifyDevDocs = path.join(

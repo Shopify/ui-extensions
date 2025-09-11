@@ -62,7 +62,7 @@
     <!-- === -->
     <!-- Home page pattern -->
     <!-- === -->
-    <s-page inlineSize="small">
+    <s-page>
       <!-- === -->
       <!-- Title Bar -->
       <!-- The ui-title-bar on the homepage should not have a title attribute -->
@@ -118,7 +118,7 @@
             <s-paragraph>
               Use this personalized guide to get your store ready for sales.
             </s-paragraph>
-              <s-paragraph id="progress-text" tone="subdued">0 out of 3 steps completed</s-paragraph>
+              <s-paragraph id="progress-text" color="subdued">0 out of 3 steps completed</s-paragraph>
           </s-grid>
           <!-- Steps Container -->
           <s-box id="steps-container" borderRadius="base" border="base" background="base">
@@ -139,14 +139,14 @@
                 </s-grid>
               <s-box id="step1-details" padding="small" paddingBlockStart="none" style="display: none;">
                 <s-box padding="base" background="subdued" borderRadius="base">
-                  <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+                  <s-grid gridTemplateColumns="1fr auto" gap="base">
                     <s-grid gap="small-200">
                       <s-paragraph>
                         Start by uploading a high-quality image that will be used to create your
                         puzzle. For best results, use images that are at least 1200x1200 pixels.
                       </s-paragraph>
                       <s-stack direction="inline" gap="small-200">
-                        <s-button variant="primary" onClick="console.log('clicked')">
+                        <s-button variant="primary">
                           Upload image
                         </s-button>
                         <s-button variant="tertiary" tone="neutral"> Image requirements </s-button>
@@ -180,7 +180,7 @@
                 </s-grid>
               <s-box id="step2-details" padding="small" paddingBlockStart="none" style="display: none;">
                 <s-box padding="base" background="subdued" borderRadius="base">
-                  <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+                  <s-grid gridTemplateColumns="1fr auto" gap="base">
                     <s-grid gap="small-200">
                       <s-paragraph>
                         Select a template for your puzzle - choose between 9-piece (beginner),
@@ -217,9 +217,10 @@
                     icon="chevron-down"
                   ></s-button>
                 </s-grid>
+              </s-box>
               <s-box id="step3-details" padding="small" paddingBlockStart="none" style="display: none;">
                 <s-box padding="base" background="subdued" borderRadius="base">
-                  <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+                  <s-grid gridTemplateColumns="1fr auto" gap="base">
                     <s-grid gap="small-200">
                       <s-paragraph>
                         Make your puzzle unique by customizing the shapes of individual pieces.
@@ -239,7 +240,6 @@
                       ></s-image>
                     </s-box>
                   </s-grid>
-                </s-box>
               </s-box>
             </s-box>
             <!-- Add additional steps here... -->
@@ -250,8 +250,7 @@
       <!-- Metrics cards -->
       <!-- Your app homepage should provide merchants with quick statistics or status updates that help them understand how the app is performing for them. -->
       <!-- === -->
-      <s-section padding="none">
-        <s-box padding="small">
+      <s-section padding="small">
           <s-grid
             gridTemplateColumns="@container (inline-size <= 400px) 1fr, 1fr auto 1fr auto 1fr"
             gap="small"
@@ -301,7 +300,6 @@
               </s-grid>
             </s-clickable>
           </s-grid>
-        </s-box>
       </s-section>
       <!-- === -->
       <!-- Callout Card -->
@@ -319,12 +317,11 @@
               <s-paragraph>
                 Start by uploading an image to your gallery or choose from one of our templates.
               </s-paragraph>
-              <s-stack direction="inline" gap="small-200">
-                <s-button onClick="console.log('clicked')"> Upload image </s-button>
+              <s-button-group>
+                <s-button> Upload image </s-button>
                 <s-button tone="neutral" variant="tertiary"> Browse templates </s-button>
-              </s-stack>
+              </s-button-group>
             </s-grid>
-            <s-stack alignItems="center">
               <s-box maxInlineSize="200px" borderRadius="base" overflow="hidden">
                 <s-image
                   src="https://cdn.shopify.com/static/images/polaris/patterns/callout.png"
@@ -332,7 +329,6 @@
                   aspectRatio="1/0.5"
                 ></s-image>
               </s-box>
-            </s-stack>
           </s-grid>
           <s-button
             onClick="window.puzzleApp.dismissSection(document.getElementById('callout-section'))"
@@ -355,7 +351,7 @@
               <s-image
                 aspectRatio="1/1"
                 objectFit="cover"
-                alt="Illustration of characters with a 4-piece puzzle"
+                alt="4-pieces puzzle template"
                 src="https://cdn.shopify.com/static/images/polaris/patterns/4-pieces.png"
               ></s-image>
             </s-clickable>
@@ -379,6 +375,7 @@
               <s-image
                 aspectRatio="1/1"
                 objectFit="cover"
+                alt="9-pieces puzzle template"
                 src="https://cdn.shopify.com/static/images/polaris/patterns/9-pieces.png"
               ></s-image>
             </s-clickable>
@@ -402,6 +399,7 @@
               <s-image
                 aspectRatio="1/1"
                 objectFit="cover"
+                alt="16-pieces puzzle template"
                 src="https://cdn.shopify.com/static/images/polaris/patterns/16-pieces.png"
               ></s-image>
             </s-clickable>
@@ -508,18 +506,11 @@
             accessibilityLabel="Download Shopify Flow"
           >
             <s-grid gridTemplateColumns="auto 1fr auto" alignItems="stretch" gap="base">
-              <s-box
-                border="base"
-                borderRadius="base"
-                overflow="hidden"
-                maxInlineSize="40px"
-                maxBlockSize="40px"
-              >
-                <s-image
+                <s-thumbnail 
+                  size="small"
                   src="https://cdn.shopify.com/app-store/listing_images/15100ebca4d221b650a7671125cd1444/icon/CO25r7-jh4ADEAE=.png"
                   alt="Shopify Flow icon"
-                ></s-image>
-              </s-box>
+                ></s-thumbnail>
               <s-box>
                 <s-heading>Shopify Flow</s-heading>
                 <s-paragraph>Free</s-paragraph>
@@ -544,18 +535,11 @@
             accessibilityLabel="Download Shopify Planet"
           >
             <s-grid gridTemplateColumns="auto 1fr auto" alignItems="stretch" gap="base">
-              <s-box
-                border="base"
-                borderRadius="base"
-                overflow="hidden"
-                maxInlineSize="40px"
-                maxBlockSize="40px"
-              >
-                <s-image
+                <s-thumbnail
+                  size="small"
                   src="https://cdn.shopify.com/app-store/listing_images/87176a11f3714753fdc2e1fc8bbf0415/icon/CIqiqqXsiIADEAE=.png"
                   alt="Shopify Planet icon"
-                ></s-image>
-              </s-box>
+                ></s-thumbnail>
               <s-box>
                 <s-heading>Shopify Planet</s-heading>
                 <s-paragraph>Free</s-paragraph>

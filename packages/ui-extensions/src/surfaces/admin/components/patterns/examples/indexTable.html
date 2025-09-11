@@ -18,18 +18,15 @@
         <s-stack gap="none">
           <s-box padding="small">
             <s-choice-list label="Sort by" name="Sort by">
-              <s-choice value="product-title" selected>Product title</s-choice>
+              <s-choice value="puzzle-name" selected>Puzzle name</s-choice>
+              <s-choice value="pieces">Pieces</s-choice>
               <s-choice value="created">Created</s-choice>
-              <s-choice value="updated">Updated</s-choice>
-              <s-choice value="inventory">Inventory</s-choice>
-              <s-choice value="product-type">Product type</s-choice>
-              <s-choice value="publishing-error">Publishing error</s-choice>
-              <s-choice value="vendor">Vendor</s-choice>
+              <s-choice value="status">Status</s-choice>
             </s-choice-list>
           </s-box>
           <s-divider></s-divider>
           <s-box padding="small">
-            <s-choice-list label="Order by" name="Order by" details="">
+            <s-choice-list label="Order by" name="Order by">
               <s-choice value="product-title" selected>A-Z</s-choice>
               <s-choice value="created">Z-A</s-choice>
             </s-choice-list>
@@ -44,17 +41,17 @@
           <s-text>Puzzle</s-text>
         </s-stack>
       </s-table-header>
-      <s-table-header>Type</s-table-header>
+      <s-table-header format="numeric">Pieces</s-table-header>
       <s-table-header>Created</s-table-header>
       <s-table-header listSlot="secondary">Status</s-table-header>
     </s-table-header-row>
     <s-table-body>
-      <s-table-row>
+      <s-table-row clickdelegate="mountain-view-checkbox">
         <s-table-cell>
           <s-stack direction="inline" gap="small" alignItems="center">
-            <s-checkbox></s-checkbox>
+            <s-checkbox id="mountain-view-checkbox"></s-checkbox>
             <s-clickable
-              href="/app/details"
+              href=""
               accessibilityLabel="Mountain View puzzle thumbnail"
               border="base"
               borderRadius="base"
@@ -67,21 +64,21 @@
                 src="https://picsum.photos/id/29/80/80"
               ></s-image>
             </s-clickable>
-            <s-link href="/app/details">Mountain View</s-link>
+            <s-link href="">Mountain View</s-link>
           </s-stack>
         </s-table-cell>
-        <s-table-cell>16-piece</s-table-cell>
+        <s-table-cell>16</s-table-cell>
         <s-table-cell>Today</s-table-cell>
         <s-table-cell>
           <s-badge color="base" tone="success">Active</s-badge>
         </s-table-cell>
       </s-table-row>
-      <s-table-row>
+      <s-table-row clickdelegate="ocean-sunset-checkbox">
         <s-table-cell>
           <s-stack direction="inline" gap="small" alignItems="center">
-            <s-checkbox></s-checkbox>
+            <s-checkbox id="ocean-sunset-checkbox"></s-checkbox>
             <s-clickable
-              href="/app/details"
+              href=""
               accessibilityLabel="Ocean Sunset puzzle thumbnail"
               border="base"
               borderRadius="base"
@@ -94,21 +91,21 @@
                 src="https://picsum.photos/id/12/80/80"
               ></s-image>
             </s-clickable>
-            <s-link href="/app/details">Ocean Sunset</s-link>
+            <s-link href="">Ocean Sunset</s-link>
           </s-stack>
         </s-table-cell>
-        <s-table-cell>9-piece</s-table-cell>
+        <s-table-cell>9</s-table-cell>
         <s-table-cell>Yesterday</s-table-cell>
         <s-table-cell>
           <s-badge color="base" tone="success">Active</s-badge>
         </s-table-cell>
       </s-table-row>
-      <s-table-row>
+      <s-table-row clickdelegate="forest-animals-checkbox">
         <s-table-cell>
           <s-stack direction="inline" gap="small" alignItems="center">
-            <s-checkbox></s-checkbox>
+            <s-checkbox id="forest-animals-checkbox"></s-checkbox>
             <s-clickable
-              href="/app/details"
+              href=""
               accessibilityLabel="Forest Animals puzzle thumbnail"
               border="base"
               borderRadius="base"
@@ -121,10 +118,10 @@
                 src="https://picsum.photos/id/324/80/80"
               ></s-image>
             </s-clickable>
-            <s-link href="/app/details">Forest Animals</s-link>
+            <s-link href="">Forest Animals</s-link>
           </s-stack>
         </s-table-cell>
-        <s-table-cell>25-piece</s-table-cell>
+        <s-table-cell>25</s-table-cell>
         <s-table-cell>Last week</s-table-cell>
         <s-table-cell>
           <s-badge color="base" tone="neutral">Draft</s-badge>

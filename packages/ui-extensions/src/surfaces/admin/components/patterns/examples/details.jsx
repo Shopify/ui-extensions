@@ -125,7 +125,7 @@ export default function DetailsPage() {
                           maxInlineSize="40px"
                           maxBlockSize="40px"
                         >
-                          <s-image src="https://cdn.shopify.com/static/images/polaris/patterns/16-pieces.png"></s-image>
+                          <s-image alt="16-pieces puzzle template" src="https://cdn.shopify.com/static/images/polaris/patterns/16-pieces.png"></s-image>
                         </s-box>
                         16-pieces puzzle
                       </s-stack>
@@ -160,7 +160,7 @@ export default function DetailsPage() {
                           maxInlineSize="40px"
                           maxBlockSize="40px"
                         >
-                          <s-image src="https://cdn.shopify.com/static/images/polaris/patterns/9-pieces.png"></s-image>
+                          <s-image alt="9-pieces puzzle template" src="https://cdn.shopify.com/static/images/polaris/patterns/9-pieces.png"></s-image>
                         </s-box>
                         9-pieces puzzle
                       </s-stack>
@@ -248,10 +248,12 @@ export default function DetailsPage() {
               <s-list-item>Pieces can be rotated</s-list-item>
               <s-list-item>No time limit</s-list-item>
               <s-list-item>
-                Current status:{" "}
-                <s-badge color="base" tone="success">
-                  Active
-                </s-badge>
+                <s-stack direction="inline" gap="small">
+                  <s-text>Current status:</s-text>
+                  <s-badge color="base" tone="success">
+                    Active
+                  </s-badge>
+                </s-stack>
               </s-list-item>
             </s-unordered-list>
           </s-section>

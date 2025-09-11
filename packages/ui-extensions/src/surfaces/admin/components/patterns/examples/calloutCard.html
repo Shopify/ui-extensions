@@ -1,4 +1,4 @@
-<s-section id="callout-section">
+<s-section>
   <s-grid gridTemplateColumns="1fr auto" gap="small-400" alignItems="start">
     <s-grid
       gridTemplateColumns="@container (inline-size <= 480px) 1fr, auto auto"
@@ -10,10 +10,10 @@
         <s-paragraph>
           Start by uploading an image to your gallery or choose from one of our templates.
         </s-paragraph>
-        <s-stack direction="inline" gap="small-200">
-          <s-button onClick="console.log('clicked')"> Upload image </s-button>
+        <s-button-group>
+          <s-button> Upload image </s-button>
           <s-button tone="neutral" variant="tertiary"> Browse templates </s-button>
-        </s-stack>
+        </s-button-group>
       </s-grid>
       <s-stack alignItems="center">
         <s-box maxInlineSize="200px" borderRadius="base" overflow="hidden">
