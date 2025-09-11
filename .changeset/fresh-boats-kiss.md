@@ -4,7 +4,6 @@
 
 Add checkout components:
 
-- Chat
 - Choice
 - ChoiceList
 - DateField
