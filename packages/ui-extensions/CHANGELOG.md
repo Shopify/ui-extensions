@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.34
+
+### Patch Changes
+
+- [#3278](https://github.com/Shopify/ui-extensions/pull/3278) [`d344616ae631edafa11bed72b10bfe5a12ab7a96`](https://github.com/Shopify/ui-extensions/commit/d344616ae631edafa11bed72b10bfe5a12ab7a96) Thanks [@steved-shopify](https://github.com/steved-shopify)! - Add error message to pin rejection result on PinPad API
+
 ## 2025.10.0-rc.33
 
 ### Patch Changes

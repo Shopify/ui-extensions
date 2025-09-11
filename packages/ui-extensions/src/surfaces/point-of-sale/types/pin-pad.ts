@@ -11,9 +11,11 @@ export interface PinPadResult {
 
 /**
  * Represents the result of the pin pad onSubmit function.
- * @typedef {('accept'|'reject')} PinValidationResult
+ * @typedef {{result: 'accept'} | {result: 'reject'; errorMessage?: string}} PinValidationResult
  */
-export type PinValidationResult = 'accept' | 'reject';
+export type PinValidationResult =
+  | {result: 'accept'}
+  | {result: 'reject'; errorMessage?: string};
 
 export type PinLength = 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
