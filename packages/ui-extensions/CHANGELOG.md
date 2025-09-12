@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.35
+
+### Patch Changes
+
+- [#3285](https://github.com/Shopify/ui-extensions/pull/3285) [`ceaa49a46f15b84359260260090c69f3e28eb769`](https://github.com/Shopify/ui-extensions/commit/ceaa49a46f15b84359260260090c69f3e28eb769) Thanks [@steved-shopify](https://github.com/steved-shopify)! - Export PinValidationResult type for PinPad API
+
 ## 2025.10.0-rc.34
 
 ### Patch Changes
