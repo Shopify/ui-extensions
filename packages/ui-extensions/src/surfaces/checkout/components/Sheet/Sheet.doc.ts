@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Polaris web components',
-  subCategory: 'Overlay',
+  subCategory: 'Overlays',
   defaultExample: {
     image: 'sheet-default.png',
     codeblock: {

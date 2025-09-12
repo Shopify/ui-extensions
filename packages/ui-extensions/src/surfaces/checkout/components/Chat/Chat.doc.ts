@@ -7,10 +7,10 @@ Use the Chat component to create real-time chat applications.
 
 > Note: The Chat component can only be added to the chat targets of [checkout](/docs/api/checkout-ui-extensions/latest/targets/overlays/purchase-checkout-chat-render) and [Thank you](/docs/api/checkout-ui-extensions/latest/targets/overlays/purchase-thank-you-chat-render) pages.
 `,
-requires:
-'access to the **Chat in checkout extensions** scope. Request access in the Partner Dashboard.',
+  requires:
+    'access to the **Chat in checkout extensions** scope. Request access in the Partner Dashboard.',
   category: 'Polaris web components',
-  subCategory: 'Overlay',
+  subCategory: 'Overlays',
   related: [],
   isVisualComponent: true,
   thumbnail: 'chat-thumbnail.png',

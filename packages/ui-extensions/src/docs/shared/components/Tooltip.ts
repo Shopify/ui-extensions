@@ -5,7 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description:
     'Floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover or focus.',
   category: 'Polaris web components',
-  subCategory: 'Overlay',
+  subCategory: 'Overlays',
   related: [],
 };
 

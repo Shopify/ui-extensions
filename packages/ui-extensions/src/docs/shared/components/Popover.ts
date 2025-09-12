@@ -5,7 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description:
     'Popover is used to display content in an overlay that can be triggered by a button.',
   category: 'Polaris web components',
-  subCategory: 'Overlay',
+  subCategory: 'Overlays',
   related: [],
 };
 
