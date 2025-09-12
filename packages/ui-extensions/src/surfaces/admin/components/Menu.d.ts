@@ -1,4 +1,4 @@
-/** VERSION: 1.16.0 **/
+/** VERSION: 1.17.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -137,14 +137,7 @@ declare module 'preact' {
 declare const tagName = 's-menu';
 export interface MenuJSXProps
   extends Partial<MenuProps>,
-    Pick<MenuProps$1, 'id'> {
-  /**
-   * The Menu items.
-   *
-   * Only accepts `Button` and `Section` components.
-   */
-  children?: ComponentChild;
-}
+    Pick<MenuProps$1, 'id'> {}
 
 export {Menu};
 export type {MenuJSXProps};

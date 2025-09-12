@@ -1,4 +1,4 @@
-/** VERSION: 1.16.0 **/
+/** VERSION: 1.17.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
