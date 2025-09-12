@@ -16,6 +16,7 @@ import {
 } from '../shared';
 
 import type {ExtensionTarget} from '../../extension-targets';
+import {IntentsApi} from '../intents/intents';
 
 /**
  * The merchant-defined setting values for the extension.
@@ -138,6 +139,15 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   applyTrackingConsentChange: ApplyTrackingConsentChangeType;
+
+  /**
+   * Entry point for Customer Account intents.
+   *
+   * A unified surface for describing and orchestrating operations. Intents pair
+   * an `action` (verb) with a resource `type` and optional `value` and `data`
+   * to request a workflow.
+   */
+  intents: IntentsApi;
 }
 
 export interface CompanyLocationApi {
