@@ -88,6 +88,8 @@ export type {
   CustomSale,
   Address,
   SellingPlan,
+  SellingPlanDeliveryInterval,
+  SetLineItemSellingPlanInput,
 } from './types/cart';
 
 export type {OrderLineItem, LineItemRefund} from './types/order';
@@ -128,4 +130,5 @@ export type {
   PinPadResult,
   PinLength,
   PinPadActionType,
+  PinValidationResult,
 } from './types/pin-pad';

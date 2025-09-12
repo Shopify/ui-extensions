@@ -11,18 +11,24 @@ export interface PinPadResult {
 
 /**
  * Represents the result of the pin pad onSubmit function.
- * @typedef {('accept'|'reject')} PinValidationResult
+ * @typedef {{result: 'accept'} | {result: 'reject'; errorMessage?: string}} PinValidationResult
  */
-export type PinValidationResult = 'accept' | 'reject';
+export type PinValidationResult =
+  | {result: 'accept'}
+  | {result: 'reject'; errorMessage?: string};
 
 export type PinLength = 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 export interface PinPadActionType {
   label: string;
-  onClick: () => Promise<number[]>;
+  onClick: () => Promise<number[]> | number[];
 }
 
 export interface PinPadOptions {
+  /**
+   * The function to be called when a pin is entered
+   */
+  onPinEntry?: (pin: number[]) => void;
   /**
    * The function to be called when the pin pad modal is dismissed
    */
@@ -51,4 +57,8 @@ export interface PinPadOptions {
    * Title shown in the modal header
    */
   title?: string;
+  /**
+   * Whether the pin should be automatically submitted when the user has entered the maximum PIN length
+   */
+  autoSubmit?: boolean;
 }

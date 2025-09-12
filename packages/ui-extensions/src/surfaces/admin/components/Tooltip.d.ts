@@ -1,4 +1,4 @@
-/** VERSION: 1.10.0 **/
+/** VERSION: 1.16.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -7,20 +7,12 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  TooltipProps$1,
-  ComponentChildren,
-  InteractionProps,
   ComponentChild,
+  TooltipProps$1,
+  InteractionProps,
 } from './shared.d.ts';
 
-export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {
-  /**
-   * The content of the Tooltip.
-   *
-   * @implementation Accepts s-text, s-paragraph, and raw text content
-   */
-  children: ComponentChildren;
-}
+export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
 
 /** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
@@ -100,11 +92,21 @@ declare abstract class PreactCustomElement extends BaseClass {
 /**
  * Shared symbols for overlay control functionality.
  * These symbols are used by components that implement overlay behavior
- * (like Popover, Tooltip, etc.) to communicate with the overlay control system.
+ * (like Popover, Tooltip, Modal, etc.) to communicate with the overlay control system.
+ */
+/**
+ * Symbol used to invoke the method for overlay commands, e.g. `--show`, `--hide`, etc.
  */
 declare const overlayCommand: unique symbol;
+/**
+ * Symbol used to track the open or closed state of the overlay.
+ */
 declare const overlayHidden: unique symbol;
+/**
+ * Symbol used to track the element that opened the overlay. In some cases, like tooltips and popovers, the overlay is positioned against this element. In all cases, focus should be restored to this element when the overlay is closed.
+ */
 declare const overlayActivator: unique symbol;
+declare const overlayHideFrameId: unique symbol;
 
 declare class PreactOverlayElement extends PreactCustomElement {
   constructor(renderImpl: RenderImpl);
@@ -113,7 +115,12 @@ declare class PreactOverlayElement extends PreactCustomElement {
   /** @private */
   [overlayActivator]: HTMLElement | null | undefined;
   /** @private */
-  [overlayCommand](command: InteractionProps['command']): void;
+  [overlayHideFrameId]?: number;
+  /** @private */
+  [overlayCommand](
+    command: InteractionProps['command'],
+    overlayActivatorEl: HTMLElement | null | undefined,
+  ): void;
 }
 
 declare class Tooltip extends PreactOverlayElement implements TooltipProps {
@@ -135,7 +142,14 @@ declare module 'preact' {
 declare const tagName = 's-tooltip';
 export interface TooltipJSXProps
   extends Partial<TooltipProps>,
-    Pick<TooltipProps$1, 'id'> {}
+    Pick<TooltipProps$1, 'id'> {
+  /**
+   * The content of the Tooltip.
+   *
+   * Only accepts `Text`, `Paragraph` components, and raw `textContent`.
+   */
+  children: ComponentChild;
+}
 
 export {Tooltip};
 export type {TooltipJSXProps};

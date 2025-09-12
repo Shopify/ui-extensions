@@ -1,4 +1,4 @@
-/** VERSION: 1.11.0 **/
+/** VERSION: 1.16.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -118,18 +118,22 @@ export interface PageJSXProps extends Partial<PageProps> {
    */
   aside?: ComponentChild;
   /**
-   * The primary action to perform on the page.
-   * Accepts a single `Button` with a `variant` of `primary`.
+   * The primary action for the page.
+   *
+   * Only accepts a single `Button` component with a `variant` of `primary`.
    *
    */
   primaryAction?: ComponentChild;
   /**
-   * Secondary actions on the page. Accepts `ButtonGroup` with nested `Button`s or a single `Button`.
-   * `Button`s must have a `variant` of `secondary` or `auto`.
+   * Secondary actions for the page.
+   *
+   * Only accepts `ButtonGroup` and `Button` components with a `variant` of `secondary` or `auto`.
    */
   secondaryActions?: ComponentChild;
   /**
-   * The breadcrumb actions to display a trail of navigation items.
+   * Navigations back actions for the page.
+   *
+   * Only accepts `Link` components.
    */
   breadcrumbActions?: ComponentChild;
 }

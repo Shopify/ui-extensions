@@ -1,4 +1,4 @@
-/** VERSION: 1.10.0 **/
+/** VERSION: 1.16.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -8,7 +8,7 @@
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
  */
-type ComponentChildren = any;
+export type ComponentChildren = any;
 export type StringChildren = string;
 export interface GlobalProps {
   /**
@@ -2376,6 +2376,49 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    */
   value?: string;
 }
+interface DateFieldProps$1
+  extends GlobalProps,
+    BaseTextFieldProps,
+    Pick<
+      DatePickerProps$1,
+      | 'view'
+      | 'defaultView'
+      | 'value'
+      | 'defaultValue'
+      | 'allow'
+      | 'disallow'
+      | 'allowDays'
+      | 'disallowDays'
+      | 'onViewChange'
+    >,
+    AutocompleteProps<DateAutocompleteField> {
+  /**
+   * Callback when the field has an invalid date.
+   * This callback will be called, if the date typed is invalid or disabled.
+   *
+   * Dates that don’t exist or have formatting errors are considered invalid. Some examples of invalid dates are:
+   * - 2021-02-31: February doesn’t have 31 days
+   * - 2021-02-00: The day can’t be 00
+   *
+   * Disallowed dates are considered invalid.
+   *
+   * It’s important to note that this callback will be called only when the user **finishes editing** the date,
+   * and it’s called right after the `onChange` callback.
+   * The field is **not** validated on every change to the input. Once the buyer has signalled that
+   * they have finished editing the field (typically, by blurring the field), the field gets validated and the callback is run if the value is invalid.
+   */
+  onInvalid?: (event: Event) => void;
+}
+export type DateAutocompleteField = ExtractStrict<
+  AnyAutocompleteField,
+  | 'bday'
+  | 'bday-day'
+  | 'bday-month'
+  | 'bday-year'
+  | 'cc-expiry'
+  | 'cc-expiry-month'
+  | 'cc-expiry-year'
+>;
 interface DividerProps$1 extends GlobalProps {
   /**
    * Specify the direction of the divider.
@@ -2933,6 +2976,49 @@ interface MenuProps$1 extends GlobalProps {
   accessibilityLabel?: string;
   /**
    * The children define the actions to render inside the Menu. Only Button components are allowed as children of a Menu, and these Buttons can perform actions (using `onClick`) or link to other parts of the application (using `to`/ `href`). Any other component placed here will be ignored.
+   */
+  children?: ComponentChildren;
+}
+interface ModalProps$1
+  extends GlobalProps,
+    BaseOverlayProps,
+    BaseOverlayMethods,
+    ActionSlots {
+  /**
+   * A label that describes the purpose of the modal. When set,
+   * it will be announced to users using assistive technologies and will
+   * provide them with more context.
+   *
+   * This overrides the `heading` prop for screen readers.
+   */
+  accessibilityLabel?: string;
+  /**
+   * A title that describes the content of the Modal.
+   *
+   */
+  heading?: string;
+  /**
+   * Adjust the padding around the Modal content.
+   *
+   * `base`: applies padding that is appropriate for the element.
+   *
+   * `none`: removes all padding from the element. This can be useful when elements inside the Modal need to span
+   * to the edge of the Modal. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
+   * to bring back the desired padding for the rest of the content.
+   *
+   * @default 'base'
+   */
+  padding?: 'base' | 'none';
+  /**
+   * Adjust the size of the Modal.
+   *
+   * `max`: expands the Modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
+   *
+   * @default 'base'
+   */
+  size?: SizeKeyword | 'max';
+  /**
+   * The content of the Modal.
    */
   children?: ComponentChildren;
 }

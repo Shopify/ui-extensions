@@ -11,6 +11,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: '',
       type: 'Menu',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'MenuSlots',
+    },
   ],
   defaultExample: {
     codeblock: {

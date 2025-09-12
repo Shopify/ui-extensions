@@ -5,7 +5,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/tooltip.png',
   isVisualComponent: true,
-  definitions: [],
+  definitions: [
+    {
+      title: 'Slots',
+      description: '',
+      type: 'TooltipSlots',
+    },
+  ],
   defaultExample: {
     codeblock: {
       title: 'Code',

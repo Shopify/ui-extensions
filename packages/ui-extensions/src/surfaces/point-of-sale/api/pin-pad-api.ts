@@ -8,7 +8,9 @@ export interface PinPadApiContent {
    * @param options the options for the pin pad
    */
   showPinPad(
-    onSubmit: (pin: number[]) => Promise<PinValidationResult>,
+    onSubmit: (
+      pin: number[],
+    ) => Promise<PinValidationResult> | PinValidationResult,
     options?: PinPadOptions,
   ): void;
 }

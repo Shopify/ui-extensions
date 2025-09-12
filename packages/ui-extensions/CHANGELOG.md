@@ -1,5 +1,43 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.35
+
+### Patch Changes
+
+- [#3285](https://github.com/Shopify/ui-extensions/pull/3285) [`ceaa49a46f15b84359260260090c69f3e28eb769`](https://github.com/Shopify/ui-extensions/commit/ceaa49a46f15b84359260260090c69f3e28eb769) Thanks [@steved-shopify](https://github.com/steved-shopify)! - Export PinValidationResult type for PinPad API
+
+## 2025.10.0-rc.34
+
+### Patch Changes
+
+- [#3278](https://github.com/Shopify/ui-extensions/pull/3278) [`d344616ae631edafa11bed72b10bfe5a12ab7a96`](https://github.com/Shopify/ui-extensions/commit/d344616ae631edafa11bed72b10bfe5a12ab7a96) Thanks [@steved-shopify](https://github.com/steved-shopify)! - Add error message to pin rejection result on PinPad API
+
+## 2025.10.0-rc.33
+
+### Patch Changes
+
+- [#3275](https://github.com/Shopify/ui-extensions/pull/3275) [`92a77497c5d4290ef53579c258779dc7e1173e93`](https://github.com/Shopify/ui-extensions/commit/92a77497c5d4290ef53579c258779dc7e1173e93) Thanks [@steved-shopify](https://github.com/steved-shopify)! - Add autoSubmit to POS PinPad API and improve PinPadActionType
+
+## 2025.10.0-rc.32
+
+### Minor Changes
+
+- [#3259](https://github.com/Shopify/ui-extensions/pull/3259) [`1617a265c168606a1b5fb93426184d959856a331`](https://github.com/Shopify/ui-extensions/commit/1617a265c168606a1b5fb93426184d959856a331) Thanks [@laurkim](https://github.com/laurkim)! - Add DateField to Admin UI Extensions
+
+## 2025.10.0-rc.31
+
+### Patch Changes
+
+- [#3272](https://github.com/Shopify/ui-extensions/pull/3272) [`cb101cb96d3e8e52a028f709e46717cb1100373b`](https://github.com/Shopify/ui-extensions/commit/cb101cb96d3e8e52a028f709e46717cb1100373b) Thanks [@oluwatimio](https://github.com/oluwatimio)! - Remove ui typings from 2025-10
+
+## 2025.10.0-rc.30
+
+### Patch Changes
+
+- [#3270](https://github.com/Shopify/ui-extensions/pull/3270) [`33d37cd81e902bce4b80d42eecb77988ba44fedd`](https://github.com/Shopify/ui-extensions/commit/33d37cd81e902bce4b80d42eecb77988ba44fedd) Thanks [@steved-shopify](https://github.com/steved-shopify)! - Pin Pad API updates
+
+- [#3269](https://github.com/Shopify/ui-extensions/pull/3269) [`8dc83df31b93b2f215868c8a0632d95d412cdc76`](https://github.com/Shopify/ui-extensions/commit/8dc83df31b93b2f215868c8a0632d95d412cdc76) Thanks [@Bruno125](https://github.com/Bruno125)! - Export selling plan related types
+
 ## 2025.10.0-rc.29
 
 ### Minor Changes
