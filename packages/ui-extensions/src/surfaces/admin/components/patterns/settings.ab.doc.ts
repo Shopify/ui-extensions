@@ -5,9 +5,9 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'Organize settings into categories for easy navigation.',
   description: `Make settings pages easy to scan by grouping related information in a logical order. For complex or lengthy settings, organize content into distinct, themed sections that link to their own pages.
-  | Used to    | Examples |
-| -------- | ------- |
-| Find and change app settings  | Membership settings, app appearance, set up theme blocks     |
+  | Used to | Examples |
+  | --- | --- |
+  | Find and change app settings | Membership settings, app appearance, set up theme blocks |
 
   ![Preview of the settings pattern](/assets/templated-apis-screenshots/admin/patterns/settings-example.png)
 
@@ -47,6 +47,7 @@ const data: ReferenceEntityTemplateSchema = {
   </style>`,
   isVisualComponent: true,
   category: 'Patterns',
+  subCategory: 'Templates',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/settings.png',
   defaultExample: {
     codeblock: {

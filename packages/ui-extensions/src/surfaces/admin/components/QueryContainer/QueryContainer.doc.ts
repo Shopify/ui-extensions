@@ -4,7 +4,8 @@ import sharedContent from '../../../../docs/shared/components/QueryContainer';
 const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   requires: '',
-  thumbnail: '/assets/templated-apis-screenshots/admin/components/page.png',
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/querycontainer.png',
   isVisualComponent: true,
   definitions: [
     {

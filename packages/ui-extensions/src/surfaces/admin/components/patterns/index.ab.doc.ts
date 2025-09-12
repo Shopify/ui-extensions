@@ -6,10 +6,10 @@ const data: ReferenceEntityTemplateSchema = {
     'Manage objects efficiently with dynamic table actions.',
   description: `The index layout lets merchants view and manage all their objects at once in a table format. They can filter, sort and do quick actions on their objects. To prevent tables from becoming visually cluttered, reveal actions only when the row is hovered over or selected
 
-  | Used to    | Examples |
-| -------- | ------- |
-| View all objects at once  | Products, orders, customers, discounts    |
-| Perform bulk actions | Delete products, pause/activate campaigns      |
+  | Used to | Examples |
+  | --- | --- |
+  | View all objects at once | Products, orders, customers, discounts |
+  | Perform bulk actions | Delete products, pause/activate campaigns |
 
   ![Preview of the index pattern](/assets/templated-apis-screenshots/admin/patterns/index-example.png)
 
@@ -47,6 +47,7 @@ const data: ReferenceEntityTemplateSchema = {
   </style>`,
   isVisualComponent: true,
   category: 'Patterns',
+  subCategory: 'Templates',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/index.png',
   defaultExample: {
     codeblock: {

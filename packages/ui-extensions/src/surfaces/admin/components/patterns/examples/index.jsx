@@ -30,27 +30,19 @@ export default function IndexPage() {
           </s-box>
           <s-grid
             justifyItems="center"
-            maxBlockSize="450px"
             maxInlineSize="450px"
+            gap="base"
           >
-            <s-heading>Start creating puzzles</s-heading>
-            <s-paragraph>
-              Create and manage your collection of puzzles for players to enjoy.
-            </s-paragraph>
-            <s-stack
-              gap="small-200"
-              justifyContent="center"
-              padding="base"
-              paddingBlockEnd="none"
-              direction="inline"
-            >
-              <s-button aria-label="Learn more about creating puzzles">
-                Learn more
-              </s-button>
-              <s-button variant="primary" aria-label="Add a new puzzle">
-                Create puzzle
-              </s-button>
+            <s-stack alignItems="center">
+              <s-heading>Start creating puzzles</s-heading>
+              <s-paragraph>
+                Create and manage your collection of puzzles for players to enjoy.
+              </s-paragraph>
             </s-stack>
+            <s-button-group>
+              <s-button aria-label="Learn more about creating puzzles"> Learn more </s-button>
+              <s-button variant="primary" aria-label="Add a new puzzle"> Create puzzle </s-button>
+            </s-button-group>
           </s-grid>
         </s-grid>
       </s-section>
@@ -60,10 +52,10 @@ export default function IndexPage() {
       {/* This should only be visible if the merchant has created one or more puzzles. */}
       {/* === */}
       <s-section padding="none" accessibilityLabel="Puzzles table section">
-        <s-table fullwidth>
+        <s-table>
           <s-table-header-row>
             <s-table-header listSlot="primary">Puzzle</s-table-header>
-            <s-table-header>Type</s-table-header>
+            <s-table-header format="numeric">Pieces</s-table-header>
             <s-table-header>Created</s-table-header>
             <s-table-header>Status</s-table-header>
           </s-table-header-row>
@@ -82,13 +74,14 @@ export default function IndexPage() {
                   >
                     <s-image
                       objectFit="cover"
+                      alt="Mountain View puzzle thumbnail"
                       src="https://picsum.photos/id/29/80/80"
                     ></s-image>
                   </s-clickable>
                   <s-link href="/app/details">Mountain View</s-link>
                 </s-stack>
               </s-table-cell>
-              <s-table-cell>16-piece</s-table-cell>
+              <s-table-cell>16</s-table-cell>
               <s-table-cell>Today</s-table-cell>
               <s-table-cell>
                 <s-badge color="base" tone="success">
@@ -110,13 +103,14 @@ export default function IndexPage() {
                   >
                     <s-image
                       objectFit="cover"
+                      alt="Ocean Sunset puzzle thumbnail"
                       src="https://picsum.photos/id/12/80/80"
                     ></s-image>
                   </s-clickable>
                   <s-link href="/app/details">Ocean Sunset</s-link>
                 </s-stack>
               </s-table-cell>
-              <s-table-cell>9-piece</s-table-cell>
+              <s-table-cell>9</s-table-cell>
               <s-table-cell>Yesterday</s-table-cell>
               <s-table-cell>
                 <s-badge color="base" tone="success">
@@ -138,13 +132,14 @@ export default function IndexPage() {
                   >
                     <s-image
                       objectFit="cover"
+                      alt="Forest Animals puzzle thumbnail"
                       src="https://picsum.photos/id/324/80/80"
                     ></s-image>
                   </s-clickable>
                   <s-link href="/app/details">Forest Animals</s-link>
                 </s-stack>
               </s-table-cell>
-              <s-table-cell>25-piece</s-table-cell>
+              <s-table-cell>25</s-table-cell>
               <s-table-cell>Last week</s-table-cell>
               <s-table-cell>
                 <s-badge color="base" tone="neutral">

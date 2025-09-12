@@ -19,7 +19,7 @@ export default function HomePage() {
   });
   const [progress, setProgress] = useState(0);
   return (
-    <s-page inlineSize="small">
+    <s-page>
       {/* === */}
       {/* Title Bar */}
       {/* The ui-title-bar on the homepage should not have a title attribute */}
@@ -88,11 +88,9 @@ export default function HomePage() {
               <s-paragraph>
                 Use this personalized guide to get your store ready for sales.
               </s-paragraph>
-              <s-stack direction="inline" gap="small-200" alignItems="center">
-                <s-paragraph tone="subdued">
+                <s-paragraph color="subdued">
                   {progress} out of 3 steps completed
                 </s-paragraph>
-              </s-stack>
             </s-grid>
             {/* Steps Container */}
             <s-box
@@ -103,8 +101,7 @@ export default function HomePage() {
             >
               {/* Step 1 */}
               <s-box>
-                <s-box padding="small">
-                  <s-grid gridTemplateColumns="1fr auto" gap="base">
+                  <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
                     <s-checkbox
                       label="Upload an image for your puzzle"
                       onInput={(e) =>
@@ -115,16 +112,13 @@ export default function HomePage() {
                     ></s-checkbox>
                     <s-button
                       onClick={(e) => {
-                        console.log("Toggle step 1 details");
                         setExpanded({ ...expanded, step1: !expanded.step1 });
-                      }
-                      }
+                      }}
                       accessibilityLabel="Toggle step 1 details"
                       variant="tertiary"
                       icon={expanded.step1 ? "chevron-up" : "chevron-down"}
                     ></s-button>
                   </s-grid>
-                </s-box>
                 <s-box
                   padding="small"
                   paddingBlockStart="none"
@@ -164,8 +158,7 @@ export default function HomePage() {
               {/* Step 2 */}
               <s-divider></s-divider>
               <s-box>
-                <s-box padding="small">
-                  <s-grid gridTemplateColumns="1fr auto" gap="base">
+                  <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
                     <s-checkbox
                       label="Choose a puzzle template"
                       onInput={(e) =>
@@ -183,7 +176,6 @@ export default function HomePage() {
                       icon={expanded.step2 ? "chevron-up" : "chevron-down"}
                     ></s-button>
                   </s-grid>
-                </s-box>
                 <s-box
                   padding="small"
                   paddingBlockStart="none"
@@ -221,8 +213,7 @@ export default function HomePage() {
               {/* Step 3 */}
               <s-divider></s-divider>
               <s-box>
-                <s-box padding="small">
-                  <s-grid gridTemplateColumns="1fr auto" gap="base">
+                  <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
                     <s-checkbox
                       label="Customize puzzle piece shapes"
                       onInput={(e) =>
@@ -240,7 +231,6 @@ export default function HomePage() {
                       icon={expanded.step3 ? "chevron-up" : "chevron-down"}
                     ></s-button>
                   </s-grid>
-                </s-box>
                 <s-box
                   padding="small"
                   paddingBlockStart="none"
@@ -287,8 +277,7 @@ export default function HomePage() {
       {/* Metrics cards */}
       {/* Your app homepage should provide merchants with quick statistics or status updates that help them understand how the app is performing for them. */}
       {/* === */}
-      <s-section padding="none">
-        <s-box padding="small">
+      <s-section padding="small">
           <s-grid
             gridTemplateColumns="@container (inline-size <= 400px) 1fr, 1fr auto 1fr auto 1fr"
             gap="small"
@@ -342,7 +331,6 @@ export default function HomePage() {
               </s-grid>
             </s-clickable>
           </s-grid>
-        </s-box>
       </s-section>
 
       {/* === */}
@@ -367,14 +355,10 @@ export default function HomePage() {
                   Start by uploading an image to your gallery or choose from one
                   of our templates.
                 </s-paragraph>
-                <s-stack direction="inline" gap="small-200" wrap="nowrap">
-                  <s-button onClick={() => console.log("Handle upload here")}>
-                    Upload image
-                  </s-button>
-                  <s-button tone="neutral" variant="tertiary">
-                    Browse templates
-                  </s-button>
-                </s-stack>
+                <s-button-group>
+                <s-button> Upload image </s-button>
+                <s-button tone="neutral" variant="tertiary"> Browse templates </s-button>
+              </s-button-group>
               </s-grid>
               <s-stack alignItems="center">
                 <s-box
@@ -419,7 +403,7 @@ export default function HomePage() {
               <s-image
                 aspectRatio="1/1"
                 objectFit="cover"
-                alt="Illustration of characters with a 4-piece puzzle"
+                alt="4-pieces puzzle template"
                 src="https://cdn.shopify.com/static/images/polaris/patterns/4-pieces.png"
               ></s-image>
             </s-clickable>
@@ -454,6 +438,7 @@ export default function HomePage() {
               <s-image
                 aspectRatio="1/1"
                 objectFit="cover"
+                alt="9-pieces puzzle template"
                 src="https://cdn.shopify.com/static/images/polaris/patterns/9-pieces.png"
               ></s-image>
             </s-clickable>
@@ -488,6 +473,7 @@ export default function HomePage() {
               <s-image
                 aspectRatio="1/1"
                 objectFit="cover"
+                alt="16-pieces puzzle template"
                 src="https://cdn.shopify.com/static/images/polaris/patterns/16-pieces.png"
               ></s-image>
             </s-clickable>
@@ -613,18 +599,11 @@ export default function HomePage() {
                 alignItems="stretch"
                 gap="base"
               >
-                <s-box
-                  border="base"
-                  borderRadius="base"
-                  overflow="hidden"
-                  maxInlineSize="40px"
-                  maxBlockSize="40px"
-                >
-                  <s-image
+                  <s-thumbnail
+                    size="small"
                     src="https://cdn.shopify.com/app-store/listing_images/15100ebca4d221b650a7671125cd1444/icon/CO25r7-jh4ADEAE=.png"
                     alt="Shopify Flow icon"
-                  ></s-image>
-                </s-box>
+                  ></s-thumbnail>
                 <s-box>
                   <s-heading>Shopify Flow</s-heading>
                   <s-paragraph>Free</s-paragraph>
@@ -655,18 +634,11 @@ export default function HomePage() {
                 alignItems="stretch"
                 gap="base"
               >
-                <s-box
-                  border="base"
-                  borderRadius="base"
-                  overflow="hidden"
-                  maxInlineSize="40px"
-                  maxBlockSize="40px"
-                >
-                  <s-image
+                  <s-thumbnail
+                    size="small"
                     src="https://cdn.shopify.com/app-store/listing_images/87176a11f3714753fdc2e1fc8bbf0415/icon/CIqiqqXsiIADEAE=.png"
                     alt="Shopify Planet icon"
-                  ></s-image>
-                </s-box>
+                  ></s-thumbnail>
                 <s-box>
                   <s-heading>Shopify Planet</s-heading>
                   <s-paragraph>Free</s-paragraph>
