@@ -8,7 +8,12 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {BadgeProps, Key, Ref} from './components-shared.d.ts';
+import type {
+  SectionProps,
+  Key,
+  Ref,
+  ComponentChild,
+} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -27,26 +32,33 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   children?: ComponentChildren;
 }
 
-declare const tagName = 's-badge';
-export interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
-  tone?: Extract<
-    BadgeProps['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
-  >;
-  children?: ComponentChildren;
+declare const tagName = 's-pos-block';
+export interface PosBlockJSXProps extends Pick<SectionProps, 'children'> {
+  secondaryActions?: ComponentChild;
+  /**
+   * Adds title text displayed at the top left of the section
+   *
+   * **Mobile surfaces:** Uses the standard POS Design System heading style for a section (not h2).
+   *
+   * @default undefined
+   */
+  heading?: string;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: BadgeJSXProps;
+    [tagName]: PosBlockJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BadgeJSXProps & BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName]: Omit<PosBlockJSXProps, 'secondaryActions'> &
+        BaseElementPropsWithChildren<
+          Omit<PosBlockJSXProps, 'secondaryActions'>
+        >;
     }
   }
 }
 
 export {tagName};
-export type {BadgeJSXProps};
+export type {PosBlockJSXProps};

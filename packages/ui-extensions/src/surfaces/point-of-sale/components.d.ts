@@ -118,6 +118,7 @@ export type ToneKeyword =
   | 'caution'
   | 'warning'
   | 'critical'
+  | 'accent'
   | 'custom';
 declare const privateIconArray: readonly [
   'adjust',
@@ -127,23 +128,23 @@ declare const privateIconArray: readonly [
   'alert-circle',
   'alert-diamond',
   'alert-location',
-  'alert-octagon-filled',
   'alert-octagon',
-  'alert-triangle-filled',
+  'alert-octagon-filled',
   'alert-triangle',
+  'alert-triangle-filled',
   'app-extension',
   'apps',
   'archive',
+  'arrow-down',
   'arrow-down-circle',
   'arrow-down-right',
-  'arrow-down',
-  'arrow-left-circle',
   'arrow-left',
-  'arrow-right-circle',
+  'arrow-left-circle',
   'arrow-right',
+  'arrow-right-circle',
+  'arrow-up',
   'arrow-up-circle',
   'arrow-up-right',
-  'arrow-up',
   'arrows-in-horizontal',
   'arrows-out-horizontal',
   'attachment',
@@ -152,36 +153,39 @@ declare const privateIconArray: readonly [
   'bag',
   'bank',
   'barcode',
+  'battery-low',
   'bill',
   'blank',
   'blog',
-  'bolt-filled',
   'bolt',
-  'book-open',
+  'bolt-filled',
   'book',
+  'book-open',
   'bug',
   'bullet',
   'business-entity',
-  'button-press',
   'button',
+  'button-press',
   'calculator',
+  'calendar',
   'calendar-check',
   'calendar-compare',
   'calendar-list',
   'calendar-time',
-  'calendar',
-  'camera-flip',
   'camera',
+  'camera-flip',
   'caret-down',
   'caret-left',
   'caret-right',
   'caret-up',
+  'cart',
   'cart-abandoned',
   'cart-discount',
   'cart-down',
+  'cart-filled',
   'cart-sale',
+  'cart-send',
   'cart-up',
-  'cart',
   'cash-dollar',
   'cash-euro',
   'cash-pound',
@@ -193,8 +197,8 @@ declare const privateIconArray: readonly [
   'chart-cohort',
   'chart-donut',
   'chart-funnel',
-  'chart-histogram-first-last',
   'chart-histogram-first',
+  'chart-histogram-first-last',
   'chart-histogram-flat',
   'chart-histogram-full',
   'chart-histogram-growth',
@@ -205,36 +209,36 @@ declare const privateIconArray: readonly [
   'chart-popular',
   'chart-stacked',
   'chart-vertical',
+  'chat',
   'chat-new',
   'chat-referral',
-  'chat',
-  'check-circle-filled',
-  'check-circle',
   'check',
+  'check-circle',
+  'check-circle-filled',
   'checkbox',
-  'chevron-down-circle',
   'chevron-down',
-  'chevron-left-circle',
+  'chevron-down-circle',
   'chevron-left',
-  'chevron-right-circle',
+  'chevron-left-circle',
   'chevron-right',
-  'chevron-up-circle',
+  'chevron-right-circle',
   'chevron-up',
-  'circle-dashed',
+  'chevron-up-circle',
   'circle',
+  'circle-dashed',
+  'clipboard',
   'clipboard-check',
   'clipboard-checklist',
-  'clipboard',
-  'clock-revert',
   'clock',
-  'code-add',
+  'clock-revert',
   'code',
+  'code-add',
+  'collection',
   'collection-featured',
   'collection-list',
   'collection-reference',
-  'collection',
-  'color-none',
   'color',
+  'color-none',
   'compass',
   'complete',
   'compose',
@@ -245,77 +249,81 @@ declare const privateIconArray: readonly [
   'corner-pill',
   'corner-round',
   'corner-square',
+  'credit-card',
   'credit-card-cancel',
   'credit-card-percent',
+  'credit-card-reader',
   'credit-card-reader-chip',
   'credit-card-reader-tap',
-  'credit-card-reader',
   'credit-card-secure',
   'credit-card-tap-chip',
-  'credit-card',
   'crop',
   'currency-convert',
+  'cursor',
   'cursor-banner',
   'cursor-option',
-  'cursor',
   'data-presentation',
   'data-table',
+  'database',
   'database-add',
   'database-connect',
-  'database',
   'delete',
   'delivered',
   'delivery',
   'desktop',
   'disabled',
-  'discount-add',
-  'discount-code',
+  'disabled-filled',
   'discount',
+  'discount-add',
+  'discount-automatic',
+  'discount-code',
+  'discount-remove',
   'dns-settings',
   'dock-floating',
   'dock-side',
+  'domain',
   'domain-landing-page',
   'domain-new',
   'domain-redirect',
-  'domain',
   'download',
   'drag-drop',
   'drag-handle',
+  'drawer',
   'duplicate',
   'edit',
+  'email',
   'email-follow-up',
   'email-newsletter',
-  'email',
   'empty',
   'enabled',
   'enter',
-  'envelope-soft-pack',
   'envelope',
+  'envelope-soft-pack',
   'eraser',
   'exchange',
   'exit',
   'export',
   'external',
   'eye-check-mark',
-  'eye-dropper-list',
   'eye-dropper',
+  'eye-dropper-list',
   'eye-first',
   'eyeglasses',
   'fav',
   'favicon',
-  'file-list',
   'file',
-  'filter-active',
+  'file-list',
   'filter',
+  'filter-active',
   'flag',
   'flip-horizontal',
   'flip-vertical',
   'flower',
+  'folder',
   'folder-add',
   'folder-down',
   'folder-remove',
   'folder-up',
-  'folder',
   'food',
   'foreground',
   'forklift',
@@ -323,56 +331,62 @@ declare const privateIconArray: readonly [
   'games',
   'gauge',
   'geolocation',
-  'gift-card',
   'gift',
+  'gift-card',
   'git-branch',
   'git-commit',
   'git-repository',
+  'globe',
   'globe-asia',
   'globe-europe',
   'globe-lines',
   'globe-list',
-  'globe',
+  'graduation-hat',
   'grid',
+  'hashtag',
   'hashtag-decimal',
   'hashtag-list',
-  'hashtag',
   'heart',
-  'hide-filled',
   'hide',
+  'hide-filled',
   'home',
+  'home-filled',
   'icons',
   'identity-card',
+  'image',
   'image-add',
   'image-alt',
   'image-explore',
   'image-magic',
   'image-none',
   'image-with-text-overlay',
-  'image',
   'images',
   'import',
   'in-progress',
   'incentive',
   'incoming',
   'incomplete',
-  'info-filled',
   'info',
+  'info-filled',
   'inheritance',
-  'inventory-updated',
   'inventory',
+  'inventory-edit',
+  'inventory-list',
+  'inventory-transfer',
+  'inventory-updated',
   'iq',
   'key',
+  'keyboard',
   'keyboard-filled',
   'keyboard-hide',
-  'keyboard',
+  'keypad',
   'label-printer',
-  'language-translate',
   'language',
+  'language-translate',
   'layout-block',
+  'layout-buy-button',
   'layout-buy-button-horizontal',
   'layout-buy-button-vertical',
-  'layout-buy-button',
   'layout-column-1',
   'layout-columns-2',
   'layout-columns-3',
@@ -385,64 +399,73 @@ declare const privateIconArray: readonly [
   'layout-sidebar-left',
   'layout-sidebar-right',
   'lightbulb',
-  'link-list',
   'link',
+  'link-list',
   'list-bulleted',
+  'list-bulleted-filled',
   'list-numbered',
   'live',
-  'location-none',
+  'live-critical',
+  'live-none',
   'location',
+  'location-none',
   'lock',
   'map',
+  'markets',
   'markets-euro',
   'markets-rupee',
   'markets-yen',
-  'markets',
   'maximize',
-  'measurement-size-list',
   'measurement-size',
-  'measurement-volume-list',
+  'measurement-size-list',
   'measurement-volume',
-  'measurement-weight-list',
+  'measurement-volume-list',
   'measurement-weight',
+  'measurement-weight-list',
   'media-receiver',
   'megaphone',
   'mention',
+  'menu',
+  'menu-filled',
   'menu-horizontal',
   'menu-vertical',
-  'menu',
   'merge',
   'metafields',
+  'metaobject',
   'metaobject-list',
   'metaobject-reference',
-  'metaobject',
   'microphone',
   'minimize',
-  'minus-circle',
   'minus',
+  'minus-circle',
   'mobile',
-  'money-none',
   'money',
+  'money-none',
+  'money-split',
   'moon',
   'nature',
-  'note-add',
   'note',
+  'note-add',
   'notification',
+  'order',
   'order-batches',
   'order-draft',
+  'order-filled',
   'order-first',
   'order-fulfilled',
   'order-repeat',
   'order-unfulfilled',
-  'order',
   'orders-status',
   'organization',
   'outdent',
   'outgoing',
+  'package',
+  'package-cancel',
   'package-fulfilled',
   'package-on-hold',
+  'package-reassign',
   'package-returned',
-  'package',
+  'page',
   'page-add',
   'page-attachment',
   'page-clock',
@@ -453,7 +476,6 @@ declare const privateIconArray: readonly [
   'page-remove',
   'page-report',
   'page-up',
-  'page',
   'pagination-end',
   'pagination-start',
   'paint-brush-flat',
@@ -463,50 +485,55 @@ declare const privateIconArray: readonly [
   'passkey',
   'paste',
   'pause-circle',
-  'payment-capture',
   'payment',
+  'payment-capture',
+  'payout',
   'payout-dollar',
   'payout-euro',
   'payout-pound',
   'payout-rupee',
   'payout-yen',
-  'payout',
+  'person',
   'person-add',
   'person-exit',
+  'person-filled',
   'person-list',
   'person-lock',
   'person-remove',
   'person-segment',
-  'person',
   'personalized-text',
+  'phablet',
+  'phone',
   'phone-in',
   'phone-out',
-  'phone',
-  'pin-remove',
   'pin',
+  'pin-remove',
   'plan',
-  'play-circle',
   'play',
+  'play-circle',
+  'plus',
+  'plus-circle',
   'plus-circle-down',
   'plus-circle-filled',
   'plus-circle-up',
-  'plus-circle',
-  'plus',
   'point-of-sale',
+  'point-of-sale-register',
   'price-list',
   'print',
+  'product',
   'product-add',
   'product-cost',
+  'product-filled',
   'product-list',
   'product-reference',
   'product-remove',
   'product-return',
   'product-unavailable',
-  'product',
-  'profile-filled',
   'profile',
-  'question-circle-filled',
+  'profile-filled',
   'question-circle',
+  'question-circle-filled',
+  'receipt',
   'receipt-dollar',
   'receipt-euro',
   'receipt-folded',
@@ -515,7 +542,6 @@ declare const privateIconArray: readonly [
   'receipt-refund',
   'receipt-rupee',
   'receipt-yen',
-  'receipt',
   'receivables',
   'redo',
   'referral-code',
@@ -533,11 +559,12 @@ declare const privateIconArray: readonly [
   'sandbox',
   'save',
   'savings',
+  'scan-qr-code',
+  'search',
   'search-add',
   'search-list',
   'search-recent',
   'search-resource',
-  'search',
   'select',
   'send',
   'settings',
@@ -547,6 +574,7 @@ declare const privateIconArray: readonly [
   'shield-pending',
   'shield-person',
   'shipping-label',
+  'shipping-label-cancel',
   'shopcodes',
   'slideshow',
   'smiley-happy',
@@ -555,68 +583,70 @@ declare const privateIconArray: readonly [
   'smiley-sad',
   'social-ad',
   'social-post',
+  'sort',
   'sort-ascending',
   'sort-descending',
-  'sort',
   'sound',
   'sports',
+  'star',
+  'star-circle',
   'star-filled',
   'star-half',
   'star-list',
-  'star',
-  'status-active',
   'status',
+  'status-active',
   'stop-circle',
+  'store',
   'store-import',
   'store-managed',
   'store-online',
-  'store',
   'sun',
-  'table-masonry',
   'table',
+  'table-masonry',
   'tablet',
   'target',
   'tax',
   'team',
+  'text',
   'text-align-center',
   'text-align-left',
   'text-align-right',
   'text-block',
   'text-bold',
   'text-color',
-  'text-font-list',
   'text-font',
+  'text-font-list',
   'text-grammar',
   'text-in-columns',
   'text-in-rows',
-  'text-indent-remove',
   'text-indent',
+  'text-indent-remove',
   'text-italic',
   'text-quote',
   'text-title',
   'text-underline',
   'text-with-image',
-  'text',
+  'theme',
   'theme-edit',
   'theme-store',
   'theme-template',
-  'theme',
   'three-d-environment',
   'thumbs-down',
   'thumbs-up',
   'tip-jar',
   'toggle-off',
   'toggle-on',
+  'transaction',
+  'transaction-fee-add',
   'transaction-fee-dollar',
   'transaction-fee-euro',
   'transaction-fee-pound',
   'transaction-fee-rupee',
   'transaction-fee-yen',
-  'transaction',
+  'transfer',
   'transfer-in',
   'transfer-internal',
   'transfer-out',
-  'transfer',
   'truck',
   'undo',
   'unknown-device',
@@ -632,12 +662,12 @@ declare const privateIconArray: readonly [
   'wand',
   'watch',
   'wifi',
-  'work-list',
   'work',
+  'work-list',
   'wrench',
-  'x-circle-filled',
-  'x-circle',
   'x',
+  'x-circle',
+  'x-circle-filled',
 ];
 export type IconType = (typeof privateIconArray)[number];
 /**
@@ -650,6 +680,7 @@ export type MaybeAllValuesShorthandProperty<T extends string> =
   | `${T} ${T} ${T}`
   | `${T} ${T} ${T} ${T}`;
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
+export type MaybeResponsive<T> = T | `@container${string}`;
 /**
  * Prevents widening string literal types in a union to `string`.
  * @example
@@ -785,7 +816,7 @@ export interface DisplayProps {
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
    * @default 'auto'
    */
-  display?: 'auto' | 'none';
+  display?: MaybeResponsive<'auto' | 'none'>;
 }
 export interface AccessibilityRoleProps {
   /**
@@ -963,7 +994,7 @@ export interface PaddingProps {
    *
    * @default 'none'
    */
-  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
+  padding?: MaybeResponsive<MaybeAllValuesShorthandProperty<PaddingKeyword>>;
   /**
    * Adjust the block-padding.
    *
@@ -973,7 +1004,9 @@ export interface PaddingProps {
    *
    * @default '' - meaning no override
    */
-  paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword> | '';
+  paddingBlock?: MaybeResponsive<
+    MaybeTwoValuesShorthandProperty<PaddingKeyword> | ''
+  >;
   /**
    * Adjust the block-start padding.
    *
@@ -981,7 +1014,7 @@ export interface PaddingProps {
    *
    * @default '' - meaning no override
    */
-  paddingBlockStart?: PaddingKeyword | '';
+  paddingBlockStart?: MaybeResponsive<PaddingKeyword | ''>;
   /**
    * Adjust the block-end padding.
    *
@@ -989,7 +1022,7 @@ export interface PaddingProps {
    *
    * @default '' - meaning no override
    */
-  paddingBlockEnd?: PaddingKeyword | '';
+  paddingBlockEnd?: MaybeResponsive<PaddingKeyword | ''>;
   /**
    * Adjust the inline padding.
    *
@@ -999,7 +1032,9 @@ export interface PaddingProps {
    *
    * @default '' - meaning no override
    */
-  paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword> | '';
+  paddingInline?: MaybeResponsive<
+    MaybeTwoValuesShorthandProperty<PaddingKeyword> | ''
+  >;
   /**
    * Adjust the inline-start padding.
    *
@@ -1007,7 +1042,7 @@ export interface PaddingProps {
    *
    * @default '' - meaning no override
    */
-  paddingInlineStart?: PaddingKeyword | '';
+  paddingInlineStart?: MaybeResponsive<PaddingKeyword | ''>;
   /**
    * Adjust the inline-end padding.
    *
@@ -1015,7 +1050,7 @@ export interface PaddingProps {
    *
    * @default '' - meaning no override
    */
-  paddingInlineEnd?: PaddingKeyword | '';
+  paddingInlineEnd?: MaybeResponsive<PaddingKeyword | ''>;
 }
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
 export type SizeUnitsOrAuto = SizeUnits | 'auto';
@@ -1028,7 +1063,7 @@ export interface SizingProps {
    *
    * @default 'auto'
    */
-  blockSize?: SizeUnitsOrAuto;
+  blockSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
    * Adjust the minimum block size.
    *
@@ -1036,7 +1071,7 @@ export interface SizingProps {
    *
    * @default '0'
    */
-  minBlockSize?: SizeUnits;
+  minBlockSize?: MaybeResponsive<SizeUnits>;
   /**
    * Adjust the maximum block size.
    *
@@ -1044,7 +1079,7 @@ export interface SizingProps {
    *
    * @default 'none'
    */
-  maxBlockSize?: SizeUnitsOrNone;
+  maxBlockSize?: MaybeResponsive<SizeUnitsOrNone>;
   /**
    * Adjust the inline size.
    *
@@ -1052,7 +1087,7 @@ export interface SizingProps {
    *
    * @default 'auto'
    */
-  inlineSize?: SizeUnitsOrAuto;
+  inlineSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
    * Adjust the minimum inline size.
    *
@@ -1060,7 +1095,7 @@ export interface SizingProps {
    *
    * @default '0'
    */
-  minInlineSize?: SizeUnits;
+  minInlineSize?: MaybeResponsive<SizeUnits>;
   /**
    * Adjust the maximum inline size.
    *
@@ -1068,7 +1103,7 @@ export interface SizingProps {
    *
    * @default 'none'
    */
-  maxInlineSize?: SizeUnitsOrNone;
+  maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
 export type BorderStyleKeyword =
   | 'none'
@@ -1222,7 +1257,7 @@ export interface FocusEventProps {
 }
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
-   * The behavior of the button.
+   * The behavior of the Button.
    *
    * - `submit`: Used to indicate the component acts as a submit button, meaning it submits the closest form.
    * - `button`: Used to indicate the component acts as a button, meaning it has no default action.
@@ -1234,14 +1269,14 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   type?: 'submit' | 'button' | 'reset';
   /**
-   * Callback when the button is activated.
+   * Callback when the Button is activated.
    * This will be called before the action indicated by `type`.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
    */
   onClick?: (event: Event) => void;
   /**
-   * Disables the button, meaning it cannot be clicked or receive focus.
+   * Disables the Button meaning it cannot be clicked or receive focus.
    *
    * @default false
    */
@@ -1249,7 +1284,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * Replaces content with a loading indicator while a background action is being performed.
    *
-   * This also disables the button.
+   * This also disables the Button.
    *
    * @default false
    */
@@ -1279,7 +1314,7 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
   target?: 'auto' | '_blank' | '_self' | '_parent' | '_top' | AnyString;
   /**
    * Causes the browser to treat the linked URL as a download with the string being the file name.
-   * Download only works for same-origin URLs, or the blob: and data: schemes.
+   * Download only works for same-origin URLs or the `blob:` and `data:` schemes.
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download
    */
   download?: string;
@@ -1328,7 +1363,7 @@ export interface ButtonProps extends GlobalProps, BaseClickableProps {
   /**
    * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
    *
-   * Use this when using only an icon or the button text is not enough context
+   * Use this when using only an icon or the Button text is not enough context
    * for users using assistive technologies.
    */
   accessibilityLabel?: string;
@@ -1337,13 +1372,13 @@ export interface ButtonProps extends GlobalProps, BaseClickableProps {
    */
   children?: ComponentChildren;
   /**
-   * The type of icon to be displayed in the button.
+   * The type of icon to be displayed in the Button.
    *
    * @default ''
    */
   icon?: IconType | AnyString;
   /**
-   * The displayed inline width of the button.
+   * The displayed inline width of the Button.
    *
    * - `auto`: the size of the button depends on the surface and context.
    * - `fill`: the button will takes up 100% of the available inline size.
@@ -1359,7 +1394,7 @@ export interface ButtonProps extends GlobalProps, BaseClickableProps {
    */
   variant?: 'auto' | 'primary' | 'secondary' | 'tertiary';
   /**
-   * Sets the tone of the Button, based on the intention of the information being conveyed.
+   * Sets the tone of the Button based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
@@ -2122,7 +2157,7 @@ export interface GapProps {
    *
    * @default 'none'
    */
-  gap?: MaybeTwoValuesShorthandProperty<SpacingKeyword>;
+  gap?: MaybeResponsive<MaybeTwoValuesShorthandProperty<SpacingKeyword>>;
   /**
    * Adjust spacing between elements in the block axis.
    *
@@ -2130,7 +2165,7 @@ export interface GapProps {
    *
    * @default '' - meaning no override
    */
-  rowGap?: SpacingKeyword | '';
+  rowGap?: MaybeResponsive<SpacingKeyword | ''>;
   /**
    * Adjust spacing between elements in the inline axis.
    *
@@ -2138,7 +2173,7 @@ export interface GapProps {
    *
    * @default '' - meaning no override
    */
-  columnGap?: SpacingKeyword | '';
+  columnGap?: MaybeResponsive<SpacingKeyword | ''>;
 }
 export type BaselinePosition = 'baseline' | 'first baseline' | 'last baseline';
 export type ContentDistribution =
@@ -2431,7 +2466,7 @@ export type NumberAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'one-time-code' | 'cc-number' | 'cc-csc'
 >;
-export interface PageProps extends GlobalProps {
+export interface PageProps extends GlobalProps, ActionSlots {
   /**
    * The content of the Page.
    */
@@ -2449,18 +2484,9 @@ export interface PageProps extends GlobalProps {
    */
   accessory?: ComponentChildren;
   /**
-   * The primary action to perform, provided as a button or link type element.
-   * When a `Button` is added to the `primaryAction` it's variant is set to `primary`
-   */
-  primaryAction?: ComponentChildren;
-  /**
    * The breadcrumb actions to perform, provided as link elements.
    */
   breadcrumbActions?: ComponentChildren;
-  /**
-   * Secondary actions. These are `Button`s that will be contextually the 'secondary' variant.
-   */
-  secondaryActions?: ComponentChildren;
   /**
    * The aside element is section of a page that contains content that is tangentially related to the content around the aside element, and which could be considered separate from that content.
    * Such sections are often represented as sidebars in printed typography.
@@ -2541,34 +2567,34 @@ export interface StackProps
    */
   children?: ComponentChildren;
   /**
-   * Sets how the children are placed within the Stack.
+   * Sets how the children are placed within the Stack. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
    *
    * @default 'block'
    *
    * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
    */
-  direction?: 'block' | 'inline';
+  direction?: MaybeResponsive<'block' | 'inline'>;
   /**
    * Aligns the Stack along the main axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
    * @default 'normal'
    */
-  justifyContent?: JustifyContentKeyword;
+  justifyContent?: MaybeResponsive<JustifyContentKeyword>;
   /**
    * Aligns the Stack's children along the cross axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
    * @default 'normal'
    */
-  alignItems?: AlignItemsKeyword;
+  alignItems?: MaybeResponsive<AlignItemsKeyword>;
   /**
    * Aligns the Stack along the cross axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
    * @default 'normal'
    */
-  alignContent?: AlignContentKeyword;
+  alignContent?: MaybeResponsive<AlignContentKeyword>;
 }
 export interface TextProps
   extends GlobalProps,
@@ -2583,7 +2609,7 @@ export interface TextProps
   /**
    * Provide semantic meaning and default styling to the text.
    *
-   * Other presentation properties on `<s-text>` override the default styling.
+   * Other presentation properties on Text override the default styling.
    *
    * @default 'generic'
    */
@@ -2689,6 +2715,35 @@ export interface TextFieldProps
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField>,
     FieldDecorationProps {}
+export interface TileProps
+  extends GlobalProps,
+    Pick<BaseClickableProps, 'onClick' | 'disabled'> {
+  /**
+   * A title that describes the content of the Tile.
+   *
+   * @default ''
+   */
+  heading?: string;
+  /**
+   * Supporting text displayed below the heading.
+   *
+   * @default ''
+   */
+  subheading?: string;
+  /**
+   * A numeric indicator rendered within the Tile (for example, a count or a step number).
+   *
+   * - When provided, the indicator is displayed inside the tile.
+   * - Intended for small integers. It may clamp, truncate, or abbreviate larger values.
+   *
+   */
+  itemCount?: number;
+  /**
+   * Sets the tone of the Tile, based on the intention of the information being conveyed.
+   * @default 'auto'
+   */
+  tone?: ExtractStrict<ToneKeyword, 'auto' | 'neutral' | 'accent'>;
+}
 export interface TimePickerProps
   extends GlobalProps,
     InputProps,
@@ -2741,7 +2796,14 @@ export interface TimePickerProps
    *
    * The default, `''`, means no time is selected.
    *
-   * The value must be in `HH:MM` format.
+   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros.
+   *
+   * Examples: `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`.
+   *
+   * This follows the HTML time input value format, which is always 24-hour with
+   * leading zeros regardless of UI presentation.
+   *
+   * See: https://developer.mozilla.org/docs/Web/HTML/Element/input/time
    *
    * If the provided value is invalid, '' is used as the value.
    *
@@ -2753,7 +2815,14 @@ export interface TimePickerProps
    *
    * The default, `''`, means no time is selected.
    *
-   * The value must be in `HH:MM` format.
+   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros.
+   *
+   * Examples: `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`.
+   *
+   * This follows the HTML time input value format, which is always 24-hour with
+   * leading zeros regardless of UI presentation.
+   *
+   * See: https://developer.mozilla.org/docs/Web/HTML/Element/input/time
    *
    * If the provided value is invalid, '' is used as the value.
    *
@@ -2766,6 +2835,60 @@ export interface TimePickerProps
    * @default 60
    */
   step?: number;
+}
+export interface TimeFieldProps
+  extends GlobalProps,
+    BaseTextFieldProps,
+    Pick<
+      TimePickerProps,
+      'value' | 'defaultValue' | 'allow' | 'disallow' | 'step'
+    > {
+  /**
+   * Callback when the field has an invalid time.
+   * This callback will be called, if the time typed is invalid or disabled.
+   *
+   * Times that don’t exist or have formatting errors are considered invalid. Some examples of invalid times are:
+   * - 24:00
+   * - 12:60
+   *
+   * Disallowed times are considered invalid.
+   *
+   * It’s important to note that this callback will be called only when the user **finishes editing** the time,
+   * and it’s called right after the `onChange` callback.
+   * The field is **not** validated on every change to the input. Once the buyer has signalled that
+   * they have finished editing the field (typically, by blurring the field), the field gets validated and the callback is run if the value is invalid.
+   */
+  onInvalid?: (event: Event) => void;
+  /**
+   * Current selected value.
+   *
+   * The default, `''`, means no time is selected.
+   *
+   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros.
+   *
+   * Examples: `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`.
+   *
+   * This follows the HTML time input value format, which is always 24-hour with
+   * leading zeros regardless of UI presentation.
+   *
+   * See: https://developer.mozilla.org/docs/Web/HTML/Element/input/time
+   */
+  value?: string;
+  /**
+   * Default selected value.
+   *
+   * The default, `''`, means no time is selected.
+   *
+   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros.
+   *
+   * Examples: `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`.
+   *
+   * This follows the HTML time input value format, which is always 24-hour with
+   * leading zeros regardless of UI presentation.
+   *
+   * See: https://developer.mozilla.org/docs/Web/HTML/Element/input/time
+   */
+  defaultValue?: string;
 }
 //
 // Preact Virtual DOM
@@ -2953,7 +3076,7 @@ interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   target: HTMLElementTagNameMap[T] | null;
 }
 
-declare const tagName$r = 's-button';
+declare const tagName$t = 's-button';
 interface ButtonJSXProps
   extends Pick<
     ButtonProps,
@@ -2964,24 +3087,24 @@ interface ButtonJSXProps
     'auto' | 'critical' | 'neutral' | 'warning' | 'caution'
   >;
   variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
-  onClick?: (event: CallbackEvent<typeof tagName$r>) => void;
+  onClick?: (event: CallbackEvent<typeof tagName$t>) => void;
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$r]: ButtonJSXProps;
+    [tagName$t]: ButtonJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$r]: ButtonJSXProps &
+      [tagName$t]: ButtonJSXProps &
         BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
 }
 
-declare const tagName$q = 's-text';
+declare const tagName$s = 's-text';
 interface TextJSXProps extends Pick<TextProps, 'tone' | 'type'> {
   color?: 'subdued' | 'base' | 'strong';
   type?: Extract<TextProps['type'], 'strong' | 'small' | 'generic'>;
@@ -2993,108 +3116,160 @@ interface TextJSXProps extends Pick<TextProps, 'tone' | 'type'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$q]: TextJSXProps;
+    [tagName$s]: TextJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$q]: TextJSXProps & BaseElementPropsWithChildren<TextJSXProps>;
+      [tagName$s]: TextJSXProps & BaseElementPropsWithChildren<TextJSXProps>;
     }
   }
 }
 
-declare const tagName$p = 's-scroll-box';
-interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
+type PaddingKeyword$2 = SizeKeyword | 'none';
+declare const tagName$r = 's-scroll-box';
+interface ScrollBoxJSXProps
+  extends Pick<
+    ScrollBoxProps,
+    | 'id'
+    | 'blockSize'
+    | 'minBlockSize'
+    | 'maxBlockSize'
+    | 'inlineSize'
+    | 'minInlineSize'
+    | 'maxInlineSize'
+  > {
+  /**
+   * Adjust the padding of all edges.
+   *
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
+   *
+   * @default 'none'
+   */
+  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword$2>;
+  /**
+   * Adjust the block-padding.
+   *
+   * - `large none` means block-start padding is `large`, block-end padding is `none`.
+   *
+   * This overrides the block value of `padding`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword$2 | ''>;
+  /**
+   * Adjust the block-start padding.
+   *
+   * This overrides the block-start value of `paddingBlock`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingBlockStart?: PaddingKeyword$2 | '';
+  /**
+   * Adjust the block-end padding.
+   *
+   * This overrides the block-end value of `paddingBlock`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingBlockEnd?: PaddingKeyword$2 | '';
+  /**
+   * Adjust the inline padding.
+   *
+   * - `large none` means inline-start padding is `large`, inline-end padding is `none`.
+   *
+   * This overrides the inline value of `padding`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword$2 | ''>;
+  /**
+   * Adjust the inline-start padding.
+   *
+   * This overrides the inline-start value of `paddingInline`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingInlineStart?: PaddingKeyword$2 | '';
+  /**
+   * Adjust the inline-end padding.
+   *
+   * This overrides the inline-end value of `paddingInline`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingInlineEnd?: PaddingKeyword$2 | '';
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$p]: ScrollBoxJSXProps;
+    [tagName$r]: ScrollBoxJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$p]: ScrollBoxJSXProps &
+      [tagName$r]: ScrollBoxJSXProps &
         BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
 }
 
-interface TileProps
-  extends GlobalProps,
-    Pick<BaseClickableProps, 'onClick' | 'disabled'> {
-  /**
-   * The primary text displayed on the Tile.
-   *
-   * @default ''
-   */
-  heading?: string;
-  /**
-   * Secondary supporting text displayed below the heading.
-   *
-   * @default ''
-   */
-  subheading?: string;
-  /**
-   * A numeric indicator rendered within the Tile (for example, a count or a step number).
-   *
-   * - When provided, the indicator is displayed inside the tile.
-   * - Intended for small integers. Implementations may clamp, truncate, or abbreviate larger values.
-   * - Omit to render the tile without a numeric indicator.
-   *
-   */
-  itemCount?: number;
-  /**
-   * Changes the visual appearance of the Tile.
-   *
-   * @default 'auto'
-   */
-  tone?: 'accent' | 'auto' | 'neutral';
-}
-
-declare const tagName$o = 's-tile';
+declare const tagName$q = 's-tile';
 interface TileJSXProps
   extends Pick<
     TileProps,
     'disabled' | 'heading' | 'id' | 'itemCount' | 'tone' | 'subheading'
   > {
-  onClick?: (event: CallbackEvent<typeof tagName$o>) => void;
+  onClick?: (event: CallbackEvent<typeof tagName$q>) => void;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$o]: TileJSXProps;
+    [tagName$q]: TileJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$o]: TileJSXProps & BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName$q]: TileJSXProps & BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }
 
-declare const tagName$n = 's-navigator';
+declare const tagName$p = 's-navigator';
 interface NavigatorJSXProps {
   initialScreenName?: string;
   children?: React.ReactNode;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$n]: NavigatorJSXProps;
+    [tagName$p]: NavigatorJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$n]: NavigatorJSXProps &
+      [tagName$p]: NavigatorJSXProps &
         BaseElementPropsWithChildren<NavigatorJSXProps>;
     }
   }
 }
 
-declare const tagName$m = 's-screen';
+declare const tagName$o = 's-screen';
 interface ScreenJSXProps {
   /**
    * Used to identify this screen as a destination in the navigation stack.
@@ -3142,19 +3317,19 @@ interface ScreenPresentationProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$m]: ScreenJSXProps;
+    [tagName$o]: ScreenJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$m]: Omit<ScreenJSXProps, 'secondaryActions'> &
+      [tagName$o]: Omit<ScreenJSXProps, 'secondaryActions'> &
         BaseElementPropsWithChildren<Omit<ScreenJSXProps, 'secondaryActions'>>;
     }
   }
 }
 
-declare const tagName$l = 's-banner';
+declare const tagName$n = 's-banner';
 interface BannerJSXProps
   extends Pick<BannerProps, 'heading' | 'hidden' | 'tone' | 'id'> {
   tone?: Extract<
@@ -3166,29 +3341,23 @@ interface BannerJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$l]: BannerJSXProps;
+    [tagName$n]: BannerJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$l]: Omit<BannerJSXProps, 'primaryAction'> &
+      [tagName$n]: Omit<BannerJSXProps, 'primaryAction'> &
         BaseElementPropsWithChildren<Omit<BannerJSXProps, 'primaryAction'>>;
     }
   }
 }
 
-declare const tagName$k = 's-box';
+declare const tagName$m = 's-box';
+type PaddingKeyword$1 = SizeKeyword | 'none';
 interface BoxJSXProps
   extends Pick<
     BoxProps,
-    | 'padding'
-    | 'paddingBlock'
-    | 'paddingBlockStart'
-    | 'paddingBlockEnd'
-    | 'paddingInline'
-    | 'paddingInlineStart'
-    | 'paddingInlineEnd'
     | 'blockSize'
     | 'minBlockSize'
     | 'maxBlockSize'
@@ -3196,68 +3365,222 @@ interface BoxJSXProps
     | 'minInlineSize'
     | 'maxInlineSize'
   > {
+  /**
+   * Adjust the padding of all edges.
+   *
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
+   *
+   * @default 'none'
+   */
+  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword$1>;
+  /**
+   * Adjust the block-padding.
+   *
+   * - `large none` means block-start padding is `large`, block-end padding is `none`.
+   *
+   * This overrides the block value of `padding`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword$1 | ''>;
+  /**
+   * Adjust the block-start padding.
+   *
+   * This overrides the block-start value of `paddingBlock`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingBlockStart?: PaddingKeyword$1 | '';
+  /**
+   * Adjust the block-end padding.
+   *
+   * This overrides the block-end value of `paddingBlock`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingBlockEnd?: PaddingKeyword$1 | '';
+  /**
+   * Adjust the inline padding.
+   *
+   * - `large none` means inline-start padding is `large`, inline-end padding is `none`.
+   *
+   * This overrides the inline value of `padding`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword$1 | ''>;
+  /**
+   * Adjust the inline-start padding.
+   *
+   * This overrides the inline-start value of `paddingInline`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingInlineStart?: PaddingKeyword$1 | '';
+  /**
+   * Adjust the inline-end padding.
+   *
+   * This overrides the inline-end value of `paddingInline`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingInlineEnd?: PaddingKeyword$1 | '';
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$k]: BoxJSXProps;
+    [tagName$m]: BoxJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$k]: BoxJSXProps & BaseElementPropsWithChildren<BoxJSXProps>;
+      [tagName$m]: BoxJSXProps & BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
 
-declare const tagName$j = 's-icon';
+declare const tagName$l = 's-icon';
 type SupportedIconNames = Extract<
   IconProps['type'],
+  | 'alert-circle'
+  | 'apps'
   | 'arrow-down'
   | 'arrow-left'
   | 'arrow-right'
   | 'arrow-up'
-  | 'apps'
-  | 'analytics'
   | 'backspace'
-  | 'call'
-  | 'cancel'
-  | 'cash'
-  | 'checkmark'
+  | 'barcode'
+  | 'battery-low'
+  | 'bolt-filled'
+  | 'bullet'
+  | 'camera-flip'
+  | 'caret-down'
+  | 'caret-up'
   | 'cart'
+  | 'cart-down'
   | 'cart-filled'
+  | 'cart-send'
+  | 'cart-up'
+  | 'chart-line'
+  | 'chart-vertical'
   | 'check'
-  | 'check-circle'
-  | 'alert-circle'
-  | 'info'
-  | 'phone'
-  | 'edit'
-  | 'delete'
-  | 'settings'
-  | 'search'
-  | 'print'
-  | 'refresh'
-  | 'help'
-  | 'plus'
-  | 'minus'
-  | 'email'
-  | 'gift-card'
-  | 'discount'
-  | 'receipt'
+  | 'check-circle-filled'
   | 'chevron-down'
   | 'chevron-left'
   | 'chevron-right'
   | 'chevron-up'
-  | 'menu'
-  | 'home'
-  | 'location'
-  | 'time'
-  | 'calendar'
-  | 'products'
-  | 'orders'
-  | 'customers'
+  | 'circle'
+  | 'clipboard-checklist'
+  | 'clock'
   | 'collection'
+  | 'credit-card'
+  | 'credit-card-reader'
+  | 'delete'
+  | 'delivery'
+  | 'desktop'
+  | 'disabled'
+  | 'disabled-filled'
+  | 'discount'
+  | 'discount-add'
+  | 'discount-automatic'
+  | 'discount-code'
+  | 'discount-remove'
+  | 'drag-handle'
+  | 'drawer'
+  | 'duplicate'
+  | 'edit'
+  | 'email'
+  | 'exchange'
+  | 'external'
+  | 'flag'
+  | 'gift-card'
+  | 'graduation-hat'
+  | 'grid'
+  | 'hide-filled'
+  | 'home'
+  | 'home-filled'
+  | 'image'
+  | 'images'
+  | 'info'
+  | 'inventory'
+  | 'inventory-edit'
+  | 'inventory-list'
+  | 'inventory-transfer'
+  | 'keyboard-hide'
+  | 'keypad'
+  | 'link'
+  | 'list-bulleted'
+  | 'list-bulleted-filled'
+  | 'live'
+  | 'live-critical'
+  | 'live-none'
+  | 'location'
+  | 'lock'
+  | 'maximize'
+  | 'menu'
+  | 'menu-filled'
+  | 'menu-horizontal'
+  | 'minimize'
+  | 'minus'
+  | 'mobile'
+  | 'money'
+  | 'money-split'
+  | 'note'
+  | 'order'
+  | 'order-draft'
+  | 'order-filled'
+  | 'package'
+  | 'package-cancel'
+  | 'package-reassign'
+  | 'payment'
+  | 'person'
+  | 'person-add'
+  | 'person-filled'
+  | 'phablet'
+  | 'phone-out'
+  | 'play-circle'
+  | 'plus'
+  | 'point-of-sale'
+  | 'point-of-sale-register'
+  | 'print'
+  | 'product'
+  | 'product-filled'
+  | 'profile'
+  | 'question-circle-filled'
+  | 'receipt'
+  | 'refresh'
+  | 'return'
+  | 'scan-qr-code'
+  | 'search'
+  | 'send'
+  | 'settings'
+  | 'shipping-label-cancel'
+  | 'sort'
+  | 'star-circle'
+  | 'star-filled'
+  | 'store'
+  | 'tablet'
+  | 'transaction-fee-add'
+  | 'unlock'
+  | 'variant'
+  | 'view'
+  | 'wallet'
+  | 'x'
+  | 'x-circle'
 >;
 interface IconJSXProps extends Pick<IconProps, 'tone' | 'color' | 'size'> {
   /**
@@ -3268,18 +3591,19 @@ interface IconJSXProps extends Pick<IconProps, 'tone' | 'color' | 'size'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$j]: IconJSXProps;
+    [tagName$l]: IconJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$j]: IconJSXProps & BaseElementProps<IconJSXProps>;
+      [tagName$l]: IconJSXProps & BaseElementProps<IconJSXProps>;
     }
   }
 }
 
-declare const tagName$i = 's-stack';
+declare const tagName$k = 's-stack';
+type PaddingKeyword = SizeKeyword | 'none';
 type PickedProps$2 = Pick<
   StackProps,
   | 'alignItems'
@@ -3294,16 +3618,82 @@ type PickedProps$2 = Pick<
   | 'minInlineSize'
   | 'inlineSize'
   | 'justifyContent'
-  | 'padding'
-  | 'paddingBlock'
-  | 'paddingBlockStart'
-  | 'paddingBlockEnd'
-  | 'paddingInline'
-  | 'paddingInlineStart'
-  | 'paddingInlineEnd'
   | 'rowGap'
 >;
 interface StackJSXProps extends PickedProps$2 {
+  /**
+   * Adjust the padding of all edges.
+   *
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
+   *
+   * @default 'none'
+   */
+  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
+  /**
+   * Adjust the block-padding.
+   *
+   * - `large none` means block-start padding is `large`, block-end padding is `none`.
+   *
+   * This overrides the block value of `padding`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword | ''>;
+  /**
+   * Adjust the block-start padding.
+   *
+   * This overrides the block-start value of `paddingBlock`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingBlockStart?: PaddingKeyword | '';
+  /**
+   * Adjust the block-end padding.
+   *
+   * This overrides the block-end value of `paddingBlock`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingBlockEnd?: PaddingKeyword | '';
+  /**
+   * Adjust the inline padding.
+   *
+   * - `large none` means inline-start padding is `large`, inline-end padding is `none`.
+   *
+   * This overrides the inline value of `padding`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword | ''>;
+  /**
+   * Adjust the inline-start padding.
+   *
+   * This overrides the inline-start value of `paddingInline`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingInlineStart?: PaddingKeyword | '';
+  /**
+   * Adjust the inline-end padding.
+   *
+   * This overrides the inline-end value of `paddingInline`.
+   *
+   * @default '' - meaning no override
+   */
+  paddingInlineEnd?: PaddingKeyword | '';
   children?: ComponentChildren;
   /**
    * Adjust the block size.
@@ -3353,95 +3743,95 @@ interface StackJSXProps extends PickedProps$2 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$i]: StackJSXProps;
+    [tagName$k]: StackJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$i]: StackJSXProps & BaseElementPropsWithChildren<StackJSXProps>;
+      [tagName$k]: StackJSXProps & BaseElementPropsWithChildren<StackJSXProps>;
     }
   }
 }
 
-declare const tagName$h = 's-badge';
+declare const tagName$j = 's-badge';
 interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
   tone?: Extract<
     BadgeProps['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical'
+    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
   >;
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$h]: BadgeJSXProps;
+    [tagName$j]: BadgeJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$h]: BadgeJSXProps & BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName$j]: BadgeJSXProps & BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
 
-declare const tagName$g = 's-choice-list';
+declare const tagName$i = 's-choice-list';
 interface ChoiceListJSXProps
   extends Pick<ChoiceListProps, 'values' | 'multiple'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$i>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$i>) => void) | null;
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$g]: ChoiceListJSXProps;
+    [tagName$i]: ChoiceListJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$g]: ChoiceListJSXProps &
+      [tagName$i]: ChoiceListJSXProps &
         BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
 }
 
-declare const tagName$f = 's-choice';
+declare const tagName$h = 's-choice';
 interface ChoiceJSXProps
   extends Pick<ChoiceProps, 'value' | 'disabled' | 'selected'> {
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$f]: ChoiceJSXProps;
+    [tagName$h]: ChoiceJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: ChoiceJSXProps &
+      [tagName$h]: ChoiceJSXProps &
         BaseElementPropsWithChildren<ChoiceJSXProps>;
     }
   }
 }
 
-declare const tagName$e = 's-modal';
+declare const tagName$g = 's-modal';
 interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
   primaryAction?: ComponentChild;
   secondaryActions?: ComponentChild;
-  onHide?: (event: CallbackEvent<typeof tagName$e>) => void | null;
-  onShow?: (event: CallbackEvent<typeof tagName$e>) => void | null;
+  onHide?: (event: CallbackEvent<typeof tagName$g>) => void | null;
+  onShow?: (event: CallbackEvent<typeof tagName$g>) => void | null;
   children?: ReactNode;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$e]: ModalJSXProps;
+    [tagName$g]: ModalJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
+      [tagName$g]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
         BaseElementPropsWithChildren<
           Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
         >;
@@ -3449,7 +3839,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$d = 's-text-field';
+declare const tagName$f = 's-text-field';
 interface TextFieldJSXProps
   extends Pick<
     TextFieldProps,
@@ -3462,52 +3852,49 @@ interface TextFieldJSXProps
     | 'required'
     | 'maxLength'
   > {
-  onInput?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
   accessory?: ComponentChild;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$d]: TextFieldJSXProps;
+    [tagName$f]: TextFieldJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: Omit<TextFieldJSXProps, 'accessory'> &
+      [tagName$f]: Omit<TextFieldJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<TextFieldJSXProps, 'accessory'>>;
     }
   }
 }
 
-declare const tagName$c = 's-search-field';
+declare const tagName$e = 's-search-field';
 interface SearchFieldJSXProps
-  extends Pick<
-    SearchFieldProps,
-    'disabled' | 'defaultValue' | 'placeholder' | 'value'
-  > {
-  onFocus?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
+  extends Pick<SearchFieldProps, 'disabled' | 'placeholder' | 'value'> {
+  onFocus?: ((event: CallbackEvent<typeof tagName$e>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$e>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$e>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$e>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$c]: SearchFieldJSXProps;
+    [tagName$e]: SearchFieldJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: SearchFieldJSXProps &
+      [tagName$e]: SearchFieldJSXProps &
         BaseElementPropsWithChildren<SearchFieldJSXProps>;
     }
   }
 }
 
-declare const tagName$b = 's-email-field';
+declare const tagName$d = 's-email-field';
 interface EmailFieldJSXProps
   extends Pick<
     EmailFieldProps,
@@ -3520,46 +3907,46 @@ interface EmailFieldJSXProps
     | 'maxLength'
     | 'details'
   > {
-  onInput?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
   accessory?: ComponentChild;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$b]: EmailFieldJSXProps;
+    [tagName$d]: EmailFieldJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: Omit<EmailFieldJSXProps, 'accessory'> &
+      [tagName$d]: Omit<EmailFieldJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<EmailFieldJSXProps, 'accessory'>>;
     }
   }
 }
 
-declare const tagName$a = 's-clickable';
+declare const tagName$c = 's-clickable';
 interface ClickableJSXProps extends Pick<ClickableProps, 'disabled'> {
   children?: ComponentChildren;
-  onClick?: (event: CallbackEvent<typeof tagName$a>) => void;
+  onClick?: (event: CallbackEvent<typeof tagName$c>) => void;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$a]: ClickableJSXProps;
+    [tagName$c]: ClickableJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: ClickableJSXProps &
+      [tagName$c]: ClickableJSXProps &
         BaseElementPropsWithChildren<ClickableJSXProps>;
     }
   }
 }
 
-declare const tagName$9 = 's-text-area';
+declare const tagName$b = 's-text-area';
 interface TextAreaJSXProps
   extends Pick<
     TextAreaProps,
@@ -3573,27 +3960,27 @@ interface TextAreaJSXProps
     | 'maxLength'
     | 'rows'
   > {
-  onInput?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
   accessory?: ComponentChild;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$9]: TextAreaJSXProps;
+    [tagName$b]: TextAreaJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: Omit<TextAreaJSXProps, 'accessory'> &
+      [tagName$b]: Omit<TextAreaJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<TextAreaJSXProps, 'accessory'>>;
     }
   }
 }
 
-declare const tagName$8 = 's-number-field';
+declare const tagName$a = 's-number-field';
 interface PickedJSXProps
   extends Pick<
     NumberFieldProps,
@@ -3609,10 +3996,10 @@ interface PickedJSXProps
     | 'controls'
   > {
   inputMode?: Extract<NumberFieldProps['inputMode'], 'decimal' | 'numeric'>;
-  onInput?: ((event: CallbackEvent<typeof tagName$8>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$8>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$8>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$8>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$a>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$a>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$a>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$a>) => void) | null;
   accessory?: ComponentChild;
 }
 interface NumberFieldJSXProps extends PickedJSXProps {
@@ -3686,87 +4073,87 @@ interface NumberFieldJSXProps extends PickedJSXProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$8]: NumberFieldJSXProps;
+    [tagName$a]: NumberFieldJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: Omit<NumberFieldJSXProps, 'accessory'> &
+      [tagName$a]: Omit<NumberFieldJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<NumberFieldJSXProps, 'accessory'>>;
     }
   }
 }
 
-declare const tagName$7 = 's-date-field';
+declare const tagName$9 = 's-date-field';
 interface DateFieldJSXProps
   extends Pick<
     DateFieldProps,
     'label' | 'details' | 'value' | 'disabled' | 'error'
   > {
-  onInput?: ((event: CallbackEvent<typeof tagName$7>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$7>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$7>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$7>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$9>) => void) | null;
   accessory?: ComponentChild;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$7]: DateFieldJSXProps;
+    [tagName$9]: DateFieldJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$7]: Omit<DateFieldJSXProps, 'accessory'> &
+      [tagName$9]: Omit<DateFieldJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<DateFieldJSXProps, 'accessory'>>;
     }
   }
 }
 
-declare const tagName$6 = 's-date-picker';
+declare const tagName$8 = 's-date-picker';
 interface DatePickerJSXProps extends Pick<DatePickerProps, 'id' | 'value'> {
-  onBlur?: (event: CallbackEvent<typeof tagName$6>) => void | null;
-  onFocus?: (event: CallbackEvent<typeof tagName$6>) => void | null;
-  onChange?: (event: CallbackEvent<typeof tagName$6>) => void | null;
-  onInput?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  onBlur?: (event: CallbackEvent<typeof tagName$8>) => void | null;
+  onFocus?: (event: CallbackEvent<typeof tagName$8>) => void | null;
+  onChange?: (event: CallbackEvent<typeof tagName$8>) => void | null;
+  onInput?: (event: CallbackEvent<typeof tagName$8>) => void | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$6]: DatePickerJSXProps;
+    [tagName$8]: DatePickerJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: DatePickerJSXProps &
+      [tagName$8]: DatePickerJSXProps &
         BaseElementPropsWithChildren<DatePickerJSXProps>;
     }
   }
 }
 
-declare const tagName$5 = 's-date-spinner';
+declare const tagName$7 = 's-date-spinner';
 interface DateSpinnerJSXProps extends Pick<DateSpinnerProps, 'id' | 'value'> {
-  onBlur?: (event: CallbackEvent<typeof tagName$5>) => void | null;
-  onFocus?: (event: CallbackEvent<typeof tagName$5>) => void | null;
-  onChange?: (event: CallbackEvent<typeof tagName$5>) => void | null;
-  onInput?: (event: CallbackEvent<typeof tagName$5>) => void | null;
+  onBlur?: (event: CallbackEvent<typeof tagName$7>) => void | null;
+  onFocus?: (event: CallbackEvent<typeof tagName$7>) => void | null;
+  onChange?: (event: CallbackEvent<typeof tagName$7>) => void | null;
+  onInput?: (event: CallbackEvent<typeof tagName$7>) => void | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$5]: DateSpinnerJSXProps;
+    [tagName$7]: DateSpinnerJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$5]: DateSpinnerJSXProps &
+      [tagName$7]: DateSpinnerJSXProps &
         BaseElementPropsWithChildren<DateSpinnerJSXProps>;
     }
   }
 }
 
-declare const tagName$4 = 's-section';
+declare const tagName$6 = 's-section';
 interface SectionJSXProps extends Pick<SectionProps, 'children'> {
   secondaryActions?: ComponentChild;
   /**
@@ -3780,58 +4167,58 @@ interface SectionJSXProps extends Pick<SectionProps, 'children'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$4]: SectionJSXProps;
+    [tagName$6]: SectionJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$4]: Omit<SectionJSXProps, 'secondaryActions'> &
+      [tagName$6]: Omit<SectionJSXProps, 'secondaryActions'> &
         BaseElementPropsWithChildren<Omit<SectionJSXProps, 'secondaryActions'>>;
     }
   }
 }
 
-declare const tagName$3 = 's-heading';
+declare const tagName$5 = 's-heading';
 interface HeadingJSXProps {
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$3]: HeadingJSXProps;
+    [tagName$5]: HeadingJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$3]: HeadingJSXProps &
+      [tagName$5]: HeadingJSXProps &
         BaseElementPropsWithChildren<HeadingJSXProps>;
     }
   }
 }
 
-declare const tagName$2 = 's-time-picker';
+declare const tagName$4 = 's-time-picker';
 interface TimePickerJSXProps extends Pick<TimePickerProps, 'id' | 'value'> {
-  onBlur?: (event: CallbackEvent<typeof tagName$2>) => void | null;
-  onFocus?: (event: CallbackEvent<typeof tagName$2>) => void | null;
-  onChange?: (event: CallbackEvent<typeof tagName$2>) => void | null;
-  onInput?: (event: CallbackEvent<typeof tagName$2>) => void | null;
+  onBlur?: (event: CallbackEvent<typeof tagName$4>) => void | null;
+  onFocus?: (event: CallbackEvent<typeof tagName$4>) => void | null;
+  onChange?: (event: CallbackEvent<typeof tagName$4>) => void | null;
+  onInput?: (event: CallbackEvent<typeof tagName$4>) => void | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$2]: TimePickerJSXProps;
+    [tagName$4]: TimePickerJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$2]: TimePickerJSXProps &
+      [tagName$4]: TimePickerJSXProps &
         BaseElementPropsWithChildren<TimePickerJSXProps>;
     }
   }
 }
 
-declare const tagName$1 = 's-image';
+declare const tagName$3 = 's-image';
 type PickedProps$1 = Pick<ImageProps, 'src' | 'inlineSize' | 'objectFit'>;
 interface ImageJSXProps extends PickedProps$1 {
   children?: ComponentChildren;
@@ -3853,38 +4240,91 @@ interface ImageJSXProps extends PickedProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$1]: ImageJSXProps;
+    [tagName$3]: ImageJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$1]: ImageJSXProps & BaseElementPropsWithChildren<ImageJSXProps>;
+      [tagName$3]: ImageJSXProps & BaseElementPropsWithChildren<ImageJSXProps>;
     }
   }
 }
 
-declare const tagName = 's-page';
+declare const tagName$2 = 's-page';
 type PickedProps = Pick<
   PageProps,
-  'heading' | 'subheading' | 'secondaryActions'
+  'heading' | 'subheading' | 'secondaryActions' | 'aside'
 >;
 interface PageJSXProps extends PickedProps {
   children?: ComponentChildren;
   secondaryActions?: ComponentChild;
-  primaryAction?: ComponentChild;
+  aside?: ComponentChild;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: PageJSXProps;
+    [tagName$2]: PageJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'> &
+      [tagName$2]: Omit<PageJSXProps, 'secondaryActions' | 'aside'> &
         BaseElementPropsWithChildren<
-          Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'>
+          Omit<PageJSXProps, 'secondaryActions' | 'aside'>
+        >;
+    }
+  }
+}
+
+declare const tagName$1 = 's-time-field';
+interface TimeFieldJSXProps
+  extends Pick<
+    TimeFieldProps,
+    'id' | 'label' | 'disabled' | 'value' | 'error' | 'details'
+  > {
+  onBlur?: (event: CallbackEvent<typeof tagName$1>) => void | null;
+  onFocus?: (event: CallbackEvent<typeof tagName$1>) => void | null;
+  onInput?: (event: CallbackEvent<typeof tagName$1>) => void | null;
+  onChange?: (event: CallbackEvent<typeof tagName$1>) => void | null;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$1]: TimeFieldJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$1]: TimeFieldJSXProps &
+        BaseElementPropsWithChildren<TimeFieldJSXProps>;
+    }
+  }
+}
+
+declare const tagName = 's-pos-block';
+interface PosBlockJSXProps extends Pick<SectionProps, 'children'> {
+  secondaryActions?: ComponentChild;
+  /**
+   * Adds title text displayed at the top left of the section
+   *
+   * **Mobile surfaces:** Uses the standard POS Design System heading style for a section (not h2).
+   *
+   * @default undefined
+   */
+  heading?: string;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName]: PosBlockJSXProps;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName]: Omit<PosBlockJSXProps, 'secondaryActions'> &
+        BaseElementPropsWithChildren<
+          Omit<PosBlockJSXProps, 'secondaryActions'>
         >;
     }
   }
@@ -3909,6 +4349,7 @@ export type {
   NavigatorJSXProps,
   NumberFieldJSXProps,
   PageJSXProps,
+  PosBlockJSXProps,
   ScreenJSXProps,
   ScrollBoxJSXProps,
   SearchFieldJSXProps,
@@ -3918,11 +4359,19 @@ export type {
   TextFieldJSXProps,
   TextJSXProps,
   TileJSXProps,
+  TimeFieldJSXProps,
   TimePickerJSXProps,
 };
 
 interface Badge {
-  tone?: 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical';
+  tone?:
+    | 'auto'
+    | 'neutral'
+    | 'info'
+    | 'success'
+    | 'caution'
+    | 'warning'
+    | 'critical';
   /** A unique identifier for the element. */
   id?: string;
 }
@@ -3973,7 +4422,7 @@ interface Box {
    * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
    * @default 'none'
    */
-  padding?: MaybeAllValuesShorthandProperty<SizeKeyword | 'none'>;
+  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
   /**
    * Adjust the block-padding.
    *
@@ -3982,21 +4431,21 @@ interface Box {
    * This overrides the block value of `padding`.
    * @default '' - meaning no override
    */
-  paddingBlock?: '' | MaybeTwoValuesShorthandProperty<SizeKeyword | 'none'>;
+  paddingBlock?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
   /**
    * Adjust the block-start padding.
    *
    * This overrides the block-start value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockStart?: '' | (SizeKeyword | 'none');
+  paddingBlockStart?: '' | PaddingKeyword;
   /**
    * Adjust the block-end padding.
    *
    * This overrides the block-end value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockEnd?: '' | (SizeKeyword | 'none');
+  paddingBlockEnd?: '' | PaddingKeyword;
   /**
    * Adjust the inline padding.
    *
@@ -4005,57 +4454,57 @@ interface Box {
    * This overrides the inline value of `padding`.
    * @default '' - meaning no override
    */
-  paddingInline?: '' | MaybeTwoValuesShorthandProperty<SizeKeyword | 'none'>;
+  paddingInline?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
   /**
    * Adjust the inline-start padding.
    *
    * This overrides the inline-start value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineStart?: '' | (SizeKeyword | 'none');
+  paddingInlineStart?: '' | PaddingKeyword;
   /**
    * Adjust the inline-end padding.
    *
    * This overrides the inline-end value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineEnd?: '' | (SizeKeyword | 'none');
+  paddingInlineEnd?: '' | PaddingKeyword;
   /**
    * Adjust the block size.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/block-size
    * @default 'auto'
    */
-  blockSize?: SizeUnitsOrAuto;
+  blockSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
    * Adjust the minimum block size.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
    * @default '0'
    */
-  minBlockSize?: SizeUnits;
+  minBlockSize?: MaybeResponsive<SizeUnits>;
   /**
    * Adjust the maximum block size.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
    * @default 'none'
    */
-  maxBlockSize?: SizeUnitsOrNone;
+  maxBlockSize?: MaybeResponsive<SizeUnitsOrNone>;
   /**
    * Adjust the inline size.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
    * @default 'auto'
    */
-  inlineSize?: SizeUnitsOrAuto;
+  inlineSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
    * Adjust the minimum inline size.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
    * @default '0'
    */
-  minInlineSize?: SizeUnits;
+  minInlineSize?: MaybeResponsive<SizeUnits>;
   /**
    * Adjust the maximum inline size.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
    * @default 'none'
    */
-  maxInlineSize?: SizeUnitsOrNone;
+  maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
 
 interface ButtonEvents {
@@ -4066,7 +4515,7 @@ interface Button {
   tone?: 'auto' | 'neutral' | 'caution' | 'warning' | 'critical';
   variant?: 'primary' | 'secondary';
   /**
-   * Disables the button, meaning it cannot be clicked or receive focus.
+   * Disables the Button meaning it cannot be clicked or receive focus.
    * @default false
    */
   disabled?: boolean;
@@ -4094,7 +4543,7 @@ interface Button {
   /**
    * Replaces content with a loading indicator while a background action is being performed.
    *
-   * This also disables the button.
+   * This also disables the Button.
    * @default false
    */
   loading?: boolean;
@@ -4467,7 +4916,7 @@ interface NumberField {
 
 interface PageSlots {
   'secondary-actions'?: HTMLElement;
-  'primary-action'?: HTMLElement;
+  aside?: HTMLElement;
 }
 
 interface Page {
@@ -4475,6 +4924,20 @@ interface Page {
   heading?: string;
   /** The text to be used as subtitle. */
   subheading?: string;
+}
+
+interface PosBlockSlots {
+  'secondary-actions'?: HTMLElement;
+}
+
+interface PosBlock {
+  /**
+   * Adds title text displayed at the top left of the section
+   *
+   * **Mobile surfaces:** Uses the standard POS Design System heading style for a section (not h2).
+   * @default undefined
+   */
+  heading?: string;
 }
 
 interface ScreenEvents {
@@ -4506,8 +4969,110 @@ interface Screen {
 }
 
 interface ScrollBox {
+  /**
+   * Adjust the padding of all edges.
+   *
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
+   * @default 'none'
+   */
+  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
+  /**
+   * Adjust the block-padding.
+   *
+   * - `large none` means block-start padding is `large`, block-end padding is `none`.
+   *
+   * This overrides the block value of `padding`.
+   * @default '' - meaning no override
+   */
+  paddingBlock?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
+  /**
+   * Adjust the block-start padding.
+   *
+   * This overrides the block-start value of `paddingBlock`.
+   * @default '' - meaning no override
+   */
+  paddingBlockStart?: '' | PaddingKeyword;
+  /**
+   * Adjust the block-end padding.
+   *
+   * This overrides the block-end value of `paddingBlock`.
+   * @default '' - meaning no override
+   */
+  paddingBlockEnd?: '' | PaddingKeyword;
+  /**
+   * Adjust the inline padding.
+   *
+   * - `large none` means inline-start padding is `large`, inline-end padding is `none`.
+   *
+   * This overrides the inline value of `padding`.
+   * @default '' - meaning no override
+   */
+  paddingInline?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
+  /**
+   * Adjust the inline-start padding.
+   *
+   * This overrides the inline-start value of `paddingInline`.
+   * @default '' - meaning no override
+   */
+  paddingInlineStart?: '' | PaddingKeyword;
+  /**
+   * Adjust the inline-end padding.
+   *
+   * This overrides the inline-end value of `paddingInline`.
+   * @default '' - meaning no override
+   */
+  paddingInlineEnd?: '' | PaddingKeyword;
   /** A unique identifier for the element. */
   id?: string;
+  /**
+   * Adjust the block size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+   * @default 'auto'
+   */
+  blockSize?: MaybeResponsive<SizeUnitsOrAuto>;
+  /**
+   * Adjust the minimum block size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
+   * @default '0'
+   */
+  minBlockSize?: MaybeResponsive<SizeUnits>;
+  /**
+   * Adjust the maximum block size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
+   * @default 'none'
+   */
+  maxBlockSize?: MaybeResponsive<SizeUnitsOrNone>;
+  /**
+   * Adjust the inline size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
+   * @default 'auto'
+   */
+  inlineSize?: MaybeResponsive<SizeUnitsOrAuto>;
+  /**
+   * Adjust the minimum inline size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
+   * @default '0'
+   */
+  minInlineSize?: MaybeResponsive<SizeUnits>;
+  /**
+   * Adjust the maximum inline size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
+   * @default 'none'
+   */
+  maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
 
 interface SearchFieldEvents {
@@ -4523,11 +5088,6 @@ interface SearchField {
    * @default false
    */
   disabled?: boolean;
-  /**
-   * The default value for the field.
-   * @implementation `defaultValue` reflects to the `value` attribute.
-   */
-  defaultValue?: string;
   /** A short hint that describes the expected value of the field. */
   placeholder?: string;
   /** The current value for the field. If omitted, the field will be empty. */
@@ -4550,86 +5110,6 @@ interface Section {
 
 interface Stack {
   /**
-   * Adjust the block size.
-   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/block-size
-   * @default 'auto'
-   */
-  blockSize?: SizeUnitsOrAuto;
-  /**
-   * Adjust the maximum block size.
-   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
-   * @default 'none'
-   */
-  maxBlockSize?: SizeUnitsOrNone;
-  /**
-   * Adjust the maximum inline size.
-   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
-   * @default 'none'
-   */
-  maxInlineSize?: SizeUnitsOrNone;
-  /**
-   * Adjust the minimum block size.
-   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
-   * @default '0'
-   */
-  minBlockSize?: SizeUnits;
-  /**
-   * Adjust the minimum inline size.
-   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
-   * @default '0'
-   */
-  minInlineSize?: SizeUnits;
-  /**
-   * Aligns the Stack's children along the cross axis.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/align-items
-   * @default 'normal'
-   */
-  alignItems?: AlignItemsKeyword;
-  /**
-   * Aligns the Stack along the cross axis.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/align-content
-   * @default 'normal'
-   */
-  alignContent?: AlignContentKeyword;
-  /**
-   * Adjust spacing between elements.
-   *
-   * A single value applies to both axes.
-   * A pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
-   * @default 'none'
-   */
-  gap?: MaybeTwoValuesShorthandProperty<SpacingKeyword>;
-  /**
-   * Adjust spacing between elements in the inline axis.
-   *
-   * This overrides the column value of `gap`.
-   * @default '' - meaning no override
-   */
-  columnGap?: '' | SpacingKeyword;
-  /**
-   * Sets how the children are placed within the Stack.
-   * @default 'block'
-   * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
-   */
-  direction?: 'block' | 'inline';
-  /**
-   * Adjust the inline size.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
-   * @default 'auto'
-   */
-  inlineSize?: SizeUnitsOrAuto;
-  /**
-   * Aligns the Stack along the main axis.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
-   * @default 'normal'
-   */
-  justifyContent?: JustifyContentKeyword;
-  /**
    * Adjust the padding of all edges.
    *
    * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
@@ -4648,7 +5128,7 @@ interface Stack {
    * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
    * @default 'none'
    */
-  padding?: MaybeAllValuesShorthandProperty<'none' | SizeKeyword>;
+  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
   /**
    * Adjust the block-padding.
    *
@@ -4657,21 +5137,21 @@ interface Stack {
    * This overrides the block value of `padding`.
    * @default '' - meaning no override
    */
-  paddingBlock?: '' | MaybeTwoValuesShorthandProperty<'none' | SizeKeyword>;
+  paddingBlock?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
   /**
    * Adjust the block-start padding.
    *
    * This overrides the block-start value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockStart?: '' | ('none' | SizeKeyword);
+  paddingBlockStart?: '' | PaddingKeyword;
   /**
    * Adjust the block-end padding.
    *
    * This overrides the block-end value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockEnd?: '' | ('none' | SizeKeyword);
+  paddingBlockEnd?: '' | PaddingKeyword;
   /**
    * Adjust the inline padding.
    *
@@ -4680,28 +5160,108 @@ interface Stack {
    * This overrides the inline value of `padding`.
    * @default '' - meaning no override
    */
-  paddingInline?: '' | MaybeTwoValuesShorthandProperty<'none' | SizeKeyword>;
+  paddingInline?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
   /**
    * Adjust the inline-start padding.
    *
    * This overrides the inline-start value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineStart?: '' | ('none' | SizeKeyword);
+  paddingInlineStart?: '' | PaddingKeyword;
   /**
    * Adjust the inline-end padding.
    *
    * This overrides the inline-end value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineEnd?: '' | ('none' | SizeKeyword);
+  paddingInlineEnd?: '' | PaddingKeyword;
+  /**
+   * Adjust the block size.
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+   * @default 'auto'
+   */
+  blockSize?: MaybeResponsive<SizeUnitsOrAuto>;
+  /**
+   * Adjust the maximum block size.
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
+   * @default 'none'
+   */
+  maxBlockSize?: MaybeResponsive<SizeUnitsOrNone>;
+  /**
+   * Adjust the maximum inline size.
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
+   * @default 'none'
+   */
+  maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
+  /**
+   * Adjust the minimum block size.
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
+   * @default '0'
+   */
+  minBlockSize?: MaybeResponsive<SizeUnits>;
+  /**
+   * Adjust the minimum inline size.
+   * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
+   * @default '0'
+   */
+  minInlineSize?: MaybeResponsive<SizeUnits>;
+  /**
+   * Aligns the Stack's children along the cross axis.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+   * @default 'normal'
+   */
+  alignItems?: MaybeResponsive<AlignItemsKeyword>;
+  /**
+   * Aligns the Stack along the cross axis.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+   * @default 'normal'
+   */
+  alignContent?: MaybeResponsive<AlignContentKeyword>;
+  /**
+   * Adjust spacing between elements.
+   *
+   * A single value applies to both axes.
+   * A pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
+   * @default 'none'
+   */
+  gap?: MaybeResponsive<MaybeTwoValuesShorthandProperty<SpacingKeyword>>;
+  /**
+   * Adjust spacing between elements in the inline axis.
+   *
+   * This overrides the column value of `gap`.
+   * @default '' - meaning no override
+   */
+  columnGap?: MaybeResponsive<'' | SpacingKeyword>;
+  /**
+   * Sets how the children are placed within the Stack. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+   * @default 'block'
+   * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
+   */
+  direction?: MaybeResponsive<'block' | 'inline'>;
+  /**
+   * Adjust the inline size.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
+   * @default 'auto'
+   */
+  inlineSize?: MaybeResponsive<SizeUnitsOrAuto>;
+  /**
+   * Aligns the Stack along the main axis.
+   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+   * @default 'normal'
+   */
+  justifyContent?: MaybeResponsive<JustifyContentKeyword>;
   /**
    * Adjust spacing between elements in the block axis.
    *
    * This overrides the row value of `gap`.
    * @default '' - meaning no override
    */
-  rowGap?: '' | SpacingKeyword;
+  rowGap?: MaybeResponsive<'' | SpacingKeyword>;
 }
 
 interface Text {
@@ -4830,12 +5390,12 @@ interface TileEvents {
 
 interface Tile {
   /**
-   * Disables the button, meaning it cannot be clicked or receive focus.
+   * Disables the Button meaning it cannot be clicked or receive focus.
    * @default false
    */
   disabled?: boolean;
   /**
-   * The primary text displayed on the Tile.
+   * A title that describes the content of the Tile.
    * @default ''
    */
   heading?: string;
@@ -4845,20 +5405,66 @@ interface Tile {
    * A numeric indicator rendered within the Tile (for example, a count or a step number).
    *
    * - When provided, the indicator is displayed inside the tile.
-   * - Intended for small integers. Implementations may clamp, truncate, or abbreviate larger values.
-   * - Omit to render the tile without a numeric indicator.
+   * - Intended for small integers. It may clamp, truncate, or abbreviate larger values.
    */
   itemCount?: number;
   /**
-   * Changes the visual appearance of the Tile.
+   * Sets the tone of the Tile, based on the intention of the information being conveyed.
    * @default 'auto'
    */
-  tone?: 'accent' | 'auto' | 'neutral';
+  tone?: ExtractStrict<ToneKeyword, 'auto' | 'neutral' | 'accent'>;
   /**
-   * Secondary supporting text displayed below the heading.
+   * Supporting text displayed below the heading.
    * @default ''
    */
   subheading?: string;
+}
+
+interface TimeFieldEvents {
+  blur?: (event: CallbackEvent<typeof tagName>) => void | null;
+  focus?: (event: CallbackEvent<typeof tagName>) => void | null;
+  input?: (event: CallbackEvent<typeof tagName>) => void | null;
+  change?: (event: CallbackEvent<typeof tagName>) => void | null;
+}
+
+interface TimeField {
+  /** A unique identifier for the element. */
+  id?: string;
+  /** Content to use as the field label. */
+  label?: string;
+  /**
+   * Disables the field, disallowing any interaction.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * Current selected value.
+   *
+   * The default, `''`, means no time is selected.
+   *
+   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros.
+   *
+   * Examples: `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`.
+   *
+   * This follows the HTML time input value format, which is always 24-hour with
+   * leading zeros regardless of UI presentation.
+   *
+   * See: https://developer.mozilla.org/docs/Web/HTML/Element/input/time
+   */
+  value?: string;
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string;
+  /**
+   * Additional text to provide context or guidance for the field.
+   * This text is displayed along with the field and its label
+   * to offer more information or instructions to the user.
+   *
+   * This will also be exposed to screen reader users.
+   */
+  details?: string;
 }
 
 interface TimePickerEvents {
@@ -4876,7 +5482,14 @@ interface TimePicker {
    *
    * The default, `''`, means no time is selected.
    *
-   * The value must be in `HH:MM` format.
+   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros.
+   *
+   * Examples: `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`.
+   *
+   * This follows the HTML time input value format, which is always 24-hour with
+   * leading zeros regardless of UI presentation.
+   *
+   * See: https://developer.mozilla.org/docs/Web/HTML/Element/input/time
    *
    * If the provided value is invalid, '' is used as the value.
    * @default ''
@@ -4886,7 +5499,7 @@ interface TimePicker {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$r]: ButtonJSXProps &
+      [tagName$t]: ButtonJSXProps &
         BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
@@ -4894,7 +5507,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$r]: ButtonJSXProps &
+      [tagName$t]: ButtonJSXProps &
         BaseElementPropsWithChildren<ButtonJSXProps>;
     }
   }
@@ -4902,21 +5515,21 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$q]: TextJSXProps & BaseElementPropsWithChildren<TextJSXProps>;
+      [tagName$s]: TextJSXProps & BaseElementPropsWithChildren<TextJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$q]: TextJSXProps & BaseElementPropsWithChildren<TextJSXProps>;
+      [tagName$s]: TextJSXProps & BaseElementPropsWithChildren<TextJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$p]: ScrollBoxJSXProps &
+      [tagName$r]: ScrollBoxJSXProps &
         BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
@@ -4924,7 +5537,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$p]: ScrollBoxJSXProps &
+      [tagName$r]: ScrollBoxJSXProps &
         BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
@@ -4932,21 +5545,21 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: TileJSXProps & BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName$q]: TileJSXProps & BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: TileJSXProps & BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName$q]: TileJSXProps & BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$n]: NavigatorJSXProps &
+      [tagName$p]: NavigatorJSXProps &
         BaseElementPropsWithChildren<NavigatorJSXProps>;
     }
   }
@@ -4954,7 +5567,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$n]: NavigatorJSXProps &
+      [tagName$p]: NavigatorJSXProps &
         BaseElementPropsWithChildren<NavigatorJSXProps>;
     }
   }
@@ -4962,7 +5575,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$m]: Omit<ScreenJSXProps, 'secondaryActions'> &
+      [tagName$o]: Omit<ScreenJSXProps, 'secondaryActions'> &
         BaseElementPropsWithChildren<Omit<ScreenJSXProps, 'secondaryActions'>>;
     }
   }
@@ -4970,7 +5583,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$m]: Omit<ScreenJSXProps, 'secondaryActions'> &
+      [tagName$o]: Omit<ScreenJSXProps, 'secondaryActions'> &
         BaseElementPropsWithChildren<Omit<ScreenJSXProps, 'secondaryActions'>>;
     }
   }
@@ -4978,7 +5591,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$l]: Omit<BannerJSXProps, 'primaryAction'> &
+      [tagName$n]: Omit<BannerJSXProps, 'primaryAction'> &
         BaseElementPropsWithChildren<Omit<BannerJSXProps, 'primaryAction'>>;
     }
   }
@@ -4986,7 +5599,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$l]: Omit<BannerJSXProps, 'primaryAction'> &
+      [tagName$n]: Omit<BannerJSXProps, 'primaryAction'> &
         BaseElementPropsWithChildren<Omit<BannerJSXProps, 'primaryAction'>>;
     }
   }
@@ -4994,63 +5607,63 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$k]: BoxJSXProps & BaseElementPropsWithChildren<BoxJSXProps>;
+      [tagName$m]: BoxJSXProps & BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$k]: BoxJSXProps & BaseElementPropsWithChildren<BoxJSXProps>;
+      [tagName$m]: BoxJSXProps & BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$j]: IconJSXProps & BaseElementProps<IconJSXProps>;
+      [tagName$l]: IconJSXProps & BaseElementProps<IconJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$j]: IconJSXProps & BaseElementProps<IconJSXProps>;
+      [tagName$l]: IconJSXProps & BaseElementProps<IconJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$i]: StackJSXProps & BaseElementPropsWithChildren<StackJSXProps>;
+      [tagName$k]: StackJSXProps & BaseElementPropsWithChildren<StackJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$i]: StackJSXProps & BaseElementPropsWithChildren<StackJSXProps>;
+      [tagName$k]: StackJSXProps & BaseElementPropsWithChildren<StackJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$h]: BadgeJSXProps & BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName$j]: BadgeJSXProps & BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$h]: BadgeJSXProps & BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName$j]: BadgeJSXProps & BaseElementPropsWithChildren<BadgeJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$g]: ChoiceListJSXProps &
+      [tagName$i]: ChoiceListJSXProps &
         BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
@@ -5058,7 +5671,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$g]: ChoiceListJSXProps &
+      [tagName$i]: ChoiceListJSXProps &
         BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
@@ -5066,7 +5679,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$f]: ChoiceJSXProps &
+      [tagName$h]: ChoiceJSXProps &
         BaseElementPropsWithChildren<ChoiceJSXProps>;
     }
   }
@@ -5074,7 +5687,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$f]: ChoiceJSXProps &
+      [tagName$h]: ChoiceJSXProps &
         BaseElementPropsWithChildren<ChoiceJSXProps>;
     }
   }
@@ -5082,7 +5695,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$e]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
+      [tagName$g]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
         BaseElementPropsWithChildren<
           Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
         >;
@@ -5092,7 +5705,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$e]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
+      [tagName$g]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
         BaseElementPropsWithChildren<
           Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>
         >;
@@ -5102,7 +5715,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$d]: Omit<TextFieldJSXProps, 'accessory'> &
+      [tagName$f]: Omit<TextFieldJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<TextFieldJSXProps, 'accessory'>>;
     }
   }
@@ -5110,7 +5723,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$d]: Omit<TextFieldJSXProps, 'accessory'> &
+      [tagName$f]: Omit<TextFieldJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<TextFieldJSXProps, 'accessory'>>;
     }
   }
@@ -5118,7 +5731,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$c]: SearchFieldJSXProps &
+      [tagName$e]: SearchFieldJSXProps &
         BaseElementPropsWithChildren<SearchFieldJSXProps>;
     }
   }
@@ -5126,7 +5739,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$c]: SearchFieldJSXProps &
+      [tagName$e]: SearchFieldJSXProps &
         BaseElementPropsWithChildren<SearchFieldJSXProps>;
     }
   }
@@ -5134,7 +5747,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$b]: Omit<EmailFieldJSXProps, 'accessory'> &
+      [tagName$d]: Omit<EmailFieldJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<EmailFieldJSXProps, 'accessory'>>;
     }
   }
@@ -5142,7 +5755,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$b]: Omit<EmailFieldJSXProps, 'accessory'> &
+      [tagName$d]: Omit<EmailFieldJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<EmailFieldJSXProps, 'accessory'>>;
     }
   }
@@ -5150,7 +5763,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$a]: ClickableJSXProps &
+      [tagName$c]: ClickableJSXProps &
         BaseElementPropsWithChildren<ClickableJSXProps>;
     }
   }
@@ -5158,7 +5771,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$a]: ClickableJSXProps &
+      [tagName$c]: ClickableJSXProps &
         BaseElementPropsWithChildren<ClickableJSXProps>;
     }
   }
@@ -5166,7 +5779,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$9]: Omit<TextAreaJSXProps, 'accessory'> &
+      [tagName$b]: Omit<TextAreaJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<TextAreaJSXProps, 'accessory'>>;
     }
   }
@@ -5174,7 +5787,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$9]: Omit<TextAreaJSXProps, 'accessory'> &
+      [tagName$b]: Omit<TextAreaJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<TextAreaJSXProps, 'accessory'>>;
     }
   }
@@ -5182,7 +5795,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$8]: Omit<NumberFieldJSXProps, 'accessory'> &
+      [tagName$a]: Omit<NumberFieldJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<NumberFieldJSXProps, 'accessory'>>;
     }
   }
@@ -5190,7 +5803,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$8]: Omit<NumberFieldJSXProps, 'accessory'> &
+      [tagName$a]: Omit<NumberFieldJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<NumberFieldJSXProps, 'accessory'>>;
     }
   }
@@ -5198,7 +5811,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$7]: Omit<DateFieldJSXProps, 'accessory'> &
+      [tagName$9]: Omit<DateFieldJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<DateFieldJSXProps, 'accessory'>>;
     }
   }
@@ -5206,7 +5819,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$7]: Omit<DateFieldJSXProps, 'accessory'> &
+      [tagName$9]: Omit<DateFieldJSXProps, 'accessory'> &
         BaseElementPropsWithChildren<Omit<DateFieldJSXProps, 'accessory'>>;
     }
   }
@@ -5214,7 +5827,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$6]: DatePickerJSXProps &
+      [tagName$8]: DatePickerJSXProps &
         BaseElementPropsWithChildren<DatePickerJSXProps>;
     }
   }
@@ -5222,7 +5835,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$6]: DatePickerJSXProps &
+      [tagName$8]: DatePickerJSXProps &
         BaseElementPropsWithChildren<DatePickerJSXProps>;
     }
   }
@@ -5230,7 +5843,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$5]: DateSpinnerJSXProps &
+      [tagName$7]: DateSpinnerJSXProps &
         BaseElementPropsWithChildren<DateSpinnerJSXProps>;
     }
   }
@@ -5238,7 +5851,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$5]: DateSpinnerJSXProps &
+      [tagName$7]: DateSpinnerJSXProps &
         BaseElementPropsWithChildren<DateSpinnerJSXProps>;
     }
   }
@@ -5246,7 +5859,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$4]: Omit<SectionJSXProps, 'secondaryActions'> &
+      [tagName$6]: Omit<SectionJSXProps, 'secondaryActions'> &
         BaseElementPropsWithChildren<Omit<SectionJSXProps, 'secondaryActions'>>;
     }
   }
@@ -5254,7 +5867,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$4]: Omit<SectionJSXProps, 'secondaryActions'> &
+      [tagName$6]: Omit<SectionJSXProps, 'secondaryActions'> &
         BaseElementPropsWithChildren<Omit<SectionJSXProps, 'secondaryActions'>>;
     }
   }
@@ -5262,7 +5875,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$3]: HeadingJSXProps &
+      [tagName$5]: HeadingJSXProps &
         BaseElementPropsWithChildren<HeadingJSXProps>;
     }
   }
@@ -5270,7 +5883,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$3]: HeadingJSXProps &
+      [tagName$5]: HeadingJSXProps &
         BaseElementPropsWithChildren<HeadingJSXProps>;
     }
   }
@@ -5278,7 +5891,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$2]: TimePickerJSXProps &
+      [tagName$4]: TimePickerJSXProps &
         BaseElementPropsWithChildren<TimePickerJSXProps>;
     }
   }
@@ -5286,7 +5899,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$2]: TimePickerJSXProps &
+      [tagName$4]: TimePickerJSXProps &
         BaseElementPropsWithChildren<TimePickerJSXProps>;
     }
   }
@@ -5294,23 +5907,23 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$1]: ImageJSXProps & BaseElementPropsWithChildren<ImageJSXProps>;
+      [tagName$3]: ImageJSXProps & BaseElementPropsWithChildren<ImageJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$1]: ImageJSXProps & BaseElementPropsWithChildren<ImageJSXProps>;
+      [tagName$3]: ImageJSXProps & BaseElementPropsWithChildren<ImageJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'> &
+      [tagName$2]: Omit<PageJSXProps, 'secondaryActions' | 'aside'> &
         BaseElementPropsWithChildren<
-          Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'>
+          Omit<PageJSXProps, 'secondaryActions' | 'aside'>
         >;
     }
   }
@@ -5318,9 +5931,45 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'> &
+      [tagName$2]: Omit<PageJSXProps, 'secondaryActions' | 'aside'> &
         BaseElementPropsWithChildren<
-          Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'>
+          Omit<PageJSXProps, 'secondaryActions' | 'aside'>
+        >;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$1]: TimeFieldJSXProps &
+        BaseElementPropsWithChildren<TimeFieldJSXProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$1]: TimeFieldJSXProps &
+        BaseElementPropsWithChildren<TimeFieldJSXProps>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName]: Omit<PosBlockJSXProps, 'secondaryActions'> &
+        BaseElementPropsWithChildren<
+          Omit<PosBlockJSXProps, 'secondaryActions'>
+        >;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName]: Omit<PosBlockJSXProps, 'secondaryActions'> &
+        BaseElementPropsWithChildren<
+          Omit<PosBlockJSXProps, 'secondaryActions'>
         >;
     }
   }
