@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'DetailsProps',
+      type: 'DetailsElementProps',
     },
     {
       title: summarySharedContent.name,
