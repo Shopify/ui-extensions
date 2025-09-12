@@ -49,7 +49,7 @@ const decodeHTML = (str) => {
 };
 
 const htmlWrapper = (htmlString, layout) => {
-  return `<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding:0.5rem; ${layout}}</style><script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script></head><body>${decodeHTML(
+  return `<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding:0.5rem; ${layout}}</style><script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script></head><body>${decodeHTML(
     htmlString,
   )}</body></html>`;
 };
