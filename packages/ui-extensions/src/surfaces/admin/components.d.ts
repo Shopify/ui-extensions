@@ -6329,7 +6329,10 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$t]: Omit<PageJSXProps, 'aside'> &
+      [tagName$t]: Omit<
+        PageJSXProps,
+        'aside' | 'secondaryActions' | 'breadcrumbActions' | 'primaryAction'
+      > &
         PreactBaseElementPropsWithChildren<Page>;
     }
   }
@@ -8607,7 +8610,10 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$t]: Omit<PageJSXProps, 'aside'> &
+      [tagName$t]: Omit<
+        PageJSXProps,
+        'aside' | 'secondaryActions' | 'breadcrumbActions' | 'primaryAction'
+      > &
         ReactBaseElementPropsWithChildren<Page>;
     }
   }
@@ -8615,7 +8621,10 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$t]: Omit<PageJSXProps, 'aside'> &
+      [tagName$t]: Omit<
+        PageJSXProps,
+        'aside' | 'secondaryActions' | 'breadcrumbActions' | 'primaryAction'
+      > &
         ReactBaseElementPropsWithChildren<Page>;
     }
   }

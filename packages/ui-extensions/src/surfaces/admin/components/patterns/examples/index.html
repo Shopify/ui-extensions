@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
+    <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script>
     <title>Pattern</title>
   </head>
   <body>
@@ -33,7 +33,11 @@
               alt="A stylized graphic of four characters, each holding a puzzle piece"
             />
           </s-box>
-          <s-grid justifyItems="center" maxBlockSize="450px" maxInlineSize="450px">
+          <s-grid
+            justifyItems="center"
+            maxBlockSize="450px"
+            maxInlineSize="450px"
+          >
             <s-heading>Start creating puzzles</s-heading>
             <s-paragraph>
               Create and manage your collection of puzzles for players to enjoy.
@@ -45,8 +49,12 @@
               paddingBlockEnd="none"
               direction="inline"
             >
-              <s-button aria-label="Learn more about creating puzzles"> Learn more </s-button>
-              <s-button variant="primary" aria-label="Add a new puzzle"> Create puzzle </s-button>
+              <s-button aria-label="Learn more about creating puzzles">
+                Learn more
+              </s-button>
+              <s-button variant="primary" aria-label="Add a new puzzle">
+                Create puzzle
+              </s-button>
             </s-stack>
           </s-grid>
         </s-grid>
@@ -76,7 +84,10 @@
                     inlineSize="40px"
                     blockSize="40px"
                   >
-                    <s-image objectFit="cover" src="https://picsum.photos/id/29/80/80"></s-image>
+                    <s-image
+                      objectFit="cover"
+                      src="https://picsum.photos/id/29/80/80"
+                    ></s-image>
                   </s-clickable>
                   <s-link href="/app/details">Mountain View</s-link>
                 </s-stack>
@@ -84,7 +95,7 @@
               <s-table-cell>16-piece</s-table-cell>
               <s-table-cell>Today</s-table-cell>
               <s-table-cell>
-                <s-badge color="base" tone="success"> Active </s-badge>
+                <s-badge color="base" tone="success">Active</s-badge>
               </s-table-cell>
             </s-table-row>
             <s-table-row>
@@ -99,7 +110,10 @@
                     inlineSize="40px"
                     blockSize="40px"
                   >
-                    <s-image objectFit="cover" src="https://picsum.photos/id/12/80/80"></s-image>
+                    <s-image
+                      objectFit="cover"
+                      src="https://picsum.photos/id/12/80/80"
+                    ></s-image>
                   </s-clickable>
                   <s-link href="/app/details">Ocean Sunset</s-link>
                 </s-stack>
@@ -107,7 +121,7 @@
               <s-table-cell>9-piece</s-table-cell>
               <s-table-cell>Yesterday</s-table-cell>
               <s-table-cell>
-                <s-badge color="base" tone="success"> Active </s-badge>
+                <s-badge color="base" tone="success">Active</s-badge>
               </s-table-cell>
             </s-table-row>
             <s-table-row>
@@ -122,7 +136,10 @@
                     inlineSize="40px"
                     blockSize="40px"
                   >
-                    <s-image objectFit="cover" src="https://picsum.photos/id/324/80/80"></s-image>
+                    <s-image
+                      objectFit="cover"
+                      src="https://picsum.photos/id/324/80/80"
+                    ></s-image>
                   </s-clickable>
                   <s-link href="/app/details">Forest Animals</s-link>
                 </s-stack>
@@ -130,7 +147,7 @@
               <s-table-cell>25-piece</s-table-cell>
               <s-table-cell>Last week</s-table-cell>
               <s-table-cell>
-                <s-badge color="base" tone="neutral"> Draft </s-badge>
+                <s-badge color="base" tone="neutral">Draft</s-badge>
               </s-table-cell>
             </s-table-row>
             <!-- Add more rows as needed here -->

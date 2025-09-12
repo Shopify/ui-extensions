@@ -110,9 +110,11 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-chip';
-export interface ChipJSXProps
-  extends Partial<ChipProps>,
-    Pick<ChipProps$1, 'id'> {
+export interface ChipJSXProps extends Partial<ChipProps>, ChipProps$1 {
+  /**
+   * Hot fix until this comes from the API design package
+   */
+  id?: string;
   /**
    * The graphic to display in the chip.
    *

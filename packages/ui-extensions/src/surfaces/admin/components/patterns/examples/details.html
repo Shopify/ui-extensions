@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
+    <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script>
     <title>Pattern</title>
   </head>
   <body>
@@ -64,7 +64,11 @@
         <!-- === -->
         <s-section heading="Puzzle templates">
           <s-grid gap="base">
-            <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+            <s-grid
+              gridTemplateColumns="1fr auto"
+              gap="base"
+              alignItems="center"
+            >
               <s-grid-item>
                 <s-search-field
                   label="Search templates"
@@ -83,7 +87,12 @@
               borderStyle="solid"
               overflow="hidden"
             >
-              <s-table fullwidth border="base" borderRadius="base" borderStyle="solid">
+              <s-table
+                fullwidth
+                border="base"
+                borderRadius="base"
+                borderStyle="solid"
+              >
                 <s-table-header-row>
                   <s-table-header listSlot="primary">Template</s-table-header>
                   <s-table-header>
@@ -96,7 +105,11 @@
                 <s-table-body>
                   <s-table-row>
                     <s-table-cell listSlot="primary">
-                      <s-stack direction="inline" gap="base" alignItems="center">
+                      <s-stack
+                        direction="inline"
+                        gap="base"
+                        alignItems="center"
+                      >
                         <s-box
                           border="base"
                           borderRadius="base"
@@ -129,7 +142,11 @@
                   </s-table-row>
                   <s-table-row>
                     <s-table-cell listSlot="primary">
-                      <s-stack direction="inline" gap="base" alignItems="center">
+                      <s-stack
+                        direction="inline"
+                        gap="base"
+                        alignItems="center"
+                      >
                         <s-box
                           border="base"
                           borderRadius="base"
@@ -145,7 +162,11 @@
                       </s-stack>
                     </s-table-cell>
                     <s-table-cell>
-                      <s-stack direction="inline" gap="base" justifyContent="end">
+                      <s-stack
+                        direction="inline"
+                        gap="base"
+                        justifyContent="end"
+                      >
                         <s-link>Preview</s-link>
                       </s-stack>
                     </s-table-cell>
@@ -174,17 +195,17 @@
           <s-grid gap="base">
             <s-select label="Puzzle size" name="puzzle-size">
               <s-option value="small">Small (9" x 9")</s-option>
-              <s-option value="medium" selected> Medium (18" x 24") </s-option>
+              <s-option value="medium" selected>Medium (18" x 24")</s-option>
               <s-option value="large">Large (24" x 36")</s-option>
             </s-select>
             <s-select label="Piece count" name="piece-count">
               <s-option value="250">250 pieces (Easy)</s-option>
-              <s-option value="500" selected> 500 pieces (Medium) </s-option>
+              <s-option value="500" selected>500 pieces (Medium)</s-option>
               <s-option value="1000">1000 pieces (Hard)</s-option>
               <s-option value="2000">2000 pieces (Expert)</s-option>
             </s-select>
             <s-select label="Material" name="material">
-              <s-option value="standard" selected> Standard cardboard </s-option>
+              <s-option value="standard" selected>Standard cardboard</s-option>
               <s-option value="premium">Premium cardboard</s-option>
               <s-option value="wooden">Wooden pieces</s-option>
             </s-select>
@@ -217,7 +238,7 @@
               <s-list-item>No time limit</s-list-item>
               <s-list-item>
                 Current status:
-                <s-badge color="base" tone="success"> Active </s-badge>
+                <s-badge color="base" tone="success">Active</s-badge>
               </s-list-item>
             </s-unordered-list>
           </s-section>

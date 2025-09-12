@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
+    <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script>
     <title>Pattern</title>
     <script>
       // Simple global object to store handlers
@@ -11,38 +11,44 @@
         progress: 0,
 
         // Banner handlers
-        dismissBanner: function(bannerElement) {
+        dismissBanner: function (bannerElement) {
           if (bannerElement) {
             bannerElement.style.display = 'none';
           }
         },
 
         // Guide handlers
-        dismissGuide: function(guideSection) {
+        dismissGuide: function (guideSection) {
           if (guideSection) {
             guideSection.style.display = 'none';
           }
         },
 
-        toggleGuide: function(button, container) {
+        toggleGuide: function (button, container) {
           if (button && container) {
             const isExpanded = container.style.display !== 'none';
             container.style.display = isExpanded ? 'none' : 'block';
-            button.setAttribute('icon', isExpanded ? 'chevron-down' : 'chevron-up');
+            button.setAttribute(
+              'icon',
+              isExpanded ? 'chevron-down' : 'chevron-up',
+            );
           }
         },
 
         // Step handlers
-        toggleStep: function(button, detailsContainer) {
+        toggleStep: function (button, detailsContainer) {
           if (button && detailsContainer) {
             const isExpanded = detailsContainer.style.display !== 'none';
             detailsContainer.style.display = isExpanded ? 'none' : 'block';
-            button.setAttribute('icon', isExpanded ? 'chevron-down' : 'chevron-up');
+            button.setAttribute(
+              'icon',
+              isExpanded ? 'chevron-down' : 'chevron-up',
+            );
           }
         },
 
         // Checkbox handlers
-        updateProgress: function(checkbox, progressElement) {
+        updateProgress: function (checkbox, progressElement) {
           if (checkbox && progressElement) {
             this.progress += checkbox.checked ? 1 : -1;
             progressElement.textContent = `${this.progress} out of 3 steps completed`;
@@ -50,11 +56,11 @@
         },
 
         // Section dismissal handlers
-        dismissSection: function(section) {
+        dismissSection: function (section) {
           if (section) {
             section.style.display = 'none';
           }
-        }
+        },
       };
     </script>
   </head>
@@ -86,7 +92,8 @@
         onDismiss="window.puzzleApp.dismissBanner(this)"
       >
         3 of 5 puzzles created.
-        <s-link href="#">Upgrade to Puzzlify Pro</s-link> to create unlimited puzzles.
+        <s-link href="#">Upgrade to Puzzlify Pro</s-link>
+        to create unlimited puzzles.
       </s-banner>
       <!-- === -->
       <!-- Setup Guide -->
@@ -97,7 +104,11 @@
         <s-grid gap="base">
           <!-- Header -->
           <s-grid gap="small-200">
-            <s-grid gridTemplateColumns="1fr auto auto" gap="small-300" alignItems="center">
+            <s-grid
+              gridTemplateColumns="1fr auto auto"
+              gap="small-300"
+              alignItems="center"
+            >
               <s-heading>Setup Guide</s-heading>
               <s-button
                 accessibilityLabel="Dismiss Guide"
@@ -119,11 +130,18 @@
               Use this personalized guide to get your store ready for sales.
             </s-paragraph>
             <s-stack direction="inline" gap="small-200" alignItems="center">
-              <s-paragraph id="progress-text" tone="subdued">0 out of 3 steps completed</s-paragraph>
+              <s-paragraph id="progress-text" tone="subdued">
+                0 out of 3 steps completed
+              </s-paragraph>
             </s-stack>
           </s-grid>
           <!-- Steps Container -->
-          <s-box id="steps-container" borderRadius="base" border="base" background="base">
+          <s-box
+            id="steps-container"
+            borderRadius="base"
+            border="base"
+            background="base"
+          >
             <!-- Step 1 -->
             <s-box>
               <s-box padding="small">
@@ -141,19 +159,34 @@
                   ></s-button>
                 </s-grid>
               </s-box>
-              <s-box id="step1-details" padding="small" paddingBlockStart="none" style="display: none;">
+              <s-box
+                id="step1-details"
+                padding="small"
+                paddingBlockStart="none"
+                style="display: none"
+              >
                 <s-box padding="base" background="subdued" borderRadius="base">
-                  <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+                  <s-grid
+                    gridTemplateColumns="1fr auto"
+                    gap="base"
+                    alignItems="center"
+                  >
                     <s-grid gap="small-200">
                       <s-paragraph>
-                        Start by uploading a high-quality image that will be used to create your
-                        puzzle. For best results, use images that are at least 1200x1200 pixels.
+                        Start by uploading a high-quality image that will be
+                        used to create your puzzle. For best results, use images
+                        that are at least 1200x1200 pixels.
                       </s-paragraph>
                       <s-stack direction="inline" gap="small-200">
-                        <s-button variant="primary" onClick="console.log('clicked')">
+                        <s-button
+                          variant="primary"
+                          onClick="console.log('clicked')"
+                        >
                           Upload image
                         </s-button>
-                        <s-button variant="tertiary" tone="neutral"> Image requirements </s-button>
+                        <s-button variant="tertiary" tone="neutral">
+                          Image requirements
+                        </s-button>
                       </s-stack>
                     </s-grid>
                     <s-box maxBlockSize="80px" maxInlineSize="80px">
@@ -184,17 +217,29 @@
                   ></s-button>
                 </s-grid>
               </s-box>
-              <s-box id="step2-details" padding="small" paddingBlockStart="none" style="display: none;">
+              <s-box
+                id="step2-details"
+                padding="small"
+                paddingBlockStart="none"
+                style="display: none"
+              >
                 <s-box padding="base" background="subdued" borderRadius="base">
-                  <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+                  <s-grid
+                    gridTemplateColumns="1fr auto"
+                    gap="base"
+                    alignItems="center"
+                  >
                     <s-grid gap="small-200">
                       <s-paragraph>
-                        Select a template for your puzzle - choose between 9-piece (beginner),
-                        16-piece (intermediate), or 25-piece (advanced) layouts.
+                        Select a template for your puzzle - choose between
+                        9-piece (beginner), 16-piece (intermediate), or 25-piece
+                        (advanced) layouts.
                       </s-paragraph>
                       <s-stack direction="inline" gap="small-200">
                         <s-button variant="primary">Choose template</s-button>
-                        <s-button variant="tertiary" tone="neutral"> See all templates </s-button>
+                        <s-button variant="tertiary" tone="neutral">
+                          See all templates
+                        </s-button>
                       </s-stack>
                     </s-grid>
                     <s-box maxBlockSize="80px" maxInlineSize="80px">
@@ -225,16 +270,26 @@
                   ></s-button>
                 </s-grid>
               </s-box>
-              <s-box id="step3-details" padding="small" paddingBlockStart="none" style="display: none;">
+              <s-box
+                id="step3-details"
+                padding="small"
+                paddingBlockStart="none"
+                style="display: none"
+              >
                 <s-box padding="base" background="subdued" borderRadius="base">
-                  <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+                  <s-grid
+                    gridTemplateColumns="1fr auto"
+                    gap="base"
+                    alignItems="center"
+                  >
                     <s-grid gap="small-200">
                       <s-paragraph>
-                        Make your puzzle unique by customizing the shapes of individual pieces.
-                        Choose from classic, curved, or themed piece styles.
+                        Make your puzzle unique by customizing the shapes of
+                        individual pieces. Choose from classic, curved, or
+                        themed piece styles.
                       </s-paragraph>
                       <s-stack direction="inline" gap="small-200">
-                        <s-button variant="primary"> Customize pieces </s-button>
+                        <s-button variant="primary">Customize pieces</s-button>
                         <s-button variant="tertiary" tone="neutral">
                           Learn about piece styles
                         </s-button>
@@ -274,7 +329,7 @@
                 <s-heading>Total Designs</s-heading>
                 <s-stack direction="inline" gap="small-200">
                   <s-text>156</s-text>
-                  <s-badge tone="success" icon="arrow-up"> 12% </s-badge>
+                  <s-badge tone="success" icon="arrow-up">12%</s-badge>
                 </s-stack>
               </s-grid>
             </s-clickable>
@@ -304,7 +359,7 @@
                 <s-heading>Return Rate</s-heading>
                 <s-stack direction="inline" gap="small-200">
                   <s-text>3.2%</s-text>
-                  <s-badge tone="critical" icon="arrow-down"> 0.8% </s-badge>
+                  <s-badge tone="critical" icon="arrow-down">0.8%</s-badge>
                 </s-stack>
               </s-grid>
             </s-clickable>
@@ -316,7 +371,11 @@
       <!-- If dismissed, use local storage or a database entry to avoid showing this section again to the same user. -->
       <!-- === -->
       <s-section id="callout-section">
-        <s-grid gridTemplateColumns="1fr auto" gap="small-400" alignItems="start">
+        <s-grid
+          gridTemplateColumns="1fr auto"
+          gap="small-400"
+          alignItems="start"
+        >
           <s-grid
             gridTemplateColumns="@container (inline-size <= 480px) 1fr, auto auto"
             gap="base"
@@ -325,15 +384,24 @@
             <s-grid gap="small-200">
               <s-heading>Ready to create your custom puzzle?</s-heading>
               <s-paragraph>
-                Start by uploading an image to your gallery or choose from one of our templates.
+                Start by uploading an image to your gallery or choose from one
+                of our templates.
               </s-paragraph>
               <s-stack direction="inline" gap="small-200" wrap="nowrap">
-                <s-button onClick="console.log('clicked')"> Upload image </s-button>
-                <s-button tone="neutral" variant="tertiary"> Browse templates </s-button>
+                <s-button onClick="console.log('clicked')">
+                  Upload image
+                </s-button>
+                <s-button tone="neutral" variant="tertiary">
+                  Browse templates
+                </s-button>
               </s-stack>
             </s-grid>
             <s-stack alignItems="center">
-              <s-box maxInlineSize="200px" borderRadius="base" overflow="hidden">
+              <s-box
+                maxInlineSize="200px"
+                borderRadius="base"
+                overflow="hidden"
+              >
                 <s-image
                   src="https://cdn.shopify.com/static/images/polaris/patterns/callout.png"
                   alt="Customize checkout illustration"
@@ -356,10 +424,16 @@
       <!-- === -->
       <s-section>
         <s-heading>Puzzle Templates</s-heading>
-        <s-grid gridTemplateColumns="repeat(auto-fit, minmax(155px, 1fr))" gap="base">
+        <s-grid
+          gridTemplateColumns="repeat(auto-fit, minmax(155px, 1fr))"
+          gap="base"
+        >
           <!-- Featured template 1 -->
           <s-box border="base" borderRadius="base" overflow="hidden">
-            <s-clickable href="/puzzles/4-piece" accessibilityLabel="4-pieces puzzle template">
+            <s-clickable
+              href="/puzzles/4-piece"
+              accessibilityLabel="4-pieces puzzle template"
+            >
               <s-image
                 aspectRatio="1/1"
                 objectFit="cover"
@@ -376,14 +450,25 @@
               alignItems="center"
             >
               <s-heading>4-Pieces</s-heading>
-              <s-button href="/puzzles/4-piece" accessibilityLabel="View 4-pieces puzzle template">
+              <s-button
+                href="/puzzles/4-piece"
+                accessibilityLabel="View 4-pieces puzzle template"
+              >
                 View
               </s-button>
             </s-grid>
           </s-box>
           <!-- Featured template 2 -->
-          <s-box border="base" borderRadius="base" background="transparent" overflow="hidden">
-            <s-clickable href="/puzzles/9-piece" accessibilityLabel="9-pieces puzzle template">
+          <s-box
+            border="base"
+            borderRadius="base"
+            background="transparent"
+            overflow="hidden"
+          >
+            <s-clickable
+              href="/puzzles/9-piece"
+              accessibilityLabel="9-pieces puzzle template"
+            >
               <s-image
                 aspectRatio="1/1"
                 objectFit="cover"
@@ -399,14 +484,25 @@
               alignItems="center"
             >
               <s-heading>9-Pieces</s-heading>
-              <s-button href="/puzzles/9-piece" accessibilityLabel="View 9-pieces puzzle template">
+              <s-button
+                href="/puzzles/9-piece"
+                accessibilityLabel="View 9-pieces puzzle template"
+              >
                 View
               </s-button>
             </s-grid>
           </s-box>
           <!-- Featured template 3 -->
-          <s-box border="base" borderRadius="base" background="transparent" overflow="hidden">
-            <s-clickable href="/puzzles/16-piece" accessibilityLabel="16-pieces puzzle template">
+          <s-box
+            border="base"
+            borderRadius="base"
+            background="transparent"
+            overflow="hidden"
+          >
+            <s-clickable
+              href="/puzzles/16-piece"
+              accessibilityLabel="16-pieces puzzle template"
+            >
               <s-image
                 aspectRatio="1/1"
                 objectFit="cover"
@@ -445,7 +541,10 @@
       <!-- === -->
       <s-section>
         <s-heading>News</s-heading>
-        <s-grid gridTemplateColumns="repeat(auto-fit, minmax(240px, 1fr))" gap="base">
+        <s-grid
+          gridTemplateColumns="repeat(auto-fit, minmax(240px, 1fr))"
+          gap="base"
+        >
           <!-- News item 1 -->
           <s-grid
             background="base"
@@ -459,8 +558,9 @@
               <s-heading>New puzzle shapes and themes added</s-heading>
             </s-link>
             <s-paragraph>
-              We've added 5 new puzzle piece shapes and 3 seasonal themes to help you create more
-              engaging and unique puzzles for your customers.
+              We've added 5 new puzzle piece shapes and 3 seasonal themes to
+              help you create more engaging and unique puzzles for your
+              customers.
             </s-paragraph>
           </s-grid>
           <!-- News item 2 -->
@@ -476,8 +576,9 @@
               <s-heading>Puzzle difficulty customization features</s-heading>
             </s-link>
             <s-paragraph>
-              Now you can fine-tune the difficulty of your puzzles with new rotation controls, edge
-              highlighting options, and piece recognition settings.
+              Now you can fine-tune the difficulty of your puzzles with new
+              rotation controls, edge highlighting options, and piece
+              recognition settings.
             </s-paragraph>
           </s-grid>
         </s-grid>
@@ -495,7 +596,11 @@
       <!-- If dismissed, use local storage or a database entry to avoid showing this section again to the same user. -->
       <!-- === -->
       <s-section id="featured-apps-section">
-        <s-grid gridTemplateColumns="1fr auto" alignItems="center" paddingBlockEnd="small-400">
+        <s-grid
+          gridTemplateColumns="1fr auto"
+          alignItems="center"
+          paddingBlockEnd="small-400"
+        >
           <s-heading>Featured apps</s-heading>
           <s-button
             onClick="window.puzzleApp.dismissSection(document.getElementById('featured-apps-section'))"
@@ -505,7 +610,10 @@
             accessibilityLabel="Dismiss featured apps section"
           ></s-button>
         </s-grid>
-        <s-grid gridTemplateColumns="repeat(auto-fit, minmax(240px, 1fr))" gap="base">
+        <s-grid
+          gridTemplateColumns="repeat(auto-fit, minmax(240px, 1fr))"
+          gap="base"
+        >
           <!-- Featured app 1 -->
           <s-clickable
             href="https://apps.shopify.com/flow"
@@ -515,7 +623,11 @@
             inlineSize="100%"
             accessibilityLabel="Download Shopify Flow"
           >
-            <s-grid gridTemplateColumns="auto 1fr auto" alignItems="stretch" gap="base">
+            <s-grid
+              gridTemplateColumns="auto 1fr auto"
+              alignItems="stretch"
+              gap="base"
+            >
               <s-box
                 border="base"
                 borderRadius="base"
@@ -531,7 +643,9 @@
               <s-box>
                 <s-heading>Shopify Flow</s-heading>
                 <s-paragraph>Free</s-paragraph>
-                <s-paragraph> Automate everything and get back to business. </s-paragraph>
+                <s-paragraph>
+                  Automate everything and get back to business.
+                </s-paragraph>
               </s-box>
               <s-stack justifyContent="start">
                 <s-button
@@ -551,7 +665,11 @@
             inlineSize="100%"
             accessibilityLabel="Download Shopify Planet"
           >
-            <s-grid gridTemplateColumns="auto 1fr auto" alignItems="stretch" gap="base">
+            <s-grid
+              gridTemplateColumns="auto 1fr auto"
+              alignItems="stretch"
+              gap="base"
+            >
               <s-box
                 border="base"
                 borderRadius="base"
