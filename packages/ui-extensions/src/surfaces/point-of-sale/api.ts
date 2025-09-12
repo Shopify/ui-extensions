@@ -130,4 +130,5 @@ export type {
   PinPadResult,
   PinLength,
   PinPadActionType,
+  PinValidationResult,
 } from './types/pin-pad';
