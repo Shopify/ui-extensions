@@ -1,4 +1,4 @@
-/** VERSION: 1.16.0 **/
+/** VERSION: 1.18.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -22,16 +22,7 @@ export interface ChoiceProps
       | 'accessibilityLabel'
       | 'value'
     >
-  > {
-  /**
-   * Content to use as the choice label.
-   *
-   * The label is produced by extracting and
-   * concatenating the text nodes from the provided content;
-   * any markup or element structure is ignored.
-   */
-  children: ComponentChildren;
-}
+  > {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {

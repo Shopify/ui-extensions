@@ -1,4 +1,4 @@
-/** VERSION: 1.16.0 **/
+/** VERSION: 1.18.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -142,14 +142,7 @@ declare module 'preact' {
 declare const tagName = 's-tooltip';
 export interface TooltipJSXProps
   extends Partial<TooltipProps>,
-    Pick<TooltipProps$1, 'id'> {
-  /**
-   * The content of the Tooltip.
-   *
-   * Only accepts `Text`, `Paragraph` components, and raw `textContent`.
-   */
-  children: ComponentChild;
-}
+    Pick<TooltipProps$1, 'id'> {}
 
 export {Tooltip};
 export type {TooltipJSXProps};
