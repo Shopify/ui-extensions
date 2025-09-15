@@ -1,4 +1,4 @@
-/** VERSION: 1.17.0 **/
+/** VERSION: 1.18.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -16,8 +16,17 @@ export type RequiredAlignedModalProps = Required<ModalProps$1>;
 export interface ModalProps
   extends Pick<
     RequiredAlignedModalProps,
-    'accessibilityLabel' | 'heading' | 'padding' | 'size'
+    | 'accessibilityLabel'
+    | 'heading'
+    | 'padding'
+    | 'size'
+    | 'hideOverlay'
+    | 'showOverlay'
+    | 'toggleOverlay'
   > {
+  /**
+   * Adjust the size of the Modal.
+   */
   size: Extract<
     ModalProps$1['size'],
     'small-100' | 'small' | 'base' | 'large' | 'large-100'
@@ -205,13 +214,13 @@ export interface ModalJSXProps
    *
    * Only a `Button` with a variant of `primary` is allowed.
    */
-  primaryAction: ComponentChild;
+  primaryAction?: ComponentChild;
   /**
    * The secondary actions to perform.
    *
    * Only `ButtonGroup` or `Button` with a variant of `secondary` or `auto` are allowed.
    */
-  secondaryActions: ComponentChild;
+  secondaryActions?: ComponentChild;
   onHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onShow?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
