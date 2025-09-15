@@ -27,6 +27,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           code: './examples/default.html',
           language: 'preview',
           layout: 'alignStart',
+          customStyles: {
+            minHeight: '300px',
+          },
         },
       ],
     },
