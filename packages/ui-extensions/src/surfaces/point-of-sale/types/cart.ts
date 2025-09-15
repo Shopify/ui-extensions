@@ -77,18 +77,11 @@ export interface SellingPlan {
   /**
    * The interval of the selling plan. (DAY, WEEK, MONTH, YEAR).
    */
-  deliveryInterval?: SellingPlanDeliveryInterval;
+  deliveryInterval?: string;
   /**
    * The number of intervals between deliveries.
    */
   deliveryIntervalCount?: number;
-}
-
-export enum SellingPlanDeliveryInterval {
-  Day = 'DAY',
-  Week = 'WEEK',
-  Month = 'MONTH',
-  Year = 'YEAR',
 }
 
 export interface Discount {
@@ -175,16 +168,7 @@ export interface SetLineItemSellingPlanInput {
   sellingPlanId: number;
   /**
    * The name of the selling plan to apply to the line item.
-   */
-  sellingPlanName: string;
-  /**
-   * The interval of the selling plan. (DAY, WEEK, MONTH, YEAR).
    * If not provided, POS will try to fetch it from the server after syncing the cart.
    */
-  sellingPlanDeliveryInterval?: SellingPlanDeliveryInterval;
-  /**
-   * The number of intervals between deliveries.
-   * If not provided, POS will try to fetch it from the server after syncing the cart.
-   */
-  sellingPlanDeliveryIntervalCount?: number;
+  sellingPlanName?: string;
 }

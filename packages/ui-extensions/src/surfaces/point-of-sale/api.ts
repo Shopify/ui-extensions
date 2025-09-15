@@ -88,7 +88,6 @@ export type {
   CustomSale,
   Address,
   SellingPlan,
-  SellingPlanDeliveryInterval,
   SetLineItemSellingPlanInput,
 } from './types/cart';
 
