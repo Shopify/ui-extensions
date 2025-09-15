@@ -46,10 +46,10 @@
       <s-table-header listSlot="secondary">Status</s-table-header>
     </s-table-header-row>
     <s-table-body>
-      <s-table-row clickdelegate="mountain-view-checkbox">
+      <s-table-row clickDelegate="mountain-view-link">
         <s-table-cell>
           <s-stack direction="inline" gap="small" alignItems="center">
-            <s-checkbox id="mountain-view-checkbox"></s-checkbox>
+            <s-checkbox></s-checkbox>
             <s-clickable
               href=""
               accessibilityLabel="Mountain View puzzle thumbnail"
@@ -64,7 +64,7 @@
                 src="https://picsum.photos/id/29/80/80"
               ></s-image>
             </s-clickable>
-            <s-link href="">Mountain View</s-link>
+            <s-link id="mountain-view-link" href="">Mountain View</s-link>
           </s-stack>
         </s-table-cell>
         <s-table-cell>16</s-table-cell>
@@ -73,10 +73,10 @@
           <s-badge color="base" tone="success">Active</s-badge>
         </s-table-cell>
       </s-table-row>
-      <s-table-row clickdelegate="ocean-sunset-checkbox">
+      <s-table-row clickDelegate="ocean-sunset-link">
         <s-table-cell>
           <s-stack direction="inline" gap="small" alignItems="center">
-            <s-checkbox id="ocean-sunset-checkbox"></s-checkbox>
+            <s-checkbox></s-checkbox>
             <s-clickable
               href=""
               accessibilityLabel="Ocean Sunset puzzle thumbnail"
@@ -91,7 +91,7 @@
                 src="https://picsum.photos/id/12/80/80"
               ></s-image>
             </s-clickable>
-            <s-link href="">Ocean Sunset</s-link>
+            <s-link id="ocean-sunset-link" href="">Ocean Sunset</s-link>
           </s-stack>
         </s-table-cell>
         <s-table-cell>9</s-table-cell>
@@ -100,10 +100,10 @@
           <s-badge color="base" tone="success">Active</s-badge>
         </s-table-cell>
       </s-table-row>
-      <s-table-row clickdelegate="forest-animals-checkbox">
+      <s-table-row clickDelegate="forest-animals-link">
         <s-table-cell>
           <s-stack direction="inline" gap="small" alignItems="center">
-            <s-checkbox id="forest-animals-checkbox"></s-checkbox>
+            <s-checkbox></s-checkbox>
             <s-clickable
               href=""
               accessibilityLabel="Forest Animals puzzle thumbnail"
@@ -118,7 +118,7 @@
                 src="https://picsum.photos/id/324/80/80"
               ></s-image>
             </s-clickable>
-            <s-link href="">Forest Animals</s-link>
+            <s-link id="forest-animals-link" href="">Forest Animals</s-link>
           </s-stack>
         </s-table-cell>
         <s-table-cell>25</s-table-cell>
