@@ -14,8 +14,6 @@ const Extension = () => {
           lineItemUuid: 'aa-1234567',
           sellingPlanId: 123,
           sellingPlanName: 'My Exclusive Subscription',
-          sellingPlanDeliveryInterval: 'MONTH', // optional
-          sellingPlanDeliveryIntervalCount: 2, // optional
         });
       }}
     />
