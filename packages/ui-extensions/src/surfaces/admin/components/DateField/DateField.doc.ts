@@ -1,7 +1,7 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 import sharedContent from '../../../../docs/shared/components/DateField';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/datefield.png',
@@ -26,6 +26,7 @@ const data: ReferenceEntityTemplateSchema = {
         {
           code: './examples/default.html',
           language: 'preview',
+          layout: 'alignStart',
         },
       ],
     },
