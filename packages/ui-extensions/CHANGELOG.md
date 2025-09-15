@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.37
+
+### Minor Changes
+
+- [#3298](https://github.com/Shopify/ui-extensions/pull/3298) [`80fba902890f333d80d2acd0800057bc4e66b493`](https://github.com/Shopify/ui-extensions/commit/80fba902890f333d80d2acd0800057bc4e66b493) Thanks [@Bruno125](https://github.com/Bruno125)! - Simplify selling plans APIs for POS
+
 ## 2025.10.0-rc.36
 
 ### Minor Changes
