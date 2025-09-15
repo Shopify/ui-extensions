@@ -1,5 +1,15 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.36
+
+### Minor Changes
+
+- [#3283](https://github.com/Shopify/ui-extensions/pull/3283) [`cf603b0d7323d9926d5502f2906950272f13f6d6`](https://github.com/Shopify/ui-extensions/commit/cf603b0d7323d9926d5502f2906950272f13f6d6) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Added optional `discountAllocations` field to Cart Line Item API so that POS extensions can see the precise proportion of a discount applied to a particular line item. Only the `allocatedAmount` field is included for this purpose, matching the Storefront API structure. See https://shopify.dev/docs/api/storefront/latest/objects/DiscountAllocation.
+
+### Patch Changes
+
+- [#3292](https://github.com/Shopify/ui-extensions/pull/3292) [`eac3789d14ddecbeec96c9b26e67350357f4fd2a`](https://github.com/Shopify/ui-extensions/commit/eac3789d14ddecbeec96c9b26e67350357f4fd2a) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Remove children props from component JSX props interface
+
 ## 2025.10.0-rc.35
 
 ### Patch Changes
