@@ -2,9 +2,9 @@ import type {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
   title: 'POS UI extensions',
-  description: `The UI Extensions library enables individuals to build extensions that use interface elements and behaviors that mirror the look and feel of the POS retail experience. These elements render natively, providing the performance and accessibility inherent to a native app. POS UI extensions are available for the smart grid.
+  description: `The UI Extensions library enables individuals to build extensions that use interface elements and behaviors that mirror the look and feel of the POS retail experience. These elements render natively, providing the performance and accessibility inherent to a native app.
   > Tip:
-  > Shopify constantly works on adding new features to POS UI extensions. You can visit the [changelog](/docs/api/pos-ui-extensions/versions) to make sure you're using the latest version of POS UI extensions.
+  > Shopify constantly works on adding new features to POS UI extensions. You can visit the [changelog](/docs/apps/build/pos/ui-extensions-changelog) to make sure you're using the latest version of POS UI extensions.
   `,
   id: 'pos-ui-extensions',
   image: '/assets/landing-pages/templated-apis/hero.png',
@@ -51,12 +51,6 @@ const data: LandingTemplateSchema = {
           subtitle: 'Set up your development environment',
           url: '/docs/api/pos-ui-extensions/getting-started',
           type: 'blocks',
-        },
-        {
-          subtitle: 'Figma UI Kit',
-          name: 'Use the Figma UI kit to design your extension.',
-          url: 'https://www.figma.com/community/file/1493617217926107705',
-          type: 'star',
         },
       ],
     },
