@@ -35,7 +35,7 @@ const data: LandingTemplateSchema = {
         {
           subtitle: 'Components',
           name: 'See all available components',
-          url: '/docs/api/pos-ui-extensions/components',
+          url: '/docs/api/pos-ui-extensions/polaris-web-components',
           type: 'blocks',
         },
       ],
