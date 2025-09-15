@@ -6881,7 +6881,8 @@ export type HeaderFormat = Extract<
   TableHeaderProps$1['format'],
   'base' | 'currency' | 'numeric'
 >;
-export interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
+export interface TableHeaderProps
+  extends Pick<TableHeaderProps$1, 'listSlot' | 'format'> {
   listSlot: Extract<
     TableHeaderProps$1['listSlot'],
     'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'
