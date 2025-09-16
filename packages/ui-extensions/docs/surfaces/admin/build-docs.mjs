@@ -48,41 +48,90 @@ const decodeHTML = (str) => {
     .replace(/&#039;/g, "'");
 };
 
-const htmlWrapper = (htmlString, layout) => {
-  return `<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding:0.5rem; ${layout}}</style><script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script></head><body>${decodeHTML(
+const composeStyles = (...styles) => {
+  return styles
+    .filter(Boolean)
+    .map((style) => style.trim())
+    .filter((style) => style.length > 0)
+    .join(' ');
+};
+
+// Don't allow all CSS properties to be used in the customStyles property
+// DO NOT ADD MORE PROPERTIES TO THIS LIST
+const allowedProperties = ['minHeight', 'minBlockSize'];
+
+const stylesToString = (styles) => {
+  if (!styles) return '';
+  return Object.entries(styles)
+    .filter(
+      ([property, value]) =>
+        allowedProperties.includes(property) &&
+        value !== undefined &&
+        value !== null,
+    )
+    .map(([property, value]) => {
+      const kebabProperty = property.replace(
+        /[A-Z]/g,
+        (match) => `-${match.toLowerCase()}`,
+      );
+      return `${kebabProperty}: ${value}`;
+    })
+    .join('; ');
+};
+
+const htmlWrapper = (htmlString, layoutStyles = '', customStyles = '') => {
+  const baseStyles = 'box-sizing: border-box; margin: 0; padding: 0.5rem;';
+  const composedStyles = composeStyles(baseStyles, layoutStyles, customStyles);
+
+  return `<!DOCTYPE html><html><head><style>html, body {height:100%} body {${composedStyles}}</style><script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script></head><body>${decodeHTML(
     htmlString,
   )}</body></html>`;
 };
 
+const createTemplate = ({
+  layoutStyles,
+  wrapperElement = null,
+  wrapperAttributes = '',
+}) => {
+  return (htmlString, customStyles) => {
+    const wrappedHtml = wrapperElement
+      ? `<${wrapperElement}${
+          wrapperAttributes ? ` ${wrapperAttributes}` : ''
+        }>${htmlString}</${wrapperElement}>`
+      : htmlString;
+    const customStylesString = stylesToString(customStyles);
+
+    return htmlWrapper(wrappedHtml, layoutStyles, customStylesString);
+  };
+};
+
 const templates = {
-  default: (htmlString) =>
-    htmlWrapper(htmlString, 'display: grid; place-items: center; gap: 0.5rem;'),
-  alignStart: (htmlString) =>
-    htmlWrapper(
-      `<div>${htmlString}</div>`,
-      'display: grid; place-items: start center; gap: 0.5rem;',
-    ),
-  wrapped: (htmlString) =>
-    htmlWrapper(
-      `<div>${htmlString}</div>`,
-      'display: grid; place-items: center; gap: 0.5rem;',
-    ),
-  inline: (htmlString) =>
-    htmlWrapper(
-      htmlString,
+  default: createTemplate({
+    layoutStyles: 'display: grid; place-items: center; gap: 0.5rem;',
+  }),
+  alignStart: createTemplate({
+    layoutStyles: 'display: grid; place-items: start center; gap: 0.5rem;',
+    wrapperElement: 'div',
+  }),
+  wrapped: createTemplate({
+    layoutStyles: 'display: grid; place-items: center; gap: 0.5rem;',
+    wrapperElement: 'div',
+  }),
+  inline: createTemplate({
+    layoutStyles:
       'display: flex; justify-content: center; align-items: center; gap: 0.5rem;',
-    ),
-  section: (htmlString) =>
-    htmlWrapper(
-      `<s-section padding="none">${htmlString}</s-section>`,
-      'display: grid; place-items: center; background: #F1F1F1',
-    ),
-  page: (htmlString) =>
-    htmlWrapper(
-      htmlString,
-      'display: grid; place-items: center; background: #F1F1F1;',
-    ),
-  none: (htmlString) => htmlWrapper(htmlString, 'padding: 0'),
+  }),
+  section: createTemplate({
+    layoutStyles: 'display: grid; place-items: center; background: #F1F1F1',
+    wrapperElement: 's-section',
+    wrapperAttributes: 'padding="none"',
+  }),
+  page: createTemplate({
+    layoutStyles: 'display: grid; place-items: center; background: #F1F1F1;',
+  }),
+  none: createTemplate({
+    layoutStyles: 'padding: 0;',
+  }),
 };
 
 const transformJson = async (filePath, isExtensions) => {
@@ -124,8 +173,8 @@ const transformJson = async (filePath, isExtensions) => {
 
         const previewHTML =
           tab.layout && tab.layout in templates
-            ? templates[tab.layout](tab.code)
-            : templates.default(tab.code);
+            ? templates[tab.layout](tab.code, tab.customStyles)
+            : templates.default(tab.code, tab.customStyles);
 
         newTabs.push(
           {code: tab.code, language: 'html'},
