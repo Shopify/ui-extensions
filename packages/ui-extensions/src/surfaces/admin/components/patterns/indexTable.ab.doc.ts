@@ -1,7 +1,7 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'IndexTable',
+  name: 'Index table',
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Display and manage data with powerful table interactions.',
@@ -11,14 +11,24 @@ const data: ReferenceEntityTemplateSchema = {
   | Display collections of similar objects | Products, orders, customers, discounts |
   | Perform bulk actions | Delete products, pause/activate campaigns |
   ---
-`,
+  <style>
+          div[class*="CodeBlock-module-CodeBlock_"] {
+        max-height: calc(100vh - 400px) !important;
+    }
+    div[class*="Tabs-module-TabsContent_"] {
+      overflow: auto !important;
+    }
+    div[class*="Screenshot-module-Screenshot_"] {
+      display: none !important;
+    }
+  </style>`,
   isVisualComponent: true,
   category: 'Patterns',
   subCategory: 'Compositions',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/indexTable.png',
   defaultExample: {
     codeblock: {
-      title: 'IndexTable',
+      title: 'Index table',
       tabs: [
         {
           title: 'Preview',

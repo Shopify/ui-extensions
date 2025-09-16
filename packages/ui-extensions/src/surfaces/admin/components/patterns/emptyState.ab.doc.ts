@@ -1,7 +1,7 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'EmptyState',
+  name: 'Empty state',
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Provide guidance and encourage action when no data or items are available.',
@@ -19,7 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/emptyState.png',
   defaultExample: {
     codeblock: {
-      title: 'EmptyState',
+      title: 'Empty state',
       tabs: [
         {
           title: 'Preview',

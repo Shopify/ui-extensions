@@ -1,7 +1,7 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'CalloutCard',
+  name: 'Callout card',
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Encourage merchants to take action on new features or opportunities.',
@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
     '/assets/templated-apis-screenshots/admin/patterns/calloutCard.png',
   defaultExample: {
     codeblock: {
-      title: 'SetupGuide',
+      title: 'Callout card',
       tabs: [
         {
           title: 'Preview',

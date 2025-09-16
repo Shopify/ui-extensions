@@ -1,7 +1,7 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'InterstitialNav',
+  name: 'Interstitial nav',
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Provide deeper navigation by linking merchants to related pages within a section.',
@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
     '/assets/templated-apis-screenshots/admin/patterns/interstitialNav.png',
   defaultExample: {
     codeblock: {
-      title: 'InterstitialNav',
+      title: 'Interstitial nav',
       tabs: [
         {
           title: 'Preview',

@@ -1,7 +1,7 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'MetricsCard',
+  name: 'Metrics card',
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Display key metrics, statistics, or trends at a glance.',
@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
     '/assets/templated-apis-screenshots/admin/patterns/metricsCard.png',
   defaultExample: {
     codeblock: {
-      title: 'MetricsCard',
+      title: 'Metrics card',
       tabs: [
         {
           title: 'Preview',
