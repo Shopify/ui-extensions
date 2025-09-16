@@ -6,11 +6,8 @@ export default function IndexPage() {
   return (
     <s-page heading="Puzzles">
       <s-button slot="primary-action" variant="primary">Create puzzle</s-button>
-      <s-button-group>
-        <s-button slot="secondary-actions" variant="secondary">Export puzzles</s-button>
-        <s-button slot="secondary-actions" variant="secondary">Import puzzles</s-button>
-      </s-button-group>
-
+      <s-button slot="secondary-actions" variant="secondary">Export puzzles</s-button>
+      <s-button slot="secondary-actions" variant="secondary">Import puzzles</s-button>
       {/* === */}
       {/* Empty state */}
       {/* This should only be visible if the merchant has not created any puzzles yet. */}

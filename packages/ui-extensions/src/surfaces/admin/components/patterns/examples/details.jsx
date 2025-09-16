@@ -18,10 +18,8 @@ export default function DetailsPage() {
     <form data-save-bar onSubmit={handleFormSubmit} onReset={handleFormReset}>
       <s-page heading="Mountain view">
         <s-link slot="breadcrumb-actions" href="/app/puzzles">Puzzles</s-link>
-        <s-button-group>
-          <s-button slot="secondary-actions">Duplicate</s-button>
-          <s-button slot="secondary-actions">Delete</s-button>
-        </s-button-group>
+        <s-button slot="secondary-actions">Duplicate</s-button>
+        <s-button slot="secondary-actions">Delete</s-button>
         {/* === */}
         {/* Puzzle information */}
         {/* === */}

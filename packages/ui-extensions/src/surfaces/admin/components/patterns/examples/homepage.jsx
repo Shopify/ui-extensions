@@ -21,10 +21,8 @@ export default function HomePage() {
   return (
     <s-page>
       <s-button slot="primary-action">Create puzzle</s-button>
-      <s-button-group>
-        <s-button slot="secondary-actions">Browse templates</s-button>
-        <s-button slot="secondary-actions">Import image</s-button>
-      </s-button-group>
+      <s-button slot="secondary-actions">Browse templates</s-button>
+      <s-button slot="secondary-actions">Import image</s-button>
 
       {/* === */}
       {/* Banner */}
