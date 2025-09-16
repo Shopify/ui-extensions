@@ -6,7 +6,7 @@ export default async () => {
 
 const Extension = () => {
   return (
-    <s-action-item
+    <s-button
       onClick={() => {
         shopify.action.presentModal();
       }}

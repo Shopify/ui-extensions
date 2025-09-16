@@ -8,7 +8,7 @@ const Extension = () => {
   return (
     <s-tile
       heading="My App"
-      onClick={() => shopify.toast.show('Toast content', 5000)}
+      onClick={() => shopify.toast.show('Toast content', {duration: 5000})}
     />
   );
 };

@@ -1,22 +1,26 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
-import sharedContent from '../../../../docs/shared/components/DateField';
+import sharedContent from '../../../../docs/shared/components/Modal';
 
 const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
-  thumbnail:
-    '/assets/templated-apis-screenshots/admin/components/datefield.png',
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/modal.png',
   isVisualComponent: true,
   definitions: [
     {
-      title: 'DateField',
+      title: 'Properties',
       description: '',
-      type: 'DateField',
+      type: 'Modal',
     },
     {
       title: 'Events',
       description:
         'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
-      type: 'DateFieldEvents',
+      type: 'ModalEvents',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'ModalSlots',
     },
   ],
   defaultExample: {
@@ -26,7 +30,6 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.html',
           language: 'preview',
-          layout: 'alignStart',
           customStyles: {
             minHeight: '300px',
           },
