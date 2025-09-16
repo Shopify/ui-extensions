@@ -11,17 +11,8 @@ const data: ReferenceEntityTemplateSchema = {
   | Display collections of similar objects | Products, orders, customers, discounts |
   | Perform bulk actions | Delete products, pause/activate campaigns |
   ---
-  <style>
-          div[class*="CodeBlock-module-CodeBlock_"] {
-        max-height: calc(100vh - 400px) !important;
-    }
-    div[class*="Tabs-module-TabsContent_"] {
-      overflow: auto !important;
-    }
-    div[class*="Screenshot-module-Screenshot_"] {
-      display: none !important;
-    }
-  </style>`,
+
+  `,
   isVisualComponent: true,
   category: 'Patterns',
   subCategory: 'Compositions',

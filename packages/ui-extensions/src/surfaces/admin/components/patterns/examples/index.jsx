@@ -4,16 +4,12 @@
 
 export default function IndexPage() {
   return (
-    <s-page>
-      {/* === */}
-      {/* Title Bar */}
-      {/* Note: ui-title-bar requires AppBridge to render correctly */}
-      {/* === */}
-      <ui-title-bar title="Puzzles">
-        <button variant="primary">Create puzzle</button>
-        <button>Export puzzles</button>
-        <button>Import puzzles</button>
-      </ui-title-bar>
+    <s-page heading="Puzzles">
+      <s-button slot="primary-action" variant="primary">Create puzzle</s-button>
+      <s-button-group>
+        <s-button slot="secondary-actions" variant="secondary">Export puzzles</s-button>
+        <s-button slot="secondary-actions" variant="secondary">Import puzzles</s-button>
+      </s-button-group>
 
       {/* === */}
       {/* Empty state */}

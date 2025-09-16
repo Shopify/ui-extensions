@@ -35,18 +35,13 @@
       </s-popover>
     </s-grid>
     <s-table-header-row>
-      <s-table-header listSlot="primary">
-        <s-stack direction="inline" gap="small-200" alignItems="center">
-          <s-checkbox accessibilityLabel="Select all puzzles"></s-checkbox>
-          <s-text>Puzzle</s-text>
-        </s-stack>
-      </s-table-header>
+      <s-table-header listSlot="primary">Puzzle</s-table-header>
       <s-table-header format="numeric">Pieces</s-table-header>
       <s-table-header>Created</s-table-header>
       <s-table-header listSlot="secondary">Status</s-table-header>
     </s-table-header-row>
     <s-table-body>
-      <s-table-row clickdelegate="mountain-view-checkbox">
+      <s-table-row clickDelegate="mountain-view-checkbox">
         <s-table-cell>
           <s-stack direction="inline" gap="small" alignItems="center">
             <s-checkbox id="mountain-view-checkbox"></s-checkbox>
@@ -73,7 +68,7 @@
           <s-badge color="base" tone="success">Active</s-badge>
         </s-table-cell>
       </s-table-row>
-      <s-table-row clickdelegate="ocean-sunset-checkbox">
+      <s-table-row clickDelegate="ocean-sunset-checkbox">
         <s-table-cell>
           <s-stack direction="inline" gap="small" alignItems="center">
             <s-checkbox id="ocean-sunset-checkbox"></s-checkbox>
@@ -100,7 +95,7 @@
           <s-badge color="base" tone="success">Active</s-badge>
         </s-table-cell>
       </s-table-row>
-      <s-table-row clickdelegate="forest-animals-checkbox">
+      <s-table-row clickDelegate="forest-animals-checkbox">
         <s-table-cell>
           <s-stack direction="inline" gap="small" alignItems="center">
             <s-checkbox id="forest-animals-checkbox"></s-checkbox>
