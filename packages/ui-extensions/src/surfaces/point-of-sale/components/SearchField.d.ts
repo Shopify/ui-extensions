@@ -38,10 +38,7 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 
 declare const tagName = 's-search-field';
 export interface SearchFieldJSXProps
-  extends Pick<
-    SearchFieldProps,
-    'disabled' | 'defaultValue' | 'placeholder' | 'value'
-  > {
+  extends Pick<SearchFieldProps, 'disabled' | 'placeholder' | 'value'> {
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
