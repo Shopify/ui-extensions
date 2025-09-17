@@ -16,9 +16,7 @@ export default function SettingsPage() {
 
   return (
     <form data-save-bar onSubmit={handleFormSubmit} onReset={handleFormReset}>
-      <s-page inlineSize="small">
-        <ui-title-bar title="Settings"></ui-title-bar>
-
+      <s-page heading="Settings" inlineSize="small">
         {/* === */}
         {/* Store Information */}
         {/* === */}
@@ -42,9 +40,7 @@ export default function SettingsPage() {
             placeholder="Enter phone number"
           />
           <s-choice-list label="Primary currency" name="currency">
-            <s-choice value="usd" selected>
-              US Dollar ($)
-            </s-choice>
+            <s-choice value="usd" selected>US Dollar ($)</s-choice>
             <s-choice value="cad">Canadian Dollar (CAD)</s-choice>
             <s-choice value="eur">Euro (€)</s-choice>
           </s-choice-list>

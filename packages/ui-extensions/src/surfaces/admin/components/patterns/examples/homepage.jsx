@@ -20,18 +20,9 @@ export default function HomePage() {
   const [progress, setProgress] = useState(0);
   return (
     <s-page>
-      {/* === */}
-      {/* Title Bar */}
-      {/* The ui-title-bar on the homepage should not have a title attribute */}
-      {/* Note: ui-title-bar requires AppBridge to render correctly */}
-      {/* === */}
-      <ui-title-bar>
-        <button variant="primary">Create puzzle</button>
-        <section>
-          <button>Browse templates</button>
-          <button>Import image</button>
-        </section>
-      </ui-title-bar>
+      <s-button slot="primary-action">Create puzzle</s-button>
+      <s-button slot="secondary-actions">Browse templates</s-button>
+      <s-button slot="secondary-actions">Import image</s-button>
 
       {/* === */}
       {/* Banner */}

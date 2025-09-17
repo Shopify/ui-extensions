@@ -1,7 +1,7 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'AppCard',
+  name: 'App card',
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Introduce and promote relevant apps to merchants within your app experience.',
@@ -24,7 +24,7 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/appCard.png',
   defaultExample: {
     codeblock: {
-      title: 'AppCard',
+      title: 'App card',
       tabs: [
         {
           title: 'Preview',

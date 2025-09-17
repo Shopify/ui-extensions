@@ -1,7 +1,7 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'MediaCard',
+  name: 'Media card',
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Present visual information alongside actionable, educational content.',
@@ -23,7 +23,7 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/mediaCard.png',
   defaultExample: {
     codeblock: {
-      title: 'MediaCard',
+      title: 'Media card',
       tabs: [
         {
           title: 'Preview',

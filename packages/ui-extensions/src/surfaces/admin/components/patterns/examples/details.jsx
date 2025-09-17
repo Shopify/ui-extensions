@@ -16,18 +16,10 @@ export default function DetailsPage() {
 
   return (
     <form data-save-bar onSubmit={handleFormSubmit} onReset={handleFormReset}>
-      <s-page>
-        {/* === */}
-        {/* Title Bar */}
-        {/* Note: ui-title-bar requires AppBridge to render correctly */}
-        {/* === */}
-        <ui-title-bar title="Mountain view">
-          <button variant="breadcrumb" href="/app/puzzles">
-            Puzzles
-          </button>
-          <button>Duplicate</button>
-          <button tone="critical">Delete</button>
-        </ui-title-bar>
+      <s-page heading="Mountain view">
+        <s-link slot="breadcrumb-actions" href="/app/puzzles">Puzzles</s-link>
+        <s-button slot="secondary-actions">Duplicate</s-button>
+        <s-button slot="secondary-actions">Delete</s-button>
         {/* === */}
         {/* Puzzle information */}
         {/* === */}
@@ -96,7 +88,6 @@ export default function DetailsPage() {
               overflow="hidden"
             >
               <s-table
-                fullwidth
                 border="base"
                 borderRadius="base"
                 borderStyle="solid"
