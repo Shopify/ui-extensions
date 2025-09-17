@@ -1,4 +1,4 @@
-/** VERSION: 1.18.0 **/
+/** VERSION: 1.19.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -210,8 +210,6 @@ declare class MoneyField
   accessor max: MoneyFieldProps['max'];
   accessor min: MoneyFieldProps['min'];
   accessor step: MoneyFieldProps['step'];
-  get value(): MoneyFieldProps['value'];
-  set value(value: MoneyFieldProps['value']);
   constructor();
 }
 declare global {

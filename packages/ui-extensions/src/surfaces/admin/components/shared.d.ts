@@ -1,4 +1,4 @@
-/** VERSION: 1.18.0 **/
+/** VERSION: 1.19.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -107,6 +107,69 @@ export interface BaseOverlayMethods {
    */
   toggleOverlay: () => void;
 }
+export interface FocusEventProps {
+  /**
+   * Callback when the element loses focus.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
+   */
+  onBlur?: (event: FocusEvent) => void;
+  /**
+   * Callback when the element receives focus.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
+   */
+  onFocus?: (event: FocusEvent) => void;
+}
+export interface ToggleEventProps {
+  /**
+   * Callback fired when the element state changes **after** any animations have finished.
+   *
+   * - If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the
+   *   `newState` property will be set to `open`.
+   * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
+   *   `newState` will be `closed`.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
+   */
+  onAfterToggle?: (event: ToggleEvent$1) => void;
+  /**
+   * Callback straight after the element state changes.
+   *
+   * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
+   *   `newState` property will be set to `open`.
+   * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the
+   *   `newState` will be `closed`.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
+   */
+  onToggle?: (event: ToggleEvent$1) => void;
+}
+export type ToggleState = 'open' | 'closed';
+interface ToggleEvent$1 extends Event {
+  readonly newState: ToggleState;
+  readonly oldState: ToggleState;
+}
+export interface ExtendableEvent extends Event {
+  /**
+   * Provide a promise that signals the length, and eventual success or failure of actions relating to the event.
+   *
+   * This may be called many times, which adds promises to the event.
+   *
+   * However, this may only be called synchronously during the dispatch of the event.
+   * As in, you cannot call it after a `setTimeout` or microtask.
+   */
+  waitUntil?: (promise: Promise<void>) => void;
+}
+interface AggregateError$1<T extends Error> extends Error {
+  errors: T[];
+}
+export interface ArgregatedErrorEvent<T extends Error> extends ErrorEvent {
+  error: AggregateError$1<T>;
+}
 export type SizeKeyword =
   | 'small-500'
   | 'small-400'
@@ -184,6 +247,7 @@ export type ToneKeyword =
   | 'caution'
   | 'warning'
   | 'critical'
+  | 'accent'
   | 'custom';
 declare const privateIconArray: readonly [
   'adjust',
@@ -193,23 +257,23 @@ declare const privateIconArray: readonly [
   'alert-circle',
   'alert-diamond',
   'alert-location',
-  'alert-octagon-filled',
   'alert-octagon',
-  'alert-triangle-filled',
+  'alert-octagon-filled',
   'alert-triangle',
+  'alert-triangle-filled',
   'app-extension',
   'apps',
   'archive',
+  'arrow-down',
   'arrow-down-circle',
   'arrow-down-right',
-  'arrow-down',
-  'arrow-left-circle',
   'arrow-left',
-  'arrow-right-circle',
+  'arrow-left-circle',
   'arrow-right',
+  'arrow-right-circle',
+  'arrow-up',
   'arrow-up-circle',
   'arrow-up-right',
-  'arrow-up',
   'arrows-in-horizontal',
   'arrows-out-horizontal',
   'attachment',
@@ -218,36 +282,39 @@ declare const privateIconArray: readonly [
   'bag',
   'bank',
   'barcode',
+  'battery-low',
   'bill',
   'blank',
   'blog',
-  'bolt-filled',
   'bolt',
-  'book-open',
+  'bolt-filled',
   'book',
+  'book-open',
   'bug',
   'bullet',
   'business-entity',
-  'button-press',
   'button',
+  'button-press',
   'calculator',
+  'calendar',
   'calendar-check',
   'calendar-compare',
   'calendar-list',
   'calendar-time',
-  'calendar',
-  'camera-flip',
   'camera',
+  'camera-flip',
   'caret-down',
   'caret-left',
   'caret-right',
   'caret-up',
+  'cart',
   'cart-abandoned',
   'cart-discount',
   'cart-down',
+  'cart-filled',
   'cart-sale',
+  'cart-send',
   'cart-up',
-  'cart',
   'cash-dollar',
   'cash-euro',
   'cash-pound',
@@ -259,8 +326,8 @@ declare const privateIconArray: readonly [
   'chart-cohort',
   'chart-donut',
   'chart-funnel',
-  'chart-histogram-first-last',
   'chart-histogram-first',
+  'chart-histogram-first-last',
   'chart-histogram-flat',
   'chart-histogram-full',
   'chart-histogram-growth',
@@ -271,36 +338,36 @@ declare const privateIconArray: readonly [
   'chart-popular',
   'chart-stacked',
   'chart-vertical',
+  'chat',
   'chat-new',
   'chat-referral',
-  'chat',
-  'check-circle-filled',
-  'check-circle',
   'check',
+  'check-circle',
+  'check-circle-filled',
   'checkbox',
-  'chevron-down-circle',
   'chevron-down',
-  'chevron-left-circle',
+  'chevron-down-circle',
   'chevron-left',
-  'chevron-right-circle',
+  'chevron-left-circle',
   'chevron-right',
-  'chevron-up-circle',
+  'chevron-right-circle',
   'chevron-up',
-  'circle-dashed',
+  'chevron-up-circle',
   'circle',
+  'circle-dashed',
+  'clipboard',
   'clipboard-check',
   'clipboard-checklist',
-  'clipboard',
-  'clock-revert',
   'clock',
-  'code-add',
+  'clock-revert',
   'code',
+  'code-add',
+  'collection',
   'collection-featured',
   'collection-list',
   'collection-reference',
-  'collection',
-  'color-none',
   'color',
+  'color-none',
   'compass',
   'complete',
   'compose',
@@ -311,77 +378,81 @@ declare const privateIconArray: readonly [
   'corner-pill',
   'corner-round',
   'corner-square',
+  'credit-card',
   'credit-card-cancel',
   'credit-card-percent',
+  'credit-card-reader',
   'credit-card-reader-chip',
   'credit-card-reader-tap',
-  'credit-card-reader',
   'credit-card-secure',
   'credit-card-tap-chip',
-  'credit-card',
   'crop',
   'currency-convert',
+  'cursor',
   'cursor-banner',
   'cursor-option',
-  'cursor',
   'data-presentation',
   'data-table',
+  'database',
   'database-add',
   'database-connect',
-  'database',
   'delete',
   'delivered',
   'delivery',
   'desktop',
   'disabled',
-  'discount-add',
-  'discount-code',
+  'disabled-filled',
   'discount',
+  'discount-add',
+  'discount-automatic',
+  'discount-code',
+  'discount-remove',
   'dns-settings',
   'dock-floating',
   'dock-side',
+  'domain',
   'domain-landing-page',
   'domain-new',
   'domain-redirect',
-  'domain',
   'download',
   'drag-drop',
   'drag-handle',
+  'drawer',
   'duplicate',
   'edit',
+  'email',
   'email-follow-up',
   'email-newsletter',
-  'email',
   'empty',
   'enabled',
   'enter',
-  'envelope-soft-pack',
   'envelope',
+  'envelope-soft-pack',
   'eraser',
   'exchange',
   'exit',
   'export',
   'external',
   'eye-check-mark',
-  'eye-dropper-list',
   'eye-dropper',
+  'eye-dropper-list',
   'eye-first',
   'eyeglasses',
   'fav',
   'favicon',
-  'file-list',
   'file',
-  'filter-active',
+  'file-list',
   'filter',
+  'filter-active',
   'flag',
   'flip-horizontal',
   'flip-vertical',
   'flower',
+  'folder',
   'folder-add',
   'folder-down',
   'folder-remove',
   'folder-up',
-  'folder',
   'food',
   'foreground',
   'forklift',
@@ -389,56 +460,62 @@ declare const privateIconArray: readonly [
   'games',
   'gauge',
   'geolocation',
-  'gift-card',
   'gift',
+  'gift-card',
   'git-branch',
   'git-commit',
   'git-repository',
+  'globe',
   'globe-asia',
   'globe-europe',
   'globe-lines',
   'globe-list',
-  'globe',
+  'graduation-hat',
   'grid',
+  'hashtag',
   'hashtag-decimal',
   'hashtag-list',
-  'hashtag',
   'heart',
-  'hide-filled',
   'hide',
+  'hide-filled',
   'home',
+  'home-filled',
   'icons',
   'identity-card',
+  'image',
   'image-add',
   'image-alt',
   'image-explore',
   'image-magic',
   'image-none',
   'image-with-text-overlay',
-  'image',
   'images',
   'import',
   'in-progress',
   'incentive',
   'incoming',
   'incomplete',
-  'info-filled',
   'info',
+  'info-filled',
   'inheritance',
-  'inventory-updated',
   'inventory',
+  'inventory-edit',
+  'inventory-list',
+  'inventory-transfer',
+  'inventory-updated',
   'iq',
   'key',
+  'keyboard',
   'keyboard-filled',
   'keyboard-hide',
-  'keyboard',
+  'keypad',
   'label-printer',
-  'language-translate',
   'language',
+  'language-translate',
   'layout-block',
+  'layout-buy-button',
   'layout-buy-button-horizontal',
   'layout-buy-button-vertical',
-  'layout-buy-button',
   'layout-column-1',
   'layout-columns-2',
   'layout-columns-3',
@@ -451,64 +528,73 @@ declare const privateIconArray: readonly [
   'layout-sidebar-left',
   'layout-sidebar-right',
   'lightbulb',
-  'link-list',
   'link',
+  'link-list',
   'list-bulleted',
+  'list-bulleted-filled',
   'list-numbered',
   'live',
-  'location-none',
+  'live-critical',
+  'live-none',
   'location',
+  'location-none',
   'lock',
   'map',
+  'markets',
   'markets-euro',
   'markets-rupee',
   'markets-yen',
-  'markets',
   'maximize',
-  'measurement-size-list',
   'measurement-size',
-  'measurement-volume-list',
+  'measurement-size-list',
   'measurement-volume',
-  'measurement-weight-list',
+  'measurement-volume-list',
   'measurement-weight',
+  'measurement-weight-list',
   'media-receiver',
   'megaphone',
   'mention',
+  'menu',
+  'menu-filled',
   'menu-horizontal',
   'menu-vertical',
-  'menu',
   'merge',
   'metafields',
+  'metaobject',
   'metaobject-list',
   'metaobject-reference',
-  'metaobject',
   'microphone',
   'minimize',
-  'minus-circle',
   'minus',
+  'minus-circle',
   'mobile',
-  'money-none',
   'money',
+  'money-none',
+  'money-split',
   'moon',
   'nature',
-  'note-add',
   'note',
+  'note-add',
   'notification',
+  'order',
   'order-batches',
   'order-draft',
+  'order-filled',
   'order-first',
   'order-fulfilled',
   'order-repeat',
   'order-unfulfilled',
-  'order',
   'orders-status',
   'organization',
   'outdent',
   'outgoing',
+  'package',
+  'package-cancel',
   'package-fulfilled',
   'package-on-hold',
+  'package-reassign',
   'package-returned',
-  'package',
+  'page',
   'page-add',
   'page-attachment',
   'page-clock',
@@ -519,7 +605,6 @@ declare const privateIconArray: readonly [
   'page-remove',
   'page-report',
   'page-up',
-  'page',
   'pagination-end',
   'pagination-start',
   'paint-brush-flat',
@@ -529,50 +614,55 @@ declare const privateIconArray: readonly [
   'passkey',
   'paste',
   'pause-circle',
-  'payment-capture',
   'payment',
+  'payment-capture',
+  'payout',
   'payout-dollar',
   'payout-euro',
   'payout-pound',
   'payout-rupee',
   'payout-yen',
-  'payout',
+  'person',
   'person-add',
   'person-exit',
+  'person-filled',
   'person-list',
   'person-lock',
   'person-remove',
   'person-segment',
-  'person',
   'personalized-text',
+  'phablet',
+  'phone',
   'phone-in',
   'phone-out',
-  'phone',
-  'pin-remove',
   'pin',
+  'pin-remove',
   'plan',
-  'play-circle',
   'play',
+  'play-circle',
+  'plus',
+  'plus-circle',
   'plus-circle-down',
   'plus-circle-filled',
   'plus-circle-up',
-  'plus-circle',
-  'plus',
   'point-of-sale',
+  'point-of-sale-register',
   'price-list',
   'print',
+  'product',
   'product-add',
   'product-cost',
+  'product-filled',
   'product-list',
   'product-reference',
   'product-remove',
   'product-return',
   'product-unavailable',
-  'product',
-  'profile-filled',
   'profile',
-  'question-circle-filled',
+  'profile-filled',
   'question-circle',
+  'question-circle-filled',
+  'receipt',
   'receipt-dollar',
   'receipt-euro',
   'receipt-folded',
@@ -581,7 +671,6 @@ declare const privateIconArray: readonly [
   'receipt-refund',
   'receipt-rupee',
   'receipt-yen',
-  'receipt',
   'receivables',
   'redo',
   'referral-code',
@@ -599,11 +688,12 @@ declare const privateIconArray: readonly [
   'sandbox',
   'save',
   'savings',
+  'scan-qr-code',
+  'search',
   'search-add',
   'search-list',
   'search-recent',
   'search-resource',
-  'search',
   'select',
   'send',
   'settings',
@@ -613,6 +703,7 @@ declare const privateIconArray: readonly [
   'shield-pending',
   'shield-person',
   'shipping-label',
+  'shipping-label-cancel',
   'shopcodes',
   'slideshow',
   'smiley-happy',
@@ -621,68 +712,70 @@ declare const privateIconArray: readonly [
   'smiley-sad',
   'social-ad',
   'social-post',
+  'sort',
   'sort-ascending',
   'sort-descending',
-  'sort',
   'sound',
   'sports',
+  'star',
+  'star-circle',
   'star-filled',
   'star-half',
   'star-list',
-  'star',
-  'status-active',
   'status',
+  'status-active',
   'stop-circle',
+  'store',
   'store-import',
   'store-managed',
   'store-online',
-  'store',
   'sun',
-  'table-masonry',
   'table',
+  'table-masonry',
   'tablet',
   'target',
   'tax',
   'team',
+  'text',
   'text-align-center',
   'text-align-left',
   'text-align-right',
   'text-block',
   'text-bold',
   'text-color',
-  'text-font-list',
   'text-font',
+  'text-font-list',
   'text-grammar',
   'text-in-columns',
   'text-in-rows',
-  'text-indent-remove',
   'text-indent',
+  'text-indent-remove',
   'text-italic',
   'text-quote',
   'text-title',
   'text-underline',
   'text-with-image',
-  'text',
+  'theme',
   'theme-edit',
   'theme-store',
   'theme-template',
-  'theme',
   'three-d-environment',
   'thumbs-down',
   'thumbs-up',
   'tip-jar',
   'toggle-off',
   'toggle-on',
+  'transaction',
+  'transaction-fee-add',
   'transaction-fee-dollar',
   'transaction-fee-euro',
   'transaction-fee-pound',
   'transaction-fee-rupee',
   'transaction-fee-yen',
-  'transaction',
+  'transfer',
   'transfer-in',
   'transfer-internal',
   'transfer-out',
-  'transfer',
   'truck',
   'undo',
   'unknown-device',
@@ -698,12 +791,12 @@ declare const privateIconArray: readonly [
   'wand',
   'watch',
   'wifi',
-  'work-list',
   'work',
+  'work-list',
   'wrench',
-  'x-circle-filled',
-  'x-circle',
   'x',
+  'x-circle',
+  'x-circle-filled',
 ];
 export type IconType = (typeof privateIconArray)[number];
 /**
@@ -716,6 +809,7 @@ export type MaybeAllValuesShorthandProperty<T extends string> =
   | `${T} ${T} ${T}`
   | `${T} ${T} ${T} ${T}`;
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
+export type MaybeResponsive<T> = T | `@container${string}`;
 /**
  * Prevents widening string literal types in a union to `string`.
  * @example
@@ -851,7 +945,7 @@ export interface DisplayProps {
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
    * @default 'auto'
    */
-  display?: 'auto' | 'none';
+  display?: MaybeResponsive<'auto' | 'none'>;
 }
 export interface AccessibilityRoleProps {
   /**
@@ -1029,7 +1123,7 @@ export interface PaddingProps {
    *
    * @default 'none'
    */
-  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
+  padding?: MaybeResponsive<MaybeAllValuesShorthandProperty<PaddingKeyword>>;
   /**
    * Adjust the block-padding.
    *
@@ -1039,7 +1133,9 @@ export interface PaddingProps {
    *
    * @default '' - meaning no override
    */
-  paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword> | '';
+  paddingBlock?: MaybeResponsive<
+    MaybeTwoValuesShorthandProperty<PaddingKeyword> | ''
+  >;
   /**
    * Adjust the block-start padding.
    *
@@ -1047,7 +1143,7 @@ export interface PaddingProps {
    *
    * @default '' - meaning no override
    */
-  paddingBlockStart?: PaddingKeyword | '';
+  paddingBlockStart?: MaybeResponsive<PaddingKeyword | ''>;
   /**
    * Adjust the block-end padding.
    *
@@ -1055,7 +1151,7 @@ export interface PaddingProps {
    *
    * @default '' - meaning no override
    */
-  paddingBlockEnd?: PaddingKeyword | '';
+  paddingBlockEnd?: MaybeResponsive<PaddingKeyword | ''>;
   /**
    * Adjust the inline padding.
    *
@@ -1065,7 +1161,9 @@ export interface PaddingProps {
    *
    * @default '' - meaning no override
    */
-  paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword> | '';
+  paddingInline?: MaybeResponsive<
+    MaybeTwoValuesShorthandProperty<PaddingKeyword> | ''
+  >;
   /**
    * Adjust the inline-start padding.
    *
@@ -1073,7 +1171,7 @@ export interface PaddingProps {
    *
    * @default '' - meaning no override
    */
-  paddingInlineStart?: PaddingKeyword | '';
+  paddingInlineStart?: MaybeResponsive<PaddingKeyword | ''>;
   /**
    * Adjust the inline-end padding.
    *
@@ -1081,7 +1179,7 @@ export interface PaddingProps {
    *
    * @default '' - meaning no override
    */
-  paddingInlineEnd?: PaddingKeyword | '';
+  paddingInlineEnd?: MaybeResponsive<PaddingKeyword | ''>;
 }
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
 export type SizeUnitsOrAuto = SizeUnits | 'auto';
@@ -1094,7 +1192,7 @@ export interface SizingProps {
    *
    * @default 'auto'
    */
-  blockSize?: SizeUnitsOrAuto;
+  blockSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
    * Adjust the minimum block size.
    *
@@ -1102,7 +1200,7 @@ export interface SizingProps {
    *
    * @default '0'
    */
-  minBlockSize?: SizeUnits;
+  minBlockSize?: MaybeResponsive<SizeUnits>;
   /**
    * Adjust the maximum block size.
    *
@@ -1110,7 +1208,7 @@ export interface SizingProps {
    *
    * @default 'none'
    */
-  maxBlockSize?: SizeUnitsOrNone;
+  maxBlockSize?: MaybeResponsive<SizeUnitsOrNone>;
   /**
    * Adjust the inline size.
    *
@@ -1118,7 +1216,7 @@ export interface SizingProps {
    *
    * @default 'auto'
    */
-  inlineSize?: SizeUnitsOrAuto;
+  inlineSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
    * Adjust the minimum inline size.
    *
@@ -1126,7 +1224,7 @@ export interface SizingProps {
    *
    * @default '0'
    */
-  minInlineSize?: SizeUnits;
+  minInlineSize?: MaybeResponsive<SizeUnits>;
   /**
    * Adjust the maximum inline size.
    *
@@ -1134,7 +1232,7 @@ export interface SizingProps {
    *
    * @default 'none'
    */
-  maxInlineSize?: SizeUnitsOrNone;
+  maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
 export type BorderStyleKeyword =
   | 'none'
@@ -1272,72 +1370,9 @@ export interface BaseBoxPropsWithRole
   extends BaseBoxProps,
     AccessibilityRoleProps {}
 interface BoxProps$1 extends BaseBoxPropsWithRole, GlobalProps {}
-export interface FocusEventProps {
-  /**
-   * Callback when the element loses focus.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
-   */
-  onBlur?: (event: FocusEvent) => void;
-  /**
-   * Callback when the element receives focus.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
-   */
-  onFocus?: (event: FocusEvent) => void;
-}
-export interface ToggleEventProps {
-  /**
-   * Callback fired when the element state changes **after** any animations have finished.
-   *
-   * - If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the
-   *   `newState` property will be set to `open`.
-   * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
-   *   `newState` will be `closed`.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
-   */
-  onAfterToggle?: (event: ToggleEvent$1) => void;
-  /**
-   * Callback straight after the element state changes.
-   *
-   * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
-   *   `newState` property will be set to `open`.
-   * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the
-   *   `newState` will be `closed`.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
-   */
-  onToggle?: (event: ToggleEvent$1) => void;
-}
-export type ToggleState = 'open' | 'closed';
-interface ToggleEvent$1 extends Event {
-  readonly newState: ToggleState;
-  readonly oldState: ToggleState;
-}
-export interface ExtendableEvent extends Event {
-  /**
-   * Provide a promise that signals the length, and eventual success or failure of actions relating to the event.
-   *
-   * This may be called many times, which adds promises to the event.
-   *
-   * However, this may only be called synchronously during the dispatch of the event.
-   * As in, you cannot call it after a `setTimeout` or microtask.
-   */
-  waitUntil?: (promise: Promise<void>) => void;
-}
-interface AggregateError$1<T extends Error> extends Error {
-  errors: T[];
-}
-export interface ArgregatedErrorEvent<T extends Error> extends ErrorEvent {
-  error: AggregateError$1<T>;
-}
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
-   * The behavior of the button.
+   * The behavior of the Button.
    *
    * - `submit`: Used to indicate the component acts as a submit button, meaning it submits the closest form.
    * - `button`: Used to indicate the component acts as a button, meaning it has no default action.
@@ -1349,14 +1384,14 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   type?: 'submit' | 'button' | 'reset';
   /**
-   * Callback when the button is activated.
+   * Callback when the Button is activated.
    * This will be called before the action indicated by `type`.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
    */
   onClick?: (event: Event) => void;
   /**
-   * Disables the button, meaning it cannot be clicked or receive focus.
+   * Disables the Button meaning it cannot be clicked or receive focus.
    *
    * @default false
    */
@@ -1364,7 +1399,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * Replaces content with a loading indicator while a background action is being performed.
    *
-   * This also disables the button.
+   * This also disables the Button.
    *
    * @default false
    */
@@ -1394,7 +1429,7 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
   target?: 'auto' | '_blank' | '_self' | '_parent' | '_top' | AnyString;
   /**
    * Causes the browser to treat the linked URL as a download with the string being the file name.
-   * Download only works for same-origin URLs, or the blob: and data: schemes.
+   * Download only works for same-origin URLs or the `blob:` and `data:` schemes.
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download
    */
   download?: string;
@@ -1443,7 +1478,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
   /**
    * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
    *
-   * Use this when using only an icon or the button text is not enough context
+   * Use this when using only an icon or the Button text is not enough context
    * for users using assistive technologies.
    */
   accessibilityLabel?: string;
@@ -1452,13 +1487,13 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   children?: ComponentChildren;
   /**
-   * The type of icon to be displayed in the button.
+   * The type of icon to be displayed in the Button.
    *
    * @default ''
    */
   icon?: IconType | AnyString;
   /**
-   * The displayed inline width of the button.
+   * The displayed inline width of the Button.
    *
    * - `auto`: the size of the button depends on the surface and context.
    * - `fill`: the button will takes up 100% of the available inline size.
@@ -1474,7 +1509,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   variant?: 'auto' | 'primary' | 'secondary' | 'tertiary';
   /**
-   * Sets the tone of the Button, based on the intention of the information being conveyed.
+   * Sets the tone of the Button based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
@@ -1845,7 +1880,7 @@ interface CheckboxProps$1
    */
   required?: boolean;
 }
-export interface ChipProps$1 {
+export interface ChipProps$1 extends GlobalProps {
   /**
    * The content of the chip.
    */
@@ -2366,15 +2401,18 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
    * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
    *
-   * Events:
-   *
-   * - `onInput` - Invoked when any date is selected. Will fire before `onChange`.
-   * - `onChange` - Invoked when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
-   *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
-   *
    * @default ""
    */
   value?: string;
+  /**
+   * Callback when any date is selected. Will fire before `onChange`.
+   */
+  onInput?: (event: Event) => void;
+  /**
+   * Callback when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
+   *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
+   */
+  onChange?: (event: Event) => void;
 }
 interface DateFieldProps$1
   extends GlobalProps,
@@ -2421,13 +2459,7 @@ export type DateAutocompleteField = ExtractStrict<
 >;
 interface DividerProps$1 extends GlobalProps {
   /**
-   * Specify the direction of the divider.
-   *
-   * An 'inline' divider separates blocks of content.
-   * In a left-to-right or right-to-left writing mode, this would typically be a horizontal line.
-   *
-   * A 'block' divider separates items within the current line of content.
-   * In a left-to-right or right-to-left writing mode, this would typically be a vertical line.
+   * Specify the direction of the divider. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
    *
    * @default 'inline'
    */
@@ -2551,7 +2583,7 @@ export interface GapProps {
    *
    * @default 'none'
    */
-  gap?: MaybeTwoValuesShorthandProperty<SpacingKeyword>;
+  gap?: MaybeResponsive<MaybeTwoValuesShorthandProperty<SpacingKeyword>>;
   /**
    * Adjust spacing between elements in the block axis.
    *
@@ -2559,7 +2591,7 @@ export interface GapProps {
    *
    * @default '' - meaning no override
    */
-  rowGap?: SpacingKeyword | '';
+  rowGap?: MaybeResponsive<SpacingKeyword | ''>;
   /**
    * Adjust spacing between elements in the inline axis.
    *
@@ -2567,7 +2599,7 @@ export interface GapProps {
    *
    * @default '' - meaning no override
    */
-  columnGap?: SpacingKeyword | '';
+  columnGap?: MaybeResponsive<SpacingKeyword | ''>;
 }
 export type BaselinePosition = 'baseline' | 'first baseline' | 'last baseline';
 export type ContentDistribution =
@@ -2629,14 +2661,14 @@ interface GridProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
 	  @default 'none'
 	*/
-  gridTemplateColumns?: string;
+  gridTemplateColumns?: MaybeResponsive<string>;
   /**
 	  Define rows and specify their size.
   
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
 	  @default 'none'
 	*/
-  gridTemplateRows?: string;
+  gridTemplateRows?: MaybeResponsive<string>;
   /**
 	  Aligns the grid items along the inline (row) axis.
   
@@ -2645,7 +2677,7 @@ interface GridProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
 	  @default '' - meaning no override
 	*/
-  justifyItems?: JustifyItemsKeyword | '';
+  justifyItems?: MaybeResponsive<JustifyItemsKeyword | ''>;
   /**
 	  Aligns the grid items along the block (column) axis.
   
@@ -2654,16 +2686,16 @@ interface GridProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
 	  @default '' - meaning no override
 	*/
-  alignItems?: AlignItemsKeyword | '';
+  alignItems?: MaybeResponsive<AlignItemsKeyword | ''>;
   /**
 	  A shorthand property for `justify-items` and `align-items`.
   
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-items
 	  @default 'normal normal'
 	*/
-  placeItems?:
-    | `${AlignItemsKeyword} ${JustifyItemsKeyword}`
-    | AlignItemsKeyword;
+  placeItems?: MaybeResponsive<
+    `${AlignItemsKeyword} ${JustifyItemsKeyword}` | AlignItemsKeyword
+  >;
   /**
 	  Aligns the grid along the inline (row) axis.
   
@@ -2672,7 +2704,7 @@ interface GridProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
 	  @default '' - meaning no override
 	*/
-  justifyContent?: JustifyContentKeyword | '';
+  justifyContent?: MaybeResponsive<JustifyContentKeyword | ''>;
   /**
 	  Aligns the grid along the block (column) axis.
   
@@ -2681,16 +2713,16 @@ interface GridProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
 	  @default '' - meaning no override
 	*/
-  alignContent?: AlignContentKeyword | '';
+  alignContent?: MaybeResponsive<AlignContentKeyword | ''>;
   /**
 	  A shorthand property for `justify-content` and `align-content`.
   
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-content
 	  @default 'normal normal'
 	*/
-  placeContent?:
-    | `${AlignContentKeyword} ${JustifyContentKeyword}`
-    | AlignContentKeyword;
+  placeContent?: MaybeResponsive<
+    `${AlignContentKeyword} ${JustifyContentKeyword}` | AlignContentKeyword
+  >;
 }
 interface GridItemProps$1 extends GlobalProps, BaseBoxPropsWithRole {
   /**
@@ -3074,7 +3106,7 @@ interface OptionGroupProps$1 extends GlobalProps {
   children?: ComponentChildren;
 }
 interface OrderedListProps$1 extends GlobalProps {}
-interface PageProps$1 extends GlobalProps {
+interface PageProps$1 extends GlobalProps, ActionSlots {
   /**
    * The content of the Page.
    */
@@ -3092,18 +3124,9 @@ interface PageProps$1 extends GlobalProps {
    */
   accessory?: ComponentChildren;
   /**
-   * The primary action to perform, provided as a button or link type element.
-   * When a `Button` is added to the `primaryAction` it's variant is set to `primary`
-   */
-  primaryAction?: ComponentChildren;
-  /**
    * The breadcrumb actions to perform, provided as link elements.
    */
   breadcrumbActions?: ComponentChildren;
-  /**
-   * Secondary actions. These are `Button`s that will be contextually the 'secondary' variant.
-   */
-  secondaryActions?: ComponentChildren;
   /**
    * The aside element is section of a page that contains content that is tangentially related to the content around the aside element, and which could be considered separate from that content.
    * Such sections are often represented as sidebars in printed typography.
@@ -3260,34 +3283,34 @@ interface StackProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
    */
   children?: ComponentChildren;
   /**
-   * Sets how the children are placed within the Stack.
+   * Sets how the children are placed within the Stack. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
    *
    * @default 'block'
    *
    * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
    */
-  direction?: 'block' | 'inline';
+  direction?: MaybeResponsive<'block' | 'inline'>;
   /**
    * Aligns the Stack along the main axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
    * @default 'normal'
    */
-  justifyContent?: JustifyContentKeyword;
+  justifyContent?: MaybeResponsive<JustifyContentKeyword>;
   /**
    * Aligns the Stack's children along the cross axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
    * @default 'normal'
    */
-  alignItems?: AlignItemsKeyword;
+  alignItems?: MaybeResponsive<AlignItemsKeyword>;
   /**
    * Aligns the Stack along the cross axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
    * @default 'normal'
    */
-  alignContent?: AlignContentKeyword;
+  alignContent?: MaybeResponsive<AlignContentKeyword>;
 }
 interface SwitchProps$1
   extends GlobalProps,
@@ -3376,7 +3399,7 @@ interface TableHeaderProps$1 extends GlobalProps {
   /**
    * Content designation for the table's `list` variant.
    *
-   * - `primary'`: The most important content. Only one column can have this designation.
+   * - `primary`: The most important content. Only one column can have this designation.
    * - `secondary`: The secondary content. Only one column can have this designation.
    * - `kicker`: Content that is displayed before primary and secondary content, but with less visual prominence. Only one column can have this designation.
    * - `inline`: Content that is displayed inline.
@@ -3432,7 +3455,7 @@ interface TextProps$1
   /**
    * Provide semantic meaning and default styling to the text.
    *
-   * Other presentation properties on `<s-text>` override the default styling.
+   * Other presentation properties on Text override the default styling.
    *
    * @default 'generic'
    */
