@@ -10,7 +10,6 @@
 /// <reference lib="DOM" />
 import type {Key, Ref} from './components-shared.d.ts';
 
-export type ComponentChildren = any;
 /**
  * Used when an element does not have children.
  */
@@ -19,32 +18,26 @@ export interface BaseElementProps<TClass = HTMLElement> {
   ref?: Ref<TClass>;
   slot?: Lowercase<string>;
 }
-/**
- * Used when an element has children.
- */
-export interface BaseElementPropsWithChildren<TClass = HTMLElement>
-  extends BaseElementProps<TClass> {
-  children?: ComponentChildren;
-}
 
-declare const tagName = 's-navigator';
-export interface NavigatorJSXProps {
-  initialScreenName?: string;
-  children?: React.ReactNode;
+declare const tagName = 's-qr-code';
+export interface QrCodeJSXProps {
+  /**
+   * The value to encode in the QR code
+   */
+  content: string;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: NavigatorJSXProps;
+    [tagName]: QrCodeJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: NavigatorJSXProps &
-        BaseElementPropsWithChildren<NavigatorJSXProps>;
+      [tagName]: QrCodeJSXProps & BaseElementProps<QrCodeJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {NavigatorJSXProps};
+export type {QrCodeJSXProps};

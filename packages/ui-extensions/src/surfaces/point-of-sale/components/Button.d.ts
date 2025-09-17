@@ -38,14 +38,39 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 
 declare const tagName = 's-button';
 export interface ButtonJSXProps
-  extends Pick<
-    ButtonProps,
-    'disabled' | 'command' | 'commandFor' | 'loading' | 'tone' | 'variant'
-  > {
+  extends Pick<ButtonProps, 'disabled' | 'command' | 'commandFor' | 'loading'> {
+  /**
+   * Sets the action the `commandFor` should take when this clickable is activated.
+   *
+   * See the documentation of particular components for the actions they support.
+   *
+   * - `--auto`: a default action for the target component.
+   * - `--show`: shows the target component.
+   * - `--hide`: hides the target component.
+   * - `--toggle`: toggles the target component.
+   *
+   * @default '--auto'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
+   */
+  command?: Extract<
+    ButtonProps['command'],
+    '--auto' | '--show' | '--hide' | '--toggle'
+  >;
+  /**
+   * Sets the tone of the Button, based on the intention of the information being conveyed.
+   *
+   * @default 'auto'
+   */
   tone?: Extract<
     ButtonProps['tone'],
     'auto' | 'critical' | 'neutral' | 'warning' | 'caution'
   >;
+  /**
+   * Changes the visual appearance of the Button.
+   *
+   * @default 'auto' - the variant is automatically determined by the Button's context
+   */
   variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
   onClick?: (event: CallbackEvent<typeof tagName>) => void;
   children?: ComponentChildren;

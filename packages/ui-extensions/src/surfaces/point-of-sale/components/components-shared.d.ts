@@ -2143,6 +2143,20 @@ export interface DateSpinnerProps
    */
   onChange?: (event: Event) => void;
 }
+export interface DividerProps extends GlobalProps {
+  /**
+   * Specify the direction of the divider. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+   *
+   * @default 'inline'
+   */
+  direction?: 'inline' | 'block';
+  /**
+   * Modify the color to be more or less intense.
+   *
+   * @default 'base'
+   */
+  color?: ColorKeyword;
+}
 export interface EmailFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
