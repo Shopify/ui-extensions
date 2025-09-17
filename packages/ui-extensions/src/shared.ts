@@ -941,11 +941,10 @@ export interface GraphQLError {
 /**
  * Represents a read-only value managed on the main thread that an extension can subscribe to.
  *
- * Example: Checkout uses this to manage the state of an object and
+ * Example: extension surfaces use this to manage the state of an object and
  * communicate state changes to extensions running in a sandboxed web worker.
  *
- * This interface is compatible with Preact's ReadonlySignal:
- * https://github.com/preactjs/signals/blob/a023a132a81bd4ba4a0bebb8cbbeffbd8c8bbafc/packages/core/src/index.ts#L700-L709
+ * This interface is compatible with [Preact's ReadonlySigna](https://github.com/preactjs/signals/blob/a023a132a81bd4ba4a0bebb8cbbeffbd8c8bbafc/packages/core/src/index.ts#L700-L709).
  */
 export interface ReadonlySignalLike<T> {
   readonly value: T;
@@ -956,9 +955,31 @@ export interface ReadonlySignalLike<T> {
  * A remote-subscribable object exposed to a sandboxed web worker.
  *
  * Example: extensions use this to get updates about an object
- * managed by Checkout on the main thread.
+ * managed by extension surfaces on the main thread.
  */
 export interface StatefulRemoteSubscribable<T> extends ReadonlySignalLike<T> {
   readonly current: T;
+  destroy(): Promise<void>;
+}
+
+/**
+ * Represents a read-only value managed on the main thread that an extension can subscribe to.
+ *
+ * Example: extension surfaces use this to manage the state of an object and
+ * communicate state changes to extensions running in a sandboxed web worker.
+ *
+ * This interface is compatible with [Preact's ReadonlySignal](https://github.com/preactjs/signals/blob/a023a132a81bd4ba4a0bebb8cbbeffbd8c8bbafc/packages/core/src/index.ts#L700-L709).
+ *
+ * Some fields are deprecated but still supported for backwards compatibility.
+ * In version 2025-10, [`StatefulRemoteSubscribable`](https://github.com/Shopify/remote-dom/blob/03929aa8418a89d41d294005f219837582718df8/packages/async-subscription/src/types.ts#L17) was replaced with `ReadonlySignalLike`. The old fields will be removed some time in the future.
+ */
+export interface SubscribableSignalLike<T> extends ReadonlySignalLike<T> {
+  /**
+   * @deprecated Use `.value` instead.
+   */
+  readonly current: T;
+  /**
+   * @deprecated No longer needed. Use Preact Signal management instead.
+   */
   destroy(): Promise<void>;
 }

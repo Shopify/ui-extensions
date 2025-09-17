@@ -12,7 +12,7 @@ import {
   CustomerPrivacy,
   ApplyTrackingConsentChangeType,
   ToastApi,
-  ReadonlySignalLike,
+  SubscribableSignalLike,
 } from '../shared';
 
 import type {ExtensionTarget} from '../../extension-targets';
@@ -96,7 +96,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * > Note: When an extension is being installed in the editor, the settings will be empty until
    * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
    */
-  settings: ReadonlySignalLike<ExtensionSettings>;
+  settings: SubscribableSignalLike<ExtensionSettings>;
 
   /**
    * The Toast API displays a non-disruptive message that displays at the bottom
@@ -128,7 +128,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Customer privacy consent settings and a flag denoting if consent has previously been collected.
    */
-  customerPrivacy: ReadonlySignalLike<CustomerPrivacy>;
+  customerPrivacy: SubscribableSignalLike<CustomerPrivacy>;
 
   /**
    * Allows setting and updating customer privacy consent settings and tracking consent metafields.
@@ -166,7 +166,7 @@ export interface Localization {
   /**
    * The language the buyer sees in the customer account hub.
    */
-  language: ReadonlySignalLike<Language>;
+  language: SubscribableSignalLike<Language>;
 
   /**
    * This is the buyer's language, as supported by the extension.
@@ -179,14 +179,14 @@ export interface Localization {
    * translations at all, this value is the default locale for your
    * extension (that is, the one matching your .default.json file).
    */
-  extensionLanguage: ReadonlySignalLike<Language>;
+  extensionLanguage: SubscribableSignalLike<Language>;
 
   /**
    * The country context of the buyer sees in the customer account.
    * It will update if the buyer changes the country in the customer account
    * If the country is unknown, then the value is undefined.
    */
-  country: ReadonlySignalLike<Country | undefined>;
+  country: SubscribableSignalLike<Country | undefined>;
 }
 
 /**

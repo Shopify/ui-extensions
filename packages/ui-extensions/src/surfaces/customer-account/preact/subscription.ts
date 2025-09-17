@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'preact/hooks';
 
-import {ReadonlySignalLike} from '../api/shared';
+import {SubscribableSignalLike} from '../api/shared';
 
-type Subscriber<T> = Parameters<ReadonlySignalLike<T>['subscribe']>[0];
+type Subscriber<T> = Parameters<SubscribableSignalLike<T>['subscribe']>[0];
 
 /**
  * Subscribes to the special wrapper type that all “changeable” values in the
@@ -14,7 +14,7 @@ type Subscriber<T> = Parameters<ReadonlySignalLike<T>['subscribe']>[0];
  * > for accessing the current value of each individual resource in the checkout.
  */
 export function useSubscription<Value>(
-  subscription: ReadonlySignalLike<Value>,
+  subscription: SubscribableSignalLike<Value>,
 ): Value {
   const [, setValue] = useState(subscription.value);
 
