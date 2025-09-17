@@ -9,7 +9,7 @@ import type {
   CountryCode,
   GraphQLError,
   StorefrontApiVersion,
-  ReadonlySignalLike,
+  SubscribableSignalLike,
 } from '../../../shared';
 
 export {
@@ -21,7 +21,7 @@ export {
   CountryCode,
   GraphQLError,
   StorefrontApiVersion,
-  ReadonlySignalLike,
+  SubscribableSignalLike,
 };
 
 /**
@@ -163,7 +163,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
    */
-  capabilities: ReadonlySignalLike<Capability[]>;
+  capabilities: SubscribableSignalLike<Capability[]>;
 
   /**
    * Information about the editor where the extension is being rendered.
@@ -183,7 +183,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * from where it was rendered. The extension continues running so that
    * your extension is immediately available to render if the buyer navigates back.
    */
-  rendered: ReadonlySignalLike<boolean>;
+  rendered: SubscribableSignalLike<boolean>;
 
   /**
    * The URL to the script that started the extension target.
@@ -346,11 +346,11 @@ export interface AuthenticatedAccount {
    * Provides the company info of the authenticated business customer.
    * If the customer is not authenticated or is not a business customer, this value is `undefined`.
    */
-  purchasingCompany: ReadonlySignalLike<PurchasingCompany | undefined>;
+  purchasingCompany: SubscribableSignalLike<PurchasingCompany | undefined>;
   /**
    * Provides the customer information of the authenticated customer.
    */
-  customer: ReadonlySignalLike<Customer | undefined>;
+  customer: SubscribableSignalLike<Customer | undefined>;
 }
 
 /**

@@ -78,7 +78,7 @@ export type {
   VisitorResult,
   VisitorSuccess,
   VisitorError,
-  ReadonlySignalLike,
+  SubscribableSignalLike,
 } from './api/shared';
 
 export type {CartLineItemApi} from './api/cart-line/cart-line-item';
