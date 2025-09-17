@@ -1,4 +1,4 @@
-/** VERSION: 1.18.0 **/
+/** VERSION: 1.19.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -211,6 +211,8 @@ declare class ColorField
   /** @private */
   formResetCallback(): void;
   constructor();
+  /** @private */
+  setInternalValue(value: string, normalize: boolean): void;
 }
 declare global {
   interface HTMLElementTagNameMap {

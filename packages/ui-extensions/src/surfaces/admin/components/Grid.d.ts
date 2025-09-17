@@ -1,4 +1,4 @@
-/** VERSION: 1.18.0 **/
+/** VERSION: 1.19.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -9,6 +9,11 @@ import type {
   BoxProps$1,
   GridProps$1,
   MaybeAllValuesShorthandProperty,
+  SizeUnits,
+  AlignItemsKeyword,
+  JustifyItemsKeyword,
+  AlignContentKeyword,
+  JustifyContentKeyword,
   ComponentChild,
 } from './shared.d.ts';
 
@@ -195,6 +200,12 @@ export interface BoxProps
    * @default 'auto'
    */
   display: ResponsiveBoxProps['display'];
+  blockSize: SizeUnits | 'auto';
+  minBlockSize: SizeUnits | '0';
+  maxBlockSize: SizeUnits | 'none';
+  inlineSize: SizeUnits | 'auto';
+  minInlineSize: SizeUnits | '0';
+  maxInlineSize: SizeUnits | 'none';
 }
 
 export type RequiredAlignedProps = Required<GridProps$1>;
@@ -217,6 +228,14 @@ export interface GridProps
         | 'placeContent'
       >
     > {
+  alignItems: AlignItemsKeyword | '';
+  justifyItems: JustifyItemsKeyword | '';
+  placeItems: `${AlignItemsKeyword} ${JustifyItemsKeyword}` | AlignItemsKeyword;
+  alignContent: AlignContentKeyword | '';
+  justifyContent: JustifyContentKeyword | '';
+  placeContent:
+    | `${AlignContentKeyword} ${JustifyContentKeyword}`
+    | AlignContentKeyword;
   /**
    * Adjust spacing between elements.
    *

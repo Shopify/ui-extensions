@@ -1,4 +1,4 @@
-/** VERSION: 1.18.0 **/
+/** VERSION: 1.19.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -10,6 +10,7 @@ import type {
   BoxProps$1,
   ClickableProps$1,
   MaybeAllValuesShorthandProperty,
+  SizeUnits,
   InteractionProps,
   ComponentChild,
 } from './shared.d.ts';
@@ -197,6 +198,12 @@ export interface BoxProps
    * @default 'auto'
    */
   display: ResponsiveBoxProps['display'];
+  blockSize: SizeUnits | 'auto';
+  minBlockSize: SizeUnits | '0';
+  maxBlockSize: SizeUnits | 'none';
+  inlineSize: SizeUnits | 'auto';
+  minInlineSize: SizeUnits | '0';
+  maxInlineSize: SizeUnits | 'none';
 }
 
 export type ClickableBaseProps = Required<

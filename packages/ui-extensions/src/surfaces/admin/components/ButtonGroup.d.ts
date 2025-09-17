@@ -1,4 +1,4 @@
-/** VERSION: 1.18.0 **/
+/** VERSION: 1.19.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -111,7 +111,19 @@ declare module 'preact' {
 declare const tagName = 's-button-group';
 export interface ButtonGroupJSXProps
   extends Partial<ButtonGroupProps>,
-    Pick<ButtonGroupProps$1, 'id'> {}
+    Pick<ButtonGroupProps$1, 'id'> {
+  /**
+   * The primary action button for the group.
+   * Accepts a single Button element with a `variant` of `primary`.
+   * Cannot be used when gap="none".
+   */
+  primaryAction?: ComponentChild;
+  /**
+   * Secondary action buttons for the group.
+   * Accepts Button elements with a `variant` of `secondary` or `auto`.
+   */
+  secondaryActions?: ComponentChild;
+}
 
 export {ButtonGroup};
 export type {ButtonGroupJSXProps};

@@ -1,4 +1,4 @@
-/** VERSION: 1.18.0 **/
+/** VERSION: 1.19.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -214,8 +214,6 @@ declare class NumberField
   extends PreactFieldElement<NumberFieldProps['autocomplete']>
   implements NumberFieldProps
 {
-  get value(): string;
-  set value(value: string);
   accessor inputMode: NumberFieldProps['inputMode'];
   accessor step: NumberFieldProps['step'];
   accessor max: NumberFieldProps['max'];
