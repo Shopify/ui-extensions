@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.38
+
+### Patch Changes
+
+- [#3314](https://github.com/Shopify/ui-extensions/pull/3314) [`8d5cbd8e9e053198a41d81130517e17049ee0a39`](https://github.com/Shopify/ui-extensions/commit/8d5cbd8e9e053198a41d81130517e17049ee0a39) Thanks [@lsit](https://github.com/lsit)! - Update signal-like type in customer account to have deprecated fields
+
+- [#3281](https://github.com/Shopify/ui-extensions/pull/3281) [`f5aceb0113f760dc6aab167afd61083a4c6e2ce7`](https://github.com/Shopify/ui-extensions/commit/f5aceb0113f760dc6aab167afd61083a4c6e2ce7) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Add documentation for Admin Modal
+
 ## 2025.10.0-rc.37
 
 ### Minor Changes
