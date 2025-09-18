@@ -8,7 +8,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   definitions: [
     {
-      title: 'DateField',
+      title: 'Properties',
       description: '',
       type: 'DateField',
     },

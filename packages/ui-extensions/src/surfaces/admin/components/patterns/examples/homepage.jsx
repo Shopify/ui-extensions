@@ -347,8 +347,8 @@ export default function HomePage() {
                   of our templates.
                 </s-paragraph>
                 <s-button-group>
-                <s-button> Upload image </s-button>
-                <s-button tone="neutral" variant="tertiary"> Browse templates </s-button>
+                <s-button slot="primary-action"> Upload image </s-button>
+                <s-button slot="secondary-actions"> Browse templates </s-button>
               </s-button-group>
               </s-grid>
               <s-stack alignItems="center">
