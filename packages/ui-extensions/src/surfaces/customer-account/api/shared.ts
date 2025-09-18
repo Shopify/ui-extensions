@@ -9,8 +9,9 @@ import type {
   CountryCode,
   GraphQLError,
   StorefrontApiVersion,
-  SubscribableSignalLike,
 } from '../../../shared';
+
+import type {SubscribableSignalLike} from '../../checkout/shared';
 
 export {
   ApiVersion,
