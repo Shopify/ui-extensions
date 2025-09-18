@@ -1,5 +1,5 @@
 import {createRender} from '@quilted/react-testing';
-import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
+import type {SubscribableSignalLike} from '../../shared';
 
 import type {
   ApiForExtension,
@@ -39,8 +39,8 @@ interface Options {
 
 export function createMockStatefulRemoteSubscribable<T>(
   value: T,
-): StatefulRemoteSubscribable<T> {
-  const subscribable: StatefulRemoteSubscribable<T> = {
+): SubscribableSignalLike<T> {
+  const subscribable: SubscribableSignalLike<T> = {
     get current() {
       return value;
     },

@@ -24,6 +24,11 @@ const data: ReferenceEntityTemplateSchema = {
       description: '',
       type: 'ModalElementSlots',
     },
+    {
+      title: 'Methods',
+      description: '',
+      type: 'ModalElementMethods',
+    },
   ],
   defaultExample: {
     image: 'modal-default.png',

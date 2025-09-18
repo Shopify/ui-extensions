@@ -1,19 +1,17 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {useDeliveryGroups} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  const deliveryGroups = useDeliveryGroups();
-  const deliveryOptions =
-    deliveryGroups[0].deliveryOptions;
-
+  const deliveryGroups =
+    shopify.deliveryGroups.value;
   return (
     <s-banner>
       First delivery option:{' '}
-      {deliveryOptions[0].title}
+      {deliveryGroups[0].deliveryOptions[0].title}
     </s-banner>
   );
 }

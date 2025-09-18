@@ -65,7 +65,7 @@ export interface AddressAutocompleteStandardApi<
   /**
    * A stable ID that represents the current checkout.
    *
-   * Matches the `token` field in the [WebPixel checkout payload](https://shopify.dev/docs/api/pixels/customer-events#checkout)
+   * This matches the `data.checkout.token` field in a [checkout-related WebPixel event](https://shopify.dev/docs/api/web-pixels-api/standard-events/checkout_started#properties-propertydetail-data)
    * and the `checkout_token` field in the [REST Admin API `Order` resource](https://shopify.dev/docs/api/admin-rest/unstable/resources/order#resource-object).
    */
   checkoutToken: CheckoutToken | undefined;

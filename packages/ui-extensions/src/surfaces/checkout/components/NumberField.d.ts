@@ -18,6 +18,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    children?: preact.ComponentChildren;
+}
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
@@ -26,7 +32,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-number-field";
-export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'accessory' | 'autocomplete' | 'controls' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'icon' | 'id' | 'inputMode' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
+export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'accessory' | 'autocomplete' | 'controls' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'icon' | 'id' | 'inputMode' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
     /**
      * @deprecated Use `label` instead.
      * @private
@@ -77,7 +83,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: NumberFieldProps & BaseElementProps<NumberFieldElement>;
+            [tagName]: NumberFieldProps & BaseElementPropsWithChildren<NumberFieldElement>;
         }
     }
 }

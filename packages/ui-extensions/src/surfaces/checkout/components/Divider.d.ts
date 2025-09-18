@@ -11,7 +11,7 @@
 import type {DividerProps$1} from './components-shared.d.ts';
 
 declare const tagName = "s-divider";
-export interface DividerProps extends DividerProps$1 {
+export interface DividerProps extends Pick<DividerProps$1, 'direction' | 'id'> {
 }
 export interface DividerElement extends DividerProps, Omit<HTMLElement, 'id'> {
 }

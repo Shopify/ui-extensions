@@ -86,6 +86,8 @@ export type {
   ShippingAddress,
 } from './checkout/api/shared';
 
+export type {SubscribableSignalLike} from './checkout/shared';
+
 export type {
   RedeemableAttribute,
   RedeemableChange,
@@ -140,6 +142,7 @@ export type {
   CheckoutApi,
 } from './checkout/api/checkout/checkout';
 export type {OrderConfirmationApi} from './checkout/api/order-confirmation/order-confirmation';
+export type {Announcement} from './checkout/api/announcement/announcement';
 
 export type {CartLineItemApi} from './checkout/api/cart-line/cart-line-item';
 export type {PickupLocationListApi} from './checkout/api/pickup/pickup-location-list';
@@ -182,8 +185,11 @@ export type {
   PaymentOptionItemApi,
 } from './checkout/api/payment/payment-option-item';
 
+// eslint-disable-next-line no-restricted-syntax
+export * from './checkout/components';
+// eslint-disable-next-line no-restricted-syntax
 export * from './checkout/extension-targets';
-
+// eslint-disable-next-line no-restricted-syntax
 export * from './checkout/shared';
 export {
   Style,
@@ -202,6 +208,7 @@ export type {
   ViewportSizeCondition,
 } from './checkout/style/types';
 
+// eslint-disable-next-line no-restricted-syntax
 export * from './checkout/globals';
-
+// eslint-disable-next-line no-restricted-syntax
 export * from '../shared';

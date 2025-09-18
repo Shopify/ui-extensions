@@ -1,9 +1,6 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {
-  useApplyAttributeChange,
-  useAttributeValues,
-  useInstructions,
-} from '@shopify/ui-extensions/checkout/preact';
+import {useAttributeValues} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
@@ -13,9 +10,6 @@ function Extension() {
   const [freeGiftRequested] = useAttributeValues([
     'requestedFreeGift',
   ]);
-  const applyAttributeChange =
-    useApplyAttributeChange();
-  const instructions = useInstructions();
 
   // 1. Render a UI
   return (
@@ -30,7 +24,8 @@ function Extension() {
     const isChecked = event.target.checked;
     // 2. Check if the API is available
     if (
-      !instructions.attributes.canUpdateAttributes
+      !shopify.instructions.value.attributes
+        .canUpdateAttributes
     ) {
       console.error(
         'Attributes cannot be updated in this checkout',
@@ -38,11 +33,12 @@ function Extension() {
       return;
     }
     // 3. Call the API to modify checkout
-    const result = await applyAttributeChange({
-      key: 'requestedFreeGift',
-      type: 'updateAttribute',
-      value: isChecked ? 'yes' : 'no',
-    });
+    const result =
+      await shopify.applyAttributeChange({
+        key: 'requestedFreeGift',
+        type: 'updateAttribute',
+        value: isChecked ? 'yes' : 'no',
+      });
     console.log(
       'applyAttributeChange result',
       result,

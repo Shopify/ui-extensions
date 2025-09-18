@@ -14,6 +14,10 @@ import {CheckoutUIExtensionError} from './errors';
  * which contains a basic set of properties about the checkout.
  *
  * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensiontargets).
+ *
+ * > Note:
+ * > As of version 2025-10, you no longer need this hook. The full API object is accessible via
+ * > the global `shopify` object.
  */
 export function useApi<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
