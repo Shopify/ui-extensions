@@ -1,15 +1,15 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {useCartLineTarget} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  const {
-    merchandise: {title},
-  } = useCartLineTarget();
   return (
-    <s-text>Line item title: {title}</s-text>
+    <s-text>
+      Line item title:{' '}
+      {shopify.target.value.merchandise.title}
+    </s-text>
   );
 }

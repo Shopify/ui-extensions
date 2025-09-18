@@ -1,3 +1,4 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 
 // 1. Export the extension

@@ -9,7 +9,6 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {PhoneFieldProps$1} from './components-shared.d.ts';
-import { ReactNode } from 'react';
 
 /**
  * Used when an element does not have children.
@@ -18,6 +17,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    children?: preact.ComponentChildren;
 }
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
@@ -62,13 +67,6 @@ export interface PhoneFieldElementEvents {
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface PhoneFieldSlots extends Pick<PhoneFieldProps$1, 'accessory'> {
-    /**
-     * Additional content to be displayed in the field.
-     * Commonly used to display an icon that activates a tooltip providing more information.
-     */
-    accessory?: ReactNode;
-}
 export interface PhoneFieldElementSlots {
     /**
      * Additional content to be displayed in the field.
@@ -76,13 +74,13 @@ export interface PhoneFieldElementSlots {
      */
     accessory?: HTMLElement;
 }
-export interface PhoneFieldElement extends PhoneFieldElementProps, PhoneFieldSlots, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+export interface PhoneFieldElement extends PhoneFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: PhoneFieldEvents['onBlur'];
     onchange: PhoneFieldEvents['onChange'];
     onfocus: PhoneFieldEvents['onFocus'];
     oninput: PhoneFieldEvents['onInput'];
 }
-export interface PhoneFieldProps extends PhoneFieldElementProps, PhoneFieldSlots, PhoneFieldEvents {
+export interface PhoneFieldProps extends PhoneFieldElementProps, PhoneFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -92,9 +90,9 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: PhoneFieldProps & BaseElementProps<PhoneFieldElement>;
+            [tagName]: PhoneFieldProps & BaseElementPropsWithChildren<PhoneFieldElement>;
         }
     }
 }
 
-export type { PhoneFieldElement, PhoneFieldElementEvents, PhoneFieldElementProps, PhoneFieldElementSlots, PhoneFieldEvents, PhoneFieldProps, PhoneFieldSlots };
+export type { PhoneFieldElement, PhoneFieldElementEvents, PhoneFieldElementProps, PhoneFieldElementSlots, PhoneFieldEvents, PhoneFieldProps };

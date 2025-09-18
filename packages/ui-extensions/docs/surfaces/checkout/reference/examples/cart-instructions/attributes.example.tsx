@@ -1,25 +1,19 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {
-  useApplyAttributeChange,
-  useInstructions,
-} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  const applyAttributeChange =
-    useApplyAttributeChange();
-  const instructions = useInstructions();
-
   if (
-    instructions.attributes.canUpdateAttributes
+    shopify.instructions.value.attributes
+      .canUpdateAttributes
   ) {
     return (
       <s-button
         onClick={() =>
-          applyAttributeChange({
+          shopify.applyAttributeChange({
             type: 'updateAttribute',
             key: 'loyaltyPoints',
             value: '100',

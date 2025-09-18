@@ -5,7 +5,7 @@ import sharedContent from '../../../../docs/shared/components/TextField';
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
   requires: '',
-  thumbnail: 'textfield-thumbnail.png',
+  thumbnail: 'text-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -26,12 +26,12 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'textfield-default.png',
+    image: 'text-field-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
-          code: './examples/basic-textfield.example.html',
+          code: './examples/basic-text-field.example.html',
           language: 'html',
         },
       ],

@@ -4,7 +4,7 @@ import sharedContent from '../../../../docs/shared/components/DropZone';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  thumbnail: 'dropzone-thumbnail.png',
+  thumbnail: 'drop-zone-thumbnail.png',
   requires: '',
   isVisualComponent: true,
   type: '',
@@ -21,14 +21,14 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'dropzone-default.png',
+    image: 'drop-zone-default.png',
     altText:
       'An image showcasing the DropZone component with a button to add files with error and dragged over states.',
     codeblock: {
       title: 'Code',
       tabs: [
         {
-          code: './examples/basic-dropzone.example.html',
+          code: './examples/basic-drop-zone.example.html',
           language: 'html',
         },
       ],

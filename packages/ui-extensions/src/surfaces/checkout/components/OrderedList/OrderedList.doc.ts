@@ -6,7 +6,7 @@ import listItemSharedContent from '../../../../docs/shared/components/ListItem';
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
   isVisualComponent: true,
-  thumbnail: 'orderedlist-thumbnail.png',
+  thumbnail: 'ordered-list-thumbnail.png',
   requires: '',
   type: '',
   definitions: [
@@ -22,12 +22,12 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'orderedlist-default.png',
+    image: 'ordered-list-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
-          code: './examples/basic-orderedlist.example.html',
+          code: './examples/basic-ordered-list.example.html',
           language: 'html',
         },
       ],
@@ -39,12 +39,11 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent: `
-        - Use \`s-ordered-list\` when you need to present items in a specific sequence or order.
-        - Each item in the list should be wrapped in a \`s-list-item\` component.
-        - Keep list items concise and consistent in length when possible.
-        - Use \`s-ordered-list\` for step-by-step instructions, numbered procedures, or ranked items.
-        - Consider using \`s-ordered-list\` when the order of items is important for understanding.
-      `,
+- Use \`s-ordered-list\` when you need to present items in a specific sequence or order.
+- Each item in the list should be wrapped in a \`s-list-item\` component.
+- Keep list items concise and consistent in length when possible.
+- Use \`s-ordered-list\` for step-by-step instructions, numbered procedures, or ranked items.
+- Consider using \`s-ordered-list\` when the order of items is important for understanding.`,
     },
   ],
 };

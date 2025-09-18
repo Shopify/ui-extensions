@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {StackProps$1,MaybeAllValuesShorthandProperty,BorderSizeKeyword, BorderStyleKeyword,ColorKeyword} from './components-shared.d.ts';
+import type {StackProps$1,MaybeAllValuesShorthandProperty, MaybeResponsive,BorderSizeKeyword, BorderStyleKeyword,ColorKeyword} from './components-shared.d.ts';
 
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
@@ -35,9 +35,9 @@ export interface StackProps extends Pick<StackProps$1, 'accessibilityLabel' | 'a
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<StackProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
-    alignContent?: Extract<StackProps$1['alignContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
-    alignItems?: Extract<StackProps$1['alignItems'], 'normal' | 'stretch' | 'center' | 'start' | 'end'>;
-    justifyContent?: Extract<StackProps$1['justifyContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
+    alignContent?: MaybeResponsive<Extract<StackProps$1['alignContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>>;
+    alignItems?: MaybeResponsive<Extract<StackProps$1['alignItems'], 'normal' | 'stretch' | 'center' | 'start' | 'end'>>;
+    justifyContent?: MaybeResponsive<Extract<StackProps$1['justifyContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>>;
 }
 export interface StackElement extends StackProps, Omit<HTMLElement, 'id'> {
 }
