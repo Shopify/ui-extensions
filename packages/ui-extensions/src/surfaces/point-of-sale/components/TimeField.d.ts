@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {BadgeProps, Key, Ref} from './components-shared.d.ts';
+import type {TimeFieldProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -26,27 +26,40 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
+  currentTarget: HTMLElementTagNameMap[T];
+  bubbles?: boolean;
+  cancelable?: boolean;
+  composed?: boolean;
+  detail?: any;
+  eventPhase: number;
+  target: HTMLElementTagNameMap[T] | null;
+}
 
-declare const tagName = 's-badge';
-export interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
-  tone?: Extract<
-    BadgeProps['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
-  >;
-  children?: ComponentChildren;
+declare const tagName = 's-time-field';
+export interface TimeFieldJSXProps
+  extends Pick<
+    TimeFieldProps,
+    'id' | 'label' | 'disabled' | 'value' | 'error' | 'details'
+  > {
+  onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: BadgeJSXProps;
+    [tagName]: TimeFieldJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BadgeJSXProps & BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName]: TimeFieldJSXProps &
+        BaseElementPropsWithChildren<TimeFieldJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {BadgeJSXProps};
+export type {TimeFieldJSXProps};

@@ -8,12 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  Key,
-  Ref,
-  BaseClickableProps,
-  GlobalProps,
-} from './components-shared.d.ts';
+import type {TileProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -39,38 +34,6 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   detail?: any;
   eventPhase: number;
   target: HTMLElementTagNameMap[T] | null;
-}
-
-export interface TileProps
-  extends GlobalProps,
-    Pick<BaseClickableProps, 'onClick' | 'disabled'> {
-  /**
-   * The primary text displayed on the Tile.
-   *
-   * @default ''
-   */
-  heading?: string;
-  /**
-   * Secondary supporting text displayed below the heading.
-   *
-   * @default ''
-   */
-  subheading?: string;
-  /**
-   * A numeric indicator rendered within the Tile (for example, a count or a step number).
-   *
-   * - When provided, the indicator is displayed inside the tile.
-   * - Intended for small integers. Implementations may clamp, truncate, or abbreviate larger values.
-   * - Omit to render the tile without a numeric indicator.
-   *
-   */
-  itemCount?: number;
-  /**
-   * Changes the visual appearance of the Tile.
-   *
-   * @default 'auto'
-   */
-  tone?: 'accent' | 'auto' | 'neutral';
 }
 
 declare const tagName = 's-tile';

@@ -98,7 +98,7 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
 `,
       accordionContent: [
         {
-          title: "Update your extension's tsconfig.json",
+          title: "1. Update your extension's tsconfig.json",
           description:
             "Update your extension config at a path like `extensions/{extension-name}/tsconfig.json`. You do **not** need to change your app's root `tsconfig.json` file.",
           codeblock: {
@@ -119,9 +119,9 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
         },
         {
           title:
-            'Generate type definition file to support new global shopify object',
+            '2. Generate type definition file to support new global shopify object',
           description:
-            'These commands generate a `shopify.d.ts` file in your extension directory.',
+            'These commands generate a `shopify.d.ts` file in your extension directory. This imports UI Extension component types and declares the shopify API object for each extension target.',
           codeblock: {
             title: 'Support new global shopify object',
             tabs: [
@@ -315,7 +315,7 @@ Use the comparison table below to see which Polaris web components are available
 |   \`Navigator\`              |      |   Removed.   |
 |   \`NumberField\`            |   [\`NumberField\`](polaris-web-components/forms/numberfield)   |   Available   |
 |   \`PinPad\`                 |     |   Coming soon   |
-|   \`POSBlock\`               |   \`POSBlock\`   |   Coming soon   |
+|   \`POSBlock\`               |   [\`POSBlock\`](polaris-web-components/structure/posblock)   |   Available   |
 |   \`POSBlockRow\`            |    |   Replaced by \`POSBlock\`  |
 |   \`POSReceiptBlock\`        |     |   Replaced by \`POSBlock\`   |
 |   \`PrintPreview\`           |   \`DocumentPreview\`   |   Coming soon   |
@@ -334,7 +334,7 @@ Use the comparison table below to see which Polaris web components are available
 |   \`TextArea\`               |   [\`TextArea\`](polaris-web-components/forms/textarea)   |   Available   |
 |   \`TextField\`              |   [\`TextField\`](polaris-web-components/forms/textfield)   |   Available   |
 |   \`Tile\`                   | [\`Tile\`](polaris-web-components/actions/tile)  |  Available   |
-|   \`TimeField\`              |   \`TimeField\`   |   Coming soon   |
+|   \`TimeField\`              |   [\`TimeField\`](polaris-web-components/forms/timefield)   |   Available   |
 |   \`TimePicker\`             |   [\`TimePicker\`](polaris-web-components/forms/timepicker)   |   Available   |
 `,
     },
