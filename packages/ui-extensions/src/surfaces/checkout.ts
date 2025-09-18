@@ -142,7 +142,6 @@ export type {
   CheckoutApi,
 } from './checkout/api/checkout/checkout';
 export type {OrderConfirmationApi} from './checkout/api/order-confirmation/order-confirmation';
-export type {Announcement} from './checkout/api/announcement/announcement';
 
 export type {CartLineItemApi} from './checkout/api/cart-line/cart-line-item';
 export type {PickupLocationListApi} from './checkout/api/pickup/pickup-location-list';
