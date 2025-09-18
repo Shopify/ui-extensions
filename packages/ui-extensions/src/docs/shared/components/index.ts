@@ -1,4 +1,3 @@
-/* eslint-disable local/no-barrel-files */
 export {default as Abbreviation} from './Abbreviation';
 export {default as Badge} from './Badge';
 export {default as Banner} from './Banner';

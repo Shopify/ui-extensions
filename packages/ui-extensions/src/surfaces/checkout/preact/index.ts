@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable local/no-barrel-files */
 export * from './api';
 export * from './app-metafields';
 export * from './attributes';

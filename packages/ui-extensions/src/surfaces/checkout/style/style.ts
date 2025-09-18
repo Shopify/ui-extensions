@@ -15,23 +15,25 @@ const MEMOIZE_OPTIONS = {
   maxSize: MAX_CACHE_SIZE,
 };
 
-type Chainable<TConditionalStyle> =
-  TConditionalStyle extends ConditionalStyle<infer T, infer TAcceptedConditions>
-    ? TConditionalStyle & {
-        when: <
-          U,
-          AcceptedConditions extends BaseConditions = TAcceptedConditions,
-        >(
-          this: TConditionalStyle,
-          conditions: AcceptedConditions,
-          value: U,
-        ) => Chainable<
-          TConditionalStyle extends {default: T}
-            ? Required<ConditionalStyle<U, AcceptedConditions>>
-            : ConditionalStyle<U, AcceptedConditions>
-        >;
-      }
-    : never;
+type Chainable<TConditionalStyle> = TConditionalStyle extends ConditionalStyle<
+  infer T,
+  infer TAcceptedConditions
+>
+  ? TConditionalStyle & {
+      when: <
+        U,
+        AcceptedConditions extends BaseConditions = TAcceptedConditions,
+      >(
+        this: TConditionalStyle,
+        conditions: AcceptedConditions,
+        value: U,
+      ) => Chainable<
+        TConditionalStyle extends {default: T}
+          ? Required<ConditionalStyle<U, AcceptedConditions>>
+          : ConditionalStyle<U, AcceptedConditions>
+      >;
+    }
+  : never;
 
 type WhenContext<T, AcceptedConditions extends BaseConditions = Conditions> =
   | typeof Style
@@ -46,10 +48,10 @@ type WhenReturnType<
   TContext extends typeof Style
     ? ConditionalStyle<T, AcceptedConditions>
     : TContext extends {default: infer U}
-      ? Required<ConditionalStyle<T | U, AcceptedConditions>>
-      : TContext extends {default?: infer U}
-        ? ConditionalStyle<T | U, AcceptedConditions>
-        : ConditionalStyle<T, AcceptedConditions>
+    ? Required<ConditionalStyle<T | U, AcceptedConditions>>
+    : TContext extends {default?: infer U}
+    ? ConditionalStyle<T | U, AcceptedConditions>
+    : ConditionalStyle<T, AcceptedConditions>
 >;
 
 interface WhenFunction {
