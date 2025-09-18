@@ -346,10 +346,10 @@ export default function HomePage() {
                   Start by uploading an image to your gallery or choose from one
                   of our templates.
                 </s-paragraph>
-                <s-button-group>
-                <s-button slot="secondary-actions"> Upload image </s-button>
-                <s-button slot="secondary-actions"> Browse templates </s-button>
-              </s-button-group>
+                <s-stack direction="inline" gap="small-200">
+                  <s-button> Upload image </s-button>
+                  <s-button tone="neutral" variant="tertiary"> Browse templates </s-button>
+                </s-stack>
               </s-grid>
               <s-stack alignItems="center">
                 <s-box
