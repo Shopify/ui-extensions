@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.39
+
+### Patch Changes
+
+- [#3321](https://github.com/Shopify/ui-extensions/pull/3321) [`9ebdb3f971c103255b1686f2a19b34d2f8704737`](https://github.com/Shopify/ui-extensions/commit/9ebdb3f971c103255b1686f2a19b34d2f8704737) Thanks [@mayasarena](https://github.com/mayasarena)! - Update ButtonGroup documentation and fix DateField Properties title
+
 ## 2025.10.0-rc.38
 
 ### Patch Changes
