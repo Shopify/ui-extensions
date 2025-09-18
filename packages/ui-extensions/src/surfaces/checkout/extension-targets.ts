@@ -23,7 +23,6 @@ import type {
   AllowedComponents,
   AnyComponentExcept,
 } from './shared';
-import type {Announcement} from './api/announcement/announcement';
 
 /**
  * A UI extension will register for one or more extension targets using `shopify.extend()`.
@@ -668,8 +667,7 @@ export interface RenderExtensionTargets {
    */
   'purchase.thank-you.announcement.render': RenderExtension<
     OrderConfirmationApi &
-      StandardApi<'purchase.thank-you.announcement.render'> &
-      Announcement,
+      StandardApi<'purchase.thank-you.announcement.render'>,
     AnyComponent
   >;
 }
@@ -758,8 +756,12 @@ type ExtractedAllowedComponentsFromRenderExtension<T> =
 /**
  * @deprecated Use `ExtractedApiFromExtensionDefinition` instead.
  */
-type ExtractedApiFromRenderExtension<T> =
-  T extends RenderExtension<infer Api, any> ? Api : never;
+type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
+  infer Api,
+  any
+>
+  ? Api
+  : never;
 
 /**
  * Deprecated. Use `ApiForExtension` instead.
