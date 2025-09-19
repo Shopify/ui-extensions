@@ -8,12 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  PageProps,
-  Key,
-  Ref,
-  ComponentChild,
-} from './components-shared.d.ts';
+import type {DividerProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -32,31 +27,21 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   children?: ComponentChildren;
 }
 
-declare const tagName = 's-page';
-export type PickedProps = Pick<
-  PageProps,
-  'heading' | 'subheading' | 'secondaryActions' | 'aside'
->;
-export interface PageJSXProps extends PickedProps {
-  children?: ComponentChildren;
-  secondaryActions?: ComponentChild;
-  aside?: ComponentChild;
-}
+declare const tagName = 's-divider';
+export interface DividerJSXProps extends Pick<DividerProps, 'direction'> {}
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: PageJSXProps;
+    [tagName]: DividerJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<PageJSXProps, 'secondaryActions' | 'aside'> &
-        BaseElementPropsWithChildren<
-          Omit<PageJSXProps, 'secondaryActions' | 'aside'>
-        >;
+      [tagName]: DividerJSXProps &
+        BaseElementPropsWithChildren<DividerJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {PageJSXProps};
+export type {DividerJSXProps};
