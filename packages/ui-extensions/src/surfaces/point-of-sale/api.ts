@@ -28,11 +28,6 @@ export type {DeviceApi, DeviceApiContent} from './api/device-api/device-api';
 
 export type {LocaleApi, LocaleApiContent} from './api/locale-api/locale-api';
 
-export type {
-  NavigationApiContent,
-  NavigationApi,
-} from './api/navigation-api/navigation-api';
-
 export type {OrderApiContent, OrderApi} from './api/order-api/order-api';
 
 export type {

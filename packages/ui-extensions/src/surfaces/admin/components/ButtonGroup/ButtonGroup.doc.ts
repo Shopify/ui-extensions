@@ -12,6 +12,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: '',
       type: 'ButtonGroup',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'ButtonGroupSlots',
+    },
   ],
   defaultExample: {
     image: 'button-default.png',
