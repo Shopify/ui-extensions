@@ -2,7 +2,8 @@
 '@shopify/ui-extensions': minor
 ---
 
-- Added updated docs for checkout components
+- Added updated docs for checkout components and targets.
+- Added updated docs for customer account components and targets.
 - Added new components to checkout:
   - Badge
   - Clickable
