@@ -3614,7 +3614,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$H]: DividerProps$1;
+            [tagName$H]: DividerProps & BaseElementPropsWithChildren<DividerElement>;
         }
     }
 }
