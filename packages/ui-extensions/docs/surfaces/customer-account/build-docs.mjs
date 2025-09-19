@@ -58,7 +58,7 @@ const generateExtensionsDocs = async () => {
 
   const scripts = [
     `yarn tsc --project ${docsRelativePath}/${tsconfig} --moduleResolution node  --target esNext  --module CommonJS`,
-    `yarn generate-docs --input ./${docsRelativePath}/reference ./${docsRelativePath} ./${docsRelativePath}/../../../src/surfaces/customer-account/components --typesInput ./${srcRelativePath} --output ./${outputDir}`,
+    `yarn generate-docs --overridePath ./${docsRelativePath}/typeOverride.json --input ./${docsRelativePath}/reference ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
     `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS`,
     `yarn generate-docs --isLandingPage --input ./${docsRelativePath}/staticPages --output ./${outputDir}`,
     `yarn tsc ${docsRelativePath}/categories/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS`,
