@@ -1,5 +1,27 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.41
+
+### Minor Changes
+
+- [#3327](https://github.com/Shopify/ui-extensions/pull/3327) [`f04adfff3bb4a90328441e186b733b1be23a74d8`](https://github.com/Shopify/ui-extensions/commit/f04adfff3bb4a90328441e186b733b1be23a74d8) Thanks [@oliverigor](https://github.com/oliverigor)! - - Added updated docs for checkout components and targets.
+  - Added updated docs for customer account components and targets.
+  - Added new components to checkout:
+    - Badge
+    - Clickable
+    - Details
+    - Divider
+    - Grid
+    - GridItem
+    - MoneyField
+    - Popover
+    - PressButton
+    - Sheet
+    - SkeletonParagraph
+    - Summary
+    - Switch
+    - Tooltip
+
 ## 2025.10.0-rc.40
 
 ### Minor Changes
