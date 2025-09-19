@@ -1,5 +1,15 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.40
+
+### Minor Changes
+
+- [#3326](https://github.com/Shopify/ui-extensions/pull/3326) [`8057ab8093cf9fa63ab0ec45ca6685a7b198307b`](https://github.com/Shopify/ui-extensions/commit/8057ab8093cf9fa63ab0ec45ca6685a7b198307b) Thanks [@js-goupil](https://github.com/js-goupil)! - Aligned POS navigation api
+
+### Patch Changes
+
+- [#3329](https://github.com/Shopify/ui-extensions/pull/3329) [`5910c9ddc0a47db947fd009e4faace4815b52c4d`](https://github.com/Shopify/ui-extensions/commit/5910c9ddc0a47db947fd009e4faace4815b52c4d) Thanks [@jas7457](https://github.com/jas7457)! - Fix broken image links for Polaris Web Components
+
 ## 2025.10.0-rc.39
 
 ### Patch Changes
