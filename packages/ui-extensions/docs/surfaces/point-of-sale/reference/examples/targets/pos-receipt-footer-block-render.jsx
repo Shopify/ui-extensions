@@ -12,10 +12,10 @@ const Extension = () => {
       : `exampleOrder=${encodeURIComponent(transaction.orderId ?? '')}`;
 
   return (
-    <s-pos-receipt-block>
+    <s-pos-block>
       <s-text>Transaction type: {transaction.transactionType}</s-text>
       <s-text>Total tax ({transaction.taxTotal.currency}): {transaction.taxTotal.amount}</s-text>
-      <s-qr-code value={`https://www.shopify.com?${qrCodeValue}`} />
-    </s-pos-receipt-block>
+      <s-qr-code content={`https://www.shopify.com?${qrCodeValue}`} />
+    </s-pos-block>
   );
 };

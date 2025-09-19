@@ -6,12 +6,10 @@ export default async () => {
 
 const Extension = () => {
   return (
-    <s-navigator initial-screen-name="CartLineItemDetails">
-      <s-screen name="CartLineItemDetails" title="Cart Line Item Details">
-        <s-scroll-box>
-          <s-text>Cart line item action extension</s-text>
-        </s-scroll-box>
-      </s-screen>
-    </s-navigator>
+    <s-page heading='Cart Line Item Details'>
+      <s-scroll-box>
+        <s-text>Cart Line item action extension</s-text>
+      </s-scroll-box>
+    </s-page>
   );
 };
