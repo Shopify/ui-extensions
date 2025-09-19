@@ -1,14 +1,14 @@
-import type {StatefulRemoteSubscribable} from '../../../../shared';
+import type {SubscribableSignalLike} from '../../shared';
 import type {PickupLocationOption} from '../standard/standard';
 
 export interface PickupLocationItemApi {
   /**
    * The pickup location the extension is attached to.
    */
-  target: StatefulRemoteSubscribable<PickupLocationOption>;
+  target: SubscribableSignalLike<PickupLocationOption>;
 
   /**
    * Whether the pickup location is currently selected.
    */
-  isTargetSelected: StatefulRemoteSubscribable<boolean>;
+  isTargetSelected: SubscribableSignalLike<boolean>;
 }

@@ -9,7 +9,6 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {ModalProps$1} from './components-shared.d.ts';
-import { ReactNode } from 'react';
 
 /**
  * Used when an element does not have children.
@@ -36,16 +35,6 @@ declare const tagName = "s-modal";
 export interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
     size?: Extract<ModalProps$1['size'], 'small-100' | 'small' | 'base' | 'large-100' | 'large' | 'max'>;
 }
-export interface ModalSlots extends Pick<ModalProps$1, 'primaryAction' | 'secondaryActions'> {
-    /**
-     * The primary action to perform, provided as a button type element.
-     */
-    primaryAction?: ReactNode;
-    /**
-     * The secondary actions to perform, provided as button type elements.
-     */
-    secondaryActions?: ReactNode;
-}
 export interface ModalElementSlots {
     /**
      * The primary action to perform, provided as a button type element.
@@ -56,9 +45,19 @@ export interface ModalElementSlots {
      */
     'secondary-actions'?: HTMLElement;
 }
-export interface ModalEvents extends Pick<ModalProps$1, 'onHide' | 'onShow'> {
+export interface ModalEvents extends Pick<ModalProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
+}
+export interface ModalElementMethods extends Pick<ModalProps$1, 'hideOverlay'> {
 }
 export interface ModalElementEvents {
+    /**
+     * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
+     */
+    afterhide?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    /**
+     * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
+     */
+    aftershow?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback fired after the overlay is hidden.
      */
@@ -68,11 +67,13 @@ export interface ModalElementEvents {
      */
     show?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface ModalElement extends ModalElementProps, ModalSlots, Omit<HTMLElement, 'id'> {
+export interface ModalElement extends ModalElementProps, ModalElementMethods, Omit<HTMLElement, 'id'> {
+    onafterhide: ModalEvents['onAfterHide'];
+    onaftershow: ModalEvents['onAfterShow'];
     onhide: ModalEvents['onHide'];
     onshow: ModalEvents['onShow'];
 }
-export interface ModalProps extends ModalElementProps, ModalSlots, ModalEvents {
+export interface ModalProps extends ModalElementProps, ModalEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -87,4 +88,4 @@ declare module 'preact' {
     }
 }
 
-export type { ModalElement, ModalElementEvents, ModalElementProps, ModalElementSlots, ModalProps, ModalSlots };
+export type { ModalElement, ModalElementEvents, ModalElementProps, ModalElementSlots, ModalProps };

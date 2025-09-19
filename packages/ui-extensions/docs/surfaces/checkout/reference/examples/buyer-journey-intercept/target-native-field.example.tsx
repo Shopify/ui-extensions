@@ -1,21 +1,19 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {
-  useBuyerJourneyIntercept,
-  useShippingAddress,
-} from '@shopify/ui-extensions/checkout/preact';
+import {useBuyerJourneyIntercept} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  const address = useShippingAddress();
-
   useBuyerJourneyIntercept(
     ({canBlockProgress}) => {
       return canBlockProgress &&
-        address?.countryCode &&
-        address.countryCode !== 'CA'
+        shopify.shippingAddress.value
+          ?.countryCode &&
+        shopify.shippingAddress.value
+          .countryCode !== 'CA'
         ? {
             behavior: 'block',
             reason: 'Invalid shipping country',

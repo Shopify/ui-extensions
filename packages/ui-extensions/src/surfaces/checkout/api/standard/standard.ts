@@ -16,8 +16,8 @@ import type {
   GraphQLError,
   StorefrontApiVersion,
   LocalizedFieldKey,
-  StatefulRemoteSubscribable,
 } from '../../../../shared';
+import type {SubscribableSignalLike} from '../../shared';
 
 export type {ApiVersion, Capability} from '../../../../shared';
 
@@ -82,7 +82,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * * [`iframe.sources`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#iframe): the extension can embed an external URL in an iframe.
    */
-  capabilities: StatefulRemoteSubscribable<Capability[]>;
+  capabilities: SubscribableSignalLike<Capability[]>;
 
   /**
    * Information about the editor where the extension is being rendered.
@@ -102,7 +102,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * from where it was rendered. The extension continues running so that
    * your extension is immediately available to render if the customer navigates back.
    */
-  rendered: StatefulRemoteSubscribable<boolean>;
+  rendered: SubscribableSignalLike<boolean>;
 
   /**
    * The URL to the script that started the extension target.
@@ -350,17 +350,17 @@ export interface Localization {
   /**
    * The currency that the customer sees for money amounts in the checkout.
    */
-  currency: StatefulRemoteSubscribable<Currency>;
+  currency: SubscribableSignalLike<Currency>;
 
   /**
    * The buyer’s time zone.
    */
-  timezone: StatefulRemoteSubscribable<Timezone>;
+  timezone: SubscribableSignalLike<Timezone>;
 
   /**
    * The language the customer sees in the checkout.
    */
-  language: StatefulRemoteSubscribable<Language>;
+  language: SubscribableSignalLike<Language>;
 
   /**
    * This is the customer's language, as supported by the extension.
@@ -373,7 +373,7 @@ export interface Localization {
    * translations at all, then this value is the default locale for your
    * extension (that is, the one matching your .default.json file).
    */
-  extensionLanguage: StatefulRemoteSubscribable<Language>;
+  extensionLanguage: SubscribableSignalLike<Language>;
 
   /**
    * The country context of the checkout. This value carries over from the
@@ -381,7 +381,7 @@ export interface Localization {
    * experience. It will update if the buyer changes the country of their
    * shipping address. If the country is unknown, then the value is undefined.
    */
-  country: StatefulRemoteSubscribable<Country | undefined>;
+  country: SubscribableSignalLike<Country | undefined>;
 
   /**
    * The [market](https://shopify.dev/docs/apps/markets) context of the
@@ -389,8 +389,12 @@ export interface Localization {
    * was used to contextualize the storefront experience. It will update if the
    * buyer changes the country of their shipping address.  If the market is unknown,
    * then the value is undefined.
+   *
+   * > Caution: This field is deprecated and will be removed in a future version.
+   *
+   * @deprecated Deprecated as of version `2025-04`
    */
-  market: StatefulRemoteSubscribable<Market | undefined>;
+  market: SubscribableSignalLike<Market | undefined>;
 }
 
 export interface LocalizedField {
@@ -422,15 +426,15 @@ export interface BuyerJourney {
    *
    * For example, when viewing the **Order status** page after submitting payment, the buyer will have completed their order.
    */
-  completed: StatefulRemoteSubscribable<boolean>;
+  completed: SubscribableSignalLike<boolean>;
   /**
    * All possible steps a buyer can take to complete the checkout. These steps may vary depending on the type of checkout or the shop's configuration.
    */
-  steps: StatefulRemoteSubscribable<BuyerJourneyStep[]>;
+  steps: SubscribableSignalLike<BuyerJourneyStep[]>;
   /**
    * What step of checkout the buyer is currently on.
    */
-  activeStep: StatefulRemoteSubscribable<BuyerJourneyStepReference | undefined>;
+  activeStep: SubscribableSignalLike<BuyerJourneyStepReference | undefined>;
 }
 
 /**
@@ -496,7 +500,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Gift Cards that have been applied to the checkout.
    */
-  appliedGiftCards: StatefulRemoteSubscribable<AppliedGiftCard[]>;
+  appliedGiftCards: SubscribableSignalLike<AppliedGiftCard[]>;
 
   /**
    * The cart instructions used to create the checkout and possibly limit extension capabilities.
@@ -510,7 +514,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *  See the [update guide](/docs/api/checkout-ui-extensions/apis/cart-instructions#examples) for more information.
    *
    */
-  instructions: StatefulRemoteSubscribable<CartInstructions>;
+  instructions: SubscribableSignalLike<CartInstructions>;
 
   /**
    * The metafields requested in the
@@ -522,17 +526,17 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
+  appMetafields: SubscribableSignalLike<AppMetafieldEntry[]>;
 
   /**
    * The custom attributes left by the customer to the merchant, either in their cart or during checkout.
    */
-  attributes: StatefulRemoteSubscribable<Attribute[]>;
+  attributes: SubscribableSignalLike<Attribute[]>;
 
   /**
    * All available payment options.
    */
-  availablePaymentOptions: StatefulRemoteSubscribable<PaymentOption[]>;
+  availablePaymentOptions: SubscribableSignalLike<PaymentOption[]>;
 
   /**
    * Information about the buyer that is interacting with the checkout.
@@ -552,15 +556,15 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Settings applied to the buyer's checkout.
    */
-  checkoutSettings: StatefulRemoteSubscribable<CheckoutSettings>;
+  checkoutSettings: SubscribableSignalLike<CheckoutSettings>;
 
   /**
    * A stable ID that represents the current checkout.
    *
-   * Matches the `token` field in the [WebPixel checkout payload](https://shopify.dev/docs/api/pixels/customer-events#checkout)
+   * This matches the `data.checkout.token` field in a [checkout-related WebPixel event](https://shopify.dev/docs/api/web-pixels-api/standard-events/checkout_started#properties-propertydetail-data)
    * and the `checkout_token` field in the [REST Admin API `Order` resource](https://shopify.dev/docs/api/admin-rest/unstable/resources/order#resource-object).
    */
-  checkoutToken: StatefulRemoteSubscribable<CheckoutToken | undefined>;
+  checkoutToken: SubscribableSignalLike<CheckoutToken | undefined>;
 
   /**
    * Details on the costs the buyer will pay for this checkout.
@@ -570,17 +574,17 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * A list of delivery groups containing information about the delivery of the items the customer intends to purchase.
    */
-  deliveryGroups: StatefulRemoteSubscribable<DeliveryGroup[]>;
+  deliveryGroups: SubscribableSignalLike<DeliveryGroup[]>;
 
   /**
    * A list of discount codes currently applied to the checkout.
    */
-  discountCodes: StatefulRemoteSubscribable<CartDiscountCode[]>;
+  discountCodes: SubscribableSignalLike<CartDiscountCode[]>;
 
   /**
    * Discounts that have been applied to the entire cart.
    */
-  discountAllocations: StatefulRemoteSubscribable<CartDiscountAllocation[]>;
+  discountAllocations: SubscribableSignalLike<CartDiscountAllocation[]>;
 
   /**
    * The meta information about the extension.
@@ -613,7 +617,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * A list of lines containing information about the items the customer intends to purchase.
    */
-  lines: StatefulRemoteSubscribable<CartLine[]>;
+  lines: SubscribableSignalLike<CartLine[]>;
 
   /**
    * The details about the location, language, and currency of the customer. For utilities to easily
@@ -637,12 +641,12 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * > Tip:
    * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.
    */
-  metafields: StatefulRemoteSubscribable<Metafield[]>;
+  metafields: SubscribableSignalLike<Metafield[]>;
 
   /**
    * A note left by the customer to the merchant, either in their cart or during checkout.
    */
-  note: StatefulRemoteSubscribable<string | undefined>;
+  note: SubscribableSignalLike<string | undefined>;
 
   /**
    * The method used to query the Storefront GraphQL API with a prefetched token.
@@ -657,7 +661,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Payment options selected by the buyer.
    */
-  selectedPaymentOptions: StatefulRemoteSubscribable<SelectedPaymentOption[]>;
+  selectedPaymentOptions: SubscribableSignalLike<SelectedPaymentOption[]>;
 
   /**
    * The session token providing a set of claims as a signed JSON Web Token (JWT).
@@ -679,7 +683,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * > Note: When an extension is being installed in the editor, the settings will be empty until
    * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
    */
-  settings: StatefulRemoteSubscribable<ExtensionSettings>;
+  settings: SubscribableSignalLike<ExtensionSettings>;
 
   /**
    * The proposed customer shipping address. During the information step, the address
@@ -689,7 +693,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  shippingAddress?: StatefulRemoteSubscribable<ShippingAddress | undefined>;
+  shippingAddress?: SubscribableSignalLike<ShippingAddress | undefined>;
 
   /**
    * The proposed customer billing address. The address updates when the field is
@@ -697,7 +701,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  billingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
+  billingAddress?: SubscribableSignalLike<MailingAddress | undefined>;
 
   /** The shop where the checkout is taking place. */
   shop: Shop;
@@ -729,7 +733,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Customer privacy consent settings and a flag denoting if consent has previously been collected.
    */
-  customerPrivacy: StatefulRemoteSubscribable<CustomerPrivacy>;
+  customerPrivacy: SubscribableSignalLike<CustomerPrivacy>;
 
   /**
    * Allows setting and updating customer privacy consent settings and tracking consent metafields.
@@ -744,7 +748,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * The API for reading additional fields that are required in checkout under certain circumstances.
    * For example, some countries require additional fields for customs information or tax identification numbers.
    */
-  localizedFields?: StatefulRemoteSubscribable<LocalizedField[]>;
+  localizedFields?: SubscribableSignalLike<LocalizedField[]>;
 }
 
 export interface Ui {
@@ -780,7 +784,7 @@ export interface BuyerIdentity {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  customer: StatefulRemoteSubscribable<Customer | undefined>;
+  customer: SubscribableSignalLike<Customer | undefined>;
 
   /**
    * The email address of the buyer that is interacting with the cart.
@@ -788,7 +792,7 @@ export interface BuyerIdentity {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  email: StatefulRemoteSubscribable<string | undefined>;
+  email: SubscribableSignalLike<string | undefined>;
 
   /**
    * The phone number of the buyer that is interacting with the cart.
@@ -796,7 +800,7 @@ export interface BuyerIdentity {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  phone: StatefulRemoteSubscribable<string | undefined>;
+  phone: SubscribableSignalLike<string | undefined>;
 
   /**
    * Provides details of the company and the company location that the business customer is purchasing on behalf of.
@@ -805,7 +809,7 @@ export interface BuyerIdentity {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  purchasingCompany: StatefulRemoteSubscribable<PurchasingCompany | undefined>;
+  purchasingCompany: SubscribableSignalLike<PurchasingCompany | undefined>;
 }
 
 /**
@@ -913,28 +917,28 @@ export interface CartCost {
    * A `Money` value representing the subtotal value of the items in the cart at the current
    * step of checkout.
    */
-  subtotalAmount: StatefulRemoteSubscribable<Money>;
+  subtotalAmount: SubscribableSignalLike<Money>;
 
   /**
    * A `Money` value representing the total shipping a buyer can expect to pay at the current
    * step of checkout. This value includes shipping discounts. Returns undefined if shipping
    * has not been negotiated yet, such as on the information step.
    */
-  totalShippingAmount: StatefulRemoteSubscribable<Money | undefined>;
+  totalShippingAmount: SubscribableSignalLike<Money | undefined>;
 
   /**
    * A `Money` value representing the total tax a buyer can expect to pay at the current
    * step of checkout or the total tax included in product and shipping prices. Returns
    * undefined if taxes are unavailable.
    */
-  totalTaxAmount: StatefulRemoteSubscribable<Money | undefined>;
+  totalTaxAmount: SubscribableSignalLike<Money | undefined>;
 
   /**
    * A `Money` value representing the minimum a buyer can expect to pay at the current
    * step of checkout. This value excludes amounts yet to be negotiated. For example,
    * the information step might not have delivery costs calculated.
    */
-  totalAmount: StatefulRemoteSubscribable<Money>;
+  totalAmount: SubscribableSignalLike<Money>;
 }
 
 export interface CartLine {

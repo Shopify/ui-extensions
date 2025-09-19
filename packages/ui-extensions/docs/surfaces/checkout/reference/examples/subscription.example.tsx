@@ -1,17 +1,17 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {useSubscription} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  // Equivalent to the useTotalAmount() hook to subscribe and re-render your extension on changes
-  const totalAmount = useSubscription(
-    shopify.cost.totalAmount,
-  );
-
+  // As of version 2025-10, you no longer need the `useSubscription` hook.
+  // When you access `.value` on subscribable properties,
+  // Preact will automatically re-render as `.value` changes.
   return (
-    <s-banner>{totalAmount.amount}</s-banner>
+    <s-banner>
+      {shopify.cost.totalAmount.value.amount}
+    </s-banner>
   );
 }

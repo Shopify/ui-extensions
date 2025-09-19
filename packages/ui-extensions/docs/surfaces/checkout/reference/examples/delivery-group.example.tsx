@@ -1,17 +1,14 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {
-  useDeliveryGroups,
-  useDeliveryGroup,
-} from '@shopify/ui-extensions/checkout/preact';
+import {useDeliveryGroup} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  const deliveryGroups = useDeliveryGroups();
   const firstDeliveryGroup = useDeliveryGroup(
-    deliveryGroups[0],
+    shopify.deliveryGroups.value[0],
   );
 
   if (!firstDeliveryGroup) {

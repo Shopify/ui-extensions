@@ -1,8 +1,8 @@
-import type {StatefulRemoteSubscribable} from '../../../../shared';
+import type {SubscribableSignalLike} from '../../shared';
 
 export interface PickupLocationListApi {
   /**
    * Whether the customer location input form is shown to the buyer.
    */
-  isLocationFormVisible: StatefulRemoteSubscribable<boolean>;
+  isLocationFormVisible: SubscribableSignalLike<boolean>;
 }

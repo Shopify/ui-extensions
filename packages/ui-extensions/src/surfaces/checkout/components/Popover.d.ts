@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {PopoverProps$1} from './components-shared.d.ts';
+import type {PopoverProps$1,SizeUnitsOrAuto, SizeUnitsOrNone, SizeUnits} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -32,7 +32,55 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-popover";
-export interface PopoverElementProps extends Pick<PopoverProps$1, 'blockSize' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize'> {
+export interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
+    /**
+     * Adjust the block size.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+     *
+     * @default 'auto'
+     */
+    blockSize?: SizeUnitsOrAuto;
+    /**
+     * Adjust the inline size.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
+     *
+     * @default 'auto'
+     */
+    inlineSize?: SizeUnitsOrAuto;
+    /**
+     * Adjust the maximum block size.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
+     *
+     * @default 'none'
+     */
+    maxBlockSize?: SizeUnitsOrNone;
+    /**
+     * Adjust the maximum inline size.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
+     *
+     * @default 'none'
+     */
+    maxInlineSize?: SizeUnitsOrNone;
+    /**
+     * Adjust the minimum block size.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
+     *
+     * @default '0'
+     */
+    minBlockSize?: SizeUnits;
+    /**
+     * Adjust the minimum inline size.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
+     *
+     * @default '0'
+     */
+    minInlineSize?: SizeUnits;
 }
 export interface PopoverEvents extends Pick<PopoverProps$1, 'onHide' | 'onShow'> {
 }

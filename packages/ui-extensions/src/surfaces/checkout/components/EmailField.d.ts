@@ -61,6 +61,13 @@ export interface EmailFieldElementEvents {
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
+export interface EmailFieldElementSlots {
+    /**
+     * Additional content to be displayed in the field.
+     * Commonly used to display an icon that activates a tooltip providing more information.
+     */
+    accessory?: HTMLElement;
+}
 export interface EmailFieldElement extends EmailFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: EmailFieldEvents['onBlur'];
     onchange: EmailFieldEvents['onChange'];
@@ -82,4 +89,4 @@ declare module 'preact' {
     }
 }
 
-export type { EmailFieldElement, EmailFieldElementEvents, EmailFieldElementProps, EmailFieldEvents, EmailFieldProps };
+export type { EmailFieldElement, EmailFieldElementEvents, EmailFieldElementProps, EmailFieldElementSlots, EmailFieldEvents, EmailFieldProps };

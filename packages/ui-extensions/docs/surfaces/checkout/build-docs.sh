@@ -87,7 +87,7 @@ if [ $build_exit -ne 0 ]; then
   fail_and_exit $build_exit
 fi
 
-# Make sure https://shopify.dev URLs are relative so they work in Spin.
+# Make sure https://shopify.dev URLs are relative.
 # See https://github.com/Shopify/generate-docs/issues/181
 run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
 sed_exit=$?
@@ -121,13 +121,8 @@ if [ -d $SHOPIFY_DEV_PATH ]; then
   if [ $sed_exit -ne 0 ]; then
     fail_and_exit $sed_exit
   fi
-  rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/app/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
-
-  if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
-    echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/checkout-ui-extensions"
-  else
-    echo "Docs: https://shopify-dev.myshopify.io/docs/api/checkout-ui-extensions"
-  fi
+  rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/react-app/public/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
+  echo "Docs: https://shopify-dev.myshopify.io/docs/api/checkout-ui-extensions"
 else
     echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."
   fi

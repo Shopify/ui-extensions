@@ -1,22 +1,18 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {
-  useApplyNoteChange,
-  useInstructions,
-} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  const applyNoteChange = useApplyNoteChange();
-  const instructions = useInstructions();
-
-  if (instructions.notes.canUpdateNote) {
+  if (
+    shopify.instructions.value.notes.canUpdateNote
+  ) {
     return (
       <s-button
         onClick={() =>
-          applyNoteChange({
+          shopify.applyNoteChange({
             type: 'updateNote',
             note: 'Please include a free gift.',
           })

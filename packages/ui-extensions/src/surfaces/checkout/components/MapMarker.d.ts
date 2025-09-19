@@ -9,7 +9,6 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {MapMarkerProps$1} from './components-shared.d.ts';
-import { ReactNode } from 'react';
 
 /**
  * Used when an element does not have children.
@@ -18,6 +17,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    children?: preact.ComponentChildren;
 }
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
@@ -40,14 +45,6 @@ export interface MapMarkerElementEvents {
      */
     click?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface MapMarkerSlots {
-    /**
-     * The graphic to use as the marker.
-     *
-     * If unset, it will default to the provider’s default marker.
-     */
-    graphic?: ReactNode;
-}
 export interface MapMarkerElementSlots {
     /**
      * The graphic to use as the marker.
@@ -56,7 +53,7 @@ export interface MapMarkerElementSlots {
      */
     graphic?: HTMLElement;
 }
-export interface MapMarkerElement extends MapMarkerElementProps, MapMarkerSlots, Omit<HTMLElement, 'id' | 'onclick'> {
+export interface MapMarkerElement extends MapMarkerElementProps, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: MapMarkerEvents['onClick'];
 }
 export interface MapMarkerProps extends MapMarkerElementProps, MapMarkerEvents {
@@ -69,9 +66,9 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: MapMarkerProps & BaseElementProps<MapMarkerElement>;
+            [tagName]: MapMarkerProps & BaseElementPropsWithChildren<MapMarkerElement>;
         }
     }
 }
 
-export type { MapMarkerElement, MapMarkerElementEvents, MapMarkerElementProps, MapMarkerElementSlots, MapMarkerEvents, MapMarkerProps, MapMarkerSlots };
+export type { MapMarkerElement, MapMarkerElementEvents, MapMarkerElementProps, MapMarkerElementSlots, MapMarkerEvents, MapMarkerProps };

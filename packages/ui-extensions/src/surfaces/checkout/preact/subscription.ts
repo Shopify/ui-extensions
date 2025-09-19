@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'preact/hooks';
 
-import type {StatefulRemoteSubscribable} from '../../../shared';
+import type {SubscribableSignalLike} from '../shared';
 
-type Subscriber<T> = Parameters<StatefulRemoteSubscribable<T>['subscribe']>[0];
+type Subscriber<T> = Parameters<SubscribableSignalLike<T>['subscribe']>[0];
 
 /**
  * Subscribes to the special wrapper type that all "changeable" values in the
@@ -10,13 +10,14 @@ type Subscriber<T> = Parameters<StatefulRemoteSubscribable<T>['subscribe']>[0];
  * and subscribes to update the value when changes occur in the checkout.
  *
  * > Note:
- * > You generally shouldn't need to use this directly, as there are dedicated hooks
- * > for accessing the current value of each individual resource in the checkout.
+ * > As of version 2025-10, you no longer need this hook. When you access `.value`
+ * > (instead of `.current`) on subscribable properties, Preact will automatically
+ * > re-render as `.value` changes.
  */
 export function useSubscription<Value>(
-  subscription: StatefulRemoteSubscribable<Value>,
+  subscription: SubscribableSignalLike<Value>,
 ): Value {
-  const [, setValue] = useState(subscription.current);
+  const [, setValue] = useState(subscription.value);
 
   useEffect(() => {
     let didUnsubscribe = false;
@@ -34,7 +35,7 @@ export function useSubscription<Value>(
     // Because we're subscribing in a passive effect,
     // it's possible for an update to occur between render and the effect handler.
     // Check for this and schedule an update if work has occurred.
-    checkForUpdates(subscription.current);
+    checkForUpdates(subscription.value);
 
     return () => {
       didUnsubscribe = true;
@@ -42,5 +43,5 @@ export function useSubscription<Value>(
     };
   }, [subscription]);
 
-  return subscription.current;
+  return subscription.value;
 }

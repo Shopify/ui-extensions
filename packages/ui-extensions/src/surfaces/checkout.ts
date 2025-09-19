@@ -86,6 +86,8 @@ export type {
   ShippingAddress,
 } from './checkout/api/shared';
 
+export type {SubscribableSignalLike} from './checkout/shared';
+
 export type {
   RedeemableAttribute,
   RedeemableChange,
@@ -183,8 +185,8 @@ export type {
 } from './checkout/api/payment/payment-option-item';
 
 export * from './checkout/extension-targets';
-
 export * from './checkout/shared';
+
 export {
   Style,
   isConditionalStyle,

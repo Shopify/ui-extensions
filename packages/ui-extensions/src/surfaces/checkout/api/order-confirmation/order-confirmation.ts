@@ -1,4 +1,4 @@
-import type {StatefulRemoteSubscribable} from '../../../../shared';
+import type {SubscribableSignalLike} from '../../shared';
 
 export interface OrderConfirmation {
   order: {
@@ -23,5 +23,5 @@ export interface OrderConfirmationApi {
   /**
    * Order information that's available post-checkout.
    */
-  orderConfirmation: StatefulRemoteSubscribable<OrderConfirmation>;
+  orderConfirmation: SubscribableSignalLike<OrderConfirmation>;
 }
