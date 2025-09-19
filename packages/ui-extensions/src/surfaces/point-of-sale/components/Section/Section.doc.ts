@@ -13,6 +13,11 @@ const data: ReferenceEntityTemplateSchema = {
       description: '',
       type: 'Section',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'SectionSlots',
+    },
   ],
   category: 'Polaris web components',
   subCategory: 'Structure',
