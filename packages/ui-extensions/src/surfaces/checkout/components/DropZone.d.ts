@@ -26,9 +26,9 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-drop-zone";
-export interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required'> {
+export interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required' | 'value'> {
 }
-export interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput'> {
+export interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput' | 'onChange'> {
 }
 export interface DropZoneElementEvents {
     /**
@@ -39,10 +39,15 @@ export interface DropZoneElementEvents {
      * Callback when the user makes any changes in the field.
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    /**
+     * Callback when the user has finished selecting a file or files.
+     */
+    change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface DropZoneElement extends DropZoneElementProps, Omit<HTMLElement, 'id' | 'oninput'> {
+export interface DropZoneElement extends DropZoneElementProps, Omit<HTMLElement, 'id' | 'oninput' | 'onchange'> {
     ondroprejected: DropZoneEvents['onDropRejected'];
     oninput: DropZoneEvents['onInput'];
+    onchange: DropZoneEvents['onChange'];
 }
 export interface DropZoneProps extends DropZoneElementProps, DropZoneEvents {
 }

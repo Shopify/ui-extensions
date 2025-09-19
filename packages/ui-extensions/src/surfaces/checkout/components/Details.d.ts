@@ -32,9 +32,9 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-details";
-export interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'open' | 'id' | 'toggleTransition'> {
+export interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'id' | 'open' | 'toggleTransition'> {
 }
-export interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle'> {
+export interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle' | 'onAfterToggle'> {
 }
 export interface DetailsElementEvents {
     /**
@@ -50,9 +50,22 @@ export interface DetailsElementEvents {
      * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
      */
     toggle?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    /**
+     * Callback fired when the element state changes **after** any animations have finished.
+     *
+     * - If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the
+     *   `newState` property will be set to `open`.
+     * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
+     *   `newState` will be `closed`.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
+     */
+    aftertoggle?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
 export interface DetailsElement extends Omit<HTMLElement, 'ontoggle' | 'id'> {
     ontoggle: DetailsEvents['onToggle'];
+    onaftertoggle: DetailsEvents['onAfterToggle'];
 }
 export interface DetailsProps extends DetailsElementProps, DetailsEvents {
 }

@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {GridProps$1,BorderSizeKeyword, BorderStyleKeyword,AlignContentKeyword, AlignItemsKeyword, JustifyContentKeyword, JustifyItemsKeyword,ColorKeyword,MaybeAllValuesShorthandProperty} from './components-shared.d.ts';
+import type {GridProps$1,MaybeResponsive, MaybeAllValuesShorthandProperty,BorderSizeKeyword, BorderStyleKeyword,AlignContentKeyword, AlignItemsKeyword, JustifyContentKeyword, JustifyItemsKeyword,ColorKeyword} from './components-shared.d.ts';
 
 export type ReducedAlignContentKeyword = Extract<AlignContentKeyword, 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
 export type ReducedAlignItemsKeyword = Extract<AlignItemsKeyword, 'normal' | 'stretch' | 'baseline' | 'center' | 'start' | 'end'>;
@@ -34,17 +34,17 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 
 declare const tagName = "s-grid";
 export interface GridProps extends Pick<GridProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'display' | 'gap' | 'gridTemplateColumns' | 'gridTemplateRows' | 'id' | 'inlineSize' | 'justifyContent' | 'justifyItems' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'placeContent' | 'placeItems' | 'rowGap'> {
-    alignContent?: ReducedAlignContentKeyword | '';
-    alignItems?: ReducedAlignItemsKeyword | '';
+    alignContent?: MaybeResponsive<ReducedAlignContentKeyword | ''>;
+    alignItems?: MaybeResponsive<ReducedAlignItemsKeyword | ''>;
     background?: Extract<GridProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
     borderColor?: ReducedColorKeyword | '';
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<GridProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
-    justifyContent?: ReducedJustifyContentKeyword | '';
-    justifyItems?: ReducedJustifyItemsKeyword | '';
-    placeContent?: `${ReducedAlignContentKeyword} ${ReducedJustifyContentKeyword}` | ReducedAlignContentKeyword;
-    placeItems?: `${ReducedAlignItemsKeyword} ${ReducedJustifyItemsKeyword}` | ReducedAlignItemsKeyword;
+    justifyContent?: MaybeResponsive<ReducedJustifyContentKeyword | ''>;
+    justifyItems?: MaybeResponsive<ReducedJustifyItemsKeyword | ''>;
+    placeContent?: MaybeResponsive<`${ReducedAlignContentKeyword} ${ReducedJustifyContentKeyword}` | ReducedAlignContentKeyword>;
+    placeItems?: MaybeResponsive<`${ReducedAlignItemsKeyword} ${ReducedJustifyItemsKeyword}` | ReducedAlignItemsKeyword>;
 }
 export interface GridElement extends GridProps, Omit<HTMLElement, 'id'> {
 }

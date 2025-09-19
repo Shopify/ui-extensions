@@ -8,8 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {IconProps$1, TextFieldProps$1,IconType} from './components-shared.d.ts';
-import { ReactNode } from 'react';
+import type {IconProps$1, TextFieldProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -20,11 +19,17 @@ export interface BaseElementProps<TClass = HTMLElement> {
     slot?: Lowercase<string>;
 }
 /**
- * The list of available icon types.
- *
- * @see https://github.com/Shopify/ui-api-design/blob/main/packages/ui-api-design/src/components/Icon/Icon.ts#L10
+ * Used when an element has children.
  */
-export type ReducedIconTypes = Extract<IconType, 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'circle' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'filter' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'image' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'map' | 'menu-horizontal' | 'menu-vertical' | 'menu' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'reset' | 'return' | 'savings' | 'search' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'>;
+export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    children?: preact.ComponentChildren;
+}
+/**
+ * The list of available icon types
+ * Ideally we would infer the type from CHECKOUT_AVAILABLE_ICONS by doing (typeof CHECKOUT_AVAILABLE_ICONS)[number]
+ * but the docs tool does not support this syntax.
+ */
+export type ReducedIconTypes = 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'circle' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'filter' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'image' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'map' | 'menu-horizontal' | 'menu-vertical' | 'menu' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'reset' | 'return' | 'savings' | 'search' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x';
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
@@ -90,13 +95,6 @@ export interface TextFieldElementEvents {
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface TextFieldSlots {
-    /**
-     * Additional content to be displayed in the field.
-     * Commonly used to display an icon that activates a tooltip providing more information.
-     */
-    accessory?: ReactNode;
-}
 export interface TextFieldElementSlots {
     /**
      * Additional content to be displayed in the field.
@@ -104,13 +102,13 @@ export interface TextFieldElementSlots {
      */
     accessory?: HTMLElement;
 }
-export interface TextFieldElement extends TextFieldElementProps, TextFieldSlots, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+export interface TextFieldElement extends TextFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: TextFieldEvents['onBlur'];
     onchange: TextFieldEvents['onChange'];
     onfocus: TextFieldEvents['onFocus'];
     oninput: TextFieldEvents['onInput'];
 }
-export interface TextFieldProps extends TextFieldElementProps, TextFieldSlots, TextFieldEvents {
+export interface TextFieldProps extends TextFieldElementProps, TextFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -120,9 +118,9 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: TextFieldProps & BaseElementProps<TextFieldElement>;
+            [tagName]: TextFieldProps & BaseElementPropsWithChildren<TextFieldElement>;
         }
     }
 }
 
-export type { TextFieldElement, TextFieldElementEvents, TextFieldElementProps, TextFieldElementSlots, TextFieldEvents, TextFieldProps, TextFieldSlots };
+export type { TextFieldElement, TextFieldElementEvents, TextFieldElementProps, TextFieldElementSlots, TextFieldEvents, TextFieldProps };

@@ -18,6 +18,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    children?: preact.ComponentChildren;
+}
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
@@ -26,11 +32,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-password-field";
-export interface PasswordFieldElementProps extends Pick<PasswordFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength'
-/** @todo: implement `minLength` */
- | 'name'
-/** @todo: implement `placeholder` */
- | 'readOnly' | 'required' | 'value'> {
+export interface PasswordFieldElementProps extends Pick<PasswordFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
 export interface PasswordFieldEvents extends Pick<PasswordFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
@@ -60,6 +62,13 @@ export interface PasswordFieldElementEvents {
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
+export interface PasswordFieldElementSlots {
+    /**
+     * Additional content to be displayed in the field.
+     * Commonly used to display an icon that activates a tooltip providing more information.
+     */
+    accessory?: HTMLElement;
+}
 export interface PasswordFieldElement extends PasswordFieldProps, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: PasswordFieldEvents['onBlur'];
     onchange: PasswordFieldEvents['onChange'];
@@ -76,9 +85,9 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: PasswordFieldProps & BaseElementProps<PasswordFieldElement>;
+            [tagName]: PasswordFieldProps & BaseElementPropsWithChildren<PasswordFieldElement>;
         }
     }
 }
 
-export type { PasswordFieldElement, PasswordFieldElementEvents, PasswordFieldElementProps, PasswordFieldEvents, PasswordFieldProps };
+export type { PasswordFieldElement, PasswordFieldElementEvents, PasswordFieldElementProps, PasswordFieldElementSlots, PasswordFieldEvents, PasswordFieldProps };

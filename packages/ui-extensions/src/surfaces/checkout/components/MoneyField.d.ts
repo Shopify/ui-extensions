@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {EmailFieldProps$1} from './components-shared.d.ts';
+import type {MoneyFieldProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -25,17 +25,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
     (event: CallbackEvent<TTagName, TEvent>): void;
 }) | null;
 
-declare const tagName = "s-email-field";
-export interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'maxLength' | 'minLength' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value'> {
-    /**
-     * @deprecated Use `label` instead.
-     * @private
-     */
-    placeholder?: string;
+declare const tagName = "s-money-field";
+export interface MoneyFieldElementProps extends Pick<MoneyFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'readOnly' | 'required' | 'step' | 'value'> {
 }
-export interface EmailFieldEvents extends Pick<EmailFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
+export interface MoneyFieldEvents extends Pick<MoneyFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-export interface EmailFieldElementEvents {
+export interface MoneyFieldElementEvents {
     /**
      * Callback when the element loses focus.
      *
@@ -61,32 +56,25 @@ export interface EmailFieldElementEvents {
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface EmailFieldElementSlots {
-    /**
-     * Additional content to be displayed in the field.
-     * Commonly used to display an icon that activates a tooltip providing more information.
-     */
-    accessory?: HTMLElement;
+export interface MoneyFieldElement extends MoneyFieldElementProps {
+    onblur: MoneyFieldEvents['onBlur'];
+    onchange: MoneyFieldEvents['onChange'];
+    onfocus: MoneyFieldEvents['onFocus'];
+    oninput: MoneyFieldEvents['onInput'];
 }
-export interface EmailFieldElement extends EmailFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
-    onblur: EmailFieldEvents['onBlur'];
-    onchange: EmailFieldEvents['onChange'];
-    onfocus: EmailFieldEvents['onFocus'];
-    oninput: EmailFieldEvents['onInput'];
-}
-export interface EmailFieldProps extends EmailFieldElementProps, EmailFieldEvents {
+export interface MoneyFieldProps extends MoneyFieldElementProps, MoneyFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: EmailFieldElement;
+        [tagName]: MoneyFieldElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: EmailFieldProps & BaseElementProps<EmailFieldElement>;
+            [tagName]: MoneyFieldProps & BaseElementProps<MoneyFieldElement>;
         }
     }
 }
 
-export type { EmailFieldElement, EmailFieldElementEvents, EmailFieldElementProps, EmailFieldElementSlots, EmailFieldEvents, EmailFieldProps };
+export type { MoneyFieldElement, MoneyFieldElementEvents, MoneyFieldElementProps, MoneyFieldEvents, MoneyFieldProps };

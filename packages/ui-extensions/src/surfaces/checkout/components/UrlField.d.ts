@@ -18,6 +18,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    children?: preact.ComponentChildren;
+}
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
@@ -26,11 +32,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-url-field";
-export interface UrlFieldElementProps extends Pick<URLFieldProps, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength'
-/** @todo: implement `minLength` */
- | 'name'
-/** @todo: implement `placeholder` */
- | 'readOnly' | 'required' | 'value'> {
+export interface UrlFieldElementProps extends Pick<URLFieldProps, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
 export interface UrlFieldEvents extends Pick<URLFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
@@ -60,6 +62,13 @@ export interface UrlFieldElementEvents {
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
+export interface UrlFieldElementSlots {
+    /**
+     * Additional content to be displayed in the field.
+     * Commonly used to display an icon that activates a tooltip providing more information.
+     */
+    accessory?: HTMLElement;
+}
 export interface UrlFieldElement extends UrlFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: UrlFieldEvents['onBlur'];
     onchange: UrlFieldEvents['onChange'];
@@ -76,9 +85,9 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: UrlFieldProps & BaseElementProps<UrlFieldElement>;
+            [tagName]: UrlFieldProps & BaseElementPropsWithChildren<UrlFieldElement>;
         }
     }
 }
 
-export type { UrlFieldElement, UrlFieldElementEvents, UrlFieldElementProps, UrlFieldEvents, UrlFieldProps };
+export type { UrlFieldElement, UrlFieldElementEvents, UrlFieldElementProps, UrlFieldElementSlots, UrlFieldEvents, UrlFieldProps };
