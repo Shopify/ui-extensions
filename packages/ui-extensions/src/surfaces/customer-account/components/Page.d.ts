@@ -14,15 +14,15 @@ export interface PageProps extends IdProps {
 
 export interface PageElementSlots {
   /**
-   * The breadcrumb actions to perform, provided as button type elements.
+   * The breadcrumb actions for the page. Accepts a single Button element with restricted properties (see below).
    */
   'breadcrumb-actions'?: HTMLElement;
   /**
-   * The primary action to perform, provided as a button type element.
+   * The primary action for the page. Accepts a single Button element with restricted properties (see below).
    */
   'primary-action'?: HTMLElement;
   /**
-   * The secondary actions to perform, provided as button type elements.
+   * The secondary actions for the page. Accepts multiple Button elements with restricted properties (see below).
    */
   'secondary-actions'?: HTMLElement;
 }
