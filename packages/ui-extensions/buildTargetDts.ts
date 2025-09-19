@@ -69,7 +69,11 @@ function createInitialTargetDefinition({
   const targetPath = join(directory, fileName);
 
   const template = `import type {ExtensionTargets} from '../extension-targets';
-  ${surface === 'customer-account' ? `import '../globals';\n` : ''}
+  ${
+    surface === 'customer-account' || surface === 'point-of-sale'
+      ? `import '../globals';\n`
+      : ''
+  }
 type Target = ExtensionTargets[${name}];
 export type Api = Target['api'];
 export type Output = Target['output'];

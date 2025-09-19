@@ -10,5 +10,7 @@ export interface ShopifyGlobal {
 }
 
 declare global {
+  // @ts-expect-error - Intentionally overriding navigation type for POS context
+  // This is safe as point-of-sale and customer-account are never used together
   const navigation: Navigation;
 }
