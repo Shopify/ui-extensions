@@ -5,7 +5,7 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosCartLineItemDetailsActionRender,
   description:
-    'A full-screen extension target that renders when a `pos.cart.line-item-details.action.render` target calls for it',
+    'A full-screen extension target that renders when a `pos.cart.line-item-details.action.menu-item.render` target calls for it',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
       'Action Render',

@@ -1,1 +1,1 @@
-export type ReceiptComponents = 'POSReceiptBlock' | 'Text' | 'QRCode';
+export type ReceiptComponents = 'PosBlock' | 'Text' | 'QrCode';
