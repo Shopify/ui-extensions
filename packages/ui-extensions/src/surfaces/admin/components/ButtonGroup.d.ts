@@ -121,6 +121,7 @@ export interface ButtonGroupJSXProps
   /**
    * Secondary action buttons for the group.
    * Accepts Button elements with a `variant` of `secondary` or `auto`.
+   * Cannot be used when gap="none".
    */
   secondaryActions?: ComponentChild;
 }
