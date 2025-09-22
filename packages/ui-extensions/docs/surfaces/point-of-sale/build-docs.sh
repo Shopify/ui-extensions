@@ -69,7 +69,7 @@ if [ -d $SHOPIFY_DEV_PATH ]; then
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
     echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/pos-ui-extensions"
   else
-    echo "Docs: https://shopify-dev.myshopify.io/docs/api/pos-ui-extensions"
+    echo "Docs: https://shopify-dev.shop.dev/docs/api/pos-ui-extensions"
   fi
 else
   echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."
