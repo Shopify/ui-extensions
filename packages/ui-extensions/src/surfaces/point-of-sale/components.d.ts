@@ -3110,8 +3110,6 @@ export interface Context<T> extends Provider<T> {
   displayName?: string;
 }
 
-import {ReactNode} from 'react';
-
 type ComponentChildren = any;
 /**
  * Used when an element does not have children.
@@ -3838,7 +3836,7 @@ interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
   secondaryActions?: ComponentChild;
   onHide?: (event: CallbackEvent<typeof tagName$i>) => void | null;
   onShow?: (event: CallbackEvent<typeof tagName$i>) => void | null;
-  children?: ReactNode;
+  children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -4554,7 +4552,7 @@ interface Box {
 }
 
 interface ButtonEvents {
-  click?: (event: CallbackEvent<typeof tagName>) => void;
+  click?: (event: CallbackEvent<typeof tagName$t>) => void;
 }
 
 interface Button {
@@ -4618,8 +4616,8 @@ interface Choice {
 }
 
 interface ChoiceListEvents {
-  change?: (event: CallbackEvent<typeof tagName>) => void;
-  input?: (event: CallbackEvent<typeof tagName>) => void;
+  change?: (event: CallbackEvent<typeof tagName$k>) => void;
+  input?: (event: CallbackEvent<typeof tagName$k>) => void;
 }
 
 interface ChoiceList {
@@ -4637,7 +4635,7 @@ interface ChoiceList {
 }
 
 interface ClickableEvents {
-  click?: (event: CallbackEvent<typeof tagName>) => void;
+  click?: (event: CallbackEvent<typeof tagName$e>) => void;
 }
 
 interface Clickable {
@@ -4656,10 +4654,10 @@ interface Clickable {
 }
 
 interface DateFieldEvents {
-  input?: (event: CallbackEvent<typeof tagName>) => void;
-  focus?: (event: CallbackEvent<typeof tagName>) => void;
-  blur?: (event: CallbackEvent<typeof tagName>) => void;
-  change?: (event: CallbackEvent<typeof tagName>) => void;
+  input?: (event: CallbackEvent<typeof tagName$b>) => void;
+  focus?: (event: CallbackEvent<typeof tagName$b>) => void;
+  blur?: (event: CallbackEvent<typeof tagName$b>) => void;
+  change?: (event: CallbackEvent<typeof tagName$b>) => void;
 }
 
 interface DateFieldSlots {
@@ -4692,10 +4690,10 @@ interface DateField {
 }
 
 interface DatePickerEvents {
-  blur?: (event: CallbackEvent<typeof tagName>) => void | null;
-  focus?: (event: CallbackEvent<typeof tagName>) => void | null;
-  change?: (event: CallbackEvent<typeof tagName>) => void | null;
-  input?: (event: CallbackEvent<typeof tagName>) => void | null;
+  blur?: (event: CallbackEvent<typeof tagName$a>) => void | null;
+  focus?: (event: CallbackEvent<typeof tagName$a>) => void | null;
+  change?: (event: CallbackEvent<typeof tagName$a>) => void | null;
+  input?: (event: CallbackEvent<typeof tagName$a>) => void | null;
 }
 
 interface DatePicker {
@@ -4719,10 +4717,10 @@ interface DatePicker {
 }
 
 interface DateSpinnerEvents {
-  blur?: (event: CallbackEvent<typeof tagName>) => void | null;
-  focus?: (event: CallbackEvent<typeof tagName>) => void | null;
-  change?: (event: CallbackEvent<typeof tagName>) => void | null;
-  input?: (event: CallbackEvent<typeof tagName>) => void | null;
+  blur?: (event: CallbackEvent<typeof tagName$9>) => void | null;
+  focus?: (event: CallbackEvent<typeof tagName$9>) => void | null;
+  change?: (event: CallbackEvent<typeof tagName$9>) => void | null;
+  input?: (event: CallbackEvent<typeof tagName$9>) => void | null;
 }
 
 interface DateSpinner {
@@ -4746,10 +4744,10 @@ interface Divider {
 }
 
 interface EmailFieldEvents {
-  input?: (event: CallbackEvent<typeof tagName>) => void;
-  focus?: (event: CallbackEvent<typeof tagName>) => void;
-  blur?: (event: CallbackEvent<typeof tagName>) => void;
-  change?: (event: CallbackEvent<typeof tagName>) => void;
+  input?: (event: CallbackEvent<typeof tagName$f>) => void;
+  focus?: (event: CallbackEvent<typeof tagName$f>) => void;
+  blur?: (event: CallbackEvent<typeof tagName$f>) => void;
+  change?: (event: CallbackEvent<typeof tagName$f>) => void;
 }
 
 interface EmailFieldSlots {
@@ -4852,8 +4850,8 @@ interface Image {
 }
 
 interface ModalEvents {
-  hide?: (event: CallbackEvent<typeof tagName>) => void | null;
-  show?: (event: CallbackEvent<typeof tagName>) => void | null;
+  hide?: (event: CallbackEvent<typeof tagName$i>) => void | null;
+  show?: (event: CallbackEvent<typeof tagName$i>) => void | null;
 }
 
 interface ModalSlots {
@@ -4869,10 +4867,10 @@ interface Modal {
 }
 
 interface NumberFieldEvents {
-  input?: (event: CallbackEvent<typeof tagName>) => void;
-  focus?: (event: CallbackEvent<typeof tagName>) => void;
-  blur?: (event: CallbackEvent<typeof tagName>) => void;
-  change?: (event: CallbackEvent<typeof tagName>) => void;
+  input?: (event: CallbackEvent<typeof tagName$c>) => void;
+  focus?: (event: CallbackEvent<typeof tagName$c>) => void;
+  blur?: (event: CallbackEvent<typeof tagName$c>) => void;
+  change?: (event: CallbackEvent<typeof tagName$c>) => void;
 }
 
 interface NumberFieldSlots {
@@ -5110,10 +5108,10 @@ interface ScrollBox {
 }
 
 interface SearchFieldEvents {
-  focus?: (event: CallbackEvent<typeof tagName>) => void;
-  blur?: (event: CallbackEvent<typeof tagName>) => void;
-  input?: (event: CallbackEvent<typeof tagName>) => void;
-  change?: (event: CallbackEvent<typeof tagName>) => void;
+  focus?: (event: CallbackEvent<typeof tagName$g>) => void;
+  blur?: (event: CallbackEvent<typeof tagName$g>) => void;
+  input?: (event: CallbackEvent<typeof tagName$g>) => void;
+  change?: (event: CallbackEvent<typeof tagName$g>) => void;
 }
 
 interface SearchField {
@@ -5312,10 +5310,10 @@ interface Text {
 }
 
 interface TextAreaEvents {
-  input?: (event: CallbackEvent<typeof tagName>) => void;
-  focus?: (event: CallbackEvent<typeof tagName>) => void;
-  blur?: (event: CallbackEvent<typeof tagName>) => void;
-  change?: (event: CallbackEvent<typeof tagName>) => void;
+  input?: (event: CallbackEvent<typeof tagName$d>) => void;
+  focus?: (event: CallbackEvent<typeof tagName$d>) => void;
+  blur?: (event: CallbackEvent<typeof tagName$d>) => void;
+  change?: (event: CallbackEvent<typeof tagName$d>) => void;
 }
 
 interface TextAreaSlots {
@@ -5368,10 +5366,10 @@ interface TextArea {
 }
 
 interface TextFieldEvents {
-  input?: (event: CallbackEvent<typeof tagName>) => void;
-  focus?: (event: CallbackEvent<typeof tagName>) => void;
-  blur?: (event: CallbackEvent<typeof tagName>) => void;
-  change?: (event: CallbackEvent<typeof tagName>) => void;
+  input?: (event: CallbackEvent<typeof tagName$h>) => void;
+  focus?: (event: CallbackEvent<typeof tagName$h>) => void;
+  blur?: (event: CallbackEvent<typeof tagName$h>) => void;
+  change?: (event: CallbackEvent<typeof tagName$h>) => void;
 }
 
 interface TextFieldSlots {
@@ -5419,7 +5417,7 @@ interface TextField {
 }
 
 interface TileEvents {
-  click?: (event: CallbackEvent<typeof tagName>) => void;
+  click?: (event: CallbackEvent<typeof tagName$q>) => void;
 }
 
 interface Tile {
@@ -5455,10 +5453,10 @@ interface Tile {
 }
 
 interface TimeFieldEvents {
-  blur?: (event: CallbackEvent<typeof tagName>) => void | null;
-  focus?: (event: CallbackEvent<typeof tagName>) => void | null;
-  input?: (event: CallbackEvent<typeof tagName>) => void | null;
-  change?: (event: CallbackEvent<typeof tagName>) => void | null;
+  blur?: (event: CallbackEvent<typeof tagName$3>) => void | null;
+  focus?: (event: CallbackEvent<typeof tagName$3>) => void | null;
+  input?: (event: CallbackEvent<typeof tagName$3>) => void | null;
+  change?: (event: CallbackEvent<typeof tagName$3>) => void | null;
 }
 
 interface TimeField {
@@ -5502,10 +5500,10 @@ interface TimeField {
 }
 
 interface TimePickerEvents {
-  blur?: (event: CallbackEvent<typeof tagName>) => void | null;
-  focus?: (event: CallbackEvent<typeof tagName>) => void | null;
-  change?: (event: CallbackEvent<typeof tagName>) => void | null;
-  input?: (event: CallbackEvent<typeof tagName>) => void | null;
+  blur?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  focus?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  change?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  input?: (event: CallbackEvent<typeof tagName$6>) => void | null;
 }
 
 interface TimePicker {
