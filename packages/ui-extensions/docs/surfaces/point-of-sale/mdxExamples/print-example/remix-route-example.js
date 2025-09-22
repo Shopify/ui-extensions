@@ -1,18 +1,21 @@
 import {authenticate} from '../shopify.server';
 
 export async function loader({request}) {
-  // Step 1: Set up the route and handle authentication
+  // [START route.authenticate]
   const {cors} = await authenticate.admin(request);
+  // [END route.authenticate]
 
-  // Step 2: Process URL parameters for document configuration
+  // [START route.process-url]
   const url = new URL(request.url);
   const printTypes = url.searchParams.get('printTypes')?.split(',') || [];
+  // [END route.process-url]
 
-  // Step 3: Generate the HTML content
+  // [START route.generate-html]
   const pages = printTypes.map((type) => createPage(type));
   const print = printHTML(pages);
+  // [END route.generate-html]
 
-  // Step 4: Return properly formatted response with CORS headers
+  // [START route.return-response]
   return cors(
     new Response(print, {
       status: 200,
@@ -21,6 +24,7 @@ export async function loader({request}) {
       },
     }),
   );
+  // [END route.return-response]
 }
 
 // Helper function to create document pages based on type

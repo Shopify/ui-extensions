@@ -36,7 +36,7 @@ Supported document types:
     {
       name: 'Build a Print Extension',
       subtitle: 'Learn how to implement printing',
-      url: '/docs/api/pos-ui-extensions/examples/print-extension',
+      url: '/docs/apps/build/pos/build-print-extension?extension=preact',
     },
   ],
   examples: {
