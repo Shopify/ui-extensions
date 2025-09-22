@@ -1640,6 +1640,45 @@ export interface BaseOptionProps extends BaseSelectableProps {
    */
   defaultSelected?: boolean;
 }
+export interface BaseCheckableProps
+  extends BaseSelectableProps,
+    InteractionProps {
+  /**
+   * Visual content to use as the control label.
+   */
+  label?: string;
+  /**
+   * Whether the control is active.
+   *
+   * @default false
+   */
+  checked?: boolean;
+  /**
+   * Whether the control is active by default.
+   *
+   * @implementation `defaultChecked` reflects to the `checked` attribute.
+   *
+   * @default false
+   */
+  defaultChecked?: boolean;
+  /**
+   * An identifier for the control that is unique within the nearest
+   * containing `Form` component.
+   */
+  name?: string;
+  /**
+   * A callback that is run whenever the control is changed.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+   */
+  onChange?: (event: Event) => void;
+  /**
+   * A callback that is run whenever the control is changed.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+   */
+  onInput?: (event: Event) => void;
+}
 export interface ChoiceProps extends GlobalProps, BaseOptionProps {
   /**
    * Content to use as the choice label.
@@ -2655,6 +2694,92 @@ export interface StackProps
    * @default 'normal'
    */
   alignContent?: MaybeResponsive<AlignContentKeyword>;
+}
+export interface SwitchProps
+  extends GlobalProps,
+    BaseCheckableProps,
+    BasicFieldProps,
+    FieldDetailsProps,
+    FieldErrorProps {}
+export interface TabProps extends GlobalProps {
+  /**
+   * Corresponds to the `id` property of the TabPanel component that will be displayed when selected
+   */
+  controls?: string;
+  /**
+   * Whether the tab is selected.
+   *
+   * @implementation Note: This attribute is not to be implemented until decisions have been made about this pattern in the codex.
+   *
+   * @default false
+   */
+  selected?: boolean;
+  /**
+   * Disables the control, disallowing any interaction.
+   *
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * The content to use as the tab label.
+   */
+  children?: StringChildren;
+}
+export interface TabListProps extends GlobalProps {
+  /**
+   * Accepts only `Tabs` components.
+   */
+  children?: ComponentChildren;
+}
+export interface TabPanelProps extends GlobalProps {
+  /**
+   * The id of the TabPanel used for identification in the Tabs component.
+   * Must match the `controls` prop of the corresponding Tab component.
+   */
+  id?: string;
+  /**
+   * The content of the TabPanel.
+   */
+  children?: ComponentChildren;
+}
+export interface TabsProps
+  extends GlobalProps,
+    Pick<InputProps, 'disabled' | 'onChange' | 'value' | 'defaultValue'> {
+  /**
+   * A label that describes the purpose or contents of the tabs. When set,
+   * it will be announced using assistive technologies and provide additional context.
+   */
+  accessibilityLabel?: string;
+  /**
+   * Accepts only `TabList` and `TabPanel` components.
+   */
+  children?: ComponentChildren;
+  /**
+   * The value of the selected tab.
+   *
+   * This should match the `id` prop of one of the TabPanel components.
+   * If not provided, the first tab will be selected by default.
+   */
+  value?: string;
+  /**
+   * The default value of the selected tab.
+   *
+   * This should match the `id` prop of one of the TabPanel components.
+   * If not provided, the first tab will be selected by default.
+   *
+   * Reflects to the `value` attribute
+   */
+  defaultValue?: string;
+  /**
+   * Disables all tabs and prevents user interaction.
+   */
+  disabled?: boolean;
+  /**
+   * Callback fired when the selected tab changes.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+   */
+  onChange?: (event: Event) => void;
 }
 export interface TextProps
   extends GlobalProps,
