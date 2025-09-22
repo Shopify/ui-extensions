@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,6 +6,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
+  ComponentChildren,
   BoxProps$1,
   StackProps$1,
   MaybeAllValuesShorthandProperty,
@@ -13,7 +14,6 @@ import type {
   JustifyContentKeyword,
   AlignItemsKeyword,
   AlignContentKeyword,
-  ComponentChild,
 } from './shared.d.ts';
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -270,7 +270,7 @@ export interface StackProps
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -356,7 +356,6 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
   accessor display: BoxProps['display'];
 }
 
-/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -364,11 +363,6 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   ref?: preact.Ref<TClass>;
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
-}
-/** Used when an element has children. */
-export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
-  extends PreactBaseElementProps<TClass> {
-  children?: preact.ComponentChildren;
 }
 
 declare class Stack extends BoxElement implements StackProps {
@@ -389,7 +383,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: StackJSXProps & PreactBaseElementPropsWithChildren<Stack>;
+      [tagName]: StackJSXProps & PreactBaseElementProps<Stack>;
     }
   }
 }

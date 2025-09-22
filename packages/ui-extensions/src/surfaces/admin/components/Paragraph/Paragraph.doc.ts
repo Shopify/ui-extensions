@@ -31,6 +31,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: '',
       type: 'Paragraph',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'ParagraphSlots',
+    },
   ],
   defaultExample: {
     image: 'paragraph-default.png',

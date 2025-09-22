@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,7 +6,7 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {PageProps$1, ComponentChild} from './shared.d.ts';
+import type {PageProps$1, ComponentChildren} from './shared.d.ts';
 
 export interface PageProps
   extends Required<Pick<PageProps$1, 'inlineSize' | 'heading'>> {
@@ -15,7 +15,7 @@ export interface PageProps
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -73,7 +73,6 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -81,11 +80,6 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   ref?: preact.Ref<TClass>;
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
-}
-/** Used when an element has children. */
-export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
-  extends PreactBaseElementProps<TClass> {
-  children?: preact.ComponentChildren;
 }
 
 declare class Page extends PreactCustomElement implements PageProps {
@@ -103,39 +97,40 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<PageJSXProps, 'aside'> &
-        PreactBaseElementPropsWithChildren<Page>;
+      [tagName]: Omit<PageJSXProps, 'aside'> & PreactBaseElementProps<Page>;
     }
   }
 }
 
 declare const tagName = 's-page';
-export interface PageJSXProps extends Partial<PageProps> {
+export interface PageJSXProps
+  extends Partial<PageProps>,
+    Pick<PageProps$1, 'id'> {
   /**
    * The content to display in the aside section of the page.
    *
    * This slot is only rendered when `inlineSize` is "base".
    */
-  aside?: ComponentChild;
+  aside?: ComponentChildren;
   /**
    * The primary action for the page.
    *
    * Only accepts a single `Button` component with a `variant` of `primary`.
    *
    */
-  primaryAction?: ComponentChild;
+  primaryAction?: ComponentChildren;
   /**
    * Secondary actions for the page.
    *
    * Only accepts `ButtonGroup` and `Button` components with a `variant` of `secondary` or `auto`.
    */
-  secondaryActions?: ComponentChild;
+  secondaryActions?: ComponentChildren;
   /**
    * Navigations back actions for the page.
    *
    * Only accepts `Link` components.
    */
-  breadcrumbActions?: ComponentChild;
+  breadcrumbActions?: ComponentChildren;
 }
 
 export {Page};

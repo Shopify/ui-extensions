@@ -34,9 +34,19 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'TableBody',
     },
     {
+      title: 'Slots',
+      description: '',
+      type: 'TableBodySlots',
+    },
+    {
       title: tableCellSharedContent.name,
       description: tableCellSharedContent.description,
       type: 'TableCell',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'TableCellSlots',
     },
     {
       title: tableHeaderSharedContent.name,
@@ -44,14 +54,29 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'TableHeader',
     },
     {
+      title: 'Slots',
+      description: '',
+      type: 'TableHeaderSlots',
+    },
+    {
       title: tableHeaderRowSharedContent.name,
       description: tableHeaderRowSharedContent.description,
       type: 'TableHeaderRow',
     },
     {
+      title: 'Slots',
+      description: '',
+      type: 'TableHeaderRowSlots',
+    },
+    {
       title: tableRowSharedContent.name,
       description: tableRowSharedContent.description,
       type: 'TableRow',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'TableRowSlots',
     },
   ],
   defaultExample: {

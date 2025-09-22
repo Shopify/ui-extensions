@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -8,7 +8,7 @@
 import type {
   FunctionSettingsProps$1,
   ExtendableEvent,
-  ComponentChild,
+  ComponentChildren,
 } from './shared.d.ts';
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
@@ -68,7 +68,7 @@ export interface FunctionSettingsJSXProps
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {

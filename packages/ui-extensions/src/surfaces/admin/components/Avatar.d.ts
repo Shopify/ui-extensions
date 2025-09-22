@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,7 +6,7 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {AvatarProps$1, ComponentChild} from './shared.d.ts';
+import type {AvatarProps$1, ComponentChildren} from './shared.d.ts';
 
 export interface AvatarProps
   extends Required<Pick<AvatarProps$1, 'initials' | 'src' | 'alt' | 'size'>> {
@@ -18,7 +18,7 @@ export interface AvatarProps
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -84,7 +84,6 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
-/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -92,11 +91,6 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   ref?: preact.Ref<TClass>;
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
-}
-/** Used when an element has children. */
-export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
-  extends PreactBaseElementProps<TClass> {
-  children?: preact.ComponentChildren;
 }
 
 declare class Avatar extends PreactCustomElement implements AvatarProps {
@@ -116,7 +110,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: AvatarJSXProps & PreactBaseElementPropsWithChildren<Avatar>;
+      [tagName]: AvatarJSXProps & PreactBaseElementProps<Avatar>;
     }
   }
 }

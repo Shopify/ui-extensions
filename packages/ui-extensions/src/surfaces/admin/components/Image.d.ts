@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -11,8 +11,25 @@ import type {
   ImageProps$1,
   MaybeAllValuesShorthandProperty,
   SizeUnits,
-  ComponentChild,
+  ComponentChildren,
 } from './shared.d.ts';
+
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
+export interface PreactBaseElementProps<TClass extends HTMLElement> {
+  /** Assigns a unique key to this element. */
+  key?: preact.Key;
+  /** Assigns a ref (generally from `useRef()`) to this element. */
+  ref?: preact.Ref<TClass>;
+  /** Assigns this element to a parent's slot. */
+  slot?: Lowercase<string>;
+}
 
 export type MakeResponsive<T> = T | `@container${string}`;
 /**
@@ -231,27 +248,9 @@ export interface ImageProps
       >
     > {}
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
-};
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
-  | (EventListener & {
-      (event: CallbackEvent<T>): void;
-    })
-  | null;
-/** Used when an element does not have children. */
-export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
-  key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
-  ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
-  slot?: Lowercase<string>;
-}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {

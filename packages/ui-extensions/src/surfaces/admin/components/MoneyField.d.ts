@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -9,12 +9,35 @@
 import type {
   TextFieldProps,
   MoneyFieldProps$1,
-  ComponentChild,
+  ComponentChildren,
 } from './shared.d.ts';
+
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
+export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
+  onInput?: ((event: CallbackEvent<T>) => void) | null;
+  onChange?: ((event: CallbackEvent<T>) => void) | null;
+  onFocus?: ((event: CallbackEvent<T>) => void) | null;
+  onBlur?: ((event: CallbackEvent<T>) => void) | null;
+}
+export interface PreactBaseElementProps<TClass extends HTMLElement> {
+  /** Assigns a unique key to this element. */
+  key?: preact.Key;
+  /** Assigns a ref (generally from `useRef()`) to this element. */
+  ref?: preact.Ref<TClass>;
+  /** Assigns this element to a parent's slot. */
+  slot?: Lowercase<string>;
+}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -70,30 +93,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    * @param options
    */
   click({sourceEvent}?: ClickOptions): void;
-}
-
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
-};
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
-  | (EventListener & {
-      (event: CallbackEvent<T>): void;
-    })
-  | null;
-export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
-  onInput?: ((event: CallbackEvent<T>) => void) | null;
-  onChange?: ((event: CallbackEvent<T>) => void) | null;
-  onFocus?: ((event: CallbackEvent<T>) => void) | null;
-  onBlur?: ((event: CallbackEvent<T>) => void) | null;
-}
-/** Used when an element does not have children. */
-export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
-  key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
-  ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
-  slot?: Lowercase<string>;
 }
 
 declare const internals: unique symbol;
@@ -199,7 +198,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 export interface MoneyFieldProps
   extends Omit<PreactFieldProps, 'value'>,
-    Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step'> {
+    Pick<RequiredMoneyFieldProps, 'max' | 'min'> {
   value: Required<MoneyFieldProps$1>['value'];
 }
 
@@ -209,7 +208,8 @@ declare class MoneyField
 {
   accessor max: MoneyFieldProps['max'];
   accessor min: MoneyFieldProps['min'];
-  accessor step: MoneyFieldProps['step'];
+  get value(): string;
+  set value(value: string);
   constructor();
 }
 declare global {

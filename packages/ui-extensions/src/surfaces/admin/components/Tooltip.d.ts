@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -7,14 +7,13 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  ComponentChild,
+  ComponentChildren,
   TooltipProps$1,
   InteractionProps,
 } from './shared.d.ts';
 
 export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
 
-/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -23,15 +22,10 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. */
-export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
-  extends PreactBaseElementProps<TClass> {
-  children?: preact.ComponentChildren;
-}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -134,7 +128,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: TooltipJSXProps & PreactBaseElementPropsWithChildren<Tooltip>;
+      [tagName]: TooltipJSXProps & PreactBaseElementProps<Tooltip>;
     }
   }
 }
