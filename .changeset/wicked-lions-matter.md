@@ -1,5 +1,5 @@
 ---
-'@shopify/ui-extensions': minor
+'@shopify/ui-extensions': patch
 ---
 
 segmentation-templates moving to data-extension target

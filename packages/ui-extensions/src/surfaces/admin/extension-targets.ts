@@ -10,6 +10,7 @@ import type {
   ValidationSettingsApi,
   PurchaseOptionsCardConfigurationApi,
   DiscountFunctionSettingsApi,
+  CustomerSegmentTemplateApi,
 } from './api';
 import {
   ShouldRenderApi,
@@ -23,10 +24,10 @@ import {CustomerSegmentTemplate} from './components';
 
 export interface ExtensionTargets {
   /**
-   * Renders a data structe for a [`CustomerSegmentTemplate`](/docs/api/admin-extensions/components/customersegmenttemplate) in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/customer-segments).
+   * Renders a  [`CustomerSegmentTemplate`](/docs/api/admin-extensions/components/customersegmenttemplate) in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/customer-segments).
    */
   'admin.customers.segmentation-templates.data': RunnableExtension<
-    ShouldRenderApi<'admin.customers.segmentation-templates.data'>,
+    CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.data'>,
     {templates: CustomerSegmentTemplate[]}
   >;
 
