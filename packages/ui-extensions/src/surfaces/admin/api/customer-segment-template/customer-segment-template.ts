@@ -12,7 +12,7 @@ export interface CustomerSegmentTemplateApi<
 }
 
 export type CustomerStandardMetafieldDependency = 'facts.birth_date';
-export interface CustomerSegmentTemplateProps {
+export interface CustomerSegmentTemplate {
   /**
    * The localized title of the template.
    */
