@@ -29,21 +29,17 @@ const Extension = () => {
   }, []);
 
   return (
-    <s-navigator>
-      <s-screen name="Scanner" title="Scanner Example">
-        <s-stack direction="vertical">
-          <s-text>Scanned data: {scanData}</s-text>
-          <s-text>Scanned data source: {scanSource}</s-text>
-          {hasCameraScanner && (
-            <s-button onClick={() => shopify.scanner.scanQRCode()}>
-              Scan QR Code
-            </s-button>
-          )}
-          {hasExternalScanner && (
-            <s-text>External scanner is available</s-text>
-          )}
-        </s-stack>
-      </s-screen>
-    </s-navigator>
+    <s-page heading="Scanner Example">
+      <s-stack direction="block">
+        <s-text>Scanned data: {scanData}</s-text>
+        <s-text>Scanned data source: {scanSource}</s-text>
+        {hasCameraScanner && (
+          <s-text>Camera scanner is available</s-text>
+        )}
+        {hasExternalScanner && (
+          <s-text>External scanner is available</s-text>
+        )}
+      </s-stack>
+    </s-page>
   );
 };

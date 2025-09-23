@@ -8,23 +8,20 @@ export default async () => {
 const Extension = () => {
   const [searchResults, setSearchResults] = useState([]);
 
-  const search = async (queryString) => {
-    const results = await shopify.productSearch.searchProducts({queryString});
+  const search = async (event) => {
+    const results = await shopify.productSearch.searchProducts({queryString: event.target.value});
     setSearchResults(results.items);
   };
 
   return (
-    <s-navigator initial-screen-name="HelloWorld">
-      <s-screen name="HelloWorld" title="Hello World!">
-        <s-scroll-box>
-          <s-search-field
-            placeholder="Search products"
-            onTextChange={search}
-            onSearch={search}
-          />
-          <s-text>Found {searchResults.length} products</s-text>
-        </s-scroll-box>
-      </s-screen>
-    </s-navigator>
+    <s-page heading="Hello World!">
+      <s-scroll-box>
+        <s-search-field
+          placeholder="Search products"
+          onInput={search}
+        />
+        <s-text>Found {searchResults.length} products</s-text>
+      </s-scroll-box>
+    </s-page>
   );
 };
