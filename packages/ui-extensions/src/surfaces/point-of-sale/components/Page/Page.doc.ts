@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Page',
   description:
-    'Use `s-page` as the main container for placing content in your app. Page comes with preset layouts and automatically adds spacing between elements.',
+    'Serves as the main container for app content with preset layouts and heading controls. Use to structure full-screen views with consistent navigation and content organization.',
   thumbnail: 'screen-thumbnail.png',
   isVisualComponent: true,
   type: '',
