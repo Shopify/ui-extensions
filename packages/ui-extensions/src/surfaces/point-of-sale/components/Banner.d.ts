@@ -33,12 +33,21 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 }
 
 declare const tagName = 's-banner';
-export interface BannerJSXProps
-  extends Pick<BannerProps, 'heading' | 'hidden' | 'tone' | 'id'> {
+export interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
+  /**
+   * Determines whether the banner is hidden.
+   */
+  hidden?: BannerProps['hidden'];
+  /**
+   * Sets the tone of the Banner, based on the intention of the information being conveyed.
+   */
   tone?: Extract<
     BannerProps['tone'],
     'success' | 'info' | 'warning' | 'critical'
   >;
+  /**
+   * The action taken when the Banner is pressed.
+   */
   primaryAction?: ComponentChild;
   children?: ComponentChildren;
 }

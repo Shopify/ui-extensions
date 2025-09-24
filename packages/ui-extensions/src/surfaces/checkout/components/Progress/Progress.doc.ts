@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'progress-default.png',
     codeblock: {
-      title: 'Code',
+      title: 'Default example',
       tabs: [
         {
           code: './examples/basic-progress.example.html',

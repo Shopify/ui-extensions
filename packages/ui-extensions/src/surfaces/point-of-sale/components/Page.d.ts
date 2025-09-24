@@ -35,12 +35,12 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 declare const tagName = 's-page';
 export type PickedProps = Pick<
   PageProps,
-  'heading' | 'subheading' | 'secondaryActions'
+  'heading' | 'subheading' | 'secondaryActions' | 'aside'
 >;
 export interface PageJSXProps extends PickedProps {
   children?: ComponentChildren;
   secondaryActions?: ComponentChild;
-  primaryAction?: ComponentChild;
+  aside?: ComponentChild;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -50,9 +50,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'> &
+      [tagName]: Omit<PageJSXProps, 'secondaryActions' | 'aside'> &
         BaseElementPropsWithChildren<
-          Omit<PageJSXProps, 'primaryAction' | 'secondaryActions'>
+          Omit<PageJSXProps, 'secondaryActions' | 'aside'>
         >;
     }
   }

@@ -1,25 +1,19 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {
-  useApplyDiscountCodeChange,
-  useInstructions,
-} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  const applyDiscountCodeChange =
-    useApplyDiscountCodeChange();
-  const instructions = useInstructions();
-
   if (
-    instructions.discounts.canUpdateDiscountCodes
+    shopify.instructions.value.discounts
+      .canUpdateDiscountCodes
   ) {
     return (
       <s-button
         onClick={() =>
-          applyDiscountCodeChange({
+          shopify.applyDiscountCodeChange({
             type: 'addDiscountCode',
             code: 'FREE_SHIPPING',
           })

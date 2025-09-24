@@ -1,11 +1,10 @@
-import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
+import type {SubscribableSignalLike} from '../../shared';
 import {faker} from '@faker-js/faker';
 
 import {ScopeNotGrantedError} from '../../errors';
 import {useCustomer, useEmail, usePhone} from '../buyer-identity';
 
 import {mount} from './mount';
-
 function createMockCustomer(customer = {}) {
   const firstName = faker.person.firstName();
   const lastName = faker.person.lastName();
@@ -41,7 +40,7 @@ function createUsePhoneContext(phone?: string) {
   return createMockHookContext(undefined, phone, undefined);
 }
 
-function createMockSuscribable<T>(data: T): StatefulRemoteSubscribable<T> {
+function createMockSuscribable<T>(data: T): SubscribableSignalLike<T> {
   return {
     current: data,
     value: data,

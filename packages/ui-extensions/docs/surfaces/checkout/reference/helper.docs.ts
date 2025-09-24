@@ -209,11 +209,10 @@ In React, you can access it from any component through the \`useExtensionApi()\`
     },
     'api-subscribable': {
       description: `
-Some API property values may change after the extension is rendered.
-\`StatefulRemoteSubscribable\` properties allow you to subscribe to changes and perform a function or re-render your extension.
-
-If you are using React, you can utilize the property's corresponding hook, or the [\`useSubscription()\`](/docs/api/checkout-ui-extensions/react-hooks/utilities/usesubscription) hook to subscribe to changes and automatically re-render your extension.
-      `,
+Some API properties may change after the extension is rendered.
+With Preact, any time you access \`.value\`, your extension components will re-render automatically when values change.
+Without Preact, you'll need to call \`.subscribe()\` and render a new UI as values change.
+`,
       codeblock: {
         title: 'Subscribing to changes',
         tabs: getExtensionCodeTabs('api-subscribable'),

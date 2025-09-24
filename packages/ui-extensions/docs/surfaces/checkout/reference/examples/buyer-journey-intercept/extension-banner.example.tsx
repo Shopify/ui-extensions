@@ -1,9 +1,7 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 import {useState} from 'preact/hooks';
-import {
-  useBuyerJourneyIntercept,
-  useCartLineTarget,
-} from '@shopify/ui-extensions/checkout/preact';
+import {useBuyerJourneyIntercept} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
@@ -12,11 +10,11 @@ export default function extension() {
 function Extension() {
   const [showError, setShowError] =
     useState(false);
-  const {quantity} = useCartLineTarget();
 
   useBuyerJourneyIntercept(
     ({canBlockProgress}) => {
-      return canBlockProgress && quantity > 1
+      return canBlockProgress &&
+        shopify.target.value.quantity > 1
         ? {
             behavior: 'block',
             reason: 'limited stock',

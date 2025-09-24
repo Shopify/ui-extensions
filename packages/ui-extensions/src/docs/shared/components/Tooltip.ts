@@ -1,9 +1,9 @@
-import {SharedReferenceEntityTemplateSchema} from '../docs-type';
+import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Tooltip',
   description:
-    'Floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover or focus.',
+    'Displays helpful information in a small overlay when users hover or focus on an element. Use to provide additional context without cluttering the interface.',
   category: 'Polaris web components',
   subCategory: 'Overlays',
   related: [],

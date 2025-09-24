@@ -12,13 +12,13 @@ export type CallbackEventListener<
 export interface AvatarElementProps extends IdProps {
   /**
    * Initials to display in the avatar.
+   *
+   * Initials will be rendered as a fallback if `src` is not provided, fails to load or does not load quickly.
    */
   initials?: string;
 
   /**
    * The URL or path to the image.
-   *
-   * Initials will be rendered as a fallback if `src` is not provided, fails to load or does not load quickly.
    */
   src?: string;
 

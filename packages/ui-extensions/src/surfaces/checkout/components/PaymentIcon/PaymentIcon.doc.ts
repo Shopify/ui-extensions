@@ -4,7 +4,7 @@ import sharedContent from '../../../../docs/shared/components/PaymentIcon';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  thumbnail: 'paymenticon-thumbnail.png',
+  thumbnail: 'payment-icon-thumbnail.png',
   requires: '',
   isVisualComponent: true,
   type: '',
@@ -16,12 +16,12 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'paymenticon-default.png',
+    image: 'payment-icon-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
-          code: './examples/basic-paymenticon.example.html',
+          code: './examples/basic-payment-icon.example.html',
           language: 'html',
         },
       ],

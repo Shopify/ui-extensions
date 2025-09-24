@@ -14,7 +14,6 @@ import type {
   Ref,
   ComponentChild,
 } from './components-shared.d.ts';
-import {ReactNode} from 'react';
 
 export type ComponentChildren = any;
 /**
@@ -48,7 +47,7 @@ export interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
   secondaryActions?: ComponentChild;
   onHide?: (event: CallbackEvent<typeof tagName>) => void | null;
   onShow?: (event: CallbackEvent<typeof tagName>) => void | null;
-  children?: ReactNode;
+  children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {

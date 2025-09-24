@@ -4,7 +4,7 @@ import sharedContent from '../../../../docs/shared/components/PhoneField';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  thumbnail: 'phonefield-thumbnail.png',
+  thumbnail: 'phone-field-thumbnail.png',
   requires: '',
   isVisualComponent: true,
   type: '',
@@ -26,12 +26,12 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'phonefield-default.png',
+    image: 'phone-field-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
-          code: './examples/basic-phonefield.example.html',
+          code: './examples/basic-phone-field.example.html',
           language: 'html',
         },
       ],

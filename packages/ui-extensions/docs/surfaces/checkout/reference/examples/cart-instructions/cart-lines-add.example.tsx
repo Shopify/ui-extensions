@@ -1,23 +1,19 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
-import {
-  useApplyCartLinesChange,
-  useInstructions,
-} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  const applyCartLinesChange =
-    useApplyCartLinesChange();
-  const instructions = useInstructions();
-
-  if (instructions.lines.canAddCartLine) {
+  if (
+    shopify.instructions.value.lines
+      .canAddCartLine
+  ) {
     return (
       <s-button
         onClick={() =>
-          applyCartLinesChange({
+          shopify.applyCartLinesChange({
             type: 'addCartLine',
             merchandiseId:
               'gid://shopify/product/1234',

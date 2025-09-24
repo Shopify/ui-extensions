@@ -1,4 +1,4 @@
-import type {StatefulRemoteSubscribable} from '../../../../shared';
+import type {SubscribableSignalLike} from '../../shared';
 
 export type PaymentMethodAttributesResult =
   | PaymentMethodAttributesResultSuccess
@@ -54,8 +54,8 @@ export interface PaymentOptionItemApi {
   applyPaymentMethodAttributesChange(
     change: PaymentMethodAttributesChange,
   ): Promise<PaymentMethodAttributesResult>;
-  paymentMethodAttributes?: StatefulRemoteSubscribable<
+  paymentMethodAttributes?: SubscribableSignalLike<
     PaymentMethodAttribute[] | undefined
   >;
-  bankIdNumber?: StatefulRemoteSubscribable<string | undefined>;
+  bankIdNumber?: SubscribableSignalLike<string | undefined>;
 }

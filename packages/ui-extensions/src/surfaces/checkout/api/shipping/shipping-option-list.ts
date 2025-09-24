@@ -1,4 +1,4 @@
-import type {StatefulRemoteSubscribable} from '../../../../shared';
+import type {SubscribableSignalLike} from '../../shared';
 import type {
   DeliveryGroup,
   DeliveryGroupType,
@@ -10,11 +10,11 @@ export interface ShippingOptionListApi {
   /**
    * The delivery group list the extension is attached to. The target will be undefined when there are no groups for a given type.
    */
-  target: StatefulRemoteSubscribable<DeliveryGroupList | undefined>;
+  target: SubscribableSignalLike<DeliveryGroupList | undefined>;
   /**
    * The list of selection groups available to the buyers. The property will be undefined when no such groups are available.
    */
-  deliverySelectionGroups: StatefulRemoteSubscribable<
+  deliverySelectionGroups: SubscribableSignalLike<
     DeliverySelectionGroup[] | undefined
   >;
 }

@@ -6,12 +6,10 @@ export default async () => {
 
 const Extension = () => {
   return (
-    <s-navigator initial-screen-name="ReturnPostAction">
-      <s-screen name="ReturnPostAction" title="Return Post Action">
-        <s-scroll-box>
-          <s-text>Order ID: {shopify.order.id}</s-text>
-        </s-scroll-box>
-      </s-screen>
-    </s-navigator>
+    <s-page heading="Return Post Action">
+      <s-scroll-box>
+        <s-text>Order ID: {shopify.order.id}</s-text>
+      </s-scroll-box>
+    </s-page>
   );
 };

@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'ChoiceList',
   description:
-    'Use `s-choice-list` to group related choices together, allowing single or multiple selections. Provides a structured way to present options to users.',
+    'Presents multiple options for single or multiple selections. Use when merchants need to choose from a defined set of options in forms or filtering interfaces.',
   thumbnail: 'radio-button-list-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Choice',
       description:
-        'Use `s-choice` to create individual selectable options within choice lists. Provides consistent styling and behavior for form selections.',
+        'Creates options that let merchants select one or multiple items from a list of choices.',
       type: 'Choice',
     },
   ],

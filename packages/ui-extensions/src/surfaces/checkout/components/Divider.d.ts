@@ -10,8 +10,23 @@
 /// <reference lib="DOM" />
 import type {DividerProps$1} from './components-shared.d.ts';
 
+/**
+ * Used when an element does not have children.
+ */
+export interface BaseElementProps<TClass = HTMLElement> {
+    key?: preact.Key;
+    ref?: preact.Ref<TClass>;
+    slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    children?: preact.ComponentChildren;
+}
+
 declare const tagName = "s-divider";
-export interface DividerProps extends DividerProps$1 {
+export interface DividerProps extends Pick<DividerProps$1, 'direction' | 'id'> {
 }
 export interface DividerElement extends DividerProps, Omit<HTMLElement, 'id'> {
 }
@@ -23,7 +38,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: DividerProps$1;
+            [tagName]: DividerProps & BaseElementPropsWithChildren<DividerElement>;
         }
     }
 }
