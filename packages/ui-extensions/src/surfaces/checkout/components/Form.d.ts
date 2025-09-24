@@ -41,6 +41,9 @@ export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
     onSubmit?: () => void;
 }
 export interface FormElementEvents {
+    /**
+     * A callback that is run when the form is submitted.
+     */
     submit?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
 export interface FormElement extends FormElementProps, Omit<HTMLElement, 'id' | 'onsubmit'> {

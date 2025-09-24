@@ -149,6 +149,21 @@ export interface ExtendableEvent extends Event {
 	 */
 	waitUntil?: (promise: Promise<void>) => void;
 }
+interface AnnouncementProps$1 extends GlobalProps, ToggleEventProps {
+	/**
+	 * The content of the announcement.
+	 */
+	children?: ComponentChildren;
+	/**
+	 * Callback fired when the announcement is dismissed by the user
+	 * (either via the built-in dismiss button or programmatically).
+	 */
+	onDismiss?: (event: Event) => void;
+	/**
+	 * Method to programmatically dismiss the announcement.
+	 */
+	dismiss: () => void;
+}
 export type SizeKeyword = "small-500" | "small-400" | "small-300" | "small-200" | "small-100" | "small" | "base" | "large" | "large-100" | "large-200" | "large-300" | "large-400" | "large-500";
 export type ColorKeyword = "subdued" | "base" | "strong";
 export type BackgroundColorKeyword = "transparent" | ColorKeyword;
@@ -1746,6 +1761,30 @@ interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps, FieldErrorPro
 	 */
 	required?: boolean;
 }
+export interface ChipProps$1 {
+	/**
+	 * The content of the chip.
+	 */
+	children?: ComponentChildren;
+	/**
+	 * The graphic to display inside of the chip.
+	 *
+	 * @implementation Only `s-icon` is supported.
+	 */
+	graphic?: ComponentChildren;
+	/**
+	 * A label that describes the purpose or contents of the Chip. It will be read to users using assistive technologies such as screen readers.
+	 */
+	accessibilityLabel?: string;
+	/**
+	 * Modify the color to be more or less intense.
+	 *
+	 * @default 'base'
+	 */
+	color?: ColorKeyword;
+}
+interface ChipProps$1 extends ChipProps$1, GlobalProps {
+}
 interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
 	/**
 	 * Content to use as the choice label.
@@ -1849,6 +1888,56 @@ interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps
 	 * @default ''
 	 */
 	lang?: string;
+}
+interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
+	/**
+	 * Callback when the chip is clicked.
+	 */
+	onClick?: (event: Event) => void;
+	/**
+	 * The URL to link to.
+	 *
+	 * - If set, it will navigate to the location specified by `href` after executing the `click` event.
+	 */
+	href?: string;
+	/**
+	 * Whether the chip is removable.
+	 *
+	 * @default false
+	 */
+	removable?: boolean;
+	/**
+	 * Callback when the chip is removed.
+	 */
+	onRemove?: (event: Event) => void;
+	/**
+	 * Determines whether the chip is hidden.
+	 *
+	 * If this property is being set on each framework render (as in 'controlled' usage),
+	 * and the chip is `removable`,
+	 * ensure you update app state for this property when the `remove` event fires.
+	 *
+	 * If the chip is not `removable`, it can still be hidden by setting this property.
+	 *
+	 * @default false
+	 */
+	hidden?: boolean;
+	/**
+	 * Event handler when the chip has fully hidden.
+	 *
+	 * The `hidden` property will be `true` when this event fires.
+	 *
+	 * @implementation If implementations animate the hiding of the chip,
+	 * this event must fire after the chip has fully hidden.
+	 * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
+	 */
+	onAfterHide?: (event: Event) => void;
+	/**
+	 * Disables the chip, disallowing any interaction.
+	 *
+	 * @default false
+	 */
+	disabled?: boolean;
 }
 interface ClipboardItemProps$1 extends GlobalProps {
 	/**
@@ -3326,27 +3415,59 @@ interface BaseElementProps<TClass = HTMLElement> {
 interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
-type ReducedIconTypes = 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'circle' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'filter' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'image' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'map' | 'menu-horizontal' | 'menu-vertical' | 'menu' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'reset' | 'return' | 'savings' | 'search' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x';
+/**
+ * Used as the single source of truth for checkout icon types.
+ *
+ * @see https://github.com/Shopify/ui-api-design/blob/main/packages/ui-api-design/src/components/Icon/Icon.ts#L10
+ */
+declare const CHECKOUT_AVAILABLE_ICONS: readonly ["alert-circle", "alert-triangle-filled", "alert-triangle", "arrow-down", "arrow-left", "arrow-right", "arrow-up-right", "arrow-up", "bag", "bullet", "calendar", "camera", "caret-down", "cart", "cash-dollar", "categories", "check-circle", "check", "chevron-down", "chevron-left", "chevron-right", "chevron-up", "circle", "clipboard", "clock", "credit-card", "delete", "delivered", "delivery", "disabled", "discount", "edit", "email", "empty", "external", "filter", "geolocation", "gift-card", "globe", "grid", "image", "info-filled", "info", "list-bulleted", "location", "lock", "map", "menu-horizontal", "menu-vertical", "menu", "minus", "mobile", "note", "order", "organization", "plus", "profile", "question-circle-filled", "question-circle", "reorder", "reset", "return", "savings", "search", "settings", "star-filled", "star-half", "star", "store", "truck", "upload", "x-circle-filled", "x-circle", "x"];
+type ReducedIconTypes = (typeof CHECKOUT_AVAILABLE_ICONS)[number];
 
-declare const tagName$U = "s-abbreviation";
+declare const tagName$X = "s-abbreviation";
 interface AbbreviationProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {
 }
 interface AbbreviationElement extends AbbreviationProps, Omit<HTMLElement, 'id' | 'title'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$U]: AbbreviationElement;
+        [tagName$X]: AbbreviationElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$U]: AbbreviationProps & BaseElementPropsWithChildren<AbbreviationElement>;
+            [tagName$X]: AbbreviationProps & BaseElementPropsWithChildren<AbbreviationElement>;
         }
     }
 }
 
-declare const tagName$T = "s-badge";
+declare const tagName$W = "s-announcement";
+interface AnnouncementEvents extends Pick<AnnouncementProps$1, 'onAfterToggle' | 'onDismiss' | 'onToggle'> {
+}
+interface AnnouncementElement extends AnnouncementMethods, Omit<HTMLElement, 'id' | 'ontoggle'> {
+    onaftertoggle?: AnnouncementEvents['onAfterToggle'];
+    ondismiss?: AnnouncementEvents['onDismiss'];
+    ontoggle?: AnnouncementEvents['onToggle'];
+}
+interface AnnouncementProps extends AnnouncementEvents {
+}
+interface AnnouncementMethods {
+    dismiss: () => void;
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        [tagName$W]: AnnouncementElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            [tagName$W]: AnnouncementProps & BaseElementPropsWithChildren<AnnouncementElement>;
+        }
+    }
+}
+
+declare const tagName$V = "s-badge";
 interface BadgeProps extends Pick<BadgeProps$1, 'color' | 'icon' | 'iconPosition' | 'id' | 'size' | 'tone'> {
     size?: Extract<BadgeProps$1['size'], 'small' | 'small-100' | 'base'>;
     tone?: Extract<BadgeProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
@@ -3357,18 +3478,18 @@ interface BadgeElement extends BadgeProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$T]: BadgeElement;
+        [tagName$V]: BadgeElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$T]: BadgeProps & BaseElementPropsWithChildren<BadgeElement>;
+            [tagName$V]: BadgeProps & BaseElementPropsWithChildren<BadgeElement>;
         }
     }
 }
 
-declare const tagName$S = "s-banner";
+declare const tagName$U = "s-banner";
 interface BannerElementProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {
     tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;
 }
@@ -3382,18 +3503,18 @@ interface BannerProps extends BannerElementProps, BannerEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$S]: BannerElement;
+        [tagName$U]: BannerElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$S]: BannerProps & BaseElementPropsWithChildren<BannerElement>;
+            [tagName$U]: BannerProps & BaseElementPropsWithChildren<BannerElement>;
         }
     }
 }
 
-declare const tagName$R = "s-box";
+declare const tagName$T = "s-box";
 interface BoxProps extends Pick<BoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<BoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -3404,18 +3525,18 @@ interface BoxElement extends BoxProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$R]: BoxElement;
+        [tagName$T]: BoxElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$R]: BoxProps & BaseElementPropsWithChildren<BoxElement>;
+            [tagName$T]: BoxProps & BaseElementPropsWithChildren<BoxElement>;
         }
     }
 }
 
-declare const tagName$Q = "s-button";
+declare const tagName$S = "s-button";
 interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
@@ -3431,18 +3552,18 @@ interface ButtonProps extends ButtonElementProps, ButtonEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$Q]: ButtonElement;
+        [tagName$S]: ButtonElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$Q]: ButtonProps & BaseElementPropsWithChildren<ButtonElement>;
+            [tagName$S]: ButtonProps & BaseElementPropsWithChildren<ButtonElement>;
         }
     }
 }
 
-declare const tagName$P = "s-checkbox";
+declare const tagName$R = "s-checkbox";
 interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
     command?: Extract<CheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
@@ -3455,36 +3576,56 @@ interface CheckboxProps extends CheckboxElementProps, CheckboxEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$P]: CheckboxElement;
+        [tagName$R]: CheckboxElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$P]: CheckboxProps & BaseElementProps<CheckboxElement>;
+            [tagName$R]: CheckboxProps & BaseElementProps<CheckboxElement>;
         }
     }
 }
 
-declare const tagName$O = "s-choice";
+declare const tagName$Q = "s-chip";
+interface ChipElementProps extends Pick<ChipProps$1, 'accessibilityLabel' | 'id'> {
+}
+interface ChipProps extends ChipElementProps {
+}
+interface ChipElement extends ChipProps, Omit<HTMLElement, 'id'> {
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        [tagName$Q]: ChipElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            [tagName$Q]: ChipProps & BaseElementPropsWithChildren<ChipElement>;
+        }
+    }
+}
+
+declare const tagName$P = "s-choice";
 interface ChoiceProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'details' | 'disabled' | 'id' | 'secondaryContent' | 'selected' | 'selectedContent' | 'error' | 'value'> {
 }
 interface ChoiceElement extends ChoiceProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$O]: ChoiceElement;
+        [tagName$P]: ChoiceElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$O]: ChoiceProps & BaseElementPropsWithChildren<ChoiceElement>;
+            [tagName$P]: ChoiceProps & BaseElementPropsWithChildren<ChoiceElement>;
         }
     }
 }
 
-declare const tagName$N = "s-choice-list";
+declare const tagName$O = "s-choice-list";
 interface ChoiceListElementProps extends Pick<ChoiceListProps$1, 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'multiple' | 'name' | 'values' | 'variant'> {
 }
 interface ChoiceListEvents extends Pick<ChoiceListProps$1, 'onChange'> {
@@ -3496,18 +3637,18 @@ interface ChoiceListProps extends ChoiceListElementProps, ChoiceListEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$N]: ChoiceListElement;
+        [tagName$O]: ChoiceListElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$N]: ChoiceListProps & BaseElementPropsWithChildren<ChoiceListElement>;
+            [tagName$O]: ChoiceListProps & BaseElementPropsWithChildren<ChoiceListElement>;
         }
     }
 }
 
-declare const tagName$M = "s-clickable";
+declare const tagName$N = "s-clickable";
 interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibilityLabel' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'command' | 'commandFor' | 'disabled' | 'display' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'lang' | 'loading' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'target' | 'type'> {
     background?: Extract<ClickableProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -3527,13 +3668,38 @@ interface ClickableProps extends ClickableElementProps, ClickableEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$M]: ClickableElement;
+        [tagName$N]: ClickableElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$M]: ClickableProps & BaseElementPropsWithChildren<ClickableElement>;
+            [tagName$N]: ClickableProps & BaseElementPropsWithChildren<ClickableElement>;
+        }
+    }
+}
+
+declare const tagName$M = "s-clickable-chip";
+interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'accessibilityLabel' | 'disabled' | 'hidden' | 'href' | 'id' | 'removable'> {
+}
+interface ClickableChipEvents extends Pick<ClickableChipProps$1, 'onAfterHide' | 'onClick' | 'onRemove'> {
+}
+interface ClickableChipElement extends ClickableChipElementProps, Omit<HTMLElement, 'id' | 'hidden' | 'onclick'> {
+    onafterhide: ClickableChipEvents['onAfterHide'];
+    onclick: ClickableChipEvents['onClick'];
+    onremove: ClickableChipEvents['onRemove'];
+}
+interface ClickableChipProps extends ClickableChipElementProps, ClickableChipEvents {
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        [tagName$M]: ClickableChipElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            [tagName$M]: ClickableChipProps & BaseElementPropsWithChildren<ClickableChipElement>;
         }
     }
 }
@@ -3563,7 +3729,12 @@ declare module 'preact' {
 }
 
 declare const tagName$K = "s-date-field";
-interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 'allowDays' | 'autocomplete' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'readOnly' | 'required' | 'value' | 'view'> {
+interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 'allowDays' | 'autocomplete' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'error' | 'id' | 'label' | 'name' | 'readOnly' | 'required' | 'value' | 'view'> {
+    /**
+     * @deprecated Use `label` instead.
+     * @private
+     */
+    placeholder?: string;
 }
 interface DateFieldEvents extends Pick<DateFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'> {
 }
@@ -4003,7 +4174,7 @@ declare module 'preact' {
 }
 
 declare const tagName$s = "s-number-field";
-interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'accessory' | 'autocomplete' | 'controls' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'icon' | 'id' | 'inputMode' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
+interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete' | 'controls' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'icon' | 'id' | 'inputMode' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
     /**
      * @deprecated Use `label` instead.
      * @private
@@ -4384,7 +4555,12 @@ declare module 'preact' {
 }
 
 declare const tagName$d = "s-select";
-interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value'> {
+interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
+    /**
+     * @deprecated Use `label` instead.
+     * @private
+     */
+    placeholder?: string;
 }
 interface SelectEvents extends Pick<SelectProps$1, 'onBlur' | 'onChange' | 'onFocus'> {
 }
@@ -4721,4 +4897,4 @@ declare module 'preact' {
     }
 }
 
-export type { AbbreviationProps, BadgeProps, BannerProps, BoxProps, ButtonProps, CheckboxProps, ChoiceListProps, ChoiceProps, ClickableProps, ClipboardItemProps, DateFieldProps, DatePickerProps, DetailsProps, DividerProps, DropZoneProps, EmailFieldProps, FormProps, GridItemProps, GridProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, MapMarkerProps, MapProps, ModalProps, MoneyFieldProps, NumberFieldProps, OptionProps, OrderedListProps, ParagraphProps, PasswordFieldProps, PaymentIconProps, PhoneFieldProps, PopoverProps, PressButtonProps, ProductThumbnailProps, ProgressProps, QRCodeProps, QueryContainerProps, ScrollBoxProps, SectionProps, SelectProps, SheetProps, SkeletonParagraphProps, SpinnerProps, StackProps, SummaryProps, SwitchProps, TextAreaProps, TextFieldProps, TextProps, TimeProps, TooltipProps, UnorderedListProps, UrlFieldProps };
+export type { AbbreviationProps, AnnouncementProps, BadgeProps, BannerProps, BoxProps, ButtonProps, CheckboxProps, ChipProps, ChoiceListProps, ChoiceProps, ClickableChipProps, ClickableProps, ClipboardItemProps, DateFieldProps, DatePickerProps, DetailsProps, DividerProps, DropZoneProps, EmailFieldProps, FormProps, GridItemProps, GridProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, MapMarkerProps, MapProps, ModalProps, MoneyFieldProps, NumberFieldProps, OptionProps, OrderedListProps, ParagraphProps, PasswordFieldProps, PaymentIconProps, PhoneFieldProps, PopoverProps, PressButtonProps, ProductThumbnailProps, ProgressProps, QRCodeProps, QueryContainerProps, ScrollBoxProps, SectionProps, SelectProps, SheetProps, SkeletonParagraphProps, SpinnerProps, StackProps, SummaryProps, SwitchProps, TextAreaProps, TextFieldProps, TextProps, TimeProps, TooltipProps, UnorderedListProps, UrlFieldProps };

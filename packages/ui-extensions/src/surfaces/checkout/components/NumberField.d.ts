@@ -32,7 +32,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-number-field";
-export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'accessory' | 'autocomplete' | 'controls' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'icon' | 'id' | 'inputMode' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
+export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete' | 'controls' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'icon' | 'id' | 'inputMode' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
     /**
      * @deprecated Use `label` instead.
      * @private
@@ -73,6 +73,13 @@ export interface NumberFieldElement extends NumberFieldElementProps, Omit<HTMLEl
     onfocus: NumberFieldEvents['onFocus'];
     oninput: NumberFieldEvents['onInput'];
 }
+export interface NumberFieldElementSlots {
+    /**
+     * Additional content to be displayed in the field.
+     * Commonly used to display an icon that activates a tooltip providing more information.
+     */
+    accessory?: HTMLElement;
+}
 export interface NumberFieldProps extends NumberFieldElementProps, NumberFieldEvents {
 }
 declare global {
@@ -88,4 +95,4 @@ declare module 'preact' {
     }
 }
 
-export type { NumberFieldElement, NumberFieldElementEvents, NumberFieldElementProps, NumberFieldEvents, NumberFieldProps };
+export type { NumberFieldElement, NumberFieldElementEvents, NumberFieldElementProps, NumberFieldElementSlots, NumberFieldEvents, NumberFieldProps };

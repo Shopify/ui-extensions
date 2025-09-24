@@ -147,6 +147,21 @@ export interface ExtendableEvent extends Event {
 	 */
 	waitUntil?: (promise: Promise<void>) => void;
 }
+interface AnnouncementProps$1 extends GlobalProps, ToggleEventProps {
+	/**
+	 * The content of the announcement.
+	 */
+	children?: ComponentChildren;
+	/**
+	 * Callback fired when the announcement is dismissed by the user
+	 * (either via the built-in dismiss button or programmatically).
+	 */
+	onDismiss?: (event: Event) => void;
+	/**
+	 * Method to programmatically dismiss the announcement.
+	 */
+	dismiss: () => void;
+}
 export type SizeKeyword = "small-500" | "small-400" | "small-300" | "small-200" | "small-100" | "small" | "base" | "large" | "large-100" | "large-200" | "large-300" | "large-400" | "large-500";
 export type ColorKeyword = "subdued" | "base" | "strong";
 export type BackgroundColorKeyword = "transparent" | ColorKeyword;
@@ -1744,6 +1759,30 @@ interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps, FieldErrorPro
 	 */
 	required?: boolean;
 }
+export interface ChipProps$1 {
+	/**
+	 * The content of the chip.
+	 */
+	children?: ComponentChildren;
+	/**
+	 * The graphic to display inside of the chip.
+	 *
+	 * @implementation Only `s-icon` is supported.
+	 */
+	graphic?: ComponentChildren;
+	/**
+	 * A label that describes the purpose or contents of the Chip. It will be read to users using assistive technologies such as screen readers.
+	 */
+	accessibilityLabel?: string;
+	/**
+	 * Modify the color to be more or less intense.
+	 *
+	 * @default 'base'
+	 */
+	color?: ColorKeyword;
+}
+interface ChipProps$1 extends ChipProps$1, GlobalProps {
+}
 interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
 	/**
 	 * Content to use as the choice label.
@@ -1847,6 +1886,56 @@ interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps
 	 * @default ''
 	 */
 	lang?: string;
+}
+interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
+	/**
+	 * Callback when the chip is clicked.
+	 */
+	onClick?: (event: Event) => void;
+	/**
+	 * The URL to link to.
+	 *
+	 * - If set, it will navigate to the location specified by `href` after executing the `click` event.
+	 */
+	href?: string;
+	/**
+	 * Whether the chip is removable.
+	 *
+	 * @default false
+	 */
+	removable?: boolean;
+	/**
+	 * Callback when the chip is removed.
+	 */
+	onRemove?: (event: Event) => void;
+	/**
+	 * Determines whether the chip is hidden.
+	 *
+	 * If this property is being set on each framework render (as in 'controlled' usage),
+	 * and the chip is `removable`,
+	 * ensure you update app state for this property when the `remove` event fires.
+	 *
+	 * If the chip is not `removable`, it can still be hidden by setting this property.
+	 *
+	 * @default false
+	 */
+	hidden?: boolean;
+	/**
+	 * Event handler when the chip has fully hidden.
+	 *
+	 * The `hidden` property will be `true` when this event fires.
+	 *
+	 * @implementation If implementations animate the hiding of the chip,
+	 * this event must fire after the chip has fully hidden.
+	 * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
+	 */
+	onAfterHide?: (event: Event) => void;
+	/**
+	 * Disables the chip, disallowing any interaction.
+	 *
+	 * @default false
+	 */
+	disabled?: boolean;
 }
 interface ClipboardItemProps$1 extends GlobalProps {
 	/**
