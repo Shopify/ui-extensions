@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Media',
   defaultExample: {
-    image: 'imagegroup-preview.png',
+    image: 'imagegroup-default.png',
     altText:
       'An example of the ImageGroup component shows a group of four images of plants, arranged in a 2x2 grid.',
     codeblock: {

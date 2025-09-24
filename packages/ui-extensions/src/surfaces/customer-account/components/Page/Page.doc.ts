@@ -41,7 +41,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Structure',
   defaultExample: {
-    image: 'page-preview.png',
+    image: 'page-default.png',
     altText:
       'An example of the Page component shows the page title, description, and order action buttons on the Order status page.',
     codeblock: {

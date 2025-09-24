@@ -24,7 +24,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Actions',
   defaultExample: {
-    image: 'menu-preview.png',
+    image: 'menu-default.png',
     altText:
       'An example of a Menu component shows three actions: Submit problem, Request return, and Cancel order.',
     codeblock: {
