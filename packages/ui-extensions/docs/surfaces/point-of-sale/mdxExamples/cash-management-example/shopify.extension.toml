@@ -1,0 +1,28 @@
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
+api_version = "unstable"
+
+[[extensions]]
+type = "ui_extension"
+name = "cash-management-extension"
+
+handle = "cash-management-extension"
+description = "Safe Management"
+
+# Controls where in POS your extension will be injected,
+# and the file that contains your extension’s source code.
+[[extensions.targeting]]
+module = "./src/SafeModal.tsx"
+target = "pos.cash-session-details.action.render"
+
+[[extensions.targeting]]
+module = "./src/BannerAlert.tsx"
+target = "pos.cash-session-details.banner.render"
+
+[[extensions.targeting]]
+module = "./src/MenuItem.tsx"
+target = "pos.cash-session-details.action.menu-item.render"
+
+[[extensions.targeting]]
+module = "./src/InStoreCashInfo.tsx"
+target = "pos.cash-session-summary.block.render"
