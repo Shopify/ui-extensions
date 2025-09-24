@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Box',
   description:
-    'Use `s-box` to create flexible layout containers with consistent spacing and styling. Box provides a foundation for building structured layouts.',
+    'A generic container that provides flexible layout with consistent spacing and styling. Use it to apply padding, to nest and group other components, or as the foundation for building structured layouts.',
   thumbnail: 'box-thumbnail.png',
   isVisualComponent: true,
   type: '',

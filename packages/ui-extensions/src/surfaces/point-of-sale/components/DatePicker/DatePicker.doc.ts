@@ -2,7 +2,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'DatePicker',
-  description: 'Allow users to select a specific date.',
+  description:
+    'Allows merchants to select a specific date, using a calendar-like picker interface.',
   thumbnail: 'date-picker-thumbnail.png',
   isVisualComponent: true,
   type: '',

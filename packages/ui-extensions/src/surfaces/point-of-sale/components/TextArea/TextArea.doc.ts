@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextArea',
   description:
-    'Use `s-text-area` to capture multi-line text input from users. Provides a resizable text input area for longer content like descriptions or comments.',
+    'Captures longer text content from merchants with a multi-line, resizable text input area.',
   thumbnail: 'text-area-thumbnail.png',
   isVisualComponent: true,
   type: '',
