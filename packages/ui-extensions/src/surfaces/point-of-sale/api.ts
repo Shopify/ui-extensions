@@ -5,6 +5,11 @@ export type {
   LineItemDiscountType,
 } from './render/api/cart-api/cart-api';
 
+export type {
+  CheckoutApi,
+  CheckoutApiContent,
+} from './render/api/checkout-api/checkout-api';
+
 export type {CartLineItemApi} from './render/api/cart-line-item-api/cart-line-item-api';
 
 export type {

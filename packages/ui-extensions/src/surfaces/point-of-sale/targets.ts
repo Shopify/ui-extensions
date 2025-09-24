@@ -2,18 +2,21 @@ import type {
   StandardApi,
   ActionApi,
   ActionTargetApi,
+  CheckoutApi,
   CartApi,
   CartLineItemApi,
   CustomerApi,
   DraftOrderApi,
   ProductApi,
   OrderApi,
+  NavigationApi,
 } from './api';
 import type {RenderExtension} from './extension';
 import type {Components} from './shared';
 import type {AnyComponentBuilder} from '../../shared';
 import type {TransactionCompleteWithReprintData} from './event/data/TransactionCompleteData';
 import {StorageApi} from './render/api/storage-api/storage-api';
+import {FullProductApi} from './render/api/product-api/product-api';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
 type ActionComponents = AnyComponentBuilder<Pick<Components, 'Button'>>;
@@ -142,8 +145,7 @@ export interface ExtensionTargets {
     StandardApi<'pos.draft-order-details.block.render'> &
       ActionApi &
       CartApi &
-      DraftOrderApi,
-    BlockComponents
+      BlockComponents
   >;
   'pos.customer-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.customer-details.action.menu-item.render'> &
@@ -188,6 +190,74 @@ export interface ExtensionTargets {
   'pos.receipt-header.block.render': RenderExtension<
     {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,
     ReceiptComponents
+  >;
+  'pos.navigation.tab-bar.block.render': RenderExtension<
+    StandardApi<'pos.navigation.tab-bar.block.render'> & BlockComponents
+  >;
+  'pos.smart-grid.block.render': RenderExtension<
+    StandardApi<'pos.smart-grid.block.render'> & ActionApi & CartApi,
+    BlockComponents
+  >;
+  'pos.smart-grid.modal.render': RenderExtension<
+    StandardApi<'pos.smart-grid.modal.render'> & ActionApi & CartApi,
+    BasicComponents
+  >;
+  'pos.cart-line-item.block.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.block.render'> & CartApi & CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.cart-line-item.delivery.block.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.delivery.block.render'> &
+      CartApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.cart-line-item.inventory.block.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.inventory.block.render'> &
+      CartApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.cart-line-item.pricing.block.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.pricing.block.render'> &
+      CartApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.cart-line-item.discounts.block.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.discounts.block.render'> &
+      CartApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.cart-line-item.staff.block.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.staff.block.render'> &
+      CartApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.product-details-screen.block.render': RenderExtension<
+    StandardApi<'pos.product-details-screen.block.render'> & CartApi & FullProductApi,
+    BasicComponents
+  >;
+  'pos.cart.block.render': RenderExtension<
+    StandardApi<'pos.cart.block.render'> & CartApi,
+    BasicComponents
+  >;
+  'pos.cart.payment-actions.block.render': RenderExtension<
+    StandardApi<'pos.cart.payment-actions.block.render'> &
+      CartApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
+
+  'pos.checkout.post.payment-selection.block.render': RenderExtension<
+    StandardApi<'pos.checkout.post.payment-selection.block.render'> &
+      ActionApi &
+      CartApi &
+      NavigationApi &
+      CheckoutApi,
+    BasicComponents
   >;
 }
 

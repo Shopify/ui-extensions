@@ -1,5 +1,11 @@
+import {Product} from '../../../types/product';
+
 export interface ProductApi {
   product: ProductApiContent;
+}
+
+export interface FullProductApi {
+  product: Product;
 }
 
 export interface ProductApiContent {
