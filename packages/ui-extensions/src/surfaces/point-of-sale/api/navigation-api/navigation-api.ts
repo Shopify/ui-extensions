@@ -35,7 +35,7 @@ export interface Navigation {
   /**
    * The navigate() method navigates to a specific URL, updating any provided state in the history entries list.
    */
-  navigate: NavigateFunction;
+  navigate: (url: string, options?: NavigationNavigateOptions) => void;
   /**
    * The currentEntry read-only property of the Navigation interface returns a NavigationHistoryEntry object representing the location the user is currently navigated to right now.
    */
@@ -52,12 +52,4 @@ export interface Navigation {
     type: 'currententrychange',
     cb: (event: NavigationCurrentEntryChangeEvent) => void,
   ): void;
-}
-
-export interface NavigateFunction {
-  /**
-   * Navigates to a specific URL, updating any provided state in the history entries list.
-   * @param url The destination URL to navigate to.
-   */
-  (url: string, options?: NavigationNavigateOptions): void;
 }

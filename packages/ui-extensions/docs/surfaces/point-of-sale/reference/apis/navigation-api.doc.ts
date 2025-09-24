@@ -46,6 +46,12 @@ The Navigation API enables POS UI extension to navigate between screens.
           'native-screen',
         ),
       },
+      {
+        codeblock: generateJsxCodeBlockForNavigationApi(
+          'Navigate to a screen with state parameters',
+          'state-params',
+        ),
+      },
     ],
   },
 };
