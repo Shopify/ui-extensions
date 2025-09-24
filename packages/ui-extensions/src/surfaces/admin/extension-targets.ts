@@ -11,6 +11,7 @@ import type {
   PurchaseOptionsCardConfigurationApi,
   DiscountFunctionSettingsApi,
   CustomerSegmentTemplateApi,
+  CustomerSegmentTemplate,
 } from './api';
 import {
   ShouldRenderApi,
@@ -20,7 +21,6 @@ import type {StandardComponents} from './components/StandardComponents';
 import type {BlockExtensionComponents} from './components/BlockExtensionComponents';
 import type {ActionExtensionComponents} from './components/ActionExtensionComponents';
 import type {PrintActionExtensionComponents} from './components/PrintActionExtensionComponents';
-import {CustomerSegmentTemplate} from './components';
 
 export interface ExtensionTargets {
   /**
