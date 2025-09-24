@@ -28,12 +28,11 @@ const data: ReferenceEntityTemplateSchema = {
     altText:
       'An example of the Avatar component shows the default avatar in four sizes.',
     codeblock: {
-      title: 'Basic Avatar',
+      title: 'Code',
       tabs: [
         {
-          title: 'Preact',
-          code: './examples/basic-Avatar-preact.example.tsx',
-          language: 'tsx',
+          code: './examples/basic-Avatar.example.html',
+          language: 'jsx',
         },
       ],
     },
@@ -60,7 +59,7 @@ const data: ReferenceEntityTemplateSchema = {
   **Don'ts**
   - Don't use different size avatars on the same page.
 
-  ![An example showing dos and don'ts of the Avatar component](/assets/templated-apis-screenshots/customer-account-ui-extensions/unstable/avatar-best-practices.png)
+  ![An example showing dos and don'ts of the Avatar component](/assets/templated-apis-screenshots/customer-account-ui-extensions/2025-10/avatar-best-practices.png)
   `,
     },
   ],

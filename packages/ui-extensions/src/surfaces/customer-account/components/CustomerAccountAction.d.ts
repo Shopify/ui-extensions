@@ -2,18 +2,18 @@ import {BaseElementPropsWithChildren, IdProps} from './shared';
 
 export interface CustomerAccountActionProps extends IdProps {
   /**
-   * Sets the heading of the Action container.
+   * Sets the heading of the action container.
    */
   heading: string;
 }
 
 export interface CustomerAccountActionElementSlots {
   /**
-   * The primary action to perform, provided as a button type element.
+   * The primary action for the page. Accepts a single Button element with restricted properties (see below).
    */
   'primary-action'?: HTMLElement;
   /**
-   * The secondary actions to perform, provided as button type elements.
+   * The secondary actions for the page. Accepts multiple Button elements with restricted properties (see below).
    */
   'secondary-actions'?: HTMLElement;
 }
