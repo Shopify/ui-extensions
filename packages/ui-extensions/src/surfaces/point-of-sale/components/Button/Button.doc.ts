@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Button',
   description:
-    'Triggers actions or events, such as opening dialogs or navigating to other pages. Use Button to let users perform specific tasks or initiate interactions throughout the interface.',
+    'Triggers actions or events, such as opening dialogs or navigating to other pages. Use Button to let merchants perform specific tasks or initiate interactions throughout the interface.',
   thumbnail: 'button-thumbnail.png',
   isVisualComponent: true,
   type: '',

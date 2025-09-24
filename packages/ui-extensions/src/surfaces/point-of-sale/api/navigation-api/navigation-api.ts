@@ -12,7 +12,7 @@ export interface NavigationHistoryEntry {
   /** Returns the key of the history entry. This is a unique, UA-generated value that represents the history entry's slot in the entries list rather than the entry itself. */
   key: string;
   /**
-   * Returns the URL of this history entry.
+   * Returns the lowercased URL of this history entry.
    */
   url: string | null;
   /**

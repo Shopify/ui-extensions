@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Modal',
   description:
-    "Use `s-modal` to display content in an overlay. Modals are used to display important information that requires the merchant's attention.",
+    'Displays content in an overlay that requires merchant attention. Use to present critical information, confirmations, or focused tasks without losing page context.',
   thumbnail: 'dialog-thumbnail.png',
   isVisualComponent: true,
   type: '',

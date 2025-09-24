@@ -19,15 +19,13 @@ const Extension = () => {
   }, []);
 
   return (
-    <s-navigator initial-screen-name="HelloWorld">
-      <s-screen name="HelloWorld" title="Hello World!">
-        <s-scroll-box>
-          <s-text>Found {variants.length} variants</s-text>
-          {variants.map((variant) => (
-            <s-text key={variant.id}>{variant.title}</s-text>
-          ))}
-        </s-scroll-box>
-      </s-screen>
-    </s-navigator>
+    <s-page heading="Hello World!">
+      <s-scroll-box>
+        <s-text>Found {variants.length} variants</s-text>
+        {variants.map((variant) => (
+          <s-text key={variant.id}>{variant.title}</s-text>
+        ))}
+      </s-scroll-box>
+    </s-page>
   );
 };
