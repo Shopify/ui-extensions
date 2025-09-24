@@ -19,15 +19,13 @@ const Extension = () => {
   }, []);
 
   return (
-    <s-navigator initial-screen-name="HelloWorld">
-      <s-screen name="HelloWorld" title="Hello World!">
-        <s-scroll-box>
-          <s-text>Found {products.length} products</s-text>
-          {products.map((product) => (
-            <s-text key={product.id}>{product.title}</s-text>
-          ))}
-        </s-scroll-box>
-      </s-screen>
-    </s-navigator>
+    <s-page heading="Hello World!">
+      <s-scroll-box>
+        <s-text>Found {products.length} products</s-text>
+        {products.map((product) => (
+          <s-text key={product.id}>{product.title}</s-text>
+        ))}
+      </s-scroll-box>
+    </s-page>
   );
 };
