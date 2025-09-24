@@ -263,7 +263,7 @@ export interface DiscountCodeAddChange {
   type: 'addDiscountCode';
 
   /**
-   * The code for the discount (case-sensitive)
+   * The code for the discount (case-insensitive)
    */
   code: string;
 }
@@ -275,7 +275,7 @@ export interface DiscountCodeRemoveChange {
   type: 'removeDiscountCode';
 
   /**
-   * The code for the discount (case-sensitive)
+   * The code for the discount (case-insensitive)
    */
   code: string;
 }
