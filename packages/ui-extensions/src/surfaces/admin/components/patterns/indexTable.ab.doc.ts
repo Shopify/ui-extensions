@@ -37,6 +37,12 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/docs/apps/launch/built-for-shopify/requirements',
       type: 'component',
     },
+    {
+      name: 'Table',
+      subtitle: 'Component',
+      url: '/docs/api/app-home/polaris-web-components/structure/table',
+      type: 'component',
+    },
   ],
 };
 

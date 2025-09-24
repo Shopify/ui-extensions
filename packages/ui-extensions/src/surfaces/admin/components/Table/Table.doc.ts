@@ -67,6 +67,14 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  related: [
+    {
+      name: 'Index table',
+      subtitle: 'Composition',
+      url: 'docs/api/app-home/patterns/compositions/index-table',
+      type: 'component',
+    },
+  ],
 };
 
 export default data;
