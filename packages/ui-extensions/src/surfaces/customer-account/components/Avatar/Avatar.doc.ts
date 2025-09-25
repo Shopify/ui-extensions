@@ -24,9 +24,9 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Media',
   defaultExample: {
-    image: 'avatar-preview.png',
+    image: 'avatar-default.png',
     altText:
-      'An example of the Avatar component shows the default avatar in four sizes.',
+      'An example of the Avatar component shows the initials of the user.',
     codeblock: {
       title: 'Code',
       tabs: [
