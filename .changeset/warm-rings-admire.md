@@ -12,7 +12,6 @@
   - ClickableChip
   - DateField
   - DatePicker
-  - NumberField
   - Option
   - PasswordField
   - QueryContainer
