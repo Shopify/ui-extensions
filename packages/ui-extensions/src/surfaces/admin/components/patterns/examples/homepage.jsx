@@ -97,7 +97,7 @@ export default function HomePage() {
                       label="Upload an image for your puzzle"
                       onInput={(e) =>
                         setProgress((prev) =>
-                          e.target.checked ? prev + 1 : prev - 1,
+                          e.currentTarget.checked ? prev + 1 : prev - 1,
                         )
                       }
                     ></s-checkbox>
@@ -154,7 +154,7 @@ export default function HomePage() {
                       label="Choose a puzzle template"
                       onInput={(e) =>
                         setProgress((prev) =>
-                          e.target.checked ? prev + 1 : prev - 1,
+                          e.currentTarget.checked ? prev + 1 : prev - 1,
                         )
                       }
                     ></s-checkbox>
@@ -209,7 +209,7 @@ export default function HomePage() {
                       label="Customize puzzle piece shapes"
                       onInput={(e) =>
                         setProgress((prev) =>
-                          e.target.checked ? prev + 1 : prev - 1,
+                          e.currentTarget.checked ? prev + 1 : prev - 1,
                         )
                       }
                     ></s-checkbox>
