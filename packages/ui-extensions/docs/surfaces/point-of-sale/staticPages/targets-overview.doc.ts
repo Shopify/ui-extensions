@@ -65,6 +65,7 @@ Displays an action target modally when a menu item is tapped on the post-exchang
 
 See [an example](targets/action/pos-exchange-post-action-render).
 `,
+          image: 'post-exchange-action.png',
         },
         {
           title: 'Customer details',
@@ -109,6 +110,7 @@ Displays an action target modally when a menu item is tapped on the cart line it
 
 See [an example](targets/action/pos-cart-line-item-details-action-render).
 `,
+          image: 'cart-lineitem-action.png',
         },
       ],
     },
@@ -144,6 +146,7 @@ Renders a custom section within the native post exchange screen.
 
 See [an example](targets/block/pos-exchange-post-block-render).
 `,
+          image: 'post-exchange-block.png',
         },
         {
           title: 'Customer details',
@@ -188,6 +191,7 @@ Renders a custom section in the header of printed receipts.
 
 See [an example](targets/block/pos-receipt-header-block-render).
 `,
+          image: 'posreceipt-header.png',
         },
         {
           title: 'Receipt footer',
@@ -196,6 +200,7 @@ Renders a custom section in the footer of printed receipts.
 
 See [an example](targets/block/pos-receipt-footer-block-render).
 `,
+          image: 'posreceipt-footer.png',
         },
       ],
     },
