@@ -1,7 +1,6 @@
 import type {RunnableExtension, RenderExtension} from '../../extension';
 
 import type {
-  CustomerSegmentTemplateApi,
   ActionExtensionApi,
   BlockExtensionApi,
   PrintActionExtensionApi,
@@ -11,6 +10,8 @@ import type {
   ValidationSettingsApi,
   PurchaseOptionsCardConfigurationApi,
   DiscountFunctionSettingsApi,
+  CustomerSegmentTemplateApi,
+  CustomerSegmentTemplate,
 } from './api';
 import {
   ShouldRenderApi,
@@ -23,11 +24,11 @@ import type {PrintActionExtensionComponents} from './components/PrintActionExten
 
 export interface ExtensionTargets {
   /**
-   * Renders a [`CustomerSegmentTemplate`](/docs/api/admin-extensions/components/customersegmenttemplate) in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/customer-segments).
+   * Renders a  [`CustomerSegmentTemplate`](/docs/api/admin-extensions/components/customersegmenttemplate) in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/customer-segments).
    */
-  'admin.customers.segmentation-templates.render': RenderExtension<
-    CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.render'>,
-    StandardComponents
+  'admin.customers.segmentation-templates.data': RunnableExtension<
+    CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.data'>,
+    {templates: CustomerSegmentTemplate[]}
   >;
 
   // Blocks
