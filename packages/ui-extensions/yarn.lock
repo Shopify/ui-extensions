@@ -52,10 +52,10 @@
   resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.4.5.tgz#20328970c314374d96fdaae1cf93aca4b47fefee"
   integrity sha512-Cr+06niG/vmE4A9YsmaKngRuuVSWKMY42NMwtZfy+gctRWGu6Wj9BWuMJg5CEp+JTkRBPToqT5rqnrg1G/Wvow==
 
-"@shopify/generate-docs@0.19.3":
-  version "0.19.3"
-  resolved "https://registry.yarnpkg.com/@shopify/generate-docs/-/generate-docs-0.19.3.tgz#cace7efe6277dbae9b2fdc1ac40236983f74625d"
-  integrity sha512-jAEJeiXtkk6yU/CMe1c+9ydgQRMTLLmx1gdaMoW/QL+1bnIsHDINOsvyIHzSVKfNX0WSbe0zquG9W+W/iNzKaQ==
+"@shopify/generate-docs@0.19.6":
+  version "0.19.6"
+  resolved "https://registry.yarnpkg.com/@shopify/generate-docs/-/generate-docs-0.19.6.tgz#c7083644f6115b6e138d1022342e284143c2dd0a"
+  integrity sha512-pBlE0/ydehfwM+f5d7IXrUbb5yZeC9sivIaU+Thd0ySpoDFhvj93fQNeImmmP5uOndbg8L24y8RNxZ+IAsO5Vg==
   dependencies:
     "@types/react" "^18.0.21"
     globby "^11.1.0"
