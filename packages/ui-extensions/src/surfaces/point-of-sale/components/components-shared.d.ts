@@ -1252,7 +1252,6 @@ export interface BaseBoxProps
 export interface BaseBoxPropsWithRole
   extends BaseBoxProps,
     AccessibilityRoleProps {}
-export interface BoxProps extends BaseBoxPropsWithRole, GlobalProps {}
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The behavior of the Button.

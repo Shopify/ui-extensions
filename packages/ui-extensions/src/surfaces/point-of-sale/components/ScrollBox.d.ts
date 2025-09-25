@@ -13,6 +13,9 @@ import type {
   MaybeAllValuesShorthandProperty,
   MaybeTwoValuesShorthandProperty,
   SizeKeyword,
+  SizeUnitsOrAuto,
+  SizeUnitsOrNone,
+  SizeUnits,
   Key,
   Ref,
 } from './components-shared.d.ts';
@@ -36,17 +39,43 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 
 export type PaddingKeyword = SizeKeyword | 'none';
 declare const tagName = 's-scroll-box';
-export interface ScrollBoxJSXProps
-  extends Pick<
-    ScrollBoxProps,
-    | 'id'
-    | 'blockSize'
-    | 'minBlockSize'
-    | 'maxBlockSize'
-    | 'inlineSize'
-    | 'minInlineSize'
-    | 'maxInlineSize'
-  > {
+export interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
+  /**
+   * Adjust the block size.
+   *
+   * @default 'auto'
+   */
+  blockSize?: SizeUnitsOrAuto;
+  /**
+   * Adjust the inline size.
+   *
+   * @default 'auto'
+   */
+  inlineSize?: SizeUnitsOrAuto;
+  /**
+   * Adjust the maximum block size.
+   *
+   * @default 'none'
+   */
+  maxBlockSize?: SizeUnitsOrNone;
+  /**
+   * Adjust the maximum inline size.
+   *
+   * @default 'none'
+   */
+  maxInlineSize?: SizeUnitsOrNone;
+  /**
+   * Adjust the minimum block size.
+   *
+   * @default '0'
+   */
+  minBlockSize?: SizeUnits;
+  /**
+   * Adjust the minimum inline size.
+   *
+   * @default '0'
+   */
+  minInlineSize?: SizeUnits;
   /**
    * Adjust the padding of all edges.
    *
@@ -77,7 +106,7 @@ export interface ScrollBoxJSXProps
    *
    * @default '' - meaning no override
    */
-  paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword | ''>;
+  paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword> | '';
   /**
    * Adjust the block-start padding.
    *
@@ -103,7 +132,7 @@ export interface ScrollBoxJSXProps
    *
    * @default '' - meaning no override
    */
-  paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword | ''>;
+  paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword> | '';
   /**
    * Adjust the inline-start padding.
    *

@@ -1254,7 +1254,6 @@ export interface BaseBoxProps
 export interface BaseBoxPropsWithRole
   extends BaseBoxProps,
     AccessibilityRoleProps {}
-export interface BoxProps extends BaseBoxPropsWithRole, GlobalProps {}
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The behavior of the Button.
@@ -3214,17 +3213,43 @@ declare module 'preact' {
 
 type PaddingKeyword$2 = SizeKeyword | 'none';
 declare const tagName$r = 's-scroll-box';
-interface ScrollBoxJSXProps
-  extends Pick<
-    ScrollBoxProps,
-    | 'id'
-    | 'blockSize'
-    | 'minBlockSize'
-    | 'maxBlockSize'
-    | 'inlineSize'
-    | 'minInlineSize'
-    | 'maxInlineSize'
-  > {
+interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
+  /**
+   * Adjust the block size.
+   *
+   * @default 'auto'
+   */
+  blockSize?: SizeUnitsOrAuto;
+  /**
+   * Adjust the inline size.
+   *
+   * @default 'auto'
+   */
+  inlineSize?: SizeUnitsOrAuto;
+  /**
+   * Adjust the maximum block size.
+   *
+   * @default 'none'
+   */
+  maxBlockSize?: SizeUnitsOrNone;
+  /**
+   * Adjust the maximum inline size.
+   *
+   * @default 'none'
+   */
+  maxInlineSize?: SizeUnitsOrNone;
+  /**
+   * Adjust the minimum block size.
+   *
+   * @default '0'
+   */
+  minBlockSize?: SizeUnits;
+  /**
+   * Adjust the minimum inline size.
+   *
+   * @default '0'
+   */
+  minInlineSize?: SizeUnits;
   /**
    * Adjust the padding of all edges.
    *
@@ -3255,7 +3280,7 @@ interface ScrollBoxJSXProps
    *
    * @default '' - meaning no override
    */
-  paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword$2 | ''>;
+  paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword$2> | '';
   /**
    * Adjust the block-start padding.
    *
@@ -3281,7 +3306,7 @@ interface ScrollBoxJSXProps
    *
    * @default '' - meaning no override
    */
-  paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword$2 | ''>;
+  paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword$2> | '';
   /**
    * Adjust the inline-start padding.
    *
@@ -3370,16 +3395,43 @@ declare module 'preact' {
 
 declare const tagName$o = 's-box';
 type PaddingKeyword$1 = SizeKeyword | 'none';
-interface BoxJSXProps
-  extends Pick<
-    BoxProps,
-    | 'blockSize'
-    | 'minBlockSize'
-    | 'maxBlockSize'
-    | 'inlineSize'
-    | 'minInlineSize'
-    | 'maxInlineSize'
-  > {
+interface BoxJSXProps {
+  /**
+   * Adjust the block size.
+   *
+   * @default 'auto'
+   */
+  blockSize?: SizeUnitsOrAuto;
+  /**
+   * Adjust the inline size.
+   *
+   * @default 'auto'
+   */
+  inlineSize?: SizeUnitsOrAuto;
+  /**
+   * Adjust the maximum block size.
+   *
+   * @default 'none'
+   */
+  maxBlockSize?: SizeUnitsOrNone;
+  /**
+   * Adjust the maximum inline size.
+   *
+   * @default 'none'
+   */
+  maxInlineSize?: SizeUnitsOrNone;
+  /**
+   * Adjust the minimum block size.
+   *
+   * @default '0'
+   */
+  minBlockSize?: SizeUnits;
+  /**
+   * Adjust the minimum inline size.
+   *
+   * @default '0'
+   */
+  minInlineSize?: SizeUnits;
   /**
    * Adjust the padding of all edges.
    *
@@ -3410,7 +3462,7 @@ interface BoxJSXProps
    *
    * @default '' - meaning no override
    */
-  paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword$1 | ''>;
+  paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword$1> | '';
   /**
    * Adjust the block-start padding.
    *
@@ -3436,7 +3488,7 @@ interface BoxJSXProps
    *
    * @default '' - meaning no override
    */
-  paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword$1 | ''>;
+  paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword$1> | '';
   /**
    * Adjust the inline-start padding.
    *
@@ -4448,6 +4500,36 @@ interface Banner {
 
 interface Box {
   /**
+   * Adjust the block size.
+   * @default 'auto'
+   */
+  blockSize?: SizeUnitsOrAuto;
+  /**
+   * Adjust the inline size.
+   * @default 'auto'
+   */
+  inlineSize?: SizeUnitsOrAuto;
+  /**
+   * Adjust the maximum block size.
+   * @default 'none'
+   */
+  maxBlockSize?: SizeUnitsOrNone;
+  /**
+   * Adjust the maximum inline size.
+   * @default 'none'
+   */
+  maxInlineSize?: SizeUnitsOrNone;
+  /**
+   * Adjust the minimum block size.
+   * @default '0'
+   */
+  minBlockSize?: SizeUnits;
+  /**
+   * Adjust the minimum inline size.
+   * @default '0'
+   */
+  minInlineSize?: SizeUnits;
+  /**
    * Adjust the padding of all edges.
    *
    * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
@@ -4475,7 +4557,7 @@ interface Box {
    * This overrides the block value of `padding`.
    * @default '' - meaning no override
    */
-  paddingBlock?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
+  paddingBlock?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
   /**
    * Adjust the block-start padding.
    *
@@ -4498,7 +4580,7 @@ interface Box {
    * This overrides the inline value of `padding`.
    * @default '' - meaning no override
    */
-  paddingInline?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
+  paddingInline?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
   /**
    * Adjust the inline-start padding.
    *
@@ -4513,42 +4595,6 @@ interface Box {
    * @default '' - meaning no override
    */
   paddingInlineEnd?: '' | PaddingKeyword;
-  /**
-   * Adjust the block size.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/block-size
-   * @default 'auto'
-   */
-  blockSize?: MaybeResponsive<SizeUnitsOrAuto>;
-  /**
-   * Adjust the minimum block size.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
-   * @default '0'
-   */
-  minBlockSize?: MaybeResponsive<SizeUnits>;
-  /**
-   * Adjust the maximum block size.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
-   * @default 'none'
-   */
-  maxBlockSize?: MaybeResponsive<SizeUnitsOrNone>;
-  /**
-   * Adjust the inline size.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
-   * @default 'auto'
-   */
-  inlineSize?: MaybeResponsive<SizeUnitsOrAuto>;
-  /**
-   * Adjust the minimum inline size.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
-   * @default '0'
-   */
-  minInlineSize?: MaybeResponsive<SizeUnits>;
-  /**
-   * Adjust the maximum inline size.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
-   * @default 'none'
-   */
-  maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
 
 interface ButtonEvents {
@@ -5002,6 +5048,36 @@ interface QrCode {
 
 interface ScrollBox {
   /**
+   * Adjust the block size.
+   * @default 'auto'
+   */
+  blockSize?: SizeUnitsOrAuto;
+  /**
+   * Adjust the inline size.
+   * @default 'auto'
+   */
+  inlineSize?: SizeUnitsOrAuto;
+  /**
+   * Adjust the maximum block size.
+   * @default 'none'
+   */
+  maxBlockSize?: SizeUnitsOrNone;
+  /**
+   * Adjust the maximum inline size.
+   * @default 'none'
+   */
+  maxInlineSize?: SizeUnitsOrNone;
+  /**
+   * Adjust the minimum block size.
+   * @default '0'
+   */
+  minBlockSize?: SizeUnits;
+  /**
+   * Adjust the minimum inline size.
+   * @default '0'
+   */
+  minInlineSize?: SizeUnits;
+  /**
    * Adjust the padding of all edges.
    *
    * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
@@ -5029,7 +5105,7 @@ interface ScrollBox {
    * This overrides the block value of `padding`.
    * @default '' - meaning no override
    */
-  paddingBlock?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
+  paddingBlock?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
   /**
    * Adjust the block-start padding.
    *
@@ -5052,7 +5128,7 @@ interface ScrollBox {
    * This overrides the inline value of `padding`.
    * @default '' - meaning no override
    */
-  paddingInline?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
+  paddingInline?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
   /**
    * Adjust the inline-start padding.
    *
@@ -5069,42 +5145,6 @@ interface ScrollBox {
   paddingInlineEnd?: '' | PaddingKeyword;
   /** A unique identifier for the element. */
   id?: string;
-  /**
-   * Adjust the block size.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/block-size
-   * @default 'auto'
-   */
-  blockSize?: MaybeResponsive<SizeUnitsOrAuto>;
-  /**
-   * Adjust the minimum block size.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
-   * @default '0'
-   */
-  minBlockSize?: MaybeResponsive<SizeUnits>;
-  /**
-   * Adjust the maximum block size.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
-   * @default 'none'
-   */
-  maxBlockSize?: MaybeResponsive<SizeUnitsOrNone>;
-  /**
-   * Adjust the inline size.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
-   * @default 'auto'
-   */
-  inlineSize?: MaybeResponsive<SizeUnitsOrAuto>;
-  /**
-   * Adjust the minimum inline size.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
-   * @default '0'
-   */
-  minInlineSize?: MaybeResponsive<SizeUnits>;
-  /**
-   * Adjust the maximum inline size.
-   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
-   * @default 'none'
-   */
-  maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
 
 interface SearchFieldEvents {
