@@ -1,0 +1,9 @@
+<s-box
+  padding="base"
+  background="subdued"
+  border="base"
+  borderRadius="base"
+  class="my-custom-class"
+>
+  Content
+</s-box>;
