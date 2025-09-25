@@ -33,6 +33,17 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'guidelines',
+      title: 'Guidelines',
+      sectionContent: `
+- Use when needing to communicate to merchants in a way that is persistent but non-interruptive.
+- Only one banner should be visible at a time.
+`,
+    },
+  ],
   related: [],
 };
 
