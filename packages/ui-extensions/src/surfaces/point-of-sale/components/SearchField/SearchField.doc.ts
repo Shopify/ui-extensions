@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'SearchField',
   description:
     'Captures search terms from merchants using a single-line input field. Includes visual styling to indicate search functionality, and an accessory to quickly clear the input.',
-  thumbnail: 'search-bar-thumbnail.png',
+  thumbnail: 'search-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Forms',
   defaultExample: {
-    image: 'search-bar-default.png',
+    image: 'search-field-default.png',
     codeblock: {
       title: 'Code',
       tabs: [

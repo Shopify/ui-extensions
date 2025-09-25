@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Page',
   description:
     'Serves as the main container for app content with preset layouts and heading controls. Use to structure full-screen views with consistent navigation and content organization.',
-  thumbnail: 'screen-thumbnail.png',
+  thumbnail: 'page-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Structure',
   defaultExample: {
-    image: 'screen-default.png',
+    image: 'page-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
