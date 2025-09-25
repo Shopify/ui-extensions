@@ -15,7 +15,7 @@ function ProductForm() {
           <s-text-field
             label="Product name"
             value={productName}
-            onChange={(e) => setProductName(e.target.value)}
+            onChange={(e) => setProductName(e.currentTarget.value)}
             required
           />
           <s-button variant="primary" type="submit">
