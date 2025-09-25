@@ -19,9 +19,10 @@ import type {StandardApi} from './api/standard/standard';
 import type {ShippingOptionItemApi} from './api/shipping/shipping-option-item';
 import type {ShippingOptionListApi} from './api/shipping/shipping-option-list';
 import type {
-  AnyComponent,
+  AnyCheckoutComponent,
   AllowedComponents,
-  AnyComponentExcept,
+  AnyCheckoutComponentExcept,
+  AnyThankYouComponent,
 } from './shared';
 
 /**
@@ -38,7 +39,7 @@ export interface RenderExtensionTargets {
    */
   'purchase.checkout.actions.render-before': RenderExtension<
     CheckoutApi & StandardApi<'purchase.checkout.actions.render-before'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered immediately before any actions within each step.
@@ -48,14 +49,14 @@ export interface RenderExtensionTargets {
    */
   'Checkout::Actions::RenderBefore': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::Actions::RenderBefore'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after all line items.
    */
   'purchase.checkout.cart-line-list.render-after': RenderExtension<
     CheckoutApi & StandardApi<'purchase.checkout.cart-line-list.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after all line items.
@@ -65,7 +66,7 @@ export interface RenderExtensionTargets {
    */
   'Checkout::CartLines::RenderAfter': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::CartLines::RenderAfter'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that renders on every line item, inside the details
@@ -75,7 +76,7 @@ export interface RenderExtensionTargets {
     CheckoutApi &
       CartLineItemApi &
       StandardApi<'purchase.checkout.cart-line-item.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that renders on every line item, inside the details
@@ -88,7 +89,7 @@ export interface RenderExtensionTargets {
     CheckoutApi &
       CartLineItemApi &
       StandardApi<'Checkout::CartLineDetails::RenderAfter'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that renders on every bundle line item, inside the details
@@ -98,7 +99,7 @@ export interface RenderExtensionTargets {
   'purchase.cart-line-item.line-components.render': RenderExtension<
     CartLineItemApi &
       StandardApi<'purchase.cart-line-item.line-components.render'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that renders on every bundle line item, inside the details
@@ -110,14 +111,14 @@ export interface RenderExtensionTargets {
   'Checkout::CartLineDetails::RenderLineComponents': RenderExtension<
     CartLineItemApi &
       StandardApi<'Checkout::CartLineDetails::RenderLineComponents'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered immediately after the contact form element.
    */
   'purchase.checkout.contact.render-after': RenderExtension<
     CheckoutApi & StandardApi<'purchase.checkout.contact.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered immediately after the contact form element.
@@ -127,7 +128,7 @@ export interface RenderExtensionTargets {
    */
   'Checkout::Contact::RenderAfter': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::Contact::RenderAfter'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after a purchase below the customer information.
@@ -138,7 +139,7 @@ export interface RenderExtensionTargets {
    */
   'Checkout::CustomerInformation::RenderAfter': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::CustomerInformation::RenderAfter'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered between the shipping address header
@@ -147,7 +148,7 @@ export interface RenderExtensionTargets {
   'purchase.checkout.delivery-address.render-before': RenderExtension<
     CheckoutApi &
       StandardApi<'purchase.checkout.delivery-address.render-before'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered between the shipping address header
@@ -158,7 +159,7 @@ export interface RenderExtensionTargets {
    */
   'Checkout::DeliveryAddress::RenderBefore': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::DeliveryAddress::RenderBefore'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after the shipping address form elements.
@@ -166,7 +167,7 @@ export interface RenderExtensionTargets {
   'purchase.checkout.delivery-address.render-after': RenderExtension<
     CheckoutApi &
       StandardApi<'purchase.checkout.delivery-address.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that isn't tied to a specific checkout section or feature.
@@ -178,7 +179,7 @@ export interface RenderExtensionTargets {
    */
   'purchase.checkout.block.render': RenderExtension<
     CheckoutApi & StandardApi<'purchase.checkout.block.render'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that isn't tied to a specific checkout section or feature.
@@ -193,7 +194,7 @@ export interface RenderExtensionTargets {
    */
   'Checkout::Dynamic::Render': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::Dynamic::Render'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that renders exclusively on the **Thank you** page.
@@ -206,7 +207,7 @@ export interface RenderExtensionTargets {
    */
   'purchase.thank-you.block.render': RenderExtension<
     OrderConfirmationApi & StandardApi<'purchase.thank-you.block.render'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that renders exclusively on the **Thank you** page.
@@ -221,7 +222,7 @@ export interface RenderExtensionTargets {
    */
   'Checkout::ThankYou::Dynamic::Render': RenderExtension<
     OrderConfirmationApi & StandardApi<'Checkout::ThankYou::Dynamic::Render'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that renders on every line item, inside the details
@@ -231,7 +232,7 @@ export interface RenderExtensionTargets {
     OrderConfirmationApi &
       CartLineItemApi &
       StandardApi<'purchase.thank-you.cart-line-item.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that renders on every line item, inside the details
@@ -244,7 +245,7 @@ export interface RenderExtensionTargets {
     OrderConfirmationApi &
       CartLineItemApi &
       StandardApi<'Checkout::ThankYou::CartLineDetails::RenderAfter'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after all line items on the **Thank you** page.
@@ -252,7 +253,7 @@ export interface RenderExtensionTargets {
   'purchase.thank-you.cart-line-list.render-after': RenderExtension<
     OrderConfirmationApi &
       StandardApi<'purchase.thank-you.cart-line-list.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after all line items on the **Thank you** page.
@@ -263,7 +264,7 @@ export interface RenderExtensionTargets {
   'Checkout::ThankYou::CartLines::RenderAfter': RenderExtension<
     OrderConfirmationApi &
       StandardApi<'Checkout::ThankYou::CartLines::RenderAfter'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after a purchase below the customer information on the **Thank you** page.
@@ -271,7 +272,7 @@ export interface RenderExtensionTargets {
   'purchase.thank-you.customer-information.render-after': RenderExtension<
     OrderConfirmationApi &
       StandardApi<'purchase.thank-you.customer-information.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after a purchase below the customer information on the **Thank you** page.
@@ -282,7 +283,7 @@ export interface RenderExtensionTargets {
   'Checkout::ThankYou::CustomerInformation::RenderAfter': RenderExtension<
     OrderConfirmationApi &
       StandardApi<'Checkout::ThankYou::CustomerInformation::RenderAfter'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that renders the gift card entry form fields after
@@ -295,7 +296,7 @@ export interface RenderExtensionTargets {
     RedeemableApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.gift-card.render'>,
-    AnyComponentExcept<'Image' | 'Banner'>
+    AnyCheckoutComponentExcept<'Image' | 'Banner'>
   >;
   /**
    * A static extension target that renders the gift card entry form fields after
@@ -307,7 +308,7 @@ export interface RenderExtensionTargets {
    */
   'Checkout::GiftCard::Render': RenderExtension<
     RedeemableApi & CheckoutApi & StandardApi<'Checkout::GiftCard::Render'>,
-    AnyComponentExcept<'Image' | 'Banner'>
+    AnyCheckoutComponentExcept<'Image' | 'Banner'>
   >;
   /**
    * A static extension target that renders the form fields for a payment method when selected by the buyer.
@@ -318,7 +319,7 @@ export interface RenderExtensionTargets {
     PaymentOptionItemApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.payment-option-item.details.render'>,
-    AnyComponentExcept<'Image' | 'Banner'>
+    AnyCheckoutComponentExcept<'Image' | 'Banner'>
   >;
   /**
    * A static extension target that renders the form fields for a payment method when selected by the buyer.
@@ -330,7 +331,7 @@ export interface RenderExtensionTargets {
     PaymentOptionItemApi &
       CheckoutApi &
       StandardApi<'Checkout::PaymentMethod::Render'>,
-    AnyComponentExcept<'Image' | 'Banner'>
+    AnyCheckoutComponentExcept<'Image' | 'Banner'>
   >;
   /**
    * A static extension target that renders after the hosted fields of a credit card payment method.
@@ -341,7 +342,7 @@ export interface RenderExtensionTargets {
     PaymentOptionItemApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.payment-option-item.hosted-fields.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that renders after the hosted fields of a credit card payment method.
@@ -354,7 +355,7 @@ export interface RenderExtensionTargets {
     PaymentOptionItemApi &
       CheckoutApi &
       StandardApi<'Checkout::PaymentMethod::HostedFields::RenderAfter'>,
-    AnyComponentExcept<'Image' | 'Banner'>
+    AnyCheckoutComponentExcept<'Image' | 'Banner'>
   >;
   /**
    * A static extension target that renders a form modal when a buyer selects the custom onsite payment method.
@@ -364,7 +365,7 @@ export interface RenderExtensionTargets {
   'purchase.checkout.payment-option-item.action-required.render': RenderExtension<
     CheckoutApi &
       StandardApi<'purchase.checkout.payment-option-item.action-required.render'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that renders a form modal when a buyer selects the custom onsite payment method.
@@ -374,7 +375,7 @@ export interface RenderExtensionTargets {
    */
   'Checkout::PaymentMethod::RenderRequiredAction': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::PaymentMethod::RenderRequiredAction'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that renders between the payment heading and payment method list.
@@ -383,7 +384,7 @@ export interface RenderExtensionTargets {
   'purchase.checkout.payment-method-list.render-before': RenderExtension<
     CheckoutApi &
       StandardApi<'purchase.checkout.payment-method-list.render-before'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that renders below the list of payment methods.
@@ -392,14 +393,14 @@ export interface RenderExtensionTargets {
   'purchase.checkout.payment-method-list.render-after': RenderExtension<
     CheckoutApi &
       StandardApi<'purchase.checkout.payment-method-list.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered in the order summary, before the discount form element.
    */
   'purchase.checkout.reductions.render-before': RenderExtension<
     CheckoutApi & StandardApi<'purchase.checkout.reductions.render-before'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered in the order summary, before the discount form element.
@@ -409,7 +410,7 @@ export interface RenderExtensionTargets {
    */
   'Checkout::Reductions::RenderBefore': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::Reductions::RenderBefore'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered in the order summary, after the discount form
@@ -417,7 +418,7 @@ export interface RenderExtensionTargets {
    */
   'purchase.checkout.reductions.render-after': RenderExtension<
     CheckoutApi & StandardApi<'purchase.checkout.reductions.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered in the order summary, after the discount form
@@ -428,7 +429,7 @@ export interface RenderExtensionTargets {
    */
   'Checkout::Reductions::RenderAfter': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::Reductions::RenderAfter'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered between the shipping method
@@ -438,7 +439,7 @@ export interface RenderExtensionTargets {
     ShippingOptionListApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.shipping-option-list.render-before'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered between the shipping method
@@ -451,7 +452,7 @@ export interface RenderExtensionTargets {
     ShippingOptionListApi &
       CheckoutApi &
       StandardApi<'Checkout::ShippingMethods::RenderBefore'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after the shipping method
@@ -461,7 +462,7 @@ export interface RenderExtensionTargets {
     ShippingOptionListApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.shipping-option-list.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after the shipping method
@@ -474,7 +475,7 @@ export interface RenderExtensionTargets {
     ShippingOptionListApi &
       CheckoutApi &
       StandardApi<'Checkout::ShippingMethods::RenderAfter'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered before pickup location options.
@@ -483,7 +484,7 @@ export interface RenderExtensionTargets {
     PickupLocationListApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.pickup-location-list.render-before'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered before pickup location options.
@@ -495,7 +496,7 @@ export interface RenderExtensionTargets {
     PickupLocationListApi &
       CheckoutApi &
       StandardApi<'Checkout::PickupLocations::RenderBefore'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after pickup location options.
@@ -504,7 +505,7 @@ export interface RenderExtensionTargets {
     PickupLocationListApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.pickup-location-list.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after pickup location options.
@@ -516,7 +517,7 @@ export interface RenderExtensionTargets {
     PickupLocationListApi &
       CheckoutApi &
       StandardApi<'Checkout::PickupLocations::RenderAfter'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after the shipping method
@@ -526,7 +527,7 @@ export interface RenderExtensionTargets {
     ShippingOptionItemApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.shipping-option-item.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after the shipping method
@@ -539,7 +540,7 @@ export interface RenderExtensionTargets {
     ShippingOptionItemApi &
       CheckoutApi &
       StandardApi<'Checkout::ShippingMethodDetails::RenderAfter'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered under the shipping method
@@ -549,7 +550,7 @@ export interface RenderExtensionTargets {
     ShippingOptionItemApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.shipping-option-item.details.render'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered under the shipping method
@@ -562,7 +563,7 @@ export interface RenderExtensionTargets {
     ShippingOptionItemApi &
       CheckoutApi &
       StandardApi<'Checkout::ShippingMethodDetails::RenderExpanded'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered immediately before the pickup points.
@@ -571,7 +572,7 @@ export interface RenderExtensionTargets {
     PickupPointListApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.pickup-point-list.render-before'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered immediately before the pickup points.
@@ -583,7 +584,7 @@ export interface RenderExtensionTargets {
     PickupPointListApi &
       CheckoutApi &
       StandardApi<'Checkout::PickupPoints::RenderBefore'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered immediately after the pickup points.
@@ -592,7 +593,7 @@ export interface RenderExtensionTargets {
     PickupPointListApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.pickup-point-list.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered immediately after the pickup points.
@@ -604,7 +605,7 @@ export interface RenderExtensionTargets {
     PickupPointListApi &
       CheckoutApi &
       StandardApi<'Checkout::PickupPoints::RenderAfter'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered after the pickup location
@@ -614,21 +615,21 @@ export interface RenderExtensionTargets {
     PickupLocationItemApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.pickup-location-option-item.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered below the header.
    */
   'purchase.checkout.header.render-after': RenderExtension<
     CheckoutApi & StandardApi<'purchase.checkout.header.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered below the footer.
    */
   'purchase.checkout.footer.render-after': RenderExtension<
     CheckoutApi & StandardApi<'purchase.checkout.footer.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered on top of the checkout page as an overlay.
@@ -644,7 +645,7 @@ export interface RenderExtensionTargets {
   'purchase.thank-you.header.render-after': RenderExtension<
     OrderConfirmationApi &
       StandardApi<'purchase.thank-you.header.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered below the footer on the **Thank you** page.
@@ -652,7 +653,7 @@ export interface RenderExtensionTargets {
   'purchase.thank-you.footer.render-after': RenderExtension<
     OrderConfirmationApi &
       StandardApi<'purchase.thank-you.footer.render-after'>,
-    AnyComponent
+    AnyCheckoutComponent
   >;
   /**
    * A static extension target that is rendered on top of the **Thank you page** as an overlay.
@@ -668,7 +669,7 @@ export interface RenderExtensionTargets {
   'purchase.thank-you.announcement.render': RenderExtension<
     OrderConfirmationApi &
       StandardApi<'purchase.thank-you.announcement.render'>,
-    AnyComponent
+    AnyThankYouComponent
   >;
 }
 
@@ -756,12 +757,8 @@ type ExtractedAllowedComponentsFromRenderExtension<T> =
 /**
  * @deprecated Use `ExtractedApiFromExtensionDefinition` instead.
  */
-type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
-  infer Api,
-  any
->
-  ? Api
-  : never;
+type ExtractedApiFromRenderExtension<T> =
+  T extends RenderExtension<infer Api, any> ? Api : never;
 
 /**
  * Deprecated. Use `ApiForExtension` instead.

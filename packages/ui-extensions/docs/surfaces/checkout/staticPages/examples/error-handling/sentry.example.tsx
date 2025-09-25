@@ -1,3 +1,4 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 import * as Sentry from '@sentry/browser';
 
@@ -6,19 +7,15 @@ Sentry.init({
   defaultIntegrations: false,
 });
 
-self.addEventListener(
+window.addEventListener(
   'unhandledrejection',
   (error) => {
-    Sentry.captureException(
-      new Error(error.reason.stack),
-    );
+    Sentry.captureException(error);
   },
 );
 
-self.addEventListener('error', (error) => {
-  Sentry.captureException(
-    new Error(error.reason.stack),
-  );
+window.addEventListener('error', (error) => {
+  Sentry.captureException(error);
 });
 
 // Your normal extension code.

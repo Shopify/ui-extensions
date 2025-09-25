@@ -4,7 +4,7 @@ export default async function extension() {
 
   // 2. Fetch address suggestions
   const response = await fetch(
-    `https://myapp.com/api/address-suggestions?query=${value}&field=${field}`,
+    `https://your-app.com/api/address-suggestions?query=${value}&field=${field}`,
     {signal: shopify.signal},
   );
 
