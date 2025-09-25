@@ -17,10 +17,10 @@ import {
   ShouldRenderApi,
   ShouldRenderOutput,
 } from './api/should-render/should-render';
-import type {StandardComponents} from './components/StandardComponents';
 import type {BlockExtensionComponents} from './components/BlockExtensionComponents';
 import type {ActionExtensionComponents} from './components/ActionExtensionComponents';
 import type {PrintActionExtensionComponents} from './components/PrintActionExtensionComponents';
+import type {FunctionSettingsComponents} from './components/FunctionSettingsComponents';
 
 export interface ExtensionTargets {
   /**
@@ -59,7 +59,7 @@ export interface ExtensionTargets {
    */
   'admin.discount-details.function-settings.render': RenderExtension<
     DiscountFunctionSettingsApi<'admin.discount-details.function-settings.render'>,
-    BlockExtensionComponents
+    FunctionSettingsComponents
   >;
 
   /**
@@ -487,11 +487,11 @@ export interface ExtensionTargets {
    */
   'admin.settings.internal-order-routing-rule.render': RenderExtension<
     OrderRoutingRuleApi<'admin.settings.internal-order-routing-rule.render'>,
-    StandardComponents
+    FunctionSettingsComponents
   >;
   'admin.settings.order-routing-rule.render': RenderExtension<
     OrderRoutingRuleApi<'admin.settings.order-routing-rule.render'>,
-    StandardComponents
+    FunctionSettingsComponents
   >;
 
   /**
@@ -501,7 +501,7 @@ export interface ExtensionTargets {
    */
   'admin.settings.validation.render': RenderExtension<
     ValidationSettingsApi<'admin.settings.validation.render'>,
-    StandardComponents
+    FunctionSettingsComponents
   >;
 
   // Admin action shouldRender targets

@@ -199,7 +199,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 export interface MoneyFieldProps
   extends Omit<PreactFieldProps, 'value'>,
-    Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step'> {
+    Pick<RequiredMoneyFieldProps, 'max' | 'min'> {
   value: Required<MoneyFieldProps$1>['value'];
 }
 
@@ -209,7 +209,8 @@ declare class MoneyField
 {
   accessor max: MoneyFieldProps['max'];
   accessor min: MoneyFieldProps['min'];
-  accessor step: MoneyFieldProps['step'];
+  get value(): string;
+  set value(value: string);
   constructor();
 }
 declare global {
