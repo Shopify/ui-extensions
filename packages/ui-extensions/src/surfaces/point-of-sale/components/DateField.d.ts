@@ -8,12 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  DateFieldProps,
-  Key,
-  Ref,
-  ComponentChild,
-} from './components-shared.d.ts';
+import type {DateFieldProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -47,11 +42,14 @@ export interface DateFieldJSXProps
     DateFieldProps,
     'label' | 'details' | 'value' | 'disabled' | 'error'
   > {
+  /** Function called when the user makes any changes in the field. */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /** Function called after editing completes (typically on blur). */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  accessory?: ComponentChild;
+  /** Function called when the element loses focus. */
+  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /** Function called when the element receives focus. */
+  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {

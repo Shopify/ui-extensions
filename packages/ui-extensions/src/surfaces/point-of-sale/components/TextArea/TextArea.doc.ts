@@ -15,12 +15,14 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'Learn more about using [slots](/docs/api/pos-ui-extensions/using-polaris-components#slots)',
       type: 'TextAreaSlots',
     },
     {
       title: 'Events',
-      description: '',
+      description:
+        'Learn more about registering [events](/docs/api/pos-ui-extensions/using-polaris-components#events)',
       type: 'TextAreaEvents',
     },
   ],
@@ -39,6 +41,48 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
   related: [],
+  examples: {
+    description: 'TextArea usage patterns',
+    examples: [
+      {
+        description: 'Configure visible rows and character limits',
+        codeblock: {
+          title: 'Rows configuration',
+          tabs: [
+            {
+              code: './examples/rows-configuration.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description: 'Handle text area events',
+        codeblock: {
+          title: 'Event handling',
+          tabs: [
+            {
+              code: './examples/event-handling.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Add action buttons using the accessory slot. Only s-button and s-clickable are supported',
+        codeblock: {
+          title: 'Accessory slot',
+          tabs: [
+            {
+              code: './examples/accessory-slot.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;

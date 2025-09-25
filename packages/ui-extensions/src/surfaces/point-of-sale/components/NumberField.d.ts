@@ -42,7 +42,7 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-number-field';
-export interface PickedJSXProps
+export interface NumberFieldJSXProps
   extends Pick<
     NumberFieldProps,
     | 'label'
@@ -56,20 +56,12 @@ export interface PickedJSXProps
     | 'min'
     | 'controls'
   > {
-  inputMode?: Extract<NumberFieldProps['inputMode'], 'decimal' | 'numeric'>;
-  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  accessory?: ComponentChild;
-}
-export interface NumberFieldJSXProps extends PickedJSXProps {
   /**
    * Content to use as the field label.
    *
    * Label is not supported when using Stepper controls
    */
-  label?: PickedJSXProps['label'];
+  label?: NumberFieldProps['label'];
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -79,7 +71,7 @@ export interface NumberFieldJSXProps extends PickedJSXProps {
    *
    * Details are not supported when using Stepper controls
    */
-  details?: PickedJSXProps['details'];
+  details?: NumberFieldProps['details'];
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
@@ -90,14 +82,14 @@ export interface NumberFieldJSXProps extends PickedJSXProps {
    *
    * Required is not supported when using Stepper controls
    */
-  required?: PickedJSXProps['required'];
+  required?: NumberFieldProps['required'];
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    *
    * Error is not supported when using Stepper controls
    */
-  error?: PickedJSXProps['error'];
+  error?: NumberFieldProps['error'];
   /**
    * Sets the virtual keyboard.
    *
@@ -106,20 +98,19 @@ export interface NumberFieldJSXProps extends PickedJSXProps {
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
    * @default 'decimal'
    */
-  inputMode?: PickedJSXProps['inputMode'];
+  inputMode?: NumberFieldProps['inputMode'];
   /**
    * A short hint that describes the expected value of the field.
    *
    * Placeholder text is not supported when using Stepper controls due to constrained space for the number field, especially on phones.
    */
-  placeholder?: PickedJSXProps['placeholder'];
+  placeholder?: NumberFieldProps['placeholder'];
   /**
-   * Additional content to be displayed in the field.
-   * Commonly used to display an icon that activates a tooltip providing more information.
+   *  Additional content to be displayed in the field. Commonly used to display clickable text.
    *
-   * Accessory is not supported when using Stepper controls
+   * > Note: Accessory is not supported when using Stepper controls
    */
-  accessory?: PickedJSXProps['accessory'];
+  accessory?: ComponentChild;
   /**
    * Sets the type of controls displayed for the field.
    *
@@ -130,7 +121,15 @@ export interface NumberFieldJSXProps extends PickedJSXProps {
    * - `none`: no controls are displayed and users must input the value manually.
    * - `auto`: the presence of the controls depends on the surface and context.
    */
-  controls?: PickedJSXProps['controls'];
+  controls?: NumberFieldProps['controls'];
+  /** Function called when the user makes any changes in the field. */
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /** Function called after editing completes (typically on blur). */
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /** Function called when the element loses focus. */
+  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /** Function called when the element receives focus. */
+  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {

@@ -15,7 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       title: 'Events',
-      description: '',
+      description:
+        'Learn more about registering [events](/docs/api/pos-ui-extensions/using-polaris-components#events)',
       type: 'TimeFieldEvents',
     },
   ],
@@ -34,6 +35,23 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
   related: [],
+  examples: {
+    description: 'TimeField usage patterns',
+    examples: [
+      {
+        description: 'Handle time input events',
+        codeblock: {
+          title: 'Event handling',
+          tabs: [
+            {
+              code: './examples/event-handling.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;

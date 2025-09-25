@@ -15,12 +15,14 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'Learn more about using [slots](/docs/api/pos-ui-extensions/using-polaris-components#slots)',
       type: 'EmailFieldSlots',
     },
     {
       title: 'Events',
-      description: '',
+      description:
+        'Learn more about registering [events](/docs/api/pos-ui-extensions/using-polaris-components#events)',
       type: 'EmailFieldEvents',
     },
   ],
@@ -39,6 +41,36 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
   related: [],
+  examples: {
+    description: 'EmailField usage patterns',
+    examples: [
+      {
+        description: 'Handle email input events',
+        codeblock: {
+          title: 'Event handling',
+          tabs: [
+            {
+              code: './examples/event-handling.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Add action buttons using the accessory slot. Only s-button and s-clickable are supported',
+        codeblock: {
+          title: 'Accessory slot',
+          tabs: [
+            {
+              code: './examples/accessory-slot.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;

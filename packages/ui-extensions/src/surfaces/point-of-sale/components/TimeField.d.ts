@@ -42,10 +42,14 @@ export interface TimeFieldJSXProps
     TimeFieldProps,
     'id' | 'label' | 'disabled' | 'value' | 'error' | 'details'
   > {
-  onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
-  onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
-  onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
-  onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
+  /** Function called when the user makes any changes in the field. */
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /** Function called after editing completes (typically on blur). */
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /** Function called when the element loses focus. */
+  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /** Function called when the element receives focus. */
+  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
