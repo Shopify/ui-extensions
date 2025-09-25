@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Clickable',
   description:
-    'Use Clickable to make any content interactive and accessible. Provides consistent click behavior.',
+    'A generic interactive container component that makes any content interactive and accessible via taps.',
   thumbnail: 'selectable-thumbnail.png',
   isVisualComponent: true,
   type: '',

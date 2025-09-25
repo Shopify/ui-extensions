@@ -13,15 +13,19 @@ const Extension = () => {
         shopify.cart.bulkSetLineItemDiscounts([
           {
             lineItemUuid: 'aa-1234567',
-            type: 'Percentage',
-            title: 'Summer discount',
-            amount: '10',
+            lineItemDiscount: {
+              type: 'Percentage',
+              title: 'Summer discount',
+              amount: '10',
+            },
           },
           {
             lineItemUuid: 'bb-7654321',
-            type: 'FixedAmount',
-            title: 'Loyalty discount',
-            amount: '5',
+            lineItemDiscount: {
+              type: 'FixedAmount',
+              title: 'Loyalty discount',
+              amount: '5',
+            },
           },
         ]);
       }}

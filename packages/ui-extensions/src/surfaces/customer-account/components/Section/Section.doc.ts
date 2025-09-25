@@ -34,16 +34,15 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'section-preview.png',
+    image: 'section-default.png',
     altText:
       'An example of the Section component shows a header, some text, a primary action, and a secondary action.',
     codeblock: {
-      title: 'Basic Section',
+      title: 'Code',
       tabs: [
         {
-          title: 'Preact',
-          code: './examples/basic-Section-preact.example.tsx',
-          language: 'tsx',
+          code: './examples/basic-Section.example.html',
+          language: 'jsx',
         },
       ],
     },

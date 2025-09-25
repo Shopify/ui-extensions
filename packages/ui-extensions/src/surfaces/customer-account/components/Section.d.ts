@@ -18,11 +18,11 @@ export interface SectionProps extends IdProps {
 
 export interface SectionElementSlots {
   /**
-   * The primary action to perform, provided as a button type element.
+   * The primary action for the section. Accepts a single [Button](/docs/api/checkout-ui-extensions/polaris-web-components/actions/button) element.
    */
   'primary-action'?: HTMLElement;
   /**
-   * The secondary actions to perform, provided as button type elements.
+   * The secondary actions for the section. Accepts multiple [Button](/docs/api/checkout-ui-extensions/polaris-web-components/actions/button) elements.
    */
   'secondary-actions'?: HTMLElement;
 }

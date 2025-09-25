@@ -23,16 +23,15 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Actions',
   defaultExample: {
-    image: 'buttongroup-preview.png',
+    image: 'buttongroup-default.png',
     altText:
       'An example of the ButtonGroup component shows a primary action and multiple collapsed secondary actions.',
     codeblock: {
-      title: 'Basic ButtonGroup',
+      title: 'Code',
       tabs: [
         {
-          title: 'Preact',
-          code: './examples/basic-ButtonGroup-preact.example.tsx',
-          language: 'tsx',
+          code: './examples/basic-ButtonGroup.example.html',
+          language: 'jsx',
         },
       ],
     },

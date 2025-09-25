@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/basic-image.example.html',
-          language: '',
+          language: 'html',
         },
       ],
     },

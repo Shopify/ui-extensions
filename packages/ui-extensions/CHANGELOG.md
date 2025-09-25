@@ -1,5 +1,15 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.42
+
+### Patch Changes
+
+- [#3350](https://github.com/Shopify/ui-extensions/pull/3350) [`b91311431a1c8f3a6a2e9bfb8303a242260b4d3f`](https://github.com/Shopify/ui-extensions/commit/b91311431a1c8f3a6a2e9bfb8303a242260b4d3f) Thanks [@vividviolet](https://github.com/vividviolet)! - Remove deprecated CustomerSegmentTemplate component
+
+- [#3337](https://github.com/Shopify/ui-extensions/pull/3337) [`771d02270ed730f76c9f4431e9e97b822483149c`](https://github.com/Shopify/ui-extensions/commit/771d02270ed730f76c9f4431e9e97b822483149c) Thanks [@lsit](https://github.com/lsit)! - Update component docs in customer account
+
+- [#3325](https://github.com/Shopify/ui-extensions/pull/3325) [`15de7635887e682b8deb36dbe828261feef3daa2`](https://github.com/Shopify/ui-extensions/commit/15de7635887e682b8deb36dbe828261feef3daa2) Thanks [@aeperea](https://github.com/aeperea)! - segmentation-templates moving to data-extension target
+
 ## 2025.10.0-rc.41
 
 ### Minor Changes

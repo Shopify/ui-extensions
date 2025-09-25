@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'DateField',
   description:
-    'Use `s-date-field` to capture date input from users. Provides a consistent interface for date selection with proper validation.',
+    'Captures date input from merchants. Provides a consistent interface for date selection, with proper validation.',
   thumbnail: 'date-field-thumbnail.png',
   isVisualComponent: true,
   type: '',

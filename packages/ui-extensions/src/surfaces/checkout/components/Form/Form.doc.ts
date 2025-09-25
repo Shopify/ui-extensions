@@ -14,6 +14,11 @@ const data: ReferenceEntityTemplateSchema = {
       description: '',
       type: 'FormElementProps',
     },
+    {
+      title: 'Events',
+      description: '',
+      type: 'FormElementEvents',
+    },
   ],
   defaultExample: {
     image: 'form-default.png',

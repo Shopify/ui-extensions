@@ -1,7 +1,6 @@
 import type {RunnableExtension, RenderExtension} from '../../extension';
 
 import type {
-  CustomerSegmentTemplateApi,
   ActionExtensionApi,
   BlockExtensionApi,
   PrintActionExtensionApi,
@@ -11,23 +10,25 @@ import type {
   ValidationSettingsApi,
   PurchaseOptionsCardConfigurationApi,
   DiscountFunctionSettingsApi,
+  CustomerSegmentTemplateApi,
+  CustomerSegmentTemplate,
 } from './api';
 import {
   ShouldRenderApi,
   ShouldRenderOutput,
 } from './api/should-render/should-render';
-import type {StandardComponents} from './components/StandardComponents';
 import type {BlockExtensionComponents} from './components/BlockExtensionComponents';
 import type {ActionExtensionComponents} from './components/ActionExtensionComponents';
 import type {PrintActionExtensionComponents} from './components/PrintActionExtensionComponents';
+import type {FunctionSettingsComponents} from './components/FunctionSettingsComponents';
 
 export interface ExtensionTargets {
   /**
-   * Renders a [`CustomerSegmentTemplate`](/docs/api/admin-extensions/components/customersegmenttemplate) in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/customer-segments).
+   * Renders a  [`CustomerSegmentTemplate`](/docs/api/admin-extensions/components/customersegmenttemplate) in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/customer-segments).
    */
-  'admin.customers.segmentation-templates.render': RenderExtension<
-    CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.render'>,
-    StandardComponents
+  'admin.customers.segmentation-templates.data': RunnableExtension<
+    CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.data'>,
+    {templates: CustomerSegmentTemplate[]}
   >;
 
   // Blocks
@@ -58,7 +59,7 @@ export interface ExtensionTargets {
    */
   'admin.discount-details.function-settings.render': RenderExtension<
     DiscountFunctionSettingsApi<'admin.discount-details.function-settings.render'>,
-    BlockExtensionComponents
+    FunctionSettingsComponents
   >;
 
   /**
@@ -486,11 +487,11 @@ export interface ExtensionTargets {
    */
   'admin.settings.internal-order-routing-rule.render': RenderExtension<
     OrderRoutingRuleApi<'admin.settings.internal-order-routing-rule.render'>,
-    StandardComponents
+    FunctionSettingsComponents
   >;
   'admin.settings.order-routing-rule.render': RenderExtension<
     OrderRoutingRuleApi<'admin.settings.order-routing-rule.render'>,
-    StandardComponents
+    FunctionSettingsComponents
   >;
 
   /**
@@ -500,7 +501,7 @@ export interface ExtensionTargets {
    */
   'admin.settings.validation.render': RenderExtension<
     ValidationSettingsApi<'admin.settings.validation.render'>,
-    StandardComponents
+    FunctionSettingsComponents
   >;
 
   // Admin action shouldRender targets

@@ -1,7 +1,10 @@
 export type {I18n, I18nTranslate} from '../../api';
 export type {StandardApi, Intents} from './api/standard/standard';
 export type {Navigation} from './api/block/block';
-export type {CustomerSegmentTemplateApi} from './api/customer-segment-template/customer-segment-template';
+export type {
+  CustomerSegmentTemplateApi,
+  CustomerSegmentTemplate,
+} from './api/customer-segment-template/customer-segment-template';
 export type {ActionExtensionApi} from './api/action/action';
 export type {BlockExtensionApi} from './api/block/block';
 export type {PrintActionExtensionApi} from './api/print-action/print-action';

@@ -24,16 +24,15 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Actions',
   defaultExample: {
-    image: 'menu-preview.png',
+    image: 'menu-default.png',
     altText:
       'An example of a Menu component shows three actions: Submit problem, Request return, and Cancel order.',
     codeblock: {
-      title: 'Basic Menu',
+      title: 'Code',
       tabs: [
         {
-          title: 'Preact',
-          code: './examples/basic-Menu-preact.example.tsx',
-          language: 'tsx',
+          code: './examples/basic-Menu.example.html',
+          language: 'jsx',
         },
       ],
     },
@@ -49,7 +48,7 @@ const data: ReferenceEntityTemplateSchema = {
 - Use the menu component in the upper-right corner of full-page extensions, to be consistent with the **Order status** page.
 - Use menus to consolidate page-level actions, instead of adding multiple buttons around the page.
 
-![The “Don’t do” example shows 3 separate action buttons on a subscription page. The “Do” example shows the same 3 actions consolidated into one menu.](/assets/templated-apis-screenshots/customer-account-ui-extensions/unstable/menu-dont-do.png)
+![The “Don’t do” example shows 3 separate action buttons on a subscription page. The “Do” example shows the same 3 actions consolidated into one menu.](/assets/templated-apis-screenshots/customer-account-ui-extensions/2025-10/menu-dont-do.png)
 
 ### Content guidelines
 
@@ -59,7 +58,7 @@ When writing button labels:
 - Avoid unnecessary words and articles such as “the,” “an,” or “a.”
 - Use sentence case.
 
-![A button that follows the content guidelines says “Skip order”. A button that does not meet the content guidelines says “Skip this order”.](/assets/templated-apis-screenshots/customer-account-ui-extensions/unstable/menu-labels.png)
+![A button that follows the content guidelines says “Skip order”. A button that does not meet the content guidelines says “Skip this order”.](/assets/templated-apis-screenshots/customer-account-ui-extensions/2025-10/menu-labels.png)
 `,
     },
   ],
@@ -67,7 +66,7 @@ When writing button labels:
     {
       name: 'Popover',
       subtitle: 'Component',
-      url: '../../../checkout-ui-extensions/unstable/components/overlays/popover',
+      url: '/docs/api/checkout-ui-extensions/polaris-web-components/overlays/popover',
       type: 'Component',
     },
   ],
