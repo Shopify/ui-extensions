@@ -11,7 +11,9 @@ import type {
   BoxProps$1,
   ClickableProps$1,
   MaybeAllValuesShorthandProperty,
+  SizeUnitsOrAuto,
   SizeUnits,
+  SizeUnitsOrNone,
   InteractionProps,
 } from './shared.d.ts';
 
@@ -23,6 +25,7 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
+/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -30,6 +33,11 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   ref?: preact.Ref<TClass>;
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
+}
+/** Used when an element has children. */
+export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
+  extends PreactBaseElementProps<TClass> {
+  children?: preact.ComponentChildren;
 }
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -100,10 +108,20 @@ export interface BoxProps
     | 'minInlineSize'
     | 'overflow'
   > {
+  /**
+   * Adjust the background of the component.
+   *
+   * @default 'transparent'
+   */
   background: Extract<
     RequiredBoxProps['background'],
     'transparent' | 'base' | 'subdued' | 'strong'
   >;
+  /**
+   * Adjust the width of the border.
+   *
+   * @default '' - meaning no override
+   */
   borderWidth:
     | MaybeAllValuesShorthandProperty<
         Extract<
@@ -112,13 +130,28 @@ export interface BoxProps
         >
       >
     | Extract<RequiredBoxProps['borderWidth'], ''>;
+  /**
+   * Adjust the style of the border.
+   *
+   * @default '' - meaning no override
+   */
   borderStyle:
     | MaybeAllValuesShorthandProperty<BoxBorderStyles>
     | Extract<RequiredBoxProps['borderStyle'], ''>;
+  /**
+   * Adjust the color of the border.
+   *
+   * @default '' - meaning no override
+   */
   borderColor: Extract<
     RequiredBoxProps['borderColor'],
     'subdued' | 'base' | 'strong' | ''
   >;
+  /**
+   * Adjust the radius of the border.
+   *
+   * @default 'none'
+   */
   borderRadius: MaybeAllValuesShorthandProperty<BoxBorderRadii>;
   /**
    * Adjust the padding of all edges.
@@ -215,12 +248,42 @@ export interface BoxProps
    * @default 'auto'
    */
   display: ResponsiveBoxProps['display'];
-  blockSize: SizeUnits | 'auto';
-  minBlockSize: SizeUnits | '0';
-  maxBlockSize: SizeUnits | 'none';
-  inlineSize: SizeUnits | 'auto';
-  minInlineSize: SizeUnits | '0';
-  maxInlineSize: SizeUnits | 'none';
+  /**
+   * Adjust the [block size](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
+   *
+   * @default 'auto'
+   */
+  blockSize: SizeUnitsOrAuto;
+  /**
+   * Adjust the [minimum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
+   *
+   * @default '0'
+   */
+  minBlockSize: SizeUnits;
+  /**
+   * Adjust the [maximum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
+   *
+   * @default 'none'
+   */
+  maxBlockSize: SizeUnitsOrNone;
+  /**
+   * Adjust the [inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
+   *
+   * @default 'auto'
+   */
+  inlineSize: SizeUnitsOrAuto;
+  /**
+   * Adjust the [minimum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
+   *
+   * @default '0'
+   */
+  minInlineSize: SizeUnits;
+  /**
+   * Adjust the [maximum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
+   *
+   * @default 'none'
+   */
+  maxInlineSize: SizeUnitsOrNone;
 }
 
 export type ClickableBaseProps = Required<
@@ -383,7 +446,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ClickableJSXProps & PreactBaseElementProps<Clickable>;
+      [tagName]: ClickableJSXProps &
+        PreactBaseElementPropsWithChildren<Clickable>;
     }
   }
 }

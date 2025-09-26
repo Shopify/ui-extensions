@@ -22,6 +22,7 @@ export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
   onFocus?: ((event: CallbackEvent<T>) => void) | null;
   onBlur?: ((event: CallbackEvent<T>) => void) | null;
 }
+/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
