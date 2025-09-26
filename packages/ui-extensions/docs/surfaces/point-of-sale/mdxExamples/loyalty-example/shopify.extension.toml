@@ -1,21 +1,20 @@
 # The version of APIs your extension will receive. Learn more:
 # https://shopify.dev/docs/api/usage/versioning
-api_version = "unstable"
+api_version = "2025-10"
 
 [[extensions]]
 type = "ui_extension"
 name = "loyalty-extension"
-
 handle = "loyalty-extension"
 description = "Loyalty Points Extension"
 
 # Controls where in POS your extension will be injected,
 # and the file that contains your extension’s source code.
 [[extensions.targeting]]
-module = "./src/CustomerDetailsBlock.tsx"
+module = "./src/CustomerDetailsBlock.jsx"
 target = "pos.customer-details.block.render"
 
 [[extensions.targeting]]
-module = "./src/TransactionCompleteObserve.ts"
+module = "./src/TransactionCompleteObserve.jsx"
 target = "pos.transaction-complete.event.observe"
 
