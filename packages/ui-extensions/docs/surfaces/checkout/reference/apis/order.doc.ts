@@ -12,6 +12,7 @@ import {
 // An empty interface means any no-nullish value including values like strings.
 // That seems incorrect, but the lint rule was added after this interface and
 // I don't want to touch this public API.
+
 interface OrderStatusApiEmpty {}
 
 const data: ReferenceEntityTemplateSchema = {

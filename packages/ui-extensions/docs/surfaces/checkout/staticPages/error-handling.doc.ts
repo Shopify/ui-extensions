@@ -38,7 +38,7 @@ You can use error reporting libraries like [Bugsnag](https://www.bugsnag.com/) o
       anchorLink: 'sentry',
       title: 'Sentry (recommended)',
       sectionContent: `
-      Initialize Sentry following their [Web Worker guide](https://docs.sentry.io/platforms/javascript/configuration/webworkers/). We recommend disabling the default integrations to be sure it will run within a Web Worker. You'll need to add event listeners manually.`,
+      Install and initialize Sentry following their [Browser JavaScript guide](https://docs.sentry.io/platforms/javascript/). We recommend disabling the default integrations to be sure it will run within a Web Worker. You'll need to add event listeners manually.`,
       codeblock: {
         title: 'Sentry',
         tabs: [

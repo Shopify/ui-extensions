@@ -3,6 +3,9 @@ export default async function extension() {
   const {selectedSuggestion} = shopify.target;
 
   // 2. Fetch the address parts to format the address
+  const response = await fetch(
+    `https://your-app.com/api/fetch-address?id=${selectedSuggestion.id}`,
+  );
   const {
     address1,
     address2,
@@ -10,9 +13,7 @@ export default async function extension() {
     zip,
     provinceCode,
     countryCode,
-  } = await fetch(
-    `https://myapp.com/api/fetch-address?id=${selectedSuggestion.id}`,
-  );
+  } = await response.json();
 
   // 3. Return a formatted address
   return {

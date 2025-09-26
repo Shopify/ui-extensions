@@ -119,6 +119,7 @@ export function getExamples(
     ),
     ...createExample('purchase.checkout.chat.render/default'),
     ...createExample('purchase.thank-you.chat.render/default'),
+    ...createExample('purchase.thank-you.announcement.render/default'),
     'analytics-publish': {
       description:
         'You can publish analytics events to the Shopify analytics frameworks and they will be propagated to all web pixels on the page.',
