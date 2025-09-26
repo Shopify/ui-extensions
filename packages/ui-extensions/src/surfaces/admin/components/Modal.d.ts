@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -7,10 +7,19 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
+  ComponentChildren,
   ModalProps$1,
-  ComponentChild,
   InteractionProps,
 } from './shared.d.ts';
+
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
 export type RequiredAlignedModalProps = Required<ModalProps$1>;
 export interface ModalProps
@@ -33,18 +42,9 @@ export interface ModalProps
   >;
 }
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
-};
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
-  | (EventListener & {
-      (event: CallbackEvent<T>): void;
-    })
-  | null;
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -208,19 +208,19 @@ declare module 'preact' {
 declare const tagName = 's-modal';
 export interface ModalJSXProps
   extends Partial<ModalProps>,
-    Pick<ModalProps$1, 'id' | 'children'> {
+    Pick<ModalProps$1, 'id'> {
   /**
    * The primary action to perform.
    *
    * Only a `Button` with a variant of `primary` is allowed.
    */
-  primaryAction?: ComponentChild;
+  primaryAction?: ComponentChildren;
   /**
    * The secondary actions to perform.
    *
    * Only `ButtonGroup` or `Button` with a variant of `secondary` or `auto` are allowed.
    */
-  secondaryActions?: ComponentChild;
+  secondaryActions?: ComponentChildren;
   onHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onShow?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;

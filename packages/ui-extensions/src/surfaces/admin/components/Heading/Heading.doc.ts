@@ -37,6 +37,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: '',
       type: 'Heading',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'HeadingSlots',
+    },
   ],
   defaultExample: {
     image: 'heading-default.png',

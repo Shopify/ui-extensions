@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -9,7 +9,7 @@
 import type {
   TextFieldProps,
   ColorFieldProps$1,
-  ComponentChild,
+  ComponentChildren,
 } from './shared.d.ts';
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
@@ -26,7 +26,6 @@ export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
   onFocus?: ((event: CallbackEvent<T>) => void) | null;
   onBlur?: ((event: CallbackEvent<T>) => void) | null;
 }
-/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -38,7 +37,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {

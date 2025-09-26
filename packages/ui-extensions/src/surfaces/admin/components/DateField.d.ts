@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -10,12 +10,21 @@ import type {
   TextFieldProps,
   DateAutocompleteField,
   DateFieldProps$1,
-  ComponentChild,
+  ComponentChildren,
 } from './shared.d.ts';
+
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -72,15 +81,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    */
   click({sourceEvent}?: ClickOptions): void;
 }
-
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
-};
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
-  | (EventListener & {
-      (event: CallbackEvent<T>): void;
-    })
-  | null;
 
 declare const internals: unique symbol;
 export type PreactInputProps = Required<

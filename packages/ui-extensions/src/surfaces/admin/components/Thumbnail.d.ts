@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,15 +6,7 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ThumbnailProps$1, ComponentChild} from './shared.d.ts';
-
-export interface ThumbnailProps
-  extends Required<Pick<ThumbnailProps$1, 'src' | 'alt' | 'size'>> {
-  size: Extract<
-    ThumbnailProps$1['size'],
-    'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100'
-  >;
-}
+import type {ThumbnailProps$1, ComponentChildren} from './shared.d.ts';
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
@@ -24,7 +16,6 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
-/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -34,9 +25,17 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   slot?: Lowercase<string>;
 }
 
+export interface ThumbnailProps
+  extends Required<Pick<ThumbnailProps$1, 'src' | 'alt' | 'size'>> {
+  size: Extract<
+    ThumbnailProps$1['size'],
+    'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100'
+  >;
+}
+
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {

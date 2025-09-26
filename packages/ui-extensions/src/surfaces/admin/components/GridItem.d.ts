@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -7,11 +7,11 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
+  ComponentChildren,
   BoxProps$1,
   GridItemProps$1,
   MaybeAllValuesShorthandProperty,
   SizeUnits,
-  ComponentChild,
 } from './shared.d.ts';
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -215,7 +215,7 @@ export interface GridItemProps
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -301,7 +301,6 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
   accessor display: BoxProps['display'];
 }
 
-/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -309,11 +308,6 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   ref?: preact.Ref<TClass>;
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
-}
-/** Used when an element has children. */
-export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
-  extends PreactBaseElementProps<TClass> {
-  children?: preact.ComponentChildren;
 }
 
 declare class GridItem extends BoxElement implements GridItemProps {
@@ -329,8 +323,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: GridItemJSXProps &
-        PreactBaseElementPropsWithChildren<GridItem>;
+      [tagName]: GridItemJSXProps & PreactBaseElementProps<GridItem>;
     }
   }
 }

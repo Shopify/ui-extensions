@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,7 +6,24 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ClickableChipProps$1, ComponentChild} from './shared.d.ts';
+import type {ComponentChildren, ClickableChipProps$1} from './shared.d.ts';
+
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
+export interface PreactBaseElementProps<TClass extends HTMLElement> {
+  /** Assigns a unique key to this element. */
+  key?: preact.Key;
+  /** Assigns a ref (generally from `useRef()`) to this element. */
+  ref?: preact.Ref<TClass>;
+  /** Assigns this element to a parent's slot. */
+  slot?: Lowercase<string>;
+}
 
 export interface ClickableChipProps
   extends Required<
@@ -21,32 +38,9 @@ export interface ClickableChipProps
     >
   > {}
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
-};
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
-  | (EventListener & {
-      (event: CallbackEvent<T>): void;
-    })
-  | null;
-/** Used when an element does not have children. */
-export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
-  key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
-  ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
-  slot?: Lowercase<string>;
-}
-/** Used when an element has children. */
-export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
-  extends PreactBaseElementProps<TClass> {
-  children?: preact.ComponentChildren;
-}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -132,7 +126,7 @@ declare module 'preact' {
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
         Omit<ClickableChipJSXProps, 'graphic'> &
-        PreactBaseElementPropsWithChildren<ClickableChip>;
+        PreactBaseElementProps<ClickableChip>;
     }
   }
 }
@@ -146,7 +140,7 @@ export interface ClickableChipJSXProps
    *
    * Only accepts `Icon` components.
    */
-  graphic?: ComponentChild;
+  graphic?: ComponentChildren;
   onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onRemove?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
