@@ -169,7 +169,7 @@ export interface ExtendableEvent extends Event {
 interface AggregateError$1<T extends Error> extends Error {
   errors: T[];
 }
-export interface ArgregatedErrorEvent<T extends Error> extends ErrorEvent {
+export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
   error: AggregateError$1<T>;
 }
 export type SizeKeyword =
@@ -2100,7 +2100,7 @@ interface ColorPickerProps$1 extends GlobalProps, InputProps {
    * For RGB and RGBA, both the legacy syntax (comma-separated) and modern syntax (space-separate) are supported.
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb
    *
-   * If the value is invalid, the component will select rgb(0, 0, 0).
+   * If the value is invalid, the component will return an empty string ''.
    *
    * Note that the `onChange` handler will emit the value in hex.
    */
@@ -2407,12 +2407,19 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    */
   value?: string;
   /**
-   * Callback when any date is selected. Will fire before `onChange`.
+   * Callback when any date is selected.
+   *
+   * - If `type="single"`, fires when a date is selected and happens before `onChange`.
+   * - If `type="multiple"`, fires when a date is selected before `onChange`.
+   * - If `type="range"`, fires when a first date is selected (with the partial value formatted as `YYYY-MM-DD--`), and when the last date is selected before `onChange`.
    */
   onInput?: (event: Event) => void;
   /**
-   * Callback when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
-   *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
+   * Callback when the value is committed.
+   *
+   * - If `type="single"`, fires when a date is selected after `onInput`.
+   * - If `type="multiple"`, fires when a date is selected after `onInput`.
+   * - If `type="range"`, fires when a range is completed by selecting the end date after `onInput`.
    */
   onChange?: (event: Event) => void;
 }
@@ -2432,6 +2439,16 @@ interface DateFieldProps$1
       | 'onViewChange'
     >,
     AutocompleteProps<DateAutocompleteField> {
+  /**
+   * Callback when the user makes any changes in the field.
+   * Also triggered when a date is selected using the date picker popup before `onChange`.
+   */
+  onInput?: (event: Event) => void;
+  /**
+   * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+   * Also triggered when a date is selected using the date picker popup after `onInput`.
+   */
+  onChange?: (event: Event) => void;
   /**
    * Callback when the field has an invalid date.
    * This callback will be called, if the date typed is invalid or disabled.
@@ -2562,7 +2579,7 @@ interface FunctionSettingsProps$1 extends GlobalProps, FormProps$1 {
    * highlight the fields that caused the errors, and display the error messages
    * to the user.
    */
-  onError?: (event: ArgregatedErrorEvent<FunctionSettingsError>) => void;
+  onError?: (event: AggregateErrorEvent<FunctionSettingsError>) => void;
 }
 export interface FunctionSettingsError extends Error {
   /**
