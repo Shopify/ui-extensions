@@ -10,7 +10,7 @@ const Extension = () => {
   /** @type {{ firstParam?: string; secondParam?: string }} */
   const state = navigation.currentEntry.getState();
 
-  if (url?.includes("screentwo")) {
+  if (url?.includes("ScreenTwo")) {
     return (
       <s-page heading="Screen Two Title">
         <s-scroll-box>

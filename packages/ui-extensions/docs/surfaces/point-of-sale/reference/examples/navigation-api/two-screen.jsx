@@ -7,8 +7,7 @@ export default async () => {
 const Extension = () => {
   const url = navigation.currentEntry.url;
 
-  // note: url is lowercased, so we compare with lowercase strings
-  if (url?.includes("screentwo")) {
+  if (url?.includes("ScreenTwo")) {
     return (
       <s-page heading="Screen Two Title">
         <s-scroll-box>
