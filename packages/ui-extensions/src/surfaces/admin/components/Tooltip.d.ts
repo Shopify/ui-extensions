@@ -14,6 +14,7 @@ import type {
 
 export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
 
+/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -21,6 +22,11 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   ref?: preact.Ref<TClass>;
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
+}
+/** Used when an element has children. */
+export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
+  extends PreactBaseElementProps<TClass> {
+  children?: preact.ComponentChildren;
 }
 
 export type Styles = string;
@@ -128,7 +134,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: TooltipJSXProps & PreactBaseElementProps<Tooltip>;
+      [tagName]: TooltipJSXProps & PreactBaseElementPropsWithChildren<Tooltip>;
     }
   }
 }

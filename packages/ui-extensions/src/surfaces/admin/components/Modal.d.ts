@@ -200,7 +200,7 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ModalJSXProps;
+        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
     }
   }
 }
