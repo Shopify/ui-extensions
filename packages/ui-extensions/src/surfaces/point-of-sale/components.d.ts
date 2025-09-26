@@ -3793,8 +3793,10 @@ declare module 'preact' {
 declare const tagName$k = 's-choice-list';
 interface ChoiceListJSXProps
   extends Pick<ChoiceListProps, 'values' | 'multiple'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$k>) => void) | null;
+  /** Function called when the user changes a choice. Fires simultaneously with onChange. */
   onInput?: ((event: CallbackEvent<typeof tagName$k>) => void) | null;
+  /** Function called when the user changes a choice. Fires simultaneously with onInput. */
+  onChange?: ((event: CallbackEvent<typeof tagName$k>) => void) | null;
   children?: ComponentChildren;
 }
 declare global {
@@ -3867,10 +3869,25 @@ interface TextFieldJSXProps
     | 'required'
     | 'maxLength'
   > {
+  /**
+   * Function called when the user makes any changes in the field.
+   */
   onInput?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
+  /**
+   * Function called after editing completes (typically on blur).
+   */
   onChange?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
+  /**
+   * Function called when the element loses focus.
+   */
+  onBlur?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
+  /**
+   * Function called when the element receives focus.
+   */
+  onFocus?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
+  /**
+   * Additional content to be displayed in the field. Commonly used to display clickable text.
+   */
   accessory?: ComponentChild;
 }
 declare global {
@@ -3890,10 +3907,14 @@ declare module 'preact' {
 declare const tagName$g = 's-search-field';
 interface SearchFieldJSXProps
   extends Pick<SearchFieldProps, 'disabled' | 'placeholder' | 'value'> {
-  onFocus?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
+  /** Function called when the user changes the value in the field. */
   onInput?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
+  /** Function called when the field loses focus after the user changes the value in the field. */
   onChange?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
+  /** Function called when the field loses focus. */
+  onBlur?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
+  /** Function called when the field is focused. */
+  onFocus?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -3922,10 +3943,17 @@ interface EmailFieldJSXProps
     | 'maxLength'
     | 'details'
   > {
+  /** Function called when the user makes any changes in the field. */
   onInput?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
+  /** Function called after editing completes (typically on blur). */
   onChange?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
+  /** Function called when the element loses focus. */
+  onBlur?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
+  /** Function called when the element receives focus. */
+  onFocus?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
+  /**
+   * Additional content to be displayed in the field. Commonly used to display clickable text.
+   */
   accessory?: ComponentChild;
 }
 declare global {
@@ -3975,10 +4003,17 @@ interface TextAreaJSXProps
     | 'maxLength'
     | 'rows'
   > {
+  /** Function called when the user makes any changes in the field. */
   onInput?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
+  /** Function called after editing completes (typically on blur). */
   onChange?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
+  /** Function called when the element loses focus. */
+  onBlur?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
+  /** Function called when the element receives focus. */
+  onFocus?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
+  /**
+   * Additional content to be displayed in the field. Commonly used to display clickable text.
+   */
   accessory?: ComponentChild;
 }
 declare global {
@@ -3996,7 +4031,7 @@ declare module 'preact' {
 }
 
 declare const tagName$c = 's-number-field';
-interface PickedJSXProps
+interface NumberFieldJSXProps
   extends Pick<
     NumberFieldProps,
     | 'label'
@@ -4010,20 +4045,12 @@ interface PickedJSXProps
     | 'min'
     | 'controls'
   > {
-  inputMode?: Extract<NumberFieldProps['inputMode'], 'decimal' | 'numeric'>;
-  onInput?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
-  accessory?: ComponentChild;
-}
-interface NumberFieldJSXProps extends PickedJSXProps {
   /**
    * Content to use as the field label.
    *
    * Label is not supported when using Stepper controls
    */
-  label?: PickedJSXProps['label'];
+  label?: NumberFieldProps['label'];
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -4033,7 +4060,7 @@ interface NumberFieldJSXProps extends PickedJSXProps {
    *
    * Details are not supported when using Stepper controls
    */
-  details?: PickedJSXProps['details'];
+  details?: NumberFieldProps['details'];
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
@@ -4044,14 +4071,14 @@ interface NumberFieldJSXProps extends PickedJSXProps {
    *
    * Required is not supported when using Stepper controls
    */
-  required?: PickedJSXProps['required'];
+  required?: NumberFieldProps['required'];
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    *
    * Error is not supported when using Stepper controls
    */
-  error?: PickedJSXProps['error'];
+  error?: NumberFieldProps['error'];
   /**
    * Sets the virtual keyboard.
    *
@@ -4060,20 +4087,19 @@ interface NumberFieldJSXProps extends PickedJSXProps {
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
    * @default 'decimal'
    */
-  inputMode?: PickedJSXProps['inputMode'];
+  inputMode?: NumberFieldProps['inputMode'];
   /**
    * A short hint that describes the expected value of the field.
    *
    * Placeholder text is not supported when using Stepper controls due to constrained space for the number field, especially on phones.
    */
-  placeholder?: PickedJSXProps['placeholder'];
+  placeholder?: NumberFieldProps['placeholder'];
   /**
-   * Additional content to be displayed in the field.
-   * Commonly used to display an icon that activates a tooltip providing more information.
+   *  Additional content to be displayed in the field. Commonly used to display clickable text.
    *
-   * Accessory is not supported when using Stepper controls
+   * > Note: Accessory is not supported when using Stepper controls
    */
-  accessory?: PickedJSXProps['accessory'];
+  accessory?: ComponentChild;
   /**
    * Sets the type of controls displayed for the field.
    *
@@ -4084,7 +4110,15 @@ interface NumberFieldJSXProps extends PickedJSXProps {
    * - `none`: no controls are displayed and users must input the value manually.
    * - `auto`: the presence of the controls depends on the surface and context.
    */
-  controls?: PickedJSXProps['controls'];
+  controls?: NumberFieldProps['controls'];
+  /** Function called when the user makes any changes in the field. */
+  onInput?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
+  /** Function called after editing completes (typically on blur). */
+  onChange?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
+  /** Function called when the element loses focus. */
+  onBlur?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
+  /** Function called when the element receives focus. */
+  onFocus?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -4106,11 +4140,14 @@ interface DateFieldJSXProps
     DateFieldProps,
     'label' | 'details' | 'value' | 'disabled' | 'error'
   > {
+  /** Function called when the user makes any changes in the field. */
   onInput?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
+  /** Function called after editing completes (typically on blur). */
   onChange?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
-  accessory?: ComponentChild;
+  /** Function called when the element loses focus. */
+  onBlur?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
+  /** Function called when the element receives focus. */
+  onFocus?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -4128,10 +4165,14 @@ declare module 'preact' {
 
 declare const tagName$a = 's-date-picker';
 interface DatePickerJSXProps extends Pick<DatePickerProps, 'id' | 'value'> {
-  onBlur?: (event: CallbackEvent<typeof tagName$a>) => void | null;
-  onFocus?: (event: CallbackEvent<typeof tagName$a>) => void | null;
-  onChange?: (event: CallbackEvent<typeof tagName$a>) => void | null;
+  /** Function called when the user selects a date from the picker. */
   onInput?: (event: CallbackEvent<typeof tagName$a>) => void | null;
+  /** Function called when the user selects a date from the picker that is different to the current value. */
+  onChange?: (event: CallbackEvent<typeof tagName$a>) => void | null;
+  /** Function called when the date picker is dismissed. */
+  onBlur?: (event: CallbackEvent<typeof tagName$a>) => void | null;
+  /** Function called when the date picker is revealed. */
+  onFocus?: (event: CallbackEvent<typeof tagName$a>) => void | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -4149,10 +4190,18 @@ declare module 'preact' {
 
 declare const tagName$9 = 's-date-spinner';
 interface DateSpinnerJSXProps extends Pick<DateSpinnerProps, 'id' | 'value'> {
-  onBlur?: (event: CallbackEvent<typeof tagName$9>) => void | null;
-  onFocus?: (event: CallbackEvent<typeof tagName$9>) => void | null;
-  onChange?: (event: CallbackEvent<typeof tagName$9>) => void | null;
+  /**
+   * Function called when the user makes a selection.
+   */
   onInput?: (event: CallbackEvent<typeof tagName$9>) => void | null;
+  /**
+   * Function called when the value changes. Only called when a different value is selected.
+   */
+  onChange?: (event: CallbackEvent<typeof tagName$9>) => void | null;
+  /** Function called when the date picker is dismissed. */
+  onBlur?: (event: CallbackEvent<typeof tagName$9>) => void | null;
+  /** Function called when the date picker is revealed. */
+  onFocus?: (event: CallbackEvent<typeof tagName$9>) => void | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -4214,10 +4263,14 @@ declare module 'preact' {
 
 declare const tagName$6 = 's-time-picker';
 interface TimePickerJSXProps extends Pick<TimePickerProps, 'id' | 'value'> {
-  onBlur?: (event: CallbackEvent<typeof tagName$6>) => void | null;
-  onFocus?: (event: CallbackEvent<typeof tagName$6>) => void | null;
-  onChange?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  /** Function called when the user selects a time from the picker. */
   onInput?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  /** Function called when the user selects a time from the picker that is different to the current value. */
+  onChange?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  /** Function called when the time picker is dismissed. */
+  onBlur?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  /** Function called when the time picker is revealed. */
+  onFocus?: (event: CallbackEvent<typeof tagName$6>) => void | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -4298,10 +4351,14 @@ interface TimeFieldJSXProps
     TimeFieldProps,
     'id' | 'label' | 'disabled' | 'value' | 'error' | 'details'
   > {
-  onBlur?: (event: CallbackEvent<typeof tagName$3>) => void | null;
-  onFocus?: (event: CallbackEvent<typeof tagName$3>) => void | null;
-  onInput?: (event: CallbackEvent<typeof tagName$3>) => void | null;
-  onChange?: (event: CallbackEvent<typeof tagName$3>) => void | null;
+  /** Function called when the user makes any changes in the field. */
+  onInput?: ((event: CallbackEvent<typeof tagName$3>) => void) | null;
+  /** Function called after editing completes (typically on blur). */
+  onChange?: ((event: CallbackEvent<typeof tagName$3>) => void) | null;
+  /** Function called when the element loses focus. */
+  onBlur?: ((event: CallbackEvent<typeof tagName$3>) => void) | null;
+  /** Function called when the element receives focus. */
+  onFocus?: ((event: CallbackEvent<typeof tagName$3>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -4616,8 +4673,10 @@ interface Choice {
 }
 
 interface ChoiceListEvents {
-  change?: (event: CallbackEvent<typeof tagName$k>) => void;
+  /** Function called when the user changes a choice. Fires simultaneously with onChange. */
   input?: (event: CallbackEvent<typeof tagName$k>) => void;
+  /** Function called when the user changes a choice. Fires simultaneously with onInput. */
+  change?: (event: CallbackEvent<typeof tagName$k>) => void;
 }
 
 interface ChoiceList {
@@ -4654,14 +4713,14 @@ interface Clickable {
 }
 
 interface DateFieldEvents {
+  /** Function called when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$b>) => void;
-  focus?: (event: CallbackEvent<typeof tagName$b>) => void;
-  blur?: (event: CallbackEvent<typeof tagName$b>) => void;
+  /** Function called after editing completes (typically on blur). */
   change?: (event: CallbackEvent<typeof tagName$b>) => void;
-}
-
-interface DateFieldSlots {
-  accessory?: HTMLElement;
+  /** Function called when the element loses focus. */
+  blur?: (event: CallbackEvent<typeof tagName$b>) => void;
+  /** Function called when the element receives focus. */
+  focus?: (event: CallbackEvent<typeof tagName$b>) => void;
 }
 
 interface DateField {
@@ -4690,10 +4749,14 @@ interface DateField {
 }
 
 interface DatePickerEvents {
-  blur?: (event: CallbackEvent<typeof tagName$a>) => void | null;
-  focus?: (event: CallbackEvent<typeof tagName$a>) => void | null;
-  change?: (event: CallbackEvent<typeof tagName$a>) => void | null;
+  /** Function called when the user selects a date from the picker. */
   input?: (event: CallbackEvent<typeof tagName$a>) => void | null;
+  /** Function called when the user selects a date from the picker that is different to the current value. */
+  change?: (event: CallbackEvent<typeof tagName$a>) => void | null;
+  /** Function called when the date picker is dismissed. */
+  blur?: (event: CallbackEvent<typeof tagName$a>) => void | null;
+  /** Function called when the date picker is revealed. */
+  focus?: (event: CallbackEvent<typeof tagName$a>) => void | null;
 }
 
 interface DatePicker {
@@ -4717,10 +4780,14 @@ interface DatePicker {
 }
 
 interface DateSpinnerEvents {
-  blur?: (event: CallbackEvent<typeof tagName$9>) => void | null;
-  focus?: (event: CallbackEvent<typeof tagName$9>) => void | null;
-  change?: (event: CallbackEvent<typeof tagName$9>) => void | null;
+  /** Function called when the user makes a selection. */
   input?: (event: CallbackEvent<typeof tagName$9>) => void | null;
+  /** Function called when the value changes. Only called when a different value is selected. */
+  change?: (event: CallbackEvent<typeof tagName$9>) => void | null;
+  /** Function called when the date picker is dismissed. */
+  blur?: (event: CallbackEvent<typeof tagName$9>) => void | null;
+  /** Function called when the date picker is revealed. */
+  focus?: (event: CallbackEvent<typeof tagName$9>) => void | null;
 }
 
 interface DateSpinner {
@@ -4744,13 +4811,18 @@ interface Divider {
 }
 
 interface EmailFieldEvents {
+  /** Function called when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$f>) => void;
-  focus?: (event: CallbackEvent<typeof tagName$f>) => void;
-  blur?: (event: CallbackEvent<typeof tagName$f>) => void;
+  /** Function called after editing completes (typically on blur). */
   change?: (event: CallbackEvent<typeof tagName$f>) => void;
+  /** Function called when the element loses focus. */
+  blur?: (event: CallbackEvent<typeof tagName$f>) => void;
+  /** Function called when the element receives focus. */
+  focus?: (event: CallbackEvent<typeof tagName$f>) => void;
 }
 
 interface EmailFieldSlots {
+  /** Additional content to be displayed in the field. Commonly used to display clickable text. */
   accessory?: HTMLElement;
 }
 
@@ -4867,18 +4939,21 @@ interface Modal {
 }
 
 interface NumberFieldEvents {
+  /** Function called when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$c>) => void;
-  focus?: (event: CallbackEvent<typeof tagName$c>) => void;
-  blur?: (event: CallbackEvent<typeof tagName$c>) => void;
+  /** Function called after editing completes (typically on blur). */
   change?: (event: CallbackEvent<typeof tagName$c>) => void;
+  /** Function called when the element loses focus. */
+  blur?: (event: CallbackEvent<typeof tagName$c>) => void;
+  /** Function called when the element receives focus. */
+  focus?: (event: CallbackEvent<typeof tagName$c>) => void;
 }
 
 interface NumberFieldSlots {
   /**
-   * Additional content to be displayed in the field.
-   * Commonly used to display an icon that activates a tooltip providing more information.
+   * Additional content to be displayed in the field. Commonly used to display clickable text.
    *
-   * Accessory is not supported when using Stepper controls
+   * > Note: Accessory is not supported when using Stepper controls
    */
   accessory?: HTMLElement;
 }
@@ -5108,10 +5183,14 @@ interface ScrollBox {
 }
 
 interface SearchFieldEvents {
-  focus?: (event: CallbackEvent<typeof tagName$g>) => void;
-  blur?: (event: CallbackEvent<typeof tagName$g>) => void;
+  /** Function called when the user changes the value in the field. */
   input?: (event: CallbackEvent<typeof tagName$g>) => void;
+  /** Function called when the field loses focus after the user changes the value in the field. */
   change?: (event: CallbackEvent<typeof tagName$g>) => void;
+  /** Function called when the field loses focus. */
+  blur?: (event: CallbackEvent<typeof tagName$g>) => void;
+  /** Function called when the field is focused. */
+  focus?: (event: CallbackEvent<typeof tagName$g>) => void;
 }
 
 interface SearchField {
@@ -5310,13 +5389,18 @@ interface Text {
 }
 
 interface TextAreaEvents {
+  /** Function called when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$d>) => void;
-  focus?: (event: CallbackEvent<typeof tagName$d>) => void;
-  blur?: (event: CallbackEvent<typeof tagName$d>) => void;
+  /** Function called after editing completes (typically on blur). */
   change?: (event: CallbackEvent<typeof tagName$d>) => void;
+  /** Function called when the element loses focus. */
+  blur?: (event: CallbackEvent<typeof tagName$d>) => void;
+  /** Function called when the element receives focus. */
+  focus?: (event: CallbackEvent<typeof tagName$d>) => void;
 }
 
 interface TextAreaSlots {
+  /** Additional content to be displayed in the field. Commonly used to display clickable text. */
   accessory?: HTMLElement;
 }
 
@@ -5366,13 +5450,18 @@ interface TextArea {
 }
 
 interface TextFieldEvents {
+  /** Function called when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$h>) => void;
-  focus?: (event: CallbackEvent<typeof tagName$h>) => void;
-  blur?: (event: CallbackEvent<typeof tagName$h>) => void;
+  /** Function called after editing completes (typically on blur). */
   change?: (event: CallbackEvent<typeof tagName$h>) => void;
+  /** Function called when the element loses focus. */
+  blur?: (event: CallbackEvent<typeof tagName$h>) => void;
+  /** Function called when the element receives focus. */
+  focus?: (event: CallbackEvent<typeof tagName$h>) => void;
 }
 
 interface TextFieldSlots {
+  /** Additional content to be displayed in the field. Commonly used to display clickable text. */
   accessory?: HTMLElement;
 }
 
@@ -5453,10 +5542,14 @@ interface Tile {
 }
 
 interface TimeFieldEvents {
-  blur?: (event: CallbackEvent<typeof tagName$3>) => void | null;
-  focus?: (event: CallbackEvent<typeof tagName$3>) => void | null;
-  input?: (event: CallbackEvent<typeof tagName$3>) => void | null;
-  change?: (event: CallbackEvent<typeof tagName$3>) => void | null;
+  /** Function called when the user makes any changes in the field. */
+  input?: (event: CallbackEvent<typeof tagName$3>) => void;
+  /** Function called after editing completes (typically on blur). */
+  change?: (event: CallbackEvent<typeof tagName$3>) => void;
+  /** Function called when the element loses focus. */
+  blur?: (event: CallbackEvent<typeof tagName$3>) => void;
+  /** Function called when the element receives focus. */
+  focus?: (event: CallbackEvent<typeof tagName$3>) => void;
 }
 
 interface TimeField {
@@ -5500,10 +5593,14 @@ interface TimeField {
 }
 
 interface TimePickerEvents {
-  blur?: (event: CallbackEvent<typeof tagName$6>) => void | null;
-  focus?: (event: CallbackEvent<typeof tagName$6>) => void | null;
-  change?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  /** Function called when the user selects a time from the picker. */
   input?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  /** Function called when the user selects a time from the picker that is different to the current value. */
+  change?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  /** Function called when the time picker is dismissed. */
+  blur?: (event: CallbackEvent<typeof tagName$6>) => void | null;
+  /** Function called when the time picker is revealed. */
+  focus?: (event: CallbackEvent<typeof tagName$6>) => void | null;
 }
 
 interface TimePicker {

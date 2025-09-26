@@ -54,10 +54,17 @@ export interface EmailFieldJSXProps
     | 'maxLength'
     | 'details'
   > {
+  /** Function called when the user makes any changes in the field. */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /** Function called after editing completes (typically on blur). */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /** Function called when the element loses focus. */
+  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /** Function called when the element receives focus. */
+  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /**
+   * Additional content to be displayed in the field. Commonly used to display clickable text.
+   */
   accessory?: ComponentChild;
 }
 declare global {

@@ -39,10 +39,14 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 declare const tagName = 's-time-picker';
 export interface TimePickerJSXProps
   extends Pick<TimePickerProps, 'id' | 'value'> {
-  onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
-  onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
-  onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
+  /** Function called when the user selects a time from the picker. */
   onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
+  /** Function called when the user selects a time from the picker that is different to the current value. */
+  onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
+  /** Function called when the time picker is dismissed. */
+  onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
+  /** Function called when the time picker is revealed. */
+  onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
