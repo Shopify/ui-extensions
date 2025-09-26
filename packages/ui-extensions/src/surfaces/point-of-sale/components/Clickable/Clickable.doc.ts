@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Clickable',
   description:
     'A generic interactive container component that makes any content interactive and accessible via taps.',
-  thumbnail: 'selectable-thumbnail.png',
+  thumbnail: 'clickable-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Actions',
   defaultExample: {
-    image: 'selectable-default.png',
+    image: 'clickable-default.png',
     codeblock: {
       title: 'Code',
       tabs: [

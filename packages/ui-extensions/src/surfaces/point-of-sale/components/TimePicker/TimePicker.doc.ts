@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TimePicker',
   description: 'Allows merchants to select a specific time.',
-  thumbnail: 'time-picker-thumbnail.png',
+  thumbnail: 'time-spinner-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Forms',
   defaultExample: {
-    image: 'time-picker-default.png',
+    image: 'time-spinner-default.png',
     codeblock: {
       title: 'Code',
       tabs: [

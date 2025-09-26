@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'ScrollBox',
   description:
     'Creates a scrollable area for content that exceeds container bounds.',
-  thumbnail: 'scroll-view-thumbnail.png',
+  thumbnail: 'scrollbox-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Structure',
   defaultExample: {
-    image: 'scroll-view-default.png',
+    image: 'scrollbox-default.png',
     codeblock: {
       title: 'Code',
       tabs: [

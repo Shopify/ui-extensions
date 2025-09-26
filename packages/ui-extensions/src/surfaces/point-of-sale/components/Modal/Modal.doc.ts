@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Modal',
   description:
     'Displays content in an overlay that requires merchant attention. Use to present critical information, confirmations, or focused tasks without losing page context.',
-  thumbnail: 'dialog-thumbnail.png',
+  thumbnail: 'modal-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Structure',
   defaultExample: {
-    image: 'dialog-default.png',
+    image: 'modal-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
