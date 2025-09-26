@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.44
+
+### Patch Changes
+
+- [#3379](https://github.com/Shopify/ui-extensions/pull/3379) [`06cf1e9ded0b79be22a1cbf32e4dc3eb694bd113`](https://github.com/Shopify/ui-extensions/commit/06cf1e9ded0b79be22a1cbf32e4dc3eb694bd113) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Fix regression where children property was removed
+
 ## 2025.10.0-rc.43
 
 ### Minor Changes
