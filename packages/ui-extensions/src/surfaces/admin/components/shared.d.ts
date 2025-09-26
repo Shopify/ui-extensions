@@ -8,7 +8,7 @@
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
  */
-export type ComponentChildren = any;
+export type ComponentChildren = preact.ComponentChildren;
 export type StringChildren = string;
 export interface GlobalProps {
   /**
