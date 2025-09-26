@@ -35,7 +35,7 @@ export interface Navigation {
   /**
    * The navigate() method navigates to a specific URL, updating any provided state in the history entries list.
    */
-  navigate: (url: string, options?: NavigationNavigateOptions) => void;
+  navigate: (url: string, options?: NavigationNavigateOptions) => Promise<void>;
   /**
    * The currentEntry read-only property of the Navigation interface returns a NavigationHistoryEntry object representing the location the user is currently navigated to right now.
    */
