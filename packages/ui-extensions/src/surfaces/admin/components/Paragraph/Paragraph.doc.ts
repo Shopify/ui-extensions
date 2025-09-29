@@ -49,6 +49,120 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Demonstrates a simple paragraph with default styling, showing how to use the paragraph component for standard text content.',
+            codeblock: {
+              title: 'Basic Usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates how to apply different tones and color variations to convey different types of information, such as informational and success messages.',
+            codeblock: {
+              title: 'With Tone and Color',
+              tabs: [
+                {
+                  code: './examples/with-tone-and-color.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows how to limit the number of lines displayed using the lineClamp prop, which truncates long text with an ellipsis after the specified number of lines.',
+            codeblock: {
+              title: 'Line Clamping',
+              tabs: [
+                {
+                  code: './examples/line-clamping.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Demonstrates the use of tabular numbers with fontVariantNumeric, ensuring consistent alignment and readability for numerical data.',
+            codeblock: {
+              title: 'Tabular Numbers',
+              tabs: [
+                {
+                  code: './examples/tabular-numbers.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates right-to-left (RTL) text rendering, showing how the paragraph component supports internationalization and different text directions.',
+            codeblock: {
+              title: 'RTL Support',
+              tabs: [
+                {
+                  code: './examples/rtl-support.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows how to use the accessibilityVisibility prop to create text that is exclusively available to screen readers, improving accessibility for assistive technologies.',
+            codeblock: {
+              title: 'Screen Reader Text',
+              tabs: [
+                {
+                  code: './examples/screen-reader-text.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Demonstrates how paragraph components can be used together with other layout components like block stack to create structured and informative text sections.',
+            codeblock: {
+              title: 'Integration with Other Components',
+              tabs: [
+                {
+                  code: './examples/integration-with-other-components.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Showcases various tone and color combinations for different administrative messages, illustrating how paragraph can communicate different types of information in a user interface.',
+            codeblock: {
+              title: 'Admin UI Patterns',
+              tabs: [
+                {
+                  code: './examples/admin-ui-patterns.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
