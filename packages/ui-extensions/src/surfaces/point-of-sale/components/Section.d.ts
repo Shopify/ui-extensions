@@ -31,29 +31,35 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-section';
-export interface SectionJSXProps extends Pick<SectionProps, 'children'> {
-  secondaryActions?: ComponentChild;
+export interface SectionJSXProps extends Pick<SectionProps, 'id'> {
   /**
-   * Adds title text displayed at the top left of the section
+   * A title that describes the content of the section.
    *
-   * **Mobile surfaces:** Uses the standard POS Design System heading style for a section (not h2).
-   *
-   * @default undefined
+   * If omitted, and no secondaryActions are provided, the section will be rendered without a header.
    */
   heading?: string;
+  /**
+   * Button element to display in the section heading. A single button is supported.
+   */
+  secondaryActions?: ComponentChild;
+  /**
+   * The content of the Section.
+   */
+  children?: ComponentChildren;
 }
+export type ElementProps = Omit<SectionJSXProps, 'secondaryActions'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: SectionJSXProps;
+    [tagName]: ElementProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<SectionJSXProps, 'secondaryActions'> &
-        BaseElementPropsWithChildren<Omit<SectionJSXProps, 'secondaryActions'>>;
+      [tagName]: IntrinsicElementProps<ElementProps>;
     }
   }
 }

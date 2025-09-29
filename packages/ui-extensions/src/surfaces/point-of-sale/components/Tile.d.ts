@@ -26,6 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   currentTarget: HTMLElementTagNameMap[T];
   bubbles?: boolean;
@@ -40,8 +41,17 @@ declare const tagName = 's-tile';
 export interface TileJSXProps
   extends Pick<
     TileProps,
-    'disabled' | 'heading' | 'id' | 'itemCount' | 'tone' | 'subheading'
+    'heading' | 'id' | 'itemCount' | 'tone' | 'subheading'
   > {
+  /**
+   * Disables the Tile meaning it cannot be clicked or receive focus.
+   *
+   * @default false
+   */
+  disabled?: TileProps['disabled'];
+  /**
+   * Callback when the Tile is activated.
+   */
   onClick?: (event: CallbackEvent<typeof tagName>) => void;
 }
 declare global {
@@ -52,7 +62,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: TileJSXProps & BaseElementPropsWithChildren<TileJSXProps>;
+      [tagName]: IntrinsicElementProps<TileJSXProps>;
     }
   }
 }

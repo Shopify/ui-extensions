@@ -31,29 +31,43 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-page';
-export type PickedProps = Pick<
-  PageProps,
-  'heading' | 'subheading' | 'secondaryActions' | 'aside'
->;
-export interface PageJSXProps extends PickedProps {
-  children?: ComponentChildren;
+export interface PageJSXProps extends Pick<PageProps, 'id'> {
+  /**
+   * The main page heading, displayed in the action bar at the top of the page.
+   *
+   * @default: ''
+   */
+  heading?: PageProps['heading'];
+  /**
+   * A secondary page heading, displayed under the main heading in the action bar.
+   */
+  subheading?: PageProps['subheading'];
+  /**
+   * Button element to display in the action bar. Only a single button is supported.
+   */
   secondaryActions?: ComponentChild;
+  /**
+   * Content to display in the page's sidebar.
+   */
   aside?: ComponentChild;
+  /**
+   * The content of the Page.
+   */
+  children?: ComponentChildren;
 }
+export type ElementProps = Omit<PageJSXProps, 'secondaryActions' | 'aside'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: PageJSXProps;
+    [tagName]: ElementProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<PageJSXProps, 'secondaryActions' | 'aside'> &
-        BaseElementPropsWithChildren<
-          Omit<PageJSXProps, 'secondaryActions' | 'aside'>
-        >;
+      [tagName]: IntrinsicElementProps<ElementProps>;
     }
   }
 }

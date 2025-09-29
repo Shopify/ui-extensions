@@ -26,6 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   currentTarget: HTMLElementTagNameMap[T];
   bubbles?: boolean;
@@ -37,9 +38,16 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-clickable';
-export interface ClickableJSXProps extends Pick<ClickableProps, 'disabled'> {
-  children?: ComponentChildren;
+export interface ClickableJSXProps
+  extends Pick<ClickableProps, 'id' | 'disabled'> {
+  /**
+   * Callback when the element is activated.
+   */
   onClick?: (event: CallbackEvent<typeof tagName>) => void;
+  /**
+   * The content of the Clickable.
+   */
+  children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -49,8 +57,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ClickableJSXProps &
-        BaseElementPropsWithChildren<ClickableJSXProps>;
+      [tagName]: IntrinsicElementProps<ClickableJSXProps>;
     }
   }
 }

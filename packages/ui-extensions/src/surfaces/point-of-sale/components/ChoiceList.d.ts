@@ -26,6 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   currentTarget: HTMLElementTagNameMap[T];
   bubbles?: boolean;
@@ -38,11 +39,18 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 
 declare const tagName = 's-choice-list';
 export interface ChoiceListJSXProps
-  extends Pick<ChoiceListProps, 'values' | 'multiple'> {
-  /** Function called when the user changes a choice. Fires simultaneously with onChange. */
+  extends Pick<ChoiceListProps, 'id' | 'values' | 'multiple'> {
+  /**
+   * Callback when the user changes a choice. Fires simultaneously with onChange.
+   */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /** Function called when the user changes a choice. Fires simultaneously with onInput. */
+  /**
+   * Callback when the user changes a choice. Fires simultaneously with onInput.
+   */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /**
+   * The content of the ChoiceList. Should be one or more Choice elements.
+   */
   children?: ComponentChildren;
 }
 declare global {
@@ -53,8 +61,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ChoiceListJSXProps &
-        BaseElementPropsWithChildren<ChoiceListJSXProps>;
+      [tagName]: IntrinsicElementProps<ChoiceListJSXProps>;
     }
   }
 }

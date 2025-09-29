@@ -26,6 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   currentTarget: HTMLElementTagNameMap[T];
   bubbles?: boolean;
@@ -38,7 +39,10 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 
 declare const tagName = 's-button';
 export interface ButtonJSXProps
-  extends Pick<ButtonProps, 'disabled' | 'command' | 'commandFor' | 'loading'> {
+  extends Pick<
+    ButtonProps,
+    'id' | 'disabled' | 'command' | 'commandFor' | 'loading'
+  > {
   /**
    * Sets the action the `commandFor` should take when this clickable is activated.
    *
@@ -72,7 +76,13 @@ export interface ButtonJSXProps
    * @default 'auto' - the variant is automatically determined by the Button's context
    */
   variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
+  /**
+   * Called when the button is activated.
+   */
   onClick?: (event: CallbackEvent<typeof tagName>) => void;
+  /**
+   * The content of the Button.
+   */
   children?: ComponentChildren;
 }
 declare global {
@@ -83,7 +93,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ButtonJSXProps & BaseElementPropsWithChildren<ButtonJSXProps>;
+      [tagName]: IntrinsicElementProps<ButtonJSXProps>;
     }
   }
 }

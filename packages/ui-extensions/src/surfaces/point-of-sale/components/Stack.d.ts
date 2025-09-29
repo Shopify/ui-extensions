@@ -10,6 +10,13 @@
 /// <reference lib="DOM" />
 import type {
   StackProps,
+  SizeUnitsOrAuto,
+  SizeUnitsOrNone,
+  SizeUnits,
+  AlignItemsKeyword,
+  AlignContentKeyword,
+  SpacingKeyword,
+  JustifyContentKeyword,
   SizeKeyword,
   MaybeAllValuesShorthandProperty,
   MaybeTwoValuesShorthandProperty,
@@ -33,11 +40,13 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-stack';
 export type PaddingKeyword = SizeKeyword | 'none';
 export type PickedProps = Pick<
   StackProps,
+  | 'id'
   | 'alignItems'
   | 'alignContent'
   | 'gap'
@@ -126,7 +135,6 @@ export interface StackJSXProps extends PickedProps {
    * @default '' - meaning no override
    */
   paddingInlineEnd?: PaddingKeyword | '';
-  children?: ComponentChildren;
   /**
    * Adjust the block size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
@@ -135,7 +143,7 @@ export interface StackJSXProps extends PickedProps {
    *
    * @default 'auto'
    */
-  blockSize?: PickedProps['blockSize'];
+  blockSize?: SizeUnitsOrAuto;
   /**
    * Adjust the maximum block size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
@@ -144,7 +152,7 @@ export interface StackJSXProps extends PickedProps {
    *
    * @default 'none'
    */
-  maxBlockSize?: PickedProps['maxBlockSize'];
+  maxBlockSize?: SizeUnitsOrNone;
   /**
    * Adjust the maximum inline size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
@@ -153,7 +161,7 @@ export interface StackJSXProps extends PickedProps {
    *
    * @default 'none'
    */
-  maxInlineSize?: PickedProps['maxInlineSize'];
+  maxInlineSize?: SizeUnitsOrNone;
   /**
    * Adjust the minimum block size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
@@ -162,7 +170,7 @@ export interface StackJSXProps extends PickedProps {
    *
    * @default '0'
    */
-  minBlockSize?: PickedProps['minBlockSize'];
+  minBlockSize?: SizeUnits;
   /**
    * Adjust the minimum inline size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
@@ -171,7 +179,59 @@ export interface StackJSXProps extends PickedProps {
    *
    * @default '0'
    */
-  minInlineSize?: PickedProps['minInlineSize'];
+  minInlineSize?: SizeUnits;
+  /**
+   * Aligns the Stack's children along the cross axis.
+   */
+  alignItems?: AlignItemsKeyword;
+  /**
+   * Aligns the Stack along the cross axis.
+   */
+  alignContent?: AlignContentKeyword;
+  /**
+   * Adjust spacing between elements.
+   * A single value applies to both axes. A pair of values (eg large-100 large-500) can be used to set the inline and block axes respectively.
+   *
+   * @default 'none'
+   */
+  gap?: MaybeTwoValuesShorthandProperty<SpacingKeyword>;
+  /**
+   * Adjust spacing between elements in the inline axis. This overrides the column value of gap.
+   *
+   * @default '' - meaning no override
+   */
+  columnGap?: SpacingKeyword | '';
+  /**
+   * Sets how the children are placed within the Stack. This uses logical properties.
+   *
+   * @default 'block'
+   * @implementation - the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
+   */
+  direction?: 'block' | 'inline';
+  /**
+   * Adjust the inline size.
+   * @see — https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
+   *
+   * @default 'auto'
+   */
+  inlineSize?: SizeUnitsOrAuto;
+  /**
+   * Aligns the Stack along the main axis.
+   * @see — https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+   *
+   * @default 'normal'
+   */
+  justifyContent?: JustifyContentKeyword;
+  /**
+   * Adjust spacing between elements in the block axis. This overrides the row value of gap.
+   *
+   * @default '' - meaning no override
+   */
+  rowGap?: SpacingKeyword | '';
+  /**
+   * The content of the Stack.
+   */
+  children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -181,7 +241,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: StackJSXProps & BaseElementPropsWithChildren<StackJSXProps>;
+      [tagName]: IntrinsicElementProps<StackJSXProps>;
     }
   }
 }

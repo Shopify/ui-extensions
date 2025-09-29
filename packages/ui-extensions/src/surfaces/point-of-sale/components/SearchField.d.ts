@@ -26,6 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   currentTarget: HTMLElementTagNameMap[T];
   bubbles?: boolean;
@@ -38,14 +39,22 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 
 declare const tagName = 's-search-field';
 export interface SearchFieldJSXProps
-  extends Pick<SearchFieldProps, 'disabled' | 'placeholder' | 'value'> {
-  /** Function called when the user changes the value in the field. */
+  extends Pick<SearchFieldProps, 'id' | 'disabled' | 'placeholder' | 'value'> {
+  /**
+   * Callback when the user changes the value in the field.
+   */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /** Function called when the field loses focus after the user changes the value in the field. */
+  /**
+   * Callback when the field loses focus after the user changes the value in the field.
+   */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /** Function called when the field loses focus. */
+  /**
+   * Callback when the field loses focus.
+   */
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /** Function called when the field is focused. */
+  /**
+   * Callback when the field is focused.
+   */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 declare global {
@@ -56,8 +65,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: SearchFieldJSXProps &
-        BaseElementPropsWithChildren<SearchFieldJSXProps>;
+      [tagName]: IntrinsicElementProps<SearchFieldJSXProps>;
     }
   }
 }

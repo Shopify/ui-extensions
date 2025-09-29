@@ -31,36 +31,44 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-banner';
 export interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
   /**
    * Determines whether the banner is hidden.
+   *
+   * @default false
    */
   hidden?: BannerProps['hidden'];
   /**
    * Sets the tone of the Banner, based on the intention of the information being conveyed.
+   *
+   * @default 'auto'
    */
   tone?: Extract<
     BannerProps['tone'],
-    'success' | 'info' | 'warning' | 'critical'
+    'auto' | 'success' | 'info' | 'warning' | 'critical'
   >;
   /**
    * The action taken when the Banner is pressed.
    */
   primaryAction?: ComponentChild;
+  /**
+   * The content of the Banner.
+   */
   children?: ComponentChildren;
 }
+export type ElementProps = Omit<BannerJSXProps, 'primaryAction'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: BannerJSXProps;
+    [tagName]: ElementProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<BannerJSXProps, 'primaryAction'> &
-        BaseElementPropsWithChildren<Omit<BannerJSXProps, 'primaryAction'>>;
+      [tagName]: IntrinsicElementProps<ElementProps>;
     }
   }
 }

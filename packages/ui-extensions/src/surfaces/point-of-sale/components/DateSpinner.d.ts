@@ -26,6 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   currentTarget: HTMLElementTagNameMap[T];
   bubbles?: boolean;
@@ -40,16 +41,20 @@ declare const tagName = 's-date-spinner';
 export interface DateSpinnerJSXProps
   extends Pick<DateSpinnerProps, 'id' | 'value'> {
   /**
-   * Function called when the user makes a selection.
+   * Callback when the user makes a selection.
    */
   onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
   /**
-   * Function called when the value changes. Only called when a different value is selected.
+   * Callback when the value changes. Only called when a different value is selected.
    */
   onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
-  /** Function called when the date picker is dismissed. */
+  /**
+   * Callback when the date spinner is dismissed.
+   */
   onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
-  /** Function called when the date picker is revealed. */
+  /**
+   * Callback when the date spinner is revealed.
+   */
   onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
 }
 declare global {
@@ -60,8 +65,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: DateSpinnerJSXProps &
-        BaseElementPropsWithChildren<DateSpinnerJSXProps>;
+      [tagName]: IntrinsicElementProps<DateSpinnerJSXProps>;
     }
   }
 }

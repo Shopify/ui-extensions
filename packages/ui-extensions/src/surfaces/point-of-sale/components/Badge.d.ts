@@ -26,13 +26,22 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-badge';
 export interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
+  /**
+   * Sets the tone of the Badge, based on the intention of the information being conveyed.
+   *
+   * @default 'auto'
+   */
   tone?: Extract<
     BadgeProps['tone'],
     'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
   >;
+  /**
+   * The content of the Badge.
+   */
   children?: ComponentChildren;
 }
 declare global {
@@ -43,7 +52,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BadgeJSXProps & BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName]: IntrinsicElementProps<BadgeJSXProps>;
     }
   }
 }
