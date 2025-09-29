@@ -1,9 +1,10 @@
 api_version = "2025-10"
 
 [[extensions]]
-name = "My customer account ui extension"
+name = "Your customer account ui extension"
 handle = "customer-account-ui"
 type = "ui_extension"
+uid = "4be0643f-1d98-e73b-17cd-ca98a65347dda7632660"
 
 [[extensions.targeting]]
 target = "customer-account.order-status.block.render"

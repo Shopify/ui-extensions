@@ -6,9 +6,5 @@ export default async () => {
 };
 
 function Extension() {
-  return (
-    <s-banner>
-      {shopify.i18n.translate('welcomeMessage')}
-    </s-banner>
-  );
+  return <s-banner>Your extension</s-banner>;
 }
