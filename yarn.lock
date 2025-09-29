@@ -1773,17 +1773,17 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@preact/signals-core@^1.7.0":
-  version "1.8.0"
-  resolved "https://registry.npmjs.org/@preact/signals-core/-/signals-core-1.8.0.tgz"
-  integrity sha512-OBvUsRZqNmjzCZXWLxkZfhcgT+Fk8DDcT/8vD6a1xhDemodyy87UJRJfASMuSD8FaAIeGgGm85ydXhm7lr4fyA==
+"@preact/signals-core@^1.12.0":
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/@preact/signals-core/-/signals-core-1.12.1.tgz#714b489bb35d9874cc44b35706a9dc27da8d21c4"
+  integrity sha512-BwbTXpj+9QutoZLQvbttRg5x3l5468qaV2kufh+51yha1c53ep5dY4kTuZR35+3pAZxpfQerGJiQqg34ZNZ6uA==
 
-"@preact/signals@*":
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/@preact/signals/-/signals-2.0.2.tgz"
-  integrity sha512-Qvu30QoIswaWXmFQZwzBc1CdyB+biIZCpHxoYcNplRTySLkCH6f7RMlHtwb0tmkfQJ+WBkUqR7ajPjdsc1Uq+w==
+"@preact/signals@^2.3.x":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@preact/signals/-/signals-2.3.1.tgz#91fde3ebf02794afa8d463fe1ccd5fda9509fe1d"
+  integrity sha512-nyuRIGmcwM/HjvFHhN2xUWfyla9D4llHt+prWoxjQfD6b5prO7CFPlG/xjJkP31Oic4KQXfH9SIhJFP9cy4lmg==
   dependencies:
-    "@preact/signals-core" "^1.7.0"
+    "@preact/signals-core" "^1.12.0"
 
 "@remote-ui/async-subscription@^2.1.16":
   version "2.1.16"
@@ -5938,10 +5938,10 @@ possible-typed-array-names@^1.0.0:
   resolved "https://registry.npmjs.org/possible-typed-array-names/-/possible-typed-array-names-1.0.0.tgz"
   integrity sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==
 
-preact@*:
-  version "10.26.5"
-  resolved "https://registry.npmjs.org/preact/-/preact-10.26.5.tgz"
-  integrity sha512-fmpDkgfGU6JYux9teDWLhj9mKN55tyepwYbxHgQuIxbWQzgFg5vk7Mrrtfx7xRxq798ynkY4DDDxZr235Kk+4w==
+preact@^10.10.x:
+  version "10.27.2"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.27.2.tgz#19b9009c1be801a76a0aaf0fe5ba665985a09312"
+  integrity sha512-5SYSgFKSyhCbk6SrXyMpqjb5+MQBgfvEKE/OC+PujcY34sOpqtr+0AZQtPYx5IA6VxynQ7rUPCtKzyovpj9Bpg==
 
 preferred-pm@^3.0.0:
   version "3.1.3"
