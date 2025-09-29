@@ -18,6 +18,8 @@ export const SUPPORTED_COMPONENTS = [
   'Clickable',
   'ClickableChip',
   'ClipboardItem',
+  'ConsentCheckbox',
+  'ConsentPhoneField',
   'DateField',
   'DatePicker',
   'Details',
