@@ -1,0 +1,20 @@
+<s-stack gap="base">
+  <s-select id="shipping-select" label="Shipping method" value="standard">
+    <s-option value="standard">Standard shipping (5-7 days)</s-option>
+    <s-option value="express">Express shipping (2-3 days)</s-option>
+    <s-option value="overnight">Overnight shipping (1 day)</s-option>
+  </s-select>
+
+  <s-box
+    id="shipping-cost"
+    padding="base"
+    background="subdued"
+    borderRadius="base"
+  >
+    <s-text>
+      Shipping cost:
+      <strong>$5.99</strong>
+    </s-text>
+    <s-text tone="subdued">Estimated delivery: 5-7 business days</s-text>
+  </s-box>
+</s-stack>

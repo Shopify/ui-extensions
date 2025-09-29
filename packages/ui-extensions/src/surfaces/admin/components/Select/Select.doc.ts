@@ -62,6 +62,120 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'A simple select dropdown with pre-selected value for product sorting options.',
+            codeblock: {
+              title: 'Basic usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Select dropdown that updates other page elements based on the selected shipping option.',
+            codeblock: {
+              title: 'Dynamic content with JavaScript',
+              tabs: [
+                {
+                  code: './examples/dynamic-content-with-javascript.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Select dropdown with helpful placeholder text guiding category selection.',
+            codeblock: {
+              title: 'With placeholder',
+              tabs: [
+                {
+                  code: './examples/with-placeholder.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Select in error state showing specific business context and actionable error message.',
+            codeblock: {
+              title: 'With error state',
+              tabs: [
+                {
+                  code: './examples/with-error-state.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Grouped select options organized by geographical regions for international shipping.',
+            codeblock: {
+              title: 'With option groups',
+              tabs: [
+                {
+                  code: './examples/with-option-groups.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Select dropdown with sort icon for filtering order management views.',
+            codeblock: {
+              title: 'With icon',
+              tabs: [
+                {
+                  code: './examples/with-icon.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Select element properly integrated within a form with name attribute for data submission.',
+            codeblock: {
+              title: 'Form integration',
+              tabs: [
+                {
+                  code: './examples/form-integration.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Select in disabled state preventing user interaction with pre-selected value.',
+            codeblock: {
+              title: 'Disabled state',
+              tabs: [
+                {
+                  code: './examples/disabled-state.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
