@@ -1,0 +1,5 @@
+<s-text tone="critical">
+  Your store will be suspended in 24 hours due to unpaid balance.
+  <s-link href="/admin/billing/payment">Update payment method</s-link>
+  to avoid service interruption.
+</s-text>

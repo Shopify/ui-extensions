@@ -41,6 +41,94 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'A simple clickable button with a base border and padding, demonstrating the default button behavior of the Clickable component.',
+            codeblock: {
+              title: 'Basic Button Usage',
+              tabs: [
+                {
+                  code: './examples/basic-button-usage.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              "Demonstrates the Clickable component's ability to function as a link, opening the specified URL in a new browser tab when clicked.",
+            codeblock: {
+              title: 'Link Mode',
+              tabs: [
+                {
+                  code: './examples/link-mode.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              "A disabled submit button that can be used within a form, showing the component's form integration capabilities and disabled state.",
+            codeblock: {
+              title: 'Form Submit Button',
+              tabs: [
+                {
+                  code: './examples/form-submit-button.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates how the Clickable component can be integrated into a card layout to provide an interactive configuration action button.',
+            codeblock: {
+              title: 'Card with Clickable Action',
+              tabs: [
+                {
+                  code: './examples/card-with-clickable-action.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              "Demonstrates the use of an accessibility label to provide context for screen readers, enhancing the component's usability for users with assistive technologies.",
+            codeblock: {
+              title: 'Accessibility with ARIA Attributes',
+              tabs: [
+                {
+                  code: './examples/accessibility-with-aria-attributes.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows a disabled link with an accessibility label, explaining the unavailability of a feature to users of assistive technologies.',
+            codeblock: {
+              title: 'Disabled Link with ARIA',
+              tabs: [
+                {
+                  code: './examples/disabled-link-with-aria.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
