@@ -7,10 +7,10 @@ export default async () => {
 
 function Extension() {
   return (
-    <s-stack>
-      <s-image src="/url/for/image" />
-      <s-stack direction="block">
-        <s-text type="strong">Heading</s-text>
+    <s-stack direction="block">
+      <s-image src="https://cdn.shopify.com/YOUR_IMAGE_HERE" />
+      <s-stack>
+        <s-heading>Heading</s-heading>
         <s-text type="small">Description</s-text>
       </s-stack>
       <s-button

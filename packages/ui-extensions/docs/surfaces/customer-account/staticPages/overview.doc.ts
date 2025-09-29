@@ -21,32 +21,15 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       anchorLink: 'scaffolding-extension',
       title: 'Scaffolding an extension',
-      sectionContent:
-        'Use Shopify CLI to [generate a new extension](/apps/tools/cli/commands#generate-extension) in the directory of your app.',
-      sectionCard: [
-        {
-          name: 'Getting started',
-          subtitle: 'Navigate to',
-          url: '/docs/apps/customer-accounts/getting-started',
-          type: 'blocks',
-        },
-      ],
+      sectionContent: `Use the Shopify CLI to [generate a new extension](/docs/api/shopify-cli/app/app-generate-extension) in the directory of your app.
+
+Make sure you’re using Shopify CLI \`v3.84.2\` or higher. You can check your version by running \`shopify version\`.
+        `,
       codeblock: {
-        title: 'Scaffolding',
+        title: 'Shopify CLI',
         tabs: [
           {
-            title: 'npm',
-            code: './examples/scaffolding-npm.example.bash',
-            language: 'bash',
-          },
-          {
-            title: 'yarn',
-            code: './examples/scaffolding-yarn.example.bash',
-            language: 'bash',
-          },
-          {
-            title: 'pnpm',
-            code: './examples/scaffolding-pnpm.example.bash',
+            code: './examples/scaffolding.example.bash',
             language: 'bash',
           },
         ],
@@ -55,12 +38,18 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'Generic',
-      anchorLink: 'extension-targets',
-      title: 'Extension targets',
-      sectionContent: `Extension targets provide locations for customer account UI extensions to appear.
-      \n\nExtension UIs are rendered using [remote UI](https://github.com/Shopify/remote-ui),
-      a fast and secure environment for custom [(non-DOM)](#security) UIs.`,
+      anchorLink: 'configuration-file',
+      title: 'Configuration file',
+      sectionContent: `When you create a customer account UI extension, the \`shopify.extension.toml\` file is automatically generated in your extension directory. Use this file to configure your extension name, extension targets, metafields, capabilities, and settings definition.
+
+Extension targets provide locations where merchants can insert custom content. Static extension targets render immediately before or after most core customer account features. Block extension targets render between core customer account features. Block extensions are always rendered, regardless of what other elements of the customer account are present.`,
       sectionCard: [
+        {
+          name: 'Configuration guide',
+          subtitle: 'Navigate to',
+          url: '/api/customer-account-ui-extensions/configuration',
+          type: 'gear',
+        },
         {
           name: 'Extension targets',
           subtitle: 'Overview',
@@ -69,39 +58,10 @@ const data: LandingTemplateSchema = {
         },
       ],
       image: 'extension-targets.png',
-      altText:
-        'The Profile page with a purple dotted-line box above the page title that says "Extension targets".',
       codeblock: {
-        title: 'Extension targets',
+        title: 'shopify.extension.toml',
         tabs: [
           {
-            title: 'Preact',
-            code: './examples/extension-targets-preact.example.tsx',
-            language: 'tsx',
-          },
-        ],
-      },
-      initialLanguage: 'tsx',
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'configuration-file',
-      title: 'Configuration file',
-      sectionContent:
-        "When you create a customer account UI extension, the shopify.extension.toml file is automatically generated in your customer account UI extension directory. It contains the extension's configuration, which includes the extension name, extension targets, metafields, capabilities and settings definition.",
-      sectionCard: [
-        {
-          name: 'Configuration guide',
-          subtitle: 'Navigate to',
-          url: '/api/customer-account-ui-extensions/configuration',
-          type: 'gear',
-        },
-      ],
-      codeblock: {
-        title: 'shopify.ui.extension.example.toml',
-        tabs: [
-          {
-            title: 'toml',
             code: './examples/configure-example.example.toml',
             language: 'toml',
           },
@@ -111,10 +71,55 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'Generic',
+      anchorLink: 'extension-functions',
+      title: 'Extension functions',
+      sectionContent: `Customer account will execute the module’s default export so it can render a user interface.
+
+Extension UIs are powered by [Remote DOM](https://github.com/Shopify/remote-dom/), a fast and secure environment for custom [(non-DOM)](#security) UIs.`,
+      sectionCard: [],
+      altText:
+        'The Profile page with a purple dotted-line box above the page title that says "Extension targets".',
+      codeblock: {
+        title: 'Extension.jsx',
+        tabs: [
+          {
+            code: './examples/extension-functions.example.jsx',
+            language: 'jsx',
+          },
+        ],
+      },
+      initialLanguage: 'jsx',
+    },
+    {
+      type: 'Generic',
+      title: 'Preact by default',
+      sectionContent: `UI Extensions are scaffolded with [Preact](https://preactjs.com/) by default. This means you can use Preact patterns and principles within your extension.
+
+Since Preact is included as a standard dependency, you have access to all of its features including [hooks](https://preactjs.com/guide/v10/hooks/) like \`useState\` and \`useEffect\` for managing component state and side effects.
+
+You can also use [Preact Signals](https://preactjs.com/guide/v10/signals/) for reactive state management, and take advantage of standard web APIs just like you would in a regular Preact application.
+        `,
+      anchorLink: 'preact-by-default',
+      codeblock: {
+        title: 'Extension.jsx',
+        tabs: [
+          {
+            code: './examples/preact-by-default.jsx',
+            language: 'jsx',
+          },
+        ],
+      },
+    },
+    {
+      type: 'Generic',
       anchorLink: 'extension-apis',
       title: 'Extension APIs',
-      sectionContent:
-        "APIs enable customer account UI extensions to get information about the customer or related objects and to perform actions. For example, you can use APIs to retrieve previous orders of the customer so that you can offer related products as upsells.\n\nExtensions use JavaScript to read and write data and call external services, and natively render UIs built using Shopify's checkout and customer account components.",
+      sectionContent: `The platform defines a global \`shopify\` object that contains all properties and methods available to UI extensions.
+
+These APIs enable UI extensions to get information about the customer account or related objects and to perform actions. For example, you can retrieve what’s in an order and offer related products.
+
+APIs with a \`value\` property are [Preact Signals](https://preactjs.com/guide/v10/signals/). Preact will automatically re-render your extension as values change.
+`,
       sectionCard: [
         {
           name: 'Customer account UI extensions APIs',
@@ -124,16 +129,16 @@ const data: LandingTemplateSchema = {
         },
       ],
       codeblock: {
-        title: 'Extension APIs',
+        title: 'Extension.jsx',
         tabs: [
           {
             title: 'Preact',
-            code: './examples/extension-apis-preact.example.tsx',
-            language: 'tsx',
+            code: './examples/extension-apis.example.jsx',
+            language: 'jsx',
           },
         ],
       },
-      initialLanguage: 'tsx',
+      initialLanguage: 'jsx',
     },
     {
       type: 'Generic',
@@ -142,18 +147,12 @@ const data: LandingTemplateSchema = {
       image: 'ui-components.gif',
       altText:
         "An animation of a card that contains an image, heading, description, and button, shifting and transforming into highly customized versions of the same UI to reflect each merchant's unique branding.",
-      sectionContent: `Customer account UI extensions declare their interface using supported UI components. Shopify renders the UI natively so it's performant, accessible, and works in all of customer account supported browsers.
-      \n\nComponents are designed to be flexible, enabling you to layer and mix them to create highly-customized app extensions that feel seamless within the customer account experience. All components that will inherit a merchant's brand settings and the CSS cannot be altered or overridden.
-      \n\nTo build customer account UI extensions, you can use checkout components, and customer account components.`,
+      sectionContent: `Customer account UI extensions declare their interface using [Polaris web components](/docs/api/customer-account-ui-extensions/using-polaris-components). Shopify renders the UI natively, so it’s performant, accessible, and works in all of customer account’s supported browsers.
+
+Customer account components are designed to be flexible, enabling you to layer and mix them to create highly-customized app extensions that feel seamless within the customer account experience. All components inherit a merchant’s brand settings and the CSS cannot be altered or overridden.`,
       sectionCard: [
         {
-          name: 'Checkout components',
-          subtitle: 'API Reference',
-          url: '/api/checkout-ui-extensions/components',
-          type: 'blocks',
-        },
-        {
-          name: 'Customer account components',
+          name: 'Component library',
           subtitle: 'API Reference',
           url: '/api/customer-account-ui-extensions/components',
           type: 'blocks',
@@ -166,16 +165,15 @@ const data: LandingTemplateSchema = {
         },
       ],
       codeblock: {
-        title: 'UI components',
+        title: 'Extension.jsx',
         tabs: [
           {
-            title: 'Preact',
-            code: './examples/ui-components-preact.example.tsx',
-            language: 'tsx',
+            code: './examples/ui-components.example.jsx',
+            language: 'jsx',
           },
         ],
       },
-      initialLanguage: 'tsx',
+      initialLanguage: 'jsx',
     },
     {
       type: 'GenericAccordion',
@@ -192,12 +190,12 @@ const data: LandingTemplateSchema = {
             tabs: [
               {
                 title: 'Link to Order Index page',
-                code: './examples/custom-protocols/customer-account-link.example.tsx',
-                language: 'tsx',
+                code: './examples/custom-protocols/customer-account-link.example.html',
+                language: 'jsx',
               },
             ],
           },
-          initialLanguage: 'tsx',
+          initialLanguage: 'jsx',
         },
         {
           title: 'Relative URLs',
@@ -208,8 +206,8 @@ const data: LandingTemplateSchema = {
             tabs: [
               {
                 title: 'Link to route in your extension',
-                code: './examples/custom-protocols/relative-urls-link.example.tsx',
-                language: 'tsx',
+                code: './examples/custom-protocols/relative-urls-link.example.html',
+                language: 'jsx',
               },
             ],
           },
@@ -226,8 +224,8 @@ customer accounts and handle the navigation.',
             tabs: [
               {
                 title: 'Link to a route of an extension',
-                code: './examples/custom-protocols/extension-link.example.tsx',
-                language: 'tsx',
+                code: './examples/custom-protocols/extension-link.example.html',
+                language: 'jsx',
               },
             ],
           },
@@ -250,9 +248,9 @@ Customer account UI extensions are a safe and secure way to customize the appear
         {
           title: 'Constraints',
           sectionContent: `
-You can't override the CSS for UI components. The customer account UI extension will always render the merchant's own branding as shown in the image in the UI components section above.
+You can’t override the CSS for UI components. The customer account UI will always render the merchant’s own branding.
 
-Customer account UI extensions don't have access to the DOM and can't return DOM nodes. They can't return \`<div>\` elements, for example. Building an arbitrary tree of HTML and loading additional scripts using script tags are also not supported.
+Customer account UI extensions don’t have access to the real customer account DOM and can’t render arbitrary HTML such as \`<div>\` elements or \`<script>\` tags, etc. They can only render custom HTML elements provided by Shopify.
 `,
           type: 'info',
         },
@@ -299,15 +297,21 @@ Customer account UI extensions don't have access to the DOM and can't return DOM
           type: 'blocks',
         },
         {
-          name: 'Building metafield writes into extensions',
+          name: 'Build metafield writes into extensions',
           subtitle: 'Tutorial',
           url: '/docs/apps/build/customer-accounts/metafields',
           type: 'blocks',
         },
         {
-          name: 'Build Pre-auth Order Status page extensions',
+          name: 'Build pre-auth order status page extensions',
           subtitle: 'Tutorial',
           url: '/docs/apps/build/customer-accounts/pre-auth-order-status-page-extensions/build-pre-auth-order-status-page-extensions',
+          type: 'blocks',
+        },
+        {
+          name: 'Localize extensions',
+          subtitle: 'Tutorial',
+          url: '/docs/apps/build/customer-accounts/localization/localize',
           type: 'blocks',
         },
       ],
@@ -326,8 +330,6 @@ Customer account UI extensions don't have access to the DOM and can't return DOM
         },
         {
           name: 'Tutorials',
-          // eslint-disable-next-line no-warning-comments
-          // TODO: update this section once tutorials are ready
           subtitle:
             'Learn how to build inline, full-page, or order action menu extensions in customer accounts.',
           url: '/docs/apps/customer-accounts',
