@@ -129,11 +129,21 @@
     "@remote-ui/async-subscription": "^2.1.16",
     "@shopify/generate-docs": "0.19.6",
     "typescript": "^4.9.0",
-    "@faker-js/faker": "^8.4.1"
+    "@faker-js/faker": "^8.4.1",
+    "preact": "^10.10.x",
+    "@preact/signals": "^2.3.x"
   },
-  "optionalDependencies": {
+  "peerDependencies": {
     "preact": "*",
     "@preact/signals": "*"
+  },
+  "peerDependenciesMeta": {
+    "preact": {
+      "optional": true
+    },
+    "@preact/signals": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public",
