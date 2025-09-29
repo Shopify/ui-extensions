@@ -47,6 +47,68 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Demonstrates a basic ChoiceList with single selection, showing how to create a group of radio button choices for product visibility options.',
+            codeblock: {
+              title: 'Basic usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates a ChoiceList with multiple selection enabled, allowing users to choose multiple checkout options with additional descriptive details for each choice.',
+            codeblock: {
+              title: 'Multiple selections',
+              tabs: [
+                {
+                  code: './examples/multiple-selections.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows how to display an error message in a ChoiceList when an invalid selection is made or a validation constraint is not met.',
+            codeblock: {
+              title: 'With error state',
+              tabs: [
+                {
+                  code: './examples/with-error-state.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Showcases a multiple-selection ChoiceList for shipping methods, with each option including detailed delivery timeframe information.',
+            codeblock: {
+              title: 'Shipping methods',
+              tabs: [
+                {
+                  code: './examples/shipping-methods.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

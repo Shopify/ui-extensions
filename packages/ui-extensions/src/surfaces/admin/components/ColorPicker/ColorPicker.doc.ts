@@ -36,6 +36,55 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Demonstrates a simple color picker with a pre-selected red color, showing the basic implementation without alpha transparency.',
+            codeblock: {
+              title: 'Basic usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates a color picker with alpha transparency enabled, allowing selection of colors with varying opacity levels.',
+            codeblock: {
+              title: 'With alpha transparency',
+              tabs: [
+                {
+                  code: './examples/with-alpha-transparency.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows how the color picker can be used within a form, demonstrating native form submission and interaction with a submit button.',
+            codeblock: {
+              title: 'Form integration',
+              tabs: [
+                {
+                  code: './examples/form-integration.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
