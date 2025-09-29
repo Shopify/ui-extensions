@@ -1,0 +1,26 @@
+<s-query-container id="text-container" containerName="text">
+  <s-box padding="base" border-color="border" border-width="thin">
+    <s-text class="responsiveText">
+      This text will adjust its size based on the container width using Polaris
+      design tokens
+    </s-text>
+  </s-box>
+</s-query-container>
+
+<style>
+  @container text (min-width: 300px) {
+    .responsiveText {
+      font-size: var(--p-font-size-75);
+    }
+  }
+  @container text (min-width: 600px) {
+    .responsiveText {
+      font-size: var(--p-font-size-100);
+    }
+  }
+  @container text (min-width: 900px) {
+    .responsiveText {
+      font-size: var(--p-font-size-200);
+    }
+  }
+</style>

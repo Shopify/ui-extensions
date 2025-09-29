@@ -1,0 +1,54 @@
+<s-grid gridTemplateColumns="300px 600px" gap="base">
+  <!-- Narrow container -->
+  <s-box borderWidth="base" borderColor="base" padding="base">
+    <s-text type="strong">Narrow (300px)</s-text>
+    <s-query-container id="narrow-container" containerName="productCard">
+      <s-box
+        padding="base"
+        borderWidth="base"
+        borderColor="subdued"
+        class="responsive-card"
+      >
+        <s-text type="strong">Product card</s-text>
+        <s-text>Stacked layout</s-text>
+        <s-text color="subdued">$29.99</s-text>
+      </s-box>
+    </s-query-container>
+  </s-box>
+
+  <!-- Wide container -->
+  <s-box borderWidth="base" borderColor="base" padding="base">
+    <s-text type="strong">Wide (600px)</s-text>
+    <s-query-container id="wide-container" containerName="productCard">
+      <s-box
+        padding="base"
+        borderWidth="base"
+        borderColor="subdued"
+        class="responsive-card"
+      >
+        <s-text type="strong">Product card</s-text>
+        <s-text>Horizontal layout</s-text>
+        <s-text color="subdued">$29.99</s-text>
+      </s-box>
+    </s-query-container>
+  </s-box>
+</s-grid>
+
+<style>
+  @container productCard (min-width: 400px) {
+    .responsive-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--p-space-base);
+    }
+  }
+  @container productCard (max-width: 399px) {
+    .responsive-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--p-space-small);
+    }
+  }
+</style>

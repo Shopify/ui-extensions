@@ -41,6 +41,68 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Demonstrates a simple ordered list of steps for setting up an online store.',
+            codeblock: {
+              title: 'Basic usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows a comprehensive workflow for processing an order from review to customer communication.',
+            codeblock: {
+              title: 'Order processing steps',
+              tabs: [
+                {
+                  code: './examples/order-processing-steps.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates a nested ordered list demonstrating the detailed process of creating and publishing a product online.',
+            codeblock: {
+              title: 'Product setup instructions',
+              tabs: [
+                {
+                  code: './examples/product-setup-instructions.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Displays a complex nested list showing the detailed steps of payment processing and shipment preparation.',
+            codeblock: {
+              title: 'Fulfillment process',
+              tabs: [
+                {
+                  code: './examples/fulfillment-process.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

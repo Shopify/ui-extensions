@@ -1,0 +1,30 @@
+<s-query-container id="layout-container" containerName="layout">
+  <s-box class="layoutWrapper">
+    <s-box padding="base" background-color="subdued">
+      <s-text>Item 1</s-text>
+    </s-box>
+    <s-box padding="base" background-color="subdued">
+      <s-text>Item 2</s-text>
+    </s-box>
+    <s-box padding="base" background-color="subdued">
+      <s-text>Item 3</s-text>
+    </s-box>
+  </s-box>
+</s-query-container>
+
+<style>
+  @container layout (min-width: 600px) {
+    .layoutWrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--p-space-base);
+    }
+  }
+  @container layout (min-width: 900px) {
+    .layoutWrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--p-space-base);
+    }
+  }
+</style>

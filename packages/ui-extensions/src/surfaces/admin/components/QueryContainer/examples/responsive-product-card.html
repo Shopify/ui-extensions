@@ -1,0 +1,25 @@
+<s-query-container id="product-card" containerName="productCard">
+  <s-box
+    padding="base"
+    border-color="border-subdued"
+    border-width="thin"
+    class="productCard"
+  >
+    <s-box>
+      <s-text color="subdued">Product image</s-text>
+    </s-box>
+    <s-box>
+      <s-heading>Product name</s-heading>
+      <s-text color="subdued">$29.99</s-text>
+    </s-box>
+  </s-box>
+</s-query-container>
+
+<style>
+  @container productCard (min-width: 300px) {
+    .productCard {
+      display: flex;
+      gap: var(--p-space-base);
+    }
+  }
+</style>

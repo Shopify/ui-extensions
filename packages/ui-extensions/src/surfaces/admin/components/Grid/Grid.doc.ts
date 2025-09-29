@@ -62,6 +62,81 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Simple 12-column grid system with equal-width left and right columns.',
+            codeblock: {
+              title: 'Basic two-column layout',
+              tabs: [
+                {
+                  code: './examples/basic-two-column-layout.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Admin interface layout with full-width header, main content area, and sidebar.',
+            codeblock: {
+              title: 'Dashboard layout',
+              tabs: [
+                {
+                  code: './examples/dashboard-layout.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Flexible form grid accommodating full-width, half-width, and third-width field arrangements.',
+            codeblock: {
+              title: 'Form layout with responsive spans',
+              tabs: [
+                {
+                  code: './examples/form-layout-with-responsive-spans.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Adaptive grid that automatically adjusts column count based on screen size.',
+            codeblock: {
+              title: 'Mobile-first responsive grid',
+              tabs: [
+                {
+                  code: './examples/mobile-first-responsive-grid.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              "Demonstrates a sophisticated admin page layout with a header, main content area, actions panel, and a full-width section, showcasing the Grid component's flexibility in creating multi-column, multi-row interfaces.",
+            codeblock: {
+              title: 'Complex admin layout',
+              tabs: [
+                {
+                  code: './examples/complex-admin-layout.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
