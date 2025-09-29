@@ -26,7 +26,7 @@ export function useApi<
 
   if (!api) {
     throw new CheckoutUIExtensionError(
-      'You can only call this hook when running as a checkout UI extension on at least API version 2025-07.',
+      'You can only call this hook when running as a checkout UI extension on at least API version 2025-10.',
     );
   }
   return api;

@@ -9,6 +9,8 @@ export {default as ChoiceList} from './ChoiceList';
 export {default as Clickable} from './Clickable';
 export {default as ClickableChip} from './ClickableChip';
 export {default as ClipboardItem} from './ClipboardItem';
+export {default as ConsentCheckbox} from './ConsentCheckbox';
+export {default as ConsentPhoneField} from './ConsentPhoneField';
 export {default as DateField} from './DateField';
 export {default as DatePicker} from './DatePicker';
 export {default as Details} from './Details';

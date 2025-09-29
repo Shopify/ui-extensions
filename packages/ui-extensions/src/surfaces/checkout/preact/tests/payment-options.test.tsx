@@ -1,17 +1,25 @@
 import type {
   PaymentOption,
   SelectedPaymentOption,
-} from '@shopify/ui-extensions/checkout';
+} from '../../api/standard/standard';
 
 import {
   useAvailablePaymentOptions,
   useSelectedPaymentOptions,
 } from '../payment-options';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
-import type {PartialExtensionApi} from './mount';
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
 
-describe.skip('Payment Methods API hooks', () => {
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
+
+describe('Payment Methods API hooks', () => {
+  afterEach(tearDownGlobalShopifyMock);
   describe('useAvailablePaymentOptions', () => {
     it('returns the available payment methods', async () => {
       const paymentOptions: PaymentOption[] = [
@@ -19,14 +27,12 @@ describe.skip('Payment Methods API hooks', () => {
         {handle: 'direct', type: 'creditCard'},
       ];
 
-      const extensionApi: PartialExtensionApi = {
+      setupGlobalShopifyMock({
         availablePaymentOptions:
-          createMockStatefulRemoteSubscribable(paymentOptions),
-      };
-
-      const {value} = mount.hook(() => useAvailablePaymentOptions(), {
-        extensionApi,
+          createMockSubscribableSignalLike(paymentOptions),
       });
+
+      const {value} = mount.hook(() => useAvailablePaymentOptions());
 
       expect(value).toBe(paymentOptions);
     });
@@ -47,18 +53,16 @@ describe.skip('Payment Methods API hooks', () => {
         {handle: 'bogus', type: 'other'},
       ];
 
-      const extensionApi: PartialExtensionApi = {
-        availablePaymentOptions: createMockStatefulRemoteSubscribable(
+      setupGlobalShopifyMock({
+        availablePaymentOptions: createMockSubscribableSignalLike(
           availablePaymentOptions,
         ),
-        selectedPaymentOptions: createMockStatefulRemoteSubscribable(
+        selectedPaymentOptions: createMockSubscribableSignalLike(
           selectedPaymentOptionHandles,
         ),
-      };
-
-      const {value} = mount.hook(() => useSelectedPaymentOptions(), {
-        extensionApi,
       });
+
+      const {value} = mount.hook(() => useSelectedPaymentOptions());
 
       expect(value).toStrictEqual(selectedPaymentOptions);
     });
@@ -79,18 +83,16 @@ describe.skip('Payment Methods API hooks', () => {
         {handle: 'direct', type: 'creditCard'},
       ];
 
-      const extensionApi: PartialExtensionApi = {
-        availablePaymentOptions: createMockStatefulRemoteSubscribable(
+      setupGlobalShopifyMock({
+        availablePaymentOptions: createMockSubscribableSignalLike(
           availablePaymentOptions,
         ),
-        selectedPaymentOptions: createMockStatefulRemoteSubscribable(
+        selectedPaymentOptions: createMockSubscribableSignalLike(
           selectedPaymentOptionHandles,
         ),
-      };
-
-      const {value} = mount.hook(() => useSelectedPaymentOptions(), {
-        extensionApi,
       });
+
+      const {value} = mount.hook(() => useSelectedPaymentOptions());
 
       expect(value).toStrictEqual(selectedPaymentOptions);
     });

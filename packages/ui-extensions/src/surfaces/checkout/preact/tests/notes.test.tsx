@@ -1,15 +1,25 @@
 import {useNote} from '../note';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('useNote', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+describe('useNote', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns the current order note', async () => {
     const note = 'the note';
-    const extensionApi = {
-      note: createMockStatefulRemoteSubscribable(note),
-    };
+    setupGlobalShopifyMock({
+      note: createMockSubscribableSignalLike(note),
+    });
 
-    const {value} = mount.hook(() => useNote(), {extensionApi});
+    const {value} = mount.hook(() => useNote());
 
     expect(value).toBe(note);
   });

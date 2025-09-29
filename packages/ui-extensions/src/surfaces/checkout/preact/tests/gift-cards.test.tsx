@@ -1,11 +1,20 @@
-import type {AppliedGiftCard} from '@shopify/ui-extensions/checkout';
+import type {AppliedGiftCard} from '../../api/standard/standard';
 
 import {useAppliedGiftCards} from '../gift-cards';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
-import type {PartialExtensionApi} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('Gift cards API hooks', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+describe('Gift cards API hooks', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   describe('useAppliedGiftCards', () => {
     it('returns the current gift cards', async () => {
       const giftCards: AppliedGiftCard[] = [
@@ -21,11 +30,11 @@ describe.skip('Gift cards API hooks', () => {
         },
       ];
 
-      const extensionApi: PartialExtensionApi = {
-        appliedGiftCards: createMockStatefulRemoteSubscribable(giftCards),
-      };
+      setupGlobalShopifyMock({
+        appliedGiftCards: createMockSubscribableSignalLike(giftCards),
+      });
 
-      const {value} = mount.hook(() => useAppliedGiftCards(), {extensionApi});
+      const {value} = mount.hook(() => useAppliedGiftCards());
 
       expect(value).toBe(giftCards);
     });

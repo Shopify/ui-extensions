@@ -1,30 +1,39 @@
-/* eslint-disable jest/no-disabled-tests */
 import {useApi} from '../api';
 
-import {mount} from './mount';
+import {
+  mount,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
 
-describe.skip('useApi', () => {
+describe('useApi', () => {
+  beforeEach(() => {
+    setupGlobalShopifyMock({});
+  });
+
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns api', async () => {
-    const extensionApi = {
-      extension: {target: 'purchase.checkout.block.render' as const},
-    };
-    const {value} = mount.hook(
-      () => useApi<'purchase.checkout.block.render'>(),
-      {
-        extensionApi,
-      },
+    const {value} = mount.hook(() =>
+      useApi<'purchase.checkout.block.render'>(),
     );
 
-    expect(value).toMatchObject(extensionApi);
+    expect(value).toMatchObject({
+      extension: {target: 'purchase.checkout.block.render'},
+    });
   });
 
   it('throws when not run inside a checkout UI extension', async () => {
+    tearDownGlobalShopifyMock();
+
     const runner = async () => {
       return mount.hook(() => useApi());
     };
 
     await expect(runner).rejects.toThrow(
-      'You can only call this hook when running as a checkout UI extension.',
+      expect.objectContaining({
+        name: 'CheckoutUIExtensionError',
+      }),
     );
   });
 });

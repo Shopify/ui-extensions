@@ -1,14 +1,20 @@
-import type {
-  DeliveryGroup,
-  ShippingOption,
-} from '@shopify/ui-extensions/checkout';
+import type {DeliveryGroup, ShippingOption} from '../../api/standard/standard';
 
 import {useDeliveryGroups} from '../delivery-groups';
 
-import type {PartialExtensionApi} from './mount';
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('Delivery Groups API hooks', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+describe('Delivery Groups API hooks', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   describe('useDeliveryGroups', () => {
     it('returns the current devliery groups', async () => {
       const deliveryGroups: DeliveryGroup[] = [
@@ -51,11 +57,11 @@ describe.skip('Delivery Groups API hooks', () => {
         },
       ];
 
-      const extensionApi: PartialExtensionApi = {
-        deliveryGroups: createMockStatefulRemoteSubscribable(deliveryGroups),
-      };
+      setupGlobalShopifyMock({
+        deliveryGroups: createMockSubscribableSignalLike(deliveryGroups),
+      });
 
-      const {value} = mount.hook(() => useDeliveryGroups(), {extensionApi});
+      const {value} = mount.hook(() => useDeliveryGroups());
 
       expect(value).toBe(deliveryGroups);
     });

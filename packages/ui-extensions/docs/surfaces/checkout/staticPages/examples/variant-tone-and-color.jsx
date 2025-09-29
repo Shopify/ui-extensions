@@ -4,3 +4,4 @@
 <s-badge tone="success" color="strong">
   Success Strong Badge
 </s-badge>
+

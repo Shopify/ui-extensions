@@ -1,4 +1,3 @@
-import {ExtensionHasNoMethodError} from '../../errors';
 import {
   useBuyerJourney,
   useBuyerJourneyActiveStep,
@@ -7,30 +6,43 @@ import {
   useBuyerJourneySteps,
 } from '../buyer-journey';
 
-import {createMockStatefulRemoteSubscribable, mount} from './mount';
+import {
+  createMockSubscribableSignalLike,
+  mount,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+  createMockExtension,
+} from './mount';
 
-describe.skip('buyerJourney Hooks', () => {
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
+
+describe('buyerJourney Hooks', () => {
   beforeEach(() => {
     jest.spyOn(console, 'error').mockImplementation(() => {});
   });
 
   afterEach(() => {
+    tearDownGlobalShopifyMock();
     // eslint-disable-next-line no-console
     jest.mocked(console.error).mockRestore();
   });
 
   describe('useBuyerJourneySteps()', () => {
     it('raises an exception when buyerJourney api is not available', () => {
+      const target = 'purchase.checkout.header.render-after' as const;
+      setupGlobalShopifyMock<typeof target>({
+        buyerJourney: undefined,
+        extension: createMockExtension(target),
+      });
+
       expect(() => {
-        mount.hook(() => useBuyerJourneySteps(), {
-          extensionApi: {
-            buyerJourney: undefined,
-            extension: {
-              target: 'purchase.checkout.header.render-after',
-            },
-          },
-        });
-      }).toThrow(ExtensionHasNoMethodError);
+        mount.hook(() => useBuyerJourneySteps());
+      }).toThrow(
+        expect.objectContaining({
+          name: 'ExtensionHasNoMethodError',
+        }),
+      );
     });
 
     it('returns the list of steps from the buyerJourney.steps subscribable', () => {
@@ -55,16 +67,13 @@ describe.skip('buyerJourney Hooks', () => {
         },
       ];
 
-      const hook = mount.hook(() => useBuyerJourneySteps(), {
-        extensionApi: {
-          buyerJourney: {
-            steps: createMockStatefulRemoteSubscribable(steps),
-          },
-          extension: {
-            target: 'purchase.checkout.header.render-after',
-          },
+      setupGlobalShopifyMock({
+        buyerJourney: {
+          steps: createMockSubscribableSignalLike(steps),
         },
       });
+
+      const hook = mount.hook(() => useBuyerJourneySteps());
 
       expect(hook.current).toStrictEqual(steps);
     });
@@ -72,16 +81,19 @@ describe.skip('buyerJourney Hooks', () => {
 
   describe('useBuyerJourneyActiveStep()', () => {
     it('raises an exception when buyerJourney api is not available', () => {
+      const target = 'purchase.checkout.header.render-after' as const;
+      setupGlobalShopifyMock<typeof target>({
+        buyerJourney: undefined,
+        extension: createMockExtension(target),
+      });
+
       expect(() => {
-        mount.hook(() => useBuyerJourneyActiveStep(), {
-          extensionApi: {
-            buyerJourney: undefined,
-            extension: {
-              target: 'purchase.checkout.header.render-after',
-            },
-          },
-        });
-      }).toThrow(ExtensionHasNoMethodError);
+        mount.hook(() => useBuyerJourneyActiveStep());
+      }).toThrow(
+        expect.objectContaining({
+          name: 'ExtensionHasNoMethodError',
+        }),
+      );
     });
 
     it('returns the step that matches the activeStep.handle', () => {
@@ -107,19 +119,16 @@ describe.skip('buyerJourney Hooks', () => {
         },
       ];
 
-      const hook = mount.hook(() => useBuyerJourneyActiveStep(), {
-        extensionApi: {
-          buyerJourney: {
-            steps: createMockStatefulRemoteSubscribable(steps),
-            activeStep: createMockStatefulRemoteSubscribable({
-              handle: activeStepHandle,
-            }),
-          },
-          extension: {
-            target: 'purchase.checkout.header.render-after',
-          },
+      setupGlobalShopifyMock({
+        buyerJourney: {
+          steps: createMockSubscribableSignalLike(steps),
+          activeStep: createMockSubscribableSignalLike({
+            handle: activeStepHandle,
+          }),
         },
       });
+
+      const hook = mount.hook(() => useBuyerJourneyActiveStep());
 
       expect(hook.current).toStrictEqual(steps[0]);
     });
@@ -132,19 +141,16 @@ describe.skip('buyerJourney Hooks', () => {
         to: 'shopify:checkout/information',
       };
 
-      const hook = mount.hook(() => useBuyerJourneyActiveStep(), {
-        extensionApi: {
-          buyerJourney: {
-            steps: createMockStatefulRemoteSubscribable([step]),
-            activeStep: createMockStatefulRemoteSubscribable({
-              handle: 'payment',
-            }),
-          },
-          extension: {
-            target: 'purchase.checkout.header.render-after',
-          },
+      setupGlobalShopifyMock({
+        buyerJourney: {
+          steps: createMockSubscribableSignalLike([step]),
+          activeStep: createMockSubscribableSignalLike({
+            handle: 'payment' as const,
+          }),
         },
       });
+
+      const hook = mount.hook(() => useBuyerJourneyActiveStep());
 
       expect(hook.current).toBeUndefined();
     });
@@ -152,14 +158,11 @@ describe.skip('buyerJourney Hooks', () => {
 
   describe('useBuyerJourney()', () => {
     it('returns the buyer journey when the api is available', () => {
-      const hook = mount.hook(() => useBuyerJourney(), {
-        extensionApi: {
-          buyerJourney: {},
-          extension: {
-            target: 'purchase.checkout.header.render-after',
-          },
-        },
+      setupGlobalShopifyMock({
+        buyerJourney: {},
       });
+
+      const hook = mount.hook(() => useBuyerJourney());
 
       expect(hook.current).toStrictEqual({});
     });
@@ -169,16 +172,13 @@ describe.skip('buyerJourney Hooks', () => {
     it.each([true, false])(
       'returns the buyer journey completed value: %s',
       (completed) => {
-        const hook = mount.hook(() => useBuyerJourneyCompleted(), {
-          extensionApi: {
-            buyerJourney: {
-              completed: createMockStatefulRemoteSubscribable(completed),
-            },
-            extension: {
-              target: 'purchase.checkout.header.render-after',
-            },
+        setupGlobalShopifyMock({
+          buyerJourney: {
+            completed: createMockSubscribableSignalLike(completed),
           },
         });
+
+        const hook = mount.hook(() => useBuyerJourneyCompleted());
 
         expect(hook.current).toStrictEqual(completed);
       },
@@ -191,16 +191,13 @@ describe.skip('buyerJourney Hooks', () => {
         Promise.resolve({behavior: 'allow'} as const),
       );
 
-      mount.hook(() => useBuyerJourneyIntercept(mockIntercept), {
-        extensionApi: {
-          buyerJourney: {
-            intercept: (cb: () => void) => cb(),
-          },
-          extension: {
-            target: 'purchase.checkout.header.render-after',
-          },
+      setupGlobalShopifyMock({
+        buyerJourney: {
+          intercept: (cb: () => void) => cb(),
         },
       });
+
+      mount.hook(() => useBuyerJourneyIntercept(mockIntercept));
 
       expect(mockIntercept).toHaveBeenCalled();
     });

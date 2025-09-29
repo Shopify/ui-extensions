@@ -1,10 +1,20 @@
-import type {CustomerPrivacy} from '@shopify/ui-extensions/checkout';
+import type {CustomerPrivacy} from '../../api/standard/standard';
 
 import {useCustomerPrivacy} from '../customer-privacy';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('useCustomerPrivacy', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+describe('useCustomerPrivacy', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns customer privacy settings and data from the API', () => {
     const customerPrivacyValue: CustomerPrivacy = {
       allowedProcessing: {
@@ -26,12 +36,11 @@ describe.skip('useCustomerPrivacy', () => {
       },
     };
 
-    const extensionApi = {
-      customerPrivacy:
-        createMockStatefulRemoteSubscribable(customerPrivacyValue),
-    };
+    setupGlobalShopifyMock({
+      customerPrivacy: createMockSubscribableSignalLike(customerPrivacyValue),
+    });
 
-    const {value} = mount.hook(() => useCustomerPrivacy(), {extensionApi});
+    const {value} = mount.hook(() => useCustomerPrivacy());
 
     expect(value).toMatchObject(customerPrivacyValue);
   });

@@ -1,19 +1,24 @@
+import type {I18nTranslate} from '../../api/standard/standard';
 import {useTranslate} from '../translate';
 
-import {mount} from './mount';
+import {
+  mount,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
 
-describe.skip('useTranslate', () => {
+describe('useTranslate', () => {
+  afterEach(tearDownGlobalShopifyMock);
   it('returns string translation', async () => {
     const simpleTranslation = 'This is a simple string translation';
-    const translateInSandbox = jest.fn(() => simpleTranslation);
 
-    const extensionApi = {
+    setupGlobalShopifyMock({
       i18n: {
-        translate: translateInSandbox,
+        translate: (() => simpleTranslation) as I18nTranslate,
       },
-    };
+    });
 
-    const {value} = mount.hook(() => useTranslate(), {extensionApi});
+    const {value} = mount.hook(() => useTranslate());
     const translate = value;
 
     expect(translate('exampleKey')).toStrictEqual(simpleTranslation);
@@ -32,13 +37,13 @@ describe.skip('useTranslate', () => {
     ];
     const translateInSandbox = jest.fn(() => simpleTranslation);
 
-    const extensionApi = {
+    setupGlobalShopifyMock({
       i18n: {
         translate: translateInSandbox,
       },
-    };
+    });
 
-    const {value} = mount.hook(() => useTranslate(), {extensionApi});
+    const {value} = mount.hook(() => useTranslate());
     const translate = value;
 
     // Expect that a the same array is returned, with any valid components wrapped in a React.Fragment
@@ -54,13 +59,13 @@ describe.skip('useTranslate', () => {
     const simpleTranslation = ['Hello, ', undefined, ' .'];
     const translateInSandbox = jest.fn(() => simpleTranslation);
 
-    const extensionApi = {
+    setupGlobalShopifyMock({
       i18n: {
         translate: translateInSandbox,
       },
-    };
+    });
 
-    const {value} = mount.hook(() => useTranslate(), {extensionApi});
+    const {value} = mount.hook(() => useTranslate());
     const translate = value;
 
     expect(translate('exampleKey')).toStrictEqual(simpleTranslation);

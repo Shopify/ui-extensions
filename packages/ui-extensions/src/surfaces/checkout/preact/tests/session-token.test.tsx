@@ -1,18 +1,24 @@
 import {useSessionToken} from '../session-token';
 
-import {mount} from './mount';
+import {
+  mount,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
 
-describe.skip('useSessionToken', () => {
+describe('useSessionToken', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns sessionToken from the api', () => {
     const mockGetSessionToken = {
       get: jest.fn(),
     };
 
-    const {value} = mount.hook(() => useSessionToken(), {
-      extensionApi: {
-        sessionToken: mockGetSessionToken,
-      },
+    setupGlobalShopifyMock({
+      sessionToken: mockGetSessionToken as any,
     });
+
+    const {value} = mount.hook(() => useSessionToken());
 
     expect(value).toMatchObject(mockGetSessionToken);
   });

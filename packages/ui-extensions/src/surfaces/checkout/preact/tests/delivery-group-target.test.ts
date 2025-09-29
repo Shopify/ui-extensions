@@ -1,15 +1,21 @@
-import type {
-  DeliveryGroup,
-  ExtensionTarget,
-  ShippingOption,
-} from '@shopify/ui-extensions/checkout';
-
+import type {DeliveryGroup, ShippingOption} from '../../api/standard/standard';
 // eslint-disable-next-line import-x/no-deprecated
 import {useDeliveryGroupTarget} from '../delivery-group-target';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('useDeliveryGroupTarget', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+  createMockExtension,
+} from './mount';
+
+describe('useDeliveryGroupTarget', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns the DeliveryGroup target if it exists', async () => {
     const deliveryGroup: DeliveryGroup = {
       selectedDeliveryOption: {
@@ -58,19 +64,19 @@ describe.skip('useDeliveryGroupTarget', () => {
       ],
     };
 
-    const target: ExtensionTarget =
-      'purchase.checkout.shipping-option-list.render-before';
+    const target =
+      'purchase.checkout.shipping-option-list.render-before' as const;
+
+    setupGlobalShopifyMock<typeof target>({
+      extension: createMockExtension(target),
+      target: createMockSubscribableSignalLike({
+        groupType: 'oneTimePurchase',
+        deliveryGroups: [deliveryGroup, deliveryGroup2],
+      }),
+    });
 
     // eslint-disable-next-line import-x/no-deprecated
-    const {value} = mount.hook(() => useDeliveryGroupTarget(), {
-      extensionApi: {
-        extension: {target},
-        target: createMockStatefulRemoteSubscribable({
-          groupType: 'oneTimePurchase',
-          deliveryGroups: [deliveryGroup, deliveryGroup2],
-        }) as any,
-      },
-    });
+    const {value} = mount.hook(() => useDeliveryGroupTarget());
 
     expect(value).toStrictEqual(deliveryGroup);
   });
