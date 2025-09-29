@@ -1,7 +1,8 @@
 <s-scroll-box>
-  <s-choice-list multiple>
-    {data.map((item) => (
-      <s-choice value={item.value}>{item.label}</s-choice>
-    ))}
+  <s-choice-list>
+    <s-choice value="true-twin">True Twin board</s-choice>
+    <s-choice value="directional">Directional board</s-choice>
+    <s-choice value="volume">Volume shifted board</s-choice>
+    <s-choice value="asymmetrical">Asymmetrical board</s-choice>
   </s-choice-list>
 </s-scroll-box>
