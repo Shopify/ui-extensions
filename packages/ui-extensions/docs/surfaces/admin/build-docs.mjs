@@ -132,6 +132,16 @@ const templates = {
   none: createTemplate({
     layoutStyles: 'padding: 0;',
   }),
+  padding: createTemplate({
+    layoutStyles: 'padding: 0;',
+    wrapperElement: 's-box',
+    wrapperAttributes: 'padding="base"',
+  }),
+  example: createTemplate({
+    layoutStyles: 'display: grid; place-items: center; gap: 0.5rem;',
+    wrapperElement: 's-box',
+    wrapperAttributes: 'padding="base"',
+  }),
 };
 
 const transformJson = async (filePath, isExtensions) => {
@@ -183,6 +193,29 @@ const transformJson = async (filePath, isExtensions) => {
       });
 
       entry.defaultExample.codeblock.tabs = newTabs;
+    }
+
+    if (entry.examples && entry.examples.exampleGroups) {
+      entry.examples.exampleGroups.forEach((exampleGroup) => {
+        exampleGroup.examples.forEach((example) => {
+          if (example.codeblock?.tabs) {
+            example.codeblock.tabs.forEach((tab) => {
+              const previewHTML =
+                tab.layout && tab.layout in templates
+                  ? templates[tab.layout](tab.code, tab.customStyles)
+                  : templates.example(tab.code, tab.customStyles);
+              const newTabs = [];
+
+              newTabs.push(
+                {code: tab.code, language: 'html'},
+                {code: previewHTML, language: 'preview'},
+              );
+
+              example.codeblock.tabs = newTabs;
+            });
+          }
+        });
+      });
     }
   });
 
@@ -293,7 +326,11 @@ try {
   await fs.rm(tempComponentDefs);
 } catch (error) {
   console.error(error);
-  console.log(error.stdout.toString());
-  console.log(error.stderr.toString());
+  if (error.stdout) {
+    console.log(error.stdout.toString());
+  }
+  if (error.stderr) {
+    console.log(error.stderr.toString());
+  }
   process.exit(1);
 }
