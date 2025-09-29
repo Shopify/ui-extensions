@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.46
+
+### Patch Changes
+
+- [#3400](https://github.com/Shopify/ui-extensions/pull/3400) [`c072113219fa9c28fe62b1adaff0375f952e55b5`](https://github.com/Shopify/ui-extensions/commit/c072113219fa9c28fe62b1adaff0375f952e55b5) Thanks [@vividviolet](https://github.com/vividviolet)! - Make preact and @preact/signals optional peer dependencies
+
 ## 2025.10.0-rc.45
 
 ### Patch Changes
