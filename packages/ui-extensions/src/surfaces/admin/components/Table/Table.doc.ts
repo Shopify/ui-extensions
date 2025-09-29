@@ -105,6 +105,81 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'component',
     },
   ],
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Tables are full-width by default to utilize all available space for displaying data.',
+            codeblock: {
+              title: 'Basic Usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Demonstrates a table with pagination controls, showing how to add previous and next page functionality to handle large datasets.',
+            codeblock: {
+              title: 'With Pagination',
+              tabs: [
+                {
+                  code: './examples/with-pagination.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              "Showcases the table's loading state, which can be used to indicate that data is being fetched or processed.",
+            codeblock: {
+              title: 'With Loading State',
+              tabs: [
+                {
+                  code: './examples/with-loading-state.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'A comprehensive example showing a full-width table with multiple columns for product management. Tables automatically expand to fill their container width.',
+            codeblock: {
+              title: 'Full-Width Product Inventory Table',
+              tabs: [
+                {
+                  code: './examples/full-width-product-inventory-table.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'A comprehensive example demonstrating different list slot types for various header and cell configurations, showing how to use kicker, primary, secondary, inline, and labeled slots.',
+            codeblock: {
+              title: 'Advanced Table with All List Slot Types',
+              tabs: [
+                {
+                  code: './examples/advanced-table-with-all-list-slot-types.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

@@ -1,0 +1,5 @@
+<s-stack direction="inline" justifyContent="space-between" alignItems="center">
+  <s-text>Left aligned</s-text>
+  <s-text>Centered text</s-text>
+  <s-text>Right aligned</s-text>
+</s-stack>

@@ -41,6 +41,29 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'A standard unordered list presenting a sequential setup process for an online store, using consistent list styling.',
+            codeblock: {
+              title: 'Store setup checklist',
+              tabs: [
+                {
+                  code: './examples/store-setup-checklist.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

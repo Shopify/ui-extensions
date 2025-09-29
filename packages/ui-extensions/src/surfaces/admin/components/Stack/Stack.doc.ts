@@ -57,6 +57,81 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Default vertical stacking layout with consistent spacing between text elements.',
+            codeblock: {
+              title: 'Basic block stack (vertical)',
+              tabs: [
+                {
+                  code: './examples/basic-block-stack-vertical.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Horizontal layout for arranging badges or similar elements side by side.',
+            codeblock: {
+              title: 'Inline stack (horizontal)',
+              tabs: [
+                {
+                  code: './examples/inline-stack-horizontal.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Advanced responsive layout that changes direction and spacing based on container size.',
+            codeblock: {
+              title: 'Responsive stack with container queries',
+              tabs: [
+                {
+                  code: './examples/responsive-stack-with-container-queries.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Horizontal stack with space-between justification and center alignment for balanced layouts.',
+            codeblock: {
+              title: 'Custom alignment',
+              tabs: [
+                {
+                  code: './examples/custom-alignment.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Stack with custom gap values and separate row/column gap controls for precise spacing.',
+            codeblock: {
+              title: 'Custom spacing',
+              tabs: [
+                {
+                  code: './examples/custom-spacing.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

@@ -53,6 +53,68 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Demonstrates a level 1 section that creates an elevated container with a heading and multiple form fields for collecting customer information. This example shows how sections provide visual hierarchy and structure for input elements.',
+            codeblock: {
+              title: 'Top-Level Section with Form Elements',
+              tabs: [
+                {
+                  code: './examples/top-level-section-with-form-elements.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates how sections can be nested to create a hierarchical layout, with each nested section automatically adjusting its visual style. This example shows an order details section containing customer and billing information, demonstrating the automatic visual leveling of nested sections.',
+            codeblock: {
+              title: 'Nested Sections with Visual Level Differences',
+              tabs: [
+                {
+                  code: './examples/nested-sections-with-visual-level-differences.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows how to add an accessibility label to a section, providing an additional hidden heading for screen readers while maintaining a visible heading. This example demonstrates a payment summary section with both a visible heading and an accessibility-focused label.',
+            codeblock: {
+              title: 'Section with Accessibility Label',
+              tabs: [
+                {
+                  code: './examples/section-with-accessibility-label.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Demonstrates using a section with `padding="none"` to create a full-width layout, ideal for displaying tables or other content that requires edge-to-edge rendering. This example shows a product table within a section without additional padding.',
+            codeblock: {
+              title: 'Full-width Content Layout',
+              tabs: [
+                {
+                  code: './examples/full-width-content-layout.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
