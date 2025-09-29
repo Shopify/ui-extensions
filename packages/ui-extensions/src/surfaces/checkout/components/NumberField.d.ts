@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {PasswordFieldProps$1} from './components-shared.d.ts';
+import type {NumberFieldProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -31,12 +31,17 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
     (event: CallbackEvent<TTagName, TEvent>): void;
 }) | null;
 
-declare const tagName = "s-password-field";
-export interface PasswordFieldElementProps extends Pick<PasswordFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
+declare const tagName = "s-number-field";
+export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete' | 'controls' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'icon' | 'id' | 'inputMode' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
+    /**
+     * @deprecated Use `label` instead.
+     * @private
+     */
+    placeholder?: string;
 }
-export interface PasswordFieldEvents extends Pick<PasswordFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
+export interface NumberFieldEvents extends Pick<NumberFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-export interface PasswordFieldElementEvents {
+export interface NumberFieldElementEvents {
     /**
      * Callback when the element loses focus.
      *
@@ -62,32 +67,32 @@ export interface PasswordFieldElementEvents {
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface PasswordFieldElementSlots {
+export interface NumberFieldElement extends NumberFieldElementProps, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+    onblur: NumberFieldEvents['onBlur'];
+    onchange: NumberFieldEvents['onChange'];
+    onfocus: NumberFieldEvents['onFocus'];
+    oninput: NumberFieldEvents['onInput'];
+}
+export interface NumberFieldElementSlots {
     /**
      * Additional content to be displayed in the field.
      * Commonly used to display an icon that activates a tooltip providing more information.
      */
     accessory?: HTMLElement;
 }
-export interface PasswordFieldElement extends PasswordFieldProps, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
-    onblur: PasswordFieldEvents['onBlur'];
-    onchange: PasswordFieldEvents['onChange'];
-    onfocus: PasswordFieldEvents['onFocus'];
-    oninput: PasswordFieldEvents['onInput'];
-}
-export interface PasswordFieldProps extends PasswordFieldElementProps, PasswordFieldEvents {
+export interface NumberFieldProps extends NumberFieldElementProps, NumberFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: PasswordFieldElement;
+        [tagName]: NumberFieldElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: PasswordFieldProps & BaseElementPropsWithChildren<PasswordFieldElement>;
+            [tagName]: NumberFieldProps & BaseElementPropsWithChildren<NumberFieldElement>;
         }
     }
 }
 
-export type { PasswordFieldElement, PasswordFieldElementEvents, PasswordFieldElementProps, PasswordFieldElementSlots, PasswordFieldEvents, PasswordFieldProps };
+export type { NumberFieldElement, NumberFieldElementEvents, NumberFieldElementProps, NumberFieldElementSlots, NumberFieldEvents, NumberFieldProps };
