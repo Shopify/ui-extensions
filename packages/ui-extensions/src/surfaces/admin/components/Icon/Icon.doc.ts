@@ -25,6 +25,120 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Standard icons for common merchant interface actions and navigation. Demonstrates rendering multiple icons in an inline stack, showing different types of icons used for navigation and actions.',
+            codeblock: {
+              title: 'Basic usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Icons with color-coded tones to convey status and semantic meaning.',
+            codeblock: {
+              title: 'With semantic tone',
+              tabs: [
+                {
+                  code: './examples/with-semantic-tone.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Compact icon sizing for space-constrained interfaces and inline usage. Shows how to render a small-sized icon that takes up minimal space while maintaining clarity.',
+            codeblock: {
+              title: 'Small size',
+              tabs: [
+                {
+                  code: './examples/small-size.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Lower contrast icon for secondary actions and supporting information.',
+            codeblock: {
+              title: 'Subdued color',
+              tabs: [
+                {
+                  code: './examples/subdued-color.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Icon with unique identifier for JavaScript targeting and styling. Demonstrates adding a specific ID to an icon, which can be used for JavaScript interactions, CSS styling, or accessibility purposes.',
+            codeblock: {
+              title: 'With id property',
+              tabs: [
+                {
+                  code: './examples/with-id-property.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Icon associated with interactive elements for enhanced accessibility context.',
+            codeblock: {
+              title: 'With interest relationship',
+              tabs: [
+                {
+                  code: './examples/with-interest-relationship.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              "Icons integrated within button components for clear action identification. Shows how icons can be added to buttons to visually reinforce the button's action, using both positive (add) and negative (delete) tones.",
+            codeblock: {
+              title: 'In button components',
+              tabs: [
+                {
+                  code: './examples/in-button-components.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Icons combined with badges to enhance status communication and visual hierarchy. Demonstrates using icons with badges to provide visual status indicators, using success and warning tones to convey different states.',
+            codeblock: {
+              title: 'In badge components',
+              tabs: [
+                {
+                  code: './examples/in-badge-components.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
