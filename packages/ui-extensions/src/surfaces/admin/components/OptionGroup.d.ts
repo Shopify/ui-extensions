@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,14 +6,14 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {OptionGroupProps$1, ComponentChild} from './shared.d.ts';
+import type {ComponentChildren, OptionGroupProps$1} from './shared.d.ts';
 
 export interface OptionGroupProps
   extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -109,7 +109,9 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-option-group';
-export interface OptionGroupJSXProps extends Partial<OptionGroupProps> {}
+export interface OptionGroupJSXProps
+  extends Partial<OptionGroupProps>,
+    Pick<OptionGroupProps$1, 'id'> {}
 
 export {OptionGroup};
 export type {OptionGroupJSXProps};

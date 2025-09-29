@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -10,7 +10,7 @@
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
  */
-export type ComponentChildren = any;
+export type ComponentChildren = preact.ComponentChildren;
 export type StringChildren = string;
 export interface GlobalProps {
   /**
@@ -169,7 +169,7 @@ export interface ExtendableEvent extends Event {
 interface AggregateError$1<T extends Error> extends Error {
   errors: T[];
 }
-export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
+export interface ArgregatedErrorEvent<T extends Error> extends ErrorEvent {
   error: AggregateError$1<T>;
 }
 export type SizeKeyword =
@@ -2100,7 +2100,7 @@ interface ColorPickerProps$1 extends GlobalProps, InputProps {
    * For RGB and RGBA, both the legacy syntax (comma-separated) and modern syntax (space-separate) are supported.
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb
    *
-   * If the value is invalid, the component will return an empty string ''.
+   * If the value is invalid, the component will select rgb(0, 0, 0).
    *
    * Note that the `onChange` handler will emit the value in hex.
    */
@@ -2407,19 +2407,12 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    */
   value?: string;
   /**
-   * Callback when any date is selected.
-   *
-   * - If `type="single"`, fires when a date is selected and happens before `onChange`.
-   * - If `type="multiple"`, fires when a date is selected before `onChange`.
-   * - If `type="range"`, fires when a first date is selected (with the partial value formatted as `YYYY-MM-DD--`), and when the last date is selected before `onChange`.
+   * Callback when any date is selected. Will fire before `onChange`.
    */
   onInput?: (event: Event) => void;
   /**
-   * Callback when the value is committed.
-   *
-   * - If `type="single"`, fires when a date is selected after `onInput`.
-   * - If `type="multiple"`, fires when a date is selected after `onInput`.
-   * - If `type="range"`, fires when a range is completed by selecting the end date after `onInput`.
+   * Callback when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
+   *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
    */
   onChange?: (event: Event) => void;
 }
@@ -2439,16 +2432,6 @@ interface DateFieldProps$1
       | 'onViewChange'
     >,
     AutocompleteProps<DateAutocompleteField> {
-  /**
-   * Callback when the user makes any changes in the field.
-   * Also triggered when a date is selected using the date picker popup before `onChange`.
-   */
-  onInput?: (event: Event) => void;
-  /**
-   * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
-   * Also triggered when a date is selected using the date picker popup after `onInput`.
-   */
-  onChange?: (event: Event) => void;
   /**
    * Callback when the field has an invalid date.
    * This callback will be called, if the date typed is invalid or disabled.
@@ -2579,7 +2562,7 @@ interface FunctionSettingsProps$1 extends GlobalProps, FormProps$1 {
    * highlight the fields that caused the errors, and display the error messages
    * to the user.
    */
-  onError?: (event: AggregateErrorEvent<FunctionSettingsError>) => void;
+  onError?: (event: ArgregatedErrorEvent<FunctionSettingsError>) => void;
 }
 export interface FunctionSettingsError extends Error {
   /**
@@ -4288,7 +4271,7 @@ export interface AvatarProps
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -4419,7 +4402,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$Z]: AvatarJSXProps & PreactBaseElementPropsWithChildren<Avatar>;
+      [tagName$Z]: AvatarJSXProps & PreactBaseElementProps<Avatar>;
     }
   }
 }
@@ -4483,7 +4466,12 @@ declare module 'preact' {
 declare const tagName$Y = 's-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
-    Pick<BadgeProps$1, 'id'> {}
+    Pick<BadgeProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Badge.
+   */
+  children?: ComponentChildren;
+}
 
 export type RequiredBannerProps = Required<BannerProps$1>;
 export interface BannerProps
@@ -4521,13 +4509,17 @@ declare module 'preact' {
 declare const tagName$X = 's-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
-    Pick<BannerProps$1, 'id'> {
+    Pick<BannerProps$1, 'id' | 'children'> {
   /**
-   * The secondary actions to display at the bottom of the banner.
-   *
-   * A maximum of two `s-button` components are allowed, and only buttons with the `variant` of "secondary" are permitted.
+   * The content of the Banner.
    */
-  secondaryActions?: ComponentChild;
+  children?: ComponentChildren;
+  /**
+   * The secondary actions to display at the bottom of the Banner.
+   *
+   * Only Buttons with the `variant` of "secondary" or "auto" are permitted. A maximum of two `s-button` components are allowed.
+   */
+  secondaryActions?: ComponentChildren;
   onDismiss?: ((event: CallbackEvent<typeof tagName$X>) => void) | null;
   onAfterHide?: ((event: CallbackEvent<typeof tagName$X>) => void) | null;
 }
@@ -4600,10 +4592,20 @@ export interface BoxProps
     | 'minInlineSize'
     | 'overflow'
   > {
+  /**
+   * Adjust the background of the component.
+   *
+   * @default 'transparent'
+   */
   background: Extract<
     RequiredBoxProps['background'],
     'transparent' | 'base' | 'subdued' | 'strong'
   >;
+  /**
+   * Adjust the width of the border.
+   *
+   * @default '' - meaning no override
+   */
   borderWidth:
     | MaybeAllValuesShorthandProperty<
         Extract<
@@ -4612,13 +4614,28 @@ export interface BoxProps
         >
       >
     | Extract<RequiredBoxProps['borderWidth'], ''>;
+  /**
+   * Adjust the style of the border.
+   *
+   * @default '' - meaning no override
+   */
   borderStyle:
     | MaybeAllValuesShorthandProperty<BoxBorderStyles>
     | Extract<RequiredBoxProps['borderStyle'], ''>;
+  /**
+   * Adjust the color of the border.
+   *
+   * @default '' - meaning no override
+   */
   borderColor: Extract<
     RequiredBoxProps['borderColor'],
     'subdued' | 'base' | 'strong' | ''
   >;
+  /**
+   * Adjust the radius of the border.
+   *
+   * @default 'none'
+   */
   borderRadius: MaybeAllValuesShorthandProperty<BoxBorderRadii>;
   /**
    * Adjust the padding of all edges.
@@ -4715,12 +4732,42 @@ export interface BoxProps
    * @default 'auto'
    */
   display: ResponsiveBoxProps['display'];
-  blockSize: SizeUnits | 'auto';
-  minBlockSize: SizeUnits | '0';
-  maxBlockSize: SizeUnits | 'none';
-  inlineSize: SizeUnits | 'auto';
-  minInlineSize: SizeUnits | '0';
-  maxInlineSize: SizeUnits | 'none';
+  /**
+   * Adjust the [block size](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
+   *
+   * @default 'auto'
+   */
+  blockSize: SizeUnitsOrAuto;
+  /**
+   * Adjust the [minimum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
+   *
+   * @default '0'
+   */
+  minBlockSize: SizeUnits;
+  /**
+   * Adjust the [maximum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
+   *
+   * @default 'none'
+   */
+  maxBlockSize: SizeUnitsOrNone;
+  /**
+   * Adjust the [inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
+   *
+   * @default 'auto'
+   */
+  inlineSize: SizeUnitsOrAuto;
+  /**
+   * Adjust the [minimum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
+   *
+   * @default '0'
+   */
+  minInlineSize: SizeUnits;
+  /**
+   * Adjust the [maximum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
+   *
+   * @default 'none'
+   */
+  maxInlineSize: SizeUnitsOrNone;
 }
 
 declare class BoxElement extends PreactCustomElement implements BoxProps {
@@ -4770,7 +4817,12 @@ declare module 'preact' {
 declare const tagName$W = 's-box';
 export interface BoxJSXProps
   extends Partial<BoxProps>,
-    Pick<BoxProps$1, 'id'> {}
+    Pick<BoxProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Box.
+   */
+  children?: ComponentChildren;
+}
 
 export type ButtonOnlyProps = Extract<
   ButtonProps$1,
@@ -4863,7 +4915,11 @@ declare module 'preact' {
 declare const tagName$V = 's-button';
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
-    Pick<ButtonProps$1, 'id'> {
+    Pick<ButtonProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Button.
+   */
+  children?: ComponentChildren;
   onClick?: ((event: CallbackEvent<typeof tagName$V>) => void) | null;
   onFocus?: ((event: CallbackEvent<typeof tagName$V>) => void) | null;
   onBlur?: ((event: CallbackEvent<typeof tagName$V>) => void) | null;
@@ -4888,7 +4944,10 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$U]: ButtonGroupJSXProps &
+      [tagName$U]: Omit<
+        ButtonGroupJSXProps,
+        'primaryAction' | 'secondaryActions'
+      > &
         PreactBaseElementPropsWithChildren<ButtonGroup>;
     }
   }
@@ -4897,18 +4956,22 @@ declare module 'preact' {
 declare const tagName$U = 's-button-group';
 export interface ButtonGroupJSXProps
   extends Partial<ButtonGroupProps>,
-    Pick<ButtonGroupProps$1, 'id'> {
+    Pick<ButtonGroupProps$1, 'id' | 'children'> {
+  /**
+   * The content of the ButtonGroup.
+   */
+  children?: ComponentChildren;
   /**
    * The primary action button for the group.
    * Accepts a single Button element with a `variant` of `primary`.
    * Cannot be used when gap="none".
    */
-  primaryAction?: ComponentChild;
+  primaryAction?: ComponentChildren;
   /**
    * Secondary action buttons for the group.
    * Accepts Button elements with a `variant` of `secondary` or `auto`.
    */
-  secondaryActions?: ComponentChild;
+  secondaryActions?: ComponentChildren;
 }
 
 declare const internals$4: unique symbol;
@@ -4989,8 +5052,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$T]: CheckboxJSXProps &
-        PreactBaseElementPropsWithChildren<Checkbox>;
+      [tagName$T]: CheckboxJSXProps & PreactBaseElementProps<Checkbox>;
     }
   }
 }
@@ -5032,13 +5094,17 @@ declare module 'preact' {
 declare const tagName$S = 's-chip';
 export interface ChipJSXProps
   extends Partial<ChipProps>,
-    Pick<ChipProps$2, 'id'> {
+    Pick<ChipProps$2, 'id' | 'children'> {
+  /**
+   * The content of the Chip.
+   */
+  children?: ComponentChildren;
   /**
    * The graphic to display in the chip.
    *
    * Only accepts `Icon` components.
    */
-  graphic?: ComponentChild;
+  graphic?: ComponentChildren;
 }
 
 export interface ChoiceProps
@@ -5051,16 +5117,7 @@ export interface ChoiceProps
       | 'accessibilityLabel'
       | 'value'
     >
-  > {
-  /**
-   * Content to use as the choice label.
-   *
-   * The label is produced by extracting and
-   * concatenating the text nodes from the provided content;
-   * any markup or element structure is ignored.
-   */
-  children: ComponentChildren;
-}
+  > {}
 
 declare class Choice extends PreactCustomElement implements ChoiceProps {
   accessor disabled: ChoiceProps['disabled'];
@@ -5083,7 +5140,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$R]: ChoiceJSXProps & PreactBaseElementPropsWithChildren<Choice>;
+      [tagName$R]: Omit<ChoiceJSXProps, 'details'> &
+        PreactBaseElementPropsWithChildren<Choice>;
     }
   }
 }
@@ -5091,8 +5149,15 @@ declare module 'preact' {
 declare const tagName$R = 's-choice';
 export interface ChoiceJSXProps
   extends Partial<ChoiceProps>,
-    Pick<ChoiceProps$1, 'id'> {
-  details?: ComponentChild;
+    Pick<ChoiceProps$1, 'id' | 'children' | 'details'> {
+  /**
+   * Content to use as the choice label.
+   *
+   * The label is produced by extracting and
+   * concatenating the text nodes from the provided content;
+   * any markup or element structure is ignored.
+   */
+  children?: ComponentChildren;
 }
 
 export interface ChoiceListProps
@@ -5152,7 +5217,13 @@ declare module 'preact' {
 declare const tagName$Q = 's-choice-list';
 export interface ChoiceListJSXProps
   extends Partial<ChoiceListProps>,
-    Pick<ChoiceListProps$1, 'id'> {
+    Pick<ChoiceListProps$1, 'id' | 'children'> {
+  /**
+   * The choices a user can select from.
+   *
+   * Accepts `Choice` components.
+   */
+  children?: ComponentChildren;
   onChange?: ((event: CallbackEvent<typeof tagName$Q>) => void) | null;
   onInput?: ((event: CallbackEvent<typeof tagName$Q>) => void) | null;
 }
@@ -5207,7 +5278,11 @@ declare module 'preact' {
 declare const tagName$P = 's-clickable';
 export interface ClickableJSXProps
   extends Partial<ClickableProps>,
-    Pick<ClickableProps$1, 'id'> {
+    Pick<ClickableProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Clickable.
+   */
+  children?: ComponentChildren;
   onClick?: ((event: CallbackEvent<typeof tagName$P>) => void) | null;
   onFocus?: ((event: CallbackEvent<typeof tagName$P>) => void) | null;
   onBlur?: ((event: CallbackEvent<typeof tagName$P>) => void) | null;
@@ -5259,13 +5334,17 @@ declare module 'preact' {
 declare const tagName$O = 's-clickable-chip';
 export interface ClickableChipJSXProps
   extends Partial<ClickableChipProps>,
-    Pick<ClickableChipProps$1, 'id'> {
+    Pick<ClickableChipProps$1, 'id' | 'children'> {
+  /**
+   * The content of the clickable chip.
+   */
+  children?: ComponentChildren;
   /**
    * The graphic to display in the clickable chip.
    *
    * Only accepts `Icon` components.
    */
-  graphic?: ComponentChild;
+  graphic?: ComponentChildren;
   onClick?: ((event: CallbackEvent<typeof tagName$O>) => void) | null;
   onRemove?: ((event: CallbackEvent<typeof tagName$O>) => void) | null;
   onAfterHide?: ((event: CallbackEvent<typeof tagName$O>) => void) | null;
@@ -5664,6 +5743,10 @@ declare const tagName$I = 's-drop-zone';
 export interface DropZoneJSXProps
   extends Partial<DropZoneProps>,
     Pick<DropZoneProps$1, 'id'> {
+  /**
+   * Content to include inside the DropZone container
+   */
+  children?: ComponentChildren;
   onChange?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
   onInput?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
   onDropRejected?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
@@ -5705,15 +5788,13 @@ export interface EmailFieldJSXProps
 export type RequiredAlignedProps = Required<GridProps$1>;
 export type ResponsiveGridProps = MakeResponsivePick<
   RequiredAlignedProps,
-  'rowGap' | 'columnGap' | 'gap'
+  'rowGap' | 'columnGap' | 'gap' | 'gridTemplateColumns' | 'gridTemplateRows'
 >;
 export interface GridProps
   extends BoxProps,
     Required<
       Pick<
         GridProps$1,
-        | 'gridTemplateColumns'
-        | 'gridTemplateRows'
         | 'alignItems'
         | 'justifyItems'
         | 'placeItems'
@@ -5722,11 +5803,45 @@ export interface GridProps
         | 'placeContent'
       >
     > {
+  /**
+   * Aligns the grid items along the block axis.
+   *
+   * @default '' - meaning no override
+   */
   alignItems: AlignItemsKeyword | '';
+  /**
+   * Aligns the grid items along the inline axis.
+   *
+   * @default '' - meaning no override
+   */
   justifyItems: JustifyItemsKeyword | '';
+  /**
+   * A shorthand property for `justify-items` and `align-items`.
+   *
+   * @default 'normal normal'
+   */
   placeItems: `${AlignItemsKeyword} ${JustifyItemsKeyword}` | AlignItemsKeyword;
+  /**
+   * Aligns the grid along the block axis.
+   *
+   * This overrides the block value of `placeContent`.
+   *
+   * @default '' - meaning no override
+   */
   alignContent: AlignContentKeyword | '';
+  /**
+   * Aligns the grid along the inline axis.
+   *
+   * This overrides the inline value of `placeContent`.
+   *
+   * @default '' - meaning no override
+   */
   justifyContent: JustifyContentKeyword | '';
+  /**
+   * A shorthand property for `justify-content` and `align-content`.
+   *
+   * @default 'normal normal'
+   */
   placeContent:
     | `${AlignContentKeyword} ${JustifyContentKeyword}`
     | AlignContentKeyword;
@@ -5763,6 +5878,24 @@ export interface GridProps
    * @default '' - meaning no override
    */
   columnGap: ResponsiveGridProps['columnGap'];
+  /**
+   * Define columns and specify their size.
+   * `gridTemplateColumns` either accepts:
+   * - [track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes) (e.g. `1fr auto`)
+   * - OR [responsive values](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported track sizing values as a query value.
+   *
+   * @default 'none'
+   */
+  gridTemplateColumns: ResponsiveGridProps['gridTemplateColumns'];
+  /**
+   * Define rows and specify their size.
+   * `gridTemplateRows` either accepts:
+   * - [track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes) (e.g. `1fr auto`)
+   * - OR [responsive values](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported track sizing values as a query value.
+   *
+   * @default 'none'
+   */
+  gridTemplateRows: ResponsiveGridProps['gridTemplateRows'];
 }
 
 declare class Grid extends BoxElement implements GridProps {
@@ -5795,7 +5928,12 @@ declare module 'preact' {
 declare const tagName$G = 's-grid';
 export interface GridJSXProps
   extends Partial<GridProps>,
-    Pick<GridProps$1, 'id'> {}
+    Pick<GridProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Grid.
+   */
+  children?: ComponentChildren;
+}
 
 export type RequiredGridItemProps = Required<GridItemProps$1>;
 export interface GridItemProps
@@ -5827,7 +5965,12 @@ declare module 'preact' {
 declare const tagName$F = 's-grid-item';
 export interface GridItemJSXProps
   extends Partial<GridItemProps>,
-    Pick<GridItemProps$1, 'id'> {}
+    Pick<GridItemProps$1, 'id' | 'children'> {
+  /**
+   * The content of the GridItem.
+   */
+  children?: ComponentChildren;
+}
 
 export type RequiredHeadingProps = Required<HeadingProps$1>;
 export interface HeadingProps
@@ -5863,7 +6006,12 @@ declare module 'preact' {
 declare const tagName$E = 's-heading';
 export interface HeadingJSXProps
   extends Partial<HeadingProps>,
-    Pick<HeadingProps$1, 'id'> {}
+    Pick<HeadingProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Heading.
+   */
+  children?: ComponentChildren;
+}
 
 declare class Icon extends PreactCustomElement implements IconProps {
   accessor color: IconProps['color'];
@@ -6003,7 +6151,11 @@ declare module 'preact' {
 declare const tagName$B = 's-link';
 export interface LinkJSXProps
   extends Partial<LinkProps>,
-    Pick<LinkProps$1, 'id' | 'lang'> {
+    Pick<LinkProps$1, 'id' | 'lang' | 'children'> {
+  /**
+   * The content of the Link.
+   */
+  children?: ComponentChildren;
   onClick?: ((event: CallbackEvent<typeof tagName$B>) => void) | null;
 }
 
@@ -6029,7 +6181,12 @@ declare module 'preact' {
 declare const tagName$A = 's-list-item';
 export interface ListItemJSXProps
   extends Partial<ListItemProps>,
-    Pick<ListItemProps$1, 'id'> {}
+    Pick<ListItemProps$1, 'id' | 'children'> {
+  /**
+   * The content of the ListItem.
+   */
+  children?: ComponentChildren;
+}
 
 export interface MenuProps
   extends Required<Pick<MenuProps$1, 'id' | 'accessibilityLabel'>> {}
@@ -6096,13 +6253,13 @@ declare module 'preact' {
 declare const tagName$z = 's-menu';
 export interface MenuJSXProps
   extends Partial<MenuProps>,
-    Pick<MenuProps$1, 'id'> {
+    Pick<MenuProps$1, 'id' | 'children'> {
   /**
    * The Menu items.
    *
    * Only accepts `Button` and `Section` components.
    */
-  children?: ComponentChild;
+  children?: ComponentChildren;
 }
 
 export type RequiredAlignedModalProps = Required<ModalProps$1>;
@@ -6192,7 +6349,7 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ModalJSXProps;
+        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
     }
   }
 }
@@ -6202,17 +6359,21 @@ export interface ModalJSXProps
   extends Partial<ModalProps>,
     Pick<ModalProps$1, 'id' | 'children'> {
   /**
+   * The content of the Modal.
+   */
+  children?: ComponentChildren;
+  /**
    * The primary action to perform.
    *
    * Only a `Button` with a variant of `primary` is allowed.
    */
-  primaryAction?: ComponentChild;
+  primaryAction?: ComponentChildren;
   /**
    * The secondary actions to perform.
    *
    * Only `ButtonGroup` or `Button` with a variant of `secondary` or `auto` are allowed.
    */
-  secondaryActions?: ComponentChild;
+  secondaryActions?: ComponentChildren;
   onHide?: ((event: CallbackEvent<typeof tagName$y>) => void) | null;
   onShow?: ((event: CallbackEvent<typeof tagName$y>) => void) | null;
   onAfterHide?: ((event: CallbackEvent<typeof tagName$y>) => void) | null;
@@ -6328,7 +6489,14 @@ declare module 'preact' {
 }
 
 declare const tagName$v = 's-option';
-export interface OptionJSXProps extends Partial<OptionProps> {}
+export interface OptionJSXProps
+  extends Partial<OptionProps>,
+    Pick<OptionProps$1, 'id' | 'children'> {
+  /**
+   * The content to use as the label.
+   */
+  children?: ComponentChildren;
+}
 
 export interface OptionGroupProps
   extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
@@ -6356,7 +6524,16 @@ declare module 'preact' {
 }
 
 declare const tagName$u = 's-option-group';
-export interface OptionGroupJSXProps extends Partial<OptionGroupProps> {}
+export interface OptionGroupJSXProps
+  extends Partial<OptionGroupProps>,
+    Pick<OptionGroupProps$1, 'id' | 'children'> {
+  /**
+   * The options a user can select from.
+   *
+   * Accepts `Option` components.
+   */
+  children?: ComponentChildren;
+}
 
 export interface OrderedListProps extends OrderedListProps$1 {}
 
@@ -6383,7 +6560,14 @@ declare module 'preact' {
 declare const tagName$t = 's-ordered-list';
 export interface OrderedListJSXProps
   extends Partial<OrderedListProps>,
-    Pick<OrderedListProps$1, 'id'> {}
+    Pick<OrderedListProps$1, 'id'> {
+  /**
+   * The items of the OrderedList.
+   *
+   * Only ListItems are accepted.
+   */
+  children?: ComponentChildren;
+}
 
 export interface PageProps
   extends Required<Pick<PageProps$1, 'inlineSize' | 'heading'>> {
@@ -6405,39 +6589,48 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$s]: Omit<PageJSXProps, 'aside'> &
+      [tagName$s]: Omit<
+        PageJSXProps,
+        'aside' | 'primaryAction' | 'secondaryActions' | 'breadcrumbActions'
+      > &
         PreactBaseElementPropsWithChildren<Page>;
     }
   }
 }
 
 declare const tagName$s = 's-page';
-export interface PageJSXProps extends Partial<PageProps> {
+export interface PageJSXProps
+  extends Partial<PageProps>,
+    Pick<PageProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Page.
+   */
+  children?: ComponentChildren;
   /**
    * The content to display in the aside section of the page.
    *
    * This slot is only rendered when `inlineSize` is "base".
    */
-  aside?: ComponentChild;
+  aside?: ComponentChildren;
   /**
    * The primary action for the page.
    *
    * Only accepts a single `Button` component with a `variant` of `primary`.
    *
    */
-  primaryAction?: ComponentChild;
+  primaryAction?: ComponentChildren;
   /**
    * Secondary actions for the page.
    *
    * Only accepts `ButtonGroup` and `Button` components with a `variant` of `secondary` or `auto`.
    */
-  secondaryActions?: ComponentChild;
+  secondaryActions?: ComponentChildren;
   /**
    * Navigations back actions for the page.
    *
    * Only accepts `Link` components.
    */
-  breadcrumbActions?: ComponentChild;
+  breadcrumbActions?: ComponentChildren;
 }
 
 export interface ParagraphProps
@@ -6486,7 +6679,12 @@ declare module 'preact' {
 declare const tagName$r = 's-paragraph';
 export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,
-    Pick<ParagraphProps$1, 'id'> {}
+    Pick<ParagraphProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Paragraph.
+   */
+  children?: ComponentChildren;
+}
 
 export type PasswordFieldProps = PreactFieldProps<
   Required<PasswordFieldProps$1>['autocomplete']
@@ -6585,8 +6783,13 @@ declare module 'preact' {
 }
 
 declare const tagName$p = 's-popover';
-export interface PopoverJSXProps extends Partial<PopoverProps> {
-  id?: string;
+export interface PopoverJSXProps
+  extends Partial<PopoverProps>,
+    Pick<PopoverProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Popover.
+   */
+  children?: ComponentChildren;
   onHide?: (event: CallbackEvent<typeof tagName$p>) => void | null;
   onShow?: (event: CallbackEvent<typeof tagName$p>) => void | null;
   onAfterHide?: (event: CallbackEvent<typeof tagName$p>) => void | null;
@@ -6627,7 +6830,12 @@ declare module 'preact' {
 declare const tagName$o = 's-query-container';
 export interface QueryContainerJSXProps
   extends Partial<QueryContainerProps$1>,
-    Pick<QueryContainerProps$1, 'id'> {}
+    Pick<QueryContainerProps$1, 'id' | 'children'> {
+  /**
+   * The content of the container.
+   */
+  children?: ComponentChildren;
+}
 
 export type SearchFieldProps = PreactFieldProps<
   /**
@@ -6717,7 +6925,12 @@ declare module 'preact' {
 declare const tagName$m = 's-section';
 export interface SectionJSXProps
   extends Partial<SectionProps>,
-    Pick<SectionProps$1, 'id'> {}
+    Pick<SectionProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Section.
+   */
+  children?: ComponentChildren;
+}
 
 export interface SelectProps
   extends Omit<PreactInputProps, 'value'>,
@@ -6784,7 +6997,15 @@ declare module 'preact' {
 }
 
 declare const tagName$l = 's-select';
-export interface SelectJSXProps extends Partial<SelectProps> {
+export interface SelectJSXProps
+  extends Partial<SelectProps>,
+    Pick<SelectProps$1, 'id' | 'children'> {
+  /**
+   * The options a user can select from.
+   *
+   * Accepts `Option` and `OptionGroup` components.
+   */
+  children?: ComponentChildren;
   onChange?: (event: CallbackEvent<typeof tagName$l>) => void;
   onInput?: (event: CallbackEvent<typeof tagName$l>) => void;
   onBlur?: (event: CallbackEvent<typeof tagName$l>) => void;
@@ -6830,8 +7051,25 @@ export interface StackProps
       Required<AlignedStackProps>,
       'justifyContent' | 'alignItems' | 'alignContent'
     > {
+  /**
+   * Aligns the Stack's children along the inline axis.
+   *
+   * @default 'normal'
+   */
   justifyContent: JustifyContentKeyword;
+  /**
+   * Aligns the Stack's children along the block axis.
+   *
+   * @default 'normal'
+   */
   alignItems: AlignItemsKeyword;
+  /**
+   * Aligns the Stack's children along the block axis.
+   *
+   * This overrides the block value of `alignContent`.
+   *
+   * @default 'normal'
+   */
   alignContent: AlignContentKeyword;
   /**
    * Adjust spacing between elements.
@@ -6906,7 +7144,12 @@ declare module 'preact' {
 declare const tagName$j = 's-stack';
 export interface StackJSXProps
   extends Partial<StackProps>,
-    Pick<StackProps$1, 'id'> {}
+    Pick<StackProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Stack.
+   */
+  children?: ComponentChildren;
+}
 
 export interface SwitchProps
   extends PreactCheckboxProps,
@@ -7003,11 +7246,15 @@ declare module 'preact' {
 declare const tagName$h = 's-table';
 export interface TableJSXProps
   extends Partial<TableProps>,
-    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
+    Pick<TableProps$1, 'id' | 'children' | 'onNextPage' | 'onPreviousPage'> {
+  /**
+   * The content of the Table.
+   */
+  children?: ComponentChildren;
   /**
    * Additional filters to display in the table. For example, the `s-search-field` component can be used to filter the table data.
    */
-  filters?: ComponentChild;
+  filters?: ComponentChildren;
 }
 
 export interface TableBodyProps extends TableBodyProps$1 {}
@@ -7032,7 +7279,12 @@ declare module 'preact' {
 declare const tagName$g = 's-table-body';
 export interface TableBodyJSXProps
   extends Partial<TableBodyProps>,
-    Pick<TableBodyProps$1, 'id'> {}
+    Pick<TableBodyProps$1, 'id' | 'children'> {
+  /**
+   * The body of the table. May not have any semantic meaning in the Table's `list` variant.
+   */
+  children?: ComponentChildren;
+}
 
 export interface TableCellProps extends TableCellProps$1 {}
 
@@ -7062,7 +7314,12 @@ declare module 'preact' {
 declare const tagName$f = 's-table-cell';
 export interface TableCellJSXProps
   extends Partial<TableCellProps>,
-    Pick<TableCellProps$1, 'id'> {}
+    Pick<TableCellProps$1, 'id' | 'children'> {
+  /**
+   * The content of the table cell.
+   */
+  children?: ComponentChildren;
+}
 
 declare class TableHeader
   extends PreactCustomElement
@@ -7089,7 +7346,12 @@ declare module 'preact' {
 declare const tagName$e = 's-table-header';
 export interface TableHeaderJSXProps
   extends Partial<TableHeaderProps>,
-    Pick<TableHeaderProps$1, 'id'> {}
+    Pick<TableHeaderProps$1, 'id' | 'children'> {
+  /**
+   * The heading of the column in the `table` variant, and the label of its data in `list` variant.
+   */
+  children?: ComponentChildren;
+}
 
 export interface TableHeaderRowProps extends TableHeaderRowProps$1 {}
 
@@ -7120,7 +7382,12 @@ declare module 'preact' {
 declare const tagName$d = 's-table-header-row';
 export interface TableHeaderRowJSXProps
   extends Partial<TableHeaderRowProps>,
-    Pick<TableHeaderRowProps$1, 'id'> {}
+    Pick<TableHeaderRowProps$1, 'id' | 'children'> {
+  /**
+   * Contents of the table heading row; children should be `TableHeading` components.
+   */
+  children?: ComponentChildren;
+}
 
 export interface TableRowProps
   extends Pick<TableRowProps$1, 'children' | 'clickDelegate'> {}
@@ -7146,7 +7413,12 @@ declare module 'preact' {
 declare const tagName$c = 's-table-row';
 export interface TableRowJSXProps
   extends Partial<TableRowProps>,
-    Pick<TableRowProps$1, 'id'> {}
+    Pick<TableRowProps$1, 'id' | 'children'> {
+  /**
+   * The content of a TableRow, which should be `TableCell` components.
+   */
+  children?: ComponentChildren;
+}
 
 export interface TextProps
   extends Required<
@@ -7202,7 +7474,12 @@ declare module 'preact' {
 declare const tagName$b = 's-text';
 export interface TextJSXProps
   extends Partial<TextProps>,
-    Pick<TextProps$1, 'id'> {}
+    Pick<TextProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Text.
+   */
+  children?: ComponentChildren;
+}
 
 export type TextAreaProps = PreactFieldProps<
   Required<TextAreaProps$1>['autocomplete']
@@ -7281,7 +7558,7 @@ export interface TextFieldJSXProps
   /**
    * The accessory to display in the text field.
    */
-  accessory?: ComponentChild;
+  accessory?: ComponentChildren;
 }
 
 export interface ThumbnailProps
@@ -7341,13 +7618,13 @@ declare module 'preact' {
 declare const tagName$7 = 's-tooltip';
 export interface TooltipJSXProps
   extends Partial<TooltipProps>,
-    Pick<TooltipProps$1, 'id'> {
+    Pick<TooltipProps$1, 'id' | 'children'> {
   /**
    * The content of the Tooltip.
    *
    * Only accepts `Text`, `Paragraph` components, and raw `textContent`.
    */
-  children: ComponentChild;
+  children?: ComponentChildren;
 }
 
 export type URLFieldProps = PreactFieldProps<
@@ -7408,7 +7685,14 @@ declare module 'preact' {
 declare const tagName$5 = 's-unordered-list';
 export interface UnorderedListJSXProps
   extends Partial<UnorderedListProps>,
-    Pick<UnorderedListProps$1, 'id'> {}
+    Pick<UnorderedListProps$1, 'id'> {
+  /**
+   * The items of the UnorderedList.
+   *
+   * Only ListItems are accepted.
+   */
+  children?: ComponentChildren;
+}
 
 export interface AdminActionProps
   extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
@@ -7420,11 +7704,11 @@ export interface AdminActionJSXProps
   /**
    * The primary action to display in the admin action.
    */
-  primaryAction: ComponentChild;
+  primaryAction: ComponentChildren;
   /**
    * The secondary actions to display in the admin action.
    */
-  secondaryActions: ComponentChild;
+  secondaryActions: ComponentChildren;
 }
 
 declare class AdminAction
@@ -7729,6 +8013,13 @@ export interface AvatarEvents {
   error: OnErrorEventHandler = null;
 }
 
+export interface BadgeSlots {
+  /**
+   * The content of the Badge.
+   */
+  children?: HTMLElement;
+}
+
 export interface BannerEvents {
   dismiss: CallbackEventListener<typeof tagName> | null = null;
   afterhide: CallbackEventListener<typeof tagName> | null = null;
@@ -7736,11 +8027,22 @@ export interface BannerEvents {
 
 export interface BannerSlots {
   /**
-   * The secondary actions to display at the bottom of the banner.
+   * The content of the Banner.
+   */
+  children?: HTMLElement;
+  /**
+   * The secondary actions to display at the bottom of the Banner.
    *
-   * A maximum of two `s-button` components are allowed, and only buttons with the `variant` of "secondary" are permitted.
+   * Only Buttons with the `variant` of "secondary" or "auto" are permitted. A maximum of two `s-button` components are allowed.
    */
   'secondary-actions'?: HTMLElement;
+}
+
+export interface BoxSlots {
+  /**
+   * The content of the Box.
+   */
+  children?: HTMLElement;
 }
 
 export interface ButtonEvents {
@@ -7749,7 +8051,18 @@ export interface ButtonEvents {
   focus: CallbackEventListener<typeof tagName> | null = null;
 }
 
+export interface ButtonSlots {
+  /**
+   * The content of the Button.
+   */
+  children?: HTMLElement;
+}
+
 export interface ButtonGroupSlots {
+  /**
+   * The content of the ButtonGroup.
+   */
+  children?: HTMLElement;
   /**
    * The primary action button for the group.
    * Accepts a single Button element with a `variant` of `primary`.
@@ -7770,6 +8083,10 @@ export interface CheckboxEvents {
 
 export interface ChipSlots {
   /**
+   * The content of the Chip.
+   */
+  children?: HTMLElement;
+  /**
    * The graphic to display in the chip.
    *
    * Only accepts `Icon` components.
@@ -7778,7 +8095,14 @@ export interface ChipSlots {
 }
 
 export interface ChoiceSlots {
-  details?: HTMLElement;
+  /**
+   * Content to use as the choice label.
+   *
+   * The label is produced by extracting and
+   * concatenating the text nodes from the provided content;
+   * any markup or element structure is ignored.
+   */
+  children?: HTMLElement;
 }
 
 export interface ChoiceListEvents {
@@ -7786,10 +8110,26 @@ export interface ChoiceListEvents {
   input: CallbackEventListener<typeof tagName> | null = null;
 }
 
+export interface ChoiceListSlots {
+  /**
+   * The choices a user can select from.
+   *
+   * Accepts `Choice` components.
+   */
+  children?: HTMLElement;
+}
+
 export interface ClickableEvents {
   click: CallbackEventListener<typeof tagName> | null = null;
   blur: CallbackEventListener<typeof tagName> | null = null;
   focus: CallbackEventListener<typeof tagName> | null = null;
+}
+
+export interface ClickableSlots {
+  /**
+   * The content of the Clickable.
+   */
+  children?: HTMLElement;
 }
 
 export interface ClickableChipEvents {
@@ -7799,6 +8139,10 @@ export interface ClickableChipEvents {
 }
 
 export interface ClickableChipSlots {
+  /**
+   * The content of the clickable chip.
+   */
+  children?: HTMLElement;
   /**
    * The graphic to display in the clickable chip.
    *
@@ -7842,11 +8186,39 @@ export interface DropZoneEvents {
   droprejected: CallbackEventListener<typeof tagName> = null;
 }
 
+export interface DropZoneSlots {
+  /**
+   * Content to include inside the DropZone container
+   */
+  children?: HTMLElement;
+}
+
 export interface EmailFieldEvents {
   change: CallbackEventListener<'input'>;
   input: CallbackEventListener<'input'>;
   blur: CallbackEventListener<'input'>;
   focus: CallbackEventListener<'input'>;
+}
+
+export interface GridSlots {
+  /**
+   * The content of the Grid.
+   */
+  children?: HTMLElement;
+}
+
+export interface GridItemSlots {
+  /**
+   * The content of the GridItem.
+   */
+  children?: HTMLElement;
+}
+
+export interface HeadingSlots {
+  /**
+   * The content of the Heading.
+   */
+  children?: HTMLElement;
 }
 
 export interface ImageEvents {
@@ -7856,6 +8228,20 @@ export interface ImageEvents {
 
 export interface LinkEvents {
   click: CallbackEventListener<typeof tagName> | null = null;
+}
+
+export interface LinkSlots {
+  /**
+   * The content of the Link.
+   */
+  children?: HTMLElement;
+}
+
+export interface ListItemSlots {
+  /**
+   * The content of the ListItem.
+   */
+  children?: HTMLElement;
 }
 
 export interface MenuSlots {
@@ -7875,6 +8261,10 @@ export interface ModalEvents {
 }
 
 export interface ModalSlots {
+  /**
+   * The content of the Modal.
+   */
+  children?: HTMLElement;
   /**
    * The primary action to perform.
    *
@@ -7903,7 +8293,36 @@ export interface NumberFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+export interface OptionSlots {
+  /**
+   * The content to use as the label.
+   */
+  children?: HTMLElement;
+}
+
+export interface OptionGroupSlots {
+  /**
+   * The options a user can select from.
+   *
+   * Accepts `Option` components.
+   */
+  children?: HTMLElement;
+}
+
+export interface OrderedListSlots {
+  /**
+   * The items of the OrderedList.
+   *
+   * Only ListItems are accepted.
+   */
+  children?: HTMLElement;
+}
+
 export interface PageSlots {
+  /**
+   * The content of the Page.
+   */
+  children?: HTMLElement;
   /**
    * The content to display in the aside section of the page.
    *
@@ -7931,6 +8350,13 @@ export interface PageSlots {
   'breadcrumb-actions'?: HTMLElement;
 }
 
+export interface ParagraphSlots {
+  /**
+   * The content of the Paragraph.
+   */
+  children?: HTMLElement;
+}
+
 export interface PasswordFieldEvents {
   change: CallbackEventListener<'input'>;
   input: CallbackEventListener<'input'>;
@@ -7947,6 +8373,20 @@ export interface PopoverEvents {
   aftertoggle: CallbackEventListener<TTagName> | null;
 }
 
+export interface PopoverSlots {
+  /**
+   * The content of the Popover.
+   */
+  children?: HTMLElement;
+}
+
+export interface QueryContainerSlots {
+  /**
+   * The content of the container.
+   */
+  children?: HTMLElement;
+}
+
 export interface SearchFieldEvents {
   change: CallbackEventListener<'input'>;
   input: CallbackEventListener<'input'>;
@@ -7954,9 +8394,32 @@ export interface SearchFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+export interface SectionSlots {
+  /**
+   * The content of the Section.
+   */
+  children?: HTMLElement;
+}
+
 export interface SelectEvents {
   change: CallbackEventListener<'input'>;
   input: CallbackEventListener<'input'>;
+}
+
+export interface SelectSlots {
+  /**
+   * The options a user can select from.
+   *
+   * Accepts `Option` and `OptionGroup` components.
+   */
+  children?: HTMLElement;
+}
+
+export interface StackSlots {
+  /**
+   * The content of the Stack.
+   */
+  children?: HTMLElement;
 }
 
 export interface SwitchEvents {
@@ -7971,9 +8434,55 @@ export interface TableEvents {
 
 export interface TableSlots {
   /**
+   * The content of the Table.
+   */
+  children?: HTMLElement;
+  /**
    * Additional filters to display in the table. For example, the `s-search-field` component can be used to filter the table data.
    */
   filters?: HTMLElement;
+}
+
+export interface TableBodySlots {
+  /**
+   * The body of the table. May not have any semantic meaning in the Table's `list` variant.
+   */
+  children?: HTMLElement;
+}
+
+export interface TableCellSlots {
+  /**
+   * The content of the table cell.
+   */
+  children?: HTMLElement;
+}
+
+export interface TableHeaderSlots {
+  /**
+   * The heading of the column in the `table` variant, and the label of its data in `list` variant.
+   */
+  children?: HTMLElement;
+}
+
+export interface TableHeaderRowSlots {
+  /**
+   * Contents of the table heading row; children should be `TableHeading` components.
+   */
+  children?: HTMLElement;
+}
+
+export interface TableRowSlots {
+  /**
+   * The content of a TableRow, which should be `TableCell` components.
+   */
+  children?: HTMLElement;
+}
+
+export interface TextSlots {
+  /**
+   * The content of the Text.
+   */
+  children?: HTMLElement;
 }
 
 export interface TextAreaEvents {
@@ -8008,7 +8517,7 @@ export interface TooltipSlots {
    *
    * Only accepts `Text`, `Paragraph` components, and raw `textContent`.
    */
-  children: HTMLElement;
+  children?: HTMLElement;
 }
 
 export interface URLFieldEvents {
@@ -8016,6 +8525,15 @@ export interface URLFieldEvents {
   input: CallbackEventListener<'input'>;
   blur: CallbackEventListener<'input'>;
   focus: CallbackEventListener<'input'>;
+}
+
+export interface UnorderedListSlots {
+  /**
+   * The items of the UnorderedList.
+   *
+   * Only ListItems are accepted.
+   */
+  children?: HTMLElement;
 }
 
 export interface AdminActionSlots {
@@ -8073,14 +8591,14 @@ export interface FunctionSettingsEvents {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$Z]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
+      [tagName$Z]: AvatarJSXProps & ReactBaseElementProps<Avatar>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$Z]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
+      [tagName$Z]: AvatarJSXProps & ReactBaseElementProps<Avatar>;
     }
   }
 }
@@ -8145,7 +8663,10 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$U]: ButtonGroupJSXProps &
+      [tagName$U]: Omit<
+        ButtonGroupJSXProps,
+        'primaryAction' | 'secondaryActions'
+      > &
         ReactBaseElementPropsWithChildren<ButtonGroup>;
     }
   }
@@ -8153,7 +8674,10 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$U]: ButtonGroupJSXProps &
+      [tagName$U]: Omit<
+        ButtonGroupJSXProps,
+        'primaryAction' | 'secondaryActions'
+      > &
         ReactBaseElementPropsWithChildren<ButtonGroup>;
     }
   }
@@ -8161,16 +8685,14 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$T]: CheckboxJSXProps &
-        ReactBaseElementPropsWithChildren<Checkbox>;
+      [tagName$T]: CheckboxJSXProps & ReactBaseElementProps<Checkbox>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$T]: CheckboxJSXProps &
-        ReactBaseElementPropsWithChildren<Checkbox>;
+      [tagName$T]: CheckboxJSXProps & ReactBaseElementProps<Checkbox>;
     }
   }
 }
@@ -8204,14 +8726,16 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$R]: ChoiceJSXProps & ReactBaseElementPropsWithChildren<Choice>;
+      [tagName$R]: Omit<ChoiceJSXProps, 'details'> &
+        ReactBaseElementPropsWithChildren<Choice>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$R]: ChoiceJSXProps & ReactBaseElementPropsWithChildren<Choice>;
+      [tagName$R]: Omit<ChoiceJSXProps, 'details'> &
+        ReactBaseElementPropsWithChildren<Choice>;
     }
   }
 }
@@ -8539,7 +9063,7 @@ declare module 'react' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ModalJSXProps;
+        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
     }
   }
 }
@@ -8553,7 +9077,7 @@ declare global {
           `on${Capitalize<string>}`
         >
       > &
-        ModalJSXProps;
+        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
     }
   }
 }
@@ -8634,7 +9158,10 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$s]: Omit<PageJSXProps, 'aside'> &
+      [tagName$s]: Omit<
+        PageJSXProps,
+        'aside' | 'primaryAction' | 'secondaryActions' | 'breadcrumbActions'
+      > &
         ReactBaseElementPropsWithChildren<Page>;
     }
   }
@@ -8642,7 +9169,10 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$s]: Omit<PageJSXProps, 'aside'> &
+      [tagName$s]: Omit<
+        PageJSXProps,
+        'aside' | 'primaryAction' | 'secondaryActions' | 'breadcrumbActions'
+      > &
         ReactBaseElementPropsWithChildren<Page>;
     }
   }

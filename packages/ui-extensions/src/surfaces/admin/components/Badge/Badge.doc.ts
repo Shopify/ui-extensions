@@ -11,6 +11,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: '',
       type: 'Badge',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'BadgeSlots',
+    },
   ],
   defaultExample: {
     image: 'badge-default.png',

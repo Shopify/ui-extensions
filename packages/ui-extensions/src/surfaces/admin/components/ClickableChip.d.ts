@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,20 +6,7 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ClickableChipProps$1, ComponentChild} from './shared.d.ts';
-
-export interface ClickableChipProps
-  extends Required<
-    Pick<
-      ClickableChipProps$1,
-      | 'color'
-      | 'accessibilityLabel'
-      | 'removable'
-      | 'hidden'
-      | 'href'
-      | 'disabled'
-    >
-  > {}
+import type {ComponentChildren, ClickableChipProps$1} from './shared.d.ts';
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
@@ -44,9 +31,22 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+export interface ClickableChipProps
+  extends Required<
+    Pick<
+      ClickableChipProps$1,
+      | 'color'
+      | 'accessibilityLabel'
+      | 'removable'
+      | 'hidden'
+      | 'href'
+      | 'disabled'
+    >
+  > {}
+
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -146,7 +146,7 @@ export interface ClickableChipJSXProps
    *
    * Only accepts `Icon` components.
    */
-  graphic?: ComponentChild;
+  graphic?: ComponentChildren;
   onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onRemove?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;

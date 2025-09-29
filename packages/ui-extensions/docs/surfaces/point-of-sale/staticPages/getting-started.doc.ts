@@ -54,11 +54,9 @@ In this tutorial, you'll learn how to do the following tasks:
 
 3. Generate your POS UI extension template.
 
-4. Select \`POS UI\` under the Point-of-Sale menu.
+4. Select a POS template: [Action](/docs/api/pos-ui-extensions/extension-targets-overview#action-locations), [Block](/docs/api/pos-ui-extensions/extension-targets-overview#block-locations), or [Smart Grid](/docs/api/pos-ui-extensions/extension-targets-overview#tile-locations).
 
 5. Give your extension a working name.
-
-6. Select the programming language that you want to work in.
       `,
     },
     {

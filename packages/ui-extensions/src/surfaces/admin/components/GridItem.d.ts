@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -7,11 +7,13 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
+  ComponentChildren,
   BoxProps$1,
   GridItemProps$1,
   MaybeAllValuesShorthandProperty,
+  SizeUnitsOrAuto,
   SizeUnits,
-  ComponentChild,
+  SizeUnitsOrNone,
 } from './shared.d.ts';
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -82,10 +84,20 @@ export interface BoxProps
     | 'minInlineSize'
     | 'overflow'
   > {
+  /**
+   * Adjust the background of the component.
+   *
+   * @default 'transparent'
+   */
   background: Extract<
     RequiredBoxProps['background'],
     'transparent' | 'base' | 'subdued' | 'strong'
   >;
+  /**
+   * Adjust the width of the border.
+   *
+   * @default '' - meaning no override
+   */
   borderWidth:
     | MaybeAllValuesShorthandProperty<
         Extract<
@@ -94,13 +106,28 @@ export interface BoxProps
         >
       >
     | Extract<RequiredBoxProps['borderWidth'], ''>;
+  /**
+   * Adjust the style of the border.
+   *
+   * @default '' - meaning no override
+   */
   borderStyle:
     | MaybeAllValuesShorthandProperty<BoxBorderStyles>
     | Extract<RequiredBoxProps['borderStyle'], ''>;
+  /**
+   * Adjust the color of the border.
+   *
+   * @default '' - meaning no override
+   */
   borderColor: Extract<
     RequiredBoxProps['borderColor'],
     'subdued' | 'base' | 'strong' | ''
   >;
+  /**
+   * Adjust the radius of the border.
+   *
+   * @default 'none'
+   */
   borderRadius: MaybeAllValuesShorthandProperty<BoxBorderRadii>;
   /**
    * Adjust the padding of all edges.
@@ -197,12 +224,42 @@ export interface BoxProps
    * @default 'auto'
    */
   display: ResponsiveBoxProps['display'];
-  blockSize: SizeUnits | 'auto';
-  minBlockSize: SizeUnits | '0';
-  maxBlockSize: SizeUnits | 'none';
-  inlineSize: SizeUnits | 'auto';
-  minInlineSize: SizeUnits | '0';
-  maxInlineSize: SizeUnits | 'none';
+  /**
+   * Adjust the [block size](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
+   *
+   * @default 'auto'
+   */
+  blockSize: SizeUnitsOrAuto;
+  /**
+   * Adjust the [minimum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
+   *
+   * @default '0'
+   */
+  minBlockSize: SizeUnits;
+  /**
+   * Adjust the [maximum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
+   *
+   * @default 'none'
+   */
+  maxBlockSize: SizeUnitsOrNone;
+  /**
+   * Adjust the [inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
+   *
+   * @default 'auto'
+   */
+  inlineSize: SizeUnitsOrAuto;
+  /**
+   * Adjust the [minimum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
+   *
+   * @default '0'
+   */
+  minInlineSize: SizeUnits;
+  /**
+   * Adjust the [maximum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
+   *
+   * @default 'none'
+   */
+  maxInlineSize: SizeUnitsOrNone;
 }
 
 export type RequiredGridItemProps = Required<GridItemProps$1>;
@@ -215,7 +272,7 @@ export interface GridItemProps
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {

@@ -34,6 +34,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: '',
       type: 'Stack',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'StackSlots',
+    },
   ],
   defaultExample: {
     image: 'stack-default.png',

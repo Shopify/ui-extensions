@@ -13,15 +13,15 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'ClickableChip',
     },
     {
-      title: 'Slots',
-      description: '',
-      type: 'ClickableChipSlots',
-    },
-    {
       title: 'Events',
       description:
         'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
       type: 'ClickableChipEvents',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'ClickableChipSlots',
     },
   ],
   defaultExample: {

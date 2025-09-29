@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,15 +6,17 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
+  ComponentChildren,
   BoxProps$1,
   GridProps$1,
   MaybeAllValuesShorthandProperty,
+  SizeUnitsOrAuto,
   SizeUnits,
+  SizeUnitsOrNone,
   AlignItemsKeyword,
   JustifyItemsKeyword,
   AlignContentKeyword,
   JustifyContentKeyword,
-  ComponentChild,
 } from './shared.d.ts';
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -85,10 +87,20 @@ export interface BoxProps
     | 'minInlineSize'
     | 'overflow'
   > {
+  /**
+   * Adjust the background of the component.
+   *
+   * @default 'transparent'
+   */
   background: Extract<
     RequiredBoxProps['background'],
     'transparent' | 'base' | 'subdued' | 'strong'
   >;
+  /**
+   * Adjust the width of the border.
+   *
+   * @default '' - meaning no override
+   */
   borderWidth:
     | MaybeAllValuesShorthandProperty<
         Extract<
@@ -97,13 +109,28 @@ export interface BoxProps
         >
       >
     | Extract<RequiredBoxProps['borderWidth'], ''>;
+  /**
+   * Adjust the style of the border.
+   *
+   * @default '' - meaning no override
+   */
   borderStyle:
     | MaybeAllValuesShorthandProperty<BoxBorderStyles>
     | Extract<RequiredBoxProps['borderStyle'], ''>;
+  /**
+   * Adjust the color of the border.
+   *
+   * @default '' - meaning no override
+   */
   borderColor: Extract<
     RequiredBoxProps['borderColor'],
     'subdued' | 'base' | 'strong' | ''
   >;
+  /**
+   * Adjust the radius of the border.
+   *
+   * @default 'none'
+   */
   borderRadius: MaybeAllValuesShorthandProperty<BoxBorderRadii>;
   /**
    * Adjust the padding of all edges.
@@ -200,26 +227,54 @@ export interface BoxProps
    * @default 'auto'
    */
   display: ResponsiveBoxProps['display'];
-  blockSize: SizeUnits | 'auto';
-  minBlockSize: SizeUnits | '0';
-  maxBlockSize: SizeUnits | 'none';
-  inlineSize: SizeUnits | 'auto';
-  minInlineSize: SizeUnits | '0';
-  maxInlineSize: SizeUnits | 'none';
+  /**
+   * Adjust the [block size](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
+   *
+   * @default 'auto'
+   */
+  blockSize: SizeUnitsOrAuto;
+  /**
+   * Adjust the [minimum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
+   *
+   * @default '0'
+   */
+  minBlockSize: SizeUnits;
+  /**
+   * Adjust the [maximum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
+   *
+   * @default 'none'
+   */
+  maxBlockSize: SizeUnitsOrNone;
+  /**
+   * Adjust the [inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
+   *
+   * @default 'auto'
+   */
+  inlineSize: SizeUnitsOrAuto;
+  /**
+   * Adjust the [minimum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
+   *
+   * @default '0'
+   */
+  minInlineSize: SizeUnits;
+  /**
+   * Adjust the [maximum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
+   *
+   * @default 'none'
+   */
+  maxInlineSize: SizeUnitsOrNone;
 }
 
 export type RequiredAlignedProps = Required<GridProps$1>;
 export type ResponsiveGridProps = MakeResponsivePick<
   RequiredAlignedProps,
-  'rowGap' | 'columnGap' | 'gap'
+  'rowGap' | 'columnGap' | 'gap' | 'gridTemplateColumns' | 'gridTemplateRows'
 >;
 export interface GridProps
   extends BoxProps,
     Required<
       Pick<
         GridProps$1,
-        | 'gridTemplateColumns'
-        | 'gridTemplateRows'
         | 'alignItems'
         | 'justifyItems'
         | 'placeItems'
@@ -228,11 +283,45 @@ export interface GridProps
         | 'placeContent'
       >
     > {
+  /**
+   * Aligns the grid items along the block axis.
+   *
+   * @default '' - meaning no override
+   */
   alignItems: AlignItemsKeyword | '';
+  /**
+   * Aligns the grid items along the inline axis.
+   *
+   * @default '' - meaning no override
+   */
   justifyItems: JustifyItemsKeyword | '';
+  /**
+   * A shorthand property for `justify-items` and `align-items`.
+   *
+   * @default 'normal normal'
+   */
   placeItems: `${AlignItemsKeyword} ${JustifyItemsKeyword}` | AlignItemsKeyword;
+  /**
+   * Aligns the grid along the block axis.
+   *
+   * This overrides the block value of `placeContent`.
+   *
+   * @default '' - meaning no override
+   */
   alignContent: AlignContentKeyword | '';
+  /**
+   * Aligns the grid along the inline axis.
+   *
+   * This overrides the inline value of `placeContent`.
+   *
+   * @default '' - meaning no override
+   */
   justifyContent: JustifyContentKeyword | '';
+  /**
+   * A shorthand property for `justify-content` and `align-content`.
+   *
+   * @default 'normal normal'
+   */
   placeContent:
     | `${AlignContentKeyword} ${JustifyContentKeyword}`
     | AlignContentKeyword;
@@ -269,6 +358,24 @@ export interface GridProps
    * @default '' - meaning no override
    */
   columnGap: ResponsiveGridProps['columnGap'];
+  /**
+   * Define columns and specify their size.
+   * `gridTemplateColumns` either accepts:
+   * - [track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes) (e.g. `1fr auto`)
+   * - OR [responsive values](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported track sizing values as a query value.
+   *
+   * @default 'none'
+   */
+  gridTemplateColumns: ResponsiveGridProps['gridTemplateColumns'];
+  /**
+   * Define rows and specify their size.
+   * `gridTemplateRows` either accepts:
+   * - [track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes) (e.g. `1fr auto`)
+   * - OR [responsive values](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported track sizing values as a query value.
+   *
+   * @default 'none'
+   */
+  gridTemplateRows: ResponsiveGridProps['gridTemplateRows'];
 }
 
 /** Used when an element does not have children. */
@@ -288,7 +395,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {

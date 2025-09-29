@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,22 +6,7 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ChoiceListProps$1, ComponentChild} from './shared.d.ts';
-
-export interface ChoiceListProps
-  extends Required<
-    Pick<
-      ChoiceListProps$1,
-      | 'details'
-      | 'disabled'
-      | 'error'
-      | 'label'
-      | 'labelAccessibilityVisibility'
-      | 'multiple'
-      | 'name'
-      | 'values'
-    >
-  > {}
+import type {ComponentChildren, ChoiceListProps$1} from './shared.d.ts';
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
@@ -46,9 +31,24 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+export interface ChoiceListProps
+  extends Required<
+    Pick<
+      ChoiceListProps$1,
+      | 'details'
+      | 'disabled'
+      | 'error'
+      | 'label'
+      | 'labelAccessibilityVisibility'
+      | 'multiple'
+      | 'name'
+      | 'values'
+    >
+  > {}
+
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {

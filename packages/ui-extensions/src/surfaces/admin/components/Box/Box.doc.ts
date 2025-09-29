@@ -21,6 +21,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: '',
       type: 'Box',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'BoxSlots',
+    },
   ],
   defaultExample: {
     image: 'box-default.png',

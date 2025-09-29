@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,14 +6,14 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ButtonGroupProps$1, ComponentChild} from './shared.d.ts';
+import type {ComponentChildren, ButtonGroupProps$1} from './shared.d.ts';
 
 export interface ButtonGroupProps
   extends Required<Pick<ButtonGroupProps$1, 'gap' | 'accessibilityLabel'>> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -102,7 +102,10 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ButtonGroupJSXProps &
+      [tagName]: Omit<
+        ButtonGroupJSXProps,
+        'primaryAction' | 'secondaryActions'
+      > &
         PreactBaseElementPropsWithChildren<ButtonGroup>;
     }
   }
@@ -117,12 +120,12 @@ export interface ButtonGroupJSXProps
    * Accepts a single Button element with a `variant` of `primary`.
    * Cannot be used when gap="none".
    */
-  primaryAction?: ComponentChild;
+  primaryAction?: ComponentChildren;
   /**
    * Secondary action buttons for the group.
    * Accepts Button elements with a `variant` of `secondary` or `auto`.
    */
-  secondaryActions?: ComponentChild;
+  secondaryActions?: ComponentChildren;
 }
 
 export {ButtonGroup};

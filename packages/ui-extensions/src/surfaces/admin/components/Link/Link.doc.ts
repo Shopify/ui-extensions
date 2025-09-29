@@ -17,6 +17,11 @@ const data: AdminReferenceEntityTemplateSchema = {
         'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
       type: 'LinkEvents',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'LinkSlots',
+    },
   ],
   defaultExample: {
     image: 'link-default.png',

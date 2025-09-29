@@ -30,9 +30,19 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'Grid',
     },
     {
+      title: 'Slots',
+      description: '',
+      type: 'GridSlots',
+    },
+    {
       title: gridItemSharedContent.name,
       description: gridItemSharedContent.description,
       type: 'GridItem',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'GridItemSlots',
     },
   ],
   defaultExample: {

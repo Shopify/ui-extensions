@@ -14,6 +14,11 @@ const data: AdminReferenceEntityTemplateSchema = {
         'Use to define an element as a containment context, enabling child components or styles to adapt based on the container’s size.',
       type: 'QueryContainer',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'QueryContainerSlots',
+    },
   ],
   defaultExample: {
     image: 'ordered-list-default.png',

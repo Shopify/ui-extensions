@@ -1,5 +1,42 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.44
+
+### Patch Changes
+
+- [#3379](https://github.com/Shopify/ui-extensions/pull/3379) [`06cf1e9ded0b79be22a1cbf32e4dc3eb694bd113`](https://github.com/Shopify/ui-extensions/commit/06cf1e9ded0b79be22a1cbf32e4dc3eb694bd113) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Fix regression where children property was removed
+
+## 2025.10.0-rc.43
+
+### Minor Changes
+
+- [#3370](https://github.com/Shopify/ui-extensions/pull/3370) [`53b23789f852799a92cbd59c872cd957164ad502`](https://github.com/Shopify/ui-extensions/commit/53b23789f852799a92cbd59c872cd957164ad502) Thanks [@oliverigor](https://github.com/oliverigor)! - - Added updated docs for checkout components and targets.
+  - Added updated docs for customer account components and targets.
+  - Added new components to checkout:
+    - Announcement
+    - Chip
+    - Choice
+    - ChoiceList
+    - ClickableChip
+    - DateField
+    - DatePicker
+    - Option
+    - PasswordField
+    - QueryContainer
+    - ScrollBox
+    - Select
+    - URLField
+
+### Patch Changes
+
+- [#3352](https://github.com/Shopify/ui-extensions/pull/3352) [`b72c19dce6ee368d0cae44c2141e55c32f14dd43`](https://github.com/Shopify/ui-extensions/commit/b72c19dce6ee368d0cae44c2141e55c32f14dd43) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Update admin components to use ComponentChildren instead of ComponentChild type
+
+- [#3017](https://github.com/Shopify/ui-extensions/pull/3017) [`888a71f4ec2022df7c2f3e6f947fff51cb2708ef`](https://github.com/Shopify/ui-extensions/commit/888a71f4ec2022df7c2f3e6f947fff51cb2708ef) Thanks [@vividviolet](https://github.com/vividviolet)! - Add support for Function Settings component for Admin
+
+- [#3357](https://github.com/Shopify/ui-extensions/pull/3357) [`0518d9b03076b772d5f5258f0e7b04be81500328`](https://github.com/Shopify/ui-extensions/commit/0518d9b03076b772d5f5258f0e7b04be81500328) Thanks [@lsit](https://github.com/lsit)! - Update component images in customer account
+
+- [#3364](https://github.com/Shopify/ui-extensions/pull/3364) [`c5f856df45b865767337535dc4cef8b3551472c4`](https://github.com/Shopify/ui-extensions/commit/c5f856df45b865767337535dc4cef8b3551472c4) Thanks [@katriciab](https://github.com/katriciab)! - POS navigate API updated to return Promise<void> as implemented
+
 ## 2025.10.0-rc.42
 
 ### Patch Changes

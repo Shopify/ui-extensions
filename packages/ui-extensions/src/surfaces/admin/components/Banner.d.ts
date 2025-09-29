@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,19 +6,7 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChild, BannerProps$1} from './shared.d.ts';
-
-export type RequiredBannerProps = Required<BannerProps$1>;
-export interface BannerProps
-  extends Pick<
-    RequiredBannerProps,
-    'heading' | 'dismissible' | 'hidden' | 'tone'
-  > {
-  tone: Extract<
-    RequiredBannerProps['tone'],
-    'auto' | 'critical' | 'warning' | 'success' | 'info'
-  >;
-}
+import type {ComponentChildren, BannerProps$1} from './shared.d.ts';
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
@@ -43,9 +31,21 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+export type RequiredBannerProps = Required<BannerProps$1>;
+export interface BannerProps
+  extends Pick<
+    RequiredBannerProps,
+    'heading' | 'dismissible' | 'hidden' | 'tone'
+  > {
+  tone: Extract<
+    RequiredBannerProps['tone'],
+    'auto' | 'critical' | 'warning' | 'success' | 'info'
+  >;
+}
+
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
@@ -131,11 +131,11 @@ export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id'> {
   /**
-   * The secondary actions to display at the bottom of the banner.
+   * The secondary actions to display at the bottom of the Banner.
    *
-   * A maximum of two `s-button` components are allowed, and only buttons with the `variant` of "secondary" are permitted.
+   * Only Buttons with the `variant` of "secondary" or "auto" are permitted. A maximum of two `s-button` components are allowed.
    */
-  secondaryActions?: ComponentChild;
+  secondaryActions?: ComponentChildren;
   onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }

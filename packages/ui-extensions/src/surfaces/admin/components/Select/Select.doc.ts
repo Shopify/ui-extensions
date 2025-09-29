@@ -20,14 +20,29 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'SelectEvents',
     },
     {
+      title: 'Slots',
+      description: '',
+      type: 'SelectSlots',
+    },
+    {
       title: optionSharedContent.name,
       description: optionSharedContent.description,
       type: 'Option',
     },
     {
+      title: 'Slots',
+      description: '',
+      type: 'OptionSlots',
+    },
+    {
       title: optionGroupSharedContent.name,
       description: optionGroupSharedContent.description,
       type: 'OptionGroup',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'OptionGroupSlots',
     },
   ],
   defaultExample: {

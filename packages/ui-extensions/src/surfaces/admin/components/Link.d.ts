@@ -1,4 +1,4 @@
-/** VERSION: 1.19.0 **/
+/** VERSION: 1.20.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -7,29 +7,10 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
+  ComponentChildren,
   LinkProps$1,
   InteractionProps,
-  ComponentChild,
 } from './shared.d.ts';
-
-export type RequiredLinkProps = Required<LinkProps$1>;
-export type LinkBaseProps = Required<
-  Pick<
-    LinkProps$1,
-    | 'accessibilityLabel'
-    | 'command'
-    | 'commandFor'
-    | 'interestFor'
-    | 'download'
-    | 'href'
-    | 'lang'
-    | 'target'
-    | 'tone'
-  >
->;
-export interface LinkProps extends LinkBaseProps {
-  tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
-}
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
@@ -54,9 +35,28 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+export type RequiredLinkProps = Required<LinkProps$1>;
+export type LinkBaseProps = Required<
+  Pick<
+    LinkProps$1,
+    | 'accessibilityLabel'
+    | 'command'
+    | 'commandFor'
+    | 'interestFor'
+    | 'download'
+    | 'href'
+    | 'lang'
+    | 'target'
+    | 'tone'
+  >
+>;
+export interface LinkProps extends LinkBaseProps {
+  tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
+}
+
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
+  ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
 export interface ActivationEventEsque {
