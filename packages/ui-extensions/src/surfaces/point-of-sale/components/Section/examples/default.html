@@ -1,10 +1,8 @@
-<s-section heading="Section header">
-  <s-button slot="secondary-actions" onClick={onActionClick}>
-    Action
-  </s-button>
+<s-section heading="Select product category">
+  <s-button slot="secondary-actions">Edit</s-button>
   <s-choice-list>
-    {data.map((item) => (
-      <s-choice value={item.value}>{item.label}</s-choice>
-    ))}
+    <s-choice value="snowboards">Snowboards</s-choice>
+    <s-choice value="jackets">Jackets</s-choice>
+    <s-choice value="label">Label</s-choice>
   </s-choice-list>
 </s-section>
