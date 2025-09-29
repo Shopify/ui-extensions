@@ -1,0 +1,18 @@
+<s-banner heading="Order #1024 flagged for fraud review" tone="critical">
+  This order shows multiple risk indicators and cannot be auto-fulfilled. Review
+  required within 24 hours to prevent automatic cancellation.
+  <s-button
+    slot="secondary-actions"
+    variant="secondary"
+    href="/admin/orders/1024/risk"
+  >
+    Review order details
+  </s-button>
+  <s-button
+    slot="secondary-actions"
+    variant="secondary"
+    href="/admin/settings/payments/fraud"
+  >
+    Adjust fraud settings
+  </s-button>
+</s-banner>
