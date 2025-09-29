@@ -1,0 +1,17 @@
+<s-button commandFor="product-status-popover">Change status</s-button>
+
+<s-popover id="product-status-popover">
+  <s-section>
+    <s-stack gap="tight">
+      <s-button variant="tertiary" href="/admin/products/123/activate">
+        Activate product
+      </s-button>
+      <s-button variant="tertiary" href="/admin/products/123/draft">
+        Save as draft
+      </s-button>
+      <s-button variant="tertiary" href="/admin/products/123/archive">
+        Archive product
+      </s-button>
+    </s-stack>
+  </s-section>
+</s-popover>

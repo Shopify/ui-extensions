@@ -1,0 +1,42 @@
+<s-button commandFor="customer-search-popover" disclosure="true">
+  Add existing customer
+</s-button>
+
+<s-popover id="customer-search-popover">
+  <s-section>
+    <s-stack gap="base">
+      <s-search-field
+        label="Search customers"
+        name="customerSearch"
+        placeholder="Name, email, or phone"
+      ></s-search-field>
+
+      <s-divider></s-divider>
+
+      <s-stack gap="tight">
+        <s-button variant="tertiary">
+          <s-stack gap="tight" alignItems="start">
+            <s-text type="strong">Sarah Johnson</s-text>
+            <s-text tone="subdued">sarah@example.com</s-text>
+          </s-stack>
+        </s-button>
+        <s-button variant="tertiary">
+          <s-stack gap="tight" alignItems="start">
+            <s-text type="strong">Mike Chen</s-text>
+            <s-text tone="subdued">mike.chen@store.com</s-text>
+          </s-stack>
+        </s-button>
+        <s-button variant="tertiary">
+          <s-stack gap="tight" alignItems="start">
+            <s-text type="strong">Lisa Park</s-text>
+            <s-text tone="subdued">lisa.park@email.com</s-text>
+          </s-stack>
+        </s-button>
+      </s-stack>
+
+      <s-divider></s-divider>
+
+      <s-text tone="subdued">Showing 3 of 847 customers</s-text>
+    </s-stack>
+  </s-section>
+</s-popover>

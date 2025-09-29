@@ -1,0 +1,20 @@
+<s-stack gap="base">
+  <s-button commandFor="image-modal" command="--show">
+    View product image
+  </s-button>
+
+  <s-modal id="image-modal" heading="Product image" padding="none">
+    <s-box background="subdued" padding="base">
+      <s-text>Image would display here with full width</s-text>
+    </s-box>
+
+    <s-button
+      slot="secondary-actions"
+      variant="secondary"
+      commandFor="image-modal"
+      command="--hide"
+    >
+      Close
+    </s-button>
+  </s-modal>
+</s-stack>

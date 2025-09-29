@@ -1,0 +1,31 @@
+<s-stack gap="base">
+  <s-button commandFor="success-modal-example" command="--show">
+    Show success message
+  </s-button>
+
+  <s-modal id="success-modal-example" heading="Order fulfilled" size="small">
+    <s-stack gap="base">
+      <s-text>
+        Order #1001 has been successfully fulfilled and the customer has been
+        notified.
+      </s-text>
+    </s-stack>
+
+    <s-button
+      slot="primary-action"
+      variant="primary"
+      commandFor="success-modal-example"
+      command="--hide"
+    >
+      View order
+    </s-button>
+    <s-button
+      slot="secondary-actions"
+      variant="secondary"
+      commandFor="success-modal-example"
+      command="--hide"
+    >
+      Close
+    </s-button>
+  </s-modal>
+</s-stack>

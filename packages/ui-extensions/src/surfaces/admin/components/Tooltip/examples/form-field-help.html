@@ -1,0 +1,12 @@
+<s-tooltip id="sku-help-tooltip">
+  <s-text>
+    Stock keeping unit - a unique identifier for inventory tracking
+  </s-text>
+</s-tooltip>
+<s-stack gap="tight">
+  <s-stack gap="tight" direction="inline" alignItems="center">
+    <s-text interestFor="sku-field">SKU</s-text>
+    <s-icon tone="neutral" type="info" interestFor="sku-help-tooltip"></s-icon>
+  </s-stack>
+  <s-text-field name="sku" id="sku-field"></s-text-field>
+</s-stack>

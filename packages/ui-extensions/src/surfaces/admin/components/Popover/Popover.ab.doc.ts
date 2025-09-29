@@ -41,6 +41,55 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              "Demonstrates a popover with multiple action buttons for quickly changing a product's status, showing how popovers can provide contextual actions without cluttering the main interface.",
+            codeblock: {
+              title: 'Product status quick actions',
+              tabs: [
+                {
+                  code: './examples/product-status-quick-actions.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              "Shows a popover for customizing table columns, demonstrating how popovers can be used for settings and configuration interfaces that don't require a full page or modal.",
+            codeblock: {
+              title: 'Table display options',
+              tabs: [
+                {
+                  code: './examples/table-display-options.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Exhibits a popover with an embedded search field and search results, highlighting how popovers can support dynamic content and interactive search functionality.',
+            codeblock: {
+              title: 'Customer search with results',
+              tabs: [
+                {
+                  code: './examples/customer-search-with-results.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
