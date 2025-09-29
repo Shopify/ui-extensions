@@ -129,8 +129,8 @@
   ],
   "devDependencies": {
     "@remote-ui/async-subscription": "^2.1.16",
-    "@shopify/generate-docs": "0.19.7",
     "@quilted/react-testing": "^0.6.11",
+    "@shopify/generate-docs": "0.0.0-snapshot-20250926142605",
     "typescript": "^4.9.0",
     "@faker-js/faker": "^8.4.1",
     "preact": "^10.10.x",
