@@ -15,7 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       title: 'Events',
-      description: '',
+      description:
+        'Learn more about registering [events](/docs/api/pos-ui-extensions/using-polaris-components#events)',
       type: 'ChoiceListEvents',
     },
     {
@@ -40,6 +41,35 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
   related: [],
+  examples: {
+    description: 'ChoiceList usage patterns',
+    examples: [
+      {
+        description: 'Enable multiple selection mode with controlled values',
+        codeblock: {
+          title: 'Multiple selection',
+          tabs: [
+            {
+              code: './examples/multiple-selection.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description: 'Handle onChange and onInput events.',
+        codeblock: {
+          title: 'Event handling',
+          tabs: [
+            {
+              code: './examples/event-handling.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;

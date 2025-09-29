@@ -14,13 +14,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DateField',
     },
     {
-      title: 'Slots',
-      description: '',
-      type: 'DateFieldSlots',
-    },
-    {
       title: 'Events',
-      description: '',
+      description:
+        'Learn more about registering [events](/docs/api/pos-ui-extensions/using-polaris-components#events)',
       type: 'DateFieldEvents',
     },
   ],
@@ -39,6 +35,23 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
   related: [],
+  examples: {
+    description: 'DateField usage patterns',
+    examples: [
+      {
+        description: 'Handle date input events',
+        codeblock: {
+          title: 'Event handling',
+          tabs: [
+            {
+              code: './examples/event-handling.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;

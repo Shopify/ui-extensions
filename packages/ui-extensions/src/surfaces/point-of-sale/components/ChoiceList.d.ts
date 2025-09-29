@@ -39,8 +39,10 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 declare const tagName = 's-choice-list';
 export interface ChoiceListJSXProps
   extends Pick<ChoiceListProps, 'values' | 'multiple'> {
-  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /** Function called when the user changes a choice. Fires simultaneously with onChange. */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /** Function called when the user changes a choice. Fires simultaneously with onInput. */
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   children?: ComponentChildren;
 }
 declare global {

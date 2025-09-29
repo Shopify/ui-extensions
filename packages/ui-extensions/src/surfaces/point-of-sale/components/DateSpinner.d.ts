@@ -39,10 +39,18 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 declare const tagName = 's-date-spinner';
 export interface DateSpinnerJSXProps
   extends Pick<DateSpinnerProps, 'id' | 'value'> {
-  onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
-  onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
-  onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
+  /**
+   * Function called when the user makes a selection.
+   */
   onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
+  /**
+   * Function called when the value changes. Only called when a different value is selected.
+   */
+  onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
+  /** Function called when the date picker is dismissed. */
+  onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
+  /** Function called when the date picker is revealed. */
+  onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
 }
 declare global {
   interface HTMLElementTagNameMap {

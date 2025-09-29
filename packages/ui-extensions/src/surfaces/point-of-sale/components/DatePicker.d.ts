@@ -39,10 +39,14 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 declare const tagName = 's-date-picker';
 export interface DatePickerJSXProps
   extends Pick<DatePickerProps, 'id' | 'value'> {
-  onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
-  onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
-  onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
+  /** Function called when the user selects a date from the picker. */
   onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
+  /** Function called when the user selects a date from the picker that is different to the current value. */
+  onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
+  /** Function called when the date picker is dismissed. */
+  onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
+  /** Function called when the date picker is revealed. */
+  onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
 }
 declare global {
   interface HTMLElementTagNameMap {

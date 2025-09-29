@@ -15,12 +15,14 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'Learn more about using [slots](/docs/api/pos-ui-extensions/using-polaris-components#slots)',
       type: 'TextFieldSlots',
     },
     {
       title: 'Events',
-      description: '',
+      description:
+        'Learn more about registering [events](/docs/api/pos-ui-extensions/using-polaris-components#events)',
       type: 'TextFieldEvents',
     },
   ],
@@ -39,6 +41,50 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
   related: [],
+  examples: {
+    description: 'Advanced usage patterns for TextField component',
+    examples: [
+      {
+        description:
+          'Handle TextField events: onInput, onFocus, onBlur, and onChange.',
+        codeblock: {
+          title: 'Event handling',
+          tabs: [
+            {
+              code: './examples/event-handling.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Add action buttons using the accessory slot. Only `s-button` and `s-clickable` are supported, with text content only',
+        codeblock: {
+          title: 'Accessory slot',
+          tabs: [
+            {
+              code: './examples/accessory-slot.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Common TextField props for validation, constraints, and user guidance.',
+        codeblock: {
+          title: 'Common props',
+          tabs: [
+            {
+              code: './examples/common-props.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;
