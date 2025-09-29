@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.45
+
+### Patch Changes
+
+- [#3376](https://github.com/Shopify/ui-extensions/pull/3376) [`57978c63a44b275123b9b1b9db60a67d61652d24`](https://github.com/Shopify/ui-extensions/commit/57978c63a44b275123b9b1b9db60a67d61652d24) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - [Colorfield] update description for documentation
+
+- [#3367](https://github.com/Shopify/ui-extensions/pull/3367) [`b90f42b676659a6e02e47547d53d7881365c81d3`](https://github.com/Shopify/ui-extensions/commit/b90f42b676659a6e02e47547d53d7881365c81d3) Thanks [@charlesdobson](https://github.com/charlesdobson)! - expose intents.invoke API to UI Extensions
+
 ## 2025.10.0-rc.44
 
 ### Patch Changes
