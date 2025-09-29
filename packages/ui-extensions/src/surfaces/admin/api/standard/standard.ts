@@ -2,13 +2,9 @@ import type {I18n} from '../../../../api';
 import {ApiVersion} from '../../../../shared';
 import type {Storage} from './storage';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
+import type {Intents} from '../intents/intents';
 
-export interface Intents {
-  /**
-   * The URL that was used to launch the intent.
-   */
-  launchUrl?: string | URL;
-}
+export type {Intents} from '../intents/intents';
 
 /**
  * GraphQL error returned by the Shopify Admin API.
