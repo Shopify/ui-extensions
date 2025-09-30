@@ -45,12 +45,12 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Centered loading indicator with text in a card layout for content loading states.',
+              'Centered loading indicator with text in a section layout for content loading states.',
             codeblock: {
-              title: 'Loading state in card',
+              title: 'Loading state in section',
               tabs: [
                 {
-                  code: './examples/loading-state-in-card.html',
+                  code: './examples/loading-state-in-section.html',
                   language: 'preview',
                 },
               ],
