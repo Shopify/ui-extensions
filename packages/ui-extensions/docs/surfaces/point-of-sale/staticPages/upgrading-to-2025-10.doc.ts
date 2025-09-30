@@ -17,15 +17,6 @@ This guide describes how to upgrade your point-of-sale UI extension to API versi
       title: 'Update API version',
       sectionContent:
         'Set the API version to `2025-10` in `shopify.extension.toml` to use Polaris web components.',
-      sectionNotice: [
-        {
-          title: 'Early access preview',
-          sectionContent: `
-We do not recommend migrating your production point-of-sale UI extension to Polaris yet. However, now is a great time to explore this new version and start thinking about what it means for your own extensions.
-`,
-          type: 'info',
-        },
-      ],
       codeblock: {
         title: 'shopify.extension.toml',
         tabs: [
@@ -279,17 +270,6 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
       anchorLink: 'polaris-web-components',
       title: 'Polaris web components',
       sectionContent: '',
-      sectionNotice: [
-        {
-          title: 'Early access preview',
-          sectionContent: `
-These web components are an early access preview of the [Polaris](/beta/next-gen-dev-platform/polaris) UI framework. We will add more components over time.
-
-Use the comparison table below to see which Polaris web components are available today, which are coming soon, and how they map to legacy components.
-`,
-          type: 'info',
-        },
-      ],
     },
     {
       type: 'Markdown',
