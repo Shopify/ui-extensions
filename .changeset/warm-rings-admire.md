@@ -1,5 +1,5 @@
 ---
-'@shopify/ui-extensions': minor
+'@shopify/ui-extensions': patch
 ---
 
 - Added updated docs for checkout components and targets.

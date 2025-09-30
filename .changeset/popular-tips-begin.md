@@ -1,5 +1,5 @@
 ---
-'@shopify/ui-extensions': minor
+'@shopify/ui-extensions': patch
 ---
 
 Adding ui-extensions components to the checkout surface.

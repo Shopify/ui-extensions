@@ -1,5 +1,5 @@
 ---
-'@shopify/ui-extensions': minor
+'@shopify/ui-extensions': patch
 ---
 
 Add signal-like value property to customer account api
