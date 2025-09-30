@@ -111,12 +111,12 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows how dividers can be used to create clean, segmented sections within a card interface, improving information hierarchy.',
+              'Shows how dividers can be used to create clean, segmented sections within a section, improving information hierarchy.',
             codeblock: {
-              title: 'Visual breaks in card layouts',
+              title: 'Visual breaks in section layouts',
               tabs: [
                 {
-                  code: './examples/visual-breaks-in-card-layouts.html',
+                  code: './examples/visual-breaks-in-section-layouts.html',
                   language: 'preview',
                 },
               ],
