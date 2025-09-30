@@ -94,18 +94,6 @@ if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
 
-echo
-if [ $API_VERSION == "2025-10-rc" ]
-then
-  echo "**** ${API_VERSION}: prefixing generate commands with POLARIS_UNIFIED=true"
-  run_sed 's/(shopify app generate extension)/POLARIS_UNIFIED=true \1/gi' \
-    ./$DOCS_PATH/generated/generated_static_pages.json
-else
-  echo "**** ${API_VERSION}: NOT prefixing generate commands with POLARIS_UNIFIED=true"
-fi
-echo
-
-
 
 copy_generated_docs_to_shopify_dev() {
 # Copy the generated docs to shopify-dev
