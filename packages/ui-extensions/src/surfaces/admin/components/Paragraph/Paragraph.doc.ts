@@ -135,19 +135,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates how paragraph components can be used together with other layout components like block stack to create structured and informative text sections.',
-            codeblock: {
-              title: 'Integration with Other Components',
-              tabs: [
-                {
-                  code: './examples/integration-with-other-components.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
               'Showcases various tone and color combinations for different administrative messages, illustrating how paragraph can communicate different types of information in a user interface.',
             codeblock: {
               title: 'Admin UI Patterns',

@@ -76,7 +76,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Common product status indicators used throughout the product catalog.',
+              'Common status indicators demonstrating chips in real-world product management scenarios.',
             codeblock: {
               title: 'Product status',
               tabs: [
@@ -89,109 +89,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Order fulfillment status indicators for the orders section.',
-            codeblock: {
-              title: 'Order status',
-              tabs: [
-                {
-                  code: './examples/order-status.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Inventory tracking indicators for product availability.',
-            codeblock: {
-              title: 'Inventory status',
-              tabs: [
-                {
-                  code: './examples/inventory-status.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description: 'Payment state indicators for transaction tracking.',
-            codeblock: {
-              title: 'Payment status',
-              tabs: [
-                {
-                  code: './examples/payment-status.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Customer categorization labels for segmentation and personalization.',
-            codeblock: {
-              title: 'Customer tags',
-              tabs: [
-                {
-                  code: './examples/customer-tags.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shipping and delivery option indicators for order management.',
-            codeblock: {
-              title: 'Shipping methods',
-              tabs: [
-                {
-                  code: './examples/shipping-methods.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Discount and promotion indicators for pricing and marketing.',
-            codeblock: {
-              title: 'Discount labels',
-              tabs: [
-                {
-                  code: './examples/discount-labels.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Product variation attributes for inventory management.',
-            codeblock: {
-              title: 'Product variants',
-              tabs: [
-                {
-                  code: './examples/product-variants.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description: 'Product collection labels for catalog organization.',
-            codeblock: {
-              title: 'Collections',
-              tabs: [
-                {
-                  code: './examples/collections.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates automatic text truncation for long content.',
+              'Demonstrates automatic text truncation for long content within a constrained width.',
             codeblock: {
               title: 'Text truncation',
               tabs: [

@@ -160,77 +160,12 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Text element associated with form fields for contextual help messages.',
+              'Text element associated with tooltips using the `interestFor` attribute to show additional information on hover or focus.',
             codeblock: {
               title: 'Interest For Association',
               tabs: [
                 {
                   code: './examples/interest-for-association.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Combined text elements showing order information with proper formatting and emphasis.',
-            codeblock: {
-              title: 'Order Details Example',
-              tabs: [
-                {
-                  code: './examples/order-details-example.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Structured product information with status indicators and detailed descriptions.',
-            codeblock: {
-              title: 'Product Description Example',
-              tabs: [
-                {
-                  code: './examples/product-description-example.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Displays a critical notification about a payment issue, using strong and subdued text to convey urgency and additional information.',
-            codeblock: {
-              title: 'Merchant Notification',
-              tabs: [
-                {
-                  code: './examples/merchant-notification.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Presents a comprehensive inventory status display with different text styles to show product stock levels and reorder information.',
-            codeblock: {
-              title: 'Inventory Status Example',
-              tabs: [
-                {
-                  code: './examples/inventory-status-example.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates a product form layout with text elements providing context, instructions, and validation for a product title input field.',
-            codeblock: {
-              title: 'Product Form Example',
-              tabs: [
-                {
-                  code: './examples/product-form-example.html',
                   language: 'preview',
                 },
               ],
