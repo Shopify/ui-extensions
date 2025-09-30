@@ -160,7 +160,7 @@ Customer account components are designed to be flexible, enabling you to layer a
         {
           name: 'Figma UI kit',
           subtitle: 'UI Reference',
-          url: 'https://www.figma.com/community/file/1304881365343613949/checkout-and-account-components',
+          url: 'https://www.figma.com/community/file/1554582792754361051',
           type: 'library',
         },
       ],
