@@ -167,8 +167,8 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
             tabs: [
               {
                 title: 'JavaScript',
-                code: './examples/upgrading-to-2025-10-rc/apis-old-js.js',
-                language: 'ts',
+                code: './examples/upgrading-to-2025-10-rc/apis-old-js.jsx',
+                language: 'tsx',
               },
             ],
           },
@@ -218,8 +218,8 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
             tabs: [
               {
                 title: 'JavaScript',
-                code: './examples/upgrading-to-2025-10-rc/components-old-js.js',
-                language: 'ts',
+                code: './examples/upgrading-to-2025-10-rc/components-old-js.jsx',
+                language: 'tsx',
               },
             ],
           },
