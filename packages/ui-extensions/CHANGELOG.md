@@ -1,5 +1,286 @@
 # @shopify/ui-extensions
 
+## 2025.10.0
+
+### Patch Changes
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - add signal-like value property to checkout api
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add customer account components to subcategories
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add preact entry to ui-extensions
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Fix typing for polaris web components to include properties and exclude slots in POS UI Extensions
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Move analytics api from osp api to standard api in customer account ui extension.
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update POS Cart API selling plan method to support more fields
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add Grid Item component for Admin
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Remove global declaration from target d.ts as this was causing conflicting types
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update ButtonGroup documentation and fix DateField Properties title
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Added optional `discountAllocations` field to Cart Line Item API so that POS extensions can see the precise proportion of a discount applied to a particular line item. Only the `allocatedAmount` field is included for this purpose, matching the Storefront API structure. See https://shopify.dev/docs/api/storefront/latest/objects/DiscountAllocation.
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Import component types instead of inlining them to reduce file size
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Pin Pad API updates
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Make preact and @preact/signals optional peer dependencies
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add Avatar to Admin UI Extensions
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update signal-like type in customer account to have deprecated fields
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Defaulting to string type for enabled features passed to the templates
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Fix broken image links for Polaris Web Components
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Migrate customer account target examples to Preact
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Fix component.d.ts files not properly deduping non-unique references.
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update admin components to use ComponentChildren instead of ComponentChild type
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Updated the navigation function in Navigation API to allow for navigation to POS native screen and added a canNavigate function to allow partners to check if they can navigate to the specified POS native screen
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Remove hook docs completely from customer account
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add support for Function Settings component for Admin
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add ButtonGroup component to customer account
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Export selling plan related types
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Fix regression where children property was removed
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Aligned POS navigation api
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add Menu component to customer account
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Export visitor result type on customer account ui extension
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add ButtonGroup to Admin UI Extensions
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Patch preact signal
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Adds pos.receipt-header.block.render extension target
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update signal-like type for customer account
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update customer account examples to use signals
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add DateField to Admin UI Extensions
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - [Admin] Add QueryContainer component
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add Thumbnail to Admin UI Extensions
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - test
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add error message to pin rejection result on PinPad API
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update component images in customer account
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add Picker
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Delete unused examples in customer account
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update amdmin ui-extensions
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Fix broken image in customer account Avatar docs
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Missing component types for targets
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add key, ref for customer account components
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Updated comments for documentation and adjusted the return value of the previous navigate function
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add checkout components:
+
+  - Badge
+  - Clickable
+  - Details
+  - Divider
+  - Grid
+  - GridItem
+  - PasswordField
+  - Popover
+  - ProductThumbnail
+  - ScrollBox
+  - Sheet
+  - SkeletonParagraph
+  - Summary
+  - Switch
+  - UrlField
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add ButtonGroup to customer account component mapping
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Export PinValidationResult type for PinPad API
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - The function canNavigate of Navigation API will return a Promise instead of a boolean since it throws an error if the user is on a version of POS extensions that is lower than 2025-10.
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update components types for Admin surface
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add checkout components:
+
+  - Checkbox
+  - Modal
+  - ProductThumbnail
+  - EmailField
+  - PhoneField
+  - TextArea
+  - Map
+  - MapMarker
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Remove deprecated CustomerSegmentTemplate component
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update customer account ui extensions component props to include id
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update Navigation Api docs and typings for customer accounts
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update Admin UI Extensions component definitions to 1.3.0
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add Section component with `primary-action` and `secondary-actions` slots to customer account
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Adding ui-extensions components to the checkout surface.
+
+  - ConsentCheckbox
+  - ConsentPhoneField
+  - NumberField
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Support remote-dom for Admin surface
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Remove children props from component JSX props interface
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update Customer Account Avatar size prop to SizeKeyword
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - 2025-10 RC 27
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - AdminBlock remove summary prop and add collapsedSummary
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - POS navigate API updated to return `Promise<void>` as implemented
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - fix QueryContainer types not registering for 3P extensions code
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Remove unused JavaScript examples from customer account
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update customer account component docs
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - [Colorfield] update description for documentation
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update component docs in customer account
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Simplify selling plans APIs for POS
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Migrate consent sheet example in customer account
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add discount function settings api
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - - Added updated docs for checkout components and targets.
+
+  - Added updated docs for customer account components and targets.
+  - Added new components to checkout:
+    - Badge
+    - Clickable
+    - Details
+    - Divider
+    - Grid
+    - GridItem
+    - MoneyField
+    - Popover
+    - PressButton
+    - Sheet
+    - SkeletonParagraph
+    - Summary
+    - Switch
+    - Tooltip
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add documentation for Admin Modal
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - test release
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - expose intents.invoke API to UI Extensions
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add selling plan functionality to Cart API and line item types
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add target definitions to point of sale
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Fix shopify global declaration
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add signal-like value property to customer account api
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Remove ui typings from 2025-10
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Sync picker and resourcePicker docs with app-bridge
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Updated the comment in Navigation API to align with the documentation of the uri
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - - Adding ProductThumbnail
+
+  - Add Events type changes
+  - Improve documentation examples
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - fix `useNavigationCurrentEntry` hook returning stale value
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - - Added customer account migration guide with comparison tables mapping legacy components to new Polaris web components
+
+  - Removed extended form field event properties from the documentation to simplify component APIs
+  - Added documentation for Section component with visual examples
+  - Improved parent-child component relationship documentation for admin components
+  - Added script to exit pre-release mode
+  - Updated component descriptions and documentation for Admin UI components
+  - Fixed Preact native types for customer account
+  - Moved example country selector to top of documentation
+  - Fixed form components events and HTML examples
+  - Added support for Polaris web components in checkout extensions
+  - Added scaffolded with Preact section for checkout extensions
+  - Updated documentation for various components with copy edits and improved examples
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - [customer account] add announcement targets
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Modified transaction data interface fields to include returnId and refundId to Return and Exchange TransactionData.
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Update mapping of legacy components to Polaris web components for customer accounts
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add parent/parentRelationship property to CartLines for Checkout.
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add toast api on customer accounts standard api
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - - Added updated docs for checkout components and targets.
+
+  - Added updated docs for customer account components and targets.
+  - Added new components to checkout:
+    - Announcement
+    - Chip
+    - Choice
+    - ChoiceList
+    - ClickableChip
+    - DateField
+    - DatePicker
+    - Option
+    - PasswordField
+    - QueryContainer
+    - ScrollBox
+    - Select
+    - URLField
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Migrate some customer account examples to Preact
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add new remote-dom components for Admin
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - segmentation-templates moving to data-extension target
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Expose additional selling plan-related fields in POS UI extensions models
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add autoSubmit to POS PinPad API and improve PinPadActionType
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Toast api returns `Promise<ToastResult>`
+
+- [#3421](https://github.com/Shopify/ui-extensions/pull/3421) [`ff3d2bb`](https://github.com/Shopify/ui-extensions/commit/ff3d2bb1857e0b05c8314e2daf0c818cb7443f59) Thanks [@oliverigor](https://github.com/oliverigor)! - Add ButtonGroup, Chip and ClickableChip to StandardComponents.ts
+
 ## 2025.10.0-rc.48
 
 ### Patch Changes
