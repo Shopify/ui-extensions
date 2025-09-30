@@ -156,12 +156,12 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates avatar integration with other admin-ui components in a merchant card layout.',
+              'Demonstrates avatar integration with other admin-ui components in a merchant section layout.',
             codeblock: {
-              title: 'With card component',
+              title: 'With Section component',
               tabs: [
                 {
-                  code: './examples/with-card-component.html',
+                  code: './examples/with-section-component.html',
                   language: 'preview',
                 },
               ],
