@@ -10,6 +10,7 @@ export type StandardComponents =
   | 'DateField'
   | 'DatePicker'
   | 'DateSpinner'
+  | 'Divider'
   | 'EmailField'
   | 'Heading'
   | 'Icon'
@@ -20,6 +21,7 @@ export type StandardComponents =
   | 'POSBlock'
   | 'PosBlock' // Case is important in 2025-10
   | 'QRCode'
+  | 'QrCode' // Case is important in 2025-10
   | 'Route'
   | 'Router'
   | 'ScrollBox'
