@@ -1,5 +1,5 @@
 ---
-'@shopify/ui-extensions': minor
+'@shopify/ui-extensions': patch
 ---
 
 Add DateField to Admin UI Extensions
