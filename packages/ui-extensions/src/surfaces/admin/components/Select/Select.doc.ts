@@ -83,19 +83,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Select dropdown that updates other page elements based on the selected shipping option.',
-            codeblock: {
-              title: 'Dynamic content with JavaScript',
-              tabs: [
-                {
-                  code: './examples/dynamic-content-with-javascript.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
               'Select dropdown with helpful placeholder text guiding category selection.',
             codeblock: {
               title: 'With placeholder',

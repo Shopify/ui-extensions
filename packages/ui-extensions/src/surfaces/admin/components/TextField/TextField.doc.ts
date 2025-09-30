@@ -63,19 +63,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates dynamic interaction between two text fields, where the first input (product title) automatically generates a URL-friendly handle in the second field, showcasing real-time input transformation.',
-            codeblock: {
-              title: 'Event handling with JavaScript',
-              tabs: [
-                {
-                  code: './examples/event-handling-with-javascript.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
               'Compares two approaches to managing text field state: a controlled component with a predefined value, and an uncontrolled component with a default value that can be modified by the user.',
             codeblock: {
               title: 'Controlled vs uncontrolled',
