@@ -26,6 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   currentTarget: HTMLElementTagNameMap[T];
   bubbles?: boolean;
@@ -39,13 +40,21 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 declare const tagName = 's-date-picker';
 export interface DatePickerJSXProps
   extends Pick<DatePickerProps, 'id' | 'value'> {
-  /** Function called when the user selects a date from the picker. */
+  /**
+   * Callback when the user selects a date from the picker.
+   */
   onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
-  /** Function called when the user selects a date from the picker that is different to the current value. */
+  /**
+   * Callback when the user selects a date from the picker that is different to the current value.
+   */
   onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
-  /** Function called when the date picker is dismissed. */
+  /**
+   * Callback when the date picker is dismissed.
+   */
   onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
-  /** Function called when the date picker is revealed. */
+  /**
+   * Callback when the date picker is revealed.
+   */
   onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
 }
 declare global {
@@ -56,8 +65,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: DatePickerJSXProps &
-        BaseElementPropsWithChildren<DatePickerJSXProps>;
+      [tagName]: IntrinsicElementProps<DatePickerJSXProps>;
     }
   }
 }

@@ -31,6 +31,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   currentTarget: HTMLElementTagNameMap[T];
   bubbles?: boolean;
@@ -45,6 +46,7 @@ declare const tagName = 's-email-field';
 export interface EmailFieldJSXProps
   extends Pick<
     EmailFieldProps,
+    | 'id'
     | 'label'
     | 'value'
     | 'placeholder'
@@ -54,29 +56,37 @@ export interface EmailFieldJSXProps
     | 'maxLength'
     | 'details'
   > {
-  /** Function called when the user makes any changes in the field. */
+  /**
+   * Callback when the user makes any changes in the field.
+   */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /** Function called after editing completes (typically on blur). */
+  /**
+   * Callback after editing completes (typically on blur).
+   */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /** Function called when the element loses focus. */
+  /**
+   * Callback when the element loses focus.
+   */
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /** Function called when the element receives focus. */
+  /**
+   * Callback when the element receives focus.
+   */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
    * Additional content to be displayed in the field. Commonly used to display clickable text.
    */
   accessory?: ComponentChild;
 }
+export type ElementProps = Omit<EmailFieldJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: EmailFieldJSXProps;
+    [tagName]: ElementProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<EmailFieldJSXProps, 'accessory'> &
-        BaseElementPropsWithChildren<Omit<EmailFieldJSXProps, 'accessory'>>;
+      [tagName]: IntrinsicElementProps<ElementProps>;
     }
   }
 }

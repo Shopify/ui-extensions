@@ -9,7 +9,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  SectionProps,
+  POSBlockProps,
   Key,
   Ref,
   ComponentChild,
@@ -31,31 +31,30 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-pos-block';
-export interface PosBlockJSXProps extends Pick<SectionProps, 'children'> {
+export interface PosBlockJSXProps
+  extends Pick<POSBlockProps, 'id' | 'heading'> {
+  /**
+   * The secondary actions to perform, provided as button or link type elements.
+   */
   secondaryActions?: ComponentChild;
   /**
-   * Adds title text displayed at the top left of the section
-   *
-   * **Mobile surfaces:** Uses the standard POS Design System heading style for a section (not h2).
-   *
-   * @default undefined
+   * The content of the Block.
    */
-  heading?: string;
+  children?: ComponentChildren;
 }
+export type ElementProps = Omit<PosBlockJSXProps, 'secondaryActions'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: PosBlockJSXProps;
+    [tagName]: ElementProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<PosBlockJSXProps, 'secondaryActions'> &
-        BaseElementPropsWithChildren<
-          Omit<PosBlockJSXProps, 'secondaryActions'>
-        >;
+      [tagName]: IntrinsicElementProps<ElementProps>;
     }
   }
 }

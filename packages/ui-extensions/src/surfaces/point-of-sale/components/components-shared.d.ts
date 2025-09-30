@@ -1252,7 +1252,6 @@ export interface BaseBoxProps
 export interface BaseBoxPropsWithRole
   extends BaseBoxProps,
     AccessibilityRoleProps {}
-export interface BoxProps extends BaseBoxPropsWithRole, GlobalProps {}
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The behavior of the Button.
@@ -2281,6 +2280,45 @@ export interface BaseTypographyProps {
    */
   dir?: 'ltr' | 'rtl' | 'auto' | '';
 }
+export interface BlockTypographyProps {
+  /**
+   * Truncates the text content to the specified number of lines.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
+   *
+   * @default Infinity - no truncation is applied
+   */
+  lineClamp?: number;
+}
+export interface HeadingProps
+  extends GlobalProps,
+    AccessibilityVisibilityProps,
+    BlockTypographyProps {
+  /**
+   * The content of the Heading.
+   */
+  children?: ComponentChildren;
+  /**
+   * Sets the semantic meaning of the component’s content. When set,
+   * the role will be used by assistive technologies to help users
+   * navigate the page.
+   *
+   * - `heading`: defines the element as a heading to a page or section.
+   * - `presentation`: the heading level will be stripped,
+   * and will prevent the element’s implicit ARIA semantics from
+   * being exposed to the accessibility tree.
+   * - `none`: a synonym for the `presentation` role.
+   *
+   * @default 'heading'
+   *
+   * @implementation The `heading` role doesn't need to be applied if
+   * the host applies it for you; for example, an HTML host rendering
+   * an `<h2>` element should not apply the `heading` role.
+   */
+  accessibilityRole?:
+    | 'heading'
+    | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
+}
 export interface IconProps
   extends GlobalProps,
     Pick<InteractionProps, 'interestFor'> {
@@ -2520,6 +2558,69 @@ export interface PageProps extends GlobalProps, ActionSlots {
    * @default 'base'
    */
   inlineSize?: SizeKeyword;
+}
+export interface POSBlockProps
+  extends GlobalProps,
+    Pick<ActionSlots, 'secondaryActions'> {
+  /**
+   * The heading to display within the POSBlock.
+   *
+   * If not provided, the description of the extension will be used when a heading is appropriate.
+   */
+  heading?: string;
+  /**
+   * The content to display within the POSBlock.
+   */
+  children?: ComponentChildren;
+  /**
+   * The secondary actions to perform, provided as button or link type elements.
+   */
+  secondaryActions?: ComponentChildren;
+}
+export interface QRCodeProps extends GlobalProps {
+  /**
+   * Set the border of the QR code.
+   *
+   * `base`: applies border that is appropriate for the element.
+   * `none`: removes the border from the element.
+   *
+   * @default 'base'
+   */
+  border?: 'base' | 'none';
+  /**
+   * The content to be encoded in the QR code, which can be any string such as a URL, email address, plain text, etc.
+   * Specific string formatting can trigger actions on the user's device when scanned, like opening geolocation
+   * coordinates on a map, opening a preferred app or app store entry, preparing an email, text message, and more.
+   */
+  content?: string;
+  /**
+   * The displayed size of the QR code.
+   *
+   * `fill`: the QR code will takes up 100% of the available inline-size and maintain a 1:1 aspect ratio.
+   * `base`: the QR code will be displayed at its default size.
+   *
+   * @default 'base'
+   */
+  size?: 'base' | 'fill';
+  /**
+   * A label that describes the purpose or contents of the QR code. When set,
+   * it will be announced to users using assistive technologies and will
+   * provide more context about what the QR code may do when scanned.
+   *
+   * @default 'QR code' (translated to the user's locale)
+   */
+  accessibilityLabel?: string;
+  /**
+   * Invoked when the conversion of `content` to a QR code fails.
+   * If an error occurs, the QR code and its child elements will not be displayed.
+   */
+  onError?: (event: Event) => void;
+  /**
+   * URL of an image to be displayed in the center of the QR code.
+   * This is useful for branding or to indicate to the user what scanning the QR code will do.
+   * By default, no image is displayed.
+   */
+  logo?: string;
 }
 export interface ScrollEventProps {
   /**

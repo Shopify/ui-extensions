@@ -26,6 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   currentTarget: HTMLElementTagNameMap[T];
   bubbles?: boolean;
@@ -42,13 +43,21 @@ export interface TimeFieldJSXProps
     TimeFieldProps,
     'id' | 'label' | 'disabled' | 'value' | 'error' | 'details'
   > {
-  /** Function called when the user makes any changes in the field. */
+  /**
+   * Callback when the user makes any changes in the field.
+   */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /** Function called after editing completes (typically on blur). */
+  /**
+   * Callback after editing completes (typically on blur).
+   */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /** Function called when the element loses focus. */
+  /**
+   * Callback when the element loses focus.
+   */
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /** Function called when the element receives focus. */
+  /**
+   * Callback when the element receives focus.
+   */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 declare global {
@@ -59,8 +68,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: TimeFieldJSXProps &
-        BaseElementPropsWithChildren<TimeFieldJSXProps>;
+      [tagName]: IntrinsicElementProps<TimeFieldJSXProps>;
     }
   }
 }

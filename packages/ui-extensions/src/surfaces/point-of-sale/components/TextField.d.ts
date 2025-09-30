@@ -31,6 +31,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   currentTarget: HTMLElementTagNameMap[T];
   bubbles?: boolean;
@@ -45,6 +46,7 @@ declare const tagName = 's-text-field';
 export interface TextFieldJSXProps
   extends Pick<
     TextFieldProps,
+    | 'id'
     | 'label'
     | 'details'
     | 'value'
@@ -55,19 +57,19 @@ export interface TextFieldJSXProps
     | 'maxLength'
   > {
   /**
-   * Function called when the user makes any changes in the field.
+   * Callback when the user makes any changes in the field.
    */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * Function called after editing completes (typically on blur).
+   * Callback after editing completes (typically on blur).
    */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * Function called when the element loses focus.
+   * Callback when the element loses focus.
    */
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * Function called when the element receives focus.
+   * Callback when the element receives focus.
    */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
@@ -75,16 +77,16 @@ export interface TextFieldJSXProps
    */
   accessory?: ComponentChild;
 }
+export type ElementProps = Omit<TextFieldJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: TextFieldJSXProps;
+    [tagName]: ElementProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<TextFieldJSXProps, 'accessory'> &
-        BaseElementPropsWithChildren<Omit<TextFieldJSXProps, 'accessory'>>;
+      [tagName]: IntrinsicElementProps<ElementProps>;
     }
   }
 }

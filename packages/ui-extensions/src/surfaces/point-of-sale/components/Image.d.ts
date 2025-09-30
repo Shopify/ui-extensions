@@ -26,11 +26,10 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-image';
-export type PickedProps = Pick<ImageProps, 'src' | 'inlineSize' | 'objectFit'>;
-export interface ImageJSXProps extends PickedProps {
-  children?: ComponentChildren;
+export interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
   /**
    * The displayed inline width of the image.
    *
@@ -45,7 +44,15 @@ export interface ImageJSXProps extends PickedProps {
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
    */
-  inlineSize?: PickedProps['inlineSize'];
+  inlineSize?: ImageProps['inlineSize'];
+  /**
+   * The image source, which should be a remote URL.
+   *
+   * When the image is loading or no `src` is provided, a placeholder will be rendered.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
+   */
+  src?: ImageProps['src'];
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -55,7 +62,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ImageJSXProps & BaseElementPropsWithChildren<ImageJSXProps>;
+      [tagName]: IntrinsicElementProps<ImageJSXProps>;
     }
   }
 }

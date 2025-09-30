@@ -26,10 +26,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-choice';
 export interface ChoiceJSXProps
-  extends Pick<ChoiceProps, 'value' | 'disabled' | 'selected'> {
+  extends Pick<ChoiceProps, 'id' | 'value' | 'disabled' | 'selected'> {
   children?: ComponentChildren;
 }
 declare global {
@@ -40,7 +41,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ChoiceJSXProps & BaseElementPropsWithChildren<ChoiceJSXProps>;
+      [tagName]: IntrinsicElementProps<ChoiceJSXProps>;
     }
   }
 }

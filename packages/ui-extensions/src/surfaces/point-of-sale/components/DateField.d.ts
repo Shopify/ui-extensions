@@ -26,6 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   currentTarget: HTMLElementTagNameMap[T];
   bubbles?: boolean;
@@ -40,27 +41,35 @@ declare const tagName = 's-date-field';
 export interface DateFieldJSXProps
   extends Pick<
     DateFieldProps,
-    'label' | 'details' | 'value' | 'disabled' | 'error'
+    'id' | 'label' | 'details' | 'value' | 'disabled' | 'error'
   > {
-  /** Function called when the user makes any changes in the field. */
+  /**
+   * Callback when the user makes any changes in the field.
+   */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /** Function called after editing completes (typically on blur). */
+  /**
+   * Callback after editing completes (typically on blur).
+   */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /** Function called when the element loses focus. */
+  /**
+   * Callback when the element loses focus.
+   */
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /** Function called when the element receives focus. */
+  /**
+   * Callback when the element receives focus.
+   */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
+export type ElementProps = Omit<DateFieldJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: DateFieldJSXProps;
+    [tagName]: ElementProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<DateFieldJSXProps, 'accessory'> &
-        BaseElementPropsWithChildren<Omit<DateFieldJSXProps, 'accessory'>>;
+      [tagName]: IntrinsicElementProps<ElementProps>;
     }
   }
 }

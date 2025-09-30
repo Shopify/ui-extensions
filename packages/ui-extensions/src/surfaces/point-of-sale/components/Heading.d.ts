@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {Key, Ref} from './components-shared.d.ts';
+import type {HeadingProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -26,9 +26,13 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-heading';
-export interface HeadingJSXProps {
+export interface HeadingJSXProps extends Pick<HeadingProps, 'id'> {
+  /**
+   * The content of the Heading.
+   */
   children?: ComponentChildren;
 }
 declare global {
@@ -39,8 +43,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HeadingJSXProps &
-        BaseElementPropsWithChildren<HeadingJSXProps>;
+      [tagName]: IntrinsicElementProps<HeadingJSXProps>;
     }
   }
 }

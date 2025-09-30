@@ -26,9 +26,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-divider';
-export interface DividerJSXProps extends Pick<DividerProps, 'direction'> {}
+export interface DividerJSXProps
+  extends Pick<DividerProps, 'id' | 'direction'> {}
 declare global {
   interface HTMLElementTagNameMap {
     [tagName]: DividerJSXProps;
@@ -37,8 +39,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: DividerJSXProps &
-        BaseElementPropsWithChildren<DividerJSXProps>;
+      [tagName]: IntrinsicElementProps<DividerJSXProps>;
     }
   }
 }

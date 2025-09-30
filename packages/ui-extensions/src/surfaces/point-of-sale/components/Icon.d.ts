@@ -10,6 +10,7 @@
 /// <reference lib="DOM" />
 import type {IconProps, Key, Ref} from './components-shared.d.ts';
 
+export type ComponentChildren = any;
 /**
  * Used when an element does not have children.
  */
@@ -18,6 +19,14 @@ export interface BaseElementProps<TClass = HTMLElement> {
   ref?: Ref<TClass>;
   slot?: Lowercase<string>;
 }
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren;
+}
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-icon';
 export type SupportedIconNames = Extract<
@@ -149,9 +158,10 @@ export type SupportedIconNames = Extract<
   | 'x-circle'
 >;
 export interface IconJSXProps
-  extends Pick<IconProps, 'tone' | 'color' | 'size'> {
+  extends Pick<IconProps, 'id' | 'tone' | 'color' | 'size'> {
   /**
-   * The type of icon to display. Maps to PDS icon names.
+   * The type of icon to display.
+   *
    * @default ''
    */
   type?: SupportedIconNames;
@@ -164,7 +174,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: IconJSXProps & BaseElementProps<IconJSXProps>;
+      [tagName]: IntrinsicElementProps<IconJSXProps>;
     }
   }
 }

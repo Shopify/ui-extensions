@@ -26,15 +26,36 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-text';
-export interface TextJSXProps extends Pick<TextProps, 'tone' | 'type'> {
-  color?: 'subdued' | 'base' | 'strong';
-  type?: Extract<TextProps['type'], 'strong' | 'small' | 'generic'>;
+export interface TextJSXProps extends Pick<TextProps, 'id'> {
+  /**
+   * Modify the color to be more or less intense.
+   *
+   * @default 'base'
+   */
+  color?: Extract<TextProps['color'], 'base' | 'strong' | 'subdued'>;
+  /**
+   * Provide semantic meaning and default styling to the text.
+   *
+   * Other presentation properties on Text override the default styling.
+   *
+   * @default 'generic'
+   */
+  type?: Extract<TextProps['type'], 'generic' | 'strong' | 'small'>;
+  /**
+   * Sets the tone of the component, based on the intention of the information being conveyed.
+   *
+   * @default 'auto'
+   */
   tone?: Extract<
     TextProps['tone'],
     'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
   >;
+  /**
+   * The Text content. Supports nested text elements.
+   */
   children?: ComponentChildren;
 }
 declare global {
@@ -45,7 +66,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: TextJSXProps & BaseElementPropsWithChildren<TextJSXProps>;
+      [tagName]: IntrinsicElementProps<TextJSXProps>;
     }
   }
 }
