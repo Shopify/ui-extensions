@@ -55,6 +55,12 @@ const data: LandingTemplateSchema = {
           url: '#picking-resources',
           type: 'tool',
         },
+        {
+          subtitle: 'Figma kit',
+          name: 'Use the Figma kit to design your extension',
+          url: 'https://www.figma.com/community/file/1554895871000783188/polaris-ui-kit-community',
+          type: 'tool',
+        },
       ],
     },
     {
