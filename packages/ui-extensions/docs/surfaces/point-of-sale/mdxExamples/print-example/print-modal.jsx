@@ -8,8 +8,6 @@ export default function extension() {
 function Modal() {
   // [START modal.api]
   const [isLoading, setIsLoading] = useState(false);
-  const [src, setSrc] = useState(null);
-  const [currentScreen, setCurrentScreen] = useState('selection');
   const [documents, setDocuments] = useState([
     {
       id: 'invoice',
@@ -46,32 +44,37 @@ function Modal() {
   // [END modal.api]
 
   // [START modal.handle-selection]
-  const handleSelection = (selectedId) => {
+  const handleSelectionChange = (event) => {
+    const selectedIds = event.currentTarget.values;
     setDocuments((prevDocs) =>
       prevDocs.map((doc) => ({
         ...doc,
-        selected: doc.id === selectedId ? !doc.selected : doc.selected,
+        selected: selectedIds.includes(doc.id),
       })),
     );
   };
+  // [END modal.handle-selection]
 
-  useEffect(() => {
+  const handleNext = () => {
     const selectedDocs = documents.filter((doc) => doc.selected);
     if (selectedDocs.length) {
-      const params = new URLSearchParams({
-        printTypes: selectedDocs.map((doc) => doc.id).join(','),
+      const selectedIds = selectedDocs.map((doc) => doc.id);
+      navigation.navigate('preview', {
+        state: {selectedIds},
       });
-      const fullSrc = `/print?${params.toString()}`;
-      setSrc(fullSrc);
-    } else {
-      setSrc(null);
     }
-  }, [documents]);
-  // [END modal.handle-selection]
+  };
 
   // [START modal.print]
   const handlePrint = async () => {
-    if (!src) return;
+    const {selectedIds} = state || {};
+    if (!selectedIds?.length) return;
+
+    const params = new URLSearchParams({
+      printTypes: selectedIds.join(','),
+    });
+    const src = `/print?${params.toString()}`;
+
     setIsLoading(true);
     try {
       await shopify.print.print(src);
@@ -83,8 +86,17 @@ function Modal() {
   };
   // [END modal.print]
 
-  // Screen management for navigation
-  if (currentScreen === 'preview') {
+  const url = navigation.currentEntry.url;
+  const state = navigation.currentEntry.getState();
+
+  // Preview screen
+  if (url?.includes('preview')) {
+    const {selectedIds} = state || {};
+    const params = new URLSearchParams({
+      printTypes: selectedIds?.join(',') || '',
+    });
+    const src = `/print?${params.toString()}`;
+
     return (
       <s-page title="Print Tutorial">
         {src && (
@@ -96,7 +108,7 @@ function Modal() {
         )}
         <s-stack direction="vertical" gap="small" padding="small">
           <s-button
-            disabled={isLoading || !src}
+            disabled={isLoading || !selectedIds?.length}
             loading={isLoading}
             onClick={handlePrint}
             variant="primary"
@@ -104,7 +116,7 @@ function Modal() {
             Print
           </s-button>
           <s-button
-            onClick={() => setCurrentScreen('selection')}
+            onClick={() => navigation.back()}
             variant="secondary"
           >
             Back
@@ -120,35 +132,28 @@ function Modal() {
     <s-page title="Print Tutorial">
       <s-scroll-box padding="base">
         <s-section heading="Templates">
-          <s-stack direction="vertical" gap="base">
+          <s-choice-list
+            multiple
+            value={documents.filter((doc) => doc.selected).map((doc) => doc.id)}
+            onChange={handleSelectionChange}
+          >
             {documents.map((doc) => (
-              <s-clickable
-                key={doc.id}
-                onClick={() => handleSelection(doc.id)}
-              >
-                <s-box padding="base">
-                  <s-stack direction="horizontal" gap="base" align="center">
-                    <s-stack direction="vertical" gap="tight">
-                      <s-text variant="heading">{doc.label}</s-text>
-                      <s-text variant="body">{doc.subtitle}</s-text>
-                    </s-stack>
-                    <s-box>
-                      <s-text>{doc.selected ? '✓' : '○'}</s-text>
-                    </s-box>
-                  </s-stack>
-                </s-box>
-              </s-clickable>
+              <s-choice key={doc.id} value={doc.id}>
+                <s-stack direction="vertical" gap="tight">
+                  <s-text variant="heading">{doc.label}</s-text>
+                  <s-text variant="body">{doc.subtitle}</s-text>
+                </s-stack>
+              </s-choice>
             ))}
-          </s-stack>
+          </s-choice-list>
         </s-section>
       </s-scroll-box>
       {/* [END modal.document-list] */}
 
       <s-stack direction="vertical" gap="small" padding="small">
         <s-button
-          disabled={isLoading || !src}
-          loading={isLoading}
-          onClick={() => setCurrentScreen('preview')}
+          disabled={!documents.some((doc) => doc.selected)}
+          onClick={handleNext}
           variant="primary"
         >
           Next
