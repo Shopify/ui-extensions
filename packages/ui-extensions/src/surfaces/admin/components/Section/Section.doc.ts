@@ -100,7 +100,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates using a section with `padding="none"` to create a full-width layout, ideal for displaying tables or other content that requires edge-to-edge rendering. This example shows a product table within a section without additional padding.',
+              'Demonstrates using a section with `padding=\"none\"` to create a full-width layout, ideal for displaying tables or other content that requires edge-to-edge rendering. This example shows a product table within a section without additional padding.',
             codeblock: {
               title: 'Full-width Content Layout',
               tabs: [
