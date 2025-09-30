@@ -48,13 +48,13 @@ File storage for uploads must be implemented separately. Metafields and the corr
 
 Remember that the drag and drop feature won’t be effective on mobile devices. Adding a button can offer additional context and guide users through the next steps.
 
-<img src='/assets/templated-apis-screenshots/checkout-ui-extensions/unstable/dropzone-mobile-example.png' alt="An example showing DropZone with custom content optimized for mobile devices" />
+<img src='/assets/landing-pages/templated-apis/checkout-ui-extensions/ui-components/dropzone-mobile-example.png' alt="An example showing DropZone with custom content optimized for mobile devices" />
 
 ### Minimum size
 
 To prevent cut-off text and spacing issues, the minimum size of a Dropzone should be 100px by 100px.
 
-<img src='/assets/templated-apis-screenshots/checkout-ui-extensions/unstable/dropzone-minimum-size.png' alt="An example showing DropZone with correct minimum size" />
+<img src='/assets/landing-pages/templated-apis/checkout-ui-extensions/ui-components/dropzone-minimum-size.png' alt="An example showing DropZone with correct minimum size" />
       `,
     },
   ],
