@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0
+
+### Minor Changes
+
+- [#3417](https://github.com/Shopify/ui-extensions/pull/3417) [`a64982b`](https://github.com/Shopify/ui-extensions/commit/a64982b661be91986bae5dbd01ae9f8e0b07e630) Thanks [@vividviolet](https://github.com/vividviolet)! - Add remote dom support for all surfaces
+
 ## 2025.10.0-rc.48
 
 ### Patch Changes
