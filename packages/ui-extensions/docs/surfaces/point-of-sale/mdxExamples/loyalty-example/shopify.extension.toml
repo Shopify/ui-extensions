@@ -15,7 +15,4 @@ description = "Loyalty Points Extension"
 module = "./src/CustomerDetailsBlock.tsx"
 target = "pos.customer-details.block.render"
 
-[[extensions.targeting]]
-module = "./src/TransactionCompleteObserve.ts"
-target = "pos.transaction-complete.event.observe"
 
