@@ -14,6 +14,12 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PosBlock',
     },
     {
+      title: 'QR Code',
+      description:
+        'Renders a QR code when the block is used within a Receipt target.',
+      type: 'QrCode',
+    },
+    {
       title: 'Slots',
       description: '',
       type: 'PosBlockSlots',
