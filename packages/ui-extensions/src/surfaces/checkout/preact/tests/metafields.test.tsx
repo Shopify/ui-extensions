@@ -1,15 +1,21 @@
 import {faker} from '@faker-js/faker';
 
-import type {Metafield} from '@shopify/ui-extensions/checkout';
+import type {Metafield} from '../../api/standard/standard';
 
 import {useMetafields} from '../metafields';
 
-import {createMockStatefulRemoteSubscribable, mount} from './mount';
+import {
+  createMockSubscribableSignalLike,
+  mount,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
 
-describe.skip('useMetafields', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
+
+describe('useMetafields', () => {
+  afterEach(tearDownGlobalShopifyMock);
 
   function createMetafield(props: Partial<Metafield> = {}): Metafield {
     return {
@@ -28,13 +34,13 @@ describe.skip('useMetafields', () => {
   it('returns all metafields', () => {
     const metafieldCount = 10;
 
-    const {value} = mount.hook(() => useMetafields(), {
-      extensionApi: {
-        metafields: createMockStatefulRemoteSubscribable(
-          createMetafields(metafieldCount),
-        ),
-      },
+    setupGlobalShopifyMock({
+      metafields: createMockSubscribableSignalLike(
+        createMetafields(metafieldCount),
+      ) as any,
     });
+
+    const {value} = mount.hook(() => useMetafields());
 
     expect(value).toHaveLength(metafieldCount);
   });
@@ -49,18 +55,18 @@ describe.skip('useMetafields', () => {
 
     const metafields = [newNamespace, newNamespace2, ...createMetafields()];
 
-    const {value} = mount.hook(() => useMetafields({namespace}), {
-      extensionApi: {
-        metafields: createMockStatefulRemoteSubscribable(metafields),
-      },
+    setupGlobalShopifyMock({
+      metafields: createMockSubscribableSignalLike(metafields),
     });
+
+    const {value} = mount.hook(() => useMetafields({namespace}));
 
     expect(value).toHaveLength(2);
 
     expect(value[0].namespace).toStrictEqual(namespace);
-    expect(value[1].namespace).toStrictEqual(namespace);
-
     expect(value[0].key).toStrictEqual(key);
+
+    expect(value[1].namespace).toStrictEqual(namespace);
     expect(value[1].key).toStrictEqual(key2);
   });
 
@@ -69,54 +75,31 @@ describe.skip('useMetafields', () => {
     const key = 'test_key';
     const newNamespace = createMetafield({namespace, key});
 
-    const metafields = [newNamespace, ...createMetafields()];
+    const key2 = 'test_key2';
+    const newNamespace2 = createMetafield({namespace, key: key2});
 
-    const {value} = mount.hook(() => useMetafields({namespace, key}), {
-      extensionApi: {
-        metafields: createMockStatefulRemoteSubscribable(metafields),
-      },
+    const metafields = [newNamespace, newNamespace2, ...createMetafields()];
+
+    setupGlobalShopifyMock({
+      metafields: createMockSubscribableSignalLike(metafields),
     });
+
+    const {value} = mount.hook(() => useMetafields({namespace, key}));
 
     expect(value).toHaveLength(1);
     expect(value[0].namespace).toStrictEqual(namespace);
     expect(value[0].key).toStrictEqual(key);
   });
 
-  it('returns an empty array if no matches are found', () => {
-    const namespace = 'test_namespace';
-    const key = 'test_key';
-
-    const metafields = createMetafields();
-
-    const extensionApi = {
-      metafields: createMockStatefulRemoteSubscribable(metafields),
-    };
-
-    const namespaceSearch = mount.hook(() => useMetafields({namespace}), {
-      extensionApi,
-    });
-
-    const keySearch = mount.hook(() => useMetafields({namespace, key}), {
-      extensionApi,
-    });
-
-    expect(namespaceSearch.value).toHaveLength(0);
-    expect(keySearch.value).toHaveLength(0);
-  });
-
   it('throws an error if no namespace is provided with key', () => {
     jest.spyOn(console, 'error').mockImplementation();
 
-    const extensionApi = {
-      metafields: createMockStatefulRemoteSubscribable(createMetafields()),
-    };
-
-    const namespace = undefined as unknown as string;
+    setupGlobalShopifyMock({
+      metafields: createMockSubscribableSignalLike(createMetafields()) as any,
+    });
 
     expect(() =>
-      mount.hook(() => useMetafields({namespace, key: 'test_key'}), {
-        extensionApi,
-      }),
+      mount.hook(() => useMetafields({key: 'test_key'} as any)),
     ).toThrow('You must pass in a namespace with a key');
   });
 });

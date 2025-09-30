@@ -6,4 +6,4 @@
   class="my-custom-class"
 >
   Content
-</s-box>;
+</s-box>

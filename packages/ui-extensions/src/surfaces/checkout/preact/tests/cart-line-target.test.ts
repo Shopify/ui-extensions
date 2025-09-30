@@ -1,23 +1,30 @@
-import type {ExtensionTarget, CartLine} from '@shopify/ui-extensions/checkout';
+import type {CartLine} from '../../api/standard/standard';
 
 import {useCartLineTarget} from '../cart-line-target';
-import {ExtensionHasNoTargetError} from '../../errors';
-import {useApi} from '../api';
 
-import {createMockStatefulRemoteSubscribable, mount} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
+import {
+  createMockSubscribableSignalLike,
+  mount,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+  createMockExtension,
+} from './mount';
 
-describe.skip('useCartLineTarget', () => {
-  it('throws if extension target has no api.target', async () => {
-    const runner = async () => {
-      const target: ExtensionTarget = 'purchase.checkout.block.render';
-      return mount.hook(() => useCartLineTarget(), {
-        extensionApi: {
-          extension: {target},
-        },
-      });
-    };
+describe('useCartLineTarget', () => {
+  afterEach(tearDownGlobalShopifyMock);
 
-    await expect(runner).rejects.toThrow(ExtensionHasNoTargetError);
+  it('throws if extension target has no api.target', () => {
+    setupGlobalShopifyMock({});
+
+    expect(() => {
+      mount.hook(() => useCartLineTarget());
+    }).toThrow(
+      expect.objectContaining({
+        name: 'ExtensionHasNoTargetError',
+      }),
+    );
   });
 
   it('returns the cart line target if it exists', async () => {
@@ -45,16 +52,16 @@ describe.skip('useCartLineTarget', () => {
       },
       attributes: [],
       discountAllocations: [],
+      parentRelationship: null,
     } as CartLine;
 
-    const target: ExtensionTarget =
-      'purchase.cart-line-item.line-components.render';
-    const {value} = mount.hook(() => useCartLineTarget(), {
-      extensionApi: {
-        extension: {target},
-        target: createMockStatefulRemoteSubscribable(line),
-      },
+    const target = 'purchase.cart-line-item.line-components.render' as const;
+    setupGlobalShopifyMock<typeof target>({
+      target: createMockSubscribableSignalLike(line),
+      extension: createMockExtension(target),
     });
+
+    const {value} = mount.hook(() => useCartLineTarget());
 
     expect(value).toStrictEqual(line);
   });

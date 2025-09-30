@@ -20,13 +20,14 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       anchorLink: 'scaffolding-extension',
       title: 'Scaffolding an extension',
-      sectionContent:
-        'Use the Shopify CLI to [generate a new extension](/apps/tools/cli/commands#generate-extension) in the directory of your app.',
+      sectionContent: `Use the Shopify CLI to [generate a new extension](/docs/api/shopify-cli/app/app-generate-extension) in the directory of your app.
+
+Make sure you’re using Shopify CLI \`v3.85.3\` or higher. You can check your version by running \`shopify version\`.
+        `,
       codeblock: {
-        title: 'Scaffolding',
+        title: 'Shopify CLI',
         tabs: [
           {
-            title: 'CLI',
             code: './examples/scaffolding.example.bash',
             language: 'bash',
           },
@@ -36,58 +37,11 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'Generic',
-      title: 'Scaffolded with Preact',
-      sectionContent:
-        'UI Extensions are scaffolded with [Preact](https://preactjs.com/) by default. This means that you can use Preact patterns and principles within your extension.',
-      anchorLink: 'scaffolded-with-preact',
-      codeblock: {
-        title: 'Scaffolded with Preact',
-        tabs: [
-          {
-            code: './examples/scaffolded-with-preact.jsx',
-            language: 'jsx',
-            title: 'JSX',
-          },
-        ],
-      },
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'extension-targets',
-      title: 'Extension Targets',
-      sectionContent: `Extension targets provide locations where merchants can insert custom content.
-        Static extension targets are tied to core checkout features like contact information, shipping methods, and order summary line items.
-        Block extension targets can be displayed at any point in the checkout process and will always render regardless of which checkout features are available.
-        An example is a field to capture order notes from the customer.
-        \nExtension UIs are rendered using [remote DOM](https://github.com/Shopify/remote-dom/),
-        a fast and secure environment for custom [(non-DOM)](#security) UIs.`,
-      sectionCard: [
-        {
-          name: 'Extension targets',
-          subtitle: 'Overview',
-          url: '/docs/api/checkout-ui-extensions/extension-targets-overview',
-          type: 'blocks',
-        },
-      ],
-      image: 'extension-targets.png',
-      codeblock: {
-        title: 'Extension targets',
-        tabs: [
-          {
-            title: 'Preact',
-            code: './examples/extension-targets.example.tsx',
-            language: 'tsx',
-          },
-        ],
-      },
-      initialLanguage: 'tsx',
-    },
-    {
-      type: 'Generic',
       anchorLink: 'configuration-file',
       title: 'Configuration file',
-      sectionContent:
-        "When you create a checkout UI extension, the `shopify.extension.toml` file is automatically generated in your checkout UI extension directory.  It contains the extension's configuration, which includes the extension name, extension targets, metafields, capabilities, and settings definition.",
+      sectionContent: `When you create a UI extension, the \`shopify.extension.toml\` file is generated in your extension directory. Use this file to configure your extension name, extension targets, metafields, capabilities, and settings definition.
+
+Extension targets provide locations where merchants can insert custom content. Static extension targets are tied to core checkout features like contact information, shipping methods, and order summary line items. Block targets can display at any point in the checkout process and will always render regardless of which checkout features are available. An example is a field to capture order notes from the customer.`,
       sectionCard: [
         {
           name: 'Configuration guide',
@@ -95,12 +49,17 @@ const data: LandingTemplateSchema = {
           url: '/docs/api/checkout-ui-extensions/configuration',
           type: 'gear',
         },
+        {
+          name: 'Extension targets',
+          subtitle: 'Overview',
+          url: '/docs/api/checkout-ui-extensions/extension-targets-overview',
+          type: 'blocks',
+        },
       ],
       codeblock: {
         title: 'shopify.extension.toml',
         tabs: [
           {
-            title: 'toml',
             code: './examples/configuration/default.example.toml',
             language: 'toml',
           },
@@ -110,10 +69,53 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'Generic',
+      anchorLink: 'extension-functions',
+      title: 'Extension functions',
+      sectionContent: `Checkout will execute the module’s default export so it can render a user interface.
+
+Extension UIs are powered by [Remote DOM](https://github.com/Shopify/remote-dom/), a fast and secure environment for custom [(non-DOM)](#security) UIs.`,
+      sectionCard: [],
+      codeblock: {
+        title: 'Extension.jsx',
+        tabs: [
+          {
+            code: './examples/extension-functions.example.tsx',
+            language: 'tsx',
+          },
+        ],
+      },
+      initialLanguage: 'tsx',
+    },
+    {
+      type: 'Generic',
+      title: 'Preact by default',
+      sectionContent: `UI Extensions are scaffolded with [Preact](https://preactjs.com/) by default. This means you can use Preact patterns and principles within your extension.
+
+Since Preact is included as a standard dependency, you have access to all of its features including [hooks](https://preactjs.com/guide/v10/hooks/) like \`useState\` and \`useEffect\` for managing component state and side effects.
+
+You can also use [Preact Signals](https://preactjs.com/guide/v10/signals/) for reactive state management, and take advantage of standard web APIs just like you would in a regular Preact application.
+        `,
+      anchorLink: 'preact-by-default',
+      codeblock: {
+        title: 'Extension.jsx',
+        tabs: [
+          {
+            code: './examples/preact-by-default.jsx',
+            language: 'jsx',
+          },
+        ],
+      },
+    },
+    {
+      type: 'Generic',
       anchorLink: 'extension-apis',
       title: 'Extension APIs',
-      sectionContent:
-        "APIs enable checkout UI extensions to get information about the checkout or related objects and to perform actions. For example, you can use the APIs to retrieve what's in customer carts so that you can offer related products. \n\nExtensions use JavaScript to read and write data and call external services, and natively render UIs built using Shopify's checkout components.",
+      sectionContent: `The platform defines a global \`shopify\` object that contains all properties and methods available to UI extensions.
+
+These APIs enable UI extensions to get information about the checkout or related objects and to perform actions. For example, you can retrieve what’s in customer carts and offer related products.
+
+APIs with a \`value\` property are [Preact Signals](https://preactjs.com/guide/v10/signals/). Preact will automatically re-render your extension as values change.
+`,
       sectionCard: [
         {
           name: 'Checkout extensions API',
@@ -123,10 +125,9 @@ const data: LandingTemplateSchema = {
         },
       ],
       codeblock: {
-        title: 'Extension APIs',
+        title: 'Extension.jsx',
         tabs: [
           {
-            title: 'Preact',
             code: './examples/extension-apis.example.tsx',
             language: 'tsx',
           },
@@ -138,9 +139,9 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       anchorLink: 'ui-components',
       title: 'UI components',
-      image: 'ui-components.gif',
-      sectionContent:
-        "Checkout UI extensions declare their interface using supported UI components. Shopify renders the UI natively, so it's performant, accessible, and works in all of checkout's supported browsers. \n\nCheckout components are designed to be flexible, enabling you to layer and mix them to create highly-customized app extensions that feel seamless within the checkout experience. All components inherit a merchant's brand settings and the CSS cannot be altered or overridden.",
+      sectionContent: `Checkout UI extensions declare their interface using [Polaris web components](/docs/api/checkout-ui-extensions/using-polaris-components). Shopify renders the UI natively, so it’s performant, accessible, and works in all of checkout’s supported browsers.
+
+Checkout components are designed to be flexible, enabling you to layer and mix them to create highly-customized app extensions that feel seamless within the checkout experience. All components inherit a merchant’s brand settings and the CSS cannot be altered or overridden.`,
       sectionCard: [
         {
           name: 'Component library',
@@ -156,10 +157,9 @@ const data: LandingTemplateSchema = {
         },
       ],
       codeblock: {
-        title: 'UI components',
+        title: 'Extension.jsx',
         tabs: [
           {
-            title: 'Preact',
             code: './examples/ui-components.example.tsx',
             language: 'tsx',
           },
@@ -183,9 +183,9 @@ Checkout UI extensions are a safe and secure way to customize the appearance and
         {
           title: 'Constraints',
           sectionContent: `
-You can't override the CSS for UI components. The checkout UI will always render the merchant's own branding as shown in the image in the UI components section above.
+You can’t override the CSS for UI components. The checkout UI will always render the merchant’s own branding.
 
-Checkout UI extensions don't have access to the real checkout DOM and can't render arbitrary HTML such as \`<div>\` elements or \`<script>\` tags, etc. They can only render custom HTML elements provided by Shopify.
+Checkout UI extensions don’t have access to the real checkout DOM and can’t render arbitrary HTML such as \`<div>\` elements or \`<script>\` tags, etc. They can only render custom HTML elements provided by Shopify.
 `,
           type: 'info',
         },

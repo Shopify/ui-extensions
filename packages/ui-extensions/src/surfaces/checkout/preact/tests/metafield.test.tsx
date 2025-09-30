@@ -1,15 +1,21 @@
 import {faker} from '@faker-js/faker';
 
-import type {Metafield} from '@shopify/ui-extensions/checkout';
+import type {Metafield} from '../../api/standard/standard';
 
 import {useMetafield} from '../metafield';
 
-import {createMockStatefulRemoteSubscribable, mount} from './mount';
+import {
+  createMockSubscribableSignalLike,
+  mount,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
 
-describe.skip('useMetafields', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
+
+describe('useMetafields', () => {
+  afterEach(tearDownGlobalShopifyMock);
 
   function createMetafield(props: Partial<Metafield> = {}): Metafield {
     return {
@@ -28,18 +34,16 @@ describe.skip('useMetafields', () => {
   it('returns undefined metafield', () => {
     const metafieldCount = 10;
 
-    const extensionApi = {
-      metafields: createMockStatefulRemoteSubscribable(
+    setupGlobalShopifyMock({
+      metafields: createMockSubscribableSignalLike(
         createMetafields(metafieldCount),
-      ),
-    };
+      ) as any,
+    });
 
     const namespace = 'test_namespace';
     const key = 'test_key';
 
-    const {value} = mount.hook(() => useMetafield({namespace, key}), {
-      extensionApi,
-    });
+    const {value} = mount.hook(() => useMetafield({namespace, key}));
 
     expect(value).toBeUndefined();
   });
@@ -51,11 +55,11 @@ describe.skip('useMetafields', () => {
 
     const metafields = [newNamespace, ...createMetafields()];
 
-    const {value} = mount.hook(() => useMetafield({namespace, key}), {
-      extensionApi: {
-        metafields: createMockStatefulRemoteSubscribable(metafields),
-      },
+    setupGlobalShopifyMock({
+      metafields: createMockSubscribableSignalLike(metafields),
     });
+
+    const {value} = mount.hook(() => useMetafield({namespace, key}));
 
     expect(value?.namespace).toStrictEqual(namespace);
     expect(value?.key).toStrictEqual(key);
@@ -64,21 +68,16 @@ describe.skip('useMetafields', () => {
   it('throws an error if no namespace is provided with key', () => {
     jest.spyOn(console, 'error').mockImplementation();
 
-    const extensionApi = {
-      metafields: createMockStatefulRemoteSubscribable(createMetafields()),
-    };
+    setupGlobalShopifyMock({
+      metafields: createMockSubscribableSignalLike(createMetafields()) as any,
+    });
 
     expect(() =>
-      mount.hook(
-        () =>
-          useMetafield({
-            // @ts-expect-error: expected to fail
-            namespace: undefined,
-            key: 'test_key',
-          }),
-        {
-          extensionApi,
-        },
+      mount.hook(() =>
+        useMetafield({
+          namespace: undefined as unknown as string,
+          key: 'test_key',
+        }),
       ),
     ).toThrow('You must pass in both a namespace and key');
   });
@@ -86,16 +85,14 @@ describe.skip('useMetafields', () => {
   it('throws an error if no key is provided with namespace', () => {
     jest.spyOn(console, 'error').mockImplementation();
 
-    const extensionApi = {
-      metafields: createMockStatefulRemoteSubscribable(createMetafields()),
-    };
+    setupGlobalShopifyMock({
+      metafields: createMockSubscribableSignalLike(createMetafields()) as any,
+    });
 
     const key = undefined as unknown as string;
 
     expect(() =>
-      mount.hook(() => useMetafield({namespace: 'test_namespace', key}), {
-        extensionApi,
-      }),
+      mount.hook(() => useMetafield({namespace: 'test_namespace', key})),
     ).toThrow('You must pass in both a namespace and key');
   });
 });

@@ -1,12 +1,20 @@
 import {faker} from '@faker-js/faker';
 
-import type {ExtensionTarget} from '@shopify/ui-extensions/checkout';
-
 import {useDeliverySelectionGroups} from '../delivery-selection-groups';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('useDeliverySelectionGroups', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+  createMockExtension,
+} from './mount';
+
+describe('useDeliverySelectionGroups', () => {
+  afterEach(tearDownGlobalShopifyMock);
   it('returns deliverySelectionGroups if it exists', async () => {
     const deliverySelectionGroup = {
       handle: faker.string.uuid(),
@@ -18,40 +26,39 @@ describe.skip('useDeliverySelectionGroups', () => {
       ],
       cost: {
         amount: 10,
-        currencyCode: 'USD',
+        currencyCode: 'USD' as const,
       },
       costAfterDiscounts: {
         amount: 10,
-        currencyCode: 'USD',
+        currencyCode: 'USD' as const,
       },
     };
 
-    const target: ExtensionTarget =
-      'purchase.checkout.shipping-option-list.render-before';
+    const target =
+      'purchase.checkout.shipping-option-list.render-before' as const;
 
-    const {value} = mount.hook(() => useDeliverySelectionGroups(), {
-      extensionApi: {
-        extension: {target},
-        deliverySelectionGroups: createMockStatefulRemoteSubscribable([
-          deliverySelectionGroup,
-        ]) as any,
-      },
+    setupGlobalShopifyMock<typeof target>({
+      extension: createMockExtension(target),
+      deliverySelectionGroups: createMockSubscribableSignalLike([
+        deliverySelectionGroup,
+      ]),
     });
+
+    const {value} = mount.hook(() => useDeliverySelectionGroups());
 
     expect(value).toStrictEqual([deliverySelectionGroup]);
   });
 
   it('returns undefined if delivery selection groups are missing', async () => {
-    const target: ExtensionTarget =
-      'purchase.checkout.shipping-option-list.render-before';
+    const target =
+      'purchase.checkout.shipping-option-list.render-before' as const;
 
-    const {value} = mount.hook(() => useDeliverySelectionGroups(), {
-      extensionApi: {
-        extension: {target},
-        deliverySelectionGroups:
-          createMockStatefulRemoteSubscribable(undefined),
-      },
+    setupGlobalShopifyMock<typeof target>({
+      extension: createMockExtension(target),
+      deliverySelectionGroups: createMockSubscribableSignalLike(undefined),
     });
+
+    const {value} = mount.hook(() => useDeliverySelectionGroups());
 
     expect(value).toBeUndefined();
   });

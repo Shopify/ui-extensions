@@ -1,4 +1,5 @@
 import {render, Fragment} from 'preact';
+
 import {useShippingOptionTarget} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {

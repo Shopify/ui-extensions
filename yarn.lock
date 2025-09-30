@@ -1785,6 +1785,21 @@
   dependencies:
     "@preact/signals-core" "^1.12.0"
 
+"@quilted/preact-testing@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@quilted/preact-testing/-/preact-testing-0.1.8.tgz#f60932e2093df32d595a7f155b355c2b4e13ed86"
+  integrity sha512-DqLMj2+Ht6ePzmCrkUBQhiOqqE/cpV/ctiYhOz9oircSqUFx3wFEVEAVaAxhi+3a1JOfJ8zj8n/kBNIiZ/CkNg==
+  dependencies:
+    jest-matcher-utils "^27.0.0"
+
+"@quilted/react-testing@^0.6.11":
+  version "0.6.12"
+  resolved "https://registry.yarnpkg.com/@quilted/react-testing/-/react-testing-0.6.12.tgz#9f3afa7f79a33eb47184a0fa044f4352f9b93f05"
+  integrity sha512-UkiVWEUKvN0DspZ+tjQLHUV9qq5vZJSOTM2DbMkWg6MKgF/8vQmpKyZqQ2DcOg9DNIl6XOqXJMvWhb9fqheE/w==
+  dependencies:
+    "@quilted/preact-testing" "^0.1.8"
+    jest-matcher-utils "^27.0.0"
+
 "@remote-ui/async-subscription@^2.1.16":
   version "2.1.16"
   resolved "https://registry.npmjs.org/@remote-ui/async-subscription/-/async-subscription-2.1.16.tgz"
@@ -1913,10 +1928,10 @@
     pkg-dir "^5.0.0"
     pluralize "^8.0.0"
 
-"@shopify/generate-docs@0.19.3":
-  version "0.19.3"
-  resolved "https://registry.yarnpkg.com/@shopify/generate-docs/-/generate-docs-0.19.3.tgz#cace7efe6277dbae9b2fdc1ac40236983f74625d"
-  integrity sha512-jAEJeiXtkk6yU/CMe1c+9ydgQRMTLLmx1gdaMoW/QL+1bnIsHDINOsvyIHzSVKfNX0WSbe0zquG9W+W/iNzKaQ==
+"@shopify/generate-docs@0.19.6":
+  version "0.19.6"
+  resolved "https://registry.yarnpkg.com/@shopify/generate-docs/-/generate-docs-0.19.6.tgz#c7083644f6115b6e138d1022342e284143c2dd0a"
+  integrity sha512-pBlE0/ydehfwM+f5d7IXrUbb5yZeC9sivIaU+Thd0ySpoDFhvj93fQNeImmmP5uOndbg8L24y8RNxZ+IAsO5Vg==
   dependencies:
     "@types/react" "^18.0.21"
     globby "^11.1.0"

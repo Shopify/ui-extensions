@@ -1,58 +1,62 @@
-import type {Extension} from '@shopify/ui-extensions/checkout';
+import type {Extension} from '../../api/standard/standard';
+
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
 import {
   useExtensionCapabilities,
   useExtensionCapability,
 } from '../capabilities';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
 
-describe.skip('useExtensionCapabilities', () => {
+describe('useExtensionCapabilities', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns a list of granted capabilities of the extension', () => {
     const capabilities = ['network_access', 'block_progress'];
 
-    const capabilitiesSubscribable = createMockStatefulRemoteSubscribable(
+    const capabilitiesSubscribable = createMockSubscribableSignalLike(
       capabilities,
     ) as Extension['capabilities'];
 
-    const {value} = mount.hook(useExtensionCapabilities, {
-      extensionApi: {
-        extension: {
-          capabilities: capabilitiesSubscribable,
-        },
+    setupGlobalShopifyMock({
+      extension: {
+        capabilities: capabilitiesSubscribable,
       },
     });
+
+    const {value} = mount.hook(useExtensionCapabilities);
 
     expect(value).toStrictEqual(capabilities);
   });
 });
 
-describe.skip('useExtensionCapability', () => {
+describe('useExtensionCapability', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns the status of a capabilities', () => {
-    const capabilities = createMockStatefulRemoteSubscribable([
+    const capabilities = createMockSubscribableSignalLike([
       'network_access',
     ]) as Extension['capabilities'];
 
-    const {value: activatedCapability} = mount.hook(
-      () => useExtensionCapability('network_access'),
-      {
-        extensionApi: {
-          extension: {
-            capabilities,
-          },
-        },
+    setupGlobalShopifyMock({
+      extension: {
+        capabilities,
       },
+    });
+
+    const {value: activatedCapability} = mount.hook(() =>
+      useExtensionCapability('network_access'),
     );
 
-    const {value: deactivatedCapability} = mount.hook(
-      () => useExtensionCapability('block_progress'),
-      {
-        extensionApi: {
-          extension: {
-            capabilities,
-          },
-        },
-      },
+    const {value: deactivatedCapability} = mount.hook(() =>
+      useExtensionCapability('block_progress'),
     );
 
     expect(activatedCapability).toBe(true);

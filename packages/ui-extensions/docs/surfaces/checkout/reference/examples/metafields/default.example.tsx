@@ -1,5 +1,6 @@
 import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
+
 import {useAppMetafields} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {

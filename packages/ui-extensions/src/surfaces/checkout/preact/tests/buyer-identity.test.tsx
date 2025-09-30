@@ -1,11 +1,18 @@
-import type {SubscribableSignalLike} from '../../shared';
 import {faker} from '@faker-js/faker';
 
-import {ScopeNotGrantedError} from '../../errors';
+import type {SubscribableSignalLike} from '../../shared';
 import {useCustomer, useEmail, usePhone} from '../buyer-identity';
 
-import {mount} from './mount';
-function createMockCustomer(customer = {}) {
+import {
+  mount,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
+
+function createMockCustomer(customer = {}): any {
   const firstName = faker.person.firstName();
   const lastName = faker.person.lastName();
 
@@ -21,26 +28,29 @@ function createMockCustomer(customer = {}) {
 }
 
 function createEmptyContext() {
-  return {
-    extensionApi: {
-      buyerIdentity: undefined,
-    },
-  };
+  // Set up a global shopify object without buyerIdentity to trigger ScopeNotGrantedError
+  setupGlobalShopifyMock({
+    buyerIdentity: undefined,
+  });
+  return {};
 }
 
 function createUseEmailContext(email?: string) {
-  return createMockHookContext(email, undefined, undefined);
+  setupGlobalShopify(email, undefined, undefined);
+  return {};
 }
 
 function createUseCustomerContext(customer = {}) {
-  return createMockHookContext(undefined, undefined, customer);
+  setupGlobalShopify(undefined, undefined, customer);
+  return {};
 }
 
 function createUsePhoneContext(phone?: string) {
-  return createMockHookContext(undefined, phone, undefined);
+  setupGlobalShopify(undefined, phone, undefined);
+  return {};
 }
 
-function createMockSuscribable<T>(data: T): SubscribableSignalLike<T> {
+function createMockSubscribable<T>(data: T): SubscribableSignalLike<T> {
   return {
     current: data,
     value: data,
@@ -49,24 +59,37 @@ function createMockSuscribable<T>(data: T): SubscribableSignalLike<T> {
   };
 }
 
-function createMockHookContext(email?: string, phone?: string, customer = {}) {
-  return {
-    extensionApi: {
-      buyerIdentity: {
-        customer: createMockSuscribable(customer),
-        email: createMockSuscribable(email),
-        phone: createMockSuscribable(phone),
-      },
+function setupGlobalShopify(
+  email?: string,
+  phone?: string,
+  customer: any = {},
+) {
+  const customerData =
+    email || Object.keys(customer).length > 0
+      ? createMockCustomer(customer)
+      : undefined;
+  setupGlobalShopifyMock({
+    buyerIdentity: {
+      customer: createMockSubscribable(customerData),
+      email: createMockSubscribable(email),
+      phone: createMockSubscribable(phone),
+      purchasingCompany: createMockSubscribable(undefined),
     },
-  };
+  });
 }
 
-describe.skip('buyerIdentity Hooks', () => {
+describe('buyerIdentity Hooks', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   describe('useCustomer()', () => {
     it('raises an exception without CustomerPersonalData ApprovalScope', () => {
       expect(() => {
         mount.hook(() => useCustomer(), createEmptyContext());
-      }).toThrow(ScopeNotGrantedError);
+      }).toThrow(
+        expect.objectContaining({
+          name: 'ScopeNotGrantedError',
+        }),
+      );
     });
 
     it('returns undefined fields with CustomerPersonalData ApprovalScopes only', () => {
@@ -113,7 +136,11 @@ describe.skip('buyerIdentity Hooks', () => {
     it('raises an exception without CustomerPersonalData ApprovalScope', () => {
       expect(() => {
         mount.hook(() => useEmail(), createEmptyContext());
-      }).toThrow(ScopeNotGrantedError);
+      }).toThrow(
+        expect.objectContaining({
+          name: 'ScopeNotGrantedError',
+        }),
+      );
     });
 
     it('returns undefined with CustomerPersonalData ApprovalScope only', () => {
@@ -135,7 +162,11 @@ describe.skip('buyerIdentity Hooks', () => {
     it('raises an exception without CustomerPersonalData ApprovalScope', () => {
       expect(() => {
         mount.hook(() => usePhone(), createEmptyContext());
-      }).toThrow(ScopeNotGrantedError);
+      }).toThrow(
+        expect.objectContaining({
+          name: 'ScopeNotGrantedError',
+        }),
+      );
     });
 
     it('returns undefined with CustomerPersonalData ApprovalScope only', () => {

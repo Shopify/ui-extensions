@@ -1,34 +1,41 @@
-import type {ExtensionTarget} from '@shopify/ui-extensions/checkout';
+import type {ExtensionTarget} from '../../extension-targets';
 
 import {useApplyRedeemableChange} from '../redeemable';
-import {ExtensionHasNoMethodError} from '../../errors';
+import {
+  mount,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+  createMockExtension,
+} from './mount';
 
-import {mount} from './mount';
-
-describe.skip('Redeemable API hooks', () => {
+describe('Redeemable API hooks', () => {
+  afterEach(tearDownGlobalShopifyMock);
   describe('useApplyRedeemableChange()', () => {
     it('returns the applyRedeemableChange function', async () => {
-      const target: ExtensionTarget = 'purchase.checkout.gift-card.render';
-      const extensionApi = {
-        applyRedeemableChange: jest.fn,
-        extension: {target},
-      };
-      const {value} = mount.hook(() => useApplyRedeemableChange(), {
-        extensionApi,
+      const target = 'purchase.checkout.gift-card.render' as const;
+      const mockApplyRedeemableChange = jest.fn();
+      setupGlobalShopifyMock<typeof target>({
+        applyRedeemableChange: mockApplyRedeemableChange,
+        extension: createMockExtension(target),
       });
-      expect(value).toBe(jest.fn);
+
+      const {value} = mount.hook(() => useApplyRedeemableChange());
+      expect(value).toBe(mockApplyRedeemableChange);
     });
 
-    it('raises when applyRedeemableChange is not available', async () => {
-      const runner = async () => {
-        const target: ExtensionTarget = 'purchase.checkout.block.render';
-        return mount.hook(() => useApplyRedeemableChange(), {
-          extensionApi: {
-            extension: {target},
-          },
-        });
-      };
-      await expect(runner).rejects.toThrow(ExtensionHasNoMethodError);
+    it('raises when applyRedeemableChange is not available', () => {
+      const target: ExtensionTarget = 'purchase.checkout.block.render';
+      setupGlobalShopifyMock({
+        extension: createMockExtension(target),
+      });
+
+      expect(() => {
+        mount.hook(() => useApplyRedeemableChange());
+      }).toThrow(
+        expect.objectContaining({
+          name: 'ExtensionHasNoMethodError',
+        }),
+      );
     });
   });
 });

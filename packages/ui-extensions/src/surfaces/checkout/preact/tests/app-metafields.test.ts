@@ -1,22 +1,28 @@
 import {faker} from '@faker-js/faker';
 
-import type {Metafield} from '@shopify/ui-extensions/checkout';
-
+import type {AppMetafield} from '../../api/standard/standard';
 import {useAppMetafields} from '../app-metafields';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
 
-describe.skip('useAppMetafields', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-  function createMetafield(props: Partial<Metafield> = {}): Metafield {
+describe('useAppMetafields', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
+  function createMetafield(props: Partial<AppMetafield> = {}): AppMetafield {
     return {
       key: `key-${faker.string.uuid()}`,
       namespace: 'example-namespace',
       value: 'example-value',
       valueType: 'string',
+      type: 'string' as const,
       ...props,
     };
   }
@@ -33,24 +39,22 @@ describe.skip('useAppMetafields', () => {
 
   it('returns all app metafield entries', () => {
     const appMetaFieldEntries = [productEntry, variantEntry];
-    const extensionApi = {
-      appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
-    };
+    setupGlobalShopifyMock({
+      appMetafields: createMockSubscribableSignalLike(appMetaFieldEntries),
+    });
 
-    const {value} = mount.hook(() => useAppMetafields(), {extensionApi});
+    const {value} = mount.hook(() => useAppMetafields());
 
     expect(value).toMatchObject(appMetaFieldEntries);
   });
 
   it('returns filtered app metafield entries based on type', () => {
     const appMetaFieldEntries = [productEntry, variantEntry];
-    const extensionApi = {
-      appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
-    };
-
-    const {value} = mount.hook(() => useAppMetafields({type: 'product'}), {
-      extensionApi,
+    setupGlobalShopifyMock({
+      appMetafields: createMockSubscribableSignalLike(appMetaFieldEntries),
     });
+
+    const {value} = mount.hook(() => useAppMetafields({type: 'product'}));
 
     expect(value).toMatchObject([productEntry]);
   });
@@ -63,13 +67,11 @@ describe.skip('useAppMetafields', () => {
     };
 
     const appMetaFieldEntries = [newEntry, variantEntry];
-    const extensionApi = {
-      appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
-    };
-
-    const {value} = mount.hook(() => useAppMetafields({id: testId}), {
-      extensionApi,
+    setupGlobalShopifyMock({
+      appMetafields: createMockSubscribableSignalLike(appMetaFieldEntries),
     });
+
+    const {value} = mount.hook(() => useAppMetafields({id: testId}));
 
     expect(value).toMatchObject([newEntry]);
   });
@@ -82,13 +84,12 @@ describe.skip('useAppMetafields', () => {
     };
 
     const appMetaFieldEntries = [newEntry, productEntry, variantEntry];
-    const extensionApi = {
-      appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
-    };
+    setupGlobalShopifyMock({
+      appMetafields: createMockSubscribableSignalLike(appMetaFieldEntries),
+    });
 
-    const {value} = mount.hook(
-      () => useAppMetafields({namespace: testNamespace}),
-      {extensionApi},
+    const {value} = mount.hook(() =>
+      useAppMetafields({namespace: testNamespace}),
     );
 
     expect(value).toMatchObject([newEntry]);
@@ -103,13 +104,12 @@ describe.skip('useAppMetafields', () => {
     };
 
     const appMetaFieldEntries = [newEntry, productEntry, variantEntry];
-    const extensionApi = {
-      appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
-    };
+    setupGlobalShopifyMock({
+      appMetafields: createMockSubscribableSignalLike(appMetaFieldEntries),
+    });
 
-    const {value} = mount.hook(
-      () => useAppMetafields({namespace: testNamespace, key: testKey}),
-      {extensionApi},
+    const {value} = mount.hook(() =>
+      useAppMetafields({namespace: testNamespace, key: testKey}),
     );
 
     expect(value).toMatchObject([newEntry]);
@@ -119,15 +119,13 @@ describe.skip('useAppMetafields', () => {
     jest.spyOn(console, 'error').mockImplementation();
 
     const appMetaFieldEntries = [productEntry, variantEntry];
-    const extensionApi = {
-      appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
-    };
+    setupGlobalShopifyMock({
+      appMetafields: createMockSubscribableSignalLike(appMetaFieldEntries),
+    });
 
-    expect(() =>
-      mount.hook(() => useAppMetafields({key: 'test_key'}), {
-        extensionApi,
-      }),
-    ).toThrow('You must pass in a namespace with a key');
+    expect(() => mount.hook(() => useAppMetafields({key: 'test_key'}))).toThrow(
+      'You must pass in a namespace with a key',
+    );
   });
 
   it('returns filtered app metafield entries based on all searchable fields', () => {
@@ -141,19 +139,17 @@ describe.skip('useAppMetafields', () => {
     };
 
     const appMetaFieldEntries = [newEntry, productEntry, variantEntry];
-    const extensionApi = {
-      appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
-    };
+    setupGlobalShopifyMock({
+      appMetafields: createMockSubscribableSignalLike(appMetaFieldEntries),
+    });
 
-    const {value} = mount.hook(
-      () =>
-        useAppMetafields({
-          namespace: testNamespace,
-          key: testKey,
-          id: testId,
-          type: 'product',
-        }),
-      {extensionApi},
+    const {value} = mount.hook(() =>
+      useAppMetafields({
+        namespace: testNamespace,
+        key: testKey,
+        id: testId,
+        type: 'product',
+      }),
     );
 
     expect(value).toMatchObject([newEntry]);

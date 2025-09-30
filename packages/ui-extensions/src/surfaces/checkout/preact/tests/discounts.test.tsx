@@ -1,14 +1,23 @@
 import type {
   CartDiscountCode,
   CartDiscountAllocation,
-} from '@shopify/ui-extensions/checkout';
+} from '../../api/standard/standard';
 
 import {useDiscountAllocations, useDiscountCodes} from '../discounts';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
-import type {PartialExtensionApi} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('Discounts API hooks', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+describe('Discounts API hooks', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   describe('useDiscountCodes', () => {
     it('returns the current discount codes', async () => {
       const discountCodes: CartDiscountCode[] = [
@@ -16,11 +25,11 @@ describe.skip('Discounts API hooks', () => {
         {code: 'free_shipping'},
       ];
 
-      const extensionApi: PartialExtensionApi = {
-        discountCodes: createMockStatefulRemoteSubscribable(discountCodes),
-      };
+      setupGlobalShopifyMock({
+        discountCodes: createMockSubscribableSignalLike(discountCodes),
+      });
 
-      const {value} = mount.hook(() => useDiscountCodes(), {extensionApi});
+      const {value} = mount.hook(() => useDiscountCodes());
 
       expect(value).toBe(discountCodes);
     });
@@ -55,14 +64,12 @@ describe.skip('Discounts API hooks', () => {
         },
       ];
 
-      const extensionApi: PartialExtensionApi = {
+      setupGlobalShopifyMock({
         discountAllocations:
-          createMockStatefulRemoteSubscribable(discountAllocations),
-      };
-
-      const {value} = mount.hook(() => useDiscountAllocations(), {
-        extensionApi,
+          createMockSubscribableSignalLike(discountAllocations),
       });
+
+      const {value} = mount.hook(() => useDiscountAllocations());
 
       expect(value).toBe(discountAllocations);
     });

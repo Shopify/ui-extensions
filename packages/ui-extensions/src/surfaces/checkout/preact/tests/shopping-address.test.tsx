@@ -1,16 +1,24 @@
-import {ScopeNotGrantedError} from '../../errors';
 import {useShippingAddress} from '../shipping-address';
 
-import {mount} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('useShippingAddress', () => {
+import {
+  mount,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+describe('useShippingAddress', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('raises an exception without approval scopes granted', () => {
-    expect(() =>
-      mount.hook(() => useShippingAddress(), {
-        extensionApi: {
-          shippingAddress: undefined,
-        },
-      }),
-    ).toThrow(ScopeNotGrantedError);
+    setupGlobalShopifyMock({
+      shippingAddress: undefined,
+    });
+
+    expect(() => mount.hook(() => useShippingAddress())).toThrow(
+      'Using shipping address requires having shipping address permissions granted to your app.',
+    );
   });
 });

@@ -1,19 +1,28 @@
 import {useExtensionLanguage} from '../extension-language';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('useExtensionLanguage', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+describe('useExtensionLanguage', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns extension language from api', () => {
     const extensionLanguage = {isoCode: 'en-CA'};
 
-    const {value} = mount.hook(() => useExtensionLanguage(), {
-      extensionApi: {
-        localization: {
-          extensionLanguage:
-            createMockStatefulRemoteSubscribable(extensionLanguage),
-        },
+    setupGlobalShopifyMock({
+      localization: {
+        extensionLanguage: createMockSubscribableSignalLike(extensionLanguage),
       },
     });
+
+    const {value} = mount.hook(() => useExtensionLanguage());
 
     expect(value).toStrictEqual(extensionLanguage);
   });

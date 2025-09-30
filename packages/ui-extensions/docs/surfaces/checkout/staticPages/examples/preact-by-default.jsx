@@ -2,9 +2,9 @@ import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 import {useState} from 'preact/hooks';
 
-export default function extension() {
+export default async () => {
   render(<Extension />, document.body);
-}
+};
 
 function Extension() {
   const [count, setCount] = useState(0);

@@ -1,20 +1,30 @@
-import type {CurrencyCode} from '@shopify/ui-extensions/checkout';
+import type {CurrencyCode} from '../../../../shared';
 
 import {useCurrency} from '../currency';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('useCurrency', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+describe('useCurrency', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns currency from the api', () => {
     const currency: {isoCode: CurrencyCode} = {isoCode: 'CAD'};
 
-    const {value} = mount.hook(() => useCurrency(), {
-      extensionApi: {
-        localization: {
-          currency: createMockStatefulRemoteSubscribable(currency),
-        },
+    setupGlobalShopifyMock({
+      localization: {
+        currency: createMockSubscribableSignalLike(currency),
       },
     });
+
+    const {value} = mount.hook(() => useCurrency());
 
     expect(value).toStrictEqual(currency);
   });

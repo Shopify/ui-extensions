@@ -7,14 +7,14 @@ Sentry.init({
   defaultIntegrations: false,
 });
 
-window.addEventListener(
+self.addEventListener(
   'unhandledrejection',
   (error) => {
     Sentry.captureException(error);
   },
 );
 
-window.addEventListener('error', (error) => {
+self.addEventListener('error', (error) => {
   Sentry.captureException(error);
 });
 

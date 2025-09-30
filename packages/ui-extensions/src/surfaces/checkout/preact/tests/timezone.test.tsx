@@ -1,18 +1,28 @@
 import {useTimezone} from '../timezone';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('useTimezone', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+describe('useTimezone', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns timezone from the api', () => {
     const timezone = 'America/New_York';
 
-    const {value} = mount.hook(() => useTimezone(), {
-      extensionApi: {
-        localization: {
-          timezone: createMockStatefulRemoteSubscribable(timezone),
-        },
+    setupGlobalShopifyMock({
+      localization: {
+        timezone: createMockSubscribableSignalLike(timezone),
       },
     });
+
+    const {value} = mount.hook(() => useTimezone());
 
     expect(value).toStrictEqual(timezone);
   });

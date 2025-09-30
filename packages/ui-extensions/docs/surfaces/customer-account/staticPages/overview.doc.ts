@@ -23,7 +23,7 @@ const data: LandingTemplateSchema = {
       title: 'Scaffolding an extension',
       sectionContent: `Use the Shopify CLI to [generate a new extension](/docs/api/shopify-cli/app/app-generate-extension) in the directory of your app.
 
-Make sure you’re using Shopify CLI \`v3.84.2\` or higher. You can check your version by running \`shopify version\`.
+Make sure you’re using Shopify CLI \`v3.85.3\` or higher. You can check your version by running \`shopify version\`.
         `,
       codeblock: {
         title: 'Shopify CLI',

@@ -1,16 +1,23 @@
-import type {
-  ExtensionTarget,
-  ShippingOption,
-  ShippingOptionItemRenderMode,
-} from '@shopify/ui-extensions/checkout';
+import type {ExtensionTarget} from '../../extension-targets';
+import type {ShippingOption} from '../../api/standard/standard';
 
 import {useShippingOptionTarget} from '../shipping-option-target';
-import {ExtensionHasNoTargetError} from '../../errors';
+import {
+  createMockSubscribableSignalLike,
+  mount,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+  createMockExtension,
+} from './mount';
 
-import {createMockStatefulRemoteSubscribable, mount} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('useShippingOptionTarget', () => {
-  const shippingOption = {
+describe('useShippingOptionTarget', () => {
+  afterEach(tearDownGlobalShopifyMock);
+  const shippingOption: ShippingOption = {
+    code: 'shipping_method_1',
+    metafields: [],
     handle: 'shipping_method_1',
     title: 'Shipping method 1',
     description: 'something',
@@ -30,60 +37,57 @@ describe.skip('useShippingOptionTarget', () => {
         upper: 10000,
       },
     },
-  } as ShippingOption;
-
-  const renderMode: ShippingOptionItemRenderMode = {
-    overlay: false,
   };
 
-  it('throws if extension target has no api.target', async () => {
-    const runner = async () => {
-      const target: ExtensionTarget = 'purchase.checkout.block.render';
-      return mount.hook(() => useShippingOptionTarget(), {
-        extensionApi: {
-          extension: {target},
-          target: undefined,
-          isTargetSelected: createMockStatefulRemoteSubscribable(true),
-          renderMode,
-        },
-      });
-    };
-
-    await expect(runner).rejects.toThrow(ExtensionHasNoTargetError);
-  });
-
-  it('throws if extension target has no api.isTargetSelected', async () => {
-    const runner = async () => {
-      const target: ExtensionTarget = 'purchase.checkout.block.render';
-      return mount.hook(() => useShippingOptionTarget(), {
-        extensionApi: {
-          extension: {target},
-          target: createMockStatefulRemoteSubscribable(shippingOption),
-          isTargetSelected: undefined,
-          renderMode,
-        },
-      });
-    };
-
-    await expect(runner).rejects.toThrow(ExtensionHasNoTargetError);
-  });
-
-  it('returns the shipping option target if it exists', async () => {
-    const target: ExtensionTarget =
-      'purchase.checkout.shipping-option-item.render-after';
-    const {value} = mount.hook(() => useShippingOptionTarget(), {
-      extensionApi: {
-        extension: {target},
-        target: createMockStatefulRemoteSubscribable(shippingOption),
-        isTargetSelected: createMockStatefulRemoteSubscribable(true),
-        renderMode,
-      },
+  it('throws if extension target has no api.target', () => {
+    const target: ExtensionTarget = 'purchase.checkout.block.render';
+    setupGlobalShopifyMock({
+      extension: createMockExtension(target),
     });
+
+    expect(() => {
+      mount.hook(() => useShippingOptionTarget());
+    }).toThrow(
+      expect.objectContaining({
+        name: 'ExtensionHasNoTargetError',
+      }),
+    );
+  });
+
+  it('throws if extension target has no api.isTargetSelected', () => {
+    const target =
+      'purchase.checkout.shipping-option-item.render-after' as const;
+    setupGlobalShopifyMock<typeof target>({
+      extension: createMockExtension(target),
+      target: createMockSubscribableSignalLike(shippingOption),
+      renderMode: {overlay: false},
+    });
+
+    expect(() => {
+      mount.hook(() => useShippingOptionTarget());
+    }).toThrow(
+      expect.objectContaining({
+        name: 'ExtensionHasNoTargetError',
+      }),
+    );
+  });
+
+  it('returns the shipping option target if it exists', () => {
+    const target =
+      'purchase.checkout.shipping-option-item.render-after' as const;
+    setupGlobalShopifyMock<typeof target>({
+      extension: createMockExtension(target),
+      target: createMockSubscribableSignalLike(shippingOption),
+      isTargetSelected: createMockSubscribableSignalLike(true),
+      renderMode: {overlay: false},
+    });
+
+    const {value} = mount.hook(() => useShippingOptionTarget());
 
     expect(value).toStrictEqual({
       shippingOptionTarget: shippingOption,
       isTargetSelected: true,
-      renderMode,
+      renderMode: {overlay: false},
     });
   });
 });

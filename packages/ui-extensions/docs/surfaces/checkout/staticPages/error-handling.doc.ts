@@ -27,7 +27,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'third-party-libraries',
       title: 'Third party libraries',
       sectionContent: `
-You can use error reporting libraries like [Bugsnag](https://www.bugsnag.com/) or [Sentry](https://sentry.io/). However, they might require extra configuration because UI extensions run inside of a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API). You should also consider using [source maps](https://shopify.dev/docs/apps/build/checkout/test-checkout-ui-extensions#troubleshooting-with-source-maps) to help debug errors.
+You can use error reporting libraries like [Sentry](https://sentry.io/). However, they might require extra configuration because UI extensions run inside of a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API). You should also consider using [source maps](https://shopify.dev/docs/apps/build/checkout/test-checkout-ui-extensions#troubleshooting-with-source-maps) to help debug errors.
 
 > Tip:
 > You must request [network access](/api/checkout-ui-extensions/configuration#network-access) to transmit errors to a third party service.
@@ -36,7 +36,7 @@ You can use error reporting libraries like [Bugsnag](https://www.bugsnag.com/) o
     {
       type: 'Generic',
       anchorLink: 'sentry',
-      title: 'Sentry (recommended)',
+      title: 'Sentry',
       sectionContent: `
       Install and initialize Sentry following their [Browser JavaScript guide](https://docs.sentry.io/platforms/javascript/). We recommend disabling the default integrations to be sure it will run within a Web Worker. You'll need to add event listeners manually.`,
       codeblock: {
@@ -44,24 +44,6 @@ You can use error reporting libraries like [Bugsnag](https://www.bugsnag.com/) o
         tabs: [
           {
             code: './examples/error-handling/sentry.example.tsx',
-            language: 'ts',
-          },
-        ],
-      },
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'bugsnag',
-      title: 'Bugsnag',
-      sectionContent: `
-Follow [Bugsnag's documentation](https://docs.bugsnag.com/platforms/javascript/) to install it for your extension. Bugsnag adds event listeners by default so there's no need to add them manually.
-
-If you use the [CDN version](https://docs.bugsnag.com/platforms/javascript/cdn-guide/), you'll need to add polyfill code (see example) before importing Bugsnag because it tries to access some variables that are not available in Web Workers ([details](https://github.com/bugsnag/bugsnag-js/issues/1506)).`,
-      codeblock: {
-        title: 'Bugsnag',
-        tabs: [
-          {
-            code: './examples/error-handling/bugsnag.example.ts',
             language: 'ts',
           },
         ],

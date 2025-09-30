@@ -1,21 +1,31 @@
-import type {LocalizedField} from '@shopify/ui-extensions/checkout';
+import type {LocalizedField} from '../../api/standard/standard';
 
 import {useLocalizedFields, useLocalizedField} from '../localized-fields';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('useLocalizedFields', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+describe('useLocalizedFields', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('throws an error if localized fields are not available', () => {
-    const extensionApi = {
+    setupGlobalShopifyMock({
       localizedFields: undefined,
-    };
+    });
 
     expect(() => {
-      mount.hook(() => useLocalizedFields(['TAX_CREDENTIAL_BR']), {
-        extensionApi,
-      });
+      mount.hook(() => useLocalizedFields(['TAX_CREDENTIAL_BR']));
     }).toThrow(
-      'Using localized fields requires having personal customer data permissions granted to your app.',
+      expect.objectContaining({
+        name: 'ScopeNotGrantedError',
+      }),
     );
   });
 
@@ -33,11 +43,11 @@ describe.skip('useLocalizedFields', () => {
       },
     ];
 
-    const extensionApi = {
-      localizedFields: createMockStatefulRemoteSubscribable(localizedFields),
-    };
+    setupGlobalShopifyMock({
+      localizedFields: createMockSubscribableSignalLike(localizedFields),
+    });
 
-    const {value} = mount.hook(() => useLocalizedFields(), {extensionApi});
+    const {value} = mount.hook(() => useLocalizedFields());
 
     expect(value).toStrictEqual(localizedFields);
   });
@@ -56,11 +66,11 @@ describe.skip('useLocalizedFields', () => {
       },
     ];
 
-    const extensionApi = {
-      localizedFields: createMockStatefulRemoteSubscribable(localizedFields),
-    };
+    setupGlobalShopifyMock({
+      localizedFields: createMockSubscribableSignalLike(localizedFields),
+    });
 
-    const {value} = mount.hook(() => useLocalizedFields([]), {extensionApi});
+    const {value} = mount.hook(() => useLocalizedFields([]));
 
     expect(value).toStrictEqual([]);
   });
@@ -79,14 +89,11 @@ describe.skip('useLocalizedFields', () => {
       },
     ];
 
-    const extensionApi = {
-      localizedFields: createMockStatefulRemoteSubscribable(localizedFields),
-    };
+    setupGlobalShopifyMock({
+      localizedFields: createMockSubscribableSignalLike(localizedFields),
+    });
 
-    const {value} = mount.hook(
-      () => useLocalizedFields(['TAX_CREDENTIAL_ES']),
-      {extensionApi},
-    );
+    const {value} = mount.hook(() => useLocalizedFields(['TAX_CREDENTIAL_ES']));
 
     expect(value).toStrictEqual([]);
   });
@@ -110,13 +117,12 @@ describe.skip('useLocalizedFields', () => {
       },
     ];
 
-    const extensionApi = {
-      localizedFields: createMockStatefulRemoteSubscribable(localizedFields),
-    };
+    setupGlobalShopifyMock({
+      localizedFields: createMockSubscribableSignalLike(localizedFields),
+    });
 
-    const {value} = mount.hook(
-      () => useLocalizedFields(['TAX_CREDENTIAL_MX', 'TAX_CREDENTIAL_USE_MX']),
-      {extensionApi},
+    const {value} = mount.hook(() =>
+      useLocalizedFields(['TAX_CREDENTIAL_MX', 'TAX_CREDENTIAL_USE_MX']),
     );
 
     expect(value).toMatchObject([localizedFields[0], localizedFields[2]]);
@@ -141,25 +147,24 @@ describe.skip('useLocalizedFields', () => {
       },
     ];
 
-    const extensionApi = {
-      localizedFields: createMockStatefulRemoteSubscribable(localizedFields),
-    };
+    setupGlobalShopifyMock({
+      localizedFields: createMockSubscribableSignalLike(localizedFields),
+    });
 
-    const {value} = mount.hook(
-      () =>
-        useLocalizedFields([
-          'TAX_CREDENTIAL_MX',
-          'TAX_CREDENTIAL_BR',
-          'TAX_CREDENTIAL_USE_MX',
-        ]),
-      {extensionApi},
+    const {value} = mount.hook(() =>
+      useLocalizedFields([
+        'TAX_CREDENTIAL_MX',
+        'TAX_CREDENTIAL_BR',
+        'TAX_CREDENTIAL_USE_MX',
+      ]),
     );
 
     expect(value).toMatchObject([localizedFields[0], localizedFields[2]]);
   });
 });
 
-describe.skip('useLocalizedField', () => {
+describe('useLocalizedField', () => {
+  afterEach(tearDownGlobalShopifyMock);
   it('returns the localized field that matches the passed key', async () => {
     const localizedFields: LocalizedField[] = [
       {
@@ -179,15 +184,12 @@ describe.skip('useLocalizedField', () => {
       },
     ];
 
-    const extensionApi = {
-      localizedFields: createMockStatefulRemoteSubscribable(localizedFields),
-    };
+    setupGlobalShopifyMock({
+      localizedFields: createMockSubscribableSignalLike(localizedFields),
+    });
 
-    const {value} = mount.hook(
-      () => useLocalizedField('TAX_CREDENTIAL_USE_MX'),
-      {
-        extensionApi,
-      },
+    const {value} = mount.hook(() =>
+      useLocalizedField('TAX_CREDENTIAL_USE_MX'),
     );
 
     expect(value).toStrictEqual(localizedFields[2]);
@@ -196,15 +198,12 @@ describe.skip('useLocalizedField', () => {
   it('returns undefined if no localized field matches the passed key', async () => {
     const localizedFields: LocalizedField[] = [];
 
-    const extensionApi = {
-      localizedFields: createMockStatefulRemoteSubscribable(localizedFields),
-    };
+    setupGlobalShopifyMock({
+      localizedFields: createMockSubscribableSignalLike(localizedFields),
+    });
 
-    const {value} = mount.hook(
-      () => useLocalizedField('TAX_CREDENTIAL_USE_MX'),
-      {
-        extensionApi,
-      },
+    const {value} = mount.hook(() =>
+      useLocalizedField('TAX_CREDENTIAL_USE_MX'),
     );
 
     expect(value).toBeUndefined();

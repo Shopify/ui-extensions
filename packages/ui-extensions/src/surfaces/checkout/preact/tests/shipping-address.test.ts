@@ -1,17 +1,27 @@
-import type {MailingAddress} from '@shopify/ui-extensions/checkout';
+import type {MailingAddress} from '../../api/shared';
 
 import {useShippingAddress} from '../shipping-address';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('useShippingAddress', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+describe('useShippingAddress', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns latest shipping address', async () => {
     const address: MailingAddress = {countryCode: 'CA'};
-    const extensionApi = {
-      shippingAddress: createMockStatefulRemoteSubscribable(address),
-    };
+    setupGlobalShopifyMock({
+      shippingAddress: createMockSubscribableSignalLike(address),
+    });
 
-    const {value} = mount.hook(() => useShippingAddress(), {extensionApi});
+    const {value} = mount.hook(() => useShippingAddress());
 
     expect(value).toMatchObject(address);
   });

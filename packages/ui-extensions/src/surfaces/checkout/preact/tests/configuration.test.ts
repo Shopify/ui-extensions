@@ -1,16 +1,26 @@
 import {useSettings} from '../settings';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('useSettings', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+describe('useSettings', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns settings from the api', () => {
     const settings = {title: 'checkout ui'};
 
-    const {value} = mount.hook(() => useSettings(), {
-      extensionApi: {
-        settings: createMockStatefulRemoteSubscribable(settings),
-      },
+    setupGlobalShopifyMock({
+      settings: createMockSubscribableSignalLike(settings),
     });
+
+    const {value} = mount.hook(() => useSettings());
 
     expect(value).toStrictEqual(settings);
   });

@@ -1,15 +1,21 @@
-import type {
-  ExtensionTarget,
-  PickupLocationOption,
-} from '@shopify/ui-extensions/checkout';
+import type {PickupLocationOption} from '../../api/standard/standard';
+import type {ExtensionTarget} from '../../extension-targets';
 
 import {usePickupLocationOptionTarget} from '../pickup-location-option-target';
-import {ExtensionHasNoTargetError} from '../../errors';
+import {
+  createMockSubscribableSignalLike,
+  mount,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+  createMockExtension,
+} from './mount';
 
-import {createMockStatefulRemoteSubscribable, mount} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('usePickupLocationOptionTarget', () => {
-  const pickupLocationOption = {
+describe('usePickupLocationOptionTarget', () => {
+  afterEach(tearDownGlobalShopifyMock);
+  const pickupLocationOption: PickupLocationOption = {
     handle: 'pickup_method_1',
     title: 'Pickup method 1',
     description: 'something',
@@ -18,59 +24,62 @@ describe.skip('usePickupLocationOptionTarget', () => {
     location: {
       address: {
         address1: '123 Fake St',
-        address2: null,
+        address2: undefined,
         city: 'Ottawa',
-        company: null,
-        country: 'Canada',
+        company: undefined,
+        countryCode: 'CA',
         firstName: 'Bob',
         lastName: 'Bobsen',
         phone: '555-555-5555',
-        province: 'Ontario',
+        provinceCode: 'ON',
         zip: 'K2P0V6',
       },
     },
-  } as PickupLocationOption;
+    metafields: [],
+  };
 
-  it('throws if extension target has no api.target', async () => {
-    const runner = async () => {
-      const target: ExtensionTarget = 'purchase.checkout.block.render';
-      return mount.hook(() => usePickupLocationOptionTarget(), {
-        extensionApi: {
-          extension: {target},
-          target: undefined,
-          isTargetSelected: createMockStatefulRemoteSubscribable(true),
-        },
-      });
-    };
-
-    await expect(runner).rejects.toThrow(ExtensionHasNoTargetError);
-  });
-
-  it('throws if extension target has no api.isTargetSelected', async () => {
-    const runner = async () => {
-      const target: ExtensionTarget = 'purchase.checkout.block.render';
-      return mount.hook(() => usePickupLocationOptionTarget(), {
-        extensionApi: {
-          extension: {target},
-          target: createMockStatefulRemoteSubscribable(pickupLocationOption),
-          isTargetSelected: undefined,
-        },
-      });
-    };
-
-    await expect(runner).rejects.toThrow(ExtensionHasNoTargetError);
-  });
-
-  it('returns the pickup location option target if it exists', async () => {
-    const target: ExtensionTarget =
-      'purchase.checkout.pickup-location-option-item.render-after';
-    const {value} = mount.hook(() => usePickupLocationOptionTarget(), {
-      extensionApi: {
-        extension: {target},
-        target: createMockStatefulRemoteSubscribable(pickupLocationOption),
-        isTargetSelected: createMockStatefulRemoteSubscribable(true),
-      },
+  it('throws if extension target has no api.target', () => {
+    const target: ExtensionTarget = 'purchase.checkout.block.render';
+    setupGlobalShopifyMock({
+      extension: createMockExtension(target),
     });
+
+    expect(() => {
+      mount.hook(() => usePickupLocationOptionTarget());
+    }).toThrow(
+      expect.objectContaining({
+        name: 'ExtensionHasNoTargetError',
+      }),
+    );
+  });
+
+  it('throws if extension target has no api.isTargetSelected', () => {
+    const target =
+      'purchase.checkout.pickup-location-option-item.render-after' as const;
+    setupGlobalShopifyMock<typeof target>({
+      extension: createMockExtension(target),
+      target: createMockSubscribableSignalLike(pickupLocationOption),
+    });
+
+    expect(() => {
+      mount.hook(() => usePickupLocationOptionTarget());
+    }).toThrow(
+      expect.objectContaining({
+        name: 'ExtensionHasNoTargetError',
+      }),
+    );
+  });
+
+  it('returns the pickup location option target if it exists', () => {
+    const target =
+      'purchase.checkout.pickup-location-option-item.render-after' as const;
+    setupGlobalShopifyMock<typeof target>({
+      extension: createMockExtension(target),
+      target: createMockSubscribableSignalLike(pickupLocationOption),
+      isTargetSelected: createMockSubscribableSignalLike(true),
+    });
+
+    const {value} = mount.hook(() => usePickupLocationOptionTarget());
 
     expect(value).toStrictEqual({
       pickupLocationOptionTarget: pickupLocationOption,

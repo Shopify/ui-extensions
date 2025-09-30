@@ -2,14 +2,23 @@ import type {
   DeliveryGroup,
   ShippingOption,
   CartLine,
-} from '@shopify/ui-extensions/checkout';
+} from '../../api/standard/standard';
 
 import {useDeliveryGroup} from '../delivery-group';
 
-import type {PartialExtensionApi} from './mount';
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
 
-describe.skip('Delivery Group API hooks', () => {
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
+
+describe('Delivery Group API hooks', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   describe('useDeliveryGroup', () => {
     const defaultLine = {
       id: 'gid://shopify/CartLine/stable_id',
@@ -35,16 +44,15 @@ describe.skip('Delivery Group API hooks', () => {
       },
       attributes: [],
       discountAllocations: [],
+      parentRelationship: null,
     } as CartLine;
 
     it('returns undefined when no delivery group is provided', async () => {
-      const extensionApi: PartialExtensionApi = {
-        lines: createMockStatefulRemoteSubscribable([defaultLine]),
-      };
-
-      const {value} = mount.hook(() => useDeliveryGroup(undefined), {
-        extensionApi,
+      setupGlobalShopifyMock({
+        lines: createMockSubscribableSignalLike([defaultLine]),
       });
+
+      const {value} = mount.hook(() => useDeliveryGroup(undefined));
 
       expect(value).toBeUndefined();
     });
@@ -112,13 +120,11 @@ describe.skip('Delivery Group API hooks', () => {
         ],
       };
 
-      const extensionApi: PartialExtensionApi = {
-        lines: createMockStatefulRemoteSubscribable([defaultLine]),
-      };
-
-      const {value} = mount.hook(() => useDeliveryGroup(deliveryGroup), {
-        extensionApi,
+      setupGlobalShopifyMock({
+        lines: createMockSubscribableSignalLike([defaultLine]),
       });
+
+      const {value} = mount.hook(() => useDeliveryGroup(deliveryGroup));
 
       const expectedDeliveryGroup = {
         ...deliveryGroup,

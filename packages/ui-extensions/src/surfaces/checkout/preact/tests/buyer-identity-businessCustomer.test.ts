@@ -1,8 +1,18 @@
 import {usePurchasingCompany} from '../buyer-identity';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('usePurchasingCompany', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+} from './mount';
+
+describe('usePurchasingCompany', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns purchasing company from the api', () => {
     const purchasingCompany = {
       company: {
@@ -17,16 +27,13 @@ describe.skip('usePurchasingCompany', () => {
       },
     };
 
-    const extensionApi = {
+    setupGlobalShopifyMock({
       buyerIdentity: {
-        purchasingCompany:
-          createMockStatefulRemoteSubscribable(purchasingCompany),
+        purchasingCompany: createMockSubscribableSignalLike(purchasingCompany),
       },
-    };
-
-    const {value} = mount.hook(() => usePurchasingCompany(), {
-      extensionApi,
     });
+
+    const {value} = mount.hook(() => usePurchasingCompany());
 
     expect(value).toStrictEqual(purchasingCompany);
   });

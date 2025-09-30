@@ -1,14 +1,20 @@
-import type {
-  DeliveryGroup,
-  ExtensionTarget,
-  ShippingOption,
-} from '@shopify/ui-extensions/checkout';
-
+import type {DeliveryGroup, ShippingOption} from '../../api/standard/standard';
 import {useDeliveryGroupListTarget} from '../delivery-group-list-target';
 
-import {mount, createMockStatefulRemoteSubscribable} from './mount';
+// See __mocks__/preact/hooks
+jest.mock('preact/hooks');
 
-describe.skip('useDeliveryGroupListTarget', () => {
+import {
+  mount,
+  createMockSubscribableSignalLike,
+  setupGlobalShopifyMock,
+  tearDownGlobalShopifyMock,
+  createMockExtension,
+} from './mount';
+
+describe('useDeliveryGroupListTarget', () => {
+  afterEach(tearDownGlobalShopifyMock);
+
   it('returns the DeliveryGroupList target if it exists', async () => {
     const deliveryGroup: DeliveryGroup = {
       selectedDeliveryOption: {
@@ -57,18 +63,18 @@ describe.skip('useDeliveryGroupListTarget', () => {
       ],
     };
 
-    const target: ExtensionTarget =
-      'purchase.checkout.shipping-option-list.render-before';
+    const target =
+      'purchase.checkout.shipping-option-list.render-before' as const;
 
-    const {value} = mount.hook(() => useDeliveryGroupListTarget(), {
-      extensionApi: {
-        extension: {target},
-        target: createMockStatefulRemoteSubscribable({
-          groupType: 'oneTimePurchase',
-          deliveryGroups: [deliveryGroup, deliveryGroup2],
-        }) as any,
-      },
+    setupGlobalShopifyMock<typeof target>({
+      extension: createMockExtension(target),
+      target: createMockSubscribableSignalLike({
+        groupType: 'oneTimePurchase',
+        deliveryGroups: [deliveryGroup, deliveryGroup2],
+      }),
     });
+
+    const {value} = mount.hook(() => useDeliveryGroupListTarget());
 
     expect(value).toStrictEqual({
       groupType: 'oneTimePurchase',

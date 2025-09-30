@@ -10,6 +10,7 @@ packages/**/*.mjs
 !components/*.d.ts
 !components.d.ts
 packages/**/*.js
+!packages/**/__mocks__/**/*.js
 packages/**/bin
 !packages/**/.eslintrc.js
 *.log
