@@ -204,47 +204,6 @@ See [an example](targets/block/pos-receipt-footer-block-render).
         },
       ],
     },
-    {
-      type: 'GenericAccordion',
-      title: 'POS observe events',
-      anchorLink: 'observe-events',
-      sectionContent:
-        'POS observe event extensions listen for specific events that occur during POS operations.',
-      accordionContent: [
-        {
-          title: 'Transaction complete',
-          description: `
-Observes when a transaction is completed in the POS.
-
-See [an example](targets/observe/pos-transaction-complete-event-observe).
-`,
-        },
-        {
-          title: 'Cash tracking session start',
-          description: `
-Observes when a cash tracking session is started.
-
-See [an example](targets/observe/pos-cash-tracking-session-start-event-observe).
-`,
-        },
-        {
-          title: 'Cash tracking session complete',
-          description: `
-Observes when a cash tracking session is completed.
-
-See [an example](targets/observe/pos-cash-tracking-session-complete-event-observe).
-`,
-        },
-        {
-          title: 'Cart update',
-          description: `
-Observes when the cart is updated during a transaction.
-
-See [an example](targets/observe/pos-cart-update-event-observe).
-`,
-        },
-      ],
-    },
   ],
 };
 
