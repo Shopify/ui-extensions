@@ -5,14 +5,14 @@ const generateJsxCodeBlockForToastApi = (title: string, fileName: string) =>
   generateJsxCodeBlock(title, 'pinpad-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Pinpad API',
+  name: 'PinPad API',
   description:
-    'The Pinpad API allows the display of a Pinpad component for PIN validation.',
+    'The PinPad API allows the display of a PinPad component for PIN validation.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
-      title: 'PinpadApi',
+      title: 'PinPadApi',
       description: '',
       type: 'PinPadApiContent',
     },
@@ -20,11 +20,11 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Pinpad API',
+    description: 'Examples of using the PinPad API',
     examples: [
       {
         codeblock: generateJsxCodeBlockForToastApi(
-          'Display a Pinpad and validate the PIN',
+          'Display a PinPad and validate the PIN',
           'validation',
         ),
       },
