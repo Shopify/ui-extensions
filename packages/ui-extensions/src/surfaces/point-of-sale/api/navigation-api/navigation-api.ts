@@ -21,16 +21,6 @@ export interface NavigationHistoryEntry {
   getState(): unknown;
 }
 
-/**
- * The NavigationCurrentEntryChangeEvent interface of the Navigation API is the event object for the currententrychange event, which fires when the Navigation.currentEntry has changed.
- */
-export interface NavigationCurrentEntryChangeEvent {
-  /**
-   * Returns the NavigationHistoryEntry that was navigated from.
-   */
-  from: NavigationHistoryEntry;
-}
-
 export interface Navigation {
   /**
    * The navigate() method navigates to a specific URL, updating any provided state in the history entries list.
@@ -44,12 +34,4 @@ export interface Navigation {
    * The back() method of the Navigation interface navigates to the previous entry in the history list.
    */
   back(): void;
-  addEventListener(
-    type: 'currententrychange',
-    cb: (event: NavigationCurrentEntryChangeEvent) => void,
-  ): void;
-  removeEventListener(
-    type: 'currententrychange',
-    cb: (event: NavigationCurrentEntryChangeEvent) => void,
-  ): void;
 }
