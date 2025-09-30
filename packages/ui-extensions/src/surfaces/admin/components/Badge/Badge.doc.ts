@@ -77,7 +77,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates how badge sizes can be used to create visual hierarchy and draw attention to varying levels of importance, from subtle notifications to critical alerts.',
+              'Demonstrates the two available badge sizes for creating visual hierarchy.',
             codeblock: {
               title: 'Different sizes for emphasis',
               tabs: [
