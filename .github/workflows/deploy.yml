@@ -27,7 +27,7 @@ jobs:
 
       - id: changesets
         name: Create release Pull Request or publish to NPM
-        uses: changesets/action@v1
+        uses: changesets/action@06245a4e0a36c064a573d4150030f5ec548e4fcc # v1.4.10
         with:
           title: Version Packages (${{ github.ref_name }})
           publish: yarn run deploy --tag ${{ github.ref_name }}
