@@ -88,12 +88,12 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates how the Clickable component can be integrated into a card layout to provide an interactive configuration action button.',
+              'Illustrates how the Clickable component can be integrated into a section layout to provide an interactive configuration action button.',
             codeblock: {
-              title: 'Card with Clickable Action',
+              title: 'Section with Clickable Action',
               tabs: [
                 {
-                  code: './examples/card-with-clickable-action.html',
+                  code: './examples/section-with-clickable-action.html',
                   language: 'preview',
                 },
               ],
