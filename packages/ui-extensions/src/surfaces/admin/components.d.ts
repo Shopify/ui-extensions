@@ -169,7 +169,7 @@ export interface ExtendableEvent extends Event {
 interface AggregateError$1<T extends Error> extends Error {
   errors: T[];
 }
-export interface ArgregatedErrorEvent<T extends Error> extends ErrorEvent {
+export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
   error: AggregateError$1<T>;
 }
 export type SizeKeyword =
@@ -361,6 +361,7 @@ declare const privateIconArray: readonly [
   'clipboard-check',
   'clipboard-checklist',
   'clock',
+  'clock-list',
   'clock-revert',
   'code',
   'code-add',
@@ -578,6 +579,7 @@ declare const privateIconArray: readonly [
   'note',
   'note-add',
   'notification',
+  'number-one',
   'order',
   'order-batches',
   'order-draft',
@@ -664,6 +666,7 @@ declare const privateIconArray: readonly [
   'profile-filled',
   'question-circle',
   'question-circle-filled',
+  'radio-control',
   'receipt',
   'receipt-dollar',
   'receipt-euro',
@@ -718,6 +721,7 @@ declare const privateIconArray: readonly [
   'sort-ascending',
   'sort-descending',
   'sound',
+  'split',
   'sports',
   'star',
   'star-circle',
@@ -784,6 +788,9 @@ declare const privateIconArray: readonly [
   'unlock',
   'upload',
   'variant',
+  'variant-list',
+  'video',
+  'video-list',
   'view',
   'viewport-narrow',
   'viewport-short',
@@ -2100,7 +2107,7 @@ interface ColorPickerProps$1 extends GlobalProps, InputProps {
    * For RGB and RGBA, both the legacy syntax (comma-separated) and modern syntax (space-separate) are supported.
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb
    *
-   * If the value is invalid, the component will select rgb(0, 0, 0).
+   * If the value is invalid, the component will return an empty string ''.
    *
    * Note that the `onChange` handler will emit the value in hex.
    */
@@ -2407,12 +2414,19 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    */
   value?: string;
   /**
-   * Callback when any date is selected. Will fire before `onChange`.
+   * Callback when any date is selected.
+   *
+   * - If `type="single"`, fires when a date is selected and happens before `onChange`.
+   * - If `type="multiple"`, fires when a date is selected before `onChange`.
+   * - If `type="range"`, fires when a first date is selected (with the partial value formatted as `YYYY-MM-DD--`), and when the last date is selected before `onChange`.
    */
   onInput?: (event: Event) => void;
   /**
-   * Callback when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
-   *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
+   * Callback when the value is committed.
+   *
+   * - If `type="single"`, fires when a date is selected after `onInput`.
+   * - If `type="multiple"`, fires when a date is selected after `onInput`.
+   * - If `type="range"`, fires when a range is completed by selecting the end date after `onInput`.
    */
   onChange?: (event: Event) => void;
 }
@@ -2432,6 +2446,16 @@ interface DateFieldProps$1
       | 'onViewChange'
     >,
     AutocompleteProps<DateAutocompleteField> {
+  /**
+   * Callback when the user makes any changes in the field.
+   * Also triggered when a date is selected using the date picker popup before `onChange`.
+   */
+  onInput?: (event: Event) => void;
+  /**
+   * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+   * Also triggered when a date is selected using the date picker popup after `onInput`.
+   */
+  onChange?: (event: Event) => void;
   /**
    * Callback when the field has an invalid date.
    * This callback will be called, if the date typed is invalid or disabled.
@@ -2562,7 +2586,7 @@ interface FunctionSettingsProps$1 extends GlobalProps, FormProps$1 {
    * highlight the fields that caused the errors, and display the error messages
    * to the user.
    */
-  onError?: (event: ArgregatedErrorEvent<FunctionSettingsError>) => void;
+  onError?: (event: AggregateErrorEvent<FunctionSettingsError>) => void;
 }
 export interface FunctionSettingsError extends Error {
   /**
@@ -5081,11 +5105,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$S]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<ChipJSXProps, 'graphic'> &
+      [tagName$S]: Omit<ChipJSXProps, 'graphic'> &
         PreactBaseElementPropsWithChildren<Chip>;
     }
   }
@@ -5321,11 +5341,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$O]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<ClickableChipJSXProps, 'graphic'> &
+      [tagName$O]: Omit<ClickableChipJSXProps, 'graphic'> &
         PreactBaseElementPropsWithChildren<ClickableChip>;
     }
   }
@@ -5496,11 +5512,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$M]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ColorPickerJSXProps;
+      [tagName$M]: ColorPickerJSXProps;
     }
   }
 }
@@ -5553,11 +5565,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$L]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        DateFieldJSXProps;
+      [tagName$L]: DateFieldJSXProps;
     }
   }
 }
@@ -5690,6 +5698,8 @@ export interface DropZoneProps
     >
   > {}
 
+export type ReplaceType<TType, TFrom, TTo> = Exclude<TType, TFrom> | TTo;
+
 declare const setFiles: unique symbol;
 
 declare const internals: unique symbol;
@@ -5711,13 +5721,19 @@ declare class DropZone extends BaseClass implements DropZoneProps {
   accessor name: DropZoneProps['name'];
   accessor required: DropZoneProps['required'];
   get value(): string;
-  set value(value: string);
+  /** This sets the input value for a file type, which cannot be set programatically, so it can only be reset. */
+  set value(value: '' | null);
   get files(): File[];
   set files(files: File[]);
   /** @private */
   [setFiles](files: File[]): void;
   /** @private */
-  [getFileInput](): HTMLInputElement | null;
+  [getFileInput](): ReplaceType<
+    Element | null | undefined,
+    Element,
+    HTMLInputElement
+  >;
+
   /** @private */
   formResetCallback(): void;
   constructor();
@@ -5730,11 +5746,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$I]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        DropZoneJSXProps;
+      [tagName$I]: DropZoneJSXProps;
     }
   }
 }
@@ -6241,11 +6253,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$z]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        MenuJSXProps;
+      [tagName$z]: MenuJSXProps;
     }
   }
 }
@@ -6345,11 +6353,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$y]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
+      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
     }
   }
 }
@@ -6818,11 +6822,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$o]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        QueryContainerJSXProps;
+      [tagName$o]: QueryContainerJSXProps;
     }
   }
 }
@@ -8699,11 +8699,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$S]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<ChipJSXProps, 'graphic'> &
+      [tagName$S]: Omit<ChipJSXProps, 'graphic'> &
         ReactBaseElementPropsWithChildren<Chip>;
     }
   }
@@ -8711,14 +8707,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$S]: Omit<
-        React.HTMLAttributes<HTMLElement>,
-        Extract<
-          keyof React.HTMLAttributes<HTMLElement>,
-          `on${Capitalize<string>}`
-        >
-      > &
-        Omit<ChipJSXProps, 'graphic'> &
+      [tagName$S]: Omit<ChipJSXProps, 'graphic'> &
         ReactBaseElementPropsWithChildren<Chip>;
     }
   }
@@ -8774,11 +8763,7 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$O]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<ClickableChipJSXProps, 'graphic'> &
+      [tagName$O]: Omit<ClickableChipJSXProps, 'graphic'> &
         ReactBaseElementPropsWithChildren<ClickableChip>;
     }
   }
@@ -8786,14 +8771,7 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$O]: Omit<
-        React.HTMLAttributes<HTMLElement>,
-        Extract<
-          keyof React.HTMLAttributes<HTMLElement>,
-          `on${Capitalize<string>}`
-        >
-      > &
-        Omit<ClickableChipJSXProps, 'graphic'> &
+      [tagName$O]: Omit<ClickableChipJSXProps, 'graphic'> &
         ReactBaseElementPropsWithChildren<ClickableChip>;
     }
   }
@@ -8815,50 +8793,28 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$M]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ColorPickerJSXProps;
+      [tagName$M]: ColorPickerJSXProps;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$M]: Omit<
-        React.HTMLAttributes<HTMLElement>,
-        Extract<
-          keyof React.HTMLAttributes<HTMLElement>,
-          `on${Capitalize<string>}`
-        >
-      > &
-        ColorPickerJSXProps;
+      [tagName$M]: ColorPickerJSXProps;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$L]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        DateFieldJSXProps;
+      [tagName$L]: DateFieldJSXProps;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$L]: Omit<
-        React.HTMLAttributes<HTMLElement>,
-        Extract<
-          keyof React.HTMLAttributes<HTMLElement>,
-          `on${Capitalize<string>}`
-        >
-      > &
-        DateFieldJSXProps;
+      [tagName$L]: DateFieldJSXProps;
     }
   }
 }
@@ -8893,25 +8849,14 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$I]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        DropZoneJSXProps;
+      [tagName$I]: DropZoneJSXProps;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$I]: Omit<
-        React.HTMLAttributes<HTMLElement>,
-        Extract<
-          keyof React.HTMLAttributes<HTMLElement>,
-          `on${Capitalize<string>}`
-        >
-      > &
-        DropZoneJSXProps;
+      [tagName$I]: DropZoneJSXProps;
     }
   }
 }
@@ -9034,50 +8979,28 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$z]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        MenuJSXProps;
+      [tagName$z]: MenuJSXProps;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$z]: Omit<
-        React.HTMLAttributes<HTMLElement>,
-        Extract<
-          keyof React.HTMLAttributes<HTMLElement>,
-          `on${Capitalize<string>}`
-        >
-      > &
-        MenuJSXProps;
+      [tagName$z]: MenuJSXProps;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$y]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
+      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$y]: Omit<
-        React.HTMLAttributes<HTMLElement>,
-        Extract<
-          keyof React.HTMLAttributes<HTMLElement>,
-          `on${Capitalize<string>}`
-        >
-      > &
-        Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
+      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
     }
   }
 }
@@ -9224,25 +9147,14 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        QueryContainerJSXProps;
+      [tagName$o]: QueryContainerJSXProps;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: Omit<
-        React.HTMLAttributes<HTMLElement>,
-        Extract<
-          keyof React.HTMLAttributes<HTMLElement>,
-          `on${Capitalize<string>}`
-        >
-      > &
-        QueryContainerJSXProps;
+      [tagName$o]: QueryContainerJSXProps;
     }
   }
 }
