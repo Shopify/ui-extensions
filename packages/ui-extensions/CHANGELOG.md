@@ -1,5 +1,15 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.47
+
+### Minor Changes
+
+- [#3402](https://github.com/Shopify/ui-extensions/pull/3402) [`b587dd0af751f69d2d2d15a93f63a8dfb96df7c8`](https://github.com/Shopify/ui-extensions/commit/b587dd0af751f69d2d2d15a93f63a8dfb96df7c8) Thanks [@oliverigor](https://github.com/oliverigor)! - Adding ui-extensions components to the checkout surface.
+
+  - ConsentCheckbox
+  - ConsentPhoneField
+  - NumberField
+
 ## 2025.10.0-rc.46
 
 ### Patch Changes
