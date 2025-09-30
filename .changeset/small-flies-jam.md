@@ -1,0 +1,21 @@
+---
+'@shopify/ui-extensions': patch
+---
+
+- Added updated docs for checkout components and targets.
+- Added updated docs for customer account components and targets.
+- Added new components to checkout:
+  - Badge
+  - Clickable
+  - Details
+  - Divider
+  - Grid
+  - GridItem
+  - MoneyField
+  - Popover
+  - PressButton
+  - Sheet
+  - SkeletonParagraph
+  - Summary
+  - Switch
+  - Tooltip
