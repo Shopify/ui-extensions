@@ -5721,7 +5721,7 @@ declare class DropZone extends BaseClass implements DropZoneProps {
   accessor name: DropZoneProps['name'];
   accessor required: DropZoneProps['required'];
   get value(): string;
-  /** This sets the input value for a fiel type, which cannot be set programatically, so it can only be reset. */
+  /** This sets the input value for a file type, which cannot be set programatically, so it can only be reset. */
   set value(value: '' | null);
   get files(): File[];
   set files(files: File[]);

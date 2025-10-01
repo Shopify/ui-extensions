@@ -2,4 +2,4 @@
 '@shopify/ui-extensions': patch
 ---
 
-Update amdmin ui-extensions
+Update admin ui-extensions
