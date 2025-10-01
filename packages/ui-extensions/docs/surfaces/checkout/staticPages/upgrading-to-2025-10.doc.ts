@@ -266,12 +266,6 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
       ],
     },
     {
-      type: 'Generic',
-      anchorLink: 'polaris-web-components',
-      title: 'Polaris web components',
-      sectionContent: '',
-    },
-    {
       type: 'Markdown',
       anchorLink: 'mapping-legacy-components-to-polaris-web-components',
       title: 'Mapping legacy components to Polaris web components',
