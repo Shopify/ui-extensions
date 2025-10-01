@@ -1,4 +1,4 @@
-/** VERSION: 1.20.0 **/
+/** VERSION: 1.21.1 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -5721,7 +5721,7 @@ declare class DropZone extends BaseClass implements DropZoneProps {
   accessor name: DropZoneProps['name'];
   accessor required: DropZoneProps['required'];
   get value(): string;
-  /** This sets the input value for a file type, which cannot be set programatically, so it can only be reset. */
+  /** This sets the input value for a fiel type, which cannot be set programatically, so it can only be reset. */
   set value(value: '' | null);
   get files(): File[];
   set files(files: File[]);
@@ -5746,7 +5746,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$I]: DropZoneJSXProps;
+      [tagName$I]: DropZoneJSXProps & PreactBaseElementProps<DropZone>;
     }
   }
 }
@@ -5755,10 +5755,6 @@ declare const tagName$I = 's-drop-zone';
 export interface DropZoneJSXProps
   extends Partial<DropZoneProps>,
     Pick<DropZoneProps$1, 'id'> {
-  /**
-   * Content to include inside the DropZone container
-   */
-  children?: ComponentChildren;
   onChange?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
   onInput?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
   onDropRejected?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
@@ -5861,7 +5857,7 @@ export interface GridProps
    * Adjust spacing between elements.
    *
    * `gap` can either accept:
-   * - a single SpacingKeyword value applied to both axes (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value applied to both axes (e.g. `large-100`)
    * - OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
@@ -5873,7 +5869,7 @@ export interface GridProps
    *
    * This overrides the row value of `gap`.
    * `rowGap` either accepts:
-   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value (e.g. `large-100`)
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
@@ -5884,7 +5880,7 @@ export interface GridProps
    *
    * This overrides the column value of `gap`.
    * `columnGap` either accepts:
-   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value (e.g. `large-100`)
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
@@ -6209,10 +6205,6 @@ export interface MenuProps
  * (like Popover, Tooltip, Modal, etc.) to communicate with the overlay control system.
  */
 /**
- * Symbol used to invoke the method for overlay commands, e.g. `--show`, `--hide`, etc.
- */
-declare const overlayCommand: unique symbol;
-/**
  * Symbol used to track the open or closed state of the overlay.
  */
 declare const overlayHidden: unique symbol;
@@ -6221,6 +6213,21 @@ declare const overlayHidden: unique symbol;
  */
 declare const overlayActivator: unique symbol;
 declare const overlayHideFrameId: unique symbol;
+export type PolyfillCommandEventInit = EventInit & {
+  source: HTMLElement | null | undefined;
+  command: PreactOverlayControlProps['command'];
+};
+export type PolyfillCommandEvent = Event & {
+  source: PolyfillCommandEventInit['source'];
+  command: PolyfillCommandEventInit['command'];
+  /** Have to use `_s_shadowSource` because `source` is retargeted to the shadow host by browsers */
+  _s_shadowSource: PolyfillCommandEventInit['source'];
+};
+declare global {
+  interface GlobalEventHandlersEventMap {
+    command: PolyfillCommandEvent;
+  }
+}
 
 declare class PreactOverlayElement extends PreactCustomElement {
   constructor(renderImpl: RenderImpl);
@@ -6230,11 +6237,6 @@ declare class PreactOverlayElement extends PreactCustomElement {
   [overlayActivator]: HTMLElement | null | undefined;
   /** @private */
   [overlayHideFrameId]?: number;
-  /** @private */
-  [overlayCommand](
-    command: InteractionProps['command'],
-    overlayActivatorEl: HTMLElement | null | undefined,
-  ): void;
 }
 
 declare class Menu extends PreactOverlayElement implements MenuProps {
@@ -6291,10 +6293,39 @@ export interface ModalProps
   >;
 }
 
+export interface Context<T> {
+  readonly defaultValue: T;
+}
 declare class AddedContext<T> extends EventTarget {
   constructor(defaultValue: T);
   get value(): T;
   set value(value: T);
+}
+
+/**
+ * A callback which is provided by a context requester and is called with the value satisfying the request.
+ * This callback can be called multiple times by context providers as the requested value is changed.
+ */
+export type ContextCallback<T> = (value: T) => void;
+/**
+ * An event fired by a context requester to signal it desires a named context.
+ *
+ * A provider should inspect the `context` property of the event to determine if it has a value that can
+ * satisfy the request, calling the `callback` with the requested value if so.
+ */
+declare class ContextRequestEvent<T> extends Event {
+  readonly context: Context<T>;
+  readonly callback: ContextCallback<T>;
+  constructor(context: Context<T>, callback: ContextCallback<T>);
+}
+declare global {
+  interface HTMLElementEventMap {
+    /**
+     * A 'context-request' event can be emitted by any element which desires
+     * a context value to be injected by an external provider.
+     */
+    'context-request': ContextRequestEvent<unknown>;
+  }
 }
 
 declare const hasOpenChildModal: unique symbol;
@@ -6564,14 +6595,7 @@ declare module 'preact' {
 declare const tagName$t = 's-ordered-list';
 export interface OrderedListJSXProps
   extends Partial<OrderedListProps>,
-    Pick<OrderedListProps$1, 'id'> {
-  /**
-   * The items of the OrderedList.
-   *
-   * Only ListItems are accepted.
-   */
-  children?: ComponentChildren;
-}
+    Pick<OrderedListProps$1, 'id'> {}
 
 export interface PageProps
   extends Required<Pick<PageProps$1, 'inlineSize' | 'heading'>> {
@@ -7075,7 +7099,7 @@ export interface StackProps
    * Adjust spacing between elements.
    *
    * `gap` can either accept:
-   * - a single SpacingKeyword value applied to both axes (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value applied to both axes (e.g. `large-100`)
    * - OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
@@ -7087,7 +7111,7 @@ export interface StackProps
    *
    * This overrides the row value of `gap`.
    * `rowGap` either accepts:
-   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value (e.g. `large-100`)
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
@@ -7098,7 +7122,7 @@ export interface StackProps
    *
    * This overrides the column value of `gap`.
    * `columnGap` either accepts:
-   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value (e.g. `large-100`)
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
@@ -7685,14 +7709,7 @@ declare module 'preact' {
 declare const tagName$5 = 's-unordered-list';
 export interface UnorderedListJSXProps
   extends Partial<UnorderedListProps>,
-    Pick<UnorderedListProps$1, 'id'> {
-  /**
-   * The items of the UnorderedList.
-   *
-   * Only ListItems are accepted.
-   */
-  children?: ComponentChildren;
-}
+    Pick<UnorderedListProps$1, 'id'> {}
 
 export interface AdminActionProps
   extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
@@ -8186,13 +8203,6 @@ export interface DropZoneEvents {
   droprejected: CallbackEventListener<typeof tagName> = null;
 }
 
-export interface DropZoneSlots {
-  /**
-   * Content to include inside the DropZone container
-   */
-  children?: HTMLElement;
-}
-
 export interface EmailFieldEvents {
   change: CallbackEventListener<'input'>;
   input: CallbackEventListener<'input'>;
@@ -8305,15 +8315,6 @@ export interface OptionGroupSlots {
    * The options a user can select from.
    *
    * Accepts `Option` components.
-   */
-  children?: HTMLElement;
-}
-
-export interface OrderedListSlots {
-  /**
-   * The items of the OrderedList.
-   *
-   * Only ListItems are accepted.
    */
   children?: HTMLElement;
 }
@@ -8525,15 +8526,6 @@ export interface URLFieldEvents {
   input: CallbackEventListener<'input'>;
   blur: CallbackEventListener<'input'>;
   focus: CallbackEventListener<'input'>;
-}
-
-export interface UnorderedListSlots {
-  /**
-   * The items of the UnorderedList.
-   *
-   * Only ListItems are accepted.
-   */
-  children?: HTMLElement;
 }
 
 export interface AdminActionSlots {
@@ -8849,14 +8841,14 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$I]: DropZoneJSXProps;
+      [tagName$I]: DropZoneJSXProps & ReactBaseElementProps<DropZone>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$I]: DropZoneJSXProps;
+      [tagName$I]: DropZoneJSXProps & ReactBaseElementProps<DropZone>;
     }
   }
 }

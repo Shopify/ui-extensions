@@ -18,11 +18,6 @@ const data: AdminReferenceEntityTemplateSchema = {
         'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
       type: 'DropZoneEvents',
     },
-    {
-      title: 'Slots',
-      description: '',
-      type: 'DropZoneSlots',
-    },
   ],
   defaultExample: {
     codeblock: {

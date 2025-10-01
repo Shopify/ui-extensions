@@ -1,4 +1,4 @@
-/** VERSION: 1.20.0 **/
+/** VERSION: 1.21.1 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -329,7 +329,7 @@ export interface GridProps
    * Adjust spacing between elements.
    *
    * `gap` can either accept:
-   * - a single SpacingKeyword value applied to both axes (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value applied to both axes (e.g. `large-100`)
    * - OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
@@ -341,7 +341,7 @@ export interface GridProps
    *
    * This overrides the row value of `gap`.
    * `rowGap` either accepts:
-   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value (e.g. `large-100`)
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
@@ -352,7 +352,7 @@ export interface GridProps
    *
    * This overrides the column value of `gap`.
    * `columnGap` either accepts:
-   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value (e.g. `large-100`)
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override

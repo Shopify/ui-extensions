@@ -9,11 +9,6 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   definitions: [
     {
-      title: 'Slots',
-      description: '',
-      type: 'OrderedListSlots',
-    },
-    {
       title: listItemSharedContent.name,
       description: listItemSharedContent.description,
       type: 'ListItem',

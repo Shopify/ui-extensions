@@ -1,11 +1,11 @@
-/** VERSION: 1.20.0 **/
+/** VERSION: 1.21.1 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChildren, OrderedListProps$1} from './shared.d.ts';
+import type {OrderedListProps$1, ComponentChildren} from './shared.d.ts';
 
 export interface OrderedListProps extends OrderedListProps$1 {}
 
