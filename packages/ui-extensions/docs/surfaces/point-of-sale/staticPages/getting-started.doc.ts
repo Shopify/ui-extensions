@@ -107,10 +107,20 @@ You can install your app and preview your extension in Shopify POS from the deve
 
 3. Using a mobile device with the Shopify POS app installed, scan the QR code. This opens Shopify POS on your device and installs the extension in preview mode. If your extension's URL changes, you will need to re-add the smart grid extension tile.
 
-> Tip:
-> If you're using Android and your extension isn't loading, then refer to the [troubleshooting guide](/docs/apps/pos/ui-extensions/troubleshooting).
+   > Tip:
+   > If you're using Android and your extension isn't loading, then refer to the [troubleshooting guide](/docs/apps/pos/ui-extensions/troubleshooting).
 
-![The developer console showing a POS UI extension](/assets/apps/pos/ui-ext-dev-console.png)
+   ![The developer console showing a POS UI extension](/assets/apps/pos/ui-ext-dev-console.png)
+
+4. Leverage developer tools to troubleshoot and refine.
+
+   The POS Dev Console is your hub for managing extensions during development. After installing your extension, you can use the console to:
+
+   - Tap **Preview** to open and view your extension target.
+   - Toggle **App persistence** to keep your extension active between POS restarts.
+   - Select **Remove dev extensions** to uninstall all dev extensions.
+   - Check for error indicators next to an extension's name to quickly identify issues.
+
       `,
     },
     {
