@@ -1,4 +1,4 @@
-/** VERSION: 1.20.0 **/
+/** VERSION: 1.21.2 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
