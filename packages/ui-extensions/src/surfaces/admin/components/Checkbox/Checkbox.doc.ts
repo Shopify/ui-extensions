@@ -43,19 +43,6 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Simple checkbox with one-line change handler showing checked state and value.',
-            codeblock: {
-              title: 'Event handler with JavaScript',
-              tabs: [
-                {
-                  code: './examples/event-handler-with-javascript.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
               'Checkbox in indeterminate state, commonly used for "select all" functionality when some items are selected.',
             codeblock: {
               title: 'Indeterminate state',
