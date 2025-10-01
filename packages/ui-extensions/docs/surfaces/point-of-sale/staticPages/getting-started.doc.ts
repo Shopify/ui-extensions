@@ -32,7 +32,7 @@ In this tutorial, you'll learn how to do the following tasks:
       title: 'Requirements',
       sectionContent: `
 - Create a [development store](/docs/apps/tools/development-stores).
-- Install or migrate to [Shopify CLI version 3.0 or higher](/docs/apps/tools/cli).
+- Install or migrate to [Shopify CLI version 3.85.3 or higher](/docs/apps/tools/cli).
 - Create an [app](/docs/apps/getting-started/create).
 - Embed [your app in Shopify POS](/docs/apps/pos/getting-started#embed-your-in-app-in-shopify-pos).
       `,
