@@ -4,6 +4,8 @@
   "scripts": {
     "docs:admin": "node ./docs/surfaces/admin/build-docs.mjs",
     "docs:checkout": "bash ./docs/surfaces/checkout/build-docs.sh",
+    "docs:checkout:fast": "bash ./docs/surfaces/checkout/build-docs-fast.sh",
+    "docs:checkout:dev": "bash ./docs/surfaces/checkout/build-docs-watch.sh",
     "docs:point-of-sale": "node ./docs/surfaces/point-of-sale/build-docs.mjs",
     "docs:customer-account": "node ./docs/surfaces/customer-account/build-docs.mjs"
   },
