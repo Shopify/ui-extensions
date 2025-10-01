@@ -146,13 +146,13 @@ Checkout components are designed to be flexible, enabling you to layer and mix t
         {
           name: 'Component library',
           subtitle: 'API reference',
-          url: '/docs/api/checkout-ui-extensions/components',
+          url: '/docs/api/checkout-ui-extensions/latest/polaris-web-components',
           type: 'blocks',
         },
         {
           name: 'Figma UI kit',
           subtitle: 'UI Reference',
-          url: 'https://www.figma.com/community/file/1304881365343613949/checkout-and-account-components',
+          url: '/docs/api/checkout-ui-extensions/latest/polaris-web-components',
           type: 'setting',
         },
       ],
