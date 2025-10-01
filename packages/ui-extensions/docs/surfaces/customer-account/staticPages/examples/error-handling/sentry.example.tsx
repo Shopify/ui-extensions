@@ -10,16 +10,12 @@ Sentry.init({
 self.addEventListener(
   'unhandledrejection',
   (error) => {
-    Sentry.captureException(
-      new Error(error.reason.stack),
-    );
+    Sentry.captureException(error);
   },
 );
 
 self.addEventListener('error', (error) => {
-  Sentry.captureException(
-    new Error(error.message),
-  );
+  Sentry.captureException(error);
 });
 
 // Your normal extension code.
