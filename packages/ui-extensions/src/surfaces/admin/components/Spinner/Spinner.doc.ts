@@ -31,21 +31,19 @@ const data: AdminReferenceEntityTemplateSchema = {
         title: 'Basic usage',
         examples: [
           {
-            description:
-              'Standard loading spinner with accessibility label for screen readers.',
+            description: 'Standard loading spinner with accessibility label for screen readers.',
             codeblock: {
-              title: 'Basic usage (Web component)',
+              title: 'Basic usage',
               tabs: [
                 {
-                  code: './examples/basic-usage-web-component.html',
+                  code: './examples/basic-usage.html',
                   language: 'preview',
                 },
               ],
             },
           },
           {
-            description:
-              'Centered loading indicator with text in a section layout for content loading states.',
+            description: 'Centered loading indicator with text in a section layout for content loading states.',
             codeblock: {
               title: 'Loading state in section',
               tabs: [
@@ -57,8 +55,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             },
           },
           {
-            description:
-              'Compact inline loading indicator for form submissions and quick actions.',
+            description: 'Compact inline loading indicator for form submissions and quick actions.',
             codeblock: {
               title: 'Inline loading with text',
               tabs: [
@@ -68,9 +65,9 @@ const data: AdminReferenceEntityTemplateSchema = {
                 },
               ],
             },
-          },
+          }
         ],
-      },
+      }
     ],
   },
 };

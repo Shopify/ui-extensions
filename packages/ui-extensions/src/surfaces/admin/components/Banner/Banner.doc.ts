@@ -66,8 +66,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         title: 'Basic usage',
         examples: [
           {
-            description:
-              'Demonstrates a simple informational banner used to communicate status updates or completed actions, providing clear and concise feedback to the user.',
+            description: 'Demonstrates a simple informational banner used to communicate status updates or completed actions, providing clear and concise feedback to the user.',
             codeblock: {
               title: 'Basic information banner',
               tabs: [
@@ -79,8 +78,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             },
           },
           {
-            description:
-              'Illustrates a warning banner that highlights a potential issue and provides actionable buttons to help users resolve the problem quickly and effectively.',
+            description: 'Illustrates a warning banner that highlights a potential issue and provides actionable buttons to help users resolve the problem quickly and effectively.',
             codeblock: {
               title: 'Warning banner with specific actions',
               tabs: [
@@ -92,8 +90,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             },
           },
           {
-            description:
-              'Demonstrates an urgent banner design that signals a critical issue requiring immediate action, with clear and prominent secondary action buttons to guide users.',
+            description: 'Demonstrates an urgent banner design that signals a critical issue requiring immediate action, with clear and prominent secondary action buttons to guide users.',
             codeblock: {
               title: 'Critical banner with clear next steps',
               tabs: [
@@ -105,8 +102,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             },
           },
           {
-            description:
-              'Success confirmation with dismiss option for completed operations.',
+            description: 'Success confirmation with dismiss option for completed operations.',
             codeblock: {
               title: 'Dismissible success banner',
               tabs: [
@@ -118,8 +114,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             },
           },
           {
-            description:
-              'Informational banner highlighting app updates with clear benefits and actions.',
+            description: 'Informational banner highlighting app updates with clear benefits and actions.',
             codeblock: {
               title: 'Info banner with clear value proposition',
               tabs: [
@@ -129,35 +124,9 @@ const data: AdminReferenceEntityTemplateSchema = {
                 },
               ],
             },
-          },
-          {
-            description:
-              'Time-sensitive warning with clear consequences and resolution options.',
-            codeblock: {
-              title: 'Banner with urgent action required',
-              tabs: [
-                {
-                  code: './examples/banner-with-urgent-action-required.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Dismissible banner with JavaScript event handling for interaction tracking.',
-            codeblock: {
-              title: 'Banner with event handler',
-              tabs: [
-                {
-                  code: './examples/banner-with-event-handler.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
+          }
         ],
-      },
+      }
     ],
   },
 };
