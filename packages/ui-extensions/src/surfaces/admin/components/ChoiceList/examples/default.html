@@ -1,7 +1,12 @@
+<script>
+  const handleChange = (event) =>
+    console.log('Values: ', event.currentTarget.values);
+</script>
 <s-choice-list
   label="Company name"
   name="Company name"
   details="The company name will be displayed on the checkout page."
+  onChange="handleChange(event)"
 >
   <s-choice value="hidden">Hidden</s-choice>
   <s-choice value="optional">Optional</s-choice>
