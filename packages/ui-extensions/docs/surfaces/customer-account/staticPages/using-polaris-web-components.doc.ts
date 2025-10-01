@@ -16,7 +16,6 @@ const data: LandingTemplateSchema = {
         title: 'Example',
         tabs: [
           {
-            title: 'JSX',
             code: './examples/styling.jsx',
             language: 'jsx',
           },
@@ -46,6 +45,110 @@ const data: LandingTemplateSchema = {
         ],
       },
       initialLanguage: 'ts',
+    },
+    {
+      type: 'GenericAccordion',
+      anchorLink: 'responsive-values',
+      title: 'Responsive values',
+      sectionContent:
+        'Some properties accept responsive values, which enables you to change the value of the property depending on a parent inline size.',
+      accordionContent: [
+        {
+          title: 'Syntax',
+          description: `
+The syntax for a responsive value generally follows the ternary operator syntax. For example, \`@container (inline-size > 500px) large, small\` means that the value will be \`large\` if the container is more than 500px wide, and \`small\` if the container is 500px or less. The syntax rules are:
+
+1. Begin the value with \`@container\`
+2. Optionally add a name to target a specific container
+3. Use the \`inline-size\` keyword inside of parentheses to query the inline-size of the container. This is the condition that will be evaluated to determine which value to use.
+4. Set the value if that condition is true
+5. Set the value to be used if the condition is false.
+
+For greater compatibility on older browsers, container queries must follow a mobile-first approach. The fallback value (when the condition is false) must always represent your smallest supported design, with the condition value (when the condition is true) providing styles for larger containers. For example, \`<Stack direction="@container (inline-size > 300px) inline, block">\` ensures that browsers that do not support container styles get a design that works in all container sizes.
+`,
+          codeblock: {
+            tabs: [
+              {
+                title: 'HTML',
+                code: './examples/responsive-value-syntax.html',
+                language: 'html',
+              },
+            ],
+            title: '',
+            links: [],
+          },
+          initialLanguage: '',
+        },
+        {
+          title: 'Using s-query-container',
+          description: `
+When using responsive values, you must also place the \`<s-query-container>\` component in the location you want to query the inline-size.
+
+By default, the responsive value will query against the closest parent; to look up a specific parent, this component also accepts a \`containername\` attribute which adds a name to the container. Then add that name after \`@container\` in your responsive query to target it.
+`,
+          codeblock: {
+            tabs: [
+              {
+                title: 'Basic example',
+                code: './examples/query-container-example.html',
+                language: 'html',
+              },
+              {
+                title: 'Named example',
+                code: './examples/query-container-named-example.html',
+                language: 'html',
+              },
+            ],
+            title: 'Pseudocode',
+            links: [],
+          },
+          initialLanguage: '',
+        },
+        {
+          title: 'Values with reserved characters',
+          description:
+            'Some values could contain reserved characters used in the responsive value syntax, such as `()` or `,`. To use these values, escape them by wrapping them in quotes.',
+          codeblock: {
+            tabs: [
+              {
+                title: 'Escaped characters',
+                code: './examples/responsive-value-escaped-chars.html',
+                language: 'html',
+              },
+            ],
+            title: '',
+            links: [],
+          },
+          initialLanguage: '',
+        },
+        {
+          title: 'Advanced patterns',
+          description:
+            'The syntax is flexible enough to support advanced patterns such as compound conditions, and|or conditions, and nested conditions.',
+          codeblock: {
+            tabs: [
+              {
+                title: 'Compound',
+                code: './examples/responsive-value-compound-example.html',
+                language: 'html',
+              },
+              {
+                title: 'And|or',
+                code: './examples/responsive-value-and-or-example.html',
+                language: 'html',
+              },
+              {
+                title: 'Nested',
+                code: './examples/responsive-value-nested-example.html',
+                language: 'html',
+              },
+            ],
+            title: 'Advanced patterns',
+            links: [],
+          },
+          initialLanguage: '',
+        },
+      ],
     },
     {
       type: 'Generic',
@@ -81,7 +184,6 @@ const data: LandingTemplateSchema = {
         title: 'Example',
         tabs: [
           {
-            title: 'JSX',
             code: './examples/using-with-preact.jsx',
             language: 'jsx',
           },
@@ -154,7 +256,6 @@ const data: LandingTemplateSchema = {
           {
             code: './examples/handling-events.jsx',
             language: 'jsx',
-            title: 'JSX',
           },
         ],
       },
@@ -169,7 +270,6 @@ const data: LandingTemplateSchema = {
         title: 'Examples',
         tabs: [
           {
-            title: 'Banner',
             code: './examples/slots-banner.jsx',
             language: 'jsx',
           },
@@ -210,7 +310,6 @@ const data: LandingTemplateSchema = {
         title: 'Example',
         tabs: [
           {
-            title: 'JSX',
             code: './examples/accessibility.jsx',
             language: 'jsx',
           },
