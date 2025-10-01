@@ -26,7 +26,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   currentTarget: HTMLElementTagNameMap[T];
   bubbles?: boolean;
@@ -51,7 +53,7 @@ export interface ClickableJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ClickableJSXProps;
+    [tagName]: HtmlElementTagNameProps<ClickableJSXProps>;
   }
 }
 declare module 'preact' {

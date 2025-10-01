@@ -26,13 +26,15 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
 declare const tagName = 's-qr-code';
 export interface QrCodeJSXProps extends Pick<QRCodeProps, 'id' | 'content'> {}
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: QrCodeJSXProps;
+    [tagName]: HtmlElementTagNameProps<QrCodeJSXProps>;
   }
 }
 declare module 'preact' {

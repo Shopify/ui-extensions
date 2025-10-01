@@ -40,7 +40,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
 declare const tagName = 's-stack';
 export type PaddingKeyword = SizeKeyword | 'none';
@@ -235,7 +237,7 @@ export interface StackJSXProps extends PickedProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: StackJSXProps;
+    [tagName]: HtmlElementTagNameProps<StackJSXProps>;
   }
 }
 declare module 'preact' {

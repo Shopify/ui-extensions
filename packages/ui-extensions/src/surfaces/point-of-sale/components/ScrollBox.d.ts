@@ -36,7 +36,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
 export type PaddingKeyword = SizeKeyword | 'none';
 declare const tagName = 's-scroll-box';
@@ -157,7 +159,7 @@ export interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ScrollBoxJSXProps;
+    [tagName]: HtmlElementTagNameProps<ScrollBoxJSXProps>;
   }
 }
 declare module 'preact' {

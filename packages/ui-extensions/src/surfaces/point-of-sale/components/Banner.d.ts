@@ -31,7 +31,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
 declare const tagName = 's-banner';
 export interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
@@ -62,7 +64,7 @@ export interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
 export type ElementProps = Omit<BannerJSXProps, 'primaryAction'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ElementProps;
+    [tagName]: HtmlElementTagNameProps<ElementProps>;
   }
 }
 declare module 'preact' {

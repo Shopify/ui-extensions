@@ -26,7 +26,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
 declare const tagName = 's-icon';
 export type SupportedIconNames = Extract<
@@ -168,7 +170,7 @@ export interface IconJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: IconJSXProps;
+    [tagName]: HtmlElementTagNameProps<IconJSXProps>;
   }
 }
 declare module 'preact' {

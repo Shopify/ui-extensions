@@ -26,7 +26,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
 declare const tagName = 's-choice';
 export interface ChoiceJSXProps
@@ -35,7 +37,7 @@ export interface ChoiceJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ChoiceJSXProps;
+    [tagName]: HtmlElementTagNameProps<ChoiceJSXProps>;
   }
 }
 declare module 'preact' {

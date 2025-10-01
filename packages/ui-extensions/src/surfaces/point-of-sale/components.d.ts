@@ -3227,7 +3227,9 @@ interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
-type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+type HtmlElementTagNameProps<T> = T & HTMLElement;
 interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   currentTarget: HTMLElementTagNameMap[T];
   bubbles?: boolean;
@@ -3288,7 +3290,7 @@ interface ButtonJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$t]: ButtonJSXProps;
+    [tagName$t]: HtmlElementTagNameProps<ButtonJSXProps>;
   }
 }
 declare module 'preact' {
@@ -3331,7 +3333,7 @@ interface TextJSXProps extends Pick<TextProps, 'id'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$s]: TextJSXProps;
+    [tagName$s]: HtmlElementTagNameProps<TextJSXProps>;
   }
 }
 declare module 'preact' {
@@ -3461,7 +3463,7 @@ interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$r]: ScrollBoxJSXProps;
+    [tagName$r]: HtmlElementTagNameProps<ScrollBoxJSXProps>;
   }
 }
 declare module 'preact' {
@@ -3491,7 +3493,7 @@ interface TileJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$q]: TileJSXProps;
+    [tagName$q]: HtmlElementTagNameProps<TileJSXProps>;
   }
 }
 declare module 'preact' {
@@ -3531,7 +3533,7 @@ interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
 type ElementProps$9 = Omit<BannerJSXProps, 'primaryAction'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$p]: ElementProps$9;
+    [tagName$p]: HtmlElementTagNameProps<ElementProps$9>;
   }
 }
 declare module 'preact' {
@@ -3665,7 +3667,7 @@ interface BoxJSXProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$o]: BoxJSXProps;
+    [tagName$o]: HtmlElementTagNameProps<BoxJSXProps>;
   }
 }
 declare module 'preact' {
@@ -3816,7 +3818,7 @@ interface IconJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$n]: IconJSXProps;
+    [tagName$n]: HtmlElementTagNameProps<IconJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4020,7 +4022,7 @@ interface StackJSXProps extends PickedProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$m]: StackJSXProps;
+    [tagName$m]: HtmlElementTagNameProps<StackJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4049,7 +4051,7 @@ interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$l]: BadgeJSXProps;
+    [tagName$l]: HtmlElementTagNameProps<BadgeJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4078,7 +4080,7 @@ interface ChoiceListJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$k]: ChoiceListJSXProps;
+    [tagName$k]: HtmlElementTagNameProps<ChoiceListJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4096,7 +4098,7 @@ interface ChoiceJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$j]: ChoiceJSXProps;
+    [tagName$j]: HtmlElementTagNameProps<ChoiceJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4137,7 +4139,7 @@ interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
 type ElementProps$8 = Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$i]: ElementProps$8;
+    [tagName$i]: HtmlElementTagNameProps<ElementProps$8>;
   }
 }
 declare module 'preact' {
@@ -4186,7 +4188,7 @@ interface TextFieldJSXProps
 type ElementProps$7 = Omit<TextFieldJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$h]: ElementProps$7;
+    [tagName$h]: HtmlElementTagNameProps<ElementProps$7>;
   }
 }
 declare module 'preact' {
@@ -4219,7 +4221,7 @@ interface SearchFieldJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$g]: SearchFieldJSXProps;
+    [tagName$g]: HtmlElementTagNameProps<SearchFieldJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4268,7 +4270,7 @@ interface EmailFieldJSXProps
 type ElementProps$6 = Omit<EmailFieldJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$f]: ElementProps$6;
+    [tagName$f]: HtmlElementTagNameProps<ElementProps$6>;
   }
 }
 declare module 'preact' {
@@ -4292,7 +4294,7 @@ interface ClickableJSXProps extends Pick<ClickableProps, 'id' | 'disabled'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$e]: ClickableJSXProps;
+    [tagName$e]: HtmlElementTagNameProps<ClickableJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4342,7 +4344,7 @@ interface TextAreaJSXProps
 type ElementProps$5 = Omit<TextAreaJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$d]: ElementProps$5;
+    [tagName$d]: HtmlElementTagNameProps<ElementProps$5>;
   }
 }
 declare module 'preact' {
@@ -4455,7 +4457,7 @@ interface NumberFieldJSXProps
 type ElementProps$4 = Omit<NumberFieldJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$c]: ElementProps$4;
+    [tagName$c]: HtmlElementTagNameProps<ElementProps$4>;
   }
 }
 declare module 'preact' {
@@ -4492,7 +4494,7 @@ interface DateFieldJSXProps
 type ElementProps$3 = Omit<DateFieldJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$b]: ElementProps$3;
+    [tagName$b]: HtmlElementTagNameProps<ElementProps$3>;
   }
 }
 declare module 'preact' {
@@ -4524,7 +4526,7 @@ interface DatePickerJSXProps extends Pick<DatePickerProps, 'id' | 'value'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$a]: DatePickerJSXProps;
+    [tagName$a]: HtmlElementTagNameProps<DatePickerJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4556,7 +4558,7 @@ interface DateSpinnerJSXProps extends Pick<DateSpinnerProps, 'id' | 'value'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$9]: DateSpinnerJSXProps;
+    [tagName$9]: HtmlElementTagNameProps<DateSpinnerJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4587,7 +4589,7 @@ interface SectionJSXProps extends Pick<SectionProps, 'id'> {
 type ElementProps$2 = Omit<SectionJSXProps, 'secondaryActions'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$8]: ElementProps$2;
+    [tagName$8]: HtmlElementTagNameProps<ElementProps$2>;
   }
 }
 declare module 'preact' {
@@ -4607,7 +4609,7 @@ interface HeadingJSXProps extends Pick<HeadingProps, 'id'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$7]: HeadingJSXProps;
+    [tagName$7]: HtmlElementTagNameProps<HeadingJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4639,7 +4641,7 @@ interface TimePickerJSXProps extends Pick<TimePickerProps, 'id' | 'value'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$6]: TimePickerJSXProps;
+    [tagName$6]: HtmlElementTagNameProps<TimePickerJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4678,7 +4680,7 @@ interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$5]: ImageJSXProps;
+    [tagName$5]: HtmlElementTagNameProps<ImageJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4717,7 +4719,7 @@ interface PageJSXProps extends Pick<PageProps, 'id'> {
 type ElementProps$1 = Omit<PageJSXProps, 'secondaryActions' | 'aside'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$4]: ElementProps$1;
+    [tagName$4]: HtmlElementTagNameProps<ElementProps$1>;
   }
 }
 declare module 'preact' {
@@ -4753,7 +4755,7 @@ interface TimeFieldJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$3]: TimeFieldJSXProps;
+    [tagName$3]: HtmlElementTagNameProps<TimeFieldJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4778,7 +4780,7 @@ interface PosBlockJSXProps extends Pick<POSBlockProps, 'id' | 'heading'> {
 type ElementProps = Omit<PosBlockJSXProps, 'secondaryActions'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$2]: ElementProps;
+    [tagName$2]: HtmlElementTagNameProps<ElementProps>;
   }
 }
 declare module 'preact' {
@@ -4793,7 +4795,7 @@ declare const tagName$1 = 's-qr-code';
 interface QrCodeJSXProps extends Pick<QRCodeProps, 'id' | 'content'> {}
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$1]: QrCodeJSXProps;
+    [tagName$1]: HtmlElementTagNameProps<QrCodeJSXProps>;
   }
 }
 declare module 'preact' {
@@ -4808,7 +4810,7 @@ declare const tagName = 's-divider';
 interface DividerJSXProps extends Pick<DividerProps, 'id' | 'direction'> {}
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: DividerJSXProps;
+    [tagName]: HtmlElementTagNameProps<DividerJSXProps>;
   }
 }
 declare module 'preact' {

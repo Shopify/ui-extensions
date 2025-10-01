@@ -26,7 +26,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
 declare const tagName = 's-badge';
 export interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
@@ -46,7 +48,7 @@ export interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: BadgeJSXProps;
+    [tagName]: HtmlElementTagNameProps<BadgeJSXProps>;
   }
 }
 declare module 'preact' {

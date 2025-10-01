@@ -31,7 +31,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
 declare const tagName = 's-section';
 export interface SectionJSXProps extends Pick<SectionProps, 'id'> {
@@ -53,7 +55,7 @@ export interface SectionJSXProps extends Pick<SectionProps, 'id'> {
 export type ElementProps = Omit<SectionJSXProps, 'secondaryActions'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ElementProps;
+    [tagName]: HtmlElementTagNameProps<ElementProps>;
   }
 }
 declare module 'preact' {
