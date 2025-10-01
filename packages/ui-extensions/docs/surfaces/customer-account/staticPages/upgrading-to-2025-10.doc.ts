@@ -233,14 +233,14 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
       sectionContent: `
 |   **Legacy Component**   |   **Polaris Web Component**   |   **Migration Notes**   |
 | :----------------------: | :-------------------------------: | :---------------------: |
-|   \`Avatar\`                |   [Avatar](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/avatar)   |   Available today   |
-|                             |  [ButtonGroup](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/buttongroup)   |   Available today   |
-|   \`Card\`                  |  [Section](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/section)   |   Available today   |
-|   \`CustomerAccountAction\`  |  [CustomerAccountAction](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/customeraccountaction)   |   Available today       |
-|   \`ImageGroup\`            |  [ImageGroup](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/imagegroup)                         |   Available today       |
-|   \`Menu\`                  |  [Menu](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/menu)    |   Available today   |
-|   \`Page\`                  |  [Page](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/page)    |   Available today |
-|   \`ResourceItem\`          |                                |   Use [Section](/api/customer-account-ui-extensions/2025-10-rc/polaris-web-components/section)   |
+|   \`Avatar\`                |   [Avatar](/api/customer-account-ui-extensions/polaris-web-components/media/avatar)   |   Available today   |
+|                             |  [ButtonGroup](/api/customer-account-ui-extensions/polaris-web-components/actions/buttongroup)   |   Available today   |
+|   \`Card\`                  |  [Section](/api/customer-account-ui-extensions/polaris-web-components/structure/section)   |   Available today   |
+|   \`CustomerAccountAction\`  |  [CustomerAccountAction](/api/customer-account-ui-extensions/polaris-web-components/actions/customeraccountaction)   |   Available today       |
+|   \`ImageGroup\`            |  [ImageGroup](/api/customer-account-ui-extensions/polaris-web-components/media/imagegroup)                         |   Available today       |
+|   \`Menu\`                  |  [Menu](/api/customer-account-ui-extensions/polaris-web-components/actions/menu)    |   Available today   |
+|   \`Page\`                  |  [Page](/api/customer-account-ui-extensions/polaris-web-components/structure/page)    |   Available today |
+|   \`ResourceItem\`          |                                |   Removed. Use [Section](/api/customer-account-ui-extensions/polaris-web-components/structure/section)   |
 `,
     },
     {
