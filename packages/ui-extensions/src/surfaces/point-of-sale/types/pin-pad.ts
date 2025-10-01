@@ -26,27 +26,34 @@ export interface PinPadActionType {
 
 export interface PinPadOptions {
   /**
-   * The function to be called when a pin is entered
+   * The function to be called whenever the entered PIN is updated
    */
   onPinEntry?: (pin: number[]) => void;
   /**
-   * The function to be called when the pin pad modal is dismissed
+   * The function to be called when the PIN pad modal is dismissed
    */
   onDismissed?: (result: PinPadResult) => void;
   /**
-   * The content for the prompt on the pin pad
+   * The content for the prompt on the PIN pad. This will be overridden by any
+   * `errorMessage` provided when rejecting a PIN from the `onSubmit` callback.
    */
   label?: string;
   /**
    * Whether the entered PIN should be masked
+   *
+   * @default true
    */
   masked?: boolean;
   /**
    * The minimum length of the PIN
+   *
+   * @default 4
    */
   minPinLength?: PinLength;
   /**
    * The maximum length of the PIN
+   *
+   * @default 6
    */
   maxPinLength?: PinLength;
   /**
@@ -58,7 +65,9 @@ export interface PinPadOptions {
    */
   title?: string;
   /**
-   * Whether the pin should be automatically submitted when the user has entered the maximum PIN length
+   * Whether the PIN should be automatically submitted when the user has entered the maximum PIN length
+   *
+   * @default false
    */
   autoSubmit?: boolean;
 }

@@ -1,3 +1,4 @@
+import { PinPadOptions } from '@shopify/ui-extensions/point-of-sale';
 import { render } from 'preact';
 
 export default async () => {
@@ -7,38 +8,32 @@ export default async () => {
 function Extension() {
   const VALID_PIN = '123456';
 
-  const options = {
-    label: 'Enter PIN to disarm',
-    title: 'Auto-destruct sequence activated',
+  const options: PinPadOptions = {
+    label: 'Enter PIN to proceed',
+    title: 'PIN Pad Demo',
     masked: true,
-    minPinLength: /** @type {6} */ (6),
-    maxPinLength: /** @type {8} */ (8),
-    pinPadAction: {
-      label: 'Emergency Override',
-      onClick: () => {
-        return [1, 2, 3, 4, 5, 6];
-      },
-    },
-    onPinEntry: (pin) => {
-      console.log(`PIN Entry: ${pin}`);
-    },
+    minPinLength: 6,
+    maxPinLength: 8,
   };
 
   const onShowTapped = () => {
     shopify.pinPad.showPinPad((pin) => {
       if (pin.join('') === VALID_PIN) {
         console.log('PIN is valid');
-        return {result: 'accept'};
+        return { result: 'accept' };
       } else {
         console.log('PIN is invalid');
-        return {result: 'reject'};
+        return {
+          result: 'reject',
+          errorMessage: 'Invalid PIN, please try again',
+        };
       }
     }, options);
   };
 
   return (
-    <s-scroll-box>
+    <s-page heading="PIN Pad API">
       <s-button onClick={onShowTapped}>Show Pin Pad</s-button>
-    </s-scroll-box>
+    </s-page>
   );
 }
