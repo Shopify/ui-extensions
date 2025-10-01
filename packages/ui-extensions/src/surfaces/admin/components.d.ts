@@ -5521,7 +5521,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$M]: ColorPickerJSXProps;
+      [tagName$M]: ColorPickerJSXProps & PreactBaseElementProps<ColorPicker>;
     }
   }
 }
@@ -5574,7 +5574,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$L]: DateFieldJSXProps;
+      [tagName$L]: DateFieldJSXProps & PreactBaseElementProps<DateField>;
     }
   }
 }
@@ -5755,7 +5755,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$I]: DropZoneJSXProps;
+      [tagName$I]: DropZoneJSXProps & PreactBaseElementProps<DropZone>;
     }
   }
 }
@@ -6265,7 +6265,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$z]: MenuJSXProps;
+      [tagName$z]: MenuJSXProps & PreactBaseElementPropsWithChildren<Menu>;
     }
   }
 }
@@ -6403,7 +6403,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
+      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
+        PreactBaseElementPropsWithChildren<Modal>;
     }
   }
 }
@@ -6871,7 +6872,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$o]: QueryContainerJSXProps;
+      [tagName$o]: QueryContainerJSXProps &
+        PreactBaseElementPropsWithChildren<QueryContainer>;
     }
   }
 }
@@ -8851,28 +8853,28 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$M]: ColorPickerJSXProps;
+      [tagName$M]: ColorPickerJSXProps & ReactBaseElementProps<ColorPicker>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$M]: ColorPickerJSXProps;
+      [tagName$M]: ColorPickerJSXProps & ReactBaseElementProps<ColorPicker>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$L]: DateFieldJSXProps;
+      [tagName$L]: DateFieldJSXProps & ReactBaseElementProps<DateField>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$L]: DateFieldJSXProps;
+      [tagName$L]: DateFieldJSXProps & ReactBaseElementProps<DateField>;
     }
   }
 }
@@ -8907,14 +8909,14 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$I]: DropZoneJSXProps;
+      [tagName$I]: DropZoneJSXProps & ReactBaseElementProps<DropZone>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$I]: DropZoneJSXProps;
+      [tagName$I]: DropZoneJSXProps & ReactBaseElementProps<DropZone>;
     }
   }
 }
@@ -9037,28 +9039,30 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$z]: MenuJSXProps;
+      [tagName$z]: MenuJSXProps & ReactBaseElementPropsWithChildren<Menu>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$z]: MenuJSXProps;
+      [tagName$z]: MenuJSXProps & ReactBaseElementPropsWithChildren<Menu>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
+      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
+        ReactBaseElementPropsWithChildren<Modal>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
+      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
+        ReactBaseElementPropsWithChildren<Modal>;
     }
   }
 }
@@ -9205,14 +9209,16 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: QueryContainerJSXProps;
+      [tagName$o]: QueryContainerJSXProps &
+        ReactBaseElementPropsWithChildren<QueryContainer>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: QueryContainerJSXProps;
+      [tagName$o]: QueryContainerJSXProps &
+        ReactBaseElementPropsWithChildren<QueryContainer>;
     }
   }
 }

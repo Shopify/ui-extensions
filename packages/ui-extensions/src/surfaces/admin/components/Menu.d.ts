@@ -15,6 +15,21 @@ import type {
 export interface MenuProps
   extends Required<Pick<MenuProps$1, 'id' | 'accessibilityLabel'>> {}
 
+/** Used when an element does not have children. */
+export interface PreactBaseElementProps<TClass extends HTMLElement> {
+  /** Assigns a unique key to this element. */
+  key?: preact.Key;
+  /** Assigns a ref (generally from `useRef()`) to this element. */
+  ref?: preact.Ref<TClass>;
+  /** Assigns this element to a parent's slot. */
+  slot?: Lowercase<string>;
+}
+/** Used when an element has children. */
+export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
+  extends PreactBaseElementProps<TClass> {
+  children?: preact.ComponentChildren;
+}
+
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChildren;
@@ -159,7 +174,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: MenuJSXProps;
+      [tagName]: MenuJSXProps & PreactBaseElementPropsWithChildren<Menu>;
     }
   }
 }
