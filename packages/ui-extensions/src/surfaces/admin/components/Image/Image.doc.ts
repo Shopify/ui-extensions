@@ -46,6 +46,107 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Demonstrates the simplest implementation of an image component with a source and alt text.',
+            codeblock: {
+              title: 'Basic usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows how to create a responsive image with a fixed 16:9 aspect ratio, set to cover the container, and loaded lazily.',
+            codeblock: {
+              title: 'Responsive layout with aspect ratio',
+              tabs: [
+                {
+                  code: './examples/responsive-layout-with-aspect-ratio.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates how to provide multiple image sources for different screen sizes and resolutions using srcSet and sizes attributes.',
+            codeblock: {
+              title: 'Responsive images with srcset',
+              tabs: [
+                {
+                  code: './examples/responsive-images-with-srcset.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Demonstrates how to apply border styling to an image, including width, style, color, and radius, using border-related properties.',
+            codeblock: {
+              title: 'With border styling',
+              tabs: [
+                {
+                  code: './examples/with-border-styling.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows how to mark an image as decorative, which will make screen readers ignore the image by setting an empty alt text and presentation role.',
+            codeblock: {
+              title: 'Decorative image',
+              tabs: [
+                {
+                  code: './examples/decorative-image.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              "Demonstrates an image with auto-sizing, which allows the image to adjust its size based on its container's width.",
+            codeblock: {
+              title: 'Auto-sized image',
+              tabs: [
+                {
+                  code: './examples/auto-sized-image.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows how to use images within a grid layout, creating a consistent grid of images with equal size, aspect ratio, and styling.',
+            codeblock: {
+              title: 'Within layout components',
+              tabs: [
+                {
+                  code: './examples/within-layout-components.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
