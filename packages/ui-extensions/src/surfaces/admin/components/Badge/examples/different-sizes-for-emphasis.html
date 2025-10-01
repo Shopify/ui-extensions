@@ -1,0 +1,4 @@
+<s-stack direction="inline" gap="base">
+  <s-badge size="base">New</s-badge>
+  <s-badge size="large">Attention needed</s-badge>
+</s-stack>

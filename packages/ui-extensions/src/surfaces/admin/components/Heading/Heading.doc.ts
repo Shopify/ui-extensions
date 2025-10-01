@@ -55,6 +55,68 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Standard heading for section titles and page content organization that creates a simple, clean title for a content section.',
+            codeblock: {
+              title: 'Basic heading',
+              tabs: [
+                {
+                  code: './examples/basic-heading.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Truncated heading that limits text to a specified number of lines, using ellipsis to indicate additional content for long product names or constrained layouts.',
+            codeblock: {
+              title: 'Heading with line clamping',
+              tabs: [
+                {
+                  code: './examples/heading-with-line-clamping.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Heading configured with custom ARIA roles and visibility settings to meet specific accessibility requirements or design constraints.',
+            codeblock: {
+              title: 'Heading with custom accessibility',
+              tabs: [
+                {
+                  code: './examples/heading-with-custom-accessibility.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Demonstrates nested heading structure that automatically adjusts heading levels (h2, h3, h4) based on the current section depth, ensuring proper semantic document structure.',
+            codeblock: {
+              title: 'Heading within section hierarchy',
+              tabs: [
+                {
+                  code: './examples/heading-within-section-hierarchy.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
