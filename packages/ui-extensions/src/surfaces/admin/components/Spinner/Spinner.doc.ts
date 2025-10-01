@@ -24,6 +24,55 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Standard loading spinner with accessibility label for screen readers.',
+            codeblock: {
+              title: 'Basic usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Centered loading indicator with text in a section layout for content loading states.',
+            codeblock: {
+              title: 'Loading state in section',
+              tabs: [
+                {
+                  code: './examples/loading-state-in-section.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Compact inline loading indicator for form submissions and quick actions.',
+            codeblock: {
+              title: 'Inline loading with text',
+              tabs: [
+                {
+                  code: './examples/inline-loading-with-text.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

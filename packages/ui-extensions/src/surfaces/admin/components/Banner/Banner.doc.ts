@@ -59,6 +59,81 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Demonstrates a simple informational banner used to communicate status updates or completed actions, providing clear and concise feedback to the user.',
+            codeblock: {
+              title: 'Basic information banner',
+              tabs: [
+                {
+                  code: './examples/basic-information-banner.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates a warning banner that highlights a potential issue and provides actionable buttons to help users resolve the problem quickly and effectively.',
+            codeblock: {
+              title: 'Warning banner with specific actions',
+              tabs: [
+                {
+                  code: './examples/warning-banner-with-specific-actions.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Demonstrates an urgent banner design that signals a critical issue requiring immediate action, with clear and prominent secondary action buttons to guide users.',
+            codeblock: {
+              title: 'Critical banner with clear next steps',
+              tabs: [
+                {
+                  code: './examples/critical-banner-with-clear-next-steps.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Success confirmation with dismiss option for completed operations.',
+            codeblock: {
+              title: 'Dismissible success banner',
+              tabs: [
+                {
+                  code: './examples/dismissible-success-banner.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Informational banner highlighting app updates with clear benefits and actions.',
+            codeblock: {
+              title: 'Info banner with clear value proposition',
+              tabs: [
+                {
+                  code: './examples/info-banner-with-clear-value-proposition.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
