@@ -115,6 +115,25 @@ You can install your app and preview your extension in Shopify POS from the deve
     },
     {
       type: 'Generic',
+      anchorLink: 'step-4-leverage-developer-tools-to-troubleshoot-and-refine',
+      title: 'Step 4: Leverage developer tools to troubleshoot and refine',
+      sectionContent: `
+The POS Dev Console provides quick access to extension management during your development process. 
+
+To access the POS Dev Console, tap the app icon in the global navigation on the left on tablet experiences, and via the More menu on mobile experiences.
+
+After installing your extension, you may use the console to:
+
+- Check for and identify errors which will appear next to your extension's name
+- Toggle **App persistence** to keep your extension active between POS restarts
+- Preview extension targets without needing to tap through to target locations and
+- **Remove dev extensions** to uninstall all dev extensions
+
+![POS Dev Console and its location in the sidebar](/assets/apps/pos/devconsole-reference.png)
+      `,
+    },
+    {
+      type: 'Generic',
       anchorLink: 'eslint-configuration',
       title: 'Optional ESLint configuration',
       sectionContent: `
