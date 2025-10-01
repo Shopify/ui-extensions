@@ -154,7 +154,7 @@ Customer account components are designed to be flexible, enabling you to layer a
         {
           name: 'Component library',
           subtitle: 'API Reference',
-          url: '/api/customer-account-ui-extensions/components',
+          url: '/api/customer-account-ui-extensions/polaris-web-components',
           type: 'blocks',
         },
         {

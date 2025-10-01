@@ -7,7 +7,7 @@ const data: LandingTemplateSchema = {
   title: 'Upgrading to 2025-10',
   description: `This guide describes how to upgrade your customer account UI extension to API version \`2025-10\` and adopt [Polaris](/beta/next-gen-dev-platform/polaris) web components.`,
   // The id for the page that is used for routing. If this documentation is for a primary landing page, confirm the id matches the reference name.
-  id: 'upgrading-to-2025-10-rc',
+  id: 'upgrading-to-2025-10',
   sections: [
     {
       type: 'Generic',
@@ -20,7 +20,7 @@ const data: LandingTemplateSchema = {
         tabs: [
           {
             title: 'shopify.extension.toml',
-            code: './examples/upgrading-to-2025-10-rc/shopify.extension-new.toml',
+            code: './examples/upgrading-to-2025-10/shopify.extension-new.toml',
             language: 'toml',
           },
         ],
@@ -42,7 +42,7 @@ As of \`2025-10\`, Shopify recommends Preact for UI extensions. Update the depen
             tabs: [
               {
                 title: 'package.json',
-                code: './examples/upgrading-to-2025-10-rc/package-json-new.json',
+                code: './examples/upgrading-to-2025-10/package-json-new.json',
                 language: 'json',
               },
             ],
@@ -56,7 +56,7 @@ As of \`2025-10\`, Shopify recommends Preact for UI extensions. Update the depen
             tabs: [
               {
                 title: 'package.json',
-                code: './examples/upgrading-to-2025-10-rc/package-json-old-react.json',
+                code: './examples/upgrading-to-2025-10/package-json-old-react.json',
                 language: 'json',
               },
             ],
@@ -70,7 +70,7 @@ As of \`2025-10\`, Shopify recommends Preact for UI extensions. Update the depen
             tabs: [
               {
                 title: 'package.json',
-                code: './examples/upgrading-to-2025-10-rc/package-json-old-js.json',
+                code: './examples/upgrading-to-2025-10/package-json-old-js.json',
                 language: 'json',
               },
             ],
@@ -95,12 +95,12 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
             tabs: [
               {
                 title: 'New tsconfig.json',
-                code: './examples/upgrading-to-2025-10-rc/new-tsconfig.example.json',
+                code: './examples/upgrading-to-2025-10/new-tsconfig.example.json',
                 language: 'json',
               },
               {
                 title: 'Old tsconfig.json',
-                code: './examples/upgrading-to-2025-10-rc/old-tsconfig.example.json',
+                code: './examples/upgrading-to-2025-10/old-tsconfig.example.json',
                 language: 'json',
               },
             ],
@@ -116,7 +116,7 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
             tabs: [
               {
                 title: 'CLI',
-                code: './examples/upgrading-to-2025-10-rc/support-new-shopify-global.example.bash',
+                code: './examples/upgrading-to-2025-10/support-new-shopify-global.example.bash',
                 language: 'bash',
               },
             ],
@@ -139,7 +139,7 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
             tabs: [
               {
                 title: 'Preact',
-                code: './examples/upgrading-to-2025-10-rc/apis-new.jsx',
+                code: './examples/upgrading-to-2025-10/apis-new.jsx',
                 language: 'tsx',
               },
             ],
@@ -153,7 +153,7 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
             tabs: [
               {
                 title: 'React',
-                code: './examples/upgrading-to-2025-10-rc/apis-old-react.jsx',
+                code: './examples/upgrading-to-2025-10/apis-old-react.jsx',
                 language: 'tsx',
               },
             ],
@@ -167,7 +167,7 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
             tabs: [
               {
                 title: 'JavaScript',
-                code: './examples/upgrading-to-2025-10-rc/apis-old-js.jsx',
+                code: './examples/upgrading-to-2025-10/apis-old-js.jsx',
                 language: 'tsx',
               },
             ],
@@ -190,7 +190,7 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
             tabs: [
               {
                 title: 'Preact',
-                code: './examples/upgrading-to-2025-10-rc/components-new.jsx',
+                code: './examples/upgrading-to-2025-10/components-new.jsx',
                 language: 'tsx',
               },
             ],
@@ -204,7 +204,7 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
             tabs: [
               {
                 title: 'React',
-                code: './examples/upgrading-to-2025-10-rc/components-old-react.jsx',
+                code: './examples/upgrading-to-2025-10/components-old-react.jsx',
                 language: 'tsx',
               },
             ],
@@ -218,7 +218,7 @@ These steps make TypeScript aware of the new global \`shopify\` object. Skip the
             tabs: [
               {
                 title: 'JavaScript',
-                code: './examples/upgrading-to-2025-10-rc/components-old-js.jsx',
+                code: './examples/upgrading-to-2025-10/components-old-js.jsx',
                 language: 'tsx',
               },
             ],
