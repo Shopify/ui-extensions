@@ -1,4 +1,4 @@
-/** VERSION: 1.20.0 **/
+/** VERSION: 1.21.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -125,7 +125,17 @@ declare module 'preact' {
 declare const tagName = 's-choice';
 export interface ChoiceJSXProps
   extends Partial<ChoiceProps>,
-    Pick<ChoiceProps$1, 'id' | 'details'> {}
+    Pick<ChoiceProps$1, 'id' | 'details'> {
+  /**
+   * Additional text to provide context or guidance for the input.
+   *
+   * This text is displayed along with the input and its label
+   * to offer more information or instructions to the user.
+   *
+   * @implementation this content should be linked to the input with an `aria-describedby` attribute.
+   */
+  details?: ComponentChildren;
+}
 
 export {Choice};
 export type {ChoiceJSXProps};

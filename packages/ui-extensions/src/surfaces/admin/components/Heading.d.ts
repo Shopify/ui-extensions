@@ -1,4 +1,4 @@
-/** VERSION: 1.20.0 **/
+/** VERSION: 1.21.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -8,16 +8,13 @@
 /// <reference lib="DOM" />
 import type {ComponentChildren, HeadingProps$1} from './shared.d.ts';
 
-export type RequiredHeadingProps = Required<HeadingProps$1>;
 export interface HeadingProps
-  extends Pick<
-    HeadingProps$1,
-    'accessibilityRole' | 'accessibilityVisibility' | 'lineClamp'
-  > {
-  accessibilityRole: RequiredHeadingProps['accessibilityRole'];
-  accessibilityVisibility: RequiredHeadingProps['accessibilityVisibility'];
-  lineClamp: RequiredHeadingProps['lineClamp'];
-}
+  extends Required<
+    Pick<
+      HeadingProps$1,
+      'accessibilityRole' | 'accessibilityVisibility' | 'lineClamp'
+    >
+  > {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {

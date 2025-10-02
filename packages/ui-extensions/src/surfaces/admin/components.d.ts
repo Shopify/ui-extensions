@@ -1,4 +1,4 @@
-/** VERSION: 1.20.0 **/
+/** VERSION: 1.21.2 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -5178,6 +5178,15 @@ export interface ChoiceJSXProps
    * any markup or element structure is ignored.
    */
   children?: ComponentChildren;
+  /**
+   * Additional text to provide context or guidance for the input.
+   *
+   * This text is displayed along with the input and its label
+   * to offer more information or instructions to the user.
+   *
+   * @implementation this content should be linked to the input with an `aria-describedby` attribute.
+   */
+  details?: ComponentChildren;
 }
 
 export interface ChoiceListProps
@@ -5512,7 +5521,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$M]: ColorPickerJSXProps;
+      [tagName$M]: ColorPickerJSXProps & PreactBaseElementProps<ColorPicker>;
     }
   }
 }
@@ -5565,7 +5574,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$L]: DateFieldJSXProps;
+      [tagName$L]: DateFieldJSXProps & PreactBaseElementProps<DateField>;
     }
   }
 }
@@ -5746,7 +5755,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$I]: DropZoneJSXProps;
+      [tagName$I]: DropZoneJSXProps & PreactBaseElementProps<DropZone>;
     }
   }
 }
@@ -5861,7 +5870,7 @@ export interface GridProps
    * Adjust spacing between elements.
    *
    * `gap` can either accept:
-   * - a single SpacingKeyword value applied to both axes (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value applied to both axes (e.g. `large-100`)
    * - OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
@@ -5873,7 +5882,7 @@ export interface GridProps
    *
    * This overrides the row value of `gap`.
    * `rowGap` either accepts:
-   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value (e.g. `large-100`)
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
@@ -5884,7 +5893,7 @@ export interface GridProps
    *
    * This overrides the column value of `gap`.
    * `columnGap` either accepts:
-   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value (e.g. `large-100`)
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
@@ -5984,16 +5993,13 @@ export interface GridItemJSXProps
   children?: ComponentChildren;
 }
 
-export type RequiredHeadingProps = Required<HeadingProps$1>;
 export interface HeadingProps
-  extends Pick<
-    HeadingProps$1,
-    'accessibilityRole' | 'accessibilityVisibility' | 'lineClamp'
-  > {
-  accessibilityRole: RequiredHeadingProps['accessibilityRole'];
-  accessibilityVisibility: RequiredHeadingProps['accessibilityVisibility'];
-  lineClamp: RequiredHeadingProps['lineClamp'];
-}
+  extends Required<
+    Pick<
+      HeadingProps$1,
+      'accessibilityRole' | 'accessibilityVisibility' | 'lineClamp'
+    >
+  > {}
 
 declare class Heading extends PreactCustomElement implements HeadingProps {
   accessor accessibilityRole: HeadingProps['accessibilityRole'];
@@ -6209,10 +6215,6 @@ export interface MenuProps
  * (like Popover, Tooltip, Modal, etc.) to communicate with the overlay control system.
  */
 /**
- * Symbol used to invoke the method for overlay commands, e.g. `--show`, `--hide`, etc.
- */
-declare const overlayCommand: unique symbol;
-/**
  * Symbol used to track the open or closed state of the overlay.
  */
 declare const overlayHidden: unique symbol;
@@ -6221,6 +6223,21 @@ declare const overlayHidden: unique symbol;
  */
 declare const overlayActivator: unique symbol;
 declare const overlayHideFrameId: unique symbol;
+export type PolyfillCommandEventInit = EventInit & {
+  source: HTMLElement | null | undefined;
+  command: PreactOverlayControlProps['command'];
+};
+export type PolyfillCommandEvent = Event & {
+  source: PolyfillCommandEventInit['source'];
+  command: PolyfillCommandEventInit['command'];
+  /** Have to use `_s_shadowSource` because `source` is retargeted to the shadow host by browsers */
+  _s_shadowSource: PolyfillCommandEventInit['source'];
+};
+declare global {
+  interface GlobalEventHandlersEventMap {
+    command: PolyfillCommandEvent;
+  }
+}
 
 declare class PreactOverlayElement extends PreactCustomElement {
   constructor(renderImpl: RenderImpl);
@@ -6230,11 +6247,6 @@ declare class PreactOverlayElement extends PreactCustomElement {
   [overlayActivator]: HTMLElement | null | undefined;
   /** @private */
   [overlayHideFrameId]?: number;
-  /** @private */
-  [overlayCommand](
-    command: InteractionProps['command'],
-    overlayActivatorEl: HTMLElement | null | undefined,
-  ): void;
 }
 
 declare class Menu extends PreactOverlayElement implements MenuProps {
@@ -6253,7 +6265,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$z]: MenuJSXProps;
+      [tagName$z]: MenuJSXProps & PreactBaseElementPropsWithChildren<Menu>;
     }
   }
 }
@@ -6291,24 +6303,56 @@ export interface ModalProps
   >;
 }
 
+export interface Context<T> {
+  readonly defaultValue: T;
+}
 declare class AddedContext<T> extends EventTarget {
   constructor(defaultValue: T);
   get value(): T;
   set value(value: T);
 }
 
+/**
+ * A callback which is provided by a context requester and is called with the value satisfying the request.
+ * This callback can be called multiple times by context providers as the requested value is changed.
+ */
+export type ContextCallback<T> = (value: T) => void;
+/**
+ * An event fired by a context requester to signal it desires a named context.
+ *
+ * A provider should inspect the `context` property of the event to determine if it has a value that can
+ * satisfy the request, calling the `callback` with the requested value if so.
+ */
+declare class ContextRequestEvent<T> extends Event {
+  readonly context: Context<T>;
+  readonly callback: ContextCallback<T>;
+  constructor(context: Context<T>, callback: ContextCallback<T>);
+}
+declare global {
+  interface HTMLElementEventMap {
+    /**
+     * A 'context-request' event can be emitted by any element which desires
+     * a context value to be injected by an external provider.
+     */
+    'context-request': ContextRequestEvent<unknown>;
+  }
+}
+
 declare const hasOpenChildModal: unique symbol;
 
-declare const open: unique symbol;
 declare const show: unique symbol;
 declare const hide: unique symbol;
+declare const isOpen: unique symbol;
 declare const dialog: unique symbol;
+declare const dismiss: unique symbol;
+declare const focusedElement: unique symbol;
 declare const onEscape: unique symbol;
 declare const nestedModals: unique symbol;
 declare const onBackdropClick: unique symbol;
 declare const abortController: unique symbol;
 declare const onChildModalChange: unique symbol;
 declare const childrenRerenderObserver: unique symbol;
+declare const shadowDomRerenderObserver: unique symbol;
 declare class Modal extends PreactOverlayElement implements ModalProps {
   accessor accessibilityLabel: ModalProps['accessibilityLabel'];
   accessor heading: ModalProps['heading'];
@@ -6319,9 +6363,13 @@ declare class Modal extends PreactOverlayElement implements ModalProps {
   /** @private */
   [dialog]: HTMLDialogElement | null;
   /** @private */
+  [focusedElement]: HTMLElement | null;
+  /** @private */
   [nestedModals]: Map<Modal, boolean>;
   /** @private */
   [childrenRerenderObserver]: MutationObserver;
+  /** @private */
+  [shadowDomRerenderObserver]: MutationObserver;
   /** @private */
   [onEscape]: (event: KeyboardEvent) => void;
   /** @private */
@@ -6329,7 +6377,9 @@ declare class Modal extends PreactOverlayElement implements ModalProps {
   /** @private */
   [onChildModalChange]: EventListenerOrEventListenerObject;
   /** @private */
-  get [open](): boolean;
+  get [isOpen](): boolean;
+  /** @private */
+  [dismiss](): void;
   /** @private */
   get [hasOpenChildModal](): boolean;
   /** @private */
@@ -6353,7 +6403,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
+      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
+        PreactBaseElementPropsWithChildren<Modal>;
     }
   }
 }
@@ -6375,7 +6426,7 @@ export interface ModalJSXProps
   /**
    * The secondary actions to perform.
    *
-   * Only `ButtonGroup` or `Button` with a variant of `secondary` or `auto` are allowed.
+   * Only `Button` elements with a variant of `secondary` or `auto` are allowed.
    */
   secondaryActions?: ComponentChildren;
   onHide?: ((event: CallbackEvent<typeof tagName$y>) => void) | null;
@@ -6650,7 +6701,6 @@ export interface ParagraphProps
     >
   > {
   color: Extract<ParagraphProps$1['color'], 'base' | 'subdued'>;
-  lineClamp: Extract<ParagraphProps$1['lineClamp'], number>;
 }
 
 declare class Paragraph extends PreactCustomElement implements ParagraphProps {
@@ -6822,7 +6872,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$o]: QueryContainerJSXProps;
+      [tagName$o]: QueryContainerJSXProps &
+        PreactBaseElementPropsWithChildren<QueryContainer>;
     }
   }
 }
@@ -7075,7 +7126,7 @@ export interface StackProps
    * Adjust spacing between elements.
    *
    * `gap` can either accept:
-   * - a single SpacingKeyword value applied to both axes (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value applied to both axes (e.g. `large-100`)
    * - OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
@@ -7087,7 +7138,7 @@ export interface StackProps
    *
    * This overrides the row value of `gap`.
    * `rowGap` either accepts:
-   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value (e.g. `large-100`)
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
@@ -7098,7 +7149,7 @@ export interface StackProps
    *
    * This overrides the column value of `gap`.
    * `columnGap` either accepts:
-   * - a single SpacingKeyword value (e.g. `large-100`)
+   * - a single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value (e.g. `large-100`)
    * - OR a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported SpacingKeyword as a query value.
    *
    * @default '' - meaning no override
@@ -8103,6 +8154,15 @@ export interface ChoiceSlots {
    * any markup or element structure is ignored.
    */
   children?: HTMLElement;
+  /**
+   * Additional text to provide context or guidance for the input.
+   *
+   * This text is displayed along with the input and its label
+   * to offer more information or instructions to the user.
+   *
+   * @implementation this content should be linked to the input with an `aria-describedby` attribute.
+   */
+  details?: HTMLElement;
 }
 
 export interface ChoiceListEvents {
@@ -8274,7 +8334,7 @@ export interface ModalSlots {
   /**
    * The secondary actions to perform.
    *
-   * Only `ButtonGroup` or `Button` with a variant of `secondary` or `auto` are allowed.
+   * Only `Button` elements with a variant of `secondary` or `auto` are allowed.
    */
   'secondary-actions'?: HTMLElement;
 }
@@ -8793,28 +8853,28 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$M]: ColorPickerJSXProps;
+      [tagName$M]: ColorPickerJSXProps & ReactBaseElementProps<ColorPicker>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$M]: ColorPickerJSXProps;
+      [tagName$M]: ColorPickerJSXProps & ReactBaseElementProps<ColorPicker>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$L]: DateFieldJSXProps;
+      [tagName$L]: DateFieldJSXProps & ReactBaseElementProps<DateField>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$L]: DateFieldJSXProps;
+      [tagName$L]: DateFieldJSXProps & ReactBaseElementProps<DateField>;
     }
   }
 }
@@ -8849,14 +8909,14 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$I]: DropZoneJSXProps;
+      [tagName$I]: DropZoneJSXProps & ReactBaseElementProps<DropZone>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$I]: DropZoneJSXProps;
+      [tagName$I]: DropZoneJSXProps & ReactBaseElementProps<DropZone>;
     }
   }
 }
@@ -8979,28 +9039,30 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$z]: MenuJSXProps;
+      [tagName$z]: MenuJSXProps & ReactBaseElementPropsWithChildren<Menu>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$z]: MenuJSXProps;
+      [tagName$z]: MenuJSXProps & ReactBaseElementPropsWithChildren<Menu>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
+      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
+        ReactBaseElementPropsWithChildren<Modal>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
+      [tagName$y]: Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'> &
+        ReactBaseElementPropsWithChildren<Modal>;
     }
   }
 }
@@ -9147,14 +9209,16 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: QueryContainerJSXProps;
+      [tagName$o]: QueryContainerJSXProps &
+        ReactBaseElementPropsWithChildren<QueryContainer>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: QueryContainerJSXProps;
+      [tagName$o]: QueryContainerJSXProps &
+        ReactBaseElementPropsWithChildren<QueryContainer>;
     }
   }
 }
