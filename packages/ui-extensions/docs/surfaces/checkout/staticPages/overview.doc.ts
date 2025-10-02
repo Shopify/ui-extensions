@@ -37,6 +37,24 @@ Make sure you’re using Shopify CLI \`v3.85.3\` or higher. You can check your v
     },
     {
       type: 'Generic',
+      anchorLink: 'eslint-configuration',
+      title: 'Optional ESLint configuration',
+      sectionContent: `
+If your app is using ESLint, update your configuration to include the new global \`shopify\` object.
+        `,
+      codeblock: {
+        title: '.eslintrc.cjs',
+        tabs: [
+          {
+            code: './examples/eslint-configuration.example.ts',
+            language: 'js',
+          },
+        ],
+      },
+      initialLanguage: 'js',
+    },
+    {
+      type: 'Generic',
       anchorLink: 'configuration-file',
       title: 'Configuration file',
       sectionContent: `When you create a UI extension, the \`shopify.extension.toml\` file is generated in your extension directory. Use this file to configure your extension name, extension targets, metafields, capabilities, and settings definition.

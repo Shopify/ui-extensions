@@ -81,45 +81,54 @@ As of \`2025-10\`, Shopify recommends Preact for UI extensions. Update the depen
       ],
     },
     {
-      type: 'Generic',
+      type: 'GenericAccordion',
       anchorLink: 'update-typescript-configuration',
       title: 'Update TypeScript Configuration',
-      sectionNotice: [
+      sectionContent: `
+**Skip this step if not using TypeScript.**
+
+Update your extension config at a path like \`extensions/{extension-name}/tsconfig.json\`. You do **not** need to change your app's root \`tsconfig.json\` file.
+      `,
+      accordionContent: [
         {
-          title: 'Skip if not using TypeScript',
-          type: 'note',
-          sectionContent: `These steps make TypeScript aware of the new global \`shopify\` object. Skip this step if your app was not built using TypeScript.`,
+          title: 'New tsconfig.json',
+          description: '',
+          codeblock: {
+            title: 'New tsconfig.json',
+            tabs: [
+              {
+                title: 'tsconfig.json',
+                code: './examples/upgrading-to-2025-10/new-tsconfig.example.json',
+                language: 'json',
+              },
+            ],
+          },
+        },
+        {
+          title: 'Old tsconfig.json',
+          description: '',
+          codeblock: {
+            title: 'Old tsconfig.json',
+            tabs: [
+              {
+                title: 'tsconfig.json',
+                code: './examples/upgrading-to-2025-10/old-tsconfig.example.json',
+                language: 'json',
+              },
+            ],
+          },
         },
       ],
-      sectionContent: `Update your extension config at a path like \`extensions/{extension-name}/tsconfig.json\`. You do **not** need to change your app's root \`tsconfig.json\` file.`,
-      codeblock: {
-        title: "Update your extension's tsconfig.json",
-        tabs: [
-          {
-            title: 'New tsconfig.json',
-            code: './examples/upgrading-to-2025-10/new-tsconfig.example.json',
-            language: 'json',
-          },
-          {
-            title: 'Old tsconfig.json',
-            code: './examples/upgrading-to-2025-10/old-tsconfig.example.json',
-            language: 'json',
-          },
-        ],
-      },
     },
     {
       type: 'Generic',
-      anchorLink: 'generate-type-definitions',
-      title: 'Generate type definition file',
-      sectionNotice: [
-        {
-          title: 'Skip if not using TypeScript',
-          type: 'note',
-          sectionContent: `These steps make TypeScript aware of the new global \`shopify\` object. Skip this step if your app was not built using TypeScript.`,
-        },
-      ],
-      sectionContent: `These commands generate a \`shopify.d.ts\` file in your extension directory. This imports UI Extension component types and declares the shopify API object for each extension target.`,
+      anchorLink: 'upgrading-shopify-cli',
+      title: 'Upgrade the Shopifiy CLI',
+      sectionContent: `
+The new CLI adds supoort for building 2025-10 extensions.
+
+The \`shopify app dev\` command runs your app and also generates a \`shopify.d.ts\` file in your extension directory, adding support for the new global \`shopify\` object in TypeScript projects.
+      `,
       codeblock: {
         title: 'Support new global shopify object',
         tabs: [
@@ -130,6 +139,24 @@ As of \`2025-10\`, Shopify recommends Preact for UI extensions. Update the depen
           },
         ],
       },
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'eslint-configuration',
+      title: 'Optional ESLint configuration',
+      sectionContent: `
+If your app is using ESLint, update your configuration to include the new global \`shopify\` object.
+        `,
+      codeblock: {
+        title: '.eslintrc.cjs',
+        tabs: [
+          {
+            code: './examples/eslint-configuration.ts',
+            language: 'js',
+          },
+        ],
+      },
+      initialLanguage: 'js',
     },
     {
       type: 'GenericAccordion',
