@@ -97,12 +97,19 @@ const jsxWrapper = (
   const baseStyles = 'box-sizing: border-box; margin: 0; padding: 0.5rem;';
   const composedStyles = composeStyles(baseStyles, layoutStyles, customStyles);
 
-  return `<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {${composedStyles}} </style> <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script> <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> <script src="https://unpkg.com/preact@10/dist/preact.umd.js"></script> <script src="https://unpkg.com/preact@10/hooks/dist/hooks.umd.js"></script> <script type="text/babel" data-type="module" data-presets="react"> /** @jsx preact.h */ const {render, h} = preact; const {useState} = preactHooks; const App = () => { ${decodeHTML(
-    jsxString,
-  )} }; render(<App />, document.getElementById('wrapper-element'));
+  let jsxStringProcessed = jsxString;
+  if (!jsxString.includes('return')) {
+    jsxStringProcessed = `return (${jsxString})`;
+  }
+
+  const body = bodyContent ? `<body>${bodyContent}</body>` : '<body></body>';
+
+  return `<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {${composedStyles}} </style> <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script> <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> <script src="https://unpkg.com/preact@10/dist/preact.umd.js"></script> <script src="https://unpkg.com/preact@10/hooks/dist/hooks.umd.js"></script> <script type="text/babel" data-type="module" data-presets="react"> /** @jsx preact.h */ const {render, h, Fragment} = preact; const {useState} = preactHooks; const React = {Fragment}; const App = () => { ${decodeHTML(
+    jsxStringProcessed,
+  )} }; render(<App />, document.getElementById('wrapper-element') || document.body);
     </script>
   </head>
-  <body>${bodyContent}</body>  
+  ${body}
 </html>
 `;
 };
@@ -114,11 +121,11 @@ const createTemplate = ({
 }) => {
   return (htmlString, customStyles, jsx = false) => {
     if (jsx) {
-      const bodyContent = wrapperElement
-        ? `<${wrapperElement}${
-            wrapperAttributes ? ` ${wrapperAttributes}` : ''
-          } id="wrapper-element"></${wrapperElement}>`
-        : `<div id="wrapper-element"></div>`;
+      const bodyContent =
+        wrapperElement &&
+        `<${wrapperElement}${
+          wrapperAttributes ? ` ${wrapperAttributes}` : ''
+        } id="wrapper-element"></${wrapperElement}>`;
 
       return jsxWrapper(htmlString, bodyContent, layoutStyles, customStyles);
     } else {
@@ -200,7 +207,7 @@ const transformJson = async (filePath, isExtensions) => {
     if (entry.defaultExample?.codeblock?.tabs) {
       const newTabs = [];
       entry.defaultExample.codeblock.tabs.forEach((tab) => {
-        if (tab.language !== 'preview') {
+        if (tab.language !== 'preview' && tab.language !== 'preview-jsx') {
           newTabs.push(tab);
           return;
         }
@@ -213,19 +220,25 @@ const transformJson = async (filePath, isExtensions) => {
 
         const previewHTML =
           tab.layout && tab.layout in templates
-            ? templates[tab.layout](tab.code, tab.customStyles)
-            : templates.default(tab.code, tab.customStyles);
+            ? templates[tab.layout](
+                tab.code,
+                tab.customStyles,
+                tab.language === 'preview-jsx',
+              )
+            : templates.default(
+                tab.code,
+                tab.customStyles,
+                tab.language === 'preview-jsx',
+              );
 
         newTabs.push(
           {
             code: tab.code,
-            language: 'html',
-            editable: tab.editable || false,
+            language: tab.language === 'preview-jsx' ? 'jsx' : 'html',
+            editable:
+              tab.language === 'preview-jsx' ? tab.editable || false : false,
           },
-          {
-            code: previewHTML,
-            language: 'preview',
-          },
+          {code: previewHTML, language: 'preview'},
         );
       });
 
@@ -260,7 +273,10 @@ const transformJson = async (filePath, isExtensions) => {
               newTabs.push({
                 code: tab.code,
                 language: tab.language,
-                editable: tab.editable || false,
+                editable:
+                  tab.language === 'preview-jsx'
+                    ? tab.editable || false
+                    : false,
               });
             }
           });
