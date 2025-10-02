@@ -28,19 +28,19 @@ You can track new releases and update your extensions by referencing the [develo
         {
           subtitle: 'Extension targets',
           name: 'See all available extension targets',
-          url: 'targets',
+          url: '/docs/api/pos-ui-extensions/targets',
           type: 'pickaxe-1',
         },
         {
           subtitle: 'APIs',
           name: 'See all available APIs',
-          url: 'apis',
+          url: '/docs/api/pos-ui-extensions/apis',
           type: 'pickaxe-2',
         },
         {
           subtitle: 'Components',
           name: 'See all available components',
-          url: 'polaris-web-components',
+          url: '/docs/api/pos-ui-extensions/polaris-web-components',
           type: 'blocks',
         },
       ],
@@ -54,7 +54,7 @@ You can track new releases and update your extensions by referencing the [develo
         {
           name: 'Getting started guide',
           subtitle: 'Set up your development environment',
-          url: 'getting-started',
+          url: '/docs/api/pos-ui-extensions/getting-started',
           type: 'blocks',
         },
       ],
