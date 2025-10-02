@@ -25,8 +25,8 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Code',
       tabs: [
         {
-          code: './examples/default.html',
-          language: 'preview',
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
         },
       ],
     },
