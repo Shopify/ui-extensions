@@ -34,7 +34,7 @@ In this tutorial, you'll learn how to do the following tasks:
 - Create a [development store](/docs/apps/tools/development-stores).
 - Install or migrate to [Shopify CLI version 3.85.3 or higher](/docs/apps/tools/cli).
 - Create an [app](/docs/apps/getting-started/create).
-- Embed [your app in Shopify POS](/docs/apps/pos/getting-started#embed-your-in-app-in-shopify-pos).
+- Configure your app to be [POS embedded](/docs/apps/build/cli-for-apps/app-configuration#pos).
       `,
     },
     {
