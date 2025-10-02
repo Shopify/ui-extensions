@@ -208,7 +208,7 @@ const transformJson = async (filePath, isExtensions) => {
       const newTabs = [];
       entry.defaultExample.codeblock.tabs.forEach((tab) => {
         if (tab.language !== 'preview' && tab.language !== 'preview-jsx') {
-          newTabs.push(tab);
+          newTabs.push({...tab, title: tab.language});
           return;
         }
 
@@ -233,6 +233,7 @@ const transformJson = async (filePath, isExtensions) => {
 
         newTabs.push(
           {
+            title: tab.language === 'preview-jsx' ? 'jsx' : 'html',
             code: tab.code,
             language: tab.language === 'preview-jsx' ? 'jsx' : 'html',
             editable:
@@ -268,9 +269,20 @@ const transformJson = async (filePath, isExtensions) => {
                       tab.language === 'preview-jsx',
                     );
 
-              newTabs.push({code: previewHTML, language: 'preview'});
+              newTabs.push(
+                {
+                  title: tab.language === 'preview-jsx' ? 'jsx' : 'html',
+                  code: tab.code,
+                  language: tab.language === 'preview-jsx' ? 'jsx' : 'html',
+                },
+                {
+                  code: previewHTML,
+                  language: 'preview',
+                },
+              );
             } else {
               newTabs.push({
+                title: tab.language,
                 code: tab.code,
                 language: tab.language,
                 editable:
