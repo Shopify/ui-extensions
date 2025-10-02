@@ -88,20 +88,50 @@ const htmlWrapper = (htmlString, layoutStyles = '', customStyles = '') => {
   )}</body></html>`;
 };
 
+const jsxWrapper = (
+  jsxString,
+  bodyContent,
+  layoutStyles = '',
+  customStyles = '',
+) => {
+  const baseStyles = 'box-sizing: border-box; margin: 0; padding: 0.5rem;';
+  const composedStyles = composeStyles(baseStyles, layoutStyles, customStyles);
+
+  return `<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {${composedStyles}} </style> <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script> <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> <script src="https://unpkg.com/preact@10/dist/preact.umd.js"></script> <script src="https://unpkg.com/preact@10/hooks/dist/hooks.umd.js"></script> <script type="text/babel" data-type="module" data-presets="react"> /** @jsx preact.h */ const {render, h} = preact; const {useState} = preactHooks; const App = () => { ${decodeHTML(
+    jsxString,
+  )} }; render(<App />, document.getElementById('wrapper-element'));
+    </script>
+  </head>
+  <body>${bodyContent}</body>  
+</html>
+`;
+};
+
 const createTemplate = ({
   layoutStyles,
   wrapperElement = null,
   wrapperAttributes = '',
 }) => {
-  return (htmlString, customStyles) => {
-    const wrappedHtml = wrapperElement
-      ? `<${wrapperElement}${
-          wrapperAttributes ? ` ${wrapperAttributes}` : ''
-        }>${htmlString}</${wrapperElement}>`
-      : htmlString;
-    const customStylesString = stylesToString(customStyles);
+  return (htmlString, customStyles, jsx = false) => {
+    if (jsx) {
+      const bodyContent = wrapperElement
+        ? `<${wrapperElement}${
+            wrapperAttributes ? ` ${wrapperAttributes}` : ''
+          } id="wrapper-element"></${wrapperElement}>`
+        : `<div id="wrapper-element"></div>`;
 
-    return htmlWrapper(wrappedHtml, layoutStyles, customStylesString);
+      return jsxWrapper(htmlString, bodyContent, layoutStyles, customStyles);
+    } else {
+      const wrappedHtml = wrapperElement
+        ? `<${wrapperElement}${
+            wrapperAttributes ? ` ${wrapperAttributes}` : ''
+          } id="wrapper-element">${htmlString}</${wrapperElement}>`
+        : `<div id="wrapper-element">${htmlString}</div>`;
+
+      const customStylesString = stylesToString(customStyles);
+
+      return htmlWrapper(wrappedHtml, layoutStyles, customStylesString);
+    }
   };
 };
 
@@ -205,26 +235,37 @@ const transformJson = async (filePath, isExtensions) => {
     if (entry.examples && entry.examples.exampleGroups) {
       entry.examples.exampleGroups.forEach((exampleGroup) => {
         exampleGroup.examples.forEach((example) => {
-          if (example.codeblock?.tabs) {
-            example.codeblock.tabs.forEach((tab) => {
+          if (!example.codeblock?.tabs) {
+            return;
+          }
+          const newTabs = [];
+
+          example.codeblock.tabs.forEach((tab) => {
+            if (tab.language === 'preview' || tab.language === 'preview-jsx') {
               const previewHTML =
                 tab.layout && tab.layout in templates
-                  ? templates[tab.layout](tab.code, tab.customStyles)
-                  : templates.example(tab.code, tab.customStyles);
-              const newTabs = [];
+                  ? templates[tab.layout](
+                      tab.code,
+                      tab.customStyles,
+                      tab.language === 'preview-jsx',
+                    )
+                  : templates.example(
+                      tab.code,
+                      tab.customStyles,
+                      tab.language === 'preview-jsx',
+                    );
 
-              newTabs.push(
-                {
-                  code: tab.code,
-                  language: 'html',
-                  editable: tab.editable || false,
-                },
-                {code: previewHTML, language: 'preview'},
-              );
+              newTabs.push({code: previewHTML, language: 'preview'});
+            } else {
+              newTabs.push({
+                code: tab.code,
+                language: tab.language,
+                editable: tab.editable || false,
+              });
+            }
+          });
 
-              example.codeblock.tabs = newTabs;
-            });
-          }
+          example.codeblock.tabs = newTabs;
         });
       });
     }
