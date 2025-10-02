@@ -84,6 +84,24 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'Generic',
+      anchorLink: 'eslint-configuration',
+      title: 'Optional ESLint configuration',
+      sectionContent: `
+If your app is using ESLint, update your configuration to include the new global \`shopify\` object.
+        `,
+      codeblock: {
+        title: '.eslintrc.cjs',
+        tabs: [
+          {
+            code: './examples/eslint-configuration.example.ts',
+            language: 'js',
+          },
+        ],
+      },
+      initialLanguage: 'js',
+    },
+    {
+      type: 'Generic',
       title: 'Scaffolded with Preact',
       sectionContent: `UI Extensions are scaffolded with [Preact](https://preactjs.com/) by default.
       \nThis means that you can use Preact patterns and principles within your extension. Since Preact is included as a standard dependency, you have access to all of its features including [hooks](https://preactjs.com/guide/v10/hooks/) like \`useState\` and \`useEffect\` for managing component state and side effects.

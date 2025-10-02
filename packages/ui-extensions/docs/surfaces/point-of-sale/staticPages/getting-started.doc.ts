@@ -115,6 +115,19 @@ You can install your app and preview your extension in Shopify POS from the deve
     },
     {
       type: 'Generic',
+      anchorLink: 'eslint-configuration',
+      title: 'Optional ESLint configuration',
+      sectionContent: `
+If your app is using ESLint, update your configuration to include the new global \`shopify\` object.
+        `,
+      codeblock: {
+        title: '.eslintrc.cjs',
+        tabs: [{code: './examples/eslint-configuration.ts', language: 'js'}],
+      },
+      initialLanguage: 'js',
+    },
+    {
+      type: 'Generic',
       anchorLink: 'updating',
       title: 'Updating',
       sectionContent: `
