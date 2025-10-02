@@ -1,5 +1,5 @@
 ...
-name = "Loyalty discount"
-handle = "Loyalty discount"
-description = "Add loyalty discount"
+name = "Discount"
+handle = "discount"
+description = "Add discount"
 ...

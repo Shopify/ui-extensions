@@ -1,3 +1,7 @@
+// This example shows how to create a print endpoint for your Shopify app
+// This works with both Remix and React Router v7 (which uses Remix's API patterns)
+// Place this file in your app's routes folder to create a route at '/print'
+
 import {authenticate} from '../shopify.server';
 
 export async function loader({request}) {
