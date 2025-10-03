@@ -58,7 +58,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-container.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-container.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -71,7 +76,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/responsive-shipping-notice.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/responsive-shipping-notice.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -84,7 +94,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/accessible-status-messages.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/accessible-status-messages.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -97,7 +112,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/complex-merchant-dashboard-layout.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/complex-merchant-dashboard-layout.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

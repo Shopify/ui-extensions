@@ -1,0 +1,34 @@
+<s-stack gap="base">
+  {/* Inventory status section */}
+  <s-box
+    padding="base"
+    background="base"
+    borderRadius="base"
+    borderWidth="base"
+    borderColor="base"
+  >
+    <s-stack gap="base">
+      <s-box padding="small-100" background="subdued" borderRadius="small">
+        <s-text>In stock: 45 units</s-text>
+      </s-box>
+      <s-box padding="small-100" background="subdued" borderRadius="small">
+        <s-text>Low stock alert: 5 units</s-text>
+      </s-box>
+    </s-stack>
+  </s-box>
+
+  {/* Product information section */}
+  <s-box
+    padding="base"
+    background="base"
+    borderRadius="base"
+    borderWidth="base"
+    borderColor="base"
+  >
+    <s-stack gap="base">
+      <s-heading>Product sales</s-heading>
+      <s-text color="subdued">No recent sales of this product</s-text>
+      <s-link href="/admin/products/123">View details</s-link>
+    </s-stack>
+  </s-box>
+</s-stack>

@@ -55,7 +55,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -68,7 +73,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/order-processing-steps.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/order-processing-steps.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -81,7 +91,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/product-setup-instructions.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/product-setup-instructions.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -94,7 +109,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/fulfillment-process.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/fulfillment-process.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

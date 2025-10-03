@@ -52,7 +52,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -65,7 +70,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/custom-color.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/custom-color.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -78,7 +88,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/custom-direction.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/custom-direction.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -91,7 +106,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/separating-form-sections.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/separating-form-sections.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -104,7 +124,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/organizing-settings-panels.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/organizing-settings-panels.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -117,7 +142,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/visual-breaks-in-section-layouts.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/visual-breaks-in-section-layouts.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -130,7 +160,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/separating-content-sections.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/separating-content-sections.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

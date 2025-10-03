@@ -76,7 +76,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-two-column-layout.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-two-column-layout.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -89,7 +94,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/dashboard-layout.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/dashboard-layout.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -102,7 +112,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/form-layout-with-responsive-spans.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/form-layout-with-responsive-spans.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -115,7 +130,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/mobile-first-responsive-grid.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/mobile-first-responsive-grid.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -128,7 +148,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/complex-admin-layout.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/complex-admin-layout.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

@@ -1,3 +1,4 @@
+<>
 <s-button onClick={() => console.log('Clicked!')}>
   Click me
 </s-button>
@@ -8,3 +9,4 @@
   onFocus={() => console.log('Field focused')}
   onBlur={() => console.log('Field blurred')}
 />
+</>
