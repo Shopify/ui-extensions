@@ -28,6 +28,10 @@ const data: AdminReferenceEntityTemplateSchema = {
           code: './examples/default.html',
           language: 'html',
         },
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
+        },
       ],
     },
   },
