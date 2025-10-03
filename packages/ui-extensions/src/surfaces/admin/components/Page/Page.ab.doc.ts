@@ -25,7 +25,12 @@ const data: AdminReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
+          layout: 'none',
+        },
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
           layout: 'none',
         },
       ],
@@ -46,7 +51,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/page-with-heading.html',
-                  language: 'preview',
+                  language: 'html',
+                  layout: 'none',
+                },
+                {
+                  code: './examples/page-with-heading.jsx',
+                  language: 'preview-jsx',
                   layout: 'none',
                 },
               ],
@@ -60,8 +70,16 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/small-inline-size-for-focused-content.html',
-                  language: 'preview',
+                  language: 'html',
                   layout: 'none',
+                },
+                {
+                  code: './examples/small-inline-size-for-focused-content.jsx',
+                  language: 'preview-jsx',
+                  layout: 'none',
+                  customStyles: {
+                    minHeight: '400px',
+                  },
                 },
               ],
             },
@@ -74,8 +92,16 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/large-inline-size-for-wide-content.html',
-                  language: 'preview',
+                  language: 'html',
                   layout: 'none',
+                },
+                {
+                  code: './examples/large-inline-size-for-wide-content.jsx',
+                  language: 'preview-jsx',
+                  layout: 'none',
+                  customStyles: {
+                    minHeight: '400px',
+                  },
                 },
               ],
             },

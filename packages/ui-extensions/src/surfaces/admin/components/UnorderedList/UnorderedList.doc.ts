@@ -38,6 +38,11 @@ const data: AdminReferenceEntityTemplateSchema = {
           code: './examples/default.jsx',
           language: 'preview-jsx',
         },
+
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
+        },
       ],
     },
   },
@@ -55,7 +60,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/store-setup-checklist.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/store-setup-checklist.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

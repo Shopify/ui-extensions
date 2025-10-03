@@ -49,7 +49,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           code: './examples/default.html',
           language: 'html',
         },
-
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
@@ -71,7 +70,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-block-stack-vertical.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-block-stack-vertical.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -84,7 +88,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/inline-stack-horizontal.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/inline-stack-horizontal.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -97,7 +106,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/responsive-stack-with-container-queries.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/responsive-stack-with-container-queries.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -110,7 +124,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/custom-alignment.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/custom-alignment.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -123,7 +142,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/custom-spacing.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/custom-spacing.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

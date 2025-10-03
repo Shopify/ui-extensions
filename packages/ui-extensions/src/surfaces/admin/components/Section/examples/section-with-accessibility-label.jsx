@@ -2,10 +2,12 @@
   heading="Payment summary"
   accessibilityLabel="Order payment breakdown and totals"
 >
-  <s-stack gap="base">
+  <s-stack>
     <s-text>Subtotal: $42.99</s-text>
     <s-text>Tax: $5.59</s-text>
     <s-text>Shipping: $1.41</s-text>
-    <s-text><strong>Total: $49.99</strong></s-text>
+    <s-text>
+      <strong>Total: $49.99</strong>
+    </s-text>
   </s-stack>
 </s-section>

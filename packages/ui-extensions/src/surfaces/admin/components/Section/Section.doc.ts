@@ -45,7 +45,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           language: 'html',
           layout: 'page',
         },
-
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
@@ -67,7 +66,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/top-level-section-with-form-elements.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/top-level-section-with-form-elements.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -80,7 +84,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/nested-sections-with-visual-level-differences.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/nested-sections-with-visual-level-differences.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -93,7 +102,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/section-with-accessibility-label.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/section-with-accessibility-label.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -106,7 +120,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/full-width-content-layout.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/full-width-content-layout.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

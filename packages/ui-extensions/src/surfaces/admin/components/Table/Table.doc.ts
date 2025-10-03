@@ -89,7 +89,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           language: 'html',
           layout: 'section',
         },
-
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
@@ -119,7 +118,13 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
                 },
               ],
             },
@@ -132,7 +137,13 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-pagination.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-pagination.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
                 },
               ],
             },
@@ -145,7 +156,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-loading-state.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+                {
+                  code: './examples/with-loading-state.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
                 },
               ],
             },
@@ -158,7 +174,16 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/full-width-product-inventory-table.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/full-width-product-inventory-table.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
+                  customStyles: {
+                    minHeight: '400px',
+                  },
                 },
               ],
             },
@@ -171,7 +196,13 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/advanced-table-with-all-list-slot-types.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/advanced-table-with-all-list-slot-types.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
                 },
               ],
             },
