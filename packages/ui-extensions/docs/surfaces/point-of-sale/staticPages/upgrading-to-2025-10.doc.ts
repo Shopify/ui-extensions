@@ -83,11 +83,9 @@ As of \`2025-10\`, Shopify recommends Preact for UI extensions. Update the depen
     {
       type: 'GenericAccordion',
       anchorLink: 'update-typescript-configuration',
-      title: 'Update TypeScript Configuration',
+      title: 'TypeScript Configuration',
       sectionContent: `
-**Skip this step if not using TypeScript.**
-
-Update your extension config at a path like \`extensions/{extension-name}/tsconfig.json\`. You do **not** need to change your app's root \`tsconfig.json\` file.
+Get full IntelliSense and auto-complete support by adding a config file for your extension at \`extensions/{extension-name}/tsconfig.json\`. You do **not** need to change your app's root \`tsconfig.json\` file.
       `,
       accordionContent: [
         {
@@ -127,7 +125,7 @@ Update your extension config at a path like \`extensions/{extension-name}/tsconf
       sectionContent: `
 The new CLI adds supoort for building 2025-10 extensions.
 
-The \`shopify app dev\` command runs your app and also generates a \`shopify.d.ts\` file in your extension directory, adding support for the new global \`shopify\` object in TypeScript projects.
+The \`shopify app dev\` command runs your app and also generates a \`shopify.d.ts\` file in your extension directory, adding support for the new global \`shopify\` object.
       `,
       codeblock: {
         title: 'Support new global shopify object',
