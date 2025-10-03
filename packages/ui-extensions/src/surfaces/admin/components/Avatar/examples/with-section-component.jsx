@@ -1,0 +1,17 @@
+<s-section>
+  <s-stack gap="base">
+    <s-stack direction="inline" gap="small">
+      <s-avatar
+        src="/merchants/premium-store.jpg"
+        initials="PS"
+        alt="Premium store"
+        size="base"
+       />
+      <s-stack gap="small-400">
+        <s-heading>Premium store</s-heading>
+        <s-text color="subdued">Shopify Plus merchant</s-text>
+      </s-stack>
+    </s-stack>
+    <s-text>Monthly revenue: $45,000</s-text>
+  </s-stack>
+</s-section>

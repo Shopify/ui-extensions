@@ -26,8 +26,13 @@ const data: AdminReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
           layout: 'inline',
+        },
+
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
         },
       ],
     },
@@ -46,7 +51,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -59,7 +69,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/empty-state.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/empty-state.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -72,7 +87,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/different-sizes.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/different-sizes.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -85,7 +105,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-event-handling.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-event-handling.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

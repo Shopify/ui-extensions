@@ -24,8 +24,13 @@ const data: AdminReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
           layout: 'inline',
+        },
+
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
         },
       ],
     },
@@ -44,7 +49,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/order-status-badges.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/order-status-badges.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -57,7 +67,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/status-indicators-with-icons.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/status-indicators-with-icons.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -70,7 +85,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/within-table-context.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/within-table-context.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -83,7 +103,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/different-sizes-for-emphasis.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/different-sizes-for-emphasis.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

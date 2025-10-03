@@ -25,7 +25,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
           layout: 'alignStart',
           customStyles: {
             minHeight: '300px',

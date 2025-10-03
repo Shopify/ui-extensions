@@ -50,7 +50,12 @@ const data: AdminReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
+        },
+
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
         },
       ],
     },
@@ -69,7 +74,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-heading.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-heading.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -82,7 +92,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/heading-with-line-clamping.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/heading-with-line-clamping.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -95,7 +110,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/heading-with-custom-accessibility.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/heading-with-custom-accessibility.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -108,7 +128,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/heading-within-section-hierarchy.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/heading-within-section-hierarchy.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

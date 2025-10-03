@@ -1,0 +1,137 @@
+<s-section padding="none" accessibilityLabel="Puzzles table section">
+  <s-table>
+    <s-grid slot="filters" gap="small-200" gridTemplateColumns="1fr auto">
+      <s-text-field
+        icon="search"
+        placeholder="Searching all puzzles"
+       />
+      <s-button
+        icon="sort"
+        variant="secondary"
+        interestFor="sort-tooltip"
+        commandFor="sort-actions"
+       />
+      <s-tooltip id="sort-tooltip">
+        <s-text>Sort</s-text>
+      </s-tooltip>
+      <s-popover id="sort-actions">
+        <s-stack gap="none">
+          <s-box padding="small">
+            <s-choice-list label="Sort by" name="Sort by">
+              <s-choice value="puzzle-name" selected>
+                Puzzle name
+              </s-choice>
+              <s-choice value="pieces">Pieces</s-choice>
+              <s-choice value="created">Created</s-choice>
+              <s-choice value="status">Status</s-choice>
+            </s-choice-list>
+          </s-box>
+          <s-divider />
+          <s-box padding="small">
+            <s-choice-list label="Order by" name="Order by">
+              <s-choice value="product-title" selected>
+                A-Z
+              </s-choice>
+              <s-choice value="created">Z-A</s-choice>
+            </s-choice-list>
+          </s-box>
+        </s-stack>
+      </s-popover>
+    </s-grid>
+    <s-table-header-row>
+      <s-table-header listSlot="primary">Puzzle</s-table-header>
+      <s-table-header format="numeric">Pieces</s-table-header>
+      <s-table-header>Created</s-table-header>
+      <s-table-header listSlot="secondary">Status</s-table-header>
+    </s-table-header-row>
+    <s-table-body>
+      <s-table-row clickDelegate="mountain-view-checkbox">
+        <s-table-cell>
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-checkbox id="mountain-view-checkbox" />
+            <s-clickable
+              href=""
+              accessibilityLabel="Mountain View puzzle thumbnail"
+              border="base"
+              borderRadius="base"
+              overflow="hidden"
+              inlineSize="40px"
+              blockSize="40px"
+            >
+              <s-image
+                objectFit="cover"
+                src="https://picsum.photos/id/29/80/80"
+               />
+            </s-clickable>
+            <s-link href="">Mountain View</s-link>
+          </s-stack>
+        </s-table-cell>
+        <s-table-cell>16</s-table-cell>
+        <s-table-cell>Today</s-table-cell>
+        <s-table-cell>
+          <s-badge color="base" tone="success">
+            Active
+          </s-badge>
+        </s-table-cell>
+      </s-table-row>
+      <s-table-row clickDelegate="ocean-sunset-checkbox">
+        <s-table-cell>
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-checkbox id="ocean-sunset-checkbox" />
+            <s-clickable
+              href=""
+              accessibilityLabel="Ocean Sunset puzzle thumbnail"
+              border="base"
+              borderRadius="base"
+              overflow="hidden"
+              inlineSize="40px"
+              blockSize="40px"
+            >
+              <s-image
+                objectFit="cover"
+                src="https://picsum.photos/id/12/80/80"
+               />
+            </s-clickable>
+            <s-link href="">Ocean Sunset</s-link>
+          </s-stack>
+        </s-table-cell>
+        <s-table-cell>9</s-table-cell>
+        <s-table-cell>Yesterday</s-table-cell>
+        <s-table-cell>
+          <s-badge color="base" tone="success">
+            Active
+          </s-badge>
+        </s-table-cell>
+      </s-table-row>
+      <s-table-row clickDelegate="forest-animals-checkbox">
+        <s-table-cell>
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-checkbox id="forest-animals-checkbox" />
+            <s-clickable
+              href=""
+              accessibilityLabel="Forest Animals puzzle thumbnail"
+              border="base"
+              borderRadius="base"
+              overflow="hidden"
+              inlineSize="40px"
+              blockSize="40px"
+            >
+              <s-image
+                objectFit="cover"
+                src="https://picsum.photos/id/324/80/80"
+               />
+            </s-clickable>
+            <s-link href="">Forest Animals</s-link>
+          </s-stack>
+        </s-table-cell>
+        <s-table-cell>25</s-table-cell>
+        <s-table-cell>Last week</s-table-cell>
+        <s-table-cell>
+          <s-badge color="base" tone="neutral">
+            Draft
+          </s-badge>
+        </s-table-cell>
+      </s-table-row>
+    </s-table-body>
+  </s-table>
+</s-section>

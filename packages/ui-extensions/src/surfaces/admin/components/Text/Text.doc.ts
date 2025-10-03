@@ -42,8 +42,13 @@ const data: AdminReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
           layout: 'wrapped',
+        },
+
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
         },
       ],
     },
@@ -62,7 +67,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -75,7 +85,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/strong-text.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/strong-text.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -88,7 +103,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/semantic-address.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/semantic-address.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -101,7 +121,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/tabular-numbers.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/tabular-numbers.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -114,7 +139,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/status-tones.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/status-tones.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -127,7 +157,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/accessibility-hidden-text.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/accessibility-hidden-text.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -140,7 +175,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/right-to-left-text.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/right-to-left-text.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -153,7 +193,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/subdued-color.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/subdued-color.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -166,7 +211,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/interest-for-association.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/interest-for-association.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

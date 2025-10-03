@@ -24,7 +24,12 @@ const data: AdminReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
+        },
+
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
         },
       ],
     },
@@ -43,7 +48,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -56,7 +66,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-icon-graphic.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-icon-graphic.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -69,7 +84,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/color-variants.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/color-variants.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -82,7 +102,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/product-status.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/product-status.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -95,7 +120,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/text-truncation.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/text-truncation.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

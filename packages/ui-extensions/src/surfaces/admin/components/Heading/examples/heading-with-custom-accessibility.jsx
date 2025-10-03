@@ -1,0 +1,3 @@
+<s-heading accessibilityRole="presentation" accessibilityVisibility="hidden">
+  Sale badge
+</s-heading>

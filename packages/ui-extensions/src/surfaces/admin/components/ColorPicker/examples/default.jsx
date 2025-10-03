@@ -1,0 +1,1 @@
+<s-color-picker value="#FF0000" alpha />

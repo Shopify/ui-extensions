@@ -1,0 +1,24 @@
+<s-stack gap="base">
+  <s-stack direction="inline" gap="small">
+    <s-avatar
+      src="/customers/merchant-alice.jpg"
+      initials="AJ"
+      alt="Alice's jewelry store"
+      size="small"
+     />
+    <s-text>Alice's jewelry store</s-text>
+  </s-stack>
+  <s-stack direction="inline" gap="small">
+    <s-avatar initials="BP" alt="Bob's pet supplies" size="small" />
+    <s-text>Bob's pet supplies</s-text>
+  </s-stack>
+  <s-stack direction="inline" gap="small">
+    <s-avatar
+      src="/customers/charlie-cafe.jpg"
+      initials="CC"
+      alt="Charlie's coffee corner"
+      size="small"
+     />
+    <s-text>Charlie's coffee corner</s-text>
+  </s-stack>
+</s-stack>

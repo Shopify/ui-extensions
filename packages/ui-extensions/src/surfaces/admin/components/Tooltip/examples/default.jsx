@@ -1,0 +1,6 @@
+<>
+  <s-tooltip id="bold-tooltip">Bold</s-tooltip>
+  <s-button interestFor="bold-tooltip" accessibilityLabel="Bold">
+    B
+  </s-button>
+</>

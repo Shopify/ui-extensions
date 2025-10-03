@@ -1,0 +1,5 @@
+<s-text-field
+  label="Store name"
+  value="Jaded Pixel"
+  placeholder="Become a merchant"
+ />

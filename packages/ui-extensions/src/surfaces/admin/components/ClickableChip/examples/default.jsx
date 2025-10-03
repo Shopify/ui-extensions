@@ -1,0 +1,1 @@
+<s-clickable-chip>Clickable chip</s-clickable-chip>

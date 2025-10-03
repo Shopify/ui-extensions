@@ -1,0 +1,10 @@
+<>
+  <s-button commandFor="product-options-popover">Product options</s-button>
+
+  <s-popover id="product-options-popover">
+    <s-stack direction="block">
+      <s-button variant="tertiary">Import</s-button>
+      <s-button variant="tertiary">Export</s-button>
+    </s-stack>
+  </s-popover>
+</>

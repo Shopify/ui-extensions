@@ -79,9 +79,9 @@ export default function HomePage() {
               <s-paragraph>
                 Use this personalized guide to get your store ready for sales.
               </s-paragraph>
-                <s-paragraph color="subdued">
-                  {progress} out of 3 steps completed
-                </s-paragraph>
+              <s-paragraph color="subdued">
+                {progress} out of 3 steps completed
+              </s-paragraph>
             </s-grid>
             {/* Steps Container */}
             <s-box
@@ -92,24 +92,28 @@ export default function HomePage() {
             >
               {/* Step 1 */}
               <s-box>
-                  <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
-                    <s-checkbox
-                      label="Upload an image for your puzzle"
-                      onInput={(e) =>
-                        setProgress((prev) =>
-                          e.currentTarget.checked ? prev + 1 : prev - 1,
-                        )
-                      }
-                    ></s-checkbox>
-                    <s-button
-                      onClick={(e) => {
-                        setExpanded({ ...expanded, step1: !expanded.step1 });
-                      }}
-                      accessibilityLabel="Toggle step 1 details"
-                      variant="tertiary"
-                      icon={expanded.step1 ? "chevron-up" : "chevron-down"}
-                    ></s-button>
-                  </s-grid>
+                <s-grid
+                  gridTemplateColumns="1fr auto"
+                  gap="base"
+                  padding="small"
+                >
+                  <s-checkbox
+                    label="Upload an image for your puzzle"
+                    onInput={(e) =>
+                      setProgress((prev) =>
+                        e.currentTarget.checked ? prev + 1 : prev - 1
+                      )
+                    }
+                  ></s-checkbox>
+                  <s-button
+                    onClick={(e) => {
+                      setExpanded({ ...expanded, step1: !expanded.step1 });
+                    }}
+                    accessibilityLabel="Toggle step 1 details"
+                    variant="tertiary"
+                    icon={expanded.step1 ? "chevron-up" : "chevron-down"}
+                  ></s-button>
+                </s-grid>
                 <s-box
                   padding="small"
                   paddingBlockStart="none"
@@ -120,7 +124,11 @@ export default function HomePage() {
                     background="subdued"
                     borderRadius="base"
                   >
-                    <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+                    <s-grid
+                      gridTemplateColumns="1fr auto"
+                      gap="base"
+                      alignItems="center"
+                    >
                       <s-grid gap="small-200">
                         <s-paragraph>
                           Start by uploading a high-quality image that will be
@@ -128,9 +136,7 @@ export default function HomePage() {
                           images that are at least 1200x1200 pixels.
                         </s-paragraph>
                         <s-stack direction="inline" gap="small-200">
-                          <s-button variant="primary">
-                            Upload image
-                          </s-button>
+                          <s-button variant="primary">Upload image</s-button>
                           <s-button variant="tertiary" tone="neutral">
                             Image requirements
                           </s-button>
@@ -140,33 +146,37 @@ export default function HomePage() {
                         <s-image
                           src="https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg"
                           alt="Customize checkout illustration"
-                        ></s-image>
+                         />
                       </s-box>
                     </s-grid>
                   </s-box>
                 </s-box>
               </s-box>
               {/* Step 2 */}
-              <s-divider></s-divider>
+              <s-divider />
               <s-box>
-                  <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
-                    <s-checkbox
-                      label="Choose a puzzle template"
-                      onInput={(e) =>
-                        setProgress((prev) =>
-                          e.currentTarget.checked ? prev + 1 : prev - 1,
-                        )
-                      }
-                    ></s-checkbox>
-                    <s-button
-                      onClick={(e) =>
-                        setExpanded({ ...expanded, step2: !expanded.step2 })
-                      }
-                      accessibilityLabel="Toggle step 2 details"
-                      variant="tertiary"
-                      icon={expanded.step2 ? "chevron-up" : "chevron-down"}
-                    ></s-button>
-                  </s-grid>
+                <s-grid
+                  gridTemplateColumns="1fr auto"
+                  gap="base"
+                  padding="small"
+                >
+                  <s-checkbox
+                    label="Choose a puzzle template"
+                    onInput={(e) =>
+                      setProgress((prev) =>
+                        e.currentTarget.checked ? prev + 1 : prev - 1
+                      )
+                    }
+                  ></s-checkbox>
+                  <s-button
+                    onClick={(e) =>
+                      setExpanded({ ...expanded, step2: !expanded.step2 })
+                    }
+                    accessibilityLabel="Toggle step 2 details"
+                    variant="tertiary"
+                    icon={expanded.step2 ? "chevron-up" : "chevron-down"}
+                  ></s-button>
+                </s-grid>
                 <s-box
                   padding="small"
                   paddingBlockStart="none"
@@ -177,7 +187,11 @@ export default function HomePage() {
                     background="subdued"
                     borderRadius="base"
                   >
-                    <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+                    <s-grid
+                      gridTemplateColumns="1fr auto"
+                      gap="base"
+                      alignItems="center"
+                    >
                       <s-grid gap="small-200">
                         <s-paragraph>
                           Select a template for your puzzle - choose between
@@ -195,33 +209,37 @@ export default function HomePage() {
                         <s-image
                           src="https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg"
                           alt="Customize checkout illustration"
-                        ></s-image>
+                         />
                       </s-box>
                     </s-grid>
                   </s-box>
                 </s-box>
               </s-box>
               {/* Step 3 */}
-              <s-divider></s-divider>
+              <s-divider />
               <s-box>
-                  <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
-                    <s-checkbox
-                      label="Customize puzzle piece shapes"
-                      onInput={(e) =>
-                        setProgress((prev) =>
-                          e.currentTarget.checked ? prev + 1 : prev - 1,
-                        )
-                      }
-                    ></s-checkbox>
-                    <s-button
-                      onClick={(e) =>
-                        setExpanded({ ...expanded, step3: !expanded.step3 })
-                      }
-                      accessibilityLabel="Toggle step 3 details"
-                      variant="tertiary"
-                      icon={expanded.step3 ? "chevron-up" : "chevron-down"}
-                    ></s-button>
-                  </s-grid>
+                <s-grid
+                  gridTemplateColumns="1fr auto"
+                  gap="base"
+                  padding="small"
+                >
+                  <s-checkbox
+                    label="Customize puzzle piece shapes"
+                    onInput={(e) =>
+                      setProgress((prev) =>
+                        e.currentTarget.checked ? prev + 1 : prev - 1
+                      )
+                    }
+                  ></s-checkbox>
+                  <s-button
+                    onClick={(e) =>
+                      setExpanded({ ...expanded, step3: !expanded.step3 })
+                    }
+                    accessibilityLabel="Toggle step 3 details"
+                    variant="tertiary"
+                    icon={expanded.step3 ? "chevron-up" : "chevron-down"}
+                  ></s-button>
+                </s-grid>
                 <s-box
                   padding="small"
                   paddingBlockStart="none"
@@ -232,7 +250,11 @@ export default function HomePage() {
                     background="subdued"
                     borderRadius="base"
                   >
-                    <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+                    <s-grid
+                      gridTemplateColumns="1fr auto"
+                      gap="base"
+                      alignItems="center"
+                    >
                       <s-grid gap="small-200">
                         <s-paragraph>
                           Make your puzzle unique by customizing the shapes of
@@ -252,7 +274,7 @@ export default function HomePage() {
                         <s-image
                           src="https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg"
                           alt="Customize checkout illustration"
-                        ></s-image>
+                         />
                       </s-box>
                     </s-grid>
                   </s-box>
@@ -269,59 +291,59 @@ export default function HomePage() {
       {/* Your app homepage should provide merchants with quick statistics or status updates that help them understand how the app is performing for them. */}
       {/* === */}
       <s-section padding="small">
-          <s-grid
-            gridTemplateColumns="@container (inline-size <= 400px) 1fr, 1fr auto 1fr auto 1fr"
-            gap="small"
+        <s-grid
+          gridTemplateColumns="@container (inline-size <= 400px) 1fr, 1fr auto 1fr auto 1fr"
+          gap="small"
+        >
+          <s-clickable
+            href="#"
+            paddingBlock="small-400"
+            paddingInline="small-100"
+            borderRadius="base"
           >
-            <s-clickable
-              href="#"
-              paddingBlock="small-400"
-              paddingInline="small-100"
-              borderRadius="base"
-            >
-              <s-grid gap="small-300">
-                <s-heading>Total Designs</s-heading>
-                <s-stack direction="inline" gap="small-200">
-                  <s-text>156</s-text>
-                  <s-badge tone="success" icon="arrow-up">
-                    12%
-                  </s-badge>
-                </s-stack>
-              </s-grid>
-            </s-clickable>
-            <s-divider direction="block"></s-divider>
-            <s-clickable
-              href="#"
-              paddingBlock="small-400"
-              paddingInline="small-100"
-              borderRadius="base"
-            >
-              <s-grid gap="small-300">
-                <s-heading>Units Sold</s-heading>
-                <s-stack direction="inline" gap="small-200">
-                  <s-text>2,847</s-text>
-                  <s-badge tone="warning">0%</s-badge>
-                </s-stack>
-              </s-grid>
-            </s-clickable>
-            <s-divider direction="block"></s-divider>
-            <s-clickable
-              href="#"
-              paddingBlock="small-400"
-              paddingInline="small-100"
-              borderRadius="base"
-            >
-              <s-grid gap="small-300">
-                <s-heading>Return Rate</s-heading>
-                <s-stack direction="inline" gap="small-200">
-                  <s-text>3.2%</s-text>
-                  <s-badge tone="critical" icon="arrow-down">
-                    0.8%
-                  </s-badge>
-                </s-stack>
-              </s-grid>
-            </s-clickable>
-          </s-grid>
+            <s-grid gap="small-300">
+              <s-heading>Total Designs</s-heading>
+              <s-stack direction="inline" gap="small-200">
+                <s-text>156</s-text>
+                <s-badge tone="success" icon="arrow-up">
+                  12%
+                </s-badge>
+              </s-stack>
+            </s-grid>
+          </s-clickable>
+          <s-divider direction="block" />
+          <s-clickable
+            href="#"
+            paddingBlock="small-400"
+            paddingInline="small-100"
+            borderRadius="base"
+          >
+            <s-grid gap="small-300">
+              <s-heading>Units Sold</s-heading>
+              <s-stack direction="inline" gap="small-200">
+                <s-text>2,847</s-text>
+                <s-badge tone="warning">0%</s-badge>
+              </s-stack>
+            </s-grid>
+          </s-clickable>
+          <s-divider direction="block" />
+          <s-clickable
+            href="#"
+            paddingBlock="small-400"
+            paddingInline="small-100"
+            borderRadius="base"
+          >
+            <s-grid gap="small-300">
+              <s-heading>Return Rate</s-heading>
+              <s-stack direction="inline" gap="small-200">
+                <s-text>3.2%</s-text>
+                <s-badge tone="critical" icon="arrow-down">
+                  0.8%
+                </s-badge>
+              </s-stack>
+            </s-grid>
+          </s-clickable>
+        </s-grid>
       </s-section>
 
       {/* === */}
@@ -348,7 +370,10 @@ export default function HomePage() {
                 </s-paragraph>
                 <s-stack direction="inline" gap="small-200">
                   <s-button> Upload image </s-button>
-                  <s-button tone="neutral" variant="tertiary"> Browse templates </s-button>
+                  <s-button tone="neutral" variant="tertiary">
+                    {" "}
+                    Browse templates{" "}
+                  </s-button>
                 </s-stack>
               </s-grid>
               <s-stack alignItems="center">
@@ -361,7 +386,7 @@ export default function HomePage() {
                     src="https://cdn.shopify.com/static/images/polaris/patterns/callout.png"
                     alt="Customize checkout illustration"
                     aspectRatio="1/0.5"
-                  ></s-image>
+                   />
                 </s-box>
               </s-stack>
             </s-grid>
@@ -396,9 +421,9 @@ export default function HomePage() {
                 objectFit="cover"
                 alt="4-pieces puzzle template"
                 src="https://cdn.shopify.com/static/images/polaris/patterns/4-pieces.png"
-              ></s-image>
+               />
             </s-clickable>
-            <s-divider></s-divider>
+            <s-divider />
             <s-grid
               gridTemplateColumns="1fr auto"
               background="base"
@@ -431,9 +456,9 @@ export default function HomePage() {
                 objectFit="cover"
                 alt="9-pieces puzzle template"
                 src="https://cdn.shopify.com/static/images/polaris/patterns/9-pieces.png"
-              ></s-image>
+               />
             </s-clickable>
-            <s-divider></s-divider>
+            <s-divider />
             <s-grid
               gridTemplateColumns="1fr auto"
               background="base"
@@ -466,9 +491,9 @@ export default function HomePage() {
                 objectFit="cover"
                 alt="16-pieces puzzle template"
                 src="https://cdn.shopify.com/static/images/polaris/patterns/16-pieces.png"
-              ></s-image>
+               />
             </s-clickable>
-            <s-divider></s-divider>
+            <s-divider />
             <s-grid
               gridTemplateColumns="1fr auto"
               background="base"
@@ -590,11 +615,11 @@ export default function HomePage() {
                 alignItems="stretch"
                 gap="base"
               >
-                  <s-thumbnail
-                    size="small"
-                    src="https://cdn.shopify.com/app-store/listing_images/15100ebca4d221b650a7671125cd1444/icon/CO25r7-jh4ADEAE=.png"
-                    alt="Shopify Flow icon"
-                  ></s-thumbnail>
+                <s-thumbnail
+                  size="small"
+                  src="https://cdn.shopify.com/app-store/listing_images/15100ebca4d221b650a7671125cd1444/icon/CO25r7-jh4ADEAE=.png"
+                  alt="Shopify Flow icon"
+                 />
                 <s-box>
                   <s-heading>Shopify Flow</s-heading>
                   <s-paragraph>Free</s-paragraph>
@@ -607,7 +632,7 @@ export default function HomePage() {
                     href="https://apps.shopify.com/flow"
                     icon="download"
                     accessibilityLabel="Download Shopify Flow"
-                  ></s-button>
+                   />
                 </s-stack>
               </s-grid>
             </s-clickable>
@@ -625,11 +650,11 @@ export default function HomePage() {
                 alignItems="stretch"
                 gap="base"
               >
-                  <s-thumbnail
-                    size="small"
-                    src="https://cdn.shopify.com/app-store/listing_images/87176a11f3714753fdc2e1fc8bbf0415/icon/CIqiqqXsiIADEAE=.png"
-                    alt="Shopify Planet icon"
-                  ></s-thumbnail>
+                <s-thumbnail
+                  size="small"
+                  src="https://cdn.shopify.com/app-store/listing_images/87176a11f3714753fdc2e1fc8bbf0415/icon/CIqiqqXsiIADEAE=.png"
+                  alt="Shopify Planet icon"
+                 />
                 <s-box>
                   <s-heading>Shopify Planet</s-heading>
                   <s-paragraph>Free</s-paragraph>
@@ -642,7 +667,7 @@ export default function HomePage() {
                     href="https://apps.shopify.com/planet"
                     icon="download"
                     accessibilityLabel="Download Shopify Planet"
-                  ></s-button>
+                   />
                 </s-stack>
               </s-grid>
             </s-clickable>

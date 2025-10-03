@@ -5,9 +5,15 @@
 export default function IndexPage() {
   return (
     <s-page heading="Puzzles">
-      <s-button slot="primary-action" variant="primary">Create puzzle</s-button>
-      <s-button slot="secondary-actions" variant="secondary">Export puzzles</s-button>
-      <s-button slot="secondary-actions" variant="secondary">Import puzzles</s-button>
+      <s-button slot="primary-action" variant="primary">
+        Create puzzle
+      </s-button>
+      <s-button slot="secondary-actions" variant="secondary">
+        Export puzzles
+      </s-button>
+      <s-button slot="secondary-actions" variant="secondary">
+        Import puzzles
+      </s-button>
       {/* === */}
       {/* Empty state */}
       {/* This should only be visible if the merchant has not created any puzzles yet. */}
@@ -21,20 +27,26 @@ export default function IndexPage() {
               alt="A stylized graphic of four characters, each holding a puzzle piece"
             />
           </s-box>
-          <s-grid
-            justifyItems="center"
-            maxInlineSize="450px"
-            gap="base"
-          >
+          <s-grid justifyItems="center" maxInlineSize="450px" gap="base">
             <s-stack alignItems="center">
               <s-heading>Start creating puzzles</s-heading>
               <s-paragraph>
-                Create and manage your collection of puzzles for players to enjoy.
+                Create and manage your collection of puzzles for players to
+                enjoy.
               </s-paragraph>
             </s-stack>
             <s-button-group>
-              <s-button slot="secondary-actions" aria-label="Learn more about creating puzzles"> Learn more </s-button>
-              <s-button slot="primary-action" aria-label="Add a new puzzle"> Create puzzle </s-button>
+              <s-button
+                slot="secondary-actions"
+                aria-label="Learn more about creating puzzles"
+              >
+                {" "}
+                Learn more{" "}
+              </s-button>
+              <s-button slot="primary-action" aria-label="Add a new puzzle">
+                {" "}
+                Create puzzle{" "}
+              </s-button>
             </s-button-group>
           </s-grid>
         </s-grid>
@@ -69,7 +81,7 @@ export default function IndexPage() {
                       objectFit="cover"
                       alt="Mountain View puzzle thumbnail"
                       src="https://picsum.photos/id/29/80/80"
-                    ></s-image>
+                     />
                   </s-clickable>
                   <s-link href="/app/details">Mountain View</s-link>
                 </s-stack>
@@ -98,7 +110,7 @@ export default function IndexPage() {
                       objectFit="cover"
                       alt="Ocean Sunset puzzle thumbnail"
                       src="https://picsum.photos/id/12/80/80"
-                    ></s-image>
+                     />
                   </s-clickable>
                   <s-link href="/app/details">Ocean Sunset</s-link>
                 </s-stack>
@@ -127,7 +139,7 @@ export default function IndexPage() {
                       objectFit="cover"
                       alt="Forest Animals puzzle thumbnail"
                       src="https://picsum.photos/id/324/80/80"
-                    ></s-image>
+                     />
                   </s-clickable>
                   <s-link href="/app/details">Forest Animals</s-link>
                 </s-stack>

@@ -1,0 +1,18 @@
+<s-table>
+  <s-table-header-row>
+    <s-table-header>Order</s-table-header>
+    <s-table-header>Fulfillment</s-table-header>
+    <s-table-header>Payment</s-table-header>
+  </s-table-header-row>
+  <s-table-body>
+    <s-table-row>
+      <s-table-cell>#1001</s-table-cell>
+      <s-table-cell>
+        <s-badge tone="success">Fulfilled</s-badge>
+      </s-table-cell>
+      <s-table-cell>
+        <s-badge tone="success">Paid</s-badge>
+      </s-table-cell>
+    </s-table-row>
+  </s-table-body>
+</s-table>

@@ -26,7 +26,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           title: 'HTML',
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
         },
       ],
     },

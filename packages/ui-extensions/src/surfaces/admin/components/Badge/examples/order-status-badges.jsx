@@ -1,0 +1,6 @@
+<s-stack direction="inline" gap="base">
+  <s-badge tone="success">Fulfilled</s-badge>
+  <s-badge tone="warning">Partially fulfilled</s-badge>
+  <s-badge tone="neutral">Unfulfilled</s-badge>
+  <s-badge tone="critical">Cancelled</s-badge>
+</s-stack>

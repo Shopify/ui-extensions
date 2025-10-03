@@ -1,0 +1,1 @@
+<s-avatar alt="John Doe" initials="JD" />
