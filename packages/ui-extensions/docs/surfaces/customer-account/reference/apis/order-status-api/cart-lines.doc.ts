@@ -21,12 +21,11 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     codeblock: {
-      title: '',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../../examples/apis/cart-line-item.example.tsx',
+          code: '../../examples/apis/cart-line-item.example.jsx',
           language: 'jsx',
-          title: 'Preact',
         },
       ],
     },

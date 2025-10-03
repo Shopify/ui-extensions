@@ -17,12 +17,11 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     codeblock: {
-      title: 'Publish',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../examples/apis/analytics-publish.example.tsx',
+          code: '../examples/apis/analytics-publish.example.jsx',
           language: 'jsx',
-          title: 'Preact',
         },
       ],
     },
@@ -37,9 +36,9 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Visitor',
           tabs: [
             {
-              code: '../examples/apis/analytics-visitor.example.tsx',
+              code: '../examples/apis/analytics-visitor.example.jsx',
               language: 'jsx',
-              title: 'Preact',
+              title: 'Extension.jsx',
             },
           ],
         },

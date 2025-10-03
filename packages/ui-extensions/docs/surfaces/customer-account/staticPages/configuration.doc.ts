@@ -74,7 +74,7 @@ For block extension targets, you can [define the default placement](/docs/apps/b
               },
               {
                 title: 'Extension.jsx',
-                code: './examples/configuration/single-target.example.tsx',
+                code: './examples/configuration/single-target.example.jsx',
                 language: 'jsx',
               },
             ],
@@ -95,12 +95,12 @@ For block extension targets, you can [define the default placement](/docs/apps/b
               },
               {
                 title: 'FullPageExtension.jsx',
-                code: './examples/configuration/multiple-targets-fullpage.example.tsx',
+                code: './examples/configuration/multiple-targets-fullpage.example.jsx',
                 language: 'jsx',
               },
               {
                 title: 'BlockExtension.jsx',
-                code: './examples/configuration/multiple-targets-block.example.tsx',
+                code: './examples/configuration/multiple-targets-block.example.jsx',
                 language: 'jsx',
               },
             ],
@@ -121,10 +121,9 @@ Defines the [capabilities](/docs/api/customer-account-ui-extensions/apis/extensi
 | [\`collect_buyer_consent\`](#collect-buyer-consent) | Allows your extension to collect buyer consent for specific policies such as SMS marketing.
     `,
       codeblock: {
-        title: 'Capabilities',
+        title: 'shopify.extension.toml',
         tabs: [
           {
-            title: 'shopify.extension.toml',
             code: './examples/configuration/capabilities.example.toml',
             language: 'toml',
           },
@@ -138,10 +137,9 @@ Defines the [capabilities](/docs/api/customer-account-ui-extensions/apis/extensi
       sectionContent:
         'The following section describes the use cases of the `api_access` capability and the [Storefront API](/api/storefront) access scopes.',
       codeblock: {
-        title: 'Enable Storefront API access',
+        title: 'shopify.extension.toml',
         tabs: [
           {
-            title: 'shopify.extension.toml',
             code: './examples/configuration/api-access.example.toml',
             language: 'toml',
           },
@@ -202,10 +200,9 @@ The following section describes use cases for requesting network access, alterna
 > If your extension specifies the \`network_access\` capability, you must request access in order to publish your extension.
 `,
       codeblock: {
-        title: 'Enable network access',
+        title: 'shopify.extension.toml',
         tabs: [
           {
-            title: 'shopify.extension.toml',
             code: './examples/configuration/network-access.example.toml',
             language: 'toml',
           },
@@ -285,10 +282,9 @@ Your extension can pass a [session token](/docs/api/customer-account-ui-extensio
         },
       ],
       codeblock: {
-        title: 'Collect buyer consent',
+        title: 'shopify.extension.toml',
         tabs: [
           {
-            title: 'shopify.extension.toml',
             code: './examples/configuration/collect-buyer-consent.example.toml',
             language: 'toml',
           },
@@ -344,10 +340,9 @@ Access to metafields on a read-only basis through the [Order Status API](/docs/a
         },
       ],
       codeblock: {
-        title: 'Example settings',
+        title: 'shopify.extension.toml',
         tabs: [
           {
-            title: 'shopify.extension.toml',
             code: './examples/configuration/settings.example.toml',
             language: 'toml',
           },

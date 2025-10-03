@@ -150,7 +150,6 @@ APIs with a \`value\` property are [Preact Signals](https://preactjs.com/guide/v
         title: 'Extension.jsx',
         tabs: [
           {
-            title: 'Preact',
             code: './examples/extension-apis.example.jsx',
             language: 'jsx',
           },

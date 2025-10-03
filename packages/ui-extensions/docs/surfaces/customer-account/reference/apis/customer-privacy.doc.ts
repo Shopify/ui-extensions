@@ -21,12 +21,11 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     codeblock: {
-      title: 'Read Customer Privacy',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../examples/apis/customer-privacy.example.tsx',
+          code: '../examples/apis/customer-privacy.example.jsx',
           language: 'jsx',
-          title: 'Preact',
         },
       ],
     },
@@ -43,9 +42,9 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Use a Sheet to manage customer privacy consent',
           tabs: [
             {
-              code: '../examples/apis/sheet-consent-banner-with-form.example.tsx',
-              language: 'tsx',
-              title: 'Preact',
+              code: '../examples/apis/sheet-consent-banner-with-form.example.jsx',
+              language: 'jsx',
+              title: 'Extension.jsx',
             },
           ],
         },

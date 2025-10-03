@@ -13,12 +13,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     description: '',
     codeblock: {
-      title: 'Customer account order status cart line list extension example',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../examples/targets/customer-account.order-status.cart-line-list.render-after/default.example.tsx',
-          language: 'tsx',
-          title: 'Preact',
+          code: '../examples/targets/customer-account.order-status.cart-line-list.render-after/default.example.jsx',
+          language: 'jsx',
         },
       ],
     },

@@ -20,9 +20,9 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Translating strings',
       tabs: [
         {
-          code: '../examples/apis/translate.example.tsx',
+          code: '../examples/apis/translate.example.jsx',
           language: 'jsx',
-          title: 'Preact',
+          title: 'Extension.jsx',
         },
         {
           code: '../examples/apis/translate.locale.example.json',
@@ -42,9 +42,9 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Getting the country of the customer',
           tabs: [
             {
-              code: '../examples/apis/localization-country.example.tsx',
+              code: '../examples/apis/localization-country.example.jsx',
               language: 'jsx',
-              title: 'Preact',
+              title: 'Extension.jsx',
             },
             {
               code: '../examples/apis/localization-country.locale.example.json',
@@ -61,9 +61,9 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Translating strings with pluralization',
           tabs: [
             {
-              code: '../examples/apis/translate-pluralization.example.tsx',
+              code: '../examples/apis/translate-pluralization.example.jsx',
               language: 'jsx',
-              title: 'Preact',
+              title: 'Extension.jsx',
             },
             {
               code: '../examples/apis/translate-pluralization.locale.example.json',

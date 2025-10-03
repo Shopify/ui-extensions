@@ -28,6 +28,6 @@ function Extension() {
   return null;
 }
 
-function isLocationClosed(locationId: string) {
+function isLocationClosed(locationId) {
   return true;
 }
