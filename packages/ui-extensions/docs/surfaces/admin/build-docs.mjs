@@ -127,7 +127,14 @@ const createTemplate = ({
           } id="wrapper-element"></${wrapperElement}>`
         : '';
 
-      return jsxWrapper(htmlString, bodyContent, layoutStyles, customStyles);
+      const customStylesString = stylesToString(customStyles);
+
+      return jsxWrapper(
+        htmlString,
+        bodyContent,
+        layoutStyles,
+        customStylesString,
+      );
     } else {
       const wrappedHtml = wrapperElement
         ? `<${wrapperElement}${
