@@ -33,6 +33,10 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
+          layout: 'alignStart',
+          customStyles: {
+            minHeight: '300px',
+          },
         },
       ],
     },
@@ -51,7 +55,16 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-menu.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-menu.jsx',
+                  language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },
@@ -64,7 +77,16 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/menu-with-icons.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/menu-with-icons.jsx',
+                  language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },
@@ -77,7 +99,16 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/menu-with-sections.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/menu-with-sections.jsx',
+                  language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },
@@ -90,7 +121,16 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/menu-with-links-and-disabled-items.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/menu-with-links-and-disabled-items.jsx',
+                  language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },
@@ -103,7 +143,16 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/customer-actions-menu.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/customer-actions-menu.jsx',
+                  language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },
@@ -116,7 +165,16 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/settings-menu.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/settings-menu.jsx',
+                  language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },

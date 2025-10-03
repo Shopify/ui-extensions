@@ -33,7 +33,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           code: './examples/default.html',
           language: 'html',
         },
-
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
@@ -55,7 +54,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-button-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-button-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -68,7 +72,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/link-mode.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/link-mode.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -81,7 +90,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/form-submit-button.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/form-submit-button.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -94,7 +108,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/section-with-clickable-action.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/section-with-clickable-action.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -107,7 +126,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/accessibility-with-aria-attributes.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/accessibility-with-aria-attributes.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -120,7 +144,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/disabled-link-with-aria.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/disabled-link-with-aria.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

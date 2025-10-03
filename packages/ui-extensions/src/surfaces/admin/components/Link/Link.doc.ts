@@ -32,7 +32,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           code: './examples/default.html',
           language: 'html',
         },
-
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
@@ -54,7 +53,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-links-in-text.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-links-in-text.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -67,7 +71,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/links-in-subdued-text.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/links-in-subdued-text.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -80,7 +89,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/critical-context-links.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/critical-context-links.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -93,7 +107,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/links-with-auto-tone.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/links-with-auto-tone.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -106,7 +125,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/links-in-banner.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/links-in-banner.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -119,7 +143,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/links-in-box-container.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/links-in-box-container.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -132,7 +161,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/links-in-banner-context.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/links-in-banner-context.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -145,7 +179,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/download-links.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/download-links.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -158,7 +197,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/external-links.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/external-links.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -171,7 +215,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/links-with-language-attribute.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/links-with-language-attribute.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -184,7 +233,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/links-with-different-tones.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/links-with-different-tones.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

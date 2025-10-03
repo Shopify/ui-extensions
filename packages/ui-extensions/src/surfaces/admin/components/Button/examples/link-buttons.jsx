@@ -1,0 +1,9 @@
+<s-stack direction="inline" gap="base">
+  <s-button href="/admin/products">View products</s-button>
+  <s-button href="https://help.shopify.com" target="_blank">
+    Help docs
+  </s-button>
+  <s-button href="/reports/sales.csv" download="sales-report.csv">
+    Export data
+  </s-button>
+</s-stack>

@@ -33,7 +33,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           code: './examples/default.html',
           language: 'html',
         },
-
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
@@ -55,7 +54,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -68,7 +72,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-icon-and-remove-button.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-icon-and-remove-button.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -81,7 +90,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/as-a-link.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/as-a-link.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -94,7 +108,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/disabled-state.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/disabled-state.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -107,7 +126,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/multiple-chips-with-proper-spacing.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/multiple-chips-with-proper-spacing.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

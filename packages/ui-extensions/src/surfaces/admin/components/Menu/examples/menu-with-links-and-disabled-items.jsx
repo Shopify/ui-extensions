@@ -1,0 +1,13 @@
+<>
+  <s-button commandFor="mixed-menu">Options</s-button>
+
+  <s-menu id="mixed-menu" accessibilityLabel="Mixed menu options">
+    <s-button href="/admin/products/123" target="_blank">
+      View product page
+    </s-button>
+    <s-button disabled>Unavailable action</s-button>
+    <s-button download href="/export/product-123.csv">
+      Download report
+    </s-button>
+  </s-menu>
+</>

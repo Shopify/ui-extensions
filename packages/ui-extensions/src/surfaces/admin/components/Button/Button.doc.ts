@@ -55,7 +55,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -68,7 +73,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/variants.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/variants.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -81,7 +91,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/tones.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/tones.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -94,7 +109,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-icon.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-icon.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -107,7 +127,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/icon-only-button.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/icon-only-button.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -120,7 +145,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/loading-state-for-merchant-actions.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/loading-state-for-merchant-actions.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -133,7 +163,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/form-states.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/form-states.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -146,7 +181,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/link-buttons.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/link-buttons.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -159,7 +199,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/product-save-form.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/product-save-form.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -172,7 +217,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/delete-confirmation.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/delete-confirmation.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -185,7 +235,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/navigation-to-admin-sections.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/navigation-to-admin-sections.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -198,7 +253,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/bulk-actions.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/bulk-actions.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -211,7 +271,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/toolbar-icon-buttons.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/toolbar-icon-buttons.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -224,7 +289,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/component-interactions.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/component-interactions.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

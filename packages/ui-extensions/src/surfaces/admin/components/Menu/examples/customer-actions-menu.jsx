@@ -1,0 +1,18 @@
+<>
+  <s-button commandFor="customer-menu">Edit customer</s-button>
+
+  <s-menu id="customer-menu" accessibilityLabel="Customer actions">
+    <s-section heading="Customer management">
+      <s-button icon="edit">Edit customer</s-button>
+      <s-button icon="email">Send email</s-button>
+      <s-button icon="order">View orders</s-button>
+    </s-section>
+    <s-section heading="Account actions">
+      <s-button icon="reset">Reset password</s-button>
+      <s-button icon="lock">Disable account</s-button>
+    </s-section>
+    <s-button tone="critical" icon="delete">
+      Delete customer
+    </s-button>
+  </s-menu>
+</>

@@ -1,0 +1,6 @@
+<s-text>
+  Your product catalog is empty. Start by
+  <s-link href="/admin/products/new">adding your first product</s-link>
+  or
+  <s-link href="/admin/products/import">importing existing inventory</s-link>.
+</s-text>
