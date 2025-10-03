@@ -40,19 +40,6 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a simple page with a heading and basic content, using the default base inline size.',
-            codeblock: {
-              title: 'Basic page layout (default base inline-size)',
-              tabs: [
-                {
-                  code: './examples/basic-page-layout-default-base-inline-size.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
               'Shows a page with a clear heading and descriptive text, illustrating how to use the page component with a title.',
             codeblock: {
               title: 'Page with heading',
@@ -60,6 +47,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/page-with-heading.html',
                   language: 'preview',
+                  layout: 'none',
                 },
               ],
             },
@@ -73,6 +61,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/small-inline-size-for-focused-content.html',
                   language: 'preview',
+                  layout: 'none',
                 },
               ],
             },
@@ -86,6 +75,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/large-inline-size-for-wide-content.html',
                   language: 'preview',
+                  layout: 'none',
                 },
               ],
             },
