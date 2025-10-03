@@ -7,5 +7,6 @@
     "allowJs": true,
     "moduleResolution": "node",
     "esModuleInterop": true
-  }
+  },
+  "include": ["./src", "./shopify.d.ts"]
 }
