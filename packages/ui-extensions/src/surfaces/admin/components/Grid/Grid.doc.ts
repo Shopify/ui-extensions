@@ -57,7 +57,7 @@ const data: AdminReferenceEntityTemplateSchema = {
 
         {
           code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview-tsx',
         },
       ],
     },
@@ -81,24 +81,6 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/basic-two-column-layout.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Admin interface layout with full-width header, main content area, and sidebar.',
-            codeblock: {
-              title: 'Dashboard layout',
-              tabs: [
-                {
-                  code: './examples/dashboard-layout.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/dashboard-layout.jsx',
                   language: 'preview-jsx',
                 },
               ],
@@ -135,24 +117,6 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/mobile-first-responsive-grid.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              "Demonstrates a sophisticated admin page layout with a header, main content area, actions panel, and a full-width section, showcasing the Grid component's flexibility in creating multi-column, multi-row interfaces.",
-            codeblock: {
-              title: 'Complex admin layout',
-              tabs: [
-                {
-                  code: './examples/complex-admin-layout.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/complex-admin-layout.jsx',
                   language: 'preview-jsx',
                 },
               ],

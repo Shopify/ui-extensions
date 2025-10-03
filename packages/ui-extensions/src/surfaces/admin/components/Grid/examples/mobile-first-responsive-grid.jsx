@@ -1,20 +1,53 @@
 <s-stack gap="base">
-  {/* Automatically responsive: 6 columns on mobile, 12 on desktop */}
-  <s-grid gap="base">
-    <s-grid-item gridColumn="span 6" gridRow="span 1">
-      <s-section>
-        <s-text>Full width on mobile, half on desktop</s-text>
-      </s-section>
-    </s-grid-item>
-    <s-grid-item gridColumn="span 3" gridRow="span 1">
-      <s-section>
-        <s-text>Half width on mobile, quarter on desktop</s-text>
-      </s-section>
-    </s-grid-item>
-    <s-grid-item gridColumn="span 3" gridRow="span 1">
-      <s-section>
-        <s-text>Half width on mobile, quarter on desktop</s-text>
-      </s-section>
-    </s-grid-item>
-  </s-grid>
+  <s-text type="strong">Narrow container (375px)</s-text>
+  <s-box inlineSize="375px">
+    <s-query-container>
+      <s-grid
+        gridTemplateColumns="@container (inline-size > 400px) 1fr 1fr 1fr, 1fr"
+        gap="base"
+      >
+        <s-grid-item>
+          <s-box padding="small" background="subdued">
+            <s-text>Item 1</s-text>
+          </s-box>
+        </s-grid-item>
+        <s-grid-item>
+          <s-box padding="small" background="subdued">
+            <s-text>Item 2</s-text>
+          </s-box>
+        </s-grid-item>
+        <s-grid-item>
+          <s-box padding="small" background="subdued">
+            <s-text>Item 3</s-text>
+          </s-box>
+        </s-grid-item>
+      </s-grid>
+    </s-query-container>
+  </s-box>
+
+  <s-text type="strong">Wide container (450px)</s-text>
+  <s-box inlineSize="450px">
+    <s-query-container>
+      <s-grid
+        gridTemplateColumns="@container (inline-size > 400px) 1fr 1fr 1fr, 1fr"
+        gap="base"
+      >
+        <s-grid-item>
+          <s-box padding="small" background="subdued">
+            <s-text>Item 1</s-text>
+          </s-box>
+        </s-grid-item>
+        <s-grid-item>
+          <s-box padding="small" background="subdued">
+            <s-text>Item 2</s-text>
+          </s-box>
+        </s-grid-item>
+        <s-grid-item>
+          <s-box padding="small" background="subdued">
+            <s-text>Item 3</s-text>
+          </s-box>
+        </s-grid-item>
+      </s-grid>
+    </s-query-container>
+  </s-box>
 </s-stack>
