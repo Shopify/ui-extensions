@@ -58,6 +58,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/basic-usage.jsx',
                   language: 'preview-jsx',
+                  layout: 'wrapped',
                 },
               ],
             },
@@ -76,6 +77,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/custom-color.jsx',
                   language: 'preview-jsx',
+                  layout: 'wrapped',
                 },
               ],
             },

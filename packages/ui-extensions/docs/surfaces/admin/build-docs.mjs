@@ -172,6 +172,7 @@ const templates = {
   wrapped: createTemplate({
     layoutStyles: 'display: grid; place-items: center; gap: 0.5rem;',
     wrapperElement: 'div',
+    wrapperAttributes: 'style="width: 100%;"',
   }),
   inline: createTemplate({
     layoutStyles:
