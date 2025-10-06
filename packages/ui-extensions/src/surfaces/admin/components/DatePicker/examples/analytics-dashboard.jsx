@@ -1,6 +1,3 @@
-{
-  /* Sales analytics with date range */
-}
 <s-stack gap="base">
   <s-button-group>
     <s-button slot="secondary-actions">Last 7 days</s-button>

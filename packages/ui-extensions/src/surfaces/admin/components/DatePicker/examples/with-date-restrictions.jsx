@@ -1,6 +1,3 @@
-{
-  /* Disable past dates and far future dates */
-}
 <s-date-picker
   type="single"
   name="appointment-date"

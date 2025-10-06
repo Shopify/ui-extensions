@@ -1,6 +1,3 @@
-{
-  /* Campaign date range with constraints */
-}
 <s-date-picker
   type="range"
   name="campaign-period"

@@ -1,6 +1,3 @@
-{
-  /* Product delivery scheduling */
-}
 <form>
   <s-grid gridTemplateColumns="1fr" gap="base">
     <s-text-field

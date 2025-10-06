@@ -1,6 +1,3 @@
-{
-  /* Start with current month displayed */
-}
 <s-date-picker
   type="range"
   name="promotion-period"

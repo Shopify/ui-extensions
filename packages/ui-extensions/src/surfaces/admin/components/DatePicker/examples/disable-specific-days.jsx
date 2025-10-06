@@ -1,6 +1,3 @@
-{
-  /* Disable weekends for business scheduling */
-}
 <s-date-picker
   type="single"
   name="business-meeting"

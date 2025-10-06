@@ -1,6 +1,3 @@
-{
-  /* Form with date validation using HTML5 constraints */
-}
 <form>
   <s-date-picker
     type="single"

@@ -1,6 +1,3 @@
-{
-  /* Order filtering form */
-}
 <form>
   <s-text-field
     label="Order number"
