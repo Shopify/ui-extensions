@@ -50,7 +50,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -63,7 +68,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-validation-limits.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-validation-limits.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -76,7 +86,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-field.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-field.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -89,7 +104,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/currency-formatting-with-form-integration.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/currency-formatting-with-form-integration.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -102,7 +122,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/internationalization-and-currency-handling.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/internationalization-and-currency-handling.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

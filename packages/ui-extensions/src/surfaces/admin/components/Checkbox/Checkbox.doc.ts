@@ -49,7 +49,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/indeterminate-state.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/indeterminate-state.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -62,7 +67,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/error-state.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/error-state.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -75,7 +85,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/help-text.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/help-text.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -88,7 +103,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/disabled-state.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/disabled-state.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -101,7 +121,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/merchant-settings-group.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/merchant-settings-group.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

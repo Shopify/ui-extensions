@@ -1,0 +1,5 @@
+<s-date-field
+  label="Order date"
+  name="orderDate"
+  placeholder="Select date"
+ />

@@ -1,0 +1,1 @@
+<s-checkbox label="Select all items" indeterminate checked />

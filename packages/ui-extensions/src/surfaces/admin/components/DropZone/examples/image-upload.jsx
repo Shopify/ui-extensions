@@ -1,0 +1,1 @@
+<s-drop-zone accept="image/*" label="Upload images" multiple />

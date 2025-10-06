@@ -49,7 +49,12 @@ const data: ReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/single-date-selection.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/single-date-selection.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -62,7 +67,12 @@ const data: ReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/date-range-selection.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/date-range-selection.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -75,7 +85,12 @@ const data: ReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-date-restrictions.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-date-restrictions.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -88,7 +103,12 @@ const data: ReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/disable-specific-days.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/disable-specific-days.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -101,7 +121,12 @@ const data: ReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/current-month-view.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/current-month-view.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -114,7 +139,12 @@ const data: ReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/form-integration.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/form-integration.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -127,7 +157,12 @@ const data: ReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/analytics-dashboard.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/analytics-dashboard.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -140,7 +175,12 @@ const data: ReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/schedule-management.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/schedule-management.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -153,7 +193,12 @@ const data: ReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/date-validation.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/date-validation.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -166,7 +211,12 @@ const data: ReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/date-range-validation.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/date-range-validation.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -179,7 +229,12 @@ const data: ReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/commerce-examples.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/commerce-examples.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

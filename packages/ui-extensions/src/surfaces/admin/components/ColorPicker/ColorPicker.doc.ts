@@ -50,7 +50,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -63,7 +68,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-alpha-transparency.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-alpha-transparency.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -76,7 +86,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/form-integration.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/form-integration.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

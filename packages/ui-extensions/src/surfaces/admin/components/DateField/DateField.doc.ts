@@ -56,7 +56,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -69,7 +74,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-default-value.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-default-value.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -82,7 +92,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-date-restrictions.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-date-restrictions.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -95,7 +110,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-specific-allowed-dates.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-specific-allowed-dates.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -108,7 +128,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-error-state.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-error-state.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -121,7 +146,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/disabled-and-read-only-states.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/disabled-and-read-only-states.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -134,7 +164,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/form-integration.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/form-integration.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -147,7 +182,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/date-range-selection.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/date-range-selection.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -160,7 +200,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/promotional-period-setup.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/promotional-period-setup.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

@@ -1,0 +1,8 @@
+<s-stack gap="base">
+  <s-color-field
+    label="Brand color"
+    value="#FF0000"
+    value="#FF0000"
+    required
+   />
+</s-stack>

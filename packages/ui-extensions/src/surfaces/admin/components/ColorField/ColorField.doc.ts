@@ -50,7 +50,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage-web-component.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage-web-component.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -63,7 +68,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage-required.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage-required.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -76,7 +86,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-alpha-transparency.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-alpha-transparency.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -89,7 +104,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-error-state.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-error-state.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -102,7 +122,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-help-text.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-help-text.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -115,7 +140,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-placeholder.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-placeholder.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -128,7 +158,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/read-only-state.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/read-only-state.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -141,7 +176,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/form-integration.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/form-integration.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

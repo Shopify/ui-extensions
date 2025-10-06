@@ -1,0 +1,16 @@
+{
+  /* Order filtering form */
+}
+<form>
+  <s-text-field
+    label="Order number"
+    placeholder="Search orders..."
+   />
+  <s-date-picker
+    type="range"
+    name="order-date-range"
+    value="2024-01-01--2024-01-31"
+    view="2024-01"
+   />
+  <s-button type="submit">Apply filters</s-button>
+</form>

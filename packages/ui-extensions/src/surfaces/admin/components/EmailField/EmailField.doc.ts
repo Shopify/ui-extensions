@@ -50,7 +50,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -63,7 +68,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-error-and-help-text.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-error-and-help-text.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -76,7 +86,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/optional-field-with-placeholder.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/optional-field-with-placeholder.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -89,7 +104,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/read-only-display.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/read-only-display.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -102,7 +122,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-length-constraints.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-length-constraints.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
