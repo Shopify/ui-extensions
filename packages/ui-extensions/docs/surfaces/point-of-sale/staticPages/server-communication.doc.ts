@@ -45,13 +45,13 @@ Shopify POS will refuse to fetch any non-HTTPS requests. Therefore, you must fin
         tabs: [
           {
             title: 'Tile',
-            code: `${examplePath}/tile.tsx`,
-            language: 'tsx',
+            code: `${examplePath}/tile.jsx`,
+            language: 'jsx',
           },
           {
             title: 'Modal',
-            code: `${examplePath}/modal.tsx`,
-            language: 'tsx',
+            code: `${examplePath}/modal.jsx`,
+            language: 'jsx',
           },
         ],
       },
