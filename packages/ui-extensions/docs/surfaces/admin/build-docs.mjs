@@ -104,12 +104,20 @@ const jsxWrapper = (
     jsxStringProcessed = `return (${jsxString})`;
   }
 
-  return `<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {${composedStyles}} </style> <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script> <script src="https://unpkg.com/@babel/standalone@7.24.0/babel.min.js" integrity="sha384-wVDXnilITixWtkFWH+Xu4zp0L3R7zd39Il4szMJlz9M3Vhsuerfbxy5ojdJdqOEX" crossorigin="anonymous"></script> <script src="https://unpkg.com/preact@10.27.2/dist/preact.umd.js" integrity="sha384-OpTIjTzorSF2GZrXD12LQ6ftv5d81JKSiW1O1fETT8IW54mdsTYXqkg2Rr3TbAXa" crossorigin="anonymous"></script> <script src="https://unpkg.com/preact@10.27.2/hooks/dist/hooks.umd.js" integrity="sha384-s2Gkg5H3xvZwDcGr+ofT9hgBOkpW7BG9JeHEe+3MXt9jn7ROtzVzdDru9fNnCODP" crossorigin="anonymous"></script> <script type="text/babel" data-type="module" data-presets="react"> /** @jsx preact.h */ const {render, h, Fragment} = preact; const {useState} = preactHooks; const React = {Fragment}; const App = () => { ${decodeHTML(
+  return `<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {${composedStyles}} </style> <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script> <script src="/jsx-builder.min.js"></script> </head>
+  <body>${
+    bodyContent || ''
+  }<script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = \`const App = () => { ${decodeHTML(
     jsxStringProcessed,
-  )} }; render(<App />, document.getElementById('wrapper-element') || document.body);
+  )
+    .replace(/\\/g, '\\\\')
+    .replace(/`/g, '\\`')
+    .replace(
+      /\$/g,
+      '\\$',
+    )} };\`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style="color:red;padding:1rem;">Error rendering example: ' + e.message + '</div>'; } })();
     </script>
-  </head>
-  <body>${bodyContent || ''}</body>
+</body>
 </html>
 `;
 };
