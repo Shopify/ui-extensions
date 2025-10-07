@@ -13,7 +13,6 @@ type AllowedCSSProperties = Pick<CSSProperties, 'minHeight' | 'minBlockSize'>;
 type AdminCodeTabType = CodeTabType & {
   layout?: string;
   customStyles?: AllowedCSSProperties;
-  editable?: boolean;
 };
 
 interface CodeLinkType {
