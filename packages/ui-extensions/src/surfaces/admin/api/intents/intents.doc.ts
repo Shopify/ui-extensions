@@ -90,7 +90,7 @@ Where:
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/Metaobject\` | — | \`{ type: 'shopify--color-pattern' }\` |
-| \`edit\` | \`shopify/Metaobject\` | \`gid://shopify/Metaobject/{id}\` | — |
+| \`edit\` | \`shopify/Metaobject\` | \`gid://shopify/Metaobject/{id}\` | \`{ type: 'shopify--color-pattern' }\` |
 
 ### Metaobject Definition
 | Action | Type | Value | Data |
@@ -114,7 +114,7 @@ Where:
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/ProductVariant\` | — | \`{ productId: 'gid://shopify/Product/{id}' }\` |
-| \`edit\` | \`shopify/ProductVariant\` | \`gid://shopify/ProductVariant/{id}\` | — |`,
+| \`edit\` | \`shopify/ProductVariant\` | \`gid://shopify/ProductVariant/{id}\` | \`{ productId: 'gid://shopify/Product/{id}' }\` |`,
       type: 'IntentInvokeApi',
     },
     {
