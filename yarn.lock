@@ -1918,7 +1918,7 @@
 
 "@shopify/generate-docs@0.19.7":
   version "0.19.7"
-  resolved "https://npm.shopify.io/node/@shopify/generate-docs/-/generate-docs-0.19.7.tgz#b6a16d24db9a920099f7d524d0db8d4fe4a73331"
+  resolved "https://registry.yarnpkg.com/@shopify/generate-docs/-/generate-docs-0.19.7.tgz#b6a16d24db9a920099f7d524d0db8d4fe4a73331"
   integrity sha512-rQ79OtzcObhcvOUy8Yx3wa2qi4/CwA+LZL2ut9LxlK+9ZQYZE+54/rubuejLdY1AslPZ4+qAMHnRGEI5MfYjcA==
   dependencies:
     "@types/react" "^18.0.21"
