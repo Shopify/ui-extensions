@@ -62,6 +62,10 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/basic-usage.jsx',
                   language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '350px',
+                  },
                 },
               ],
             },
@@ -80,6 +84,10 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-default-value.jsx',
                   language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '350px',
+                  },
                 },
               ],
             },
@@ -98,6 +106,10 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-date-restrictions.jsx',
                   language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '350px',
+                  },
                 },
               ],
             },
@@ -112,10 +124,13 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/with-specific-allowed-dates.html',
                   language: 'html',
                 },
-
                 {
                   code: './examples/with-specific-allowed-dates.jsx',
                   language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '350px',
+                  },
                 },
               ],
             },
@@ -134,6 +149,10 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-error-state.jsx',
                   language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '350px',
+                  },
                 },
               ],
             },
@@ -152,6 +171,10 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/disabled-and-read-only-states.jsx',
                   language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '350px',
+                  },
                 },
               ],
             },
@@ -170,6 +193,10 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/form-integration.jsx',
                   language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '350px',
+                  },
                 },
               ],
             },
@@ -188,6 +215,10 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/date-range-selection.jsx',
                   language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '350px',
+                  },
                 },
               ],
             },
@@ -206,6 +237,10 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/promotional-period-setup.jsx',
                   language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '550px',
+                  },
                 },
               ],
             },

@@ -43,7 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a date picker configured for selecting a single delivery date with a default value.',
+              'Demonstrates a date picker configured for selecting a single date with a default value and specific month view.',
             codeblock: {
               title: 'Single date selection',
               tabs: [
@@ -54,24 +54,6 @@ const data: ReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/single-date-selection.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Showcases a date picker set up for selecting a range of dates, such as for tracking a sales period.',
-            codeblock: {
-              title: 'Date range selection',
-              tabs: [
-                {
-                  code: './examples/date-range-selection.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/date-range-selection.jsx',
                   language: 'preview-jsx',
                 },
               ],
@@ -97,45 +79,9 @@ const data: ReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates how to disable specific days of the week, useful for business scheduling that excludes weekends.',
+              'Demonstrates how to handle onChange callbacks for both single and range date pickers, showing how to extract and process the selected values.',
             codeblock: {
-              title: 'Disable specific days',
-              tabs: [
-                {
-                  code: './examples/disable-specific-days.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disable-specific-days.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows how to set a specific month view for the date picker, useful for focusing on a particular period.',
-            codeblock: {
-              title: 'Current month view',
-              tabs: [
-                {
-                  code: './examples/current-month-view.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/current-month-view.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates integrating a date range picker into a form for filtering orders by date.',
-            codeblock: {
-              title: 'Form integration',
+              title: 'Handling onChange callbacks',
               tabs: [
                 {
                   code: './examples/form-integration.html',
@@ -151,9 +97,9 @@ const data: ReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a date picker used in an analytics dashboard with quick date range selection buttons.',
+              'Illustrates a date picker with quick preset buttons and onChange callback to capture user selections and update the displayed value.',
             codeblock: {
-              title: 'Analytics dashboard',
+              title: 'With quick date selection',
               tabs: [
                 {
                   code: './examples/analytics-dashboard.html',
@@ -162,78 +108,6 @@ const data: ReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/analytics-dashboard.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows a date picker for scheduling product deliveries with restrictions on past dates and weekend selections.',
-            codeblock: {
-              title: 'Schedule management',
-              tabs: [
-                {
-                  code: './examples/schedule-management.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/schedule-management.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates form date validation with a required single date picker that prevents selecting past dates.',
-            codeblock: {
-              title: 'Date validation',
-              tabs: [
-                {
-                  code: './examples/date-validation.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/date-validation.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Showcases a date range picker with validation constraints for selecting campaign dates within a specific year.',
-            codeblock: {
-              title: 'Date range validation',
-              tabs: [
-                {
-                  code: './examples/date-range-validation.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/date-range-validation.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Presents multiple commerce-related date picker scenarios including product launch dates, sales promotion periods, and inventory restock scheduling.',
-            codeblock: {
-              title: 'Commerce examples',
-              tabs: [
-                {
-                  code: './examples/commerce-examples.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/commerce-examples.jsx',
                   language: 'preview-jsx',
                 },
               ],

@@ -46,7 +46,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             description:
               'Standard color input field for brand color selection with hex value.',
             codeblock: {
-              title: 'Basic Usage (Web Component)',
+              title: 'Basic Usage',
               tabs: [
                 {
                   code: './examples/basic-usage-web-component.html',
@@ -64,7 +64,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             description:
               'Required color field ensuring merchants provide essential brand colors.',
             codeblock: {
-              title: 'Basic Usage (Required)',
+              title: 'Required',
               tabs: [
                 {
                   code: './examples/basic-usage-required.html',

@@ -56,6 +56,11 @@ const data: AdminReferenceEntityTemplateSchema = {
                   language: 'preview',
                   layout: 'padding',
                 },
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
+                },
               ],
             },
           },
@@ -70,18 +75,28 @@ const data: AdminReferenceEntityTemplateSchema = {
                   language: 'preview',
                   layout: 'padding',
                 },
+                {
+                  code: './examples/image-upload.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
+                },
               ],
             },
           },
           {
             description:
-              'Illustrates a drop zone integrated with a form, marking the file upload as required.',
+              'Illustrates a drop zone when the file upload is required.',
             codeblock: {
-              title: 'Single file upload with form integration',
+              title: 'With required field',
               tabs: [
                 {
-                  code: './examples/single-file-upload-with-form-integration.html',
+                  code: './examples/required-field.html',
                   language: 'preview',
+                  layout: 'padding',
+                },
+                {
+                  code: './examples/required-field.jsx',
+                  language: 'preview-jsx',
                   layout: 'padding',
                 },
               ],
@@ -98,6 +113,11 @@ const data: AdminReferenceEntityTemplateSchema = {
                   language: 'preview',
                   layout: 'padding',
                 },
+                {
+                  code: './examples/disabled-state.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
+                },
               ],
             },
           },
@@ -110,6 +130,11 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/file-type-restrictions.html',
                   language: 'preview',
+                  layout: 'padding',
+                },
+                {
+                  code: './examples/file-type-restrictions.jsx',
+                  language: 'preview-jsx',
                   layout: 'padding',
                 },
               ],
@@ -126,6 +151,11 @@ const data: AdminReferenceEntityTemplateSchema = {
                   language: 'preview',
                   layout: 'padding',
                 },
+                {
+                  code: './examples/with-error-state.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
+                },
               ],
             },
           },
@@ -138,6 +168,11 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-accessibility-options.html',
                   language: 'preview',
+                  layout: 'padding',
+                },
+                {
+                  code: './examples/with-accessibility-options.jsx',
+                  language: 'preview-jsx',
                   layout: 'padding',
                 },
               ],
