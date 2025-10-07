@@ -190,7 +190,7 @@ const transformJson = async (filePath, isExtensions) => {
           {
             code: tab.code,
             language: 'html',
-            ...('editable' in tab ? {editable: tab.editable} : {}),
+            editable: tab.editable || false,
           },
           {
             code: previewHTML,
@@ -214,7 +214,11 @@ const transformJson = async (filePath, isExtensions) => {
               const newTabs = [];
 
               newTabs.push(
-                {code: tab.code, language: 'html'},
+                {
+                  code: tab.code,
+                  language: 'html',
+                  editable: tab.editable || false,
+                },
                 {code: previewHTML, language: 'preview'},
               );
 
