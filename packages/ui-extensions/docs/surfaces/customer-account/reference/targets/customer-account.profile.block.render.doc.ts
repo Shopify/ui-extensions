@@ -13,12 +13,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     description: '',
     codeblock: {
-      title: 'Customer account profile extension example',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../examples/targets/customer-account.profile.block.render/default.example.tsx',
-          language: 'tsx',
-          title: 'Preact',
+          code: '../examples/targets/customer-account.profile.block.render/default.example.jsx',
+          language: 'jsx',
         },
       ],
     },

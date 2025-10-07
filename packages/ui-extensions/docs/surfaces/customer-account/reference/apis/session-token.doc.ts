@@ -17,12 +17,11 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     codeblock: {
-      title: 'Using a session token with fetch()',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../examples/apis/session-token.example.tsx',
+          code: '../examples/apis/session-token.example.jsx',
           language: 'jsx',
-          title: 'Preact',
         },
       ],
     },

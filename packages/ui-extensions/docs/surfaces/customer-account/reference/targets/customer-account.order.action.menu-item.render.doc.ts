@@ -15,12 +15,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     description: '',
     codeblock: {
-      title: 'Customer account order menu item extension example',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../examples/targets/customer-account.order.action.menu-item.render/default.example.tsx',
-          language: 'tsx',
-          title: 'Preact',
+          code: '../examples/targets/customer-account.order.action.menu-item.render/default.example.jsx',
+          language: 'jsx',
         },
       ],
     },
@@ -33,9 +32,9 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Loading your data before rendering the menu item',
           tabs: [
             {
-              code: '../examples/targets/customer-account.order.action.menu-item.render/load-data-upfront.example.tsx',
-              language: 'tsx',
-              title: 'Preact',
+              code: '../examples/targets/customer-account.order.action.menu-item.render/load-data-upfront.example.jsx',
+              language: 'jsx',
+              title: 'Extension.jsx',
             },
           ],
         },

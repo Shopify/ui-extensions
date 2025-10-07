@@ -13,11 +13,11 @@ const data: LandingTemplateSchema = {
       sectionContent:
         'Add an `unhandledrejection` listener for promise rejections or an `error` listener for other exceptions like Javascript runtime errors or failures to load a resource.',
       codeblock: {
-        title: 'Handling any error',
+        title: 'Example',
         tabs: [
           {
-            code: './examples/error-handling/handling-any-error.example.ts',
-            language: 'ts',
+            code: './examples/error-handling/handling-any-error.example.jsx',
+            language: 'jsx',
           },
         ],
       },
@@ -40,11 +40,11 @@ You can use error reporting libraries like [Sentry](https://sentry.io/). However
       sectionContent: `
  Install and initialize Sentry following their [Browser JavaScript guide](https://docs.sentry.io/platforms/javascript/). We recommend disabling the default integrations to be sure it will run within a Web Worker. You'll need to add event listeners manually.`,
       codeblock: {
-        title: 'Sentry',
+        title: 'Extension.jsx',
         tabs: [
           {
-            code: './examples/error-handling/sentry.example.tsx',
-            language: 'ts',
+            code: './examples/error-handling/sentry.example.jsx',
+            language: 'jsx',
           },
         ],
       },

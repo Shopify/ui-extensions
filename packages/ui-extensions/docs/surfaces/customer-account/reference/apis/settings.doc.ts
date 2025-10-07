@@ -17,12 +17,11 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     codeblock: {
-      title: 'Accessing merchant settings',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../examples/apis/settings-access.example.tsx',
+          code: '../examples/apis/settings-access.example.jsx',
           language: 'jsx',
-          title: 'Preact',
         },
       ],
     },

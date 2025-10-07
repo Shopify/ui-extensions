@@ -8,12 +8,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     description: '',
     codeblock: {
-      title: 'Customer account order index announcement extension example',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../examples/targets/customer-account.order-index.announcement.render/default.example.tsx',
-          language: 'tsx',
-          title: 'Preact',
+          code: '../examples/targets/customer-account.order-index.announcement.render/default.example.jsx',
+          language: 'jsx',
         },
       ],
     },

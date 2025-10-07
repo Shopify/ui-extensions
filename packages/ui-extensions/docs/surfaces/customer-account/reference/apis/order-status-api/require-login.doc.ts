@@ -16,6 +16,17 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Docs_OrderStatus_RequireLoginApi',
     },
   ],
+  defaultExample: {
+    codeblock: {
+      title: 'Extension.jsx',
+      tabs: [
+        {
+          code: '../../examples/apis/require-login.example.jsx',
+          language: 'jsx',
+        },
+      ],
+    },
+  },
   related: [
     {
       name: 'Order status page',
@@ -24,24 +35,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'growth',
     },
   ],
-  examples: {
-    description: '',
-    examples: [
-      {
-        description: 'Call requireLogin before triggering an action',
-        codeblock: {
-          title: 'Call requireLogin before triggering an action',
-          tabs: [
-            {
-              code: '../../examples/apis/require-login.example.tsx',
-              language: 'jsx',
-              title: 'Preact',
-            },
-          ],
-        },
-      },
-    ],
-  },
 };
 
 export default data;

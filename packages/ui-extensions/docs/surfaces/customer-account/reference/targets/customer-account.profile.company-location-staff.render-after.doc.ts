@@ -14,12 +14,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     description: '',
     codeblock: {
-      title: 'Customer account company location staff extension example',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../examples/targets/customer-account.profile.company-location-staff.render-after/default.example.tsx',
-          language: 'tsx',
-          title: 'Preact',
+          code: '../examples/targets/customer-account.profile.company-location-staff.render-after/default.example.jsx',
+          language: 'jsx',
         },
       ],
     },

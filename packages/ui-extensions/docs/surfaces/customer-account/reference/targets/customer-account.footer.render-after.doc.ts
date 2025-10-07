@@ -17,12 +17,11 @@ the footer on all customer account pages (**Order index**, **Order status**, **P
   defaultExample: {
     description: '',
     codeblock: {
-      title: 'Customer account footer extension example',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../examples/targets/customer-account.footer.render-after/default.example.tsx',
-          language: 'tsx',
-          title: 'Preact',
+          code: '../examples/targets/customer-account.footer.render-after/default.example.jsx',
+          language: 'jsx',
         },
       ],
     },

@@ -20,12 +20,11 @@ const data: ReferenceEntityTemplateSchema = {
     You can access the [Storefront GraphQL API](/docs/api/storefront) via the \`query()\` helper function.
     Ensure your extension can use this API by [enabling the \`api_access\` capability](/docs/api/customer-account-ui-extensions/configuration#api-access).`,
     codeblock: {
-      title: 'Access the Storefront API with query',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../examples/apis/query.example.tsx',
+          code: '../examples/apis/query.example.jsx',
           language: 'jsx',
-          title: 'Preact',
         },
       ],
     },
@@ -41,9 +40,9 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Accessing the Storefront API with fetch()',
           tabs: [
             {
-              code: '../examples/apis/query-fetch.example.tsx',
+              code: '../examples/apis/query-fetch.example.jsx',
               language: 'jsx',
-              title: 'Preact',
+              title: 'Extension.jsx',
             },
           ],
         },

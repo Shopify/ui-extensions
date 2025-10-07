@@ -18,12 +18,11 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     codeblock: {
-      title: 'Attribute values',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../../examples/apis/attribute-values.example.tsx',
+          code: '../../examples/apis/attribute-values.example.jsx',
           language: 'jsx',
-          title: 'Preact',
         },
       ],
     },

@@ -1,7 +1,6 @@
 import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 import {useState, useRef} from 'preact/hooks';
-import type {VisitorConsent} from '@shopify/ui-extensions/customer-account';
 
 export default async () => {
   render(<Extension />, document.body);
@@ -33,9 +32,7 @@ function Extension() {
   const sheetRef = useRef();
   const modalRef = useRef();
 
-  const getCheckboxOnChangeHandler = (
-    key: string,
-  ) => {
+  const getCheckboxOnChangeHandler = (key) => {
     return function (event) {
       setConsentFormValues({
         ...consentFormValues,
@@ -44,9 +41,7 @@ function Extension() {
     };
   };
 
-  const handleConsentChange = async (
-    visitorConsent?: VisitorConsent,
-  ) => {
+  const handleConsentChange = async (visitorConsent) => {
     try {
       const result =
         await shopify.applyTrackingConsentChange({
@@ -117,7 +112,8 @@ function Extension() {
       id={sheetId}
       ref={sheetRef}
       accessibilityLabel="A sheet that collects privacy consent preferences"
-      defaultOpen={shouldShowBanner}
+      defaultOpen
+      // defaultOpen={shouldShowBanner}
     >
       <s-button
         slot="primary-action"

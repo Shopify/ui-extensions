@@ -19,12 +19,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     description: '',
     codeblock: {
-      title: 'Navigation example',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../examples/navigation/default-preact.example.tsx',
+          code: '../examples/apis/navigation.example.jsx',
           language: 'jsx',
-          title: 'Preact',
         },
       ],
     },

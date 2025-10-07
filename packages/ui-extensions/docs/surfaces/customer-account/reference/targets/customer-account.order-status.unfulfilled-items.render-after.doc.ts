@@ -11,13 +11,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     description: '',
     codeblock: {
-      title:
-        'Customer account order status unfulfilled details extension example',
+      title: 'Extension.jsx',
       tabs: [
         {
-          code: '../examples/targets/customer-account.order-status.unfulfilled-items.render-after/default.example.tsx',
-          language: 'tsx',
-          title: 'Preact',
+          code: '../examples/targets/customer-account.order-status.unfulfilled-items.render-after/default.example.jsx',
+          language: 'jsx',
         },
       ],
     },

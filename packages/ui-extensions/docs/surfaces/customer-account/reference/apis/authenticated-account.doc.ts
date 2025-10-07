@@ -18,12 +18,12 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     codeblock: {
-      title: 'Show Loyalty Banner',
+      title: 'Example',
       tabs: [
         {
-          code: '../examples/apis/authenticated-account.example.tsx',
+          code: '../examples/apis/authenticated-account.example.jsx',
           language: 'jsx',
-          title: 'Preact',
+          title: 'Extension.jsx',
         },
         {
           code: '../examples/apis/authenticated-account.locale.example.json',
@@ -43,9 +43,9 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Getting the company and location of the customer',
           tabs: [
             {
-              code: '../examples/apis/authenticated-account-company-and-location.example.tsx',
+              code: '../examples/apis/authenticated-account-company-and-location.example.jsx',
               language: 'jsx',
-              title: 'Preact',
+              title: 'Extension.jsx',
             },
             {
               code: '../examples/apis/authenticated-account-company-and-location.locale.example.json',
