@@ -20,7 +20,7 @@ function Extension() {
         onSubmit={(event) => {
           event.waitUntil(fetch('app:save/data'));
           console.log('submit', {textValue, numberValue});
-        }
+        }}
         onReset={() => console.log('automatically reset values')}
       >
         <s-stack direction="block" gap="base">
