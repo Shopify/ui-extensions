@@ -1,0 +1,1 @@
+<s-text-field label="Store name" autocomplete="off" />

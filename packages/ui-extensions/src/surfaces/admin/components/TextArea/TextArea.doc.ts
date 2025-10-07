@@ -49,7 +49,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -62,7 +67,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/seo-meta-description-with-character-limit.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/seo-meta-description-with-character-limit.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -75,7 +85,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/commerce-error-state-example.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/commerce-error-state-example.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -88,7 +103,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/product-care-instructions.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/product-care-instructions.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

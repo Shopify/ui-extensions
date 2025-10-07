@@ -1,0 +1,8 @@
+<s-text-area
+  label="Meta description"
+  max-length={160}
+  details="Appears in search results. Keep under 160 characters for best visibility."
+  placeholder="Write a compelling description that will appear in Google search results..."
+  rows={3}
+  autocomplete="off"
+ />

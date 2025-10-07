@@ -1,0 +1,6 @@
+<s-search-field
+  label="Search customers"
+  name="customerSearch"
+  disabled
+  placeholder="Search is currently unavailable"
+ />

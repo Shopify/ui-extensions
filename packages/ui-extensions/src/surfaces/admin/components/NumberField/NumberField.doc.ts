@@ -49,7 +49,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -62,7 +67,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-prefix-and-suffix.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-prefix-and-suffix.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -75,7 +85,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/multiple-examples.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/multiple-examples.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -88,7 +103,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-validation-constraints.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-validation-constraints.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

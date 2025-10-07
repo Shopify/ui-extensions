@@ -1,0 +1,5 @@
+<s-search-field
+  label="Search customers"
+  name="customerSearch"
+  placeholder="Enter customer name or email..."
+ />

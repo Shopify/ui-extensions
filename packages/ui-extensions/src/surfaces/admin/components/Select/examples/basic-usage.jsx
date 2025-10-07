@@ -1,0 +1,7 @@
+<s-select label="Sort products by" value="newest">
+  <s-option value="newest">Newest first</s-option>
+  <s-option value="oldest">Oldest first</s-option>
+  <s-option value="title">Title A–Z</s-option>
+  <s-option value="price-low">Price: low to high</s-option>
+  <s-option value="price-high">Price: high to low</s-option>
+</s-select>

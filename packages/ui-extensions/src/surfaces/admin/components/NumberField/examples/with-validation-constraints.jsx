@@ -1,0 +1,10 @@
+<s-number-field
+  label="Storage temperature"
+  value={4}
+  min={-18}
+  max={25}
+  step={0.5}
+  suffix="°C"
+  inputMode="decimal"
+  details="Recommended storage temperature range"
+ />

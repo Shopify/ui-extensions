@@ -50,7 +50,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -63,7 +68,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-error-state.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-error-state.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -76,7 +86,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-helper-text.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-helper-text.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -89,7 +104,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/controlled-field.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/controlled-field.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -102,7 +122,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/in-form-layout.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/in-form-layout.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -115,7 +140,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-password-strength-requirements.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-password-strength-requirements.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
