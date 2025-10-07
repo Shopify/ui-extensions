@@ -32,6 +32,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           code: './examples/default.html',
           language: 'preview',
           layout: 'inline',
+          editable: true,
         },
       ],
     },

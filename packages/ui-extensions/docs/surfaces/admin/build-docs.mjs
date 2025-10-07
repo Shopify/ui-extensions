@@ -187,8 +187,15 @@ const transformJson = async (filePath, isExtensions) => {
             : templates.default(tab.code, tab.customStyles);
 
         newTabs.push(
-          {code: tab.code, language: 'html'},
-          {code: previewHTML, language: 'preview'},
+          {
+            code: tab.code,
+            language: 'html',
+            editable: tab.editable || false,
+          },
+          {
+            code: previewHTML,
+            language: 'preview',
+          },
         );
       });
 
@@ -207,7 +214,11 @@ const transformJson = async (filePath, isExtensions) => {
               const newTabs = [];
 
               newTabs.push(
-                {code: tab.code, language: 'html'},
+                {
+                  code: tab.code,
+                  language: 'html',
+                  editable: tab.editable || false,
+                },
                 {code: previewHTML, language: 'preview'},
               );
 
