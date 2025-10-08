@@ -106,9 +106,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates creating nested, hierarchical layouts for merchant interfaces, showing how boxes can be used to organize inventory status and product information sections.',
+              'Demonstrates creating nested, hierarchical layouts using multiple boxes, showing how boxes can be combined to organize related content sections with different styling.',
             codeblock: {
-              title: 'Complex merchant dashboard layout',
+              title: 'Nested hierarchical containers',
               tabs: [
                 {
                   code: './examples/complex-merchant-dashboard-layout.html',

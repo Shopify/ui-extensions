@@ -28,7 +28,7 @@
     <s-stack gap="base">
       <s-heading>Product sales</s-heading>
       <s-text color="subdued">No recent sales of this product</s-text>
-      <s-link href="/admin/products/123">View details</s-link>
+      <s-link>View details</s-link>
     </s-stack>
   </s-box>
 </s-stack>

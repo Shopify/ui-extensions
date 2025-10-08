@@ -49,7 +49,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a simple ordered list of steps for setting up an online store.',
+              'Demonstrates a simple ordered list with three sequential steps.',
             codeblock: {
               title: 'Basic usage',
               tabs: [
@@ -67,7 +67,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows a comprehensive workflow for processing an order from review to customer communication.',
+              'Shows an ordered list with multiple steps in a workflow process.',
             codeblock: {
               title: 'Order processing steps',
               tabs: [
@@ -85,7 +85,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a nested ordered list demonstrating the detailed process of creating and publishing a product online.',
+              'Illustrates a nested ordered list with sub-steps within main steps.',
             codeblock: {
               title: 'Product setup instructions',
               tabs: [
@@ -103,7 +103,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Displays a complex nested list showing the detailed steps of payment processing and shipment preparation.',
+              'Displays a complex nested list with multiple levels of sub-steps.',
             codeblock: {
               title: 'Fulfillment process',
               tabs: [

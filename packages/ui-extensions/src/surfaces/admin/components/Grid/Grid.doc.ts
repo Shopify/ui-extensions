@@ -57,7 +57,7 @@ const data: AdminReferenceEntityTemplateSchema = {
 
         {
           code: './examples/default.jsx',
-          language: 'preview-tsx',
+          language: 'preview-jsx',
         },
       ],
     },

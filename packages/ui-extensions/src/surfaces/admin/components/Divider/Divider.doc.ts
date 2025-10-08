@@ -29,11 +29,13 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.html',
           language: 'html',
+          layout: 'wrapped',
         },
 
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
+          layout: 'wrapped',
         },
       ],
     },

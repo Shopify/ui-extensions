@@ -34,6 +34,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
+          layout: 'none',
         },
       ],
     },
