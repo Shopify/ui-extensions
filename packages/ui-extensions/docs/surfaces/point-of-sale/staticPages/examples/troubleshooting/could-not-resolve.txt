@@ -1,6 +1,3 @@
-✘ [ERROR] Could not resolve "react-dom"
+✘ [ERROR] Could not resolve "@preact/signals"
 
-  node_modules/react-redux/es/utils/reactBatchedUpdates.js:1:40:
-    1 │ export { unstable_batchedUpdates } from 'react-dom';
-
-You can mark the path "react-dom" as external to exclude it from the bundle, which will remove this error.
+You can mark the path "@preact/signals" as external to exclude it from the bundle, which will remove this error.
