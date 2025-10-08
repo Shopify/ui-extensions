@@ -1,4 +1,4 @@
-/** VERSION: 1.21.2 **/
+/** VERSION: 1.22.1 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -567,6 +567,7 @@ declare const privateIconArray: readonly [
   'metaobject-list',
   'metaobject-reference',
   'microphone',
+  'microphone-muted',
   'minimize',
   'minus',
   'minus-circle',
@@ -637,6 +638,8 @@ declare const privateIconArray: readonly [
   'personalized-text',
   'phablet',
   'phone',
+  'phone-down',
+  'phone-down-filled',
   'phone-in',
   'phone-out',
   'pin',
@@ -4071,6 +4074,7 @@ type IconType$1 =
   | 'metaobject-list'
   | 'metaobject-reference'
   | 'microphone'
+  | 'microphone-muted'
   | 'minimize'
   | 'minus'
   | 'minus-circle'
@@ -4133,6 +4137,8 @@ type IconType$1 =
   | 'person-segment'
   | 'personalized-text'
   | 'phone'
+  | 'phone-down'
+  | 'phone-down-filled'
   | 'phone-in'
   | 'phone-out'
   | 'pin'
@@ -6633,7 +6639,9 @@ declare class Page extends PreactCustomElement implements PageProps {
   accessor inlineSize: PageProps['inlineSize'];
   accessor heading: PageProps['heading'];
   constructor();
+  /** @private */
   connectedCallback(): void;
+  /** @private */
   disconnectedCallback(): void;
 }
 declare global {
