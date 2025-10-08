@@ -212,11 +212,17 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/interest-for-association.html',
                   language: 'html',
+                  customStyles: {
+                    minHeight: '200px',
+                  },
                 },
 
                 {
                   code: './examples/interest-for-association.jsx',
                   language: 'preview-jsx',
+                  customStyles: {
+                    minHeight: '200px',
+                  },
                 },
               ],
             },
