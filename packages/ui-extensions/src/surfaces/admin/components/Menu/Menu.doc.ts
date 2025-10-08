@@ -49,7 +49,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a simple menu with product-related actions, showing how to create a menu with basic buttons and link it to a trigger button.',
+              'Demonstrates a simple menu with basic action buttons and shows how to link it to a trigger button.',
             codeblock: {
               title: 'Basic Menu',
               tabs: [
@@ -137,9 +137,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              "Presents a comprehensive menu for customer management, showing how to create sections with different action groups and include a critical action at the menu's root level.",
+              "Presents a comprehensive menu showing how to create sections with different action groups and include a critical action at the menu's root level.",
             codeblock: {
-              title: 'Customer Actions Menu',
+              title: 'Actions menu with sections',
               tabs: [
                 {
                   code: './examples/customer-actions-menu.html',
@@ -159,9 +159,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a complex settings menu with nested sections for account and store settings, demonstrating how to organize multiple related actions with icons and a logout button.',
+              'Illustrates a complex menu with nested sections, demonstrating how to organize multiple related actions with icons.',
             codeblock: {
-              title: 'Settings Menu',
+              title: 'Menu with nested sections',
               tabs: [
                 {
                   code: './examples/settings-menu.html',

@@ -14,6 +14,6 @@
       <s-button>Payment providers</s-button>
       <s-button icon="delivery">Shipping rates</s-button>
     </s-section>
-    <s-button href="/admin/settings/logout" icon="person-exit">Sign out</s-button>
+    <s-button href="javascript:void(0)" icon="person-exit">Sign out</s-button>
   </s-menu>
 </>

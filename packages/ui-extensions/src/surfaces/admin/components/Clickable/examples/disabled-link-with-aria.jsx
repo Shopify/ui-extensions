@@ -1,5 +1,5 @@
 <s-clickable
-  href="https://example.com"
+  href="javascript:void(0)"
   disabled
   accessibilityLabel="This link is currently unavailable"
 >

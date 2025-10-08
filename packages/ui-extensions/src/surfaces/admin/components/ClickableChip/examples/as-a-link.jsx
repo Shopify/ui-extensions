@@ -1,6 +1,6 @@
 <s-clickable-chip
   color="subdued"
-  href="/products/t-shirt"
+  href="javascript:void(0)"
   accessibilityLabel="View T-shirt product"
 >
   <s-icon slot="graphic" type="product" />

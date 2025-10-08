@@ -1,3 +1,3 @@
-<s-clickable href="https://shopify.com" target="_blank">
+<s-clickable href="javascript:void(0)" target="_blank">
   Visit Shopify
 </s-clickable>

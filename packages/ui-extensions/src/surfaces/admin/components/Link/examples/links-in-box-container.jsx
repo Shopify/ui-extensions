@@ -1,9 +1,9 @@
 <s-box padding="base" background="base" borderWidth="base" borderColor="base">
   <s-text>
     Boost your store's conversion with professional themes.
-    <s-link href="/admin/themes">Browse theme store</s-link>
+    <s-link href="javascript:void(0)">Browse theme store</s-link>
     or
-    <s-link href="/admin/themes/customize">customize your current theme</s-link>
+    <s-link href="javascript:void(0)">customize your current theme</s-link>
     .
   </s-text>
 </s-box>

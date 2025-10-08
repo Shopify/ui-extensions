@@ -139,9 +139,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates buttons in various loading states, providing visual feedback during different types of asynchronous operations.',
+              'Illustrates buttons in various loading states, providing visual feedback during asynchronous operations.',
             codeblock: {
-              title: 'Loading state for merchant actions',
+              title: 'Loading state',
               tabs: [
                 {
                   code: './examples/loading-state-for-merchant-actions.html',
@@ -195,7 +195,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             description:
               'Demonstrates a button group with carefully aligned actions, showing how to create a clear visual hierarchy for form submission and cancellation.',
             codeblock: {
-              title: 'Product save form',
+              title: 'Form submission buttons',
               tabs: [
                 {
                   code: './examples/product-save-form.html',
@@ -229,9 +229,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Showcases a navigation button with an icon, enabling quick access to different administrative sections of the interface.',
+              'Showcases a navigation button with an icon, enabling quick access to different sections of the interface.',
             codeblock: {
-              title: 'Navigation to admin sections',
+              title: 'Navigation button with icon',
               tabs: [
                 {
                   code: './examples/navigation-to-admin-sections.html',
@@ -247,9 +247,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates a button group for executing bulk operations like export and delete on multiple selected items.',
+              'Demonstrates a button group for executing operations on multiple selected items.',
             codeblock: {
-              title: 'Bulk actions',
+              title: 'Button group for bulk operations',
               tabs: [
                 {
                   code: './examples/bulk-actions.html',
@@ -265,9 +265,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Showcases a set of compact, icon-only buttons with accessibility labels, perfect for creating dense toolbar interfaces.',
+              'Showcases a set of compact, icon-only buttons with accessibility labels, perfect for creating dense interfaces.',
             codeblock: {
-              title: 'Toolbar icon buttons',
+              title: 'Icon-only buttons with labels',
               tabs: [
                 {
                   code: './examples/toolbar-icon-buttons.html',

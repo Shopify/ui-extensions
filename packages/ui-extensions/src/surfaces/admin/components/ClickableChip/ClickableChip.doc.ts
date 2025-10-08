@@ -48,7 +48,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a simple clickable chip with a base color, used for displaying an active status filter with interactive functionality.',
+              'Demonstrates a simple clickable chip with a base color and interactive functionality.',
             codeblock: {
               title: 'Basic Usage',
               tabs: [
@@ -66,7 +66,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Showcases a strong-colored clickable chip with a check circle icon and a removable state, representing an in-progress status.',
+              'Showcases a strong-colored clickable chip with a check circle icon and a removable state.',
             codeblock: {
               title: 'With Icon and Remove Button',
               tabs: [
@@ -84,7 +84,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates a subdued clickable chip configured as a link, with a product icon, used for navigating to a specific product page.',
+              'Demonstrates a subdued clickable chip configured as a link with a product icon.',
             codeblock: {
               title: 'As a Link',
               tabs: [

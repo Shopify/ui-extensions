@@ -31,6 +31,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
+          layout: 'inline',
         },
       ],
     },
@@ -61,9 +62,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Action buttons for selected table items with destructive option.',
+              'Action buttons for selected items with destructive option.',
             codeblock: {
-              title: 'Bulk actions in data tables',
+              title: 'Bulk action buttons',
               tabs: [
                 {
                   code: './examples/bulk-actions-in-data-tables.html',
@@ -97,9 +98,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Icon-labeled buttons for common product management actions.',
+              'Icon-labeled buttons for common actions.',
             codeblock: {
-              title: 'Toolbar buttons with icons',
+              title: 'Buttons with icons',
               tabs: [
                 {
                   code: './examples/toolbar-buttons-with-icons.html',
