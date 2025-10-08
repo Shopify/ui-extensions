@@ -41,6 +41,34 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'A standard unordered list with nested items demonstrating hierarchical content structure.',
+            codeblock: {
+              title: 'Unordered list with nested items',
+              tabs: [
+                {
+                  code: './examples/store-setup-checklist.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/store-setup-checklist.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

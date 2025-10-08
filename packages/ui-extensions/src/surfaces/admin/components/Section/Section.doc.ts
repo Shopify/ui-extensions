@@ -45,13 +45,95 @@ const data: AdminReferenceEntityTemplateSchema = {
           language: 'html',
           layout: 'page',
         },
-
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
+          layout: 'page',
         },
       ],
     },
+  },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Demonstrates a level 1 section with a heading and multiple form fields. This example shows how sections provide visual hierarchy and structure for input elements.',
+            codeblock: {
+              title: 'Top-Level Section with Form Elements',
+              tabs: [
+                {
+                  code: './examples/top-level-section-with-form-elements.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/top-level-section-with-form-elements.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates how sections can be nested to create a hierarchical layout, with each nested section automatically adjusting its visual style. This example demonstrates the automatic visual leveling of nested sections.',
+            codeblock: {
+              title: 'Nested Sections with Visual Level Differences',
+              tabs: [
+                {
+                  code: './examples/nested-sections-with-visual-level-differences.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/nested-sections-with-visual-level-differences.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows how to add an accessibility label to a section, providing an additional hidden heading for screen readers while maintaining a visible heading.',
+            codeblock: {
+              title: 'Section with Accessibility Label',
+              tabs: [
+                {
+                  code: './examples/section-with-accessibility-label.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/section-with-accessibility-label.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Demonstrates using a section with `padding="none"` to create a full-width layout, ideal for displaying tables or other content that requires edge-to-edge rendering.',
+            codeblock: {
+              title: 'Full-width Content Layout',
+              tabs: [
+                {
+                  code: './examples/full-width-content-layout.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/full-width-content-layout.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
 };
 

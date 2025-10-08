@@ -25,13 +25,91 @@ const data: AdminReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
+          layout: 'none',
+        },
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
           layout: 'none',
         },
       ],
     },
   },
   related: [],
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Shows a page with a clear heading and descriptive text, illustrating how to use the page component with a title.',
+            codeblock: {
+              title: 'Page with heading',
+              tabs: [
+                {
+                  code: './examples/page-with-heading.html',
+                  language: 'html',
+                  layout: 'none',
+                },
+                {
+                  code: './examples/page-with-heading.jsx',
+                  language: 'preview-jsx',
+                  layout: 'none',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates a page with a small inline size, ideal for focused, compact content like settings or forms with minimal information.',
+            codeblock: {
+              title: 'Small inline size for focused content',
+              tabs: [
+                {
+                  code: './examples/small-inline-size-for-focused-content.html',
+                  language: 'html',
+                  layout: 'none',
+                },
+                {
+                  code: './examples/small-inline-size-for-focused-content.jsx',
+                  language: 'preview-jsx',
+                  layout: 'none',
+                  customStyles: {
+                    minHeight: '400px',
+                  },
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Demonstrates a page with a large inline size, perfect for displaying broader content like analytics or dashboards with multiple information sections.',
+            codeblock: {
+              title: 'Large inline size for wide content',
+              tabs: [
+                {
+                  code: './examples/large-inline-size-for-wide-content.html',
+                  language: 'html',
+                  layout: 'none',
+                },
+                {
+                  code: './examples/large-inline-size-for-wide-content.jsx',
+                  language: 'preview-jsx',
+                  layout: 'none',
+                  customStyles: {
+                    minHeight: '400px',
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

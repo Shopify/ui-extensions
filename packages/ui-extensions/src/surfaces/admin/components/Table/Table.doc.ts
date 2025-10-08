@@ -89,10 +89,10 @@ const data: AdminReferenceEntityTemplateSchema = {
           language: 'html',
           layout: 'section',
         },
-
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
+          layout: 'section',
         },
       ],
     },
@@ -105,6 +105,113 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'component',
     },
   ],
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Tables are full-width by default to utilize all available space for displaying data.',
+            codeblock: {
+              title: 'Basic Usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Demonstrates a table with pagination controls, showing how to add previous and next page functionality to handle large datasets.',
+            codeblock: {
+              title: 'With Pagination',
+              tabs: [
+                {
+                  code: './examples/with-pagination.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-pagination.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              "Showcases the table's loading state, which can be used to indicate that data is being fetched or processed.",
+            codeblock: {
+              title: 'With Loading State',
+              tabs: [
+                {
+                  code: './examples/with-loading-state.html',
+                  language: 'html',
+                },
+                {
+                  code: './examples/with-loading-state.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'A comprehensive example showing a full-width table with multiple columns. Tables automatically expand to fill their container width.',
+            codeblock: {
+              title: 'Full-width table with multiple columns',
+              tabs: [
+                {
+                  code: './examples/full-width-product-inventory-table.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/full-width-product-inventory-table.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
+                  customStyles: {
+                    minHeight: '400px',
+                  },
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'A comprehensive example demonstrating different list slot types for various header and cell configurations, showing how to use kicker, primary, secondary, inline, and labeled slots.',
+            codeblock: {
+              title: 'Advanced Table with All List Slot Types',
+              tabs: [
+                {
+                  code: './examples/advanced-table-with-all-list-slot-types.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/advanced-table-with-all-list-slot-types.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

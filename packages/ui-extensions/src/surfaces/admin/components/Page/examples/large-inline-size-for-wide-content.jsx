@@ -1,0 +1,33 @@
+<s-page heading="Store analytics" inline-size="large">
+  <s-section>
+    <s-stack gap="base">
+      <s-text>Monitor your store performance across all channels.</s-text>
+      <s-grid>
+        <s-grid-item>
+          <s-box
+            padding="base"
+            background="base"
+            borderWidth="base"
+            borderColor="base"
+            borderRadius="base"
+          >
+            <s-heading>Sales</s-heading>
+            <s-text type="strong">$12,456</s-text>
+          </s-box>
+        </s-grid-item>
+        <s-grid-item>
+          <s-box
+            padding="base"
+            background="base"
+            borderWidth="base"
+            borderColor="base"
+            borderRadius="base"
+          >
+            <s-heading>Orders</s-heading>
+            <s-text type="strong">145</s-text>
+          </s-box>
+        </s-grid-item>
+      </s-grid>
+    </s-stack>
+  </s-section>
+</s-page>

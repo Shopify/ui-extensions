@@ -1,0 +1,17 @@
+<s-section padding="none">
+  <s-table loading>
+    <s-table-header-row>
+      <s-table-header listSlot="primary">Product</s-table-header>
+      <s-table-header listSlot="inline">Status</s-table-header>
+      <s-table-header listSlot="labeled">Inventory</s-table-header>
+    </s-table-header-row>
+
+    <s-table-body>
+      <s-table-row>
+        <s-table-cell>Loading...</s-table-cell>
+        <s-table-cell>Loading...</s-table-cell>
+        <s-table-cell>Loading...</s-table-cell>
+      </s-table-row>
+    </s-table-body>
+  </s-table>
+</s-section>

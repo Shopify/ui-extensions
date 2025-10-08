@@ -49,13 +49,114 @@ const data: AdminReferenceEntityTemplateSchema = {
           code: './examples/default.html',
           language: 'html',
         },
-
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
         },
       ],
     },
+  },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Default vertical stacking layout with consistent spacing between text elements.',
+            codeblock: {
+              title: 'Basic block stack (vertical)',
+              tabs: [
+                {
+                  code: './examples/basic-block-stack-vertical.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-block-stack-vertical.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Horizontal layout for arranging badges or similar elements side by side.',
+            codeblock: {
+              title: 'Inline stack (horizontal)',
+              tabs: [
+                {
+                  code: './examples/inline-stack-horizontal.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/inline-stack-horizontal.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Advanced responsive layout that changes direction and spacing based on container size.',
+            codeblock: {
+              title: 'Responsive stack with container queries',
+              tabs: [
+                {
+                  code: './examples/responsive-stack-with-container-queries.html',
+                  language: 'html',
+                  layout: 'fullWidth',
+                },
+
+                {
+                  code: './examples/responsive-stack-with-container-queries.jsx',
+                  language: 'preview-jsx',
+                  layout: 'fullWidth',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Horizontal stack with space-between justification and center alignment for balanced layouts.',
+            codeblock: {
+              title: 'Custom alignment',
+              tabs: [
+                {
+                  code: './examples/custom-alignment.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/custom-alignment.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Stack with custom gap values and separate row/column gap controls for precise spacing.',
+            codeblock: {
+              title: 'Custom spacing',
+              tabs: [
+                {
+                  code: './examples/custom-spacing.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/custom-spacing.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
 };
 
