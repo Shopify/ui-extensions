@@ -101,7 +101,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       name: 'Index table',
       subtitle: 'Composition',
-      url: 'docs/api/app-home/patterns/compositions/index-table',
+      url: '/docs/api/app-home/patterns/compositions/index-table',
       type: 'component',
     },
   ],
