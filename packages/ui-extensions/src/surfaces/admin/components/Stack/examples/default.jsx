@@ -1,0 +1,6 @@
+<s-stack gap="base">
+  <s-badge>Paid</s-badge>
+  <s-badge>Processing</s-badge>
+  <s-badge>Filled</s-badge>
+  <s-badge>Completed</s-badge>
+</s-stack>

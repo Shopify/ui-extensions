@@ -30,9 +30,13 @@ const data: AdminReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
           layout: 'inline',
-          editable: true,
+        },
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
+          layout: 'inline',
         },
       ],
     },

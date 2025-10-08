@@ -1,0 +1,8 @@
+<>
+  <s-badge>Fulfilled</s-badge>
+  <s-badge tone="info">Draft</s-badge>
+  <s-badge tone="success">Active</s-badge>
+  <s-badge tone="caution">Open</s-badge>
+  <s-badge tone="warning">On hold</s-badge>
+  <s-badge tone="critical">Action required</s-badge>
+</>

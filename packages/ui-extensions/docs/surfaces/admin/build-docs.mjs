@@ -88,20 +88,76 @@ const htmlWrapper = (htmlString, layoutStyles = '', customStyles = '') => {
   )}</body></html>`;
 };
 
+/* 
+Using JSX Builder to self-host Preact and Sucrase. 
+https://github.com/shopify-playground/jsx-builder
+*/
+const jsxWrapper = (
+  jsxString,
+  bodyContent,
+  layoutStyles = '',
+  customStyles = '',
+) => {
+  const baseStyles = 'box-sizing: border-box; margin: 0; padding: 0.5rem;';
+  const composedStyles = composeStyles(baseStyles, layoutStyles, customStyles);
+
+  // Auto-wrap JSX if it doesn't already contain a return statement
+  // This allows both simple JSX expressions and complete function bodies with hooks
+  let jsxStringProcessed = jsxString;
+  if (!/\breturn\b/.test(jsxString)) {
+    jsxStringProcessed = `return (${jsxString})`;
+  }
+
+  return `<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {${composedStyles}} </style> <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script> <script src="https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js"></script> </head>
+  <body>${
+    bodyContent || ''
+  }<script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = \`const App = () => { ${decodeHTML(
+    jsxStringProcessed,
+  )
+    .replace(/\\/g, '\\\\')
+    .replace(/`/g, '\\`')
+    .replace(
+      /\$/g,
+      '\\$',
+    )} };\`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style="color:red;padding:1rem;">Error rendering example: ' + e.message + '</div>'; } })();
+    </script>
+</body>
+</html>
+`;
+};
+
 const createTemplate = ({
   layoutStyles,
   wrapperElement = null,
   wrapperAttributes = '',
 }) => {
-  return (htmlString, customStyles) => {
-    const wrappedHtml = wrapperElement
-      ? `<${wrapperElement}${
-          wrapperAttributes ? ` ${wrapperAttributes}` : ''
-        }>${htmlString}</${wrapperElement}>`
-      : htmlString;
-    const customStylesString = stylesToString(customStyles);
+  return (htmlString, customStyles, jsx = false) => {
+    if (jsx) {
+      const bodyContent = wrapperElement
+        ? `<${wrapperElement}${
+            wrapperAttributes ? ` ${wrapperAttributes}` : ''
+          } id="wrapper-element"></${wrapperElement}>`
+        : '';
 
-    return htmlWrapper(wrappedHtml, layoutStyles, customStylesString);
+      const customStylesString = stylesToString(customStyles);
+
+      return jsxWrapper(
+        htmlString,
+        bodyContent,
+        layoutStyles,
+        customStylesString,
+      );
+    } else {
+      const wrappedHtml = wrapperElement
+        ? `<${wrapperElement}${
+            wrapperAttributes ? ` ${wrapperAttributes}` : ''
+          } id="wrapper-element">${htmlString}</${wrapperElement}>`
+        : `<div id="wrapper-element">${htmlString}</div>`;
+
+      const customStylesString = stylesToString(customStyles);
+
+      return htmlWrapper(wrappedHtml, layoutStyles, customStylesString);
+    }
   };
 };
 
@@ -170,8 +226,8 @@ const transformJson = async (filePath, isExtensions) => {
     if (entry.defaultExample?.codeblock?.tabs) {
       const newTabs = [];
       entry.defaultExample.codeblock.tabs.forEach((tab) => {
-        if (tab.language !== 'preview') {
-          newTabs.push(tab);
+        if (tab.language !== 'preview' && tab.language !== 'preview-jsx') {
+          newTabs.push({...tab, title: tab.language});
           return;
         }
 
@@ -183,48 +239,88 @@ const transformJson = async (filePath, isExtensions) => {
 
         const previewHTML =
           tab.layout && tab.layout in templates
-            ? templates[tab.layout](tab.code, tab.customStyles)
-            : templates.default(tab.code, tab.customStyles);
+            ? templates[tab.layout](
+                tab.code,
+                tab.customStyles,
+                tab.language === 'preview-jsx',
+              )
+            : templates.default(
+                tab.code,
+                tab.customStyles,
+                tab.language === 'preview-jsx',
+              );
 
         newTabs.push(
           {
+            title: tab.language === 'preview-jsx' ? 'jsx' : 'html',
             code: tab.code,
-            language: 'html',
-            editable: tab.editable || false,
+            language: tab.language === 'preview-jsx' ? 'jsx' : 'html',
+            editable:
+              tab.language === 'preview-jsx' ? tab.editable || false : false,
           },
-          {
-            code: previewHTML,
-            language: 'preview',
-          },
+          {code: previewHTML, language: 'preview'},
         );
       });
 
-      entry.defaultExample.codeblock.tabs = newTabs;
+      entry.defaultExample.codeblock.tabs = newTabs.sort((first, second) => {
+        if (first.language === 'jsx') return -1;
+        if (second.language === 'jsx') return 1;
+        return 0;
+      });
     }
 
     if (entry.examples && entry.examples.exampleGroups) {
       entry.examples.exampleGroups.forEach((exampleGroup) => {
         exampleGroup.examples.forEach((example) => {
-          if (example.codeblock?.tabs) {
-            example.codeblock.tabs.forEach((tab) => {
+          if (!example.codeblock?.tabs) {
+            return;
+          }
+          const newTabs = [];
+
+          example.codeblock.tabs.forEach((tab) => {
+            if (tab.language === 'preview' || tab.language === 'preview-jsx') {
               const previewHTML =
                 tab.layout && tab.layout in templates
-                  ? templates[tab.layout](tab.code, tab.customStyles)
-                  : templates.example(tab.code, tab.customStyles);
-              const newTabs = [];
+                  ? templates[tab.layout](
+                      tab.code,
+                      tab.customStyles,
+                      tab.language === 'preview-jsx',
+                    )
+                  : templates.example(
+                      tab.code,
+                      tab.customStyles,
+                      tab.language === 'preview-jsx',
+                    );
 
               newTabs.push(
                 {
+                  title: tab.language === 'preview-jsx' ? 'jsx' : 'html',
                   code: tab.code,
-                  language: 'html',
-                  editable: tab.editable || false,
+                  language: tab.language === 'preview-jsx' ? 'jsx' : 'html',
                 },
-                {code: previewHTML, language: 'preview'},
+                {
+                  code: previewHTML,
+                  language: 'preview',
+                },
               );
+            } else {
+              newTabs.push({
+                title: tab.language,
+                code: tab.code,
+                language: tab.language,
+                editable:
+                  tab.language === 'preview-jsx'
+                    ? tab.editable || false
+                    : false,
+              });
+            }
+          });
 
-              example.codeblock.tabs = newTabs;
-            });
-          }
+          example.codeblock.tabs = newTabs.sort((first, second) => {
+            if (first.language === 'jsx') return -1;
+            if (second.language === 'jsx') return 1;
+            return 0;
+          });
         });
       });
     }

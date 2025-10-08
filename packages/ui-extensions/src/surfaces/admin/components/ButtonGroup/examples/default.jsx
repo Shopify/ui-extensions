@@ -1,0 +1,4 @@
+<s-button-group>
+  <s-button slot="primary-action">Save</s-button>
+  <s-button slot="secondary-actions">Cancel</s-button>
+</s-button-group>

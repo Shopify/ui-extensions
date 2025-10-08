@@ -29,7 +29,14 @@ const data: AdminReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
+          customStyles: {
+            minHeight: '300px',
+          },
+        },
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
           customStyles: {
             minHeight: '300px',
           },

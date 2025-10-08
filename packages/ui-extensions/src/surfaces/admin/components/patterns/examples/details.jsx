@@ -17,7 +17,9 @@ export default function DetailsPage() {
   return (
     <form data-save-bar onSubmit={handleFormSubmit} onReset={handleFormReset}>
       <s-page heading="Mountain view">
-        <s-link slot="breadcrumb-actions" href="/app/puzzles">Puzzles</s-link>
+        <s-link slot="breadcrumb-actions" href="/app/puzzles">
+          Puzzles
+        </s-link>
         <s-button slot="secondary-actions">Duplicate</s-button>
         <s-button slot="secondary-actions">Delete</s-button>
         {/* === */}
@@ -32,7 +34,7 @@ export default function DetailsPage() {
               placeholder="Enter puzzle name"
               value="Mountain view"
               details="Players will see this name when browsing puzzles."
-            ></s-text-field>
+             />
             <s-text-area
               label="Description"
               name="description"
@@ -40,7 +42,7 @@ export default function DetailsPage() {
               placeholder="Brief description of your puzzle"
               value="A beautiful mountain landscape puzzle"
               details="Help players understand what your puzzle features"
-            ></s-text-area>
+             />
             <s-money-field
               label="Price"
               name="price"
@@ -48,14 +50,14 @@ export default function DetailsPage() {
               placeholder="0.00"
               value="9.99"
               details="Set the price for this puzzle"
-            ></s-money-field>
+             />
             <s-url-field
               label="Reference image URL"
               name="reference-image-url"
               labelAccessibilityVisibility="visible"
               placeholder="https://example.com/image.jpg"
               details="Optional link to original image"
-            ></s-url-field>
+             />
           </s-grid>
         </s-section>
 
@@ -74,7 +76,7 @@ export default function DetailsPage() {
                   label="Search templates"
                   labelAccessibilityVisibility="exclusive"
                   placeholder="Search templates"
-                ></s-search-field>
+                 />
               </s-grid-item>
               <s-grid-item>
                 <s-button>Browse</s-button>
@@ -87,18 +89,14 @@ export default function DetailsPage() {
               borderStyle="solid"
               overflow="hidden"
             >
-              <s-table
-                border="base"
-                borderRadius="base"
-                borderStyle="solid"
-              >
+              <s-table border="base" borderRadius="base" borderStyle="solid">
                 <s-table-header-row>
                   <s-table-header listSlot="primary">Template</s-table-header>
                   <s-table-header>
                     <s-stack alignItems="end">Actions</s-stack>
                   </s-table-header>
                   <s-table-header listSlot="secondary">
-                    <s-stack direction="inline" alignItems="end"></s-stack>
+                    <s-stack direction="inline" alignItems="end" />
                   </s-table-header>
                 </s-table-header-row>
                 <s-table-body>
@@ -116,7 +114,10 @@ export default function DetailsPage() {
                           maxInlineSize="40px"
                           maxBlockSize="40px"
                         >
-                          <s-image alt="16-pieces puzzle template" src="https://cdn.shopify.com/static/images/polaris/patterns/16-pieces.png"></s-image>
+                          <s-image
+                            alt="16-pieces puzzle template"
+                            src="https://cdn.shopify.com/static/images/polaris/patterns/16-pieces.png"
+                           />
                         </s-box>
                         16-pieces puzzle
                       </s-stack>
@@ -133,7 +134,7 @@ export default function DetailsPage() {
                           tone="neutral"
                           variant="tertiary"
                           accessibilityLabel="Remove 16-Pieces Puzzle template"
-                        ></s-button>
+                         />
                       </s-stack>
                     </s-table-cell>
                   </s-table-row>
@@ -151,7 +152,10 @@ export default function DetailsPage() {
                           maxInlineSize="40px"
                           maxBlockSize="40px"
                         >
-                          <s-image alt="9-pieces puzzle template" src="https://cdn.shopify.com/static/images/polaris/patterns/9-pieces.png"></s-image>
+                          <s-image
+                            alt="9-pieces puzzle template"
+                            src="https://cdn.shopify.com/static/images/polaris/patterns/9-pieces.png"
+                           />
                         </s-box>
                         9-pieces puzzle
                       </s-stack>
@@ -172,7 +176,7 @@ export default function DetailsPage() {
                           tone="neutral"
                           variant="tertiary"
                           accessibilityLabel="Remove 9-Pieces Puzzle template"
-                        ></s-button>
+                         />
                       </s-stack>
                     </s-table-cell>
                   </s-table-row>
@@ -219,12 +223,12 @@ export default function DetailsPage() {
               min="0"
               placeholder="0"
               details="Current inventory quantity"
-            ></s-number-field>
+             />
             <s-switch
               label="Include reference image"
               name="include-reference-image"
               details="Ship a reference image with the puzzle"
-            ></s-switch>
+             />
           </s-grid>
         </s-section>
         {/* Use the aside slot for sidebar content */}

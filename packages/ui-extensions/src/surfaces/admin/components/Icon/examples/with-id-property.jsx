@@ -1,0 +1,1 @@
+<s-icon type="settings" id="settings-icon" />

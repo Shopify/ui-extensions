@@ -19,7 +19,12 @@ const data: AdminReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
+        },
+
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
         },
       ],
     },
@@ -38,7 +43,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -51,7 +61,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/loading-state-in-section.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/loading-state-in-section.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -64,7 +79,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/inline-loading-with-text.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/inline-loading-with-text.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

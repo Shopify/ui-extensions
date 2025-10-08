@@ -40,7 +40,9 @@ export default function SettingsPage() {
             placeholder="Enter phone number"
           />
           <s-choice-list label="Primary currency" name="currency">
-            <s-choice value="usd" selected>US Dollar ($)</s-choice>
+            <s-choice value="usd" selected>
+              US Dollar ($)
+            </s-choice>
             <s-choice value="cad">Canadian Dollar (CAD)</s-choice>
             <s-choice value="eur">Euro (€)</s-choice>
           </s-choice-list>
@@ -80,10 +82,7 @@ export default function SettingsPage() {
         {/* Preferences */}
         {/* === */}
         <s-section heading="Preferences">
-        <s-box
-            border="base"
-            borderRadius="base"
-          >
+          <s-box border="base" borderRadius="base">
             <s-clickable
               padding="small-100"
               href="/app/settings/shipping"
@@ -100,11 +99,11 @@ export default function SettingsPage() {
                     Shipping methods, rates, zones, and fulfillment preferences.
                   </s-paragraph>
                 </s-box>
-                <s-icon type="chevron-right"></s-icon>
+                <s-icon type="chevron-right" />
               </s-grid>
             </s-clickable>
             <s-box paddingInline="small-100">
-              <s-divider></s-divider>
+              <s-divider />
             </s-box>
 
             <s-clickable
@@ -124,11 +123,11 @@ export default function SettingsPage() {
                     options.
                   </s-paragraph>
                 </s-box>
-                <s-icon type="chevron-right"></s-icon>
+                <s-icon type="chevron-right" />
               </s-grid>
             </s-clickable>
             <s-box paddingInline="small-100">
-              <s-divider></s-divider>
+              <s-divider />
             </s-box>
 
             <s-clickable
@@ -148,7 +147,7 @@ export default function SettingsPage() {
                     tools.
                   </s-paragraph>
                 </s-box>
-                <s-icon type="chevron-right"></s-icon>
+                <s-icon type="chevron-right" />
               </s-grid>
             </s-clickable>
           </s-box>
@@ -181,7 +180,7 @@ export default function SettingsPage() {
               </s-grid>
             </s-box>
             <s-box paddingInline="small-100">
-              <s-divider></s-divider>
+              <s-divider />
             </s-box>
 
             <s-box padding="small-100">

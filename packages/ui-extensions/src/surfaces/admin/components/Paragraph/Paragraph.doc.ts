@@ -44,7 +44,12 @@ const data: AdminReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
+        },
+
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
         },
       ],
     },
@@ -63,7 +68,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -76,7 +86,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-tone-and-color.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-tone-and-color.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -89,7 +104,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/line-clamping.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/line-clamping.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -102,7 +122,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/tabular-numbers.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/tabular-numbers.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -115,7 +140,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/rtl-support.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/rtl-support.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -128,7 +158,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/screen-reader-text.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/screen-reader-text.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -141,7 +176,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/admin-ui-patterns.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/admin-ui-patterns.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },

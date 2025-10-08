@@ -33,6 +33,11 @@ const data: AdminReferenceEntityTemplateSchema = {
           language: 'preview',
           layout: 'alignStart',
         },
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
+          layout: 'alignStart',
+        },
       ],
     },
   },

@@ -1,0 +1,39 @@
+<s-section>
+  <s-grid gridTemplateColumns="1fr auto" gap="small-400" alignItems="start">
+    <s-grid
+      gridTemplateColumns="@container (inline-size <= 480px) 1fr, auto auto"
+      gap="base"
+      alignItems="center"
+    >
+      <s-grid gap="small-200">
+        <s-heading>Ready to create your custom puzzle?</s-heading>
+        <s-paragraph>
+          Start by uploading an image to your gallery or choose from one of our
+          templates.
+        </s-paragraph>
+        <s-stack direction="inline" gap="small-200">
+          <s-button> Upload image </s-button>
+          <s-button tone="neutral" variant="tertiary">
+            {" "}
+            Browse templates{" "}
+          </s-button>
+        </s-stack>
+      </s-grid>
+      <s-stack alignItems="center">
+        <s-box maxInlineSize="200px" borderRadius="base" overflow="hidden">
+          <s-image
+            src="https://cdn.shopify.com/static/images/polaris/patterns/callout.png"
+            alt="Customize checkout illustration"
+            aspectRatio="1/0.5"
+           />
+        </s-box>
+      </s-stack>
+    </s-grid>
+    <s-button
+      icon="x"
+      tone="neutral"
+      variant="tertiary"
+      accessibilityLabel="Dismiss card"
+     />
+  </s-grid>
+</s-section>

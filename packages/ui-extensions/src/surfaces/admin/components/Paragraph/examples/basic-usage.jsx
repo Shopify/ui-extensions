@@ -1,0 +1,3 @@
+<s-paragraph>
+  Track inventory across all your retail locations in real-time.
+</s-paragraph>

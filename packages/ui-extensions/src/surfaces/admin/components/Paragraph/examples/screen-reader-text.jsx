@@ -1,0 +1,3 @@
+<s-paragraph accessibilityVisibility="exclusive">
+  Table sorted by date, newest first.
+</s-paragraph>

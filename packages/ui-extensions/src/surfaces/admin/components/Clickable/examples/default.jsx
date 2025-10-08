@@ -1,0 +1,12 @@
+<>
+  <s-clickable padding="base">Create Store</s-clickable>
+
+  <s-clickable
+    border="base"
+    padding="base"
+    background="subdued"
+    borderRadius="base"
+  >
+    View Shipping Settings
+  </s-clickable>
+</>

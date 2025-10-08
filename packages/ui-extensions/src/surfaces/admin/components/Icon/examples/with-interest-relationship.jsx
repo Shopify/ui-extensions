@@ -1,0 +1,1 @@
+<s-icon type="delete" tone="critical" interestFor="delete-button-1" />

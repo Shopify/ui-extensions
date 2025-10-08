@@ -54,7 +54,12 @@ const data: AdminReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/default.html',
-          language: 'preview',
+          language: 'html',
+        },
+
+        {
+          code: './examples/default.jsx',
+          language: 'preview-jsx',
         },
       ],
     },
@@ -73,7 +78,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-information-banner.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-information-banner.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -86,7 +96,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/warning-banner-with-specific-actions.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/warning-banner-with-specific-actions.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -99,7 +114,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/critical-banner-with-clear-next-steps.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/critical-banner-with-clear-next-steps.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -112,7 +132,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/dismissible-success-banner.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/dismissible-success-banner.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
@@ -125,7 +150,12 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/info-banner-with-clear-value-proposition.html',
-                  language: 'preview',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/info-banner-with-clear-value-proposition.jsx',
+                  language: 'preview-jsx',
                 },
               ],
             },
