@@ -48,6 +48,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
+          layout: 'page',
         },
       ],
     },
@@ -60,7 +61,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a level 1 section that creates an elevated container with a heading and multiple form fields for collecting customer information. This example shows how sections provide visual hierarchy and structure for input elements.',
+              'Demonstrates a level 1 section with a heading and multiple form fields. This example shows how sections provide visual hierarchy and structure for input elements.',
             codeblock: {
               title: 'Top-Level Section with Form Elements',
               tabs: [
@@ -78,7 +79,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates how sections can be nested to create a hierarchical layout, with each nested section automatically adjusting its visual style. This example shows an order details section containing customer and billing information, demonstrating the automatic visual leveling of nested sections.',
+              'Illustrates how sections can be nested to create a hierarchical layout, with each nested section automatically adjusting its visual style. This example demonstrates the automatic visual leveling of nested sections.',
             codeblock: {
               title: 'Nested Sections with Visual Level Differences',
               tabs: [
@@ -96,7 +97,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows how to add an accessibility label to a section, providing an additional hidden heading for screen readers while maintaining a visible heading. This example demonstrates a payment summary section with both a visible heading and an accessibility-focused label.',
+              'Shows how to add an accessibility label to a section, providing an additional hidden heading for screen readers while maintaining a visible heading.',
             codeblock: {
               title: 'Section with Accessibility Label',
               tabs: [
@@ -114,7 +115,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates using a section with `padding="none"` to create a full-width layout, ideal for displaying tables or other content that requires edge-to-edge rendering. This example shows a product table within a section without additional padding.',
+              'Demonstrates using a section with `padding="none"` to create a full-width layout, ideal for displaying tables or other content that requires edge-to-edge rendering.',
             codeblock: {
               title: 'Full-width Content Layout',
               tabs: [

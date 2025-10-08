@@ -92,6 +92,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
+          layout: 'section',
         },
       ],
     },
@@ -168,9 +169,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'A comprehensive example showing a full-width table with multiple columns for product management. Tables automatically expand to fill their container width.',
+              'A comprehensive example showing a full-width table with multiple columns. Tables automatically expand to fill their container width.',
             codeblock: {
-              title: 'Full-Width Product Inventory Table',
+              title: 'Full-width table with multiple columns',
               tabs: [
                 {
                   code: './examples/full-width-product-inventory-table.html',

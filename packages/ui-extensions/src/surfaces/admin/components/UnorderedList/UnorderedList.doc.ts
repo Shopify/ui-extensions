@@ -38,11 +38,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           code: './examples/default.jsx',
           language: 'preview-jsx',
         },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
-        },
       ],
     },
   },
@@ -54,9 +49,9 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'A standard unordered list presenting a sequential setup process for an online store, using consistent list styling.',
+              'A standard unordered list with nested items demonstrating hierarchical content structure.',
             codeblock: {
-              title: 'Store setup checklist',
+              title: 'Unordered list with nested items',
               tabs: [
                 {
                   code: './examples/store-setup-checklist.html',
