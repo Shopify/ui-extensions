@@ -293,12 +293,12 @@ By default, the responsive value will query against the closest parent; to look 
         tabs: [
           {
             code: './examples/form-default-value.jsx',
-            language: 'tsx',
+            language: 'preview-jsx',
             title: 'Using `defaultValue`',
           },
           {
             code: './examples/form-implicit-default.jsx',
-            language: 'tsx',
+            language: 'preview-jsx',
             title: 'Using implicit default',
           },
         ],

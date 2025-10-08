@@ -20,7 +20,13 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: '../../../../../docs/surfaces/admin/staticPages/examples/form-default-value.jsx',
-          language: 'preview',
+          language: 'preview-jsx',
+          title: 'Using `defaultValue`',
+        },
+        {
+          code: '../../../../../docs/surfaces/admin/staticPages/examples/form-implicit-default.jsx',
+          language: 'preview-jsx',
+          title: 'Using implicit default',
         },
       ],
     },
