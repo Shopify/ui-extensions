@@ -107,11 +107,13 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/responsive-stack-with-container-queries.html',
                   language: 'html',
+                  layout: 'fullWidth',
                 },
 
                 {
                   code: './examples/responsive-stack-with-container-queries.jsx',
                   language: 'preview-jsx',
+                  layout: 'fullWidth',
                 },
               ],
             },
