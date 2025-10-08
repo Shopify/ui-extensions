@@ -5,10 +5,10 @@
     background="strong"
     borderRadius="base"
   >
-    <s-text>Payment failed</s-text>
+    <s-paragraph>Payment failed</s-paragraph>
   </s-box>
 
   <s-box accessibilityVisibility="exclusive">
-    <s-text>Price includes tax and shipping</s-text>
+    <s-paragraph>Price includes tax and shipping</s-paragraph>
   </s-box>
 </s-stack>

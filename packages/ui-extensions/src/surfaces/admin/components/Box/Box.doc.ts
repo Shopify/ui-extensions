@@ -77,11 +77,13 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/responsive-shipping-notice.html',
                   language: 'html',
+                  layout: 'fullWidth',
                 },
 
                 {
                   code: './examples/responsive-shipping-notice.jsx',
                   language: 'preview-jsx',
+                  layout: 'fullWidth',
                 },
               ],
             },
@@ -113,11 +115,13 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/complex-merchant-dashboard-layout.html',
                   language: 'html',
+                  layout: 'fullWidth',
                 },
 
                 {
                   code: './examples/complex-merchant-dashboard-layout.jsx',
                   language: 'preview-jsx',
+                  layout: 'fullWidth',
                 },
               ],
             },

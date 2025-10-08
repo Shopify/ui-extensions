@@ -5,5 +5,5 @@
   borderColor="base"
   borderRadius="base"
 >
-  <s-text>Product information</s-text>
+  <s-paragraph>Product information</s-paragraph>
 </s-box>

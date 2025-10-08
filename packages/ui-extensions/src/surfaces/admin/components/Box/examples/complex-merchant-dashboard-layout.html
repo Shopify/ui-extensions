@@ -9,10 +9,10 @@
   >
     <s-stack gap="base">
       <s-box padding="small-100" background="subdued" borderRadius="small">
-        <s-text>In stock: 45 units</s-text>
+        <s-paragraph>In stock: 45 units</s-paragraph>
       </s-box>
       <s-box padding="small-100" background="subdued" borderRadius="small">
-        <s-text>Low stock alert: 5 units</s-text>
+        <s-paragraph>Low stock alert: 5 units</s-paragraph>
       </s-box>
     </s-stack>
   </s-box>
@@ -27,7 +27,7 @@
   >
     <s-stack gap="base">
       <s-heading>Product sales</s-heading>
-      <s-text color="subdued">No recent sales of this product</s-text>
+      <s-paragraph color="subdued">No recent sales of this product</s-paragraph>
       <s-link>View details</s-link>
     </s-stack>
   </s-box>
