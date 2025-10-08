@@ -29,14 +29,20 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Code',
       tabs: [
         {
-          code: './examples/default.html',
-          language: 'preview',
-          layout: 'alignStart',
-        },
-        {
           code: './examples/default.jsx',
           language: 'preview-jsx',
           layout: 'alignStart',
+          customStyles: {
+            minHeight: '300px',
+          },
+        },
+        {
+          code: './examples/default.html',
+          language: 'preview',
+          layout: 'alignStart',
+          customStyles: {
+            minHeight: '300px',
+          },
         },
       ],
     },
@@ -49,39 +55,75 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              "Demonstrates a popover with multiple action buttons for quickly changing a product's status, showing how popovers can provide contextual actions without cluttering the main interface.",
+              'Popover with multiple action buttons demonstrating how popovers can provide contextual actions without cluttering the main interface.',
             codeblock: {
-              title: 'Product status quick actions',
+              title: 'Popover with action buttons',
               tabs: [
+                {
+                  code: './examples/product-status-quick-actions.jsx',
+                  language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
+                },
                 {
                   code: './examples/product-status-quick-actions.html',
                   language: 'preview',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },
           },
           {
             description:
-              "Shows a popover for customizing table columns, demonstrating how popovers can be used for settings and configuration interfaces that don't require a full page or modal.",
+              'Popover containing a choice list and action button demonstrating how popovers can be used for settings and configuration interfaces.',
             codeblock: {
-              title: 'Table display options',
+              title: 'Popover with choice list',
               tabs: [
+                {
+                  code: './examples/table-display-options.jsx',
+                  language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '400px',
+                  },
+                },
                 {
                   code: './examples/table-display-options.html',
                   language: 'preview',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '400px',
+                  },
                 },
               ],
             },
           },
           {
             description:
-              'Exhibits a popover with an embedded search field and search results, highlighting how popovers can support dynamic content and interactive search functionality.',
+              'Popover with a search field and list of results demonstrating how popovers can support dynamic content, interactive elements, and automatic resizing.',
             codeblock: {
-              title: 'Customer search with results',
+              title: 'Popover with search field',
               tabs: [
+                {
+                  code: './examples/customer-search-with-results.jsx',
+                  language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '500px',
+                  },
+                },
                 {
                   code: './examples/customer-search-with-results.html',
                   language: 'preview',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '500px',
+                  },
                 },
               ],
             },

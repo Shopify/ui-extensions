@@ -25,11 +25,17 @@ const data: AdminReferenceEntityTemplateSchema = {
           code: './examples/default.html',
           language: 'html',
           layout: 'inline',
+          customStyles: {
+            minHeight: '200px',
+          },
         },
-
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
+          layout: 'inline',
+          customStyles: {
+            minHeight: '200px',
+          },
         },
       ],
     },
@@ -48,7 +54,19 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'preview',
+                  language: 'html',
+                  layout: 'inline',
+                  customStyles: {
+                    minHeight: '200px',
+                  },
+                },
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
+                  layout: 'inline',
+                  customStyles: {
+                    minHeight: '200px',
+                  },
                 },
               ],
             },
@@ -61,20 +79,19 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/with-icon-button.html',
-                  language: 'preview',
+                  language: 'html',
+                  layout: 'inline',
+                  customStyles: {
+                    minHeight: '200px',
+                  },
                 },
-              ],
-            },
-          },
-          {
-            description:
-              'Illustrates using a tooltip to provide additional explanation for a form field, with a help icon next to the label that triggers the tooltip.',
-            codeblock: {
-              title: 'Form Field Help',
-              tabs: [
                 {
-                  code: './examples/form-field-help.html',
-                  language: 'preview',
+                  code: './examples/with-icon-button.jsx',
+                  language: 'preview-jsx',
+                  layout: 'inline',
+                  customStyles: {
+                    minHeight: '200px',
+                  },
                 },
               ],
             },

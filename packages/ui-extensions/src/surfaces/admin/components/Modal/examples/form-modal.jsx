@@ -9,24 +9,26 @@
         label="Customer name"
         name="name"
         value="Sarah Johnson"
-      ></s-text-field>
+       />
 
       <s-text-field
         label="Email address"
         name="email"
         type="email"
         value="sarah@example.com"
-      ></s-text-field>
+       />
 
       <s-text-field
         label="Phone number"
         name="phone"
         value="+1 555-0123"
-      ></s-text-field>
+       />
 
       <s-select label="Customer group" name="group">
         <s-option value="retail">Retail</s-option>
-        <s-option value="wholesale" selected>Wholesale</s-option>
+        <s-option value="wholesale" selected>
+          Wholesale
+        </s-option>
         <s-option value="vip">VIP</s-option>
       </s-select>
     </s-stack>

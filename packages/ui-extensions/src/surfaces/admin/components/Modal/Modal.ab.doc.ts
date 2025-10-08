@@ -59,32 +59,62 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/basic-modal.html',
                   language: 'preview',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
+                },
+                {
+                  code: './examples/basic-modal.jsx',
+                  language: 'preview-jsx',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },
           },
           {
             description:
-              'Modal with primary and secondary actions for confirming destructive operations. Click the delete button to open the confirmation modal.',
+              'Modal with primary and secondary action buttons. Click the button to open the confirmation modal.',
             codeblock: {
-              title: 'Confirmation modal with actions',
+              title: 'Modal with actions',
               tabs: [
                 {
                   code: './examples/confirmation-modal-with-actions.html',
                   language: 'preview',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
+                },
+                {
+                  code: './examples/confirmation-modal-with-actions.jsx',
+                  language: 'preview-jsx',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },
           },
           {
             description:
-              'Modal containing a form for collecting user input. Click the edit button to open the form.',
+              'Modal containing form fields demonstrating how to structure input fields within a modal. Click the button to open the modal.',
             codeblock: {
-              title: 'Form modal',
+              title: 'Modal with form fields',
               tabs: [
                 {
                   code: './examples/form-modal.html',
                   language: 'preview',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
+                },
+                {
+                  code: './examples/form-modal.jsx',
+                  language: 'preview-jsx',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },
@@ -98,58 +128,39 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/different-modal-sizes.html',
                   language: 'preview',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
+                },
+                {
+                  code: './examples/different-modal-sizes.jsx',
+                  language: 'preview-jsx',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },
           },
           {
             description:
-              'Modal with no padding for full-width content like images or custom layouts. Click to view the image modal.',
+              'Modal with no padding for full-width content. Click to view the modal.',
             codeblock: {
               title: 'Modal without padding',
               tabs: [
                 {
                   code: './examples/modal-without-padding.html',
                   language: 'preview',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
-              ],
-            },
-          },
-          {
-            description:
-              'Modal displaying warning information with appropriate tone. Click to view the warning.',
-            codeblock: {
-              title: 'Warning modal',
-              tabs: [
                 {
-                  code: './examples/warning-modal.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Modal showing successful operation completion. Click to view the success message.',
-            codeblock: {
-              title: 'Success modal',
-              tabs: [
-                {
-                  code: './examples/success-modal.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Modal with long content that scrolls within the modal body. Click to view terms.',
-            codeblock: {
-              title: 'Modal with scrollable content',
-              tabs: [
-                {
-                  code: './examples/modal-with-scrollable-content.html',
-                  language: 'preview',
+                  code: './examples/modal-without-padding.jsx',
+                  language: 'preview-jsx',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },
