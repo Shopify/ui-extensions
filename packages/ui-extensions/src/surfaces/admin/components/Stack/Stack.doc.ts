@@ -127,11 +127,13 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/custom-alignment.html',
                   language: 'html',
+                  layout: 'fullWidth',
                 },
 
                 {
                   code: './examples/custom-alignment.jsx',
                   language: 'preview-jsx',
+                  layout: 'fullWidth',
                 },
               ],
             },
