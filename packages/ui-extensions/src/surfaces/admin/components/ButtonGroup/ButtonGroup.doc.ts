@@ -97,8 +97,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             },
           },
           {
-            description:
-              'Icon-labeled buttons for common actions.',
+            description: 'Icon-labeled buttons for common actions.',
             codeblock: {
               title: 'Buttons with icons',
               tabs: [
