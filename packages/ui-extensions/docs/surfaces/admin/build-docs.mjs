@@ -88,6 +88,10 @@ const htmlWrapper = (htmlString, layoutStyles = '', customStyles = '') => {
   )}</body></html>`;
 };
 
+/* 
+Using JSX Builder to self-host Preact and Sucrase. 
+https://github.com/shopify-playground/jsx-builder
+*/
 const jsxWrapper = (
   jsxString,
   bodyContent,
@@ -104,7 +108,7 @@ const jsxWrapper = (
     jsxStringProcessed = `return (${jsxString})`;
   }
 
-  return `<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {${composedStyles}} </style> <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script> <script src="/jsx-builder.min.js"></script> </head>
+  return `<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {${composedStyles}} </style> <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script> <script src="https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js"></script> </head>
   <body>${
     bodyContent || ''
   }<script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = \`const App = () => { ${decodeHTML(
@@ -258,7 +262,11 @@ const transformJson = async (filePath, isExtensions) => {
         );
       });
 
-      entry.defaultExample.codeblock.tabs = newTabs;
+      entry.defaultExample.codeblock.tabs = newTabs.sort((first, second) => {
+        if (first.language === 'jsx') return -1;
+        if (second.language === 'jsx') return 1;
+        return 0;
+      });
     }
 
     if (entry.examples && entry.examples.exampleGroups) {
@@ -308,7 +316,11 @@ const transformJson = async (filePath, isExtensions) => {
             }
           });
 
-          example.codeblock.tabs = newTabs;
+          example.codeblock.tabs = newTabs.sort((first, second) => {
+            if (first.language === 'jsx') return -1;
+            if (second.language === 'jsx') return 1;
+            return 0;
+          });
         });
       });
     }
