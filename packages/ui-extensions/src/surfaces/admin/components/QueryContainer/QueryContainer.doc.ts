@@ -34,11 +34,39 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
+          layout: 'none',
         },
       ],
     },
   },
   related: [],
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Demonstrates the simplest way to use QueryContainer, wrapping content with a named container context.',
+            codeblock: {
+              title: 'Basic Usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'html',
+                },
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

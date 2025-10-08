@@ -1,0 +1,5 @@
+<s-stack direction="inline" gap="base">
+  <s-text>Item 1</s-text>
+  <s-divider direction="block" />
+  <s-text>Item 2</s-text>
+</s-stack>

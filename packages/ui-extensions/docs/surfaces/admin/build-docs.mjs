@@ -172,6 +172,7 @@ const templates = {
   wrapped: createTemplate({
     layoutStyles: 'display: grid; place-items: center; gap: 0.5rem;',
     wrapperElement: 'div',
+    wrapperAttributes: 'style="width: 100%;"',
   }),
   inline: createTemplate({
     layoutStyles:
@@ -192,6 +193,10 @@ const templates = {
     layoutStyles: 'padding: 0;',
     wrapperElement: 's-box',
     wrapperAttributes: 'padding="base"',
+  }),
+  fullWidth: createTemplate({
+    wrapperElement: 's-box',
+    wrapperAttributes: 'padding="base", inlineSize="100%"',
   }),
   example: createTemplate({
     layoutStyles: 'display: grid; place-items: center; gap: 0.5rem;',

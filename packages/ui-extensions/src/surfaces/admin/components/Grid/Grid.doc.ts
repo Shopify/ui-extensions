@@ -62,6 +62,70 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Simple 12-column grid system with equal-width left and right columns.',
+            codeblock: {
+              title: 'Basic two-column layout',
+              tabs: [
+                {
+                  code: './examples/basic-two-column-layout.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-two-column-layout.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Grid layout with full-width, half-width, and third-width column arrangements.',
+            codeblock: {
+              title: 'Layout with spans',
+              tabs: [
+                {
+                  code: './examples/col-span-layouts.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/col-span-layouts.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Adaptive grid that automatically adjusts column count based on screen size.',
+            codeblock: {
+              title: 'Responsive grid',
+              tabs: [
+                {
+                  code: './examples/mobile-first-responsive-grid.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/mobile-first-responsive-grid.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

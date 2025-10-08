@@ -41,6 +41,88 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Demonstrates a simple ordered list with three sequential steps.',
+            codeblock: {
+              title: 'Basic usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows an ordered list with multiple steps in a workflow process.',
+            codeblock: {
+              title: 'Order processing steps',
+              tabs: [
+                {
+                  code: './examples/order-processing-steps.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/order-processing-steps.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates a nested ordered list with sub-steps within main steps.',
+            codeblock: {
+              title: 'Product setup instructions',
+              tabs: [
+                {
+                  code: './examples/product-setup-instructions.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/product-setup-instructions.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Displays a complex nested list with multiple levels of sub-steps.',
+            codeblock: {
+              title: 'Fulfillment process',
+              tabs: [
+                {
+                  code: './examples/fulfillment-process.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/fulfillment-process.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
