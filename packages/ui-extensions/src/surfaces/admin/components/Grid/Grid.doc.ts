@@ -88,17 +88,17 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Flexible form grid accommodating full-width, half-width, and third-width field arrangements.',
+              'Grid layout with full-width, half-width, and third-width column arrangements.',
             codeblock: {
-              title: 'Form layout with responsive spans',
+              title: 'Layout with spans',
               tabs: [
                 {
-                  code: './examples/form-layout-with-responsive-spans.html',
+                  code: './examples/col-span-layouts.html',
                   language: 'html',
                 },
 
                 {
-                  code: './examples/form-layout-with-responsive-spans.jsx',
+                  code: './examples/col-span-layouts.jsx',
                   language: 'preview-jsx',
                 },
               ],
@@ -108,7 +108,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             description:
               'Adaptive grid that automatically adjusts column count based on screen size.',
             codeblock: {
-              title: 'Mobile-first responsive grid',
+              title: 'Responsive grid',
               tabs: [
                 {
                   code: './examples/mobile-first-responsive-grid.html',

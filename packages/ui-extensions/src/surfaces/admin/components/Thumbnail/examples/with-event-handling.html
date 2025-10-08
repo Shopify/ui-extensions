@@ -1,5 +1,9 @@
-<s-thumbnail
-  src="https://cdn.shopify.com/static/sample-product/House-Plant1.png"
-  alt="Product"
-  size="base"
-></s-thumbnail>
+  <s-stack direction="inline" gap="base">
+    <s-thumbnail
+      src="https://cdn.shopify.com/static/sample-product/House-Plant1.png"
+      alt="Product"
+      size="small-200"
+      onLoad="setLoading(false)"
+    />
+    <s-paragraph>Image loaded</s-paragraph>
+ </s-stack>
