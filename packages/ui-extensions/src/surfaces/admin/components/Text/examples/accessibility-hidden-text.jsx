@@ -1,3 +1,3 @@
-<s-text accessibility-visibility="exclusive">
+<s-text accessibilityVisibility="exclusive">
   Product prices include tax
 </s-text>

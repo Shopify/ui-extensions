@@ -195,6 +195,7 @@ const templates = {
     wrapperAttributes: 'padding="base"',
   }),
   fullWidth: createTemplate({
+    layoutStyles: 'display: grid; place-items: center;',
     wrapperElement: 's-box',
     wrapperAttributes: 'padding="base", inlineSize="100%"',
   }),

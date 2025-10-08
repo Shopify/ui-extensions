@@ -1,1 +1,3 @@
-<s-paragraph dir="rtl">محتوى النص باللغة العربية</s-paragraph>
+<s-paragraph dir="rtl">
+  محتوى النص باللغة العربية
+</s-paragraph>

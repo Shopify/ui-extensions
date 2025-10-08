@@ -140,6 +140,9 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-interest-relationship.jsx',
                   language: 'preview-jsx',
+                  customStyles: {
+                    minHeight: '200px',
+                  },
                 },
               ],
             },
