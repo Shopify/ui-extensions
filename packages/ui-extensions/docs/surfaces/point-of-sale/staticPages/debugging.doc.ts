@@ -29,6 +29,21 @@ If a component is given an incorrect parameter, the extension will be replaced w
     },
     {
       type: 'Generic',
+      anchorLink: 'handling-any-error',
+      title: 'Handling any error',
+      sectionContent: 'Add `try...catch` blocks to see errors.',
+      codeblock: {
+        title: 'Handling any error',
+        tabs: [
+          {
+            code: './examples/error-handling/handling-any-error.example.ts',
+            language: 'ts',
+          },
+        ],
+      },
+    },
+    {
+      type: 'Generic',
       anchorLink: `debugging-on-android`,
       title: `Debugging on Android`,
       sectionContent: `
