@@ -1916,10 +1916,9 @@
     pkg-dir "^5.0.0"
     pluralize "^8.0.0"
 
-"@shopify/generate-docs@0.19.8":
+"@shopify/generate-docs@https://registry.npmjs.org/@shopify/generate-docs/-/generate-docs-0.19.8.tgz":
   version "0.19.8"
-  resolved "https://npm.shopify.io/node/@shopify/generate-docs/-/generate-docs-0.19.8.tgz#1d0475e08e488abee64171a85a438ab1a2142e40"
-  integrity sha512-5sNWz/LWM3ltWlfJphmZHw6Kd4LQuTiEEasmVZXsh6Fm+vExbO36jkvlCOY6zPobW2etvFL22a5Co2D9kNcXJQ==
+  resolved "https://registry.npmjs.org/@shopify/generate-docs/-/generate-docs-0.19.8.tgz#1d0475e08e488abee64171a85a438ab1a2142e40"
   dependencies:
     "@types/react" "^18.0.21"
     globby "^11.1.0"
@@ -6553,10 +6552,15 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^4.3.5, "typescript@^4.8.3 || ^5.0.0", typescript@^4.9.0:
+typescript@^4.3.5, typescript@^4.9.0:
   version "4.9.5"
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz"
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
+
+"typescript@^4.8.3 || ^5.0.0":
+  version "5.9.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.3.tgz#5b4f59e15310ab17a216f5d6cf53ee476ede670f"
+  integrity sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
