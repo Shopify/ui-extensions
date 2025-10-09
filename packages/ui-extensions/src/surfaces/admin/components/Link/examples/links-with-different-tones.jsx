@@ -4,7 +4,7 @@
   </s-paragraph>
 
   <s-paragraph tone="success">
-    Neutral tone: <s-link>Inventory help</s-link>
+    Success tone: <s-link>Inventory help</s-link>
   </s-paragraph>
 
   <s-paragraph tone="critical">
@@ -20,6 +20,6 @@
   </s-paragraph>
 
   <s-paragraph tone="caution">
-    Subdued tone: <s-link>View archived products</s-link>
+    Caution tone: <s-link>View archived products</s-link>
   </s-paragraph>
 </s-stack>
