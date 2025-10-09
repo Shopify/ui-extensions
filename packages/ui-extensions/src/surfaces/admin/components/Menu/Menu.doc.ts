@@ -107,7 +107,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                   language: 'preview-jsx',
                   layout: 'alignStart',
                   customStyles: {
-                    minHeight: '300px',
+                    minHeight: '400px',
                   },
                 },
               ],

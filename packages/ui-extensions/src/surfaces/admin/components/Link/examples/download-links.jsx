@@ -1,6 +1,3 @@
-<s-text>
-  Export your customer data for marketing analysis.
-  <s-link href="javascript:void(0)" download="customer-export.csv">
-    Download customer list
-  </s-link>
-</s-text>
+<s-paragraph>
+  Export your customer data for marketing analysis. <s-link href="javascript:void(0)" download="customer-export.csv">Download customer list</s-link>
+</s-paragraph>

@@ -47,17 +47,17 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Links automatically inherit the tone from their surrounding text context.',
+              'Links automatically inherit the tone from their surrounding paragraph context.',
             codeblock: {
-              title: 'Basic Links in Text',
+              title: 'Basic Links in Paragraph',
               tabs: [
                 {
-                  code: './examples/basic-links-in-text.html',
+                  code: './examples/basic-links-in-paragraph.html',
                   language: 'html',
                 },
 
                 {
-                  code: './examples/basic-links-in-text.jsx',
+                  code: './examples/basic-links-in-paragraph.jsx',
                   language: 'preview-jsx',
                 },
               ],
@@ -65,17 +65,17 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates links within subdued text, showing how links can be used in less prominent text contexts for additional guidance or support.',
+              'Demonstrates links within subdued paragraph, showing how links can be used in less prominent paragraph contexts for additional guidance or support.',
             codeblock: {
-              title: 'Links in Subdued Text',
+              title: 'Links in Subdued Paragraph',
               tabs: [
                 {
-                  code: './examples/links-in-subdued-text.html',
+                  code: './examples/links-in-subdued-paragraph.html',
                   language: 'html',
                 },
 
                 {
-                  code: './examples/links-in-subdued-text.jsx',
+                  code: './examples/links-in-subdued-paragraph.jsx',
                   language: 'preview-jsx',
                 },
               ],

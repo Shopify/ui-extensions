@@ -1,6 +1,5 @@
 <s-banner tone="warning">
-  <s-text>
-    Your inventory for "Vintage t-shirt" is running low (3 remaining).
-    <s-link href="javascript:void(0)">Restock inventory</s-link>
-  </s-text>
+  <s-paragraph>
+    Your inventory for "Vintage t-shirt" is running low (3 remaining).  <s-link>Restock inventory</s-link>
+  </s-paragraph>
 </s-banner>
