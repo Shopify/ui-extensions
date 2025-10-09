@@ -115,18 +115,37 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Multiple checkboxes for different merchant configuration options with helpful details.',
+              'Multiple checkboxes for different configuration options with helpful details.',
             codeblock: {
-              title: 'Merchant settings group',
+              title: 'Settings group',
               tabs: [
                 {
-                  code: './examples/merchant-settings-group.html',
+                  code: './examples/settings-group.html',
                   language: 'html',
                 },
 
                 {
-                  code: './examples/merchant-settings-group.jsx',
+                  code: './examples/settings-group.jsx',
                   language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Form validation',
+        examples: [
+          {
+            description:
+              'Interactive example showing required checkbox validation with dynamic error messages.',
+            codeblock: {
+              title: 'Checkbox validation',
+              tabs: [
+                {
+                  code: './examples/validation-example.jsx',
+                  language: 'preview-jsx',
+                  layout: 'formWrapper',
                 },
               ],
             },

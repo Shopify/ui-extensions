@@ -5,4 +5,4 @@
   max={100}
   step="0.5"
   details="Enter discount amount between $0 and $100"
- />
+/>

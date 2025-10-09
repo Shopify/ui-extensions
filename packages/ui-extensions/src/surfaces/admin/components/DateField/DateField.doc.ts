@@ -94,7 +94,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows how to restrict selectable dates to weekdays only, useful for business day selections.',
+              'Shows how to restrict selectable dates to weekdays only.',
             codeblock: {
               title: 'With date restrictions',
               tabs: [
@@ -116,7 +116,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates allowing only specific dates, useful for appointment or event scheduling.',
+              'Demonstrates allowing only specific dates from a predefined list.',
             codeblock: {
               title: 'With specific allowed dates',
               tabs: [
@@ -181,7 +181,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Complete form example showing date field with other form elements for order processing.',
+              'Complete form example showing date field with other form elements.',
             codeblock: {
               title: 'Form integration',
               tabs: [
@@ -203,7 +203,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Example showing two date fields for selecting a date range, common in reporting and filtering.',
+              'Example showing two date fields for selecting a date range.',
             codeblock: {
               title: 'Date range selection',
               tabs: [
@@ -225,21 +225,48 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates date fields for configuring promotional campaigns with business logic restrictions.',
+              'Demonstrates date fields with business logic restrictions and validation.',
             codeblock: {
-              title: 'Promotional period setup',
+              title: 'Date fields with validation',
               tabs: [
                 {
-                  code: './examples/promotional-period-setup.html',
+                  code: './examples/date-fields-with-validation.html',
                   language: 'html',
                 },
 
                 {
-                  code: './examples/promotional-period-setup.jsx',
+                  code: './examples/date-fields-with-validation.jsx',
                   language: 'preview-jsx',
                   layout: 'alignStart',
                   customStyles: {
                     minHeight: '550px',
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Form validation',
+        examples: [
+          {
+            description:
+              'Interactive example showing required date field validation with dynamic error messages.',
+            codeblock: {
+              title: 'Date field validation',
+              tabs: [
+                {
+                  code: './examples/validation-example.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/validation-example.jsx',
+                  language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '450px',
                   },
                 },
               ],

@@ -44,7 +44,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a simple money field with a label, initial value, and numeric constraints for price input.',
+              'Demonstrates a simple money field with a label, initial value, and numeric constraints.',
             codeblock: {
               title: 'Basic usage',
               tabs: [
@@ -80,7 +80,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a money field with a product cost input, demonstrating basic error handling and validation.',
+              'Illustrates a money field demonstrating basic error handling and validation.',
             codeblock: {
               title: 'Basic field',
               tabs: [
@@ -98,7 +98,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Displays multiple money fields in a vertical stack, showing how to integrate price-related inputs in a form with varied details and constraints.',
+              'Displays multiple money fields in a vertical stack, showing how to integrate multiple currency inputs in a form with varied details and constraints.',
             codeblock: {
               title: 'Currency formatting with form integration',
               tabs: [
@@ -116,7 +116,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              "Demonstrates multiple money fields representing prices in different currencies, showcasing the component's flexibility for international pricing.",
+              "Demonstrates multiple money fields in different currencies, showcasing the component's flexibility for internationalization.",
             codeblock: {
               title: 'Internationalization and currency handling',
               tabs: [
@@ -128,6 +128,25 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/internationalization-and-currency-handling.jsx',
                   language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Form validation',
+        examples: [
+          {
+            description:
+              'Interactive example showing real-time validation with min/max limits and dynamic error messages.',
+            codeblock: {
+              title: 'Money field validation',
+              tabs: [
+                {
+                  code: './examples/validation-example.jsx',
+                  language: 'preview-jsx',
+                  layout: 'formWrapper',
                 },
               ],
             },

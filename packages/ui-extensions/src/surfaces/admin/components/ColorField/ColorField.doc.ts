@@ -43,8 +43,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         title: 'Basic usage',
         examples: [
           {
-            description:
-              'Standard color input field for brand color selection with hex value.',
+            description: 'Standard color input field with hex value.',
             codeblock: {
               title: 'Basic Usage',
               tabs: [
@@ -62,7 +61,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Required color field ensuring merchants provide essential brand colors.',
+              'Required color field ensuring essential color values are provided.',
             codeblock: {
               title: 'Required',
               tabs: [
@@ -80,7 +79,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Color field supporting alpha channel for background and overlay colors.',
+              'Color field supporting alpha channel for transparency control.',
             codeblock: {
               title: 'With Alpha Transparency',
               tabs: [
@@ -116,7 +115,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Color field with contextual details explaining color usage in brand identity.',
+              'Color field with contextual details providing additional guidance.',
             codeblock: {
               title: 'With Help Text',
               tabs: [
@@ -182,6 +181,25 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/form-integration.jsx',
                   language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Form validation',
+        examples: [
+          {
+            description:
+              'Interactive example showing real-time hex color validation with error messages.',
+            codeblock: {
+              title: 'Color validation',
+              tabs: [
+                {
+                  code: './examples/validation-example.jsx',
+                  language: 'preview-jsx',
+                  layout: 'formWrapper',
                 },
               ],
             },

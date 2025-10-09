@@ -1,6 +1,5 @@
 <s-date-field
   label="Event date"
-  name="eventDate"
+  error="Event date is required"
   required
-  error="Select a valid event date"
- />
+/>

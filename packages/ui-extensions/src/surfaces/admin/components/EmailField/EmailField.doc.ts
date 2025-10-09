@@ -134,6 +134,25 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
         ],
       },
+      {
+        title: 'Form validation',
+        examples: [
+          {
+            description:
+              'Interactive example showing real-time email validation with error messages that update as the user types.',
+            codeblock: {
+              title: 'Email validation',
+              tabs: [
+                {
+                  code: './examples/validation-example.jsx',
+                  language: 'preview-jsx',
+                  layout: 'formWrapper',
+                },
+              ],
+            },
+          },
+        ],
+      },
     ],
   },
 };

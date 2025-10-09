@@ -55,7 +55,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a basic ChoiceList with single selection, showing how to create a group of radio button choices for product visibility options.',
+              'Demonstrates a basic ChoiceList with single selection, showing how to create a group of radio button choices.',
             codeblock: {
               title: 'Basic usage',
               tabs: [
@@ -73,7 +73,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a ChoiceList with multiple selection enabled, allowing users to choose multiple checkout options with additional descriptive details for each choice.',
+              'Illustrates a ChoiceList with multiple selection enabled, allowing users to choose multiple options with additional descriptive details for each choice.',
             codeblock: {
               title: 'Multiple selections',
               tabs: [
@@ -109,18 +109,37 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Showcases a multiple-selection ChoiceList for shipping methods, with each option including detailed delivery timeframe information.',
+              'Showcases a multiple-selection ChoiceList with each option including detailed information.',
             codeblock: {
-              title: 'Shipping methods',
+              title: 'Multiple choices with details',
               tabs: [
                 {
-                  code: './examples/shipping-methods.html',
+                  code: './examples/multiple-choices-with-details.html',
                   language: 'html',
                 },
 
                 {
-                  code: './examples/shipping-methods.jsx',
+                  code: './examples/multiple-choices-with-details.jsx',
                   language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Form validation',
+        examples: [
+          {
+            description:
+              'Interactive example showing required choice validation with dynamic error messages.',
+            codeblock: {
+              title: 'Choice list validation',
+              tabs: [
+                {
+                  code: './examples/validation-example.jsx',
+                  language: 'preview-jsx',
+                  layout: 'formWrapper',
                 },
               ],
             },
