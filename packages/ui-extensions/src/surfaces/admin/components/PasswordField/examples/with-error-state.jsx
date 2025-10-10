@@ -1,0 +1,7 @@
+<s-password-field
+  label="Password"
+  name="password"
+  error="Password must be at least 8 characters"
+  minLength={8}
+  autocomplete="new-password"
+ />

@@ -36,6 +36,106 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Demonstrates a basic password field with a label, name, and required validation. Sets a minimum length of 8 characters and configures autocomplete for a new password.',
+            codeblock: {
+              title: 'Basic usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows a password field in an error state, displaying a custom error message when the password does not meet the minimum length requirement.',
+            codeblock: {
+              title: 'With error state',
+              tabs: [
+                {
+                  code: './examples/with-error-state.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-error-state.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates a password field with additional details providing guidance about password creation requirements.',
+            codeblock: {
+              title: 'With helper text',
+              tabs: [
+                {
+                  code: './examples/with-helper-text.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-helper-text.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows how the password field can be integrated into a form alongside other input fields, such as an email field, to create a complete login or registration form.',
+            codeblock: {
+              title: 'In form layout',
+              tabs: [
+                {
+                  code: './examples/in-form-layout.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/in-form-layout.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Demonstrates a password field with dynamic password strength validation, showing real-time feedback on password complexity requirements.',
+            codeblock: {
+              title: 'With password strength requirements',
+              tabs: [
+                {
+                  code: './examples/with-password-strength-requirements.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-password-strength-requirements.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

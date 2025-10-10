@@ -1,0 +1,16 @@
+<s-stack gap="base">
+  <!-- Generic error (avoid) -->
+  <s-text-field label="Product weight" error="Invalid value"></s-text-field>
+
+  <!-- Specific error (preferred) -->
+  <s-text-field
+    label="Product weight"
+    error="Weight must be greater than 0 and less than 500 pounds for shipping calculations"
+  ></s-text-field>
+
+  <!-- Business rule error -->
+  <s-text-field
+    label="SKU"
+    error="SKU 'TSHIRT-001' already exists. SKUs must be unique across all products."
+  ></s-text-field>
+</s-stack>

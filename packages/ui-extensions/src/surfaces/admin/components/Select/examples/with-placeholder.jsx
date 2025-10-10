@@ -1,0 +1,10 @@
+<s-select
+  label="Product category"
+  placeholder="Choose category for better organization"
+>
+  <s-option value="clothing">Clothing & apparel</s-option>
+  <s-option value="accessories">Accessories & jewelry</s-option>
+  <s-option value="home-garden">Home & garden</s-option>
+  <s-option value="electronics">Electronics & tech</s-option>
+  <s-option value="books">Books & media</s-option>
+</s-select>

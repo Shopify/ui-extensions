@@ -104,7 +104,13 @@ const jsxWrapper = (
   // Auto-wrap JSX if it doesn't already contain a return statement
   // This allows both simple JSX expressions and complete function bodies with hooks
   let jsxStringProcessed = jsxString;
-  if (!/\breturn\b/.test(jsxString)) {
+  // Check if 'return' appears as a statement
+  // If "return" has words before AND after it (like "for return request"), it's in text
+  // Otherwise, check if there's a return statement
+  const hasReturnInText = /\w+\s+return\s+\w+/.test(jsxString);
+  const hasReturnStatement = !hasReturnInText && /\breturn\b/.test(jsxString);
+
+  if (!hasReturnStatement) {
     jsxStringProcessed = `return (${jsxString})`;
   }
 

@@ -35,6 +35,70 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Demonstrates a simple number field for entering order quantity with a predefined range and step value.',
+            codeblock: {
+              title: 'Basic usage',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/basic-usage.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Illustrates a number field for entering product prices with currency prefix and suffix, using decimal input mode.',
+            codeblock: {
+              title: 'With prefix and suffix',
+              tabs: [
+                {
+                  code: './examples/with-prefix-and-suffix.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/with-prefix-and-suffix.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Showcases multiple number fields for different use cases: inventory tracking, percentage discount, and shipping weight, demonstrating various input modes and configurations.',
+            codeblock: {
+              title: 'Multiple examples',
+              tabs: [
+                {
+                  code: './examples/multiple-examples.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/multiple-examples.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

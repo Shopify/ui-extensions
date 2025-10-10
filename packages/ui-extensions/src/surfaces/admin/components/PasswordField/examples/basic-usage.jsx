@@ -1,0 +1,7 @@
+<s-password-field
+  label="Password"
+  name="password"
+  required
+  minLength={8}
+  autocomplete="new-password"
+/>
