@@ -35,9 +35,21 @@ const data: ReferenceEntityTemplateSchema = {
     {
       type: 'Generic',
       anchorLink: 'best-practices',
-      title: 'Best Practices',
+      title: 'Best practices',
       sectionContent: `
-- Optimize image file sizes and consider lazy loading for performance.
+Use these best practices to deliver a clear and accessible experience in your extensions.
+
+### Write concise alt text for each image
+
+Describe what’s important about each image so all users can understand the content.
+
+### Optimize performance
+
+Compress images and use modern formats; consider lazy loading to reduce initial load times.
+
+### Preserve visual breathing room
+
+Maintain consistent spacing around the group so images don’t feel crowded or overwhelming.
 `,
     },
   ],
