@@ -1,6 +1,6 @@
 <s-text-area
-  label="Reason for"
-  error="Please provide a detailed explanation for the request. This helps us improve our products and process the refund faster."
+  label="Reason for return"
+  error="Please provide a detailed explanation for the return request. This helps us improve our products and process the refund faster."
   minLength={20}
   placeholder="Explain why the customer is returning this item..."
   rows={3}
