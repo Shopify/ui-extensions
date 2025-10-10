@@ -68,24 +68,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Compares two approaches to managing text field state: a controlled component with a predefined value, and an uncontrolled component with a default value that can be modified by the user.',
-            codeblock: {
-              title: 'Controlled vs uncontrolled',
-              tabs: [
-                {
-                  code: './examples/controlled-vs-uncontrolled.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/controlled-vs-uncontrolled.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
               'Showcases a text field enhanced with a search icon and a placeholder, creating a visually intuitive input for searching products.',
             codeblock: {
               title: 'With icon',

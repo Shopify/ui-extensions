@@ -81,15 +81,15 @@ const data: AdminReferenceEntityTemplateSchema = {
             description:
               'Demonstrates the error state of a text area with a minimum length requirement, showing how validation errors are displayed in a commerce context.',
             codeblock: {
-              title: 'Commerce error state example',
+              title: 'With error state',
               tabs: [
                 {
-                  code: './examples/commerce-error-state-example.html',
+                  code: './examples/error-state.html',
                   language: 'html',
                 },
 
                 {
-                  code: './examples/commerce-error-state-example.jsx',
+                  code: './examples/error-state.jsx',
                   language: 'preview-jsx',
                 },
               ],
