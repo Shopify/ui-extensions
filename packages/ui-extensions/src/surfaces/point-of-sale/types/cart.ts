@@ -1,5 +1,6 @@
 import {CountryCode} from './country-code';
 import {TaxLine} from './tax-line';
+import {DiscountAllocation} from './discount-allocation';
 
 export interface Cart {
   /**
@@ -40,6 +41,7 @@ export interface LineItem {
   variantId?: number;
   productId?: number;
   discounts: Discount[];
+  discountAllocations?: DiscountAllocation[];
   taxable: boolean;
   taxLines: TaxLine[];
   sku?: string;
