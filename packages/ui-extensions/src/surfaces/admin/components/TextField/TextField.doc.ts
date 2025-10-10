@@ -121,8 +121,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             },
           },
           {
-            description:
-              'Displays a text field with a currency prefix and country code suffix, providing visual context and clarity for monetary value input.',
+            description: 'Displays text field usage with prefix and suffix',
             codeblock: {
               title: 'With prefix and suffix',
               tabs: [
@@ -133,24 +132,6 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/with-prefix-and-suffix.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Highlights the art of providing concise, helpful additional information below text fields, balancing between informative guidance and potential information overload.',
-            codeblock: {
-              title: 'Progressive disclosure with details',
-              tabs: [
-                {
-                  code: './examples/progressive-disclosure-with-details.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/progressive-disclosure-with-details.jsx',
                   language: 'preview-jsx',
                 },
               ],
