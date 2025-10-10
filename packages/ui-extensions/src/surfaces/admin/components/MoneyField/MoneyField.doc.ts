@@ -114,24 +114,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               ],
             },
           },
-          {
-            description:
-              "Demonstrates multiple money fields in different currencies, showcasing the component's flexibility for internationalization.",
-            codeblock: {
-              title: 'Internationalization and currency handling',
-              tabs: [
-                {
-                  code: './examples/internationalization-and-currency-handling.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/internationalization-and-currency-handling.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
         ],
       },
       {
