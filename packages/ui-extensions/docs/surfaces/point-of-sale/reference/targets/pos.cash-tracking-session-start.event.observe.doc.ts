@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosCashTrackingSessionStartObserve,
   description: `An event extension target that observes when cash tracking session starts
   > Note:
-  > This is part of a [[POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
+  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
   category: 'Targets',
   subCategory: 'Cash tracking',
   isVisualComponent: false,

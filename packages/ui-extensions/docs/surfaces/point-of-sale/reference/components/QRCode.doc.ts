@@ -8,7 +8,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'QRCode',
   description: `A component that renders a QR code in Shopify POS.
   > Note:
-  > This is part of a [[POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
+  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
   requires: 'use within a `POSReceiptBlock` component',
   isVisualComponent: true,
   type: 'component',
