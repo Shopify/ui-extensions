@@ -1,9 +1,0 @@
-{
-  /* Web Component */
-}
-<s-password-field
-  label="Password"
-  name="password"
-  value="example-value"
-  autocomplete="current-password"
- />

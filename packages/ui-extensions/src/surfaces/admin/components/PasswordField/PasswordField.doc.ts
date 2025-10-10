@@ -98,24 +98,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates a controlled password field with a predefined value, useful for scenarios where the password value is managed programmatically.',
-            codeblock: {
-              title: 'Controlled field',
-              tabs: [
-                {
-                  code: './examples/controlled-field.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/controlled-field.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
               'Shows how the password field can be integrated into a form alongside other input fields, such as an email field, to create a complete login or registration form.',
             codeblock: {
               title: 'In form layout',

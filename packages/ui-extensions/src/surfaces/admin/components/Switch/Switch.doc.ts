@@ -166,24 +166,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               ],
             },
           },
-          {
-            description:
-              'Simple example of directly using the switch component in plain HTML, showing its basic implementation with a label and checked state.',
-            codeblock: {
-              title: 'Direct HTML usage',
-              tabs: [
-                {
-                  code: './examples/direct-html-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/direct-html-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
         ],
       },
     ],

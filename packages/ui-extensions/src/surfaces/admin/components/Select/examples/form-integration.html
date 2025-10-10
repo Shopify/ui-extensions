@@ -1,7 +1,0 @@
-<form>
-  <s-select label="Product status" name="status" value="active">
-    <s-option value="active">Active</s-option>
-    <s-option value="draft">Draft</s-option>
-    <s-option value="archived">Archived</s-option>
-  </s-select>
-</form>

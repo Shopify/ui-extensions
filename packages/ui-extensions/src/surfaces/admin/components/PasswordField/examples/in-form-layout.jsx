@@ -1,6 +1,3 @@
-{
-  /* Web Component */
-}
 <s-stack gap="base">
   <s-text-field
     label="Email"

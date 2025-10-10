@@ -1,6 +1,3 @@
-{
-  /* Web Component */
-}
 <s-password-field
   label="Password"
   name="password"

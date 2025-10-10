@@ -1,1 +1,0 @@
-<s-switch id="html-switch" label="Enable feature" checked={true} />

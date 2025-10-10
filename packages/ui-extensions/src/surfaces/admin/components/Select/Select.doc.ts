@@ -160,24 +160,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Select element properly integrated within a form with name attribute for data submission.',
-            codeblock: {
-              title: 'Form integration',
-              tabs: [
-                {
-                  code: './examples/form-integration.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/form-integration.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
               'Select in disabled state preventing user interaction with pre-selected value.',
             codeblock: {
               title: 'Disabled state',

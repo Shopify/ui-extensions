@@ -95,24 +95,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               ],
             },
           },
-          {
-            description:
-              'Demonstrates a number field with strict validation constraints for storage temperature, showing how to set minimum, maximum, and step values with a descriptive details text.',
-            codeblock: {
-              title: 'With validation constraints',
-              tabs: [
-                {
-                  code: './examples/with-validation-constraints.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-validation-constraints.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
         ],
       },
     ],
