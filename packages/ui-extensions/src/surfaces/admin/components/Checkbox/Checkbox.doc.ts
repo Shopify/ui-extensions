@@ -48,11 +48,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               title: 'Indeterminate state',
               tabs: [
                 {
-                  code: './examples/indeterminate-state.html',
-                  language: 'html',
-                },
-
-                {
                   code: './examples/indeterminate-state.jsx',
                   language: 'preview-jsx',
                 },
