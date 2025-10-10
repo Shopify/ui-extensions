@@ -104,7 +104,9 @@ const jsxWrapper = (
   // Auto-wrap JSX if it doesn't already contain a return statement
   // This allows both simple JSX expressions and complete function bodies with hooks
   let jsxStringProcessed = jsxString;
-  if (!/\breturn\b/.test(jsxString)) {
+  // Check if 'return' appears as a statement (not inside quotes)
+  // Match 'return' that is NOT preceded or followed by quotes
+  if (!/(?<!['"`])\breturn\b(?!['"`])/.test(jsxString)) {
     jsxStringProcessed = `return (${jsxString})`;
   }
 
