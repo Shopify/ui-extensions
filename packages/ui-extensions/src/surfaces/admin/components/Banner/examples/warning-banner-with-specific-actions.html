@@ -11,7 +11,7 @@
   <s-button
     slot="secondary-actions"
     variant="secondary"
-    href="https://help.shopify.com/manual/products/details/product-details#shipping-weight"
+    href="javascript:void(0)"
   >
     Setup guide
   </s-button>

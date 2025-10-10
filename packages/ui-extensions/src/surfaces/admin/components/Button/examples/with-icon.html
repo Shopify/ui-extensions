@@ -1,0 +1,1 @@
+<s-button icon="plus">Add product</s-button>

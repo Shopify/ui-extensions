@@ -1,0 +1,19 @@
+<>
+  <s-button icon="settings" commandFor="admin-settings">
+    Settings
+  </s-button>
+
+  <s-menu id="admin-settings" accessibilityLabel="Settings menu">
+    <s-section heading="Account">
+      <s-button icon="profile">Profile settings</s-button>
+      <s-button icon="lock">Security</s-button>
+      <s-button>Billing information</s-button>
+    </s-section>
+    <s-section heading="Store">
+      <s-button icon="store">Store settings</s-button>
+      <s-button>Payment providers</s-button>
+      <s-button icon="delivery">Shipping rates</s-button>
+    </s-section>
+    <s-button href="javascript:void(0)" icon="person-exit">Sign out</s-button>
+  </s-menu>
+</>

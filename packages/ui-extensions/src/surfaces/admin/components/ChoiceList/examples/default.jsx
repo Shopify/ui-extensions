@@ -1,3 +1,4 @@
+<>
 const handleChange = (event) => {
   console.log('Values: ', event.currentTarget.values)
 }
@@ -14,3 +15,4 @@ return (
     <s-choice value="required">Required</s-choice>
   </s-choice-list>
 )
+</>
