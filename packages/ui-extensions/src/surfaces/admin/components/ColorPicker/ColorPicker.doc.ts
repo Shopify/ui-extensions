@@ -78,24 +78,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               ],
             },
           },
-          {
-            description:
-              'Shows how the color picker can be used within a form, demonstrating native form submission and interaction with a submit button.',
-            codeblock: {
-              title: 'Form integration',
-              tabs: [
-                {
-                  code: './examples/form-integration.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/form-integration.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
         ],
       },
     ],
