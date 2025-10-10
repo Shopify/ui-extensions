@@ -6,7 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosReturnPostBlockRender,
   description: `Renders a custom section within the native post return screen
   > Note:
-  > This is part of a POS UI Extensions developer preview. More information to come.`,
+  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
   defaultExample: {
     codeblock: generateJsxCodeBlock(
       'Return Post Block',

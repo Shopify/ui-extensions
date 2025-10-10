@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosReceiptHeaderBlockRender,
   description: `Renders a custom section within the POS receipt header
   > Note:
-  > This is part of a POS UI Extensions developer preview. More information to come.`,
+  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
   defaultExample: {
     codeblock: generateJsxCodeBlock(
       'Receipt Header Block',
