@@ -44,13 +44,13 @@ Android devices can have a restriction on how deep links are handled. To resolve
     },
     {
       type: 'Generic',
-      anchorLink: `could-not-resolve`,
-      title: 'Could not resolve...',
+      anchorLink: `package-resolution-failed`,
+      title: 'Package resolution failed',
       codeblock: {
         title: 'Example',
         tabs: [
           {
-            code: `${examplePath}/could-not-resolve.txt`,
+            code: `${examplePath}/package-resolution-failed.txt`,
             language: 'text',
           },
         ],
