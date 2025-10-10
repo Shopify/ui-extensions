@@ -1,10 +1,7 @@
-<s-stack gap="base">
-  {/* Required URL with validation */}
-  <s-url-field
-    label="Company website"
-    required
-    minLength={10}
-    maxLength={200}
-    error="Please enter a valid website URL"
-   />
-</s-stack>
+<s-url-field
+  label="Company website"
+  required
+  minLength={10}
+  maxLength={200}
+  error="Please enter a valid website URL"
+  />

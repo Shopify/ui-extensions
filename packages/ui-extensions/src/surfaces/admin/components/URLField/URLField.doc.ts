@@ -97,24 +97,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates a controlled URL field with an empty initial value and a descriptive placeholder, ready for programmatic value management.',
-            codeblock: {
-              title: 'Controlled component',
-              tabs: [
-                {
-                  code: './examples/controlled-component.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/controlled-component.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
               'Shows a URL field in a disabled state, displaying a pre-filled URL that cannot be edited by the user.',
             codeblock: {
               title: 'Disabled state',
@@ -126,24 +108,6 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates how multiple URL fields can be integrated into a form layout using Polaris layout components like s-box and s-stack.',
-            codeblock: {
-              title: 'Form integration with layout',
-              tabs: [
-                {
-                  code: './examples/form-integration-with-layout.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/form-integration-with-layout.jsx',
                   language: 'preview-jsx',
                 },
               ],
