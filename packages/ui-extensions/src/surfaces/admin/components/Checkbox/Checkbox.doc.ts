@@ -35,6 +35,120 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Component examples',
+    exampleGroups: [
+      {
+        title: 'Basic usage',
+        examples: [
+          {
+            description:
+              'Checkbox in indeterminate state, commonly used for "select all" functionality when some items are selected.',
+            codeblock: {
+              title: 'Indeterminate state',
+              tabs: [
+                {
+                  code: './examples/indeterminate-state.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Checkbox with validation error message for required form fields.',
+            codeblock: {
+              title: 'Error state',
+              tabs: [
+                {
+                  code: './examples/error-state.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/error-state.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Checkbox with descriptive details text to provide additional context about the option.',
+            codeblock: {
+              title: 'Help text',
+              tabs: [
+                {
+                  code: './examples/help-text.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/help-text.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              "Checkbox in disabled state with explanatory details about why it's unavailable.",
+            codeblock: {
+              title: 'Disabled state',
+              tabs: [
+                {
+                  code: './examples/disabled-state.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/disabled-state.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Multiple checkboxes for different configuration options with helpful details.',
+            codeblock: {
+              title: 'Settings group',
+              tabs: [
+                {
+                  code: './examples/settings-group.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/settings-group.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Form validation',
+        examples: [
+          {
+            description:
+              'Interactive example showing required checkbox validation with dynamic error messages.',
+            codeblock: {
+              title: 'Checkbox validation',
+              tabs: [
+                {
+                  code: './examples/validation-example.jsx',
+                  language: 'preview-jsx',
+                  layout: 'formWrapper',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

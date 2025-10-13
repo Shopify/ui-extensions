@@ -1,0 +1,7 @@
+<s-date-picker
+  type="single"
+  name="appointment-date"
+  disallow="past"
+  allow="2024-06-01--2024-06-31"
+  view="2024-06"
+ />

@@ -1,0 +1,45 @@
+<!-- Quick date selection with onChange callback -->
+<s-stack gap="base">
+  <s-button-group>
+    <s-button slot="secondary-actions" id="last-7-days">Last 7 days</s-button>
+    <s-button slot="secondary-actions" id="last-30-days">Last 30 days</s-button>
+    <s-button slot="secondary-actions" id="this-month">This month</s-button>
+  </s-button-group>
+  <s-date-picker
+    type="range"
+    name="analytics-period"
+    id="analytics-picker"
+    value="2025-01-01--2025-01-31"
+    view="2025-01"
+    onchange="console.log('Date range changed:', event.target.value)"
+  ></s-date-picker>
+  <s-text size="sm" id="selected-range">
+    Selected range: 2025-01-01--2025-01-31
+  </s-text>
+</s-stack>
+
+<script>
+  const picker = document.getElementById('analytics-picker');
+  const display = document.getElementById('selected-range');
+
+  // Handle picker changes
+  picker.addEventListener('change', (event) => {
+    display.textContent = `Selected range: ${event.target.value}`;
+  });
+
+  // Quick selection buttons
+  document.getElementById('last-7-days').addEventListener('click', () => {
+    picker.value = '2025-01-07--2025-01-13';
+    display.textContent = 'Selected range: 2025-01-07--2025-01-13';
+  });
+
+  document.getElementById('last-30-days').addEventListener('click', () => {
+    picker.value = '2024-12-14--2025-01-13';
+    display.textContent = 'Selected range: 2024-12-14--2025-01-13';
+  });
+
+  document.getElementById('this-month').addEventListener('click', () => {
+    picker.value = '2025-01-01--2025-01-31';
+    display.textContent = 'Selected range: 2025-01-01--2025-01-31';
+  });
+</script>

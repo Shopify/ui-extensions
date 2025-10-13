@@ -210,6 +210,12 @@ const templates = {
     wrapperElement: 's-box',
     wrapperAttributes: 'padding="base"',
   }),
+  formWrapper: createTemplate({
+    layoutStyles:
+      'display: grid; place-items: center; gap: 0.5rem; background: #F1F1F1;  padding: 1rem;',
+    wrapperElement: 's-box',
+    wrapperAttributes: 'padding="base", inlineSize="300px"',
+  }),
 };
 
 const transformJson = async (filePath, isExtensions) => {

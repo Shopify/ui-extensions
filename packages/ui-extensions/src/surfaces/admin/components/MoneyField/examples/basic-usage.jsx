@@ -1,0 +1,7 @@
+<s-money-field
+  label="Price"
+  value="19.99"
+  min={0}
+  max={1000}
+  step="0.01"
+ />

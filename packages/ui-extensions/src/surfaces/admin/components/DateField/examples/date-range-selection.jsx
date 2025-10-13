@@ -1,0 +1,19 @@
+<s-stack gap="base">
+  <s-heading>Sales report period</s-heading>
+
+  <s-stack direction="inline" gap="base">
+    <s-date-field
+      label="Start date"
+      name="startDate"
+      id="report-start"
+     />
+
+    <s-date-field
+      label="End date"
+      name="endDate"
+      id="report-end"
+     />
+  </s-stack>
+
+  <s-button variant="primary">Generate report</s-button>
+</s-stack>
