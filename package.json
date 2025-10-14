@@ -6,6 +6,9 @@
   "workspaces": [
     "./packages/*"
   ],
+  "resolutions": {
+    "**/typescript": "4.9.5"
+  },
   "scripts": {
     "build": "loom build",
     "build-consumer": "loom build && ./scripts/build-consumer.sh",
