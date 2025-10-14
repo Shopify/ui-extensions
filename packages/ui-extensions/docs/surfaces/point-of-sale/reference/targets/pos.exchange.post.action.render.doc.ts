@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   description: `A full-screen extension target that renders when a \`pos.exchange.post.action.menu-item.render\` target calls for it
 
   > Note:
-  > This is part of a POS UI Extensions developer preview. More information to come.`,
+  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
   defaultExample: {
     codeblock: generateJsxCodeBlock(
       'Exchange Post Action',
