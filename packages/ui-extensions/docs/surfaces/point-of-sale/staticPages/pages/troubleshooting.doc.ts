@@ -65,13 +65,13 @@ Android devices can have a restriction on how deep links are handled. To resolve
     },
     {
       type: 'Generic',
-      anchorLink: `could-not-resolve`,
-      title: 'Could not resolve...',
+      anchorLink: `package-resolution-failed`,
+      title: 'Package resolution failed',
       codeblock: {
         title: 'Example',
         tabs: [
           {
-            code: `${examplePath}/could-not-resolve.txt`,
+            code: `${examplePath}/package-resolution-failed.txt`,
             language: 'text',
           },
         ],
@@ -84,13 +84,13 @@ This error is most likely from missing a dependency in package.json in the app r
     },
     {
       type: 'Generic',
-      anchorLink: 'cannot-be-used-as-jsx',
-      title: '... cannot be used as a JSX component',
+      anchorLink: 'invalid-jsx-component-type',
+      title: 'Invalid JSX component type',
       codeblock: {
         title: 'Example',
         tabs: [
           {
-            code: `${examplePath}/cannot-be-used-as-jsx.txt`,
+            code: `${examplePath}/invalid-jsx-component-type.txt`,
             language: 'text',
           },
         ],
@@ -106,7 +106,7 @@ This issue commonly happens when \`Yarn\` is used for dependency management. The
       sectionContent: `
 ### Resolution
 
-The \`getSessionToken()\` function returns \`null\` when the authenticated user (the user that logged into Shopify POS with their email address) doesn't have the correct app permissions enabled for your app. Session tokens are only returned for authenticated users who have enabled the correct app permission for the app making the request. This is irrelevant of POS Staff members, as those are not authenticated users. 
+The \`getSessionToken()\` function returns \`null\` when the authenticated user (the user that logged into Shopify POS with their email address) doesn't have the correct app permissions enabled for your app. Session tokens are only returned for authenticated users who have enabled the correct app permission for the app making the request. This is irrelevant of POS Staff members, as those are not authenticated users.
 
 To resolve this issue:
 
