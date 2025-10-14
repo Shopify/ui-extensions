@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosReceiptFooterBlockRender,
   description: `Renders a custom section within the POS receipt footer
   > Note:
-  > This is part of a [POS UI Extensions developer preview](/docs/api/developer-previews#pos-ui-extensions-developer-preview). More information to come.`,
+  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
   defaultExample: {
     codeblock: generateCodeBlock(
       'Block',
