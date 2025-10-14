@@ -181,7 +181,7 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
           description: `The customer's name and contact information.
           \nSee all [extension targets](/docs/api/customer-account-ui-extensions/targets).
             `,
-          image: 'target-overview-customer-details-extension.png',
+          image: 'target-overview-customer-details-extension-b2b.png',
           altText:
             "The desktop and mobile view of the Profile page. Above the page title, and below the section of the page that contains the customer's name, email, and phone number, there are purple dotted-line boxes that indicate the available placements for the block extension target on this page.",
         },
@@ -217,7 +217,7 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
           description: `Where customers can view and manage all their past and current orders.
           \nSee all [extension targets](/docs/api/customer-account-ui-extensions/targets).
             `,
-          image: 'target-overview-order-index-page-extension.png',
+          image: 'target-overview-order-action-menu-extension.png',
           altText:
             "The desktop and mobile view of the Order index page that contains a list of all orders. In the Manage menu, there's a red dotted-line box that says customer-account.order-action-menu-item.render, indicating the static extension target available in this location.",
         },
@@ -226,7 +226,7 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
           description: `Where customers can view, track, and manage a specific order.
           \nSee all [extension targets](/docs/api/customer-account-ui-extensions/targets).
           `,
-          image: 'target-overview-order-status-page-extension.png',
+          image: 'target-overview-order-status-order-action-menu-extension.png',
           altText:
             "The desktop and mobile view of the Order status page that contains details about a specific order. In the Manage menu, there's a red dotted-line box that says customer-account.order-action-menu-item.render, indicating the static extension target available in this location.",
         },
