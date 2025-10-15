@@ -8,9 +8,9 @@
   </s-button>
 
   <s-popover id="table-settings-popover">
-    <s-section>
-      <s-stack gap="base">
-        <s-stack gap="small">
+    <s-box padding="base">
+      <s-stack gap="small-200">
+        <s-stack gap="small-800">
           <s-heading>Choose columns to display</s-heading>
           <s-choice-list>
             <s-choice value="sku" selected>
@@ -28,6 +28,6 @@
         </s-stack>
         <s-button variant="primary">Apply changes</s-button>
       </s-stack>
-    </s-section>
+    </s-box>
   </s-popover>
 </>
