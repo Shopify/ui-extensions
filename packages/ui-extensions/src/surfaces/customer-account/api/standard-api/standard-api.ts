@@ -33,7 +33,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * extension’s configuration file.
    *
    * @example 'customer-account.order-status.block.render'
-   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+   * @see https://shopify.dev/docs/api/customer-account-ui-extensions/extension-targets-overview
    * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    *
    * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
@@ -133,7 +133,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Allows setting and updating customer privacy consent settings and tracking consent metafields.
    *
-   * > Note: Requires the [`customer_privacy` capability](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#collect-buyer-consent) to be set to `true`.
+   * > Note: Requires the [`customer_privacy` capability](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration#collect-buyer-consent) to be set to `true`.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */

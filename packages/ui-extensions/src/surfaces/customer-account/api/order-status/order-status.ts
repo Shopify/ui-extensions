@@ -190,7 +190,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
 
   /**
    * The metafields requested in the
-   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration)
+   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration)
    * file. These metafields are updated when there's a change in the merchandise items
    * being purchased by the customer.
    *
@@ -241,7 +241,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * extension’s configuration file.
    *
    * @example 'customer-account.order-status.block.render'
-   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+   * @see https://shopify.dev/docs/api/customer-account-ui-extensions/extension-targets-overview
    * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    *
    * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
@@ -256,7 +256,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
    * Details about the location, language, and currency of the buyer. For utilities to easily
    * format and translate content based on these details, you can use the
-   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-i18n)
+   * [`i18n`](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/localization)
    * object instead.
    */
   localization: OrderStatusLocalization;
@@ -751,7 +751,7 @@ export interface SelectedPaymentOption {
   /**
    * The unique handle referencing `PaymentOption.handle`.
    *
-   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-availablepaymentoptions).
+   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/apis/payments#standardapi-propertydetail-selectedpaymentoptions).
    */
   handle: string;
 }
@@ -918,7 +918,7 @@ export interface PaymentTermsTemplate {
    */
   id: string;
   /**
-   * The name of the payment terms translated to the buyer's current language. See [localization.language](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-localization).
+   * The name of the payment terms translated to the buyer's current language. See [localization.language](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/localization#standardapi-propertydetail-localization).
    */
   name: string;
   /**
