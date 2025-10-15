@@ -1,0 +1,65 @@
+<s-stack gap="base">
+  <s-stack direction="inline" gap="base">
+    <s-button commandFor="small-modal" command="--show">
+      Small modal
+    </s-button>
+    <s-button commandFor="large-modal" command="--show">
+      Large modal
+    </s-button>
+  </s-stack>
+
+  {/* Small modal for quick confirmations */}
+  <s-modal id="small-modal" heading="Confirm action" size="small-100">
+    <s-text>Are you sure you want to proceed?</s-text>
+    <s-button
+      slot="primary-action"
+      variant="primary"
+      commandFor="small-modal"
+      command="--hide"
+    >
+      Confirm
+    </s-button>
+    <s-button
+      slot="secondary-actions"
+      variant="secondary"
+      commandFor="small-modal"
+      command="--hide"
+    >
+      Cancel
+    </s-button>
+  </s-modal>
+
+  {/* Large modal for detailed content */}
+  <s-modal id="large-modal" heading="Order details" size="large-100">
+    <s-stack gap="base">
+      <s-section>
+        <s-heading>Order #1001</s-heading>
+        <s-text>Placed on March 15, 2024</s-text>
+      </s-section>
+
+      <s-divider />
+
+      <s-section>
+        <s-heading>Items</s-heading>
+        <s-stack gap="small">
+          <s-text>Winter jacket - $89.99</s-text>
+          <s-text>Wool scarf - $29.99</s-text>
+          <s-text>Leather gloves - $45.99</s-text>
+        </s-stack>
+      </s-section>
+
+      <s-divider />
+
+      <s-text type="strong">Total: $165.97</s-text>
+    </s-stack>
+
+    <s-button
+      slot="primary-action"
+      variant="primary"
+      commandFor="large-modal"
+      command="--hide"
+    >
+      Close
+    </s-button>
+  </s-modal>
+</s-stack>
