@@ -55,24 +55,24 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Popover with multiple action buttons demonstrating how popovers can provide contextual actions without cluttering the main interface.',
+              'Popover displaying admin notifications such as new orders, inventory alerts, and payment confirmations, demonstrating how popovers can show informational content without cluttering the main interface.',
             codeblock: {
-              title: 'Popover with action buttons',
+              title: 'Popover with notifications',
               tabs: [
                 {
-                  code: './examples/product-status-quick-actions.jsx',
+                  code: './examples/notifications.jsx',
                   language: 'preview-jsx',
                   layout: 'alignStart',
                   customStyles: {
-                    minHeight: '300px',
+                    minHeight: '350px',
                   },
                 },
                 {
-                  code: './examples/product-status-quick-actions.html',
+                  code: './examples/notifications.html',
                   language: 'preview',
                   layout: 'alignStart',
                   customStyles: {
-                    minHeight: '300px',
+                    minHeight: '350px',
                   },
                 },
               ],
@@ -105,24 +105,24 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Popover with a search field and list of results demonstrating how popovers can support dynamic content, interactive elements, and automatic resizing.',
+              'Popover displaying detailed inventory information using Box padding instead of Section, demonstrating an alternative layout approach for data-focused content.',
             codeblock: {
-              title: 'Popover with search field',
+              title: 'Popover with inventory details',
               tabs: [
                 {
-                  code: './examples/customer-search-with-results.jsx',
+                  code: './examples/inventory-stock-details.jsx',
                   language: 'preview-jsx',
                   layout: 'alignStart',
                   customStyles: {
-                    minHeight: '500px',
+                    minHeight: '350px',
                   },
                 },
                 {
-                  code: './examples/customer-search-with-results.html',
+                  code: './examples/inventory-stock-details.html',
                   language: 'preview',
                   layout: 'alignStart',
                   customStyles: {
-                    minHeight: '500px',
+                    minHeight: '350px',
                   },
                 },
               ],
