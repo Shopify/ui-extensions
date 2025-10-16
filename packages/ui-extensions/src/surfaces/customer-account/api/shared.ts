@@ -156,13 +156,11 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * The allowed capabilities of the extension, defined
-   * in your [shopify.ui.extension.toml](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
+   * in your [shopify.ui.extension.toml](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration) file.
    *
-   * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
+   * * [`api_access`](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration#api-access): the extension can access the Storefront API.
    *
-   * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
-   *
-   * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
+   * * [`network_access`](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration#network-access): the extension can make external network calls.
    */
   capabilities: SubscribableSignalLike<Capability[]>;
 
@@ -197,7 +195,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * extension’s configuration file.
    *
    * @example 'customer-account.order-status.block.render'
-   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+   * @see https://shopify.dev/docs/api/customer-account-ui-extensions/extension-targets-overview
    * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    */
   target: Target;
