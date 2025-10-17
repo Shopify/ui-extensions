@@ -1,8 +1,0 @@
-api_version = "2025-10"
-
-[[extensions]]
-name = "your-extension"
-handle = "your-extension"
-type = "ui_extension"
-
-# Contents of your existing file...

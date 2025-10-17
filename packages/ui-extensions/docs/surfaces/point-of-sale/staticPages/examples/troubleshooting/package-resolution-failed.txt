@@ -1,3 +1,0 @@
-✘ [ERROR] Could not resolve "@preact/signals"
-
-You can mark the path "@preact/signals" as external to exclude it from the bundle, which will remove this error.
