@@ -112,8 +112,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         title: 'Basic usage',
         examples: [
           {
-            description:
-              'Tables are full-width by default to utilize all available space for displaying data.',
+            description: 'Tables expand to full width by default.',
             codeblock: {
               title: 'Basic Usage',
               tabs: [
@@ -132,7 +131,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates a table with pagination controls, showing how to add previous and next page functionality to handle large datasets.',
+              'Add pagination controls for navigating large datasets.',
             codeblock: {
               title: 'With Pagination',
               tabs: [
@@ -150,8 +149,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             },
           },
           {
-            description:
-              "Showcases the table's loading state, which can be used to indicate that data is being fetched or processed.",
+            description: 'Display a loading state while fetching data.',
             codeblock: {
               title: 'With Loading State',
               tabs: [
@@ -168,8 +166,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             },
           },
           {
-            description:
-              'A comprehensive example showing a full-width table with multiple columns. Tables automatically expand to fill their container width.',
+            description: 'Display multiple columns in a full-width table.',
             codeblock: {
               title: 'Full-width table with multiple columns',
               tabs: [
@@ -191,17 +188,16 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'A comprehensive example demonstrating different list slot types for various header and cell configurations, showing how to use kicker, primary, secondary, inline, and labeled slots.',
+              'Display data using the list variant with specialized slot types. List is the default variant on mobile devices.',
             codeblock: {
-              title: 'Advanced Table with All List Slot Types',
+              title: 'List Variant',
               tabs: [
                 {
-                  code: './examples/advanced-table-with-all-list-slot-types.html',
+                  code: './examples/list-variant.html',
                   language: 'html',
                 },
-
                 {
-                  code: './examples/advanced-table-with-all-list-slot-types.jsx',
+                  code: './examples/list-variant.jsx',
                   language: 'preview-jsx',
                   layout: 'padding',
                 },

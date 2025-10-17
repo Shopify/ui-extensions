@@ -4,8 +4,8 @@
       <s-table-header listSlot="primary">Product</s-table-header>
       <s-table-header listSlot="kicker">SKU</s-table-header>
       <s-table-header listSlot="inline">Status</s-table-header>
-      <s-table-header listSlot="labeled">Inventory</s-table-header>
-      <s-table-header listSlot="labeled">Price</s-table-header>
+      <s-table-header listSlot="labeled" format="numeric">Inventory</s-table-header>
+      <s-table-header listSlot="labeled" format="currency">Price</s-table-header>
       <s-table-header listSlot="labeled">Last updated</s-table-header>
     </s-table-header-row>
 
