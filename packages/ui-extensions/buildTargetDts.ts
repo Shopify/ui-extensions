@@ -227,6 +227,17 @@ export function buildTargetsDefinitions(
 
   const targets = extractTargetComponents(sourceFile);
   targets.forEach((target) => {
+    // Filter out legacy checkout targets that begin with 'Checkout::'.
+    //
+    // eslint-disable-next-line no-warning-comments
+    // TODO: remove these targets from the ui-extensions package instead
+    // which requires a checkout-web abstraction for backwards compatibility.
+    if (surface === 'checkout' && target.name.startsWith("'Checkout::")) {
+      // eslint-disable-next-line no-console
+      console.log(`Skipping legacy target: ${target.name}`);
+      return;
+    }
+
     createTargetDefinition({
       srcPaths: componentSrcPaths,
       buildPath,
