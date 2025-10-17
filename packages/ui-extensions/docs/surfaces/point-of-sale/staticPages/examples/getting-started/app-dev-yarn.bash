@@ -1,2 +1,0 @@
-yarn
-shopify app dev
