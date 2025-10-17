@@ -1,12 +1,16 @@
-<s-section padding="none">  
-  <s-table>
+<s-section padding="none">
+  <s-table variant="list">
     <s-table-header-row>
       <s-table-header listSlot="kicker">ID</s-table-header>
       <s-table-header listSlot="primary">Customer</s-table-header>
       <s-table-header listSlot="secondary">Email</s-table-header>
       <s-table-header listSlot="inline">Status</s-table-header>
-      <s-table-header listSlot="labeled">Orders</s-table-header>
-      <s-table-header listSlot="labeled">Total spent</s-table-header>
+      <s-table-header listSlot="labeled" format="numeric">
+        Orders
+      </s-table-header>
+      <s-table-header listSlot="labeled" format="currency">
+        Total spent
+      </s-table-header>
     </s-table-header-row>
     <s-table-body>
       <s-table-row>
