@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.3
+
+### Patch Changes
+
+- [#3455](https://github.com/Shopify/ui-extensions/pull/3455) [`29154ad`](https://github.com/Shopify/ui-extensions/commit/29154adef848f0d553e461a63a60de6f3f00f431) Thanks [@vividviolet](https://github.com/vividviolet)! - Add missing Switch and SearchField in Admin
+
 ## 2025.10.2
 
 ### Patch Changes
