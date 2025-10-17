@@ -54,7 +54,7 @@ You can track new releases and update your extensions by referencing the [develo
         {
           name: 'Getting started guide',
           subtitle: 'Set up your development environment',
-          url: '/docs/api/pos-ui-extensions/getting-started',
+          url: '/docs/apps/build/pos/getting-started',
           type: 'blocks',
         },
       ],
