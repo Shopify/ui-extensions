@@ -6,9 +6,9 @@ const data: CategoryTemplateSchema = {
     {
       type: 'Generic',
       anchorLink: 'additional-components',
-      title: 'Additional components',
+      title: 'Components for customer accounts',
       sectionContent:
-        'In addition to the components below, you can also use checkout components to build customer account UI extensions.',
+        'The components on this page are for customer account UI extensions. For more options, you can also use components from the larger checkout library.',
       sectionCard: [
         {
           type: 'blocks',
