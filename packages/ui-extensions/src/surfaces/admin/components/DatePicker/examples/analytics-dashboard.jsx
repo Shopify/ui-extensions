@@ -30,6 +30,6 @@ return (
         setValue(event.target.value);
       }}
     />
-    <s-text size="sm">Selected range: {value}</s-text>
+    <s-text>Selected range: {value}</s-text>
   </s-stack>
 )

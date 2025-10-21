@@ -1,4 +1,4 @@
-<s-page heading="Store settings" inline-size="small">
+<s-page heading="Store settings" inlineSize="small">
   <s-section>
     <s-stack gap="base">
       <s-text>Configure your basic store preferences.</s-text>

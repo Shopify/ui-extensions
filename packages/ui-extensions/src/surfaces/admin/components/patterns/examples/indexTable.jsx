@@ -2,12 +2,15 @@
   <s-table>
     <s-grid slot="filters" gap="small-200" gridTemplateColumns="1fr auto">
       <s-text-field
+        label="Search puzzles"
+        labelAccessibilityVisibility="exclusive"
         icon="search"
         placeholder="Searching all puzzles"
        />
       <s-button
         icon="sort"
         variant="secondary"
+        accessibilityLabel="Sort"
         interestFor="sort-tooltip"
         commandFor="sort-actions"
        />

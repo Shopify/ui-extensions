@@ -2,7 +2,7 @@ const [error, setError] = useState('Please select at least one option');
 
 return (
   <s-section>
-    <s-stack gap="base" inlineAlign="start">
+    <s-stack gap="base" justifyContent="start">
       <s-choice-list
         label="Product visibility"
         name="visibility"
