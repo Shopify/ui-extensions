@@ -278,6 +278,29 @@ By default, the responsive value will query against the closest parent; to look 
     },
     {
       type: 'Generic',
+      anchorLink: 'methods',
+      title: 'Methods',
+      sectionContent: `Methods are functions available on components for programmatic control. Components like \`Modal\`, \`Sheet\`, and \`Announcement\` provide methods such as \`hideOverlay()\` or \`dismiss()\` to control their behavior imperatively when needed.
+
+Use methods when you need to trigger actions that can’t be achieved through property changes alone, such as closing an overlay after an async operation or resetting component state.`,
+      codeblock: {
+        title: 'Example',
+        tabs: [
+          {
+            code: './examples/methods.example.jsx',
+            title: 'JSX',
+            language: 'jsx',
+          },
+          {
+            code: '/examples/methods-js.example.jsx',
+            title: 'JS',
+            language: 'js',
+          },
+        ],
+      },
+    },
+    {
+      type: 'Generic',
       title: 'Using Forms',
       sectionContent: `The [Form](https://shopify.dev/docs/api/checkout-ui-extensions/polaris-web-components/forms/form) component provides a way to manage form state and submit data to your app's backend or directly to Shopify using Direct API access.\n\nWhen the form is submitted or reset the relevant callback in the form component will get triggered.\n\nUsing this, you can control what defines a component to be dirty by utilizing the input's defaultValue property.\n\nRules:\n\n- When the defaultValue is set, the component will be considered dirty if the value of the input is different from the defaultValue. You may update the defaultValue when the form is submitted to reset the dirty state of the form.\n\n- When the defaultValue is not set, the component will be considered dirty if the value of the input is different from the initial value or from the last dynamic update to the input's value that wasn't triggered by user input.
 
