@@ -3,7 +3,7 @@ const [error, setError] = useState('Event date is required');
 
 return (
   <s-section>
-    <s-stack gap="base" inlineAlign="start">
+    <s-stack gap="base" justifyContent="start">
       <s-text-field label="Event name" />
       <s-date-field
         label="Event date"

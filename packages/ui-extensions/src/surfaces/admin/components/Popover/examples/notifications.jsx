@@ -6,21 +6,21 @@
   <s-popover id="notifications-popover">
     <s-box padding="base">
       <s-stack gap="small-200">
-        <s-stack gap="small-800">
+        <s-stack gap="small">
           <s-heading>New order received</s-heading>
           <s-paragraph color="subdued">Order #1234 was placed 5 minutes ago</s-paragraph>
         </s-stack>
 
         <s-divider />
 
-        <s-stack gap="small-800">
+        <s-stack gap="small">
           <s-heading>Low inventory alert</s-heading>
           <s-paragraph color="subdued">3 products are running low on stock</s-paragraph>
         </s-stack>
 
         <s-divider />
 
-        <s-stack gap="small-800">
+        <s-stack gap="small">
           <s-heading>Payment processed</s-heading>
           <s-paragraph color="subdued">$250.00 payment confirmed for order #1230</s-paragraph>
         </s-stack>

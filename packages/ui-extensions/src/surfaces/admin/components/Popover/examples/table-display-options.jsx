@@ -10,7 +10,7 @@
   <s-popover id="table-settings-popover">
     <s-box padding="base">
       <s-stack gap="small-200">
-        <s-stack gap="small-800">
+        <s-stack gap="small">
           <s-heading>Choose columns to display</s-heading>
           <s-choice-list>
             <s-choice value="sku" selected>

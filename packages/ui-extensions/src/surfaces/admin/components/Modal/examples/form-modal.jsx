@@ -11,10 +11,9 @@
         value="Sarah Johnson"
        />
 
-      <s-text-field
+      <s-email-field
         label="Email address"
         name="email"
-        type="email"
         value="sarah@example.com"
        />
 

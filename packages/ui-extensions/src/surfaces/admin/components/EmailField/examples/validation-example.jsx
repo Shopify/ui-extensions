@@ -3,7 +3,7 @@ const [error, setError] = useState('Please enter a valid email address');
 
 return (
   <s-section>
-    <s-stack gap="base" inlineAlign="start">
+    <s-stack gap="base" justifyContent="start">
       <s-text-field label="Name" />
       <s-email-field
         label="Contact email"

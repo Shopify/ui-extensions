@@ -14,7 +14,7 @@
     suffix="%"
     min={0}
     max={100}
-    step="0.1"
+    step={0.1}
     inputMode="decimal"
    />
 
