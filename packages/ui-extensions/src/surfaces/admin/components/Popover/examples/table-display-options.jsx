@@ -12,7 +12,7 @@
       <s-stack gap="small-200">
         <s-stack gap="small">
           <s-heading>Choose columns to display</s-heading>
-          <s-choice-list>
+          <s-choice-list label="Select columns to display">
             <s-choice value="sku" selected>
               Sku
             </s-choice>
