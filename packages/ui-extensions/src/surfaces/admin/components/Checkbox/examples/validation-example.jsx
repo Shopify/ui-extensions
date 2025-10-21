@@ -4,7 +4,7 @@ const [error, setError] = useState(errorMessage);
 
 return (
   <s-section>
-    <s-stack gap="base" inlineAlign="start">
+    <s-stack gap="base" justifyContent="start">
       <s-text-field label="Name" />
       <s-checkbox
         label="I agree to the terms"
