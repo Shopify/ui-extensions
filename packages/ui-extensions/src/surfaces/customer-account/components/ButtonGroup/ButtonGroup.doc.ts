@@ -38,6 +38,36 @@ When used within a [Section](/docs/api/customer-account-ui-extensions/polaris-we
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+Use these best practices to deliver a clear and accessible experience in your extensions.
+
+### Prioritize and group related actions
+
+Cluster actions by purpose and place the most important or common action first to set a clear default.
+
+### Use a single primary action
+
+Reserve the primary style for one action only. Keep all other actions secondary to reinforce hierarchy.
+
+### Reduce clutter in secondary options
+
+Limit the number of secondary actions and collapse extras into menus or overflow to keep the interface clean.
+
+### Write short, scannable labels
+
+Use verbs and nouns in sentence cases. For example, “Edit address”. Keep styling consistent across actions.
+
+### Support accessibility and responsiveness
+
+Provide an accessible label for the group and ensure the layout adapts well across screen sizes.
+`,
+    },
+  ],
   related: [],
 };
 
