@@ -23,7 +23,7 @@
       <s-paragraph>
         Use this personalized guide to get your store ready for sales.
       </s-paragraph>
-      <s-paragraph tone="subdued">0 out of 3 steps completed</s-paragraph>
+      <s-paragraph color="subdued">0 out of 3 steps completed</s-paragraph>
     </s-grid>
     <s-box borderRadius="base" border="base" background="base">
       <s-box>
@@ -79,7 +79,6 @@
         <s-box
           padding="small"
           paddingBlockStart="none"
-          style="display: none;"
          />
       </s-box>
       <s-divider />
@@ -95,7 +94,6 @@
         <s-box
           padding="small"
           paddingBlockStart="none"
-          style="display: none;"
          />
       </s-box>
     </s-box>

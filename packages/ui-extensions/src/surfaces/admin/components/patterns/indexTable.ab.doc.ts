@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Index table',
   isOneColumnLayout: false,
   overviewPreviewDescription:
@@ -22,9 +22,17 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Index table',
       tabs: [
         {
-          title: 'Preview',
+          title: 'html',
           code: 'examples/indexTable.html',
-          language: 'preview',
+          language: 'html',
+        },
+        {
+          title: 'jsx',
+          code: 'examples/indexTable.jsx',
+          language: 'preview-jsx',
+          customStyles: {
+            minHeight: '400px',
+          },
         },
       ],
     },

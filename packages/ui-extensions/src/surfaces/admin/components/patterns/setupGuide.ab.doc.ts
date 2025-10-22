@@ -21,9 +21,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Setup guide',
       tabs: [
         {
-          title: 'Preview',
+          title: 'html',
           code: 'examples/setupGuide.html',
-          language: 'preview',
+          language: 'html',
+        },
+        {
+          title: 'jsx',
+          code: 'examples/setupGuide.jsx',
+          language: 'preview-jsx',
         },
       ],
     },

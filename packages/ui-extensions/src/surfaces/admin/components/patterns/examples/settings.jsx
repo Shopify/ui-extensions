@@ -1,21 +1,15 @@
-// ===
-// Settings page pattern
-// ===
-
-export default function SettingsPage() {
-  const handleFormReset = (event) => {
-    console.log("Handle discarded changes if necessary");
-  };
-
-  const handleFormSubmit = (event) => {
+<form
+  data-save-bar
+  onSubmit={(event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const formEntries = Object.fromEntries(formData);
     console.log("Form data", formEntries);
-  };
-
-  return (
-    <form data-save-bar onSubmit={handleFormSubmit} onReset={handleFormReset}>
+  }}
+  onReset={(event) => {
+    console.log("Handle discarded changes if necessary");
+  }}
+>
       <s-page heading="Settings" inlineSize="small">
         {/* === */}
         {/* Store Information */}
@@ -199,8 +193,6 @@ export default function SettingsPage() {
               </s-grid>
             </s-box>
           </s-stack>
-        </s-section>
-      </s-page>
-    </form>
-  );
-}
+      </s-section>
+  </s-page>
+</form>

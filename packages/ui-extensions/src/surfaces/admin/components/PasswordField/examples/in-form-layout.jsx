@@ -2,7 +2,7 @@
   <s-email-field
     label="Email"
     name="email"
-    autocomplete="username"
+    autocomplete="email"
     required
    />
   <s-password-field

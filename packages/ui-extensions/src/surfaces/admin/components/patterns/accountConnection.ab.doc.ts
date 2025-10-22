@@ -28,9 +28,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Account connection',
       tabs: [
         {
-          title: 'Preview',
+          title: 'html',
           code: 'examples/accountConnection.html',
-          language: 'preview',
+          language: 'html',
+        },
+        {
+          title: 'jsx',
+          code: 'examples/accountConnection.jsx',
+          language: 'preview-jsx',
         },
       ],
     },

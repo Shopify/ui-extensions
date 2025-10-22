@@ -11,8 +11,8 @@ return (
         error={error}
         required
         onChange={(e) => {
-          setDate(e.target.value);
-          setError(e.target.value ? '' : 'Event date is required');
+          setDate(e.currentTarget.value);
+          setError(e.currentTarget.value ? '' : 'Event date is required');
         }}
       />
     </s-stack>

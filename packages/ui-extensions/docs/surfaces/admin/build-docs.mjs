@@ -356,7 +356,9 @@ const transformJson = async (filePath, isExtensions) => {
     );
 
     const filteredDocs = shopifyDevDocsDocsParsed.filter(
-      (entry) => entry.category !== 'Polaris web components',
+      (entry) =>
+        entry.category !== 'Polaris web components' &&
+        entry.category !== 'Patterns', // Don't include old patterns
     );
 
     // Combine arrays with shopify dev docs first, followed by new data
