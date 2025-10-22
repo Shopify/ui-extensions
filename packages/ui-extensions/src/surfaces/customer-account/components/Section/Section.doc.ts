@@ -20,6 +20,34 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'considerations',
       sectionContent: `- When adding headings inside sections they automatically use a specific style, which helps keep the content organized and clear.`,
     },
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+Use these best practices to deliver a clear and accessible experience in your extensions.
+
+### Describe each section with a clear heading
+
+Use concise, sentence‑case headings that reflect the section’s purpose.
+
+### Provide an accessible name when no heading exists
+
+If a visual heading isn’t present, set an accessibilityLabel so assistive technologies can identify the section.
+
+### Align actions to the section’s content
+
+Only include primary and secondary actions that relate directly to what’s in the section.
+
+### Limit and prioritize actions
+
+Keep the number of actions small to reduce noise and emphasize what matters most.
+
+### Keep layout and styling consistent
+
+Maintain consistent spacing, typography, and alignment between sections for a coherent experience.
+`,
+    },
   ],
   definitions: [
     {

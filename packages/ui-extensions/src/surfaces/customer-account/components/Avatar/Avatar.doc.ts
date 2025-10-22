@@ -41,25 +41,30 @@ const data: ReferenceEntityTemplateSchema = {
     {
       type: 'Generic',
       anchorLink: 'best-practices',
-      title: 'Best Practices',
+      title: 'Best practices',
       sectionContent: `
-  - By default, if a user does not provide their first or last name, the avatar component will display a placeholder icon. However, if at least one of the names is provided, the avatar will be replaced with one or two initials representing the user.
-  - There are 5 sizes for the avatar component:
-    * small-200 (21x21 px): Use when showing avatars in tables / lists where space is limited.
-    * small (26x26 px): Use when you want to conserve space but want a larger size than small-200.
-    * base (32x32 px): Use by default.
-    * large (39×39 px): Use when the avatar is a focal point, such as a customer details card.
-    * large-200 (47x47 px): Use when placing more emphasis on the avatar.
+Use these best practices to deliver a clear and accessible experience in your extensions.
 
-  - Provide alt text for avatars to assist customers using assistive technologies.
+### Show initials by default
 
-  **Dos**
-  - When using multiple avatars on the same page, maintain a consistent style and size to create a unified visual pattern for users.
+When no first or last name is provided, display the placeholder icon. If either name exists, show one or two initials.
 
-  **Don'ts**
-  - Don't use different size avatars on the same page.
+### Choose an appropriate size
 
-  ![An example showing dos and don'ts of the Avatar component](/assets/templated-apis-screenshots/customer-account-ui-extensions/2025-10/avatar-best-practices.png)
+Select a size based on context: 
+- small‑200 (21×21) for tight tables or lists
+- small (26×26) when slightly larger is needed
+- base (32×32) as the default
+- large (39×39) when the avatar is a focal point (for example, a customer card)
+- large‑200 (47×47) when extra emphasis is required
+
+### Provide descriptive alt text
+
+Write alt text that meaningfully describes the avatar so assistive technologies can convey the same context.
+
+### Keep sizes consistent on a page
+
+Use the same style and size for multiple avatars in one view to create a unified visual pattern and avoid mixing sizes.
   `,
     },
   ],

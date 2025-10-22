@@ -41,24 +41,29 @@ const data: ReferenceEntityTemplateSchema = {
     {
       type: 'Generic',
       anchorLink: 'best-practices',
-      title: 'Best Practices',
+      title: 'Best practices',
       sectionContent: `
-### Consolidate actions into one menu
+Use these best practices to deliver a clear and accessible experience in your extensions.
 
-- Use the menu component in the upper-right corner of full-page extensions, to be consistent with the **Order status** page.
-- Use menus to consolidate page-level actions, instead of adding multiple buttons around the page.
+### Place menus consistently
 
-![The “Don’t do” example shows 3 separate action buttons on a subscription page. The “Do” example shows the same 3 actions consolidated into one menu.](/assets/templated-apis-screenshots/customer-account-ui-extensions/2025-10/menu-dont-do.png)
+Position menus in the upper‑right of full‑page extensions to match account pages like order status.
 
-### Content guidelines
+### Group page‑level actions
 
-When writing button labels:
-- Aim for 2 words (verb and noun).
-- Lead with a strong verb that encourages action.
-- Avoid unnecessary words and articles such as “the,” “an,” or “a.”
-- Use sentence case.
+Keep related actions in a single menu rather than scattering buttons across the page.
 
-![A button that follows the content guidelines says “Skip order”. A button that does not meet the content guidelines says “Skip this order”.](/assets/templated-apis-screenshots/customer-account-ui-extensions/2025-10/menu-labels.png)
+### Limit items to what’s relevant
+
+Include only actions that matter for the current page to reduce decision fatigue.
+
+### Order by frequency and risk
+
+List the most common or least risky actions at the top so they’re easy to reach.
+
+### Write concise, action‑first labels
+
+Use short labels (ideally two words) that start with a verb, use sentence case, avoid filler articles, and clearly state the outcome.
 `,
     },
   ],

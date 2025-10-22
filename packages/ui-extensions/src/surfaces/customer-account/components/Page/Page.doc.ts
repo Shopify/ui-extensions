@@ -58,21 +58,21 @@ const data: ReferenceEntityTemplateSchema = {
     {
       type: 'Generic',
       anchorLink: 'best-practices',
-      title: 'Best Practices',
+      title: 'Best practices',
       sectionContent: `
-**Heading**
-- Set clear expectations about the purpose and main topic of the page.
-- Aim for 1-3 words.
-- Use sentence case.
+Use these best practices to deliver a clear and accessible experience in your extensions.
 
-**Subheading**
-- Use to provide additional context or information that enhances the customer’s understanding of the page.
-- Use subheadings sparingly and only when they add useful information that is distinct from the heading.
+### Write clear, focused headings
 
-**Buttons**
-- Use for page-level actions only.
-- If there is a single primary action for the page, display it as a primary button. Display all other page-level actions as secondary buttons.
-- See [UX guidelines](/docs/apps/customer-accounts/order-action-menu-extensions/ux-guidelines) to learn more about the button logic for order actions.
+State the main purpose of the page in a few words and use sentence case for readability.
+
+### Use subheadings only when they add value
+
+Add a subheading when it provides helpful context that’s different from the heading. Keep it brief and use sparingly to avoid clutter.
+
+### Add page‑level actions thoughtfully
+
+Include buttons in the header only for actions that affect the entire page or flow. Make the main action a primary button, keep lesser actions secondary, limit the total number, and follow established UX patterns—especially for order actions.
 `,
     },
   ],
