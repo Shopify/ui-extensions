@@ -6,7 +6,7 @@
       View product page
     </s-button>
     <s-button disabled>Unavailable action</s-button>
-    <s-button download="" href="javascript:void(0)">
+    <s-button download="sales-report.csv" href="/reports/sales-report.csv">
       Download report
     </s-button>
   </s-menu>
