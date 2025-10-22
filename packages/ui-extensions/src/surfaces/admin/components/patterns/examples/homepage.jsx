@@ -41,7 +41,7 @@ return (
       {/* === */}
       {visible.setupGuide && (
         <s-section>
-          <s-grid gap="base">
+          <s-grid gap="small">
             {/* Header */}
             <s-grid gap="small-200">
               <s-grid
@@ -281,7 +281,7 @@ return (
       <s-section padding="base">
         <s-grid
           gridTemplateColumns="@container (inline-size <= 400px) 1fr, 1fr auto 1fr auto 1fr"
-          gap="base"
+          gap="small"
         >
           <s-clickable
             href="#"
