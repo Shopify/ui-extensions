@@ -3,7 +3,7 @@
     <s-table-header-row>
       <s-table-header listSlot="primary">Product</s-table-header>
       <s-table-header listSlot="inline">Status</s-table-header>
-      <s-table-header listSlot="secondary">Sales</s-table-header>
+      <s-table-header listSlot="secondary" format="numeric">Sales</s-table-header>
     </s-table-header-row>
 
     <s-table-body>
