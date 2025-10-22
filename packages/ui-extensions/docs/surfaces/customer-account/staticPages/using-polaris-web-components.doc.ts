@@ -312,12 +312,12 @@ Use methods when you need to trigger actions that can’t be achieved through pr
         tabs: [
           {
             code: './examples/form-default-value.jsx',
-            language: 'tsx',
+            language: 'preview-jsx',
             title: 'Using `defaultValue`',
           },
           {
             code: './examples/form-implicit-default.jsx',
-            language: 'tsx',
+            language: 'preview-jsx',
             title: 'Using implicit default',
           },
         ],

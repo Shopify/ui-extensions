@@ -12,8 +12,8 @@ return (
         error={error}
         required
         onInput={(e) => {
-          setEmail(e.target.value);
-          setError(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value) ? '' : 'Please enter a valid email address');
+          setEmail(e.currentTarget.value);
+          setError(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.currentTarget.value) ? '' : 'Please enter a valid email address');
         }}
       />
     </s-stack>

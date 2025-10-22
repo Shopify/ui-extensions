@@ -27,9 +27,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'App card',
       tabs: [
         {
-          title: 'Preview',
+          title: 'html',
           code: 'examples/appCard.html',
-          language: 'preview',
+          language: 'html',
+        },
+        {
+          title: 'jsx',
+          code: 'examples/appCard.jsx',
+          language: 'preview-jsx',
         },
       ],
     },
