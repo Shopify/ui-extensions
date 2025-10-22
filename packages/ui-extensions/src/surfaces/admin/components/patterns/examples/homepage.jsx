@@ -1,25 +1,19 @@
-// ===
-// Home page pattern
-// ===
+const [visible, setVisible] = useState({
+  banner: true,
+  setupGuide: true,
+  calloutCard: true,
+  featuredApps: true,
+});
+const [expanded, setExpanded] = useState({
+  setupGuide: true,
+  step1: false,
+  step2: false,
+  step3: false,
+});
+const [progress, setProgress] = useState(0);
 
-import React, { useState } from "react";
-
-export default function HomePage() {
-  const [visible, setVisible] = useState({
-    banner: true,
-    setupGuide: true,
-    calloutCard: true,
-    featuredApps: true,
-  });
-  const [expanded, setExpanded] = useState({
-    setupGuide: true,
-    step1: false,
-    step2: false,
-    step3: false,
-  });
-  const [progress, setProgress] = useState(0);
-  return (
-    <s-page>
+return (
+  <s-page>
       <s-button slot="primary-action">Create puzzle</s-button>
       <s-button slot="secondary-actions">Browse templates</s-button>
       <s-button slot="secondary-actions">Import image</s-button>
@@ -100,9 +94,7 @@ export default function HomePage() {
                   <s-checkbox
                     label="Upload an image for your puzzle"
                     onInput={(e) =>
-                      setProgress((prev) =>
-                        e.currentTarget.checked ? prev + 1 : prev - 1
-                      )
+                      setProgress(e.currentTarget.checked ? progress + 1 : progress - 1)
                     }
                   ></s-checkbox>
                   <s-button
@@ -163,9 +155,7 @@ export default function HomePage() {
                   <s-checkbox
                     label="Choose a puzzle template"
                     onInput={(e) =>
-                      setProgress((prev) =>
-                        e.currentTarget.checked ? prev + 1 : prev - 1
-                      )
+                      setProgress(e.currentTarget.checked ? progress + 1 : progress - 1)
                     }
                   ></s-checkbox>
                   <s-button
@@ -226,9 +216,7 @@ export default function HomePage() {
                   <s-checkbox
                     label="Customize puzzle piece shapes"
                     onInput={(e) =>
-                      setProgress((prev) =>
-                        e.currentTarget.checked ? prev + 1 : prev - 1
-                      )
+                      setProgress(e.currentTarget.checked ? progress + 1 : progress - 1)
                     }
                   ></s-checkbox>
                   <s-button
@@ -290,10 +278,10 @@ export default function HomePage() {
       {/* Metrics cards */}
       {/* Your app homepage should provide merchants with quick statistics or status updates that help them understand how the app is performing for them. */}
       {/* === */}
-      <s-section padding="small">
+      <s-section padding="base">
         <s-grid
           gridTemplateColumns="@container (inline-size <= 400px) 1fr, 1fr auto 1fr auto 1fr"
-          gap="small"
+          gap="base"
         >
           <s-clickable
             href="#"
@@ -674,6 +662,5 @@ export default function HomePage() {
           </s-grid>
         </s-section>
       )}
-    </s-page>
-  );
-}
+</s-page>
+)

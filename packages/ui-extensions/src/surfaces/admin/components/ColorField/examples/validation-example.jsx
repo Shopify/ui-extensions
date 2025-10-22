@@ -11,9 +11,9 @@ return (
         value={color}
         error={error}
         required
-        onChange={(e) => {
-          setColor(e.target.value);
-          setError(/^#([0-9A-F]{3}){1,2}$/i.test(e.target.value) ? '' : 'Please enter a valid color format');
+        onInput={(e) => {
+          setColor(e.currentTarget.value);
+          setError(/^#([0-9A-F]{3}){1,2}$/i.test(e.currentTarget.value) ? '' : 'Please enter a valid color format');
         }}
       />
     </s-stack>

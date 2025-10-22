@@ -1,25 +1,19 @@
-// ===
-// Details page pattern
-// ===
-
-export default function DetailsPage() {
-  const handleFormReset = (event) => {
-    console.log("Handle discarded changes if necessary");
-  };
-
-  const handleFormSubmit = (event) => {
+<form
+  data-save-bar
+  onSubmit={(event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const formEntries = Object.fromEntries(formData);
     console.log("Form data", formEntries);
-  };
-
-  return (
-    <form data-save-bar onSubmit={handleFormSubmit} onReset={handleFormReset}>
-      <s-page heading="Mountain view">
-        <s-link slot="breadcrumb-actions" href="/app/puzzles">
-          Puzzles
-        </s-link>
+  }}
+  onReset={(event) => {
+    console.log("Handle discarded changes if necessary");
+  }}
+>
+  <s-page heading="Mountain view">
+    <s-link slot="breadcrumb-actions" href="/app/puzzles">
+      Puzzles
+    </s-link>
         <s-button slot="secondary-actions">Duplicate</s-button>
         <s-button slot="secondary-actions">Delete</s-button>
         {/* === */}
@@ -89,7 +83,7 @@ export default function DetailsPage() {
               borderStyle="solid"
               overflow="hidden"
             >
-              <s-table border="base" borderRadius="base" borderStyle="solid">
+              <s-table>
                 <s-table-header-row>
                   <s-table-header listSlot="primary">Template</s-table-header>
                   <s-table-header>
@@ -101,7 +95,7 @@ export default function DetailsPage() {
                 </s-table-header-row>
                 <s-table-body>
                   <s-table-row>
-                    <s-table-cell listSlot="primary">
+                    <s-table-cell>
                       <s-stack
                         direction="inline"
                         gap="base"
@@ -139,7 +133,7 @@ export default function DetailsPage() {
                     </s-table-cell>
                   </s-table-row>
                   <s-table-row>
-                    <s-table-cell listSlot="primary">
+                    <s-table-cell>
                       <s-stack
                         direction="inline"
                         gap="base"
@@ -169,7 +163,7 @@ export default function DetailsPage() {
                         <s-link>Preview</s-link>
                       </s-stack>
                     </s-table-cell>
-                    <s-table-cell listSlot="secondary">
+                    <s-table-cell>
                       <s-stack alignItems="end">
                         <s-button
                           icon="x"
@@ -220,7 +214,7 @@ export default function DetailsPage() {
               name="quantity-in-stock"
               labelAccessibilityVisibility="visible"
               value="50"
-              min="0"
+              min={0}
               placeholder="0"
               details="Current inventory quantity"
              />
@@ -252,8 +246,6 @@ export default function DetailsPage() {
               </s-list-item>
             </s-unordered-list>
           </s-section>
-        </s-box>
-      </s-page>
-    </form>
-  );
-}
+    </s-box>
+  </s-page>
+</form>

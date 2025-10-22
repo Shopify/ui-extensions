@@ -1,10 +1,4 @@
-// ===
-// Index page pattern
-// ===
-
-export default function IndexPage() {
-  return (
-    <s-page heading="Puzzles">
+<s-page heading="Puzzles">
       <s-button slot="primary-action" variant="primary">
         Create puzzle
       </s-button>
@@ -155,8 +149,6 @@ export default function IndexPage() {
             {/* Add more rows as needed here */}
             {/* If more than 100 rows are needed, index page tables should use the paginate, hasPreviousPage, hasNextPage, onPreviousPage, and onNextPage attributes to display and handle pagination) */}
           </s-table-body>
-        </s-table>
-      </s-section>
-    </s-page>
-  );
-}
+      </s-table>
+    </s-section>
+</s-page>

@@ -26,9 +26,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Media card',
       tabs: [
         {
-          title: 'Preview',
+          title: 'html',
           code: 'examples/mediaCard.html',
-          language: 'preview',
+          language: 'html',
+        },
+        {
+          title: 'jsx',
+          code: 'examples/mediaCard.jsx',
+          language: 'preview-jsx',
         },
       ],
     },
