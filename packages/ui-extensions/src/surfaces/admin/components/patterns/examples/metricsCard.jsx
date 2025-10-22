@@ -1,7 +1,7 @@
 <s-section padding="base">
   <s-grid
     gridTemplateColumns="@container (inline-size <= 400px) 1fr, 1fr auto 1fr auto 1fr"
-    gap="base"
+    gap="small"
   >
     <s-clickable
       href=""
