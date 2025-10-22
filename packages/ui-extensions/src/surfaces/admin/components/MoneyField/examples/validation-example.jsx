@@ -13,9 +13,9 @@ return (
         details="Enter discount amount between $0 and $100"
         error={error}
         onInput={(e) => {
-          setAmount(e.target.value);
-          const val = parseFloat(e.target.value);
-          setError(val > e.target.max ? 'Value must be no more than $100' : val < e.target.min ? 'Value must be at least $0' : '');
+          setAmount(e.currentTarget.value);
+          const val = parseFloat(e.currentTarget.value);
+          setError(val > e.currentTarget.max ? 'Value must be no more than $100' : val < e.currentTarget.min ? 'Value must be at least $0' : '');
         }}
       />
     </s-stack>

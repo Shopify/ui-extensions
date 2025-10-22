@@ -1,9 +1,5 @@
 <>
-  <s-button
-    commandFor="table-settings-popover"
-    disclosure={true}
-    icon="settings"
-  >
+  <s-button commandFor="table-settings-popover" icon="settings">
     Columns
   </s-button>
 

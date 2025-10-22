@@ -1,6 +1,6 @@
 <s-number-field
   label="Product price"
-  value={29.99}
+  value="29.99"
   prefix="$"
   suffix="CAD"
   inputMode="decimal"

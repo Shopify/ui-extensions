@@ -1,6 +1,6 @@
 <s-number-field
   label="Order quantity"
-  value={5}
+  value="5"
   min={1}
   max={999}
   step={1}

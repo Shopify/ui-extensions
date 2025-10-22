@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: '../../../../../docs/surfaces/admin/staticPages/examples/form-default-value.jsx',
-          language: 'preview',
+          language: 'preview-jsx',
         },
       ],
     },

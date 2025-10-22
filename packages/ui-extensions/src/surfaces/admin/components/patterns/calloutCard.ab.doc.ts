@@ -23,9 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Callout card',
       tabs: [
         {
-          title: 'Preview',
+          title: 'html',
           code: 'examples/calloutCard.html',
-          language: 'preview',
+          language: 'html',
+        },
+        {
+          title: 'jsx',
+          code: 'examples/calloutCard.jsx',
+          language: 'preview-jsx',
         },
       ],
     },

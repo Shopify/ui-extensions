@@ -24,9 +24,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Metrics card',
       tabs: [
         {
-          title: 'Preview',
+          title: 'html',
           code: 'examples/metricsCard.html',
-          language: 'preview',
+          language: 'html',
+        },
+        {
+          title: 'jsx',
+          code: 'examples/metricsCard.jsx',
+          language: 'preview-jsx',
         },
       ],
     },

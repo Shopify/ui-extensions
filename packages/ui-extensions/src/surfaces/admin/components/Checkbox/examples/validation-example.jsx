@@ -11,8 +11,8 @@ return (
         checked={checked}
         error={error}
         onChange={(e) => {
-          setChecked(e.target.checked);
-          setError(e.target.checked ? '' : errorMessage);
+          setChecked(e.currentTarget.checked);
+          setError(e.currentTarget.checked ? '' : errorMessage);
         }}
       />
     </s-stack>
