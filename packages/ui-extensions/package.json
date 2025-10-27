@@ -24,6 +24,9 @@
       "admin/components/*": [
         "./build/ts/surfaces/admin/components/*.d.ts"
       ],
+      "admin/globals": [
+        "./build/ts/surfaces/admin/globals.d.ts"
+      ],
       "checkout": [
         "./build/ts/surfaces/checkout.d.ts"
       ],
@@ -32,6 +35,9 @@
       ],
       "purchase.*": [
         "./build/ts/surfaces/checkout/targets/purchase.*"
+      ],
+      "checkout/globals": [
+        "./build/ts/surfaces/checkout/globals.d.ts"
       ],
       "customer-account": [
         "./build/ts/surfaces/customer-account.d.ts"
@@ -42,11 +48,17 @@
       "customer-account/preact": [
         "./build/ts/surfaces/customer-account/preact/index.d.ts"
       ],
+      "customer-account/globals": [
+        "./build/ts/surfaces/customer-account/globals.d.ts"
+      ],
       "point-of-sale": [
         "./build/ts/surfaces/point-of-sale.d.ts"
       ],
       "pos.*": [
         "./build/ts/surfaces/point-of-sale/targets/pos.*.d.ts"
+      ],
+      "point-of-sale/globals": [
+        "./build/ts/surfaces/point-of-sale/globals.d.ts"
       ]
     }
   },
@@ -69,6 +81,9 @@
     "./admin/components/*": {
       "default": "./build/ts/surfaces/admin/components/*.d.ts"
     },
+    "./admin/globals": {
+      "types": "./build/ts/surfaces/admin/globals.d.ts"
+    },
     "./checkout": {
       "types": "./build/ts/surfaces/checkout.d.ts",
       "esnext": "./build/esnext/surfaces/checkout.esnext",
@@ -83,6 +98,9 @@
     },
     "./purchase.*": {
       "default": "./build/ts/surfaces/checkout/targets/purchase.*.d.ts"
+    },
+    "./checkout/globals": {
+      "types": "./build/ts/surfaces/checkout/globals.d.ts"
     },
     "./customer-account": {
       "types": "./build/ts/surfaces/customer-account.d.ts",
@@ -99,6 +117,9 @@
       "import": "./build/esm/surfaces/customer-account/preact/index.mjs",
       "require": "./build/cjs/surfaces/customer-account/preact/index.js"
     },
+    "./customer-account/globals": {
+      "types": "./build/ts/surfaces/customer-account/globals.d.ts"
+    },
     "./point-of-sale": {
       "types": "./build/ts/surfaces/point-of-sale.d.ts",
       "esnext": "./build/esnext/surfaces/point-of-sale.esnext",
@@ -107,6 +128,9 @@
     },
     "./pos.*": {
       "default": "./build/ts/surfaces/point-of-sale/targets/pos.*.d.ts"
+    },
+    "./point-of-sale/globals": {
+      "types": "./build/ts/surfaces/point-of-sale/globals.d.ts"
     },
     "./point-of-sale/preact": {
       "types": "./build/ts/surfaces/point-of-sale/preact.d.ts",

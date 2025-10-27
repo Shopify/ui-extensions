@@ -7,7 +7,7 @@ import {
 } from 'fs';
 import {join, resolve} from 'path';
 import type {SourceFile} from 'ts-morph';
-import {Project} from 'ts-morph';
+import {Project, SyntaxKind} from 'ts-morph';
 
 function copyComponentDefinitions({
   srcPaths,
@@ -194,6 +194,276 @@ function createTargetDefinition({
   targetFile.fixMissingImports();
   targetFile.organizeImports();
   targetFile.saveSync();
+}
+
+function extractSurfaceTypesAndComponents(surface: string, project: Project, directory: string): {
+  apis: string[];
+  components: string[];
+} {
+  const apis = new Set<string>();
+  const components = new Set<string>();
+  const srcPath = resolve(directory, `src/surfaces/${surface}`);
+
+  // 1. Always include StandardApi as the base
+  apis.add('StandardApi');
+
+  // 2. Extract APIs and Components from extension-targets.ts by analyzing RenderExtension types
+  const extensionTargetsPath = resolve(srcPath, 'extension-targets.ts');
+  
+  if (existsSync(extensionTargetsPath)) {
+    // Try to find the source file if it's already been loaded
+    let sourceFile = project.getSourceFile(extensionTargetsPath);
+    if (!sourceFile) {
+      sourceFile = project.addSourceFileAtPath(extensionTargetsPath);
+    }
+    
+    if (sourceFile) {
+      extractAPIsAndComponentsFromExtensionTargets(sourceFile, apis, components);
+    }
+  }
+
+  // 3. Scan api directory for additional API interfaces
+  const apiDir = resolve(srcPath, 'api');
+  if (existsSync(apiDir)) {
+    scanDirectoryForAPIs(apiDir, project, apis);
+  }
+
+  // 4. Scan for component type unions and component directories
+  scanDirectoryForComponentTypes(srcPath, project, components);
+
+  return {
+    apis: Array.from(apis),
+    components: Array.from(components)
+  };
+}
+
+function extractAPIsAndComponentsFromExtensionTargets(sourceFile: SourceFile, apis: Set<string>, components: Set<string>) {
+  // Find all RenderExtension type references and extract their API and Component parameters
+  const renderExtensionRefs = sourceFile.getDescendantsOfKind(SyntaxKind.TypeReference)
+    .filter(typeRef => {
+      const typeName = typeRef.getTypeName();
+      return typeName.getText() === 'RenderExtension';
+    });
+  
+  renderExtensionRefs.forEach((renderExtension) => {
+    const typeArgs = renderExtension.getTypeArguments();
+    if (typeArgs.length >= 1) {
+      // First type argument is the API type - handle intersection types like 'CheckoutApi & StandardApi'
+      const apiType = typeArgs[0].getText();
+      
+      // Split by & to handle intersection types
+      apiType.split('&').forEach(api => {
+        const trimmedApi = api.trim();
+        
+        // Handle generic types like StandardApi<'target-name'> by extracting the base type
+        const baseApiMatch = trimmedApi.match(/^(\w+Api)(<.*>)?$/);
+        if (baseApiMatch) {
+          const baseApi = baseApiMatch[1];
+          if (baseApi.endsWith('Api')) {
+            apis.add(baseApi);
+          }
+        }
+      });
+    }
+    
+    if (typeArgs.length >= 2) {
+      // Second type argument is the Component type - extract component type names
+      const componentType = typeArgs[1].getText();
+      
+      // Handle component unions, component types, and base component names
+      extractComponentTypesFromString(componentType, components);
+    }
+  });
+}
+
+function extractComponentTypesFromString(componentType: string, components: Set<string>) {
+  // Handle different component type patterns:
+  // - Simple types: 'Button'
+  // - Union types: 'Button | Text | Banner'
+  // - Generic types: 'AnyCheckoutComponent'
+  // - Complex types: 'AnyCheckoutComponentExcept<"Chat">'
+  
+  // For union types, split by | and process each component
+  if (componentType.includes('|')) {
+    componentType.split('|').forEach(comp => {
+      const trimmed = comp.trim();
+      extractSingleComponentType(trimmed, components);
+    });
+  } else {
+    extractSingleComponentType(componentType.trim(), components);
+  }
+}
+
+function extractSingleComponentType(componentType: string, components: Set<string>) {
+  // Remove quotes from string literals like '"Button"'
+  componentType = componentType.replace(/['"]/g, '');
+  
+  // Handle generic component types by extracting the base name
+  const baseComponentMatch = componentType.match(/^(\w+)/);
+  if (baseComponentMatch) {
+    const baseComponent = baseComponentMatch[1];
+    
+    // Filter out noise and generic types
+    const excludeTypes = ['any', 'never', 'string', 'infer', 'unknown', 'void', 'undefined', 'null'];
+    
+    if (baseComponent && 
+        !excludeTypes.includes(baseComponent.toLowerCase()) &&
+        baseComponent.length > 1) {
+      
+      // Add well-known component union types
+      if (baseComponent.includes('Component') || baseComponent.includes('Components')) {
+        components.add(baseComponent);
+      }
+      
+      // Add individual component names (typically PascalCase starting with uppercase)
+      else if (baseComponent.match(/^[A-Z][a-z]/)) {
+        components.add(baseComponent);
+      }
+    }
+  }
+}
+
+function scanDirectoryForComponentTypes(srcPath: string, project: Project, components: Set<string>) {
+  // Look for component type definitions in shared.ts, components.ts, etc.
+  const componentFiles = [
+    resolve(srcPath, 'shared.ts'),
+    resolve(srcPath, 'components.ts'),
+    resolve(srcPath, 'shared/index.ts')
+  ];
+  
+  componentFiles.forEach(filePath => {
+    if (existsSync(filePath)) {
+      try {
+        const sourceFile = project.getSourceFile(filePath) || project.addSourceFileAtPath(filePath);
+        
+        // Extract type aliases that might be component unions
+        sourceFile.getTypeAliases()
+          .filter(alias => {
+            const name = alias.getName();
+            return name.includes('Component') || name.includes('Components');
+          })
+          .forEach(alias => {
+            components.add(alias.getName());
+          });
+          
+        // Extract interfaces that might be components
+        sourceFile.getInterfaces()
+          .filter(iface => {
+            const name = iface.getName();
+            return name.includes('Component') || name.includes('Components') || 
+                   name.match(/^[A-Z][a-z]+$/) // Simple component names like Button, Text, etc.
+          })
+          .forEach(iface => {
+            components.add(iface.getName());
+          });
+      } catch (error) {
+        // Skip files that can't be parsed
+      }
+    }
+  });
+}
+
+function scanDirectoryForAPIs(apiDir: string, project: Project, apis: Set<string>) {
+  const scanDir = (dir: string) => {
+    if (!existsSync(dir)) return;
+    
+    const items = readdirSync(dir, { withFileTypes: true });
+    items.forEach(item => {
+      if (item.isDirectory()) {
+        scanDir(join(dir, item.name));
+      } else if (item.name.endsWith('.ts') && !item.name.endsWith('.doc.ts')) {
+        const filePath = join(dir, item.name);
+        try {
+          const sourceFile = project.addSourceFileAtPath(filePath);
+          
+          // Extract all exported interfaces ending with 'Api'
+          sourceFile.getInterfaces()
+            .filter(iface => iface.isExported() && iface.getName().endsWith('Api'))
+            .forEach(iface => {
+              apis.add(iface.getName());
+            });
+        } catch (error) {
+          // Skip files that can't be parsed
+        }
+      }
+    });
+  };
+  
+  scanDir(apiDir);
+}
+
+function createSurfaceGlobalDeclarations({
+  buildPath,
+  surface,
+  project,
+  directory,
+}: {
+  buildPath: string;
+  surface: string;
+  project: Project;
+  directory: string;
+}) {
+  const globalsDir = join(buildPath, `ts/surfaces/${surface}`);
+  const globalsPath = join(globalsDir, 'globals.d.ts');
+
+  if (!existsSync(globalsDir)) {
+    mkdirSync(globalsDir, { recursive: true });
+  }
+
+  // Extract all APIs and Components available for this surface
+  const { apis, components } = extractSurfaceTypesAndComponents(surface, project, directory);
+  
+  const shopifyObjectType = apis.length > 1 
+    ? apis.join(' & ') 
+    : apis[0] || 'any';
+
+  // Create component type union for this surface
+  const surfaceComponentsType = components.length > 0
+    ? components.join(' | ')
+    : 'never';
+
+  const globalDeclaration = `// Auto-generated global shopify object and component types for ${surface} surface
+// This file is generated by buildTargetDts.ts - do not edit manually
+
+declare global {
+  const shopify: ${shopifyObjectType};
+  
+  namespace ShopifyComponents {
+    namespace ${capitalizeFirst(surface)} {
+      type AllComponents = ${surfaceComponentsType};
+    }
+  }
+}
+
+export {};
+`;
+
+  writeFileSync(globalsPath, globalDeclaration);
+  console.log(`Created global declarations for ${surface} surface with APIs: ${apis.join(', ')} and Components: ${components.join(', ')}`);
+}
+
+function capitalizeFirst(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1).replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+}
+
+export function generateGlobalDeclarations(
+  directory: string,
+  surface: string,
+) {
+  const project = new Project();
+  const buildPath = resolve(directory, 'build');
+  const srcPath = resolve(directory, `src/surfaces/${surface}`);
+
+  // Add the surface's source files to the project for analysis
+  if (existsSync(srcPath)) {
+    try {
+      // Add all TypeScript files in the surface directory recursively
+      project.addSourceFilesAtPaths(`${srcPath}/**/*.ts`);
+      createSurfaceGlobalDeclarations({ buildPath, surface, project, directory });
+    } catch (error) {
+      console.error(`Failed to generate global declarations for ${surface}:`, error);
+    }
+  }
 }
 
 export function buildTargetsDefinitions(

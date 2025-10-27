@@ -5,7 +5,7 @@ import {resolve} from 'path';
 import {rollupPlugins} from '@shopify/loom-plugin-build-library';
 import replace from '@rollup/plugin-replace';
 import {defaultProjectPlugin} from '../../config/loom';
-import {buildTargetsDefinitions} from './buildTargetDts';
+import {buildTargetsDefinitions, generateGlobalDeclarations} from './buildTargetDts';
 
 // Package configuration
 const packageJSON = JSON.parse(
@@ -41,37 +41,35 @@ export default createPackage((pkg) => {
         preventAssignment: true,
       }),
       {
-        name: 'add-target-types',
+        name: 'add-target-types-and-globals',
         closeBundle: async () => {
-          if (!completedSurfaces.has('admin')) {
-            buildTargetsDefinitions(
-              resolve(process.cwd(), 'packages/ui-extensions'),
-              'admin',
-            );
-            completedSurfaces.add('admin');
-          }
-          if (!completedSurfaces.has('checkout')) {
-            buildTargetsDefinitions(
-              resolve(process.cwd(), 'packages/ui-extensions'),
-              'checkout',
-            );
-            completedSurfaces.add('checkout');
-          }
-          if (!completedSurfaces.has('customer-account')) {
-            buildTargetsDefinitions(
-              resolve(process.cwd(), 'packages/ui-extensions'),
-              'customer-account',
-              ['src/surfaces/checkout'],
-            );
-            completedSurfaces.add('customer-account');
-          }
-          if (!completedSurfaces.has('point-of-sale')) {
-            buildTargetsDefinitions(
-              resolve(process.cwd(), 'packages/ui-extensions'),
-              'point-of-sale',
-            );
-            completedSurfaces.add('point-of-sale');
-          }
+          const surfaces = ['admin', 'checkout', 'customer-account', 'point-of-sale'];
+          
+          surfaces.forEach(surface => {
+            if (!completedSurfaces.has(surface)) {
+              // Generate extension target types
+              if (surface === 'customer-account') {
+                buildTargetsDefinitions(
+                  resolve(process.cwd(), 'packages/ui-extensions'),
+                  surface,
+                  ['src/surfaces/checkout'],
+                );
+              } else {
+                buildTargetsDefinitions(
+                  resolve(process.cwd(), 'packages/ui-extensions'),
+                  surface,
+                );
+              }
+
+              // Generate global shopify object declarations
+              generateGlobalDeclarations(
+                resolve(process.cwd(), 'packages/ui-extensions'),
+                surface,
+              );
+
+              completedSurfaces.add(surface);
+            }
+          });
         },
       },
     ]),
