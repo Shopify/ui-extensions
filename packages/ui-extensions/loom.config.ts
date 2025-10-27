@@ -5,7 +5,10 @@ import {resolve} from 'path';
 import {rollupPlugins} from '@shopify/loom-plugin-build-library';
 import replace from '@rollup/plugin-replace';
 import {defaultProjectPlugin} from '../../config/loom';
-import {buildTargetsDefinitions, generateGlobalDeclarations} from './buildTargetDts';
+import {
+  buildTargetsDefinitions,
+  generateGlobalDeclarations,
+} from './buildTargetDts';
 
 // Package configuration
 const packageJSON = JSON.parse(
@@ -43,9 +46,14 @@ export default createPackage((pkg) => {
       {
         name: 'add-target-types-and-globals',
         closeBundle: async () => {
-          const surfaces = ['admin', 'checkout', 'customer-account', 'point-of-sale'];
-          
-          surfaces.forEach(surface => {
+          const surfaces = [
+            'admin',
+            'checkout',
+            'customer-account',
+            'point-of-sale',
+          ];
+
+          surfaces.forEach((surface) => {
             if (!completedSurfaces.has(surface)) {
               // Generate extension target types
               if (surface === 'customer-account') {
