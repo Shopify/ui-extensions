@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -471,7 +471,12 @@ declare module 'preact' {
 declare const tagName = 's-stack';
 export interface StackJSXProps
   extends Partial<StackProps>,
-    Pick<StackProps$1, 'id'> {}
+    Pick<StackProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Stack.
+   */
+  children?: ComponentChildren;
+}
 
 export {Stack};
 export type {StackJSXProps};

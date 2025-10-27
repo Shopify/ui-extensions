@@ -6,12 +6,7 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  TextFieldProps,
-  CheckboxProps,
-  SwitchProps$1,
-  ComponentChildren,
-} from './shared.d.ts';
+import type {ComponentChildren, DropZoneProps$1} from './shared.d.ts';
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
@@ -30,6 +25,29 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
 }
+/** Used when an element has children. */
+export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
+  extends PreactBaseElementProps<TClass> {
+  children?: preact.ComponentChildren;
+}
+
+export interface DropZoneProps
+  extends Required<
+    Pick<
+      DropZoneProps$1,
+      | 'accept'
+      | 'accessibilityLabel'
+      | 'disabled'
+      | 'files'
+      | 'name'
+      | 'error'
+      | 'label'
+      | 'labelAccessibilityVisibility'
+      | 'multiple'
+      | 'required'
+      | 'value'
+    >
+  > {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -53,8 +71,8 @@ export interface ClickOptions {
  * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
  * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
  */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
+declare const BaseClass$1: typeof globalThis.HTMLElement;
+declare abstract class PreactCustomElement extends BaseClass$1 {
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -91,95 +109,75 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
+export type ReplaceType<TType, TFrom, TTo> = Exclude<TType, TFrom> | TTo;
+
+declare const setFiles: unique symbol;
+
 declare const internals: unique symbol;
-export type PreactInputProps = Required<
-  Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
->;
-declare class PreactInputElement
-  extends PreactCustomElement
-  implements PreactInputProps
-{
+declare const getFileInput: unique symbol;
+declare class BaseClass extends PreactCustomElement {
   static formAssociated: boolean;
+  constructor(renderImpl: RenderImpl);
   /** @private */
   [internals]: ElementInternals;
-  accessor onchange: CallbackEventListener<'input'>;
-  accessor oninput: CallbackEventListener<'input'>;
-  accessor disabled: PreactInputProps['disabled'];
-  accessor id: PreactInputProps['id'];
-  accessor name: PreactInputProps['name'];
-  get value(): PreactInputProps['value'];
-  set value(value: PreactInputProps['value']);
-  constructor(renderImpl: RenderImpl);
 }
-
-export interface PreactCheckboxProps
-  extends Required<
-    Pick<
-      CheckboxProps,
-      | 'accessibilityLabel'
-      | 'checked'
-      | 'defaultChecked'
-      | 'details'
-      | 'error'
-      | 'label'
-      | 'required'
-      | 'name'
-      | 'disabled'
-    >
-  > {
-  value: Required<CheckboxProps>['value'];
-}
-declare class PreactCheckboxElement
-  extends PreactInputElement
-  implements PreactCheckboxProps
-{
-  get checked(): boolean;
-  set checked(checked: PreactCheckboxProps['checked']);
-  /**
-   * The value used in form data when the checkbox is checked.
-   */
+declare class DropZone extends BaseClass implements DropZoneProps {
+  accessor accept: DropZoneProps['accept'];
+  accessor accessibilityLabel: DropZoneProps['accessibilityLabel'];
+  accessor disabled: DropZoneProps['disabled'];
+  accessor error: DropZoneProps['error'];
+  accessor label: DropZoneProps['label'];
+  accessor labelAccessibilityVisibility: DropZoneProps['labelAccessibilityVisibility'];
+  accessor multiple: DropZoneProps['multiple'];
+  accessor name: DropZoneProps['name'];
+  accessor required: DropZoneProps['required'];
+  accessor onchange: CallbackEventListener<typeof tagName>;
+  accessor oninput: CallbackEventListener<typeof tagName>;
+  accessor ondroprejected: CallbackEventListener<typeof tagName>;
   get value(): string;
-  set value(value: string);
-  accessor defaultChecked: PreactCheckboxProps['defaultChecked'];
-  accessor accessibilityLabel: PreactCheckboxProps['accessibilityLabel'];
-  accessor details: PreactCheckboxProps['details'];
-  accessor error: PreactCheckboxProps['error'];
-  accessor label: PreactCheckboxProps['label'];
-  accessor required: PreactCheckboxProps['required'];
+  /** This sets the input value for a file type, which cannot be set programatically, so it can only be reset. */
+  set value(value: '' | null);
+  get files(): File[];
+  set files(files: File[]);
+  /** @private */
+  [setFiles](files: File[]): void;
+  /** @private */
+  [getFileInput](): ReplaceType<
+    Element | null | undefined,
+    Element,
+    HTMLInputElement
+  >;
+
   /** @private */
   formResetCallback(): void;
-  static get observedAttributes(): string[];
-  constructor(renderImpl: RenderImpl);
-}
-
-export interface SwitchProps
-  extends PreactCheckboxProps,
-    Required<Pick<SwitchProps$1, 'labelAccessibilityVisibility'>> {}
-
-declare class Switch extends PreactCheckboxElement implements SwitchProps {
-  accessor labelAccessibilityVisibility: SwitchProps['labelAccessibilityVisibility'];
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Switch;
+    [tagName]: DropZone;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: SwitchJSXProps & PreactBaseElementProps<Switch>;
+      [tagName]: DropZoneJSXProps &
+        PreactBaseElementPropsWithChildren<DropZone>;
     }
   }
 }
 
-declare const tagName = 's-switch';
-export interface SwitchJSXProps
-  extends Partial<SwitchProps>,
-    Pick<SwitchProps$1, 'id'> {
+declare const tagName = 's-drop-zone';
+export interface DropZoneJSXProps
+  extends Partial<DropZoneProps>,
+    Pick<DropZoneProps$1, 'id'> {
+  /**
+   * Content to include inside the DropZone container
+   */
+  children?: ComponentChildren;
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onDropRejected?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 
-export {Switch};
-export type {SwitchJSXProps};
+export {DropZone};
+export type {DropZoneJSXProps};

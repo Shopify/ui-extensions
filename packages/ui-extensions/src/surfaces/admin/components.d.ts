@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -166,11 +166,11 @@ export interface ExtendableEvent extends Event {
    */
   waitUntil?: (promise: Promise<void>) => void;
 }
-interface AggregateError$1<T extends Error> extends Error {
+export interface AggregateError<T extends Error> extends Error {
   errors: T[];
 }
 export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
-  error: AggregateError$1<T>;
+  error: AggregateError<T>;
 }
 export type SizeKeyword =
   | 'small-500'
@@ -278,6 +278,7 @@ declare const privateIconArray: readonly [
   'arrow-up-right',
   'arrows-in-horizontal',
   'arrows-out-horizontal',
+  'asterisk',
   'attachment',
   'automation',
   'backspace',
@@ -2026,7 +2027,10 @@ interface ClickableProps$1
    */
   lang?: string;
 }
-interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
+interface ClickableChipProps$1
+  extends ChipProps$1,
+    GlobalProps,
+    InteractionProps {
   /**
    * Callback when the chip is clicked.
    */
@@ -2035,6 +2039,7 @@ interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
    * The URL to link to.
    *
    * - If set, it will navigate to the location specified by `href` after executing the `click` event.
+   * - If a `commandFor` is set, the `command` will be executed instead of the navigation.
    */
   href?: string;
   /**
@@ -3105,6 +3110,21 @@ interface NumberFieldProps$1
    * @default 'decimal'
    */
   inputMode?: 'decimal' | 'numeric';
+  /**
+   * Callback when the user has **finished editing** a field, e.g. once they have blurred
+   * the field after changing the value.
+   * Also fired after `onInput` on every step when interacting with the controls or the keyboard up and down arrows.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+   */
+  onChange?: (event: Event) => void;
+  /**
+   * Callback when the user makes any changes in the field.
+   * Also fired before `onChange` on every step when interacting with the controls or the keyboard up and down arrows.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+   */
+  onInput?: (event: Event) => void;
 }
 export type NumberAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -3810,6 +3830,7 @@ type IconType$1 =
   | 'arrow-up-right'
   | 'arrows-in-horizontal'
   | 'arrows-out-horizontal'
+  | 'asterisk'
   | 'attachment'
   | 'automation'
   | 'backspace'
@@ -3890,6 +3911,7 @@ type IconType$1 =
   | 'clipboard-check'
   | 'clipboard-checklist'
   | 'clock'
+  | 'clock-list'
   | 'clock-revert'
   | 'code'
   | 'code-add'
@@ -4086,6 +4108,7 @@ type IconType$1 =
   | 'note'
   | 'note-add'
   | 'notification'
+  | 'number-one'
   | 'order'
   | 'order-batches'
   | 'order-draft'
@@ -4166,6 +4189,7 @@ type IconType$1 =
   | 'profile-filled'
   | 'question-circle'
   | 'question-circle-filled'
+  | 'radio-control'
   | 'receipt'
   | 'receipt-dollar'
   | 'receipt-euro'
@@ -4276,6 +4300,9 @@ type IconType$1 =
   | 'unlock'
   | 'upload'
   | 'variant'
+  | 'variant-list'
+  | 'video'
+  | 'video-list'
   | 'view'
   | 'viewport-narrow'
   | 'viewport-short'
@@ -5333,11 +5360,18 @@ export interface ClickableChipProps
       | 'hidden'
       | 'href'
       | 'disabled'
+      | 'command'
+      | 'commandFor'
+      | 'interestFor'
     >
   > {}
 
+declare const ClickableChip_base: (abstract new (
+  args_0: RenderImpl,
+) => PreactCustomElement & PreactOverlayControlProps) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
 declare class ClickableChip
-  extends PreactCustomElement
+  extends ClickableChip_base
   implements ClickableChipProps
 {
   accessor color: ClickableChipProps['color'];
@@ -5761,7 +5795,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$I]: DropZoneJSXProps & PreactBaseElementProps<DropZone>;
+      [tagName$I]: DropZoneJSXProps &
+        PreactBaseElementPropsWithChildren<DropZone>;
     }
   }
 }
@@ -7604,7 +7639,7 @@ declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
       [tagName$9]: Omit<TextFieldJSXProps, 'accessory'> &
-        PreactBaseElementProps<TextField>;
+        PreactBaseElementPropsWithChildren<TextField>;
     }
   }
 }
@@ -8917,14 +8952,16 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$I]: DropZoneJSXProps & ReactBaseElementProps<DropZone>;
+      [tagName$I]: DropZoneJSXProps &
+        ReactBaseElementPropsWithChildren<DropZone>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$I]: DropZoneJSXProps & ReactBaseElementProps<DropZone>;
+      [tagName$I]: DropZoneJSXProps &
+        ReactBaseElementPropsWithChildren<DropZone>;
     }
   }
 }
@@ -9442,7 +9479,7 @@ declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
       [tagName$9]: Omit<TextFieldJSXProps, 'accessory'> &
-        ReactBaseElementProps<TextField>;
+        ReactBaseElementPropsWithChildren<TextField>;
     }
   }
 }
@@ -9450,7 +9487,7 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       [tagName$9]: Omit<TextFieldJSXProps, 'accessory'> &
-        ReactBaseElementProps<TextField>;
+        ReactBaseElementPropsWithChildren<TextField>;
     }
   }
 }

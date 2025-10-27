@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -198,7 +198,11 @@ declare module 'preact' {
 declare const tagName = 's-table';
 export interface TableJSXProps
   extends Partial<TableProps>,
-    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
+    Pick<TableProps$1, 'id' | 'children' | 'onNextPage' | 'onPreviousPage'> {
+  /**
+   * The content of the Table.
+   */
+  children?: ComponentChildren;
   /**
    * Additional filters to display in the table. For example, the `s-search-field` component can be used to filter the table data.
    */

@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -106,7 +106,12 @@ declare module 'preact' {
 declare const tagName = 's-table-row';
 export interface TableRowJSXProps
   extends Partial<TableRowProps>,
-    Pick<TableRowProps$1, 'id'> {}
+    Pick<TableRowProps$1, 'id' | 'children'> {
+  /**
+   * The content of a TableRow, which should be `TableCell` components.
+   */
+  children?: ComponentChildren;
+}
 
 export {TableRow};
 export type {TableRowJSXProps};

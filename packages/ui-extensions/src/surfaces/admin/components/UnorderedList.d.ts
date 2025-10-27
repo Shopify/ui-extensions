@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -107,7 +107,14 @@ declare module 'preact' {
 declare const tagName = 's-unordered-list';
 export interface UnorderedListJSXProps
   extends Partial<UnorderedListProps>,
-    Pick<UnorderedListProps$1, 'id'> {}
+    Pick<UnorderedListProps$1, 'id'> {
+  /**
+   * The items of the UnorderedList.
+   *
+   * Only ListItems are accepted.
+   */
+  children?: ComponentChildren;
+}
 
 export {UnorderedList};
 export type {UnorderedListJSXProps};

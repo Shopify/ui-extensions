@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -128,7 +128,12 @@ declare module 'preact' {
 declare const tagName = 's-paragraph';
 export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,
-    Pick<ParagraphProps$1, 'id'> {}
+    Pick<ParagraphProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Paragraph.
+   */
+  children?: ComponentChildren;
+}
 
 export {Paragraph};
 export type {ParagraphJSXProps};
