@@ -37,7 +37,7 @@
               <s-text>Decatur, USA</s-text>
             </s-stack>
           </s-stack>
-          <s-button icon="menu-horizontal" variant="tertiary"></s-button>
+          <s-button icon="menu-horizontal" variant="tertiary" accessibilityLabel="Actions for Mae Jemison"></s-button>
         </s-grid>
       </s-clickable>
       <s-clickable borderstyle="solid none none none" border="base" paddingInline="base" paddingBlock="small">
@@ -50,7 +50,7 @@
               <s-text>Los Angeles, USA</s-text>
             </s-stack>
           </s-stack>
-          <s-button icon="menu-horizontal" variant="tertiary"></s-button>
+          <s-button icon="menu-horizontal" variant="tertiary" accessibilityLabel="Actions for Ellen Ochoa"></s-button>
         </s-grid>
       </s-clickable>
     </s-stack>
