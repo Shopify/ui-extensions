@@ -4,7 +4,6 @@
   borderRadius="base"
   padding="base"
   inlineSize="100%"
-  accessibilityLabel="Download Shopify Planet"
 >
   <s-grid gridTemplateColumns="auto 1fr auto" alignItems="stretch" gap="base">
     <s-thumbnail
