@@ -32,12 +32,12 @@
             <s-button-group>
               <s-button
                 slot="secondary-actions"
-                aria-label="Learn more about creating puzzles"
+                accessibilityLabel="Learn more about creating puzzles"
               >
                 {" "}
                 Learn more{" "}
               </s-button>
-              <s-button slot="primary-action" aria-label="Add a new puzzle">
+              <s-button slot="primary-action" accessibilityLabel="Add a new puzzle">
                 {" "}
                 Create puzzle{" "}
               </s-button>
