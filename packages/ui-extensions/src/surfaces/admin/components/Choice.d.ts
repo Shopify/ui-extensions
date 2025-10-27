@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -125,7 +125,15 @@ declare module 'preact' {
 declare const tagName = 's-choice';
 export interface ChoiceJSXProps
   extends Partial<ChoiceProps>,
-    Pick<ChoiceProps$1, 'id' | 'details'> {
+    Pick<ChoiceProps$1, 'id' | 'children' | 'details'> {
+  /**
+   * Content to use as the choice label.
+   *
+   * The label is produced by extracting and
+   * concatenating the text nodes from the provided content;
+   * any markup or element structure is ignored.
+   */
+  children?: ComponentChildren;
   /**
    * Additional text to provide context or guidance for the input.
    *

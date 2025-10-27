@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -119,7 +119,12 @@ declare module 'preact' {
 declare const tagName = 's-table-cell';
 export interface TableCellJSXProps
   extends Partial<TableCellProps>,
-    Pick<TableCellProps$1, 'id'> {}
+    Pick<TableCellProps$1, 'id' | 'children'> {
+  /**
+   * The content of the table cell.
+   */
+  children?: ComponentChildren;
+}
 
 export {TableCell};
 export type {TableCellJSXProps};

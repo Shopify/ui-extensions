@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -150,7 +150,13 @@ declare module 'preact' {
 declare const tagName = 's-choice-list';
 export interface ChoiceListJSXProps
   extends Partial<ChoiceListProps>,
-    Pick<ChoiceListProps$1, 'id'> {
+    Pick<ChoiceListProps$1, 'id' | 'children'> {
+  /**
+   * The choices a user can select from.
+   *
+   * Accepts `Choice` components.
+   */
+  children?: ComponentChildren;
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }

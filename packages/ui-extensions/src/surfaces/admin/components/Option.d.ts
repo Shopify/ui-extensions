@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -111,7 +111,12 @@ declare module 'preact' {
 declare const tagName = 's-option';
 export interface OptionJSXProps
   extends Partial<OptionProps>,
-    Pick<OptionProps$1, 'id'> {}
+    Pick<OptionProps$1, 'id' | 'children'> {
+  /**
+   * The content to use as the label.
+   */
+  children?: ComponentChildren;
+}
 
 export {Option};
 export type {OptionJSXProps};

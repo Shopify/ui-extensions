@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -108,7 +108,11 @@ declare module 'preact' {
 declare const tagName = 's-chip';
 export interface ChipJSXProps
   extends Partial<ChipProps>,
-    Pick<ChipProps$1, 'id'> {
+    Pick<ChipProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Chip.
+   */
+  children?: ComponentChildren;
   /**
    * The graphic to display in the chip.
    *

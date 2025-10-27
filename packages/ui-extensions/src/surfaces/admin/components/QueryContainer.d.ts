@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -112,7 +112,12 @@ declare module 'preact' {
 declare const tagName = 's-query-container';
 export interface QueryContainerJSXProps
   extends Partial<QueryContainerProps$1>,
-    Pick<QueryContainerProps$1, 'id'> {}
+    Pick<QueryContainerProps$1, 'id' | 'children'> {
+  /**
+   * The content of the container.
+   */
+  children?: ComponentChildren;
+}
 
 export {QueryContainer};
 export type {QueryContainerJSXProps};

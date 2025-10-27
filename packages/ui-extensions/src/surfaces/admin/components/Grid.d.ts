@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -511,7 +511,12 @@ declare module 'preact' {
 declare const tagName = 's-grid';
 export interface GridJSXProps
   extends Partial<GridProps>,
-    Pick<GridProps$1, 'id'> {}
+    Pick<GridProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Grid.
+   */
+  children?: ComponentChildren;
+}
 
 export {Grid};
 export type {GridJSXProps};

@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -455,7 +455,11 @@ declare module 'preact' {
 declare const tagName = 's-clickable';
 export interface ClickableJSXProps
   extends Partial<ClickableProps>,
-    Pick<ClickableProps$1, 'id'> {
+    Pick<ClickableProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Clickable.
+   */
+  children?: ComponentChildren;
   onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
