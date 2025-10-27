@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -202,7 +202,13 @@ declare module 'preact' {
 declare const tagName = 's-select';
 export interface SelectJSXProps
   extends Partial<SelectProps>,
-    Pick<SelectProps$1, 'id'> {
+    Pick<SelectProps$1, 'id' | 'children'> {
+  /**
+   * The options a user can select from.
+   *
+   * Accepts `Option` and `OptionGroup` components.
+   */
+  children?: ComponentChildren;
   onChange?: (event: CallbackEvent<typeof tagName>) => void;
   onInput?: (event: CallbackEvent<typeof tagName>) => void;
   onBlur?: (event: CallbackEvent<typeof tagName>) => void;

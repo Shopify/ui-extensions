@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -121,7 +121,12 @@ declare module 'preact' {
 declare const tagName = 's-table-header';
 export interface TableHeaderJSXProps
   extends Partial<TableHeaderProps>,
-    Pick<TableHeaderProps$1, 'id'> {}
+    Pick<TableHeaderProps$1, 'id' | 'children'> {
+  /**
+   * The heading of the column in the `table` variant, and the label of its data in `list` variant.
+   */
+  children?: ComponentChildren;
+}
 
 export {TableHeader};
 export type {TableHeaderJSXProps};

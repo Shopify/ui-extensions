@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -172,7 +172,11 @@ declare module 'preact' {
 declare const tagName = 's-link';
 export interface LinkJSXProps
   extends Partial<LinkProps>,
-    Pick<LinkProps$1, 'id' | 'lang'> {
+    Pick<LinkProps$1, 'id' | 'lang' | 'children'> {
+  /**
+   * The content of the Link.
+   */
+  children?: ComponentChildren;
   onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 

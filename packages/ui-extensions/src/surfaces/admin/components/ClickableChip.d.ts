@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,7 +6,11 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChildren, ClickableChipProps$1} from './shared.d.ts';
+import type {
+  ComponentChildren,
+  ClickableChipProps$1,
+  InteractionProps,
+} from './shared.d.ts';
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
@@ -41,6 +45,9 @@ export interface ClickableChipProps
       | 'hidden'
       | 'href'
       | 'disabled'
+      | 'command'
+      | 'commandFor'
+      | 'interestFor'
     >
   > {}
 
@@ -104,8 +111,40 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
+export interface PreactOverlayControlProps
+  extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
+  /**
+   * Sets the action the [command](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this clickable is activated.
+   *
+   * See the documentation of particular components for the actions they support.
+   *
+   * - `--auto`: a default action for the target component.
+   * - `--show`: shows the target component.
+   * - `--hide`: hides the target component.
+   * - `--toggle`: toggles the target component.
+   *
+   * @default '--auto'
+   */
+  command: Extract<
+    InteractionProps['command'],
+    '--show' | '--hide' | '--toggle' | '--auto'
+  >;
+  /**
+   * Sets the element the [commandFor](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor) should act on when this clickable is activated.
+   */
+  commandFor: Extract<InteractionProps['commandFor'], string>;
+  /**
+   * Sets the element the [interestFor](https://open-ui.org/components/interest-invokers.explainer/#the-pitch-in-code) should act on when this clickable is activated.
+   */
+  interestFor: Extract<InteractionProps['interestFor'], string>;
+}
+
+declare const ClickableChip_base: (abstract new (
+  args_0: RenderImpl,
+) => PreactCustomElement & PreactOverlayControlProps) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
 declare class ClickableChip
-  extends PreactCustomElement
+  extends ClickableChip_base
   implements ClickableChipProps
 {
   accessor color: ClickableChipProps['color'];
@@ -136,7 +175,11 @@ declare module 'preact' {
 declare const tagName = 's-clickable-chip';
 export interface ClickableChipJSXProps
   extends Partial<ClickableChipProps>,
-    Pick<ClickableChipProps$1, 'id'> {
+    Pick<ClickableChipProps$1, 'id' | 'children'> {
+  /**
+   * The content of the clickable chip.
+   */
+  children?: ComponentChildren;
   /**
    * The graphic to display in the clickable chip.
    *

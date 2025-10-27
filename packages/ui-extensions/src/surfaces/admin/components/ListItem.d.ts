@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -104,7 +104,12 @@ declare module 'preact' {
 declare const tagName = 's-list-item';
 export interface ListItemJSXProps
   extends Partial<ListItemProps>,
-    Pick<ListItemProps$1, 'id'> {}
+    Pick<ListItemProps$1, 'id' | 'children'> {
+  /**
+   * The content of the ListItem.
+   */
+  children?: ComponentChildren;
+}
 
 export {ListItem};
 export type {ListItemJSXProps};

@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -139,7 +139,12 @@ declare module 'preact' {
 declare const tagName = 's-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
-    Pick<BadgeProps$1, 'id'> {}
+    Pick<BadgeProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Badge.
+   */
+  children?: ComponentChildren;
+}
 
 export {Badge};
 export type {BadgeJSXProps};
