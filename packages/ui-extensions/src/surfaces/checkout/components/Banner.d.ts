@@ -27,8 +27,8 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-banner";
@@ -47,7 +47,7 @@ export interface BannerElementEvents {
      * this event must fire after the banner has fully hidden.
      * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
      */
-    afterhide?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    afterhide?: CallbackEventListener<typeof tagName>;
     /**
      * Event handler when the banner is dismissed by the user.
      *
@@ -55,7 +55,7 @@ export interface BannerElementEvents {
      *
      * The `hidden` property will be `false` when this event fires.
      */
-    dismiss?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    dismiss?: CallbackEventListener<typeof tagName>;
 }
 export interface BannerElement extends BannerElementProps, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {
     onafterhide: BannerEvents['onAfterHide'];

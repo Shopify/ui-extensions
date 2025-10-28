@@ -374,7 +374,7 @@ See [Storefront GraphQL API endpoints](/docs/api/storefront#endpoints) for more 
       description: `
 You can apply changes to customer consent by using the \`applyTrackingConsentChanges\` API.
 
-> Note: Requires the [\`customer_privacy\` capability](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#collect-buyer-consent) to be set to \`true\`.`,
+> Note: Requires the [\`customer_privacy\` capability](https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration#collect-buyer-consent) to be set to \`true\`.`,
       codeblock: {
         title: 'Use a Sheet to manage customer privacy consent',
         tabs: getExtensionCodeTabs(
@@ -459,13 +459,6 @@ The contents of the token are signed using your shared app secret.  The optional
       codeblock: {
         title: 'Applying changes to attributes',
         tabs: getExtensionCodeTabs('attributes/attribute-change'),
-      },
-    },
-    'ui-close-overlay': {
-      description: '',
-      codeblock: {
-        title: '',
-        tabs: getExtensionCodeTabs('ui-components/overlay-close'),
       },
     },
     ...createExample('cart-instructions/attributes', {

@@ -16,8 +16,15 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       title: 'Events',
-      description: '',
+      description:
+        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
       type: 'EmailFieldElementEvents',
+    },
+    {
+      title: 'Slots',
+      description:
+        'Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).',
+      type: 'EmailFieldElementSlots',
     },
   ],
   defaultExample: {

@@ -27,9 +27,14 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
+export type ToggleState = 'open' | 'closed';
+export interface ToggleArgumentsEvent {
+    oldState?: ToggleState;
+    newState?: ToggleState;
+}
 
 declare const tagName = "s-announcement";
 export interface AnnouncementEvents extends Pick<AnnouncementProps$1, 'onAfterToggle' | 'onDismiss' | 'onToggle'> {
@@ -46,12 +51,12 @@ export interface AnnouncementElementEvents {
      * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
      * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
      */
-    aftertoggle?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    aftertoggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;
     /**
      * Callback fired when the announcement is dismissed by the user
      * (either via the built-in dismiss button or programmatically).
      */
-    dismiss?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    dismiss?: CallbackEventListener<typeof tagName>;
     /**
      * Callback straight after the element state changes.
      *
@@ -64,7 +69,7 @@ export interface AnnouncementElementEvents {
      * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
      * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
      */
-    toggle?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    toggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;
 }
 export interface AnnouncementElement extends AnnouncementMethods, Omit<HTMLElement, 'id' | 'ontoggle'> {
     onaftertoggle?: AnnouncementEvents['onAfterToggle'];

@@ -21,8 +21,8 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-qr-code";
@@ -35,7 +35,7 @@ export interface QRCodeElementEvents {
      * Invoked when the conversion of `content` to a QR code fails.
      * If an error occurs, the QR code and its child elements will not be displayed.
      */
-    error?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    error?: CallbackEventListener<typeof tagName>;
 }
 export interface QRCodelement extends QRCodeElementProps, Omit<HTMLElement, 'id' | 'onerror'> {
     onerror: QRCodeEvents['onError'];
