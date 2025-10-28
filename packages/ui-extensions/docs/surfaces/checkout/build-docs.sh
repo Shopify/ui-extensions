@@ -14,6 +14,7 @@ fail_and_exit() {
 run_sed() {
   if [[ "$OSTYPE" == "darwin"* ]]; then
     # macOS
+    # WARNING: do not synchronize this with checkout-web
     sed -Ei '' "$1" "$2"
   else
     # Linux and other Unix-like systems
