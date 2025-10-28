@@ -7,6 +7,8 @@ export type {
 
 export type {CartLineItemApi} from './api/cart-line-item-api/cart-line-item-api';
 
+export type {CashDrawerApi} from './api/cash-drawer-api/cash-drawer-api';
+
 export type {ActionApi, ActionApiContent} from './api/action-api/action-api';
 
 export type {StandardApi} from './api/standard/standard-api';
