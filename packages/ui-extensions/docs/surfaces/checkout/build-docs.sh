@@ -100,19 +100,23 @@ copy_generated_docs_to_shopify_dev() {
 if [ -d $SHOPIFY_DEV_PATH ]; then
   mkdir -p $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
   cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
-  # Replace 'unstable' with the exact API version in relative doc links
-  run_sed \
-    "s/\/docs\/api\/checkout-ui-extensions\/unstable/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
-    $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data.json
-  sed_exit=$?
-  if [ $sed_exit -ne 0 ]; then
-    fail_and_exit $sed_exit
-  fi
+
+  # Replace 'latest' with the exact API version in relative doc links
+  for file in generated_docs_data.json generated_static_pages.json; do
+    run_sed \
+      "s/\/docs\/api\/checkout-ui-extensions\/latest/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
+      "$SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/$file"
+    sed_exit=$?
+    if [ $sed_exit -ne 0 ]; then
+      fail_and_exit $sed_exit
+    fi
+  done
+
   rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/react-app/public/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
   echo "Docs: https://shopify-dev.shop.dev/docs/api/checkout-ui-extensions"
 else
-    echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."
-  fi
+  echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."
+fi
 }
 
 # Assume we have a relative path to shopify-dev (for non-local environments like CI, and Github Actions)

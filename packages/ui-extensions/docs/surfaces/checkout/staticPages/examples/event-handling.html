@@ -1,0 +1,21 @@
+<s-button onclick="console.log('Clicked!')">
+  Click me
+</s-button>
+
+<s-text-field
+  label="Email"
+  name="email"
+  onchange="console.log('Value changed:', e.currentTarget.value)"
+  onfocus="console.log('Field focused')"
+  onblur="console.log('Field blurred')"
+></s-text-field>
+
+<!-- or -->
+
+<script>
+  const textField = document.querySelector('s-text-field');
+
+  textField.addEventListener('change', (e) => {
+    console.log('Value changed:', e.currentTarget.value);
+  });
+</script>
