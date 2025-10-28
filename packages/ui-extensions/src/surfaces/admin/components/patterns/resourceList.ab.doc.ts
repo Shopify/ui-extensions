@@ -34,6 +34,11 @@ const data: ReferenceEntityTemplateSchema = {
           code: 'examples/resourceList.html',
           language: 'preview',
         },
+        {
+          title: 'jsx',
+          code: 'examples/resourceList.jsx',
+          language: 'preview-jsx',
+        },
       ],
     },
   },

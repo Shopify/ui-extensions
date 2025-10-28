@@ -26,6 +26,11 @@ const data: ReferenceEntityTemplateSchema = {
           code: 'examples/emptyState.html',
           language: 'preview',
         },
+        {
+          title: 'jsx',
+          code: 'examples/emptyState.jsx',
+          language: 'preview-jsx',
+        },
       ],
     },
   },
