@@ -4,7 +4,7 @@
       <s-grid gridTemplateColumns="1fr auto" gap="small-200" alignItems="center">
         <s-text-field icon="search" placeholder="Filter customers"></s-text-field>
         <s-button commandFor="tagged-with">Tagged with</s-button>
-        <s-popover placement="bottom-start" id="tagged-with">
+        <s-popover id="tagged-with">
           <s-stack gap="small-200" padding="small-200">
             <s-text-field value="VIP" placeholder="Add tag"></s-text-field>
             <s-link href="">Clear</s-link>
@@ -14,7 +14,7 @@
       <s-button variant="secondary">Save</s-button>
     </s-grid>
 
-    <s-stack paddingInline="base">
+    <s-stack direction="inline"  gap="small-400" paddingInline="base">
       <s-clickable-chip removable>Tagged with VIP</s-clickable-chip>
     </s-stack>
     
@@ -27,7 +27,7 @@
     </s-grid>
     
     <s-stack>
-      <s-clickable borderstyle="solid none none none" border="base" paddingInline="base" paddingBlock="small">
+      <s-clickable borderStyle="solid none none none" border="base" paddingInline="base" paddingBlock="small">
         <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
           <s-stack direction="inline" gap="small" alignItems="center">
             <s-checkbox></s-checkbox>
@@ -40,7 +40,7 @@
           <s-button icon="menu-horizontal" variant="tertiary" accessibilityLabel="Actions for Mae Jemison"></s-button>
         </s-grid>
       </s-clickable>
-      <s-clickable borderstyle="solid none none none" border="base" paddingInline="base" paddingBlock="small">
+      <s-clickable borderStyle="solid none none none" border="base" paddingInline="base" paddingBlock="small">
         <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
           <s-stack direction="inline" gap="small" alignItems="center">
             <s-checkbox></s-checkbox>
