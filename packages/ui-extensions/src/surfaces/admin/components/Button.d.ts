@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -208,7 +208,11 @@ declare module 'preact' {
 declare const tagName = 's-button';
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
-    Pick<ButtonProps$1, 'id'> {
+    Pick<ButtonProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Button.
+   */
+  children?: ComponentChildren;
   onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;

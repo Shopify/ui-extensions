@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -382,7 +382,12 @@ declare module 'preact' {
 declare const tagName = 's-box';
 export interface BoxJSXProps
   extends Partial<BoxProps>,
-    Pick<BoxProps$1, 'id'> {}
+    Pick<BoxProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Box.
+   */
+  children?: ComponentChildren;
+}
 
 export {Box};
 export type {BoxJSXProps};

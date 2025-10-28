@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -113,7 +113,12 @@ declare module 'preact' {
 declare const tagName = 's-heading';
 export interface HeadingJSXProps
   extends Partial<HeadingProps>,
-    Pick<HeadingProps$1, 'id'> {}
+    Pick<HeadingProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Heading.
+   */
+  children?: ComponentChildren;
+}
 
 export {Heading};
 export type {HeadingJSXProps};
