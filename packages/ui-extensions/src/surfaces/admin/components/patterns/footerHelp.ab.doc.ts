@@ -31,6 +31,11 @@ const data: ReferenceEntityTemplateSchema = {
           code: 'examples/footerHelp.html',
           language: 'preview',
         },
+        {
+          title: 'jsx',
+          code: 'examples/footerHelp.jsx',
+          language: 'preview-jsx',
+        },
       ],
     },
   },
