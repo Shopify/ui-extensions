@@ -4,6 +4,7 @@ api_version = "2025-10"
 type = "ui_extension"
 name = "My checkout extension"
 handle = "checkout-ui"
+uid = "fddfc370-27c7-c30f-4ee0-a927194e2accadefd40c"
 
 [extensions.settings]
 

@@ -1,0 +1,33 @@
+<!-- Uncontrolled component - internal state -->
+<s-text-field
+  label="Comment"
+  name="comment"
+  value="Initial value"
+  onchange="console.log('New value:', this.value)"
+></s-text-field>
+
+<!-- Controlled component - external state -->
+<s-text-field
+  id="nameField"
+  label="Name"
+  name="name"
+  value="John Doe"
+></s-text-field>
+
+<button onclick="updateName()">
+  Change Name
+</button>
+
+<script>
+  const nameField = document.getElementById('nameField');
+
+  // Listen for changes to update our "state"
+  nameField.addEventListener('input', (e) => {
+    console.log('Value changed:', e.currentTarget.value);
+  });
+
+  // Manually update the component value (controlled)
+  function updateName() {
+    nameField.value = "Jane Smith";
+  }
+</script>

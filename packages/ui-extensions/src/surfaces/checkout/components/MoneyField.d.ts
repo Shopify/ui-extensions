@@ -21,8 +21,8 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-money-field";
@@ -36,25 +36,25 @@ export interface MoneyFieldElementEvents {
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
      */
-    blur?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    blur?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
      */
-    change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    change?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the element receives focus.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
      */
-    focus?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    focus?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the user makes any changes in the field.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
      */
-    input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    input?: CallbackEventListener<typeof tagName>;
 }
 export interface MoneyFieldElement extends MoneyFieldElementProps {
     onblur: MoneyFieldEvents['onBlur'];

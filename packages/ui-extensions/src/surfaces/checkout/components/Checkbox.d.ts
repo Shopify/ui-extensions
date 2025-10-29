@@ -21,8 +21,8 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-checkbox";
@@ -37,7 +37,7 @@ export interface CheckboxElementEvents {
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
      */
-    change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    change?: CallbackEventListener<typeof tagName>;
 }
 export interface CheckboxElement extends CheckboxElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: CheckboxEvents['onChange'];

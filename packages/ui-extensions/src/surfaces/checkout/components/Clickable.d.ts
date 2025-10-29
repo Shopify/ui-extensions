@@ -30,8 +30,8 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-clickable";
@@ -51,20 +51,20 @@ export interface ClickableElementEvents {
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
      */
-    blur?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    blur?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the button is activated.
      * This will be called before the action indicated by `type`.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
      */
-    click?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    click?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the element receives focus.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
      */
-    focus?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    focus?: CallbackEventListener<typeof tagName>;
 }
 export interface ClickableElement extends ClickableElementProps, Omit<HTMLElement, 'id' | 'lang' | 'onblur' | 'onclick' | 'onfocus'> {
     onblur: ClickableEvents['onBlur'];

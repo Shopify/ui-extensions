@@ -13,6 +13,12 @@ const data: ReferenceEntityTemplateSchema = {
       description: '',
       type: 'ClipboardItemElementProps',
     },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
+      type: 'ClipboardItemElementEvents',
+    },
   ],
   defaultExample: {
     image: 'clipboard-default.png',

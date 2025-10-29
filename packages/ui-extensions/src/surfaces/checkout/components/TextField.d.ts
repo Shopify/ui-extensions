@@ -34,8 +34,8 @@ export type ReducedIconTypes = (typeof CHECKOUT_AVAILABLE_ICONS)[number];
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName$1 = "s-icon";
@@ -60,7 +60,7 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-text-field";
-export interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'icon' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
+export interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
     /**
      * @deprecated Use `label` instead.
@@ -76,25 +76,25 @@ export interface TextFieldElementEvents {
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
      */
-    blur?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    blur?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
      */
-    change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    change?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the element receives focus.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
      */
-    focus?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    focus?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the user makes any changes in the field.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
      */
-    input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    input?: CallbackEventListener<typeof tagName>;
 }
 export interface TextFieldElementSlots {
     /**

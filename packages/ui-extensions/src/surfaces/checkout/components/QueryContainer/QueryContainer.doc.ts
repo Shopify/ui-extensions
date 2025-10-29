@@ -26,6 +26,14 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  related: [
+    {
+      name: 'Responsive values',
+      subtitle: 'Utility',
+      url: '/docs/api/checkout-ui-extensions/latest/using-polaris-components#responsive-values',
+      type: 'utility',
+    },
+  ],
 };
 
 export default data;
