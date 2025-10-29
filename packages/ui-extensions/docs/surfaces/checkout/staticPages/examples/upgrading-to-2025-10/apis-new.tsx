@@ -15,17 +15,13 @@ function Extension() {
 }
 
 async function onCheckboxChange(event) {
-  const isChecked = event.target.checked;
+  const isChecked = event.currentTarget.checked;
 
-  const result =
-    await shopify.applyAttributeChange({
-      type: 'updateAttribute',
-      key: 'includeGift',
-      value: isChecked ? 'yes' : 'no',
-    });
+  const result = await shopify.applyAttributeChange({
+    type: 'updateAttribute',
+    key: 'includeGift',
+    value: isChecked ? 'yes' : 'no',
+  });
 
-  console.log(
-    'applyAttributeChange result',
-    result,
-  );
+  console.log('applyAttributeChange result', result);
 }

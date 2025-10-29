@@ -22,7 +22,7 @@ function Extension() {
   );
 
   async function onCheckboxChange(event) {
-    const isChecked = event.target.checked;
+    const isChecked = event.currentTarget.checked;
     // 2. Check if the API is available
     if (
       !shopify.instructions.value.attributes
