@@ -112,6 +112,15 @@ See [an example](targets/action/pos-cart-line-item-details-action-render).
 `,
           image: 'cart-lineitem-action.png',
         },
+        {
+          title: 'Register details',
+          description: `
+Displays an action target modally when a menu item is tapped on the register details screen.
+
+See [an example](targets/action/pos-register-details-action-render).
+`,
+          image: 'register-details-action-menu.png',
+        },
       ],
     },
     {
@@ -201,6 +210,15 @@ Renders a custom section in the footer of printed receipts.
 See [an example](targets/block/pos-receipt-footer-block-render).
 `,
           image: 'posreceipt-footer.png',
+        },
+        {
+          title: 'Register details',
+          description: `
+Renders a custom section within the native register details screen.
+
+See [an example](targets/block/pos-register-details-block-render).
+`,
+          image: 'register-details-block.png',
         },
       ],
     },
