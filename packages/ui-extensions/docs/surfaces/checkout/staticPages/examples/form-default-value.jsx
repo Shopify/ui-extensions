@@ -22,14 +22,14 @@ function Extension() {
             name="my-text"
             defaultValue={defaultValues.text}
             value={textValue}
-            onChange={(e) => setTextValue(e.target.value)}
+            onChange={(e) => setTextValue(e.currentTarget.value)}
           />
           <s-number-field
             label="Percentage field"
             name="my-number"
             defaultValue={defaultValues.number}
             value={numberValue}
-            onChange={(e) => setNumberValue(e.target.value)}
+            onChange={(e) => setNumberValue(e.currentTarget.value)}
           />
         </s-stack>
       </s-form>

@@ -5,6 +5,6 @@
   <s-time-picker
     id="time-picker"
     value="14:30"
-    onChange={(event) => console.log('Time selected:', event.target.value)}
+    onChange={(event) => console.log('Time selected:', event.currentTarget.value)}
   />
 </>;
