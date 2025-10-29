@@ -21,8 +21,8 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-clipboard-item";
@@ -34,11 +34,11 @@ export interface ClipboardItemElementEvents {
     /**
      * Callback run when the copy to clipboard succeeds.
      */
-    copy?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    copy?: CallbackEventListener<typeof tagName>;
     /**
      * Callback run when the copy to clipboard fails.
      */
-    copyerror?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    copyerror?: CallbackEventListener<typeof tagName>;
 }
 export interface ClipboardItemElement extends ClipboardItemElementProps, Omit<HTMLElement, 'id' | 'oncopy'> {
     oncopy: ClipboardItemEvents['onCopy'];

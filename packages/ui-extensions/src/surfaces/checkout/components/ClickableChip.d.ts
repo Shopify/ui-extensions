@@ -27,8 +27,8 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-clickable-chip";
@@ -42,15 +42,15 @@ export interface ClickableChipElementEvents {
      *
      * The `hidden` property will be `true` when this event fires.
      */
-    afterhide?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    afterhide?: CallbackEventListener<typeof tagName>;
     /**
      * Event handler when the chip is clicked.
      */
-    click?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    click?: CallbackEventListener<typeof tagName>;
     /**
      * Event handler when the chip is removed.
      */
-    remove?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    remove?: CallbackEventListener<typeof tagName>;
 }
 export interface ClickableChipElementSlots {
     /**

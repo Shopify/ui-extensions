@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {NumberFieldProps$1} from './components-shared.d.ts';
+import type {IconProps$1, NumberFieldProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -24,15 +24,44 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/**
+ * Used as the single source of truth for checkout icon types.
+ *
+ * @see https://github.com/Shopify/ui-api-design/blob/main/packages/ui-api-design/src/components/Icon/Icon.ts#L10
+ */
+declare const CHECKOUT_AVAILABLE_ICONS: readonly ["alert-circle", "alert-triangle-filled", "alert-triangle", "arrow-down", "arrow-left", "arrow-right", "arrow-up-right", "arrow-up", "bag", "bullet", "calendar", "camera", "caret-down", "cart", "cash-dollar", "categories", "check-circle", "check", "chevron-down", "chevron-left", "chevron-right", "chevron-up", "circle", "clipboard", "clock", "credit-card", "delete", "delivered", "delivery", "disabled", "discount", "edit", "email", "empty", "external", "filter", "geolocation", "gift-card", "globe", "grid", "image", "info-filled", "info", "list-bulleted", "location", "lock", "map", "menu-horizontal", "menu-vertical", "menu", "minus", "mobile", "note", "order", "organization", "plus", "profile", "question-circle-filled", "question-circle", "reorder", "reset", "return", "savings", "search", "settings", "star-filled", "star-half", "star", "store", "truck", "upload", "x-circle-filled", "x-circle", "x"];
+export type ReducedIconTypes = (typeof CHECKOUT_AVAILABLE_ICONS)[number];
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
+declare const tagName$1 = "s-icon";
+export interface IconProps extends Pick<IconProps$1, 'id' | 'size' | 'tone' | 'type'> {
+    tone?: Extract<IconProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
+    size?: Extract<IconProps$1['size'], 'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
+    type?: '' | ReducedIconTypes;
+}
+export interface IconElement extends IconProps, Omit<HTMLElement, 'id'> {
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        [tagName$1]: IconElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            [tagName$1]: IconProps & BaseElementProps<IconElement>;
+        }
+    }
+}
+
 declare const tagName = "s-number-field";
-export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete' | 'controls' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'icon' | 'id' | 'inputMode' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
+export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete' | 'controls' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'inputMode' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
+    icon?: IconProps['type'];
     /**
      * @deprecated Use `label` instead.
      * @private
@@ -47,31 +76,25 @@ export interface NumberFieldElementEvents {
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
      */
-    blur?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    blur?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
      */
-    change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    change?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the element receives focus.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
      */
-    focus?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    focus?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the user makes any changes in the field.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
      */
-    input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
-}
-export interface NumberFieldElement extends NumberFieldElementProps, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
-    onblur: NumberFieldEvents['onBlur'];
-    onchange: NumberFieldEvents['onChange'];
-    onfocus: NumberFieldEvents['onFocus'];
-    oninput: NumberFieldEvents['onInput'];
+    input?: CallbackEventListener<typeof tagName>;
 }
 export interface NumberFieldElementSlots {
     /**
@@ -79,6 +102,12 @@ export interface NumberFieldElementSlots {
      * Commonly used to display an icon that activates a tooltip providing more information.
      */
     accessory?: HTMLElement;
+}
+export interface NumberFieldElement extends NumberFieldElementProps, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+    onblur: NumberFieldEvents['onBlur'];
+    onchange: NumberFieldEvents['onChange'];
+    onfocus: NumberFieldEvents['onFocus'];
+    oninput: NumberFieldEvents['onInput'];
 }
 export interface NumberFieldProps extends NumberFieldElementProps, NumberFieldEvents {
 }
