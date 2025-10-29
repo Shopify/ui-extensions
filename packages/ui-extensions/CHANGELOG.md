@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2025.10.6
+
+### Patch Changes
+
+- [#3527](https://github.com/Shopify/ui-extensions/pull/3527) [`28027d5`](https://github.com/Shopify/ui-extensions/commit/28027d5537a893e7e3d2e0b224048b4499f34322) Thanks [@oliverigor](https://github.com/oliverigor)! - - Adding toggle state to Announcement callback events docs
+  - Adding correct Map callback events docs
+  - Adding setup updated setup instructions for checkout extensions
+
 ## 2025.10.5
 
 ### Patch Changes
