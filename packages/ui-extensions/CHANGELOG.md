@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.5
+
+### Patch Changes
+
+- [#3530](https://github.com/Shopify/ui-extensions/pull/3530) [`788b877`](https://github.com/Shopify/ui-extensions/commit/788b8778d215b38282db084736722b6f6e8d8b21) Thanks [@andy-chhuon](https://github.com/andy-chhuon)! - Add Box to BlockExtensionComponents
+
 ## 2025.10.4
 
 ### Patch Changes
