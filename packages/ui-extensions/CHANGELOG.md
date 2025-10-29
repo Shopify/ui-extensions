@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2025.10.4
+
+### Patch Changes
+
+- [#3522](https://github.com/Shopify/ui-extensions/pull/3522) [`6b16f5e`](https://github.com/Shopify/ui-extensions/commit/6b16f5e8f72ca928f19e202b48165ca91b10de48) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Fix missing children property for TextField
+
+- [#3522](https://github.com/Shopify/ui-extensions/pull/3522) [`6b16f5e`](https://github.com/Shopify/ui-extensions/commit/6b16f5e8f72ca928f19e202b48165ca91b10de48) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Add DropZone component to admin ui-extensions
+
 ## 2025.10.3
 
 ### Patch Changes
