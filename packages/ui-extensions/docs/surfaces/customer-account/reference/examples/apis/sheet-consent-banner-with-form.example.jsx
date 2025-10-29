@@ -36,7 +36,7 @@ function Extension() {
     return function (event) {
       setConsentFormValues({
         ...consentFormValues,
-        [key]: event.target.checked,
+        [key]: event.currentTarget.checked,
       });
     };
   };
