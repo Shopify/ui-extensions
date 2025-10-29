@@ -1,0 +1,22 @@
+<!-- Number field example - values are strings -->
+<s-number-field
+  label="Quantity"
+  name="quantity"
+  onchange="console.log('Value type:', typeof this.value, 'Value:', this.value)"
+></s-number-field>
+
+<!-- Multi-select example - values is an array of strings -->
+<s-choice-list name="colors" label="Colors" multiple>
+  <s-choice value="red">Red</s-choice>
+  <s-choice value="blue">Blue</s-choice>
+  <s-choice value="green">Green</s-choice>
+</s-choice-list>
+
+<script>
+  const choiceList = document.querySelector('s-choice-list');
+
+  choiceList.addEventListener('change', (e) => {
+    // e.currentTarget.values is an array of strings
+    console.log('Selected colors:', e.currentTarget.values);
+  });
+</script>

@@ -11,12 +11,14 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Events',
-      description: '',
+      description:
+        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
       type: 'AnnouncementElementEvents',
     },
     {
       title: 'Methods',
-      description: '',
+      description:
+        'Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).',
       type: 'AnnouncementElementMethods',
     },
   ],

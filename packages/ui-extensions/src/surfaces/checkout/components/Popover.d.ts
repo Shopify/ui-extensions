@@ -27,8 +27,8 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-popover";
@@ -88,11 +88,11 @@ export interface PopoverElementEvents {
     /**
      * Callback fired after the overlay is hidden.
      */
-    hide?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    hide?: CallbackEventListener<typeof tagName>;
     /**
      * Callback fired after the overlay is shown.
      */
-    show?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    show?: CallbackEventListener<typeof tagName>;
 }
 export interface PopoverElement extends Omit<PopoverProps, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
     onhide: PopoverProps['onHide'];

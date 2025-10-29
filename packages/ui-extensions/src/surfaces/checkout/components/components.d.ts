@@ -3826,7 +3826,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$K]: ConsentPhoneFieldProps & BaseElementProps<ConsentPhoneFieldElement>;
+            [tagName$K]: ConsentPhoneFieldProps & BaseElementPropsWithChildren<ConsentPhoneFieldElement>;
         }
     }
 }
@@ -3984,7 +3984,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$E]: EmailFieldProps & BaseElementProps<EmailFieldElement>;
+            [tagName$E]: EmailFieldProps & BaseElementPropsWithChildren<EmailFieldElement>;
         }
     }
 }
@@ -4277,7 +4277,8 @@ declare module 'preact' {
 }
 
 declare const tagName$r = "s-number-field";
-interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete' | 'controls' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'icon' | 'id' | 'inputMode' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
+interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete' | 'controls' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'inputMode' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
+    icon?: IconProps['type'];
     /**
      * @deprecated Use `label` instead.
      * @private
@@ -4830,7 +4831,7 @@ declare module 'preact' {
 }
 
 declare const tagName$5 = "s-text-field";
-interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'icon' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
+interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
     /**
      * @deprecated Use `label` instead.

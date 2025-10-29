@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
   description: `
   The APIs for interacting with delivery and shipping options.
 
-  > > Tip: Not all extension targets implement all APIs. Check the documentation for the extension target you are using to see which APIs are available.
+  > Tip: Not all extension targets implement all APIs. Check the documentation for the extension target you are using to see which APIs are available.
   `,
   overviewPreviewDescription:
     'The APIs for interacting with delivery and shipping options.',

@@ -3,7 +3,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Sheet',
   description:
-    'The Sheet component displays essential information for customers at the bottom of the screen, appearing above other elements. Use it sparingly to avoid distracting customers during checkout. This component requires access to [Customer Privacy API](/docs/api/checkout-ui-extensions/unstable/configuration#collect-buyer-consent) to be rendered. \n\nThe library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the sheet content.',
+    'The Sheet component displays essential information for customers at the bottom of the screen, appearing above other elements. Use it sparingly to avoid distracting customers during checkout. This component requires access to [Customer Privacy API](/docs/api/checkout-ui-extensions/latest/configuration#collect-buyer-consent) to be rendered. \n\nThe library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the sheet content.',
   requires:
     'configuration of the [Customer Privacy](/docs/api/checkout-ui-extensions/latest/configuration#collect-buyer-consent) capability to be rendered.',
   thumbnail: 'sheet-thumbnail.png',
@@ -17,17 +17,20 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       title: 'Events',
-      description: '',
+      description:
+        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
       type: 'SheetElementEvents',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).',
       type: 'SheetElementSlots',
     },
     {
       title: 'Methods',
-      description: '',
+      description:
+        'Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).',
       type: 'SheetElementMethods',
     },
   ],

@@ -1,0 +1,29 @@
+<s-email-field
+  label="Email"
+  name="email"
+  oninput="console.log('Typing:', this.value)"
+></s-email-field>
+
+<s-text-field
+  label="Name"
+  name="name"
+  onchange="console.log('Value committed:', this.value)"
+></s-text-field>
+
+<!-- Using addEventListener -->
+<s-email-field
+  label="Email"
+  name="email"
+></s-email-field>
+
+<script>
+  const field = document.querySelector('s-email-field');
+
+  field.addEventListener('input', (e) => {
+    console.log('Real-time:', e.currentTarget.value);
+  });
+
+  field.addEventListener('change', (e) => {
+    console.log('Final value:', e.currentTarget.value);
+  });
+</script>

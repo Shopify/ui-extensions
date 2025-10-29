@@ -182,7 +182,7 @@ Your extensions will have the following unauthenticated access scopes to the Sto
         {
           title: 'Protocol Links',
           sectionContent: `
-Protocol links are an easy way for Shopify to infer the type of request you are trying to make. If you would like to make a request to the [Storefront GraphQL API](/docs/api/storefront), you can use our [Storefront Protocol](/docs/api/checkout-ui-extensions/unstable/apis/storefront-api#examples) to infer your Storefront URL and API version.
+Protocol links are an easy way for Shopify to infer the type of request you are trying to make. If you would like to make a request to the [Storefront GraphQL API](/docs/api/storefront), you can use our [Storefront Protocol](/docs/api/checkout-ui-extensions/latest/apis/storefront-api#examples) to infer your Storefront URL and API version.
           `,
         },
       ],
@@ -245,7 +245,7 @@ UI extensions run in a [Web Worker](https://developer.mozilla.org/en-US/docs/Web
           sectionContent: `
 When processing HTTP requests on your API server, you cannot guarantee that your own extension will have made every request. When responding with sensitive data, keep in mind that requests could originate from anywhere on the Internet.
 
-Your extension can pass a [session token](/docs/api/checkout-ui-extensions/unstable/apis/session-token) to your API server but this only guarantees the integrity of its claims. It does not guarantee the request itself originated from Shopify. For example, your API server could trust the session token's \`sub\` claim (the customer ID) but it could not trust a \`?customer_id=\` query parameter.
+Your extension can pass a [session token](/docs/api/checkout-ui-extensions/latest/apis/session-token) to your API server but this only guarantees the integrity of its claims. It does not guarantee the request itself originated from Shopify. For example, your API server could trust the session token's \`sub\` claim (the customer ID) but it could not trust a \`?customer_id=\` query parameter.
 
 Consider a scenario where your extension retrieves a discount code from your API server and [applies it to the checkout](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-applydiscountcodechange). It would not be safe to expose an API endpoint named \`/get-discount-code\` if any buyer could make a direct HTTP request and obtain a discount code.
 `,
@@ -257,7 +257,7 @@ UI extensions can make fetch requests to [App Proxy](/docs/apps/online-store/app
 
 UI extension requests made to the App Proxy will execute as CORS requests. See _Required CORS headers_ above for information about requirements related to CORS.
 
-UI extension requests made to the App Proxy will not assign the <code>logged_in_customer_id</code> query parameter. Instead use a [session token](/docs/api/checkout-ui-extensions/unstable/apis/session-token) which provides the <code>sub</code> claim for the logged in customer.
+UI extension requests made to the App Proxy will not assign the <code>logged_in_customer_id</code> query parameter. Instead use a [session token](/docs/api/checkout-ui-extensions/latest/apis/session-token) which provides the <code>sub</code> claim for the logged in customer.
 
 UI extension requests made to the App Proxy of password protected shops is not supported. Extension requests come from a web worker which does not share the same session as the parent window.
 
@@ -339,7 +339,7 @@ When developing a local extension, you can remove the \`block_progress\` capabil
         {
           title: 'Customer Privacy',
           sectionContent:
-            "In order to collect customer privacy consent, you'll need to add `customer_privacy = true` in your toml configuration. This will let you use our [Customer Privacy API](/docs/api/checkout-ui-extensions/unstable/apis/customer-privacy).",
+            "In order to collect customer privacy consent, you'll need to add `customer_privacy = true` in your toml configuration. This will let you use our [Customer Privacy API](/docs/api/checkout-ui-extensions/latest/apis/customer-privacy).",
         },
       ],
       codeblock: {
@@ -358,7 +358,7 @@ When developing a local extension, you can remove the \`block_progress\` capabil
       anchorLink: 'metafields',
       title: 'Metafields',
       sectionContent: `
-Defines the [metafields](/docs/apps/custom-data/metafields) that are available to your extension. You retrieve these metafields in your extension by reading [\`appMetafields\`](/docs/api/checkout-ui-extensions/unstable/apis/metafields#standardapi-propertydetail-appmetafields).
+Defines the [metafields](/docs/apps/custom-data/metafields) that are available to your extension. You retrieve these metafields in your extension by reading [\`appMetafields\`](/docs/api/checkout-ui-extensions/latest/apis/metafields#standardapi-propertydetail-appmetafields).
 
 Define the metafields your extension needs using \`[[extensions.metafields]]\` and \`[[extensions.targeting.metafields]]\`.
 
