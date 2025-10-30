@@ -9,7 +9,7 @@ const Extension = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   const search = async (event) => {
-    const results = await shopify.productSearch.searchProducts({queryString: event.target.value});
+    const results = await shopify.productSearch.searchProducts({queryString: event.currentTarget.value});
     setSearchResults(results.items);
   };
 

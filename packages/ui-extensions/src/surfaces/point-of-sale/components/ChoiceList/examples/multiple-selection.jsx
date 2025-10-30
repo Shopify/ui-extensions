@@ -1,7 +1,7 @@
 <s-choice-list 
   multiple
   values={['small', 'medium']}
-  onChange={(event) => console.log('Selected:', event.target.values)}
+  onChange={(event) => console.log('Selected:', event.currentTarget.values)}
 >
   <s-choice value="small">Small</s-choice>
   <s-choice value="medium">Medium</s-choice>
