@@ -1,5 +1,15 @@
 # @shopify/ui-extensions
 
+## 2026.1.0-rc.1
+
+### Minor Changes
+
+- [#3536](https://github.com/Shopify/ui-extensions/pull/3536) [`58fef36`](https://github.com/Shopify/ui-extensions/commit/58fef364a8378a824a51e4697d83ae2d28d46f2f) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Adds components to point of sale cart LineItem interface to represent product bundle items.
+
+### Patch Changes
+
+- [#3521](https://github.com/Shopify/ui-extensions/pull/3521) [`9f7afff`](https://github.com/Shopify/ui-extensions/commit/9f7afffcef86bcc8c6a9fef89ada580351082d9c) Thanks [@lrsterrett](https://github.com/lrsterrett)! - 2026.1.0-rc release
+
 ## 2025.10.6
 
 ### Patch Changes
