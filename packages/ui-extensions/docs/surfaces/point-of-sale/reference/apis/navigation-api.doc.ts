@@ -28,6 +28,11 @@ The Navigation API enables POS UI extension to navigate between screens.
       description: '',
       type: 'Navigation',
     },
+    {
+      title: 'Window',
+      description: '',
+      type: 'Window',
+    },
   ],
   category: 'APIs',
   related: [],
