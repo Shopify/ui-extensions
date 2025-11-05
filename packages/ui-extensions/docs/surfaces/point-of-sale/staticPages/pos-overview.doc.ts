@@ -58,6 +58,13 @@ You can track new releases and update your extensions by referencing the [develo
           type: 'blocks',
         },
       ],
+      sectionNotice: [
+        {
+          title: 'AI development assistance',
+          type: 'note',
+          sectionContent: `Connect your AI assistant to the [Shopify Dev MCP](/docs/apps/build/devmcp) to build POS UI extensions. Try asking "Build a new POS UI extension ..."`,
+        },
+      ],
     },
     {
       type: 'Generic',
