@@ -5,7 +5,7 @@ const data: ReferenceEntityTemplateSchema = {
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Guide merchants through onboarding and setup with interactive checklists and progress tracking.',
-  description: `SetupGuide provides an interactive checklist to guide merchants through essential onboarding or configuration tasks. Progress is tracked visually, helping merchants complete all required steps and understand what remains.
+  description: `Setup guide provides an interactive checklist to guide merchants through essential onboarding or configuration tasks. Progress is tracked visually, helping merchants complete all required steps and understand what remains.
   | Used to | Examples |
   | --- | --- |
   | Onboard merchants | Initial app setup |
@@ -21,9 +21,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Setup guide',
       tabs: [
         {
-          title: 'Preview',
+          title: 'html',
           code: 'examples/setupGuide.html',
-          language: 'preview',
+          language: 'html',
+        },
+        {
+          title: 'jsx',
+          code: 'examples/setupGuide.jsx',
+          language: 'preview-jsx',
         },
       ],
     },

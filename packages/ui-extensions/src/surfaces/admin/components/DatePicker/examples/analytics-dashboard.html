@@ -11,9 +11,9 @@
     id="analytics-picker"
     value="2025-01-01--2025-01-31"
     view="2025-01"
-    onchange="console.log('Date range changed:', event.target.value)"
+    onchange="console.log('Date range changed:', event.currentTarget.value)"
   ></s-date-picker>
-  <s-text size="sm" id="selected-range">
+  <s-text id="selected-range">
     Selected range: 2025-01-01--2025-01-31
   </s-text>
 </s-stack>
@@ -24,7 +24,7 @@
 
   // Handle picker changes
   picker.addEventListener('change', (event) => {
-    display.textContent = `Selected range: ${event.target.value}`;
+    display.textContent = `Selected range: ${event.currentTarget.value}`;
   });
 
   // Quick selection buttons

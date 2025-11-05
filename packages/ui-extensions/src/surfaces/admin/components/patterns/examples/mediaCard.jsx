@@ -4,7 +4,7 @@
   overflow="hidden"
   maxInlineSize="216px"
 >
-  <s-clickable href="" accessibilityLabel="4-pieces puzzle template">
+  <s-clickable href="">
     <s-image
       aspectRatio="1/1"
       objectFit="cover"

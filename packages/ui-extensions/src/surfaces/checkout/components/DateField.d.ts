@@ -21,8 +21,8 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-date-field";
@@ -39,27 +39,27 @@ export interface DateFieldElementEvents {
     /**
      * Callback when the element loses focus.
      */
-    blur?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    blur?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
      */
-    change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    change?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the element receives focus.
      */
-    focus?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    focus?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the user makes any changes in the field.
      */
-    input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    input?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the user enters an invalid date.
      */
-    invalid?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    invalid?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the view changes.
      */
-    viewChange?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    viewChange?: CallbackEventListener<typeof tagName>;
 }
 export interface DateFieldElement extends DateFieldElementProps, Omit<DateFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'oninvalid' | 'prefix'> {
     onblur: DateFieldEvents['onBlur'];

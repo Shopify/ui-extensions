@@ -14,13 +14,13 @@ return (
       label="Order number"
       placeholder="Search orders..."
       value={orderNumber}
-      onChange={(event) => setOrderNumber(event.target.value)}
+      onChange={(event) => setOrderNumber(event.currentTarget.value)}
     />
     <s-date-picker
       type="range"
       name="order-date-range"
       value={dateRange}
-      onChange={(event) => setDateRange(event.target.value)}
+      onChange={(event) => setDateRange(event.currentTarget.value)}
       view="2024-01"
     />
     <s-button onClick={handleApplyFilters}>Apply filters</s-button>

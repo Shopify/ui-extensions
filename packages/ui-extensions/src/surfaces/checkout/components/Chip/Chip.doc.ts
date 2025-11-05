@@ -16,7 +16,8 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).',
       type: 'ChipElementSlots',
     },
   ],

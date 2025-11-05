@@ -1,0 +1,23 @@
+<s-email-field
+  label="Email"
+  name="email"
+  onfocus="console.log('Field focused')"
+  onblur="console.log('Field blurred')"
+></s-email-field>
+
+<s-text-field
+  label="Tab to next field to trigger blur"
+  name="name"
+></s-text-field>
+
+<script>
+  const field = document.querySelector('s-text-field');
+
+  field.addEventListener('focus', () => {
+    field.setAttribute('label', 'Field is active!');
+  });
+
+  field.addEventListener('blur', () => {
+    field.setAttribute('label', 'Tab to next field to trigger blur');
+  });
+</script>

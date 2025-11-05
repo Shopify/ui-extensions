@@ -17,12 +17,14 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       title: 'Events',
-      description: '',
+      description:
+        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
       type: 'ConsentPhoneFieldElementEvents',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).',
       type: 'ConsentPhoneFieldElementSlots',
     },
   ],

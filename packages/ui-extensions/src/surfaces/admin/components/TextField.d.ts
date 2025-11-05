@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -30,6 +30,11 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   ref?: preact.Ref<TClass>;
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
+}
+/** Used when an element has children. */
+export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
+  extends PreactBaseElementProps<TClass> {
+  children?: preact.ComponentChildren;
 }
 
 export type Styles = string;
@@ -223,7 +228,7 @@ declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
       [tagName]: Omit<TextFieldJSXProps, 'accessory'> &
-        PreactBaseElementProps<TextField>;
+        PreactBaseElementPropsWithChildren<TextField>;
     }
   }
 }

@@ -1,0 +1,15 @@
+<s-button onclick="console.log('Button clicked!')">
+  Click me
+</s-button>
+
+<s-button id="eventButton">
+  Click me (addEventListener)
+</s-button>
+
+<script>
+  const eventButton = document.getElementById('eventButton');
+
+  eventButton.addEventListener('click', () => {
+    console.log('Button clicked via addEventListener!');
+  });
+</script>

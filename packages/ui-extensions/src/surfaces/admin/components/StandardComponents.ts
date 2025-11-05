@@ -15,6 +15,7 @@ export type StandardComponents =
   | 'ColorPicker'
   | 'DateField'
   | 'DatePicker'
+  | 'DropZone'
   | 'Divider'
   | 'EmailField'
   | 'Grid'

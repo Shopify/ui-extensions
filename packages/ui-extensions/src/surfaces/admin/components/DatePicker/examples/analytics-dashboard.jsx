@@ -26,10 +26,10 @@ return (
       view="2025-01"
       value={value}
       onChange={(event) => {
-        console.log('Date range changed:', event.target.value);
-        setValue(event.target.value);
+        console.log('Date range changed:', event.currentTarget.value);
+        setValue(event.currentTarget.value);
       }}
     />
-    <s-text size="sm">Selected range: {value}</s-text>
+    <s-text>Selected range: {value}</s-text>
   </s-stack>
 )

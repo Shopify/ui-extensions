@@ -1,4 +1,4 @@
-<s-page heading="Store analytics" inline-size="large">
+<s-page heading="Store analytics" inlineSize="large">
   <s-section>
     <s-stack gap="base">
       <s-text>Monitor your store performance across all channels.</s-text>

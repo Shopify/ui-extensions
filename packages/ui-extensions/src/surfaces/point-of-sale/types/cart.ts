@@ -55,6 +55,33 @@ export interface LineItem {
    * The currently selected selling plan for this line item.
    */
   sellingPlan?: SellingPlan;
+  /**
+   * Bundle components for this line item. Only present for product bundles.
+   * Each component represents an individual item within the bundle with its own tax information.
+   */
+  components?: LineItemComponent[];
+}
+
+/**
+ * Represents a component of a product bundle line item.
+ * Bundle components contain the individual items that make up a bundle,
+ * each with their own pricing and tax information.
+ */
+export interface LineItemComponent {
+  /** The title/name of the component product */
+  title?: string;
+  /** The quantity of this component in the bundle */
+  quantity: number;
+  /** The price of this component */
+  price?: number;
+  /** Whether this component is taxable */
+  taxable: boolean;
+  /** Tax lines applied to this component */
+  taxLines: TaxLine[];
+  /** The variant ID of this component, if applicable */
+  variantId?: number;
+  /** The product ID of this component, if applicable */
+  productId?: number;
 }
 
 /**

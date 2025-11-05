@@ -3,7 +3,7 @@ const [error, setError] = useState('Please enter a valid email address');
 
 return (
   <s-section>
-    <s-stack gap="base" inlineAlign="start">
+    <s-stack gap="base" justifyContent="start">
       <s-text-field label="Name" />
       <s-email-field
         label="Contact email"
@@ -12,8 +12,8 @@ return (
         error={error}
         required
         onInput={(e) => {
-          setEmail(e.target.value);
-          setError(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value) ? '' : 'Please enter a valid email address');
+          setEmail(e.currentTarget.value);
+          setError(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.currentTarget.value) ? '' : 'Please enter a valid email address');
         }}
       />
     </s-stack>

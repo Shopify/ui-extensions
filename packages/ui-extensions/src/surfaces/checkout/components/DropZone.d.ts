@@ -21,8 +21,8 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-drop-zone";
@@ -34,15 +34,15 @@ export interface DropZoneElementEvents {
     /**
      * Callback when rejected files are dropped. Files are rejected based on the `accept` prop.
      */
-    droprejected?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    droprejected?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the user makes any changes in the field.
      */
-    input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    input?: CallbackEventListener<typeof tagName>;
     /**
      * Callback when the user has finished selecting a file or files.
      */
-    change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    change?: CallbackEventListener<typeof tagName>;
 }
 export interface DropZoneElement extends DropZoneElementProps, Omit<HTMLElement, 'id' | 'oninput' | 'onchange'> {
     ondroprejected: DropZoneEvents['onDropRejected'];

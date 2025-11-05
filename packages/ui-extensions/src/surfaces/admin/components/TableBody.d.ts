@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -104,7 +104,12 @@ declare module 'preact' {
 declare const tagName = 's-table-body';
 export interface TableBodyJSXProps
   extends Partial<TableBodyProps>,
-    Pick<TableBodyProps$1, 'id'> {}
+    Pick<TableBodyProps$1, 'id' | 'children'> {
+  /**
+   * The body of the table. May not have any semantic meaning in the Table's `list` variant.
+   */
+  children?: ComponentChildren;
+}
 
 export {TableBody};
 export type {TableBodyJSXProps};

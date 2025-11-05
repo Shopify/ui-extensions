@@ -2,9 +2,8 @@
   <s-money-field
     label="Price"
     value="0.00"
-    min="0.01"
-    max="99999.99"
-    step="0.01"
+    min={0.01}
+    max={99999.99}
     details="Customers will see this price"
    />
 
@@ -12,8 +11,7 @@
     label="Compare at price"
     value=""
     min={0}
-    max="99999.99"
-    step="0.01"
+    max={99999.99}
     details="Show customers the original price when on sale"
    />
 
@@ -21,8 +19,7 @@
     label="Cost per item"
     value=""
     min={0}
-    max="99999.99"
-    step="0.01"
+    max={99999.99}
     details="Customers won't see this"
    />
 </s-stack>

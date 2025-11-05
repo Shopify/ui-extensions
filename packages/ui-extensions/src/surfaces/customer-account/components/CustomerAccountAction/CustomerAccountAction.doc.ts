@@ -46,11 +46,29 @@ const data: ReferenceEntityTemplateSchema = {
     {
       type: 'Generic',
       anchorLink: 'best-practices',
-      title: 'Best Practices',
+      title: 'Best practices',
       sectionContent: `
-- Use CustomerAccountAction to shift focus toward information and functionality needed to confirm or complete an order action.
-- If the order action experience you’re building requires complex forms or large amounts of information, consider building a full-page extension instead.
-- See Polaris for more best practices and content guidelines for designing [Modals](https://polaris.shopify.com/components/overlays/modal#best-practices).
+Use these best practices to deliver a clear and accessible experience in your extensions.
+
+### Highlight the key decision
+
+Use the component to present the essential details and actions needed to confirm or complete an order task.
+
+### Collect only what’s necessary
+
+Request the minimum information required to finish the customer’s job so the flow stays quick and friction‑free.
+
+### Keep forms simple and predictable
+
+Use clear labels, intuitive actions, and concise copy so customers know what’s required and what happens next.
+
+### Choose a full‑page extension for complex flows
+
+If the task spans multiple steps or needs a lot of input, switch to a full‑page extension instead of a modal.
+
+### Refer to Polaris guidance
+
+Refer to Polaris for additional best practices and content guidelines when designing [modals](https://polaris-react.shopify.com/components/deprecated/modal#best-practices).
 `,
     },
   ],

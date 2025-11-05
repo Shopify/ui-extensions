@@ -1,9 +1,8 @@
 <s-stack gap="base">
-  <s-text-field
+  <s-email-field
     label="Email"
     name="email"
-    type="email"
-    autocomplete="username"
+    autocomplete="email"
     required
    />
   <s-password-field

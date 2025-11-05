@@ -178,7 +178,7 @@ interface Extension<
   /**
    * The API version that was set in the extension config file.
    *
-   * @example '2023-10', '2024-01', '2024-04', '2025-07', '2025-10', 'unstable'
+   * @example '2023-10', '2024-01', '2024-04', '2025-07', '2025-10'
    */
   apiVersion: ApiVersion;
 
@@ -232,7 +232,7 @@ interface Extension<
    * extension’s configuration file.
    *
    * @example 'purchase.checkout.block.render'
-   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+   * @see https://shopify.dev/docs/api/checkout-ui-extensions/latest/extension-targets-overview
    * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    */
   target: Target;

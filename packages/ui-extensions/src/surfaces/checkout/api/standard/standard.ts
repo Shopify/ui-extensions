@@ -62,7 +62,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The API version that was set in the extension config file.
    *
-   * @example '2024-10', '2025-01', '2025-04', '2025-07', '2025-10', 'unstable'
+   * @example '2024-10', '2025-01', '2025-04', '2025-07', '2025-10'
    */
   apiVersion: ApiVersion;
 
@@ -115,7 +115,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * extension’s configuration file.
    *
    * @example 'purchase.checkout.block.render'
-   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+   * @see https://shopify.dev/docs/api/checkout-ui-extensions/latest/extension-targets-overview
    * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    */
   target: Target;
@@ -597,7 +597,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * extension’s configuration file.
    *
    * @example 'purchase.checkout.block.render'
-   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+   * @see https://shopify.dev/docs/api/checkout-ui-extensions/latest/extension-targets-overview
    * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    *
    * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
@@ -726,7 +726,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The renderer version being used for the extension.
    *
-   * @example 'unstable'
+   * @example '2025-10'
    */
   version: Version;
 
@@ -738,7 +738,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Allows setting and updating customer privacy consent settings and tracking consent metafields.
    *
-   * > Note: Requires the [`customer_privacy` capability](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#collect-buyer-consent) to be set to `true`.
+   * > Note: Requires the [`customer_privacy` capability](https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration#collect-buyer-consent) to be set to `true`.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
@@ -755,7 +755,7 @@ export interface Ui {
   /**
    * Allows the extension to close an overlay programmatically.
    *
-   * Supported overlay components are [Modal](/docs/api/checkout-ui-extensions/unstable/components/overlays/modal), [Sheet](/docs/api/checkout-ui-extensions/unstable/components/overlays/sheet) and [Popover](/docs/api/checkout-ui-extensions/unstable/components/overlays/popover).
+   * Supported overlay components are [Modal](/docs/api/checkout-ui-extensions/latest/components/overlays/modal), [Sheet](/docs/api/checkout-ui-extensions/latest/components/overlays/sheet) and [Popover](/docs/api/checkout-ui-extensions/latest/components/overlays/popover).
    */
   overlay: Overlay;
 }

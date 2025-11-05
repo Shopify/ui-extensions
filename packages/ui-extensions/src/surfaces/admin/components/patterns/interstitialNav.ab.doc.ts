@@ -25,9 +25,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Interstitial nav',
       tabs: [
         {
-          title: 'Preview',
+          title: 'html',
           code: 'examples/interstitialNav.html',
-          language: 'preview',
+          language: 'html',
+        },
+        {
+          title: 'jsx',
+          code: 'examples/interstitialNav.jsx',
+          language: 'preview-jsx',
         },
       ],
     },

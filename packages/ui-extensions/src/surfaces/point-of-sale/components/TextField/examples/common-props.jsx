@@ -7,5 +7,5 @@
   disabled={isProcessing}
   required
   maxLength={20}
-  onChange={(event) => setSku(event.target.value)}
+  onChange={(event) => setSku(event.currentTarget.value)}
 />

@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -117,7 +117,12 @@ declare module 'preact' {
 declare const tagName = 's-section';
 export interface SectionJSXProps
   extends Partial<SectionProps>,
-    Pick<SectionProps$1, 'id'> {}
+    Pick<SectionProps$1, 'id' | 'children'> {
+  /**
+   * The content of the Section.
+   */
+  children?: ComponentChildren;
+}
 
 export {Section};
 export type {SectionJSXProps};

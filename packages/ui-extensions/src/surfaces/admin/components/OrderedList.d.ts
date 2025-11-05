@@ -1,4 +1,4 @@
-/** VERSION: 1.22.1 **/
+/** VERSION: 1.25.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -107,7 +107,14 @@ declare module 'preact' {
 declare const tagName = 's-ordered-list';
 export interface OrderedListJSXProps
   extends Partial<OrderedListProps>,
-    Pick<OrderedListProps$1, 'id'> {}
+    Pick<OrderedListProps$1, 'id'> {
+  /**
+   * The items of the OrderedList.
+   *
+   * Only ListItems are accepted.
+   */
+  children?: ComponentChildren;
+}
 
 export {OrderedList};
 export type {OrderedListJSXProps};

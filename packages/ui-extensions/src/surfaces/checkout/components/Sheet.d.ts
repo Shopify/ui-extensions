@@ -27,8 +27,8 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-sheet";
@@ -48,19 +48,19 @@ export interface SheetElementEvents {
     /**
      * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
      */
-    afterhide?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    afterhide?: CallbackEventListener<typeof tagName>;
     /**
      * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
      */
-    aftershow?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    aftershow?: CallbackEventListener<typeof tagName>;
     /**
      * Callback fired after the overlay is hidden.
      */
-    hide?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    hide?: CallbackEventListener<typeof tagName>;
     /**
      * Callback fired after the overlay is shown.
      */
-    show?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    show?: CallbackEventListener<typeof tagName>;
 }
 export interface SheetElementSlots {
     /**

@@ -27,9 +27,14 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
+    (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
+export type ToggleState = 'open' | 'closed';
+export interface ToggleArgumentsEvent {
+    oldState?: ToggleState;
+    newState?: ToggleState;
+}
 
 declare const tagName = "s-details";
 export interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'id' | 'open' | 'toggleTransition'> {
@@ -49,7 +54,7 @@ export interface DetailsElementEvents {
      * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
      * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
      */
-    toggle?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    toggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;
     /**
      * Callback fired when the element state changes **after** any animations have finished.
      *
@@ -61,7 +66,7 @@ export interface DetailsElementEvents {
      * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
      * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
      */
-    aftertoggle?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    aftertoggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;
 }
 export interface DetailsElement extends Omit<HTMLElement, 'ontoggle' | 'id'> {
     ontoggle: DetailsEvents['onToggle'];

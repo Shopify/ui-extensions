@@ -16,14 +16,15 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DetailsElementProps',
     },
     {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
+      type: 'DetailsElementEvents',
+    },
+    {
       title: summarySharedContent.name,
       description: summarySharedContent.description,
       type: 'SummaryProps',
-    },
-    {
-      title: 'Events',
-      description: '',
-      type: 'DetailsElementEvents',
     },
   ],
   defaultExample: {

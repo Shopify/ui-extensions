@@ -1,10 +1,4 @@
-// ===
-// Index page pattern
-// ===
-
-export default function IndexPage() {
-  return (
-    <s-page heading="Puzzles">
+<s-page heading="Puzzles">
       <s-button slot="primary-action" variant="primary">
         Create puzzle
       </s-button>
@@ -21,6 +15,7 @@ export default function IndexPage() {
       <s-section accessibilityLabel="Empty state section">
         <s-grid gap="base" justifyItems="center" paddingBlock="large-400">
           <s-box maxInlineSize="200px" maxBlockSize="200px">
+            {/* aspectRatio should match the actual image dimensions (width/height) */}
             <s-image
               aspectRatio="1/0.5"
               src="https://cdn.shopify.com/static/images/polaris/patterns/callout.png"
@@ -38,12 +33,12 @@ export default function IndexPage() {
             <s-button-group>
               <s-button
                 slot="secondary-actions"
-                aria-label="Learn more about creating puzzles"
+                accessibilityLabel="Learn more about creating puzzles"
               >
                 {" "}
                 Learn more{" "}
               </s-button>
-              <s-button slot="primary-action" aria-label="Add a new puzzle">
+              <s-button slot="primary-action" accessibilityLabel="Add a new puzzle">
                 {" "}
                 Create puzzle{" "}
               </s-button>
@@ -155,8 +150,6 @@ export default function IndexPage() {
             {/* Add more rows as needed here */}
             {/* If more than 100 rows are needed, index page tables should use the paginate, hasPreviousPage, hasNextPage, onPreviousPage, and onNextPage attributes to display and handle pagination) */}
           </s-table-body>
-        </s-table>
-      </s-section>
-    </s-page>
-  );
-}
+      </s-table>
+    </s-section>
+</s-page>

@@ -4,15 +4,15 @@ const [error, setError] = useState(errorMessage);
 
 return (
   <s-section>
-    <s-stack gap="base" inlineAlign="start">
+    <s-stack gap="base" justifyContent="start">
       <s-text-field label="Name" />
       <s-checkbox
         label="I agree to the terms"
         checked={checked}
         error={error}
         onChange={(e) => {
-          setChecked(e.target.checked);
-          setError(e.target.checked ? '' : errorMessage);
+          setChecked(e.currentTarget.checked);
+          setError(e.currentTarget.checked ? '' : errorMessage);
         }}
       />
     </s-stack>

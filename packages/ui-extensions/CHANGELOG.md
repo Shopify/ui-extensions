@@ -1,5 +1,37 @@
 # @shopify/ui-extensions
 
+## 2026.1.0-rc.1
+
+### Minor Changes
+
+- [#3536](https://github.com/Shopify/ui-extensions/pull/3536) [`58fef36`](https://github.com/Shopify/ui-extensions/commit/58fef364a8378a824a51e4697d83ae2d28d46f2f) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Adds components to point of sale cart LineItem interface to represent product bundle items.
+
+### Patch Changes
+
+- [#3521](https://github.com/Shopify/ui-extensions/pull/3521) [`9f7afff`](https://github.com/Shopify/ui-extensions/commit/9f7afffcef86bcc8c6a9fef89ada580351082d9c) Thanks [@lrsterrett](https://github.com/lrsterrett)! - 2026.1.0-rc release
+
+## 2025.10.6
+
+### Patch Changes
+
+- [#3527](https://github.com/Shopify/ui-extensions/pull/3527) [`28027d5`](https://github.com/Shopify/ui-extensions/commit/28027d5537a893e7e3d2e0b224048b4499f34322) Thanks [@oliverigor](https://github.com/oliverigor)! - - Adding toggle state to Announcement callback events docs
+  - Adding correct Map callback events docs
+  - Adding setup updated setup instructions for checkout extensions
+
+## 2025.10.5
+
+### Patch Changes
+
+- [#3530](https://github.com/Shopify/ui-extensions/pull/3530) [`788b877`](https://github.com/Shopify/ui-extensions/commit/788b8778d215b38282db084736722b6f6e8d8b21) Thanks [@andy-chhuon](https://github.com/andy-chhuon)! - Add Box to BlockExtensionComponents
+
+## 2025.10.4
+
+### Patch Changes
+
+- [#3522](https://github.com/Shopify/ui-extensions/pull/3522) [`6b16f5e`](https://github.com/Shopify/ui-extensions/commit/6b16f5e8f72ca928f19e202b48165ca91b10de48) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Fix missing children property for TextField
+
+- [#3522](https://github.com/Shopify/ui-extensions/pull/3522) [`6b16f5e`](https://github.com/Shopify/ui-extensions/commit/6b16f5e8f72ca928f19e202b48165ca91b10de48) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Add DropZone component to admin ui-extensions
+
 ## 2025.10.3
 
 ### Patch Changes
