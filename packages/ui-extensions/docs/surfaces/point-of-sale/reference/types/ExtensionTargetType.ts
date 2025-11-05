@@ -26,6 +26,9 @@ export enum ExtensionTargetType {
   PosReceiptFooterBlockRender = 'pos.receipt-footer.block.render',
   PosCartLineItemDetailsActionMenuItemRender = 'pos.cart.line-item-details.action.menu-item.render',
   PosCartLineItemDetailsActionRender = 'pos.cart.line-item-details.action.render',
+  PosRegisterDetailsActionMenuItemRender = 'pos.register-details.action.menu-item.render',
+  PosRegisterDetailsActionRender = 'pos.register-details.action.render',
+  PosRegisterDetailsBlockRender = 'pos.register-details.block.render',
 }
 
 export enum TargetLink {
@@ -56,4 +59,7 @@ export enum TargetLink {
   PosReceiptFooterBlockRender = '[pos.receipt-footer.block.render](/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render)',
   PosCartLineItemDetailsActionMenuItemRender = '[pos.cart.line-item-details.action.menu-item.render](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-line-item-details-action-menu-item-render)',
   PosCartLineItemDetailsActionRender = '[pos.cart.line-item-details.action.render](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-line-item-details-action-render)',
+  PosRegisterDetailsActionMenuItemRender = '[pos.register-details.action.menu-item.render](/docs/api/pos-ui-extensions/targets/register-details/pos-register-details-action-menu-item-render)',
+  PosRegisterDetailsActionRender = '[pos.register-details.action.render](/docs/api/pos-ui-extensions/targets/register-details/pos-register-details-action-render)',
+  PosRegisterDetailsBlockRender = '[pos.register-details.block.render](/docs/api/pos-ui-extensions/targets/register-details/pos-register-details-block-render)',
 }
