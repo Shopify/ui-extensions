@@ -35,3 +35,10 @@ export interface Navigation {
    */
   back(): void;
 }
+
+export interface Window {
+  /**
+   * The close() method of the window interface closes the extension screen.
+   */
+  close(): void;
+}
