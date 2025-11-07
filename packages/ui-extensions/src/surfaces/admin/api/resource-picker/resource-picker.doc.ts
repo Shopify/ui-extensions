@@ -11,8 +11,6 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   category: 'API',
   thumbnail: 'resource-picker.png',
-  requires:
-    'an Admin [block](/docs/api/admin-extensions/unstable/extension-targets#block-locations), [action](/docs/api/admin-extensions/unstable/extension-targets#action-locations), or [print](/docs/api/admin-extensions/unstable/extension-targets#print-locations) extension.',
   defaultExample: {
     image: 'resource-picker.png',
     codeblock: {

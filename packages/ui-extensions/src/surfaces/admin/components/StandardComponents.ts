@@ -33,6 +33,7 @@ export type StandardComponents =
   | 'OrderedList'
   | 'Paragraph'
   | 'PasswordField'
+  | 'Popover'
   | 'QueryContainer'
   | 'SearchField'
   | 'Section'
