@@ -1,5 +1,17 @@
 # @shopify/ui-extensions
 
+## 2025.7.2
+
+### Patch Changes
+
+- [#3538](https://github.com/Shopify/ui-extensions/pull/3538) [`a741a10acde19fab89088672fb3df01a8f4d7ee2`](https://github.com/Shopify/ui-extensions/commit/a741a10acde19fab89088672fb3df01a8f4d7ee2) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Adds components to point of sale cart LineItem interface to represent product bundle items.
+
+- [#3477](https://github.com/Shopify/ui-extensions/pull/3477) [`f0984671a362c540724306dd21a02974a9c692dd`](https://github.com/Shopify/ui-extensions/commit/f0984671a362c540724306dd21a02974a9c692dd) Thanks [@chadcromwell](https://github.com/chadcromwell)! - Added optional `discountAllocations` field to Cart Line Item API so that POS extensions can see the precise proportion of a discount applied to a particular line item. Only the `allocatedAmount` field is included for this purpose, matching the Storefront API structure. See https://shopify.dev/docs/api/storefront/latest/objects/DiscountAllocation.
+
+- [#3477](https://github.com/Shopify/ui-extensions/pull/3477) [`f0984671a362c540724306dd21a02974a9c692dd`](https://github.com/Shopify/ui-extensions/commit/f0984671a362c540724306dd21a02974a9c692dd) Thanks [@chadcromwell](https://github.com/chadcromwell)! - Adds pos.receipt-header.block.render extension target
+
+- [#3477](https://github.com/Shopify/ui-extensions/pull/3477) [`f0984671a362c540724306dd21a02974a9c692dd`](https://github.com/Shopify/ui-extensions/commit/f0984671a362c540724306dd21a02974a9c692dd) Thanks [@chadcromwell](https://github.com/chadcromwell)! - Modified transaction data interface fields to include returnId and refundId to Return and Exchange TransactionData.
+
 ## 2025.7.1
 
 ### Patch Changes
