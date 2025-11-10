@@ -2,8 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'ChoiceList',
-  description:
-    'Presents multiple options for single or multiple selections. Use when merchants need to choose from a defined set of options in forms or filtering interfaces.',
+  description: 'Present multiple options for single or multiple selections.',
   thumbnail: 'choicelist-thumbnail.png',
   isVisualComponent: true,
   type: '',

@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'ScrollBox',
   description:
-    'Creates a scrollable area for content that exceeds container bounds.',
+    'Create a scrollable area for content that exceeds container bounds.',
   thumbnail: 'scrollbox-thumbnail.png',
   isVisualComponent: true,
   type: '',

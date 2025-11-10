@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Banner',
   description:
-    'Highlights important information or required actions prominently within the interface. Use to communicate critical updates, warnings, information or success messages in a prominent way.',
+    'Highlight important information or required actions prominently within the POS interface.',
   thumbnail: 'banner-thumbnail.png',
   isVisualComponent: true,
   type: '',

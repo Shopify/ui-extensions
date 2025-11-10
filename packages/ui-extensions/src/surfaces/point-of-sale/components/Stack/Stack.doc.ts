@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Stack',
   description:
-    'Organizes elements horizontally or vertically along the block or inline axis. Use to structure layouts, group related components, or control spacing between elements.',
+    'Organize elements horizontally or vertically along the block or inline axis.',
   thumbnail: 'stack-thumbnail.png',
   isVisualComponent: true,
   type: '',

@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'EmailField',
   description:
-    'Captures email address input from merchants. Provides built-in email validation and appropriate keyboard layout.',
+    'Capture email address input from customers with built-in validation.',
   thumbnail: 'email-field-thumbnail.png',
   isVisualComponent: true,
   type: '',

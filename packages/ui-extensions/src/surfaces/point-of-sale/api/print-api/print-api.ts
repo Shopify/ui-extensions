@@ -3,17 +3,13 @@
  */
 export interface PrintApiContent {
   /**
-   * Trigger a print dialog.
+   * Triggers the native print dialog for the specified document source. The `print()` method accepts either:
+   * • A relative path (for example, `/print-receipt`) that will be appended to your app's [`application_url`](/docs/apps/build/cli-for-apps/app-configuration) configured in your app settings.
+   * • A full URL to your app's backend (for example, `https://myapp.com/api/print/receipt/123`) that returns the document to print.
    *
-   * The src must be either:
-   * - A relative path that will be appended to your app's [application_url](/docs/apps/build/cli-for-apps/app-configuration#application_url)
-   * - A full URL to your app's backend that will be used to return the document to print
+   * The method returns a promise that resolves when the document content has loaded and the native print dialog appears on screen. The actual printing happens when the user confirms in the print dialog—this method doesn't wait for print completion. The document at the source URL should return printable HTML content.
    *
-   * Supported document types:
-   * - HTML documents (recommended for best printing experience)
-   * - Text files
-   * - Image files (PNG, JPEG, etc.)
-   * - PDF files (Note: On Android devices, PDFs will be downloaded and must be printed using an external application)
+   * Commonly used for printing custom receipts, shipping labels, packing slips, invoices, or reports with custom formatting. Print failures (network errors, invalid URLs, or unloadable content) reject the promise with an error.
    *
    * @param src the source URL of the content to print.
    * @returns Promise<void> that resolves when content is ready and native print dialog appears.
@@ -22,8 +18,11 @@ export interface PrintApiContent {
 }
 
 /**
- * Interface for printing
+ * The `PrintApi` object provides methods for triggering document printing. Access these methods through `shopify.print` to initiate print operations with various document types.
  */
 export interface PrintApi {
+  /**
+   * Provides access to print functionality for triggering the native print dialog with custom documents.
+   */
   print: PrintApiContent;
 }

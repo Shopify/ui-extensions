@@ -2,8 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextField',
-  description:
-    'Captures single-line text input from merchants. Use to collect short, free-form information.',
+  description: 'Capture single-line text input.',
   thumbnail: 'text-field-thumbnail.png',
   isVisualComponent: true,
   type: '',

@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'DateSpinner',
   description:
-    'Allows merchants to select a specific date, using a spinner interface.',
+    'Enable merchants to select a specific date using a spinner interface with scrollable columns for month, day, and year.',
   thumbnail: 'date-spinner-thumbnail.png',
   isVisualComponent: true,
   type: '',

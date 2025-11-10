@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Modal',
   description:
-    'Displays content in an overlay that requires merchant attention. Use to present critical information, confirmations, or focused tasks without losing page context.',
+    'Display content in an overlay that requires merchant attention.',
   thumbnail: 'modal-thumbnail.png',
   isVisualComponent: true,
   type: '',

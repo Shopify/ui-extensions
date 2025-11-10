@@ -2,8 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'NumberField',
-  description:
-    'Captures numeric input from merchants. Provides built-in number validation and appropriate keyboard layout for numeric entry.',
+  description: 'Capture numeric input with built-in validation.',
   thumbnail: 'number-field-thumbnail.png',
   isVisualComponent: true,
   type: '',

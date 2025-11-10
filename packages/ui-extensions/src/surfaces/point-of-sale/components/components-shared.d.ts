@@ -10,84 +10,99 @@
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
  */
+/**
+ * Represents any valid child content that can be rendered within a component.
+ */
 export type ComponentChildren = any;
+/**
+ * Represents text-only child content.
+ */
 export type StringChildren = string;
+/**
+ * Properties that are available on all components.
+ */
 export interface GlobalProps {
   /**
-   * A unique identifier for the element.
+   * A unique identifier for the element within the document. This ID is used for multiple purposes: targeting the element from JavaScript code, creating relationships between elements (using `commandFor`, `interestFor`, ARIA attributes), linking labels to form controls, enabling fragment navigation with URL anchors (for example, `#section-id`), and applying element-specific styles. The ID must be unique across the entire page—duplicate IDs will cause unexpected behavior and accessibility issues. IDs are case-sensitive and should only contain letters, digits, hyphens, and underscores.
    */
   id?: string;
 }
+/**
+ * Provides slots for primary and secondary action elements.
+ */
 export interface ActionSlots {
   /**
-   * The primary action to perform, provided as a button or link type element.
+   * The primary action element to display, typically a `Button` or clickable link representing the most important action available in the current context. This action aligns with the user's primary goal or the main purpose of the interface (for example, "Save changes", "Checkout", "Add to cart", "Submit order"). The primary action receives visual emphasis through styling to draw user attention. Only one primary action is displayed to maintain clear focus on the main call-to-action.
    */
   primaryAction?: ComponentChildren;
   /**
-   * The secondary actions to perform, provided as button or link type elements.
+   * Secondary action elements to display, typically `Button` or clickable link elements representing alternative or supporting actions that are less important than the primary action (for example, "Cancel", "Save draft", "Skip", "Learn more"). Secondary actions receive less visual prominence than the primary action to maintain clear hierarchy. Multiple secondary actions can be provided and are displayed together, often in a different visual style or position than the primary action. The order of actions in the array may affect their display order depending on the component.
    */
   secondaryActions?: ComponentChildren;
 }
+/**
+ * Properties for overlay lifecycle callbacks.
+ */
 export interface BaseOverlayProps {
   /**
-   * Callback fired after the overlay is shown.
+   * A callback function executed when the overlay begins to appear, immediately after `showOverlay()` is called or the `hidden` property changes to `false`, but before any show animations start. The element may not be visible yet. Common operations include initializing overlay content, fetching data needed for display, setting focus on the first interactive element, or tracking analytics events. Layout calculations should be avoided here as the element may not have final dimensions yet.
    */
   onShow?: (event: Event) => void;
   /**
-   * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
+   * A callback function executed after the overlay is fully visible and all show animations have completed. At this point, the overlay is completely rendered with final dimensions and positioning. Common operations include focusing specific elements after animations complete, measuring rendered content dimensions, triggering secondary animations, or initializing interactive features that depend on final layout. This is the safest point for DOM measurements and layout-dependent operations.
    */
   onAfterShow?: (event: Event) => void;
   /**
-   * Callback fired after the overlay is hidden.
+   * A callback function executed when the overlay begins to hide, immediately after `hideOverlay()` is called or the `hidden` property changes to `true`, but before any hide animations start. The element is still visible. Common operations include cleanup tasks, saving overlay state before it disappears, canceling pending requests, or preparing for the post-hide state. This is the last opportunity to interact with the visible overlay before animations begin.
    */
   onHide?: (event: Event) => void;
   /**
-   * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
+   * A callback function executed after the overlay is completely hidden and all hide animations have finished. The element is no longer visible or interactive. Common operations include final cleanup, focusing the element that triggered the overlay, navigating to another view, freeing resources, or performing operations that should only occur after the overlay is completely dismissed. Post-dismissal navigation or state updates that would be jarring during animations are appropriate here.
    */
   onAfterHide?: (event: Event) => void;
 }
 /**
- * Shared interfaces for web component methods.
- *
- * Methods are required (not optional) because:
+ * Methods for controlling overlay visibility. These methods are required (not optional) because:
  * - Components implementing this interface must provide all methods
- * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
+ * - Unlike props/attributes, methods aren't rendered in HTML but are JavaScript APIs
  * - Consumers expect these methods to be consistently available on all instances
  */
 export interface BaseOverlayMethods {
   /**
-   * Method to show an overlay.
+   * Programmatically displays the overlay element. When called, the overlay becomes visible and triggers any associated `onShow` and `onAfterShow` callbacks. This method opens modals, dialogs, or other overlay components in response to user actions or application state changes.
    *
    * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
    */
   showOverlay: () => void;
   /**
-   * Method to hide an overlay.
+   * Programmatically hides the overlay element. When called, the overlay becomes hidden and triggers any associated `onHide` and `onAfterHide` callbacks. This method closes modals, dismisses dialogs, or hides overlay components programmatically without requiring user interaction.
    *
    * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
    */
   hideOverlay: () => void;
   /**
-   * Method to toggle the visiblity of an overlay.
+   * Programmatically toggles the overlay's visibility state. If currently visible, the overlay will be hidden; if currently hidden, it will be shown. This triggers the appropriate show/hide callbacks based on the resulting state. This method enables toggle buttons or cyclic visibility controls.
    *
    * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
    */
   toggleOverlay: () => void;
 }
+/**
+ * Properties for focus event callbacks.
+ */
 export interface FocusEventProps {
   /**
-   * Callback when the element loses focus.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
+   * A callback function executed when focus is removed from the element, either by the user moving to another field (tabbing, clicking elsewhere) or programmatically using `blur()`. This event fires before `onChange` for modified fields. The event contains information about which element is receiving focus next (`relatedTarget`). Common operations include triggering validation, saving in-progress changes, hiding related UI elements like autocomplete dropdowns, or tracking field interaction analytics. A common pattern is validating and showing errors on blur to avoid disrupting users while they're still typing. Learn more about [blur events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
    */
   onBlur?: (event: FocusEvent) => void;
   /**
-   * Callback when the element receives focus.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
+   * A callback function executed when the element receives focus through user interaction (clicking, tabbing) or programmatic methods like `focus()`. This event fires before any input occurs. The event contains information about which element previously had focus (`relatedTarget`). Common operations include showing helper text, highlighting the active field, displaying related UI like autocomplete suggestions, preselecting content, or tracking which fields users interact with. A common pattern is clearing errors on focus to provide a fresh start when users re-attempt input after validation failure. Learn more about [focus events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
    */
   onFocus?: (event: FocusEvent) => void;
 }
+/**
+ * A size scale keyword ranging from smallest (`'small-500'`) to largest (`'large-500'`).
+ */
 export type SizeKeyword =
   | 'small-500'
   | 'small-400'
@@ -102,18 +117,27 @@ export type SizeKeyword =
   | 'large-300'
   | 'large-400'
   | 'large-500';
+/**
+ * A color intensity keyword from subtle (`'subdued'`) to prominent (`'strong'`).
+ */
 export type ColorKeyword = 'subdued' | 'base' | 'strong';
+/**
+ * A background color keyword including transparent option.
+ */
 export type BackgroundColorKeyword = 'transparent' | ColorKeyword;
+/**
+ * Properties for controlling the background color of an element.
+ */
 export interface BackgroundProps {
   /**
-   * Adjust the background of the element.
+   * Sets the background color intensity of the element. Controls how the element stands out from its surroundings.
    *
    * @default 'transparent'
    */
   background?: BackgroundColorKeyword;
 }
 /**
- * Tone is a property for defining the color treatment of a component.
+ * A property for defining the color treatment and semantic meaning of a component.
  *
  * A tone can apply a grouping of colors to a component. For example,
  * critical may have a specific text color and background color.
@@ -681,17 +705,29 @@ declare const privateIconArray: readonly [
   'x-circle',
   'x-circle-filled',
 ];
+/**
+ * A valid icon identifier from the available icon set.
+ */
 export type IconType = (typeof privateIconArray)[number];
 /**
  * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
+/**
+ * A utility type for properties that support 1-to-4-value shorthand syntax.
+ */
 export type MaybeAllValuesShorthandProperty<T extends string> =
   | T
   | `${T} ${T}`
   | `${T} ${T} ${T}`
   | `${T} ${T} ${T} ${T}`;
+/**
+ * A utility type for properties that support 1-to-2-value shorthand syntax.
+ */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
+/**
+ * A utility type for values that can be responsive using container queries.
+ */
 export type MaybeResponsive<T> = T | `@container${string}`;
 /**
  * Prevents widening string literal types in a union to `string`.
@@ -703,41 +739,42 @@ export type MaybeResponsive<T> = T | `@container${string}`;
  */
 export type AnyString = string & {};
 /**
- * This is purely to give the ability
- * to have a space or not in the string literal types.
+ * A utility type that allows optional spacing in string literal values.
  *
- * For example in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.
+ * For example, in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.
  */
 export type optionalSpace = '' | ' ';
 export interface BadgeProps extends GlobalProps {
   /**
-   * The content of the Badge.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
   /**
-   * Sets the tone of the Badge, based on the intention of the information being conveyed.
+   * The semantic tone of the badge, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * Modify the color to be more or less intense.
+   * The color intensity of the badge. Controls how prominent or subtle the badge appears within the interface.
    *
    * @default 'base'
    */
   color?: ColorKeyword;
   /**
-   * The type of icon to be displayed in the badge.
+   * The icon identifier specifying which icon to display within the badge. Accepts any valid icon name from the icon set.
    *
    * @default ''
    */
   icon?: IconType | AnyString;
   /**
-   * The position of the icon in relation to the text.
+   * The position of the icon relative to the badge text content:
+   * - `'start'`: Icon appears before the text
+   * - `'end'`: Icon appears after the text
    */
   iconPosition?: 'start' | 'end';
   /**
-   * Adjusts the size.
+   * Adjusts the size of the badge and its icon. Available sizes range from `'small-500'` (smallest) through `'base'` (default) to `'large-500'` (largest), allowing you to match badge size to your interface hierarchy.
    *
    * @default 'base'
    */
@@ -745,60 +782,46 @@ export interface BadgeProps extends GlobalProps {
 }
 export interface BannerProps extends GlobalProps, ActionSlots {
   /**
-   * The title of the banner.
+   * The title text displayed prominently at the top of the banner, summarizing the banner's main message in a single, scannable line. This heading is typically concise (3-8 words) and immediately communicates the banner's purpose or key information without requiring users to read the full banner content. The heading appears before the banner's child content and uses emphasized typography to catch attention. When omitted, the banner displays only its child content and actions without a title. Clear, action-oriented or informative headings tell users what they need to know at a glance (for example, "Order placed successfully", "Action required", "New feature available", "Connection lost"). The heading's visual style adapts to the banner's `tone` property for semantic consistency.
    *
    * @default ''
    */
   heading?: string;
   /**
-   * The content of the Banner.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
   /**
-   * Sets the tone of the Banner, based on the intention of the information being conveyed.
+   * Sets the visual appearance and accessibility behavior of the banner. The tone determines both the color scheme and how screen readers announce the banner. Available options:
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context.
+   * - `'success'` - Green styling for positive outcomes and successful operations. Creates an informative live region for screen readers.
+   * - `'info'` - Blue styling for general information and neutral updates. Creates an informative live region for screen readers.
+   * - `'warning'` - Orange styling for important notices that require attention. Creates an informative live region for screen readers.
+   * - `'critical'` - Red styling for errors and urgent issues requiring immediate action. Creates an assertive live region that is announced immediately by screen readers.
    *
-   * The banner is a live region and the type of status will be dictated by the Tone selected.
-   *
-   * - `critical` creates an [assertive live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) that is announced by screen readers immediately.
-   * - `neutral`, `info`, `success`, `warning` and `caution` creates an [informative live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) that is announced by screen readers after the current message.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role
+   * Learn more about [ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions), [alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role), and [status role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) on MDN.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * Makes the content collapsible.
-   * A collapsible banner will conceal child elements initially, but allow the user to expand the banner to see them.
+   * Whether the banner content can be collapsed and expanded. When `true`, the banner displays a collapse/expand toggle control and child elements are initially hidden. Users can click the toggle to reveal or hide the content. Typically applied to lengthy banners or supplementary information that users can choose to view. Collapsed state persists during the component lifecycle but resets on re-render.
    *
    * @default false
    */
   collapsible?: boolean;
   /**
-   * Determines whether the close button of the banner is present.
-   *
-   * When the close button is pressed, the `dismiss` event will fire,
-   * then `hidden` will be true,
-   * any animation will complete,
-   * and the `afterhide` event will fire.
+   * Whether a close button is displayed in the banner. When `true`, a close (X) button appears allowing users to permanently dismiss the banner. Once dismissed, the banner triggers the `onDismiss` callback and remains hidden until the component is re-rendered or the `hidden` property is changed. Typically applied to non-critical notifications or messages that users can choose to dismiss after reading.
    *
    * @default false
    */
   dismissible?: boolean;
   /**
-   * Event handler when the banner is dismissed by the user.
-   *
-   * This does not fire when setting `hidden` manually.
-   *
-   * The `hidden` property will be `false` when this event fires.
+   * A callback function executed when the user dismisses the banner by clicking the close (X) button. This only fires for user-initiated dismissals through the UI close button, not when the banner is hidden programmatically using the `hidden` property. The callback fires after the user clicks but before hide animations begin. Common operations include tracking dismissal metrics, saving user preferences to avoid showing the banner again, performing cleanup when banners are dismissed, or triggering follow-up actions. The banner remains in the DOM after dismissal (just hidden) until re-rendered—complete removal requires controlling rendering at the component level based on dismissal state.
    */
   onDismiss?: (event: Event) => void;
   /**
-   * Event handler when the banner has fully hidden.
-   *
-   * The `hidden` property will be `true` when this event fires.
+   * A callback function executed after the element is fully hidden and all hide animations have completed.
    *
    * @implementation If implementations animate the hiding of the banner,
    * this event must fire after the banner has fully hidden.
@@ -806,35 +829,29 @@ export interface BannerProps extends GlobalProps, ActionSlots {
    */
   onAfterHide?: (event: Event) => void;
   /**
-   * Determines whether the banner is hidden.
-   *
-   * If this property is being set on each framework render (as in 'controlled' usage),
-   * and the banner is `dismissible`,
-   * ensure you update app state for this property when the `dismiss` event fires.
-   *
-   * If the banner is not `dismissible`, it can still be hidden by setting this property.
+   * Whether the banner is visible or hidden. When set to `true`, the banner is completely hidden from view and removed from the accessibility tree, meaning screen readers won't announce it. Changing this value triggers hide/show animations if configured. Unlike temporary dismissal with the close button, this property provides programmatic control for conditional visibility based on application state, user permissions, or other dynamic conditions.
    *
    * @default false
    */
   hidden?: boolean;
 }
+/**
+ * Properties for controlling the display behavior of an element.
+ */
 export interface DisplayProps {
   /**
-   * Sets the outer display type of the component. The outer type sets a component’s participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
+   * Sets the outer display type controlling the element's participation in flow layout. When set to `'none'`, the element is completely removed from both the visual layout and the accessibility tree—it takes up no space and screen readers ignore it entirely, as if it doesn't exist in the DOM. This is different from `hidden` which may keep some accessibility tree presence. The element's `children` and event listeners remain in memory. The value `'auto'` (default) applies normal display behavior. Learn more about the [CSS display property on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/display).
    *
-   * - `auto`: the component’s initial value. The actual value depends on the component and context.
-   * - `none`: hides the component from display and removes it from the accessibility tree, making it invisible to screen readers.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
    * @default 'auto'
    */
   display?: MaybeResponsive<'auto' | 'none'>;
 }
+/**
+ * Properties for defining the semantic role of an element for assistive technologies.
+ */
 export interface AccessibilityRoleProps {
   /**
-   * Sets the semantic meaning of the component’s content. When set,
-   * the role will be used by assistive technologies to help users
-   * navigate the page.
+   * Sets the semantic role for assistive technologies. Helps screen reader users navigate and understand page structure.
    *
    * @implementation Although, in HTML hosts, this property changes the element used,
    * changing this property must not impact the visual styling of inside or outside of the box.
@@ -845,28 +862,28 @@ export interface AccessibilityRoleProps {
 }
 export type AccessibilityRole =
   /**
-   * Used to indicate the primary content.
+   * Used to indicate the primary content area of the page.
    *
    * In an HTML host, `main` will render a `<main>` element.
    * Learn more about the [`<main>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/main_role) in the MDN web docs.
    */
   | 'main'
   /**
-   * Used to indicate the component is a header.
+   * Used to indicate the element is a header section.
    *
    * In an HTML host `header` will render a `<header>` element.
    * Learn more about the [`<header>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/main_role) in the MDN web docs.
    */
   | 'header'
   /**
-   * Used to display information such as copyright information, navigation links, and privacy statements.
+   * Used to display footer information such as copyright information, navigation links, and privacy statements.
    *
    * In an HTML host `footer` will render a `<footer>` element.
    * Learn more about the [`<footer>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/contentinfo_role) in the MDN web docs.
    */
   | 'footer'
   /**
-   * Used to indicate a generic section.
+   * Used to indicate a thematic grouping of content.
    * Sections should always have a `Heading` or an accessible name provided in the `accessibilityLabel` property.
    *
    * In an HTML host `section` will render a `<section>` element.
@@ -875,21 +892,21 @@ export type AccessibilityRole =
    */
   | 'section'
   /**
-   * Used to designate a supporting section that relates to the main content.
+   * Used to designate a supporting section that is tangentially related to the main content.
    *
    * In an HTML host `aside` will render an `<aside>` element.
    * Learn more about the [`<aside>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/complementary_role) in the MDN web docs.
    */
   | 'aside'
   /**
-   * Used to identify major groups of links used for navigating.
+   * Used to identify navigation link groups used for navigating through the site or page.
    *
    * In an HTML host `navigation` will render a `<nav>` element.
    * Learn more about the [`<nav>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/navigation_role) in the MDN web docs.
    */
   | 'navigation'
   /**
-   * Used to identify a list of ordered items.
+   * Used to identify a list where items have a meaningful order or sequence.
    *
    * In an HTML host `ordered-list` will render a `<ol>` element.
    * Learn more about the [`<ol>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/list_role) in the MDN web docs.
@@ -903,79 +920,83 @@ export type AccessibilityRole =
    */
   | 'list-item'
   /**
-   * Used to indicates the component acts as a divider that separates and distinguishes sections of content in a list of items.
+   * Used to indicate the component acts as a divider that separates and distinguishes sections of content in a list of items.
    *
    * In an HTML host `list-item-separator` will render as `<li role="separator">`.
    * Learn more about the [`<li>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li) and the [`separator` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role) in the MDN web docs.
    */
   | 'list-item-separator'
   /**
-   * Used to identify a list of unordered items.
+   * Used to identify a list where item order has no significance.
    *
    * In an HTML host `unordered-list` will render a `<ul>` element.
    * Learn more about the [`<ul>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/list_role) in the MDN web docs.
    */
   | 'unordered-list'
   /**
-   * Used to indicates the component acts as a divider that separates and distinguishes sections of content.
+   * Used to indicate the component acts as a divider that separates and distinguishes sections of content.
    *
    * In an HTML host `separator` will render as `<div role="separator">`.
    * Learn more about the [`separator` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role) in the MDN web docs.
    */
   | 'separator'
   /**
-   * Used to define a live region containing advisory information for the user that is not important enough to be an alert.
+   * Used to define a live region containing advisory information for the user that isn't important enough to be an alert.
    *
    * In an HTML host `status` will render as `<div role="status">`.
    * Learn more about the [`status` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) in the MDN web docs.
    */
   | 'status'
   /**
-   * Used for important, and usually time-sensitive, information.
+   * Used for important and usually time-sensitive information that requires immediate attention.
    *
    * In an HTML host `alert` will render as `<div role="alert">`.
    * Learn more about the [`alert` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) in the MDN web docs.
    */
   | 'alert'
   /**
-   * Used to create a nameless container element which has no semantic meaning on its own.
+   * Used to create a container element with no specific semantic meaning.
    *
    * In an HTML host `generic'` will render a `<div>` element.
    * Learn more about the [`generic` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/generic_role) in the MDN web docs.
    */
   | 'generic'
   /**
-   * Used to strip the semantic meaning of an element, but leave the visual styling intact.
+   * Used to remove semantic meaning from an element while preserving its visual styling.
    *
    * Synonym for `none`
    * Learn more about the [`presentation` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/presentation_role) in the MDN web docs.
    */
   | 'presentation'
   /**
-   * Used to strip the semantic meaning of an element, but leave the visual styling intact.
+   * Used to remove semantic meaning from an element while preserving its visual styling.
    *
    * Synonym for `presentation`
    * Learn more about the [`none` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/none_role) in the MDN web docs.
    */
   | 'none';
+/**
+ * Properties for controlling visibility to assistive technologies.
+ */
 export interface AccessibilityVisibilityProps {
   /**
-   * Changes the visibility of the element.
-   *
-   * - `visible`: the element is visible to all users.
-   * - `hidden`: the element is removed from the accessibility tree but remains visible.
-   * - `exclusive`: the element is visually hidden but remains in the accessibility tree.
+   * Controls visibility for assistive technologies:
+   * - `'visible'`: Announced normally by screen readers
+   * - `'hidden'`: Hidden from screen readers while remaining visually visible
+   * - `'exclusive'`: Only this element is announced to screen readers, hiding other content
    *
    * @default 'visible'
    */
   accessibilityVisibility?: 'visible' | 'hidden' | 'exclusive';
 }
+/**
+ * Properties for controlling the visibility of field labels to screen readers.
+ */
 export interface LabelAccessibilityVisibilityProps {
   /**
-   * Changes the visibility of the component's label.
-   *
-   * - `visible`: the label is visible to all users.
-   * - `exclusive`: the label is visually hidden but remains in the accessibility tree.
+   * Controls whether the label is announced to screen readers:
+   * - `'visible'`: Label is announced normally by screen readers
+   * - `'exclusive'`: Only the label is announced, hiding other related content from screen readers
    *
    * @default 'visible'
    */
@@ -984,35 +1005,34 @@ export interface LabelAccessibilityVisibilityProps {
     'visible' | 'exclusive'
   >;
 }
+/**
+ * A padding size keyword including the option for no padding.
+ */
 export type PaddingKeyword = SizeKeyword | 'none';
+/**
+ * Properties for controlling the padding (internal spacing) of an element.
+ */
 export interface PaddingProps {
   /**
-   * Adjust the padding of all edges.
-   *
-   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
-   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
-   *
+   * The padding applied to all edges of the element. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
    * - 4 values: `block-start inline-end block-end inline-start`
    * - 3 values: `block-start inline block-end`
    * - 2 values: `block inline`
+   * - 1 value: all edges
    *
    * For example:
-   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
-   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
-   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
-   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   * - `large` applies `large` padding to all edges.
+   * - `large none` applies `large` to block edges and `none` to inline edges.
+   * - `large none large` applies `large` to block-start, `none` to inline edges, `large` to block-end.
+   * - `large none large small` applies different padding to each edge in order.
    *
-   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
+   * An `auto` value inherits the default padding from the closest container that has removed its usual padding.
    *
    * @default 'none'
    */
   padding?: MaybeResponsive<MaybeAllValuesShorthandProperty<PaddingKeyword>>;
   /**
-   * Adjust the block-padding.
-   *
-   * - `large none` means block-start padding is `large`, block-end padding is `none`.
-   *
-   * This overrides the block value of `padding`.
+   * The block-axis padding for the element (typically vertical in horizontal writing modes). Supports two-value syntax where `large none` sets block-start to `large` and block-end to `none`. Overrides the block axis values from the `padding` property.
    *
    * @default '' - meaning no override
    */
@@ -1020,27 +1040,19 @@ export interface PaddingProps {
     MaybeTwoValuesShorthandProperty<PaddingKeyword> | ''
   >;
   /**
-   * Adjust the block-start padding.
-   *
-   * This overrides the block-start value of `paddingBlock`.
+   * The block-start padding for the element (typically top in horizontal writing modes). Overrides the block-start value from the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockStart?: MaybeResponsive<PaddingKeyword | ''>;
   /**
-   * Adjust the block-end padding.
-   *
-   * This overrides the block-end value of `paddingBlock`.
+   * The block-end padding for the element (typically bottom in horizontal writing modes). Overrides the block-end value from the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockEnd?: MaybeResponsive<PaddingKeyword | ''>;
   /**
-   * Adjust the inline padding.
-   *
-   * - `large none` means inline-start padding is `large`, inline-end padding is `none`.
-   *
-   * This overrides the inline value of `padding`.
+   * The inline-axis padding for the element (typically horizontal in horizontal writing modes). Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline axis values from the `padding` property.
    *
    * @default '' - meaning no override
    */
@@ -1048,82 +1060,87 @@ export interface PaddingProps {
     MaybeTwoValuesShorthandProperty<PaddingKeyword> | ''
   >;
   /**
-   * Adjust the inline-start padding.
-   *
-   * This overrides the inline-start value of `paddingInline`.
+   * The inline-start padding for the element (typically left in LTR, right in RTL). Overrides the inline-start value from the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineStart?: MaybeResponsive<PaddingKeyword | ''>;
   /**
-   * Adjust the inline-end padding.
-   *
-   * This overrides the inline-end value of `paddingInline`.
+   * The inline-end padding for the element (typically right in LTR, left in RTL). Overrides the inline-end value from the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineEnd?: MaybeResponsive<PaddingKeyword | ''>;
 }
+/**
+ * A size value in pixels, percentage, or zero.
+ */
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
+/**
+ * A size value with automatic sizing option.
+ */
 export type SizeUnitsOrAuto = SizeUnits | 'auto';
+/**
+ * A size value with no constraint option.
+ */
 export type SizeUnitsOrNone = SizeUnits | 'none';
+/**
+ * Properties for controlling the dimensions of an element.
+ */
 export interface SizingProps {
   /**
-   * Adjust the block size.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+   * The block size (height in horizontal writing modes) of the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container. Learn more about [`block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
    *
    * @default 'auto'
    */
   blockSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
-   * Adjust the minimum block size.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
+   * The minimum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container. Learn more about [`min-block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
    *
    * @default '0'
    */
   minBlockSize?: MaybeResponsive<SizeUnits>;
   /**
-   * Adjust the maximum block size.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
+   * The maximum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container. Learn more about [`max-block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
    *
    * @default 'none'
    */
   maxBlockSize?: MaybeResponsive<SizeUnitsOrNone>;
   /**
-   * Adjust the inline size.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
+   * The inline size (width in horizontal writing modes) of the element. Learn more about [`inline-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
    *
    * @default 'auto'
    */
   inlineSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
-   * Adjust the minimum inline size.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
+   * The minimum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container. Learn more about [`min-inline-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
    *
    * @default '0'
    */
   minInlineSize?: MaybeResponsive<SizeUnits>;
   /**
-   * Adjust the maximum inline size.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
+   * The maximum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container. Learn more about [`max-inline-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
    *
    * @default 'none'
    */
   maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
+/**
+ * A border line style keyword.
+ */
 export type BorderStyleKeyword =
   | 'none'
   | 'solid'
   | 'dashed'
   | 'dotted'
   | 'auto';
+/**
+ * A border thickness keyword.
+ */
 export type BorderSizeKeyword = SizeKeyword | 'none';
+/**
+ * A border radius keyword including maximum rounding option.
+ */
 export type BorderRadiusKeyword = SizeKeyword | 'max' | 'none';
 /**
  * Represents a shorthand for defining a border. It can be a combination of size, optionally followed by color, optionally followed by style.
@@ -1132,17 +1149,12 @@ export type BorderShorthand =
   | BorderSizeKeyword
   | `${BorderSizeKeyword} ${ColorKeyword}`
   | `${BorderSizeKeyword} ${ColorKeyword} ${BorderStyleKeyword}`;
+/**
+ * Properties for controlling the border styling of an element.
+ */
 export interface BorderProps {
   /**
-   * Set the border via the shorthand property.
-   *
-   * This can be a size, optionally followed by a color, optionally followed by a style.
-   *
-   * If the color is not specified, it will be `base`.
-   *
-   * If the style is not specified, it will be `auto`.
-   *
-   * Values can be overridden by `borderWidth`, `borderStyle`, and `borderColor`.
+   * Sets the border style, width, and color using shorthand syntax. Accepts a size keyword, optionally followed by a color keyword, optionally followed by a style keyword.
    *
    * @example
    * // The following are equivalent:
@@ -1153,82 +1165,49 @@ export interface BorderProps {
    */
   border?: BorderShorthand;
   /**
-   * Set the width of the border.
-   *
-   * If set, it takes precedence over the `border` property's width.
-   *
-   * Like CSS, up to 4 values can be specified.
-   *
-   * If one value is specified, it applies to all sides.
-   *
-   * If two values are specified, they apply to the block sides and inline sides respectively.
-   *
-   * If three values are specified, they apply to the block-start, both inline sides, and block-end respectively.
-   *
-   * If four values are specified, they apply to the block-start, block-end, inline-start, and inline-end sides respectively.
+   * Sets the thickness of the border using size keywords. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) for specifying different widths per edge.
    *
    * @default '' - meaning no override
    */
   borderWidth?: MaybeAllValuesShorthandProperty<BorderSizeKeyword> | '';
   /**
-   * Set the style of the border.
-   *
-   * If set, it takes precedence over the `border` property's style.
-   *
-   * Like CSS, up to 4 values can be specified.
-   *
-   * If one value is specified, it applies to all sides.
-   *
-   * If two values are specified, they apply to the block sides and inline sides respectively.
-   *
-   * If three values are specified, they apply to the block-start, both inline sides, and block-end respectively.
-   *
-   * If four values are specified, they apply to the block-start, block-end, inline-start, and inline-end sides respectively.
+   * Sets the line style of the border. Controls the visual pattern of the border lines (for example, solid, dashed, dotted). Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) for specifying different styles per edge.
    *
    * @default '' - meaning no override
    */
   borderStyle?: MaybeAllValuesShorthandProperty<BorderStyleKeyword> | '';
   /**
-   * Set the color of the border.
-   *
-   * If set, it takes precedence over the `border` property's color.
+   * Sets the color intensity of the border. Controls how prominent the border appears.
    *
    * @default '' - meaning no override
    */
   borderColor?: ColorKeyword | '';
   /**
-   * Set the radius of the border.
-   *
-   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
-   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
-   *
-   * - 4 values: `start-start start-end end-end end-start`
-   * - 3 values: `start-start (start-end & end-start) start-end`
-   * - 2 values: `(start-start & end-end) (start-end & end-start)`
-   *
-   * For example:
-   * - `small-100` means start-start, start-end, end-end and end-start border radii are `small-100`.
-   * - `small-100 none` means start-start and end-end border radii are `small-100`, start-end and end-start border radii are `none`.
-   * - `small-100 none large-100` means start-start border radius is `small-100`, start-end border radius is `none`, end-end border radius is `large-100` and end-start border radius is `none`.
-   * - `small-100 none large-100 small-100` means start-start border radius is `small-100`, start-end border radius is `none`, end-end border radius is `large-100` and end-start border radius is `small-100`.
+   * Sets the corner rounding radius of the border. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) for specifying different radii per corner.
    *
    * @defaultValue 'none'
    */
   borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
 }
+/**
+ * Properties for controlling overflow behavior when content exceeds container bounds.
+ */
 export interface OverflowProps {
   /**
-   * Sets the overflow behavior of the element.
+   * Controls how the container handles content that exceeds its dimensions:
+   * - `'visible'`: Content extends beyond the container's boundaries without clipping or scrolling. Overflow content is fully visible and may overlap other elements. This is the default behavior and works well for containers that should expand to fit their content naturally.
+   * - `'hidden'`: Content that exceeds the container is clipped and hidden from view—users can't see or access the overflow content. No scrollbars appear. Typically applied to intentionally limit visible content, create masked effects, or prevent content from breaking layouts. Hidden content may include important information users can't access.
+   * - `'auto'`: Only available in some components like `ScrollBox`. Adds scrollbars automatically when content exceeds the container, allowing users to scroll to view overflow content. Scrollbars only appear when needed. Commonly applied to scrollable regions, content lists, or containers where users should access all content but space is limited.
    *
-   * - `hidden`: clips the content when it is larger than the element’s container.
-   * The element will not be scrollable and the users will not be able
-   * to access the clipped content by dragging or using a scroll wheel on a mouse.
-   * - `visible`: the content that extends beyond the element’s container is visible.
+   * The choice depends on layout needs: `'visible'` for flexible layouts, `'hidden'` for strict boundaries, `'auto'` for user-controlled scrolling. Setting overflow establishes a new block formatting context, which affects layout behaviors like margin collapsing and positioning.
    *
    * @default 'visible'
    */
   overflow?: 'hidden' | 'visible';
 }
+/**
+ * Base properties for box-like container elements.
+ */
 export interface BaseBoxProps
   extends AccessibilityVisibilityProps,
     BackgroundProps,
@@ -1238,400 +1217,385 @@ export interface BaseBoxProps
     BorderProps,
     OverflowProps {
   /**
-   * The content of the Box.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
   /**
-   * A label that describes the purpose or contents of the element.
-   * When set, it will be announced to users using assistive technologies and will provide them with more context.
-   *
-   * Only use this when the element's content is not enough context for users using assistive technologies.
+   * A text label that describes the purpose, function, or contents of the element for users of assistive technologies like screen readers. This label is announced by screen readers but isn't visually displayed. Typically applied when an element doesn't have visible text that adequately describes it, such as icon-only buttons, image carousels, or complex interactive regions. The label is concise yet descriptive (for example, "Close modal", "Product image carousel", "Shopping cart with 3 items"). If the element already has clear visible labels or headings, this property may be unnecessary. For form fields, the `label` property is both visible and accessible.
    */
   accessibilityLabel?: string;
 }
+/**
+ * Base properties for box-like container elements with semantic role support.
+ */
 export interface BaseBoxPropsWithRole
   extends BaseBoxProps,
     AccessibilityRoleProps {}
+/**
+ * Properties for button-like interactive elements with form-related behavior.
+ */
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
-   * The behavior of the Button.
-   *
-   * - `submit`: Used to indicate the component acts as a submit button, meaning it submits the closest form.
-   * - `button`: Used to indicate the component acts as a button, meaning it has no default action.
-   * - `reset`: Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
-   *
-   * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.
+   * The semantic meaning of the button action within a form context:
+   * - `'button'`: A standard button with no default form behavior
+   * - `'submit'`: Submits the containing form when activated
+   * - `'reset'`: Resets the containing form to its initial values when activated
    *
    * @default 'button'
    */
   type?: 'submit' | 'button' | 'reset';
   /**
-   * Callback when the Button is activated.
-   * This will be called before the action indicated by `type`.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
+   * A callback function executed when the element is clicked or activated. Learn more about [click events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
    */
   onClick?: (event: Event) => void;
   /**
-   * Disables the Button meaning it cannot be clicked or receive focus.
+   * Whether the field is disabled, preventing any user interaction.
    *
    * @default false
    */
   disabled?: boolean;
   /**
-   * Replaces content with a loading indicator while a background action is being performed.
-   *
-   * This also disables the Button.
+   * Indicates whether the button action is currently in progress. When `true`, displays a loading spinner or progress indicator and prevents additional clicks to avoid duplicate submissions. The button remains visually enabled but unresponsive to interaction. Set to `true` when starting an async operation (for example, API call, navigation) and back to `false` when the operation completes or fails. This provides user feedback during long-running operations and prevents race conditions from multiple rapid clicks.
    *
    * @default false
    */
   loading?: boolean;
 }
+/**
+ * Properties for link-like interactive elements with navigation behavior.
+ */
 export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
   /**
-   * The URL to link to.
-   *
-   * - If set, it will navigate to the location specified by `href` after executing the `click` event.
-   * - If a `commandFor` is set, the `command` will be executed instead of the navigation.
+   * The URL to navigate to when the element is clicked or activated. Supports absolute URLs (for example, `https://shopify.com`), relative URLs (for example, `/products`), and anchor links (for example, `#section-id`). Navigation is triggered after the `onClick` event completes, allowing navigation to be canceled by preventing the default event action. The actual navigation behavior depends on the `target` property—same page, new tab, or external navigation. For security, browsers may block navigation to certain protocols or untrusted origins. Commonly applied to create navigational links, external resource links, or in-app routing.
    */
   href?: string;
   /**
-   * Specifies where to display the linked URL.
+   * Specifies where to display the linked URL:
+   * - `'auto'`: The target is automatically determined based on the origin of the URL (typically behaves as `'_self'` but surfaces may handle cross-origin URLs differently)
+   * - `'_blank'`: Opens the URL in a new tab or window
+   * - `'_self'`: Opens the URL in the same browsing context
+   * - `'_parent'`: Opens the URL in the parent browsing context
+   * - `'_top'`: Opens the URL in the topmost browsing context
+   * - Custom string: Any other valid target name
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
-   *
-   * 'auto': The target is automatically determined based on the origin of the URL.
+   * Learn more about the [`target` attribute on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).
    *
    * @implementation Surfaces can set specific rules on how they handle each URL.
-   * @implementation It’s expected that the behavior of `auto` is as `_self` except in specific cases.
+   * @implementation It's expected that the behavior of `auto` is as `_self` except in specific cases.
    * @implementation For example, a surface could decide to open cross-origin URLs in a new window (as `_blank`).
    *
    * @default 'auto'
    */
   target?: 'auto' | '_blank' | '_self' | '_parent' | '_top' | AnyString;
   /**
-   * Causes the browser to treat the linked URL as a download with the string being the file name.
-   * Download only works for same-origin URLs or the `blob:` and `data:` schemes.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download
+   * Treats the link as a file download instead of navigation. When set, clicking the link downloads the resource at the `href` URL rather than navigating to it. The value becomes the suggested filename shown in the download dialog or used by the browser's default save behavior (for example, `download="receipt.pdf"` saves as "receipt.pdf"). If the value is an empty string, the browser determines the filename from the URL or server headers. This only works for same-origin URLs (your app's domain) or `blob:` and `data:` URLs for security reasons—cross-origin URLs will navigate normally. Commonly applied to generate and download reports, receipts, CSV exports, or any file that should be saved rather than displayed. Learn more about the [`download` attribute on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download).
    */
   download?: string;
   /**
-   * Callback when the link is activated.
-   * This will be called before navigating to the location specified by `href`.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
+   * A callback function executed when the element is clicked or activated. Learn more about [click events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
    */
   onClick?: (event: Event) => void;
 }
+/**
+ * Properties for controlling interactions between elements using commands.
+ */
 export interface InteractionProps {
   /**
-   * ID of a component that should respond to activations (e.g. clicks) on this component.
-   *
-   * See `command` for how to control the behavior of the target.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
+   * The ID of the target element that should respond when this element is clicked or activated. This creates a relationship where clicking this control (button, clickable) triggers an action on another element in the DOM. The target element must have a matching `id` attribute. Use with the `command` property to specify what action should occur (show, hide, toggle). This enables declarative element control without writing custom click handlers, improving accessibility and reducing JavaScript. Common use cases include: opening modals from buttons, toggling content visibility, showing/hiding sidebars, or controlling overlay states. If both `commandFor` and `onClick` are present, both will execute—the command action occurs first, then the click handler. Learn more about [`commandfor` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
    */
   commandFor?: string;
   /**
-   * Sets the action the `commandFor` should take when this clickable is activated.
+   * The action to perform on the target element specified by `commandFor`:
+   * - `'--auto'`: Execute the target element's default action (typically show for overlays, or the element's primary interaction)
+   * - `'--show'`: Make the target element visible by calling its `showOverlay()` method or setting appropriate visibility properties
+   * - `'--hide'`: Hide the target element by calling its `hideOverlay()` method or setting appropriate visibility properties
+   * - `'--toggle'`: Switch the target element's visibility state—if visible, hide it; if hidden, show it
+   * - `'--copy'`: Copy content to the clipboard (requires the target to be a compatible element with copy functionality)
    *
-   * See the documentation of particular components for the actions they support.
-   *
-   * - `--auto`: a default action for the target component.
-   * - `--show`: shows the target component.
-   * - `--hide`: hides the target component.
-   * - `--toggle`: toggles the target component.
-   * - `--copy`: copies the target ClipboardItem.
+   * The command executes when this element is clicked, before any `onClick` handlers fire. If the target element doesn't support the specified command, the action may fail silently. Learn more about [button commands on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
    *
    * @default '--auto'
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
   command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';
   /**
-   * ID of a component that should respond to interest (e.g. hover and focus) on this component.
+   * The ID of a target element that should respond to hover and focus events on this element, creating an "interest" relationship. When the user hovers over or focuses this element, the target element receives corresponding interest events, allowing it to preview or prepare content. This is useful for implementing tooltip-like previews, image zoom on hover, showing additional details before clicking, or loading content speculatively when the user shows interest. The target element must have a matching `id` and listen for interest events. Unlike `commandFor` which responds to clicks, this responds to hover and focus, providing earlier user intent signals.
    */
   interestFor?: string;
 }
+/**
+ * Combined properties for elements that can behave as both buttons and links.
+ */
 export interface BaseClickableProps
   extends ButtonBehaviorProps,
     LinkBehaviorProps {}
 export interface ButtonProps extends GlobalProps, BaseClickableProps {
   /**
-   * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
-   *
-   * Use this when using only an icon or the Button text is not enough context
-   * for users using assistive technologies.
+   * A label that describes the purpose or contents of the element. Announced to users with assistive technologies such as screen readers to provide context.
    */
   accessibilityLabel?: string;
   /**
-   * The content of the Button.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
   /**
-   * The type of icon to be displayed in the Button.
+   * The icon identifier specifying which icon to display. Accepts any valid icon name from the icon set.
    *
    * @default ''
    */
   icon?: IconType | AnyString;
   /**
-   * The displayed inline width of the Button.
-   *
-   * - `auto`: the size of the button depends on the surface and context.
-   * - `fill`: the button will takes up 100% of the available inline size.
-   * - `fit-content`: the button will take up the minimum inline-size required to fit its content.
+   * Controls how the element's width adapts to its container and content.
    *
    * @default 'auto'
    */
   inlineSize?: 'auto' | 'fill' | 'fit-content';
   /**
-   * Changes the visual appearance of the Button.
+   * Changes the visual appearance and prominence of the button:
+   * - `'auto'`: The variant is automatically determined by context
+   * - `'primary'`: Creates a prominent call-to-action button with high visual emphasis for the most important action on a screen
+   * - `'secondary'`: Provides a less prominent button appearance for supporting actions and secondary interactions
+   * - `'tertiary'`: Provides the least prominent button appearance for tertiary or optional actions
    *
-   * @default 'auto' - the variant is automatically determined by the Button's context
+   * @default 'auto'
    */
   variant?: 'auto' | 'primary' | 'secondary' | 'tertiary';
   /**
-   * Sets the tone of the Button based on the intention of the information being conveyed.
+   * Sets the tone of the button, based on the intention of the action being performed:
+   * - `'auto'`: Automatically determines the appropriate tone based on context
+   * - `'neutral'`: The standard tone for general actions and interactions
+   * - `'caution'`: Indicates actions that require careful consideration
+   * - `'warning'`: Alerts users to potential issues or important information
+   * - `'critical'`: Used for destructive actions like deleting or removing content
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
-   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
-   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
+   * Indicates the language of the text content. Useful when text is in a different language than the rest of the page, allowing assistive technologies to invoke correct pronunciation. [Reference of language subtag values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry).
    */
   lang?: string;
 }
+/**
+ * Base properties for all form input elements.
+ */
 export interface BaseInputProps {
   /**
-   * An identifier for the field that is unique within the nearest containing form.
+   * An identifier for the field that is unique within the nearest containing form. This name is used as the key when the form data is submitted. If omitted, the field's value won't be included in form submissions. Meaningful names describe the data being collected (for example, `"email"`, `"quantity"`, `"customer-note"`).
    */
   name?: string;
   /**
-   * Disables the field, disallowing any interaction.
+   * Whether the field is disabled, preventing any user interaction. When `true`, the field can't receive focus, be edited, or be interacted with. Disabled fields are visually dimmed, excluded from form submission, and announced as disabled to screen readers. Typically set when a field is temporarily unavailable due to application state, permissions, or dependencies on other fields.
    *
    * @default false
    */
   disabled?: boolean;
 }
+/**
+ * Properties for controlled form input elements with value and change callbacks.
+ */
 export interface InputProps extends BaseInputProps {
   /**
-   * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+   * A callback function executed when the user has committed a value change, typically triggered when the field loses focus (blur) after the value has been modified. Unlike `onInput`, this fires only once after editing is complete, not during typing. The event contains the finalized value. Common operations include validation, saving data, or triggering actions that should occur after the user finishes editing rather than during typing. For controlled components, the `value` prop should be updated in this callback. This is ideal for expensive operations like API calls that shouldn't happen on every keystroke. Learn more about [change events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
    */
   onChange?: (event: Event) => void;
   /**
-   * Callback when the user makes any changes in the field.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+   * A callback function executed immediately when the user makes any change to the field value. Fires on every keystroke, paste, or other input modification before the field loses focus. The event contains the current field value. Common operations include real-time validation, character counting, formatting input as users type, or implementing autocomplete/search-as-you-type features. For controlled components, the `value` prop should be updated in this callback to keep state in sync. Expensive operations should be avoided here as this fires frequently during typing. Learn more about [input events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
    */
   onInput?: (event: Event) => void;
   /**
-   * The current value for the field. If omitted, the field will be empty.
+   * The current value of the field. When provided, this creates a controlled component where this value must be updated in response to user input using `onChange` or `onInput` callbacks. The format and valid values depend on the specific field type. If both `value` and `defaultValue` are provided, `value` takes precedence.
    */
   value?: string;
   /**
-   * The default value for the field.
+   * The default value used when the field is first rendered. Only applies if no `value` prop is provided, creating an uncontrolled component where the browser manages the field state internally. After initial render, the component handles its own state and the current value can be read from the DOM.
    *
    * @implementation `defaultValue` reflects to the `value` attribute.
    */
   defaultValue?: string;
 }
+/**
+ * Properties for form inputs that support multiple selections.
+ */
 export interface MultipleInputProps extends BaseInputProps {
   /**
-   * Callback when the user has selected option(s).
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed. Learn more about [change events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
    */
   onChange?: (event: Event) => void;
   /**
-   * Callback when the user has selected option(s).
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction. Learn more about [input events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
    */
   onInput?: (event: Event) => void;
   /**
-   * An array of the `value`s of the selected options.
-   *
-   * This is a convenience prop for setting the `selected` prop on child options.
+   * An array containing the values of currently selected options in a multi-select choice list. When provided, this creates a controlled component where this array must be updated in response to user selections using the `onChange` callback. The array contains the `value` properties of selected child `Choice` components. For single-select lists (`multiple={false}`), this array contains zero or one items. For multi-select lists, it can contain multiple items. This is a convenience property that automatically sets the `selected` state on matching child choices based on their `value` properties. When a choice's value appears in this array, it's automatically marked as selected. The array should be updated immutably in callbacks (creating new arrays rather than mutating existing ones).
    */
   values?: string[];
 }
+/**
+ * Properties for displaying field validation errors.
+ */
 export interface FieldErrorProps {
   /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
+   * An error message to display when the field contains invalid data or fails validation. When set, the field receives error styling (typically a red border and error icon) and the message appears below the field to guide users toward fixing the issue. The error is announced to screen readers for accessibility. The error is cleared by setting this to an empty string or `undefined`. Errors are typically displayed after validation fails, usually on blur or form submission.
    */
   error?: string;
 }
+/**
+ * Basic properties for form fields including labels, validation requirements, and error states.
+ */
 export interface BasicFieldProps
   extends FieldErrorProps,
     LabelAccessibilityVisibilityProps {
   /**
-   * Whether the field needs a value. This requirement adds semantic value
-   * to the field, but it will not cause an error to appear automatically.
-   * If you want to present an error when this field is empty, you can do
-   * so with the `error` property.
+   * Whether the field must have a value before form submission. When `true`, the field is marked as required (typically with an asterisk), announced as required to screen readers, and triggers browser validation on form submit. This property adds semantic meaning but doesn't prevent submission on its own—validation logic must be implemented and the `error` property used to display validation messages.
    *
    * @default false
    */
   required?: boolean;
   /**
-   * Content to use as the field label.
+   * The text label that describes what information the field is requesting from the user. Labels are always visible (unlike placeholders which disappear on input) and are announced by screen readers, making them critical for accessibility. Labels typically appear above or beside the field and remain visible while the user interacts with the field. Clear, concise labels describe the expected input (for example, "Email address", "Quantity", "Customer note").
    */
   label?: string;
 }
+/**
+ * Properties for adding supplementary help text to form fields.
+ */
 export interface FieldDetailsProps {
   /**
-   * Additional text to provide context or guidance for the field.
-   * This text is displayed along with the field and its label
-   * to offer more information or instructions to the user.
-   *
-   * This will also be exposed to screen reader users.
+   * Supplementary help text that provides additional context, instructions, or constraints for the field. This text typically appears below the label in a smaller, subdued style and remains visible at all times (unlike placeholders). Screen readers announce this text along with the label to provide complete field context. Common content includes format requirements (for example, "Use YYYY-MM-DD format"), character limits (for example, "Maximum 500 characters"), helpful hints (for example, "This will be shown on the receipt"), or clarifying instructions (for example, "Leave blank to use default shipping address"). Information already in the label or placeholder shouldn't be duplicated here.
    */
   details?: string;
 }
+/**
+ * Complete properties for standard form fields including value, label, placeholder, validation, and callbacks.
+ */
 export interface FieldProps
   extends BasicFieldProps,
     InputProps,
     FocusEventProps,
     FieldDetailsProps {
   /**
-   * A short hint that describes the expected value of the field.
+   * A short hint that provides guidance about the expected value or format of the field. Displayed when the field is empty and disappears once the user starts typing. Placeholders should supplement the label, not replace it—a `label` should always be provided as well since placeholders may not be accessible to all screen readers. Common placeholder content includes format examples (for example, "YYYY-MM-DD"), helpful hints (for example, "Leave blank for default"), or clarifying expected input (for example, "Enter SKU or product name").
    */
   placeholder?: string;
 }
+/**
+ * Base properties for text-based input fields including placeholder and read-only state.
+ */
 export interface BaseTextFieldProps extends FieldProps {
   /**
-   * The field cannot be edited by the user. It is focusable will be announced by screen readers.
+   * Whether the field can be edited. When `true`, the field is focusable and announced by screen readers but can't be modified by the user. Unlike `disabled`, read-only fields can still receive focus, be copied, and participate in form submission. Typically applied to calculated values, reference information, or data that users need to see and interact with but shouldn't change.
    *
    * @default false
    */
   readOnly?: boolean;
 }
+/**
+ * Properties for adding decorative elements like icons, prefixes, suffixes, and accessories to form fields.
+ */
 export interface FieldDecorationProps {
   /**
-   * A value to be displayed immediately after the editable portion of the field.
-   *
-   * This is useful for displaying an implied part of the value, such as "@shopify.com", or "%".
-   *
-   * This cannot be edited by the user, and it isn't included in the value of the field.
-   *
-   * It may not be displayed until the user has interacted with the input.
-   * For example, an inline label may take the place of the suffix until the user focuses the input.
+   * Static text displayed immediately after the editable portion of the field, typically inside the field border. This text is non-interactive and purely decorative—users can't edit it and it's not included in the field's value when submitted. The suffix remains visible at all times, even when the field is empty. Common uses include domain suffixes (for example, "@shopify.com" for email fields), units of measurement (for example, "kg", "%", "USD"), or clarifying context (for example, "/month" for subscription pricing). Choose between suffix and prefix based on natural reading order for your use case.
    *
    * @default ''
    */
   suffix?: string;
   /**
-   * A value to be displayed immediately before the editable portion of the field.
-   *
-   * This is useful for displaying an implied part of the value, such as "https://" or "+353".
-   *
-   * This cannot be edited by the user, and it isn't included in the value of the field.
-   *
-   * It may not be displayed until the user has interacted with the input.
-   * For example, an inline label may take the place of the prefix until the user focuses the input.
+   * Static text displayed immediately before the editable portion of the field, typically inside the field border. This text is non-interactive and purely decorative—users can't edit it and it's not included in the field's value when submitted. The prefix remains visible at all times, even when the field is empty. Common uses include currency symbols (for example, "$", "€", "£"), protocol indicators (for example, "https://"), measurement prefixes (for example, "#", "@"), or fixed identifiers. The prefix helps users understand the expected format without consuming characters from maxLength limits.
    *
    * @default ''
    */
   prefix?: string;
   /**
-   * The type of icon to be displayed in the field.
+   * The icon identifier specifying which icon to display in the field, typically positioned at the start of the field before the input area. The icon is decorative and helps users quickly identify the field's purpose through visual recognition. The icon is announced to screen readers along with the field's accessible name. Use icons that clearly communicate the field's purpose (for example, search icon for search fields, calendar icon for date fields, lock icon for password fields). The icon doesn't affect the field's functionality but improves visual recognition and scannability in forms. Avoid using both icon and prefix simultaneously as this can create visual clutter.
    *
    * @default ''
    */
   icon?: IconType | AnyString;
   /**
-   * Additional content to be displayed in the field.
-   * Commonly used to display an icon that activates a tooltip providing more information.
+   * Additional interactive content displayed within the field, typically positioned at the end of the field after the input area. Only text-only `Button` and `Clickable` components are supported—no icons or complex content. Use the `slot="accessory"` attribute to place elements here. Common uses include action buttons (for example, "Copy" button, "Generate" button, "Clear" button), toggle visibility controls (for example, "Show password" button), or quick actions related to the field (for example, "Paste from clipboard"). The accessory must not interfere with the field's primary input functionality. Ensure sufficient contrast and touch target sizes for mobile usability.
    */
   accessory?: ComponentChildren;
 }
+/**
+ * Properties for defining numeric value constraints and controls.
+ */
 export interface NumberConstraintsProps {
   /**
-   * The highest decimal or integer to be accepted for the field.
-   * When used with `step` the value will round down to the max number.
-   *
-   * Note: a user will still be able to use the keyboard to input a number higher than
-   * the max. It is up to the developer to add appropriate validation.
+   * The highest decimal or integer value that the field accepts. When used with `stepper` controls, the increment button becomes disabled at this value and attempting to increment rounds down to max. When users type values using keyboard, they can enter numbers above max—browser validation will flag these as invalid but won't prevent entry, so validation should be implemented in `onChange` or before form submission. Commonly applied to enforce business rules like maximum quantities, price caps, or valid ranges. Setting to `Infinity` (default) removes the upper limit.
    *
    * @default Infinity
    */
   max?: number;
   /**
-   * The lowest decimal or integer to be accepted for the field.
-   * When used with `step` the value will round up to the min number.
-   *
-   * Note: a user will still be able to use the keyboard to input a number lower than
-   * the min. It is up to the developer to add appropriate validation.
+   * The lowest decimal or integer value that the field accepts. When used with `stepper` controls, the decrement button becomes disabled at this value and attempting to decrement rounds up to min. When users type values using keyboard, they can enter numbers below min—browser validation will flag these as invalid but won't prevent entry, so validation should be implemented in `onChange` or before form submission. Commonly applied to enforce business rules like minimum quantities, prevent negative values, or define valid ranges. Setting to `-Infinity` (default) removes the lower limit.
    *
    * @default -Infinity
    */
   min?: number;
   /**
-   * The amount the value can increase or decrease by. This can be an integer or decimal.
-   * If a `max` or `min` is specified with `step` when increasing/decreasing the value
-   * via the buttons, the final value will always round to the `max` or `min`
-   * rather than the closest valid amount.
+   * The increment/decrement amount for adjusting the numeric value. Determines how much the value changes when users click stepper buttons or press keyboard arrow keys (up/down). For example, `step="0.01"` allows currency precision, `step="5"` for quantities in increments of 5, or `step="0.25"` for quarter-hour time intervals. The browser may also use this for validation, flagging values that aren't valid steps from the `min` value. Decimals are supported unless using `stepper` controls which only accept integers.
    *
    * @default 1
    */
   step?: number;
   /**
-   * Sets the type of controls displayed in the field.
-   *
-   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property.
-   * Appropriate mouse and [keyboard interactions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/spinbutton_role#keyboard_interactions) to control the value of the field are enabled.
-   * - `none`: no controls are displayed and users must input the value manually. Arrow keys and scroll wheels can’t be used either to avoid accidental changes.
-   * - `auto`: the presence of the controls depends on the surface and context.
+   * The type of controls displayed for the field:
+   * - `'auto'`: An automatic setting where the presence of controls depends on the surface and context. The system determines the most appropriate control type based on the usage scenario.
+   * - `'stepper'`: Displays increment (+) and decrement (-) buttons for adjusting the numeric value. When `stepper` controls are enabled, the field behavior is constrained: it accepts only integer values, always contains a value (never empty), and automatically validates against `min` and `max` bounds. The `label`, `details`, `placeholder`, `error`, `required`, and `inputMode` properties aren't supported with `stepper` controls.
+   * - `'none'`: A control type with no visible controls where users must input the value manually using the keyboard.
    *
    * @default 'auto'
    */
   controls?: 'auto' | 'stepper' | 'none';
 }
+/**
+ * Properties for defining minimum and maximum character length constraints on text inputs.
+ */
 export interface MinMaxLengthProps {
   /**
-   * Specifies the maximum number of characters allowed.
+   * The maximum number of characters allowed in the text field. The browser prevents users from typing or pasting beyond this limit—additional characters are automatically truncated. The character count includes all characters (letters, numbers, spaces, special characters). This provides immediate feedback by blocking input rather than showing validation errors. Commonly applied to enforce hard limits like database column sizes, API constraints, or UX requirements. Often combined with character counter displays to show remaining space (for example, "45/100 characters").
    *
    * @default Infinity
    */
   maxLength?: number;
   /**
-   * Specifies the min number of characters allowed.
+   * The minimum number of characters required for the field value to be considered valid. Unlike `maxLength`, this doesn't prevent users from entering fewer characters—instead, browser validation marks the field as invalid if the value is too short. Validation typically occurs on form submission or blur. The field can be empty unless also marked `required`. Commonly applied to ensure sufficient input quality, such as minimum password lengths, meaningful descriptions, or codes with fixed lengths. The `error` property can be combined with this to display user-friendly validation messages.
    *
    * @default 0
    */
   minLength?: number;
 }
+/**
+ * Base properties for selectable options including value, disabled state, and accessibility labels.
+ */
 export interface BaseSelectableProps {
   /**
-   * A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced.
-   * This can also be used to display a control without a visual label, while still providing context to users using screen readers.
+   * A label that describes the purpose or contents of the element. Announced to users with assistive technologies such as screen readers to provide context.
    */
   accessibilityLabel?: string;
   /**
-   * Disables the control, disallowing any interaction.
+   * Whether the field is disabled, preventing any user interaction.
    *
    * @default false
    */
   disabled?: boolean;
   /**
-   * The value used in form data when the control is checked.
+   * The unique value associated with this selectable option. This value is what gets submitted with forms when the option is selected, and is used to identify which options are selected in the parent `ChoiceList`'s `values` array. The value should be unique among siblings within the same choice list to avoid selection ambiguity. When a choice is selected, this value appears in form data and in the parent's `values` array. Use meaningful, stable values that identify the choice semantically (for example, `"small"`, `"express-shipping"`, `"agree-to-terms"`) rather than display text which may change or be localized. The value isn't displayed to users—use the choice's `children` or label for visible text.
    */
   value?: string;
 }
+/**
+ * Properties for individual options within choice lists, including selection state management.
+ */
 export interface BaseOptionProps extends BaseSelectableProps {
   /**
-   * Whether the control is active.
+   * Whether the choice control is currently active or selected. This creates a controlled component—this value must be updated in response to user interactions using `onChange` handlers. When `true`, the choice appears selected with appropriate visual styling and is included in form submissions. If both `selected` and `defaultSelected` are provided, `selected` takes precedence.
    *
    * @default false
    */
   selected?: boolean;
   /**
-   * Whether the control is active by default.
+   * Whether the control is selected by default when first rendered. This creates an uncontrolled component where the browser manages selection state internally after the initial render. The component handles selection internally without requiring updates using callbacks.
    *
    * @implementation `defaultSelected` reflects to the `selected` attribute.
    *
@@ -1639,9 +1603,12 @@ export interface BaseOptionProps extends BaseSelectableProps {
    */
   defaultSelected?: boolean;
 }
+/**
+ * Properties for a single choice option including label, details, selection state, and additional content.
+ */
 export interface ChoiceProps extends GlobalProps, BaseOptionProps {
   /**
-   * Content to use as the choice label.
+   * The label content for the choice option.
    *
    * @implementation (StringChildren) The label is produced by extracting and
    * concatenating the text nodes from the provided content; any markup or
@@ -1653,64 +1620,57 @@ export interface ChoiceProps extends GlobalProps, BaseOptionProps {
    */
   children?: ComponentChildren | StringChildren;
   /**
-   * Additional text to provide context or guidance for the input.
-   *
-   * This text is displayed along with the input and its label
-   * to offer more information or instructions to the user.
+   * Additional text or content that provides context or guidance for the choice option. Displayed alongside the option label to offer more information or instructions to the user. Also exposed to screen reader users.
    *
    * @implementation this content should be linked to the input with an `aria-describedby` attribute.
    */
   details?: ComponentChildren;
   /**
-   * Set to `true` to associate a choice with the error passed to `ChoiceList`
+   * An error state indicator for the choice option. When `true`, the option will be given specific stylistic treatment to communicate validation issues.
    *
    * @default false
    */
   error?: boolean;
   /**
-   * Secondary content for a choice.
+   * The additional content displayed alongside the primary choice label. Useful for providing supplementary information or context.
    */
   secondaryContent?: ComponentChildren;
   /**
-   * Content to display when the option is selected.
-   *
-   * This can be used to provide additional information or options related to the choice.
+   * The content displayed only when the option is selected. Useful for showing additional details or confirmation information.
    */
   selectedContent?: ComponentChildren;
 }
+/**
+ * Properties for a list of choice options with support for single or multiple selection modes.
+ */
 export interface ChoiceListProps
   extends GlobalProps,
     Pick<BasicFieldProps, 'label' | 'labelAccessibilityVisibility' | 'error'>,
     MultipleInputProps,
     FieldDetailsProps {
   /**
-   * Whether multiple choices can be selected.
+   * Whether multiple choices can be selected simultaneously. When `true`, users can select multiple options and the `values` array will contain all selected values. When `false`, only one option can be selected at a time and selecting a new option automatically deselects the previous one.
    *
    * @default false
    */
   multiple?: boolean;
   /**
-   * The choices a user can select from.
-   *
-   * Accepts `Choice` components.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
   /**
-   * Disables the field, disallowing any interaction.
-   *
-   * `disabled` on any child choices is ignored when this is true.
+   * Whether the field is disabled, preventing any user interaction.
    *
    * @default false
    */
   disabled?: MultipleInputProps['disabled'];
   /**
-   * The variant of the choice grid.
-   *
-   * - `auto`: The variant is determined by the context.
-   * - `list`: The choices are displayed in a list.
-   * - `inline`: The choices are displayed on the inline axis.
-   * - `block`: The choices are displayed on the block axis.
-   * - `grid`: The choices are displayed in a grid.
+   * Controls the visual layout and presentation style of the choice options:
+   * - `'auto'`: The layout is automatically determined based on context
+   * - `'list'`: Displays choices in a vertical list format
+   * - `'inline'`: Displays choices in a horizontal inline format
+   * - `'block'`: Displays choices as block-level button-like elements
+   * - `'grid'`: Displays choices in a grid layout
    *
    * @implementation The `block`, `inline` and `grid` variants are more suitable for button looking choices, but it's at the
    * discretion of each surface.
@@ -1724,49 +1684,28 @@ export interface ClickableProps
     BaseBoxProps,
     BaseClickableProps {
   /**
-   * Disables the clickable, and indicates to assistive technology that the loading is in progress.
-   *
-   * This also disables the clickable.
+   * Indicates whether the action is currently in progress. When `true`, typically displays a loading indicator and may disable interaction.
    */
   loading?: BaseClickableProps['loading'];
   /**
-   * Disables the clickable, meaning it cannot be clicked or receive focus.
-   *
-   * In this state, onClick will not fire.
-   * If the click event originates from a child element, the event will immediately stop propagating from this element.
-   *
-   * However, items within the clickable can still receive focus and be interacted with.
-   *
-   * This has no impact on the visual state by default,
-   * but developers are encouraged to style the clickable accordingly.
+   * Whether the element is disabled, preventing any user interaction.
    */
   disabled?: BaseClickableProps['disabled'];
   /**
-   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
-   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
-   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
+   * Specifies the language of text content using an [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag (for example, `"en"` for English, `"fr"` for French, `"es-MX"` for Mexican Spanish, `"zh-Hans"` for Simplified Chinese). This enables assistive technologies to use correct pronunciation and language-specific text rendering.
    *
    * @default ''
    */
   lang?: string;
 }
+/**
+ * Properties for enabling browser autocomplete functionality on form fields.
+ */
 export interface AutocompleteProps<
   AutocompleteField extends AnyAutocompleteField,
 > {
   /**
-   * A hint as to the intended content of the field.
-   *
-   * When set to `on` (the default), this property indicates that the field should support
-   * autofill, but you do not have any more semantic information on the intended
-   * contents.
-   *
-   * When set to `off`, you are indicating that this field contains sensitive
-   * information, or contents that are never saved, like one-time codes.
-   *
-   * Alternatively, you can provide value which describes the
-   * specific data you would like to be entered into this field during autofill.
-   *
-   * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
+   * Specifies the type of data expected in the field to enable browser autocomplete functionality. When set to a specific field type (for example, `'email'`, `'name'`, `'address-line1'`), browsers offer suggestions from previously entered or saved information, improving data entry speed and accuracy. Set to `'on'` to enable generic autocomplete without specifying data type. Set to `'off'` to disable autocomplete entirely for sensitive fields (for example, one-time codes, PINs, credit card security codes). The browser respects user preferences and privacy settings, so autocomplete suggestions may not always appear even when enabled. Prefix field types with section identifiers (`section-shipping`) or groups (`billing`, `shipping`) to disambiguate when multiple similar fields exist on the same page. Accepts standard [HTML autocomplete tokens per the WHATWG specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens).
    *
    * @default 'tel' for PhoneField
    * @default 'email' for EmailField
@@ -1782,19 +1721,18 @@ export interface AutocompleteProps<
     | 'off';
 }
 /**
- * The “section” scopes the autocomplete data that should be inserted
- * to a specific area of the page.
+ * A section prefix that scopes the autocomplete data to a specific area of the page.
  *
  * Commonly used when there are multiple fields with the same autocomplete needs
  * in the same page. For example: 2 shipping address forms in the same page.
  */
 export type AutocompleteSection = `section-${string}`;
 /**
- * The contact information group the autocomplete data should be sourced from.
+ * The contact information category that autocomplete data should be sourced from.
  */
 export type AutocompleteGroup = 'shipping' | 'billing';
 /**
- * The contact information subgroup the autocomplete data should be sourced from.
+ * The contact information subcategory that autocomplete data should be sourced from.
  */
 export type AutocompleteAddressGroup = 'fax' | 'home' | 'mobile' | 'pager';
 export type AnyAutocompleteField =
@@ -1862,6 +1800,9 @@ export type AnyAutocompleteField =
   | `${AutocompleteAddressGroup} tel-local-suffix`
   | `${AutocompleteAddressGroup} tel-local`
   | `${AutocompleteAddressGroup} tel-national`;
+/**
+ * Autocomplete field types applicable to text input fields.
+ */
 export type TextAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   | 'additional-name'
@@ -1895,12 +1836,15 @@ export type TextAutocompleteField = ExtractStrict<
   | 'cc-family-name'
   | 'cc-type'
 >;
+/**
+ * Properties for an interactive date picker component with single, multiple, or range selection modes.
+ */
 export interface DatePickerProps
   extends GlobalProps,
     InputProps,
     FocusEventProps {
   /**
-   * Default month to display in `YYYY-MM` format.
+   * The default month to display in `YYYY-MM` format when the picker is first shown.
    *
    * This value is used until `view` is set, either directly or as a result of user interaction.
    *
@@ -1908,74 +1852,35 @@ export interface DatePickerProps
    */
   defaultView?: string;
   /**
-   * Displayed month in `YYYY-MM` format.
-   *
-   * `onViewChange` is called when this value changes.
-   *
-   * Defaults to `defaultView`.
+   * The currently displayed month in `YYYY-MM` format. Controls which month is visible in the date picker.
    */
   view?: string;
   /**
-   * Called whenever the month to display changes.
-   *
-   * @param view The new month to display in `YYYY-MM` format.
+   * A callback function executed when the visible month displayed in the date picker changes, either through user navigation (clicking next/previous month buttons) or programmatic updates to the `view` property. The callback receives the new month as a string in `YYYY-MM` format (for example, `"2024-05"`). Common operations include tracking which month users are viewing, loading month-specific data (like availability or pricing), syncing the view with external state, or implementing custom navigation controls. For controlled date pickers, the `view` property should be updated in this callback to keep the displayed month in sync with application state. The callback fires after the month has changed but before the new month's dates are fully rendered, making it well-suited for triggering data fetches.
    */
   onViewChange?: (view: string) => void;
   /**
-   * The type of selection the date picker allows.
-   *
-   * - `single` allows selecting a single date.
-   * - `multiple` allows selecting multiple non-contiguous dates.
-   * - `range` allows selecting a single range of dates.
+   * Controls the selection mode of the date picker:
+   * - `'single'`: Allows selecting one date
+   * - `'multiple'`: Allows selecting multiple individual dates
+   * - `'range'`: Allows selecting a continuous range of dates
    *
    * @default "single"
    */
   type?: 'single' | 'multiple' | 'range';
   /**
-   * Dates that can be selected.
-   *
-   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
-   *
-   * The default `''` allows all dates.
-   *
-   * - Dates in `YYYY-MM-DD` format allow a single date.
-   * - Dates in `YYYY-MM` format allow a whole month.
-   * - Dates in `YYYY` format allow a whole year.
-   * - Ranges are expressed as `start--end`.
-   *     - Ranges are inclusive.
-   *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
-   *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
-   *       So `2024--` is equivalent to `2024-01-01--`.
-   *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
-   *       So `--2024` is equivalent to `--2024-12-31`.
-   *     - Whitespace is allowed either side of `--`.
+   * Specifies allowed date values or ranges for selection. Uses ISO date format (YYYY-MM-DD) or partial dates (YYYY-MM, YYYY). Supports range syntax with `--` separator and comma-separated values.
    *
    * @default ""
    *
    * @example
    * `2024-02--2025` // allow any date from February 2024 to the end of 2025
-   * `2024-02--` // allow any date from February 2024 to the end of the month
+   * `2024-02--` // allow any date from February 2024 onwards
    * `2024-05-09, 2024-05-11` // allow only the 9th and 11th of May 2024
    */
   allow?: string;
   /**
-   * Dates that cannot be selected. These subtract from `allow`.
-   *
-   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
-   *
-   * The default `''` has no effect on `allow`.
-   *
-   * - Dates in `YYYY-MM-DD` format disallow a single date.
-   * - Dates in `YYYY-MM` format disallow a whole month.
-   * - Dates in `YYYY` format disallow a whole year.
-   * - Ranges are expressed as `start--end`.
-   *     - Ranges are inclusive.
-   *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
-   *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
-   *       So `2024--` is equivalent to `2024-01-01--`.
-   *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
-   *       So `--2024` is equivalent to `--2024-12-31`.
-   *     - Whitespace is allowed either side of `--`.
+   * Specifies disallowed date values or ranges that can't be selected. Uses ISO date format (YYYY-MM-DD) or partial dates (YYYY-MM, YYYY). Supports range syntax with `--` separator and comma-separated values. Takes precedence over `allow`.
    *
    * @default ""
    *
@@ -1985,82 +1890,49 @@ export interface DatePickerProps
    */
   disallow?: string;
   /**
-   * Days of the week that can be selected. These intersect with the result of `allow` and `disallow`.
-   *
-   * A comma-separated list of days. Whitespace is allowed after commas.
-   *
-   * The default `''` has no effect on the result of `allow` and `disallow`.
-   *
-   * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
+   * Specifies which days of the week can be selected. Accepts comma-separated day names (case-insensitive). Further restricts dates within the result of `allow` and `disallow`.
    *
    * @default ""
    *
    * @example
-   * 'saturday, sunday' // allow only weekends within the result of `allow` and `disallow`.
+   * 'saturday, sunday' // allow only weekends
+   * 'monday, wednesday, friday' // allow only specific weekdays
    */
   allowDays?: string;
   /**
-   * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allow` and `disallow`.
-   *
-   * A comma-separated list of days. Whitespace is allowed after commas.
-   *
-   * The default `''` has no effect on `allowDays`.
-   *
-   * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
+   * Specifies which days of the week can't be selected. Accepts comma-separated day names (case-insensitive). Further restricts dates within the result of `allow` and `disallow`.
    *
    * @default ""
    *
    * @example
-   * 'saturday, sunday' // disallow weekends within the result of `allow` and `disallow`.
+   * 'saturday, sunday' // disallow weekends
+   * 'monday' // disallow Mondays
    */
   disallowDays?: string;
   /**
-   * Default selected value.
-   *
-   * The default means no date is selected.
-   *
-   * If the provided value is invalid, no date is selected.
-   *
-   * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
-   * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
-   * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+   * The default date value used when the field is first rendered, in ISO date format (YYYY-MM-DD, for example, `"2024-05-15"`). An empty string means no default date. For date ranges, use comma-separated dates. Only applies if no `value` prop is provided.
    *
    * @default ""
    */
   defaultValue?: string;
   /**
-   * Current selected value.
-   *
-   * The default means no date is selected.
-   *
-   * If the provided value is invalid, no date is selected.
-   *
-   * Otherwise:
-   *
-   * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
-   * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
-   * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+   * The currently selected date value in ISO date format (YYYY-MM-DD, for example, `"2024-05-15"`). An empty string means no date is selected. For date ranges, use comma-separated dates (for example, `"2024-05-15,2024-05-20"`).
    *
    * @default ""
    */
   value?: string;
   /**
-   * Callback when any date is selected.
-   *
-   * - If `type="single"`, fires when a date is selected and happens before `onChange`.
-   * - If `type="multiple"`, fires when a date is selected before `onChange`.
-   * - If `type="range"`, fires when a first date is selected (with the partial value formatted as `YYYY-MM-DD--`), and when the last date is selected before `onChange`.
+   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: (event: Event) => void;
   /**
-   * Callback when the value is committed.
-   *
-   * - If `type="single"`, fires when a date is selected after `onInput`.
-   * - If `type="multiple"`, fires when a date is selected after `onInput`.
-   * - If `type="range"`, fires when a range is completed by selecting the end date after `onInput`.
+   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: (event: Event) => void;
 }
+/**
+ * Properties for a text-based date input field with validation and autocomplete support.
+ */
 export interface DateFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
@@ -2078,22 +1950,13 @@ export interface DateFieldProps
     >,
     AutocompleteProps<DateAutocompleteField> {
   /**
-   * Callback when the field has an invalid date.
-   * This callback will be called, if the date typed is invalid or disabled.
-   *
-   * Dates that don’t exist or have formatting errors are considered invalid. Some examples of invalid dates are:
-   * - 2021-02-31: February doesn’t have 31 days
-   * - 2021-02-00: The day can’t be 00
-   *
-   * Disallowed dates are considered invalid.
-   *
-   * It’s important to note that this callback will be called only when the user **finishes editing** the date,
-   * and it’s called right after the `onChange` callback.
-   * The field is **not** validated on every change to the input. Once the buyer has signalled that
-   * they have finished editing the field (typically, by blurring the field), the field gets validated and the callback is run if the value is invalid.
+   * A callback function executed when the user enters an invalid value. Fires after change validation fails.
    */
   onInvalid?: (event: Event) => void;
 }
+/**
+ * Autocomplete field types applicable to date input fields.
+ */
 export type DateAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   | 'bday'
@@ -2104,6 +1967,9 @@ export type DateAutocompleteField = ExtractStrict<
   | 'cc-expiry-month'
   | 'cc-expiry-year'
 >;
+/**
+ * Properties for a spinner-style date selector with increment/decrement controls.
+ */
 export interface DateSpinnerProps
   extends GlobalProps,
     Pick<
@@ -2111,102 +1977,114 @@ export interface DateSpinnerProps
       'defaultValue' | 'value' | 'onInput' | 'onChange' | 'onBlur' | 'onFocus'
     > {
   /**
-   * Default selected value for the spinner.
-   *
-   * This uses a date in `YYYY-MM-DD` format.
+   * The default date value used when the field is first rendered, in ISO date format (YYYY-MM-DD, for example, `"2024-05-15"`). An empty string means no default date. Only applies if no `value` prop is provided.
    *
    * @default ""
    */
   defaultValue?: string;
   /**
-   * Current selected value for the spinner.
-   *
-   * This uses a date in `YYYY-MM-DD` format.
+   * The currently selected date value in ISO date format (YYYY-MM-DD, for example, `"2024-05-15"`). An empty string means no date is selected.
    *
    * @default ""
    */
   value?: string;
   /**
-   * Callback after the wheels have finished spinning and the value has
-   * settled.
-   *
-   * Fires once when inertial/momentum scrolling stops and the selection snaps
-   * into place.
+   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: (event: Event) => void;
   /**
-   * Callback when the selection has been confirmed by the user.
-   *
-   * Fires only when the user explicitly commits the selection (for example, by
-   * pressing a confirmation control).
+   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: (event: Event) => void;
 }
+/**
+ * Properties for a visual divider line that separates content sections.
+ */
 export interface DividerProps extends GlobalProps {
   /**
-   * Specify the direction of the divider. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+   * The direction of the divider using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). An inline divider runs horizontally across the content flow, while a block divider runs vertically along the content flow.
+   * 
+   * Available options:
+   * - `'inline'`: A horizontal divider that runs perpendicular to the text direction, creating separation between vertically stacked content sections.
+   * - `'block'`: A vertical divider that runs parallel to the text direction, creating separation between horizontally arranged content sections.
    *
    * @default 'inline'
    */
   direction?: 'inline' | 'block';
   /**
-   * Modify the color to be more or less intense.
+   * The color intensity of the divider. Controls how prominent or subtle the divider appears.
    *
    * @default 'base'
    */
   color?: ColorKeyword;
 }
+/**
+ * Properties for an email address input field with validation and autocomplete support.
+ */
 export interface EmailFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
     MinMaxLengthProps,
     AutocompleteProps<EmailAutocompleteField> {}
+/**
+ * Autocomplete field types applicable to email input fields.
+ */
 export type EmailAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'email' | `${AutocompleteAddressGroup} email`
 >;
+/**
+ * A spacing size keyword including the option for no spacing.
+ */
 export type SpacingKeyword = SizeKeyword | 'none';
+/**
+ * Properties for controlling the spacing between child elements in a container.
+ */
 export interface GapProps {
   /**
-   * Adjust spacing between elements.
-   *
-   * A single value applies to both axes.
-   * A pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
+   * The spacing between child elements. A single value applies to both axes. Two values (for example, `large-100 large-500`) set the block axis (first value) and inline axis (second value) respectively.
    *
    * @default 'none'
    */
   gap?: MaybeResponsive<MaybeTwoValuesShorthandProperty<SpacingKeyword>>;
   /**
-   * Adjust spacing between elements in the block axis.
-   *
-   * This overrides the row value of `gap`.
+   * The spacing between child elements along the block axis (typically vertical). Overrides the block axis value from `gap`.
    *
    * @default '' - meaning no override
    */
   rowGap?: MaybeResponsive<SpacingKeyword | ''>;
   /**
-   * Adjust spacing between elements in the inline axis.
-   *
-   * This overrides the column value of `gap`.
+   * The spacing between child elements along the inline axis (typically horizontal). Overrides the inline axis value from `gap`.
    *
    * @default '' - meaning no override
    */
   columnGap?: MaybeResponsive<SpacingKeyword | ''>;
 }
+/**
+ * A baseline alignment position keyword.
+ */
 export type BaselinePosition = 'baseline' | 'first baseline' | 'last baseline';
+/**
+ * A content distribution strategy keyword for spacing.
+ */
 export type ContentDistribution =
   | 'space-between'
   | 'space-around'
   | 'space-evenly'
   | 'stretch';
+/**
+ * A content position alignment keyword.
+ */
 export type ContentPosition = 'center' | 'start' | 'end';
+/**
+ * A content position with optional overflow safety modifier.
+ */
 export type OverflowPosition =
   | `unsafe ${ContentPosition}`
   | `safe ${ContentPosition}`;
 /**
- * Align items sets the align-self value on all direct children as a group.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+ * A type that defines how children are aligned along the cross axis.
+ * Sets the align-self value on all direct children as a group. Learn more about [`align-items` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
  */
 export type AlignItemsKeyword =
   | 'normal'
@@ -2215,9 +2093,7 @@ export type AlignItemsKeyword =
   | OverflowPosition
   | ContentPosition;
 /**
- * Justify content defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+ * A type that defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container. Learn more about [`justify-content` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
  */
 export type JustifyContentKeyword =
   | 'normal'
@@ -2225,9 +2101,7 @@ export type JustifyContentKeyword =
   | OverflowPosition
   | ContentPosition;
 /**
- *Align content sets the distribution of space between and around content items along a flexbox's cross axis, or a grid or block-level element's block axis.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+ * A type that defines the distribution of space between and around content items along a flexbox's cross axis, or a grid or block-level element's block axis. Learn more about [`align-content` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
  */
 export type AlignContentKeyword =
   | 'normal'
@@ -2235,276 +2109,253 @@ export type AlignContentKeyword =
   | ContentDistribution
   | OverflowPosition
   | ContentPosition;
+/**
+ * Base properties for text styling and appearance.
+ */
 export interface BaseTypographyProps {
   /**
-   * Modify the color to be more or less intense.
+   * The color intensity of the text. Controls how prominent or subtle the text appears within the interface.
    *
    * @default 'base'
    */
   color?: ColorKeyword;
   /**
-   * Sets the tone of the component, based on the intention of the information being conveyed.
+   * The semantic tone of the text, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * Set the numeric properties of the font.
+   * Controls how numbers are displayed in the text:
+   * - `'auto'`: Inherits the setting from the parent element.
+   * - `'normal'`: Uses the default number rendering for the font.
+   * - `'tabular-nums'`: Uses fixed-width numbers for better alignment in tables and lists.
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric
+   * Learn more about [`font-variant-numeric` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric).
    *
-   * @default 'auto' - inherit from the parent element
+   * @default 'auto'
    */
   fontVariantNumeric?: 'auto' | 'normal' | 'tabular-nums';
   /**
-   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
-   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
-   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
-   *
-   * It is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.
+   * Specifies the language of text content using an [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag (for example, `"en"` for English, `"fr"` for French, `"es-MX"` for Mexican Spanish, `"zh-Hans"` for Simplified Chinese). This enables assistive technologies to use correct pronunciation and language-specific text rendering.
    *
    * @default ''
    */
   lang?: string;
   /**
-   * Indicates the directionality of the element’s text.
+   * Indicates the directionality of the element's text:
+   * - `ltr`: languages written from left to right (for example, English).
+   * - `rtl`: languages written from right to left (for example, Arabic).
+   * - `auto`: the user agent determines the direction based on the content.
+   * - `''`: direction is inherited from parent elements (equivalent to not setting the attribute).
    *
-   * - `ltr`: languages written from left to right (e.g. English)
-   * - `rtl`: languages written from right to left (e.g. Arabic)
-   * - `auto`: the user agent determines the direction based on the content
-   * - `''`: direction is inherited from parent elements (equivalent to not setting the attribute)
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir
+   * Learn more about the [`dir` attribute on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir).
    *
    * @default ''
    */
   dir?: 'ltr' | 'rtl' | 'auto' | '';
 }
+/**
+ * Properties for controlling multi-line text behavior and truncation.
+ */
 export interface BlockTypographyProps {
   /**
-   * Truncates the text content to the specified number of lines.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
+   * Limits the text content to a specified number of visible lines. When text exceeds this limit, it's truncated and an ellipsis (`…`) appears at the end of the last visible line to indicate more content exists. The truncation happens automatically based on the container's width, font size, and line height—narrow containers or large fonts will show fewer words per line. For example, `lineClamp={3}` allows maximum three lines of text regardless of total content length. Users can't access the hidden text unless an expansion mechanism (like a "Read more" button) or tooltip is provided. Commonly applied to maintain consistent layout heights in cards, lists, or grids where varying text lengths would disrupt visual alignment. Common values include 1-2 for titles/labels, 2-3 for descriptions, and 4-6 for preview text. The actual text content remains in the DOM and is accessible to screen readers (full text is announced), search engines, and selection—only the visual display is truncated. Learn more about [`line-clamp` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp).
    *
    * @default Infinity - no truncation is applied
    */
   lineClamp?: number;
 }
+/**
+ * Properties for heading text elements with semantic structure and line clamping.
+ */
 export interface HeadingProps
   extends GlobalProps,
     AccessibilityVisibilityProps,
     BlockTypographyProps {
   /**
-   * The content of the Heading.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
   /**
-   * Sets the semantic meaning of the component’s content. When set,
-   * the role will be used by assistive technologies to help users
-   * navigate the page.
-   *
-   * - `heading`: defines the element as a heading to a page or section.
-   * - `presentation`: the heading level will be stripped,
-   * and will prevent the element’s implicit ARIA semantics from
-   * being exposed to the accessibility tree.
-   * - `none`: a synonym for the `presentation` role.
+   * Sets the semantic role for assistive technologies. Helps screen reader users navigate and understand page structure.
    *
    * @default 'heading'
    *
    * @implementation The `heading` role doesn't need to be applied if
    * the host applies it for you; for example, an HTML host rendering
-   * an `<h2>` element should not apply the `heading` role.
+   * an `<h2>` element shouldn't apply the `heading` role.
    */
   accessibilityRole?:
     | 'heading'
     | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
 }
+/**
+ * Properties for icon elements including type, size, color, and tone.
+ */
 export interface IconProps
   extends GlobalProps,
     Pick<InteractionProps, 'interestFor'> {
   /**
-   * Sets the tone of the icon, based on the intention of the information being conveyed.
+   * The semantic tone of the icon, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * Modify the color to be more or less intense.
+   * The color intensity of the icon. Controls how prominent or subtle the icon appears within the interface.
    *
    * @default 'base'
    */
   color?: ColorKeyword;
   /**
-   * Adjusts the size of the icon.
+   * Adjusts the size of the icon. Available sizes range from `'small-500'` (smallest) through `'base'` (default) to `'large-500'` (largest), allowing you to match icon size to your interface hierarchy.
    *
    * @default 'base'
    */
   size?: SizeKeyword;
+  /**
+   * The icon identifier specifying which icon to display. Accepts any valid icon name from the icon set.
+   */
   type?: IconType | AnyString;
 }
+/**
+ * Base properties for image elements including source URLs and alternative text.
+ */
 export interface BaseImageProps {
   /**
-   * An alternative text description that describe the image for the reader to
-   * understand what it is about. It is extremely useful for both users using
-   * assistive technology and sighted users. A well written description
-   * provides people with visual impairments the ability to participate in
-   * consuming non-text content. When a screen readers encounters an `s-image`,
-   * the description is read and announced aloud. If an image fails to load,
-   * potentially due to a poor connection, the `alt` is displayed on
-   * screen instead. This has the benefit of letting a sighted buyer know an
-   * image was meant to load here, but as an alternative, they’re still able to
-   * consume the text content. Read
-   * [considerations when writing alternative text](https://www.shopify.com/ca/blog/image-alt-text#4)
-   * to learn more.
+   * Alternative text that describes the image content for users who can't see the image. This text is announced by screen readers, displayed when images fail to load or are blocked, and used by search engines for image indexing. Write concise, descriptive alt text that conveys the image's purpose and content (for example, "Product photo of blue running shoes" not "image" or "photo"). For decorative images that don't convey information, use an empty string (`alt=""`) to hide them from screen readers. For images containing text, include that text in the alt description. For complex images like charts or diagrams, consider providing a longer description elsewhere and summarizing in alt text. Alt text is required for accessibility compliance and should describe what users would miss if they couldn't see the image. Learn more about [`alt` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt).
    *
    * @default `''`
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
    */
   alt?: string;
   /**
-   * A set of media conditions and their corresponding sizes.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes
+   * Defines the image sizes for different viewport widths to help the browser select the optimal image from `srcSet`. This is a comma-separated list of media conditions and corresponding sizes (for example, `"(max-width: 600px) 480px, 800px"`). The browser uses this with `srcSet` to determine which image variant to download based on the device's screen size and pixel density, improving performance by loading appropriately-sized images. For example, mobile devices receive smaller images while desktops get larger, higher-resolution versions. When `srcSet` provides multiple image sizes, `sizes` tells the browser the rendered size at different viewport widths. If omitted, the browser assumes `100vw` (full viewport width). This only affects which image is selected, not how it's displayed—use CSS or `inlineSize` for display sizing. Learn more about [`sizes` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes).
    */
   sizes?: string;
   /**
-   * The image source (either a remote URL or a local file resource).
-   *
-   * When the image is loading or no `src` is provided, a placeholder will be rendered.
+   * The primary image source URL. Accepts absolute URLs (`https://example.com/image.jpg`), relative paths (`/images/product.jpg`), or data URLs (`data:image/png;base64,...`). When the image is loading or if `src` is omitted/invalid, a placeholder is displayed while reserving the image's space to prevent layout shifts. The URL must be accessible (proper [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) headers for cross-origin images), use appropriate protocols ([HTTPS](https://en.wikipedia.org/wiki/HTTPS) for security), and point to valid image formats (JPEG, PNG, GIF, WebP, SVG). Failed loads trigger the `onError` callback if provided. For responsive images serving different sizes/resolutions, `srcSet` can be used in addition to `src` (which then serves as the fallback). Images are loaded asynchronously—the `loading` property controls when loading begins. Learn more about [`src` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src).
    *
    * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
-   * reserved, except in cases where the image area does not have a contextual inline or block size, which should be rare.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
+   * reserved, except in cases where the image area doesn't have a contextual inline or block size, which should be rare.
    */
   src?: string;
   /**
-   * A set of image sources and their width or pixel density descriptors.
-   *
-   * This overrides the `src` property.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset
+   * A set of image source URLs with descriptors for responsive image selection. Provides multiple image variants at different widths or pixel densities, allowing browsers to choose the most appropriate image for the user's device and screen. Format: comma-separated list of `URL descriptor` pairs where descriptors are either width (`w`) or pixel density (`x`). For example: `"small.jpg 480w, medium.jpg 800w, large.jpg 1200w"` for different widths, or `"standard.jpg 1x, retina.jpg 2x"` for different pixel densities. The browser considers the device's screen size, resolution, network speed, and user preferences when selecting which image to download. This improves performance (smaller images on mobile) and quality (high-DPI images on retina displays). When used with `sizes`, enables fully responsive images. The `src` property serves as fallback for browsers that don't support `srcSet`. Learn more about [img srcset on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset).
    */
   srcSet?: string;
 }
+/**
+ * Properties for image elements including size, aspect ratio, loading behavior, and border styling.
+ */
 export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
   /**
-   * Sets the semantic meaning of the component’s content. When set,
-   * the role will be used by assistive technologies to help users
-   * navigate the page.
+   * Sets the semantic role for assistive technologies. Helps screen reader users navigate and understand page structure.
    *
    * @default 'img'
    *
    * @implementation The `img` role doesn't need to be applied if
    * the host applies it for you; for example, an HTML host rendering
-   * an `<img>` element should not apply the `img` role.
+   * an `<img>` element shouldn't apply the `img` role.
    */
   accessibilityRole?:
     | 'img'
     | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
   /**
-   * The displayed inline width of the image.
+   * Controls the displayed width of the image. The choice depends on layout requirements—for mobile interfaces, `'fill'` with defined container dimensions ensures consistent image display, as dynamic container heights can cause layout inconsistencies in scrollable views.
+   * - `'auto'`: Displays the image at its natural size. The image won't render until it has loaded, and the aspect ratio will be ignored. Typically applied when maintaining original dimensions is important.
+   * - `'fill'`: Makes the image take up 100% of the available inline size. The aspect ratio will be respected and the image will take the necessary space. Commonly applied to responsive layouts and flexible image containers.
    *
-   * - `fill`: the image will takes up 100% of the available inline size.
-   * - `auto`: the image will be displayed at its natural size.
+   * Learn more about [`width` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width).
    *
    * @default 'fill'
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
    */
   inlineSize?: 'fill' | 'auto';
   /**
-   * The aspect ratio of the image.
+   * The aspect ratio of the image, expressed as width divided by height.
    *
    * The rendering of the image will depend on the `inlineSize` value:
    *
    * - `inlineSize="fill"`: the aspect ratio will be respected and the image will take the necessary space.
-   * - `inlineSize="auto"`: the image will not render until it has loaded and the aspect ratio will be ignored.
+   * - `inlineSize="auto"`: the image won't render until it has loaded and the aspect ratio will be ignored.
    *
    * For example, if the value is set as `50 / 100`, the getter returns `50 / 100`.
    * If the value is set as `0.5`, the getter returns `0.5 / 1`.
    *
-   * @default '1/1'
+   * Learn more about [`aspect-ratio` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio).
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
+   * @default '1/1'
    */
   aspectRatio?:
     | `${number}${optionalSpace}/${optionalSpace}${number}`
     | `${number}`;
   /**
-   * Determines how the content of the image is resized to fit its container.
-   * The image is positioned in the center of the container.
+   * Controls how the image content is resized within its container:
+   * - `'contain'`: Scales the image to fit within the container while maintaining aspect ratio. The entire image will be visible, but there may be empty space. Typically applied when showing the complete image is important.
+   * - `'cover'`: Scales the image to fill the entire container while maintaining aspect ratio. Parts of the image may be cropped. Typically applied when filling the container completely is more important than showing the entire image.
+   *
+   * Learn more about [`object-fit` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
    *
    * @default 'contain'
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
    */
   objectFit?: 'contain' | 'cover';
   /**
-   * Determines the loading behavior of the image:
-   * - `eager`: Immediately loads the image, irrespective of its position within the visible viewport.
-   * - `lazy`: Delays loading the image until it approaches a specified distance from the viewport.
+   * Controls when the browser should begin loading the image resource:
+   * - `'eager'`: Loads the image immediately when the page loads, regardless of whether it's visible in the viewport. The image downloads in parallel with other page resources. Typically applied to above-the-fold images, critical product photos, or images that will definitely be viewed. This ensures images are ready when needed but increases initial page load bandwidth.
+   * - `'lazy'`: Defers image loading until the image is approaching the viewport (typically a few hundred pixels before becoming visible). The browser only downloads the image when the user is likely to see it soon. Commonly applied to below-the-fold images, gallery images, or images in scrollable lists. This improves initial page load performance and saves bandwidth for images users may never scroll to. The browser maintains a buffer distance so images load before users reach them, preventing visible loading delays.
+   *
+   * Lazy loading is most effective for pages with many images, long scrollable content, or mobile users on limited bandwidth. Modern browsers support native lazy loading—older browsers ignore this and load eagerly. Learn more about [`loading` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading).
    *
    * @default 'eager'
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading
    */
   loading?: 'eager' | 'lazy';
   /**
-   * Invoked when load completes successfully.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+   * A callback function executed when the image finishes loading successfully and is ready to display. This fires after the browser has downloaded the image data and decoded it, but may fire before the image is actually painted to the screen. Common operations include hiding loading indicators, triggering dependent actions that require the image (like image processing), tracking image load metrics, or executing layout operations that depend on image dimensions. For performance tracking, timestamps between navigation start and this callback can be compared. Cached images may trigger this callback synchronously (immediately), so both async and sync invocation should be handled in code. This won't fire if the image fails to load—`onError` fires for failures. Learn more about [`onload` on MDN](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload).
    */
   onLoad?: (event: Event) => void;
   /**
-   * Invoked on load error.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+   * A callback function executed when the image fails to load due to network errors, invalid URLs, unsupported formats, [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) issues, or server errors (for example, 404, 500). The event contains limited error details for security reasons—the browser console provides specific failure reasons. Common operations include displaying fallback images (`event.target.src = 'fallback.jpg'`), showing error messages to users, logging failures for monitoring, hiding broken image icons, or providing alternative content when images are unavailable. A common pattern involves attempting to load a fallback image, and if that fails too, hiding the image container entirely. For critical images like product photos, a placeholder SVG or icon may be shown instead of a broken image indicator. This callback doesn't fire for images that are blocked by browser content policies or ad blockers. Learn more about [`onerror` on MDN](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror).
    */
   onError?: (event: Event) => void;
 }
+/**
+ * Properties for modal overlay dialogs including size, padding, actions, and lifecycle callbacks.
+ */
 export interface ModalProps
   extends GlobalProps,
     BaseOverlayProps,
     BaseOverlayMethods,
     ActionSlots {
   /**
-   * A label that describes the purpose of the modal. When set,
-   * it will be announced to users using assistive technologies and will
-   * provide them with more context.
-   *
-   * This overrides the `heading` prop for screen readers.
+   * A text label that describes the purpose, function, or contents of the element for users of assistive technologies like screen readers. This label is announced by screen readers but isn't visually displayed. Typically applied when an element doesn't have visible text that adequately describes it, such as icon-only buttons, image carousels, or complex interactive regions. The label is concise yet descriptive (for example, "Close modal", "Product image carousel", "Shopping cart with 3 items"). If the element already has clear visible labels or headings, this property may be unnecessary. For form fields, the `label` property is both visible and accessible.
    */
   accessibilityLabel?: string;
   /**
-   * A title that describes the content of the Modal.
-   *
+   * The title text displayed prominently in the modal's header section. This heading identifies the modal's purpose and provides context for the modal's content. When provided along with action buttons, creates a full modal header with title and actions. If both `heading` and actions (`primaryAction`/`secondaryActions`) are omitted, the modal renders without a header section entirely, starting directly with the modal content. The heading is automatically announced by screen readers when the modal opens. Clear, descriptive headings immediately communicate the modal's purpose (for example, "Confirm deletion", "Edit product details", "Select payment method").
    */
   heading?: string;
   /**
-   * Adjust the padding around the Modal content.
-   *
-   * `base`: applies padding that is appropriate for the element.
-   *
-   * `none`: removes all padding from the element. This can be useful when elements inside the Modal need to span
-   * to the edge of the Modal. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
-   * to bring back the desired padding for the rest of the content.
+   * The padding applied to all edges of the modal content.
    *
    * @default 'base'
    */
   padding?: 'base' | 'none';
   /**
-   * Adjust the size of the Modal.
-   *
-   * `max`: expands the Modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
+   * Controls the display size of the modal:
+   * - Size keywords (for example, `'small'`, `'base'`, `'large'`): Fixed size options.
+   * - `'max'`: Modal expands to fill the maximum available space.
    *
    * @default 'base'
    */
   size?: SizeKeyword | 'max';
   /**
-   * The content of the Modal.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
 }
+/**
+ * Properties for numeric input fields with validation, constraints, and optional stepper controls.
+ */
 export interface NumberFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
@@ -2512,64 +2363,72 @@ export interface NumberFieldProps
     NumberConstraintsProps,
     FieldDecorationProps {
   /**
-   * Sets the virtual keyboard.
+   * The virtual keyboard layout displayed for numeric input on touch-enabled devices like tablets and smartphones. This property has no effect on desktop devices with physical keyboards. Not supported when using `stepper` controls.
+   * - `'decimal'`: Shows a numeric keyboard with a decimal point/comma key. Best for monetary amounts (for example, "$19.99"), measurements with precision (for example, "2.5 kg"), percentages (for example, "15.5%"), or any fractional values. The decimal separator adapts to the user's locale (period in US, comma in Europe).
+   * - `'numeric'`: Shows a numeric keyboard without decimal point, displaying only digits 0-9 and sometimes +/- symbols. Best for quantities (for example, "5 items"), whole number identifiers (for example, "Order #12345"), phone numbers, or any integer-only input. Prevents accidental decimal entry which can confuse users for whole number fields.
+   * 
+   * On mobile POS devices, choosing the correct `inputMode` significantly improves data entry speed and reduces errors by showing the most relevant keyboard. Users can still switch keyboards manually if needed. Learn more about [`inputmode` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode).
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
    * @default 'decimal'
    */
   inputMode?: 'decimal' | 'numeric';
 }
+/**
+ * Autocomplete field types applicable to number input fields.
+ */
 export type NumberAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'one-time-code' | 'cc-number' | 'cc-csc'
 >;
+/**
+ * Properties for page-level layouts including header, breadcrumbs, actions, and sidebar content.
+ */
 export interface PageProps extends GlobalProps, ActionSlots {
   /**
-   * The content of the Page.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
   /**
-   * The main page heading
+   * The main title text displayed prominently in the page header's title area. This heading identifies the page's primary purpose and provides context for all page content. When provided along with action buttons or breadcrumbs, creates a complete page header with navigation and actions. If both `heading` and all header elements (`primaryAction`, `secondaryActions`, `breadcrumbActions`, `accessory`) are omitted, the page renders without a header section, starting directly with page content. The heading is typically the largest text on the page and helps users understand where they are in the application. Clear, descriptive headings identify the page's purpose (for example, "Product catalog", "Customer details", "Order #1234").
    */
   heading?: string;
   /**
-   * The text to be used as subtitle.
+   * Secondary descriptive text displayed directly below the main heading in a smaller, subdued style. Provides additional context, status information, or supplementary details about the page without overwhelming the primary heading. Common content includes page descriptions ("Manage your product inventory"), status indicators ("Last updated 2 hours ago"), record counts ("145 products"), or contextual metadata. The subheading is optional and typically applied when additional context genuinely helps users understand the page. Brevity is important as it competes with the main heading for attention.
    */
   subheading?: string;
   /**
-   * Additional contextual information about the page.
+   * Additional content displayed in the header area, typically action buttons or clickable text elements that complement the primary and secondary actions. Only `Button` and `Clickable` components with text content are supported in this slot. Elements must use the `slot="accessory"` attribute to be placed in this area. Commonly displays contextual actions like "View history", "Export data", or status indicators.
    */
   accessory?: ComponentChildren;
   /**
-   * The breadcrumb actions to perform, provided as link elements.
+   * Navigation breadcrumb links displayed in the page header as a series of link elements showing the hierarchical path to the current page. Breadcrumbs help users understand their location within the app structure and provide quick navigation to parent pages (for example, "Home > Products > Electronics > Smartphones"). Each breadcrumb item is typically a clickable link except the current page, which may be displayed as plain text or a disabled link.
    */
   breadcrumbActions?: ComponentChildren;
   /**
-   * The aside element is section of a page that contains content that is tangentially related to the content around the aside element, and which could be considered separate from that content.
-   * Such sections are often represented as sidebars in printed typography.
+   * The content to display in the page's sidebar area. This area contains content that is tangentially related to the main content, such as navigation menus, contextual help, related links, or supplementary information. Elements placed here must use the `slot="aside"` attribute. The sidebar content is visually separated from the main content and may be positioned differently depending on the layout (typically to the side of the main content).
+   *
    * @implementation surfaces built ontop of the web platform should implement this using the <aside> element https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
    */
   aside?: ComponentChildren;
   /**
-   * The inline size of the page
-   * - `base` corresponds to a set default inline size
-   * - `large` full width with whitespace
+   * Controls the maximum width of the page content.
    *
    * @default 'base'
    */
   inlineSize?: SizeKeyword;
 }
+/**
+ * Properties for POS-specific content blocks with optional heading and secondary actions.
+ */
 export interface POSBlockProps
   extends GlobalProps,
     Pick<ActionSlots, 'secondaryActions'> {
   /**
-   * The heading to display within the POSBlock.
-   *
-   * If not provided, the description of the extension will be used when a heading is appropriate.
+   * The title text displayed in the block's header section, identifying the purpose or content of this block. When provided along with `secondaryActions`, creates a block header with both title and action buttons. If both `heading` and `secondaryActions` are omitted, the block renders without a header, starting directly with the block's child content. Blocks are typically used to organize related content within a page into distinct, titled sections. Clear, descriptive headings identify the block's content type (for example, "Recent orders", "Quick actions", "Customer information").
    */
   heading?: string;
   /**
-   * The content to display within the POSBlock.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
   /**
@@ -2577,158 +2436,149 @@ export interface POSBlockProps
    */
   secondaryActions?: ComponentChildren;
 }
+/**
+ * Properties for QR code elements including content, size, border, and optional logo.
+ */
 export interface QRCodeProps extends GlobalProps {
   /**
-   * Set the border of the QR code.
-   *
-   * `base`: applies border that is appropriate for the element.
-   * `none`: removes the border from the element.
+   * Controls whether a border is displayed around the QR code.
    *
    * @default 'base'
    */
   border?: 'base' | 'none';
   /**
-   * The content to be encoded in the QR code, which can be any string such as a URL, email address, plain text, etc.
-   * Specific string formatting can trigger actions on the user's device when scanned, like opening geolocation
-   * coordinates on a map, opening a preferred app or app store entry, preparing an email, text message, and more.
+   * The content to be encoded in the QR code. This can be any string such as a URL, email address, plain text, or other data. Specific string formatting can trigger actions on the user's device when scanned, like opening geolocation coordinates on a map, opening a preferred app or app store entry, preparing an email, text message, and more.
    */
   content?: string;
   /**
-   * The displayed size of the QR code.
-   *
-   * `fill`: the QR code will takes up 100% of the available inline-size and maintain a 1:1 aspect ratio.
-   * `base`: the QR code will be displayed at its default size.
+   * Controls the display size of the QR code:
+   * - `'base'`: Fixed size QR code
+   * - `'fill'`: QR code expands to fill available space
    *
    * @default 'base'
    */
   size?: 'base' | 'fill';
   /**
-   * A label that describes the purpose or contents of the QR code. When set,
-   * it will be announced to users using assistive technologies and will
-   * provide more context about what the QR code may do when scanned.
+   * A label that describes the purpose or contents of the element. Announced to users with assistive technologies such as screen readers to provide context.
    *
    * @default 'QR code' (translated to the user's locale)
    */
   accessibilityLabel?: string;
   /**
-   * Invoked when the conversion of `content` to a QR code fails.
-   * If an error occurs, the QR code and its child elements will not be displayed.
+   * A callback function executed when the resource fails to load.
    */
   onError?: (event: Event) => void;
   /**
-   * URL of an image to be displayed in the center of the QR code.
+   * The URL of an image to be displayed in the center of the QR code.
    * This is useful for branding or to indicate to the user what scanning the QR code will do.
    * By default, no image is displayed.
    */
   logo?: string;
 }
+/**
+ * Properties for scroll-related event callbacks and edge detection.
+ */
 export interface ScrollEventProps {
   /**
-   * Callback when the scroll position reaches any edge.
+   * A callback function executed when scrolling reaches or moves away from any edge of the scrollable container.
    *
-   * Provides information about which edges have been reached:
-   * - `inline: 'start'` - reached the inline-start edge
-   * - `inline: 'end'` - reached the inline-end edge
-   * - `block: 'start'` - reached the block-start edge
-   * - `block: 'end'` - reached the block-end edge
+   * Provides information about which edges are currently reached:
+   * - `inline: 'start'` - at the inline-start edge (typically left in LTR)
+   * - `inline: 'end'` - at the inline-end edge (typically right in LTR)
+   * - `block: 'start'` - at the block-start edge (typically top)
+   * - `block: 'end'` - at the block-end edge (typically bottom)
    * - `null` - not at that edge
-   *
-   * Uses the flow‑relative axes.
    */
   onScrollToEdge?: (
     inline: 'start' | 'end' | null,
     block: 'start' | 'end' | null,
   ) => void;
   /**
-   * Distance from the edge at which `onScrollToEdge` fires.
-   * Percentage values are relative to the scrollable content's size in that axis.
-   *
-   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
-   * supported.
-   *
-   * The order is:
+   * The threshold distance from each edge at which `onScrollToEdge` triggers. Percentage values are relative to the scrollable content's size in that axis. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) in the order:
    * - 4 values: `block-start inline-end block-end inline-start`
    * - 3 values: `block-start inline block-end`
    * - 2 values: `block inline`
+   * - 1 value: applies to all edges
    *
    * For example:
-   * - `48px` means the distance from the edge at which `onScrollToEdge` fires from block-start, inline-end, block-end and inline-start is `48px`.
-   * - `48px 0` means the distance from the edge at which `onScrollToEdge` fires from block-start and block-end is `48px`, and for inline-start and inline-end is `0`.
-   * - `48 0 48` means the distance from the edge at which `onScrollToEdge` fires from block-start is `48px`, for inline-end is `0`, for block-end is `48px` and for inline-start is `0`.
-   * - `48px 0 48px 10%` means the distance from the edge at which `onScrollToEdge` fires from block-start is `48px`, for inline-end is `0`, for block-end is `48px` and for inline-start is `10%`.
+   * - `48px` - triggers 48px from all edges
+   * - `48px 0` - triggers 48px from block edges, 0px from inline edges
+   * - `48px 0 48px 10%` - custom distance for each edge
+   *
+   * Learn more about [`scrollMargin` on MDN](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/scrollMargin).
    *
    * @default '0'
-   * Refer to [MDN](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/scrollMargin) for more details.
    */
   scrollMargin?: MaybeAllValuesShorthandProperty<SizeUnits>;
 }
+/**
+ * An overflow behavior keyword.
+ */
 export type OverflowKeyword = 'auto' | 'hidden';
+/**
+ * Properties for scrollable container elements with overflow control and scroll event detection.
+ */
 export interface ScrollBoxProps
   extends GlobalProps,
     ScrollEventProps,
     Omit<BaseBoxPropsWithRole, 'overflow'> {
   /**
-   * Sets the overflow behavior of the element.
-   *
-   * - `hidden`: clips the content when it is larger than the element’s container and the element will not be scrollable in that axis.
-   * - `auto`: clips the content when it is larger than the element’s container and make it scrollable in that axis.
-   *
-   * 1-to-2-value syntax is supported but note that, contrary to the CSS, it uses flow-relative values and the order is:
-   *
-   * - 2 values: `block inline`
+   * Sets overflow behavior when content exceeds container dimensions. Use `'auto'` for scrolling or `'hidden'` to clip content. Learn more about [CSS overflow on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow).
    *
    * @default 'auto'
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
    */
   overflow?: OverflowKeyword | `${OverflowKeyword} ${OverflowKeyword}`;
 }
+/**
+ * Properties for search input fields with text validation and autocomplete support.
+ */
 export interface SearchFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
     MinMaxLengthProps,
     AutocompleteProps<SearchAutocompleteField> {}
+/**
+ * Autocomplete field types applicable to search input fields (same as text fields).
+ */
 export type SearchAutocompleteField = TextAutocompleteField;
+/**
+ * Properties for content sections with optional heading and actions.
+ */
 export interface SectionProps extends GlobalProps, ActionSlots {
   /**
-   * The content of the Section.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
   /**
-   * A label used to describe the section that will be announced by assistive technologies.
-   *
-   * When no `heading` property is provided or included as a children of the Section, you **must** provide an
-   * `accessibilityLabel` to describe the Section. This is important as it allows assistive technologies to provide
-   * the right context to users.
+   * A text label that describes the purpose, function, or contents of the element for users of assistive technologies like screen readers. This label is announced by screen readers but isn't visually displayed. Typically applied when an element doesn't have visible text that adequately describes it, such as icon-only buttons, image carousels, or complex interactive regions. The label is concise yet descriptive (for example, "Close modal", "Product image carousel", "Shopping cart with 3 items"). If the element already has clear visible labels or headings, this property may be unnecessary. For form fields, the `label` property is both visible and accessible.
    */
   accessibilityLabel?: string;
   /**
-   * A title that describes the content of the section.
+   * The title text displayed in the section's header, identifying the thematic grouping or purpose of the section's content. Sections represent thematic groups of content, and the heading helps users understand what the section contains. When provided along with action buttons, creates a section header with both title and actions. If both `heading` and `secondaryActions` are omitted, the section renders without a header, though sections generally have headings for accessibility—screen readers rely on headings to help users navigate page structure. Descriptive headings clearly identify the section's content (for example, "Order summary", "Shipping details", "Payment options").
    */
   heading?: string;
   /**
-   * Adjust the padding of all edges.
-   *
-   * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
-   * this is the right design decision in a particular context.
-   * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
-   * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
-   * to bring back the desired padding for the rest of the content.
+   * The padding applied to all edges of the section content.
    *
    * @default 'base'
    */
   padding?: 'base' | 'none';
 }
+/**
+ * Properties for flexible layout containers with directional flow and alignment control.
+ */
 export interface StackProps
   extends GlobalProps,
     BaseBoxPropsWithRole,
     GapProps {
   /**
-   * The content of the Stack.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
   /**
-   * Sets how the children are placed within the Stack. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+   * The direction in which children are laid out using logical properties:
+   * - `'block'`: Vertical arrangement along the block axis (typically top to bottom) without wrapping
+   * - `'inline'`: Horizontal arrangement along the inline axis (typically left to right) with automatic wrapping when space is insufficient
    *
    * @default 'block'
    *
@@ -2736,27 +2586,27 @@ export interface StackProps
    */
   direction?: MaybeResponsive<'block' | 'inline'>;
   /**
-   * Aligns the Stack along the main axis.
+   * Controls the distribution and alignment of children along the main axis (the axis defined by the `direction` property). Learn more about [`justify-content` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
    * @default 'normal'
    */
   justifyContent?: MaybeResponsive<JustifyContentKeyword>;
   /**
-   * Aligns the Stack's children along the cross axis.
+   * Controls the alignment of individual children along the cross axis (perpendicular to the main axis). Learn more about [`align-items` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
    * @default 'normal'
    */
   alignItems?: MaybeResponsive<AlignItemsKeyword>;
   /**
-   * Aligns the Stack along the cross axis.
+   * Controls the distribution of space between and around lines of wrapped content along the cross axis. Learn more about [`align-content` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
    * @default 'normal'
    */
   alignContent?: MaybeResponsive<AlignContentKeyword>;
 }
+/**
+ * Properties for inline text elements with semantic meaning and styling options.
+ */
 export interface TextProps
   extends GlobalProps,
     AccessibilityVisibilityProps,
@@ -2764,13 +2614,11 @@ export interface TextProps
     DisplayProps,
     Pick<InteractionProps, 'interestFor'> {
   /**
-   * The content of the Text.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
   /**
-   * Provide semantic meaning and default styling to the text.
-   *
-   * Other presentation properties on Text override the default styling.
+   * The semantic meaning of the text, which may affect its default styling and how screen readers announce it. Other presentation properties can override the default styling.
    *
    * @default 'generic'
    */
@@ -2778,225 +2626,178 @@ export interface TextProps
 }
 export type TextType =
   /**
-   * Indicate the text is contact information. Typically used for addresses.
+   * Indicates that the text is contact information. Typically used for addresses.
    *
    * This must have `inline` layout (despite the default being `block` in HTML hosts).
    *
    * Surfaces may apply styling to this type.
    *
-   * In an HTML host, the text will be rendered in an `<address>` element.
+   * In an HTML host, the text will be rendered in an `<address>` element. Learn more about the [`address` element on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address).
    *
    * @implementation vertical alignment should be `baseline` (`vertical-align: baseline`)
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address
    */
   | 'address'
   /**
-   * Indicate the text is no longer accurate or no longer relevant. One such use-case is discounted prices.
+   * Indicates that the text is no longer accurate or no longer relevant. One such use-case is discounted prices.
    *
    * Surfaces should apply styling to this type to suggest its content no longer applies.
    *
-   * In an HTML host, the text will be rendered in a `<s>` element.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s
+   * In an HTML host, the text will be rendered in a `<s>` element. Learn more about the [`s` element on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s).
    */
   | 'redundant'
   /**
-   * Indicate the text is marked or highlighted and relevant to the user’s current action.
+   * Indicates that the text is marked or highlighted and relevant to the user's current action.
    * One such use-case is to indicate the characters that matched a search query.
    *
    * Surfaces should apply styling to this type to draw attention to the content.
    *
-   * In an HTML host, the text will be rendered in a `<mark>` element.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
+   * In an HTML host, the text will be rendered in a `<mark>` element. Learn more about the [`mark` element on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark).
    */
   | 'mark'
   /**
-   * Indicate emphatic stress. Typically for words that have a stressed emphasis compared to surrounding text.
+   * Indicates emphatic stress. Typically for words that have a stressed emphasis compared to surrounding text.
    *
    * Surfaces should apply styling to this type to distinguish it from surrounding text. Italicization is a common choice, but not required.
    *
-   * In an HTML host, the text will be rendered in an `<em>` element.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em
+   * In an HTML host, the text will be rendered in an `<em>` element. Learn more about the [`em` element on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em).
    */
   | 'emphasis'
   /**
-   * Indicate an offset from the normal prose of the text. Typically used to indicate
+   * Indicates an offset from the normal prose of the text. Typically used to indicate
    * a foreign word, fictional character thoughts, or when the text refers to the definition of a word
    * instead of representing its semantic meaning.
    *
    * Surfaces should italicize this content by default.
    *
-   * In an HTML host, the text will be rendered in a `<i>` tag.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
+   * In an HTML host, the text will be rendered in a `<i>` tag. Learn more about the [`i` element on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i).
    */
   | 'offset'
   /**
-   * Indicate strong importance, seriousness, or urgency.
+   * Indicates strong importance, seriousness, or urgency.
    *
    * Surfaces should render this content bold by default.
    *
-   * In an HTML host, the text will be rendered in a `<strong>` tag.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
+   * In an HTML host, the text will be rendered in a `<strong>` tag. Learn more about the [`strong` element on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong).
    */
   | 'strong'
   /**
-   * Indicates the text is considered less important than the main content, but is still necessary for the reader to understand.
+   * Indicates that the text is considered less important than the main content, but is still necessary for the reader to understand.
    * It can be used for secondary content but also for disclaimers, terms and conditions, or legal information.
    *
    * Surfaces should apply a smaller font size than the default size.
    *
-   * In an HTML host, the text will be rendered in a `<small>` element.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+   * In an HTML host, the text will be rendered in a `<small>` element. Learn more about the [`small` element on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small).
    */
   | 'small'
   /**
-   * No additional semantics or styling is applied.
+   * Indicates that no additional semantics or styling is applied.
    *
    * Surfaces must not apply any default styling to this type.
    *
-   * In an HTML host, the text will be rendered in a `<span>` tag.
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
+   * In an HTML host, the text will be rendered in a `<span>` tag. Learn more about the [`span` element on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span).
    */
   | 'generic';
+/**
+ * Properties for multi-line text input areas with character length constraints and autocomplete support.
+ */
 export interface TextAreaProps
   extends GlobalProps,
     BaseTextFieldProps,
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField> {
   /**
-   * A number of visible text lines.
+   * The number of visible text lines that determines the initial height of the text area. Each row represents one line of text at the current font size. When users enter more content than fits in the specified rows, the text area becomes scrollable vertically, allowing access to overflow content. The text area doesn't auto-expand beyond this height. For example, `rows={3}` displays three lines of text at once. Use smaller values (2-3) for brief inputs like comments or notes, larger values (5-10) for substantial text entry like descriptions or feedback. This only sets initial height—users can resize the text area if the browser/surface allows it. The actual pixel height depends on font size and line height.
    *
    * @default 2
    */
   rows?: number;
 }
+/**
+ * Properties for single-line text input fields with decorations, constraints, and autocomplete support.
+ */
 export interface TextFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField>,
     FieldDecorationProps {}
+/**
+ * Properties for clickable tile elements with heading, subheading, and optional count indicator.
+ */
 export interface TileProps
   extends GlobalProps,
     Pick<BaseClickableProps, 'onClick' | 'disabled'> {
   /**
-   * A title that describes the content of the Tile.
+   * The primary title text that describes the tile's purpose or action. Clear, action-oriented language immediately communicates what the tile does (for example, "Apply loyalty discount", "Add popular item").
    *
    * @default ''
    */
   heading?: string;
   /**
-   * Supporting text displayed below the heading.
+   * Supporting text displayed below the heading that provides additional context or dynamic information. Common content includes cart totals, eligibility requirements, current status, or helpful details that complement the heading.
    *
    * @default ''
    */
   subheading?: string;
   /**
-   * A numeric indicator rendered within the Tile (for example, a count or a step number).
-   *
-   * - When provided, the indicator is displayed inside the tile.
-   * - Intended for small integers. It may clamp, truncate, or abbreviate larger values.
-   *
+   * A numeric indicator displayed within the tile, typically used for counts, notifications, or step numbers. When provided, the indicator appears inside the tile. Intended for small integers—larger values may be clamped, truncated, or abbreviated by the system.
    */
   itemCount?: number;
   /**
-   * Sets the tone of the Tile, based on the intention of the information being conveyed.
+   * Sets the visual tone of the tile based on the intention of the information being conveyed. Use `'accent'` to highlight important or primary actions, `'neutral'` for standard actions, or `'auto'` (default) to let the system determine the appropriate tone based on context.
+   *
    * @default 'auto'
    */
   tone?: ExtractStrict<ToneKeyword, 'auto' | 'neutral' | 'accent'>;
 }
+/**
+ * Properties for an interactive time picker component with allow/disallow time ranges.
+ */
 export interface TimePickerProps
   extends GlobalProps,
     InputProps,
     FocusEventProps {
   /**
-   * Times that can be selected.
-   *
-   * A comma-separated list of allowed time ranges. Whitespace is allowed after commas.
-   *
-   * The default `''` allows all times.
-   *
-   * Each time range is in `HH:MM--HH:MM` format.
-   *
-   * The end of the range is exclusive, so `09:00--10:00` allows selecting `09:00` but not `10:00`.
-   *
-   * Either side of `--` can be omitted to create an unbounded range.
-   *
-   * Whitespace is allowed either side of `--`.
+   * Specifies allowed time values or ranges for selection. Uses 24-hour format (HH:mm or HH:mm:ss). Supports range syntax with `--` separator and comma-separated values.
    *
    * @default ''
    *
    * @example
-   * `09:00--10:00, 13:00--14:00` - assuming the step is 1 hour, this allows selecting `09:00` or `13:00`.
-   * `12:00--` - allows selecting `12:00` and all times after it.
+   * `09:00--10:00, 13:00--14:00` - allows selecting times within these ranges based on step value
+   * `12:00--` - allows selecting `12:00` and all times after it
    */
   allow?: string;
   /**
-   * Times that cannot be selected. This subtracts from `allow`.
-   *
-   * A comma-separated list of allowed time ranges. Whitespace is allowed after commas.
-   *
-   * The default `''` has no effect on `allow`.
-   *
-   * Each time range is in `HH:MM--HH:MM` format.
-   *
-   * The end of the range is exclusive, so `09:00--10:00` disallows selecting `09:00` but not `10:00`.
-   *
-   * Either side of `--` can be omitted to create an unbounded range.
-   *
-   * Whitespace is allowed either side of `--`.
+   * Specifies disallowed time values or ranges that can't be selected. Uses 24-hour format (HH:mm or HH:mm:ss). Supports range syntax with `--` separator and comma-separated values. Takes precedence over `allow`.
    *
    * @default ''
    *
    * @example
-   * `09:00--10:00, 13:00--14:00` - assuming the step is 1 hour, this disallows selecting `09:00` or `13:00`.
+   * `09:00--10:00, 13:00--14:00` - disallows selecting times within these ranges
    */
   disallow?: string;
   /**
-   * Default selected value.
-   *
-   * The default, `''`, means no time is selected.
-   *
-   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros.
-   *
-   * Examples: `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`.
-   *
-   * This follows the HTML time input value format, which is always 24-hour with
-   * leading zeros regardless of UI presentation.
-   *
-   * See: https://developer.mozilla.org/docs/Web/HTML/Element/input/time
-   *
-   * If the provided value is invalid, '' is used as the value.
+   * The default time value used when the field is first rendered, in 24-hour format with leading zeros (HH:mm:ss format, for example, `"09:05:00"`). An empty string means no default time. Only applies if no `value` prop is provided.
    *
    * @default ''
    */
   defaultValue?: string;
   /**
-   * Current selected value.
-   *
-   * The default, `''`, means no time is selected.
-   *
-   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros.
-   *
-   * Examples: `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`.
-   *
-   * This follows the HTML time input value format, which is always 24-hour with
-   * leading zeros regardless of UI presentation.
-   *
-   * See: https://developer.mozilla.org/docs/Web/HTML/Element/input/time
-   *
-   * If the provided value is invalid, '' is used as the value.
+   * The currently selected time value in 24-hour format with leading zeros (HH:mm:ss format, for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). An empty string means no time is selected. This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value).
    *
    * @default ''
    */
   value?: string;
   /**
-   * The step between selectable times, in seconds.
+   * The increment step between selectable time values, specified in seconds. For example, `60` for one-minute intervals or `3600` for one-hour intervals.
    *
    * @default 60
    */
   step?: number;
 }
+/**
+ * Properties for a text-based time input field with validation and time range constraints.
+ */
 export interface TimeFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
@@ -3005,49 +2806,15 @@ export interface TimeFieldProps
       'value' | 'defaultValue' | 'allow' | 'disallow' | 'step'
     > {
   /**
-   * Callback when the field has an invalid time.
-   * This callback will be called, if the time typed is invalid or disabled.
-   *
-   * Times that don’t exist or have formatting errors are considered invalid. Some examples of invalid times are:
-   * - 24:00
-   * - 12:60
-   *
-   * Disallowed times are considered invalid.
-   *
-   * It’s important to note that this callback will be called only when the user **finishes editing** the time,
-   * and it’s called right after the `onChange` callback.
-   * The field is **not** validated on every change to the input. Once the buyer has signalled that
-   * they have finished editing the field (typically, by blurring the field), the field gets validated and the callback is run if the value is invalid.
+   * A callback function executed when the user enters an invalid value. Fires after change validation fails.
    */
   onInvalid?: (event: Event) => void;
   /**
-   * Current selected value.
-   *
-   * The default, `''`, means no time is selected.
-   *
-   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros.
-   *
-   * Examples: `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`.
-   *
-   * This follows the HTML time input value format, which is always 24-hour with
-   * leading zeros regardless of UI presentation.
-   *
-   * See: https://developer.mozilla.org/docs/Web/HTML/Element/input/time
+   * The currently selected time value in 24-hour format with leading zeros (HH:mm:ss format, for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). An empty string means no time is selected.
    */
   value?: string;
   /**
-   * Default selected value.
-   *
-   * The default, `''`, means no time is selected.
-   *
-   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros.
-   *
-   * Examples: `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`.
-   *
-   * This follows the HTML time input value format, which is always 24-hour with
-   * leading zeros regardless of UI presentation.
-   *
-   * See: https://developer.mozilla.org/docs/Web/HTML/Element/input/time
+   * The default time value used when the field is first rendered, in 24-hour format with leading zeros (HH:mm:ss format, for example, `"09:05:00"`). An empty string means no default time. Only applies if no `value` prop is provided.
    */
   defaultValue?: string;
 }
@@ -3061,7 +2828,7 @@ export interface VNode<P = {}> {
   };
   key: Key;
   /**
-   * ref is not guaranteed by React.ReactElement, for compatibility reasons
+   * ref isn't guaranteed by React.ReactElement, for compatibility reasons
    * with popular react libs we define it as optional too
    */
   ref?: Ref<any> | null;
@@ -3157,9 +2924,9 @@ declare abstract class Component<P, S> {
   static displayName?: string;
   static defaultProps?: any;
   static contextType?: Context<any>;
-  // Static members cannot reference class type parameters. This is not
+  // Static members can't reference class type parameters. This isn't
   // supported in TypeScript. Reusing the same type arguments from `Component`
-  // will lead to an impossible state where one cannot satisfy the type
+  // will lead to an impossible state where one can't satisfy the type
   // constraint under no circumstances, see #1356.In general type arguments
   // seem to be a bit buggy and not supported well at the time of this
   // writing with TS 3.3.3333.

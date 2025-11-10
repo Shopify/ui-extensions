@@ -940,15 +940,25 @@ export interface GraphQLError {
 }
 
 /**
- * Represents a read-only value managed on the main thread that an extension can subscribe to.
+ * Represents a reactive signal interface that provides both immediate value access and subscription-based updates. Enables real-time synchronization with changing data through the observer pattern.
  *
- * Example: Checkout uses this to manage the state of an object and
- * communicate state changes to extensions running in a sandboxed web worker.
- *
- * This interface is compatible with [Preact's ReadonlySignal](https://github.com/preactjs/signals/blob/a023a132a81bd4ba4a0bebb8cbbeffbd8c8bbafc/packages/core/src/index.ts#L700-L709).
- *
+ * This interface is compatible with [Preact's `ReadonlySignal`](https://github.com/preactjs/signals/blob/a023a132a81bd4ba4a0bebb8cbbeffbd8c8bbafc/packages/core/src/index.ts#L700-L709), allowing integration with Preact's reactive primitives.
  */
 export interface ReadonlySignalLike<T> {
+  /**
+   * The current value of the signal at this moment in time. This property provides immediate, synchronous access to the current state without requiring subscription setup or callbacks.
+   *
+   * The value is read-only—it cannot be modified directly and changes only through the underlying data source (for example, when locale changes, connectivity state toggles, or cart updates occur). Reading this property does not trigger any side effects or subscriptions—it simply returns the current value.
+   *
+   * Commonly accessed for one-time value checks, initial setup, synchronous conditional logic, or when subscriptions aren't needed (for example, reading current locale once during initialization, checking connectivity status before an operation, or displaying current cart total in a snapshot).
+   */
   readonly value: T;
+  /**
+   * Subscribes to value changes and executes the provided callback function whenever the underlying value updates. The callback receives the new value as its parameter and is invoked immediately with the current value upon subscription, then again each time the value changes thereafter.
+   *
+   * Returns a cleanup function that, when called, unsubscribes from further updates and prevents memory leaks. The cleanup function should be called when the component unmounts, the subscription is no longer needed, or when setting up a new subscription to replace the old one.
+   *
+   * Subscriptions are passive—they don't trigger changes, only react to them. Multiple subscriptions can exist simultaneously, each receiving updates independently. Commonly used to automatically update UI when data changes (reactive rendering), implement event-driven logic, keep multiple parts of the extension synchronized, or respond to external state changes without polling.
+   */
   subscribe(fn: (value: T) => void): () => void;
 }

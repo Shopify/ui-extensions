@@ -2,8 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Divider',
-  description:
-    'Creates a visual separation between content sections. Dividers help organize information and improve content hierarchy by providing clear section boundaries.',
+  description: 'Create visual separation between content sections.',
   thumbnail: 'divider-thumbnail.png',
   isVisualComponent: true,
   type: '',

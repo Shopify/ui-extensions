@@ -2,8 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'PosBlock',
-  description:
-    'Creates a surface on the specified block extension target, serving as a container to place content with an action button.',
+  description: 'Create a container to place content with an action button.',
   thumbnail: 'pos-block-thumbnail.png',
   isVisualComponent: true,
   type: '',

@@ -12,18 +12,30 @@ import type {TextProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
- * Used when an element does not have children.
+ * The base props for elements without children, providing key, ref, and slot properties.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
+  /**
+   * A unique identifier for the element in lists. Used by Preact for efficient rendering and reconciliation.
+   */
   key?: Key;
+  /**
+   * A reference to the underlying DOM element. Commonly used to access the element directly for imperative operations.
+   */
   ref?: Ref<TClass>;
+  /**
+   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
+   */
   slot?: Lowercase<string>;
 }
 /**
- * Used when an element has children.
+ * The base props for elements with children, extending `BaseElementProps` with children support.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
+  /**
+   * The child elements to render within this component.
+   */
   children?: ComponentChildren;
 }
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
@@ -31,21 +43,19 @@ export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 declare const tagName = 's-text';
 export interface TextJSXProps extends Pick<TextProps, 'id'> {
   /**
-   * Modify the color to be more or less intense.
+   * The color intensity of the text. Controls how prominent or subtle the text appears within the interface.
    *
    * @default 'base'
    */
   color?: Extract<TextProps['color'], 'base' | 'strong' | 'subdued'>;
   /**
-   * Provide semantic meaning and default styling to the text.
-   *
-   * Other presentation properties on Text override the default styling.
+   * The semantic meaning and default styling of the text. Other presentation properties override the default styling provided by the type.
    *
    * @default 'generic'
    */
   type?: Extract<TextProps['type'], 'generic' | 'strong' | 'small'>;
   /**
-   * Sets the tone of the component, based on the intention of the information being conveyed.
+   * The semantic tone of the text, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
    *
    * @default 'auto'
    */

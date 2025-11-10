@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Badge',
   description:
-    'Informs merchants about the status of an object or indicates that an action has been completed. Badges display text with visual styling to communicate status information.',
+    'Use color and text to communicate the state of orders, products, customers, and other business data.',
   thumbnail: 'badge-thumbnail.png',
   isVisualComponent: true,
   type: '',

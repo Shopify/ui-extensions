@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TimeField',
   description:
-    'Captures time input from merchants. Provides a consistent interface for time selection, with proper validation.',
+    'Capture time input with a consistent interface for time selection and validation.',
   thumbnail: 'time-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
