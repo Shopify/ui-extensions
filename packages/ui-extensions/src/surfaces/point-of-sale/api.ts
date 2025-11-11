@@ -15,6 +15,13 @@ export type {StandardApi} from './api/standard/standard-api';
 export type {ActionTargetApi} from './api/action-target-api/action-target-api';
 
 export type {
+  CameraApi,
+  CameraApiContent,
+  CameraMediaOptions,
+  CameraMediaResponse,
+} from './api/camera-api/camera-api';
+
+export type {
   ConnectivityStateSeverity,
   ConnectivityState,
   ConnectivityApiContent,
