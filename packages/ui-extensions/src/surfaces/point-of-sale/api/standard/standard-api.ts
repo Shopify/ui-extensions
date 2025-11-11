@@ -1,3 +1,4 @@
+import {CameraApi} from '../camera-api/camera-api';
 import {ConnectivityApi} from '../connectivity-api/connectivity-api';
 import {DeviceApi} from '../device-api/device-api';
 import {LocaleApi} from '../locale-api/locale-api';
@@ -20,4 +21,5 @@ export type StandardApi<T> = {[key: string]: any} & {
   DeviceApi &
   ConnectivityApi &
   StorageApi &
-  PinPadApi;
+  PinPadApi &
+  CameraApi;
