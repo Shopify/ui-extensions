@@ -2,7 +2,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'TimePicker',
-  description: 'Allows merchants to select a specific time.',
+  description:
+    'Allow merchants to select a specific time using an interactive picker interface.',
   thumbnail: 'time-spinner-thumbnail.png',
   isVisualComponent: true,
   type: '',

@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Image',
   description:
-    'Embeds an image within the interface and controls its presentation. Use to visually illustrate concepts, showcase products, or support user tasks and interactions.',
+    'Add visual content to the POS interface and customize the presentation of visuals.',
   thumbnail: 'image-thumbnail.png',
   isVisualComponent: true,
   type: '',

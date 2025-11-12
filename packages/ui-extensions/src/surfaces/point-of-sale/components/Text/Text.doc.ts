@@ -2,8 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Text',
-  description: `Displays text with specific visual styles or tones. Use to present content with appropriate emphasis, hierarchy, or tone.
-  > Note: Text on mobile surfaces is blockish, rather than inline.`,
+  description: `Display text with specific visual styles or tones.`,
   thumbnail: 'text-thumbnail.png',
   isVisualComponent: true,
   type: '',

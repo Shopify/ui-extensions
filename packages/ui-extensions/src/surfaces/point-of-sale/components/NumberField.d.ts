@@ -17,28 +17,64 @@ import type {
 
 export type ComponentChildren = any;
 /**
- * Used when an element does not have children.
+ * The base props for elements without children, providing key, ref, and slot properties.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
+  /**
+   * A unique identifier for the element in lists. Used by Preact for efficient rendering and reconciliation.
+   */
   key?: Key;
+  /**
+   * A reference to the underlying DOM element. Commonly used to access the element directly for imperative operations.
+   */
   ref?: Ref<TClass>;
+  /**
+   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
+   */
   slot?: Lowercase<string>;
 }
 /**
- * Used when an element has children.
+ * The base props for elements with children, extending `BaseElementProps` with children support.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
+  /**
+   * The child elements to render within this component.
+   */
   children?: ComponentChildren;
 }
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+/**
+ * Represents the event object passed to callback functions when interactive events occur. Contains metadata about the event, including the target element, event phase, and propagation behavior.
+ */
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
+  /**
+   * The element that the event listener is attached to.
+   */
   currentTarget: HTMLElementTagNameMap[T];
+  /**
+   * Whether the event bubbles up through the DOM tree.
+   */
   bubbles?: boolean;
+  /**
+   * Whether the event can be canceled.
+   */
   cancelable?: boolean;
+  /**
+   * Whether the event will trigger listeners outside of a shadow root.
+   */
   composed?: boolean;
+  /**
+   * The additional data associated with the event.
+   */
   detail?: any;
+  /**
+   * The current phase of the event flow.
+   */
   eventPhase: number;
+  /**
+   * The element that triggered the event.
+   */
   target: HTMLElementTagNameMap[T] | null;
 }
 
@@ -59,85 +95,61 @@ export interface NumberFieldJSXProps
     | 'controls'
   > {
   /**
-   * Content to use as the field label.
-   *
-   * Label is not supported when using Stepper controls
+   * The text content that displays as the field label, describing the numeric information being requested. This property isn't supported when using `stepper` controls.
    */
   label?: NumberFieldProps['label'];
   /**
-   * Additional text to provide context or guidance for the field.
-   * This text is displayed along with the field and its label
-   * to offer more information or instructions to the user.
-   *
-   * This will also be exposed to screen reader users.
-   *
-   * Details are not supported when using Stepper controls
+   * The additional text to provide context or guidance for the field. This text is displayed along with the field and its label to offer more information or instructions to the user. This will also be exposed to screen reader users. This property isn't supported when using `stepper` controls.
    */
   details?: NumberFieldProps['details'];
   /**
-   * Whether the field needs a value. This requirement adds semantic value
-   * to the field, but it will not cause an error to appear automatically.
-   * If you want to present an error when this field is empty, you can do
-   * so with the `error` property.
+   * Whether the field needs a value. This requirement adds semantic value to the field but doesn't cause an error to appear automatically. Use the `error` property to present validation errors. This property isn't supported when using `stepper` controls.
    *
    * @default false
-   *
-   * Required is not supported when using Stepper controls
    */
   required?: NumberFieldProps['required'];
   /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
-   *
-   * Error is not supported when using Stepper controls
+   * An error message that indicates a problem to the user. The field receives specific stylistic treatment to communicate issues that must be resolved immediately. This property isn't supported when using `stepper` controls.
    */
   error?: NumberFieldProps['error'];
   /**
-   * Sets the virtual keyboard.
+   * The virtual keyboard layout that the field displays for numeric input. This property isn't supported when using `stepper` controls.
+   * - `decimal`: A keyboard layout that includes decimal point support for entering fractional numbers, prices, or measurements with decimal precision.
+   * - `numeric`: A keyboard layout optimized for integer-only entry without decimal point support, ideal for quantities, counts, or whole number values.
    *
-   * Input mode is not supported when using Stepper controls
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
+   * Learn more about [inputmode on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode).
    * @default 'decimal'
    */
   inputMode?: NumberFieldProps['inputMode'];
   /**
-   * A short hint that describes the expected value of the field.
-   *
-   * Placeholder text is not supported when using Stepper controls due to constrained space for the number field, especially on phones.
+   * A short hint that provides guidance about the expected value of the field. This property isn't supported when using `stepper` controls due to constrained space, especially on phones.
    */
   placeholder?: NumberFieldProps['placeholder'];
   /**
-   *  Additional content to be displayed in the field. Commonly used to display clickable text.
-   *
-   * > Note: Accessory is not supported when using Stepper controls
+   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Use the `slot="accessory"` attribute to place elements in this area. This slot isn't supported when using `stepper` controls.
    */
   accessory?: ComponentChild;
   /**
-   * Sets the type of controls displayed for the field.
-   *
-   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property. Note that in POS
-   *   adding stepper controls simplifies the behaviour of the Number Field itself. The field supports only integer values, is always-populated and automatically
-   *   validates the value to be within the min and max bounds. Validation, label, details and placeholder are not supported when using Stepper controls.
-   *
-   * - `none`: no controls are displayed and users must input the value manually.
-   * - `auto`: the presence of the controls depends on the surface and context.
+   * The type of controls displayed for the field:
+   * - `auto`: An automatic setting where the presence of controls depends on the surface and context. The system determines the most appropriate control type based on the usage scenario.
+   * - `stepper`: Displays increment (+) and decrement (-) buttons for adjusting the numeric value. When `stepper` controls are enabled, the field behavior is constrained: it accepts only integer values, always contains a value (never empty), and automatically validates against `min` and `max` bounds. The `label`, `details`, `placeholder`, `error`, `required`, and `inputMode` properties aren't supported with `stepper` controls.
+   * - `none`: A control type with no visible controls where users must input the value manually using the keyboard.
    */
   controls?: NumberFieldProps['controls'];
   /**
-   * Callback when the user makes any changes in the field.
+   * A callback function that executes when the user makes any changes in the field.
    */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * Callback after editing completes (typically on blur).
+   * A callback function that executes after editing completes, typically on blur.
    */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * Callback when the element loses focus.
+   * A callback function that executes when the element loses focus.
    */
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * Callback when the element receives focus.
+   * A callback function that executes when the element receives focus.
    */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }

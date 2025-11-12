@@ -17,18 +17,30 @@ import type {
 
 export type ComponentChildren = any;
 /**
- * Used when an element does not have children.
+ * The base props for elements without children, providing key, ref, and slot properties.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
+  /**
+   * A unique identifier for the element in lists. Used by Preact for efficient rendering and reconciliation.
+   */
   key?: Key;
+  /**
+   * A reference to the underlying DOM element. Commonly used to access the element directly for imperative operations.
+   */
   ref?: Ref<TClass>;
+  /**
+   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
+   */
   slot?: Lowercase<string>;
 }
 /**
- * Used when an element has children.
+ * The base props for elements with children, extending `BaseElementProps` with children support.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
+  /**
+   * The child elements to render within this component.
+   */
   children?: ComponentChildren;
 }
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
@@ -36,13 +48,18 @@ export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 declare const tagName = 's-banner';
 export interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
   /**
-   * Determines whether the banner is hidden.
+   * Controls whether the banner is visible or hidden. When set to `true`, the banner will be hidden from view. Use this to programmatically show or hide banners based on application state. Default is `false`.
    *
    * @default false
    */
   hidden?: BannerProps['hidden'];
   /**
-   * Sets the tone of the Banner, based on the intention of the information being conveyed.
+   * Sets the visual appearance and accessibility behavior of the banner. The tone determines both the color scheme and how screen readers announce the banner. Available options:
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context
+   * - `'success'` - Green styling for positive outcomes and successful operations. Creates an informative live region for screen readers
+   * - `'info'` - Blue styling for general information and neutral updates. Creates an informative live region for screen readers
+   * - `'warning'` - Orange styling for important notices that require attention. Creates an informative live region for screen readers
+   * - `'critical'` - Red styling for errors and urgent issues requiring immediate action. Creates an assertive live region that is announced immediately by screen readers
    *
    * @default 'auto'
    */
@@ -51,11 +68,11 @@ export interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
     'auto' | 'success' | 'info' | 'warning' | 'critical'
   >;
   /**
-   * The action taken when the Banner is pressed.
+   * The primary action element displayed within the banner, typically a button. Use this slot to provide interactive elements that allow users to respond to the banner's message, such as "Dismiss," "Learn More," or "Retry" buttons.
    */
   primaryAction?: ComponentChild;
   /**
-   * The content of the Banner.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
 }

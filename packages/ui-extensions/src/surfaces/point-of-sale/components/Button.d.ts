@@ -12,28 +12,64 @@ import type {ButtonProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
- * Used when an element does not have children.
+ * The base props for elements without children, providing key, ref, and slot properties.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
+  /**
+   * A unique identifier for the element in lists. Used by Preact for efficient rendering and reconciliation.
+   */
   key?: Key;
+  /**
+   * A reference to the underlying DOM element. Commonly used to access the element directly for imperative operations.
+   */
   ref?: Ref<TClass>;
+  /**
+   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
+   */
   slot?: Lowercase<string>;
 }
 /**
- * Used when an element has children.
+ * The base props for elements with children, extending `BaseElementProps` with children support.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
+  /**
+   * The child elements to render within this component.
+   */
   children?: ComponentChildren;
 }
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+/**
+ * Represents the event object passed to callback functions when interactive events occur. Contains metadata about the event, including the target element, event phase, and propagation behavior.
+ */
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
+  /**
+   * The element that the event listener is attached to.
+   */
   currentTarget: HTMLElementTagNameMap[T];
+  /**
+   * Whether the event bubbles up through the DOM tree.
+   */
   bubbles?: boolean;
+  /**
+   * Whether the event can be canceled.
+   */
   cancelable?: boolean;
+  /**
+   * Whether the event will trigger listeners outside of a shadow root.
+   */
   composed?: boolean;
+  /**
+   * Additional data associated with the event.
+   */
   detail?: any;
+  /**
+   * The current phase of the event flow.
+   */
   eventPhase: number;
+  /**
+   * The element that triggered the event.
+   */
   target: HTMLElementTagNameMap[T] | null;
 }
 
@@ -44,25 +80,26 @@ export interface ButtonJSXProps
     'id' | 'disabled' | 'command' | 'commandFor' | 'loading'
   > {
   /**
-   * Sets the action the `commandFor` should take when this clickable is activated.
-   *
-   * See the documentation of particular components for the actions they support.
-   *
-   * - `--auto`: a default action for the target component.
-   * - `--show`: shows the target component.
-   * - `--hide`: hides the target component.
-   * - `--toggle`: toggles the target component.
+   * Sets the action the `commandFor` should take when this clickable is activated:
+   * - `--auto`: A default action for the target component
+   * - `--show`: Shows the target component
+   * - `--hide`: Hides the target component
+   * - `--toggle`: Toggles the target component
    *
    * @default '--auto'
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
+   * Learn more about [button command on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
    */
   command?: Extract<
     ButtonProps['command'],
     '--auto' | '--show' | '--hide' | '--toggle'
   >;
   /**
-   * Sets the tone of the Button, based on the intention of the information being conveyed.
+   * Sets the tone of the button, based on the intention of the information being conveyed.
+   * - `auto`: Automatically determines the appropriate tone based on context.
+   * - `neutral`: The standard tone for general actions and interactions.
+   * - `caution`: Indicates actions that require careful consideration.
+   * - `warning`: Alerts users to potential issues or important information.
+   * - `critical`: Used for destructive actions like deleting or removing content.
    *
    * @default 'auto'
    */
@@ -71,17 +108,19 @@ export interface ButtonJSXProps
     'auto' | 'critical' | 'neutral' | 'warning' | 'caution'
   >;
   /**
-   * Changes the visual appearance of the Button.
+   * Changes the visual appearance of the button.
+   * - `primary`: Creates a prominent call-to-action button with high visual emphasis for the most important action on a screen.
+   * - `secondary`: Provides a less prominent button appearance for supporting actions and secondary interactions.
    *
    * @default 'auto' - the variant is automatically determined by the Button's context
    */
   variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
   /**
-   * Called when the button is activated.
+   * An event that's called when the button is activated.
    */
   onClick?: (event: CallbackEvent<typeof tagName>) => void;
   /**
-   * The content of the Button.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
 }

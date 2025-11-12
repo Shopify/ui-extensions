@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Icon',
   description:
-    'Displays graphic symbols to communicate meaning and functionality. Use to enhance navigation, indicate actions, or provide visual context alongside text.',
+    'Display standardized visual symbols from the POS catalog to represent actions, statuses, or categories consistently.',
   thumbnail: 'icon-thumbnail.png',
   isVisualComponent: true,
   type: '',

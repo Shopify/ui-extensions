@@ -2,8 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'SearchField',
-  description:
-    'Captures search terms from merchants using a single-line input field. Includes visual styling to indicate search functionality, and an accessory to quickly clear the input.',
+  description: 'Capture search terms using a single-line input field.',
   thumbnail: 'search-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
