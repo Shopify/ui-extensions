@@ -7,7 +7,8 @@ const generateCodeBlockForDatePicker = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'DatePicker',
-  description: 'A component used to select a date through a dialog.',
+  description:
+    'Allow merchants to select a specific date using a calendar-like picker interface.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

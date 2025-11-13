@@ -6,7 +6,8 @@ const generateCodeBlockForComponent = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Navigator',
-  description: 'A component used to navigate between different screens.',
+  description:
+    'Manage navigation between multiple Screen components within a POS UI extension.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

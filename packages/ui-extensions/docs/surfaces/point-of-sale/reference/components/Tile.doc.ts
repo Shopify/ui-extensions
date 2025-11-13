@@ -6,7 +6,7 @@ const generateCodeBlockForTile = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Tile',
-  description: `Tiles are customizable buttons that allow staff to complete actions quickly. Think of them as shortcuts--adding a 10% discount to an order, for example. Tiles provide contextual information and let merchants quickly access workflows, actions, and information from the smart grid and the top of detail pages. They’re dynamic and can change based on surrounding context, such as what’s in the cart.
+  description: `Display interactive buttons for the POS smart grid that allow merchants to complete actions quickly.
   > Note:
   > The appearance of \`destructive\` has been updated as of POS 10.0.0 to appear as an active state.`,
   isVisualComponent: true,

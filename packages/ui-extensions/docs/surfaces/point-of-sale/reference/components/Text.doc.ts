@@ -3,8 +3,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Text',
-  description:
-    'Text can be rendered in different sizes and colors in order to structure content. By default, `Text` will always stretch to fill the width of the container, but it can be wrapped in a `Box` to limit its width to what it needs. When the width of `Text` reaches its limit, the `string` will automatically wrap to the next line.',
+  description: 'Display text with specific visual styles or tones.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

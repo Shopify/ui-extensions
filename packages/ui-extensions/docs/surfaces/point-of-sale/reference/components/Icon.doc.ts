@@ -3,7 +3,8 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Icon',
-  description: 'A component that renders an icon from the POS asset catalog.',
+  description:
+    'Display standardized visual symbols from the POS catalog to represent actions, statuses, or categories consistently.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

@@ -5,7 +5,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'SearchBar',
   description:
-    'The search bar lets merchants enter search queries for objects throughout the app.',
+    'Provide a specialized input field for search functionality with built-in search button and text change handling.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

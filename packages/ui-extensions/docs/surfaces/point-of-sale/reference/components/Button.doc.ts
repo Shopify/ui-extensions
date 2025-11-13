@@ -6,7 +6,7 @@ const generateCodeBlockForButton = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Button',
-  description: `Buttons enable the merchant to initiate actions, like "add", "save", or "next".
+  description: `Trigger actions or events, such as opening dialogs or navigating to other pages.
   > Note:
   > The \`plain\` \`ButtonType\` is no longer supported as of POS 10.0.0 and defaults to \`basic\`.`,
   isVisualComponent: true,

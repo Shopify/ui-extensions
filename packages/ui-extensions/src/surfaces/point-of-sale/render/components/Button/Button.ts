@@ -7,35 +7,29 @@ export type ButtonType =
   /** @deprecated No longer supported as of POS 10.0.0. */
   | 'plain';
 
-/**
- * @property `title` the text set on the `Button`.
- * @property `type` the type of `Button` to render. Determines the appearance of the button.
- * @property `onPress` the callback that is executed when the user taps the button.
- * @property `isDisabled` sets whether the `Button` can be tapped.
- * @property `isLoading` sets whether the `Button` is displaying an animated loading state.
- */
 export interface ButtonProps {
   /**
-   * The text set on the `Button`.
-   *
-   * Note: When using a Button for menu-item targets, the title will be ignored. The text on the menu-item will be the extension's description.
+   * The text set on the button. When using a button for action (menu item) targets, the title will be ignored. The text on the menu item will be the extension's description.
    */
   title?: string;
   /**
-   * The type of `Button` to render. Determines the appearance of the button.
-   * Note: The 'plain' type is no longer supported as of POS 10.0.0. Using it will default to 'basic'.
+   * The type of button to render. Determines the appearance of the button.
+   * - `'primary'` - Creates a prominent call-to-action button with high visual emphasis for the most important action on a screen
+   * - `'basic'` - Provides a standard button appearance for secondary actions and general interactions
+   * - `'destructive'` - Displays a warning-styled button for actions that delete, remove, or cause irreversible changes
+   * - `'plain'` - Deprecated as of POS 10.0.0. Using this option will automatically default to `'basic`'
    */
   type?: ButtonType;
   /**
-   * The callback that is executed when the user taps the button.
+   * The callback that's executed when the user taps the button.
    */
   onPress?: () => void;
   /**
-   * Sets whether the `Button` can be tapped.
+   * Whether the button can be tapped.
    */
   isDisabled?: boolean;
   /**
-   * Sets whether the `Button` is displaying an animated loading state.
+   * Whether the button is displaying an animated loading state.
    */
   isLoading?: boolean;
 }
