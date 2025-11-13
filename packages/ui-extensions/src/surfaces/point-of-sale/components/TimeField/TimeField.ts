@@ -14,6 +14,11 @@ export interface TimeFieldProps
     | 'action'
     | 'helpText'
   > {
+  /**
+   * Whether the clock displays in 24-hour format instead of 12-hour format. This property only affects Android devices.
+   *
+   * @defaultValue false
+   */
   is24Hour?: boolean;
 }
 

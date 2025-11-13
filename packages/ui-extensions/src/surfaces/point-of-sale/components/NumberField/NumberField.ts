@@ -1,16 +1,20 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import type {InputProps} from '../shared/InputField';
 
-/**
- * Represents the properties for the NumberField component.
- * @typedef {Object} NumberFieldProps
- * @property {'decimal' | 'numeric'} [inputMode] - The mode of input, can be either 'decimal' or 'numeric'.
- * @property {number} [max] - The highest decimal or integer to be accepted for the field.
- * @property {number} [min] - The lowest decimal or integer to be accepted for the field.
- */
 export interface NumberFieldProps extends InputProps {
+  /**
+   * The virtual keyboard layout to display:
+   * - `decimal`: A keyboard layout that includes decimal point support for entering fractional numbers, prices, or measurements with decimal precision.
+   * - `numeric`: A keyboard layout optimized for integer-only entry without decimal point support, ideal for quantities, counts, or whole number values.
+   */
   inputMode?: 'decimal' | 'numeric';
+  /**
+   * The highest decimal or integer to be accepted for the field. Users can still input higher numbers by keyboard—you must add appropriate validation logic.
+   */
   max?: number;
+  /**
+   * The lowest decimal or integer to be accepted for the field. Users can still input lower numbers by keyboard—you must add appropriate validation logic.
+   */
   min?: number;
 }
 
