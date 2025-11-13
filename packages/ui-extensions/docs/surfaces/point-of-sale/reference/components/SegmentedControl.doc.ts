@@ -5,7 +5,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'SegmentedControl',
   description:
-    'The segmented control lets the merchant easily switch between different lists or views on the same page.',
+    'Display a horizontal row of segments that allow users to switch between different views or filter content.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

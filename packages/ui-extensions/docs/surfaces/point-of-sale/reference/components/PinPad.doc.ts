@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'PinPad',
   description:
-    'A component used to authenticate or identify individuals through a standarized number pad.',
+    'Provide a secure numeric keypad interface for PIN entry and validation.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

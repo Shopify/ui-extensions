@@ -1,11 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-/**
- * Renders a `POSBlockRow` in a `POSBlock`.
- */
 export interface POSBlockRowProps {
   /**
-   * A callback for when the row is tapped.
+   * A callback function executed when the user taps the row. Use this to handle row-specific interactions or navigation.
    */
   onPress?: () => void;
 }

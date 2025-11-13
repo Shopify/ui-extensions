@@ -4,7 +4,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'EmailField',
   description:
-    'Use an email field to conveniently and accurately capture merchant email addresses.',
+    'Capture email address input from customers with built-in validation.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

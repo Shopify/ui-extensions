@@ -4,7 +4,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'RadioButtonList',
   description:
-    'A radio button list lets merchants select from a given set of options.',
+    'Present radio button options for single selection from a list of string values.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

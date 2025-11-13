@@ -1,28 +1,26 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import {BannerVariant} from '../Banner/Banner';
 
-/**
- * @property title - The title of the banner.
- * @property variant - The appearance of the banner.
- * @property visible - The visibility state of the banner.
- */
 export interface CameraScannerBannerProps {
   /**
-   * The title of the banner.
+   * The title text displayed on the banner to provide context or instructions to users.
    */
   title: string;
 
   /**
-   * The appearance of the banner.
+   * The appearance variant of the banner that conveys the type of message being displayed.
    */
   variant: BannerVariant;
   /**
-   * The visibility state of the banner.
+   * Controls the visibility state of the banner within the scanner interface.
    */
   visible: boolean;
 }
 
 export interface CameraScannerProps {
+  /**
+   * An optional banner configuration object that displays contextual messages during scanning operations.
+   */
   bannerProps?: CameraScannerBannerProps;
 }
 

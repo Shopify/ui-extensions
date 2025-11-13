@@ -7,7 +7,7 @@ const generateCodeBlockForComponent = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Screen',
   description:
-    'A component used in the root of a modal extension to define a screen.',
+    'Define individual screens within action (modal) targets to create multi-step workflows.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

@@ -7,7 +7,7 @@ const generateCodeBlockForCameraScanner = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'CameraScanner',
   description:
-    'The camera scanner uses the devices camera to scan and decode barcodes or QR codes. It displays a live feed with guidance markers for alignment and triggers actions within the app upon successful recognition.',
+    'Provide camera-based scanning functionality with optional banner messaging.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

@@ -7,7 +7,7 @@ const generateCodeBlockForBadge = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Badge',
   description:
-    'Badges are used to inform merchants of the status of an item or action that’s been taken.',
+    'Use color and text to communicate the state of orders, products, customers, and other business data.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

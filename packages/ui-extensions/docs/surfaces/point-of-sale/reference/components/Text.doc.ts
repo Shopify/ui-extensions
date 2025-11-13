@@ -3,8 +3,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Text',
-  description:
-    'Text can be rendered in different sizes and colors in order to structure content.',
+  description: 'Display text with specific visual styles or tones.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

@@ -4,38 +4,40 @@ import {ColorType} from '../Text/Text';
 
 export interface ToggleSwitch {
   /**
-   * Whether or not the toggle switch is on or off.
+   * The current state of the toggle switch. When `true`, the switch is in the "on" position. When `false`, it's in the "off" position.
    */
   value?: boolean;
 
   /**
-   * Whether or not the toggle switch is disabled.
+   * Controls whether the toggle switch can be interacted with. When `true`, the switch is disabled and users cannot change its state.
    */
   disabled?: boolean;
 }
 
 export interface SubtitleType {
   /**
-   * The subtitles to display beneath the main label.
+   * The text content to display as a subtitle beneath the main label.
    */
   content: string;
 
   /**
-   * Property used to modify the subtitle appearance.
+   * The semantic color of the subtitle text that conveys meaning and intent through visual styling.
    */
   color?: ColorType;
 }
 
 export type ListRowSubtitle = string | SubtitleType;
 
+/**
+ * Defines the content and styling options for the left side of list rows.
+ */
 export interface ListRowLeftSide {
   /**
-   * The main label that will be displayed on the left side of the row.
+   * The main label text displayed prominently on the left side of the row.
    */
   label: string;
   /**
-   * The subtitles to display beneath the main label. Up to 3 subtitles can be displayed.
-   * Subtitles can optionally be configured with colors by passing an object with a `content` and `color` properties.
+   * An array of up to three subtitles displayed beneath the main label. Each subtitle can be a string or an object with content and color properties.
    */
   subtitle?: [ListRowSubtitle, ListRowSubtitle?, ListRowSubtitle?];
   /**
@@ -45,82 +47,94 @@ export interface ListRowLeftSide {
    */
   badge?: BadgeProps;
   /**
-   * Colored badges that are displayed underneath the `title` and `subtitles`.
+   * An array of colored badges displayed underneath the title and subtitles for additional status or category information.
    */
   badges?: BadgeProps[];
+  /**
+   * An image configuration object for displaying images on the far left side of the row with optional badge overlay.
+   */
   image?: {
     /**
-     * A link to an image to be displayed on the far left side of the row.
+     * A URL to an image to be displayed on the far left side of the row.
      */
     source?: string;
     /**
-     * A number that is displayed on the top right of the image.
+     * A numeric badge displayed on the top right corner of the image, typically used for counts or quantities.
      */
     badge?: number;
   };
 }
 
+/**
+ * Defines the content and interaction options for the right side of list rows.
+ */
 export interface ListRowRightSide {
   /**
-   * The main label that will be displayed on the right side of the row.
+   * An optional label text displayed on the right side of the row for additional information or values.
    */
   label?: string;
   /**
-   * Show a chevron. Set this to true if pressing on the row navigates to another screen.
+   * Controls chevron display. Set to `true` when pressing the row navigates to another screen.
+   *
    * @defaultValue `false`
    */
   showChevron?: boolean;
   /**
-   * A toggle switch that is be displayed on the right side of the row.
+   * A toggle switch configuration object displayed on the right side of the row for boolean settings or states.
    */
   toggleSwitch?: ToggleSwitch;
 }
 
+/**
+ * Defines the structure and content options for individual rows within the `List` component.
+ */
 export interface ListRow {
   /**
-   * The unique identifier for this list item.
+   * The unique identifier for the list item used for tracking and interaction handling.
    */
   id: string;
   /**
-   * The user interface of the left side of the row.
+   * The content configuration for the left side of the row, including label, subtitles, badges, and optional image.
    */
   leftSide: ListRowLeftSide;
   /**
-   * The user interface of the right side of the row.
+   * The content configuration for the right side of the row, including optional label, chevron, and toggle switch.
    */
   rightSide?: ListRowRightSide;
   /**
-   * Callback for when the user taps the row.
+   * A callback function executed when the user taps the row.
    */
   onPress?: () => void;
 }
 
 export interface ListProps {
   /**
-   * A large display title at the top of the `List`.
+   * A large display title shown at the top of the list.
    */
   title?: string;
   /**
-   * A header component for the list.
+   * A header component displayed at the top of the list for additional context or controls.
    */
   listHeaderComponent?: RemoteFragment;
   /**
-   * The array of `ListRow` which will be converted into rows for this list.
+   * An array of ListRow objects that define the content and structure of each row in the list.
    */
   data: ListRow[];
   /**
-   * Whether or not more data is being loaded. Set this to `true` when paginating and fetching more data for the list.
+   * A boolean indicating whether more data is being loaded. Set to `true` when paginating and fetching additional data for the list.
    */
   isLoadingMore?: boolean;
   /**
-   * The logic behind displaying an image or placeholder. `automatic` will display an image or placeholder if it detects
-   * that a `ListItem` in `data` has an `imageUri` value. `never` will never display images or placeholders. `always` will
-   * always display images or placeholders if `imageUri` is undefined or empty.
+   * The logic for displaying images or placeholders:
+   * - `automatic`: Displays images or placeholders only when it detects that a ListRow has an image source value.
+   * - `always`: Displays images or placeholders for all rows, even when image sources are undefined or empty.
+   * - `never`: Hides all images and placeholders, creating a text-only list layout.
+   *
    * @defaultValue `automatic`
    */
   imageDisplayStrategy?: 'automatic' | 'always' | 'never';
   /**
-   * Callback for when the user reaches the end of the `List`. This can be used to fire a request to load more data.
+   * A callback function executed when the user reaches the end of the list. Use this to trigger requests for loading additional data.
    */
   onEndReached?: () => void;
 }

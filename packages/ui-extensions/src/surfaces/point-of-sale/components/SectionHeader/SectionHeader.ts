@@ -2,28 +2,28 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 export interface SectionHeaderProps {
   /**
-   * Title to be displayed.
+   * The title text displayed in the section header. Provide clear, descriptive text that accurately represents the content section below.
    */
   title: string;
   /**
-   * Action button to be displayed. The SectionHeader must have a `title` for `action` to work.
+   * An optional action button configuration to be displayed alongside the title. The `SectionHeader` must have a title for the action to work properly.
    */
   action?: {
     /**
-     * Label for the action button.
+     * The label text displayed on the action button. Use clear, descriptive labels like "Edit Settings" or "Add Item."
      */
     label: string;
     /**
-     * Function to handle action button press.
+     * A callback function executed when the action button is pressed. Use this to handle user interactions such as navigation or triggering specific actions.
      */
     onPress: () => void;
     /**
-     * Whether or not the action button is disabled.
+     * Controls whether the action button can be pressed. When `true`, the button is disabled and users can't interact with it.
      */
     disabled?: boolean;
   };
   /**
-   * Whether or not the divider line under the SectionHeader should be hidden.
+   * Whether the divider line under the `SectionHeader` should be hidden.
    */
   hideDivider?: boolean;
 }
