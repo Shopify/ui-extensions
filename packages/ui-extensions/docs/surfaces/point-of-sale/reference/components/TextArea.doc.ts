@@ -4,7 +4,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextArea',
   description:
-    'Use a text input to allow merchants to input or modify multiline text.',
+    'Capture longer text content with a multi-line, resizable text input area.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

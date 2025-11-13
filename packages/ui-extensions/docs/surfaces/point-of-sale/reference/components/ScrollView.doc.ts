@@ -7,7 +7,7 @@ const generateCodeBlockForComponent = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'ScrollView',
   description:
-    'The ScrollView component allows content that doesn’t fully fit on screen to scroll. Typically, the ScrollView component serves as the root component of a Screen.',
+    'Create a scrollable container for content that exceeds the available display area.',
   isVisualComponent: true,
   type: 'component',
   definitions: [],

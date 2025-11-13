@@ -4,7 +4,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'SectionHeader',
   description:
-    'A heading style text component with an optional divider line to structure content.',
+    'Display a title with an optional action button and divider line.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

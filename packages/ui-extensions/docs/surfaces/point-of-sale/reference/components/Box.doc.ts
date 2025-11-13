@@ -7,7 +7,7 @@ const generateCodeBlockForBanner = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Box',
   description:
-    'A box component is a container that can be used to group and display content in a consistent manner.',
+    'Display a generic container with consistent spacing and styling.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

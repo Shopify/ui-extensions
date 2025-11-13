@@ -3,7 +3,8 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Stepper',
-  description: 'A component used for increasing or decreasing quantities.',
+  description:
+    'Provide increment and decrement controls for numeric values with visual feedback.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

@@ -1,5 +1,7 @@
 /**
- * SizeKeyword maps to predetermined values in POS.
+ * Defines the standardized spacing scale used throughout the POS design system. Each keyword maps to a predetermined
+ * spacing value that ensures visual consistency across components. Values range from `'0'` (no spacing) through `'2000'`
+ * (maximum spacing), with increments designed to create harmonious visual rhythm and hierarchy.
  */
 export type SizeKeyword =
   | '0'

@@ -4,7 +4,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'DateField',
   description:
-    'A component that enables users to open a dialog and select a date through a text input.',
+    'Capture date input with a consistent interface for date selection and proper validation.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

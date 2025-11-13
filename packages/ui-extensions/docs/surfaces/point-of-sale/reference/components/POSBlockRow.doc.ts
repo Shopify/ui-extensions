@@ -6,7 +6,7 @@ const generateCodeBlockForPOSBlockRow = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'POSBlockRow',
-  description: 'Renders a `POSBlockRow` in a `POSBlock`.',
+  description: 'Render individual rows within a `POSBlock` container.',
   isVisualComponent: true,
   type: 'component',
   thumbnail: 'pos-block-row-thumbnail.png',

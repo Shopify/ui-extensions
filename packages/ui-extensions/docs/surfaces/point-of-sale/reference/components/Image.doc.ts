@@ -4,7 +4,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Image',
   description:
-    'The image component displays an image to a merchant in Shopify POS.',
+    'Add visual content to the POS interface and customize the presentation of visuals.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

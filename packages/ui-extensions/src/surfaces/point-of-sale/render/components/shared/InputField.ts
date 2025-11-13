@@ -1,69 +1,48 @@
 /**
- * Represents an action type for the text field components.
- * @typedef {Object} InputAction
- * @property {string} label - The text displayed in the button.
- * @property {boolean} [disabled] - Whether the button is disabled.
- * @property {function(): void} onPress - A callback to be performed.
+ * Defines the configuration object for action buttons displayed below input fields to provide extra functionality.
  */
 export interface InputAction {
   /**
-   * The text displayed in the button.
+   * The text displayed on the action button.
    */
   label: string;
   /**
-   * A callback to be performed.
+   * A callback function executed when the action button is pressed.
    */
   onPress: () => void;
   /**
-   * Whether the button can be pressed.
+   * A boolean value that determines whether the action button can be pressed.
    */
   disabled?: boolean;
 }
 
-/**
- * Represents the properties for the text field components.
- * @typedef {Object} InputProps
- * @property {boolean} [disabled] - Whether the field is disabled.
- * @property {string} [error] - Indicate an error to the user. The field will be given a specific stylistic treatment to communicate problems that have to be resolved immediately.
- * @property {string} [label] - Content to use as the field label.
- * @property {function(): void} [onBlur] - Callback when focus is blurred.
- * @property {function(value: string): void} [onChange] - Callback when the user has finished editing a field.
- * @property {function(): void} [onFocus] - Callback when input is focused.
- * @property {function(value: string): void} [onInput] - Callback when the user makes any changes in the field. As noted in the documentation for `onChange`, you **must not** use this to update `value` — use the `onChange` callback for that purpose. Use the `onInput` prop when you need to do something as soon as the user makes a change, like clearing validation errors that apply to the field as soon as the user begins making the necessary adjustments.
- * @property {string} [placeholder] - A short hint that describes the expected value of the field.
- * @property {boolean} [required] - Whether the field needs a value.
- * @property {string} [value] - The current value for the field. If omitted, the field will be empty. You should update this value in response to the `onChange` callback.
- * @property {string} [helpText] - Label under the text field which provides guidance or instructions that assist users.
- * @property {InputAction} [action] - A button under the text field to provide extra functionality.
- * @property {number?} [maxLength] - Specifies the maximum number of characters allowed.
- */
 export interface InputProps {
   /**
-   * Whether the field can be modified.
+   * Controls whether the field can be modified. When `true`, the field is disabled and users cannot edit its value.
    */
   disabled?: boolean;
   /**
-   * Indicates an error to the user. The field is given specific stylistic treatment to communicate problems that have to be resolved immediately.
+   * An error message that indicates a problem to the user. The field is given specific stylistic treatment to communicate issues that must be resolved immediately.
    */
   error?: string;
   /**
-   * The content to use as the field label.
+   * The content to use as the field label that describes the text information being requested.
    */
   label: string;
   /**
-   * The callback when focus is removed.
+   * A callback function executed when focus is removed from the field.
    */
   onBlur?: () => void;
   /**
-   * The callback when the user has finished editing a field.
+   * A callback function executed when the user has finished editing the field, receiving the new text value as a parameter. You should update the `value` property in response to this callback.
    */
   onChange?: (value: string) => void;
   /**
-   * The callback when input is focused.
+   * A callback function executed when the field receives focus.
    */
   onFocus?: () => void;
   /**
-   * Callback when the user makes any changes in the field. As noted in the documentation for `onChange`, you **must not** use this to update `value` — use the `onChange` callback for that purpose. Use the `onInput` prop when you need to do something as soon as the user makes a change, like clearing validation errors that apply to the field as soon as the user begins making the necessary adjustments.
+   * A callback function executed immediately when the user makes any change in the field. Use this for real-time feedback, such as clearing validation errors as soon as the user begins making corrections. Don't use this to update the `value` property—the `onChange` callback is the appropriate handler for updating the field's value.
    */
   onInput?: (value: string) => void;
   /**
@@ -71,23 +50,23 @@ export interface InputProps {
    */
   placeholder?: string;
   /**
-   * Whether the field needs a value.
+   * A boolean that indicates whether the field needs a value for form submission or validation purposes.
    */
   required?: boolean;
   /**
-   * The current value for the field. Defaults to now. You should update this value in response to the `onChange` callback.
+   * The current text value for the field. If omitted, the field will be empty. You should update the `value` property in response to the `onChange` callback.
    */
   value?: string;
   /**
-   * The label under the text field which provides guidance or instructions that assist users.
+   * The label text displayed under the field that provides guidance or instructions to assist users.
    */
   helpText?: string;
   /**
-   * A button under the text field to provide extra functionality.
+   * A button configuration object displayed under the text field to provide extra functionality.
    */
   action?: InputAction;
   /**
-   * The maximum number of characters allowed in the input field.
+   * The maximum number of characters allowed in the text field.
    */
   maxLength?: number;
 }
