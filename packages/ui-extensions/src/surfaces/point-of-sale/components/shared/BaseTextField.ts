@@ -1,34 +1,26 @@
-/**
- * @property `title` the title of the `TextField`.
- * @property `initialValue` populates the `TextField` with an text initial value.
- * @property `placeholder` sets a placeholder value for when the `TextField` is empty.
- * @property `isValid` set whether the current value in the `TextField` is valid.
- * @property `errorMessage` sets an error message to present to the user.
- * @property `onChangeText` a callback that is executed every time the `TextField` value changes.
- */
 export interface BaseTextFieldProps {
   /**
-   * The title of the `TextField`.
+   * The title text displayed for the text field.
    */
   title?: string;
   /**
-   * Populates the `TextField` with an text initial value.
+   * The initial text value to populate the text field with when it first renders.
    */
   initialValue?: string;
   /**
-   * Sets a placeholder value for when the `TextField` is empty.
+   * A placeholder hint displayed when the text field is empty.
    */
   placeholder?: string;
   /**
-   * Set whether the current value in the `TextField` is valid.
+   * Controls the validation state of the current value in the text field. When `false`, indicates invalid input.
    */
   isValid?: boolean;
   /**
-   * Sets an error message to present to the user.
+   * An error message to display to the user when validation fails.
    */
   errorMessage?: string;
   /**
-   * A callback that is executed every time the `TextField` value changes.
+   * A callback function executed every time the text field value changes, receiving the new value as a parameter.
    */
   onChangeText?: (value: string) => void;
 }

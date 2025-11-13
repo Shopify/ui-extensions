@@ -1,11 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-/**
- * @property `initialScreenName` sets the initial `Screen` whose `name` matches.
- */
 export interface NavigatorProps {
   /**
-   * Sets the initial `Screen` whose `name` matches.
+   * The name of the initial `Screen` component to display when the Navigator is first rendered. Must match the `name` property of a child `Screen` component.
    */
   initialScreenName?: string;
 }

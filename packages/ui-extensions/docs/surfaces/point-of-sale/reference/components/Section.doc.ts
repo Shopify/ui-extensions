@@ -6,7 +6,7 @@ const generateCodeBlockForComponent = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Section',
-  description: `A component used to group other components together in a card-like UI. Usually, sections will be used inside a ScrollView.
+  description: `Group related content into clearly-defined thematic areas.
   > Note:
   > Section no longer has a border as of POS 10.0.0.`,
   isVisualComponent: true,

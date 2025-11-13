@@ -7,7 +7,8 @@ const generateCodeBlockForTimePicker = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'TimePicker',
-  description: 'A component used to select a time through a dialog.',
+  description:
+    'Allow merchants to select a specific time using an interactive picker interface.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

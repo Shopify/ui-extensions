@@ -3,8 +3,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextField',
-  description:
-    'Use a text field to allow merchants to enter or edit text. If you want to specify the kind of input, then use a formatted text field.',
+  description: 'Capture single-line text input.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

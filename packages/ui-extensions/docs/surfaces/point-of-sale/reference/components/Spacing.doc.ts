@@ -4,7 +4,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Spacing',
   description:
-    'Set of spacing constants to be used in the UI Extensions components library.',
+    'Apply consistent spacing to maintain visual balance and touch-friendly layouts.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

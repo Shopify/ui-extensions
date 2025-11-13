@@ -3,8 +3,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Selectable',
-  description:
-    'The selectable component allows you to wrap any non-interactive UI component to make it selectable.',
+  description: 'Wrap any non-interactive UI component to make it selectable.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

@@ -2,60 +2,53 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 export type DialogType = 'default' | 'alert' | 'error' | 'destructive';
 
-/**
- * @property title - The text displayed in the title of the dialog.
- * @property content - The text displayed in the body of the dialog.
- * @property actionText - The text displayed in the primary action button of the dialog.
- * @property secondaryActionText - The text displayed in the secondary action section of the dialog.
- * @property showSecondaryAction - Whether a secondary action displays.
- * @property type - Determines the dialog’s appearance and function.
- * @property onAction - A callback that performs when the action is triggered.
- * @property onSecondaryAction - A callback that is executed when the secondary action is triggered.
- * @property isVisible - Whether the dialog should be presented.
- */
 export interface DialogProps {
   /**
-   * The text displayed in the title of the dialog.
+   * The text displayed in the title of the dialog. This should be concise and clearly communicate the purpose or action being confirmed.
    */
   title: string;
 
   /**
-   * The text displayed in the body of the dialog.
+   * The text displayed in the body of the dialog. Use this to provide additional context, instructions, or details about the action being confirmed.
    */
   content?: string;
 
   /**
-   * The text displayed in the primary action button of the dialog.
+   * The text displayed on the primary action button of the dialog. Use clear, action-oriented language like "Delete," "Confirm," "Save," or "Continue."
    */
   actionText: string;
 
   /**
-   * The text displayed in the secondary action section of the dialog.
+   * The text displayed on the secondary action button, typically used for "Cancel," "Go Back," or alternative actions. Only displayed when `showSecondaryAction` is `true`.
    */
   secondaryActionText?: string;
 
   /**
-   * Whether a secondary action displays.
+   * Controls whether a secondary action button is displayed alongside the primary action. Set to `true` to show both buttons, `false` to show only the primary action.
    */
   showSecondaryAction?: boolean;
 
   /**
-   * Determines the dialog’s appearance and function.
+   * Determines the dialog's visual appearance and semantic meaning. Available options:
+   * - `'default'` - Standard styling for general-purpose dialogs and confirmations
+   * - `'alert'` - Warning styling for important notices that require attention
+   * - `'error'` - Error styling for critical issues and failure notifications
+   * - `'destructive'` - Destructive styling for actions that can't be undone, like deletions
    */
   type?: DialogType;
 
   /**
-   * A callback that performs when the action is triggered.
+   * The callback function executed when the primary action button is pressed. This should handle the main action the dialog is confirming or requesting.
    */
   onAction: () => void;
 
   /**
-   * A callback that is executed when the secondary action is triggered.
+   * The callback function executed when the secondary action button is pressed. Typically used to cancel the dialog or provide an alternative action path.
    */
   onSecondaryAction?: () => void;
 
   /**
-   * Whether the dialog should be presented.
+   * Controls whether the dialog is displayed or hidden. Set to `true` to show the dialog, `false` to hide it. Use this to manage dialog visibility based on user interactions or application state.
    */
   isVisible: boolean;
 }

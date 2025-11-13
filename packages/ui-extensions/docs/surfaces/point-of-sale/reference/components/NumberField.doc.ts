@@ -3,8 +3,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'NumberField',
-  description:
-    'Use a number field to conveniently and accurately capture numerical values.',
+  description: 'Capture numeric input with built-in validation.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
