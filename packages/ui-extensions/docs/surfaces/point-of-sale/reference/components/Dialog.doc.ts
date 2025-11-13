@@ -6,8 +6,7 @@ const generateCodeBlockForDialog = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Dialog',
-  description:
-    'A dialog is a high-priority, intentionally disruptive message that requires action from the merchant before they can continue using POS.',
+  description: 'Display a modal that requires user attention and interaction.',
   isVisualComponent: true,
   type: 'component',
   definitions: [

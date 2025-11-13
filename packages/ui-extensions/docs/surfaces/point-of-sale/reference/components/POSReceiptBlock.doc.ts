@@ -6,7 +6,7 @@ const generateCodeBlockForPOSReceiptBlock = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'POSReceiptBlock',
-  description: `A component used to group other components together for display on POS receipts.
+  description: `Group components together for display on POS receipts.
   > Note:
   > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.
   >

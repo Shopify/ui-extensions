@@ -6,8 +6,7 @@ const generateCodeBlockForPOSBlock = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'POSBlock',
-  description:
-    'The `POSBlock` provides a surface on the specified extension target as an entry point to an extension. Note that the title displayed on this `POSBlock` is dependent on the description of the extension.',
+  description: 'Create a container to place content with an action button.',
   isVisualComponent: true,
   type: 'component',
   thumbnail: 'pos-block-thumbnail.png',

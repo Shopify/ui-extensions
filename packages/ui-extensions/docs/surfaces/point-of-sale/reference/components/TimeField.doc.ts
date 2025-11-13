@@ -4,7 +4,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TimeField',
   description:
-    'A component that enables users to open a dialog and select a time through a text input.',
+    'Capture time input with a consistent interface for time selection and validation.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
