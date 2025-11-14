@@ -202,6 +202,24 @@ If your app is using ESLint, update your configuration to include the new global
     },
     {
       type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+As of 2025-10, UI extensions have the following limitations:
+- **File size limit**: Extensions are limited to a maximum of 64 KB when deployed. This limit helps ensure fast loading times and optimal performance.
+`,
+      sectionNotice: [
+        {
+          title: 'Note',
+          sectionContent: `
+The 64 KB limit applies to the compiled extension bundle size upon deployment.
+`,
+          type: 'info',
+        },
+      ],
+    },
+    {
+      type: 'Generic',
       title: 'Deploying',
       anchorLink: 'deploying',
       sectionContent:
