@@ -2,14 +2,6 @@ import type {MultipleResourceResult} from '../../../types/multiple-resource-resu
 import type {PaginatedResult} from '../../../types/paginated-result';
 import type {Product, ProductVariant} from '../../../types/product';
 
-/**
- * Specifies the order in which products should be sorted. When a `queryString` is provided, `sortType` won't have any effect, as the results will be returned in order by relevance to the `queryString`. Available options:
- *
- * - **`RECENTLY_ADDED`** - Sorts products by creation date in descending order, displaying the most recently added products first. Commonly used to highlight new inventory additions or showcase latest product arrivals.
- * - **`RECENTLY_ADDED_ASCENDING`** - Sorts products by creation date in ascending order, displaying the oldest products first. Typically applied when prioritizing established products or implementing chronological browsing from earliest to newest
- * - **`ALPHABETICAL_A_TO_Z`** - Sorts products alphabetically by title from A to Z. Commonly used for product catalogs where alphabetical organization improves browsing efficiency and helps users locate products by name quickly.
- * - **`ALPHABETICAL_Z_TO_A`** - Sorts products alphabetically by title from Z to A in reverse order. Typically applied when reverse alphabetical sorting is needed for specialized browsing patterns or user preferences.
- */
 export type ProductSortType =
   | 'RECENTLY_ADDED'
   | 'RECENTLY_ADDED_ASCENDING'
@@ -45,9 +37,12 @@ export interface ProductSearchParams extends PaginationParams {
    */
   queryString?: string;
   /**
-   * Specifies the order in which product results are returned when no `queryString` is provided. Options include recently added (newest/oldest first) and alphabetical (A-Z/Z-A). The `sortType` has no effect when `queryString` is specified—relevance sorting always takes precedence for search queries. When omitted, the default sort order is typically creation date descending (newest products first).
+   * Specifies the order in which products should be sorted. When a `queryString` is provided, `sortType` won't have any effect, as the results will be returned in order by relevance to the `queryString`. Available options:
    *
-   * Commonly used for organizing product listings, creating sorted catalogs, or implementing browsing interfaces where users explore products without searching.
+   * - **`RECENTLY_ADDED`** - Sorts products by creation date in descending order, displaying the most recently added products first. Commonly used to highlight new inventory additions or showcase latest product arrivals.
+   * - **`RECENTLY_ADDED_ASCENDING`** - Sorts products by creation date in ascending order, displaying the oldest products first. Typically applied when prioritizing established products or implementing chronological browsing from earliest to newest
+   * - **`ALPHABETICAL_A_TO_Z`** - Sorts products alphabetically by title from A to Z. Commonly used for product catalogs where alphabetical organization improves browsing efficiency and helps users locate products by name quickly.
+   * - **`ALPHABETICAL_Z_TO_A`** - Sorts products alphabetically by title from Z to A in reverse order. Typically applied when reverse alphabetical sorting is needed for specialized browsing patterns or user preferences.
    */
   sortType?: ProductSortType;
 }
