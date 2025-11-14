@@ -7,6 +7,7 @@ import {ProductSearchApi} from '../product-search-api/product-search-api';
 import {PrintApi} from '../print-api/print-api';
 import {StorageApi} from '../storage-api/storage-api';
 import {PinPadApi} from '../pin-pad-api';
+import {CameraApi} from '../camera-api/camera-api';
 
 export type StandardApi<T> = {[key: string]: any} & {
   extensionPoint: T;
@@ -18,4 +19,5 @@ export type StandardApi<T> = {[key: string]: any} & {
   DeviceApi &
   ConnectivityApi &
   StorageApi &
-  PinPadApi;
+  PinPadApi &
+  CameraApi;
