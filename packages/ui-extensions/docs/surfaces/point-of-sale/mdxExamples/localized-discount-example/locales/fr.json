@@ -1,0 +1,11 @@
+{
+  "name": "Réduction",
+  "itemCount": {
+    "zero": "Aucun article dans le panier",
+    "one": "{{count}} article dans le panier",
+    "other": "{{count}} articles dans le panier"
+  },
+  "availableDiscounts": "Voir les options de réduction",
+  "discountApplied": "Réduction appliquée!",
+  "modalTitle": "Choisir une réduction"
+}

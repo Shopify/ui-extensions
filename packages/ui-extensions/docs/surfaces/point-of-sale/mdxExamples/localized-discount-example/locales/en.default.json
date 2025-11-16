@@ -1,0 +1,11 @@
+{
+  "name": "Discount",
+  "itemCount": {
+    "zero": "No items in cart",
+    "one": "{{count}} item in cart",
+    "other": "{{count}} items in cart"
+  },
+  "availableDiscounts": "View discount options",
+  "discountApplied": "Discount applied!",
+  "modalTitle": "Choose a discount"
+}

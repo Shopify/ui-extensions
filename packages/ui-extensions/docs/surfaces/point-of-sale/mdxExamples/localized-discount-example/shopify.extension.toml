@@ -1,0 +1,21 @@
+api_version = "2025-10"
+
+[[extensions]]
+type = "ui_extension"
+# Change the merchant-facing name of the extension in locales/en.default.json
+name = "t:name"
+uid = "11fd348b-1de3-4793-6892-baa416fc3df29b4377b5"
+handle = "discount"
+description = "Add discount"
+
+# module: file that contains your extension’s source code
+# target: location where your extension appears in POS
+# [START config.setup-targets]
+[[extensions.targeting]]
+module = "./src/Tile.jsx"
+target = "pos.home.tile.render"
+
+[[extensions.targeting]]
+module = "./src/Modal.jsx"
+target = "pos.home.modal.render"
+# [END config.setup-targets]
