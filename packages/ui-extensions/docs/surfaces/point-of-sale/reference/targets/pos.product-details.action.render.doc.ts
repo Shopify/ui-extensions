@@ -5,7 +5,8 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosProductDetailsActionRender,
   description:
-    'A full-screen extension target that renders when a `pos.product-details.action.menu-item.render` target calls for it',
+    'Renders a full-screen modal interface launched from product details menu items. Use this target for complex product workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.' +
+    '\n\nExtensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components.',
   defaultExample: {
     codeblock: generateCodeBlock('Action', 'targets', 'product-details-action'),
   },

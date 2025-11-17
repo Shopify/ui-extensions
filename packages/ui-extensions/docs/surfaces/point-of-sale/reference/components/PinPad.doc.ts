@@ -3,13 +3,14 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'PinPad',
   description:
-    'Provide a secure numeric keypad interface for PIN entry and validation.',
+    'The `PinPad` component provides a secure numeric keypad interface for PIN entry and validation. Use it to collect PIN codes, passcodes, or other sensitive numeric input with proper masking and validation.\n\nThe component provides a secure numeric input interface specifically designed for PIN entry, with visual feedback that masks entered digits for security. It includes built-in validation for PIN length requirements, supports error states for invalid PINs, and provides haptic feedback on touch-enabled devices to confirm key presses during secure authentication workflows.\n\n`PinPad` components meets security standards for PIN entry by preventing screenshot capture and display recording, protecting sensitive authentication data during payment authorization and staff access workflows.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
-      title: 'PinPad',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `PinPad` component.',
       type: 'PinPadProps',
     },
   ],

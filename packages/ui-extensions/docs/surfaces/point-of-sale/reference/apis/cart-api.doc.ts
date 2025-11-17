@@ -7,27 +7,15 @@ const generateCodeBlockForCartApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Cart API',
-  description: `
-The Cart API enables UI Extensions to manage and interact with POS cart contents, such as discounts, line items, and customer details. It provides a comprehensive set of functions for adding and removing items, alongside a subscribable object that keeps the UI Extension updated with real-time changes to the cart.
-
-### Supporting targets
-- ${TargetLink.PosHomeTileRender}
-- ${TargetLink.PosHomeModalRender}
-- ${TargetLink.PosProductDetailsActionMenuItemRender}
-- ${TargetLink.PosProductDetailsActionRender}
-- ${TargetLink.PosCustomerDetailsActionMenuItemRender}
-- ${TargetLink.PosCustomerDetailsActionRender}
-- ${TargetLink.PosOrderDetailsActionMenuItemRender}
-- ${TargetLink.PosOrderDetailsActionRender}
-- ${TargetLink.PosDraftOrderDetailsActionMenuItemRender}
-- ${TargetLink.PosDraftOrderDetailsActionRender}
-`,
+  description:
+    'The Cart API provides comprehensive access to POS cart management functionality, enabling extensions to read cart state, modify line items, apply discounts, manage customer information, and handle cart properties through a subscribable interface that delivers real-time updates. The API supports both individual and bulk operations for efficient cart manipulation.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'CartApi',
-      description: '',
+      description:
+        'The `CartApi` object provides access to cart management methods and subscribable cart state. Access these methods through `api.cart` to build cart-aware extensions that respond to real-time cart updates.',
       type: 'CartApiContent',
     },
   ],

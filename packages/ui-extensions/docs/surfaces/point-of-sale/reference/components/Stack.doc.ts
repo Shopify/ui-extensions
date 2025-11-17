@@ -16,13 +16,14 @@ const generateCodeBlockForStack = (title: string, fileName: string) => {
 const data: ReferenceEntityTemplateSchema = {
   name: 'Stack',
   description:
-    'Organize elements horizontally or vertically along the block or inline axis.',
+    'The `Stack` component organizes elements horizontally or vertically along the block or inline axis. Use it to structure layouts, group related components, or control spacing between elements with flexible alignment options.\n\nThe component simplifies layout creation by automatically managing spacing between child elements through gap properties, eliminating the need for manual margin management. It supports both horizontal and vertical arrangements, flexible alignment options, and wrapping behavior, making it the foundation for building consistent, responsive layouts throughout POS extensions.\n\n`Stack` components support responsive gap values that automatically adjust spacing based on screen size, ensuring layouts remain visually balanced and maintain proper element separation across different devices.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
-      title: 'Stack',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `Stack` component.',
       type: 'StackProps',
     },
   ],

@@ -7,19 +7,15 @@ const generateCodeBlockForProductApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Product API',
-  description: `
-The Product API provides an extension with data about the current Product.
-
-### Supporting targets
-- ${TargetLink.PosProductDetailsActionMenuItemRender}
-- ${TargetLink.PosProductDetailsActionRender}
-`,
+  description:
+    'The Product API provides read-only access to product data. Use this API to get product information and build contextual experiences based on the selected product context. The API offers product details for implementing product-specific functionality and workflows.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'ProductApi',
-      description: '',
+      description:
+        'The `ProductApi` object provides access to product data. Access this property through `api.product` to interact with the current product context.',
       type: 'ProductApiContent',
     },
   ],

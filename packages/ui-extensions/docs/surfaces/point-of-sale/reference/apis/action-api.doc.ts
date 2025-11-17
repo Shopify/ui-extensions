@@ -7,23 +7,15 @@ const generateCodeBlockForActionApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Action API',
-  description: `
-The Action API allows an action extension to modally present its corresponding modal target.
-
-### Supporting targets
-- ${TargetLink.PosHomeTileRender}
-- ${TargetLink.PosPurchasePostActionMenuItemRender}
-- ${TargetLink.PosOrderDetailsActionMenuItemRender}
-- ${TargetLink.PosProductDetailsActionMenuItemRender}
-- ${TargetLink.PosCustomerDetailsActionMenuItemRender}
-- ${TargetLink.PosDraftOrderDetailsActionMenuItemRender}
-`,
+  description:
+    'The Action API provides modal presentation functionality for POS UI extensions, allowing you to launch full-screen modal interfaces from menu items, tiles, and block targets. The API enables navigation between different targets within your extension.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'ActionApi',
-      description: '',
+      description:
+        'The `ActionApi` object provides methods for presenting modal interfaces. Access these methods through `api.action` to launch full-screen modal experiences.',
       type: 'ActionApiContent',
     },
   ],
