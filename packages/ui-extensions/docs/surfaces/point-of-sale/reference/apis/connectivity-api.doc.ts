@@ -9,13 +9,14 @@ const generateJsxCodeBlockForConnectivityApi = (
 const data: ReferenceEntityTemplateSchema = {
   name: 'Connectivity API',
   description:
-    'The Connectivity API enables POS UI extensions to retrieve device connectivity information, such as whether the device has an internet connection.',
+    'The Connectivity API provides access to device connectivity information, allowing you to monitor Internet connection status and respond to connectivity changes in real-time. The API enables both immediate connectivity checks and dynamic updates when network conditions change.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'ConnectivityApi',
-      description: '',
+      description:
+        'The `ConnectivityApi` object provides access to current connectivity information and change notifications. Access these properties through `shopify.connectivity` to monitor network status.',
       type: 'ConnectivityApiContent',
     },
   ],

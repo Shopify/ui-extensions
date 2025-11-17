@@ -114,10 +114,10 @@ export interface NumberFieldJSXProps
   error?: NumberFieldProps['error'];
   /**
    * The virtual keyboard layout that the field displays for numeric input. This property isn't supported when using `stepper` controls.
-   * - `decimal`: A keyboard layout that includes decimal point support for entering fractional numbers, prices, or measurements with decimal precision.
-   * - `numeric`: A keyboard layout optimized for integer-only entry without decimal point support, ideal for quantities, counts, or whole number values.
    *
-   * Learn more about [inputmode on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode).
+   * - `'decimal'` - A keyboard layout that includes decimal point support for entering fractional numbers, prices, or measurements with decimal precision.
+   * - `'numeric'` - A keyboard layout optimized for integer-only entry without decimal point support, ideal for quantities, counts, or whole number values.
+   *
    * @default 'decimal'
    */
   inputMode?: NumberFieldProps['inputMode'];
@@ -131,9 +131,12 @@ export interface NumberFieldJSXProps
   accessory?: ComponentChild;
   /**
    * The type of controls displayed for the field:
-   * - `auto`: An automatic setting where the presence of controls depends on the surface and context. The system determines the most appropriate control type based on the usage scenario.
-   * - `stepper`: Displays increment (+) and decrement (-) buttons for adjusting the numeric value. When `stepper` controls are enabled, the field behavior is constrained: it accepts only integer values, always contains a value (never empty), and automatically validates against `min` and `max` bounds. The `label`, `details`, `placeholder`, `error`, `required`, and `inputMode` properties aren't supported with `stepper` controls.
-   * - `none`: A control type with no visible controls where users must input the value manually using the keyboard.
+   *
+   * - `'auto'` - An automatic setting where the presence of controls depends on the surface and context. The system determines the most appropriate control type based on the usage scenario.
+   * - `'stepper'` - Displays increment (+) and decrement (-) buttons for adjusting the numeric value. When `stepper` controls are enabled, the field behavior is constrained: it accepts only integer values, always contains a value (never empty), and automatically validates against `min` and `max` bounds. The `label`, `details`, `placeholder`, `error`, `required`, and `inputMode` properties aren't supported with `stepper` controls.
+   * - `'none'` - A control type with no visible controls where users must input the value manually using the keyboard.
+   *
+   * @default 'auto'
    */
   controls?: NumberFieldProps['controls'];
   /**

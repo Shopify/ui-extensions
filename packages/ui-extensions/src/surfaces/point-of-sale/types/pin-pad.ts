@@ -31,11 +31,11 @@ export type PinLength = 4 | 5 | 6 | 7 | 8 | 9 | 10;
  */
 export interface PinPadActionType {
   /**
-   * The button label text displayed to the user on the PIN pad interface. This text appears on a clickable action button and should clearly describe what the button does (for example, "Use default PIN", "Try biometric", "Skip PIN"). The label should be concise and action-oriented to guide users.
+   * The content for the prompt on the pin pad. Use to provide clear instructions or context about what the PIN is being used for.
    */
   label: string;
   /**
-   * The function called when the action button is clicked. This function should return the PIN value as an array of digits, either synchronously or as a Promise. For example, returning `[1, 2, 3, 4]` would auto-fill the PIN with "1234". This enables custom PIN entry workflows like retrieving stored PINs, using biometric authentication, or implementing fallback authentication methods.
+   * A callback function executed when the action button is clicked. Can return the PIN digits directly as an array of numbers, or return a Promise that resolves to the PIN array. Use for implementing custom PIN retrieval logic or validation workflows.
    */
   onClick: () => Promise<number[]> | number[];
 }
@@ -45,45 +45,45 @@ export interface PinPadActionType {
  */
 export interface PinPadOptions {
   /**
-   * The function to be called when a pin is entered. Commonly used for real-time PIN validation, progress feedback, or implementing custom PIN entry handling logic.
+   * The function to be called when a pin is entered. Use for real-time PIN validation, progress feedback, or implementing custom PIN entry handling logic.
    */
   onPinEntry?: (pin: number[]) => void;
   /**
-   * The function to be called when the pin pad modal is dismissed. Receives a `PinPadResult` indicating whether PIN entry was completed and the entered PIN if available. Commonly used for handling modal dismissal and processing final PIN results.
+   * The function to be called when the pin pad modal is dismissed. Receives a `PinPadResult` indicating whether PIN entry was completed and the entered PIN if available. Use for handling modal dismissal and processing final PIN results.
    */
   onDismissed?: (result: PinPadResult) => void;
   /**
-   * The content for the prompt on the pin pad. Commonly used to provide clear instructions or context about what the PIN is being used for.
+   * The content for the prompt on the pin pad. Use to provide clear instructions or context about what the PIN is being used for.
    */
   label?: string;
   /**
-   * Whether the entered PIN should be masked for security. When `true`, PIN digits are hidden from view. Commonly used for secure PIN entry where visual privacy is important.
+   * Whether the entered PIN should be masked for security. When `true`, PIN digits are hidden from view. Use for secure PIN entry where visual privacy is important.
    *
    * @default true
    */
   masked?: boolean;
   /**
-   * The minimum length of the PIN (4-10 digits). Commonly used to enforce PIN length requirements based on your security policies or authentication system requirements.
+   * The minimum length of the PIN (4-10 digits). Use to enforce PIN length requirements based on your security policies or authentication system requirements.
    *
    * @default 4
    */
   minPinLength?: PinLength;
   /**
-   * The maximum length of the PIN (4-10 digits). Commonly used to limit PIN length based on your security policies or authentication system constraints.
+   * The maximum length of the PIN (4-10 digits). Use to limit PIN length based on your security policies or authentication system constraints.
    *
    * @default 6
    */
   maxPinLength?: PinLength;
   /**
-   * The call to action between the entry view and the keypad, consisting of a label and function that returns the pin. Commonly used for custom PIN entry workflows or implementing specific authentication patterns.
+   * The call to action between the entry view and the keypad, consisting of a label and function that returns the pin. Use for custom PIN entry workflows or implementing specific authentication patterns.
    */
   pinPadAction?: PinPadActionType;
   /**
-   * The title shown in the modal header. Commonly used to provide context about the PIN entry purpose or identify the specific authentication requirement.
+   * The title shown in the modal header. Use to provide context about the PIN entry purpose or identify the specific authentication requirement.
    */
   title?: string;
   /**
-   * Whether the pin should be automatically submitted when the user has entered the maximum PIN length. Commonly used for PIN entry experiences where users don't need to manually submit after entering the required digits.
+   * Whether the pin should be automatically submitted when the user has entered the maximum PIN length. Use for PIN entry experiences where users don't need to manually submit after entering the required digits.
    *
    * @default false
    */

@@ -2,26 +2,29 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextField',
-  description: 'Capture single-line text input.',
+  description:
+    'The `TextField` component captures single-line text input. Use it to collect short, free-form information in forms and data entry workflows.' +
+    '\n\nThe component supports various input configurations including placeholders, character limits, and validation. It includes built-in support for labels, helper text, and error states to guide merchants through data entry, ensuring accurate and efficient information capture across different retail scenarios.',
   thumbnail: 'text-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the `TextField` component.',
       type: 'TextField',
     },
     {
       title: 'Slots',
       description:
-        'Learn more about using [slots](/docs/api/pos-ui-extensions/using-polaris-components#slots)',
+        'The `TextField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TextFieldSlots',
     },
     {
       title: 'Events',
       description:
-        'Learn more about registering [events](/docs/api/pos-ui-extensions/using-polaris-components#events)',
+        'The `TextField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TextFieldEvents',
     },
   ],

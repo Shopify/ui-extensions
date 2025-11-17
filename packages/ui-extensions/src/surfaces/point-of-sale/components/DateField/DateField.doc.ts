@@ -3,20 +3,23 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'DateField',
   description:
-    'Capture date input with a consistent interface for date selection and proper validation.',
+    'The `DateField` component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.' +
+    '\n\n`DateField` components support both manual text entry and picker selection, giving merchants flexibility to choose their preferred input method based on personal preference and specific date entry scenarios.' +
+    '\n\nFor visual calendar-based selection, consider `DatePicker`. For space-constrained layouts with scrolling date selection, use `DateSpinner`.',
   thumbnail: 'date-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the `DateField` component.',
       type: 'DateField',
     },
     {
       title: 'Events',
       description:
-        'Learn more about registering [events](/docs/api/pos-ui-extensions/using-polaris-components#events)',
+        'The `DateField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'DateFieldEvents',
     },
   ],

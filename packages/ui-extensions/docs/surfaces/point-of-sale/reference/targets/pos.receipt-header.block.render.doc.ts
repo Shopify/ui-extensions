@@ -5,9 +5,9 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosReceiptHeaderBlockRender,
-  description: `Renders a custom section within the POS receipt header
-  > Note:
-  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
+  description:
+    'Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.' +
+    '\n\nExtensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
       'Receipt Header Block',

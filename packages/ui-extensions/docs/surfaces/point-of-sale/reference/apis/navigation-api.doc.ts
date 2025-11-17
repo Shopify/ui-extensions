@@ -9,28 +9,21 @@ const generateJsxCodeBlockForNavigationApi = (
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Navigation API',
-  description: `
-The Navigation API enables POS UI extension to navigate between screens.
-
-#### Supporting targets
-- ${TargetLink.PosHomeModalRender}
-- ${TargetLink.PosPurchasePostActionRender}
-- ${TargetLink.PosProductDetailsActionRender}
-- ${TargetLink.PosOrderDetailsActionRender}
-- ${TargetLink.PosDraftOrderDetailsActionRender}
-- ${TargetLink.PosCustomerDetailsActionRender}
-`,
+  description:
+    'The Navigation API provides web-standard navigation functionality for POS UI extensions, allowing you to navigate between URLs, manage navigation history, and handle navigation events within modal interfaces. The API is available globally as the `navigation` object and follows web platform standards.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'NavigationApi',
-      description: '',
+      description:
+        'The global `navigation` object provides web-standard navigation functionality. Access these properties and methods directly through the global `navigation` object to manage navigation within modal interfaces.',
       type: 'Navigation',
     },
     {
       title: 'Window',
-      description: '',
+      description:
+        'The global `window` object provides control over the extension screen lifecycle. Access these properties and methods directly through the global `window` object to manage the modal interface.',
       type: 'Window',
     },
   ],

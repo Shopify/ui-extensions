@@ -5,7 +5,8 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosProductDetailsActionMenuItemRender,
   description:
-    'A static extension target that renders as a menu item on the product details screen',
+    'Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.' +
+    '\n\nExtensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete product workflows.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
       'Menu item',

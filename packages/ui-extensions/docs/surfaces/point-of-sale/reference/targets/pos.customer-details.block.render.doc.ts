@@ -4,7 +4,9 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosCustomerDetailsBlockRender,
-  description: 'Renders a custom section within customer details screen',
+  description:
+    'Renders a custom information section within the customer details screen. Use this target for displaying supplementary customer data like loyalty status, points balance, or personalized information alongside standard customer details.' +
+    '\n\nExtensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex customer operations.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
       'Block',

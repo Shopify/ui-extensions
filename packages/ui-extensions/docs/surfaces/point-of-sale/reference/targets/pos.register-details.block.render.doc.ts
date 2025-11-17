@@ -4,7 +4,9 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosRegisterDetailsBlockRender,
-  description: 'Renders a custom section within register details screen',
+  description:
+    'Renders a custom information section within the register details screen. Use this target for displaying supplementary register data like cash drawer status, transaction summaries, or shift analytics alongside standard register details.' +
+    '\n\nExtensions at this target appear as persistent blocks within the register details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex register operations.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
       'Register Details Block',

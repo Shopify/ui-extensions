@@ -5,7 +5,8 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosRegisterDetailsActionMenuItemRender,
   description:
-    'A static extension target that renders as a menu item on the register details screen',
+    'Renders a single interactive button component as a menu item in the register details action menu. Use this target for register-specific operations like cash drawer management, shift reports, or launching cash reconciliation workflows.' +
+    '\n\nExtensions at this target can access cash drawer functionality through the Cash Drawer API to perform register-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete register workflows.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
       'Register Details Action Menu Item',

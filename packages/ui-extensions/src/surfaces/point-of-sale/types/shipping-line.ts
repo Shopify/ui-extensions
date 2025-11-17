@@ -6,19 +6,19 @@ import type {TaxLine} from './tax-line';
  */
 export interface ShippingLine {
   /**
-   * A unique string identifier for this shipping line entry. This handle distinguishes between multiple shipping options on the same order and is commonly used for tracking, updates, or API operations. Returns `undefined` when no handle is assigned.
+   * The handle identifier for the shipping method.
    */
   handle?: string;
   /**
-   * The shipping charge amount as a Money object containing both the numeric value and currency information. This is the cost the customer pays for shipping, excluding any taxes which are tracked separately in `taxLines`.
+   * The price of the shipping as a Money object.
    */
   price: Money;
   /**
-   * The customer-facing display name for the shipping method (for example, "Standard Shipping", "Express Delivery", "Local Pickup", "Free Shipping"). This title appears on receipts, order confirmations, and in the checkout flow. Returns `undefined` when no title is provided.
+   * The display title of the shipping method.
    */
   title?: string;
   /**
-   * An array of tax lines applied to this shipping charge. Each tax line represents a separate tax jurisdiction or type (for example, state tax, federal tax, VAT). The sum of all tax line amounts represents the total tax on shipping. Returns `undefined` or empty array when shipping is tax-exempt or tax information isn't available.
+   * An array of individual tax lines showing tax breakdown.
    */
   taxLines?: TaxLine[];
 }

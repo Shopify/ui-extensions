@@ -9,29 +9,16 @@ const generateJsxCodeBlockForCashDrawerApi = (
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Cash Drawer API',
-  description: `
-The Cash Drawer API is an API exposed to extensions for cash drawer functionality, specifically allowing UI extensions to control cash drawer operations.
-
-#### Supporting targets
-- ${TargetLink.PosHomeTileRender}
-- ${TargetLink.PosHomeModalRender}
-- ${TargetLink.PosPurchasePostActionMenuItemRender}
-- ${TargetLink.PosPurchasePostActionRender}
-- ${TargetLink.PosPurchasePostBlockRender}
-- ${TargetLink.PosReturnPostActionMenuItemRender}
-- ${TargetLink.PosReturnPostActionRender}
-- ${TargetLink.PosReturnPostBlockRender}
-- ${TargetLink.PosExchangePostActionMenuItemRender}
-- ${TargetLink.PosExchangePostActionRender}
-- ${TargetLink.PosExchangePostBlockRender}
-`,
+  description:
+    'The Cash Drawer API provides programmatic control over cash drawer hardware connected to POS devices. Use this API to trigger cash drawer operations for manual cash handling, custom payment workflows, or register management tasks.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'CashDrawerApi',
-      description: 'Interface for handling cash drawer operations.',
-      type: 'CashDrawerApi',
+      description:
+        'The `CashDrawerApi` object provides methods for controlling cash drawer hardware. Access these methods through `shopify.cashDrawer` to trigger cash drawer operations.',
+      type: 'CashDrawerApiContent',
     },
   ],
   category: 'APIs',

@@ -2,7 +2,7 @@ import type {ReadonlySignalLike} from '../../../../shared';
 
 export interface LocaleApiContent {
   /**
-   * Provides read-only access to the current [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) formatted locale and allows subscribing to locale changes. The `value` property provides the current locale, and `subscribe` allows listening to changes. Commonly used for internationalization, locale-specific formatting, and reactive updates when merchants change language settings.
+   * Provides read-only access to the current IETF-formatted locale and allows subscribing to locale changes. The `value` property provides the current locale, and `subscribe` allows listening to changes. Use for internationalization, locale-specific formatting, and reactive updates when merchants change language settings.
    */
   current: ReadonlySignalLike<string>;
 }

@@ -50,6 +50,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 }
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
+/**
+ * Defines the available padding size options using a semantic scale. Provides consistent spacing values that align with the POS design system.
+ */
 export type PaddingKeyword = SizeKeyword | 'none';
 declare const tagName = 's-scroll-box';
 export interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
@@ -90,15 +93,19 @@ export interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
    */
   minInlineSize?: SizeUnits;
   /**
-   * The padding applied to all edges of the scrollable container. Supports 1-to-4-value syntax using flow-relative values in the order:
+   * The padding applied to all edges of the scrollable container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
+   *
    * - 4 values: `block-start inline-end block-end inline-start`
    * - 3 values: `block-start inline block-end`
    * - 2 values: `block inline`
+   *
    * For example:
+   *
    * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
    * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
    * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
    * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
    * An `auto` value inherits the default padding from the closest container that has removed its usual padding.
    *
    * @default 'none'

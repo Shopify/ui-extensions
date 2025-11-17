@@ -7,13 +7,14 @@ const generateJsxCodeBlockForToastApi = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'PinPad API',
   description:
-    'The PinPad API allows the display of a PinPad component for PIN validation.',
+    'The PinPad API provides secure PIN entry functionality for POS UI extensions, allowing you to display modal PIN pad interfaces for secure PIN collection, validation, and processing with customizable options and callback handling. The API enables secure authentication workflows within your extensions.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'PinPadApi',
-      description: '',
+      description:
+        'The `PinPadApi` object provides methods for displaying secure PIN entry interfaces. Access these methods through `shopify.pinPad` to show PIN pad modals and handle PIN validation.',
       type: 'PinPadApiContent',
     },
   ],

@@ -101,7 +101,7 @@ export interface FocusEventProps {
   onFocus?: (event: FocusEvent) => void;
 }
 /**
- * A size scale keyword ranging from smallest (`'small-500'`) to largest (`'large-500'`).
+ * Defines the available size options for icons using a semantic scale. Provides granular control over icon dimensions from compact inline sizes to prominent display sizes.
  */
 export type SizeKeyword =
   | 'small-500'
@@ -118,7 +118,7 @@ export type SizeKeyword =
   | 'large-400'
   | 'large-500';
 /**
- * A color intensity keyword from subtle (`'subdued'`) to prominent (`'strong'`).
+ * Defines the available color intensity options for icons. Controls the visual prominence and contrast of icon elements within the interface.
  */
 export type ColorKeyword = 'subdued' | 'base' | 'strong';
 /**
@@ -137,12 +137,7 @@ export interface BackgroundProps {
   background?: BackgroundColorKeyword;
 }
 /**
- * A property for defining the color treatment and semantic meaning of a component.
- *
- * A tone can apply a grouping of colors to a component. For example,
- * critical may have a specific text color and background color.
- *
- * In some cases, like for Banner, the tone may also affect the semantic and accessibility treatment of the component.
+ * Defines the semantic tone options for icons. Controls the color and visual emphasis based on the information type and importance being communicated.
  *
  * @default 'auto'
  */
@@ -714,7 +709,7 @@ export type IconType = (typeof privateIconArray)[number];
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
 /**
- * A utility type for properties that support 1-to-4-value shorthand syntax.
+ * A utility type for properties that support [1-to-4-value shorthand syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box).
  */
 export type MaybeAllValuesShorthandProperty<T extends string> =
   | T
@@ -722,7 +717,7 @@ export type MaybeAllValuesShorthandProperty<T extends string> =
   | `${T} ${T} ${T}`
   | `${T} ${T} ${T} ${T}`;
 /**
- * A utility type for properties that support 1-to-2-value shorthand syntax.
+ * Defines a shorthand property that accepts either a single value or two space-separated values for directional properties like padding and spacing.
  */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
 /**
@@ -1006,7 +1001,7 @@ export interface LabelAccessibilityVisibilityProps {
   >;
 }
 /**
- * A padding size keyword including the option for no padding.
+ * Defines the available padding size options using a semantic scale. Provides consistent spacing values that align with the POS design system.
  */
 export type PaddingKeyword = SizeKeyword | 'none';
 /**
@@ -1014,17 +1009,18 @@ export type PaddingKeyword = SizeKeyword | 'none';
  */
 export interface PaddingProps {
   /**
-   * The padding applied to all edges of the element. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
+   * The padding applied to all edges of the container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
+   *
    * - 4 values: `block-start inline-end block-end inline-start`
    * - 3 values: `block-start inline block-end`
    * - 2 values: `block inline`
-   * - 1 value: all edges
    *
    * For example:
-   * - `large` applies `large` padding to all edges.
-   * - `large none` applies `large` to block edges and `none` to inline edges.
-   * - `large none large` applies `large` to block-start, `none` to inline edges, `large` to block-end.
-   * - `large none large small` applies different padding to each edge in order.
+   *
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
    *
    * An `auto` value inherits the default padding from the closest container that has removed its usual padding.
    *
@@ -1032,7 +1028,7 @@ export interface PaddingProps {
    */
   padding?: MaybeResponsive<MaybeAllValuesShorthandProperty<PaddingKeyword>>;
   /**
-   * The block-axis padding for the element (typically vertical in horizontal writing modes). Supports two-value syntax where `large none` sets block-start to `large` and block-end to `none`. Overrides the block axis values from the `padding` property.
+   * The block-axis padding for the container. Overrides the block value of the `padding` property.
    *
    * @default '' - meaning no override
    */
@@ -1040,19 +1036,19 @@ export interface PaddingProps {
     MaybeTwoValuesShorthandProperty<PaddingKeyword> | ''
   >;
   /**
-   * The block-start padding for the element (typically top in horizontal writing modes). Overrides the block-start value from the `paddingBlock` property.
+   * The block-start padding for the container. Overrides the block-start value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockStart?: MaybeResponsive<PaddingKeyword | ''>;
   /**
-   * The block-end padding for the element (typically bottom in horizontal writing modes). Overrides the block-end value from the `paddingBlock` property.
+   * The block-end padding for the container. Overrides the block-end value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockEnd?: MaybeResponsive<PaddingKeyword | ''>;
   /**
-   * The inline-axis padding for the element (typically horizontal in horizontal writing modes). Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline axis values from the `padding` property.
+   * The inline-axis padding for the container. Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline value of the `padding` property.
    *
    * @default '' - meaning no override
    */
@@ -1060,28 +1056,28 @@ export interface PaddingProps {
     MaybeTwoValuesShorthandProperty<PaddingKeyword> | ''
   >;
   /**
-   * The inline-start padding for the element (typically left in LTR, right in RTL). Overrides the inline-start value from the `paddingInline` property.
+   * The inline-start padding for the container. Overrides the inline-start value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineStart?: MaybeResponsive<PaddingKeyword | ''>;
   /**
-   * The inline-end padding for the element (typically right in LTR, left in RTL). Overrides the inline-end value from the `paddingInline` property.
+   * The inline-end padding for the container. Overrides the inline-end value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineEnd?: MaybeResponsive<PaddingKeyword | ''>;
 }
 /**
- * A size value in pixels, percentage, or zero.
+ * Defines exact size measurements without automatic or unconstrained options. Limited to specific pixel values, percentages, or zero.
  */
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
 /**
- * A size value with automatic sizing option.
+ * Defines size values that can be specified as exact measurements or automatic sizing. Supports pixel values, percentages, zero, or automatic sizing based on content.
  */
 export type SizeUnitsOrAuto = SizeUnits | 'auto';
 /**
- * A size value with no constraint option.
+ * Defines size values that can be specified as exact measurements or no constraint. Supports pixel values, percentages, zero, or no maximum limit.
  */
 export type SizeUnitsOrNone = SizeUnits | 'none';
 /**
@@ -1089,37 +1085,37 @@ export type SizeUnitsOrNone = SizeUnits | 'none';
  */
 export interface SizingProps {
   /**
-   * The block size (height in horizontal writing modes) of the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container. Learn more about [`block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
+   * The block size of the container. Auto automatically sizes based on the container's children.
    *
    * @default 'auto'
    */
   blockSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
-   * The minimum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container. Learn more about [`min-block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
+   * The minimum block size constraint for the container.
    *
    * @default '0'
    */
   minBlockSize?: MaybeResponsive<SizeUnits>;
   /**
-   * The maximum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container. Learn more about [`max-block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
+   * The maximum block size constraint for the container.
    *
    * @default 'none'
    */
   maxBlockSize?: MaybeResponsive<SizeUnitsOrNone>;
   /**
-   * The inline size (width in horizontal writing modes) of the element. Learn more about [`inline-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
+   * The inline size of the container. Auto automatically sizes based on the container's children.
    *
    * @default 'auto'
    */
   inlineSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
-   * The minimum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container. Learn more about [`min-inline-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
+   * The minimum inline size constraint for the container.
    *
    * @default '0'
    */
   minInlineSize?: MaybeResponsive<SizeUnits>;
   /**
-   * The maximum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container. Learn more about [`max-inline-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
+   * The maximum inline size constraint for the container.
    *
    * @default 'none'
    */
@@ -1360,12 +1356,13 @@ export interface ButtonProps extends GlobalProps, BaseClickableProps {
    */
   variant?: 'auto' | 'primary' | 'secondary' | 'tertiary';
   /**
-   * Sets the tone of the button, based on the intention of the action being performed:
-   * - `'auto'`: Automatically determines the appropriate tone based on context
-   * - `'neutral'`: The standard tone for general actions and interactions
-   * - `'caution'`: Indicates actions that require careful consideration
-   * - `'warning'`: Alerts users to potential issues or important information
-   * - `'critical'`: Used for destructive actions like deleting or removing content
+   * Sets the tone of the button, based on the intention of the information being conveyed.
+   *
+   * - `'auto'` - Automatically determines the appropriate tone based on context.
+   * - `'neutral'` - The standard tone for general actions and interactions.
+   * - `'caution'` - Indicates actions that require careful consideration.
+   * - `'warning'` - Alerts users to potential issues or important information.
+   * - `'critical'` - Used for destructive actions like deleting or removing content.
    *
    * @default 'auto'
    */
@@ -1540,9 +1537,10 @@ export interface NumberConstraintsProps {
   step?: number;
   /**
    * The type of controls displayed for the field:
-   * - `'auto'`: An automatic setting where the presence of controls depends on the surface and context. The system determines the most appropriate control type based on the usage scenario.
-   * - `'stepper'`: Displays increment (+) and decrement (-) buttons for adjusting the numeric value. When `stepper` controls are enabled, the field behavior is constrained: it accepts only integer values, always contains a value (never empty), and automatically validates against `min` and `max` bounds. The `label`, `details`, `placeholder`, `error`, `required`, and `inputMode` properties aren't supported with `stepper` controls.
-   * - `'none'`: A control type with no visible controls where users must input the value manually using the keyboard.
+   *
+   * - `'auto'` - An automatic setting where the presence of controls depends on the surface and context. The system determines the most appropriate control type based on the usage scenario.
+   * - `'stepper'` - Displays increment (+) and decrement (-) buttons for adjusting the numeric value. When `stepper` controls are enabled, the field behavior is constrained: it accepts only integer values, always contains a value (never empty), and automatically validates against `min` and `max` bounds. The `label`, `details`, `placeholder`, `error`, `required`, and `inputMode` properties aren't supported with `stepper` controls.
+   * - `'none'` - A control type with no visible controls where users must input the value manually using the keyboard.
    *
    * @default 'auto'
    */
@@ -2003,7 +2001,7 @@ export interface DateSpinnerProps
 export interface DividerProps extends GlobalProps {
   /**
    * The direction of the divider using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). An inline divider runs horizontally across the content flow, while a block divider runs vertically along the content flow.
-   * 
+   *
    * Available options:
    * - `'inline'`: A horizontal divider that runs perpendicular to the text direction, creating separation between vertically stacked content sections.
    * - `'block'`: A vertical divider that runs parallel to the text direction, creating separation between horizontally arranged content sections.
@@ -2197,13 +2195,13 @@ export interface IconProps
   extends GlobalProps,
     Pick<InteractionProps, 'interestFor'> {
   /**
-   * The semantic tone of the icon, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * Sets the tone of the icon, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * The color intensity of the icon. Controls how prominent or subtle the icon appears within the interface.
+   * Modify the color to be more or less intense. Use `'subdued'` for secondary icons, `'base'` for standard visibility, or `'strong'` for emphasized icons that need to stand out.
    *
    * @default 'base'
    */
@@ -2215,7 +2213,7 @@ export interface IconProps
    */
   size?: SizeKeyword;
   /**
-   * The icon identifier specifying which icon to display. Accepts any valid icon name from the icon set.
+   * The type of icon to display.
    */
   type?: IconType | AnyString;
 }
@@ -2234,7 +2232,7 @@ export interface BaseImageProps {
    */
   sizes?: string;
   /**
-   * The primary image source URL. Accepts absolute URLs (`https://example.com/image.jpg`), relative paths (`/images/product.jpg`), or data URLs (`data:image/png;base64,...`). When the image is loading or if `src` is omitted/invalid, a placeholder is displayed while reserving the image's space to prevent layout shifts. The URL must be accessible (proper [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) headers for cross-origin images), use appropriate protocols ([HTTPS](https://en.wikipedia.org/wiki/HTTPS) for security), and point to valid image formats (JPEG, PNG, GIF, WebP, SVG). Failed loads trigger the `onError` callback if provided. For responsive images serving different sizes/resolutions, `srcSet` can be used in addition to `src` (which then serves as the fallback). Images are loaded asynchronously—the `loading` property controls when loading begins. Learn more about [`src` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src).
+   * The image source URL (remote URL or local file resource). When loading or no src is provided, a placeholder is rendered. Ensure URLs are properly formatted and properly formatted.
    *
    * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
    * reserved, except in cases where the image area doesn't have a contextual inline or block size, which should be rare.
@@ -2262,11 +2260,10 @@ export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
     | 'img'
     | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
   /**
-   * Controls the displayed width of the image. The choice depends on layout requirements—for mobile interfaces, `'fill'` with defined container dimensions ensures consistent image display, as dynamic container heights can cause layout inconsistencies in scrollable views.
-   * - `'auto'`: Displays the image at its natural size. The image won't render until it has loaded, and the aspect ratio will be ignored. Typically applied when maintaining original dimensions is important.
-   * - `'fill'`: Makes the image take up 100% of the available inline size. The aspect ratio will be respected and the image will take the necessary space. Commonly applied to responsive layouts and flexible image containers.
+   * Controls the displayed width of the image. Choose based on your layout requirements. For mobile interfaces, consider using `'fill'` with defined container dimensions to ensure consistent image display, as dynamic container heights can cause layout inconsistencies in scrollable views.
    *
-   * Learn more about [`width` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width).
+   * - `'auto'` - Displays the image at its natural size. The image will not render until it has loaded, and the aspect ratio will be ignored. Use for images where maintaining original dimensions is important.
+   * - `'fill'` - Makes the image take up 100% of the available inline size. The aspect ratio will be respected and the image will take the necessary space. Use for responsive layouts and flexible image containers.
    *
    * @default 'fill'
    */
@@ -2282,19 +2279,16 @@ export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
    * For example, if the value is set as `50 / 100`, the getter returns `50 / 100`.
    * If the value is set as `0.5`, the getter returns `0.5 / 1`.
    *
-   * Learn more about [`aspect-ratio` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio).
-   *
    * @default '1/1'
    */
   aspectRatio?:
     | `${number}${optionalSpace}/${optionalSpace}${number}`
     | `${number}`;
   /**
-   * Controls how the image content is resized within its container:
-   * - `'contain'`: Scales the image to fit within the container while maintaining aspect ratio. The entire image will be visible, but there may be empty space. Typically applied when showing the complete image is important.
-   * - `'cover'`: Scales the image to fill the entire container while maintaining aspect ratio. Parts of the image may be cropped. Typically applied when filling the container completely is more important than showing the entire image.
+   * Controls how the image content is resized within its container.
    *
-   * Learn more about [`object-fit` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
+   * - `'contain'` - Scales the image to fit within the container while maintaining aspect ratio. The entire image will be visible, but there may be empty space. Use when showing the complete image is important.
+   * - `'cover'` - Scales the image to fill the entire container while maintaining aspect ratio. Parts of the image may be cropped. Use when filling the container completely is more important than showing the entire image.
    *
    * @default 'contain'
    */
@@ -2363,11 +2357,10 @@ export interface NumberFieldProps
     NumberConstraintsProps,
     FieldDecorationProps {
   /**
-   * The virtual keyboard layout displayed for numeric input on touch-enabled devices like tablets and smartphones. This property has no effect on desktop devices with physical keyboards. Not supported when using `stepper` controls.
-   * - `'decimal'`: Shows a numeric keyboard with a decimal point/comma key. Best for monetary amounts (for example, "$19.99"), measurements with precision (for example, "2.5 kg"), percentages (for example, "15.5%"), or any fractional values. The decimal separator adapts to the user's locale (period in US, comma in Europe).
-   * - `'numeric'`: Shows a numeric keyboard without decimal point, displaying only digits 0-9 and sometimes +/- symbols. Best for quantities (for example, "5 items"), whole number identifiers (for example, "Order #12345"), phone numbers, or any integer-only input. Prevents accidental decimal entry which can confuse users for whole number fields.
-   * 
-   * On mobile POS devices, choosing the correct `inputMode` significantly improves data entry speed and reduces errors by showing the most relevant keyboard. Users can still switch keyboards manually if needed. Learn more about [`inputmode` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode).
+   * The virtual keyboard layout that the field displays for numeric input. This property isn't supported when using `stepper` controls.
+   *
+   * - `'decimal'` - A keyboard layout that includes decimal point support for entering fractional numbers, prices, or measurements with decimal precision.
+   * - `'numeric'` - A keyboard layout optimized for integer-only entry without decimal point support, ideal for quantities, counts, or whole number values.
    *
    * @default 'decimal'
    */

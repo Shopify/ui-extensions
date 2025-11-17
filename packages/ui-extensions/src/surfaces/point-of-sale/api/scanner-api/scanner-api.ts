@@ -8,20 +8,15 @@ export type ScannerSource = 'camera' | 'external' | 'embedded';
  */
 export interface ScannerSubscriptionResult {
   /**
-   * The string data from the last scanner event received. Contains the decoded content from the scanned barcode, QR code, or other machine-readable format. The format and content depend on what was scanned—product barcodes return product identifiers (UPC, EAN), QR codes return their encoded text or URL, and other formats return their respective data encodings. The string is already decoded and ready to use (no additional parsing of barcode formats needed). Returns `undefined` when no scan has occurred yet or when the scan data isn't available.
-   *
-   * Commonly used to look up products by barcode, process QR code data, implement scan-to-add-to-cart workflows, or trigger actions based on scanned content.
+   * The string data from the last scanner event received. Contains the scanned barcode, QR code, or other scannable data. Returns `undefined` when no scan data is available. Use to process scanned content and implement scan-based business logic.
    */
   data?: string;
   /**
-   * The scanning hardware source from which the scan event originated. Identifies which scanner captured the data:
-   * • **`'camera'`** - Device camera used for scanning through the camera interface. Available on most mobile POS devices (smartphones, tablets). Typically requires the user to position the camera over the barcode/QR code and capture an image.
-   * • **`'external'`** - External scanner hardware connected to the POS device using USB, Bluetooth, or other connection methods. Includes handheld barcode scanners, ring scanners, and dedicated scanning devices. These are typically faster and more reliable than camera scanning for high-volume scanning.
-   * • **`'embedded'`** - Built-in scanning hardware integrated directly into the POS device. Found in specialized POS terminals and all-in-one devices with dedicated scanning components. These scanners are always available and don't require additional setup.
+   * The scanning source from which the scan event came. Returns one of the following scanner types:
    *
-   * Returns `undefined` when the scan source can't be determined or when no scan has occurred yet.
-   *
-   * The source information can be used to implement source-specific logic (different behaviors for camera vs hardware scanners), provide user feedback about which scanning method was used, or track scanning method preferences for analytics.
+   * • `'camera'` - Built-in device camera used for scanning
+   * • `'external'` - External scanner hardware connected to the device
+   * • `'embedded'` - Embedded scanner hardware built into the device
    */
   source?: ScannerSource;
 }
@@ -31,9 +26,7 @@ export interface ScannerSubscriptionResult {
  */
 export interface ScannerSources {
   /**
-   * Provides read-only access to the array of currently available scanner sources with subscription support for real-time updates. The `value` property contains an array of scanner types currently accessible on this device (for example, `['camera', 'external']` if both camera and an external scanner are available). The `subscribe` method allows listening for changes in scanner availability, which can occur when hardware scanners are connected/disconnected or when permissions change. The array is empty when no scanners are available.
-   *
-   * Commonly used to monitor which scanning methods are available, show/hide scanner-related UI based on availability, or select the preferred scanner for scanning operations.
+   * Current available scanner sources with subscription support. The `value` property provides current sources, and `subscribe` listens for changes. Use to monitor which scanners are available.
    */
   current: ReadonlySignalLike<ScannerSource[]>;
 }
@@ -43,20 +36,18 @@ export interface ScannerSources {
  */
 export interface ScannerData {
   /**
-   * Provides read-only access to the current scan data with subscription support for real-time updates. The `value` property contains the most recent scan result including the scanned data string and the source that captured it. The `subscribe` method allows listening for new scan events as they occur.
-   *
-   * This enables reactive scan handling where your extension responds immediately to barcode or QR code scans from any available scanner source (camera, external, embedded). The data updates each time a new scan is captured, replacing the previous scan result. Subscriptions fire only when new scans occur, not continuously.
+   * Current available scanner sources with subscription support. The `value` property provides current sources, and `subscribe` listens for changes. Use to monitor which scanners are available.
    */
   current: ReadonlySignalLike<ScannerSubscriptionResult>;
 }
 
 export interface ScannerApiContent {
   /**
-   * Provides access to current scan data and subscription capabilities for receiving real-time scan events. The `scannerData` object contains the most recent scan result and allows subscribing to future scans. Commonly used to receive and process barcode or QR code data as it's scanned, implementing scan-based product lookup, adding items to cart using scan, or triggering workflows based on scanned codes.
+   * Access current scan data and subscribe to new scan events. Use to receive real-time scan results.
    */
   scannerData: ScannerData;
   /**
-   * Provides access to information about available scanner hardware sources on the device. The `sources` object contains an array of currently available scanning methods and allows subscribing to availability changes. Commonly used to check which scanner types are available (camera, external hardware, embedded), adapt UI based on scanner availability (showing/hiding scan buttons), or selecting the preferred scanner source for operations.
+   * Access available scanner sources on the device. Use to check which scanners are available (camera, external, or embedded).
    */
   sources: ScannerSources;
 }

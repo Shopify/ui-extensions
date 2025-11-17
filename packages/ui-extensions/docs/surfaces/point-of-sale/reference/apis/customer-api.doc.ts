@@ -7,20 +7,15 @@ const generateJsxCodeBlockForCustomerApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Customer API',
-  description: `
-The customer API provides an extension with data about the current customer.
-
-#### Supporting targets
-- ${TargetLink.PosCustomerDetailsActionMenuItemRender}
-- ${TargetLink.PosCustomerDetailsActionRender}
-- ${TargetLink.PosCustomerDetailsBlockRender}
-`,
+  description:
+    'The Customer API provides read-only access to customer data. Use this API to get customer information and build personalized experiences based on the selected customer context. The API offers the customer identifier for linking to customer data and enabling customer-specific features.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'CustomerApi',
-      description: '',
+      description:
+        'The `CustomerApi` object provides access to customer data. Access this property through `shopify.customer` to interact with the current customer context.',
       type: 'CustomerApiContent',
     },
   ],

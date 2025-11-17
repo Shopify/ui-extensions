@@ -49,13 +49,25 @@ export interface TextJSXProps extends Pick<TextProps, 'id'> {
    */
   color?: Extract<TextProps['color'], 'base' | 'strong' | 'subdued'>;
   /**
-   * The semantic meaning and default styling of the text. Other presentation properties override the default styling provided by the type.
+   * The semantic meaning and default styling of the text. Other presentation properties override the default styling provided by the type. Available options:
+   *
+   * - `'generic'` - The default text type for general content without specific semantic meaning or emphasis.
+   * - `'strong'` - A text type that provides emphasis and importance, typically rendered with increased font weight or visual prominence.
+   * - `'small'` - A text type for secondary or supplementary content, typically rendered with reduced size for captions, fine print, or less important information.
    *
    * @default 'generic'
    */
   type?: Extract<TextProps['type'], 'generic' | 'strong' | 'small'>;
   /**
-   * The semantic tone of the text, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * Determines the visual appearance and semantic meaning of the text. Available options:
+   *
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context. Use when you want the system to determine the most appropriate styling.
+   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis. Use for general status updates and standard information.
+   * - `'info'` - Blue styling for informational content and neutral updates. Use for informational content that provides helpful context.
+   * - `'success'` - Green styling for positive states, completed actions, and successful operations. Use for positive outcomes and successful processes.
+   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent. Use for potential issues that require awareness.
+   * - `'warning'` - Orange styling for important notices that require merchant awareness. Use for situations that need attention but aren't critical.
+   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action. Use for urgent issues that need immediate merchant attention.
    *
    * @default 'auto'
    */
