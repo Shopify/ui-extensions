@@ -78,60 +78,56 @@ export type PickedProps = Pick<
 >;
 export interface StackJSXProps extends PickedProps {
   /**
-   * The padding applied to all edges of the `Stack` component.
-   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Shorthand_properties#edges_of_a_box) is supported. Contrary to the CSS, it uses flow-relative values and the order is:
+   * The padding applied to all edges of the container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
+   *
    * - 4 values: `block-start inline-end block-end inline-start`
    * - 3 values: `block-start inline block-end`
    * - 2 values: `block inline`
+   *
    * For example:
+   *
    * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
    * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
    * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
    * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
-   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
+   *
+   * An `auto` value inherits the default padding from the closest container that has removed its usual padding.
    *
    * @default 'none'
    */
   padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
   /**
-   * The block-axis padding for the `Stack` component.
-   * `large none` means block-start padding is `large`, block-end padding is `none`.
-   * This overrides the block value of `padding`.
+   * The block-axis padding for the container. Overrides the block value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword | ''>;
   /**
-   * The block-start padding for the `Stack` component.
-   * This overrides the block-start value of `paddingBlock`.
+   * The block-start padding for the container. Overrides the block-start value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockStart?: PaddingKeyword | '';
   /**
-   * The block-end padding for the `Stack` component.
-   * This overrides the block-end value of `paddingBlock`.
+   * The block-end padding for the container. Overrides the block-end value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockEnd?: PaddingKeyword | '';
   /**
-   * The inline-axis padding for the `Stack` component.
-   * `large none` means inline-start padding is `large`, inline-end padding is `none`.
-   * This overrides the inline value of `padding`.
+   * The inline-axis padding for the container. Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword | ''>;
   /**
-   * The inline-start padding for the `Stack` component.
-   * This overrides the inline-start value of `paddingInline`.
+   * The inline-start padding for the container. Overrides the inline-start value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineStart?: PaddingKeyword | '';
   /**
-   * The inline-end padding for the `Stack` component.
+   * The inline-end padding for the container.
    * This overrides the inline-end value of `paddingInline`.
    *
    * @default '' - meaning no override

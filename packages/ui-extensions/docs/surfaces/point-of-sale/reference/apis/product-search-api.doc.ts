@@ -9,13 +9,14 @@ const generateJsxCodeBlockForProductSearchApi = (
 const data: ReferenceEntityTemplateSchema = {
   name: 'ProductSearch API',
   description:
-    'The ProductSearch API gives extensions access to the native product search and fetching functionality of Shopify POS. The interface provides numerous functions to search for products by query, or to fetch the details of one or more products or product variants.',
+    'The Product Search API provides access to POS native product search functionality, allowing you to search for products, fetch product details, and retrieve product variants with pagination support and flexible sorting options. The API enables both text-based search and direct product lookups by ID.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'ProductSearchApi',
-      description: '',
+      description:
+        'The `ProductSearchApi` object provides methods for searching and retrieving product information. Access these methods through `shopify.productSearch` to search products and fetch detailed product data.',
       type: 'ProductSearchApiContent',
     },
   ],

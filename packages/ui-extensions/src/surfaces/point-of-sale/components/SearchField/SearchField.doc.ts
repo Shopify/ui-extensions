@@ -2,20 +2,24 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'SearchField',
-  description: 'Capture search terms using a single-line input field.',
+  description:
+    'The `SearchField` component captures search terms using a single-line input field. Use it to enable search and filtering within POS interfaces.' +
+    '\n\nThe component includes built-in debouncing to optimize performance during real-time search operations and supports features like autocomplete suggestions and search history. It provides clear visual feedback for search states including loading, results found, and no results, helping merchants quickly locate products, customers, or orders in large catalogs.' +
+    '\n\n`SearchField` components clear search queries with a single tap on the clear button while maintaining search history for quick access to recent searches, balancing convenience with data management.',
   thumbnail: 'search-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the `SearchField` component.',
       type: 'SearchField',
     },
     {
       title: 'Events',
       description:
-        'Learn more about registering [events](/docs/api/pos-ui-extensions/using-polaris-components#events)',
+        'The `SearchField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'SearchFieldEvents',
     },
   ],

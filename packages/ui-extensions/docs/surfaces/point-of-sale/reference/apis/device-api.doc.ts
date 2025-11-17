@@ -7,13 +7,14 @@ const generateJsxCodeBlockForDeviceApi = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Device API',
   description:
-    'The Device API allows the UI Extension to retrieve device information including the device name and ID.',
+    'The Device API provides access to device information and capabilities, allowing you to retrieve device details, check device types, and adapt your extension behavior based on the POS hardware characteristics. The API enables device-aware functionality and responsive design based on device form factors.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'DeviceApi',
-      description: '',
+      description:
+        'The `DeviceApi` object provides access to device information and capabilities. Access these properties and methods through `shopify.device` to retrieve device details and check device characteristics.',
       type: 'DeviceApiContent',
     },
   ],

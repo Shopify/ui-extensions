@@ -95,11 +95,12 @@ export interface ButtonJSXProps
   >;
   /**
    * Sets the tone of the button, based on the intention of the information being conveyed.
-   * - `auto`: Automatically determines the appropriate tone based on context.
-   * - `neutral`: The standard tone for general actions and interactions.
-   * - `caution`: Indicates actions that require careful consideration.
-   * - `warning`: Alerts users to potential issues or important information.
-   * - `critical`: Used for destructive actions like deleting or removing content.
+   *
+   * - `'auto'` - Automatically determines the appropriate tone based on context.
+   * - `'neutral'` - The standard tone for general actions and interactions.
+   * - `'caution'` - Indicates actions that require careful consideration.
+   * - `'warning'` - Alerts users to potential issues or important information.
+   * - `'critical'` - Used for destructive actions like deleting or removing content.
    *
    * @default 'auto'
    */

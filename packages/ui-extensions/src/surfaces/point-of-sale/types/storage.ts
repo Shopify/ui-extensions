@@ -19,6 +19,10 @@ export interface Storage<
    * @param key - The key to set the value for.
    * @param value - The value to set for the key.
    * @throws StorageError when:
+   * - Maximum number of records is exceeded (`code: 'RecordsCount'`)
+   * - Individual record size exceeds the limit (`code: 'RecordSize'`)
+   * - Key is not a string (`code: 'KeyType'`)
+   * - Key size exceeds the limit (`code: 'KeySize'`)
    */
   set<
     StorageTypes extends BaseStorageTypes = BaseStorageTypes,
@@ -43,7 +47,7 @@ export interface Storage<
   ): Promise<StorageTypes[Keys] | undefined>;
 
   /**
-   * Removes all stored data for the extension. This operation is irreversible and affects all key-value pairs stored by your extension. Commonly used for resetting extension state, handling user logout scenarios, or implementing "factory reset" functionality.
+   * Clears all data from storage, removing all key-value pairs.
    */
   clear: () => Promise<void>;
 

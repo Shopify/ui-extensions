@@ -6,23 +6,20 @@ const generateJsxCodeBlockForPrintApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Print API',
-  description: `The Print API enables document printing functionality in your point of sale extension. Use this API to trigger the native print dialog for your documents.
-
-The \`print()\` method accepts either:
-- A relative path that will be appended to your app's [application_url](/docs/apps/build/cli-for-apps/app-configuration#application_url)
-- A full URL to your app's backend that will be used to return the document to print
-
-Supported document types:
-- HTML documents (recommended for best printing experience)
-- Text files
-- Image files (PNG, JPEG, etc.)
-- PDF files (Note: On Android devices, PDFs will be downloaded and must be printed using an external application)`,
+  description:
+    'The Print API enables document printing functionality in your POS UI extension. Use this API to trigger the native print dialog for your documents.' +
+    '\n\nSupported document types:' +
+    '\n\n- **HTML documents** (`.html`, `.htm`) - Best printing experience with full CSS styling, embedded images, and complex layouts. Use for receipts, invoices, and formatted reports.' +
+    '\n\n- **Text files** (`.txt`, `.csv`) - Plain text with basic content and tabular data support. Use for simple receipts and data exports.' +
+    '\n\n- **Image files** (`.png`, `.jpg`, `.jpeg`, `.gif`, `.bmp`, `.webp`) - Common web formats with format-specific optimizations. Use for logos, charts, QR codes, and barcodes.' +
+    '\n\n- **PDF files** (`.pdf`) - Behavior varies by platform: prints directly on iOS/desktop, but downloads to external viewer on Android. Use for complex documents and compliance requirements.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'PrintApi',
-      description: 'Interface for handling print operations',
+      description:
+        'The `PrintApi` object provides methods for triggering document printing. Access these methods through `shopify.print` to initiate print operations with various document types.',
       type: 'PrintApiContent',
     },
   ],

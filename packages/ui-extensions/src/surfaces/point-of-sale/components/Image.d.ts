@@ -44,17 +44,15 @@ declare const tagName = 's-image';
 export interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
   /**
    * Controls the displayed width of the image. Choose based on your layout requirements. For mobile interfaces, consider using `'fill'` with defined container dimensions to ensure consistent image display, as dynamic container heights can cause layout inconsistencies in scrollable views.
-   * - `'auto'` - Displays the image at its natural size. The image won't render until it has loaded, and the aspect ratio will be ignored. Commonly used for images where maintaining original dimensions is important.
-   * - `'fill'` - Makes the image take up 100% of the available inline size. The aspect ratio will be respected and the image will take the necessary space. Commonly used for responsive layouts and flexible image containers.
+   *
+   * - `'auto'` - Displays the image at its natural size. The image will not render until it has loaded, and the aspect ratio will be ignored. Use for images where maintaining original dimensions is important.
+   * - `'fill'` - Makes the image take up 100% of the available inline size. The aspect ratio will be respected and the image will take the necessary space. Use for responsive layouts and flexible image containers.
    *
    * @default 'fill'
-   * Learn more about [img width on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width).
    */
   inlineSize?: ImageProps['inlineSize'];
   /**
-   * The image source URL (remote URL or local file resource). When loading or no src is provided, a placeholder is rendered. Ensure URLs are accessible and properly formatted.
-   *
-   * Learn more about [img src on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src).
+   * The image source URL (remote URL or local file resource). When loading or no src is provided, a placeholder is rendered. Ensure URLs are properly formatted and properly formatted.
    */
   src?: ImageProps['src'];
 }

@@ -4,9 +4,9 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosExchangePostActionMenuItemRender,
-  description: `A static extension target that renders as a menu item on the post-exchange screen
-  > Note:
-  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
+  description:
+    'Renders a single interactive button component as a menu item in the post-exchange action menu. Use this target for post-exchange operations like generating exchange receipts, processing restocking workflows, or collecting exchange feedback.' +
+    '\n\nExtensions at this target can access the order identifier through the Order API to perform exchange-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-exchange workflows.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
       'Exchange Post Action Menu Item',

@@ -7,31 +7,15 @@ const generateJsxCodeBlockForCartApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Cart API',
-  description: `
-The Cart API enables UI Extensions to manage and interact with POS cart contents, such as discounts, line items, and customer details. It provides a comprehensive set of functions for adding and removing items, alongside a subscribable object that keeps the UI Extension updated with real-time changes to the cart.
-
-#### Supporting targets
-- ${TargetLink.PosHomeTileRender}
-- ${TargetLink.PosHomeModalRender}
-- ${TargetLink.PosProductDetailsActionMenuItemRender}
-- ${TargetLink.PosProductDetailsActionRender}
-- ${TargetLink.PosProductDetailsBlockRender}
-- ${TargetLink.PosCustomerDetailsActionMenuItemRender}
-- ${TargetLink.PosCustomerDetailsActionRender}
-- ${TargetLink.PosCustomerDetailsBlockRender}
-- ${TargetLink.PosOrderDetailsActionMenuItemRender}
-- ${TargetLink.PosOrderDetailsActionRender}
-- ${TargetLink.PosOrderDetailsBlockRender}
-- ${TargetLink.PosDraftOrderDetailsActionMenuItemRender}
-- ${TargetLink.PosDraftOrderDetailsActionRender}
-- ${TargetLink.PosDraftOrderDetailsBlockRender}
-`,
+  description:
+    'The Cart API provides comprehensive access to POS cart management functionality, enabling extensions to read cart state, modify line items, apply discounts, manage customer information, and handle cart properties. The API supports both individual and bulk operations for efficient cart manipulation, with [selling plan functionality](/docs/apps/build/purchase-options/subscriptions/selling-plans) and error handling.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'CartApi',
-      description: '',
+      description:
+        'The `CartApi` object provides access to cart management functionality and real-time cart state monitoring. Access these properties through `shopify.cart` to interact with the current POS cart.',
       type: 'CartApiContent',
     },
   ],

@@ -3,103 +3,103 @@
  */
 export interface Product {
   /**
-   * The unique identifier for the product variant. Use this ID for variant-specific operations, cart additions, or inventory lookups. This ID is consistent across all Shopify systems.
+   * The unique identifier for the product. Use this ID for product-specific operations, API calls, or linking to product details. This ID is consistent across all Shopify systems and can be used for external integrations.
    */
   id: number;
   /**
-   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the product variant was created. Commonly used for sorting variants by creation date, implementing "new product" features, or tracking product catalog changes over time.
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the product was created. Use for sorting products by creation date, implementing "new product" features, or tracking product catalog growth over time.
    */
   createdAt: string;
   /**
-   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the product variant was last updated. Commonly used for cache invalidation, tracking recent changes, or implementing "recently updated" product features.
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the product was last updated. Use for cache invalidation, tracking recent changes, or implementing "recently updated" product features.
    */
   updatedAt: string;
   /**
-   * The variant's display title, typically showing the option combinations. For example, `"Large / Blue"`. Commonly used for variant selection interfaces, cart displays, or anywhere users need to distinguish between variants.
+   * The product's display name as configured by the merchant. Use for product listings, search results, and customer-facing displays. This is the primary product identifier that customers will recognize.
    */
   title: string;
   /**
-   * The product's plain text description without HTML formatting. Commonly used for displaying product information in contexts where HTML isn't supported or when you need clean text content for processing.
+   * The product's plain text description without HTML formatting. Use for displaying product information in contexts where HTML is not supported or when you need clean text content for processing.
    */
   description: string;
   /**
-   * The product's description with HTML formatting preserved. Typically applied when you need to display rich text content with formatting, links, or other HTML elements in your extension interface.
+   * The product's description with HTML formatting preserved. Use when you need to display rich text content with formatting, links, or other HTML elements in your extension interface.
    */
   descriptionHtml: string;
   /**
-   * The URL of the product's featured image, if one is set. Returns `undefined` if no featured image is configured. Commonly used for displaying product images in search results, product listings, or detailed product views.
+   * The URL of the product's featured image, if one is set. Returns `undefined` if no featured image is configured. Use for displaying product images in search results, product listings, or detailed product views.
    */
   featuredImage?: string;
   /**
-   * Whether this product is a gift card. Gift cards have special handling requirements and different business logic. Commonly used to implement gift card-specific workflows, validation, or display special gift card interfaces.
+   * Whether this product is a gift card. Gift cards have special handling requirements and different business logic. Use to implement gift card-specific workflows, validation, or display special gift card interfaces.
    */
   isGiftCard: boolean;
   /**
-   * Whether inventory tracking is enabled for this product. When `false`, inventory quantities may not be accurate or meaningful. Commonly used to determine whether to display inventory information or implement inventory-based business logic.
+   * Whether inventory tracking is enabled for this product. When `false`, inventory quantities may not be accurate or meaningful. Use to determine whether to display inventory information or implement inventory-based business logic.
    */
   tracksInventory: boolean;
   /**
-   * The product's vendor or brand name as configured by the merchant. Commonly used for filtering products by brand, displaying vendor information, or organizing products by supplier.
+   * The product's vendor or brand name as configured by the merchant. Use for filtering products by brand, displaying vendor information, or organizing products by supplier.
    */
   vendor: string;
   /**
-   * The lowest price among all product variants, formatted as a string. Commonly used for displaying price ranges, implementing price-based filtering, or showing starting prices in product listings.
+   * The lowest price among all product variants, formatted as a string. Use for displaying price ranges, implementing price-based filtering, or showing starting prices in product listings.
    */
   minVariantPrice: string;
   /**
-   * The highest price among all product variants, formatted as a string. Commonly used for displaying price ranges, implementing price-based filtering, or showing complete pricing information for products with multiple variants.
+   * The highest price among all product variants, formatted as a string. Use for displaying price ranges, implementing price-based filtering, or showing complete pricing information for products with multiple variants.
    */
   maxVariantPrice: string;
   /**
-   * The product type category as defined by the merchant (For example, "T-Shirt," "Electronics," "Books"). Commonly used for product categorization, filtering, or implementing category-specific business logic.
+   * The product type category as defined by the merchant (For example, "T-Shirt," "Electronics," "Books"). Use for product categorization, filtering, or implementing category-specific business logic.
    */
   productType: string;
   /**
-   * The standardized product category classification. Commonly used for product categorization, implementing category-specific business logic, or organizing products by standardized categories.
+   * The standardized product category classification. Use for product categorization, implementing category-specific business logic, or organizing products by standardized categories.
    */
   productCategory: string;
   /**
-   * An array of tags associated with the product for categorization and organization. Commonly used for product filtering, search enhancement, or implementing tag-based business logic and promotions.
+   * An array of tags associated with the product for categorization and organization. Use for product filtering, search enhancement, or implementing tag-based business logic and promotions.
    */
   tags: string[];
   /**
-   * The total number of variants available for this product. Commonly used to determine whether to show variant selection interfaces, implement variant-specific logic, or optimize variant loading strategies.
+   * The total number of variants available for this product. Use to determine whether to show variant selection interfaces, implement variant-specific logic, or optimize variant loading strategies.
    */
   numVariants: number;
   /**
-   * The total available inventory across all variants and locations, if tracking is enabled. Returns `undefined` when inventory tracking is disabled. Commonly used for availability checks, stock level displays, or implementing low-stock alerts.
+   * The total available inventory across all variants and locations, if tracking is enabled. Returns `undefined` when inventory tracking is disabled. Use for availability checks, stock level displays, or implementing low-stock alerts.
    */
   totalAvailableInventory?: number;
   /**
-   * The total inventory count across all variants and locations for this product. Commonly used for inventory management, stock level displays, or implementing low-stock warnings and alerts.
+   * The total inventory count across all variants and locations for this product. Use for inventory management, stock level displays, or implementing low-stock warnings and alerts.
    */
   totalInventory: number;
   /**
-   * An array of all product variants associated with this product. Each variant contains detailed information including pricing, inventory, and options. Commonly used for building variant selectors, displaying inventory information, or implementing variant-specific functionality.
+   * An array of all product variants associated with this product. Each variant contains detailed information including pricing, inventory, and options. Use for building variant selectors, displaying inventory information, or implementing variant-specific functionality.
    */
   variants: ProductVariant[];
   /**
-   * An array of option name-value pairs that define this variant's configuration. For example, `[{name: "Size," value: "Large"}, {name: "Color," value: "Blue"}]`. Returns `undefined` for products with only default variants. Commonly used for displaying variant options, building variant selectors, or implementing variant-based logic.
+   * An array of product options that define available variant configurations. For example, size and color. Each option includes available values. Use for building variant selection interfaces or understanding product configuration possibilities.
    */
   options: ProductOption[];
   /**
-   * Whether the product has only a default variant (no custom options). When `true`, the product doesn't require variant selection. Commonly used to simplify product interfaces and skip variant selection steps for single-variant products.
+   * Whether the product has only a default variant (no custom options). When `true`, the product doesn't require variant selection. Use to simplify product interfaces and skip variant selection steps for single-variant products.
    */
   hasOnlyDefaultVariant: boolean;
   /**
-   * Whether this variant currently has inventory in stock. Returns `undefined` when inventory information isn't available. Commonly used for stock status displays, availability checks, or filtering in-stock variants.
+   * Whether the product has any variants currently in stock. Returns `undefined` when inventory information is not available. Use for stock status displays, availability filtering, or implementing out-of-stock product handling.
    */
   hasInStockVariants?: boolean;
   /**
-   * The URL of the product on the online store, if available. Returns `undefined` when the product isn't published online or the store doesn't have an online presence. Commonly used for linking to online product pages or sharing product information.
+   * The URL of the product on the online store, if available. Returns `undefined` when the product is not published online or the store doesn't have an online presence. Use for linking to online product pages or sharing product information.
    */
   onlineStoreUrl?: string;
   /**
-   * Whether the product requires a selling plan (subscription) to be purchased. Returns `undefined` when selling plan information isn't available. Commonly used for implementing subscription-based product handling or selling plan selection interfaces.
+   * Indicates whether this product or line item requires a selling plan (subscription) to be purchased. When `true`, the customer must select a subscription or payment plan before adding to cart. When `false`, the item can be purchased as a one-time purchase without a selling plan.
    */
   requiresSellingPlan?: boolean;
   /**
-   * Whether the product has selling plan groups (subscription options) available. Returns `undefined` when selling plan information isn't available. Commonly used for displaying subscription options or implementing subscription-based purchasing workflows.
+   * Indicates whether this product or line item has selling plan groups (subscription options) available. When `true`, the product offers subscription or recurring payment options that customers can select. When `false`, the product is only available for one-time purchase without subscription options.
    */
   hasSellingPlanGroups?: boolean;
 }
@@ -113,79 +113,79 @@ export interface ProductVariant {
    */
   id: number;
   /**
-   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the product variant was created. Commonly used for sorting variants by creation date, implementing "new product" features, or tracking product catalog changes over time.
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the product variant was created. Use for sorting variants by creation date, implementing "new product" features, or tracking product catalog changes over time.
    */
   createdAt: string;
   /**
-   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the product variant was last updated. Commonly used for cache invalidation, tracking recent changes, or implementing "recently updated" product features.
+   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the product variant was last updated. Use for cache invalidation, tracking recent changes, or implementing "recently updated" product features.
    */
   updatedAt: string;
   /**
-   * The variant's display title, typically showing the option combinations. For example, `"Large / Blue"`. Commonly used for variant selection interfaces, cart displays, or anywhere users need to distinguish between variants.
+   * The variant's display title, typically showing the option combinations. For example, `"Large / Blue"`. Use for variant selection interfaces, cart displays, or anywhere users need to distinguish between variants.
    */
   title: string;
   /**
-   * The variant's selling price formatted as a string. Commonly used for price displays, cart calculations, or implementing pricing logic. This represents the current selling price for the variant.
+   * The variant's selling price formatted as a string. Use for price displays, cart calculations, or implementing pricing logic. This represents the current selling price for the variant.
    */
   price: string;
   /**
-   * The variant's compare-at price (original or MSRP price) formatted as a string, if set. Returns `undefined` when no compare-at price is configured. Commonly used for displaying discounts, sale pricing, or savings calculations.
+   * The variant's compare-at price (original or MSRP price) formatted as a string, if set. Returns `undefined` when no compare-at price is configured. Use for displaying discounts, sale pricing, or savings calculations.
    */
   compareAtPrice?: string;
   /**
-   * Whether this variant is subject to tax calculations. Commonly used for tax computation logic, pricing displays, or implementing tax-exempt product handling.
+   * Whether this variant is subject to tax calculations. Use for tax computation logic, pricing displays, or implementing tax-exempt product handling.
    */
   taxable: boolean;
   /**
-   * The variant's Stock Keeping Unit (SKU) identifier, if configured. Returns `undefined` when no SKU is set. Commonly used for inventory management, product identification, or integration with external systems that use SKU-based tracking.
+   * The variant's Stock Keeping Unit (SKU) identifier, if configured. Returns `undefined` when no SKU is set. Use for inventory management, product identification, or integration with external systems that use SKU-based tracking.
    */
   sku?: string;
   /**
-   * The variant's barcode identifier, if configured. Returns `undefined` when no barcode is set. Commonly used for barcode scanning functionality, inventory tracking, or integration with barcode-based systems.
+   * The variant's barcode identifier, if configured. Returns `undefined` when no barcode is set. Use for barcode scanning functionality, inventory tracking, or integration with barcode-based systems.
    */
   barcode?: string;
   /**
-   * The variant's formatted display name for user interfaces. This may differ from the title and is optimized for display purposes. Commonly used for customer-facing variant names in product listings, cart items, or receipt displays.
+   * The variant's formatted display name for user interfaces. This may differ from the title and is optimized for display purposes. Use for customer-facing variant names in product listings, cart items, or receipt displays.
    */
   displayName: string;
   /**
-   * The URL of the variant-specific image, if one is configured. Returns `undefined` when no variant image is set. Commonly used for displaying variant-specific images in selection interfaces or product galleries.
+   * The URL of the variant-specific image, if one is configured. Returns `undefined` when no variant image is set. Use for displaying variant-specific images in selection interfaces or product galleries.
    */
   image?: string;
   /**
-   * Whether inventory tracking is enabled for this specific variant. When `false`, inventory quantities may not be accurate. Commonly used to determine whether to display inventory information or implement inventory-based business logic for this variant.
+   * Whether inventory tracking is enabled for this specific variant. When `false`, inventory quantities may not be accurate. Use to determine whether to display inventory information or implement inventory-based business logic for this variant.
    */
   inventoryIsTracked: boolean;
   /**
-   * The inventory quantity available at the current POS location, if inventory tracking is enabled. Returns `undefined` when inventory tracking is disabled. Commonly used for location-specific inventory displays, stock availability checks, or local inventory management.
+   * The inventory quantity available at the current POS location, if inventory tracking is enabled. Returns `undefined` when inventory tracking is disabled. Use for location-specific inventory displays, stock availability checks, or local inventory management.
    */
   inventoryAtLocation?: number;
   /**
-   * The total inventory quantity across all locations for this variant, if available. Returns `undefined` when this information isn't accessible. Commonly used for comprehensive inventory views, transfer planning, or multi-location inventory management.
+   * The total inventory quantity across all locations for this variant, if available. Returns `undefined` when this information is not available. Use for comprehensive inventory views, transfer planning, or multi-location inventory management.
    */
   inventoryAtAllLocations?: number;
   /**
-   * The inventory policy for this variant, either "DENY" (prevent sales when out of stock) or "CONTINUE" (allow sales when out of stock). Commonly used to implement inventory validation logic and determine whether to allow purchases of out-of-stock items.
+   * The inventory policy for this variant, either "DENY" (prevent sales when out of stock) or "CONTINUE" (allow sales when out of stock). Use to implement inventory validation logic and determine whether to allow purchases of out-of-stock items.
    */
   inventoryPolicy: ProductVariantInventoryPolicy;
   /**
-   * Whether this variant currently has inventory in stock. Returns `undefined` when inventory information isn't available. Commonly used for stock status displays, availability checks, or filtering in-stock variants.
+   * Whether this variant currently has inventory in stock. Returns `undefined` when inventory information is not available. Use for stock status displays, availability checks, or filtering in-stock variants.
    */
   hasInStockVariants?: boolean;
   /**
-   * An array of option name-value pairs that define this variant's configuration. For example, `[{name: "Size," value: "Large"}, {name: "Color," value: "Blue"}]`. Returns `undefined` for products with only default variants. Commonly used for displaying variant options, building variant selectors, or implementing variant-based logic.
+   * An array of option name-value pairs that define this variant's configuration. For example, `[{name: "Size," value: "Large"}, {name: "Color," value: "Blue"}]`. Returns `undefined` for products with only default variants. Use for displaying variant options, building variant selectors, or implementing variant-based logic.
    */
   options?: ProductVariantOption[];
   /**
-   * Reference to the parent Product object that this variant belongs to. Returns `undefined` in some contexts to avoid circular references. Typically applied when you need access to product-level information from a variant context.
+   * Reference to the parent Product object that this variant belongs to. Returns `undefined` in some contexts to avoid circular references. Use when you need access to product-level information from a variant context.
    */
   product?: Product;
   /**
-   * The ID of the parent product that this variant belongs to. Commonly used for linking variants back to their parent product, implementing product-level operations, or organizing variants by product.
+   * The ID of the parent product that this variant belongs to. Use for linking variants back to their parent product, implementing product-level operations, or organizing variants by product.
    */
   productId: number;
   /**
-   * The variant's position order within the product's variant list. Commonly used for maintaining consistent variant ordering in selection interfaces or implementing custom variant sorting logic.
+   * The variant's position order within the product's variant list. Use for maintaining consistent variant ordering in selection interfaces or implementing custom variant sorting logic.
    */
   position: number;
 }
@@ -195,11 +195,11 @@ export interface ProductVariant {
  */
 export interface ProductVariantOption {
   /**
-   * The option category name as defined in the product configuration (for example, `"Size"`, `"Color"`, `"Material"`, `"Style"`). This is the option type or attribute being specified, not the selected value. Products can have up to 3 option names. The name is set at the product level and shared across all variants. Commonly used for displaying option labels in variant selectors, building dynamic variant selection UI, or organizing variant attributes.
+   * The option category name (for example, "Size", "Color", "Material", "Style", "Flavor"). This is the attribute or dimension along which the product varies. Each product can have up to 3 option names, and each option name can have multiple values. The name is visible to customers in variant selection interfaces. Commonly used for displaying option labels in variant selectors ("Select Size:", "Choose Color:"), building dynamic product configuration UI, or organizing product variations by attribute type.
    */
   name: string;
   /**
-   * The selected value for this option that defines this specific variant (for example, `"Large"`, `"Blue"`, `"Cotton"`, `"V-Neck"`). This is the specific choice from the available option values that characterizes this variant. For example, if `name` is "Size", the `value` might be "Large" or "Small". Values are set at the variant level—each variant has a unique combination of option values. Commonly used for displaying the variant's configuration ("Size: Large, Color: Blue"), building variant selection dropdowns, or matching user selections to variants.
+   * The selected value for this option that defines this specific variant (for example, "Large", "Blue", "Cotton", "V-Neck"). This is the specific choice from the available option values that characterizes this variant. For example, if `name` is "Size", the `value` might be "Large" or "Small". Values are set at the variant level—each variant has a unique combination of option values. Commonly used for displaying the variant's configuration ("Size: Large, Color: Blue"), building variant selection dropdowns, or matching user selections to variants.
    */
   value: string;
 }
@@ -220,7 +220,7 @@ export interface ProductOption {
    */
   id: number;
   /**
-   * The option category name (for example, `"Size"`, `"Color"`, `"Material"`, `"Style"`, `"Flavor"`). This is the attribute or dimension along which the product varies. Each product can have up to 3 option names, and each option name can have multiple values. The name is visible to customers in variant selection interfaces. Commonly used for displaying option labels in variant selectors ("Select Size:", "Choose Color:"), building dynamic product configuration UI, or organizing product variations by attribute type.
+   * The option category name (for example, "Size", "Color", "Material", "Style", "Flavor"). This is the attribute or dimension along which the product varies. Each product can have up to 3 option names, and each option name can have multiple values. The name is visible to customers in variant selection interfaces. Commonly used for displaying option labels in variant selectors ("Select Size:", "Choose Color:"), building dynamic product configuration UI, or organizing product variations by attribute type.
    */
   name: string;
   /**

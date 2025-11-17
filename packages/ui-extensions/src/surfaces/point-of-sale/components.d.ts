@@ -105,7 +105,7 @@ export interface FocusEventProps {
   onFocus?: (event: FocusEvent) => void;
 }
 /**
- * A size scale keyword ranging from smallest (`'small-500'`) to largest (`'large-500'`).
+ * Defines the available size options for icons using a semantic scale. Provides granular control over icon dimensions from compact inline sizes to prominent display sizes.
  */
 export type SizeKeyword =
   | 'small-500'
@@ -122,7 +122,7 @@ export type SizeKeyword =
   | 'large-400'
   | 'large-500';
 /**
- * A color intensity keyword from subtle (`'subdued'`) to prominent (`'strong'`).
+ * Defines the available color intensity options for icons. Controls the visual prominence and contrast of icon elements within the interface.
  */
 export type ColorKeyword = 'subdued' | 'base' | 'strong';
 /**
@@ -141,12 +141,7 @@ export interface BackgroundProps {
   background?: BackgroundColorKeyword;
 }
 /**
- * A property for defining the color treatment and semantic meaning of a component.
- *
- * A tone can apply a grouping of colors to a component. For example,
- * critical may have a specific text color and background color.
- *
- * In some cases, like for Banner, the tone may also affect the semantic and accessibility treatment of the component.
+ * Defines the semantic tone options for icons. Controls the color and visual emphasis based on the information type and importance being communicated.
  *
  * @default 'auto'
  */
@@ -718,7 +713,7 @@ export type IconType = (typeof privateIconArray)[number];
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
 /**
- * A utility type for properties that support 1-to-4-value shorthand syntax.
+ * A utility type for properties that support [1-to-4-value shorthand syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box).
  */
 export type MaybeAllValuesShorthandProperty<T extends string> =
   | T
@@ -726,7 +721,7 @@ export type MaybeAllValuesShorthandProperty<T extends string> =
   | `${T} ${T} ${T}`
   | `${T} ${T} ${T} ${T}`;
 /**
- * A utility type for properties that support 1-to-2-value shorthand syntax.
+ * Defines a shorthand property that accepts either a single value or two space-separated values for directional properties like padding and spacing.
  */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
 /**
@@ -854,7 +849,7 @@ export interface DisplayProps {
 /**
  * Properties for defining the semantic role of an element for assistive technologies.
  */
-export interface AccessibilityRoleProps{
+export interface AccessibilityRoleProps {
   /**
    * Sets the semantic role for assistive technologies. Helps screen reader users navigate and understand page structure.
    *
@@ -1011,7 +1006,7 @@ export interface LabelAccessibilityVisibilityProps {
   >;
 }
 /**
- * A padding size keyword including the option for no padding.
+ * Defines the available padding size options using a semantic scale. Provides consistent spacing values that align with the POS design system.
  */
 export type PaddingKeyword = SizeKeyword | 'none';
 /**
@@ -1019,17 +1014,18 @@ export type PaddingKeyword = SizeKeyword | 'none';
  */
 export interface PaddingProps {
   /**
-   * The padding applied to all edges of the element. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
+   * The padding applied to all edges of the container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
+   *
    * - 4 values: `block-start inline-end block-end inline-start`
    * - 3 values: `block-start inline block-end`
    * - 2 values: `block inline`
-   * - 1 value: all edges
    *
    * For example:
-   * - `large` applies `large` padding to all edges.
-   * - `large none` applies `large` to block edges and `none` to inline edges.
-   * - `large none large` applies `large` to block-start, `none` to inline edges, `large` to block-end.
-   * - `large none large small` applies different padding to each edge in order.
+   *
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
    *
    * An `auto` value inherits the default padding from the closest container that has removed its usual padding.
    *
@@ -1037,7 +1033,7 @@ export interface PaddingProps {
    */
   padding?: MaybeResponsive<MaybeAllValuesShorthandProperty<PaddingKeyword>>;
   /**
-   * The block-axis padding for the element (typically vertical in horizontal writing modes). Supports two-value syntax where `large none` sets block-start to `large` and block-end to `none`. Overrides the block axis values from the `padding` property.
+   * The block-axis padding for the container. Overrides the block value of the `padding` property.
    *
    * @default '' - meaning no override
    */
@@ -1045,19 +1041,19 @@ export interface PaddingProps {
     MaybeTwoValuesShorthandProperty<PaddingKeyword> | ''
   >;
   /**
-   * The block-start padding for the element (typically top in horizontal writing modes). Overrides the block-start value from the `paddingBlock` property.
+   * The block-start padding for the container. Overrides the block-start value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockStart?: MaybeResponsive<PaddingKeyword | ''>;
   /**
-   * The block-end padding for the element (typically bottom in horizontal writing modes). Overrides the block-end value from the `paddingBlock` property.
+   * The block-end padding for the container. Overrides the block-end value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockEnd?: MaybeResponsive<PaddingKeyword | ''>;
   /**
-   * The inline-axis padding for the element (typically horizontal in horizontal writing modes). Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline axis values from the `padding` property.
+   * The inline-axis padding for the container. Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline value of the `padding` property.
    *
    * @default '' - meaning no override
    */
@@ -1065,28 +1061,28 @@ export interface PaddingProps {
     MaybeTwoValuesShorthandProperty<PaddingKeyword> | ''
   >;
   /**
-   * The inline-start padding for the element (typically left in LTR, right in RTL). Overrides the inline-start value from the `paddingInline` property.
+   * The inline-start padding for the container. Overrides the inline-start value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineStart?: MaybeResponsive<PaddingKeyword | ''>;
   /**
-   * The inline-end padding for the element (typically right in LTR, left in RTL). Overrides the inline-end value from the `paddingInline` property.
+   * The inline-end padding for the container. Overrides the inline-end value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineEnd?: MaybeResponsive<PaddingKeyword | ''>;
 }
 /**
- * A size value in pixels, percentage, or zero.
+ * Defines exact size measurements without automatic or unconstrained options. Limited to specific pixel values, percentages, or zero.
  */
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
 /**
- * A size value with automatic sizing option.
+ * Defines size values that can be specified as exact measurements or automatic sizing. Supports pixel values, percentages, zero, or automatic sizing based on content.
  */
 export type SizeUnitsOrAuto = SizeUnits | 'auto';
 /**
- * A size value with no constraint option.
+ * Defines size values that can be specified as exact measurements or no constraint. Supports pixel values, percentages, zero, or no maximum limit.
  */
 export type SizeUnitsOrNone = SizeUnits | 'none';
 /**
@@ -1094,43 +1090,37 @@ export type SizeUnitsOrNone = SizeUnits | 'none';
  */
 export interface SizingProps {
   /**
-   * The block size (height in horizontal writing modes) of the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
-   * Learn more about [`block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
+   * The block size of the container. Auto automatically sizes based on the container's children.
    *
    * @default 'auto'
    */
   blockSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
-   * The minimum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
-   * Learn more about [`min-block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
+   * The minimum block size constraint for the container.
    *
    * @default '0'
    */
   minBlockSize?: MaybeResponsive<SizeUnits>;
   /**
-   * The maximum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
-   * Learn more about [`max-block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
+   * The maximum block size constraint for the container.
    *
    * @default 'none'
    */
   maxBlockSize?: MaybeResponsive<SizeUnitsOrNone>;
   /**
-   * The inline size (width in horizontal writing modes) of the element.
-   * Learn more about [`inline-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
+   * The inline size of the container. Auto automatically sizes based on the container's children.
    *
    * @default 'auto'
    */
   inlineSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
-   * The minimum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
-   * Learn more about [`min-inline-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
+   * The minimum inline size constraint for the container.
    *
    * @default '0'
    */
   minInlineSize?: MaybeResponsive<SizeUnits>;
   /**
-   * The maximum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
-   * Learn more about [`max-inline-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
+   * The maximum inline size constraint for the container.
    *
    * @default 'none'
    */
@@ -1561,9 +1551,10 @@ export interface NumberConstraintsProps {
   step?: number;
   /**
    * The type of controls displayed for the field:
-   * - `'auto'`: An automatic setting where the presence of controls depends on the surface and context. The system determines the most appropriate control type based on the usage scenario.
-   * - `'stepper'`: Displays increment (+) and decrement (-) buttons for adjusting the numeric value. When `stepper` controls are enabled, the field behavior is constrained: it accepts only integer values, always contains a value (never empty), and automatically validates against `min` and `max` bounds. The `label`, `details`, `placeholder`, `error`, `required`, and `inputMode` properties aren't supported with `stepper` controls.
-   * - `'none'`: A control type with no visible controls where users must input the value manually using the keyboard.
+   *
+   * - `'auto'` - An automatic setting where the presence of controls depends on the surface and context. The system determines the most appropriate control type based on the usage scenario.
+   * - `'stepper'` - Displays increment (+) and decrement (-) buttons for adjusting the numeric value. When `stepper` controls are enabled, the field behavior is constrained: it accepts only integer values, always contains a value (never empty), and automatically validates against `min` and `max` bounds. The `label`, `details`, `placeholder`, `error`, `required`, and `inputMode` properties aren't supported with `stepper` controls.
+   * - `'none'` - A control type with no visible controls where users must input the value manually using the keyboard.
    *
    * @default 'auto'
    */
@@ -2021,7 +2012,7 @@ export interface DateSpinnerProps
 export interface DividerProps extends GlobalProps {
   /**
    * The direction of the divider using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). An inline divider runs horizontally across the content flow, while a block divider runs vertically along the content flow.
-   * 
+   *
    * Available options:
    * - `'inline'`: A horizontal divider that runs perpendicular to the text direction, creating separation between vertically stacked content sections.
    * - `'block'`: A vertical divider that runs parallel to the text direction, creating separation between horizontally arranged content sections.
@@ -2221,13 +2212,13 @@ export interface IconProps
   extends GlobalProps,
     Pick<InteractionProps, 'interestFor'> {
   /**
-   * The semantic tone of the icon, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * Sets the tone of the icon, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * The color intensity of the icon. Controls how prominent or subtle the icon appears within the interface.
+   * Modify the color to be more or less intense. Use `'subdued'` for secondary icons, `'base'` for standard visibility, or `'strong'` for emphasized icons that need to stand out.
    *
    * @default 'base'
    */
@@ -2239,7 +2230,7 @@ export interface IconProps
    */
   size?: SizeKeyword;
   /**
-   * The icon identifier specifying which icon to display. Accepts any valid icon name from the icon set.
+   * The type of icon to display.
    */
   type?: IconType | AnyString;
 }
@@ -2261,12 +2252,7 @@ export interface BaseImageProps {
    */
   sizes?: string;
   /**
-   * The primary image source URL. Accepts absolute URLs (`https://example.com/image.jpg`), relative paths (`/images/product.jpg`), or data URLs (`data:image/png;base64,...`). When the image is loading or if `src` is omitted/invalid, a placeholder is displayed while reserving the image's space to prevent layout shifts. The URL must be accessible (proper [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) headers for cross-origin images), use appropriate protocols ([HTTPS](https://en.wikipedia.org/wiki/HTTPS) for security), and point to valid image formats (JPEG, PNG, GIF, WebP, SVG). Failed loads trigger the `onError` callback if provided. For responsive images serving different sizes/resolutions, `srcSet` can be used in addition to `src` (which then serves as the fallback). Images are loaded asynchronously—the `loading` property controls when loading begins.
-   *
-   * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
-   * reserved, except in cases where the image area doesn't have a contextual inline or block size, which should be rare.
-   *
-   * Learn more about [img src on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src).
+   * The image source URL (remote URL or local file resource). When loading or no src is provided, a placeholder is rendered. Ensure URLs are properly formatted and properly formatted.
    */
   src?: string;
   /**
@@ -2294,12 +2280,11 @@ export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
     | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
   /**
    * Controls the displayed width of the image. Choose based on your layout requirements. For mobile interfaces, consider using `'fill'` with defined container dimensions to ensure consistent image display, as dynamic container heights can cause layout inconsistencies in scrollable views.
-   * - `'auto'`: Displays the image at its natural size. The image won't render until it has loaded, and the aspect ratio will be ignored. Use for images where maintaining original dimensions is important.
-   * - `'fill'`: Makes the image take up 100% of the available inline size. The aspect ratio will be respected and the image will take the necessary space. Use for responsive layouts and flexible image containers.
+   *
+   * - `'auto'` - Displays the image at its natural size. The image will not render until it has loaded, and the aspect ratio will be ignored. Use for images where maintaining original dimensions is important.
+   * - `'fill'` - Makes the image take up 100% of the available inline size. The aspect ratio will be respected and the image will take the necessary space. Use for responsive layouts and flexible image containers.
    *
    * @default 'fill'
-   *
-   * Learn more about [`width` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width).
    */
   inlineSize?: 'fill' | 'auto';
   /**
@@ -2314,20 +2299,17 @@ export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
    * If the value is set as `0.5`, the getter returns `0.5 / 1`.
    *
    * @default '1/1'
-   *
-   * Learn more about [`aspect-ratio` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio).
    */
   aspectRatio?:
     | `${number}${optionalSpace}/${optionalSpace}${number}`
     | `${number}`;
   /**
-   * Controls how the image content is resized within its container:
-   * - `'contain'`: Scales the image to fit within the container while maintaining aspect ratio. The entire image will be visible, but there may be empty space. Use when showing the complete image is important.
-   * - `'cover'`: Scales the image to fill the entire container while maintaining aspect ratio. Parts of the image may be cropped. Use when filling the container completely is more important than showing the entire image.
+   * Controls how the image content is resized within its container.
+   *
+   * - `'contain'` - Scales the image to fit within the container while maintaining aspect ratio. The entire image will be visible, but there may be empty space. Use when showing the complete image is important.
+   * - `'cover'` - Scales the image to fill the entire container while maintaining aspect ratio. Parts of the image may be cropped. Use when filling the container completely is more important than showing the entire image.
    *
    * @default 'contain'
-   *
-   * Learn more about [`object-fit` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
    */
   objectFit?: 'contain' | 'cover';
   /**
@@ -2399,13 +2381,11 @@ export interface NumberFieldProps
     NumberConstraintsProps,
     FieldDecorationProps {
   /**
-   * The virtual keyboard layout displayed for numeric input on touch-enabled devices like tablets and smartphones. This property has no effect on desktop devices with physical keyboards. Not supported when using `stepper` controls.
-   * - `'decimal'`: Shows a numeric keyboard with a decimal point/comma key. Best for monetary amounts (for example, "$19.99"), measurements with precision (for example, "2.5 kg"), percentages (for example, "15.5%"), or any fractional values. The decimal separator adapts to the user's locale (period in US, comma in Europe).
-   * - `'numeric'`: Shows a numeric keyboard without decimal point, displaying only digits 0-9 and sometimes +/- symbols. Best for quantities (for example, "5 items"), whole number identifiers (for example, "Order #12345"), phone numbers, or any integer-only input. Prevents accidental decimal entry which can confuse users for whole number fields.
-   * 
-   * On mobile POS devices, choosing the correct inputMode significantly improves data entry speed and reduces errors by showing the most relevant keyboard. Users can still switch keyboards manually if needed.
+   * The virtual keyboard layout that the field displays for numeric input. This property isn't supported when using `stepper` controls.
    *
-   * Learn more about [`inputmode` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode).
+   * - `'decimal'` - A keyboard layout that includes decimal point support for entering fractional numbers, prices, or measurements with decimal precision.
+   * - `'numeric'` - A keyboard layout optimized for integer-only entry without decimal point support, ideal for quantities, counts, or whole number values.
+   *
    * @default 'decimal'
    */
   inputMode?: 'decimal' | 'numeric';
@@ -2794,10 +2774,7 @@ export interface TileProps
    */
   itemCount?: number;
   /**
-   * The semantic tone that affects the tile's color and styling to communicate meaning:
-   * - `'auto'`: Automatically determines the appropriate tone
-   * - `'neutral'`: Standard appearance for general content
-   * - `'accent'`: Emphasized appearance to draw attention
+   * Sets the visual tone of the tile based on the intention of the information being conveyed. Use `'accent'` to highlight important or primary actions, `'neutral'` for standard actions, or `'auto'` (default) to let the system determine the appropriate tone based on context.
    *
    * @default 'auto'
    */
@@ -3046,13 +3023,37 @@ interface BaseElementPropsWithChildren<TClass = HTMLElement>
   children?: ComponentChildren;
 }
 type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+/**
+ * Represents the event object passed to callback functions when interactive events occur. Contains metadata about the event, including the target element, event phase, and propagation behavior.
+ */
 interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
+  /**
+   * The element that the event listener is attached to.
+   */
   currentTarget: HTMLElementTagNameMap[T];
+  /**
+   * Whether the event bubbles up through the DOM tree.
+   */
   bubbles?: boolean;
+  /**
+   * Whether the event can be canceled.
+   */
   cancelable?: boolean;
+  /**
+   * Whether the event will trigger listeners outside of a shadow root.
+   */
   composed?: boolean;
+  /**
+   * Additional data associated with the event.
+   */
   detail?: any;
+  /**
+   * The current phase of the event flow.
+   */
   eventPhase: number;
+  /**
+   * The element that triggered the event.
+   */
   target: HTMLElementTagNameMap[T] | null;
 }
 
@@ -3069,16 +3070,23 @@ interface ButtonJSXProps
    * - `'--hide'`: Hide the target element
    * - `'--toggle'`: Switch the target's visibility state
    *
+   * Learn more about [`command` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
+   *
    * @default '--auto'
    *
-   * Learn more about [`command` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
    */
   command?: Extract<
     ButtonProps['command'],
     '--auto' | '--show' | '--hide' | '--toggle'
   >;
   /**
-   * The semantic tone of the button, based on the intention of the action being performed. Affects color and styling to communicate meaning.
+   * Sets the tone of the button, based on the intention of the information being conveyed.
+   *
+   * - `'auto'` - Automatically determines the appropriate tone based on context.
+   * - `'neutral'` - The standard tone for general actions and interactions.
+   * - `'caution'` - Indicates actions that require careful consideration.
+   * - `'warning'` - Alerts users to potential issues or important information.
+   * - `'critical'` - Used for destructive actions like deleting or removing content.
    *
    * @default 'auto'
    */
@@ -3125,13 +3133,25 @@ interface TextJSXProps extends Pick<TextProps, 'id'> {
    */
   color?: Extract<TextProps['color'], 'base' | 'strong' | 'subdued'>;
   /**
-   * The semantic meaning of the text, which may affect its default styling and how screen readers announce it. Other presentation properties can override the default styling.
+   * The semantic meaning and default styling of the text. Other presentation properties override the default styling provided by the type. Available options:
+   *
+   * - `'generic'` - The default text type for general content without specific semantic meaning or emphasis.
+   * - `'strong'` - A text type that provides emphasis and importance, typically rendered with increased font weight or visual prominence.
+   * - `'small'` - A text type for secondary or supplementary content, typically rendered with reduced size for captions, fine print, or less important information.
    *
    * @default 'generic'
    */
   type?: Extract<TextProps['type'], 'generic' | 'strong' | 'small'>;
   /**
-   * The semantic tone of the text, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * Determines the visual appearance and semantic meaning of the text. Available options:
+   *
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context. Use when you want the system to determine the most appropriate styling.
+   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis. Use for general status updates and standard information.
+   * - `'info'` - Blue styling for informational content and neutral updates. Use for informational content that provides helpful context.
+   * - `'success'` - Green styling for positive states, completed actions, and successful operations. Use for positive outcomes and successful processes.
+   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent. Use for potential issues that require awareness.
+   * - `'warning'` - Orange styling for important notices that require merchant awareness. Use for situations that need attention but aren't critical.
+   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action. Use for urgent issues that need immediate merchant attention.
    *
    * @default 'auto'
    */
@@ -3161,79 +3181,92 @@ type PaddingKeyword$2 = SizeKeyword | 'none';
 declare const tagName$r = 's-scroll-box';
 interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
   /**
-   * The block size (height in horizontal writing modes) of the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The block size of the scrollable container. Auto automatically sizes based on the container's content and available space.
    *
    * @default 'auto'
    */
   blockSize?: SizeUnitsOrAuto;
   /**
-   * The inline size (width in horizontal writing modes) of the element.
+   * The inline size of the scrollable container. Auto automatically sizes based on the container's content and available space.
    *
    * @default 'auto'
    */
   inlineSize?: SizeUnitsOrAuto;
   /**
-   * The maximum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The maximum block size constraint for the scrollable container.
    *
    * @default 'none'
    */
   maxBlockSize?: SizeUnitsOrNone;
   /**
-   * The maximum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The maximum inline size constraint for the scrollable container.
    *
    * @default 'none'
    */
   maxInlineSize?: SizeUnitsOrNone;
   /**
-   * The minimum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The minimum block size constraint for the scrollable container.
    *
    * @default '0'
    */
   minBlockSize?: SizeUnits;
   /**
-   * The minimum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The minimum inline size constraint for the scrollable container.
    *
    * @default '0'
    */
   minInlineSize?: SizeUnits;
   /**
-   * The padding applied to all edges of the element.
+   * The padding applied to all edges of the scrollable container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   *
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * An `auto` value inherits the default padding from the closest container that has removed its usual padding.
    *
    * @default 'none'
    */
   padding?: MaybeAllValuesShorthandProperty<PaddingKeyword$2>;
   /**
-   * The block-axis padding for the element (typically vertical in horizontal writing modes).
+   * The block-axis padding for the scrollable container. Overrides the block value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword$2> | '';
   /**
-   * The block-start padding for the element (typically top in horizontal writing modes).
+   * The block-start padding for the scrollable container. Overrides the block-start value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockStart?: PaddingKeyword$2 | '';
   /**
-   * The block-end padding for the element (typically bottom in horizontal writing modes).
+   * The block-end padding for the scrollable container. Overrides the block-end value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockEnd?: PaddingKeyword$2 | '';
   /**
-   * The inline-axis padding for the element (typically horizontal in horizontal writing modes).
+   * The inline-axis padding for the scrollable container. Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword$2> | '';
   /**
-   * The inline-start padding for the element (typically left in LTR, right in RTL).
+   * The inline-start padding for the scrollable container. Overrides the inline-start value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineStart?: PaddingKeyword$2 | '';
   /**
-   * The inline-end padding for the element (typically right in LTR, left in RTL).
+   * The inline-end padding for the scrollable container. Overrides the inline-end value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
@@ -3295,7 +3328,13 @@ interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
    */
   hidden?: BannerProps['hidden'];
   /**
-   * The semantic tone of the banner, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * Sets the visual appearance of the banner. The tone determines the color scheme. Available options:
+   *
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context.
+   * - `'success'` - Green styling for positive outcomes and successful operations.
+   * - `'info'` - Blue styling for general information and neutral updates.
+   * - `'warning'` - Orange styling for important notices that require attention.
+   * - `'critical'` - Red styling for errors and urgent issues requiring immediate action.
    *
    * @default 'auto'
    */
@@ -3334,79 +3373,92 @@ interface BoxJSXProps {
    */
   id?: string;
   /**
-   * The block size (height in horizontal writing modes) of the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The block size of the container. Auto automatically sizes based on the container's children.
    *
    * @default 'auto'
    */
   blockSize?: SizeUnitsOrAuto;
   /**
-   * The inline size (width in horizontal writing modes) of the element.
+   * The inline size of the container. Auto automatically sizes based on the container's children.
    *
    * @default 'auto'
    */
   inlineSize?: SizeUnitsOrAuto;
   /**
-   * The maximum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The maximum block size constraint for the container.
    *
    * @default 'none'
    */
   maxBlockSize?: SizeUnitsOrNone;
   /**
-   * The maximum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The maximum inline size constraint for the container.
    *
    * @default 'none'
    */
   maxInlineSize?: SizeUnitsOrNone;
   /**
-   * The minimum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The minimum block size constraint for the container.
    *
    * @default '0'
    */
   minBlockSize?: SizeUnits;
   /**
-   * The minimum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The minimum inline size constraint for the container.
    *
    * @default '0'
    */
   minInlineSize?: SizeUnits;
   /**
-   * The padding applied to all edges of the element.
+   * The padding applied to all edges of the container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   *
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * An `auto` value inherits the default padding from the closest container that has removed its usual padding.
    *
    * @default 'none'
    */
   padding?: MaybeAllValuesShorthandProperty<PaddingKeyword$1>;
   /**
-   * The block-axis padding for the element (typically vertical in horizontal writing modes).
+   * The block-axis padding for the container. Overrides the block value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword$1> | '';
   /**
-   * The block-start padding for the element (typically top in horizontal writing modes).
+   * The block-start padding for the container. Overrides the block-start value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockStart?: PaddingKeyword$1 | '';
   /**
-   * The block-end padding for the element (typically bottom in horizontal writing modes).
+   * The block-end padding for the container. Overrides the block-end value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockEnd?: PaddingKeyword$1 | '';
   /**
-   * The inline-axis padding for the element (typically horizontal in horizontal writing modes).
+   * The inline-axis padding for the container. Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword$1> | '';
   /**
-   * The inline-start padding for the element (typically left in LTR, right in RTL).
+   * The inline-start padding for the container. Overrides the inline-start value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineStart?: PaddingKeyword$1 | '';
   /**
-   * The inline-end padding for the element (typically right in LTR, left in RTL).
+   * The inline-end padding for the container. Overrides the inline-end value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
@@ -3430,6 +3482,9 @@ declare module 'preact' {
 }
 
 declare const tagName$n = 's-icon';
+/**
+ * Lists all currently supported icon names available for use in the POS interface. Reference this list when selecting icons to ensure compatibility and availability.
+ */
 type SupportedIconNames = Extract<
   IconProps['type'],
   | 'alert-circle'
@@ -3561,7 +3616,7 @@ type SupportedIconNames = Extract<
 interface IconJSXProps
   extends Pick<IconProps, 'id' | 'tone' | 'color' | 'size'> {
   /**
-   * The semantic meaning and default styling of the text. Other presentation properties override the default styling provided by the type.
+   * The type of icon to display.
    *
    * @default ''
    */
@@ -3601,78 +3656,86 @@ type PickedProps = Pick<
 >;
 interface StackJSXProps extends PickedProps {
   /**
-   * The padding applied to all edges of the element.
+   * The padding applied to all edges of the container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   *
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * An `auto` value inherits the default padding from the closest container that has removed its usual padding.
    *
    * @default 'none'
    */
   padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
   /**
-   * The block-axis padding for the element (typically vertical in horizontal writing modes).
+   * The block-axis padding for the container. Overrides the block value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword | ''>;
   /**
-   * The block-start padding for the element (typically top in horizontal writing modes).
+   * The block-start padding for the container. Overrides the block-start value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockStart?: PaddingKeyword | '';
   /**
-   * The block-end padding for the element (typically bottom in horizontal writing modes).
+   * The block-end padding for the container. Overrides the block-end value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockEnd?: PaddingKeyword | '';
   /**
-   * The inline-axis padding for the element (typically horizontal in horizontal writing modes).
+   * The inline-axis padding for the container. Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword | ''>;
   /**
-   * The inline-start padding for the element (typically left in LTR, right in RTL).
+   * The inline-start padding for the container. Overrides the inline-start value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineStart?: PaddingKeyword | '';
   /**
-   * The inline-end padding for the element (typically right in LTR, left in RTL).
+   * The inline-end padding for the container. Overrides the inline-end value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineEnd?: PaddingKeyword | '';
   /**
-   * The block size (height in horizontal writing modes) of the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
-   * Learn more about [`block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
+   * The block size of the container. Auto automatically sizes based on the container's children.
    *
    * @default 'auto'
    */
   blockSize?: SizeUnitsOrAuto;
   /**
-   * The maximum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
-   * Learn more about [`max-block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
+   * The maximum block size constraint for the container.
    *
    * @default 'none'
    */
   maxBlockSize?: SizeUnitsOrNone;
   /**
-   * The maximum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
-   * Learn more about [`max-inline-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
+   * The maximum inline size constraint for the container.
    *
    * @default 'none'
    */
   maxInlineSize?: SizeUnitsOrNone;
   /**
-   * The minimum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
-   * Learn more about [`min-block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
+   * The minimum block size constraint for the container.
    *
    * @default '0'
    */
   minBlockSize?: SizeUnits;
   /**
-   * The minimum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
-   * Learn more about [`min-inline-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
+   * The minimum inline size constraint for the container.
    *
    * @default '0'
    */
@@ -3749,7 +3812,15 @@ declare module 'preact' {
 declare const tagName$l = 's-badge';
 interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
   /**
-   * The semantic tone of the badge, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * Determines the visual appearance and semantic meaning of the badge. Available options:
+   *
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context. Use when you want the system to determine the most appropriate styling.
+   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis. Use for general status updates and standard information.
+   * - `'info'` - Blue styling for informational content and neutral updates. Use for informational content that provides helpful context.
+   * - `'success'` - Green styling for positive states, completed actions, and successful operations. Use for positive outcomes and successful processes.
+   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent. Use for potential issues that require awareness.
+   * - `'warning'` - Orange styling for important notices that require merchant awareness. Use for situations that need attention but aren't critical.
+   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action. Use for urgent issues that need immediate merchant attention.
    *
    * @default 'auto'
    */
@@ -4107,7 +4178,9 @@ interface NumberFieldJSXProps
   /**
    * The virtual keyboard layout that the field displays for numeric input. This property isn't supported when using `stepper` controls.
    *
-   * Learn more about [`inputmode` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode).
+   * - `'decimal'` - A keyboard layout that includes decimal point support for entering fractional numbers, prices, or measurements with decimal precision.
+   * - `'numeric'` - A keyboard layout optimized for integer-only entry without decimal point support, ideal for quantities, counts, or whole number values.
+   *
    * @default 'decimal'
    */
   inputMode?: NumberFieldProps['inputMode'];
@@ -4121,6 +4194,12 @@ interface NumberFieldJSXProps
   accessory?: ComponentChild;
   /**
    * The type of controls displayed for the field:
+   *
+   * - `'auto'` - An automatic setting where the presence of controls depends on the surface and context. The system determines the most appropriate control type based on the usage scenario.
+   * - `'stepper'` - Displays increment (+) and decrement (-) buttons for adjusting the numeric value. When `stepper` controls are enabled, the field behavior is constrained: it accepts only integer values, always contains a value (never empty), and automatically validates against `min` and `max` bounds. The `label`, `details`, `placeholder`, `error`, `required`, and `inputMode` properties aren't supported with `stepper` controls.
+   * - `'none'` - A control type with no visible controls where users must input the value manually using the keyboard.
+   *
+   * @default 'auto'
    */
   controls?: NumberFieldProps['controls'];
   /**
@@ -4339,17 +4418,16 @@ declare module 'preact' {
 declare const tagName$5 = 's-image';
 interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
   /**
-   * The inline size (width in horizontal writing modes) of the element.
+   * Controls the displayed width of the image. Choose based on your layout requirements. For mobile interfaces, consider using `'fill'` with defined container dimensions to ensure consistent image display, as dynamic container heights can cause layout inconsistencies in scrollable views.
+   *
+   * - `'auto'` - Displays the image at its natural size. The image will not render until it has loaded, and the aspect ratio will be ignored. Use for images where maintaining original dimensions is important.
+   * - `'fill'` - Makes the image take up 100% of the available inline size. The aspect ratio will be respected and the image will take the necessary space. Use for responsive layouts and flexible image containers.
    *
    * @default 'fill'
-   *
-   * Learn more about [`width` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width).
    */
   inlineSize?: ImageProps['inlineSize'];
   /**
-   * The image source URL (remote URL or local file resource). When loading or no src is provided, a placeholder is rendered. Ensure URLs are accessible and properly formatted.
-   *
-   * Learn more about [`src` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src).
+   * The image source URL (remote URL or local file resource). When loading or no src is provided, a placeholder is rendered. Ensure URLs are properly formatted and properly formatted.
    */
   src?: ImageProps['src'];
 }
@@ -4531,7 +4609,15 @@ export type {
 
 interface Badge {
   /**
-   * The semantic tone of the text, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * Determines the visual appearance and semantic meaning of the badge. Available options:
+   *
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context. Use when you want the system to determine the most appropriate styling.
+   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis. Use for general status updates and standard information.
+   * - `'info'` - Blue styling for informational content and neutral updates. Use for informational content that provides helpful context.
+   * - `'success'` - Green styling for positive states, completed actions, and successful operations. Use for positive outcomes and successful processes.
+   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent. Use for potential issues that require awareness.
+   * - `'warning'` - Orange styling for important notices that require merchant awareness. Use for situations that need attention but aren't critical.
+   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action. Use for urgent issues that need immediate merchant attention.
    *
    * @default 'auto'
    */
@@ -4549,8 +4635,13 @@ interface Badge {
   id?: string;
 }
 
+/**
+ * The `Banner` component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ */
 interface BannerSlots {
-  /** The action taken when the Banner is pressed. */
+  /**
+   * The primary action element displayed within the banner, typically a button. Use this slot to provide interactive elements that allow users to respond to the banner's message, such as "Dismiss," "Learn More," or "Retry" buttons.
+   */
   'primary-action'?: HTMLElement;
 }
 
@@ -4562,7 +4653,13 @@ interface Banner {
    */
   hidden?: boolean;
   /**
-   * The semantic tone of the banner, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * Sets the visual appearance of the banner. The tone determines the color scheme. Available options:
+   *
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context.
+   * - `'success'` - Green styling for positive outcomes and successful operations.
+   * - `'info'` - Blue styling for general information and neutral updates.
+   * - `'warning'` - Orange styling for important notices that require attention.
+   * - `'critical'` - Red styling for errors and urgent issues requiring immediate action.
    *
    * @default 'auto'
    */
@@ -4581,89 +4678,105 @@ interface Banner {
 
 interface Box {
   /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
+   * A unique identifier for the element used for targeting with CSS or JavaScript.
    */
   id?: string;
   /**
-   * The block size (height in horizontal writing modes) of the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The block size of the container. Auto automatically sizes based on the container's children.
    *
    * @default 'auto'
    */
   blockSize?: SizeUnitsOrAuto;
   /**
-   * The inline size (width in horizontal writing modes) of the element.
+   * The inline size of the container. Auto automatically sizes based on the container's children.
    *
    * @default 'auto'
    */
   inlineSize?: SizeUnitsOrAuto;
   /**
-   * The maximum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The maximum block size constraint for the container.
    *
    * @default 'none'
    */
   maxBlockSize?: SizeUnitsOrNone;
   /**
-   * The maximum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The maximum inline size constraint for the container.
    *
    * @default 'none'
    */
   maxInlineSize?: SizeUnitsOrNone;
   /**
-   * The minimum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The minimum block size constraint for the container.
    *
    * @default '0'
    */
   minBlockSize?: SizeUnits;
   /**
-   * The minimum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The minimum inline size constraint for the container.
    *
    * @default '0'
    */
   minInlineSize?: SizeUnits;
   /**
-   * The padding applied to all edges of the element.
+   * The padding applied to all edges of the container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   *
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * An `auto` value inherits the default padding from the closest container that has removed its usual padding.
    *
    * @default 'none'
    */
   padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
   /**
-   * The block-axis padding for the element (typically vertical in horizontal writing modes).
+   * The block-axis padding for the container. Overrides the block value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingBlock?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
   /**
-   * The block-start padding for the element (typically top in horizontal writing modes).
+   * The block-start padding for the container. Overrides the block-start value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockStart?: '' | PaddingKeyword;
   /**
-   * The block-end padding for the element (typically bottom in horizontal writing modes).
+   * The block-end padding for the container. Overrides the block-end value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockEnd?: '' | PaddingKeyword;
   /**
-   * The inline-axis padding for the element (typically horizontal in horizontal writing modes).
+   * The inline-axis padding for the container. Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingInline?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
   /**
-   * The inline-start padding for the element (typically left in LTR, right in RTL).
+   * The inline-start padding for the container. Overrides the inline-start value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineStart?: '' | PaddingKeyword;
   /**
-   * The inline-end padding for the element (typically right in LTR, left in RTL).
+   * The inline-end padding for the container. Overrides the inline-end value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineEnd?: '' | PaddingKeyword;
 }
 
+/**
+ * The `Button` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface ButtonEvents {
   /**
    * The callback when the element is activated.
@@ -4679,12 +4792,20 @@ interface Button {
    * - `'--hide'`: Hide the target element
    * - `'--toggle'`: Switch the target's visibility state
    *
-   * @default '--auto'
    * Learn more about [`command` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
+   *
+   * @default '--auto'
+   *
    */
   command?: '--auto' | '--show' | '--hide' | '--toggle';
   /**
-   * The semantic tone of the button, based on the intention of the action being performed. Affects color and styling to communicate meaning.
+   * Sets the tone of the button, based on the intention of the information being conveyed.
+   *
+   * - `'auto'` - Automatically determines the appropriate tone based on context.
+   * - `'neutral'` - The standard tone for general actions and interactions.
+   * - `'caution'` - Indicates actions that require careful consideration.
+   * - `'warning'` - Alerts users to potential issues or important information.
+   * - `'critical'` - Used for destructive actions like deleting or removing content.
    *
    * @default 'auto'
    */
@@ -4743,6 +4864,9 @@ interface Choice {
   selected?: boolean;
 }
 
+/**
+ * The `ChoiceList` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface ChoiceListEvents {
   /**
    * A callback function executed when the user makes any changes in the field.
@@ -4771,6 +4895,9 @@ interface ChoiceList {
   multiple?: boolean;
 }
 
+/**
+ * The `Clickable` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface ClickableEvents {
   /**
    * The callback when the element is activated.
@@ -4789,6 +4916,9 @@ interface Clickable {
   disabled?: boolean;
 }
 
+/**
+ * The `DateField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface DateFieldEvents {
   /**
    * A callback function executed when the user makes any changes in the field.
@@ -4837,6 +4967,9 @@ interface DateField {
   error?: string;
 }
 
+/**
+ * The `DatePicker` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface DatePickerEvents {
   /**
    * A callback function executed when the user makes any changes in the field.
@@ -4869,6 +5002,9 @@ interface DatePicker {
   value?: string;
 }
 
+/**
+ * The `DateSpinner` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface DateSpinnerEvents {
   /**
    * A callback function executed when the user makes any changes in the field.
@@ -4916,6 +5052,9 @@ interface Divider {
   direction?: 'inline' | 'block';
 }
 
+/**
+ * The `EmailField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface EmailFieldEvents {
   /**
    * A callback function executed when the user makes any changes in the field.
@@ -4935,6 +5074,9 @@ interface EmailFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$f>) => void;
 }
 
+/**
+ * The `EmailField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ */
 interface EmailFieldSlots {
   /**
    * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
@@ -4996,23 +5138,23 @@ interface Heading {
 
 interface Icon {
   /**
-   * The semantic meaning and default styling of the text. Other presentation properties override the default styling provided by the type.
+   * The type of icon to display.
    *
    * @default ''
    */
   type?: SupportedIconNames;
   /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
+   * A unique identifier for the element. Use this to reference the icon in JavaScript or CSS.
    */
   id?: string;
   /**
-   * The semantic tone of the text, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * Sets the tone of the icon, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * The color intensity of the text. Controls how prominent or subtle the text appears within the interface.
+   * Modify the color to be more or less intense. Use `'subdued'` for secondary icons, `'base'` for standard visibility, or `'strong'` for emphasized icons that need to stand out.
    *
    * @default 'base'
    */
@@ -5027,16 +5169,19 @@ interface Icon {
 
 interface Image {
   /**
-   * The inline size (width in horizontal writing modes) of the element.
+   * Controls the displayed width of the image. Choose based on your layout requirements. For mobile interfaces, consider using `'fill'` with defined container dimensions to ensure consistent image display, as dynamic container heights can cause layout inconsistencies in scrollable views.
+   *
+   * - `'auto'` - Displays the image at its natural size. The image will not render until it has loaded, and the aspect ratio will be ignored. Use for images where maintaining original dimensions is important.
+   * - `'fill'` - Makes the image take up 100% of the available inline size. The aspect ratio will be respected and the image will take the necessary space. Use for responsive layouts and flexible image containers.
    *
    * @default 'fill'
-   * Learn more about [`width` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width).
    */
   inlineSize?: 'fill' | 'auto';
   /**
-   * The image source URL (remote URL or local file resource). When loading or no src is provided, a placeholder is rendered. Ensure URLs are accessible and properly formatted.
+   * The image source URL (remote URL or local file resource). When loading or no src is provided, a placeholder is rendered. Ensure URLs are properly formatted and properly formatted.
    *
-   * Learn more about [`src` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src).
+   * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
+   * reserved, except in cases where the image area doesn't have a contextual inline or block size, which should be rare.
    */
   src?: string;
   /**
@@ -5046,12 +5191,17 @@ interface Image {
   /**
    * Controls how the image content is resized within its container.
    *
+   * - `'contain'` - Scales the image to fit within the container while maintaining aspect ratio. The entire image will be visible, but there may be empty space. Use when showing the complete image is important.
+   * - `'cover'` - Scales the image to fill the entire container while maintaining aspect ratio. Parts of the image may be cropped. Use when filling the container completely is more important than showing the entire image.
+   *
    * @default 'contain'
-   * Learn more about [`object-fit` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
    */
   objectFit?: 'contain' | 'cover';
 }
 
+/**
+ * The `Modal` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface ModalEvents {
   /**
    * The callback when the modal is hidden. Use this event to perform cleanup tasks, update application state, or trigger other actions when the modal is dismissed or closed.
@@ -5063,16 +5213,17 @@ interface ModalEvents {
   show?: (event: CallbackEvent<typeof tagName$i>) => void | null;
 }
 
+/**
+ * The `Modal` component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ */
 interface ModalSlots {
   /**
-   * The primary action button displayed in the modal.
-   *
-   * The tone of the button is used to define the tone of the modal.
-   *
-   * If omitted, the modal will default to an 'info' tone, and show an 'OK' button, translated according to the user's locale.
+   * The primary action button displayed in the modal. The tone of the button is used to define the tone of the modal. If omitted, the modal will default to an `'info'` tone, and show an OK button, translated according to the user's locale.
    */
   'primary-action'?: HTMLElement;
-  /** The secondary action buttons displayed in the modal. */
+  /**
+   * The secondary action buttons displayed in the modal. Use this slot to provide alternative actions or cancel options that give users flexibility in how they respond to the modal.
+   */
   'secondary-actions'?: HTMLElement;
 }
 
@@ -5087,6 +5238,9 @@ interface Modal {
   heading?: string;
 }
 
+/**
+ * The `NumberField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface NumberFieldEvents {
   /**
    * A callback function executed when the user makes any changes in the field.
@@ -5106,6 +5260,9 @@ interface NumberFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$c>) => void;
 }
 
+/**
+ * The `NumberField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ */
 interface NumberFieldSlots {
   /**
    * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
@@ -5137,7 +5294,9 @@ interface NumberField {
   /**
    * The virtual keyboard layout that the field displays for numeric input. This property isn't supported when using `stepper` controls.
    *
-   * Learn more about [`inputmode` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode).
+   * - `'decimal'` - A keyboard layout that includes decimal point support for entering fractional numbers, prices, or measurements with decimal precision.
+   * - `'numeric'` - A keyboard layout optimized for integer-only entry without decimal point support, ideal for quantities, counts, or whole number values.
+   *
    * @default 'decimal'
    */
   inputMode?: 'decimal' | 'numeric';
@@ -5147,6 +5306,12 @@ interface NumberField {
   placeholder?: string;
   /**
    * The type of controls displayed for the field:
+   *
+   * - `'auto'` - An automatic setting where the presence of controls depends on the surface and context. The system determines the most appropriate control type based on the usage scenario.
+   * - `'stepper'` - Displays increment (+) and decrement (-) buttons for adjusting the numeric value. When `stepper` controls are enabled, the field behavior is constrained: it accepts only integer values, always contains a value (never empty), and automatically validates against `min` and `max` bounds. The `label`, `details`, `placeholder`, `error`, `required`, and `inputMode` properties aren't supported with `stepper` controls.
+   * - `'none'` - A control type with no visible controls where users must input the value manually using the keyboard.
+   *
+   * @default 'auto'
    */
   controls?: 'auto' | 'stepper' | 'none';
   /**
@@ -5177,8 +5342,13 @@ interface NumberField {
   min?: number;
 }
 
+/**
+ * The `Page` component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ */
 interface PageSlots {
-  /** Button element to display in the action bar. Only a single button is supported. */
+  /**
+   * A button element to display in the action bar. Only a single button is supported. Use the `slot="secondary-actions"` attribute to place content in this area.
+   */
   'secondary-actions'?: HTMLElement;
   /**
    * The content to display in the page's sidebar. This area is for content that is tangentially related to the main content, such as navigation or contextual information. Use the `slot="aside"` attribute to place content in this area.
@@ -5203,8 +5373,13 @@ interface Page {
   id?: string;
 }
 
+/**
+ * The `PosBlock` component supports slots for additional content placement within the block. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ */
 interface PosBlockSlots {
-  /** The secondary actions to perform, provided as button or link type elements. */
+  /**
+   * The secondary actions to perform, provided as button or link type elements. Use the `slot="secondary-actions"` attribute to place interactive elements that allow users to take actions related to the block's content.
+   */
   'secondary-actions'?: HTMLElement;
 }
 
@@ -5232,79 +5407,92 @@ interface QrCode {
 
 interface ScrollBox {
   /**
-   * The block size (height in horizontal writing modes) of the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The block size of the scrollable container. Auto automatically sizes based on the container's content and available space.
    *
    * @default 'auto'
    */
   blockSize?: SizeUnitsOrAuto;
   /**
-   * The inline size (width in horizontal writing modes) of the element.
+   * The inline size of the scrollable container. Auto automatically sizes based on the container's content and available space.
    *
    * @default 'auto'
    */
   inlineSize?: SizeUnitsOrAuto;
   /**
-   * The maximum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The maximum block size constraint for the scrollable container.
    *
    * @default 'none'
    */
   maxBlockSize?: SizeUnitsOrNone;
   /**
-   * The maximum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The maximum inline size constraint for the scrollable container.
    *
    * @default 'none'
    */
   maxInlineSize?: SizeUnitsOrNone;
   /**
-   * The minimum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The minimum block size constraint for the scrollable container.
    *
    * @default '0'
    */
   minBlockSize?: SizeUnits;
   /**
-   * The minimum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The minimum inline size constraint for the scrollable container.
    *
    * @default '0'
    */
   minInlineSize?: SizeUnits;
   /**
-   * The padding applied to all edges of the element.
+   * The padding applied to all edges of the scrollable container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   *
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * An `auto` value inherits the default padding from the closest container that has removed its usual padding.
    *
    * @default 'none'
    */
   padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
   /**
-   * The block-axis padding for the element (typically vertical in horizontal writing modes).
+   * The block-axis padding for the scrollable container. Overrides the block value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingBlock?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
   /**
-   * The block-start padding for the element (typically top in horizontal writing modes).
+   * The block-start padding for the scrollable container. Overrides the block-start value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockStart?: '' | PaddingKeyword;
   /**
-   * The block-end padding for the element (typically bottom in horizontal writing modes).
+   * The block-end padding for the scrollable container. Overrides the block-end value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockEnd?: '' | PaddingKeyword;
   /**
-   * The inline-axis padding for the element (typically horizontal in horizontal writing modes).
+   * The inline-axis padding for the scrollable container. Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingInline?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
   /**
-   * The inline-start padding for the element (typically left in LTR, right in RTL).
+   * The inline-start padding for the scrollable container. Overrides the inline-start value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineStart?: '' | PaddingKeyword;
   /**
-   * The inline-end padding for the element (typically right in LTR, left in RTL).
+   * The inline-end padding for the scrollable container. Overrides the inline-end value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
@@ -5315,6 +5503,9 @@ interface ScrollBox {
   id?: string;
 }
 
+/**
+ * The `SearchField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface SearchFieldEvents {
   /**
    * A callback function executed when the user makes any changes in the field.
@@ -5355,8 +5546,13 @@ interface SearchField {
   value?: string;
 }
 
+/**
+ * The `Section` component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ */
 interface SectionSlots {
-  /** Button element to display in the section heading. A single button is supported. */
+  /**
+   * A button element to display in the section heading. Only a single button is supported. Use the `slot="secondary-actions"` attribute to place action elements that relate to the entire section's content.
+   */
   'secondary-actions'?: HTMLElement;
 }
 
@@ -5373,79 +5569,87 @@ interface Section {
 
 interface Stack {
   /**
-   * The padding applied to all edges of the element.
+   * The padding applied to all edges of the container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   *
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * An `auto` value inherits the default padding from the closest container that has removed its usual padding.
    *
    * @default 'none'
    */
   padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
   /**
-   * The block-axis padding for the element (typically vertical in horizontal writing modes).
+   * The block-axis padding for the container. Overrides the block value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingBlock?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
   /**
-   * The block-start padding for the element (typically top in horizontal writing modes).
+   * The block-start padding for the container. Overrides the block-start value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockStart?: '' | PaddingKeyword;
   /**
-   * The block-end padding for the element (typically bottom in horizontal writing modes).
+   * The block-end padding for the container. Overrides the block-end value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockEnd?: '' | PaddingKeyword;
   /**
-   * The inline-axis padding for the element (typically horizontal in horizontal writing modes).
+   * The inline-axis padding for the container. Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingInline?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
   /**
-   * The inline-start padding for the element (typically left in LTR, right in RTL).
+   * The inline-start padding for the container. Overrides the inline-start value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineStart?: '' | PaddingKeyword;
   /**
-   * The inline-end padding for the element (typically right in LTR, left in RTL).
+   * The inline-end padding for the container. Overrides the inline-end value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineEnd?: '' | PaddingKeyword;
   /**
-   * The block size (height in horizontal writing modes) of the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The block size of the container. Auto automatically sizes based on the container's children.
    *
-   * Learn more about [`block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
    * @default 'auto'
    */
   blockSize?: SizeUnitsOrAuto;
   /**
-   * The maximum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The maximum block size constraint for the container.
    *
-   * Learn more about [`max-block-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
    * @default 'none'
    */
   maxBlockSize?: SizeUnitsOrNone;
   /**
-   * The maximum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The maximum inline size constraint for the container.
    *
-   * Learn more about [`max-inline-size` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
    * @default 'none'
    */
   maxInlineSize?: SizeUnitsOrNone;
   /**
-   * The minimum block size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The minimum block size constraint for the container.
    *
-   * Learn more about [min-block-size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
    * @default '0'
    */
   minBlockSize?: SizeUnits;
   /**
-   * The minimum inline size constraint for the element. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The minimum inline size constraint for the container.
    *
-   * Learn more about [min-inline-size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
    * @default '0'
    */
   minInlineSize?: SizeUnits;
@@ -5512,13 +5716,25 @@ interface Text {
    */
   color?: ColorKeyword;
   /**
-   * The semantic meaning and default styling of the text. Other presentation properties override the default styling provided by the type.
+   * The semantic meaning and default styling of the text. Other presentation properties override the default styling provided by the type. Available options:
+   *
+   * - `'generic'` - The default text type for general content without specific semantic meaning or emphasis.
+   * - `'strong'` - A text type that provides emphasis and importance, typically rendered with increased font weight or visual prominence.
+   * - `'small'` - A text type for secondary or supplementary content, typically rendered with reduced size for captions, fine print, or less important information.
    *
    * @default 'generic'
    */
   type?: 'strong' | 'small' | 'generic';
   /**
-   * The semantic tone of the text, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * Determines the visual appearance and semantic meaning of the text. Available options:
+   *
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context. Use when you want the system to determine the most appropriate styling.
+   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis. Use for general status updates and standard information.
+   * - `'info'` - Blue styling for informational content and neutral updates. Use for informational content that provides helpful context.
+   * - `'success'` - Green styling for positive states, completed actions, and successful operations. Use for positive outcomes and successful processes.
+   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent. Use for potential issues that require awareness.
+   * - `'warning'` - Orange styling for important notices that require merchant awareness. Use for situations that need attention but aren't critical.
+   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action. Use for urgent issues that need immediate merchant attention.
    *
    * @default 'auto'
    */
@@ -5536,6 +5752,9 @@ interface Text {
   id?: string;
 }
 
+/**
+ * The `TextArea` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface TextAreaEvents {
   /**
    * A callback function executed when the user makes any changes in the field.
@@ -5555,6 +5774,9 @@ interface TextAreaEvents {
   focus?: (event: CallbackEvent<typeof tagName$d>) => void;
 }
 
+/**
+ * The `TextArea` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ */
 interface TextAreaSlots {
   /**
    * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
@@ -5613,6 +5835,9 @@ interface TextArea {
   rows?: number;
 }
 
+/**
+ * The `TextField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface TextFieldEvents {
   /**
    * A callback function executed when the user makes any changes in the field.
@@ -5632,6 +5857,9 @@ interface TextFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$h>) => void;
 }
 
+/**
+ * The `TextField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ */
 interface TextFieldSlots {
   /**
    * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
@@ -5713,7 +5941,7 @@ interface Tile {
    */
   itemCount?: number;
   /**
-   * The semantic tone of the text, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * Sets the visual tone of the tile based on the intention of the information being conveyed. Use `'accent'` to highlight important or primary actions, `'neutral'` for standard actions, or `'auto'` (default) to let the system determine the appropriate tone based on context.
    *
    * @default 'auto'
    */
@@ -5726,6 +5954,9 @@ interface Tile {
   subheading?: string;
 }
 
+/**
+ * The `TimeField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface TimeFieldEvents {
   /**
    * A callback function executed when the user makes any changes in the field.
@@ -5774,6 +6005,9 @@ interface TimeField {
   details?: string;
 }
 
+/**
+ * The `TimePicker` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ */
 interface TimePickerEvents {
   /**
    * A callback function executed when the user makes any changes in the field.

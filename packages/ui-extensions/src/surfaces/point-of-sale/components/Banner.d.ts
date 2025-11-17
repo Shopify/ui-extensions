@@ -54,12 +54,13 @@ export interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
    */
   hidden?: BannerProps['hidden'];
   /**
-   * Sets the visual appearance and accessibility behavior of the banner. The tone determines both the color scheme and how screen readers announce the banner. Available options:
-   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context
-   * - `'success'` - Green styling for positive outcomes and successful operations. Creates an informative live region for screen readers
-   * - `'info'` - Blue styling for general information and neutral updates. Creates an informative live region for screen readers
-   * - `'warning'` - Orange styling for important notices that require attention. Creates an informative live region for screen readers
-   * - `'critical'` - Red styling for errors and urgent issues requiring immediate action. Creates an assertive live region that is announced immediately by screen readers
+   * Sets the visual appearance of the banner. The tone determines the color scheme. Available options:
+   *
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context.
+   * - `'success'` - Green styling for positive outcomes and successful operations.
+   * - `'info'` - Blue styling for general information and neutral updates.
+   * - `'warning'` - Orange styling for important notices that require attention.
+   * - `'critical'` - Red styling for errors and urgent issues requiring immediate action.
    *
    * @default 'auto'
    */
