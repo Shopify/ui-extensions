@@ -7,23 +7,15 @@ const generateCodeBlockForScannerApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Scanner API',
-  description: `
-The Scanner API enables an extension to access scanner data and available scanning sources supported by the device.
-
-#### Supporting targets
-- ${TargetLink.PosHomeModalRender}
-- ${TargetLink.PosPurchasePostActionRender}
-- ${TargetLink.PosProductDetailsActionRender}
-- ${TargetLink.PosOrderDetailsActionRender}
-- ${TargetLink.PosDraftOrderDetailsActionRender}
-- ${TargetLink.PosCustomerDetailsActionMenuItemRender}
-`,
+  description:
+    'The Scanner API provides access to barcode and QR code scanning functionality on POS devices, allowing you to subscribe to scan events, monitor available scanner sources, and process scanned data through subscription callbacks. The API enables integration with device cameras, external scanners, and embedded scanning hardware.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'ScannerApi',
-      description: '',
+      description:
+        'The `ScannerApi` object provides access to scanning functionality and scanner source information. Access these properties through `api.scanner` to monitor scan events and available scanner sources.',
       type: 'ScannerApiContent',
     },
   ],

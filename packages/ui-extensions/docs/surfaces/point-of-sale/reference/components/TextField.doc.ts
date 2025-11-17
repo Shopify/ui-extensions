@@ -3,14 +3,15 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextField',
-  description: 'Capture single-line text input.',
+  description:
+    'The `TextField` component captures single-line text input. Use it to collect short, free-form information in forms and data entry workflows.\n\nThe component supports various input configurations including placeholders, character limits, and validation. It includes built-in support for labels, helper text, and error states to guide merchants through data entry, ensuring accurate and efficient information capture across different retail scenarios.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
-      title: 'TextField',
+      title: 'Properties',
       description:
-        'Use a text field to allow merchants to input or modify multiline text.',
+        'Configure the following properties on the `TextField` component.',
       type: 'NewTextFieldProps',
     },
   ],

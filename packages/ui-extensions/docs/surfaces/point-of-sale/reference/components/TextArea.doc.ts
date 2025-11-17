@@ -4,13 +4,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextArea',
   description:
-    'Capture longer text content with a multi-line, resizable text input area.',
+    'The `TextArea` component captures longer text content with a multi-line, resizable text input area. Use it to collect descriptions, notes, comments, or other extended text input in forms and data entry workflows.\n\nThe component provides a multi-line text input area that accommodates longer content. It supports validation and multi-line formatting, making it ideal for capturing detailed information such as order notes, product descriptions, or customer feedback that requires more than single-line input.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
-      title: 'TextArea',
-      description: 'A text field which supports multiple lines.',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `TextArea` component.',
       type: 'TextAreaProps',
     },
   ],

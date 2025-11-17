@@ -3,15 +3,15 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'List',
-  description: `Display structured data in rows with rich content including labels, subtitles, badges, images, and interactive elements.
-  > Note:
-  > List items no longer have dividers as of POS 10.0.0.`,
+  description:
+    'The `List` component displays structured data in rows with rich content including labels, subtitles, badges, images, and interactive elements. Use it to present organized information with consistent formatting and user interaction capabilities.\n\nList items no longer have dividers as of POS version 10.0.0.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
-      title: 'List',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `List` component.',
       type: 'ListProps',
     },
   ],

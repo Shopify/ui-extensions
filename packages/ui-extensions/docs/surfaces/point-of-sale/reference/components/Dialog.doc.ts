@@ -6,13 +6,15 @@ const generateCodeBlockForDialog = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Dialog',
-  description: 'Display a modal that requires user attention and interaction.',
+  description:
+    'The `Dialog` component displays a modal that requires user attention and interaction. Use dialogs to present important information, confirm actions, or collect input from merchants in a focused overlay that interrupts the current workflow until resolved.\n\nThe component creates a modal overlay that focuses user attention on important decisions or information, blocking interaction with underlying content until dismissed. It supports various configurations including alert dialogs, confirmation dialogs, and custom content dialogs, with built-in button layouts and keyboard shortcuts for efficient navigation and decision-making.\n\n`Dialog` components provide customizable button layouts and keyboard shortcuts that follow platform conventions, ensuring merchants can quickly approve or dismiss dialogs through familiar interaction patterns.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
-      title: 'Dialog',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `Dialog` component.',
       type: 'DialogProps',
     },
   ],

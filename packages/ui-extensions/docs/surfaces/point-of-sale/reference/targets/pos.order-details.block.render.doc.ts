@@ -5,7 +5,8 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosOrderDetailsBlockRender,
   description:
-    'Renders a custom section within the native order details screen',
+    'Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.' +
+    '\n\nExtensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `api.action.presentModal()` for more complex order operations.',
   defaultExample: {
     codeblock: generateCodeBlock(
       'Block',
