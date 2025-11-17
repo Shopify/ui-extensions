@@ -4,9 +4,9 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosCashTrackingSessionCompleteObserve,
-  description: `An event extension target that observes when cash tracking session completes
-  > Note:
-  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
+  description:
+    'Observes when cash tracking sessions complete, triggering when merchants finish cash handling operations. Use this target for monitoring cash handling completion for audit trails, compliance reporting, or operational analytics.' +
+    '\n\nExtensions at this target receive session data including the session ID, opening time, and closing time when a cash tracking session is completed.',
   category: 'Targets',
   subCategory: 'Cash tracking',
   isVisualComponent: false,

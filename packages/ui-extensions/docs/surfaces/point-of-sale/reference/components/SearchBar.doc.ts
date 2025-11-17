@@ -5,13 +5,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'SearchBar',
   description:
-    'Provide a specialized input field for search functionality with built-in search button and text change handling.',
+    'The `SearchBar` component provides a specialized input field for search functionality with built-in search button and text change handling. Use it to enable product searches, customer lookups, or other search-driven workflows in POS interfaces.\n\nThe component includes a dedicated search input with built-in search icon, clear button, and cancel functionality following platform-specific search patterns. It provides visual feedback for search states, supports voice input where available, and integrates with platform search behaviors to deliver familiar search experiences on both iOS and Android POS devices.\n\n`SearchBar` components maintain search focus during typing and automatically dismisses the keyboard when search is submitted, streamlining the search workflow and reducing unnecessary interaction steps.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
-      title: 'SearchBar',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `SearchBar` component.',
       type: 'SearchBarProps',
     },
   ],

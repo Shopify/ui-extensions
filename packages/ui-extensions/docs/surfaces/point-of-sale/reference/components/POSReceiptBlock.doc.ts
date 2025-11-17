@@ -6,11 +6,8 @@ const generateCodeBlockForPOSReceiptBlock = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'POSReceiptBlock',
-  description: `Group components together for display on POS receipts.
-  > Note:
-  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.
-  >
-  > This component only accepts \`Text\` and \`QRCode\` components as children.`,
+  description:
+    'The `POSReceiptBlock` component is part of the [POS UI extensions feature preview](/docs/api/feature-previews#pos-ui-extensions-preview). This feature preview is available on an invite-only basis and requires POS UI extensions version 2025-04 or 2025-07 and POS app version 9.31.0 or later.\n\nThe `POSReceiptBlock` component groups components together for display on POS receipts. Use it to display text and QR codes within receipt extensions, providing structured content for printed or digital receipts. The component handles edge cases and loading states gracefully, providing clear feedback during operations and maintaining interface responsiveness even when processing intensive tasks or handling large datasets.',
   isVisualComponent: true,
   type: 'component',
   thumbnail: 'pos-receipt-block-thumbnail.png',

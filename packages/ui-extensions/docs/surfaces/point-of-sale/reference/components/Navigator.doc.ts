@@ -7,13 +7,14 @@ const generateCodeBlockForComponent = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Navigator',
   description:
-    'Manage navigation between multiple Screen components within a POS UI extension.',
+    'The `Navigator` component manages navigation between multiple `Screen` components within a POS UI extension. Use it to create multi-screen workflows with proper navigation stack management and initial screen configuration.\n\n`Navigator` works with the Navigation API to provide complete navigation control for complex POS workflows that require multiple views and user interactions.\n\n`Navigator` components maintain navigation history across app lifecycle events and supports deep linking to specific screens, enabling merchants to return to their exact workflow state after interruptions The component supports gesture-based navigation like swipe-to-go-back on platforms where this is standard, providing familiar interaction patterns that feel native to each platform.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
-      title: 'Navigator',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `Navigator` component.',
       type: 'NavigatorProps',
     },
   ],

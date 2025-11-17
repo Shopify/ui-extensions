@@ -7,13 +7,14 @@ const generateCodeBlockForCameraScanner = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'CameraScanner',
   description:
-    'Provide camera-based scanning functionality with optional banner messaging.',
+    'The `CameraScanner` component provides camera-based scanning functionality with optional banner messaging. Use it to enable barcode scanning, QR code reading, or other camera-based input methods with contextual user feedback.\n\n`CameraScanner` works in conjunction with the Scanner API to capture scan data from device cameras, providing both the visual interface and the data handling capabilities for complete scanning workflows.\n\n`CameraScanner` components provide real-time feedback during scanning operations with visual guides for optimal positioning, helping merchants quickly capture barcodes even in challenging lighting conditions or with damaged labels. The component provides audio feedback during scanning operations, confirming successful scans without requiring visual confirmation.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
-      title: 'CameraScanner',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `CameraScanner` component.',
       type: 'CameraScannerProps',
     },
   ],

@@ -4,9 +4,9 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosCartUpdateObserve,
-  description: `An event extension target that observes cart updates
-  > Note:
-  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
+  description:
+    'Observes cart updates during active transactions, triggering whenever merchants add, remove, or modify line items. Use this target for real-time responses to cart changes like dynamic pricing, inventory validation, or promotional offer applications based on current cart contents.' +
+    '\n\nExtensions at this target receive complete cart data including line items, totals, discounts, and customer information whenever the cart state changes.',
   category: 'Targets',
   subCategory: 'Cart details',
   isVisualComponent: false,

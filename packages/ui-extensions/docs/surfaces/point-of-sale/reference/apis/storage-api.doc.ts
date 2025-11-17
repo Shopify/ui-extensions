@@ -7,16 +7,21 @@ const generateCodeBlockForStorageApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Storage API',
-  description: `The Storage API allows fetching, setting, updating, and clearing an extension's data from the POS local storage.
-  - An extension can store up to 100 entries.
-  - The maximum size for a key is ~1 KB, and for a value is ~1 MB.
-  - If a target (such as \`pos.home.tile.render\`) is disabled or removed, the extension data remains.
-  - All stored extension data that has not been updated for a month is cleared automatically after that period.`,
+  description:
+    'The Storage API provides persistent local storage for POS UI extensions, allowing you to store, retrieve, and manage extension data that persists across user sessions, device restarts, and extension target state changes. Data is stored locally on the POS device in an isolated namespace specific to your extension.' +
+    '\n\nThe API supports key-value storage with automatic JSON serialization, type safety through TypeScript interfaces, and built-in error handling for storage constraint violations.',
   isVisualComponent: false,
   type: 'APIs',
   category: 'APIs',
   related: [],
-  definitions: [CUSTOM_DATA('Storage', 'StorageApi')],
+  definitions: [
+    {
+      title: 'StorageApi',
+      description:
+        'The `StorageApi` object provides access to persistent local storage methods for your POS UI extension. Access these methods through `api.storage` to store, retrieve, and manage data that persists across sessions.',
+      type: 'Storage',
+    },
+  ],
   examples: {
     description: 'Examples of using the Storage API',
     examples: [

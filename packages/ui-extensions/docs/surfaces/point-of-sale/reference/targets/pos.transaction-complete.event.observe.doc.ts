@@ -4,9 +4,9 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosTransactionCompleteObserve,
-  description: `An event extension target that observes completed transactions
-  > Note:
-  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
+  description:
+    'Observes completed transactions including sales, returns, and exchanges, triggering when transactions are finalized. Use this target for post-transaction processing, analytics collection, and automated workflows that need to respond to completed sales activities.' +
+    '\n\nExtensions at this target receive detailed transaction information including transaction type, totals, line items, and customer data when any transaction type is completed.',
   category: 'Targets',
   subCategory: 'Post-transaction',
   isVisualComponent: false,

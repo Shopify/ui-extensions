@@ -7,19 +7,15 @@ const generateCodeBlockForCartLineItemApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Cart Line Item API',
-  description: `
-The Cart Line Item API provides an extension with data about the current Cart Line Item.
-
-#### Supporting targets
-- ${TargetLink.PosCartLineItemDetailsActionMenuItemRender}
-- ${TargetLink.PosCartLineItemDetailsActionRender}
-`,
+  description:
+    'The Cart Line Item API provides read-only access to a specific line item in the cart. Use this API to get line item details like product information, pricing, discounts, and custom properties. This allows you to build features that respond to the specific item a customer is viewing or interacting with.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'CartLineItemApi',
-      description: '',
+      description:
+        'The `CartLineItemApi` object provides access to line item data. Access this through `api.lineItem` to retrieve information about the specific cart line item in context.',
       type: 'CartLineItemApi',
     },
   ],

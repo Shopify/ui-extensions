@@ -7,29 +7,15 @@ const generateCodeBlockForOrderApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Order API',
-  description: `
-The Order API provides an extension with data about the current order.
-
-#### Supporting targets
-- ${TargetLink.PosPurchasePostActionMenuItemRender}
-- ${TargetLink.PosPurchasePostActionRender}
-- ${TargetLink.PosPurchasePostBlockRender}
-- ${TargetLink.PosReturnPostActionMenuItemRender}
-- ${TargetLink.PosReturnPostActionRender}
-- ${TargetLink.PosReturnPostBlockRender}
-- ${TargetLink.PosExchangePostActionMenuItemRender}
-- ${TargetLink.PosExchangePostActionRender}
-- ${TargetLink.PosExchangePostBlockRender}
-- ${TargetLink.PosOrderDetailsActionMenuItemRender}
-- ${TargetLink.PosOrderDetailsActionRender}
-- ${TargetLink.PosOrderDetailsBlockRender}
-`,
+  description:
+    'The Order API provides read-only access to order data. Use this API to get order information and build contextual experiences based on the selected order context. The API offers order details for implementing order-specific functionality and workflows.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'OrderApi',
-      description: '',
+      description:
+        'The `OrderApi` object provides access to order data. Access this property through `api.order` to interact with the current order context.',
       type: 'OrderApiContent',
     },
   ],
