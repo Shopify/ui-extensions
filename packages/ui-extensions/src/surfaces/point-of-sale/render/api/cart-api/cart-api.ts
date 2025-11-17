@@ -33,7 +33,7 @@ export interface CartApiContent {
   subscribable: RemoteSubscribable<Cart>;
 
   /**
-   * Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes.
+   * Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes with enhanced validation and error handling.
    *
    * @param cartState the cart state to set
    * @returns the updated cart
@@ -54,19 +54,19 @@ export interface CartApiContent {
   ): Promise<void>;
 
   /**
-   * Apply a discount code to the cart. The system will validate the code and apply the appropriate discount if the code is valid and applicable to the current cart contents.
+   * Apply a discount code to the cart. The system will validate the code and apply the appropriate discount if the code is valid and applicable to the current cart contents with improved error messaging.
    *
    * @param code the code for the discount to add to the cart
    */
   addCartCodeDiscount(code: string): Promise<void>;
 
   /**
-   * Remove the current cart-level discount. This only affects cart-level discounts and doesn't impact line item discounts or automatic discount eligibility.
+   * Remove the current cart-level discount. This only affects cart-level discounts and does not impact line item discounts or automatic discount eligibility.
    */
   removeCartDiscount(): Promise<void>;
 
   /**
-   * Remove all discounts from both the cart and individual line items. Set `disableAutomaticDiscounts` to `true` to prevent automatic discounts from being reapplied after removal.
+   * Remove all discounts from both the cart and individual line items. Set `disableAutomaticDiscounts` to `true` to prevent automatic discounts from being reapplied after removal with enhanced discount allocation handling.
    *
    * @param disableAutomaticDiscounts Whether or not automatic discounts should be enabled after removing the discounts.
    */
@@ -78,7 +78,7 @@ export interface CartApiContent {
   clearCart(): Promise<void>;
 
   /**
-   * Associate a customer with the current cart using the customer object containing the customer `ID`. This enables customer-specific pricing, discounts, and checkout features with customer data validation.
+   * Associate a customer with the current cart using the customer object containing the customer `ID`. This enables customer-specific pricing, discounts, and checkout features with enhanced customer data validation.
    *
    * @param customer the customer object to add to the cart
    */
@@ -90,7 +90,7 @@ export interface CartApiContent {
   removeCustomer(): Promise<void>;
 
   /**
-   * Add a custom sale item to the cart with specified quantity, title, price, and taxable status. Returns the [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) of the created line item for future operations and property management.
+   * Add a custom sale item to the cart with specified quantity, title, price, and taxable status. Returns the `UUID` of the created line item for future operations and property management.
    *
    * @param customSale the custom sale object to add to the cart
    * @returns {string} the UUID of the line item added
@@ -98,7 +98,7 @@ export interface CartApiContent {
   addCustomSale(customSale: CustomSale): Promise<string>;
 
   /**
-   * Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors.
+   * Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors.
    *
    * @param variantId the product variant's numeric ID to add to the cart
    * @param quantity the number of this variant to add to the cart
@@ -108,28 +108,28 @@ export interface CartApiContent {
   addLineItem(variantId: number, quantity: number): Promise<string>;
 
   /**
-   * Remove a specific line item from the cart using its [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier). The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans.
+   * Remove a specific line item from the cart using its `UUID`. The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans.
    *
    * @param uuid the uuid of the line item that should be removed
    */
   removeLineItem(uuid: string): Promise<void>;
 
   /**
-   * Add custom key-value properties to the cart for storing metadata, tracking information, or integration data. Properties are merged with existing cart properties.
+   * Add custom key-value properties to the cart for storing metadata, tracking information, or integration data. Properties are merged with existing cart properties with enhanced validation and conflict resolution.
    *
    * @param properties the custom key to value object to attribute to the cart
    */
   addCartProperties(properties: Record<string, string>): Promise<void>;
 
   /**
-   * Remove specific cart properties by their keys. Only the specified property keys will be removed while other properties remain intact.
+   * Remove specific cart properties by their keys. Only the specified property keys will be removed while other properties remain intact with improved error handling for non-existent keys.
    *
    * @param keys the collection of keys to be removed from the cart properties
    */
   removeCartProperties(keys: string[]): Promise<void>;
 
   /**
-   * Add custom properties to a specific line item using its [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier). Properties are merged with existing line item properties for metadata storage and tracking.
+   * Add custom properties to a specific line item using its `UUID`. Properties are merged with existing line item properties for metadata storage and tracking with enhanced validation.
    *
    * @param uuid the uuid of the line item to which the properties should be stringd
    * @param properties the custom key to value object to attribute to the line item
@@ -140,7 +140,7 @@ export interface CartApiContent {
   ): Promise<void>;
 
   /**
-   * Add properties to multiple line items simultaneously using an array of inputs containing line item [UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier) and their respective properties for efficient bulk operations.
+   * Add properties to multiple line items simultaneously using an array of inputs containing line item `UUIDs` and their respective properties for efficient bulk operations with enhanced validation and error reporting.
    *
    * @param lineItemProperties the collection of custom line item properties to apply to their respective line items.
    */
@@ -149,7 +149,7 @@ export interface CartApiContent {
   ): Promise<void>;
 
   /**
-   * Remove specific properties from a line item by `UUID` and property keys. Only the specified keys will be removed while other properties remain intact.
+   * Remove specific properties from a line item by `UUID` and property keys. Only the specified keys will be removed while other properties remain intact with improved error handling.
    *
    * @param uuid the uuid of the line item to which the properties should be removed
    * @param keys the collection of keys to be removed from the line item properties
@@ -157,7 +157,7 @@ export interface CartApiContent {
   removeLineItemProperties(uuid: string, keys: string[]): Promise<void>;
 
   /**
-   * Apply a discount to a specific line item using its [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier). Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value.
+   * Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking.
    *
    * @param uuid the uuid of the line item that should receive a discount
    * @param type the type of discount applied (example: 'Percentage')
@@ -172,7 +172,7 @@ export interface CartApiContent {
   ): Promise<void>;
 
   /**
-   * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations.
+   * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking.
    *
    * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.
    */
@@ -181,14 +181,14 @@ export interface CartApiContent {
   ): Promise<void>;
 
   /**
-   * Set the attributed staff member for all line items in the cart using the staff `ID`. Pass `undefined` to clear staff attribution from all line items.
+   * Set the attributed staff member for all line items in the cart using the staff `ID`. Pass `undefined` to clear staff attribution from all line items with enhanced staff validation and tracking.
    *
    * @param staffId the ID of the staff. Providing undefined will clear the attributed staff from all line items.
    */
   setAttributedStaff(staffId: number | undefined): Promise<void>;
 
   /**
-   * Set the attributed staff member for a specific line item using the staff `ID` and line item `UUID`. Pass `undefined` as `staffId` to clear attribution from the line item.
+   * Set the attributed staff member for a specific line item using the staff `ID` and line item `UUID`. Pass `undefined` as `staffId` to clear attribution from the line item with improved validation and error handling.
    *
    * @param staffId the ID of the staff. Providing undefined will clear the attributed staff on the line item.
    * @param lineItemUuid the UUID of the line item.
@@ -206,21 +206,21 @@ export interface CartApiContent {
   removeLineItemDiscount(uuid: string): Promise<void>;
 
   /**
-   * Add a new address to the customer associated with the cart. The customer must be present in the cart before adding addresses.
+   * Add a new address to the customer associated with the cart. The customer must be present in the cart before adding addresses with enhanced address validation and formatting.
    *
    * @param address the address object to add to the customer in cart
    */
   addAddress(address: Address): Promise<void>;
 
   /**
-   * Delete an existing address from the customer using the address `ID`. The customer must be present in the cart to perform this operation.
+   * Delete an existing address from the customer using the address `ID`. The customer must be present in the cart to perform this operation with improved error handling for invalid address `IDs`.
    *
    * @param addressId the address ID to delete
    */
   deleteAddress(addressId: number): Promise<void>;
 
   /**
-   * Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address.
+   * Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation.
    *
    * @param addressId the address ID to set as the default address
    */

@@ -5,7 +5,8 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosPurchasePostBlockRender,
   description:
-    'Renders a custom section within the native post purchase screen',
+    'Renders a custom information section within the post-purchase screen. Use this target for displaying supplementary purchase data like completion status, customer feedback prompts, or next-step workflows alongside standard purchase details.' +
+    '\n\nExtensions at this target appear as persistent blocks within the post-purchase interface and support interactive elements that can launch modal workflows using `api.action.presentModal()` for more complex post-purchase operations.',
   defaultExample: {
     codeblock: generateCodeBlock(
       'Block',
