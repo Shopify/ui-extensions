@@ -6,17 +6,17 @@ const generateCodeBlockForPOSReceiptBlock = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'QRCode',
-  description: `Render a QR code for receipts in Shopify POS.
-  > Note:
-  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
+  description:
+    'The `QRCode` component renders a QR code for receipts in Shopify POS. Use QR codes to provide quick access to digital content, enable contactless interactions, or share information that customers and merchants can easily scan with mobile devices.\n\nThe component generates QR codes with customizable size and error correction levels, suitable for various use cases from customer-facing displays to inventory labels. It automatically handle encoding, scaling, and rendering optimizations to ensure reliable scanning across different lighting conditions and device cameras commonly found in retail environments.\n\nautomatically select appropriate error correction levels based on QR code content and intended display size, balancing scanability with data density for reliable reading across use cases.',
   requires: 'use within a `POSReceiptBlock` component',
   isVisualComponent: true,
   type: 'component',
   thumbnail: 'qrcode-thumbnail.png',
   definitions: [
     {
-      title: 'QRCodeProps',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `QRCode` component.',
       type: 'QRCodeProps',
     },
   ],

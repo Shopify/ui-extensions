@@ -7,13 +7,14 @@ const generateCodeBlockForLocaleApi = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Locale API',
   description:
-    "The Locale API allows the extension to retrieve the merchant's locale.",
+    "The Locale API provides access to the merchant's current locale information in [IETF format](https://en.wikipedia.org/wiki/IETF_language_tag), allowing you to internationalize your extension content and respond to locale changes through subscription callbacks. The API provides both immediate locale access and change notifications for dynamic internationalization.",
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'LocaleApi',
-      description: '',
+      description:
+        'The `LocaleApi` object provides access to current locale information and change notifications. Access these properties through `api.locale` to retrieve and monitor locale data.',
       type: 'LocaleApiContent',
     },
   ],

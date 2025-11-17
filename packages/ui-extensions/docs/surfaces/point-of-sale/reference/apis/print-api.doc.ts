@@ -9,13 +9,20 @@ const generateCodeBlockForPrintApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Print API',
-  description: `The Print API enables document printing through the device's native print dialog (such as AirPrint on iOS or the system print dialog on Android). This API is designed for printing documents to standard printers, and does not support direct printing to receipt printers.`,
+  description:
+    'The Print API enables document printing functionality in your POS UI extension. Use this API to trigger the native print dialog for your documents.' +
+    '\n\nSupported document types:' +
+    '\n\n- **HTML documents** (`.html`, `.htm`) - Best printing experience with full CSS styling, embedded images, and complex layouts. Use for receipts, invoices, and formatted reports.' +
+    '\n- **Text files** (`.txt`, `.csv`) - Plain text with basic content and tabular data support. Use for simple receipts and data exports.' +
+    '\n- **Image files** (`.png`, `.jpg`, `.jpeg`, `.gif`, `.bmp`, `.webp`) - Common web formats with format-specific optimizations. Use for logos, charts, QR codes, and barcodes.' +
+    '\n- **PDF files** (`.pdf`) - Behavior varies by platform: prints directly on iOS/desktop, but downloads to external viewer on Android. Use for complex documents and compliance requirements.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'PrintApi',
-      description: 'Interface for handling print operations',
+      description:
+        'The `PrintApi` object provides methods for triggering document printing. Access these methods through `api.print` to initiate print operations with various document types.',
       type: 'PrintApiContent',
     },
   ],

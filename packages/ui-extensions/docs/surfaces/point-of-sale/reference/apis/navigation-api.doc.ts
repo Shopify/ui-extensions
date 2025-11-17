@@ -7,23 +7,15 @@ const generateCodeBlockForNavigationApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Navigation API',
-  description: `
-The Navigation API enables POS UI extension to navigate between screens.
-
-#### Supporting targets
-- ${TargetLink.PosHomeModalRender}
-- ${TargetLink.PosPurchasePostActionRender}
-- ${TargetLink.PosProductDetailsActionRender}
-- ${TargetLink.PosOrderDetailsActionRender}
-- ${TargetLink.PosDraftOrderDetailsActionRender}
-- ${TargetLink.PosCustomerDetailsActionRender}
-`,
+  description:
+    'The Navigation API provides screen-based navigation functionality for POS UI extensions, allowing you to navigate between screens, manage navigation stacks, and dismiss modal interfaces within full-screen modal workflows. The API enables multi-screen experiences with parameter passing and navigation control.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'NavigationApi',
-      description: '',
+      description:
+        'The global `navigation` object provides web-standard navigation functionality. Access these properties and methods directly through the global `navigation` object to manage navigation within modal interfaces.',
       type: 'NavigationApiContent',
     },
   ],

@@ -6,13 +6,13 @@ export interface SessionApiContent {
    */
   currentSession: Session;
   /**
-   * Generates a fresh session token for secure communication with your app's backend service. Returns `undefined` when the authenticated user lacks proper app permissions. The token is a Shopify [OpenID Connect](https://en.wikipedia.org/wiki/OpenID#OpenID_Connect_(OIDC)) ID Token that should be used in `Authorization` headers for backend API calls. This is based on the authenticated user, not the pinned staff member.
+   * Generates a fresh session token for secure communication with your app's backend service. Returns `undefined` when the authenticated user lacks proper app permissions. The token is a Shopify OpenID Connect ID Token that should be used in `Authorization` headers for backend API calls. This is based on the authenticated user, not the pinned staff member.
    */
   getSessionToken: () => Promise<string | undefined>;
 }
 
 /**
- * The `SessionApi` object provides access to current session information and authentication methods. Access these properties and methods through `api.session` to retrieve shop data and generate secure tokens. These methods enable secure API calls while maintaining user privacy and [app permissions](https://help.api.com/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).
+ * The `SessionApi` object provides access to current session information and authentication methods. Access these properties and methods through `shopify.session` to retrieve shop data and generate secure tokens. These methods enable secure API calls while maintaining user privacy and [app permissions](https://help.shopify.com/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).
  */
 export interface SessionApi {
   session: SessionApiContent;

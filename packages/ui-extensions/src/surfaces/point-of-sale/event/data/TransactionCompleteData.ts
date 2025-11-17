@@ -21,7 +21,7 @@ export interface TransactionCompleteData extends BaseData {
 }
 
 /**
- * The data object provided to this target containing transaction details and reprint information.
+ * The data object provided to receipt targets containing transaction details and reprint information.
  */
 export interface TransactionCompleteWithReprintData extends BaseData {
   /**
