@@ -5,6 +5,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/icon.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Available icons',
+      type: 'Generic' as const,
+      anchorLink: 'available-icons',
+      sectionContent: `Search and filter across all the available icons:
+{{ICON_PREVIEW_IFRAME}}`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

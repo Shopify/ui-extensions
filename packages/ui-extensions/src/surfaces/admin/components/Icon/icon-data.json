@@ -1,0 +1,8 @@
+{
+  "iconPreviewData": {
+    "jsxFile": "./templates/icon-preview.jsx",
+    "icons": "__AUTO_GENERATED_ICONS__",
+    "bodyContent": "<div id=\"app\"></div>",
+    "customStyles": "padding: 0px; margin: 0px; max-width: 584px; overflow: hidden;"
+  }
+}
