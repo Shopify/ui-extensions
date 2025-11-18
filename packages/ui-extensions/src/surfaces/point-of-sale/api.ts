@@ -76,6 +76,7 @@ export type {
   CartUpdateInput,
   Customer,
   LineItem,
+  LineItemComponent,
   Discount,
   SetLineItemPropertiesInput,
   SetLineItemDiscountInput,
