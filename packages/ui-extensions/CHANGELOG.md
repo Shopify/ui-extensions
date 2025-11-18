@@ -1,5 +1,17 @@
 # @shopify/ui-extensions
 
+## 2026.1.0-rc.2
+
+### Minor Changes
+
+- [#3529](https://github.com/Shopify/ui-extensions/pull/3529) [`afa47f1`](https://github.com/Shopify/ui-extensions/commit/afa47f1e00c86f69ff08606f9770aa513e8529f1) Thanks [@merkoyep](https://github.com/merkoyep)! - implements the cash drawer api to the ui extensions repository
+
+- [#3534](https://github.com/Shopify/ui-extensions/pull/3534) [`8e4bf19`](https://github.com/Shopify/ui-extensions/commit/8e4bf19b2420cb8bf89f0ed20ea0bb7597200bd5) Thanks [@merkoyep](https://github.com/merkoyep)! - Adds register details targets
+
+### Patch Changes
+
+- [#3574](https://github.com/Shopify/ui-extensions/pull/3574) [`2a6dddb`](https://github.com/Shopify/ui-extensions/commit/2a6dddbbd033c6c082ca513fcb62bc87523fa41e) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Exports LineItemComponent from point-of-sale API so POS can import the type
+
 ## 2026.1.0-rc.1
 
 ### Minor Changes
