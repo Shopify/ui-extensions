@@ -39,13 +39,7 @@ export type RequiredAlignedModalProps = Required<ModalProps$1>;
 export interface ModalProps
   extends Pick<
     RequiredAlignedModalProps,
-    | 'accessibilityLabel'
-    | 'heading'
-    | 'padding'
-    | 'size'
-    | 'hideOverlay'
-    | 'showOverlay'
-    | 'toggleOverlay'
+    'accessibilityLabel' | 'heading' | 'padding' | 'size'
   > {
   /**
    * Adjust the size of the Modal.
@@ -54,6 +48,24 @@ export interface ModalProps
     ModalProps$1['size'],
     'small-100' | 'small' | 'base' | 'large' | 'large-100'
   >;
+  /**
+   * Imperative method to hide the modal. Call this method on the modal element instance (e.g., via a ref).
+   * This is not a prop, do not pass as an attribute. For hiding via user interaction, use commandFor
+   * and command="--hide" on buttons, or handle the onHide event.
+   */
+  hideOverlay: () => void;
+  /**
+   * Imperative method to show the modal. Call this method on the modal element instance (e.g., via a ref).
+   * This is not a prop, do not pass as an attribute. For showing via user interaction, use commandFor
+   * and command="--show" on buttons or links.
+   */
+  showOverlay: () => void;
+  /**
+   * Imperative method to toggle the modal's visibility. Call this method on the modal element instance (e.g., via a ref).
+   * This is not a prop, do not pass as an attribute. For controlling visibility via user interaction,
+   * prefer using commandFor with command="--show" or command="--hide" on buttons.
+   */
+  toggleOverlay: () => void;
 }
 
 export type Styles = string;
