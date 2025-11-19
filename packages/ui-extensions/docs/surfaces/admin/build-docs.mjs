@@ -84,22 +84,25 @@ const stylesToString = (styles) => {
     .join('; ');
 };
 
-const renderJsxTemplate = async (iconPreviewData) => {
-  const templatePath = path.join(docsPath, 'templates/jsx-render.html');
+/**
+ * Renders the JSX template for the icon preview.
+ * @returns The processed HTML string.
+ */
+const renderIconPreviewJsxTemplate = async (iconPreviewData) => {
+  const templatePath = path.join(
+    docsPath,
+    'templates/icon-renderer/jsx-render.html',
+  );
   const template = await fs.readFile(templatePath, 'utf-8');
 
-  // Read JSX code from file
   const jsxFilePath = path.join(docsPath, iconPreviewData.jsxFile);
   let jsxCode = await fs.readFile(jsxFilePath, 'utf-8');
 
-  // Replace __ICON_LIST__ placeholder in jsxCode
-  // Use single quotes to avoid escaping issues in HTML attributes
   const iconListString = `[${iconPreviewData.icons
     .map((icon) => `'${icon}'`)
     .join(',')}]`;
   jsxCode = jsxCode.replace(/"__ICON_LIST__"/g, iconListString);
 
-  // Escape the JSX code for use in template literal
   const escapedJsxCode = escapeForJSTemplate(jsxCode);
 
   return template
@@ -250,27 +253,37 @@ const templates = {
 const transformJson = async (filePath, isExtensions) => {
   let jsonData = JSON.parse((await fs.readFile(filePath, 'utf8')).toString());
 
-  for (const entry of jsonData) {
-    if (entry.name === 'Icon' && entry.subSections) {
-      const iconDataPath = path.join(srcPath, 'components/Icon/icon-data.json');
-      const iconData = JSON.parse(await fs.readFile(iconDataPath, 'utf-8'));
-      const iconPreviewData = iconData.iconPreviewData;
+  const iconEntry = jsonData.find(
+    (entry) => entry.name === 'Icon' && entry.subSections,
+  );
+  if (iconEntry) {
+    const iconDataPath = path.join(srcPath, 'components/Icon/icon-data.json');
+    const iconData = JSON.parse(await fs.readFile(iconDataPath, 'utf-8'));
+    const iconPreviewData = iconData.iconPreviewData;
 
-      if (iconPreviewData.icons === '__AUTO_GENERATED_ICONS__') {
-        iconPreviewData.icons = await extractIconList();
-      }
-      for (const subSection of entry.subSections) {
-        if (subSection.sectionContent?.includes('{{ICON_PREVIEW_IFRAME}}')) {
-          const renderedHtml = await renderJsxTemplate(iconPreviewData);
-          const base64Html = Buffer.from(renderedHtml, 'utf-8').toString(
-            'base64',
-          );
-          subSection.sectionContent = subSection.sectionContent.replace(
-            /\{\{ICON_PREVIEW_IFRAME\}\}/g,
-            `<iframe width="100%" height="490px" sandbox="allow-scripts" src="data:text/html;base64,${base64Html}"></iframe>`,
-          );
-        }
-      }
+    iconPreviewData.icons = await extractIconList();
+
+    const subSection = iconEntry.subSections.find((section) =>
+      section.sectionContent?.includes('{{ICON_PREVIEW_IFRAME}}'),
+    );
+    if (subSection) {
+      const html = await renderIconPreviewJsxTemplate(iconPreviewData);
+      // Converting to base64 to avoid having to escape the HTML in the JSX template.
+      const base64Html = Buffer.from(html, 'utf-8').toString('base64');
+      const darkModeListener = await fs.readFile(
+        path.join(docsPath, 'templates/icon-renderer/dark-mode-listener.jsx'),
+        'utf-8',
+      );
+      const base64DarkModeListener = Buffer.from(
+        darkModeListener,
+        'utf-8',
+      ).toString('base64');
+      subSection.sectionContent = subSection.sectionContent.replace(
+        /\{\{ICON_PREVIEW_IFRAME\}\}/g,
+        `<iframe id="icon-preview-iframe" width="100%" height="580px" sandbox="allow-scripts" src="data:text/html;base64,${base64Html}"></iframe>
+        <script src="data:text/javascript;base64,${base64DarkModeListener}"></script>
+        `,
+      );
     }
   }
 
