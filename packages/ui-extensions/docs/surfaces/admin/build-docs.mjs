@@ -9,7 +9,7 @@ import {
   copyGeneratedToShopifyDev,
   replaceFileContent,
 } from '../build-doc-shared.mjs';
-import {extractIconList} from './extract-icons.mjs';
+import {extractIconList} from './build-doc-extract-icons.mjs';
 
 const EXTENSIONS_API_VERSION = process.argv[2] || 'unstable';
 
@@ -260,19 +260,14 @@ const transformJson = async (filePath, isExtensions) => {
         iconPreviewData.icons = await extractIconList();
       }
       for (const subSection of entry.subSections) {
-        if (
-          subSection.sectionContent &&
-          subSection.sectionContent.includes('{{ICON_PREVIEW_IFRAME}}')
-        ) {
+        if (subSection.sectionContent?.includes('{{ICON_PREVIEW_IFRAME}}')) {
           const renderedHtml = await renderJsxTemplate(iconPreviewData);
           const base64Html = Buffer.from(renderedHtml, 'utf-8').toString(
             'base64',
           );
-          const iframe = `<iframe width="100%" height="490px" sandbox="allow-scripts" src="data:text/html;base64,${base64Html}"></iframe>`;
-
           subSection.sectionContent = subSection.sectionContent.replace(
             /\{\{ICON_PREVIEW_IFRAME\}\}/g,
-            iframe,
+            `<iframe width="100%" height="490px" sandbox="allow-scripts" src="data:text/html;base64,${base64Html}"></iframe>`,
           );
         }
       }

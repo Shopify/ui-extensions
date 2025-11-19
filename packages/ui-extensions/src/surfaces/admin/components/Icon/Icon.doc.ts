@@ -10,8 +10,8 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Available icons',
       type: 'Generic' as const,
       anchorLink: 'available-icons',
-      sectionContent: `Search and filter across all the available icons:
-{{ICON_PREVIEW_IFRAME}}`,
+      sectionContent:
+        'Search and filter across all the available icons: {{ICON_PREVIEW_IFRAME}}',
     },
   ],
   definitions: [
