@@ -4,6 +4,7 @@ api_version = "2025-10"
 type = "ui_extension"
 name = "Print Tutorial"
 handle = "print-tutorial"
+uid = "ccf7edf4-a12d-b60a-9d4a-1cb8691864d6ec6a83e2"
 description = "POS UI extension print tutorial"
 
 [[extensions.targeting]]
