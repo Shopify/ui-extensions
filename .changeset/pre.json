@@ -4,5 +4,11 @@
   "initialVersions": {
     "@shopify/ui-extensions": "2026.1.0-rc.0"
   },
-  "changesets": ["brave-falcons-perform", "vast-planes-flow"]
+  "changesets": [
+    "brave-falcons-perform",
+    "hip-shirts-drum",
+    "legal-eggs-roll",
+    "proud-paths-listen",
+    "vast-planes-flow"
+  ]
 }
