@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 1.28.3 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -164,11 +164,11 @@ export interface ExtendableEvent extends Event {
    */
   waitUntil?: (promise: Promise<void>) => void;
 }
-export interface AggregateError<T extends Error> extends Error {
+interface AggregateError$1<T extends Error> extends Error {
   errors: T[];
 }
 export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
-  error: AggregateError<T>;
+  error: AggregateError$1<T>;
 }
 export type SizeKeyword =
   | 'small-500'
@@ -261,6 +261,7 @@ declare const privateIconArray: readonly [
   'alert-octagon-filled',
   'alert-triangle',
   'alert-triangle-filled',
+  'align-horizontal-centers',
   'app-extension',
   'apps',
   'archive',
@@ -3245,6 +3246,38 @@ interface PopoverProps$1
    */
   children?: ComponentChildren;
 }
+interface PressButtonProps$1
+  extends GlobalProps,
+    Pick<
+      ButtonProps$1,
+      | 'accessibilityLabel'
+      | 'children'
+      | 'icon'
+      | 'inlineSize'
+      | 'lang'
+      | 'tone'
+      | 'variant'
+      | 'disabled'
+      | 'loading'
+      | 'onClick'
+      | 'onBlur'
+      | 'onFocus'
+    > {
+  /**
+   * Whether the button is pressed.
+   *
+   * @default false
+   */
+  pressed?: boolean;
+  /**
+   * Whether the button is pressed by default.
+   *
+   * @default false
+   *
+   * @implementation `defaultPressed` reflects to the `pressed` attribute.
+   */
+  defaultPressed?: boolean;
+}
 interface QueryContainerProps$1 extends GlobalProps {
   /**
    * The content of the container.
@@ -3803,6 +3836,70 @@ export interface Context<T> extends Provider<T> {
   Provider: Provider<T>;
   displayName?: string;
 }
+export type Styles = string;
+declare const shadowRootSymbol: unique symbol;
+export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  ShadowRoot: (element: any) => ComponentChildren$1;
+  styles?: Styles;
+  /**
+   * Only needed once in the root element, to inject global shadow CSS for all components.
+   */
+  globalShadowCSS?: Styles;
+};
+export interface ActivationEventEsque {
+  shiftKey: boolean;
+  metaKey: boolean;
+  ctrlKey: boolean;
+  button: number;
+}
+export interface ClickOptions {
+  /**
+   * The event you want to influence the synthetic click.
+   */
+  sourceEvent?: ActivationEventEsque;
+}
+declare const BaseClass: typeof globalThis.HTMLElement;
+export declare abstract class PreactCustomElement extends BaseClass {
+  /** @private */
+  #private;
+  /** @private */
+  static get observedAttributes(): string[];
+  /** @private */
+  [shadowRootSymbol]: ShadowRoot | null;
+  constructor({
+    styles,
+    ShadowRoot: renderFunction,
+    delegatesFocus,
+    globalShadowCSS,
+    ...options
+  }: RenderImpl);
+
+  /** @private */
+  setAttribute(name: string, value: string): void;
+  /** @private */
+  attributeChangedCallback(name: string): void;
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
+  /** @private */
+  adoptedCallback(): void;
+  /**
+   * Queue a run of the render function.
+   * You shouldn't need to call this manually - it should be handled by changes to @property values.
+   * @private
+   */
+  queueRender(): void;
+  /**
+   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
+   *
+   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
+   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
+   * @private
+   * @param options
+   */
+  click({sourceEvent}?: ClickOptions): void;
+}
 type IconType$1 =
   | 'adjust'
   | 'affiliate'
@@ -3814,6 +3911,7 @@ type IconType$1 =
   | 'alert-octagon'
   | 'alert-octagon-filled'
   | 'alert-triangle'
+  | 'align-horizontal-centers'
   | 'app-extension'
   | 'apps'
   | 'archive'
@@ -4237,6 +4335,7 @@ type IconType$1 =
   | 'sort-ascending'
   | 'sort-descending'
   | 'sound'
+  | 'split'
   | 'sports'
   | 'star'
   | 'star-filled'
