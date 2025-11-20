@@ -17,5 +17,6 @@ export interface BaseTransactionComplete {
   balanceDue: Money;
   shippingLines?: ShippingLine[];
   taxLines?: TaxLine[];
+  tipAmount?: Money;
   executedAt: string;
 }
