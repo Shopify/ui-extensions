@@ -1,20 +1,17 @@
 /** VERSION: 1.28.3 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-/* eslint-disable line-comment-position */
-/* eslint-disable @typescript-eslint/unified-signatures */
-/* eslint-disable no-var */
-/* eslint-disable import/no-deprecated */
-/* eslint-disable import/namespace */
-/* eslint-disable import/no-deprecated */
+
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 /**
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
  */
+import * as _shopify_admin_web_component_foundations from '@shopify/admin-web-component-foundations';
+
 export type ComponentChildren = preact.ComponentChildren;
 export type StringChildren = string;
 export interface GlobalProps {
@@ -1640,7 +1637,7 @@ export interface FileInputProps extends BaseInputProps {
    *
    * @default []
    */
-  files?: readonly File[];
+  files?: ReadonlyArray<File>;
 }
 export interface FieldErrorProps {
   /**
@@ -3715,9 +3712,9 @@ export interface VNode<P = {}> {
 // Preact Component interface
 // -----------------------------------
 export type Key = string | number | any;
-export type RefObject<T> = {
+export interface RefObject<T> {
   current: T | null;
-};
+}
 export type RefCallback<T> = (instance: T | null) => void;
 export type Ref<T> = RefObject<T> | RefCallback<T> | null;
 export type ComponentChild =
@@ -3800,6 +3797,7 @@ declare abstract class Component<P, S> {
     props: Readonly<object>,
     state: Readonly<object>,
   ): object | null;
+
   static getDerivedStateFromError?(error: any): object | null;
   state: Readonly<S>;
   props: RenderableProps<P>;
@@ -3817,6 +3815,7 @@ declare abstract class Component<P, S> {
       | (Pick<S, K> | Partial<S> | null),
     callback?: () => void,
   ): void;
+
   forceUpdate(callback?: () => void): void;
   abstract render(
     props?: RenderableProps<P>,
@@ -3878,6 +3877,7 @@ export declare abstract class PreactCustomElement extends BaseClass {
     globalShadowCSS,
     ...options
   }: RenderImpl);
+
   /** @private */
   setAttribute(name: string, value: string): void;
   /** @private */
@@ -4419,8 +4419,6 @@ type IconType$1 =
   | 'x'
   | 'x-circle';
 
-import * as _shopify_admin_web_component_foundations from '@shopify/admin-web-component-foundations';
-
 export interface AvatarProps
   extends Required<Pick<AvatarProps$1, 'initials' | 'src' | 'alt' | 'size'>> {
   size: Extract<
@@ -4470,12 +4468,12 @@ export type CallbackExtendableEventListener<
       (event: CallbackExtendableEvent<TTagName>): void;
     })
   | null;
-export type FieldReactProps<T extends keyof HTMLElementTagNameMap> = {
+export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
   onInput?: ((event: CallbackEvent<T>) => void) | null;
   onChange?: ((event: CallbackEvent<T>) => void) | null;
   onFocus?: ((event: CallbackEvent<T>) => void) | null;
   onBlur?: ((event: CallbackEvent<T>) => void) | null;
-};
+}
 /** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
@@ -5843,6 +5841,7 @@ declare class DropZone extends BaseClass implements DropZoneProps {
     Element,
     HTMLInputElement
   >;
+
   /** @private */
   formResetCallback(): void;
   constructor();
@@ -6781,6 +6780,7 @@ declare class Paragraph extends PolarisCustomElement implements ParagraphProps {
     ParagraphProps['tone'],
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
   >;
+
   accessor color: ParagraphProps['color'];
   accessor dir: ParagraphProps['dir'];
   accessor accessibilityVisibility: ParagraphProps['accessibilityVisibility'];
@@ -7411,6 +7411,7 @@ declare class Table extends PolarisCustomElement implements TableProps {
       format: HeaderFormat;
     }[]
   >;
+
   constructor();
 }
 declare global {
