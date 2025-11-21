@@ -24,8 +24,14 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForSessionApi(
-          'Retrieve the current session data',
+          'Retrieve a session token for backend communication',
           'token',
+        ),
+      },
+      {
+        codeblock: generateJsxCodeBlockForSessionApi(
+          'Access properties associated with the current session',
+          'current-session',
         ),
       },
     ],
