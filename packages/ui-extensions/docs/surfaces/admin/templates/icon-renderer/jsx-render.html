@@ -4,6 +4,15 @@
     <style>
       html, body {height:100%} body {{{COMPOSED_STYLES}}}
     </style>
+    <script>
+      (function() {
+        window.addEventListener('message', function(event) {
+          if (event.data && event.data.type === 'theme') {
+            document.documentElement.setAttribute('data-theme', event.data.mode);
+          }
+        });
+      })();
+    </script>
     <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script>
     <script src="https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js"></script>
     <link
