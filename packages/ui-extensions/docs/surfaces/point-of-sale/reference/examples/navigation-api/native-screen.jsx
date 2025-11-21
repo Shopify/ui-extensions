@@ -14,19 +14,17 @@ function Extension() {
    * - `shopify:point-of-sale/draft_orders/123` to present draft order details.
    * - `shopify:point-of-sale/staff/123` to present staff details.
    */
-  const uri = `shopify:point-of-sale/products/${shopify.product.id}`;
   return (
     <s-page heading="POS native screen navigation">
       <s-scroll-box>
         <s-button
           onClick={() => {
-            navigation.navigate(uri).catch(() => {
-              // Due to staff permissions or POS subscription plan permission or invalid url, etc.
-              shopify.toast.show('Unable to view product details.');
-            });
+            // Use the navigate API to open a POS native resource details screen.
+            // A permissions dialog will block navigation if they do not have the staff permissions to view the screen.
+            navigation.navigate('shopify:point-of-sale/orders/123');
           }}
         >
-          View product details
+          View order
         </s-button>
       </s-scroll-box>
     </s-page>
