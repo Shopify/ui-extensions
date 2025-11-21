@@ -1,8 +1,12 @@
 const icons = "__ICON_LIST__";
 
 const styles = `
-  html, html.Mode-Light {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  html:not([data-theme]) body {
+    visibility: hidden;
+  }
+
+  html {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --border-base: #e1e3e5;
     --border-focus: #303030;
     --border-icon-item: rgba(0, 0, 0, 0.08);
@@ -16,7 +20,7 @@ const styles = `
     --shadow-icon-item: rgba(0, 0, 0, 0.05);
   }
 
-  html.Mode-Dark {
+  html[data-theme="dark"] {
     --border-base: #505256;
     --border-focus: #ffffff;
     --border-icon-item: rgba(255, 255, 255, 0.1);
@@ -164,7 +168,7 @@ const styles = `
     margin: 0 8px;
   }
 
-  html.Mode-Dark .icon {
+  html[data-theme="dark"] .icon {
     filter: invert(1);
   }
 `;
@@ -196,16 +200,6 @@ const handleSearchChange = (e) => {
 const changePage = (newPage) => {
   setCurrentPage(Math.min(Math.max(newPage, 1), totalPages));
 };
-
-useEffect(() => {
-  window.addEventListener('message', (event) => {
-    if (event.data && event.data.type === 'theme') {
-      const isDark = event.data.mode === 'dark';
-      document.documentElement.classList.toggle('Mode-Dark', isDark);
-      document.documentElement.classList.toggle('Mode-Light', !isDark);
-    }
-  });
-}, []);
 
 useEffect(() => {
   const handleResize = () => {

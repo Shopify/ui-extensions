@@ -1,35 +1,29 @@
 /* eslint-disable no-undef */
 (function () {
-  function setIframeTheme(isDark) {
+  const initializedIframes = new WeakSet();
+
+  function sendThemeToIframe() {
     const iframe = document.querySelector('#icon-preview-iframe');
     if (iframe && iframe.contentWindow) {
+      const isDark = document.documentElement.classList.contains('Mode-Dark');
       iframe.contentWindow.postMessage(
         {type: 'theme', mode: isDark ? 'dark' : 'light'},
         '*',
       );
     }
   }
-  function getThemeMode() {
-    return document.documentElement.classList.contains('Mode-Dark')
-      ? 'dark'
-      : 'light';
-  }
-  const initialMode = getThemeMode();
-  const isDark = initialMode === 'dark';
-  // Wait for iframe to load before setting initial theme
-  const iframe = document.querySelector('#icon-preview-iframe');
-  if (iframe) {
-    iframe.addEventListener('load', () => {
-      setIframeTheme(isDark);
-    });
-    // If already loaded, set immediately
-    if (iframe.contentWindow) {
-      setIframeTheme(isDark);
+
+  const observer = new MutationObserver(() => {
+    const iframe = document.querySelector('#icon-preview-iframe');
+    if (iframe && !initializedIframes.has(iframe)) {
+      initializedIframes.add(iframe);
+      iframe.addEventListener('load', sendThemeToIframe);
+      sendThemeToIframe();
     }
-  }
-  window.addEventListener('theme-mode-changed', (event) => {
-    const themeMode = event.detail.themeMode;
-    const isDarkMode = themeMode === 'Mode-Dark';
-    setIframeTheme(isDarkMode);
+  });
+  observer.observe(document.body, {childList: true, subtree: true});
+
+  window.addEventListener('theme-mode-changed', () => {
+    sendThemeToIframe();
   });
 })();
