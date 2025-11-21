@@ -163,27 +163,11 @@ const styles = `
     color: var(--text-primary);
     margin: 0 8px;
   }
-`;
 
-function getIconColorVarName(iconElement) {
-  const shadowRoot = iconElement.shadowRoot;
-  if (!shadowRoot) return null;
-  
-  for (const sheet of shadowRoot.adoptedStyleSheets || []) {
-    try {
-      for (const rule of sheet.cssRules || []) {
-        if (rule.style && rule.style.cssText) {
-          const match = rule.style.cssText.match(/--s-icon-color-(\d+)/);
-          if (match) {
-            return `--s-icon-color-${match[1]}`;
-          }
-        }
-      }
-    } catch (e) {}
+  html.Mode-Dark .icon {
+    filter: invert(1);
   }
-  
-  return null;
-}
+`;
 
 const [searchQuery, setSearchQuery] = useState('');
 const [currentPage, setCurrentPage] = useState(1);
@@ -235,31 +219,6 @@ useEffect(() => {
   window.addEventListener('resize', handleResize);
   return () => window.removeEventListener('resize', handleResize);
 }, [isMobile]);
-
-useEffect(() => {
-  const applyIconColors = () => {
-    const isDark = document.documentElement.classList.contains('Mode-Dark');
-    const icons = document.querySelectorAll('s-icon');
-    
-    icons.forEach((icon) => {
-      const varName = getIconColorVarName(icon);
-      if (varName) {
-        icon.style.setProperty(varName, isDark ? 'white' : '');
-      }
-    });
-  };
-
-  // Apply on mount and when icons/theme change
-  applyIconColors();
-  
-  // Watch for theme changes
-  const themeObserver = new MutationObserver(applyIconColors);
-  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-  
-  return () => {
-    themeObserver.disconnect();
-  };
-}, []);
 
 return (
   <>
