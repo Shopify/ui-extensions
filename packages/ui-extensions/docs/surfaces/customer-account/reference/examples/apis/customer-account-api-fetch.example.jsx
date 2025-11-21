@@ -6,6 +6,8 @@ export default async () => {
   render(<Extension />, document.body);
 };
 
+const API_VERSION = '2025-10';
+
 function Extension() {
   const [customerName, setCustomerName] =
     useState('');
@@ -20,7 +22,7 @@ function Extension() {
 
   useEffect(() => {
     fetch(
-      'shopify://customer-account/api/unstable/graphql.json',
+      `shopify://customer-account/api/${API_VERSION}/graphql.json`,
       {
         method: 'POST',
         headers: {
