@@ -24,24 +24,31 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'navigator-default.png',
     codeblock: generateCodeBlockForComponent(
-      'Navigate to another screen',
+      'Navigate between screens',
       'navigate',
     ),
+    description:
+      'Create a multi-screen navigation flow within your extension. This example shows how to set up a Navigator with multiple Screen components and navigate between them, enabling complex workflows, wizards, or detailed views with proper navigation stack management.',
   },
   examples: {
-    description: 'Using a Navigator to navigate between Screens',
+    description:
+      'Learn how to create multi-screen workflows with navigation, parameters, and different presentation styles.',
     examples: [
       {
         codeblock: generateCodeBlockForComponent(
-          'Navigate to another screen with parameters',
+          'Pass data between screens',
           'navigate-params',
         ),
+        description:
+          'Navigate to screens while passing data as parameters. This example demonstrates how to send information from one screen to another using navigation parameters, enabling contextual data flow through multi-step workflows.',
       },
       {
         codeblock: generateCodeBlockForComponent(
-          'Navigate to another screen with sheet presentation',
+          'Present a screen as a sheet',
           'navigate-sheet',
         ),
+        description:
+          'Show a screen using sheet presentation style for modal-like interactions. This example demonstrates how to present screens as overlays that slide up from the bottom, useful for quick actions or secondary information without losing the parent screen context.',
       },
     ],
   },

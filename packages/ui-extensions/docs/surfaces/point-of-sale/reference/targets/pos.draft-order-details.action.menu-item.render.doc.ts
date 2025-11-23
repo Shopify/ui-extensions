@@ -9,10 +9,12 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `api.action.presentModal()` to launch the companion modal for complete draft order workflows.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Menu item',
+      'Create a draft order details action menu item',
       'targets',
       'pos-draft-order-details-action-menu-item',
     ),
+    description:
+      'Add an interactive menu item to the draft order details action menu for draft order-specific operations. This example shows how to create a menu item that accesses draft order information and launches modal workflows for tasks like sending invoices, updating payment status, or custom order processes.',
   },
   category: 'Targets',
   subCategory: 'Draft order details',

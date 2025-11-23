@@ -33,9 +33,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'formatted-text-field-default.png',
     codeblock: generateCodeBlockForComponent(
-      'Render a FormattedTextField that validates email addresses',
+      'Capture formatted text input',
       'default.example',
     ),
+    description:
+      'Collect text input with specific formatting patterns and validation rules. This example demonstrates a FormattedTextField that applies real-time formatting as users type, supports custom input masks, and optimizes keyboard types for different data formats like phone numbers or postal codes.',
   },
 };
 

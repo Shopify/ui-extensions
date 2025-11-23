@@ -150,7 +150,12 @@ Finally, we can return to the \`Selectable\`. You'll notice that we've wrapped t
   thumbnail: 'stack-thumbnail.png',
   defaultExample: {
     image: 'stack-default.png',
-    codeblock: generateCodeBlockForStack('Stack', 'horizontal-default'),
+    codeblock: generateCodeBlockForStack(
+      'Layout elements horizontally or vertically',
+      'horizontal-default',
+    ),
+    description:
+      'Organize UI elements horizontally or vertically with automatic spacing management. This example shows a horizontal Stack with default values, demonstrating how to structure layouts and control element spacing through gap properties without manual margin management.',
   },
 };
 

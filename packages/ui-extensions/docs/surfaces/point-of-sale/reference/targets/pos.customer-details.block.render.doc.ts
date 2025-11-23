@@ -9,10 +9,12 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `api.action.presentModal()` for more complex customer operations.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Block',
+      'Add a customer details block',
       'targets',
       'pos-customer-details-block-render',
     ),
+    description:
+      'Display custom information within the customer details screen as a persistent block. This example shows how to create blocks that show supplementary customer data like loyalty status, points balance, or personalized information with interactive elements that can launch modal workflows.',
   },
   category: 'Targets',
   subCategory: 'Customer details',

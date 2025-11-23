@@ -19,7 +19,9 @@ const data: ReferenceEntityTemplateSchema = {
   related: [],
   defaultExample: {
     image: 'image-default.png',
-    codeblock: generateCodeBlock('Example image', 'image', 'default-example'),
+    codeblock: generateCodeBlock('Show an image', 'image', 'default-example'),
+    description:
+      'Show images within your extension interface with customizable presentation. This example demonstrates rendering images with proper sizing, loading states, and error handling, ideal for showcasing products, illustrating concepts, or providing visual context in POS workflows.',
   },
   thumbnail: 'image-thumbnail.png',
 };

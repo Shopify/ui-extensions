@@ -21,13 +21,16 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Toast API',
+    description:
+      'Learn how to display temporary notification messages for user feedback, confirmations, and status updates.',
     examples: [
       {
         codeblock: generateCodeBlockForToastApi(
-          'Display a Toast component from the tile',
+          'Show a toast notification',
           'show',
         ),
+        description:
+          "Display a brief, non-intrusive notification message that automatically dismisses. This example demonstrates using `toast.show()` to provide immediate feedback after user actions, confirmations for successful operations, or status updates without interrupting the merchant's workflow.",
       },
     ],
   },

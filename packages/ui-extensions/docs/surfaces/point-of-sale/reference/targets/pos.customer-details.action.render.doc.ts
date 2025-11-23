@@ -9,10 +9,12 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Action',
+      'Create a customer details action modal',
       'targets',
       'customer-details-action',
     ),
+    description:
+      'Build a full-screen modal launched from customer details menu items for complex customer workflows. This example demonstrates creating modals with multiple screens and interactive components, enabling forms, multi-step processes, or detailed information displays with full customer data access.',
   },
   category: 'Targets',
   subCategory: 'Customer details',

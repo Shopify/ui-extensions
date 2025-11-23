@@ -30,9 +30,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'camera-scanner-default.png',
     codeblock: generateCodeBlockForCameraScanner(
-      'Camera scanner and data text example',
+      'Scan barcodes with the camera',
       'default.example',
     ),
+    description:
+      'Enable barcode and QR code scanning using the device camera. This example demonstrates a full-screen camera scanner with scan data display and banner messaging, showing how to integrate camera-based scanning into your workflow for product lookups or inventory management.',
   },
   subSections: [
     {

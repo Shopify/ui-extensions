@@ -22,19 +22,24 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Order API',
+    description:
+      'Learn how to access order information and build contextual experiences based on completed orders.',
     examples: [
       {
         codeblock: generateCodeBlockForOrderApi(
-          'Basic usage of the Order API in an action',
+          'Access order data in an action menu',
           'basic-usage',
         ),
+        description:
+          'Retrieve order information from action menu items on order detail screens. This example shows how to access the Order API to get the current order data, enabling you to build custom workflows, generate reports, or trigger integrations based on order details.',
       },
       {
         codeblock: generateCodeBlockForOrderApi(
-          'Display order details in a block',
+          'Show order details in a block',
           'display-in-block',
         ),
+        description:
+          'Show order details within a custom block on order detail screens. This example demonstrates how to use the Order API to fetch and display order information in a persistent block, providing merchants with quick access to relevant order data or additional context.',
       },
     ],
   },

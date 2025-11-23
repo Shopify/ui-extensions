@@ -26,9 +26,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'action-item-default.png',
     codeblock: generateCodeBlockForActionItem(
-      'Render an ActionItem in post purchase',
+      'Show a post-purchase action menu item',
       'default.example',
     ),
+    description:
+      'Display an action menu item in the post-purchase flow. This example shows how to render an ActionItem that appears in action menus, providing merchants with a tappable entry point to launch your extension after a transaction is completed.',
   },
 };
 

@@ -30,7 +30,13 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'text-thumbnail.png',
   defaultExample: {
     image: 'text-default.png',
-    codeblock: generateCodeBlock('Text', 'text', 'default.example'),
+    codeblock: generateCodeBlock(
+      'Display text with visual hierarchy',
+      'text',
+      'default.example',
+    ),
+    description:
+      'Show text with appropriate typography styles and semantic coloring. This example demonstrates different text variants and colors to create visual hierarchy, ensuring consistent styling and proper readability across different device types and screen sizes.',
   },
 };
 

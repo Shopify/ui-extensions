@@ -16,7 +16,12 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'scroll-view-thumbnail.png',
   defaultExample: {
     image: 'scroll-view-default.png',
-    codeblock: generateCodeBlockForComponent('ScrollView', 'default.example'),
+    codeblock: generateCodeBlockForComponent(
+      'Create a scrollable container',
+      'default.example',
+    ),
+    description:
+      'Enable scrolling for content that exceeds available screen space. This example demonstrates a ScrollView that automatically adjusts to content size with optimized rendering, supporting pull-to-refresh and lazy loading for smooth performance with extensive content on POS hardware.',
   },
 };
 

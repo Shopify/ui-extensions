@@ -17,14 +17,17 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   examples: {
-    description: 'Examples of using the Draft Order API.',
+    description:
+      'Learn how to access draft order information and build contextual experiences for draft order workflows.',
     examples: [
       {
         codeblock: generateCodeBlock(
-          'Retrieve the ID of the draft order.',
+          'Get the current draft order ID',
           'draft-order-api',
           'id',
         ),
+        description:
+          "Retrieve the unique identifier of the draft order currently associated with the extension's context. This example shows how to access the draft order ID from draft order detail screens, enabling you to fetch additional order data, implement custom workflows, or integrate with external systems.",
       },
     ],
   },

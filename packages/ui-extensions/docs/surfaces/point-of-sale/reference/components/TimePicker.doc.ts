@@ -24,7 +24,12 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'time-picker-thumbnail.png',
   defaultExample: {
     image: 'time-picker-default.png',
-    codeblock: generateCodeBlockForTimePicker('TimePicker', 'default.example'),
+    codeblock: generateCodeBlockForTimePicker(
+      'Select time with a picker',
+      'default.example',
+    ),
+    description:
+      'Enable time selection using an interactive picker interface. This example demonstrates a TimePicker that provides a visual, touch-friendly way to select hours and minutes, making time selection faster and more accurate than text-based input for scheduling workflows.',
   },
 };
 

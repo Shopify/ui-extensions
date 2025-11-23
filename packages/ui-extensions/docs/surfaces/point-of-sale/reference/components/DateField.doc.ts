@@ -19,7 +19,13 @@ const data: ReferenceEntityTemplateSchema = {
   related: [],
   defaultExample: {
     image: 'date-field-default.png',
-    codeblock: generateCodeBlock('Date input', 'date-field', 'date-input'),
+    codeblock: generateCodeBlock(
+      'Capture date input with validation',
+      'date-field',
+      'date-input',
+    ),
+    description:
+      'Collect date information using a text-based input field with built-in validation. This example shows how to implement a DateField that supports both manual text entry and picker selection, providing merchants with flexible date input options for scheduling, filtering, or data entry tasks.',
   },
   subSections: [
     {
