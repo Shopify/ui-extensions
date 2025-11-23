@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2025.10.8
+
+### Patch Changes
+
+- [#3575](https://github.com/Shopify/ui-extensions/pull/3575) [`f27f6da`](https://github.com/Shopify/ui-extensions/commit/f27f6da4b22fc5e9cb282ca62c586f5e3b96dde7) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Exports LineItemComponent from point-of-sale API so POS can import the type
+
+- [#3555](https://github.com/Shopify/ui-extensions/pull/3555) [`3296915`](https://github.com/Shopify/ui-extensions/commit/32969157fe427b384c95e27e762c07f8dd4b0440) Thanks [@vctrchu](https://github.com/vctrchu)! - Expose Il8n type to POS UI extensions
+
 ## 2025.10.7
 
 ### Patch Changes

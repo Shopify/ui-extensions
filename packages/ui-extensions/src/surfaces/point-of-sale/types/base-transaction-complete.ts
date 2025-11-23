@@ -57,4 +57,5 @@ export interface BaseTransactionComplete {
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `"2024-05-15T14:30:00Z"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems.
    */
   executedAt: string;
+  tipAmount?: Money;
 }

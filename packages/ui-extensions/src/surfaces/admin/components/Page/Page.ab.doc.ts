@@ -106,6 +106,47 @@ const data: AdminReferenceEntityTemplateSchema = {
               ],
             },
           },
+          {
+            description:
+              'Shows a page with breadcrumb navigation and a descriptive heading, helping users understand their location in the navigation hierarchy.',
+            codeblock: {
+              title: 'Page with breadcrumbs and title',
+              tabs: [
+                {
+                  code: './examples/page-with-breadcrumbs-and-title.html',
+                  language: 'html',
+                  layout: 'none',
+                },
+                {
+                  code: './examples/page-with-breadcrumbs-and-title.jsx',
+                  language: 'preview-jsx',
+                  layout: 'none',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Demonstrates a page with a primary action button and secondary action buttons, showing how to provide main and related actions alongside the page heading.',
+            codeblock: {
+              title: 'Page with primary and secondary actions',
+              tabs: [
+                {
+                  code: './examples/page-with-secondary-actions.html',
+                  language: 'html',
+                  layout: 'none',
+                },
+                {
+                  code: './examples/page-with-secondary-actions.jsx',
+                  language: 'preview-jsx',
+                  layout: 'none',
+                  customStyles: {
+                    minHeight: '400px',
+                  },
+                },
+              ],
+            },
+          },
         ],
       },
     ],
