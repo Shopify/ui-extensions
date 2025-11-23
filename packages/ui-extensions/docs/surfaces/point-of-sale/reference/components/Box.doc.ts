@@ -22,7 +22,12 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'box-thumbnail.png',
   defaultExample: {
     image: 'box-default.png',
-    codeblock: generateCodeBlockForBanner('Box', 'default.example'),
+    codeblock: generateCodeBlockForBanner(
+      'Create a container with padding',
+      'default.example',
+    ),
+    description:
+      'Create flexible layout containers with consistent spacing and styling. This example demonstrates a Box that applies padding, groups components, and provides granular control over spacing using design system tokens, serving as a foundation for structured layouts.',
   },
 };
 

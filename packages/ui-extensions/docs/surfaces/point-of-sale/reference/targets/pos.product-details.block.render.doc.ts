@@ -9,10 +9,12 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target appear as persistent blocks within the product details interface and support interactive elements that can launch modal workflows using `api.action.presentModal()` for more complex product operations.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Block',
+      'Add a product details block',
       'targets',
       'pos-product-details-block-render',
     ),
+    description:
+      'Display custom information within the product details screen as a persistent block. This example shows how to create blocks that show supplementary product data like detailed specifications, inventory status, or related recommendations with interactive elements.',
   },
   category: 'Targets',
   subCategory: 'Product details',

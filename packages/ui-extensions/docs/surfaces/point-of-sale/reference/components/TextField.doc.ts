@@ -20,7 +20,13 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'text-field-thumbnail.png',
   defaultExample: {
     image: 'text-field-default.png',
-    codeblock: generateCodeBlock('Name Input', 'text-field', 'name'),
+    codeblock: generateCodeBlock(
+      'Capture single-line text input',
+      'text-field',
+      'name',
+    ),
+    description:
+      'Collect short, free-form text using a single-line input field. This example shows a TextField with labels, placeholders, and validation support, ensuring accurate and efficient information capture for forms and data entry workflows.',
   },
   subSections: [
     {

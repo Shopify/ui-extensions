@@ -21,6 +21,15 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   type: 'Target',
   definitions: [CUSTOM_DATA('CashTrackingSessionStartData')],
+  defaultExample: {
+    codeblock: generateCodeBlock(
+      'Track cash session openings',
+      'targets',
+      'pos-cash-tracking-session-start-event-observe',
+    ),
+    description:
+      'Subscribe to cash tracking session start events to maintain audit trails and compliance records. This example demonstrates logging session openings with session ID and opening time, enabling security monitoring, compliance reporting, and integration with external cash management systems.',
+  },
 };
 
 export default data;

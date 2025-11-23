@@ -22,10 +22,12 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'segmented-control-default.png',
     codeblock: generateCodeBlock(
-      'SegmentedControl',
+      'Switch between views or filters',
       'segmented-control',
       'default.example',
     ),
+    description:
+      'Enable view switching or content filtering with mutually exclusive segments. This example shows a SegmentedControl that displays options in a compact horizontal layout with clear visual selection states and smooth transitions, ideal for view toggles or filter controls.',
   },
 };
 

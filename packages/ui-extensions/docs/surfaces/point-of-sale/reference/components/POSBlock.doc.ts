@@ -24,9 +24,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'pos-block-default.png',
     codeblock: generateCodeBlockForPOSBlock(
-      'Render a POSBlock in post purchase',
+      'Show content in a block container',
       'default.example',
     ),
+    description:
+      'Display structured content within POS block targets using a standardized container. This example demonstrates a POSBlock with consistent padding, spacing, and an optional action button, ensuring extension content feels cohesive with the core POS interface.',
   },
 };
 

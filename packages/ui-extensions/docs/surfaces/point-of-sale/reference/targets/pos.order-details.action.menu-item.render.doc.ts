@@ -9,10 +9,12 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target can access the order identifier through the Order API to perform order-specific operations. Menu items typically invoke `api.action.presentModal()` to launch the companion modal for complete order workflows.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Order details action menu item',
+      'Create an order details action menu item',
       'targets',
       'pos-order-details-action-menu-item-render',
     ),
+    description:
+      'Add an interactive menu item to the order details action menu for order-specific operations. This example shows how to create a menu item that accesses order data and launches modal workflows for tasks like reprints, refunds, exchanges, or fulfillment processes.',
   },
   category: 'Targets',
   subCategory: 'Order details',

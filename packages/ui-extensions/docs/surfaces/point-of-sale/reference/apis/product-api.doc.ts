@@ -20,13 +20,16 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   examples: {
-    description: 'Examples of using the Product API.',
+    description:
+      'Learn how to access product information and build contextual experiences based on product context.',
     examples: [
       {
         codeblock: generateCodeBlockForProductApi(
-          'Retrieve the ID of the product.',
+          'Get the current product ID',
           'id',
         ),
+        description:
+          "Retrieve the unique identifier of the product currently associated with the extension's context. This example shows how to access the product ID from product detail screens, enabling you to fetch additional product data, implement custom actions, or integrate with inventory and pricing systems.",
       },
     ],
   },
