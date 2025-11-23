@@ -50,12 +50,21 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateCodeBlockForStack(
-          'Stretch children to fill space',
-          'inline-flex-children',
+          'Arrange elements vertically',
+          'block',
         ),
         description:
-          'Make child components expand to fill available space in an inline stack using `flexChildren={true}`. This stretches the two buttons to occupy maximum space within the inline container, distributing space evenly across children for full-width layouts.',
-        image: 'extension-stack-inline-flexChildren.png',
+          'Stack elements vertically by setting `direction="block"`. This creates a vertical layout with automatic gap spacing between elements, ideal for forms, lists, or any vertically-stacked content.',
+        image: 'extension-stack-block.png',
+      },
+      {
+        codeblock: generateCodeBlockForStack(
+          'Center content on both axes',
+          'block-center-all',
+        ),
+        description:
+          'Center elements both horizontally and vertically using `justifyContent="center"`, `alignContent="center"`, and `alignItems="center"` with custom `blockSize="50%"` and `inlineSize="100%"`. All three alignment properties work together to create perfectly centered content on both axes.',
+        image: 'extension-stack-block-center-all.png',
       },
       {
         codeblock: generateCodeBlockForStack(
@@ -77,12 +86,21 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         codeblock: generateCodeBlockForStack(
-          'Arrange elements vertically',
-          'block',
+          'Create complex layouts with nested stacks',
+          'nested',
         ),
         description:
-          'Stack elements vertically by setting `direction="block"`. This creates a vertical layout with automatic gap spacing between elements, ideal for forms, lists, or any vertically-stacked content.',
-        image: 'extension-stack-block.png',
+          'Nest multiple stacks to build sophisticated layouts. This example creates a tappable row using an inline parent stack with `justifyContent="space-between"` and `inlineSize="100%"` containing two child stacks: a block stack (left) with gap 100 for labels, and an inline stack (right) with gap 600 for text and icon. The entire structure is wrapped in a Selectable component for tap interaction with visual highlight.',
+        image: 'extension-stack-nested.png',
+      },
+      {
+        codeblock: generateCodeBlockForStack(
+          'Expand children to fill available space',
+          'inline-flex-children',
+        ),
+        description:
+          'Make child components expand to fill available space in an inline stack using `flexChildren={true}`. This stretches the two buttons to occupy maximum space within the inline container, distributing space evenly across children for full-width layouts.',
+        image: 'extension-stack-inline-flexChildren.png',
       },
       {
         codeblock: generateCodeBlockForStack(
@@ -95,30 +113,12 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         codeblock: generateCodeBlockForStack(
-          'Center content on both axes',
-          'block-center-all',
-        ),
-        description:
-          'Center elements both horizontally and vertically using `justifyContent="center"`, `alignContent="center"`, and `alignItems="center"` with custom `blockSize="50%"` and `inlineSize="100%"`. All three alignment properties work together to create perfectly centered content on both axes.',
-        image: 'extension-stack-block-center-all.png',
-      },
-      {
-        codeblock: generateCodeBlockForStack(
           'Stretch elements horizontally',
           'block-align-content-stretch',
         ),
         description:
           'Stretch child elements to fill container width using `alignContent="stretch"`. This makes all children expand horizontally to fill available space regardless of content, ensuring consistent full-width elements in vertical layouts.',
         image: 'extension-stack-block-align-content-stretch.png',
-      },
-      {
-        codeblock: generateCodeBlockForStack(
-          'Create complex layouts with nested stacks',
-          'nested',
-        ),
-        description:
-          'Nest multiple stacks to build sophisticated layouts. This example creates a tappable row using an inline parent stack with `justifyContent="space-between"` and `inlineSize="100%"` containing two child stacks: a block stack (left) with gap 100 for labels, and an inline stack (right) with gap 600 for text and icon. The entire structure is wrapped in a Selectable component for tap interaction with visual highlight.',
-        image: 'extension-stack-nested.png',
       },
     ],
   },
