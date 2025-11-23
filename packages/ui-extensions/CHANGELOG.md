@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.1.0-rc.3
+
+### Patch Changes
+
+- [#3590](https://github.com/Shopify/ui-extensions/pull/3590) [`81c0416`](https://github.com/Shopify/ui-extensions/commit/81c0416e8b5772a2fe74e04d8f8d4263e4d61073) Thanks [@chadcromwell](https://github.com/chadcromwell)! - Add optional tipAmount field to POS transaction data types
+
 ## 2026.1.0-rc.2
 
 ### Minor Changes
