@@ -23,7 +23,12 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'badge-thumbnail.png',
   defaultExample: {
     image: 'badge-default.png',
-    codeblock: generateCodeBlockForBadge('Badge', 'default.example'),
+    codeblock: generateCodeBlockForBadge(
+      'Show a status badge',
+      'default.example',
+    ),
+    description:
+      'Show status information using color-coded badges. This example demonstrates rendering badges with different variants (success, warning, critical, info) and status indicators to communicate order, product, or customer status at a glance.',
   },
   subSections: [
     {

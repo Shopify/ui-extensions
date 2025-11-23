@@ -28,10 +28,9 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'button-thumbnail.png',
   defaultExample: {
     image: 'button-default.png',
-    codeblock: generateCodeBlockForButton(
-      'Render a button that presents a toast',
-      'default.example',
-    ),
+    codeblock: generateCodeBlockForButton('Show a button', 'default.example'),
+    description:
+      'Display a button that responds to user interactions. This example shows a button that displays a toast notification when pressed, demonstrating how to handle button taps and provide immediate feedback to merchants.',
   },
 };
 

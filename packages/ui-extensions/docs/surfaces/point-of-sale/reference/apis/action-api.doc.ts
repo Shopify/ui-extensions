@@ -22,19 +22,24 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Action API.',
+    description:
+      'Learn how to present full-screen modals from tiles and menu items using the Action API.',
     examples: [
       {
         codeblock: generateCodeBlockForActionApi(
-          'Present a modal from post purchase.',
+          'Open a modal from a post-purchase action',
           'present-modal',
         ),
+        description:
+          "Create an action menu item that appears after a purchase is completed. When pressed, it launches a full-screen modal view using the Action API's `presentModal()` method, allowing you to display custom workflows or additional functionality in the post-purchase flow.",
       },
       {
         codeblock: generateCodeBlockForActionApi(
-          'Present a modal from smart grid.',
+          'Open a modal from a smart grid tile',
           'present-modal-tile',
         ),
+        description:
+          "Create a smart grid tile on the POS home screen that launches a full-screen modal when tapped. This example shows how to use the Action API to present detailed views or workflows from your app's home tile, providing quick access to extended functionality.",
       },
     ],
   },

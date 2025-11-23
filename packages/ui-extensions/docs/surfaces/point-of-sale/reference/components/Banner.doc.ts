@@ -23,7 +23,12 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'banner-thumbnail.png',
   defaultExample: {
     image: 'banner-default.png',
-    codeblock: generateCodeBlockForBanner('Banner', 'default.example'),
+    codeblock: generateCodeBlockForBanner(
+      'Show an information banner',
+      'default.example',
+    ),
+    description:
+      'Show a persistent informational message using a banner. This example demonstrates rendering a banner with different status variants (info, success, warning, critical) to communicate important information to merchants without interrupting their workflow.',
   },
   subSections: [
     {

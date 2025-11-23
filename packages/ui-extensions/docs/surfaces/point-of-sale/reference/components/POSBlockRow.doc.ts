@@ -24,9 +24,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'pos-block-row-default.png',
     codeblock: generateCodeBlockForPOSBlockRow(
-      'Render a POSBlockRow in a POSBlock',
+      'Create structured rows within a block',
       'default.example',
     ),
+    description:
+      'Display individual rows within a POSBlock container with optional tap interactions. This example demonstrates creating structured content rows that follow POS design specifications, ensuring visual consistency and proper handling of various device sizes and orientations.',
   },
 };
 

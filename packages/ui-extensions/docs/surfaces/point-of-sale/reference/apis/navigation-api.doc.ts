@@ -22,28 +22,24 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Navigation API',
+    description:
+      'Learn how to navigate between screens, manage navigation stacks, and control multi-screen modal experiences.',
     examples: [
       {
         codeblock: generateCodeBlockForNavigationApi(
-          'Navigate between two screens',
+          'Create a multi-screen modal',
           'two-screen',
         ),
+        description:
+          'Create a navigation flow with multiple screens in a modal interface. This example shows how to set up a Navigator with two screens and navigate between them, enabling multi-step workflows, wizards, or detailed views within your extension.',
       },
-    ],
-    exampleGroups: [
       {
-        title: 'Navigation actions',
-        examples: [
-          {
-            description:
-              'Navigates to the specified screen. It is important to note that any screens you wish to navigate to must already exist in the Navigator.',
-            codeblock: generateCodeBlockForNavigationApi(
-              'Navigate to a route in current navigation tree',
-              'navigation-tree',
-            ),
-          },
-        ],
+        codeblock: generateCodeBlockForNavigationApi(
+          'Navigate to another screen',
+          'navigation-tree',
+        ),
+        description:
+          'Navigate programmatically to a specific screen in your navigation hierarchy. This example demonstrates using the global `navigation` object to push a new screen onto the navigation stack. Note that the target screen must already be defined in your Navigator component before you can navigate to it.',
       },
     ],
   },

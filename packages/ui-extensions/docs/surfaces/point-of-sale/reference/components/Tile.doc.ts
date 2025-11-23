@@ -24,9 +24,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'tile-default.png',
     codeblock: generateCodeBlockForTile(
-      'Render a tile on smart grid',
+      'Create a smart grid tile',
       'default.example',
     ),
+    description:
+      'Display an interactive button on the POS smart grid for quick actions. This example shows a Tile that provides customizable shortcuts with contextual information, titles, subtitles, and badge values, enabling merchants to quickly access workflows and complete actions from the smart grid.',
   },
 };
 

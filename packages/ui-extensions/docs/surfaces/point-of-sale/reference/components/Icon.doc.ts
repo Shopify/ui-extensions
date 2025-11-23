@@ -36,7 +36,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'icon-default.png',
-    codeblock: generateCodeBlock('Example icons', 'icon', 'default-example'),
+    codeblock: generateCodeBlock('Show icons', 'icon', 'default-example'),
+    description:
+      'Show icons from the POS catalog to represent actions or statuses consistently. This example demonstrates rendering icons that enhance navigation, provide visual context alongside text, and maintain visual consistency across the interface with automatic scaling for different screen densities.',
   },
   thumbnail: 'icon-thumbnail.png',
 };

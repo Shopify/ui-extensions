@@ -9,10 +9,12 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Order details action',
+      'Create an order details action modal',
       'targets',
       'pos-order-details-action-render',
     ),
+    description:
+      'Build a full-screen modal launched from order details menu items for complex order workflows. This example demonstrates creating modals with multiple screens and interactive components, enabling forms, multi-step processes, or detailed information displays with full order data access.',
   },
   category: 'Targets',
   subCategory: 'Order details',
