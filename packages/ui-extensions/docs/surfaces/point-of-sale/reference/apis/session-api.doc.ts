@@ -21,13 +21,16 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Session API',
+    description:
+      'Learn how to access session information and generate secure authentication tokens for backend communication.',
     examples: [
       {
         codeblock: generateCodeBlockForSessionApi(
-          'Retrieve the current session data',
+          'Access shop and location information',
           'token',
         ),
+        description:
+          'Retrieve current session data including shop domain, location ID, and user information. This example shows how to access session properties to get shop context, enabling you to personalize experiences, make location-specific decisions, or pass shop identifiers to backend services.',
       },
     ],
   },

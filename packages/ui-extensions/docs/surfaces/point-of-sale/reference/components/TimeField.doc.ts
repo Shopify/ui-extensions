@@ -19,7 +19,13 @@ const data: ReferenceEntityTemplateSchema = {
   related: [],
   defaultExample: {
     image: 'time-field-default.png',
-    codeblock: generateCodeBlock('Time input', 'time-field', 'time-input'),
+    codeblock: generateCodeBlock(
+      'Capture time input with format validation',
+      'time-field',
+      'time-input',
+    ),
+    description:
+      'Collect time information with built-in validation and format support. This example demonstrates a TimeField that handles both 12-hour and 24-hour formats based on locale, providing time picker integration and formatted display for scheduling and booking workflows.',
   },
   subSections: [
     {

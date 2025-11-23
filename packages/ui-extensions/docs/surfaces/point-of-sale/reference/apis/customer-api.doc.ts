@@ -20,13 +20,16 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   examples: {
-    description: 'Examples of using the Customer API.',
+    description:
+      'Learn how to access customer information and build personalized experiences based on customer context.',
     examples: [
       {
         codeblock: generateCodeBlockForCustomerApi(
-          'Retrieve the ID of the customer.',
+          'Get the current customer ID',
           'id',
         ),
+        description:
+          "Retrieve the unique identifier of the customer currently associated with the extension's context. This example shows how to access the customer ID from customer details screens, enabling you to fetch additional customer data, track customer-specific actions, or link to external systems.",
       },
     ],
   },

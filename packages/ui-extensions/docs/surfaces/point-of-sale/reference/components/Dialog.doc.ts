@@ -23,7 +23,12 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'dialog-thumbnail.png',
   defaultExample: {
     image: 'dialog-default.png',
-    codeblock: generateCodeBlockForDialog('Dialog example', 'default.example'),
+    codeblock: generateCodeBlockForDialog(
+      'Show a confirmation dialog',
+      'default.example',
+    ),
+    description:
+      'Present important information or confirmations that require user attention. This example demonstrates a Dialog that overlays the interface to display alerts, confirmations, or input prompts with customizable buttons and actions, blocking interaction until merchants respond.',
   },
   subSections: [
     {

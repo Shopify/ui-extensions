@@ -28,7 +28,13 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'search-bar-thumbnail.png',
   defaultExample: {
     image: 'search-bar-default.png',
-    codeblock: generateCodeBlock('SearchBar', 'search-bar', 'default.example'),
+    codeblock: generateCodeBlock(
+      'Search for products',
+      'search-bar',
+      'default.example',
+    ),
+    description:
+      'Provide search functionality with a specialized input field. This example demonstrates a SearchBar with built-in search button, clear functionality, and text change handling, enabling product searches, customer lookups, or other search-driven POS workflows.',
   },
   subSections: [
     {

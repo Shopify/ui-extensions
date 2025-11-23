@@ -20,7 +20,13 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'selectable-thumbnail.png',
   defaultExample: {
     image: 'selectable-default.png',
-    codeblock: generateCodeBlock('Selectable', 'selectable', 'default.example'),
+    codeblock: generateCodeBlock(
+      'Make static components tappable',
+      'selectable',
+      'default.example',
+    ),
+    description:
+      'Add tap interaction to non-interactive components while preserving their styling. This example shows how to wrap components like Text, Image, or custom layouts with Selectable to make them respond to user taps without changing their visual appearance.',
   },
 };
 

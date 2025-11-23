@@ -30,7 +30,13 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'text-thumbnail.png',
   defaultExample: {
     image: 'text-default.png',
-    codeblock: generateCodeBlock('Text', 'text', 'default.example'),
+    codeblock: generateCodeBlock(
+      'Show text with different styles',
+      'text',
+      'default.example',
+    ),
+    description:
+      'Render text content with specific visual styles and colors. This example demonstrates using Text with different variants (body, heading, caption) and semantic colors to establish proper typography hierarchy and communicate information effectively throughout your POS interface.',
   },
 };
 

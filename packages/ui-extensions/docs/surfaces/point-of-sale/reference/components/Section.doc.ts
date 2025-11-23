@@ -28,7 +28,12 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'section-header-thumbnail.png',
   defaultExample: {
     image: 'section-header-default.png',
-    codeblock: generateCodeBlockForComponent('Section', 'default.example'),
+    codeblock: generateCodeBlockForComponent(
+      'Group related content',
+      'default.example',
+    ),
+    description:
+      'Group related content with clear visual boundaries and optional actions. This example shows how to use Section components to create structured layouts with titles and headers that organize content into logical thematic areas for better navigation and comprehension.',
   },
 };
 

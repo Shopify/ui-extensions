@@ -21,10 +21,12 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'radio-button-list-default.png',
     codeblock: generateCodeBlock(
-      'RadioButtonList',
+      'Select one option from a list',
       'radio-button-list',
       'default.example',
     ),
+    description:
+      'Present a list of mutually exclusive options for single selection. This example shows how to implement a RadioButtonList where merchants can choose exactly one option from multiple choices, ideal for settings, preferences, or filtering selections.',
   },
 };
 

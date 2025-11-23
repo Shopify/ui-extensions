@@ -20,7 +20,13 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'text-area-thumbnail.png',
   defaultExample: {
     image: 'text-area-default.png',
-    codeblock: generateCodeBlock('Thumbnail', 'text-area', 'default.example'),
+    codeblock: generateCodeBlock(
+      'Capture multi-line text input',
+      'text-area',
+      'default.example',
+    ),
+    description:
+      'Collect longer text content with a multi-line input area. This example shows how to implement a TextArea for capturing descriptions, notes, comments, or extended text that requires more than single-line input, supporting validation and multi-line formatting.',
   },
 };
 

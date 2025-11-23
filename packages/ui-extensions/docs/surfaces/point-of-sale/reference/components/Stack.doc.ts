@@ -150,7 +150,12 @@ Finally, we can return to the \`Selectable\`. You'll notice that we've wrapped t
   thumbnail: 'stack-thumbnail.png',
   defaultExample: {
     image: 'stack-default.png',
-    codeblock: generateCodeBlockForStack('Stack', 'horizontal-default'),
+    codeblock: generateCodeBlockForStack(
+      'Arrange components in a row',
+      'horizontal-default',
+    ),
+    description:
+      'Organize elements horizontally or vertically with automatic spacing. This example shows how to use Stack to create flexible layouts with controlled alignment, spacing, and wrapping behavior, simplifying layout creation and eliminating manual margin management.',
   },
 };
 

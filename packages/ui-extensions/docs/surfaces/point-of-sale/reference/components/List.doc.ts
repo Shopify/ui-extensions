@@ -27,7 +27,9 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'list-thumbnail.png',
   defaultExample: {
     image: 'list-default.png',
-    codeblock: generateCodeBlock('Product List', 'list', 'products'),
+    codeblock: generateCodeBlock('Show a list of items', 'list', 'products'),
+    description:
+      'Present organized information with rich content in a consistent format. This example shows how to create a List with labels, subtitles, badges, images, and interactive elements, ideal for displaying products, orders, customers, or other structured data with tap interactions.',
   },
   subSections: [
     {

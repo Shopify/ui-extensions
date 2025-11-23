@@ -20,7 +20,13 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'stepper-thumbnail.png',
   defaultExample: {
     image: 'stepper-default.png',
-    codeblock: generateCodeBlock('Stepper', 'stepper', 'default.example'),
+    codeblock: generateCodeBlock(
+      'Increment and decrement a number',
+      'stepper',
+      'default.example',
+    ),
+    description:
+      'Provide increment and decrement buttons for numeric input with visual feedback. This example demonstrates a Stepper that allows merchants to adjust quantities, counts, or values using clear visual controls with customizable step values and min/max constraints.',
   },
 };
 

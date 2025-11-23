@@ -34,25 +34,31 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'screen-default.png',
     codeblock: generateCodeBlockForComponent(
-      'Navigate to another screen',
+      'Create a navigable screen',
       'navigate',
     ),
+    description:
+      'Define a screen within a navigation flow with title, actions, and content. This example demonstrates setting up a Screen that integrates with the navigation stack, providing full-screen presentations with proper back button behavior and navigation lifecycle management.',
   },
   examples: {
     description:
-      'Navigating using NavigationAPI with Screens within Navigators',
+      'Learn how to create screens with advanced navigation features including parameter passing and modal presentation styles.',
     examples: [
       {
         codeblock: generateCodeBlockForComponent(
-          'Navigate to another screen with parameters',
+          'Navigate to a screen with data',
           'navigate-params',
         ),
+        description:
+          'Pass data to screens during navigation to create contextual workflows. This example shows how screens can receive parameters during navigation, enabling data flow between screens and conditional rendering based on navigation context.',
       },
       {
         codeblock: generateCodeBlockForComponent(
-          'Navigate to another screen with sheet presentation',
+          'Navigate with slide-up presentation',
           'navigate-sheet',
         ),
+        description:
+          'Display a screen that slides up from the bottom and overlays the current view. This example demonstrates how to configure screen presentation for temporary tasks or confirmations that appear as an overlay, useful for quick actions or secondary workflows.',
       },
     ],
   },

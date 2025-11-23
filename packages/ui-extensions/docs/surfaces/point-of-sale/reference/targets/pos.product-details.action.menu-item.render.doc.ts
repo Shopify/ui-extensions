@@ -9,10 +9,12 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `api.action.presentModal()` to launch the companion modal for complete product workflows.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Menu item',
+      'Show a product action menu item',
       'targets',
       'product-details-menu-item',
     ),
+    description:
+      'Create an action menu item on product detail screens. This example demonstrates rendering a button in the product action menu for operations like inventory adjustments, product analytics, or integration with external product management systems.',
   },
   category: 'Targets',
   subCategory: 'Product details',

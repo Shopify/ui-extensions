@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'pin-pad-default.png',
     codeblock: {
-      title: 'Validation',
+      title: 'Capture secure PIN input',
       tabs: [
         {
           code: '../examples/pinpad/validation.ts',
@@ -28,6 +28,8 @@ const data: ReferenceEntityTemplateSchema = {
         },
       ],
     },
+    description:
+      'Provide a secure numeric keypad for PIN entry with validation. This example demonstrates a PinPad that masks entered digits, validates PIN format, and handles secure authentication workflows for staff access or payment authorization.',
   },
   subSections: [
     {

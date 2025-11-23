@@ -20,7 +20,9 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'text-field-thumbnail.png',
   defaultExample: {
     image: 'text-field-default.png',
-    codeblock: generateCodeBlock('Name Input', 'text-field', 'name'),
+    codeblock: generateCodeBlock('Capture text input', 'text-field', 'name'),
+    description:
+      'Collect short, free-form text information with validation support. This example shows how to implement a TextField with labels, placeholders, character limits, and error states for capturing names, references, or other single-line data in forms and data entry workflows.',
   },
   subSections: [
     {

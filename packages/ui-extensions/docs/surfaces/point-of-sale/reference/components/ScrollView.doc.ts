@@ -16,7 +16,12 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'scroll-view-thumbnail.png',
   defaultExample: {
     image: 'scroll-view-default.png',
-    codeblock: generateCodeBlockForComponent('ScrollView', 'default.example'),
+    codeblock: generateCodeBlockForComponent(
+      'Scroll long content',
+      'default.example',
+    ),
+    description:
+      'Create a scrollable container for content that exceeds the display area. This example shows how to implement a ScrollView that enables smooth scrolling for long lists or detailed information, supporting pull-to-refresh and lazy loading for optimal performance.',
   },
 };
 

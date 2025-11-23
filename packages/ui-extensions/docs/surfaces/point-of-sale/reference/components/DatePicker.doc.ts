@@ -24,7 +24,12 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'date-picker-thumbnail.png',
   defaultExample: {
     image: 'date-picker-default.png',
-    codeblock: generateCodeBlockForDatePicker('DatePicker', 'default.example'),
+    codeblock: generateCodeBlockForDatePicker(
+      'Select a date with a calendar',
+      'default.example',
+    ),
+    description:
+      'Enable date selection using an intuitive calendar interface. This example demonstrates a DatePicker that displays dates in a monthly calendar view, making it easier for merchants to select dates in context and visualize date relationships, ideal for scheduling or date range selection.',
   },
 };
 
