@@ -10,10 +10,12 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Block',
+      'Add content to receipt footer',
       'targets',
       'pos-receipt-footer-block-render',
     ),
+    description:
+      'Display custom content in the footer of printed receipts. This example shows how to create a footer section with contact details, return policies, social media links, or customer engagement elements like survey links, providing additional context and marketing opportunities on receipts.',
   },
   category: 'Targets',
   subCategory: 'Receipts',

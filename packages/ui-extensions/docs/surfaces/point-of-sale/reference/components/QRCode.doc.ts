@@ -31,9 +31,11 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     codeblock: generateCodeBlockForPOSReceiptBlock(
-      'Render a QRCode in POS receipts',
+      'Display a QR code on a receipt',
       'default.example',
     ),
+    description:
+      'Render QR codes on receipts for quick access to digital content or contactless interactions. This example demonstrates generating QR codes with customizable size and error correction levels, enabling customers to easily scan information from printed or digital receipts.',
   },
 };
 

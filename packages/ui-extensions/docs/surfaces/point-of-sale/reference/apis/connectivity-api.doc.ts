@@ -21,13 +21,16 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Connectivity API',
+    description:
+      'Learn how to monitor internet connectivity status and respond to network changes in your extension.',
     examples: [
       {
         codeblock: generateCodeBlockForConnectivityApi(
-          'Subscribe to connectivity changes.',
+          'Monitor network connectivity changes',
           'subscribable',
         ),
+        description:
+          'Subscribe to connectivity state changes to respond when the device goes online or offline. This example demonstrates using the connectivity subscription to track network status and display the current connection state, allowing your extension to adapt behavior based on network availability.',
       },
     ],
   },

@@ -9,10 +9,12 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Cart Line Item details action',
+      'Create a cart line item action modal',
       'targets',
       'pos-cart-line-item-details-action-render',
     ),
+    description:
+      'Build a full-screen modal launched from cart line item menu items for complex item workflows. This example demonstrates creating modals with multiple screens and interactive components, enabling forms, multi-step processes, or detailed information displays with full line item data access.',
   },
   category: 'Targets',
   subCategory: 'Cart line item details',

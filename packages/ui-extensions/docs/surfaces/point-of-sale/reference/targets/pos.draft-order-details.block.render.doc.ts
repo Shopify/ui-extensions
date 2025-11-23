@@ -9,10 +9,12 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `api.action.presentModal()` for more complex draft order operations.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Block',
+      'Add a draft order details block',
       'targets',
       'pos-draft-order-details-block-render',
     ),
+    description:
+      'Display custom information within the draft order details screen as a persistent block. This example shows how to create blocks that show supplementary order information like processing status, payment status, or workflow indicators with interactive elements.',
   },
   category: 'Targets',
   subCategory: 'Draft order details',

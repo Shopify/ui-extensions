@@ -20,13 +20,16 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   examples: {
-    description: 'Examples of using the Cart Line Item API.',
+    description:
+      'Learn how to access line item information and build contextual experiences based on specific cart items.',
     examples: [
       {
         codeblock: generateCodeBlockForCartLineItemApi(
-          'Retrieve the ID of the cart line item.',
+          'Get the current line item ID',
           'id',
         ),
+        description:
+          "Retrieve the unique identifier of the cart line item currently associated with the extension's context. This example shows how to access the line item ID from line item detail screens, enabling you to fetch additional item data, implement custom actions, or track item-specific operations.",
       },
     ],
   },

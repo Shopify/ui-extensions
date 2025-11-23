@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {CUSTOM_DATA} from '../helpers/helper.docs';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
@@ -13,6 +14,15 @@ const data: ReferenceEntityTemplateSchema = {
   related: [],
   type: 'Target',
   definitions: [CUSTOM_DATA('CartUpdateEventData')],
+  defaultExample: {
+    codeblock: generateCodeBlock(
+      'Monitor cart changes in real time',
+      'targets',
+      'pos-cart-update-event-observe',
+    ),
+    description:
+      'Subscribe to cart update events to respond to cart modifications automatically. This example demonstrates tracking cart changes for analytics, triggering workflows based on cart contents, or implementing dynamic pricing rules that react to line item additions or removals.',
+  },
 };
 
 export default data;

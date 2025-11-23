@@ -34,11 +34,12 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'print-preview-default.png',
-    description: 'Basic usage with relative and full URLs:',
     codeblock: generateCodeBlockForPrintPreview(
-      'Basic PrintPreview',
+      'Preview printable content',
       'default.example',
     ),
+    description:
+      'Display a preview of printable content before triggering the print operation. This example shows how to use PrintPreview with HTML documents, PDFs, images, or text files, supporting various document formats with proper rendering for receipts, invoices, and formatted reports.',
   },
 };
 

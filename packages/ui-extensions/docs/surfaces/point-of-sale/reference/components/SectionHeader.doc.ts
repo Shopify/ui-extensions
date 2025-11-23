@@ -21,10 +21,12 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'section-header-default.png',
     codeblock: generateCodeBlock(
-      'SectionHeader',
+      'Add a section header with actions',
       'section-header',
       'default.example',
     ),
+    description:
+      'Create consistent section headings with titles, optional action buttons, and divider lines. This example shows a SectionHeader that organizes content with proper visual hierarchy, helping merchants understand content structure and providing quick access to section-level actions.',
   },
 };
 

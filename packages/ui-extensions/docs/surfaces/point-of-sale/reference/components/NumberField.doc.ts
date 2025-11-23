@@ -20,10 +20,12 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'number-field-default.png',
     codeblock: generateCodeBlock(
-      'Number input',
+      'Capture numeric input with validation',
       'number-field',
       'number-input',
     ),
+    description:
+      'Collect numeric information using an optimized input field with built-in validation. This example shows how to implement a NumberField that validates numeric entries, supports optional min/max constraints, and provides step increments for quantities, prices, or other numeric data.',
   },
   thumbnail: 'number-field-thumbnail.png',
 };

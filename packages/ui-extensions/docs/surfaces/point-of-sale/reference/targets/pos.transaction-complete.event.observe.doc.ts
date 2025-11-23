@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {TRANSACTION_COMPLETE_DEFINITION} from '../helpers/helper.docs';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
@@ -26,6 +27,15 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   type: 'Target',
   ...TRANSACTION_COMPLETE_DEFINITION,
+  defaultExample: {
+    codeblock: generateCodeBlock(
+      'Process completed transactions',
+      'targets',
+      'pos-transaction-complete-event-observe',
+    ),
+    description:
+      'Subscribe to transaction completion events to trigger post-sale workflows and analytics. This example demonstrates capturing completed sales, returns, and exchanges with detailed transaction data, enabling automated workflows like sending digital receipts, updating external systems, or collecting sales analytics.',
+  },
 };
 
 export default data;

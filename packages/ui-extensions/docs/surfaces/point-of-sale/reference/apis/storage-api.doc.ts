@@ -23,37 +23,48 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   examples: {
-    description: 'Examples of using the Storage API',
+    description:
+      'Learn how to store, retrieve, and manage persistent data that survives across sessions and device restarts.',
     examples: [
       {
         codeblock: generateCodeBlockForStorageApi(
-          'Getting a single value from storage',
-          'get',
-        ),
-      },
-      {
-        codeblock: generateCodeBlockForStorageApi(
-          'Setting a single value in storage',
-          'set',
-        ),
-      },
-      {
-        codeblock: generateCodeBlockForStorageApi(
-          'Deleting a single value from storage',
-          'delete',
-        ),
-      },
-      {
-        codeblock: generateCodeBlockForStorageApi(
-          'Clear all entries for an extension from storage',
+          'Clear all stored data',
           'clear',
         ),
+        description:
+          'Remove all stored key-value pairs for your extension in a single operation. This example demonstrates using `storage.clear()` to reset all extension data, useful for clearing user preferences, resetting state, or implementing logout functionality.',
       },
       {
         codeblock: generateCodeBlockForStorageApi(
-          'Retrieve all entries for an extension from storage',
+          'Delete a specific value',
+          'delete',
+        ),
+        description:
+          'Remove a single stored value by its key. This example shows how to use `storage.delete()` to remove specific data entries while preserving other stored values, ideal for selective data cleanup or removing outdated information.',
+      },
+      {
+        codeblock: generateCodeBlockForStorageApi(
+          'Get all stored entries',
           'entries',
         ),
+        description:
+          'Retrieve all key-value pairs stored by your extension. This example demonstrates using `storage.entries()` to access all stored data at once, useful for data migration, debugging, or displaying all saved preferences.',
+      },
+      {
+        codeblock: generateCodeBlockForStorageApi(
+          'Retrieve a stored value',
+          'get',
+        ),
+        description:
+          'Get a specific value from storage using its key. This example shows how to use `storage.get()` to retrieve previously saved data with automatic JSON deserialization and type safety, ideal for loading user preferences or cached information.',
+      },
+      {
+        codeblock: generateCodeBlockForStorageApi(
+          'Save a value to storage',
+          'set',
+        ),
+        description:
+          'Store a value persistently using a key. This example demonstrates using `storage.set()` to save data with automatic JSON serialization, enabling you to persist user preferences, cache data, or maintain state across sessions.',
       },
     ],
   },

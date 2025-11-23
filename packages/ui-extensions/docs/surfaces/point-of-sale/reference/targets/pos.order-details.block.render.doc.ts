@@ -9,10 +9,12 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `api.action.presentModal()` for more complex order operations.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Block',
+      'Add an order details block',
       'targets',
       'pos-order-details-block-render',
     ),
+    description:
+      'Display custom information within the order details screen as a persistent block. This example shows how to create blocks that show supplementary order data like fulfillment status, tracking numbers, or custom analytics with interactive elements that can launch modal workflows.',
   },
   category: 'Targets',
   subCategory: 'Order details',

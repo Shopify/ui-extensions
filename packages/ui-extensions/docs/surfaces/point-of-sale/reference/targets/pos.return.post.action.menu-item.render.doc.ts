@@ -9,10 +9,12 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target can access the order identifier through the Order API to perform return-specific operations. Menu items typically invoke `api.action.presentModal()` to launch the companion modal for complete post-return workflows.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Menu item',
+      'Create a post-return action menu item',
       'targets',
       'pos-return-post-action-menu-item-render',
     ),
+    description:
+      'Add an interactive menu item to the post-return action menu for operations after completing a return. This example shows how to create a menu item that accesses order data and launches modal workflows for tasks like generating return receipts, processing restocking, or collecting feedback.',
   },
   category: 'Targets',
   subCategory: 'Post-return',

@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'pin-pad-default.png',
     codeblock: {
-      title: 'Validation',
+      title: 'Validate a PIN securely',
       tabs: [
         {
           code: '../examples/pinpad/validation.ts',
@@ -28,22 +28,10 @@ const data: ReferenceEntityTemplateSchema = {
         },
       ],
     },
+    description:
+      'Collect and validate PINs securely using a numeric keypad interface. This example demonstrates a PinPad with an `onPinSubmit` callback that validates entered PINs asynchronously. The validation function receives an array of numbers representing the entered digits and returns a Promise that resolves to `PinValidationResult` (either `"accept"` or `"reject"`). In this example, the validation simulates a 1-second async check against a test PIN sequence [1, 2, 3, 4, 5, 6]. The component masks digits for security, provides haptic feedback, and supports error states for invalid PINs—ideal for payment authorization or staff access workflows.',
   },
   subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'example',
-      title: 'Validating a PIN Example',
-      sectionContent: `
-This code defines a function onPinSubmit that simulates the validation of a Personal Identification Number (PIN). The function takes an array of numbers as input, representing the PIN entered by a user.
-
-The function returns a Promise that resolves with a PinValidationResult, which can be either 'accept' or 'reject'. The Promise simulates an asynchronous operation using setTimeout with a delay of 1 second.
-
-This code simulates an asynchronous operation using the setTimeout callback. The code checks if the entered PIN matches the sequence [1, 2, 3, 4, 5, 6]. If the entered PIN matches this sequence, the Promise resolves with 'accept'; otherwise, it resolves with 'reject'.
-
-This function can be used to simulate PIN validation in a system where the correct PIN is [1, 2, 3, 4, 5, 6].
-`,
-    },
     {
       type: 'Generic',
       anchorLink: 'guidelines',

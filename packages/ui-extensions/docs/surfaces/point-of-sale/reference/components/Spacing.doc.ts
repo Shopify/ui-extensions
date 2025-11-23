@@ -24,7 +24,13 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'spacing-thumbnail.png',
   defaultExample: {
     image: 'spacing-default.png',
-    codeblock: generateCodeBlock('Spacing', 'spacing', 'default.example'),
+    codeblock: generateCodeBlock(
+      'Use consistent spacing values',
+      'spacing',
+      'default.example',
+    ),
+    description:
+      'Apply consistent spacing patterns using design system tokens. This example demonstrates using predefined spacing constants instead of hardcoded pixel values, ensuring visual consistency that automatically adapts to design system changes across different screen sizes.',
   },
 };
 

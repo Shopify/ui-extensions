@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {CUSTOM_DATA} from '../helpers/helper.docs';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
@@ -20,6 +21,15 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   type: 'Target',
   definitions: [CUSTOM_DATA('CashTrackingSessionCompleteData')],
+  defaultExample: {
+    codeblock: generateCodeBlock(
+      'Track cash session closures',
+      'targets',
+      'pos-cash-tracking-session-complete-event-observe',
+    ),
+    description:
+      'Subscribe to cash tracking session completion events to generate end-of-shift reports and reconcile cash handling. This example demonstrates logging session closures with session ID, opening time, and closing time, enabling audit trails, compliance notifications, and comprehensive cash management tracking.',
+  },
 };
 
 export default data;

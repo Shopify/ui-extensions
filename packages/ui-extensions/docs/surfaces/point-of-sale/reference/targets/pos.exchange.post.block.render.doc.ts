@@ -9,10 +9,12 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target appear as persistent blocks within the post-exchange interface and support interactive elements that can launch modal workflows using `api.action.presentModal()` for more complex post-exchange operations.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Block',
+      'Add a post-exchange block',
       'targets',
       'pos-exchange-post-block-render',
     ),
+    description:
+      'Display custom information within the post-exchange screen as a persistent block. This example shows how to create blocks that show supplementary exchange data like completion status, payment adjustments, or follow-up workflows with interactive elements.',
   },
   category: 'Targets',
   subCategory: 'Post-exchange',

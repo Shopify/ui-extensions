@@ -28,7 +28,12 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'section-thumbnail.png',
   defaultExample: {
     image: 'section-default.png',
-    codeblock: generateCodeBlockForComponent('Section', 'default.example'),
+    codeblock: generateCodeBlockForComponent(
+      'Group related content',
+      'default.example',
+    ),
+    description:
+      'Organize content into clearly-defined thematic areas using sections. This example demonstrates grouping related content with titles and optional actions, creating visual boundaries and structured layouts that help merchants navigate complex interfaces.',
   },
 };
 

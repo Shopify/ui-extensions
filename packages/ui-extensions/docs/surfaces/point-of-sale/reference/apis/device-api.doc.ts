@@ -21,25 +21,29 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Device API.',
+    description:
+      'Learn how to access device information and adapt your extension based on hardware characteristics.',
     examples: [
       {
         codeblock: generateCodeBlockForDeviceApi(
-          'Retrieve name of the device.',
-          'name',
-        ),
-      },
-      {
-        codeblock: generateCodeBlockForDeviceApi(
-          'Retrieve the ID of the device.',
-          'device-id',
-        ),
-      },
-      {
-        codeblock: generateCodeBlockForDeviceApi(
-          'Check if device is a tablet.',
+          'Check if the device is a tablet',
           'tablet',
         ),
+        description:
+          'Check whether the extension is running on a tablet form factor. This example uses the `isTablet` property to determine the device type, allowing you to adapt layouts, adjust component sizing, or enable tablet-specific features for larger screen experiences.',
+      },
+      {
+        codeblock: generateCodeBlockForDeviceApi(
+          'Get the device ID',
+          'device-id',
+        ),
+        description:
+          'Retrieve the unique identifier for the device running your extension. This example accesses the device ID, enabling device-specific tracking, settings synchronization, or associating actions with specific POS terminals for audit trails and analytics.',
+      },
+      {
+        codeblock: generateCodeBlockForDeviceApi('Get the device name', 'name'),
+        description:
+          "Retrieve the human-readable name of the device running your extension. This example accesses the device's name, which can be useful for debugging, analytics, device-specific customization, or displaying device information to staff members.",
       },
     ],
   },

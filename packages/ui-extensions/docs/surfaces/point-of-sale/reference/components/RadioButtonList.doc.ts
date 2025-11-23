@@ -21,10 +21,12 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'radio-button-list-default.png',
     codeblock: generateCodeBlock(
-      'RadioButtonList',
+      'Select one option from a list',
       'radio-button-list',
       'default.example',
     ),
+    description:
+      'Enable single selection from multiple options using radio buttons. This example demonstrates a RadioButtonList that presents exclusive choices with clear visual indication of the selected option, ideal for settings, preferences, or any scenario requiring one choice from several options.',
   },
 };
 

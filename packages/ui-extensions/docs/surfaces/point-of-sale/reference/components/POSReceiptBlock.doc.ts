@@ -35,9 +35,11 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'pos-receipt-block-default.png',
     codeblock: generateCodeBlockForPOSReceiptBlock(
-      'Render a POSReceiptBlock in POS receipts',
+      'Add content to a receipt',
       'default.example',
     ),
+    description:
+      'Display custom content on POS receipts using a structured block container. This example shows how to group text and QR codes within receipt extensions, providing structured content for printed or digital receipts with proper formatting and layout.',
   },
 };
 
