@@ -33,8 +33,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'choicelist-default.png',
+    description:
+      'Present multiple options for single or multiple selections using a `ChoiceList` component. This example shows a basic choice list with radio button semantics for single selection.',
     codeblock: {
-      title: 'Code',
+      title: 'Create a choice list for selections',
       tabs: [
         {
           code: './examples/default.html',
@@ -45,27 +47,30 @@ const data: ReferenceEntityTemplateSchema = {
   },
   related: [],
   examples: {
-    description: 'ChoiceList usage patterns',
+    description:
+      'Learn how to handle selection events and enable multiple selection modes.',
     examples: [
       {
-        description: 'Enable multiple selection mode with controlled values',
+        description:
+          'Subscribe to `onChange` and `onInput` events to respond when merchants select options. This example shows how to handle selection changes and capture user input in real time, enabling dynamic behavior and form validation based on merchant choices.',
         codeblock: {
-          title: 'Multiple selection',
+          title: 'Handle selection events',
           tabs: [
             {
-              code: './examples/multiple-selection.jsx',
+              code: './examples/event-handling.jsx',
               language: 'jsx',
             },
           ],
         },
       },
       {
-        description: 'Handle onChange and onInput events.',
+        description:
+          'Enable multiple selection mode to allow merchants to select multiple options from the list. This example demonstrates using controlled values with the `multiple` property, perfect for filtering interfaces or collecting multiple preferences in forms.',
         codeblock: {
-          title: 'Event handling',
+          title: 'Enable multiple selection mode',
           tabs: [
             {
-              code: './examples/event-handling.jsx',
+              code: './examples/multiple-selection.jsx',
               language: 'jsx',
             },
           ],

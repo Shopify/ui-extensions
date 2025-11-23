@@ -27,8 +27,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'search-field-default.png',
+    description:
+      'Enable search functionality using a `SearchField` component with built-in debouncing. This example shows a basic search field with placeholder text.',
     codeblock: {
-      title: 'Code',
+      title: 'Enable search with a search field',
       tabs: [
         {
           code: './examples/default.html',
@@ -39,12 +41,14 @@ const data: ReferenceEntityTemplateSchema = {
   },
   related: [],
   examples: {
-    description: 'SearchField usage patterns',
+    description:
+      'Learn how to handle search input and implement real-time filtering.',
     examples: [
       {
-        description: 'Handle search input events',
+        description:
+          'Subscribe to search input events to respond when merchants enter search terms. This example demonstrates handling `onChange` and `onInput` events for real-time search functionality, debounced filtering, or triggering search API calls as merchants type their queries.',
         codeblock: {
-          title: 'Event handling',
+          title: 'Handle search input events',
           tabs: [
             {
               code: './examples/event-handling.jsx',

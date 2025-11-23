@@ -20,13 +20,16 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   examples: {
-    description: 'Examples of using the Customer API.',
+    description:
+      'Learn how to access customer information in customer detail contexts.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForCustomerApi(
-          'Retrieve the ID of the customer.',
+          'Display the customer ID',
           'id',
         ),
+        description:
+          'Access the unique identifier of the current customer in a customer detail action context. This example shows how to use `shopify.customer.id` to retrieve the customer ID, which can be used for personalization, fetching additional customer data, or building customer-specific features.',
       },
     ],
   },

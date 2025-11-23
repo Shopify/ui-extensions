@@ -22,13 +22,16 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of receiving updates from the Scanner API',
+    description:
+      'Learn how to handle barcode and QR code scans and access scanner information.',
     examples: [
       {
         codeblock: generateCodeBlockForScannerApi(
-          'Conditional scanner source rendering example',
+          'Respond to scan events based on scanner source',
           'conditional-scanner-example',
         ),
+        description:
+          'Subscribe to scan events and adapt behavior based on the scanner source. This example shows how to use `shopify.scanner.subscribe()` to receive scan events and check `shopify.scanner.source` to determine which scanner type was used (camera, external scanner, or embedded hardware), allowing you to customize handling based on the scanning method.',
       },
     ],
   },

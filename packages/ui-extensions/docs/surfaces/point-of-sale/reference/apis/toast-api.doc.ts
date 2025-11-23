@@ -21,13 +21,16 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Toast API',
+    description:
+      'Learn how to display temporary notification messages for user feedback.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForToastApi(
-          'Display a Toast component from the tile',
+          'Display a toast notification from a tile',
           'show',
         ),
+        description:
+          "Show a temporary notification message to provide user feedback. This example demonstrates using `shopify.toast.show()` to display a brief, non-intrusive message that automatically disappears after a specified duration, useful for confirmations, status updates, or success messages that don't require user interaction.",
       },
     ],
   },

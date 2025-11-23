@@ -9,13 +9,15 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Return Post Block',
+      'Create a post-return information block',
       'targets',
       'pos-return-post-block-render',
     ),
+    description:
+      'Add a custom information section to the post-return screen for displaying return details or status. This example shows how to create a block that provides supplementary information after completing a return, with interactive elements that can launch modal workflows.',
   },
   category: 'Targets',
-  subCategory: 'Block',
+  subCategory: 'Post-return',
   isVisualComponent: false,
   related: [
     {

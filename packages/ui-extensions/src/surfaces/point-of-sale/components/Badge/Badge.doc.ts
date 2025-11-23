@@ -20,8 +20,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Titles and text',
   defaultExample: {
     image: 'badge-default.png',
+    description:
+      'Display status information using a `Badge` component with customizable tone and content. This example shows a basic badge with a tone property to indicate status through color.',
     codeblock: {
-      title: 'Code',
+      title: 'Display status information with a badge',
       tabs: [
         {
           code: './examples/default.html',

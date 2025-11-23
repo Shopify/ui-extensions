@@ -32,8 +32,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Structure',
   defaultExample: {
     image: 'modal-default.png',
+    description:
+      'Display focused content in an overlay using a `Modal` component that requires merchant attention. This example shows a basic modal with header, content area, and action buttons.',
     codeblock: {
-      title: 'Code',
+      title: 'Display content in a modal overlay',
       tabs: [
         {
           code: './examples/default.html',

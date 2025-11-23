@@ -32,8 +32,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'number-field-default.png',
+    description:
+      'Capture numeric input using a `NumberField` component with built-in validation and optional stepper controls. This example shows a basic number field with label and numeric validation.',
     codeblock: {
-      title: 'Code',
+      title: 'Capture numeric input with a number field',
       tabs: [
         {
           code: './examples/default.html',
@@ -44,13 +46,14 @@ const data: ReferenceEntityTemplateSchema = {
   },
   related: [],
   examples: {
-    description: 'NumberField usage patterns',
+    description:
+      'Learn how to add stepper controls, set constraints, and configure keyboard layouts.',
     examples: [
       {
         description:
-          'Use controls for increment/decrement buttons and set min/max constraints',
+          'Enable stepper controls with increment and decrement buttons and set min/max constraints to limit valid input ranges. This example demonstrates using the `controls` property with `min` and `max` values to create bounded numeric inputs with visual stepper controls, ideal for quantity selection or limited-range numeric entry.',
         codeblock: {
-          title: 'Controls and constraints',
+          title: 'Add stepper controls and constraints',
           tabs: [
             {
               code: './examples/controls-constraints.jsx',
@@ -61,9 +64,9 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Specify inputMode for decimal or numeric keyboard layouts',
+          'Configure the keyboard layout by specifying `inputMode` for decimal or numeric entry. This example shows how to use the `inputMode` property to display appropriate mobile keyboards—numeric for integers or decimal for numbers with fractional parts—improving data entry speed and accuracy.',
         codeblock: {
-          title: 'Input modes',
+          title: 'Configure keyboard input modes',
           tabs: [
             {
               code: './examples/input-mode.jsx',

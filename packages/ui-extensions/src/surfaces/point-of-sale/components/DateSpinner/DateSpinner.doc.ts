@@ -26,8 +26,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'date-spinner-default.png',
+    description:
+      'Enable compact date selection using a `DateSpinner` component with scrollable columns for month, day, and year. This example shows a basic date spinner for space-constrained layouts.',
     codeblock: {
-      title: 'Code',
+      title: 'Select dates with a spinner',
       tabs: [
         {
           code: './examples/default.html',
@@ -38,12 +40,14 @@ const data: ReferenceEntityTemplateSchema = {
   },
   related: [],
   examples: {
-    description: 'DateSpinner usage patterns',
+    description:
+      'Learn how to control spinner visibility and handle date selection events.',
     examples: [
       {
-        description: 'Show and hide DateSpinner using button commands',
+        description:
+          'Control `DateSpinner` visibility programmatically using the command system with `show` and `hide` methods. This example demonstrates using button commands to display or dismiss the spinner picker, enabling custom trigger patterns for date selection in constrained layouts.',
         codeblock: {
-          title: 'Command system',
+          title: 'Control spinner visibility',
           tabs: [
             {
               code: './examples/command-system.jsx',
@@ -53,9 +57,10 @@ const data: ReferenceEntityTemplateSchema = {
         },
       },
       {
-        description: 'Handle date selection events',
+        description:
+          'Subscribe to date selection events to respond when merchants pick a date from the spinner columns. This example shows how to handle `onChange` events to capture selected dates, enabling validation, scheduling logic, or dynamic updates based on the chosen date.',
         codeblock: {
-          title: 'Event handling',
+          title: 'Handle date selection events',
           tabs: [
             {
               code: './examples/event-handling.jsx',

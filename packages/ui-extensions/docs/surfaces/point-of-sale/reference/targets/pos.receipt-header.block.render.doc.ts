@@ -10,13 +10,15 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Receipt Header Block',
+      'Create a receipt header block',
       'targets',
       'pos-receipt-header-block-render',
     ),
+    description:
+      'Add a custom section to the header of printed receipts for branding or important information. This example shows how to create a header block that displays text content optimized for print formatting, useful for store branding, promotional messages, or important notices at the top of receipts.',
   },
   category: 'Targets',
-  subCategory: 'Block',
+  subCategory: 'Receipt',
   isVisualComponent: false,
   related: [],
   type: 'Target',

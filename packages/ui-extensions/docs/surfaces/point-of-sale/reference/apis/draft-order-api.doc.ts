@@ -22,13 +22,16 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   examples: {
-    description: 'Examples of using the Draft Order API.',
+    description:
+      'Learn how to access draft order information in draft order detail contexts.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForDraftOrderApi(
-          'Retrieve the ID of the draft order.',
+          'Display the draft order ID',
           'id',
         ),
+        description:
+          'Access the unique identifier of the current draft order in a draft order detail action context. This example shows how to use `shopify.draftOrder.id` to retrieve the draft order ID, which can be used for tracking, fetching additional order data, or implementing draft order-specific workflows.',
       },
     ],
   },

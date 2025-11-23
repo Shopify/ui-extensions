@@ -23,13 +23,16 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Connectivity API',
+    description:
+      'Learn how to monitor Internet connectivity status and respond to network changes.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForConnectivityApi(
-          'Subscribe to connectivity changes.',
+          'Monitor Internet connectivity status',
           'subscribe',
         ),
+        description:
+          'Subscribe to connectivity state changes to build network-aware extensions that respond to connectivity changes. This example shows how to use `shopify.connectivity.subscribe()` to receive real-time notifications when the device goes online or offline, allowing you to adapt your UI or disable features when Internet access is unavailable.',
       },
     ],
   },

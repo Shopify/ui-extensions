@@ -26,8 +26,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Actions',
   defaultExample: {
     image: 'button-default.png',
+    description:
+      'Trigger actions using a `Button` component with customizable visual styles and tones. This example shows a basic button with text content.',
     codeblock: {
-      title: 'Code',
+      title: 'Trigger actions with a button',
       tabs: [
         {
           code: './examples/default.html',

@@ -26,8 +26,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Structure',
   defaultExample: {
     image: 'section-default.png',
+    description:
+      'Group related content using a `Section` component with automatic heading level management. This example shows a basic section with a heading and content area.',
     codeblock: {
-      title: 'Code',
+      title: 'Group related content into sections',
       tabs: [
         {
           code: './examples/default.html',

@@ -26,8 +26,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Actions',
   defaultExample: {
     image: 'clickable-default.png',
+    description:
+      'Make any content interactive using a `Clickable` component wrapper without imposing visual styling. This example shows how to create custom interactive elements while maintaining full control over appearance.',
     codeblock: {
-      title: 'Code',
+      title: 'Make content clickable',
       tabs: [
         {
           code: './examples/default.html',

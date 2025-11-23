@@ -9,13 +9,15 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Block',
+      'Create an order details information block',
       'targets',
       'pos-order-details-block-render',
     ),
+    description:
+      'Add a custom information section to the order details screen for displaying supplementary order data. This example shows how to create a block that provides additional order information, tracking details, or order-specific status alongside standard order details.',
   },
   category: 'Targets',
-  subCategory: 'Block',
+  subCategory: 'Order details',
   isVisualComponent: false,
   related: [
     {

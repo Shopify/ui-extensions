@@ -21,8 +21,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Structure',
   defaultExample: {
     image: 'scrollbox-default.png',
+    description:
+      'Create scrollable content areas using a `ScrollBox` component for content that exceeds container bounds. This example shows a basic scrollable area with customizable dimensions.',
     codeblock: {
-      title: 'Code',
+      title: 'Create a scrollable content area',
       tabs: [
         {
           code: './examples/default.html',

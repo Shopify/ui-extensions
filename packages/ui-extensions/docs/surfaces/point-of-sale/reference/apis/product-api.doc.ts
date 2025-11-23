@@ -20,13 +20,16 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   examples: {
-    description: 'Examples of using the Product API.',
+    description:
+      'Learn how to access product information in product detail contexts.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForProductApi(
-          'Retrieve the ID of the product.',
+          'Display the product ID',
           'id',
         ),
+        description:
+          'Access the unique identifier of the current product in a product detail action context. This example shows how to use `shopify.product.id` to retrieve the product ID, which can be used for fetching additional product data, analytics, or implementing product-specific features and workflows.',
       },
     ],
   },

@@ -9,13 +9,15 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target appear as persistent blocks within the post-purchase interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-purchase operations.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Block',
+      'Create a post-purchase information block',
       'targets',
       'pos-purchase-post-block-render',
     ),
+    description:
+      'Add a custom information section to the post-purchase screen for displaying order details or status. This example shows how to create a block that provides supplementary information after completing a sale, with interactive elements that can launch modal workflows.',
   },
   category: 'Targets',
-  subCategory: 'Block',
+  subCategory: 'Post-purchase',
   isVisualComponent: false,
   related: [
     {

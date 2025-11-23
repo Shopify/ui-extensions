@@ -21,13 +21,16 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Session API',
+    description:
+      'Learn how to access session information and generate authentication tokens for secure API calls.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForSessionApi(
-          'Retrieve the current session data',
+          'Access session data and generate authentication tokens',
           'token',
         ),
+        description:
+          'Retrieve current session information and generate secure authentication tokens for backend API calls. This example shows how to access shop details, user information, and location data through `shopify.session`, and use `shopify.session.getSessionToken()` to generate tokens for authenticated requests to your backend services.',
       },
     ],
   },

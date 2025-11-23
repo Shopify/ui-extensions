@@ -27,8 +27,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Structure',
   defaultExample: {
     image: 'page-default.png',
+    description:
+      'Structure full-screen views using a `Page` component with built-in header and content layouts. This example shows a basic page with title and main content area.',
     codeblock: {
-      title: 'Code',
+      title: 'Structure a page layout',
       tabs: [
         {
           code: './examples/default.html',

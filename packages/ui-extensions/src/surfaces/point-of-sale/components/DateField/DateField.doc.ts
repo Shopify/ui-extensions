@@ -27,8 +27,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'date-field-default.png',
+    description:
+      'Capture date input using a `DateField` component with built-in validation and picker integration. This example shows a basic date field with label and placeholder text.',
     codeblock: {
-      title: 'Code',
+      title: 'Capture date input with a date field',
       tabs: [
         {
           code: './examples/default.html',
@@ -39,12 +41,14 @@ const data: ReferenceEntityTemplateSchema = {
   },
   related: [],
   examples: {
-    description: 'DateField usage patterns',
+    description:
+      'Learn how to handle date selection events and validate date input.',
     examples: [
       {
-        description: 'Handle date input events',
+        description:
+          'Subscribe to date input events to respond when merchants select or enter dates. This example shows how to handle `onChange` events to capture date selections, enabling real-time validation, date range checks, or dynamic scheduling behavior based on merchant input.',
         codeblock: {
-          title: 'Event handling',
+          title: 'Handle date selection events',
           tabs: [
             {
               code: './examples/event-handling.jsx',

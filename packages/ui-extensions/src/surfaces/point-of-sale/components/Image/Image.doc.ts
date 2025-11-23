@@ -21,8 +21,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Media',
   defaultExample: {
     image: 'image-default.png',
+    description:
+      'Display visual content using an `Image` component with automatic loading optimization and error handling. This example shows a basic image with source URL and alt text for accessibility.',
     codeblock: {
-      title: 'Code',
+      title: 'Display an image',
       tabs: [
         {
           code: './examples/default.html',

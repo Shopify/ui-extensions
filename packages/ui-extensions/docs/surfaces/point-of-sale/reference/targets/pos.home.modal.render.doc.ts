@@ -8,13 +8,15 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Modal',
+      'Create a full-screen modal for a smart grid tile',
       'targets',
       'pos-home-modal-render',
     ),
+    description:
+      'Build a complete workflow experience launched from a smart grid tile. This example demonstrates creating a full-screen modal with navigation, multiple screens, and interactive components for sophisticated workflows that require more space than the tile interface provides.',
   },
   category: 'Targets',
-  subCategory: 'Tile',
+  subCategory: 'Smart grid',
   isVisualComponent: false,
   related: [
     {

@@ -21,13 +21,16 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the PinPad API',
+    description:
+      'Learn how to display secure PIN entry interfaces and handle PIN validation.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForToastApi(
-          'Display a PinPad and validate the PIN',
+          'Display a PIN pad and validate user input',
           'validation',
         ),
+        description:
+          'Present a secure PIN pad interface to collect and validate user PINs for authentication or verification. This example shows how to use `shopify.pinPad.show()` to display a PIN entry modal with customizable options, handle the entered PIN securely, and process the result for secure authentication workflows.',
       },
     ],
   },

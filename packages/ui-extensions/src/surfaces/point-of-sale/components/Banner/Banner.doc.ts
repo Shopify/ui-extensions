@@ -26,8 +26,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Feedback',
   defaultExample: {
     image: 'banner-default.png',
+    description:
+      'Display important messages using a `Banner` component with automatic color coding based on message severity. This example shows a basic banner with a heading and descriptive text.',
     codeblock: {
-      title: 'Code',
+      title: 'Display important messages with a banner',
       tabs: [
         {
           code: './examples/default.html',
