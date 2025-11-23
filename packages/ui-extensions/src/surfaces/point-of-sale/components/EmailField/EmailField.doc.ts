@@ -33,8 +33,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'email-field-default.png',
+    description:
+      'Capture email address input using an `EmailField` component with built-in email validation. This example shows a basic email field with label and automatic format validation.',
     codeblock: {
-      title: 'Code',
+      title: 'Capture email addresses with an email field',
       tabs: [
         {
           code: './examples/default.html',
@@ -45,15 +47,17 @@ const data: ReferenceEntityTemplateSchema = {
   },
   related: [],
   examples: {
-    description: 'EmailField usage patterns',
+    description:
+      'Learn how to add accessory buttons and handle email input events.',
     examples: [
       {
-        description: 'Handle email input events',
+        description:
+          'Add action buttons to the email field using the accessory slot for quick actions like clearing input or verifying email addresses. This example shows how to use `s-button` and `s-clickable` components in the accessory slot, providing inline functionality within the email input context.',
         codeblock: {
-          title: 'Event handling',
+          title: 'Add accessory buttons',
           tabs: [
             {
-              code: './examples/event-handling.jsx',
+              code: './examples/accessory-slot.jsx',
               language: 'jsx',
             },
           ],
@@ -61,12 +65,12 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Add action buttons using the accessory slot. Only s-button and s-clickable are supported',
+          'Subscribe to email input events to respond when merchants enter email addresses. This example demonstrates handling `onChange`, `onInput`, `onFocus`, and `onBlur` events for real-time email validation, duplicate checking, or autosave functionality.',
         codeblock: {
-          title: 'Accessory slot',
+          title: 'Handle email input events',
           tabs: [
             {
-              code: './examples/accessory-slot.jsx',
+              code: './examples/event-handling.jsx',
               language: 'jsx',
             },
           ],

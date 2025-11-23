@@ -21,8 +21,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Structure',
   defaultExample: {
     image: 'divider-default.png',
+    description:
+      'Create visual separation between content sections using a `Divider` component. This example shows a horizontal divider that provides clear section boundaries.',
     codeblock: {
-      title: 'Code',
+      title: 'Separate content sections with a divider',
       tabs: [
         {
           code: './examples/default.html',

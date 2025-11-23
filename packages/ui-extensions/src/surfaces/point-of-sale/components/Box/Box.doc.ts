@@ -20,8 +20,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Structure',
   defaultExample: {
     image: 'box-default.png',
+    description:
+      'Create flexible layouts using the `Box` component with configurable spacing, borders, and background colors. This example demonstrates a basic box container with padding and styling.',
     codeblock: {
-      title: 'Code',
+      title: 'Create a container with a box',
       tabs: [
         {
           code: './examples/default.html',

@@ -9,13 +9,15 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target can access the order identifier through the Order API to perform purchase-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-purchase workflows.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Menu item',
+      'Create a post-purchase action menu item',
       'targets',
       'pos-purchase-post-action-menu-item-render',
     ),
+    description:
+      'Add an interactive menu item to the post-purchase action menu for operations after completing a sale. This example shows how to create a menu item that accesses order data and launches modal workflows for tasks like sending receipts, collecting feedback, or follow-up processes.',
   },
   category: 'Targets',
-  subCategory: 'Action',
+  subCategory: 'Post-purchase',
   isVisualComponent: false,
   related: [
     {

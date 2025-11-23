@@ -21,13 +21,16 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Locale API',
+    description:
+      'Learn how to access locale information and respond to language changes.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForLocaleApi(
-          'Subscribe to locale changes.',
+          'Monitor and respond to locale changes',
           'subscribe',
         ),
+        description:
+          "Subscribe to locale changes to monitor the merchant's language settings in real time. This example shows how to use `shopify.locale.subscribe()` and `shopify.locale.ianaCode` to detect when the merchant changes their language preference, enabling dynamic content localization and internationalized user experiences.",
       },
     ],
   },

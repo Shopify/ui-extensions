@@ -21,8 +21,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Titles and text',
   defaultExample: {
     image: 'heading-default.png',
+    description:
+      'Create hierarchical titles using a `Heading` component that adjusts levels automatically based on nesting. This example shows a basic heading with automatic level management.',
     codeblock: {
-      title: 'Code',
+      title: 'Display hierarchical headings',
       tabs: [
         {
           code: './examples/default.html',

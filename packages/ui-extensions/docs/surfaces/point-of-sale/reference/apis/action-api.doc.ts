@@ -22,19 +22,24 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Action API.',
+    description:
+      'Learn how to launch modal workflows from menu items, tiles, and blocks.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForActionApi(
-          'Present a modal from post purchase.',
+          'Launch a modal from a menu item',
           'present-modal',
         ),
+        description:
+          'Present a full-screen modal from menu item actions in detail screens. This example shows how to use `shopify.action.presentModal()` to launch a modal workflow from post-purchase, order details, or other action menu item contexts, enabling complex multi-step operations.',
       },
       {
         codeblock: generateJsxCodeBlockForActionApi(
-          'Present a modal from smart grid.',
+          'Launch a modal from a smart grid tile',
           'present-modal-tile',
         ),
+        description:
+          'Present a full-screen modal from smart grid tiles on the POS home screen. This example demonstrates using `shopify.action.presentModal()` to launch modal workflows from tile interactions, perfect for high-frequency tasks that require additional UI beyond the tile itself.',
       },
     ],
   },

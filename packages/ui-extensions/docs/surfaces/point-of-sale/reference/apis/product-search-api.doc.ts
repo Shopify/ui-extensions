@@ -23,43 +23,56 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Cart API',
+    description:
+      'Learn how to search for products, fetch product details, and retrieve variants.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForProductSearchApi(
-          'Search for products with a search bar',
-          'search-products',
-        ),
-      },
-      {
-        codeblock: generateJsxCodeBlockForProductSearchApi(
-          'Fetch a specific product with a product ID',
+          'Fetch a single product by ID',
           'fetch-product-with-id',
         ),
+        description:
+          'Retrieve detailed information for a specific product using its ID. This example demonstrates using `shopify.productSearch.fetchById()` to get complete product data including variants, pricing, and inventory information for a single product.',
       },
       {
         codeblock: generateJsxCodeBlockForProductSearchApi(
-          'Fetch multiple products by specifying product IDs',
-          'fetch-products-with-ids',
-        ),
-      },
-      {
-        codeblock: generateJsxCodeBlockForProductSearchApi(
-          'Fetch a specific product variant with a variant ID',
+          'Fetch a single variant by ID',
           'fetch-product-variant-with-id',
         ),
+        description:
+          'Retrieve detailed information for a specific product variant using its ID. This example demonstrates using `shopify.productSearch.fetchVariantById()` to get variant-specific data including pricing, inventory, and options for a particular variant.',
       },
       {
         codeblock: generateJsxCodeBlockForProductSearchApi(
-          'Fetch multiple product variants by specifying variant IDs',
+          'Fetch multiple products by IDs',
+          'fetch-products-with-ids',
+        ),
+        description:
+          'Retrieve detailed information for multiple products in a single request using their IDs. This example shows how to use `shopify.productSearch.fetchByIds()` to efficiently fetch data for multiple products at once, improving performance when displaying product lists or related items.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForProductSearchApi(
+          'Fetch multiple variants by IDs',
           'fetch-product-variants-with-ids',
         ),
+        description:
+          'Retrieve detailed information for multiple product variants in a single request using their IDs. This example shows how to use `shopify.productSearch.fetchVariantsByIds()` to efficiently fetch data for multiple variants at once, useful for displaying variant lists or comparisons.',
       },
       {
         codeblock: generateJsxCodeBlockForProductSearchApi(
-          'Fetch a page of product variants with a specific product ID',
+          'Fetch paginated variants for a product',
           'fetch-paginated-product-variants-with-product-id',
         ),
+        description:
+          'Retrieve product variants with pagination support for products with many variants. This example demonstrates using `shopify.productSearch.fetchVariantsByProductId()` with pagination parameters to load variants page by page, improving performance and user experience for products with large variant catalogs.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForProductSearchApi(
+          'Search for products using a search bar',
+          'search-products',
+        ),
+        description:
+          'Search for products using text queries with real-time results. This example shows how to use `shopify.productSearch.search()` to perform text-based product searches with pagination support, allowing users to find products by name, SKU, or other searchable attributes.',
       },
     ],
   },

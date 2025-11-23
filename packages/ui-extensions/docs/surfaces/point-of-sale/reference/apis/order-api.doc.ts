@@ -22,13 +22,16 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Order API.',
+    description:
+      'Learn how to access order information in order detail contexts.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForOrderApi(
-          'Retrieve the ID of the order.',
+          'Display the order ID',
           'id',
         ),
+        description:
+          'Access the unique identifier of the current order in an order detail action context. This example shows how to use `shopify.order.id` to retrieve the order ID, which can be used for fetching additional order data, tracking, or implementing order-specific functionality and post-purchase workflows.',
       },
     ],
   },

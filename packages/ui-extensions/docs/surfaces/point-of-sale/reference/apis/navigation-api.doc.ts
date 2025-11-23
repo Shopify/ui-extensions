@@ -30,25 +30,32 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Navigation API',
+    description:
+      'Learn how to manage navigation between screens and pass state between views.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForNavigationApi(
-          'Navigate between two screens',
+          'Navigate between extension screens',
           'two-screen',
         ),
+        description:
+          'Create multi-screen workflows within your extension using web-standard navigation. This example demonstrates using `navigation.navigate()` to move between different screens in your modal interface, enabling complex multi-step processes with proper navigation history management.',
       },
       {
         codeblock: generateJsxCodeBlockForNavigationApi(
-          'Navigate to a POS native screen with uri',
+          'Navigate to POS native screens',
           'native-screen',
         ),
+        description:
+          'Navigate to native POS screens from your extension using deep link URIs. This example shows how to use `navigation.navigate()` with POS screen URIs to transition to core POS functionality like cart, product details, or order screens, enabling seamless integration between your extension and native POS features.',
       },
       {
         codeblock: generateJsxCodeBlockForNavigationApi(
-          'Navigate to a screen with state parameters',
+          'Pass state between screens',
           'state-params',
         ),
+        description:
+          'Share data between screens using navigation state parameters. This example demonstrates using the `state` option in `navigation.navigate()` to pass data when navigating, enabling screens to receive context and maintain workflow continuity across navigation transitions.',
       },
     ],
   },

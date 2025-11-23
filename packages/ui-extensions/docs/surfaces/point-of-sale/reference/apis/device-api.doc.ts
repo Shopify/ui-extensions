@@ -21,25 +21,32 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Device API.',
+    description:
+      'Learn how to access device information and adapt to different device types.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForDeviceApi(
-          'Retrieve name of the device.',
-          'name',
-        ),
-      },
-      {
-        codeblock: generateJsxCodeBlockForDeviceApi(
-          'Retrieve the ID of the device.',
-          'device-id',
-        ),
-      },
-      {
-        codeblock: generateJsxCodeBlockForDeviceApi(
-          'Check if device is a tablet.',
+          'Detect if the device is a tablet',
           'tablet',
         ),
+        description:
+          'Check if the POS device is running on tablet hardware to adapt your UI accordingly. This example shows how to use `shopify.device.isTablet()` to determine the device form factor, enabling responsive layouts and touch-optimized interfaces for tablet devices versus traditional POS terminals.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForDeviceApi(
+          'Display the device ID',
+          'device-id',
+        ),
+        description:
+          'Access the unique identifier of the current POS device. This example demonstrates using `shopify.device.id` to retrieve the device ID, enabling device-specific configurations, analytics tracking, or multi-device coordination features.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForDeviceApi(
+          'Display the device name',
+          'name',
+        ),
+        description:
+          'Access the friendly name of the current POS device. This example shows how to use `shopify.device.name` to retrieve the device name configured in POS settings, useful for device identification, multi-device workflows, or displaying location-specific information.',
       },
     ],
   },

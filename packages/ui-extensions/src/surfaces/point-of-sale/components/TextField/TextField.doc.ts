@@ -32,8 +32,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'text-field-default.png',
+    description:
+      'Capture single-line text input using a `TextField` component with validation support. This example shows a basic text field with label and placeholder text.',
     codeblock: {
-      title: 'Code',
+      title: 'Capture text input with a text field',
       tabs: [
         {
           code: './examples/default.html',
@@ -44,26 +46,14 @@ const data: ReferenceEntityTemplateSchema = {
   },
   related: [],
   examples: {
-    description: 'Advanced usage patterns for TextField component',
+    description:
+      'Learn how to add accessory buttons, configure validation properties, and handle events.',
     examples: [
       {
         description:
-          'Handle TextField events: onInput, onFocus, onBlur, and onChange.',
+          'Add action buttons to the text field using the accessory slot for quick actions like clearing text or submitting input. This example shows how to use `s-button` and `s-clickable` components with text content in the accessory slot, enabling inline actions without leaving the input context.',
         codeblock: {
-          title: 'Event handling',
-          tabs: [
-            {
-              code: './examples/event-handling.jsx',
-              language: 'jsx',
-            },
-          ],
-        },
-      },
-      {
-        description:
-          'Add action buttons using the accessory slot. Only `s-button` and `s-clickable` are supported, with text content only',
-        codeblock: {
-          title: 'Accessory slot',
+          title: 'Add accessory buttons',
           tabs: [
             {
               code: './examples/accessory-slot.jsx',
@@ -74,12 +64,25 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Common TextField props for validation, constraints, and user guidance.',
+          'Configure common `TextField` properties for validation, character limits, and user guidance. This example demonstrates using props like `maxlength`, `required`, `helperText`, and `error` to create a well-guided input experience with proper validation feedback.',
         codeblock: {
-          title: 'Common props',
+          title: 'Configure validation and guidance',
           tabs: [
             {
               code: './examples/common-props.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Subscribe to `TextField` events including `onInput`, `onFocus`, `onBlur`, and `onChange` to respond to user interactions. This example shows how to handle different input events for real-time validation, autosave functionality, or dynamic form behavior.',
+        codeblock: {
+          title: 'Handle input events',
+          tabs: [
+            {
+              code: './examples/event-handling.jsx',
               language: 'jsx',
             },
           ],

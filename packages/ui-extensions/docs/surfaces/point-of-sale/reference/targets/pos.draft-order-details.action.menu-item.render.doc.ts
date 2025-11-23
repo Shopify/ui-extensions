@@ -9,13 +9,15 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete draft order workflows.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Menu item',
+      'Create a draft order details action menu item',
       'targets',
       'pos-draft-order-details-action-menu-item',
     ),
+    description:
+      'Add an interactive menu item to the draft order details action menu for draft order-specific operations. This example shows how to create a menu item that accesses draft order data and launches modal workflows for tasks like sending invoices, updating payment status, or custom workflow processes.',
   },
   category: 'Targets',
-  subCategory: 'Action',
+  subCategory: 'Draft order details',
   isVisualComponent: false,
   related: [
     {

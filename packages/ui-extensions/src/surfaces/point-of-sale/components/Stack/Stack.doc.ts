@@ -21,8 +21,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Structure',
   defaultExample: {
     image: 'stack-default.png',
+    description:
+      'Organize elements horizontally or vertically using a `Stack` component with automatic spacing. This example shows a basic stack with gap spacing between child elements.',
     codeblock: {
-      title: 'Code',
+      title: 'Organize elements with a stack',
       tabs: [
         {
           code: './examples/default.html',

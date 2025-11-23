@@ -32,8 +32,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'text-area-default.png',
+    description:
+      'Capture multi-line text input using a `TextArea` component with resizable height. This example shows a basic text area with label for longer content entry.',
     codeblock: {
-      title: 'Code',
+      title: 'Capture multi-line text with a text area',
       tabs: [
         {
           code: './examples/default.html',
@@ -44,12 +46,27 @@ const data: ReferenceEntityTemplateSchema = {
   },
   related: [],
   examples: {
-    description: 'TextArea usage patterns',
+    description:
+      'Learn how to add accessory buttons, configure visible rows, and handle events.',
     examples: [
       {
-        description: 'Configure visible rows and character limits',
+        description:
+          'Add action buttons to the text area using the accessory slot for quick actions like clearing text or formatting content. This example shows how to use `s-button` and `s-clickable` components in the accessory slot, providing inline functionality within the multi-line input context.',
         codeblock: {
-          title: 'Rows configuration',
+          title: 'Add accessory buttons',
+          tabs: [
+            {
+              code: './examples/accessory-slot.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Configure the number of visible rows and character limits to control text area size and input length. This example shows how to use the `rows` property to set initial height and `maxlength` to limit content, ensuring appropriate sizing for different types of text input.',
+        codeblock: {
+          title: 'Configure rows and character limits',
           tabs: [
             {
               code: './examples/rows-configuration.jsx',
@@ -59,25 +76,13 @@ const data: ReferenceEntityTemplateSchema = {
         },
       },
       {
-        description: 'Handle text area events',
+        description:
+          'Subscribe to text area events to respond when merchants enter or modify text. This example demonstrates handling `onChange`, `onInput`, `onFocus`, and `onBlur` events for autosave functionality, character counting, or real-time validation of longer text content.',
         codeblock: {
-          title: 'Event handling',
+          title: 'Handle text input events',
           tabs: [
             {
               code: './examples/event-handling.jsx',
-              language: 'jsx',
-            },
-          ],
-        },
-      },
-      {
-        description:
-          'Add action buttons using the accessory slot. Only s-button and s-clickable are supported',
-        codeblock: {
-          title: 'Accessory slot',
-          tabs: [
-            {
-              code: './examples/accessory-slot.jsx',
               language: 'jsx',
             },
           ],

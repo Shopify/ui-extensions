@@ -9,13 +9,15 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex draft order operations.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Block',
+      'Create a draft order details information block',
       'targets',
       'pos-draft-order-details-block-render',
     ),
+    description:
+      'Add a custom information section to the draft order details screen for displaying supplementary draft order data. This example shows how to create a block that provides additional draft order information, payment status, or custom order notes alongside standard draft order details.',
   },
   category: 'Targets',
-  subCategory: 'Block',
+  subCategory: 'Draft order details',
   isVisualComponent: false,
   related: [
     {

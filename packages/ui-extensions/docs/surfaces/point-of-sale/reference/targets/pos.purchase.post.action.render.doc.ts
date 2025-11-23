@@ -9,13 +9,15 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Action',
+      'Create a post-purchase action modal',
       'targets',
       'pos-purchase-post-action-render',
     ),
+    description:
+      'Build a full-screen modal workflow launched from a post-purchase action menu item. This example demonstrates creating complex post-purchase experiences with multi-step processes, forms, and order data access for operations like receipt customization or customer engagement.',
   },
   category: 'Targets',
-  subCategory: 'Action',
+  subCategory: 'Post-purchase',
   isVisualComponent: false,
   related: [
     {

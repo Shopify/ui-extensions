@@ -26,8 +26,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'date-picker-default.png',
+    description:
+      'Enable visual date selection using a `DatePicker` component with a calendar interface. This example shows a basic date picker with month view and date selection.',
     codeblock: {
-      title: 'Code',
+      title: 'Select dates with a calendar picker',
       tabs: [
         {
           code: './examples/default.html',
@@ -38,12 +40,14 @@ const data: ReferenceEntityTemplateSchema = {
   },
   related: [],
   examples: {
-    description: 'DatePicker usage patterns',
+    description:
+      'Learn how to control picker visibility and handle date selection events.',
     examples: [
       {
-        description: 'Show and hide DatePicker using button commands',
+        description:
+          'Control `DatePicker` visibility programmatically using the command system with `show` and `hide` methods. This example demonstrates using button commands to display or dismiss the calendar picker, enabling custom trigger patterns for date selection workflows.',
         codeblock: {
-          title: 'Command system',
+          title: 'Control picker visibility',
           tabs: [
             {
               code: './examples/command-system.jsx',
@@ -53,9 +57,10 @@ const data: ReferenceEntityTemplateSchema = {
         },
       },
       {
-        description: 'Handle date selection events',
+        description:
+          'Subscribe to date selection events to respond when merchants pick a date from the calendar. This example shows how to handle `onChange` events to capture selected dates, enabling validation, scheduling logic, or dynamic updates based on the chosen date.',
         codeblock: {
-          title: 'Event handling',
+          title: 'Handle date selection events',
           tabs: [
             {
               code: './examples/event-handling.jsx',

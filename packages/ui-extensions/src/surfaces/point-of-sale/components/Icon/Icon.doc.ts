@@ -20,8 +20,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Media',
   defaultExample: {
     image: 'icon-default.png',
+    description:
+      'Display standardized visual symbols using an `Icon` component from the POS icon catalog. This example shows a basic icon with proper sizing and accessibility.',
     codeblock: {
-      title: 'Code',
+      title: 'Display icons from the POS catalog',
       tabs: [
         {
           code: './examples/default.html',

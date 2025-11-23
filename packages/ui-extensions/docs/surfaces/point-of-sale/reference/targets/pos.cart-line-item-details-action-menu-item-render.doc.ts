@@ -9,13 +9,15 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Action Menu Item',
+      'Create a cart line item action menu item',
       'targets',
       'pos-cart-line-item-details-action-menu-item-render',
     ),
+    description:
+      'Add an interactive menu item to the cart line item action menu for item-specific operations. This example shows how to create a menu item that accesses line item data and launches modal workflows for tasks like applying discounts, adding custom properties, or verification workflows.',
   },
   category: 'Targets',
-  subCategory: 'Action',
+  subCategory: 'Cart line item',
   isVisualComponent: false,
   related: [
     {

@@ -27,8 +27,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'time-field-default.png',
+    description:
+      'Capture time input using a `TimeField` component with locale-aware formatting. This example shows a basic time field with label and time validation.',
     codeblock: {
-      title: 'Code',
+      title: 'Capture time input with a time field',
       tabs: [
         {
           code: './examples/default.html',
@@ -39,12 +41,14 @@ const data: ReferenceEntityTemplateSchema = {
   },
   related: [],
   examples: {
-    description: 'TimeField usage patterns',
+    description:
+      'Learn how to handle time selection events and validate time input.',
     examples: [
       {
-        description: 'Handle time input events',
+        description:
+          'Subscribe to time input events to respond when merchants select or enter times. This example shows how to handle `onChange` events to capture time selections, enabling real-time validation, time range checks, or dynamic scheduling behavior based on merchant input.',
         codeblock: {
-          title: 'Event handling',
+          title: 'Handle time selection events',
           tabs: [
             {
               code: './examples/event-handling.jsx',

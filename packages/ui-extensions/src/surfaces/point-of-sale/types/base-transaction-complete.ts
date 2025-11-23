@@ -57,4 +57,8 @@ export interface BaseTransactionComplete {
    * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `"2024-05-15T14:30:00Z"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems.
    */
   executedAt: string;
+  /**
+   * The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.
+   */
+  tipAmount?: Money;
 }

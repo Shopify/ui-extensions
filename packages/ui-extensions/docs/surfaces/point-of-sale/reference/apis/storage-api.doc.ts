@@ -22,37 +22,48 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   examples: {
-    description: 'Examples of using the Storage API',
+    description:
+      'Learn how to store and retrieve persistent data that persists across sessions.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForStorageApi(
-          'Getting a single value from storage',
-          'get',
-        ),
-      },
-      {
-        codeblock: generateJsxCodeBlockForStorageApi(
-          'Setting a single value in storage',
-          'set',
-        ),
-      },
-      {
-        codeblock: generateJsxCodeBlockForStorageApi(
-          'Deleting a single value from storage',
-          'delete',
-        ),
-      },
-      {
-        codeblock: generateJsxCodeBlockForStorageApi(
-          'Clear all entries for an extension from storage',
+          'Clear all stored values',
           'clear',
         ),
+        description:
+          'Remove all stored data for your extension from persistent storage. This example demonstrates using `shopify.storage.clear()` to delete all key-value pairs stored by your extension, useful for reset functionality or clearing user preferences.',
       },
       {
         codeblock: generateJsxCodeBlockForStorageApi(
-          'Retrieve all entries for an extension from storage',
+          'Remove a value from storage',
+          'delete',
+        ),
+        description:
+          'Delete a specific value from storage using its key. This example shows how to use `shopify.storage.delete()` to remove a stored item, permanently clearing the data associated with that key while leaving other stored values intact.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForStorageApi(
+          'Retrieve all stored entries',
           'entries',
         ),
+        description:
+          'Fetch all key-value pairs stored by your extension. This example shows how to use `shopify.storage.entries()` to retrieve an array of all stored items, useful for displaying saved data, performing bulk operations, or exporting stored information.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForStorageApi(
+          'Retrieve a value from storage',
+          'get',
+        ),
+        description:
+          'Read a stored value using its key from persistent storage. This example shows how to use `shopify.storage.get()` to retrieve a previously saved value, which returns the stored data with automatic JSON deserialization or undefined if the key does not exist.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForStorageApi(
+          'Save a value to storage',
+          'set',
+        ),
+        description:
+          'Store a value in persistent storage using a key-value pair. This example demonstrates using `shopify.storage.set()` to save data that will persist across user sessions, device restarts, and extension reloads, with automatic JSON serialization of the value.',
       },
     ],
   },

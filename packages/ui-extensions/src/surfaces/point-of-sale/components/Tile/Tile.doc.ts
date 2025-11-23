@@ -26,8 +26,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Actions',
   defaultExample: {
     image: 'tile-default.png',
+    description:
+      'Create interactive smart grid shortcuts using a `Tile` component with customizable title, subtitle, and badge. This example shows a basic tile for the POS smart grid.',
     codeblock: {
-      title: 'Code',
+      title: 'Create a smart grid tile',
       tabs: [
         {
           code: './examples/default.html',

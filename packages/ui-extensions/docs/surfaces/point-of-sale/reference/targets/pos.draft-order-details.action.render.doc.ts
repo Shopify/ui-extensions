@@ -9,13 +9,15 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target have access to draft order data through the Draft Order API and support workflows with multiple screens, navigation, and interactive components.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Draft order details action',
+      'Create a draft order details action modal',
       'targets',
       'pos-draft-order-details-action',
     ),
+    description:
+      'Build a full-screen modal workflow launched from a draft order details action menu item. This example demonstrates creating draft order-specific experiences with multi-step processes, forms, and draft order data access for operations like payment processing or order modifications.',
   },
   category: 'Targets',
-  subCategory: 'Action',
+  subCategory: 'Draft order details',
   isVisualComponent: false,
   related: [
     {

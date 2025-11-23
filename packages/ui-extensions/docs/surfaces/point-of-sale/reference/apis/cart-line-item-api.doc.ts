@@ -22,13 +22,16 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   examples: {
-    description: 'Examples of using the Cart Line Item API.',
+    description:
+      'Learn how to access line item information in cart line item contexts.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForCartLineItemApi(
-          'Retrieve the ID of the cart line item.',
+          'Display the cart line item ID',
           'id',
         ),
+        description:
+          'Access the unique identifier of the current cart line item in line item detail contexts. This example shows how to use `shopify.cartLineItem.id` to retrieve the line item ID, which can be used for modifying the item, applying discounts, or implementing item-specific functionality.',
       },
     ],
   },

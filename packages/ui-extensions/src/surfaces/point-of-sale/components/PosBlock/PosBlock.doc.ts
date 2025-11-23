@@ -33,8 +33,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Structure',
   defaultExample: {
     image: 'pos-block-default.png',
+    description:
+      'Create structured content blocks using a `PosBlock` component with optional action buttons. This example shows a basic block with content and an action button.',
     codeblock: {
-      title: 'Code',
+      title: 'Create a content block with an action button',
       tabs: [
         {
           code: './examples/default.html',

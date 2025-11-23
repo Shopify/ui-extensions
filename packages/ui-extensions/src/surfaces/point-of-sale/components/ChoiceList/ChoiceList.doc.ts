@@ -33,8 +33,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'choicelist-default.png',
+    description:
+      'Present multiple options for single or multiple selections using a `ChoiceList` component. This example shows a basic choice list with radio button semantics for single selection.',
     codeblock: {
-      title: 'Code',
+      title: 'Create a choice list for selections',
       tabs: [
         {
           code: './examples/default.html',
@@ -45,12 +47,14 @@ const data: ReferenceEntityTemplateSchema = {
   },
   related: [],
   examples: {
-    description: 'ChoiceList usage patterns',
+    description:
+      'Learn how to enable multiple selection modes and handle selection events.',
     examples: [
       {
-        description: 'Enable multiple selection mode with controlled values',
+        description:
+          'Enable multiple selection mode to allow merchants to select multiple options from the list. This example demonstrates using controlled values with the `multiple` property, perfect for filtering interfaces or collecting multiple preferences in forms.',
         codeblock: {
-          title: 'Multiple selection',
+          title: 'Enable multiple selection mode',
           tabs: [
             {
               code: './examples/multiple-selection.jsx',
@@ -60,9 +64,10 @@ const data: ReferenceEntityTemplateSchema = {
         },
       },
       {
-        description: 'Handle onChange and onInput events.',
+        description:
+          'Subscribe to `onChange` and `onInput` events to respond when merchants select options. This example shows how to handle selection changes and capture user input in real time, enabling dynamic behavior and form validation based on merchant choices.',
         codeblock: {
-          title: 'Event handling',
+          title: 'Handle selection events',
           tabs: [
             {
               code: './examples/event-handling.jsx',

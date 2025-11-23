@@ -22,8 +22,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Titles and text',
   defaultExample: {
     image: 'text-default.png',
+    description:
+      'Display text content using a `Text` component with customizable visual styles and tones. This example shows basic text with appropriate emphasis and hierarchy.',
     codeblock: {
-      title: 'Code',
+      title: 'Display text with visual styles',
       tabs: [
         {
           code: './examples/default.html',

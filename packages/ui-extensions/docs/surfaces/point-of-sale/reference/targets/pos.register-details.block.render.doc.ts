@@ -9,13 +9,15 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target appear as persistent blocks within the register details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex register operations.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Register Details Block',
+      'Create a register details information block',
       'targets',
       'pos-register-details-block-render',
     ),
+    description:
+      'Add a custom information section to the register details screen for displaying supplementary register data. This example shows how to create a block that provides additional register information, cash status, or shift details alongside standard register details.',
   },
   category: 'Targets',
-  subCategory: 'Block',
+  subCategory: 'Register details',
   isVisualComponent: false,
   related: [
     {

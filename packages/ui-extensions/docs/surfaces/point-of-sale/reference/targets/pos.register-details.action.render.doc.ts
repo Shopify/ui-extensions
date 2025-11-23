@@ -9,13 +9,15 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nExtensions at this target have access to cash drawer functionality through the Cash Drawer API and support workflows with multiple screens, navigation, and interactive components.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Register Details Action',
+      'Create a register details action modal',
       'targets',
       'pos-register-details-action-render',
     ),
+    description:
+      'Build a full-screen modal workflow launched from a register details action menu item. This example demonstrates creating register-specific experiences with multi-step processes, forms, and register data access for operations like cash drawer management or shift reports.',
   },
   category: 'Targets',
-  subCategory: 'Action',
+  subCategory: 'Register details',
   isVisualComponent: false,
   related: [
     {

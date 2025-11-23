@@ -24,13 +24,16 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Cash Drawer API',
+    description:
+      'Learn how to programmatically control cash drawer hardware operations.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForCashDrawerApi(
-          'Open the cash drawer',
+          'Trigger the cash drawer to open',
           'default.example',
         ),
+        description:
+          'Open the cash drawer programmatically for manual cash handling or custom workflows. This example shows how to use `shopify.cashDrawer.open()` to trigger the connected cash drawer hardware, useful for no-sale transactions, manual cash operations, or register management tasks that require direct cash access.',
       },
     ],
   },
