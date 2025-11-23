@@ -48,21 +48,8 @@ const data: ReferenceEntityTemplateSchema = {
   related: [],
   examples: {
     description:
-      'Learn how to handle selection events and enable multiple selection modes.',
+      'Learn how to enable multiple selection modes and handle selection events.',
     examples: [
-      {
-        description:
-          'Subscribe to `onChange` and `onInput` events to respond when merchants select options. This example shows how to handle selection changes and capture user input in real time, enabling dynamic behavior and form validation based on merchant choices.',
-        codeblock: {
-          title: 'Handle selection events',
-          tabs: [
-            {
-              code: './examples/event-handling.jsx',
-              language: 'jsx',
-            },
-          ],
-        },
-      },
       {
         description:
           'Enable multiple selection mode to allow merchants to select multiple options from the list. This example demonstrates using controlled values with the `multiple` property, perfect for filtering interfaces or collecting multiple preferences in forms.',
@@ -71,6 +58,19 @@ const data: ReferenceEntityTemplateSchema = {
           tabs: [
             {
               code: './examples/multiple-selection.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Subscribe to `onChange` and `onInput` events to respond when merchants select options. This example shows how to handle selection changes and capture user input in real time, enabling dynamic behavior and form validation based on merchant choices.',
+        codeblock: {
+          title: 'Handle selection events',
+          tabs: [
+            {
+              code: './examples/event-handling.jsx',
               language: 'jsx',
             },
           ],

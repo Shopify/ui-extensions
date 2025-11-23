@@ -28,22 +28,6 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForProductSearchApi(
-          'Fetch a single product by ID',
-          'fetch-product-with-id',
-        ),
-        description:
-          'Retrieve detailed information for a specific product using its ID. This example demonstrates using `shopify.productSearch.fetchById()` to get complete product data including variants, pricing, and inventory information for a single product.',
-      },
-      {
-        codeblock: generateJsxCodeBlockForProductSearchApi(
-          'Fetch a single variant by ID',
-          'fetch-product-variant-with-id',
-        ),
-        description:
-          'Retrieve detailed information for a specific product variant using its ID. This example demonstrates using `shopify.productSearch.fetchVariantById()` to get variant-specific data including pricing, inventory, and options for a particular variant.',
-      },
-      {
-        codeblock: generateJsxCodeBlockForProductSearchApi(
           'Fetch multiple products by IDs',
           'fetch-products-with-ids',
         ),
@@ -65,6 +49,22 @@ const data: ReferenceEntityTemplateSchema = {
         ),
         description:
           'Retrieve product variants with pagination support for products with many variants. This example demonstrates using `shopify.productSearch.fetchVariantsByProductId()` with pagination parameters to load variants page by page, improving performance and user experience for products with large variant catalogs.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForProductSearchApi(
+          'Fetch a single product by ID',
+          'fetch-product-with-id',
+        ),
+        description:
+          'Retrieve detailed information for a specific product using its ID. This example demonstrates using `shopify.productSearch.fetchById()` to get complete product data including variants, pricing, and inventory information for a single product.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForProductSearchApi(
+          'Fetch a single variant by ID',
+          'fetch-product-variant-with-id',
+        ),
+        description:
+          'Retrieve detailed information for a specific product variant using its ID. This example demonstrates using `shopify.productSearch.fetchVariantById()` to get variant-specific data including pricing, inventory, and options for a particular variant.',
       },
       {
         codeblock: generateJsxCodeBlockForProductSearchApi(

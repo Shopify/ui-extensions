@@ -47,7 +47,7 @@ const data: ReferenceEntityTemplateSchema = {
   related: [],
   examples: {
     description:
-      'Learn how to add accessory buttons, handle events, and configure visible rows.',
+      'Learn how to add accessory buttons, configure visible rows, and handle events.',
     examples: [
       {
         description:
@@ -64,12 +64,12 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Subscribe to text area events to respond when merchants enter or modify text. This example demonstrates handling `onChange`, `onInput`, `onFocus`, and `onBlur` events for autosave functionality, character counting, or real-time validation of longer text content.',
+          'Configure the number of visible rows and character limits to control text area size and input length. This example shows how to use the `rows` property to set initial height and `maxlength` to limit content, ensuring appropriate sizing for different types of text input.',
         codeblock: {
-          title: 'Handle text input events',
+          title: 'Configure rows and character limits',
           tabs: [
             {
-              code: './examples/event-handling.jsx',
+              code: './examples/rows-configuration.jsx',
               language: 'jsx',
             },
           ],
@@ -77,12 +77,12 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Configure the number of visible rows and character limits to control text area size and input length. This example shows how to use the `rows` property to set initial height and `maxlength` to limit content, ensuring appropriate sizing for different types of text input.',
+          'Subscribe to text area events to respond when merchants enter or modify text. This example demonstrates handling `onChange`, `onInput`, `onFocus`, and `onBlur` events for autosave functionality, character counting, or real-time validation of longer text content.',
         codeblock: {
-          title: 'Configure rows and character limits',
+          title: 'Handle text input events',
           tabs: [
             {
-              code: './examples/rows-configuration.jsx',
+              code: './examples/event-handling.jsx',
               language: 'jsx',
             },
           ],
