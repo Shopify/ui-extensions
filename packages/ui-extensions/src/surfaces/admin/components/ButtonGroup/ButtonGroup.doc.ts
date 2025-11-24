@@ -6,6 +6,23 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/buttongroup.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Accessing related actions in a consistent layout
+- Making secondary actions visible alongside primary actions`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Group together related calls to action
+- Avoid too many actions that may cause uncertainty
+- Consider how buttons will work on small screens`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',
