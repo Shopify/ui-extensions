@@ -19,7 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DatePickerProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Forms',
   related: [],
   thumbnail: 'date-picker-thumbnail.png',
   defaultExample: {

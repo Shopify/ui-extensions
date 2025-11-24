@@ -15,7 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ListProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   related: [],
   thumbnail: 'list-thumbnail.png',
   defaultExample: {

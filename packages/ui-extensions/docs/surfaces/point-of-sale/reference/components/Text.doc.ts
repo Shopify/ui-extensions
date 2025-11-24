@@ -25,7 +25,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ColorType',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   related: [],
   thumbnail: 'text-thumbnail.png',
   defaultExample: {

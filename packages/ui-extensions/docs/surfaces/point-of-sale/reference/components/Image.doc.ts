@@ -15,7 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ImageProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Media and visuals',
   related: [],
   defaultExample: {
     image: 'image-default.png',

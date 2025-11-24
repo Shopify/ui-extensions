@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
       'Create an interactive tile on the POS home screen smart grid. This example demonstrates rendering a tile that appears on the home screen, providing merchants with a quick access point to launch your extension modal for daily workflows and high-frequency actions.',
   },
   category: 'Targets',
-  subCategory: 'Smart grid',
+  subCategory: 'Home screen (smart grid)',
   isVisualComponent: false,
   related: [],
   type: 'Target',

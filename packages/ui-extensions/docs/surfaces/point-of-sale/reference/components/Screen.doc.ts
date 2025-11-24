@@ -28,7 +28,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'SecondaryActionProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   related: [],
   thumbnail: 'screen-thumbnail.png',
   defaultExample: {

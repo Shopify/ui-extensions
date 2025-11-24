@@ -27,7 +27,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AutoCapitalizationType',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Forms',
   related: [],
   thumbnail: 'formatted-text-field-thumbnail.png',
   defaultExample: {
