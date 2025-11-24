@@ -19,7 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'POSBlockRowProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   related: [],
   defaultExample: {
     image: 'pos-block-row-default.png',

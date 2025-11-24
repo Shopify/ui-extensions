@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
       'Add an interactive tile to the POS home screen smart grid for high-frequency actions. This example shows how to create a persistent tile that can dynamically update its enabled state and badge values, providing merchants with quick access to daily workflows and status displays.',
   },
   category: 'Targets',
-  subCategory: 'Smart grid',
+  subCategory: 'Home screen (smart grid)',
   isVisualComponent: false,
   related: [],
   type: 'Target',

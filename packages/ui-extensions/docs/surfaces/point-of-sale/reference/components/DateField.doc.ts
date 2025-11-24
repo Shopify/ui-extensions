@@ -15,7 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DateFieldProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Forms',
   related: [],
   defaultExample: {
     image: 'date-field-default.png',

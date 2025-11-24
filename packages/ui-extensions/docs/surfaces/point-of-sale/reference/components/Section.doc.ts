@@ -23,7 +23,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'SectionHeaderAction',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   related: [],
   thumbnail: 'section-thumbnail.png',
   defaultExample: {

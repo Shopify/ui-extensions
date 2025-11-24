@@ -20,7 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ActionItemProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Actions',
   related: [],
   thumbnail: 'action-item-thumbnail.png',
   defaultExample: {

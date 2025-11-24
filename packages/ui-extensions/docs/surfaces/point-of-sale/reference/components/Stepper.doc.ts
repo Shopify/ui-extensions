@@ -15,7 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'StepperProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Forms',
   related: [],
   thumbnail: 'stepper-thumbnail.png',
   defaultExample: {
