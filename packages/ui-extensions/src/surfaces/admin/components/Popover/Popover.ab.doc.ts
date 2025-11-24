@@ -6,6 +6,29 @@ const data: AdminReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/popover.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Usage',
+      type: 'Generic' as const,
+      anchorLink: 'usage',
+      sectionContent: `Popovers are closed by default and should be triggered by a button using the \`commandFor\` attribute. The button's \`commandFor\` value should match the popover's \`id\`. The popover's position is determined by the button that triggers it.`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use for secondary or less important information and actions since they're hidden until triggered
+- Contain actions that share a relationship to each other
+- Be triggered by a clearly labeled default or tertiary button`,
+    },
+    {
+      title: 'Content guidelines',
+      type: 'Generic' as const,
+      anchorLink: 'content-guidelines',
+      sectionContent: `- Use clear action verbs in the {verb}+{noun} format (e.g., "Create order", "Edit HTML")
+- Avoid unnecessary words like "the", "an", or "a"`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

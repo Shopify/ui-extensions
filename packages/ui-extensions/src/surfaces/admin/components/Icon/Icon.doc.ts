@@ -13,6 +13,22 @@ const data: AdminReferenceEntityTemplateSchema = {
       sectionContent:
         'Search and filter across all the available icons: {{ICON_PREVIEW_IFRAME}}',
     },
+    {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Orienting themselves and understanding available actions
+- Quickly identifying information and recognizing patterns`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `Icons should:
+- Use the same icon consistently for the same meaning
+- Appear next to related text labels
+- Only be used when their meaning is clear`,
+    },
   ],
   definitions: [
     {

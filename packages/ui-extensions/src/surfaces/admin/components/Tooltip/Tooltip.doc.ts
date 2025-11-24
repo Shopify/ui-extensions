@@ -5,6 +5,25 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/tooltip.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Usage',
+      type: 'Generic' as const,
+      anchorLink: 'usage',
+      sectionContent: `Tooltips only render on devices with a pointer and do not display on mobile devices.`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use for additional, non-essential context only
+- Provide for icon-only buttons or buttons with keyboard shortcuts
+- Keep content concise and in sentence case
+- Don't use for critical information, errors, or blocking messages
+- Don't contain any links or buttons
+- Use sparingly. If you need many tooltips, clarify the design and language instead`,
+    },
+  ],
   definitions: [
     {
       title: 'Slots',
