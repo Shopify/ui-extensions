@@ -26,4 +26,13 @@
   window.addEventListener('theme-mode-changed', () => {
     sendThemeToIframe();
   });
+
+  // Re-send theme when page is restored from cache
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      sendThemeToIframe();
+    }
+  });
+
+  sendThemeToIframe();
 })();

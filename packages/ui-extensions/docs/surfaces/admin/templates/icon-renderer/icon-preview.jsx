@@ -1,8 +1,15 @@
 const icons = "__ICON_LIST__";
 
 const styles = `
+  @keyframes reveal-fallback {
+    0% { visibility: hidden; }
+    99% { visibility: hidden; }
+    100% { visibility: visible; }
+  }
+
   html:not([data-theme]) body {
     visibility: hidden;
+    animation: reveal-fallback 300ms forwards;
   }
 
   html {
@@ -77,7 +84,6 @@ const styles = `
     color: var(--text-primary);
     font-size: 14px;
     outline: none;
-    transition: border-color 0.2s;
     box-sizing: border-box;
   }
 
@@ -106,9 +112,7 @@ const styles = `
     border: 1px solid var(--border-icon-item);
     border-radius: 8px;
     box-shadow: 0 2px 0px var(--shadow-icon-item);
-    transition: background-color 0.2s linear, border-color 0.2s linear;
     font-family: "JetBrains Mono", Monaco, Consolas, "Lucida Console", monospace
-  
   }
 
   .icon-item:hover {
@@ -148,7 +152,6 @@ const styles = `
     color: var(--text-primary);
     font-size: 14px;
     cursor: pointer;
-    transition: background 0.2s;
   }
 
   .pagination-button:hover:not(:disabled) {
