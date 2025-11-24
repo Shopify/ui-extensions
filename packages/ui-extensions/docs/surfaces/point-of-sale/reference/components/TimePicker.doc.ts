@@ -31,6 +31,31 @@ const data: ReferenceEntityTemplateSchema = {
     description:
       'Enable time selection using a visual picker interface for improved accuracy. This example demonstrates a TimePicker that provides an intuitive way to select hours and minutes through a touch-friendly interface, reducing input errors and speeding up time selection.',
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Choose appropriate input modes for your platform:** Use \`'inline'\` mode (clock) on Android when users benefit from seeing a clock interface. iOS only supports \`'spinner'\` mode, so design your time selection experience to work well with spinners across all platforms.
+- **Configure time format for Android users:** Use the \`is24Hour\` property to control whether Android devices display times in 24-hour or 12-hour format. Set this based on your target audience's preferences and regional conventions. This property only affects Android devices.
+- **Handle time selection with onChange:** Implement the \`onChange\` callback to capture selected times and update your application state accordingly. This callback receives the selected time string that you can use to update UI or trigger related actions.
+- **Default to current time thoughtfully:** The picker defaults to the current time when no \`selected\` value is provided. If you need a different starting time or want to guide users to a specific time period, explicitly set the \`selected\` property.
+- **Provide clear triggers for showing the picker:** Since visibility is controlled by \`visibleState\`, ensure you have clear UI elements like buttons or field interactions that toggle the picker visibility. Users should understand how to open and close the time picker.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- \`TimePicker\` requires external visibility state management through the \`visibleState\` tuple—automatic show/hide behavior based on field focus is not built-in.
+- The \`inputMode\` property has platform limitations—iOS only supports spinner mode regardless of the \`inputMode\` setting, which may affect cross-platform consistency.
+- The \`is24Hour\` property only affects Android devices—iOS and other platforms use their system-level time format preferences regardless of this setting.
+- The component provides time selection but doesn't include field labels, help text, or error messaging—combine with other UI elements or text components to provide complete form field experiences.
+      `,
+    },
+  ],
 };
 
 export default data;

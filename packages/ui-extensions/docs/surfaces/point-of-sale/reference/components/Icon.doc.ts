@@ -16,22 +16,27 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Components',
-  related: [
-    {
-      name: 'Figma UI Kit',
-      subtitle:
-        'See the Figma UI Kit to get a full list of icons to design your extension',
-      url: 'https://www.figma.com/community/file/1493617217926107705',
-      type: 'star',
-    },
-  ],
+  related: [],
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'guidelines',
-      title: 'Guidelines',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
       sectionContent: `
-- Icons in POS are used in areas where they specifically add clarity and structure to the UI, aiding in creating a deeper understanding of the product and common interaction points nested throughout the experience.`,
+- **Use appropriate sizes for context:** Match icon sizes to their surrounding content and importance. Use \`'s'\` for inline text or secondary actions, \`'m'\` for standard interface elements, \`'l'\` (default) for primary actions, and \`'xl'\` for prominent features or headers.
+- **Apply consistent tones for semantic meaning:** Use tone consistently across your interface to establish clear visual patterns. Apply \`'icon-critical'\` for destructive actions like delete, \`'icon-warning'\` for cautions, \`'icon-success'\` for confirmations, and \`'icon-primary'\` for general interface elements.
+- **Combine icons with text when appropriate:** While icons enhance visual communication, consider pairing them with text labels, especially for complex or less common actions.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Icons are purely decorative and don't support click events or interactive behaviors.
+- The available icon set is predefined and limited to POS-specific symbols—custom icons or external icon libraries aren't supported.
+- Icon appearance and styling are controlled by the POS design system—custom colors, styles, or modifications beyond the provided properties are not available.
+      `,
     },
   ],
   defaultExample: {

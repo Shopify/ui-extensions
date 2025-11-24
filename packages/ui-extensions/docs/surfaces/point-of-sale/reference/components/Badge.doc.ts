@@ -33,27 +33,23 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'guidelines',
-      title: 'Guidelines',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
       sectionContent: `
-- Badges should be positioned as close as possible to the item they’re related to.
-`,
+- **Keep badge text concise and clear:** Badge text should be brief and immediately understandable. Use single words when possible, or short phrases for complex states. Avoid lengthy descriptions that might not fit well within the badge's compact design.
+- **Position badges close to related content:** Place badges near the items they describe to create clear associations. For example, position order status badges next to order numbers, or inventory badges next to product names to maintain visual relationships.
+- **Maintain consistency across similar contexts:** Use the same badge variants and terminology for similar states throughout your POS interface. This helps merchants develop familiarity with your status system and reduces cognitive load when processing information.
+- **Use badges for status, not actions:** Badges are designed to display information and status, not to trigger actions. For interactive elements, use buttons or clickable components instead of badges to maintain clear interaction patterns.
+      `,
     },
     {
       type: 'Generic',
-      anchorLink: 'content-guidelines',
-      title: 'Content guidelines',
+      anchorLink: 'limitations',
+      title: 'Limitations',
       sectionContent: `
-- Be concise. Use a single word to describe the status of an item. 
-- Only use two or three words if you need to describe a complex state, for example "partially fulfilled".
-
-✅ fulfilled
-❌ order fulfilled
-
-Statuses should ideally be written as adjectives:
-
-✅ unpaid
-❌ payment not received
+- Badges aren't interactive elements—they display information but don't respond to user interactions like clicks or taps.
+- The component relies on predefined variants for styling, so custom appearances may require different approaches.
+- Very long text content may be truncated or cause layout issues depending on the container and screen size.
       `,
     },
   ],

@@ -76,6 +76,28 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Handle search results gracefully:** Check for undefined results and empty result sets.
+- **Optimize search performance:** Consider caching frequently accessed product data and implementing debounced search to reduce API calls while users are typing search queries.
+- **Provide relevant search options:** Use appropriate sorting options based on your use case—relevance for user searches, alphabetical for browsing, or recently added for highlighting new products.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Product search results are limited to products available on the current POS device and may not include the complete shop catalog if products aren't synced locally.
+- Bulk operations (\`fetchProductsWithIds\` and \`fetchProductVariantsWithIds\`) are limited to 50 items maximum, with additional IDs automatically removed from requests.
+- Search functionality depends on local product data synchronization and may not reflect real-time inventory or pricing changes until the next sync.
+      `,
+    },
+  ],
 };
 
 export default data;

@@ -99,6 +99,30 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Apply consistent spacing using numeric values:** Use the predefined numeric spacing values (0.5 through 16) to maintain consistency across your interface. Start with 3 or 4 for standard spacing and adjust up or down based on your content hierarchy needs.
+- **Use semantic padding for consistent layouts:** Apply \`paddingVertical\` and \`paddingHorizontal\` using the semantic spacing values (\`HalfPoint\` through \`ExtraLarge\`) to create consistent padding patterns that align with the POS design system.
+- **Use alignment properties for professional layouts:** Use the \`alignment\` property to control cross-axis positioning. Choose \`'flex-start'\` for natural alignment, \`'center'\` for centered layouts, or distribution values like \`'space-between'\` for evenly distributed content.
+- **Control flex behavior strategically:** Use the \`flex\` property to make \`Stack\` components grow or shrink within their containers, and \`flexChildren\` to stretch child elements to fill available cross-axis space when needed.
+- **Manage wrapping behavior appropriately:** Use \`flexWrap\` to control how children behave when they exceed container space. Choose \`'wrap'\` for responsive layouts, \`'nowrap'\` for fixed layouts, or \`'wrap-reverse'\` for specialized arrangements.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Direction is limited to vertical and horizontal orientations—diagonal or complex arrangements require multiple nested \`Stack\` components or alternative layout approaches.
+- Spacing values are predefined numeric constants—custom spacing values outside the provided scale aren't supported to maintain design consistency.
+- Flex behavior follows standard CSS flexbox rules—complex layout requirements may need multiple \`Stack\` components with different configurations for optimal results.
+      `,
+    },
+  ],
 };
 
 export default data;

@@ -62,6 +62,31 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Implement proper loading states:** Use the \`isLoading\` property to provide visual feedback during async operations. Set it to \`true\` when starting data fetching or processing, and \`false\` when operations complete to maintain user awareness.
+- **Handle navigation lifecycle appropriately:** Use \`onNavigate\` for screen initialization, \`onNavigateBack\` for cleanup operations, and \`onReceiveParams\` for handling passed data. Proper lifecycle management ensures smooth transitions and data consistency.
+- **Choose appropriate presentation styles:** Use sheet presentation for focused tasks, modal-style interactions, or when you want to maintain context with the previous screen. Reserve standard presentation for primary navigation flows.
+- **Design meaningful secondary actions:** When adding secondary actions, use clear, action-oriented text and ensure the action is relevant to the current screen's content. Disable actions when they're not applicable using the \`isEnabled\` property.
+- **Override back navigation judiciously:** Use \`overrideNavigateBack\` only when you need to prevent data loss or handle unsaved changes. Most screens should use the default back navigation behavior to maintain consistent user expectations.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Screen components are designed for navigation stack contexts—they can't be used as general layout containers outside of navigation workflows.
+- Only one secondary action is supported for each screen to maintain clean header layouts that don't overwhelm the interface.
+- Screen presentation and styling are controlled by the POS navigation system—custom screen transitions or styling beyond the provided options aren't supported.
+- Navigation parameter handling is limited to the onReceiveParams callback—complex parameter validation or transformation requires custom implementation within the callback.
+      `,
+    },
+  ],
 };
 
 export default data;
