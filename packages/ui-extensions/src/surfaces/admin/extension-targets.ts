@@ -495,6 +495,28 @@ export interface ExtensionTargets {
   >;
 
   /**
+   * TEMPORARY DO NOT COMMIT DO NO COMMIT!!!
+   * Renders Order Routing Rule Configuration on order routing settings.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.settings.internal-local-pickup.render': RenderExtension<
+    OrderRoutingRuleApi<'admin.settings.internal-local-pickup.render'>,
+    FunctionSettingsComponents
+  >;
+
+  /**
+   * TEMPORARY DO NOT COMMIT DO NO COMMIT!!!
+   * Renders Order Routing Rule Configuration on order routing settings.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.settings.internal-local-pickup-location.render': RenderExtension<
+    OrderRoutingRuleApi<'admin.settings.internal-local-pickup-location.render'>,
+    FunctionSettingsComponents
+  >;
+
+  /**
    * Renders Validation Settings within a given validation's add and edit views.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
