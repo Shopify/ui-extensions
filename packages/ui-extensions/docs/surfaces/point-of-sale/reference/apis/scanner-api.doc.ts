@@ -59,6 +59,30 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Manage subscriptions carefully:** Remember that \`RemoteSubscribable\` supports only one subscription at a time. If you need multiple subscriptions, use \`makeStatefulSubscribable\` or manage subscription cleanup to avoid conflicts.
+- **Validate scanned data appropriately:** Validate scanned data before processing, implementing proper error handling for invalid codes, unsupported formats, or scanning errors.
+- **Provide clear scanning feedback:** Give users clear feedback about scan results, including success confirmations, error messages, and guidance when scans fail or produce invalid data.
+- **Adapt to available scanner sources:** Check available scanner sources and adapt your interface accordingly.
+      `,
+      image: 'camera-scanner-best-practice.png',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.
+- \`RemoteSubscribable\` supports only one subscription at a time. Use \`makeStatefulSubscribable\` if you need multiple components to subscribe to scan events simultaneously.
+- Scanning availability depends on device hardware capabilities and may vary between different POS devices and configurations.
+      `,
+    },
+  ],
 };
 
 export default data;

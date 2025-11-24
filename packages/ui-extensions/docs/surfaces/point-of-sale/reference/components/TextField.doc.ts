@@ -31,26 +31,27 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'guidelines',
-      title: 'Guidelines',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
       sectionContent: `
-- When a merchant opens a new form, the first text field should be in a focused state.
-- If the merchant is actively focused in a text field, then the keyboard should come up and the label should move to the top of the field.
-- If focus goes away from the text field, then the keyboard should hide.
-- Text fields always take up the full screen width.
-- Text fields don’t change height. If text entered is longer than the width of the text field, then the oldest text on the left should be hidden to make room.
-- When it makes sense, provide autocomplete options (for example, entering an address).
-    `,
+- **Set initial focus appropriately:** When merchants open a new form, set focus on the first text field automatically to streamline data entry and reduce the number of interactions required to begin input.
+- **Write clear and concise labels:** Write labels in sentence case and keep them brief. Use consistent terminology for similar fields throughout the app to create a predictable and familiar experience for merchants.
+- **Indicate required fields clearly:** When a text field is required for form submission, use the \`required\` property and display a "Required" indicator. Implement validation logic in your \`onChange\` callback to check empty values and display errors.
+- **Provide helpful guidance with helpText and placeholder:** Use \`helpText\` for explain content expectations, formatting requirements, or character limits. Use placeholder text to provide examples of the expected content format or structure.
+- **Support autocomplete when appropriate:** Provide autocomplete options for fields where merchants commonly enter predictable values, such as addresses, product names, or customer information.
+- **Implement character limits appropriately:** Set \`maxLength\` to prevent excessively long input that might cause display or processing issues. Provide feedback about character limits in the \`helpText\`, especially when users are approaching the limit.
+- **Use action buttons for enhanced functionality:** Use the \`action\` property to provide helpful actions like "Clear Field," "Generate Code," or "Use Default." This enhances usability by providing quick access to common text operations.
+      `,
     },
     {
       type: 'Generic',
-      anchorLink: 'content-guidelines',
-      title: 'Content Guidelines',
+      anchorLink: 'limitations',
+      title: 'Limitations',
       sectionContent: `
-- If a text field is required, then it should indicate \`Required\`.
-- Label titles should be brief and written in sentence case.
-- Use the same terms for similar label titles throughout the app.
-    `,
+- \`TextField\` provides single-line text input only—multi-line text entry requires the \`TextArea\` component.
+- The \`required\` property adds semantic meaning only—it doesn't trigger automatic error display or validation, so you must implement validation logic manually.
+- Action buttons are limited to simple press callbacks—complex action workflows require custom implementation or additional components.
+      `,
     },
   ],
 };

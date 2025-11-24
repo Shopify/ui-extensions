@@ -18,12 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   subCategory: 'Smart grid',
   isVisualComponent: false,
-  related: [
-    {
-      name: 'pos.home.modal.render',
-      url: '/docs/api/pos-ui-extensions/targets/pos-home-modal-render',
-    },
-  ],
+  related: [],
   type: 'Target',
 };
 

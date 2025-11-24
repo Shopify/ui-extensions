@@ -211,6 +211,29 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Manage subscriptions properly:** Remember that \`RemoteSubscribable\` supports only one subscription at a time. Use \`makeStatefulSubscribable\` if you need multiple components to subscribe to cart changes simultaneously.
+- **Validate operations before execution:** Check cart editability and validate input data before performing cart operations to prevent errors and provide appropriate user feedback.
+- **Use bulk operations for efficiency:** When performing multiple related operations, use bulk methods like \`bulkSetLineItemDiscounts\` and \`bulkAddLineItemProperties\` for better performance.
+- **Handle errors gracefully:** Implement proper error handling for all cart operations, as they may fail due to inventory constraints, validation errors, or business rule violations.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- \`RemoteSubscribable\` supports only one subscription at a time. Use \`makeStatefulSubscribable\` if you need multiple components to subscribe to cart events simultaneously.
+- Cart operations may fail due to business rules, inventory constraints, or validation errors—always implement appropriate error handling.
+- Some operations require specific preconditions. For example, customer must be present for address operations.
+      `,
+    },
+  ],
 };
 
 export default data;

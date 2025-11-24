@@ -34,6 +34,28 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Use appropriate identifiers:** Distinguish between \`userId\` (authenticated account) and \`staffMemberId\` (pinned staff member) to implement correct permissions and personalization logic.
+- **Implement location-aware features:** Use \`locationId\` information.
+- **Secure backend communication:** Use session tokens exclusively for backend API calls and never expose them in client-side logs or storage. Validate tokens on your backend before processing requests.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Session tokens are only available when the authenticated user has proper app permissions enabled. Staff members who are pinned in but not authenticated can't generate tokens.
+- Session data is read-only and can't be modified through the API. Changes to shop settings, locations, or staff assignments require POS application updates.
+- Session tokens should only be used for communication with your app's configured backend service and can't be used for direct Shopify API calls from the client side.
+      `,
+    },
+  ],
 };
 
 export default data;

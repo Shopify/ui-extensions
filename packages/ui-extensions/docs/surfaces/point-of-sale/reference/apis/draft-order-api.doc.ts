@@ -33,6 +33,26 @@ const data: ReferenceEntityTemplateSchema = {
   },
   category: 'APIs',
   related: [],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Implement draft order-specific features:** Use the draft order context to enable specialized functionality like draft order conversion, customer assignment, or order modification workflows.
+- **Validate draft order access:** Verify that the draft order ID is valid before performing draft order-specific operations or external API calls.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The API provides only basic draft order information—use Shopify APIs or external systems to fetch additional draft order details like line items, totals, or timestamps.
+- Draft order data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+      `,
+    },
+  ],
 };
 
 export default data;

@@ -30,6 +30,30 @@ const data: ReferenceEntityTemplateSchema = {
     description:
       'Display individual rows within a POSBlock container with optional tap interactions. This example demonstrates creating structured content rows that follow POS design specifications, ensuring visual consistency and proper handling of various device sizes and orientations.',
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Organize content logically within rows:** Structure your \`POSBlockRow\` content to be scannable and focused. Each row should represent a discrete piece of information or functionality that users can easily understand and interact with.
+- **Provide visual feedback for interactive rows:** When rows are interactive (have \`onPress\` callbacks), ensure users understand they can be tapped.
+- **Keep row content concise and focused:** Design row content to be easily readable and actionable within the constrained space of a \`POSBlock\`. Focus on the most important information and avoid cluttering rows with excessive detail.
+- **Maintain consistent interaction patterns:** Use similar \`onPress\` behaviors across different \`POSBlockRow\` instances in your extension to create predictable user experiences. Consistent interaction patterns help merchants understand and trust your extension.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- \`POSBlockRow\` can only be used as children of \`POSBlock\` components—it can't be used independently or within other container types.
+- The component's visual styling and layout are controlled by the POS design system—custom row styling beyond content organization isn't supported.
+- Row content is provided through child components rather than direct content properties—organize your row content through component composition.
+- Interactive behavior is limited to the \`onPress\` callback—complex interactions or multiple actions for each row require custom implementation within the row content.
+      `,
+    },
+  ],
 };
 
 export default data;
