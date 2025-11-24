@@ -27,6 +27,12 @@ const data: ReferenceEntityTemplateSchema = {
           'show',
         ),
       },
+      {
+        codeblock: generateJsxCodeBlockForToastApi(
+          'Display a toast notification for a custom duration',
+          'show-with-duration',
+        ),
+      },
     ],
   },
 };

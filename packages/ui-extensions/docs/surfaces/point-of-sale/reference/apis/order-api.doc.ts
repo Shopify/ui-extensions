@@ -38,6 +38,12 @@ The Order API provides an extension with data about the current order.
           'id',
         ),
       },
+      {
+        codeblock: generateJsxCodeBlockForOrderApi(
+          "Retrieve an order's name, ID, and associated customer ID",
+          'order-details',
+        ),
+      },
     ],
   },
 };

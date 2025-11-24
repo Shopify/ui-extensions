@@ -34,8 +34,14 @@ The Scanner API enables an extension to access scanner data and available scanni
     examples: [
       {
         codeblock: generateCodeBlockForScannerApi(
-          'Conditional scanner source rendering example',
+          'Render conditionally based on available scanner sources',
           'conditional-scanner-example',
+        ),
+      },
+      {
+        codeblock: generateCodeBlockForScannerApi(
+          'Subscribe to scanner data events and track scanning history',
+          'scanner-data-subscribe',
         ),
       },
     ],

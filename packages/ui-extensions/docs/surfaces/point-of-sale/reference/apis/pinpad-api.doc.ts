@@ -28,6 +28,12 @@ const data: ReferenceEntityTemplateSchema = {
           'validation',
         ),
       },
+      {
+        codeblock: generateJsxCodeBlockForToastApi(
+          'Configure PinPad options and handle dismissal',
+          'validation-with-options',
+        ),
+      },
     ],
   },
 };

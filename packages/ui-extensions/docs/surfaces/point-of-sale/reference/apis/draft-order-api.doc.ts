@@ -36,6 +36,12 @@ The Draft Order API provides an extension with data about the current draft orde
           'id',
         ),
       },
+      {
+        codeblock: generateJsxCodeBlockForDraftOrderApi(
+          "Retrieve a draft order's name, ID, and associated customer ID",
+          'draft-order-details',
+        ),
+      },
     ],
   },
   category: 'APIs',

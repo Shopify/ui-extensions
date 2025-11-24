@@ -33,6 +33,12 @@ The Product API provides an extension with data about the current Product.
           'id',
         ),
       },
+      {
+        codeblock: generateJsxCodeBlockForProductApi(
+          'Retrieve product and product variant IDs',
+          'product-variant',
+        ),
+      },
     ],
   },
   category: 'APIs',

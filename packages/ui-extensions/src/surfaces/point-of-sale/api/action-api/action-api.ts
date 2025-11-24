@@ -1,8 +1,8 @@
 export interface ActionApiContent {
-  /** Presents the `action-overlay.render` extension target on top of present view.
+  /** Presents the corresponding `.action.render` extension target as a modal overlay.
    *
    * For example: if we are calling presentModal() from pos.purchase.post.action.menu-item.render,
-   * it should present pos.purchase.post.action.render.
+   * it will present pos.purchase.post.action.render.
    */
   presentModal(): void;
 }
