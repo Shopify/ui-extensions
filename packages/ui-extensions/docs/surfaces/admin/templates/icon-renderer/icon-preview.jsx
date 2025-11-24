@@ -182,10 +182,23 @@ const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
 
 const pageSize = isMobile ? 6 : 10;
 
+// Simple fuzzy search - checks if all query chars appear in order
+const fuzzyMatch = (query, text) => {
+  let queryIndex = 0;
+  const lowerQuery = query.toLowerCase();
+  const lowerText = text.toLowerCase();
+
+  for (let i = 0; i < lowerText.length && queryIndex < lowerQuery.length; i++) {
+    if (lowerText[i] === lowerQuery[queryIndex]) {
+      queryIndex++;
+    }
+  }
+
+  return queryIndex === lowerQuery.length;
+};
+
 const filteredIcons = searchQuery
-  ? icons.filter((icon) =>
-      icon.toLowerCase().includes(searchQuery.toLowerCase())
-    )
+  ? icons.filter(icon => fuzzyMatch(searchQuery, icon))
   : icons;
 
 const totalPages = Math.ceil(filteredIcons.length / pageSize);
