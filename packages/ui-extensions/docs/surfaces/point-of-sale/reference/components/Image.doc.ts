@@ -24,6 +24,28 @@ const data: ReferenceEntityTemplateSchema = {
       'Show images within your extension interface with customizable presentation. This example demonstrates rendering images with proper sizing, loading states, and error handling, ideal for showcasing products, illustrating concepts, or providing visual context in POS workflows.',
   },
   thumbnail: 'image-thumbnail.png',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Select the right fill behavior:** Use \`'contain'\` when showing the complete image is important, \`'cover'\` when filling the container is more important than showing the entire image, and \`'stretch'\` only when exact container filling is required regardless of distortion.
+- **Optimize image sources:** Ensure image URLs are properly formatted, properly formatted, and optimized for web delivery. Consider image compression, appropriate file formats, and loading performance when selecting image sources.
+- **Plan for loading states:** The component automatically shows placeholders during loading or when no \`src\` is provided. Design your layouts to accommodate these loading states and ensure they don't negatively impact the user experience.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Images are display-only components and don't support click events or interactive behaviors.
+- Image loading and caching behavior depends on the browser and network conditions—implement proper error handling for better user experience.
+- Large images can impact performance—ensure proper optimization and consider the device capabilities of your target POS hardware.
+      `,
+    },
+  ],
 };
 
 export default data;

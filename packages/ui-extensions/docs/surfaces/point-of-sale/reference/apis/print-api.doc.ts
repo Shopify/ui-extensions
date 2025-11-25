@@ -27,18 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'APIs',
-  related: [
-    {
-      name: 'PrintPreview Component',
-      subtitle: 'Preview documents before printing',
-      url: '/api/pos-ui-extensions/components/printpreview',
-    },
-    {
-      name: 'Build a Print Extension',
-      subtitle: 'Learn how to implement printing',
-      url: '/docs/api/pos-ui-extensions/examples/print-extension',
-    },
-  ],
+  related: [],
   examples: {
     description:
       'Learn how to trigger print operations for documents, receipts, and reports using various file formats and URL types.',
@@ -71,6 +60,28 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Handle printing errors gracefully:** Implement proper error handling for print operations, including network failures, unsupported document types, or printer connectivity issues.
+- **Optimize documents for printing:** Design your printable documents with appropriate sizing, margins, and formatting that work well with printers and standard paper sizes.
+- **Provide user feedback:** Give users clear feedback about print operations, including loading states, success confirmations, and error messages when printing fails.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- PDF printing on Android devices requires downloading the file and using an external application, which may interrupt the user workflow.
+- Print operations depend on device printer connectivity and configuration, which may not be available in all POS setups.
+- Document formatting and appearance may vary depending on the printer type, paper size, and device capabilities.
+      `,
+    },
+  ],
 };
 
 export default data;

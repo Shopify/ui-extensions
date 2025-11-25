@@ -32,6 +32,29 @@ const data: ReferenceEntityTemplateSchema = {
     description:
       'Display a button that responds to user interactions. This example shows a button that displays a toast notification when pressed, demonstrating how to handle button taps and provide immediate feedback to merchants.',
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Choose appropriate variants and tones:** Use \`primary\` variant for the most important action on a screen, \`secondary\` for supporting actions, and \`tertiary\` for less prominent options. Apply \`critical\` tone for destructive actions like "Delete order," \`success\` for positive actions like "Complete sale," and \`caution\` or \`warning\` for actions requiring attention.
+- **Provide loading states for async operations:** Set the \`loading\` property to \`true\` during async operations.
+- **Use the command system for component control:** Use \`commandFor\` and \`command\` properties to control modals, overlays, and other components without complex event handlers.
+- **Structure button hierarchies clearly:** Place primary and secondary actions together using consistent spacing and visual hierarchy. Position destructive actions separately or use confirmation patterns to prevent accidental activation.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Button titles must be plain strings. HTML, markdown, or rich text formatting isn't supported.
+- Loading states replace all button content with a spinner. Custom loading indicators or partial content updates aren't supported.
+- Complex button layouts or nested interactive components within buttons aren't supported.
+      `,
+    },
+  ],
 };
 
 export default data;

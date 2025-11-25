@@ -32,6 +32,28 @@ const data: ReferenceEntityTemplateSchema = {
     description:
       'Apply consistent spacing patterns using design system tokens. This example demonstrates using predefined spacing constants instead of hardcoded pixel values, ensuring visual consistency that automatically adapts to design system changes across different screen sizes.',
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Apply numeric spacing for precise control:** Use the numeric spacing values when you need precise control over spacing amounts, particularly in \`Stack\` components where exact spacing relationships are important for visual hierarchy.
+- **Maintain consistent spacing patterns:** Establish consistent patterns for how you use spacing values across your extension. Similar types of content should use similar spacing values, helping users develop familiarity with your interface organization.
+- **Consider touch interface requirements:** Ensure adequate spacing for touch-based interactions by using appropriate spacing values that provide comfortable touch targets. POS interfaces require generous spacing for reliable touch interaction.
+- **Balance spacing with content density:** Choose spacing values that balance content density with readability. Use smaller spacing values for information-dense interfaces and larger values when content needs breathing room.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Spacing values are predefined constants—custom spacing values outside the provided scales aren't supported to maintain design system consistency.
+- The \`Spacing\` component is primarily designed for layout components like \`Stack\`—not all components support all spacing types.
+      `,
+    },
+  ],
 };
 
 export default data;

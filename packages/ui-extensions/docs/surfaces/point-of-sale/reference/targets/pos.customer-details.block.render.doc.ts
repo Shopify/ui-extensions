@@ -19,16 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   subCategory: 'Customer details',
   isVisualComponent: false,
-  related: [
-    {
-      name: ExtensionTargetType.PosCustomerDetailsActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-customer-details-action-menu-item-render',
-    },
-    {
-      name: ExtensionTargetType.PosCustomerDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-customer-details-action-render',
-    },
-  ],
+  related: [],
   type: 'Target',
 };
 
