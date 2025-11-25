@@ -23,7 +23,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Polaris web components',
-  subCategory: 'Feedback',
+  subCategory: 'Feedback and status indicators',
   defaultExample: {
     image: 'banner-default.png',
     description:

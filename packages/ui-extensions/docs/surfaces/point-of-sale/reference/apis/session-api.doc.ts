@@ -18,7 +18,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'SessionApiContent',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Standard APIs',
   related: [],
   subSections: [
     {

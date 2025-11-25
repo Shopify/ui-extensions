@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Polaris web components',
-  subCategory: 'Titles and text',
+  subCategory: 'Layout and structure',
   subSections: [
     {
       type: 'Generic',
