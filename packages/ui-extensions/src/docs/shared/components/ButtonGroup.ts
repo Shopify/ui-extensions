@@ -2,7 +2,8 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'ButtonGroup',
-  description: 'Displays multiple buttons in a layout.',
+  description:
+    'Groups related actions together in a consistent layout, making secondary actions visible alongside primary ones.',
   category: 'Polaris web components',
   subCategory: 'Actions',
   related: [],

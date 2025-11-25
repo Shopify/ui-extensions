@@ -3,7 +3,7 @@ import {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Thumbnail',
   description:
-    'Display a small preview image representing content, products, or media.',
+    'Identifies items visually in lists, tables, or cards by showing a small preview image.',
   category: 'Polaris web components',
   subCategory: 'Media',
   related: [],
