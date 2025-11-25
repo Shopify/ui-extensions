@@ -5,6 +5,35 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/avatar.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Identifying individuals or businesses
+- Representing merchants, customers, or other entities visually
+- Seeing visual indicators of people or businesses in lists, tables, or cards`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- \`small-200\`: use in tightly condensed layouts
+- \`small\`: use when the base size is too big for the layout, or when the avatar has less importance
+- \`base\`: use as the default size
+- \`large\`: use when an avatar is a focal point, such as on a single customer card
+- \`large-200\`: use when extra emphasis is required`,
+    },
+    {
+      title: 'Content guidelines',
+      type: 'Generic' as const,
+      anchorLink: 'content-guidelines',
+      sectionContent: `For avatars, we recommend using a format that describes what will show in the image:
+- alt="Person's name" if avatar represents a person
+- alt="Business's name" if avatar represents a business
+- alt="" if the name appears next to the avatar as text`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

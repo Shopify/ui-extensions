@@ -5,6 +5,37 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/button.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Taking primary actions like saving or creating resources
+- Taking secondary actions like canceling forms or filtering results
+- Triggering destructive operations like deletion or disconnection
+- Accessing supplementary actions via tertiary buttons`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Be clearly and accurately labeled with strong, actionable verbs
+- Use established button tones appropriately (e.g., critical tone only for actions that are difficult to undo)
+- Prioritize the most important actions to avoid confusion
+- Be positioned in consistent locations in the interface
+- Use buttons for actions and links for navigation`,
+    },
+    {
+      title: 'Content guidelines',
+      type: 'Generic' as const,
+      anchorLink: 'content-guidelines',
+      sectionContent: `- Use simple, concise verbs (e.g., "Save", "Edit", "Add tags")
+- Write in sentence case
+- Avoid unnecessary words and articles (e.g., "a", "an", "the")
+- Don't use punctuation
+- For icon-only buttons, use \`accessibilityLabel\` to describe the action`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

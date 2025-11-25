@@ -6,6 +6,17 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/datefield.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use smart defaults and highlight common selections
+- Use \`allow\` and \`disallow\` properties to restrict selectable dates appropriately
+- Provide clear labels and use details text to explain date restrictions
+- Don't use for dates that are many years in the future or the past`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

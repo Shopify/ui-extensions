@@ -5,6 +5,38 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/chip.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Labeling, organizing, and categorizing objects
+- Highlighting content attributes
+- Enhancing discoverability by identifying items with similar properties`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- \`subdued\`: use for secondary or less important information
+- \`base\`: use as default color
+- \`strong\`: use for important or verified status
+- Text truncates automatically, keep labels short to avoid truncation
+- Chips are static indicators, not interactive or dismissible. For interactive chips, use ClickableChip
+- Add icons to \`graphic\` slot to provide visual context
+- Display chips near the content they classify`,
+    },
+    {
+      title: 'Content guidelines',
+      type: 'Generic' as const,
+      anchorLink: 'content-guidelines',
+      sectionContent: `Chip labels should:
+- Be short and concise to avoid truncation
+- Use \`accessibilityLabel\` to describe purpose for screen readers
+- Common status labels: \`Active\`, \`Draft\`, \`Published\`, \`Verified\`
+- Common category labels: \`Product type\`, \`Collection\`, \`Tag name\``,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

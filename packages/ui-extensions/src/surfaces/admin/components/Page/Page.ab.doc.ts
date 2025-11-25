@@ -6,6 +6,27 @@ const data: AdminReferenceEntityTemplateSchema = {
   requires: '',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/page.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Always provide a title that describes the current page
+- Include breadcrumbs when the page is part of a flow
+- Include page actions in the header only if they are relevant to the entire page
+- Include no more than one primary action and 3 secondary actions per page
+- Don't include any actions at the bottom of the page`,
+    },
+    {
+      title: 'Content guidelines',
+      type: 'Generic' as const,
+      anchorLink: 'content-guidelines',
+      sectionContent: `- Use sentence case and avoid unnecessary words
+- Don't include punctuation like periods or exclamation marks
+- Page titles should clearly communicate the page purpose
+- Page actions should use a verb or verb + noun phrase (e.g., "Create store", "Edit product")`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',
