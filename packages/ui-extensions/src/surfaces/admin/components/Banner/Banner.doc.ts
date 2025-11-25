@@ -17,6 +17,18 @@ const data: AdminReferenceEntityTemplateSchema = {
 `,
     },
     {
+      title: 'Outside of a section',
+      type: 'Generic' as const,
+      anchorLink: 'outside-of-a-section',
+      sectionContent: `Banners placed outside of a section will display in their own card and should be located at the top of the page. They're useful for conveying messages that apply to the entire page or areas not visible within the viewport, such as validation errors further down the page.`,
+    },
+    {
+      title: 'In a section',
+      type: 'Generic' as const,
+      anchorLink: 'in-a-section',
+      sectionContent: `Banners placed inside a section will have styles applied contextually. They're useful for conveying messages relevant to a specific section or piece of content.`,
+    },
+    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
