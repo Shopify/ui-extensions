@@ -6,6 +6,26 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/clickable-chip.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Creating interactive filters or tags that can be clicked or removed
+- Navigating to related content when configured as a link
+- Allowing merchants to dismiss or remove applied filters or selections`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use for interactive chips that merchants can click or dismiss
+- Use Chip component instead for static, non-interactive indicators
+- Keep labels short to avoid truncation
+- Use color variants to indicate importance (subdued, base, strong)
+- Add icons to provide visual context`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',
