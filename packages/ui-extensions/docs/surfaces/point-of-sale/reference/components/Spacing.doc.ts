@@ -19,7 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'HorizontalSpacing',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   related: [],
   thumbnail: 'spacing-thumbnail.png',
   defaultExample: {

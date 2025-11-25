@@ -15,7 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'RadioButtonListProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Forms',
   related: [],
   thumbnail: 'radio-button-list-thumbnail.png',
   defaultExample: {

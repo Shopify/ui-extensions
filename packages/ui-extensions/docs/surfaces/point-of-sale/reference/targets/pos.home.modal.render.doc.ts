@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
       'Build a full-screen modal interface launched from smart grid tiles. This example demonstrates creating a modal that appears when merchants tap a tile, supporting complete workflows with multiple screens, scroll views, and interactive components for sophisticated tasks.',
   },
   category: 'Targets',
-  subCategory: 'Smart grid',
+  subCategory: 'Home screen (smart grid)',
   isVisualComponent: false,
   related: [],
   type: 'Target',

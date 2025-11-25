@@ -18,7 +18,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'NavigatorProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Navigation and content',
   related: [],
   thumbnail: 'navigator-thumbnail.png',
   defaultExample: {

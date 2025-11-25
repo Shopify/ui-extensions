@@ -19,7 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PrintPreviewProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Navigation and content',
   related: [],
   defaultExample: {
     image: 'print-preview-default.png',

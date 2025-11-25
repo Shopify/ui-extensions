@@ -19,7 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ScannerApiContent',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   related: [],
   examples: {
     description:
