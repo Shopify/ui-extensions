@@ -33,6 +33,12 @@ const data: ReferenceEntityTemplateSchema = {
         description:
           'Access the unique identifier of the current draft order in a draft order detail action context. This example shows how to use `shopify.draftOrder.id` to retrieve the draft order ID, which can be used for tracking, fetching additional order data, or implementing draft order-specific workflows.',
       },
+      {
+        codeblock: generateJsxCodeBlockForDraftOrderApi(
+          "Retrieve a draft order's name, ID, and associated customer ID",
+          'draft-order-details',
+        ),
+      },
     ],
   },
   category: 'Target APIs',

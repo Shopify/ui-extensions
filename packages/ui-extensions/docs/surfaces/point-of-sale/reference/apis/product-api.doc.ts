@@ -31,6 +31,12 @@ const data: ReferenceEntityTemplateSchema = {
         description:
           'Access the unique identifier of the current product in a product detail action context. This example shows how to use `shopify.product.id` to retrieve the product ID, which can be used for fetching additional product data, analytics, or implementing product-specific features and workflows.',
       },
+      {
+        codeblock: generateJsxCodeBlockForProductApi(
+          'Retrieve product and product variant IDs',
+          'product-variant',
+        ),
+      },
     ],
   },
   category: 'Target APIs',
