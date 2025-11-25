@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent: `
-- **Design consistent key naming:** Use hierarchical names like \`settings.user.theme\` or \`cache.products.$\{id\}\` to organize data.
+- **Design consistent key naming:** Use hierarchical names like \`settings.user.theme\` or \`cache.products.${id}\` to organize data.
 - **Validate retrieved data:** Check structure and types after \`get()\` since data may be outdated. Provide defaults and handle missing properties.
 - **Plan for data evolution:** Include version fields and implement migration logic to handle schema updates between versions.
 - **Keep sensitive data out:** Never store passwords, API keys, or sensitive information. Use Session API for secure backend communication.
