@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Polaris web components',
-  subCategory: 'Titles and text',
+  subCategory: 'Feedback and status indicators',
   defaultExample: {
     image: 'badge-default.png',
     description:

@@ -18,7 +18,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PinPadApiContent',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   subSections: [
     {
       type: 'Generic',

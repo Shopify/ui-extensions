@@ -20,7 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ProductSearchApiContent',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Standard APIs',
   subSections: [
     {
       type: 'Generic',

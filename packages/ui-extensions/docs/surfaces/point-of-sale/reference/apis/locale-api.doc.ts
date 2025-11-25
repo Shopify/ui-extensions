@@ -18,7 +18,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'LocaleApiContent',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Standard APIs',
   subSections: [
     {
       type: 'Generic',

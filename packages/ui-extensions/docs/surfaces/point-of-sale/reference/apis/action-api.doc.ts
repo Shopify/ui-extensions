@@ -19,7 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ActionApiContent',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Standard APIs',
   subSections: [
     {
       type: 'Generic',

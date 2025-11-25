@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Polaris web components',
-  subCategory: 'Media',
+  subCategory: 'Media and visuals',
   defaultExample: {
     image: 'image-default.png',
     description:

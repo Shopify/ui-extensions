@@ -21,7 +21,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'CashDrawerApiContent',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   subSections: [
     {
       type: 'Generic',

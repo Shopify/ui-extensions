@@ -27,7 +27,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Window',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   subSections: [
     {
       type: 'Generic',

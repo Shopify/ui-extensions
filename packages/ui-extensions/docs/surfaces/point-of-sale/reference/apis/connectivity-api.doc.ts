@@ -20,7 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ConnectivityApiContent',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   subSections: [
     {
       type: 'Generic',
