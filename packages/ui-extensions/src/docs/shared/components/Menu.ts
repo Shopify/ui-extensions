@@ -3,7 +3,7 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Menu',
   description:
-    'Use Menu to display a list of actions that can be performed on a resource.',
+    'Presents a set of actions or selectable options in a dropdown menu, organized into logical groupings.',
   category: 'Polaris web components',
   subCategory: 'Actions',
   related: [],

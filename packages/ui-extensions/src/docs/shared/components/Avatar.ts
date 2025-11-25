@@ -3,7 +3,7 @@ import {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Avatar',
   description:
-    'Show a user’s profile image or initials in a compact, visual element.',
+    'Identifies individuals or businesses by showing their profile image or initials.',
   category: 'Polaris web components',
   subCategory: 'Media',
   related: [],
