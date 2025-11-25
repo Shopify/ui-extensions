@@ -3,60 +3,50 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'List',
-  description: `The list is a scrollable component in which the list rows are rendered.
-  > Note:
-  > List items no longer have dividers as of POS 10.0.0.`,
+  description:
+    'The `List` component displays structured data in rows with rich content including labels, subtitles, badges, images, and interactive elements. Use it to present organized information with consistent formatting and user interaction capabilities.\n\nList items no longer have dividers as of POS version 10.0.0.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
-      title: 'List',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `List` component.',
       type: 'ListProps',
     },
   ],
-  category: 'Components',
-  related: [
-    {
-      name: 'ProductSearch API',
-      subtitle:
-        'See how to use the ProductSearch API with a SearchBar to search for products.',
-      url: '/api/pos-ui-extensions/apis/productsearch-api#example-search-for-products-with-a-search-bar',
-    },
-  ],
+  category: 'UI components',
+  subCategory: 'Layout and structure',
+  related: [],
   thumbnail: 'list-thumbnail.png',
   defaultExample: {
     image: 'list-default.png',
-    codeblock: generateCodeBlock('Product List', 'list', 'products'),
+    codeblock: generateCodeBlock('Show a product list', 'list', 'products'),
+    description:
+      'Display structured data in organized rows with rich content. This example demonstrates a List component showing products with labels, subtitles, images, and interactive elements, providing consistent formatting for collections of items like products, customers, or menu options.',
   },
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'guidelines',
-      title: 'Guidelines',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
       sectionContent: `
-List items have a wide variety of use cases:
-
-- To display and link to an object | Examples: an item in the cart, a customer in the customer list
-- To display information | Examples: the payment breakdown in an order, staff contact information
-- To display a menu item | Examples: an item on the first page of settings, an item in “More actions”
-- To display a setting
-- To display an action related to other items in the section
-- To show a selectable option | Example: one filter option
-- To display an external link
-    `,
+- **Use images strategically with appropriate display strategies:** Choose the right image display strategy based on your content. Use \`'automatic'\` for mixed content, \`'always'\` when consistent image areas improve layout, and \`'never'\` for text-heavy lists where images would be distracting.
+- **Implement efficient pagination with onEndReached:** Use the \`onEndReached\` callback to implement smooth pagination that doesn't disrupt the user experience. Set \`isLoadingMore\` appropriately to provide visual feedback during data fetching operations.
+- **Apply semantic colors for subtitle information:** Use \`ColorType\` values in subtitles to convey meaning effectively. Apply \`TextSuccess\` for positive states, \`TextCritical\` for errors, and \`TextSubdued\` for less important information.
+- **Design meaningful row interactions:** Use \`onPress\` callbacks for navigation or detail views, and \`showChevron\` to indicate navigation actions. Reserve toggle switches for immediate state changes that don't require navigation.
+- **Optimize for touch interfaces:** Ensure adequate spacing and touch target sizes by leveraging the \`List\` component's built-in touch optimization.
+      `,
     },
     {
       type: 'Generic',
-      anchorLink: 'content-guidelines',
-      title: 'Content Guidelines',
+      anchorLink: 'limitations',
+      title: 'Limitations',
       sectionContent: `
-Subtitles:
-
-- Each subtitle should have a different piece of information. Don't use dashes to display more than one type of information on the same line.
-- Subtitles should be shown in order of relevance.
-- If you're showing the results of the form, the label should be the form field title and the subtitle should be the information the merchant entered.
-    `,
+- List row structure is predefined with specific left and right side layouts—custom row layouts beyond the provided structure aren't supported.
+- Image display is limited to the left side of rows with optional badge overlays—complex image layouts or multiple images for each row aren't available.
+- Toggle switches and interactive elements are limited to the predefined types—custom interactive components within rows require using \`onPress\` callbacks and external state management.
+      `,
     },
   ],
 };

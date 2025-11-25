@@ -5,55 +5,53 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'SearchBar',
   description:
-    'The search bar lets merchants enter search queries for objects throughout the app.',
+    'The `SearchBar` component provides a specialized input field for search functionality with built-in search button and text change handling. Use it to enable product searches, customer lookups, or other search-driven workflows in POS interfaces.\n\nThe component includes a dedicated search input with built-in search icon, clear button, and cancel functionality following platform-specific search patterns. It provides visual feedback for search states, supports voice input where available, and integrates with platform search behaviors to deliver familiar search experiences on both iOS and Android POS devices.\n\n`SearchBar` components maintain search focus during typing and automatically dismisses the keyboard when search is submitted, streamlining the search workflow and reducing unnecessary interaction steps.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
-      title: 'SearchBar',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `SearchBar` component.',
       type: 'SearchBarProps',
     },
   ],
-  category: 'Components',
-  related: [
-    {
-      name: 'ProductSearch API',
-      subtitle:
-        'See how to use the ProductSearch API with a SearchBar to search for products.',
-      url: '/api/pos-ui-extensions/apis/productsearch-api#example-search-for-products-with-a-search-bar',
-    },
-  ],
+  category: 'UI components',
+  subCategory: 'Navigation and content',
+  related: [],
   thumbnail: 'search-bar-thumbnail.png',
   defaultExample: {
     image: 'search-bar-default.png',
-    codeblock: generateCodeBlock('SearchBar', 'search-bar', 'default.example'),
+    codeblock: generateCodeBlock(
+      'Add search functionality',
+      'search-bar',
+      'default.example',
+    ),
+    description:
+      'Implement search functionality with a specialized input field. This example shows a SearchBar with built-in search icon, clear button, and text change handling, enabling product searches, customer lookups, or other search-driven workflows following platform-specific patterns.',
   },
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'guidelines',
-      title: 'Guidelines',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
       sectionContent: `
-- The global search bar should appear at the very top of a view, above the header. This is because it searches for things beyond the scope of that page.
-- The inline search bar should appear at the top of a list, but under the header.
-- The search bar should be sticky and remain at the top of the page when the merchant scrolls.
-- When a merchant selects the search bar, the bar enters the focused state.
-- When entering the focused state, the border turns blue and the search icon changes to a back arrow icon. Selecting the back arrow lets merchants return to the default state.
-- If it's an inline search bar, entering focused state should also move the search bar to the top of the screen.
-- When a merchant starts entering a search query, the bar enters the filled state.
-- Selecting the **X** deletes the merchant's search query, but keeps them in the focused state so that they can immediately enter a new search query.
+- **Implement sticky behavior for persistent access:** Make search bars sticky so they remain at the top of the page when merchants scroll.
+- **Handle focus states with proper visual feedback:** When merchants select the search bar, ensure it enters the focused state with a blue border and the search icon changes to a back arrow.
+- **Optimize inline search bar positioning:** For inline search bars, entering the focused state should move the search bar to the top of the screen for better visibility and easier interaction, especially when the on-screen keyboard appears.
+- **Manage search query states effectively:** When merchants start entering text, transition the search bar to the filled state. Implement clear functionality (X button) that deletes the search query but keeps the search bar in focused state, allowing immediate entry of new search terms.
+- **Write effective placeholder text:** Use the pattern "Search \`{items}\`" for placeholder text (for example, "Search staff" not just "Search"). This clearly communicates what type of content can be searched and sets proper user expectations.
+- **Implement responsive search patterns:** Use \`onTextChange\` for real-time search experiences like autocomplete or instant filtering, and \`onSearch\` for explicit search actions. Consider implementing debouncing for text change events to avoid excessive API calls during typing.
       `,
     },
     {
       type: 'Generic',
-      anchorLink: 'content-guidelines',
-      title: 'Content guidelines',
+      anchorLink: 'limitations',
+      title: 'Limitations',
       sectionContent: `
-For the placeholder text, use the pattern: "Search {items}"
-
-✅ Search staff
-❌ Search
+- \`SearchBar\` provides the input interface but requires integration with the Product Search API or custom search logic for actual search functionality.
+- The component handles basic text input and search button interactions—advanced search features like filters, sorting controls, or search history require additional components or custom implementation.
+- Search result display and management are not included in the \`SearchBar\` component—use other components like List or custom layouts to present search results to users.
       `,
     },
   ],
