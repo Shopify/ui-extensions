@@ -5,22 +5,24 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosCashTrackingSessionStartObserve,
-  description: `An event extension target that observes when cash tracking session starts
-  > Note:
-  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
+  description:
+    'Observes when cash tracking sessions begin, triggering when merchants start cash handling operations. Use this target for monitoring cash handling activities for compliance, security, or operational reporting purposes.' +
+    '\n\nExtensions at this target receive session data including the session ID and opening time when a new cash tracking session is initiated.',
   category: 'Targets',
   subCategory: 'Cash tracking',
   isVisualComponent: false,
-  related: [
-    {
-      name: ExtensionTargetType.PosCashTrackingSessionCompleteObserve,
-      subtitle: 'Target',
-      type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-complete-observe',
-    },
-  ],
+  related: [],
   type: 'Target',
   definitions: [CUSTOM_DATA('CashTrackingSessionStartData')],
+  defaultExample: {
+    codeblock: generateCodeBlock(
+      'Track cash session openings',
+      'targets',
+      'pos-cash-tracking-session-start-event-observe',
+    ),
+    description:
+      'Subscribe to cash tracking session start events to maintain audit trails and compliance records. This example demonstrates logging session openings with session ID and opening time, enabling security monitoring, compliance reporting, and integration with external cash management systems.',
+  },
 };
 
 export default data;

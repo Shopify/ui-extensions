@@ -6,15 +6,15 @@ const generateCodeBlockForButton = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Button',
-  description: `Buttons enable the merchant to initiate actions, like "add", "save", or "next".
-  > Note:
-  > The \`plain\` \`ButtonType\` is no longer supported as of POS 10.0.0 and defaults to \`basic\`.`,
+  description:
+    'The `Button` component triggers actions or events, such as opening dialogs or navigating to other pages. Use `Button` to let merchants perform specific tasks or initiate interactions throughout the POS interface.\n\nButtons provide clear calls-to-action that guide merchants through workflows, enable form submissions, and trigger important operations. They support various visual styles, tones, and interaction patterns to communicate intent and hierarchy within the interface.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
-      title: 'Button',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `Button` component.',
       type: 'ButtonProps',
     },
     {
@@ -23,16 +23,39 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ButtonType',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Actions',
   related: [],
   thumbnail: 'button-thumbnail.png',
   defaultExample: {
     image: 'button-default.png',
-    codeblock: generateCodeBlockForButton(
-      'Render a button that presents a toast',
-      'default.example',
-    ),
+    codeblock: generateCodeBlockForButton('Show a button', 'default.example'),
+    description:
+      'Display a button that responds to user interactions. This example shows a button that displays a toast notification when pressed, demonstrating how to handle button taps and provide immediate feedback to merchants.',
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Choose appropriate variants and tones:** Use \`primary\` variant for the most important action on a screen, \`secondary\` for supporting actions, and \`tertiary\` for less prominent options. Apply \`critical\` tone for destructive actions like "Delete order," \`success\` for positive actions like "Complete sale," and \`caution\` or \`warning\` for actions requiring attention.
+- **Provide loading states for async operations:** Set the \`loading\` property to \`true\` during async operations.
+- **Use the command system for component control:** Use \`commandFor\` and \`command\` properties to control modals, overlays, and other components without complex event handlers.
+- **Structure button hierarchies clearly:** Place primary and secondary actions together using consistent spacing and visual hierarchy. Position destructive actions separately or use confirmation patterns to prevent accidental activation.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Button titles must be plain strings. HTML, markdown, or rich text formatting isn't supported.
+- Loading states replace all button content with a spinner. Custom loading indicators or partial content updates aren't supported.
+- Complex button layouts or nested interactive components within buttons aren't supported.
+`,
+    },
+  ],
 };
 
 export default data;
