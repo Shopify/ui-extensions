@@ -1,15 +1,14 @@
 import type {RemoteSubscribable} from '@remote-ui/async-subscription';
 
 export interface LocaleApiContent {
-  /** IETF-formatted locale at time of page load and a callback to subscribe to value changes. Current supports only one subscription.
-   * You can utilize `makeStatefulSubscribable` on a `RemoteSubscribable` to implement multiple subscriptions.
-   * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
+  /**
+   * Provides the current IETF-formatted locale (for example, `"en-US"`) and allows you to subscribe to locale changes. Supports only one subscription at a time. To enable multiple subscriptions, use `makeStatefulSubscribable` on the `RemoteSubscribable` object. Using `makeStatefulSubscribable` or related hooks counts as an active subscription.
    */
   subscribable: RemoteSubscribable<string>;
 }
 
 /**
- * Access the merchant’s current locale (in [IETF format](https://en.wikipedia.org/wiki/IETF_language_tag)) to internationalize your extension content.
+ * The `LocaleApi` object provides access to current locale information and change notifications. Access these properties through `api.locale` to retrieve and monitor locale data.
  */
 export interface LocaleApi {
   locale: LocaleApiContent;

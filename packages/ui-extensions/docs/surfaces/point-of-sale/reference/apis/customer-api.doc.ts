@@ -7,43 +7,53 @@ const generateCodeBlockForCustomerApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Customer API',
-  description: `
-The customer API provides an extension with data about the current customer.
-
-#### Supporting targets
-- ${TargetLink.PosCustomerDetailsActionMenuItemRender}
-- ${TargetLink.PosCustomerDetailsActionRender}
-- ${TargetLink.PosCustomerDetailsBlockRender}
-`,
+  description:
+    'The Customer API provides read-only access to customer data. Use this API to get customer information and build personalized experiences based on the selected customer context. The API offers the customer identifier for linking to customer data and enabling customer-specific features.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'CustomerApi',
-      description: '',
+      description:
+        'The `CustomerApi` object provides access to customer data. Access this property through `api.customer` to interact with the current customer context.',
       type: 'CustomerApiContent',
     },
   ],
   examples: {
-    description: 'Examples of using the Customer API.',
+    description:
+      'Learn how to access customer information and build personalized experiences based on customer context.',
     examples: [
       {
         codeblock: generateCodeBlockForCustomerApi(
-          'Retrieve the ID of the customer.',
+          'Get the current customer ID',
           'id',
         ),
+        description:
+          "Retrieve the unique identifier of the customer currently associated with the extension's context. This example shows how to access the customer ID from customer details screens, enabling you to fetch additional customer data, track customer-specific actions, or link to external systems.",
       },
     ],
   },
-  category: 'APIs',
-  related: [
+  category: 'Target APIs',
+  subCategory: 'Contextual APIs',
+  related: [],
+  subSections: [
     {
-      name: ExtensionTargetType.PosCustomerDetailsActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-customer-details-action-menu-item-render',
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Implement customer-specific features:** Use the customer context to enable personalized functionality like customer-specific pricing, loyalty program integration, or customized product recommendations.
+- **Validate customer access:** Verify that the customer ID is valid before performing customer-specific operations or external API calls.
+      `,
     },
     {
-      name: ExtensionTargetType.PosCustomerDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-customer-details-action-render',
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The API provides only the customer identifier—use Shopify APIs or external systems to fetch additional customer details like name, email, or purchase history.
+- Customer data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+      `,
     },
   ],
 };

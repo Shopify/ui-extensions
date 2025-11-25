@@ -6,11 +6,13 @@ import {
   SpacingKeyword,
   GapProps,
 } from '../shared/inner-layouts';
+/* eslint-disable import/no-deprecated */
 import {
   HorizontalSpacing,
   Spacing,
   VerticalSpacing,
 } from '../shared/deprecated-types';
+/* eslint-enable import/no-deprecated */
 
 /**
  *
@@ -20,8 +22,7 @@ type DeprecatedStackDirection = 'vertical' | 'horizontal';
 
 export interface StackProps extends PaddingProps, SizingProps, GapProps {
   /**
-   * Sets how the Stack's children are placed within the Stack.
-   * 'vertical' and 'horizontal' are deprecated. Using these values will use the Stack implementation from 2024-10.
+   * The direction in which children are placed within the `Stack` component. Use `'block'` for vertical arrangement along the block axis without wrapping, or `'inline'` for horizontal arrangement along the inline axis with automatic wrapping.
    *
    * @default 'inline'
    */
@@ -36,85 +37,89 @@ export interface StackProps extends PaddingProps, SizingProps, GapProps {
   alignment?: ContentPosition | ContentDistribution;
 
   /**
-   * Aligns the Stack along the main axis.
+   * The alignment of the `Stack` component along the main axis, controlling how space is distributed between and around content items.
+   * Learn more about [justify-content on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
    * @default 'start'
    */
   justifyContent?: ContentPosition | ContentDistribution;
 
   /**
-   * Aligns the Stack along the cross axis.
+   * The alignment of the `Stack` component along the cross axis, controlling how content is distributed when there's extra space.
+   * Learn more about [align-content on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
    * @default 'start'
    */
   alignContent?: 'stretch' | ContentPosition | ContentDistribution;
 
   /**
-   * Aligns the Stack's children along the cross axis.
+   * The alignment of the `Stack` component's children along the cross axis, controlling how individual items are positioned.
+   * Learn more about [align-items on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
    * @default 'stretch'
    */
   alignItems?: 'stretch' | 'baseline' | ContentPosition;
 
   /**
-   * The vertical padding around the stack.
+   * The vertical padding around the `Stack` component.
+   *
    * @deprecated Use the `paddingBlock` prop instead.
    */
+  // eslint-disable-next-line import/no-deprecated
   paddingVertical?: VerticalSpacing;
 
   /**
-   * The horizontal padding around the stack.
+   * The horizontal padding around the `Stack` component.
+   *
    * @deprecated Use the `paddingInline` prop instead.
    */
+  // eslint-disable-next-line import/no-deprecated
   paddingHorizontal?: HorizontalSpacing;
 
   /**
-   * The spacing between each child in the stack.
+   * The spacing between each child in the `Stack` component.
+   *
    * @defaultValue 1
    * @deprecated Use the `gap` prop instead.
    */
+  // eslint-disable-next-line import/no-deprecated
   spacing?: Spacing;
 
   /**
-   * The size of the gap between each child in the stack.
+   * The size of the gap between each child in the `Stack` component.
+   *
    * @defaultValue '0'
    */
   gap?: SpacingKeyword;
 
   /**
-   * Adjust spacing between elements in the block axis.
-   *
-   * This overrides the row value of `gap`.
+   * The spacing between elements in the block axis. Overrides the row value of gap.
    *
    * @default '' - meaning no override
    */
   rowGap?: SpacingKeyword | '';
 
   /**
-   * Adjust spacing between elements in the inline axis.
-   *
-   * This overrides the column value of `gap`.
+   * The spacing between elements in the inline axis. Overrides the column value of gap.
    *
    * @default '' - meaning no override
    */
   columnGap?: SpacingKeyword | '';
 
   /**
-   * Whether the children should be stretched to fill the cross axis.
+   * A boolean that determines whether the children should be stretched to fill the cross axis.
    */
   flexChildren?: boolean;
 
   /**
-   * The flex value for the stack. Flex 1 will stretch the stack to fill the parent.
+   * The flex value for the `Stack` component. A value of 1 will stretch the component to fill the parent container.
    */
   flex?: number;
 
   /**
-   * Wrap behavior for the children of the stack.
-   * @deprecated Has no effect, content will always wrap.
+   * The wrap behavior for the children of the `Stack` component.
+   *
+   * @deprecated This property has no effect as content will always wrap.
    */
   flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse';
 }

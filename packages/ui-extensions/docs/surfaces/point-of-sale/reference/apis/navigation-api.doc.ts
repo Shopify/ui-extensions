@@ -7,54 +7,65 @@ const generateCodeBlockForNavigationApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Navigation API',
-  description: `
-The Navigation API enables POS UI extension to navigate between screens.
-
-#### Supporting targets
-- ${TargetLink.PosHomeModalRender}
-- ${TargetLink.PosPurchasePostActionRender}
-- ${TargetLink.PosProductDetailsActionRender}
-- ${TargetLink.PosOrderDetailsActionRender}
-- ${TargetLink.PosDraftOrderDetailsActionRender}
-- ${TargetLink.PosCustomerDetailsActionRender}
-`,
+  description:
+    'The Navigation API provides screen-based navigation functionality for POS UI extensions, allowing you to navigate between screens, manage navigation stacks, and dismiss modal interfaces within full-screen modal workflows. The API enables multi-screen experiences with parameter passing and navigation control.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'NavigationApi',
-      description: '',
+      description:
+        'The global `navigation` object provides web-standard navigation functionality. Access these properties and methods directly through the global `navigation` object to manage navigation within modal interfaces.',
       type: 'NavigationApiContent',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   related: [],
   examples: {
-    description: 'Examples of using the Navigation API',
+    description:
+      'Learn how to navigate between screens, manage navigation stacks, and control multi-screen modal experiences.',
     examples: [
       {
         codeblock: generateCodeBlockForNavigationApi(
-          'Navigate between two screens',
+          'Create a multi-screen modal',
           'two-screen',
         ),
+        description:
+          'Create a navigation flow with multiple screens in a modal interface. This example shows how to set up a Navigator with two screens and navigate between them, enabling multi-step workflows, wizards, or detailed views within your extension.',
       },
-    ],
-    exampleGroups: [
       {
-        title: 'Navigation actions',
-        examples: [
-          {
-            description:
-              'Navigates to the specified screen. It is important to note that any screens you wish to navigate to must already exist in the Navigator.',
-            codeblock: generateCodeBlockForNavigationApi(
-              'Navigate to a route in current navigation tree',
-              'navigation-tree',
-            ),
-          },
-        ],
+        codeblock: generateCodeBlockForNavigationApi(
+          'Navigate to another screen',
+          'navigation-tree',
+        ),
+        description:
+          'Navigate programmatically to a specific screen in your navigation hierarchy. This example demonstrates using the global `navigation` object to push a new screen onto the navigation stack. Note that the target screen must already be defined in your Navigator component before you can navigate to it.',
       },
     ],
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Handle navigation parameters effectively:** Use navigation parameters to pass data between screens, maintaining workflow context and user progress across screen transitions.
+- **Implement proper screen management:** Design screens that can be pushed and popped.
+- **Provide clear navigation controls:** Implement clear navigation controls and feedback so users understand their current location in the workflow and how to navigate between screens.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The Navigation API is only available in action (modal) targets and can't be used in action (menu item), block, or tile targets that don't support multi-screen navigation.
+- Screen navigation is based on screen names and the navigation stack, which differs from URL-based navigation patterns found in web applications.
+- Navigation parameters must be serializable and can't contain functions, complex objects, or circular references.
+      `,
+    },
+  ],
 };
 
 export default data;
