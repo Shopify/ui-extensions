@@ -1,19 +1,15 @@
 /**
- * Access the print API for printing functionality
+ * The `PrintApi` object provides methods for triggering document printing. Access these methods through `shopify.print` to initiate print operations with various document types.
  */
 export interface PrintApiContent {
   /**
-   * Trigger a print dialog.
+   * Triggers a print dialog for the specified document source. The `print()` method accepts either:
    *
-   * The src must be either:
-   * - A relative path that will be appended to your app's [application_url](/docs/apps/build/cli-for-apps/app-configuration#application_url)
-   * - A full URL to your app's backend that will be used to return the document to print
+   * • A relative path that will be appended to your app's [`application_url`](/docs/apps/build/cli-for-apps/app-configuration)
    *
-   * Supported document types:
-   * - HTML documents (recommended for best printing experience)
-   * - Text files
-   * - Image files (PNG, JPEG, etc.)
-   * - PDF files (Note: On Android devices, PDFs will be downloaded and must be printed using an external application)
+   * • A full URL to your app's backend that will be used to return the document to print
+   *
+   * Returns a promise that resolves when content is ready and the native print dialog appears. Use for printing custom documents, receipts, labels, or reports.
    *
    * @param src the source URL of the content to print.
    * @returns Promise<void> that resolves when content is ready and native print dialog appears.
@@ -22,8 +18,11 @@ export interface PrintApiContent {
 }
 
 /**
- * Interface for printing
+ * The `PrintApi` object provides methods for triggering document printing. Access these methods through `shopify.print` to initiate print operations with various document types.
  */
 export interface PrintApi {
+  /**
+   * The `PrintApi` object provides methods for triggering document printing. Access these methods through `shopify.print` to initiate print operations with various document types.
+   */
   print: PrintApiContent;
 }

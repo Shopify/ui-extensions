@@ -6,59 +6,76 @@ const generateJsxCodeBlockForPrintApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Print API',
-  description: `The Print API enables document printing functionality in your point of sale extension. Use this API to trigger the native print dialog for your documents.
-
-The \`print()\` method accepts either:
-- A relative path that will be appended to your app's [application_url](/docs/apps/build/cli-for-apps/app-configuration#application_url)
-- A full URL to your app's backend that will be used to return the document to print
-
-Supported document types:
-- HTML documents (recommended for best printing experience)
-- Text files
-- Image files (PNG, JPEG, etc.)
-- PDF files (Note: On Android devices, PDFs will be downloaded and must be printed using an external application)`,
+  description:
+    'The Print API enables document printing functionality in your POS UI extension. Use this API to trigger the native print dialog for your documents.' +
+    '\n\nSupported document types:' +
+    '\n\n- **HTML documents** (`.html`, `.htm`) - Best printing experience with full CSS styling, embedded images, and complex layouts. Use for receipts, invoices, and formatted reports.' +
+    '\n\n- **Text files** (`.txt`, `.csv`) - Plain text with basic content and tabular data support. Use for simple receipts and data exports.' +
+    '\n\n- **Image files** (`.png`, `.jpg`, `.jpeg`, `.gif`, `.bmp`, `.webp`) - Common web formats with format-specific optimizations. Use for logos, charts, QR codes, and barcodes.' +
+    '\n\n- **PDF files** (`.pdf`) - Behavior varies by platform: prints directly on iOS/desktop, but downloads to external viewer on Android. Use for complex documents and compliance requirements.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'PrintApi',
-      description: 'Interface for handling print operations',
+      description:
+        'The `PrintApi` object provides methods for triggering document printing. Access these methods through `shopify.print` to initiate print operations with various document types.',
       type: 'PrintApiContent',
     },
   ],
-  category: 'APIs',
-  related: [
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
+  subSections: [
     {
-      name: 'PrintPreview Component',
-      subtitle: 'Preview documents before printing',
-      url: '/api/pos-ui-extensions/components/printpreview',
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Choose appropriate formats:** Use HTML for rich formatting, text for simple content, images for graphics, PDFs for complex documents.
+- **Handle errors:** Implement error handling for network failures, unsupported types, or printer connectivity issues.
+- **Optimize documents:** Design with appropriate sizing, margins, and formatting for printers and standard paper sizes.
+- **Provide feedback:** Show loading states, success confirmations, and error messages for print operations.
+`,
     },
     {
-      name: 'Build a Print Extension',
-      subtitle: 'Learn how to implement printing',
-      url: '/docs/apps/build/pos/build-print-extension?extension=preact',
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- PDF printing on Android devices requires downloading the file and using an external application, which may interrupt the user workflow.
+- Print operations depend on device printer connectivity and configuration, which may not be available in all POS setups.
+- Document formatting and appearance may vary depending on the printer type, paper size, and device capabilities.
+`,
     },
   ],
+  related: [],
   examples: {
-    description: 'Examples of using the Print API',
+    description:
+      'Learn how to trigger document printing for receipts, labels, and custom documents.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForPrintApi(
-          'Print directly from the tile',
+          'Print a document directly from a tile',
           'print',
         ),
+        description:
+          'Trigger the native print dialog from a smart grid tile action. This example shows how to use `shopify.print()` to print a document specified by a relative path, allowing quick printing of receipts, labels, or reports directly from the POS home screen.',
       },
       {
         codeblock: generateJsxCodeBlockForPrintApi(
-          'Print with relative path',
-          'print-relative',
-        ),
-      },
-      {
-        codeblock: generateJsxCodeBlockForPrintApi(
-          'Print with full URL',
+          'Print from a remote URL',
           'print-full-url',
         ),
+        description:
+          'Print documents hosted on external servers using full URLs. This example shows how to use `shopify.print()` with a complete URL to print remotely hosted documents, enabling dynamic content generation or printing from external services.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForPrintApi(
+          'Print using a relative file path',
+          'print-relative',
+        ),
+        description:
+          'Print documents using relative paths within your extension bundle. This example demonstrates using `shopify.print()` with a relative path to reference HTML, text, image, or PDF files included in your extension, making it easy to print pre-defined templates or documents.',
       },
     ],
   },

@@ -940,15 +940,15 @@ export interface GraphQLError {
 }
 
 /**
- * Represents a read-only value managed on the main thread that an extension can subscribe to.
- *
- * Example: Checkout uses this to manage the state of an object and
- * communicate state changes to extensions running in a sandboxed web worker.
- *
- * This interface is compatible with [Preact's ReadonlySignal](https://github.com/preactjs/signals/blob/a023a132a81bd4ba4a0bebb8cbbeffbd8c8bbafc/packages/core/src/index.ts#L700-L709).
- *
+ * Represents a reactive signal interface that provides both immediate value access and subscription-based updates. Enables real-time synchronization with changing data through the observer pattern.
  */
 export interface ReadonlySignalLike<T> {
+  /**
+   * The current value of the locale string in IETF format. For example, `"en-US"`, `"fr-CA"`, or `"de-DE"`. This property provides immediate access to the current locale without requiring subscription setup. Use for one-time locale checks or initial internationalization setup.
+   */
   readonly value: T;
+  /**
+   * Subscribes to locale changes and calls the provided function whenever the locale updates. Returns an unsubscribe function to clean up the subscription. Use to automatically update your extension content when merchants change their language settings during POS sessions.
+   */
   subscribe(fn: (value: T) => void): () => void;
 }

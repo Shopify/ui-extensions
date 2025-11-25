@@ -9,53 +9,75 @@ const generateJsxCodeBlockForNavigationApi = (
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Navigation API',
-  description: `
-The Navigation API enables POS UI extension to navigate between screens.
-
-#### Supporting targets
-- ${TargetLink.PosHomeModalRender}
-- ${TargetLink.PosPurchasePostActionRender}
-- ${TargetLink.PosProductDetailsActionRender}
-- ${TargetLink.PosOrderDetailsActionRender}
-- ${TargetLink.PosDraftOrderDetailsActionRender}
-- ${TargetLink.PosCustomerDetailsActionRender}
-`,
+  description:
+    'The Navigation API provides web-standard navigation functionality for POS UI extensions, allowing you to navigate between URLs, manage navigation history, and handle navigation events within modal interfaces. The API is available globally as the `navigation` object and follows web platform standards.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'NavigationApi',
-      description: '',
+      description:
+        'The global `navigation` object provides web-standard navigation functionality. Access these properties and methods directly through the global `navigation` object to manage navigation within modal interfaces.',
       type: 'Navigation',
     },
     {
       title: 'Window',
-      description: '',
+      description:
+        'The global `window` object provides control over the extension screen lifecycle. Access these properties and methods directly through the global `window` object to manage the modal interface.',
       type: 'Window',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Use URL-based navigation:** Implement URL patterns for deep-linking and intuitive browser-like navigation within modals.
+- **Manage state effectively:** Use the \`state\` parameter to pass data between screens and maintain workflow context.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The Navigation API is only available in action (modal) targets and can't be used in action (menu item), block, or tile targets that don't support multi-screen navigation.
+- Navigation state is limited to serializable data and can't contain functions, complex objects, or circular references.
+- The API follows web platform standards but operates within the POS modal context, so some web navigation behaviors may differ from standard browser navigation.
+`,
+    },
+  ],
   related: [],
   examples: {
-    description: 'Examples of using the Navigation API',
+    description:
+      'Learn how to manage navigation between screens and pass state between views.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForNavigationApi(
-          'Navigate between two screens',
+          'Navigate between extension screens',
           'two-screen',
         ),
+        description:
+          'Create multi-screen workflows within your extension using web-standard navigation. This example demonstrates using `navigation.navigate()` to move between different screens in your modal interface, enabling complex multi-step processes with proper navigation history management.',
       },
       {
         codeblock: generateJsxCodeBlockForNavigationApi(
-          'Navigate to a POS native screen with uri',
+          'Navigate to POS native screens',
           'native-screen',
         ),
+        description:
+          'Navigate to native POS screens from your extension using deep link URIs. This example shows how to use `navigation.navigate()` with POS screen URIs to transition to core POS functionality like cart, product details, or order screens, enabling seamless integration between your extension and native POS features.',
       },
       {
         codeblock: generateJsxCodeBlockForNavigationApi(
-          'Navigate to a screen with state parameters',
+          'Pass state between screens',
           'state-params',
         ),
+        description:
+          'Share data between screens using navigation state parameters. This example demonstrates using the `state` option in `navigation.navigate()` to pass data when navigating, enabling screens to receive context and maintain workflow continuity across navigation transitions.',
       },
     ],
   },

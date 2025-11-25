@@ -5,31 +5,21 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosCustomerDetailsActionRender,
   description:
-    'A full-screen extension target that renders when a `pos.customer-details.action.menu-item.render` target calls for it',
+    'Renders a full-screen modal interface launched from customer details menu items. Use this target for complex customer workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.' +
+    '\n\nExtensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components.',
   defaultExample: {
     codeblock: generateJsxCodeBlock(
-      'Action',
+      'Create a customer details action modal',
       'targets',
       'customer-details-action',
     ),
+    description:
+      'Build a full-screen modal workflow launched from a customer details action menu item. This example demonstrates creating customer-specific experiences with multi-step processes, forms, and customer data access for operations like loyalty management or profile updates.',
   },
   category: 'Targets',
-  subCategory: 'Action',
+  subCategory: 'Customer details',
   isVisualComponent: false,
-  related: [
-    {
-      name: ExtensionTargetType.PosCustomerDetailsActionMenuItemRender,
-      url: 'pos-customer-details-action-menu-item-render',
-    },
-    {
-      name: ExtensionTargetType.PosCustomerDetailsBlockRender,
-      url: '../block/pos-customer-details-block-render',
-    },
-    {
-      name: 'Customer API',
-      url: '../../apis/customer-api',
-    },
-  ],
+  related: [],
   type: 'Target',
 };
 

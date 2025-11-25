@@ -9,44 +9,59 @@ const generateJsxCodeBlockForCartLineItemApi = (
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Cart Line Item API',
-  description: `
-The Cart Line Item API provides an extension with data about the current Cart Line Item.
-
-#### Supporting targets
-- ${TargetLink.PosCartLineItemDetailsActionMenuItemRender}
-- ${TargetLink.PosCartLineItemDetailsActionRender}
-`,
+  description:
+    'The Cart Line Item API provides read-only access to a specific line item in the cart. Use this API to get line item details like product information, pricing, discounts, and custom properties. This allows you to build features that respond to the specific item a customer is viewing or interacting with.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'CartLineItemApi',
-      description: '',
+      description:
+        'The `CartLineItemApi` object provides access to the current line item. Access this property through `api.cartLineItem` to interact with the current line item context.',
       type: 'CartLineItemApi',
     },
   ],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Handle optional properties:** Check for \`undefined\` in optional properties like \`price\`, \`productId\`, \`title\`, \`sku\`, and vendor before use.
+- **Create contextual experiences:** Use line item data to show different interfaces for gift cards, subscriptions, or vendor-specific information.
+- **Implement item-specific validation:** Use properties like \`taxable\`, \`isGiftCard\`, and \`requiresSellingPlan\` for appropriate business logic.
+- **Handle selling plans:** When working with subscriptions, check \`requiresSellingPlan\` and \`sellingPlan\` to provide appropriate subscription management.
+- **Access related data efficiently:** Use \`productId\` and \`variantId\` to fetch additional info when needed, but avoid unnecessary API calls.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The API provides read-only access to line item data—use the Cart API for modifying line item properties, discounts, selling plans, or other attributes.
+- Line item data reflects the current state and may not include real-time inventory, pricing, or selling plan updates until the cart is refreshed.
+- Selling plan information may be limited during refund or exchange operations where digest values aren't available.
+`,
+    },
+  ],
   examples: {
-    description: 'Examples of using the Cart Line Item API.',
+    description:
+      'Learn how to access line item information in cart line item contexts.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForCartLineItemApi(
-          'Retrieve the ID of the cart line item.',
+          'Display the cart line item ID',
           'id',
         ),
+        description:
+          'Access the unique identifier of the current cart line item in line item detail contexts. This example shows how to use `shopify.cartLineItem.id` to retrieve the line item ID, which can be used for modifying the item, applying discounts, or implementing item-specific functionality.',
       },
     ],
   },
-  category: 'APIs',
-  related: [
-    {
-      name: ExtensionTargetType.PosCartLineItemDetailsActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-cart-line-item-details-action-menu-item-render',
-    },
-    {
-      name: ExtensionTargetType.PosCartLineItemDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-cart-line-item-details-action-render',
-    },
-  ],
+  category: 'Target APIs',
+  subCategory: 'Contextual APIs',
+  related: [],
 };
 
 export default data;
