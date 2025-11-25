@@ -5,31 +5,21 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosProductDetailsActionMenuItemRender,
   description:
-    'A static extension target that renders as a menu item on the product details screen',
+    'Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.' +
+    '\n\nExtensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `api.action.presentModal()` to launch the companion modal for complete product workflows.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Menu item',
+      'Create a product details action menu item',
       'targets',
       'product-details-menu-item',
     ),
+    description:
+      'Add an interactive menu item to the product details action menu for product-specific operations. This example shows how to create a menu item that accesses product data and launches modal workflows for tasks like inventory adjustments, product analytics, or external system integrations.',
   },
   category: 'Targets',
   subCategory: 'Product details',
   isVisualComponent: false,
-  related: [
-    {
-      name: ExtensionTargetType.PosProductDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-product-details-action-render',
-    },
-    {
-      name: ExtensionTargetType.PosProductDetailsBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-product-details-block-render',
-    },
-    {
-      name: 'ProductAPI',
-      url: '/docs/api/pos-ui-extensions/apis/product-api',
-    },
-  ],
+  related: [],
   type: 'Target',
 };
 

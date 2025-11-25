@@ -4,33 +4,22 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosReturnPostBlockRender,
-  description: `Renders a custom section within the native post return screen
-  > Note:
-  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
+  description:
+    'Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.' +
+    '\n\nExtensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `api.action.presentModal()` for more complex post-return operations.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Block',
+      'Add a post-return block',
       'targets',
       'pos-return-post-block-render',
     ),
+    description:
+      'Display custom information within the post-return screen as a persistent block. This example shows how to create blocks that show supplementary return data like completion status, refund confirmations, or follow-up workflows with interactive elements.',
   },
   category: 'Targets',
   subCategory: 'Post-return',
   isVisualComponent: false,
-  related: [
-    {
-      name: ExtensionTargetType.PosReturnPostActionMenuItemRender,
-      subtitle: 'Target',
-      type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/post-return/pos-return-post-action-menu-item-render',
-    },
-    {
-      name: ExtensionTargetType.PosReturnPostActionRender,
-      subtitle: 'Target',
-      type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/post-return/pos-return-post-action-render',
-    },
-  ],
+  related: [],
   type: 'Target',
 };
 

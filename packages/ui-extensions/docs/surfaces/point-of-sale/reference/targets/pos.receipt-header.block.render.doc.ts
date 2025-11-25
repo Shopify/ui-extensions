@@ -5,27 +5,22 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosReceiptHeaderBlockRender,
-  description: `Renders a custom section within the POS receipt header
-  > Note:
-  > This is part of a [POS UI Extensions developer preview](/docs/api/developer-previews#pos-ui-extensions-developer-preview). More information to come. This target and \`transaction.lineItems.discounts.discountAllocations\` are available in POS 10.8 and later.`,
+  description:
+    'Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.' +
+    '\n\nExtensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Block',
+      'Add content to receipt header',
       'targets',
       'pos-receipt-header-block-render',
     ),
+    description:
+      'Display custom content in the header of printed receipts. This example shows how to create a header section with custom branding, logos, promotional messages, or store-specific information at the top of receipts, enhancing brand identity and providing important store information.',
   },
   category: 'Targets',
   subCategory: 'Receipts',
   isVisualComponent: false,
-  related: [
-    {
-      name: 'POSReceiptBlock',
-      subtitle: 'Component',
-      type: 'apps',
-      url: '/docs/api/pos-ui-extensions/components/posreceiptblock',
-    },
-  ],
+  related: [],
   type: 'Target',
   definitions: [CUSTOM_DATA('TransactionCompleteWithReprintData')],
 };

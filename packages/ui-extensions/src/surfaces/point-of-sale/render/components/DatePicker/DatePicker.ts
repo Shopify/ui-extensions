@@ -1,29 +1,26 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-/**
- * Represents the properties for the DatePicker component.
- * @property selected - The selected time.
- * @property onChange - A callback for changes.
- * @property visibleState - Control the visible state, and a callback to set the visible state as false when the dialog closes.
- * @property inputMode - Whether to display the picker in inline (clock) mode or spinner mode.
- */
 export interface DatePickerProps {
   /**
-   * The selected time.
+   * The currently selected date value. Defaults to the current date when not specified.
+   *
    * @defaultValue The current time
    */
   selected?: string;
   /**
-   * A callback for changes.
+   * A callback function executed when the user selects a date, receiving the selected date string as a parameter.
    */
   onChange?(selected: string): void;
   /**
-   * Control the visible state, and a callback to set the visible state as false when the dialog closes.
+   * A tuple that controls the visible state of the picker and provides a callback to set visibility to false when the dialog closes. The first element is the current visibility state, and the second is a setter function.
    */
   visibleState: [boolean, (visible: boolean) => void];
 
   /**
-   * Whether to display the picker in inline (calendar) mode or spinner mode.
+   * The display mode for the date picker.
+   * - `inline`: A calendar-style interface that displays a full month view where users can tap specific dates. Provides visual context about weekdays, month structure, and date relationships.
+   * - `spinner`: A spinner-style selector with scrollable columns for month, day, and year. Offers a more compact interface suitable for constrained spaces or when calendar context isn't necessary.
+   *
    * @defaultValue 'inline'
    */
   inputMode?: 'inline' | 'spinner';

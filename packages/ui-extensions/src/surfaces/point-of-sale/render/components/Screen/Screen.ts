@@ -1,82 +1,62 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-/** Represents the presentation of a screen in the navigation stack.
- * @property `sheet` displays the screen from the bottom on `navigate` when `true`.
- */
 export interface ScreenPresentationProps {
   /**
-   * Displays the screen from the bottom on `navigate` when `true`.
+   * Displays the screen from the bottom as a sheet presentation when true during navigation. The text label displayed on the secondary action button in the screen's action bar.
    */
   sheet?: boolean;
 }
 
-/** Represents the secondary action button of a screen in the navigation stack.
- * @property `text` displays the name of the secondary action in the action bar.
- * @property `onPress` triggered when the secondary action button is pressed.
- * @property `isEnabled` sets whether the action can be tapped.
- */
 export interface SecondaryActionProps {
   /**
-   * Displays the name of the secondary action in the action bar.
+   * The text label displayed on the secondary action button in the screen's action bar.
    */
   text: string;
   /**
-   * Triggered when the secondary action button is pressed.
+   * A callback function triggered when the secondary action button is pressed by the user.
    */
   onPress: () => void;
   /**
-   * Sets whether the action can be tapped.
+   * Whether the secondary action button can be tapped and is interactive.
    */
   isEnabled?: boolean;
 }
 
-/** Represents a screen in the navigation stack.
- * @property `name` used to identify this screen as a destination in the navigation stack.
- * @property `title` the title of the screen which will be displayed on the UI.
- * @property `isLoading` displays a loading indicator when `true`. Set this to `true` when performing an asynchronous task, and then to false when the data becomes available to the UI.
- * @property `presentation` dictates how the `Screen` will be presented when navigated to.
- * @property `secondaryAction` displays a secondary action button on the screen.
- * @property `onNavigate` triggered when the screen is navigated to.
- * @property `onNavigateBack` triggered when the user navigates back from this screen. Runs after screen is unmounted.
- * @property `overrideNavigateBack` a callback that allows you to override the secondary navigation action. Runs when screen is mounted.
- * @property `onReceiveParams` a callback that gets triggered when the navigation event completes and the screen receives the parameters.
- */
 export interface ScreenProps {
   /**
-   * Used to identify this screen as a destination in the navigation stack.
+   * The unique identifier used to identify this screen as a destination in the navigation stack.
    */
   name: string;
   /**
-   * The title of the screen which will be displayed on the UI.
+   * The title text of the screen that will be displayed in the UI header.
    */
   title: string;
   /**
-   * Displays a loading indicator when `true`.
-   * Set this to `true` when performing an asynchronous task, and then to false when the data becomes available to the UI.
+   * A boolean that displays a loading indicator when `true`. Set this during asynchronous tasks and return to `false` when data becomes available.
    */
   isLoading?: boolean;
   /**
-   * Dictates how the `Screen` will be presented when navigated to.
+   * The presentation configuration that dictates how the screen will be displayed when navigated to.
    */
   presentation?: ScreenPresentationProps;
   /**
-   * Displays a secondary action button on the screen.
+   * The configuration for a secondary action button displayed on the screen header.
    */
   secondaryAction?: SecondaryActionProps;
   /**
-   * Triggered when the screen is navigated to.
+   * A callback function triggered when the screen is navigated to in the navigation stack.
    */
   onNavigate?: () => void;
   /**
-   * Triggered when the user navigates back from this screen. Runs after screen is unmounted.
+   * A callback function triggered when the user navigates back from this screen. Runs after the screen is unmounted.
    */
   onNavigateBack?: () => void;
   /**
-   * A callback that allows you to override the secondary navigation action. Runs when screen is mounted.
+   * A callback function that allows you to override the default back navigation action. Runs when the screen is mounted.
    */
   overrideNavigateBack?: () => void;
   /**
-   * A callback that gets triggered when the navigation event completes and the screen receives the parameters.
+   * A callback function triggered when the navigation event completes and the screen receives parameters passed during navigation.
    */
   onReceiveParams?: (params: any) => void;
 }

@@ -1,14 +1,17 @@
+/**
+ * Defines information about the POS device where the extension is running.
+ */
 export interface Device {
   /**
-   * The name of the device
+   * The name of the POS device.
    */
   name: string;
   /**
-   * The ID of the device
+   * The unique identifier for the POS device.
    */
   deviceId: number;
   /**
-   * Whether the device is a tablet
+   * Whether the device is a tablet form factor.
    */
   isTablet: boolean;
 }

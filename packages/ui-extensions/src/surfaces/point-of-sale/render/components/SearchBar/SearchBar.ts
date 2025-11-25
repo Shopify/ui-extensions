@@ -2,31 +2,31 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 export interface SearchBarProps {
   /**
-   * The initial text value in the search bar. This is different from `placeHolder`, which is displayed in the search bar when the search bar doesn't have a populated string.
+   * The initial text value displayed in the search bar when first rendered. This differs from placeholder text which appears when the field is empty.
    */
   initialValue?: string;
   /**
-   * A callback containing the new text value of the search bar.
+   * A callback function executed whenever the text value changes, receiving the new text value as a parameter for real-time search or filtering.
    */
   onTextChange?: (value: string) => void;
   /**
-   * A callback when the search button is tapped.
+   * A callback function executed when the search button is tapped, receiving the current search text as a parameter.
    */
   onSearch: (value: string) => void;
   /**
-   * A callback when the input is focused.
+   * A callback function executed when the search input field receives focus.
    */
   onFocus?: () => void;
   /**
-   * A callback when focus is removed.
+   * A callback function executed when focus is removed from the search input field.
    */
   onBlur?: () => void;
   /**
-   * Whether the text can be changed.
+   * A boolean that determines whether the text can be changed by user input.
    */
   editable?: boolean;
   /**
-   * The placeholder value to display in the search bar when no text is entered.
+   * The placeholder text displayed in the search bar when no text is entered, providing guidance about what users can search for.
    */
   placeholder?: string;
 }

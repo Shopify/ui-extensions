@@ -4,33 +4,22 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosReturnPostActionMenuItemRender,
-  description: `A static extension target that renders as a menu item on the post-return screen
-  > Note:
-  > This is part of a [POS UI Extensions developer preview](/docs/api/feature-previews#pos-ui-extensions-preview). More information to come.`,
+  description:
+    'Renders a single interactive button component as a menu item in the post-return action menu. Use this target for post-return operations like generating return receipts, processing restocking workflows, or collecting return feedback.' +
+    '\n\nExtensions at this target can access the order identifier through the Order API to perform return-specific operations. Menu items typically invoke `api.action.presentModal()` to launch the companion modal for complete post-return workflows.',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Menu item',
+      'Create a post-return action menu item',
       'targets',
       'pos-return-post-action-menu-item-render',
     ),
+    description:
+      'Add an interactive menu item to the post-return action menu for operations after completing a return. This example shows how to create a menu item that accesses order data and launches modal workflows for tasks like generating return receipts, processing restocking, or collecting feedback.',
   },
   category: 'Targets',
   subCategory: 'Post-return',
   isVisualComponent: false,
-  related: [
-    {
-      name: ExtensionTargetType.PosReturnPostActionRender,
-      subtitle: 'Target',
-      type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/post-return/pos-return-post-action-render',
-    },
-    {
-      name: ExtensionTargetType.PosReturnPostBlockRender,
-      subtitle: 'Target',
-      type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/post-return/pos-return-post-block-render',
-    },
-  ],
+  related: [],
   type: 'Target',
 };
 
