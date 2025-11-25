@@ -2,22 +2,25 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {AutoCapitalizationType} from '../shared/auto-capitalization-type';
 import type {BaseTextFieldProps} from '../shared/BaseTextField';
 
-/**
- * Dictates what type of values can be used in a `TextField`.
- */
 export type InputType = 'text' | 'number' | 'currency' | 'giftcard' | 'email';
-/**
- * @property `inputType` the `InputType` of the `TextField`. This will select the appropriate keyboard.
- * @property `autoCapitalize` dictates when the text should be auto-capitalized.
- * @property `customValidator` applies a custom validator that can dictate whether or not an entered value is valid.
- */
 export interface FormattedTextFieldProps extends BaseTextFieldProps {
   /**
-   * The `InputType` of the `TextField`. This will select the appropriate keyboard.
+   * Defines the input type options that determine which specialized keyboard layout is displayed.
+   *
+   * - `text`: A general text input type with standard keyboard layout for any text content.
+   * - `number`: A numeric input type with number-optimized keyboard for entering quantities or numeric values.
+   * - `currency`: A currency input type with keyboard optimized for monetary amounts and decimal values.
+   * - `giftcard`: A gift card input type with keyboard optimized for alphanumeric gift card codes.
+   * - `email`: An email input type with keyboard optimized for email addresses, including easy access to @ and domain symbols.
    */
   inputType?: InputType;
   /**
-   * Dictates when the text should be auto-capitalized.
+   * Defines the auto-capitalization behavior options for text input.
+   *
+   * - `none`: No automatic capitalization is applied to the text input.
+   * - `sentences`: The first letter of each sentence is automatically capitalized.
+   * - `words`: The first letter of each word is automatically capitalized.
+   * - `characters`: Every character is automatically capitalized as it is entered.
    */
   autoCapitalize?: AutoCapitalizationType;
   /**

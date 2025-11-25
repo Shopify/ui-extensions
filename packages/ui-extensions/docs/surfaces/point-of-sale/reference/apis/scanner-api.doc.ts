@@ -7,68 +7,83 @@ const generateCodeBlockForScannerApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Scanner API',
-  description: `
-The Scanner API enables an extension to access scanner data and available scanning sources supported by the device.
-
-### Supporting targets
-- ${TargetLink.PosHomeModalRender}
-- ${TargetLink.PosPurchasePostActionRender}
-- ${TargetLink.PosProductDetailsActionRender}
-- ${TargetLink.PosOrderDetailsActionRender}
-- ${TargetLink.PosDraftOrderDetailsActionRender}
-- ${TargetLink.PosCustomerDetailsActionMenuItemRender}
-`,
+  description:
+    'The Scanner API provides access to barcode and QR code scanning functionality on POS devices, allowing you to subscribe to scan events, monitor available scanner sources, and process scanned data through subscription callbacks. The API enables integration with device cameras, external scanners, and embedded scanning hardware.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
     {
       title: 'ScannerApi',
-      description: '',
+      description:
+        'The `ScannerApi` object provides access to scanning functionality and scanner source information. Access these properties through `api.scanner` to monitor scan events and available scanner sources.',
       type: 'ScannerApiContent',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   related: [],
   examples: {
-    description: 'Examples of receiving updates from the Scanner API',
+    description:
+      'Learn how to handle barcode and QR code scans from cameras, external scanners, and embedded hardware.',
     examples: [
       {
         codeblock: generateCodeBlockForScannerApi(
-          'Subscribe to scan event updates',
-          'subscribable-events',
+          'Adapt UI to available scanner types',
+          'conditional-scanner-example',
         ),
+        description:
+          'Adapt your scanning interface based on available hardware capabilities. This example shows how to conditionally render appropriate scanning UI for different device types—using camera scanning on devices with cameras while falling back to embedded scanning on devices like POS GO that lack camera hardware, ensuring a functional experience across all POS devices.',
       },
       {
         codeblock: generateCodeBlockForScannerApi(
-          'Receiving updates on available scanner sources',
+          'Add products from hardware scanner',
+          'hardware-scanner-example',
+        ),
+        description:
+          'Automatically add products to the cart when barcodes are scanned using external hardware scanners. This example listens for scan events and uses the scanned data to search for and add matching products, creating a seamless scanning workflow that works with physical scanners connected to the POS device.',
+      },
+      {
+        codeblock: generateCodeBlockForScannerApi(
+          'Monitor available scanner hardware',
           'subscribable-sources',
         ),
+        description:
+          'Subscribe to scanner source changes to detect which scanning methods are available on the device. This example demonstrates tracking available scanner sources (camera, external, embedded) in real time, allowing you to adapt your UI and functionality based on hardware capabilities.',
       },
-    ],
-    exampleGroups: [
       {
-        title: 'Use cases',
-        examples: [
-          {
-            description:
-              'In this example, assuming a physical scanner is connected to the POS, any scans performed when ui extensions are in use will automatically add the product to the cart if the data exists on the shop.',
-            codeblock: generateCodeBlockForScannerApi(
-              'Hardware scanner example',
-              'hardware-scanner-example',
-            ),
-          },
-          {
-            description:
-              'There might be situations where a developer needs to conditionally render UI elements based on the available scanning sources of the device on which the extension is installed. For example, an extension could be designed for full-screen camera scanning, but a device like POS GO does not have a camera. In such cases, it would be necessary to avoid rendering the camera scanner component and instead create a UI that supports embedded scanning.',
-            codeblock: generateCodeBlockForScannerApi(
-              'Conditional scanner source rendering example',
-              'conditional-scanner-example',
-            ),
-          },
-        ],
+        codeblock: generateCodeBlockForScannerApi(
+          'Subscribe to scan events',
+          'subscribable-events',
+        ),
+        description:
+          'Subscribe to scan events to process barcode and QR code data as it arrives. This example shows how to listen for scans from any available scanner source (camera, external scanner, or embedded hardware), enabling you to add products to cart, look up information, or trigger custom workflows based on scanned codes.',
       },
     ],
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Manage subscriptions carefully:** Remember that \`RemoteSubscribable\` supports only one subscription at a time. If you need multiple subscriptions, use \`makeStatefulSubscribable\` or manage subscription cleanup to avoid conflicts.
+- **Validate scanned data appropriately:** Validate scanned data before processing, implementing proper error handling for invalid codes, unsupported formats, or scanning errors.
+- **Provide clear scanning feedback:** Give users clear feedback about scan results, including success confirmations, error messages, and guidance when scans fail or produce invalid data.
+- **Adapt to available scanner sources:** Check available scanner sources and adapt your interface accordingly.
+      `,
+      image: 'camera-scanner-best-practice.png',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.
+- \`RemoteSubscribable\` supports only one subscription at a time. Use \`makeStatefulSubscribable\` if you need multiple components to subscribe to scan events simultaneously.
+- Scanning availability depends on device hardware capabilities and may vary between different POS devices and configurations.
+      `,
+    },
+  ],
 };
 
 export default data;
