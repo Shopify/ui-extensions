@@ -41,11 +41,23 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'guidelines',
-      title: 'Guidelines',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
       sectionContent: `
-- Use when needing to communicate to merchants in a way that is persistent but non-interruptive.
-- Only one banner should be visible at a time.
+- **Apply appropriate tones:** Use \`critical\` for errors requiring immediate action, \`warning\` for important notices, \`success\` for confirmations, \`info\` for general information.
+- **Keep headings concise:** Write brief headings that clearly communicate the message. Use the collapsible feature for additional detail.
+- **Show one banner at a time:** Display only one banner to avoid overwhelming the interface. Prioritize by importance.
+- **Make non-critical banners dismissible:** Allow dismissal for non-critical information. Keep critical alerts non-dismissible until resolved.
+- **Include clear actions:** If action is needed, use the primaryAction slot to provide clear next steps.
+- **Use for persistent messages:** Use banners for messages that need to persist. For temporary notifications, consider toast notifications.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The \`Banner\` component only accepts a \`heading\` property for text content and doesn't support body content. You can't place \`<s-text>\` or other text elements inside the banner as children.
 `,
     },
   ],

@@ -10,7 +10,7 @@ import {
 const data: ReferenceEntityTemplateSchema = {
   name: 'Customer Privacy',
   description:
-    "The API for interacting with a customer's privacy consent. It is similar to the [Customer Privacy API in storefront](/docs/api/customer-privacy).",
+    "The API for interacting with a customer's privacy consent. It is similar to the Customer Privacy API in storefront.",
   isVisualComponent: false,
   requires: REQUIRES_PROTECTED_CUSTOMER_DATA,
   category: 'APIs',

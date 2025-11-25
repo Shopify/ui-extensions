@@ -33,17 +33,29 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
-  category: 'APIs',
-  related: [
+  subSections: [
     {
-      name: ExtensionTargetType.PosProductDetailsActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-product-details-action-menu-item-render',
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Use product ID for lookups:** Fetch additional product information from external systems or Shopify APIs using the product ID.
+- **Enable variant-specific features:** Use variant ID for variant-specific pricing, inventory checks, or cart operations.
+- **Validate product access:** Verify product and variant ID are valid before performing operations or API calls.
+`,
     },
     {
-      name: ExtensionTargetType.PosProductDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-product-details-action-render',
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The API provides only basic product identifiers—use Shopify APIs or external systems to fetch additional product details like title, description, pricing, or inventory levels.
+- Product data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+`,
     },
   ],
+  category: 'APIs',
+  related: [],
 };
 
 export default data;

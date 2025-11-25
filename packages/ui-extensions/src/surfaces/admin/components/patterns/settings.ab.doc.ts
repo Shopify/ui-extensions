@@ -9,7 +9,7 @@ const data: ReferenceEntityTemplateSchema = {
   | --- | --- |
   | Find and change app settings | Membership settings, app appearance, set up theme blocks |
 
-  ![Preview of the settings pattern](/assets/templated-apis-screenshots/admin/patterns/settings-example.png)
+  !Preview of the settings pattern
 
   This pattern uses \`Box\`, \`Button\`, \`ChoiceList\`, \`Clickable\`, \`Divider\`, \`Grid\`, \`Heading\`, \`Icon\`, \`Paragraph\`, \`Section\`, \`Select\`, \`Stack\`, and \`TextField\` components.
 

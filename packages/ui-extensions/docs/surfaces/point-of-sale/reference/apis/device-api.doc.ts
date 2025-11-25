@@ -19,6 +19,29 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'APIs',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Implement responsive design:** Use device type info to adapt layouts, component sizes, and interactions based on form factor.
+- **Handle async queries:** Handle Promise-based methods with async/await or \`.then()\` and implement error handling.
+- **Cache device information:** Cache after initial query to avoid repeated async calls, but handle cases where characteristics might change.
+- **Provide device-appropriate experiences:** Design different experiences for tablets versus other devices, leveraging larger screens.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Device information queries are asynchronous and may take time to resolve, so always handle the Promise-based responses appropriately in your extension logic.
+- The Device API provides read-only access to device information and can't be used to modify device settings or capabilities.
+- Device type detection is limited to basic form factor identification (tablet vs. non-tablet) and doesn't provide detailed hardware specifications or capabilities.
+`,
+    },
+  ],
   related: [],
   examples: {
     description:

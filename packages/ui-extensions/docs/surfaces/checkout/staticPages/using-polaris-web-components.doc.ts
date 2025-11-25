@@ -480,7 +480,7 @@ Use methods when you need to trigger actions that can’t be achieved through pr
     {
       type: 'Generic',
       title: 'Using Forms',
-      sectionContent: `The [Form](https://shopify.dev/docs/api/checkout-ui-extensions/latest/components/forms/form) component provides a way to manage form state and submit data to your app’s backend or directly to Shopify using Direct API access.
+      sectionContent: `The Form component provides a way to manage form state and submit data to your app’s backend or directly to Shopify using Direct API access.
 When the form is submitted or reset the relevant callback in the form component will get triggered.
 
 Using this, you can control what defines a component to be dirty by utilizing the input’s defaultValue property.

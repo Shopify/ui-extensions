@@ -18,12 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   subCategory: 'Smart grid',
   isVisualComponent: false,
-  related: [
-    {
-      name: 'pos.home.tile.render',
-      url: 'pos-home-tile-render',
-    },
-  ],
+  related: [],
   type: 'Target',
 };
 

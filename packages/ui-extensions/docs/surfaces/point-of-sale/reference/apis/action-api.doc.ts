@@ -20,6 +20,26 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'APIs',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Use modals for complex workflows:** Reserve for operations requiring more space, multiple steps, or complex interactions.
+- **Provide clear entry points:** Use descriptive button labels and titles that indicate what the modal will contain.
+- **Handle dismissal gracefully:** Save progress when possible and provide feedback about incomplete operations.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+Each extension can only present one modal at a time. Subsequent calls to \`presentModal()\` while a modal is already open may be ignored or replace the current modal.
+`,
+    },
+  ],
   related: [],
   examples: {
     description:

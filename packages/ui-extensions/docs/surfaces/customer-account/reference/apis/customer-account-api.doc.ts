@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Customer Account API',
   description: `Create unique customer experiences with the Customer Account API. The API offers a full range of options making it possible for customers to view their orders, manage their profile and much more.
   
-  You can access the [Customer Account GraphQL API](/docs/api/customer) using the global \`fetch()\`.`,
+  You can access the Customer Account GraphQL API using the global \`fetch()\`.`,
   isVisualComponent: false,
   category: 'APIs',
   type: 'API',

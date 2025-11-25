@@ -38,6 +38,28 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Choose for visual time selection:** Use \`TimePicker\` when users benefit from a visual picker interface. Use \`TimeField\` when users know the exact time.
+- **Use correct format:** Always use \`HH:mm:ss\` format with leading zeros. The internal format is always 24-hour regardless of UI presentation.
+- **Validate before setting values:** Invalid values reset to empty string. Implement validation to show appropriate error messages.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- \`TimePicker\` provides the picker interface but requires external state management for the selected value—you must update the value property in response to change events.
+- The component uses 24-hour \`HH:mm:ss\` format internally—display formatting for 12-hour time or locale-specific formats requires additional formatting logic in your application.
+- Invalid time values result in an empty string without specific error feedback—you must validate time formats before setting the value property to provide meaningful error messages to users.
+`,
+    },
+  ],
   related: [],
   examples: {
     description:

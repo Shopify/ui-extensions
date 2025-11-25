@@ -22,6 +22,31 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'APIs',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Implement error handling:** Wrap \`cashDrawer.open()\` calls in try-catch blocks. Show clear error messages with resolution steps.
+- **Require authorization:** Implement authorization checks before opening for non-transaction operations. Consider PIN entry, manager approval, or staff permissions.
+- **Provide user feedback:** Show immediate confirmations like "Cash drawer opened successfully" so staff know the operation completed.
+- **Log operations for audit:** Track all openings including timestamps, staff info, and reason for loss prevention and compliance.
+- **Test without hardware:** Handle scenarios where no drawer is connected with fallback workflows or clear messaging.
+- **Consider timing:** Open at appropriate moments. Avoid opening multiple times in quick succession or in inappropriate workflow states.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The Cash Drawer API requires compatible cash drawer hardware connected to the POS device through supported peripheral connections (USB, network, or Bluetooth depending on device and hardware model).
+- The API only triggers the drawer opening mechanism and cannot detect whether the drawer is currently open, closed, or physically jammed. Your extension is responsible for any required state tracking.
+- Cash drawer operations are subject to POS hardware capabilities and may not be available on all device configurations. The API will return errors on devices without cash drawer support.
+`,
+    },
+  ],
   related: [],
   examples: {
     description:

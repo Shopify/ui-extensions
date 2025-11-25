@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description: `
-    You can access the [Storefront GraphQL API](/docs/api/storefront) via the \`query()\` helper function.
+    You can access the Storefront GraphQL API via the \`query()\` helper function.
     Ensure your extension can use this API by [enabling the \`api_access\` capability](/docs/api/customer-account-ui-extensions/configuration#api-access).`,
     codeblock: {
       title: 'Extension.jsx',
@@ -34,7 +34,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description: `
-        You can access the [Storefront GraphQL API](/docs/api/storefront) using global \`fetch()\`.
+        You can access the Storefront GraphQL API using global \`fetch()\`.
         Ensure your extension can access the Storefront API via the [\`api_access\` capability](/docs/api/customer-account-ui-extensions/configuration#api-access).`,
         codeblock: {
           title: 'Accessing the Storefront API with fetch()',

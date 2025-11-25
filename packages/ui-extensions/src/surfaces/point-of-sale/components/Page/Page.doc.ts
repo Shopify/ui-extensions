@@ -39,6 +39,28 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Write descriptive headings:** Use heading and subheading to describe the page's purpose and provide context about the current workflow step.
+- **Place one primary action in action bar:** Use the secondary-actions slot for the page's most important action.
+- **Use aside for supplementary content:** Reserve the aside slot for navigation, contextual help, or supporting information.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The secondary-actions slot supports only a single button element—multiple actions in the action bar aren't supported and should be handled within the main content area.
+- Page layout and styling are controlled by the POS design system—custom page-level styling beyond the provided slots and properties is not available.
+- The component is designed for full-screen modal interfaces—it's not suitable for inline content or partial page layouts within existing POS screens.
+`,
+    },
+  ],
   related: [],
 };
 

@@ -19,16 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   subCategory: 'Register details',
   isVisualComponent: false,
-  related: [
-    {
-      name: ExtensionTargetType.PosRegisterDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/register-details/pos-register-details-action-render',
-    },
-    {
-      name: ExtensionTargetType.PosRegisterDetailsBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/register-details/pos-register-details-block-render',
-    },
-  ],
+  related: [],
   type: 'Target',
 };
 export default data;

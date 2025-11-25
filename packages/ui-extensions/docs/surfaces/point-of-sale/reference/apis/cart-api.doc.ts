@@ -20,6 +20,30 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'APIs',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Handle cart state reactively:** Use the signal-based interface to auto-update your UI when cart changes occur.
+- **Validate before operations:** Check cart editability and validate input data before performing operations.
+- **Use bulk operations:** Use bulk methods like \`bulkCartUpdate\` for better performance when performing multiple operations.
+- **Handle errors:** Implement error handling for operations that may fail due to inventory, validation, or business rules.
+- **Validate selling plans:** When working with subscriptions, validate selling plan compatibility and handle requirements properly.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Cart operations may fail due to business rules, inventory constraints, oversell protection, or validation errors—always implement appropriate error handling.
+- Some operations require specific preconditions. For example, customer must be present for address operations and selling plans must be compatible with line items.
+- Selling plan operations are only available for products that support selling plans and may have additional validation requirements.
+`,
+    },
+  ],
   related: [],
   examples: {
     description:

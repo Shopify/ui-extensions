@@ -101,7 +101,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: getHookExample('delivery-group'),
   examples: {
     description:
-      'Learn how to use the API with JavaScript (JS) and React. See [React Hooks](../react-hooks) for all available hooks.',
+      'Learn how to use the API with JavaScript (JS) and React. See React Hooks for all available hooks.',
     examples: [
       getExample('shipping-option-item/default', ['jsx']),
       getExample(

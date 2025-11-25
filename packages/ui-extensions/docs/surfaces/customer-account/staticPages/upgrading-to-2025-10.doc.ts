@@ -5,7 +5,7 @@ import type {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
   title: 'Upgrading to 2025-10',
-  description: `This guide describes how to upgrade your customer account UI extension to API version \`2025-10\` and adopt [Polaris](/beta/next-gen-dev-platform/polaris) web components.`,
+  description: `This guide describes how to upgrade your customer account UI extension to API version \`2025-10\` and adopt Polaris web components.`,
   // The id for the page that is used for routing. If this documentation is for a primary landing page, confirm the id matches the reference name.
   id: 'upgrading-to-2025-10',
   sections: [
@@ -263,14 +263,14 @@ If your app is using ESLint, update your configuration to include the new global
       sectionContent: `
 |   **Legacy Component**   |   **Polaris Web Component**   |   **Migration Notes**   |
 | :----------------------: | :-------------------------------: | :---------------------: |
-|   \`Avatar\`                |   [Avatar](/api/customer-account-ui-extensions/polaris-web-components/media/avatar)   |   Available today   |
-|                             |  [ButtonGroup](/api/customer-account-ui-extensions/polaris-web-components/actions/buttongroup)   |   Available today   |
-|   \`Card\`                  |  [Section](/api/customer-account-ui-extensions/polaris-web-components/structure/section)   |   Available today   |
-|   \`CustomerAccountAction\`  |  [CustomerAccountAction](/api/customer-account-ui-extensions/polaris-web-components/actions/customeraccountaction)   |   Available today       |
-|   \`ImageGroup\`            |  [ImageGroup](/api/customer-account-ui-extensions/polaris-web-components/media/imagegroup)                         |   Available today       |
-|   \`Menu\`                  |  [Menu](/api/customer-account-ui-extensions/polaris-web-components/actions/menu)    |   Available today   |
-|   \`Page\`                  |  [Page](/api/customer-account-ui-extensions/polaris-web-components/structure/page)    |   Available today |
-|   \`ResourceItem\`          |                                |   Removed. Use [Section](/api/customer-account-ui-extensions/polaris-web-components/structure/section)   |
+|   \`Avatar\`                |   Avatar   |   Available today   |
+|                             |  ButtonGroup   |   Available today   |
+|   \`Card\`                  |  Section   |   Available today   |
+|   \`CustomerAccountAction\`  |  CustomerAccountAction   |   Available today       |
+|   \`ImageGroup\`            |  ImageGroup                         |   Available today       |
+|   \`Menu\`                  |  Menu    |   Available today   |
+|   \`Page\`                  |  Page    |   Available today |
+|   \`ResourceItem\`          |                                |   Removed. Use Section   |
 `,
     },
     {

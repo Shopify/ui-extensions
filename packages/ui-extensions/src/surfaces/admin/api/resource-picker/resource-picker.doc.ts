@@ -6,7 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
   description: `The Resource Picker API provides a search-based interface to help users find and select one or more products, collections, or product variants, and then returns the selected resources to your app. Both the app and the user must have the necessary permissions to access the resources selected.
 
 > Tip:
-> If you are picking app resources such as product reviews, email templates, or subscription options, you should use the [Picker](picker) API instead.
+> If you are picking app resources such as product reviews, email templates, or subscription options, you should use the Picker API instead.
 `,
   isVisualComponent: true,
   category: 'API',

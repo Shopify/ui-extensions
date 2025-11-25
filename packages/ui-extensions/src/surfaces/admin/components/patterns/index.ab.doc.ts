@@ -11,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   | View all objects at once | Products, orders, customers, discounts |
   | Perform bulk actions | Delete products, pause/activate campaigns |
 
-  ![Preview of the index pattern](/assets/templated-apis-screenshots/admin/patterns/index-example.png)
+  !Preview of the index pattern
 
   This pattern uses \`Badge\`, \`Box\`, \`Button\`, \`Clickable\`, \`Grid\`, \`Heading\`, \`Image\`, \`Link\`, \`Paragraph\`, \`Section\`, \`Stack\`, and \`Table\` components.
 

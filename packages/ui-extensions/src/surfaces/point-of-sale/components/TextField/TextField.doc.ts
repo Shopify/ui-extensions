@@ -44,6 +44,28 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Use for single-line text input:** Choose \`TextField\` for short values like names, titles, or identifiers. For multi-line content, use \`TextArea\`.
+- **Show character limit feedback:** When approaching \`maxLength\`, display remaining characters in the \`details\` text.
+- **Write descriptive labels:** Use specific labels like "Product Name" or "Reference Code" rather than generic terms.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- \`TextField\` provides single-line text input only—multi-line text entry requires the \`TextArea\` component.
+- The \`required\` property adds semantic meaning only—it doesn't trigger automatic error display or validation, so you must implement validation logic manually.
+- The \`accessory\` slot supports only \`Button\` and \`Clickable\` components with text content only—other component types or complex layouts can't be used for field accessories.
+`,
+    },
+  ],
   related: [],
   examples: {
     description:

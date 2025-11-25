@@ -38,6 +38,28 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Use for space-constrained layouts:** Choose \`DateSpinner\` for narrow layouts or split-screen interfaces where a calendar view would be impractical.
+- **Best for nearby dates:** Use when selecting dates close to the current date. For distant dates, \`DatePicker\` provides faster navigation.
+- **Provide interaction cues:** Consider labels or instructions to help first-time users understand the scrollable column interface.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- \`DateSpinner\` uses ISO 8601 date format (\`YYYY-MM-DD\`) only—other date formats require conversion before setting the value property.
+- The component provides spinner-based date selection exclusively—for calendar-style visual selection with month context, use the \`DatePicker\` component instead.
+- \`DateSpinner\` doesn't include field labels, help text, or error messaging—combine with other UI elements or text components to provide complete form field experiences.
+`,
+    },
+  ],
   related: [],
   examples: {
     description:

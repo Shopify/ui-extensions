@@ -19,6 +19,29 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'APIs',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Handle authentication:** Check for undefined session tokens and implement fallback behavior when authentication fails.
+- **Use appropriate identifiers:** Distinguish between \`userId\` (authenticated account) and \`staffMemberId\` (pinned staff) for permissions and personalization.
+- **Implement location-aware features:** Use \`locationId\` and \`currency\` for location-specific functionality like inventory checks and tax calculations.
+- **Secure backend communication:** Use session tokens only for backend API calls. Never expose in logs or storage. Validate tokens on your backend.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Session tokens are only available when the authenticated user has proper app permissions enabled. Staff members who are pinned in but not authenticated can't generate tokens.
+- Session data is read-only and can't be modified through the API. Changes to shop settings, locations, or staff assignments require POS application updates.
+- Session tokens should only be used for communication with your app's configured backend service and can't be used for direct Shopify API calls from the client side.
+`,
+    },
+  ],
   related: [],
   examples: {
     description:

@@ -24,18 +24,30 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'APIs',
-  related: [
+  subSections: [
     {
-      name: 'PrintPreview Component',
-      subtitle: 'Preview documents before printing',
-      url: '/api/pos-ui-extensions/components/printpreview',
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Choose appropriate formats:** Use HTML for rich formatting, text for simple content, images for graphics, PDFs for complex documents.
+- **Handle errors:** Implement error handling for network failures, unsupported types, or printer connectivity issues.
+- **Optimize documents:** Design with appropriate sizing, margins, and formatting for printers and standard paper sizes.
+- **Provide feedback:** Show loading states, success confirmations, and error messages for print operations.
+`,
     },
     {
-      name: 'Build a Print Extension',
-      subtitle: 'Learn how to implement printing',
-      url: '/docs/apps/build/pos/build-print-extension?extension=preact',
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- PDF printing on Android devices requires downloading the file and using an external application, which may interrupt the user workflow.
+- Print operations depend on device printer connectivity and configuration, which may not be available in all POS setups.
+- Document formatting and appearance may vary depending on the printer type, paper size, and device capabilities.
+`,
     },
   ],
+  related: [],
   examples: {
     description:
       'Learn how to trigger document printing for receipts, labels, and custom documents.',

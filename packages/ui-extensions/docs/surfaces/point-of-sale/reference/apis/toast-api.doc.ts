@@ -19,6 +19,29 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'APIs',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Write clear, concise messages:** Keep content brief since toasts disappear automatically.
+- **Use appropriate timing:** Choose durations that give users enough time to read without keeping visible too long.
+- **Provide meaningful feedback:** Use toasts to confirm actions, explain errors, or communicate status changes.
+- **Avoid overuse:** Reserve for important feedback. Don't show multiple toasts simultaneously.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Toast messages are temporary and can't be made persistent. For important information that users need to reference later, consider using other UI components or storage mechanisms.
+- Multiple toast messages may overlap or interfere with each other if shown in rapid succession. Consider queuing or spacing out notifications appropriately.
+- Toast content is limited to plain text and can't include rich formatting, links, or interactive elements.
+`,
+    },
+  ],
   related: [],
   examples: {
     description:

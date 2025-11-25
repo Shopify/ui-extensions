@@ -35,28 +35,24 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'guidelines',
-      title: 'Guidelines',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
       sectionContent: `
-- Badges should be positioned as close as possible to the item they’re related to.
+- **Apply appropriate tones:** Use \`success\` for positive states, \`critical\` for urgent issues, \`warning\` for attention-needed states, \`info\` for neutral information.
+- **Keep text brief:** Use single words or short phrases. Avoid lengthy descriptions that don't fit the compact design.
+- **Position near related content:** Place badges next to the items they describe for clear associations.
+- **Use for status, not actions:** Badges display information only. For interactive elements, use buttons or clickable components.
 `,
     },
     {
       type: 'Generic',
-      anchorLink: 'content-guidelines',
-      title: 'Content guidelines',
+      anchorLink: 'limitations',
+      title: 'Limitations',
       sectionContent: `
-- Be concise. Use a single word to describe the status of an item.
-- Only use two or three words if you need to describe a complex state, for example "partially fulfilled".
-
-✅ fulfilled
-❌ order fulfilled
-
-Statuses should ideally be written as adjectives:
-
-✅ unpaid
-❌ payment not received
-      `,
+- Badges aren't interactive elements—they display information but don't respond to user interactions like clicks or taps.
+- The component relies on the tone system for semantic meaning, so custom styling may not convey the same semantic benefits.
+- Very long text content may be truncated or cause layout issues depending on the container and screen size.
+`,
     },
   ],
   related: [],

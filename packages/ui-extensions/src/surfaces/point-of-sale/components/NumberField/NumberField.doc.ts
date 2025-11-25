@@ -44,6 +44,28 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Choose appropriate controls:** Use \`stepper\` for quantities or small adjustments. Use \`none\` for prices or large values where steppers are impractical.
+- **Select the right input mode:** Use \`decimal\` for prices and measurements. Use \`numeric\` for quantities and counts.
+- **Explain constraints in details:** Use \`details\` to clarify valid ranges or formatting, like "Enter a quantity between 1 and 999."
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- \`NumberField\` provides numeric input but doesn't enforce \`min\`/\`max\` constraints for keyboard input—you must implement validation logic to enforce bounds and display appropriate errors.
+- Stepper controls restrict which properties are available—\`label\`, \`details\`, \`placeholder\`, \`error\`, \`required\`, and \`inputMode\` aren't supported. Choose your control type based on which properties your implementation requires.
+- The \`required\` property adds semantic meaning only—it doesn't trigger automatic error display or prevent invalid submissions without additional validation logic.
+`,
+    },
+  ],
   related: [],
   examples: {
     description:

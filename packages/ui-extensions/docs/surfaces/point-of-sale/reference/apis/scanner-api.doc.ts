@@ -20,6 +20,29 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'APIs',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Handle scan events reactively:** Use \`subscribe\` methods to process scan events as they occur for immediate feedback.
+- **Validate scanned data:** Validate before processing and handle invalid codes, unsupported formats, or errors.
+- **Provide clear feedback:** Show success confirmations, error messages, and guidance when scans fail.
+- **Adapt to available sources:** Check available scanner sources and provide alternatives when preferred methods aren't available.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.
+- Scanning availability depends on device hardware capabilities and may vary between different POS devices and configurations.
+- Scan data processing is reactive and requires proper subscription management to avoid memory leaks or unexpected behavior when components unmount.
+`,
+    },
+  ],
   related: [],
   examples: {
     description:

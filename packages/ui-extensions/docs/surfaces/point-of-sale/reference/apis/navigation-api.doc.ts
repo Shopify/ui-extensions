@@ -28,6 +28,27 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'APIs',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Use URL-based navigation:** Implement URL patterns for deep-linking and intuitive browser-like navigation within modals.
+- **Manage state effectively:** Use the \`state\` parameter to pass data between screens and maintain workflow context.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The Navigation API is only available in action (modal) targets and can't be used in action (menu item), block, or tile targets that don't support multi-screen navigation.
+- Navigation state is limited to serializable data and can't contain functions, complex objects, or circular references.
+- The API follows web platform standards but operates within the POS modal context, so some web navigation behaviors may differ from standard browser navigation.
+`,
+    },
+  ],
   related: [],
   examples: {
     description:

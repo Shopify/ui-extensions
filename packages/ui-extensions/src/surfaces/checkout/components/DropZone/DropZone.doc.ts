@@ -43,7 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `
 ### File storage
 
-File storage for uploads must be implemented separately. Metafields and the corresponding [Checkout API](https://shopify.dev/docs/api/checkout-ui-extensions/latest/apis/metafields) or [Customer Accounts API](https://shopify.dev/docs/api/customer/latest/mutations/metafieldsSet) can be utilized to store references to files alongside the relevant objects.
+File storage for uploads must be implemented separately. Metafields and the corresponding Checkout API or Customer Accounts API can be utilized to store references to files alongside the relevant objects.
 
 ### Mobile
 

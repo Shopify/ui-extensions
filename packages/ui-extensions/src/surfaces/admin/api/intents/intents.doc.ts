@@ -116,7 +116,7 @@ Where:
 | \`create\` | \`shopify/ProductVariant\` | — | \`{ productId: 'gid://shopify/Product/{id}' }\` |
 | \`edit\` | \`shopify/ProductVariant\` | \`gid://shopify/ProductVariant/{id}\` | \`{ productId: 'gid://shopify/Product/{id}' }\` |
 
-> **Note**: To determine whether to use the \`shopify/ProductVariant\` \`edit\` intent or the \`shopify/Product\` \`edit\` intent, query the [\`product.hasOnlyDefaultVariant\`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product#field-Product.fields.hasOnlyDefaultVariant) field. If the product has only the default variant (\`hasOnlyDefaultVariant\` is \`true\`), use the \`shopify/Product\` \`edit\` intent.`,
+> **Note**: To determine whether to use the \`shopify/ProductVariant\` \`edit\` intent or the \`shopify/Product\` \`edit\` intent, query the \`product.hasOnlyDefaultVariant\` field. If the product has only the default variant (\`hasOnlyDefaultVariant\` is \`true\`), use the \`shopify/Product\` \`edit\` intent.`,
       type: 'IntentInvokeApi',
     },
     {

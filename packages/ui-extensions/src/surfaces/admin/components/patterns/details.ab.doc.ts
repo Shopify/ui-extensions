@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
   | --- | --- |
   | View, edit and create objects  | Discounts, shipping labels, newsletters, templates. |
 
-  ![Preview of the details page pattern](/assets/templated-apis-screenshots/admin/patterns/details-example.png)
+  !Preview of the details page pattern
 
   This pattern uses \`Badge\`, \`Box\`, \`Button\`, \`Grid\`, \`Heading\`, \`Image\`, \`Link\`, \`MoneyField\`, \`NumberField\`, \`SearchField\`, \`Section\`, \`Select\`, \`Stack\`, \`Switch\`, \`Table\`, \`TextArea\`, \`TextField\`, \`UnorderedList\`, and \`URLField\` components.
 

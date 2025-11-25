@@ -44,6 +44,28 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Set appropriate row count:** Use 2-3 \`rows\` for brief notes, 4-6 for descriptions, and more for extensive content.
+- **Show character limit feedback:** When approaching \`maxLength\`, display remaining characters in the \`details\` text.
+- **Write descriptive labels:** Use specific labels like "Product Description" or "Special Instructions" rather than generic terms.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- \`TextArea\` provides multi-line text input but doesn't include rich text formatting capabilities—complex formatting like bold, italic, or lists requires alternative solutions or plain text representations.
+- The \`required\` property adds semantic meaning only—it doesn't trigger automatic error display or validation, so you must implement validation logic manually.
+- The \`accessory\` slot supports only \`Button\` and \`Clickable\` components—other component types can't be used for field accessories.
+`,
+    },
+  ],
   related: [],
   examples: {
     description:

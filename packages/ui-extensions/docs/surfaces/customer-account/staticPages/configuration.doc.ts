@@ -51,7 +51,7 @@ You can configure more than one type of extension within a configuration file.
       anchorLink: 'targets',
       title: 'Targets',
       sectionContent: `
-[Targets](/docs/api/customer-account-ui-extensions/extension-targets-overview) represent where your customer account UI extension will be injected. You may have one or many targets defined in your app extension configuration using the \`targeting\` field.
+Targets represent where your customer account UI extension will be injected. You may have one or many targets defined in your app extension configuration using the \`targeting\` field.
 
 Along with the \`target\`, Shopify needs to know which code to execute for it. You specify the path to your code file by using the  \`module\` property.
 
@@ -116,9 +116,9 @@ For block extension targets, you can [define the default placement](/docs/apps/b
 Defines the [capabilities](/docs/api/customer-account-ui-extensions/apis/extension#standardapi-propertydetail-extension) associated with your extension.
 | Property | Description  |
 |---|---|
-| [\`api_access\`](#api-access) | Allows your extension to query the Storefront API.
-| [\`network_access\`](#network-access) | Allows your extension make external network calls.
-| [\`collect_buyer_consent\`](#collect-buyer-consent) | Allows your extension to collect buyer consent for specific policies such as SMS marketing.
+| \`api_access\` | Allows your extension to query the Storefront API.
+| \`network_access\` | Allows your extension make external network calls.
+| \`collect_buyer_consent\` | Allows your extension to collect buyer consent for specific policies such as SMS marketing.
     `,
       codeblock: {
         title: 'shopify.extension.toml',
@@ -135,7 +135,7 @@ Defines the [capabilities](/docs/api/customer-account-ui-extensions/apis/extensi
       anchorLink: 'api-access',
       title: 'Storefront API access',
       sectionContent:
-        'The following section describes the use cases of the `api_access` capability and the [Storefront API](/api/storefront) access scopes.',
+        'The following section describes the use cases of the `api_access` capability and the Storefront API access scopes.',
       codeblock: {
         title: 'shopify.extension.toml',
         tabs: [
@@ -156,7 +156,7 @@ Defines the [capabilities](/docs/api/customer-account-ui-extensions/apis/extensi
       sectionSubContent: [
         {
           title: 'When to use Storefront API access',
-          sectionContent: `API access is used when your extension needs to retrieve data from the [Storefront API](/api/storefront). For example, you may need to fetch product data, check the product tags on an item in the order summary.
+          sectionContent: `API access is used when your extension needs to retrieve data from the Storefront API. For example, you may need to fetch product data, check the product tags on an item in the order summary.
 
 > Tip:
 > Shopify handles the authentication for all API calls from an extension.
@@ -164,7 +164,7 @@ Defines the [capabilities](/docs/api/customer-account-ui-extensions/apis/extensi
         },
         {
           title: 'Methods for accessing the Storefront API',
-          sectionContent: `Enabling the \`api_access\` capability allows you to use the Order Status API [\`query\`](/docs/api/customer-account-ui-extensions/apis/storefront-api#orderstatusapi-propertydetail-query) method and the global \`fetch\` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.
+          sectionContent: `Enabling the \`api_access\` capability allows you to use the Order Status API \`query\` method and the global \`fetch\` to retrieve data from the Storefront API without manually managing token aquisition and refresh.
 
 \`query\` lets you request a single GraphQL response from the Storefront API.
 
@@ -172,7 +172,7 @@ If you prefer to construct GraphQL requests yourself or you would like to use a 
 
 The GraphQL client of your choice shouldn’t use any DOM APIs, as they aren’t available in a customer account UI extension's Web Worker.
 
-> Note: Both \`query\` and \`fetch\` will work for calling the Storefront API with the \`api_access\` capability enabled. If you are using \`fetch\` to get data external to Shopify, refer to the [\`network_access\`](/api/customer-account-ui-extensions/configuration#network-access) capability.`,
+> Note: Both \`query\` and \`fetch\` will work for calling the Storefront API with the \`api_access\` capability enabled. If you are using \`fetch\` to get data external to Shopify, refer to the \`network_access\` capability.`,
         },
         {
           title: 'Storefront API access scopes',
@@ -217,7 +217,7 @@ The following section describes use cases for requesting network access, alterna
         {
           title: 'Alternatives to network access',
           sectionContent: `
-Instead of fetching data with an external network call, consider retrieving the data from a metafield. Your app can use the [Customer Account API](/docs/api/customer) to write to [metafields](/docs/api/customer/latest/objects/Metafield) on the customer, order, company, or company location.
+Instead of fetching data with an external network call, consider retrieving the data from a metafield. Your app can use the Customer Account API to write to [metafields](/docs/api/customer/latest/objects/Metafield) on the customer, order, company, or company location.
 
 An app with the ability to query the Admin API can also write to [metafields](/api/admin-graphql/latest/objects/metafield) on the shop or product.
 
@@ -227,7 +227,7 @@ Retrieving data from metafields is faster because it doesn't require an external
         {
           title: 'Complete a request for network access',
           sectionContent: `
-1. Go to your [Partner Dashboard](https://partners.shopify.com/current/apps).
+1. Go to your Partner Dashboard.
 2. Click the name of the app that you want to change.
 3. Click **API access**.
 4. Under **Allow network access in checkout and account UI extensions**, click **Allow network access**
@@ -239,7 +239,7 @@ Retrieving data from metafields is faster because it doesn't require an external
         {
           title: 'Required CORS headers',
           sectionContent: `
-Since UI extensions run in a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API), they have a null origin. They do not share the storefront or customer account's origin. For network calls to succeed, your server must support [cross-origin resource sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) for null origins by including this response header:
+Since UI extensions run in a Web Worker, they have a null origin. They do not share the storefront or customer account's origin. For network calls to succeed, your server must support [cross-origin resource sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) for null origins by including this response header:
 
 <code>Access-Control-Allow-Origin: *</code>
 `,
@@ -247,7 +247,7 @@ Since UI extensions run in a [Web Worker](https://developer.mozilla.org/en-US/do
         {
           title: 'App Proxy',
           sectionContent: `
-UI extensions can make fetch requests to [App Proxy](/docs/apps/online-store/app-proxies) URLs, but there are some differences and limitations related to the security context within which UI extensions run.
+UI extensions can make fetch requests to App Proxy URLs, but there are some differences and limitations related to the security context within which UI extensions run.
 
 UI extension requests made to the App Proxy will execute as CORS requests. See _Required CORS headers_ above for information about requirements related to CORS.
 
@@ -255,7 +255,7 @@ UI extension requests made to the App Proxy will not assign the <code>logged_in_
 
 UI extension requests made to the App Proxy of password protected shops is not supported. Extension requests come from a web worker which does not share the same session as the parent window.
 
-The App Proxy doesn't handle all [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods). Specifically, <code>CONNECT</code> and <code>TRACE</code> are unsupported.
+The App Proxy doesn't handle all HTTP request methods. Specifically, <code>CONNECT</code> and <code>TRACE</code> are unsupported.
 `,
         },
         {
@@ -273,12 +273,12 @@ Your extension can pass a [session token](/docs/api/customer-account-ui-extensio
       anchorLink: 'collect-buyer-consent',
       title: 'Collect buyer consent',
       sectionContent:
-        'If your extension utilizes the [Customer Privacy API](/docs/api/customer-account-ui-extensions/apis/customer-privacy) to collecting buyer consent, you must first declare that capability in your configuration file.',
+        'If your extension utilizes the Customer Privacy API to collecting buyer consent, you must first declare that capability in your configuration file.',
       sectionSubContent: [
         {
           title: 'Customer Privacy',
           sectionContent:
-            "In order to collect customer privacy consent, you'll need to add `customer_privacy = true` in your toml configuration. This will let you use our [Customer Privacy API](/docs/api/customer-account-ui-extensions/apis/customer-privacy).",
+            "In order to collect customer privacy consent, you'll need to add `customer_privacy = true` in your toml configuration. This will let you use our Customer Privacy API.",
         },
       ],
       codeblock: {
@@ -296,9 +296,9 @@ Your extension can pass a [session token](/docs/api/customer-account-ui-extensio
       anchorLink: 'metafields',
       title: 'Metafields',
       sectionContent: `
-All customer account UI extension [targets](/docs/api/customer-account-ui-extensions/targets) can read and write to metafields using the [Customer Account API](/docs/api/customer-account-ui-extensions/apis/customer-account-api). Learn more about [writing to metafields](/docs/apps/build/customer-accounts/metafields).
+All customer account UI extension [targets](/docs/api/customer-account-ui-extensions/targets) can read and write to metafields using the Customer Account API. Learn more about [writing to metafields](/docs/apps/build/customer-accounts/metafields).
 
-Access to metafields on a read-only basis through the [Order Status API](/docs/api/customer-account-ui-extensions/apis/order-status-api/metafields) is available to order status [targets](/api/customer-account-ui-extensions/targets) and is defined in your configuration. Customer account UI extensions are configured for metafields similarly to checkout UI extensions. [Learn more](/docs/api/checkout-ui-extensions/configuration#metafields).
+Access to metafields on a read-only basis through the Order Status API is available to order status [targets](/api/customer-account-ui-extensions/targets) and is defined in your configuration. Customer account UI extensions are configured for metafields similarly to checkout UI extensions. Learn more.
 `,
     },
     {
@@ -321,7 +321,7 @@ Access to metafields on a read-only basis through the [Order Status API](/docs/a
         {
           title: 'Validation options',
           sectionContent:
-            'Each setting can include validation options. Validation options enable you to apply additional constraints to the data that a setting can store, such as a minimum or maximum value, or a regular expression. The setting\'s `type` determines the available validation options. \n\n You can include a validation option for a setting using the validation `name` and a corresponding `value`. The appropriate value depends on the setting type to which the validation applies.\n\n The following table outlines the available validation options with supported types for applying constraints to a setting:\n\n | Validation option | Description | Supported types | Example |\n|---|---|---|---|\n| Minimum length | The minimum length of a text value. | <ul><li><code>single_line_text_field</code></li><li><code>multi_line_text_field</code></li></ul> | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "8"</pre> |\n| Maximum length | The maximum length of a text value. | <ul><li><code>single_line_text_field</code></li><li><code>multi_line_text_field</code></li></ul> | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "25"</pre> |\n| Regular expression | A regular expression. Shopify supports [RE2](https://github.com/google/re2/wiki/Syntax). | <ul><li><code>single_line_text_field</code></li><li><code>multi_line_text_field</code></li></ul> | <pre>[[extensions.settings.fields.validations]]<br> name = "regex"<br> value = "(@)(.+)$"</pre> |\n| Choices | A list of up to 128 predefined options that limits the values allowed for the metafield.  | `single_line_text_field` | <pre>[[extensions.settings.fields.validations]]<br> name = "choices"<br> value = "[&#92"red&#92", &#92"green&#92", &#92"blue&#92"]"</pre> |\n| Minimum date | The minimum date in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. | `date` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "2022-01-01"</pre> |\n| Maximum date | The maximum date in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. | `date` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "2022-03-03"</pre> |\n| Minimum datetime | The minimum date and time in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. | `date_time` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "2022-03-03T16:30:00"</pre> |\n| Maximum datetime | The maximum date and time in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. |  `date_time` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "2022-03-03T17:30:00"</pre> |\n| Minimum integer | The minimum integer number. | `number_integer` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "9"</pre> |\n| Maximum integer | The maximum integer number. | `number_integer` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "15"</pre> |\n| Minimum decimal | The minimum decimal number. |  `number_decimal` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "0.5"</pre> |\n| Maximum decimal | The maximum decimal number. |  `number_decimal` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "1.99"</pre> |\n| Maximum precision | The maximum number of decimal places to store for a decimal number. | `number_decimal` | <pre>[[extensions.settings.fields.validations]]<br> name = "max_precision"<br> value = "2"</pre> |',
+            'Each setting can include validation options. Validation options enable you to apply additional constraints to the data that a setting can store, such as a minimum or maximum value, or a regular expression. The setting\'s `type` determines the available validation options. \n\n You can include a validation option for a setting using the validation `name` and a corresponding `value`. The appropriate value depends on the setting type to which the validation applies.\n\n The following table outlines the available validation options with supported types for applying constraints to a setting:\n\n | Validation option | Description | Supported types | Example |\n|---|---|---|---|\n| Minimum length | The minimum length of a text value. | <ul><li><code>single_line_text_field</code></li><li><code>multi_line_text_field</code></li></ul> | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "8"</pre> |\n| Maximum length | The maximum length of a text value. | <ul><li><code>single_line_text_field</code></li><li><code>multi_line_text_field</code></li></ul> | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "25"</pre> |\n| Regular expression | A regular expression. Shopify supports RE2. | <ul><li><code>single_line_text_field</code></li><li><code>multi_line_text_field</code></li></ul> | <pre>[[extensions.settings.fields.validations]]<br> name = "regex"<br> value = "(@)(.+)$"</pre> |\n| Choices | A list of up to 128 predefined options that limits the values allowed for the metafield.  | `single_line_text_field` | <pre>[[extensions.settings.fields.validations]]<br> name = "choices"<br> value = "[&#92"red&#92", &#92"green&#92", &#92"blue&#92"]"</pre> |\n| Minimum date | The minimum date in ISO 8601 format. | `date` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "2022-01-01"</pre> |\n| Maximum date | The maximum date in ISO 8601 format. | `date` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "2022-03-03"</pre> |\n| Minimum datetime | The minimum date and time in ISO 8601 format. | `date_time` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "2022-03-03T16:30:00"</pre> |\n| Maximum datetime | The maximum date and time in ISO 8601 format. |  `date_time` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "2022-03-03T17:30:00"</pre> |\n| Minimum integer | The minimum integer number. | `number_integer` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "9"</pre> |\n| Maximum integer | The maximum integer number. | `number_integer` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "15"</pre> |\n| Minimum decimal | The minimum decimal number. |  `number_decimal` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "0.5"</pre> |\n| Maximum decimal | The maximum decimal number. |  `number_decimal` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "1.99"</pre> |\n| Maximum precision | The maximum number of decimal places to store for a decimal number. | `number_decimal` | <pre>[[extensions.settings.fields.validations]]<br> name = "max_precision"<br> value = "2"</pre> |',
         },
       ],
     },

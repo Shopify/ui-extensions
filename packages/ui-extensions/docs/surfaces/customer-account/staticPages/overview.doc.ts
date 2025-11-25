@@ -5,7 +5,7 @@ const data: LandingTemplateSchema = {
   description: `
   Customer account UI extensions let app developers build custom functionality that merchants can install at defined points on the **Order index**, **Order status**, and **Profile** pages in customer accounts.
 
-  \n\n > Shopify Plus: \n>Some static extensions on the Profile page only render for B2B customers. B2B on Shopify is only available on the [Shopify Plus](https://www.shopify.com/plus) plan. [See B2B Profile targets](/api/customer-account-ui-extensions/unstable/extension-targets-overview#profile-b2b)
+  \n\n > Shopify Plus: \n>Some static extensions on the Profile page only render for B2B customers. B2B on Shopify is only available on the Shopify Plus plan. See B2B Profile targets
   `,
   id: 'customer-account-ui-extensions',
   image:
@@ -93,7 +93,7 @@ Extension targets provide locations where merchants can insert custom content. S
       title: 'Extension functions',
       sectionContent: `Customer account will execute the module’s default export so it can render a user interface.
 
-Extension UIs are powered by [Remote DOM](https://github.com/Shopify/remote-dom/), a fast and secure environment for custom [(non-DOM)](#security) UIs.`,
+Extension UIs are powered by Remote DOM, a fast and secure environment for custom [(non-DOM)](#security) UIs.`,
       sectionCard: [],
       altText:
         'The Profile page with a purple dotted-line box above the page title that says "Extension targets".',
@@ -111,11 +111,11 @@ Extension UIs are powered by [Remote DOM](https://github.com/Shopify/remote-dom/
     {
       type: 'Generic',
       title: 'Preact by default',
-      sectionContent: `UI Extensions are scaffolded with [Preact](https://preactjs.com/) by default. This means you can use Preact patterns and principles within your extension.
+      sectionContent: `UI Extensions are scaffolded with Preact by default. This means you can use Preact patterns and principles within your extension.
 
 Since Preact is included as a standard dependency, you have access to all of its features including [hooks](https://preactjs.com/guide/v10/hooks/) like \`useState\` and \`useEffect\` for managing component state and side effects.
 
-You can also use [Preact Signals](https://preactjs.com/guide/v10/signals/) for reactive state management, and take advantage of standard web APIs just like you would in a regular Preact application.
+You can also use Preact Signals for reactive state management, and take advantage of standard web APIs just like you would in a regular Preact application.
         `,
       anchorLink: 'preact-by-default',
       codeblock: {
@@ -136,7 +136,7 @@ You can also use [Preact Signals](https://preactjs.com/guide/v10/signals/) for r
 
 These APIs enable UI extensions to get information about the customer account or related objects and to perform actions. For example, you can retrieve what’s in an order and offer related products.
 
-APIs with a \`value\` property are [Preact Signals](https://preactjs.com/guide/v10/signals/). Preact will automatically re-render your extension as values change.
+APIs with a \`value\` property are Preact Signals. Preact will automatically re-render your extension as values change.
 `,
       sectionCard: [
         {
@@ -164,7 +164,7 @@ APIs with a \`value\` property are [Preact Signals](https://preactjs.com/guide/v
       image: 'ui-components.gif',
       altText:
         "An animation of a card that contains an image, heading, description, and button, shifting and transforming into highly customized versions of the same UI to reflect each merchant's unique branding.",
-      sectionContent: `Customer account UI extensions declare their interface using [Polaris web components](/docs/api/customer-account-ui-extensions/using-polaris-components). Shopify renders the UI natively, so it’s performant, accessible, and works in all of customer account’s supported browsers.
+      sectionContent: `Customer account UI extensions declare their interface using Polaris web components. Shopify renders the UI natively, so it’s performant, accessible, and works in all of customer account’s supported browsers.
 
 Customer account components are designed to be flexible, enabling you to layer and mix them to create highly-customized app extensions that feel seamless within the customer account experience. All components inherit a merchant’s brand settings and the CSS cannot be altered or overridden.`,
       sectionCard: [
@@ -286,7 +286,7 @@ Customer account UI extensions don’t have access to the real customer account 
       anchorLink: 'troubleshooting',
       title: 'Troubleshooting',
       sectionContent:
-        'Find an end-to-end guide to testing your extensions in [Testing customer account UI extensions](https://shopify.dev/docs/apps/customer-accounts/best-practices/testing-ui-extensions).',
+        'Find an end-to-end guide to testing your extensions in Testing customer account UI extensions.',
     },
     {
       type: 'Generic',
