@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Discount Function Settings API',
   description:
-    'This API is available to Discount Function Settings extensions. Refer to the [tutorial](/docs/apps/build/discounts/build-ui-extension) for more information. Note that the  `FunctionSettings` component is required to build Discount Function Settings extensions.',
+    'This API is available to Discount Function Settings extensions. Refer to the [tutorial](/docs/apps/build/discounts/build-ui-extension) for more information. Note that the [`FunctionSettings`](/docs/api/admin-extensions/components/forms/functionsettings) component is required to build Discount Function Settings extensions.',
   isVisualComponent: false,
   type: 'API',
   definitions: [

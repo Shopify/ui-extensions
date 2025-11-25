@@ -33,7 +33,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent: `
-Use components like Paragraph or Text, along with the Progress component, to display text indicating the status of the progress bar.
+Use components like [Paragraph](../titles-and-text/paragraph) or [Text](../titles-and-text/text), along with the Progress component, to display text indicating the status of the progress bar.
 
 ### Loading states
 
@@ -43,7 +43,7 @@ For loading states, add text to reassure the user that the progress bar is not f
 
 ### Error states
 
-For error states, add text or a Banner to describe the error and next steps. Use the \`critical\` tone property to convey urgency.
+For error states, add text or a [Banner](./banner) to describe the error and next steps. Use the \`critical\` tone property to convey urgency.
 
 ![A progress bar with error text that says "There was a problem with the file upload. Please try again."](/assets/landing-pages/templated-apis/checkout-ui-extensions/ui-components/progress-error.png)
 

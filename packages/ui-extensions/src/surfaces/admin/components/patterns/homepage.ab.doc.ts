@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
   | Display app functionalities | Call-to-actions to app features, resource tables |
   | Show updates | Status banners, company news |
 
-  !Preview of the homepage pattern
+  ![Preview of the homepage pattern](/assets/templated-apis-screenshots/admin/patterns/homepage-example.png)
 
   This pattern uses \`Badge\`, \`Banner\`, \`Box\`, \`Button\`, \`Checkbox\`, \`Clickable\`, \`Divider\`, \`Grid\`, \`Heading\`, \`Image\`, \`Link\`, \`Paragraph\`, \`Section\`, \`Stack\`, and \`Text\` components.
 

@@ -6,7 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
   description: `The Picker API provides a search-based interface to help users find and select one or more resources that you provide, such as product reviews, email templates, or subscription options, and then returns the selected resource ids to your extension.
 
 > Tip:
-> If you are picking products, product variants, or collections, you should use the Resource Picker API instead.`,
+> If you are picking products, product variants, or collections, you should use the [Resource Picker](resource-picker) API instead.`,
   isVisualComponent: true,
   category: 'API',
   thumbnail: 'picker.png',

@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'ButtonGroup',
   description: `ButtonGroup is used to display multiple buttons in a layout that is contextual based on the screen width or parent component. When there is more than one secondary action, they get collapsed.
     
-When used within a Section component, the buttons will fill the width of the section.
+When used within a [Section](/docs/api/customer-account-ui-extensions/polaris-web-components/structure/section) component, the buttons will fill the width of the section.
 `,
   thumbnail: 'buttongroup-thumbnail.png',
   requires: '',

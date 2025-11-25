@@ -6,7 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: 'consent-phone-field-thumbnail.png',
   requires:
-    'enabling of the `sms_marketing` capability of the Customer Privacy capability group to work.',
+    'enabling of the `sms_marketing` capability of the [Customer Privacy](/docs/api/checkout-ui-extensions/latest/configuration#collect-buyer-consent) capability group to work.',
   isVisualComponent: true,
   type: '',
   definitions: [
