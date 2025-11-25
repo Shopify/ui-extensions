@@ -12,7 +12,8 @@ const data: ReferenceEntityTemplateSchema = {
     '\n\nThe API supports key-value storage with automatic JSON serialization, type safety through TypeScript interfaces, and built-in error handling for storage constraint violations.',
   isVisualComponent: false,
   type: 'APIs',
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Standard APIs',
   related: [],
   definitions: [
     {

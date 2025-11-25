@@ -18,7 +18,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'TileProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Actions',
   related: [],
   thumbnail: 'tile-thumbnail.png',
   defaultExample: {

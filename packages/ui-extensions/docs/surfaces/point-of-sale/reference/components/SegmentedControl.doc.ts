@@ -16,7 +16,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'SegmentedControlProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Navigation and content',
   related: [],
   thumbnail: 'segmented-control-thumbnail.png',
   defaultExample: {

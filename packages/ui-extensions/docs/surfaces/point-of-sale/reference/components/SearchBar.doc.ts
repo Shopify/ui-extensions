@@ -16,7 +16,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'SearchBarProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Navigation and content',
   related: [
     {
       name: 'ProductSearch API',

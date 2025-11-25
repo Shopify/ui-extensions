@@ -23,7 +23,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ButtonType',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Actions',
   related: [],
   thumbnail: 'button-thumbnail.png',
   defaultExample: {

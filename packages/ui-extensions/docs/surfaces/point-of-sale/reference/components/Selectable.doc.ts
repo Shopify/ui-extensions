@@ -15,7 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'SelectableProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Actions',
   related: [],
   thumbnail: 'selectable-thumbnail.png',
   defaultExample: {

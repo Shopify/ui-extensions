@@ -15,7 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'NewTextFieldProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Forms',
   related: [],
   thumbnail: 'text-field-thumbnail.png',
   defaultExample: {

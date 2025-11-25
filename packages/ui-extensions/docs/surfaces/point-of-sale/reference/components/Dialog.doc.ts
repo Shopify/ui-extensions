@@ -18,7 +18,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DialogProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Feedback and status indicators',
   related: [],
   thumbnail: 'dialog-thumbnail.png',
   defaultExample: {

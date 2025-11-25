@@ -18,7 +18,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'BannerProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Feedback and status indicators',
   related: [],
   thumbnail: 'banner-thumbnail.png',
   defaultExample: {

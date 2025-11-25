@@ -15,7 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'TimeFieldProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Forms',
   related: [],
   defaultExample: {
     image: 'time-field-default.png',

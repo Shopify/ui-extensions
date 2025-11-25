@@ -14,7 +14,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PinPadProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Forms',
   related: [],
   thumbnail: 'pin-pad-thumbnail.png',
   defaultExample: {

@@ -19,7 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'OrderApiContent',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Contextual APIs',
   related: [],
   examples: {
     description:
