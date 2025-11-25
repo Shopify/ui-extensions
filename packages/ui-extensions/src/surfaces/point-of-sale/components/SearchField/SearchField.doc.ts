@@ -3,29 +3,55 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'SearchField',
   description:
-    'Captures search terms from merchants using a single-line input field. Includes visual styling to indicate search functionality, and an accessory to quickly clear the input.',
+    'The `SearchField` component captures search terms using a single-line input field. Use it to enable search and filtering within POS interfaces.' +
+    '\n\nThe component includes built-in debouncing to optimize performance during real-time search operations and supports features like autocomplete suggestions and search history. It provides clear visual feedback for search states including loading, results found, and no results, helping merchants quickly locate products, customers, or orders in large catalogs.' +
+    '\n\n`SearchField` components clear search queries with a single tap on the clear button while maintaining search history for quick access to recent searches, balancing convenience with data management.',
   thumbnail: 'search-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the `SearchField` component.',
       type: 'SearchField',
     },
     {
       title: 'Events',
       description:
-        'Learn more about registering [events](/docs/api/pos-ui-extensions/using-polaris-components#events)',
+        'The `SearchField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'SearchFieldEvents',
     },
   ],
   category: 'Polaris web components',
   subCategory: 'Forms',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Use for inline search and filtering:** Choose `SearchField` for filtering within specific sections or lists, not for global navigation or complex multi-step searches.\n' +
+        '- **Follow placeholder pattern:** Use "Search {items}" format like "Search products" or "Search customers" to clarify scope.\n' +
+        '- **Choose the right event:** Use `input` for real-time filtering as users type. Use `change` for expensive operations that should wait until typing completes.\n' +
+        '- **Handle empty values:** When the field is cleared, reset filters or show all items appropriately.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- `SearchField` provides a search input field with visual styling and clear functionality—additional search features like filters, sorting, search history, or search buttons require custom implementation.\n' +
+        '- The component handles text input and basic interaction events—complex search workflows with multiple steps or advanced state management require additional components or custom logic.\n' +
+        '- `SearchField` is optimized for inline search and filtering—displaying search results requires using other components like `Stack`, `Section`, or custom layout components to present filtered content.',
+    },
+  ],
   defaultExample: {
     image: 'search-field-default.png',
+    description:
+      'Enable search functionality using a `SearchField` component with built-in debouncing. This example shows a basic search field with placeholder text.',
     codeblock: {
-      title: 'Code',
+      title: 'Enable search with a search field',
       tabs: [
         {
           code: './examples/default.html',
@@ -36,12 +62,14 @@ const data: ReferenceEntityTemplateSchema = {
   },
   related: [],
   examples: {
-    description: 'SearchField usage patterns',
+    description:
+      'Learn how to handle search input and implement real-time filtering.',
     examples: [
       {
-        description: 'Handle search input events',
+        description:
+          'Subscribe to search input events to respond when merchants enter search terms. This example demonstrates handling `onChange` and `onInput` events for real-time search functionality, debounced filtering, or triggering search API calls as merchants type their queries.',
         codeblock: {
-          title: 'Event handling',
+          title: 'Handle search input events',
           tabs: [
             {
               code: './examples/event-handling.jsx',

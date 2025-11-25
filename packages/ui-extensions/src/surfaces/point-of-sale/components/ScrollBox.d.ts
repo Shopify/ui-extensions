@@ -22,136 +22,133 @@ import type {
 
 export type ComponentChildren = any;
 /**
- * Used when an element does not have children.
+ * The base props for elements without children, providing key, ref, and slot properties.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
+  /**
+   * A unique identifier for the element in lists. Used by Preact for efficient rendering and reconciliation.
+   */
   key?: Key;
+  /**
+   * A reference to the underlying DOM element. Commonly used to access the element directly for imperative operations.
+   */
   ref?: Ref<TClass>;
+  /**
+   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
+   */
   slot?: Lowercase<string>;
 }
 /**
- * Used when an element has children.
+ * The base props for elements with children, extending `BaseElementProps` with children support.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
+  /**
+   * The child elements to render within this component.
+   */
   children?: ComponentChildren;
 }
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
+/**
+ * Defines the available padding size options using a semantic scale. Provides consistent spacing values that align with the POS design system.
+ */
 export type PaddingKeyword = SizeKeyword | 'none';
 declare const tagName = 's-scroll-box';
 export interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
   /**
-   * Adjust the block size.
+   * The block size of the scrollable container. Auto automatically sizes based on the container's content and available space.
    *
    * @default 'auto'
    */
   blockSize?: SizeUnitsOrAuto;
   /**
-   * Adjust the inline size.
+   * The inline size of the scrollable container. Auto automatically sizes based on the container's content and available space.
    *
    * @default 'auto'
    */
   inlineSize?: SizeUnitsOrAuto;
   /**
-   * Adjust the maximum block size.
+   * The maximum block size constraint for the scrollable container.
    *
    * @default 'none'
    */
   maxBlockSize?: SizeUnitsOrNone;
   /**
-   * Adjust the maximum inline size.
+   * The maximum inline size constraint for the scrollable container.
    *
    * @default 'none'
    */
   maxInlineSize?: SizeUnitsOrNone;
   /**
-   * Adjust the minimum block size.
+   * The minimum block size constraint for the scrollable container.
    *
    * @default '0'
    */
   minBlockSize?: SizeUnits;
   /**
-   * Adjust the minimum inline size.
+   * The minimum inline size constraint for the scrollable container.
    *
    * @default '0'
    */
   minInlineSize?: SizeUnits;
   /**
-   * Adjust the padding of all edges.
-   *
-   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
-   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+   * The padding applied to all edges of the scrollable container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
    *
    * - 4 values: `block-start inline-end block-end inline-start`
    * - 3 values: `block-start inline block-end`
    * - 2 values: `block inline`
    *
    * For example:
+   *
    * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
    * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
    * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
    * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
    *
-   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
+   * An `auto` value inherits the default padding from the closest container that has removed its usual padding.
    *
    * @default 'none'
    */
   padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
   /**
-   * Adjust the block-padding.
-   *
-   * - `large none` means block-start padding is `large`, block-end padding is `none`.
-   *
-   * This overrides the block value of `padding`.
+   * The block-axis padding for the scrollable container. Overrides the block value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingBlock?: MaybeTwoValuesShorthandProperty<PaddingKeyword> | '';
   /**
-   * Adjust the block-start padding.
-   *
-   * This overrides the block-start value of `paddingBlock`.
+   * The block-start padding for the scrollable container. Overrides the block-start value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockStart?: PaddingKeyword | '';
   /**
-   * Adjust the block-end padding.
-   *
-   * This overrides the block-end value of `paddingBlock`.
+   * The block-end padding for the scrollable container. Overrides the block-end value of the `paddingBlock` property.
    *
    * @default '' - meaning no override
    */
   paddingBlockEnd?: PaddingKeyword | '';
   /**
-   * Adjust the inline padding.
-   *
-   * - `large none` means inline-start padding is `large`, inline-end padding is `none`.
-   *
-   * This overrides the inline value of `padding`.
+   * The inline-axis padding for the scrollable container. Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline value of the `padding` property.
    *
    * @default '' - meaning no override
    */
   paddingInline?: MaybeTwoValuesShorthandProperty<PaddingKeyword> | '';
   /**
-   * Adjust the inline-start padding.
-   *
-   * This overrides the inline-start value of `paddingInline`.
+   * The inline-start padding for the scrollable container. Overrides the inline-start value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineStart?: PaddingKeyword | '';
   /**
-   * Adjust the inline-end padding.
-   *
-   * This overrides the inline-end value of `paddingInline`.
+   * The inline-end padding for the scrollable container. Overrides the inline-end value of the `paddingInline` property.
    *
    * @default '' - meaning no override
    */
   paddingInlineEnd?: PaddingKeyword | '';
   /**
-   * The content of the ScrollBox.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
 }

@@ -3,35 +3,59 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextField',
   description:
-    'Captures single-line text input from merchants. Use to collect short, free-form information.',
+    'The `TextField` component captures single-line text input. Use it to collect short, free-form information in forms and data entry workflows.' +
+    '\n\nThe component supports various input configurations including placeholders, character limits, and validation. It includes built-in support for labels, helper text, and error states to guide merchants through data entry, ensuring accurate and efficient information capture across different retail scenarios.',
   thumbnail: 'text-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the `TextField` component.',
       type: 'TextField',
     },
     {
       title: 'Slots',
       description:
-        'Learn more about using [slots](/docs/api/pos-ui-extensions/using-polaris-components#slots)',
+        'The `TextField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TextFieldSlots',
     },
     {
       title: 'Events',
       description:
-        'Learn more about registering [events](/docs/api/pos-ui-extensions/using-polaris-components#events)',
+        'The `TextField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TextFieldEvents',
     },
   ],
   category: 'Polaris web components',
   subCategory: 'Forms',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Use for single-line text input:** Choose `TextField` for short values like names, titles, or identifiers. For multi-line content, use `TextArea`.\n' +
+        '- **Show character limit feedback:** When approaching `maxLength`, display remaining characters in the `details` text.\n' +
+        '- **Write descriptive labels:** Use specific labels like "Product Name" or "Reference Code" rather than generic terms.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- `TextField` provides single-line text input only—multi-line text entry requires the `TextArea` component.\n' +
+        "- The `required` property adds semantic meaning only—it doesn't trigger automatic error display or validation, so you must implement validation logic manually.\n" +
+        "- The `accessory` slot supports only `Button` and `Clickable` components with text content only—other component types or complex layouts can't be used for field accessories.",
+    },
+  ],
   defaultExample: {
     image: 'text-field-default.png',
+    description:
+      'Capture single-line text input using a `TextField` component with validation support. This example shows a basic text field with label and placeholder text.',
     codeblock: {
-      title: 'Code',
+      title: 'Capture text input with a text field',
       tabs: [
         {
           code: './examples/default.html',
@@ -42,26 +66,14 @@ const data: ReferenceEntityTemplateSchema = {
   },
   related: [],
   examples: {
-    description: 'Advanced usage patterns for TextField component',
+    description:
+      'Learn how to handle events, use accessory slots, and configure common properties for validation and user guidance.',
     examples: [
       {
         description:
-          'Handle TextField events: onInput, onFocus, onBlur, and onChange.',
+          'Add action buttons to the text field using the accessory slot for quick actions like clearing text or submitting input. This example shows how to use `s-button` and `s-clickable` components with text content in the accessory slot, enabling inline actions without leaving the input context.',
         codeblock: {
-          title: 'Event handling',
-          tabs: [
-            {
-              code: './examples/event-handling.jsx',
-              language: 'jsx',
-            },
-          ],
-        },
-      },
-      {
-        description:
-          'Add action buttons using the accessory slot. Only `s-button` and `s-clickable` are supported, with text content only',
-        codeblock: {
-          title: 'Accessory slot',
+          title: 'Add accessory buttons',
           tabs: [
             {
               code: './examples/accessory-slot.jsx',
@@ -72,12 +84,25 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Common TextField props for validation, constraints, and user guidance.',
+          'Configure common `TextField` properties for validation, character limits, and user guidance. This example demonstrates using props like `maxlength`, `required`, `helperText`, and `error` to create a well-guided input experience with proper validation feedback.',
         codeblock: {
-          title: 'Common props',
+          title: 'Configure validation and guidance',
           tabs: [
             {
               code: './examples/common-props.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Subscribe to `TextField` events including `onInput`, `onFocus`, `onBlur`, and `onChange` to respond to user interactions. This example shows how to handle different input events for real-time validation, autosave functionality, or dynamic form behavior.',
+        codeblock: {
+          title: 'Handle input events',
+          tabs: [
+            {
+              code: './examples/event-handling.jsx',
               language: 'jsx',
             },
           ],

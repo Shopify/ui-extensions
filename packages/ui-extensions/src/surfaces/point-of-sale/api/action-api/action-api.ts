@@ -1,14 +1,12 @@
 export interface ActionApiContent {
-  /** Presents the corresponding `.action.render` extension target as a modal overlay.
-   *
-   * For example: if we are calling presentModal() from pos.purchase.post.action.menu-item.render,
-   * it will present pos.purchase.post.action.render.
+  /**
+   * Presents the corresponding action (modal) target on top of the current view as a full-screen modal. For example, calling this method from `pos.purchase.post.action.menu-item.render` presents `pos.purchase.post.action.render`. Use to launch detailed workflows, complex forms, or multi-step processes that require more screen space than simple components provide.
    */
   presentModal(): void;
 }
 
 /**
- * Access the Action API to present your app in a full screen modal.
+ * The `ActionApi` object provides methods for presenting modal interfaces. Access these methods through `shopify.action` to launch full-screen modal experiences.
  */
 export interface ActionApi {
   action: ActionApiContent;

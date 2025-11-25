@@ -17,18 +17,30 @@ import type {
 
 export type ComponentChildren = any;
 /**
- * Used when an element does not have children.
+ * The base props for elements without children, providing key, ref, and slot properties.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
+  /**
+   * A unique identifier for the element in lists. Used by Preact for efficient rendering and reconciliation.
+   */
   key?: Key;
+  /**
+   * A reference to the underlying DOM element. Commonly used to access the element directly for imperative operations.
+   */
   ref?: Ref<TClass>;
+  /**
+   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
+   */
   slot?: Lowercase<string>;
 }
 /**
- * Used when an element has children.
+ * The base props for elements with children, extending `BaseElementProps` with children support.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
+  /**
+   * The child elements to render within this component.
+   */
   children?: ComponentChildren;
 }
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
@@ -37,11 +49,11 @@ declare const tagName = 's-pos-block';
 export interface PosBlockJSXProps
   extends Pick<POSBlockProps, 'id' | 'heading'> {
   /**
-   * The secondary actions to perform, provided as button or link type elements.
+   * The secondary actions to perform, provided as button or link type elements. Use the `slot="secondary-actions"` attribute to place interactive elements that allow users to take actions related to the block's content.
    */
   secondaryActions?: ComponentChild;
   /**
-   * The content of the Block.
+   * The child elements to render within this component.
    */
   children?: ComponentChildren;
 }

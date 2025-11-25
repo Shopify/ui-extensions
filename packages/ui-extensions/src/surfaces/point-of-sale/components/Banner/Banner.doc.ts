@@ -3,28 +3,33 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Banner',
   description:
-    'Highlights important information or required actions prominently within the interface. Use to communicate critical updates, warnings, information or success messages in a prominent way.',
+    'The `Banner` component highlights important information or required actions prominently within the POS interface. Use banners to communicate critical updates, warnings, informational messages, or success notifications that require merchant attention in a persistent but non-interruptive way.' +
+    '\n\nThe component provides persistent visibility for important messages while remaining non-intrusive to the main workflow, with support for dismissible and non-dismissible states. It includes automatic color coding based on message severity and integrates with the POS design system to maintain visual consistency across different alert types and use cases.',
   thumbnail: 'banner-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the `Banner` component.',
       type: 'Banner',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The `Banner` component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'BannerSlots',
     },
   ],
   category: 'Polaris web components',
-  subCategory: 'Feedback',
+  subCategory: 'Feedback and status indicators',
   defaultExample: {
     image: 'banner-default.png',
+    description:
+      'Display important messages using a `Banner` component with automatic color coding based on message severity. This example shows a basic banner with a heading and descriptive text.',
     codeblock: {
-      title: 'Code',
+      title: 'Display important messages with a banner',
       tabs: [
         {
           code: './examples/default.html',
@@ -36,12 +41,22 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'guidelines',
-      title: 'Guidelines',
-      sectionContent: `
-- Use when needing to communicate to merchants in a way that is persistent but non-interruptive.
-- Only one banner should be visible at a time.
-`,
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Apply appropriate tones:** Use `critical` for errors requiring immediate action, `warning` for important notices, `success` for confirmations, `info` for general information.\n' +
+        '- **Keep headings concise:** Write brief headings that clearly communicate the message. Use the collapsible feature for additional detail.\n' +
+        '- **Show one banner at a time:** Display only one banner to avoid overwhelming the interface. Prioritize by importance.\n' +
+        '- **Make non-critical banners dismissible:** Allow dismissal for non-critical information. Keep critical alerts non-dismissible until resolved.\n' +
+        '- **Include clear actions:** If action is needed, use the primaryAction slot to provide clear next steps.\n' +
+        '- **Use for persistent messages:** Use banners for messages that need to persist. For temporary notifications, consider toast notifications.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        "- The `Banner` component only accepts a `heading` property for text content and doesn't support body content. You can't place `<s-text>` or other text elements inside the banner as children.",
     },
   ],
   related: [],
