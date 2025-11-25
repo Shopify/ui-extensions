@@ -122,6 +122,21 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
+
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `\n- **Apply consistent spacing using the numeric scale:** Use the predefined numeric spacing values (for example, \`'100'\`, \`'300'\`, \`'500'\`) to maintain consistency across your interface. Start with \`'300'\` for standard spacing and adjust up or down based on your content hierarchy needs.\n- **Use alignment properties for professional layouts:** Use the\`justifyContent\` property to control main axis distribution. Use \`alignItems\` for cross axis positioning of individual items, and \`alignContent\` for cross axis distribution when there's extra space.\n- **Use gap properties for precise spacing control:** Take advantage of the flexible gap system - use \`gap\` for uniform spacing, \`rowGap\` for block axis control, and \`columnGap\` for inline axis control.\n- **Combine with other layout components strategically:** Use the \`Stack\` component in combination with \`Box\` and \`Section\` components. Stack handles element arrangement and spacing, while other components provide additional layout capabilities.\n`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `\nWrapping behavior is determined by direction—inline stacks wrap content while block stacks don't, which may not suit all layout requirements.\n`,
+    },
+  ],
 };
 
 export default data;

@@ -34,6 +34,21 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
+
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `\n- **Design for connectivity awareness:** Design your extension to handle network interruptions, informing users when network-dependent features are unavailable and providing clear guidance on next steps.\n- **Provide clear connectivity feedback:** Display connectivity status to users when it affects functionality, helping them understand why certain features may be limited or unavailable.\n- **Queue operations during outages:** Implement queuing mechanisms for non-critical operations that can be deferred until connectivity is restored.\n`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `\n- The Connectivity API provides read-only access to connectivity information and can't be used to control or modify network settings on the device.\n- \`RemoteSubscribable\` supports only one subscription at a time. Use \`makeStatefulSubscribable\` if you need multiple components to subscribe to connectivity changes simultaneously.\n- Connectivity status reflects Internet connectivity only and may not indicate the quality or speed of the connection, which could affect API performance.\n- The API monitors general Internet connectivity but doesn't provide specific information about Shopify service availability or API endpoint availability.\n`,
+    },
+  ],
 };
 
 export default data;

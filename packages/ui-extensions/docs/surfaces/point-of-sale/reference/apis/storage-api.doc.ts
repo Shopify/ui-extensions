@@ -68,6 +68,21 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
+
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `\n- **Validate retrieved data:** Check data structure and types after calling \`get()\` since stored data may be outdated or corrupted. Provide sensible defaults and handle missing properties.\n- **Plan for data evolution:** Design your stored data structures to handle future changes. Include version fields in complex objects and implement migration logic to handle schema updates between extension versions.\n- **Keep sensitive data out of local storage:** Never store passwords, API keys, or other sensitive information. Use the Session API for secure backend communication and limit stored data to user preferences and non-sensitive workflow state.\n`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `\n- POS UI extensions can store up to a maximum of 100 entries.\n- The maximum key size is ~1 KB and the maximum value size is ~1 MB.\n- Data persists even when extension targets are disabled or removed.\n- Stored extension data is automatically cleared after 30 days of inactivity.\n`,
+    },
+  ],
 };
 
 export default data;

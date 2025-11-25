@@ -19,20 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   subCategory: 'Post-exchange',
   isVisualComponent: false,
-  related: [
-    {
-      name: ExtensionTargetType.PosExchangePostActionRender,
-      subtitle: 'Target',
-      type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/post-exchange/pos-exchange-post-action-render',
-    },
-    {
-      name: ExtensionTargetType.PosExchangePostBlockRender,
-      subtitle: 'Target',
-      type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/post-exchange/pos-exchange-post-block-render',
-    },
-  ],
+  related: [],
   type: 'Target',
 };
 

@@ -43,6 +43,21 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
+
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `\n- **Handle navigation parameters effectively:** Use navigation parameters to pass data between screens, maintaining workflow context and user progress across screen transitions.\n- **Implement proper screen management:** Design screens that can be pushed and popped.\n- **Provide clear navigation controls:** Implement clear navigation controls and feedback so users understand their current location in the workflow and how to navigate between screens.\n`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `\n- The Navigation API is only available in action (modal) targets and can't be used in action (menu item), block, or tile targets that don't support multi-screen navigation.\n- Screen navigation is based on screen names and the navigation stack, which differs from URL-based navigation patterns found in web applications.\n- Navigation parameters must be serializable and can't contain functions, complex objects, or circular references.\n`,
+    },
+  ],
 };
 
 export default data;

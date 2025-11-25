@@ -34,14 +34,20 @@ const data: ReferenceEntityTemplateSchema = {
     ],
   },
   category: 'APIs',
-  related: [
+  related: [],
+
+  subSections: [
     {
-      name: ExtensionTargetType.PosCartLineItemDetailsActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-cart-line-item-details-action-menu-item-render',
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `\n- **Use line item context effectively:** Use the line item data to create contextual experiences—for example, showing different interfaces for gift cards versus regular products, or displaying vendor-specific information.\n- **Implement item-specific validation:** Use line item properties like \`taxable\` and \`isGiftCard\` to implement appropriate validation and business logic for different item types.\n- **Access related data efficiently:** Use \`productId\` and \`variantId\` to fetch additional product information when needed, but avoid unnecessary API calls by using the data already available in the line item.\n`,
     },
     {
-      name: ExtensionTargetType.PosCartLineItemDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-cart-line-item-details-action-render',
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `\n- The API provides read-only access to line item data—use the Cart API for modifying line item properties, discounts, or other attributes.\n- Line item data reflects the current state and may not include real-time inventory or pricing updates until the cart is refreshed.\n`,
     },
   ],
 };

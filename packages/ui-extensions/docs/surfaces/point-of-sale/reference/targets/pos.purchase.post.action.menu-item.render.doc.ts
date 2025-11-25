@@ -19,16 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   subCategory: 'Post-purchase',
   isVisualComponent: false,
-  related: [
-    {
-      name: ExtensionTargetType.PosPurchasePostActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-action-render',
-    },
-    {
-      name: ExtensionTargetType.PosPurchasePostBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-block-render',
-    },
-  ],
+  related: [],
   type: 'Target',
 };
 

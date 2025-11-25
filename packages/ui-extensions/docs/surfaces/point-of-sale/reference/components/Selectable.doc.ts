@@ -28,6 +28,21 @@ const data: ReferenceEntityTemplateSchema = {
     description:
       'Add tap interactions to non-interactive components while preserving their appearance. This example demonstrates wrapping components like Text, Image, or Icon with Selectable to make them respond to user input without changing their original styling or layout.',
   },
+
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `\n- **Use meaningful press handlers:** Implement \`onPress\` callbacks that perform clear, expected actions. Users should understand what will happen when they tap the selectable content based on its visual presentation and context.\n- **Disable when appropriate:** Use the \`disabled\` property to prevent interactions when the selectable content shouldn't respond to user input, such as during loading states or when certain conditions aren't met.\n- **Maintain consistent interaction patterns:** Keep selectable interactions consistent with other interactive elements in your interface. Users should have predictable experiences when tapping different types of content.\n`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `\n- Selectable components don't provide built-in visual feedback for interactions. You must implement selection indicators yourself.\n- The component is designed for wrapping non-interactive content. Wrapping already-interactive components may cause unexpected behavior.\n- Complex nested interactions within selectable content aren't supported and may interfere with the tap functionality.\n- Selectable components don't support keyboard navigation or focus management beyond basic tap interactions.\n`,
+    },
+  ],
 };
 
 export default data;

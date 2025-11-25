@@ -20,14 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   subCategory: 'Receipts',
   isVisualComponent: false,
-  related: [
-    {
-      name: 'POSReceiptBlock',
-      subtitle: 'Component',
-      type: 'apps',
-      url: '/docs/api/pos-ui-extensions/components/posreceiptblock',
-    },
-  ],
+  related: [],
   type: 'Target',
   definitions: [CUSTOM_DATA('TransactionCompleteWithReprintData')],
 };

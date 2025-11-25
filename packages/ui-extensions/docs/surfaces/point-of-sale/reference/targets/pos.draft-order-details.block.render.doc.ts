@@ -19,16 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   subCategory: 'Draft order details',
   isVisualComponent: false,
-  related: [
-    {
-      name: ExtensionTargetType.PosDraftOrderDetailsActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-draft-order-details-action-menu-item-render',
-    },
-    {
-      name: ExtensionTargetType.PosDraftOrderDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-draft-order-details-action-render',
-    },
-  ],
+  related: [],
   type: 'Target',
 };
 

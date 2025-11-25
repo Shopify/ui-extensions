@@ -19,12 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   subCategory: 'Cart line item details',
   isVisualComponent: false,
-  related: [
-    {
-      name: ExtensionTargetType.PosCartLineItemDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-cart-line-item-details-action-render',
-    },
-  ],
+  related: [],
   type: 'Target',
 };
 

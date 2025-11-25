@@ -59,6 +59,21 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
+
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `\n- **Validate scanned data appropriately:** Validate scanned data before processing, implementing proper error handling for invalid codes, unsupported formats, or scanning errors.\n- **Provide clear scanning feedback:** Give users clear feedback about scan results, including success confirmations, error messages, and guidance when scans fail or produce invalid data.\n- **Adapt to available scanner sources:** Check available scanner sources and adapt your interface accordingly.\n`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `\n- The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.\n- \`RemoteSubscribable\` supports only one subscription at a time. Use \`makeStatefulSubscribable\` if you need multiple components to subscribe to scan events simultaneously.\n- Scanning availability depends on device hardware capabilities and may vary between different POS devices and configurations.\n`,
+    },
+  ],
 };
 
 export default data;

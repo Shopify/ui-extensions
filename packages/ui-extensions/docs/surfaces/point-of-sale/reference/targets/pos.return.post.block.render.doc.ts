@@ -19,20 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   subCategory: 'Post-return',
   isVisualComponent: false,
-  related: [
-    {
-      name: ExtensionTargetType.PosReturnPostActionMenuItemRender,
-      subtitle: 'Target',
-      type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/post-return/pos-return-post-action-menu-item-render',
-    },
-    {
-      name: ExtensionTargetType.PosReturnPostActionRender,
-      subtitle: 'Target',
-      type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/post-return/pos-return-post-action-render',
-    },
-  ],
+  related: [],
   type: 'Target',
 };
 

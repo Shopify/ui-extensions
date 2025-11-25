@@ -43,6 +43,21 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
+
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `\n- **Provide clear entry points:** Use descriptive button labels and titles that clearly indicate what the modal will contain or what action it will perform, helping users understand what to expect.\n- **Handle modal dismissal gracefully:** Ensure your modal-based workflows handle user dismissal, saving progress when possible and providing clear feedback about incomplete operations.\n`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `\nEach extension can only present one modal at a time. Subsequent calls to \`presentModal()\` while a modal is already open may be ignored or replace the current modal.\n`,
+    },
+  ],
 };
 
 export default data;
