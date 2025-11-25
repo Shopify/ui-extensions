@@ -33,45 +33,26 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'guidelines',
-      title: 'Guidelines',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
       sectionContent: `
-- A dialog appears on top of the view the merchant is currently looking at.
-- When a dialog appears, the merchant can only interact with the buttons in the dialog and nothing else in the view.
-- A scrim is used to dim the UI in the background, using the surfaceBackground color set to 60% transparency.
-- Dialogs always include at least one action, two actions at most.
-- Buttons in dialogs work best when stacked to accommodate for longer translated content.
-- When buttons are displayed side-by-side, the primary action is on the right. When buttons are stacked, the primary action is at the top.
-- For buttons that initiate irreversible actions, the text should be displayed in "destructive" (red) state.
+- **Write clear, concise content:** Use brief, action-oriented titles and essential context without overwhelming users.
+- **Use meaningful button text:** Use specific text like "Delete Order" and "Keep Order" rather than generic "OK" and "Cancel."
+- **Frame confirmations as questions:** For confirmations, use questions like "Delete this order?" rather than "Are you sure?"
+- **Use destructive type for irreversible actions:** Set \`destructive\` for deletions to display red buttons as visual warnings.
+- **Use "OK" for informational dialogs:** For acknowledgment-only dialogs, use a single "OK" button.
+- **Structure error dialogs effectively:** Use the header to communicate the problem, body and button to communicate the solution.
 `,
     },
     {
       type: 'Generic',
-      anchorLink: 'content-guidelines',
-      title: 'Content guidelines',
+      anchorLink: 'limitations',
+      title: 'Limitations',
       sectionContent: `
-For confirmation dialogs, the header should be formed as a question that re-emphasizes the action being taken. Don't write: "Are you sure?"
-
-✅ Log out of Shopify POS?<br />
-❌ Are you sure you want to log out of Shopify POS?<br />
-❌ You’re about to log out of Shopify POS
-
-For confirmation dialogs, the primary button should clearly confirm the action while the secondary button should cancel the action with "Cancel":
-
-✅ [Primary button] Log out<br />
-❌ [Primary button] Yes
-
-For errors, the header should clearly communicate the problem rather than the solution (use the body and button to communicate the solution):
-
-✅ [Header] Transaction declined<br />
-❌ [Header] Retry transaction
-
-For informational dialogs where there's no action for the merchant to take but to acknowledge the message, the sole button should be "OK":
-
-✅ [Button] OK<br />
-❌ [Button] Understood<br />
-❌ [Button] Dismiss
-      `,
+- Content space is limited, so keep dialog text concise and avoid lengthy explanations that might not fit properly on smaller POS displays.
+- Dialogs require explicit visibility management through the \`isVisible\` property and don't automatically dismiss based on time or external events.
+- Multiple dialogs can't be displayed simultaneously—showing a new dialog while another is visible may cause unexpected behavior.
+`,
     },
   ],
 };

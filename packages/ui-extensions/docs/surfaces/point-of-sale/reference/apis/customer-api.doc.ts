@@ -34,14 +34,25 @@ const data: ReferenceEntityTemplateSchema = {
     ],
   },
   category: 'APIs',
-  related: [
+  related: [],
+  subSections: [
     {
-      name: ExtensionTargetType.PosCustomerDetailsActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-customer-details-action-menu-item-render',
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Implement customer-specific features:** Use the customer context to enable personalized functionality like customer-specific pricing, loyalty program integration, or customized product recommendations.
+- **Validate customer access:** Verify that the customer ID is valid before performing customer-specific operations or external API calls.
+`,
     },
     {
-      name: ExtensionTargetType.PosCustomerDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-customer-details-action-render',
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- The API provides only the customer identifier—use Shopify APIs or external systems to fetch additional customer details like name, email, or purchase history.
+- Customer data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+`,
     },
   ],
 };

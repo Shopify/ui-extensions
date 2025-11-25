@@ -30,6 +30,31 @@ const data: ReferenceEntityTemplateSchema = {
     description:
       'Display structured content within POS block targets using a standardized container. This example demonstrates a POSBlock with consistent padding, spacing, and an optional action button, ensuring extension content feels cohesive with the core POS interface.',
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Design meaningful action buttons:** When providing an action, use clear and descriptive button titles that indicate exactly what will happen when pressed. Avoid generic terms like "Click here" in favor of specific actions like "View Details" or "Update Status."
+- **Handle action states appropriately:** Use the disabled property to prevent user interaction when actions are not available or appropriate. Provide clear feedback through your extension's description or other UI elements when actions are disabled.
+- **Design for the block context:** \`POSBlock\` appears within existing POS screens alongside other content.
+- **Implement responsive action callbacks:**  Consider showing loading states or confirmation messages when actions require network requests or significant processing time.
+- **Maintain consistent action patterns:** Use similar action patterns across different \`POSBlock\` instances in your extension to create predictable user experiences. Consistent button titles and behaviors help merchants understand and trust your extension.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- \`POSBlock\` is designed specifically for block targets—it can't be used in modal or action (menu item) targets.
+- The component's visual styling and layout are controlled by the POS design system—custom styling isn't supported.
+- Content display is determined by the extension's description rather than custom content properties—ensure your extension description is clear and informative.
+- Only one action button is supported for each \`POSBlock\` instance to maintain clean, focused interfaces that integrate well with existing POS workflows.
+`,
+    },
+  ],
 };
 
 export default data;

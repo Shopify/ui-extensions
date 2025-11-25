@@ -28,6 +28,29 @@ const data: ReferenceEntityTemplateSchema = {
     description:
       'Create consistent section headings with titles, optional action buttons, and divider lines. This example shows a SectionHeader that organizes content with proper visual hierarchy, helping merchants understand content structure and providing quick access to section-level actions.',
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Design meaningful action buttons:** When providing an action, use clear and descriptive button labels that indicate exactly what will happen when pressed. Avoid generic terms like "Action" in favor of specific actions like "Edit Settings" or "Add Item."
+- **Control divider visibility strategically:** Use the \`hideDivider\` property to control visual separation based on your layout needs. Show dividers when you need clear section boundaries, and hide them when the visual separation might create unnecessary visual clutter.
+- **Maintain consistent header patterns:** Establish consistent patterns for how you use \`SectionHeader\` across your POS UI extension. Similar types of content should have similar header structures, helping users develop familiarity with your interface organization.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Action buttons require a title to function properly—\`SectionHeader\` can't display actions without an accompanying title.
+- Only one action button is supported per \`SectionHeader\` to maintain clean, focused interfaces that don't overwhelm users.
+- The component's visual styling and layout are controlled by the POS design system—custom header styling beyond the provided properties is not supported.
+- \`SectionHeader\` is a standalone component separate from \`Section\`—it doesn't automatically integrate with \`Section\` component functionality or provide the same semantic benefits.
+`,
+    },
+  ],
 };
 
 export default data;

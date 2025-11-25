@@ -11,20 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   subCategory: 'Post-purchase',
   isVisualComponent: false,
-  related: [
-    {
-      name: 'pos.receipt-footer.block.render',
-      subtitle: 'Target',
-      type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render',
-    },
-    {
-      name: 'POSReceiptBlock',
-      subtitle: 'Component',
-      type: 'apps',
-      url: '/docs/api/pos-ui-extensions/components/posreceiptblock',
-    },
-  ],
+  related: [],
   type: 'Target',
   ...TRANSACTION_COMPLETE_DEFINITION,
   defaultExample: {

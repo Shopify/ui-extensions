@@ -34,48 +34,25 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'guidelines',
-      title: 'Guidelines',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
       sectionContent: `
-*   Due to the nature of this component and the intended UX for this type of action, we recommend surfacing this in a full screen modal.
-
-*   Please be advised that when utilizing the onSubmit callback, it is your responsibility to manage the navigation to the subsequent screen or dismissal of the modal. The component will only handle rejection of invalid PIN cases.
-      `,
+- **Mask sensitive entry:** Set \`masked\` to true for security-related PIN entry to prevent shoulder-surfing.
+- **Set appropriate constraints:** Define \`minPinLength\` and \`maxPinLength\` based on security needs (4-6 for basic, 6-10 for higher security).
+- **Validate securely on backend:** Use \`onSubmit\` for server-side verification. Return \`accept\` or \`reject\`. Implement rate limiting.
+- **Write clear labels:** Use direct prompts like "Enter Manager PIN" rather than verbose text.
+- **Use PIN terminology:** Always use "PIN" in all capitals.
+`,
     },
     {
       type: 'Generic',
-      anchorLink: 'content-guidelines',
-      title: 'Content guidelines',
+      anchorLink: 'limitations',
+      title: 'Limitations',
       sectionContent: `
-When referring to a personal identification number, refer to it as a PIN, with all capital letters.
-
-Also when writing the PIN title or PinPadAction label:
-
-*   Be concise
-*   Never go over 4 words
-*   Do not use punctuation
-*   Start with a capital letter
-
-### Title (Enter PIN)
-
-✅ [PIN pad title] Enter PIN<br>
-✅ [PIN pad title] Enter staff PIN<br>
-✅ [PIN pad title] Create PIN<br>
-❌ [PIN pad title] Please put in a PIN<br>
-❌ [PIN pad title] Create a PIN
-
-### PinPadAction (Generate random PIN, Clear)
-
-For PIN Pad actions, the action label should clearly communicate the action.
-
-✅ [PIN pad action label] Generate random PIN<br>
-❌ [PIN pad action label] Please create a new random PIN
-
-You can use just [verb], if it's obvious from the surrounding context what the [item] is:
-
-✅ [PIN pad action label] Clear<br>
-❌ [PIN pad action label] Clear PIN
-      `,
+- \`PinPad\` is designed for numeric PIN entry only—alphanumeric passcodes or complex passwords require different input components.
+- PIN length is constrained to 4-10 digits—requirements outside this range need alternative authentication methods.
+- The component provides the keypad interface and basic validation—additional security measures like rate limiting, attempt tracking, or lockout mechanisms must be implemented in your \`onSubmit\` callback.
+`,
     },
   ],
 };

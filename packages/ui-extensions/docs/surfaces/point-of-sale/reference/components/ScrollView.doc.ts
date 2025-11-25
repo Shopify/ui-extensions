@@ -23,6 +23,29 @@ const data: ReferenceEntityTemplateSchema = {
     description:
       'Enable scrolling for content that exceeds available screen space. This example demonstrates a ScrollView that automatically adjusts to content size with optimized rendering, supporting pull-to-refresh and lazy loading for smooth performance with extensive content on POS hardware.',
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Organize content for efficient scrolling:** Structure your scrollable content logically with clear visual hierarchy, consistent spacing, and logical grouping. This helps users navigate efficiently through longer content areas.
+- **Consider touch interface optimization:** \`ScrollView\` is optimized for touch-based POS devices, providing smooth scrolling with appropriate momentum and bounce effects. Design your content layout to take advantage of these touch-optimized behaviors.
+- **Combine with other layout components strategically:** Use \`ScrollView\` in combination with other layout components like \`Stack\`, \`Section\`, or \`Box\` to create well-organized scrollable content areas. \`ScrollView\` handles the scrolling behavior while other components manage content arrangement.
+- **Design for various content types:** \`ScrollView\` supports any valid POS UI extension components as children, allowing for flexible content organization. Use this flexibility to create rich, interactive scrollable experiences.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- \`ScrollView\` automatically manage scroll behavior—manual scroll control or custom scroll physics are not available.
+- Scroll styling and behavior are controlled by the POS design system—custom scroll bar appearance or scroll interactions beyond the default behavior aren't supported.
+- The component provides basic scrolling functionality without advanced features like pull-to-refresh, infinite scrolling, or scroll position management that would require custom implementation.
+`,
+    },
+  ],
 };
 
 export default data;

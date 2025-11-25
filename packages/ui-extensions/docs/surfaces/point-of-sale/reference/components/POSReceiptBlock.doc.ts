@@ -12,26 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'component',
   thumbnail: 'pos-receipt-block-thumbnail.png',
   category: 'Components',
-  related: [
-    {
-      name: 'Text',
-      subtitle: 'Acceptable child components',
-      type: 'apps',
-      url: '/docs/api/pos-ui-extensions/components/text',
-    },
-    {
-      name: 'QRCode',
-      subtitle: 'Acceptable child components',
-      type: 'apps',
-      url: '/docs/api/pos-ui-extensions/components/qrcode',
-    },
-    {
-      name: 'pos.receipt-footer.block.render',
-      subtitle: 'Target',
-      type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'pos-receipt-block-default.png',
     codeblock: generateCodeBlockForPOSReceiptBlock(
@@ -41,6 +22,31 @@ const data: ReferenceEntityTemplateSchema = {
     description:
       'Display custom content on POS receipts using a structured block container. This example shows how to group text and QR codes within receipt extensions, providing structured content for printed or digital receipts with proper formatting and layout.',
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Optimize text for receipt formatting:** When using \`Text\` components within \`POSReceiptBlock\`, choose content and formatting that works well in receipt layouts. Keep text concise and ensure it remains readable when printed on receipt paper.
+- **Design QR codes for easy scanning:** When including QR codes, ensure they encode useful information like store websites, feedback forms, or digital receipt access. Test QR code scanning in real-world conditions.
+- **Consider both digital and print contexts:** Design your receipt block content to work effectively in both digital receipt displays and physical printed receipts. Ensure text remains legible and QR codes remain scannable across both formats.
+- **Keep content focused and valuable:** Limit receipt block content to information that genuinely enhances the customer experience. Avoid cluttering receipts with excessive promotional content or information that isn't relevant to the transaction.
+- **Maintain consistent receipt branding:** Use \`POSReceiptBlock\` consistently across your extension to create cohesive receipt experiences. Establish patterns for how you present information that customers can recognize and trust.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- \`POSReceiptBlock\` only accepts \`Text\` and \`QRCode\` components as children—other component types aren't supported to ensure receipt formatting compatibility.
+- The component is designed specifically for receipt contexts—it can't be used in other POS UI extension targets or general interface layouts.
+- Content styling and layout are optimized for receipt formats—custom styling that might interfere with receipt printing or digital display is not supported.
+- Interactive elements beyond QR codes aren't supported—receipts are primarily informational documents rather than interactive interfaces.
+`,
+    },
+  ],
 };
 
 export default data;

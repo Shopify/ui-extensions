@@ -35,6 +35,30 @@ const data: ReferenceEntityTemplateSchema = {
     description:
       'Organize content into clearly-defined thematic areas using sections. This example demonstrates grouping related content with titles and optional actions, creating visual boundaries and structured layouts that help merchants navigate complex interfaces.',
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Design meaningful action buttons:** When providing an action, use clear and descriptive button titles that indicate exactly what will happen when pressed. Avoid generic terms like "Action" in favor of specific actions like "Edit Settings" or "Add Item."
+- **Group related content logically:** Use sections to group content that belongs together conceptually. Each section should contain related information or controls that users would expect to find together, creating intuitive content organization.
+- **Implement responsive action callbacks:**  Consider showing loading states or confirmation messages when actions require network requests or significant processing time.
+- **Maintain consistent section patterns:** Establish consistent patterns for how you use sections across your POS UI extension. Similar types of content should be structured similarly, helping users develop familiarity with your interface organization.
+- **Consider visual hierarchy and spacing:** Use sections strategically to create clear visual hierarchy in your interface.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Section content is determined by child components rather than direct content properties—organize your content structure through component composition.
+- Only one action button is supported per section to maintain clean, focused interfaces that integrate well with existing POS workflows.
+- The component's visual styling and layout are controlled by the POS design system—custom section styling beyond the provided properties is not supported.
+`,
+    },
+  ],
 };
 
 export default data;

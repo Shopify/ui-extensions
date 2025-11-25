@@ -30,6 +30,32 @@ const data: ReferenceEntityTemplateSchema = {
     description:
       'Display an interactive button on the POS smart grid for quick actions. This example shows a Tile that provides customizable shortcuts with contextual information, titles, subtitles, and badge values, enabling merchants to quickly access workflows and complete actions from the smart grid.',
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Provide contextual subtitles:** Show dynamic information like cart totals, eligibility requirements, current status, or helpful context. Subtitles should complement the title by providing additional details staff need before taking action.
+- **Use meaningful badge values:** Display counts that represent actionable items or important status information like pending notifications, items requiring action, or error counts. Badge values work best when they represent actionable information rather than purely informational counts.
+- **Design tiles as workflow entry points:** Use tiles primarily to launch modal experiences using \`api.action.presentModal()\` rather than performing complex operations directly. Store contextual data before presenting modals.
+- **Update properties efficiently:** Dynamically enable or disable tiles based on cart state, user permissions, or business rules. Only call \`updateProps()\` when displayed values actually change, and batch multiple property updates into single calls.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Each POS UI extension can only render one \`Tile\` component.
+- Badge values must be numeric-string or text badges aren't supported.
+- Custom icons, images, or visual styling beyond built-in properties aren't supported.
+- Tile size and layout is determined by the smart grid and can't be customized.
+- The \`Tile\` component is limited to tap interactions only. There's no support for long press, swipe, or other gestures.
+- Title and subtitle text must be plain strings-no HTML, markdown, or rich text formatting.
+`,
+    },
+  ],
 };
 
 export default data;

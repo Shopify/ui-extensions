@@ -11,14 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   subCategory: 'Cash tracking',
   isVisualComponent: false,
-  related: [
-    {
-      name: ExtensionTargetType.PosCashTrackingSessionStartObserve,
-      subtitle: 'Target',
-      type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-start-observe',
-    },
-  ],
+  related: [],
   type: 'Target',
   definitions: [CUSTOM_DATA('CashTrackingSessionCompleteData')],
   defaultExample: {
