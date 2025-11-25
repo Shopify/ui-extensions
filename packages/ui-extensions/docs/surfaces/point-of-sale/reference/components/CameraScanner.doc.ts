@@ -18,7 +18,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'CameraScannerProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Navigation and content',
   related: [],
   thumbnail: 'camera-scanner-thumbnail.png',
   defaultExample: {

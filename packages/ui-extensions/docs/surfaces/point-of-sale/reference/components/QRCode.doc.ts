@@ -20,7 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'QRCodeProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Media and visuals',
   related: [],
   defaultExample: {
     codeblock: generateCodeBlockForPOSReceiptBlock(

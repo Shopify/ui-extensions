@@ -25,7 +25,8 @@ const data: ReferenceEntityTemplateSchema = {
     description:
       'Capture customer email addresses with built-in format validation. This example shows how to implement an EmailField that validates email syntax in real-time, provides autocomplete support, and optimizes the keyboard for email entry, ensuring accurate customer contact information.',
   },
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Forms',
   related: [],
   thumbnail: 'email-field-thumbnail.png',
   subSections: [

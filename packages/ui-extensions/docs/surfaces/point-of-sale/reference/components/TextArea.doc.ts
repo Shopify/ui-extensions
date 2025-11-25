@@ -15,7 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'TextAreaProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Forms',
   related: [],
   thumbnail: 'text-area-thumbnail.png',
   defaultExample: {

@@ -11,7 +11,8 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   type: 'component',
   definitions: [],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   related: [],
   thumbnail: 'scroll-view-thumbnail.png',
   defaultExample: {

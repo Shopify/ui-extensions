@@ -18,7 +18,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DeviceApiContent',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   related: [],
   examples: {
     description:

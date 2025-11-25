@@ -11,7 +11,8 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   type: 'component',
   thumbnail: 'pos-receipt-block-thumbnail.png',
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   related: [],
   defaultExample: {
     image: 'pos-receipt-block-default.png',

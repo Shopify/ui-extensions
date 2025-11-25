@@ -26,7 +26,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PrintApiContent',
     },
   ],
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   related: [],
   examples: {
     description:

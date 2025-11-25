@@ -17,7 +17,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'BoxProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   related: [],
   thumbnail: 'box-thumbnail.png',
   defaultExample: {
