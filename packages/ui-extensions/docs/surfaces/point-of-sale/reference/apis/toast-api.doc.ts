@@ -54,6 +54,12 @@ const data: ReferenceEntityTemplateSchema = {
         description:
           "Show a temporary notification message to provide user feedback. This example demonstrates using `shopify.toast.show()` to display a brief, non-intrusive message that automatically disappears after a specified duration, useful for confirmations, status updates, or success messages that don't require user interaction.",
       },
+      {
+        codeblock: generateJsxCodeBlockForToastApi(
+          'Display a toast notification for a custom duration',
+          'show-with-duration',
+        ),
+      },
     ],
   },
 };

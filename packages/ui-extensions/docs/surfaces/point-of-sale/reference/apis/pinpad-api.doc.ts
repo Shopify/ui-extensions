@@ -54,6 +54,12 @@ const data: ReferenceEntityTemplateSchema = {
         description:
           'Present a secure PIN pad interface to collect and validate user PINs for authentication or verification. This example shows how to use `shopify.pinPad.show()` to display a PIN entry modal with customizable options, handle the entered PIN securely, and process the result for secure authentication workflows.',
       },
+      {
+        codeblock: generateJsxCodeBlockForToastApi(
+          'Configure PinPad options and handle dismissal',
+          'validation-with-options',
+        ),
+      },
     ],
   },
 };

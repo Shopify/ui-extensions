@@ -53,6 +53,12 @@ const data: ReferenceEntityTemplateSchema = {
         description:
           'Access the unique identifier of the current order in an order detail action context. This example shows how to use `shopify.order.id` to retrieve the order ID, which can be used for fetching additional order data, tracking, or implementing order-specific functionality and post-purchase workflows.',
       },
+      {
+        codeblock: generateJsxCodeBlockForOrderApi(
+          "Retrieve an order's name, ID, and associated customer ID",
+          'order-details',
+        ),
+      },
     ],
   },
 };

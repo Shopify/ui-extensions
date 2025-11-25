@@ -54,6 +54,12 @@ const data: ReferenceEntityTemplateSchema = {
         description:
           'Retrieve current session information and generate secure authentication tokens for backend API calls. This example shows how to access shop details, user information, and location data through `shopify.session`, and use `shopify.session.getSessionToken()` to generate tokens for authenticated requests to your backend services.',
       },
+      {
+        codeblock: generateJsxCodeBlockForSessionApi(
+          'Access properties associated with the current session',
+          'current-session',
+        ),
+      },
     ],
   },
 };
