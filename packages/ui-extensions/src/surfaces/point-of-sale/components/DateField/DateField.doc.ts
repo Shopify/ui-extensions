@@ -25,6 +25,26 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Forms',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Choose for direct text input:** Use `DateField` when users know the exact date and can type it efficiently. Use `DatePicker` for calendar selection or `DateSpinner` for space-constrained layouts.\n' +
+        '- **Explain date constraints:** Use `details` to clarify requirements like "Select a date within the next 30 days" or "Must be a future date."\n' +
+        '- **Write actionable error messages:** Provide clear validation messages for invalid dates that help users correct their input.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- `DateField` accepts date values in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601) (`YYYY-MM-DD`)—other date formats require conversion before setting the value property.\n' +
+        '- Validation occurs when the user finishes editing rather than on every keystroke—invalid dates are only flagged after blur, which may delay error feedback.\n' +
+        '- The component provides text-based date input—for calendar-style date selection, use the `DatePicker` component which offers visual date selection interface.',
+    },
+  ],
   defaultExample: {
     image: 'date-field-default.png',
     description:

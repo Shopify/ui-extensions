@@ -25,6 +25,25 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Forms',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Use correct format:** Always use `HH:mm:ss` format with leading zeros (like `"09:05:00"` not `"9:5:0"`).\n' +
+        '- **Explain time constraints:** Use `details` to clarify requirements like "Business hours only (09:00-17:00)" or "Must be a future time."',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- `TimeField` accepts time values in 24-hour `HH:mm:ss` format only—12-hour times or other formats require conversion before setting the value property.\n' +
+        '- The component provides text-based time input—for visual time selection with clock or spinner interfaces, use the `TimePicker` component which offers interactive time selection.\n' +
+        '- Validation occurs when the user finishes editing rather than on every keystroke—invalid times are only flagged after blur, which may delay error feedback.',
+    },
+  ],
   defaultExample: {
     image: 'time-field-default.png',
     description:

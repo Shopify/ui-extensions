@@ -24,6 +24,26 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Structure',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        "- **Write descriptive headings:** Provide clear heading text that represents the section's content.\n" +
+        '- **Let heading levels adjust automatically:** Nested sections automatically adjust heading levels for proper semantic structure.\n' +
+        '- **Place relevant secondary actions:** Use the `secondary-actions` slot for actions that apply to the entire section, like "Edit Settings" or "Add Item."',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- Section heading levels are automatically determined by nesting depth—manual heading level control is not available to ensure consistent document structure.\n' +
+        "- Only one secondary action button is supported per section to maintain clean, focused interfaces that don't overwhelm users.\n" +
+        "- The component's visual styling and spacing are controlled by the POS design system—custom section styling beyond content organization is not supported.",
+    },
+  ],
   defaultExample: {
     image: 'section-default.png',
     description:

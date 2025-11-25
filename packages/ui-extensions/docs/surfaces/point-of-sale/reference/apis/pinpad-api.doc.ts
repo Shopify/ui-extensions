@@ -20,6 +20,27 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Implement secure PIN validation:** Validate PINs securely on your backend service rather than in client-side code, using the `onSubmit` callback to communicate with your secure validation endpoint.\n' +
+        '- **Provide clear user feedback:** Use appropriate labels, titles, and error messages to guide users through the PIN entry process.\n' +
+        '- **Handle PIN entry appropriately:** Implement proper error handling for PIN validation failures, provide retry mechanisms, and ensure sensitive PIN data is handled securely throughout the process.\n' +
+        '- **Configure appropriate PIN constraints:** Set reasonable PIN length requirements and masking options based on your security requirements and user experience considerations.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- PIN validation must be handled through the `onSubmit` callback and should be performed securely on your backend service rather than in client-side extension code.\n' +
+        '- The PinPad API displays a modal interface that takes over the entire screen until PIN entry is complete or the modal is dismissed.\n' +
+        '- PIN data is provided as an array of numbers and must be handled securely, following appropriate data protection and privacy practices.',
+    },
+  ],
   examples: {
     description:
       'Learn how to display secure PIN entry interfaces and handle PIN validation.',

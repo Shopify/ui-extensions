@@ -21,6 +21,24 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        "- **Use modals for complex workflows:** Reserve modals for operations that genuinely require more screen space, multiple steps, or complex interactions that can't be handled by simple button actions.\n" +
+        '- **Provide clear entry points:** Use descriptive button labels and titles that clearly indicate what the modal will contain or what action it will perform, helping users understand what to expect.\n' +
+        '- **Handle modal dismissal gracefully:** Ensure your modal-based workflows handle user dismissal, saving progress when possible and providing clear feedback about incomplete operations.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        'Each extension can only present one modal at a time. Subsequent calls to `presentModal()` while a modal is already open may be ignored or replace the current modal.',
+    },
+  ],
   examples: {
     description:
       'Learn how to present full-screen modals from tiles and menu items using the Action API.',

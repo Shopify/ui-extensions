@@ -25,6 +25,27 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Forms',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Use for inline search and filtering:** Choose `SearchField` for filtering within specific sections or lists, not for global navigation or complex multi-step searches.\n' +
+        '- **Follow placeholder pattern:** Use "Search {items}" format like "Search products" or "Search customers" to clarify scope.\n' +
+        '- **Choose the right event:** Use `input` for real-time filtering as users type. Use `change` for expensive operations that should wait until typing completes.\n' +
+        '- **Handle empty values:** When the field is cleared, reset filters or show all items appropriately.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- `SearchField` provides a search input field with visual styling and clear functionality—additional search features like filters, sorting, search history, or search buttons require custom implementation.\n' +
+        '- The component handles text input and basic interaction events—complex search workflows with multiple steps or advanced state management require additional components or custom logic.\n' +
+        '- `SearchField` is optimized for inline search and filtering—displaying search results requires using other components like `Stack`, `Section`, or custom layout components to present filtered content.',
+    },
+  ],
   defaultExample: {
     image: 'search-field-default.png',
     description:

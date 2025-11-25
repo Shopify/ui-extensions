@@ -30,6 +30,26 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Forms',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Choose appropriate controls:** Use `stepper` for quantities or small adjustments. Use `none` for prices or large values where steppers are impractical.\n' +
+        '- **Select the right input mode:** Use `decimal` for prices and measurements. Use `numeric` for quantities and counts.\n' +
+        '- **Explain constraints in details:** Use `details` to clarify valid ranges or formatting, like "Enter a quantity between 1 and 999."',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- `NumberField` provides numeric input but doesn\'t enforce `min`/`max` constraints for keyboard input—you must implement validation logic to enforce bounds and display appropriate errors.\n' +
+        '- The component handles numeric input and basic format validation, but specialized number formatting like currency symbols or thousand separators requires additional formatting logic.\n' +
+        '- Stepper controls work best for small ranges and adjustments—they may not be practical for large numeric ranges or precise decimal entry.',
+    },
+  ],
   defaultExample: {
     image: 'number-field-default.png',
     description:

@@ -19,6 +19,25 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Media',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Choose appropriate sizing:** Use `inlineSize="fill"` for responsive layouts. Use `inlineSize="auto"` to maintain natural dimensions.\n' +
+        '- **Select object fit behavior:** Use `objectFit="contain"` to show the complete image. Use `objectFit="cover"` to fill the container, accepting cropping.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- Images are display-only components and don\'t support click events or interactive behaviors—wrap them in `Clickable` components for interactive functionality.\n' +
+        '- Image loading and caching behavior depends on the browser and network conditions—implement proper error handling and loading states for better user experience.\n' +
+        '- Large images can impact performance—ensure proper optimization and compression for better loading times.',
+    },
+  ],
   defaultExample: {
     image: 'image-default.png',
     description:

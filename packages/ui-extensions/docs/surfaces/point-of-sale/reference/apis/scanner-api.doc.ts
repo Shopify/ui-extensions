@@ -21,6 +21,27 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Handle scan events reactively:** Use the `subscribe` methods to automatically process scan events as they occur.\n' +
+        '- **Validate scanned data appropriately:** Validate scanned data before processing, implementing proper error handling for invalid codes, unsupported formats, or scanning errors.\n' +
+        '- **Provide clear scanning feedback:** Give users clear feedback about scan results, including success confirmations, error messages, and guidance when scans fail or produce invalid data.\n' +
+        '- **Adapt to available scanner sources:** Check available scanner sources and adapt your interface accordingly.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        "- The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.\n" +
+        '- Scanning availability depends on device hardware capabilities and may vary between different POS devices and configurations.\n' +
+        '- Scan data processing is reactive and requires proper subscription management to avoid memory leaks or unexpected behavior when components unmount.',
+    },
+  ],
   examples: {
     description:
       'Learn how to handle barcode and QR code scans and access scanner information.',

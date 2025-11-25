@@ -18,6 +18,27 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Structure',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Use semantic sizing:** Choose `auto` to adapt to content, percentages for responsive layouts, pixels only for exact dimensions.\n' +
+        '- **Use design system padding:** Use predefined padding keywords (`small`, `base`, `large`) for consistency.\n' +
+        '- **Use directional padding for asymmetry:** Use `paddingInline` and `paddingBlock` when different spacing is needed on different sides.\n' +
+        '- **Understand block vs inline:** `block` refers to content flow direction (usually vertical), `inline` to text direction (usually horizontal).',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- Box is a layout container and doesn\'t provide interactive functionality—use it in combination with interactive components like `Button` or `Clickable` for user interactions.\n' +
+        '- Padding values are limited to the predefined design system scale—custom pixel values for padding aren\'t supported to maintain design consistency.\n' +
+        '- Box doesn\'t provide scrolling capabilities for overflow content—use ScrollBox when content might exceed container dimensions.',
+    },
+  ],
   defaultExample: {
     image: 'box-default.png',
     description:

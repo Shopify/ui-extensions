@@ -18,6 +18,28 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Media',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Choose recognizable icons:** Use universally recognized symbols like `search`, `cart`, or `settings`. Avoid ambiguous icons.\n' +
+        '- **Match size to context:** Use smaller sizes for inline text or secondary actions, `base` for standard elements, larger sizes for primary actions.\n' +
+        '- **Apply tones for meaning:** Use `critical` for destructive actions, `warning` for cautions, `success` for confirmations, `auto` or `neutral` for general elements.\n' +
+        '- **Pair with text for clarity:** Consider adding text labels, especially for complex or uncommon actions.\n' +
+        '- **Use color for hierarchy:** Use `subdued` for secondary elements, `base` for standard visibility, `strong` for emphasis.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- Icons are purely decorative and don\'t support click events or interactive behaviors—wrap them in `Clickable` components for interactive functionality.\n' +
+        '- The available icon set is predefined and limited to POS-specific symbols—custom icons or external icon libraries aren\'t supported.\n' +
+        '- Icon appearance and styling are controlled by the POS design system—custom colors, styles, or modifications beyond the provided properties are not available.',
+    },
+  ],
   defaultExample: {
     image: 'icon-default.png',
     description:

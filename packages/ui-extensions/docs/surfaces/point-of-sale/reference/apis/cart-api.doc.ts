@@ -21,6 +21,28 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Handle cart state reactively:** Use the signal-based interface to automatically update your extension UI when cart changes occur.\n' +
+        '- **Validate operations before execution:** Check cart editability and validate input data before performing cart operations to prevent errors.\n' +
+        '- **Use bulk operations for efficiency:** When performing multiple related operations, use bulk methods like `bulkCartUpdate`, `bulkSetLineItemDiscounts`, and `bulkAddLineItemProperties` for better performance and reduced API calls.\n' +
+        '- **Handle errors gracefully:** Implement proper error handling for all cart operations, as they may fail due to inventory constraints, validation errors, oversell protection, or business rule violations.\n' +
+        '- **Manage selling plans appropriately:** When working with subscription products, validate selling plan compatibility and handle selling plan requirements.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- Cart operations may fail due to business rules, inventory constraints, oversell protection, or validation errors—always implement appropriate error handling.\n' +
+        '- Some operations require specific preconditions. For example, customer must be present for address operations and selling plans must be compatible with line items.\n' +
+        '- Selling plan operations are only available for products that support selling plans and may have additional validation requirements.',
+    },
+  ],
   examples: {
     description:
       'Learn how to manage cart contents, apply discounts, handle customer information, and track cart changes in real time.',

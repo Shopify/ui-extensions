@@ -19,6 +19,28 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Structure',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Choose appropriate direction:** Use `block` for vertical arrangements like forms. Use `inline` for horizontal arrangements like button groups. Note that inline wraps while block doesn\'t.\n' +
+        '- **Use design system spacing:** Use `SpacingKeyword` values for consistency. Start with `base` and adjust as needed.\n' +
+        '- **Apply alignment properties:** Use `justifyContent` for main axis distribution, `alignItems` for cross axis positioning, `alignContent` for extra space distribution.\n' +
+        '- **Avoid percentages on mobile:** Don\'t use percentage-based sizing within scrollable containers on mobile surfaces.\n' +
+        '- **Use gap for spacing control:** Use `gap` for uniform spacing, `rowGap` for block axis, `columnGap` for inline axis.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- Wrapping behavior is determined by direction—inline stacks wrap content while block stacks don\'t, which may not suit all layout requirements.\n' +
+        '- Percentage-based sizing should be avoided on mobile surfaces within scrollable containers due to unexpected behavior.\n' +
+        '- Complex grid-like layouts may require multiple nested `Stack` components or alternative layout approaches for optimal results.',
+    },
+  ],
   defaultExample: {
     image: 'stack-default.png',
     description:

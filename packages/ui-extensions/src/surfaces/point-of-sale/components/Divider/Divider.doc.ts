@@ -19,6 +19,25 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Structure',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Choose appropriate direction:** Use `inline` (horizontal) for most content separation. Use `block` (vertical) for columns or sidebar boundaries.\n' +
+        '- **Avoid overuse:** Use dividers strategically. In dense interfaces, consider whitespace or typography hierarchy instead.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- `Divider` is a purely visual component and doesn\'t provide interactive functionality—it serves only to create visual separation between content areas.\n' +
+        '- The component doesn\'t support custom styling beyond the available direction property—color, thickness, and other visual properties are controlled by the POS design system.\n' +
+        '- Dividers don\'t automatically adjust spacing around themselves—you must manage appropriate margins and padding in surrounding content to achieve proper visual separation.',
+    },
+  ],
   defaultExample: {
     image: 'divider-default.png',
     description:

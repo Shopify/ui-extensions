@@ -24,6 +24,27 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Actions',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Ensure sufficient hit area:** Provide enough space around clickable elements for easy tap targets, especially on touch devices.\n' +
+        '- **Use for custom interactive elements:** Reserve `Clickable` for scenarios where `Button` styling isn\'t appropriate.\n' +
+        '- **Provide visual feedback:** Ensure wrapped content shows clear visual feedback on interaction through styling or state changes.\n' +
+        '- **Use command system when appropriate:** Use `commandFor` and `command` to control modals and overlays declaratively rather than through manual state management.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- `Clickable` doesn\'t provide built-in visual styling—you must design and implement all visual feedback and states for wrapped content.\n' +
+        '- The component doesn\'t automatically handle keyboard navigation for complex interactive patterns—implement additional keyboard handlers if needed.\n' +
+        '- Nested clickable elements can create confusing interactions—avoid placing clickable content inside other clickable containers.',
+    },
+  ],
   defaultExample: {
     image: 'clickable-default.png',
     description:

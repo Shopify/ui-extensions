@@ -20,6 +20,27 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Handle locale changes reactively:** Use the `subscribe` method to automatically update your extension content when merchants change their language settings.\n' +
+        '- **Implement proper formatting:** Use the IETF locale format to implement proper date formatting, number formatting, currency display, and text direction based on the merchant\'s language and region preferences.\n' +
+        '- **Cache localized content:** Consider caching translated content and locale-specific formatting to improve performance, but ensure you invalidate caches when locale changes occur through subscription updates.\n' +
+        '- **Provide fallback locale handling:** Implement fallback behavior for unsupported locales or when localization resources are unavailable, defaulting to a supported language like English.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- The Locale API provides read-only access to locale information and can\'t be used to change the merchant\'s locale settings, which must be configured through POS system settings.\n' +
+        '- Locale changes are detected through the subscription mechanism, but the API doesn\'t provide historical locale information or change timestamps.\n' +
+        '- The locale format follows IETF standards, but the specific locales available depend on POS system configuration and may vary between different Shopify POS installations.',
+    },
+  ],
   examples: {
     description:
       'Learn how to access locale information and respond to language changes for internationalization.',

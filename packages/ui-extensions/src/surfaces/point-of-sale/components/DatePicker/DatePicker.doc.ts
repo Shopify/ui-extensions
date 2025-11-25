@@ -24,6 +24,25 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Forms',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Choose for calendar-based selection:** Use `DatePicker` when users benefit from seeing a calendar view, like selecting dates relative to today or needing weekday context. Use `DateSpinner` for tight spaces or `DateField` when users know the exact date.\n' +
+        '- **Provide adequate space:** Ensure sufficient spacing around the picker to avoid interfering with on-screen keyboards or other interactive elements.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- `DatePicker` provides the calendar interface but requires external state management for the selected value—you must update the `value` property in response to change events.\n' +
+        '- The component supports single dates, multiple dates, and date ranges through value format alone—the selection mode is inferred from the `value` property format rather than an explicit property.\n' +
+        '- Invalid date values result in no date being selected—the component doesn\'t provide specific error feedback, so you must validate date formats before setting the `value` property.',
+    },
+  ],
   defaultExample: {
     image: 'date-picker-default.png',
     description:

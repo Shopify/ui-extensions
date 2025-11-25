@@ -30,6 +30,27 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Structure',
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Use for focused interactions:** Reserve modals for confirmations, critical information, or tasks requiring immediate attention.\n' +
+        '- **Write clear headings:** Use concise titles that communicate the purpose or action.\n' +
+        "- **Choose appropriate button tones:** The `primary-action` button's `tone` determines the modal's overall tone. Use `critical` for destructive actions, `success` for confirmations.\n" +
+        '- **Include secondary actions:** Provide options like "Cancel" or "Go Back" to give merchants flexibility.\n' +
+        '- **Keep content focused:** Limit to essential information and actions. For complex workflows, break into multiple steps.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        "- Multiple modals can't be displayed simultaneously—showing a new modal while another is visible may cause unexpected behavior or poor user experience.\n" +
+        "- Modal visibility and lifecycle must be managed programmatically through events and commands—they don't automatically handle state management or persistence.",
+    },
+  ],
   defaultExample: {
     image: 'modal-default.png',
     description:

@@ -36,14 +36,27 @@ const data: ReferenceEntityTemplateSchema = {
     ],
   },
   category: 'APIs',
-  related: [
+  related: [],
+  subSections: [
     {
-      name: ExtensionTargetType.PosCartLineItemDetailsActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-cart-line-item-details-action-menu-item-render',
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Handle optional properties gracefully:** Check for `undefined` values in optional properties like `price`, `productId`, `title`, `sku`, `vendor`, and selling plan-related fields before using them in your extension logic.\n' +
+        '- **Use line item context effectively:** Use the line item data to create contextual experiences—for example, showing different interfaces for gift cards versus regular products, subscription items versus one-time purchases, or displaying vendor-specific information.\n' +
+        '- **Implement item-specific validation:** Use line item properties like `taxable`, `isGiftCard`, `requiresSellingPlan`, and `hasSellingPlanGroups` to implement appropriate validation and business logic for different item types.\n' +
+        '- **Handle selling plans appropriately:** When working with subscription products, check `requiresSellingPlan` and `sellingPlan` properties.\n' +
+        '- **Access related data efficiently:** Use `productId` and `variantId` to fetch additional product information when needed, but avoid unnecessary API calls by using the data already available in the line item.',
     },
     {
-      name: ExtensionTargetType.PosCartLineItemDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-cart-line-item-details-action-render',
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- The API provides read-only access to line item data—use the Cart API for modifying line item properties, discounts, selling plans, or other attributes.\n' +
+        '- Line item data reflects the current state and may not include real-time inventory, pricing, or selling plan updates until the cart is refreshed.\n' +
+        "- Selling plan information may be limited during refund or exchange operations where digest values aren't available.",
     },
   ],
 };
