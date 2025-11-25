@@ -41,9 +41,9 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- Button content must be plain text. If you nest components inside a button, the button extracts and displays only the text content from those components. For example, placing an `s-icon` inside a button won\'t display the icon—only any text content will be rendered. HTML, markdown, or rich text formatting isn\'t supported.\n' +
-        '- Loading states replace all button content with a spinner. Custom loading indicators or partial content updates aren\'t supported.\n' +
-        '- Complex button layouts or nested interactive components within buttons aren\'t supported.',
+        "- Button content must be plain text. If you nest components inside a button, the button extracts and displays only the text content from those components. For example, placing an `s-icon` inside a button won't display the icon—only any text content will be rendered. HTML, markdown, or rich text formatting isn't supported.\n" +
+        "- Loading states replace all button content with a spinner. Custom loading indicators or partial content updates aren't supported.\n" +
+        "- Complex button layouts or nested interactive components within buttons aren't supported.",
     },
   ],
   defaultExample: {

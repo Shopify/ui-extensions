@@ -33,8 +33,8 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- `ScrollBox` automatically manage overflow behavior—manual overflow control beyond the component\'s built-in scrolling isn\'t available.\n' +
-        '- Scroll behavior and styling are controlled by the POS design system—custom scroll bar styling or scroll physics modifications aren\'t supported.\n' +
+        "- `ScrollBox` automatically manage overflow behavior—manual overflow control beyond the component's built-in scrolling isn't available.\n" +
+        "- Scroll behavior and styling are controlled by the POS design system—custom scroll bar styling or scroll physics modifications aren't supported.\n" +
         '- The component is optimized for touch-based scrolling in POS environments—complex scroll interactions or nested scrolling scenarios may not perform optimally.',
     },
   ],

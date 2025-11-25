@@ -38,8 +38,8 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       sectionContent:
         '- Device information queries are asynchronous and may take time to resolve, so always handle the Promise-based responses appropriately in your extension logic.\n' +
-        '- The Device API provides read-only access to device information and can\'t be used to modify device settings or capabilities.\n' +
-        '- Device type detection is limited to basic form factor identification (tablet vs. non-tablet) and doesn\'t provide detailed hardware specifications or capabilities.',
+        "- The Device API provides read-only access to device information and can't be used to modify device settings or capabilities.\n" +
+        "- Device type detection is limited to basic form factor identification (tablet vs. non-tablet) and doesn't provide detailed hardware specifications or capabilities.",
     },
   ],
   examples: {

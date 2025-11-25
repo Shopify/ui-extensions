@@ -41,7 +41,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent:
         '- `DateSpinner` uses [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date format (`YYYY-MM-DD`) only—other date formats require conversion before setting the value property.\n' +
         '- The component provides spinner-based date selection exclusively—for calendar-style visual selection with month context, use the `DatePicker` component instead.\n' +
-        '- `DateSpinner` doesn\'t include field labels, help text, or error messaging—combine with other UI elements or text components to provide complete form field experiences.',
+        "- `DateSpinner` doesn't include field labels, help text, or error messaging—combine with other UI elements or text components to provide complete form field experiences.",
     },
   ],
   defaultExample: {

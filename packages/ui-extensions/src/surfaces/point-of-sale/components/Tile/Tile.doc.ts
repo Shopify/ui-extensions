@@ -41,11 +41,11 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       sectionContent:
         '- Each POS UI extension can only render one `Tile` component per tile target.\n' +
-        '- The `itemCount` property only accepts numeric values—string or text badges aren\'t supported.\n' +
-        '- Custom icons, images, or visual styling beyond the built-in `tone` property aren\'t supported.\n' +
-        '- Tile size and layout are determined by the smart grid system and can\'t be customized.\n' +
-        '- The `Tile` component supports click and long press interactions only. Swipe, drag, and other gestures aren\'t supported.\n' +
-        '- The `heading` and `subheading` properties must be plain strings—HTML, markdown, or rich text formatting isn\'t supported.',
+        "- The `itemCount` property only accepts numeric values—string or text badges aren't supported.\n" +
+        "- Custom icons, images, or visual styling beyond the built-in `tone` property aren't supported.\n" +
+        "- Tile size and layout are determined by the smart grid system and can't be customized.\n" +
+        "- The `Tile` component supports click and long press interactions only. Swipe, drag, and other gestures aren't supported.\n" +
+        "- The `heading` and `subheading` properties must be plain strings—HTML, markdown, or rich text formatting isn't supported.",
     },
   ],
   defaultExample: {

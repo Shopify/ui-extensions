@@ -39,7 +39,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       sectionContent:
         '- **Apply appropriate tones:** Use `success` for positive states, `critical` for urgent issues, `warning` for attention-needed states, `info` for neutral information.\n' +
-        '- **Keep text brief:** Use single words or short phrases. Avoid lengthy descriptions that don\'t fit the compact design.\n' +
+        "- **Keep text brief:** Use single words or short phrases. Avoid lengthy descriptions that don't fit the compact design.\n" +
         '- **Position near related content:** Place badges next to the items they describe for clear associations.\n' +
         '- **Use for status, not actions:** Badges display information only. For interactive elements, use buttons or clickable components.',
     },
@@ -48,7 +48,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- Badges aren\'t interactive elements—they display information but don\'t respond to user interactions like clicks or taps.\n' +
+        "- Badges aren't interactive elements—they display information but don't respond to user interactions like clicks or taps.\n" +
         '- The component relies on the tone system for semantic meaning, so custom styling may not convey the same semantic benefits.\n' +
         '- Very long text content may be truncated or cause layout issues depending on the container and screen size.',
     },

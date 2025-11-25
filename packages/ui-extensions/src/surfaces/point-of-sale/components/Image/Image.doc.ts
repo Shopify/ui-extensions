@@ -33,7 +33,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- Images are display-only components and don\'t support click events or interactive behaviors—wrap them in `Clickable` components for interactive functionality.\n' +
+        "- Images are display-only components and don't support click events or interactive behaviors—wrap them in `Clickable` components for interactive functionality.\n" +
         '- Image loading and caching behavior depends on the browser and network conditions—implement proper error handling and loading states for better user experience.\n' +
         '- Large images can impact performance—ensure proper optimization and compression for better loading times.',
     },

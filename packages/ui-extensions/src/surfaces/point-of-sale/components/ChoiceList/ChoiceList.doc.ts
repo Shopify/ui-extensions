@@ -45,8 +45,8 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- `ChoiceList` requires choice components as children—other component types can\'t be used as options within the choice list.\n' +
-        '- The component provides the selection interface but doesn\'t automatically filter or update content based on selections—you must implement the logic to respond to selection changes.\n' +
+        "- `ChoiceList` requires choice components as children—other component types can't be used as options within the choice list.\n" +
+        "- The component provides the selection interface but doesn't automatically filter or update content based on selections—you must implement the logic to respond to selection changes.\n" +
         '- Visual variants have different presentations across devices and contexts—the actual appearance may vary based on the POS platform and screen size.',
     },
   ],

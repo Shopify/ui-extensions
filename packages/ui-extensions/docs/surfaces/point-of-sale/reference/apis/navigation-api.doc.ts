@@ -44,8 +44,8 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- The Navigation API is only available in action (modal) targets and can\'t be used in action (menu item), block, or tile targets that don\'t support multi-screen navigation.\n' +
-        '- Navigation state is limited to serializable data and can\'t contain functions, complex objects, or circular references.\n' +
+        "- The Navigation API is only available in action (modal) targets and can't be used in action (menu item), block, or tile targets that don't support multi-screen navigation.\n" +
+        "- Navigation state is limited to serializable data and can't contain functions, complex objects, or circular references.\n" +
         '- The API follows web platform standards but operates within the POS modal context, so some web navigation behaviors may differ from standard browser navigation.',
     },
   ],

@@ -34,9 +34,9 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- Box is a layout container and doesn\'t provide interactive functionality—use it in combination with interactive components like `Button` or `Clickable` for user interactions.\n' +
-        '- Padding values are limited to the predefined design system scale—custom pixel values for padding aren\'t supported to maintain design consistency.\n' +
-        '- Box doesn\'t provide scrolling capabilities for overflow content—use ScrollBox when content might exceed container dimensions.',
+        "- Box is a layout container and doesn't provide interactive functionality—use it in combination with interactive components like `Button` or `Clickable` for user interactions.\n" +
+        "- Padding values are limited to the predefined design system scale—custom pixel values for padding aren't supported to maintain design consistency.\n" +
+        "- Box doesn't provide scrolling capabilities for overflow content—use ScrollBox when content might exceed container dimensions.",
     },
   ],
   defaultExample: {

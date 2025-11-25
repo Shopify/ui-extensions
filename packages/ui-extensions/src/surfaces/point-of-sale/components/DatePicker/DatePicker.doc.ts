@@ -40,7 +40,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent:
         '- `DatePicker` provides the calendar interface but requires external state management for the selected value—you must update the `value` property in response to change events.\n' +
         '- The component supports single dates, multiple dates, and date ranges through value format alone—the selection mode is inferred from the `value` property format rather than an explicit property.\n' +
-        '- Invalid date values result in no date being selected—the component doesn\'t provide specific error feedback, so you must validate date formats before setting the `value` property.',
+        "- Invalid date values result in no date being selected—the component doesn't provide specific error feedback, so you must validate date formats before setting the `value` property.",
     },
   ],
   defaultExample: {

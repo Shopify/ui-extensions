@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Design consistent key naming patterns:** Use hierarchical key names like `settings.user.theme` or `cache.products.${id}` to organize related data and make storage contents easier to understand and maintain.\n' +
+        "- **Design consistent key naming patterns:** Use hierarchical key names like `settings.user.theme` or `cache.products.$" + "{id}` to organize related data and make storage contents easier to understand and maintain.\n" +
         '- **Validate retrieved data:** Check data structure and types after calling `get()` since stored data may be outdated or corrupted. Provide sensible defaults and handle missing properties.\n' +
         '- **Plan for data evolution:** Design your stored data structures to handle future changes. Include version fields in complex objects and implement migration logic to handle schema updates between extension versions.\n' +
         '- **Keep sensitive data out of local storage:** Never store passwords, API keys, or other sensitive information. Use the Session API for secure backend communication and limit stored data to user preferences and non-sensitive workflow state.',

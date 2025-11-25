@@ -56,7 +56,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- The `Banner` component only accepts a `heading` property for text content and doesn\'t support body content. You can\'t place `<s-text>` or other text elements inside the banner as children.',
+        "- The `Banner` component only accepts a `heading` property for text content and doesn't support body content. You can't place `<s-text>` or other text elements inside the banner as children.",
     },
   ],
   related: [],

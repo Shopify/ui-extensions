@@ -35,8 +35,8 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- Icons are purely decorative and don\'t support click events or interactive behaviors—wrap them in `Clickable` components for interactive functionality.\n' +
-        '- The available icon set is predefined and limited to POS-specific symbols—custom icons or external icon libraries aren\'t supported.\n' +
+        "- Icons are purely decorative and don't support click events or interactive behaviors—wrap them in `Clickable` components for interactive functionality.\n" +
+        "- The available icon set is predefined and limited to POS-specific symbols—custom icons or external icon libraries aren't supported.\n" +
         '- Icon appearance and styling are controlled by the POS design system—custom colors, styles, or modifications beyond the provided properties are not available.',
     },
   ],

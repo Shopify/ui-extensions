@@ -46,9 +46,9 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- `EmailField` provides the input interface but doesn\'t perform automatic email validation—you must implement validation logic and use the `error` property to display validation results.\n' +
-        '- The `required` property adds semantic meaning only—it doesn\'t trigger automatic error display, so you must manually check for empty values and set errors accordingly.\n' +
-        '- The `accessory` slot supports only `Button` and `Clickable` components—other component types can\'t be used in the accessory slot.',
+        "- `EmailField` provides the input interface but doesn't perform automatic email validation—you must implement validation logic and use the `error` property to display validation results.\n" +
+        "- The `required` property adds semantic meaning only—it doesn't trigger automatic error display, so you must manually check for empty values and set errors accordingly.\n" +
+        "- The `accessory` slot supports only `Button` and `Clickable` components—other component types can't be used in the accessory slot.",
     },
   ],
   defaultExample: {
