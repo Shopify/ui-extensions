@@ -23,4 +23,4 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           build_script: yarn build
-          comment_command: /snapit
+          trigger_comment: /snapit
