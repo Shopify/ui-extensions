@@ -12,53 +12,54 @@ import type {ImageProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
- * The base props for elements without children, providing key, ref, and slot properties.
+ * Used when an element does not have children.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
-  /**
-   * A unique identifier for the element in lists. Used by Preact for efficient rendering and reconciliation.
-   */
   key?: Key;
-  /**
-   * A reference to the underlying DOM element. Commonly used to access the element directly for imperative operations.
-   */
   ref?: Ref<TClass>;
-  /**
-   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
-   */
   slot?: Lowercase<string>;
 }
 /**
- * The base props for elements with children, extending `BaseElementProps` with children support.
+ * Used when an element has children.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  /**
-   * The child elements to render within this component.
-   */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
 declare const tagName = 's-image';
-export interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
+export interface ImageJSXProps
+  extends Pick<ImageProps, 'id' | 'objectFit' | 'alt'> {
   /**
-   * Controls the displayed width of the image. Choose based on your layout requirements. For mobile interfaces, consider using `'fill'` with defined container dimensions to ensure consistent image display, as dynamic container heights can cause layout inconsistencies in scrollable views.
+   * The displayed inline width of the image.
    *
-   * - `'auto'` - Displays the image at its natural size. The image will not render until it has loaded, and the aspect ratio will be ignored. Use for images where maintaining original dimensions is important.
-   * - `'fill'` - Makes the image take up 100% of the available inline size. The aspect ratio will be respected and the image will take the necessary space. Use for responsive layouts and flexible image containers.
+   * - `fill`: the image will takes up 100% of the available inline size.
+   * - `auto`: the image will be displayed at its natural size.
+   *
+   * **Mobile surfaces:** Always wrap your image in a box with a set width and height.
+   * ScrollViews on mobile have a dynamic height, which can cause images to appear
+   * inconsistently without defined dimensions.
    *
    * @default 'fill'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
    */
   inlineSize?: ImageProps['inlineSize'];
   /**
-   * The image source URL (remote URL or local file resource). When loading or no src is provided, a placeholder is rendered. Ensure URLs are properly formatted and properly formatted.
+   * The image source, which should be a remote URL.
+   *
+   * When the image is loading or no `src` is provided, a placeholder will be rendered.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
    */
   src?: ImageProps['src'];
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ImageJSXProps;
+    [tagName]: HtmlElementTagNameProps<ImageJSXProps>;
   }
 }
 declare module 'preact' {
