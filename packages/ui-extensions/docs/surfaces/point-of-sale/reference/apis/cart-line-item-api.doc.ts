@@ -21,6 +21,23 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'CartLineItemApi',
     },
   ],
+  examples: {
+    description:
+      'Learn how to access line item information in cart line item action contexts.',
+    examples: [
+      {
+        codeblock: generateJsxCodeBlockForCartLineItemApi(
+          'Display the line item ID',
+          'id',
+        ),
+        description:
+          'Access the unique identifier of the current cart line item in line item detail contexts. This example shows how to use `shopify.cartLineItem.id` to retrieve the line item ID. This can be used for modifying the item, applying discounts, or implementing item-specific functionality.',
+      },
+    ],
+  },
+  category: 'Target APIs',
+  subCategory: 'Contextual APIs',
+  related: [],
   subSections: [
     {
       type: 'Generic',
@@ -44,23 +61,6 @@ const data: ReferenceEntityTemplateSchema = {
 `,
     },
   ],
-  examples: {
-    description:
-      'Learn how to access line item information in cart line item action contexts.',
-    examples: [
-      {
-        codeblock: generateJsxCodeBlockForCartLineItemApi(
-          'Display the line item ID',
-          'id',
-        ),
-        description:
-          'Access the unique identifier of the current cart line item in line item detail contexts. This example shows how to use `shopify.cartLineItem.id` to retrieve the line item ID. This can be used for modifying the item, applying discounts, or implementing item-specific functionality.',
-      },
-    ],
-  },
-  category: 'Target APIs',
-  subCategory: 'Contextual APIs',
-  related: [],
 };
 
 export default data;

@@ -19,6 +19,23 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'CustomerApiContent',
     },
   ],
+  examples: {
+    description:
+      'Learn how to access customer information in customer detail contexts.',
+    examples: [
+      {
+        codeblock: generateJsxCodeBlockForCustomerApi(
+          'Display the customer ID',
+          'id',
+        ),
+        description:
+          'Access the unique identifier of the current customer in a customer detail context. This example shows how to use `shopify.customer.id` to retrieve the customer ID. This can be used for fetching additional customer data, implementing loyalty features, or building personalized customer experiences.',
+      },
+    ],
+  },
+  category: 'Target APIs',
+  subCategory: 'Contextual APIs',
+  related: [],
   subSections: [
     {
       type: 'Generic',
@@ -39,23 +56,6 @@ Customer data reflects the current POS session and may not include real-time upd
 `,
     },
   ],
-  examples: {
-    description:
-      'Learn how to access customer information in customer detail contexts.',
-    examples: [
-      {
-        codeblock: generateJsxCodeBlockForCustomerApi(
-          'Display the customer ID',
-          'id',
-        ),
-        description:
-          'Access the unique identifier of the current customer in a customer detail context. This example shows how to use `shopify.customer.id` to retrieve the customer ID. This can be used for fetching additional customer data, implementing loyalty features, or building personalized customer experiences.',
-      },
-    ],
-  },
-  category: 'Target APIs',
-  subCategory: 'Contextual APIs',
-  related: [],
 };
 
 export default data;

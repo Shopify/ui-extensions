@@ -58,6 +58,8 @@ Order data reflects the current POS session and may not include real-time update
           "Retrieve an order's name, ID, and associated customer ID",
           'order-details',
         ),
+        description:
+          'Access multiple order properties including the order name and customer ID. This example demonstrates accessing `shopify.order.id`, `shopify.order.name`, and `shopify.order.customerId` to display comprehensive order information. Use this pattern for order management workflows and customer service features.',
       },
     ],
   },

@@ -59,6 +59,8 @@ const data: ReferenceEntityTemplateSchema = {
           'Display a toast notification for a custom duration',
           'show-with-duration',
         ),
+        description:
+          'Configure custom display durations for toast notifications to match message importance and length. This example demonstrates using the `duration` option with `shopify.toast.show()` to control how long notifications remain visible. Use shorter durations for quick confirmations and longer durations for messages that require more reading time.',
       },
     ],
   },

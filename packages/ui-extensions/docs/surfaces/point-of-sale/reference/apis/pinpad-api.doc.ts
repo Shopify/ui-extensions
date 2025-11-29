@@ -60,6 +60,8 @@ const data: ReferenceEntityTemplateSchema = {
           'Configure PinPad options and handle dismissal',
           'validation-with-options',
         ),
+        description:
+          'Configure PIN pad options including PIN length requirements, masking, and custom labels. This example shows how to use `showPinPad()` with options like `minPinLength`, `maxPinLength`, `masked`, `title`, and `onDismissed` callback. This creates a fully configured PIN entry experience with proper validation and dismissal handling.',
       },
     ],
   },

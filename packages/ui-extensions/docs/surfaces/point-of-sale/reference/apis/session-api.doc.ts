@@ -59,6 +59,8 @@ const data: ReferenceEntityTemplateSchema = {
           'Access properties associated with the current session',
           'current-session',
         ),
+        description:
+          'Access comprehensive session information including shop details, user data, and location information. This example shows how to use `shopify.session.currentSession` to retrieve shop ID, domain, currency, user ID, location ID, staff member ID, and POS version. Use this data to build location-aware features and personalized experiences.',
       },
     ],
   },

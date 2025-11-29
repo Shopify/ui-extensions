@@ -36,6 +36,8 @@ const data: ReferenceEntityTemplateSchema = {
           'Retrieve product and product variant IDs',
           'product-variant',
         ),
+        description:
+          'Access both product and variant identifiers to implement variant-specific functionality. This example shows how to retrieve `shopify.product.id` and `shopify.product.variantId` together. Use this pattern for variant-aware features like inventory checks, variant-specific pricing, or detailed product information displays.',
       },
     ],
   },

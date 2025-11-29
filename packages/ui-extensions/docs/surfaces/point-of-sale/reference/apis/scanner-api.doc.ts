@@ -60,6 +60,8 @@ const data: ReferenceEntityTemplateSchema = {
           'Subscribe to scanner data events and track scanning history',
           'scanner-data-subscribe',
         ),
+        description:
+          'Subscribe to real-time scan events and maintain a history of scanned items. This example demonstrates using `shopify.scanner.scannerData.current.subscribe()` to capture scan data, source information, and timestamps. Use this pattern for scan logging, bulk scanning workflows, or scan history review.',
       },
     ],
   },
