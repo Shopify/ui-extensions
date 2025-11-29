@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'DatePicker',
   description:
     'The `DatePicker` component allows merchants to select a specific date using a calendar-like picker interface. Use it to provide visual date selection with an intuitive calendar view for improved user experience.' +
-    '\n\n`DatePicker` offers a calendar-based alternative to spinner-style pickers when visual calendar context is beneficial. The calendar interface allows merchants to see dates in context of the full month, making it easier to select dates relative to specific days of the week or to visualize date ranges within a month view.',
+    '\n\n`DatePicker` offers a calendar-based alternative to [spinner-style pickers](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner) when visual calendar context is beneficial. The calendar interface allows merchants to see dates in context of the full month, making it easier to select dates relative to specific days of the week or to visualize date ranges within a month view.',
   thumbnail: 'date-picker-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -44,7 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent: `
-- **Choose for calendar-based selection:** Use \`DatePicker\` when users benefit from seeing a calendar view, like selecting dates relative to today or needing weekday context. Use \`DateSpinner\` for tight spaces or \`DateField\` when users know the exact date.
+- **Choose for calendar-based selection:** Use \`DatePicker\` when users benefit from seeing a calendar view, like selecting dates relative to today or needing weekday context. Use [\`DateSpinner\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner) for tight spaces or [\`DateField\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datefield) when users know the exact date.
 - **Provide adequate space:** Ensure sufficient spacing around the picker to avoid interfering with on-screen keyboards or other interactive elements.
 `,
     },

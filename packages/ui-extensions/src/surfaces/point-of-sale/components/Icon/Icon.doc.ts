@@ -50,7 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Icons are purely decorative and don't support click events or interactive behaviors—wrap them in \`Button\` or \`Clickable\` components for interactive functionality.
+- Icons are purely decorative and don't support click events or interactive behaviors—wrap them in [\`Button\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/button) or [\`Clickable\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/clickable) components for interactive functionality.
 - The available icon set is predefined and limited to POS-specific symbols—custom icons or external icon libraries aren't supported.
 - Icon appearance and styling are controlled by the POS design system—custom colors, styles, or modifications beyond the provided properties are not available.
 `,

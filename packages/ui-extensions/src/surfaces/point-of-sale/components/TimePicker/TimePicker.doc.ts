@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'TimePicker',
   description:
     'The `TimePicker` component allows merchants to select a specific time using an interactive picker interface. Use it to provide visual time selection for improved user experience and reduced input errors.' +
-    '\n\n`TimePicker` offers a more visual and touch-friendly alternative to text-based time input, making time selection faster and more accurate. The picker interface provides an intuitive way to select hours and minutes through an interactive interface.',
+    '\n\n`TimePicker` offers a more visual and touch-friendly alternative to [text-based time input](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/timefield), making time selection faster and more accurate. The picker interface provides an intuitive way to select hours and minutes through an interactive interface.',
   thumbnail: 'time-spinner-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -44,7 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent: `
-- **Choose for visual time selection:** Use \`TimePicker\` when users benefit from a visual picker interface. Use \`TimeField\` when users know the exact time.
+- **Choose for visual time selection:** Use \`TimePicker\` when users benefit from a visual picker interface. Use [\`TimeField\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/timefield) when users know the exact time.
 - **Use correct format:** Always use \`HH:mm:ss\` format with leading zeros. The internal format is always 24-hour regardless of UI presentation.
 - **Validate before setting values:** Invalid values reset to empty string. Implement validation to show appropriate error messages.
 `,

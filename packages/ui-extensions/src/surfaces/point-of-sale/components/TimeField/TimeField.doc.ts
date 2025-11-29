@@ -55,7 +55,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       sectionContent: `
 - \`TimeField\` accepts time values in 24-hour \`HH:mm:ss\` format only—12-hour times or other formats require conversion before setting the value property.
-- The component provides text-based time input—for visual time selection with clock or spinner interfaces, use the \`TimePicker\` component which offers interactive time selection.
+- The component provides text-based time input—for visual time selection with clock or spinner interfaces, use the [\`TimePicker\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/timepicker) component which offers interactive time selection.
 - Validation occurs when the user finishes editing rather than on every keystroke—invalid times are only flagged after blur, which may delay error feedback.
 `,
     },

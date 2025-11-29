@@ -48,7 +48,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Images are display-only components and don't support click events or interactive behaviors—wrap them in \`Button\` or \`Clickable\` components for interactive functionality.
+- Images are display-only components and don't support click events or interactive behaviors—wrap them in [\`Button\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/button) or [\`Clickable\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/clickable) components for interactive functionality.
 - Image loading and caching behavior depends on the browser and network conditions—implement proper error handling and loading states for better user experience.
 - Large images can impact performance—ensure proper optimization and compression for better loading times.
 `,
