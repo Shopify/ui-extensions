@@ -52,7 +52,7 @@ const data: ReferenceEntityTemplateSchema = {
           'tablet',
         ),
         description:
-          'Determine whether the extension is running on a tablet form factor. This example shows how to use `shopify.device.isTablet()` to check the device type, allowing you to adapt your UI layout, component sizes, or features based on whether the device is a tablet or other form factor.',
+          'Check if the POS device is running on tablet hardware to adapt your UI accordingly. This example shows how to use `shopify.device.isTablet()` to determine the device form factor. This enables responsive layouts and touch-optimized interfaces for tablet devices versus traditional POS terminals.',
       },
       {
         codeblock: generateJsxCodeBlockForDeviceApi(
@@ -60,7 +60,7 @@ const data: ReferenceEntityTemplateSchema = {
           'device-id',
         ),
         description:
-          'Access the unique identifier of the POS device. This example demonstrates using `shopify.device.id` to retrieve the device ID, which can be used for device-specific configurations, tracking, or associating data with particular devices.',
+          'Access the unique identifier of the current POS device. This example demonstrates using `shopify.device.id` to retrieve the device ID. This enables device-specific configurations, analytics tracking, or multi-device coordination features.',
       },
       {
         codeblock: generateJsxCodeBlockForDeviceApi(
@@ -68,7 +68,7 @@ const data: ReferenceEntityTemplateSchema = {
           'name',
         ),
         description:
-          'Access the name of the POS device running your extension. This example shows how to use `shopify.device.name` to retrieve the device name, which can be useful for debugging, analytics, or displaying device-specific information to users.',
+          'Access the friendly name of the current POS device. This example shows how to use `shopify.device.name` to retrieve the device name configured in POS settings. This is useful for device identification, multi-device workflows, or displaying location-specific information.',
       },
     ],
   },

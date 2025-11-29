@@ -54,7 +54,7 @@ const data: ReferenceEntityTemplateSchema = {
           'subscribe',
         ),
         description:
-          'Subscribe to connectivity state changes to build network-aware extensions that respond to connectivity changes. This example shows how to use `shopify.connectivity.subscribe()` to receive real-time notifications when the device goes online or offline, allowing you to adapt your UI or disable features when Internet access is unavailable.',
+          'Subscribe to connectivity changes to monitor network status in real time. This example demonstrates using `shopify.connectivity.subscribe()` and `shopify.connectivity.connected` to detect when the device goes online or offline. This enables adaptive behavior for offline-capable features or network-dependent operations.',
       },
     ],
   },

@@ -53,7 +53,7 @@ const data: ReferenceEntityTemplateSchema = {
           'conditional-scanner-example',
         ),
         description:
-          'Subscribe to scan events and adapt behavior based on the scanner source. This example shows how to use `shopify.scanner.subscribe()` to receive scan events and check `shopify.scanner.source` to determine which scanner type was used (camera, external scanner, or embedded hardware), allowing you to customize handling based on the scanning method.',
+          'Subscribe to scan events and adapt behavior based on the scanner source. This example shows how to use `shopify.scanner.subscribe()` to receive scan events and check `shopify.scanner.source` to determine which scanner type was used (camera, external scanner, or embedded hardware). By identifying the scanner type, you can customize handling based on the scanning method.',
       },
       {
         codeblock: generateCodeBlockForScannerApi(

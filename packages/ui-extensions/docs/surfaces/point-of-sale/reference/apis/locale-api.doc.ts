@@ -52,7 +52,7 @@ const data: ReferenceEntityTemplateSchema = {
           'subscribe',
         ),
         description:
-          "Subscribe to locale changes to build internationalized extensions that automatically adapt to the merchant's language settings. This example shows how to use `shopify.locale.subscribe()` to receive real-time notifications when the merchant changes their language, allowing you to update your UI text, date formats, and number formats accordingly.",
+          "Subscribe to locale changes to monitor the merchant's language settings in real time. This example shows how to use `shopify.locale.subscribe()` and `shopify.locale.ianaCode` to detect when the merchant changes their language preference. This enables dynamic content localization and internationalized user experiences.",
       },
     ],
   },
