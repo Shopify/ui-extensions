@@ -36,19 +36,21 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent:
-        '- **Write descriptive labels:** Use specific labels like "Customer Email" or "Receipt Email Address" rather than generic "Email."\n' +
-        '- **Provide context in details:** Use `details` for additional context like "Required for digital receipts" or "We\'ll send order updates to this address."\n' +
-        '- **Write actionable error messages:** Provide clear validation messages like "Please enter a valid email address" that help users correct their input.',
+      sectionContent: `
+- **Write descriptive labels:** Use specific labels like "Customer Email" or "Receipt Email Address" rather than generic "Email."
+- **Provide context in details:** Use \`details\` for additional context like "Required for digital receipts" or "We'll send order updates to this address."
+- **Write actionable error messages:** Provide clear validation messages like "Please enter a valid email address" that help users correct their input.
+`,
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        "- `EmailField` provides the input interface but doesn't perform automatic email validation—you must implement validation logic and use the `error` property to display validation results.\n" +
-        "- The `required` property adds semantic meaning only—it doesn't trigger automatic error display, so you must manually check for empty values and set errors accordingly.\n" +
-        "- The `accessory` slot supports only `Button` and `Clickable` components—other component types can't be used in the accessory slot.",
+      sectionContent: `
+- \`EmailField\` provides the input interface but doesn't perform automatic email validation—you must implement validation logic and use the \`error\` property to display validation results.
+- The \`required\` property adds semantic meaning only—it doesn't trigger automatic error display, so you must manually check for empty values and set errors accordingly.
+- The \`accessory\` slot supports only [\`Button\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/button) and [\`Clickable\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/clickable) components—other component types can't be used in the accessory slot.
+`,
     },
   ],
   defaultExample: {
@@ -72,7 +74,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Add action buttons to the email field using the accessory slot for quick actions like clearing input or verifying email addresses. This example shows how to use `s-button` and `s-clickable` components in the accessory slot, providing inline functionality within the email input context.',
+          'Add action buttons to the email field using the accessory slot for quick actions like clearing input or verifying email addresses. This example shows how to use [`s-button`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/button) and [`s-clickable`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/clickable) components in the accessory slot, providing inline functionality within the email input context.',
         codeblock: {
           title: 'Add accessory buttons',
           tabs: [

@@ -35,19 +35,21 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent:
-        '- **Use for single-line text input:** Choose `TextField` for short values like names, titles, or identifiers. For multi-line content, use `TextArea`.\n' +
-        '- **Show character limit feedback:** When approaching `maxLength`, display remaining characters in the `details` text.\n' +
-        '- **Write descriptive labels:** Use specific labels like "Product Name" or "Reference Code" rather than generic terms.',
+      sectionContent: `
+- **Use for single-line text input:** Choose \`TextField\` for short values like names, titles, or identifiers. For multi-line content, use [\`TextArea\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/textarea).
+- **Show character limit feedback:** When approaching \`maxLength\`, display remaining characters in the \`details\` text.
+- **Write descriptive labels:** Use specific labels like "Product Name" or "Reference Code" rather than generic terms.
+`,
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        '- `TextField` provides single-line text input only—multi-line text entry requires the `TextArea` component.\n' +
-        "- The `required` property adds semantic meaning only—it doesn't trigger automatic error display or validation, so you must implement validation logic manually.\n" +
-        "- The `accessory` slot supports only `Button` and `Clickable` components with text content only—other component types or complex layouts can't be used for field accessories.",
+      sectionContent: `
+- \`TextField\` provides single-line text input only—multi-line text entry requires the [\`TextArea\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/textarea) component.
+- The \`required\` property adds semantic meaning only—it doesn't trigger automatic error display or validation, so you must implement validation logic manually.
+- The \`accessory\` slot supports only [\`Button\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/button) and [\`Clickable\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/clickable) components with text content only—other component types or complex layouts can't be used for field accessories.
+`,
     },
   ],
   defaultExample: {
@@ -67,11 +69,11 @@ const data: ReferenceEntityTemplateSchema = {
   related: [],
   examples: {
     description:
-      'Learn how to handle events, use accessory slots, and configure common properties for validation and user guidance.',
+      'Learn how to add accessory buttons, configure validation properties, and handle events.',
     examples: [
       {
         description:
-          'Add action buttons to the text field using the accessory slot for quick actions like clearing text or submitting input. This example shows how to use `s-button` and `s-clickable` components with text content in the accessory slot, enabling inline actions without leaving the input context.',
+          'Add action buttons to the text field using the accessory slot for quick actions like clearing text or submitting input. This example shows how to use [`s-button`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/button) and [`s-clickable`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/clickable) components with text content in the accessory slot, enabling inline actions without leaving the input context.',
         codeblock: {
           title: 'Add accessory buttons',
           tabs: [
