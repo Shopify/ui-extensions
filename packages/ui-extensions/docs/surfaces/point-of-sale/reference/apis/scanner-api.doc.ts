@@ -37,10 +37,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        "- The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.\n" +
-        '- Scanning availability depends on device hardware capabilities and may vary between different POS devices and configurations.\n' +
-        '- Scan data processing is reactive and requires proper subscription management to avoid memory leaks or unexpected behavior when components unmount.',
+      sectionContent: `
+- The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.
+- Scan data processing is reactive and requires proper subscription management to avoid memory leaks or unexpected behavior when components unmount.
+`,
     },
   ],
   examples: {

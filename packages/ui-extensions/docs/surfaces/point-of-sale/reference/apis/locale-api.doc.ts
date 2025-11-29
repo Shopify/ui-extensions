@@ -36,10 +36,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        "- The Locale API provides read-only access to locale information and can't be used to change the merchant's locale settings, which must be configured through POS system settings.\n" +
-        "- Locale changes are detected through the subscription mechanism, but the API doesn't provide historical locale information or change timestamps.\n" +
-        '- The locale format follows IETF standards, but the specific locales available depend on POS system configuration and may vary between different Shopify POS installations.',
+      sectionContent: `
+Locale changes are detected through the subscription mechanism, but the API doesn't provide historical locale information or change timestamps.
+`,
     },
   ],
   examples: {

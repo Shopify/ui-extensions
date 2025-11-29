@@ -36,8 +36,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        'Each extension can only present one modal at a time. Subsequent calls to `presentModal()` while a modal is already open may be ignored or replace the current modal.',
+      sectionContent: `
+The \`presentModal()\` method must be called from a user interaction (such as a button click or tile tap) and can't be invoked programmatically during extension initialization or from background operations.
+`,
     },
   ],
   examples: {

@@ -36,9 +36,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        '- The API provides only basic order information—use Shopify APIs or external systems to fetch additional order details like line items, totals, or fulfillment status.\n' +
-        '- Order data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.',
+      sectionContent: `
+Order data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+`,
     },
   ],
   examples: {

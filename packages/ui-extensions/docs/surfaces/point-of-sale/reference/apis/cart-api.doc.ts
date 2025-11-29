@@ -38,10 +38,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        '- Cart operations may fail due to business rules, inventory constraints, oversell protection, or validation errors—always implement appropriate error handling.\n' +
-        '- Some operations require specific preconditions. For example, customer must be present for address operations and selling plans must be compatible with line items.\n' +
-        '- Selling plan operations are only available for products that support selling plans and may have additional validation requirements.',
+      sectionContent: `
+- Cart operations can only be performed when the cart is in an editable state—check \`cart.editable\` before attempting modifications.
+- Cart operations may fail due to business rules, inventory constraints, oversell protection, or validation errors—always implement appropriate error handling.
+`,
     },
   ],
   examples: {

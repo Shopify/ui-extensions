@@ -38,10 +38,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        "- The Connectivity API provides read-only access to connectivity information and can't be used to control or modify network settings on the device.\n" +
-        '- Connectivity status reflects Internet connectivity only and may not indicate the quality or speed of the connection, which could affect API performance.\n' +
-        "- The API monitors general Internet connectivity but doesn't provide specific information about Shopify service availability or API endpoint availability.",
+      sectionContent: `
+Connectivity status reflects Internet connectivity only and may not indicate the quality or speed of the connection, which could affect API performance.
+`,
     },
   ],
   examples: {
