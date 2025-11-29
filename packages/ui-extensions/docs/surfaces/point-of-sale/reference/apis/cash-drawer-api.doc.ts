@@ -59,7 +59,7 @@ const data: ReferenceEntityTemplateSchema = {
           'default.example',
         ),
         description:
-          'Open the cash drawer programmatically for manual cash handling or custom workflows. This example shows how to use `shopify.cashDrawer.open()` to trigger the connected cash drawer hardware, useful for no-sale transactions, manual cash operations, or register management tasks that require direct cash access.',
+          'Open the cash drawer programmatically for manual cash handling or custom workflows. This example shows how to use `shopify.cashDrawer.open()` to trigger the connected cash drawer hardware. This is useful for no-sale transactions, manual cash operations, or register management tasks that require direct cash access.',
       },
     ],
   },

@@ -50,7 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
           'id',
         ),
         description:
-          'Access the unique identifier of the current customer in a customer detail context. This example shows how to use `shopify.customer.id` to retrieve the customer ID, which can be used for fetching additional customer data, implementing loyalty features, or building personalized customer experiences.',
+          'Access the unique identifier of the current customer in a customer detail context. This example shows how to use `shopify.customer.id` to retrieve the customer ID. This can be used for fetching additional customer data, implementing loyalty features, or building personalized customer experiences.',
       },
     ],
   },

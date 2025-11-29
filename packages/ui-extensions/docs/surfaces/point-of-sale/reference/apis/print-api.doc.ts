@@ -59,7 +59,7 @@ const data: ReferenceEntityTemplateSchema = {
           'print',
         ),
         description:
-          'Trigger the native print dialog from a smart grid tile action. This example shows how to use `shopify.print()` to print a document specified by a relative path, allowing quick printing of receipts, labels, or reports directly from the POS home screen.',
+          'Trigger the native print dialog from a smart grid tile action. This example shows how to use `shopify.print()` to print a document specified by a relative path. This allows quick printing of receipts, labels, or reports directly from the POS home screen.',
       },
       {
         codeblock: generateJsxCodeBlockForPrintApi(
@@ -67,7 +67,7 @@ const data: ReferenceEntityTemplateSchema = {
           'print-full-url',
         ),
         description:
-          'Print documents hosted on external servers using full URLs. This example shows how to use `shopify.print()` with a complete URL to print remotely hosted documents, enabling dynamic content generation or printing from external services.',
+          'Print documents hosted on external servers using full URLs. This example shows how to use `shopify.print()` with a complete URL to print remotely hosted documents. This enables dynamic content generation or printing from external services.',
       },
       {
         codeblock: generateJsxCodeBlockForPrintApi(
@@ -75,7 +75,7 @@ const data: ReferenceEntityTemplateSchema = {
           'print-relative',
         ),
         description:
-          'Print documents using relative paths within your extension bundle. This example demonstrates using `shopify.print()` with a relative path to reference HTML, text, image, or PDF files included in your extension, making it easy to print pre-defined templates or documents.',
+          'Print documents using relative paths within your extension bundle. This example demonstrates using `shopify.print()` with a relative path to reference HTML, text, image, or PDF files included in your extension. This makes it easy to print pre-defined templates or documents.',
       },
     ],
   },

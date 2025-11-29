@@ -55,7 +55,7 @@ const data: ReferenceEntityTemplateSchema = {
           'id',
         ),
         description:
-          'Access the unique identifier of the current cart line item in line item detail contexts. This example shows how to use `shopify.cartLineItem.id` to retrieve the line item ID, which can be used for modifying the item, applying discounts, or implementing item-specific functionality.',
+          'Access the unique identifier of the current cart line item in line item detail contexts. This example shows how to use `shopify.cartLineItem.id` to retrieve the line item ID. This can be used for modifying the item, applying discounts, or implementing item-specific functionality.',
       },
     ],
   },

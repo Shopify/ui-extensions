@@ -56,7 +56,7 @@ const data: ReferenceEntityTemplateSchema = {
           'add-custom-sale',
         ),
         description:
-          'Add a custom item to the cart with manual pricing and details. This example demonstrates using `shopify.cart.addCustomSale()` to create custom line items for services, fees, or items not in the product catalog, providing flexibility for unique sales scenarios.',
+          'Add a custom item to the cart with manual pricing and details. This example demonstrates using `shopify.cart.addCustomSale()` to create custom line items for services, fees, or items not in the product catalog. This provides flexibility for unique sales scenarios.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -64,7 +64,7 @@ const data: ReferenceEntityTemplateSchema = {
           'add-address',
         ),
         description:
-          'Create a new address for the customer associated with the cart. This example demonstrates using `shopify.cart.addAddress()` to add shipping or billing addresses to customer profiles, streamlining future purchases and enabling multiple delivery locations.',
+          'Create a new address for the customer associated with the cart. This example demonstrates using `shopify.cart.addAddress()` to add shipping or billing addresses to customer profiles. This streamlines future purchases and enables multiple delivery locations.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -72,7 +72,7 @@ const data: ReferenceEntityTemplateSchema = {
           'add-line-item',
         ),
         description:
-          'Add a product variant to the cart with specified quantity and optional properties. This example shows how to use `shopify.cart.addLineItem()` to add catalog items to the cart with custom attributes, enabling standard product sales with additional customization.',
+          'Add a product variant to the cart with specified quantity and optional properties. This example shows how to use `shopify.cart.addLineItem()` to add catalog items to the cart with custom attributes. This enables standard product sales with additional customization.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -80,7 +80,7 @@ const data: ReferenceEntityTemplateSchema = {
           'add-line-item-selling-plan',
         ),
         description:
-          'Associate a subscription or selling plan with a line item for recurring purchases. This example shows how to use `shopify.cart.addLineItemSellingPlan()` to add selling plans to items, enabling subscription-based sales and recurring revenue models.',
+          'Associate a subscription or selling plan with a line item for recurring purchases. This example shows how to use `shopify.cart.addLineItemSellingPlan()` to add selling plans to items. This enables subscription-based sales and recurring revenue models.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -88,7 +88,7 @@ const data: ReferenceEntityTemplateSchema = {
           'add-line-item-properties',
         ),
         description:
-          'Attach custom metadata to a specific line item for additional product information. This example shows how to use `shopify.cart.addLineItemProperties()` to add key-value properties to individual items, enabling customization like engraving text, gift messages, or special instructions.',
+          'Attach custom metadata to a specific line item for additional product information. This example shows how to use `shopify.cart.addLineItemProperties()` to add key-value properties to individual items. This enables customization like engraving text, gift messages, or special instructions.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -96,7 +96,7 @@ const data: ReferenceEntityTemplateSchema = {
           'add-cart-properties',
         ),
         description:
-          'Attach custom metadata to the cart for additional order information. This example shows how to use `shopify.cart.addCartProperties()` to add key-value properties that persist through checkout, useful for tracking order sources, preferences, or workflow data.',
+          'Attach custom metadata to the cart for additional order information. This example shows how to use `shopify.cart.addCartProperties()` to add key-value properties that persist through checkout. This is useful for tracking order sources, preferences, or workflow data.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -104,7 +104,7 @@ const data: ReferenceEntityTemplateSchema = {
           'bulk-add-line-item-properties',
         ),
         description:
-          'Attach custom metadata to multiple line items efficiently in a single operation. This example demonstrates using `shopify.cart.bulkAddLineItemProperties()` to add properties to several items simultaneously, improving performance for batch customization operations.',
+          'Attach custom metadata to multiple line items efficiently in a single operation. This example demonstrates using `shopify.cart.bulkAddLineItemProperties()` to add properties to several items simultaneously. This improves performance for batch customization operations.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -112,7 +112,7 @@ const data: ReferenceEntityTemplateSchema = {
           'apply-cart-discount',
         ),
         description:
-          'Apply a custom discount to the entire cart using a fixed amount or percentage. This example shows how to use `shopify.cart.applyCartDiscount()` to add order-level discounts with custom reasons, useful for promotions, loyalty rewards, or staff discounts.',
+          'Apply a custom discount to the entire cart using a fixed amount or percentage. This example shows how to use `shopify.cart.applyCartDiscount()` to add order-level discounts with custom reasons. This is useful for promotions, loyalty rewards, or staff discounts.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -120,7 +120,7 @@ const data: ReferenceEntityTemplateSchema = {
           'apply-cart-code-discount',
         ),
         description:
-          'Apply a discount code to the cart for automatic discount validation and application. This example demonstrates using `shopify.cart.applyCodeDiscount()` to add discount codes that are validated against Shopify discount rules, enabling seamless promotional code redemption.',
+          'Apply a discount code to the cart for automatic discount validation and application. This example demonstrates using `shopify.cart.applyCodeDiscount()` to add discount codes that are validated against Shopify discount rules. This enables seamless promotional code redemption.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -128,7 +128,7 @@ const data: ReferenceEntityTemplateSchema = {
           'set-line-item-discount',
         ),
         description:
-          'Apply a custom discount to a specific line item in the cart. This example demonstrates using `shopify.cart.setLineItemDiscount()` to add item-level discounts with custom reasons, perfect for selective price adjustments or item-specific promotions.',
+          'Apply a custom discount to a specific line item in the cart. This example demonstrates using `shopify.cart.setLineItemDiscount()` to add item-level discounts with custom reasons. This is perfect for selective price adjustments or item-specific promotions.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -136,7 +136,7 @@ const data: ReferenceEntityTemplateSchema = {
           'bulk-set-line-item-discounts',
         ),
         description:
-          'Apply discounts to multiple line items efficiently in a single operation. This example shows how to use `shopify.cart.bulkSetLineItemDiscounts()` to add discounts to several items simultaneously, improving performance for bulk pricing adjustments or category-wide promotions.',
+          'Apply discounts to multiple line items efficiently in a single operation. This example shows how to use `shopify.cart.bulkSetLineItemDiscounts()` to add discounts to several items simultaneously. This improves performance for bulk pricing adjustments or category-wide promotions.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -144,7 +144,7 @@ const data: ReferenceEntityTemplateSchema = {
           'set-customer',
         ),
         description:
-          'Assign a customer to the current cart for personalized pricing and order history. This example demonstrates using `shopify.cart.setCustomer()` to link a customer by ID, enabling customer-specific discounts, loyalty programs, and order tracking.',
+          'Assign a customer to the current cart for personalized pricing and order history. This example demonstrates using `shopify.cart.setCustomer()` to link a customer by ID. This enables customer-specific discounts, loyalty programs, and order tracking.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -152,7 +152,7 @@ const data: ReferenceEntityTemplateSchema = {
           'set-attributed-staff-to-line-item',
         ),
         description:
-          'Associate a specific line item with a staff member for item-level commission tracking. This example shows how to use `shopify.cart.setAttributedStaffToLineItem()` to assign staff members to individual items, enabling granular sales attribution and performance analysis.',
+          'Associate a specific line item with a staff member for item-level commission tracking. This example shows how to use `shopify.cart.setAttributedStaffToLineItem()` to assign staff members to individual items. This enables granular sales attribution and performance analysis.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -160,7 +160,7 @@ const data: ReferenceEntityTemplateSchema = {
           'set-attributed-staff',
         ),
         description:
-          'Associate a staff member with the cart for commission tracking and sales attribution. This example demonstrates using `shopify.cart.setAttributedStaff()` to assign staff members to sales, enabling performance tracking and commission calculations.',
+          'Attribute the cart to a staff member for commission tracking and sales attribution. This example demonstrates using `shopify.cart.setAttributedStaff()` to assign staff members to sales. This enables performance tracking and commission calculations.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -168,7 +168,7 @@ const data: ReferenceEntityTemplateSchema = {
           'check-cart-editable',
         ),
         description:
-          'Verify whether the cart is in an editable state before attempting modifications. This example demonstrates using `shopify.cart.editable` to check if the cart can accept changes, preventing errors and improving user experience by disabling actions when the cart is locked or in an immutable state.',
+          'Verify whether the cart is in an editable state before attempting modifications. This example demonstrates using `shopify.cart.editable` to check if the cart can accept changes. By disabling actions when the cart is locked or in an immutable state, you can prevent errors and improve the user experience.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -176,7 +176,7 @@ const data: ReferenceEntityTemplateSchema = {
           'clear-cart',
         ),
         description:
-          'Remove all line items and reset the cart to an empty state. This example shows how to use `shopify.cart.clear()` to completely clear the cart, useful for starting fresh transactions or implementing cart reset functionality.',
+          'Remove all line items and reset the cart to an empty state. This example shows how to use `shopify.cart.clear()` to completely clear the cart. This is useful for starting fresh transactions or implementing cart reset functionality.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -184,7 +184,7 @@ const data: ReferenceEntityTemplateSchema = {
           'delete-address',
         ),
         description:
-          'Remove a specific address from the customer profile using its unique identifier. This example shows how to use `shopify.cart.deleteAddress()` to delete outdated or incorrect addresses, helping maintain clean customer records.',
+          'Remove a specific address from the customer profile using its unique identifier. This example shows how to use `shopify.cart.deleteAddress()` to delete outdated or incorrect addresses. This helps maintain clean customer records.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -192,7 +192,7 @@ const data: ReferenceEntityTemplateSchema = {
           'remove-line-item-discount',
         ),
         description:
-          'Remove a previously applied discount from a specific line item. This example demonstrates using `shopify.cart.removeLineItemDiscount()` to clear item-level discounts, useful for discount corrections or when promotional conditions are no longer met.',
+          'Remove a previously applied discount from a specific line item. This example demonstrates using `shopify.cart.removeLineItemDiscount()` to clear item-level discounts. This is useful for discount corrections or when promotional conditions are no longer met.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -200,7 +200,7 @@ const data: ReferenceEntityTemplateSchema = {
           'remove-all-discounts',
         ),
         description:
-          'Clear all discounts applied to both the cart and individual line items in a single operation. This example shows how to use `shopify.cart.removeAllDiscounts()` to reset pricing to base values, useful for recalculating totals or canceling promotional offers.',
+          'Clear all discounts applied to both the cart and individual line items in a single operation. This example shows how to use `shopify.cart.removeAllDiscounts()` to reset pricing to base values. This is useful for recalculating totals or canceling promotional offers.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -208,7 +208,7 @@ const data: ReferenceEntityTemplateSchema = {
           'remove-line-item',
         ),
         description:
-          'Remove a specific line item from the cart using its unique identifier. This example demonstrates using `shopify.cart.removeLineItem()` to delete items, useful for implementing remove buttons, cart cleanup, or conditional item removal logic.',
+          'Remove a specific line item from the cart using its unique identifier. This example demonstrates using `shopify.cart.removeLineItem()` to delete items. This is useful for implementing remove buttons, cart cleanup, or conditional item removal logic.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -216,7 +216,7 @@ const data: ReferenceEntityTemplateSchema = {
           'remove-line-item-properties',
         ),
         description:
-          'Delete specific custom properties from a line item by their keys. This example shows how to use `shopify.cart.removeLineItemProperties()` to clear item metadata, useful for removing temporary customization data or outdated property values.',
+          'Delete specific custom properties from a line item by their keys. This example shows how to use `shopify.cart.removeLineItemProperties()` to clear item metadata. This is useful for removing temporary customization data or outdated property values.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -224,7 +224,7 @@ const data: ReferenceEntityTemplateSchema = {
           'remove-cart-properties',
         ),
         description:
-          'Delete specific custom properties from the cart by their keys. This example demonstrates using `shopify.cart.removeCartProperties()` to clear metadata, useful for cleaning up temporary data or removing properties that are no longer needed.',
+          'Delete specific custom properties from the cart by their keys. This example demonstrates using `shopify.cart.removeCartProperties()` to clear metadata. This is useful for cleaning up temporary data or removing properties that are no longer needed.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -232,7 +232,7 @@ const data: ReferenceEntityTemplateSchema = {
           'remove-line-item-selling-plan',
         ),
         description:
-          'Remove the selling plan from a line item to convert it back to a one-time purchase. This example demonstrates using `shopify.cart.removeLineItemSellingPlan()` to clear subscription plans, useful when customers change their mind about recurring orders.',
+          'Remove the selling plan from a line item to convert it back to a one-time purchase. This example demonstrates using `shopify.cart.removeLineItemSellingPlan()` to clear subscription plans. This is useful when customers change their mind about recurring orders.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -240,7 +240,7 @@ const data: ReferenceEntityTemplateSchema = {
           'remove-customer',
         ),
         description:
-          'Disassociate the customer from the current cart for anonymous transactions. This example shows how to use `shopify.cart.removeCustomer()` to clear customer information, reverting to guest checkout pricing and removing customer-specific data from the cart.',
+          'Disassociate the customer from the current cart for anonymous transactions. This example shows how to use `shopify.cart.removeCustomer()` to clear customer information. This reverts to guest checkout pricing and removes customer-specific data from the cart.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -248,7 +248,7 @@ const data: ReferenceEntityTemplateSchema = {
           'update-default-address',
         ),
         description:
-          'Designate a specific address as the default for the customer. This example demonstrates using `shopify.cart.updateDefaultAddress()` to set the primary shipping or billing address, streamlining the checkout process for future transactions.',
+          'Designate a specific address as the default for the customer. This example demonstrates using `shopify.cart.updateDefaultAddress()` to set the primary shipping or billing address. This streamlines the checkout process for future transactions.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -256,7 +256,7 @@ const data: ReferenceEntityTemplateSchema = {
           'subscribe',
         ),
         description:
-          'Monitor cart state changes in real time using the subscribe method. This example shows how to use `shopify.cart.subscribe()` to receive updates whenever the cart changes, enabling reactive UI updates, validation logic, or analytics tracking based on cart modifications.',
+          'Monitor cart state changes in real time using the subscribe method. This example shows how to use `shopify.cart.subscribe()` to receive updates whenever the cart changes. This enables reactive UI updates, validation logic, or analytics tracking based on cart modifications.',
       },
     ],
   },
