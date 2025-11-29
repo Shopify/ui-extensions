@@ -39,7 +39,6 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       sectionContent: `
 - The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.
-- Scanning availability depends on device hardware capabilities and may vary between different POS devices and configurations.
 - Scan data processing is reactive and requires proper subscription management to avoid memory leaks or unexpected behavior when components unmount.
 `,
     },

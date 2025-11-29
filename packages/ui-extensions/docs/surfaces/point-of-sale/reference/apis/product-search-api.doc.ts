@@ -41,7 +41,6 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `
 - Product search results are limited to products available on the current POS device and may not include the complete shop catalog if products aren't synced locally.
 - Bulk operations (\`fetchProductsWithIds\` and \`fetchProductVariantsWithIds\`) are limited to 50 items maximum, with additional IDs automatically removed from requests.
-- Search functionality depends on local product data synchronization and may not reflect real-time inventory or pricing changes until the next sync.
 `,
     },
   ],

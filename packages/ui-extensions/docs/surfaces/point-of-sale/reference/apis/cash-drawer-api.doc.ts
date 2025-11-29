@@ -42,9 +42,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The Cash Drawer API requires compatible cash drawer hardware connected to the POS device through supported peripheral connections (USB, network, or Bluetooth depending on device and hardware model).
-- The API only triggers the drawer opening mechanism and cannot detect whether the drawer is currently open, closed, or physically jammed. Your extension is responsible for any required state tracking.
-- Cash drawer operations are subject to POS hardware capabilities and may not be available on all device configurations. The API will return errors on devices without cash drawer support.
+The API only triggers the drawer opening mechanism and cannot detect whether the drawer is currently open, closed, or physically jammed—your extension is responsible for any required state tracking.
 `,
     },
   ],

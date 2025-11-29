@@ -39,7 +39,6 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The API provides read-only access to line item data—use the Cart API for modifying line item properties, discounts, selling plans, or other attributes.
 - Line item data reflects the current state and may not include real-time inventory, pricing, or selling plan updates until the cart is refreshed.
 - Selling plan information may be limited during refund or exchange operations where digest values aren't available.
 `,

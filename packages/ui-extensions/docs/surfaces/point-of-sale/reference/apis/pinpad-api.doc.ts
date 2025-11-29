@@ -37,9 +37,9 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
+- PIN length must be between 4 and 10 digits. The \`minPinLength\` and \`maxPinLength\` options must be set within this range.
 - PIN validation must be handled through the \`onSubmit\` callback and should be performed securely on your backend service rather than in client-side extension code.
 - The PinPad API displays a modal interface that takes over the entire screen until PIN entry is complete or the modal is dismissed.
-- PIN data is provided as an array of numbers and must be handled securely, following appropriate data protection and privacy practices.
 `,
     },
   ],

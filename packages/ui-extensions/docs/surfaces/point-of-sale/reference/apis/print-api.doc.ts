@@ -42,9 +42,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- PDF printing on Android devices requires downloading the file and using an external application, which may interrupt the user workflow.
-- Print operations depend on device printer connectivity and configuration, which may not be available in all POS setups.
-- Document formatting and appearance may vary depending on the printer type, paper size, and device capabilities.
+PDF printing on Android devices requires downloading the file and using an external application, which may interrupt the user workflow.
 `,
     },
   ],

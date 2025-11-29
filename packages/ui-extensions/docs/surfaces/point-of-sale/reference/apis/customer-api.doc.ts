@@ -35,8 +35,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The API provides only the customer identifier—use Shopify APIs or external systems to fetch additional customer details like name, email, or purchase history.
-- Customer data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+Customer data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
 `,
     },
   ],

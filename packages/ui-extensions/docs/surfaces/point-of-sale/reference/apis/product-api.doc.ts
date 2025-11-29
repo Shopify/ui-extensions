@@ -49,8 +49,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The API provides only basic product identifiers—use Shopify APIs or external systems to fetch additional product details like title, description, pricing, or inventory levels.
-- Product data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+Product data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
 `,
     },
   ],

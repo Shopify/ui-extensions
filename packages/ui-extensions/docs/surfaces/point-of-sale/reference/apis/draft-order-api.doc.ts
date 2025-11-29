@@ -51,8 +51,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The API provides only basic draft order information—use Shopify APIs or external systems to fetch additional draft order details like line items, totals, or timestamps.
-- Draft order data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+Draft order data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
 `,
     },
   ],
