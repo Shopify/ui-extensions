@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForDraftOrderApi(
-          'Display the draft order ID',
+          'Retrieve a draft order ID',
           'id',
         ),
         description:

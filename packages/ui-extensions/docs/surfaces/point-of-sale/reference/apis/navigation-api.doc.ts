@@ -67,7 +67,7 @@ const data: ReferenceEntityTemplateSchema = {
           'native-screen',
         ),
         description:
-          'Navigate to native POS screens from your extension using deep link URIs. This example shows how to use `navigation.navigate()` with POS screen URIs to transition to core POS functionality like cart, product details, or order screens. This enables seamless integration between your extension and native POS features.',
+          'Navigate to native POS screens from your extension using deep link URIs. This example shows how to use `navigation.navigate()` with POS screen URIs to transition to core POS functionality like cart, product details, or order screens. This enables direct transitions between your extension and native POS features.',
       },
       {
         codeblock: generateJsxCodeBlockForNavigationApi(

@@ -48,19 +48,19 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForSessionApi(
+          'Access properties associated with the current session',
+          'current-session',
+        ),
+        description:
+          'Access comprehensive session information including shop details, user data, and location information. This example shows how to use `shopify.session.currentSession` to retrieve the shop ID, domain, currency, user ID, location ID, staff member ID, and POS version. Use this data to build location-aware features and personalized experiences.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForSessionApi(
           'Access session data and generate authentication tokens',
           'token',
         ),
         description:
           'Access session data and generate authentication tokens. This example shows how to access shop details, user information, and location data through `shopify.session`, and use `shopify.session.getSessionToken()` to generate tokens for authenticated requests to your backend services.',
-      },
-      {
-        codeblock: generateJsxCodeBlockForSessionApi(
-          'Access properties associated with the current session',
-          'current-session',
-        ),
-        description:
-          'Access comprehensive session information including shop details, user data, and location information. This example shows how to use `shopify.session.currentSession` to retrieve shop ID, domain, currency, user ID, location ID, staff member ID, and POS version. Use this data to build location-aware features and personalized experiences.',
       },
     ],
   },

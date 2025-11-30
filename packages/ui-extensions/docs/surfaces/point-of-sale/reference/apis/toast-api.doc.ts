@@ -48,19 +48,19 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForToastApi(
-          'Display a toast notification from a tile',
-          'show',
-        ),
-        description:
-          "Display a toast notification from a tile. This example demonstrates using `shopify.toast.show()` to display a brief, non-intrusive message that automatically disappears after a specified duration. This is useful for confirmations, status updates, or success messages that don't require user interaction.",
-      },
-      {
-        codeblock: generateJsxCodeBlockForToastApi(
           'Display a toast notification for a custom duration',
           'show-with-duration',
         ),
         description:
           'Configure custom display durations for toast notifications to match message importance and length. This example demonstrates using the `duration` option with `shopify.toast.show()` to control how long notifications remain visible. Use shorter durations for quick confirmations and longer durations for messages that require more reading time.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForToastApi(
+          'Display a toast notification from a tile',
+          'show',
+        ),
+        description:
+          "Display a toast notification from a tile. This example demonstrates using `shopify.toast.show()` to display a brief, non-intrusive message that automatically disappears after a specified duration. This is useful for confirmations, status updates, or success messages that don't require user interaction.",
       },
     ],
   },

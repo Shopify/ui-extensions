@@ -62,7 +62,7 @@ const data: ReferenceEntityTemplateSchema = {
           'add-address',
         ),
         description:
-          'Create a new address for the customer associated with the cart. This example demonstrates using `shopify.cart.addAddress()` to add shipping or billing addresses to customer profiles. This streamlines future purchases and enables multiple delivery locations.',
+          'Create a new address for the customer associated with the cart. This example demonstrates using `shopify.cart.addAddress()` to add shipping or billing addresses to customer profiles. This simplifies future purchases and enables multiple delivery locations.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -118,7 +118,7 @@ const data: ReferenceEntityTemplateSchema = {
           'apply-cart-code-discount',
         ),
         description:
-          'Apply a discount code to the cart for automatic discount validation and application. This example demonstrates using `shopify.cart.applyCodeDiscount()` to add discount codes that are validated against Shopify discount rules. This enables seamless promotional code redemption.',
+          'Apply a discount code to the cart for automatic discount validation and application. This example demonstrates using `shopify.cart.applyCodeDiscount()` to add discount codes that are validated against Shopify discount rules. This enables promotional code redemption with automatic validation.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -126,7 +126,7 @@ const data: ReferenceEntityTemplateSchema = {
           'set-line-item-discount',
         ),
         description:
-          'Apply a custom discount to a specific line item in the cart. This example demonstrates using `shopify.cart.setLineItemDiscount()` to add item-level discounts with custom reasons. This is perfect for selective price adjustments or item-specific promotions.',
+          'Apply a custom discount to a specific line item in the cart. This example demonstrates using `shopify.cart.setLineItemDiscount()` to add item-level discounts with custom reasons. This is useful for selective price adjustments or item-specific promotions.',
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -250,19 +250,19 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
-          'Update the default address for the customer',
-          'update-default-address',
-        ),
-        description:
-          'Designate a specific address as the default for the customer. This example demonstrates using `shopify.cart.updateDefaultAddress()` to set the primary shipping or billing address. This streamlines the checkout process for future transactions.',
-      },
-      {
-        codeblock: generateJsxCodeBlockForCartApi(
           'Subscribe to real-time cart changes',
           'subscribe',
         ),
         description:
           'Monitor cart state changes in real time using the subscribe method. This example shows how to use `shopify.cart.subscribe()` to receive updates whenever the cart changes. This enables reactive UI updates, validation logic, or analytics tracking based on cart modifications.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForCartApi(
+          'Update the default address for the customer',
+          'update-default-address',
+        ),
+        description:
+          'Designate a specific address as the default for the customer. This example demonstrates using `shopify.cart.updateDefaultAddress()` to set the primary shipping or billing address. This simplifies the checkout process for future transactions.',
       },
     ],
   },

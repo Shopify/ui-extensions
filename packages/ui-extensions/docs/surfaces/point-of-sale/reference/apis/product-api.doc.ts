@@ -25,7 +25,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForProductApi(
-          'Display the product ID',
+          'Retrieve a product ID',
           'id',
         ),
         description:

@@ -47,7 +47,7 @@ Order data reflects the current POS session and may not include real-time update
     examples: [
       {
         codeblock: generateJsxCodeBlockForOrderApi(
-          'Display the order ID',
+          'Retrieve an order ID',
           'id',
         ),
         description:
