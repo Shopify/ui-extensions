@@ -50,7 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForCartLineItemApi(
-          'Display the cart line item ID',
+          'Retrieve the cart line item ID',
           'id',
         ),
         description:

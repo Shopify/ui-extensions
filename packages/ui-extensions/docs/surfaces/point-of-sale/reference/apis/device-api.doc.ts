@@ -56,7 +56,7 @@ Device information queries are asynchronous and may take time to resolve, so alw
       },
       {
         codeblock: generateJsxCodeBlockForDeviceApi(
-          'Display the device ID',
+          'Retrieve the device ID',
           'device-id',
         ),
         description:
@@ -64,7 +64,7 @@ Device information queries are asynchronous and may take time to resolve, so alw
       },
       {
         codeblock: generateJsxCodeBlockForDeviceApi(
-          'Display the device name',
+          'Retrieve the device name',
           'name',
         ),
         description:

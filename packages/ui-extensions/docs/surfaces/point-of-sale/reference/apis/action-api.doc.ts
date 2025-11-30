@@ -60,7 +60,7 @@ The \`presentModal()\` method must be called from a user interaction (such as a 
           'present-modal-tile',
         ),
         description:
-          'Present a full-screen modal from smart grid tiles on the POS home screen. This example demonstrates using `shopify.action.presentModal()` to launch modal workflows from tile interactions. This pattern is perfect for high-frequency tasks that require additional UI beyond the tile itself.',
+          'Present a full-screen modal from smart grid tiles on the POS home screen. This example demonstrates using `shopify.action.presentModal()` to launch modal workflows from tile interactions. This pattern is well-suited for high-frequency tasks that require additional UI beyond the tile itself.',
       },
     ],
   },

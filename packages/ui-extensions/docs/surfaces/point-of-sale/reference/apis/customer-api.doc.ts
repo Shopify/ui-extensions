@@ -45,7 +45,7 @@ Customer data reflects the current POS session and may not include real-time upd
     examples: [
       {
         codeblock: generateJsxCodeBlockForCustomerApi(
-          'Display the customer ID',
+          'Retrieve the customer ID',
           'id',
         ),
         description:

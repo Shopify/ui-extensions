@@ -61,7 +61,7 @@ PDF printing on Android devices requires downloading the file and using an exter
       },
       {
         codeblock: generateJsxCodeBlockForPrintApi(
-          'Print from a remote URL',
+          'Print a document from a remote URL',
           'print-full-url',
         ),
         description:
@@ -69,7 +69,7 @@ PDF printing on Android devices requires downloading the file and using an exter
       },
       {
         codeblock: generateJsxCodeBlockForPrintApi(
-          'Print using a relative file path',
+          'Print a document using a relative file path',
           'print-relative',
         ),
         description:
