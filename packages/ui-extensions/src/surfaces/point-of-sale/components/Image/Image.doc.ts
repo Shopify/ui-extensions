@@ -49,7 +49,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Large images can impact performance—ensure proper optimization and compression for better loading times.
+Large images can impact performance—ensure proper optimization and compression for better loading times.
 `,
     },
   ],

@@ -6,7 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
     'The `Tile` component displays interactive buttons for the POS smart grid that allow merchants to complete actions quickly. Tiles serve as customizable shortcuts that provide contextual information and enable merchants to quickly access workflows, actions, and information from the smart grid.' +
     '\n\nTiles are dynamic components that can change their appearance, content, and enabled state based on surrounding context such as cart contents, device conditions, or runtime state. They support tap interactions, visual feedback, and can display contextual information through titles, subtitles, and badge values.' +
     "\n\nTo maintain a consistent visual experience, tile size and layout are determined by the smart grid system, and custom icons and images aren't supported." +
-    '\n\nEach POS UI extension can only render one `Tile` component per tile target.',
+    '\n\nEach POS UI extension can only render one `Tile` component for each [home screen tile target](/docs/api/pos-ui-extensions/2026-01-rc/targets/home-screen#home-screen-tile-).',
   thumbnail: 'tile-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -57,7 +57,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The \`Tile\` component supports click and long press interactions only. Swipe, drag, and other gestures aren't supported.
+The \`Tile\` component supports click and long press interactions only. Swipe, drag, and other gestures aren't supported.
 `,
     },
   ],

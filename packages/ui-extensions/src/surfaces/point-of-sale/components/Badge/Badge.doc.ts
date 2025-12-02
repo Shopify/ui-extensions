@@ -50,8 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-
-- Very long text content may be truncated or cause layout issues depending on the container and screen size.`,
+Very long text content may be truncated or cause layout issues depending on the container and screen size.`,
     },
   ],
   related: [],

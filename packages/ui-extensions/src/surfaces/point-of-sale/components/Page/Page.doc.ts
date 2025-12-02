@@ -55,7 +55,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The secondary-actions slot supports only a single button element. Multiple actions in the action bar aren't supported and should be handled within the main content area.
+The secondary-actions slot supports only a single button element. Multiple actions in the action bar aren't supported and should be handled within the main content area.
 `,
     },
   ],

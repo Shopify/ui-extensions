@@ -63,7 +63,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Multiple modals can't be displayed simultaneously—showing a new modal while another is visible may cause unexpected behavior or poor user experience.
+Multiple modals can't be displayed simultaneously—showing a new modal while another is visible may cause unexpected behavior or poor user experience.
 `,
     },
   ],

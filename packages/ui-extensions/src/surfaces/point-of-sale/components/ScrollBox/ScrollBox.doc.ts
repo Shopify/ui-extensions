@@ -43,12 +43,6 @@ const data: ReferenceEntityTemplateSchema = {
 - **Use for appropriate content:** Reserve \`ScrollBox\` for long lists or dynamic content that genuinely needs scrolling, not short content that fits within available space.
 `,
     },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: ``,
-    },
   ],
   related: [],
 };

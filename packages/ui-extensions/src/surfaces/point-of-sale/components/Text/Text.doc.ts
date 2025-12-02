@@ -51,7 +51,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Complex rich text formatting isn't supported—use multiple \`Text\` components or nested text elements for varied formatting needs.
+Complex rich text formatting isn't supported—use multiple \`Text\` components or nested text elements for varied formatting needs.
 `,
     },
   ],
