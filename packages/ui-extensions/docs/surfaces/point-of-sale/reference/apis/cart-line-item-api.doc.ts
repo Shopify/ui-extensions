@@ -27,11 +27,11 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForCartLineItemApi(
-          'Display the line item ID',
+          'Retrieve the line item ID',
           'id',
         ),
         description:
-          'Access the unique identifier of the current line item in a cart line item action context. This example shows how to use `shopify.cartLineItem.id` to retrieve the line item ID, which can be used for tracking, analytics, or performing operations on the specific item.',
+          'Access the unique identifier of the current cart line item in line item detail contexts. This example shows how to use `shopify.cartLineItem.id` to retrieve the line item ID. This can be used for modifying the item, applying discounts, or implementing item-specific functionality.',
       },
     ],
   },
@@ -43,21 +43,22 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent:
-        '- **Handle optional properties gracefully:** Check for `undefined` values in optional properties like `price`, `productId`, `title`, `sku`, `vendor`, and selling plan-related fields before using them in your extension logic.\n' +
-        '- **Use line item context effectively:** Use the line item data to create contextual experiences—for example, showing different interfaces for gift cards versus regular products, subscription items versus one-time purchases, or displaying vendor-specific information.\n' +
-        '- **Implement item-specific validation:** Use line item properties like `taxable`, `isGiftCard`, `requiresSellingPlan`, and `hasSellingPlanGroups` to implement appropriate validation and business logic for different item types.\n' +
-        '- **Handle selling plans appropriately:** When working with subscription products, check `requiresSellingPlan` and `sellingPlan` properties.\n' +
-        '- **Access related data efficiently:** Use `productId` and `variantId` to fetch additional product information when needed, but avoid unnecessary API calls by using the data already available in the line item.',
+      sectionContent: `
+- **Handle optional properties:** Check for \`undefined\` in optional properties like \`price\`, \`productId\`, \`title\`, \`sku\`, and vendor before use.
+- **Create contextual experiences:** Use line item data to show different interfaces for gift cards, subscriptions, or vendor-specific information.
+- **Implement item-specific validation:** Use properties like \`taxable\`, \`isGiftCard\`, and \`requiresSellingPlan\` for appropriate business logic.
+- **Handle selling plans:** When working with subscriptions, check \`requiresSellingPlan\` and \`sellingPlan\` to provide appropriate subscription management.
+- **Access related data efficiently:** Use \`productId\` and \`variantId\` to fetch additional info when needed, but avoid unnecessary API calls.
+`,
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        '- The API provides read-only access to line item data—use the Cart API for modifying line item properties, discounts, selling plans, or other attributes.\n' +
-        '- Line item data reflects the current state and may not include real-time inventory, pricing, or selling plan updates until the cart is refreshed.\n' +
-        "- Selling plan information may be limited during refund or exchange operations where digest values aren't available.",
+      sectionContent: `
+- Line item data reflects the current state and may not include real-time inventory, pricing, or selling plan updates until the cart is refreshed.
+- Selling plan information may be limited during refund or exchange operations where digest values aren't available.
+`,
     },
   ],
 };

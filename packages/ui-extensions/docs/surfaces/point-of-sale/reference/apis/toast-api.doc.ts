@@ -26,20 +26,21 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent:
-        '- **Write clear, concise messages:** Keep toast content brief and actionable since users have limited time to read the message before it disappears automatically.\n' +
-        '- **Use appropriate timing:** Choose duration values that give users enough time to read the message without keeping notifications visible longer than necessary.\n' +
-        '- **Provide meaningful feedback:** Use toast messages to confirm successful actions, explain errors clearly, or communicate important status changes that users need to know about.\n' +
-        '- **Avoid overuse:** Reserve toast notifications for important feedback and avoid showing multiple toasts simultaneously, as this can overwhelm users and reduce the effectiveness of the notifications.',
+      sectionContent: `
+- **Write clear, concise messages:** Keep content brief since toasts disappear automatically.
+- **Use appropriate timing:** Choose durations that give users enough time to read without keeping visible too long.
+- **Provide meaningful feedback:** Use toasts to confirm actions, explain errors, or communicate status changes.
+- **Avoid overuse:** Reserve for important feedback. Don't show multiple toasts simultaneously.
+- **Handle multiple toast messages:** Multiple toast messages may overlap or interfere with each other if shown in rapid succession. Consider queuing or spacing out notifications appropriately.
+`,
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        "- Toast messages are temporary and can't be made persistent. For important information that users need to reference later, consider using other UI components or storage mechanisms.\n" +
-        '- Multiple toast messages may overlap or interfere with each other if shown in rapid succession. Consider queuing or spacing out notifications appropriately.\n' +
-        "- Toast content is limited to plain text and can't include rich formatting, links, or interactive elements.",
+      sectionContent: `
+Toast content is limited to plain text and can't include rich formatting, links, or interactive elements.
+`,
     },
   ],
   examples: {
@@ -48,17 +49,19 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForToastApi(
+          'Display a toast notification for a custom duration',
+          'show-with-duration',
+        ),
+        description:
+          'Configure custom display durations for toast notifications to match message importance and length. This example demonstrates using the `duration` option with `shopify.toast.show()` to control how long notifications remain visible. Use shorter durations for quick confirmations and longer durations for messages that require more reading time.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForToastApi(
           'Display a toast notification from a tile',
           'show',
         ),
         description:
-          "Show a temporary notification message to provide user feedback. This example demonstrates using `shopify.toast.show()` to display a brief, non-intrusive message that automatically disappears after a specified duration, useful for confirmations, status updates, or success messages that don't require user interaction.",
-      },
-      {
-        codeblock: generateJsxCodeBlockForToastApi(
-          'Display a toast notification for a custom duration',
-          'show-with-duration',
-        ),
+          "Display a toast notification from a tile. This example demonstrates using `shopify.toast.show()` to display a brief, non-intrusive message that automatically disappears after a specified duration. This is useful for confirmations, status updates, or success messages that don't require user interaction.",
       },
     ],
   },

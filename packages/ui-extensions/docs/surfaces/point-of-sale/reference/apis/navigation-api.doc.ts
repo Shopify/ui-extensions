@@ -43,10 +43,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        "- The Navigation API is only available in action (modal) targets and can't be used in action (menu item), block, or tile targets that don't support multi-screen navigation.\n" +
-        "- Navigation state is limited to serializable data and can't contain functions, complex objects, or circular references.\n" +
-        '- The API follows web platform standards but operates within the POS modal context, so some web navigation behaviors may differ from standard browser navigation.',
+      sectionContent: `
+- The Navigation API is only available in action (modal) targets and can't be used in action (menu item), block, or tile targets that don't support multi-screen navigation.
+- Navigation state is limited to serializable data and can't contain functions, complex objects, or circular references.
+`,
     },
   ],
   examples: {
@@ -59,7 +59,7 @@ const data: ReferenceEntityTemplateSchema = {
           'two-screen',
         ),
         description:
-          'Create multi-screen modal experiences by navigating between different URLs within your extension. This example demonstrates using `navigation.navigate()` to move between screens and handle back navigation, enabling complex workflows with multiple steps or views.',
+          'Create multi-screen workflows within your extension using web-standard navigation. This example demonstrates using `navigation.navigate()` to move between different screens in your modal interface. This enables complex multi-step processes with proper navigation history management.',
       },
       {
         codeblock: generateJsxCodeBlockForNavigationApi(
@@ -67,7 +67,7 @@ const data: ReferenceEntityTemplateSchema = {
           'native-screen',
         ),
         description:
-          'Launch native POS screens using URI schemes to access built-in functionality. This example shows how to use `navigation.navigate()` with a `pos://` URI to open native POS screens like product details or customer profiles, allowing seamless integration between your extension and native POS features.',
+          'Navigate to native POS screens from your extension using deep link URIs. This example shows how to use `navigation.navigate()` with POS screen URIs to transition to core POS functionality like cart, product details, or order screens. This enables direct transitions between your extension and native POS features.',
       },
       {
         codeblock: generateJsxCodeBlockForNavigationApi(
@@ -75,7 +75,7 @@ const data: ReferenceEntityTemplateSchema = {
           'state-params',
         ),
         description:
-          'Share data between screens using navigation state parameters. This example demonstrates how to pass state objects when navigating, allowing you to transfer information between different screens in your modal workflow without relying on external storage or global variables.',
+          'Share data between screens using navigation state parameters. This example demonstrates using the `state` option in `navigation.navigate()` to pass data when navigating. This enables screens to receive context and maintain workflow continuity across navigation transitions.',
       },
     ],
   },

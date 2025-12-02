@@ -36,9 +36,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        '- The API provides only basic order information—use Shopify APIs or external systems to fetch additional order details like line items, totals, or fulfillment status.\n' +
-        '- Order data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.',
+      sectionContent: `
+Order data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+`,
     },
   ],
   examples: {
@@ -47,17 +47,19 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForOrderApi(
-          'Display the order ID',
+          'Retrieve an order ID',
           'id',
         ),
         description:
-          'Access the unique identifier of the current order in an order detail action context. This example shows how to use `shopify.order.id` to retrieve the order ID, which can be used for fetching additional order data, tracking, or implementing order-specific functionality and post-purchase workflows.',
+          'Access the unique identifier of the current order in an order detail action context. This example shows how to use `shopify.order.id` to retrieve the order ID. This can be used for fetching additional order data, tracking, or implementing order-specific functionality and post-purchase workflows.',
       },
       {
         codeblock: generateJsxCodeBlockForOrderApi(
           "Retrieve an order's name, ID, and associated customer ID",
           'order-details',
         ),
+        description:
+          'Access multiple order properties including the order name and customer ID. This example demonstrates accessing `shopify.order.id`, `shopify.order.name`, and `shopify.order.customerId` to display comprehensive order information. Use this pattern for order management workflows and customer service features.',
       },
     ],
   },

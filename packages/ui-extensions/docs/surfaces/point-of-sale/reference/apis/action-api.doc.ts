@@ -36,8 +36,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        'Each extension can only present one modal at a time. Subsequent calls to `presentModal()` while a modal is already open may be ignored or replace the current modal.',
+      sectionContent: `
+The \`presentModal()\` method must be called from a user interaction (such as a button click or tile tap) and can't be invoked programmatically during extension initialization or from background operations.
+`,
     },
   ],
   examples: {
@@ -50,7 +51,7 @@ const data: ReferenceEntityTemplateSchema = {
           'present-modal',
         ),
         description:
-          "Create an action menu item that appears after a purchase is completed. When pressed, it launches a full-screen modal view using the Action API's `presentModal()` method, allowing you to display custom workflows or additional functionality in the post-purchase flow.",
+          'Present a full-screen modal from menu item actions in detail screens. This example shows how to use `shopify.action.presentModal()` to launch a modal workflow from post-purchase, order details, or other action menu item contexts. With this pattern, you can implement complex, multi-step operations.',
       },
       {
         codeblock: generateJsxCodeBlockForActionApi(
@@ -58,7 +59,7 @@ const data: ReferenceEntityTemplateSchema = {
           'present-modal-tile',
         ),
         description:
-          "Create a smart grid tile on the POS home screen that launches a full-screen modal when tapped. This example shows how to use the Action API to present detailed views or workflows from your app's home tile, providing quick access to extended functionality.",
+          'Present a full-screen modal from smart grid tiles on the POS home screen. This example demonstrates using `shopify.action.presentModal()` to launch modal workflows from tile interactions. This pattern is well-suited for high-frequency tasks that require additional UI beyond the tile itself.',
       },
     ],
   },

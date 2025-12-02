@@ -19,25 +19,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Layout and structure',
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent:
-        '- **Set clear dimensions:** Use percentage values for responsive layouts or pixels for exact dimensions.\n' +
-        '- **Use for appropriate content:** Reserve `ScrollBox` for long lists or dynamic content that genuinely needs scrolling, not short content that fits within available space.',
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent:
-        "- `ScrollBox` automatically manage overflow behavior—manual overflow control beyond the component's built-in scrolling isn't available.\n" +
-        "- Scroll behavior and styling are controlled by the POS design system—custom scroll bar styling or scroll physics modifications aren't supported.\n" +
-        '- The component is optimized for touch-based scrolling in POS environments—complex scroll interactions or nested scrolling scenarios may not perform optimally.',
-    },
-  ],
   defaultExample: {
     image: 'scrollbox-default.png',
     description:
@@ -52,6 +33,17 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Set clear dimensions:** Use percentage values for responsive layouts or pixels for exact dimensions.
+- **Use for appropriate content:** Reserve \`ScrollBox\` for long lists or dynamic content that genuinely needs scrolling, not short content that fits within available space.
+`,
+    },
+  ],
   related: [],
 };
 

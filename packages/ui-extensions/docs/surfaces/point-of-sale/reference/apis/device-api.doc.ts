@@ -32,15 +32,6 @@ const data: ReferenceEntityTemplateSchema = {
         '- **Cache device information appropriately:** Consider caching device information after the initial query to avoid repeated async calls, but ensure you handle cases where device characteristics might change during the session.\n' +
         '- **Provide device-appropriate experiences:** Design different user experiences for tablets versus other devices, taking advantage of larger screens while ensuring functionality works across all supported device types.',
     },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent:
-        '- Device information queries are asynchronous and may take time to resolve, so always handle the Promise-based responses appropriately in your extension logic.\n' +
-        "- The Device API provides read-only access to device information and can't be used to modify device settings or capabilities.\n" +
-        "- Device type detection is limited to basic form factor identification (tablet vs. non-tablet) and doesn't provide detailed hardware specifications or capabilities.",
-    },
   ],
   examples: {
     description:
@@ -52,23 +43,23 @@ const data: ReferenceEntityTemplateSchema = {
           'tablet',
         ),
         description:
-          'Determine whether the extension is running on a tablet form factor. This example shows how to use `shopify.device.isTablet()` to check the device type, allowing you to adapt your UI layout, component sizes, or features based on whether the device is a tablet or other form factor.',
+          'Check if the POS device is running on tablet hardware to adapt your UI accordingly. This example shows how to use `shopify.device.isTablet()` to determine the device form factor. This enables responsive layouts and touch-optimized interfaces for tablet devices versus traditional POS terminals.',
       },
       {
         codeblock: generateJsxCodeBlockForDeviceApi(
-          'Display the device ID',
+          'Retrieve the device ID',
           'device-id',
         ),
         description:
-          'Access the unique identifier of the POS device. This example demonstrates using `shopify.device.id` to retrieve the device ID, which can be used for device-specific configurations, tracking, or associating data with particular devices.',
+          'Access the unique identifier of the current POS device. This example demonstrates using `shopify.device.id` to retrieve the device ID. This enables device-specific configurations, analytics tracking, or multi-device coordination features.',
       },
       {
         codeblock: generateJsxCodeBlockForDeviceApi(
-          'Display the device name',
+          'Retrieve the device name',
           'name',
         ),
         description:
-          'Access the name of the POS device running your extension. This example shows how to use `shopify.device.name` to retrieve the device name, which can be useful for debugging, analytics, or displaying device-specific information to users.',
+          'Retrieve the name of the current POS device. This example shows how to use `shopify.device.name` to get the device name configured in POS settings. This is useful for device identification, multi-device workflows, or displaying location-specific information.',
       },
     ],
   },

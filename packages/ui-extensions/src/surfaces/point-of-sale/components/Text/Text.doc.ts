@@ -20,26 +20,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Layout and structure',
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent:
-        '- **Choose semantic types:** Use `strong` for emphasis, `small` for secondary info, `generic` for standard text.\n' +
-        '- **Apply appropriate tones:** Use `success` for positive outcomes, `warning` or `critical` for alerts, `info` for helpful context, `auto` for neutral content.\n' +
-        '- **Balance color intensity:** Use `strong` for emphasis, `base` for readability, `subdued` for secondary info.\n' +
-        '- **Nest for mixed formatting:** Nest `Text` components when you need multiple styles within one text block.',
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent:
-        "- Text styling is controlled by the POS design system through the provided properties—custom font families, sizes, or styling beyond the available options aren't supported.\n" +
-        "- Complex rich text formatting isn't supported—use multiple `Text` components or nested text elements for varied formatting needs.",
-    },
-  ],
   defaultExample: {
     image: 'text-default.png',
     description:
@@ -54,6 +34,27 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Choose semantic types:** Use \`strong\` for emphasis, \`small\` for secondary info, \`generic\` for standard text.
+- **Apply appropriate tones:** Use \`success\` for positive outcomes, \`warning\` or \`critical\` for alerts, \`info\` for helpful context, \`auto\` for neutral content.
+- **Balance color intensity:** Use \`strong\` for emphasis, \`base\` for readability, \`subdued\` for secondary info.
+- **Nest for mixed formatting:** Nest \`Text\` components when you need multiple styles within one text block.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+Complex rich text formatting isn't supported—use multiple \`Text\` components or nested text elements for varied formatting needs.
+`,
+    },
+  ],
   related: [],
 };
 

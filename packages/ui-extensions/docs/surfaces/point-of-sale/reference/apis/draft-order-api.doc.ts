@@ -27,17 +27,19 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForDraftOrderApi(
-          'Display the draft order ID',
+          'Retrieve a draft order ID',
           'id',
         ),
         description:
-          'Access the unique identifier of the current draft order in a draft order detail action context. This example shows how to use `shopify.draftOrder.id` to retrieve the draft order ID, which can be used for tracking, fetching additional order data, or implementing draft order-specific workflows.',
+          'Access the unique identifier of the current draft order in a draft order detail context. This example shows how to use `shopify.draftOrder.id` to retrieve the draft order ID. This can be used for fetching additional order data, implementing custom workflows, or building draft order-specific features.',
       },
       {
         codeblock: generateJsxCodeBlockForDraftOrderApi(
           "Retrieve a draft order's name, ID, and associated customer ID",
           'draft-order-details',
         ),
+        description:
+          'Access multiple properties from the draft order object including name, ID, and customer information. This example demonstrates using `shopify.draftOrder` to retrieve comprehensive draft order details. This enables building contextual interfaces and implementing order-specific workflows.',
       },
     ],
   },
@@ -58,9 +60,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        '- The API provides only basic draft order information—use Shopify APIs or external systems to fetch additional draft order details like line items, totals, or timestamps.\n' +
-        '- Draft order data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.',
+      sectionContent: `
+Draft order data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+`,
     },
   ],
 };

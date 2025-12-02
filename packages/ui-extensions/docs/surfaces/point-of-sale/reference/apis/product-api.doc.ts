@@ -25,17 +25,19 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForProductApi(
-          'Display the product ID',
+          'Retrieve a product ID',
           'id',
         ),
         description:
-          'Access the unique identifier of the current product in a product detail action context. This example shows how to use `shopify.product.id` to retrieve the product ID, which can be used for fetching additional product data, analytics, or implementing product-specific features and workflows.',
+          'Access the unique identifier of the current product in a product detail action context. This example shows how to use `shopify.product.id` to retrieve the product ID. This can be used for fetching additional product data, analytics, or implementing product-specific features and workflows.',
       },
       {
         codeblock: generateJsxCodeBlockForProductApi(
           'Retrieve product and product variant IDs',
           'product-variant',
         ),
+        description:
+          'Access both product and variant identifiers to implement variant-specific functionality. This example shows how to retrieve `shopify.product.id` and `shopify.product.variantId` together. Use this pattern for variant-aware features like inventory checks, variant-specific pricing, or detailed product information displays.',
       },
     ],
   },
@@ -56,9 +58,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        '- The API provides only basic product identifiers—use Shopify APIs or external systems to fetch additional product details like title, description, pricing, or inventory levels.\n' +
-        '- Product data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.',
+      sectionContent: `
+Product data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+`,
     },
   ],
 };

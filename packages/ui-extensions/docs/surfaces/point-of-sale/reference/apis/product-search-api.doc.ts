@@ -38,10 +38,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        "- Product search results are limited to products available on the current POS device and may not include the complete shop catalog if products aren't synced locally.\n" +
-        '- Bulk operations (`fetchProductsWithIds` and `fetchProductVariantsWithIds`) are limited to 50 items maximum, with additional IDs automatically removed from requests.\n' +
-        '- Search functionality depends on local product data synchronization and may not reflect real-time inventory or pricing changes until the next sync.',
+      sectionContent: `
+- Product search results are limited to products available on the current POS device and may not include the complete shop catalog if products aren't synced locally.
+- Bulk operations (\`fetchProductsWithIds\` and \`fetchProductVariantsWithIds\`) are limited to 50 items maximum, with additional IDs automatically removed from requests.
+`,
     },
   ],
   examples: {
@@ -50,35 +50,11 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForProductSearchApi(
-          'Fetch multiple products by IDs',
-          'fetch-products-with-ids',
-        ),
-        description:
-          'Retrieve detailed information for multiple products in a single request using their IDs. This example shows how to use `shopify.productSearch.fetchByIds()` to efficiently fetch data for multiple products at once, improving performance when displaying product lists or related items.',
-      },
-      {
-        codeblock: generateJsxCodeBlockForProductSearchApi(
-          'Fetch multiple variants by IDs',
-          'fetch-product-variants-with-ids',
-        ),
-        description:
-          'Retrieve detailed information for multiple product variants in a single request using their IDs. This example shows how to use `shopify.productSearch.fetchVariantsByIds()` to efficiently fetch data for multiple variants at once, useful for displaying variant lists or comparisons.',
-      },
-      {
-        codeblock: generateJsxCodeBlockForProductSearchApi(
-          'Fetch paginated variants for a product',
-          'fetch-paginated-product-variants-with-product-id',
-        ),
-        description:
-          'Retrieve product variants with pagination support for products with many variants. This example demonstrates using `shopify.productSearch.fetchVariantsByProductId()` with pagination parameters to load variants page by page, improving performance and user experience for products with large variant catalogs.',
-      },
-      {
-        codeblock: generateJsxCodeBlockForProductSearchApi(
           'Fetch a single product by ID',
           'fetch-product-with-id',
         ),
         description:
-          'Retrieve detailed information for a specific product using its ID. This example demonstrates using `shopify.productSearch.fetchById()` to get complete product data including variants, pricing, and inventory information for a single product.',
+          'Fetch a single product by ID. This example demonstrates using `shopify.productSearch.fetchById()` to get complete product data including variants, pricing, and inventory information for a single product.',
       },
       {
         codeblock: generateJsxCodeBlockForProductSearchApi(
@@ -86,7 +62,31 @@ const data: ReferenceEntityTemplateSchema = {
           'fetch-product-variant-with-id',
         ),
         description:
-          'Retrieve detailed information for a specific product variant using its ID. This example demonstrates using `shopify.productSearch.fetchVariantById()` to get variant-specific data including pricing, inventory, and options for a particular variant.',
+          'Fetch a single variant by ID. This example demonstrates using `shopify.productSearch.fetchVariantById()` to get variant-specific data including pricing, inventory, and options for a particular variant.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForProductSearchApi(
+          'Fetch multiple products by IDs',
+          'fetch-products-with-ids',
+        ),
+        description:
+          'Fetch multiple products by IDs. This example shows how to use `shopify.productSearch.fetchByIds()` to efficiently fetch data for multiple products in a single request. This improves performance when displaying product lists or related items.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForProductSearchApi(
+          'Fetch multiple variants by IDs',
+          'fetch-product-variants-with-ids',
+        ),
+        description:
+          'Fetch multiple variants by IDs. This example shows how to use `shopify.productSearch.fetchVariantsByIds()` to efficiently fetch data for multiple variants in a single request. This is useful for displaying variant lists or comparisons.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForProductSearchApi(
+          'Fetch paginated variants for a product',
+          'fetch-paginated-product-variants-with-product-id',
+        ),
+        description:
+          'Fetch paginated variants for a product. This example demonstrates using `shopify.productSearch.fetchVariantsByProductId()` with pagination parameters to load variants page by page. This improves performance and user experience for products with large variant catalogs.',
       },
       {
         codeblock: generateJsxCodeBlockForProductSearchApi(
@@ -94,7 +94,7 @@ const data: ReferenceEntityTemplateSchema = {
           'search-products',
         ),
         description:
-          'Search for products using text queries with real-time results. This example shows how to use `shopify.productSearch.search()` to perform text-based product searches with pagination support, allowing users to find products by name, SKU, or other searchable attributes.',
+          'Search for products using a search bar. This example shows how to use `shopify.productSearch.search()` to perform text-based product searches with pagination support. This allows users to find products by name, SKU, or other searchable attributes.',
       },
     ],
   },

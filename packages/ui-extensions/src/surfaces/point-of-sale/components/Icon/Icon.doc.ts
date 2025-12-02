@@ -4,7 +4,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Icon',
   description:
     'The `Icon` component displays standardized visual symbols from the POS catalog to represent actions, statuses, or categories consistently. Use icons to enhance navigation or provide visual context alongside text in POS interfaces.' +
-    '\n\nIcons help merchants quickly understand interface elements and actions without relying solely on text labels. Icons are optimized for readability at standard sizes and automatically scale to maintain visual consistency across different screen densities and device types.',
+    "\n\n To use icons to create interactive UI elements, wrap them in [`Button`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/button) or [`Clickable`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/clickable) components. Icons on their behave purely as images and don't support click events or interactive behaviors." +
+    "\n\n To maintain a consistent visual apperance, icon styling is controlled by the POS design system. Custom styling and external icon libraries aren't supported. Icons are optimized for readability at standard sizes and automatically scale to maintain visual consistency across different screen densities and device types.",
   thumbnail: 'icon-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -18,28 +19,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Media and visuals',
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent:
-        '- **Choose recognizable icons:** Use universally recognized symbols like `search`, `cart`, or `settings`. Avoid ambiguous icons.\n' +
-        '- **Match size to context:** Use smaller sizes for inline text or secondary actions, `base` for standard elements, larger sizes for primary actions.\n' +
-        '- **Apply tones for meaning:** Use `critical` for destructive actions, `warning` for cautions, `success` for confirmations, `auto` or `neutral` for general elements.\n' +
-        '- **Pair with text for clarity:** Consider adding text labels, especially for complex or uncommon actions.\n' +
-        '- **Use color for hierarchy:** Use `subdued` for secondary elements, `base` for standard visibility, `strong` for emphasis.',
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent:
-        "- Icons are purely decorative and don't support click events or interactive behaviors—wrap them in `Clickable` components for interactive functionality.\n" +
-        "- The available icon set is predefined and limited to POS-specific symbols—custom icons or external icon libraries aren't supported.\n" +
-        '- Icon appearance and styling are controlled by the POS design system—custom colors, styles, or modifications beyond the provided properties are not available.',
-    },
-  ],
   defaultExample: {
     image: 'icon-default.png',
     description:
@@ -54,6 +33,20 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Choose recognizable icons:** Use universally recognized symbols like \`search\`, \`cart\`, or \`settings\`. Avoid ambiguous icons.
+- **Match size to context:** Use smaller sizes for inline text or secondary actions, \`base\` for standard elements, larger sizes for primary actions.
+- **Apply tones for meaning:** Use \`critical\` for destructive actions, \`warning\` for cautions, \`success\` for confirmations, \`auto\` or \`neutral\` for general elements.
+- **Pair with text for clarity:** Consider adding text labels, especially for complex or uncommon actions.
+- **Use color for hierarchy:** Use \`subdued\` for secondary elements, \`base\` for standard visibility, \`strong\` for emphasis.
+`,
+    },
+  ],
   related: [],
 };
 

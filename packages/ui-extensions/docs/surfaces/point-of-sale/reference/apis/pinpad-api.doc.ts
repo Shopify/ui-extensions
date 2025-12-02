@@ -36,10 +36,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        '- PIN validation must be handled through the `onSubmit` callback and should be performed securely on your backend service rather than in client-side extension code.\n' +
-        '- The PinPad API displays a modal interface that takes over the entire screen until PIN entry is complete or the modal is dismissed.\n' +
-        '- PIN data is provided as an array of numbers and must be handled securely, following appropriate data protection and privacy practices.',
+      sectionContent: `
+PIN validation must be handled through the \`onSubmit\` callback and should be performed securely on your backend service rather than in client-side extension code.
+`,
     },
   ],
   examples: {
@@ -52,13 +51,15 @@ const data: ReferenceEntityTemplateSchema = {
           'validation',
         ),
         description:
-          'Present a secure PIN pad interface to collect and validate user PINs for authentication or verification. This example shows how to use `shopify.pinPad.show()` to display a PIN entry modal with customizable options, handle the entered PIN securely, and process the result for secure authentication workflows.',
+          'Present a secure PIN pad interface to collect and validate user PINs for authentication or verification. This example shows how to use `shopify.pinPad.show()` to display a PIN entry modal with customizable options. By handling the entered PIN securely and processing the result, you can implement secure authentication workflows.',
       },
       {
         codeblock: generateJsxCodeBlockForToastApi(
           'Configure PinPad options and handle dismissal',
           'validation-with-options',
         ),
+        description:
+          'Configure PIN pad options including PIN length requirements, masking, and custom labels. This example shows how to use `showPinPad()` with options like `minPinLength`, `maxPinLength`, `masked`, `title`, and `onDismissed` callback. This creates a fully configured PIN entry experience with proper validation and dismissal handling.',
       },
     ],
   },

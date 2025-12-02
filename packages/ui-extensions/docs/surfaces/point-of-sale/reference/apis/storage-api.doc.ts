@@ -14,35 +14,34 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Target APIs',
   subCategory: 'Standard APIs',
   related: [],
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent:
-        '- **Design consistent key naming patterns:** Use hierarchical key names like `settings.user.theme` or `cache.products.$' +
-        '{id}` to organize related data and make storage contents easier to understand and maintain.\n' +
-        '- **Validate retrieved data:** Check data structure and types after calling `get()` since stored data may be outdated or corrupted. Provide sensible defaults and handle missing properties.\n' +
-        '- **Plan for data evolution:** Design your stored data structures to handle future changes. Include version fields in complex objects and implement migration logic to handle schema updates between extension versions.\n' +
-        '- **Keep sensitive data out of local storage:** Never store passwords, API keys, or other sensitive information. Use the Session API for secure backend communication and limit stored data to user preferences and non-sensitive workflow state.',
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent:
-        '- POS UI extensions can store up to a maximum of 100 entries.\n' +
-        '- The maximum key size is ~1 KB and the maximum value size is ~1 MB.\n' +
-        '- Data persists even when extension targets are disabled or removed.\n' +
-        '- Stored extension data is automatically cleared after 30 days of inactivity.',
-    },
-  ],
   definitions: [
     {
       title: 'StorageApi',
       description:
         'The `StorageApi` object provides access to persistent local storage methods for your POS UI extension. Access these methods through `shopify.storage` to store, retrieve, and manage data that persists across sessions.',
       type: 'Storage',
+    },
+  ],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Design consistent key naming:** Use hierarchical names like \`settings.user.theme\` or \`cache.products.\${id}\` to organize data.
+- **Validate retrieved data:** Check structure and types after \`get()\` since data may be outdated. Provide defaults and handle missing properties.
+- **Plan for data evolution:** Include version fields and implement migration logic to handle schema updates between versions.
+- **Keep sensitive data out:** Never store passwords, API keys, or sensitive information. Use Session API for secure backend communication.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- POS UI extensions can store up to a maximum of 100 entries.
+- Stored extension data is automatically cleared after 30 days of inactivity.
+`,
     },
   ],
   examples: {
@@ -55,7 +54,7 @@ const data: ReferenceEntityTemplateSchema = {
           'clear',
         ),
         description:
-          'Remove all stored data for your extension from persistent storage. This example demonstrates using `shopify.storage.clear()` to delete all key-value pairs stored by your extension, useful for reset functionality or clearing user preferences.',
+          'Remove all stored data for your extension from persistent storage. This example demonstrates using `shopify.storage.clear()` to delete all key-value pairs stored by your extension. This is useful for reset functionality or clearing user preferences.',
       },
       {
         codeblock: generateJsxCodeBlockForStorageApi(
@@ -63,7 +62,7 @@ const data: ReferenceEntityTemplateSchema = {
           'delete',
         ),
         description:
-          'Delete a specific value from storage using its key. This example shows how to use `shopify.storage.delete()` to remove a stored item, permanently clearing the data associated with that key while leaving other stored values intact.',
+          'Delete a specific value from storage using its key. This example shows how to use `shopify.storage.delete()` to remove a stored item. This permanently clears the data associated with that key while leaving other stored values intact.',
       },
       {
         codeblock: generateJsxCodeBlockForStorageApi(
@@ -71,7 +70,7 @@ const data: ReferenceEntityTemplateSchema = {
           'entries',
         ),
         description:
-          'Fetch all key-value pairs stored by your extension. This example shows how to use `shopify.storage.entries()` to retrieve an array of all stored items, useful for displaying saved data, performing bulk operations, or exporting stored information.',
+          'Fetch all key-value pairs stored by your extension. This example shows how to use `shopify.storage.entries()` to retrieve an array of all stored items. This is useful for displaying saved data, performing bulk operations, or exporting stored information.',
       },
       {
         codeblock: generateJsxCodeBlockForStorageApi(
@@ -79,7 +78,7 @@ const data: ReferenceEntityTemplateSchema = {
           'get',
         ),
         description:
-          'Read a stored value using its key from persistent storage. This example shows how to use `shopify.storage.get()` to retrieve a previously saved value, which returns the stored data with automatic JSON deserialization or undefined if the key does not exist.',
+          'Read a stored value using its key from persistent storage. This example shows how to use `shopify.storage.get()` to retrieve a previously saved value. This returns the stored data with automatic JSON deserialization or undefined if the key does not exist.',
       },
       {
         codeblock: generateJsxCodeBlockForStorageApi(
@@ -87,7 +86,7 @@ const data: ReferenceEntityTemplateSchema = {
           'set',
         ),
         description:
-          'Store a value in persistent storage using a key-value pair. This example demonstrates using `shopify.storage.set()` to save data that will persist across user sessions, device restarts, and extension reloads, with automatic JSON serialization of the value.',
+          'Store a value in persistent storage using a key-value pair. This example demonstrates using `shopify.storage.set()` to save data that persists across user sessions, device restarts, and extension reloads. The value is automatically JSON serialized.',
       },
     ],
   },

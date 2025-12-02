@@ -36,10 +36,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent:
-        "- Session tokens are only available when the authenticated user has proper app permissions enabled. Staff members who are pinned in but not authenticated can't generate tokens.\n" +
-        "- Session data is read-only and can't be modified through the API. Changes to shop settings, locations, or staff assignments require POS application updates.\n" +
-        "- Session tokens should only be used for communication with your app's configured backend service and can't be used for direct Shopify API calls from the client side.",
+      sectionContent: `
+- Session tokens are only available when the authenticated user has proper app permissions enabled—staff members who are pinned in but not authenticated can't generate tokens.
+- Session tokens should only be used for communication with your app's configured backend service and can't be used for direct Shopify API calls from the client side.
+`,
     },
   ],
   examples: {
@@ -48,17 +48,19 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForSessionApi(
+          'Access properties associated with the current session',
+          'current-session',
+        ),
+        description:
+          'Access comprehensive session information including shop details, user data, and location information. This example shows how to use `shopify.session.currentSession` to retrieve the shop ID, domain, currency, user ID, location ID, staff member ID, and POS version. Use this data to build location-aware features and personalized experiences.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForSessionApi(
           'Access session data and generate authentication tokens',
           'token',
         ),
         description:
-          'Retrieve current session information and generate secure authentication tokens for backend API calls. This example shows how to access shop details, user information, and location data through `shopify.session`, and use `shopify.session.getSessionToken()` to generate tokens for authenticated requests to your backend services.',
-      },
-      {
-        codeblock: generateJsxCodeBlockForSessionApi(
-          'Access properties associated with the current session',
-          'current-session',
-        ),
+          'Access session data and generate authentication tokens. This example shows how to access shop details, user information, and location data through `shopify.session`, and use `shopify.session.getSessionToken()` to generate tokens for authenticated requests to your backend services.',
       },
     ],
   },
