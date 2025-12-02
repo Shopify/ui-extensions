@@ -7,7 +7,7 @@ const generateCodeBlockForProductSearchApi = (
 ) => generateCodeBlock(title, 'product-search-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'ProductSearch API',
+  name: 'Product Search API',
   description:
     'The Product Search API provides access to POS native product search functionality, allowing you to search for products, fetch product details, and retrieve product variants with pagination support and flexible sorting options. The API enables both text-based search and direct product lookups by ID.',
   isVisualComponent: false,
@@ -86,7 +86,7 @@ const data: ReferenceEntityTemplateSchema = {
 - **Handle search results gracefully:** Check for undefined results and empty result sets.
 - **Optimize search performance:** Consider caching frequently accessed product data and implementing debounced search to reduce API calls while users are typing search queries.
 - **Provide relevant search options:** Use appropriate sorting options based on your use case - relevance for user searches, alphabetical for browsing, or recently added for highlighting new products.
-      `,
+`,
     },
     {
       type: 'Generic',
@@ -96,7 +96,7 @@ const data: ReferenceEntityTemplateSchema = {
 - Product search results are limited to products available on the current POS device and may not include the complete shop catalog if products aren't synced locally.
 - Bulk operations (\`fetchProductsWithIds\` and \`fetchProductVariantsWithIds\`) are limited to 50 items maximum, with additional IDs automatically removed from requests.
 - Search functionality depends on local product data synchronization and may not reflect real-time inventory or pricing changes until the next sync.
-      `,
+`,
     },
   ],
 };
