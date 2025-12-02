@@ -35,8 +35,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The API provides only the customer identifier—use Shopify APIs or external systems to fetch additional customer details like name, email, or purchase history.
-- Customer data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+Customer data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
 `,
     },
   ],
@@ -46,11 +45,11 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForCustomerApi(
-          'Display the customer ID',
+          'Retrieve the customer ID',
           'id',
         ),
         description:
-          'Access the unique identifier of the current customer in a customer detail context. This example shows how to use `shopify.customer.id` to retrieve the customer ID, which can be used for fetching additional customer data, implementing loyalty features, or building personalized customer experiences.',
+          'Access the unique identifier of the current customer in a customer detail context. This example shows how to use `shopify.customer.id` to retrieve the customer ID. This can be used for fetching additional customer data, implementing loyalty features, or building personalized customer experiences.',
       },
     ],
   },

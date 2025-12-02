@@ -35,8 +35,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The API provides only basic order information—use Shopify APIs or external systems to fetch additional order details like line items, totals, or fulfillment status.
-- Order data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+Order data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
 `,
     },
   ],
@@ -49,11 +48,11 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForOrderApi(
-          'Display the order ID',
+          'Retrieve an order ID',
           'id',
         ),
         description:
-          'Access the unique identifier of the current order in an order detail action context. This example shows how to use `shopify.order.id` to retrieve the order ID, which can be used for fetching additional order data, tracking, or implementing order-specific functionality and post-purchase workflows.',
+          'Access the unique identifier of the current order in an order detail action context. This example shows how to use `shopify.order.id` to retrieve the order ID. This can be used for fetching additional order data, tracking, or implementing order-specific functionality and post-purchase workflows.',
       },
     ],
   },

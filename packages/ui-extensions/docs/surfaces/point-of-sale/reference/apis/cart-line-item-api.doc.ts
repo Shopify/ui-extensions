@@ -39,7 +39,6 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The API provides read-only access to line item data—use the Cart API for modifying line item properties, discounts, selling plans, or other attributes.
 - Line item data reflects the current state and may not include real-time inventory, pricing, or selling plan updates until the cart is refreshed.
 - Selling plan information may be limited during refund or exchange operations where digest values aren't available.
 `,
@@ -51,11 +50,11 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForCartLineItemApi(
-          'Display the cart line item ID',
+          'Retrieve the cart line item ID',
           'id',
         ),
         description:
-          'Access the unique identifier of the current cart line item in line item detail contexts. This example shows how to use `shopify.cartLineItem.id` to retrieve the line item ID, which can be used for modifying the item, applying discounts, or implementing item-specific functionality.',
+          'Access the unique identifier of the current cart line item in line item detail contexts. This example shows how to use `shopify.cartLineItem.id` to retrieve the line item ID. This can be used for modifying the item, applying discounts, or implementing item-specific functionality.',
       },
     ],
   },

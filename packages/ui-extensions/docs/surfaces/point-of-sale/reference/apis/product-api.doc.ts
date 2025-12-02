@@ -25,11 +25,11 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateJsxCodeBlockForProductApi(
-          'Display the product ID',
+          'Retrieve a product ID',
           'id',
         ),
         description:
-          'Access the unique identifier of the current product in a product detail action context. This example shows how to use `shopify.product.id` to retrieve the product ID, which can be used for fetching additional product data, analytics, or implementing product-specific features and workflows.',
+          'Access the unique identifier of the current product in a product detail action context. This example shows how to use `shopify.product.id` to retrieve the product ID. This can be used for fetching additional product data, analytics, or implementing product-specific features and workflows.',
       },
     ],
   },
@@ -49,8 +49,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The API provides only basic product identifiers—use Shopify APIs or external systems to fetch additional product details like title, description, pricing, or inventory levels.
-- Product data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
+Product data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
 `,
     },
   ],

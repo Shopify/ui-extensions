@@ -3,8 +3,9 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Badge',
   description:
-    'The `Badge` component uses color and text to communicate status information for orders, products, customers, and other business data. Use badges to create visual hierarchy and help merchants quickly identify important information or status changes within your POS interface.' +
-    '\n\nThe component automatically adjusts its appearance based on the specified `tone` property, ensuring consistent visual communication across the POS interface. Badges support different sizes and can display text, numbers, or status indicators, making them versatile for representing everything from order counts to inventory alerts in a compact, scannable format.',
+    "The `Badge` component uses color and text to communicate status information for orders, products, customers, and other business data. Badges aren't interactive elements; they display information but don't respond to user interactions like clicks or taps. Use badges to create visual hierarchy and help merchants quickly identify important information or status changes within your POS interface. " +
+    '\n\nThe component automatically adjusts its appearance based on the specified `tone` property, ensuring consistent visual communication across the POS interface. The component relies on the tone system for semantic meaning, so using custom styling with badges may not clearly convey meaning to merchants.' +
+    '\n\nBadges support different sizes and can display text, numbers, or status indicators. This makes them versatile for representing everything from order counts to inventory alerts in a compact, scannable format.',
   thumbnail: 'badge-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -49,10 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Badges aren't interactive elements—they display information but don't respond to user interactions like clicks or taps.
-- The component relies on the tone system for semantic meaning, so custom styling may not convey the same semantic benefits.
-- Very long text content may be truncated or cause layout issues depending on the container and screen size.
-`,
+Very long text content may be truncated or cause layout issues depending on the container and screen size.`,
     },
   ],
   related: [],

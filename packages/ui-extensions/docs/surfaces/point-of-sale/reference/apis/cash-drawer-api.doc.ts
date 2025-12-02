@@ -42,9 +42,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The Cash Drawer API requires compatible cash drawer hardware connected to the POS device through supported peripheral connections (USB, network, or Bluetooth depending on device and hardware model).
-- The API only triggers the drawer opening mechanism and cannot detect whether the drawer is currently open, closed, or physically jammed. Your extension is responsible for any required state tracking.
-- Cash drawer operations are subject to POS hardware capabilities and may not be available on all device configurations. The API will return errors on devices without cash drawer support.
+The API only triggers the drawer opening mechanism and cannot detect whether the drawer is currently open, closed, or physically jammed—your extension is responsible for any required state tracking.
 `,
     },
   ],
@@ -59,7 +57,7 @@ const data: ReferenceEntityTemplateSchema = {
           'default.example',
         ),
         description:
-          'Open the cash drawer programmatically for manual cash handling or custom workflows. This example shows how to use `shopify.cashDrawer.open()` to trigger the connected cash drawer hardware, useful for no-sale transactions, manual cash operations, or register management tasks that require direct cash access.',
+          'Open the cash drawer programmatically for manual cash handling or custom workflows. This example shows how to use `shopify.cashDrawer.open()` to trigger the connected cash drawer hardware. This is useful for no-sale transactions, manual cash operations, or register management tasks that require direct cash access.',
       },
     ],
   },

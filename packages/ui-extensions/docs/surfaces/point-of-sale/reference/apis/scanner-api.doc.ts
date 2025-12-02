@@ -31,6 +31,7 @@ const data: ReferenceEntityTemplateSchema = {
 - **Validate scanned data:** Validate before processing and handle invalid codes, unsupported formats, or errors.
 - **Provide clear feedback:** Show success confirmations, error messages, and guidance when scans fail.
 - **Adapt to available sources:** Check available scanner sources and provide alternatives when preferred methods aren't available.
+- **Handle scan data processing:** Scan data processing is reactive and requires proper subscription management to avoid memory leaks or unexpected behavior when components unmount.
 `,
     },
     {
@@ -38,9 +39,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.
-- Scanning availability depends on device hardware capabilities and may vary between different POS devices and configurations.
-- Scan data processing is reactive and requires proper subscription management to avoid memory leaks or unexpected behavior when components unmount.
+The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.
 `,
     },
   ],
@@ -55,7 +54,7 @@ const data: ReferenceEntityTemplateSchema = {
           'conditional-scanner-example',
         ),
         description:
-          'Subscribe to scan events and adapt behavior based on the scanner source. This example shows how to use `shopify.scanner.subscribe()` to receive scan events and check `shopify.scanner.source` to determine which scanner type was used (camera, external scanner, or embedded hardware), allowing you to customize handling based on the scanning method.',
+          'Subscribe to scan events and adapt behavior based on the scanner source. This example shows how to use `shopify.scanner.subscribe()` to receive scan events and check `shopify.scanner.source` to determine which scanner type was used (camera, external scanner, or embedded hardware). By identifying the scanner type, you can customize handling based on the scanning method.',
       },
     ],
   },

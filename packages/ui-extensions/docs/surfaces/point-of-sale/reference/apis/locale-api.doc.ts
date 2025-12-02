@@ -32,16 +32,6 @@ const data: ReferenceEntityTemplateSchema = {
 - **Provide fallback handling:** Implement fallback behavior for unsupported locales, defaulting to a supported language like English.
 `,
     },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-- The Locale API provides read-only access to locale information and can't be used to change the merchant's locale settings, which must be configured through POS system settings.
-- Locale changes are detected through the subscription mechanism, but the API doesn't provide historical locale information or change timestamps.
-- The locale format follows IETF standards, but the specific locales available depend on POS system configuration and may vary between different Shopify POS installations.
-`,
-    },
   ],
   related: [],
   examples: {
@@ -54,7 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
           'subscribe',
         ),
         description:
-          "Subscribe to locale changes to monitor the merchant's language settings in real time. This example shows how to use `shopify.locale.subscribe()` and `shopify.locale.ianaCode` to detect when the merchant changes their language preference, enabling dynamic content localization and internationalized user experiences.",
+          "Subscribe to locale changes to monitor the merchant's language settings in real time. This example shows how to use `shopify.locale.subscribe()` and `shopify.locale.ianaCode` to detect when the merchant changes their language preference. This enables dynamic content localization and internationalized user experiences.",
       },
     ],
   },

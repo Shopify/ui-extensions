@@ -4,8 +4,9 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'ChoiceList',
   description:
     'The `ChoiceList` component presents multiple options for single or multiple selections. Use it when merchants need to choose from a defined set of options in forms or filtering interfaces.' +
-    '\n\nThe component supports both single and multiple selection modes with clear visual indicators for selected states and proper checkbox or radio button semantics. It includes features like select all/none functionality for multiple selection across various configuration and filtering scenarios.' +
-    '\n\n`ChoiceList` components maintain selection state across navigation and form resets, with proper visual indication of indeterminate states when some but not all options in a group are selected.',
+    '\n\nThe component supports both single and multiple selection modes with clear visual indicators for selected states and proper checkbox or radio button semantics, although the actual appearance may vary based on the POS platform and screen size. It includes features like select all/none functionality for multiple selection across various configuration and filtering scenarios.' +
+    '\n\n`ChoiceList` components maintain selection state across navigation and form resets, with proper visual indication of indeterminate states when some but not all options in a group are selected. Within `ChoiceList`, use only `Choice` components as children.' +
+    "\n\n`ChoiceList` doesn't automatically filter or update content based on selections. You must implement the logic to respond to selection changes.",
   thumbnail: 'choicelist-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -60,10 +61,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- \`ChoiceList\` requires choice components as children—other component types can't be used as options within the choice list.
-- The component provides the selection interface but doesn't automatically filter or update content based on selections—you must implement the logic to respond to selection changes.
-- Visual variants have different presentations across devices and contexts—the actual appearance may vary based on the POS platform and screen size.
-`,
+\`ChoiceList\` component types other than \`Choice\` can't be used as options within the choice list.`,
     },
   ],
   related: [],

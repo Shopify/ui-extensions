@@ -39,9 +39,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The Connectivity API provides read-only access to connectivity information and can't be used to control or modify network settings on the device.
-- Connectivity status reflects Internet connectivity only and may not indicate the quality or speed of the connection, which could affect API performance.
-- The API monitors general Internet connectivity but doesn't provide specific information about Shopify service availability or API endpoint availability.
+Connectivity status reflects Internet connectivity only and may not indicate the quality or speed of the connection, which could affect API performance.
 `,
     },
   ],
@@ -56,7 +54,7 @@ const data: ReferenceEntityTemplateSchema = {
           'subscribe',
         ),
         description:
-          'Subscribe to connectivity changes to monitor network status in real time. This example demonstrates using `shopify.connectivity.subscribe()` and `shopify.connectivity.connected` to detect when the device goes online or offline, enabling adaptive behavior for offline-capable features or network-dependent operations.',
+          'Subscribe to connectivity changes to monitor network status in real time. This example demonstrates using `shopify.connectivity.subscribe()` and `shopify.connectivity.connected` to detect when the device goes online or offline. This enables adaptive behavior for offline-capable features or network-dependent operations.',
       },
     ],
   },

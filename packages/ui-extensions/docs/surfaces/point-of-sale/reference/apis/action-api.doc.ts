@@ -37,7 +37,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-Each extension can only present one modal at a time. Subsequent calls to \`presentModal()\` while a modal is already open may be ignored or replace the current modal.
+The \`presentModal()\` method must be called from a user interaction (such as a button click or tile tap) and can't be invoked programmatically during extension initialization or from background operations.
 `,
     },
   ],
@@ -52,7 +52,7 @@ Each extension can only present one modal at a time. Subsequent calls to \`prese
           'present-modal',
         ),
         description:
-          'Present a full-screen modal from menu item actions in detail screens. This example shows how to use `shopify.action.presentModal()` to launch a modal workflow from post-purchase, order details, or other action menu item contexts, enabling complex multi-step operations.',
+          'Present a full-screen modal from menu item actions in detail screens. This example shows how to use `shopify.action.presentModal()` to launch a modal workflow from post-purchase, order details, or other action menu item contexts. With this pattern, you can implement complex, multi-step operations.',
       },
       {
         codeblock: generateJsxCodeBlockForActionApi(
@@ -60,7 +60,7 @@ Each extension can only present one modal at a time. Subsequent calls to \`prese
           'present-modal-tile',
         ),
         description:
-          'Present a full-screen modal from smart grid tiles on the POS home screen. This example demonstrates using `shopify.action.presentModal()` to launch modal workflows from tile interactions, perfect for high-frequency tasks that require additional UI beyond the tile itself.',
+          'Present a full-screen modal from smart grid tiles on the POS home screen. This example demonstrates using `shopify.action.presentModal()` to launch modal workflows from tile interactions. This pattern is well-suited for high-frequency tasks that require additional UI beyond the tile itself.',
       },
     ],
   },

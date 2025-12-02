@@ -37,9 +37,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- PIN validation must be handled through the \`onSubmit\` callback and should be performed securely on your backend service rather than in client-side extension code.
-- The PinPad API displays a modal interface that takes over the entire screen until PIN entry is complete or the modal is dismissed.
-- PIN data is provided as an array of numbers and must be handled securely, following appropriate data protection and privacy practices.
+PIN validation must be handled through the \`onSubmit\` callback and should be performed securely on your backend service rather than in client-side extension code.
 `,
     },
   ],
@@ -54,7 +52,7 @@ const data: ReferenceEntityTemplateSchema = {
           'validation',
         ),
         description:
-          'Present a secure PIN pad interface to collect and validate user PINs for authentication or verification. This example shows how to use `shopify.pinPad.show()` to display a PIN entry modal with customizable options, handle the entered PIN securely, and process the result for secure authentication workflows.',
+          'Present a secure PIN pad interface to collect and validate user PINs for authentication or verification. This example shows how to use `shopify.pinPad.show()` to display a PIN entry modal with customizable options. By handling the entered PIN securely and processing the result, you can implement secure authentication workflows.',
       },
     ],
   },

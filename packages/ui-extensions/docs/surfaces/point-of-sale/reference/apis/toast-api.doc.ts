@@ -30,6 +30,7 @@ const data: ReferenceEntityTemplateSchema = {
 - **Use appropriate timing:** Choose durations that give users enough time to read without keeping visible too long.
 - **Provide meaningful feedback:** Use toasts to confirm actions, explain errors, or communicate status changes.
 - **Avoid overuse:** Reserve for important feedback. Don't show multiple toasts simultaneously.
+- **Handle multiple toast messages:** Multiple toast messages may overlap or interfere with each other if shown in rapid succession. Consider queuing or spacing out notifications appropriately.
 `,
     },
     {
@@ -37,9 +38,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Toast messages are temporary and can't be made persistent. For important information that users need to reference later, consider using other UI components or storage mechanisms.
-- Multiple toast messages may overlap or interfere with each other if shown in rapid succession. Consider queuing or spacing out notifications appropriately.
-- Toast content is limited to plain text and can't include rich formatting, links, or interactive elements.
+Toast content is limited to plain text and can't include rich formatting, links, or interactive elements.
 `,
     },
   ],
@@ -54,7 +53,7 @@ const data: ReferenceEntityTemplateSchema = {
           'show',
         ),
         description:
-          "Show a temporary notification message to provide user feedback. This example demonstrates using `shopify.toast.show()` to display a brief, non-intrusive message that automatically disappears after a specified duration, useful for confirmations, status updates, or success messages that don't require user interaction.",
+          "Display a toast notification from a tile. This example demonstrates using `shopify.toast.show()` to display a brief, non-intrusive message that automatically disappears after a specified duration. This is useful for confirmations, status updates, or success messages that don't require user interaction.",
       },
     ],
   },
