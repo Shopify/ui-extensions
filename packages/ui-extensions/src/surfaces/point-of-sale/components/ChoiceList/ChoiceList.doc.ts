@@ -61,7 +61,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-\`ChoiceList\` component types other than Choice can't be used as options within the choice list.`,
+\`ChoiceList\` component types other than \`Choice\` can't be used as options within the choice list.`,
     },
   ],
   related: [],
