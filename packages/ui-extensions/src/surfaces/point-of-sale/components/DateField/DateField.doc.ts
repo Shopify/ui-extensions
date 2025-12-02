@@ -4,9 +4,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'DateField',
   description:
     'The `DateField` component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.' +
-    '\n\n`DateField` components support both manual text entry and picker selection, giving merchants flexibility to choose their preferred input method based on personal preference and specific date entry scenarios.' +
-    '\n\nFor visual calendar-based selection, consider [`DatePicker`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker). For space-constrained layouts with scrolling date selection, use [`DateSpinner`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner).' +
-    '\n\n> **Note:** `DateField` accepts date values in ISO 8601 format (`YYYY-MM-DD`)—other date formats require conversion before setting the value property.',
+    '\n\n`DateField` accepts values in ISO 8601 format (`YYYY-MM-DD`). Other date formats require conversion before setting the value property. Validation of the entered date occurs when the user finishes editing, rather than on every keystroke, so invalid dates are flagged after blur. This can delay error feedback, so consider this in your design.' +
+    '\n\n`DateField` components support manual text entry. For visual calendar-based selection, consider using [`DatePicker`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) or [`DateSpinner`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner) components.',
   thumbnail: 'date-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -49,14 +48,6 @@ const data: ReferenceEntityTemplateSchema = {
 - **Choose for direct text input:** Use \`DateField\` when users know the exact date and can type it efficiently. Use [\`DatePicker\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) for calendar selection or [\`DateSpinner\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner) for space-constrained layouts.
 - **Explain date constraints:** Use \`details\` to clarify requirements like "Select a date within the next 30 days" or "Must be a future date."
 - **Write actionable error messages:** Provide clear validation messages for invalid dates that help users correct their input.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-Validation occurs when the user finishes editing rather than on every keystroke—invalid dates are only flagged after blur, which may delay error feedback.
 `,
     },
   ],
