@@ -4,8 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'NumberField',
   description:
     "The `NumberField` component captures numeric input. Use it to collect quantity, price, or other numeric information with optional `stepper` control. Stepper controls restrict which properties are available—`label`, `details`, `placeholder`, `error`, `required`, and `inputMode` aren't supported. Choose your control type based on which properties your implementation requires." +
-    '\n\nThe component includes built-in number validation, optional min/max constraints, and step increments to ensure accurate numeric data entry. It supports various number formats including integers and decimals, with validation feedback to prevent entry errors during high-volume retail operations.' +
-    "\n\nThe `required` property adds semantic meaning only—it doesn't trigger automatic error display or prevent invalid submissions without additional validation logic.",
+    '\n\nThe component includes built-in number validation, optional min/max constraints, and step increments to ensure accurate numeric data entry. It supports various number formats including integers and decimals, with validation feedback to prevent entry errors during high-volume retail operations.',
   thumbnail: 'number-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
