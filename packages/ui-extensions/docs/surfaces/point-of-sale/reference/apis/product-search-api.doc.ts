@@ -7,7 +7,7 @@ const generateCodeBlockForProductSearchApi = (
 ) => generateCodeBlock(title, 'product-search-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'ProductSearch API',
+  name: 'Product Search API',
   description:
     'The Product Search API provides access to POS native product search functionality, allowing you to search for products, fetch product details, and retrieve product variants with pagination support and flexible sorting options. The API enables both text-based search and direct product lookups by ID.',
   isVisualComponent: false,
