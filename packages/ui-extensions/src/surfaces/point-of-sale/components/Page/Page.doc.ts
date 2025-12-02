@@ -3,8 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Page',
   description:
-    'The `Page` component serves as the main container for app content with preset layouts and heading controls. Use it to structure full-screen views with consistent navigation and content organization.' +
-    '\n\nThe component provides a complete page structure with built-in header, sidebar, and action bar layouts that follow POS design patterns. It manages heading hierarchy, spacing, and responsive behavior automatically, allowing you to focus on content rather than layout mechanics while ensuring consistent page structures across extensions.' +
+    "The `Page` component serves as the main container for app content with preset layouts and heading controls. Use it to structure full-screen views with consistent navigation and content organization. `Page` is designed for full-screen modal interfaces and isn't suitable for inline content or partial page layouts within existing POS screens." +
+    '\n\nThe component provides a complete page structure with built-in header, sidebar, and action bar layouts that follow POS design patterns. It manages heading hierarchy, spacing, and responsive behavior automatically, allowing you to focus on content rather than layout mechanics while ensuring consistent page structures across extensions. To maintain consistency, page layout and styling are controlled by the POS design system, so custom styling is limited to the provided slots and properties.' +
     '\n\n`Page` components handle safe area insets automatically for devices with notches or rounded corners, ensuring content remains visible and interactive without manual padding adjustments for different device shapes.',
   thumbnail: 'page-thumbnail.png',
   isVisualComponent: true,
@@ -25,26 +25,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Layout and structure',
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent:
-        "- **Write descriptive headings:** Use heading and subheading to describe the page's purpose and provide context about the current workflow step.\n" +
-        "- **Place one primary action in action bar:** Use the `secondary-actions` slot for the page's most important action.\n" +
-        '- **Use aside for supplementary content:** Reserve the aside slot for navigation, contextual help, or supporting information.',
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent:
-        "- The `secondary-actions` slot supports only a single button element—multiple actions in the action bar aren't supported and should be handled within the main content area.\n" +
-        '- Page layout and styling are controlled by the POS design system—custom page-level styling beyond the provided slots and properties is not available.\n' +
-        "- The component is designed for full-screen modal interfaces—it's not suitable for inline content or partial page layouts within existing POS screens.",
-    },
-  ],
   defaultExample: {
     image: 'page-default.png',
     description:
@@ -59,6 +39,26 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Write descriptive headings:** Use heading and subheading to describe the page's purpose and provide context about the current workflow step.
+- **Place one primary action in action bar:** Use the secondary-actions slot for the page's most important action.
+- **Use aside for supplementary content:** Reserve the aside slot for navigation, contextual help, or supporting information.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+The secondary-actions slot supports only a single button element. Multiple actions in the action bar aren't supported and should be handled within the main content area.
+`,
+    },
+  ],
   related: [],
 };
 

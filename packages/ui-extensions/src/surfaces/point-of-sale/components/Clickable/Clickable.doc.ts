@@ -4,7 +4,9 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Clickable',
   description:
     'The `Clickable` component makes any content interactive to user interactions. Use it to add click interactions to non-interactive elements while maintaining full control over their visual presentation.' +
-    "\n\nThis component provides a flexible way to wrap any content and make it respond to user interactions. Unlike buttons, it doesn't impose visual styling, allowing you to create custom interactive elements that match your design requirements while ensuring proper event handling.",
+    "\n\nThis component provides a flexible way to wrap any content and make it respond to user interactions. Unlike buttons, it doesn't impose visual styling, allowing you to create custom interactive elements that match your design requirements while ensuring proper event handling." +
+    "\n\n`Clickable` provides built-in `onClick` feedback, but because it doesn't impose visual styling, you must implement focus indicators and other visual cues yourself." +
+    '\n\nWhen disabled, child elements can still receive focus and be interacted with. Be careful when using nested interactive elements within `Clickable` components to avoid event propagation conflicts and unexpected user experiences.',
   thumbnail: 'clickable-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -24,27 +26,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Actions',
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent:
-        '- **Ensure sufficient hit area:** Provide enough space around clickable elements for easy tap targets, especially on touch devices.\n' +
-        "- **Use for custom interactive elements:** Reserve `Clickable` for scenarios where `Button` styling isn't appropriate.\n" +
-        '- **Provide visual feedback:** Ensure wrapped content shows clear visual feedback on interaction through styling or state changes.\n' +
-        '- **Use command system when appropriate:** Use `commandFor` and `command` to control modals and overlays declaratively rather than through manual state management.',
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent:
-        "- `Clickable` doesn't provide built-in visual styling—you must design and implement all visual feedback and states for wrapped content.\n" +
-        "- The component doesn't automatically handle keyboard navigation for complex interactive patterns—implement additional keyboard handlers if needed.\n" +
-        '- Nested clickable elements can create confusing interactions—avoid placing clickable content inside other clickable containers.',
-    },
-  ],
   defaultExample: {
     image: 'clickable-default.png',
     description:
@@ -59,6 +40,26 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Implement visual feedback:** Since \`Clickable\` has no built-in styling, add focus indicators and active states to show interactivity.
+- **Wrap non-interactive elements:** Use \`Clickable\` for text, images, or icons. Avoid wrapping components with built-in interactions.
+- **Handle disabled state carefully:** When \`disabled\`, child elements can still receive focus. Provide visual feedback for the non-interactive state.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+The component doesn't automatically provide keyboard navigation support beyond basic click functionality.
+`,
+    },
+  ],
   related: [],
 };
 
