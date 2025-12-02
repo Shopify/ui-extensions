@@ -27,19 +27,20 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent:
-        '- **Handle scan events reactively:** Use the `subscribe` methods to automatically process scan events as they occur.\n' +
-        '- **Validate scanned data appropriately:** Validate scanned data before processing, implementing proper error handling for invalid codes, unsupported formats, or scanning errors.\n' +
-        '- **Provide clear scanning feedback:** Give users clear feedback about scan results, including success confirmations, error messages, and guidance when scans fail or produce invalid data.\n' +
-        '- **Adapt to available scanner sources:** Check available scanner sources and adapt your interface accordingly.',
+      sectionContent: `
+- **Handle scan events reactively:** Use \`subscribe\` methods to process scan events as they occur for immediate feedback.
+- **Validate scanned data:** Validate before processing and handle invalid codes, unsupported formats, or errors.
+- **Provide clear feedback:** Show success confirmations, error messages, and guidance when scans fail.
+- **Adapt to available sources:** Check available scanner sources and provide alternatives when preferred methods aren't available.
+- **Handle scan data processing:** Scan data processing is reactive and requires proper subscription management to avoid memory leaks or unexpected behavior when components unmount.
+`,
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.
-- Scan data processing is reactive and requires proper subscription management to avoid memory leaks or unexpected behavior when components unmount.
+The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.
 `,
     },
   ],

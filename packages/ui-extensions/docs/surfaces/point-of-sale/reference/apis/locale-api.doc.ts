@@ -32,14 +32,6 @@ const data: ReferenceEntityTemplateSchema = {
         '- **Cache localized content:** Consider caching translated content and locale-specific formatting to improve performance, but ensure you invalidate caches when locale changes occur through subscription updates.\n' +
         '- **Provide fallback locale handling:** Implement fallback behavior for unsupported locales or when localization resources are unavailable, defaulting to a supported language like English.',
     },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-Locale changes are detected through the subscription mechanism, but the API doesn't provide historical locale information or change timestamps.
-`,
-    },
   ],
   examples: {
     description:

@@ -26,19 +26,20 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent:
-        '- **Write clear, concise messages:** Keep toast content brief and actionable since users have limited time to read the message before it disappears automatically.\n' +
-        '- **Use appropriate timing:** Choose duration values that give users enough time to read the message without keeping notifications visible longer than necessary.\n' +
-        '- **Provide meaningful feedback:** Use toast messages to confirm successful actions, explain errors clearly, or communicate important status changes that users need to know about.\n' +
-        '- **Avoid overuse:** Reserve toast notifications for important feedback and avoid showing multiple toasts simultaneously, as this can overwhelm users and reduce the effectiveness of the notifications.',
+      sectionContent: `
+- **Write clear, concise messages:** Keep content brief since toasts disappear automatically.
+- **Use appropriate timing:** Choose durations that give users enough time to read without keeping visible too long.
+- **Provide meaningful feedback:** Use toasts to confirm actions, explain errors, or communicate status changes.
+- **Avoid overuse:** Reserve for important feedback. Don't show multiple toasts simultaneously.
+- **Handle multiple toast messages:** Multiple toast messages may overlap or interfere with each other if shown in rapid succession. Consider queuing or spacing out notifications appropriately.
+`,
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Multiple toast messages may overlap or interfere with each other if shown in rapid succession. Consider queuing or spacing out notifications appropriately.
-- Toast content is limited to plain text and can't include rich formatting, links, or interactive elements.
+Toast content is limited to plain text and can't include rich formatting, links, or interactive elements.
 `,
     },
   ],

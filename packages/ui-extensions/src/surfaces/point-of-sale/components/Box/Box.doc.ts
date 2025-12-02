@@ -35,7 +35,6 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Box is a layout container and doesn't provide interactive functionality—use it in combination with interactive components like [\`Button\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/button) or [\`Clickable\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/clickable) for user interactions.
 - Padding values are limited to the predefined design system scale—custom pixel values for padding aren't supported to maintain design consistency.
 - Box doesn't provide scrolling capabilities for overflow content—use [\`ScrollBox\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/layout-and-structure/scrollbox) when content might exceed container dimensions.
 `,

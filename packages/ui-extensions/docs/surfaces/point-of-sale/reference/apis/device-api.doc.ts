@@ -32,14 +32,6 @@ const data: ReferenceEntityTemplateSchema = {
         '- **Cache device information appropriately:** Consider caching device information after the initial query to avoid repeated async calls, but ensure you handle cases where device characteristics might change during the session.\n' +
         '- **Provide device-appropriate experiences:** Design different user experiences for tablets versus other devices, taking advantage of larger screens while ensuring functionality works across all supported device types.',
     },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-Device information queries are asynchronous and may take time to resolve, so always handle the Promise-based responses appropriately in your extension logic.
-`,
-    },
   ],
   examples: {
     description:
@@ -67,7 +59,7 @@ Device information queries are asynchronous and may take time to resolve, so alw
           'name',
         ),
         description:
-          'Access the friendly name of the current POS device. This example shows how to use `shopify.device.name` to retrieve the device name configured in POS settings. This is useful for device identification, multi-device workflows, or displaying location-specific information.',
+          'Retrieve the name of the current POS device. This example shows how to use `shopify.device.name` to get the device name configured in POS settings. This is useful for device identification, multi-device workflows, or displaying location-specific information.',
       },
     ],
   },

@@ -39,8 +39,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Cart operations can only be performed when the cart is in an editable state—check \`cart.editable\` before attempting modifications.
-- Cart operations may fail due to business rules, inventory constraints, oversell protection, or validation errors—always implement appropriate error handling.
+Cart operations may fail due to business rules, inventory constraints, oversell protection, or validation errors—always implement appropriate error handling.
 `,
     },
   ],
