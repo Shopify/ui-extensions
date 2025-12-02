@@ -44,7 +44,6 @@ const data: ReferenceEntityTemplateSchema = {
 `,
     },
   ],
-  related: [],
   examples: {
     description:
       'Learn how to store and retrieve persistent data that persists across sessions.',

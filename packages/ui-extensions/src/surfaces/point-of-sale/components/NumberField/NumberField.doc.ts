@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'NumberField',
   description:
-    'The `NumberField` component captures numeric input with built-in validation. Use it to collect quantity, price, or other numeric information with optional `stepper` controls.' +
+    "The `NumberField` component captures numeric input. Use it to collect quantity, price, or other numeric information with optional `stepper` control. Stepper controls restrict which properties are available—`label`, `details`, `placeholder`, `error`, `required`, and `inputMode` aren't supported. Choose your control type based on which properties your implementation requires." +
     '\n\nThe component includes built-in number validation, optional min/max constraints, and step increments to ensure accurate numeric data entry. It supports various number formats including integers and decimals, with validation feedback to prevent entry errors during high-volume retail operations.',
   thumbnail: 'number-field-thumbnail.png',
   isVisualComponent: true,
@@ -30,26 +30,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Polaris web components',
   subCategory: 'Forms',
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent:
-        '- **Choose appropriate controls:** Use `stepper` for quantities or small adjustments. Use `none` for prices or large values where steppers are impractical.\n' +
-        '- **Select the right input mode:** Use `decimal` for prices and measurements. Use `numeric` for quantities and counts.\n' +
-        '- **Explain constraints in details:** Use `details` to clarify valid ranges or formatting, like "Enter a quantity between 1 and 999."',
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent:
-        "- `NumberField` provides numeric input but doesn't enforce `min`/`max` constraints for keyboard input—you must implement validation logic to enforce bounds and display appropriate errors.\n" +
-        '- The component handles numeric input and basic format validation, but specialized number formatting like currency symbols or thousand separators requires additional formatting logic.\n' +
-        '- Stepper controls work best for small ranges and adjustments—they may not be practical for large numeric ranges or precise decimal entry.',
-    },
-  ],
   defaultExample: {
     image: 'number-field-default.png',
     description:
@@ -64,6 +44,18 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Choose appropriate controls:** Use \`stepper\` for quantities or small adjustments. Use \`none\` for prices or large values where steppers are impractical.
+- **Select the right input mode:** Use \`decimal\` for prices and measurements. Use \`numeric\` for quantities and counts.
+- **Explain constraints in details:** Use \`details\` to clarify valid ranges or formatting, like "Enter a quantity between 1 and 999."
+`,
+    },
+  ],
   related: [],
   examples: {
     description:
