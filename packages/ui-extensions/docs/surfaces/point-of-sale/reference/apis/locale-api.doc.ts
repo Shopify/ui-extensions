@@ -32,14 +32,6 @@ const data: ReferenceEntityTemplateSchema = {
 - **Provide fallback handling:** Implement fallback behavior for unsupported locales, defaulting to a supported language like English.
 `,
     },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-Locale changes are detected through the subscription mechanism, but the API doesn't provide historical locale information or change timestamps.
-`,
-    },
   ],
   related: [],
   examples: {

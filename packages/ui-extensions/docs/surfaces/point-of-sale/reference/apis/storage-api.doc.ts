@@ -39,8 +39,6 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       sectionContent: `
 - POS UI extensions can store up to a maximum of 100 entries.
-- The maximum key size is ~1 KB and the maximum value size is ~1 MB.
-- Data persists even when extension targets are disabled or removed.
 - Stored extension data is automatically cleared after 30 days of inactivity.
 `,
     },

@@ -4,7 +4,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Icon',
   description:
     'The `Icon` component displays standardized visual symbols from the POS catalog to represent actions, statuses, or categories consistently. Use icons to enhance navigation or provide visual context alongside text in POS interfaces.' +
-    '\n\nIcons help merchants quickly understand interface elements and actions without relying solely on text labels. Icons are optimized for readability at standard sizes and automatically scale to maintain visual consistency across different screen densities and device types.',
+    '\n\nIcons help merchants quickly understand interface elements and actions without relying solely on text labels. Icons are optimized for readability at standard sizes and automatically scale to maintain visual consistency across different screen densities and device types.' +
+    "\n\nIcons are purely decorative and don't support click events or interactive behaviors—wrap them in [`Button`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/button) or [`Clickable`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/clickable) components for interactive functionality.",
   thumbnail: 'icon-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -50,9 +51,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Icons are purely decorative and don't support click events or interactive behaviors—wrap them in [\`Button\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/button) or [\`Clickable\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/clickable) components for interactive functionality.
-- The available icon set is predefined and limited to POS-specific symbols—custom icons or external icon libraries aren't supported.
-- Icon appearance and styling are controlled by the POS design system—custom colors, styles, or modifications beyond the provided properties are not available.
+The available icon set is predefined and limited to POS-specific symbols—custom icons or external icon libraries aren't supported.
 `,
     },
   ],

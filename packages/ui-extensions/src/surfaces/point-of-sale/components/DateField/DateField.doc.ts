@@ -5,7 +5,8 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'The `DateField` component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.' +
     '\n\n`DateField` components support both manual text entry and picker selection, giving merchants flexibility to choose their preferred input method based on personal preference and specific date entry scenarios.' +
-    '\n\nFor visual calendar-based selection, consider [`DatePicker`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker). For space-constrained layouts with scrolling date selection, use [`DateSpinner`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner).',
+    '\n\nFor visual calendar-based selection, consider [`DatePicker`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker). For space-constrained layouts with scrolling date selection, use [`DateSpinner`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner).' +
+    '\n\n> **Note:** `DateField` accepts date values in ISO 8601 format (`YYYY-MM-DD`)—other date formats require conversion before setting the value property.',
   thumbnail: 'date-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -55,9 +56,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- \`DateField\` accepts date values in ISO 8601 format (\`YYYY-MM-DD\`)—other date formats require conversion before setting the value property.
-- Validation occurs when the user finishes editing rather than on every keystroke—invalid dates are only flagged after blur, which may delay error feedback.
-- The component provides text-based date input—for calendar-style date selection, use the [\`DatePicker\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) component which offers visual date selection interface.
+Validation occurs when the user finishes editing rather than on every keystroke—invalid dates are only flagged after blur, which may delay error feedback.
 `,
     },
   ],

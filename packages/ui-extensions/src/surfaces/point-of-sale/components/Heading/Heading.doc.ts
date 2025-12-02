@@ -51,7 +51,6 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `
 - Heading levels are automatically determined by nesting within [\`Section\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/layout-and-structure/section) components—manual heading level control is not available to ensure consistent document structure.
 - The component doesn't support rich text formatting within the heading content—use plain text or simple inline elements for heading content.
-- Visual styling is controlled by the POS design system and heading level—custom typography styles beyond the available properties aren't supported.
 `,
     },
   ],
