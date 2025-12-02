@@ -4,7 +4,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Icon',
   description:
     'The `Icon` component displays standardized visual symbols from the POS catalog to represent actions, statuses, or categories consistently. Use icons to enhance navigation or provide visual context alongside text in POS interfaces.' +
-    '\n\nIcons help merchants quickly understand interface elements and actions without relying solely on text labels. Icons are optimized for readability at standard sizes and automatically scale to maintain visual consistency across different screen densities and device types.',
+    '\n\n To use icons to create interactive UI elements, wrap them in [\`Button\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/button) or [\`Clickable\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/clickable) components. Icons on their behave purely as images and don\'t support click events or interactive behaviors.' +
+    '\n\n To maintain a consistent visual apperance, icon styling is controlled by the POS design system. Custom styling and external icon libraries aren\'t supported. Icons are optimized for readability at standard sizes and automatically scale to maintain visual consistency across different screen densities and device types.',
   thumbnail: 'icon-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -45,16 +46,7 @@ const data: ReferenceEntityTemplateSchema = {
 - **Use color for hierarchy:** Use \`subdued\` for secondary elements, \`base\` for standard visibility, \`strong\` for emphasis.
 `,
     },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-- Icons are purely decorative and don't support click events or interactive behaviors—wrap them in [\`Button\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/button) or [\`Clickable\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/clickable) components for interactive functionality.
-- The available icon set is predefined and limited to POS-specific symbols—custom icons or external icon libraries aren't supported.
-- Icon appearance and styling are controlled by the POS design system—custom colors, styles, or modifications beyond the provided properties are not available.
-`,
-    },
+    
   ],
   related: [],
 };

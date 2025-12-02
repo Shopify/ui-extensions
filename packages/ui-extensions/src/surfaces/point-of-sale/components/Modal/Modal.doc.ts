@@ -4,7 +4,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Modal',
   description:
     'The `Modal` component displays content in an overlay that requires merchant attention. Use modals to present critical information, confirmations, or focused tasks while maintaining page context.' +
-    '\n\nModals block interaction with the underlying interface until the merchant resolves the modal content. The component maintains focus within the modal boundary and returns focus to the trigger element on close, ensuring keyboard navigation remains predictable throughout the modal lifecycle.',
+    '\n\nModals block interaction with the underlying interface until the merchant resolves the modal content. The component maintains focus within the modal boundary and returns focus to the trigger element on close, ensuring keyboard navigation remains predictable throughout the modal lifecycle.' +
+    '\n\nModals don\'t automatically handle state management or persistence, so manage visibility and lifecycle programmatically through events and commands.',
   thumbnail: 'modal-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -63,7 +64,6 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       sectionContent: `
 - Multiple modals can't be displayed simultaneously—showing a new modal while another is visible may cause unexpected behavior or poor user experience.
-- Modal visibility and lifecycle must be managed programmatically through events and commands—they don't automatically handle state management or persistence.
 `,
     },
   ],

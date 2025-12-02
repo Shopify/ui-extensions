@@ -3,8 +3,9 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'DateSpinner',
   description:
-    'The `DateSpinner` component enables merchants to select a specific date using a spinner interface with scrollable columns for month, day, and year. Use it to provide compact date selection in constrained spaces.' +
-    '\n\n`DateSpinner` offers an alternative to [calendar-style pickers](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) when space is limited or when users prefer scrolling through date values. The spinner interface allows merchants to select dates by scrolling through separate columns for month, day, and year, providing a compact and intuitive way to select dates in constrained layouts.',
+    'The `DateSpinner` component enables merchants to select a specific date using a spinner interface with scrollable columns for month, day, and year. Use it to provide compact date selection in constrained spaces. \`DateSpinner\` uses ISO 8601 date format (\`YYYY-MM-DD\`) only. Other date formats require conversion before setting the value property.' +
+    '\n\n`DateSpinner` offers an alternative to [calendar-style pickers](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) when space is limited or when users prefer scrolling through date values. The spinner interface allows merchants to select dates by scrolling through separate columns for month, day, and year, providing a compact and intuitive way to select dates in constrained layouts.' +
+    '\`DateSpinner\` doesn\'t include field labels, help text, or error messaging. Combine the component with other UI elements or text components to provide complete form field experiences.',
   thumbnail: 'date-spinner-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -49,16 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
 - **Provide interaction cues:** Consider labels or instructions to help first-time users understand the scrollable column interface.
 `,
     },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-- \`DateSpinner\` uses ISO 8601 date format (\`YYYY-MM-DD\`) only—other date formats require conversion before setting the value property.
-- The component provides spinner-based date selection exclusively—for calendar-style visual selection with month context, use the [\`DatePicker\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) component instead.
-- \`DateSpinner\` doesn't include field labels, help text, or error messaging—combine with other UI elements or text components to provide complete form field experiences.
-`,
-    },
+    
   ],
   related: [],
   examples: {

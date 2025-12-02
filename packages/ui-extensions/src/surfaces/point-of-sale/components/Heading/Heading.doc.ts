@@ -3,9 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Heading',
   description:
-    'The `Heading` component renders hierarchical titles to communicate the structure and organization of page content. Heading levels adjust automatically based on nesting within parent [`Section`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/layout-and-structure/section) components, ensuring a meaningful page outline.' +
-    '\n\nUse headings to create clear information hierarchy and help users navigate complex interfaces efficiently.' +
-    '\n\n`Heading` components provide consistent typographic scaling that maintains visual hierarchy while ensuring headings remain readable at all levels, even when deeply nested within multiple [`Section`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/layout-and-structure/section) components.',
+    'The `Heading` component renders hierarchical titles to communicate the structure and organization of page content and help users navigate complex interfaces. Heading levels adjust automatically based on nesting within parent [`Section`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/layout-and-structure/section) components, ensuring a meaningful page outline. Use plain text or simple inline elements only for heading content; rich text format isn\'t supported.' + 
+    '\n\nThe styling of`Heading` components is controlled by the POS design system. This provides consistent typographic scaling that maintains visual hierarchy while ensuring headings remain readable at all levels, even when deeply nested within multiple [`Section`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/layout-and-structure/section) components. ',
   thumbnail: 'heading-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -44,16 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
 - **Keep text concise:** Headings don't truncate, so keep them brief enough to display across different screen sizes.
 `,
     },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-- Heading levels are automatically determined by nesting within [\`Section\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/layout-and-structure/section) components—manual heading level control is not available to ensure consistent document structure.
-- The component doesn't support rich text formatting within the heading content—use plain text or simple inline elements for heading content.
-- Visual styling is controlled by the POS design system and heading level—custom typography styles beyond the available properties aren't supported.
-`,
-    },
+    
   ],
   related: [],
 };

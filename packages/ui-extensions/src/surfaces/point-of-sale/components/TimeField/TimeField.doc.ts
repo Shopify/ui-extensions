@@ -4,8 +4,9 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'TimeField',
   description:
     'The `TimeField` component captures time input with a consistent interface for time selection and validation. Use it to collect time information in scheduling, booking, or data entry workflows.' +
-    '\n\nThe component supports both 12-hour and 24-hour time formats based on locale settings, with built-in validation to ensure valid time entries. It includes features like time picker integration, keyboard shortcuts, and formatted display to streamline time entry for scheduling, appointment booking, and time-sensitive operations in retail environments.' +
-    '\n\n`TimeField` components respects merchant locale settings for default time format preferences while allowing manual override for specific use cases that require alternative formats.',
+    '\n\nThe component supports both 12-hour and 24-hour time formats based on locale settings. It includes features like time picker integration, keyboard shortcuts, and formatted display to streamline time entry for scheduling, appointment booking, and time-sensitive operations in retail environments.' +
+    '\n\n`TimeField` components respects merchant locale settings for default time format preferences while allowing manual override for specific use cases that require alternative formats.' +
+    '\n\n`TimeField` provides only text-based time input. For visual time selection with clock or spinner interfaces, use the [\`TimePicker\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/timepicker) component which offers interactive time selection.',
   thumbnail: 'time-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -49,16 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
 - **Explain time constraints:** Use \`details\` to clarify requirements like "Business hours only (09:00-17:00)" or "Must be a future time."
 `,
     },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-- \`TimeField\` accepts time values in 24-hour \`HH:mm:ss\` format only—12-hour times or other formats require conversion before setting the value property.
-- The component provides text-based time input—for visual time selection with clock or spinner interfaces, use the [\`TimePicker\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/timepicker) component which offers interactive time selection.
-- Validation occurs when the user finishes editing rather than on every keystroke—invalid times are only flagged after blur, which may delay error feedback.
-`,
-    },
+    
   ],
   related: [],
   examples: {

@@ -3,8 +3,9 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextField',
   description:
-    'The `TextField` component captures single-line text input. Use it to collect short, free-form information in forms and data entry workflows.' +
-    '\n\nThe component supports various input configurations including placeholders, character limits, and validation. It includes built-in support for labels, helper text, and error states to guide merchants through data entry, ensuring accurate and efficient information capture across different retail scenarios.',
+    'The `TextField` component captures single-line text input. Use it to collect short, free-form information in forms and data entry workflows. For multi-line text entry, use the [\`TextArea\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/textarea) component.' +
+    '\n\nThe component supports various input configurations including placeholders, character limits, and validation. It includes built-in support for labels, helper text, and error states to guide merchants through data entry, ensuring accurate and efficient information capture across different retail scenarios.' +
+    '\n\nNote that the \`required\` property adds semantic meaning only—it doesn\'t trigger automatic error display or validation, so you must implement validation logic manually.',
   thumbnail: 'text-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -60,8 +61,6 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- \`TextField\` provides single-line text input only—multi-line text entry requires the [\`TextArea\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/textarea) component.
-- The \`required\` property adds semantic meaning only—it doesn't trigger automatic error display or validation, so you must implement validation logic manually.
 - The \`accessory\` slot supports only [\`Button\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/button) and [\`Clickable\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/clickable) components with text content only—other component types or complex layouts can't be used for field accessories.
 `,
     },

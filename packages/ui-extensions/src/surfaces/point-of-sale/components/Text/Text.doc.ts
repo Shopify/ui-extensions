@@ -51,7 +51,6 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Text styling is controlled by the POS design system through the provided properties—custom font families, sizes, or styling beyond the available options aren't supported.
 - Complex rich text formatting isn't supported—use multiple \`Text\` components or nested text elements for varied formatting needs.
 `,
     },

@@ -4,7 +4,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Section',
   description:
     'The `Section` component groups related content into clearly-defined thematic areas. Sections have contextual heading levels to maintain a meaningful page structure.' +
-    '\n\nUse sections to organize content logically and provide clear navigation landmarks. The component manages heading levels to ensure nested sections maintain proper semantic structure.',
+    '\n\nUse sections to organize content logically and provide clear navigation landmarks. The component manages heading levels automatically to ensure nested sections maintain proper semantic structure.' +
+    '\n\nTo maintain clean, focused interfaces that don\'t overwhelm users, only one secondary action button is supported per section.',
   thumbnail: 'section-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -49,16 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
 - **Place relevant secondary actions:** Use the secondary-actions slot for actions that apply to the entire section, like "Edit Settings" or "Add Item."
 `,
     },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-- Section heading levels are automatically determined by nesting depth—manual heading level control is not available to ensure consistent document structure.
-- Only one secondary action button is supported per section to maintain clean, focused interfaces that don't overwhelm users.
-- The component's visual styling and spacing are controlled by the POS design system—custom section styling beyond content organization is not supported.
-`,
-    },
+    
   ],
   related: [],
 };
