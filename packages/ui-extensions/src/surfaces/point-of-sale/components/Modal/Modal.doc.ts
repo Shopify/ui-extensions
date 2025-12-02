@@ -5,7 +5,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'The `Modal` component displays content in an overlay that requires merchant attention. Use modals to present critical information, confirmations, or focused tasks while maintaining page context.' +
     '\n\nModals block interaction with the underlying interface until the merchant resolves the modal content. The component maintains focus within the modal boundary and returns focus to the trigger element on close, ensuring keyboard navigation remains predictable throughout the modal lifecycle.' +
-    '\n\nModals don\'t automatically handle state management or persistence, so manage visibility and lifecycle programmatically through events and commands.',
+    "\n\nModals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through events and commands.",
   thumbnail: 'modal-thumbnail.png',
   isVisualComponent: true,
   type: '',

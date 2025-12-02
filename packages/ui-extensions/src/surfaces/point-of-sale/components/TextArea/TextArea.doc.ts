@@ -5,7 +5,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'The `TextArea` component captures plain text content with a multi-line, resizable text input area. Use it to collect descriptions, notes, comments, or other extended text input in forms and data entry workflows.' +
     '\n\nThe component provides a multi-line text input area that accommodates longer content. It supports validation and multi-line formatting, making it ideal for capturing detailed information such as order notes, product descriptions, or customer feedback that requires more than single-line input.' +
-    '\n\nNote that the \`required\` property adds semantic meaning only. It doesn\'t trigger automatic error display or validation, so you must implement validation logic manually.',
+    "\n\nNote that the `required` property adds semantic meaning only. It doesn't trigger automatic error display or validation, so you must implement validation logic manually.",
   thumbnail: 'text-area-thumbnail.png',
   isVisualComponent: true,
   type: '',

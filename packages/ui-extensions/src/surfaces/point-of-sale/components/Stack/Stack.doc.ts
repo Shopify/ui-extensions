@@ -5,8 +5,8 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'The `Stack` component organizes elements horizontally or vertically along the block or inline axis. Use it to structure layouts, group related components, or control spacing between elements with flexible alignment options.' +
     '\n\nThe component simplifies layout creation by automatically managing spacing between child elements through gap properties, eliminating the need for manual margin management. It supports both horizontal and vertical arrangements, flexible alignment options, and wrapping behavior, making it the foundation for building consistent, responsive layouts throughout POS extensions.' +
-    '\n\nThe spacing of `Stack` components\' gap values automatically adjust based on screen size. This ensures layouts remain visually balanced and maintain proper element separation across different devices.' +
-    '\n\nComplex grid-like layouts may require multiple nested \`Stack\` components or alternative layout approaches for optimal results.',
+    "\n\nThe spacing of `Stack` components' gap values automatically adjust based on screen size. This ensures layouts remain visually balanced and maintain proper element separation across different devices." +
+    '\n\nComplex grid-like layouts may require multiple nested `Stack` components or alternative layout approaches for optimal results.',
   thumbnail: 'stack-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -47,7 +47,6 @@ const data: ReferenceEntityTemplateSchema = {
 - **Use gap for spacing control:** Use \`gap\` for uniform spacing, \`rowGap\` for block axis, \`columnGap\` for inline axis.
 `,
     },
-    
   ],
   related: [],
 };

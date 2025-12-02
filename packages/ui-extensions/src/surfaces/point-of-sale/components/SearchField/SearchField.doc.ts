@@ -6,7 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
     'The `SearchField` component captures search terms using a single-line input field. Use it to enable search and filtering within POS interfaces.' +
     '\n\nThe component includes built-in debouncing to optimize performance during real-time search operations and supports features like autocomplete suggestions and search history. It provides clear visual feedback for search states including loading, results found, and no results, helping merchants quickly locate products, customers, or orders in large catalogs.' +
     '\n\n`SearchField` components clear search queries with a single tap on the clear button while maintaining search history for quick access to recent searches, balancing convenience with data management.' +
-    '\n\n\`SearchField\` is optimized for inline search and filtering. For additional search features like sorting and search history use a custom implementation.',
+    '\n\n`SearchField` is optimized for inline search and filtering. For additional search features like sorting and search history use a custom implementation.',
   thumbnail: 'search-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -52,7 +52,6 @@ const data: ReferenceEntityTemplateSchema = {
 - **Handle empty values:** When the field is cleared, reset filters or show all items appropriately.
 `,
     },
-    
   ],
   related: [],
   examples: {

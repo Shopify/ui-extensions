@@ -5,7 +5,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'The `Section` component groups related content into clearly-defined thematic areas. Sections have contextual heading levels to maintain a meaningful page structure.' +
     '\n\nUse sections to organize content logically and provide clear navigation landmarks. The component manages heading levels automatically to ensure nested sections maintain proper semantic structure.' +
-    '\n\nTo maintain clean, focused interfaces that don\'t overwhelm users, only one secondary action button is supported per section.',
+    "\n\nTo maintain clean, focused interfaces that don't overwhelm users, only one secondary action button is supported per section.",
   thumbnail: 'section-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -50,7 +50,6 @@ const data: ReferenceEntityTemplateSchema = {
 - **Place relevant secondary actions:** Use the secondary-actions slot for actions that apply to the entire section, like "Edit Settings" or "Add Item."
 `,
     },
-    
   ],
   related: [],
 };

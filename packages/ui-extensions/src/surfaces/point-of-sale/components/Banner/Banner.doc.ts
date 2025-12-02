@@ -5,7 +5,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'The `Banner` component highlights important information or required actions prominently within the POS interface. Use banners to communicate critical updates, warnings, informational messages, or success notifications that require merchant attention in a persistent but non-interruptive way.' +
     '\n\nThe component provides persistent visibility for important messages while remaining non-intrusive to the main workflow, with support for dismissible and non-dismissible states. It includes automatic color coding based on message severity and integrates with the POS design system to maintain visual consistency across different alert types and use cases.' +
-    "\n\nThe \`Banner\` component only accepts a \`heading\` property for text content and doesn't support body content. You can't place \`<s-text>\` or other text elements inside the banner as children.",
+    "\n\nThe `Banner` component only accepts a `heading` property for text content and doesn't support body content. You can't place `<s-text>` or other text elements inside the banner as children.",
   thumbnail: 'banner-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -53,7 +53,6 @@ const data: ReferenceEntityTemplateSchema = {
 - **Use for persistent messages:** Use banners for messages that need to persist. For temporary notifications, consider toast notifications.
 `,
     },
-    
   ],
   related: [],
 };
