@@ -4636,7 +4636,7 @@ interface Badge {
 }
 
 /**
- * The `Banner` component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The `Banner` component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/app-home/using-polaris-components#slots).
  */
 interface BannerSlots {
   /**
@@ -4775,7 +4775,7 @@ interface Box {
 }
 
 /**
- * The `Button` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `Button` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface ButtonEvents {
   /**
@@ -4865,7 +4865,7 @@ interface Choice {
 }
 
 /**
- * The `ChoiceList` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `ChoiceList` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface ChoiceListEvents {
   /**
@@ -4896,7 +4896,7 @@ interface ChoiceList {
 }
 
 /**
- * The `Clickable` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `Clickable` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface ClickableEvents {
   /**
@@ -4917,7 +4917,7 @@ interface Clickable {
 }
 
 /**
- * The `DateField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `DateField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface DateFieldEvents {
   /**
@@ -4968,7 +4968,7 @@ interface DateField {
 }
 
 /**
- * The `DatePicker` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `DatePicker` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface DatePickerEvents {
   /**
@@ -5003,7 +5003,7 @@ interface DatePicker {
 }
 
 /**
- * The `DateSpinner` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `DateSpinner` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface DateSpinnerEvents {
   /**
@@ -5053,7 +5053,7 @@ interface Divider {
 }
 
 /**
- * The `EmailField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `EmailField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface EmailFieldEvents {
   /**
@@ -5075,7 +5075,7 @@ interface EmailFieldEvents {
 }
 
 /**
- * The `EmailField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The `EmailField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/app-home/using-polaris-components#slots).
  */
 interface EmailFieldSlots {
   /**
@@ -5200,7 +5200,7 @@ interface Image {
 }
 
 /**
- * The `Modal` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `Modal` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface ModalEvents {
   /**
@@ -5214,7 +5214,7 @@ interface ModalEvents {
 }
 
 /**
- * The `Modal` component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The `Modal` component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/app-home/using-polaris-components#slots).
  */
 interface ModalSlots {
   /**
@@ -5239,7 +5239,7 @@ interface Modal {
 }
 
 /**
- * The `NumberField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `NumberField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface NumberFieldEvents {
   /**
@@ -5261,7 +5261,7 @@ interface NumberFieldEvents {
 }
 
 /**
- * The `NumberField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The `NumberField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/app-home/using-polaris-components#slots).
  */
 interface NumberFieldSlots {
   /**
@@ -5343,7 +5343,7 @@ interface NumberField {
 }
 
 /**
- * The `Page` component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The `Page` component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/app-home/using-polaris-components#slots).
  */
 interface PageSlots {
   /**
@@ -5374,7 +5374,7 @@ interface Page {
 }
 
 /**
- * The `PosBlock` component supports slots for additional content placement within the block. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The `PosBlock` component supports slots for additional content placement within the block. Learn more about [using slots](/docs/api/app-home/using-polaris-components#slots).
  */
 interface PosBlockSlots {
   /**
@@ -5504,7 +5504,7 @@ interface ScrollBox {
 }
 
 /**
- * The `SearchField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `SearchField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface SearchFieldEvents {
   /**
@@ -5547,7 +5547,7 @@ interface SearchField {
 }
 
 /**
- * The `Section` component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The `Section` component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/app-home/using-polaris-components#slots).
  */
 interface SectionSlots {
   /**
@@ -5753,7 +5753,7 @@ interface Text {
 }
 
 /**
- * The `TextArea` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `TextArea` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface TextAreaEvents {
   /**
@@ -5775,7 +5775,7 @@ interface TextAreaEvents {
 }
 
 /**
- * The `TextArea` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The `TextArea` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/app-home/using-polaris-components#slots).
  */
 interface TextAreaSlots {
   /**
@@ -5836,7 +5836,7 @@ interface TextArea {
 }
 
 /**
- * The `TextField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `TextField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface TextFieldEvents {
   /**
@@ -5858,7 +5858,7 @@ interface TextFieldEvents {
 }
 
 /**
- * The `TextField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The `TextField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/app-home/using-polaris-components#slots).
  */
 interface TextFieldSlots {
   /**
@@ -5955,7 +5955,7 @@ interface Tile {
 }
 
 /**
- * The `TimeField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `TimeField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface TimeFieldEvents {
   /**
@@ -6006,7 +6006,7 @@ interface TimeField {
 }
 
 /**
- * The `TimePicker` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The `TimePicker` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).
  */
 interface TimePickerEvents {
   /**

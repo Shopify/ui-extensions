@@ -25,7 +25,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The `PosBlock` component supports slots for additional content placement within the block. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The `PosBlock` component supports slots for additional content placement within the block. Learn more about [using slots](/docs/api/app-home/using-polaris-components#slots).',
       type: 'PosBlockSlots',
     },
   ],

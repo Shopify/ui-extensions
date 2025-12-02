@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'The `TimePicker` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The `TimePicker` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).',
       type: 'TimePickerEvents',
     },
   ],
