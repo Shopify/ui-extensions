@@ -49,8 +49,7 @@ const data: ReferenceEntityTemplateSchema = {
 - **Best for nearby dates:** Use when selecting dates close to the current date. For distant dates, [\`DatePicker\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) provides faster navigation.
 - **Provide interaction cues:** Consider labels or instructions to help first-time users understand the scrollable column interface.
 `,
-    },
-    
+    },    
   ],
   related: [],
   examples: {

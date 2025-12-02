@@ -30,6 +30,7 @@ const data: ReferenceEntityTemplateSchema = {
 - **Use appropriate timing:** Choose durations that give users enough time to read without keeping visible too long.
 - **Provide meaningful feedback:** Use toasts to confirm actions, explain errors, or communicate status changes.
 - **Avoid overuse:** Reserve for important feedback. Don't show multiple toasts simultaneously.
+- **Handle multiple toast messages:** Multiple toast messages may overlap or interfere with each other if shown in rapid succession. Consider queuing or spacing out notifications appropriately.
 `,
     },
     {
@@ -37,8 +38,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Multiple toast messages may overlap or interfere with each other if shown in rapid succession. Consider queuing or spacing out notifications appropriately.
-- Toast content is limited to plain text and can't include rich formatting, links, or interactive elements.
+Toast content is limited to plain text and can't include rich formatting, links, or interactive elements.
 `,
     },
   ],

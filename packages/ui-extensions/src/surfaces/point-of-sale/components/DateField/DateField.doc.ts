@@ -50,7 +50,6 @@ const data: ReferenceEntityTemplateSchema = {
 - **Write actionable error messages:** Provide clear validation messages for invalid dates that help users correct their input.
 `,
     },
-    
   ],
   related: [],
   examples: {

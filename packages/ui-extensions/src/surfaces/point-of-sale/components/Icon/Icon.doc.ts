@@ -46,7 +46,6 @@ const data: ReferenceEntityTemplateSchema = {
 - **Use color for hierarchy:** Use \`subdued\` for secondary elements, \`base\` for standard visibility, \`strong\` for emphasis.
 `,
     },
-    
   ],
   related: [],
 };

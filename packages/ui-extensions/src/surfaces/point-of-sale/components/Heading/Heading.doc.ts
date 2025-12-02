@@ -43,7 +43,6 @@ const data: ReferenceEntityTemplateSchema = {
 - **Keep text concise:** Headings don't truncate, so keep them brief enough to display across different screen sizes.
 `,
     },
-    
   ],
   related: [],
 };

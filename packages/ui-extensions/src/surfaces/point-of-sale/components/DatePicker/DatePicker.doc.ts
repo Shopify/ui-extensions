@@ -49,8 +49,7 @@ const data: ReferenceEntityTemplateSchema = {
 - **Choose for calendar-based selection:** Use \`DatePicker\` when users benefit from seeing a calendar view, like selecting dates relative to today or needing weekday context. Use [\`DateSpinner\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner) for tight spaces or [\`DateField\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datefield) when users know the exact date.
 - **Provide adequate space:** Ensure sufficient spacing around the picker to avoid interfering with on-screen keyboards or other interactive elements.
 `,
-    },
-    
+    },    
   ],
   related: [],
   examples: {
