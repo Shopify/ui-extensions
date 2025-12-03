@@ -19,13 +19,13 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The `Modal` component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/app-home/using-polaris-components#slots).',
+        'The `Modal` component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ModalSlots',
     },
     {
       title: 'Events',
       description:
-        'The `Modal` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).',
+        'The `Modal` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ModalEvents',
     },
   ],

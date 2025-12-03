@@ -18,13 +18,13 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The `TextField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/app-home/using-polaris-components#slots).',
+        'The `TextField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TextFieldSlots',
     },
     {
       title: 'Events',
       description:
-        'The `TextField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-home/using-polaris-components#handling-events).',
+        'The `TextField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TextFieldEvents',
     },
   ],

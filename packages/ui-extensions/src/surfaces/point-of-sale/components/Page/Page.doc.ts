@@ -19,7 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The `Page` component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/app-home/using-polaris-components#slots).',
+        'The `Page` component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'PageSlots',
     },
   ],
