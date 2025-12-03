@@ -10,12 +10,14 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'VerticalSpacing',
-      description: '',
+      description:
+        'The spacing values for controlling vertical space between elements.',
       type: 'VerticalSpacing',
     },
     {
       title: 'HorizontalSpacing',
-      description: '',
+      description:
+        'The spacing values for controlling horizontal space between elements.',
       type: 'HorizontalSpacing',
     },
   ],
