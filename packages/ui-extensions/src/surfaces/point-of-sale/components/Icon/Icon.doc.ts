@@ -3,9 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Icon',
   description:
-    'The `Icon` component displays standardized visual symbols from the POS catalog to represent actions, statuses, or categories consistently. Use icons to enhance navigation or provide visual context alongside text in POS interfaces.' +
-    "\n\n To use icons to create interactive UI elements, wrap them in [`Button`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/button) or [`Clickable`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/clickable) components. Icons on their behave purely as images and don't support click events or interactive behaviors." +
-    "\n\n To maintain a consistent visual apperance, icon styling is controlled by the POS design system. Custom styling and external icon libraries aren't supported. Icons are optimized for readability at standard sizes and automatically scale to maintain visual consistency across different screen densities and device types.",
+    'The `Icon` component displays standardized visual symbols from the POS catalog to represent actions, statuses, or categories. Use icons to enhance navigation or provide visual context alongside text.' +
+    '\n\nFor interactive icons, wrap them in [`Button`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/button) or [`Clickable`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/clickable) components.',
   thumbnail: 'icon-thumbnail.png',
   isVisualComponent: true,
   type: '',

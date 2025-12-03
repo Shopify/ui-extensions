@@ -43,14 +43,14 @@ export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 declare const tagName = 's-badge';
 export interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
   /**
-   * Determines the visual appearance and semantic meaning of the badge. Available options:
-   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context. Typically applied when you want the system to determine the most appropriate styling.
-   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis. Commonly used for general status updates and standard information.
-   * - `'info'` - Blue styling for informational content and neutral updates. Commonly used for informational content that provides helpful context.
-   * - `'success'` - Green styling for positive states, completed actions, and successful operations. Commonly used for positive outcomes and successful processes.
-   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent. Commonly used for potential issues that require awareness.
-   * - `'warning'` - Orange styling for important notices that require merchant awareness. Commonly used for situations that need attention but aren't critical.
-   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action. Commonly used for urgent issues that need immediate merchant attention.
+   * Determines the visual appearance and semantic meaning of the badge. Badges rely on the tone system for semantic meaning, so using custom styling may not clearly convey meaning to merchants. Available options:
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context.
+   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis.
+   * - `'info'` - Blue styling for informational content and neutral updates.
+   * - `'success'` - Green styling for positive states, completed actions, and successful operations.
+   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent.
+   * - `'warning'` - Orange styling for important notices that require merchant awareness.
+   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action.
    *
    * @default 'auto'
    */

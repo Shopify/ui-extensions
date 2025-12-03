@@ -3,8 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TimePicker',
   description:
-    'The `TimePicker` component allows merchants to select a specific time using an interactive picker interface. This offers a more visual and touch-friendly alternative to [text-based time input](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/timefield), making time selection faster and more accurate.' +
-    '\n\n`TimePicker` provides the picker interface but requires external state management for the selected value. You must manage the selected time value in your application state and update it using the `onChange` callback.',
+    'The `TimePicker` component allows merchants to select times using an interactive picker interface. Use it when merchants benefit from visual time selection rather than typing exact times.' +
+    '\n\nFor direct text entry when merchants know the exact time, use [`TimeField`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/timefield).',
   thumbnail: 'time-spinner-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'time-spinner-default.png',
     description:
-      'Enable visual time selection using a `TimePicker` component with an interactive picker interface. This example shows a basic time picker for selecting hours and minutes.',
+      'Select times using a `TimePicker` component. This example shows a basic time picker for selecting hours and minutes.',
     codeblock: {
       title: 'Select times with a time picker',
       tabs: [

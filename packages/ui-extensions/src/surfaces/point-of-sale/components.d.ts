@@ -749,7 +749,7 @@ export interface BadgeProps extends GlobalProps {
    */
   children?: ComponentChildren;
   /**
-   * The semantic tone of the badge, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * The semantic tone of the badge, based on the intention of the information being conveyed. Affects color and styling to communicate meaning. Badges rely on the tone system for semantic meaning, so using custom styling may not clearly convey meaning to merchants.
    *
    * @default 'auto'
    */
@@ -781,7 +781,7 @@ export interface BadgeProps extends GlobalProps {
 }
 export interface BannerProps extends GlobalProps, ActionSlots {
   /**
-   * The title text displayed prominently at the top of the banner. Should be concise and clearly communicate the main message or purpose of the banner.
+   * The title text displayed prominently at the top of the banner. This is the only property for text content—body text content isn't supported. You can't place `<s-text>` or other text elements as children.
    *
    * @default ''
    */
@@ -1252,13 +1252,13 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   onClick?: (event: Event) => void;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
   disabled?: boolean;
   /**
-   * Indicates whether the button action is currently in progress. When `true`, displays a loading spinner or progress indicator and prevents additional clicks to avoid duplicate submissions. The button remains visually enabled but unresponsive to interaction. Set to `true` when starting an async operation (for example, API call, navigation) and back to `false` when the operation completes or fails. This provides user feedback during long-running operations and prevents race conditions from multiple rapid clicks.
+   * Indicates whether the button action is currently in progress. When `true`, replaces all button content with a loading spinner and prevents additional clicks to avoid duplicate submissions. The button remains visually enabled but unresponsive to interaction. Set to `true` when starting an async operation (for example, API call, navigation) and back to `false` when the operation completes or fails. This provides user feedback during long-running operations and prevents race conditions from multiple rapid clicks. Custom loading indicators or partial content updates aren't supported.
    *
    * @default false
    */
@@ -1341,7 +1341,7 @@ export interface ButtonProps extends GlobalProps, BaseClickableProps {
    */
   accessibilityLabel?: string;
   /**
-   * The child elements to render within this component.
+   * The child elements to render within this component. Button content must be plain text.
    */
   children?: ComponentChildren;
   /**
@@ -1391,7 +1391,7 @@ export interface BaseInputProps {
    */
   name?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction. When `true`, the field can't receive focus, be edited, or be interacted with. Disabled fields are visually dimmed, excluded from form submission, and announced as disabled to screen readers. Use when a field is temporarily unavailable due to application state, permissions, or dependencies on other fields.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -1586,7 +1586,7 @@ export interface BaseSelectableProps {
    */
   accessibilityLabel?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -1667,11 +1667,11 @@ export interface ChoiceListProps
    */
   multiple?: boolean;
   /**
-   * The child elements to render within this component.
+   * The child elements to render within this component. Within `ChoiceList`, use only `Choice` components as children. Other component types can't be used as options within the choice list.
    */
   children?: ComponentChildren;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -1700,7 +1700,7 @@ export interface ClickableProps
    */
   loading?: BaseClickableProps['loading'];
   /**
-   * Whether the element is disabled, preventing any user interaction.
+   * Whether the element is disabled, preventing user interaction. Use when temporarily unavailable due to application state, permissions, or dependencies. Child elements can still receive focus and be interacted with.
    */
   disabled?: BaseClickableProps['disabled'];
   /**
@@ -1928,7 +1928,7 @@ export interface DatePickerProps
    */
   defaultValue?: string;
   /**
-   * The currently selected date value in ISO date format (YYYY-MM-DD, for example, `"2024-05-15"`). An empty string means no date is selected. For date ranges, use comma-separated dates (for example, `"2024-05-15,2024-05-20"`).
+   * The currently selected date value in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DD`, for example, `"2024-05-15"`). An empty string means no date is selected. For date ranges, use comma-separated dates (for example, `"2024-05-15,2024-05-20"`). Other date formats require conversion before setting this property. The selection mode (`type` property) is inferred from the value format: single date for one value, multiple dates for comma-separated values without a range, and range for two comma-separated dates when `type` is set to 'range'.
    *
    * @default ""
    */
@@ -1952,7 +1952,6 @@ export interface DateFieldProps
       DatePickerProps,
       | 'view'
       | 'defaultView'
-      | 'value'
       | 'defaultValue'
       | 'allow'
       | 'disallow'
@@ -2002,7 +2001,7 @@ export interface DateSpinnerProps
    */
   onInput?: (event: Event) => void;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed. Date validation occurs when the user finishes editing (on blur), rather than on every keystroke.
    */
   onChange?: (event: Event) => void;
 }
@@ -2189,7 +2188,7 @@ export interface HeadingProps
     AccessibilityVisibilityProps,
     BlockTypographyProps {
   /**
-   * The child elements to render within this component.
+   * The child elements to render within this component. Use plain text or simple inline elements only for heading content. Rich text format isn't supported.
    */
   children?: ComponentChildren;
   /**
@@ -3296,7 +3295,7 @@ interface TileJSXProps
     'heading' | 'id' | 'itemCount' | 'tone' | 'subheading'
   > {
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -3812,15 +3811,15 @@ declare module 'preact' {
 declare const tagName$l = 's-badge';
 interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
   /**
-   * Determines the visual appearance and semantic meaning of the badge. Available options:
+   * Determines the visual appearance and semantic meaning of the badge. Badges rely on the tone system for semantic meaning, so using custom styling may not clearly convey meaning to merchants. Available options:
    *
-   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context. Use when you want the system to determine the most appropriate styling.
-   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis. Use for general status updates and standard information.
-   * - `'info'` - Blue styling for informational content and neutral updates. Use for informational content that provides helpful context.
-   * - `'success'` - Green styling for positive states, completed actions, and successful operations. Use for positive outcomes and successful processes.
-   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent. Use for potential issues that require awareness.
-   * - `'warning'` - Orange styling for important notices that require merchant awareness. Use for situations that need attention but aren't critical.
-   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action. Use for urgent issues that need immediate merchant attention.
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context.
+   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis.
+   * - `'info'` - Blue styling for informational content and neutral updates.
+   * - `'success'` - Green styling for positive states, completed actions, and successful operations.
+   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent.
+   * - `'warning'` - Orange styling for important notices that require merchant awareness.
+   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action.
    *
    * @default 'auto'
    */
@@ -4609,15 +4608,15 @@ export type {
 
 interface Badge {
   /**
-   * Determines the visual appearance and semantic meaning of the badge. Available options:
+   * Determines the visual appearance and semantic meaning of the badge. Badges rely on the tone system for semantic meaning, so using custom styling may not clearly convey meaning to merchants. Available options:
    *
-   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context. Use when you want the system to determine the most appropriate styling.
-   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis. Use for general status updates and standard information.
-   * - `'info'` - Blue styling for informational content and neutral updates. Use for informational content that provides helpful context.
-   * - `'success'` - Green styling for positive states, completed actions, and successful operations. Use for positive outcomes and successful processes.
-   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent. Use for potential issues that require awareness.
-   * - `'warning'` - Orange styling for important notices that require merchant awareness. Use for situations that need attention but aren't critical.
-   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action. Use for urgent issues that need immediate merchant attention.
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context.
+   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis.
+   * - `'info'` - Blue styling for informational content and neutral updates.
+   * - `'success'` - Green styling for positive states, completed actions, and successful operations.
+   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent.
+   * - `'warning'` - Orange styling for important notices that require merchant awareness.
+   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action.
    *
    * @default 'auto'
    */
@@ -4665,7 +4664,7 @@ interface Banner {
    */
   tone?: 'auto' | 'info' | 'success' | 'warning' | 'critical';
   /**
-   * The title text displayed prominently at the top of the banner. Should be concise and clearly communicate the main message or purpose of the banner.
+   * The title text displayed prominently at the top of the banner. This is the only property for text content—body text content isn't supported. You can't place `<s-text>` or other text elements as children.
    *
    * @default ''
    */
@@ -4823,7 +4822,7 @@ interface Button {
    */
   id?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -4847,11 +4846,11 @@ interface Choice {
    */
   id?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The unique value associated with this choice option. This value is used to identify the option and gets submitted with forms when selected. Use meaningful values like `"small"`, `"medium"`, or `"large"` rather than display text.
    */
   value?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -4911,7 +4910,7 @@ interface Clickable {
    */
   id?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    */
   disabled?: boolean;
 }
@@ -4944,7 +4943,7 @@ interface DateField {
    */
   id?: string;
   /**
-   * The content to use as the field label that describes the time information being requested.
+   * The content to use as the field label that describes the date information being requested.
    */
   label?: string;
   /**
@@ -4952,11 +4951,11 @@ interface DateField {
    */
   details?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The currently selected date value in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DD`, for example, `"2024-05-15"`). An empty string means no date is selected. Other date formats require conversion before setting this property. Validation occurs when the user finishes editing (on blur), rather than on every keystroke, so invalid dates are flagged after completing entry.
    */
   value?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -4995,7 +4994,7 @@ interface DatePicker {
    */
   id?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The currently selected date value in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DD`, for example, `"2024-05-15"`). An empty string means no date is selected. Other date formats require conversion before setting this property. Validation occurs when the user finishes editing (on blur), rather than on every keystroke, so invalid dates are flagged after completing entry.
    *
    * @default ""
    */
@@ -5030,7 +5029,7 @@ interface DateSpinner {
    */
   id?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The currently selected date value in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DD`, for example, `"2024-05-15"`). An empty string means no date is selected. Other date formats require conversion before setting this property. Validation occurs when the user finishes editing (on blur), rather than on every keystroke, so invalid dates are flagged after completing entry.
    *
    * @default ""
    */
@@ -5090,11 +5089,11 @@ interface EmailField {
    */
   id?: string;
   /**
-   * The content to use as the field label that describes the time information being requested.
+   * The content to use as the field label that describes the email information being requested.
    */
   label?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The current email address entered in the field. An empty string means no email is entered.
    */
   value?: string;
   /**
@@ -5102,7 +5101,7 @@ interface EmailField {
    */
   placeholder?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -5272,7 +5271,7 @@ interface NumberFieldSlots {
 
 interface NumberField {
   /**
-   * The content to use as the field label that describes the time information being requested.
+   * The content to use as the field label that describes the numeric information being requested.
    */
   label?: string;
   /**
@@ -5319,11 +5318,11 @@ interface NumberField {
    */
   id?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The current numeric value entered in the field. An empty string means no value is entered.
    */
   value?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -5531,7 +5530,7 @@ interface SearchField {
    */
   id?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -5541,7 +5540,7 @@ interface SearchField {
    */
   placeholder?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The current search query text entered in the field. An empty string means no search query is entered.
    */
   value?: string;
 }
@@ -5790,7 +5789,7 @@ interface TextArea {
    */
   id?: string;
   /**
-   * The content to use as the field label that describes the time information being requested.
+   * The content to use as the field label that describes the text information being requested.
    */
   label?: string;
   /**
@@ -5798,7 +5797,7 @@ interface TextArea {
    */
   details?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The current text content entered in the field. An empty string means no text is entered.
    */
   value?: string;
   /**
@@ -5806,7 +5805,7 @@ interface TextArea {
    */
   placeholder?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -5873,7 +5872,7 @@ interface TextField {
    */
   id?: string;
   /**
-   * The content to use as the field label that describes the time information being requested.
+   * The content to use as the field label that describes the text information being requested.
    */
   label?: string;
   /**
@@ -5881,7 +5880,7 @@ interface TextField {
    */
   details?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The current text content entered in the field. An empty string means no text is entered.
    */
   value?: string;
   /**
@@ -5889,7 +5888,7 @@ interface TextField {
    */
   placeholder?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -5921,7 +5920,7 @@ interface TileEvents {
 
 interface Tile {
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -5986,7 +5985,7 @@ interface TimeField {
    */
   label?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */

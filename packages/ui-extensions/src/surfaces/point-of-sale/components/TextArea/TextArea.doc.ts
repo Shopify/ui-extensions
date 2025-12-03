@@ -3,8 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextArea',
   description:
-    'The `TextArea` component captures plain text content with a multi-line, resizable text input area. Use it to collect descriptions, notes, comments, or other extended text input in forms and data entry workflows.' +
-    '\n\nThe component provides a multi-line text input area that accommodates longer content. It supports validation and multi-line formatting, making it ideal for capturing detailed information such as order notes, product descriptions, or customer feedback that requires more than single-line input.',
+    'The `TextArea` component captures multi-line text input. Use it to collect descriptions, notes, comments, or other extended text content.' +
+    '\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [`TextField`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/textfield).',
   thumbnail: 'text-area-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -33,7 +33,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'text-area-default.png',
     description:
-      'Capture multi-line text input using a `TextArea` component with resizable height. This example shows a basic text area with label for longer content entry.',
+      'Capture multi-line text input using a `TextArea` component. This example shows a basic text area with a label for extended content.',
     codeblock: {
       title: 'Capture multi-line text with a text area',
       tabs: [
