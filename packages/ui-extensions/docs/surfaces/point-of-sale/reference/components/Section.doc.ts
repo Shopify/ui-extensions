@@ -17,11 +17,6 @@ const data: ReferenceEntityTemplateSchema = {
         'Configure the following properties on the `Section` component.',
       type: 'SectionProps',
     },
-    {
-      title: 'SectionHeaderAction',
-      description: '',
-      type: 'SectionHeaderAction',
-    },
   ],
   category: 'UI components',
   subCategory: 'Layout and structure',
