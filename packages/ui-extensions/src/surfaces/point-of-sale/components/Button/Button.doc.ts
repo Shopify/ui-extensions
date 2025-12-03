@@ -4,9 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Button',
   description:
     'The `Button` component triggers actions or events, such as opening dialogs or navigating to other pages. Use `Button` to let merchants perform specific tasks or to initiate interactions throughout the POS interface.' +
-    "\n\n Button content must be plain text. If you nest components inside a button, the button extracts and displays only the text content from those components. For example, placing an `s-icon` inside a button won't display the icon, only its text content. Use of nested interactive components within buttons isn't supported." +
-    '\n\nButtons provide clear calls-to-action that guide merchants through workflows, enable form submissions, and trigger important operations. They support various visual styles, tones, and interaction patterns to communicate intent and hierarchy within the interface.' +
-    "\n\nLoading states replace all button content with a spinner. Custom loading indicators or partial content updates aren't supported.",
+    '\n\nButtons support various visual styles, tones, and interaction patterns to communicate intent and hierarchy within the interface.',
   thumbnail: 'button-thumbnail.png',
   isVisualComponent: true,
   type: '',

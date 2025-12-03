@@ -3,9 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Section',
   description:
-    'The `Section` component groups related content into clearly-defined thematic areas. Sections have contextual heading levels to maintain a meaningful page structure.' +
-    '\n\nUse sections to organize content logically and provide clear navigation landmarks. The component manages heading levels automatically to ensure nested sections maintain proper semantic structure.' +
-    "\n\nTo maintain clean, focused interfaces that don't overwhelm users, only one secondary action button is supported for each section.",
+    'The `Section` component groups related content into clearly-defined thematic areas. Use it to organize content and provide clear navigation landmarks.' +
+    '\n\nThe component manages heading levels automatically, ensuring nested sections maintain proper semantic structure.',
   thumbnail: 'section-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -28,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'section-default.png',
     description:
-      'Group related content using a `Section` component with automatic heading level management. This example shows a basic section with a heading and content area.',
+      'Group related content using a `Section` component. This example shows a basic section with a heading and content area.',
     codeblock: {
       title: 'Group related content into sections',
       tabs: [

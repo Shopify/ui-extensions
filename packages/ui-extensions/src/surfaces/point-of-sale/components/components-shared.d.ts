@@ -745,7 +745,7 @@ export interface BadgeProps extends GlobalProps {
    */
   children?: ComponentChildren;
   /**
-   * The semantic tone of the badge, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * The semantic tone of the badge, based on the intention of the information being conveyed. Badges rely on the tone system for semantic meaning, so using custom styling may not clearly convey meaning to merchants.
    *
    * @default 'auto'
    */
@@ -777,7 +777,7 @@ export interface BadgeProps extends GlobalProps {
 }
 export interface BannerProps extends GlobalProps, ActionSlots {
   /**
-   * The title text displayed prominently at the top of the banner, summarizing the banner's main message in a single, scannable line. This heading is typically concise (3-8 words) and immediately communicates the banner's purpose or key information without requiring users to read the full banner content. The heading appears before the banner's child content and uses emphasized typography to catch attention. When omitted, the banner displays only its child content and actions without a title. Clear, action-oriented or informative headings tell users what they need to know at a glance (for example, "Order placed successfully", "Action required", "New feature available", "Connection lost"). The heading's visual style adapts to the banner's `tone` property for semantic consistency.
+   * The title text displayed prominently at the top of the banner. This is the only property for text content—body text content isn't supported. You can't place `<s-text>` or other text elements as children.
    *
    * @default ''
    */
@@ -1245,13 +1245,13 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   onClick?: (event: Event) => void;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
   disabled?: boolean;
   /**
-   * Indicates whether the button action is currently in progress. When `true`, displays a loading spinner or progress indicator and prevents additional clicks to avoid duplicate submissions. The button remains visually enabled but unresponsive to interaction. Set to `true` when starting an async operation (for example, API call, navigation) and back to `false` when the operation completes or fails. This provides user feedback during long-running operations and prevents race conditions from multiple rapid clicks.
+   * Indicates whether the button action is currently in progress. When `true`, replaces all button content with a loading spinner and prevents additional clicks to avoid duplicate submissions. The button remains visually enabled but unresponsive to interaction. Set to `true` when starting an async operation (for example, API call, navigation) and back to `false` when the operation completes or fails. This provides user feedback during long-running operations and prevents race conditions from multiple rapid clicks. Custom loading indicators or partial content updates aren't supported.
    *
    * @default false
    */
@@ -1330,7 +1330,7 @@ export interface ButtonProps extends GlobalProps, BaseClickableProps {
    */
   accessibilityLabel?: string;
   /**
-   * The child elements to render within this component.
+   * The child elements to render within this component. Button content must be plain text.
    */
   children?: ComponentChildren;
   /**
@@ -1572,7 +1572,7 @@ export interface BaseSelectableProps {
    */
   accessibilityLabel?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -1653,11 +1653,11 @@ export interface ChoiceListProps
    */
   multiple?: boolean;
   /**
-   * The child elements to render within this component.
+   * The child elements to render within this component. Within `ChoiceList`, use only `Choice` components as children. Other component types can't be used as options within the choice list.
    */
   children?: ComponentChildren;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -1686,7 +1686,7 @@ export interface ClickableProps
    */
   loading?: BaseClickableProps['loading'];
   /**
-   * Whether the element is disabled, preventing any user interaction.
+   * Whether the element is disabled, preventing user interaction. Use when temporarily unavailable due to application state, permissions, or dependencies. Child elements can still receive focus and be interacted with.
    */
   disabled?: BaseClickableProps['disabled'];
   /**
@@ -1914,7 +1914,7 @@ export interface DatePickerProps
    */
   defaultValue?: string;
   /**
-   * The currently selected date value in ISO date format (YYYY-MM-DD, for example, `"2024-05-15"`). An empty string means no date is selected. For date ranges, use comma-separated dates (for example, `"2024-05-15,2024-05-20"`).
+   * The currently selected date value in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DD`, for example, `"2024-05-15"`). An empty string means no date is selected. For date ranges, use comma-separated dates (for example, `"2024-05-15,2024-05-20"`). Other date formats require conversion before setting this property. The selection mode (`type` property) is inferred from the value format: single date for one value, multiple dates for comma-separated values without a range, and range for two comma-separated dates when `type` is set to 'range'.
    *
    * @default ""
    */
@@ -1991,7 +1991,7 @@ export interface DateSpinnerProps
    */
   onInput?: (event: Event) => void;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed. Date validation occurs when the user finishes editing (on blur), rather than on every keystroke.
    */
   onChange?: (event: Event) => void;
 }
@@ -2172,7 +2172,7 @@ export interface HeadingProps
     AccessibilityVisibilityProps,
     BlockTypographyProps {
   /**
-   * The child elements to render within this component.
+   * The child elements to render within this component. Use plain text or simple inline elements only for heading content. Rich text format isn't supported.
    */
   children?: ComponentChildren;
   /**

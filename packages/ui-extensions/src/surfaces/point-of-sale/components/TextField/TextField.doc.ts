@@ -3,8 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextField',
   description:
-    'The `TextField` component captures single-line text input. Use it to collect short, free-form information in forms and data entry workflows. For multi-line text entry, use the [`TextArea`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/textarea) component.' +
-    '\n\nThe component supports various input configurations including placeholders, character limits, and validation. It includes built-in support for labels, helper text, and error states to guide merchants through data entry, ensuring accurate and efficient information capture across different retail scenarios.',
+    'The `TextField` component captures single-line text input. Use it to collect short, free-form information like names, titles, or identifiers.' +
+    '\n\nThe component supports various input configurations including placeholders, character limits, and validation. For multi-line text entry, use the [`TextArea`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/textarea) component.',
   thumbnail: 'text-field-thumbnail.png',
   isVisualComponent: true,
   type: '',

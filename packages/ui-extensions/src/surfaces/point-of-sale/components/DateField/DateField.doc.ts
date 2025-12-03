@@ -4,8 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'DateField',
   description:
     'The `DateField` component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.' +
-    '\n\n`DateField` accepts values in ISO 8601 format (`YYYY-MM-DD`). Other date formats require conversion before setting the value property. Validation of the entered date occurs when the user finishes editing, rather than on every keystroke, so invalid dates are flagged after blur. This can delay error feedback, so consider this in your design.' +
-    '\n\n`DateField` components support manual text entry. For visual calendar-based selection, consider using [`DatePicker`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) or [`DateSpinner`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner) components.',
+    '\n\nThe component supports manual text entry. For visual calendar-based selection, consider using [`DatePicker`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) or [`DateSpinner`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner) components.',
   thumbnail: 'date-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
