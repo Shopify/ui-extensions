@@ -23,11 +23,6 @@ export {Dialog} from './render/components/Dialog/Dialog';
 export type {DialogProps, DialogType} from './render/components/Dialog/Dialog';
 export {EmailField} from './render/components/EmailField/EmailField';
 export type {EmailFieldProps} from './render/components/EmailField/EmailField';
-export {FormattedTextField} from './render/components/FormattedTextField/FormattedTextField';
-export type {
-  FormattedTextFieldProps,
-  InputType,
-} from './render/components/FormattedTextField/FormattedTextField';
 export {Icon} from './render/components/Icon/Icon';
 export type {
   IconProps,
