@@ -77,19 +77,19 @@ declare const tagName = 's-date-spinner';
 export interface DateSpinnerJSXProps
   extends Pick<DateSpinnerProps, 'id' | 'value'> {
   /**
-   * A callback function executed when the user makes a selection in the spinner.
+   * Called when the user makes a selection in the spinner.
    */
   onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
   /**
-   * A callback function executed when the value changes. Only called when a different value is selected.
+   * Called when the value changes. Only called when a different value is selected.
    */
   onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
   /**
-   * A callback function executed when the date spinner is dismissed or closed.
+   * Called when the date spinner is dismissed or closed.
    */
   onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
   /**
-   * A callback function executed when the date spinner is revealed or opened.
+   * Called when the date spinner is revealed or opened.
    */
   onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
 }

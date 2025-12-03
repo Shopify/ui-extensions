@@ -77,19 +77,19 @@ declare const tagName = 's-time-picker';
 export interface TimePickerJSXProps
   extends Pick<TimePickerProps, 'id' | 'value'> {
   /**
-   * A callback function executed when the user selects a time from the picker.
+   * Called when the user selects a time from the picker.
    */
   onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
   /**
-   * A callback function executed when the user selects a time from the picker that is different from the current value.
+   * Called when the user selects a time from the picker that is different from the current value.
    */
   onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
   /**
-   * A callback function executed when the time picker is dismissed or closed.
+   * Called when the time picker is dismissed or closed.
    */
   onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
   /**
-   * A callback function executed when the time picker is revealed or opened.
+   * Called when the time picker is revealed or opened.
    */
   onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
 }

@@ -77,11 +77,11 @@ declare const tagName = 's-choice-list';
 export interface ChoiceListJSXProps
   extends Pick<ChoiceListProps, 'id' | 'values' | 'multiple'> {
   /**
-   * A callback function executed when the user changes a choice. Fires simultaneously with `onChange`.
+   * Called when the user changes a choice. Fires simultaneously with `onChange`.
    */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback function executed when the user changes a choice. Fires simultaneously with `onInput`.
+   * Called when the user changes a choice. Fires simultaneously with `onInput`.
    */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
