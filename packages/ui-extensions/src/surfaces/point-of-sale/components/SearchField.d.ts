@@ -77,19 +77,19 @@ declare const tagName = 's-search-field';
 export interface SearchFieldJSXProps
   extends Pick<SearchFieldProps, 'id' | 'disabled' | 'placeholder' | 'value'> {
   /**
-   * A callback function executed when the user changes the value in the field.
+   * Called when the user changes the value in the field.
    */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback function executed when the field loses focus after the user changes the value in the field.
+   * Called when the field loses focus after the user changes the value in the field.
    */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback function executed when the field loses focus.
+   * Called when the field loses focus.
    */
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback function executed when the field is focused.
+   * Called when the field is focused.
    */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
