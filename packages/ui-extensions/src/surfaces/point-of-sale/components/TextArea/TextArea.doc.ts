@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'TextArea',
   description:
     'The `TextArea` component captures multi-line text input. Use it to collect descriptions, notes, comments, or other extended text content.' +
-    '\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [`TextField`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/textfield).',
+    '\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [`TextField`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/textfield).',
   thumbnail: 'text-area-thumbnail.png',
   isVisualComponent: true,
   type: '',

@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'TimePicker',
   description:
     'The `TimePicker` component allows merchants to select times using an interactive picker interface. Use it when merchants benefit from visual time selection rather than typing exact times.' +
-    '\n\nFor direct text entry when merchants know the exact time, use [`TimeField`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/timefield).',
+    '\n\nFor direct text entry when merchants know the exact time, use [`TimeField`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/timefield).',
   thumbnail: 'time-spinner-thumbnail.png',
   isVisualComponent: true,
   type: '',
