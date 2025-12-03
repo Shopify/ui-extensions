@@ -17,16 +17,6 @@ const data: ReferenceEntityTemplateSchema = {
         'Configure the following properties on the `Screen` component.',
       type: 'ScreenProps',
     },
-    {
-      title: 'ScreenPresentationProps',
-      description: '',
-      type: 'ScreenPresentationProps',
-    },
-    {
-      title: 'SecondaryActionProps',
-      description: '',
-      type: 'SecondaryActionProps',
-    },
   ],
   category: 'UI components',
   subCategory: 'Layout and structure',
