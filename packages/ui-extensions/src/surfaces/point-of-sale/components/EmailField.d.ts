@@ -93,19 +93,19 @@ export interface EmailFieldJSXProps
     | 'details'
   > {
   /**
-   * A callback function executed when the user makes any changes in the field.
+   * Called when the user makes any changes in the field.
    */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback function executed after editing completes, typically on blur.
+   * Called after editing completes, typically on blur.
    */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback function executed when the element loses focus.
+   * Called when the element loses focus.
    */
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback function executed when the element receives focus.
+   * Called when the element receives focus.
    */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**

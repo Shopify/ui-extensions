@@ -4,8 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'ScrollBox',
   description:
     'The `ScrollBox` component creates a scrollable area for content that exceeds container bounds. Use it to display large amounts of content within constrained spaces while maintaining usability.' +
-    '\n\nThe component creates a defined scrollable area with customizable dimensions and scroll behavior, essential for constraining content height in modal dialogs and constrained layouts. It provides touch-optimized scrolling for POS devices with visual scroll indicators.' +
-    '\n\n`ScrollBox` components provide scrollbar styling that matches the design system while ensuring sufficient contrast for visibility, with automatic thickness adjustments for touch-based scrolling versus mouse-based scrolling.',
+    '\n\nThe component creates a defined scrollable area with customizable dimensions and scroll behavior.',
   thumbnail: 'scrollbox-thumbnail.png',
   isVisualComponent: true,
   type: '',

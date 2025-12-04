@@ -3,10 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'SearchField',
   description:
-    'The `SearchField` component captures search terms using a single-line input field. Use it to enable search and filtering within POS interfaces.' +
-    '\n\nThe component includes built-in debouncing to optimize performance during real-time search operations and supports features like autocomplete suggestions and search history. It provides clear visual feedback for search states including loading, results found, and no results, helping merchants quickly locate products, customers, or orders in large catalogs.' +
-    '\n\n`SearchField` components clear search queries with a single tap on the clear button while maintaining search history for quick access to recent searches, balancing convenience with data management.' +
-    '\n\n`SearchField` is optimized for inline search and filtering. For additional search features like sorting and search history use a custom implementation.',
+    'The `SearchField` component captures search terms for filtering and search functionality. Use it to enable inline search within specific sections or lists, like filtering products or searching customers.',
   thumbnail: 'search-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -29,7 +26,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'search-field-default.png',
     description:
-      'Enable search functionality using a `SearchField` component with built-in debouncing. This example shows a basic search field with placeholder text.',
+      'Enable search functionality using a `SearchField` component. This example shows a basic search field with placeholder text.',
     codeblock: {
       title: 'Enable search with a search field',
       tabs: [

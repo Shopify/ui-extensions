@@ -3,9 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Page',
   description:
-    "The `Page` component serves as the main container for app content with preset layouts and heading controls. Use it to structure full-screen views with consistent navigation and content organization. `Page` is designed for full-screen modal interfaces and isn't suitable for inline content or partial page layouts within existing POS screens." +
-    '\n\nThe component provides a complete page structure with built-in header, sidebar, and action bar layouts that follow POS design patterns. It manages heading hierarchy, spacing, and responsive behavior automatically, allowing you to focus on content rather than layout mechanics while ensuring consistent page structures across extensions. To maintain consistency, page layout and styling are controlled by the POS design system, so custom styling is limited to the provided slots and properties.' +
-    '\n\n`Page` components handle safe area insets automatically for devices with notches or rounded corners, ensuring content remains visible and interactive without manual padding adjustments for different device shapes.',
+    'The `Page` component serves as the main container for app content with preset layouts and heading controls. Use it to structure full-screen views with consistent navigation and content organization.' +
+    "\n\n`Page` is designed for full-screen modal interfaces and isn't suitable for inline content or partial page layouts within existing POS screens.",
   thumbnail: 'page-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -55,7 +54,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-The secondary-actions slot supports only a single button element. Multiple actions in the action bar aren't supported and should be handled within the main content area.
+The \`secondary-actions\` slot supports only a single button element. Multiple actions in the action bar aren't supported and should be handled within the main content area.
 `,
     },
   ],
