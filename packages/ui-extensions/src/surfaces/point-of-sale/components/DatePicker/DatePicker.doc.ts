@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'DatePicker',
   description:
     'The `DatePicker` component allows merchants to select dates using a calendar interface. Use it when merchants benefit from seeing dates in context of the full month, such as selecting dates relative to today or needing weekday context.' +
-    '\n\nThe component supports single dates, multiple dates, and date ranges. For tight spaces, use [`DateSpinner`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner). For exact date entry, use [`DateField`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datefield).',
+    '\n\nThe component supports single dates, multiple dates, and date ranges. For tight spaces, consider using [`DateSpinner`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner) instead. For text date entry, use [`DateField`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datefield).',
   thumbnail: 'date-picker-thumbnail.png',
   isVisualComponent: true,
   type: '',

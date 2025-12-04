@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Section',
   description:
     'The `Section` component groups related content into clearly-defined thematic areas. Use it to organize content and provide clear navigation landmarks.' +
-    '\n\nThe component manages heading levels automatically, ensuring nested sections maintain proper semantic structure.',
+    '\n\nThe component manages heading levels automatically, ensuring nested sections maintain proper semantic structure. Only one secondary action button is supported for each section.',
   thumbnail: 'section-thumbnail.png',
   isVisualComponent: true,
   type: '',

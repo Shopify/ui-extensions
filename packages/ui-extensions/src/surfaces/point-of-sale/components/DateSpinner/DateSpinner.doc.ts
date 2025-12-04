@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'DateSpinner',
   description:
     'The `DateSpinner` component enables merchants to select dates using a spinner interface with scrollable columns for month, day, and year. Use it for compact date selection in space-constrained layouts or when selecting dates close to the current date.' +
-    '\n\nFor visual calendar context, use [`DatePicker`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker). For exact date entry, use [`DateField`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datefield).',
+    '\n\nFor visual calendar context, consider using [`DatePicker`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) instead. For text date entry, use [`DateField`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datefield).',
   thumbnail: 'date-spinner-thumbnail.png',
   isVisualComponent: true,
   type: '',
