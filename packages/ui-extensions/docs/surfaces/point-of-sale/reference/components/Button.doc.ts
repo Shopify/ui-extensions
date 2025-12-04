@@ -17,11 +17,6 @@ const data: ReferenceEntityTemplateSchema = {
         'Configure the following properties on the `Button` component.',
       type: 'ButtonProps',
     },
-    {
-      title: 'ButtonType',
-      description: 'Determines the appearance of the button.',
-      type: 'ButtonType',
-    },
   ],
   category: 'UI components',
   subCategory: 'Actions',
