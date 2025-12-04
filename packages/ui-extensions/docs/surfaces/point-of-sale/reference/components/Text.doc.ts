@@ -14,16 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
         'Configure the following properties on the `Text` component.',
       type: 'TextProps',
     },
-    {
-      title: 'TextVariant',
-      description: '',
-      type: 'TextVariant',
-    },
-    {
-      title: 'ColorType',
-      description: '',
-      type: 'ColorType',
-    },
   ],
   category: 'UI components',
   subCategory: 'Layout and structure',
