@@ -47,19 +47,19 @@ export interface ActionSlots {
  */
 export interface BaseOverlayProps {
   /**
-   * A callback function executed when the overlay begins to appear, immediately after `showOverlay()` is called or the `hidden` property changes to `false`, but before any show animations start. The element may not be visible yet. Use this for initializing overlay content, fetching data needed for display, setting focus on the first interactive element, or tracking analytics events for when users begin viewing the overlay. Avoid layout calculations here as the element may not have final dimensions yet.
+   * Called when the overlay begins to appear, immediately after `showOverlay()` is called or the `hidden` property changes to `false`, but before any show animations start. The element may not be visible yet. Use this for initializing overlay content, fetching data needed for display, setting focus on the first interactive element, or tracking analytics events for when users begin viewing the overlay. Avoid layout calculations here as the element may not have final dimensions yet.
    */
   onShow?: (event: Event) => void;
   /**
-   * A callback function executed after the overlay is fully visible and all show animations have completed. At this point, the overlay is completely rendered with final dimensions and positioning. Use this for operations that require the overlay to be fully displayed, such as focusing specific elements after animations complete, measuring rendered content dimensions, triggering secondary animations, or initializing interactive features that depend on final layout. This is the safest place for DOM measurements and layout-dependent operations.
+   * Called after the overlay is fully visible and all show animations have completed. At this point, the overlay is completely rendered with final dimensions and positioning. Use this for operations that require the overlay to be fully displayed, such as focusing specific elements after animations complete, measuring rendered content dimensions, triggering secondary animations, or initializing interactive features that depend on final layout. This is the safest place for DOM measurements and layout-dependent operations.
    */
   onAfterShow?: (event: Event) => void;
   /**
-   * A callback function executed when the overlay begins to hide, immediately after `hideOverlay()` is called or the `hidden` property changes to `true`, but before any hide animations start. The element is still visible. Use this for cleanup operations, saving overlay state before it disappears, canceling pending requests, or preparing for the post-hide state. This is your last opportunity to interact with the visible overlay before animations begin.
+   * Called when the overlay begins to hide, immediately after `hideOverlay()` is called or the `hidden` property changes to `true`, but before any hide animations start. The element is still visible. Use this for cleanup operations, saving overlay state before it disappears, canceling pending requests, or preparing for the post-hide state. This is your last opportunity to interact with the visible overlay before animations begin.
    */
   onHide?: (event: Event) => void;
   /**
-   * A callback function executed after the overlay is completely hidden and all hide animations have finished. The element is no longer visible or interactive. Use this for final cleanup, focusing the element that triggered the overlay, navigating to another view, freeing resources, or performing operations that should only occur after the overlay is completely dismissed. This is the appropriate place for post-dismissal navigation or state updates that would be jarring if they occurred during animations.
+   * Called after the overlay is completely hidden and all hide animations have finished. The element is no longer visible or interactive. Use this for final cleanup, focusing the element that triggered the overlay, navigating to another view, freeing resources, or performing operations that should only occur after the overlay is completely dismissed. This is the appropriate place for post-dismissal navigation or state updates that would be jarring if they occurred during animations.
    */
   onAfterHide?: (event: Event) => void;
 }
@@ -94,13 +94,13 @@ export interface BaseOverlayMethods {
  */
 export interface FocusEventProps {
   /**
-   * A callback function executed when focus is removed from the element, either by the user moving to another field (tabbing, clicking elsewhere) or programmatically using `blur()`. This event fires before `onChange` for modified fields. The event contains information about which element is receiving focus next (`relatedTarget`). Use this for triggering validation, saving in-progress changes, hiding related UI elements like autocomplete dropdowns, or tracking field interaction analytics. Common pattern: validate and show errors on blur to avoid disrupting users while they're still typing.
+   * Called when focus is removed from the element, either by the user moving to another field (tabbing, clicking elsewhere) or programmatically using `blur()`. This event fires before `onChange` for modified fields. The event contains information about which element is receiving focus next (`relatedTarget`). Use this for triggering validation, saving in-progress changes, hiding related UI elements like autocomplete dropdowns, or tracking field interaction analytics. Common pattern: validate and show errors on blur to avoid disrupting users while they're still typing.
    *
    * Learn more about [blur events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
    */
   onBlur?: (event: FocusEvent) => void;
   /**
-   * A callback function executed when the element receives focus through user interaction (clicking, tabbing) or programmatic methods like `focus()`. This event fires before any input occurs. The event contains information about which element previously had focus (`relatedTarget`). Use this for showing helper text, highlighting the active field, displaying related UI like autocomplete suggestions, preselecting content, or tracking which fields users interact with. Common pattern: clear errors on focus to provide a fresh start when users re-attempt input after validation failure. Learn more about [focus events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+   * Called when the element receives focus through user interaction (clicking, tabbing) or programmatic methods like `focus()`. This event fires before any input occurs. The event contains information about which element previously had focus (`relatedTarget`). Use this for showing helper text, highlighting the active field, displaying related UI like autocomplete suggestions, preselecting content, or tracking which fields users interact with. Common pattern: clear errors on focus to provide a fresh start when users re-attempt input after validation failure. Learn more about [focus events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
    */
   onFocus?: (event: FocusEvent) => void;
 }
@@ -749,7 +749,7 @@ export interface BadgeProps extends GlobalProps {
    */
   children?: ComponentChildren;
   /**
-   * The semantic tone of the badge, based on the intention of the information being conveyed. Affects color and styling to communicate meaning.
+   * The semantic tone of the badge, based on the intention of the information being conveyed. Affects color and styling to communicate meaning. Badges rely on the tone system for semantic meaning, so using custom styling may not clearly convey meaning to merchants.
    *
    * @default 'auto'
    */
@@ -781,7 +781,7 @@ export interface BadgeProps extends GlobalProps {
 }
 export interface BannerProps extends GlobalProps, ActionSlots {
   /**
-   * The title text displayed prominently at the top of the banner. Should be concise and clearly communicate the main message or purpose of the banner.
+   * The title text displayed prominently at the top of the banner. This is the only property for text content—body text content isn't supported. You can't place `<s-text>` or other text elements as children.
    *
    * @default ''
    */
@@ -816,11 +816,11 @@ export interface BannerProps extends GlobalProps, ActionSlots {
    */
   dismissible?: boolean;
   /**
-   * A callback function executed when the user dismisses the banner by clicking the close (X) button. This only fires for user-initiated dismissals through the UI close button, not when the banner is hidden programmatically using the `hidden` property. The callback fires after the user clicks but before hide animations begin. Use this for tracking dismissal metrics, saving user preferences to avoid showing the banner again, performing cleanup when banners are dismissed, or triggering follow-up actions. The banner remains in the DOM after dismissal (just hidden) until re-rendered—to completely remove it, control rendering at the component level based on dismissal state.
+   * Called when the user dismisses the banner by clicking the close (X) button. This only fires for user-initiated dismissals through the UI close button, not when the banner is hidden programmatically using the `hidden` property. The callback fires after the user clicks but before hide animations begin. Use this for tracking dismissal metrics, saving user preferences to avoid showing the banner again, performing cleanup when banners are dismissed, or triggering follow-up actions. The banner remains in the DOM after dismissal (just hidden) until re-rendered—to completely remove it, control rendering at the component level based on dismissal state.
    */
   onDismiss?: (event: Event) => void;
   /**
-   * A callback function executed after the element is fully hidden and all hide animations have completed.
+   * Called after the element is fully hidden and all hide animations have completed.
    *
    * @implementation If implementations animate the hiding of the banner,
    * this event must fire after the banner has fully hidden.
@@ -1246,19 +1246,19 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   type?: 'submit' | 'button' | 'reset';
   /**
-   * A callback function executed when the element is clicked or activated.
+   * Called when the element is clicked or activated.
    *
    * Learn more about [click events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
    */
   onClick?: (event: Event) => void;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
   disabled?: boolean;
   /**
-   * Indicates whether the button action is currently in progress. When `true`, displays a loading spinner or progress indicator and prevents additional clicks to avoid duplicate submissions. The button remains visually enabled but unresponsive to interaction. Set to `true` when starting an async operation (for example, API call, navigation) and back to `false` when the operation completes or fails. This provides user feedback during long-running operations and prevents race conditions from multiple rapid clicks.
+   * Indicates whether the button action is currently in progress. When `true`, replaces all button content with a loading spinner and prevents additional clicks to avoid duplicate submissions. The button remains visually enabled but unresponsive to interaction. Set to `true` when starting an async operation (for example, API call, navigation) and back to `false` when the operation completes or fails. This provides user feedback during long-running operations and prevents race conditions from multiple rapid clicks. Custom loading indicators or partial content updates aren't supported.
    *
    * @default false
    */
@@ -1295,7 +1295,7 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
    */
   download?: string;
   /**
-   * A callback function executed when the element is clicked or activated.
+   * Called when the element is clicked or activated.
    *
    * Learn more about [click events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
    */
@@ -1341,7 +1341,7 @@ export interface ButtonProps extends GlobalProps, BaseClickableProps {
    */
   accessibilityLabel?: string;
   /**
-   * The child elements to render within this component.
+   * The child elements to render within this component. Button content must be plain text.
    */
   children?: ComponentChildren;
   /**
@@ -1391,7 +1391,7 @@ export interface BaseInputProps {
    */
   name?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction. When `true`, the field can't receive focus, be edited, or be interacted with. Disabled fields are visually dimmed, excluded from form submission, and announced as disabled to screen readers. Use when a field is temporarily unavailable due to application state, permissions, or dependencies on other fields.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -1402,12 +1402,12 @@ export interface BaseInputProps {
  */
 export interface InputProps extends BaseInputProps {
   /**
-   * A callback function executed when the user has committed a value change, typically triggered when the field loses focus (blur) after the value has been modified. Unlike `onInput`, this fires only once after editing is complete, not during typing. The event contains the finalized value. Use this for validation, saving data, or triggering actions that should occur after the user finishes editing rather than during typing. For controlled components, update the `value` prop in this callback. This is ideal for expensive operations like API calls that shouldn't happen on every keystroke.
+   * Called when the user has committed a value change, typically triggered when the field loses focus (blur) after the value has been modified. Unlike `onInput`, this fires only once after editing is complete, not during typing. The event contains the finalized value. Use this for validation, saving data, or triggering actions that should occur after the user finishes editing rather than during typing. For controlled components, update the `value` prop in this callback. This is ideal for expensive operations like API calls that shouldn't happen on every keystroke.
    * Learn more about [change events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
    */
   onChange?: (event: Event) => void;
   /**
-   * A callback function executed immediately when the user makes any change to the field value. Fires on every keystroke, paste, or other input modification before the field loses focus. The event contains the current field value. Use this for real-time validation, character counting, formatting input as users type, or implementing autocomplete/search-as-you-type features. For controlled components, update the `value` prop in this callback to keep state in sync. Be cautious with expensive operations here as this fires frequently during typing.
+   * Called immediately when the user makes any change to the field value. Fires on every keystroke, paste, or other input modification before the field loses focus. The event contains the current field value. Use this for real-time validation, character counting, formatting input as users type, or implementing autocomplete/search-as-you-type features. For controlled components, update the `value` prop in this callback to keep state in sync. Be cautious with expensive operations here as this fires frequently during typing.
    * Learn more about [input events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
    */
   onInput?: (event: Event) => void;
@@ -1427,12 +1427,12 @@ export interface InputProps extends BaseInputProps {
  */
 export interface MultipleInputProps extends BaseInputProps {
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed.
    * Learn more about [change events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
    */
   onChange?: (event: Event) => void;
   /**
-   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
+   * Called when the user makes any change to the field value. Fires on each keystroke or interaction.
    * Learn more about [input events on MDN](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
    */
   onInput?: (event: Event) => void;
@@ -1586,7 +1586,7 @@ export interface BaseSelectableProps {
    */
   accessibilityLabel?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -1667,11 +1667,11 @@ export interface ChoiceListProps
    */
   multiple?: boolean;
   /**
-   * The child elements to render within this component.
+   * The child elements to render within this component. Within `ChoiceList`, use only `Choice` components as children. Other component types can't be used as options within the choice list.
    */
   children?: ComponentChildren;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -1700,7 +1700,7 @@ export interface ClickableProps
    */
   loading?: BaseClickableProps['loading'];
   /**
-   * Whether the element is disabled, preventing any user interaction.
+   * Whether the element is disabled, preventing user interaction. Use when temporarily unavailable due to application state, permissions, or dependencies. Child elements can still receive focus and be interacted with.
    */
   disabled?: BaseClickableProps['disabled'];
   /**
@@ -1868,7 +1868,7 @@ export interface DatePickerProps
    */
   view?: string;
   /**
-   * A callback function executed when the visible month displayed in the date picker changes, either through user navigation (clicking next/previous month buttons) or programmatic updates to the `view` property. The callback receives the new month as a string in `YYYY-MM` format (for example, `"2024-05"`). Use this to track which month users are viewing, load month-specific data (like availability or pricing), sync the view with external state, or implement custom navigation controls. For controlled date pickers, update the `view` property in this callback to keep the displayed month in sync with your application state. The callback fires after the month has changed but before the new month's dates are fully rendered, making it ideal for triggering data fetches.
+   * Called when the visible month displayed in the date picker changes, either through user navigation (clicking next/previous month buttons) or programmatic updates to the `view` property. The callback receives the new month as a string in `YYYY-MM` format (for example, `"2024-05"`). Use this to track which month users are viewing, load month-specific data (like availability or pricing), sync the view with external state, or implement custom navigation controls. For controlled date pickers, update the `view` property in this callback to keep the displayed month in sync with your application state. The callback fires after the month has changed but before the new month's dates are fully rendered, making it ideal for triggering data fetches.
    */
   onViewChange?: (view: string) => void;
   /**
@@ -1928,17 +1928,17 @@ export interface DatePickerProps
    */
   defaultValue?: string;
   /**
-   * The currently selected date value in ISO date format (YYYY-MM-DD, for example, `"2024-05-15"`). An empty string means no date is selected. For date ranges, use comma-separated dates (for example, `"2024-05-15,2024-05-20"`).
+   * The currently selected date value in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DD`, for example, `"2024-05-15"`). An empty string means no date is selected. For date ranges, use comma-separated dates (for example, `"2024-05-15,2024-05-20"`). Other date formats require conversion before setting this property. The selection mode (`type` property) is inferred from the value format: single date for one value, multiple dates for comma-separated values without a range, and range for two comma-separated dates when `type` is set to 'range'.
    *
    * @default ""
    */
   value?: string;
   /**
-   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
+   * Called when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: (event: Event) => void;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: (event: Event) => void;
 }
@@ -1952,7 +1952,6 @@ export interface DateFieldProps
       DatePickerProps,
       | 'view'
       | 'defaultView'
-      | 'value'
       | 'defaultValue'
       | 'allow'
       | 'disallow'
@@ -1962,7 +1961,7 @@ export interface DateFieldProps
     >,
     AutocompleteProps<DateAutocompleteField> {
   /**
-   * A callback function executed when the user enters an invalid value. Fires after change validation fails.
+   * Called when the user enters an invalid value. Fires after change validation fails.
    */
   onInvalid?: (event: Event) => void;
 }
@@ -1998,11 +1997,11 @@ export interface DateSpinnerProps
    */
   value?: string;
   /**
-   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
+   * Called when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: (event: Event) => void;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed. Date validation occurs when the user finishes editing (on blur), rather than on every keystroke.
    */
   onChange?: (event: Event) => void;
 }
@@ -2189,7 +2188,7 @@ export interface HeadingProps
     AccessibilityVisibilityProps,
     BlockTypographyProps {
   /**
-   * The child elements to render within this component.
+   * The child elements to render within this component. Use plain text or simple inline elements only for heading content. Rich text format isn't supported.
    */
   children?: ComponentChildren;
   /**
@@ -2324,13 +2323,13 @@ export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
    */
   loading?: 'eager' | 'lazy';
   /**
-   * A callback function executed when the image finishes loading successfully and is ready to display. This fires after the browser has downloaded the image data and decoded it, but may fire before the image is actually painted to the screen. Use this for hiding loading indicators, triggering dependent actions that require the image (like image processing), tracking image load metrics, or executing layout operations that depend on image dimensions. For performance tracking, compare timestamps between navigation start and this callback. Note that cached images may trigger this callback synchronously (immediately), so handle both async and sync invocation in your code. This won't fire if the image fails to load—listen to `onError` for failures.
+   * Called when the image finishes loading successfully and is ready to display. This fires after the browser has downloaded the image data and decoded it, but may fire before the image is actually painted to the screen. Use this for hiding loading indicators, triggering dependent actions that require the image (like image processing), tracking image load metrics, or executing layout operations that depend on image dimensions. For performance tracking, compare timestamps between navigation start and this callback. Note that cached images may trigger this callback synchronously (immediately), so handle both async and sync invocation in your code. This won't fire if the image fails to load—listen to `onError` for failures.
    *
    * Learn more about [`onload` on MDN](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload).
    */
   onLoad?: (event: Event) => void;
   /**
-   * A callback function executed when the image fails to load due to network errors, invalid URLs, unsupported formats, [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) issues, or server errors (for example, 404, 500). The event contains limited error details for security reasons—the browser console provides specific failure reasons. Common operations include displaying fallback images (`event.target.src = 'fallback.jpg'`), showing error messages to users, logging failures for monitoring, hiding broken image icons, or providing alternative content when images are unavailable. A common pattern involves attempting to load a fallback image, and if that fails too, hiding the image container entirely. For critical images like product photos, a placeholder SVG or icon may be shown instead of a broken image indicator. This callback doesn't fire for images that are blocked by browser content policies or ad blockers.
+   * Called when the image fails to load due to network errors, invalid URLs, unsupported formats, [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) issues, or server errors (for example, 404, 500). The event contains limited error details for security reasons—the browser console provides specific failure reasons. Common operations include displaying fallback images (`event.target.src = 'fallback.jpg'`), showing error messages to users, logging failures for monitoring, hiding broken image icons, or providing alternative content when images are unavailable. A common pattern involves attempting to load a fallback image, and if that fails too, hiding the image container entirely. For critical images like product photos, a placeholder SVG or icon may be shown instead of a broken image indicator. This callback doesn't fire for images that are blocked by browser content policies or ad blockers.
    *
    * Learn more about [`onerror` on MDN](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror).
    */
@@ -2482,7 +2481,7 @@ export interface QRCodeProps extends GlobalProps {
    */
   accessibilityLabel?: string;
   /**
-   * A callback function executed when the resource fails to load.
+   * Called when the resource fails to load.
    */
   onError?: (event: Event) => void;
   /**
@@ -2497,7 +2496,7 @@ export interface QRCodeProps extends GlobalProps {
  */
 export interface ScrollEventProps {
   /**
-   * A callback function executed when scrolling reaches or moves away from any edge of the scrollable container.
+   * Called when scrolling reaches or moves away from any edge of the scrollable container.
    *
    * Provides information about which edges are currently reached:
    * - `inline: 'start'` - at the inline-start edge (typically left in LTR)
@@ -2836,7 +2835,7 @@ export interface TimeFieldProps
       'value' | 'defaultValue' | 'allow' | 'disallow' | 'step'
     > {
   /**
-   * A callback function executed when the user enters an invalid value. Fires after change validation fails.
+   * Called when the user enters an invalid value. Fires after change validation fails.
    */
   onInvalid?: (event: Event) => void;
   /**
@@ -3103,7 +3102,7 @@ interface ButtonJSXProps
    */
   variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
   /**
-   * A callback function executed when the element is clicked or activated.
+   * Called when the element is clicked or activated.
    */
   onClick?: (event: CallbackEvent<typeof tagName$t>) => void;
   /**
@@ -3296,13 +3295,13 @@ interface TileJSXProps
     'heading' | 'id' | 'itemCount' | 'tone' | 'subheading'
   > {
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
   disabled?: TileProps['disabled'];
   /**
-   * A callback function executed when the element is clicked or activated.
+   * Called when the element is clicked or activated.
    */
   onClick?: (event: CallbackEvent<typeof tagName$q>) => void;
 }
@@ -3812,15 +3811,15 @@ declare module 'preact' {
 declare const tagName$l = 's-badge';
 interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
   /**
-   * Determines the visual appearance and semantic meaning of the badge. Available options:
+   * Determines the visual appearance and semantic meaning of the badge. Badges rely on the tone system for semantic meaning, so using custom styling may not clearly convey meaning to merchants. Available options:
    *
-   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context. Use when you want the system to determine the most appropriate styling.
-   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis. Use for general status updates and standard information.
-   * - `'info'` - Blue styling for informational content and neutral updates. Use for informational content that provides helpful context.
-   * - `'success'` - Green styling for positive states, completed actions, and successful operations. Use for positive outcomes and successful processes.
-   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent. Use for potential issues that require awareness.
-   * - `'warning'` - Orange styling for important notices that require merchant awareness. Use for situations that need attention but aren't critical.
-   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action. Use for urgent issues that need immediate merchant attention.
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context.
+   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis.
+   * - `'info'` - Blue styling for informational content and neutral updates.
+   * - `'success'` - Green styling for positive states, completed actions, and successful operations.
+   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent.
+   * - `'warning'` - Orange styling for important notices that require merchant awareness.
+   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action.
    *
    * @default 'auto'
    */
@@ -3850,11 +3849,11 @@ declare const tagName$k = 's-choice-list';
 interface ChoiceListJSXProps
   extends Pick<ChoiceListProps, 'id' | 'values' | 'multiple'> {
   /**
-   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
+   * Called when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: ((event: CallbackEvent<typeof tagName$k>) => void) | null;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: ((event: CallbackEvent<typeof tagName$k>) => void) | null;
   /**
@@ -3949,19 +3948,19 @@ interface TextFieldJSXProps
     | 'maxLength'
   > {
   /**
-   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
+   * Called when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
   /**
-   * A callback function executed when focus is removed from the element.
+   * Called when focus is removed from the element.
    */
   onBlur?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
   /**
-   * A callback function executed when the element receives focus through user interaction or programmatic focus.
+   * Called when the element receives focus through user interaction or programmatic focus.
    */
   onFocus?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
   /**
@@ -3987,19 +3986,19 @@ declare const tagName$g = 's-search-field';
 interface SearchFieldJSXProps
   extends Pick<SearchFieldProps, 'id' | 'disabled' | 'placeholder' | 'value'> {
   /**
-   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
+   * Called when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
   /**
-   * A callback function executed when focus is removed from the element.
+   * Called when focus is removed from the element.
    */
   onBlur?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
   /**
-   * A callback function executed when the element receives focus through user interaction or programmatic focus.
+   * Called when the element receives focus through user interaction or programmatic focus.
    */
   onFocus?: ((event: CallbackEvent<typeof tagName$g>) => void) | null;
 }
@@ -4031,19 +4030,19 @@ interface EmailFieldJSXProps
     | 'details'
   > {
   /**
-   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
+   * Called when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
   /**
-   * A callback function executed when focus is removed from the element.
+   * Called when focus is removed from the element.
    */
   onBlur?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
   /**
-   * A callback function executed when the element receives focus through user interaction or programmatic focus.
+   * Called when the element receives focus through user interaction or programmatic focus.
    */
   onFocus?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
   /**
@@ -4068,7 +4067,7 @@ declare module 'preact' {
 declare const tagName$e = 's-clickable';
 interface ClickableJSXProps extends Pick<ClickableProps, 'id' | 'disabled'> {
   /**
-   * A callback function executed when the element is clicked or activated.
+   * Called when the element is clicked or activated.
    */
   onClick?: (event: CallbackEvent<typeof tagName$e>) => void;
   /**
@@ -4109,15 +4108,15 @@ interface TextAreaJSXProps
    */
   onInput?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
   /**
-   * A callback function executed when focus is removed from the element.
+   * Called when focus is removed from the element.
    */
   onBlur?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
   /**
-   * A callback function executed when the element receives focus through user interaction or programmatic focus.
+   * Called when the element receives focus through user interaction or programmatic focus.
    */
   onFocus?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
   /**
@@ -4203,19 +4202,19 @@ interface NumberFieldJSXProps
    */
   controls?: NumberFieldProps['controls'];
   /**
-   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
+   * Called when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
   /**
-   * A callback function executed when focus is removed from the element.
+   * Called when focus is removed from the element.
    */
   onBlur?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
   /**
-   * A callback function executed when the element receives focus through user interaction or programmatic focus.
+   * Called when the element receives focus through user interaction or programmatic focus.
    */
   onFocus?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
 }
@@ -4240,19 +4239,19 @@ interface DateFieldJSXProps
     'id' | 'label' | 'details' | 'value' | 'disabled' | 'error'
   > {
   /**
-   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
+   * Called when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
   /**
-   * A callback function executed when focus is removed from the element.
+   * Called when focus is removed from the element.
    */
   onBlur?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
   /**
-   * A callback function executed when the element receives focus through user interaction or programmatic focus.
+   * Called when the element receives focus through user interaction or programmatic focus.
    */
   onFocus?: ((event: CallbackEvent<typeof tagName$b>) => void) | null;
 }
@@ -4273,19 +4272,19 @@ declare module 'preact' {
 declare const tagName$a = 's-date-picker';
 interface DatePickerJSXProps extends Pick<DatePickerProps, 'id' | 'value'> {
   /**
-   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
+   * Called when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: (event: CallbackEvent<typeof tagName$a>) => void | null;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: (event: CallbackEvent<typeof tagName$a>) => void | null;
   /**
-   * A callback function executed when focus is removed from the element.
+   * Called when focus is removed from the element.
    */
   onBlur?: (event: CallbackEvent<typeof tagName$a>) => void | null;
   /**
-   * A callback function executed when the element receives focus through user interaction or programmatic focus.
+   * Called when the element receives focus through user interaction or programmatic focus.
    */
   onFocus?: (event: CallbackEvent<typeof tagName$a>) => void | null;
 }
@@ -4305,19 +4304,19 @@ declare module 'preact' {
 declare const tagName$9 = 's-date-spinner';
 interface DateSpinnerJSXProps extends Pick<DateSpinnerProps, 'id' | 'value'> {
   /**
-   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
+   * Called when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: (event: CallbackEvent<typeof tagName$9>) => void | null;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: (event: CallbackEvent<typeof tagName$9>) => void | null;
   /**
-   * A callback function executed when focus is removed from the element.
+   * Called when focus is removed from the element.
    */
   onBlur?: (event: CallbackEvent<typeof tagName$9>) => void | null;
   /**
-   * A callback function executed when the element receives focus through user interaction or programmatic focus.
+   * Called when the element receives focus through user interaction or programmatic focus.
    */
   onFocus?: (event: CallbackEvent<typeof tagName$9>) => void | null;
 }
@@ -4386,19 +4385,19 @@ declare module 'preact' {
 declare const tagName$6 = 's-time-picker';
 interface TimePickerJSXProps extends Pick<TimePickerProps, 'id' | 'value'> {
   /**
-   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
+   * Called when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: (event: CallbackEvent<typeof tagName$6>) => void | null;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: (event: CallbackEvent<typeof tagName$6>) => void | null;
   /**
-   * A callback function executed when focus is removed from the element.
+   * Called when focus is removed from the element.
    */
   onBlur?: (event: CallbackEvent<typeof tagName$6>) => void | null;
   /**
-   * A callback function executed when the element receives focus through user interaction or programmatic focus.
+   * Called when the element receives focus through user interaction or programmatic focus.
    */
   onFocus?: (event: CallbackEvent<typeof tagName$6>) => void | null;
 }
@@ -4490,19 +4489,19 @@ interface TimeFieldJSXProps
     'id' | 'label' | 'disabled' | 'value' | 'error' | 'details'
   > {
   /**
-   * A callback function executed when the user makes any change to the field value. Fires on each keystroke or interaction.
+   * Called when the user makes any change to the field value. Fires on each keystroke or interaction.
    */
   onInput?: ((event: CallbackEvent<typeof tagName$3>) => void) | null;
   /**
-   * A callback function executed when the user has finished editing the field, typically triggered on blur after the value has changed.
+   * Called when the user has finished editing the field, typically triggered on blur after the value has changed.
    */
   onChange?: ((event: CallbackEvent<typeof tagName$3>) => void) | null;
   /**
-   * A callback function executed when focus is removed from the element.
+   * Called when focus is removed from the element.
    */
   onBlur?: ((event: CallbackEvent<typeof tagName$3>) => void) | null;
   /**
-   * A callback function executed when the element receives focus through user interaction or programmatic focus.
+   * Called when the element receives focus through user interaction or programmatic focus.
    */
   onFocus?: ((event: CallbackEvent<typeof tagName$3>) => void) | null;
 }
@@ -4609,15 +4608,15 @@ export type {
 
 interface Badge {
   /**
-   * Determines the visual appearance and semantic meaning of the badge. Available options:
+   * Determines the visual appearance and semantic meaning of the badge. Badges rely on the tone system for semantic meaning, so using custom styling may not clearly convey meaning to merchants. Available options:
    *
-   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context. Use when you want the system to determine the most appropriate styling.
-   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis. Use for general status updates and standard information.
-   * - `'info'` - Blue styling for informational content and neutral updates. Use for informational content that provides helpful context.
-   * - `'success'` - Green styling for positive states, completed actions, and successful operations. Use for positive outcomes and successful processes.
-   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent. Use for potential issues that require awareness.
-   * - `'warning'` - Orange styling for important notices that require merchant awareness. Use for situations that need attention but aren't critical.
-   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action. Use for urgent issues that need immediate merchant attention.
+   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context.
+   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis.
+   * - `'info'` - Blue styling for informational content and neutral updates.
+   * - `'success'` - Green styling for positive states, completed actions, and successful operations.
+   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent.
+   * - `'warning'` - Orange styling for important notices that require merchant awareness.
+   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action.
    *
    * @default 'auto'
    */
@@ -4665,7 +4664,7 @@ interface Banner {
    */
   tone?: 'auto' | 'info' | 'success' | 'warning' | 'critical';
   /**
-   * The title text displayed prominently at the top of the banner. Should be concise and clearly communicate the main message or purpose of the banner.
+   * The title text displayed prominently at the top of the banner. This is the only property for text content—body text content isn't supported. You can't place `<s-text>` or other text elements as children.
    *
    * @default ''
    */
@@ -4823,7 +4822,7 @@ interface Button {
    */
   id?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -4847,11 +4846,11 @@ interface Choice {
    */
   id?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The unique value associated with this choice option. This value is used to identify the option and gets submitted with forms when selected. Use meaningful values like `"small"`, `"medium"`, or `"large"` rather than display text.
    */
   value?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -4869,11 +4868,11 @@ interface Choice {
  */
 interface ChoiceListEvents {
   /**
-   * A callback function executed when the user makes any changes in the field.
+   * Called when the user makes any changes in the field.
    */
   input?: (event: CallbackEvent<typeof tagName$k>) => void;
   /**
-   * A callback function executed after editing completes, typically on blur.
+   * Called after editing completes, typically on blur.
    */
   change?: (event: CallbackEvent<typeof tagName$k>) => void;
 }
@@ -4911,7 +4910,7 @@ interface Clickable {
    */
   id?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    */
   disabled?: boolean;
 }
@@ -4921,19 +4920,19 @@ interface Clickable {
  */
 interface DateFieldEvents {
   /**
-   * A callback function executed when the user makes any changes in the field.
+   * Called when the user makes any changes in the field.
    */
   input?: (event: CallbackEvent<typeof tagName$b>) => void;
   /**
-   * A callback function executed after editing completes, typically on blur.
+   * Called after editing completes, typically on blur.
    */
   change?: (event: CallbackEvent<typeof tagName$b>) => void;
   /**
-   * A callback function executed when the element loses focus.
+   * Called when the element loses focus.
    */
   blur?: (event: CallbackEvent<typeof tagName$b>) => void;
   /**
-   * A callback function executed when the element receives focus.
+   * Called when the element receives focus.
    */
   focus?: (event: CallbackEvent<typeof tagName$b>) => void;
 }
@@ -4944,7 +4943,7 @@ interface DateField {
    */
   id?: string;
   /**
-   * The content to use as the field label that describes the time information being requested.
+   * The content to use as the field label that describes the date information being requested.
    */
   label?: string;
   /**
@@ -4952,11 +4951,11 @@ interface DateField {
    */
   details?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The currently selected date value in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DD`, for example, `"2024-05-15"`). An empty string means no date is selected. Other date formats require conversion before setting this property. Validation occurs when the user finishes editing (on blur), rather than on every keystroke, so invalid dates are flagged after completing entry.
    */
   value?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -4972,19 +4971,19 @@ interface DateField {
  */
 interface DatePickerEvents {
   /**
-   * A callback function executed when the user makes any changes in the field.
+   * Called when the user makes any changes in the field.
    */
   input?: (event: CallbackEvent<typeof tagName$a>) => void | null;
   /**
-   * A callback function executed after editing completes, typically on blur.
+   * Called after editing completes, typically on blur.
    */
   change?: (event: CallbackEvent<typeof tagName$a>) => void | null;
   /**
-   * A callback function executed when the element loses focus.
+   * Called when the element loses focus.
    */
   blur?: (event: CallbackEvent<typeof tagName$a>) => void | null;
   /**
-   * A callback function executed when the element receives focus.
+   * Called when the element receives focus.
    */
   focus?: (event: CallbackEvent<typeof tagName$a>) => void | null;
 }
@@ -4995,7 +4994,7 @@ interface DatePicker {
    */
   id?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The currently selected date value in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DD`, for example, `"2024-05-15"`). An empty string means no date is selected. Other date formats require conversion before setting this property. Validation occurs when the user finishes editing (on blur), rather than on every keystroke, so invalid dates are flagged after completing entry.
    *
    * @default ""
    */
@@ -5007,19 +5006,19 @@ interface DatePicker {
  */
 interface DateSpinnerEvents {
   /**
-   * A callback function executed when the user makes any changes in the field.
+   * Called when the user makes any changes in the field.
    */
   input?: (event: CallbackEvent<typeof tagName$9>) => void | null;
   /**
-   * A callback function executed after editing completes, typically on blur.
+   * Called after editing completes, typically on blur.
    */
   change?: (event: CallbackEvent<typeof tagName$9>) => void | null;
   /**
-   * A callback function executed when the element loses focus.
+   * Called when the element loses focus.
    */
   blur?: (event: CallbackEvent<typeof tagName$9>) => void | null;
   /**
-   * A callback function executed when the element receives focus.
+   * Called when the element receives focus.
    */
   focus?: (event: CallbackEvent<typeof tagName$9>) => void | null;
 }
@@ -5030,7 +5029,7 @@ interface DateSpinner {
    */
   id?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The currently selected date value in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DD`, for example, `"2024-05-15"`). An empty string means no date is selected. Other date formats require conversion before setting this property. Validation occurs when the user finishes editing (on blur), rather than on every keystroke, so invalid dates are flagged after completing entry.
    *
    * @default ""
    */
@@ -5057,19 +5056,19 @@ interface Divider {
  */
 interface EmailFieldEvents {
   /**
-   * A callback function executed when the user makes any changes in the field.
+   * Called when the user makes any changes in the field.
    */
   input?: (event: CallbackEvent<typeof tagName$f>) => void;
   /**
-   * A callback function executed after editing completes, typically on blur.
+   * Called after editing completes, typically on blur.
    */
   change?: (event: CallbackEvent<typeof tagName$f>) => void;
   /**
-   * A callback function executed when the element loses focus.
+   * Called when the element loses focus.
    */
   blur?: (event: CallbackEvent<typeof tagName$f>) => void;
   /**
-   * A callback function executed when the element receives focus.
+   * Called when the element receives focus.
    */
   focus?: (event: CallbackEvent<typeof tagName$f>) => void;
 }
@@ -5090,11 +5089,11 @@ interface EmailField {
    */
   id?: string;
   /**
-   * The content to use as the field label that describes the time information being requested.
+   * The content to use as the field label that describes the email information being requested.
    */
   label?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The current email address entered in the field. An empty string means no email is entered.
    */
   value?: string;
   /**
@@ -5102,7 +5101,7 @@ interface EmailField {
    */
   placeholder?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -5243,19 +5242,19 @@ interface Modal {
  */
 interface NumberFieldEvents {
   /**
-   * A callback function executed when the user makes any changes in the field.
+   * Called when the user makes any changes in the field.
    */
   input?: (event: CallbackEvent<typeof tagName$c>) => void;
   /**
-   * A callback function executed after editing completes, typically on blur.
+   * Called after editing completes, typically on blur.
    */
   change?: (event: CallbackEvent<typeof tagName$c>) => void;
   /**
-   * A callback function executed when the element loses focus.
+   * Called when the element loses focus.
    */
   blur?: (event: CallbackEvent<typeof tagName$c>) => void;
   /**
-   * A callback function executed when the element receives focus.
+   * Called when the element receives focus.
    */
   focus?: (event: CallbackEvent<typeof tagName$c>) => void;
 }
@@ -5272,7 +5271,7 @@ interface NumberFieldSlots {
 
 interface NumberField {
   /**
-   * The content to use as the field label that describes the time information being requested.
+   * The content to use as the field label that describes the numeric information being requested.
    */
   label?: string;
   /**
@@ -5319,11 +5318,11 @@ interface NumberField {
    */
   id?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The current numeric value entered in the field. An empty string means no value is entered.
    */
   value?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -5508,19 +5507,19 @@ interface ScrollBox {
  */
 interface SearchFieldEvents {
   /**
-   * A callback function executed when the user makes any changes in the field.
+   * Called when the user makes any changes in the field.
    */
   input?: (event: CallbackEvent<typeof tagName$g>) => void;
   /**
-   * A callback function executed after editing completes, typically on blur.
+   * Called after editing completes, typically on blur.
    */
   change?: (event: CallbackEvent<typeof tagName$g>) => void;
   /**
-   * A callback function executed when the element loses focus.
+   * Called when the element loses focus.
    */
   blur?: (event: CallbackEvent<typeof tagName$g>) => void;
   /**
-   * A callback function executed when the element receives focus.
+   * Called when the element receives focus.
    */
   focus?: (event: CallbackEvent<typeof tagName$g>) => void;
 }
@@ -5531,7 +5530,7 @@ interface SearchField {
    */
   id?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -5541,7 +5540,7 @@ interface SearchField {
    */
   placeholder?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The current search query text entered in the field. An empty string means no search query is entered.
    */
   value?: string;
 }
@@ -5757,19 +5756,19 @@ interface Text {
  */
 interface TextAreaEvents {
   /**
-   * A callback function executed when the user makes any changes in the field.
+   * Called when the user makes any changes in the field.
    */
   input?: (event: CallbackEvent<typeof tagName$d>) => void;
   /**
-   * A callback function executed after editing completes, typically on blur.
+   * Called after editing completes, typically on blur.
    */
   change?: (event: CallbackEvent<typeof tagName$d>) => void;
   /**
-   * A callback function executed when the element loses focus.
+   * Called when the element loses focus.
    */
   blur?: (event: CallbackEvent<typeof tagName$d>) => void;
   /**
-   * A callback function executed when the element receives focus.
+   * Called when the element receives focus.
    */
   focus?: (event: CallbackEvent<typeof tagName$d>) => void;
 }
@@ -5790,7 +5789,7 @@ interface TextArea {
    */
   id?: string;
   /**
-   * The content to use as the field label that describes the time information being requested.
+   * The content to use as the field label that describes the text information being requested.
    */
   label?: string;
   /**
@@ -5798,7 +5797,7 @@ interface TextArea {
    */
   details?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The current text content entered in the field. An empty string means no text is entered.
    */
   value?: string;
   /**
@@ -5806,7 +5805,7 @@ interface TextArea {
    */
   placeholder?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -5840,19 +5839,19 @@ interface TextArea {
  */
 interface TextFieldEvents {
   /**
-   * A callback function executed when the user makes any changes in the field.
+   * Called when the user makes any changes in the field.
    */
   input?: (event: CallbackEvent<typeof tagName$h>) => void;
   /**
-   * A callback function executed after editing completes, typically on blur.
+   * Called after editing completes, typically on blur.
    */
   change?: (event: CallbackEvent<typeof tagName$h>) => void;
   /**
-   * A callback function executed when the element loses focus.
+   * Called when the element loses focus.
    */
   blur?: (event: CallbackEvent<typeof tagName$h>) => void;
   /**
-   * A callback function executed when the element receives focus.
+   * Called when the element receives focus.
    */
   focus?: (event: CallbackEvent<typeof tagName$h>) => void;
 }
@@ -5873,7 +5872,7 @@ interface TextField {
    */
   id?: string;
   /**
-   * The content to use as the field label that describes the time information being requested.
+   * The content to use as the field label that describes the text information being requested.
    */
   label?: string;
   /**
@@ -5881,7 +5880,7 @@ interface TextField {
    */
   details?: string;
   /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
+   * The current text content entered in the field. An empty string means no text is entered.
    */
   value?: string;
   /**
@@ -5889,7 +5888,7 @@ interface TextField {
    */
   placeholder?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -5921,7 +5920,7 @@ interface TileEvents {
 
 interface Tile {
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -5959,19 +5958,19 @@ interface Tile {
  */
 interface TimeFieldEvents {
   /**
-   * A callback function executed when the user makes any changes in the field.
+   * Called when the user makes any changes in the field.
    */
   input?: (event: CallbackEvent<typeof tagName$3>) => void;
   /**
-   * A callback function executed after editing completes, typically on blur.
+   * Called after editing completes, typically on blur.
    */
   change?: (event: CallbackEvent<typeof tagName$3>) => void;
   /**
-   * A callback function executed when the element loses focus.
+   * Called when the element loses focus.
    */
   blur?: (event: CallbackEvent<typeof tagName$3>) => void;
   /**
-   * A callback function executed when the element receives focus.
+   * Called when the element receives focus.
    */
   focus?: (event: CallbackEvent<typeof tagName$3>) => void;
 }
@@ -5986,7 +5985,7 @@ interface TimeField {
    */
   label?: string;
   /**
-   * Whether the field is disabled, preventing any user interaction.
+   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
    *
    * @default false
    */
@@ -6010,19 +6009,19 @@ interface TimeField {
  */
 interface TimePickerEvents {
   /**
-   * A callback function executed when the user makes any changes in the field.
+   * Called when the user makes any changes in the field.
    */
   input?: (event: CallbackEvent<typeof tagName$6>) => void | null;
   /**
-   * A callback function executed after editing completes, typically on blur.
+   * Called after editing completes, typically on blur.
    */
   change?: (event: CallbackEvent<typeof tagName$6>) => void | null;
   /**
-   * A callback function executed when the element loses focus.
+   * Called when the element loses focus.
    */
   blur?: (event: CallbackEvent<typeof tagName$6>) => void | null;
   /**
-   * A callback function executed when the element receives focus.
+   * Called when the element receives focus.
    */
   focus?: (event: CallbackEvent<typeof tagName$6>) => void | null;
 }

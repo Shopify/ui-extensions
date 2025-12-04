@@ -3,10 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TimeField',
   description:
-    'The `TimeField` component captures time input with a consistent interface for time selection and validation. Use it to collect time information in scheduling, booking, or data entry workflows.' +
-    '\n\nThe component supports both 12-hour and 24-hour time formats based on locale settings. It includes features like time picker integration, keyboard shortcuts, and formatted display to streamline time entry for scheduling, appointment booking, and time-sensitive operations in retail environments.' +
-    '\n\n`TimeField` components respects merchant locale settings for default time format preferences while allowing manual override for specific use cases that require alternative formats.' +
-    '\n\n`TimeField` provides only text-based time input. For visual time selection with clock or spinner interfaces, use the [`TimePicker`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/timepicker) component which offers interactive time selection.',
+    'The `TimeField` component captures time input through direct text entry. Use it when merchants know the exact time they want to enter or for quick time data entry.' +
+    '\n\nFor visual time selection with clock or spinner interfaces, use [`TimePicker`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/timepicker).',
   thumbnail: 'time-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -29,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'time-field-default.png',
     description:
-      'Capture time input using a `TimeField` component with locale-aware formatting. This example shows a basic time field with label and time validation.',
+      'Capture time input using a `TimeField` component. This example shows a basic time field with a label for time entry.',
     codeblock: {
       title: 'Capture time input with a time field',
       tabs: [

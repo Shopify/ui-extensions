@@ -3,10 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Divider',
   description:
-    'The `Divider` component creates a visual separation between content sections. Use dividers to organize information and improve content hierarchy by providing clear section boundaries.' +
-    '\n\nThe component renders a subtle horizontal line that follows design system specifications for color and thickness, maintaining visual consistency across the interface. It provides a clean way to separate content groups without adding significant visual weight, helping merchants scan and understand interface structure through strategic content segmentation.' +
-    "\n\nTo maintain consistency with the native POS styling, The component doesn't support custom styling beyond the available direction property. Other visual properties are controlled by the POS design system." +
-    "\n\n`Divider` components support both full-width and inset dividers with configurable margins, allowing precise control over visual separation without adding custom CSS for common divider placement patterns. Dividers don't automatically adjust spacing around themselves. Ensure your design uses appropriate margins and padding to achieve proper visual separation.",
+    'The `Divider` component creates visual separation between content sections by rendering a horizontal or vertical line. Use it to organize information and improve content hierarchy.',
   thumbnail: 'divider-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -23,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'divider-default.png',
     description:
-      'Create visual separation between content sections using a `Divider` component. This example shows a horizontal divider that provides clear section boundaries.',
+      'Separate content sections using a `Divider` component. This example shows a basic horizontal divider.',
     codeblock: {
       title: 'Separate content sections with a divider',
       tabs: [

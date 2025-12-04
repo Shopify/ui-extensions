@@ -77,19 +77,19 @@ declare const tagName = 's-date-picker';
 export interface DatePickerJSXProps
   extends Pick<DatePickerProps, 'id' | 'value'> {
   /**
-   * A callback function executed when the user selects a date from the picker.
+   * Called when the user selects a date from the picker.
    */
   onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
   /**
-   * A callback function executed when the user selects a date from the picker that is different from the current value.
+   * Called when the user selects a date from the picker that is different from the current value.
    */
   onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
   /**
-   * A callback function executed when the date picker is dismissed or closed.
+   * Called when the date picker is dismissed or closed.
    */
   onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
   /**
-   * A callback function executed when the date picker is revealed or opened.
+   * Called when the date picker is revealed or opened.
    */
   onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
 }

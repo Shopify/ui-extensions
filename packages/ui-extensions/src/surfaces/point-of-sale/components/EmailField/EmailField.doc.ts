@@ -3,9 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'EmailField',
   description:
-    'The `EmailField` component captures email address input from customers. Use it to collect email information in forms, customer profiles, or contact workflows.' +
-    "\n\n`EmailField` provides the input interface but doesn't perform automatic email validation. Implement your own validation logic, and use the `error` property to display validation results." +
-    '\n\n`EmailField` components integrate with browser autocomplete features to speed up email entry by suggesting previously used addresses, significantly reducing typing time during customer registration workflows.',
+    'The `EmailField` component captures email address input. Use it to collect email information in forms, customer profiles, or contact workflows.' +
+    "\n\n`EmailField` doesn't perform automatic email validation. Implement your own validation logic, and use the `error` property to display validation results.",
   thumbnail: 'email-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -34,7 +33,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'email-field-default.png',
     description:
-      'Capture email address input using an `EmailField` component with built-in email validation. This example shows a basic email field with label and automatic format validation.',
+      'Capture email address input using an `EmailField` component. This example shows a basic email field with a label for collecting email information.',
     codeblock: {
       title: 'Capture email addresses with an email field',
       tabs: [

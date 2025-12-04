@@ -35,7 +35,7 @@ export interface PinPadActionType {
    */
   label: string;
   /**
-   * A callback function executed when the action button is clicked. Can return the PIN digits directly as an array of numbers, or return a Promise that resolves to the PIN array. Use for implementing custom PIN retrieval logic or validation workflows.
+   * Called when the action button is clicked. Can return the PIN digits directly as an array of numbers, or return a Promise that resolves to the PIN array. Use for implementing custom PIN retrieval logic or validation workflows.
    */
   onClick: () => Promise<number[]> | number[];
 }
