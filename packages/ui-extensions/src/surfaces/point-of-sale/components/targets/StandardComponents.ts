@@ -28,6 +28,7 @@ export type StandardComponents =
   | 'SearchField'
   | 'Section'
   | 'Stack'
+  | 'Switch'
   | 'Text'
   | 'TextArea'
   | 'TextField'
