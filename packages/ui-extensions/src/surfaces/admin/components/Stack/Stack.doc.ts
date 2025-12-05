@@ -10,8 +10,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Useful for',
       type: 'Generic' as const,
       anchorLink: 'useful-for',
-      sectionContent: `- Placing items in rows or columns when sections don't work for your layout.
-- Controlling the spacing between elements.`,
+      sectionContent: `- Placing non-form items in rows or columns when sections don't work for your layout.
+- Controlling the spacing between elements.
+- For form layouts where you need multiple input fields on the same row, use \`s-grid\` instead.`,
     },
     {
       title: 'Considerations',

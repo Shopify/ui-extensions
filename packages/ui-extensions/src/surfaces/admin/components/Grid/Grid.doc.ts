@@ -9,7 +9,8 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Useful for',
       type: 'Generic' as const,
       anchorLink: 'useful-for',
-      sectionContent: `- Organizing content into a grid-like layout with columns and rows with consistent alignment and spacing.
+      sectionContent: `- Building form layouts where you want more than one field on the same row.
+- Organizing content into a grid-like layout with columns and rows with consistent alignment and spacing.
 - Creating responsive layouts with consistent spacing.`,
     },
     {
