@@ -3,7 +3,6 @@ export type StandardComponents =
   | 'Banner'
   | 'Box'
   | 'Button'
-  | 'CameraScanner'
   | 'Choice'
   | 'ChoiceList'
   | 'Clickable'
