@@ -81,7 +81,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent: `\n- POS UI extensions can store up to a maximum of 100 entries.\n- The maximum key size is ~1 KB and the maximum value size is ~1 MB.\n- Data persists even when extension targets are disabled or removed.\n- Stored extension data is automatically cleared after 30 days of inactivity.\n`,
+      sectionContent: `\n- POS UI extensions can store up to a maximum of 100 entries.\n- The maximum key size is ~1 KB and the maximum value size is ~1 MB.\n- Data persists even when extension targets are disabled or removed.\n- Stored extension data is automatically cleared after 30 days of inactivity. The inactivity timer is reset only by write operations (\`set\`); read operations (\`get\`) do not affect the timer.\n`,
     },
   ],
 };
