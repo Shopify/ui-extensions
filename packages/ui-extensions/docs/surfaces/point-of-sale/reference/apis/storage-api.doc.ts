@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   type: 'APIs',
   category: 'Target APIs',
-  subCategory: 'Standard APIs',
+  subCategory: 'Platform APIs',
   definitions: [
     {
       title: 'StorageApi',
