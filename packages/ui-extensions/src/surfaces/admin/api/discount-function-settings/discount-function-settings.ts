@@ -2,7 +2,7 @@ import type {BlockExtensionApi} from '../block/block';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
 
 import {ApplyMetafieldChange} from './metafields';
-import {DiscountFunctionSettingsData} from './launch-options';
+import {DiscountFunctionSettingsData, DiscountsApi} from './launch-options';
 
 export interface DiscountFunctionSettingsApi<
   ExtensionTarget extends AnyExtensionTarget,
@@ -12,4 +12,5 @@ export interface DiscountFunctionSettingsApi<
    */
   applyMetafieldChange: ApplyMetafieldChange;
   data: DiscountFunctionSettingsData;
+  discounts: DiscountsApi;
 }

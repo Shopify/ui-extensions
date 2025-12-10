@@ -952,3 +952,38 @@ export interface ReadonlySignalLike<T> {
    */
   subscribe(fn: (value: T) => void): () => void;
 }
+
+/**
+ * A result type that indicates the success or failure of an operation.
+ */
+type Result<T> =
+  | {success: true; value: T}
+  | {success: false; errors: ValidationError[]};
+
+/**
+ * A validation error object that is returned when an operation fails.
+ */
+interface ValidationError {
+  type: 'error';
+  /**
+   * A message describing the error.
+   */
+  message: string;
+  /**
+   * A code identifier for the error.
+   */
+  code: string;
+  /**
+   * Field-level validation issues
+   */
+  issues?: {
+    message: string;
+    path: string[];
+  }[];
+}
+
+/**
+ * A function that updates a signal and returns a result indicating success or failure.
+ * The function is typically used alongisde a ReadonlySignalLike object.
+ */
+export type UpdateSignalFunction<T> = (value: T) => Result<T>;
