@@ -1,5 +1,5 @@
 ---
-'@shopify/ui-extensions': minor
+'@shopify/ui-extensions': major
 ---
 
 Remove accessory slot from TextArea component
