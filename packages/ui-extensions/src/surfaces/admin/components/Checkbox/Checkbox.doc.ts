@@ -10,7 +10,8 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Work independently from each other
+      sectionContent: `- Use ChoiceList when rendering multiple checkboxes to provide a consistent and accessible selection interface
+- Work independently from each other
 - Be framed positively (e.g., "Publish store" not "Hide store")
 - Always have a label when used to activate or deactivate a setting
 - Be listed in a logical order (alphabetical, numerical, time-based, etc.)`,

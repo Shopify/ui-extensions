@@ -17,7 +17,8 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use plain and clear terms.
+      sectionContent: `- Text elements display inline and will flow on the same line when placed next to each other. To stack multiple text elements vertically, wrap them in a Stack container
+- Use plain and clear terms.
 - Don't use jargon or technical language.
 - Don't use different terms to describe the same thing.
 - Don't duplicate content.`,

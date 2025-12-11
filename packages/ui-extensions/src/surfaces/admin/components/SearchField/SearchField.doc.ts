@@ -6,6 +6,14 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/searchfield.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- The SearchField automatically includes a clear button when text is entered, so you should not create your own clear button`,
+    },
+  ],
   definitions: [
     {
       title: 'SearchField',
