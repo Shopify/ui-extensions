@@ -6,6 +6,14 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   subSections: [
     {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Always configure layout properties when using Grid. At minimum, set gridTemplateColumns to define your column structure (e.g., repeat(12, 1fr) for a 12-column grid)
+- Use gap to add spacing between grid items rather than adding margins to individual items
+- Combine gridTemplateColumns with gridColumn on GridItem components to control how items span across columns`,
+    },
+    {
       title: 'Useful for',
       type: 'Generic' as const,
       anchorLink: 'useful-for',
