@@ -11,7 +11,11 @@ const Extension = () => {
   const handleCaptureAndUpload = async () => {
     setIsProcessing(true);
     try {
-      const photo = await shopify.camera.takePhoto({quality: 0.8, maxWidth: 1520, maxHeight: 1520});
+      const photo = await shopify.camera.takePhoto({
+        quality: 0.8,
+        maxWidth: 1520,
+        maxHeight: 1520,
+      });
 
       // Upload the image to your backend server
       // (Replace with your actual backend endpoint)

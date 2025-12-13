@@ -16,7 +16,10 @@ const Extension = () => {
       setImageData(photo);
       shopify.toast.show('Photo captured successfully!');
     } catch (error) {
-      shopify.toast.show(`Error: ${error.message}`);
+      // skip showing errors when the user cancels the photo capture.
+      if (!error.message.includes('User cancelled')) {
+        shopify.toast.show(`Error: ${error.message}`);
+      }
     } finally {
       setIsCapturing(false);
     }
@@ -38,7 +41,9 @@ const Extension = () => {
               <s-section heading="Image Details">
                 <s-text>Width: {imageData.width}px</s-text>
                 <s-text>Height: {imageData.height}px</s-text>
-                <s-text>File Size: {(imageData.fileSize / 1024).toFixed(2)} KB</s-text>
+                <s-text>
+                  File Size: {(imageData.fileSize / 1024).toFixed(2)} KB
+                </s-text>
                 <s-text>Type: {imageData.type}</s-text>
               </s-section>
             </>
@@ -48,4 +53,3 @@ const Extension = () => {
     </s-page>
   );
 };
-

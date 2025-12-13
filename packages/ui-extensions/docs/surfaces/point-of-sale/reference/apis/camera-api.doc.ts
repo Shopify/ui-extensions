@@ -38,8 +38,8 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `
 - Camera functionality requires the device to have a camera and appropriate permissions granted by the user.
 - Only one camera operation can be in progress at a time. Attempting to call \`takePhoto()\` while a capture is already in progress will result in a rejected promise.
-- Base64 strings can be memory-intensive for large images. Use appropriate maxWidth and maxHeight settings to optimize performance.
-- The \`facingMode\` parameter may not work reliably on some Android devices to set the initial camera, as camera facing mode handling is not standardized across Android manufacturers. The rear-facing camera is used by default if the specified facing mode is not supported. Users can still manually toggle between cameras once the camera interface is open.
+- Base64 strings can be memory-intensive for large images. Use appropriate \`maxWidth\`, \`maxHeight\`, and \`quality\` settings to optimize performance.
+- The \`facingMode\` parameter may not behave consistently on all Android devices, because camera-facing behavior varies across manufacturers. If a requested mode isn't supported, the rear-facing camera is used by default, and users can still manually switch cameras from the camera interface.
 `,
     },
   ],
