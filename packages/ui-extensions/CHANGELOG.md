@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2026.1.0-rc.4
+
+### Minor Changes
+
+- [#3603](https://github.com/Shopify/ui-extensions/pull/3603) [`e7892d6`](https://github.com/Shopify/ui-extensions/commit/e7892d6ef3f6b7281f5b22a41b7c8e43b49e68e0) Thanks [@prakashraman](https://github.com/prakashraman)! - Remove accessory slot from TextArea component
+
+- [#3597](https://github.com/Shopify/ui-extensions/pull/3597) [`6b20b88`](https://github.com/Shopify/ui-extensions/commit/6b20b88010b4c329f654aa7b84a08124e693ec74) Thanks [@fatbattk](https://github.com/fatbattk)! - Add Camera API types
+
 ## 2026.1.0-rc.3
 
 ### Patch Changes
