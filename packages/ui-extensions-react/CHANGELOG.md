@@ -1,5 +1,12 @@
 # @shopify/ui-extensions-react
 
+## 2025.7.3
+
+### Patch Changes
+
+- Updated dependencies [[`6dedb0157fbfa89ba5185aaaf45a777eed1fdf29`](https://github.com/Shopify/ui-extensions/commit/6dedb0157fbfa89ba5185aaaf45a777eed1fdf29)]:
+  - @shopify/ui-extensions@2025.7.3
+
 ## 2025.7.2
 
 ### Patch Changes

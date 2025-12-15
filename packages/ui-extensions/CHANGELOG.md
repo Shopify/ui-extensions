@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.7.3
+
+### Patch Changes
+
+- [#3576](https://github.com/Shopify/ui-extensions/pull/3576) [`6dedb0157fbfa89ba5185aaaf45a777eed1fdf29`](https://github.com/Shopify/ui-extensions/commit/6dedb0157fbfa89ba5185aaaf45a777eed1fdf29) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Exports LineItemComponent from point-of-sale API so POS can import the type
+
 ## 2025.7.2
 
 ### Patch Changes
