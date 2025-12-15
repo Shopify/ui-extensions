@@ -12,6 +12,7 @@ import {
   CustomerPrivacy,
   ApplyTrackingConsentChangeType,
   ToastApi,
+  Intents,
   SubscribableSignalLike,
 } from '../shared';
 
@@ -86,6 +87,14 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * > Note: Requires to [connect a third-party domain](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-customer-account) to Shopify for your customer account pages.
    */
   analytics: Analytics;
+
+  /**
+   * Entry point for Shopify intents.
+   *
+   * Intents pair an `action` (verb) with a resource `type` and optional `value`
+   * and `data` to request a workflow.
+   */
+  intents: Intents;
 
   /**
    * The settings matching the settings definition written in the
