@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {TextAreaProps,Key, Ref} from './components-shared.d.ts';
+import type {TabsProps,Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -37,38 +37,23 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
     target: HTMLElementTagNameMap[T] | null;
 }
 
-declare const tagName = "s-text-area";
-export interface TextAreaJSXProps extends Pick<TextAreaProps, 'id' | 'label' | 'details' | 'value' | 'placeholder' | 'disabled' | 'error' | 'required' | 'maxLength' | 'rows'> {
-    /**
-     * Callback when the user makes any changes in the field.
-     */
-    onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback after editing completes (typically on blur).
-     */
+declare const tagName = "s-tab";
+export interface TabsJSXProps extends Pick<TabsProps, 'value' | 'defaultValue' | 'disabled'> {
+    children?: ComponentChildren;
     onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback when the element loses focus.
-     */
-    onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback when the element receives focus.
-     */
-    onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
-export type ElementProps = Omit<TextAreaJSXProps, 'accessory'>;
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: HtmlElementTagNameProps<ElementProps>;
+        [tagName]: HtmlElementTagNameProps<TabsJSXProps>;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: IntrinsicElementProps<ElementProps>;
+            [tagName]: IntrinsicElementProps<TabsJSXProps>;
         }
     }
 }
 
 export { tagName };
-export type { TextAreaJSXProps };
+export type { TabsJSXProps };
