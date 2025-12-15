@@ -2,11 +2,12 @@ name: Prepare repo
 runs:
   using: 'composite'
   steps:
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       name: Setup node.js and yarn
       with:
+        registry-url: 'https://registry.npmjs.org' # Required for OIDC
         cache: yarn
-        node-version-file: '.nvmrc'
+        node-version-file: '.nvmrc' # Must be 20+ to support npm 11.5.1+
 
     - name: Yarn install
       run: yarn install --frozen-lockfile
