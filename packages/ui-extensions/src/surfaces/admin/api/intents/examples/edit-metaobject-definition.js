@@ -1,7 +1,7 @@
 const {intents} = useApi(TARGET);
 
 const activity = await intents.invoke('edit:shopify/MetaobjectDefinition', {
-  value: 'gid://shopify/MetaobjectDefinition/123456789',
+  data: {type: 'my_metaobject_definition_type'},
 });
 
 const response = await activity.complete;
