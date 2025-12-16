@@ -4533,9 +4533,21 @@ declare module 'preact' {
 
 declare const tagName$9 = "s-empty-state";
 interface EmptyStateJSXProps extends Pick<EmptyStateProps, 'heading'> {
+    /**
+     * The subheading of the EmptyState.
+     */
     subheading?: string;
+    /**
+     * The primary action to perform, provided as a button or link type element.
+     */
     primaryAction?: ComponentChild;
+    /**
+     * The secondary actions to perform, provided as button or link type elements.
+     */
     secondaryActions?: ComponentChild;
+    /**
+     * The graphic to display in the EmptyState. The only supported components is `Icon`, with a type of `alert-circle`, `search`, `info`, or `circle-info`.
+     */
     graphic?: ComponentChild;
 }
 type ElementProps$2 = Omit<EmptyStateJSXProps, 'primaryAction' | 'secondaryActions' | 'graphic'>;
@@ -4608,7 +4620,7 @@ declare module 'preact' {
     }
 }
 
-declare const tagName$5 = "s-tab";
+declare const tagName$5 = "s-tabs";
 interface TabsJSXProps extends Pick<TabsProps, 'value' | 'defaultValue' | 'disabled'> {
     children?: ComponentChildren;
     onChange?: ((event: CallbackEvent<typeof tagName$5>) => void) | null;
@@ -4643,7 +4655,7 @@ declare module 'preact' {
     }
 }
 
-declare const tagName$3 = "s-tabs";
+declare const tagName$3 = "s-tab";
 interface TabJSXProps extends Pick<TabProps, 'controls' | 'disabled'> {
     children?: StringChildren;
 }
@@ -4784,12 +4796,16 @@ interface Link {
 }
 
 interface EmptyStateSlots {
+    /** The primary action to perform, provided as a button or link type element. */
     'primary-action'?: HTMLElement;
+    /** The secondary actions to perform, provided as button or link type elements. */
     'secondary-actions'?: HTMLElement;
+    /** The graphic to display in the EmptyState. The only supported components is `Icon`, with a type of `alert-circle`, `search`, `info`, or `circle-info`. */
     'graphic'?: HTMLElement;
 }
 
 interface EmptyState {
+    /** The subheading of the EmptyState. */
     subheading?: string;
     /** The heading of the EmptyState. */
     heading?: string;
@@ -4897,7 +4913,7 @@ interface Switch {
 }
 
 interface TabsEvents {
-    change?: (event: CallbackEvent<typeof tagName$3>) => void;
+    change?: (event: CallbackEvent<typeof tagName$5>) => void;
 }
 
 interface Tabs {

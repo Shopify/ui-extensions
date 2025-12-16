@@ -28,7 +28,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
-declare const tagName = "s-tabs";
+declare const tagName = "s-tab";
 export interface TabJSXProps extends Pick<TabProps, 'controls' | 'disabled'> {
     children?: StringChildren;
 }

@@ -37,7 +37,7 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
     target: HTMLElementTagNameMap[T] | null;
 }
 
-declare const tagName = "s-tab";
+declare const tagName = "s-tabs";
 export interface TabsJSXProps extends Pick<TabsProps, 'value' | 'defaultValue' | 'disabled'> {
     children?: ComponentChildren;
     onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
