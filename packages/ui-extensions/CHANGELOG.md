@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.10
+
+### Patch Changes
+
+- [#3665](https://github.com/Shopify/ui-extensions/pull/3665) [`34010b8`](https://github.com/Shopify/ui-extensions/commit/34010b8cf3a2dff7cf5fd86e3e0828af67efa529) Thanks [@vctrchu](https://github.com/vctrchu)! - Fix npm latest tag for 2025-10
+
 ## 2025.10.9
 
 ### Patch Changes
