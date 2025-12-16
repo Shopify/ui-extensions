@@ -39,7 +39,7 @@ jobs:
         uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # v1.5.3
         with:
           title: Version Packages (${{ github.ref_name }})
-          publish: yarn run deploy ${{ endsWith(github.ref_name, '-rc') && '' || format('--tag {0}', github.ref_name) }} # RC uses pre mode (no --tag needed), stable publishes with version tag
+          publish: yarn run deploy ${{ !endsWith(github.ref_name, '-rc') && format('--tag {0}', github.ref_name) }}
           createGithubReleases: false
         env:
           NPM_TOKEN: '' # Forces OIDC authentication
