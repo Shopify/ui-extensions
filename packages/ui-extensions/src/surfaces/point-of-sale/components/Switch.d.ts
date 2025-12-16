@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {TextAreaProps,Key, Ref} from './components-shared.d.ts';
+import type {SwitchProps,Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -37,38 +37,23 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
     target: HTMLElementTagNameMap[T] | null;
 }
 
-declare const tagName = "s-text-area";
-export interface TextAreaJSXProps extends Pick<TextAreaProps, 'id' | 'label' | 'details' | 'value' | 'placeholder' | 'disabled' | 'error' | 'required' | 'maxLength' | 'rows'> {
-    /**
-     * Callback when the user makes any changes in the field.
-     */
+declare const tagName = "s-switch";
+export interface SwitchJSXProps extends Pick<SwitchProps, 'value' | 'defaultChecked' | 'disabled' | 'accessibilityLabel' | 'checked' | 'label' | 'details' | 'error' | 'labelAccessibilityVisibility'> {
     onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback after editing completes (typically on blur).
-     */
     onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback when the element loses focus.
-     */
-    onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback when the element receives focus.
-     */
-    onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
-export type ElementProps = Omit<TextAreaJSXProps, 'accessory'>;
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: HtmlElementTagNameProps<ElementProps>;
+        [tagName]: HtmlElementTagNameProps<SwitchJSXProps>;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: IntrinsicElementProps<ElementProps>;
+            [tagName]: IntrinsicElementProps<SwitchJSXProps>;
         }
     }
 }
 
 export { tagName };
-export type { TextAreaJSXProps };
+export type { SwitchJSXProps };

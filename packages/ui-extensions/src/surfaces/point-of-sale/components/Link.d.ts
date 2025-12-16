@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {TextAreaProps,Key, Ref} from './components-shared.d.ts';
+import type {LinkProps,Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -37,38 +37,29 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
     target: HTMLElementTagNameMap[T] | null;
 }
 
-declare const tagName = "s-text-area";
-export interface TextAreaJSXProps extends Pick<TextAreaProps, 'id' | 'label' | 'details' | 'value' | 'placeholder' | 'disabled' | 'error' | 'required' | 'maxLength' | 'rows'> {
+declare const tagName = "s-link";
+export interface LinkJSXProps extends Pick<LinkProps, 'id' | 'commandFor' | 'command' | 'accessibilityLabel'> {
     /**
-     * Callback when the user makes any changes in the field.
+     * Called when the link is activated.
      */
-    onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    onClick?: (event: CallbackEvent<typeof tagName>) => void;
     /**
-     * Callback after editing completes (typically on blur).
+     * The Link content.
      */
-    onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback when the element loses focus.
-     */
-    onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback when the element receives focus.
-     */
-    onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    children?: ComponentChildren;
 }
-export type ElementProps = Omit<TextAreaJSXProps, 'accessory'>;
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: HtmlElementTagNameProps<ElementProps>;
+        [tagName]: HtmlElementTagNameProps<LinkJSXProps>;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: IntrinsicElementProps<ElementProps>;
+            [tagName]: IntrinsicElementProps<LinkJSXProps>;
         }
     }
 }
 
 export { tagName };
-export type { TextAreaJSXProps };
+export type { LinkJSXProps };
