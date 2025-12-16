@@ -1,5 +1,15 @@
 # @shopify/ui-extensions
 
+## 2025.10.9
+
+### Patch Changes
+
+- [#3600](https://github.com/Shopify/ui-extensions/pull/3600) [`57ba7dc`](https://github.com/Shopify/ui-extensions/commit/57ba7dc2e3f97fb64bf1e04d228c62c8248c2671) Thanks [@BrittaEvansFenton](https://github.com/BrittaEvansFenton)! - Adds alt prop to POS Image
+
+- [#3632](https://github.com/Shopify/ui-extensions/pull/3632) [`3f04401`](https://github.com/Shopify/ui-extensions/commit/3f04401f7dfbd91c6e5d31a97922fb043eba5bc2) Thanks [@vctrchu](https://github.com/vctrchu)! - Remove CameraScanner dev doc examples from Standard API
+
+- [#3586](https://github.com/Shopify/ui-extensions/pull/3586) [`f9ab867`](https://github.com/Shopify/ui-extensions/commit/f9ab867be2e7f2865098824bfd8f64a3c22bfa6f) Thanks [@chadcromwell](https://github.com/chadcromwell)! - Add optional tipAmount field to POS transaction data types
+
 ## 2025.10.8
 
 ### Patch Changes
