@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2026.1.0-rc.5
+
+### Patch Changes
+
+- [#3650](https://github.com/Shopify/ui-extensions/pull/3650) [`01fb914`](https://github.com/Shopify/ui-extensions/commit/01fb914a0ddbe520698607acd780d59787deb769) Thanks [@andy-chhuon](https://github.com/andy-chhuon)! - new oidc deploy workflow
+
+- [#3652](https://github.com/Shopify/ui-extensions/pull/3652) [`54f38ee`](https://github.com/Shopify/ui-extensions/commit/54f38eeb798dee46f29eb146749a99d2634c6b49) Thanks [@andy-chhuon](https://github.com/andy-chhuon)! - Bump node version to v20.19.6
+
 ## 2026.1.0-rc.4
 
 ### Minor Changes
