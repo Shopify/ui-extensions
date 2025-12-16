@@ -3,6 +3,7 @@ name: Deploy
 on:
   push:
     branches:
+      # Stable version branches
       - 2023-04
       - 2023-07
       - 2023-10
@@ -11,6 +12,8 @@ on:
       - 2024-07
       - 2024-10
       - 20[0-9][0-9]-[01][1470]
+      # RC version branches
+      - 20[0-9][0-9]-[01][1470]-rc
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -18,6 +21,9 @@ jobs:
   changesets:
     name: Deploy
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # Required for OIDC
     steps:
       - uses: actions/checkout@v3
         with:
@@ -25,26 +31,25 @@ jobs:
 
       - uses: ./.github/workflows/actions/prepare
 
+      - name: Update npm to latest
+        run: npm install -g npm@latest
+
       - id: changesets
         name: Create release Pull Request or publish to NPM
-        uses: changesets/action@06245a4e0a36c064a573d4150030f5ec548e4fcc # v1.4.10
+        uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # v1.5.3
         with:
           title: Version Packages (${{ github.ref_name }})
-          publish: yarn run deploy --tag ${{ github.ref_name }}
+          publish: yarn run deploy --tag ${{ endsWith(github.ref_name, '-rc') && 'rc' || github.ref_name }} # RC publishes as `rc` tag, stable publishes as the version number
           createGithubReleases: false
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: '' # Forces OIDC authentication
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
 
       - name: Set 'latest' NPM dist tag
         if: steps.changesets.outputs.published == 'true' && github.ref_name == vars.LATEST_STABLE_VERSION
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: |
-          cat << EOF > "$HOME/.npmrc"
-            //registry.npmjs.org/:_authToken=$NPM_TOKEN
-          EOF
           for pkg in $(echo "$PUBLISHED_PACKAGES" | jq -r '.[] | @base64'); do
             _jq() {
               echo ${pkg} | base64 --decode | jq -r ${1}
