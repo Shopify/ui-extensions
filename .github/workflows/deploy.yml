@@ -48,6 +48,7 @@ jobs:
       - name: Set 'latest' NPM dist tag
         if: steps.changesets.outputs.published == 'true' && github.ref_name == vars.LATEST_STABLE_VERSION
         env:
+          NPM_TOKEN: '' # Forces OIDC authentication
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: |
           for pkg in $(echo "$PUBLISHED_PACKAGES" | jq -r '.[] | @base64'); do
