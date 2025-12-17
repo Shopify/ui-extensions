@@ -73,11 +73,7 @@ export type {
 
 export type {StorageApi} from './api/storage-api/storage-api';
 
-export type {
-  ShowToastOptions,
-  ToastApiContent,
-  ToastApi,
-} from './api/toast-api/toast-api';
+export type {ToastApiContent, ToastApi} from './api/toast-api/toast-api';
 
 // Type exports
 export type {
