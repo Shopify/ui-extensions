@@ -1,6 +1,7 @@
 name: Deploy
 
 on:
+  workflow_dispatch: # temporary for manual deployment
   push:
     branches:
       # Stable version branches
@@ -46,7 +47,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
 
       - name: Set 'latest' NPM dist tag
-        if: steps.changesets.outputs.published == 'true' && github.ref_name == vars.LATEST_STABLE_VERSION
+        if: (steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch') && github.ref_name == vars.LATEST_STABLE_VERSION
         env:
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: |
