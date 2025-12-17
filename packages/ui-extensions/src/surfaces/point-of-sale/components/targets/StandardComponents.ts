@@ -29,6 +29,7 @@ export type StandardComponents =
   | 'ScrollBox'
   | 'SearchField'
   | 'Section'
+  | 'Spinner'
   | 'Stack'
   | 'Text'
   | 'TextArea'
