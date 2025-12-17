@@ -59,6 +59,7 @@ describe('usePickupLocationOptionTarget', () => {
     setupGlobalShopifyMock<typeof target>({
       extension: createMockExtension(target),
       target: createMockSubscribableSignalLike(pickupLocationOption),
+      renderMode: {overlay: false},
     });
 
     expect(() => {
@@ -77,6 +78,7 @@ describe('usePickupLocationOptionTarget', () => {
       extension: createMockExtension(target),
       target: createMockSubscribableSignalLike(pickupLocationOption),
       isTargetSelected: createMockSubscribableSignalLike(true),
+      renderMode: {overlay: false},
     });
 
     const {value} = mount.hook(() => usePickupLocationOptionTarget());
@@ -84,6 +86,7 @@ describe('usePickupLocationOptionTarget', () => {
     expect(value).toStrictEqual({
       pickupLocationOptionTarget: pickupLocationOption,
       isTargetSelected: true,
+      renderMode: {overlay: false},
     });
   });
 });

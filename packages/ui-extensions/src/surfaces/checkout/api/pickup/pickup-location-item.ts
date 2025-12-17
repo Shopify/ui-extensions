@@ -1,5 +1,6 @@
 import type {SubscribableSignalLike} from '../../shared';
 import type {PickupLocationOption} from '../standard/standard';
+import type {RenderMode} from '../shared';
 
 export interface PickupLocationItemApi {
   /**
@@ -11,4 +12,9 @@ export interface PickupLocationItemApi {
    * Whether the pickup location is currently selected.
    */
   isTargetSelected: SubscribableSignalLike<boolean>;
+
+  /**
+   * The render mode of the pickup location option.
+   */
+  renderMode: RenderMode;
 }

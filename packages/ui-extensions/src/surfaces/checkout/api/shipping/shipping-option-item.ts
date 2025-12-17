@@ -1,5 +1,6 @@
 import type {SubscribableSignalLike} from '../../shared';
 import type {ShippingOption} from '../standard/standard';
+import type {RenderMode} from '../shared';
 
 export interface ShippingOptionItemApi {
   /**
@@ -15,15 +16,5 @@ export interface ShippingOptionItemApi {
   /**
    * The render mode of the shipping option.
    */
-  renderMode: ShippingOptionItemRenderMode;
-}
-
-/**
- * The render mode of a shipping option.
- */
-export interface ShippingOptionItemRenderMode {
-  /**
-   * Whether the shipping option is rendered in an overlay.
-   */
-  overlay: boolean;
+  renderMode: RenderMode;
 }
