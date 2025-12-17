@@ -51,7 +51,7 @@ jobs:
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: |
           # Forces OIDC authentication for raw run commands
-          echo "//registry.npmjs.org/:_authToken=" > ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=" > "$HOME/.npmrc"
 
           for pkg in $(echo "$PUBLISHED_PACKAGES" | jq -r '.[] | @base64'); do
             _jq() {
