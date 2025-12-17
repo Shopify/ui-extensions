@@ -1,0 +1,22 @@
+<s-tabs
+  defaultValue="details"
+  onChange={(event) => console.log('Tab changed to:', event.currentTarget.value)}
+>
+  <s-tab-list>
+    <s-tab controls="details">Details</s-tab>
+    <s-tab controls="history">History</s-tab>
+    <s-tab controls="notes">Notes</s-tab>
+  </s-tab-list>
+
+  <s-tab-panel id="details">
+    <s-text>Customer details and information</s-text>
+  </s-tab-panel>
+
+  <s-tab-panel id="history">
+    <s-text>Order and purchase history</s-text>
+  </s-tab-panel>
+
+  <s-tab-panel id="notes">
+    <s-text>Customer notes and comments</s-text>
+  </s-tab-panel>
+</s-tabs>
