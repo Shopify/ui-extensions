@@ -4566,11 +4566,41 @@ declare module 'preact' {
 
 declare const tagName$8 = "s-embed";
 interface EmbedJSXProps extends Pick<EmbedProps, 'type' | 'src' | 'accessibilityLabel' | 'blockSize' | 'minBlockSize' | 'maxBlockSize' | 'inlineSize' | 'minInlineSize' | 'maxInlineSize'> {
+    /**
+     * Adjust the block size.
+     *
+     * @default 'auto'
+     */
     blockSize?: SizeUnitsOrAuto;
+    /**
+     * Adjust the minimum block size.
+     *
+     * @default '0'
+     */
     minBlockSize?: SizeUnits;
+    /**
+     * Adjust the maximum block size.
+     *
+     * @default 'none'
+     */
     maxBlockSize?: SizeUnitsOrNone;
+    /**
+     * Adjust the inline size.
+     *
+     * @default 'auto'
+     */
     inlineSize?: SizeUnitsOrAuto;
+    /**
+     * Adjust the minimum inline size.
+     *
+     * @default '0'
+     */
     minInlineSize?: SizeUnits;
+    /**
+     * Adjust the maximum inline size.
+     *
+     * @default 'none'
+     */
     maxInlineSize?: SizeUnitsOrNone;
 }
 declare global {
@@ -4812,11 +4842,35 @@ interface EmptyState {
 }
 
 interface Embed {
+    /**
+     * Adjust the block size.
+     * @default 'auto'
+     */
     blockSize?: SizeUnitsOrAuto;
+    /**
+     * Adjust the minimum block size.
+     * @default '0'
+     */
     minBlockSize?: SizeUnits;
+    /**
+     * Adjust the maximum block size.
+     * @default 'none'
+     */
     maxBlockSize?: SizeUnitsOrNone;
+    /**
+     * Adjust the inline size.
+     * @default 'auto'
+     */
     inlineSize?: SizeUnitsOrAuto;
+    /**
+     * Adjust the minimum inline size.
+     * @default '0'
+     */
     minInlineSize?: SizeUnits;
+    /**
+     * Adjust the maximum inline size.
+     * @default 'none'
+     */
     maxInlineSize?: SizeUnitsOrNone;
     /**
      * The content type of the file to display.
