@@ -50,6 +50,14 @@ export interface ScannerApiContent {
    * Access available scanner sources on the device. Use to check which scanners are available (camera, external, or embedded).
    */
   sources: ScannerSources;
+  /**
+   * Show the camera scanner.
+   */
+  showCameraScanner: () => void;
+  /**
+   * Hide the camera scanner.
+   */
+  hideCameraScanner: () => void;
 }
 
 /**
