@@ -11,6 +11,7 @@ export type StandardComponents =
   | 'DateSpinner'
   | 'Divider'
   | 'EmailField'
+  | 'Embed'
   | 'EmptyState'
   | 'Heading'
   | 'Icon'
