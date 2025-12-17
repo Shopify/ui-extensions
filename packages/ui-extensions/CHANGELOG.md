@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.11
+
+### Patch Changes
+
+- [#3669](https://github.com/Shopify/ui-extensions/pull/3669) [`115be91`](https://github.com/Shopify/ui-extensions/commit/115be91001aa754eb19fade5015f702a4f304a42) Thanks [@fatbattk](https://github.com/fatbattk)! - Sync latest tag
+
 ## 2025.10.10
 
 ### Patch Changes
