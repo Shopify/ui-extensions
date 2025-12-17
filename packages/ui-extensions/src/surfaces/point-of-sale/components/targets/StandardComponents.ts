@@ -15,6 +15,7 @@ export type StandardComponents =
   | 'Heading'
   | 'Icon'
   | 'Image'
+  | 'Link'
   | 'Modal'
   | 'NumberField'
   | 'Page'
