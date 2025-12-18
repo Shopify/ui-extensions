@@ -46,8 +46,16 @@ jobs:
           NPM_TOKEN: '' # Forces OIDC authentication
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
 
+      - name: Temporary manual sync 'latest' tag # will be removed after sync
+        if: github.event_name == 'workflow_dispatch' && github.ref_name == vars.LATEST_STABLE_VERSION
+        run: |
+          # Forces OIDC authentication for raw run commands
+          echo "//registry.npmjs.org/:_authToken=" > "$HOME/.npmrc"
+
+          npm dist-tag add @shopify/ui-extensions@2025.10.11 latest
+
       - name: Set 'latest' NPM dist tag
-        if: (steps.changesets.outputs.published == 'true' || github.event_name == 'workflow_dispatch') && github.ref_name == vars.LATEST_STABLE_VERSION
+        if: steps.changesets.outputs.published == 'true' && github.ref_name == vars.LATEST_STABLE_VERSION
         env:
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: |
