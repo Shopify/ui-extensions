@@ -1,3 +1,6 @@
+/**
+ * Specifies configuration options for capturing photos using the device camera.
+ */
 export interface CameraMediaOptions {
   /**
    * The camera that will be active when the camera interface first opens.
@@ -24,6 +27,9 @@ export interface CameraMediaOptions {
   quality?: number;
 }
 
+/**
+ * Represents the captured image and associated metadata returned by `shopify.camera.takePhoto()`.
+ */
 export interface CameraMediaResponse {
   /** The image data as base64 string. */
   base64: string;
@@ -37,6 +43,9 @@ export interface CameraMediaResponse {
   type: string;
 }
 
+/**
+ * Provides camera capabilities for the POS device.
+ */
 export interface CameraApiContent {
   /**
    * Launch the device's camera to take a photo.
@@ -51,6 +60,10 @@ export interface CameraApiContent {
   takePhoto: (options?: CameraMediaOptions) => Promise<CameraMediaResponse>;
 }
 
+/**
+ * The `CameraApi` object provides access to device camera functionality for capturing photos.
+ * Access these properties through `shopify.camera`.
+ */
 export interface CameraApi {
   camera: CameraApiContent;
 }
