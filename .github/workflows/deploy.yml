@@ -49,10 +49,23 @@ jobs:
       - name: Temporary manual sync 'latest' tag # will be removed after sync
         if: github.event_name == 'workflow_dispatch' && github.ref_name == vars.LATEST_STABLE_VERSION
         run: |
-          # Forces OIDC authentication for raw run commands
-          echo "//registry.npmjs.org/:_authToken=" > "$HOME/.npmrc"
+          # 1. Identify which .npmrc npm is actually using
+          NPM_RC=${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}
+          echo "Writing to: $NPM_RC"
 
-          npm dist-tag add @shopify/ui-extensions@2025.10.11 latest
+          # 2. Configure for OIDC and map scope
+          # Forces OIDC authentication for raw run commands
+          echo "//registry.npmjs.org/:_authToken=" > "$NPM_RC"
+          echo "@shopify:registry=https://registry.npmjs.org/" >> "$NPM_RC"
+
+          # 3. Debug info (contents from above)
+          echo "--- Contents of $NPM_RC ---"
+          cat "$NPM_RC"
+          echo "--- npm identity check ---"
+          npm whoami --registry=https://registry.npmjs.org/ || echo "whoami failed (expected if OIDC not yet triggered)"
+
+          # 4. Run with info logging
+          npm dist-tag add @shopify/ui-extensions@2025.10.11 latest --loglevel=info
 
       - name: Set 'latest' NPM dist tag
         if: steps.changesets.outputs.published == 'true' && github.ref_name == vars.LATEST_STABLE_VERSION
