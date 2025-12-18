@@ -31,6 +31,7 @@ export type StandardComponents =
   | 'Section'
   | 'Spinner'
   | 'Stack'
+  | 'Switch'
   | 'Tab'
   | 'TabList'
   | 'TabPanel'
