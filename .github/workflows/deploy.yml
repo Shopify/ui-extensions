@@ -35,6 +35,11 @@ jobs:
       - name: Update npm to latest
         run: npm install -g npm@latest
 
+      - name: Configure NPM for OIDC (run steps below)
+        run: |
+          echo "//registry.npmjs.org/:_authToken=" > "$HOME/.npmrc"
+          echo "@shopify:registry=https://registry.npmjs.org/" >> "$HOME/.npmrc"
+
       - id: changesets
         name: Create release Pull Request or publish to NPM
         uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # v1.5.3
@@ -49,22 +54,13 @@ jobs:
       - name: Temporary manual sync 'latest' tag # will be removed after sync
         if: github.event_name == 'workflow_dispatch' && github.ref_name == vars.LATEST_STABLE_VERSION
         run: |
-          # 1. Identify which .npmrc npm is actually using
-          NPM_RC=${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}
-          echo "Writing to: $NPM_RC"
-
-          # 2. Configure for OIDC and map scope
-          # Forces OIDC authentication for raw run commands
-          echo "//registry.npmjs.org/:_authToken=" > "$NPM_RC"
-          echo "@shopify:registry=https://registry.npmjs.org/" >> "$NPM_RC"
-
-          # 3. Debug info (contents from above)
-          echo "--- Contents of $NPM_RC ---"
-          cat "$NPM_RC"
+          # Debug info (contents from above)
+          echo "--- Contents of $HOME/.npmrc ---"
+          cat "$HOME/.npmrc"
           echo "--- npm identity check ---"
           npm whoami --registry=https://registry.npmjs.org/ || echo "whoami failed (expected if OIDC not yet triggered)"
 
-          # 4. Run with info logging
+          # Run with info logging
           npm dist-tag add @shopify/ui-extensions@2025.10.11 latest --loglevel=info
 
       - name: Set 'latest' NPM dist tag
@@ -72,9 +68,6 @@ jobs:
         env:
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: |
-          # Forces OIDC authentication for raw run commands
-          echo "//registry.npmjs.org/:_authToken=" > "$HOME/.npmrc"
-
           for pkg in $(echo "$PUBLISHED_PACKAGES" | jq -r '.[] | @base64'); do
             _jq() {
               echo ${pkg} | base64 --decode | jq -r ${1}
