@@ -4,21 +4,14 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Intents',
   overviewPreviewDescription:
     'The API for invoking Shopify intents to request workflows.',
-  description: `Entry point for Shopify intents. Intents pair an \`action\` (verb) with a resource \`type\` and optional \`value\` and \`data\` to request a workflow.`,
+  description: `The Intents API provides a way to invoke existing customer account workflows for managing buyer information.`,
   isVisualComponent: false,
   category: 'APIs',
   type: 'API',
-  definitions: [
-    {
-      title: 'Intents',
-      description: 'Intents API for invoking Shopify workflows.',
-      type: 'Intents',
-    },
-  ],
   defaultExample: {
     description: '',
     codeblock: {
-      title: 'Extension.jsx',
+      title: 'Replace payment method',
       tabs: [
         {
           code: '../examples/apis/intents.example.jsx',
@@ -26,6 +19,80 @@ const data: ReferenceEntityTemplateSchema = {
         },
       ],
     },
+  },
+  definitions: [
+    {
+      title: 'invoke',
+      description: `The \`invoke\` API is a function that accepts either a string query or an options object describing the intent to invoke and returns a Promise that resolves to an activity handle for the workflow.
+
+## Intent Format
+
+Intents are invoked using a string query format: \`\${action}:\${type},\${value}\`
+
+Where:
+- \`action\` - The operation to perform (\`create\`, \`edit\` or \`open\`)
+- \`type\` - The resource type (e.g., \`shopify/SubscriptionContract\`)
+- \`value\` - The resource identifier
+
+## Supported Resources
+
+### Subscription Contract
+| Action | Type | Value | Data |
+|--------|------|-------|------|
+| \`open\` | \`shopify/SubscriptionContract\` | \`gid://shopify/SubscriptionContract/{id}\` | \`{ field: 'paymentMethod' }\` |`,
+      type: 'Intents',
+    },
+    {
+      title: 'IntentAction',
+      description: `Supported actions that can be performed on resources.
+- \`create\`: Opens a creation workflow for a new resource
+- \`edit\`: Opens an editing workflow for an existing resource (requires \`value\` parameter)
+- \`open\`: Opens a workflow for an existing resource (requires \`value\` parameter)`,
+      type: 'IntentAction',
+    },
+    {
+      title: 'IntentQuery',
+      description: `Structured description of an intent to invoke. Use this object form when programmatically composing an intent at runtime.`,
+      type: 'IntentQuery',
+    },
+    {
+      title: 'IntentQueryOptions',
+      description: `Options for invoking intents when using the query string format.`,
+      type: 'IntentQueryOptions',
+    },
+    {
+      title: 'IntentActivity',
+      description: `Activity handle for tracking intent workflow progress.`,
+      type: 'IntentActivity',
+    },
+    {
+      title: 'IntentResponse',
+      description: `Response object returned when the intent workflow completes.`,
+      type: 'IntentResponse',
+    },
+  ],
+  examples: {
+    description: 'Intents for each Shopify resource type',
+    exampleGroups: [
+      {
+        title: 'Subscription Contract',
+        examples: [
+          {
+            description:
+              'Replace the payment method on an active subscription contract. Opens a modal with vaulted cards.',
+            codeblock: {
+              title: 'Replace payment method',
+              tabs: [
+                {
+                  code: '../examples/apis/intents.example.jsx',
+                  language: 'jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
   related: [],
 };
