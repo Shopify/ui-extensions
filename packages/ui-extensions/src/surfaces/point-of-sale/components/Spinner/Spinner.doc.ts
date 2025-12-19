@@ -41,7 +41,7 @@ const data: ReferenceEntityTemplateSchema = {
 - **Provide accessibility labels:** Always use \`accessibilityLabel\` to describe what is loading, helping screen reader users understand the context.
 - **Position strategically:** Place spinners where content will appear, or center them in the loading area to provide clear visual feedback.
 - **Don't overuse:** Avoid multiple spinners on the same screen. Use a single spinner to represent the overall loading state when possible.
-- **Consider alternatives for long waits:** For operations taking more than a few seconds, consider using progress indicators or status messages instead.
+- **Consider alternatives for long waits:** For operations taking more than a few seconds, consider using status messages instead.
 `,
     },
   ],

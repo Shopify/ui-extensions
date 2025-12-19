@@ -64,7 +64,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `
 - **Provide accessibility labels:** Use the \`accessibilityLabel\` prop on the \`Tabs\` component to describe the purpose of the tab group.
 - **Ensure keyboard navigation:** The component supports arrow key navigation between tabs and Enter/Space to activate tabs.
-- **Connect tabs and panels:** Always use matching \`controls\` (on Tab) and \`id\` (on TabPanel) properties to maintain proper ARIA relationships.
+- **Connect tabs and panels:** Always use matching \`controls\` (on Tab) and \`id\` (on TabPanel) properties to maintain proper semantic relationships.
 `,
     },
   ],

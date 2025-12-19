@@ -26,8 +26,7 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'switch-default.png',
-    description:
-      'Toggle settings on or off using a `Switch` component. This example shows a basic switch with a label.',
+    description: 'Toggle settings on or off using a `Switch` component.',
     codeblock: {
       title: 'Create a toggle switch',
       tabs: [

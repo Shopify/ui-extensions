@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Embed',
   description:
-    'The `Embed` component displays a preview of printable content from a specified source URL. Use it to show users what will be printed before triggering the actual print operation.\n\n`Embed` works in conjunction with the Print API to provide complete print functionality from preview to execution.\n\nSupported document types:\n\n- **HTML documents** (`.html`, `.htm`) - Best printing experience with full CSS styling, embedded images, and complex layouts. Use for receipts, invoices, and formatted reports.\n\n- **Text files** (`.txt`, `.csv`) - Plain text with basic content and tabular data support. Use for simple receipts and data exports.\n\n- **Image files** (`.png`, `.jpg`, `.jpeg`, `.gif`, `.bmp`, `.webp`) - Common web formats with format-specific optimizations. Use for logos, charts, QR codes, and barcodes.\n\n- **PDF files** (`.pdf`) - Behavior varies by platform: prints directly on iOS/desktop, but downloads to external viewer on Android. Use for complex documents and compliance requirements.\n\n[Learn how to build a print extension in POS](/docs/apps/build/pos/build-print-extension).',
+    'The `Embed` component displays a preview of printable content from a specified source URL. Use it to show users what will be printed before triggering the actual print operation.\n\n`Embed` works in conjunction with the Print API to provide complete print functionality from preview to execution.\n\nSupported document types:\n\n- **HTML documents** (`.html`, `.htm`) - Best printing experience with full CSS styling, embedded images, and complex layouts. Use for receipts, invoices, and formatted reports.\n\n- **Text files** (`.txt`, `.csv`) - Plain text with basic content and tabular data support. Use for simple receipts and data exports.\n\n- **PDF files** (`.pdf`) - Behavior varies by platform: prints directly on iOS/desktop, but downloads to external viewer on Android. Use for complex documents and compliance requirements.\n\n[Learn how to build a print extension in POS](/docs/apps/build/pos/build-print-extension).',
   isVisualComponent: true,
   type: 'component',
   thumbnail: 'embed-thumbnail.png',
@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'embed-default.png',
     description:
-      'Display a preview of printable content before triggering the print operation. This example shows how to use Embed with HTML documents, PDFs, images, or text files, supporting various document formats with proper rendering for receipts, invoices, and formatted reports.',
+      'Display a preview of printable content before triggering the print operation. This example shows how to use Embed with HTML documents, PDFs, or text files, supporting various document formats with proper rendering for receipts, invoices, and formatted reports.',
     codeblock: {
       title: 'Preview printable content',
       tabs: [{code: './examples/embed.html', language: 'html'}],

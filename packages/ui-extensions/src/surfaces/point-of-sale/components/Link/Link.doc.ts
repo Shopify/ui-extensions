@@ -15,6 +15,12 @@ const data: ReferenceEntityTemplateSchema = {
         'Configure the following properties on the `Link` component.',
       type: 'Link',
     },
+    {
+      title: 'Events',
+      description:
+        'The `Link` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+      type: 'LinkEvents',
+    },
   ],
   category: 'Polaris web components',
   subCategory: 'Actions',
