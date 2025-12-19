@@ -45,6 +45,8 @@ jobs:
           NPM_TOKEN: '' # Forces OIDC authentication
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
 
+      # Known to fail in OIDC (https://github.com/npm/cli/issues/8547).
+      # Workaround is to manually ask #help-eng-infrastructure to update `latest` tag.
       - name: Set 'latest' NPM dist tag
         if: steps.changesets.outputs.published == 'true' && github.ref_name == vars.LATEST_STABLE_VERSION
         env:
