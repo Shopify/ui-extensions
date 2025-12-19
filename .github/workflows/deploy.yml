@@ -18,6 +18,9 @@ jobs:
   changesets:
     name: Deploy
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # Required for OIDC
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,25 +28,26 @@ jobs:
 
       - uses: ./.github/workflows/actions/prepare
 
+      - name: Update npm to latest
+        run: npm install -g npm@latest
+
       - id: changesets
         name: Create release Pull Request or publish to NPM
-        uses: changesets/action@v1
+        uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # v1.5.3
         with:
           title: Version Packages (${{ github.ref_name }})
           publish: yarn run deploy --tag ${{ github.ref_name }}
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: '' # Forces OIDC authentication
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
 
+      # Known to fail in OIDC (https://github.com/npm/cli/issues/8547).
+      # Workaround is to manually ask #help-eng-infrastructure to update `latest` tag.
       - name: Set 'latest' NPM dist tag
         if: steps.changesets.outputs.published == 'true' && github.ref_name == vars.LATEST_STABLE_VERSION
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: |
-          cat << EOF > "$HOME/.npmrc"
-            //registry.npmjs.org/:_authToken=$NPM_TOKEN
-          EOF
           for pkg in $(echo "$PUBLISHED_PACKAGES" | jq -r '.[] | @base64'); do
             _jq() {
               echo ${pkg} | base64 --decode | jq -r ${1}
