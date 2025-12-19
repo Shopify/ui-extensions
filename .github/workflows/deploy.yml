@@ -35,11 +35,6 @@ jobs:
       - name: Update npm to latest
         run: npm install -g npm@latest
 
-      - name: Configure NPM for OIDC (run steps below)
-        run: |
-          echo "//registry.npmjs.org/:_authToken=" > "$HOME/.npmrc"
-          echo "@shopify:registry=https://registry.npmjs.org/" >> "$HOME/.npmrc"
-
       - id: changesets
         name: Create release Pull Request or publish to NPM
         uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # v1.5.3
@@ -53,12 +48,18 @@ jobs:
 
       - name: Temporary manual sync 'latest' tag # will be removed after sync
         if: github.event_name == 'workflow_dispatch' && github.ref_name == vars.LATEST_STABLE_VERSION
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          # Debug info (contents from above)
-          echo "--- Contents of $HOME/.npmrc ---"
-          cat "$HOME/.npmrc"
+          # dist-tag does not support OIDC yet, so fallback to classic token
+          # overwrite the .npmrc to ensure no OIDC session conflicts
+          echo "---Overwriting $NPM_CONFIG_USERCONFIG ---"
+          echo "@shopify:registry=https://registry.npmjs.org/" > "$NPM_CONFIG_USERCONFIG"
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> "$NPM_CONFIG_USERCONFIG"
+
+          # Debug info
           echo "--- npm identity check ---"
-          npm whoami --registry=https://registry.npmjs.org/ || echo "whoami failed (expected if OIDC not yet triggered)"
+          npm whoami --registry=https://registry.npmjs.org/
 
           # Run with info logging
           npm dist-tag add @shopify/ui-extensions@2025.10.11 latest --loglevel=info
@@ -67,7 +68,13 @@ jobs:
         if: steps.changesets.outputs.published == 'true' && github.ref_name == vars.LATEST_STABLE_VERSION
         env:
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
+          # dist-tag does not support OIDC yet, so fallback to classic token
+          # overwrite the .npmrc to ensure no OIDC session conflicts
+          echo "@shopify:registry=https://registry.npmjs.org/" > "$NPM_CONFIG_USERCONFIG"
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> "$NPM_CONFIG_USERCONFIG"
+
           for pkg in $(echo "$PUBLISHED_PACKAGES" | jq -r '.[] | @base64'); do
             _jq() {
               echo ${pkg} | base64 --decode | jq -r ${1}
