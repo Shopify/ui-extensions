@@ -85,6 +85,11 @@
     "react-reconciler": "0.29.0",
     "react-test-renderer": "^18.2.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shopify/ui-extensions.git",
+    "directory": "packages/ui-extensions"
+  },
   "files": [
     "build",
     "src",
