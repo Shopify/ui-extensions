@@ -18,6 +18,12 @@ const data: ReferenceEntityTemplateSchema = {
         'The object exposed to the extension that contains the discount function settings.',
       type: 'DiscountFunctionSettingsData',
     },
+    {
+      title: 'discounts',
+      description:
+        'The reactive API for managing discount function configuration.',
+      type: 'DiscountsApi',
+    },
   ],
   category: 'API',
   subCategory: 'Target APIs',
