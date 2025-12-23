@@ -93,6 +93,19 @@ const data: ReferenceEntityTemplateSchema = {
           ],
         },
       },
+      {
+        description:
+          'Compose rich choice content by nesting other components within `Choice` elements. This example demonstrates combining images, text, and layout components to create visually enhanced choice options with descriptions and supporting images.',
+        codeblock: {
+          title: 'Compose rich choice content',
+          tabs: [
+            {
+              code: './examples/composed-choices.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
     ],
   },
 };
