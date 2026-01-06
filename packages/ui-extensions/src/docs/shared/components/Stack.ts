@@ -5,7 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description:
     'Organizes elements horizontally or vertically along the block or inline axis. Use to structure layouts, group related components, or control spacing between elements.',
   category: 'Polaris web components',
-  subCategory: 'Structure',
+  subCategory: 'Layout and structure',
   related: [],
 };
 
