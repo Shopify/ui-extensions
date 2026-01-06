@@ -5,7 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description:
     'Display data clearly in rows and columns, helping users view, analyze, and compare information. Automatically renders as a list on small screens and a table on large ones.',
   category: 'Polaris web components',
-  subCategory: 'Structure',
+  subCategory: 'Layout and structure',
   related: [],
 };
 

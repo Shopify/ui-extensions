@@ -5,7 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description:
     'Create clear visual separation between elements in your user interface.',
   category: 'Polaris web components',
-  subCategory: 'Structure',
+  subCategory: 'Layout and structure',
   related: [],
 };
 
