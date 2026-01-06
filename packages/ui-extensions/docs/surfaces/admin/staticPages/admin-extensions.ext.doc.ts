@@ -163,11 +163,11 @@ If your app is using ESLint, update your configuration to include the new global
       type: 'GenericAccordion',
       title: 'Picking Resources',
       sectionContent:
-        "Use the Resource Picker and Picker API's to allow users to select resources for your extension to use.",
+        'Use the Resource Picker API and Picker API to allow users to select resources for your extension to use.',
       anchorLink: 'picking-resources',
       accordionContent: [
         {
-          title: 'Resource Picker',
+          title: 'Resource Picker API',
           description:
             'Use the `resourcePicker` API to display a search-based interface to help users find and select one or more products, collections, or product variants, and then return the selected resources to your extension. Both the app and the user must have the necessary permissions to access the resources selected.',
           image: 'resource-picker.png',
@@ -183,7 +183,7 @@ If your app is using ESLint, update your configuration to include the new global
           },
         },
         {
-          title: 'Picker',
+          title: 'Picker API',
           description:
             'Use the `picker` API to display a search-based interface to help users find and select one or more custom data types that you provide, such as product reviews, email templates, or subscription options.',
           image: 'picker.png',
