@@ -57,12 +57,6 @@ if [ -d ../../../shopify-dev ]; then
       fail_and_exit $sed_exit
     fi
     rsync -a --delete ./$DOCS_PATH/screenshots/ ../../../shopify-dev/app/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
-
-  if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
-    echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/checkout-ui-extensions"
-  else
-    echo "If you include shopify-dev in your Spin constellation, we can generate a preview link for the docs!"
-  fi
 else
   echo "Not copying docs to shopify-dev because it was not found at ../../../shopify-dev."
 fi
