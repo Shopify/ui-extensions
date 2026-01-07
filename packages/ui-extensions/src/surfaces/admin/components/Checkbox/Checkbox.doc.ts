@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'CheckboxProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'checkbox-default.png',

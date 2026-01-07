@@ -1,16 +1,15 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Block Extension API',
-  description:
-    'This API is available to all block extension types. Refer to the [tutorial](/docs/apps/admin/admin-actions-and-blocks/build-an-admin-block) for more information.',
+  name: 'Print Action Extension API',
+  description: 'This API is available to all print action extension types.',
   isVisualComponent: false,
   type: 'API',
   definitions: [
     {
-      title: 'BlockExtensionApi',
+      title: 'PrintActionExtensionApi',
       description: '',
-      type: 'BlockExtensionApi',
+      type: 'PrintActionExtensionApi',
     },
   ],
   category: 'Target APIs',

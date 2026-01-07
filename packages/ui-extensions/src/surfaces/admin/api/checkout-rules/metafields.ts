@@ -43,7 +43,7 @@ const supportedDefinitionTypes = [
   'list.weight',
 ] as const;
 
-export type SupportedDefinitionType = typeof supportedDefinitionTypes[number];
+export type SupportedDefinitionType = (typeof supportedDefinitionTypes)[number];
 
 interface MetafieldUpdateChange {
   type: 'updateMetafield';
