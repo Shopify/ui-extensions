@@ -12,6 +12,8 @@ import type {
   DiscountFunctionSettingsApi,
   CustomerSegmentTemplateApi,
   CustomerSegmentTemplate,
+  SearchDataApi,
+  SearchDataOutput,
 } from './api';
 import {
   ShouldRenderApi,
@@ -724,6 +726,15 @@ export interface ExtensionTargets {
   'admin.product-index.selection-print-action.should-render': RunnableExtension<
     ShouldRenderApi<'admin.product-index.selection-print-action.should-render'>,
     ShouldRenderOutput
+  >;
+
+  /**
+   * Provides search data for the admin search functionality.
+   * This extension returns search results that integrate with the admin search interface.
+   */
+  'admin.app.search.data': RunnableExtension<
+    SearchDataApi<'admin.app.search.data'>,
+    SearchDataOutput
   >;
 }
 

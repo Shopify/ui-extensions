@@ -14,3 +14,5 @@ export type {OrderRoutingRuleApi} from './api/order-routing-rule/order-routing-r
 export type {ValidationSettingsApi} from './api/checkout-rules/validation-settings';
 export type {PurchaseOptionsCardConfigurationApi} from './api/purchase-options-card-action';
 export type {DiscountFunctionSettingsApi} from './api/discount-function-settings/discount-function-settings';
+export type {SearchDataApi} from './api/search-data/search-data';
+export type {SearchDataOutput} from './api/search-data/data';
