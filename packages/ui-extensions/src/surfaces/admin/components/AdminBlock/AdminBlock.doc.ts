@@ -15,8 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AdminBlockProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Other',
+  category: 'UI components',
+  subCategory: 'Settings and templates',
   defaultExample: {
     image: 'adminblock-default.png',
     codeblock: {

@@ -8,8 +8,8 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'headinggroup-thumbnail.png',
   isVisualComponent: true,
   type: '',
-  category: 'Components',
-  subCategory: 'Titles and text',
+  category: 'UI components',
+  subCategory: 'Typography and content',
   defaultExample: {
     image: 'headinggroup-default.png',
     codeblock: {

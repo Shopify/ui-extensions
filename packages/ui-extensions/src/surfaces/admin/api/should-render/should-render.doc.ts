@@ -1,7 +1,7 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'ShouldRender API',
+  name: 'Should Render API',
   description: 'This API is available to all shouldRender extension types.',
   isVisualComponent: false,
   type: 'API',
@@ -12,8 +12,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ShouldRenderApi',
     },
   ],
-  category: 'API',
-  subCategory: 'Target APIs',
+  category: 'Target APIs',
+  subCategory: 'Utility APIs',
   related: [],
 };
 

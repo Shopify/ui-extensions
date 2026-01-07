@@ -15,8 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ProgressIndicatorProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Media',
+  category: 'UI components',
+  subCategory: 'Feedback and status indicators',
   defaultExample: {
     image: 'progressindicator-default.png',
     codeblock: {

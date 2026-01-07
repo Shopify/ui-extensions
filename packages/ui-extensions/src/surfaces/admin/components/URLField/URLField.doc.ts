@@ -14,7 +14,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'URLFieldProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'urlfield-default.png',

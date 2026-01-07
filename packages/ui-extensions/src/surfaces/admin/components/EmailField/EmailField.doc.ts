@@ -14,7 +14,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'EmailFieldProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'emailfield-default.png',

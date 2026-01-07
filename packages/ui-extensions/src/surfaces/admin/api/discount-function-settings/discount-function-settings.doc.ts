@@ -19,8 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DiscountFunctionSettingsData',
     },
   ],
-  category: 'API',
-  subCategory: 'Target APIs',
+  category: 'Target APIs',
+  subCategory: 'Contextual APIs',
   related: [],
 };
 
