@@ -14,12 +14,45 @@ on:
       - 20[0-9][0-9]-[01][1470]
       # RC version branches
       - 20[0-9][0-9]-[01][1470]-rc
+  # Snapit trigger - runs when /snapit comment is made on a PR
+  issue_comment:
+    types:
+      - created
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
+  # Snapit job - runs when /snapit comment is made on a PR
+  snapit:
+    name: Snapit
+    if: ${{ github.event_name == 'issue_comment' && github.event.issue.pull_request && github.event.comment.body == '/snapit' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      id-token: write
+    steps:
+      # WARNING: DO NOT RUN ANY CUSTOM LOCAL SCRIPT BEFORE RUNNING THE SNAPIT ACTION
+      # This action can be executed by 3rd party users and it should not be able to run arbitrary code from a PR.
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+
+      - uses: ./.github/workflows/actions/prepare
+
+      - name: Create snapshot
+        uses: Shopify/snapit@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+          NPM_TOKEN: ''
+          NPM_CONFIG_PROVENANCE: true
+        with:
+          build_script: yarn build; yarn changeset pre exit
+          comment_command: /snapit
+
   changesets:
     name: Deploy
+    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
