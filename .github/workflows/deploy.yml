@@ -47,7 +47,7 @@ jobs:
           NPM_TOKEN: ''
           NPM_CONFIG_PROVENANCE: true
         with:
-          build_script: yarn build; yarn changeset pre exit
+          build_script: yarn build && yarn changeset pre exit
           comment_command: /snapit
 
   changesets:
