@@ -153,4 +153,3 @@ If the picker is cancelled, the Promise resolves to \`undefined\``,
 };
 
 export default data;
-
