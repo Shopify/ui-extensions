@@ -13,7 +13,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ActionExtensionApi',
     },
   ],
-  category: 'API',
+  category: 'Target APIs',
+  subCategory: 'Core APIs',
   related: [],
 };
 

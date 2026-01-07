@@ -15,8 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'InlineStackProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Structure',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   defaultExample: {
     image: 'inlinestack-default.png',
     codeblock: {
