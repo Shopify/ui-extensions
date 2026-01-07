@@ -65,10 +65,6 @@ if [ -d ~/src/github.com/Shopify/shopify-dev ]; then
 
   echo "✓ Docs copied to ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION"
   echo "✓ Screenshots copied to ~/src/github.com/Shopify/shopify-dev/app/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION"
-  
-  if [ -n "$SPIN" ] && [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
-    echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/admin-extensions/$API_VERSION"
-  fi
 else
   echo "shopify-dev directory not found at ~/src/github.com/Shopify/shopify-dev - skipping docs copy"
 fi
