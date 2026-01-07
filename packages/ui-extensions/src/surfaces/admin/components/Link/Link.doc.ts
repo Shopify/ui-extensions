@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'LinkProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Actions',
   defaultExample: {
     image: 'link-default.png',

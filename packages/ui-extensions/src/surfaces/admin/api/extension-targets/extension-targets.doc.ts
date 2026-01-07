@@ -1,11 +1,11 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Extension Targets',
+  name: 'Targets',
   description:
-    'This is a list of all the available extension targets for Admin App Extensions.',
+    'This is a list of all the available extension targets for Admin UI extensions.',
   isVisualComponent: false,
-  type: 'API',
+  type: 'ExtensionTargets',
   definitions: [
     {
       title: 'ExtensionTargets',
@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ExtensionTargets',
     },
   ],
-  category: 'API',
+  category: 'Targets',
   related: [],
 };
 

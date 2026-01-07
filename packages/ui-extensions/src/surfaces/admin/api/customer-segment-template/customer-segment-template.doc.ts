@@ -1,7 +1,7 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'CustomerSegmentTemplate Extension API',
+  name: 'Customer Segment Template Extension API',
   description:
     'This API is available to all customer segment template extension types.',
   isVisualComponent: false,
@@ -13,7 +13,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'CustomerSegmentTemplateApi',
     },
   ],
-  category: 'API',
+  category: 'Target APIs',
+  subCategory: 'Contextual APIs',
   related: [],
 };
 

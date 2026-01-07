@@ -15,8 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'BlockStackProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Structure',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   defaultExample: {
     image: 'blockstack-default.png',
     codeblock: {
