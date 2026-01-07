@@ -32,4 +32,3 @@ const data: ReferenceEntityTemplateSchema = {
 };
 
 export default data;
-
