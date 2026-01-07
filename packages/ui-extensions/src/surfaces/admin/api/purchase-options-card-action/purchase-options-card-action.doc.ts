@@ -1,16 +1,16 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Customer Segment Template Extension API',
+  name: 'Purchase Options Card Configuration API',
   description:
-    'This API is available to all customer segment template extension types.',
+    'This API is available to action extensions that render in the purchase options card on product and product variant details pages when selling plan groups are present.',
   isVisualComponent: false,
   type: 'API',
   definitions: [
     {
-      title: 'CustomerSegmentTemplateApi',
+      title: 'PurchaseOptionsCardConfigurationApi',
       description: '',
-      type: 'CustomerSegmentTemplateApi',
+      type: 'PurchaseOptionsCardConfigurationApi',
     },
   ],
   category: 'Target APIs',

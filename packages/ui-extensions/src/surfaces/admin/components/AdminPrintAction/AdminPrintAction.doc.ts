@@ -15,8 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AdminPrintActionProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Other',
+  category: 'UI components',
+  subCategory: 'Settings and templates',
   defaultExample: {
     image: 'adminprintaction-default.png',
     codeblock: {
