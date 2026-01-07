@@ -16,8 +16,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'CustomerSegmentTemplateProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Other',
+  category: 'UI components',
+  subCategory: 'Settings and templates',
   defaultExample: {
     image: 'customersegmenttemplate-default',
     codeblock: {
