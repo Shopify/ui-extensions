@@ -102,6 +102,7 @@ export interface ProductSearchApiContent {
 
 /**
  * The `ProductSearchApi` object provides methods for searching and retrieving product information. Access these methods through `shopify.productSearch` to search products and fetch detailed product data.
+ * @publicDocs
  */
 export interface ProductSearchApi {
   productSearch: ProductSearchApiContent;

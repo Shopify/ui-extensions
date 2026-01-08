@@ -54,6 +54,7 @@ export interface ScannerApiContent {
 
 /**
  * The `ScannerApi` object provides access to scanning functionality and scanner source information. Access these properties through `shopify.scanner` to monitor scan events and available scanner sources.
+ * @publicDocs
  */
 export interface ScannerApi {
   scanner: ScannerApiContent;

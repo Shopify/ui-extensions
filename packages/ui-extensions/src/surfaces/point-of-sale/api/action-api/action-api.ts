@@ -7,6 +7,7 @@ export interface ActionApiContent {
 
 /**
  * The `ActionApi` object provides methods for presenting modal interfaces. Access these methods through `shopify.action` to launch full-screen modal experiences.
+ * @publicDocs
  */
 export interface ActionApi {
   action: ActionApiContent;

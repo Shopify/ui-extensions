@@ -12,6 +12,7 @@ import type {
 
 /**
  * The `CartApi` object provides access to cart management functionality and real-time cart state monitoring. Access these properties through `shopify.cart` to interact with the current POS cart.
+ * @publicDocs
  */
 export interface CartApi {
   cart: CartApiContent;

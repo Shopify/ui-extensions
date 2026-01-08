@@ -9,6 +9,10 @@ import {StorageApi} from '../storage-api/storage-api';
 import {PinPadApi} from '../pin-pad-api';
 import type {I18n} from '../../../../api';
 
+/**
+ * The base API available to all POS extension targets, providing access to common functionality like locale, toast notifications, session information, printing, product search, device info, connectivity status, storage, and PIN pad features.
+ * @publicDocs
+ */
 export type StandardApi<T> = {[key: string]: any} & {
   extensionPoint: T;
   i18n: I18n;

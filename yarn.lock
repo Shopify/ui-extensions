@@ -3946,6 +3946,10 @@ functions-have-names@^1.2.3:
   resolved "https://registry.npmjs.org/functions-have-names/-/functions-have-names-1.2.3.tgz"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
 
+"generate-docs@https://github.com/Shopify/generate-docs#explore-jsdoc-public-docs":
+  version "1.0.0"
+  resolved "https://github.com/Shopify/generate-docs#955e78e74527061403d78a4d6fdefd7a21d63630"
+
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
   resolved "https://registry.npmjs.org/gensync/-/gensync-1.0.0-beta.2.tgz"

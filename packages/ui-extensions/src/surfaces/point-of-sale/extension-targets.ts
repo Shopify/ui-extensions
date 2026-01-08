@@ -27,6 +27,10 @@ import type {ReceiptComponents} from './components/targets/ReceiptComponents';
 import type {BasicComponents} from './components/targets/BasicComponents';
 import type {TransactionCompleteWithReprintData} from './event/data';
 
+/**
+ * Defines the event extension targets for POS, which allow extensions to observe and respond to POS events like transaction completions, cash tracking sessions, and cart updates.
+ * @publicDocs
+ */
 export interface EventExtensionTargets {
   'pos.transaction-complete.event.observe': (
     data: TransactionCompleteData,
@@ -42,6 +46,10 @@ export interface EventExtensionTargets {
   ) => Promise<BaseOutput>;
 }
 
+/**
+ * Defines the render extension targets for POS, which allow extensions to render UI components at various locations throughout the POS application including smart grid tiles, modals, action menu items, and blocks.
+ * @publicDocs
+ */
 export interface RenderExtensionTargets {
   /**
    * Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.
@@ -328,6 +336,10 @@ export interface RenderExtensionTargets {
   >;
 }
 
+/**
+ * The complete set of extension targets available for POS UI extensions, combining both render and event targets.
+ * @publicDocs
+ */
 export interface ExtensionTargets
   extends RenderExtensionTargets,
     EventExtensionTargets {}

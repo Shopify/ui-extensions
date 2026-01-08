@@ -1,3 +1,7 @@
+/**
+ * The complete set of UI components available for POS extensions, including form inputs, layout containers, navigation, and display elements.
+ * @publicDocs
+ */
 export type StandardComponents =
   | 'Badge'
   | 'Banner'

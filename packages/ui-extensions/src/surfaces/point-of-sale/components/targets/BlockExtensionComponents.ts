@@ -1,3 +1,7 @@
+/**
+ * Components available for block extensions that render custom information sections within POS screens.
+ * @publicDocs
+ */
 export type BlockExtensionComponents =
   | 'Badge'
   | 'Box'

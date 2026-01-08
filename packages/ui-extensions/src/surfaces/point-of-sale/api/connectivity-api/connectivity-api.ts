@@ -21,6 +21,7 @@ export interface ConnectivityApiContent {
 
 /**
  * The `ConnectivityApi` object provides access to current connectivity information and change notifications. Access these properties through `shopify.connectivity` to monitor network status.
+ * @publicDocs
  */
 export interface ConnectivityApi {
   connectivity: ConnectivityApiContent;
