@@ -944,11 +944,11 @@ export interface GraphQLError {
  */
 export interface ReadonlySignalLike<T> {
   /**
-   * The current value of the locale string in IETF format. For example, `"en-US"`, `"fr-CA"`, or `"de-DE"`. This property provides immediate access to the current locale without requiring subscription setup. Use for one-time locale checks or initial internationalization setup.
+   * The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup.
    */
   readonly value: T;
   /**
-   * Subscribes to locale changes and calls the provided function whenever the locale updates. Returns an unsubscribe function to clean up the subscription. Use to automatically update your extension content when merchants change their language settings during POS sessions.
+   * Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value.
    */
   subscribe(fn: (value: T) => void): () => void;
 }
