@@ -1,4 +1,4 @@
-/** VERSION: 1.28.3 **/
+/** VERSION: 1.38.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -325,6 +325,7 @@ declare const privateIconArray: readonly [
   'catalog-product',
   'categories',
   'channels',
+  'channels-filled',
   'chart-cohort',
   'chart-donut',
   'chart-funnel',
@@ -1003,6 +1004,14 @@ export type AccessibilityRole =
    *
    */
   | 'section'
+  /**
+   * Used to identify a perceivable section containing content that is relevant to a specific, author-specified purpose and sufficiently important that users will likely want to be able to navigate to the section easily.
+   *
+   * In an HTML host `region` will render as `<div role="region">`.
+   * A region **must** have an accessible name provided via the `accessibilityLabel` property.
+   * Learn more about the [`region` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
+   */
+  | 'region'
   /**
    * Used to designate a supporting section that relates to the main content.
    *
@@ -1913,6 +1922,38 @@ export interface ChipProps$1 extends GlobalProps {
    * @default 'base'
    */
   color?: ColorKeyword;
+  /**
+   * Whether the chip is removable.
+   *
+   * @default false
+   */
+  removable?: boolean;
+  /**
+   * Callback when the chip is removed.
+   */
+  onRemove?: (event: Event) => void;
+  /**
+   * Determines whether the chip is hidden.
+   *
+   * If this property is being set on each framework render (as in 'controlled' usage),
+   * and the chip is `removable`,
+   * ensure you update app state for this property when the `remove` event fires.
+   *
+   * If the chip is not `removable`, it can still be hidden by setting this property.
+   *
+   * @default false
+   */
+  hidden?: boolean;
+  /**
+   * Event handler when the chip has fully hidden.
+   *
+   * The `hidden` property will be `true` when this event fires.
+   *
+   * @implementation If implementations animate the hiding of the chip,
+   * this event must fire after the chip has fully hidden.
+   * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
+   */
+  onAfterHide?: (event: Event) => void;
 }
 interface ChipProps$2 extends ChipProps$1, GlobalProps {}
 interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
@@ -2041,38 +2082,6 @@ interface ClickableChipProps$1
    * - If a `commandFor` is set, the `command` will be executed instead of the navigation.
    */
   href?: string;
-  /**
-   * Whether the chip is removable.
-   *
-   * @default false
-   */
-  removable?: boolean;
-  /**
-   * Callback when the chip is removed.
-   */
-  onRemove?: (event: Event) => void;
-  /**
-   * Determines whether the chip is hidden.
-   *
-   * If this property is being set on each framework render (as in 'controlled' usage),
-   * and the chip is `removable`,
-   * ensure you update app state for this property when the `remove` event fires.
-   *
-   * If the chip is not `removable`, it can still be hidden by setting this property.
-   *
-   * @default false
-   */
-  hidden?: boolean;
-  /**
-   * Event handler when the chip has fully hidden.
-   *
-   * The `hidden` property will be `true` when this event fires.
-   *
-   * @implementation If implementations animate the hiding of the chip,
-   * this event must fire after the chip has fully hidden.
-   * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
-   */
-  onAfterHide?: (event: Event) => void;
   /**
    * Disables the chip, disallowing any interaction.
    *
@@ -3153,7 +3162,14 @@ interface OptionGroupProps$1 extends GlobalProps {
    */
   children?: ComponentChildren;
 }
-interface OrderedListProps$1 extends GlobalProps {}
+interface OrderedListProps$1 extends GlobalProps {
+  /**
+   * The content of the OrderededList.
+   *
+   * Accepts only `ListItem` components.
+   */
+  children?: ComponentChildren;
+}
 interface PageProps$1 extends GlobalProps, ActionSlots {
   /**
    * The content of the Page.
@@ -3196,7 +3212,7 @@ interface ParagraphProps$1
     BlockTypographyProps,
     AccessibilityVisibilityProps {
   /**
-   * The content of the Text.
+   * The content of the Paragraph.
    */
   children?: ComponentChildren;
   /**
@@ -3298,6 +3314,9 @@ interface QueryContainerProps$1 extends GlobalProps {
    */
   containerName?: string;
 }
+export type OverflowKeyword = 'auto' | 'hidden';
+export type ScrollSnapType = 'none' | 'mandatory' | 'proximity';
+export type ScrollAccessibilityRole = 'generic' | 'region';
 interface SectionProps$1 extends GlobalProps, ActionSlots {
   /**
    * The content of the Section.
@@ -3667,7 +3686,14 @@ interface TooltipProps$1 extends GlobalProps {
    */
   children?: ComponentChildren;
 }
-interface UnorderedListProps$1 extends GlobalProps {}
+interface UnorderedListProps$1 extends GlobalProps {
+  /**
+   * The content of the UnorderededList.
+   *
+   * Accepts only `ListItem` components.
+   */
+  children?: ComponentChildren;
+}
 interface URLFieldProps$1
   extends GlobalProps,
     BaseTextFieldProps,
@@ -3861,8 +3887,6 @@ export interface ClickOptions {
 declare const BaseClass: typeof globalThis.HTMLElement;
 export declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
-  #private;
-  /** @private */
   static get observedAttributes(): string[];
   /** @private */
   [shadowRootSymbol]: ShadowRoot | null;
@@ -3971,6 +3995,7 @@ type IconType$1 =
   | 'catalog-product'
   | 'categories'
   | 'channels'
+  | 'channels-filled'
   | 'chart-cohort'
   | 'chart-donut'
   | 'chart-funnel'

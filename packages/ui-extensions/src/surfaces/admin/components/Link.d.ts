@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 1.38.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -10,6 +10,8 @@ import type {
   ComponentChildren,
   LinkProps$1,
   InteractionProps,
+  PreactCustomElement,
+  RenderImpl,
 } from './shared.d.ts';
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
@@ -54,64 +56,8 @@ export interface LinkProps extends LinkBaseProps {
   tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
 }
 
-export type Styles = string;
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChildren;
-  styles?: Styles;
-};
-export interface ActivationEventEsque {
-  shiftKey: boolean;
-  metaKey: boolean;
-  ctrlKey: boolean;
-  button: number;
-}
-export interface ClickOptions {
-  /**
-   * The event you want to influence the synthetic click.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
 }
 
 export interface PreactOverlayControlProps
@@ -142,18 +88,30 @@ export interface PreactOverlayControlProps
   interestFor: Extract<InteractionProps['interestFor'], string>;
 }
 
-declare const Link_base: (abstract new (
-  args_0: RenderImpl,
-) => PreactCustomElement & PreactOverlayControlProps) &
-  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
-declare class Link extends Link_base implements LinkProps {
-  accessor tone: LinkProps['tone'];
+declare const LinkBase_base: (abstract new (
+  renderImpl: Omit<RenderImpl, 'globalShadowCSS'>,
+) => PolarisCustomElement & PreactOverlayControlProps) &
+  Pick<typeof PolarisCustomElement, 'prototype' | 'observedAttributes'>;
+declare abstract class LinkBase<TTagName extends keyof HTMLElementTagNameMap>
+  extends LinkBase_base
+  implements
+    Pick<
+      LinkProps,
+      'accessibilityLabel' | 'href' | 'target' | 'download' | 'lang'
+    >
+{
   accessor accessibilityLabel: LinkProps['accessibilityLabel'];
   accessor href: LinkProps['href'];
   accessor target: LinkProps['target'];
   accessor download: LinkProps['download'];
   accessor lang: LinkProps['lang'];
-  accessor onclick: CallbackEventListener<typeof tagName> | null;
+  accessor onclick: CallbackEventListener<TTagName> | null;
+  abstract tone: string;
+  constructor(renderImpl: RenderImpl);
+}
+
+declare class Link extends LinkBase<typeof tagName> implements LinkProps {
+  accessor tone: LinkProps['tone'];
   constructor();
 }
 declare global {
