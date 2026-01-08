@@ -41,7 +41,7 @@ jobs:
       - uses: ./.github/workflows/actions/prepare
 
       - name: Create snapshot
-        uses: Shopify/snapit@main
+        uses: Shopify/snapit@support-oidc-authentication
         env:
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
           NPM_TOKEN: ''
