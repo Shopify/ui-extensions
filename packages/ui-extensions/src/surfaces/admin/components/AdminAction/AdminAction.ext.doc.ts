@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Polaris web components',
-  subCategory: 'Other',
+  subCategory: 'Settings and templates',
   defaultExample: {
     image:
       '/assets/templated-apis-screenshots/admin/components/adminaction-example.png',
