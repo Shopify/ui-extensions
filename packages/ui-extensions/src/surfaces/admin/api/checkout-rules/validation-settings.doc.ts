@@ -18,7 +18,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ValidationData',
     },
   ],
-  category: 'API',
+  category: 'Target APIs',
+  subCategory: 'Contextual APIs',
   related: [],
 };
 
