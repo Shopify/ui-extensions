@@ -5,7 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description:
     'Inform users about the status of an object or indicate that an action has been completed.',
   category: 'Polaris web components',
-  subCategory: 'Titles and text',
+  subCategory: 'Feedback and status indicators',
   related: [],
 };
 

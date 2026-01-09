@@ -5,7 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description:
     'Displays a bulleted list of related items. Use to present collections of items or options where the sequence isn’t critical.',
   category: 'Polaris web components',
-  subCategory: 'Structure',
+  subCategory: 'Layout and structure',
   related: [],
 };
 

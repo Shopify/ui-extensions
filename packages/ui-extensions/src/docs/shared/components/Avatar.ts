@@ -5,7 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description:
     'Show a user’s profile image or initials in a compact, visual element.',
   category: 'Polaris web components',
-  subCategory: 'Media',
+  subCategory: 'Media and visuals',
   related: [],
 };
 

@@ -5,7 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description:
     'Displays helpful information in a small overlay when users hover or focus on an element. Use to provide additional context without cluttering the interface.',
   category: 'Polaris web components',
-  subCategory: 'Overlays',
+  subCategory: 'Typography and content',
   related: [],
 };
 

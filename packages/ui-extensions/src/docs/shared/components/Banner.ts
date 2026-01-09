@@ -5,7 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description:
     'Highlights important information or required actions prominently within the interface. Use to communicate statuses, provide feedback, or draw attention to critical updates.',
   category: 'Polaris web components',
-  subCategory: 'Feedback',
+  subCategory: 'Feedback and status indicators',
   related: [],
 };
 
