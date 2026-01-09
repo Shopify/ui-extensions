@@ -5,7 +5,7 @@ export interface SearchResult {
   title: string;
 }
 
-export interface SearchDataOutput {
+export interface ToolsDataOutput {
   results: SearchResult[];
   pageInfo: {
     hasNextPage: boolean;
