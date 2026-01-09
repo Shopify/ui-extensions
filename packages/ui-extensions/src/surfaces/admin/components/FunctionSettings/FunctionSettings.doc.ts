@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'FunctionSettingsProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'form-default.png',

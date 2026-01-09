@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'NumberFieldProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'numberfield-default.png',
