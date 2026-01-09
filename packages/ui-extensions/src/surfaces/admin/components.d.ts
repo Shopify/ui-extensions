@@ -5045,9 +5045,6 @@ declare abstract class ButtonBase<TTagName extends keyof HTMLElementTagNameMap>
   type: ButtonProps['type'];
   accessibilityLabel: ButtonProps['accessibilityLabel'];
   inlineSize: ButtonProps['inlineSize'];
-  onclick: CallbackEventListener<TTagName> | null;
-  onblur: CallbackEventListener<TTagName> | null;
-  onfocus: CallbackEventListener<TTagName> | null;
   abstract icon: string;
   abstract variant: string;
   abstract tone: string;
@@ -5884,9 +5881,6 @@ declare abstract class DropZoneBase extends PolarisCustomElement {
   multiple: DropZoneProps['multiple'];
   name: DropZoneProps['name'];
   required: DropZoneProps['required'];
-  onchange: CallbackEventListener<typeof tagName$K>;
-  oninput: CallbackEventListener<typeof tagName$K>;
-  ondroprejected: CallbackEventListener<typeof tagName$K>;
   get value(): string;
   /** This sets the input value for a file type, which cannot be set programatically, so it can only be reset. */
   set value(value: '' | null);
@@ -6342,7 +6336,6 @@ declare abstract class LinkBase<TTagName extends keyof HTMLElementTagNameMap>
   target: LinkProps['target'];
   download: LinkProps['download'];
   lang: LinkProps['lang'];
-  onclick: CallbackEventListener<TTagName> | null;
   abstract tone: string;
   constructor(renderImpl: RenderImpl);
 }
@@ -6529,10 +6522,6 @@ declare abstract class ModalBase<TTagName extends keyof HTMLElementTagNameMap>
   heading: ModalProps['heading'];
   padding: ModalProps['padding'];
   size: ModalProps['size'];
-  onhide: CallbackEventListener<TTagName> | null;
-  onshow: CallbackEventListener<TTagName> | null;
-  onafterhide: CallbackEventListener<TTagName> | null;
-  onaftershow: CallbackEventListener<TTagName> | null;
   /** @private */
   [abortController]: AbortController;
   /** @private */
@@ -7216,8 +7205,6 @@ declare abstract class ScrollBoxBase<
   scrollMargin: ScrollBoxBaseProps['scrollMargin'];
   accessibilityRole: ScrollBoxBaseProps['accessibilityRole'];
   accessibilityLabel: ScrollBoxBaseProps['accessibilityLabel'];
-  onscroll: CallbackEventListener<TTagName> | null;
-  onscrolltoedge: CallbackEventListener<TTagName> | null;
   background: ScrollBoxBaseProps['background'];
   blockSize: ScrollBoxBaseProps['blockSize'];
   minBlockSize: ScrollBoxBaseProps['minBlockSize'];
