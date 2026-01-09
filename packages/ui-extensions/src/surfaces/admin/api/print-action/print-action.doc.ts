@@ -13,7 +13,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PrintActionExtensionApi',
     },
   ],
-  category: 'API',
+  category: 'Target APIs',
+  subCategory: 'Core APIs',
   related: [],
 };
 

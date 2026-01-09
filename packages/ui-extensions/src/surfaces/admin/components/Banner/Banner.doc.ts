@@ -15,8 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'BannerProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Titles and text',
+  category: 'UI components',
+  subCategory: 'Feedback and status indicators',
   defaultExample: {
     image: 'banner-default.png',
     codeblock: {

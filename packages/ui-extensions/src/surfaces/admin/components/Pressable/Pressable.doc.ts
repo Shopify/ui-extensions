@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PressableProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Actions',
   defaultExample: {
     image: 'pressable-default.png',
