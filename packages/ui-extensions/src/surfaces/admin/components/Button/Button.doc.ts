@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ButtonProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Actions',
   defaultExample: {
     image: 'button-default.png',

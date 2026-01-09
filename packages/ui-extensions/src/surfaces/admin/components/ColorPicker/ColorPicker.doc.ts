@@ -14,7 +14,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ColorPickerProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'colorpicker-default.png',

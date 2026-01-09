@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'TextFieldProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'textfield-default.png',

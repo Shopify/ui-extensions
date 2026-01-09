@@ -15,8 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'BadgeProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Titles and text',
+  category: 'UI components',
+  subCategory: 'Feedback and status indicators',
   defaultExample: {
     image: 'badge-default.png',
     codeblock: {

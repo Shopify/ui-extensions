@@ -20,8 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'IconName',
     },
   ],
-  category: 'Components',
-  subCategory: 'Media',
+  category: 'UI components',
+  subCategory: 'Media and visuals',
   defaultExample: {
     image: 'icon-default.png',
     codeblock: {

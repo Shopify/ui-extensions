@@ -15,8 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ParagraphProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Titles and text',
+  category: 'UI components',
+  subCategory: 'Typography and content',
   defaultExample: {
     image: 'paragraph-default.png',
     codeblock: {

@@ -15,8 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AdminActionProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Other',
+  category: 'UI components',
+  subCategory: 'Settings and templates',
   defaultExample: {
     image: 'adminaction-default.png',
     codeblock: {

@@ -15,8 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'BoxProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Structure',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   defaultExample: {
     image: 'box-default.png',
     codeblock: {

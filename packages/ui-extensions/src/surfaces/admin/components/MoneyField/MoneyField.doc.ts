@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'MoneyFieldProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'moneyfield-default.png',

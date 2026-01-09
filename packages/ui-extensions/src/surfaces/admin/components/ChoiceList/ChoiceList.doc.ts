@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ChoiceListProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'choicelist-default.png',
