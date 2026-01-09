@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PasswordFieldProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'passwordfield-default.png',

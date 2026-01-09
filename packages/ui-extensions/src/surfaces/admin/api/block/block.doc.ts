@@ -12,7 +12,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'BlockExtensionApi',
     },
   ],
-  category: 'API',
+  category: 'Target APIs',
+  subCategory: 'Core APIs',
   related: [],
 };
 

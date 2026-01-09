@@ -15,8 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DividerProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Structure',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   defaultExample: {
     image: 'divider-default.png',
     codeblock: {

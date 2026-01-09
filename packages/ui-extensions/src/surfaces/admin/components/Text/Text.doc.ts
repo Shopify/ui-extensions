@@ -15,8 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'TextProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Titles and text',
+  category: 'UI components',
+  subCategory: 'Typography and content',
   defaultExample: {
     image: 'text-default.png',
     codeblock: {

@@ -1,5 +1,24 @@
+#!/bin/bash
+
+API_VERSION=$1
 DOCS_PATH=docs/surfaces/admin
 SRC_PATH=src/surfaces/admin
+
+fail_and_exit() {
+  echo "** Failed to generate docs"
+  echo "See https://vault.shopify.io/page/Extension-Docs~SkgE.md"
+  exit $1
+}
+
+if [ -z $API_VERSION ]
+then
+  API_VERSION="unstable"
+  echo "Building docs for 'unstable' admin UI extensions API. You can add a calver version argument (e.g. 'yarn docs:admin 2023-07') to generate the docs for a stable version."
+else
+  echo "Building docs for '$API_VERSION' admin UI extensions API."
+  echo "When generating docs for a stable version, 'unstable' docs are not regenerated. This avoids overwriting other unstable changes that are not included in this version."
+  echo "If you need to update the 'unstable' version, run this command again without the '$API_VERSION' parameter."
+fi
 
 
 # COMPILE_COMPONENT_DOCS="yarn tsc --project ./docs/surfaces/${surface}/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && generate-docs --input ./src/surfaces/${surface}/components/* ./src/surfaces/${surface}/api/* --typesInput ./src --output ./docs/surfaces/${surface}/generated && rm -rf ../../src/surfaces/${surface}/**/**/*.doc.js"
@@ -20,4 +39,36 @@ find ./ -name '*.doc*.js' -exec rm -r {} \;
 
 if [ $build_exit -ne 0 ]; then
   fail_and_exit $build_exit
+fi
+
+# Make sure https://shopify.dev URLs are relative.
+# See https://github.com/Shopify/generate-docs/issues/181
+sed -i '' 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
+sed_exit=$?
+if [ $sed_exit -ne 0 ]; then
+  fail_and_exit $sed_exit
+fi
+
+if [ -d ~/src/github.com/Shopify/shopify-dev ]; then
+  echo "Copying docs to shopify-dev..."
+  
+  mkdir -p ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION
+  cp ./$DOCS_PATH/generated/*.json ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION/
+  
+  # Replace 'unstable' with the exact API version in relative doc links
+  sed -i '' \
+    "s/\/docs\/api\/admin-extensions\/unstable/\/docs\/api\/admin-extensions\/$API_VERSION/gi" \
+    ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION/generated_docs_data.json
+  sed_exit=$?
+  if [ $sed_exit -ne 0 ]; then
+    fail_and_exit $sed_exit
+  fi
+  
+  mkdir -p ~/src/github.com/Shopify/shopify-dev/app/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION
+  rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/app/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION/
+
+  echo "✓ Docs copied to ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION"
+  echo "✓ Screenshots copied to ~/src/github.com/Shopify/shopify-dev/app/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION"
+else
+  echo "shopify-dev directory not found at ~/src/github.com/Shopify/shopify-dev - skipping docs copy"
 fi
