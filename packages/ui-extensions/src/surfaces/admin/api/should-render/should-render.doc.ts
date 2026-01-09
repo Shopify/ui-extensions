@@ -1,7 +1,7 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'ShouldRender API',
+  name: 'Should Render API',
   description:
     'This API controls the render state of an admin action extension. Learn more in the <a href="https://shopify.dev/docs/apps/build/admin/actions-blocks/hide-extensions?extension=react#hide-an-admin-action">admin extensions tutorial</a>.',
   isVisualComponent: false,
@@ -13,8 +13,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ShouldRenderApi',
     },
   ],
-  category: 'API',
-  subCategory: 'Target APIs',
+  category: 'Target APIs',
+  subCategory: 'Utility APIs',
   related: [],
 };
 

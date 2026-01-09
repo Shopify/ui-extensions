@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'SelectProps',
     },
   ],
-  category: 'Components',
+  category: 'UI components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'select-default.png',
