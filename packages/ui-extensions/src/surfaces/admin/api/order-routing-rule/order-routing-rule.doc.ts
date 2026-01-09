@@ -1,20 +1,20 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Block Extension API',
+  name: 'Order Routing Rule API',
   description:
-    'This API is available to all block extension types. Refer to the [tutorial](/docs/apps/admin/admin-actions-and-blocks/build-an-admin-block) for more information.',
+    'This API is available to extensions that render in the order routing settings using the `admin.settings.order-routing-rule.render` target.',
   isVisualComponent: false,
   type: 'API',
   definitions: [
     {
-      title: 'BlockExtensionApi',
+      title: 'OrderRoutingRuleApi',
       description: '',
-      type: 'BlockExtensionApi',
+      type: 'OrderRoutingRuleApi',
     },
   ],
   category: 'Target APIs',
-  subCategory: 'Core APIs',
+  subCategory: 'Contextual APIs',
   related: [],
 };
 
