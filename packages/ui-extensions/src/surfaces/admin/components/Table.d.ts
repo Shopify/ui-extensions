@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 1.38.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -10,7 +10,10 @@ import type {
   ComponentChildren,
   TableProps$1,
   TableHeaderProps$1,
+  PreactCustomElement,
+  RenderImpl,
 } from './shared.d.ts';
+import * as _shopify_admin_web_component_foundations from '@shopify/admin-web-component-foundations';
 
 export interface TableProps
   extends Required<
@@ -35,104 +38,13 @@ export interface TableHeaderProps
   format: HeaderFormat;
 }
 
-export type Styles = string;
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChildren;
-  styles?: Styles;
-};
-export interface ActivationEventEsque {
-  shiftKey: boolean;
-  metaKey: boolean;
-  ctrlKey: boolean;
-  button: number;
-}
-export interface ClickOptions {
-  /**
-   * The event you want to influence the synthetic click.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
-}
-
-export interface Context<T> {
-  readonly defaultValue: T;
-}
-declare class AddedContext<T> extends EventTarget {
-  constructor(defaultValue: T);
-  get value(): T;
-  set value(value: T);
-}
-
-/**
- * A callback which is provided by a context requester and is called with the value satisfying the request.
- * This callback can be called multiple times by context providers as the requested value is changed.
- */
-export type ContextCallback<T> = (value: T) => void;
-/**
- * An event fired by a context requester to signal it desires a named context.
- *
- * A provider should inspect the `context` property of the event to determine if it has a value that can
- * satisfy the request, calling the `callback` with the requested value if so.
- */
-declare class ContextRequestEvent<T> extends Event {
-  readonly context: Context<T>;
-  readonly callback: ContextCallback<T>;
-  constructor(context: Context<T>, callback: ContextCallback<T>);
-}
-declare global {
-  interface HTMLElementEventMap {
-    /**
-     * A 'context-request' event can be emitted by any element which desires
-     * a context value to be injected by an external provider.
-     */
-    'context-request': ContextRequestEvent<unknown>;
-  }
-}
-
 declare const actualTableVariantSymbol: unique symbol;
 declare const tableHeadersSharedDataSymbol: unique symbol;
 export type ActualTableVariant = 'table' | 'list';
+
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
+}
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
@@ -157,7 +69,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
-declare class Table extends PreactCustomElement implements TableProps {
+declare class Table extends PolarisCustomElement implements TableProps {
   accessor variant: TableProps['variant'];
   accessor loading: TableProps['loading'];
   accessor paginate: TableProps['paginate'];
@@ -169,9 +81,9 @@ declare class Table extends PreactCustomElement implements TableProps {
    * @private
    * The actual table variant, which is either 'table' or 'list'.
    */
-  [actualTableVariantSymbol]: AddedContext<ActualTableVariant>;
+  [actualTableVariantSymbol]: _shopify_admin_web_component_foundations.AddedContext<ActualTableVariant>;
   /** @private */
-  [tableHeadersSharedDataSymbol]: AddedContext<
+  [tableHeadersSharedDataSymbol]: _shopify_admin_web_component_foundations.AddedContext<
     {
       listSlot: TableHeaderProps['listSlot'];
       textContent: string;

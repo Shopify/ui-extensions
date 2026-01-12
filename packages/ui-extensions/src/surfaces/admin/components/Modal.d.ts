@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 1.38.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -9,6 +9,8 @@
 import type {
   ComponentChildren,
   ModalProps$1,
+  PreactCustomElement,
+  RenderImpl,
   InteractionProps,
 } from './shared.d.ts';
 
@@ -56,64 +58,8 @@ export interface ModalProps
   >;
 }
 
-export type Styles = string;
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChildren;
-  styles?: Styles;
-};
-export interface ActivationEventEsque {
-  shiftKey: boolean;
-  metaKey: boolean;
-  ctrlKey: boolean;
-  button: number;
-}
-export interface ClickOptions {
-  /**
-   * The event you want to influence the synthetic click.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
 }
 
 export interface PreactOverlayControlProps
@@ -161,12 +107,15 @@ declare const overlayHideFrameId: unique symbol;
 export type PolyfillCommandEventInit = EventInit & {
   source: HTMLElement | null | undefined;
   command: PreactOverlayControlProps['command'];
+  rootActivator?: HTMLElement | null;
 };
 export type PolyfillCommandEvent = Event & {
   source: PolyfillCommandEventInit['source'];
   command: PolyfillCommandEventInit['command'];
   /** Have to use `_s_shadowSource` because `source` is retargeted to the shadow host by browsers */
   _s_shadowSource: PolyfillCommandEventInit['source'];
+  /** Root activator for nested overlays (e.g., menu button when modal opened from menu item) */
+  _s_rootActivator?: HTMLElement | null;
 };
 declare global {
   interface GlobalEventHandlersEventMap {
@@ -174,7 +123,7 @@ declare global {
   }
 }
 
-declare class PreactOverlayElement extends PreactCustomElement {
+declare class PreactOverlayElement extends PolarisCustomElement {
   constructor(renderImpl: RenderImpl);
   /** @private */
   [overlayHidden]: boolean;
@@ -182,35 +131,6 @@ declare class PreactOverlayElement extends PreactCustomElement {
   [overlayActivator]: HTMLElement | null | undefined;
   /** @private */
   [overlayHideFrameId]?: number;
-}
-
-export interface Context<T> {
-  readonly defaultValue: T;
-}
-/**
- * A callback which is provided by a context requester and is called with the value satisfying the request.
- * This callback can be called multiple times by context providers as the requested value is changed.
- */
-export type ContextCallback<T> = (value: T) => void;
-/**
- * An event fired by a context requester to signal it desires a named context.
- *
- * A provider should inspect the `context` property of the event to determine if it has a value that can
- * satisfy the request, calling the `callback` with the requested value if so.
- */
-declare class ContextRequestEvent<T> extends Event {
-  readonly context: Context<T>;
-  readonly callback: ContextCallback<T>;
-  constructor(context: Context<T>, callback: ContextCallback<T>);
-}
-declare global {
-  interface HTMLElementEventMap {
-    /**
-     * A 'context-request' event can be emitted by any element which desires
-     * a context value to be injected by an external provider.
-     */
-    'context-request': ContextRequestEvent<unknown>;
-  }
 }
 
 declare const hasOpenChildModal: unique symbol;
@@ -221,6 +141,7 @@ declare const isOpen: unique symbol;
 declare const dialog: unique symbol;
 declare const dismiss: unique symbol;
 declare const focusedElement: unique symbol;
+declare const rootActivator: unique symbol;
 declare const onEscape: unique symbol;
 declare const nestedModals: unique symbol;
 declare const onBackdropClick: unique symbol;
@@ -228,15 +149,19 @@ declare const abortController: unique symbol;
 declare const onChildModalChange: unique symbol;
 declare const childrenRerenderObserver: unique symbol;
 declare const shadowDomRerenderObserver: unique symbol;
-declare class Modal extends PreactOverlayElement implements ModalProps {
+declare abstract class ModalBase<TTagName extends keyof HTMLElementTagNameMap>
+  extends PreactOverlayElement
+  implements
+    Pick<ModalProps, 'accessibilityLabel' | 'heading' | 'padding' | 'size'>
+{
   accessor accessibilityLabel: ModalProps['accessibilityLabel'];
   accessor heading: ModalProps['heading'];
   accessor padding: ModalProps['padding'];
   accessor size: ModalProps['size'];
-  accessor onhide: CallbackEventListener<typeof tagName> | null;
-  accessor onshow: CallbackEventListener<typeof tagName> | null;
-  accessor onafterhide: CallbackEventListener<typeof tagName> | null;
-  accessor onaftershow: CallbackEventListener<typeof tagName> | null;
+  accessor onhide: CallbackEventListener<TTagName> | null;
+  accessor onshow: CallbackEventListener<TTagName> | null;
+  accessor onafterhide: CallbackEventListener<TTagName> | null;
+  accessor onaftershow: CallbackEventListener<TTagName> | null;
   /** @private */
   [abortController]: AbortController;
   /** @private */
@@ -244,7 +169,9 @@ declare class Modal extends PreactOverlayElement implements ModalProps {
   /** @private */
   [focusedElement]: HTMLElement | null;
   /** @private */
-  [nestedModals]: Map<Modal, boolean>;
+  [rootActivator]: HTMLElement | null;
+  /** @private */
+  [nestedModals]: Map<ModalBase<TTagName>, boolean>;
   /** @private */
   [childrenRerenderObserver]: MutationObserver;
   /** @private */
@@ -272,6 +199,10 @@ declare class Modal extends PreactOverlayElement implements ModalProps {
   connectedCallback(): void;
   /** @private */
   disconnectedCallback(): void;
+  constructor(renderImpl: RenderImpl, tagName: string);
+}
+
+declare class Modal extends ModalBase<typeof tagName> implements ModalProps {
   constructor();
 }
 declare global {

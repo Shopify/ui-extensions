@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 1.38.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -9,6 +9,8 @@
 import type {
   ComponentChildren,
   TooltipProps$1,
+  PreactCustomElement,
+  RenderImpl,
   InteractionProps,
 } from './shared.d.ts';
 
@@ -29,64 +31,8 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
-export type Styles = string;
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChildren;
-  styles?: Styles;
-};
-export interface ActivationEventEsque {
-  shiftKey: boolean;
-  metaKey: boolean;
-  ctrlKey: boolean;
-  button: number;
-}
-export interface ClickOptions {
-  /**
-   * The event you want to influence the synthetic click.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
 }
 
 export interface PreactOverlayControlProps
@@ -134,12 +80,15 @@ declare const overlayHideFrameId: unique symbol;
 export type PolyfillCommandEventInit = EventInit & {
   source: HTMLElement | null | undefined;
   command: PreactOverlayControlProps['command'];
+  rootActivator?: HTMLElement | null;
 };
 export type PolyfillCommandEvent = Event & {
   source: PolyfillCommandEventInit['source'];
   command: PolyfillCommandEventInit['command'];
   /** Have to use `_s_shadowSource` because `source` is retargeted to the shadow host by browsers */
   _s_shadowSource: PolyfillCommandEventInit['source'];
+  /** Root activator for nested overlays (e.g., menu button when modal opened from menu item) */
+  _s_rootActivator?: HTMLElement | null;
 };
 declare global {
   interface GlobalEventHandlersEventMap {
@@ -147,7 +96,7 @@ declare global {
   }
 }
 
-declare class PreactOverlayElement extends PreactCustomElement {
+declare class PreactOverlayElement extends PolarisCustomElement {
   constructor(renderImpl: RenderImpl);
   /** @private */
   [overlayHidden]: boolean;

@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 1.38.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -12,6 +12,8 @@ import type {
   ButtonProps$1,
   IconType,
   InteractionProps,
+  PreactCustomElement,
+  RenderImpl,
 } from './shared.d.ts';
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
@@ -38,9 +40,8 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 export interface IconProps
-  extends Pick<
-    IconProps$1,
-    'type' | 'tone' | 'color' | 'size' | 'interestFor'
+  extends Required<
+    Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size' | 'interestFor'>
   > {
   /**
    * Specifies the type of icon that will be displayed.
@@ -77,6 +78,7 @@ export type ButtonBaseProps = Required<
     | 'target'
     | 'href'
     | 'download'
+    | 'inlineSize'
   >
 >;
 export interface ButtonProps extends ButtonBaseProps {
@@ -84,64 +86,8 @@ export interface ButtonProps extends ButtonBaseProps {
   icon: IconProps['type'];
 }
 
-export type Styles = string;
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChildren;
-  styles?: Styles;
-};
-export interface ActivationEventEsque {
-  shiftKey: boolean;
-  metaKey: boolean;
-  ctrlKey: boolean;
-  button: number;
-}
-export interface ClickOptions {
-  /**
-   * The event you want to influence the synthetic click.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
 }
 
 export interface PreactOverlayControlProps
@@ -172,24 +118,46 @@ export interface PreactOverlayControlProps
   interestFor: Extract<InteractionProps['interestFor'], string>;
 }
 
-declare const Button_base: (abstract new (
-  args_0: RenderImpl,
-) => PreactCustomElement & PreactOverlayControlProps) &
-  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
-declare class Button extends Button_base implements ButtonProps {
+declare const ButtonBase_base: (abstract new (
+  renderImpl: Omit<RenderImpl, 'globalShadowCSS'>,
+) => PolarisCustomElement & PreactOverlayControlProps) &
+  Pick<typeof PolarisCustomElement, 'prototype' | 'observedAttributes'>;
+declare abstract class ButtonBase<TTagName extends keyof HTMLElementTagNameMap>
+  extends ButtonBase_base
+  implements
+    Pick<
+      ButtonProps,
+      | 'disabled'
+      | 'loading'
+      | 'target'
+      | 'href'
+      | 'download'
+      | 'type'
+      | 'accessibilityLabel'
+      | 'inlineSize'
+    >
+{
   accessor disabled: ButtonProps['disabled'];
-  accessor icon: ButtonProps['icon'];
   accessor loading: ButtonProps['loading'];
-  accessor variant: ButtonProps['variant'];
-  accessor tone: ButtonProps['tone'];
   accessor target: ButtonProps['target'];
   accessor href: ButtonProps['href'];
   accessor download: ButtonProps['download'];
-  accessor onclick: CallbackEventListener<typeof tagName> | null;
-  accessor onblur: CallbackEventListener<typeof tagName> | null;
-  accessor onfocus: CallbackEventListener<typeof tagName> | null;
   accessor type: ButtonProps['type'];
   accessor accessibilityLabel: ButtonProps['accessibilityLabel'];
+  accessor inlineSize: ButtonProps['inlineSize'];
+  accessor onclick: CallbackEventListener<TTagName> | null;
+  accessor onblur: CallbackEventListener<TTagName> | null;
+  accessor onfocus: CallbackEventListener<TTagName> | null;
+  abstract icon: string;
+  abstract variant: string;
+  abstract tone: string;
+  constructor(renderImpl: RenderImpl);
+}
+
+declare class Button extends ButtonBase<typeof tagName> implements ButtonProps {
+  accessor icon: ButtonProps['icon'];
+  accessor variant: ButtonProps['variant'];
+  accessor tone: ButtonProps['tone'];
   constructor();
 }
 declare global {

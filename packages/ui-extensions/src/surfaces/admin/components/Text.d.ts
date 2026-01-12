@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 1.38.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,7 +6,12 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChildren, TextProps$1} from './shared.d.ts';
+import type {
+  ComponentChildren,
+  TextProps$1,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
 
 export interface TextProps
   extends Required<
@@ -28,72 +33,12 @@ export interface TextProps
   >;
   tone: Extract<
     TextProps$1['tone'],
-    'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'caution'
+    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'caution' | 'critical'
   >;
   fontVariantNumeric: Extract<
     TextProps$1['fontVariantNumeric'],
     'auto' | 'normal' | 'tabular-nums'
   >;
-}
-
-export type Styles = string;
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChildren;
-  styles?: Styles;
-};
-export interface ActivationEventEsque {
-  shiftKey: boolean;
-  metaKey: boolean;
-  ctrlKey: boolean;
-  button: number;
-}
-export interface ClickOptions {
-  /**
-   * The event you want to influence the synthetic click.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 /** Used when an element does not have children. */
@@ -111,14 +56,35 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
-declare class Text extends PreactCustomElement implements TextProps {
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
+}
+
+declare abstract class TextBase
+  extends PolarisCustomElement
+  implements
+    Pick<
+      TextProps,
+      | 'fontVariantNumeric'
+      | 'color'
+      | 'type'
+      | 'dir'
+      | 'accessibilityVisibility'
+      | 'interestFor'
+    >
+{
   accessor fontVariantNumeric: TextProps['fontVariantNumeric'];
   accessor color: TextProps['color'];
-  accessor tone: TextProps['tone'];
   accessor type: TextProps['type'];
   accessor dir: TextProps['dir'];
   accessor accessibilityVisibility: TextProps['accessibilityVisibility'];
   accessor interestFor: string;
+  abstract tone: string;
+  constructor(renderImpl: RenderImpl);
+}
+
+declare class Text extends TextBase implements TextProps {
+  accessor tone: TextProps['tone'];
   constructor();
 }
 declare global {
