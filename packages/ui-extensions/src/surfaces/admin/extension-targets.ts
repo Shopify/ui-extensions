@@ -13,7 +13,6 @@ import type {
   CustomerSegmentTemplateApi,
   CustomerSegmentTemplate,
   ToolsDataApi,
-  ToolsDataOutput,
 } from './api';
 import {
   ShouldRenderApi,
@@ -730,11 +729,10 @@ export interface ExtensionTargets {
 
   /**
    * Provides tools data for the admin tools functionality.
-   * This extension returns tool results that integrate with the admin interface.
    */
   'admin.app.tools.data': RunnableExtension<
     ToolsDataApi<'admin.app.tools.data'>,
-    ToolsDataOutput
+    undefined
   >;
 }
 

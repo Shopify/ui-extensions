@@ -15,4 +15,3 @@ export type {ValidationSettingsApi} from './api/checkout-rules/validation-settin
 export type {PurchaseOptionsCardConfigurationApi} from './api/purchase-options-card-action';
 export type {DiscountFunctionSettingsApi} from './api/discount-function-settings/discount-function-settings';
 export type {ToolsDataApi} from './api/tools-data/tools-data';
-export type {ToolResult, ToolsDataOutput} from './api/tools-data/data';
