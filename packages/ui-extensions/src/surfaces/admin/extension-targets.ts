@@ -12,7 +12,7 @@ import type {
   DiscountFunctionSettingsApi,
   CustomerSegmentTemplateApi,
   CustomerSegmentTemplate,
-  ToolsDataApi,
+  StandardApi,
 } from './api';
 import {
   ShouldRenderApi,
@@ -731,7 +731,7 @@ export interface ExtensionTargets {
    * Provides tools data for the admin tools functionality.
    */
   'admin.app.tools.data': RunnableExtension<
-    ToolsDataApi<'admin.app.tools.data'>,
+    StandardApi<'admin.app.tools.data'>,
     undefined
   >;
 }
