@@ -1,4 +1,4 @@
-export interface SearchResult {
+export interface ToolResult {
   id: string;
   type: string;
   url: string;
@@ -6,7 +6,7 @@ export interface SearchResult {
 }
 
 export interface ToolsDataOutput {
-  results: SearchResult[];
+  results: ToolResult[];
   pageInfo: {
     hasNextPage: boolean;
     hasPreviousPage: boolean;
