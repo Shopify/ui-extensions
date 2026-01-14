@@ -1,0 +1,4 @@
+<s-stack direction="inline">
+  <s-press-button>Toggle</s-press-button>
+  <s-press-button pressed>Pressed</s-press-button>
+</s-stack>
