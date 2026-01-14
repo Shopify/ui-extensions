@@ -8,6 +8,7 @@ import {
   generateFiles,
   copyGeneratedToShopifyDev,
   replaceFileContent,
+  resolveShopifyDevPath,
 } from '../build-doc-shared.mjs';
 
 const EXTENSIONS_API_VERSION = process.argv[2];
@@ -29,7 +30,7 @@ const srcRelativePath = 'src/surfaces/point-of-sale';
 const docsPath = path.join(rootPath, docsRelativePath);
 const srcPath = path.join(rootPath, srcRelativePath);
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
+const shopifyDevPath = await resolveShopifyDevPath(rootPath);
 const shopifyDevDBPath = path.join(
   shopifyDevPath,
   'db/data/docs/templated_apis',
@@ -81,7 +82,7 @@ process.on('exit', () => {
     if (existsSync(tempComponentDefs)) {
       require('fs').unlinkSync(tempComponentDefs);
     }
-  } catch (e) {
+  } catch (error) {
     // Ignore cleanup errors on exit
   }
 });
