@@ -734,6 +734,14 @@ export interface ExtensionTargets {
     StandardApi<'admin.app.tools.data'>,
     undefined
   >;
+
+  /**
+   * Provides search data for the admin search functionality.
+   */
+  'admin.app.search.data': RunnableExtension<
+    StandardApi<'admin.app.search.data'>,
+    undefined
+  >;
 }
 
 export type ExtensionTarget = keyof ExtensionTargets;
