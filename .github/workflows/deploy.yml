@@ -44,7 +44,7 @@ jobs:
         run: npm install -g npm@11.7
 
       - name: Create snapshot
-        uses: Shopify/snapit@support-oidc-authentication
+        uses: Shopify/snapit@v0.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
           NPM_TOKEN: ''
