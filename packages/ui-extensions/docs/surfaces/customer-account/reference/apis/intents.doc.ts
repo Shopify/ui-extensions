@@ -11,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     description: '',
     codeblock: {
-      title: 'Replace payment method',
+      title: 'Replace payment method with object syntax',
       tabs: [
         {
           code: '../examples/apis/intents.example.jsx',
@@ -46,7 +46,6 @@ Where:
       title: 'IntentAction',
       description: `Supported actions that can be performed on resources.
 - \`create\`: Opens a creation workflow for a new resource
-- \`edit\`: Opens an editing workflow for an existing resource (requires \`value\` parameter)
 - \`open\`: Opens a workflow for an existing resource (requires \`value\` parameter)`,
       type: 'IntentAction',
     },
@@ -73,24 +72,19 @@ Where:
   ],
   examples: {
     description: 'Intents for each Shopify resource type',
-    exampleGroups: [
+    examples: [
       {
-        title: 'Subscription Contract',
-        examples: [
-          {
-            description:
-              'Replace the payment method on an active subscription contract. Opens a modal with vaulted cards.',
-            codeblock: {
-              title: 'Replace payment method',
-              tabs: [
-                {
-                  code: '../examples/apis/intents.example.jsx',
-                  language: 'jsx',
-                },
-              ],
+        description:
+          'Replace the payment method on an active subscription contract. Opens a modal with vaulted cards.',
+        codeblock: {
+          title: 'Replace payment method with string syntax',
+          tabs: [
+            {
+              code: '../examples/apis/intents.string.example.jsx',
+              language: 'jsx',
             },
-          },
-        ],
+          ],
+        },
       },
     ],
   },

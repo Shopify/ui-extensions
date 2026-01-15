@@ -8,13 +8,7 @@ export default async () => {
 function Extension() {
   async function handleReplacePaymentMethod() {
     const activity = await shopify.intents.invoke(
-      {
-        action: 'open',
-        type: 'shopify/SubscriptionContract',
-        value:
-          'gid://shopify/SubscriptionContract/123',
-        data: {field: 'paymentMethod'},
-      },
+      'open:shopify/SubscriptionContract,gid://shopify/SubscriptionContract/123?field=paymentMethod',
     );
 
     const response = await activity.complete;
