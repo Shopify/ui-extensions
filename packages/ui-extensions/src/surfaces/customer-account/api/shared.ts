@@ -757,7 +757,7 @@ export interface IntentActivity {
 export interface Intents {
   /**
    * Invoke an intent using the object or URL syntax.
-   * 
+   *
    * Object format: `{action, type, value?, data?}`
    *
    * @param query - Structured intent description, including `action` and `type`.

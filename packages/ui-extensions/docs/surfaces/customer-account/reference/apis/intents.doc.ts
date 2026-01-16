@@ -25,7 +25,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'invoke',
       description: `The \`invoke\` API is a function that accepts either a string query or an options object describing the intent to invoke and returns a Promise that resolves to an activity handle for the workflow.
 
-## Intent Format
+## Intent format
 
 Intents are invoked using a string query format: \`\${action}:\${type},\${value}\`
 
@@ -34,9 +34,9 @@ Where:
 - \`type\` - The resource type (e.g., \`shopify/SubscriptionContract\`)
 - \`value\` - The resource identifier
 
-## Supported Resources
+## Supported resources
 
-### Subscription Contract
+### Subscription contract
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`open\` | \`shopify/SubscriptionContract\` | \`gid://shopify/SubscriptionContract/{id}\` | \`{ field: 'paymentMethod' }\` |`,
