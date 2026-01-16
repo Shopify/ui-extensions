@@ -4,7 +4,6 @@ import sharedContent from '../../../../docs/shared/components/ScrollBox';
 const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   category: 'Polaris web components',
-  // TODO: Add thumbnail at /packages/ui-extensions/docs/surfaces/admin/screenshots/components/scroll-box.png
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/scroll-box.png',
   isVisualComponent: true,
@@ -43,7 +42,6 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
-  // TODO: Add more examples
   examples: {
     description: 'Component examples',
     exampleGroups: [],

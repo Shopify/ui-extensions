@@ -3,7 +3,6 @@ import sharedContent from '../../../../docs/shared/components/PressButton';
 
 const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
-  // TODO: Add thumbnail at /packages/ui-extensions/docs/surfaces/admin/screenshots/components/press-button.png
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/press-button.png',
   isVisualComponent: true,
@@ -42,7 +41,6 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
-  // TODO: Add more examples
   examples: {
     description: 'Component examples',
     exampleGroups: [],
