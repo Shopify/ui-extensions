@@ -12,6 +12,7 @@ import type {
   DiscountFunctionSettingsApi,
   CustomerSegmentTemplateApi,
   CustomerSegmentTemplate,
+  StandardApi,
 } from './api';
 import {
   ShouldRenderApi,
@@ -724,6 +725,14 @@ export interface ExtensionTargets {
   'admin.product-index.selection-print-action.should-render': RunnableExtension<
     ShouldRenderApi<'admin.product-index.selection-print-action.should-render'>,
     ShouldRenderOutput
+  >;
+
+  /**
+   * Provides tools data for the admin tools functionality.
+   */
+  'admin.app.tools.data': RunnableExtension<
+    StandardApi<'admin.app.tools.data'>,
+    undefined
   >;
 }
 
