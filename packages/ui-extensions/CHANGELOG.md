@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.12
+
+### Patch Changes
+
+- [#3706](https://github.com/Shopify/ui-extensions/pull/3706) [`2112c03`](https://github.com/Shopify/ui-extensions/commit/2112c03726ae401d95cfaace496005cc839b7007) Thanks [@billfienberg](https://github.com/billfienberg)! - Add admin.app.tools.data extension target
+
 ## 2025.10.11
 
 ### Patch Changes
