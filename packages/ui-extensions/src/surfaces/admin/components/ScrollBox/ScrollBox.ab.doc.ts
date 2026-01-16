@@ -30,11 +30,6 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Code',
       tabs: [
         {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
-          layout: 'alignStart',
-        },
-        {
           code: './examples/default.html',
           language: 'preview',
           layout: 'alignStart',
