@@ -2,6 +2,6 @@ name: ui-extensions
 
 up:
   - node:
-      version: v20.10.0
+      version: v20.19.6
       yarn: 1.19.2
       package_manager: yarn@1.19.2
