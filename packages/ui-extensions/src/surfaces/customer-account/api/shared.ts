@@ -634,7 +634,7 @@ export interface ToastApi {
  */
 export interface IntentQueryOptions {
   /**
-   * The resource identifier for edit actions (e.g., 'gid://shopify/SubscriptionContract/123').
+   * The resource identifier for edit actions (e.g. `gid://shopify/SubscriptionContract/123`).
    */
   value?: string;
   /**
@@ -667,12 +667,12 @@ export interface IntentQuery extends IntentQueryOptions {
   /**
    * Verb describing the operation to perform on the target resource.
    *
-   * Common values include `'create'` and `'open'`. The set of
+   * Common values include `create` and `open`. The set of
    * allowed verbs is intent-specific; unknown verbs will fail validation.
    */
   action: IntentAction;
   /**
-   * The resource type (e.g., 'shopify/SubscriptionContract').
+   * The resource type (e.g. `shopify/SubscriptionContract`).
    */
   type: string;
 }
@@ -756,7 +756,9 @@ export interface IntentActivity {
  */
 export interface Intents {
   /**
-   * Invoke an intent using the object syntax.
+   * Invoke an intent using the object or URL syntax.
+   * 
+   * Object format: `{action, type, value?, data?}`
    *
    * @param query - Structured intent description, including `action` and `type`.
    * @returns A promise for an {@link IntentActivity} that completes with an
@@ -776,9 +778,7 @@ export interface Intents {
    */
   invoke(query: IntentQuery): Promise<IntentActivity>;
   /**
-   * Invoke an intent using the URL syntax.
-   *
-   * URL format: `action:type[,value][?params]`.
+   * URL format: `action:type[,value][?params]`
    *
    * @param intentURL - Intent in URL form
    * @param options - Optional supplemental inputs such as `value` or `data`.
