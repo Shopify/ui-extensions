@@ -79,6 +79,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-text-field';
+/**
+ * @publicDocs
+ */
 export interface TextFieldJSXProps
   extends Pick<
     TextFieldProps,

@@ -41,6 +41,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-badge';
+/**
+ * @publicDocs
+ */
 export interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
   /**
    * Determines the visual appearance and semantic meaning of the badge. Badges rely on the tone system for semantic meaning, so using custom styling may not clearly convey meaning to merchants. Available options:

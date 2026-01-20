@@ -74,6 +74,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-date-field';
+/**
+ * @publicDocs
+ */
 export interface DateFieldJSXProps
   extends Pick<
     DateFieldProps,

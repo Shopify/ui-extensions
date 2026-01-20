@@ -55,6 +55,9 @@ export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
  */
 export type PaddingKeyword = SizeKeyword | 'none';
 declare const tagName = 's-scroll-box';
+/**
+ * @publicDocs
+ */
 export interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
   /**
    * The block size of the scrollable container. Auto automatically sizes based on the container's content and available space.

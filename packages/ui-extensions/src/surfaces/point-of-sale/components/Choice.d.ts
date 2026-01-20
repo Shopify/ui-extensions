@@ -41,6 +41,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-choice';
+/**
+ * @publicDocs
+ */
 export interface ChoiceJSXProps
   extends Pick<ChoiceProps, 'id' | 'value' | 'disabled' | 'selected'> {
   children?: ComponentChildren;

@@ -41,6 +41,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-text';
+/**
+ * @publicDocs
+ */
 export interface TextJSXProps extends Pick<TextProps, 'id'> {
   /**
    * The color intensity of the text. Controls how prominent or subtle the text appears within the interface.

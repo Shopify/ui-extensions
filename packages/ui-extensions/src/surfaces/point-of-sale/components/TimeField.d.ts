@@ -74,6 +74,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-time-field';
+/**
+ * @publicDocs
+ */
 export interface TimeFieldJSXProps
   extends Pick<
     TimeFieldProps,

@@ -79,6 +79,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-modal';
+/**
+ * @publicDocs
+ */
 export interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
   /**
    * The callback when the modal is hidden. Use this event to perform cleanup tasks, update application state, or trigger other actions when the modal is dismissed or closed.

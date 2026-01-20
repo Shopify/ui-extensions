@@ -74,6 +74,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-tile';
+/**
+ * @publicDocs
+ */
 export interface TileJSXProps
   extends Pick<
     TileProps,

@@ -79,6 +79,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-number-field';
+/**
+ * @publicDocs
+ */
 export interface NumberFieldJSXProps
   extends Pick<
     NumberFieldProps,

@@ -74,6 +74,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-clickable';
+/**
+ * @publicDocs
+ */
 export interface ClickableJSXProps
   extends Pick<ClickableProps, 'id' | 'disabled'> {
   /**

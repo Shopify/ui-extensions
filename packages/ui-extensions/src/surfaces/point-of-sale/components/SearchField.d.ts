@@ -74,6 +74,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-search-field';
+/**
+ * @publicDocs
+ */
 export interface SearchFieldJSXProps
   extends Pick<SearchFieldProps, 'id' | 'disabled' | 'placeholder' | 'value'> {
   /**

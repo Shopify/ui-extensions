@@ -74,6 +74,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-date-spinner';
+/**
+ * @publicDocs
+ */
 export interface DateSpinnerJSXProps
   extends Pick<DateSpinnerProps, 'id' | 'value'> {
   /**

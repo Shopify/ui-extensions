@@ -172,6 +172,9 @@ export type SupportedIconNames = Extract<
   | 'x'
   | 'x-circle'
 >;
+/**
+ * @publicDocs
+ */
 export interface IconJSXProps
   extends Pick<IconProps, 'id' | 'tone' | 'color' | 'size'> {
   /**

@@ -41,6 +41,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-heading';
+/**
+ * @publicDocs
+ */
 export interface HeadingJSXProps extends Pick<HeadingProps, 'id'> {
   /**
    * The content of the heading, typically text that describes the section or page it introduces.

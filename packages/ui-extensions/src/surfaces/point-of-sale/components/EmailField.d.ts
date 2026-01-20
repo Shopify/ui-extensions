@@ -79,6 +79,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-email-field';
+/**
+ * @publicDocs
+ */
 export interface EmailFieldJSXProps
   extends Pick<
     EmailFieldProps,

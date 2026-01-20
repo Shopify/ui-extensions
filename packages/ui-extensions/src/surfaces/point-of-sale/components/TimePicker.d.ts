@@ -74,6 +74,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-time-picker';
+/**
+ * @publicDocs
+ */
 export interface TimePickerJSXProps
   extends Pick<TimePickerProps, 'id' | 'value'> {
   /**

@@ -46,6 +46,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-page';
+/**
+ * @publicDocs
+ */
 export interface PageJSXProps extends Pick<PageProps, 'id'> {
   /**
    * The main page heading displayed in the action bar at the top of the page.

@@ -46,6 +46,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-banner';
+/**
+ * @publicDocs
+ */
 export interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
   /**
    * Controls whether the banner is visible or hidden. When set to `true`, the banner will be hidden from view. Use this to programmatically show or hide banners based on application state. Default is `false`.

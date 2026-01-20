@@ -46,6 +46,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-section';
+/**
+ * @publicDocs
+ */
 export interface SectionJSXProps extends Pick<SectionProps, 'id'> {
   /**
    * A title that describes the content of the section. If omitted and no secondary actions are provided, the section will be rendered without a header.

@@ -54,6 +54,9 @@ declare const tagName = 's-box';
  * Defines the available padding size options using a semantic scale. Provides consistent spacing values that align with the POS design system.
  */
 export type PaddingKeyword = SizeKeyword | 'none';
+/**
+ * @publicDocs
+ */
 export interface BoxJSXProps {
   /**
    * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.

@@ -74,6 +74,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-button';
+/**
+ * @publicDocs
+ */
 export interface ButtonJSXProps
   extends Pick<
     ButtonProps,

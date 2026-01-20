@@ -74,6 +74,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-date-picker';
+/**
+ * @publicDocs
+ */
 export interface DatePickerJSXProps
   extends Pick<DatePickerProps, 'id' | 'value'> {
   /**

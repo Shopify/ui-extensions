@@ -31,6 +31,9 @@ export type IntrinsicElementProps<T> = T &
 export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
 declare const tagName = 's-image';
+/**
+ * @publicDocs
+ */
 export interface ImageJSXProps
   extends Pick<ImageProps, 'id' | 'objectFit' | 'alt'> {
   /**

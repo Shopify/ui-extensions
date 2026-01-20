@@ -79,6 +79,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-text-area';
+/**
+ * @publicDocs
+ */
 export interface TextAreaJSXProps
   extends Pick<
     TextAreaProps,

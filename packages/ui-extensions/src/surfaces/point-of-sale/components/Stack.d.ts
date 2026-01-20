@@ -76,6 +76,9 @@ export type PickedProps = Pick<
   | 'justifyContent'
   | 'rowGap'
 >;
+/**
+ * @publicDocs
+ */
 export interface StackJSXProps extends PickedProps {
   /**
    * The padding applied to all edges of the container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:

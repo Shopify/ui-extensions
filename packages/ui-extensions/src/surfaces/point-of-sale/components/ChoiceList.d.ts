@@ -74,6 +74,9 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-choice-list';
+/**
+ * @publicDocs
+ */
 export interface ChoiceListJSXProps
   extends Pick<ChoiceListProps, 'id' | 'values' | 'multiple'> {
   /**

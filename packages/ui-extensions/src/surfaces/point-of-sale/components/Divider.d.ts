@@ -41,6 +41,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-divider';
+/**
+ * @publicDocs
+ */
 export interface DividerJSXProps
   extends Pick<DividerProps, 'id' | 'direction'> {}
 declare global {

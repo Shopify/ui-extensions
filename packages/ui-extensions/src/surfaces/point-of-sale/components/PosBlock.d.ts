@@ -46,6 +46,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-pos-block';
+/**
+ * @publicDocs
+ */
 export interface PosBlockJSXProps
   extends Pick<POSBlockProps, 'id' | 'heading'> {
   /**
