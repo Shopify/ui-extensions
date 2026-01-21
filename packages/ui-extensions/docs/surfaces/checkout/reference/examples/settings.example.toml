@@ -1,4 +1,4 @@
-api_version = "2025-10"
+api_version = "2026-01"
 
 [[extensions]]
 name = "My checkout extension"
@@ -6,19 +6,19 @@ handle = "checkout-ui"
 uid = "fddfc370-27c7-c30f-4ee0-a927194e2accadefd40c"
 type = "ui_extension"
 
-  [[extensions.targeting]]
-  target = "purchase.checkout.block.render"
-  module = "./Checkout.jsx"
+[[extensions.targeting]]
+target = "purchase.checkout.block.render"
+module = "./Checkout.jsx"
 
-  [extensions.settings]
-    [[extensions.settings.fields]]
-    key = "banner_title"
-    type = "single_line_text_field"
-    name = "Banner title"
-    description = "Enter a title for the banner."
-    [[extensions.settings.fields.validations]]
-    name = "min"
-    value = "5"
-    [[extensions.settings.fields.validations]]
-    name = "max"
-    value = "20"
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "banner_title"
+type = "single_line_text_field"
+name = "Banner title"
+description = "Enter a title for the banner."
+[[extensions.settings.fields.validations]]
+name = "min"
+value = "5"
+[[extensions.settings.fields.validations]]
+name = "max"
+value = "20"

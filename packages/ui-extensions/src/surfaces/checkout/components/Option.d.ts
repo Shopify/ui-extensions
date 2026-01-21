@@ -26,9 +26,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-option";
-export interface OptionProps extends Pick<OptionProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'value'> {
+export interface OptionElementProps extends Pick<OptionProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'value'> {
 }
-export interface OptionElement extends OptionProps, Omit<HTMLElement, 'id'> {
+export interface OptionElement extends OptionElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface OptionProps extends OptionElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -43,4 +45,4 @@ declare module 'preact' {
     }
 }
 
-export type { OptionElement, OptionProps };
+export type { OptionElement, OptionElementProps, OptionProps };

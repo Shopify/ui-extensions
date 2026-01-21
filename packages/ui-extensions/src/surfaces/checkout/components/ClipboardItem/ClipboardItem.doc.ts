@@ -1,37 +1,12 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/ClipboardItem';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  requires: '',
   isVisualComponent: false,
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'ClipboardItemElementProps',
-    },
-    {
-      title: 'Events',
-      description:
-        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
-      type: 'ClipboardItemElementEvents',
-    },
-  ],
-  defaultExample: {
-    image: 'clipboard-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-clipboard-item.example.html',
-          language: 'html',
-        },
-      ],
-    },
-  },
-};
+  definitions: {properties: true, events: true},
+});
 
 export default data;

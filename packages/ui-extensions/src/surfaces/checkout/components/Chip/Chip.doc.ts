@@ -1,39 +1,11 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/Chip';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  isVisualComponent: true,
-  thumbnail: 'chip-thumbnail.png',
-  requires: '',
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'ChipElementProps',
-    },
-    {
-      title: 'Slots',
-      description:
-        'Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).',
-      type: 'ChipElementSlots',
-    },
-  ],
-  defaultExample: {
-    image: 'chip-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-chip.example.html',
-          language: 'html',
-        },
-      ],
-    },
-  },
-  subSections: [],
-};
+  definitions: {properties: true, slots: true},
+});
 
 export default data;

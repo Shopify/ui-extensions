@@ -26,9 +26,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-unordered-list";
-export interface UnorderedListProps extends UnorderedListProps$1 {
+export interface UnorderedListElementProps extends UnorderedListProps$1 {
 }
-export interface UnorderedListElement extends UnorderedListProps, Omit<HTMLElement, 'id'> {
+export interface UnorderedListElement extends UnorderedListElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface UnorderedListProps extends UnorderedListElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -43,4 +45,4 @@ declare module 'preact' {
     }
 }
 
-export type { UnorderedListElement, UnorderedListProps };
+export type { UnorderedListElement, UnorderedListElementProps, UnorderedListProps };

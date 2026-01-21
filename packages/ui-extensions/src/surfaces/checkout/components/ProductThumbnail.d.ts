@@ -20,10 +20,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-product-thumbnail";
-export interface ProductThumbnailProps extends Pick<ProductThumbnailProps$1, 'alt' | 'size' | 'sizes' | 'src' | 'srcSet' | 'totalItems'> {
+export interface ProductThumbnailElementProps extends Pick<ProductThumbnailProps$1, 'alt' | 'size' | 'sizes' | 'src' | 'srcSet' | 'totalItems'> {
     size?: Extract<ProductThumbnailProps$1['size'], 'small-100' | 'small' | 'base'>;
 }
-export interface ProductThumbnailElement extends ProductThumbnailProps, Omit<HTMLElement, 'id'> {
+export interface ProductThumbnailElement extends ProductThumbnailElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface ProductThumbnailProps extends ProductThumbnailElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -38,4 +40,4 @@ declare module 'preact' {
     }
 }
 
-export type { ProductThumbnailElement, ProductThumbnailProps };
+export type { ProductThumbnailElement, ProductThumbnailElementProps, ProductThumbnailProps };

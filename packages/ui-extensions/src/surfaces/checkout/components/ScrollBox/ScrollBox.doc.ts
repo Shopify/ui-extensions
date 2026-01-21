@@ -1,33 +1,11 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/ScrollBox';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  isVisualComponent: true,
-  thumbnail: 'scroll-box-thumbnail.png',
-  requires: '',
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'ScrollBoxProps',
-    },
-  ],
-  defaultExample: {
-    image: 'scroll-box-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-scroll-box.example.html',
-          language: 'html',
-        },
-      ],
-    },
-  },
-  subSections: [],
-};
+  definitions: {properties: true},
+});
 
 export default data;

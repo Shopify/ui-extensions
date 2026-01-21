@@ -26,7 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-choice";
-export interface ChoiceProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'error' | 'value'> {
+export interface ChoiceElementProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'error' | 'value'> {
 }
 export interface ChoiceElementSlots {
     /**
@@ -49,7 +49,9 @@ export interface ChoiceElementSlots {
      */
     selectedContent?: HTMLElement;
 }
-export interface ChoiceElement extends ChoiceProps, Omit<HTMLElement, 'id'> {
+export interface ChoiceElement extends ChoiceElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface ChoiceProps extends ChoiceElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -64,4 +66,4 @@ declare module 'preact' {
     }
 }
 
-export type { ChoiceElement, ChoiceElementSlots, ChoiceProps };
+export type { ChoiceElement, ChoiceElementProps, ChoiceElementSlots, ChoiceProps };

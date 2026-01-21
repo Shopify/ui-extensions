@@ -20,10 +20,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-progress";
-export interface ProgressProps extends Pick<ProgressProps$1, 'accessibilityLabel' | 'id' | 'max' | 'tone' | 'value'> {
+export interface ProgressElementProps extends Pick<ProgressProps$1, 'accessibilityLabel' | 'id' | 'max' | 'tone' | 'value'> {
     tone?: Extract<ProgressProps$1['tone'], 'auto' | 'critical'>;
 }
-export interface ProgressElement extends ProgressProps, Omit<HTMLElement, 'id'> {
+export interface ProgressElement extends ProgressElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface ProgressProps extends ProgressElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -38,4 +40,4 @@ declare module 'preact' {
     }
 }
 
-export type { ProgressElement, ProgressProps };
+export type { ProgressElement, ProgressElementProps, ProgressProps };

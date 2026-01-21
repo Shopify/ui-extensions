@@ -1,54 +1,19 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
-const data: ReferenceEntityTemplateSchema = {
-  name: 'Sheet',
-  description:
-    'The Sheet component displays essential information for customers at the bottom of the screen, appearing above other elements. Use it sparingly to avoid distracting customers during checkout. This component requires access to [Customer Privacy API](/docs/api/checkout-ui-extensions/latest/configuration#collect-buyer-consent) to be rendered. \n\nThe library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the sheet content.',
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
+import sharedContent from '../../../../docs/shared/components/Sheet';
+
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
+  ...sharedContent,
   requires:
     'configuration of the [Customer Privacy](/docs/api/checkout-ui-extensions/latest/configuration#collect-buyer-consent) capability to be rendered.',
-  thumbnail: 'sheet-thumbnail.png',
-  isVisualComponent: true,
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'SheetElementProps',
-    },
-    {
-      title: 'Events',
-      description:
-        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
-      type: 'SheetElementEvents',
-    },
-    {
-      title: 'Slots',
-      description:
-        'Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).',
-      type: 'SheetElementSlots',
-    },
-    {
-      title: 'Methods',
-      description:
-        'Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).',
-      type: 'SheetElementMethods',
-    },
-  ],
-  category: 'Polaris web components',
-  subCategory: 'Overlays',
-  defaultExample: {
-    image: 'sheet-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-sheet.example.html',
-          language: 'html',
-        },
-      ],
-    },
+  definitions: {
+    properties: true,
+    events: true,
+    slots: true,
+    methods: true,
   },
-  subSections: [
+  extraContent: [
     {
       type: 'Generic',
       anchorLink: 'shopify-controlled-surfaces',
@@ -177,7 +142,6 @@ When a customer neither grants nor denies consent by pressing the dismiss button
 <img alt="Sheet dismissal" src="/assets/landing-pages/templated-apis/checkout-ui-extensions/ui-components/sheet-content-recommendations8.png" />`,
     },
   ],
-  related: [],
-};
+});
 
 export default data;

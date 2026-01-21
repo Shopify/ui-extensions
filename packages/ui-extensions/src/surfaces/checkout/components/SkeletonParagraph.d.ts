@@ -20,9 +20,11 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-skeleton-paragraph";
-export interface SkeletonParagraphProps extends SkeletonParagraphProps$1 {
+export interface SkeletonParagraphElementProps extends SkeletonParagraphProps$1 {
 }
-export interface SkeletonParagraphElement extends SkeletonParagraphProps, Omit<HTMLElement, 'id'> {
+export interface SkeletonParagraphElement extends SkeletonParagraphElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface SkeletonParagraphProps extends SkeletonParagraphElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -37,4 +39,4 @@ declare module 'preact' {
     }
 }
 
-export type { SkeletonParagraphElement, SkeletonParagraphProps };
+export type { SkeletonParagraphElement, SkeletonParagraphElementProps, SkeletonParagraphProps };

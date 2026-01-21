@@ -1,32 +1,11 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/Icon';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  thumbnail: 'icon-thumbnail.png',
-  requires: '',
-  isVisualComponent: true,
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'IconProps',
-    },
-  ],
-  defaultExample: {
-    image: 'icon-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-icon.example.html',
-          language: 'html',
-        },
-      ],
-    },
-  },
-};
+  definitions: {properties: true},
+});
 
 export default data;

@@ -23,12 +23,14 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-image";
-export interface ImageProps extends Pick<ImageProps$1, 'accessibilityRole' | 'alt' | 'aspectRatio' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'id' | 'inlineSize' | 'loading' | 'objectFit' | 'sizes' | 'src' | 'srcSet'> {
+export interface ImageElementProps extends Pick<ImageProps$1, 'accessibilityRole' | 'alt' | 'aspectRatio' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'id' | 'inlineSize' | 'loading' | 'objectFit' | 'sizes' | 'src' | 'srcSet'> {
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<ImageProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
 }
-export interface ImageElement extends ImageProps, Omit<HTMLElement, 'id'> {
+export interface ImageElement extends ImageElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface ImageProps extends ImageElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -43,4 +45,4 @@ declare module 'preact' {
     }
 }
 
-export type { ImageElement, ImageProps };
+export type { ImageElement, ImageElementProps, ImageProps };

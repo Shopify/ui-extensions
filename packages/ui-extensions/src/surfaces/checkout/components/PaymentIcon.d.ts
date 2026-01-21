@@ -20,9 +20,11 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-payment-icon";
-export interface PaymentIconProps extends PaymentIconProps$1 {
+export interface PaymentIconElementProps extends PaymentIconProps$1 {
 }
-export interface PaymentIconElement extends PaymentIconProps, Omit<HTMLElement, 'id'> {
+export interface PaymentIconElement extends PaymentIconElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface PaymentIconProps extends PaymentIconElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -37,4 +39,4 @@ declare module 'preact' {
     }
 }
 
-export type { PaymentIconElement, PaymentIconProps };
+export type { PaymentIconElement, PaymentIconElementProps, PaymentIconProps };

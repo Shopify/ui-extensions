@@ -2,55 +2,21 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/ChoiceList';
 import choiceSharedContent from '../../../../docs/shared/components/Choice';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  isVisualComponent: true,
-  thumbnail: 'choice-list-thumbnail.png',
-  requires: '',
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'ChoiceListElementProps',
-    },
-    {
-      title: 'Events',
-      description:
-        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
-      type: 'ChoiceListElementEvents',
-    },
-    {
-      title: choiceSharedContent.name,
-      description: choiceSharedContent.description,
-      type: 'ChoiceProps',
-    },
-    {
-      title: 'Slots',
-      description:
-        'Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).',
-      type: 'ChoiceElementSlots',
-    },
-  ],
-  defaultExample: {
-    image: 'choice-list-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-choice-list.example.html',
-          language: 'html',
-        },
-      ],
-    },
+  definitions: {properties: true, events: true},
+  subcomponent: {
+    ...choiceSharedContent,
+    definitions: {properties: true, slots: true},
   },
-  examples: {
+  extraExamples: {
     description: `The \`ChoiceList\` component offers different variants to suit various use cases. Choose the right variant based on the number of choices, the complexity of the content, and the available screen space. Below are some best practices for each variant.`,
     examples: [
       {
         description: `This classic and flexible variant is ideal for <strong>up to 10 choices</strong>. It’s the most common and recognizable format for making a selection from a vertical list.
-        
+
 <strong>Best Practices</strong>
 <ul>
   <li><strong>Keep it simple:</strong> Keep the initial content for each item as concise as possible so users can quickly scan and compare their choices.</li>
@@ -126,6 +92,6 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
-};
+});
 
 export default data;

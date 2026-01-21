@@ -1,33 +1,11 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/Spinner';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  requires: '',
-  thumbnail: 'spinner-thumbnail.png',
-  isVisualComponent: true,
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'SpinnerProps',
-    },
-  ],
-  defaultExample: {
-    image: 'spinner-default.gif',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-spinner.example.html',
-          language: 'html',
-        },
-      ],
-    },
-  },
-  subSections: [],
-};
+  definitions: {properties: true},
+});
 
 export default data;

@@ -32,11 +32,11 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-url-field";
-export interface UrlFieldElementProps extends Pick<URLFieldProps, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
+export interface URLFieldElementProps extends Pick<URLFieldProps, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
 export interface UrlFieldEvents extends Pick<URLFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-export interface UrlFieldElementEvents {
+export interface URLFieldElementEvents {
     /**
      * Callback when the element loses focus.
      *
@@ -62,20 +62,20 @@ export interface UrlFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
-export interface UrlFieldElementSlots {
+export interface URLFieldElementSlots {
     /**
      * Additional content to be displayed in the field.
      * Commonly used to display an icon that activates a tooltip providing more information.
      */
     accessory?: HTMLElement;
 }
-export interface UrlFieldElement extends UrlFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+export interface UrlFieldElement extends URLFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: UrlFieldEvents['onBlur'];
     onchange: UrlFieldEvents['onChange'];
     onfocus: UrlFieldEvents['onFocus'];
     oninput: UrlFieldEvents['onInput'];
 }
-export interface UrlFieldProps extends UrlFieldElementProps, UrlFieldEvents {
+export interface UrlFieldProps extends URLFieldElementProps, UrlFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -90,4 +90,4 @@ declare module 'preact' {
     }
 }
 
-export type { UrlFieldElement, UrlFieldElementEvents, UrlFieldElementProps, UrlFieldElementSlots, UrlFieldEvents, UrlFieldProps };
+export type { URLFieldElementEvents, URLFieldElementProps, URLFieldElementSlots, UrlFieldElement, UrlFieldEvents, UrlFieldProps };
