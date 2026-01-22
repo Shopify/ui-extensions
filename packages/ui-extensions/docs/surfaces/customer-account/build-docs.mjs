@@ -103,6 +103,20 @@ try {
     replaceValue: 'any',
   });
   await generateExtensionsDocs();
+  
+  // Generate targets.json
+  console.log('Generating targets.json...');
+  try {
+    const {execSync} = await import('child_process');
+    execSync(`node ${path.join(docsPath, 'build-docs-targets-json.mjs')}`, {
+      stdio: 'inherit',
+      cwd: rootPath,
+    });
+    console.log('✅ Generated targets.json');
+  } catch (targetsError) {
+    console.warn('Warning: Failed to generate targets.json:', targetsError.message);
+  }
+  
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
     shopifyDevPath,
