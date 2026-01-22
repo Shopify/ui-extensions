@@ -624,3 +624,185 @@ export interface ToastApiResult {
 export interface ToastApi {
   show: (content: string) => Promise<ToastApiResult>;
 }
+
+/**
+ * Options for URL-based invocations.
+ *
+ * When invoking via URL syntax, `action` and `type` are parsed from the
+ * string. This companion type captures the remaining optional fields that can
+ * be provided alongside the URL.
+ */
+export interface IntentQueryOptions {
+  /**
+   * The resource identifier for edit actions (e.g. `gid://shopify/SubscriptionContract/123`).
+   */
+  value?: string;
+  /**
+   * Optional input payload passed to the intent.
+   *
+   * Used to seed forms or supply parameters. The accepted shape is
+   * intent-specific. For example:
+   * - Replacing a payment method on a subscription contract requires
+   *   { field: 'paymentMethod' }
+   */
+  data?: Record<string, unknown>;
+}
+
+/**
+ * Allowed actions that can be performed by an intent.
+ *
+ * Common actions include:
+ * - `'create'`: Initiate creation of a new resource.
+ * - `'open'`: Modify an existing resource.
+ */
+export type IntentAction = 'create' | 'open' | string;
+
+/**
+ * Structured description of an intent to invoke.
+ *
+ * Use this object form when programmatically composing an intent at runtime.
+ * It pairs an action (verb) with a resource type and optional inputs.
+ */
+export interface IntentQuery extends IntentQueryOptions {
+  /**
+   * Verb describing the operation to perform on the target resource.
+   *
+   * Common values include `create` and `open`. The set of
+   * allowed verbs is intent-specific; unknown verbs will fail validation.
+   */
+  action: IntentAction;
+  /**
+   * The resource type (e.g. `shopify/SubscriptionContract`).
+   */
+  type: string;
+}
+
+/**
+ * Successful intent completion.
+ *
+ * - `code` is always `'ok'`
+ * - `data` contains the output payload
+ */
+export interface SuccessIntentResponse {
+  code: 'ok';
+  /**
+   * Validated output payload produced by the workflow.
+   *
+   * The shape is intent-specific. Consumers should narrow by `code === 'ok'` before accessing.
+   */
+  data: Record<string, unknown>;
+}
+
+/**
+ * Failed intent completion.
+ *
+ * - `code` is always `'error'`
+ * - `message` summarizes the failure
+ * - `issues` optionally provides structured details for validation or
+ *   field-specific problems following the Standard Schema convention
+ *
+ */
+export interface ErrorIntentResponse {
+  code?: 'error';
+  message?: string;
+  issues?: {
+    /**
+     * The path to the field with the issue.
+     */
+    path?: string[];
+    /**
+     * The error message for the issue.
+     */
+    message?: string;
+  }[];
+}
+
+/**
+ * User dismissed or closed the workflow without completing it.
+ *
+ * Distinct from `error`: no failure occurred, the activity was simply
+ * abandoned by the user.
+ */
+export interface ClosedIntentResponse {
+  code: 'closed';
+}
+
+/**
+ * Result of an intent activity.
+ *
+ * Discriminated union representing all possible completion outcomes for an
+ * invoked intent.
+ */
+export type IntentResponse =
+  | SuccessIntentResponse
+  | ErrorIntentResponse
+  | ClosedIntentResponse;
+
+/**
+ * Activity handle for tracking intent workflow progress.
+ */
+export interface IntentActivity {
+  /**
+   * A Promise that resolves when the intent workflow completes, returning the response.
+   */
+  complete: Promise<IntentResponse>;
+}
+
+/**
+ * Entry point for Shopify intents.
+ *
+ * Intents pair an `action` (verb) with a resource `type` and optional `value`
+ * and `data` to request a workflow.
+ */
+export interface Intents {
+  /**
+   * Invoke an intent using the object or URL syntax.
+   *
+   * Object format: `{action, type, value?, data?}`
+   *
+   * @param query - Structured intent description, including `action` and `type`.
+   * @returns A promise for an {@link IntentActivity} that completes with an
+   *          {@link IntentResponse}.
+   *
+   * @example
+   * ```javascript
+   * const activity = await shopify.intents.invoke(
+   *   {
+   *     action: 'open',
+   *     type: 'shopify/SubscriptionContract',
+   *     value: 'gid://shopify/SubscriptionContract/69372608568',
+   *     data: { field: 'paymentMethod' },
+   *   }
+   * );
+   * ```
+   */
+  invoke(query: IntentQuery): Promise<IntentActivity>;
+  /**
+   * URL format: `action:type[,value][?params]`
+   *
+   * @param intentURL - Intent in URL form
+   * @param options - Optional supplemental inputs such as `value` or `data`.
+   * @returns A promise for an {@link IntentActivity} that completes with an
+   *          {@link IntentResponse}.
+   *
+   * @example
+   * ```javascript
+   * // Using query string syntax
+   * const activity = await shopify.intents.invoke('open:shopify/SubscriptionContract,gid://shopify/SubscriptionContract/69372608568?field=paymentMethod');
+   *
+   * // Or using a query string and options
+   * const activity = await shopify.intents.invoke(
+   *   'open:shopify/SubscriptionContract',
+   *   {
+   *    value: 'gid://shopify/SubscriptionContract/69372608568',
+   *    data: { field: 'paymentMethod' },
+   *   }
+   * );
+   * const response = await activity.complete;
+   * ```
+   */
+  invoke(
+    intentURL: string,
+    options?: IntentQueryOptions,
+  ): Promise<IntentActivity>;
+}
