@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 /** VERSION: 1.38.0 **/
-=======
-/** VERSION: 1.25.0 **/
->>>>>>> 2025-10
 
 /* eslint-disable @typescript-eslint/ban-types */
 

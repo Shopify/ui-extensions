@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 /** VERSION: 1.38.0 **/
-=======
-/** VERSION: 1.25.0 **/
->>>>>>> 2025-10
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -44,21 +40,6 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
-<<<<<<< HEAD
-=======
-}
-
-export type Styles = string;
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChildren;
-  styles?: Styles;
-};
-export interface ActivationEventEsque {
-  shiftKey: boolean;
-  metaKey: boolean;
-  ctrlKey: boolean;
-  button: number;
->>>>>>> 2025-10
 }
 
 declare class PolarisCustomElement extends PreactCustomElement {
