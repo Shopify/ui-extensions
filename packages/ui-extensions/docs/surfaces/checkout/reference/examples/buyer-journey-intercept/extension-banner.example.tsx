@@ -2,7 +2,11 @@ import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 import {useState} from 'preact/hooks';
 
-import {useBuyerJourneyIntercept} from '@shopify/ui-extensions/checkout/preact';
+import {
+  useBuyerJourneyIntercept,
+  useExtensionEditor,
+  useExtensionCapability,
+} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
@@ -11,6 +15,9 @@ export default function extension() {
 function Extension() {
   const [showError, setShowError] =
     useState(false);
+  const editorType = useExtensionEditor()?.type;
+  const blockProgressGranted =
+    useExtensionCapability('block_progress');
 
   useBuyerJourneyIntercept(
     ({canBlockProgress}) => {
@@ -34,9 +41,25 @@ function Extension() {
     },
   );
 
-  return showError ? (
-    <s-banner tone="critical">
-      This item has a limit of one per customer.
-    </s-banner>
-  ) : null;
+  return (
+    <>
+      {editorType === 'checkout' &&
+      !blockProgressGranted ? (
+        <s-banner
+          tone="warning"
+          heading="This app may be misconfigured"
+        >
+          To allow this app to block checkout,
+          enable this behavior in "Checkout
+          behavior" settings.
+        </s-banner>
+      ) : null}
+      {showError ? (
+        <s-banner tone="critical">
+          This item has a limit of one per
+          customer.
+        </s-banner>
+      ) : null}
+    </>
+  );
 }
