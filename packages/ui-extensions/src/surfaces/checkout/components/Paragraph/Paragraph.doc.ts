@@ -1,41 +1,13 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/Paragraph';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  requires: '',
-  thumbnail: 'paragraph-thumbnail.png',
-  isVisualComponent: true,
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'ParagraphProps',
-    },
-  ],
-  defaultExample: {
-    image: 'paragraph-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-paragraph.example.html',
-          language: 'html',
-        },
-      ],
-    },
-  },
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best Practices',
-      sectionContent:
-        '- Create contrast between more and less important text with properties such as `color` and `tone`.',
-    },
-  ],
-};
+  definitions: {properties: true},
+  bestPractices:
+    '- Create contrast between more and less important text with properties such as `color` and `tone`.',
+});
 
 export default data;

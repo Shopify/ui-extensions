@@ -1,4 +1,4 @@
-api_version = "2025-10"
+api_version = "2026-01"
 
 [[extensions]]
 type = "ui_extension"
@@ -6,7 +6,6 @@ name = "Your checkout extension"
 handle = "checkout-ui"
 uid = "fddfc370-27c7-c30f-4ee0-a927194e2accadefd40c"
 
-  [[extensions.targeting]]
-  target = "purchase.checkout.block.render"
-  module = "./Extension.jsx"
-
+[[extensions.targeting]]
+target = "purchase.checkout.block.render"
+module = "./Extension.jsx"

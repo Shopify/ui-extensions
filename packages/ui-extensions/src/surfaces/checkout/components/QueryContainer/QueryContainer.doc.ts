@@ -1,31 +1,11 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/QueryContainer';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  isVisualComponent: true,
-  thumbnail: 'query-container-thumbnail.png',
-  requires: '',
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'QueryContainerProps',
-    },
-  ],
-  defaultExample: {
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-query-container.example.html',
-          language: 'html',
-        },
-      ],
-    },
-  },
+  definitions: {properties: true},
   related: [
     {
       name: 'Responsive values',
@@ -34,6 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'utility',
     },
   ],
-};
+});
 
 export default data;

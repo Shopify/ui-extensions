@@ -2,38 +2,15 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/Grid';
 import gridItemSharedContent from '../../../../docs/shared/components/GridItem';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  isVisualComponent: true,
-  thumbnail: 'grid-thumbnail.png',
-  requires: '',
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'GridProps',
-    },
-    {
-      title: gridItemSharedContent.name,
-      description: gridItemSharedContent.description,
-      type: 'GridItemProps',
-    },
-  ],
-  defaultExample: {
-    image: 'grid-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-grid.example.html',
-          language: 'html',
-        },
-      ],
-    },
+  definitions: {properties: true},
+  subcomponent: {
+    ...gridItemSharedContent,
+    definitions: {properties: true},
   },
-  subSections: [],
-};
+});
 
 export default data;

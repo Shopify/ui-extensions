@@ -29,14 +29,16 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-grid-item";
-export interface GridItemProps extends Pick<GridItemProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'gridColumn' | 'gridRow' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
+export interface GridItemElementProps extends Pick<GridItemProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'gridColumn' | 'gridRow' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<GridItemProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
     borderColor?: ReducedColorKeyword | '';
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<GridItemProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
 }
-export interface GridItemElement extends GridItemProps, Omit<HTMLElement, 'id'> {
+export interface GridItemElement extends GridItemElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface GridItemProps extends GridItemElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -51,4 +53,4 @@ declare module 'preact' {
     }
 }
 
-export type { GridItemElement, GridItemProps };
+export type { GridItemElement, GridItemElementProps, GridItemProps };

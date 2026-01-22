@@ -1,38 +1,12 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/Progress';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  requires: '',
-  isVisualComponent: true,
-  thumbnail: 'progress-thumbnail.png',
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'ProgressProps',
-    },
-  ],
-  defaultExample: {
-    image: 'progress-default.png',
-    codeblock: {
-      title: 'Default example',
-      tabs: [
-        {
-          code: './examples/basic-progress.example.html',
-          language: 'html',
-        },
-      ],
-    },
-  },
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best Practices',
-      sectionContent: `
+  definitions: {properties: true},
+  bestPractices: `
 Use components like [Paragraph](../titles-and-text/paragraph) or [Text](../titles-and-text/text), along with the Progress component, to display text indicating the status of the progress bar.
 
 ### Loading states
@@ -59,8 +33,6 @@ Here's an example of using a progress bar to show how much more a customer needs
 
 ![A progress bar at checkout, showing that the customer is $43 away from free shipping.](/assets/landing-pages/templated-apis/checkout-ui-extensions/ui-components/progress-free-shipping.png)
       `,
-    },
-  ],
-};
+});
 
 export default data;

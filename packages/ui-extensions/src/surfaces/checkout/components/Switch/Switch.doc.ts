@@ -1,38 +1,11 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/Switch';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  thumbnail: 'switch-thumbnail.png',
-  requires: '',
-  isVisualComponent: true,
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'SwitchElementProps',
-    },
-    {
-      title: 'Events',
-      description:
-        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
-      type: 'SwitchElementEvents',
-    },
-  ],
-  defaultExample: {
-    image: 'switch-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-switch.example.html',
-          language: 'html',
-        },
-      ],
-    },
-  },
-};
+  definitions: {properties: true, events: true},
+});
 
 export default data;

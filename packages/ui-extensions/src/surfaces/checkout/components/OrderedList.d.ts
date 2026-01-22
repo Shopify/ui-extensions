@@ -26,9 +26,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-ordered-list";
-export interface OrderedListProps extends OrderedListProps$1 {
+export interface OrderedListElementProps extends OrderedListProps$1 {
 }
-export interface OrderedListElement extends OrderedListProps, Omit<HTMLElement, 'id'> {
+export interface OrderedListElement extends OrderedListElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface OrderedListProps extends OrderedListElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -43,4 +45,4 @@ declare module 'preact' {
     }
 }
 
-export type { OrderedListElement, OrderedListProps };
+export type { OrderedListElement, OrderedListElementProps, OrderedListProps };
