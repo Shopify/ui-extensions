@@ -6,7 +6,7 @@ export default async () => {
   render(<Extension />, document.body);
 };
 
-const API_VERSION = '2025-10';
+const API_VERSION = '2026-01';
 
 function Extension() {
   const [customerName, setCustomerName] =
