@@ -43,6 +43,7 @@
 ### Patch Changes
 
 - [#3521](https://github.com/Shopify/ui-extensions/pull/3521) [`9f7afff`](https://github.com/Shopify/ui-extensions/commit/9f7afffcef86bcc8c6a9fef89ada580351082d9c) Thanks [@lrsterrett](https://github.com/lrsterrett)! - 2026.1.0-rc release
+
 ## 2025.10.12
 
 ### Patch Changes
