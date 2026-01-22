@@ -13,10 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   category: 'Target APIs',
   subCategory: 'Platform APIs',
-<<<<<<< HEAD
-=======
   related: [],
->>>>>>> 2025-10
   definitions: [
     {
       title: 'StorageApi',
@@ -49,10 +46,6 @@ const data: ReferenceEntityTemplateSchema = {
 `,
     },
   ],
-<<<<<<< HEAD
-  related: [],
-=======
->>>>>>> 2025-10
   examples: {
     description:
       'Learn how to store and retrieve persistent data that persists across sessions.',

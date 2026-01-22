@@ -7,11 +7,7 @@ const generateJsxCodeBlockForLocaleApi = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Locale API',
   description:
-<<<<<<< HEAD
-    "The Locale API provides access to the merchant's current locale information in IETF format, allowing you to internationalize your extension content and respond to locale changes in real time. The API enables both immediate locale access and dynamic updates when merchants change their language settings.",
-=======
     "The Locale API provides access to the merchant's current locale information in [IETF format](https://en.wikipedia.org/wiki/IETF_language_tag), allowing you to internationalize your extension content and respond to locale changes in real time. The API enables both immediate locale access and dynamic updates when merchants change their language settings.",
->>>>>>> 2025-10
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
@@ -24,22 +20,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Standard APIs',
-<<<<<<< HEAD
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent: `
-- **Handle locale changes reactively:** Use \`subscribe\` to auto-update content when merchants change language settings.
-- **Implement proper formatting:** Use the IETF locale format for date, number, currency, and text direction formatting.
-- **Cache localized content:** Cache translations for performance, but invalidate caches when locale changes.
-- **Provide fallback handling:** Implement fallback behavior for unsupported locales, defaulting to a supported language like English.
-`,
-    },
-  ],
-=======
->>>>>>> 2025-10
   related: [],
   subSections: [
     {
@@ -55,19 +35,11 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   examples: {
     description:
-<<<<<<< HEAD
-      'Learn how to access locale information and respond to language changes.',
-    examples: [
-      {
-        codeblock: generateJsxCodeBlockForLocaleApi(
-          'Monitor and respond to locale changes',
-=======
       'Learn how to access locale information and respond to language changes for internationalization.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForLocaleApi(
           'Monitor locale changes',
->>>>>>> 2025-10
           'subscribe',
         ),
         description:

@@ -22,30 +22,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Platform APIs',
-<<<<<<< HEAD
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent: `
-- **Handle changes gracefully:** Use \`subscribe\` to adapt behavior when connectivity changes.
-- **Design for network interruptions:** Inform users when network-dependent features are unavailable and provide guidance.
-- **Display connectivity status:** Show status when it affects functionality to help users understand limitations.
-- **Queue operations during outages:** Implement queuing for non-critical operations that can be deferred until connectivity is restored.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-Connectivity status reflects Internet connectivity only and may not indicate the quality or speed of the connection, which could affect API performance.
-`,
-    },
-  ],
-=======
->>>>>>> 2025-10
   related: [],
   subSections: [
     {
@@ -69,19 +45,11 @@ Connectivity status reflects Internet connectivity only and may not indicate the
   ],
   examples: {
     description:
-<<<<<<< HEAD
-      'Learn how to monitor network connectivity status and respond to connectivity changes.',
-    examples: [
-      {
-        codeblock: generateJsxCodeBlockForConnectivityApi(
-          'Monitor network connectivity changes',
-=======
       'Learn how to monitor Internet connectivity status and respond to network changes.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForConnectivityApi(
           'Monitor Internet connectivity status',
->>>>>>> 2025-10
           'subscribe',
         ),
         description:

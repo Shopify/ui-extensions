@@ -19,29 +19,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'OrderApiContent',
     },
   ],
-<<<<<<< HEAD
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent: `
-- **Use order ID for lookups:** Fetch additional order information from external systems or Shopify APIs using the order ID.
-- **Enable order-specific features:** Use order context for order fulfillment, customer communication, or modification workflows.
-- **Validate order access:** Verify the order ID is valid before performing operations or API calls.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-Order data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
-`,
-    },
-  ],
-=======
->>>>>>> 2025-10
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
@@ -75,8 +52,6 @@ Order data reflects the current POS session and may not include real-time update
         ),
         description:
           'Access the unique identifier of the current order in an order detail action context. This example shows how to use `shopify.order.id` to retrieve the order ID. This can be used for fetching additional order data, tracking, or implementing order-specific functionality and post-purchase workflows.',
-<<<<<<< HEAD
-=======
       },
       {
         codeblock: generateJsxCodeBlockForOrderApi(
@@ -85,7 +60,6 @@ Order data reflects the current POS session and may not include real-time update
         ),
         description:
           'Access multiple order properties including the order name and customer ID. This example demonstrates accessing `shopify.order.id`, `shopify.order.name`, and `shopify.order.customerId` to display comprehensive order information. Use this pattern for order management workflows and customer service features.',
->>>>>>> 2025-10
       },
     ],
   },

@@ -32,31 +32,6 @@ const data: ReferenceEntityTemplateSchema = {
         ),
         description:
           'Access the unique identifier of the current draft order in a draft order detail context. This example shows how to use `shopify.draftOrder.id` to retrieve the draft order ID. This can be used for fetching additional order data, implementing custom workflows, or building draft order-specific features.',
-<<<<<<< HEAD
-      },
-    ],
-  },
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent: `
-- **Use draft order ID for lookups:** Fetch additional draft order information from external systems or Shopify APIs using the draft order ID.
-- **Enable draft order-specific features:** Use draft order context for conversion, customer assignment, or modification workflows.
-- **Validate draft order access:** Verify the draft order ID is valid before performing operations or API calls.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-Draft order data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
-`,
-    },
-  ],
-=======
       },
       {
         codeblock: generateJsxCodeBlockForDraftOrderApi(
@@ -68,7 +43,6 @@ Draft order data reflects the current POS session and may not include real-time 
       },
     ],
   },
->>>>>>> 2025-10
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],

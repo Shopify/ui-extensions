@@ -25,29 +25,17 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Platform APIs',
-<<<<<<< HEAD
-=======
   related: [],
->>>>>>> 2025-10
   subSections: [
     {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-<<<<<<< HEAD
-      sectionContent: `
-- **Choose appropriate formats:** Use HTML for rich formatting, text for simple content, images for graphics, PDFs for complex documents.
-- **Handle errors:** Implement error handling for network failures, unsupported types, or printer connectivity issues.
-- **Optimize documents:** Design with appropriate sizing, margins, and formatting for printers and standard paper sizes.
-- **Provide feedback:** Show loading states, success confirmations, and error messages for print operations.
-`,
-=======
       sectionContent:
         '- **Use appropriate document formats:** Choose HTML for rich formatting and responsive design, text for simple content, images for graphics, and PDFs for complex documents while considering platform limitations.\n' +
         '- **Handle printing errors gracefully:** Implement proper error handling for print operations, including network failures, unsupported document types, or printer connectivity issues.\n' +
         '- **Optimize documents for printing:** Design your printable documents with appropriate sizing, margins, and formatting that work well with printers and standard paper sizes.\n' +
         '- **Provide user feedback:** Give users clear feedback about print operations, including loading states, success confirmations, and error messages when printing fails.',
->>>>>>> 2025-10
     },
     {
       type: 'Generic',
@@ -58,7 +46,6 @@ PDF printing on Android devices requires downloading the file and using an exter
 `,
     },
   ],
-  related: [],
   examples: {
     description:
       'Learn how to trigger document printing for receipts, labels, and custom documents.',

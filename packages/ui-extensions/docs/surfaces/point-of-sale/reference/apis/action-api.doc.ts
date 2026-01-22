@@ -21,29 +21,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Standard APIs',
-<<<<<<< HEAD
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent: `
-- **Use modals for complex workflows:** Reserve for operations requiring more space, multiple steps, or complex interactions.
-- **Provide clear entry points:** Use descriptive button labels and titles that indicate what the modal will contain.
-- **Handle dismissal gracefully:** Save progress when possible and provide feedback about incomplete operations.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-The \`presentModal()\` method must be called from a user interaction (such as a button click or tile tap) and can't be invoked programmatically during extension initialization or from background operations.
-`,
-    },
-  ],
-=======
->>>>>>> 2025-10
   related: [],
   subSections: [
     {
@@ -66,19 +43,11 @@ The \`presentModal()\` method must be called from a user interaction (such as a 
   ],
   examples: {
     description:
-<<<<<<< HEAD
-      'Learn how to launch modal workflows from menu items, tiles, and blocks.',
-    examples: [
-      {
-        codeblock: generateJsxCodeBlockForActionApi(
-          'Launch a modal from a menu item',
-=======
       'Learn how to present full-screen modals from tiles and menu items using the Action API.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForActionApi(
           'Open a modal from a post-purchase action',
->>>>>>> 2025-10
           'present-modal',
         ),
         description:
@@ -86,11 +55,7 @@ The \`presentModal()\` method must be called from a user interaction (such as a 
       },
       {
         codeblock: generateJsxCodeBlockForActionApi(
-<<<<<<< HEAD
-          'Launch a modal from a smart grid tile',
-=======
           'Open a modal from a smart grid tile',
->>>>>>> 2025-10
           'present-modal-tile',
         ),
         description:

@@ -20,30 +20,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Platform APIs',
-<<<<<<< HEAD
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent: `
-- **Validate securely on backend:** Validate PINs on your backend service, not client-side. Use \`onSubmit\` to communicate with your secure endpoint.
-- **Provide clear feedback:** Use appropriate labels, titles, and error messages to guide users and provide validation results.
-- **Handle errors and retries:** Implement error handling for validation failures and provide retry mechanisms.
-- **Configure appropriate constraints:** Set reasonable PIN length requirements and masking options based on security needs.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-PIN validation must be handled through the \`onSubmit\` callback and should be performed securely on your backend service rather than in client-side extension code.
-`,
-    },
-  ],
-=======
->>>>>>> 2025-10
   related: [],
   subSections: [
     {
@@ -70,27 +46,12 @@ PIN validation must be handled through the \`onSubmit\` callback and should be p
       'Learn how to display secure PIN entry interfaces and handle PIN validation.',
     examples: [
       {
-<<<<<<< HEAD
         codeblock: generateJsxCodeBlockForPinPadApi(
-=======
-        codeblock: generateJsxCodeBlockForToastApi(
->>>>>>> 2025-10
           'Display a PIN pad and validate user input',
           'validation',
         ),
         description:
           'Present a secure PIN pad interface to collect and validate user PINs for authentication or verification. This example shows how to use `shopify.pinPad.show()` to display a PIN entry modal with customizable options. By handling the entered PIN securely and processing the result, you can implement secure authentication workflows.',
-<<<<<<< HEAD
-=======
-      },
-      {
-        codeblock: generateJsxCodeBlockForToastApi(
-          'Configure PinPad options and handle dismissal',
-          'validation-with-options',
-        ),
-        description:
-          'Configure PIN pad options including PIN length requirements, masking, and custom labels. This example shows how to use `showPinPad()` with options like `minPinLength`, `maxPinLength`, `masked`, `title`, and `onDismissed` callback. This creates a fully configured PIN entry experience with proper validation and dismissal handling.',
->>>>>>> 2025-10
       },
     ],
   },

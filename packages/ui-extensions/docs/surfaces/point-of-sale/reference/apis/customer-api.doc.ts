@@ -19,26 +19,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'CustomerApiContent',
     },
   ],
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent: `
-- **Use customer ID for lookups:** Fetch additional customer information from external systems or Shopify APIs using the customer ID.
-- **Enable personalized features:** Use customer context for customer-specific pricing, loyalty programs, or product recommendations.
-- **Validate customer access:** Verify the customer ID is valid before performing operations or API calls.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-Customer data reflects the current POS session and may not include real-time updates from other channels until the session is refreshed.
-`,
-    },
-  ],
   examples: {
     description:
       'Learn how to access customer information in customer detail contexts.',
@@ -56,8 +36,6 @@ Customer data reflects the current POS session and may not include real-time upd
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
-<<<<<<< HEAD
-=======
   subSections: [
     {
       type: 'Generic',
@@ -78,7 +56,6 @@ Customer data reflects the current POS session and may not include real-time upd
 `,
     },
   ],
->>>>>>> 2025-10
 };
 
 export default data;

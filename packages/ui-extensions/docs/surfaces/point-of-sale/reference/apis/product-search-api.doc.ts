@@ -22,31 +22,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Standard APIs',
-<<<<<<< HEAD
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent: `
-- **Implement efficient pagination:** Use appropriate page sizes and cursor-based pagination for large product catalogs.
-- **Handle empty results:** Check for undefined results and empty sets. Provide meaningful feedback when no products are found.
-- **Optimize performance:** Cache frequently accessed data and debounce search to reduce API calls while users type.
-- **Provide relevant search options:** Use sorting based on use case—relevance for searches, alphabetical for browsing, recently added for new products.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-- Product search results are limited to products available on the current POS device and may not include the complete shop catalog if products aren't synced locally.
-- Bulk operations (\`fetchProductsWithIds\` and \`fetchProductVariantsWithIds\`) are limited to 50 items maximum, with additional IDs automatically removed from requests.
-`,
-    },
-  ],
-=======
->>>>>>> 2025-10
   related: [],
   subSections: [
     {

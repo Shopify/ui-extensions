@@ -26,35 +26,9 @@ const data: ReferenceEntityTemplateSchema = {
         'The global `window` object provides control over the extension screen lifecycle. Access these properties and methods directly through the global `window` object to manage the modal interface.',
       type: 'Window',
     },
-<<<<<<< HEAD
   ],
   category: 'Target APIs',
   subCategory: 'Platform APIs',
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent: `
-- **Use URL-based navigation:** Implement URL patterns for deep-linking and intuitive browser-like navigation within modals.
-- **Manage state effectively:** Use the \`state\` parameter to pass data between screens and maintain workflow context.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-- The Navigation API is only available in action (modal) targets and can't be used in action (menu item), block, or tile targets that don't support multi-screen navigation.
-- Navigation state is limited to serializable data and can't contain functions, complex objects, or circular references.
-`,
-    },
-  ],
-=======
-  ],
-  category: 'Target APIs',
-  subCategory: 'Platform APIs',
->>>>>>> 2025-10
   related: [],
   subSections: [
     {
@@ -77,19 +51,11 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   examples: {
     description:
-<<<<<<< HEAD
       'Learn how to manage navigation between screens and pass state between views.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForNavigationApi(
           'Navigate between extension screens',
-=======
-      'Learn how to navigate between screens and manage navigation state within modal interfaces.',
-    examples: [
-      {
-        codeblock: generateJsxCodeBlockForNavigationApi(
-          'Navigate between multiple screens',
->>>>>>> 2025-10
           'two-screen',
         ),
         description:
@@ -97,11 +63,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         codeblock: generateJsxCodeBlockForNavigationApi(
-<<<<<<< HEAD
           'Navigate to POS native screens',
-=======
-          'Navigate to a native POS screen',
->>>>>>> 2025-10
           'native-screen',
         ),
         description:
@@ -109,11 +71,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         codeblock: generateJsxCodeBlockForNavigationApi(
-<<<<<<< HEAD
           'Pass state between screens',
-=======
-          'Pass state parameters between screens',
->>>>>>> 2025-10
           'state-params',
         ),
         description:

@@ -7,11 +7,7 @@ const generateJsxCodeBlockForToastApi = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Toast API',
   description:
-<<<<<<< HEAD
     "The Toast API provides temporary notification functionality for POS UI extensions, allowing you to display brief, non-intrusive messages to users for feedback, confirmations, and status updates that automatically disappear. Toast messages appear as overlay notifications that don't interrupt the user's workflow.",
-=======
-    "The Toast API provides temporary notification functionality for POS UI extensions, allowing you to display brief, non-intrusive messages to users for feedback, confirmations, and status updates that automatically disappear after a specified duration. Toast messages appear as overlay notifications that don't interrupt the user's workflow.",
->>>>>>> 2025-10
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
@@ -24,30 +20,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Standard APIs',
-<<<<<<< HEAD
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best practices',
-      sectionContent: `
-- **Write clear, concise messages:** Keep content brief since toasts disappear automatically.
-- **Provide meaningful feedback:** Use toasts to confirm actions, explain errors, or communicate status changes.
-- **Avoid overuse:** Reserve for important feedback. Don't show multiple toasts simultaneously.
-- **Handle multiple toast messages:** Multiple toast messages may overlap or interfere with each other if shown in rapid succession. Consider queuing or spacing out notifications appropriately.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-Toast content is limited to plain text and can't include rich formatting, links, or interactive elements.
-`,
-    },
-  ],
-=======
->>>>>>> 2025-10
   related: [],
   subSections: [
     {
@@ -56,7 +28,6 @@ Toast content is limited to plain text and can't include rich formatting, links,
       title: 'Best practices',
       sectionContent: `
 - **Write clear, concise messages:** Keep content brief since toasts disappear automatically.
-- **Use appropriate timing:** Choose durations that give users enough time to read without keeping visible too long.
 - **Provide meaningful feedback:** Use toasts to confirm actions, explain errors, or communicate status changes.
 - **Avoid overuse:** Reserve for important feedback. Don't show multiple toasts simultaneously.
 - **Handle multiple toast messages:** Multiple toast messages may overlap or interfere with each other if shown in rapid succession. Consider queuing or spacing out notifications appropriately.
@@ -77,26 +48,11 @@ Toast content is limited to plain text and can't include rich formatting, links,
     examples: [
       {
         codeblock: generateJsxCodeBlockForToastApi(
-<<<<<<< HEAD
-=======
-          'Display a toast notification for a custom duration',
-          'show-with-duration',
-        ),
-        description:
-          'Configure custom display durations for toast notifications to match message importance and length. This example demonstrates using the `duration` option with `shopify.toast.show()` to control how long notifications remain visible. Use shorter durations for quick confirmations and longer durations for messages that require more reading time.',
-      },
-      {
-        codeblock: generateJsxCodeBlockForToastApi(
->>>>>>> 2025-10
           'Display a toast notification from a tile',
           'show',
         ),
         description:
-<<<<<<< HEAD
           "Display a toast notification from a tile. This example demonstrates using `shopify.toast.show()` to display a brief, non-intrusive message that automatically disappears. This is useful for confirmations, status updates, or success messages that don't require user interaction.",
-=======
-          "Display a toast notification from a tile. This example demonstrates using `shopify.toast.show()` to display a brief, non-intrusive message that automatically disappears after a specified duration. This is useful for confirmations, status updates, or success messages that don't require user interaction.",
->>>>>>> 2025-10
       },
     ],
   },
