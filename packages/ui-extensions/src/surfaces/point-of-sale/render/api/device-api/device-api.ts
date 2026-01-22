@@ -4,6 +4,10 @@ export interface DeviceApiContent {
    */
   name: string;
   /**
+   * A short, unique identifier for the device, assigned by Shopify.
+   */
+  registerName: string;
+  /**
    * Retrieves the unique string identifier for the device. Returns a promise that resolves to the device ID. Use for device-specific data storage, analytics tracking, or implementing device-based permissions and configurations.
    */
   getDeviceId(): Promise<string>;
