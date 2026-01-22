@@ -4,7 +4,11 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'TimeField',
   description:
     'The `TimeField` component captures time input through direct text entry. Use it when merchants know the exact time they want to enter or for quick time data entry.' +
+<<<<<<< HEAD
     '\n\nFor visual time selection with clock or spinner interfaces, use [`TimePicker`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/timepicker).',
+=======
+    '\n\nFor visual time selection with clock or spinner interfaces, use [`TimePicker`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/timepicker).',
+>>>>>>> 2025-10
   thumbnail: 'time-field-thumbnail.png',
   isVisualComponent: true,
   type: '',

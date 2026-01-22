@@ -5,6 +5,31 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/menu.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Presenting a set of actions or selectable options to merchants
+- Creating dropdown menus with related actions
+- Organizing actions into logical groupings using sections`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use for secondary or less important actions since they're hidden until merchants open them
+- Contain actions that are related to each other`,
+    },
+    {
+      title: 'Content guidelines',
+      type: 'Generic' as const,
+      anchorLink: 'content-guidelines',
+      sectionContent: `- Each item should be clear and predictable
+- Lead with a strong verb using the {verb}+{noun} format (e.g., "Buy shipping label", "Edit HTML")
+- Avoid unnecessary words and articles like "the", "an", or "a"`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

@@ -9,6 +9,7 @@ import {
   copyGeneratedToShopifyDev,
   replaceFileContent,
 } from '../build-doc-shared.mjs';
+import {extractIconList} from './build-doc-extract-icons.mjs';
 
 const EXTENSIONS_API_VERSION = process.argv[2] || 'unstable';
 
@@ -48,6 +49,10 @@ const decodeHTML = (str) => {
     .replace(/&#039;/g, "'");
 };
 
+const escapeForJSTemplate = (str) => {
+  return str.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$/g, '\\$');
+};
+
 const composeStyles = (...styles) => {
   return styles
     .filter(Boolean)
@@ -77,6 +82,33 @@ const stylesToString = (styles) => {
       return `${kebabProperty}: ${value}`;
     })
     .join('; ');
+};
+
+/**
+ * Renders the JSX template for the icon preview.
+ * @returns The processed HTML string.
+ */
+const renderIconPreviewJsxTemplate = async (iconPreviewData) => {
+  const templatePath = path.join(
+    docsPath,
+    'templates/icon-renderer/jsx-render.html',
+  );
+  const template = await fs.readFile(templatePath, 'utf-8');
+
+  const jsxFilePath = path.join(docsPath, iconPreviewData.jsxFile);
+  let jsxCode = await fs.readFile(jsxFilePath, 'utf-8');
+
+  const iconListString = `[${iconPreviewData.icons
+    .map((icon) => `'${icon}'`)
+    .join(',')}]`;
+  jsxCode = jsxCode.replace(/"__ICON_LIST__"/g, iconListString);
+
+  const escapedJsxCode = escapeForJSTemplate(jsxCode);
+
+  return template
+    .replace(/\{\{COMPOSED_STYLES\}\}/g, iconPreviewData.customStyles || '')
+    .replace(/\{\{BODY_CONTENT\}\}/g, iconPreviewData.bodyContent || '')
+    .replace(/\{\{JSX_CODE\}\}/g, escapedJsxCode);
 };
 
 const htmlWrapper = (htmlString, layoutStyles = '', customStyles = '') => {
@@ -220,6 +252,40 @@ const templates = {
 
 const transformJson = async (filePath, isExtensions) => {
   let jsonData = JSON.parse((await fs.readFile(filePath, 'utf8')).toString());
+
+  const iconEntry = jsonData.find(
+    (entry) => entry.name === 'Icon' && entry.subSections,
+  );
+  if (iconEntry) {
+    const iconDataPath = path.join(srcPath, 'components/Icon/icon-data.json');
+    const iconData = JSON.parse(await fs.readFile(iconDataPath, 'utf-8'));
+    const iconPreviewData = iconData.iconPreviewData;
+
+    iconPreviewData.icons = await extractIconList();
+
+    const subSection = iconEntry.subSections.find((section) =>
+      section.sectionContent?.includes('{{ICON_PREVIEW_IFRAME}}'),
+    );
+    if (subSection) {
+      const html = await renderIconPreviewJsxTemplate(iconPreviewData);
+      // Converting to base64 to avoid having to escape the HTML in the JSX template.
+      const base64Html = Buffer.from(html, 'utf-8').toString('base64');
+      const darkModeListener = await fs.readFile(
+        path.join(docsPath, 'templates/icon-renderer/dark-mode-listener.jsx'),
+        'utf-8',
+      );
+      const base64DarkModeListener = Buffer.from(
+        darkModeListener,
+        'utf-8',
+      ).toString('base64');
+      subSection.sectionContent = subSection.sectionContent.replace(
+        /\{\{ICON_PREVIEW_IFRAME\}\}/g,
+        `<iframe id="icon-preview-iframe" width="100%" height="580px" sandbox="allow-scripts" src="data:text/html;base64,${base64Html}"></iframe>
+        <script src="data:text/javascript;base64,${base64DarkModeListener}"></script>
+        `,
+      );
+    }
+  }
 
   jsonData.forEach((entry) => {
     // Temporary to ensure that isOptional is added to all members

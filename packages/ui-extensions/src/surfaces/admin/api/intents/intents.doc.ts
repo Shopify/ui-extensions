@@ -84,8 +84,8 @@ Where:
 ### Metafield Definition
 | Action | Type | Value | Data |
 |--------|------|-------|------|
-| \`create\` | \`shopify/MetafieldDefinition\` | — | — |
-| \`edit\` | \`shopify/MetafieldDefinition\` | \`gid://shopify/MetafieldDefinition/{id}\` | — |
+| \`create\` | \`shopify/MetafieldDefinition\` | — | { ownerType: 'Product' } |
+| \`edit\` | \`shopify/MetafieldDefinition\` | \`gid://shopify/MetafieldDefinition/{id}\` | { ownerType: 'Product' } |
 
 ### Metaobject
 | Action | Type | Value | Data |
@@ -97,7 +97,7 @@ Where:
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/MetaobjectDefinition\` | — | — |
-| \`edit\` | \`shopify/MetaobjectDefinition\` | \`gid://shopify/MetaobjectDefinition/{id}\` | — |
+| \`edit\` | \`shopify/MetaobjectDefinition\` | — | { type: 'my_metaobject_definition_type' } |
 
 ### Page
 | Action | Type | Value | Data |

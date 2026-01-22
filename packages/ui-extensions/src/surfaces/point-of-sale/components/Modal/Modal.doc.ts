@@ -5,7 +5,11 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'The `Modal` component displays content in an overlay that requires merchant attention. Use modals to present critical information, confirmations, or focused tasks while maintaining page context.' +
     '\n\nModals block interaction with the underlying interface until the merchant resolves the modal content.' +
+<<<<<<< HEAD
     "\n\nModals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through [events](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/feedback-and-status-indicators/modal#events).",
+=======
+    "\n\nModals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through [events](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/feedback-and-status-indicators/modal#events).",
+>>>>>>> 2025-10
   thumbnail: 'modal-thumbnail.png',
   isVisualComponent: true,
   type: '',

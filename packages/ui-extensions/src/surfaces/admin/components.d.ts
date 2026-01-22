@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /** VERSION: 1.38.0 **/
+=======
+/** VERSION: 1.25.0 **/
+>>>>>>> 2025-10
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -168,11 +172,11 @@ export interface ExtendableEvent extends Event {
    */
   waitUntil?: (promise: Promise<void>) => void;
 }
-interface AggregateError$1<T extends Error> extends Error {
+export interface AggregateError<T extends Error> extends Error {
   errors: T[];
 }
 export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
-  error: AggregateError$1<T>;
+  error: AggregateError<T>;
 }
 export type SizeKeyword =
   | 'small-500'
@@ -5481,12 +5485,18 @@ export interface ClickableChipProps
   > {}
 
 declare const ClickableChip_base: (abstract new (
+<<<<<<< HEAD
   renderImpl: Omit<
     _shopify_admin_web_component_foundations.RenderImpl,
     'globalShadowCSS'
   >,
 ) => PolarisCustomElement & PreactOverlayControlProps) &
   Pick<typeof PolarisCustomElement, 'prototype' | 'observedAttributes'>;
+=======
+  args_0: RenderImpl,
+) => PreactCustomElement & PreactOverlayControlProps) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+>>>>>>> 2025-10
 declare class ClickableChip
   extends ClickableChip_base
   implements ClickableChipProps
@@ -5913,7 +5923,11 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
+<<<<<<< HEAD
       [tagName$K]: DropZoneJSXProps &
+=======
+      [tagName$I]: DropZoneJSXProps &
+>>>>>>> 2025-10
         PreactBaseElementPropsWithChildren<DropZone>;
     }
   }
@@ -9386,7 +9400,11 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
+<<<<<<< HEAD
       [tagName$K]: DropZoneJSXProps &
+=======
+      [tagName$I]: DropZoneJSXProps &
+>>>>>>> 2025-10
         ReactBaseElementPropsWithChildren<DropZone>;
     }
   }
@@ -9394,7 +9412,11 @@ declare module 'react' {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
+<<<<<<< HEAD
       [tagName$K]: DropZoneJSXProps &
+=======
+      [tagName$I]: DropZoneJSXProps &
+>>>>>>> 2025-10
         ReactBaseElementPropsWithChildren<DropZone>;
     }
   }

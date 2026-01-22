@@ -11,8 +11,15 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'Generic' as const,
       anchorLink: 'useful-for',
       sectionContent: `- Creating custom designs when you can't build what you need with the existing components.
-  - Setting up specific stylings such as background colors, paddings, and borders.
-  - Nesting with other components.`,
+- Setting up specific stylings such as background colors, paddings, and borders.
+- Nesting with other components.`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use for structural layouts with consistent spacing patterns
+- Avoid adding too many borders that may visually fragment the interface`,
     },
   ],
   definitions: [

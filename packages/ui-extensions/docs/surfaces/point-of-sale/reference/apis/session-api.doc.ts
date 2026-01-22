@@ -20,6 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Standard APIs',
+<<<<<<< HEAD
   subSections: [
     {
       type: 'Generic',
@@ -42,13 +43,47 @@ const data: ReferenceEntityTemplateSchema = {
 `,
     },
   ],
+=======
+>>>>>>> 2025-10
   related: [],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Handle authentication properly:** Check for undefined session tokens and implement proper fallback behavior when authentication fails or permissions are insufficient.\n' +
+        '- **Use appropriate identifiers:** Distinguish between `userId` (authenticated account) and `staffMemberId` (pinned staff member) to implement correct permissions and personalization logic.\n' +
+        '- **Implement location-aware features:** Use `locationId` and `currency` information.\n' +
+        '- **Secure backend communication:** Use session tokens exclusively for backend API calls and never expose them in client-side logs or storage. Validate tokens on your backend before processing requests.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Session tokens are only available when the authenticated user has proper app permissions enabled—staff members who are pinned in but not authenticated can't generate tokens.
+- Session tokens should only be used for communication with your app's configured backend service and can't be used for direct Shopify API calls from the client side.
+`,
+    },
+  ],
   examples: {
     description:
       'Learn how to access session information and generate authentication tokens for secure API calls.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForSessionApi(
+<<<<<<< HEAD
+=======
+          'Access properties associated with the current session',
+          'current-session',
+        ),
+        description:
+          'Access comprehensive session information including shop details, user data, and location information. This example shows how to use `shopify.session.currentSession` to retrieve the shop ID, domain, currency, user ID, location ID, staff member ID, and POS version. Use this data to build location-aware features and personalized experiences.',
+      },
+      {
+        codeblock: generateJsxCodeBlockForSessionApi(
+>>>>>>> 2025-10
           'Access session data and generate authentication tokens',
           'token',
         ),

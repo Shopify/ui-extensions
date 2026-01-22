@@ -20,6 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Platform APIs',
+<<<<<<< HEAD
   subSections: [
     {
       type: 'Generic',
@@ -33,14 +34,36 @@ const data: ReferenceEntityTemplateSchema = {
 `,
     },
   ],
+=======
+>>>>>>> 2025-10
   related: [],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Implement responsive design:** Use device type information to adapt your interface layouts, component sizes, and interaction patterns based on the device form factor and capabilities.\n' +
+        '- **Handle async device queries:** Handle the Promise-based device methods with async/await or `.then()` patterns, and implement appropriate error handling for device query failures.\n' +
+        '- **Cache device information appropriately:** Consider caching device information after the initial query to avoid repeated async calls, but ensure you handle cases where device characteristics might change during the session.\n' +
+        '- **Provide device-appropriate experiences:** Design different user experiences for tablets versus other devices, taking advantage of larger screens while ensuring functionality works across all supported device types.',
+    },
+  ],
   examples: {
     description:
+<<<<<<< HEAD
       'Learn how to access device information and adapt to different device types.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForDeviceApi(
           'Detect if the device is a tablet',
+=======
+      'Learn how to access device information and adapt your extension based on device characteristics.',
+    examples: [
+      {
+        codeblock: generateJsxCodeBlockForDeviceApi(
+          'Check if the device is a tablet',
+>>>>>>> 2025-10
           'tablet',
         ),
         description:

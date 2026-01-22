@@ -22,6 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Standard APIs',
+<<<<<<< HEAD
   subSections: [
     {
       type: 'Generic',
@@ -44,7 +45,30 @@ const data: ReferenceEntityTemplateSchema = {
 `,
     },
   ],
+=======
+>>>>>>> 2025-10
   related: [],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Implement efficient pagination:** Use appropriate page sizes and cursor-based pagination to balance performance with user experience, especially for large product catalogs.\n' +
+        '- **Handle search results gracefully:** Check for undefined results and empty result sets.\n' +
+        '- **Optimize search performance:** Consider caching frequently accessed product data and implementing debounced search to reduce API calls while users are typing search queries.\n' +
+        '- **Provide relevant search options:** Use appropriate sorting options based on your use case - relevance for user searches, alphabetical for browsing, or recently added for highlighting new products.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+- Product search results are limited to products available on the current POS device and may not include the complete shop catalog if products aren't synced locally.
+- Bulk operations (\`fetchProductsWithIds\` and \`fetchProductVariantsWithIds\`) are limited to 50 items maximum, with additional IDs automatically removed from requests.
+`,
+    },
+  ],
   examples: {
     description:
       'Learn how to search for products, fetch product details, and retrieve variants.',

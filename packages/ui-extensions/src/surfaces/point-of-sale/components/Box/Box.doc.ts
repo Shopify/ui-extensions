@@ -4,7 +4,11 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Box',
   description:
     'The `Box` component provides a container for layout and visual styling. Use it to apply padding, borders, and background colors, or to nest and group other components.' +
+<<<<<<< HEAD
     '\n\nFor user interaction, use `Box` in combination with interactive components like [`Button`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/button) or [`Clickable`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/clickable). For scrollable content, use [`ScrollBox`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/layout-and-structure/scrollbox).',
+=======
+    '\n\nFor user interaction, use `Box` in combination with interactive components like [`Button`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/button) or [`Clickable`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/clickable). For scrollable content, use [`ScrollBox`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/layout-and-structure/scrollbox).',
+>>>>>>> 2025-10
   thumbnail: 'box-thumbnail.png',
   isVisualComponent: true,
   type: '',

@@ -21,6 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Platform APIs',
+<<<<<<< HEAD
   subSections: [
     {
       type: 'Generic',
@@ -43,7 +44,31 @@ The Scanner API is only available in action (modal) targets where scanning funct
 `,
     },
   ],
+=======
+>>>>>>> 2025-10
   related: [],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent: `
+- **Handle scan events reactively:** Use \`subscribe\` methods to process scan events as they occur for immediate feedback.
+- **Validate scanned data:** Validate before processing and handle invalid codes, unsupported formats, or errors.
+- **Provide clear feedback:** Show success confirmations, error messages, and guidance when scans fail.
+- **Adapt to available sources:** Check available scanner sources and provide alternatives when preferred methods aren't available.
+- **Handle scan data processing:** Scan data processing is reactive and requires proper subscription management to avoid memory leaks or unexpected behavior when components unmount.
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.
+`,
+    },
+  ],
   examples: {
     description:
       'Learn how to handle barcode and QR code scans and access scanner information.',
@@ -55,6 +80,17 @@ The Scanner API is only available in action (modal) targets where scanning funct
         ),
         description:
           'Subscribe to scan events and adapt behavior based on the scanner source. This example shows how to use `shopify.scanner.subscribe()` to receive scan events and check `shopify.scanner.source` to determine which scanner type was used (camera, external scanner, or embedded hardware). By identifying the scanner type, you can customize handling based on the scanning method.',
+<<<<<<< HEAD
+=======
+      },
+      {
+        codeblock: generateCodeBlockForScannerApi(
+          'Subscribe to scanner data events and track scanning history',
+          'scanner-data-subscribe',
+        ),
+        description:
+          'Subscribe to real-time scan events and maintain a history of scanned items. This example demonstrates using `shopify.scanner.scannerData.current.subscribe()` to capture scan data, source information, and timestamps. Use this pattern for scan logging, bulk scanning workflows, or scan history review.',
+>>>>>>> 2025-10
       },
     ],
   },

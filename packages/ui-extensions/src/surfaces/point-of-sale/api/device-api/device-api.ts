@@ -5,7 +5,10 @@ export interface DeviceApiContent {
   name: string;
   /**
    * Retrieves the unique string identifier for the device. Returns a promise that resolves to the device ID. Use for device-specific data storage, analytics tracking, or implementing device-based permissions and configurations.
+<<<<<<< HEAD
    * Note: While Shopify POS attempts to maintain a stable identifier, it is not guaranteed to be permanent and may change.
+=======
+>>>>>>> 2025-10
    */
   getDeviceId(): Promise<string>;
   /**

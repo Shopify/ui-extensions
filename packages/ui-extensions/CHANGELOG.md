@@ -43,6 +43,47 @@
 ### Patch Changes
 
 - [#3521](https://github.com/Shopify/ui-extensions/pull/3521) [`9f7afff`](https://github.com/Shopify/ui-extensions/commit/9f7afffcef86bcc8c6a9fef89ada580351082d9c) Thanks [@lrsterrett](https://github.com/lrsterrett)! - 2026.1.0-rc release
+## 2025.10.12
+
+### Patch Changes
+
+- [#3706](https://github.com/Shopify/ui-extensions/pull/3706) [`2112c03`](https://github.com/Shopify/ui-extensions/commit/2112c03726ae401d95cfaace496005cc839b7007) Thanks [@billfienberg](https://github.com/billfienberg)! - Add admin.app.tools.data extension target
+
+## 2025.10.11
+
+### Patch Changes
+
+- [#3669](https://github.com/Shopify/ui-extensions/pull/3669) [`115be91`](https://github.com/Shopify/ui-extensions/commit/115be91001aa754eb19fade5015f702a4f304a42) Thanks [@fatbattk](https://github.com/fatbattk)! - Sync latest tag
+
+## 2025.10.10
+
+### Patch Changes
+
+- [#3665](https://github.com/Shopify/ui-extensions/pull/3665) [`34010b8`](https://github.com/Shopify/ui-extensions/commit/34010b8cf3a2dff7cf5fd86e3e0828af67efa529) Thanks [@vctrchu](https://github.com/vctrchu)! - Fix npm latest tag for 2025-10
+
+## 2025.10.9
+
+### Patch Changes
+
+- [#3600](https://github.com/Shopify/ui-extensions/pull/3600) [`57ba7dc`](https://github.com/Shopify/ui-extensions/commit/57ba7dc2e3f97fb64bf1e04d228c62c8248c2671) Thanks [@BrittaEvansFenton](https://github.com/BrittaEvansFenton)! - Adds alt prop to POS Image
+
+- [#3632](https://github.com/Shopify/ui-extensions/pull/3632) [`3f04401`](https://github.com/Shopify/ui-extensions/commit/3f04401f7dfbd91c6e5d31a97922fb043eba5bc2) Thanks [@vctrchu](https://github.com/vctrchu)! - Remove CameraScanner dev doc examples from Standard API
+
+- [#3586](https://github.com/Shopify/ui-extensions/pull/3586) [`f9ab867`](https://github.com/Shopify/ui-extensions/commit/f9ab867be2e7f2865098824bfd8f64a3c22bfa6f) Thanks [@chadcromwell](https://github.com/chadcromwell)! - Add optional tipAmount field to POS transaction data types
+
+## 2025.10.8
+
+### Patch Changes
+
+- [#3575](https://github.com/Shopify/ui-extensions/pull/3575) [`f27f6da`](https://github.com/Shopify/ui-extensions/commit/f27f6da4b22fc5e9cb282ca62c586f5e3b96dde7) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Exports LineItemComponent from point-of-sale API so POS can import the type
+
+- [#3555](https://github.com/Shopify/ui-extensions/pull/3555) [`3296915`](https://github.com/Shopify/ui-extensions/commit/32969157fe427b384c95e27e762c07f8dd4b0440) Thanks [@vctrchu](https://github.com/vctrchu)! - Expose Il8n type to POS UI extensions
+
+## 2025.10.7
+
+### Patch Changes
+
+- [#3537](https://github.com/Shopify/ui-extensions/pull/3537) [`9c741e3`](https://github.com/Shopify/ui-extensions/commit/9c741e351ae26ebba94e0c83e4625f6f55041575) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Adds components to point of sale cart LineItem interface to represent product bundle items.
 
 ## 2025.10.6
 

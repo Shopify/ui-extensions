@@ -6,6 +6,17 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/color-field.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use the alpha property to allow merchants to select transparent colors
+- Provide clear labels that indicate what the color will be used for
+- Use details text to provide context about the color's purpose
+- Validate color format inputs and provide clear error messages`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

@@ -1,4 +1,4 @@
-import { render } from "preact";
+import {render} from 'preact';
 
 export default async () => {
   render(<Extension />, document.body);

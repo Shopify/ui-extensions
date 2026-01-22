@@ -7,6 +7,25 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/choicelist.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Include a title that tells merchants what to do or explains the available options
+- Label options clearly based on what the option will do
+- Avoid mutually exclusive options when allowing multiple selection`,
+    },
+    {
+      title: 'Content guidelines',
+      type: 'Generic' as const,
+      anchorLink: 'content-guidelines',
+      sectionContent: `- Write titles and choices in sentence case
+- End titles with a colon if they introduce the list
+- Start each choice with a capital letter
+- Don't use commas or semicolons at the end of lines`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

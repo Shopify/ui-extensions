@@ -5,6 +5,38 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/badge.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Communicating the state of an object
+- Identifying objects that need attention or action
+- Quickly scanning complex lists to find specific object states`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- \`base\`: use in tables where many badges are displayed
+- \`large\`: use when badge needs to stand out prominently
+- Text truncates automatically, keep labels short to avoid truncation
+- Badges are static indicators, not interactive or dismissible
+- Use \`critical\` or \`warning\` tones for errors needing immediate attention
+- Use consistent styles and icons for common statuses
+- When using badges in line items, integrate them with the full content group rather than attaching only to the header
+- Don't use badges for merchant-created information. Instead, use a Chip or ClickableChip`,
+    },
+    {
+      title: 'Content guidelines',
+      type: 'Generic' as const,
+      anchorLink: 'content-guidelines',
+      sectionContent: `Badge labels should:
+- Use 1-2 words maximum: \`Fulfilled\`, \`Partially refunded\`
+- Always use past tense: \`Refunded\` not \`Refund\`
+`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

@@ -5,7 +5,11 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'The `Tile` component displays interactive buttons for the POS smart grid. Use tiles as customizable shortcuts that allow merchants to quickly access workflows, actions, and information from the smart grid.' +
     '\n\nTiles can change their appearance, content, and enabled state based on surrounding context such as cart contents, device conditions, or runtime state. They can display contextual information through titles, subtitles, and badge values.' +
+<<<<<<< HEAD
     '\n\nEach POS UI extension can only render one `Tile` component for each [home screen tile target](/docs/api/pos-ui-extensions/2026-01-rc/targets/home-screen#home-screen-tile-).',
+=======
+    '\n\nEach POS UI extension can only render one `Tile` component for each [home screen tile target](/docs/api/pos-ui-extensions/2025-10/targets/home-screen#home-screen-tile-).',
+>>>>>>> 2025-10
   thumbnail: 'tile-thumbnail.png',
   isVisualComponent: true,
   type: '',

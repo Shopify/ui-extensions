@@ -42,7 +42,10 @@ const data: ReferenceEntityTemplateSchema = {
 - **Apply appropriate tones:** Use \`success\` for positive outcomes, \`warning\` or \`critical\` for alerts, \`info\` for helpful context, \`auto\` for neutral content.
 - **Balance color intensity:** Use \`strong\` for emphasis, \`base\` for readability, \`subdued\` for secondary info.
 - **Nest for mixed formatting:** Nest \`Text\` components when you need multiple styles within one text block.
+<<<<<<< HEAD
 - **Use Stack for icons and badges:** When combining text with icons or badges, use Stack with direction="inline" instead of nesting components inside Text.
+=======
+>>>>>>> 2025-10
 `,
     },
     {
@@ -51,8 +54,11 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       sectionContent: `
 Complex rich text formatting isn't supported—use multiple \`Text\` components or nested text elements for varied formatting needs.
+<<<<<<< HEAD
 
 Nesting Icon or Badge components inside Text isn't supported due to React Native alignment limitations—use Stack with direction="inline" and alignItems="center" instead to properly align icons and badges with text.
+=======
+>>>>>>> 2025-10
 `,
     },
   ],

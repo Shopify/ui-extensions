@@ -78,3 +78,13 @@ export interface Window {
    */
   close(): void;
 }
+
+/**
+ * The global `window` object provides control over the extension modal lifecycle. Access these properties and methods directly through the global `window` object to manage the modal interface programmatically.
+ */
+export interface Window {
+  /**
+   * Closes the extension screen and dismisses the modal interface. Use to programmatically close the modal after completing a workflow, canceling an operation, or when user action is no longer required. This provides the same behavior as the user dismissing the modal through the UI.
+   */
+  close(): void;
+}

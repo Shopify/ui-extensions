@@ -5,6 +5,43 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/modal.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Usage',
+      type: 'Generic' as const,
+      anchorLink: 'usage',
+      sectionContent: `Modals are closed by default and should be triggered by a button using the \`commandFor\` attribute. The button's \`commandFor\` value should match the modal's \`id\`.`,
+    },
+    {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Focusing on a specific task or piece of information
+- Completing a flow that needs dedicated attention
+- Confirming a significant action before proceeding
+- Viewing information that's only temporarily relevant`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use for focused, specific tasks that require merchants to make a decision or acknowledge critical information
+- Include a prominent and clear call to action
+- Don't nest modals (avoid launching one modal from another)
+- Have concise and descriptive title and button text
+- Use thoughtfully and sparingly—don't create unnecessary interruptions
+- Use as a last resort for important decisions, not for contextual tools or actions that could happen on the page directly`,
+    },
+    {
+      title: 'Content guidelines',
+      type: 'Generic' as const,
+      anchorLink: 'content-guidelines',
+      sectionContent: `- Use 1-3 word titles in sentence case without punctuation
+- Keep body content to 1-2 short sentences
+- For destructive actions, explain the consequences
+- Use clear action verbs for buttons (e.g., "Delete", "Edit") instead of vague language like "Yes" or "OK"`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

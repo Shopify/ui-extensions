@@ -21,6 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
+<<<<<<< HEAD
   subSections: [
     {
       type: 'Generic',
@@ -43,10 +44,37 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
 `,
     },
   ],
+=======
+>>>>>>> 2025-10
   related: [],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Handle cart state reactively:** Use the signal-based interface to automatically update your extension UI when cart changes occur.\n' +
+        '- **Validate operations before execution:** Check cart editability and validate input data before performing cart operations to prevent errors.\n' +
+        '- **Use bulk operations for efficiency:** When performing multiple related operations, use bulk methods like `bulkCartUpdate`, `bulkSetLineItemDiscounts`, and `bulkAddLineItemProperties` for better performance and reduced API calls.\n' +
+        '- **Handle errors gracefully:** Implement proper error handling for all cart operations, as they may fail due to inventory constraints, validation errors, oversell protection, or business rule violations.\n' +
+        '- **Manage selling plans appropriately:** When working with subscription products, validate selling plan compatibility and handle selling plan requirements.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent: `
+Cart operations may fail due to business rules, inventory constraints, oversell protection, or validation errors—always implement appropriate error handling.
+`,
+    },
+  ],
   examples: {
     description:
+<<<<<<< HEAD
       'Learn how to manage cart state, modify line items, apply discounts, and handle customer information.',
+=======
+      'Learn how to manage cart contents, apply discounts, handle customer information, and track cart changes in real time.',
+>>>>>>> 2025-10
     examples: [
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -66,7 +94,11 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
+<<<<<<< HEAD
           'Add a product variant to the cart',
+=======
+          'Add a product to the cart',
+>>>>>>> 2025-10
           'add-line-item',
         ),
         description:
@@ -74,7 +106,11 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
+<<<<<<< HEAD
           'Add a subscription plan to a line item',
+=======
+          'Add a subscription selling plan to a line item',
+>>>>>>> 2025-10
           'add-line-item-selling-plan',
         ),
         description:
@@ -122,7 +158,11 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
+<<<<<<< HEAD
           'Apply a discount to a single line item',
+=======
+          'Apply a discount to a line item',
+>>>>>>> 2025-10
           'set-line-item-discount',
         ),
         description:
@@ -130,7 +170,19 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
+<<<<<<< HEAD
           'Apply discounts to multiple line items at once',
+=======
+          'Apply a percentage discount to the cart',
+          'apply-cart-discount',
+        ),
+        description:
+          "Add a cart-level discount that applies to the total cart value. This example demonstrates applying a 10% discount titled 'Summer discount' to the cart using the `applyCartDiscount()` method with the `Percentage` discount type.",
+      },
+      {
+        codeblock: generateJsxCodeBlockForCartApi(
+          'Apply different discounts to multiple line items',
+>>>>>>> 2025-10
           'bulk-set-line-item-discounts',
         ),
         description:
@@ -146,7 +198,11 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
+<<<<<<< HEAD
           'Attribute a line item to a staff member',
+=======
+          'Attribute a staff member to a line item',
+>>>>>>> 2025-10
           'set-attributed-staff-to-line-item',
         ),
         description:
@@ -154,7 +210,11 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
+<<<<<<< HEAD
           'Attribute the cart to a staff member',
+=======
+          'Attribute a staff member to the cart',
+>>>>>>> 2025-10
           'set-attributed-staff',
         ),
         description:
@@ -162,7 +222,11 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
+<<<<<<< HEAD
           'Check if the cart can be edited',
+=======
+          'Check if the cart is editable',
+>>>>>>> 2025-10
           'check-cart-editable',
         ),
         description:
@@ -178,7 +242,11 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
+<<<<<<< HEAD
           'Delete a customer address by ID',
+=======
+          'Delete a customer address',
+>>>>>>> 2025-10
           'delete-address',
         ),
         description:
@@ -242,6 +310,7 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
+<<<<<<< HEAD
           'Set the default address for the customer',
           'update-default-address',
         ),
@@ -250,11 +319,24 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
+=======
+>>>>>>> 2025-10
           'Subscribe to real-time cart changes',
           'subscribe',
         ),
         description:
           'Monitor cart state changes in real time using the subscribe method. This example shows how to use `shopify.cart.subscribe()` to receive updates whenever the cart changes. This enables reactive UI updates, validation logic, or analytics tracking based on cart modifications.',
+<<<<<<< HEAD
+=======
+      },
+      {
+        codeblock: generateJsxCodeBlockForCartApi(
+          'Update the default address for the customer',
+          'update-default-address',
+        ),
+        description:
+          'Designate a specific address as the default for the customer. This example demonstrates using `shopify.cart.updateDefaultAddress()` to set the primary shipping or billing address. This simplifies the checkout process for future transactions.',
+>>>>>>> 2025-10
       },
     ],
   },

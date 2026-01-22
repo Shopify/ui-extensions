@@ -30,19 +30,43 @@ const data: ReferenceEntityTemplateSchema = {
         ),
         description:
           'Access the unique identifier of the current product in a product detail action context. This example shows how to use `shopify.product.id` to retrieve the product ID. This can be used for fetching additional product data, analytics, or implementing product-specific features and workflows.',
+<<<<<<< HEAD
       },
     ],
   },
+=======
+      },
+      {
+        codeblock: generateJsxCodeBlockForProductApi(
+          'Retrieve product and product variant IDs',
+          'product-variant',
+        ),
+        description:
+          'Access both product and variant identifiers to implement variant-specific functionality. This example shows how to retrieve `shopify.product.id` and `shopify.product.variantId` together. Use this pattern for variant-aware features like inventory checks, variant-specific pricing, or detailed product information displays.',
+      },
+    ],
+  },
+  category: 'Target APIs',
+  subCategory: 'Contextual APIs',
+  related: [],
+>>>>>>> 2025-10
   subSections: [
     {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
+<<<<<<< HEAD
       sectionContent: `
 - **Use product ID for lookups:** Fetch additional product information from external systems or Shopify APIs using the product ID.
 - **Enable variant-specific features:** Use variant ID for variant-specific pricing, inventory checks, or cart operations.
 - **Validate product access:** Verify product and variant ID are valid before performing operations or API calls.
 `,
+=======
+      sectionContent:
+        '- **Use product ID for data lookups:** Use the product ID to fetch additional product information from external systems, inventory management platforms, or Shopify APIs when building comprehensive product experiences.\n' +
+        '- **Implement variant-specific features:** Use the variant ID to enable specialized functionality like variant-specific pricing, inventory checks, or cart operations.\n' +
+        '- **Validate product access:** Verify that the product ID and variant ID are valid before performing product-specific operations or external API calls.',
+>>>>>>> 2025-10
     },
     {
       type: 'Generic',

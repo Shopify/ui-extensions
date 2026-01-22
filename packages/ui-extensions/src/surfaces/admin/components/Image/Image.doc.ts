@@ -16,9 +16,16 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use high-resolution images to ensure a professional and high-quality experience.
-- Use optimized images so your app loads as fast as possible.
-- Use images intentionally, these should add clarity and lead users to the next step.`,
+      sectionContent: `- Use high-resolution, optimized images
+- Use intentionally to add clarity and guide users`,
+    },
+    {
+      title: 'Content guidelines',
+      type: 'Generic' as const,
+      anchorLink: 'content-guidelines',
+      sectionContent: `Alt text should be accurate, concise, and descriptive:
+- Indicate it's an image: "Image of", "Photo of"
+- Focus on description: "Image of a woman with curly brown hair smiling"`,
     },
   ],
   definitions: [
