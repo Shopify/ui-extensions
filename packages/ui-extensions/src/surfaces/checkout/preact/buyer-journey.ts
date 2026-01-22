@@ -45,6 +45,9 @@ export function useBuyerJourneyCompleted<
  *
  * `useBuyerJourneyIntercept()` should be called at the top level of the extension,
  * not within an embedded or child component, to avoid errors should the child component get destroyed.
+ *
+ * It is good practice to show a warning in the checkout editor when the merchant has not given permission for your extension
+ * to block checkout progress.
  */
 export function useBuyerJourneyIntercept<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

@@ -39,6 +39,7 @@ const data: ReferenceEntityTemplateSchema = {
         To block checkout progress, you must set the [block_progress](/docs/api/checkout-ui-extensions/configuration#block-progress) capability in your extension's configuration.
         If you do, then you're expected to inform the buyer why navigation was blocked, either by passing validation errors to the checkout UI or rendering the errors in your extension.
         \`useBuyerJourneyIntercept()\` should be called at the top level of the extension, not within an embedded or child component, to avoid errors should the child component get destroyed.
+        It is good practice to show a warning in the checkout editor when the merchant has not given permission for your extension to block checkout progress.
       `,
       type: 'UseBuyerJourneyInterceptGeneratedType',
     },

@@ -418,6 +418,9 @@ export interface BuyerJourney {
    *
    * If you do, then you're expected to inform the buyer why navigation was blocked,
    * either by passing validation errors to the checkout UI or rendering the errors in your extension.
+   * *
+   * It is good practice to show a warning in the checkout editor when the merchant has not given permission for your extension
+   * to block checkout progress.
    */
   intercept(interceptor: Interceptor): Promise<() => void>;
 
