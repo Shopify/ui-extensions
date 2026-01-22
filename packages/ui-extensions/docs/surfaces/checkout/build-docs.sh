@@ -95,6 +95,14 @@ if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
 
+# Generate targets.json
+echo "Generating targets.json..."
+node $DOCS_PATH/build-docs-targets-json.mjs $API_VERSION
+targets_exit=$?
+if [ $targets_exit -ne 0 ]; then
+  echo "Warning: Failed to generate targets.json"
+fi
+
 
 copy_generated_docs_to_shopify_dev() {
 # Copy the generated docs to shopify-dev

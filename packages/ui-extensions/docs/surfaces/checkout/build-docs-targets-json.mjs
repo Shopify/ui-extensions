@@ -1,0 +1,529 @@
+import fs from 'fs';
+import path from 'path';
+import {fileURLToPath} from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const API_VERSION = process.argv[2];
+
+if (!API_VERSION) {
+  console.error('Error: API_VERSION is required.');
+  console.error('Usage: node build-docs-targets-json.mjs <API_VERSION>');
+  console.error('Example: node build-docs-targets-json.mjs 2025-10');
+  process.exit(1);
+}
+
+// Configuration for checkout surface
+const config = {
+  basePath: path.join(
+    __dirname,
+    '../../../src/surfaces/checkout',
+  ),
+  outputPath: path.join(
+    __dirname,
+    `generated/checkout_extensions/${API_VERSION}/targets.json`,
+  ),
+  componentTypesPath: null,
+  hasComponentTypes: false,
+};
+
+// All components will be populated from SUPPORTED_COMPONENTS
+let allComponents = [];
+
+// Cache for parsed API files to avoid re-reading
+const apiDefinitionsCache = {};
+
+// Cache for checkout components
+let checkoutComponentsCache = null;
+
+/**
+ * Parse components from checkout's shared.ts file
+ */
+function parseCheckoutComponents() {
+  // Return cached value if available
+  if (checkoutComponentsCache !== null) {
+    return checkoutComponentsCache;
+  }
+
+  try {
+    const sharedPath = path.join(config.basePath, 'shared.ts');
+
+    if (!fs.existsSync(sharedPath)) {
+      checkoutComponentsCache = ['[CheckoutComponentsNotFound]'];
+      return checkoutComponentsCache;
+    }
+
+    const content = fs.readFileSync(sharedPath, 'utf-8');
+
+    // Look for SUPPORTED_COMPONENTS array
+    const supportedMatch = content.match(
+      /export const SUPPORTED_COMPONENTS\s*=\s*\[([\s\S]*?)\]\s*as const/,
+    );
+
+    if (supportedMatch) {
+      const arrayContent = supportedMatch[1];
+      // Extract all quoted strings
+      const components = arrayContent.match(/'([^']+)'/g);
+      if (components) {
+        checkoutComponentsCache = components.map((c) => c.replace(/'/g, ''));
+        return checkoutComponentsCache;
+      }
+    }
+
+    checkoutComponentsCache = ['[CheckoutComponentsParseError]'];
+    return checkoutComponentsCache;
+  } catch (error) {
+    checkoutComponentsCache = ['[CheckoutComponentsError]'];
+    return checkoutComponentsCache;
+  }
+}
+
+function parseComponentTypesFromFiles() {
+  // Checkout doesn't have separate component type files
+  return {};
+}
+
+function parseTargetsFile() {
+  const targetsFilePath = path.join(config.basePath, 'extension-targets.ts');
+
+  const content = fs.readFileSync(targetsFilePath, 'utf-8');
+
+  // Parse component type definitions
+  const componentTypesMap = parseComponentTypesFromFiles();
+
+  const targets = {};
+
+  // Look for all interfaces that might contain RenderExtension targets
+  const interfaceNames = [
+    'RenderExtensionTargets',
+    'OrderStatusExtensionTargets',
+    'CustomerAccountExtensionTargets',
+    'ExtensionTargets',
+  ];
+
+  for (const interfaceName of interfaceNames) {
+    // Try to find this interface
+    const regex = new RegExp(
+      `export interface ${interfaceName}[^{]*\\{([\\s\\S]+?)\\n\\}`,
+    );
+    const match = content.match(regex);
+
+    if (match && match[1].includes('RenderExtension<')) {
+      parseTargetsFromInterfaceBody(match[1], targets, componentTypesMap);
+    }
+  }
+
+  if (Object.keys(targets).length === 0) {
+    throw new Error('Could not find extension targets interface');
+  }
+
+  return targets;
+}
+
+function parseTargetsFromInterfaceBody(interfaceBody, targets, componentTypesMap) {
+  // Parse each target definition (handle multi-line)
+  const targetRegex = /'([^']+)':\s*RenderExtension<([\s\S]*?)>;/g;
+
+  let match;
+  while ((match = targetRegex.exec(interfaceBody)) !== null) {
+    const targetName = match[1];
+    let renderExtensionContent = match[2].trim();
+
+    // Remove comments before parsing
+    renderExtensionContent = renderExtensionContent
+      .replace(/\/\/[^\n]*/g, '') // Remove single-line comments
+      .replace(/\/\*[\s\S]*?\*\//g, ''); // Remove multi-line comments
+
+    // Split by comma to separate API and Components
+    const parts = splitByTopLevelComma(renderExtensionContent);
+
+    if (parts.length >= 2) {
+      const apiString = parts[0].trim();
+      const componentString = parts[1].trim();
+
+      // Parse APIs from the intersection type
+      const apis = parseApis(apiString);
+
+      // Parse components
+      const components = parseComponents(componentString, componentTypesMap);
+
+      targets[targetName] = {
+        components: components.sort(),
+        apis: apis.sort(),
+      };
+    }
+  }
+}
+
+function splitByTopLevelComma(str) {
+  const parts = [];
+  let current = '';
+  let angleDepth = 0;
+  let braceDepth = 0;
+  let parenDepth = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+
+    if (char === '<') {
+      angleDepth++;
+      current += char;
+    } else if (char === '>') {
+      angleDepth--;
+      current += char;
+    } else if (char === '{') {
+      braceDepth++;
+      current += char;
+    } else if (char === '}') {
+      braceDepth--;
+      current += char;
+    } else if (char === '(') {
+      parenDepth++;
+      current += char;
+    } else if (char === ')') {
+      parenDepth--;
+      current += char;
+    } else if (
+      char === ',' &&
+      angleDepth === 0 &&
+      braceDepth === 0 &&
+      parenDepth === 0
+    ) {
+      parts.push(current);
+      current = '';
+    } else {
+      current += char;
+    }
+  }
+
+  if (current) {
+    parts.push(current);
+  }
+
+  return parts;
+}
+
+function getNestedApis(apiName) {
+  // Check if we've already parsed this API
+  if (apiDefinitionsCache.hasOwnProperty(apiName)) {
+    return apiDefinitionsCache[apiName];
+  }
+
+  // Try to find the API file in the surface's api directory
+  const apiDir = path.join(config.basePath, 'api');
+
+  if (!fs.existsSync(apiDir)) {
+    apiDefinitionsCache[apiName] = [];
+    return [];
+  }
+
+  // Convert API name to potential file paths
+  // e.g., StandardApi -> standard-api, CartApi -> cart-api
+  const kebabName = apiName
+    .replace(/Api$/, '')
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .toLowerCase();
+
+  // Try multiple possible locations
+  const possiblePaths = [
+    path.join(apiDir, `${kebabName}.ts`),
+    path.join(apiDir, `${kebabName}`, `${kebabName}.ts`),
+    path.join(apiDir, kebabName.replace(/-/g, ''), `${kebabName}.ts`),
+    path.join(apiDir, `${kebabName}-api`, `${kebabName}-api.ts`),
+    path.join(apiDir, `${kebabName}-api.ts`),
+    path.join(apiDir, `standard-api`, `standard-api.ts`),
+  ];
+
+  let content = null;
+  for (const apiFilePath of possiblePaths) {
+    try {
+      if (fs.existsSync(apiFilePath)) {
+        content = fs.readFileSync(apiFilePath, 'utf-8');
+        break;
+      }
+    } catch (error) {
+      // Continue to next path
+    }
+  }
+
+  if (!content) {
+    apiDefinitionsCache[apiName] = [];
+    return [];
+  }
+
+  try {
+    // Find the export type definition for this API
+    const typeDefStartRegex = new RegExp(`export type ${apiName}[^=]*=`, 's');
+    const startMatch = content.match(typeDefStartRegex);
+
+    if (!startMatch) {
+      apiDefinitionsCache[apiName] = [];
+      return [];
+    }
+
+    // Find the end position (semicolon at the correct nesting level)
+    let startPos = startMatch.index + startMatch[0].length;
+    let endPos = startPos;
+    let braceDepth = 0;
+    let angleDepth = 0;
+
+    for (let i = startPos; i < content.length; i++) {
+      const char = content[i];
+
+      if (char === '{') braceDepth++;
+      else if (char === '}') braceDepth--;
+      else if (char === '<') angleDepth++;
+      else if (char === '>') angleDepth--;
+      else if (char === ';' && braceDepth === 0 && angleDepth === 0) {
+        endPos = i;
+        break;
+      }
+    }
+
+    const typeDef = content.substring(startPos, endPos);
+
+    // Extract all API names from the type definition
+    const nestedApis = [];
+    const apiMatches = typeDef.matchAll(/(\w+Api)\b/g);
+
+    for (const apiMatch of apiMatches) {
+      const nestedApiName = apiMatch[1];
+      // Don't include the API itself
+      if (nestedApiName !== apiName && !nestedApis.includes(nestedApiName)) {
+        nestedApis.push(nestedApiName);
+      }
+    }
+
+    apiDefinitionsCache[apiName] = nestedApis;
+    return nestedApis;
+  } catch (error) {
+    // Error parsing, cache and return empty array
+    apiDefinitionsCache[apiName] = [];
+    return [];
+  }
+}
+
+function parseApis(apiString) {
+  const apisSet = new Set();
+
+  // Remove any comments
+  apiString = apiString
+    .replace(/\/\/[^\n]*/g, '')
+    .replace(/\/\*[\s\S]*?\*\//g, '');
+
+  // Split by & and extract API names
+  const parts = apiString
+    .split('&')
+    .map((s) => s.trim())
+    .filter((s) => s);
+
+  for (const part of parts) {
+    // Match API names (e.g., StandardApi<'...'> or just ApiName)
+    let apiName = null;
+
+    // Extract just the type name before any generic parameters
+    const apiMatch = part.match(/^(\w+Api)/);
+    if (apiMatch) {
+      apiName = apiMatch[1];
+    } else {
+      // Try to match any capitalized type name ending in Api
+      const generalMatch = part.match(/(\w+Api)\b/);
+      if (generalMatch) {
+        apiName = generalMatch[1];
+      }
+    }
+
+    if (apiName) {
+      // Add the API itself
+      apisSet.add(apiName);
+
+      // Get nested APIs from this API (recursively)
+      const nestedApis = getNestedApis(apiName);
+      for (const nestedApi of nestedApis) {
+        apisSet.add(nestedApi);
+        // Recursively get nested APIs of nested APIs
+        const deepNestedApis = getNestedApis(nestedApi);
+        deepNestedApis.forEach((api) => apisSet.add(api));
+      }
+    }
+  }
+
+  return Array.from(apisSet);
+}
+
+/**
+ * Parse a TypeScript component type expression
+ * Handles various patterns: type refs, unions, Exclude, AllowedComponents, etc.
+ */
+function parseComponents(componentString, componentTypesMap) {
+  // Normalize whitespace
+  componentString = componentString.replace(/\s+/g, ' ').trim();
+
+  // Handle AnyCheckoutComponentExcept<'Component1' | 'Component2'>
+  const checkoutExceptMatch = componentString.match(/AnyCheckoutComponentExcept<([^>]+)>/);
+  if (checkoutExceptMatch) {
+    const excludedUnion = checkoutExceptMatch[1];
+    // Get all checkout components
+    const allCheckoutComponents = parseCheckoutComponents();
+    // Parse the union of excluded components
+    const excludedComponents = parseUnionOfStrings(excludedUnion);
+    // Filter out the excluded components
+    return allCheckoutComponents.filter((c) => !excludedComponents.includes(c));
+  }
+
+  // Handle Exclude<BaseType, ExcludedComponent>
+  const excludeMatch = componentString.match(/Exclude<(\w+),\s*'([^']+)'>/);
+  if (excludeMatch) {
+    const baseType = excludeMatch[1];
+    const excluded = excludeMatch[2];
+    const baseComponents = resolveComponentType(baseType, componentTypesMap);
+    return baseComponents.filter((c) => c !== excluded);
+  }
+
+  // Handle AllowedComponents<ComponentType>
+  const allowedMatch = componentString.match(/AllowedComponents<([^>]+)>/);
+  if (allowedMatch) {
+    const innerType = allowedMatch[1].trim();
+    return resolveComponentType(innerType, componentTypesMap);
+  }
+
+  // Check if it's a direct type reference
+  const result = resolveComponentType(componentString, componentTypesMap);
+  if (result.length > 0) {
+    return result;
+  }
+
+  // Default to all components if we have them
+  if (allComponents.length > 0) {
+    return allComponents;
+  }
+
+  return ['[Unknown]'];
+}
+
+/**
+ * Parse a union of string literals (e.g., "'Image' | 'Banner'")
+ * Returns an array of the string values
+ */
+function parseUnionOfStrings(unionString) {
+  const components = [];
+  // Split by | and extract quoted strings
+  const parts = unionString.split('|');
+  for (const part of parts) {
+    const trimmed = part.trim();
+    const match = trimmed.match(/^'([^']+)'$/);
+    if (match) {
+      components.push(match[1]);
+    }
+  }
+  return components;
+}
+
+/**
+ * Resolve a component type name to a list of component names
+ */
+function resolveComponentType(typeName, componentTypesMap) {
+  typeName = typeName.trim();
+
+  // Check if it's in our component types map
+  if (componentTypesMap[typeName]) {
+    return componentTypesMap[typeName];
+  }
+
+  // Handle special checkout types
+  if (typeName === 'AnyCheckoutComponent' || typeName === 'AnyComponent' || typeName === 'AnyThankYouComponent') {
+    return parseCheckoutComponents();
+  }
+
+  // Check if it's a quoted string literal
+  const quotedMatch = typeName.match(/^'([^']+)'$/);
+  if (quotedMatch) {
+    return [quotedMatch[1]];
+  }
+
+  return [];
+}
+
+function createCombinedMapping(targetsJson) {
+  const result = {...targetsJson};
+
+  // Create reverse mappings for APIs
+  const apiToTargets = {};
+  const componentToTargets = {};
+
+  // Iterate through all targets
+  for (const [targetName, targetData] of Object.entries(targetsJson)) {
+    // Map APIs to targets
+    for (const api of targetData.apis) {
+      if (!apiToTargets[api]) {
+        apiToTargets[api] = [];
+      }
+      apiToTargets[api].push(targetName);
+    }
+
+    // Map Components to targets
+    for (const component of targetData.components) {
+      if (!componentToTargets[component]) {
+        componentToTargets[component] = [];
+      }
+      componentToTargets[component].push(targetName);
+    }
+  }
+
+  // Add API reverse mappings to result
+  for (const [api, targets] of Object.entries(apiToTargets)) {
+    result[api] = {
+      targets: targets.sort(),
+    };
+  }
+
+  // Add Component reverse mappings to result
+  for (const [component, targets] of Object.entries(componentToTargets)) {
+    result[component] = {
+      targets: targets.sort(),
+    };
+  }
+
+  return result;
+}
+
+// Main execution
+try {
+  console.log('\n🔍 Generating targets JSON for checkout surface');
+  console.log(`📁 Base path: ${config.basePath}`);
+
+  // Generate the JSON
+  const targetsJson = parseTargetsFile();
+
+  // Create the combined JSON with reverse mappings
+  const combinedJson = createCombinedMapping(targetsJson);
+
+  // Write to output file
+  const outputDir = path.dirname(config.outputPath);
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+  fs.writeFileSync(config.outputPath, JSON.stringify(combinedJson, null, 2));
+
+  console.log('✅ Generated combined targets JSON at:', config.outputPath);
+  
+  // Count the different types of entries
+  const targetEntries = Object.keys(targetsJson).length;
+  const apiEntries = Object.keys(combinedJson).filter(
+    (key) => combinedJson[key].targets && !targetsJson[key] && key.endsWith('Api')
+  ).length;
+  const componentEntries = Object.keys(combinedJson).filter(
+    (key) => combinedJson[key].targets && !targetsJson[key] && !key.endsWith('Api')
+  ).length;
+  
+  console.log('\n📋 Summary:');
+  console.log(`  Extension targets: ${targetEntries}`);
+  console.log(`  API reverse mappings: ${apiEntries}`);
+  console.log(`  Component reverse mappings: ${componentEntries}`);
+  console.log(`  Total entries in JSON: ${Object.keys(combinedJson).length}`);
+} catch (error) {
+  console.error('❌ Error generating targets JSON:', error.message);
+  console.error(error.stack);
+  process.exit(1);
+}
