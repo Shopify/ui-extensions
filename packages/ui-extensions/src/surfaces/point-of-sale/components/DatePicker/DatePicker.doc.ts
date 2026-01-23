@@ -4,11 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'DatePicker',
   description:
     'The `DatePicker` component allows merchants to select dates using a calendar interface. Use it when merchants benefit from seeing dates in context of the full month, such as selecting dates relative to today or needing weekday context.' +
-<<<<<<< HEAD
     '\n\nThe component supports single dates, multiple dates, and date ranges. For tight spaces, consider using [`DateSpinner`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner) instead. For text date entry, use [`DateField`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datefield).',
-=======
-    '\n\nThe component supports single dates, multiple dates, and date ranges. For tight spaces, consider using [`DateSpinner`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datespinner) instead. For text date entry, use [`DateField`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datefield).',
->>>>>>> 2025-10
   thumbnail: 'date-picker-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -48,11 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent: `
-<<<<<<< HEAD
 - **Choose for calendar-based selection:** Use \`DatePicker\` when users benefit from seeing a calendar view, like selecting dates relative to today or needing weekday context. Use [\`DateSpinner\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datespinner) for tight spaces or [\`DateField\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datefield) when users know the exact date.
-=======
-- **Choose for calendar-based selection:** Use \`DatePicker\` when users benefit from seeing a calendar view, like selecting dates relative to today or needing weekday context. Use [\`DateSpinner\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datespinner) for tight spaces or [\`DateField\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datefield) when users know the exact date.
->>>>>>> 2025-10
 - **Provide adequate space:** Ensure sufficient spacing around the picker to avoid interfering with on-screen keyboards or other interactive elements.
 `,
     },

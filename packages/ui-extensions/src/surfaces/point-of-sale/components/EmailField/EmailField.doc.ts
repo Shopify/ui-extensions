@@ -11,21 +11,9 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-<<<<<<< HEAD
       description:
         'Configure the following properties on the `EmailField` component.',
       type: 'EmailField',
-=======
-      description:
-        'Configure the following properties on the `EmailField` component.',
-      type: 'EmailField',
-    },
-    {
-      title: 'Slots',
-      description:
-        'The `EmailField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
-      type: 'EmailFieldSlots',
->>>>>>> 2025-10
     },
     {
       title: 'Events',
@@ -61,48 +49,11 @@ const data: ReferenceEntityTemplateSchema = {
 - **Write actionable error messages:** Provide clear validation messages like "Please enter a valid email address" that help users correct their input.
 `,
     },
-<<<<<<< HEAD
   ],
   related: [],
   examples: {
     description: 'Learn how to handle email input events.',
     examples: [
-      {
-        description:
-          'Subscribe to email input events to respond when merchants enter email addresses. This example demonstrates handling `onChange`, `onInput`, `onFocus`, and `onBlur` events for real-time email validation, duplicate checking, or autosave functionality.',
-        codeblock: {
-          title: 'Handle email input events',
-=======
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-The \`accessory\` slot supports only [\`Button\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/button) and [\`Clickable\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/clickable) components—other component types can't be used in the accessory slot.
-`,
-    },
-  ],
-  related: [],
-  examples: {
-    description:
-      'Learn how to add accessory buttons and handle email input events.',
-    examples: [
-      {
-        description:
-          'Add action buttons to the email field using the accessory slot for quick actions like clearing input or verifying email addresses. This example shows how to use [`s-button`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/button) and [`s-clickable`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/clickable) components in the accessory slot, providing inline functionality within the email input context.',
-        codeblock: {
-          title: 'Add accessory buttons',
->>>>>>> 2025-10
-          tabs: [
-            {
-              code: './examples/accessory-slot.jsx',
-              language: 'jsx',
-            },
-          ],
-        },
-      },
-<<<<<<< HEAD
-=======
       {
         description:
           'Subscribe to email input events to respond when merchants enter email addresses. This example demonstrates handling `onChange`, `onInput`, `onFocus`, and `onBlur` events for real-time email validation, duplicate checking, or autosave functionality.',
@@ -116,7 +67,6 @@ The \`accessory\` slot supports only [\`Button\`](/docs/api/pos-ui-extensions/20
           ],
         },
       },
->>>>>>> 2025-10
     ],
   },
 };

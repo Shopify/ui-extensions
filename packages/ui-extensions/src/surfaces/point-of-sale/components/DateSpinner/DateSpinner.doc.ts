@@ -4,11 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'DateSpinner',
   description:
     'The `DateSpinner` component enables merchants to select dates using a spinner interface with scrollable columns for month, day, and year. Use it for compact date selection in space-constrained layouts or when selecting dates close to the current date.' +
-<<<<<<< HEAD
     '\n\nFor visual calendar context, consider using [`DatePicker`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) instead. For text date entry, use [`DateField`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datefield).',
-=======
-    '\n\nFor visual calendar context, consider using [`DatePicker`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datepicker) instead. For text date entry, use [`DateField`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datefield).',
->>>>>>> 2025-10
   thumbnail: 'date-spinner-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -49,11 +45,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       sectionContent: `
 - **Use for space-constrained layouts:** Choose \`DateSpinner\` for narrow layouts or split-screen interfaces where a calendar view would be impractical.
-<<<<<<< HEAD
 - **Best for nearby dates:** Use when selecting dates close to the current date. For distant dates, [\`DatePicker\`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) provides faster navigation.
-=======
-- **Best for nearby dates:** Use when selecting dates close to the current date. For distant dates, [\`DatePicker\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datepicker) provides faster navigation.
->>>>>>> 2025-10
 - **Provide interaction cues:** Consider labels or instructions to help first-time users understand the scrollable column interface.
 `,
     },

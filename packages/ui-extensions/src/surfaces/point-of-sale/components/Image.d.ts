@@ -38,13 +38,10 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T &
-  BaseElementPropsWithChildren<T & HTMLElement>;
-export type HtmlElementTagNameProps<T> = T & HTMLElement;
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
 
 declare const tagName = 's-image';
-export interface ImageJSXProps
-  extends Pick<ImageProps, 'id' | 'objectFit' | 'alt'> {
+export interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
   /**
    * Controls the displayed width of the image. Choose based on your layout requirements. For mobile interfaces, consider using `'fill'` with defined container dimensions to ensure consistent image display, as dynamic container heights can cause layout inconsistencies in scrollable views.
    *
@@ -61,7 +58,7 @@ export interface ImageJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: HtmlElementTagNameProps<ImageJSXProps>;
+    [tagName]: ImageJSXProps;
   }
 }
 declare module 'preact' {

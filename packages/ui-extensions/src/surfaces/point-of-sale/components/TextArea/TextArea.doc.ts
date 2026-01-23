@@ -4,32 +4,16 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'TextArea',
   description:
     'The `TextArea` component captures multi-line text input. Use it to collect descriptions, notes, comments, or other extended text content.' +
-<<<<<<< HEAD
     '\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [`TextField`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/textfield).',
-=======
-    '\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [`TextField`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/textfield).',
->>>>>>> 2025-10
   thumbnail: 'text-area-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
-<<<<<<< HEAD
       description:
         'Configure the following properties on the `TextArea` component.',
       type: 'TextArea',
-=======
-      description:
-        'Configure the following properties on the `TextArea` component.',
-      type: 'TextArea',
-    },
-    {
-      title: 'Slots',
-      description:
-        'The `TextArea` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
-      type: 'TextAreaSlots',
->>>>>>> 2025-10
     },
     {
       title: 'Events',
@@ -65,7 +49,6 @@ const data: ReferenceEntityTemplateSchema = {
 - **Write descriptive labels:** Use specific labels like "Product Description" or "Special Instructions" rather than generic terms.
 `,
     },
-<<<<<<< HEAD
   ],
   related: [],
   examples: {
@@ -75,39 +58,6 @@ const data: ReferenceEntityTemplateSchema = {
         description:
           'Configure the number of visible rows and character limits to control text area size and input length. This example shows how to use the `rows` property to set initial height and `maxlength` to limit content, ensuring appropriate sizing for different types of text input.',
         codeblock: {
-=======
-    {
-      type: 'Generic',
-      anchorLink: 'limitations',
-      title: 'Limitations',
-      sectionContent: `
-The \`accessory\` slot supports only [\`Button\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/button) and [\`Clickable\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/clickable) components. Other component types can't be used for field accessories.
-`,
-    },
-  ],
-  related: [],
-  examples: {
-    description:
-      'Learn how to add accessory buttons, configure visible rows, and handle events.',
-    examples: [
-      {
-        description:
-          'Add action buttons to the text area using the accessory slot for quick actions like clearing text or formatting content. This example shows how to use [`s-button`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/button) and [`s-clickable`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/actions/clickable) components in the accessory slot, providing inline functionality within the multi-line input context.',
-        codeblock: {
-          title: 'Add accessory buttons',
-          tabs: [
-            {
-              code: './examples/accessory-slot.jsx',
-              language: 'jsx',
-            },
-          ],
-        },
-      },
-      {
-        description:
-          'Configure the number of visible rows and character limits to control text area size and input length. This example shows how to use the `rows` property to set initial height and `maxlength` to limit content, ensuring appropriate sizing for different types of text input.',
-        codeblock: {
->>>>>>> 2025-10
           title: 'Configure rows and character limits',
           tabs: [
             {
