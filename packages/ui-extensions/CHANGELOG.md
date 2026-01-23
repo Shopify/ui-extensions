@@ -1,6 +1,6 @@
 # @shopify/ui-extensions
 
-## 2026.2.0
+## 2026.1.0
 
 ### Minor Changes
 
