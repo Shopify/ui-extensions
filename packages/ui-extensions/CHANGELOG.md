@@ -1,5 +1,41 @@
 # @shopify/ui-extensions
 
+## 2026.2.0
+
+### Minor Changes
+
+- [#3529](https://github.com/Shopify/ui-extensions/pull/3529) [`afa47f1`](https://github.com/Shopify/ui-extensions/commit/afa47f1e00c86f69ff08606f9770aa513e8529f1) Thanks [@merkoyep](https://github.com/merkoyep)! - implements the cash drawer api to the ui extensions repository
+
+- [#3603](https://github.com/Shopify/ui-extensions/pull/3603) [`e7892d6`](https://github.com/Shopify/ui-extensions/commit/e7892d6ef3f6b7281f5b22a41b7c8e43b49e68e0) Thanks [@prakashraman](https://github.com/prakashraman)! - Remove accessory slot from TextArea component
+
+- [#3534](https://github.com/Shopify/ui-extensions/pull/3534) [`8e4bf19`](https://github.com/Shopify/ui-extensions/commit/8e4bf19b2420cb8bf89f0ed20ea0bb7597200bd5) Thanks [@merkoyep](https://github.com/merkoyep)! - Adds register details targets
+
+- [#3738](https://github.com/Shopify/ui-extensions/pull/3738) [`cf12217`](https://github.com/Shopify/ui-extensions/commit/cf12217ba05f86ecc886a3471c26afbccfce914f) Thanks [@jolenehayes](https://github.com/jolenehayes)! - Add registerName field to the Device Api
+
+- [#3597](https://github.com/Shopify/ui-extensions/pull/3597) [`6b20b88`](https://github.com/Shopify/ui-extensions/commit/6b20b88010b4c329f654aa7b84a08124e693ec74) Thanks [@fatbattk](https://github.com/fatbattk)! - Add Camera API types
+
+- [#3536](https://github.com/Shopify/ui-extensions/pull/3536) [`58fef36`](https://github.com/Shopify/ui-extensions/commit/58fef364a8378a824a51e4697d83ae2d28d46f2f) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Adds components to point of sale cart LineItem interface to represent product bundle items.
+
+- [#3641](https://github.com/Shopify/ui-extensions/pull/3641) [`9440bde`](https://github.com/Shopify/ui-extensions/commit/9440bde5390d2940befc1037370217d16455dff2) Thanks [@jonathanhamel4](https://github.com/jonathanhamel4)! - Added subscribable discounts api. Update the type for `data.id` to string to fix a previously incorrect type.
+
+### Patch Changes
+
+- [#3729](https://github.com/Shopify/ui-extensions/pull/3729) [`2920d36`](https://github.com/Shopify/ui-extensions/commit/2920d36f66735f552b6cd9fe3738f934618b7b4f) Thanks [@kbav](https://github.com/kbav)! - Add admin.app.tools.data extension target
+
+- [#3521](https://github.com/Shopify/ui-extensions/pull/3521) [`9f7afff`](https://github.com/Shopify/ui-extensions/commit/9f7afffcef86bcc8c6a9fef89ada580351082d9c) Thanks [@lrsterrett](https://github.com/lrsterrett)! - 2026.1.0-rc release
+
+- [#3650](https://github.com/Shopify/ui-extensions/pull/3650) [`01fb914`](https://github.com/Shopify/ui-extensions/commit/01fb914a0ddbe520698607acd780d59787deb769) Thanks [@andy-chhuon](https://github.com/andy-chhuon)! - new oidc deploy workflow
+
+- [#3695](https://github.com/Shopify/ui-extensions/pull/3695) [`397d749`](https://github.com/Shopify/ui-extensions/commit/397d7496e9cab5634da11dca5b78a3bde1b5ffe1) Thanks [@jonathanhamel4](https://github.com/jonathanhamel4)! - Remove unsupported fields for the Discount API. Those fields will be added in a later API.
+
+- [#3652](https://github.com/Shopify/ui-extensions/pull/3652) [`54f38ee`](https://github.com/Shopify/ui-extensions/commit/54f38eeb798dee46f29eb146749a99d2634c6b49) Thanks [@andy-chhuon](https://github.com/andy-chhuon)! - Bump node version to v20.19.6
+
+- [#3590](https://github.com/Shopify/ui-extensions/pull/3590) [`81c0416`](https://github.com/Shopify/ui-extensions/commit/81c0416e8b5772a2fe74e04d8f8d4263e4d61073) Thanks [@chadcromwell](https://github.com/chadcromwell)! - Add optional tipAmount field to POS transaction data types
+
+- [#3730](https://github.com/Shopify/ui-extensions/pull/3730) [`280778e`](https://github.com/Shopify/ui-extensions/commit/280778e6a873f70635e2b43e4bc3ec4617cb2520) Thanks [@lrsterrett](https://github.com/lrsterrett)! - recommend merchant friendly warning for enabling checkout extension to block progress
+
+- [#3574](https://github.com/Shopify/ui-extensions/pull/3574) [`2a6dddb`](https://github.com/Shopify/ui-extensions/commit/2a6dddbbd033c6c082ca513fcb62bc87523fa41e) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Exports LineItemComponent from point-of-sale API so POS can import the type
+
 ## 2026.1.0-rc.5
 
 ### Patch Changes
