@@ -20,17 +20,17 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Platform APIs',
+  related: [],
   subSections: [
     {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent: `
-- **Validate securely on backend:** Validate PINs on your backend service, not client-side. Use \`onSubmit\` to communicate with your secure endpoint.
-- **Provide clear feedback:** Use appropriate labels, titles, and error messages to guide users and provide validation results.
-- **Handle errors and retries:** Implement error handling for validation failures and provide retry mechanisms.
-- **Configure appropriate constraints:** Set reasonable PIN length requirements and masking options based on security needs.
-`,
+      sectionContent:
+        '- **Implement secure PIN validation:** Validate PINs securely on your backend service rather than in client-side code, using the `onSubmit` callback to communicate with your secure validation endpoint.\n' +
+        '- **Provide clear user feedback:** Use appropriate labels, titles, and error messages to guide users through the PIN entry process.\n' +
+        '- **Handle PIN entry appropriately:** Implement proper error handling for PIN validation failures, provide retry mechanisms, and ensure sensitive PIN data is handled securely throughout the process.\n' +
+        '- **Configure appropriate PIN constraints:** Set reasonable PIN length requirements and masking options based on your security requirements and user experience considerations.',
     },
     {
       type: 'Generic',
@@ -41,7 +41,6 @@ PIN validation must be handled through the \`onSubmit\` callback and should be p
 `,
     },
   ],
-  related: [],
   examples: {
     description:
       'Learn how to display secure PIN entry interfaces and handle PIN validation.',

@@ -27,6 +27,22 @@ const data: LandingTemplateSchema = {
       },
     },
     {
+      type: 'Generic',
+      anchorLink: 'file-size-limit',
+      title: 'File size limit',
+      sectionContent:
+        'As of `2025-10`, UI extensions are subject to a **64 KB file size limit** upon deployment. This limit applies to the compiled extension bundle and is enforced to ensure fast loading times and optimal performance for customers.',
+      sectionNotice: [
+        {
+          title: 'Important',
+          sectionContent: `
+If your extension exceeds 64 KB, deployment will fail.
+`,
+          type: 'warning',
+        },
+      ],
+    },
+    {
       type: 'GenericAccordion',
       anchorLink: 'adjust-dependencies',
       title: 'Adjust package dependencies',

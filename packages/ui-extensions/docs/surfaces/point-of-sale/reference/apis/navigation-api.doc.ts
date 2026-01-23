@@ -29,15 +29,15 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Platform APIs',
+  related: [],
   subSections: [
     {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent: `
-- **Use URL-based navigation:** Implement URL patterns for deep-linking and intuitive browser-like navigation within modals.
-- **Manage state effectively:** Use the \`state\` parameter to pass data between screens and maintain workflow context.
-`,
+      sectionContent:
+        '- **Use URL-based navigation:** Implement URL-based navigation patterns that allow for deep-linking, bookmarking, and intuitive browser-like navigation within your modal workflows.\n' +
+        '- **Manage navigation state effectively:** Use the `state` parameter in navigation options to pass data between screens, maintaining workflow context and user progress across navigation changes.',
     },
     {
       type: 'Generic',
@@ -49,7 +49,6 @@ const data: ReferenceEntityTemplateSchema = {
 `,
     },
   ],
-  related: [],
   examples: {
     description:
       'Learn how to manage navigation between screens and pass state between views.',

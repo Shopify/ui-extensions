@@ -7,6 +7,16 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Showing important information or changes
+- Prompting merchants to take a specific action
+- Displaying warnings, errors, or critical information
+- Communicating persistent conditions that need attention
+`,
+    },
+    {
       title: 'Outside of a section',
       type: 'Generic' as const,
       anchorLink: 'outside-of-a-section',
@@ -27,6 +37,16 @@ const data: AdminReferenceEntityTemplateSchema = {
 - Make the message concise and scannable. Users shouldn’t need to spend a lot of time figuring out what they need to know and do.
 - Info, Warning and Critical banners should contain a call to action and clear next steps. Users should know what to do after seeing the banner.
 - Avoid banners that can't be dismissed unless the user is required to take action.`,
+    },
+    {
+      title: 'Content guidelines',
+      type: 'Generic' as const,
+      anchorLink: 'content-guidelines',
+      sectionContent: `- Keep titles concise and clear
+- Limit body content to 1-2 sentences where possible
+- Use action-led buttons with strong verbs (e.g., "Activate Apple Pay" not "Try Apple Pay")
+- Avoid unnecessary words and articles in button text
+- For warning and critical banners, explain how to resolve the issue`,
     },
   ],
   definitions: [

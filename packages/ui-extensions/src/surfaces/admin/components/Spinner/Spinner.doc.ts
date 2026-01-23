@@ -5,6 +5,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/spinner.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use to notify merchants that their action is being processed
+- Don't use for entire page loads`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

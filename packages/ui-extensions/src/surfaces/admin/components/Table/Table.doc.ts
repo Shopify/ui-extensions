@@ -11,6 +11,17 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/table.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use when displaying data with 3 or more attributes per item
+- All items should share the same structure and attributes
+- Don't use when data varies significantly between items (use a list instead)
+- Tables automatically transform into lists on mobile devices`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

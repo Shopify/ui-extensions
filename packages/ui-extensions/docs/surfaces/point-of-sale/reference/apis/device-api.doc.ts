@@ -20,27 +20,26 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Platform APIs',
+  related: [],
   subSections: [
     {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent: `
-- **Implement responsive design:** Use device type info to adapt layouts, component sizes, and interactions based on form factor.
-- **Handle async queries:** Handle Promise-based methods with async/await or \`.then()\` and implement error handling.
-- **Cache device information:** Cache after initial query to avoid repeated async calls, but handle cases where characteristics might change.
-- **Provide device-appropriate experiences:** Design different experiences for tablets versus other devices, leveraging larger screens.
-`,
+      sectionContent:
+        '- **Implement responsive design:** Use device type information to adapt your interface layouts, component sizes, and interaction patterns based on the device form factor and capabilities.\n' +
+        '- **Handle async device queries:** Handle the Promise-based device methods with async/await or `.then()` patterns, and implement appropriate error handling for device query failures.\n' +
+        '- **Cache device information appropriately:** Consider caching device information after the initial query to avoid repeated async calls, but ensure you handle cases where device characteristics might change during the session.\n' +
+        '- **Provide device-appropriate experiences:** Design different user experiences for tablets versus other devices, taking advantage of larger screens while ensuring functionality works across all supported device types.',
     },
   ],
-  related: [],
   examples: {
     description:
-      'Learn how to access device information and adapt to different device types.',
+      'Learn how to access device information and adapt your extension based on device characteristics.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForDeviceApi(
-          'Detect if the device is a tablet',
+          'Check if the device is a tablet',
           'tablet',
         ),
         description:

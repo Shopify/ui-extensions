@@ -20,17 +20,17 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Standard APIs',
+  related: [],
   subSections: [
     {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent: `
-- **Handle authentication:** Check for undefined session tokens and implement fallback behavior when authentication fails.
-- **Use appropriate identifiers:** Distinguish between \`userId\` (authenticated account) and \`staffMemberId\` (pinned staff) for permissions and personalization.
-- **Implement location-aware features:** Use \`locationId\` and \`currency\` for location-specific functionality like inventory checks and tax calculations.
-- **Secure backend communication:** Use session tokens only for backend API calls. Never expose in logs or storage. Validate tokens on your backend.
-`,
+      sectionContent:
+        '- **Handle authentication properly:** Check for undefined session tokens and implement proper fallback behavior when authentication fails or permissions are insufficient.\n' +
+        '- **Use appropriate identifiers:** Distinguish between `userId` (authenticated account) and `staffMemberId` (pinned staff member) to implement correct permissions and personalization logic.\n' +
+        '- **Implement location-aware features:** Use `locationId` and `currency` information.\n' +
+        '- **Secure backend communication:** Use session tokens exclusively for backend API calls and never expose them in client-side logs or storage. Validate tokens on your backend before processing requests.',
     },
     {
       type: 'Generic',
@@ -42,11 +42,18 @@ const data: ReferenceEntityTemplateSchema = {
 `,
     },
   ],
-  related: [],
   examples: {
     description:
       'Learn how to access session information and generate authentication tokens for secure API calls.',
     examples: [
+      {
+        codeblock: generateJsxCodeBlockForSessionApi(
+          'Access properties associated with the current session',
+          'current-session',
+        ),
+        description:
+          'Access comprehensive session information including shop details, user data, and location information. This example shows how to use `shopify.session.currentSession` to retrieve the shop ID, domain, currency, user ID, location ID, staff member ID, and POS version. Use this data to build location-aware features and personalized experiences.',
+      },
       {
         codeblock: generateJsxCodeBlockForSessionApi(
           'Access session data and generate authentication tokens',

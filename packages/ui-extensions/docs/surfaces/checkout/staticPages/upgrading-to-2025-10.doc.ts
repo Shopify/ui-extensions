@@ -29,6 +29,22 @@ As of 2025-10, checkout UI extensions use Polaris web components. If you are upg
       },
     },
     {
+      type: 'Generic',
+      anchorLink: 'file-size-limit',
+      title: 'File size limit',
+      sectionContent:
+        'As of `2025-10`, UI extensions are subject to a **64 KB file size limit** upon deployment. This limit applies to the compiled extension bundle and is enforced to ensure fast loading times and optimal performance for buyers during checkout.',
+      sectionNotice: [
+        {
+          title: 'Important',
+          sectionContent: `
+If your extension exceeds 64 KB, deployment will fail.
+`,
+          type: 'warning',
+        },
+      ],
+    },
+    {
       type: 'GenericAccordion',
       anchorLink: 'adjust-dependencies',
       title: 'Adjust package dependencies',

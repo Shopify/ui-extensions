@@ -6,6 +6,15 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/datepicker.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use smart defaults and highlight common selections
+- Don't use to enter a date that is many years in the future or the past`,
+    },
+  ],
   definitions: [
     {
       title: 'DatePicker',

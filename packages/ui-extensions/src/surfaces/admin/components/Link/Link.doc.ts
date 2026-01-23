@@ -5,6 +5,16 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/link.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use links for navigation and buttons for actions
+- Use default links whenever possible to avoid disorienting merchants
+- Open external links in a new tab only when merchants are performing a task or navigating outside the Shopify admin`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

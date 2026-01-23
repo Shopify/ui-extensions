@@ -20,6 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Standard APIs',
+  related: [],
   subSections: [
     {
       type: 'Generic',
@@ -41,7 +42,6 @@ Toast content is limited to plain text and can't include rich formatting, links,
 `,
     },
   ],
-  related: [],
   examples: {
     description:
       'Learn how to display temporary notification messages for user feedback.',

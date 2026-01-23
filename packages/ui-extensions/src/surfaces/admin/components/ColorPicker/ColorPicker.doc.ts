@@ -6,6 +6,14 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/color-picker.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use the alpha slider if you want to allow merchants to select a transparent color`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

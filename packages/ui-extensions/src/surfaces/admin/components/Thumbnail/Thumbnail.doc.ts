@@ -6,6 +6,35 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/thumbnail.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Identifying items visually in lists, tables, or cards
+- Seeing a preview of images before uploading or publishing
+- Distinguishing between similar items by their appearance
+- Confirming the correct item is selected`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- \`small-200\`: use in very small areas
+- \`small\`: use in small areas
+- \`base\`: use as the default size
+- \`large\`: use when thumbnail is a focal point`,
+    },
+    {
+      title: 'Content guidelines',
+      type: 'Generic' as const,
+      anchorLink: 'content-guidelines',
+      sectionContent: `Alternative text should be accurate, concise, and descriptive:
+- Use "Image of", "Photo of" prefix
+- Be primary visual content: "Image of a woman with curly brown hair smiling"
+- Include relevant emotions: "Image of a woman laughing with her hand on her face"`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

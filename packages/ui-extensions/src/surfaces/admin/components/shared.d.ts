@@ -164,11 +164,11 @@ export interface ExtendableEvent extends Event {
    */
   waitUntil?: (promise: Promise<void>) => void;
 }
-interface AggregateError$1<T extends Error> extends Error {
+export interface AggregateError<T extends Error> extends Error {
   errors: T[];
 }
 export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
-  error: AggregateError$1<T>;
+  error: AggregateError<T>;
 }
 export type SizeKeyword =
   | 'small-500'

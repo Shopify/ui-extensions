@@ -21,6 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Platform APIs',
+  related: [],
   subSections: [
     {
       type: 'Generic',
@@ -43,7 +44,6 @@ The Scanner API is only available in action (modal) targets where scanning funct
 `,
     },
   ],
-  related: [],
   examples: {
     description:
       'Learn how to handle barcode and QR code scans and access scanner information.',

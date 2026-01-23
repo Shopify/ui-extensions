@@ -7,6 +7,17 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/unordered-list.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use to break up related content and improve scannability
+- Phrase items consistently (start each with a noun or verb)
+- Start each item with a capital letter
+- Don't use commas or semicolons at the end of lines`,
+    },
+  ],
   definitions: [
     {
       title: 'Slots',

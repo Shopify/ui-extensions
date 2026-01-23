@@ -7,7 +7,7 @@ const generateJsxCodeBlockForLocaleApi = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Locale API',
   description:
-    "The Locale API provides access to the merchant's current locale information in IETF format, allowing you to internationalize your extension content and respond to locale changes in real time. The API enables both immediate locale access and dynamic updates when merchants change their language settings.",
+    "The Locale API provides access to the merchant's current locale information in [IETF format](https://en.wikipedia.org/wiki/IETF_language_tag), allowing you to internationalize your extension content and respond to locale changes in real time. The API enables both immediate locale access and dynamic updates when merchants change their language settings.",
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
@@ -20,27 +20,26 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Standard APIs',
+  related: [],
   subSections: [
     {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent: `
-- **Handle locale changes reactively:** Use \`subscribe\` to auto-update content when merchants change language settings.
-- **Implement proper formatting:** Use the IETF locale format for date, number, currency, and text direction formatting.
-- **Cache localized content:** Cache translations for performance, but invalidate caches when locale changes.
-- **Provide fallback handling:** Implement fallback behavior for unsupported locales, defaulting to a supported language like English.
-`,
+      sectionContent:
+        '- **Handle locale changes reactively:** Use the `subscribe` method to automatically update your extension content when merchants change their language settings.\n' +
+        "- **Implement proper formatting:** Use the IETF locale format to implement proper date formatting, number formatting, currency display, and text direction based on the merchant's language and region preferences.\n" +
+        '- **Cache localized content:** Consider caching translated content and locale-specific formatting to improve performance, but ensure you invalidate caches when locale changes occur through subscription updates.\n' +
+        '- **Provide fallback locale handling:** Implement fallback behavior for unsupported locales or when localization resources are unavailable, defaulting to a supported language like English.',
     },
   ],
-  related: [],
   examples: {
     description:
-      'Learn how to access locale information and respond to language changes.',
+      'Learn how to access locale information and respond to language changes for internationalization.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForLocaleApi(
-          'Monitor and respond to locale changes',
+          'Monitor locale changes',
           'subscribe',
         ),
         description:

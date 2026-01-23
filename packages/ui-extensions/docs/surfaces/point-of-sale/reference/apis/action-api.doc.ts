@@ -21,16 +21,16 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Standard APIs',
+  related: [],
   subSections: [
     {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent: `
-- **Use modals for complex workflows:** Reserve for operations requiring more space, multiple steps, or complex interactions.
-- **Provide clear entry points:** Use descriptive button labels and titles that indicate what the modal will contain.
-- **Handle dismissal gracefully:** Save progress when possible and provide feedback about incomplete operations.
-`,
+      sectionContent:
+        "- **Use modals for complex workflows:** Reserve modals for operations that genuinely require more screen space, multiple steps, or complex interactions that can't be handled by simple button actions.\n" +
+        '- **Provide clear entry points:** Use descriptive button labels and titles that clearly indicate what the modal will contain or what action it will perform, helping users understand what to expect.\n' +
+        '- **Handle modal dismissal gracefully:** Ensure your modal-based workflows handle user dismissal, saving progress when possible and providing clear feedback about incomplete operations.',
     },
     {
       type: 'Generic',
@@ -41,14 +41,13 @@ The \`presentModal()\` method must be called from a user interaction (such as a 
 `,
     },
   ],
-  related: [],
   examples: {
     description:
-      'Learn how to launch modal workflows from menu items, tiles, and blocks.',
+      'Learn how to present full-screen modals from tiles and menu items using the Action API.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForActionApi(
-          'Launch a modal from a menu item',
+          'Open a modal from a post-purchase action',
           'present-modal',
         ),
         description:
@@ -56,7 +55,7 @@ The \`presentModal()\` method must be called from a user interaction (such as a 
       },
       {
         codeblock: generateJsxCodeBlockForActionApi(
-          'Launch a modal from a smart grid tile',
+          'Open a modal from a smart grid tile',
           'present-modal-tile',
         ),
         description:

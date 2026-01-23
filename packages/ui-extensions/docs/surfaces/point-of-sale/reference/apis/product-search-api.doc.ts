@@ -22,17 +22,17 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Standard APIs',
+  related: [],
   subSections: [
     {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent: `
-- **Implement efficient pagination:** Use appropriate page sizes and cursor-based pagination for large product catalogs.
-- **Handle empty results:** Check for undefined results and empty sets. Provide meaningful feedback when no products are found.
-- **Optimize performance:** Cache frequently accessed data and debounce search to reduce API calls while users type.
-- **Provide relevant search options:** Use sorting based on use case—relevance for searches, alphabetical for browsing, recently added for new products.
-`,
+      sectionContent:
+        '- **Implement efficient pagination:** Use appropriate page sizes and cursor-based pagination to balance performance with user experience, especially for large product catalogs.\n' +
+        '- **Handle search results gracefully:** Check for undefined results and empty result sets.\n' +
+        '- **Optimize search performance:** Consider caching frequently accessed product data and implementing debounced search to reduce API calls while users are typing search queries.\n' +
+        '- **Provide relevant search options:** Use appropriate sorting options based on your use case - relevance for user searches, alphabetical for browsing, or recently added for highlighting new products.',
     },
     {
       type: 'Generic',
@@ -44,7 +44,6 @@ const data: ReferenceEntityTemplateSchema = {
 `,
     },
   ],
-  related: [],
   examples: {
     description:
       'Learn how to search for products, fetch product details, and retrieve variants.',

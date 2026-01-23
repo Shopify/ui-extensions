@@ -21,18 +21,18 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
+  related: [],
   subSections: [
     {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent: `
-- **Handle cart state reactively:** Use the signal-based interface to auto-update your UI when cart changes occur.
-- **Validate before operations:** Check cart editability and validate input data before performing operations.
-- **Use bulk operations:** Use bulk methods like \`bulkCartUpdate\` for better performance when performing multiple operations.
-- **Handle errors:** Implement error handling for operations that may fail due to inventory, validation, or business rules.
-- **Validate selling plans:** When working with subscriptions, validate selling plan compatibility and handle requirements properly.
-`,
+      sectionContent:
+        '- **Handle cart state reactively:** Use the signal-based interface to automatically update your extension UI when cart changes occur.\n' +
+        '- **Validate operations before execution:** Check cart editability and validate input data before performing cart operations to prevent errors.\n' +
+        '- **Use bulk operations for efficiency:** When performing multiple related operations, use bulk methods like `bulkCartUpdate`, `bulkSetLineItemDiscounts`, and `bulkAddLineItemProperties` for better performance and reduced API calls.\n' +
+        '- **Handle errors gracefully:** Implement proper error handling for all cart operations, as they may fail due to inventory constraints, validation errors, oversell protection, or business rule violations.\n' +
+        '- **Manage selling plans appropriately:** When working with subscription products, validate selling plan compatibility and handle selling plan requirements.',
     },
     {
       type: 'Generic',
@@ -43,10 +43,9 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
 `,
     },
   ],
-  related: [],
   examples: {
     description:
-      'Learn how to manage cart state, modify line items, apply discounts, and handle customer information.',
+      'Learn how to manage cart contents, apply discounts, handle customer information, and track cart changes in real time.',
     examples: [
       {
         codeblock: generateJsxCodeBlockForCartApi(
@@ -66,7 +65,7 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
-          'Add a product variant to the cart',
+          'Add a product to the cart',
           'add-line-item',
         ),
         description:
@@ -74,7 +73,7 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
-          'Add a subscription plan to a line item',
+          'Add a subscription selling plan to a line item',
           'add-line-item-selling-plan',
         ),
         description:
@@ -122,7 +121,7 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
-          'Apply a discount to a single line item',
+          'Apply a discount to a line item',
           'set-line-item-discount',
         ),
         description:
@@ -130,7 +129,15 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
-          'Apply discounts to multiple line items at once',
+          'Apply a percentage discount to the cart',
+          'apply-cart-discount',
+        ),
+        description:
+          "Add a cart-level discount that applies to the total cart value. This example demonstrates applying a 10% discount titled 'Summer discount' to the cart using the `applyCartDiscount()` method with the `Percentage` discount type.",
+      },
+      {
+        codeblock: generateJsxCodeBlockForCartApi(
+          'Apply different discounts to multiple line items',
           'bulk-set-line-item-discounts',
         ),
         description:
@@ -146,7 +153,7 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
-          'Attribute a line item to a staff member',
+          'Attribute a staff member to a line item',
           'set-attributed-staff-to-line-item',
         ),
         description:
@@ -154,7 +161,7 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
-          'Attribute the cart to a staff member',
+          'Attribute a staff member to the cart',
           'set-attributed-staff',
         ),
         description:
@@ -162,7 +169,7 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
-          'Check if the cart can be edited',
+          'Check if the cart is editable',
           'check-cart-editable',
         ),
         description:
@@ -178,7 +185,7 @@ Cart operations may fail due to business rules, inventory constraints, oversell 
       },
       {
         codeblock: generateJsxCodeBlockForCartApi(
-          'Delete a customer address by ID',
+          'Delete a customer address',
           'delete-address',
         ),
         description:

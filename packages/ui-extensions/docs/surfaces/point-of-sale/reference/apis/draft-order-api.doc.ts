@@ -33,18 +33,28 @@ const data: ReferenceEntityTemplateSchema = {
         description:
           'Access the unique identifier of the current draft order in a draft order detail context. This example shows how to use `shopify.draftOrder.id` to retrieve the draft order ID. This can be used for fetching additional order data, implementing custom workflows, or building draft order-specific features.',
       },
+      {
+        codeblock: generateJsxCodeBlockForDraftOrderApi(
+          "Retrieve a draft order's name, ID, and associated customer ID",
+          'draft-order-details',
+        ),
+        description:
+          'Access multiple properties from the draft order object including name, ID, and customer information. This example demonstrates using `shopify.draftOrder` to retrieve comprehensive draft order details. This enables building contextual interfaces and implementing order-specific workflows.',
+      },
     ],
   },
+  category: 'Target APIs',
+  subCategory: 'Contextual APIs',
+  related: [],
   subSections: [
     {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent: `
-- **Use draft order ID for lookups:** Fetch additional draft order information from external systems or Shopify APIs using the draft order ID.
-- **Enable draft order-specific features:** Use draft order context for conversion, customer assignment, or modification workflows.
-- **Validate draft order access:** Verify the draft order ID is valid before performing operations or API calls.
-`,
+      sectionContent:
+        '- **Use draft order ID for data lookups:** Use the draft order ID to fetch additional draft order information from external systems, order management platforms, or Shopify APIs when building comprehensive draft order experiences.\n' +
+        '- **Implement draft order-specific features:** Use the draft order context to enable specialized functionality like draft order conversion, customer assignment, or order modification workflows.\n' +
+        '- **Validate draft order access:** Verify that the draft order ID is valid before performing draft order-specific operations or external API calls.',
     },
     {
       type: 'Generic',
@@ -55,9 +65,6 @@ Draft order data reflects the current POS session and may not include real-time 
 `,
     },
   ],
-  category: 'Target APIs',
-  subCategory: 'Contextual APIs',
-  related: [],
 };
 
 export default data;
