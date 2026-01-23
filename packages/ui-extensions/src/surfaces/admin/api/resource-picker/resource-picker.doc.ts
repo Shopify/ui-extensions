@@ -3,17 +3,17 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Resource Picker API',
   overviewPreviewDescription: 'Opens a Resource Picker in your app',
-  description: `The Resource Picker API provides a search-based interface to help users find and select one or more products, collections, or product variants, and then returns the selected resources to your app. Both the app and the user must have the necessary permissions to access the resources selected.
+  description: `The Resource Picker API lets merchants search for and select products, collections, or product variants. Use this API when your extension needs merchants to choose Shopify resources to work with. The picker returns detailed resource information including IDs, titles, images, and metadata.
 
 > Tip:
-> If you are picking app resources such as product reviews, email templates, or subscription options, you should use the [Picker](picker) API instead.
+> If you need to pick app-specific resources like product reviews, email templates, or subscription options, use the [Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) instead.
 `,
   isVisualComponent: true,
   category: 'Target APIs',
   subCategory: 'Utility APIs',
   thumbnail: 'resource-picker.png',
   requires:
-    'an Admin [block](/docs/api/admin-extensions/unstable/extension-targets#block-locations), [action](/docs/api/admin-extensions/unstable/extension-targets#action-locations), or [print](/docs/api/admin-extensions/unstable/extension-targets#print-locations) extension.',
+    'an Admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
     image: 'resource-picker.png',
     codeblock: {
@@ -141,22 +141,36 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'Resource Picker Options',
-      description: `The \`Resource Picker\` accepts a variety of options to customize the picker's behavior.`,
+      title: 'ResourcePickerOptions',
+      description: `The \`ResourcePickerOptions\` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items.`,
       type: 'ResourcePickerOptions',
     },
     {
-      title: 'Resource Picker Return Payload',
-      description: `The \`Resource Picker\` returns a Promise with an array of the selected resources. The object type in the array varies based on the provided \`type\` option.\n\nIf the picker is cancelled, the Promise resolves to \`undefined\``,
+      title: 'ResourcePicker return payload',
+      description: `The resource picker returns an array of selected resources when the merchant confirms their selection, or \`undefined\` if they cancel. The resource structure in the array varies based on the \`type\` option: products include variants and images, collections include rule sets, and variants include pricing and inventory data.`,
       type: 'SelectPayload',
     },
   ],
-  related: [
+  related: [],
+  subSections: [
     {
-      name: 'Picker API',
-      subtitle: 'APIs',
-      url: 'picker',
-      type: 'pickaxe-3',
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Choose the right resource type:** Use `product` for selecting items with variants, `variant` for specific SKUs, and `collection` for product groups.\n' +
+        '- **Use appropriate action verbs:** Set `action` to `add` for adding new items or `select` for choosing existing items to match the workflow context.\n' +
+        '- **Apply filters to narrow results:** Use the `filter` option to restrict resources by publication status, variants visibility, or custom search criteria to help merchants find relevant items faster.\n' +
+        '- **Set sensible selection limits:** Use appropriate `multiple` values to match your use case—single selection for unique choices or multiple selection with limits for batch operations.\n' +
+        '- **Handle cancellation gracefully:** Check if the returned value is `undefined` (indicating cancellation) and handle this case appropriately in your workflow.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- The Resource Picker API only supports products, variants, and collections. For app-specific data like templates or custom options, use the [Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) instead.\n' +
+        '- When `type` is `product` and `multiple` is `false`, merchants can still select multiple variants from a single product.',
     },
   ],
 };
