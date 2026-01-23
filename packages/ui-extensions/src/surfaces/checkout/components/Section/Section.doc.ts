@@ -1,45 +1,14 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/Section';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  thumbnail: 'section-thumbnail.png',
-  isVisualComponent: true,
-  subSections: [
-    {
-      title: 'Useful for',
-      type: 'Generic',
-      anchorLink: 'useful-for',
-      sectionContent: `- Organizing your page in a logical structure based on nesting levels.
+  definitions: {properties: true},
+  usefulFor: `- Organizing your page in a logical structure based on nesting levels.
 - Creating consistency across pages.`,
-    },
-    {
-      title: 'Considerations',
-      type: 'Generic',
-      anchorLink: 'considerations',
-      sectionContent: `- When adding headings inside sections they automatically use a specific style, which helps keep the content organized and clear.`,
-    },
-  ],
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'SectionProps',
-    },
-  ],
-  defaultExample: {
-    image: 'section-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-section.example.html',
-          language: 'html',
-        },
-      ],
-    },
-  },
-};
+  considerations: `- When adding headings inside sections they automatically use a specific style, which helps keep the content organized and clear.`,
+});
 
 export default data;

@@ -2,56 +2,16 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/Map';
 import mapMarkerSharedContent from '../../../../docs/shared/components/MapMarker';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  thumbnail: 'map-thumbnail.png',
-  requires: '',
-  isVisualComponent: true,
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'MapElementProps',
-    },
-    {
-      title: 'Events',
-      description:
-        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
-      type: 'MapElementEvents',
-    },
-    {
-      title: mapMarkerSharedContent.name,
-      description: mapMarkerSharedContent.description,
-      type: 'MapMarkerElementProps',
-    },
-    {
-      title: 'Events',
-      description:
-        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
-      type: 'MapMarkerElementEvents',
-    },
-    {
-      title: 'Slots',
-      description:
-        'Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).',
-      type: 'MapMarkerElementSlots',
-    },
-  ],
-  defaultExample: {
-    image: 'map-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-map.example.html',
-          language: 'html',
-        },
-      ],
-    },
+  definitions: {properties: true, events: true},
+  subcomponent: {
+    ...mapMarkerSharedContent,
+    definitions: {properties: true, events: true, slots: true},
   },
-  examples: {
+  extraExamples: {
     description:
       'Examples of how to show a custom map marker graphic or a Popover when a map marker is clicked.',
     examples: [
@@ -81,6 +41,6 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
-};
+});
 
 export default data;

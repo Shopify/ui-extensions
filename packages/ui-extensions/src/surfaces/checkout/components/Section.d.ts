@@ -26,9 +26,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-section";
-export interface SectionProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id'> {
+export interface SectionElementProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id'> {
 }
-export interface SectionElement extends SectionProps, Omit<HTMLElement, 'id'> {
+export interface SectionElement extends SectionElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface SectionProps extends SectionElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -43,4 +45,4 @@ declare module 'preact' {
     }
 }
 
-export type { SectionElement, SectionProps };
+export type { SectionElement, SectionElementProps, SectionProps };

@@ -26,9 +26,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-heading";
-export interface HeadingProps extends Pick<HeadingProps$1, 'accessibilityRole' | 'id'> {
+export interface HeadingElementProps extends Pick<HeadingProps$1, 'accessibilityRole' | 'id'> {
 }
-export interface HeadingElement extends HeadingProps, Omit<HTMLElement, 'id'> {
+export interface HeadingElement extends HeadingElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface HeadingProps extends HeadingElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -43,4 +45,4 @@ declare module 'preact' {
     }
 }
 
-export type { HeadingElement, HeadingProps };
+export type { HeadingElement, HeadingElementProps, HeadingProps };

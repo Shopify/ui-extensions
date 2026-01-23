@@ -4,19 +4,19 @@ import type {LandingTemplateSchema} from '@shopify/generate-docs';
 // Anything in an array can have multiple objects
 
 const data: LandingTemplateSchema = {
-  title: 'Upgrading to 2025-10',
+  title: 'Upgrading to 2026-01',
   description: `
-This guide describes how to upgrade your checkout UI extension to API version \`2025-10\` and adopt [Polaris](/beta/next-gen-dev-platform/polaris) web components.
+As of 2025-10, checkout UI extensions use Polaris web components. If you are upgrading from a version earlier than 2025-10, this guide describes how to upgrade your checkout UI extension to the latest version and adopt [Polaris](/beta/next-gen-dev-platform/polaris) web components.
 `,
   // The id for the page that is used for routing. If this documentation is for a primary landing page, confirm the id matches the reference name.
-  id: 'upgrading-to-2025-10',
+  id: 'upgrading-to-2026-01',
   sections: [
     {
       type: 'Generic',
       anchorLink: 'update-api-version',
       title: 'Update API version',
       sectionContent:
-        'Set the API version to `2025-10` in `shopify.extension.toml` to use Polaris web components.',
+        'Set the API version to `2026-01` in `shopify.extension.toml` to use Polaris web components.',
       codeblock: {
         title: 'shopify.extension.toml',
         tabs: [
@@ -139,7 +139,7 @@ Get full IntelliSense and auto-complete support by adding a config file for your
       anchorLink: 'upgrading-shopify-cli',
       title: 'Upgrade the Shopifiy CLI',
       sectionContent: `
-The new CLI adds supoort for building 2025-10 extensions.
+The new CLI adds supoort for building 2026-01 extensions.
 
 The \`shopify app dev\` command runs your app and also generates a \`shopify.d.ts\` file in your extension directory, adding support for the new global \`shopify\` object.
       `,

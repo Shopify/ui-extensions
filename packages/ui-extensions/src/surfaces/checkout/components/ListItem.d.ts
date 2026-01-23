@@ -26,9 +26,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-list-item";
-export interface ListItemProps extends Pick<ListItemProps$1, 'id'> {
+export interface ListItemElementProps extends Pick<ListItemProps$1, 'id'> {
 }
-export interface ListItemElement extends ListItemProps, Omit<HTMLElement, 'id'> {
+export interface ListItemElement extends ListItemElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface ListItemProps extends ListItemElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -43,4 +45,4 @@ declare module 'preact' {
     }
 }
 
-export type { ListItemElement, ListItemProps };
+export type { ListItemElement, ListItemElementProps, ListItemProps };

@@ -1,44 +1,11 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/PhoneField';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  thumbnail: 'phone-field-thumbnail.png',
-  requires: '',
-  isVisualComponent: true,
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'PhoneFieldElementProps',
-    },
-    {
-      title: 'Events',
-      description:
-        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
-      type: 'PhoneFieldElementEvents',
-    },
-    {
-      title: 'Slots',
-      description:
-        'Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).',
-      type: 'PhoneFieldElementSlots',
-    },
-  ],
-  defaultExample: {
-    image: 'phone-field-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-phone-field.example.html',
-          language: 'html',
-        },
-      ],
-    },
-  },
-};
+  definitions: {properties: true, events: true, slots: true},
+});
 
 export default data;

@@ -26,12 +26,14 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-text";
-export interface TextProps extends Pick<TextProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'display' | 'id' | 'lang' | 'tone' | 'type'> {
+export interface TextElementProps extends Pick<TextProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'display' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<TextProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<TextProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
     type?: Extract<TextProps$1['type'], 'address' | 'redundant' | 'mark' | 'emphasis' | 'offset' | 'small' | 'strong' | 'generic'>;
 }
-export interface TextElement extends TextProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
+export interface TextElement extends TextElementProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
+}
+export interface TextProps extends TextElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -46,4 +48,4 @@ declare module 'preact' {
     }
 }
 
-export type { TextElement, TextProps };
+export type { TextElement, TextElementProps, TextProps };

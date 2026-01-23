@@ -1,56 +1,15 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import sharedContent from '../../../../docs/shared/components/TextField';
+import {createComponentDoc} from '../../../../docs/shared/component-definitions';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  requires: '',
-  thumbnail: 'text-field-thumbnail.png',
-  isVisualComponent: true,
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'TextFieldElementProps',
-    },
-    {
-      title: 'Events',
-      description:
-        'Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).',
-      type: 'TextFieldElementEvents',
-    },
-    {
-      title: 'Slots',
-      description:
-        'Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).',
-      type: 'TextFieldElementSlots',
-    },
-  ],
-  defaultExample: {
-    image: 'text-field-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/basic-text-field.example.html',
-          language: 'html',
-        },
-      ],
-    },
-  },
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'best-practices',
-      title: 'Best Practices',
-      sectionContent: `
+  definitions: {properties: true, events: true, slots: true},
+  bestPractices: `
 - Clearly label text fields so that it’s obvious what customers should enter.
 - Label text fields as optional when input isn’t required. For example, use the label <b>First name (optional)</b>.
-- Don’t have optional fields pass true to the required property.
-      `,
-    },
-  ],
-};
+- Don’t have optional fields pass true to the required property.`,
+});
 
 export default data;

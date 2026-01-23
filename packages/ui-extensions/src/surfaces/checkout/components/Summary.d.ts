@@ -11,9 +11,11 @@
 import type {SummaryProps$1} from './components-shared.d.ts';
 
 declare const tagName = "s-summary";
-export interface SummaryProps extends Pick<SummaryProps$1, 'id'> {
+export interface SummaryElementProps extends Pick<SummaryProps$1, 'id'> {
 }
-export interface SummaryElement extends SummaryProps, Omit<HTMLElement, 'id'> {
+export interface SummaryElement extends SummaryElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface SummaryProps extends SummaryElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -32,4 +34,4 @@ declare module 'preact' {
     }
 }
 
-export type { SummaryElement, SummaryProps };
+export type { SummaryElement, SummaryElementProps, SummaryProps };

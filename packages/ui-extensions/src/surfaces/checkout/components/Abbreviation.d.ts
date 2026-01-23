@@ -26,9 +26,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-abbreviation";
-export interface AbbreviationProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {
+export interface AbbreviationElementProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {
 }
-export interface AbbreviationElement extends AbbreviationProps, Omit<HTMLElement, 'id' | 'title'> {
+export interface AbbreviationElement extends AbbreviationElementProps, Omit<HTMLElement, 'id' | 'title'> {
+}
+export interface AbbreviationProps extends AbbreviationElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -43,4 +45,4 @@ declare module 'preact' {
     }
 }
 
-export type { AbbreviationElement, AbbreviationProps };
+export type { AbbreviationElement, AbbreviationElementProps, AbbreviationProps };

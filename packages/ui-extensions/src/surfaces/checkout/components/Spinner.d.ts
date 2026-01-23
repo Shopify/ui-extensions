@@ -20,10 +20,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-spinner";
-export interface SpinnerProps extends SpinnerProps$1 {
+export interface SpinnerElementProps extends SpinnerProps$1 {
     size?: Extract<SpinnerProps$1['size'], 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
 }
-export interface SpinnerElement extends SpinnerProps, Omit<HTMLElement, 'id'> {
+export interface SpinnerElement extends SpinnerElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface SpinnerProps extends SpinnerElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -38,4 +40,4 @@ declare module 'preact' {
     }
 }
 
-export type { SpinnerElement, SpinnerProps };
+export type { SpinnerElement, SpinnerElementProps, SpinnerProps };

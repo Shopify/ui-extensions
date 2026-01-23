@@ -26,9 +26,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-time";
-export interface TimeProps extends Pick<TimeProps$1, 'dateTime' | 'id'> {
+export interface TimeElementProps extends Pick<TimeProps$1, 'dateTime' | 'id'> {
 }
-export interface TimeElement extends TimeProps, Omit<HTMLElement, 'id'> {
+export interface TimeElement extends TimeElementProps, Omit<HTMLElement, 'id'> {
+}
+export interface TimeProps extends TimeElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -43,4 +45,4 @@ declare module 'preact' {
     }
 }
 
-export type { TimeElement, TimeProps };
+export type { TimeElement, TimeElementProps, TimeProps };
