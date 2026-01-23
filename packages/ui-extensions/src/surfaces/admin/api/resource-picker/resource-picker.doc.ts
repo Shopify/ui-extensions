@@ -3,10 +3,10 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Resource Picker API',
   overviewPreviewDescription: 'Opens a Resource Picker in your app',
-  description: `The Resource Picker API provides a search-based interface to help users find and select one or more products, collections, or product variants, and then returns the selected resources to your app. Both the app and the user must have the necessary permissions to access the resources selected.
+  description: `The Resource Picker API lets merchants search for and select products, collections, or product variants. Use this API when your extension needs merchants to choose Shopify resources to work with. The resource picker returns detailed resource information including IDs, titles, images, and metadata.
 
 > Tip:
-> If you are picking app resources such as product reviews, email templates, or subscription options, you should use the [Picker](picker) API instead.
+> If you need to pick app-specific resources like product reviews, email templates, or subscription options, use the [Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) instead.
 `,
   isVisualComponent: true,
   category: 'Target APIs',
@@ -139,22 +139,35 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'Resource Picker Options',
-      description: `The \`Resource Picker\` accepts a variety of options to customize the picker's behavior.`,
+      title: 'ResourcePickerOptions',
+      description: `The \`ResourcePickerOptions\` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items. Access the following properties on the \`ResourcePickerOptions\` object to configure the resource picker's appearance and functionality.`,
       type: 'ResourcePickerOptions',
     },
     {
-      title: 'Resource Picker Return Payload',
-      description: `The \`Resource Picker\` returns a Promise with an array of the selected resources. The object type in the array varies based on the provided \`type\` option.\n\nIf the picker is cancelled, the Promise resolves to \`undefined\``,
+      title: 'ResourcePicker return payload',
+      description: `The resource picker returns an array of selected resources when the merchant confirms their selection, or \`undefined\` if they cancel. The resource structure in the array varies based on the \`type\` option: products include variants and images, collections include rule sets, and variants include pricing and inventory data.`,
       type: 'SelectPayload',
     },
   ],
-  related: [
+  related: [],
+  subSections: [
     {
-      name: 'Picker API',
-      subtitle: 'APIs',
-      url: 'picker',
-      type: 'pickaxe-3',
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        "- **Filter query runs server-side:** The `query` property in filters isn't visible to merchants and runs as a GraphQL search query. Use it to programmatically restrict results (for example, `vendor:Acme`) without exposing the filter logic.\n" +
+        '- **Handle undefined return on cancellation:** When merchants close the picker without selecting, it returns `undefined` rather than an empty array. Check for `undefined` explicitly.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        "- Only products, variants, and collections are supported. Other resource types like customers, orders, or locations can't be selected. Use the [Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) for custom resources.\n" +
+        "- Product selection with `multiple: false` doesn't prevent multi-variant selection from the same product. Merchants can select multiple variants from a single product even when `multiple: false`.\n" +
+        "- Filter options are limited to predefined fields (`hidden`, `variants`, `draft`, `archived`, `query`). Custom filter criteria beyond these aren't supported.\n" +
+        '- Returned data structure varies by resource type. Products include a `variants` array, variants include `price` and `inventoryQuantity`, and collections include `ruleSet`.',
     },
   ],
 };
