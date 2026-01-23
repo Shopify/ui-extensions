@@ -462,6 +462,30 @@ function createReverseMapping(targetsJson) {
   return result;
 }
 
+// Find the generated_docs_data.json file to determine output location
+function findGeneratedDocsPath() {
+  const generatedDir = path.join(__dirname, 'generated');
+  
+  // Look for generated_docs_data.json recursively
+  function findFile(dir) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      const fullPath = path.join(dir, file);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        const result = findFile(fullPath);
+        if (result) return result;
+      } else if (file === 'generated_docs_data.json') {
+        return path.dirname(fullPath);
+      }
+    }
+    return null;
+  }
+  
+  const docsPath = findFile(generatedDir);
+  return docsPath || generatedDir; // Fallback to generated root if not found
+}
+
 // Generate the JSON
 const targetsJson = parseTargetsFile();
 
@@ -470,8 +494,8 @@ const extendedJson = createReverseMapping(targetsJson);
 
 // Write to output file
 const outputPath = path.join(
-  __dirname,
-  'generated/targets.json',
+  findGeneratedDocsPath(),
+  'targets.json',
 );
 const outputDir = path.dirname(outputPath);
 if (!fs.existsSync(outputDir)) {

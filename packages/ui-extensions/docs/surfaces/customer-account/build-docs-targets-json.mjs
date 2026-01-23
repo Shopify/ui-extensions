@@ -5,6 +5,30 @@ import {fileURLToPath} from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Find the generated_docs_data.json file to determine output location
+function findGeneratedDocsPath() {
+  const generatedDir = path.join(__dirname, 'generated');
+  
+  // Look for generated_docs_data.json recursively
+  function findFile(dir) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      const fullPath = path.join(dir, file);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        const result = findFile(fullPath);
+        if (result) return result;
+      } else if (file === 'generated_docs_data.json') {
+        return path.dirname(fullPath);
+      }
+    }
+    return null;
+  }
+  
+  const docsPath = findFile(generatedDir);
+  return docsPath || generatedDir; // Fallback to generated root if not found
+}
+
 // Configuration for customer-account surface
 const config = {
   basePath: path.join(
@@ -12,8 +36,8 @@ const config = {
     '../../../src/surfaces/customer-account',
   ),
   outputPath: path.join(
-    __dirname,
-    'generated/targets.json',
+    findGeneratedDocsPath(),
+    'targets.json',
   ),
   componentTypesPath: 'components',
   hasComponentTypes: true,
