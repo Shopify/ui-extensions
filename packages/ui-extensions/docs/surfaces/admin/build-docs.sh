@@ -45,12 +45,21 @@ if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
 
+# Generate targets.json
+echo "Generating targets.json..."
+node $DOCS_PATH/build-docs-targets-json.mjs $API_VERSION
+targets_exit=$?
+if [ $targets_exit -ne 0 ]; then
+  echo "Warning: Failed to generate targets.json"
+fi
+
+# Copy the generated docs to shopify-dev
 if [ -d ~/src/github.com/Shopify/shopify-dev ]; then
   echo "Copying docs to shopify-dev..."
-  
+
   mkdir -p ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION
-  cp ./$DOCS_PATH/generated/*.json ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION/
-  
+  cp ./$DOCS_PATH/generated/* ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION/
+
   # Replace 'unstable' with the exact API version in relative doc links
   sed -i '' \
     "s/\/docs\/api\/admin-extensions\/unstable/\/docs\/api\/admin-extensions\/$API_VERSION/gi" \
@@ -59,12 +68,17 @@ if [ -d ~/src/github.com/Shopify/shopify-dev ]; then
   if [ $sed_exit -ne 0 ]; then
     fail_and_exit $sed_exit
   fi
-  
+
   mkdir -p ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION
   rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION/
 
   echo "✓ Docs copied to ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION"
   echo "✓ Screenshots copied to ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION"
+  if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
+    echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/admin-extensions"
+  else
+    echo "If you include shopify-dev in your Spin constellation, we can generate a preview link for the docs!"
+  fi
 else
-  echo "shopify-dev directory not found at ~/src/github.com/Shopify/shopify-dev - skipping docs copy"
+  echo "Not copying docs to shopify-dev because it was not found at ~/src/github.com/Shopify/shopify-dev."
 fi
