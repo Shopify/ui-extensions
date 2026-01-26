@@ -7,10 +7,13 @@ type CustomerSegmentationFeature =
   /* Enables templates using filters only available when B2B is enabled. For example: companies IS NOT NULL */
   'b2bEnabled';
 
+/**
+ * The `CustomerSegmentTemplateApi` object provides methods for creating customer segment templates. Access these properties through the API to build templates with translated content.
+ */
 export interface CustomerSegmentTemplateApi<
   ExtensionTarget extends AnyExtensionTarget,
 > extends StandardApi<ExtensionTarget> {
-  /* Utilities for translating content according to the current `localization` of the admin. */
+  /** Utilities for translating template content into the merchant's language. */
   i18n: I18n;
   /** @private */
   __enabledFeatures: CustomerSegmentationFeature[];

@@ -1,5 +1,8 @@
 import type {RemoteComponentType} from '@remote-ui/core';
 
+/**
+ * Utility type that filters a component set to only include valid RemoteComponentType components. Use this to build type-safe component sets for extensions.
+ */
 export type ComponentsBuilder<ComponentTypes> = {
   [K in keyof ComponentTypes]: ComponentTypes[K] extends RemoteComponentType<
     any,
@@ -9,11 +12,14 @@ export type ComponentsBuilder<ComponentTypes> = {
     : never;
 };
 
+/**
+ * Utility type that extracts a union of all component types from a ComponentsBuilder. Use this to reference any component from a component set.
+ */
 export type AnyComponentBuilder<ComponentTypes> =
   ComponentsBuilder<ComponentTypes>[keyof ComponentsBuilder<ComponentTypes>];
 
 /**
- * Union of supported API versions
+ * The supported GraphQL Admin API versions. Use this to specify which API version your GraphQL queries should execute against. Each version includes specific features, bug fixes, and breaking changes. The `unstable` version provides access to the latest features but may change without notice.
  */
 export type ApiVersion =
   | '2023-04'
@@ -26,19 +32,19 @@ export type ApiVersion =
   | 'unstable';
 
 /**
- * The capabilities an extension has access to.
+ * Capabilities that extensions can request access to in their configuration. Each capability grants specific permissions for interacting with Shopify APIs, external services, or buyer data. Declare required capabilities in your extension's configuration file to enable these features.
  *
- * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
+ * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): Grants access to query the Storefront API for product, cart, and shop data.
  *
- * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
+ * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): Allows making external network calls to third-party APIs and services.
  *
- * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
+ * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): Enables blocking buyer checkout progress based on validation rules (requires merchant approval).
  *
- * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect buyer consent for SMS marketing.
+ * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): Allows collecting buyer consent for SMS marketing communications.
  *
- * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register buyer consent decisions that will be honored on Shopify-managed services.
+ * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): Allows registering buyer privacy consent decisions honored across Shopify services.
  *
- * * `iframe.sources`: the extension can embed an external URL in an iframe.
+ * * `iframe.sources`: Permits embedding external URLs in iframes within the extension.
  */
 
 export type Capability =
@@ -49,6 +55,9 @@ export type Capability =
   | 'collect_buyer_consent.customer_privacy'
   | 'iframe.sources';
 
+/**
+ * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency codes supported by Shopify. Use this type for currency-related operations and display.
+ */
 // To update these type values, see https://github.com/Shopify/checkout-web/pull/8984
 export type CurrencyCode =
   | 'AED'
@@ -231,6 +240,9 @@ export type CurrencyCode =
   | 'ZMW'
   | 'ZWL';
 
+/**
+ * The [IANA timezone identifiers](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) supported by Shopify. Use this type for timezone-related operations and localization.
+ */
 // To update these type values, see https://github.com/Shopify/checkout-web/pull/8984
 export type Timezone =
   | 'Africa/Abidjan'
@@ -611,6 +623,9 @@ export type Timezone =
   | 'PST8PDT'
   | 'WET';
 
+/**
+ * The [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country codes supported by Shopify. Use this type for country-related operations and address handling.
+ */
 export type CountryCode =
   | 'AC'
   | 'AD'
@@ -859,7 +874,7 @@ export type CountryCode =
   | 'ZZ';
 
 /**
- * Union of supported storefront API versions
+ * The supported Storefront API versions. Use this to specify which Storefront API version your queries should execute against.
  */
 export type StorefrontApiVersion =
   | '2022-04'
@@ -875,12 +890,16 @@ export type StorefrontApiVersion =
   | 'unstable';
 
 /**
- * GraphQL error returned by the Shopify Storefront APIs.
+ * The GraphQL error returned by the Storefront API. Use the error details to understand query failures, handle errors gracefully in your extension, and debug issues with API requests.
  */
 export interface GraphQLError {
+  /** A human-readable error message describing what went wrong with the GraphQL query. Use this to understand the cause of the error and display meaningful feedback to users. */
   message: string;
+  /** Additional error context and metadata for debugging and error tracking. */
   extensions: {
+    /** The unique request identifier for this API call. Use this when contacting support or tracking errors across systems. */
     requestId: string;
+    /** The error code identifying the specific type of error that occurred. Use this to programmatically handle different error scenarios. */
     code: string;
   };
 }
