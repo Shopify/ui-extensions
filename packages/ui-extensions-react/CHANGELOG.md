@@ -1,5 +1,14 @@
 # @shopify/ui-extensions-react
 
+## 2025.7.4
+
+### Patch Changes
+
+- [#3756](https://github.com/Shopify/ui-extensions/pull/3756) [`842f050e12579e3b72dd1d37665fe9cf2dcb02ae`](https://github.com/Shopify/ui-extensions/commit/842f050e12579e3b72dd1d37665fe9cf2dcb02ae) Thanks [@jolenehayes](https://github.com/jolenehayes)! - Add RegisterName to DeviceApi
+
+- Updated dependencies [[`842f050e12579e3b72dd1d37665fe9cf2dcb02ae`](https://github.com/Shopify/ui-extensions/commit/842f050e12579e3b72dd1d37665fe9cf2dcb02ae)]:
+  - @shopify/ui-extensions@2025.7.4
+
 ## 2026.0.0
 
 ### Patch Changes
