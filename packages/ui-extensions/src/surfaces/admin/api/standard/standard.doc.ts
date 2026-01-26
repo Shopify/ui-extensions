@@ -2,19 +2,39 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Standard API',
-  description: 'This API is available to all extension types.',
+  description:
+    'The Standard API provides core functionality available to all Admin UI extension types. Use this API to query the [GraphQL Admin API](/docs/api/admin-graphql), translate content, and handle navigation intents.',
   isVisualComponent: false,
   type: 'API',
   definitions: [
     {
       title: 'StandardApi',
-      description: '',
+      description:
+        'The `StandardApi` object provides core methods available to all extension targets. Access these properties through the API to query the [GraphQL Admin API](/docs/api/admin-graphql), translate content, and handle intents.',
       type: 'StandardApi',
     },
   ],
   category: 'Target APIs',
   subCategory: 'Core APIs',
   related: [],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Handle GraphQL errors:** Check both `errors` and `data` in query responses, as partial data may be returned even when errors occur.\n' +
+        '- **Translate user-facing content:** Use `api.i18n` methods to translate all text displayed to merchants, ensuring your extension works for a global audience.\n' +
+        '- **Specify API versions:** Include the `version` parameter in GraphQL queries to ensure predictable behavior and avoid breaking changes.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        '- GraphQL queries are limited by the GraphQL Admin API [rate limits](/docs/api/usage/limits) and [access scopes permissions](/docs/api/usage/access-scopes).',
+    },
+  ],
 };
 
 export default data;

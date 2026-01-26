@@ -32,7 +32,7 @@ export function reactExtension<ExtensionTarget extends RenderExtensionTarget>(
   // Playground extension, since all render extensions have the same general
   // shape (`RenderExtension`).
   return extension<'Playground'>(target as any, (root, api) => {
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       try {
         remoteRender(
           <ExtensionApiContext.Provider value={api}>
