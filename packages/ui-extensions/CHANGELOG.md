@@ -1,10 +1,10 @@
 # @shopify/ui-extensions
 
-## 2025.11.0
+## 2025.10.13
 
-### Minor Changes
+### Patch Changes
 
-- [#3737](https://github.com/Shopify/ui-extensions/pull/3737) [`fe48800`](https://github.com/Shopify/ui-extensions/commit/fe48800ea28dc3c2f253aa250119fe20c74022e7) Thanks [@jolenehayes](https://github.com/jolenehayes)! - Add registerName field to the Device Api
+- [#3758](https://github.com/Shopify/ui-extensions/pull/3758) [`ee24a3f`](https://github.com/Shopify/ui-extensions/commit/ee24a3fa673048624c7875b24727801363f6812d) Thanks [@jolenehayes](https://github.com/jolenehayes)! - Add RegisterName to DeviceApi
 
 ## 2025.10.12
 
