@@ -14,7 +14,8 @@ export type ApiVersion =
   | 'unstable'
   | '2025-07'
   | '2025-10'
-  | '2026-01';
+  | '2026-01'
+  | '2026-04';
 
 /**
  * The capabilities an extension has access to.
