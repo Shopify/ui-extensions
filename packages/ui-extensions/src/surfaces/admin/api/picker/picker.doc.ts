@@ -3,16 +3,16 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Picker API',
   overviewPreviewDescription: 'Opens a Picker in your app',
-  description: `The Picker API provides a search-based interface to help users find and select one or more resources that you provide, such as product reviews, email templates, or subscription options, and then returns the selected resource ids to your extension.
+  description: `The Picker API lets merchants search for and select items from your app-specific data, such as product reviews, email templates, or subscription options. Use this API to build custom selection dialogs with your own data structure, badges, and thumbnails. The picker returns the IDs of selected items.
 
 > Tip:
-> If you are picking products, product variants, or collections, you should use the [Resource Picker](resource-picker) API instead.`,
+> If you need to pick Shopify products, variants, or collections, use the [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) instead.`,
   isVisualComponent: true,
   category: 'Target APIs',
   subCategory: 'Utility APIs',
   thumbnail: 'picker.png',
   requires:
-    'an Admin [block](/docs/api/admin-extensions/unstable/extension-targets#block-locations), [action](/docs/api/admin-extensions/unstable/extension-targets#action-locations), or [print](/docs/api/admin-extensions/unstable/extension-targets#print-locations) extension.',
+    'an Admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
     image: 'picker.png',
     codeblock: {
@@ -28,7 +28,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'picker',
-      description: `The \`picker\` API is a function that accepts an options argument for configuration and returns a Promise that resolves to the picker instance once the picker modal is opened.`,
+      description: `The \`picker\` function opens a custom selection dialog with your app-specific data. Pass configuration options to define the picker's heading, items, headers, and selection behavior. Returns a Promise that resolves to a handle for accessing the user's selection.`,
       type: 'PickerApi',
     },
   ],
@@ -88,7 +88,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Providing disabled items in the picker. These will be disabled and cannot be selected by the user.',
+          "Providing disabled items in the picker. These will be disabled and can't be selected by the user.",
         codeblock: {
           title: 'Disabled items',
           tabs: [
@@ -101,12 +101,25 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
-  related: [
+  related: [],
+  subSections: [
     {
-      name: 'Resource Picker API',
-      subtitle: 'APIs',
-      url: 'resource-picker',
-      type: 'pickaxe-3',
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        '- **Use clear, descriptive headings:** Choose picker titles that clearly explain what merchants are selecting to reduce confusion.\n' +
+        '- **Provide meaningful item data:** Include relevant information in item headings and data columns to help merchants make informed selections.\n' +
+        '- **Use badges appropriately:** Add status badges to highlight item states, completion levels, or important attributes that affect selection.\n' +
+        '- **Include thumbnails for visual items:** Add preview images to help merchants visually identify items, especially for templates, designs, or products.\n' +
+        '- **Set sensible selection limits:** Use appropriate `multiple` values to match your use case—single selection for unique choices, limited selection for constrained scenarios, or unlimited for flexible selection.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        'The Picker API is designed for app-specific data. For selecting Shopify products, variants, or collections, use the [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) instead.',
     },
   ],
 };

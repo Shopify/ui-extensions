@@ -13,7 +13,7 @@ export type AnyComponentBuilder<ComponentTypes> =
   ComponentsBuilder<ComponentTypes>[keyof ComponentsBuilder<ComponentTypes>];
 
 /**
- * Union of supported API versions
+ * The supported GraphQL Admin API versions. Use this to specify which API version your GraphQL queries should execute against. Each version includes specific features, bug fixes, and breaking changes. The `unstable` version provides access to the latest features but may change without notice.
  */
 export type ApiVersion =
   | '2023-04'
@@ -859,6 +859,14 @@ export type CountryCode =
   | 'ZM'
   | 'ZW'
   | 'ZZ';
+
+export interface Country {
+  /**
+   * The ISO-3166-1 code for this country.
+   * @see https://www.iso.org/iso-3166-country-codes.html
+   */
+  isoCode: CountryCode;
+}
 
 // For instructions on how to update this list see: https://github.com/Shopify/checkout-web/pull/39534
 /**
