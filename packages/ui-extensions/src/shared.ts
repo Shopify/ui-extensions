@@ -1,5 +1,8 @@
 import type {RemoteComponentType} from '@remote-ui/core';
 
+/**
+ * The utility type that filters a component set to only include valid `RemoteComponentType` components. Use this to build type-safe component sets for extensions.
+ */
 export type ComponentsBuilder<ComponentTypes> = {
   [K in keyof ComponentTypes]: ComponentTypes[K] extends RemoteComponentType<
     any,
@@ -9,11 +12,14 @@ export type ComponentsBuilder<ComponentTypes> = {
     : never;
 };
 
+/**
+ * The utility type that extracts a union of all component types from a `ComponentsBuilder`. Use this to reference any component from a component set.
+ */
 export type AnyComponentBuilder<ComponentTypes> =
   ComponentsBuilder<ComponentTypes>[keyof ComponentsBuilder<ComponentTypes>];
 
 /**
- * Union of supported API versions
+ * The supported GraphQL Admin API versions. Use this to specify which API version your GraphQL queries should execute against. Each version includes specific features, bug fixes, and breaking changes. The `unstable` version provides access to the latest features but may change without notice.
  */
 export type ApiVersion =
   | '2023-04'
@@ -23,6 +29,9 @@ export type ApiVersion =
   | '2024-04'
   | 'unstable';
 
+/**
+ * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency codes supported by Shopify. Use this type for currency-related operations and display.
+ */
 // To update these type values, see https://github.com/Shopify/checkout-web/pull/8984
 export type CurrencyCode =
   | 'AED'
@@ -205,6 +214,9 @@ export type CurrencyCode =
   | 'ZMW'
   | 'ZWL';
 
+/**
+ * The [IANA timezone identifiers](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) supported by Shopify. Use this type for timezone-related operations and localization.
+ */
 // To update these type values, see https://github.com/Shopify/checkout-web/pull/8984
 export type Timezone =
   | 'Africa/Abidjan'
@@ -585,6 +597,9 @@ export type Timezone =
   | 'PST8PDT'
   | 'WET';
 
+/**
+ * The [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country codes supported by Shopify. Use this type for country-related operations and address handling.
+ */
 export type CountryCode =
   | 'AC'
   | 'AD'
@@ -833,7 +848,7 @@ export type CountryCode =
   | 'ZZ';
 
 /**
- * Union of supported storefront API versions
+ * The supported Storefront API versions. Use this to specify which Storefront API version your queries should execute against.
  */
 export type StorefrontApiVersion =
   | '2022-04'
@@ -847,12 +862,16 @@ export type StorefrontApiVersion =
   | 'unstable';
 
 /**
- * GraphQL error returned by the Shopify Storefront APIs.
+ * The GraphQL error returned by the Storefront API. Use the error details to understand query failures, handle errors gracefully in your extension, and debug issues with API requests.
  */
 export interface GraphQLError {
+  /** A human-readable error message describing what went wrong with the GraphQL query. Use this to understand the cause of the error and display meaningful feedback to users. */
   message: string;
+  /** Additional error context and metadata for debugging and error tracking. */
   extensions: {
+    /** The unique request identifier for this API call. Use this when contacting support or tracking errors across systems. */
     requestId: string;
+    /** The error code identifying the specific type of error that occurred. Use this to programmatically handle different error scenarios. */
     code: string;
   };
 }
