@@ -4,5 +4,7 @@
   "initialVersions": {
     "@shopify/ui-extensions": "2026.1.0"
   },
-  "changesets": []
+  "changesets": [
+    "thick-moles-hide"
+  ]
 }
