@@ -1,8 +1,8 @@
 /* eslint-disable no-undef, no-console */
 import fs from 'fs/promises';
-import {existsSync} from 'fs';
+import { existsSync } from 'fs';
 import path from 'path';
-import {fileURLToPath} from 'url';
+import { fileURLToPath } from 'url';
 
 import {
   generateFiles,
@@ -147,17 +147,16 @@ const jsxWrapper = (
   }
 
   return `<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {${composedStyles}} </style> <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script> <script src="https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js"></script> </head>
-  <body>${
-    bodyContent || ''
-  }<script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = \`const App = () => { ${decodeHTML(
-    jsxStringProcessed,
-  )
-    .replace(/\\/g, '\\\\')
-    .replace(/`/g, '\\`')
-    .replace(
-      /\$/g,
-      '\\$',
-    )} };\`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style="color:red;padding:1rem;">Error rendering example: ' + e.message + '</div>'; } })();
+  <body>${bodyContent || ''
+    }<script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = \`const App = () => { ${decodeHTML(
+      jsxStringProcessed,
+    )
+      .replace(/\\/g, '\\\\')
+      .replace(/`/g, '\\`')
+      .replace(
+        /\$/g,
+        '\\$',
+      )} };\`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style="color:red;padding:1rem;">Error rendering example: ' + e.message + '</div>'; } })();
     </script>
 </body>
 </html>
@@ -172,9 +171,8 @@ const createTemplate = ({
   return (htmlString, customStyles, jsx = false) => {
     if (jsx) {
       const bodyContent = wrapperElement
-        ? `<${wrapperElement}${
-            wrapperAttributes ? ` ${wrapperAttributes}` : ''
-          } id="wrapper-element"></${wrapperElement}>`
+        ? `<${wrapperElement}${wrapperAttributes ? ` ${wrapperAttributes}` : ''
+        } id="wrapper-element"></${wrapperElement}>`
         : '';
 
       const customStylesString = stylesToString(customStyles);
@@ -187,9 +185,8 @@ const createTemplate = ({
       );
     } else {
       const wrappedHtml = wrapperElement
-        ? `<${wrapperElement}${
-            wrapperAttributes ? ` ${wrapperAttributes}` : ''
-          } id="wrapper-element">${htmlString}</${wrapperElement}>`
+        ? `<${wrapperElement}${wrapperAttributes ? ` ${wrapperAttributes}` : ''
+        } id="wrapper-element">${htmlString}</${wrapperElement}>`
         : `<div id="wrapper-element">${htmlString}</div>`;
 
       const customStylesString = stylesToString(customStyles);
@@ -236,6 +233,13 @@ const templates = {
     layoutStyles: 'display: grid; place-items: center;',
     wrapperElement: 's-box',
     wrapperAttributes: 'padding="base", inlineSize="100%"',
+  }),
+  templatePattern: createTemplate({
+    layoutStyles:
+      'width: 100%; transform: scale(1.0); transform-origin: top left;',
+  }),
+  compositionPattern: createTemplate({
+    layoutStyles: 'display: grid; padding: 2rem;',
   }),
   example: createTemplate({
     layoutStyles: 'display: grid; place-items: center; gap: 0.5rem;',
@@ -311,7 +315,7 @@ const transformJson = async (filePath, isExtensions) => {
       const newTabs = [];
       entry.defaultExample.codeblock.tabs.forEach((tab) => {
         if (tab.language !== 'preview' && tab.language !== 'preview-jsx') {
-          newTabs.push({...tab, title: tab.language});
+          newTabs.push({ ...tab, title: tab.language });
           return;
         }
 
@@ -324,15 +328,15 @@ const transformJson = async (filePath, isExtensions) => {
         const previewHTML =
           tab.layout && tab.layout in templates
             ? templates[tab.layout](
-                tab.code,
-                tab.customStyles,
-                tab.language === 'preview-jsx',
-              )
+              tab.code,
+              tab.customStyles,
+              tab.language === 'preview-jsx',
+            )
             : templates.default(
-                tab.code,
-                tab.customStyles,
-                tab.language === 'preview-jsx',
-              );
+              tab.code,
+              tab.customStyles,
+              tab.language === 'preview-jsx',
+            );
 
         newTabs.push(
           {
@@ -342,7 +346,7 @@ const transformJson = async (filePath, isExtensions) => {
             editable:
               tab.language === 'preview-jsx' ? tab.editable || false : false,
           },
-          {code: previewHTML, language: 'preview'},
+          { code: previewHTML, language: 'preview' },
         );
       });
 
@@ -366,15 +370,15 @@ const transformJson = async (filePath, isExtensions) => {
               const previewHTML =
                 tab.layout && tab.layout in templates
                   ? templates[tab.layout](
-                      tab.code,
-                      tab.customStyles,
-                      tab.language === 'preview-jsx',
-                    )
+                    tab.code,
+                    tab.customStyles,
+                    tab.language === 'preview-jsx',
+                  )
                   : templates.example(
-                      tab.code,
-                      tab.customStyles,
-                      tab.language === 'preview-jsx',
-                    );
+                    tab.code,
+                    tab.customStyles,
+                    tab.language === 'preview-jsx',
+                  );
 
               newTabs.push(
                 {
@@ -491,7 +495,7 @@ const generateAppBridgeDocs = async () => {
 
 try {
   if (existsSync(generatedDocsPath)) {
-    await fs.rm(generatedDocsPath, {recursive: true});
+    await fs.rm(generatedDocsPath, { recursive: true });
   }
   await fs.copyFile(componentDefs, tempComponentDefs);
   await replaceFileContent({
@@ -513,7 +517,7 @@ try {
       shopifyDevPath,
       'react-app/public/images/templated-apis-screenshots/admin',
     ),
-    {recursive: true},
+    { recursive: true },
   );
 
   await fs.rm(tempComponentDefs);
