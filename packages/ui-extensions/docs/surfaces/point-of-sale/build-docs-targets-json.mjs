@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
+import {splitByTopLevelComma} from '../../shared/build-docs-type-resolver.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -118,6 +119,32 @@ function parseTargetsFile() {
   let match;
   while ((match = targetRegex.exec(interfaceBody)) !== null) {
     const targetName = match[1];
+    const matchStartPos = match.index;
+
+    // Check if this target has @private in its JSDoc comment
+    // Look backwards from the match to find a preceding JSDoc comment
+    const beforeMatch = interfaceBody.substring(0, matchStartPos);
+    const lastJsDocEnd = beforeMatch.lastIndexOf('*/');
+
+    if (lastJsDocEnd !== -1) {
+      // Check if there's no other target between the JSDoc and this target
+      const between = beforeMatch.substring(lastJsDocEnd + 2).trim();
+      // If the text between JSDoc end and target is empty (or just whitespace), the JSDoc belongs to this target
+      if (between === '') {
+        const jsDocStart = beforeMatch.lastIndexOf('/**');
+        if (jsDocStart !== -1) {
+          const jsDocContent = beforeMatch.substring(
+            jsDocStart,
+            lastJsDocEnd + 2,
+          );
+          // Skip this target if it's marked @private
+          if (jsDocContent.includes('@private')) {
+            continue;
+          }
+        }
+      }
+    }
+
     let renderExtensionContent = match[2].trim();
 
     // Remove comments before parsing (they can contain commas that break splitting)
@@ -146,54 +173,6 @@ function parseTargetsFile() {
   }
 
   return targets;
-}
-
-function splitByTopLevelComma(str) {
-  const parts = [];
-  let current = '';
-  let angleDepth = 0;
-  let braceDepth = 0;
-  let parenDepth = 0;
-
-  for (let i = 0; i < str.length; i++) {
-    const char = str[i];
-
-    if (char === '<') {
-      angleDepth++;
-      current += char;
-    } else if (char === '>') {
-      angleDepth--;
-      current += char;
-    } else if (char === '{') {
-      braceDepth++;
-      current += char;
-    } else if (char === '}') {
-      braceDepth--;
-      current += char;
-    } else if (char === '(') {
-      parenDepth++;
-      current += char;
-    } else if (char === ')') {
-      parenDepth--;
-      current += char;
-    } else if (
-      char === ',' &&
-      angleDepth === 0 &&
-      braceDepth === 0 &&
-      parenDepth === 0
-    ) {
-      parts.push(current);
-      current = '';
-    } else {
-      current += char;
-    }
-  }
-
-  if (current) {
-    parts.push(current);
-  }
-
-  return parts;
 }
 
 function getNestedApis(apiName) {
@@ -499,7 +478,7 @@ const outputPath = path.join(
 );
 const outputDir = path.dirname(outputPath);
 if (!fs.existsSync(outputDir)) {
-  fs.mkdirSync(outputDir, { recursive: true });
+  fs.mkdirSync(outputDir, {recursive: true});
 }
 fs.writeFileSync(outputPath, JSON.stringify(extendedJson, null, 2));
 

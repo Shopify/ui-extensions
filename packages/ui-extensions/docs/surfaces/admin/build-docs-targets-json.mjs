@@ -1,6 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
+import {
+  createTypeResolver,
+  splitByTopLevelComma,
+} from '../../shared/build-docs-type-resolver.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,10 +35,7 @@ function findGeneratedDocsPath() {
 
 // Configuration for admin surface
 const config = {
-  basePath: path.join(
-    __dirname,
-    '../../../src/surfaces/admin',
-  ),
+  basePath: path.join(__dirname, '../../../src/surfaces/admin'),
   outputPath: path.join(
     findGeneratedDocsPath(),
     'targets.json',
@@ -49,11 +50,19 @@ let allComponents = [];
 // Cache for parsed API files to avoid re-reading
 const apiDefinitionsCache = {};
 
-// Cache for checkout components
+// Create type resolver for checkout's shared.ts (to resolve AnyComponent, etc.)
+const checkoutSharedPath = path.join(
+  __dirname,
+  '../../../src/surfaces/checkout/shared.ts',
+);
+const checkoutTypeResolver = createTypeResolver(checkoutSharedPath);
+
+// Cache for checkout components (resolved via type resolver, excluding @private)
 let checkoutComponentsCache = null;
 
 /**
  * Parse components from checkout's shared.ts file
+ * Uses the shared type resolver to properly handle @private types
  */
 function parseCheckoutComponents() {
   // Return cached value if available
@@ -62,36 +71,19 @@ function parseCheckoutComponents() {
   }
 
   try {
-    // Always look in the checkout surface directory
-    const checkoutBasePath = path.join(
-      __dirname,
-      '../../../src/surfaces/checkout',
-    );
-    const sharedPath = path.join(checkoutBasePath, 'shared.ts');
+    // Use the type resolver to get AnyComponent (which excludes @private)
+    checkoutComponentsCache = checkoutTypeResolver.resolveType('AnyComponent');
 
-    if (!fs.existsSync(sharedPath)) {
-      checkoutComponentsCache = ['[CheckoutComponentsNotFound]'];
-      return checkoutComponentsCache;
-    }
-
-    const content = fs.readFileSync(sharedPath, 'utf-8');
-
-    // Look for SUPPORTED_COMPONENTS array
-    const supportedMatch = content.match(
-      /export const SUPPORTED_COMPONENTS\s*=\s*\[([\s\S]*?)\]\s*as const/,
-    );
-
-    if (supportedMatch) {
-      const arrayContent = supportedMatch[1];
-      // Extract all quoted strings
-      const components = arrayContent.match(/'([^']+)'/g);
-      if (components) {
-        checkoutComponentsCache = components.map((c) => c.replace(/'/g, ''));
-        return checkoutComponentsCache;
+    if (checkoutComponentsCache.length === 0) {
+      // Fallback: try to get just SUPPORTED_COMPONENTS
+      const typeDefs = checkoutTypeResolver.getTypeDefinitions();
+      if (Array.isArray(typeDefs['SUPPORTED_COMPONENTS'])) {
+        checkoutComponentsCache = [...typeDefs['SUPPORTED_COMPONENTS']];
+      } else {
+        checkoutComponentsCache = ['[CheckoutComponentsNotFound]'];
       }
     }
 
-    checkoutComponentsCache = ['[CheckoutComponentsParseError]'];
     return checkoutComponentsCache;
   } catch (error) {
     checkoutComponentsCache = ['[CheckoutComponentsError]'];
@@ -108,7 +100,7 @@ function parseCheckoutComponents() {
 function parseStringUnionType(filePath, componentTypesMap = {}) {
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
-    
+
     // Extract all quoted component names from the file (but not from import statements)
     // Remove import lines first
     const contentWithoutImports = content.replace(/^import.*?;$/gm, '');
@@ -116,20 +108,20 @@ function parseStringUnionType(filePath, componentTypesMap = {}) {
     const quotedComponents = componentNames
       ? componentNames.map((name) => name.replace(/'/g, ''))
       : [];
-    
+
     // Check if the type references other types (like StandardComponents or AnyComponent)
     // Look for patterns like: StandardComponents | 'OtherComponent'
     const typeRefPattern = /export type \w+ =\s*([\s\S]*?);/;
     const typeDefMatch = content.match(typeRefPattern);
-    
+
     if (typeDefMatch) {
       const typeDef = typeDefMatch[1];
       // Find references to other types (capitalized words that aren't in quotes)
       const typeRefs = typeDef.match(/\b([A-Z]\w+(?:Components?)?)\b/g);
-      
+
       if (typeRefs) {
         const allComponents = [...quotedComponents];
-        
+
         for (const typeRef of typeRefs) {
           // Check if this is AnyComponent (imported from checkout)
           if (typeRef === 'AnyComponent') {
@@ -142,12 +134,12 @@ function parseStringUnionType(filePath, componentTypesMap = {}) {
             allComponents.push(...componentTypesMap[typeRef]);
           }
         }
-        
+
         // Remove duplicates
         return [...new Set(allComponents)];
       }
     }
-    
+
     return quotedComponents.length > 0 ? quotedComponents : null;
   } catch (error) {
     console.error(`Error reading component file ${filePath}:`, error.message);
@@ -263,13 +255,43 @@ function parseTargetsFile() {
   return targets;
 }
 
-function parseTargetsFromInterfaceBody(interfaceBody, targets, componentTypesMap) {
+function parseTargetsFromInterfaceBody(
+  interfaceBody,
+  targets,
+  componentTypesMap,
+) {
   // Parse each target definition (handle multi-line)
   const targetRegex = /'([^']+)':\s*RenderExtension<([\s\S]*?)>;/g;
 
   let match;
   while ((match = targetRegex.exec(interfaceBody)) !== null) {
     const targetName = match[1];
+    const matchStartPos = match.index;
+
+    // Check if this target has @private in its JSDoc comment
+    // Look backwards from the match to find a preceding JSDoc comment
+    const beforeMatch = interfaceBody.substring(0, matchStartPos);
+    const lastJsDocEnd = beforeMatch.lastIndexOf('*/');
+
+    if (lastJsDocEnd !== -1) {
+      // Check if there's no other target between the JSDoc and this target
+      const between = beforeMatch.substring(lastJsDocEnd + 2).trim();
+      // If the text between JSDoc end and target is empty (or just whitespace), the JSDoc belongs to this target
+      if (between === '') {
+        const jsDocStart = beforeMatch.lastIndexOf('/**');
+        if (jsDocStart !== -1) {
+          const jsDocContent = beforeMatch.substring(
+            jsDocStart,
+            lastJsDocEnd + 2,
+          );
+          // Skip this target if it's marked @private
+          if (jsDocContent.includes('@private')) {
+            continue;
+          }
+        }
+      }
+    }
+
     let renderExtensionContent = match[2].trim();
 
     // Remove comments before parsing
@@ -296,54 +318,6 @@ function parseTargetsFromInterfaceBody(interfaceBody, targets, componentTypesMap
       };
     }
   }
-}
-
-function splitByTopLevelComma(str) {
-  const parts = [];
-  let current = '';
-  let angleDepth = 0;
-  let braceDepth = 0;
-  let parenDepth = 0;
-
-  for (let i = 0; i < str.length; i++) {
-    const char = str[i];
-
-    if (char === '<') {
-      angleDepth++;
-      current += char;
-    } else if (char === '>') {
-      angleDepth--;
-      current += char;
-    } else if (char === '{') {
-      braceDepth++;
-      current += char;
-    } else if (char === '}') {
-      braceDepth--;
-      current += char;
-    } else if (char === '(') {
-      parenDepth++;
-      current += char;
-    } else if (char === ')') {
-      parenDepth--;
-      current += char;
-    } else if (
-      char === ',' &&
-      angleDepth === 0 &&
-      braceDepth === 0 &&
-      parenDepth === 0
-    ) {
-      parts.push(current);
-      current = '';
-    } else {
-      current += char;
-    }
-  }
-
-  if (current) {
-    parts.push(current);
-  }
-
-  return parts;
 }
 
 function getNestedApis(apiName) {
@@ -503,7 +477,9 @@ function parseComponents(componentString, componentTypesMap) {
   componentString = componentString.replace(/\s+/g, ' ').trim();
 
   // Handle AnyCheckoutComponentExcept<'Component1' | 'Component2'>
-  const checkoutExceptMatch = componentString.match(/AnyCheckoutComponentExcept<([^>]+)>/);
+  const checkoutExceptMatch = componentString.match(
+    /AnyCheckoutComponentExcept<([^>]+)>/,
+  );
   if (checkoutExceptMatch) {
     const excludedUnion = checkoutExceptMatch[1];
     // Get all checkout components
@@ -574,7 +550,11 @@ function resolveComponentType(typeName, componentTypesMap) {
   }
 
   // Handle special checkout types
-  if (typeName === 'AnyCheckoutComponent' || typeName === 'AnyComponent' || typeName === 'AnyThankYouComponent') {
+  if (
+    typeName === 'AnyCheckoutComponent' ||
+    typeName === 'AnyComponent' ||
+    typeName === 'AnyThankYouComponent'
+  ) {
     return parseCheckoutComponents();
   }
 
@@ -644,21 +624,23 @@ try {
   // Write to output file
   const outputDir = path.dirname(config.outputPath);
   if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+    fs.mkdirSync(outputDir, {recursive: true});
   }
   fs.writeFileSync(config.outputPath, JSON.stringify(combinedJson, null, 2));
 
   console.log('✅ Generated combined targets JSON at:', config.outputPath);
-  
+
   // Count the different types of entries
   const targetEntries = Object.keys(targetsJson).length;
   const apiEntries = Object.keys(combinedJson).filter(
-    (key) => combinedJson[key].targets && !targetsJson[key] && key.endsWith('Api')
+    (key) =>
+      combinedJson[key].targets && !targetsJson[key] && key.endsWith('Api'),
   ).length;
   const componentEntries = Object.keys(combinedJson).filter(
-    (key) => combinedJson[key].targets && !targetsJson[key] && !key.endsWith('Api')
+    (key) =>
+      combinedJson[key].targets && !targetsJson[key] && !key.endsWith('Api'),
   ).length;
-  
+
   console.log('\n📋 Summary:');
   console.log(`  Extension targets: ${targetEntries}`);
   console.log(`  API reverse mappings: ${apiEntries}`);
