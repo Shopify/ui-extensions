@@ -359,7 +359,7 @@ interface Filters {
 }
 
 /**
- * Configuration options for the resource picker dialog. Define what type of resources merchants can select, how many they can choose, and which resources should be preselected or filtered.
+ * The `ResourcePickerOptions` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items. Access these properties through the API to configure the resource picker's appearance and functionality.
  */
 export interface ResourcePickerOptions {
   /**
