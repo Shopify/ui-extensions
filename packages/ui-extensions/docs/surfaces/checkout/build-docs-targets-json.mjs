@@ -88,9 +88,10 @@ function parseTargetsFile() {
 
   const targets = {};
 
-  // Look for all interfaces that might contain RenderExtension targets
+  // Look for all interfaces that might contain RenderExtension or RunnableExtension targets
   const interfaceNames = [
     'RenderExtensionTargets',
+    'RunnableExtensionTargets',
     'OrderStatusExtensionTargets',
     'ExtensionTargets',
   ];
@@ -102,8 +103,15 @@ function parseTargetsFile() {
     );
     const match = content.match(regex);
 
-    if (match && match[1].includes('RenderExtension<')) {
-      parseTargetsFromInterfaceBody(match[1], targets, componentTypesMap);
+    if (match) {
+      // Parse RenderExtension targets (have components)
+      if (match[1].includes('RenderExtension<')) {
+        parseTargetsFromInterfaceBody(match[1], targets, componentTypesMap);
+      }
+      // Parse RunnableExtension targets (no components, like address-autocomplete)
+      if (match[1].includes('RunnableExtension<')) {
+        parseRunnableTargetsFromInterfaceBody(match[1], targets);
+      }
     }
   }
 
@@ -121,6 +129,25 @@ function parseTargetsFromInterfaceBody(interfaceBody, targets, componentTypesMap
   let match;
   while ((match = targetRegex.exec(interfaceBody)) !== null) {
     const targetName = match[1];
+    const matchStartPos = match.index;
+
+    // Check if this target has @private in its JSDoc comment
+    const beforeMatch = interfaceBody.substring(0, matchStartPos);
+    const lastJsDocEnd = beforeMatch.lastIndexOf('*/');
+
+    if (lastJsDocEnd !== -1) {
+      const between = beforeMatch.substring(lastJsDocEnd + 2).trim();
+      if (between === '') {
+        const jsDocStart = beforeMatch.lastIndexOf('/**');
+        if (jsDocStart !== -1) {
+          const jsDocContent = beforeMatch.substring(jsDocStart, lastJsDocEnd + 2);
+          if (jsDocContent.includes('@private')) {
+            continue; // Skip this target
+          }
+        }
+      }
+    }
+
     let renderExtensionContent = match[2].trim();
 
     // Remove comments before parsing
@@ -143,6 +170,58 @@ function parseTargetsFromInterfaceBody(interfaceBody, targets, componentTypesMap
 
       targets[targetName] = {
         components: components.sort(),
+        apis: apis.sort(),
+      };
+    }
+  }
+}
+
+/**
+ * Parse RunnableExtension targets from an interface body
+ * These targets don't have components (they return data, not UI)
+ */
+function parseRunnableTargetsFromInterfaceBody(interfaceBody, targets) {
+  const targetRegex = /'([^']+)':\s*RunnableExtension<([\s\S]*?)>;/g;
+
+  let match;
+  while ((match = targetRegex.exec(interfaceBody)) !== null) {
+    const targetName = match[1];
+    const matchStartPos = match.index;
+
+    // Check if this target has @private in its JSDoc comment
+    const beforeMatch = interfaceBody.substring(0, matchStartPos);
+    const lastJsDocEnd = beforeMatch.lastIndexOf('*/');
+
+    if (lastJsDocEnd !== -1) {
+      const between = beforeMatch.substring(lastJsDocEnd + 2).trim();
+      if (between === '') {
+        const jsDocStart = beforeMatch.lastIndexOf('/**');
+        if (jsDocStart !== -1) {
+          const jsDocContent = beforeMatch.substring(jsDocStart, lastJsDocEnd + 2);
+          if (jsDocContent.includes('@private')) {
+            continue; // Skip this target
+          }
+        }
+      }
+    }
+
+    let runnableExtensionContent = match[2].trim();
+
+    // Remove comments before parsing
+    runnableExtensionContent = runnableExtensionContent
+      .replace(/\/\/[^\n]*/g, '')
+      .replace(/\/\*[\s\S]*?\*\//g, '');
+
+    // Split by comma to separate API and Output type
+    const parts = splitByTopLevelComma(runnableExtensionContent);
+
+    if (parts.length >= 1) {
+      const apiString = parts[0].trim();
+      const apis = parseApis(apiString);
+
+      // RunnableExtension targets don't have components - they return data
+      targets[targetName] = {
+        components: [],
         apis: apis.sort(),
       };
     }

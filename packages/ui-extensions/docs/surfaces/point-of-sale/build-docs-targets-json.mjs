@@ -87,6 +87,24 @@ function parseStringUnionType(filePath) {
 }
 
 /**
+ * Parse a union of string literals (e.g., "'Button' | 'Text'")
+ * Returns an array of the string values
+ */
+function parseUnionOfStrings(unionString) {
+  const components = [];
+  // Split by | and extract quoted strings
+  const parts = unionString.split('|');
+  for (const part of parts) {
+    const trimmed = part.trim();
+    const match = trimmed.match(/^'([^']+)'$/);
+    if (match) {
+      components.push(match[1]);
+    }
+  }
+  return components;
+}
+
+/**
  * Parse component types from the separate files in ./components/targets/
  */
 function parseComponentTypesFromFiles() {
@@ -94,6 +112,50 @@ function parseComponentTypesFromFiles() {
   // Component types are defined inline in targets.ts
   // We'll parse them directly from the targets.ts content
   return {};
+}
+
+/**
+ * Parse inline component type definitions from targets.ts
+ * Handles types like: type ActionComponents = AnyComponentBuilder<Pick<Components, 'Button'>>
+ */
+function parseInlineComponentTypes(content, componentTypesMap) {
+  // Match type definitions like: type ActionComponents = AnyComponentBuilder<...>
+  const typeDefRegex = /type\s+(\w+)\s*=\s*(AnyComponentBuilder<[\s\S]*?>)\s*;/g;
+  
+  let match;
+  while ((match = typeDefRegex.exec(content)) !== null) {
+    const typeName = match[1];
+    const typeDefinition = match[2].replace(/\s+/g, ' ').trim();
+    
+    // Handle AnyComponentBuilder<Pick<Components, 'Comp1' | 'Comp2'>>
+    const pickMatch = typeDefinition.match(/AnyComponentBuilder<\s*Pick<\s*Components\s*,\s*([\s\S]+?)>\s*>/);
+    if (pickMatch) {
+      const pickedUnion = pickMatch[1].trim();
+      componentTypesMap[typeName] = parseUnionOfStrings(pickedUnion);
+      console.log(`Parsed ${typeName}: ${componentTypesMap[typeName].length} components (picked: ${componentTypesMap[typeName].join(', ')})`);
+      continue;
+    }
+    
+    // Handle AnyComponentBuilder<Omit<Components, 'Comp1' | 'Comp2'>>
+    const omitMatch = typeDefinition.match(/AnyComponentBuilder<\s*Omit<\s*Components\s*,\s*([\s\S]+?)>\s*>/);
+    if (omitMatch) {
+      const omittedUnion = omitMatch[1].trim();
+      const omittedComponents = parseUnionOfStrings(omittedUnion);
+      
+      if (allComponents.length > 0) {
+        componentTypesMap[typeName] = allComponents.filter((c) => !omittedComponents.includes(c));
+        console.log(`Parsed ${typeName}: ${componentTypesMap[typeName].length} components (omitting ${omittedComponents.join(', ')})`);
+      }
+      continue;
+    }
+    
+    // Handle plain AnyComponentBuilder<Components>
+    const plainMatch = typeDefinition.match(/AnyComponentBuilder<\s*Components\s*>/);
+    if (plainMatch && allComponents.length > 0) {
+      componentTypesMap[typeName] = [...allComponents];
+      console.log(`Parsed ${typeName}: ${componentTypesMap[typeName].length} components (all)`);
+    }
+  }
 }
 
 function parseTargetsFile() {
@@ -115,6 +177,9 @@ function parseTargetsFile() {
   // Parse component type definitions from the separate files
   const componentTypesMap = parseComponentTypesFromFiles();
 
+  // Also parse inline component types from targets.ts (like ActionComponents, ReceiptComponents, etc.)
+  parseInlineComponentTypes(content, componentTypesMap);
+
   // Extract the ExtensionTargets interface (not RenderExtensionTargets for POS)
   const interfaceMatch = content.match(
     /export interface ExtensionTargets \{([\s\S]+?)\n\}/,
@@ -132,6 +197,25 @@ function parseTargetsFile() {
   let match;
   while ((match = targetRegex.exec(interfaceBody)) !== null) {
     const targetName = match[1];
+    const matchStartPos = match.index;
+
+    // Check if this target has @private in its JSDoc comment
+    const beforeMatch = interfaceBody.substring(0, matchStartPos);
+    const lastJsDocEnd = beforeMatch.lastIndexOf('*/');
+
+    if (lastJsDocEnd !== -1) {
+      const between = beforeMatch.substring(lastJsDocEnd + 2).trim();
+      if (between === '') {
+        const jsDocStart = beforeMatch.lastIndexOf('/**');
+        if (jsDocStart !== -1) {
+          const jsDocContent = beforeMatch.substring(jsDocStart, lastJsDocEnd + 2);
+          if (jsDocContent.includes('@private')) {
+            continue; // Skip this target
+          }
+        }
+      }
+    }
+
     let renderExtensionContent = match[2].trim();
 
     // Remove comments before parsing (they can contain commas that break splitting)
