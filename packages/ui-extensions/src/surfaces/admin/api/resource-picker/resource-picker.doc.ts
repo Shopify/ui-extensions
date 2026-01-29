@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Resource Picker API',
   overviewPreviewDescription: 'Opens a Resource Picker in your app',
-  description: `The Resource Picker API lets merchants search for and select products, collections, or product variants. Use this API when your extension needs merchants to choose Shopify resources to work with. The picker returns detailed resource information including IDs, titles, images, and metadata.`,
+  description: `The Resource Picker API lets merchants search for and select products, collections, or product variants. Use this API when your extension needs merchants to choose Shopify resources to work with. The resource picker returns detailed resource information including IDs, titles, images, and metadata.`,
   isVisualComponent: true,
   category: 'Target APIs',
   subCategory: 'Utility APIs',
@@ -138,7 +138,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'ResourcePickerOptions',
-      description: `The \`ResourcePickerOptions\` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items.`,
+      description: `The \`ResourcePickerOptions\` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items. Access these properties through the API to configure the resource picker's appearance and functionality.`,
       type: 'ResourcePickerOptions',
     },
     {
