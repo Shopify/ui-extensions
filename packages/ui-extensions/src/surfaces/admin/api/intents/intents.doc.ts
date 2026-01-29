@@ -4,7 +4,9 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Intents API',
   overviewPreviewDescription:
     'Orchestrate workflows and operations across Shopify resources',
-  description: `The Intents API lets you open Shopify's built-in creation and editing workflows for resources like products, collections, and discounts. Use this API to launch admin workflows from your extension without building custom forms or interfaces.`,
+  description: `The Intents API launches Shopify's native admin interfaces for creating and editing resources. When your extension calls an intent, merchants complete their changes using the standard admin UI, and your extension receives the result. This means you don't need to build custom forms.
+
+Use this API to build workflows like adding products to collections from bulk actions, creating multiple related resources in sequence (like a product, collection, and discount for a promotion), opening specific resources for editing from custom buttons, or launching discount creation with pre-selected types.`,
   isVisualComponent: true,
   category: 'Target APIs',
   subCategory: 'Utility APIs',
@@ -25,46 +27,23 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'invoke',
-      description: `A function that launches a Shopify admin workflow for creating or editing resources. Returns a Promise that resolves to an activity handle you can await to get the workflow result.
+      title: 'invoke method',
+      description: `The \`invoke\` method launches a Shopify admin workflow for creating or editing resources. The method returns a promise that resolves to an activity handle you can await to get the workflow result.
 
-### Intent format
+The method accepts either:
+- **String query:** \`\${action}:\${type},\${value}\` with optional second parameter (\`IntentQueryOptions\`)
+- **Object:** Properties for \`action\`, \`type\`, \`value\`, and \`data\`
 
-Intents can be invoked using either a string query format or an object format.
+### IntentQueryOptions parameters
 
-**String format:** \`\${action}:\${type},\${value}\`
+Optional parameters for the \`invoke\` method when using the string query format:
 
-- \`action\` - The operation: \`create\` or \`edit\`
-- \`type\` - The resource type (for example, \`shopify/Product\`)
-- \`value\` - The resource ID for edit operations (for example, \`gid://shopify/Product/123\`)
-
-Examples:
-- Create: \`'create:shopify/Product'\`
-- Edit: \`'edit:shopify/Product,gid://shopify/Product/123'\`
-
-**Object format:**
-
-Use the object format when you need to pass additional data or prefer explicit property names:
-
-\`\`\`javascript
-// Create with required data
-await intents.invoke({
-  action: 'create',
-  type: 'shopify/Discount',
-  data: { type: 'amount-off-product' }
-});
-
-// Edit with resource ID
-await intents.invoke({
-  action: 'edit',
-  type: 'shopify/Product',
-  value: 'gid://shopify/Product/123'
-});
-\`\`\`
+- **\`value\`** (\`string\`): The resource identifier for edit operations (for example, \`'gid://shopify/Product/123'\`). Required when editing existing resources. Omit for create operations.
+- **\`data\`** (\`{ [key: string]: unknown }\`): Additional context required by specific resource types. For example, discounts require a type, variants require a product ID, and metaobjects require a definition type.
 
 ### Supported resources
 
-The following resource types can be created or edited using intents. Each resource type has specific requirements for the \`value\` and \`data\` parameters.
+The following tables show which resource types you can create or edit, and what values you need to pass for \`value\` and \`data\` for each operation.
 
 #### Article
 
@@ -188,16 +167,11 @@ The following resource types can be created or edited using intents. Each resour
       type: 'IntentInvokeApi',
     },
     {
-      title: 'IntentQueryOptions',
-      description: `Optional parameters when using the string query format. Pass \`value\` for resource IDs when editing, or \`data\` for resource-specific requirements (for example, discount type for discounts, product ID for variants).`,
-      type: 'IntentQueryOptions',
-    },
-    {
       title: 'IntentResponse',
       description: `The result returned when an intent workflow completes. Check the \`code\` property to determine the outcome:
-- \`'ok'\` - The merchant completed the workflow successfully
-- \`'error'\` - The workflow failed due to validation or other errors
-- \`'closed'\` - The merchant cancelled without completing`,
+- \`'ok'\` - The merchant completed the workflow successfully.
+- \`'error'\` - The workflow failed due to validation or other errors.
+- \`'closed'\` - The merchant cancelled without completing.`,
       type: 'IntentResponse',
     },
   ],
