@@ -107,6 +107,6 @@ interface Item {
 }
 
 /**
- * Opens a custom picker dialog that lets merchants search for and select items from your app-specific data. Use this when you need merchants to choose from custom options like templates, reviews, or subscription plans. Returns a handle for accessing the selection result.
+ * The `picker` function opens a custom selection dialog with your app-specific data. It accepts configuration options to define the picker's heading, items, headers, and selection behavior. It returns a Promise that resolves to a `Picker` object with a `selected` property for accessing the merchant's selection.
  */
 export type PickerApi = (options: PickerOptions) => Promise<Picker>;
