@@ -105,7 +105,7 @@ export interface IntentQuery extends IntentQueryOptions {
 }
 
 /**
- * The [invoke API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/intents-api#invoke) launches a Shopify admin workflow for creating or editing resources, such as products, customers, or discounts. It opens a native admin interface, waits for the merchant to complete the workflow, and returns the result including any created or updated resource data.
+ * The [`invoke` method](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/intents-api#invoke-method) in the Intents API launches a Shopify admin workflow for creating or editing resources, such as products, customers, or discounts. It opens a native admin interface, waits for the merchant to complete the workflow, and returns the result including any created or updated resource data.
  *
  * @param intent - Either a string query (for example, `'create:shopify/Product'`) or structured object describing the intent
  * @param options - Optional parameters when using string query format, such as resource IDs for editing or additional context data
