@@ -106,6 +106,219 @@ function parseCheckoutComponents() {
   }
 }
 
+// Cache for customer-account components
+let customerAccountComponentsCache = null;
+
+/**
+ * Check if an export line has @internal marker before it
+ */
+function hasInternalMarker(content, matchIndex) {
+  // Find the start of the current line
+  const lineStart = content.lastIndexOf('\n', matchIndex - 1) + 1;
+  
+  // If this is the first line (no newline before it), there's no previous line
+  if (lineStart === 0 && matchIndex < content.indexOf('\n')) {
+    return false;
+  }
+  
+  // Find the previous line
+  const prevLineEnd = lineStart - 1;
+  if (prevLineEnd < 0) {
+    return false; // No previous line
+  }
+  
+  const prevLineStart = content.lastIndexOf('\n', prevLineEnd - 1) + 1;
+  const prevLine = content.slice(prevLineStart, prevLineEnd);
+  
+  return prevLine.includes('@internal');
+}
+
+/**
+ * Extract component name from an export - checks if it's a valid component (PascalCase, not Props/Type)
+ */
+function isValidComponentName(name) {
+  if (!name) return false;
+  const trimmed = name.trim();
+  return (
+    trimmed.length > 0 &&
+    trimmed.charAt(0) === trimmed.charAt(0).toUpperCase() &&
+    !trimmed.endsWith('Props') &&
+    !trimmed.includes('Type') &&
+    !trimmed.startsWith('type ')
+  );
+}
+
+/**
+ * Recursively parse exports from a file and collect component names
+ * Follows both `export * from` and `export { } from` patterns
+ * 
+ * @param {string} filePath - Path to the file to parse
+ * @param {Set} components - Set to collect component names into
+ * @param {Set} visited - Set of already visited files to prevent cycles
+ * @param {string} baseDir - Base directory for resolving relative paths
+ */
+function parseExportsRecursively(filePath, components, visited, baseDir) {
+  // Normalize path
+  const normalizedPath = path.resolve(filePath);
+  
+  // Resolve to actual file path (handle directories and missing extensions)
+  let actualPath = normalizedPath;
+  
+  if (fs.existsSync(actualPath)) {
+    // Check if it's a directory - if so, look for index.ts
+    const stats = fs.statSync(actualPath);
+    if (stats.isDirectory()) {
+      actualPath = path.join(actualPath, 'index.ts');
+      if (!fs.existsSync(actualPath)) {
+        return; // No index.ts in directory
+      }
+    }
+  } else {
+    // Path doesn't exist - try adding .ts extension or looking for index.ts
+    if (fs.existsSync(normalizedPath + '.ts')) {
+      actualPath = normalizedPath + '.ts';
+    } else if (fs.existsSync(path.join(normalizedPath, 'index.ts'))) {
+      actualPath = path.join(normalizedPath, 'index.ts');
+    } else {
+      return; // File not found
+    }
+  }
+  
+  // Check if already visited (using resolved actual path)
+  if (visited.has(actualPath)) {
+    return;
+  }
+  visited.add(actualPath);
+
+  try {
+    const content = fs.readFileSync(actualPath, 'utf-8');
+    const currentDir = path.dirname(actualPath);
+
+    // Pattern 1: export * from './path'
+    const starExportRegex = /export\s*\*\s*from\s*'([^']+)'/g;
+    let match;
+    while ((match = starExportRegex.exec(content)) !== null) {
+      // Check for @internal marker
+      if (hasInternalMarker(content, match.index)) {
+        continue;
+      }
+
+      const exportPath = match[1];
+      
+      // If it's a relative path, recurse into it
+      if (exportPath.startsWith('.')) {
+        const resolvedPath = path.resolve(currentDir, exportPath);
+        parseExportsRecursively(resolvedPath, components, visited, baseDir);
+      }
+      // If it's an external module path (like '../../checkout/components'), 
+      // try to parse named exports from that module
+      else if (!exportPath.startsWith('@')) {
+        const resolvedPath = path.resolve(currentDir, exportPath);
+        parseExportsRecursively(resolvedPath, components, visited, baseDir);
+      }
+    }
+
+    // Pattern 2: export { Name1, Name2, ... } from './path'
+    const namedExportRegex = /export\s*\{([\s\S]*?)\}\s*from\s*'([^']+)'/g;
+    while ((match = namedExportRegex.exec(content)) !== null) {
+      const exportContent = match[1];
+      const exportPath = match[2];
+      
+      // Check for @internal marker
+      if (hasInternalMarker(content, match.index)) {
+        continue;
+      }
+
+      // Parse the named exports
+      const parts = exportContent.split(',');
+      for (const part of parts) {
+        const trimmed = part.trim();
+        // Skip type exports
+        if (trimmed.startsWith('type ')) {
+          continue;
+        }
+        // Extract the component name (handle 'Name as Alias' syntax)
+        const componentName = trimmed.split(/\s+/)[0];
+        if (isValidComponentName(componentName)) {
+          components.add(componentName);
+        }
+      }
+    }
+
+    // Pattern 3: export { Name } (direct exports, likely from same directory)
+    // These are usually re-exports from a component's index.ts
+    const directExportRegex = /export\s*\{\s*(\w+)\s*\}(?!\s*from)/g;
+    while ((match = directExportRegex.exec(content)) !== null) {
+      if (hasInternalMarker(content, match.index)) {
+        continue;
+      }
+      const componentName = match[1];
+      if (isValidComponentName(componentName)) {
+        components.add(componentName);
+      }
+    }
+
+  } catch (error) {
+    // Silently skip files that can't be read
+  }
+}
+
+/**
+ * Parse components from customer-account's own component exports
+ * Recursively follows all export statements to build complete component list
+ */
+function parseCustomerAccountComponents() {
+  // Return cached value if available
+  if (customerAccountComponentsCache !== null) {
+    return customerAccountComponentsCache;
+  }
+
+  try {
+    const components = new Set();
+    const visited = new Set();
+    const componentsDir = path.join(config.basePath, 'components');
+    const indexPath = path.join(componentsDir, 'index.ts');
+
+    // Start recursive parsing from the components index
+    if (fs.existsSync(indexPath)) {
+      parseExportsRecursively(indexPath, components, visited, componentsDir);
+    }
+
+    if (components.size > 0) {
+      customerAccountComponentsCache = Array.from(components);
+      console.log(`Parsed ${customerAccountComponentsCache.length} customer-account components (from ${visited.size} files)`);
+      return customerAccountComponentsCache;
+    }
+
+    customerAccountComponentsCache = ['[CustomerAccountComponentsNotFound]'];
+    return customerAccountComponentsCache;
+  } catch (error) {
+    console.error('Error parsing customer-account components:', error);
+    customerAccountComponentsCache = ['[CustomerAccountComponentsError]'];
+    return customerAccountComponentsCache;
+  }
+}
+
+/**
+ * Parse inline component type definitions from targets.ts
+ * Handles types like: type AllComponents = Components[keyof Components]
+ */
+function parseInlineComponentTypes(content, componentTypesMap) {
+  // Match any type definition: type <NAME> = Components[keyof Components]
+  // This pattern means "all components from the local Components type"
+  const regex = /type\s+(\w+)\s*=\s*Components\[keyof\s+Components\]/g;
+  let match;
+  while ((match = regex.exec(content)) !== null) {
+    const typeName = match[1];
+    // Use customer-account's own components (not all checkout components)
+    const customerAccountComponents = parseCustomerAccountComponents();
+    if (customerAccountComponents.length > 0) {
+      componentTypesMap[typeName] = customerAccountComponents;
+      console.log(`Parsed ${typeName}: ${customerAccountComponents.length} components (from customer-account exports)`);
+    }
+  }
+}
+
 /**
  * Parse a string union type from a component file and resolve type references
  * e.g., export type StandardComponents = AnyComponent | 'Avatar' | ... (with AnyComponent imported)
@@ -136,11 +349,10 @@ function parseStringUnionType(filePath, componentTypesMap = {}) {
         const allComponents = [...quotedComponents];
         
         for (const typeRef of typeRefs) {
-          // Check if this is AnyComponent (imported from checkout)
+          // Check if this is AnyComponent - use customer-account's own components
           if (typeRef === 'AnyComponent') {
-            // Add all checkout components
-            const checkoutComponents = parseCheckoutComponents();
-            allComponents.push(...checkoutComponents);
+            const customerAccountComponents = parseCustomerAccountComponents();
+            allComponents.push(...customerAccountComponents);
           }
           // If this type reference exists in our map, include its components
           else if (componentTypesMap[typeRef]) {
@@ -238,6 +450,9 @@ function parseTargetsFile() {
   // Parse component type definitions
   const componentTypesMap = parseComponentTypesFromFiles();
 
+  // Also parse inline component types from targets.ts (like AllComponents)
+  parseInlineComponentTypes(content, componentTypesMap);
+
   const targets = {};
 
   // Look for all interfaces that might contain RenderExtension targets
@@ -275,6 +490,26 @@ function parseTargetsFromInterfaceBody(interfaceBody, targets, componentTypesMap
   while ((match = targetRegex.exec(interfaceBody)) !== null) {
     const targetName = match[1];
     let renderExtensionContent = match[2].trim();
+
+    // Check for @private JSDoc comment before this target
+    // Look backwards from the match to find any JSDoc comment
+    const beforeMatch = interfaceBody.slice(0, match.index);
+    const lastJsDocEnd = beforeMatch.lastIndexOf('*/');
+    if (lastJsDocEnd !== -1) {
+      // Find the start of this JSDoc comment
+      const jsDocStart = beforeMatch.lastIndexOf('/**', lastJsDocEnd);
+      if (jsDocStart !== -1) {
+        // Check if there's no other target definition between this JSDoc and our match
+        const betweenJsDocAndMatch = beforeMatch.slice(lastJsDocEnd);
+        if (!betweenJsDocAndMatch.includes("': RenderExtension<")) {
+          const jsDocContent = beforeMatch.slice(jsDocStart, lastJsDocEnd + 2);
+          if (jsDocContent.includes('@private')) {
+            // Skip this target - it's marked as private
+            continue;
+          }
+        }
+      }
+    }
 
     // Remove comments before parsing
     renderExtensionContent = renderExtensionContent
@@ -578,7 +813,12 @@ function resolveComponentType(typeName, componentTypesMap) {
   }
 
   // Handle special checkout types
-  if (typeName === 'AnyCheckoutComponent' || typeName === 'AnyComponent' || typeName === 'AnyThankYouComponent') {
+  // For customer-account, AnyComponent refers to customer-account's own component set
+  if (typeName === 'AnyComponent') {
+    return parseCustomerAccountComponents();
+  }
+  // AnyCheckoutComponent and AnyThankYouComponent refer to full checkout component set
+  if (typeName === 'AnyCheckoutComponent' || typeName === 'AnyThankYouComponent') {
     return parseCheckoutComponents();
   }
 
