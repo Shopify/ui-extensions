@@ -270,6 +270,49 @@ function parseComponentTypesFromFiles() {
   return componentTypesMap;
 }
 
+/**
+ * Parse inline component type definitions from extension-targets.ts
+ * Handles types like: type AllComponents = AnyComponentBuilder<Omit<Components, ...>>
+ */
+function parseInlineComponentTypes(content, componentTypesMap) {
+  // Match type definitions like: type TypeName = AnyComponentBuilder<...>
+  const typeDefRegex = /type\s+(\w+)\s*=\s*(AnyComponentBuilder<[\s\S]*?>)\s*;/g;
+  
+  let match;
+  while ((match = typeDefRegex.exec(content)) !== null) {
+    const typeName = match[1];
+    const typeDefinition = match[2];
+    
+    // Handle AnyComponentBuilder<Pick<Components, 'Comp1' | 'Comp2'>>
+    const pickMatch = typeDefinition.match(/AnyComponentBuilder<\s*Pick<\s*Components\s*,\s*([\s\S]+?)>\s*>/);
+    if (pickMatch) {
+      const pickedUnion = pickMatch[1].trim();
+      const pickedComponents = parseUnionOfStrings(pickedUnion);
+      componentTypesMap[typeName] = pickedComponents;
+      console.log(`Parsed ${typeName} (Pick): ${pickedComponents.length} components`);
+      continue;
+    }
+    
+    // Handle AnyComponentBuilder<Omit<Components, 'Comp1' | 'Comp2'>>
+    const omitMatch = typeDefinition.match(/AnyComponentBuilder<\s*Omit<\s*Components\s*,\s*([\s\S]+?)>\s*>/);
+    if (omitMatch) {
+      const omittedUnion = omitMatch[1].trim();
+      const omittedComponents = parseUnionOfStrings(omittedUnion);
+      if (allComponents.length > 0) {
+        componentTypesMap[typeName] = allComponents.filter((c) => !omittedComponents.includes(c));
+        console.log(`Parsed ${typeName} (Omit): ${componentTypesMap[typeName].length} components`);
+      }
+      continue;
+    }
+    
+    // Handle plain AnyComponentBuilder<Components>
+    if (typeDefinition.match(/AnyComponentBuilder<\s*Components\s*>/)) {
+      componentTypesMap[typeName] = allComponents.length > 0 ? [...allComponents] : [];
+      console.log(`Parsed ${typeName} (All): ${componentTypesMap[typeName].length} components`);
+    }
+  }
+}
+
 function parseTargetsFile() {
   console.log('Starting parseTargetsFile...');
   const targetsFilePath = path.join(config.basePath, 'extension-targets.ts');
@@ -292,6 +335,10 @@ function parseTargetsFile() {
   const componentTypesMap = parseComponentTypesFromFiles();
   console.log(`Found ${Object.keys(componentTypesMap).length} component type mappings`);
 
+  // Also parse inline component types from extension-targets.ts
+  parseInlineComponentTypes(content, componentTypesMap);
+  console.log(`After inline parsing: ${Object.keys(componentTypesMap).length} component type mappings`);
+
   const targets = {};
 
   // Look for all interfaces that might contain RenderExtension targets
@@ -310,9 +357,17 @@ function parseTargetsFile() {
     );
     const match = content.match(regex);
 
-    if (match && match[1].includes('RenderExtension<')) {
-      console.log(`Parsing targets from ${interfaceName}...`);
-      parseTargetsFromInterfaceBody(match[1], targets, componentTypesMap);
+    if (match) {
+      // Handle RenderExtension targets
+      if (match[1].includes('RenderExtension<')) {
+        console.log(`Parsing RenderExtension targets from ${interfaceName}...`);
+        parseTargetsFromInterfaceBody(match[1], targets, componentTypesMap);
+      }
+      // Handle RunnableExtension targets (like should-render)
+      if (match[1].includes('RunnableExtension<')) {
+        console.log(`Parsing RunnableExtension targets from ${interfaceName}...`);
+        parseRunnableTargetsFromInterfaceBody(match[1], targets);
+      }
     }
   }
 
@@ -334,6 +389,22 @@ function parseTargetsFromInterfaceBody(interfaceBody, targets, componentTypesMap
     const targetName = match[1];
     let renderExtensionContent = match[2].trim();
 
+    // Check for @private JSDoc comment before this target
+    const beforeMatch = interfaceBody.slice(0, match.index);
+    const lastJsDocEnd = beforeMatch.lastIndexOf('*/');
+    if (lastJsDocEnd !== -1) {
+      const jsDocStart = beforeMatch.lastIndexOf('/**', lastJsDocEnd);
+      if (jsDocStart !== -1) {
+        const betweenJsDocAndMatch = beforeMatch.slice(lastJsDocEnd);
+        if (!betweenJsDocAndMatch.includes("': RenderExtension<")) {
+          const jsDocContent = beforeMatch.slice(jsDocStart, lastJsDocEnd + 2);
+          if (jsDocContent.includes('@private')) {
+            continue; // Skip private targets
+          }
+        }
+      }
+    }
+
     // Remove comments before parsing
     renderExtensionContent = renderExtensionContent
       .replace(/\/\/[^\n]*/g, '') // Remove single-line comments
@@ -354,6 +425,55 @@ function parseTargetsFromInterfaceBody(interfaceBody, targets, componentTypesMap
 
       targets[targetName] = {
         components: components.sort(),
+        apis: apis.sort(),
+      };
+    }
+  }
+}
+
+/**
+ * Parse RunnableExtension targets from interface body
+ * RunnableExtension targets don't render UI, so they have components: []
+ */
+function parseRunnableTargetsFromInterfaceBody(interfaceBody, targets) {
+  const targetRegex = /'([^']+)':\s*RunnableExtension<([\s\S]*?)>;/g;
+
+  let match;
+  while ((match = targetRegex.exec(interfaceBody)) !== null) {
+    const targetName = match[1];
+    let runnableContent = match[2].trim();
+
+    // Check for @private JSDoc comment before this target
+    const beforeMatch = interfaceBody.slice(0, match.index);
+    const lastJsDocEnd = beforeMatch.lastIndexOf('*/');
+    if (lastJsDocEnd !== -1) {
+      const jsDocStart = beforeMatch.lastIndexOf('/**', lastJsDocEnd);
+      if (jsDocStart !== -1) {
+        const betweenJsDocAndMatch = beforeMatch.slice(lastJsDocEnd);
+        if (!betweenJsDocAndMatch.includes("': RunnableExtension<")) {
+          const jsDocContent = beforeMatch.slice(jsDocStart, lastJsDocEnd + 2);
+          if (jsDocContent.includes('@private')) {
+            continue; // Skip private targets
+          }
+        }
+      }
+    }
+
+    // Remove comments
+    runnableContent = runnableContent
+      .replace(/\/\/[^\n]*/g, '')
+      .replace(/\/\*[\s\S]*?\*\//g, '');
+
+    // RunnableExtension has API type and return type, parse APIs
+    const parts = splitByTopLevelComma(runnableContent);
+    
+    if (parts.length >= 1) {
+      const apiString = parts[0].trim();
+      const apis = parseApis(apiString);
+
+      // RunnableExtension targets don't render components
+      targets[targetName] = {
+        components: [],
         apis: apis.sort(),
       };
     }
@@ -621,6 +741,22 @@ function parseComponents(componentString, componentTypesMap) {
   if (allowedMatch) {
     const innerType = allowedMatch[1].trim();
     return resolveComponentType(innerType, componentTypesMap);
+  }
+
+  // Handle union types like: AllComponents | OrderRoutingComponents
+  // Check if it's a union of type references (not string literals)
+  if (componentString.includes('|') && !componentString.includes('<')) {
+    const unionParts = componentString.split('|').map(s => s.trim());
+    const allUnionComponents = new Set();
+    
+    for (const part of unionParts) {
+      const partComponents = resolveComponentType(part, componentTypesMap);
+      partComponents.forEach(c => allUnionComponents.add(c));
+    }
+    
+    if (allUnionComponents.size > 0) {
+      return Array.from(allUnionComponents);
+    }
   }
 
   // Check if it's a direct type reference
