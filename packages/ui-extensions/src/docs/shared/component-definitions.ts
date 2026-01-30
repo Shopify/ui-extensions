@@ -35,12 +35,6 @@ interface ComponentDoc {
   subCategory?: ReferenceEntityTemplateSchema['subCategory'];
   extraContent?: ReferenceEntityTemplateSchema['subSections'];
   extraExamples?: ReferenceEntityTemplateSchema['examples'];
-  /**
-   * Optional deployment context to resolve context-specific descriptions.
-   * When provided along with a SharedReferenceEntityTemplateSchema that has context overrides,
-   * the appropriate context-specific description will be used.
-   */
-  deploymentContext?: DeploymentContext;
 }
 
 function buildDefinitions({
@@ -150,7 +144,6 @@ export function createComponentDoc({
   bestPractices,
   extraContent = [],
   extraExamples,
-  deploymentContext,
 }: ComponentDoc): ReferenceEntityTemplateSchema {
   const kebabCasedName = name
     .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')

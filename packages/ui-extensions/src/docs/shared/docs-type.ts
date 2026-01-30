@@ -1,4 +1,7 @@
-import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import type {
+  ReferenceEntityTemplateSchema,
+  LinkType,
+} from '@shopify/generate-docs';
 
 /**
  * Defines the deployment contexts where a component can be used.
@@ -14,7 +17,7 @@ export interface ContextOverride {
   /** Override description for this specific context */
   description?: string;
   /** Override related components for this specific context */
-  related?: string[];
+  related?: LinkType[];
 }
 
 export interface SharedReferenceEntityTemplateSchema
