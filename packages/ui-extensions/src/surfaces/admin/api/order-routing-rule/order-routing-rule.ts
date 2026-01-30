@@ -1,11 +1,11 @@
-import type {StandardApi} from '../standard/standard';
+import type {StandardRenderingExtensionApi} from '../standard/standard-rendering';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
 
 import {ApplyMetafieldsChange} from './metafields';
 import {Data} from './data';
 
 export interface OrderRoutingRuleApi<ExtensionTarget extends AnyExtensionTarget>
-  extends StandardApi<ExtensionTarget> {
+  extends StandardRenderingExtensionApi<ExtensionTarget> {
   applyMetafieldsChange: ApplyMetafieldsChange;
   data: Data;
 }

@@ -1,5 +1,6 @@
 export type {I18n, I18nTranslate} from '../../api';
 export type {StandardApi, Intents} from './api/standard/standard';
+export type {StandardRenderingExtensionApi} from './api/standard/standard-rendering';
 export type {Navigation} from './api/block/block';
 export type {
   CustomerSegmentTemplateApi,
