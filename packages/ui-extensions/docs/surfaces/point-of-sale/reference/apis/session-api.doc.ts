@@ -62,6 +62,14 @@ const data: ReferenceEntityTemplateSchema = {
         description:
           'Access session data and generate authentication tokens. This example shows how to access shop details, user information, and location data through `shopify.session`, and use `shopify.session.getSessionToken()` to generate tokens for authenticated requests to your backend services.',
       },
+      {
+        codeblock: generateJsxCodeBlockForSessionApi(
+          'Retrieve the device ID',
+          'device-id',
+        ),
+        description:
+          'Access the unique identifier of the current POS device. This example demonstrates using `shopify.deviceId` to retrieve the device ID. Use this data to construct a GID to query device details via GraphQL Admin API.',
+      },
     ],
   },
 };
