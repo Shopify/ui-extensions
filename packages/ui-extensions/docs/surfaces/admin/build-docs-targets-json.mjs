@@ -11,14 +11,8 @@ const EXTENSIONS_API_VERSION = process.argv[2] || 'unstable';
 
 // Configuration for admin surface
 const config = {
-  basePath: path.join(
-    __dirname,
-    '../../../src/surfaces/admin',
-  ),
-  outputPath: path.join(
-    __dirname,
-    'generated/targets.json',
-  ),
+  basePath: path.join(__dirname, '../../../src/surfaces/admin'),
+  outputPath: path.join(__dirname, 'generated/targets.json'),
   componentTypesPath: 'components',
   hasComponentTypes: true,
 };
@@ -73,21 +67,25 @@ function parseCheckoutComponents() {
     // If SUPPORTED_COMPONENTS not found, try to parse from components.ts
     if (fs.existsSync(componentsPath)) {
       const content = fs.readFileSync(componentsPath, 'utf-8');
-      
+
       // Match export statements like: export {ComponentName} from './components/ComponentName/ComponentName';
-      const exportMatches = content.matchAll(/export\s*\{\s*(\w+)\s*\}\s*from/g);
+      const exportMatches = content.matchAll(
+        /export\s*\{\s*(\w+)\s*\}\s*from/g,
+      );
       const components = [];
-      
+
       for (const match of exportMatches) {
         const componentName = match[1];
         // Filter out Props types and other exports
-        if (!componentName.endsWith('Props') && 
-            !componentName.includes('Type') &&
-            componentName.charAt(0) === componentName.charAt(0).toUpperCase()) {
+        if (
+          !componentName.endsWith('Props') &&
+          !componentName.includes('Type') &&
+          componentName.charAt(0) === componentName.charAt(0).toUpperCase()
+        ) {
           components.push(componentName);
         }
       }
-      
+
       if (components.length > 0) {
         checkoutComponentsCache = components;
         return checkoutComponentsCache;
@@ -121,21 +119,23 @@ function parseLocalComponents() {
     }
 
     const content = fs.readFileSync(componentsPath, 'utf-8');
-    
+
     // Match export statements like: export {ComponentName} from './components/ComponentName/ComponentName';
     const exportMatches = content.matchAll(/export\s*\{\s*(\w+)\s*\}\s*from/g);
     const components = [];
-    
+
     for (const match of exportMatches) {
       const componentName = match[1];
       // Filter out Props types and other exports
-      if (!componentName.endsWith('Props') && 
-          !componentName.includes('Type') &&
-          componentName.charAt(0) === componentName.charAt(0).toUpperCase()) {
+      if (
+        !componentName.endsWith('Props') &&
+        !componentName.includes('Type') &&
+        componentName.charAt(0) === componentName.charAt(0).toUpperCase()
+      ) {
         components.push(componentName);
       }
     }
-    
+
     return components;
   } catch (error) {
     console.error('Error parsing local components:', error);
@@ -152,7 +152,7 @@ function parseLocalComponents() {
 function parseStringUnionType(filePath, componentTypesMap = {}) {
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
-    
+
     // Extract all quoted component names from the file (but not from import statements)
     // Remove import lines first
     const contentWithoutImports = content.replace(/^import.*?;$/gm, '');
@@ -160,20 +160,20 @@ function parseStringUnionType(filePath, componentTypesMap = {}) {
     const quotedComponents = componentNames
       ? componentNames.map((name) => name.replace(/'/g, ''))
       : [];
-    
+
     // Check if the type references other types (like StandardComponents or AnyComponent)
     // Look for patterns like: StandardComponents | 'OtherComponent'
     const typeRefPattern = /export type \w+ =\s*([\s\S]*?);/;
     const typeDefMatch = content.match(typeRefPattern);
-    
+
     if (typeDefMatch) {
       const typeDef = typeDefMatch[1];
       // Find references to other types (capitalized words that aren't in quotes)
       const typeRefs = typeDef.match(/\b([A-Z]\w+(?:Components?)?)\b/g);
-      
+
       if (typeRefs) {
         const allComponents = [...quotedComponents];
-        
+
         for (const typeRef of typeRefs) {
           // Check if this is AnyComponent (imported from checkout)
           if (typeRef === 'AnyComponent') {
@@ -186,12 +186,12 @@ function parseStringUnionType(filePath, componentTypesMap = {}) {
             allComponents.push(...componentTypesMap[typeRef]);
           }
         }
-        
+
         // Remove duplicates
         return [...new Set(allComponents)];
       }
     }
-    
+
     return quotedComponents.length > 0 ? quotedComponents : null;
   } catch (error) {
     console.error(`Error reading component file ${filePath}:`, error.message);
@@ -270,6 +270,70 @@ function parseComponentTypesFromFiles() {
   return componentTypesMap;
 }
 
+/**
+ * Check if a target has @private JSDoc tag
+ */
+function hasPrivateTag(content, matchIndex) {
+  // Look backwards from the match to find the JSDoc comment
+  const beforeMatch = content.substring(0, matchIndex);
+
+  // Find the last JSDoc comment before this target
+  const jsDocMatches = [...beforeMatch.matchAll(/\/\*\*[\s\S]*?\*\//g)];
+
+  if (jsDocMatches.length === 0) {
+    return false;
+  }
+
+  const lastJsDoc = jsDocMatches[jsDocMatches.length - 1];
+  const jsDocEnd = lastJsDoc.index + lastJsDoc[0].length;
+
+  // Check if there's only whitespace between the JSDoc and our match
+  const between = beforeMatch.substring(jsDocEnd);
+  if (!/^\s*$/.test(between)) {
+    return false;
+  }
+
+  // Check if the JSDoc contains @private
+  return lastJsDoc[0].includes('@private');
+}
+
+/**
+ * Parse inline component type definitions from extension-targets.ts
+ * e.g., type CustomerSegmentTemplateComponent = AnyComponentBuilder<Pick<Components, 'CustomerSegmentTemplate' | 'InternalCustomerSegmentTemplate'>>
+ */
+function parseInlineComponentTypes(content, componentTypesMap) {
+  // Match type definitions with Pick
+  const pickTypeRegex =
+    /type\s+(\w+)\s*=\s*AnyComponentBuilder<\s*Pick<\s*Components\s*,\s*([\s\S]*?)>\s*>/g;
+  let match;
+
+  while ((match = pickTypeRegex.exec(content)) !== null) {
+    const typeName = match[1];
+    const pickedUnion = match[2].trim();
+    const components = parseUnionOfStrings(pickedUnion);
+    if (components.length > 0) {
+      componentTypesMap[typeName] = components;
+    }
+  }
+
+  // Match type definitions with Omit
+  const omitTypeRegex =
+    /type\s+(\w+)\s*=\s*AnyComponentBuilder<\s*Omit<\s*Components\s*,\s*([\s\S]*?)>\s*>/g;
+
+  while ((match = omitTypeRegex.exec(content)) !== null) {
+    const typeName = match[1];
+    const omittedUnion = match[2].trim();
+    const omittedComponents = parseUnionOfStrings(omittedUnion);
+
+    // Get all components and filter out the omitted ones
+    if (allComponents.length > 0) {
+      componentTypesMap[typeName] = allComponents.filter(
+        (c) => !omittedComponents.includes(c),
+      );
+    }
+  }
+}
+
 function parseTargetsFile() {
   console.log('Starting parseTargetsFile...');
   const targetsFilePath = path.join(config.basePath, 'extension-targets.ts');
@@ -287,10 +351,15 @@ function parseTargetsFile() {
     }
   }
 
-  // Parse component type definitions
+  // Parse component type definitions from files
   console.log('Parsing component types from files...');
   const componentTypesMap = parseComponentTypesFromFiles();
-  console.log(`Found ${Object.keys(componentTypesMap).length} component type mappings`);
+
+  // Parse inline component type definitions from extension-targets.ts
+  parseInlineComponentTypes(content, componentTypesMap);
+  console.log(
+    `Found ${Object.keys(componentTypesMap).length} component type mappings`,
+  );
 
   const targets = {};
 
@@ -312,7 +381,12 @@ function parseTargetsFile() {
 
     if (match && match[1].includes('RenderExtension<')) {
       console.log(`Parsing targets from ${interfaceName}...`);
-      parseTargetsFromInterfaceBody(match[1], targets, componentTypesMap);
+      parseTargetsFromInterfaceBody(
+        match[1],
+        targets,
+        componentTypesMap,
+        content,
+      );
     }
   }
 
@@ -325,13 +399,30 @@ function parseTargetsFile() {
   return targets;
 }
 
-function parseTargetsFromInterfaceBody(interfaceBody, targets, componentTypesMap) {
+function parseTargetsFromInterfaceBody(
+  interfaceBody,
+  targets,
+  componentTypesMap,
+  fullContent,
+) {
   // Parse each target definition (handle multi-line)
   const targetRegex = /'([^']+)':\s*RenderExtension<([\s\S]*?)>;/g;
 
   let match;
   while ((match = targetRegex.exec(interfaceBody)) !== null) {
     const targetName = match[1];
+
+    // Find position in full content to check for @private
+    if (fullContent) {
+      const targetInContent = fullContent.indexOf(`'${targetName}':`);
+      if (
+        targetInContent !== -1 &&
+        hasPrivateTag(fullContent, targetInContent)
+      ) {
+        continue; // Skip private targets
+      }
+    }
+
     let renderExtensionContent = match[2].trim();
 
     // Remove comments before parsing
@@ -564,19 +655,36 @@ function parseComponents(componentString, componentTypesMap) {
   // Normalize whitespace
   componentString = componentString.replace(/\s+/g, ' ').trim();
 
+  // Handle union types like "AllComponents | OrderRoutingComponents"
+  if (componentString.includes('|') && !componentString.includes("'")) {
+    const unionParts = componentString.split('|').map((p) => p.trim());
+    const allComponentsFromUnion = new Set();
+
+    for (const part of unionParts) {
+      const partComponents = parseComponents(part, componentTypesMap);
+      partComponents.forEach((c) => allComponentsFromUnion.add(c));
+    }
+
+    return [...allComponentsFromUnion];
+  }
+
   // Handle AnyComponentBuilder<Pick<Components, 'Comp1' | 'Comp2'>>
-  const pickMatch = componentString.match(/AnyComponentBuilder<\s*Pick<\s*Components\s*,\s*([^>]+)>\s*>/);
+  const pickMatch = componentString.match(
+    /AnyComponentBuilder<\s*Pick<\s*Components\s*,\s*([^>]+)>\s*>/,
+  );
   if (pickMatch) {
     const pickedUnion = pickMatch[1].trim();
     return parseUnionOfStrings(pickedUnion);
   }
 
   // Handle AnyComponentBuilder<Omit<Components, 'Comp1' | 'Comp2'>>
-  const omitMatch = componentString.match(/AnyComponentBuilder<\s*Omit<\s*Components\s*,\s*([^>]+)>\s*>/);
+  const omitMatch = componentString.match(
+    /AnyComponentBuilder<\s*Omit<\s*Components\s*,\s*([^>]+)>\s*>/,
+  );
   if (omitMatch) {
     const omittedUnion = omitMatch[1].trim();
     const omittedComponents = parseUnionOfStrings(omittedUnion);
-    
+
     // Get all components and filter out the omitted ones
     if (allComponents.length > 0) {
       return allComponents.filter((c) => !omittedComponents.includes(c));
@@ -587,7 +695,9 @@ function parseComponents(componentString, componentTypesMap) {
   }
 
   // Handle plain AnyComponentBuilder<Components>
-  const anyComponentBuilderMatch = componentString.match(/AnyComponentBuilder<\s*Components\s*>/);
+  const anyComponentBuilderMatch = componentString.match(
+    /AnyComponentBuilder<\s*Components\s*>/,
+  );
   if (anyComponentBuilderMatch) {
     if (allComponents.length > 0) {
       return allComponents;
@@ -596,7 +706,9 @@ function parseComponents(componentString, componentTypesMap) {
   }
 
   // Handle AnyCheckoutComponentExcept<'Component1' | 'Component2'>
-  const checkoutExceptMatch = componentString.match(/AnyCheckoutComponentExcept<([^>]+)>/);
+  const checkoutExceptMatch = componentString.match(
+    /AnyCheckoutComponentExcept<([^>]+)>/,
+  );
   if (checkoutExceptMatch) {
     const excludedUnion = checkoutExceptMatch[1];
     // Get all checkout components
@@ -667,7 +779,11 @@ function resolveComponentType(typeName, componentTypesMap) {
   }
 
   // Handle special checkout types
-  if (typeName === 'AnyCheckoutComponent' || typeName === 'AnyComponent' || typeName === 'AnyThankYouComponent') {
+  if (
+    typeName === 'AnyCheckoutComponent' ||
+    typeName === 'AnyComponent' ||
+    typeName === 'AnyThankYouComponent'
+  ) {
     return parseCheckoutComponents();
   }
 
@@ -737,21 +853,23 @@ try {
   // Write to output file
   const outputDir = path.dirname(config.outputPath);
   if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+    fs.mkdirSync(outputDir, {recursive: true});
   }
   fs.writeFileSync(config.outputPath, JSON.stringify(combinedJson, null, 2));
 
   console.log('✅ Generated combined targets JSON at:', config.outputPath);
-  
+
   // Count the different types of entries
   const targetEntries = Object.keys(targetsJson).length;
   const apiEntries = Object.keys(combinedJson).filter(
-    (key) => combinedJson[key].targets && !targetsJson[key] && key.endsWith('Api')
+    (key) =>
+      combinedJson[key].targets && !targetsJson[key] && key.endsWith('Api'),
   ).length;
   const componentEntries = Object.keys(combinedJson).filter(
-    (key) => combinedJson[key].targets && !targetsJson[key] && !key.endsWith('Api')
+    (key) =>
+      combinedJson[key].targets && !targetsJson[key] && !key.endsWith('Api'),
   ).length;
-  
+
   console.log('\n📋 Summary:');
   console.log(`  Extension targets: ${targetEntries}`);
   console.log(`  API reverse mappings: ${apiEntries}`);

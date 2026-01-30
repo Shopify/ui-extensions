@@ -36,21 +36,23 @@ function parseLocalComponents() {
     }
 
     const content = fs.readFileSync(componentsPath, 'utf-8');
-    
+
     // Match export statements like: export {ComponentName} from './components/ComponentName/ComponentName';
     const exportMatches = content.matchAll(/export\s*\{\s*(\w+)\s*\}\s*from/g);
     const components = [];
-    
+
     for (const match of exportMatches) {
       const componentName = match[1];
       // Filter out Props types and other exports
-      if (!componentName.endsWith('Props') && 
-          !componentName.includes('Type') &&
-          componentName.charAt(0) === componentName.charAt(0).toUpperCase()) {
+      if (
+        !componentName.endsWith('Props') &&
+        !componentName.includes('Type') &&
+        componentName.charAt(0) === componentName.charAt(0).toUpperCase()
+      ) {
         components.push(componentName);
       }
     }
-    
+
     return components;
   } catch (error) {
     console.error('Error parsing local components:', error);
@@ -96,6 +98,60 @@ function parseComponentTypesFromFiles() {
   return {};
 }
 
+/**
+ * Parse a union of string literals (e.g., "'Image' | 'Banner'")
+ * Returns an array of the string values
+ */
+function parseUnionOfStrings(unionString) {
+  const components = [];
+  const parts = unionString.split('|');
+  for (const part of parts) {
+    const trimmed = part.trim();
+    const match = trimmed.match(/^'([^']+)'$/);
+    if (match) {
+      components.push(match[1]);
+    }
+  }
+  return components;
+}
+
+/**
+ * Parse inline component type definitions from targets.ts
+ * e.g., type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>
+ */
+function parseInlineComponentTypes(content, componentTypesMap) {
+  // Match type definitions with Pick
+  const pickTypeRegex =
+    /type\s+(\w+)\s*=\s*AnyComponentBuilder<\s*Pick<\s*Components\s*,\s*([^>]+)>\s*>/g;
+  let match;
+
+  while ((match = pickTypeRegex.exec(content)) !== null) {
+    const typeName = match[1];
+    const pickedUnion = match[2].trim();
+    const components = parseUnionOfStrings(pickedUnion);
+    if (components.length > 0) {
+      componentTypesMap[typeName] = components;
+    }
+  }
+
+  // Match type definitions with Omit
+  const omitTypeRegex =
+    /type\s+(\w+)\s*=\s*AnyComponentBuilder<\s*Omit<\s*Components\s*,\s*([^>]+)>\s*>/g;
+
+  while ((match = omitTypeRegex.exec(content)) !== null) {
+    const typeName = match[1];
+    const omittedUnion = match[2].trim();
+    const omittedComponents = parseUnionOfStrings(omittedUnion);
+
+    // Get all components and filter out the omitted ones
+    if (allComponents.length > 0) {
+      componentTypesMap[typeName] = allComponents.filter(
+        (c) => !omittedComponents.includes(c),
+      );
+    }
+  }
+}
+
 function parseTargetsFile() {
   const targetsFilePath = path.join(
     __dirname,
@@ -114,6 +170,9 @@ function parseTargetsFile() {
 
   // Parse component type definitions from the separate files
   const componentTypesMap = parseComponentTypesFromFiles();
+
+  // Parse inline component type definitions from targets.ts
+  parseInlineComponentTypes(content, componentTypesMap);
 
   // Extract the ExtensionTargets interface (not RenderExtensionTargets for POS)
   const interfaceMatch = content.match(
@@ -423,7 +482,9 @@ function parseComponents(componentString, componentTypesMap) {
   componentString = componentString.replace(/\s+/g, ' ').trim();
 
   // Handle AnyComponentBuilder<Pick<Components, 'Comp1' | 'Comp2'>>
-  const pickMatch = componentString.match(/AnyComponentBuilder<\s*Pick<\s*Components\s*,\s*([^>]+)>\s*>/);
+  const pickMatch = componentString.match(
+    /AnyComponentBuilder<\s*Pick<\s*Components\s*,\s*([^>]+)>\s*>/,
+  );
   if (pickMatch) {
     const pickedUnion = pickMatch[1].trim();
     // Parse the union of component names
@@ -440,7 +501,9 @@ function parseComponents(componentString, componentTypesMap) {
   }
 
   // Handle AnyComponentBuilder<Omit<Components, 'Comp1'>>
-  const omitMatch = componentString.match(/AnyComponentBuilder<\s*Omit<\s*Components\s*,\s*'([^']+)'\s*>\s*>/);
+  const omitMatch = componentString.match(
+    /AnyComponentBuilder<\s*Omit<\s*Components\s*,\s*'([^']+)'\s*>\s*>/,
+  );
   if (omitMatch) {
     const omittedComponent = omitMatch[1];
     // Return all components except the omitted one
@@ -512,27 +575,26 @@ try {
   const extendedJson = createReverseMapping(targetsJson);
 
   // Write to output file
-  const outputPath = path.join(
-    __dirname,
-    'generated/targets.json',
-  );
+  const outputPath = path.join(__dirname, 'generated/targets.json');
   const outputDir = path.dirname(outputPath);
   if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+    fs.mkdirSync(outputDir, {recursive: true});
   }
   fs.writeFileSync(outputPath, JSON.stringify(extendedJson, null, 2));
 
   console.log('✅ Generated targets JSON at:', outputPath);
-  
+
   // Count the different types of entries
   const targetEntries = Object.keys(targetsJson).length;
   const apiEntries = Object.keys(extendedJson).filter(
-    (key) => extendedJson[key].targets && !targetsJson[key] && key.endsWith('Api')
+    (key) =>
+      extendedJson[key].targets && !targetsJson[key] && key.endsWith('Api'),
   ).length;
   const componentEntries = Object.keys(extendedJson).filter(
-    (key) => extendedJson[key].targets && !targetsJson[key] && !key.endsWith('Api')
+    (key) =>
+      extendedJson[key].targets && !targetsJson[key] && !key.endsWith('Api'),
   ).length;
-  
+
   console.log('\n📋 Summary:');
   console.log(`  Extension targets: ${targetEntries}`);
   console.log(`  API reverse mappings: ${apiEntries}`);
