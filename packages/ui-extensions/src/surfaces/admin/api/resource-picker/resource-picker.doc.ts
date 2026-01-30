@@ -1,7 +1,7 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Resource Picker',
+  name: 'Resource Picker API',
   overviewPreviewDescription: 'Opens a Resource Picker in your app',
   description: `The Resource Picker API provides a search-based interface to help users find and select one or more products, collections, or product variants, and then returns the selected resources to your app. Both the app and the user must have the necessary permissions to access the resources selected.
 
@@ -9,7 +9,8 @@ const data: ReferenceEntityTemplateSchema = {
 > If you are picking app resources such as product reviews, email templates, or subscription options, you should use the [Picker](picker) API instead.
 `,
   isVisualComponent: true,
-  category: 'API',
+  category: 'Target APIs',
+  subCategory: 'Utility APIs',
   thumbnail: 'resource-picker.png',
   requires:
     'an Admin [block](/docs/api/admin-extensions/unstable/extension-targets#block-locations), [action](/docs/api/admin-extensions/unstable/extension-targets#action-locations), or [print](/docs/api/admin-extensions/unstable/extension-targets#print-locations) extension.',

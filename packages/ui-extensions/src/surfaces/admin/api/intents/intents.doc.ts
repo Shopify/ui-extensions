@@ -1,12 +1,13 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Intents',
+  name: 'Intents API',
   overviewPreviewDescription:
     'Orchestrate workflows and operations across Shopify resources',
   description: `The Intents API provides a way to invoke existing admin workflows for creating, editing, and managing Shopify resources.`,
   isVisualComponent: true,
-  category: 'API',
+  category: 'Target APIs',
+  subCategory: 'Utility APIs',
   thumbnail: 'intents.png',
   requires:
     'an Admin [block](/docs/api/admin-extensions/unstable/extension-targets#block-locations) or [action](/docs/api/admin-extensions/unstable/extension-targets#action-locations) extension.',
