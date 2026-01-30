@@ -4,5 +4,9 @@
   "initialVersions": {
     "@shopify/ui-extensions": "2026.4.0-rc.0"
   },
-  "changesets": ["thick-moles-hide"]
+  "changesets": [
+    "expose-picker-apis-rendering-targets",
+    "slick-hornets-decide",
+    "thick-moles-hide"
+  ]
 }
