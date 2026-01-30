@@ -1,4 +1,9 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import type {
+  SharedReferenceEntityTemplateSchema,
+  DeploymentContext,
+} from './docs-type';
+import {resolveContext} from './resolve-context';
 
 const CHECKOUT_PATH =
   '/docs/api/checkout-ui-extensions/latest/using-polaris-components';
@@ -30,6 +35,12 @@ interface ComponentDoc {
   subCategory?: ReferenceEntityTemplateSchema['subCategory'];
   extraContent?: ReferenceEntityTemplateSchema['subSections'];
   extraExamples?: ReferenceEntityTemplateSchema['examples'];
+  /**
+   * Optional deployment context to resolve context-specific descriptions.
+   * When provided along with a SharedReferenceEntityTemplateSchema that has context overrides,
+   * the appropriate context-specific description will be used.
+   */
+  deploymentContext?: DeploymentContext;
 }
 
 function buildDefinitions({
@@ -94,6 +105,35 @@ function buildDefinitions({
   ];
 }
 
+/**
+ * Merges shared component content with context-specific overrides.
+ * Use this when you have a SharedReferenceEntityTemplateSchema with contexts
+ * and want to resolve it for a specific deployment context.
+ *
+ * @param sharedContent - The shared component schema with potential context overrides
+ * @param context - The deployment context to resolve for
+ * @returns The resolved schema without context overrides
+ *
+ * @example
+ * ```ts
+ * import badgeContent from './shared/components/Badge';
+ *
+ * // For admin context
+ * const adminBadge = resolveSharedContent(badgeContent, 'admin');
+ * // Returns Badge schema with admin-specific description
+ *
+ * // For app-home context
+ * const appHomeBadge = resolveSharedContent(badgeContent, 'app-home');
+ * // Returns Badge schema with app-home-specific description
+ * ```
+ */
+export function resolveSharedContent(
+  sharedContent: SharedReferenceEntityTemplateSchema,
+  context: DeploymentContext,
+): Omit<SharedReferenceEntityTemplateSchema, 'contexts'> {
+  return resolveContext(sharedContent, context);
+}
+
 export function createComponentDoc({
   name,
   description,
@@ -110,6 +150,7 @@ export function createComponentDoc({
   bestPractices,
   extraContent = [],
   extraExamples,
+  deploymentContext,
 }: ComponentDoc): ReferenceEntityTemplateSchema {
   const kebabCasedName = name
     .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')

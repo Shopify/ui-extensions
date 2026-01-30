@@ -250,8 +250,34 @@ const templates = {
   }),
 };
 
+const resolveContextualDescription = (entry, isExtensions) => {
+  // Determine the deployment context based on which docs we're building
+  const context = isExtensions ? 'admin' : 'app-home';
+  
+  // If the entry has context-specific overrides, resolve them
+  if (entry.contexts && entry.contexts[context]) {
+    const contextOverride = entry.contexts[context];
+    
+    // Apply context-specific overrides
+    if (contextOverride.description) {
+      entry.description = contextOverride.description;
+    }
+    if (contextOverride.related) {
+      entry.related = contextOverride.related;
+    }
+    
+    // Remove the contexts field from the output
+    delete entry.contexts;
+  }
+  
+  return entry;
+};
+
 const transformJson = async (filePath, isExtensions) => {
   let jsonData = JSON.parse((await fs.readFile(filePath, 'utf8')).toString());
+  
+  // Resolve context-specific descriptions for all entries
+  jsonData = jsonData.map(entry => resolveContextualDescription(entry, isExtensions));
 
   const iconEntry = jsonData.find(
     (entry) => entry.name === 'Icon' && entry.subSections,
