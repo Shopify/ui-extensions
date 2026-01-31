@@ -62,7 +62,7 @@ export interface ScreenProps {
    */
   overrideNavigateBack?: () => void;
   /**
-   * A callback function triggered when the navigation event completes and the screen receives parameters passed during navigation.
+   * A callback function triggered when the navigation event completes with any passed parameters. Runs when screen is mounted (with `undefined`).
    */
   onReceiveParams?: (params: any) => void;
 }
