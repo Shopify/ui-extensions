@@ -5,7 +5,7 @@ import {ApplyMetafieldChange} from './metafields';
 import {ValidationData} from './launch-options';
 
 /**
- * The `ValidationSettingsApi` object provides methods for configuring cart and checkout validation functions. Access these properties through the API to manage validation settings and metafields.
+ * The `ValidationSettingsApi` object provides methods for configuring cart and checkout validation functions. Access the following properties on the `ValidationSettingsApi` object to manage validation settings and metafields.
  */
 export interface ValidationSettingsApi<
   ExtensionTarget extends AnyExtensionTarget,

@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'ActionExtensionApi',
       description:
-        'The `ActionExtensionApi` object provides methods for action extensions that render in modal overlays. Access these properties through the API to interact with the current context and control the modal.',
+        'The `ActionExtensionApi` object provides methods for action extensions that render in modal overlays. Access the following properties on the `ActionExtensionApi` object to interact with the current context, control the modal, and display picker dialogs.',
       type: 'ActionExtensionApi',
     },
   ],
@@ -25,18 +25,18 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Provide clear action names:** Use descriptive action titles that clearly communicate what the action does to help merchants understand the workflow before clicking.\n' +
-        '- **Handle modal state appropriately:** Use `api.close()` to dismiss the modal when tasks complete or when merchants cancel operations.\n' +
-        '- **Validate context data:** Check the `api.data.selected` property to ensure you have the expected resource IDs before performing operations.\n' +
-        '- **Implement error handling:** Display clear error messages when operations fail and provide actionable feedback to help merchants resolve issues.',
+        '- **Check array length for bulk operations:** When actions appear on index pages with bulk selection, `api.data.selected` can contain multiple resources. Check the array length and handle batch operations accordingly.\n' +
+        "- **Use `loading` state on buttons:** Modal actions don't show loading indicators automatically. Use the `loading` prop on [`Button`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button) components during async operations to prevent duplicate submissions.",
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- Action extensions render in modal overlays and must be dismissed explicitly using `api.close()`.\n' +
-        "- Page layout modifications and UI persistence outside the modal context aren't supported.",
+        '- Action extensions must call `api.close()` to dismiss the modal. Modal actions remain open indefinitely until explicitly closed.\n' +
+        "- Modal overlays can't be resized. The modal dimensions are fixed by the Shopify admin.\n" +
+        "- Action extensions can't modify the page layout underneath the modal or persist UI after closing.\n" +
+        "- Multiple modals can't be stacked. Opening a [picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) or [intent](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/intent) closes the current modal context temporarily.",
     },
   ],
 };
