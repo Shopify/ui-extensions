@@ -3,7 +3,7 @@ import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-target
 import type {Data} from '../shared';
 
 /**
- * The `PrintActionExtensionApi` object provides methods for print action extensions that generate custom printable documents. Access these properties through the API to access selected resources for print configuration.
+ * The `PrintActionExtensionApi` object provides methods for print action extensions that generate custom printable documents. Access the following properties on the `PrintActionExtensionApi` object to access selected resources and display picker dialogs for print configuration.
  */
 export interface PrintActionExtensionApi<
   ExtensionTarget extends AnyExtensionTarget,

@@ -57,7 +57,7 @@ enum WeightUnit {
  * The inventory policy that determines whether customers can purchase a variant when it's out of stock. Use this to control checkout behavior for low or zero inventory items.
  */
 enum ProductVariantInventoryPolicy {
-  /** Prevents purchases when inventory reaches zero. Customers cannot add out-of-stock variants to their cart. Use this to avoid overselling. */
+  /** Prevents purchases when inventory reaches zero. Customers can't add out-of-stock variants to their cart. Use this to avoid overselling. */
   Deny = 'DENY',
   /** Allows purchases even when inventory is zero or negative. Customers can continue buying out-of-stock variants. Use this for backorders or made-to-order products. */
   Continue = 'CONTINUE',
@@ -186,7 +186,7 @@ interface Collection extends Resource {
  * A product variant resource selected from the resource picker. Product variants represent specific combinations of product options (for example, a t-shirt in size Medium and color Blue). Use variant data to access pricing, inventory, and option-specific information.
  */
 interface ProductVariant extends Resource {
-  /** Whether the variant is currently available for purchase. When `false`, the variant cannot be added to orders even if inventory exists. Use this to check if customers can buy this variant. */
+  /** Whether the variant is currently available for purchase. When `false`, the variant can't be added to orders even if inventory exists. Use this to check if customers can buy this variant. */
   availableForSale: boolean;
   /** The barcode, UPC, or ISBN number for the variant. Use this to scan products, integrate with inventory systems, or match physical products to Shopify data. */
   barcode?: string | null;
@@ -359,7 +359,7 @@ interface Filters {
 }
 
 /**
- * The `ResourcePickerOptions` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items. Access these properties through the API to configure the resource picker's appearance and functionality.
+ * The `ResourcePickerOptions` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items. Access the following properties on the `ResourcePickerOptions` object to configure the resource picker's appearance and functionality.
  */
 export interface ResourcePickerOptions {
   /**

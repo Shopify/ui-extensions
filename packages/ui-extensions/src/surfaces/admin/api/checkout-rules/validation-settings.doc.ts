@@ -31,19 +31,17 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Validate metafield changes:** Ensure metafield values are valid and properly formatted before calling `applyMetafieldChange` to avoid errors.\n' +
-        '- **Handle operation results:** Check the result `type` for `success` or `error` and display appropriate feedback to merchants.\n' +
-        '- **Use consistent namespaces:** Group related metafields under the same namespace for organized configuration management.\n' +
-        '- **Provide clear UI labels:** Use descriptive field labels and help text to explain how settings affect validation behavior.\n' +
-        "- **Check for existing validation:** Use the presence of `api.data.validation` to determine if you're in create or edit mode and adjust your UI accordingly.",
+        "- **Check operation result type:** `applyMetafieldChange` returns `{ type: 'success' }` or `{ type: 'error', message: string }`. Errors don't throw exceptions, so always check the returned `type` property.",
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- Validation settings are stored as metafields with [size limits](/docs/apps/build/metafields/metafield-limits) per field.\n' +
-        '- Complex validation logic must be implemented in the Shopify Function itself, not in the settings UI.',
+        "- Metafields have [size limits](/docs/apps/build/metafields/metafield-limits). Individual values can't exceed 256KB, and total metafield storage per validation is limited.\n" +
+        '- The `applyMetafieldChange` method is sequential. Operations process one at a time. Rapid successive calls can cause race conditions where later updates overwrite earlier ones.\n' +
+        '- Metafield changes apply immediately. Unlike admin forms, metafield changes persist right away without waiting for merchants to save.\n' +
+        "- Your extension can't modify the Function ID. The `shopifyFunctionId` is read-only and determined when the validation rule is created.",
     },
   ],
 };

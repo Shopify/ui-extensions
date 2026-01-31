@@ -138,7 +138,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'ResourcePickerOptions',
-      description: `The \`ResourcePickerOptions\` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items. Access these properties through the API to configure the resource picker's appearance and functionality.`,
+      description: `The \`ResourcePickerOptions\` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items. Access the following properties on the \`ResourcePickerOptions\` object to configure the resource picker's appearance and functionality.`,
       type: 'ResourcePickerOptions',
     },
     {
@@ -154,19 +154,18 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Choose the right resource type:** Use `product` for selecting items with variants, `variant` for specific SKUs, and `collection` for product groups.\n' +
-        '- **Use appropriate action verbs:** Set `action` to `add` for adding new items or `select` for choosing existing items to match the workflow context.\n' +
-        '- **Apply filters to narrow results:** Use the `filter` option to restrict resources by publication status, variants visibility, or custom search criteria to help merchants find relevant items faster.\n' +
-        '- **Set sensible selection limits:** Use appropriate `multiple` values to match your use case—single selection for unique choices or multiple selection with limits for batch operations.\n' +
-        '- **Handle cancellation gracefully:** Check if the returned value is `undefined` (indicating cancellation) and handle this case appropriately in your workflow.',
+        "- **Filter query runs server-side:** The `query` property in filters isn't visible to merchants and runs as a GraphQL search query. Use it to programmatically restrict results (for example, `vendor:Acme`) without exposing the filter logic.\n" +
+        '- **Handle undefined return on cancellation:** When merchants close the picker without selecting, it returns `undefined` rather than an empty array. Check for `undefined` explicitly.',
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- The Resource Picker API only supports products, variants, and collections.\n' +
-        '- When `type` is `product` and `multiple` is `false`, merchants can still select multiple variants from a single product.',
+        "- Only products, variants, and collections are supported. Other resource types like customers, orders, or locations can't be selected. Use the [Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) for custom resources.\n" +
+        "- Product selection with `multiple: false` doesn't prevent multi-variant selection from the same product. Merchants can select multiple variants from a single product even when `multiple: false`.\n" +
+        "- Filter options are limited to predefined fields (`hidden`, `variants`, `draft`, `archived`, `query`). Custom filter criteria beyond these aren't supported.\n" +
+        '- Returned data structure varies by resource type. Products include a `variants` array, variants include `price` and `inventoryQuantity`, and collections include `ruleSet`.',
     },
   ],
 };
