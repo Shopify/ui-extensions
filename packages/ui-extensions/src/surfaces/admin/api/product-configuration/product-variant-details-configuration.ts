@@ -69,7 +69,7 @@ export interface ProductVariantComponent {
 }
 
 /**
- * The `ProductVariantDetailsConfigurationApi` object provides methods for configuring product variant bundles and relationships. Access these properties through the API to build variant configuration interfaces.
+ * The `ProductVariantDetailsConfigurationApi` object provides methods for configuring product variant bundles and relationships. Access the following properties on the `ProductVariantDetailsConfigurationApi` object to build variant configuration interfaces.
  */
 export interface ProductVariantDetailsConfigurationApi<
   ExtensionTarget extends AnyExtensionTarget,

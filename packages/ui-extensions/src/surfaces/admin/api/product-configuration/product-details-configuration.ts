@@ -63,12 +63,12 @@ export interface ProductComponent {
   productUrl: string;
   /** The count of variants from this product that are used as bundle components. Use this to understand how many variants are configured in bundles. */
   componentVariantsCount: number;
-  /** The count of variants from this product that are not used in any bundles. Use this to identify available variants for adding to bundle configurations. */
+  /** The count of variants from this product that aren't used in any bundles. Use this to identify available variants for adding to bundle configurations. */
   nonComponentVariantsCount: number;
 }
 
 /**
- * The `ProductDetailsConfigurationApi` object provides methods for configuring product bundles and relationships. Access these properties through the API to build product configuration interfaces.
+ * The `ProductDetailsConfigurationApi` object provides methods for configuring product bundles and relationships. Access the following properties on the `ProductDetailsConfigurationApi` object to build product configuration interfaces.
  */
 export interface ProductDetailsConfigurationApi<
   ExtensionTarget extends AnyExtensionTarget,

@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'ProductVariantDetailsConfigurationApi',
       description:
-        'The `ProductVariantDetailsConfigurationApi` object provides access to product variant configuration data and methods. Access these properties through the API to interact with the current product variant context, navigate within the admin, and select resources in the `admin.product-variant-details.configuration.render` target.',
+        'The `ProductVariantDetailsConfigurationApi` object provides access to product variant configuration data and methods. Access the following properties on the `ProductVariantDetailsConfigurationApi` object to interact with the current product variant context, navigate within the admin, and select resources in the `admin.product-variant-details.configuration.render` target.',
       type: 'ProductVariantDetailsConfigurationApi',
     },
   ],
@@ -25,17 +25,18 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Validate component compatibility:** Ensure component variants are compatible with the parent variant before defining bundle relationships.\n' +
-        '- **Show variant details:** Display variant-specific information like SKU, price, and options to help merchants configure appropriate bundle components.\n' +
-        '- **Provide clear configuration UI:** Use descriptive labels and previews to help merchants understand variant-level bundle composition.\n' +
-        '- **Save configuration appropriately:** Store bundle composition data in a format that your app backend can use to construct the variant bundle at purchase time.',
+        '- **Store configuration keyed by variant GID:** Save bundle relationships in metafields on the variant or in your app database using the variant GID as the key for precise variant-level configuration.\n' +
+        '- **Use `type: "variant"` in Resource Picker for precision:** When selecting component variants, use `type: "variant"` in the [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) for precise variant selection rather than product-level selection.\n' +
+        '- **Implement cart transforms to enforce bundles:** Configuration only defines relationships. Use Shopify Functions [cart transforms](/docs/api/functions/latest/cart-transform) to enforce variant-level bundling at checkout based on saved configuration.',
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        'Configuration extensions only define bundle relationships at the variant level in the Shopify admin. Apps must implement the actual bundling logic in checkout using [cart transforms](/docs/api/functions/latest/cart-transform) or other mechanisms.',
+        "- Configuration extensions only render in the admin. They don't affect storefront or checkout behavior. You must implement separate logic for storefront bundle display and checkout enforcement.\n" +
+        "- Bundles aren't enforced automatically. Configuration doesn't automatically create bundles. You must implement [cart transforms](/docs/api/functions/latest/cart-transform) to enforce bundling when variants are added to cart.\n" +
+        "- Your extension can't directly modify variant properties. The API is read-only for variant data. Use GraphQL mutations like [`productVariantsBulkUpdate`](/docs/api/admin-graphql/latest/mutations/productVariantsBulkUpdate) if you need to update variants.",
     },
   ],
 };
