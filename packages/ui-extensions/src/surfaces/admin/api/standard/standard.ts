@@ -32,16 +32,6 @@ export interface GraphQLError {
 }
 
 /**
- * The `Auth` object provides authentication methods for secure communication with your app backend.
- */
-interface Auth {
-  /**
-   * Retrieves a [Shopify OpenID Connect ID token](/docs/api/app-home/apis/id-token) for the current user. Use this token to authenticate requests to your app backend and verify the user's identity. The token is a signed JWT that contains user information and can be validated using Shopify's public keys. Returns `null` if the token can't be retrieved.
-   */
-  idToken: () => Promise<string | null>;
-}
-
-/**
  * The `StandardApi` object provides core methods available to all extension targets. Access the following properties on the `StandardApi` object to authenticate users, query the [GraphQL Admin API](/docs/api/admin-graphql), translate content, handle intents, and persist data.
  */
 export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
@@ -51,11 +41,6 @@ export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
   extension: {
     target: ExtensionTarget;
   };
-
-  /**
-   * Provides methods for authenticating calls to your app backend. Use the `idToken()` method to retrieve a signed JWT token that verifies the current user's identity for secure server-side operations.
-   */
-  auth: Auth;
 
   /**
    * Utilities for translating content according to the current localization of the admin. Use these methods to provide translated strings that match the merchant's language preferences, ensuring your extension is accessible to a global audience.
