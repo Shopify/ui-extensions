@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'ProductDetailsConfigurationApi',
       description:
-        'The `ProductDetailsConfigurationApi` object provides access to product configuration data and methods. Access these properties through the API to interact with the current product context, navigate within the admin, and select resources in the `admin.product-details.configuration.render` target.',
+        'The `ProductDetailsConfigurationApi` object provides access to product configuration data and methods. Access the following properties on the `ProductDetailsConfigurationApi` object to interact with the current product context, navigate within the admin, and select resources in the `admin.product-details.configuration.render` target.',
       type: 'ProductDetailsConfigurationApi',
     },
   ],
@@ -25,17 +25,18 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Validate product relationships:** Ensure component products are compatible and available before defining bundle relationships.\n' +
-        '- **Handle variant complexity:** Account for products with multiple variants when configuring bundle components.\n' +
-        '- **Provide clear configuration UI:** Use descriptive labels and previews to help merchants understand bundle composition.\n' +
-        '- **Save configuration appropriately:** Store bundle composition data in a format that your app backend can use to construct the bundle at purchase time.',
+        '- **Design for products with multiple variants:** Products in `api.data.selected` may have multiple variants. Design your bundle configuration to either apply to all variants or allow variant-level configuration.\n' +
+        '- **Use the Resource Picker to select components:** Use the [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to let merchants select component products for bundle configurations.\n' +
+        '- **Implement cart transforms to enforce bundles:** Configuration only defines relationships in admin. Use Shopify Functions [cart transforms](/docs/api/functions/latest/cart-transform) to actually bundle products at checkout based on your saved configuration.',
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        'Configuration extensions only define bundle relationships in the Shopify admin. Apps must implement the actual bundling logic in checkout using [cart transforms](/docs/api/functions/latest/cart-transform) or other mechanisms.',
+        "- Configuration extensions only render in the admin. They don't affect storefront display or checkout behavior. You must implement storefront and checkout logic separately.\n" +
+        "- Bundles aren't enforced automatically. Saving configuration doesn't automatically create bundles. You must implement [cart transforms](/docs/api/functions/latest/cart-transform) or other mechanisms to enforce bundling at purchase time.\n" +
+        "- Your extension can't directly modify product properties. The API is read-only for product data. Use GraphQL mutations like [`productUpdate`](/docs/api/admin-graphql/latest/mutations/productUpdate) to update products if needed.",
     },
   ],
 };

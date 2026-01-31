@@ -16,7 +16,7 @@ export interface Navigation {
 }
 
 /**
- * The `BlockExtensionApi` object provides methods for block extensions that render inline content on admin pages. Access these properties through the API to interact with the current context and navigate to other extensions.
+ * The `BlockExtensionApi` object provides methods for block extensions that render inline content on admin pages. Access the following properties on the `BlockExtensionApi` object to interact with the current context, navigate to other extensions, and display picker dialogs.
  */
 export interface BlockExtensionApi<ExtensionTarget extends AnyExtensionTarget>
   extends StandardApi<ExtensionTarget> {
