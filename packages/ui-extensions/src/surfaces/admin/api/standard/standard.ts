@@ -30,13 +30,13 @@ export interface GraphQLError {
  */
 interface Auth {
   /**
-   * Retrieves a [Shopify OpenID Connect ID token](/docs/api/app-home/apis/id-token) for the current user. Use this token to authenticate requests to your app backend and verify the user's identity. The token is a signed JWT that contains user information and can be validated using Shopify's public keys. Returns `null` if the token cannot be retrieved.
+   * Retrieves a [Shopify OpenID Connect ID token](/docs/api/app-home/apis/id-token) for the current user. Use this token to authenticate requests to your app backend and verify the user's identity. The token is a signed JWT that contains user information and can be validated using Shopify's public keys. Returns `null` if the token can't be retrieved.
    */
   idToken: () => Promise<string | null>;
 }
 
 /**
- * The `StandardApi` object provides core methods available to all extension targets. Access these properties through the API to authenticate users, query the [GraphQL Admin API](/docs/api/admin-graphql), translate content, handle intents, and persist data.
+ * The `StandardApi` object provides core methods available to all extension targets. Access the following properties on the `StandardApi` object to authenticate users, query the [GraphQL Admin API](/docs/api/admin-graphql), translate content, handle intents, and persist data.
  */
 export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
   /**

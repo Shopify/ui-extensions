@@ -88,7 +88,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          "Providing disabled items in the picker. These will be disabled and can't be selected by the user.",
+          "Providing disabled items in the picker. These are disabled and can't be selected by the user.",
         codeblock: {
           title: 'Disabled items',
           tabs: [
@@ -108,18 +108,17 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Use clear, descriptive headings:** Choose picker titles that clearly explain what merchants are selecting to reduce confusion.\n' +
-        '- **Provide meaningful item data:** Include relevant information in item headings and data columns to help merchants make informed selections.\n' +
-        '- **Use badges appropriately:** Add status badges to highlight item states, completion levels, or important attributes that affect selection.\n' +
-        '- **Include thumbnails for visual items:** Add preview images to help merchants visually identify items, especially for templates, designs, or products.\n' +
-        '- **Set sensible selection limits:** Use appropriate `multiple` values to match your use case—single selection for unique choices, limited selection for constrained scenarios, or unlimited for flexible selection.',
+        '- **Handle undefined return on cancellation:** When merchants cancel or close the picker, it returns `undefined` rather than an empty array. Check for `undefined` explicitly to distinguish cancellation from empty selection.\n' +
+        '- **Disable items to prevent modification:** Use the `disabled` property on items combined with `initialSelectionIds` to create preselected items that merchants cannot deselect.',
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        'The Picker API is designed for app-specific data. For selecting Shopify products, variants, or collections, use the [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) instead.',
+        "- The Picker API only supports app-specific data. It can't display Shopify resources like products or variants. Use [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) for Shopify resources.\n" +
+        "- Picker items don't support hierarchical or nested structures. All items appear in a flat list.\n" +
+        "- The picker can't be customized with additional filters, search operators, or sorting beyond what merchants type in the search field.",
     },
   ],
 };

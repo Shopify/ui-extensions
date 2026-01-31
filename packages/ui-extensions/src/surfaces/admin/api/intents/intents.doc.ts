@@ -163,7 +163,7 @@ The following tables show which resource types you can create or edit, and what 
 | \`edit\` | \`shopify/ProductVariant\` | \`gid://shopify/ProductVariant/{id}\` | \`{ productId: 'gid://shopify/Product/{id}' }\` |
 
 > Note:
-> When editing products with variants, query the [\`product.hasOnlyDefaultVariant\`](/docs/api/admin-graphql/latest/objects/Product#field-Product.fields.hasOnlyDefaultVariant) field first. If \`true\`, use the \`shopify/Product\` edit intent. If \`false\`, use the \`shopify/ProductVariant\` edit intent for specific variants.`,
+> When editing products with variants, query the [\`product.hasOnlyDefaultVariant\`](/docs/api/admin-graphql/latest/objects/Product#field-Product.fields.hasOnlyDefaultVariant) field first. If \`true\`, then use the \`shopify/Product\` edit intent. If \`false\`, then use the \`shopify/ProductVariant\` edit intent for specific variants.`,
       type: 'IntentInvokeApi',
     },
     {
@@ -580,19 +580,20 @@ The following tables show which resource types you can create or edit, and what 
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Await workflow completion:** Always await `activity.complete` to handle the workflow result and determine if the merchant completed, cancelled, or encountered an error.\n' +
-        '- **Provide required data:** Include necessary context data for resource types that require it (for example, discount type for discounts, product ID for variants).\n' +
-        '- **Handle all response codes:** Check the response `code` property and handle `ok` (success), `error` (failure), and `closed` (cancellation) appropriately.\n' +
-        '- **Use structured queries for complex operations:** When passing multiple parameters, use the object format with the `data` property rather than string concatenation.\n' +
-        '- **Display meaningful feedback:** Show appropriate success messages, error details, or cancellation confirmations based on the workflow outcome.',
+        "- **Parse `ErrorIntentResponse.issues` array for specific feedback:** When `code: 'error'`, the `issues` array contains structured validation errors with field paths and messages. Use this to show specific error feedback rather than generic error messages.\n" +
+        "- **Distinguish `closed` from `error`:** `code: 'closed'` means the merchant cancelled, while `code: 'error'` means validation or save failures. Handle these differently. Closed isn't an error state.\n" +
+        '- **Query `product.hasOnlyDefaultVariant` before editing:** If the value is `false`, use the `shopify/ProductVariant` edit intent instead of `shopify/Product` to edit specific variants.',
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        "- Intents launch native Shopify admin workflows that can't be customized.\n" +
-        "- Workflow UI appearance and behavior aren't configurable. Extensions only receive the result when the workflow completes.",
+        "- Some resources require `data` for create operations. Discounts need `{ type: 'amount-off-product' }`, variants need `{ productId: 'gid://...' }`, and metaobjects need `{ type: 'definition-type' }`. Missing required data causes the intent to fail.\n" +
+        "- MetaobjectDefinition edit requires `{ data: { type: 'definition-type' }}` instead of passing the GID in `value`. It's the only resource with this pattern.\n" +
+        "- Intent workflows pause your extension until completion. You can't run other operations while an intent is open.\n" +
+        "- The workflow UI can't be customized. Field order, labels, and validation messages are controlled by Shopify and can't be modified.\n" +
+        "- Your extension only receives the final result. Intermediate workflow state and partial saves aren't communicated back to your extension.",
     },
   ],
 };

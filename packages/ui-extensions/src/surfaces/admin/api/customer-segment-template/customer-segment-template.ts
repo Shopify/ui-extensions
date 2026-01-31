@@ -3,7 +3,7 @@ import type {I18n} from '../../../../api';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
 
 /**
- * The `CustomerSegmentTemplateApi` object provides methods for creating customer segment templates. Access these properties through the API to build templates with translated content.
+ * The `CustomerSegmentTemplateApi` object provides methods for creating customer segment templates. Access the following properties on the `CustomerSegmentTemplateApi` object to build templates with translated content.
  */
 export interface CustomerSegmentTemplateApi<
   ExtensionTarget extends AnyExtensionTarget,
@@ -32,11 +32,11 @@ export interface CustomerSegmentTemplate {
    */
   description: string | string[];
   /**
-   * The segment query code to display in the template with syntax highlighting. This code is shown to merchants but not validated.
+   * The segment query code to display in the template with syntax highlighting. This code is shown to merchants but not validated. Test your queries in the Shopify admin segment editor before including them in templates.
    */
   query: string;
   /**
-   * The segment query code to insert when the merchant selects this template. If omitted, the `query` value is used instead. This code is inserted into the editor but not validated.
+   * The segment query code to insert when the merchant selects this template. If omitted, the `query` value is used instead. This code is inserted into the editor but not validated. Test your queries in the Shopify admin segment editor before including them in templates.
    */
   queryToInsert: string;
   /**
@@ -49,7 +49,7 @@ export interface CustomerSegmentTemplate {
     customMetafields?: string[];
   };
   /**
-   * The creation date in ISO 8601 format. Templates created within the last month display a "New" badge.
+   * The creation date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Templates created within the last month display a "New" badge.
    */
   createdOn: string;
 }

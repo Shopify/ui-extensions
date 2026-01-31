@@ -42,7 +42,7 @@ export interface Storage<
   ): Promise<StorageTypes[Keys] | undefined>;
 
   /**
-   * Gets the values of multiple keys in the storage at once. Use this to efficiently retrieve related data in a single operation, reducing overhead when loading multiple stored values. The returned array is in the same order as the provided keys, with `undefined` values for keys that do not exist in storage.
+   * Gets the values of multiple keys in the storage at once. Use this to efficiently retrieve related data in a single operation, reducing overhead when loading multiple stored values. The returned array is in the same order as the provided keys, with `undefined` values for keys that don't exist in storage.
    *
    * @param keys - An array of keys to get the values for.
    * @returns An array containing values for the requested keys, in the same order as the input keys.
