@@ -2,7 +2,7 @@ import {ActionExtensionApi} from '../action/action';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
 
 /**
- * The `PurchaseOptionsCardConfigurationApi` object provides methods for action extensions that interact with purchase options and selling plans. Access these properties through the API to work with selected products and their associated subscription configurations.
+ * The `PurchaseOptionsCardConfigurationApi` object provides methods for action extensions that interact with purchase options and selling plans. Access the following properties on the `PurchaseOptionsCardConfigurationApi` object to work with selected products and their associated subscription configurations.
  */
 export interface PurchaseOptionsCardConfigurationApi<
   ExtensionTarget extends AnyExtensionTarget,

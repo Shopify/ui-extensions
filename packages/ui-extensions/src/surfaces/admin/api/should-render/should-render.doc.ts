@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'ShouldRenderApi',
       description:
-        'The `ShouldRenderApi` object provides methods for controlling action extension visibility. Access these properties through the API to determine whether an associated action should appear based on the current context.',
+        'The `ShouldRenderApi` object provides methods for controlling action extension visibility. Access the following properties on the `ShouldRenderApi` object to determine whether an associated action should appear based on the current context.',
       type: 'ShouldRenderApi',
     },
   ],
@@ -23,19 +23,17 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Keep logic simple and fast:** `shouldRender` runs on every page load, so use efficient checks and avoid expensive operations or API calls.\n' +
-        '- **Validate context data:** Check the `api.data.selected` property to ensure resource IDs are available before evaluating rendering logic.\n' +
-        '- **Return boolean values:** Always return `true` or `false` explicitly to control action visibility predictably.\n' +
-        '- **Handle errors gracefully:** If evaluation fails, return `false` to hide the action rather than showing broken functionality.\n' +
-        '- **Use for meaningful conditions:** Only implement `shouldRender` when you have specific criteria for showing/hiding actions.',
+        '- **Keep evaluation under ~50ms:** Slow `shouldRender` functions delay page rendering for all merchants. Profile your logic and optimize for speed.',
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        "- `should-render` targets execute synchronously on page load. Asynchronous operations like API calls aren't supported.\n" +
-        '- Evaluation must complete quickly to avoid degrading page performance.',
+        '- The function must return an object with a `display` property. Returning a plain boolean like `true` instead of `{ display: true }` will fail.\n' +
+        "- No asynchronous operations are supported. Async functions, promises, fetch calls, and timers won't work.\n" +
+        "- Your extension can't access external data sources. Evaluation is limited to data available in `api.data.selected` and in-memory state.\n" +
+        "- No re-evaluation occurs after initial render. If conditions change after page load, the action visibility doesn't update dynamically.",
     },
   ],
 };
