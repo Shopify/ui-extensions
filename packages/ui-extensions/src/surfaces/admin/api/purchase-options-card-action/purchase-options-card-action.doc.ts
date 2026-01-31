@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'PurchaseOptionsCardConfigurationApi',
       description:
-        'The `PurchaseOptionsCardConfigurationApi` object provides access to selected purchase option data. Access these properties through the API to interact with currently selected products and selling plans in the `admin.product-purchase-option.action.render` and `admin.product-variant-purchase-option.action.render` targets.',
+        'The `PurchaseOptionsCardConfigurationApi` object provides access to selected purchase option data. Access the following properties on the `PurchaseOptionsCardConfigurationApi` object to interact with currently selected products and selling plans in the `admin.product-purchase-option.action.render` and `admin.product-variant-purchase-option.action.render` targets.',
       type: 'PurchaseOptionsCardConfigurationApi',
     },
   ],
@@ -25,19 +25,17 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Validate selling plan data:** Check that `sellingPlanId` is present when working with subscription products before performing operations.\n' +
-        '- **Handle both product and variant selections:** Account for both product-level and variant-level selections in your action logic.\n' +
-        '- **Provide clear action names:** Use descriptive titles that explain what the action does with purchase options to help merchants understand the workflow.\n' +
-        '- **Handle modal state appropriately:** Use `api.close()` to dismiss the modal when tasks complete or when merchants cancel operations.\n' +
-        '- **Display subscription context:** Show selling plan information to help merchants understand which subscription options are affected.',
+        '- **Handle operations based on selling plan selection:** Items in `api.data.selected` have an optional `sellingPlanId` property. When present, perform subscription-specific operations. When absent, treat it as a one-time purchase.',
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- Purchase option actions only appear when a selling plan group is present on the product or variant.\n' +
-        "- Direct modification of selling plan configurations isn't supported.",
+        '- The action only appears when selling plan groups exist on the product or variant. The action is hidden for products without subscription options, even if your extension is installed.\n' +
+        '- Items in `api.data.selected` have an optional `sellingPlanId` property. When present, the merchant selected a specific selling plan. When absent, they selected the product/variant without a specific plan.\n' +
+        "- Your extension can't modify selling plan configurations. The API is read-only for selling plan data. Use GraphQL mutations to update selling plans if needed.\n" +
+        '- Selection data only includes IDs. You must query GraphQL for full product, variant, and selling plan details like billing policy and pricing adjustments. Selling plan group data is also unavailable. Your extension only receives individual selling plan IDs but not the parent selling plan group structure.',
     },
   ],
 };
