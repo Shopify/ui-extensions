@@ -84,7 +84,7 @@ interface Item {
    */
   data?: DataPoint[];
   /**
-   * Whether the item can be selected. When `true`, the item is disabled and cannot be selected. Disabled items appear grayed out and merchants cannot choose them. Use this for items that are unavailable or don't meet selection criteria.
+   * Whether the item can be selected. When `true`, the item is disabled and can't be selected. Disabled items appear grayed out and merchants can't choose them. Use this for items that are unavailable or don't meet selection criteria.
    * @defaultValue false
    */
   disabled?: boolean;

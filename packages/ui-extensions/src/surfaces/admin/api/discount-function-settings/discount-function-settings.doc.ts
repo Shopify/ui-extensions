@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Discount Function Settings API',
   description:
-    'The Discount Function Settings API lets you [build a UI extension for discount functions](/docs/apps/build/discounts/build-ui-extension) that provides custom configuration interfaces. Use this API to manage discount function settings and build settings interfaces for [Shopify Functions](/docs/apps/build/functions) that implement discount logic.',
+    'The Discount Function Settings API lets you build UI extensions that provide custom configuration interfaces for [discount functions](/docs/apps/build/discounts/build-ui-extension). Use this API to create settings pages for [Shopify Functions](/docs/apps/build/functions) that implement discount logic.',
   isVisualComponent: false,
   type: 'API',
   requires:
@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'applyMetafieldChange',
       description:
-        'Applies a [metafield](/docs/apps/build/metafields) change to the discount function settings. Use this method to update or remove metafields that store function configuration data. The method accepts a change object specifying the operation type, metafield key, namespace, value, and [value type](/docs/apps/build/metafields/list-of-data-types). Returns a promise that resolves to indicate success or provides an error message if the operation fails.',
+        'Updates or removes [metafields](/docs/apps/build/metafields) that store discount function configuration data. Accepts a change object with the operation type, key, namespace, value, and [value type](/docs/apps/build/metafields/list-of-data-types).',
       type: 'ApplyMetafieldChange',
     },
     {
@@ -31,19 +31,16 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Validate metafield changes:** Ensure metafield values are valid and properly formatted before calling `applyMetafieldChange` to avoid errors.\n' +
-        '- **Handle operation results:** Check the result `type` for `success` or `error` and display appropriate feedback to merchants.\n' +
-        '- **Use consistent namespaces:** Group related metafields under the same namespace for organized configuration management.\n' +
-        '- **Provide clear UI labels:** Use descriptive field labels and help text to explain how settings affect discount behavior.\n' +
-        '- **Load existing settings:** Use `api.data.metafields` to populate your UI with current configuration values when merchants edit existing discounts.',
+        "- **Check operation result type:** `applyMetafieldChange` returns `{ type: 'success' }` or `{ type: 'error', message: string }`. Errors don't throw exceptions, so always check the returned `type` property.",
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- Discount function settings are stored as metafields with [size limits](/docs/apps/build/metafields/metafield-limits) per field.\n' +
-        '- The `applyMetafieldChange` method processes one metafield operation at a time.',
+        "- Metafields are subject to [size limits](/docs/apps/build/metafields/metafield-limits). Individual metafield values can't exceed 256KB, and total metafields per resource have storage limits.\n" +
+        '- The `applyMetafieldChange` method is sequential. Operations are processed one at a time. Rapid successive calls may lead to race conditions where later updates overwrite earlier ones.\n' +
+        '- Metafield changes are applied immediately. Unlike some admin forms, metafield changes persist right away without waiting for the merchant to save the discount.',
     },
   ],
 };

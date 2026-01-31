@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'BlockExtensionApi',
       description:
-        'The `BlockExtensionApi` object provides methods for block extensions that render inline content on admin pages. Access these properties through the API to interact with the current context, navigate to other extensions, and display picker dialogs.',
+        'The `BlockExtensionApi` object provides methods for block extensions that render inline content on admin pages. Access the following properties on the `BlockExtensionApi` object to interact with the current context, navigate to other extensions, and display picker dialogs.',
       type: 'BlockExtensionApi',
     },
   ],
@@ -25,19 +25,17 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Keep content contextual:** Display information relevant to the current page and resource being viewed to provide immediate value to merchants.\n' +
-        '- **Validate context data:** Check the `api.data.selected` property to ensure you have the expected resource IDs before fetching or displaying data.\n' +
-        '- **Handle loading states:** Display appropriate loading indicators when your block is fetching data or processing operations.\n' +
-        '- **Design for varied placements:** Blocks can appear alongside other extensions, so design UI that works in different contexts and viewport sizes.\n' +
-        '- **Use navigation and pickers effectively:** Use the `api.navigation` property to navigate between extensions and [Resource Picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) or [Picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) APIs for resource selection to create seamless workflows within your block.',
+        '- **Test layouts at narrow widths:** Block extensions render in responsive containers that resize with browser width. Test down to ~300px where blocks stack vertically to ensure your UI remains usable.\n' +
+        '- **Defer expensive operations until user interaction:** Blocks render immediately when pages load. Defer expensive operations until user interaction to avoid slowing down page rendering for merchants.',
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- Block extensions render inline within Shopify admin pages and share space with other extensions.\n' +
-        "- You can't configure a block's placement order or exclusive positioning on the page.",
+        "- Block extensions share horizontal space with other blocks and must adapt to variable container widths. Placement order is determined by Shopify and can't be configured.\n" +
+        "- Navigation is limited to action extensions on the same resource page. You can't navigate to detail pages of other resources or to index pages.\n" +
+        "- Block extensions don't have access to information about other extensions on the page and can't communicate with them.",
     },
   ],
 };
