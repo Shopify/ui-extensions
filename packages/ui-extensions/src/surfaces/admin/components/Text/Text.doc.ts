@@ -7,32 +7,34 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Adding inline text elements such as labels or line errors.
-- Applying different visual tones and text styles to specific words or phrases within a \`s-paragraph\`, such as a \`strong\` type or \`critical\` tone.`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Text elements display inline and will flow on the same line when placed next to each other. To stack multiple text elements vertically, wrap them in a Stack container or use multiple \`s-paragraph\` components.
-- Use plain and clear terms.
-- Don't use jargon or technical language.
-- Don't use different terms to describe the same thing.
-- Don't duplicate content.`,
+      sectionContent: `- **Apply semantic types to improve meaning:** Use code for technical identifiers like API keys, cite for quoted sources, and address for physical locations. Semantic types help screen readers convey the correct meaning to users.
+- **Emphasize sparingly and strategically:** Use strong to emphasize key words or numbers within sentences, not entire sentences. Too much emphasis dilutes its effectiveness and makes content harder to scan.
+- **Choose appropriate tones for status:** Apply tones like critical, success, or caution to communicate status inline. Tones draw attention to important information but work best when paired with clear language, not used alone.
+- **Consider contrast for subdued text:** Subdued text works well for timestamps and metadata, but avoid using it for critical information that merchants must read.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- Text renders inline by default and flows with surrounding content. For block-level text with spacing, use the [\`Paragraph\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/paragraph) component or wrap in layout components.
+- The component doesn't include text truncation or ellipsis. Long text will wrap or overflow depending on the container. Use other components like [\`Heading\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/heading) with line clamping if truncation is needed.
+- Tone colors are optimized for light backgrounds. Using tones on dark or colored backgrounds may not meet accessibility contrast requirements.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the `Text` component.',
       type: 'Text',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The `Text` component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TextSlots',
     },
   ],
