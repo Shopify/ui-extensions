@@ -8,33 +8,75 @@
 /// <reference lib="DOM" />
 import type {ComponentChildren, TableHeaderProps$1} from './shared.d.ts';
 
+/**
+ * The format type for a table header, which determines how the cell content is displayed.
+ */
 export type HeaderFormat = Extract<
   TableHeaderProps$1['format'],
   'base' | 'currency' | 'numeric'
 >;
+/**
+ * The properties you can set on a `TableHeader` component.
+ */
 export interface TableHeaderProps
   extends Pick<TableHeaderProps$1, 'listSlot' | 'format'> {
+  /**
+   * The slot where this header's data appears in list view. The options include `primary` for the main content, `secondary` for supporting text, `labeled` for labeled data, `kicker` for small text above the primary content, or `inline` for inline content.
+   */
   listSlot: Extract<
     TableHeaderProps$1['listSlot'],
     'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'
   >;
+  /**
+   * The format of the header, which affects how the cell content is aligned and displayed. Use `base` for standard text, `currency` for monetary values, or `numeric` for numbers.
+   */
   format: HeaderFormat;
 }
 
+/**
+ * A string that contains CSS styles to apply to the component.
+ */
 export type Styles = string;
+/**
+ * The implementation details for rendering a Preact custom element with a shadow root.
+ */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  /**
+   * The function that renders the component's shadow root content.
+   */
   ShadowRoot: (element: any) => ComponentChildren;
+  /**
+   * The CSS styles to apply to the component.
+   */
   styles?: Styles;
 };
+/**
+ * An object that resembles an activation event, containing information about which modifier keys were pressed and which mouse button was used.
+ */
 export interface ActivationEventEsque {
+  /**
+   * Whether the Shift key was pressed during the event.
+   */
   shiftKey: boolean;
+  /**
+   * Whether the Meta key (Command on Mac, Windows key on Windows) was pressed during the event.
+   */
   metaKey: boolean;
+  /**
+   * Whether the Control key was pressed during the event.
+   */
   ctrlKey: boolean;
+  /**
+   * The mouse button that was pressed. A value of `0` means the primary button (usually left), `1` means the middle button, and `2` means the secondary button (usually right).
+   */
   button: number;
 }
+/**
+ * The options for customizing how a synthetic click is performed.
+ */
 export interface ClickOptions {
   /**
-   * The event you want to influence the synthetic click.
+   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
    */
   sourceEvent?: ActivationEventEsque;
 }
@@ -81,27 +123,49 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-/** Used when an element does not have children. */
+/**
+ * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
+  /**
+   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   */
   key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
+  /**
+   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   */
   ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
+  /**
+   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. */
+/**
+ * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
 }
 
+/**
+ * A component that defines a column header in a table, which specifies both the header label and how the column's data should be formatted.
+ */
 declare class TableHeader
   extends PreactCustomElement
   implements TableHeaderProps
 {
+  /**
+   * The slot where this header's data appears when the table is shown in list view.
+   */
   accessor listSlot: TableHeaderProps['listSlot'];
+  /**
+   * The format of the header and its corresponding cells.
+   */
   accessor format: TableHeaderProps['format'];
+  /**
+   * Creates a new `TableHeader` instance.
+   */
   constructor();
 }
 declare global {
@@ -118,12 +182,18 @@ declare module 'preact' {
   }
 }
 
+/**
+ * The custom element tag name for the `TableHeader` component.
+ */
 declare const tagName = 's-table-header';
+/**
+ * The JSX properties you can set on a `TableHeader` component.
+ */
 export interface TableHeaderJSXProps
   extends Partial<TableHeaderProps>,
     Pick<TableHeaderProps$1, 'id' | 'children'> {
   /**
-   * The heading of the column in the `table` variant, and the label of its data in `list` variant.
+   * The heading of the column when the table uses the `table` variant, and the label of its data when the table uses the `list` variant.
    */
   children?: ComponentChildren;
 }

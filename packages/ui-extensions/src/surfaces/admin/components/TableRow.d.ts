@@ -7,23 +7,56 @@
 /// <reference lib="DOM" />
 import type {ComponentChildren, TableRowProps$1} from './shared.d.ts';
 
+/**
+ * The properties you can set on a `TableRow` component.
+ */
 export interface TableRowProps
   extends Pick<TableRowProps$1, 'children' | 'clickDelegate'> {}
 
+/**
+ * A string that contains CSS styles to apply to the component.
+ */
 export type Styles = string;
+/**
+ * The implementation details for rendering a Preact custom element with a shadow root.
+ */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  /**
+   * The function that renders the component's shadow root content.
+   */
   ShadowRoot: (element: any) => ComponentChildren;
+  /**
+   * The CSS styles to apply to the component.
+   */
   styles?: Styles;
 };
+/**
+ * An object that resembles an activation event, containing information about which modifier keys were pressed and which mouse button was used.
+ */
 export interface ActivationEventEsque {
+  /**
+   * Whether the Shift key was pressed during the event.
+   */
   shiftKey: boolean;
+  /**
+   * Whether the Meta key (Command on Mac, Windows key on Windows) was pressed during the event.
+   */
   metaKey: boolean;
+  /**
+   * Whether the Control key was pressed during the event.
+   */
   ctrlKey: boolean;
+  /**
+   * The mouse button that was pressed. A value of `0` means the primary button (usually left), `1` means the middle button, and `2` means the secondary button (usually right).
+   */
   button: number;
 }
+/**
+ * The options for customizing how a synthetic click is performed.
+ */
 export interface ClickOptions {
   /**
-   * The event you want to influence the synthetic click.
+   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
    */
   sourceEvent?: ActivationEventEsque;
 }
@@ -70,23 +103,42 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-/** Used when an element does not have children. */
+/**
+ * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
+  /**
+   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   */
   key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
+  /**
+   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   */
   ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
+  /**
+   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. */
+/**
+ * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
 }
 
+/**
+ * A component that represents a single row in a table, which contains the data cells.
+ */
 declare class TableRow extends PreactCustomElement implements TableRowProps {
+  /**
+   * Creates a new `TableRow` instance.
+   */
   constructor();
+  /**
+   * A CSS selector for a child element that should handle clicks on the entire row. When you set this property, clicking anywhere on the row will trigger a click on the element that matches the selector.
+   */
   accessor clickDelegate: string;
 }
 declare global {
@@ -103,12 +155,18 @@ declare module 'preact' {
   }
 }
 
+/**
+ * The custom element tag name for the `TableRow` component.
+ */
 declare const tagName = 's-table-row';
+/**
+ * The JSX properties you can set on a `TableRow` component.
+ */
 export interface TableRowJSXProps
   extends Partial<TableRowProps>,
     Pick<TableRowProps$1, 'id' | 'children'> {
   /**
-   * The content of a TableRow, which should be `TableCell` components.
+   * The content to display inside the row, which should include `TableCell` components.
    */
   children?: ComponentChildren;
 }

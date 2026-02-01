@@ -8,35 +8,87 @@
 /// <reference lib="DOM" />
 import type {DividerProps$1, ComponentChildren} from './shared.d.ts';
 
+/**
+ * The properties for the `Divider` component. A `Divider` creates a visual separator to distinguish different sections of content.
+ */
 export interface DividerProps
   extends Pick<DividerProps$1, 'direction' | 'color'> {
+  /**
+   * The orientation of the divider line, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+   *
+   * - `inline`: Horizontal divider for separating vertically stacked content
+   * - `block`: Vertical divider for separating horizontally arranged content
+   *
+   * @default 'inline'
+   */
   direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
+  /**
+   * The visual prominence of the divider line.
+   *
+   * - `base`: Standard divider for most separations (default)
+   * - `strong`: More prominent divider for major section breaks
+   *
+   * @default 'base'
+   */
   color: Extract<DividerProps$1['color'], 'base' | 'strong'>;
 }
 
+/**
+ * A string containing CSS styles for a custom element.
+ */
 export type Styles = string;
+/**
+ * The configuration for rendering a custom element with Preact.
+ */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  /**
+   * The function that renders the shadow root content.
+   */
   ShadowRoot: (element: any) => ComponentChildren;
+  /**
+   * The optional CSS styles to apply to the shadow root.
+   */
   styles?: Styles;
 };
+/**
+ * An interface representing the properties of an activation event, such as a click or keypress.
+ */
 export interface ActivationEventEsque {
+  /**
+   * Whether the shift key was pressed during the event.
+   */
   shiftKey: boolean;
+  /**
+   * Whether the meta key (Command on Mac, Windows key on PC) was pressed during the event.
+   */
   metaKey: boolean;
+  /**
+   * Whether the control key was pressed during the event.
+   */
   ctrlKey: boolean;
+  /**
+   * The mouse button that was pressed (0 for left, 1 for middle, 2 for right).
+   */
   button: number;
 }
+/**
+ * The options for triggering a synthetic click event.
+ */
 export interface ClickOptions {
   /**
-   * The event you want to influence the synthetic click.
+   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
    */
   sourceEvent?: ActivationEventEsque;
 }
 /**
- * Base class for creating custom elements with Preact.
+ * The base class for creating custom elements with Preact.
  * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
  * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
+/**
+ * An abstract base class for creating custom elements that render with Preact.
+ */
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
@@ -74,18 +126,45 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-/** Used when an element does not have children. */
+/**
+ * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
+  /**
+   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   */
   key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
+  /**
+   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   */
   ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
+  /**
+   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   */
   slot?: Lowercase<string>;
 }
 
+/**
+ * A `Divider` is a visual separator that creates a line between different sections of content.
+ */
 declare class Divider extends PreactCustomElement implements DividerProps {
+  /**
+   * The orientation of the divider line, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+   *
+   * - `inline`: Horizontal divider for separating vertically stacked content
+   * - `block`: Vertical divider for separating horizontally arranged content
+   *
+   * @default 'inline'
+   */
   accessor direction: DividerProps['direction'];
+  /**
+   * The visual prominence of the divider line.
+   *
+   * - `base`: Standard divider for most separations (default)
+   * - `strong`: More prominent divider for major section breaks
+   *
+   * @default 'base'
+   */
   accessor color: DividerProps['color'];
   constructor();
 }
@@ -103,6 +182,9 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-divider';
+/**
+ * The properties for the `Divider` component when it's used in JSX.
+ */
 export interface DividerJSXProps
   extends Partial<DividerProps>,
     Pick<DividerProps$1, 'id'> {}

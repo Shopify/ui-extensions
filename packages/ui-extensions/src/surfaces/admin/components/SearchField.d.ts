@@ -8,44 +8,104 @@
 /// <reference lib="DOM" />
 import type {TextFieldProps, ComponentChildren} from './shared.d.ts';
 
+/**
+ * An event that includes a strongly-typed reference to the element that triggered it.
+ */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  /**
+   * The element that the event handler was attached to.
+   */
   currentTarget: HTMLElementTagNameMap[T];
 };
+/**
+ * A function that handles events for a specific element type, or null if no handler is set.
+ */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
       (event: CallbackEvent<T>): void;
     })
   | null;
+/**
+ * Event handlers for field interactions in React-style syntax.
+ */
 export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
+  /**
+   * A callback that's triggered when the field's value changes as the user types.
+   */
   onInput?: ((event: CallbackEvent<T>) => void) | null;
+  /**
+   * A callback that's triggered when the field's value changes and the field loses focus.
+   */
   onChange?: ((event: CallbackEvent<T>) => void) | null;
+  /**
+   * A callback that's triggered when the field receives focus.
+   */
   onFocus?: ((event: CallbackEvent<T>) => void) | null;
+  /**
+   * A callback that's triggered when the field loses focus.
+   */
   onBlur?: ((event: CallbackEvent<T>) => void) | null;
 }
 /** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
+  /**
+   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   */
   key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
+  /**
+   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   */
   ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
+  /**
+   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   */
   slot?: Lowercase<string>;
 }
 
+/**
+ * CSS styles that will be applied to the component's shadow DOM.
+ */
 export type Styles = string;
+/**
+ * Configuration for rendering a custom element with Preact and shadow DOM.
+ */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  /**
+   * A function that renders the component's content inside the shadow root.
+   */
   ShadowRoot: (element: any) => ComponentChildren;
+  /**
+   * CSS styles that will be applied to the shadow DOM.
+   */
   styles?: Styles;
 };
+/**
+ * Information about modifier keys and mouse buttons that were active during an interaction.
+ */
 export interface ActivationEventEsque {
+  /**
+   * Whether the Shift key was held down during the interaction.
+   */
   shiftKey: boolean;
+  /**
+   * Whether the Meta key (Command on Mac, Windows key on PC) was held down during the interaction.
+   */
   metaKey: boolean;
+  /**
+   * Whether the Control key was held down during the interaction.
+   */
   ctrlKey: boolean;
+  /**
+   * The mouse button that was pressed during the interaction.
+   */
   button: number;
 }
+/**
+ * Options for influencing how a programmatic click behaves.
+ */
 export interface ClickOptions {
   /**
-   * The event you want to influence the synthetic click.
+   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
    */
   sourceEvent?: ActivationEventEsque;
 }
@@ -93,26 +153,56 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 declare const internals: unique symbol;
+/**
+ * The core properties that all input elements need to function within forms.
+ */
 export type PreactInputProps = Required<
   Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
 >;
+/**
+ * Base class for input elements that participate in form submission.
+ */
 declare class PreactInputElement
   extends PreactCustomElement
   implements PreactInputProps
 {
+  /**
+   * Indicates that this element can participate in form submission.
+   */
   static formAssociated: boolean;
   /** @private */
   [internals]: ElementInternals;
+  /**
+   * A callback that's triggered when the input's value changes and the field loses focus.
+   */
   accessor onchange: CallbackEventListener<'input'>;
+  /**
+   * A callback that's triggered when the input's value changes as the user types.
+   */
   accessor oninput: CallbackEventListener<'input'>;
+  /**
+   * Whether the input is disabled and can't be interacted with.
+   */
   accessor disabled: PreactInputProps['disabled'];
+  /**
+   * A unique identifier for the input element.
+   */
   accessor id: PreactInputProps['id'];
+  /**
+   * The name that identifies this input when the form is submitted.
+   */
   accessor name: PreactInputProps['name'];
+  /**
+   * The current value of the input.
+   */
   get value(): PreactInputProps['value'];
   set value(value: PreactInputProps['value']);
   constructor(renderImpl: RenderImpl);
 }
 
+/**
+ * Properties that are common to all text-based field components.
+ */
 export type PreactFieldProps<Autocomplete extends string = string> =
   PreactInputProps &
     Required<
@@ -150,20 +240,56 @@ export type PreactFieldProps<Autocomplete extends string = string> =
        */
       autocomplete: Autocomplete;
     };
+/**
+ * Base class for text-based field elements that support labels, errors, and other form field features.
+ */
 declare class PreactFieldElement<Autocomplete extends string = string>
   extends PreactInputElement
   implements PreactFieldProps<Autocomplete>
 {
+  /**
+   * A callback that's triggered when the field loses focus.
+   */
   accessor onblur: CallbackEventListener<'input'>;
+  /**
+   * A callback that's triggered when the field receives focus.
+   */
   accessor onfocus: CallbackEventListener<'input'>;
+  /**
+   * A hint about what kind of information should go in the field for autofill purposes.
+   */
   accessor autocomplete: PreactFieldProps<Autocomplete>['autocomplete'];
+  /**
+   * The initial value that the field should display when it's first rendered.
+   */
   accessor defaultValue: PreactFieldProps['defaultValue'];
+  /**
+   * Additional text to provide context or guidance for the input.
+   */
   accessor details: PreactFieldProps['details'];
+  /**
+   * An error message that's displayed below the field when validation fails.
+   */
   accessor error: PreactFieldProps['error'];
+  /**
+   * The text that describes what the field is for.
+   */
   accessor label: PreactFieldProps['label'];
+  /**
+   * Controls whether the label is visible to all users or only to screen readers.
+   */
   accessor labelAccessibilityVisibility: PreactFieldProps['labelAccessibilityVisibility'];
+  /**
+   * Text that appears in the field when it's empty to provide a hint about what to enter.
+   */
   accessor placeholder: PreactFieldProps['placeholder'];
+  /**
+   * Whether the field can be edited by the user.
+   */
   accessor readOnly: PreactFieldProps['readOnly'];
+  /**
+   * Whether the field must be filled in before the form can be submitted.
+   */
   accessor required: PreactFieldProps['required'];
   /**
    * Global keyboard event handlers for things like key bindings typically
@@ -192,6 +318,9 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   constructor(renderImpl: RenderImpl);
 }
 
+/**
+ * Properties for rendering a search field that lets users enter search queries with validation constraints and autofill support.
+ */
 export type SearchFieldProps = PreactFieldProps<
   /**
    * @default 'on'
@@ -217,12 +346,26 @@ export type SearchFieldProps = PreactFieldProps<
     >
   >;
 
+/**
+ * A search field that lets users enter search queries with a search-specific input type.
+ */
 declare class SearchField
   extends PreactFieldElement<SearchFieldProps['autocomplete']>
   implements SearchFieldProps
 {
+  /**
+   * The maximum number of characters that can be entered in the field.
+   */
   accessor maxLength: SearchFieldProps['maxLength'];
+  /**
+   * The minimum number of characters that must be entered for the field to be valid.
+   */
   accessor minLength: SearchFieldProps['minLength'];
+  /**
+   * The current search query value in the field as a string. When setting this property programmatically, it updates the field's display value. When reading it, you get the user's current input.
+   */
+  get value(): string;
+  set value(value: string);
   constructor();
 }
 declare global {
@@ -239,6 +382,9 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-search-field';
+/**
+ * Props for using the SearchField component in JSX with React-style event handlers.
+ */
 export interface SearchFieldJSXProps
   extends Partial<SearchFieldProps>,
     Pick<TextFieldProps, 'id'>,

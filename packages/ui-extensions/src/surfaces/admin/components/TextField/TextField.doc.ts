@@ -6,22 +6,42 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/textfield.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- **Make expected input clear:** Users should immediately understand what to enter and in what format. Ambiguous labels and placeholders force users to guess, leading to validation errors and frustration.
+- **Provide visual context:** Prefixes and suffixes help users understand the type of value expected and its format. Without context, users may not know whether they're entering a complete URL or just a subdomain, a full price or just the amount.
+- **Set constraints that match requirements:** Define character limits and validation rules based on actual business needs, not arbitrary numbers. Communicate these constraints clearly so users know what's expected.
+- **Give helpful feedback:** Show users whether their input is valid as they type, not just after they submit. When input is invalid, explain specifically what's wrong and how to fix it rather than showing generic error messages.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- The \`maxLength\` attribute prevents typing beyond the limit, but users can paste text exceeding \`maxLength\`. Browsers handle this inconsistently. Always validate length server-side.
+- Input types like \`type="email"\` and \`type="url"\` have basic built-in validation, but validation rules vary between browsers. Always implement server-side validation for critical data.
+- The \`accessory\` slot supports only [\`Button\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) and [\`Clickable\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/clickable) components with text content only. Other component types or complex layouts can't be used for field accessories.`,
+    },
+  ],
   definitions: [
     {
       title: 'TextField',
       description:
-        'A text input field that allows users to enter and edit text.',
+        'Configure the following properties on the `TextField` component.',
       type: 'TextField',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The `TextField` component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TextFieldSlots',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The `TextField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TextFieldEvents',
     },
   ],

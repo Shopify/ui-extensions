@@ -6,21 +6,33 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/clickable.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- **Provide accessibility labels:** Always include \`accessibilityLabel\` for elements without visible text to ensure screen reader users understand the element's purpose.
+- **Choose appropriate modes:** Use button mode for triggering actions, link mode for navigation, and submit mode for form submissions.
+- **Indicate disabled state:** When disabling clickable elements, provide clear visual feedback and explanatory text about why the element's unavailable.`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the `Clickable` component.',
       type: 'Clickable',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The `Clickable` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ClickableEvents',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The `Clickable` component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ClickableSlots',
     },
   ],
