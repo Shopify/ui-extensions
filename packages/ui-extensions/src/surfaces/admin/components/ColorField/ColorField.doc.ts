@@ -11,22 +11,27 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use the alpha property to allow merchants to select transparent colors
-- Provide clear labels that indicate what the color will be used for
-- Use details text to provide context about the color's purpose
-- Validate color format inputs and provide clear error messages`,
+      sectionContent: `- **Label by specific purpose:** Use labels that describe exactly what the color affects (**Button background color**, **Heading text color**, or **Border accent color** rather than generic **Color**).
+- **Pre-populate when editing:** Always show the current color value when editing existing settings so merchants understand what they're changing from.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- The component always outputs values in hex format. While it accepts multiple input formats (hex, RGB, HSL), the \`change\` event emits values in hex: 6-digit (\`#RRGGBB\`) or 8-digit with alpha (\`#RRGGBBAA\`).`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the `ColorField` component.',
       type: 'ColorField',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The `ColorField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ColorFieldEvents',
     },
   ],
