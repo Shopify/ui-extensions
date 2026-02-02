@@ -6,6 +6,26 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/textfield.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `
+- **Use for single-line text input:** Choose \`TextField\` for short values like names, titles, or identifiers. For multi-line content, use \`TextArea\`.
+- **Show character limit feedback:** When approaching \`maxLength\`, display remaining characters in the \`details\` text.
+- **Write descriptive labels:** Use specific labels like "Product Name" or "Reference Code" rather than generic terms.
+`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `
+The \`accessory\` slot supports only \`Button\` and \`Clickable\` components with text content only—other component types or complex layouts can't be used for field accessories.
+`,
+    },
+  ],
   definitions: [
     {
       title: 'TextField',

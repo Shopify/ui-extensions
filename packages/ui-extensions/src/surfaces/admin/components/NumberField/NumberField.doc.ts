@@ -6,6 +6,18 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/numberfield.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `
+- **Choose appropriate controls:** Use \`stepper\` for quantities or small adjustments. Use \`none\` for prices or large values where steppers are impractical.
+- **Select the right input mode:** Use \`decimal\` for prices and measurements. Use \`numeric\` for quantities and counts.
+- **Explain constraints in details:** Use \`details\` to clarify valid ranges or formatting, like "Enter a quantity between 1 and 999."
+`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

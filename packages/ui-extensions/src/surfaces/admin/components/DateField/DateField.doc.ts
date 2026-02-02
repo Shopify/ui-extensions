@@ -11,10 +11,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use smart defaults and highlight common selections
-- Use \`allow\` and \`disallow\` properties to restrict selectable dates appropriately
-- Provide clear labels and use details text to explain date restrictions
-- Don't use for dates that are many years in the future or the past`,
+      sectionContent: `
+- **Choose for direct text input:** Use \`DateField\` when users know the exact date and can type it efficiently. Use \`DatePicker\` for calendar selection.
+- **Explain date constraints:** Use \`details\` to clarify requirements like "Select a date within the next 30 days" or "Must be a future date."
+- **Write actionable error messages:** Provide clear validation messages for invalid dates that help users correct their input.
+`,
     },
   ],
   definitions: [

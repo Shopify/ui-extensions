@@ -5,6 +5,18 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/textarea.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `
+- **Set appropriate row count:** Use 2-3 \`rows\` for brief notes, 4-6 for descriptions, and more for extensive content.
+- **Show character limit feedback:** When approaching \`maxLength\`, display remaining characters in the \`details\` text.
+- **Write descriptive labels:** Use specific labels like "Product Description" or "Special Instructions" rather than generic terms.
+`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

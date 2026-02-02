@@ -6,6 +6,18 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/emailfield.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `
+- **Write descriptive labels:** Use specific labels like "Customer Email" or "Receipt Email Address" rather than generic "Email."
+- **Provide context in details:** Use \`details\` for additional context like "Required for digital receipts" or "We'll send order updates to this address."
+- **Write actionable error messages:** Provide clear validation messages like "Please enter a valid email address" that help users correct their input.
+`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',

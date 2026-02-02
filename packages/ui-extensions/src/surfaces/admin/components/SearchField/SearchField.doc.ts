@@ -11,7 +11,12 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- The SearchField automatically includes a clear button when text is entered, so you should not create your own clear button`,
+      sectionContent: `
+- **Use for inline search and filtering:** Choose \`SearchField\` for filtering within specific sections or lists, not for global navigation or complex multi-step searches.
+- **Follow placeholder pattern:** Use "Search {items}" format like "Search products" or "Search customers" to clarify scope.
+- **Choose the right event:** Use \`input\` for real-time filtering as users type. Use \`change\` for expensive operations that should wait until typing completes.
+- **Handle empty values:** When the field is cleared, reset filters or show all items appropriately.
+`,
     },
   ],
   definitions: [

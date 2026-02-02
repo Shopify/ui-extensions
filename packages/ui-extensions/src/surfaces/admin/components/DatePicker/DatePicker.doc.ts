@@ -11,8 +11,10 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use smart defaults and highlight common selections
-- Don't use to enter a date that is many years in the future or the past`,
+      sectionContent: `
+- **Choose for calendar-based selection:** Use \`DatePicker\` when users benefit from seeing a calendar view, like selecting dates relative to today or needing weekday context. Use \`DateField\` when users know the exact date.
+- **Provide adequate space:** Ensure sufficient spacing around the picker to avoid interfering with on-screen keyboards or other interactive elements.
+`,
     },
   ],
   definitions: [

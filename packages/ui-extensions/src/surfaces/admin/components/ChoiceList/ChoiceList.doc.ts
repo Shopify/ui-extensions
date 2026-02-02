@@ -12,18 +12,17 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Include a title that tells merchants what to do or explains the available options
-- Label options clearly based on what the option will do
-- Avoid mutually exclusive options when allowing multiple selection`,
+      sectionContent: `
+- **Choose appropriate selection modes:** Use single selection for mutually exclusive options. Enable \`multiple\` when merchants can select more than one.
+- **Write clear, concise choice labels:** Keep labels short but descriptive enough that merchants understand each option without additional explanation.
+`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `- Write titles and choices in sentence case
-- End titles with a colon if they introduce the list
-- Start each choice with a capital letter
-- Don't use commas or semicolons at the end of lines`,
+      anchorLink: 'limitations',
+      sectionContent: `
+\`ChoiceList\` component types other than \`Choice\` can't be used as options within the choice list.`,
     },
   ],
   definitions: [
