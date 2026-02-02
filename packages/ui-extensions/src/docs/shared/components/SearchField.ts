@@ -3,7 +3,7 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'SearchField',
   description:
-    'Let users enter search terms or find specific items using a single-line input field.',
+    'The `SearchField` component captures search terms for filtering and search functionality. Use it to enable inline search within specific sections or lists, like filtering products or searching customers.',
   category: 'Polaris web components',
   subCategory: 'Forms',
   related: [],
