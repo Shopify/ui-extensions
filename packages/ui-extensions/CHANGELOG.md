@@ -1,5 +1,15 @@
 # @shopify/ui-extensions
 
+## 2026.4.0-rc.1
+
+### Minor Changes
+
+- [#3778](https://github.com/Shopify/ui-extensions/pull/3778) [`d1c35f2`](https://github.com/Shopify/ui-extensions/commit/d1c35f25cc86dfa1dcf8934a7b7cf5fa9856846a) Thanks [@merkoyep](https://github.com/merkoyep)! - add deviceId to SessionApi
+
+### Patch Changes
+
+- [#3785](https://github.com/Shopify/ui-extensions/pull/3785) [`acd9002`](https://github.com/Shopify/ui-extensions/commit/acd9002d9d8768732bbbf19eccae268ffde9a07b) Thanks [@billfienberg](https://github.com/billfienberg)! - Admin: Expose picker and resource picker APIs for all rendering extensions
+
 ## 2026.4.0-rc.0
 
 ### Major Changes
