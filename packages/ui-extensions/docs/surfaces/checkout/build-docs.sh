@@ -85,7 +85,7 @@ if [ -d $SHOPIFY_DEV_PATH ]; then
   if [ $sed_exit -ne 0 ]; then
     fail_and_exit $sed_exit
   fi
-  rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/app/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
+  rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/content-v2/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
 
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
     echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/checkout-ui-extensions"
