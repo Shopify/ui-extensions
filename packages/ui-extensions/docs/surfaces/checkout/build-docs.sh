@@ -40,7 +40,7 @@ fi
 if [ -n "$SPIN" ]; then
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
     cp ./$DOCS_PATH/generated/* ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/checkout_extensions/unstable
-    rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/app/assets/images/templated-apis-screenshots/checkout-ui-extensions/unstable
+    rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/content-v2/assets/images/templated-apis-screenshots/checkout-ui-extensions/unstable
 
     # Copy over to specified calver version
     if [ $# -gt 0 ]
@@ -55,7 +55,7 @@ if [ -n "$SPIN" ]; then
       if [ $sed_exit -ne 0 ]; then
         fail_and_exit $sed_exit
       fi
-      rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/app/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
+      rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/content-v2/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
     fi
 
     cd ~/src/github.com/Shopify/shopify-dev
