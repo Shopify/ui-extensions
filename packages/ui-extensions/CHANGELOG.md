@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2026.1.1
+
+### Patch Changes
+
+- [#3781](https://github.com/Shopify/ui-extensions/pull/3781) [`21a83fa`](https://github.com/Shopify/ui-extensions/commit/21a83fad55126b256cc0a3fe830803e0ea49d9cf) Thanks [@billfienberg](https://github.com/billfienberg)! - Admin: Expose picker and resource picker APIs for all rendering extensions
+
+- [#3788](https://github.com/Shopify/ui-extensions/pull/3788) [`a8b9485`](https://github.com/Shopify/ui-extensions/commit/a8b9485a19d7f0fdb4413636a3c667695d7c178d) Thanks [@avocadomayo](https://github.com/avocadomayo)! - Add deprecation warning to checkout metafield write APIs in Checkout UI Extension API
+
 ## 2026.1.0
 
 ### Minor Changes
