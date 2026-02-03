@@ -14,6 +14,33 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'StandardApi',
     },
   ],
+  defaultExample: {
+    description:
+      'Retrieve an authentication token and fetch data from your app backend. This example uses `auth.idToken()` to get an ID token, adds it to the Authorization header, and fetches products from your backend API.',
+    codeblock: {
+      title: 'Authenticate backend requests',
+      tabs: [
+        {code: './examples/authenticate-backend-request.ts', language: 'ts'},
+        {code: './examples/authenticate-backend-request.tsx', language: 'tsx'},
+      ],
+    },
+  },
+  examples: {
+    description: 'Standard API patterns',
+    examples: [
+      {
+        description:
+          'Query products via GraphQL then update the first product with new tags. This example chains a query and mutation together, handles the response, and updates the product with "processed" and "reviewed" tags.',
+        codeblock: {
+          title: 'Query and mutate product data',
+          tabs: [
+            {code: './examples/query-and-mutate.ts', language: 'ts'},
+            {code: './examples/query-and-mutate.tsx', language: 'tsx'},
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Core APIs',
   related: [],

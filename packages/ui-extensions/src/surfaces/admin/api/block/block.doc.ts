@@ -16,6 +16,44 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'BlockExtensionApi',
     },
   ],
+  defaultExample: {
+    description:
+      "Fetch and display a product's title, inventory, and status in a block extension. This example uses `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql) when the page loads, retrieves product data using the selected product's ID, and displays a loading state while fetching.",
+    codeblock: {
+      title: 'Display product information',
+      tabs: [
+        {code: './examples/display-product-info.ts', language: 'ts'},
+        {code: './examples/display-product-info.tsx', language: 'tsx'},
+      ],
+    },
+  },
+  examples: {
+    description: 'Block extension patterns',
+    examples: [
+      {
+        description:
+          'Check product eligibility with your backend API before launching an action extension. This example validates that the product meets criteria, shows a loading state during the check, and uses `navigation.navigate` to open the action extension when the product is approved.',
+        codeblock: {
+          title: 'Navigate to action extension',
+          tabs: [
+            {code: './examples/navigate-to-action.ts', language: 'ts'},
+            {code: './examples/navigate-to-action.tsx', language: 'tsx'},
+          ],
+        },
+      },
+      {
+        description:
+          'Open the resource picker to select related products, then save the associations to your backend. This example allows unlimited product selection using `multiple: true` and posts the relationship data when selection is confirmed.',
+        codeblock: {
+          title: 'Select related products',
+          tabs: [
+            {code: './examples/select-related-products.ts', language: 'ts'},
+            {code: './examples/select-related-products.tsx', language: 'tsx'},
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Core APIs',
   related: [],

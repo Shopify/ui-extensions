@@ -22,6 +22,50 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ValidationData',
     },
   ],
+  defaultExample: {
+    description:
+      'Save a minimum quantity validation rule to a metafield. This example calls `applyMetafieldChange` with an integer value of 5, then checks the result type to confirm success or handle errors.',
+    codeblock: {
+      title: 'Set minimum quantity',
+      tabs: [
+        {code: './examples/set-minimum-quantity.ts', language: 'ts'},
+        {code: './examples/set-minimum-quantity.tsx', language: 'tsx'},
+      ],
+    },
+  },
+  examples: {
+    description: 'Configure cart and checkout validation rules',
+    examples: [
+      {
+        description:
+          'Block shipping to specific countries with custom error messages. This example saves blocked countries (US, CA, MX) as a JSON array and stores the configuration in a validation metafield for use by your checkout function.',
+        codeblock: {
+          title: 'Configure shipping restrictions',
+          tabs: [
+            {
+              code: './examples/configure-shipping-restrictions.ts',
+              language: 'ts',
+            },
+            {
+              code: './examples/configure-shipping-restrictions.tsx',
+              language: 'tsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Detect whether the merchant is editing an existing validation or creating a new one. This example checks for the presence of `data.validation`, loads existing metafields if found, and initializes default values for a new validation otherwise.',
+        codeblock: {
+          title: 'Load validation configuration',
+          tabs: [
+            {code: './examples/load-validation-config.ts', language: 'ts'},
+            {code: './examples/load-validation-config.tsx', language: 'tsx'},
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],

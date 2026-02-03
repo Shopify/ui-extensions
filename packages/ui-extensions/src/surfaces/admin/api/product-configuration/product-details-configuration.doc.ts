@@ -16,6 +16,33 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ProductDetailsConfigurationApi',
     },
   ],
+  defaultExample: {
+    description:
+      'Select up to 5 component products for a bundle using the resource picker. This example opens `resourcePicker` with a limit of 5 products, filters out hidden, draft, and archived products, and posts the selected product IDs to your backend to save the bundle configuration.',
+    codeblock: {
+      title: 'Select bundle components',
+      tabs: [
+        {code: './examples/select-bundle-components.ts', language: 'ts'},
+        {code: './examples/select-bundle-components.tsx', language: 'tsx'},
+      ],
+    },
+  },
+  examples: {
+    description: 'Configure product bundles',
+    examples: [
+      {
+        description:
+          "Query a product's bundle metafield and parse the JSON components array. This example uses `useEffect` to fetch bundle data from the [GraphQL Admin API](/docs/api/admin-graphql), parses the stored configuration from the metafield value, and displays the component products.",
+        codeblock: {
+          title: 'Load bundle configuration',
+          tabs: [
+            {code: './examples/load-bundle-config.ts', language: 'ts'},
+            {code: './examples/load-bundle-config.tsx', language: 'tsx'},
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
