@@ -16,6 +16,17 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ProductVariantDetailsConfigurationApi',
     },
   ],
+  defaultExample: {
+    description:
+      'Select component variants for a bundle using the variant resource picker. This example opens `resourcePicker` with `type: "variant"` to allow variant-level selection, and posts the selected variant IDs to your backend to configure the bundle.',
+    codeblock: {
+      title: 'Select variant components',
+      tabs: [
+        {code: './examples/select-variant-components.ts', language: 'ts'},
+        {code: './examples/select-variant-components.tsx', language: 'tsx'},
+      ],
+    },
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
