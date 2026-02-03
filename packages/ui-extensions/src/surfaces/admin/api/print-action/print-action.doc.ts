@@ -16,6 +16,44 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PrintActionExtensionApi',
     },
   ],
+  defaultExample: {
+    description:
+      'Generate a packing slip PDF for selected orders. This example extracts order IDs from `data.selected`, calls your app backend to generate the PDF, and returns a printable URL.',
+    codeblock: {
+      title: 'Generate packing slip',
+      tabs: [
+        {code: './examples/generate-packing-slip.ts', language: 'ts'},
+        {code: './examples/generate-packing-slip.tsx', language: 'tsx'},
+      ],
+    },
+  },
+  examples: {
+    description: 'Generate custom printable documents',
+    examples: [
+      {
+        description:
+          'Generate product labels with the option to add products beyond the initial selection. This example uses `resourcePicker` within a print action to allow additional product selection, combines initially selected products with newly picked ones, and sends all product IDs to your label generator.',
+        codeblock: {
+          title: 'Generate custom product labels',
+          tabs: [
+            {code: './examples/custom-product-labels.ts', language: 'ts'},
+            {code: './examples/custom-product-labels.tsx', language: 'tsx'},
+          ],
+        },
+      },
+      {
+        description:
+          'Query order details via GraphQL then generate a shipping manifest. This example fetches order data including shipping addresses using the [GraphQL Admin API](/docs/api/admin-graphql), passes the order information to your manifest generator, and returns the manifest URL for printing.',
+        codeblock: {
+          title: 'Generate shipping manifest',
+          tabs: [
+            {code: './examples/shipping-manifest.ts', language: 'ts'},
+            {code: './examples/shipping-manifest.tsx', language: 'tsx'},
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Core APIs',
   related: [],

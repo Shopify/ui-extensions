@@ -11,125 +11,130 @@ const data: ReferenceEntityTemplateSchema = {
   requires:
     'an Admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
+    description:
+      'Open the product resource picker and receive selected products with their IDs, titles, and images. This example shows basic product selection without filters or limits, using `type: "product"` to open the picker.',
     image: 'resource-picker.png',
     codeblock: {
-      title: 'Product picker',
+      title: 'Select products',
       tabs: [
-        {
-          code: './examples/product-picker.js',
-          language: 'js',
-        },
+        {code: './examples/product-picker.ts', language: 'ts'},
+        {code: './examples/product-picker.tsx', language: 'tsx'},
       ],
     },
   },
   examples: {
-    description: 'Resource Pickers with different options',
+    description: 'Resource Picker API patterns',
     examples: [
       {
-        description: 'Alternate resources',
+        description:
+          'Select collections or product variants instead of products. This example demonstrates using `type: "collection"` to pick collections or `type: "variant"` to pick product variants, each returning different resource data structures.',
         codeblock: {
-          title: 'Alternate resources',
+          title: 'Select alternate resource types',
           tabs: [
             {
               title: 'Collection picker',
-              code: './examples/collection-picker.js',
-              language: 'js',
+              code: './examples/collection-picker.ts',
+              language: 'ts',
             },
             {
-              title: 'Product variant picker',
-              code: './examples/product-variant-picker.js',
-              language: 'js',
+              title: 'Collection picker',
+              code: './examples/collection-picker.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'Variant picker',
+              code: './examples/product-variant-picker.ts',
+              language: 'ts',
+            },
+            {
+              title: 'Variant picker',
+              code: './examples/product-variant-picker.tsx',
+              language: 'tsx',
             },
           ],
         },
       },
       {
-        description: 'Preselected resources',
+        description:
+          'Open the picker with specific products already preselected. This example uses the `selectionIds` array with product GIDs to mark items as selected when the picker opens.',
         codeblock: {
-          title: 'Product picker with preselected resources',
+          title: 'Preselect resources',
+          tabs: [
+            {code: './examples/selection-ids.ts', language: 'ts'},
+            {code: './examples/selection-ids.tsx', language: 'tsx'},
+          ],
+        },
+      },
+      {
+        description:
+          'Customize the picker\'s confirm button with an action verb. This example sets `action: "add"` to change the button text from "Select" to "Add", providing clearer context for the merchant.',
+        codeblock: {
+          title: 'Set action verb',
+          tabs: [
+            {code: './examples/action.ts', language: 'ts'},
+            {code: './examples/action.tsx', language: 'tsx'},
+          ],
+        },
+      },
+      {
+        description:
+          'Allow unlimited selection or limit to a maximum count. This example demonstrates setting `multiple: true` for unlimited selection or `multiple: 5` to limit selection to a maximum of 5 items.',
+        codeblock: {
+          title: 'Configure multiple selection',
           tabs: [
             {
-              code: './examples/selection-ids.js',
-              language: 'js',
+              title: 'Unlimited',
+              code: './examples/multiple-unlimited.ts',
+              language: 'ts',
+            },
+            {
+              title: 'Unlimited',
+              code: './examples/multiple-unlimited.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'Limited',
+              code: './examples/multiple-limited.ts',
+              language: 'ts',
+            },
+            {
+              title: 'Limited',
+              code: './examples/multiple-limited.tsx',
+              language: 'tsx',
             },
           ],
         },
       },
       {
-        description: 'Action verb',
+        description:
+          'Filter the picker to show only published products. This example sets `filter.published_status: "published"` to restrict which items appear in the picker.',
         codeblock: {
-          title: 'Product picker with action verb',
+          title: 'Apply filters',
           tabs: [
-            {
-              code: './examples/action.js',
-              language: 'js',
-            },
+            {code: './examples/filters.ts', language: 'ts'},
+            {code: './examples/filters.tsx', language: 'tsx'},
           ],
         },
       },
       {
-        description: 'Multiple selection',
+        description:
+          'Provide an initial search query to filter the picker. This example uses the `query` property to pre-fill the search field, so the picker opens with results already filtered (for example, "shirt").',
         codeblock: {
-          title: 'Product picker with multiple selection',
+          title: 'Search with initial query',
           tabs: [
-            {
-              title: 'Unlimited selectable items',
-              code: './examples/multiple-unlimited.js',
-              language: 'js',
-            },
-            {
-              title: 'Maximum selectable items',
-              code: './examples/multiple-limited.js',
-              language: 'js',
-            },
+            {code: './examples/query.ts', language: 'ts'},
+            {code: './examples/query.tsx', language: 'tsx'},
           ],
         },
       },
       {
-        description: 'Filters',
+        description:
+          'Access selected resource data including IDs, titles, and images. This example shows how the resource picker returns an array of resources with full metadata that you can use in your extension.',
         codeblock: {
-          title: 'Product picker with filters',
+          title: 'Use selection payload',
           tabs: [
-            {
-              code: './examples/filters.js',
-              language: 'js',
-            },
-          ],
-        },
-      },
-      {
-        description: 'Filter query',
-        codeblock: {
-          title: 'Product picker with a custom filter query',
-          tabs: [
-            {
-              code: './examples/filter-query.js',
-              language: 'js',
-            },
-          ],
-        },
-      },
-      {
-        description: 'Selection',
-        codeblock: {
-          title: 'Product picker using returned selection payload',
-          tabs: [
-            {
-              code: './examples/selection.js',
-              language: 'js',
-            },
-          ],
-        },
-      },
-      {
-        description: 'Initial query',
-        codeblock: {
-          title: 'Product picker with initial query provided',
-          tabs: [
-            {
-              code: './examples/query.js',
-              language: 'js',
-            },
+            {code: './examples/selection.ts', language: 'ts'},
+            {code: './examples/selection.tsx', language: 'tsx'},
           ],
         },
       },
