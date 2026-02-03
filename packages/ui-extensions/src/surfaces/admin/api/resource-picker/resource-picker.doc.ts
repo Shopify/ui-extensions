@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
     'an Admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
     description:
-      'Open the product resource picker and receive selected products with their IDs, titles, and images. This example shows basic product selection without filters or limits, using `type: "product"` to open the picker.',
+      'Open the product resource picker and receive selected products with their IDs, titles, and images. This example shows calling `resourcePicker()` with `type: "product"` for basic product selection without filters or selection limits.',
     image: 'resource-picker.png',
     codeblock: {
       title: 'Select products',
@@ -31,7 +31,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Select collections or product variants instead of products. This example demonstrates using `type: "collection"` to pick collections or `type: "variant"` to pick product variants, each returning different resource data structures.',
+          'Select collections or product variants instead of products. Use `type: "collection"` to pick collections or `type: "variant"` for variants, each returning different data structures with type-specific metadata.',
         codeblock: {
           title: 'Select alternate resource types',
           tabs: [
@@ -60,7 +60,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Open the picker with specific products already preselected. This example uses the `selectionIds` array with product GIDs to mark items as selected when the picker opens.',
+          'Open the picker with specific products already preselected. Uses `selectionIds` array with product GIDs like `gid://shopify/Product/123` to mark items as selected—useful for edit workflows where you need to show existing selections.',
         codeblock: {
           title: 'Preselect resources',
           tabs: [
@@ -71,7 +71,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Customize the picker\'s confirm button with an action verb. This example sets `action: "add"` to change the button text from "Select" to "Add", providing clearer context for the merchant.',
+          'Customize the picker\'s confirm button with an action verb. Sets `action: "add"` to change button text from "Select" to "Add", helping merchants understand whether they\'re adding to a list or replacing a selection.',
         codeblock: {
           title: 'Set action verb',
           tabs: [
@@ -82,7 +82,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Allow unlimited selection or limit to a maximum count. This example demonstrates setting `multiple: true` for unlimited selection or `multiple: 5` to limit selection to a maximum of 5 items.',
+          'Allow unlimited selection or limit to a maximum count. Set `multiple: true` for unlimited or `multiple: 5` to cap at 5 items, with the picker automatically preventing selection beyond the limit.',
         codeblock: {
           title: 'Configure multiple selection',
           tabs: [
@@ -111,7 +111,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Filter the picker to show only published products. This example sets `filter.published_status: "published"` to restrict which items appear in the picker.',
+          'Filter the picker to show only published products. Uses `filter.published_status: "published"` to restrict the picker to live, customer-visible products, preventing accidental selection of draft or archived items.',
         codeblock: {
           title: 'Apply filters',
           tabs: [
@@ -122,7 +122,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Provide an initial search query to filter the picker. This example uses the `query` property to pre-fill the search field, so the picker opens with results already filtered (for example, "shirt").',
+          'Provide an initial search query to filter picker results. Uses `query` property to pre-fill the search field with a term like "shirt", so the picker opens with results already filtered—helpful for guiding merchants to specific items in large catalogs.',
         codeblock: {
           title: 'Search with initial query',
           tabs: [
@@ -133,7 +133,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Access selected resource data including IDs, titles, and images. This example shows how the resource picker returns an array of resources with full metadata that you can use in your extension.',
+          'Access selected resource data including IDs, titles, and images. Resource picker returns an array of resources with full metadata for use in your extension, or `undefined` if the merchant cancels.',
         codeblock: {
           title: 'Use selection payload',
           tabs: [

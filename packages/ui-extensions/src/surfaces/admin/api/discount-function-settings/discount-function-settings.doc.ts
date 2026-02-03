@@ -24,7 +24,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Save a minimum purchase threshold ($50) to a metafield with decimal validation. This example uses `applyMetafieldChange` with `number_decimal` type to ensure proper handling of currency values, and displays a success confirmation.',
+      'Save a minimum purchase threshold ($50) to a metafield with decimal validation. This example uses `applyMetafieldChange()` with `number_decimal` type for proper currency handling.',
     codeblock: {
       title: 'Configure discount threshold',
       tabs: [
@@ -38,7 +38,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Save multiple discount configuration settings in a single operation. This example stores eligible customer tags as a JSON array (vip, wholesale) and a usage limit as an integer (100), applying both metafield changes sequentially.',
+          'Save multiple discount configuration settings in a single operation. Stores eligible customer tags as a JSON array (vip, wholesale) and a usage limit as an integer (100), demonstrating how to apply multiple metafield changes sequentially.',
         codeblock: {
           title: 'Configure eligibility rules',
           tabs: [
@@ -52,7 +52,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Load discount metafields on mount and display the current configuration. This example uses `useEffect` to reduce the metafields array into a settings object, checks for missing values, and applies defaults where needed.',
+          'Load discount metafields on mount and display current configuration. Uses `useEffect` to reduce the metafields array into a settings object, checking for missing values and applying defaults only when needed.',
         codeblock: {
           title: 'Load existing settings',
           tabs: [
