@@ -1,3 +1,6 @@
+/**
+ * The standard set of UI components available in most admin extensions. These components provide the building blocks for creating extension interfaces including layout elements, form inputs, data display, navigation, and interactive controls. Use these components to build consistent, accessible UIs that match the Shopify admin design system.
+ */
 export type StandardComponents =
   | 'Avatar'
   | 'Badge'
