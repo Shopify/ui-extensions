@@ -1,15 +1,19 @@
-import type {StandardApi} from '../standard/standard';
+import type {BlockExtensionApi} from '../block/block';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
 
 import {ApplyMetafieldChange} from './metafields';
 import {DiscountFunctionSettingsData} from './launch-options';
 
+/**
+ * The `DiscountFunctionSettingsApi` object provides methods for configuring discount functions. Access the following properties on the `DiscountFunctionSettingsApi` object to manage function settings and metafields.
+ */
 export interface DiscountFunctionSettingsApi<
   ExtensionTarget extends AnyExtensionTarget,
-> extends StandardApi<ExtensionTarget> {
+> extends Omit<BlockExtensionApi<ExtensionTarget>, 'data'> {
   /**
-   * Applies a change to the discount function settings.
+   * Updates or removes [metafields](/docs/apps/build/metafields) that store discount function configuration. Use this to save merchant settings for your discount function.
    */
   applyMetafieldChange: ApplyMetafieldChange;
+  /** The discount being configured and its associated [metafields](/docs/apps/build/metafields) storing function settings. */
   data: DiscountFunctionSettingsData;
 }
