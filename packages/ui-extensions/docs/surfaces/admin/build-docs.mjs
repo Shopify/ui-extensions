@@ -511,7 +511,7 @@ try {
     path.join(docsPath, 'screenshots'),
     path.join(
       shopifyDevPath,
-      'react-app/public/images/templated-apis-screenshots/admin',
+      'content-v2/assets/images/templated-apis-screenshots/admin',
     ),
     {recursive: true},
   );
