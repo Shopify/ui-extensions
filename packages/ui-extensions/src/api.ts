@@ -39,7 +39,7 @@ export interface I18n {
    * Returns a localized currency value formatted according to the user's locale and currency conventions. Use this to display prices, totals, or financial amounts in the appropriate format for the merchant's region. This function behaves like the standard `Intl.NumberFormat()` with a style of `currency` applied. Uses the current user's locale by default.
    *
    * @param number - The currency amount to format
-   * @param options.inExtensionLocale - If true, use the extension's default locale instead of the user's locale
+   * @param options.inExtensionLocale - If `true`, then use the extension's default locale instead of the user's locale
    * @param options - Additional Intl.NumberFormatOptions for customizing the currency format, such as the currency code
    */
   formatCurrency: (
