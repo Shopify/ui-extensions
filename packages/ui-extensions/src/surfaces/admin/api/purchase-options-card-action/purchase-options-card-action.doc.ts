@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Update a subscription by sending product and selling plan IDs to your backend. This example checks for the presence of `sellingPlanId` in the selected item, posts the update request to your backend, and closes the action modal on success.',
+      'Update a subscription by sending product and selling plan IDs to your backend. This example demonstrates checking for `sellingPlanId` presence, posting the update request, and closing the modal on success.',
     codeblock: {
       title: 'Manage subscription',
       tabs: [
@@ -38,7 +38,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Show a confirmation before removing a product from a selling plan. This example uses a two-step confirmation process with `confirm()`, removes the product from the plan via your API, and closes the modal after successful removal.',
+          'Show a confirmation before removing a product from a selling plan. This example uses a two-step confirmation process with `confirm()`, removes the product via your API, and closes the modal after successful removal.',
         codeblock: {
           title: 'Remove from selling plan',
           tabs: [
@@ -55,7 +55,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Fetch selling plan name and options via GraphQL to validate the configuration. This example queries plan details by ID using the [GraphQL Admin API](/docs/api/admin-graphql), stores the result in state, and auto-closes the action after 2 seconds for a quick validation check.',
+          'Fetch selling plan name and options via GraphQL to validate the configuration. This example shows querying plan details by ID using the [GraphQL Admin API](/docs/api/admin-graphql), storing the result in state, and auto-closing the action after 2 seconds for a quick validation check.',
         codeblock: {
           title: 'Validate selling plan',
           tabs: [

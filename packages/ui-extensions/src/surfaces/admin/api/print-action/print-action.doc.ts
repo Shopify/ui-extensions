@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Generate a packing slip PDF for selected orders. This example extracts order IDs from `data.selected`, calls your app backend to generate the PDF, and returns a printable URL.',
+      'Generate a packing slip PDF for selected orders. This example shows extracting order IDs from `data.selected`, calling your app backend to generate the PDF, and returning a printable URL.',
     codeblock: {
       title: 'Generate packing slip',
       tabs: [
@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Generate product labels with the option to add products beyond the initial selection. This example uses `resourcePicker` within a print action to allow additional product selection, combines initially selected products with newly picked ones, and sends all product IDs to your label generator.',
+          'Generate product labels with the option to add products beyond the initial selection. This example demonstrates using `resourcePicker()` within a print action, combining initially selected products with newly picked ones, and sending all product IDs to your label generator.',
         codeblock: {
           title: 'Generate custom product labels',
           tabs: [
@@ -43,7 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Query order details via GraphQL then generate a shipping manifest. This example fetches order data including shipping addresses using the [GraphQL Admin API](/docs/api/admin-graphql), passes the order information to your manifest generator, and returns the manifest URL for printing.',
+          'Query order details via GraphQL then generate a shipping manifest. Fetches order data including shipping addresses using the [GraphQL Admin API](/docs/api/admin-graphql) and passes the order information to your manifest generator.',
         codeblock: {
           title: 'Generate shipping manifest',
           tabs: [

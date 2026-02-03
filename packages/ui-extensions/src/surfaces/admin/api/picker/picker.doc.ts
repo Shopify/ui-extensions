@@ -37,7 +37,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Create a minimal picker with only the required fields (heading and items). This example shows a basic picker with two selectable options and no additional configuration.',
+          'Create a minimal picker with only required fields (heading and items). Basic picker with two selectable options and no additional configuration.',
         codeblock: {
           title: 'Simple picker',
           tabs: [
@@ -48,7 +48,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Limit selection to a maximum of 2 items. This example sets `multiple: 2` to restrict how many items the merchant can select.',
+          'Limit selection to a maximum of 2 items. Sets `multiple: 2` to restrict selection count.',
         codeblock: {
           title: 'Limited selectable items',
           tabs: [
@@ -59,7 +59,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Allow unlimited selection. This example sets `multiple: true` without a numeric limit, allowing the merchant to select as many items as needed.',
+          'Allow unlimited selection. Sets `multiple: true` without a numeric limit.',
         codeblock: {
           title: 'Unlimited selectable items',
           tabs: [
@@ -70,7 +70,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Open the picker with items already preselected. This example sets `selected: true` on specific items when the picker opens, though the merchant can still deselect them.',
+          'Open picker with items already preselected. Sets `selected: true` on specific items when the picker opens, though merchants can still deselect them.',
         codeblock: {
           title: 'Preselected items',
           tabs: [
@@ -81,7 +81,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Disable specific picker items to prevent selection. This example sets `disabled: true` on certain items, which causes them to appear in the picker but prevents the merchant from selecting them.',
+          'Disable specific picker items to prevent selection. Sets `disabled: true` on certain items, which causes them to appear but prevents selection.',
         codeblock: {
           title: 'Disabled items',
           tabs: [
@@ -92,7 +92,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Populate the picker with live GraphQL data. This example uses `useEffect` to fetch orders via the [GraphQL Admin API](/docs/api/admin-graphql), transforms them into picker item format, and opens the picker with dynamically loaded data.',
+          'Populate the picker with live GraphQL data. This example uses `useEffect` to fetch orders via the [GraphQL Admin API](/docs/api/admin-graphql), transforms them into picker format, and opens with dynamic data.',
         codeblock: {
           title: 'Use GraphQL data',
           tabs: [
