@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Generate a packing slip PDF for selected orders. This example shows extracting order IDs from `data.selected`, calling your app backend to generate the PDF, and returning a printable URL.',
+      'Extracts order IDs from `data.selected`, calls your backend to generate a PDF, and returns a printable URL. Your backend handles the PDF generation.',
     codeblock: {
       title: 'Generate packing slip',
       tabs: [
@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Generate product labels with the option to add products beyond the initial selection. This example demonstrates using `resourcePicker()` within a print action, combining initially selected products with newly picked ones, and sending all product IDs to your label generator.',
+          'Opens `resourcePicker()` within a print action to let merchants add more products, then combines initially selected products with newly picked ones before sending all IDs to your label generator. For custom product labels.',
         codeblock: {
           title: 'Generate custom product labels',
           tabs: [
@@ -43,7 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Query order details via GraphQL then generate a shipping manifest. Fetches order data including shipping addresses using the [GraphQL Admin API](/docs/api/admin-graphql) and passes the order information to your manifest generator.',
+          'Queries the [GraphQL Admin API](/docs/api/admin-graphql) to fetch order details including shipping addresses, then passes the data to your manifest generator. For shipping manifests that need order-specific information.',
         codeblock: {
           title: 'Generate shipping manifest',
           tabs: [

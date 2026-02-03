@@ -24,7 +24,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Save a minimum quantity validation rule to a metafield. This example shows calling `applyMetafieldChange()` with key `min_quantity`, value `5`, and `valueType: "number_integer"`, then checking if `result.type === "success"` to confirm the operation or log errors.',
+      'Calls `applyMetafieldChange()` with key `min_quantity`, value `5`, and `valueType: "number_integer"`, then checks `result.type === "success"` to confirm the save or log errors. Stores the minimum quantity rule your checkout function enforces.',
     codeblock: {
       title: 'Set minimum quantity',
       tabs: [
@@ -38,7 +38,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Block shipping to specific countries with custom error messages. This example shows saving blocked countries (US, CA, MX) as a JSON array using `applyMetafieldChange()` with key `blocked_countries` and `valueType: "json"`, storing the configuration in the `validation` namespace for use by your checkout function.',
+          'Saves blocked countries (US, CA, MX) as a JSON array using `applyMetafieldChange()` with key `blocked_countries` and `valueType: "json"` in the `validation` namespace. Your checkout function reads this configuration to block orders to restricted destinations.',
         codeblock: {
           title: 'Configure shipping restrictions',
           tabs: [
@@ -55,7 +55,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Detect whether the merchant is editing an existing validation or creating a new one. Checks for `data.validation` presence, loads existing metafields if found, or initializes defaults for new validations—useful for edit/create workflows where you need to prepopulate forms with existing settings.',
+          'Checks for `data.validation` presence to determine edit vs. create mode, then loads existing metafields or initializes defaults. For configuration UIs that prepopulate forms when editing existing rules.',
         codeblock: {
           title: 'Load validation configuration',
           tabs: [

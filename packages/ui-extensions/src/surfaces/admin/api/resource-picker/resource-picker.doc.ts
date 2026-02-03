@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
     'an Admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
     description:
-      'Open the product resource picker and receive selected products with their IDs, titles, and images. This example shows calling `resourcePicker()` with `type: "product"` for basic product selection without filters or selection limits.',
+      'Calls `resourcePicker()` with `type: "product"` and returns selected products with their IDs, titles, and images. Basic product selection without filters.',
     image: 'resource-picker.png',
     codeblock: {
       title: 'Select products',

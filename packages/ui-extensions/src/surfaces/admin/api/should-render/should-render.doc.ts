@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Return true to show the action extension only when items are selected. This example demonstrates checking `data.selected.length` to prevent the action from appearing on empty pages.',
+      'Checks `data.selected.length` and returns true only when items are selected. Prevents actions from appearing on empty pages.',
     codeblock: {
       title: 'Check when items selected',
       tabs: [
@@ -30,7 +30,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Check if exactly one item is selected before showing the action. This example ensures actions designed for individual resources only appear when exactly one item is selected.',
+          'Returns true only when exactly one item is selected. For actions designed for individual resources.',
         codeblock: {
           title: 'Require one item selected',
           tabs: [
@@ -41,7 +41,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Validate that the selection count is between 1 and 50 before showing bulk actions. Prevents the action from appearing when nothing is selected or when too many items are selected, protecting against performance issues with large bulk operations.',
+          'Returns true when selection count is between 1 and 50. Protects against performance issues with very large bulk operations.',
         codeblock: {
           title: 'Validate selection count',
           tabs: [

@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Set preferred and fallback fulfillment locations for order routing. This example shows how to apply two metafield changes in a single batch using `applyMetafieldsChange()`—New York Warehouse as preferred and Los Angeles Warehouse as fallback.',
+      'Applies two metafield changes in one batch using `applyMetafieldsChange()`, setting New York Warehouse as preferred and Los Angeles Warehouse as fallback. Both save in a single operation.',
     codeblock: {
       title: 'Configure location priority',
       tabs: [
@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Batch remove outdated metafields from your routing configuration. Maps deprecated keys to removal operations and cleans up old settings in one `applyMetafieldsChange()` call.',
+          'Maps deprecated keys to removal operations and calls `applyMetafieldsChange()` once to clean up old settings. For migrating routing configurations.',
         codeblock: {
           title: 'Remove deprecated settings',
           tabs: [
@@ -46,7 +46,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Configure multiple routing criteria including maximum distance (50km), inventory checking (true), and excluded zip codes (90210, 10001). This example demonstrates setting all criteria in one batch with different value types—integer, boolean, and JSON.',
+          'Sets maximum distance (50km), inventory checking (true), and excluded zip codes (90210, 10001) in one batch. Demonstrates using different value types (integer, boolean, JSON) in a single `applyMetafieldsChange()` call.',
         codeblock: {
           title: 'Set routing criteria',
           tabs: [

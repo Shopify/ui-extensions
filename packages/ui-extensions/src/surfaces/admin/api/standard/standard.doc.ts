@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Retrieve an authentication token and fetch data from your app backend. This example shows using `auth.idToken()` to get an ID token and adding it to the Authorization header.',
+      'Calls `auth.idToken()` to get an ID token and adds it to the Authorization header before fetching from your backend. For authenticated API requests.',
     codeblock: {
       title: 'Authenticate backend requests',
       tabs: [
@@ -30,7 +30,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Query products via GraphQL then update the first product with new tags. This example demonstrates chaining a query and mutation together to update the product with "processed" and "reviewed" tags.',
+          'Chains a GraphQL query and mutation together, fetching products then updating the first one with "processed" and "reviewed" tags.',
         codeblock: {
           title: 'Query and mutate product data',
           tabs: [

@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Update a subscription by sending product and selling plan IDs to your backend. This example demonstrates checking for `sellingPlanId` presence, posting the update request, and closing the modal on success.',
+      'Checks for `sellingPlanId` presence, then posts the product and plan IDs to your backend and closes the modal. For subscription management actions.',
     codeblock: {
       title: 'Manage subscription',
       tabs: [
@@ -38,7 +38,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Show a confirmation before removing a product from a selling plan. This example uses a two-step confirmation process with `confirm()`, removes the product via your API, and closes the modal after successful removal.',
+          'Shows `confirm()` before calling your API to remove the product from the plan. Two-step confirmation for destructive actions.',
         codeblock: {
           title: 'Remove from selling plan',
           tabs: [
@@ -55,7 +55,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Fetch selling plan name and options via GraphQL to validate the configuration. This example shows querying plan details by ID using the [GraphQL Admin API](/docs/api/admin-graphql), storing the result in state, and auto-closing the action after 2 seconds for a quick validation check.',
+          'Queries the [GraphQL Admin API](/docs/api/admin-graphql) for plan details by ID, stores the result, then auto-closes after 2 seconds. Quick validation check pattern.',
         codeblock: {
           title: 'Validate selling plan',
           tabs: [

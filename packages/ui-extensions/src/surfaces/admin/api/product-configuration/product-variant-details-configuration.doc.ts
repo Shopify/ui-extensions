@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Select component variants for a bundle using the variant resource picker. This example shows using `resourcePicker()` with `type: "variant"` for variant-level selection and posting the selected variant IDs to your backend.',
+      'Calls `resourcePicker()` with `type: "variant"` for variant-level selection, then posts the selected IDs to your backend. For bundles that need specific size or color combinations.',
     codeblock: {
       title: 'Select variant components',
       tabs: [

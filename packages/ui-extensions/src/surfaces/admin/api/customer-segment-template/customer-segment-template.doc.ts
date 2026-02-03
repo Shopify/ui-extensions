@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Create a segment template targeting customers with birthdays this month. Requires the `facts.birth_date` metafield to be set up, which enables birthday-based customer targeting for marketing campaigns.',
+          'Requires the `facts.birth_date` metafield and queries it with the current month value. For birthday marketing campaigns.',
         codeblock: {
           title: 'Target customers with birthdays this month',
           tabs: [
@@ -43,7 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Create a segment template targeting customers who abandoned at least one checkout in the last 7 days. Uses `abandoned_checkouts_count` and `last_abandoned_order_date` queries with dynamic date calculation to identify customers for abandoned cart email outreach.',
+          'Uses `abandoned_checkouts_count` and `last_abandoned_order_date` with dynamic date calculation to find customers who abandoned at least one checkout in the last 7 days. For cart recovery emails.',
         codeblock: {
           title: "Target customers who started checkout but didn't finish",
           tabs: [

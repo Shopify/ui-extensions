@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Select up to 5 component products for a bundle using the resource picker. This example shows opening `resourcePicker()` with a limit of 5 products, filtering out hidden/draft/archived items, and posting the selected IDs to your backend to save the bundle configuration.',
+      'Opens `resourcePicker()` with `multiple: 5` to select up to 5 bundle components, filtering out hidden, draft, and archived products. Posts the selected IDs to your backend to save the configuration.',
     codeblock: {
       title: 'Select bundle components',
       tabs: [
@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          "Query a product's bundle metafield and parse the JSON components array. This example demonstrates using `useEffect` to fetch bundle data from the [GraphQL Admin API](/docs/api/admin-graphql), parse the stored configuration, and display the component products.",
+          'Uses `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql) and fetch the bundle metafield, then parses the JSON components array. For displaying existing bundle configurations.',
         codeblock: {
           title: 'Load bundle configuration',
           tabs: [
