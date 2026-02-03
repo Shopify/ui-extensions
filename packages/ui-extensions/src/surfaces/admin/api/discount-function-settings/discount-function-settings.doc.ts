@@ -22,6 +22,47 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DiscountFunctionSettingsData',
     },
   ],
+  defaultExample: {
+    description:
+      'Save a minimum purchase threshold ($50) to a metafield with decimal validation. This example uses `applyMetafieldChange` with `number_decimal` type to ensure proper handling of currency values, and displays a success confirmation.',
+    codeblock: {
+      title: 'Configure discount threshold',
+      tabs: [
+        {code: './examples/configure-discount-threshold.ts', language: 'ts'},
+        {code: './examples/configure-discount-threshold.tsx', language: 'tsx'},
+      ],
+    },
+  },
+  examples: {
+    description: 'Configure discount function settings',
+    examples: [
+      {
+        description:
+          'Save multiple discount configuration settings in a single operation. This example stores eligible customer tags as a JSON array (vip, wholesale) and a usage limit as an integer (100), applying both metafield changes sequentially.',
+        codeblock: {
+          title: 'Configure eligibility rules',
+          tabs: [
+            {code: './examples/configure-eligibility-rules.ts', language: 'ts'},
+            {
+              code: './examples/configure-eligibility-rules.tsx',
+              language: 'tsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Load discount metafields on mount and display the current configuration. This example uses `useEffect` to reduce the metafields array into a settings object, checks for missing values, and applies defaults where needed.',
+        codeblock: {
+          title: 'Load existing settings',
+          tabs: [
+            {code: './examples/load-existing-settings.ts', language: 'ts'},
+            {code: './examples/load-existing-settings.tsx', language: 'tsx'},
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],

@@ -16,6 +16,62 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PurchaseOptionsCardConfigurationApi',
     },
   ],
+  defaultExample: {
+    description:
+      'Update a subscription by sending product and selling plan IDs to your backend. This example checks for the presence of `sellingPlanId` in the selected item, posts the update request to your backend, and closes the action modal on success.',
+    codeblock: {
+      title: 'Manage subscription',
+      tabs: [
+        {
+          code: './purchase-options-card/examples/manage-subscription.ts',
+          language: 'ts',
+        },
+        {
+          code: './purchase-options-card/examples/manage-subscription.tsx',
+          language: 'tsx',
+        },
+      ],
+    },
+  },
+  examples: {
+    description: 'Purchase options patterns',
+    examples: [
+      {
+        description:
+          'Show a confirmation before removing a product from a selling plan. This example uses a two-step confirmation process with `confirm()`, removes the product from the plan via your API, and closes the modal after successful removal.',
+        codeblock: {
+          title: 'Remove from selling plan',
+          tabs: [
+            {
+              code: './purchase-options-card/examples/remove-from-plan.ts',
+              language: 'ts',
+            },
+            {
+              code: './purchase-options-card/examples/remove-from-plan.tsx',
+              language: 'tsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Fetch selling plan name and options via GraphQL to validate the configuration. This example queries plan details by ID using the [GraphQL Admin API](/docs/api/admin-graphql), stores the result in state, and auto-closes the action after 2 seconds for a quick validation check.',
+        codeblock: {
+          title: 'Validate selling plan',
+          tabs: [
+            {
+              code: './purchase-options-card/examples/validate-selling-plan.ts',
+              language: 'ts',
+            },
+            {
+              code: './purchase-options-card/examples/validate-selling-plan.tsx',
+              language: 'tsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
