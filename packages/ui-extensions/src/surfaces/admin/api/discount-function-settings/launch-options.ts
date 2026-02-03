@@ -39,19 +39,11 @@ export enum DiscountClass {
 type DiscountMethod = 'automatic' | 'code';
 
 /**
- * A discount that is being configured by the merchant. Use this to access the discount's unique identifier when saving configuration changes or making GraphQL queries.
- */
-interface Discount {
-  /** The discount's unique global identifier (GID) in the [GraphQL Admin API](/docs/api/admin-graphql) format (for example, `gid://shopify/DiscountAutomaticApp/123`). Use this ID to associate settings with the correct discount or query discount data. */
-  id: string;
-}
-
-/**
  * The `data` object exposed to discount function settings extensions in the `admin.discount-details.function-settings.render` target. Use this to access the current discount configuration and populate your settings interface with existing values.
  */
 export interface DiscountFunctionSettingsData {
-  /** The discount being configured by the merchant. Use this ID to associate configuration changes with the correct discount. */
-  id: Discount;
+  /** The discount's unique global identifier (GID) in the [GraphQL Admin API](/docs/api/admin-graphql) format (for example, `gid://shopify/DiscountAutomaticApp/123`). Use this ID to associate settings with the correct discount or query discount data. */
+  id: string;
   /** An array of [metafields](/docs/apps/build/metafields) that store the discount function's configuration values. Use these metafields to populate your settings UI with the current discount configuration and display existing settings to merchants. */
   metafields: Metafield[];
 }
