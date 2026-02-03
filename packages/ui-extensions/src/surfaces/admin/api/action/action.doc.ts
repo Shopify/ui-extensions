@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'ActionExtensionApi',
       description:
-        'The `ActionExtensionApi` object provides methods for action extensions that render in modal overlays. Access the following properties on the `ActionExtensionApi` object to interact with the current context, control the modal, and display picker dialogs.',
+        'The `ActionExtensionApi` object provides methods for action extensions that render in modal overlays. Access the following properties on the `ActionExtensionApi` object to interact with the current context and control the modal.',
       type: 'ActionExtensionApi',
     },
   ],
