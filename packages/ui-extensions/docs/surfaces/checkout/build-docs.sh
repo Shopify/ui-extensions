@@ -11,6 +11,7 @@ fail_and_exit() {
 if [ -z $API_VERSION ]
 then
   echo "Building docs for 'unstable' checkout UI extensions API. You can add a calver version argument (e.g. 'yarn docs:checkout 2023-04') to generate the docs for a specific version in addition to 'unstable'."
+  API_VERSION="unstable"
 else
   echo "Building docs for 'unstable' and '$API_VERSION' checkout UI extensions API."
 fi
@@ -27,6 +28,14 @@ find ./ -name '*.doc*.js' -exec rm -r {} \;
 
 if [ $build_exit -ne 0 ]; then
   fail_and_exit $build_exit
+fi
+
+# Generate targets.json
+echo "Generating targets.json..."
+node ./$DOCS_PATH/build-docs-targets-json.mjs $API_VERSION
+targets_exit=$?
+if [ $targets_exit -ne 0 ]; then
+  fail_and_exit $targets_exit
 fi
 
 # Make sure https://shopify.dev URLs are relative so they work in Spin.
