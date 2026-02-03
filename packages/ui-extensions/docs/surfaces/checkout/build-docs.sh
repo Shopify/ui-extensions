@@ -56,7 +56,7 @@ if [ -d ../../../shopify-dev ]; then
     if [ $sed_exit -ne 0 ]; then
       fail_and_exit $sed_exit
     fi
-    rsync -a --delete ./$DOCS_PATH/screenshots/ ../../../shopify-dev/app/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
+    rsync -a --delete ./$DOCS_PATH/screenshots/ ../../../shopify-dev/content-v2/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
 else
   echo "Not copying docs to shopify-dev because it was not found at ../../../shopify-dev."
 fi
