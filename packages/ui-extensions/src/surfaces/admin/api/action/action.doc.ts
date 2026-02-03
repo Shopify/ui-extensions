@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Send selected product IDs to your backend for bulk processing. This example shows how to map selected items from `data.selected`, make an authenticated API call, and close the action modal when the operation completes.',
+      'Send selected product IDs to your backend for bulk processing. This example shows how to map items from `data.selected`, make an authenticated API call to `/api/bulk-process`, and close the modal with `close()` when the operation completes successfully.',
     codeblock: {
       title: 'Process selected products',
       tabs: [
@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Launch the resource picker to select component products for a bundle, then save the bundle configuration to your backend. This example demonstrates opening a resource picker from within an action modal with a limit of 5 products, filtering out draft and archived items, and handling the selection result.',
+          'Launch the resource picker to select component products for a bundle, then save the configuration to your backend. This example shows how to use `resourcePicker()` with `multiple: 5` to limit selection, send the main product and selected components to `/api/create-bundle`, and close the modal when complete—useful for bundle builders, kit assembly, or product grouping workflows.',
         codeblock: {
           title: 'Select additional resources',
           tabs: [
@@ -46,7 +46,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Fulfill an order through your app backend with proper error handling. This example shows using `try-catch` blocks to catch errors, logging errors when your backend fulfillment service fails, and displaying error messages through console output.',
+          'Fulfill an order through your app backend with proper error handling. This example uses `try-catch` blocks to catch errors and logs failures when the fulfillment service encounters issues, essential for third-party fulfillment integrations or dropshipping workflows where backend operations might fail and need graceful degradation.',
         codeblock: {
           title: 'Fulfill order with error handling',
           tabs: [

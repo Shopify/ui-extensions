@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      "Fetch and display a product's title, inventory, and status in a block extension. This example uses `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql) when the page loads, retrieves product data using the selected product's ID, and displays a loading state while fetching.",
+      "Fetch and display a product's title, inventory, and status in a block extension. This example shows how to use `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql) when the page loads, retrieving `title`, `totalInventory`, and `status` fields, while tracking loading state during the fetch operation.",
     codeblock: {
       title: 'Display product information',
       tabs: [
@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Check product eligibility with your backend API before launching an action extension. This example validates that the product meets criteria, shows a loading state during the check, and uses `navigation.navigate` to open the action extension when the product is approved.',
+          'Check product eligibility with your backend API before launching an action extension. This example demonstrates calling your backend eligibility endpoint with the product ID to validate that the product meets criteria, tracking the eligibility state, and using `navigation.navigate()` to open the action extension when the product is approved.',
         codeblock: {
           title: 'Navigate to action extension',
           tabs: [
@@ -43,7 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Open the resource picker to select related products, then save the associations to your backend. This example allows unlimited product selection using `multiple: true` and posts the relationship data when selection is confirmed.',
+          'Open the resource picker to select related products, then save the associations to your backend. This example shows using `resourcePicker()` with `multiple: true` for unlimited selection, posting the relationship data to `/api/save-related`, and tracking the count of selected products.',
         codeblock: {
           title: 'Select related products',
           tabs: [
