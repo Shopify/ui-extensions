@@ -24,7 +24,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Save a minimum quantity validation rule to a metafield. This example calls `applyMetafieldChange` with an integer value of 5, then checks the result type to confirm success or handle errors.',
+      'Save a minimum quantity validation rule to a metafield. Calls `applyMetafieldChange()` with an integer value of 5, then checks the result type to confirm success or handle errors.',
     codeblock: {
       title: 'Set minimum quantity',
       tabs: [
@@ -38,7 +38,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Block shipping to specific countries with custom error messages. This example saves blocked countries (US, CA, MX) as a JSON array and stores the configuration in a validation metafield for use by your checkout function.',
+          'Block shipping to specific countries with custom error messages. Saves blocked countries (US, CA, MX) as a JSON array and stores the configuration in a validation metafield for use by your checkout function.',
         codeblock: {
           title: 'Configure shipping restrictions',
           tabs: [
@@ -55,7 +55,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Detect whether the merchant is editing an existing validation or creating a new one. This example checks for the presence of `data.validation`, loads existing metafields if found, and initializes default values for a new validation otherwise.',
+          'Detect whether the merchant is editing an existing validation or creating a new one. Checks for `data.validation` presence, loads existing metafields if found, or initializes defaults for new validations—useful for edit/create workflows where you need to prepopulate forms with existing settings.',
         codeblock: {
           title: 'Load validation configuration',
           tabs: [

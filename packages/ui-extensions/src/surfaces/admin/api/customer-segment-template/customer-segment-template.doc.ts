@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Create a segment template targeting customers who spent $500+ across 5+ orders. This example uses `total_spent` and `orders_count` queries to identify high-value customers, and demonstrates using `shopify.i18n.translate` for internationalized template titles and descriptions.',
+      'Create a segment template targeting customers who spent $500+ across 5+ orders. Uses `total_spent` and `orders_count` queries to identify high-value customers, which enables VIP loyalty programs or premium tier targeting.',
     codeblock: {
       title: 'Target high-value customers',
       tabs: [
@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Create a segment template targeting customers with birthdays this month. This example requires the `facts.birth_date` metafield to be set up, and queries the metafields namespace with the current month value to enable birthday-based customer targeting.',
+          'Create a segment template targeting customers with birthdays this month. Requires the `facts.birth_date` metafield to be set up, which enables birthday-based customer targeting for marketing campaigns.',
         codeblock: {
           title: 'Target customers with birthdays this month',
           tabs: [
@@ -43,7 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Create a segment template targeting customers who abandoned at least one checkout in the last 7 days. This example uses `abandoned_checkouts_count` and `last_abandoned_order_date` queries with dynamic date calculation to identify customers for recovery outreach.',
+          'Create a segment template targeting customers who abandoned at least one checkout in the last 7 days. This example uses `abandoned_checkouts_count` and `last_abandoned_order_date` queries with dynamic date calculation to identify customers for abandoned cart email outreach.',
         codeblock: {
           title: "Target customers who started checkout but didn't finish",
           tabs: [
