@@ -3,14 +3,14 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Standard API',
   description:
-    'The Standard API provides core functionality available to all Admin UI extension types. Use this API to authenticate with your app backend, query the [GraphQL Admin API](/docs/api/admin-graphql), and translate content.',
+    'The Standard API provides core functionality available to all Admin UI extension types. Use this API to authenticate with your app backend, query the [GraphQL Admin API](/docs/api/admin-graphql), translate content, and handle intent-based navigation.',
   isVisualComponent: false,
   type: 'API',
   definitions: [
     {
       title: 'StandardApi',
       description:
-        'The `StandardApi` object provides core methods available to all extension targets. Access the following properties on the `StandardApi` object to authenticate users, query the [GraphQL Admin API](/docs/api/admin-graphql), and translate content.',
+        'The `StandardApi` object provides core methods available to all extension targets. Access the following properties on the `StandardApi` object to identify your extension target, authenticate with your app backend, query the [GraphQL Admin API](/docs/api/admin-graphql), translate content, and handle intents from other extensions.',
       type: 'StandardApi',
     },
   ],
