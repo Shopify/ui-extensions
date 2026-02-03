@@ -13,6 +13,9 @@ import type {
 } from './api';
 import {AnyComponentBuilder} from '../../shared';
 
+/**
+ * The set of UI components available for customer segment template extensions. Includes only the `CustomerSegmentTemplate` and `InternalCustomerSegmentTemplate` components used to define segment query builders.
+ */
 type CustomerSegmentTemplateComponent = AnyComponentBuilder<
   Pick<
     Components,
@@ -20,6 +23,9 @@ type CustomerSegmentTemplateComponent = AnyComponentBuilder<
   >
 >;
 
+/**
+ * The set of UI components available for product configuration extensions. Includes layout components (`Box`, `InlineStack`, `BlockStack`), content components (`Heading`, `Text`, `Link`, `Image`, `Icon`), and resource display components (`ResourceList`, `ResourceItem`, `Thumbnail`) for building product bundle and configuration interfaces.
+ */
 type ProductConfigurationComponents = AnyComponentBuilder<
   Pick<
     Components,
@@ -39,12 +45,15 @@ type ProductConfigurationComponents = AnyComponentBuilder<
   >
 >;
 
+/**
+ * The set of UI components available for order routing rule configuration extensions. Includes the `InternalLocationList` component for displaying and selecting fulfillment locations.
+ */
 type OrderRoutingComponents = AnyComponentBuilder<
   Pick<Components, 'InternalLocationList'>
 >;
 
 /**
- * See the [list of available components](/docs/api/admin-extensions/components).
+ * The full set of UI components available for most Admin UI extension targets. This includes all components except those restricted to specific targets.
  */
 type AllComponents = AnyComponentBuilder<
   Omit<
@@ -55,6 +64,9 @@ type AllComponents = AnyComponentBuilder<
   >
 >;
 
+/**
+ * A mapping of all Admin UI extension target identifiers to their corresponding extension types. Each target specifies where an extension renders in the Shopify admin, what API methods are available, and which UI components can be used. Use the target identifier (like `admin.product-details.block.render`) in your extension configuration to specify where your extension should appear.
+ */
 export interface ExtensionTargets {
   /**
    * @private
@@ -62,7 +74,7 @@ export interface ExtensionTargets {
   Playground: RenderExtension<StandardApi<'Playground'>, AllComponents>;
 
   /**
-   * Renders a [`CustomerSegmentTemplate`](/docs/api/admin-extensions/components/customersegmenttemplate) in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/customer-segments).
+   * A render target that provides [customer segment templates](/docs/apps/build/marketing-analytics/customer-segments/build-a-template-extension) in the [customer segment editor](https://help.shopify.com/manual/customers/customer-segmentation/create-customer-segments). Use this target to provide pre-built segment templates that merchants can use as starting points for creating targeted customer groups based on custom criteria.
    */
   'admin.customers.segmentation-templates.render': RenderExtension<
     CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.render'>,
@@ -71,9 +83,7 @@ export interface ExtensionTargets {
 
   // Blocks
   /**
-   * Renders an Admin Block in the product details page.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * A block target that displays inline content within the product details page. Use this to show product-specific information, tools, or actions directly on the product page.
    */
   'admin.product-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.product-details.block.render'>,
@@ -81,9 +91,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an Admin Block in the order details page.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * A block target that displays inline content within the order details page. Use this to show order-specific information, fulfillment tools, or custom order actions.
    */
   'admin.order-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.order-details.block.render'>,
@@ -91,9 +99,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an Admin Block in the customer details page.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * A block target that displays inline content within the customer details page. Use this to show customer-specific information, loyalty data, or custom customer actions.
    */
   'admin.customer-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.customer-details.block.render'>,
@@ -102,9 +108,7 @@ export interface ExtensionTargets {
 
   // Actions
   /**
-   * Renders an admin action extension in the product details page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the product details page. Use this to create workflows for processing products, syncing data, or integrating with external systems.
    */
   'admin.product-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.product-details.action.render'>,
@@ -112,9 +116,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the order details page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the order details page. Use this to create workflows for order processing, fulfillment operations, or external system integrations.
    */
   'admin.order-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.order-details.action.render'>,
@@ -122,9 +124,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the customer details page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the customer details page. Use this to create workflows for customer data management, loyalty operations, or CRM integrations.
    */
   'admin.customer-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-details.action.render'>,
@@ -132,9 +132,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the customer segment details page. Open this extension from the "Use segment" button.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears from the **Use segment** button on the customer segment details page. Use this to create workflows for marketing campaigns, email operations, or segment-based actions.
    */
   'admin.customer-segment-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-segment-details.action.render'>,
@@ -142,9 +140,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the product index page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the product index page. Use this to create workflows for product management, catalog operations, or inventory synchronization.
    */
   'admin.product-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.product-index.action.render'>,
@@ -152,9 +148,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the order index page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the order index page. Use this to create workflows for order management, reporting, or fulfillment operations.
    */
   'admin.order-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.order-index.action.render'>,
@@ -162,9 +156,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the customer index page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the customer index page. Use this to create workflows for customer management, marketing operations, or bulk data processing.
    */
   'admin.customer-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-index.action.render'>,
@@ -172,9 +164,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the discount index page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the discount index page. Use this to create workflows for discount management, promotional operations, or bulk discount updates.
    */
   'admin.discount-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.discount-index.action.render'>,
@@ -182,9 +172,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the collection details page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the collection details page. Use this to create workflows for collection management, product operations, or merchandising tools.
    */
   'admin.collection-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.collection-details.action.render'>,
@@ -192,9 +180,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the collection index page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the collection index page. Use this to create workflows for collection management, bulk operations, or catalog organization.
    */
   'admin.collection-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.collection-index.action.render'>,
@@ -202,9 +188,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the abandonded checkout page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the abandoned checkout details page. Use this to create workflows for cart recovery, customer engagement, or checkout analysis.
    */
   'admin.abandoned-checkout-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.abandoned-checkout-details.action.render'>,
@@ -212,9 +196,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the product variant details page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the product variant details page. Use this to create workflows for variant management, inventory operations, or data synchronization.
    */
   'admin.product-variant-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.product-variant-details.action.render'>,
@@ -222,9 +204,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the draft order details page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the draft order details page. Use this to create workflows for draft order processing, custom pricing, or order preparation tools.
    */
   'admin.draft-order-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.draft-order-details.action.render'>,
@@ -232,9 +212,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the draft orders page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the draft order index page. Use this to create workflows for draft order management, bulk operations, or order conversion tools.
    */
   'admin.draft-order-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.draft-order-index.action.render'>,
@@ -242,9 +220,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the discount details page. Open this extension from the "More Actions" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the discount details page. Use this to create workflows for discount management, promotion analysis, or discount synchronization.
    */
   'admin.discount-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.discount-details.action.render'>,
@@ -252,10 +228,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the order fulfilled card. Open this extension from the "3-dot" menu inside the order fulfilled card.
-   * Note: This extension will only be visible on orders which were fulfilled by your app.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the actions menu inside the order fulfilled card, visible only on orders fulfilled by your app. Use this to create workflows for fulfillment operations, tracking updates, or post-fulfillment actions.
    */
   'admin.order-fulfilled-card.action.render': RenderExtension<
     ActionExtensionApi<'admin.order-fulfilled-card.action.render'>,
@@ -265,9 +238,7 @@ export interface ExtensionTargets {
   // Bulk Actions
 
   /**
-   * Renders an admin action extension in the product index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the product index page when multiple products are selected. Use this to create workflows for bulk product operations, batch updates, or mass data processing.
    */
   'admin.product-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.product-index.selection-action.render'>,
@@ -275,9 +246,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the order index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the order index page when multiple orders are selected. Use this to create workflows for bulk order operations, batch fulfillment, or mass order processing.
    */
   'admin.order-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.order-index.selection-action.render'>,
@@ -285,9 +254,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the customer index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the customer index page when multiple customers are selected. Use this to create workflows for bulk customer operations, mass email campaigns, or batch data updates.
    */
   'admin.customer-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-index.selection-action.render'>,
@@ -295,9 +262,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the draft order page when multiple resources are selected. Open this extension from the "3-dot" menu.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * An action target that appears in the **More actions** menu on the draft order index page when multiple draft orders are selected. Use this to create workflows for bulk draft order operations, batch conversions, or mass order processing.
    */
   'admin.draft-order-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.draft-order-index.selection-action.render'>,
@@ -305,9 +270,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders Product Configuration on product details and product variant details
-   *
-   * See the [tutorial](/docs/apps/selling-strategies/bundles/product-config) for more information
+   * A configuration target that renders product variant configuration settings for [product bundles](/docs/apps/build/product-merchandising/bundles/product-configuration-extension/add-merchant-config-ui) and customizable products on the product variant details page. Use this to define variant-specific bundle components, customization options, or configuration rules.
    */
   'admin.product-details.configuration.render': RenderExtension<
     ProductDetailsConfigurationApi<'admin.product-details.configuration.render'>,
@@ -315,9 +278,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders Product Configuration on product details and product variant details
-   *
-   * See the [tutorial](/docs/apps/selling-strategies/bundles/product-config) for more information
+   * A configuration target that renders product variant configuration settings for [product bundles](/docs/apps/build/product-merchandising/bundles/product-configuration-extension/add-merchant-config-ui) and customizable products on the product variant details page. Use this to define variant-specific bundle components, customization options, or configuration rules.
    */
   'admin.product-variant-details.configuration.render': RenderExtension<
     ProductVariantDetailsConfigurationApi<'admin.product-variant-details.configuration.render'>,
@@ -325,9 +286,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders Order Routing Rule Configuration on order routing settings.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * A function settings target that renders within order routing settings, allowing merchants to configure order routing rule functions. Use this to build custom configuration interfaces for order routing function parameters.
    */
   'admin.settings.internal-order-routing-rule.render': RenderExtension<
     OrderRoutingRuleApi<'admin.settings.internal-order-routing-rule.render'>,
@@ -339,9 +298,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders Validation Settings within a given validation's add and edit views.
-   *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * A function settings target that renders within a validation's add and edit views, allowing merchants to configure validation function settings. Use this to build custom configuration interfaces for validation function parameters and rules.
    */
   'admin.settings.validation.render': RenderExtension<
     ValidationSettingsApi<'admin.settings.validation.render'>,
@@ -349,30 +306,31 @@ export interface ExtensionTargets {
   >;
 }
 
+/**
+ * A string literal union of all valid extension target identifiers. Use this type to specify where your Admin UI extension should render, such as `admin.product-details.block.render` for a block on product details pages or `admin.order-details.action.render` for an action on order details pages. The target determines the extension's location, available APIs, and UI components.
+ */
 export type ExtensionTarget = keyof ExtensionTargets;
 
+/**
+ * Maps an extension target identifier to its corresponding extension type (either RenderExtension or RunnableExtension). Use this to get the full extension type definition for a specific target.
+ */
 export type ExtensionForExtensionTarget<T extends ExtensionTarget> =
   ExtensionTargets[T];
 
 /**
- * For a given extension target, returns the value that is expected to be
- * returned by that extension target’s callback type.
+ * Extracts the return type from an extension target's callback function. Use this utility type when you need to know what type of value an extension should return, such as `void` for render extensions or specific output types for runnable extensions.
  */
 export type ReturnTypeForExtension<ID extends keyof ExtensionTargets> =
   ReturnType<ExtensionTargets[ID]>;
 
 /**
- * For a given extension target, returns the tuple of arguments that would
- * be provided to that extension target’s callback type.
+ * Extracts the parameter types from an extension target's callback function. Use this utility type to get the tuple of arguments (connection/root and API) that are passed to your extension function.
  */
 export type ArgumentsForExtension<ID extends keyof ExtensionTargets> =
   Parameters<ExtensionTargets[ID]>;
 
 /**
- * A union type containing all of the extension targets that follow the pattern of
- * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/core)
- * and an additional `api` argument, and using those arguments to render
- * UI.
+ * A filtered union of extension target identifiers that only includes render extension targets (those that display UI). Use this to constrain types to only rendering targets, excluding runnable extensions that return data without UI.
  */
 export type RenderExtensionTarget = {
   [ID in keyof ExtensionTargets]: ExtensionTargets[ID] extends RenderExtension<
@@ -384,12 +342,15 @@ export type RenderExtensionTarget = {
 }[keyof ExtensionTargets];
 
 /**
- * A mapping of each “render extension” name to its callback type.
+ * A mapping that associates each render extension target identifier with its corresponding extension type. Use this to work specifically with render extensions while filtering out runnable extensions.
  */
 export type RenderExtensions = {
   [ID in RenderExtensionTarget]: ExtensionTargets[ID];
 };
 
+/**
+ * A utility type that extracts the API type from a `RenderExtension`. Use this to get the API interface that a render extension receives at runtime.
+ */
 type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
   infer Api,
   any
@@ -397,21 +358,20 @@ type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
   ? Api
   : never;
 
+/**
+ * A utility type that extracts the allowed component set from a `RenderExtension`. Use this to get the components type that a render extension can use in its UI.
+ */
 type ExtractedAllowedComponentsFromRenderExtension<T> =
   T extends RenderExtension<any, infer Components> ? Components : never;
 
 /**
- * For a given rendering extension target, returns the type of the API that the
- * extension will receive at runtime. This API type is the second argument to
- * the callback for that extension target. The first callback for all of the rendering
- * extension targets each receive a `RemoteRoot` object.
+ * Extracts the API type for a specific render extension target. Use this to get the API interface (like `ActionExtensionApi`, `BlockExtensionApi`, etc.) that your extension receives, including methods like `query`, `i18n`, and target-specific properties. This helps you write type-safe code that accesses the correct API methods for your extension target.
  */
 export type ApiForRenderExtension<ID extends keyof RenderExtensions> =
   ExtractedApiFromRenderExtension<RenderExtensions[ID]>;
 
 /**
- * For a given rendering extension target, returns the UI components that the
- * extension target supports.
+ * Extracts the component set for a specific render extension target. Use this to get the union of UI components (like `Text`, `Button`, `AdminBlock`, etc.) available for your extension target. This helps you write type-safe code that only uses components supported by your target.
  */
 export type AllowedComponentsForRenderExtension<
   ID extends keyof RenderExtensions,
