@@ -26,8 +26,8 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       sectionContent:
         '- **Use `@media print` CSS for print-optimized styling:** Apply print-specific styles with `@media print` queries to control page breaks, hide UI elements, and optimize for paper output. The print preview shows the screen styles until printing.\n' +
-        '- **Set document MIME type correctly:** Return `Content-Type: application/pdf` for PDFs, `image/png` for images, or `text/html` for HTML documents. Incorrect MIME types may cause browser download instead of preview.\n' +
-        '- **Test `window.print()` behavior:** If generating HTML, test that `window.print()` works correctly. Some CSS frameworks or scripts may interfere with browser print dialogs.',
+        '- **Set document MIME type correctly:** Return `Content-Type: application/pdf` for PDFs, `image/png` for images, or `text/html` for HTML documents. Incorrect MIME types might trigger browser download instead of preview.\n' +
+        '- **Test `window.print()` behavior:** If generating HTML, then test that `window.print()` works correctly. Some CSS frameworks or scripts might interfere with browser print dialogs.',
     },
     {
       type: 'Generic',
