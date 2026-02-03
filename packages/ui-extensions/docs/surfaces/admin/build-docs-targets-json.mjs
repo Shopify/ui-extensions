@@ -687,9 +687,9 @@ function parseComponents(componentString, componentTypesMap) {
     if (allComponents.length > 0) {
       return allComponents.filter((c) => !omittedComponents.includes(c));
     }
-    // Fallback: try to get from checkout components if allComponents not set
-    const checkoutComponents = parseCheckoutComponents();
-    return checkoutComponents.filter((c) => !omittedComponents.includes(c));
+    // Fallback: try to get from local admin components if allComponents not set
+    const localComponents = parseLocalComponents();
+    return localComponents.filter((c) => !omittedComponents.includes(c));
   }
 
   // Handle plain AnyComponentBuilder<Components>
@@ -700,7 +700,7 @@ function parseComponents(componentString, componentTypesMap) {
     if (allComponents.length > 0) {
       return allComponents;
     }
-    return parseCheckoutComponents();
+    return parseLocalComponents();
   }
 
   // Handle AnyCheckoutComponentExcept<'Component1' | 'Component2'>
@@ -776,12 +776,17 @@ function resolveComponentType(typeName, componentTypesMap) {
     return componentTypesMap[typeName];
   }
 
-  // Handle special checkout types
-  if (
-    typeName === 'AnyCheckoutComponent' ||
-    typeName === 'AnyComponent' ||
-    typeName === 'AnyThankYouComponent'
-  ) {
+  // Handle AnyComponent - use local admin components (not checkout)
+  if (typeName === 'AnyComponent') {
+    if (allComponents.length > 0) {
+      return allComponents;
+    }
+    // Fallback to local components if allComponents not yet populated
+    return parseLocalComponents();
+  }
+
+  // Handle special checkout types (these explicitly reference checkout)
+  if (typeName === 'AnyCheckoutComponent' || typeName === 'AnyThankYouComponent') {
     return parseCheckoutComponents();
   }
 
