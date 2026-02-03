@@ -16,6 +16,47 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ActionExtensionApi',
     },
   ],
+  defaultExample: {
+    description:
+      'Send selected product IDs to your backend for bulk processing. This example shows how to map selected items from `data.selected`, make an authenticated API call, and close the action modal when the operation completes.',
+    codeblock: {
+      title: 'Process selected products',
+      tabs: [
+        {code: './examples/process-selected-products.ts', language: 'ts'},
+        {code: './examples/process-selected-products.tsx', language: 'tsx'},
+      ],
+    },
+  },
+  examples: {
+    description: 'Action extension patterns',
+    examples: [
+      {
+        description:
+          'Launch the resource picker to select component products for a bundle, then save the bundle configuration to your backend. This example demonstrates opening a resource picker from within an action modal with a limit of 5 products, filtering out draft and archived items, and handling the selection result.',
+        codeblock: {
+          title: 'Select additional resources',
+          tabs: [
+            {code: './examples/select-additional-resources.ts', language: 'ts'},
+            {
+              code: './examples/select-additional-resources.tsx',
+              language: 'tsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Fulfill an order through your app backend with proper error handling. This example shows using `try-catch` blocks to catch errors, logging errors when your backend fulfillment service fails, and displaying error messages through console output.',
+        codeblock: {
+          title: 'Fulfill order with error handling',
+          tabs: [
+            {code: './examples/handle-errors.ts', language: 'ts'},
+            {code: './examples/handle-errors.tsx', language: 'tsx'},
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Core APIs',
   related: [],

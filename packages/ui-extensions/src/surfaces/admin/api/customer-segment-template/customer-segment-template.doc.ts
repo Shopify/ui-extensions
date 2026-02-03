@@ -16,6 +16,44 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'CustomerSegmentTemplateApi',
     },
   ],
+  defaultExample: {
+    description:
+      'Create a segment template targeting customers who spent $500+ across 5+ orders. This example uses `total_spent` and `orders_count` queries to identify high-value customers, and demonstrates using `shopify.i18n.translate` for internationalized template titles and descriptions.',
+    codeblock: {
+      title: 'Target high-value customers',
+      tabs: [
+        {code: './examples/high-value-customers.ts', language: 'ts'},
+        {code: './examples/high-value-customers.tsx', language: 'tsx'},
+      ],
+    },
+  },
+  examples: {
+    description: 'Pre-built customer segment templates',
+    examples: [
+      {
+        description:
+          'Create a segment template targeting customers with birthdays this month. This example requires the `facts.birth_date` metafield to be set up, and queries the metafields namespace with the current month value to enable birthday-based customer targeting.',
+        codeblock: {
+          title: 'Target customers with birthdays this month',
+          tabs: [
+            {code: './examples/birthday-this-month.ts', language: 'ts'},
+            {code: './examples/birthday-this-month.tsx', language: 'tsx'},
+          ],
+        },
+      },
+      {
+        description:
+          'Create a segment template targeting customers who abandoned at least one checkout in the last 7 days. This example uses `abandoned_checkouts_count` and `last_abandoned_order_date` queries with dynamic date calculation to identify customers for recovery outreach.',
+        codeblock: {
+          title: "Target customers who started checkout but didn't finish",
+          tabs: [
+            {code: './examples/abandoned-cart-recovery.ts', language: 'ts'},
+            {code: './examples/abandoned-cart-recovery.tsx', language: 'tsx'},
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],

@@ -16,6 +16,47 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'OrderRoutingRuleApi',
     },
   ],
+  defaultExample: {
+    description:
+      'Set preferred and fallback fulfillment locations for order routing. This example applies two metafield changes in a single batch using `applyMetafieldsChange`: New York Warehouse as the preferred location and Los Angeles Warehouse as the fallback.',
+    codeblock: {
+      title: 'Configure location priority',
+      tabs: [
+        {code: './examples/configure-location-priority.ts', language: 'ts'},
+        {code: './examples/configure-location-priority.tsx', language: 'tsx'},
+      ],
+    },
+  },
+  examples: {
+    description: 'Configure order routing rules',
+    examples: [
+      {
+        description:
+          'Batch remove outdated metafields from your routing configuration. This example maps an array of deprecated keys to removal operations, and cleans up old settings in a single `applyMetafieldsChange` operation.',
+        codeblock: {
+          title: 'Remove deprecated settings',
+          tabs: [
+            {code: './examples/remove-deprecated-settings.ts', language: 'ts'},
+            {
+              code: './examples/remove-deprecated-settings.tsx',
+              language: 'tsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Configure multiple routing criteria including maximum distance (50km), inventory checking (true), and excluded zip codes (90210, 10001). This example sets all routing criteria in a single batch operation with different value types (integer, boolean, and JSON).',
+        codeblock: {
+          title: 'Set routing criteria',
+          tabs: [
+            {code: './examples/set-routing-criteria.ts', language: 'ts'},
+            {code: './examples/set-routing-criteria.tsx', language: 'tsx'},
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
