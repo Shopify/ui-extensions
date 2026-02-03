@@ -14,14 +14,14 @@ const data: ReferenceEntityTemplateSchema = {
   requires:
     'an Admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
+    description:
+      'Build a custom picker for email templates with columns and badges. This example defines table headers (Templates, Created by, Times used), populates picker items with data fields for each column, and adds status badges (Draft/Published) to visually distinguish template states.',
     image: 'picker.png',
     codeblock: {
-      title: 'Picker',
+      title: 'Select email templates',
       tabs: [
-        {
-          code: './examples/template-picker.js',
-          language: 'js',
-        },
+        {code: './examples/template-picker.ts', language: 'ts'},
+        {code: './examples/template-picker.tsx', language: 'tsx'},
       ],
     },
   },
@@ -37,65 +37,67 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          "Minimal required fields picker configuration.\n\nIf you don't provide the required options (`heading` and `items`), the picker will not open and an error will be logged.",
+          'Create a minimal picker with only the required fields (heading and items). This example shows a basic picker with two selectable options and no additional configuration.',
         codeblock: {
           title: 'Simple picker',
           tabs: [
-            {
-              code: './examples/minimal.js',
-              language: 'js',
-            },
+            {code: './examples/minimal.ts', language: 'ts'},
+            {code: './examples/minimal.tsx', language: 'tsx'},
           ],
         },
       },
       {
         description:
-          'Setting a specific number of selectable items. In this example, the user can select up to 2 items.',
+          'Limit selection to a maximum of 2 items. This example sets `multiple: 2` to restrict how many items the merchant can select.',
         codeblock: {
           title: 'Limited selectable items',
           tabs: [
-            {
-              code: './examples/multiple-limit.js',
-              language: 'js',
-            },
+            {code: './examples/multiple-limit.ts', language: 'ts'},
+            {code: './examples/multiple-limit.tsx', language: 'tsx'},
           ],
         },
       },
       {
-        description: 'Setting an unlimited number of selectable items.',
+        description:
+          'Allow unlimited selection. This example sets `multiple: true` without a numeric limit, allowing the merchant to select as many items as needed.',
         codeblock: {
           title: 'Unlimited selectable items',
           tabs: [
-            {
-              code: './examples/multiple-true.js',
-              language: 'js',
-            },
+            {code: './examples/multiple-true.ts', language: 'ts'},
+            {code: './examples/multiple-true.tsx', language: 'tsx'},
           ],
         },
       },
       {
         description:
-          'Providing preselected items in the picker. These will be selected when the picker opens but can be deselected by the user.',
+          'Open the picker with items already preselected. This example sets `selected: true` on specific items when the picker opens, though the merchant can still deselect them.',
         codeblock: {
           title: 'Preselected items',
           tabs: [
-            {
-              code: './examples/preselected.js',
-              language: 'js',
-            },
+            {code: './examples/preselected.ts', language: 'ts'},
+            {code: './examples/preselected.tsx', language: 'tsx'},
           ],
         },
       },
       {
         description:
-          "Providing disabled items in the picker. These are disabled and can't be selected by the user.",
+          'Disable specific picker items to prevent selection. This example sets `disabled: true` on certain items, which causes them to appear in the picker but prevents the merchant from selecting them.',
         codeblock: {
           title: 'Disabled items',
           tabs: [
-            {
-              code: './examples/disabled.js',
-              language: 'js',
-            },
+            {code: './examples/disabled.ts', language: 'ts'},
+            {code: './examples/disabled.tsx', language: 'tsx'},
+          ],
+        },
+      },
+      {
+        description:
+          'Populate the picker with live GraphQL data. This example uses `useEffect` to fetch orders via the [GraphQL Admin API](/docs/api/admin-graphql), transforms them into picker item format, and opens the picker with dynamically loaded data.',
+        codeblock: {
+          title: 'Use GraphQL data',
+          tabs: [
+            {code: './examples/direct-api.ts', language: 'ts'},
+            {code: './examples/direct-api.tsx', language: 'tsx'},
           ],
         },
       },
