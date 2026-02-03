@@ -13,7 +13,7 @@ export type AnyComponentBuilder<ComponentTypes> =
   ComponentsBuilder<ComponentTypes>[keyof ComponentsBuilder<ComponentTypes>];
 
 /**
- * Union of supported API versions
+ * The supported GraphQL Admin API versions. Use this to specify which API version your GraphQL queries should execute against. Each version includes specific features, bug fixes, and breaking changes. The `unstable` version provides access to the latest features, and can change without notice because it's not subject to versioning guarantees.
  */
 export type ApiVersion =
   | '2023-04'
