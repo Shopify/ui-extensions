@@ -93,7 +93,7 @@ enum ProductStatus {
 interface Image {
   /** The image's unique identifier. Use this to reference the image in GraphQL operations. */
   id: string;
-  /** Alternative text describing the image for accessibility and SEO. Displayed when the image cannot load. */
+  /** Alternative text describing the image for accessibility and SEO. Displayed when the image can't load. */
   altText?: string;
   /** The original source URL of the image file. Use this URL to display the image. */
   originalSrc: string;
@@ -217,7 +217,7 @@ interface ProductVariant extends Resource {
   inventoryManagement: ProductVariantInventoryManagement;
   /** Whether to allow purchases when inventory is unavailable. When set to continue, customers can buy out-of-stock variants. When set to deny, purchases are blocked when stock is zero. */
   inventoryPolicy: ProductVariantInventoryPolicy;
-  /** The total available inventory quantity summed across all locations. Use this for at-a-glance stock checks, though individual location quantities may vary. */
+  /** The total available inventory quantity summed across all locations. Use this for at-a-glance stock checks, though individual location quantities might vary. */
   inventoryQuantity?: number | null;
   /** The position of this variant in the product's variant list. Lower numbers appear first. Use this to maintain consistent variant ordering in your UI. */
   position: number;
