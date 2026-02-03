@@ -14,6 +14,44 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ShouldRenderApi',
     },
   ],
+  defaultExample: {
+    description:
+      'Return true to show the action extension only when items are selected. This example checks `data.selected.length` and prevents the action from appearing on empty pages where no resources are selected.',
+    codeblock: {
+      title: 'Check when items selected',
+      tabs: [
+        {code: './examples/check-product-tag.ts', language: 'ts'},
+        {code: './examples/check-product-tag.tsx', language: 'tsx'},
+      ],
+    },
+  },
+  examples: {
+    description: 'Conditionally show or hide action extensions',
+    examples: [
+      {
+        description:
+          'Check if exactly one item is selected before showing the action. This example ensures that actions designed for individual resources only appear when the merchant has selected exactly one item.',
+        codeblock: {
+          title: 'Require one item selected',
+          tabs: [
+            {code: './examples/check-order-status.ts', language: 'ts'},
+            {code: './examples/check-order-status.tsx', language: 'tsx'},
+          ],
+        },
+      },
+      {
+        description:
+          'Validate that the selection count is between 1 and 50 before showing bulk actions. This example prevents the action from appearing when nothing is selected or when too many items are selected, protecting against performance issues with large bulk operations.',
+        codeblock: {
+          title: 'Validate selection count',
+          tabs: [
+            {code: './examples/bulk-selection-check.ts', language: 'ts'},
+            {code: './examples/bulk-selection-check.tsx', language: 'tsx'},
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Utility APIs',
   related: [],
