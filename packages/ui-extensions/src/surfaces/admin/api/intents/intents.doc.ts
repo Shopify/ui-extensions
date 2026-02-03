@@ -4,13 +4,15 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Intents API',
   overviewPreviewDescription:
     'Orchestrate workflows and operations across Shopify resources',
-  description: `The Intents API provides a way to invoke existing admin workflows for creating, editing, and managing Shopify resources.`,
+  description: `The Intents API launches Shopify's native admin interfaces for creating and editing resources. When your extension calls an intent, merchants complete their changes using the standard admin UI, and your extension receives the result. This means you don't need to build custom forms.
+
+Use this API to build workflows like adding products to collections from bulk actions, creating multiple related resources in sequence (like a product, collection, and discount for a promotion), opening specific resources for editing from custom buttons, or launching discount creation with pre-selected types.`,
   isVisualComponent: true,
   category: 'Target APIs',
   subCategory: 'Utility APIs',
   thumbnail: 'intents.png',
   requires:
-    'an Admin [block](/docs/api/admin-extensions/unstable/extension-targets#block-locations) or [action](/docs/api/admin-extensions/unstable/extension-targets#action-locations) extension.',
+    'an Admin UI [block or action](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
     image: 'intents.png',
     codeblock: {
@@ -25,121 +27,151 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'invoke',
-      description: `The \`invoke\` API is a function that accepts either a string query or an options object describing the intent to invoke and returns a Promise that resolves to an activity handle for the workflow.
+      title: 'invoke method',
+      description: `The \`invoke\` method launches a Shopify admin workflow for creating or editing resources. The method returns a promise that resolves to an activity handle you can await to get the workflow result.
 
-## Intent Format
+The method accepts either:
+- **String query:** \`\${action}:\${type},\${value}\` with optional second parameter (\`IntentQueryOptions\`)
+- **Object:** Properties for \`action\`, \`type\`, \`value\`, and \`data\`
 
-Intents are invoked using a string query format: \`\${action}:\${type},\${value}\`
+### IntentQueryOptions parameters
 
-Where:
-- \`action\` - The operation to perform (\`create\` or \`edit\`)
-- \`type\` - The resource type (e.g., \`shopify/Product\`)
-- \`value\` - The resource identifier (only for edit actions)
+Optional parameters for the \`invoke\` method when using the string query format:
 
-## Supported Resources
+- **\`value\`** (\`string\`): The resource identifier for edit operations (for example, \`'gid://shopify/Product/123'\`). Required when editing existing resources. Omit for create operations.
+- **\`data\`** (\`{ [key: string]: unknown }\`): Additional context required by specific resource types. For example, discounts require a type, variants require a product ID, and metaobjects require a definition type.
 
-### Article
+### Supported resources
+
+The following tables show which resource types you can create or edit, and what values you need to pass for \`value\` and \`data\` for each operation.
+
+#### Article
+
+[Articles](/docs/api/admin-graphql/latest/objects/Article) are blog posts published on the Online Store. Use this to create or edit articles for merchant blogs.
+
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/Article\` | — | — |
 | \`edit\` | \`shopify/Article\` | \`gid://shopify/Article/{id}\` | — |
 
-### Catalog
+#### Catalog
+
+[Catalogs](/docs/api/admin-graphql/latest/interfaces/Catalog) are product groupings that organize products for different markets or channels. Use this to create or edit catalogs for B2B or multi-market selling.
+
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/Catalog\` | — | — |
 | \`edit\` | \`shopify/Catalog\` | \`gid://shopify/Catalog/{id}\` | — |
 
-### Collection
+#### Collection
+
+[Collections](/docs/api/admin-graphql/latest/objects/Collection) are groups of products organized manually or by automated rules. Use this to create or edit product collections.
+
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/Collection\` | — | — |
 | \`edit\` | \`shopify/Collection\` | \`gid://shopify/Collection/{id}\` | — |
 
-### Customer
+#### Customer
+
+[Customers](/docs/api/admin-graphql/latest/objects/Customer) are profiles with contact information, order history, and metadata. Use this to create or edit customer accounts.
+
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/Customer\` | — | — |
 | \`edit\` | \`shopify/Customer\` | \`gid://shopify/Customer/{id}\` | — |
 
-### Discount
+#### Discount
+
+[Discounts](/docs/api/admin-graphql/latest/objects/DiscountNode) are price reductions applied to products, orders, or shipping. Use this to create or edit discount codes and automatic discounts. Creating discounts requires specifying a discount type.
+
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/Discount\` | — | \`{ type: 'amount-off-product' \\| 'amount-off-order' \\| 'buy-x-get-y' \\| 'free-shipping' }\` |
 | \`edit\` | \`shopify/Discount\` | \`gid://shopify/Discount/{id}\` | — |
 
-### Market
+#### Market
+
+[Markets](/docs/api/admin-graphql/latest/objects/Market) are geographic regions with customized pricing, languages, and domains. Use this to create or edit markets for international selling.
+
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/Market\` | — | — |
 | \`edit\` | \`shopify/Market\` | \`gid://shopify/Market/{id}\` | — |
 
-### Menu
+#### Menu
+
+[Menus](/docs/api/admin-graphql/latest/objects/Menu) are navigation structures for the Online Store. Use this to create or edit menu structures and links.
+
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/Menu\` | — | — |
 | \`edit\` | \`shopify/Menu\` | \`gid://shopify/Menu/{id}\` | — |
 
-### Metafield Definition
+#### Metafield definition
+
+[Metafield definitions](/docs/api/admin-graphql/latest/objects/MetafieldDefinition) are schemas that define custom data fields for resources. Use this to create or edit metafield definitions that merchants can use to add structured data to products, customers, and other resources.
+
 | Action | Type | Value | Data |
 |--------|------|-------|------|
-| \`create\` | \`shopify/MetafieldDefinition\` | — | { ownerType: 'Product' } |
-| \`edit\` | \`shopify/MetafieldDefinition\` | \`gid://shopify/MetafieldDefinition/{id}\` | { ownerType: 'Product' } |
+| \`create\` | \`shopify/MetafieldDefinition\` | — | \`{ ownerType: 'Product' }\` |
+| \`edit\` | \`shopify/MetafieldDefinition\` | \`gid://shopify/MetafieldDefinition/{id}\` | \`{ ownerType: 'Product' }\` |
 
-### Metaobject
+#### Metaobject
+
+[Metaobjects](/docs/api/admin-graphql/latest/objects/Metaobject) are custom structured data entries based on metaobject definitions. Use this to create or edit metaobject instances that store complex custom data. Requires a definition type.
+
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/Metaobject\` | — | \`{ type: 'shopify--color-pattern' }\` |
 | \`edit\` | \`shopify/Metaobject\` | \`gid://shopify/Metaobject/{id}\` | \`{ type: 'shopify--color-pattern' }\` |
 
-### Metaobject Definition
+#### Metaobject definition
+
+[Metaobject definitions](/docs/api/admin-graphql/latest/objects/MetaobjectDefinition) are schemas that define the structure for metaobjects. Use this to create or edit metaobject definitions that determine the fields and data types for custom structured data.
+
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/MetaobjectDefinition\` | — | — |
-| \`edit\` | \`shopify/MetaobjectDefinition\` | — | { type: 'my_metaobject_definition_type' } |
+| \`edit\` | \`shopify/MetaobjectDefinition\` | — | \`{ type: 'my_metaobject_definition_type' }\` |
 
-### Page
+#### Page
+
+[Pages](/docs/api/admin-graphql/latest/objects/Page) are static content pages for the Online Store. Use this to create or edit pages like About Us, Contact, or custom informational pages.
+
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/Page\` | — | — |
 | \`edit\` | \`shopify/Page\` | \`gid://shopify/Page/{id}\` | — |
 
-### Product
+#### Product
+
+[Products](/docs/api/admin-graphql/latest/objects/Product) are items sold in the store with pricing, inventory, and variants. Use this to create or edit products.
+
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/Product\` | — | — |
 | \`edit\` | \`shopify/Product\` | \`gid://shopify/Product/{id}\` | — |
 
-### Product Variant
+#### Product variant
+
+[Product variants](/docs/api/admin-graphql/latest/objects/ProductVariant) are specific combinations of product options like size and color. Use this to create or edit product variants. Creating variants requires a parent product ID.
+
 | Action | Type | Value | Data |
 |--------|------|-------|------|
 | \`create\` | \`shopify/ProductVariant\` | — | \`{ productId: 'gid://shopify/Product/{id}' }\` |
 | \`edit\` | \`shopify/ProductVariant\` | \`gid://shopify/ProductVariant/{id}\` | \`{ productId: 'gid://shopify/Product/{id}' }\` |
 
-> **Note**: To determine whether to use the \`shopify/ProductVariant\` \`edit\` intent or the \`shopify/Product\` \`edit\` intent, query the [\`product.hasOnlyDefaultVariant\`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Product#field-Product.fields.hasOnlyDefaultVariant) field. If the product has only the default variant (\`hasOnlyDefaultVariant\` is \`true\`), use the \`shopify/Product\` \`edit\` intent.`,
+> Note:
+> When editing products with variants, query the [\`product.hasOnlyDefaultVariant\`](/docs/api/admin-graphql/latest/objects/Product#field-Product.fields.hasOnlyDefaultVariant) field first. If \`true\`, then use the \`shopify/Product\` edit intent. If \`false\`, then use the \`shopify/ProductVariant\` edit intent for specific variants.`,
       type: 'IntentInvokeApi',
     },
     {
-      title: 'IntentAction',
-      description: `Supported actions that can be performed on resources.
-- \`create\`: Opens a creation workflow for a new resource
-- \`edit\`: Opens an editing workflow for an existing resource (requires \`value\` parameter)`,
-      type: 'IntentAction',
-    },
-    {
-      title: 'IntentType',
-      description: `Supported resource types that can be targeted by intents.`,
-      type: 'IntentType',
-    },
-    {
-      title: 'IntentQueryOptions',
-      description: `Options for invoking intents when using the query string format.`,
-      type: 'IntentQueryOptions',
-    },
-    {
       title: 'IntentResponse',
-      description: `Response object returned when the intent workflow completes.`,
+      description: `The result returned when an intent workflow completes. Check the \`code\` property to determine the outcome:
+- \`'ok'\` - The merchant completed the workflow successfully.
+- \`'error'\` - The workflow failed due to validation or other errors.
+- \`'closed'\` - The merchant cancelled without completing.`,
       type: 'IntentResponse',
     },
   ],
@@ -357,11 +389,11 @@ Where:
         ],
       },
       {
-        title: 'Metafield Definition',
+        title: '[Metafield](/docs/apps/build/metafields) Definition',
         examples: [
           {
             description:
-              'Create a new metafield definition. Opens the metafield definition creation workflow.',
+              'Create a new [metafield](/docs/apps/build/metafields) definition. Opens the metafield definition creation workflow.',
             codeblock: {
               title: 'Create metafield definition',
               tabs: [
@@ -374,7 +406,7 @@ Where:
           },
           {
             description:
-              'Edit an existing metafield definition. Requires a metafield definition GID.',
+              'Edit an existing [metafield](/docs/apps/build/metafields) definition. Requires a metafield definition GID.',
             codeblock: {
               title: 'Edit metafield definition',
               tabs: [
@@ -542,6 +574,28 @@ Where:
     ],
   },
   related: [],
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        "- **Parse `ErrorIntentResponse.issues` array for specific feedback:** When `code: 'error'`, the `issues` array contains structured validation errors with field paths and messages. Use this to show specific error feedback rather than generic error messages.\n" +
+        "- **Distinguish `closed` from `error`:** `code: 'closed'` means the merchant cancelled, while `code: 'error'` means validation or save failures. Handle these differently. Closed isn't an error state.\n" +
+        '- **Query `product.hasOnlyDefaultVariant` before editing:** If the value is `false`, use the `shopify/ProductVariant` edit intent instead of `shopify/Product` to edit specific variants.',
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        "- Some resources require `data` for create operations. Discounts need `{ type: 'amount-off-product' }`, variants need `{ productId: 'gid://...' }`, and metaobjects need `{ type: 'definition-type' }`. Missing required data causes the intent to fail.\n" +
+        "- MetaobjectDefinition edit requires `{ data: { type: 'definition-type' }}` instead of passing the GID in `value`. It's the only resource with this pattern.\n" +
+        "- Intent workflows pause your extension until completion. You can't run other operations while an intent is open.\n" +
+        "- The workflow UI can't be customized. Field order, labels, and validation messages are controlled by Shopify and can't be modified.\n" +
+        "- Your extension only receives the final result. Intermediate workflow state and partial saves aren't communicated back to your extension.",
+    },
+  ],
 };
 
 export default data;
