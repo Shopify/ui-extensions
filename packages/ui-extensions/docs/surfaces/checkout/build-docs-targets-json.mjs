@@ -5,15 +5,6 @@ import {fileURLToPath} from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const API_VERSION = process.argv[2];
-
-if (!API_VERSION) {
-  console.error('Error: API_VERSION is required.');
-  console.error('Usage: node build-docs-targets-json.mjs <API_VERSION>');
-  console.error('Example: node build-docs-targets-json.mjs 2025-10');
-  process.exit(1);
-}
-
 // All checkout components
 let allComponents = [];
 

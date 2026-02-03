@@ -7,8 +7,6 @@ console.log('✅ Module loaded, starting script...');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const EXTENSIONS_API_VERSION = process.argv[2] || 'unstable';
-
 // Configuration for admin surface
 const config = {
   basePath: path.join(__dirname, '../../../src/surfaces/admin'),
