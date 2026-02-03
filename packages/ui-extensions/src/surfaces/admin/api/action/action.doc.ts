@@ -36,7 +36,7 @@ const data: ReferenceEntityTemplateSchema = {
         '- Action extensions must call `api.close()` to dismiss the modal. Modal actions remain open indefinitely until explicitly closed.\n' +
         "- Modal overlays can't be resized. The modal dimensions are fixed by the Shopify admin.\n" +
         "- Action extensions can't modify the page layout underneath the modal or persist UI after closing.\n" +
-        "- Multiple modals can't be stacked. Opening a [picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) or [intent](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/intent) closes the current modal context temporarily.",
+        "- Multiple modals can't be stacked. Opening a [picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) closes the current modal context temporarily.",
     },
   ],
 };
