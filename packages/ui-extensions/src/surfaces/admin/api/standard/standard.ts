@@ -12,9 +12,16 @@ export interface Intents {
   launchUrl?: string | URL;
 }
 
+/**
+ * The `Navigation` object provides methods for programmatic navigation within the Shopify admin.
+ */
 export interface Navigation {
   /**
-   * A method to navigate to a specific route.
+   * Navigates to a specific admin route or URL. Use this to redirect merchants to other pages in the admin, such as detail pages, index pages, or other extensions. Supports both absolute admin URLs and relative paths.
+   *
+   * @param url - The destination URL, which can be an admin path (e.g., `/admin/products/123`) or a full URL
+   * @example navigation.navigate('/admin/products/123')
+   * @example navigation.navigate('https://admin.shopify.com/store/my-store/products')
    */
   navigate: (url: string | URL) => void;
 }
@@ -60,7 +67,7 @@ export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
   intents: Intents;
 
   /**
-   * Provides methods to navigate to other features in the Admin.
+   * Provides methods for programmatic navigation within the Shopify admin. Use this to redirect merchants to other admin pages, such as resource detail pages, index pages, or settings. Navigation updates the browser URL and navigates within the admin without triggering a full page reload.
    */
   navigation: Navigation;
 
