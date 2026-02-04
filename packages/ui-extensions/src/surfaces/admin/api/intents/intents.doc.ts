@@ -15,7 +15,7 @@ Use this API to build workflows like adding products to collections from bulk ac
     'an Admin UI [block or action](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
     description:
-      'Invoke the article creation workflow from a button click. This example demonstrates using `shopify.intents.invoke()` to launch the article editor, await the workflow completion, and display success or cancellation feedback based on the response code. This pattern lets you integrate blog content creation directly into your extension workflows.',
+      'Launch the article creation workflow from a button click. This example uses `shopify.intents.invoke()` to open the article editor, awaits the workflow completion, and displays success or cancellation feedback based on the response code.',
     image: 'intents.png',
     codeblock: {
       title: 'Create a new article',
@@ -186,7 +186,7 @@ The following tables show which resource types you can create or edit, and what 
         examples: [
           {
             description:
-              'Open the article editor for a selected blog post. This example demonstrates retrieving an article GID from the extension context, passing it to the edit intent with `shopify.intents.invoke()`, and handling both successful updates and cancellations. This enables merchants to edit blog content from your extension.',
+              'Open the article editor for a selected blog post. This example retrieves the article GID from extension context, passes it to the edit intent, and handles both successful updates and cancellations.',
             codeblock: {
               title: 'Edit an existing article',
               tabs: [
@@ -205,7 +205,7 @@ The following tables show which resource types you can create or edit, and what 
         examples: [
           {
             description:
-              'Launch the catalog creation workflow to set up new B2B customer groups or market-specific product collections. This example demonstrates invoking the create intent, managing loading state during the workflow, and displaying success or cancellation feedback. This enables merchants to organize products for specific audiences directly from your extension.',
+              'Launch the catalog creation workflow to set up B2B customer groups or market-specific product collections. This example invokes the create intent, manages loading state, and displays success or cancellation feedback.',
             codeblock: {
               title: 'Create a new catalog',
               tabs: [
@@ -219,7 +219,7 @@ The following tables show which resource types you can create or edit, and what 
           },
           {
             description:
-              'Modify an existing catalog to adjust product assignments or market settings. This example demonstrates retrieving the catalog GID from extension context, opening the editor with the edit intent, and handling completion responses. This allows merchants to update B2B product visibility and market configurations from your extension.',
+              'Open the catalog editor to adjust product assignments or market settings. This example retrieves the catalog GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
               title: 'Edit an existing catalog',
               tabs: [
@@ -238,7 +238,7 @@ The following tables show which resource types you can create or edit, and what 
         examples: [
           {
             description:
-              'Build a new product collection for organizing storefront navigation. This example demonstrates launching the collection creator, tracking loading state while merchants configure products and rules, and providing feedback when complete. This enables merchants to create themed landing pages or category browsing directly from your extension.',
+              'Launch the collection creation workflow for organizing products on the storefront. This example invokes the create intent, tracks loading state, and displays feedback when the workflow completes.',
             codeblock: {
               title: 'Create a new collection',
               tabs: [
@@ -252,7 +252,7 @@ The following tables show which resource types you can create or edit, and what 
           },
           {
             description:
-              'Update an existing collection to modify products or automation rules. This example demonstrates accessing the selected collection GID, opening the editor, and handling workflow completion. This allows merchants to maintain seasonal collections or reorganize product categories from your extension.',
+              'Open the collection editor to modify products or automation rules. This example retrieves the collection GID, invokes the edit intent, and handles the completion response.',
             codeblock: {
               title: 'Edit an existing collection',
               tabs: [
@@ -271,7 +271,7 @@ The following tables show which resource types you can create or edit, and what 
         examples: [
           {
             description:
-              'Add a new customer profile with contact details and addresses. This example demonstrates launching the customer creation form, awaiting completion, and displaying feedback based on the result. This enables importing customers from external systems or creating accounts during phone orders directly from your extension.',
+              'Launch the customer creation form to add a new profile with contact details and addresses. This example invokes the create intent, awaits completion, and displays feedback based on the result code.',
             codeblock: {
               title: 'Create a new customer',
               tabs: [
@@ -285,7 +285,7 @@ The following tables show which resource types you can create or edit, and what 
           },
           {
             description:
-              'Update an existing customer profile to modify contact information or tags. This example demonstrates retrieving the customer GID from extension context, opening the editor, and handling completion responses. This allows syncing changes from external CRM systems or updating customer classifications from your extension.',
+              'Open the customer editor to update contact information or tags. This example retrieves the customer GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
               title: 'Edit an existing customer',
               tabs: [
@@ -304,7 +304,7 @@ The following tables show which resource types you can create or edit, and what 
         examples: [
           {
             description:
-              'Create a new discount code for promotional campaigns. This example demonstrates launching the discount creation form, managing loading state, and providing feedback on completion. This enables merchants to set up promotions with configurable discount values, eligibility rules, and usage limits from your extension.',
+              'Launch the discount creation form for setting up promotional campaigns. This example invokes the create intent, manages loading state, and displays feedback on completion.',
             codeblock: {
               title: 'Create a new discount',
               tabs: [
@@ -318,7 +318,7 @@ The following tables show which resource types you can create or edit, and what 
           },
           {
             description:
-              'Modify an existing discount to adjust values or extend active dates. This example demonstrates accessing the discount GID from extension context, opening the editor, and handling workflow completion. This allows merchants to respond to sales performance or update promotional campaigns from your extension.',
+              'Open the discount editor to adjust values or extend active dates. This example retrieves the discount GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
               title: 'Edit an existing discount',
               tabs: [
@@ -337,7 +337,7 @@ The following tables show which resource types you can create or edit, and what 
         examples: [
           {
             description:
-              'Create a new market for international selling with region-specific configurations. This example demonstrates launching the market creator, managing loading state, and displaying feedback on completion. This enables merchants to set up geographic regions, local currencies, and custom domains for localized storefronts from your extension.',
+              'Launch the market creation workflow for international selling with region-specific configurations. This example invokes the create intent, manages loading state, and displays feedback on completion.',
             codeblock: {
               title: 'Create a new market',
               tabs: [
@@ -351,7 +351,7 @@ The following tables show which resource types you can create or edit, and what 
           },
           {
             description:
-              'Update an existing market to adjust geographic coverage or pricing strategies. This example demonstrates retrieving the market GID from extension context, opening the editor, and handling workflow completion. This allows merchants to expand into new countries or update exchange rate-based pricing from your extension.',
+              'Open the market editor to adjust geographic coverage or pricing strategies. This example retrieves the market GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
               title: 'Edit an existing market',
               tabs: [
@@ -370,7 +370,7 @@ The following tables show which resource types you can create or edit, and what 
         examples: [
           {
             description:
-              'Build a new navigation menu for storefront headers or footers. This example demonstrates launching the menu creator, tracking loading state, and providing feedback on completion. This enables merchants to organize site navigation with links to collections, products, pages, or external URLs from your extension.',
+              'Launch the menu creation workflow for storefront navigation headers or footers. This example invokes the create intent, tracks loading state, and displays feedback on completion.',
             codeblock: {
               title: 'Create a new menu',
               tabs: [
@@ -384,7 +384,7 @@ The following tables show which resource types you can create or edit, and what 
           },
           {
             description:
-              'Modify an existing navigation menu to reorganize structure or update links. This example demonstrates accessing the menu GID from extension context, opening the editor, and handling completion responses. This allows merchants to maintain current promotions or adapt navigation to inventory changes from your extension.',
+              'Open the menu editor to reorganize navigation structure or update links. This example retrieves the menu GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
               title: 'Edit an existing menu',
               tabs: [
@@ -399,11 +399,11 @@ The following tables show which resource types you can create or edit, and what 
         ],
       },
       {
-        title: '[Metafield](/docs/apps/build/metafields) Definition',
+        title: '',
         examples: [
           {
             description:
-              'Define a new metafield to add custom data fields to products, orders, or customers. This example demonstrates launching the metafield definition creator, managing loading state, and providing feedback on completion. This enables merchants to extend resource schemas with app-specific data or specialized product attributes from your extension.',
+              'Launch the metafield definition creator to add custom data fields to products, orders, or customers. This example invokes the create intent, manages loading state, and displays feedback on completion.',
             codeblock: {
               title: 'Create a new metafield definition',
               tabs: [
@@ -417,7 +417,7 @@ The following tables show which resource types you can create or edit, and what 
           },
           {
             description:
-              'Update an existing metafield definition to modify validation rules or field descriptions. This example demonstrates retrieving the definition GID from extension context, opening the editor, and handling workflow completion. This allows merchants to improve field clarity or adjust validation as requirements evolve from your extension.',
+              'Open the metafield definition editor to modify validation rules or field descriptions. This example retrieves the definition GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
               title: 'Edit an existing metafield definition',
               tabs: [
@@ -436,7 +436,7 @@ The following tables show which resource types you can create or edit, and what 
         examples: [
           {
             description:
-              'Add a new entry to your custom content type for structured data. This example demonstrates launching the metaobject creator, tracking loading state, and providing feedback on completion. This enables merchants to populate reusable content like author profiles, product specifications, or warranty information from your extension.',
+              'Launch the metaobject creator to add a new entry to a custom content type. This example invokes the create intent, tracks loading state, and displays feedback on completion.',
             codeblock: {
               title: 'Create a new metaobject',
               tabs: [
@@ -450,7 +450,7 @@ The following tables show which resource types you can create or edit, and what 
           },
           {
             description:
-              'Update an existing metaobject entry to modify field values or resource references. This example demonstrates accessing the metaobject GID from extension context, opening the editor, and handling completion responses. This allows centralizing content updates that propagate to all products, collections, or pages that reference the metaobject.',
+              'Open the metaobject editor to modify field values or resource references. This example retrieves the metaobject GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
               title: 'Edit an existing metaobject',
               tabs: [
@@ -469,7 +469,7 @@ The following tables show which resource types you can create or edit, and what 
         examples: [
           {
             description:
-              'Design a new metaobject definition to create reusable content types with custom field schemas. This example demonstrates launching the definition creator, managing loading state, and providing feedback on completion. This enables merchants to build structured content foundations for recipe cards, author profiles, or warranty information from your extension.',
+              'Launch the metaobject definition creator to build reusable content types with custom field schemas. This example invokes the create intent, manages loading state, and displays feedback on completion.',
             codeblock: {
               title: 'Create a new metaobject definition',
               tabs: [
@@ -483,7 +483,7 @@ The following tables show which resource types you can create or edit, and what 
           },
           {
             description:
-              'Modify an existing metaobject definition to add fields or update validation rules. This example demonstrates retrieving the definition GID from extension context, opening the editor, and handling workflow completion. This allows evolving content schemas as requirements change, with updates applying to all existing and future entries from your extension.',
+              'Open the metaobject definition editor to add fields or update validation rules. This example retrieves the definition GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
               title: 'Edit an existing metaobject definition',
               tabs: [
@@ -502,7 +502,7 @@ The following tables show which resource types you can create or edit, and what 
         examples: [
           {
             description:
-              'Create a new informational page for the online store like About Us or Shipping Policy. This example demonstrates launching the page creator, managing loading state, and providing feedback on completion. This enables merchants to add legal compliance pages, brand storytelling, or customer education content from your extension.',
+              'Launch the page creator to add an informational page like About Us or Shipping Policy. This example invokes the create intent, manages loading state, and displays feedback on completion.',
             codeblock: {
               title: 'Create a new page',
               tabs: [
@@ -516,7 +516,7 @@ The following tables show which resource types you can create or edit, and what 
           },
           {
             description:
-              'Update an existing page to modify content or SEO metadata. This example demonstrates retrieving the page GID from extension context, opening the editor, and handling workflow completion. This allows merchants to maintain current legal policies or refresh brand messaging with changes appearing immediately on the storefront.',
+              'Open the page editor to update content or SEO metadata. This example retrieves the page GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
               title: 'Edit an existing page',
               tabs: [
@@ -535,7 +535,7 @@ The following tables show which resource types you can create or edit, and what 
         examples: [
           {
             description:
-              'Add a new product to the store catalog with pricing, variants, and inventory settings. This example demonstrates launching the product creator, tracking loading state, and providing feedback on completion. This enables merchants to configure titles, descriptions, images, SKU management, and vendor information from your extension.',
+              'Launch the product creation workflow to add a new item to the store catalog. This example invokes the create intent, tracks loading state, and displays feedback on completion.',
             codeblock: {
               title: 'Create a new product',
               tabs: [
@@ -549,7 +549,7 @@ The following tables show which resource types you can create or edit, and what 
           },
           {
             description:
-              'Modify an existing product to update details, pricing, or images. This example demonstrates retrieving the product GID from extension context, opening the editor, and handling workflow completion. This allows merchants to implement seasonal pricing updates, image refreshes, or bulk attribute changes from your extension.',
+              'Open the product editor to update details, pricing, or images. This example retrieves the product GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
               title: 'Edit an existing product',
               tabs: [
@@ -568,7 +568,7 @@ The following tables show which resource types you can create or edit, and what 
         examples: [
           {
             description:
-              'Create a new variant for an existing product to add size, color, or material options. This example demonstrates launching the variant creator, managing loading state, and providing feedback on completion. This enables merchants to define option values, set variant-specific pricing, assign unique SKUs, and configure inventory tracking per location from your extension.',
+              'Launch the variant creation workflow to add size, color, or material options to a product. This example invokes the create intent, manages loading state, and displays feedback on completion.',
             codeblock: {
               title: 'Create a new variant',
               tabs: [
@@ -582,7 +582,7 @@ The following tables show which resource types you can create or edit, and what 
           },
           {
             description:
-              'Update a specific product variant to modify pricing, SKU, or inventory levels. This example demonstrates retrieving the variant GID from extension context, opening the editor, and handling workflow completion. This allows merchants to implement seasonal pricing adjustments, correct inventory discrepancies, or manage location-specific stock levels from your extension.',
+              'Open the variant editor to modify pricing, SKU, or inventory levels. This example retrieves the variant GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
               title: 'Edit an existing variant',
               tabs: [

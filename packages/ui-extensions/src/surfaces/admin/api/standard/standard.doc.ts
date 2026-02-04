@@ -8,7 +8,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   defaultExample: {
     description:
-      'Retrieve an authentication token and use it to fetch data from your app backend. This example shows getting the ID token, adding it to request headers, and displaying loading states while fetching.',
+      'Retrieve an authentication token and use it to fetch data from your app backend. This example gets the ID token, adds it to request headers, and displays loading states while fetching.',
     codeblock: {
       title: 'Authenticate backend requests',
       tabs: [

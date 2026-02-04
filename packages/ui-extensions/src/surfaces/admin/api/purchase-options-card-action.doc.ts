@@ -15,6 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Manage a subscription',
       tabs: [
         {
+          title: 'jsx',
           code: './purchase-options-card/examples/manage-subscription.jsx',
           language: 'jsx',
         },
@@ -39,6 +40,7 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Remove from selling plan',
           tabs: [
             {
+              title: 'jsx',
               code: './purchase-options-card/examples/remove-from-plan.jsx',
               language: 'jsx',
             },
@@ -52,6 +54,7 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Validate selling plan',
           tabs: [
             {
+              title: 'jsx',
               code: './purchase-options-card/examples/validate-selling-plan.jsx',
               language: 'jsx',
             },
