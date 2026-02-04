@@ -36,9 +36,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Navigate to action extension',
           tabs: [
-        {code: './examples/navigate-to-action.ts', language: 'ts'},
-        {code: './examples/navigate-to-action.tsx', language: 'tsx'},
-      ],
+            {code: './examples/navigate-to-action.ts', language: 'ts'},
+            {code: './examples/navigate-to-action.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -47,9 +47,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Select related products',
           tabs: [
-        {code: './examples/select-related-products.ts', language: 'ts'},
-        {code: './examples/select-related-products.tsx', language: 'tsx'},
-      ],
+            {code: './examples/select-related-products.ts', language: 'ts'},
+            {code: './examples/select-related-products.tsx', language: 'tsx'},
+          ],
         },
       },
     ],
