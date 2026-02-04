@@ -1,5 +1,4 @@
-const selectedProducts = await resourcePicker({
+const selected = await resourcePicker({
   type: 'product',
   action: 'select',
 });
-

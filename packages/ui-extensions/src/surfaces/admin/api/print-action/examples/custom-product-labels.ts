@@ -1,23 +1,58 @@
-import {extension} from '@shopify/ui-extensions/admin';
+import {extension, Text, Button} from '@shopify/ui-extensions/admin';
 
 export default extension(
   'admin.product-details.print-action.render',
   async (root, api) => {
     const {data, resourcePicker} = api;
 
-    const initialProducts = data.selected;
-    const additionalProducts = await resourcePicker({type: 'product'});
+    let additionalCount = 0;
+    let additionalText;
 
-    const allProducts = additionalProducts 
-      ? [...initialProducts, ...additionalProducts]
-      : initialProducts;
+    const countText = root.createComponent(
+      Text,
+      {},
+      `${data.selected.length} products selected`,
+    );
+
+    const addButton = root.createComponent(Button, {
+      title: 'Add More Products',
+      onPress: async () => {
+        const additionalProducts = await resourcePicker({
+          type: 'product',
+          multiple: 10,
+          action: 'add',
+        });
+
+        if (additionalProducts) {
+          additionalCount = additionalProducts.length;
+          
+          if (additionalText) {
+            root.removeChild(additionalText);
+          }
+          
+          additionalText = root.createComponent(
+            Text,
+            {},
+            `+${additionalCount} additional`,
+          );
+          root.appendChild(additionalText);
+        }
+      },
+    });
+
+    root.appendChild(countText);
+    root.appendChild(addButton);
+
+    // Return print URL
+    const productIds = data.selected.map((item) => item.id);
 
     const response = await fetch('/api/generate-labels', {
       method: 'POST',
-      body: JSON.stringify({productIds: allProducts.map((p) => p.id)}),
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({productIds}),
     });
 
-    const result = await response.json();
-    return result.labelUrl;
+    const {printUrl} = await response.json();
+    return printUrl;
   },
 );

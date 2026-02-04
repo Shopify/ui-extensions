@@ -1,4 +1,1 @@
-const selectedVariants = await resourcePicker({
-  type: 'variant',
-});
-
+const selected = await resourcePicker({type: 'variant'});

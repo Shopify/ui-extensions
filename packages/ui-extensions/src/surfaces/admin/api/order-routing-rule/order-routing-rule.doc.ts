@@ -8,17 +8,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`FunctionSettings`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
-  definitions: [
-    {
-      title: 'OrderRoutingRuleApi',
-      description:
-        'The `OrderRoutingRuleApi` object provides access to order routing rule data and configuration methods. Access the following properties on the `OrderRoutingRuleApi` object to interact with the current order routing rule context in the `admin.settings.order-routing-rule.render` target.',
-      type: 'OrderRoutingRuleApi',
-    },
-  ],
   defaultExample: {
     description:
-      'Set preferred and fallback fulfillment locations for order routing. This example shows how to apply two metafield changes in a single batch using `applyMetafieldsChange()`—New York Warehouse as preferred and Los Angeles Warehouse as fallback.',
+      'Set preferred and fallback fulfillment locations with [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/textfield) inputs. This example applies two metafield changes in a single batch operation to configure location priority for order routing.',
     codeblock: {
       title: 'Configure location priority',
       tabs: [
@@ -27,32 +19,37 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  definitions: [
+    {
+      title: 'OrderRoutingRuleApi',
+      description:
+        'The `OrderRoutingRuleApi` object provides access to order routing rule data and configuration methods. Access the following properties on the `OrderRoutingRuleApi` object to interact with the current order routing rule context in the `admin.settings.order-routing-rule.render` target.',
+      type: 'OrderRoutingRuleApi',
+    },
+  ],
   examples: {
     description: 'Configure order routing rules',
     examples: [
       {
         description:
-          'Batch remove outdated metafields from your routing configuration. Maps deprecated keys to removal operations and cleans up old settings in one `applyMetafieldsChange()` call.',
+          'Batch remove outdated metafields from routing configuration. This example maps deprecated keys to removal operations, displays current rule stats, and shows a success banner after cleanup.',
         codeblock: {
           title: 'Remove deprecated settings',
           tabs: [
-            {code: './examples/remove-deprecated-settings.ts', language: 'ts'},
-            {
-              code: './examples/remove-deprecated-settings.tsx',
-              language: 'tsx',
-            },
-          ],
+        {code: './examples/remove-deprecated-settings.ts', language: 'ts'},
+        {code: './examples/remove-deprecated-settings.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Configure multiple routing criteria including maximum distance (50km), inventory checking (true), and excluded zip codes (90210, 10001). This example demonstrates setting all criteria in one batch with different value types—integer, boolean, and JSON.',
+          'Configure maximum distance, inventory checking, and excluded zip codes in one save. This example demonstrates using number fields, checkboxes, and JSON storage for complex routing criteria.',
         codeblock: {
           title: 'Set routing criteria',
           tabs: [
-            {code: './examples/set-routing-criteria.ts', language: 'ts'},
-            {code: './examples/set-routing-criteria.tsx', language: 'tsx'},
-          ],
+        {code: './examples/set-routing-criteria.ts', language: 'ts'},
+        {code: './examples/set-routing-criteria.tsx', language: 'tsx'},
+      ],
         },
       },
     ],
@@ -76,7 +73,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent:
         "- Metafields have [size limits](/docs/apps/build/metafields/metafield-limits). Individual values can't exceed 256KB, and total metafield storage per rule is limited.\n" +
         "- Rule priority is read-only. Evaluation order can't be modified through the settings interface. Merchants manage priority through the main rules interface.\n" +
-        '- Batch operations are all-or-nothing. If any metafield change in the array fails validation, then the entire batch fails and no changes apply.\n' +
+        '- Batch operations are all-or-nothing. If any metafield change in the array fails validation, the entire batch fails and no changes apply.\n' +
         '- Metafield changes apply immediately. They persist right away without waiting for merchants to save the rule.',
     },
   ],

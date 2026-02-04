@@ -1,18 +1,22 @@
-import React from 'react';
-import {
-  reactExtension,
-  useApi,
-} from '@shopify/ui-extensions-react/admin';
+import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
 
 const HighValueCustomers = () => {
-  const {i18n} = useApi<'admin.customers.segmentation-templates.render'>();
+  const api = useApi<'admin.customers.segmentation-templates.data'>();
 
   return {
     templates: [
       {
-        title: i18n.translate('templates.highValue.title'),
-        description: i18n.translate('templates.highValue.description'),
+        title: api.i18n.translate('templates.highValue.title'),
+        description: api.i18n.translate('templates.highValue.description'),
         query: `{
+  total_spent: {
+    min: 500
+  }
+  orders_count: {
+    min: 5
+  }
+}`,
+        queryToInsert: `{
   total_spent: {
     min: 500
   }
@@ -27,6 +31,6 @@ const HighValueCustomers = () => {
 };
 
 export default reactExtension(
-  'admin.customers.segmentation-templates.render',
-  () => <HighValueCustomers />,
+  'admin.customers.segmentation-templates.data',
+  () => HighValueCustomers(),
 );

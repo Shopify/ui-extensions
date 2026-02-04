@@ -1,10 +1,9 @@
-const selectedProducts = await resourcePicker({
+const selected = await resourcePicker({
   type: 'product',
   filter: {
-    hidden: false,
-    variants: true,
+    hidden: true,
+    variants: false,
     draft: false,
     archived: false,
   },
 });
-

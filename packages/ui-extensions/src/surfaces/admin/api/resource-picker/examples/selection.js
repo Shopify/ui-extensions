@@ -1,12 +1,7 @@
-const selectedProducts = await resourcePicker({
-  type: 'product',
-});
+const selected = await resourcePicker({type: 'product'});
 
-if (selectedProducts) {
-  console.log('Selected products:', selectedProducts);
-  selectedProducts.forEach((product) => {
-    console.log('Product ID:', product.id);
-    console.log('Product title:', product.title);
-  });
+if (selected) {
+  console.log(selected);
+} else {
+  console.log('Picker was cancelled by the user');
 }
-

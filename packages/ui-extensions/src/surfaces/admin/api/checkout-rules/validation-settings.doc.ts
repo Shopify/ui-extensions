@@ -24,7 +24,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Save a minimum quantity validation rule to a metafield. This example shows calling `applyMetafieldChange()` with key `min_quantity`, value `5`, and `valueType: "number_integer"`, then checking if `result.type === "success"` to confirm the operation or log errors.',
+      'Save a minimum quantity validation rule to enforce purchase minimums at checkout, preventing orders below your threshold. This example demonstrates using a [`NumberField`](/docs/api/admin-extensions/{API_VERSION}/components/forms/numberfield) for quantity input, calling `applyMetafieldChange` to save the value, and displaying success or error [`Banners`](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/banner) based on the operation result.',
     codeblock: {
       title: 'Set minimum quantity',
       tabs: [
@@ -38,7 +38,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Block shipping to specific countries with custom error messages. This example shows saving blocked countries (US, CA, MX) as a JSON array using `applyMetafieldChange()` with key `blocked_countries` and `valueType: "json"`, storing the configuration in the `validation` namespace for use by your checkout function.',
+          'Block shipping to specific countries with custom error messages to comply with regulations or prevent fulfillment to restricted locations. This example demonstrates using [`TextField`](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) inputs for countries and error messages, saving the configuration as JSON metafields, and displaying validation and function IDs for reference.',
         codeblock: {
           title: 'Configure shipping restrictions',
           tabs: [
@@ -55,7 +55,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Detect whether the merchant is editing an existing validation or creating a new one. Checks for `data.validation` presence, loads existing metafields if found, or initializes defaults for new validations—useful for edit/create workflows where you need to prepopulate forms with existing settings.',
+          "Detect whether you're editing an existing validation or creating a new one to provide appropriate UI for both create and edit workflows. This example demonstrates checking for `data.validation` presence, loading and displaying existing metafield configuration if found, or initializing default validation settings and applying them for new validation rules.",
         codeblock: {
           title: 'Load validation configuration',
           tabs: [
