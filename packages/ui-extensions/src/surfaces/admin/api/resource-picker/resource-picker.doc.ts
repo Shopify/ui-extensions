@@ -36,9 +36,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Filter to published products',
           tabs: [
-        {code: './examples/filters.ts', language: 'ts'},
-        {code: './examples/filters.tsx', language: 'tsx'},
-      ],
+            {code: './examples/filters.ts', language: 'ts'},
+            {code: './examples/filters.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -47,9 +47,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Limit selection count',
           tabs: [
-        {code: './examples/multiple-limited.ts', language: 'ts'},
-        {code: './examples/multiple-limited.tsx', language: 'tsx'},
-      ],
+            {code: './examples/multiple-limited.ts', language: 'ts'},
+            {code: './examples/multiple-limited.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -58,9 +58,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Preselect products',
           tabs: [
-        {code: './examples/selection-ids.ts', language: 'ts'},
-        {code: './examples/selection-ids.tsx', language: 'tsx'},
-      ],
+            {code: './examples/selection-ids.ts', language: 'ts'},
+            {code: './examples/selection-ids.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -69,9 +69,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Select collections',
           tabs: [
-        {code: './examples/collection-picker.ts', language: 'ts'},
-        {code: './examples/collection-picker.tsx', language: 'tsx'},
-      ],
+            {code: './examples/collection-picker.ts', language: 'ts'},
+            {code: './examples/collection-picker.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -80,9 +80,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Select unlimited products',
           tabs: [
-        {code: './examples/multiple-unlimited.ts', language: 'ts'},
-        {code: './examples/multiple-unlimited.tsx', language: 'tsx'},
-      ],
+            {code: './examples/multiple-unlimited.ts', language: 'ts'},
+            {code: './examples/multiple-unlimited.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -91,9 +91,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Select product variants',
           tabs: [
-        {code: './examples/product-variant-picker.ts', language: 'ts'},
-        {code: './examples/product-variant-picker.tsx', language: 'tsx'},
-      ],
+            {code: './examples/product-variant-picker.ts', language: 'ts'},
+            {code: './examples/product-variant-picker.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -102,9 +102,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Set action verb',
           tabs: [
-        {code: './examples/action.ts', language: 'ts'},
-        {code: './examples/action.tsx', language: 'tsx'},
-      ],
+            {code: './examples/action.ts', language: 'ts'},
+            {code: './examples/action.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -113,9 +113,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Start with search query',
           tabs: [
-        {code: './examples/query.ts', language: 'ts'},
-        {code: './examples/query.tsx', language: 'tsx'},
-      ],
+            {code: './examples/query.ts', language: 'ts'},
+            {code: './examples/query.tsx', language: 'tsx'},
+          ],
         },
       },
     ],
