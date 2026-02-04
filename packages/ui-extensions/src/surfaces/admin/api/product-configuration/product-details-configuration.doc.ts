@@ -32,23 +32,12 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          "Query a product's bundle metafield and parse the JSON components array. This example fetches bundle data in `useEffect`, parses the stored configuration, and displays the component count.",
+          "Query a product's bundle metafield and parse the JSON components array to display existing bundle configuration. This example demonstrates fetching bundle metadata using the [GraphQL Admin API](/docs/api/admin-graphql/), parsing the stored component data, and displaying the count of configured components.",
         codeblock: {
           title: 'Load bundle configuration',
           tabs: [
         {code: './examples/load-bundle-config.ts', language: 'ts'},
         {code: './examples/load-bundle-config.tsx', language: 'tsx'},
-      ],
-        },
-      },
-      {
-        description:
-          'Launch the product creation workflow using [intents](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/intents-api) and capture the new product ID. This example invokes the `create` intent, waits for completion, and displays the created product ID from the response data.',
-        codeblock: {
-          title: 'Create bundle component',
-          tabs: [
-        {code: './examples/navigate-to-component.ts', language: 'ts'},
-        {code: './examples/navigate-to-component.tsx', language: 'tsx'},
       ],
         },
       },

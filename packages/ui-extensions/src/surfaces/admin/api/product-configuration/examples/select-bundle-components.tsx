@@ -1,30 +1,54 @@
-import React from 'react';
-import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
+import React, {useState} from 'react';
+import {
+  reactExtension,
+  useApi,
+  Button,
+  Text,
+} from '@shopify/ui-extensions-react/admin';
 
 const SelectBundleComponents = () => {
-  const {resourcePicker} = useApi<'admin.product-details.configuration.render'>();
+  const {data, resourcePicker} = useApi<'admin.product-details.configuration.render'>();
+  const [selected, setSelected] = useState<any[]>([]);
 
-  const handleSelect = async () => {
-    const selected = await resourcePicker({
+  const parentProductId = data.selected[0]?.id;
+
+  const handleSelectComponents = async () => {
+    const componentProducts = await resourcePicker({
       type: 'product',
       multiple: 5,
+      action: 'select',
       filter: {
-        hidden: false,
-        variants: false,
         draft: false,
         archived: false,
       },
     });
 
-    if (selected) {
-      await fetch('/api/save-bundle', {
+    if (componentProducts) {
+      setSelected(componentProducts);
+
+      await fetch('/api/bundles/configure', {
         method: 'POST',
-        body: JSON.stringify({components: selected.map((p) => p.id)}),
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          bundleProductId: parentProductId,
+          components: componentProducts.map((p) => ({
+            productId: p.id,
+            quantity: 1,
+          })),
+        }),
       });
     }
   };
 
-  return null;
+  return (
+    <>
+      <Button title="Select Components" onPress={handleSelectComponents} />
+      {selected.length > 0 && <Text>{selected.length} components selected</Text>}
+    </>
+  );
 };
 
-export default reactExtension('admin.product-details.configuration.render', () => <SelectBundleComponents />);
+export default reactExtension(
+  'admin.product-details.configuration.render',
+  () => <SelectBundleComponents />,
+);

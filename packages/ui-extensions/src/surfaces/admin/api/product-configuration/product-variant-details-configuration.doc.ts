@@ -29,30 +29,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   examples: {
     description: 'Configure product variant-level bundles',
-    examples: [
-      {
-        description:
-          'Query the parent product ID then launch the variant creation workflow. This example fetches the parent product using GraphQL, passes it as context data to the variant intent, and shows success feedback.',
-        codeblock: {
-          title: 'Create component variant',
-          tabs: [
-        {code: './examples/create-variant-component.ts', language: 'ts'},
-        {code: './examples/create-variant-component.tsx', language: 'tsx'},
-      ],
-        },
-      },
-      {
-        description:
-          'Fetch variant bundle data including SKU and display name from metafields. This example queries variant-specific details, parses the component configuration, and displays variant information in the UI.',
-        codeblock: {
-          title: 'Load variant bundle configuration',
-          tabs: [
-        {code: './examples/load-variant-bundle-config.ts', language: 'ts'},
-        {code: './examples/load-variant-bundle-config.tsx', language: 'tsx'},
-      ],
-        },
-      },
-    ],
+    examples: [],
   },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
