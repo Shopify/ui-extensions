@@ -8,6 +8,17 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminAction`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminaction) component.',
+  defaultExample: {
+    description:
+      'Update a subscription by sending product and selling plan IDs to your backend. This example checks for selling plan presence, posts the update request, and shows a success banner before auto-closing the modal.',
+    codeblock: {
+      title: 'Manage a subscription',
+      tabs: [
+        {code: './examples/manage-subscription.ts', language: 'ts'},
+        {code: './examples/manage-subscription.tsx', language: 'tsx'},
+      ],
+    },
+  },
   definitions: [
     {
       title: 'PurchaseOptionsCardConfigurationApi',
@@ -16,58 +27,29 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PurchaseOptionsCardConfigurationApi',
     },
   ],
-  defaultExample: {
-    description:
-      'Update a subscription by sending product and selling plan IDs to your backend. This example demonstrates checking for `sellingPlanId` presence, posting the update request, and closing the modal on success.',
-    codeblock: {
-      title: 'Manage subscription',
-      tabs: [
-        {
-          code: './purchase-options-card/examples/manage-subscription.ts',
-          language: 'ts',
-        },
-        {
-          code: './purchase-options-card/examples/manage-subscription.tsx',
-          language: 'tsx',
-        },
-      ],
-    },
-  },
   examples: {
-    description: 'Purchase options patterns',
+    description: 'Work with purchase options and selling plans',
     examples: [
       {
         description:
-          'Show a confirmation before removing a product from a selling plan. This example uses a two-step confirmation process with `confirm()`, removes the product via your API, and closes the modal after successful removal.',
+          'Show a confirmation dialog before removing a product from a selling plan. This example demonstrates two-step confirmation with cancel option and success feedback after removal.',
         codeblock: {
           title: 'Remove from selling plan',
           tabs: [
-            {
-              code: './purchase-options-card/examples/remove-from-plan.ts',
-              language: 'ts',
-            },
-            {
-              code: './purchase-options-card/examples/remove-from-plan.tsx',
-              language: 'tsx',
-            },
-          ],
+        {code: './examples/remove-from-plan.ts', language: 'ts'},
+        {code: './examples/remove-from-plan.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Fetch selling plan name and options via GraphQL to validate the configuration. This example shows querying plan details by ID using the [GraphQL Admin API](/docs/api/admin-graphql), storing the result in state, and auto-closing the action after 2 seconds for a quick validation check.',
+          'Fetch selling plan name and options using the [GraphQL Admin API](/docs/api/admin-graphql) to validate the configuration. This example queries plan details, stores them in state, displays the information, and auto-closes after two seconds.',
         codeblock: {
           title: 'Validate selling plan',
           tabs: [
-            {
-              code: './purchase-options-card/examples/validate-selling-plan.ts',
-              language: 'ts',
-            },
-            {
-              code: './purchase-options-card/examples/validate-selling-plan.tsx',
-              language: 'tsx',
-            },
-          ],
+        {code: './examples/validate-selling-plan.ts', language: 'ts'},
+        {code: './examples/validate-selling-plan.tsx', language: 'tsx'},
+      ],
         },
       },
     ],

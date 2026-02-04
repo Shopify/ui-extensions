@@ -8,17 +8,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
-  definitions: [
-    {
-      title: 'ProductDetailsConfigurationApi',
-      description:
-        'The `ProductDetailsConfigurationApi` object provides access to product configuration data and methods. Access the following properties on the `ProductDetailsConfigurationApi` object to interact with the current product context, navigate within the admin, and select resources in the `admin.product-details.configuration.render` target.',
-      type: 'ProductDetailsConfigurationApi',
-    },
-  ],
   defaultExample: {
     description:
-      'Select up to 5 component products for a bundle using the resource picker. This example shows opening `resourcePicker()` with a limit of 5 products, filtering out hidden/draft/archived items, and posting the selected IDs to your backend to save the bundle configuration.',
+      'Open the product [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select up to five components for a [bundle](/docs/apps/build/product-merchandising/bundles). This example filters out draft and archived products, saves the bundle configuration to your backend, and tracks the selection count.',
     codeblock: {
       title: 'Select bundle components',
       tabs: [
@@ -27,18 +19,37 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  definitions: [
+    {
+      title: 'ProductDetailsConfigurationApi',
+      description:
+        'The `ProductDetailsConfigurationApi` object provides access to product configuration data and methods. Access the following properties on the `ProductDetailsConfigurationApi` object to interact with the current product context, navigate within the admin, and select resources in the `admin.product-details.configuration.render` target.',
+      type: 'ProductDetailsConfigurationApi',
+    },
+  ],
   examples: {
     description: 'Configure product bundles',
     examples: [
       {
         description:
-          "Query a product's bundle metafield and parse the JSON components array. This example demonstrates using `useEffect` to fetch bundle data from the [GraphQL Admin API](/docs/api/admin-graphql), parse the stored configuration, and display the component products.",
+          "Query a product's bundle metafield and parse the JSON components array. This example fetches bundle data in `useEffect`, parses the stored configuration, and displays the component count.",
         codeblock: {
           title: 'Load bundle configuration',
           tabs: [
-            {code: './examples/load-bundle-config.ts', language: 'ts'},
-            {code: './examples/load-bundle-config.tsx', language: 'tsx'},
-          ],
+        {code: './examples/load-bundle-config.ts', language: 'ts'},
+        {code: './examples/load-bundle-config.tsx', language: 'tsx'},
+      ],
+        },
+      },
+      {
+        description:
+          'Launch the product creation workflow using [intents](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/intents-api) and capture the new product ID. This example invokes the `create` intent, waits for completion, and displays the created product ID from the response data.',
+        codeblock: {
+          title: 'Create bundle component',
+          tabs: [
+        {code: './examples/navigate-to-component.ts', language: 'ts'},
+        {code: './examples/navigate-to-component.tsx', language: 'tsx'},
+      ],
         },
       },
     ],
@@ -52,7 +63,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Design for products with multiple variants:** Products in `api.data.selected` might have multiple variants. Design your bundle configuration to either apply to all variants or allow variant-level configuration.\n' +
+        '- **Design for products with multiple variants:** Products in `api.data.selected` may have multiple variants. Design your bundle configuration to either apply to all variants or allow variant-level configuration.\n' +
         '- **Use the Resource Picker to select components:** Use the [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to let merchants select component products for bundle configurations.\n' +
         '- **Implement cart transforms to enforce bundles:** Configuration only defines relationships in admin. Use Shopify Functions [cart transforms](/docs/api/functions/latest/cart-transform) to actually bundle products at checkout based on your saved configuration.',
     },

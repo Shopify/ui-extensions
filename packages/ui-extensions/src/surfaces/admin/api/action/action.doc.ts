@@ -46,7 +46,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Fulfill an order through your app backend with proper error handling. This example shows loading states, `try-catch` blocks to catch errors, and displaying error messages when your backend fulfillment service fails.',
+          'Fulfill an order through your app backend with proper error handling. This example shows `try-catch` blocks to catch errors and displaying error messages when your backend fulfillment service fails.',
         codeblock: {
           title: 'Fulfill order with error handling',
           tabs: [

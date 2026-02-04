@@ -8,17 +8,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
-  definitions: [
-    {
-      title: 'BlockExtensionApi',
-      description:
-        'The `BlockExtensionApi` object provides methods for block extensions that render inline content on admin pages. Access the following properties on the `BlockExtensionApi` object to interact with the current context, navigate to other extensions, and display picker dialogs.',
-      type: 'BlockExtensionApi',
-    },
-  ],
   defaultExample: {
     description:
-      "Fetch and display a product's title, inventory, and status in a [block extension](/docs/api/admin-extensions/{API_VERSION}#building-your-extension). This example uses `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql/) when the page loads.",
+      "Fetch and display a product's title, inventory, and status in a [block extension](/docs/api/admin-extensions/{API_VERSION}#building-your-extension). This example uses `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql/) when the page loads and renders a loading [`Spinner`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/spinner) component while fetching.",
     codeblock: {
       title: 'Display product information',
       tabs: [
@@ -27,29 +19,37 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  definitions: [
+    {
+      title: 'BlockExtensionApi',
+      description:
+        'The `BlockExtensionApi` object provides methods for block extensions that render inline content on admin pages. Access the following properties on the `BlockExtensionApi` object to interact with the current context, navigate to other extensions, and display picker dialogs.',
+      type: 'BlockExtensionApi',
+    },
+  ],
   examples: {
     description: 'Common block extension patterns',
     examples: [
       {
         description:
-          'Check product eligibility with your backend API before launching an action extension. This example validates that the product meets criteria and uses `navigation.navigate` to open the action extension if approved.',
+          'Check product eligibility with your backend API before launching an action extension. This example validates that the product meets criteria, shows a loading state during the check, and conditionally displays a navigation [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button).',
         codeblock: {
           title: 'Navigate to action extension',
           tabs: [
-            {code: './examples/navigate-to-action.ts', language: 'ts'},
-            {code: './examples/navigate-to-action.tsx', language: 'tsx'},
-          ],
+        {code: './examples/navigate-to-action.ts', language: 'ts'},
+        {code: './examples/navigate-to-action.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Open the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select related products, then save the associations to your backend.',
+          'Open the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select related products, then save the associations to your backend. This example tracks selection count and shows feedback when relationships are created.',
         codeblock: {
           title: 'Select related products',
           tabs: [
-            {code: './examples/select-related-products.ts', language: 'ts'},
-            {code: './examples/select-related-products.tsx', language: 'tsx'},
-          ],
+        {code: './examples/select-related-products.ts', language: 'ts'},
+        {code: './examples/select-related-products.tsx', language: 'tsx'},
+      ],
         },
       },
     ],

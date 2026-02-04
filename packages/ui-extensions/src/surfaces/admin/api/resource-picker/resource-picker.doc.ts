@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
     'an Admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
     description:
-      'Open the product resource picker and receive selected products with their IDs, titles, and images. This example shows calling `resourcePicker()` with `type: "product"` for basic product selection without filters or selection limits.',
+      'Open the product resource picker to select items from the store catalog. This example shows invoking `shopify.resourcePicker` with `type: "product"`, handling the async selection, and displaying the count of selected products. When merchants confirm their selection, the resource picker returns an array of product objects with GIDs, titles, and handles for use in your extension.',
     image: 'resource-picker.png',
     codeblock: {
       title: 'Select products',
@@ -27,119 +27,95 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
   examples: {
-    description: 'Resource Picker API patterns',
+    description:
+      'Examples that demonstrate how to use the Resource Picker API.',
     examples: [
       {
         description:
-          'Select collections or product variants instead of products. This example shows using `type: "collection"` to pick collections or `type: "variant"` to pick product variants, each returning different resource data structures including IDs, titles, and type-specific metadata.',
+          'Filter the picker to show only published products using the `filter` option with `published_status: "published"`. This example shows restricting the picker to live, customer-visible products. Use this for promotional campaigns, product recommendations, or any feature that should only work with active inventory, preventing accidental selection of draft or archived products.',
         codeblock: {
-          title: 'Select alternate resource types',
+          title: 'Filter to published products',
           tabs: [
-            {
-              title: 'Collection picker',
-              code: './examples/collection-picker.ts',
-              language: 'ts',
-            },
-            {
-              title: 'Collection picker',
-              code: './examples/collection-picker.tsx',
-              language: 'tsx',
-            },
-            {
-              title: 'Variant picker',
-              code: './examples/product-variant-picker.ts',
-              language: 'ts',
-            },
-            {
-              title: 'Variant picker',
-              code: './examples/product-variant-picker.tsx',
-              language: 'tsx',
-            },
-          ],
+        {code: './examples/filters.ts', language: 'ts'},
+        {code: './examples/filters.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Open the picker with specific products already preselected. This example demonstrates using the `selectionIds` array with product GIDs like `gid://shopify/Product/123` to mark items as selected when the picker opens, useful for edit workflows where you need to show existing selections.',
+          'Limit selection to a maximum of five products by setting `multiple: 5`. This example shows restricting how many products merchants can choose. This is useful for bundle builders with item limits, featured product sections with fixed display slots, or promotional campaigns with maximum product counts. The resource picker automatically prevents selection beyond the limit.',
         codeblock: {
-          title: 'Preselect resources',
+          title: 'Limit selection count',
           tabs: [
-            {code: './examples/selection-ids.ts', language: 'ts'},
-            {code: './examples/selection-ids.tsx', language: 'tsx'},
-          ],
+        {code: './examples/multiple-limited.ts', language: 'ts'},
+        {code: './examples/multiple-limited.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Customize the picker\'s confirm button with an action verb for clearer workflow context. This example shows setting `action: "add"` to change the button text from "Select" to "Add", helping merchants understand whether they\'re adding to an existing list or replacing a selection.',
+          'Open the resource picker with products already selected by passing GIDs to the `selectionIds` option. This example shows pre-populating the resource picker with current selections for edit workflows. Use this for showing what products are already in a bundle, collection, or promotional set. Merchants can see current selections and modify them by adding or removing products before confirming.',
+        codeblock: {
+          title: 'Preselect products',
+          tabs: [
+        {code: './examples/selection-ids.ts', language: 'ts'},
+        {code: './examples/selection-ids.tsx', language: 'tsx'},
+      ],
+        },
+      },
+      {
+        description:
+          'Select collections instead of individual products by setting `type: "collection"`. This example shows switching the resource picker to collection mode for choosing product groupings. This is useful for homepage featured collection carousels, navigation menu builders, bulk collection operations, or promotional campaigns targeting entire product categories rather than individual items.',
+        codeblock: {
+          title: 'Select collections',
+          tabs: [
+        {code: './examples/collection-picker.ts', language: 'ts'},
+        {code: './examples/collection-picker.tsx', language: 'tsx'},
+      ],
+        },
+      },
+      {
+        description:
+          'Allow unlimited product selection by setting `multiple: true` without a numeric limit. This example shows enabling flexible multi-selection where merchants control the quantity. Use this for mass product taggers, bulk inventory tools, category managers, or export utilities where selection count depends on merchant needs without artificial constraints.',
+        codeblock: {
+          title: 'Select unlimited products',
+          tabs: [
+        {code: './examples/multiple-unlimited.ts', language: 'ts'},
+        {code: './examples/multiple-unlimited.tsx', language: 'tsx'},
+      ],
+        },
+      },
+      {
+        description:
+          'Select specific product variants instead of entire products by setting `type: "variant"`. This example shows switching to variant-level selection for choosing individual SKUs. Use this for inventory transfer tools, variant-specific promotions, wholesale pricing sheets, or shipment builders where you need granular control over size, color, and individual SKU tracking.',
+        codeblock: {
+          title: 'Select product variants',
+          tabs: [
+        {code: './examples/product-variant-picker.ts', language: 'ts'},
+        {code: './examples/product-variant-picker.tsx', language: 'tsx'},
+      ],
+        },
+      },
+      {
+        description:
+          'Customize the resource picker button text by setting the `action` option to "add" or "select". This example shows changing the action verb to provide workflow context. "Add" suggests appending to an existing list, while "select" implies choosing for a specific purpose or replacing selections. This subtle language difference improves clarity for different workflow contexts.',
         codeblock: {
           title: 'Set action verb',
           tabs: [
-            {code: './examples/action.ts', language: 'ts'},
-            {code: './examples/action.tsx', language: 'tsx'},
-          ],
+        {code: './examples/action.ts', language: 'ts'},
+        {code: './examples/action.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Allow unlimited selection or limit to a maximum count. This example demonstrates setting `multiple: true` for unlimited selection or `multiple: 5` to restrict selection to a maximum of 5 items, with the picker automatically preventing selection beyond the limit.',
+          'Start the resource picker with a pre-filled search query by passing the `query` option. This example shows initializing the picker with a search term already entered. This is helpful when you know what merchants are likely looking for, such as products from a specific vendor, tag, or product type. Merchants can modify the query, but starting with relevant results saves time in large catalogs.',
         codeblock: {
-          title: 'Configure multiple selection',
+          title: 'Start with search query',
           tabs: [
-            {
-              title: 'Unlimited',
-              code: './examples/multiple-unlimited.ts',
-              language: 'ts',
-            },
-            {
-              title: 'Unlimited',
-              code: './examples/multiple-unlimited.tsx',
-              language: 'tsx',
-            },
-            {
-              title: 'Limited',
-              code: './examples/multiple-limited.ts',
-              language: 'ts',
-            },
-            {
-              title: 'Limited',
-              code: './examples/multiple-limited.tsx',
-              language: 'tsx',
-            },
-          ],
-        },
-      },
-      {
-        description:
-          'Filter the picker to show only published products. This example shows using the `filter` option with `published_status: "published"` to restrict the picker to live, customer-visible products, preventing accidental selection of draft or archived items.',
-        codeblock: {
-          title: 'Apply filters',
-          tabs: [
-            {code: './examples/filters.ts', language: 'ts'},
-            {code: './examples/filters.tsx', language: 'tsx'},
-          ],
-        },
-      },
-      {
-        description:
-          'Provide an initial search query to filter the picker results. This example demonstrates using the `query` property to pre-fill the search field with a term like "shirt", so the picker opens with results already filtered to help merchants find specific items faster in large catalogs.',
-        codeblock: {
-          title: 'Search with initial query',
-          tabs: [
-            {code: './examples/query.ts', language: 'ts'},
-            {code: './examples/query.tsx', language: 'tsx'},
-          ],
-        },
-      },
-      {
-        description:
-          'Access selected resource data including IDs, titles, and images. This example shows how the resource picker returns an array of resources with full metadata that you can use in your extension, or `undefined` if the merchant cancels the selection.',
-        codeblock: {
-          title: 'Use selection payload',
-          tabs: [
-            {code: './examples/selection.ts', language: 'ts'},
-            {code: './examples/selection.tsx', language: 'tsx'},
-          ],
+        {code: './examples/query.ts', language: 'ts'},
+        {code: './examples/query.tsx', language: 'tsx'},
+      ],
         },
       },
     ],

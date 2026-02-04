@@ -8,6 +8,17 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`FunctionSettings`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
+  defaultExample: {
+    description:
+      'Save a minimum purchase threshold to a metafield with decimal number validation. This example uses a [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/textfield) for input, calls `applyMetafieldChange`, and displays success or error feedback.',
+    codeblock: {
+      title: 'Configure discount threshold',
+      tabs: [
+        {code: './examples/configure-discount-threshold.ts', language: 'ts'},
+        {code: './examples/configure-discount-threshold.tsx', language: 'tsx'},
+      ],
+    },
+  },
   definitions: [
     {
       title: 'applyMetafieldChange',
@@ -22,43 +33,29 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DiscountFunctionSettingsData',
     },
   ],
-  defaultExample: {
-    description:
-      'Save a minimum purchase threshold ($50) to a metafield with decimal validation. Uses `applyMetafieldChange()` with `number_decimal` type for proper currency handling.',
-    codeblock: {
-      title: 'Configure discount threshold',
-      tabs: [
-        {code: './examples/configure-discount-threshold.ts', language: 'ts'},
-        {code: './examples/configure-discount-threshold.tsx', language: 'tsx'},
-      ],
-    },
-  },
   examples: {
     description: 'Configure discount function settings',
     examples: [
       {
         description:
-          'Save multiple discount configuration settings in a single operation. Stores eligible customer tags as a JSON array (vip, wholesale) and a usage limit as an integer (100), demonstrating how to apply multiple metafield changes sequentially.',
+          'Save multiple discount configuration settings in a single operation. This example stores customer tags as JSON and usage limits as an integer, demonstrating how to apply multiple metafield changes sequentially.',
         codeblock: {
           title: 'Configure eligibility rules',
           tabs: [
-            {code: './examples/configure-eligibility-rules.ts', language: 'ts'},
-            {
-              code: './examples/configure-eligibility-rules.tsx',
-              language: 'tsx',
-            },
-          ],
+        {code: './examples/configure-eligibility-rules.ts', language: 'ts'},
+        {code: './examples/configure-eligibility-rules.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Load discount metafields on mount and display current configuration. Uses `useEffect` to reduce the metafields array into a settings object, checking for missing values and applying defaults only when needed.',
+          'Load discount metafields on mount and display current configuration. This example shows reducing metafields into a settings object, checking for missing values, and applying defaults only when needed.',
         codeblock: {
           title: 'Load existing settings',
           tabs: [
-            {code: './examples/load-existing-settings.ts', language: 'ts'},
-            {code: './examples/load-existing-settings.tsx', language: 'tsx'},
-          ],
+        {code: './examples/load-existing-settings.ts', language: 'ts'},
+        {code: './examples/load-existing-settings.tsx', language: 'tsx'},
+      ],
         },
       },
     ],
@@ -80,7 +77,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       sectionContent:
         "- Metafields are subject to [size limits](/docs/apps/build/metafields/metafield-limits). Individual metafield values can't exceed 256KB, and total metafields per resource have storage limits.\n" +
-        '- The `applyMetafieldChange` method is sequential. Operations are processed one at a time. Rapid successive calls might lead to race conditions where new updates overwrite earlier ones.\n' +
+        '- The `applyMetafieldChange` method is sequential. Operations are processed one at a time. Rapid successive calls may lead to race conditions where later updates overwrite earlier ones.\n' +
         '- Metafield changes are applied immediately. Unlike some admin forms, metafield changes persist right away without waiting for the merchant to save the discount.',
     },
   ],

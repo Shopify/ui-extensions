@@ -8,17 +8,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminPrintAction`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminprintaction) component.',
-  definitions: [
-    {
-      title: 'PrintActionExtensionApi',
-      description:
-        'The `PrintActionExtensionApi` object provides methods for print action extensions that generate custom printable documents. Access the following properties on the `PrintActionExtensionApi` object to access selected resources and display picker dialogs for print configuration.',
-      type: 'PrintActionExtensionApi',
-    },
-  ],
   defaultExample: {
     description:
-      'Generate a packing slip PDF for selected orders. Extracts order IDs from `data.selected`, calls your app backend to generate the PDF, and returns a printable URL.',
+      "Generate a packing slip PDF for selected orders by calling your app's backend service. This example shows extracting order IDs from the selected resources, making an API call to your backend to generate the PDF, and returning the printable URL to display the document.",
     codeblock: {
       title: 'Generate packing slip',
       tabs: [
@@ -27,29 +19,37 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  definitions: [
+    {
+      title: 'PrintActionExtensionApi',
+      description:
+        'The `PrintActionExtensionApi` object provides methods for print action extensions that generate custom printable documents. Access the following properties on the `PrintActionExtensionApi` object to access selected resources and display picker dialogs for print configuration.',
+      type: 'PrintActionExtensionApi',
+    },
+  ],
   examples: {
     description: 'Generate custom printable documents',
     examples: [
       {
         description:
-          'Generate product labels with the option to add products beyond the initial selection. Uses `resourcePicker()` within a print action, combines initially selected products with newly picked ones, and sends all product IDs to your label generator.',
+          'Generate product labels with an option to add additional products beyond the initial selection. This example demonstrates using the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) within a print action and tracking the additional product count.',
         codeblock: {
           title: 'Generate custom product labels',
           tabs: [
-            {code: './examples/custom-product-labels.ts', language: 'ts'},
-            {code: './examples/custom-product-labels.tsx', language: 'tsx'},
-          ],
+        {code: './examples/custom-product-labels.ts', language: 'ts'},
+        {code: './examples/custom-product-labels.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Query order details via GraphQL then generate a shipping manifest. Fetches order data including shipping addresses using the [GraphQL Admin API](/docs/api/admin-graphql) and passes the order information to your manifest generator.',
+          'Query order details using the [GraphQL Admin API](/docs/api/admin-graphql/) and then generate a shipping manifest PDF. This example shows fetching order data in `useEffect`, displaying the order list, and passing the data to your print service.',
         codeblock: {
           title: 'Generate shipping manifest',
           tabs: [
-            {code: './examples/shipping-manifest.ts', language: 'ts'},
-            {code: './examples/shipping-manifest.tsx', language: 'tsx'},
-          ],
+        {code: './examples/shipping-manifest.ts', language: 'ts'},
+        {code: './examples/shipping-manifest.tsx', language: 'tsx'},
+      ],
         },
       },
     ],
@@ -64,8 +64,8 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       sectionContent:
         '- **Use `@media print` CSS for print-optimized styling:** Apply print-specific styles with `@media print` queries to control page breaks, hide UI elements, and optimize for paper output. The print preview shows the screen styles until printing.\n' +
-        '- **Set document MIME type correctly:** Return `Content-Type: application/pdf` for PDFs, `image/png` for images, or `text/html` for HTML documents. Incorrect MIME types might trigger browser download instead of preview.\n' +
-        '- **Test `window.print()` behavior:** If generating HTML, then test that `window.print()` works correctly. Some CSS frameworks or scripts might interfere with browser print dialogs.',
+        '- **Set document MIME type correctly:** Return `Content-Type: application/pdf` for PDFs, `image/png` for images, or `text/html` for HTML documents. Incorrect MIME types may cause browser download instead of preview.\n' +
+        '- **Test `window.print()` behavior:** If generating HTML, test that `window.print()` works correctly. Some CSS frameworks or scripts may interfere with browser print dialogs.',
     },
     {
       type: 'Generic',
