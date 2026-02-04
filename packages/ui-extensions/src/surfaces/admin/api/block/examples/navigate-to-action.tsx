@@ -1,27 +1,54 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   reactExtension,
   useApi,
+  Button,
+  Text,
+  Spinner,
 } from '@shopify/ui-extensions-react/admin';
 
 const NavigateToAction = () => {
   const {data, navigation} = useApi<'admin.product-details.block.render'>();
   const [eligible, setEligible] = useState(false);
+  const [checking, setChecking] = useState(true);
 
   useEffect(() => {
-    const productId = data.selected[0]?.id;
+    const checkEligibility = async () => {
+      const productId = data.selected[0]?.id;
 
-    fetch(`/api/products/${productId}/check-eligibility`)
-      .then((response) => response.json())
-      .then((result) => {
-        setEligible(result.eligible);
-        if (result.eligible) {
-          navigation.navigate('extension://my-admin-action-extension-handle');
-        }
+      if (!productId) {
+        setChecking(false);
+        return;
+      }
+
+      const response = await fetch(`/api/products/${productId}/check-eligibility`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'},
       });
-  }, [data, navigation]);
 
-  return null;
+      const {eligible} = await response.json();
+      setEligible(eligible);
+      setChecking(false);
+    };
+
+    checkEligibility();
+  }, [data]);
+
+  const handleNavigate = () => {
+    navigation.navigate('extension://my-product-action-extension-handle');
+  };
+
+  return (
+    <>
+      {checking ? (
+        <Spinner />
+      ) : eligible ? (
+        <Button title="Launch Advanced Workflow" onPress={handleNavigate} />
+      ) : (
+        <Text>Product not eligible for advanced actions</Text>
+      )}
+    </>
+  );
 };
 
 export default reactExtension(

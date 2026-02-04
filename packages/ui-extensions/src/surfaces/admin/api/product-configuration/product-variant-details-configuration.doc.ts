@@ -8,6 +8,17 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
+  defaultExample: {
+    description:
+      'Use the product variant [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select component variants for a [bundle](/docs/apps/build/product-merchandising/bundles). This example picks product variants, tracks selections, and posts the product variant IDs to configure the bundle.',
+    codeblock: {
+      title: 'Select product variant components',
+      tabs: [
+        {code: './examples/select-variant-components.ts', language: 'ts'},
+        {code: './examples/select-variant-components.tsx', language: 'tsx'},
+      ],
+    },
+  },
   definitions: [
     {
       title: 'ProductVariantDetailsConfigurationApi',
@@ -16,16 +27,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ProductVariantDetailsConfigurationApi',
     },
   ],
-  defaultExample: {
-    description:
-      'Select component variants for a bundle using the variant resource picker. This example opens `resourcePicker` with `type: "variant"` to allow variant-level selection, and posts the selected variant IDs to your backend to configure the bundle.',
-    codeblock: {
-      title: 'Select variant components',
-      tabs: [
-        {code: './examples/select-variant-components.ts', language: 'ts'},
-        {code: './examples/select-variant-components.tsx', language: 'tsx'},
-      ],
-    },
+  examples: {
+    description: 'Configure product variant-level bundles',
+    examples: [],
   },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
@@ -37,6 +41,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       sectionContent:
         '- **Store configuration keyed by variant GID:** Save bundle relationships in metafields on the variant or in your app database using the variant GID as the key for precise variant-level configuration.\n' +
+        '- **Use `type: "variant"` in Resource Picker for precision:** When selecting component variants, use `type: "variant"` in the [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) for precise variant selection rather than product-level selection.\n' +
         '- **Implement cart transforms to enforce bundles:** Configuration only defines relationships. Use Shopify Functions [cart transforms](/docs/api/functions/latest/cart-transform) to enforce variant-level bundling at checkout based on saved configuration.',
     },
     {
