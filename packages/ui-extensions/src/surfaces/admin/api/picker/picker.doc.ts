@@ -100,7 +100,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       sectionContent:
         '- **Handle undefined return on cancellation:** When merchants cancel or close the picker, it returns `undefined` rather than an empty array. Check for `undefined` explicitly to distinguish cancellation from empty selection.\n' +
-        '- **Disable items to prevent modification:** Use the `disabled` property on items combined with `initialSelectionIds` to create preselected items that merchants cannot deselect.',
+        '- **Disable items to prevent modification:** Use the `disabled` property on items combined with `initialSelectionIds` to create preselected items that merchants can't deselect.',
     },
     {
       type: 'Generic',
