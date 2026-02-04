@@ -36,9 +36,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Load bundle configuration',
           tabs: [
-        {code: './examples/load-bundle-config.ts', language: 'ts'},
-        {code: './examples/load-bundle-config.tsx', language: 'tsx'},
-      ],
+            {code: './examples/load-bundle-config.ts', language: 'ts'},
+            {code: './examples/load-bundle-config.tsx', language: 'tsx'},
+          ],
         },
       },
     ],

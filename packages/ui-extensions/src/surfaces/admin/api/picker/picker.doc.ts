@@ -41,9 +41,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Disable specific items',
           tabs: [
-        {code: './examples/disabled.ts', language: 'ts'},
-        {code: './examples/disabled.tsx', language: 'tsx'},
-      ],
+            {code: './examples/disabled.ts', language: 'ts'},
+            {code: './examples/disabled.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -52,9 +52,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Limit selection count',
           tabs: [
-        {code: './examples/multiple-limit.ts', language: 'ts'},
-        {code: './examples/multiple-limit.tsx', language: 'tsx'},
-      ],
+            {code: './examples/multiple-limit.ts', language: 'ts'},
+            {code: './examples/multiple-limit.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -63,9 +63,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Preselect items',
           tabs: [
-        {code: './examples/preselected.ts', language: 'ts'},
-        {code: './examples/preselected.tsx', language: 'tsx'},
-      ],
+            {code: './examples/preselected.ts', language: 'ts'},
+            {code: './examples/preselected.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -74,9 +74,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Select unlimited items',
           tabs: [
-        {code: './examples/multiple-true.ts', language: 'ts'},
-        {code: './examples/multiple-true.tsx', language: 'tsx'},
-      ],
+            {code: './examples/multiple-true.ts', language: 'ts'},
+            {code: './examples/multiple-true.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -85,9 +85,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Use GraphQL data',
           tabs: [
-        {code: './examples/direct-api.ts', language: 'ts'},
-        {code: './examples/direct-api.tsx', language: 'tsx'},
-      ],
+            {code: './examples/direct-api.ts', language: 'ts'},
+            {code: './examples/direct-api.tsx', language: 'tsx'},
+          ],
         },
       },
     ],
@@ -100,7 +100,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       sectionContent:
         '- **Handle undefined return on cancellation:** When merchants cancel or close the picker, it returns `undefined` rather than an empty array. Check for `undefined` explicitly to distinguish cancellation from empty selection.\n' +
-        '- **Disable items to prevent modification:** Use the `disabled` property on items combined with `initialSelectionIds` to create preselected items that merchants can\'t deselect.',
+        "- **Disable items to prevent modification:** Use the `disabled` property on items combined with `initialSelectionIds` to create preselected items that merchants can't deselect.",
     },
     {
       type: 'Generic',

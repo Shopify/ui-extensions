@@ -34,9 +34,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Query and mutate product data',
           tabs: [
-        {code: './examples/query-and-mutate.ts', language: 'ts'},
-        {code: './examples/query-and-mutate.tsx', language: 'tsx'},
-      ],
+            {code: './examples/query-and-mutate.ts', language: 'ts'},
+            {code: './examples/query-and-mutate.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -45,9 +45,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Persist settings',
           tabs: [
-        {code: './examples/persist-settings.ts', language: 'ts'},
-        {code: './examples/persist-settings.tsx', language: 'tsx'},
-      ],
+            {code: './examples/persist-settings.ts', language: 'ts'},
+            {code: './examples/persist-settings.tsx', language: 'tsx'},
+          ],
         },
       },
     ],
@@ -74,7 +74,7 @@ const data: ReferenceEntityTemplateSchema = {
         '- Storage is scoped per extension. Data saved by one extension is inaccessible to other extensions, even from the same app.\n' +
         "- Storage values are serialized with `JSON.stringify`, so functions, symbols, and circular references aren't supported.\n" +
         "- GraphQL queries share [rate limits](/docs/api/usage/limits) with your app's overall Admin API usage and are subject to the shop's installed [access scopes](/docs/api/usage/access-scopes).\n" +
-        '- ID tokens from `auth.idToken()` are short-lived JWTs. They have a short expiration time and shouldn\'t be stored long-term.',
+        "- ID tokens from `auth.idToken()` are short-lived JWTs. They have a short expiration time and shouldn't be stored long-term.",
     },
   ],
 };
