@@ -76,7 +76,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Allow unlimited product selection by setting `multiple: true` without a numeric limit. This example shows enabling flexible multi-selection where merchants control the quantity. Use this for mass product taggers, bulk inventory tools, category managers, or export utilities where selection count depends on merchant needs without artificial constraints.',
+          'Allow unlimited product selection by setting `multiple: true` without a numeric limit. This example shows enabling multi-selection where merchants control the quantity. Use this for mass product taggers, bulk inventory tools, category managers, or export utilities where selection count depends on merchant needs without artificial constraints.',
         codeblock: {
           title: 'Select unlimited products',
           tabs: [

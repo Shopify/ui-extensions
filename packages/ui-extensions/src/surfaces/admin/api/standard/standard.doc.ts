@@ -74,7 +74,7 @@ const data: ReferenceEntityTemplateSchema = {
         '- Storage is scoped per extension. Data saved by one extension is inaccessible to other extensions, even from the same app.\n' +
         "- Storage values are serialized with `JSON.stringify`, so functions, symbols, and circular references aren't supported.\n" +
         "- GraphQL queries share [rate limits](/docs/api/usage/limits) with your app's overall Admin API usage and are subject to the shop's installed [access scopes](/docs/api/usage/access-scopes).\n" +
-        '- ID tokens from `auth.idToken()` are short-lived JWTs. They expire quickly and should not be stored long-term.',
+        '- ID tokens from `auth.idToken()` are short-lived JWTs. They have a short expiration time and should not be stored long-term.',
     },
   ],
 };

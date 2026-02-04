@@ -8,7 +8,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   defaultExample: {
     description:
-      'Return `true` to show the action extension only when items are selected. This simple check prevents the action extension from appearing on empty pages or when no resources are chosen.',
+      'Return `true` to show the action extension only when items are selected. This check prevents the action extension from appearing on empty pages or when no resources are chosen.',
     codeblock: {
       title: 'Check when items are selected',
       tabs: [
