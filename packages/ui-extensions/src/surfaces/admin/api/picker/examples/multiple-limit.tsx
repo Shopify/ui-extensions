@@ -1,5 +1,9 @@
 import React from 'react';
-import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
+import {
+  reactExtension,
+  useApi,
+  Button,
+} from '@shopify/ui-extensions-react/admin';
 
 const MultipleLimitPicker = () => {
   const {picker} = useApi<'admin.product-details.block.render'>();
@@ -8,6 +12,7 @@ const MultipleLimitPicker = () => {
     await picker({
       heading: 'Select items (up to 2)',
       multiple: 2,
+      headers: [{title: 'Main heading'}],
       items: [
         {id: '1', heading: 'Item 1'},
         {id: '2', heading: 'Item 2'},
@@ -16,7 +21,10 @@ const MultipleLimitPicker = () => {
     });
   };
 
-  return null;
+  return <Button title="Open Picker" onPress={handlePick} />;
 };
 
-export default reactExtension('admin.product-details.block.render', () => <MultipleLimitPicker />);
+export default reactExtension(
+  'admin.product-details.block.render',
+  () => <MultipleLimitPicker />,
+);

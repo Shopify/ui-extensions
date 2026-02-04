@@ -1,73 +1,42 @@
-const r = await fetch('shopify:admin/api/graphql.json', {
-  method: 'POST',
-  body: JSON.stringify({
-    query: `
-      query GetOrders($first: Int!) {
-        orders(first: $first) {
-          edges {
-            node {
-              id
-              name
-              customer {
-                displayName
-              }
-              originalTotalPriceSet {
-                shopMoney {
-                  amount
+import {extension, Button} from '@shopify/ui-extensions/admin';
+
+export default extension(
+  'admin.product-details.block.render',
+  (root, api) => {
+    const {picker} = api;
+
+    const openButton = root.createComponent(Button, {
+      title: 'Open Order Picker',
+      onPress: async () => {
+        const response = await fetch('shopify:admin/api/graphql.json', {
+          method: 'POST',
+          body: JSON.stringify({
+            query: `query GetOrders($first: Int!) {
+              orders(first: $first) {
+                edges {
+                  node {
+                    id
+                    name
+                  }
                 }
               }
-              displayFulfillmentStatus
-              displayFinancialStatus
-              unpaid
-            }
-          }
-        }
-      }
-    `,
-    variables: {first: 10},
-  }),
-});
-const {data} = await r.json();
-const orderData = data.orders.edges;
+            }`,
+            variables: {first: 10},
+          }),
+        });
 
-const selected = await picker({
-  heading: 'Select orders',
-  multiple: true,
-  headers: [
-    {title: 'Order'},
-    {title: 'Customer'},
-    {title: 'Total', type: 'number'},
-  ],
-  items: orderData.map((order) => {
-    const {
-      id,
-      name,
-      customer,
-      originalTotalPriceSet: {shopMoney},
-      displayFulfillmentStatus,
-      displayFinancialStatus,
-    } = order.node;
+        const {data} = await response.json();
 
-    return {
-      id,
-      heading: name,
-      data: [customer.displayName, `$${shopMoney.amount}`],
-      badges: [
-        {
-          content: displayFulfillmentStatus,
-          tone: displayFulfillmentStatus === 'FULFILLED' ? '' : 'attention',
-          progress:
-            displayFulfillmentStatus === 'FULFILLED'
-              ? 'complete'
-              : 'incomplete',
-        },
-        {
-          content: displayFinancialStatus,
-          tone: displayFinancialStatus === 'PENDING' ? 'warning' : '',
-          progress:
-            displayFinancialStatus === 'PENDING' ? 'incomplete' : 'complete',
-        },
-      ],
-    };
-  }),
-});
+        await picker({
+          heading: 'Select orders',
+          items: data.orders.edges.map((edge) => ({
+            id: edge.node.id,
+            heading: edge.node.name,
+          })),
+        });
+      },
+    });
+
+    root.appendChild(openButton);
+  },
+);

@@ -1,7 +1,11 @@
 import React from 'react';
-import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
+import {
+  reactExtension,
+  useApi,
+  Button,
+} from '@shopify/ui-extensions-react/admin';
 
-const DisabledItems = () => {
+const DisabledPicker = () => {
   const {picker} = useApi<'admin.product-details.block.render'>();
 
   const handlePick = async () => {
@@ -14,7 +18,10 @@ const DisabledItems = () => {
     });
   };
 
-  return null;
+  return <Button title="Open Picker" onPress={handlePick} />;
 };
 
-export default reactExtension('admin.product-details.block.render', () => <DisabledItems />);
+export default reactExtension(
+  'admin.product-details.block.render',
+  () => <DisabledPicker />,
+);
