@@ -1,27 +1,50 @@
-import React from 'react';
-import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
+import React, {useState} from 'react';
+import {
+  reactExtension,
+  useApi,
+  Text,
+  Button,
+} from '@shopify/ui-extensions-react/admin';
 
 const CustomProductLabels = () => {
   const {data, resourcePicker} = useApi<'admin.product-details.print-action.render'>();
+  const [additionalCount, setAdditionalCount] = useState(0);
 
-  const generate = async () => {
-    const initialProducts = data.selected;
-    const additionalProducts = await resourcePicker({type: 'product'});
+  const handleSelectMore = async () => {
+    const additionalProducts = await resourcePicker({
+      type: 'product',
+      multiple: 10,
+      action: 'add',
+    });
 
-    const allProducts = additionalProducts 
-      ? [...initialProducts, ...additionalProducts]
-      : initialProducts;
+    if (additionalProducts) {
+      setAdditionalCount(additionalProducts.length);
+    }
+  };
+
+  return (
+    <>
+      <Text>{data.selected.length} products selected</Text>
+      <Button title="Add More Products" onPress={handleSelectMore} />
+      {additionalCount > 0 && <Text>+{additionalCount} additional</Text>}
+    </>
+  );
+};
+
+export default reactExtension(
+  'admin.product-details.print-action.render',
+  async (api) => {
+    const {data} = api;
+
+    const productIds = data.selected.map((item) => item.id);
 
     const response = await fetch('/api/generate-labels', {
       method: 'POST',
-      body: JSON.stringify({productIds: allProducts.map((p) => p.id)}),
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({productIds}),
     });
 
-    const result = await response.json();
-    return result.labelUrl;
-  };
-
-  return null;
-};
-
-export default reactExtension('admin.product-details.print-action.render', () => <CustomProductLabels />);
+    const {printUrl} = await response.json();
+    return printUrl;
+  },
+);

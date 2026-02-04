@@ -1,13 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   reactExtension,
   useApi,
+  Button,
+  Banner,
 } from '@shopify/ui-extensions-react/admin';
 
 const FulfillOrder = () => {
   const {data, close} = useApi<'admin.order-details.action.render'>();
+  const [error, setError] = useState<string | null>(null);
 
   const handleFulfill = async () => {
+    setError(null);
+
     try {
       const orderId = data.selected[0]?.id;
 
@@ -17,18 +22,23 @@ const FulfillOrder = () => {
 
       const result = await response.json();
 
-      if (result.success) {
-        console.log('Order fulfilled:', result);
-        close();
-      } else {
-        console.error('Fulfillment failed:', result.error);
+      if (!response.ok) {
+        throw new Error(result.error || 'Fulfillment failed');
       }
-    } catch (error) {
-      console.error('Error:', error.message);
+
+      console.log('Order fulfilled:', result);
+      close();
+    } catch (err) {
+      setError(err.message);
     }
   };
 
-  return null;
+  return (
+    <>
+      {error && <Banner status="critical">{error}</Banner>}
+      <Button title="Fulfill Order" onPress={handleFulfill} />
+    </>
+  );
 };
 
 export default reactExtension(

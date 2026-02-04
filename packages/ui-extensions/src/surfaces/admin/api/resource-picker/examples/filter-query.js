@@ -1,7 +1,6 @@
-const selectedProducts = await resourcePicker({
+const selected = await resourcePicker({
   type: 'product',
   filter: {
-    query: 'title:shirt tag:summer',
+    query: 'Sweater',
   },
 });
-

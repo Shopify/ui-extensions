@@ -1,4 +1,1 @@
-const selectedCollections = await resourcePicker({
-  type: 'collection',
-});
-
+const selected = await resourcePicker({type: 'collection'});
