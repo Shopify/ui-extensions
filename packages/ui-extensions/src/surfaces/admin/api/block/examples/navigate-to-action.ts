@@ -1,4 +1,4 @@
-import {extension} from '@shopify/ui-extensions/admin';
+import {extension, Button, Text, Spinner} from '@shopify/ui-extensions/admin';
 
 export default extension(
   'admin.product-details.block.render',
@@ -7,11 +7,36 @@ export default extension(
 
     const productId = data.selected[0]?.id;
 
-    fetch(`/api/products/${productId}/check-eligibility`)
+    if (!productId) {
+      return;
+    }
+
+    const spinner = root.createComponent(Spinner);
+    root.appendChild(spinner);
+
+    fetch(`/api/products/${productId}/check-eligibility`, {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'},
+    })
       .then((response) => response.json())
-      .then((result) => {
-        if (result.eligible) {
-          navigation.navigate('extension://my-admin-action-extension-handle');
+      .then(({eligible}) => {
+        root.removeChild(spinner);
+
+        if (eligible) {
+          const button = root.createComponent(Button, {
+            title: 'Launch Advanced Workflow',
+            onPress: () => {
+              navigation.navigate('extension://my-product-action-extension-handle');
+            },
+          });
+          root.appendChild(button);
+        } else {
+          const text = root.createComponent(
+            Text,
+            {},
+            'Product not eligible for advanced actions',
+          );
+          root.appendChild(text);
         }
       });
   },
