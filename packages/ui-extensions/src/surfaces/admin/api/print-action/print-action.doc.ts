@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
     'the [`AdminPrintAction`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminprintaction) component.',
   defaultExample: {
     description:
-      "Generate a packing slip PDF for selected orders to provide warehouse staff with pick-and-pack instructions. This example demonstrates extracting order IDs from `data.selected`, posting them to your backend printing service, and returning the PDF URL for the print dialog.",
+      'Generate a packing slip PDF for selected orders to provide warehouse staff with pick-and-pack instructions. This example demonstrates extracting order IDs from `data.selected`, posting them to your backend printing service, and returning the PDF URL for the print dialog.',
     codeblock: {
       title: 'Generate packing slip',
       tabs: [
@@ -36,9 +36,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Generate custom product labels',
           tabs: [
-        {code: './examples/custom-product-labels.ts', language: 'ts'},
-        {code: './examples/custom-product-labels.tsx', language: 'tsx'},
-      ],
+            {code: './examples/custom-product-labels.ts', language: 'ts'},
+            {code: './examples/custom-product-labels.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -47,9 +47,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Generate shipping manifest',
           tabs: [
-        {code: './examples/shipping-manifest.ts', language: 'ts'},
-        {code: './examples/shipping-manifest.tsx', language: 'tsx'},
-      ],
+            {code: './examples/shipping-manifest.ts', language: 'ts'},
+            {code: './examples/shipping-manifest.tsx', language: 'tsx'},
+          ],
         },
       },
     ],

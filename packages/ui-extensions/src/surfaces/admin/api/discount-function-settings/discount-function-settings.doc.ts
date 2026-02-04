@@ -42,9 +42,12 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Configure eligibility rules',
           tabs: [
-        {code: './examples/configure-eligibility-rules.ts', language: 'ts'},
-        {code: './examples/configure-eligibility-rules.tsx', language: 'tsx'},
-      ],
+            {code: './examples/configure-eligibility-rules.ts', language: 'ts'},
+            {
+              code: './examples/configure-eligibility-rules.tsx',
+              language: 'tsx',
+            },
+          ],
         },
       },
       {
@@ -53,9 +56,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Load existing settings',
           tabs: [
-        {code: './examples/load-existing-settings.ts', language: 'ts'},
-        {code: './examples/load-existing-settings.tsx', language: 'tsx'},
-      ],
+            {code: './examples/load-existing-settings.ts', language: 'ts'},
+            {code: './examples/load-existing-settings.tsx', language: 'tsx'},
+          ],
         },
       },
     ],

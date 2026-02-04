@@ -28,7 +28,8 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
   examples: {
-    description: 'Examples that demonstrate how to use the Action Extension API.',
+    description:
+      'Examples that demonstrate how to use the Action Extension API.',
     examples: [
       {
         description:
