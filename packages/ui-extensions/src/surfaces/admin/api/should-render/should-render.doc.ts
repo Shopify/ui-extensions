@@ -34,9 +34,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Require one item to be selected',
           tabs: [
-        {code: './examples/check-order-status.ts', language: 'ts'},
-        {code: './examples/check-order-status.tsx', language: 'tsx'},
-      ],
+            {code: './examples/check-order-status.ts', language: 'ts'},
+            {code: './examples/check-order-status.tsx', language: 'tsx'},
+          ],
         },
       },
       {
@@ -45,9 +45,9 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Validate selection count',
           tabs: [
-        {code: './examples/bulk-selection-check.ts', language: 'ts'},
-        {code: './examples/bulk-selection-check.tsx', language: 'tsx'},
-      ],
+            {code: './examples/bulk-selection-check.ts', language: 'ts'},
+            {code: './examples/bulk-selection-check.tsx', language: 'tsx'},
+          ],
         },
       },
     ],
