@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Generate custom product labels with the option to add more products beyond the initial selection for flexible batch labeling. This example demonstrates launching the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) from within a print action, tracking additional selections, and generating labels for the combined product set.',
+          'Generate custom product labels with the option to add more products beyond the initial selection for batch labeling operations. This example demonstrates launching the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) from within a print action, tracking additional selections, and generating labels for the combined product set.',
         codeblock: {
           title: 'Generate custom product labels',
           tabs: [
