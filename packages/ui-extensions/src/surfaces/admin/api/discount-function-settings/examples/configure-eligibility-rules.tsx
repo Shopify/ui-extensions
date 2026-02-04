@@ -1,30 +1,54 @@
-import React from 'react';
-import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
+import React, {useState} from 'react';
+import {
+  reactExtension,
+  useApi,
+  TextField,
+  NumberField,
+  Button,
+  BlockStack,
+} from '@shopify/ui-extensions-react/admin';
 
 const ConfigureEligibilityRules = () => {
   const {applyMetafieldChange} = useApi<'admin.discount-details.function-settings.render'>();
+  const [tags, setTags] = useState('vip, wholesale, premium');
+  const [maxUses, setMaxUses] = useState('5');
 
   const handleSave = async () => {
-    const tags = ['vip', 'wholesale'];
-
     await applyMetafieldChange({
       type: 'updateMetafield',
-      key: 'customer_tags',
-      namespace: 'discount_function',
-      value: JSON.stringify(tags),
+      namespace: 'discount-config',
+      key: 'eligible_customer_tags',
+      value: JSON.stringify(tags.split(',').map((t) => t.trim())),
       valueType: 'json',
     });
 
     await applyMetafieldChange({
       type: 'updateMetafield',
-      key: 'usage_limit',
-      namespace: 'discount_function',
-      value: '100',
+      namespace: 'discount-config',
+      key: 'max_uses_per_customer',
+      value: maxUses,
       valueType: 'number_integer',
     });
   };
 
-  return null;
+  return (
+    <BlockStack>
+      <TextField
+        label="Eligible customer tags (comma-separated)"
+        value={tags}
+        onChange={setTags}
+      />
+      <NumberField
+        label="Max uses per customer"
+        value={maxUses}
+        onChange={setMaxUses}
+      />
+      <Button title="Save Eligibility Rules" onPress={handleSave} />
+    </BlockStack>
+  );
 };
 
-export default reactExtension('admin.discount-details.function-settings.render', () => <ConfigureEligibilityRules />);
+export default reactExtension(
+  'admin.discount-details.function-settings.render',
+  () => <ConfigureEligibilityRules />,
+);

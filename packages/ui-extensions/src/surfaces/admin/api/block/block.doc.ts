@@ -8,17 +8,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
-  definitions: [
-    {
-      title: 'BlockExtensionApi',
-      description:
-        'The `BlockExtensionApi` object provides methods for block extensions that render inline content on admin pages. Access the following properties on the `BlockExtensionApi` object to interact with the current context, navigate to other extensions, and display picker dialogs.',
-      type: 'BlockExtensionApi',
-    },
-  ],
   defaultExample: {
     description:
-      "Uses `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql) on page load, fetching the product's `title`, `totalInventory`, and `status` fields. The result is stored in state to display product data inline without leaving the page.",
+      "Fetch and display a product's title, inventory, and status to provide quick insights directly on the product details page. This example demonstrates querying the [GraphQL Admin API](/docs/api/admin-graphql/) when the extension loads, showing a loading [`Spinner`](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/spinner) while fetching, and rendering product information as [`Text`](/docs/api/admin-extensions/{API_VERSION}/components/typography/text) components.",
     codeblock: {
       title: 'Display product information',
       tabs: [
@@ -27,29 +19,37 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  definitions: [
+    {
+      title: 'BlockExtensionApi',
+      description:
+        'The `BlockExtensionApi` object provides methods for block extensions that render inline content on admin pages. Access the following properties on the `BlockExtensionApi` object to interact with the current context, navigate to other extensions, and display picker dialogs.',
+      type: 'BlockExtensionApi',
+    },
+  ],
   examples: {
-    description: 'Block extension patterns',
+    description: 'Common block extension patterns',
     examples: [
       {
         description:
-          'Calls your backend eligibility endpoint with the product ID, then uses `navigation.navigate()` to open an action extension when `result.eligible` is true. For compliance workflows where products need validation before specific actions become available.',
+          'Check product eligibility with your backend API before showing advanced workflow options to prevent invalid operations on incompatible products. This example demonstrates fetching eligibility status from your backend, displaying a loading [`Spinner`](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/spinner) during the check, and conditionally showing a navigation [`Button`](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) or ineligibility message.',
         codeblock: {
           title: 'Navigate to action extension',
           tabs: [
-            {code: './examples/navigate-to-action.ts', language: 'ts'},
-            {code: './examples/navigate-to-action.tsx', language: 'tsx'},
-          ],
+        {code: './examples/navigate-to-action.ts', language: 'ts'},
+        {code: './examples/navigate-to-action.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Opens `resourcePicker()` with `multiple: true` for unlimited selection, then posts the selected IDs to `/api/save-related-products`. For "related products" or "frequently bought together" features where merchants build product associations.',
+          'Open the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select related products for recommendation features, cross-selling, or product associations. This example demonstrates launching the resource picker with filters for published products, saving the relationships to your backend, and displaying confirmation feedback showing the count of added products.',
         codeblock: {
           title: 'Select related products',
           tabs: [
-            {code: './examples/select-related-products.ts', language: 'ts'},
-            {code: './examples/select-related-products.tsx', language: 'tsx'},
-          ],
+        {code: './examples/select-related-products.ts', language: 'ts'},
+        {code: './examples/select-related-products.tsx', language: 'tsx'},
+      ],
         },
       },
     ],

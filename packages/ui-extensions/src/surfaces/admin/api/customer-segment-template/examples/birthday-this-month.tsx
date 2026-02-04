@@ -1,8 +1,4 @@
-import React from 'react';
-import {
-  reactExtension,
-  useApi,
-} from '@shopify/ui-extensions-react/admin';
+import {reactExtension} from '@shopify/ui-extensions-react/admin';
 
 const BirthdayThisMonth = () => {
   return {
@@ -11,6 +7,15 @@ const BirthdayThisMonth = () => {
         title: 'Birthday this month',
         description: 'Customers with birthdays in the current month',
         query: `{
+  metafields: {
+    key: "birth_date"
+    namespace: "customer"
+    value: {
+      month: ${new Date().getMonth() + 1}
+    }
+  }
+}`,
+        queryToInsert: `{
   metafields: {
     key: "birth_date"
     namespace: "customer"
@@ -29,6 +34,6 @@ const BirthdayThisMonth = () => {
 };
 
 export default reactExtension(
-  'admin.customers.segmentation-templates.render',
-  () => <BirthdayThisMonth />,
+  'admin.customers.segmentation-templates.data',
+  () => BirthdayThisMonth(),
 );

@@ -1,11 +1,16 @@
 import React, {useState} from 'react';
-import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
+import {
+  reactExtension,
+  useApi,
+  Button,
+  Text,
+} from '@shopify/ui-extensions-react/admin';
 
 const TemplatePicker = () => {
   const {picker} = useApi<'admin.product-details.block.render'>();
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<string[] | null>(null);
 
-  const handlePick = async () => {
+  const handlePickTemplate = async () => {
     const pickerInstance = await picker({
       heading: 'Select a template',
       multiple: false,
@@ -25,7 +30,10 @@ const TemplatePicker = () => {
           id: '2',
           heading: 'Large graphic, 3 column',
           data: ['Russell Winfield', '5'],
-          badges: [{content: 'Published', tone: 'success'}, {content: 'New feature'}],
+          badges: [
+            {content: 'Published', tone: 'success'},
+            {content: 'New feature'},
+          ],
           selected: true,
         },
         {
@@ -41,7 +49,15 @@ const TemplatePicker = () => {
     setSelected(result);
   };
 
-  return null;
+  return (
+    <>
+      <Button title="Choose Template" onPress={handlePickTemplate} />
+      {selected && selected.length > 0 && <Text>Selected template: {selected[0]}</Text>}
+    </>
+  );
 };
 
-export default reactExtension('admin.product-details.block.render', () => <TemplatePicker />);
+export default reactExtension(
+  'admin.product-details.block.render',
+  () => <TemplatePicker />,
+);

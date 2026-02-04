@@ -1,4 +1,4 @@
-import {extension} from '@shopify/ui-extensions/admin';
+import {extension, Text} from '@shopify/ui-extensions/admin';
 
 export default extension(
   'admin.order-details.print-action.render',
@@ -7,13 +7,20 @@ export default extension(
 
     const orderIds = data.selected.map((item) => item.id);
 
+    const text = root.createComponent(
+      Text,
+      {},
+      `Generating packing slip for ${data.selected.length} orders`,
+    );
+    root.appendChild(text);
+
     const response = await fetch('/api/generate-packing-slip', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({orderIds}),
     });
 
-    const result = await response.json();
-    return result.pdfUrl;
+    const {printUrl} = await response.json();
+    return printUrl;
   },
 );

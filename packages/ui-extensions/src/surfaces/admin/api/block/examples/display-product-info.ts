@@ -1,4 +1,4 @@
-import {extension} from '@shopify/ui-extensions/admin';
+import {extension, Text, Spinner} from '@shopify/ui-extensions/admin';
 
 export default extension(
   'admin.product-details.block.render',
@@ -6,6 +6,8 @@ export default extension(
     const {data, query} = api;
 
     const productId = data.selected[0]?.id;
+    const spinner = root.createComponent(Spinner);
+    root.appendChild(spinner);
 
     query(
       `query GetProduct($id: ID!) {
@@ -18,9 +20,16 @@ export default extension(
       {variables: {id: productId}},
     ).then(({data: productData}) => {
       const product = productData.product;
-      console.log('Product:', product.title);
-      console.log('Inventory:', product.totalInventory);
-      console.log('Status:', product.status);
+      
+      root.removeChild(spinner);
+
+      const titleText = root.createComponent(Text, {}, `Title: ${product.title}`);
+      const inventoryText = root.createComponent(Text, {}, `Inventory: ${product.totalInventory}`);
+      const statusText = root.createComponent(Text, {}, `Status: ${product.status}`);
+
+      root.appendChild(titleText);
+      root.appendChild(inventoryText);
+      root.appendChild(statusText);
     });
   },
 );

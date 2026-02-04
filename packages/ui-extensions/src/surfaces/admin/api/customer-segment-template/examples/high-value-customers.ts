@@ -1,16 +1,22 @@
 import {extension} from '@shopify/ui-extensions/admin';
 
 export default extension(
-  'admin.customers.segmentation-templates.render',
-  (root, api) => {
-    const {i18n} = api;
-
+  'admin.customers.segmentation-templates.data',
+  (api) => {
     return {
       templates: [
         {
-          title: i18n.translate('templates.highValue.title'),
-          description: i18n.translate('templates.highValue.description'),
+          title: api.i18n.translate('templates.highValue.title'),
+          description: api.i18n.translate('templates.highValue.description'),
           query: `{
+  total_spent: {
+    min: 500
+  }
+  orders_count: {
+    min: 5
+  }
+}`,
+          queryToInsert: `{
   total_spent: {
     min: 500
   }

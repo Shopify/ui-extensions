@@ -1,5 +1,5 @@
 import React from 'react';
-import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
+import {reactExtension, useApi, Button} from '@shopify/ui-extensions-react/admin';
 
 const PreselectedPicker = () => {
   const {picker} = useApi<'admin.product-details.block.render'>();
@@ -14,7 +14,10 @@ const PreselectedPicker = () => {
     });
   };
 
-  return null;
+  return <Button title="Open Picker" onPress={handlePick} />;
 };
 
-export default reactExtension('admin.product-details.block.render', () => <PreselectedPicker />);
+export default reactExtension(
+  'admin.product-details.block.render',
+  () => <PreselectedPicker />,
+);
