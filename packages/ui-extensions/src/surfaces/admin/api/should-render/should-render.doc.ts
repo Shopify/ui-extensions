@@ -8,7 +8,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   defaultExample: {
     description:
-      'Return `true` to show the action extension only when items are selected. This check prevents the action extension from appearing on empty pages or when no resources are chosen.',
+      'Show the action extension only when items are selected to prevent errors from operations that require resource selection. This example demonstrates checking `data.selected.length` and returning a display object to hide the action on empty pages.',
     codeblock: {
       title: 'Check when items are selected',
       tabs: [
@@ -41,7 +41,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Validate selection count is between 1 and 50 before showing bulk actions. This example prevents the action extension from appearing when nothing is selected or when too many items would overload the operation.',
+          'Validate selection count is between 1 and 50 before showing bulk actions to protect your backend from processing limits or API rate constraints. This example demonstrates checking both minimum and maximum selection counts, hiding the action when nothing is selected or when selection exceeds your processing capacity.',
         codeblock: {
           title: 'Validate selection count',
           tabs: [

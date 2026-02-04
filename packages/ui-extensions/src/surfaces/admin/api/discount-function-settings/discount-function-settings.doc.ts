@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
     'the [`FunctionSettings`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
   defaultExample: {
     description:
-      'Save a minimum purchase threshold to a metafield with decimal number validation. This example uses a [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/textfield) for input, calls `applyMetafieldChange`, and displays success or error feedback.',
+      'Save a minimum purchase threshold to enable discounts only when cart totals meet your requirements, preventing discount abuse on small orders. This example demonstrates using a [`TextField`](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) for decimal input, calling `applyMetafieldChange` to save the threshold, and displaying a success [`Banner`](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/banner) when configured.',
     codeblock: {
       title: 'Configure discount threshold',
       tabs: [
@@ -38,7 +38,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Save multiple discount configuration settings in a single operation. This example stores customer tags as JSON and usage limits as an integer, demonstrating how to apply multiple metafield changes sequentially.',
+          'Configure customer eligibility and usage limits to restrict discounts to specific customer segments and prevent overuse. This example demonstrates using [`TextField`](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) and [`NumberField`](/docs/api/admin-extensions/{API_VERSION}/components/forms/numberfield) inputs, saving customer tags as JSON and usage limits as integers by applying multiple metafield changes in sequence.',
         codeblock: {
           title: 'Configure eligibility rules',
           tabs: [
@@ -49,7 +49,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Load discount metafields on mount and display current configuration. This example shows reducing metafields into a settings object, checking for missing values, and applying defaults only when needed.',
+          'Load and display existing discount function configuration when merchants edit discounts, showing current settings and applying sensible defaults for new configurations. This example demonstrates reducing metafields into a settings object, displaying current key-value pairs, and initializing missing required fields with default values.',
         codeblock: {
           title: 'Load existing settings',
           tabs: [

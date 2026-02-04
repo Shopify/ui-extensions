@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
     'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
   defaultExample: {
     description:
-      "Fetch and display a product's title, inventory, and status in a [block extension](/docs/api/admin-extensions/{API_VERSION}#building-your-extension). This example uses `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql/) when the page loads and renders a loading [`Spinner`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/spinner) component while fetching.",
+      "Fetch and display a product's title, inventory, and status to provide quick insights directly on the product details page. This example demonstrates querying the [GraphQL Admin API](/docs/api/admin-graphql/) when the extension loads, showing a loading [`Spinner`](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/spinner) while fetching, and rendering product information as [`Text`](/docs/api/admin-extensions/{API_VERSION}/components/typography/text) components.",
     codeblock: {
       title: 'Display product information',
       tabs: [
@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Check product eligibility with your backend API before launching an action extension. This example validates that the product meets criteria, shows a loading state during the check, and conditionally displays a navigation [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button).',
+          'Check product eligibility with your backend API before showing advanced workflow options to prevent invalid operations on incompatible products. This example demonstrates fetching eligibility status from your backend, displaying a loading [`Spinner`](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/spinner) during the check, and conditionally showing a navigation [`Button`](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) or ineligibility message.',
         codeblock: {
           title: 'Navigate to action extension',
           tabs: [
@@ -43,7 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Open the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select related products, then save the associations to your backend. This example tracks selection count and shows feedback when relationships are created.',
+          'Open the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select related products for recommendation features, cross-selling, or product associations. This example demonstrates launching the resource picker with filters for published products, saving the relationships to your backend, and displaying confirmation feedback showing the count of added products.',
         codeblock: {
           title: 'Select related products',
           tabs: [

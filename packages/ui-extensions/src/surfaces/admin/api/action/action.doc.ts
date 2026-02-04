@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Send selected product IDs to your backend for bulk processing. This example shows how to map selected items, make an authenticated API call, and close the modal when the operation completes.',
+      'Send selected product IDs to your backend for bulk processing operations like inventory updates, tag management, or status changes. This example demonstrates extracting product IDs from `data.selected`, posting them to your backend API, and closing the modal after successful processing.',
     codeblock: {
       title: 'Process selected products',
       tabs: [
@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Launch the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select component products for a [bundle](/docs/apps/build/product-merchandising/bundles), then save the bundle configuration to your backend. This example demonstrates opening a resource picker from within an action modal and handling the selection result.',
+          'Launch the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select component products for a [bundle](/docs/apps/build/product-merchandising/bundles), then save the bundle configuration to your backend. This example demonstrates opening the resource picker from an action modal, limiting selection to 5 products, and posting the bundle composition to your API.',
         codeblock: {
           title: 'Select additional resources',
           tabs: [
@@ -46,7 +46,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Fulfill an order through your app backend with proper error handling. This example uses `try-catch` blocks to catch errors and displays error messages when your backend fulfillment service fails.',
+          'Fulfill an order through your app backend with proper error handling to catch and display failures from your fulfillment service. This example demonstrates using `try-catch` blocks to handle errors, displaying critical [banners](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/banner) when fulfillment fails, and closing the modal on success.',
         codeblock: {
           title: 'Fulfill order with error handling',
           tabs: [

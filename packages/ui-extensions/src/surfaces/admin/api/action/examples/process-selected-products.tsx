@@ -2,6 +2,8 @@ import React from 'react';
 import {
   reactExtension,
   useApi,
+  Button,
+  Text,
 } from '@shopify/ui-extensions-react/admin';
 
 const ProcessProducts = () => {
@@ -24,7 +26,12 @@ const ProcessProducts = () => {
     }
   };
 
-  return null;
+  return (
+    <>
+      <Text>Processing {data.selected.length} products</Text>
+      <Button title="Process Products" onPress={handleProcess} />
+    </>
+  );
 };
 
 export default reactExtension(

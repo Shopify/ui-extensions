@@ -1,14 +1,59 @@
-import React, {useEffect, useState} from 'react';
-import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
+import React, {useState, useEffect} from 'react';
+import {
+  reactExtension,
+  useApi,
+  Text,
+} from '@shopify/ui-extensions-react/admin';
 
 const ShippingManifest = () => {
   const {data, query} = useApi<'admin.order-details.print-action.render'>();
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState<any[]>([]);
 
   useEffect(() => {
+    const fetchOrders = async () => {
+      const orderIds = data.selected.map((item) => item.id);
+
+      const {data: ordersData} = await query(
+        `query GetOrders($ids: [ID!]!) {
+          nodes(ids: $ids) {
+            ... on Order {
+              id
+              name
+              shippingAddress {
+                address1
+                city
+                country
+              }
+            }
+          }
+        }`,
+        {variables: {ids: orderIds}},
+      );
+
+      setOrders(ordersData.nodes);
+    };
+
+    fetchOrders();
+  }, [data, query]);
+
+  return (
+    <>
+      <Text>Shipping manifest for {orders.length} orders</Text>
+      {orders.map((order) => (
+        <Text key={order.id}>{order.name}</Text>
+      ))}
+    </>
+  );
+};
+
+export default reactExtension(
+  'admin.order-details.print-action.render',
+  async (api) => {
+    const {data, query} = api;
+
     const orderIds = data.selected.map((item) => item.id);
 
-    query(
+    const {data: ordersData} = await query(
       `query GetOrders($ids: [ID!]!) {
         nodes(ids: $ids) {
           ... on Order {
@@ -17,27 +62,21 @@ const ShippingManifest = () => {
             shippingAddress {
               address1
               city
+              country
             }
           }
         }
       }`,
       {variables: {ids: orderIds}},
-    ).then(({data: ordersData}) => {
-      setOrders(ordersData.nodes);
-    });
-  }, [data, query]);
+    );
 
-  const generate = async () => {
-    const response = await fetch('/api/generate-manifest', {
+    const response = await fetch('/api/generate-shipping-manifest', {
       method: 'POST',
-      body: JSON.stringify({orders}),
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({orders: ordersData.nodes}),
     });
 
-    const result = await response.json();
-    return result.manifestUrl;
-  };
-
-  return null;
-};
-
-export default reactExtension('admin.order-details.print-action.render', () => <ShippingManifest />);
+    const {printUrl} = await response.json();
+    return printUrl;
+  },
+);

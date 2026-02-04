@@ -8,7 +8,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   defaultExample: {
     description:
-      'Retrieve an authentication token and use it to fetch data from your app backend. This example gets the ID token, adds it to request headers, and displays loading states while fetching.',
+      'Retrieve an authentication token to securely fetch data from your app backend, enabling personalized content, inventory sync, or external integrations. This example demonstrates getting the ID token using `auth.idToken()`, adding it to Authorization headers, displaying loading states on the [`Button`](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) during fetch, and showing the count of loaded products.',
     codeblock: {
       title: 'Authenticate backend requests',
       tabs: [
@@ -30,7 +30,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Query products using the [GraphQL Admin API](/docs/api/admin-graphql/), then update the first product with new tags. This example demonstrates chaining a query and mutation, handling the response data, and showing success feedback.',
+          'Query products using the [GraphQL Admin API](/docs/api/admin-graphql/), then update the first product with new tags for workflow automation or bulk operations. This example demonstrates chaining a query and mutation together, displaying the count of queried products, and showing success feedback when tags are applied.',
         codeblock: {
           title: 'Query and mutate product data',
           tabs: [

@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
     'the [`AdminPrintAction`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminprintaction) component.',
   defaultExample: {
     description:
-      "Generate a packing slip PDF for selected orders by calling your app's backend service. This example shows extracting order IDs from the selected resources, making an API call to your backend to generate the PDF, and returning the printable URL to display the document.",
+      "Generate a packing slip PDF for selected orders to provide warehouse staff with pick-and-pack instructions. This example demonstrates extracting order IDs from `data.selected`, posting them to your backend printing service, and returning the PDF URL for the print dialog.",
     codeblock: {
       title: 'Generate packing slip',
       tabs: [
@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Generate product labels with an option to add additional products beyond the initial selection. This example demonstrates using the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) within a print action and tracking the additional product count.',
+          'Generate custom product labels with the option to add more products beyond the initial selection for flexible batch labeling. This example demonstrates launching the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) from within a print action, tracking additional selections, and generating labels for the combined product set.',
         codeblock: {
           title: 'Generate custom product labels',
           tabs: [
@@ -43,7 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Query order details using the [GraphQL Admin API](/docs/api/admin-graphql/) and then generate a shipping manifest PDF. This example shows fetching order data in `useEffect`, displaying the order list, and passing the data to your print service.',
+          'Query order details using the [GraphQL Admin API](/docs/api/admin-graphql/) to generate a shipping manifest PDF with addresses and order numbers for warehouse logistics. This example demonstrates fetching order shipping data, displaying the order list while generating the document, and posting the complete order information to your print service.',
         codeblock: {
           title: 'Generate shipping manifest',
           tabs: [
