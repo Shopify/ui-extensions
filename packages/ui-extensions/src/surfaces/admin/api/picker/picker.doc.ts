@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
     'an Admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
     description:
-      'Build a custom picker for email templates with columns and badges. This example defines table headers (Templates, Created by, Times used), populates picker items with data fields for each column, and adds status badges (Draft/Published) to visually distinguish template states.',
+      'Build a custom picker for email templates with multiple columns and status badges. This example shows defining column headers, populating items with searchable data fields, adding visual status indicators, and handling the selection promise. Use this pattern for app-specific resources like templates, product reviews, or subscription options where you need custom data structures beyond standard Shopify resources.',
     image: 'picker.png',
     codeblock: {
       title: 'Select email templates',
@@ -33,72 +33,61 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   examples: {
-    description: 'Picker API patterns',
+    description: 'Examples that demonstrate how to use the Picker API.',
     examples: [
       {
         description:
-          'Create a minimal picker with only required fields (heading and items). Basic picker with two selectable options and no additional configuration.',
+          'Disable specific picker items to prevent selection while keeping them visible for context. This example shows setting `disabled: true` on individual items to mark them as non-selectable. This is useful for showing all available options while preventing selection of incompatible resources, templates currently being edited by others, or deprecated features that require upgrades.',
         codeblock: {
-          title: 'Simple picker',
+          title: 'Disable specific items',
           tabs: [
-            {code: './examples/minimal.ts', language: 'ts'},
-            {code: './examples/minimal.tsx', language: 'tsx'},
-          ],
+        {code: './examples/disabled.ts', language: 'ts'},
+        {code: './examples/disabled.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Limit selection to a maximum of 2 items. Sets `multiple: 2` to restrict selection count.',
+          'Limit selection to a maximum number of items by setting `multiple: 2` in the picker options. This example shows restricting selection to exactly 2 items. Use this when your feature has hard constraints, such as A/B test variants needing exactly two options, comparison views with fixed slots, or integration mappings that support a specific connection count.',
         codeblock: {
-          title: 'Limited selectable items',
+          title: 'Limit selection count',
           tabs: [
-            {code: './examples/multiple-limit.ts', language: 'ts'},
-            {code: './examples/multiple-limit.tsx', language: 'tsx'},
-          ],
+        {code: './examples/multiple-limit.ts', language: 'ts'},
+        {code: './examples/multiple-limit.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Allow unlimited selection. Sets `multiple: true` without a numeric limit.',
+          'Open the picker with items already selected by setting `selected: true` on individual items. This example shows pre-marking items as selected when the picker opens. Use this for edit workflows where you need to show what resources are already associated with a configuration, such as automation rule triggers or notification recipients. Merchants can modify the selection before confirming.',
         codeblock: {
-          title: 'Unlimited selectable items',
+          title: 'Preselect items',
           tabs: [
-            {code: './examples/multiple-true.ts', language: 'ts'},
-            {code: './examples/multiple-true.tsx', language: 'tsx'},
-          ],
+        {code: './examples/preselected.ts', language: 'ts'},
+        {code: './examples/preselected.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Open picker with items already preselected. Sets `selected: true` on specific items when the picker opens, though merchants can still deselect them.',
+          'Allow unlimited selection by setting `multiple: true` without a numeric limit. This example shows enabling multi-selection where merchants control how many items to choose. This is useful for bulk operations, mass notification sending, export tools, or tag management where selection quantity depends on merchant needs without artificial constraints.',
         codeblock: {
-          title: 'Preselected items',
+          title: 'Select unlimited items',
           tabs: [
-            {code: './examples/preselected.ts', language: 'ts'},
-            {code: './examples/preselected.tsx', language: 'tsx'},
-          ],
+        {code: './examples/multiple-true.ts', language: 'ts'},
+        {code: './examples/multiple-true.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Disable specific picker items to prevent selection. Sets `disabled: true` on certain items, which causes them to appear but prevents selection.',
-        codeblock: {
-          title: 'Disabled items',
-          tabs: [
-            {code: './examples/disabled.ts', language: 'ts'},
-            {code: './examples/disabled.tsx', language: 'tsx'},
-          ],
-        },
-      },
-      {
-        description:
-          'Populate the picker with live GraphQL data. This example uses `useEffect` to fetch orders via the [GraphQL Admin API](/docs/api/admin-graphql), transforms them into picker format, and opens with dynamic data.',
+          "Populate the picker with live data from the [GraphQL Admin API](/docs/api/admin-graphql). This example shows fetching order data when the button is clicked, transforming results into picker-compatible items, and opening the picker with the dynamically populated data. Use this pattern for showing real-time Shopify data that isn't available through the Resource Picker API, such as orders, draft orders, or fulfillments.",
         codeblock: {
           title: 'Use GraphQL data',
           tabs: [
-            {code: './examples/direct-api.ts', language: 'ts'},
-            {code: './examples/direct-api.tsx', language: 'tsx'},
-          ],
+        {code: './examples/direct-api.ts', language: 'ts'},
+        {code: './examples/direct-api.tsx', language: 'tsx'},
+      ],
         },
       },
     ],
@@ -111,7 +100,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       sectionContent:
         '- **Handle undefined return on cancellation:** When merchants cancel or close the picker, it returns `undefined` rather than an empty array. Check for `undefined` explicitly to distinguish cancellation from empty selection.\n' +
-        "- **Disable items to prevent modification:** Use the `disabled` property on items combined with `selected: true` to create preselected items that merchants can't deselect.",
+        '- **Disable items to prevent modification:** Use the `disabled` property on items combined with `initialSelectionIds` to create preselected items that merchants can't deselect.',
     },
     {
       type: 'Generic',

@@ -6,6 +6,17 @@ const data: ReferenceEntityTemplateSchema = {
     'The Should Render API lets you [conditionally show or hide admin action extensions](/docs/apps/build/admin/actions-blocks/hide-extensions) dynamically. Use this API to control action visibility based on resource state, user permissions, or business logic.',
   isVisualComponent: false,
   type: 'API',
+  defaultExample: {
+    description:
+      'Show the action extension only when items are selected to prevent errors from operations that require resource selection. This example demonstrates checking `data.selected.length` and returning a display object to hide the action on empty pages.',
+    codeblock: {
+      title: 'Check when items are selected',
+      tabs: [
+        {code: './examples/check-product-tag.ts', language: 'ts'},
+        {code: './examples/check-product-tag.tsx', language: 'tsx'},
+      ],
+    },
+  },
   definitions: [
     {
       title: 'ShouldRenderApi',
@@ -14,40 +25,29 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ShouldRenderApi',
     },
   ],
-  defaultExample: {
-    description:
-      'Return true to show the action extension only when items are selected. This example demonstrates checking `data.selected.length` to prevent the action from appearing on empty pages.',
-    codeblock: {
-      title: 'Check when items selected',
-      tabs: [
-        {code: './examples/check-product-tag.ts', language: 'ts'},
-        {code: './examples/check-product-tag.tsx', language: 'tsx'},
-      ],
-    },
-  },
   examples: {
     description: 'Conditionally show or hide action extensions',
     examples: [
       {
         description:
-          'Check if exactly one item is selected before showing the action. This example ensures actions designed for individual resources only appear when exactly one item is selected.',
+          'Check if exactly one item is selected before showing the action extension. This pattern ensures action extensions that operate on individual resources only appear when appropriate.',
         codeblock: {
-          title: 'Require one item selected',
+          title: 'Require one item to be selected',
           tabs: [
-            {code: './examples/check-order-status.ts', language: 'ts'},
-            {code: './examples/check-order-status.tsx', language: 'tsx'},
-          ],
+        {code: './examples/check-order-status.ts', language: 'ts'},
+        {code: './examples/check-order-status.tsx', language: 'tsx'},
+      ],
         },
       },
       {
         description:
-          'Validate that the selection count is between 1 and 50 before showing bulk actions. Prevents the action from appearing when nothing is selected or when too many items are selected, protecting against performance issues with large bulk operations.',
+          'Validate selection count is between 1 and 50 before showing bulk actions to protect your backend from processing limits or API rate constraints. This example demonstrates checking both minimum and maximum selection counts, hiding the action when nothing is selected or when selection exceeds your processing capacity.',
         codeblock: {
           title: 'Validate selection count',
           tabs: [
-            {code: './examples/bulk-selection-check.ts', language: 'ts'},
-            {code: './examples/bulk-selection-check.tsx', language: 'tsx'},
-          ],
+        {code: './examples/bulk-selection-check.ts', language: 'ts'},
+        {code: './examples/bulk-selection-check.tsx', language: 'tsx'},
+      ],
         },
       },
     ],
@@ -71,7 +71,7 @@ const data: ReferenceEntityTemplateSchema = {
         '- The function must return an object with a `display` property. Returning a plain boolean like `true` instead of `{ display: true }` fails.\n' +
         "- No asynchronous operations are supported. Async functions, promises, fetch calls, and timers won't work.\n" +
         "- Your extension can't access external data sources. Evaluation is limited to data available in `api.data.selected` and in-memory state.\n" +
-        '- The function runs only once when the page loads. Action visibility stays fixed after that, even if resource data, selections, or other conditions change later.',
+        "- No re-evaluation occurs after initial render. If conditions change after page load, the action visibility doesn't update dynamically.",
     },
   ],
 };

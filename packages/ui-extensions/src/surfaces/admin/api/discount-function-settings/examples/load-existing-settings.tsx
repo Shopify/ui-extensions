@@ -1,21 +1,50 @@
-import React, {useEffect, useState} from 'react';
-import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
+import React, {useState, useEffect} from 'react';
+import {
+  reactExtension,
+  useApi,
+  Text,
+} from '@shopify/ui-extensions-react/admin';
 
 const LoadExistingSettings = () => {
-  const {data} = useApi<'admin.discount-details.function-settings.render'>();
-  const [settings, setSettings] = useState(null);
+  const {data, applyMetafieldChange} = useApi<'admin.discount-details.function-settings.render'>();
+  const [settings, setSettings] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    const metafields = data.metafields;
-    const loadedSettings = metafields.reduce((acc, mf) => {
-      acc[mf.key] = mf.value;
-      return acc;
-    }, {});
+    const initializeSettings = async () => {
+      const existingSettings = data.metafields.reduce((acc, field) => {
+        acc[field.key] = field.value;
+        return acc;
+      }, {});
 
-    setSettings(loadedSettings);
-  }, [data]);
+      setSettings(existingSettings);
 
-  return null;
+      if (!existingSettings.eligible_tags) {
+        await applyMetafieldChange({
+          type: 'updateMetafield',
+          namespace: 'discount-config',
+          key: 'eligible_tags',
+          value: JSON.stringify(['vip', 'wholesale']),
+          valueType: 'json',
+        });
+      }
+    };
+
+    initializeSettings();
+  }, [data, applyMetafieldChange]);
+
+  return (
+    <>
+      <Text>Current settings:</Text>
+      {Object.entries(settings).map(([key, value]) => (
+        <Text key={key}>
+          {key}: {String(value)}
+        </Text>
+      ))}
+    </>
+  );
 };
 
-export default reactExtension('admin.discount-details.function-settings.render', () => <LoadExistingSettings />);
+export default reactExtension(
+  'admin.discount-details.function-settings.render',
+  () => <LoadExistingSettings />,
+);

@@ -1,31 +1,49 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   reactExtension,
   useApi,
+  Text,
+  Spinner,
 } from '@shopify/ui-extensions-react/admin';
 
 const ProductInfo = () => {
   const {data, query} = useApi<'admin.product-details.block.render'>();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<any>(null);
 
   useEffect(() => {
-    const productId = data.selected[0]?.id;
+    const fetchProduct = async () => {
+      const productId = data.selected[0]?.id;
 
-    query(
-      `query GetProduct($id: ID!) {
-        product(id: $id) {
-          title
-          totalInventory
-          status
-        }
-      }`,
-      {variables: {id: productId}},
-    ).then(({data: productData}) => {
+      const {data: productData} = await query(
+        `query GetProduct($id: ID!) {
+          product(id: $id) {
+            title
+            totalInventory
+            status
+          }
+        }`,
+        {variables: {id: productId}},
+      );
+
       setProduct(productData.product);
-    });
+    };
+
+    fetchProduct();
   }, [data, query]);
 
-  return null;
+  return (
+    <>
+      {product ? (
+        <>
+          <Text>Title: {product.title}</Text>
+          <Text>Inventory: {product.totalInventory}</Text>
+          <Text>Status: {product.status}</Text>
+        </>
+      ) : (
+        <Spinner />
+      )}
+    </>
+  );
 };
 
 export default reactExtension(

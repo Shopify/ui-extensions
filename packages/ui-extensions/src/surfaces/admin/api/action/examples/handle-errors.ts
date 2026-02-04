@@ -1,26 +1,47 @@
-import {extension} from '@shopify/ui-extensions/admin';
+import {extension, Button, Banner} from '@shopify/ui-extensions/admin';
 
 export default extension(
   'admin.order-details.action.render',
   (root, api) => {
     const {data, close} = api;
 
-    const orderId = data.selected[0]?.id;
+    let errorBanner;
 
-    fetch(`/api/orders/${orderId}/fulfill`, {
-      method: 'POST',
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.success) {
+    const button = root.createComponent(Button, {
+      title: 'Fulfill Order',
+      onPress: async () => {
+        // Remove any existing error banner
+        if (errorBanner) {
+          root.removeChild(errorBanner);
+          errorBanner = null;
+        }
+
+        try {
+          const orderId = data.selected[0]?.id;
+
+          const response = await fetch(`/api/orders/${orderId}/fulfill`, {
+            method: 'POST',
+          });
+
+          const result = await response.json();
+
+          if (!response.ok) {
+            throw new Error(result.error || 'Fulfillment failed');
+          }
+
           console.log('Order fulfilled:', result);
           close();
-        } else {
-          console.error('Fulfillment failed:', result.error);
+        } catch (err) {
+          errorBanner = root.createComponent(
+            Banner,
+            {status: 'critical'},
+            err.message,
+          );
+          root.insertChildBefore(errorBanner, button);
         }
-      })
-      .catch((error) => {
-        console.error('Error:', error.message);
-      });
+      },
+    });
+
+    root.appendChild(button);
   },
 );

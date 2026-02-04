@@ -2,9 +2,11 @@ import {extension} from '@shopify/ui-extensions/admin';
 
 export default extension(
   'admin.product-details.action.should-render',
-  (root, api) => {
+  (api) => {
     const {data} = api;
 
-    return {display: data.selected.length > 0};
+    const hasSelection = data.selected.length > 0;
+
+    return {display: hasSelection};
   },
 );

@@ -1,19 +1,21 @@
 import React, {useState} from 'react';
-import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
+import {reactExtension, useApi, Button, Text} from '@shopify/ui-extensions-react/admin';
 
-const ActionVerbPicker = () => {
+const ResourcePickerExample = () => {
   const {resourcePicker} = useApi<'admin.product-details.block.render'>();
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<any[] | null>(null);
 
   const handlePick = async () => {
-    const result = await resourcePicker({
-      type: 'product',
-      action: 'add',
-    });
+    const result = await resourcePicker({type: 'product'});
     setSelected(result);
   };
 
-  return null;
+  return (
+    <>
+      <Button title="Select Resources" onPress={handlePick} />
+      {selected && <Text>{selected.length} selected</Text>}
+    </>
+  );
 };
 
-export default reactExtension('admin.product-details.block.render', () => <ActionVerbPicker />);
+export default reactExtension('admin.product-details.block.render', () => <ResourcePickerExample />);

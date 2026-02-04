@@ -1,7 +1,7 @@
 import React from 'react';
-import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
+import {reactExtension, useApi, Button} from '@shopify/ui-extensions-react/admin';
 
-const MultipleUnlimitedPicker = () => {
+const MultipleTruePicker = () => {
   const {picker} = useApi<'admin.product-details.block.render'>();
 
   const handlePick = async () => {
@@ -16,7 +16,10 @@ const MultipleUnlimitedPicker = () => {
     });
   };
 
-  return null;
+  return <Button title="Open Picker" onPress={handlePick} />;
 };
 
-export default reactExtension('admin.product-details.block.render', () => <MultipleUnlimitedPicker />);
+export default reactExtension(
+  'admin.product-details.block.render',
+  () => <MultipleTruePicker />,
+);

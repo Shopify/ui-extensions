@@ -1,16 +1,25 @@
-const selected = await resourcePicker({
-  type: 'product',
-  selectionIds: [
-    {
-      id: 'gid://shopify/Product/12345',
-      variants: [
-        {
-          id: 'gid://shopify/ProductVariant/1',
-        },
-      ],
-    },
-    {
-      id: 'gid://shopify/Product/67890',
-    },
-  ],
-});
+import {extension, Button, Text} from '@shopify/ui-extensions/admin';
+
+export default extension(
+  'admin.product-details.block.render',
+  (root, api) => {
+    const {resourcePicker} = api;
+    let selectedText;
+
+    const pickButton = root.createComponent(Button, {
+      title: 'Select Resources',
+      onPress: async () => {
+        const result = await resourcePicker({type: 'product'});
+        
+        if (selectedText) root.removeChild(selectedText);
+        
+        if (result) {
+          selectedText = root.createComponent(Text, {}, `${result.length} selected`);
+          root.appendChild(selectedText);
+        }
+      },
+    });
+
+    root.appendChild(pickButton);
+  },
+);

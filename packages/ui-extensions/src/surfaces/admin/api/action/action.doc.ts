@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Send selected product IDs to your backend for bulk processing. This example shows how to map items from `data.selected`, make an authenticated API call to `/api/bulk-process`, and close the modal with `close()` when the operation completes successfully.',
+      'Send selected product IDs to your backend for bulk processing operations like inventory updates, tag management, or status changes. This example demonstrates extracting product IDs from `data.selected`, posting them to your backend API, and closing the modal after successful processing.',
     codeblock: {
       title: 'Process selected products',
       tabs: [
@@ -28,11 +28,11 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
   examples: {
-    description: 'Action extension patterns',
+    description: 'Examples that demonstrate how to use the Action Extension API.',
     examples: [
       {
         description:
-          'Launch the resource picker to select component products for a bundle, then save the configuration to your backend. This example shows how to use `resourcePicker()` with `multiple: 5` to limit selection, send the main product and selected components to `/api/create-bundle`, and close the modal when complete—useful for bundle builders, kit assembly, or product grouping workflows.',
+          'Launch the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select component products for a [bundle](/docs/apps/build/product-merchandising/bundles), then save the bundle configuration to your backend. This example demonstrates opening the resource picker from an action modal, limiting selection to 5 products, and posting the bundle composition to your API.',
         codeblock: {
           title: 'Select additional resources',
           tabs: [
@@ -46,7 +46,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Fulfill an order through your app backend with proper error handling. This example uses `try-catch` blocks to catch errors and logs failures when the fulfillment service encounters issues, essential for third-party fulfillment integrations or dropshipping workflows where backend operations might fail and need graceful degradation.',
+          'Fulfill an order through your app backend with proper error handling to catch and display failures from your fulfillment service. This example demonstrates using `try-catch` blocks to handle errors, displaying critical [banners](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/banner) when fulfillment fails, and closing the modal on success.',
         codeblock: {
           title: 'Fulfill order with error handling',
           tabs: [
