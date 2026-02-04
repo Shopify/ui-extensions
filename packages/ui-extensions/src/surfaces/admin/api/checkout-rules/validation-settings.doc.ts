@@ -24,7 +24,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Save a minimum quantity validation rule with a [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/numberfield) input. This example shows calling `applyMetafieldChange`, checking the result type, and displaying success or error banners based on the response.',
+      'Save a minimum quantity validation rule with a [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/numberfield) input. This example calls `applyMetafieldChange`, checks the result type, and displays success or error banners based on the response.',
     codeblock: {
       title: 'Set minimum quantity',
       tabs: [
