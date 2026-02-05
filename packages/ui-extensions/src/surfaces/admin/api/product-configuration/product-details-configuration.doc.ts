@@ -8,9 +8,17 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
+  definitions: [
+    {
+      title: 'ProductDetailsConfigurationApi',
+      description:
+        'The `ProductDetailsConfigurationApi` object provides access to product configuration data and methods. Access the following properties on the `ProductDetailsConfigurationApi` object to interact with the current product context, navigate within the admin, and select resources in the `admin.product-details.configuration.render` target.',
+      type: 'ProductDetailsConfigurationApi',
+    },
+  ],
   defaultExample: {
     description:
-      'Open the product [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select up to five components for a [bundle](/docs/apps/build/product-merchandising/bundles). This example filters out draft and archived products, saves the bundle configuration to your backend, and tracks the selection count.',
+      'Select up to 5 component products for a bundle using the resource picker. This example opens `resourcePicker` with a limit of 5 products, filters out hidden, draft, and archived products, and posts the selected product IDs to your backend to save the bundle configuration.',
     codeblock: {
       title: 'Select bundle components',
       tabs: [
@@ -32,36 +40,42 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  definitions: [
-    {
-      title: 'ProductDetailsConfigurationApi',
-      description:
-        'The `ProductDetailsConfigurationApi` object provides access to product configuration data and methods. Access the following properties on the `ProductDetailsConfigurationApi` object to interact with the current product context, navigate within the admin, and select resources in the `admin.product-details.configuration.render` target.',
-      type: 'ProductDetailsConfigurationApi',
-    },
-  ],
   examples: {
     description: 'Configure product bundles',
     examples: [
       {
         description:
-          "Query a product's bundle metafield and parse the JSON components array to display existing bundle configuration. This example demonstrates fetching bundle metadata using the [GraphQL Admin API](/docs/api/admin-graphql/), parsing the stored component data, and displaying the count of configured components.",
+          "Query a product's bundle metafield and parse the JSON components array to display existing bundle setup. This example demonstrates fetching bundle configuration from metafields using the [GraphQL Admin API](/docs/api/admin-graphql/), parsing the stored component data, and displaying the count of configured bundle components.",
         codeblock: {
           title: 'Load bundle configuration',
           tabs: [
             {
               title: 'React',
-
               code: './examples/load-bundle-config.tsx',
-
               language: 'tsx',
             },
-
             {
               title: 'TS',
-
               code: './examples/load-bundle-config.ts',
-
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Save bundle display name and metadata using GraphQL mutations to customize how bundles appear to merchants. This example demonstrates using a [`TextField`](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) for bundle name input, calling the `productUpdate` mutation to save metafields, and displaying confirmation feedback when metadata is saved.',
+        codeblock: {
+          title: 'Update bundle metadata',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/update-bundle-metadata.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/update-bundle-metadata.ts',
               language: 'ts',
             },
           ],
@@ -78,8 +92,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Design for products with multiple variants:** Products in `api.data.selected` may have multiple variants. Design your bundle configuration to either apply to all variants or allow variant-level configuration.\n' +
-        '- **Use the Resource Picker to select components:** Use the [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to let merchants select component products for bundle configurations.\n' +
+        '- **Design for products with multiple variants:** Products in `api.data.selected` might have multiple variants. Design your bundle configuration to either apply to all variants or allow variant-level configuration.\n' +
         '- **Implement cart transforms to enforce bundles:** Configuration only defines relationships in admin. Use Shopify Functions [cart transforms](/docs/api/functions/latest/cart-transform) to actually bundle products at checkout based on your saved configuration.',
     },
     {
