@@ -108,9 +108,12 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        "- Metafields have [size limits](/docs/apps/build/metafields/metafield-limits). Individual values can't exceed 256KB, and total metafield storage per validation is limited.\n" +
-        '- The `applyMetafieldChange` method is sequential. Operations process one at a time. Rapid successive calls can cause race conditions where later updates overwrite earlier ones.\n' +
-        '- Metafield changes apply immediately. Unlike admin forms, metafield changes persist right away without waiting for merchants to save.\n' +
+        "- Metafields have [size limits](/docs/apps/build/metafields/metafield-limits). Individual values can't exceed 256KB, and total metafield storage per validation is limited.
+" +
+        '- The `applyMetafieldChange` method is sequential. Operations process one at a time. Rapid successive calls can cause race conditions where later updates overwrite earlier ones.
+' +
+        '- Metafield changes apply immediately. Unlike admin forms, metafield changes persist right away without waiting for merchants to save.
+' +
         "- Your extension can't modify the Function ID. The `shopifyFunctionId` is read-only and determined when the validation rule is created.",
     },
   ],
