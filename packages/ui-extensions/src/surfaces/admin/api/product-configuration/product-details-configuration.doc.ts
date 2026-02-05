@@ -8,6 +8,25 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
+  defaultExample: {
+    description:
+      'Open the product [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select up to five components for a [bundle](/docs/apps/build/product-merchandising/bundles). This example filters out draft and archived products, saves the bundle configuration to your backend, and tracks the selection count.',
+    codeblock: {
+      title: 'Select bundle components',
+      tabs: [
+        {
+          title: 'React',
+          code: './examples/select-bundle-components.tsx',
+          language: 'tsx',
+        },
+        {
+          title: 'TS',
+          code: './examples/select-bundle-components.ts',
+          language: 'ts',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'ProductDetailsConfigurationApi',
@@ -16,6 +35,49 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ProductDetailsConfigurationApi',
     },
   ],
+  examples: {
+    description: 'Configure product bundles',
+    examples: [
+      {
+        description:
+          "Query a product's [bundle](/docs/apps/build/product-merchandising/bundles) metafield and parse the JSON components array. This example fetches bundle data using the [GraphQL Admin API](/docs/api/admin-graphql/), parses the stored configuration, and displays the component count.",
+        codeblock: {
+          title: 'Load bundle configuration',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/load-bundle-config.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/load-bundle-config.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Save bundle display name and metadata using GraphQL mutations. This example uses a [text field](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) for input, calls `productUpdate` to save the metafield, and shows confirmation feedback.',
+        codeblock: {
+          title: 'Update bundle metadata',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/update-bundle-metadata.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/update-bundle-metadata.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
