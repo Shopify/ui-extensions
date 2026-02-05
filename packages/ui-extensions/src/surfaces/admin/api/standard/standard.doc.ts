@@ -13,14 +13,23 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Authenticate backend requests',
       tabs: [
         {
-          title: 'TS',
-          code: './examples/authenticate-backend-request.ts',
-          language: 'ts',
-        },
-        {
+
           title: 'React',
+
           code: './examples/authenticate-backend-request.tsx',
+
           language: 'tsx',
+
+        },
+
+        {
+
+          title: 'TS',
+
+          code: './examples/authenticate-backend-request.ts',
+
+          language: 'ts',
+
         },
       ],
     },
@@ -43,14 +52,23 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Query and mutate product data',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/query-and-mutate.ts',
-              language: 'ts',
-            },
-            {
+
               title: 'React',
+
               code: './examples/query-and-mutate.tsx',
+
               language: 'tsx',
+
+            },
+
+            {
+
+              title: 'TS',
+
+              code: './examples/query-and-mutate.ts',
+
+              language: 'ts',
+
             },
           ],
         },
@@ -62,14 +80,23 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Persist settings',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/persist-settings.ts',
-              language: 'ts',
-            },
-            {
+
               title: 'React',
+
               code: './examples/persist-settings.tsx',
+
               language: 'tsx',
+
+            },
+
+            {
+
+              title: 'TS',
+
+              code: './examples/persist-settings.ts',
+
+              language: 'ts',
+
             },
           ],
         },

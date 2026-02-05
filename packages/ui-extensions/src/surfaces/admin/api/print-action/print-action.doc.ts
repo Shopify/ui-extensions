@@ -15,14 +15,23 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Generate packing slip',
       tabs: [
         {
-          title: 'TS',
-          code: './examples/generate-packing-slip.ts',
-          language: 'ts',
-        },
-        {
+
           title: 'React',
+
           code: './examples/generate-packing-slip.tsx',
+
           language: 'tsx',
+
+        },
+
+        {
+
+          title: 'TS',
+
+          code: './examples/generate-packing-slip.ts',
+
+          language: 'ts',
+
         },
       ],
     },
@@ -45,14 +54,23 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Generate custom product labels',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/custom-product-labels.ts',
-              language: 'ts',
-            },
-            {
+
               title: 'React',
+
               code: './examples/custom-product-labels.tsx',
+
               language: 'tsx',
+
+            },
+
+            {
+
+              title: 'TS',
+
+              code: './examples/custom-product-labels.ts',
+
+              language: 'ts',
+
             },
           ],
         },
@@ -64,14 +82,23 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Generate shipping manifest',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/shipping-manifest.ts',
-              language: 'ts',
-            },
-            {
+
               title: 'React',
+
               code: './examples/shipping-manifest.tsx',
+
               language: 'tsx',
+
+            },
+
+            {
+
+              title: 'TS',
+
+              code: './examples/shipping-manifest.ts',
+
+              language: 'ts',
+
             },
           ],
         },
