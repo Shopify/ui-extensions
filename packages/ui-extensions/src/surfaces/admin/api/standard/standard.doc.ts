@@ -111,7 +111,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent:
         "- GraphQL queries share [rate limits](/docs/api/usage/limits) with your app's overall Admin API usage and are subject to the shop's installed [access scopes](/docs/api/usage/access-scopes).
 " +
-        "- ID tokens from `auth.idToken()` are short-lived JWTs. They expire quickly and shouldn't be stored long-term.",
+        "- ID tokens from `auth.idToken()` are short-lived JWTs. They expire quickly and shouldn\'t be stored long-term.",
     },
   ],
 };
