@@ -15,23 +15,19 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Configure location priority',
       tabs: [
         {
-
           title: 'React',
 
           code: './examples/configure-location-priority.tsx',
 
           language: 'tsx',
-
         },
 
         {
-
           title: 'TS',
 
           code: './examples/configure-location-priority.ts',
 
           language: 'ts',
-
         },
       ],
     },
@@ -72,23 +68,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Set routing criteria',
           tabs: [
             {
-
               title: 'React',
 
               code: './examples/set-routing-criteria.tsx',
 
               language: 'tsx',
-
             },
 
             {
-
               title: 'TS',
 
               code: './examples/set-routing-criteria.ts',
 
               language: 'ts',
-
             },
           ],
         },
