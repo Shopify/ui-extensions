@@ -101,11 +101,11 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        "- Configuration extensions only render in the admin. They don\'t affect storefront or checkout behavior. You must implement separate logic for storefront bundle display and checkout enforcement.
+        "- Configuration extensions only render in the admin. They don't affect storefront or checkout behavior. You must implement separate logic for storefront bundle display and checkout enforcement.
 " +
-        "- Bundles aren\'t enforced automatically. Configuration doesn\'t automatically create bundles. You must implement [cart transforms](/docs/api/functions/latest/cart-transform) to enforce bundling when variants are added to cart.
+        "- Bundles aren't enforced automatically. Configuration doesn't automatically create bundles. You must implement [cart transforms](/docs/api/functions/latest/cart-transform) to enforce bundling when variants are added to cart.
 " +
-        "- Your extension can\'t directly modify variant properties. The API is read-only for variant data. Use GraphQL mutations like [`productVariantsBulkUpdate`](/docs/api/admin-graphql/latest/mutations/productVariantsBulkUpdate) if you need to update variants.",
+        "- Your extension can't directly modify variant properties. The API is read-only for variant data. Use GraphQL mutations like [`productVariantsBulkUpdate`](/docs/api/admin-graphql/latest/mutations/productVariantsBulkUpdate) if you need to update variants.",
     },
   ],
 };
