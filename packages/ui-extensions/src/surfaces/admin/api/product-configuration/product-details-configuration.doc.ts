@@ -45,23 +45,37 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          "Query a product's bundle metafield and parse the JSON components array. This example uses `useEffect` to fetch bundle data from the [GraphQL Admin API](/docs/api/admin-graphql), parses the stored configuration from the metafield value, and displays the component products.",
+          "Query a product's bundle metafield and parse the JSON components array to display existing bundle setup. This example demonstrates fetching bundle configuration from metafields using the [GraphQL Admin API](/docs/api/admin-graphql/), parsing the stored component data, and displaying the count of configured bundle components.",
         codeblock: {
           title: 'Load bundle configuration',
           tabs: [
             {
               title: 'React',
-
               code: './examples/load-bundle-config.tsx',
-
               language: 'tsx',
             },
-
             {
               title: 'TS',
-
               code: './examples/load-bundle-config.ts',
-
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Save bundle display name and metadata using GraphQL mutations to customize how bundles appear to merchants. This example demonstrates using a [`TextField`](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) for bundle name input, calling the `productUpdate` mutation to save metafields, and displaying confirmation feedback when metadata is saved.',
+        codeblock: {
+          title: 'Update bundle metadata',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/update-bundle-metadata.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/update-bundle-metadata.ts',
               language: 'ts',
             },
           ],
