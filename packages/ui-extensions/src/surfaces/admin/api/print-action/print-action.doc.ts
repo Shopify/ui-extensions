@@ -8,6 +8,25 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminPrintAction`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminprintaction) component.',
+  defaultExample: {
+    description:
+      "Generate a packing slip PDF for selected orders by calling your app's backend service. This example shows extracting order IDs from the selected resources, making an API call to your backend to generate the PDF, and returning the printable URL to display the document.",
+    codeblock: {
+      title: 'Generate packing slip',
+      tabs: [
+        {
+          title: 'React',
+          code: './examples/generate-packing-slip.tsx',
+          language: 'tsx',
+        },
+        {
+          title: 'TS',
+          code: './examples/generate-packing-slip.ts',
+          language: 'ts',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'PrintActionExtensionApi',
@@ -16,6 +35,49 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PrintActionExtensionApi',
     },
   ],
+  examples: {
+    description: 'Generate custom printable documents',
+    examples: [
+      {
+        description:
+          'Generate product labels with an option to add additional products beyond the initial selection. This example demonstrates using the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) within a print action and tracking the additional product count.',
+        codeblock: {
+          title: 'Generate custom product labels',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/custom-product-labels.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/custom-product-labels.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Query order details using the [GraphQL Admin API](/docs/api/admin-graphql/) and then generate a shipping manifest PDF. This example shows fetching order data, displaying the order list, and passing the data to your print service.',
+        codeblock: {
+          title: 'Generate shipping manifest',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/shipping-manifest.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/shipping-manifest.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Core APIs',
   related: [],

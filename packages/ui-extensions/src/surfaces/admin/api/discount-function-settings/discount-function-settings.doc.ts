@@ -8,6 +8,25 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`FunctionSettings`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
+  defaultExample: {
+    description:
+      'Save a minimum purchase threshold to a metafield with decimal number validation. This example uses a [text field](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) for input, calls `applyMetafieldChange`, and displays a success or error [banner](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/banner).',
+    codeblock: {
+      title: 'Configure discount threshold',
+      tabs: [
+        {
+          title: 'React',
+          code: './examples/configure-discount-threshold.tsx',
+          language: 'tsx',
+        },
+        {
+          title: 'TS',
+          code: './examples/configure-discount-threshold.ts',
+          language: 'ts',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'applyMetafieldChange',
@@ -22,6 +41,49 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DiscountFunctionSettingsData',
     },
   ],
+  examples: {
+    description: 'Configure discount function settings',
+    examples: [
+      {
+        description:
+          'Save multiple discount configuration settings in a single operation. This example stores customer tags as JSON and usage limits as an integer, demonstrating how to apply multiple metafield changes sequentially.',
+        codeblock: {
+          title: 'Configure eligibility rules',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/configure-eligibility-rules.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/configure-eligibility-rules.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Load discount metafields on mount and display current configuration. This example shows reducing metafields into a settings object, checking for missing values, and applying defaults only when needed.',
+        codeblock: {
+          title: 'Load existing settings',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/load-existing-settings.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/load-existing-settings.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
