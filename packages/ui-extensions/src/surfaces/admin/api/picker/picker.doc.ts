@@ -21,19 +21,23 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Select email templates',
       tabs: [
         {
+
           title: 'React',
 
           code: './examples/template-picker.tsx',
 
           language: 'tsx',
+
         },
 
         {
+
           title: 'TS',
 
           code: './examples/template-picker.ts',
 
           language: 'ts',
+
         },
       ],
     },
@@ -55,19 +59,23 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Disable specific items',
           tabs: [
             {
+
               title: 'React',
 
               code: './examples/disabled.tsx',
 
               language: 'tsx',
+
             },
 
             {
+
               title: 'TS',
 
               code: './examples/disabled.ts',
 
               language: 'ts',
+
             },
           ],
         },
@@ -79,19 +87,23 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Limit selection count',
           tabs: [
             {
+
               title: 'React',
 
               code: './examples/multiple-limit.tsx',
 
               language: 'tsx',
+
             },
 
             {
+
               title: 'TS',
 
               code: './examples/multiple-limit.ts',
 
               language: 'ts',
+
             },
           ],
         },
@@ -103,19 +115,23 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Preselect items',
           tabs: [
             {
+
               title: 'React',
 
               code: './examples/preselected.tsx',
 
               language: 'tsx',
+
             },
 
             {
+
               title: 'TS',
 
               code: './examples/preselected.ts',
 
               language: 'ts',
+
             },
           ],
         },
@@ -127,43 +143,51 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Select unlimited items',
           tabs: [
             {
+
               title: 'React',
 
               code: './examples/multiple-true.tsx',
 
               language: 'tsx',
+
             },
 
             {
+
               title: 'TS',
 
               code: './examples/multiple-true.ts',
 
               language: 'ts',
+
             },
           ],
         },
       },
       {
         description:
-          "Populate the picker with live data from the [GraphQL Admin API](/docs/api/admin-graphql). This example shows fetching order data when the button is clicked, transforming results into picker-compatible items, and opening the picker with the dynamically populated data. Use this pattern for showing real-time Shopify data that isn't available through the Resource Picker API, such as orders, draft orders, or fulfillments.",
+          "Populate the picker with live data from the [GraphQL Admin API](/docs/api/admin-graphql). This example fetches order data when the button is clicked, transforms results into picker-compatible items, and opens the picker with the dynamically populated data. Use this pattern for showing real-time Shopify data that isn't available through the Resource Picker API, such as orders, draft orders, or fulfillments.",
         codeblock: {
           title: 'Use GraphQL data',
           tabs: [
             {
+
               title: 'React',
 
               code: './examples/direct-api.tsx',
 
               language: 'tsx',
+
             },
 
             {
+
               title: 'TS',
 
               code: './examples/direct-api.ts',
 
               language: 'ts',
+
             },
           ],
         },

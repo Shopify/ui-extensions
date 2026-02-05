@@ -10,24 +10,28 @@ const data: ReferenceEntityTemplateSchema = {
     'the [`FunctionSettings`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
   defaultExample: {
     description:
-      'Save a minimum purchase threshold to enable discounts only when cart totals meet your requirements, preventing discount abuse on small orders. This example demonstrates using a [`TextField`](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) for decimal input, calling `applyMetafieldChange` to save the threshold, and displaying a success [`Banner`](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/banner) when configured.',
+      'Save a minimum purchase threshold to enable discounts only when cart totals meet your requirements, ensuring discounts apply to appropriately sized orders. This example demonstrates using a [`TextField`](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) for decimal input, calling `applyMetafieldChange` to save the threshold, and displaying a success [`Banner`](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/banner) when configured.',
     codeblock: {
       title: 'Configure discount threshold',
       tabs: [
         {
+
           title: 'React',
 
           code: './examples/configure-discount-threshold.tsx',
 
           language: 'tsx',
+
         },
 
         {
+
           title: 'TS',
 
           code: './examples/configure-discount-threshold.ts',
 
           language: 'ts',
+
         },
       ],
     },
@@ -74,19 +78,23 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Load existing settings',
           tabs: [
             {
+
               title: 'React',
 
               code: './examples/load-existing-settings.tsx',
 
               language: 'tsx',
+
             },
 
             {
+
               title: 'TS',
 
               code: './examples/load-existing-settings.ts',
 
               language: 'ts',
+
             },
           ],
         },
@@ -110,7 +118,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       sectionContent:
         "- Metafields are subject to [size limits](/docs/apps/build/metafields/metafield-limits). Individual metafield values can't exceed 256KB, and total metafields per resource have storage limits.\n" +
-        '- The `applyMetafieldChange` method is sequential. Operations are processed one at a time. Rapid successive calls may lead to race conditions where later updates overwrite earlier ones.\n' +
+        '- The `applyMetafieldChange` method is sequential. Operations are processed one at a time. Rapid successive calls might lead to race conditions where later updates overwrite earlier ones.\n' +
         '- Metafield changes are applied immediately. Unlike some admin forms, metafield changes persist right away without waiting for the merchant to save the discount.',
     },
   ],
