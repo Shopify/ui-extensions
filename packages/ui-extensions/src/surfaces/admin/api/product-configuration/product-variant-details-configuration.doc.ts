@@ -42,7 +42,46 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   examples: {
     description: 'Configure product variant-level bundles',
-    examples: [],
+    examples: [
+      {
+        description:
+          'Query variant bundle configuration including SKU and display name from metafields to show existing bundle setup. This example demonstrates fetching variant-specific bundle data using the [GraphQL Admin API](/docs/api/admin-graphql/), parsing the stored component configuration from metafields, and displaying variant details with component count.',
+        codeblock: {
+          title: 'Load variant bundle configuration',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/load-variant-bundle-config.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/load-variant-bundle-config.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Navigate to the parent product from variant configuration to view full product context or modify product-level settings. This example demonstrates querying the parent product ID using the [GraphQL Admin API](/docs/api/admin-graphql/), displaying the parent product title, and providing a navigation [`Button`](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) to open the product details page.',
+        codeblock: {
+          title: 'Navigate to parent product',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/navigate-to-parent-product.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/navigate-to-parent-product.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
