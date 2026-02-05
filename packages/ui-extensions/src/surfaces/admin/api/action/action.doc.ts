@@ -97,7 +97,8 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Check array length for bulk operations:** When actions appear on index pages with bulk selection, `api.data.selected` can contain multiple resources. Check the array length and handle batch operations accordingly.\n' +
+        '- **Check array length for bulk operations:** When actions appear on index pages with bulk selection, `api.data.selected` can contain multiple resources. Check the array length and handle batch operations accordingly.
+' +
         "- **Use `loading` state on buttons:** Modal actions don't show loading indicators automatically. Use the `loading` prop on [`Button`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button) components during async operations to prevent duplicate submissions.",
     },
     {
@@ -105,9 +106,12 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- Action extensions must call `api.close()` to dismiss the modal. Modal actions remain open indefinitely until explicitly closed.\n' +
-        "- Modal overlays can't be resized. The modal dimensions are fixed by the Shopify admin.\n" +
-        "- Action extensions can't modify the page layout underneath the modal or persist UI after closing.\n" +
+        '- Action extensions must call `api.close()` to dismiss the modal. Modal actions remain open indefinitely until explicitly closed.
+' +
+        "- Modal overlays can't be resized. The modal dimensions are fixed by the Shopify admin.
+" +
+        "- Action extensions can't modify the page layout underneath the modal or persist UI after closing.
+" +
         "- Multiple modals can't be stacked. Opening a [picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) closes the current modal context temporarily.",
     },
   ],

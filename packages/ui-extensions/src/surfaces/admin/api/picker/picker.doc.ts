@@ -177,16 +177,19 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Handle undefined return on cancellation:** When merchants cancel or close the picker, it returns `undefined` rather than an empty array. Check for `undefined` explicitly to distinguish cancellation from empty selection.\n' +
-        "- **Disable items to prevent modification:** Use the `disabled` property on items combined with `initialSelectionIds` to create preselected items that merchants can't deselect.",
+        '- **Handle undefined return on cancellation:** When merchants cancel or close the picker, it returns `undefined` rather than an empty array. Check for `undefined` explicitly to distinguish cancellation from empty selection.
+' +
+        "- **Disable items to prevent modification:** Use the `disabled` property on items combined with `selected: true` to create preselected items that merchants can't deselect.",
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        "- The Picker API only supports app-specific data. It can't display Shopify resources like products or variants. Use [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) for Shopify resources.\n" +
-        "- Picker items don't support hierarchical or nested structures. All items appear in a flat list.\n" +
+        "- The Picker API only supports app-specific data. It can't display Shopify resources like products or variants. Use [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) for Shopify resources.
+" +
+        "- Picker items don't support hierarchical or nested structures. All items appear in a flat list.
+" +
         "- The picker can't be customized with additional filters, search operators, or sorting beyond what merchants type in the search field.",
     },
   ],
