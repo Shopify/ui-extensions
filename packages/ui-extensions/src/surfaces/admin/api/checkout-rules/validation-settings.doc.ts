@@ -28,8 +28,16 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: {
       title: 'Set minimum quantity',
       tabs: [
-        {code: './examples/set-minimum-quantity.ts', language: 'ts'},
-        {code: './examples/set-minimum-quantity.tsx', language: 'tsx'},
+        {
+          title: 'TS',
+          code: './examples/set-minimum-quantity.ts',
+          language: 'ts',
+        },
+        {
+          title: 'React',
+          code: './examples/set-minimum-quantity.tsx',
+          language: 'tsx',
+        },
       ],
     },
   },
@@ -59,8 +67,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Load validation configuration',
           tabs: [
-            {code: './examples/load-validation-config.ts', language: 'ts'},
-            {code: './examples/load-validation-config.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/load-validation-config.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/load-validation-config.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },
