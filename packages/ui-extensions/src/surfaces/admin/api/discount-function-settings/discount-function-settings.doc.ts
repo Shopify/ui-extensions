@@ -14,8 +14,16 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: {
       title: 'Configure discount threshold',
       tabs: [
-        {code: './examples/configure-discount-threshold.ts', language: 'ts'},
-        {code: './examples/configure-discount-threshold.tsx', language: 'tsx'},
+        {
+          title: 'TS',
+          code: './examples/configure-discount-threshold.ts',
+          language: 'ts',
+        },
+        {
+          title: 'React',
+          code: './examples/configure-discount-threshold.tsx',
+          language: 'tsx',
+        },
       ],
     },
   },
@@ -42,7 +50,11 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Configure eligibility rules',
           tabs: [
-            {code: './examples/configure-eligibility-rules.ts', language: 'ts'},
+            {
+              title: 'TS',
+              code: './examples/configure-eligibility-rules.ts',
+              language: 'ts',
+            },
             {
               code: './examples/configure-eligibility-rules.tsx',
               language: 'tsx',
@@ -56,8 +68,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Load existing settings',
           tabs: [
-            {code: './examples/load-existing-settings.ts', language: 'ts'},
-            {code: './examples/load-existing-settings.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/load-existing-settings.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/load-existing-settings.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },

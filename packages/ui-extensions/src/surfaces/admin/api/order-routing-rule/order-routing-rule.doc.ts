@@ -14,8 +14,16 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: {
       title: 'Configure location priority',
       tabs: [
-        {code: './examples/configure-location-priority.ts', language: 'ts'},
-        {code: './examples/configure-location-priority.tsx', language: 'tsx'},
+        {
+          title: 'TS',
+          code: './examples/configure-location-priority.ts',
+          language: 'ts',
+        },
+        {
+          title: 'React',
+          code: './examples/configure-location-priority.tsx',
+          language: 'tsx',
+        },
       ],
     },
   },
@@ -36,7 +44,11 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Remove deprecated settings',
           tabs: [
-            {code: './examples/remove-deprecated-settings.ts', language: 'ts'},
+            {
+              title: 'TS',
+              code: './examples/remove-deprecated-settings.ts',
+              language: 'ts',
+            },
             {
               code: './examples/remove-deprecated-settings.tsx',
               language: 'tsx',
@@ -50,8 +62,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Set routing criteria',
           tabs: [
-            {code: './examples/set-routing-criteria.ts', language: 'ts'},
-            {code: './examples/set-routing-criteria.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/set-routing-criteria.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/set-routing-criteria.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },

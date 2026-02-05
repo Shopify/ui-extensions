@@ -22,8 +22,16 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: {
       title: 'Select bundle components',
       tabs: [
-        {code: './examples/select-bundle-components.ts', language: 'ts'},
-        {code: './examples/select-bundle-components.tsx', language: 'tsx'},
+        {
+          title: 'TS',
+          code: './examples/select-bundle-components.ts',
+          language: 'ts',
+        },
+        {
+          title: 'React',
+          code: './examples/select-bundle-components.tsx',
+          language: 'tsx',
+        },
       ],
     },
   },
@@ -36,8 +44,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Load bundle configuration',
           tabs: [
-            {code: './examples/load-bundle-config.ts', language: 'ts'},
-            {code: './examples/load-bundle-config.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/load-bundle-config.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/load-bundle-config.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },

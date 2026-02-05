@@ -14,8 +14,16 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: {
       title: 'Select product variant components',
       tabs: [
-        {code: './examples/select-variant-components.ts', language: 'ts'},
-        {code: './examples/select-variant-components.tsx', language: 'tsx'},
+        {
+          title: 'TS',
+          code: './examples/select-variant-components.ts',
+          language: 'ts',
+        },
+        {
+          title: 'React',
+          code: './examples/select-variant-components.tsx',
+          language: 'tsx',
+        },
       ],
     },
   },

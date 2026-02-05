@@ -12,8 +12,16 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: {
       title: 'Target high-value customers',
       tabs: [
-        {code: './examples/high-value-customers.ts', language: 'ts'},
-        {code: './examples/high-value-customers.tsx', language: 'tsx'},
+        {
+          title: 'TS',
+          code: './examples/high-value-customers.ts',
+          language: 'ts',
+        },
+        {
+          title: 'React',
+          code: './examples/high-value-customers.tsx',
+          language: 'tsx',
+        },
       ],
     },
   },
@@ -34,8 +42,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Target customers with birthdays this month',
           tabs: [
-            {code: './examples/birthday-this-month.ts', language: 'ts'},
-            {code: './examples/birthday-this-month.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/birthday-this-month.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/birthday-this-month.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },
@@ -45,8 +61,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: "Target customers who started checkout but didn't finish",
           tabs: [
-            {code: './examples/abandoned-cart-recovery.ts', language: 'ts'},
-            {code: './examples/abandoned-cart-recovery.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/abandoned-cart-recovery.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/abandoned-cart-recovery.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },
