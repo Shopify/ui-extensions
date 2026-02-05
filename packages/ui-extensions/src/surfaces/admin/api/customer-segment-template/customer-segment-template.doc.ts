@@ -100,7 +100,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        "- **Test queries in admin before shipping:** Template queries aren't validated until merchants save them. Test query syntax in the [Shopify admin segment editor](https://help.shopify.com/manual/customers/customer-segmentation/create-customer-segments) before shipping to avoid merchant-facing errors.
+        "- **Test queries in admin before shipping:** Template queries aren\'t validated until merchants save them. Test query syntax in the [Shopify admin segment editor](https://help.shopify.com/manual/customers/customer-segmentation/create-customer-segments) before shipping to avoid merchant-facing errors.
 " +
         '- **Declare all metafield dependencies:** Use both `standardMetafields` (for Shopify-defined metafields) and `customMetafields` (for app-defined metafields) in the `dependencies` object. Missing dependencies cause queries to fail when merchants lack required metafields.
 ' +
@@ -111,13 +111,13 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        "- Query validation only occurs when merchants save. Syntax errors in queries aren't caught by the API and only surface in the admin when merchants attempt to save the segment.
+        "- Query validation only occurs when merchants save. Syntax errors in queries aren\'t caught by the API and only surface in the admin when merchants attempt to save the segment.
 " +
-        "- Your extension can't programmatically create segments. Templates only provide the query and metadata. Merchants must manually save templates as segments.
+        "- Your extension can\'t programmatically create segments. Templates only provide the query and metadata. Merchants must manually save templates as segments.
 " +
-        "- Dependencies don't auto-create metafields. If required metafields don't exist, then merchants see errors when trying to use the template. The API only declares dependencies, it doesn't create them.
+        "- Dependencies don\'t auto-create metafields. If required metafields don\'t exist, then merchants see errors when trying to use the template. The API only declares dependencies, it doesn\'t create them.
 " +
-        "- Dynamic query generation isn't supported. Queries must be static strings. You can't parameterize queries based on merchant input or shop configuration.",
+        "- Dynamic query generation isn\'t supported. Queries must be static strings. You can\'t parameterize queries based on merchant input or shop configuration.",
     },
   ],
 };
