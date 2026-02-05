@@ -15,14 +15,19 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Display product information',
       tabs: [
         {
-          title: 'TS',
-          code: './examples/display-product-info.ts',
-          language: 'ts',
-        },
-        {
           title: 'React',
+
           code: './examples/display-product-info.tsx',
+
           language: 'tsx',
+        },
+
+        {
+          title: 'TS',
+
+          code: './examples/display-product-info.ts',
+
+          language: 'ts',
         },
       ],
     },
@@ -45,14 +50,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Navigate to action extension',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/navigate-to-action.ts',
-              language: 'ts',
-            },
-            {
               title: 'React',
+
               code: './examples/navigate-to-action.tsx',
+
               language: 'tsx',
+            },
+
+            {
+              title: 'TS',
+
+              code: './examples/navigate-to-action.ts',
+
+              language: 'ts',
             },
           ],
         },
@@ -64,14 +74,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Select related products',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/select-related-products.ts',
-              language: 'ts',
-            },
-            {
               title: 'React',
+
               code: './examples/select-related-products.tsx',
+
               language: 'tsx',
+            },
+
+            {
+              title: 'TS',
+
+              code: './examples/select-related-products.ts',
+
+              language: 'ts',
             },
           ],
         },
