@@ -23,23 +23,19 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Process selected products',
       tabs: [
         {
-
           title: 'React',
 
           code: './examples/process-selected-products.tsx',
 
           language: 'tsx',
-
         },
 
         {
-
           title: 'TS',
 
           code: './examples/process-selected-products.ts',
 
           language: 'ts',
-
         },
       ],
     },
@@ -73,23 +69,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Fulfill order with error handling',
           tabs: [
             {
-
               title: 'React',
 
               code: './examples/handle-errors.tsx',
 
               language: 'tsx',
-
             },
 
             {
-
               title: 'TS',
 
               code: './examples/handle-errors.ts',
 
               language: 'ts',
-
             },
           ],
         },

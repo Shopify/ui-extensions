@@ -13,23 +13,19 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Check when items are selected',
       tabs: [
         {
-
           title: 'React',
 
           code: './examples/check-product-tag.tsx',
 
           language: 'tsx',
-
         },
 
         {
-
           title: 'TS',
 
           code: './examples/check-product-tag.ts',
 
           language: 'ts',
-
         },
       ],
     },
@@ -52,23 +48,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Require one item to be selected',
           tabs: [
             {
-
               title: 'React',
 
               code: './examples/check-order-status.tsx',
 
               language: 'tsx',
-
             },
 
             {
-
               title: 'TS',
 
               code: './examples/check-order-status.ts',
 
               language: 'ts',
-
             },
           ],
         },
@@ -80,23 +72,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Validate selection count',
           tabs: [
             {
-
               title: 'React',
 
               code: './examples/bulk-selection-check.tsx',
 
               language: 'tsx',
-
             },
 
             {
-
               title: 'TS',
 
               code: './examples/bulk-selection-check.ts',
 
               language: 'ts',
-
             },
           ],
         },

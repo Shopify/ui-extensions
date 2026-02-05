@@ -15,23 +15,19 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Configure discount threshold',
       tabs: [
         {
-
           title: 'React',
 
           code: './examples/configure-discount-threshold.tsx',
 
           language: 'tsx',
-
         },
 
         {
-
           title: 'TS',
 
           code: './examples/configure-discount-threshold.ts',
 
           language: 'ts',
-
         },
       ],
     },
@@ -78,23 +74,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Load existing settings',
           tabs: [
             {
-
               title: 'React',
 
               code: './examples/load-existing-settings.tsx',
 
               language: 'tsx',
-
             },
 
             {
-
               title: 'TS',
 
               code: './examples/load-existing-settings.ts',
 
               language: 'ts',
-
             },
           ],
         },

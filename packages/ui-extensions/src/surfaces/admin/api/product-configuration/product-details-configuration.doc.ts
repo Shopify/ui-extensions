@@ -15,23 +15,19 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Select bundle components',
       tabs: [
         {
-
           title: 'React',
 
           code: './examples/select-bundle-components.tsx',
 
           language: 'tsx',
-
         },
 
         {
-
           title: 'TS',
 
           code: './examples/select-bundle-components.ts',
 
           language: 'ts',
-
         },
       ],
     },
@@ -54,23 +50,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Load bundle configuration',
           tabs: [
             {
-
               title: 'React',
 
               code: './examples/load-bundle-config.tsx',
 
               language: 'tsx',
-
             },
 
             {
-
               title: 'TS',
 
               code: './examples/load-bundle-config.ts',
 
               language: 'ts',
-
             },
           ],
         },

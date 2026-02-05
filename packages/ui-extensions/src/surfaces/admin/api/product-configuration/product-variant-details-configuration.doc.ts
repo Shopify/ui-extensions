@@ -15,23 +15,19 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Select product variant components',
       tabs: [
         {
-
           title: 'React',
 
           code: './examples/select-variant-components.tsx',
 
           language: 'tsx',
-
         },
 
         {
-
           title: 'TS',
 
           code: './examples/select-variant-components.ts',
 
           language: 'ts',
-
         },
       ],
     },
