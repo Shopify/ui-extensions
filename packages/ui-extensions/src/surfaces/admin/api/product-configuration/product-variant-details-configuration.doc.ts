@@ -92,8 +92,10 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Store configuration keyed by variant GID:** Save bundle relationships in metafields on the variant or in your app database using the variant GID as the key for precise variant-level configuration.\n' +
-        '- **Use `type: "variant"` in Resource Picker for precision:** When selecting component variants, use `type: "variant"` in the [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) for precise variant selection rather than product-level selection.\n' +
+        '- **Store configuration keyed by variant GID:** Save bundle relationships in metafields on the variant or in your app database using the variant GID as the key for precise variant-level configuration.
+' +
+        '- **Use `type: "variant"` in Resource Picker for precision:** When selecting component variants, use `type: "variant"` in the [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) for precise variant selection rather than product-level selection.
+' +
         '- **Implement cart transforms to enforce bundles:** Configuration only defines relationships. Use Shopify Functions [cart transforms](/docs/api/functions/latest/cart-transform) to enforce variant-level bundling at checkout based on saved configuration.',
     },
     {
@@ -101,8 +103,10 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        "- Configuration extensions only render in the admin. They don't affect storefront or checkout behavior. You must implement separate logic for storefront bundle display and checkout enforcement.\n" +
-        "- Bundles aren't enforced automatically. Configuration doesn't automatically create bundles. You must implement [cart transforms](/docs/api/functions/latest/cart-transform) to enforce bundling when variants are added to cart.\n" +
+        "- Configuration extensions only render in the admin. They don't affect storefront or checkout behavior. You must implement separate logic for storefront bundle display and checkout enforcement.
+" +
+        "- Bundles aren't enforced automatically. Configuration doesn't automatically create bundles. You must implement [cart transforms](/docs/api/functions/latest/cart-transform) to enforce bundling when variants are added to cart.
+" +
         "- Your extension can't directly modify variant properties. The API is read-only for variant data. Use GraphQL mutations like [`productVariantsBulkUpdate`](/docs/api/admin-graphql/latest/mutations/productVariantsBulkUpdate) if you need to update variants.",
     },
   ],
