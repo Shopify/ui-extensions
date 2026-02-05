@@ -45,7 +45,11 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Select additional resources',
           tabs: [
-            {code: './examples/select-additional-resources.ts', language: 'ts'},
+            {
+              title: 'TS',
+              code: './examples/select-additional-resources.ts',
+              language: 'ts',
+            },
             {
               code: './examples/select-additional-resources.tsx',
               language: 'tsx',
@@ -59,8 +63,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Fulfill order with error handling',
           tabs: [
-            {code: './examples/handle-errors.ts', language: 'ts'},
-            {code: './examples/handle-errors.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/handle-errors.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/handle-errors.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },

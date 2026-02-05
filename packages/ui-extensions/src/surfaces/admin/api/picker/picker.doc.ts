@@ -20,8 +20,16 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: {
       title: 'Select email templates',
       tabs: [
-        {code: './examples/template-picker.ts', language: 'ts'},
-        {code: './examples/template-picker.tsx', language: 'tsx'},
+        {
+          title: 'TS',
+          code: './examples/template-picker.ts',
+          language: 'ts',
+        },
+        {
+          title: 'React',
+          code: './examples/template-picker.tsx',
+          language: 'tsx',
+        },
       ],
     },
   },
@@ -41,8 +49,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Disable specific items',
           tabs: [
-            {code: './examples/disabled.ts', language: 'ts'},
-            {code: './examples/disabled.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/disabled.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/disabled.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },
@@ -52,8 +68,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Limit selection count',
           tabs: [
-            {code: './examples/multiple-limit.ts', language: 'ts'},
-            {code: './examples/multiple-limit.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/multiple-limit.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/multiple-limit.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },
@@ -63,8 +87,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Preselect items',
           tabs: [
-            {code: './examples/preselected.ts', language: 'ts'},
-            {code: './examples/preselected.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/preselected.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/preselected.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },
@@ -74,8 +106,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Select unlimited items',
           tabs: [
-            {code: './examples/multiple-true.ts', language: 'ts'},
-            {code: './examples/multiple-true.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/multiple-true.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/multiple-true.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },
@@ -85,8 +125,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Use GraphQL data',
           tabs: [
-            {code: './examples/direct-api.ts', language: 'ts'},
-            {code: './examples/direct-api.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/direct-api.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/direct-api.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },
