@@ -38,7 +38,7 @@ fi
 
 # Make sure https://shopify.dev URLs are relative so they work in Spin.
 # See https://github.com/Shopify/generate-docs/issues/181
-sed -i 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
+sed -i '' 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
 sed_exit=$?
 if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
@@ -57,7 +57,7 @@ if [ -d ../../../shopify-dev ]; then
     mkdir -p ../../../shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
     cp ./$DOCS_PATH/generated/* ../../../shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
     # Replace 'unstable' with the exact API version in relative doc links
-    sed -i \
+    sed -i '' \
       "s/\/docs\/api\/checkout-ui-extensions\/unstable/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
       ../../../shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data.json
     sed_exit=$?
