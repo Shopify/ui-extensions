@@ -67,7 +67,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Configure maximum distance, inventory checking, and excluded zip codes in one save. This example demonstrates using number fields, checkboxes, and JSON storage for complex routing criteria.',
+          'Configure maximum distance, inventory checking, and excluded zip codes in one save. This example demonstrates using [`NumberField`](/docs/api/admin-extensions/{API_VERSION}/components/forms/numberfield), [`Checkbox`](/docs/api/admin-extensions/{API_VERSION}/components/forms/checkbox), and JSON storage for complex routing criteria.',
         codeblock: {
           title: 'Set routing criteria',
           tabs: [
@@ -114,7 +114,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent:
         "- Metafields have [size limits](/docs/apps/build/metafields/metafield-limits). Individual values can't exceed 256KB, and total metafield storage per rule is limited.\n" +
         "- Rule priority is read-only. Evaluation order can't be modified through the settings interface. Merchants manage priority through the main rules interface.\n" +
-        '- Batch operations are all-or-nothing. If any metafield change in the array fails validation, the entire batch fails and no changes apply.\n' +
+        '- Batch operations are all-or-nothing. If any metafield change in the array fails validation, then the entire batch fails and no changes apply.\n' +
         '- Metafield changes apply immediately. They persist right away without waiting for merchants to save the rule.',
     },
   ],

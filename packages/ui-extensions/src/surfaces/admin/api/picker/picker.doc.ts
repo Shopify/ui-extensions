@@ -166,7 +166,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          "Populate the picker with live data from the [GraphQL Admin API](/docs/api/admin-graphql). This example shows fetching order data when the button is clicked, transforming results into picker-compatible items, and opening the picker with the dynamically populated data. Use this pattern for showing real-time Shopify data that isn't available through the Resource Picker API, such as orders, draft orders, or fulfillments.",
+          "Populate the picker with live data from the [GraphQL Admin API](/docs/api/admin-graphql). This example fetches order data when the button is clicked, transforms results into picker-compatible items, and opens the picker with the dynamically populated data. Use this pattern for showing real-time Shopify data that isn't available through the Resource Picker API, such as orders, draft orders, or fulfillments.",
         codeblock: {
           title: 'Use GraphQL data',
           tabs: [
