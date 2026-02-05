@@ -102,8 +102,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent:
         "- **Test queries in admin before shipping:** Template queries aren\'t validated until merchants save them. Test query syntax in the [Shopify admin segment editor](https://help.shopify.com/manual/customers/customer-segmentation/create-customer-segments) before shipping to avoid merchant-facing errors.
 " +
-        '- **Declare all metafield dependencies:** Use both `standardMetafields` (for Shopify-defined metafields) and `customMetafields` (for app-defined metafields) in the `dependencies` object. Missing dependencies cause queries to fail when merchants lack required metafields.
-' +
+        '- **Declare all metafield dependencies:** Use both `standardMetafields` (for Shopify-defined metafields) and `customMetafields` (for app-defined metafields) in the `dependencies` object. Missing dependencies cause queries to fail when merchants lack required metafields.\n' + +
         '- **Use `queryToInsert` for formatted display queries:** If your `query` includes formatting or comments for readability, then provide a clean executable version in `queryToInsert`. If omitting `queryToInsert`, then ensure `query` has no comments that would break execution.',
     },
     {

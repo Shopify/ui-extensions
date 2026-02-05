@@ -102,8 +102,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Test layouts at narrow widths:** Block extensions render in responsive containers that resize with browser width. Test down to ~300px where blocks stack vertically to ensure your UI remains usable.
-' +
+        '- **Test layouts at narrow widths:** Block extensions render in responsive containers that resize with browser width. Test down to ~300px where blocks stack vertically to ensure your UI remains usable.\n' + +
         '- **Defer expensive operations until user interaction:** Blocks render immediately when pages load. Defer expensive operations until user interaction to avoid slowing down page rendering for merchants.',
     },
     {

@@ -100,8 +100,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Handle GraphQL partial data:** Check both `errors` and `data` in query responses. GraphQL returns partial data with errors when some fields fail but others succeed.
-' +
+        '- **Handle GraphQL partial data:** Check both `errors` and `data` in query responses. GraphQL returns partial data with errors when some fields fail but others succeed.\n' + +
         '- **Batch GraphQL queries:** Combine multiple queries in a single GraphQL request using aliases to reduce roundtrips and improve performance under rate limits.',
     },
     {
