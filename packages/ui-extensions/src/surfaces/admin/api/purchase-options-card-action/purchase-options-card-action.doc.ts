@@ -14,8 +14,8 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: {
       title: 'Manage a subscription',
       tabs: [
-        {code: './examples/manage-subscription.ts', language: 'ts'},
-        {code: './examples/manage-subscription.tsx', language: 'tsx'},
+        {code: '../purchase-options-card/examples/manage-subscription.ts', language: 'ts'},
+        {code: '../purchase-options-card/examples/manage-subscription.tsx', language: 'tsx'},
       ],
     },
   },
@@ -36,8 +36,8 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Remove from selling plan',
           tabs: [
-            {code: './examples/remove-from-plan.ts', language: 'ts'},
-            {code: './examples/remove-from-plan.tsx', language: 'tsx'},
+            {code: '../purchase-options-card/examples/remove-from-plan.ts', language: 'ts'},
+            {code: '../purchase-options-card/examples/remove-from-plan.tsx', language: 'tsx'},
           ],
         },
       },
@@ -47,8 +47,8 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Validate selling plan',
           tabs: [
-            {code: './examples/validate-selling-plan.ts', language: 'ts'},
-            {code: './examples/validate-selling-plan.tsx', language: 'tsx'},
+            {code: '../purchase-options-card/examples/validate-selling-plan.ts', language: 'ts'},
+            {code: '../purchase-options-card/examples/validate-selling-plan.tsx', language: 'tsx'},
           ],
         },
       },
