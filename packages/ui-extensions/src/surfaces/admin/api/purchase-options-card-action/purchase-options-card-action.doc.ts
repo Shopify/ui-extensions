@@ -8,6 +8,25 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminAction`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminaction) component.',
+  defaultExample: {
+    description:
+      'Update a subscription by sending product and selling plan IDs to your backend. This example checks for selling plan presence, posts the update request, and shows a success [banner](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/banner) before auto-closing the modal.',
+    codeblock: {
+      title: 'Manage a subscription',
+      tabs: [
+        {
+          title: 'React',
+          code: '../purchase-options-card/examples/manage-subscription.tsx',
+          language: 'tsx',
+        },
+        {
+          title: 'TS',
+          code: '../purchase-options-card/examples/manage-subscription.ts',
+          language: 'ts',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'PurchaseOptionsCardConfigurationApi',
@@ -16,6 +35,49 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PurchaseOptionsCardConfigurationApi',
     },
   ],
+  examples: {
+    description: 'Work with purchase options and selling plans',
+    examples: [
+      {
+        description:
+          'Show a confirmation step before removing a product from a selling plan. This example demonstrates a two-step flow with a cancel option and success feedback after removal.',
+        codeblock: {
+          title: 'Remove from selling plan',
+          tabs: [
+            {
+              title: 'React',
+              code: '../purchase-options-card/examples/remove-from-plan.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: '../purchase-options-card/examples/remove-from-plan.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Fetch selling plan name and options using the [GraphQL Admin API](/docs/api/admin-graphql) to validate the configuration. This example queries plan details, displays the information, and auto-closes after two seconds.',
+        codeblock: {
+          title: 'Validate selling plan',
+          tabs: [
+            {
+              title: 'React',
+              code: '../purchase-options-card/examples/validate-selling-plan.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: '../purchase-options-card/examples/validate-selling-plan.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
