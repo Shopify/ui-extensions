@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Opens `resourcePicker()` with `multiple: 5` to select up to 5 bundle components, filtering out hidden, draft, and archived products. Posts the selected IDs to your backend to save the configuration.',
+      'Select up to 5 component products for a bundle using the resource picker. This example opens `resourcePicker` with a limit of 5 products, filters out hidden, draft, and archived products, and posts the selected product IDs to your backend to save the bundle configuration.',
     codeblock: {
       title: 'Select bundle components',
       tabs: [
@@ -45,23 +45,37 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Uses `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql) and fetch the bundle metafield, then parses the JSON components array. For displaying existing bundle configurations.',
+          "Query a product's bundle metafield and parse the JSON components array to display existing bundle setup. This example demonstrates fetching bundle configuration from metafields using the [GraphQL Admin API](/docs/api/admin-graphql/), parsing the stored component data, and displaying the count of configured bundle components.",
         codeblock: {
           title: 'Load bundle configuration',
           tabs: [
             {
               title: 'React',
-
               code: './examples/load-bundle-config.tsx',
-
               language: 'tsx',
             },
-
             {
               title: 'TS',
-
               code: './examples/load-bundle-config.ts',
-
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Save bundle display name and metadata using GraphQL mutations to customize how bundles appear to merchants. This example demonstrates using a [`TextField`](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) for bundle name input, calling the `productUpdate` mutation to save metafields, and displaying confirmation feedback when metadata is saved.',
+        codeblock: {
+          title: 'Update bundle metadata',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/update-bundle-metadata.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/update-bundle-metadata.ts',
               language: 'ts',
             },
           ],
@@ -79,7 +93,6 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       sectionContent:
         '- **Design for products with multiple variants:** Products in `api.data.selected` might have multiple variants. Design your bundle configuration to either apply to all variants or allow variant-level configuration.\n' +
-        '- **Use the Resource Picker to select components:** Use the [Resource Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to let merchants select component products for bundle configurations.\n' +
         '- **Implement cart transforms to enforce bundles:** Configuration only defines relationships in admin. Use Shopify Functions [cart transforms](/docs/api/functions/latest/cart-transform) to actually bundle products at checkout based on your saved configuration.',
     },
     {
