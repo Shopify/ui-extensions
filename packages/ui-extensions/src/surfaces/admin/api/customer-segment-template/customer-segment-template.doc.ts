@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Customer Segment Template Extension API',
   description:
-    'The Customer Segment Template Extension API lets you [build a customer segment template extension](/docs/apps/build/marketing-analytics/customer-segments/build-a-template-extension). Merchants can use your templates to quickly set up [customer segments](/docs/apps/build/marketing-analytics/customer-segments) based on custom criteria.',
+    'The Customer Segment Template Extension API lets you [build a customer segment template extension](/docs/apps/build/marketing-analytics/customer-segments/build-a-template-extension). Merchants can use your templates to set up [customer segments](/docs/apps/build/marketing-analytics/customer-segments) based on custom criteria.',
   isVisualComponent: false,
   type: 'API',
   definitions: [
