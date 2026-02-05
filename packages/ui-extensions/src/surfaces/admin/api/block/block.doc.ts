@@ -102,7 +102,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Test layouts at narrow widths:** Block extensions render in responsive containers that resize with browser width. Test down to ~300px where blocks stack vertically to ensure your UI remains usable.\n' + +
+        '- **Test layouts at narrow widths:** Block extensions render in responsive containers that resize with browser width. Test down to ~300px where blocks stack vertically to ensure your UI remains usable.\n' +
         '- **Defer expensive operations until user interaction:** Blocks render immediately when pages load. Defer expensive operations until user interaction to avoid slowing down page rendering for merchants.',
     },
     {
@@ -110,11 +110,11 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        "- Block extensions share horizontal space with other blocks and must adapt to variable container widths. Placement order is determined by Shopify and can\'t be configured.
+        "- Block extensions share horizontal space with other blocks and must adapt to variable container widths. Placement order is determined by Shopify and can't be configured.
 " +
-        "- Navigation is limited to action extensions on the same resource page. You can\'t navigate to detail pages of other resources or to index pages.
+        "- Navigation is limited to action extensions on the same resource page. You can't navigate to detail pages of other resources or to index pages.
 " +
-        "- Block extensions don\'t have access to information about other extensions on the page and can\'t communicate with them.",
+        "- Block extensions don't have access to information about other extensions on the page and can't communicate with them.",
     },
   ],
 };

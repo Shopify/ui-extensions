@@ -107,10 +107,10 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- The function must return an object with a `display` property. Returning a plain boolean like `true` instead of `{ display: true }` fails.\n' + +
-        "- No asynchronous operations are supported. Async functions, promises, fetch calls, and timers won\'t work.
+        '- The function must return an object with a `display` property. Returning a plain boolean like `true` instead of `{ display: true }` fails.\n' +
+        "- No asynchronous operations are supported. Async functions, promises, fetch calls, and timers won't work.
 " +
-        "- Your extension can\'t access external data sources. Evaluation is limited to data available in `api.data.selected` and in-memory state.
+        "- Your extension can't access external data sources. Evaluation is limited to data available in `api.data.selected` and in-memory state.
 " +
         '- The function runs only once when the page loads. Action visibility stays fixed after that, even if resource data, selections, or other conditions change later.',
     },
