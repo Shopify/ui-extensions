@@ -92,7 +92,7 @@ const data: ReferenceEntityTemplateSchema = {
 ' +
         '- Items in `api.data.selected` have an optional `sellingPlanId` property. When present, the merchant selected a specific selling plan. When absent, they selected the product/variant without a specific plan.
 ' +
-        "- Your extension can't modify selling plan configurations. The API is read-only for selling plan data. Use GraphQL mutations to update selling plans if needed.
+        "- Your extension can\'t modify selling plan configurations. The API is read-only for selling plan data. Use GraphQL mutations to update selling plans if needed.
 " +
         '- Selection data only includes IDs. You must query GraphQL for full product, variant, and selling plan details like billing policy and pricing adjustments. Selling plan group data is also unavailable. Your extension only receives individual selling plan IDs but not the parent selling plan group structure.',
     },

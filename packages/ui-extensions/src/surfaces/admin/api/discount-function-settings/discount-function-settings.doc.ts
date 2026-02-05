@@ -102,14 +102,14 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        "- **Check operation result type:** `applyMetafieldChange` returns `{ type: 'success' }` or `{ type: 'error', message: string }`. Errors don't throw exceptions, so always check the returned `type` property.",
+        "- **Check operation result type:** `applyMetafieldChange` returns `{ type: 'success' }` or `{ type: 'error', message: string }`. Errors don\'t throw exceptions, so always check the returned `type` property.",
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        "- Metafields are subject to [size limits](/docs/apps/build/metafields/metafield-limits). Individual metafield values can't exceed 256KB, and total metafields per resource have storage limits.
+        "- Metafields are subject to [size limits](/docs/apps/build/metafields/metafield-limits). Individual metafield values can\'t exceed 256KB, and total metafields per resource have storage limits.
 " +
         '- The `applyMetafieldChange` method is sequential. Operations are processed one at a time. Rapid successive calls might lead to race conditions where new updates overwrite earlier ones.
 ' +
