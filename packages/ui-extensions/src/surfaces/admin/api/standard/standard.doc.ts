@@ -20,8 +20,16 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: {
       title: 'Authenticate backend requests',
       tabs: [
-        {code: './examples/authenticate-backend-request.ts', language: 'ts'},
-        {code: './examples/authenticate-backend-request.tsx', language: 'tsx'},
+        {
+          title: 'TS',
+          code: './examples/authenticate-backend-request.ts',
+          language: 'ts',
+        },
+        {
+          title: 'React',
+          code: './examples/authenticate-backend-request.tsx',
+          language: 'tsx',
+        },
       ],
     },
   },
@@ -34,8 +42,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Query and mutate product data',
           tabs: [
-            {code: './examples/query-and-mutate.ts', language: 'ts'},
-            {code: './examples/query-and-mutate.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/query-and-mutate.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/query-and-mutate.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },

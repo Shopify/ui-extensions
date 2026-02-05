@@ -14,8 +14,16 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: {
       title: 'Generate packing slip',
       tabs: [
-        {code: './examples/generate-packing-slip.ts', language: 'ts'},
-        {code: './examples/generate-packing-slip.tsx', language: 'tsx'},
+        {
+          title: 'TS',
+          code: './examples/generate-packing-slip.ts',
+          language: 'ts',
+        },
+        {
+          title: 'React',
+          code: './examples/generate-packing-slip.tsx',
+          language: 'tsx',
+        },
       ],
     },
   },
@@ -36,8 +44,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Generate custom product labels',
           tabs: [
-            {code: './examples/custom-product-labels.ts', language: 'ts'},
-            {code: './examples/custom-product-labels.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/custom-product-labels.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/custom-product-labels.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },
@@ -47,8 +63,16 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Generate shipping manifest',
           tabs: [
-            {code: './examples/shipping-manifest.ts', language: 'ts'},
-            {code: './examples/shipping-manifest.tsx', language: 'tsx'},
+            {
+              title: 'TS',
+              code: './examples/shipping-manifest.ts',
+              language: 'ts',
+            },
+            {
+              title: 'React',
+              code: './examples/shipping-manifest.tsx',
+              language: 'tsx',
+            },
           ],
         },
       },
