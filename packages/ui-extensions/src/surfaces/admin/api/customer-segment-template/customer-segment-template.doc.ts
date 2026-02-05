@@ -13,23 +13,19 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Target high-value customers',
       tabs: [
         {
-
           title: 'React',
 
           code: './examples/high-value-customers.tsx',
 
           language: 'tsx',
-
         },
 
         {
-
           title: 'TS',
 
           code: './examples/high-value-customers.ts',
 
           language: 'ts',
-
         },
       ],
     },
@@ -52,23 +48,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Target customers with birthdays this month',
           tabs: [
             {
-
               title: 'React',
 
               code: './examples/birthday-this-month.tsx',
 
               language: 'tsx',
-
             },
 
             {
-
               title: 'TS',
 
               code: './examples/birthday-this-month.ts',
 
               language: 'ts',
-
             },
           ],
         },
@@ -80,23 +72,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: "Target customers who started checkout but didn't finish",
           tabs: [
             {
-
               title: 'React',
 
               code: './examples/abandoned-cart-recovery.tsx',
 
               language: 'tsx',
-
             },
 
             {
-
               title: 'TS',
 
               code: './examples/abandoned-cart-recovery.ts',
 
               language: 'ts',
-
             },
           ],
         },
