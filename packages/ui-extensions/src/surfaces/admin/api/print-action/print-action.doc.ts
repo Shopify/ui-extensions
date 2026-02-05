@@ -102,17 +102,21 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Use `@media print` CSS for print-optimized styling:** Apply print-specific styles with `@media print` queries to control page breaks, hide UI elements, and optimize for paper output. The print preview shows the screen styles until printing.\n' +
-        '- **Set document MIME type correctly:** Return `Content-Type: application/pdf` for PDFs, `image/png` for images, or `text/html` for HTML documents. Incorrect MIME types may cause browser download instead of preview.\n' +
-        '- **Test `window.print()` behavior:** If generating HTML, test that `window.print()` works correctly. Some CSS frameworks or scripts may interfere with browser print dialogs.',
+        '- **Use `@media print` CSS for print-optimized styling:** Apply print-specific styles with `@media print` queries to control page breaks, hide UI elements, and optimize for paper output. The print preview shows the screen styles until printing.
+' +
+        '- **Set document MIME type correctly:** Return `Content-Type: application/pdf` for PDFs, `image/png` for images, or `text/html` for HTML documents. Incorrect MIME types might trigger browser download instead of preview.
+' +
+        '- **Test `window.print()` behavior:** If generating HTML, then test that `window.print()` works correctly. Some CSS frameworks or scripts might interfere with browser print dialogs.',
     },
     {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        "- Print action extensions must return a URL string. You can't render the print UI directly within the extension or control the print preview appearance.\n" +
-        '- URLs must be publicly accessible with CORS headers allowing the Shopify admin origin. Authentication tokens in URLs can expire while merchants have the preview open.\n' +
+        "- Print action extensions must return a URL string. You can't render the print UI directly within the extension or control the print preview appearance.
+" +
+        '- URLs must be publicly accessible with CORS headers allowing the Shopify admin origin. Authentication tokens in URLs can expire while merchants have the preview open.
+' +
         "- Extensions don't have access to printer settings. You can't configure print options like page orientation, margins, or paper size. Merchants control these through browser print dialogs.",
     },
   ],
