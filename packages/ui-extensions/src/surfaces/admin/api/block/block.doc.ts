@@ -111,11 +111,11 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        "- Block extensions share horizontal space with other blocks and must adapt to variable container widths. Placement order is determined by Shopify and can\'t be configured.
+        "- Block extensions share horizontal space with other blocks and must adapt to variable container widths. Placement order is determined by Shopify and can't be configured.
 " +
-        "- Navigation is limited to action extensions on the same resource page. You can\'t navigate to detail pages of other resources or to index pages.
+        "- Navigation is limited to action extensions on the same resource page. You can't navigate to detail pages of other resources or to index pages.
 " +
-        "- Block extensions don\'t have access to information about other extensions on the page and can\'t communicate with them.",
+        "- Block extensions don't have access to information about other extensions on the page and can't communicate with them.",
     },
   ],
 };

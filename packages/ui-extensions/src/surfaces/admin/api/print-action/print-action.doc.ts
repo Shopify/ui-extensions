@@ -113,11 +113,11 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        "- Print action extensions must return a URL string. You can\'t render the print UI directly within the extension or control the print preview appearance.
+        "- Print action extensions must return a URL string. You can't render the print UI directly within the extension or control the print preview appearance.
 " +
         '- URLs must be publicly accessible with CORS headers allowing the Shopify admin origin. Authentication tokens in URLs can expire while merchants have the preview open.
 ' +
-        "- Extensions don\'t have access to printer settings. You can\'t configure print options like page orientation, margins, or paper size. Merchants control these through browser print dialogs.",
+        "- Extensions don't have access to printer settings. You can't configure print options like page orientation, margins, or paper size. Merchants control these through browser print dialogs.",
     },
   ],
 };
