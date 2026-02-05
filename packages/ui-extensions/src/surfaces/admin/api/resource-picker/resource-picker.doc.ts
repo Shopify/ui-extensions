@@ -22,14 +22,19 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Select products',
       tabs: [
         {
-          title: 'TS',
-          code: './examples/product-picker.ts',
-          language: 'ts',
-        },
-        {
           title: 'React',
+
           code: './examples/product-picker.tsx',
+
           language: 'tsx',
+        },
+
+        {
+          title: 'TS',
+
+          code: './examples/product-picker.ts',
+
+          language: 'ts',
         },
       ],
     },
@@ -45,14 +50,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Filter to published products',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/filters.ts',
-              language: 'ts',
-            },
-            {
               title: 'React',
+
               code: './examples/filters.tsx',
+
               language: 'tsx',
+            },
+
+            {
+              title: 'TS',
+
+              code: './examples/filters.ts',
+
+              language: 'ts',
             },
           ],
         },
@@ -64,14 +74,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Limit selection count',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/multiple-limited.ts',
-              language: 'ts',
-            },
-            {
               title: 'React',
+
               code: './examples/multiple-limited.tsx',
+
               language: 'tsx',
+            },
+
+            {
+              title: 'TS',
+
+              code: './examples/multiple-limited.ts',
+
+              language: 'ts',
             },
           ],
         },
@@ -83,14 +98,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Preselect products',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/selection-ids.ts',
-              language: 'ts',
-            },
-            {
               title: 'React',
+
               code: './examples/selection-ids.tsx',
+
               language: 'tsx',
+            },
+
+            {
+              title: 'TS',
+
+              code: './examples/selection-ids.ts',
+
+              language: 'ts',
             },
           ],
         },
@@ -102,14 +122,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Select collections',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/collection-picker.ts',
-              language: 'ts',
-            },
-            {
               title: 'React',
+
               code: './examples/collection-picker.tsx',
+
               language: 'tsx',
+            },
+
+            {
+              title: 'TS',
+
+              code: './examples/collection-picker.ts',
+
+              language: 'ts',
             },
           ],
         },
@@ -121,14 +146,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Select unlimited products',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/multiple-unlimited.ts',
-              language: 'ts',
-            },
-            {
               title: 'React',
+
               code: './examples/multiple-unlimited.tsx',
+
               language: 'tsx',
+            },
+
+            {
+              title: 'TS',
+
+              code: './examples/multiple-unlimited.ts',
+
+              language: 'ts',
             },
           ],
         },
@@ -140,14 +170,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Select product variants',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/product-variant-picker.ts',
-              language: 'ts',
-            },
-            {
               title: 'React',
+
               code: './examples/product-variant-picker.tsx',
+
               language: 'tsx',
+            },
+
+            {
+              title: 'TS',
+
+              code: './examples/product-variant-picker.ts',
+
+              language: 'ts',
             },
           ],
         },
@@ -159,14 +194,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Set action verb',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/action.ts',
-              language: 'ts',
-            },
-            {
               title: 'React',
+
               code: './examples/action.tsx',
+
               language: 'tsx',
+            },
+
+            {
+              title: 'TS',
+
+              code: './examples/action.ts',
+
+              language: 'ts',
             },
           ],
         },
@@ -178,14 +218,19 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Start with search query',
           tabs: [
             {
-              title: 'TS',
-              code: './examples/query.ts',
-              language: 'ts',
-            },
-            {
               title: 'React',
+
               code: './examples/query.tsx',
+
               language: 'tsx',
+            },
+
+            {
+              title: 'TS',
+
+              code: './examples/query.ts',
+
+              language: 'ts',
             },
           ],
         },
