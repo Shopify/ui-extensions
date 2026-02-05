@@ -22,8 +22,16 @@ const data: ReferenceEntityTemplateSchema = {
     codeblock: {
       title: 'Process selected products',
       tabs: [
-        {code: './examples/process-selected-products.ts', language: 'ts'},
-        {code: './examples/process-selected-products.tsx', language: 'tsx'},
+        {
+          title: 'TS',
+          code: './examples/process-selected-products.ts',
+          language: 'ts',
+        },
+        {
+          title: 'React',
+          code: './examples/process-selected-products.tsx',
+          language: 'tsx',
+        },
       ],
     },
   },
