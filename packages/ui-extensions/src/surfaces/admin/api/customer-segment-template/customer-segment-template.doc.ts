@@ -29,9 +29,9 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'CustomerSegmentTemplateApi',
+      title: 'Methods',
       description:
-        'The `CustomerSegmentTemplateApi` object includes tools for creating segment templates and translating content. Access the following properties on the `CustomerSegmentTemplateApi` object in the `admin.customers.segmentation-templates.render` target.',
+        'The `CustomerSegmentTemplateApi` object includes tools for creating segment templates and translating content. Access the following methods on the `CustomerSegmentTemplateApi` object in the `admin.customers.segmentation-templates.render` target.',
       type: 'CustomerSegmentTemplateApi',
     },
   ],
