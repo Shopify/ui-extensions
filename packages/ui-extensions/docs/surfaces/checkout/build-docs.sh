@@ -99,21 +99,21 @@ fi
 copy_generated_docs_to_shopify_dev() {
 # Copy the generated docs to shopify-dev
 if [ -d $SHOPIFY_DEV_PATH ]; then
-  mkdir -p $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
-  cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+  mkdir -p $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+  cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
 
   # Replace 'latest' with the exact API version in relative doc links
   for file in generated_docs_data.json generated_static_pages.json; do
     run_sed \
       "s/\/docs\/api\/checkout-ui-extensions\/latest/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
-      "$SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/$file"
+      "$SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/$file"
     sed_exit=$?
     if [ $sed_exit -ne 0 ]; then
       fail_and_exit $sed_exit
     fi
   done
 
-  rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/content-v2/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
+  rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
   echo "Docs: https://shopify-dev.shop.dev/docs/api/checkout-ui-extensions"
 else
   echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."

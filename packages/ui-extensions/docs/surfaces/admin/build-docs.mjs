@@ -26,7 +26,7 @@ const generatedDocsPath = path.join(docsPath, 'generated');
 const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
 const shopifyDevDBPath = path.join(
   shopifyDevPath,
-  'db/data/docs/templated_apis',
+  'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
 const shopifyDevExists = existsSync(shopifyDevPath);
@@ -511,7 +511,7 @@ try {
     path.join(docsPath, 'screenshots'),
     path.join(
       shopifyDevPath,
-      'content-v2/assets/images/templated-apis-screenshots/admin',
+      'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/admin',
     ),
     {recursive: true},
   );
