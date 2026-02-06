@@ -16,6 +16,7 @@
     "predeploy:unstable": "yarn build",
     "docs:admin": "yarn workspace @shopify/ui-extensions docs:admin",
     "docs:checkout": "yarn workspace @shopify/ui-extensions docs:checkout",
+    "docs:point-of-sale": "yarn workspace @shopify/ui-extensions docs:point-of-sale",
     "deploy:unstable": "changeset version --snapshot unstable && changeset publish --tag unstable --no-git-tag",
     "predeploy:internal": "yarn build",
     "deploy:internal": "changeset version --snapshot internal && changeset publish --tag internal --no-git-tag",
