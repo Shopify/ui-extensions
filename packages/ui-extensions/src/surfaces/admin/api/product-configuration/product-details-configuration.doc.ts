@@ -10,9 +10,9 @@ const data: ReferenceEntityTemplateSchema = {
     'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
   definitions: [
     {
-      title: 'ProductDetailsConfigurationApi',
+      title: 'Methods',
       description:
-        'The `ProductDetailsConfigurationApi` object provides access to product configuration data and methods. Access the following properties on the `ProductDetailsConfigurationApi` object to interact with the current product context, navigate within the admin, and select resources in the `admin.product-details.configuration.render` target.',
+        'The `ProductDetailsConfigurationApi` object provides access to product configuration data and methods. Access the following methods on the `ProductDetailsConfigurationApi` object to interact with the current product context, navigate within the admin, and select resources in the `admin.product-details.configuration.render` target.',
       type: 'ProductDetailsConfigurationApi',
     },
   ],
