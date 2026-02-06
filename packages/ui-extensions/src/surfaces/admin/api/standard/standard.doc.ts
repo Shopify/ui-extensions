@@ -6,6 +6,25 @@ const data: ReferenceEntityTemplateSchema = {
     'The Standard API provides core functionality available to all Admin UI extension types. Use this API to authenticate with your app backend, query the [GraphQL Admin API](/docs/api/admin-graphql), translate content, and handle intent-based navigation.',
   isVisualComponent: false,
   type: 'API',
+  defaultExample: {
+    description:
+      'Calls `auth.idToken()` to get an ID token and adds it to the Authorization header before fetching from your backend. For authenticated API requests.',
+    codeblock: {
+      title: 'Authenticate backend requests',
+      tabs: [
+        {
+          title: 'React',
+          code: './examples/authenticate-backend-request.tsx',
+          language: 'tsx',
+        },
+        {
+          title: 'TS',
+          code: './examples/authenticate-backend-request.ts',
+          language: 'ts',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'StandardApi',
@@ -14,6 +33,30 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'StandardApi',
     },
   ],
+  examples: {
+    description: 'Standard API patterns',
+    examples: [
+      {
+        description:
+          'Chains a GraphQL query and mutation together, fetching products then updating the first one with "processed" and "reviewed" tags.',
+        codeblock: {
+          title: 'Query and mutate product data',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/query-and-mutate.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/query-and-mutate.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Core APIs',
   related: [],

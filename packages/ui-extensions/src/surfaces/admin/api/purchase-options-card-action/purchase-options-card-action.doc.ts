@@ -8,6 +8,25 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminAction`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminaction) component.',
+  defaultExample: {
+    description:
+      'Checks for `sellingPlanId` presence, then posts the product and plan IDs to your backend and closes the modal. For subscription management actions.',
+    codeblock: {
+      title: 'Manage subscription',
+      tabs: [
+        {
+          title: 'React',
+          code: './purchase-options-card/examples/manage-subscription.tsx',
+          language: 'tsx',
+        },
+        {
+          title: 'TS',
+          code: './purchase-options-card/examples/manage-subscription.ts',
+          language: 'ts',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'PurchaseOptionsCardConfigurationApi',
@@ -16,6 +35,49 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PurchaseOptionsCardConfigurationApi',
     },
   ],
+  examples: {
+    description: 'Purchase options patterns',
+    examples: [
+      {
+        description:
+          'Shows `confirm()` before calling your API to remove the product from the plan. Two-step confirmation for destructive actions.',
+        codeblock: {
+          title: 'Remove from selling plan',
+          tabs: [
+            {
+              title: 'React',
+              code: './purchase-options-card/examples/remove-from-plan.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './purchase-options-card/examples/remove-from-plan.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Queries the [GraphQL Admin API](/docs/api/admin-graphql) for plan details by ID, stores the result, then auto-closes after 2 seconds. Quick validation check pattern.',
+        codeblock: {
+          title: 'Validate selling plan',
+          tabs: [
+            {
+              title: 'React',
+              code: './purchase-options-card/examples/validate-selling-plan.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './purchase-options-card/examples/validate-selling-plan.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
