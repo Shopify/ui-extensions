@@ -60,5 +60,12 @@ module.exports = {
         'promise/catch-or-return': 'off',
       },
     },
+    {
+      files: ['packages/ui-extensions/src/surfaces/checkout/preact/*.ts'],
+      rules: {
+        // Support use of deprecated hooks until removal
+        'import/no-deprecated': 'off',
+      },
+    },
   ],
 };

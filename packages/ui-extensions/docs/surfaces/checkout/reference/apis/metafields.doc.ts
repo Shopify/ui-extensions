@@ -29,13 +29,14 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       title: 'useMetafield',
-      description: 'Returns a single filtered `Metafield` or `undefined`.',
+      description:
+        'Returns a single filtered `Metafield` or `undefined`.\n > Caution: `useMetafield` is deprecated. Use `useAppMetafields` with cart metafields instead.',
       type: 'UseMetafieldGeneratedType',
     },
     {
       title: 'useMetafields',
       description:
-        'Returns the current array of `metafields` applied to the checkout. You can optionally filter the list.',
+        'Returns the current array of `metafields` applied to the checkout. You can optionally filter the list.\n > Caution: `useMetafields` is deprecated. Use `useAppMetafields` with cart metafields instead.',
       type: 'UseMetafieldsGeneratedType',
     },
     {

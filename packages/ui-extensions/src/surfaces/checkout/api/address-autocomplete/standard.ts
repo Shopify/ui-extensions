@@ -102,6 +102,11 @@ export interface AddressAutocompleteStandardApi<
    *
    * Once the order is created, you can query these metafields using the
    * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
+   *
+   * > Caution:
+   * `metafields` is deprecated. Use `appMetafields` with cart metafields instead.
+   *
+   * @deprecated Use `appMetafields` with cart metafields instead.
    */
   metafields: Metafield[];
 
