@@ -10,9 +10,9 @@ const data: ReferenceEntityTemplateSchema = {
     'the [`CustomerSegmentTemplate`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/customersegmenttemplate) component.',
   definitions: [
     {
-      title: 'CustomerSegmentTemplateApi',
+      title: 'Methods',
       description:
-        'The `CustomerSegmentTemplateApi` object includes tools for creating segment templates and translating content. Access the following properties on the `CustomerSegmentTemplateApi` object in the `admin.customers.segmentation-templates.render` target.',
+        'The `CustomerSegmentTemplateApi` object includes tools for creating segment templates and translating content. Access the following methods on the `CustomerSegmentTemplateApi` object in the `admin.customers.segmentation-templates.render` target.',
       type: 'CustomerSegmentTemplateApi',
     },
   ],
