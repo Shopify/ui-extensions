@@ -8,6 +8,25 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`FunctionSettings`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
+  defaultExample: {
+    description:
+      'Set preferred and fallback fulfillment locations with [text field](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) inputs. This example applies two metafield changes in a single batch operation to configure location priority for order routing.',
+    codeblock: {
+      title: 'Configure location priority',
+      tabs: [
+        {
+          title: 'React',
+          code: './examples/configure-location-priority.tsx',
+          language: 'tsx',
+        },
+        {
+          title: 'TS',
+          code: './examples/configure-location-priority.ts',
+          language: 'ts',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'Methods',
@@ -16,6 +35,49 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'OrderRoutingRuleApi',
     },
   ],
+  examples: {
+    description: 'Configure order routing rules',
+    examples: [
+      {
+        description:
+          'Batch remove outdated metafields from routing configuration. This example maps deprecated keys to removal operations, displays current rule stats, and shows a success [banner](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/banner) after cleanup.',
+        codeblock: {
+          title: 'Remove deprecated settings',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/remove-deprecated-settings.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/remove-deprecated-settings.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Configure maximum distance, inventory checking, and excluded zip codes in one save. This example demonstrates using [number fields](/docs/api/admin-extensions/{API_VERSION}/components/forms/numberfield), [checkboxes](/docs/api/admin-extensions/{API_VERSION}/components/forms/checkbox), and JSON storage for complex routing criteria.',
+        codeblock: {
+          title: 'Set routing criteria',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/set-routing-criteria.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/set-routing-criteria.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
