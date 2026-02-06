@@ -16,12 +16,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: './purchase-options-card/examples/manage-subscription.tsx',
+          code: '../purchase-options-card/examples/manage-subscription.tsx',
           language: 'tsx',
         },
         {
           title: 'TS',
-          code: './purchase-options-card/examples/manage-subscription.ts',
+          code: '../purchase-options-card/examples/manage-subscription.ts',
           language: 'ts',
         },
       ],
@@ -46,12 +46,12 @@ const data: ReferenceEntityTemplateSchema = {
           tabs: [
             {
               title: 'React',
-              code: './purchase-options-card/examples/remove-from-plan.tsx',
+              code: '../purchase-options-card/examples/remove-from-plan.tsx',
               language: 'tsx',
             },
             {
               title: 'TS',
-              code: './purchase-options-card/examples/remove-from-plan.ts',
+              code: '../purchase-options-card/examples/remove-from-plan.ts',
               language: 'ts',
             },
           ],
@@ -65,12 +65,12 @@ const data: ReferenceEntityTemplateSchema = {
           tabs: [
             {
               title: 'React',
-              code: './purchase-options-card/examples/validate-selling-plan.tsx',
+              code: '../purchase-options-card/examples/validate-selling-plan.tsx',
               language: 'tsx',
             },
             {
               title: 'TS',
-              code: './purchase-options-card/examples/validate-selling-plan.ts',
+              code: '../purchase-options-card/examples/validate-selling-plan.ts',
               language: 'ts',
             },
           ],
