@@ -163,7 +163,7 @@ try {
     replaceValue: 'any',
   });
   await generateExtensionsDocs();
-  
+
   // Generate targets.json
   console.log('Generating targets.json...');
   try {
@@ -174,9 +174,12 @@ try {
     });
     console.log('✅ Generated targets.json');
   } catch (targetsError) {
-    console.warn('Warning: Failed to generate targets.json:', targetsError.message);
+    console.warn(
+      'Warning: Failed to generate targets.json:',
+      targetsError.message,
+    );
   }
-  
+
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
     shopifyDevPath,

@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-env node */
 import fs from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
@@ -47,7 +49,7 @@ function parseComponentTypesFromFiles() {
     path.join(basePath, 'SmartGridComponents.ts'),
   );
   if (smartGridComponents) {
-    componentTypesMap['SmartGridComponents'] = smartGridComponents;
+    componentTypesMap.SmartGridComponents = smartGridComponents;
   }
 
   // Parse ActionExtensionComponents
@@ -55,7 +57,7 @@ function parseComponentTypesFromFiles() {
     path.join(basePath, 'ActionExtensionComponents.ts'),
   );
   if (actionComponents) {
-    componentTypesMap['ActionExtensionComponents'] = actionComponents;
+    componentTypesMap.ActionExtensionComponents = actionComponents;
   }
 
   // Parse BlockExtensionComponents
@@ -63,7 +65,7 @@ function parseComponentTypesFromFiles() {
     path.join(basePath, 'BlockExtensionComponents.ts'),
   );
   if (blockComponents) {
-    componentTypesMap['BlockExtensionComponents'] = blockComponents;
+    componentTypesMap.BlockExtensionComponents = blockComponents;
   }
 
   // Parse ReceiptComponents
@@ -71,7 +73,7 @@ function parseComponentTypesFromFiles() {
     path.join(basePath, 'ReceiptComponents.ts'),
   );
   if (receiptComponents) {
-    componentTypesMap['ReceiptComponents'] = receiptComponents;
+    componentTypesMap.ReceiptComponents = receiptComponents;
   }
 
   // Parse StandardComponents (for BasicComponents which excludes 'Tile')
@@ -79,10 +81,10 @@ function parseComponentTypesFromFiles() {
     path.join(basePath, 'StandardComponents.ts'),
   );
   if (standardComponents) {
-    componentTypesMap['StandardComponents'] = standardComponents;
+    componentTypesMap.StandardComponents = standardComponents;
     // BasicComponents = Exclude<StandardComponents, 'Tile'>
-    componentTypesMap['BasicComponents'] = standardComponents.filter(
-      (c) => c !== 'Tile',
+    componentTypesMap.BasicComponents = standardComponents.filter(
+      (component) => component !== 'Tile',
     );
     // Update global allComponents
     allComponents = standardComponents.sort();
@@ -177,7 +179,7 @@ function parseTargetsFile() {
 
 function getNestedApis(apiName) {
   // Check if we've already parsed this API
-  if (apiDefinitionsCache.hasOwnProperty(apiName)) {
+  if (Object.prototype.hasOwnProperty.call(apiDefinitionsCache, apiName)) {
     return apiDefinitionsCache[apiName];
   }
 
@@ -296,7 +298,7 @@ function getNestedApis(apiName) {
     }
 
     // Find the end position (semicolon at the correct nesting level)
-    let startPos = startMatch.index + startMatch[0].length;
+    const startPos = startMatch.index + startMatch[0].length;
     let endPos = startPos;
     let braceDepth = 0;
     let angleDepth = 0;
@@ -337,19 +339,22 @@ function getNestedApis(apiName) {
   }
 }
 
+// APIs that are composites of other documented APIs - we list their constituent APIs, not these wrapper types
+const COMPOSITE_APIS = new Set(['StandardApi', 'ActionTargetApi']);
+
 function parseApis(apiString) {
   const apisSet = new Set();
 
   // Remove any comments
-  apiString = apiString
+  const cleanedApiString = apiString
     .replace(/\/\/[^\n]*/g, '')
     .replace(/\/\*[\s\S]*?\*\//g, '');
 
   // Split by & and extract API names
-  const parts = apiString
+  const parts = cleanedApiString
     .split('&')
-    .map((s) => s.trim())
-    .filter((s) => s);
+    .map((part) => part.trim())
+    .filter((part) => part);
 
   for (const part of parts) {
     // Match StandardApi<'...'> or just ApiName
@@ -366,16 +371,24 @@ function parseApis(apiString) {
     }
 
     if (apiName) {
-      // Add the API itself
-      apisSet.add(apiName);
+      if (!COMPOSITE_APIS.has(apiName)) {
+        apisSet.add(apiName);
+      }
 
-      // Get nested APIs from this API (recursively)
       const nestedApis = getNestedApis(apiName);
       for (const nestedApi of nestedApis) {
-        apisSet.add(nestedApi);
-        // Recursively get nested APIs of nested APIs
-        const deepNestedApis = getNestedApis(nestedApi);
-        deepNestedApis.forEach((api) => apisSet.add(api));
+        if (COMPOSITE_APIS.has(nestedApi)) {
+          const deepNestedApis = getNestedApis(nestedApi);
+          deepNestedApis.forEach((api) => {
+            if (!COMPOSITE_APIS.has(api)) apisSet.add(api);
+          });
+        } else {
+          apisSet.add(nestedApi);
+          const deepNestedApis = getNestedApis(nestedApi);
+          deepNestedApis.forEach((api) => {
+            if (!COMPOSITE_APIS.has(api)) apisSet.add(api);
+          });
+        }
       }
     }
   }
@@ -385,11 +398,11 @@ function parseApis(apiString) {
 
 function parseComponents(componentString, componentTypesMap) {
   // Remove whitespace and newlines
-  componentString = componentString.replace(/\s+/g, ' ').trim();
+  const cleanedComponentString = componentString.replace(/\s+/g, ' ').trim();
 
   // Check if it directly references one of our parsed component types
   for (const [typeName, components] of Object.entries(componentTypesMap)) {
-    if (componentString.includes(typeName)) {
+    if (cleanedComponentString.includes(typeName)) {
       return components;
     }
   }
@@ -444,8 +457,7 @@ function createReverseMapping(targetsJson) {
 // Find the generated_docs_data.json file to determine output location
 function findGeneratedDocsPath() {
   const generatedDir = path.join(__dirname, 'generated');
-  
-  // Look for generated_docs_data.json recursively
+
   function findFile(dir) {
     const files = fs.readdirSync(dir);
     for (const file of files) {
@@ -460,9 +472,9 @@ function findGeneratedDocsPath() {
     }
     return null;
   }
-  
+
   const docsPath = findFile(generatedDir);
-  return docsPath || generatedDir; // Fallback to generated root if not found
+  return docsPath ?? generatedDir;
 }
 
 // Generate the JSON
@@ -472,10 +484,7 @@ const targetsJson = parseTargetsFile();
 const extendedJson = createReverseMapping(targetsJson);
 
 // Write to output file
-const outputPath = path.join(
-  findGeneratedDocsPath(),
-  'targets.json',
-);
+const outputPath = path.join(findGeneratedDocsPath(), 'targets.json');
 const outputDir = path.dirname(outputPath);
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, {recursive: true});
@@ -491,8 +500,6 @@ console.log('\n📋 Sample - First target:');
 const firstTarget = Object.keys(targetsJson)[0];
 console.log(JSON.stringify({[firstTarget]: targetsJson[firstTarget]}, null, 2));
 console.log('\n📋 Sample - API reverse mapping:');
-console.log(
-  JSON.stringify({StandardApi: extendedJson['StandardApi']}, null, 2),
-);
+console.log(JSON.stringify({StandardApi: extendedJson.StandardApi}, null, 2));
 console.log('\n📋 Sample - Component reverse mapping:');
-console.log(JSON.stringify({Tile: extendedJson['Tile']}, null, 2));
+console.log(JSON.stringify({Tile: extendedJson.Tile}, null, 2));
