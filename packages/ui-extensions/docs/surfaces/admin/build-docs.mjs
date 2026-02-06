@@ -9,7 +9,7 @@ import {
   copyGeneratedToShopifyDev,
   replaceFileContent,
 } from '../build-doc-shared.mjs';
-import {extractIconList} from './build-doc-extract-icons.mjs';
+import { extractIconList } from './build-doc-extract-icons.mjs';
 
 const EXTENSIONS_API_VERSION = process.argv[2] || 'unstable';
 
@@ -239,7 +239,8 @@ const templates = {
       'width: 100%; transform: scale(1.0); transform-origin: top left;',
   }),
   compositionPattern: createTemplate({
-    layoutStyles: 'display: grid; padding: 2rem;',
+    layoutStyles:
+      'display: grid; align-items: center; justify-items: stretch; gap: 0.5rem; padding: 1rem;',
   }),
   example: createTemplate({
     layoutStyles: 'display: grid; place-items: center; gap: 0.5rem;',
