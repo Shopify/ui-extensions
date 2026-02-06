@@ -13,9 +13,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'CustomerApi',
+      title: 'Methods',
       description:
-        'The `CustomerApi` object provides access to customer data. Access this property through `api.customer` to interact with the current customer context.',
+        'The `CustomerApi` object provides access to customer data. Access these methods through `api.customer` to interact with the current customer context.',
       type: 'CustomerApiContent',
     },
   ],
