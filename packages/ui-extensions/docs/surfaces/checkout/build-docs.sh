@@ -57,17 +57,17 @@ fi
 
 # Copy the generated docs to shopify-dev
 if [ -d ../../../shopify-dev ]; then
-    mkdir -p ../../../shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
-    cp ./$DOCS_PATH/generated/* ../../../shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+    mkdir -p ../../../shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+    cp ./$DOCS_PATH/generated/* ../../../shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
     # Replace 'unstable' with the exact API version in relative doc links
     sed -i \
       "s/\/docs\/api\/checkout-ui-extensions\/unstable/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
-      ../../../shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data.json
+      ../../../shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data.json
     sed_exit=$?
     if [ $sed_exit -ne 0 ]; then
       fail_and_exit $sed_exit
     fi
-    rsync -a --delete ./$DOCS_PATH/screenshots/ ../../../shopify-dev/content-v2/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
+    rsync -a --delete ./$DOCS_PATH/screenshots/ ../../../shopify-dev/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
 
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
     echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/checkout-ui-extensions"
