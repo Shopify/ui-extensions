@@ -15,15 +15,15 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'NavigationApi',
+      title: 'Methods',
       description:
-        'The global `navigation` object provides web-standard navigation functionality. Access these properties and methods directly through the global `navigation` object to manage navigation within modal interfaces.',
+        'The global `navigation` object provides web-standard navigation functionality. Access these methods directly through the global `navigation` object to manage navigation within modal interfaces.',
       type: 'Navigation',
     },
     {
       title: 'Window',
       description:
-        'The global `window` object provides control over the extension screen lifecycle. Access these properties and methods directly through the global `window` object to manage the modal interface.',
+        'The global `window` object provides control over the extension screen lifecycle. Access these methods directly through the global `window` object to manage the modal interface.',
       type: 'Window',
     },
   ],
