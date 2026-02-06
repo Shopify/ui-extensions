@@ -24,9 +24,9 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'PrintActionExtensionApi',
+      title: 'Methods',
       description:
-        'The `PrintActionExtensionApi` object provides methods for print action extensions that generate custom printable documents. Access the following properties on the `PrintActionExtensionApi` object to access selected resources and display picker dialogs for print configuration.',
+        'The `PrintActionExtensionApi` object provides methods for print action extensions that generate custom printable documents. Access the following methods on the `PrintActionExtensionApi` object to access selected resources and display picker dialogs for print configuration.',
       type: 'PrintActionExtensionApi',
     },
   ],
