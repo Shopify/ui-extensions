@@ -8,6 +8,25 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`CustomerSegmentTemplate`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/customersegmenttemplate) component.',
+  defaultExample: {
+    description:
+      'Create a segment template targeting customers who spent $500+ across 5+ orders. This example uses `total_spent` and `orders_count` queries to identify high-value customers, and demonstrates `shopify.i18n.translate` for internationalized template titles and descriptions.',
+    codeblock: {
+      title: 'Target high-value customers',
+      tabs: [
+        {
+          title: 'React',
+          code: './examples/high-value-customers.tsx',
+          language: 'tsx',
+        },
+        {
+          title: 'TS',
+          code: './examples/high-value-customers.ts',
+          language: 'ts',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'CustomerSegmentTemplateApi',
@@ -16,6 +35,49 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'CustomerSegmentTemplateApi',
     },
   ],
+  examples: {
+    description: 'Pre-built customer segment templates',
+    examples: [
+      {
+        description:
+          'Create a segment template targeting customers with birthdays this month. This example requires the `facts.birth_date` metafield to be set up, which enables birthday-based customer targeting for marketing campaigns.',
+        codeblock: {
+          title: 'Target customers with birthdays this month',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/birthday-this-month.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/birthday-this-month.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Create a segment template targeting customers who abandoned at least one checkout in the last 7 days. This example uses `abandoned_checkouts_count` and `last_abandoned_order_date` queries with dynamic date calculation to identify customers for abandoned cart email outreach.',
+        codeblock: {
+          title: "Target customers who started checkout but didn't finish",
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/abandoned-cart-recovery.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/abandoned-cart-recovery.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
