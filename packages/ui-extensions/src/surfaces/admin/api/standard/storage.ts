@@ -18,7 +18,7 @@ export interface Storage<
   ): Promise<void>;
 
   /**
-   * Sets multiple key-value pairs in the storage at once. Use this for efficient batch operations when you need to save multiple related values together, such as form data or configuration settings. This operation is atomic: if it fails, no changes are made to storage, ensuring data consistency.
+   * Sets multiple key-value pairs in the storage at once. Use this for efficient batch operations when you need to save multiple related values together, such as form data or configuration settings.
    *
    * @param entries - An object containing key-value pairs to store. Values can be any primitive type supported by `JSON.stringify`.
    *
