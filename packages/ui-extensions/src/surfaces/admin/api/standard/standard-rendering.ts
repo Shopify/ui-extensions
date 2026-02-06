@@ -7,12 +7,12 @@ export interface StandardRenderingExtensionApi<
   ExtensionTarget extends AnyExtensionTarget,
 > extends StandardApi<ExtensionTarget> {
   /**
-   * Renders the [Resource Picker](resource-picker), allowing users to select a resource for the extension to use as part of its flow.
+   * Opens the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) modal for selecting products, variants, or collections. Returns the selected resources when the user confirms their selection, or undefined if they cancel.
    */
   resourcePicker: ResourcePickerApi;
 
   /**
-   * Renders a custom [Picker](picker) dialog allowing users to select values from a list.
+   * Opens a custom selection dialog with your app-specific data. Use the [Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) to define the picker's heading, items, headers, and selection behavior. Returns a Promise that resolves to a `Picker` object with a `selected` property for accessing the merchant's selection.
    */
   picker: PickerApi;
 }
