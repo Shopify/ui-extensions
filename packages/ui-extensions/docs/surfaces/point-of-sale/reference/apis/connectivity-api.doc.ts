@@ -14,9 +14,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'ConnectivityApi',
+      title: 'Methods',
       description:
-        'The `ConnectivityApi` object provides access to current connectivity information and change notifications. Access these properties through `shopify.connectivity` to monitor network status.',
+        'The `ConnectivityApi` object provides access to current connectivity information and change notifications. Access these methods through `shopify.connectivity` to monitor network status.',
       type: 'ConnectivityApiContent',
     },
   ],

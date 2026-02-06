@@ -15,9 +15,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'CartLineItemApi',
+      title: 'Methods',
       description:
-        'The `CartLineItemApi` object provides access to the current line item. Access this property through `api.cartLineItem` to interact with the current line item context.',
+        'The `CartLineItemApi` object provides access to the current line item. Access these methods through `api.cartLineItem` to interact with the current line item context.',
       type: 'CartLineItemApi',
     },
   ],

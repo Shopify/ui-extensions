@@ -24,7 +24,7 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'applyMetafieldChange',
+      title: 'Methods',
       description:
         'Applies a [metafield](/docs/apps/build/metafields) change to the validation settings. Use this method to update or remove metafields that store validation function configuration data. The method accepts a change object specifying the operation type, metafield key, namespace, value, and [value type](/docs/apps/build/metafields/list-of-data-types). Returns a promise that resolves to indicate success or provides an error message if the operation fails.',
       type: 'ApplyMetafieldChange',

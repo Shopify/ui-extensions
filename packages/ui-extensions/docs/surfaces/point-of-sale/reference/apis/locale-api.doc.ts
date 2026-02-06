@@ -12,9 +12,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'LocaleApi',
+      title: 'Methods',
       description:
-        'The `LocaleApi` object provides access to current locale information and change notifications. Access these properties through `shopify.locale` to retrieve and monitor locale data.',
+        'The `LocaleApi` object provides access to current locale information and change notifications. Access these methods through `shopify.locale` to retrieve and monitor locale data.',
       type: 'LocaleApiContent',
     },
   ],

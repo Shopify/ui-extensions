@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'CashDrawerApi',
+      title: 'Methods',
       description:
         'The `CashDrawerApi` object provides methods for controlling cash drawer hardware. Access these methods through `shopify.cashDrawer` to trigger cash drawer operations.',
       type: 'CashDrawerApiContent',
