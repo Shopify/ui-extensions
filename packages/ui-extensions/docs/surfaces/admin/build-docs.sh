@@ -52,23 +52,23 @@ fi
 if [ -d ~/src/github.com/Shopify/shopify-dev ]; then
   echo "Copying docs to shopify-dev..."
   
-  mkdir -p ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION
-  cp ./$DOCS_PATH/generated/*.json ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION/
+  mkdir -p ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION
+  cp ./$DOCS_PATH/generated/*.json ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION/
   
   # Replace 'unstable' with the exact API version in relative doc links
   sed -i '' \
     "s/\/docs\/api\/admin-extensions\/unstable/\/docs\/api\/admin-extensions\/$API_VERSION/gi" \
-    ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION/generated_docs_data.json
+    ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION/generated_docs_data.json
   sed_exit=$?
   if [ $sed_exit -ne 0 ]; then
     fail_and_exit $sed_exit
   fi
   
-  mkdir -p ~/src/github.com/Shopify/shopify-dev/content-v2/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION
-  rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/content-v2/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION/
+  mkdir -p ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION
+  rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION/
 
-  echo "✓ Docs copied to ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION"
-  echo "✓ Screenshots copied to ~/src/github.com/Shopify/shopify-dev/content-v2/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION"
+  echo "✓ Docs copied to ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION"
+  echo "✓ Screenshots copied to ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION"
 else
   echo "shopify-dev directory not found at ~/src/github.com/Shopify/shopify-dev - skipping docs copy"
 fi
