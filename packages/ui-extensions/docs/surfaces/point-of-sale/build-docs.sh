@@ -53,6 +53,15 @@ if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
 
+
+# Generate targets.json
+echo "Generating targets.json..."
+node $DOCS_PATH/build-docs-targets-json.mjs $API_VERSION
+targets_exit=$?
+if [ $targets_exit -ne 0 ]; then
+  echo "Warning: Failed to generate targets.json"
+fi
+
 if [ -d $SHOPIFY_DEV_PATH ]; then
   mkdir -p $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION
   cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION
