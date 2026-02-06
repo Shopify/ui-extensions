@@ -39,23 +39,23 @@ fi
 
 if [ -n "$SPIN" ]; then
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
-    cp ./$DOCS_PATH/generated/* ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/checkout_extensions/unstable
-    rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/app/assets/images/templated-apis-screenshots/checkout-ui-extensions/unstable
+    cp ./$DOCS_PATH/generated/* ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/unstable
+    rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/checkout-ui-extensions/unstable
 
     # Copy over to specified calver version
     if [ $# -gt 0 ]
     then
-      mkdir -p ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
-      cp ./$DOCS_PATH/generated/* ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+      mkdir -p ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+      cp ./$DOCS_PATH/generated/* ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
       # Replace 'unstable' with the exact API version in relative doc links
       sed -i \
         "s/\/docs\/api\/checkout-ui-extensions\/unstable/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
-        ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data.json
+        ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data.json
       sed_exit=$?
       if [ $sed_exit -ne 0 ]; then
         fail_and_exit $sed_exit
       fi
-      rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/app/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
+      rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
     fi
 
     cd ~/src/github.com/Shopify/shopify-dev
