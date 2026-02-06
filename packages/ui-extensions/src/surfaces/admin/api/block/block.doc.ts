@@ -8,6 +8,20 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
+  defaultExample: {
+    description:
+      "Fetch and display a product's title, inventory, and status in a [block extension](/docs/api/admin-extensions/{API_VERSION}#building-your-extension). This example uses `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql/) when the page loads and renders a loading [`Spinner`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/spinner) component while fetching.",
+    codeblock: {
+      title: 'Display product information',
+      tabs: [
+        {
+          title: 'jsx',
+          code: './examples/display-product-info.jsx',
+          language: 'jsx',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'BlockExtensionApi',
@@ -16,6 +30,39 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'BlockExtensionApi',
     },
   ],
+  examples: {
+    description: 'Common block extension patterns',
+    examples: [
+      {
+        description:
+          'Check product eligibility with your backend API before launching an action extension. This example validates that the product meets criteria, shows a loading state during the check, and conditionally displays a navigation [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button).',
+        codeblock: {
+          title: 'Navigate to action extension',
+          tabs: [
+            {
+              title: 'jsx',
+              code: './examples/navigate-to-action.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Open the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select related products, then save the associations to your backend. This example tracks selection count and shows feedback when relationships are created.',
+        codeblock: {
+          title: 'Select related products',
+          tabs: [
+            {
+              title: 'jsx',
+              code: './examples/select-related-products.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Core APIs',
   related: [],

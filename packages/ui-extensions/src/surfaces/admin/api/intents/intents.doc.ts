@@ -14,13 +14,16 @@ Use this API to build workflows like adding products to collections from bulk ac
   requires:
     'an Admin UI [block or action](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
+    description:
+      'Launch the article creation workflow from a button click. This example uses `shopify.intents.invoke()` to open the article editor, awaits the workflow completion, and displays success or cancellation feedback based on the response code.',
     image: 'intents.png',
     codeblock: {
-      title: 'Creating a collection',
+      title: 'Create a new article',
       tabs: [
         {
-          code: './examples/create-collection.js',
-          language: 'js',
+          title: 'jsx',
+          code: './examples/create-article.jsx',
+          language: 'jsx',
         },
       ],
     },
@@ -179,29 +182,18 @@ The following tables show which resource types you can create or edit, and what 
     description: 'Intents for each Shopify resource type',
     exampleGroups: [
       {
-        title: 'Article',
+        title: '',
         examples: [
           {
             description:
-              'Create a new article. Opens the article creation workflow.',
+              'Open the article editor for a selected blog post. This example retrieves the article GID from extension context, passes it to the edit intent, and handles both successful updates and cancellations.',
             codeblock: {
-              title: 'Create article',
+              title: 'Edit an existing article',
               tabs: [
                 {
-                  code: './examples/create-article.js',
-                  language: 'js',
-                },
-              ],
-            },
-          },
-          {
-            description: 'Edit an existing article. Requires an article GID.',
-            codeblock: {
-              title: 'Edit article',
-              tabs: [
-                {
-                  code: './examples/edit-article.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/edit-article.jsx',
+                  language: 'jsx',
                 },
               ],
             },
@@ -209,29 +201,32 @@ The following tables show which resource types you can create or edit, and what 
         ],
       },
       {
-        title: 'Catalog',
+        title: '',
         examples: [
           {
             description:
-              'Create a new catalog. Opens the catalog creation workflow.',
+              'Launch the catalog creation workflow to set up B2B customer groups or market-specific product collections. This example invokes the create intent, manages loading state, and displays success or cancellation feedback.',
             codeblock: {
-              title: 'Create catalog',
+              title: 'Create a new catalog',
               tabs: [
                 {
-                  code: './examples/create-catalog.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/create-catalog.jsx',
+                  language: 'jsx',
                 },
               ],
             },
           },
           {
-            description: 'Edit an existing catalog. Requires a catalog GID.',
+            description:
+              'Open the catalog editor to adjust product assignments or market settings. This example retrieves the catalog GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
-              title: 'Edit catalog',
+              title: 'Edit an existing catalog',
               tabs: [
                 {
-                  code: './examples/edit-catalog.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/edit-catalog.jsx',
+                  language: 'jsx',
                 },
               ],
             },
@@ -239,30 +234,32 @@ The following tables show which resource types you can create or edit, and what 
         ],
       },
       {
-        title: 'Collection',
+        title: '',
         examples: [
           {
             description:
-              'Create a new collection. Opens the collection creation workflow.',
+              'Launch the collection creation workflow for organizing products on the storefront. This example invokes the create intent, tracks loading state, and displays feedback when the workflow completes.',
             codeblock: {
-              title: 'Create collection',
+              title: 'Create a new collection',
               tabs: [
                 {
-                  code: './examples/create-collection.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/create-collection.jsx',
+                  language: 'jsx',
                 },
               ],
             },
           },
           {
             description:
-              'Edit an existing collection. Requires a collection GID.',
+              'Open the collection editor to modify products or automation rules. This example retrieves the collection GID, invokes the edit intent, and handles the completion response.',
             codeblock: {
-              title: 'Edit collection',
+              title: 'Edit an existing collection',
               tabs: [
                 {
-                  code: './examples/edit-collection.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/edit-collection.jsx',
+                  language: 'jsx',
                 },
               ],
             },
@@ -270,29 +267,32 @@ The following tables show which resource types you can create or edit, and what 
         ],
       },
       {
-        title: 'Customer',
+        title: '',
         examples: [
           {
             description:
-              'Create a new customer. Opens the customer creation workflow.',
+              'Launch the customer creation form to add a new profile with contact details and addresses. This example invokes the create intent, awaits completion, and displays feedback based on the result code.',
             codeblock: {
-              title: 'Create customer',
+              title: 'Create a new customer',
               tabs: [
                 {
-                  code: './examples/create-customer.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/create-customer.jsx',
+                  language: 'jsx',
                 },
               ],
             },
           },
           {
-            description: 'Edit an existing customer. Requires a customer GID.',
+            description:
+              'Open the customer editor to update contact information or tags. This example retrieves the customer GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
-              title: 'Edit customer',
+              title: 'Edit an existing customer',
               tabs: [
                 {
-                  code: './examples/edit-customer.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/edit-customer.jsx',
+                  language: 'jsx',
                 },
               ],
             },
@@ -300,29 +300,32 @@ The following tables show which resource types you can create or edit, and what 
         ],
       },
       {
-        title: 'Discount',
+        title: '',
         examples: [
           {
             description:
-              'Create a new discount. Opens the discount creation workflow. Requires a discount type.',
+              'Launch the discount creation form for setting up promotional campaigns. This example invokes the create intent, manages loading state, and displays feedback on completion.',
             codeblock: {
-              title: 'Create discount',
+              title: 'Create a new discount',
               tabs: [
                 {
-                  code: './examples/create-discount.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/create-discount.jsx',
+                  language: 'jsx',
                 },
               ],
             },
           },
           {
-            description: 'Edit an existing discount. Requires a discount GID.',
+            description:
+              'Open the discount editor to adjust values or extend active dates. This example retrieves the discount GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
-              title: 'Edit discount',
+              title: 'Edit an existing discount',
               tabs: [
                 {
-                  code: './examples/edit-discount.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/edit-discount.jsx',
+                  language: 'jsx',
                 },
               ],
             },
@@ -330,29 +333,32 @@ The following tables show which resource types you can create or edit, and what 
         ],
       },
       {
-        title: 'Market',
+        title: '',
         examples: [
           {
             description:
-              'Create a new market. Opens the market creation workflow.',
+              'Launch the market creation workflow for international selling with region-specific configurations. This example invokes the create intent, manages loading state, and displays feedback on completion.',
             codeblock: {
-              title: 'Create market',
+              title: 'Create a new market',
               tabs: [
                 {
-                  code: './examples/create-market.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/create-market.jsx',
+                  language: 'jsx',
                 },
               ],
             },
           },
           {
-            description: 'Edit an existing market. Requires a market GID.',
+            description:
+              'Open the market editor to adjust geographic coverage or pricing strategies. This example retrieves the market GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
-              title: 'Edit market',
+              title: 'Edit an existing market',
               tabs: [
                 {
-                  code: './examples/edit-market.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/edit-market.jsx',
+                  language: 'jsx',
                 },
               ],
             },
@@ -360,28 +366,32 @@ The following tables show which resource types you can create or edit, and what 
         ],
       },
       {
-        title: 'Menu',
+        title: '',
         examples: [
           {
-            description: 'Create a new menu. Opens the menu creation workflow.',
+            description:
+              'Launch the menu creation workflow for storefront navigation headers or footers. This example invokes the create intent, tracks loading state, and displays feedback on completion.',
             codeblock: {
-              title: 'Create menu',
+              title: 'Create a new menu',
               tabs: [
                 {
-                  code: './examples/create-menu.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/create-menu.jsx',
+                  language: 'jsx',
                 },
               ],
             },
           },
           {
-            description: 'Edit an existing menu. Requires a menu GID.',
+            description:
+              'Open the menu editor to reorganize navigation structure or update links. This example retrieves the menu GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
-              title: 'Edit menu',
+              title: 'Edit an existing menu',
               tabs: [
                 {
-                  code: './examples/edit-menu.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/edit-menu.jsx',
+                  language: 'jsx',
                 },
               ],
             },
@@ -389,30 +399,32 @@ The following tables show which resource types you can create or edit, and what 
         ],
       },
       {
-        title: '[Metafield](/docs/apps/build/metafields) Definition',
+        title: '',
         examples: [
           {
             description:
-              'Create a new [metafield](/docs/apps/build/metafields) definition. Opens the metafield definition creation workflow.',
+              'Launch the metafield definition creator to add custom data fields to products, orders, or customers. This example invokes the create intent, manages loading state, and displays feedback on completion.',
             codeblock: {
-              title: 'Create metafield definition',
+              title: 'Create a new metafield definition',
               tabs: [
                 {
-                  code: './examples/create-metafield-definition.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/create-metafield-definition.jsx',
+                  language: 'jsx',
                 },
               ],
             },
           },
           {
             description:
-              'Edit an existing [metafield](/docs/apps/build/metafields) definition. Requires a metafield definition GID.',
+              'Open the metafield definition editor to modify validation rules or field descriptions. This example retrieves the definition GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
-              title: 'Edit metafield definition',
+              title: 'Edit an existing metafield definition',
               tabs: [
                 {
-                  code: './examples/edit-metafield-definition.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/edit-metafield-definition.jsx',
+                  language: 'jsx',
                 },
               ],
             },
@@ -420,30 +432,32 @@ The following tables show which resource types you can create or edit, and what 
         ],
       },
       {
-        title: 'Metaobject',
+        title: '',
         examples: [
           {
             description:
-              'Create a new metaobject. Opens the metaobject creation workflow. Requires a type.',
+              'Launch the metaobject creator to add a new entry to a custom content type. This example invokes the create intent, tracks loading state, and displays feedback on completion.',
             codeblock: {
-              title: 'Create metaobject',
+              title: 'Create a new metaobject',
               tabs: [
                 {
-                  code: './examples/create-metaobject.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/create-metaobject.jsx',
+                  language: 'jsx',
                 },
               ],
             },
           },
           {
             description:
-              'Edit an existing metaobject. Requires a metaobject GID.',
+              'Open the metaobject editor to modify field values or resource references. This example retrieves the metaobject GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
-              title: 'Edit metaobject',
+              title: 'Edit an existing metaobject',
               tabs: [
                 {
-                  code: './examples/edit-metaobject.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/edit-metaobject.jsx',
+                  language: 'jsx',
                 },
               ],
             },
@@ -451,30 +465,32 @@ The following tables show which resource types you can create or edit, and what 
         ],
       },
       {
-        title: 'Metaobject Definition',
+        title: '',
         examples: [
           {
             description:
-              'Create a new metaobject definition. Opens the metaobject definition creation workflow.',
+              'Launch the metaobject definition creator to build reusable content types with custom field schemas. This example invokes the create intent, manages loading state, and displays feedback on completion.',
             codeblock: {
-              title: 'Create metaobject definition',
+              title: 'Create a new metaobject definition',
               tabs: [
                 {
-                  code: './examples/create-metaobject-definition.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/create-metaobject-definition.jsx',
+                  language: 'jsx',
                 },
               ],
             },
           },
           {
             description:
-              'Edit an existing metaobject definition. Requires a metaobject definition GID.',
+              'Open the metaobject definition editor to add fields or update validation rules. This example retrieves the definition GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
-              title: 'Edit metaobject definition',
+              title: 'Edit an existing metaobject definition',
               tabs: [
                 {
-                  code: './examples/edit-metaobject-definition.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/edit-metaobject-definition.jsx',
+                  language: 'jsx',
                 },
               ],
             },
@@ -482,28 +498,32 @@ The following tables show which resource types you can create or edit, and what 
         ],
       },
       {
-        title: 'Page',
+        title: '',
         examples: [
           {
-            description: 'Create a new page. Opens the page creation workflow.',
+            description:
+              'Launch the page creator to add an informational page like About Us or Shipping Policy. This example invokes the create intent, manages loading state, and displays feedback on completion.',
             codeblock: {
-              title: 'Create page',
+              title: 'Create a new page',
               tabs: [
                 {
-                  code: './examples/create-page.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/create-page.jsx',
+                  language: 'jsx',
                 },
               ],
             },
           },
           {
-            description: 'Edit an existing page. Requires a page GID.',
+            description:
+              'Open the page editor to update content or SEO metadata. This example retrieves the page GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
-              title: 'Edit page',
+              title: 'Edit an existing page',
               tabs: [
                 {
-                  code: './examples/edit-page.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/edit-page.jsx',
+                  language: 'jsx',
                 },
               ],
             },
@@ -511,29 +531,32 @@ The following tables show which resource types you can create or edit, and what 
         ],
       },
       {
-        title: 'Product',
+        title: '',
         examples: [
           {
             description:
-              'Create a new product. Opens the product creation workflow.',
+              'Launch the product creation workflow to add a new item to the store catalog. This example invokes the create intent, tracks loading state, and displays feedback on completion.',
             codeblock: {
-              title: 'Create product',
+              title: 'Create a new product',
               tabs: [
                 {
-                  code: './examples/create-product.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/create-product.jsx',
+                  language: 'jsx',
                 },
               ],
             },
           },
           {
-            description: 'Edit an existing product. Requires a product GID.',
+            description:
+              'Open the product editor to update details, pricing, or images. This example retrieves the product GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
-              title: 'Edit product',
+              title: 'Edit an existing product',
               tabs: [
                 {
-                  code: './examples/edit-product.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/edit-product.jsx',
+                  language: 'jsx',
                 },
               ],
             },
@@ -541,30 +564,32 @@ The following tables show which resource types you can create or edit, and what 
         ],
       },
       {
-        title: 'Product Variant',
+        title: '',
         examples: [
           {
             description:
-              'Create a new product variant. Opens the variant creation workflow. Requires a product ID.',
+              'Launch the variant creation workflow to add size, color, or material options to a product. This example invokes the create intent, manages loading state, and displays feedback on completion.',
             codeblock: {
-              title: 'Create variant',
+              title: 'Create a new variant',
               tabs: [
                 {
-                  code: './examples/create-variant.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/create-variant.jsx',
+                  language: 'jsx',
                 },
               ],
             },
           },
           {
             description:
-              'Edit an existing product variant. Requires a variant GID.',
+              'Open the variant editor to modify pricing, SKU, or inventory levels. This example retrieves the variant GID from extension context, invokes the edit intent, and handles the completion response.',
             codeblock: {
-              title: 'Edit variant',
+              title: 'Edit an existing variant',
               tabs: [
                 {
-                  code: './examples/edit-variant.js',
-                  language: 'js',
+                  title: 'jsx',
+                  code: './examples/edit-variant.jsx',
+                  language: 'jsx',
                 },
               ],
             },
