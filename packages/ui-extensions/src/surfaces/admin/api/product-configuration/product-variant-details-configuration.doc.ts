@@ -8,6 +8,25 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
+  defaultExample: {
+    description:
+      'Use the product variant [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select component variants for a [bundle](/docs/apps/build/product-merchandising/bundles). This example picks product variants, tracks selections, and posts the product variant IDs to configure the bundle.',
+    codeblock: {
+      title: 'Select product variant components',
+      tabs: [
+        {
+          title: 'React',
+          code: './examples/select-variant-components.tsx',
+          language: 'tsx',
+        },
+        {
+          title: 'TS',
+          code: './examples/select-variant-components.ts',
+          language: 'ts',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'Methods',
@@ -16,6 +35,49 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ProductVariantDetailsConfigurationApi',
     },
   ],
+  examples: {
+    description: 'Configure product variant-level bundles',
+    examples: [
+      {
+        description:
+          'Fetch variant [bundle](/docs/apps/build/product-merchandising/bundles) data including SKU and display name from metafields. This example queries variant-specific details using the [GraphQL Admin API](/docs/api/admin-graphql/), parses the component configuration, and displays variant information.',
+        codeblock: {
+          title: 'Load variant bundle configuration',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/load-variant-bundle-config.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/load-variant-bundle-config.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Navigate to the parent product from variant configuration to view full product context. This example queries the parent product ID using the [GraphQL Admin API](/docs/api/admin-graphql/), displays the parent product title, and provides a navigation button to open the product details page.',
+        codeblock: {
+          title: 'Navigate to parent product',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/navigate-to-parent-product.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/navigate-to-parent-product.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
