@@ -8,6 +8,20 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`FunctionSettings`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
+  defaultExample: {
+    description:
+      'Save a minimum purchase threshold to a metafield with decimal number validation. This example uses a [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/textfield) for input, calls `applyMetafieldChange`, and displays success or error feedback.',
+    codeblock: {
+      title: 'Configure discount threshold',
+      tabs: [
+        {
+          title: 'jsx',
+          code: './examples/configure-discount-threshold.jsx',
+          language: 'jsx',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'applyMetafieldChange',
@@ -21,13 +35,40 @@ const data: ReferenceEntityTemplateSchema = {
         'The `data` object exposed to the extension containing the discount function settings. Provides access to the discount identifier and associated [metafields](/docs/apps/build/metafields) that store function configuration values. Use this data to populate your settings UI and understand the current function configuration in the `admin.discount-details.function-settings.render` target.',
       type: 'DiscountFunctionSettingsData',
     },
-    {
-      title: 'discounts',
-      description:
-        'The `discounts` object provides reactive access to configuration, including classes (product, order, or shipping) and method (automatic or code). Use the signals to read current values and the update functions to modify classes in your settings UI. These values automatically update when changed by the merchant or system.',
-      type: 'DiscountsApi',
-    },
   ],
+  examples: {
+    description: 'Configure discount function settings',
+    examples: [
+      {
+        description:
+          'Save multiple discount configuration settings in a single operation. This example stores customer tags as JSON and usage limits as an integer, demonstrating how to apply multiple metafield changes sequentially.',
+        codeblock: {
+          title: 'Configure eligibility rules',
+          tabs: [
+            {
+              title: 'jsx',
+              code: './examples/configure-eligibility-rules.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Load discount metafields on mount and display current configuration. This example shows reducing metafields into a settings object, checking for missing values, and applying defaults only when needed.',
+        codeblock: {
+          title: 'Load existing settings',
+          tabs: [
+            {
+              title: 'jsx',
+              code: './examples/load-existing-settings.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
@@ -46,7 +87,6 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent:
         "- Metafields are subject to [size limits](/docs/apps/build/metafields/metafield-limits). Individual metafield values can't exceed 256KB, and total metafields per resource have storage limits.\n" +
         '- The `applyMetafieldChange` method is sequential. Operations are processed one at a time. Rapid successive calls may lead to race conditions where later updates overwrite earlier ones.\n' +
-        "- Your extension can't directly modify the discount method. The automatic vs. code setting is controlled by Shopify and only readable via `discounts.method.value`.\n" +
         '- Metafield changes are applied immediately. Unlike some admin forms, metafield changes persist right away without waiting for the merchant to save the discount.',
     },
   ],

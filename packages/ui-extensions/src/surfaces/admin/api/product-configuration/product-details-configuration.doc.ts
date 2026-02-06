@@ -8,6 +8,20 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
+  defaultExample: {
+    description:
+      'Open the product [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select up to five components for a [bundle](/docs/apps/build/product-merchandising/bundles). This example filters out draft and archived products, saves the bundle configuration to your backend, and tracks the selection count.',
+    codeblock: {
+      title: 'Select bundle components',
+      tabs: [
+        {
+          title: 'jsx',
+          code: './examples/select-bundle-components.jsx',
+          language: 'jsx',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'ProductDetailsConfigurationApi',
@@ -16,6 +30,39 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ProductDetailsConfigurationApi',
     },
   ],
+  examples: {
+    description: 'Configure product bundles',
+    examples: [
+      {
+        description:
+          "Query a product's bundle metafield and parse the JSON components array. This example fetches bundle data in `useEffect`, parses the stored configuration, and displays the component count.",
+        codeblock: {
+          title: 'Load bundle configuration',
+          tabs: [
+            {
+              title: 'jsx',
+              code: './examples/load-bundle-config.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Launch the product creation workflow using [intents](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/intents-api) and capture the new product ID. This example invokes the `create` intent, waits for completion, and displays the created product ID from the response data.',
+        codeblock: {
+          title: 'Create bundle component',
+          tabs: [
+            {
+              title: 'jsx',
+              code: './examples/navigate-to-component.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],

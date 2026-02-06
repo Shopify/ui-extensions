@@ -1,0 +1,28 @@
+import {render} from 'preact';
+import {useState} from 'preact/hooks';
+
+export default async () => {
+  render(<Extension />, document.body);
+};
+
+function Extension() {
+  const [selected, setSelected] = useState(null);
+
+  const handlePick = async () => {
+    const result = await shopify.resourcePicker({
+      type: 'product',
+      selectionIds: [
+        'gid://shopify/Product/123',
+        'gid://shopify/Product/456',
+      ],
+    });
+    setSelected(result);
+  };
+
+  return (
+    <s-admin-block heading="Resource Picker">
+      <s-button onClick={handlePick}>Select Products</s-button>
+      {selected && <s-text>{selected.length} products selected</s-text>}
+    </s-admin-block>
+  );
+}

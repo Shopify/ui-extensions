@@ -3,9 +3,23 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Customer Segment Template Extension API',
   description:
-    'The Customer Segment Template Extension API lets you [build a customer segment template extension](/docs/apps/build/marketing-analytics/customer-segments/build-a-template-extension). Merchants can use your templates to quickly set up [customer segments](/docs/apps/build/marketing-analytics/customer-segments) based on custom criteria.',
+    'The Customer Segment Template Extension API lets you [build a customer segment template extension](/docs/apps/build/marketing-analytics/customer-segments/build-a-template-extension). Merchants can use your templates to set up [customer segments](/docs/apps/build/marketing-analytics/customer-segments) based on custom criteria.',
   isVisualComponent: false,
   type: 'API',
+  defaultExample: {
+    description:
+      'Create a segment template targeting customers who spent $500+ across 5+ orders. This example uses `total_spent` and `orders_count` queries to identify high-value customers, and demonstrates `shopify.i18n.translate` for internationalized template titles and descriptions.',
+    codeblock: {
+      title: 'Target high-value customers',
+      tabs: [
+        {
+          title: 'jsx',
+          code: './examples/high-value-customers.jsx',
+          language: 'jsx',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'CustomerSegmentTemplateApi',
@@ -14,6 +28,39 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'CustomerSegmentTemplateApi',
     },
   ],
+  examples: {
+    description: 'Pre-built customer segment templates',
+    examples: [
+      {
+        description:
+          'Create a segment template targeting customers with birthdays this month. This example requires the `facts.birth_date` metafield to be set up, which enables birthday-based customer targeting for marketing campaigns.',
+        codeblock: {
+          title: 'Target customers with birthdays this month',
+          tabs: [
+            {
+              title: 'jsx',
+              code: './examples/birthday-this-month.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Create a segment template targeting customers who abandoned at least one checkout in the last 7 days. This example uses `abandoned_checkouts_count` and `last_abandoned_order_date` queries with dynamic date calculation to identify customers for abandoned cart email outreach.',
+        codeblock: {
+          title: "Target customers who started checkout but didn't finish",
+          tabs: [
+            {
+              title: 'jsx',
+              code: './examples/abandoned-cart-recovery.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
