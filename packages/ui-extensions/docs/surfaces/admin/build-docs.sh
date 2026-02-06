@@ -49,6 +49,14 @@ if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
 
+# Generate targets.json
+echo "Generating targets.json..."
+node ./$DOCS_PATH/build-docs-targets-json.mjs $API_VERSION
+targets_exit=$?
+if [ $targets_exit -ne 0 ]; then
+  fail_and_exit $targets_exit
+fi
+
 if [ -d ~/src/github.com/Shopify/shopify-dev ]; then
   echo "Copying docs to shopify-dev..."
   
