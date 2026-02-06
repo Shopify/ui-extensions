@@ -33,7 +33,7 @@ const generatedDocsPath = path.join(docsPath, 'generated');
 const shopifyDevPath = await resolveShopifyDevPath(rootPath);
 const shopifyDevDBPath = path.join(
   shopifyDevPath,
-  'db/data/docs/templated_apis',
+  'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
 const generatedDocsDataFile = 'generated_docs_data.json';
@@ -145,7 +145,7 @@ const generateExtensionsDocs = async () => {
     path.join(docsPath, 'screenshots'),
     path.join(
       shopifyDevPath,
-      'content-v2/assets/images/templated-apis-screenshots/pos-ui-extensions',
+      'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/pos-ui-extensions',
       EXTENSIONS_API_VERSION,
     ),
     {recursive: true},
