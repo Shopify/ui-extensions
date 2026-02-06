@@ -6,6 +6,20 @@ const data: ReferenceEntityTemplateSchema = {
     'The Standard API provides core functionality available to all Admin UI extension types. Use this API to authenticate with your app backend, query the [GraphQL Admin API](/docs/api/admin-graphql), translate content, handle navigation [intents](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/intents-api), and persist data in browser storage.',
   isVisualComponent: false,
   type: 'API',
+  defaultExample: {
+    description:
+      'Retrieve an authentication token and use it to fetch data from your app backend. This example gets the ID token, adds it to request headers, and displays loading states while fetching.',
+    codeblock: {
+      title: 'Authenticate backend requests',
+      tabs: [
+        {
+          title: 'jsx',
+          code: './examples/authenticate-backend-request.jsx',
+          language: 'jsx',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'StandardApi',
@@ -14,6 +28,39 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'StandardApi',
     },
   ],
+  examples: {
+    description: 'Essential patterns for all extensions',
+    examples: [
+      {
+        description:
+          'Query products using the [GraphQL Admin API](/docs/api/admin-graphql/), then update the first product with new tags. This example demonstrates chaining a query and mutation, handling the response data, and showing success feedback.',
+        codeblock: {
+          title: 'Query and mutate product data',
+          tabs: [
+            {
+              title: 'jsx',
+              code: './examples/query-and-mutate.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Save and retrieve user preferences from browser storage. This example loads saved preferences on mount, displays current values, and lets merchants update settings that persist across sessions.',
+        codeblock: {
+          title: 'Persist settings',
+          tabs: [
+            {
+              title: 'jsx',
+              code: './examples/persist-settings.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Core APIs',
   related: [],

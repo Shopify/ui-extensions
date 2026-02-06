@@ -15,124 +15,132 @@ const data: ReferenceEntityTemplateSchema = {
   requires:
     'an Admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
+    description:
+      'Open the product resource picker to select items from the store catalog. This example invokes `shopify.resourcePicker` with `type: "product"`, handles the async selection, and displays the count of selected products. When merchants confirm their selection, the resource picker returns an array of product objects with GIDs, titles, and handles for use in your extension.',
     image: 'resource-picker.png',
     codeblock: {
-      title: 'Product picker',
+      title: 'Select products',
       tabs: [
         {
-          code: './examples/product-picker.js',
-          language: 'js',
+          title: 'jsx',
+          code: './examples/product-picker.jsx',
+          language: 'jsx',
         },
       ],
     },
   },
   examples: {
-    description: 'Resource Pickers with different options',
+    description:
+      'Examples that demonstrate how to use the Resource Picker API.',
     examples: [
       {
-        description: 'Alternate resources',
+        description:
+          'Filter the picker to show only published products using the `filter` option with `published_status: "published"`. This example shows restricting the picker to live, customer-visible products. Use this for promotional campaigns, product recommendations, or any feature that should only work with active inventory, preventing accidental selection of draft or archived products.',
         codeblock: {
-          title: 'Alternate resources',
+          title: 'Filter to published products',
           tabs: [
             {
-              title: 'Collection picker',
-              code: './examples/collection-picker.js',
-              language: 'js',
-            },
-            {
-              title: 'Product variant picker',
-              code: './examples/product-variant-picker.js',
-              language: 'js',
+              title: 'jsx',
+              code: './examples/filters.jsx',
+              language: 'jsx',
             },
           ],
         },
       },
       {
-        description: 'Preselected resources',
+        description:
+          'Limit selection to a maximum of five products by setting `multiple: 5`. This example shows restricting how many products merchants can choose. This is useful for bundle builders with item limits, featured product sections with fixed display slots, or promotional campaigns with maximum product counts. The resource picker automatically prevents selection beyond the limit.',
         codeblock: {
-          title: 'Product picker with preselected resources',
+          title: 'Limit selection count',
           tabs: [
             {
-              code: './examples/selection-ids.js',
-              language: 'js',
+              title: 'jsx',
+              code: './examples/multiple-limited.jsx',
+              language: 'jsx',
             },
           ],
         },
       },
       {
-        description: 'Action verb',
+        description:
+          'Open the resource picker with products already selected by passing GIDs to the `selectionIds` option. This example shows pre-populating the resource picker with current selections for edit workflows. Use this for showing what products are already in a bundle, collection, or promotional set. Merchants can see current selections and modify them by adding or removing products before confirming.',
         codeblock: {
-          title: 'Product picker with action verb',
+          title: 'Preselect products',
           tabs: [
             {
-              code: './examples/action.js',
-              language: 'js',
+              title: 'jsx',
+              code: './examples/selection-ids.jsx',
+              language: 'jsx',
             },
           ],
         },
       },
       {
-        description: 'Multiple selection',
+        description:
+          'Select collections instead of individual products by setting `type: "collection"`. This example shows switching the resource picker to collection mode for choosing product groupings. This is useful for homepage featured collection carousels, navigation menu builders, bulk collection operations, or promotional campaigns targeting entire product categories rather than individual items.',
         codeblock: {
-          title: 'Product picker with multiple selection',
+          title: 'Select collections',
           tabs: [
             {
-              title: 'Unlimited selectable items',
-              code: './examples/multiple-unlimited.js',
-              language: 'js',
-            },
-            {
-              title: 'Maximum selectable items',
-              code: './examples/multiple-limited.js',
-              language: 'js',
+              title: 'jsx',
+              code: './examples/collection-picker.jsx',
+              language: 'jsx',
             },
           ],
         },
       },
       {
-        description: 'Filters',
+        description:
+          'Allow unlimited product selection by setting `multiple: true` without a numeric limit. This example shows enabling flexible multi-selection where merchants control the quantity. Use this for mass product taggers, bulk inventory tools, category managers, or export utilities where selection count depends on merchant needs without artificial constraints.',
         codeblock: {
-          title: 'Product picker with filters',
+          title: 'Select unlimited products',
           tabs: [
             {
-              code: './examples/filters.js',
-              language: 'js',
+              title: 'jsx',
+              code: './examples/multiple-unlimited.jsx',
+              language: 'jsx',
             },
           ],
         },
       },
       {
-        description: 'Filter query',
+        description:
+          'Select specific product variants instead of entire products by setting `type: "variant"`. This example shows switching to variant-level selection for choosing individual SKUs. Use this for inventory transfer tools, variant-specific promotions, wholesale pricing sheets, or shipment builders where you need granular control over size, color, and individual SKU tracking.',
         codeblock: {
-          title: 'Product picker with a custom filter query',
+          title: 'Select product variants',
           tabs: [
             {
-              code: './examples/filter-query.js',
-              language: 'js',
+              title: 'jsx',
+              code: './examples/product-variant-picker.jsx',
+              language: 'jsx',
             },
           ],
         },
       },
       {
-        description: 'Selection',
+        description:
+          'Customize the resource picker button text by setting the `action` option to "add" or "select". This example shows changing the action verb to provide workflow context. "Add" suggests appending to an existing list, while "select" implies choosing for a specific purpose or replacing selections. This subtle language difference improves clarity for different workflow contexts.',
         codeblock: {
-          title: 'Product picker using returned selection payload',
+          title: 'Set action verb',
           tabs: [
             {
-              code: './examples/selection.js',
-              language: 'js',
+              title: 'jsx',
+              code: './examples/action.jsx',
+              language: 'jsx',
             },
           ],
         },
       },
       {
-        description: 'Initial query',
+        description:
+          'Start the resource picker with a pre-filled search query by passing the `query` option. This example shows initializing the picker with a search term already entered. This is helpful when you know what merchants are likely looking for, such as products from a specific vendor, tag, or product type. Merchants can modify the query, but starting with relevant results saves time in large catalogs.',
         codeblock: {
-          title: 'Product picker with initial query provided',
+          title: 'Start with search query',
           tabs: [
             {
-              code: './examples/query.js',
-              language: 'js',
+              title: 'jsx',
+              code: './examples/query.jsx',
+              language: 'jsx',
             },
           ],
         },

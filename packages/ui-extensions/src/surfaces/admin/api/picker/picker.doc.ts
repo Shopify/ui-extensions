@@ -14,13 +14,16 @@ const data: ReferenceEntityTemplateSchema = {
   requires:
     'an Admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
+    description:
+      'Build a custom picker for email templates with multiple columns and status badges. This example shows defining column headers, populating items with searchable data fields, adding visual status indicators, and handling the selection promise. Use this pattern for app-specific resources like templates, product reviews, or subscription options where you need custom data structures beyond standard Shopify resources.',
     image: 'picker.png',
     codeblock: {
-      title: 'Picker',
+      title: 'Select email templates',
       tabs: [
         {
-          code: './examples/template-picker.js',
-          language: 'js',
+          title: 'jsx',
+          code: './examples/template-picker.jsx',
+          language: 'jsx',
         },
       ],
     },
@@ -33,68 +36,74 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   examples: {
-    description: 'Pickers with different options',
+    description: 'Examples that demonstrate how to use the Picker API.',
     examples: [
       {
         description:
-          "Minimal required fields picker configuration.\n\nIf you don't provide the required options (`heading` and `items`), the picker will not open and an error will be logged.",
+          'Disable specific picker items to prevent selection while keeping them visible for context. This example shows setting `disabled: true` on individual items to mark them as non-selectable. This is useful for showing all available options while preventing selection of incompatible resources, templates currently being edited by others, or deprecated features that require upgrades.',
         codeblock: {
-          title: 'Simple picker',
+          title: 'Disable specific items',
           tabs: [
             {
-              code: './examples/minimal.js',
-              language: 'js',
+              title: 'jsx',
+              code: './examples/disabled.jsx',
+              language: 'jsx',
             },
           ],
         },
       },
       {
         description:
-          'Setting a specific number of selectable items. In this example, the user can select up to 2 items.',
+          'Limit selection to a maximum number of items by setting `multiple: 2` in the picker options. This example shows restricting selection to exactly 2 items. Use this when your feature has hard constraints, such as A/B test variants needing exactly two options, comparison views with fixed slots, or integration mappings that support a specific connection count.',
         codeblock: {
-          title: 'Limited selectable items',
+          title: 'Limit selection count',
           tabs: [
             {
-              code: './examples/multiple-limit.js',
-              language: 'js',
-            },
-          ],
-        },
-      },
-      {
-        description: 'Setting an unlimited number of selectable items.',
-        codeblock: {
-          title: 'Unlimited selectable items',
-          tabs: [
-            {
-              code: './examples/multiple-true.js',
-              language: 'js',
+              title: 'jsx',
+              code: './examples/multiple-limit.jsx',
+              language: 'jsx',
             },
           ],
         },
       },
       {
         description:
-          'Providing preselected items in the picker. These will be selected when the picker opens but can be deselected by the user.',
+          'Open the picker with items already selected by setting `selected: true` on individual items. This example shows pre-marking items as selected when the picker opens. Use this for edit workflows where you need to show what resources are already associated with a configuration, such as automation rule triggers or notification recipients. Merchants can modify the selection before confirming.',
         codeblock: {
-          title: 'Preselected items',
+          title: 'Preselect items',
           tabs: [
             {
-              code: './examples/preselected.js',
-              language: 'js',
+              title: 'jsx',
+              code: './examples/preselected.jsx',
+              language: 'jsx',
             },
           ],
         },
       },
       {
         description:
-          "Providing disabled items in the picker. These are disabled and can't be selected by the user.",
+          'Allow unlimited selection by setting `multiple: true` without a numeric limit. This example shows enabling flexible multi-selection where merchants control how many items to choose. This is useful for bulk operations, mass notification sending, export tools, or tag management where selection quantity depends on merchant needs without artificial constraints.',
         codeblock: {
-          title: 'Disabled items',
+          title: 'Select unlimited items',
           tabs: [
             {
-              code: './examples/disabled.js',
-              language: 'js',
+              title: 'jsx',
+              code: './examples/multiple-true.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          "Populate the picker with data from the [GraphQL Admin API](/docs/api/admin-graphql). This example fetches order data when the button is clicked, maps results to picker items, and opens the picker with the returned data. Use this pattern for Shopify data that isn't available through the Resource Picker API, such as orders, draft orders, or fulfillments.",
+        codeblock: {
+          title: 'Use GraphQL data',
+          tabs: [
+            {
+              title: 'jsx',
+              code: './examples/direct-api.jsx',
+              language: 'jsx',
             },
           ],
         },
