@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-env node */
 import fs from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
@@ -36,21 +38,23 @@ function parseLocalComponents() {
     }
 
     const content = fs.readFileSync(componentsPath, 'utf-8');
-    
+
     // Match export statements like: export {ComponentName} from './components/ComponentName/ComponentName';
     const exportMatches = content.matchAll(/export\s*\{\s*(\w+)\s*\}\s*from/g);
     const components = [];
-    
+
     for (const match of exportMatches) {
       const componentName = match[1];
       // Filter out Props types and other exports
-      if (!componentName.endsWith('Props') && 
-          !componentName.includes('Type') &&
-          componentName.charAt(0) === componentName.charAt(0).toUpperCase()) {
+      if (
+        !componentName.endsWith('Props') &&
+        !componentName.includes('Type') &&
+        componentName.charAt(0) === componentName.charAt(0).toUpperCase()
+      ) {
         components.push(componentName);
       }
     }
-    
+
     return components;
   } catch (error) {
     console.error('Error parsing local components:', error);
@@ -65,25 +69,6 @@ function existsSync(filePath) {
   } catch {
     return false;
   }
-}
-
-/**
- * Parse a string union type from a component file
- * e.g., export type SmartGridComponents = 'Tile';
- * or multi-line: export type BlockExtensionComponents = 'Badge' | 'Box' | ...;
- */
-function parseStringUnionType(filePath) {
-  try {
-    const content = fs.readFileSync(filePath, 'utf-8');
-    // Extract all quoted component names from the file
-    const componentNames = content.match(/'([^']+)'/g);
-    if (componentNames) {
-      return componentNames.map((name) => name.replace(/'/g, ''));
-    }
-  } catch (error) {
-    console.error(`Error reading component file ${filePath}:`, error.message);
-  }
-  return null;
 }
 
 /**
@@ -120,40 +105,59 @@ function parseComponentTypesFromFiles() {
  */
 function parseInlineComponentTypes(content, componentTypesMap) {
   // Match type definitions like: type ActionComponents = AnyComponentBuilder<...>
-  const typeDefRegex = /type\s+(\w+)\s*=\s*(AnyComponentBuilder<[\s\S]*?>)\s*;/g;
-  
+  const typeDefRegex =
+    /type\s+(\w+)\s*=\s*(AnyComponentBuilder<[\s\S]*?>)\s*;/g;
+
   let match;
   while ((match = typeDefRegex.exec(content)) !== null) {
     const typeName = match[1];
     const typeDefinition = match[2].replace(/\s+/g, ' ').trim();
-    
+
     // Handle AnyComponentBuilder<Pick<Components, 'Comp1' | 'Comp2'>>
-    const pickMatch = typeDefinition.match(/AnyComponentBuilder<\s*Pick<\s*Components\s*,\s*([\s\S]+?)>\s*>/);
+    const pickMatch = typeDefinition.match(
+      /AnyComponentBuilder<\s*Pick<\s*Components\s*,\s*([\s\S]+?)>\s*>/,
+    );
     if (pickMatch) {
       const pickedUnion = pickMatch[1].trim();
       componentTypesMap[typeName] = parseUnionOfStrings(pickedUnion);
-      console.log(`Parsed ${typeName}: ${componentTypesMap[typeName].length} components (picked: ${componentTypesMap[typeName].join(', ')})`);
+      console.log(
+        `Parsed ${typeName}: ${
+          componentTypesMap[typeName].length
+        } components (picked: ${componentTypesMap[typeName].join(', ')})`,
+      );
       continue;
     }
-    
+
     // Handle AnyComponentBuilder<Omit<Components, 'Comp1' | 'Comp2'>>
-    const omitMatch = typeDefinition.match(/AnyComponentBuilder<\s*Omit<\s*Components\s*,\s*([\s\S]+?)>\s*>/);
+    const omitMatch = typeDefinition.match(
+      /AnyComponentBuilder<\s*Omit<\s*Components\s*,\s*([\s\S]+?)>\s*>/,
+    );
     if (omitMatch) {
       const omittedUnion = omitMatch[1].trim();
       const omittedComponents = parseUnionOfStrings(omittedUnion);
-      
+
       if (allComponents.length > 0) {
-        componentTypesMap[typeName] = allComponents.filter((c) => !omittedComponents.includes(c));
-        console.log(`Parsed ${typeName}: ${componentTypesMap[typeName].length} components (omitting ${omittedComponents.join(', ')})`);
+        componentTypesMap[typeName] = allComponents.filter(
+          (component) => !omittedComponents.includes(component),
+        );
+        console.log(
+          `Parsed ${typeName}: ${
+            componentTypesMap[typeName].length
+          } components (omitting ${omittedComponents.join(', ')})`,
+        );
       }
       continue;
     }
-    
+
     // Handle plain AnyComponentBuilder<Components>
-    const plainMatch = typeDefinition.match(/AnyComponentBuilder<\s*Components\s*>/);
+    const plainMatch = typeDefinition.match(
+      /AnyComponentBuilder<\s*Components\s*>/,
+    );
     if (plainMatch && allComponents.length > 0) {
       componentTypesMap[typeName] = [...allComponents];
-      console.log(`Parsed ${typeName}: ${componentTypesMap[typeName].length} components (all)`);
+      console.log(
+        `Parsed ${typeName}: ${componentTypesMap[typeName].length} components (all)`,
+      );
     }
   }
 }
@@ -208,9 +212,12 @@ function parseTargetsFile() {
       if (between === '') {
         const jsDocStart = beforeMatch.lastIndexOf('/**');
         if (jsDocStart !== -1) {
-          const jsDocContent = beforeMatch.substring(jsDocStart, lastJsDocEnd + 2);
+          const jsDocContent = beforeMatch.substring(
+            jsDocStart,
+            lastJsDocEnd + 2,
+          );
           if (jsDocContent.includes('@private')) {
-            continue; // Skip this target
+            continue;
           }
         }
       }
@@ -220,8 +227,8 @@ function parseTargetsFile() {
 
     // Remove comments before parsing (they can contain commas that break splitting)
     renderExtensionContent = renderExtensionContent
-      .replace(/\/\/[^\n]*/g, '') // Remove single-line comments
-      .replace(/\/\*[\s\S]*?\*\//g, ''); // Remove multi-line comments
+      .replace(/\/\/[^\n]*/g, '')
+      .replace(/\/\*[\s\S]*?\*\//g, '');
 
     // Split by comma to separate API and Components (but be careful with nested <> brackets)
     const parts = splitByTopLevelComma(renderExtensionContent);
@@ -296,7 +303,7 @@ function splitByTopLevelComma(str) {
 
 function getNestedApis(apiName) {
   // Check if we've already parsed this API
-  if (apiDefinitionsCache.hasOwnProperty(apiName)) {
+  if (Object.prototype.hasOwnProperty.call(apiDefinitionsCache, apiName)) {
     return apiDefinitionsCache[apiName];
   }
 
@@ -415,7 +422,7 @@ function getNestedApis(apiName) {
     }
 
     // Find the end position (semicolon at the correct nesting level)
-    let startPos = startMatch.index + startMatch[0].length;
+    const startPos = startMatch.index + startMatch[0].length;
     let endPos = startPos;
     let braceDepth = 0;
     let angleDepth = 0;
@@ -456,19 +463,22 @@ function getNestedApis(apiName) {
   }
 }
 
+// APIs that are composites of other documented APIs - we list their constituent APIs, not these wrapper types
+const COMPOSITE_APIS = new Set(['StandardApi', 'ActionTargetApi']);
+
 function parseApis(apiString) {
   const apisSet = new Set();
 
   // Remove any comments
-  apiString = apiString
+  const cleanedApiString = apiString
     .replace(/\/\/[^\n]*/g, '')
     .replace(/\/\*[\s\S]*?\*\//g, '');
 
   // Split by & and extract API names
-  const parts = apiString
+  const parts = cleanedApiString
     .split('&')
-    .map((s) => s.trim())
-    .filter((s) => s);
+    .map((part) => part.trim())
+    .filter((part) => part);
 
   for (const part of parts) {
     // Match StandardApi<'...'> or just ApiName
@@ -485,16 +495,27 @@ function parseApis(apiString) {
     }
 
     if (apiName) {
-      // Add the API itself
-      apisSet.add(apiName);
+      // Add the API itself only if it's not a composite (we document its constituents, not the wrapper)
+      if (!COMPOSITE_APIS.has(apiName)) {
+        apisSet.add(apiName);
+      }
 
-      // Get nested APIs from this API (recursively)
+      // Get nested APIs from this API (recursively); skip composite APIs (we only want their constituents)
       const nestedApis = getNestedApis(apiName);
       for (const nestedApi of nestedApis) {
-        apisSet.add(nestedApi);
-        // Recursively get nested APIs of nested APIs
-        const deepNestedApis = getNestedApis(nestedApi);
-        deepNestedApis.forEach((api) => apisSet.add(api));
+        if (COMPOSITE_APIS.has(nestedApi)) {
+          // Expand the composite but don't add it; add its nested APIs instead
+          const deepNestedApis = getNestedApis(nestedApi);
+          deepNestedApis.forEach((api) => {
+            if (!COMPOSITE_APIS.has(api)) apisSet.add(api);
+          });
+        } else {
+          apisSet.add(nestedApi);
+          const deepNestedApis = getNestedApis(nestedApi);
+          deepNestedApis.forEach((api) => {
+            if (!COMPOSITE_APIS.has(api)) apisSet.add(api);
+          });
+        }
       }
     }
   }
@@ -504,10 +525,12 @@ function parseApis(apiString) {
 
 function parseComponents(componentString, componentTypesMap) {
   // Remove whitespace and newlines
-  componentString = componentString.replace(/\s+/g, ' ').trim();
+  const cleanedComponentString = componentString.replace(/\s+/g, ' ').trim();
 
   // Handle AnyComponentBuilder<Pick<Components, 'Comp1' | 'Comp2'>>
-  const pickMatch = componentString.match(/AnyComponentBuilder<\s*Pick<\s*Components\s*,\s*([^>]+)>\s*>/);
+  const pickMatch = cleanedComponentString.match(
+    /AnyComponentBuilder<\s*Pick<\s*Components\s*,\s*([^>]+)>\s*>/,
+  );
   if (pickMatch) {
     const pickedUnion = pickMatch[1].trim();
     // Parse the union of component names
@@ -524,11 +547,13 @@ function parseComponents(componentString, componentTypesMap) {
   }
 
   // Handle AnyComponentBuilder<Omit<Components, 'Comp1'>>
-  const omitMatch = componentString.match(/AnyComponentBuilder<\s*Omit<\s*Components\s*,\s*'([^']+)'\s*>\s*>/);
+  const omitMatch = componentString.match(
+    /AnyComponentBuilder<\s*Omit<\s*Components\s*,\s*'([^']+)'\s*>\s*>/,
+  );
   if (omitMatch) {
     const omittedComponent = omitMatch[1];
     // Return all components except the omitted one
-    return allComponents.filter((c) => c !== omittedComponent);
+    return allComponents.filter((component) => component !== omittedComponent);
   }
 
   // Check if it directly references one of our parsed component types
@@ -596,27 +621,26 @@ try {
   const extendedJson = createReverseMapping(targetsJson);
 
   // Write to output file
-  const outputPath = path.join(
-    __dirname,
-    'generated/targets.json',
-  );
+  const outputPath = path.join(__dirname, 'generated/targets.json');
   const outputDir = path.dirname(outputPath);
   if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+    fs.mkdirSync(outputDir, {recursive: true});
   }
   fs.writeFileSync(outputPath, JSON.stringify(extendedJson, null, 2));
 
   console.log('✅ Generated targets JSON at:', outputPath);
-  
+
   // Count the different types of entries
   const targetEntries = Object.keys(targetsJson).length;
   const apiEntries = Object.keys(extendedJson).filter(
-    (key) => extendedJson[key].targets && !targetsJson[key] && key.endsWith('Api')
+    (key) =>
+      extendedJson[key].targets && !targetsJson[key] && key.endsWith('Api'),
   ).length;
   const componentEntries = Object.keys(extendedJson).filter(
-    (key) => extendedJson[key].targets && !targetsJson[key] && !key.endsWith('Api')
+    (key) =>
+      extendedJson[key].targets && !targetsJson[key] && !key.endsWith('Api'),
   ).length;
-  
+
   console.log('\n📋 Summary:');
   console.log(`  Extension targets: ${targetEntries}`);
   console.log(`  API reverse mappings: ${apiEntries}`);
