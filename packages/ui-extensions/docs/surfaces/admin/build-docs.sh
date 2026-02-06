@@ -58,7 +58,7 @@ if [ -d ~/src/github.com/Shopify/shopify-dev ]; then
   echo "Copying docs to shopify-dev..."
 
   mkdir -p ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION
-  cp ./$DOCS_PATH/generated/* ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION/
+  cp ./$DOCS_PATH/generated/*.json ~/src/github.com/Shopify/shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION/
 
   # Replace 'unstable' with the exact API version in relative doc links
   sed -i '' \
