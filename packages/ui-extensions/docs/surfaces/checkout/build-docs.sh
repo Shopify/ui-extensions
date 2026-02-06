@@ -30,6 +30,10 @@ build_exit=$?
 
 git checkout HEAD -- src/surfaces/customer-account.ts
 
+# Generate targets.json
+echo "Generating targets.json..."
+node ./$DOCS_PATH/build-docs-targets-json.mjs
+
 # TODO: get generate-docs to stop requiring JS files:
 # https://github.com/Shopify/generate-docs#important-note
 find ./ -name '*.doc*.js' -exec rm -r {} \;

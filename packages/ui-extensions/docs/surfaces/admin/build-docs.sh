@@ -14,6 +14,9 @@ COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --m
 eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
 build_exit=$?
 
+# Generate targets.json
+echo "Generating targets.json..."
+node ./$DOCS_PATH/build-docs-targets-json.mjs
 
 # Remove .doc.js files
 find ./ -name '*.doc*.js' -exec rm -r {} \;
