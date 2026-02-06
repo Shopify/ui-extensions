@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'PrintApi',
+      title: 'Methods',
       description:
         'The `PrintApi` object provides methods for triggering document printing. Access these methods through `api.print` to initiate print operations with various document types.',
       type: 'PrintApiContent',
