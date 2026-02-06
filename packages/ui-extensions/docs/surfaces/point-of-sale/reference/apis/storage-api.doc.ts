@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   related: [],
   definitions: [
     {
-      title: 'StorageApi',
+      title: 'Methods',
       description:
         'The `StorageApi` object provides access to persistent local storage methods for your POS UI extension. Access these methods through `api.storage` to store, retrieve, and manage data that persists across sessions.',
       type: 'Storage',
