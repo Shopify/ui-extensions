@@ -8,6 +8,20 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'API',
   requires:
     'the [`FunctionSettings`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
+  defaultExample: {
+    description:
+      'Set preferred and fallback fulfillment locations with [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/textfield) inputs. This example applies two metafield changes in a single batch operation to configure location priority for order routing.',
+    codeblock: {
+      title: 'Configure location priority',
+      tabs: [
+        {
+          title: 'jsx',
+          code: './examples/configure-location-priority.jsx',
+          language: 'jsx',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: 'OrderRoutingRuleApi',
@@ -16,6 +30,39 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'OrderRoutingRuleApi',
     },
   ],
+  examples: {
+    description: 'Configure order routing rules',
+    examples: [
+      {
+        description:
+          'Batch remove outdated metafields from routing configuration. This example maps deprecated keys to removal operations, displays current rule stats, and shows a success banner after cleanup.',
+        codeblock: {
+          title: 'Remove deprecated settings',
+          tabs: [
+            {
+              title: 'jsx',
+              code: './examples/remove-deprecated-settings.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Configure maximum distance, inventory checking, and excluded zip codes in one save. This example demonstrates using number fields, checkboxes, and JSON storage for complex routing criteria.',
+        codeblock: {
+          title: 'Set routing criteria',
+          tabs: [
+            {
+              title: 'jsx',
+              code: './examples/set-routing-criteria.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
   category: 'Target APIs',
   subCategory: 'Contextual APIs',
   related: [],
