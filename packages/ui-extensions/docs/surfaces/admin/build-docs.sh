@@ -42,3 +42,26 @@ targets_exit=$?
 if [ $targets_exit -ne 0 ]; then
   fail_and_exit $targets_exit
 fi
+
+# Make sure https://shopify.dev URLs are relative so they work in Spin (same as checkout)
+if [ -f ./$DOCS_PATH/generated/generated_docs_data.json ]; then
+  sed -i.bak 's|https://shopify.dev||gi' ./$DOCS_PATH/generated/generated_docs_data.json 2>/dev/null || true
+  rm -f ./$DOCS_PATH/generated/generated_docs_data.json.bak
+fi
+
+# Copy the generated docs (including targets.json) to shopify-dev when repo is present as sibling
+if [ -d ../../../shopify-dev ]; then
+  DEST_DIR="../../../shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION"
+  mkdir -p "$DEST_DIR"
+  cp ./$DOCS_PATH/generated/* "$DEST_DIR/"
+  if [ "$API_VERSION" != "unstable" ]; then
+    sed -i.bak "s|/docs/api/admin-extensions/unstable|/docs/api/admin-extensions/$API_VERSION|gi" "$DEST_DIR/generated_docs_data.json" 2>/dev/null || true
+    rm -f "$DEST_DIR/generated_docs_data.json.bak"
+  fi
+  echo "Copied admin docs and targets.json to shopify-dev at $DEST_DIR"
+  if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
+    echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/admin-extensions"
+  fi
+else
+  echo "Not copying to shopify-dev (not found at ../../../shopify-dev)."
+fi
