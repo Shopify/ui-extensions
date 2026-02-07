@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'The `ProductSearchApi` object provides methods for searching and retrieving product information. Access these properties through `shopify.productSearch` to search products and fetch detailed product data.',
+        'The `ProductSearchApi` object provides properties for searching and retrieving product information. Access these properties through `shopify.productSearch` to search products and fetch detailed product data.',
       type: 'ProductSearchApiContent',
     },
   ],
