@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'The `ActionApi` object provides methods for presenting modal interfaces. Access these properties through `shopify.action` to launch full-screen modal experiences.',
+        'The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `shopify.action` to launch full-screen modal experiences.',
       type: 'ActionApiContent',
     },
   ],
