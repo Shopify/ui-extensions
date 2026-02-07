@@ -190,8 +190,8 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'Methods',
-      description: `The \`ResourcePickerOptions\` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items. Access the following methods on the \`ResourcePickerOptions\` object to configure the resource picker's appearance and functionality.`,
+      title: 'Properties',
+      description: `The \`ResourcePickerOptions\` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items. Access the following properties on the \`ResourcePickerOptions\` object to configure the resource picker's appearance and functionality.`,
       type: 'ResourcePickerOptions',
     },
     {
