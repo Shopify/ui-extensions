@@ -279,7 +279,7 @@ By default, the responsive value will query against the closest parent; to look 
     {
       type: 'Generic',
       anchorLink: 'methods',
-      title: 'Methods',
+      title: 'Properties',
       sectionContent: `Methods are functions available on components for programmatic control. Components like \`Modal\`, \`Sheet\`, and \`Announcement\` provide methods such as \`hideOverlay()\` or \`dismiss()\` to control their behavior imperatively when needed.
 
 Use methods when you need to trigger actions that can’t be achieved through property changes alone, such as closing an overlay after an async operation or resetting component state.`,

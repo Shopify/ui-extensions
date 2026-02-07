@@ -30,7 +30,7 @@ Use this API to build workflows like adding products to collections from bulk ac
   },
   definitions: [
     {
-      title: 'Methods',
+      title: 'Properties',
       description: `The \`invoke\` method launches a Shopify admin workflow for creating or editing resources. The method returns a promise that resolves to an activity handle you can await to get the workflow result.
 
 The method accepts either:

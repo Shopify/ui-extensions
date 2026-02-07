@@ -13,9 +13,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'Methods',
+      title: 'Properties',
       description:
-        'The `CartApi` object provides access to cart management functionality and real-time cart state monitoring. Access these methods through `shopify.cart` to interact with the current POS cart.',
+        'The `CartApi` object provides access to cart management functionality and real-time cart state monitoring. Access these properties through `shopify.cart` to interact with the current POS cart.',
       type: 'CartApiContent',
     },
   ],

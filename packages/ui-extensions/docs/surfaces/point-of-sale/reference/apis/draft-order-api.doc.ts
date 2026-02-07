@@ -15,9 +15,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'Methods',
+      title: 'Properties',
       description:
-        'The `DraftOrderApi` object provides access to draft order data. Access these methods through `api.draftOrder` to interact with the current draft order context.',
+        'The `DraftOrderApi` object provides access to draft order data. Access these properties through `api.draftOrder` to interact with the current draft order context.',
       type: 'DraftOrderApiContent',
     },
   ],
