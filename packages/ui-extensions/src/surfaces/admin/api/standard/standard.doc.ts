@@ -29,7 +29,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'The `StandardApi` object provides core methods available to all extension targets. Access the following properties on the `StandardApi` object to identify your extension target, authenticate with your app backend, query the [GraphQL Admin API](/docs/api/admin-graphql), translate content, and handle intents from other extensions.',
+        'The `StandardApi` object provides core properties available to all extension targets. Access the following properties on the `StandardApi` object to identify your extension target, authenticate with your app backend, query the [GraphQL Admin API](/docs/api/admin-graphql), translate content, and handle intents from other extensions.',
       type: 'StandardApi',
     },
   ],
