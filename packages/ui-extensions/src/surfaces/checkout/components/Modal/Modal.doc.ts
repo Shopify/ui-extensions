@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ModalElementSlots',
     },
     {
-      title: 'Methods',
+      title: 'Properties',
       description:
         'Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).',
       type: 'ModalElementMethods',

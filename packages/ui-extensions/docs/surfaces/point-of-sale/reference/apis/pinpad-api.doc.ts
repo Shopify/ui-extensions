@@ -12,9 +12,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'Methods',
+      title: 'Properties',
       description:
-        'The `PinPadApi` object provides methods for displaying secure PIN entry interfaces. Access these methods through `shopify.pinPad` to show PIN pad modals and handle PIN validation.',
+        'The `PinPadApi` object provides methods for displaying secure PIN entry interfaces. Access these properties through `shopify.pinPad` to show PIN pad modals and handle PIN validation.',
       type: 'PinPadApiContent',
     },
   ],

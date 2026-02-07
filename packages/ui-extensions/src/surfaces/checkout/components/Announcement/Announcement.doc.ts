@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AnnouncementElementEvents',
     },
     {
-      title: 'Methods',
+      title: 'Properties',
       description:
         'Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).',
       type: 'AnnouncementElementMethods',
