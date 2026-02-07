@@ -27,8 +27,8 @@ fi
 # Copy targets.json to shopify-dev
 if [ -d ../../../shopify-dev ]; then
   echo "Copying targets.json to shopify-dev..."
-  mkdir -p ../../../shopify-dev/db/data/docs/templated_apis/point_of_sale_extensions/$API_VERSION
-  cp ./$DOCS_PATH/generated/targets.json ../../../shopify-dev/db/data/docs/templated_apis/point_of_sale_extensions/$API_VERSION/
+  mkdir -p ../../../shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/point_of_sale_extensions/$API_VERSION
+  cp ./$DOCS_PATH/generated/targets.json ../../../shopify-dev/areas/platforms/shopify-dev/db/data/docs/templated_apis/point_of_sale_extensions/$API_VERSION/
 
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
     echo "Targets: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/point-of-sale-extensions/$API_VERSION/targets.json"
