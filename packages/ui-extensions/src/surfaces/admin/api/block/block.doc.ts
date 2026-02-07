@@ -29,9 +29,9 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'Methods',
+      title: 'Properties',
       description:
-        'The `BlockExtensionApi` object provides methods for block extensions that render inline content on admin pages. Access the following methods on the `BlockExtensionApi` object to interact with the current context and navigate to other extensions.',
+        'The `BlockExtensionApi` object provides methods for block extensions that render inline content on admin pages. Access the following properties on the `BlockExtensionApi` object to interact with the current context and navigate to other extensions.',
       type: 'BlockExtensionApi',
     },
   ],
