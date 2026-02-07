@@ -28,7 +28,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'SheetElementSlots',
     },
     {
-      title: 'Properties',
+      title: 'Methods',
       description:
         'Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).',
       type: 'SheetElementMethods',
