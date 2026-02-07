@@ -24,7 +24,7 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'Properties',
+      title: 'applyMetafieldChange',
       description:
         'Updates or removes [metafields](/docs/apps/build/metafields) that store discount function configuration data. Accepts a change object with the operation type, key, namespace, value, and [value type](/docs/apps/build/metafields/list-of-data-types).',
       type: 'ApplyMetafieldChange',
