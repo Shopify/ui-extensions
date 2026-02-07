@@ -14,7 +14,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'The `CameraApi` object provides methods for capturing photos using the device camera. Access these properties through `shopify.camera` to take photos and retrieve image data with metadata.',
+        'The `CameraApi` object provides properties for capturing photos using the device camera. Access these properties through `shopify.camera` to take photos and retrieve image data with metadata.',
       type: 'CameraApiContent',
     },
   ],
