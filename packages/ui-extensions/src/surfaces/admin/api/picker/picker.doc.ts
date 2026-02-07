@@ -135,7 +135,7 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'Methods',
+      title: 'Properties',
       description: `The \`picker\` function opens a custom selection dialog with your app-specific data. It accepts configuration options to define the picker's heading, items, headers, and selection behavior. It returns a Promise that resolves to a \`Picker\` object with a \`selected\` property for accessing the merchant's selection.`,
       type: 'PickerApi',
     },
