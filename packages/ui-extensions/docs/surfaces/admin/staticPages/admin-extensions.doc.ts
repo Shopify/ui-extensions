@@ -1,4 +1,3 @@
-/* eslint-disable no-template-curly-in-string */
 import {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
