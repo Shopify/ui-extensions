@@ -3,15 +3,16 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'AdminPrintAction',
   description:
-    'AdminPrintAction is a component used by admin print action extensions to denote a URL to print. Admin print action extensions require the use of this component.',
+    'The `AdminPrintAction` component specifies a URL for print operations in admin print action extensions. Use `AdminPrintAction` to define the print target when merchants trigger print actions from the Shopify admin.\n\nThis component is required for all admin print action extensions and enables custom print views optimized for physical or PDF printing.\n\nLearn how to [build an admin print action extension](/docs/apps/build/admin/actions-blocks/build-admin-print-action).',
   requires: '',
   thumbnail: 'adminprintaction-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
-      title: 'AdminPrintActionProps',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `AdminPrintAction` component.',
       type: 'AdminPrintActionProps',
     },
   ],
@@ -35,18 +36,25 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [
+  subSections: [
     {
-      type: 'component',
-      name: 'AdminAction',
-      url: '/docs/api/admin-extensions/components/other/adminaction',
+      type: 'Generic',
+      title: 'Best practices',
+      anchorLink: 'best-practices',
+      sectionContent: `- **Optimize content for print:** Design the content at the source URL with print in mind. Use appropriate page sizes, avoid interactive elements, and ensure text is readable when printed.
+- **Ensure fast response times:** The print preview loads synchronously, so the source URL should respond quickly to avoid a slow merchant experience.
+- **Serve publicly accessible content:** The source URL must be accessible without authentication from the merchant's browser. Private or authenticated endpoints won't load in the print preview.`,
     },
     {
-      type: 'component',
-      name: 'AdminBlock',
-      url: '/docs/api/admin-extensions/components/other/adminblock',
+      type: 'Generic',
+      title: 'Limitations',
+      anchorLink: 'limitations',
+      sectionContent: `- This component can only be used in admin print action extension targets. It doesn't work in block or action extensions.
+- The print dialog, preview rendering, and print behavior are all controlled by the Shopify admin and can't be customized.
+- This component doesn't support custom print headers, footers, or page size configuration. The print layout depends on the content served by the source URL and the merchant's browser print settings.`,
     },
   ],
+  related: [],
 };
 
 export default data;
