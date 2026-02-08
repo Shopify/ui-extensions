@@ -3,15 +3,16 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'FunctionSettings',
   description:
-    'FunctionSettings should be used when configuring the metafield configuration of a Shopify Function. It provides a structure for various input fields and controls, such as text fields, checkboxes, and selections. It also integrates with the native Contextual Save Bar to handle form submission and reset actions.',
+    'The `FunctionSettings` component configures metafield settings for [Shopify Functions](/docs/api/functions). Use `FunctionSettings` to create configuration interfaces that allow merchants to customize function behavior through structured input fields and controls.\n\nThis component provides a standardized layout for settings forms and integrates with the native save bar to handle form submission and reset actions automatically. For general form submission, use [`Form`](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/form).',
   requires: '',
   thumbnail: 'form-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
-      title: 'FunctionSettingsProps',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `FunctionSettings` component.',
       type: 'FunctionSettingsProps',
     },
   ],
@@ -35,23 +36,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [
+  subSections: [
     {
-      type: 'component',
-      name: 'TextField',
-      url: '/docs/api/admin-extensions/components/forms/textfield',
+      type: 'Generic',
+      title: 'Best practices',
+      anchorLink: 'best-practices',
+      sectionContent: `- **Use \`FunctionSettings\` instead of \`Form\` for Shopify Functions:** \`FunctionSettings\` provides Function-specific error handling and integrates with the metafield configuration flow. Use it in any extension target related to Shopify Function settings.
+- **Group related settings logically:** Organize the input fields inside \`FunctionSettings\` with [\`Section\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/section) and [\`Heading\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/heading) components to create a clear, scannable settings interface.`,
     },
     {
-      type: 'component',
-      name: 'NumberField',
-      url: '/docs/api/admin-extensions/components/forms/numberfield',
-    },
-    {
-      type: 'component',
-      name: 'ChoiceList',
-      url: '/docs/api/admin-extensions/components/forms/choicelist',
+      type: 'Generic',
+      title: 'Limitations',
+      anchorLink: 'limitations',
+      sectionContent: `- \`FunctionSettings\` doesn't include a built-in reset callback like [\`Form\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/form). The save bar's discard behavior is managed by the Shopify admin.
+- \`FunctionSettings\` doesn't validate input values before save. You must implement your own validation logic and display errors on individual fields.
+- Only one \`FunctionSettings\` component should be used per extension view. Nesting or duplicating \`FunctionSettings\` isn't supported.`,
     },
   ],
+  related: [],
 };
 
 export default data;

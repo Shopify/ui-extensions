@@ -3,15 +3,16 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Section',
   description:
-    '`Section` is a structural component that allows thematic grouping of content. Its visual style is contextual and controlled by Shopify, so a `Section` may look different depending on the component it is nested inside.\n\n`Section` also automatically increases the heading level for its content to ensure a semantically correct heading structure in the document. To further increase the heading level inside the `Section`, consider nesting new `Section`s.',
+    'The `Section` component creates a visual and semantic grouping for related content, with an optional heading and adjustable padding. Use `Section` to organize your extension into distinct content areas that merchants can scan and understand at a glance.\n\n`Section` automatically increments the heading level for any [`Heading`](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/heading) components nested inside it, ensuring a correct document outline. Nest `Section` components to create deeper heading hierarchies without manually managing levels.',
   requires: '',
   thumbnail: 'section-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
-      title: 'SectionProps',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `Section` component.',
       type: 'SectionProps',
     },
   ],
@@ -35,6 +36,23 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      title: 'Best practices',
+      anchorLink: 'best-practices',
+      sectionContent: `- **Use \`Section\` to group related content:** Wrap related fields, text, or actions in a \`Section\` with a descriptive heading to create clear visual and semantic groupings.
+- **Provide an accessibility label when there is no heading:** If the section doesn't have a visible heading, provide an accessibility label so screen reader users understand what the section contains.
+- **Nest \`Section\` components for deeper structure:** Each nested \`Section\` increments the heading level. This creates a natural document outline (h1 \u2192 h2 \u2192 h3) without manually managing heading levels.`,
+    },
+    {
+      type: 'Generic',
+      title: 'Limitations',
+      anchorLink: 'limitations',
+      sectionContent: `- \`Section\`'s visual appearance is controlled by Shopify and can't be customized. It may render differently in different component contexts ([\`AdminBlock\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/settings-and-templates/adminblock) versus [\`AdminAction\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/settings-and-templates/adminaction)).
+- The heading level auto-increment stops at h6. Nesting sections beyond six levels deep will still render h6 headings.`,
+    },
+  ],
   related: [],
 };
 
