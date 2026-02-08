@@ -3,15 +3,16 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Link',
   description:
-    'This is an interactive component that directs users to a specified URL. It even supports custom protocols.',
+    'The `Link` component lets merchants navigate to internal admin pages, external URLs, or relative paths within your app. Links render as inline text styled to indicate interactivity, and support custom tones and accessibility labels.\n\nFor action-oriented interactions like submitting or deleting, use [`Button`](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/button). To make a custom area clickable with layout control, use [`Pressable`](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/pressable).',
   requires: '',
   thumbnail: 'link-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
-      title: 'LinkProps',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `Link` component.',
       type: 'LinkProps',
     },
   ],
@@ -35,6 +36,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      title: 'Best practices',
+      anchorLink: 'best-practices',
+      sectionContent: `- **Use descriptive link text:** Write link text that clearly describes where the link goes or what it does. Avoid vague labels like "Click here" or "Learn more" without additional context. Screen readers often navigate by listing all links on a page, so each link should make sense on its own.
+- **Choose the right component for the action:** Use \`Link\` for navigation and [\`Button\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/button) for actions. If the interaction changes data or triggers a process (like saving or deleting), use a \`Button\` instead of a \`Link\`.
+- **Use \`target="_blank"\` sparingly:** Opening links in a new tab can be disorienting. Only use \`target="_blank"\` for links that take the merchant away from an in-progress workflow, such as linking to external documentation.`,
+    },
+    {
+      type: 'Generic',
+      title: 'Limitations',
+      anchorLink: 'limitations',
+      sectionContent: `- Links to external domains outside of the Shopify admin may be blocked or display a redirect confirmation page depending on the merchant's browser settings and the extension context.
+- The \`Link\` component renders inline with surrounding text. To create a block-level clickable area with custom layout, use the [\`Pressable\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/pressable) component instead.
+- The \`onClick\` callback fires before navigation occurs. If the callback throws an error, navigation may still proceed. You can't use \`onClick\` to conditionally prevent navigation.`,
+    },
+  ],
   examples: {
     description: '',
     examples: [
@@ -97,13 +116,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
-  related: [
-    {
-      type: 'component',
-      name: 'Button',
-      url: '/docs/api/admin-extensions/components/actions/button',
-    },
-  ],
+  related: [],
 };
 
 export default data;
