@@ -7,26 +7,42 @@ import type {
   Money,
 } from '../shared';
 
+/**
+ * Props for the `MoneyField` component, a specialized input for entering
+ * monetary values. It extends standard input props with number constraints
+ * and autocomplete support for transaction amounts.
+ */
 export interface MoneyFieldProps
   extends InputProps<number | Money>,
     NumberConstraintsProps,
     AutocompleteProps<MoneyAutocompleteField> {
+  /**
+   * The [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) currency code that determines the currency symbol,
+   * formatting rules, and decimal precision for the money field.
+   * For example, `'USD'` for US Dollars or `'EUR'` for Euros.
+   *
+   */
   currencyCode?: CurrencyCode;
 }
 
+/**
+ * Autocomplete field types relevant to monetary inputs.
+ */
 export type MoneyAutocompleteField = Extract<
   AnyAutocompleteField,
   'transaction-amount'
 >;
 
+/**
+ * A specialized input for entering monetary values, with currency
+ * formatting and symbol support.
+ */
 export const MoneyField = createRemoteComponent<'MoneyField', MoneyFieldProps>(
   'MoneyField',
 );
 
 /**
- * Supported monetary currencies from ISO 4217.
- *
- * @see https://www.iso.org/iso-4217-currency-codes.html
+ * The supported monetary currencies from [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html).
  */
 export type CurrencyCode =
   | 'USD'
