@@ -3,15 +3,16 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Paragraph',
   description:
-    'Use this to display a block of text similar to the <p> tag in HTML.',
+    'The `Paragraph` component renders a block of text with appropriate spacing between sibling paragraphs. Use it for body copy, descriptions, and any multi-sentence content. It supports font size, weight, style, and text overflow control through its typography props.\n\nFor inline text within a sentence, use [`Text`](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/text). For titles, use [`Heading`](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/heading).',
   requires: '',
   thumbnail: 'paragraph-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
-      title: 'ParagraphProps',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the `Paragraph` component.',
       type: 'ParagraphProps',
     },
   ],
@@ -35,14 +36,25 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-
-  related: [
+  subSections: [
     {
-      type: 'component',
-      name: 'Heading',
-      url: '/docs/api/admin-extensions/components/titles-and-text/heading',
+      type: 'Generic',
+      title: 'Best practices',
+      anchorLink: 'best-practices',
+      sectionContent: `- **Keep paragraphs focused:** Each paragraph should convey a single idea or piece of information. Short, focused paragraphs are easier for merchants to scan.
+- **Nest \`Text\` inside \`Paragraph\` for inline formatting:** To add emphasis, bold, or other inline styling within a paragraph, nest [\`Text\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/text) components inside the \`Paragraph\`. This preserves the block-level layout while giving you typographic control.
+- **Pair with \`Heading\` for structure:** Place a [\`Heading\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/heading) before a group of paragraphs to give the section a clear title that helps merchants navigate the content.`,
+    },
+    {
+      type: 'Generic',
+      title: 'Limitations',
+      anchorLink: 'limitations',
+      sectionContent: `- \`Paragraph\` doesn't support color or tone props. Text inside a \`Paragraph\` always renders in the default body text color.
+- The \`textOverflow\` prop only takes effect when the parent container constrains width. Without a width constraint, text will wrap normally rather than truncate.
+- \`Paragraph\` doesn't support alignment (center, right). Text always renders with the default start alignment for the current locale direction.`,
     },
   ],
+  related: [],
 };
 
 export default data;

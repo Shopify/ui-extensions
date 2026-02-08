@@ -6,8 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
     'The Order Routing Rule API provides access to [order routing rule](/docs/apps/build/orders-fulfillment/order-routing-apps) configuration and settings management. Use this API to build custom configuration interfaces for order routing rules that determine fulfillment locations.',
   isVisualComponent: false,
   type: 'API',
-  requires:
-    'the [`FunctionSettings`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
+  requires: '',
   defaultExample: {
     description:
       'Set preferred and fallback fulfillment locations with [text field](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) inputs. This example applies two metafield changes in a single batch operation to configure location priority for order routing.',
