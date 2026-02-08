@@ -641,7 +641,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * A runnable target that provides tool configuration data for the admin tools functionality, enabling apps to register custom tools in the admin interface. Use this to define custom tool configurations that appear in the admin tools menu.
+   * A runnable target that enables your app to expose data to [Sidekick](/docs/apps/build/sidekick/build-app-data).
    */
   'admin.app.tools.data': RunnableExtension<
     StandardApi<'admin.app.tools.data'>,
