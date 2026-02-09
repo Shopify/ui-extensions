@@ -22,9 +22,9 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'ShouldRenderApi',
+      title: 'Properties',
       description:
-        'The `ShouldRenderApi` object provides methods for controlling action extension visibility. Access the following properties on the `ShouldRenderApi` object to determine whether an associated action should appear based on the current context.',
+        'The `ShouldRenderApi` object provides properties for controlling action extension visibility. Access the following properties on the `ShouldRenderApi` object to determine whether an associated action should appear based on the current context.',
       type: 'ShouldRenderApi',
     },
   ],
