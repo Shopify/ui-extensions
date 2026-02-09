@@ -40,6 +40,14 @@ build_docs() {
     return $build_exit
   fi
 
+  # Generate targets.json
+  echo "Generating targets.json..."
+  node $DOCS_PATH/build-docs-targets-json.mjs
+  targets_exit=$?
+  if [ $targets_exit -ne 0 ]; then
+    echo "Warning: Failed to generate targets.json"
+  fi
+
   # Copy generated docs to shopify-dev
   copy_generated_docs_to_shopify_dev() {
     if [ -d $SHOPIFY_DEV_PATH ]; then
