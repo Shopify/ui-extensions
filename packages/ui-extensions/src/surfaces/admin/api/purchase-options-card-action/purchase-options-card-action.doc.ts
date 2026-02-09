@@ -29,7 +29,7 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'PurchaseOptionsCardConfigurationApi',
+      title: 'Properties',
       description:
         'The `PurchaseOptionsCardConfigurationApi` object provides access to selected purchase option data. Access the following properties on the `PurchaseOptionsCardConfigurationApi` object to interact with currently selected products and selling plans in the `admin.product-purchase-option.action.render` and `admin.product-variant-purchase-option.action.render` targets.',
       type: 'PurchaseOptionsCardConfigurationApi',

@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'ScannerApi',
+      title: 'Properties',
       description:
         'The `ScannerApi` object provides access to scanning functionality and scanner source information. Access these properties through `api.scanner` to monitor scan events and available scanner sources.',
       type: 'ScannerApiContent',
