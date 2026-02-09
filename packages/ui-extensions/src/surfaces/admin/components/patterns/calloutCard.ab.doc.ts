@@ -5,13 +5,9 @@ const data: ReferenceEntityTemplateSchema = {
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Encourage merchants to take action on new features or opportunities.',
-  description: `Callout cards are used to encourage merchants to take an action related to a new feature or opportunity. They are most commonly displayed in the sales channels section of Shopify.
- 
-  | Used to | Examples |
-  | --- | --- |
-  | Promote new features or integrations | Dismissible feature announcement |
-  | Drive adoption of app functionality | Common first actions |
-  ---
+  description: `Callout cards encourage merchants to take action on a new feature or opportunity. Use them to announce features, promote functionality, or guide merchants through common first actions.
+
+This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
 `,
   isVisualComponent: true,
   category: 'Patterns',
