@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'LocaleApi',
+      title: 'Properties',
       description:
         'The `LocaleApi` object provides access to current locale information and change notifications. Access these properties through `api.locale` to retrieve and monitor locale data.',
       type: 'LocaleApiContent',

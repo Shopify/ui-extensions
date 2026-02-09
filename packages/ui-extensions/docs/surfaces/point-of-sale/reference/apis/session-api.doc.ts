@@ -12,9 +12,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'SessionApi',
+      title: 'Properties',
       description:
-        'The `SessionApi` object provides access to current session information and authentication methods. Access these properties and methods through `api.session` to retrieve shop data and generate secure tokens. These methods enable secure API calls while maintaining user privacy and [app permissions](https://help.shopify.com/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).',
+        'The `SessionApi` object provides access to current session information and authentication. Access these properties through `api.session` to retrieve shop data and generate secure tokens. These properties enable secure API calls while maintaining user privacy and [app permissions](https://help.shopify.com/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).',
       type: 'SessionApiContent',
     },
   ],

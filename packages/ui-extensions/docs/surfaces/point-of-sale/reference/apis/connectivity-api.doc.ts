@@ -12,9 +12,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'ConnectivityApi',
+      title: 'Properties',
       description:
-        'The `ConnectivityApi` object provides methods for monitoring network connectivity. Access these methods through `api.connectivity` to check connection status and subscribe to connectivity changes.',
+        'The `ConnectivityApi` object provides properties for monitoring network connectivity. Access these properties through `api.connectivity` to check connection status and subscribe to connectivity changes.',
       type: 'ConnectivityApiContent',
     },
   ],
