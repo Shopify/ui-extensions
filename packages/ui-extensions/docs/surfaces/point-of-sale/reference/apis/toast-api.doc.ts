@@ -12,9 +12,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'ToastApi',
+      title: 'Properties',
       description:
-        'The `ToastApi` object provides methods for displaying temporary notification messages. Access these methods through `api.toast` to show user feedback and status updates.',
+        'The `ToastApi` object provides properties for displaying temporary notification messages. Access these properties through `api.toast` to show user feedback and status updates.',
       type: 'ToastApiContent',
     },
   ],
