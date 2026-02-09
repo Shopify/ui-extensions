@@ -641,7 +641,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * A runnable target that enables your app to expose data to [Sidekick](/docs/apps/build/sidekick/build-app-data).
+   * A runnable target that enables your app to expose data to [Sidekick](/docs/apps/build/sidekick/build-app-data). Use this target to register tools that Sidekick can invoke to search your app's data and answer merchant questions.
    */
   'admin.app.tools.data': RunnableExtension<
     StandardApi<'admin.app.tools.data'>,
