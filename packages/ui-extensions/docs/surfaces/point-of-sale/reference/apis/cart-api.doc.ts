@@ -13,9 +13,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'CartApi',
+      title: 'Properties',
       description:
-        'The `CartApi` object provides access to cart management methods and subscribable cart state. Access these methods through `api.cart` to build cart-aware extensions that respond to real-time cart updates.',
+        'The `CartApi` object provides access to cart management and subscribable cart state. Access these properties through `api.cart` to build cart-aware extensions that respond to real-time cart updates.',
       type: 'CartApiContent',
     },
   ],

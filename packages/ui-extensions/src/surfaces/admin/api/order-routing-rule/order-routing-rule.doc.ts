@@ -29,9 +29,9 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'OrderRoutingRuleApi',
+      title: 'Properties',
       description:
-        'The `OrderRoutingRuleApi` object provides access to order routing rule data and configuration methods. Access the following properties on the `OrderRoutingRuleApi` object to interact with the current order routing rule context in the `admin.settings.order-routing-rule.render` target.',
+        'The `OrderRoutingRuleApi` object provides access to order routing rule data and configuration. Access the following properties on the `OrderRoutingRuleApi` object to interact with the current order routing rule context in the `admin.settings.order-routing-rule.render` target.',
       type: 'OrderRoutingRuleApi',
     },
   ],
