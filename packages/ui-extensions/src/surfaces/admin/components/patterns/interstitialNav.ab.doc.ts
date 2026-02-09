@@ -5,15 +5,9 @@ const data: ReferenceEntityTemplateSchema = {
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Provide deeper navigation by linking merchants to related pages within a section.',
-  description: `Interstitial navigation is used to connect merchants to deeper pages—such as settings, features, or resources—within a section of your app. It helps keep navigation clean and focused by avoiding multiple nested items, making it easier for merchants to discover and access important functionality.
- 
-  | Used to | Examples |
-  | --- | --- |
-  | Link to individual settings pages | Navigate from a settings overview to product settings or notification preferences |
-  | Connect to feature-specific pages | Direct merchants from campaign overview to reporting or automation setup |
-  | Guide merchants to supporting resources | Link to help documentation or integration guides from a central section |
-  | Simplify navigation structure | Reduce clutter by providing access to deeper pages without multi-level menus |
-  ---
+  description: `Interstitial navigation connects merchants to deeper pages—like settings, features, or resources—within your app. It keeps navigation clean by avoiding multiple nested items.
+
+  This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
 `,
   isVisualComponent: true,
   category: 'Patterns',

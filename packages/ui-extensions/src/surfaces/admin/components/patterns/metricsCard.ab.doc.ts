@@ -5,14 +5,9 @@ const data: ReferenceEntityTemplateSchema = {
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Display key metrics, statistics, or trends at a glance.',
-  description: `Metrics cards are used to highlight important numbers, statistics, or trends from your app, so merchants can quickly understand their activity and performance.
-  
-  
-  | Used to | Examples |
-  | --- | --- |
-  | Show app-specific metrics | Email open rates, active subscribers |
-  | Visualize user engagement | Social media followers, campaign clicks |
-  ---
+  description: `Metrics cards highlight important numbers, statistics, or trends so merchants can quickly understand their activity and performance.
+
+  This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
 `,
   isVisualComponent: true,
   category: 'Patterns',

@@ -5,17 +5,9 @@ const data: ReferenceEntityTemplateSchema = {
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Present visual information alongside actionable, educational content.',
-  description: `Media cards provide a consistent layout to present visual information to merchants. Visual media is used to provide additional context to the written information it's paired with.
+  description: `Media cards provide a consistent layout to present visual information to merchants. Visual media is useful for showing examples, tutorials, or previews.
 
-  | Used to | Examples |
-  | --- | --- |
-  | Educate merchants on key actions | Show how to connect a social account with a demo image |
-  | Provide clear calls to action | Show campaign preview with a "Send campaign" button |
-
-  ---
-  
-
-  
+  This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
 `,
   isVisualComponent: true,
   category: 'Patterns',

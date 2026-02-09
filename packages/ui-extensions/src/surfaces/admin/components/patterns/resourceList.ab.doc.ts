@@ -6,19 +6,9 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.',
 
-  description: `A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
-.
+  description: `A resource list displays a collection of objects of the same type. The main job is to help merchants find an object and navigate to its full-page representation.
 
-  | Used to | Examples |
-  | --- | --- |
-  | Display collections of similar resources |  Campaigns, subscribers, social posts, templates|
-  | Help merchants find and select items  | Search subscribers by email; Filter campaigns by status |
-  | Perform bulk actions on selected items  | Tag subscribers; Archive campaigns; Publish selected posts |
-
-  ---
-  
-
-  
+This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
 `,
   isVisualComponent: true,
   category: 'Patterns',
