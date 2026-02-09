@@ -6,30 +6,53 @@ const data: AdminReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/dropzone.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Set clear file type and size restrictions using the \`accept\` property
+- Use the \`droprejected\` event to display meaningful error messages when uploads fail validation
+- Consider using \`disabled\` to prevent uploads during processing`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- File size validation must be handled in your event handler; the component only validates file types
+- The \`change\` event provides the file list but does not automatically upload files
+- Multiple file selection requires the \`multiple\` attribute to be set`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the `DropZone` component.',
       type: 'DropZone',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'Learn more about [registering events](/docs/api/polaris/using-polaris-web-components#event-handling).',
       type: 'DropZoneEvents',
     },
   ],
   defaultExample: {
+    description:
+      'Accept file uploads with drag-and-drop or click to browse. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Accept file uploads',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
+          language: 'preview',
+          layout: 'padding',
         },
         {
           code: './examples/default.jsx',
           language: 'preview-jsx',
+          layout: 'padding',
         },
       ],
     },
@@ -42,9 +65,9 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a basic drop zone that allows multiple file uploads with a simple label.',
+              'Allow multiple file uploads with a simple label. Click to interact with the preview.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Allow multiple file uploads',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
@@ -61,9 +84,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows a drop zone configured specifically for uploading multiple image files.',
+              'Upload multiple image files with visual preview. Click to interact with the preview.',
             codeblock: {
-              title: 'Image upload',
+              title: 'Upload images',
               tabs: [
                 {
                   code: './examples/image-upload.html',
@@ -80,9 +103,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a drop zone when the file upload is required.',
+              'Mark file upload as required for form validation. Click to interact with the preview.',
             codeblock: {
-              title: 'With required field',
+              title: 'Require file upload',
               tabs: [
                 {
                   code: './examples/required-field.html',
@@ -99,9 +122,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Displays a drop zone in a disabled state, preventing file uploads.',
+              'Prevent file uploads while processing. Click to interact with the preview.',
             codeblock: {
-              title: 'Disabled state',
+              title: 'Disable uploads during processing',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
@@ -118,9 +141,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates restricting file uploads to specific document types like PDF and DOC.',
+              'Restrict uploads to specific document types like PDF and DOC. Click to interact with the preview.',
             codeblock: {
-              title: 'File type restrictions',
+              title: 'Restrict file types',
               tabs: [
                 {
                   code: './examples/file-type-restrictions.html',
@@ -137,9 +160,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows a drop zone with an error message, useful for indicating file upload validation issues.',
+              'Show validation errors for invalid file uploads. Click to interact with the preview.',
             codeblock: {
-              title: 'With error state',
+              title: 'Show upload errors',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
@@ -156,9 +179,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates advanced accessibility configuration for the drop zone, including custom accessibility labels.',
+              'Configure custom accessibility labels for screen readers. Click to interact with the preview.',
             codeblock: {
-              title: 'With accessibility options',
+              title: 'Configure accessibility labels',
               tabs: [
                 {
                   code: './examples/with-accessibility-options.html',
@@ -169,6 +192,36 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/with-accessibility-options.jsx',
                   language: 'preview-jsx',
                   layout: 'padding',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Complete workflows',
+        examples: [
+          {
+            description:
+              'Build a file upload workflow with size and type validation, error handling, and disabled state during processing. Click to interact with the preview.',
+            codeblock: {
+              title: 'Upload with validation',
+              tabs: [
+                {
+                  code: './examples/upload-with-validation.html',
+                  language: 'preview',
+                  layout: 'padding',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
+                },
+                {
+                  code: './examples/upload-with-validation.jsx',
+                  language: 'preview-jsx',
+                  layout: 'padding',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },

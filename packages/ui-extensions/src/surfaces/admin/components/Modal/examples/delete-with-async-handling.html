@@ -1,0 +1,28 @@
+<s-button tone="critical" commandFor="delete-modal">Delete product</s-button>
+
+<s-modal id="delete-modal" heading="Delete product?">
+  <s-text>This will permanently delete "Blue T-Shirt". This action cannot be undone.</s-text>
+
+  <s-button slot="secondary-actions" commandFor="delete-modal" command="--hide">Cancel</s-button>
+  <s-button slot="primary-action" variant="primary" tone="critical" id="confirm-delete">
+    Delete product
+  </s-button>
+</s-modal>
+
+<script>
+  const modal = document.getElementById('delete-modal');
+  const deleteBtn = document.getElementById('confirm-delete');
+
+  deleteBtn.addEventListener('click', async () => {
+    deleteBtn.loading = true;
+    try {
+      await fetch('/api/products/123', { method: 'DELETE' });
+      modal.hideOverlay();
+      // Show success feedback to merchant
+    } catch (error) {
+      // Handle error - show error message
+    } finally {
+      deleteBtn.loading = false;
+    }
+  });
+</script>

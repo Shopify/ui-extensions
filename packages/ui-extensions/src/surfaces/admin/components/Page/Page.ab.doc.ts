@@ -18,35 +18,37 @@ const data: AdminReferenceEntityTemplateSchema = {
 - Don't include any actions at the bottom of the page`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `- Use sentence case and avoid unnecessary words
-- Don't include punctuation like periods or exclamation marks
-- Page titles should clearly communicate the page purpose
-- Page actions should use a verb or verb + noun phrase (e.g., "Create store", "Edit product")`,
+      anchorLink: 'limitations',
+      sectionContent: `- The \`inlineSize\` property only accepts \`small\`, \`base\` (default), or \`large\` values
+- Breadcrumb actions only support \`Link\` and \`Button\` components
+- The \`aside\` slot is only visible when \`inlineSize\` is set to \`large\``,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: 'Use as the outer wrapper of a page',
+      description:
+        'Configure the following properties on the `Page` component.',
       type: 'Page',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'PageSlots',
     },
   ],
   defaultExample: {
-    image: 'ordered-list-default.png',
+    description:
+      'Organize content with sections inside a page layout. Click to interact with the preview.',
     codeblock: {
-      title: '',
+      title: 'Organize content with sections',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
+          language: 'preview',
           layout: 'none',
         },
         {
@@ -66,32 +68,13 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Shows a page with a clear heading and descriptive text, illustrating how to use the page component with a title.',
+              'Use small width for forms and focused content. Note: Width differences may not be visible in this preview. Click to interact with the preview.',
             codeblock: {
-              title: 'Page with heading',
-              tabs: [
-                {
-                  code: './examples/page-with-heading.html',
-                  language: 'html',
-                  layout: 'none',
-                },
-                {
-                  code: './examples/page-with-heading.jsx',
-                  language: 'preview-jsx',
-                  layout: 'none',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Illustrates a page with a small inline size, ideal for focused, compact content like settings or forms with minimal information.',
-            codeblock: {
-              title: 'Small inline size for focused content',
+              title: 'Use small width for forms',
               tabs: [
                 {
                   code: './examples/small-inline-size-for-focused-content.html',
-                  language: 'html',
+                  language: 'preview',
                   layout: 'none',
                 },
                 {
@@ -107,13 +90,13 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates a page with a large inline size, perfect for displaying broader content like analytics or dashboards with multiple information sections.',
+              'Use large width for analytics and dashboards with multiple sections. Note: Width differences may not be visible in this preview. Click to interact with the preview.',
             codeblock: {
-              title: 'Large inline size for wide content',
+              title: 'Use large width for dashboards',
               tabs: [
                 {
                   code: './examples/large-inline-size-for-wide-content.html',
-                  language: 'html',
+                  language: 'preview',
                   layout: 'none',
                 },
                 {
@@ -129,13 +112,13 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows a page with breadcrumb navigation and a descriptive heading, helping users understand their location in the navigation hierarchy.',
+              'Add breadcrumb navigation to help users understand their location. Click to interact with the preview.',
             codeblock: {
-              title: 'Page with breadcrumbs and title',
+              title: 'Add breadcrumb navigation',
               tabs: [
                 {
                   code: './examples/page-with-breadcrumbs-and-title.html',
-                  language: 'html',
+                  language: 'preview',
                   layout: 'none',
                 },
                 {
@@ -148,13 +131,13 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates a page with a primary action button and secondary action buttons, showing how to provide main and related actions alongside the page heading.',
+              'Add primary and secondary actions to the page header. Click to interact with the preview.',
             codeblock: {
-              title: 'Page with primary and secondary actions',
+              title: 'Add page actions',
               tabs: [
                 {
                   code: './examples/page-with-secondary-actions.html',
-                  language: 'html',
+                  language: 'preview',
                   layout: 'none',
                 },
                 {
@@ -163,6 +146,36 @@ const data: AdminReferenceEntityTemplateSchema = {
                   layout: 'none',
                   customStyles: {
                     minHeight: '400px',
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Complete workflows',
+        examples: [
+          {
+            description:
+              'Build an edit page using all available slots including breadcrumbs, actions, form content, and aside. Click to interact with the preview.',
+            codeblock: {
+              title: 'Edit page with all slots',
+              tabs: [
+                {
+                  code: './examples/edit-page-with-all-slots.html',
+                  language: 'preview',
+                  layout: 'none',
+                  customStyles: {
+                    minHeight: '500px',
+                  },
+                },
+                {
+                  code: './examples/edit-page-with-all-slots.jsx',
+                  language: 'preview-jsx',
+                  layout: 'none',
+                  customStyles: {
+                    minHeight: '500px',
                   },
                 },
               ],

@@ -28,45 +28,49 @@ const data: AdminReferenceEntityTemplateSchema = {
       sectionContent: `- Use for focused, specific tasks that require merchants to make a decision or acknowledge critical information
 - Include a prominent and clear call to action
 - Don't nest modals (avoid launching one modal from another)
-- Have concise and descriptive title and button text
+- Use specific action verbs: Label buttons with clear verbs like "Delete", "Save", or "Continue" rather than vague terms like "Yes", "OK", or "Submit"
+- For destructive actions, explain the consequences in the modal body
 - Use thoughtfully and sparingly—don't create unnecessary interruptions
 - Use as a last resort for important decisions, not for contextual tools or actions that could happen on the page directly`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `- Use 1-3 word titles in sentence case without punctuation
-- Keep body content to 1-2 short sentences
-- For destructive actions, explain the consequences
-- Use clear action verbs for buttons (e.g., "Delete", "Edit") instead of vague language like "Yes" or "OK"`,
+      anchorLink: 'limitations',
+      sectionContent: `- Modals can only be opened by user interaction, not programmatically on page load
+- The modal always renders centered in the viewport and cannot be repositioned
+- Content within the modal scrolls if it exceeds the available height`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the `Modal` component.',
       type: 'Modal',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'Learn more about [registering events](/docs/api/polaris/using-polaris-web-components#event-handling).',
       type: 'ModalEvents',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ModalSlots',
     },
   ],
   defaultExample: {
+    description:
+      'Confirm a merchant action with a modal dialog. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Confirm a merchant action',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
+          language: 'preview',
           customStyles: {
             minHeight: '300px',
           },
@@ -89,9 +93,9 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Simple modal with heading and basic content for displaying information. Click the button to open the modal.',
+              'Show information in a modal with a heading and basic content. Click to interact with the preview.',
             codeblock: {
-              title: 'Basic modal',
+              title: 'Show information in a modal',
               tabs: [
                 {
                   code: './examples/basic-modal.html',
@@ -112,9 +116,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Modal with primary and secondary action buttons. Click the button to open the confirmation modal.',
+              'Confirm an action with primary and secondary buttons. Click to interact with the preview.',
             codeblock: {
-              title: 'Modal with actions',
+              title: 'Confirm an action with buttons',
               tabs: [
                 {
                   code: './examples/confirmation-modal-with-actions.html',
@@ -135,9 +139,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Modal containing form fields demonstrating how to structure input fields within a modal. Click the button to open the modal.',
+              'Collect input with form fields inside a modal. Click to interact with the preview.',
             codeblock: {
-              title: 'Modal with form fields',
+              title: 'Collect input with a form',
               tabs: [
                 {
                   code: './examples/form-modal.html',
@@ -158,9 +162,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates various modal sizes for different content requirements. Click each button to see different modal sizes.',
+              'Choose from different modal sizes for various content requirements. Click to interact with the preview.',
             codeblock: {
-              title: 'Different modal sizes',
+              title: 'Choose modal size',
               tabs: [
                 {
                   code: './examples/different-modal-sizes.html',
@@ -181,9 +185,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Modal with no padding for full-width content. Click to view the modal.',
+              'Display full-width content by removing modal padding. Click to interact with the preview.',
             codeblock: {
-              title: 'Modal without padding',
+              title: 'Display full-width content',
               tabs: [
                 {
                   code: './examples/modal-without-padding.html',
@@ -194,6 +198,34 @@ const data: AdminReferenceEntityTemplateSchema = {
                 },
                 {
                   code: './examples/modal-without-padding.jsx',
+                  language: 'preview-jsx',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Complete workflows',
+        examples: [
+          {
+            description:
+              'Handle a destructive action with async confirmation, loading state, and error handling. Click to interact with the preview.',
+            codeblock: {
+              title: 'Delete with async handling',
+              tabs: [
+                {
+                  code: './examples/delete-with-async-handling.html',
+                  language: 'preview',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
+                },
+                {
+                  code: './examples/delete-with-async-handling.jsx',
                   language: 'preview-jsx',
                   customStyles: {
                     minHeight: '300px',

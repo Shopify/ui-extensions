@@ -22,34 +22,39 @@ const data: AdminReferenceEntityTemplateSchema = {
 - Be triggered by a clearly labeled default or tertiary button`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `- Use clear action verbs in the {verb}+{noun} format (e.g., "Create order", "Edit HTML")
-- Avoid unnecessary words like "the", "an", or "a"`,
+      anchorLink: 'limitations',
+      sectionContent: `- Popovers can only be opened by user interaction, not programmatically on page load
+- The popover position is determined by the trigger button and cannot be manually overridden
+- Content within the popover does not scroll automatically; use \`Box\` or \`Section\` for internal scrolling if needed`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the `Popover` component.',
       type: 'Popover',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'Learn more about [registering events](/docs/api/polaris/using-polaris-web-components#event-handling).',
       type: 'PopoverEvents',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'PopoverSlots',
     },
   ],
   defaultExample: {
+    description:
+      'Show a menu of actions from a trigger button. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Show a menu of actions',
       tabs: [
         {
           code: './examples/default.jsx',
@@ -78,9 +83,9 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Popover displaying admin notifications such as new orders, inventory alerts, and payment confirmations, demonstrating how popovers can show informational content without cluttering the main interface.',
+              'Display a notification list with new orders, inventory alerts, and payment confirmations. Click to interact with the preview.',
             codeblock: {
-              title: 'Popover with notifications',
+              title: 'Display notification list',
               tabs: [
                 {
                   code: './examples/notifications.jsx',
@@ -103,9 +108,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Popover containing a choice list and action button demonstrating how popovers can be used for settings and configuration interfaces.',
+              'Configure settings with a choice list and apply button. Click to interact with the preview.',
             codeblock: {
-              title: 'Popover with choice list',
+              title: 'Configure table display options',
               tabs: [
                 {
                   code: './examples/table-display-options.jsx',
@@ -128,9 +133,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Popover displaying detailed inventory information using Box padding instead of Section, demonstrating an alternative layout approach for data-focused content.',
+              'Show detailed inventory information using `Box` padding instead of `Section`. Click to interact with the preview.',
             codeblock: {
-              title: 'Popover with inventory details',
+              title: 'Show inventory details',
               tabs: [
                 {
                   code: './examples/inventory-stock-details.jsx',
@@ -146,6 +151,36 @@ const data: AdminReferenceEntityTemplateSchema = {
                   layout: 'alignStart',
                   customStyles: {
                     minHeight: '350px',
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Complete workflows',
+        examples: [
+          {
+            description:
+              'Build a filter popover with a choice list, apply and clear buttons, and dynamic trigger text. Click to interact with the preview.',
+            codeblock: {
+              title: 'Filter with apply and clear',
+              tabs: [
+                {
+                  code: './examples/filter-with-apply-and-clear.html',
+                  language: 'preview',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '320px',
+                  },
+                },
+                {
+                  code: './examples/filter-with-apply-and-clear.jsx',
+                  language: 'preview-jsx',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '320px',
                   },
                 },
               ],
