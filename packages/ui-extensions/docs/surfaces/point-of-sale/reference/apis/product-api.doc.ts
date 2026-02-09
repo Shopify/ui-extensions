@@ -13,9 +13,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'ProductApi',
+      title: 'Properties',
       description:
-        'The `ProductApi` object provides access to product data. Access this property through `api.product` to interact with the current product context.',
+        'The `ProductApi` object provides access to product data. Access these properties through `api.product` to interact with the current product context.',
       type: 'ProductApiContent',
     },
   ],

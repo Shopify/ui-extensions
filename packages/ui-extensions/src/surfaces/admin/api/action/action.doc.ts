@@ -29,9 +29,9 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'ActionExtensionApi',
+      title: 'Properties',
       description:
-        'The `ActionExtensionApi` object provides methods for action extensions that render in modal overlays. Access the following properties on the `ActionExtensionApi` object to interact with the current context, control the modal, and display picker dialogs.',
+        'The `ActionExtensionApi` object provides properties for action extensions that render in modal overlays. Access the following properties on the `ActionExtensionApi` object to interact with the current context, control the modal, and display picker dialogs.',
       type: 'ActionExtensionApi',
     },
   ],
@@ -88,8 +88,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent:
-        '- **Check array length for bulk operations:** When actions appear on index pages with bulk selection, `api.data.selected` can contain multiple resources. Check the array length and handle batch operations accordingly.\n' +
-        "- **Use `loading` state on buttons:** Modal actions don't show loading indicators automatically. Use the `loading` prop on [`Button`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button) components during async operations to prevent duplicate submissions.",
+        '- **Check array length for bulk operations:** When actions appear on index pages with bulk selection, `api.data.selected` can contain multiple resources. Check the array length and handle batch operations accordingly.',
     },
     {
       type: 'Generic',
