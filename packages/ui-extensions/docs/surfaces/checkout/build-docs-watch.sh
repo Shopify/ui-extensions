@@ -43,8 +43,8 @@ build_docs() {
   # Copy generated docs to shopify-dev
   copy_generated_docs_to_shopify_dev() {
     if [ -d $SHOPIFY_DEV_PATH ]; then
-      mkdir -p $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
-      cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+      mkdir -p $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+      cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
       echo "✓ Copied docs to shopify-dev"
     fi
   }
