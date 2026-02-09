@@ -22,9 +22,9 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'ShouldRenderApi',
+      title: 'Properties',
       description:
-        'The `ShouldRenderApi` object provides methods for controlling action extension visibility. Access the following properties on the `ShouldRenderApi` object to determine whether an associated action should appear based on the current context.',
+        'The `ShouldRenderApi` object provides properties for controlling action extension visibility. Access the following properties on the `ShouldRenderApi` object to determine whether an associated action should appear based on the current context.',
       type: 'ShouldRenderApi',
     },
   ],
@@ -77,7 +77,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        '- The function must return an object with a `display` property. Returning a plain boolean like `true` instead of `{ display: true }` will fail.\n' +
+        '- The function must return an object with a `display` property. Returning a plain boolean like `true` instead of `{ display: true }` fails.\n' +
         "- No asynchronous operations are supported. Async functions, promises, fetch calls, and timers won't work.\n" +
         "- Your extension can't access external data sources. Evaluation is limited to data available in `api.data.selected` and in-memory state.\n" +
         "- No re-evaluation occurs after initial render. If conditions change after page load, the action visibility doesn't update dynamically.",

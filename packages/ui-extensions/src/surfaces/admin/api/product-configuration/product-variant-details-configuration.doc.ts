@@ -24,9 +24,9 @@ const data: ReferenceEntityTemplateSchema = {
   },
   definitions: [
     {
-      title: 'ProductVariantDetailsConfigurationApi',
+      title: 'Properties',
       description:
-        'The `ProductVariantDetailsConfigurationApi` object provides access to product variant configuration data and methods. Access the following properties on the `ProductVariantDetailsConfigurationApi` object to interact with the current product variant context, navigate within the admin, and select resources in the `admin.product-variant-details.configuration.render` target.',
+        'The `ProductVariantDetailsConfigurationApi` object provides access to product variant configuration data. Access the following properties on the `ProductVariantDetailsConfigurationApi` object to interact with the current product variant context, navigate within the admin, and select resources in the `admin.product-variant-details.configuration.render` target.',
       type: 'ProductVariantDetailsConfigurationApi',
     },
   ],
