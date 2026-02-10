@@ -1,4 +1,3 @@
-/* eslint-disable no-template-curly-in-string */
 import {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
@@ -126,15 +125,12 @@ const data: LandingTemplateSchema = {
               {
                 title: 'Link to Product Page',
                 language: 'tsx',
-                code: '<Link to="shopify:admin/products/1234567890" />',
+                code: './examples/link-shopify-admin.tsx',
               },
               {
                 title: 'Fetch data',
                 language: 'ts',
-                code: `fetch("shopify:admin/api/graphql.json", {
-  method: "POST",
-  body: JSON.stringify(simpleProductQuery),
-});`,
+                code: './examples/fetch-shopify-admin.ts',
               },
             ],
           },
@@ -149,7 +145,7 @@ const data: LandingTemplateSchema = {
               {
                 title: 'Link to Product Page',
                 language: 'tsx',
-                code: '<Link to="app:settings/advanced" />',
+                code: './examples/link-app.tsx',
               },
             ],
           },
@@ -164,7 +160,7 @@ const data: LandingTemplateSchema = {
               {
                 title: 'Trigger Action Extension from a Block extension',
                 language: 'tsx',
-                code: '<Link to={`extension:${extension.handle}/${extensionTarget}`} />',
+                code: './examples/link-extension.tsx',
               },
             ],
           },
@@ -179,7 +175,7 @@ const data: LandingTemplateSchema = {
               {
                 title: 'Link to route in your app',
                 language: 'tsx',
-                code: '<Link to={`/reviews/${product.id}`} />',
+                code: './examples/link-relative.tsx',
               },
             ],
           },
