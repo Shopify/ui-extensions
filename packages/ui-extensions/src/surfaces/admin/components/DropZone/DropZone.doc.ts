@@ -61,7 +61,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
@@ -199,7 +199,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         ],
       },
       {
-        title: 'Complete workflows',
+        title: 'Complete workflow',
         examples: [
           {
             description:

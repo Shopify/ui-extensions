@@ -3,7 +3,7 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Page',
   description:
-    'Use the `Page` component as the main container for placing content in your app. Page comes with preset layouts and automatically adds spacing between elements.',
+    'The `Page` component provides a styled page layout within your app, including breadcrumbs, page actions, and content areas with automatic spacing.\n\nUse `Page` when you need a complete page layout with Polaris styling. For apps that need to set the admin\'s native title bar (title, breadcrumbs, actions) without a styled page layout, use the [Title Bar](/docs/api/app-bridge-library/apis/title-bar) App Bridge component instead.',
   category: 'Polaris web components',
   subCategory: 'Layout and structure',
   related: [],
