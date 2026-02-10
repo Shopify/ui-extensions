@@ -451,6 +451,9 @@ function getNestedApis(apiName) {
   }
 }
 
+// APIs that are composites of other documented APIs - we list their constituent APIs, not these wrapper types
+const COMPOSITE_APIS = new Set(['StandardApi', 'ActionTargetApi']);
+
 function parseApis(apiString) {
   const apisSet = new Set();
 
@@ -480,16 +483,24 @@ function parseApis(apiString) {
     }
 
     if (apiName) {
-      // Add the API itself
-      apisSet.add(apiName);
+      if (!COMPOSITE_APIS.has(apiName)) {
+        apisSet.add(apiName);
+      }
 
-      // Get nested APIs from this API (recursively)
       const nestedApis = getNestedApis(apiName);
       for (const nestedApi of nestedApis) {
-        apisSet.add(nestedApi);
-        // Recursively get nested APIs of nested APIs
-        const deepNestedApis = getNestedApis(nestedApi);
-        deepNestedApis.forEach((api) => apisSet.add(api));
+        if (COMPOSITE_APIS.has(nestedApi)) {
+          const deepNestedApis = getNestedApis(nestedApi);
+          deepNestedApis.forEach((api) => {
+            if (!COMPOSITE_APIS.has(api)) apisSet.add(api);
+          });
+        } else {
+          apisSet.add(nestedApi);
+          const deepNestedApis = getNestedApis(nestedApi);
+          deepNestedApis.forEach((api) => {
+            if (!COMPOSITE_APIS.has(api)) apisSet.add(api);
+          });
+        }
       }
     }
   }
