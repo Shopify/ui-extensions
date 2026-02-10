@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Callout card',
   isOneColumnLayout: false,
   overviewPreviewDescription:
@@ -14,7 +14,20 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Compositions',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/patterns/calloutCard.png',
+  usedComponents: [
+    'Box',
+    'Button',
+    'Grid',
+    'Heading',
+    'Image',
+    'Paragraph',
+    'Section',
+    'Stack',
+  ],
+  recommendedTemplates: ['Details'],
   defaultExample: {
+    description:
+      'This pattern uses [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) with responsive column templates to stack content on smaller screens. The illustration and call-to-action button draw attention to important actions or promotions.',
     codeblock: {
       title: 'Callout card',
       tabs: [
@@ -27,19 +40,12 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: 'examples/calloutCard.jsx',
           language: 'preview-jsx',
+          layout: 'compositionPattern',
         },
       ],
     },
   },
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

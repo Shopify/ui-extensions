@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Account connection',
   isOneColumnLayout: false,
   overviewPreviewDescription:
@@ -15,7 +15,19 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Compositions',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/patterns/accountConnection.png',
+  usedComponents: [
+    'Button',
+    'Grid',
+    'GridItem',
+    'Heading',
+    'Section',
+    'Stack',
+    'Text',
+  ],
+  recommendedTemplates: ['Details'],
   defaultExample: {
+    description:
+      'This pattern uses [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) to align account information with a connect button. The [`s-section`](/docs/api/app-home/polaris-web-components/layout-and-structure/section) provides consistent padding and the terms text below informs merchants of the connection agreement.',
     codeblock: {
       title: 'Account connection',
       tabs: [
@@ -28,19 +40,12 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: 'examples/accountConnection.jsx',
           language: 'preview-jsx',
+          layout: 'compositionPattern',
         },
       ],
     },
   },
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

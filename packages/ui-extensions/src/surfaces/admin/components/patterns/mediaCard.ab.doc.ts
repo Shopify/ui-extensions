@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Media card',
   isOneColumnLayout: false,
   overviewPreviewDescription:
@@ -13,7 +13,20 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Patterns',
   subCategory: 'Compositions',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/mediaCard.png',
+  usedComponents: [
+    'Box',
+    'Button',
+    'Clickable',
+    'Divider',
+    'Grid',
+    'Heading',
+    'Image',
+  ],
+  recommendedApis: ['Intents API'],
+  recommendedTemplates: ['Details'],
   defaultExample: {
+    description:
+      'This pattern uses [`s-box`](/docs/api/app-home/polaris-web-components/layout-and-structure/box) with `border` and `borderRadius` for the card container, [`s-clickable`](/docs/api/app-home/polaris-web-components/actions/clickable) to make the image tappable, and [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) for the footer layout with a title and action button.',
     codeblock: {
       title: 'Media card',
       tabs: [
@@ -26,19 +39,12 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: 'examples/mediaCard.jsx',
           language: 'preview-jsx',
+          layout: 'compositionPattern',
         },
       ],
     },
   },
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

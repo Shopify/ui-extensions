@@ -13,7 +13,30 @@ const data: AdminReferenceEntityTemplateSchema = {
   category: 'Patterns',
   subCategory: 'Compositions',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/indexTable.png',
+  usedComponents: [
+    'Badge',
+    'Box',
+    'Button',
+    'Checkbox',
+    'Choice',
+    'ChoiceList',
+    'Clickable',
+    'Divider',
+    'Grid',
+    'Image',
+    'Link',
+    'Popover',
+    'Section',
+    'Stack',
+    'Table',
+    'TextField',
+    'Tooltip',
+  ],
+  recommendedApis: ['Navigation API', 'Modal API', 'Toast API'],
+  recommendedTemplates: ['Index'],
   defaultExample: {
+    description:
+      'This pattern provides consistent spacing for search and sort controls, responsive column behavior for smaller screens, and row-level interactions for navigation and selection. Key attributes include `slot="filters"` on [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) to place controls in the filters area, `clickDelegate` on [table rows](/docs/api/app-home/polaris-web-components/layout-and-structure/table) to connect clicks to checkboxes, and `listSlot` on [table headers](/docs/api/app-home/polaris-web-components/layout-and-structure/table) to control responsive stacking.\n\nUse the [Navigation API](/docs/api/app-home/apis/navigation) for programmatic navigation and the [Toast API](/docs/api/app-home/apis/toast) for confirming successful actions.',
     codeblock: {
       title: 'Index table',
       tabs: [
@@ -26,6 +49,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: 'examples/indexTable.jsx',
           language: 'preview-jsx',
+          layout: 'compositionPattern',
           customStyles: {
             minHeight: '400px',
           },
@@ -34,20 +58,6 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-    {
-      name: 'Table',
-      subtitle: 'Component',
-      url: '/docs/api/app-home/polaris-web-components/structure/table',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

@@ -152,4 +152,11 @@
           </s-table-body>
       </s-table>
     </s-section>
+
+    {/* Footer help */}
+    <s-stack alignItems="center" paddingBlock="large">
+      <s-text color="subdued">
+        Learn more about <s-link href="https://help.shopify.com" target="_blank">improving product quality</s-link>.
+      </s-text>
+    </s-stack>
 </s-page>

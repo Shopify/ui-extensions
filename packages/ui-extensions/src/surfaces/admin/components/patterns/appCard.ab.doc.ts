@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'App card',
   isOneColumnLayout: false,
   overviewPreviewDescription:
@@ -13,7 +13,20 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Patterns',
   subCategory: 'Compositions',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/appCard.png',
+  usedComponents: [
+    'Box',
+    'Button',
+    'Clickable',
+    'Grid',
+    'Heading',
+    'Paragraph',
+    'Stack',
+    'Thumbnail',
+  ],
+  recommendedTemplates: ['Details'],
   defaultExample: {
+    description:
+      'This pattern uses [`s-clickable`](/docs/api/app-home/polaris-web-components/actions/clickable) as the card container to make the entire card tappable. The [`s-thumbnail`](/docs/api/app-home/polaris-web-components/images/thumbnail) displays the app icon, and [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) aligns the content.',
     codeblock: {
       title: 'App card',
       tabs: [
@@ -26,19 +39,12 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: 'examples/appCard.jsx',
           language: 'preview-jsx',
+          layout: 'compositionPattern',
         },
       ],
     },
   },
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

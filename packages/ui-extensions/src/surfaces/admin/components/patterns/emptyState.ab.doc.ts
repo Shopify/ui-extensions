@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Empty state',
   isOneColumnLayout: false,
   overviewPreviewDescription:
@@ -13,7 +13,22 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Patterns',
   subCategory: 'Compositions',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/emptyState.png',
+  usedComponents: [
+    'Box',
+    'Button',
+    'ButtonGroup',
+    'Grid',
+    'Heading',
+    'Image',
+    'Paragraph',
+    'Section',
+    'Stack',
+  ],
+  recommendedApis: ['Navigation API', 'Intents API'],
+  recommendedTemplates: ['Details'],
   defaultExample: {
+    description:
+      'This pattern centers content vertically and horizontally using [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid), with an optional illustration, heading, body text, and action buttons. Use [`s-button-group`](/docs/api/app-home/polaris-web-components/actions/button-group) with `slot="primary-action"` and `slot="secondary-actions"` to provide clear next steps.',
     codeblock: {
       title: 'Empty state',
       tabs: [
@@ -26,19 +41,12 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: 'examples/emptyState.jsx',
           language: 'preview-jsx',
+          layout: 'compositionPattern',
         },
       ],
     },
   },
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;
