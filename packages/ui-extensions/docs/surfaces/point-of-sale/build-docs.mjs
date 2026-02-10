@@ -81,7 +81,7 @@ process.on('exit', () => {
     if (existsSync(tempComponentDefs)) {
       require('fs').unlinkSync(tempComponentDefs);
     }
-  } catch (e) {
+  } catch (cleanupError) {
     // Ignore cleanup errors on exit
   }
 });
@@ -162,20 +162,28 @@ try {
     replaceValue: 'any',
   });
   await generateExtensionsDocs();
-  
-  // Generate targets.json
+
+  // Generate targets.json (script logs output path)
   console.log('Generating targets.json...');
   try {
     const {execSync} = await import('child_process');
-    execSync(`node ${path.join(docsPath, 'build-docs-targets-json.mjs')} ${EXTENSIONS_API_VERSION}`, {
-      stdio: 'inherit',
-      cwd: rootPath,
-    });
-    console.log('✅ Generated targets.json');
+    execSync(
+      `node ${path.join(
+        docsPath,
+        'build-docs-targets-json.mjs',
+      )} ${EXTENSIONS_API_VERSION}`,
+      {
+        stdio: 'inherit',
+        cwd: rootPath,
+      },
+    );
   } catch (targetsError) {
-    console.warn('Warning: Failed to generate targets.json:', targetsError.message);
+    console.warn(
+      'Warning: Failed to generate targets.json:',
+      targetsError.message,
+    );
   }
-  
+
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
     shopifyDevPath,
