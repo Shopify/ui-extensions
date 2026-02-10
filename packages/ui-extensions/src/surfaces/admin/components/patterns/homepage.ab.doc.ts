@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Homepage',
   overviewPreviewDescription:
     'The primary landing page for your app, providing quick access to key information and actions.',
@@ -13,8 +13,34 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   category: 'Patterns',
   subCategory: 'Templates',
+  isOneColumnLayout: true,
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/homepage.png',
+  usedComponents: [
+    'Badge',
+    'Banner',
+    'Box',
+    'Button',
+    'Clickable',
+    'Divider',
+    'Grid',
+    'Heading',
+    'Icon',
+    'Link',
+    'Paragraph',
+    'Section',
+    'Stack',
+    'Text',
+  ],
+  recommendedApis: ['Navigation API', 'Toast API'],
+  recommendedCompositions: [
+    'Callout card',
+    'Metrics card',
+    'Setup guide',
+    'Footer help',
+  ],
   defaultExample: {
+    description:
+      'This example demonstrates a homepage for a Product Quality Auditor app. It includes a banner with overall score, metrics cards showing product quality distribution, a setup guide for onboarding, common issues summary, and a list of products needing attention.',
     codeblock: {
       title: 'Homepage',
       tabs: [
@@ -27,18 +53,14 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: './examples/homepage.jsx',
           language: 'preview-jsx',
+          layout: 'templatePattern',
+          customStyles: {
+            minHeight: '400px',
+          },
         },
       ],
     },
   },
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

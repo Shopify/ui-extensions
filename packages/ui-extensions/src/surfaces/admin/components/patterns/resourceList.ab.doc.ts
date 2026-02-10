@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Resource list',
   isOneColumnLayout: false,
   overviewPreviewDescription:
@@ -15,7 +15,27 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Compositions',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/patterns/resourceList.png',
+  usedComponents: [
+    'Avatar',
+    'Button',
+    'Checkbox',
+    'Clickable',
+    'ClickableChip',
+    'Grid',
+    'Heading',
+    'Link',
+    'Option',
+    'Popover',
+    'Section',
+    'Select',
+    'Stack',
+    'Text',
+    'TextField',
+  ],
+  recommendedTemplates: ['Index table', 'Details'],
   defaultExample: {
+    description:
+      'This pattern provides search, filtering, and selection capabilities for lists of resources. Use [`s-text-field`](/docs/api/app-home/polaris-web-components/forms/text-field) with `icon="search"` for filtering, [`s-popover`](/docs/api/app-home/polaris-web-components/overlays/popover) for filter options, and [`s-checkbox`](/docs/api/app-home/polaris-web-components/forms/checkbox) for row selection.',
     codeblock: {
       title: 'Resource list',
       tabs: [
@@ -28,19 +48,12 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: 'examples/resourceList.jsx',
           language: 'preview-jsx',
+          layout: 'compositionPattern',
         },
       ],
     },
   },
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

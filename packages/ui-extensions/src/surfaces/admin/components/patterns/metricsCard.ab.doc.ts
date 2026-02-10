@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Metrics card',
   isOneColumnLayout: false,
   overviewPreviewDescription:
@@ -14,7 +14,20 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Compositions',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/patterns/metricsCard.png',
+  usedComponents: [
+    'Badge',
+    'Clickable',
+    'Divider',
+    'Grid',
+    'Heading',
+    'Section',
+    'Stack',
+    'Text',
+  ],
+  recommendedTemplates: ['Details'],
   defaultExample: {
+    description:
+      'This pattern uses [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) with responsive column templates to display metrics side-by-side on larger screens and stacked on smaller screens. The [`s-badge`](/docs/api/app-home/polaris-web-components/feedback/badge) component shows trend indicators.',
     codeblock: {
       title: 'Metrics card',
       tabs: [
@@ -27,19 +40,12 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: 'examples/metricsCard.jsx',
           language: 'preview-jsx',
+          layout: 'compositionPattern',
         },
       ],
     },
   },
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

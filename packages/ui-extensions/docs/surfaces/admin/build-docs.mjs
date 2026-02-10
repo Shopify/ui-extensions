@@ -237,6 +237,14 @@ const templates = {
     wrapperElement: 's-box',
     wrapperAttributes: 'padding="base", inlineSize="100%"',
   }),
+  templatePattern: createTemplate({
+    layoutStyles:
+      'width: 100%; transform: scale(1.0); transform-origin: top left;',
+  }),
+  compositionPattern: createTemplate({
+    layoutStyles:
+      'display: grid; align-items: center; justify-items: stretch; gap: 0.5rem; padding: 1rem;',
+  }),
   example: createTemplate({
     layoutStyles: 'display: grid; place-items: center; gap: 0.5rem;',
     wrapperElement: 's-box',

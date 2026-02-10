@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Footer help',
   isOneColumnLayout: false,
   overviewPreviewDescription:
@@ -14,7 +14,11 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Patterns',
   subCategory: 'Compositions',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/footerHelp.png',
+  usedComponents: ['Link', 'Stack', 'Text'],
+  recommendedTemplates: ['Details'],
   defaultExample: {
+    description:
+      'This pattern uses [`s-stack`](/docs/api/app-home/polaris-web-components/layout-and-structure/stack) with `alignItems="center"` to center the help text. Use [`s-link`](/docs/api/app-home/polaris-web-components/navigation/link) with `target="_blank"` for external documentation links that open in a new tab.',
     codeblock: {
       title: 'Footer help',
       tabs: [
@@ -27,19 +31,12 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: 'examples/footerHelp.jsx',
           language: 'preview-jsx',
+          layout: 'compositionPattern',
         },
       ],
     },
   },
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

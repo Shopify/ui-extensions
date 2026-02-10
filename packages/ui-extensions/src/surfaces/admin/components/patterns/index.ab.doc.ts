@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Index',
   overviewPreviewDescription:
     'Most apps need a way for merchants to manage collections of resources, and perform actions on them.',
@@ -11,8 +11,37 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   category: 'Patterns',
   subCategory: 'Templates',
+  isOneColumnLayout: true,
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/index.png',
+  usedComponents: [
+    'Badge',
+    'Box',
+    'Button',
+    'Checkbox',
+    'Choice',
+    'ChoiceList',
+    'Grid',
+    'Icon',
+    'Link',
+    'Popover',
+    'Section',
+    'Stack',
+    'Table',
+    'TableBody',
+    'TableCell',
+    'TableHeader',
+    'TableHeaderRow',
+    'TableRow',
+    'Text',
+    'TextField',
+    'Thumbnail',
+    'Tooltip',
+  ],
+  recommendedApis: ['Navigation API', 'Toast API', 'Modal API'],
+  recommendedCompositions: ['Empty state', 'Footer help'],
   defaultExample: {
+    description:
+      'This example demonstrates an index table for a Product Quality Auditor app. It includes filter tabs, search, sortable columns, bulk selection with checkboxes, and bulk actions. The table shows product thumbnails, quality scores, issue counts, and status badges.',
     codeblock: {
       title: 'Index',
       tabs: [
@@ -25,19 +54,15 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: './examples/index.jsx',
           language: 'preview-jsx',
+          layout: 'templatePattern',
+          customStyles: {
+            minHeight: '400px',
+          },
         },
       ],
     },
   },
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

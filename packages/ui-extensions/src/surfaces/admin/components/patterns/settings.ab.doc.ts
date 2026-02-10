@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Settings',
   overviewPreviewDescription: `All apps will have settings merchants will want to configure to control your app's behavior.`,
   description: `All apps have settings merchants need to configure to control your app's behavior. For React Router-based Shopify apps, this will be defined in a route file like \`app.settings.jsx\`. 
@@ -10,10 +10,30 @@ const data: ReferenceEntityTemplateSchema = {
   The settings pattern follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.
   `,
   isVisualComponent: true,
+  isOneColumnLayout: true,
   category: 'Patterns',
   subCategory: 'Templates',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/settings.png',
+  usedComponents: [
+    'Badge',
+    'Banner',
+    'Box',
+    'Divider',
+    'Grid',
+    'Heading',
+    'Icon',
+    'Link',
+    'NumberField',
+    'Section',
+    'Stack',
+    'Switch',
+    'Text',
+  ],
+  recommendedApis: ['Save Bar API', 'Toast API'],
+  recommendedCompositions: ['Footer help', 'Interstitial nav'],
   defaultExample: {
+    description:
+      'This example demonstrates a settings page for a Product Quality Auditor app. The main column contains quality criteria toggles with weight controls and notification preferences. The aside column provides contextual help explaining the scoring system.\n\nAdd `data-save-bar` to your form element to enable the [Save Bar API](/docs/api/app-home/apis/save-bar), which displays save/discard controls when the form has unsaved changes.',
     codeblock: {
       title: 'Settings',
       tabs: [
@@ -26,19 +46,15 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: 'examples/settings.jsx',
           language: 'preview-jsx',
+          layout: 'templatePattern',
+          customStyles: {
+            minHeight: '400px',
+          },
         },
       ],
     },
   },
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

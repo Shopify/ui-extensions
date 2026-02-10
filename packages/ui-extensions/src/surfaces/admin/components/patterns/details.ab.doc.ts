@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Details',
   overviewPreviewDescription:
     'From the index, edit and view individual resources within an efficient dual-column layout.',
@@ -14,8 +14,40 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   category: 'Patterns',
   subCategory: 'Templates',
+  isOneColumnLayout: true,
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/details.png',
+  usedComponents: [
+    'Badge',
+    'Banner',
+    'Box',
+    'Button',
+    'Divider',
+    'Grid',
+    'Heading',
+    'Icon',
+    'Image',
+    'Link',
+    'Modal',
+    'MoneyField',
+    'NumberField',
+    'SearchField',
+    'Section',
+    'Select',
+    'Stack',
+    'Switch',
+    'Table',
+    'Text',
+    'TextArea',
+    'TextField',
+    'Thumbnail',
+    'UnorderedList',
+    'URLField',
+  ],
+  recommendedApis: ['Save Bar API', 'Modal API', 'Intents API'],
+  recommendedCompositions: ['Empty state', 'Footer help', 'Media card'],
   defaultExample: {
+    description:
+      'This example demonstrates the details template with a Product Quality Auditor app that scores product data for SEO and completeness. The main column contains editable fields that contribute to a product\'s quality score, while the sidebar displays its image and resulting score.',
     codeblock: {
       title: 'Details',
       tabs: [
@@ -28,19 +60,15 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: './examples/details.jsx',
           language: 'preview-jsx',
+          layout: 'templatePattern',
+          customStyles: {
+            minHeight: '400px',
+          },
         },
       ],
     },
   },
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;
