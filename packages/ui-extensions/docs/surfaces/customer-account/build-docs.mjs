@@ -1,4 +1,5 @@
 /* eslint-disable no-undef, no-console */
+import childProcess from 'child_process';
 import fs from 'fs/promises';
 import {existsSync} from 'fs';
 import path from 'path';
@@ -90,6 +91,13 @@ const generateExtensionsDocs = async () => {
     ),
     {recursive: true},
   );
+
+  // Generate targets.json (extension targets + APIs + components mapping)
+  const targetsScriptPath = path.join(__dirname, 'build-docs-targets-json.mjs');
+  childProcess.execSync(`node ${targetsScriptPath}`, {
+    stdio: 'inherit',
+    cwd: rootPath,
+  });
 };
 
 try {
@@ -103,6 +111,18 @@ try {
     replaceValue: 'any',
   });
   await generateExtensionsDocs();
+
+  const customerAccountOutputDir = path.join(
+    rootPath,
+    docsGeneratedRelativePath,
+    'customer_account_ui_extensions',
+    EXTENSIONS_API_VERSION,
+  );
+  const targetsJsonPath = path.join(customerAccountOutputDir, 'targets.json');
+  console.log('\nGenerated docs at:');
+  console.log('  Customer Account UI extensions:', customerAccountOutputDir);
+  console.log('  targets.json:', targetsJsonPath);
+
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
     shopifyDevPath,

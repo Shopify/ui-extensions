@@ -1,4 +1,5 @@
 /* eslint-disable no-undef, no-console */
+import childProcess from 'child_process';
 import fs from 'fs/promises';
 import {existsSync} from 'fs';
 import path from 'path';
@@ -410,25 +411,27 @@ const transformJson = async (filePath, isExtensions) => {
     }
   });
 
-  // Merge the App Bridge docs with the Shopify Dev docs
+  // Merge the App Bridge docs with the Shopify Dev docs (if that file exists)
   if (!isExtensions && shopifyDevExists) {
     const shopifyDevDocs = path.join(
       shopifyDevDBPath,
       'app_home/generated_docs_data.json',
     );
-    const shopifyDevDocsContent = await fs.readFile(shopifyDevDocs, 'utf8');
-    const shopifyDevDocsDocsParsed = JSON.parse(
-      shopifyDevDocsContent.toString(),
-    );
+    if (existsSync(shopifyDevDocs)) {
+      const shopifyDevDocsContent = await fs.readFile(shopifyDevDocs, 'utf8');
+      const shopifyDevDocsDocsParsed = JSON.parse(
+        shopifyDevDocsContent.toString(),
+      );
 
-    const filteredDocs = shopifyDevDocsDocsParsed.filter(
-      (entry) =>
-        entry.category !== 'Polaris web components' &&
-        entry.category !== 'Patterns', // Don't include old patterns
-    );
+      const filteredDocs = shopifyDevDocsDocsParsed.filter(
+        (entry) =>
+          entry.category !== 'Polaris web components' &&
+          entry.category !== 'Patterns', // Don't include old patterns
+      );
 
-    // Combine arrays with shopify dev docs first, followed by new data
-    jsonData = [...filteredDocs, ...jsonData];
+      // Combine arrays with shopify dev docs first, followed by new data
+      jsonData = [...filteredDocs, ...jsonData];
+    }
   }
 
   await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
@@ -469,6 +472,13 @@ const generateExtensionsDocs = async () => {
     searchValue: '/docs/api/admin-extensions/unstable/',
     replaceValue: `/docs/api/admin-extensions/${EXTENSIONS_API_VERSION}`,
   });
+
+  // Generate targets.json (extension targets + APIs + components mapping)
+  const targetsScriptPath = path.join(__dirname, 'build-docs-targets-json.mjs');
+  childProcess.execSync(`node ${targetsScriptPath}`, {
+    stdio: 'inherit',
+    cwd: rootPath,
+  });
 };
 
 const generateAppBridgeDocs = async () => {
@@ -501,6 +511,24 @@ try {
   });
   await generateExtensionsDocs();
   await generateAppBridgeDocs();
+
+  const adminExtensionsOutput = path.join(
+    rootPath,
+    docsGeneratedRelativePath,
+    'admin_extensions',
+    EXTENSIONS_API_VERSION,
+  );
+  const appHomeOutput = path.join(
+    rootPath,
+    docsGeneratedRelativePath,
+    'app_home',
+  );
+  const targetsJsonPath = path.join(adminExtensionsOutput, 'targets.json');
+  console.log('\nGenerated docs at:');
+  console.log('  Admin extensions:', adminExtensionsOutput);
+  console.log('  targets.json:', targetsJsonPath);
+  console.log('  App Home:', appHomeOutput);
+
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
     shopifyDevPath,

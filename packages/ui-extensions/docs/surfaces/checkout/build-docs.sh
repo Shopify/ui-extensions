@@ -95,6 +95,18 @@ if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
 
+# Generate targets.json (extension targets + APIs + components mapping)
+node ./$DOCS_PATH/build-docs-targets-json.mjs
+targets_exit=$?
+if [ $targets_exit -ne 0 ]; then
+  fail_and_exit $targets_exit
+fi
+
+echo ""
+echo "Generated docs at:"
+echo "  Checkout UI extensions: $PWD/$DOCS_PATH/generated"
+echo "  targets.json: $PWD/$DOCS_PATH/generated/targets.json"
+echo ""
 
 copy_generated_docs_to_shopify_dev() {
 # Copy the generated docs to shopify-dev

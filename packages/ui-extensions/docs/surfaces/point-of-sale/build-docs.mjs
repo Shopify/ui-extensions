@@ -1,4 +1,5 @@
 /* eslint-disable no-undef, no-console */
+import childProcess from 'child_process';
 import fs from 'fs/promises';
 import {existsSync} from 'fs';
 import path from 'path';
@@ -150,6 +151,13 @@ const generateExtensionsDocs = async () => {
     ),
     {recursive: true},
   );
+
+  // Generate targets.json (extension targets + APIs + components mapping)
+  const targetsScriptPath = path.join(__dirname, 'build-docs-targets-json.mjs');
+  childProcess.execSync(`node ${targetsScriptPath}`, {
+    stdio: 'inherit',
+    cwd: rootPath,
+  });
 };
 
 try {
@@ -163,6 +171,18 @@ try {
     replaceValue: 'any',
   });
   await generateExtensionsDocs();
+
+  const posOutputDir = path.join(
+    rootPath,
+    docsGeneratedRelativePath,
+    'pos_ui_extensions',
+    EXTENSIONS_API_VERSION,
+  );
+  const targetsJsonPath = path.join(posOutputDir, 'targets.json');
+  console.log('\nGenerated docs at:');
+  console.log('  POS UI extensions:', posOutputDir);
+  console.log('  targets.json:', targetsJsonPath);
+
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
     shopifyDevPath,
