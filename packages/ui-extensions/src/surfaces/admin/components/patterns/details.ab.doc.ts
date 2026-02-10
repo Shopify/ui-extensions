@@ -3,12 +3,13 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Details',
   overviewPreviewDescription:
-    'Edit and view objects with efficient dual-column layout.',
-  description: `A details page is where merchants edit and manage individual resources: product information, campaign settings, customer records, or any item your app lets them configure. Start with this template to create a dual-column layout that puts editable content front and center while keeping supporting information visible in the sidebar.
+    'From the index, edit and view individual resources within an efficient dual-column layout.',
 
-  Use the primary column for information that defines the resource. Use the secondary column for supporting information such as status, metadata, and summaries. Provide breadcrumb navigation so merchants can return to the previous page without using the browser back button.
+  description: `From the index, merchants need to edit and view individual resources. For React Router-based Shopify apps, a resource type's details route file will use the pattern \`app.[resource].$id.jsx\`. For example, \`app.product.$id.jsx\` for managing a single product through your app.
+  
+  The details template provides an efficient dual-column layout that puts editable content front and center while keeping supporting information visible in the sidebar. Use the primary column for information that defines the resource. Use the secondary column for supporting information such as status, metadata, and summaries. Provide breadcrumb navigation so merchants can return to the previous page without using the browser back button.
 
-  This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
+  The details pattern follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.
   `,
   isVisualComponent: true,
   category: 'Patterns',

@@ -5,9 +5,9 @@ const data: ReferenceEntityTemplateSchema = {
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Encourage merchants to take action on new features or opportunities.',
-  description: `Callout cards encourage merchants to take action on a new feature or opportunity. Use them to announce features, promote functionality, or guide merchants through common first actions.
+  description: `When you release a new feature or want to highlight an opportunity, the callout card composition draws attention without being intrusive. It encourages merchants to take action with a clear message and prominent button.
 
-This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
+  Use callout cards sparingly to announce features, promote functionality, or guide merchants through common first actions. Remove them once merchants have engaged. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.
 `,
   isVisualComponent: true,
   category: 'Patterns',

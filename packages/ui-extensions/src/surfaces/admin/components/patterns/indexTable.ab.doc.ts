@@ -5,9 +5,9 @@ const data: AdminReferenceEntityTemplateSchema = {
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Display and manage data with powerful table interactions.',
-  description: `Most apps need a way for merchants to manage collections of items, whether products, orders, campaigns, subscribers, or any resource your app creates. Start with the index table pattern to create a scannable list with search, filtering, sorting, and bulk actions that feels familiar because it mirrors how Shopify admin already works.
+  description: `Most apps need a way for merchants to manage collections of items. The index table composition provides a scannable list with search, filtering, sorting, and bulk actions.
 
-  This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
+  Use checkboxes for bulk selection, reveal row actions on hover, and include pagination for large data sets. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.
   `,
   isVisualComponent: true,
   category: 'Patterns',

@@ -3,12 +3,10 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Index',
   overviewPreviewDescription:
-    'Manage objects efficiently with dynamic table actions.',
-  description: `The index template lets merchants view and manage collections of items in a table format. It provides search, filtering, sorting, and bulk actions to help merchants work efficiently with large data sets.
+    'Most apps need a way for merchants to manage collections of resources, and perform actions on them.',
+  description: `Most apps need a way for merchants to manage collections of resources and perform actions on them. For React Router-based Shopify apps, that index route file (\`app.[resources].jsx\`) should use a plural noun for the resource type. For example, \`app.products.jsx\` for managing products through your app. 
 
-  Reveal row actions on hover or selection to keep the table visually clean. Use bulk selection for operations that apply to multiple items at once.
-
-  This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
+  The index pattern provides this foundation while following proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.
   `,
   isVisualComponent: true,
   category: 'Patterns',
