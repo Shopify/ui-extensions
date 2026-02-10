@@ -5,9 +5,9 @@ const data: ReferenceEntityTemplateSchema = {
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Display key metrics, statistics, or trends at a glance.',
-  description: `Metrics cards highlight important numbers, statistics, or trends so merchants can quickly understand their activity and performance.
+  description: `Merchants want to see how they're doing at a glance. The metrics card composition highlights important numbers, statistics, or trends so merchants can quickly understand their activity and performance.
 
-  This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
+  Use metrics cards on your homepage or dashboard to surface the data merchants care about most. Include trend indicators when historical comparison adds context. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.
 `,
   isVisualComponent: true,
   category: 'Patterns',

@@ -6,9 +6,9 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.',
 
-  description: `A resource list displays a collection of objects of the same type. The main job is to help merchants find an object and navigate to its full-page representation.
+  description: `When merchants need to browse and select from a collection of similar items, a resource list provides a compact, scannable format. It helps merchants find an object and navigate to its full-page representation.
 
-This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
+  Use resource lists for smaller collections, or when you need a simpler selection interface within a card or modal. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.
 `,
   isVisualComponent: true,
   category: 'Patterns',

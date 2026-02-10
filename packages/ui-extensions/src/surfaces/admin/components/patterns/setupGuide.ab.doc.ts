@@ -5,9 +5,9 @@ const data: ReferenceEntityTemplateSchema = {
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Guide merchants through onboarding and setup with interactive checklists and progress tracking.',
-  description: `Setup guide provides an interactive checklist to guide merchants through essential onboarding or configuration tasks. Progress is tracked visually, helping merchants complete all required steps.
+  description: `New merchants need guidance to get started with your app. The setup guide composition provides an interactive checklist with visual progress tracking to walk them through essential onboarding or configuration tasks.
 
-  This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
+  Use this composition on your homepage or a dedicated onboarding page. Mark tasks as complete when merchants finish them to reinforce progress. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.
 `,
   isVisualComponent: true,
   category: 'Patterns',

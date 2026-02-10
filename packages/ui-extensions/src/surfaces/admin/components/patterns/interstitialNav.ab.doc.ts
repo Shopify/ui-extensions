@@ -5,9 +5,9 @@ const data: ReferenceEntityTemplateSchema = {
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Provide deeper navigation by linking merchants to related pages within a section.',
-  description: `Interstitial navigation connects merchants to deeper pages—like settings, features, or resources—within your app. It keeps navigation clean by avoiding multiple nested items.
+  description: `As your app grows, merchants need clear paths to deeper pages without cluttering your main navigation. The interstitial nav composition provides a clean way to link to settings, features, or resources within a section.
 
-  This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
+  Use this pattern on pages that serve as hubs for related functionality, like a settings overview that links to individual settings pages. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details.
 `,
   isVisualComponent: true,
   category: 'Patterns',

@@ -6,9 +6,9 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'Enable merchants to connect or disconnect their store from external accounts or services.',
 
-  description: `The account connection component lets merchants connect or disconnect their store to external accounts, like sales channels or marketing platforms.
+  description: `Many apps integrate with external services like marketing platforms, sales channels, or analytics providers. The account connection composition gives merchants a clear interface to connect or disconnect these integrations.
 
-This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
+  Display connection status, the connected account name, and provide actions to connect or disconnect. Place this composition in your settings or on a dedicated integrations page. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.
 `,
   isVisualComponent: true,
   category: 'Patterns',

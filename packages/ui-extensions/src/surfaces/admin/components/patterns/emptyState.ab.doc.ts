@@ -5,9 +5,9 @@ const data: ReferenceEntityTemplateSchema = {
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Provide guidance and encourage action when no data or items are available.',
-  description: `Empty states are used when a list, table, or chart has no items or data to show. This is an opportunity to guide merchants toward their next action.
+  description: `Every app has moments when there's nothing to show yet and some action is required of the merchant before they can manage resources. The empty state composition turns these blank screens into opportunities by guiding merchants toward their first action.
 
-This pattern is a recommended design for apps in the [Built for Shopify program](/docs/apps/launch/built-for-shopify/requirements).
+  Include a clear explanation of what will appear here and a prominent call-to-action to help merchants get started. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.
 `,
   isVisualComponent: true,
   category: 'Patterns',

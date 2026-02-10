@@ -3,12 +3,12 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Homepage',
   overviewPreviewDescription:
-    'Design your app homepage for daily merchant value.',
-  description: `The app homepage is the first thing merchants see when they open your app. Design it to provide daily value through status updates, metrics, and clear actions merchants can take.
+    'The primary landing page for your app, providing quick access to key information and actions.',
+  description: `The first thing merchants see when they open your app in App Home is a landing page, associated with the route file \`app._index.jsx\` in React Router-based Shopify apps.
 
-Use the homepage to surface key information at a glance: performance metrics, items needing attention, and onboarding guidance for new users.
+  It provides a clear entry point for merchants, and an opportunity to provide daily value through status updates, metrics, and clear actions merchants can take.  Surface key information at a glance like performance metrics, items needing attention, and onboarding guidance for new users.
 
-This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
+  The homepage pattern provides this foundation while following proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.
 `,
   isVisualComponent: true,
   category: 'Patterns',

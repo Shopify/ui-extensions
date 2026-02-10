@@ -6,11 +6,9 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'Footer help is used to refer merchants to more information related to the product or feature they’re using.',
 
-  description: `Footer help is used to refer merchants to more information related to the product or feature they're using, such as documentation links, support access, or legal information.
+  description: `Merchants sometimes need more context than a page can provide. The footer help composition offers a subtle way to link to documentation, support, or related information at the bottom of a page.
 
-  Place footer help at the bottom of the page or section it relates to. Use clear, descriptive link text that tells merchants where they'll go.
-
-  This pattern exemplifies best practices and satisfies many [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements).
+  Place footer help at the bottom of the page or section it relates to with clear, descriptive link text that tells merchants where they'll go. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.
 `,
   isVisualComponent: true,
   category: 'Patterns',
