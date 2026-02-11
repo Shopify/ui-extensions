@@ -20,7 +20,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Create a text field optimized for URL input. Click to interact with the preview.',
+      'Create a text field optimized for URL input with a label and placeholder. Click to interact with the preview.',
     codeblock: {
       title: 'Collect a URL',
       tabs: [
@@ -41,24 +41,6 @@ const data: AdminReferenceEntityTemplateSchema = {
       {
         title: '',
         examples: [
-          {
-            description:
-              'Add a label and placeholder for collecting a URL. Click to interact with the preview.',
-            codeblock: {
-              title: 'Add a label and placeholder',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
           {
             description:
               'Set required status, length constraints, and custom error messages. Click to interact with the preview.',
