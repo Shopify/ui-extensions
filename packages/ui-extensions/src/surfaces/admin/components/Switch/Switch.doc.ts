@@ -75,9 +75,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Collect multiple notification preferences in a single form.',
+              'Group switches in a form for batch submission with a save action.',
             codeblock: {
-              title: 'Collect multiple settings',
+              title: 'Submit settings in a form',
               tabs: [
                 {
                   code: './examples/form-integration.html',
@@ -86,6 +86,24 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/form-integration.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Arrange switches that take effect instantly without form submission. Click to interact with the preview.',
+            codeblock: {
+              title: 'Apply settings immediately',
+              tabs: [
+                {
+                  code: './examples/settings-panel-with-stack.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/settings-panel-with-stack.jsx',
                   language: 'preview-jsx',
                 },
               ],
@@ -140,24 +158,6 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/switch-with-accessibility-label.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Arrange multiple switches in a vertical stack for organized settings. Click to interact with the preview.',
-            codeblock: {
-              title: 'Create a settings panel',
-              tabs: [
-                {
-                  code: './examples/settings-panel-with-stack.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/settings-panel-with-stack.jsx',
                   language: 'preview-jsx',
                 },
               ],
