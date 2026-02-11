@@ -19,8 +19,8 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- The 2D color gradient area requires mouse/touch interaction. Keyboard users can only navigate between major UI elements (hue slider, alpha slider, hex input) but can't make fine-grained color adjustments in the gradient itself.
-- The picker operates in RGB color space. Some colors achievable in other color spaces (like CMYK or LAB) can't be precisely represented or may shift when converted to hex RGB.
+      sectionContent: `- The 2D color gradient area requires mouse/touch interaction. Keyboard users can only navigate between major UI elements (hue slider, alpha slider) but can't make fine-grained color adjustments in the gradient itself.
+- The picker operates in the HSL color space and outputs values in hex format. Colors from other color spaces (like CMYK or LAB) might not be precisely represented, and might shift during conversion.
 - On touch devices, selecting precise colors in the gradient can be difficult due to finger size obscuring the selection point. The picker works best with mouse or stylus input for fine color selection.`,
     },
   ],

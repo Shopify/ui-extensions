@@ -13,7 +13,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       sectionContent: `- **Use for inline search:** Choose the component for filtering content within specific sections or lists. For global navigation or complex multi-step searches, use a more robust search pattern.
 - **Make the search scope clear:** Users need to understand what they're searching through. Use specific labels and placeholders that explain what content will be searched and what attributes they can search by.
-- **Provide immediate feedback:** Show search results or filtered content as users type when possible. Immediate feedback helps users refine their search query and builds confidence in the search functionality.
+- **Provide immediate feedback:** Show search results or filtered content as merchants type when possible. Immediate feedback helps merchants refine their search query and builds confidence in the search functionality.
 - **Handle empty states gracefully:** When the search field is cleared or returns no results, show appropriate messaging. For cleared searches, restore the full content list. For no results, suggest alternative actions or broaden the search criteria.
 - **Set appropriate search thresholds:** Prevent searches that would return overwhelming or meaningless results. Starting searches after 2-3 characters gives the system enough information to provide useful results.`,
     },

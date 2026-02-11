@@ -14,7 +14,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       sectionContent: `- **Write descriptive labels:** Use specific labels like **Customer Email**, **Receipt Email Address**, or **Order Notification Email** rather than generic **Email** or **Email Address**.
 - **Provide context in details:** Use \`details\` for additional context like "Required for digital receipts" or "We'll send order updates to this address."
 - **Show format examples in placeholders:** Use placeholders like **you@example.com** or **support@yourstore.com** to demonstrate expected format, but don't repeat the label text.
-- **Write actionable error messages:** Provide clear validation messages like "Please enter a valid email address" or "Email must include @ symbol" that help users correct their input.`,
+- **Write actionable error messages:** Provide clear validation messages like "Please enter a valid email address" or "Email must include @ symbol" that help merchants correct their input.`,
     },
     {
       title: 'Limitations',

@@ -16,18 +16,18 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- **Use for structured, comparable data:** The component works best when displaying multiple records with consistent attributes that users need to scan and compare. For simple lists without comparison needs, consider using a simpler component.
+      sectionContent: `- **Use for structured, comparable data:** The component works best when displaying multiple records with consistent attributes that merchants need to scan and compare. For simple lists without comparison needs, consider using a simpler component.
 - **Design for mobile transformation:** The component automatically converts to a list layout on mobile devices. Ensure your column headers and data make sense when displayed as stacked key-value pairs rather than a grid.
 - **Keep column counts reasonable:** Tables with many columns become difficult to scan and require horizontal scrolling. Aim for the minimum columns needed to support user tasks, and consider whether some data could be revealed on demand.
-- **Provide clear column headers:** Column headers help users understand what each column represents. Write concise, descriptive headers that clearly identify the data type or attribute.
-- **Consider data volume:** Large tables impact performance and user experience. Use pagination for datasets with more than 50-100 rows, or consider whether filtering or search would help users find specific records more efficiently.`,
+- **Provide clear column headers:** Column headers help merchants understand what each column represents. Write concise, descriptive headers that clearly identify the data type or attribute.
+- **Consider data volume:** Large tables impact performance and user experience. Use pagination for datasets with more than 50-100 rows, or consider whether filtering or search would help merchants find specific records more efficiently.`,
     },
     {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- The component doesn't include sorting, filtering, or search functionality. You'll need to implement these features yourself if your users need to find or organize data within the table.
-- The component doesn't support sticky headers that remain visible during scrolling. If users need to reference column headers while viewing data further down the table, consider using pagination to keep datasets smaller.`,
+      sectionContent: `- The component doesn't include built-in sorting or search functionality. You'll need to implement these features yourself if merchants need to organize data within the table. For filtering, use the \`filters\` slot to add filter UI such as a \`SearchField\`.
+- The component doesn't support sticky headers that remain visible during scrolling. If merchants need to reference column headers while viewing data further down the table, consider using pagination to keep datasets smaller.`,
     },
   ],
   definitions: [

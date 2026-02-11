@@ -1629,7 +1629,7 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
    * When set, the value specifies the suggested filename for the downloaded file.
    *
    * The filename suggestion is only respected for same-origin URLs, `blob:`, and `data:` schemes.
-   * Cross-origin URLs can still trigger downloads, but browsers may ignore the suggested filename.
+   * Cross-origin URLs can still trigger downloads, but browsers might ignore the suggested filename.
    *
    * Learn more about the [download attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download).
    */
@@ -1864,7 +1864,7 @@ export interface FieldDecorationProps {
   /**
    * A non-editable text value displayed immediately after the editable portion of the field. This is useful for displaying an implied part of the value, such as `@shopify.com` or `%`.
    *
-   * This text can't be edited by the user and is not included in the field's value. The suffix may not appear until the user interacts with the field. For example, an inline label might occupy the suffix position until the user focuses the field.
+   * This text can't be edited by the user and is not included in the field's value. The suffix might not appear until the user interacts with the field. For example, an inline label might occupy the suffix position until the user focuses the field.
    *
    * @default ''
    */
@@ -1872,7 +1872,7 @@ export interface FieldDecorationProps {
   /**
    * A non-editable text value displayed immediately before the editable portion of the field. This is useful for displaying an implied part of the value, such as `https://` or `+353`.
    *
-   * This text can't be edited by the user and is not included in the field's value. The prefix may not appear until the user interacts with the field. For example, an inline label might occupy the prefix position until the user focuses the field.
+   * This text can't be edited by the user and is not included in the field's value. The prefix might not appear until the user interacts with the field. For example, an inline label might occupy the prefix position until the user focuses the field.
    *
    * @default ''
    */
@@ -3244,8 +3244,8 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
   /**
    * The image resizing behavior to fit within its container.
    *
-   * - `contain`: Scales the image to fit within the container while maintaining its aspect ratio. The entire image is visible, but may leave empty space.
-   * - `cover`: Scales the image to fill the entire container while maintaining its aspect ratio. The image may be cropped to fit.
+   * - `contain`: Scales the image to fit within the container while maintaining its aspect ratio. The entire image is visible, but might leave empty space.
+   * - `cover`: Scales the image to fill the entire container while maintaining its aspect ratio. The image might be cropped to fit.
    *
    * The image is always positioned in the center of the container.
    *
@@ -3567,7 +3567,7 @@ interface SectionProps$1 extends GlobalProps, ActionSlots {
   /**
    * The padding applied to all edges of the element.
    *
-   * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
+   * - `base`: applies padding that is appropriate for the element. Note that it might result in no padding if
    * this is the right design decision in a particular context.
    * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
    * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
@@ -3683,7 +3683,7 @@ export interface PaginationProps {
   hasPreviousPage?: boolean;
   /**
    * Whether the table is in a loading state, such as during initial page load or when loading the next page in a paginated table.
-   * When `true`, the table may be in an inert state that prevents user interaction.
+   * When `true`, the table might be in an inert state that prevents user interaction.
    *
    * @default false
    */
@@ -3712,7 +3712,7 @@ interface TableProps$1 extends GlobalProps, PaginationProps {
 interface TableBodyProps$1 extends GlobalProps {
   /**
    * The rows containing the main data content of the table.
-   * In the `table` variant, this represents the semantic table body. In the `list` variant, this may not have semantic meaning but still contains the data rows.
+   * In the `table` variant, this represents the semantic table body. In the `list` variant, this might not have semantic meaning but still contains the data rows.
    */
   children?: ComponentChildren;
 }
@@ -5282,7 +5282,7 @@ export interface BoxProps
    *
    * **Examples:** `base`, `large none`, `base large-100 base small`
    *
-   * Use `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Use `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default 'none'
    */
@@ -5294,7 +5294,7 @@ export interface BoxProps
    *
    * **Example:** `large none` applies `large` to the top and `none` to the bottom.
    *
-   * Overrides the block value from `padding`. Also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -5302,7 +5302,7 @@ export interface BoxProps
   /**
    * The block-start padding (top in horizontal writing modes).
    *
-   * Overrides the block-start value from `paddingBlock`. Also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -5310,7 +5310,7 @@ export interface BoxProps
   /**
    * The block-end padding (bottom in horizontal writing modes).
    *
-   * Overrides the block-end value from `paddingBlock`. Also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -5322,7 +5322,7 @@ export interface BoxProps
    *
    * **Example:** `large none` applies `large` to the left and `none` to the right.
    *
-   * Overrides the inline value from `padding`. Also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -5330,7 +5330,7 @@ export interface BoxProps
   /**
    * The inline-start padding (left in LTR writing modes, right in RTL).
    *
-   * Overrides the inline-start value from `paddingInline`. Also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -5338,7 +5338,7 @@ export interface BoxProps
   /**
    * The inline-end padding (right in LTR writing modes, left in RTL).
    *
-   * Overrides the inline-end value from `paddingInline`. Also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -6664,9 +6664,9 @@ export interface GridProps
    * Adjusts spacing between elements.
    *
    * Accepts:
-   * - A single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value applied to both axes, such as `large-100`
+   * - A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value applied to both axes, such as `large-100`
    * - A pair of values, such as `large-100 large-500`, to set the inline and block axes respectively
-   * - A [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
    *
    * @default 'none'
    */
@@ -6675,8 +6675,8 @@ export interface GridProps
    * s spacing between elements in the block axis. This overrides the row value of `gap`.
    *
    * Accepts:
-   * - A single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value, such as `large-100`
-   * - A [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
+   * - A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value, such as `large-100`
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
    *
    * @default '' - meaning no override
    */
@@ -6685,8 +6685,8 @@ export interface GridProps
    * Adjusts spacing between elements in the inline axis. This overrides the column value of `gap`.
    *
    * Accepts:
-   * - A single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value, such as `large-100`
-   * - A [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
+   * - A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value, such as `large-100`
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
    *
    * @default '' - meaning no override
    */
@@ -6696,7 +6696,7 @@ export interface GridProps
    *
    * Accepts:
    * - [Track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes), such as `1fr auto`
-   * - A [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported track sizing values as a query value
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported track sizing values as a query value
    *
    * @default 'none'
    */
@@ -6706,7 +6706,7 @@ export interface GridProps
    *
    * Accepts:
    * - [Track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes), such as `1fr auto`
-   * - A [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported track sizing values as a query value
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported track sizing values as a query value
    *
    * @default 'none'
    */
@@ -8072,9 +8072,9 @@ export interface StackProps
    * Adjusts spacing between elements.
    *
    * Accepts:
-   * - A single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value applied to both axes, such as `large-100`
+   * - A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value applied to both axes, such as `large-100`
    * - A pair of values, such as `large-100 large-500`, to set the inline and block axes respectively
-   * - A [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
    *
    * @default 'none'
    */
@@ -8083,8 +8083,8 @@ export interface StackProps
    * Adjusts spacing between elements in the block axis. This overrides the row value of `gap`.
    *
    * Accepts:
-   * - A single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value, such as `large-100`
-   * - A [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
+   * - A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value, such as `large-100`
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
    *
    * @default '' - meaning no override
    */
@@ -8093,8 +8093,8 @@ export interface StackProps
    * Adjusts spacing between elements in the inline axis. This overrides the column value of `gap`.
    *
    * Accepts:
-   * - A single [SpacingKeyword](https://shopify.dev/docs/api/app-home/using-polaris-components#scale) value, such as `large-100`
-   * - A [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
+   * - A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value, such as `large-100`
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
    *
    * @default '' - meaning no override
    */
@@ -8104,7 +8104,7 @@ export interface StackProps
    *
    * Accepts:
    * - A single value, either `inline` or `block`
-   * - A [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported direction values as a query value
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported direction values as a query value
    *
    * @default 'block'
    *
@@ -8296,7 +8296,7 @@ export interface TableBodyJSXProps
     Pick<TableBodyProps$1, 'id' | 'children'> {
   /**
    * The rows containing the main data content of the table.
-   * In the `table` variant, this represents the semantic table body. In the `list` variant, this may not have semantic meaning but still contains the data rows.
+   * In the `table` variant, this represents the semantic table body. In the `list` variant, this might not have semantic meaning but still contains the data rows.
    */
   children?: ComponentChildren;
 }
@@ -8825,7 +8825,7 @@ declare class AdminAction
   heading: string;
   /**
    * Whether the action is in a loading state, such as during initial page load or when the action is being opened.
-   * When `true`, the action may be in an inert state that prevents user interaction.
+   * When `true`, the action might be in an inert state that prevents user interaction.
    */
   loading: boolean;
   constructor();
@@ -8900,7 +8900,7 @@ declare class AdminPrintAction
   /**
    * The `src` URL of the preview and the document to print.
    * If not provided, the preview will show an empty state and the print button will be disabled.
-   * HTML, PDFs and images are supported.
+   * HTML, PDFs, and images are supported.
    */
   src: string;
   constructor();

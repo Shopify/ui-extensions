@@ -35,7 +35,7 @@ export interface ActionSlots {
 interface AdminActionProps$1 extends GlobalProps, ActionProps, ActionSlots {
   /**
    * Whether the action is in a loading state, such as during initial page load or when the action is being opened.
-   * When `true`, the action may be in an inert state that prevents user interaction.
+   * When `true`, the action might be in an inert state that prevents user interaction.
    *
    * @default false
    */
@@ -55,7 +55,7 @@ interface AdminPrintActionProps$1 extends GlobalProps {
   /**
    * The source URL of the preview and the document to print.
    * If not provided, the preview will show an empty state and the print button will be disabled.
-   * HTML, PDFs and images are supported.
+   * HTML, PDFs, and images are supported.
    */
   src?: string;
 }
@@ -148,9 +148,9 @@ export interface ExtendableEvent extends Event {
   /**
    * A method that accepts a promise signaling the duration and eventual success or failure of actions relating to the event.
    *
-   * This may be called multiple times to add promises to the event.
+   * This might be called multiple times to add promises to the event.
    *
-   * However, this may only be called synchronously during the dispatch of the event.
+   * However, this might only be called synchronously during the dispatch of the event.
    * As in, you cannot call it after a `setTimeout` or microtask.
    */
   waitUntil?: (promise: Promise<void>) => void;
@@ -246,9 +246,9 @@ export interface BackgroundProps {
  * Tone is a property for defining the color treatment of a component.
  *
  * A tone can apply a grouping of colors to a component. For example,
- * critical may have a specific text color and background color.
+ * critical might have a specific text color and background color.
  *
- * In some cases, like for Banner, the tone may also affect the semantic and accessibility treatment of the component.
+ * In some cases, like for Banner, the tone might also affect the semantic and accessibility treatment of the component.
  *
  * @default 'auto'
  */
@@ -931,13 +931,17 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
    */
   children?: ComponentChildren;
   /**
-   * The semantic meaning and color treatment of the component.
+   * The semantic meaning and color treatment of the component. The banner is a live region and the type of status is dictated by the tone selected.
    *
+   * - `auto`: Automatically determined based on context.
+   * - `neutral`: General status information without emphasis.
    * - `info`: Informational content or helpful tips.
    * - `success`: Positive outcomes or successful states.
+   * - `caution`: Situations that need attention but aren't urgent.
    * - `warning`: Important warnings about potential issues.
    * - `critical`: Urgent problems or destructive actions.
-   * - `auto`: Automatically determined based on context.
+   *
+   * The `critical` tone creates an [assertive live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/alert_role) that is announced by screen readers immediately. The `neutral`, `info`, `success`, `warning`, and `caution` tones create an [informative live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role) that is announced by screen readers after the current message.
    *
    * @default 'auto'
    */
@@ -1751,7 +1755,7 @@ export interface FieldDecorationProps {
   /**
    * A non-editable text value displayed immediately after the editable portion of the field. This is useful for displaying an implied part of the value, such as `@shopify.com` or `%`.
    *
-   * This text can't be edited by the user and is not included in the field's value. The suffix may not appear until the user interacts with the field. For example, an inline label might occupy the suffix position until the user focuses the field.
+   * This text can't be edited by the user and is not included in the field's value. The suffix might not appear until the user interacts with the field. For example, an inline label might occupy the suffix position until the user focuses the field.
    *
    * @default ''
    */
@@ -1759,7 +1763,7 @@ export interface FieldDecorationProps {
   /**
    * A non-editable text value displayed immediately before the editable portion of the field. This is useful for displaying an implied part of the value, such as `https://` or `+353`.
    *
-   * This text can't be edited by the user and is not included in the field's value. The prefix may not appear until the user interacts with the field. For example, an inline label might occupy the prefix position until the user focuses the field.
+   * This text can't be edited by the user and is not included in the field's value. The prefix might not appear until the user interacts with the field. For example, an inline label might occupy the prefix position until the user focuses the field.
    *
    * @default ''
    */
@@ -2056,7 +2060,7 @@ interface ClickableChipProps$1
    */
   href?: string;
   /**
-   * Whether the chip displays a remove button for dismissal. When clicked, the remove` callback fires.
+   * Whether the chip displays a remove button for dismissal. When clicked, the `remove` callback fires.
    *
    * @default false
    */
@@ -2140,7 +2144,7 @@ interface ColorPickerProps$1
   /**
    * The currently selected color value. Accepts multiple input formats:
    *
-   * - Hex: `#RGB`, `#RRGGBB`, `#RRGGBBAA` (3, 6, or 8 digits)
+   * - Hex: `#RGB`, `#RGBA`, `#RRGGBB`, `#RRGGBBAA` (three, four, six, or eight digits)
    * - RGB/RGBA: `rgb(255, 0, 0)` or `rgb(255 0 0)` (comma or space-separated)
    * - HSL/HSLA: `hsl(0, 100%, 50%)` or `hsl(0 100% 50%)`
    *
@@ -2344,7 +2348,7 @@ interface ColorFieldProps$1
   /**
    * The currently selected color value. Accepts multiple input formats:
    *
-   * - Hex: `#RGB`, `#RRGGBB`, `#RRGGBBAA` (3, 6, or 8 digits)
+   * - Hex: `#RGB`, `#RGBA`, `#RRGGBB`, `#RRGGBBAA` (three, four, six, or eight digits)
    * - RGB/RGBA: `rgb(255, 0, 0)` or `rgb(255 0 0)` (comma or space-separated)
    * - HSL/HSLA: `hsl(0, 100%, 50%)` or `hsl(0 100% 50%)`
    *
@@ -2956,7 +2960,7 @@ export interface BaseImageProps {
    * Learn more about [writing effective alt text](https://www.shopify.com/ca/blog/image-alt-text#4)
    * and the [alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt).
    *
-   * @default ``
+   * @default ''
    */
   alt?: string;
   /**
@@ -3330,7 +3334,7 @@ interface SectionProps$1 extends GlobalProps, ActionSlots {
   /**
    * The amount of padding applied to all edges of the section.
    *
-   * - `base`: Applies standard padding appropriate for the section. Note that this may result in no padding if that's the right design decision for the context.
+   * - `base`: Applies standard padding appropriate for the section. Note that this might result in no padding if that's the right design decision for the context.
    * - `none`: Removes all padding, useful when content like images needs to extend to the section's edges. Use `Box` with `padding="base"` for individual content areas that need padding.
    *
    * @default 'base'
@@ -3438,7 +3442,7 @@ export interface PaginationProps {
   hasPreviousPage?: boolean;
   /**
    * Whether the table is in a loading state, such as during initial page load or when loading the next page in a paginated table.
-   * When `true`, the table may be in an inert state that prevents user interaction.
+   * When `true`, the table might be in an inert state that prevents user interaction.
    *
    * @default false
    */

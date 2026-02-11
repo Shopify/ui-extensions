@@ -13,16 +13,16 @@ const data: AdminReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       sectionContent: `- **Write in short, scannable blocks:** Keep paragraphs to 2-4 sentences to improve readability. Merchants scan more than they read, so break long content into digestible chunks. Use plain language and avoid jargon.
 - **Apply tones to communicate intent:** Use semantic tones like critical for errors, caution for warnings, and success for confirmations. Tones help merchants quickly understand the nature of information, but don't rely on color alone—pair with clear language.
-- **Consider accessibility in all contexts:** Use screen-reader-only text to provide context that visual users get from layout or icons. Make sure tone colors have sufficient contrast for readability.
+- **Consider accessibility in all contexts:** Use screen-reader-only text to provide context that sighted merchants get from layout or icons. Make sure tone colors have sufficient contrast for readability.
 - **Use line clamping strategically:** Line clamping helps manage space in constrained layouts like cards or previews, but truncated content should never hide critical information.`,
     },
     {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- Paragraphs render as block-level elements with spacing above and below. This spacing is designed for body content and may create unwanted gaps in tightly packed layouts.
+      sectionContent: `- Paragraphs render as block-level elements with spacing above and below. This spacing is designed for body content and might create unwanted gaps in tightly packed layouts.
 - Line clamping truncates text visually but doesn't provide tooltips or expandable content. Truncated information isn't fully accessible unless you provide an alternative way to view the complete text.
-- Tone colors are optimized for light backgrounds. Using toned paragraphs on dark or colored backgrounds may result in insufficient contrast for accessibility.`,
+- Tone colors are optimized for light backgrounds. Using toned paragraphs on dark or colored backgrounds might result in insufficient contrast for accessibility.`,
     },
   ],
   definitions: [

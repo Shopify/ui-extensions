@@ -16,10 +16,10 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- Links within extensions have limited control over navigation behavior in the Shopify admin. Some admin navigation patterns may override link behavior for consistency.
-- Links with \`target="_blank"\` automatically get \`rel="noopener noreferrer"\` for security, but external URLs are still subject to browser security policies. Some browsers may block external navigation from extensions or show security warnings.
+      sectionContent: `- Links within extensions have limited control over navigation behavior in the Shopify admin. Some admin navigation patterns might override link behavior for consistency.
+- Links with \`target="_blank"\` automatically get \`rel="noopener noreferrer"\` for security, but external URLs are still subject to browser security policies. Some browsers might block external navigation from extensions or show security warnings.
 - Links don't have a built-in loading or disabled state. If clicking a link triggers a slow navigation or async operation, you must implement loading feedback yourself.
-- The \`download\` attribute for forcing file downloads has inconsistent browser support. It works reliably for same-origin files but may be ignored for cross-origin resources. Safari on iOS doesn't support the download attribute at all.`,
+- The \`download\` attribute for forcing file downloads has inconsistent browser support. It works reliably for same-origin files but might be ignored for cross-origin resources. Safari on iOS doesn't support the download attribute at all.`,
     },
   ],
   definitions: [

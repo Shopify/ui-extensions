@@ -18,9 +18,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- Avatar images must be served from URLs accessible by the merchant's browser. If the image is hosted on a different domain, the server must include appropriate \`Access-Control-Allow-Origin\` headers or the image may fail to load.
+      sectionContent: `- Avatar images must be served from URLs accessible by the merchant's browser. If the image is hosted on a different domain, the server must include appropriate \`Access-Control-Allow-Origin\` headers or the image might fail to load.
 - Only standard web image formats (JPEG, PNG, GIF, WebP, SVG) are supported. Unsupported formats will fall back to initials.
-- The initials fallback extracts up to 2 characters from the \`name\` property. Names with special characters, emojis, or non-Latin scripts may not display as expected.`,
+- The \`initials\` prop accepts a string that displays when no image is available. Characters beyond the first two might be truncated. Special characters, emojis, or non-Latin scripts might not render as expected.`,
     },
   ],
   definitions: [

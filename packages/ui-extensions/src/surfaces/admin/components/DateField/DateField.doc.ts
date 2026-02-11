@@ -14,7 +14,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       sectionContent: `- **Use smart defaults:** Pre-populate fields with sensible dates when editing existing data or suggesting common selections.
 - **Restrict dates appropriately:** Use the \`allow\` and \`disallow\` properties to restrict selectable dates for your use case (like only future dates for scheduling or only weekdays for business operations).
 - **Explain date constraints:** Use the \`details\` property to clarify requirements like "Select a date within the next 30 days" or "Must be a future date."
-- **Write actionable error messages:** Provide clear validation messages for invalid dates that help users correct their input.`,
+- **Write actionable error messages:** Provide clear validation messages for invalid dates that help merchants correct their input.`,
     },
   ],
   definitions: [
