@@ -35,7 +35,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `- **Use action-oriented labels:** Write labels using the \`{verb}+{noun}\` format like **Save changes**, **Delete product**, or **Create discount** rather than generic labels like **Submit** or **OK**.
 - **Follow action hierarchy:** Primary actions complete or advance the workflow (like **Save** or **Publish**), while secondary actions cancel or go back (like **Cancel** or **Discard changes**).
 - **Write descriptive titles:** Titles should name the specific task like **Edit shipping settings** or **Archive old orders**, not generic phrases like **Actions** or **Settings**.
-- **Limit to one task per action:** Each button should trigger a single operation. If you need multiple steps, guide users through them sequentially rather than combining operations.`,
+- **Limit to one task per action:** Each button should trigger a single operation. If you need multiple steps, guide merchants through them sequentially rather than combining operations.`,
     },
   ],
   defaultExample: {

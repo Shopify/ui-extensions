@@ -88,7 +88,7 @@ export interface BadgeProps
    */
   size: Extract<BadgeProps$1['size'], 'base' | 'large' | 'large-100'>;
   /**
-   * Determines the visual appearance and semantic meaning of the badge. Badges rely on the tone system for semantic meaning, so using custom styling may not clearly convey meaning to merchants. Available options:
+   * Determines the visual appearance and semantic meaning of the badge. Badges rely on the tone system for semantic meaning, so using custom styling might not clearly convey meaning to merchants. Available options:
    * - `'auto'` - Lets the system automatically choose the appropriate tone based on context.
    * - `'neutral'` - Gray styling for general status information that doesn't require emphasis.
    * - `'info'` - Blue styling for informational content and neutral updates.

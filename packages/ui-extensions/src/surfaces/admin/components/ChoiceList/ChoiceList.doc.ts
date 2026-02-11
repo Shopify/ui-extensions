@@ -15,7 +15,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       sectionContent: `- **Choose appropriate selection modes:** Use single selection for mutually exclusive options like payment methods or shipping speeds. Enable \`multiple\` when merchants can select more than one.
 - **Write clear, specific labels:** Use choice labels that describe the outcome, like **Email notifications for new orders** rather than just **Email**. Keep labels concise but descriptive enough that merchants understand each option without additional explanation.
 - **Write clear titles:** Use titles that pose a clear question or statement, like **Which shipping method?** or **Select notification preferences**. Avoid vague titles like **Options** or **Settings**.
-- **Add context to complex choices:** Use the \`details\` property on individual choices to explain implications when needed.
+- **Add context to complex choices:** Use the \`details\` slot on individual choices (for example, \`<s-text slot="details">\`) to explain implications when needed.
 - **Provide actionable validation:** Show specific error messages like **Please select at least one notification preference** rather than generic **Required field**.`,
     },
     {
@@ -96,7 +96,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a ChoiceList with multiple selection enabled, allowing users to choose multiple options with additional descriptive details for each choice.',
+              'Illustrates a ChoiceList with multiple selection enabled, allowing merchants to choose multiple options with additional descriptive details for each choice.',
             codeblock: {
               title: 'Multiple selections',
               tabs: [

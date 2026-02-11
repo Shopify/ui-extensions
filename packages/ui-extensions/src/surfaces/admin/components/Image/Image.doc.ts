@@ -19,9 +19,8 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- Images must be served from publicly accessible URLs. Local file paths and data URLs aren't supported.
-- The component displays images at their intrinsic aspect ratio. For fixed aspect ratios or cropped images, use the [\`Thumbnail\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/thumbnail) component or apply container sizing constraints.
-- Cross-origin images require proper CORS headers from the image host. Without correct headers, images may fail to load or display.
+      sectionContent: `- Images can be loaded from remote URLs or local file resources. Cross-origin images require proper CORS headers from the image host.
+- The component displays images at their intrinsic aspect ratio. Use \`aspectRatio\` (for example, \`'16/9'\`) to set a fixed ratio, and \`objectFit\` (\`'cover'\` or \`'contain'\`) to control how the image resizes within its container.
 - The component provides a basic placeholder while images load but doesn't include built-in loading skeletons or progressive loading features.`,
     },
   ],

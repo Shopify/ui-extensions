@@ -20,10 +20,10 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- When using \`href\` for navigation, external URLs (domains outside Shopify admin) may be blocked or show security warnings depending on the extension context and merchant's browser security settings.
-- Setting \`loading={true}\` provides visual feedback but doesn't automatically prevent form submission or multiple clicks. You must implement additional logic to debounce or disable the button action during async operations.
-- Icon-only buttons have a minimum touch target size but don't expand to fill available space. They maintain a fixed size based on the icon and padding, which may create layout inconsistencies if mixed with text buttons in the same container.
-- Disabled buttons (\`disabled={true}\`) can't be focused or triggered by keyboard users, which may cause confusion if the reason for disabling isn't clear. Consider using \`loading\` or aria-live announcements instead of disabling when the state might change soon.`,
+      sectionContent: `- When using \`href\` for navigation, external URLs (domains outside Shopify admin) might be blocked or show security warnings depending on the extension context and merchant's browser security settings.
+- Setting \`loading={true}\` provides visual feedback and prevents form submission or multiple clicks. You must implement additional logic to debounce or disable the button action during async operations.
+- Icon-only buttons have a minimum touch target size but don't expand to fill available space. They maintain a fixed size based on the icon and padding, which might create layout inconsistencies if mixed with text buttons in the same container.
+- Disabled buttons (\`disabled={true}\`) are removed from the tab order and can't receive keyboard focus. If you disable a button temporarily (for example, while waiting for form validation), then provide visible text explaining why it's disabled. For async operations, use \`loading\` over \`disabled\` because \`loading\` communicates that an action is in progress.`,
     },
   ],
   definitions: [

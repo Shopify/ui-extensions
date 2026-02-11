@@ -20,11 +20,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- The HTML5 URL input type (\`type="url"\`) has very basic validation that varies by browser. Most browsers only check for **://** somewhere in the string. Invalid URLs like **ht://invalid** may pass browser validation. Always implement comprehensive server-side URL validation.
-- While RFC 3986 doesn't specify a maximum URL length, most browsers support URLs up to 2,048 characters. Many servers have 8,192 character limits for request URIs. Setting \`maxLength\` above 2,048 may create URLs that work in some contexts but fail in others.
-- URLs starting with **//** (protocol-relative, like **//example.com**) are technically valid but may not pass HTML5 URL validation. Users must include the full protocol (http:// or https://).
-- This component doesn't automatically prepend **https://** if users omit the protocol. A value like **example.com** will be invalid and require manual correction. You must implement this behavior yourself if desired.
-- URLs with special characters (spaces, quotes, Unicode) should be percent-encoded (%20, %22), but the component doesn't auto-encode. Provide guidance to users or implement encoding in your validation logic.`,
+      sectionContent: `- The HTML5 URL input type (\`type="url"\`) has very basic validation that varies by browser. Most browsers only check for **://** somewhere in the string. Invalid URLs like **ht://invalid** might pass browser validation. Always implement comprehensive server-side URL validation.
+- While RFC 3986 doesn't specify a maximum URL length, the practical recommended limit for broad compatibility across web clients and servers is 2,048 characters. Modern browsers support much longer URLs, but many servers have lower limits for request URIs. Setting \`maxLength\` above 2,048 might create URLs that work in some contexts but fail in others.
+- URLs starting with **//** (protocol-relative, like **//example.com**) are technically valid but might not pass HTML5 URL validation. Users must include the full protocol (http:// or https://).
+- This component doesn't automatically prepend **https://** if merchants omit the protocol. A value like **example.com** will be invalid and require manual correction. You must implement this behavior yourself if desired.
+- URLs with special characters (spaces, quotes, Unicode) should be percent-encoded (%20, %22), but the component doesn't auto-encode. Provide guidance to merchants or implement encoding in your validation logic.`,
     },
   ],
   definitions: [

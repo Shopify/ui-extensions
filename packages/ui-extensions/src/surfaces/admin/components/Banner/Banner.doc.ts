@@ -89,7 +89,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a warning banner that highlights a potential issue and provides actionable buttons to help users resolve the problem quickly and effectively.',
+              'Illustrates a warning banner that highlights a potential issue and provides actionable buttons to help merchants resolve the problem quickly and effectively.',
             codeblock: {
               title: 'Warning banner with specific actions',
               tabs: [
@@ -107,7 +107,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates an urgent banner design that signals a critical issue requiring immediate action, with clear and prominent secondary action buttons to guide users.',
+              'Demonstrates an urgent banner design that signals a critical issue requiring immediate action, with clear and prominent secondary action buttons to guide merchants.',
             codeblock: {
               title: 'Critical banner with clear next steps',
               tabs: [

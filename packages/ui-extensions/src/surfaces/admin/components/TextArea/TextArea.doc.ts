@@ -10,10 +10,10 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- **Set appropriate initial height:** The visible row count sets users' expectations for how much content to provide. A small textarea suggests brief input, while a larger one indicates more detailed content is expected.
-- **Set realistic length constraints:** Define maximum and minimum character limits that reflect actual requirements. Communicate these limits clearly so users understand how much content they need to provide.
-- **Provide helpful placeholder examples:** Show users what kind of content and level of detail you expect. Good placeholder text demonstrates format and tone rather than just stating the field's purpose.
-- **Give real-time feedback on length limits:** When enforcing maximum length, show users how many characters they have remaining. This helps them craft their content within constraints without exceeding limits.`,
+      sectionContent: `- **Set appropriate initial height:** The visible row count sets merchants' expectations for how much content to provide. A small textarea suggests brief input, while a larger one indicates more detailed content is expected.
+- **Set realistic length constraints:** Define maximum and minimum character limits that reflect actual requirements. Communicate these limits clearly so merchants understand how much content they need to provide.
+- **Provide helpful placeholder examples:** Show merchants what kind of content and level of detail you expect. Good placeholder text demonstrates format and tone rather than just stating the field's purpose.
+- **Give real-time feedback on length limits:** When enforcing maximum length, show merchants how many characters they have remaining. This helps them craft their content within constraints without exceeding limits.`,
     },
     {
       title: 'Limitations',
