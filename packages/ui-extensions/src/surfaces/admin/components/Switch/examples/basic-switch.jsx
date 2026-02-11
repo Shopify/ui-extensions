@@ -1,1 +1,0 @@
-<s-switch id="basic-switch" label="Enable notifications" />
