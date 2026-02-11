@@ -24,7 +24,8 @@ const data: AdminReferenceEntityTemplateSchema = {
     'Stack',
     'Text',
   ],
-  recommendedTemplates: ['Details'],
+  recommendedApis: ['Modal API', 'Toast API'],
+  recommendedTemplates: ['Settings'],
   defaultExample: {
     description:
       'This pattern uses [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) to align account information with a connect button. The [`s-section`](/docs/api/app-home/polaris-web-components/layout-and-structure/section) provides consistent padding and the terms text below informs merchants of the connection agreement.',
@@ -45,7 +46,59 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: `The examples below show how you can extend the account connection pattern with additional functionality:
 
+- [Modal API](#example-confirm-disconnect-with-modal): Confirm account disconnection before removing an integration.
+- [Toast API](#example-show-connection-feedback-with-toast): Show feedback when connection status changes.`,
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Use the [Modal API](/docs/api/app-home/apis/modal-api) to confirm account disconnection before removing the integration.',
+            codeblock: {
+              title: 'Confirm disconnect with Modal',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/accountConnection-modal.jsx',
+                  language: 'preview-jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/accountConnection-modal.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the [Toast API](/docs/api/app-home/apis/toast) to show feedback when an account is connected or disconnected.',
+            codeblock: {
+              title: 'Show connection feedback with Toast',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/accountConnection-toast.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/accountConnection-toast.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

@@ -1,0 +1,82 @@
+<s-section padding="none">
+  <s-stack gap="small-200">
+    <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center" paddingInline="base" paddingBlockStart="base">
+      <s-text-field icon="search" placeholder="Filter customers"></s-text-field>
+    </s-grid>
+    
+    <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center" paddingInline="base">
+      <s-checkbox label="Showing 2 customers"></s-checkbox>
+      <s-select>
+        <s-option value="newest">Newest update</s-option>
+        <s-option value="oldest">Oldest update</s-option>
+      </s-select>
+    </s-grid>
+    
+    <s-stack>
+      <s-clickable borderStyle="solid none none none" border="base" paddingInline="base" paddingBlock="small">
+        <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-checkbox></s-checkbox>
+            <s-avatar></s-avatar>
+            <s-stack>
+              <s-heading>Mae Jemison</s-heading>
+              <s-text>Decatur, USA</s-text>
+            </s-stack>
+          </s-stack>
+          <s-button
+            icon="delete"
+            variant="tertiary"
+            tone="critical"
+            accessibilityLabel="Delete Mae Jemison"
+            commandFor="delete-modal"
+            command="--show"
+          />
+        </s-grid>
+      </s-clickable>
+      <s-clickable borderStyle="solid none none none" border="base" paddingInline="base" paddingBlock="small">
+        <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-checkbox></s-checkbox>
+            <s-avatar></s-avatar>
+            <s-stack>
+              <s-heading>Ellen Ochoa</s-heading>
+              <s-text>Los Angeles, USA</s-text>
+            </s-stack>
+          </s-stack>
+          <s-button
+            icon="delete"
+            variant="tertiary"
+            tone="critical"
+            accessibilityLabel="Delete Ellen Ochoa"
+            commandFor="delete-modal"
+            command="--show"
+          />
+        </s-grid>
+      </s-clickable>
+    </s-stack>
+  </s-stack>
+
+  <s-modal id="delete-modal" heading="Delete customer?">
+    <s-stack direction="block" gap="base">
+      <s-text>
+        Are you sure you want to delete this customer? This action cannot be undone.
+      </s-text>
+    </s-stack>
+    <s-button
+      slot="primary-action"
+      variant="primary"
+      tone="critical"
+      commandFor="delete-modal"
+      command="--hide"
+    >
+      Delete
+    </s-button>
+    <s-button
+      slot="secondary-actions"
+      commandFor="delete-modal"
+      command="--hide"
+    >
+      Cancel
+    </s-button>
+  </s-modal>
+</s-section>

@@ -3,13 +3,13 @@
     <s-clickable
       padding="small-100"
       href="#"
-      accessibilityLabel="Configure shipping methods, rates, and fulfillment options"
+      accessibilityLabel="Manage customer support settings and help resources"
     >
       <s-grid gridTemplateColumns="1fr auto" alignItems="center" gap="base">
         <s-box>
-          <s-heading>Shipping & fulfillment</s-heading>
+          <s-heading>Customer support</s-heading>
           <s-paragraph color="subdued">
-            Shipping methods, rates, zones, and fulfillment preferences.
+            Support settings, help resources, and customer service tools.
           </s-paragraph>
         </s-box>
         <s-icon type="chevron-right" />
@@ -39,13 +39,13 @@
     <s-clickable
       padding="small-100"
       href="#"
-      accessibilityLabel="Manage customer support settings and help resources"
+      accessibilityLabel="Configure shipping methods, rates, and fulfillment options"
     >
       <s-grid gridTemplateColumns="1fr auto" alignItems="center" gap="base">
         <s-box>
-          <s-heading>Customer support</s-heading>
+          <s-heading>Shipping & fulfillment</s-heading>
           <s-paragraph color="subdued">
-            Support settings, help resources, and customer service tools.
+            Shipping methods, rates, zones, and fulfillment preferences.
           </s-paragraph>
         </s-box>
         <s-icon type="chevron-right" />

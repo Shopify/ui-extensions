@@ -1,0 +1,74 @@
+<!-- Index table with pagination controls - showing page 2 of 3 -->
+<s-section padding="none" accessibilityLabel="Puzzles table with pagination">
+  <s-table
+    paginate
+    hasPreviousPage="true"
+    hasNextPage="true"
+    paginationLabel="Page 2 of 3"
+  >
+    <s-grid slot="filters" gap="small-200" gridTemplateColumns="1fr auto">
+      <s-text-field
+        label="Search puzzles"
+        labelAccessibilityVisibility="exclusive"
+        icon="search"
+        placeholder="Searching all puzzles"
+      ></s-text-field>
+      <s-button icon="sort" variant="secondary" accessibilityLabel="Sort"></s-button>
+    </s-grid>
+
+    <s-table-header-row>
+      <s-table-header listSlot="primary">Puzzle</s-table-header>
+      <s-table-header format="numeric">Pieces</s-table-header>
+      <s-table-header>Created</s-table-header>
+      <s-table-header listSlot="secondary">Status</s-table-header>
+    </s-table-header-row>
+
+    <s-table-body>
+      <s-table-row>
+        <s-table-cell>
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-box border="base" borderRadius="base" overflow="hidden" inlineSize="40px" blockSize="40px">
+              <s-image objectFit="cover" src="https://picsum.photos/id/1031/80/80"></s-image>
+            </s-box>
+            <s-link href="">City Skyline</s-link>
+          </s-stack>
+        </s-table-cell>
+        <s-table-cell>36</s-table-cell>
+        <s-table-cell>Jan 10</s-table-cell>
+        <s-table-cell>
+          <s-badge color="base" tone="success">Active</s-badge>
+        </s-table-cell>
+      </s-table-row>
+      <s-table-row>
+        <s-table-cell>
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-box border="base" borderRadius="base" overflow="hidden" inlineSize="40px" blockSize="40px">
+              <s-image objectFit="cover" src="https://picsum.photos/id/167/80/80"></s-image>
+            </s-box>
+            <s-link href="">Autumn Leaves</s-link>
+          </s-stack>
+        </s-table-cell>
+        <s-table-cell>16</s-table-cell>
+        <s-table-cell>Jan 8</s-table-cell>
+        <s-table-cell>
+          <s-badge color="base" tone="success">Active</s-badge>
+        </s-table-cell>
+      </s-table-row>
+      <s-table-row>
+        <s-table-cell>
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-box border="base" borderRadius="base" overflow="hidden" inlineSize="40px" blockSize="40px">
+              <s-image objectFit="cover" src="https://picsum.photos/id/360/80/80"></s-image>
+            </s-box>
+            <s-link href="">Northern Lights</s-link>
+          </s-stack>
+        </s-table-cell>
+        <s-table-cell>49</s-table-cell>
+        <s-table-cell>Jan 5</s-table-cell>
+        <s-table-cell>
+          <s-badge color="base" tone="neutral">Draft</s-badge>
+        </s-table-cell>
+      </s-table-row>
+    </s-table-body>
+  </s-table>
+</s-section>

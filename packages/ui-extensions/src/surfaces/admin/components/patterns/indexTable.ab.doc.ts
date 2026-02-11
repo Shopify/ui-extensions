@@ -32,7 +32,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     'TextField',
     'Tooltip',
   ],
-  recommendedApis: ['Navigation API', 'Modal API', 'Toast API'],
+  recommendedApis: ['Modal API', 'Navigation API', 'Toast API'],
   recommendedTemplates: ['Index'],
   defaultExample: {
     description:
@@ -57,7 +57,101 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: `The examples below show how you can extend the index table with additional functionality:
 
+- [Modal API](#example-confirm-bulk-actions-with-modal): Confirm destructive bulk actions before executing them.
+- [Navigation API](#example-navigate-to-detail-pages): Provide row click navigation within tables.
+- [Toast API](#example-show-bulk-action-feedback-with-toast): Present bulk action feedback when actions complete.
+- [Pagination](#example-add-pagination): Add page navigation when managing large data sets.`,
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Table with pagination controls for navigating large datasets.',
+            codeblock: {
+              title: 'Add pagination',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/indexTable-pagination.jsx',
+                  language: 'preview-jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/indexTable-pagination.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the [Modal API](/docs/api/app-home/apis/modal-api) to confirm destructive bulk actions before executing them.',
+            codeblock: {
+              title: 'Confirm bulk actions with Modal',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/indexTable-bulk-selection.jsx',
+                  language: 'preview-jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/indexTable-bulk-selection.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use `href` attributes on row elements to navigate merchants to detail pages when they click a row.',
+            codeblock: {
+              title: 'Navigate to detail pages',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/indexTable-nav.jsx',
+                  language: 'preview-jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/indexTable-nav.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the [Toast API](/docs/api/app-home/apis/toast) to show feedback when bulk actions complete.',
+            codeblock: {
+              title: 'Show bulk action feedback with Toast',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/indexTable-toast.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/indexTable-toast.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

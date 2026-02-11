@@ -64,7 +64,7 @@
               <s-table-cell>
                 <s-stack direction="inline" gap="small" alignItems="center">
                   <s-clickable
-                    href="/app/details"
+                    href="#"
                     accessibilityLabel="Mountain View puzzle thumbnail"
                     border="base"
                     borderRadius="base"
@@ -78,7 +78,7 @@
                       src="https://picsum.photos/id/29/80/80"
                      />
                   </s-clickable>
-                  <s-link href="/app/details">Mountain View</s-link>
+                  <s-link href="#">Mountain View</s-link>
                 </s-stack>
               </s-table-cell>
               <s-table-cell>16</s-table-cell>
@@ -93,7 +93,7 @@
               <s-table-cell>
                 <s-stack direction="inline" gap="small" alignItems="center">
                   <s-clickable
-                    href="/app/details"
+                    href="#"
                     accessibilityLabel="Ocean Sunset puzzle thumbnail"
                     border="base"
                     borderRadius="base"
@@ -107,7 +107,7 @@
                       src="https://picsum.photos/id/12/80/80"
                      />
                   </s-clickable>
-                  <s-link href="/app/details">Ocean Sunset</s-link>
+                  <s-link href="#">Ocean Sunset</s-link>
                 </s-stack>
               </s-table-cell>
               <s-table-cell>9</s-table-cell>
@@ -122,7 +122,7 @@
               <s-table-cell>
                 <s-stack direction="inline" gap="small" alignItems="center">
                   <s-clickable
-                    href="/app/details"
+                    href="#"
                     accessibilityLabel="Forest Animals puzzle thumbnail"
                     border="base"
                     borderRadius="base"
@@ -136,7 +136,7 @@
                       src="https://picsum.photos/id/324/80/80"
                      />
                   </s-clickable>
-                  <s-link href="/app/details">Forest Animals</s-link>
+                  <s-link href="#">Forest Animals</s-link>
                 </s-stack>
               </s-table-cell>
               <s-table-cell>25</s-table-cell>

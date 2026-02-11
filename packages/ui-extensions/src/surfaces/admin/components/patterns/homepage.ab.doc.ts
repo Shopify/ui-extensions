@@ -33,8 +33,9 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   recommendedApis: ['Navigation API', 'Toast API'],
   recommendedCompositions: [
+    'App card',
     'Callout card',
-    'Metrics card',
+    'Media card',
     'Setup guide',
     'Footer help',
   ],

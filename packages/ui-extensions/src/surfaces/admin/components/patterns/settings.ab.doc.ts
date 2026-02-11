@@ -31,8 +31,8 @@ const data: AdminReferenceEntityTemplateSchema = {
     'Switch',
     'Text',
   ],
-  recommendedApis: ['Save Bar API', 'Toast API'],
-  recommendedCompositions: ['Footer help', 'Interstitial nav'],
+  recommendedApis: ['Modal API', 'Save Bar API', 'Toast API'],
+  recommendedCompositions: ['Account connection', 'Footer help', 'Interstitial nav'],
   defaultExample: {
     description:
       'This example demonstrates a settings page for a Product Quality Auditor app. The main column contains quality criteria toggles with weight controls and notification preferences. The aside column provides contextual help explaining the scoring system.\n\nAdd `data-save-bar` to your form element to enable the [Save Bar API](/docs/api/app-home/apis/save-bar), which displays save/discard controls when the form has unsaved changes.',
@@ -56,7 +56,59 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: `The examples below show how you can extend the settings template with additional functionality:
 
+- [Modal API](#example-confirm-reset-with-modal-api): Confirm destructive actions like resetting settings to defaults.
+- [Toast API](#example-show-save-feedback-with-toast-api): Show feedback when settings are saved successfully.`,
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Use the [Modal API](/docs/api/app-home/apis/modal) to confirm destructive actions like resetting all settings to their default values.',
+            codeblock: {
+              title: 'Confirm reset with Modal API',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/settings-modal.jsx',
+                  language: 'preview-jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/settings-modal.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the [Toast API](/docs/api/app-home/apis/toast) to show feedback when settings are saved. Combine with the Save Bar API for a complete form experience.',
+            codeblock: {
+              title: 'Show save feedback with Toast API',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/settings-toast.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/settings-toast.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

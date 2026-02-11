@@ -24,7 +24,8 @@ const data: AdminReferenceEntityTemplateSchema = {
     'Stack',
     'Text',
   ],
-  recommendedTemplates: ['Details'],
+  recommendedApis: ['Navigation API'],
+  recommendedTemplates: ['Index'],
   defaultExample: {
     description:
       'This pattern uses [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) with responsive column templates to display metrics side-by-side on larger screens and stacked on smaller screens. The [`s-badge`](/docs/api/app-home/polaris-web-components/feedback/badge) component shows trend indicators.',
@@ -45,7 +46,36 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
-
+  examples: {
+    description: `The examples below show how you can extend the metrics card with additional functionality.`,
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Use `href` attributes on clickable metrics to navigate merchants to detailed analytics pages.',
+            codeblock: {
+              title: 'Navigate to analytics detail',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/metricsCard-nav.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/metricsCard-nav.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

@@ -1,3 +1,17 @@
+<script>
+  function toggleGuide(button) {
+    const stepsContainer = document.getElementById('setup-steps');
+    const isExpanded = stepsContainer.style.display !== 'none';
+    stepsContainer.style.display = isExpanded ? 'none' : 'block';
+    button.setAttribute('icon', isExpanded ? 'chevron-down' : 'chevron-up');
+  }
+  function toggleStep(button, stepId) {
+    const detailsContainer = document.getElementById(stepId);
+    const isExpanded = detailsContainer.style.display !== 'none';
+    detailsContainer.style.display = isExpanded ? 'none' : 'block';
+    button.setAttribute('icon', isExpanded ? 'chevron-down' : 'chevron-up');
+  }
+</script>
 <s-section>
   <s-grid gap="base">
     <s-grid gap="small-200">
@@ -14,26 +28,26 @@
           variant="tertiary"
           tone="neutral"
           icon="chevron-up"
+          onclick="toggleGuide(this)"
         ></s-button>
       </s-grid>
       <s-paragraph>
         Use this personalized guide to get your store ready for sales.
       </s-paragraph>
-        <s-paragraph tone="subdued">0 out of 3 steps completed</s-paragraph>
+      <s-paragraph tone="subdued">0 out of 3 steps completed</s-paragraph>
     </s-grid>
-    <s-box borderRadius="base" border="base" background="base">
+    <s-box id="setup-steps" borderRadius="base" border="base" background="base">
       <s-box>
-          <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
-            <s-checkbox
-              label="Upload an image for your puzzle"
-            ></s-checkbox>
-            <s-button
-              accessibilityLabel="Toggle step 1 details"
-              variant="tertiary"
-              icon="chevron-up"
-            ></s-button>
-          </s-grid>
-        <s-box padding="small" paddingBlockStart="none">
+        <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
+          <s-checkbox label="Upload an image for your puzzle"></s-checkbox>
+          <s-button
+            accessibilityLabel="Toggle step 1 details"
+            variant="tertiary"
+            icon="chevron-up"
+            onclick="toggleStep(this, 'step1-details')"
+          ></s-button>
+        </s-grid>
+        <s-box id="step1-details" padding="small" paddingBlockStart="none">
           <s-box padding="base" background="subdued" borderRadius="base">
             <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
               <s-grid gap="small-200">
@@ -42,10 +56,8 @@
                   puzzle. For best results, use images that are at least 1200x1200 pixels.
                 </s-paragraph>
                 <s-stack direction="inline" gap="small-200">
-                  <s-button variant="primary">
-                    Upload image
-                  </s-button>
-                  <s-button variant="tertiary" tone="neutral"> Image requirements </s-button>
+                  <s-button variant="primary">Upload image</s-button>
+                  <s-button variant="tertiary" tone="neutral">Image requirements</s-button>
                 </s-stack>
               </s-grid>
               <s-box maxBlockSize="80px" maxInlineSize="80px">
@@ -60,31 +72,69 @@
       </s-box>
       <s-divider></s-divider>
       <s-box>
-          <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
-            <s-checkbox
-              label="Choose a puzzle template"
-            ></s-checkbox>
-            <s-button
-              accessibilityLabel="Toggle step 2 details"
-              variant="tertiary"
-              icon="chevron-down"
-            ></s-button>
-          </s-grid>
-        <s-box padding="small" paddingBlockStart="none" style="display: none;"></s-box>
+        <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
+          <s-checkbox label="Choose a puzzle template"></s-checkbox>
+          <s-button
+            accessibilityLabel="Toggle step 2 details"
+            variant="tertiary"
+            icon="chevron-down"
+            onclick="toggleStep(this, 'step2-details')"
+          ></s-button>
+        </s-grid>
+        <s-box id="step2-details" padding="small" paddingBlockStart="none" style="display: none;">
+          <s-box padding="base" background="subdued" borderRadius="base">
+            <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+              <s-grid gap="small-200">
+                <s-paragraph>
+                  Choose from our library of puzzle templates including classic
+                  jigsaw, hexagonal, and irregular shapes.
+                </s-paragraph>
+                <s-stack direction="inline" gap="small-200">
+                  <s-button variant="primary">Browse templates</s-button>
+                </s-stack>
+              </s-grid>
+              <s-box maxBlockSize="80px" maxInlineSize="80px">
+                <s-image
+                  src="https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg"
+                  alt="Template selection illustration"
+                ></s-image>
+              </s-box>
+            </s-grid>
+          </s-box>
+        </s-box>
       </s-box>
       <s-divider></s-divider>
       <s-box>
-          <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
-            <s-checkbox
-              label="Customize puzzle piece shapes"
-            ></s-checkbox>
-            <s-button
-              accessibilityLabel="Toggle step 3 details"
-              variant="tertiary"
-              icon="chevron-down"
-            ></s-button>
-          </s-grid>
-        <s-box padding="small" paddingBlockStart="none" style="display: none;"></s-box>
+        <s-grid gridTemplateColumns="1fr auto" gap="base" padding="small">
+          <s-checkbox label="Customize puzzle piece shapes"></s-checkbox>
+          <s-button
+            accessibilityLabel="Toggle step 3 details"
+            variant="tertiary"
+            icon="chevron-down"
+            onclick="toggleStep(this, 'step3-details')"
+          ></s-button>
+        </s-grid>
+        <s-box id="step3-details" padding="small" paddingBlockStart="none" style="display: none;">
+          <s-box padding="base" background="subdued" borderRadius="base">
+            <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+              <s-grid gap="small-200">
+                <s-paragraph>
+                  Fine-tune the shape and interlocking style of your puzzle
+                  pieces for a unique experience.
+                </s-paragraph>
+                <s-stack direction="inline" gap="small-200">
+                  <s-button variant="primary">Customize shapes</s-button>
+                </s-stack>
+              </s-grid>
+              <s-box maxBlockSize="80px" maxInlineSize="80px">
+                <s-image
+                  src="https://cdn.shopify.com/s/assets/admin/checkout/settings-customizecart-705f57c725ac05be5a34ec20c05b94298cb8afd10aac7bd9c7ad02030f48cfa0.svg"
+                  alt="Customization illustration"
+                ></s-image>
+              </s-box>
+            </s-grid>
+          </s-box>
+        </s-box>
       </s-box>
     </s-box>
   </s-grid>

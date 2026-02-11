@@ -32,7 +32,8 @@ const data: AdminReferenceEntityTemplateSchema = {
     'Text',
     'TextField',
   ],
-  recommendedTemplates: ['Index table', 'Details'],
+  recommendedApis: ['Modal API', 'Navigation API', 'Resource Picker API', 'Toast API'],
+  recommendedTemplates: ['Details'],
   defaultExample: {
     description:
       'This pattern provides search, filtering, and selection capabilities for lists of resources. Use [`s-text-field`](/docs/api/app-home/polaris-web-components/forms/text-field) with `icon="search"` for filtering, [`s-popover`](/docs/api/app-home/polaris-web-components/overlays/popover) for filter options, and [`s-checkbox`](/docs/api/app-home/polaris-web-components/forms/checkbox) for row selection.',
@@ -40,9 +41,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Resource list',
       tabs: [
         {
-          title: 'Preview',
+          title: 'html',
           code: 'examples/resourceList.html',
-          language: 'preview',
+          language: 'html',
         },
         {
           title: 'jsx',
@@ -53,7 +54,101 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: `The examples below show how you can extend the resource list with additional functionality:
 
+- [Modal API](#example-confirm-delete-with-modal-api): Confirm deletion before removing a list item.
+- [Navigation API](#example-navigate-to-item-detail): Navigate to detail pages when clicking list items.
+- [Resource Picker API](#example-add-items-with-resource-picker-api): Add products from the catalog to the list.
+- [Toast API](#example-show-action-feedback-with-toast-api): Show feedback when actions are performed.`,
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Use the [Resource Picker API](/docs/api/app-home/apis/resource-picker) to let merchants add products from their catalog to the list.',
+            codeblock: {
+              title: 'Add items with Resource Picker API',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/resourceList-picker.jsx',
+                  language: 'preview-jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/resourceList-picker.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the [Modal API](/docs/api/app-home/apis/modal-api) to confirm deletion before removing a resource list item.',
+            codeblock: {
+              title: 'Confirm delete with Modal API',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/resourceList-modal.jsx',
+                  language: 'preview-jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/resourceList-modal.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use `href` attributes on clickable items to navigate merchants to detail pages.',
+            codeblock: {
+              title: 'Navigate to item detail',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/resourceList-nav.jsx',
+                  language: 'preview-jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/resourceList-nav.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the [Toast API](/docs/api/app-home/apis/toast) to show feedback when actions are performed on resource list items.',
+            codeblock: {
+              title: 'Show action feedback with Toast API',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/resourceList-toast.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/resourceList-toast.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

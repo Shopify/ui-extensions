@@ -24,7 +24,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     'Paragraph',
     'Section',
   ],
-  recommendedTemplates: ['Details'],
+  recommendedTemplates: ['Settings'],
   defaultExample: {
     description:
       'This pattern uses [`s-clickable`](/docs/api/app-home/polaris-web-components/actions/clickable) rows within a bordered [`s-box`](/docs/api/app-home/polaris-web-components/layout-and-structure/box) to create a navigation menu. Each row uses [`s-icon`](/docs/api/app-home/polaris-web-components/images/icon) with `name="chevron-right"` to indicate drill-down navigation.',
@@ -45,7 +45,6 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
-
 };
 
 export default data;

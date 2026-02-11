@@ -15,7 +15,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   subCategory: 'Compositions',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/footerHelp.png',
   usedComponents: ['Link', 'Stack', 'Text'],
-  recommendedTemplates: ['Details'],
+  recommendedTemplates: ['Homepage', 'Index', 'Details', 'Settings'],
   defaultExample: {
     description:
       'This pattern uses [`s-stack`](/docs/api/app-home/polaris-web-components/layout-and-structure/stack) with `alignItems="center"` to center the help text. Use [`s-link`](/docs/api/app-home/polaris-web-components/navigation/link) with `target="_blank"` for external documentation links that open in a new tab.',

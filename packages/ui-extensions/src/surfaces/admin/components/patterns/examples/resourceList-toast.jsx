@@ -1,0 +1,77 @@
+<s-section padding="none">
+  <s-stack gap="small-200">
+    <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center" paddingInline="base" paddingBlockStart="base">
+      <s-text-field icon="search" placeholder="Filter customers"></s-text-field>
+      <s-button
+        onClick={() => {
+          shopify.toast.show('Filters saved');
+        }}
+      >
+        Save filters
+      </s-button>
+    </s-grid>
+    
+    <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center" paddingInline="base">
+      <s-checkbox label="Showing 2 customers"></s-checkbox>
+      <s-select>
+        <s-option value="newest">Newest update</s-option>
+        <s-option value="oldest">Oldest update</s-option>
+      </s-select>
+    </s-grid>
+    
+    <s-stack>
+      <s-clickable borderStyle="solid none none none" border="base" paddingInline="base" paddingBlock="small">
+        <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-checkbox></s-checkbox>
+            <s-avatar></s-avatar>
+            <s-stack>
+              <s-heading>Mae Jemison</s-heading>
+              <s-text>Decatur, USA</s-text>
+            </s-stack>
+          </s-stack>
+          <s-button
+            icon="menu-horizontal"
+            variant="tertiary"
+            accessibilityLabel="Actions for Mae Jemison"
+            commandFor="actions-popover"
+          />
+          <s-popover id="actions-popover">
+            <s-stack gap="none" padding="small-200">
+              <s-button
+                variant="tertiary"
+                onClick={() => {
+                  shopify.toast.show('Customer archived');
+                }}
+              >
+                Archive
+              </s-button>
+              <s-button
+                variant="tertiary"
+                tone="critical"
+                onClick={() => {
+                  shopify.toast.show('Customer deleted', { isError: true });
+                }}
+              >
+                Delete
+              </s-button>
+            </s-stack>
+          </s-popover>
+        </s-grid>
+      </s-clickable>
+      <s-clickable borderStyle="solid none none none" border="base" paddingInline="base" paddingBlock="small">
+        <s-grid gridTemplateColumns="1fr auto" gap="base" alignItems="center">
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-checkbox></s-checkbox>
+            <s-avatar></s-avatar>
+            <s-stack>
+              <s-heading>Ellen Ochoa</s-heading>
+              <s-text>Los Angeles, USA</s-text>
+            </s-stack>
+          </s-stack>
+          <s-button icon="menu-horizontal" variant="tertiary" accessibilityLabel="Actions for Ellen Ochoa" />
+        </s-grid>
+      </s-clickable>
+    </s-stack>
+  </s-stack>
+</s-section>
