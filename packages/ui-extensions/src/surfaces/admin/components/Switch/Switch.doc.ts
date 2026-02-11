@@ -33,7 +33,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Create a toggle switch for on/off settings. Click to interact with the preview.',
+      'Create a toggle switch for on/off settings or to enable a preference. Click to interact with the preview.',
     codeblock: {
       title: 'Toggle a setting',
       tabs: [
@@ -57,25 +57,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Enable or disable a merchant preference with a labeled toggle.',
-            codeblock: {
-              title: 'Enable a preference',
-              tabs: [
-                {
-                  code: './examples/basic-switch.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-switch.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Indicate an unavailable feature with a locked switch. Click to interact with the preview.',
+              'Indicate an unavailable feature with a locked switch.',
             codeblock: {
               title: 'Show a disabled switch',
               tabs: [
