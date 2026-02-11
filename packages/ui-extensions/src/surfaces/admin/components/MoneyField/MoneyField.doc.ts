@@ -67,7 +67,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Add a label, initial value, and numeric constraints to a money field. Click to interact with the preview.',
+              'Add a label, initial value, min/max constraints, and helper text to guide input. Click to interact with the preview.',
             codeblock: {
               title: 'Add a label and constraints',
               tabs: [
