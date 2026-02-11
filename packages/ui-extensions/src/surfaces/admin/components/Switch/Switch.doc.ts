@@ -77,7 +77,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             description:
               'Group switches in a form for batch submission with a save action.',
             codeblock: {
-              title: 'Submit settings in a form',
+              title: 'Submit multiple settings in a form',
               tabs: [
                 {
                   code: './examples/form-integration.html',
@@ -95,7 +95,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             description:
               'Arrange switches that take effect instantly without form submission. Click to interact with the preview.',
             codeblock: {
-              title: 'Apply settings immediately',
+              title: 'Apply multiple settings immediately',
               tabs: [
                 {
                   code: './examples/settings-panel-with-stack.html',
