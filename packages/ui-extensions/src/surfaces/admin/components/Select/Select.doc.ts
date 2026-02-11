@@ -72,9 +72,10 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'select-default.png',
+    description:
+      'Create a dropdown with selectable options. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Create a dropdown menu',
       tabs: [
         {
           code: './examples/default.html',
@@ -92,13 +93,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'A simple select dropdown with pre-selected value for product sorting options.',
+              'Create a dropdown with a pre-selected value for sorting options. Click to interact with the preview.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Add sorting options',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
@@ -114,9 +115,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Select dropdown with helpful placeholder text guiding category selection.',
+              'Add placeholder text to guide users on what to select. Click to interact with the preview.',
             codeblock: {
-              title: 'With placeholder',
+              title: 'Add placeholder text',
               tabs: [
                 {
                   code: './examples/with-placeholder.html',
@@ -132,9 +133,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Select in error state showing specific business context and actionable error message.',
+              'Display an error message when validation fails. Click to interact with the preview.',
             codeblock: {
-              title: 'With error state',
+              title: 'Show validation errors',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
@@ -150,9 +151,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Grouped select options organized by geographical regions for international shipping.',
+              'Organize options into logical groups such as geographical regions. Click to interact with the preview.',
             codeblock: {
-              title: 'With option groups',
+              title: 'Group options by category',
               tabs: [
                 {
                   code: './examples/with-option-groups.html',
@@ -168,9 +169,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Select dropdown with sort icon for filtering order management views.',
+              'Add a sort icon to indicate filtering functionality. Click to interact with the preview.',
             codeblock: {
-              title: 'With icon',
+              title: 'Add an icon',
               tabs: [
                 {
                   code: './examples/with-icon.html',
@@ -186,9 +187,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Select in disabled state preventing user interaction with pre-selected value.',
+              'Prevent user interaction while preserving the selected value. Click to interact with the preview.',
             codeblock: {
-              title: 'Disabled state',
+              title: 'Disable the select',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
@@ -197,6 +198,24 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/disabled-state.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Trigger an action when the user selects an option using the onChange event. Click to interact with the preview.',
+            codeblock: {
+              title: 'Handle selection changes',
+              tabs: [
+                {
+                  code: './examples/handle-selection-change.jsx',
                   language: 'preview-jsx',
                 },
               ],
