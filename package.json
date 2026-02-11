@@ -31,7 +31,10 @@
     "run:ts": "babel-node --extensions .ts,.tsx,.mjs,.js,.json",
     "run:ts:watch": "nodemon --ext .ts,.tsx,.mjs,.json,.graphql node_modules/.bin/babel-node --extensions .ts,.tsx,.mjs,.js,.json",
     "type-check": "loom type-check",
-    "changeset:exit-pre-mode": "test -f .changeset/pre.json && jq -e '.mode == \"pre\"' .changeset/pre.json > /dev/null && yarn changeset pre exit || true"
+    "changeset:exit-pre-mode": "test -f .changeset/pre.json && jq -e '.mode == \"pre\"' .changeset/pre.json > /dev/null && yarn changeset pre exit || true",
+    "test": "loom test --no-watch",
+    "test:watch": "loom test",
+    "test:example-suites": "for dir in examples/testing/*/; do (cd \"$dir\" && npm install && npm run typecheck && npm test) || exit 1; done"
   },
   "devDependencies": {
     "@babel/node": "^7.8.7",
