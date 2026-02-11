@@ -15,14 +15,15 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'Learn more about [registering events](/docs/api/polaris/using-polaris-web-components#event-handling).',
       type: 'PasswordFieldEvents',
     },
   ],
   defaultExample: {
-    image: 'password-field-default.png',
+    description:
+      'Create a password field with masked input and a label. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Collect a password',
       tabs: [
         {
           code: './examples/default.html',
@@ -40,13 +41,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a basic password field with a label, name, and required validation. Sets a minimum length of 8 characters and configures autocomplete for a new password.',
+              'Add a label, required validation, and minimum length of 8 characters with autocomplete for new passwords. Click to interact with the preview.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Set validation rules',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
@@ -62,9 +63,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows a password field in an error state, displaying a custom error message when the password does not meet the minimum length requirement.',
+              'Display an error message when the password doesn\'t meet length requirements. Click to interact with the preview.',
             codeblock: {
-              title: 'With error state',
+              title: 'Show validation errors',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
@@ -80,9 +81,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a password field with additional details providing guidance about password creation requirements.',
+              'Add helper text to guide users on password requirements. Click to interact with the preview.',
             codeblock: {
-              title: 'With helper text',
+              title: 'Add helper text',
               tabs: [
                 {
                   code: './examples/with-helper-text.html',
@@ -98,9 +99,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows how the password field can be integrated into a form alongside other input fields, such as an email field, to create a complete login or registration form.',
+              'Combine the password field with an email field to create a login or registration form. Click to interact with the preview.',
             codeblock: {
-              title: 'In form layout',
+              title: 'Build a login form',
               tabs: [
                 {
                   code: './examples/in-form-layout.html',
@@ -116,9 +117,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates a password field with dynamic password strength validation, showing real-time feedback on password complexity requirements.',
+              'Display a static checklist of password requirements. Click to interact with the preview.',
             codeblock: {
-              title: 'With password strength requirements',
+              title: 'Display a requirement checklist',
               tabs: [
                 {
                   code: './examples/with-password-strength-requirements.html',
@@ -127,6 +128,24 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/with-password-strength-requirements.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Validate password strength in real time as the user types. Click to interact with the preview.',
+            codeblock: {
+              title: 'Validate password strength',
+              tabs: [
+                {
+                  code: './examples/password-strength-validation.jsx',
                   language: 'preview-jsx',
                 },
               ],

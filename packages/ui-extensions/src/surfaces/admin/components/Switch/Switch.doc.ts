@@ -14,13 +14,15 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'Learn more about [registering events](/docs/api/polaris/using-polaris-web-components#event-handling).',
       type: 'SwitchEvents',
     },
   ],
   defaultExample: {
+    description:
+      'Create a toggle switch for on/off settings. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Toggle a setting',
       tabs: [
         {
           code: './examples/default.html',
@@ -38,13 +40,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Standard toggle switch for enabling or disabling merchant preferences. This example demonstrates a simple switch with a label, allowing users to toggle a single setting on or off.',
+              'Enable or disable a merchant preference with a labeled toggle. Click to interact with the preview.',
             codeblock: {
-              title: 'Basic switch',
+              title: 'Enable a preference',
               tabs: [
                 {
                   code: './examples/basic-switch.html',
@@ -60,9 +62,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Locked switch with explanatory text for unavailable premium features. This example shows a switch that is visually disabled and cannot be interacted with, typically used to indicate a feature is not currently available.',
+              'Indicate an unavailable feature with a locked switch. Click to interact with the preview.',
             codeblock: {
-              title: 'Disabled switch',
+              title: 'Show a disabled switch',
               tabs: [
                 {
                   code: './examples/disabled-switch.html',
@@ -78,9 +80,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Multiple switches within a form for notification preferences submission. This example illustrates how switches can be used together in a form to allow users to configure multiple related settings simultaneously.',
+              'Collect multiple notification preferences in a single form. Click to interact with the preview.',
             codeblock: {
-              title: 'Form integration',
+              title: 'Collect multiple settings',
               tabs: [
                 {
                   code: './examples/form-integration.html',
@@ -96,9 +98,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Switch with visually hidden label that remains accessible to screen readers. This example demonstrates how to create a switch with a label that is only perceivable by assistive technologies, maintaining accessibility while minimizing visual clutter.',
+              'Hide the label visually while keeping it accessible to screen readers. Click to interact with the preview.',
             codeblock: {
-              title: 'Hidden label for accessibility',
+              title: 'Hide the label visually',
               tabs: [
                 {
                   code: './examples/hidden-label-for-accessibility.html',
@@ -114,9 +116,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Required switch with validation error and contextual details for user guidance. This example shows a switch that requires user interaction, provides additional context through details, and displays an error message when validation fails.',
+              'Display helper text and an error message when validation fails. Click to interact with the preview.',
             codeblock: {
-              title: 'With details and error',
+              title: 'Show validation errors',
               tabs: [
                 {
                   code: './examples/with-details-and-error.html',
@@ -132,9 +134,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Switch with enhanced accessibility description for screen reader users. This example illustrates how to provide a more descriptive accessibility label that provides additional context beyond the visible label.',
+              'Provide additional context for screen reader users beyond the visible label. Click to interact with the preview.',
             codeblock: {
-              title: 'Switch with accessibility label',
+              title: 'Add an accessibility label',
               tabs: [
                 {
                   code: './examples/switch-with-accessibility-label.html',
@@ -150,9 +152,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Group of related switches arranged in a vertical stack for settings configuration. This example demonstrates how to use the Stack component to create a clean, organized layout for multiple related switch settings.',
+              'Arrange multiple switches in a vertical stack for organized settings. Click to interact with the preview.',
             codeblock: {
-              title: 'Settings panel with Stack',
+              title: 'Create a settings panel',
               tabs: [
                 {
                   code: './examples/settings-panel-with-stack.html',
@@ -161,6 +163,24 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/settings-panel-with-stack.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Track switch state changes and display current values. Click to interact with the preview.',
+            codeblock: {
+              title: 'Track toggle state',
+              tabs: [
+                {
+                  code: './examples/toggle-with-feedback.jsx',
                   language: 'preview-jsx',
                 },
               ],

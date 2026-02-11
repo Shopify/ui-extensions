@@ -7,24 +7,24 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   definitions: [
     {
-      title: 'URLField',
+      title: 'Properties',
       description: '',
       type: 'URLField',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'Learn more about [registering events](/docs/api/polaris/using-polaris-web-components#event-handling).',
       type: 'URLFieldEvents',
     },
   ],
   defaultExample: {
-    image: 'urlfield-default.png',
+    description:
+      'Create a text field optimized for URL input. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Collect a URL',
       tabs: [
         {
-          title: 'HTML',
           code: './examples/default.html',
           language: 'html',
         },
@@ -39,13 +39,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple URL input field with a label and placeholder, showing the minimal configuration needed for collecting a URL.',
+              'Add a label and placeholder for collecting a URL. Click to interact with the preview.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Add a label and placeholder',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
@@ -61,9 +61,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows a URL input field with built-in validation, including required status, minimum and maximum length constraints, and a custom error message for invalid inputs.',
+              'Set required status, length constraints, and custom error messages. Click to interact with the preview.',
             codeblock: {
-              title: 'With validation',
+              title: 'Set validation constraints',
               tabs: [
                 {
                   code: './examples/with-validation.html',
@@ -79,9 +79,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a URL field pre-populated with a default value, set to read-only mode to prevent user modifications.',
+              'Pre-populate the field with a URL in read-only mode. Click to interact with the preview.',
             codeblock: {
-              title: 'With default value',
+              title: 'Pre-fill a URL',
               tabs: [
                 {
                   code: './examples/with-default-value.html',
@@ -97,9 +97,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows a URL field in a disabled state, displaying a pre-filled URL that cannot be edited by the user.',
+              'Display a pre-filled URL that can\'t be edited. Click to interact with the preview.',
             codeblock: {
-              title: 'Disabled state',
+              title: 'Show a disabled field',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
@@ -108,6 +108,24 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/disabled-state.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Validate the URL format in real time as the user types. Click to interact with the preview.',
+            codeblock: {
+              title: 'Validate URL in real time',
+              tabs: [
+                {
+                  code: './examples/validate-url-input.jsx',
                   language: 'preview-jsx',
                 },
               ],
