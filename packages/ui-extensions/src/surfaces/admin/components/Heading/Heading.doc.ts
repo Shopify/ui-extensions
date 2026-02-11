@@ -21,8 +21,8 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'Generic' as const,
       anchorLink: 'limitations',
       sectionContent: `- Heading levels are determined automatically based on nesting depth and can't be manually overridden. The component supports up to 3-4 nesting levels (h2, h3, h4), after which all headings remain at h4.
-- Line clamping truncates text visually but doesn't provide a way to show the full heading text on hover or through other interactions. Truncated content may not be fully accessible to screen readers.
-- The component focuses on semantic HTML structure and can't be configured to render as purely decorative text without heading semantics.`,
+- Line clamping truncates text visually but doesn't provide a way to show the full heading text on hover or through other interactions. Truncated content might not be fully accessible to screen readers.
+- The component renders with heading semantics by default. To remove heading semantics for decorative use, set \`accessibilityRole\` to \`"presentation"\` or \`"none"\`.`,
     },
   ],
   definitions: [

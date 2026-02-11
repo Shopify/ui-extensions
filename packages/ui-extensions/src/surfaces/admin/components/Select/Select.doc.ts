@@ -12,17 +12,17 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- **Use for choosing from predefined options:** Select works best when users pick from a known list of options. When users need to enter custom values or search through many options, consider [\`TextField\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/textfield) with autocomplete or a searchable dropdown pattern instead.
-- **Organize options thoughtfully:** The order of options affects how quickly users find what they need. Group related options together, put common choices first, or use alphabetical order when no natural hierarchy exists.
-- **Make options scannable:** Users should be able to quickly distinguish between options. Include enough context in each option label so users don't need to open and read multiple options to find the right one.
-- **Handle default selections appropriately:** Pre-select an option when there's a clear default choice, but use a placeholder when users should make an intentional selection. Avoid confusing users with unclear initial states.
+      sectionContent: `- **Use for choosing from predefined options:** Select works best when merchants pick from a known list of options. When merchants need to enter custom values or search through many options, consider [\`TextField\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/textfield) with autocomplete or a searchable dropdown pattern instead.
+- **Organize options thoughtfully:** The order of options affects how quickly merchants find what they need. Group related options together, put common choices first, or use alphabetical order when no natural hierarchy exists.
+- **Make options scannable:** Merchants should be able to quickly distinguish between options. Include enough context in each option label so merchants don't need to open and read multiple options to find the right one.
+- **Handle default selections appropriately:** Pre-select an option when there's a clear default choice, but use a placeholder when merchants should make an intentional selection. Avoid confusing merchants with unclear initial states.
 - **Provide clear validation feedback:** When selection is required or invalid, explain what the user needs to do. Context-specific error messages help users complete forms faster than generic validation messages.`,
     },
     {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- The component doesn't include search or filtering functionality. For option lists where users need to search (like country selection with 200+ countries), implement a custom autocomplete or searchable dropdown pattern.
+      sectionContent: `- The component doesn't include search or filtering functionality. For option lists where merchants need to search (like country selection with 200+ countries), implement a custom autocomplete or searchable dropdown pattern.
 - The component only supports selecting one option at a time. For multi-select scenarios, use a [\`ChoiceList\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/choicelist) with checkboxes or build a custom multi-select component.
 - Rendering 500+ options can cause performance issues, especially on mobile devices. The browser must render all options in the DOM even though only one's visible.
 - Browser native select dropdowns have limited styling capabilities. Dropdown appearance varies by browser and OS, and can't be fully customized with CSS. For custom-styled dropdowns, you must build a custom component using [\`Button\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) and [\`Menu\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/menu).

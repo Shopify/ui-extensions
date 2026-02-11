@@ -161,7 +161,7 @@ export interface TableBodyJSXProps
   extends Partial<TableBodyProps>,
     Pick<TableBodyProps$1, 'id' | 'children'> {
   /**
-   * The body content of the table, which should include `TableRow` components. This content may not have any semantic meaning when the table uses the `list` variant.
+   * The body content of the table, which should include `TableRow` components. This content might not have any semantic meaning when the table uses the `list` variant.
    */
   children?: ComponentChildren;
 }

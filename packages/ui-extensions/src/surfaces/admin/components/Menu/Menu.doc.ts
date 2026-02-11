@@ -20,11 +20,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- Menus automatically reposition to stay within the viewport boundaries, but in extremely constrained spaces (like narrow mobile screens or small modals), the menu may partially overflow or be cut off.
+      sectionContent: `- Menus automatically reposition to stay within the viewport boundaries, but in extremely constrained spaces (like narrow mobile screens or small modals), the menu might partially overflow or be cut off.
 - While there's no hard technical limit on menu items, menus with more than 10-12 items become difficult to scan. Performance remains acceptable up to ~50 items, but beyond this, consider pagination, search, or alternative UI patterns.
 - The component doesn't support nested submenus (like cascading dropdowns). All menu items must be at a single level, organized into sections if needed.
 - When navigating with arrow keys, focus moves sequentially through all items regardless of section boundaries. Section headings aren't focusable and serve only as visual separators.
-- The menu renders in a popover layer with a specific z-index. If placed within containers that have their own stacking contexts (like modals, sticky headers, or elements with transforms), the menu may appear behind other elements or clip unexpectedly.`,
+- The menu renders in a popover layer with a specific z-index. If placed within containers that have their own stacking contexts (like modals, sticky headers, or elements with transforms), the menu might appear behind other elements or clip unexpectedly.`,
     },
   ],
   definitions: [

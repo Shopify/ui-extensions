@@ -12,7 +12,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'Generic' as const,
       anchorLink: 'best-practices',
       sectionContent: `- **Use for numeric-only input:** Choose the component when you need strictly numeric values like quantities, measurements, or percentages. For values that might contain letters or symbols (like product codes or phone numbers), use [\`TextField\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/textfield) instead.
-- **Provide context with units:** Display units of measurement using prefix or suffix to clarify what the number represents. Without context, merchants may not know if they're entering dollars, kilograms, or percentages.
+- **Provide context with units:** Display units of measurement using prefix or suffix to clarify what the number represents. Without context, merchants might not know if they're entering dollars, kilograms, or percentages.
 - **Set realistic constraints:** Define minimum and maximum values that reflect actual business rules. This guides merchants toward valid inputs and prevents unrealistic values before form submission.
 - **Validate and provide clear feedback:** Always validate numeric input and show specific error messages that explain what went wrong and how to fix it. Generic error messages don't help merchants understand what value to enter.`,
     },
@@ -20,7 +20,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- Setting \`inputMode\` suggests a keyboard layout on mobile but doesn't prevent users from entering non-numeric characters. Always validate input values in your \`change\` event handler.`,
+      sectionContent: `- Setting \`inputMode\` suggests a keyboard layout on mobile but doesn't prevent merchants from entering non-numeric characters. Always validate input values in your \`change\` event handler.`,
     },
   ],
   definitions: [

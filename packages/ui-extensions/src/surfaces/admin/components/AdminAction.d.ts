@@ -134,7 +134,7 @@ declare class AdminAction
   heading: string;
 
   /**
-   * Whether the action extension is currently in a loading state, such as during initial data fetching or when opening the action. When `true`, the action area may display loading indicators and prevent user interaction until loading completes.
+   * Whether the action extension is currently in a loading state, such as during initial data fetching or when opening the action. When `true`, the action area might display loading indicators and prevent user interaction until loading completes.
    *
    * @default false
    */

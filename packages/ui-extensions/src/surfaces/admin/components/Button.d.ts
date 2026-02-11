@@ -141,7 +141,7 @@ export type ButtonBaseProps = Required<
  */
 export interface ButtonProps extends ButtonBaseProps {
   /**
-   * Determines the visual appearance and semantic meaning of the button. Buttons rely on the tone system for semantic meaning, so using custom styling may not clearly convey intent to merchants. Available options:
+   * Determines the visual appearance and semantic meaning of the button. Buttons rely on the tone system for semantic meaning, so using custom styling might not clearly convey intent to merchants. Available options:
    * - `'auto'` - Lets the system automatically choose the appropriate tone based on context.
    * - `'neutral'` - Standard styling for general actions without specific semantic meaning.
    * - `'critical'` - Red styling for destructive actions that can't be undone, such as deleting data.

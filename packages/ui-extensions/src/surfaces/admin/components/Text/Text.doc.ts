@@ -10,7 +10,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- **Apply semantic types to improve meaning:** Use code for technical identifiers like API keys, cite for quoted sources, and address for physical locations. Semantic types help screen readers convey the correct meaning to users.
+      sectionContent: `- **Apply semantic types to improve meaning:** Use \`strong\` for key words or phrases that need emphasis, \`address\` for contact information like physical or email addresses, and \`redundant\` for screen reader context when content is visually duplicated. Semantic types help screen readers convey the correct meaning to merchants.
 - **Emphasize sparingly and strategically:** Use strong to emphasize key words or numbers within sentences, not entire sentences. Too much emphasis dilutes its effectiveness and makes content harder to scan.
 - **Choose appropriate tones for status:** Apply tones like critical, success, or caution to communicate status inline. Tones draw attention to important information but work best when paired with clear language, not used alone.
 - **Consider contrast for subdued text:** Subdued text works well for timestamps and metadata, but avoid using it for critical information that merchants must read.`,
@@ -21,7 +21,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       sectionContent: `- Text renders inline by default and flows with surrounding content. For block-level text with spacing, use the [\`Paragraph\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/paragraph) component or wrap in layout components.
 - The component doesn't include text truncation or ellipsis. Long text will wrap or overflow depending on the container. Use other components like [\`Heading\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/heading) with line clamping if truncation is needed.
-- Tone colors are optimized for light backgrounds. Using tones on dark or colored backgrounds may not meet accessibility contrast requirements.`,
+- Tone colors are optimized for light backgrounds. Using tones on dark or colored backgrounds might not meet accessibility contrast requirements.`,
     },
   ],
   definitions: [
