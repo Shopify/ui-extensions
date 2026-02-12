@@ -12,6 +12,12 @@
       "import": "./index.mjs",
       "require": "./index.js"
     },
+    "./admin": {
+      "types": "./build/ts/admin/index.d.ts",
+      "esnext": "./admin.esnext",
+      "import": "./admin.mjs",
+      "require": "./admin.js"
+    },
     "./checkout": {
       "types": "./build/ts/checkout/index.d.ts",
       "esnext": "./checkout.esnext",
@@ -33,6 +39,9 @@
   },
   "typesVersions": {
     "*": {
+      "admin": [
+        "./build/ts/admin/index.d.ts"
+      ],
       "checkout": [
         "./build/ts/checkout/index.d.ts"
       ],
@@ -72,7 +81,10 @@
     "build",
     "src",
     "index.*",
+    "admin.*",
     "checkout.*",
+    "point-of-sale.*",
+    "customer-account.*",
     "README.md"
   ]
 }

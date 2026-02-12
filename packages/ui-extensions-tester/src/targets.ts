@@ -2,7 +2,10 @@ import type {
   ExtensionTargets as CheckoutExtensionTargets,
   ExtensionTarget as CheckoutExtensionTarget,
 } from '@shopify/ui-extensions/checkout';
-import type {ExtensionTargets as AdminExtensionTargets} from '@shopify/ui-extensions/admin';
+import type {
+  ExtensionTarget as AdminExtensionTarget,
+  ExtensionTargets as AdminExtensionTargets,
+} from '@shopify/ui-extensions/admin';
 import type {
   ExtensionTarget as PosExtensionTarget,
   ExtensionTargets as PointOfSaleExtensionTargets,
@@ -58,4 +61,8 @@ export function isCustomerAccountTarget(
   target: string,
 ): target is CustomerAccountExtensionTarget {
   return target.startsWith('customer-account.');
+}
+
+export function isAdminTarget(target: string): target is AdminExtensionTarget {
+  return target.startsWith('admin.');
 }
