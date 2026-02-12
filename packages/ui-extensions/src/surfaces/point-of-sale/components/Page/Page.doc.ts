@@ -3,22 +3,21 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Page',
   description:
-    'The `Page` component serves as the main container for app content with preset layouts and heading controls. Use it to structure full-screen views with consistent navigation and content organization.' +
-    "\n\n`Page` is designed for full-screen modal interfaces and isn't suitable for inline content or partial page layouts within existing POS screens.",
+    'The Page component serves as the main container for app content with preset layouts and heading controls. Use it to structure full-screen views with consistent navigation and content organization.' +
+    "\n\nPage is designed for full-screen modal interfaces and isn't suitable for inline content or partial page layouts within existing POS screens.",
   thumbnail: 'page-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the `Page` component.',
+      description: 'Configure the following properties on the Page component.',
       type: 'Page',
     },
     {
       title: 'Slots',
       description:
-        'The `Page` component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The Page component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'PageSlots',
     },
   ],
@@ -27,7 +26,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'page-default.png',
     description:
-      'Structure full-screen views using a `Page` component with built-in header and content layouts. This example shows a basic page with title and main content area.',
+      'Structure full-screen views using a Page component with built-in header and content layouts. This example shows a basic page with title and main content area.',
     codeblock: {
       title: 'Structure a page layout',
       tabs: [

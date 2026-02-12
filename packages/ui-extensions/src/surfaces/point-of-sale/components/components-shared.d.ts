@@ -32,11 +32,11 @@ export interface GlobalProps {
  */
 export interface ActionSlots {
   /**
-   * The primary action element to display, typically a `Button` or clickable link representing the most important action available in the current context. This action aligns with the user's primary goal or the main purpose of the interface (for example, "Save changes", "Checkout", "Add to cart", "Submit order"). The primary action receives visual emphasis through styling to draw user attention. Only one primary action is displayed to maintain clear focus on the main call-to-action.
+   * The primary action element to display, typically a Button or clickable link representing the most important action available in the current context. This action aligns with the user's primary goal or the main purpose of the interface (for example, "Save changes", "Checkout", "Add to cart", "Submit order"). The primary action receives visual emphasis through styling to draw user attention. Only one primary action is displayed to maintain clear focus on the main call-to-action.
    */
   primaryAction?: ComponentChildren;
   /**
-   * Secondary action elements to display, typically `Button` or clickable link elements representing alternative or supporting actions that are less important than the primary action (for example, "Cancel", "Save draft", "Skip", "Learn more"). Secondary actions receive less visual prominence than the primary action to maintain clear hierarchy. Multiple secondary actions can be provided and are displayed together, often in a different visual style or position than the primary action. The order of actions in the array may affect their display order depending on the component.
+   * Secondary action elements to display, typically Button or clickable link elements representing alternative or supporting actions that are less important than the primary action (for example, "Cancel", "Save draft", "Skip", "Learn more"). Secondary actions receive less visual prominence than the primary action to maintain clear hierarchy. Multiple secondary actions can be provided and are displayed together, often in a different visual style or position than the primary action. The order of actions in the array may affect their display order depending on the component.
    */
   secondaryActions?: ComponentChildren;
 }
@@ -879,7 +879,7 @@ export type AccessibilityRole =
   | 'footer'
   /**
    * Used to indicate a thematic grouping of content.
-   * Sections should always have a `Heading` or an accessible name provided in the `accessibilityLabel` property.
+   * Sections should always have a Heading or an accessible name provided in the `accessibilityLabel` property.
    *
    * In an HTML host `section` will render a `<section>` element.
    * Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
@@ -1193,7 +1193,7 @@ export interface OverflowProps {
    * Controls how the container handles content that exceeds its dimensions:
    * - `'visible'`: Content extends beyond the container's boundaries without clipping or scrolling. Overflow content is fully visible and may overlap other elements. This is the default behavior and works well for containers that should expand to fit their content naturally.
    * - `'hidden'`: Content that exceeds the container is clipped and hidden from view—users can't see or access the overflow content. No scrollbars appear. Typically applied to intentionally limit visible content, create masked effects, or prevent content from breaking layouts. Hidden content may include important information users can't access.
-   * - `'auto'`: Only available in some components like `ScrollBox`. Adds scrollbars automatically when content exceeds the container, allowing users to scroll to view overflow content. Scrollbars only appear when needed. Commonly applied to scrollable regions, content lists, or containers where users should access all content but space is limited.
+   * - `'auto'`: Only available in some components like ScrollBox. Adds scrollbars automatically when content exceeds the container, allowing users to scroll to view overflow content. Scrollbars only appear when needed. Commonly applied to scrollable regions, content lists, or containers where users should access all content but space is limited.
    *
    * The choice depends on layout needs: `'visible'` for flexible layouts, `'hidden'` for strict boundaries, `'auto'` for user-controlled scrolling. Setting overflow establishes a new block formatting context, which affects layout behaviors like margin collapsing and positioning.
    *
@@ -1423,7 +1423,7 @@ export interface MultipleInputProps extends BaseInputProps {
    */
   onInput?: (event: Event) => void;
   /**
-   * An array containing the values of currently selected options in a multi-select choice list. When provided, this creates a controlled component where this array must be updated in response to user selections using the `onChange` callback. The array contains the `value` properties of selected child `Choice` components. For single-select lists (`multiple={false}`), this array contains zero or one items. For multi-select lists, it can contain multiple items. This is a convenience property that automatically sets the `selected` state on matching child choices based on their `value` properties. When a choice's value appears in this array, it's automatically marked as selected. The array should be updated immutably in callbacks (creating new arrays rather than mutating existing ones).
+   * An array containing the values of currently selected options in a multi-select choice list. When provided, this creates a controlled component where this array must be updated in response to user selections using the `onChange` callback. The array contains the `value` properties of selected child Choice components. For single-select lists (`multiple={false}`), this array contains zero or one items. For multi-select lists, it can contain multiple items. This is a convenience property that automatically sets the `selected` state on matching child choices based on their `value` properties. When a choice's value appears in this array, it's automatically marked as selected. The array should be updated immutably in callbacks (creating new arrays rather than mutating existing ones).
    */
   values?: string[];
 }
@@ -1509,7 +1509,7 @@ export interface FieldDecorationProps {
    */
   icon?: IconType | AnyString;
   /**
-   * Additional interactive content displayed within the field, typically positioned at the end of the field after the input area. Only text-only `Button` and `Clickable` components are supported—no icons or complex content. Use the `slot="accessory"` attribute to place elements here. Common uses include action buttons (for example, "Copy" button, "Generate" button, "Clear" button), toggle visibility controls (for example, "Show password" button), or quick actions related to the field (for example, "Paste from clipboard"). The accessory must not interfere with the field's primary input functionality. Ensure sufficient contrast and touch target sizes for mobile usability.
+   * Additional interactive content displayed within the field, typically positioned at the end of the field after the input area. Only text-only Button and Clickable components are supported—no icons or complex content. Use the `slot="accessory"` attribute to place elements here. Common uses include action buttons (for example, "Copy" button, "Generate" button, "Clear" button), toggle visibility controls (for example, "Show password" button), or quick actions related to the field (for example, "Paste from clipboard"). The accessory must not interfere with the field's primary input functionality. Ensure sufficient contrast and touch target sizes for mobile usability.
    */
   accessory?: ComponentChildren;
 }
@@ -1578,7 +1578,7 @@ export interface BaseSelectableProps {
    */
   disabled?: boolean;
   /**
-   * The unique value associated with this selectable option. This value is what gets submitted with forms when the option is selected, and is used to identify which options are selected in the parent `ChoiceList`'s `values` array. The value should be unique among siblings within the same choice list to avoid selection ambiguity. When a choice is selected, this value appears in form data and in the parent's `values` array. Use meaningful, stable values that identify the choice semantically (for example, `"small"`, `"express-shipping"`, `"agree-to-terms"`) rather than display text which may change or be localized. The value isn't displayed to users—use the choice's `children` or label for visible text.
+   * The unique value associated with this selectable option. This value is what gets submitted with forms when the option is selected, and is used to identify which options are selected in the parent ChoiceList's `values` array. The value should be unique among siblings within the same choice list to avoid selection ambiguity. When a choice is selected, this value appears in form data and in the parent's `values` array. Use meaningful, stable values that identify the choice semantically (for example, `"small"`, `"express-shipping"`, `"agree-to-terms"`) rather than display text which may change or be localized. The value isn't displayed to users—use the choice's `children` or label for visible text.
    */
   value?: string;
 }
@@ -1653,7 +1653,7 @@ export interface ChoiceListProps
    */
   multiple?: boolean;
   /**
-   * The child elements to render within this component. Within `ChoiceList`, use only `Choice` components as children. Other component types can't be used as options within the choice list.
+   * The child elements to render within this component. Within ChoiceList, use only Choice components as children. Other component types can't be used as options within the choice list.
    */
   children?: ComponentChildren;
   /**
@@ -2390,7 +2390,7 @@ export interface PageProps extends GlobalProps, ActionSlots {
    */
   subheading?: string;
   /**
-   * Additional content displayed in the header area, typically action buttons or clickable text elements that complement the primary and secondary actions. Only `Button` and `Clickable` components with text content are supported in this slot. Elements must use the `slot="accessory"` attribute to be placed in this area. Commonly displays contextual actions like "View history", "Export data", or status indicators.
+   * Additional content displayed in the header area, typically action buttons or clickable text elements that complement the primary and secondary actions. Only Button and Clickable components with text content are supported in this slot. Elements must use the `slot="accessory"` attribute to be placed in this area. Commonly displays contextual actions like "View history", "Export data", or status indicators.
    */
   accessory?: ComponentChildren;
   /**
