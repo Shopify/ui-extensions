@@ -17,12 +17,21 @@
       "esnext": "./checkout.esnext",
       "import": "./checkout.mjs",
       "require": "./checkout.js"
+    },
+    "./point-of-sale": {
+      "types": "./build/ts/point-of-sale/index.d.ts",
+      "esnext": "./point-of-sale.esnext",
+      "import": "./point-of-sale.mjs",
+      "require": "./point-of-sale.js"
     }
   },
   "typesVersions": {
     "*": {
       "checkout": [
         "./build/ts/checkout/index.d.ts"
+      ],
+      "point-of-sale": [
+        "./build/ts/point-of-sale/index.d.ts"
       ]
     }
   },

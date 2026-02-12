@@ -1,0 +1,29 @@
+{
+  "name": "point-of-sale-testing-example",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "shopify": "shopify",
+    "build": "shopify app build",
+    "dev": "shopify app dev",
+    "info": "shopify app info",
+    "generate": "shopify app generate",
+    "deploy": "shopify app deploy",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit --project extensions/point-of-sale-testing-example/tsconfig.json"
+  },
+  "dependencies": {
+    "@shopify/ui-extensions": "file:../../../packages/ui-extensions"
+  },
+  "devDependencies": {
+    "@shopify/ui-extensions-tester": "file:../../../packages/ui-extensions-tester",
+    "@testing-library/preact": "^3.2.0",
+    "typescript": "^5.0.0",
+    "vitest": "^3.0.0"
+  },
+  "trustedDependencies": [
+    "@shopify/plugin-cloudflare"
+  ],
+  "author": "kumar"
+}
