@@ -1,14 +1,23 @@
 import type {ExtensionTarget as CheckoutExtensionTarget} from '@shopify/ui-extensions/checkout';
+import type {ExtensionTarget as CustomerAccountExtensionTarget} from '@shopify/ui-extensions/customer-account';
 import type {ExtensionTarget as PosExtensionTarget} from '@shopify/ui-extensions/point-of-sale';
 import type {AnyExtensionTarget, ApiForTarget} from '../targets';
-import {isCheckoutTarget, isPosTarget} from '../targets';
+import {
+  isCheckoutTarget,
+  isCustomerAccountTarget,
+  isPosTarget,
+} from '../targets';
 import {createMockCheckoutTargetApi} from '../checkout/factories';
+import {createMockCustomerAccountTargetApi} from '../customer-account/factories';
 import {createMockPosTargetApi} from '../point-of-sale/factories';
 
 /**
  * Returns the default mock API values for a given target.
  */
 export function createMockTargetApi<T extends CheckoutExtensionTarget>(
+  target: T,
+): ApiForTarget<T>;
+export function createMockTargetApi<T extends CustomerAccountExtensionTarget>(
   target: T,
 ): ApiForTarget<T>;
 export function createMockTargetApi<T extends PosExtensionTarget>(
@@ -21,6 +30,8 @@ export function createMockTargetApi(target: AnyExtensionTarget): object {
     api = createMockCheckoutTargetApi(target);
   } else if (isPosTarget(target)) {
     api = createMockPosTargetApi(target);
+  } else if (isCustomerAccountTarget(target)) {
+    api = createMockCustomerAccountTargetApi(target);
   } else {
     throw new Error(
       `Unsupported target: "${target}". No mock factory is available for this target.`,
