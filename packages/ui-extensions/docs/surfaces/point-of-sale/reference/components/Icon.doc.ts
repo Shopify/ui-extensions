@@ -10,8 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the Icon component.',
+      description: 'Configure the following properties on the Icon component.',
       type: 'IconProps',
     },
   ],

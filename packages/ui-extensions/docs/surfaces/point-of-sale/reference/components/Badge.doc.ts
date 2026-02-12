@@ -13,8 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the Badge component.',
+      description: 'Configure the following properties on the Badge component.',
       type: 'BadgeProps',
     },
   ],
