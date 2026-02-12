@@ -31,9 +31,10 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'color-field-default.png',
+    description:
+      'Create a color input field with a placeholder and hex value. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Pick a color',
       tabs: [
         {
           code: './examples/default.html',
@@ -51,12 +52,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
-            description: 'Standard color input field with hex value.',
+            description:
+              'Add a label and name for form submission. Click to interact with the preview.',
             codeblock: {
-              title: 'Basic Usage',
+              title: 'Add a label',
               tabs: [
                 {
                   code: './examples/basic-usage-web-component.html',
@@ -72,9 +74,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Required color field ensuring essential color values are provided.',
+              'Mark a color field as required to ensure a value is provided. Click to interact with the preview.',
             codeblock: {
-              title: 'Required',
+              title: 'Mark as required',
               tabs: [
                 {
                   code: './examples/basic-usage-required.html',
@@ -90,9 +92,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Color field supporting alpha channel for transparency control.',
+              'Enable the alpha channel to allow transparent color selection. Click to interact with the preview.',
             codeblock: {
-              title: 'With Alpha Transparency',
+              title: 'Enable alpha transparency',
               tabs: [
                 {
                   code: './examples/with-alpha-transparency.html',
@@ -108,9 +110,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Color field with validation error for invalid color format inputs.',
+              'Display a validation error for invalid color format inputs. Click to interact with the preview.',
             codeblock: {
-              title: 'With Error State',
+              title: 'Show a validation error',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
@@ -126,9 +128,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Color field with contextual details providing additional guidance.',
+              'Add helper text to provide guidance about color selection. Click to interact with the preview.',
             codeblock: {
-              title: 'With Help Text',
+              title: 'Add helper text',
               tabs: [
                 {
                   code: './examples/with-help-text.html',
@@ -144,9 +146,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Color field demonstrating how to use a placeholder to guide user input for color selection.',
+              'Add placeholder text to hint at expected input format. Click to interact with the preview.',
             codeblock: {
-              title: 'With Placeholder',
+              title: 'Add placeholder text',
               tabs: [
                 {
                   code: './examples/with-placeholder.html',
@@ -162,9 +164,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Color field in a read-only mode, preventing user modifications to the color value.',
+              'Display a color value that can\'t be edited. Click to interact with the preview.',
             codeblock: {
-              title: 'Read Only State',
+              title: 'Show a read-only field',
               tabs: [
                 {
                   code: './examples/read-only-state.html',
@@ -180,9 +182,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'A multi-color field form section demonstrating how ColorField can be used to capture different color settings in a single form.',
+              'Combine multiple color fields in a form for theme customization. Click to interact with the preview.',
             codeblock: {
-              title: 'Form Integration',
+              title: 'Combine multiple fields in a form',
               tabs: [
                 {
                   code: './examples/form-integration.html',
@@ -199,13 +201,13 @@ const data: AdminReferenceEntityTemplateSchema = {
         ],
       },
       {
-        title: 'Form validation',
+        title: '',
         examples: [
           {
             description:
-              'Interactive example showing real-time hex color validation with error messages.',
+              'Validate hex color format in real time as the user types. Click to interact with the preview.',
             codeblock: {
-              title: 'Color validation',
+              title: 'Validate in real time',
               tabs: [
                 {
                   code: './examples/validation-example.jsx',

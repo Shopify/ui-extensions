@@ -28,9 +28,10 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'color-picker-default.png',
+    description:
+      'Create a color picker with alpha transparency enabled. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Pick a color with transparency',
       tabs: [
         {
           code: './examples/default.html',
@@ -48,13 +49,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple color picker with a pre-selected red color, showing the basic implementation without alpha transparency.',
+              'Create a solid color picker without transparency support. Click to interact with the preview.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Pick a solid color',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
@@ -70,9 +71,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a color picker with alpha transparency enabled, allowing selection of colors with varying opacity levels.',
+              'Enable alpha transparency to select colors with varying opacity levels. Click to interact with the preview.',
             codeblock: {
-              title: 'With alpha transparency',
+              title: 'Enable alpha transparency',
               tabs: [
                 {
                   code: './examples/with-alpha-transparency.html',
