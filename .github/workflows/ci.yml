@@ -58,6 +58,10 @@ jobs:
       - name: Test ui-extensions-tester
         run: npx loom test --no-watch packages/ui-extensions-tester/
 
+      - name: Testing example (checkout)
+        run: npm install && npm run typecheck && npm test
+        working-directory: examples/testing/checkout-basic-testing-example
+
   test-build:
     runs-on: ubuntu-latest
 

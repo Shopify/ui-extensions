@@ -42,6 +42,7 @@ describe('getExtension', () => {
   });
 
   it('throws if shopify.extension.toml cannot be found', () => {
+    // No toml placed — should throw
     expect(() =>
       getExtension('purchase.checkout.block.render', {
         configSearchDir: sandbox.tempDir,
@@ -74,6 +75,15 @@ describe('getExtension', () => {
     ).toThrow(
       new RegExp(`api_version "2020-01" does not match.*"${API_VERSION}"`),
     );
+  });
+
+  it('sets extension.apiVersion on the mock shopify global', () => {
+    sandbox.placeToml();
+    const extension = getExtension('purchase.checkout.block.render', {
+      configSearchDir: sandbox.tempDir,
+    });
+    extension.setUp();
+    expect(extension.shopify.extension.apiVersion).toBe(API_VERSION);
   });
 
   describe('extension.shopify proxy', () => {
