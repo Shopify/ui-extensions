@@ -13,8 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the Tile component.',
+      description: 'Configure the following properties on the Tile component.',
       type: 'TileProps',
     },
   ],
