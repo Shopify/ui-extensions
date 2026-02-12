@@ -5,14 +5,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'SegmentedControl',
   description:
-    'The `SegmentedControl` component displays a horizontal row of segments that allow users to switch between different views or filter content. Use it to provide mutually exclusive options with clear visual selection states.\n\nThe component provides mutually exclusive selection within a compact horizontal layout, with visual highlighting of the active segment and smooth transition animations, making it ideal for view switching, filter controls, or any interface requiring clear, space-efficient option selection.\n\n`SegmentedControl` components provide animated transitions between segments that clearly indicate state changes without being distracting, helping merchants confirm their selection while maintaining focus on content.',
+    'The SegmentedControl component displays a horizontal row of segments that allow users to switch between different views or filter content. Use it to provide mutually exclusive options with clear visual selection states.\n\nThe component provides mutually exclusive selection within a compact horizontal layout, with visual highlighting of the active segment and smooth transition animations, making it ideal for view switching, filter controls, or any interface requiring clear, space-efficient option selection.\n\nSegmentedControl components provide animated transitions between segments that clearly indicate state changes without being distracting, helping merchants confirm their selection while maintaining focus on content.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `SegmentedControl` component.',
+        'Configure the following properties on the SegmentedControl component.',
       type: 'SegmentedControlProps',
     },
   ],
@@ -48,7 +48,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- \`SegmentedControl\` is designed for mutually exclusive selections—multiple selection scenarios require different components like checkbox lists or choice lists.
+- SegmentedControl is designed for mutually exclusive selections—multiple selection scenarios require different components like checkbox lists or choice lists.
 - The component provides the selection interface but doesn't manage content switching—you must implement the logic to show/hide or update content based on the selected segment.
 - Visual styling and layout are controlled by the POS design system—custom segment styling or layout modifications beyond the provided properties are not supported.
 `,
