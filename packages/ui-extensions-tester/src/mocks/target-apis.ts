@@ -1,14 +1,17 @@
+import type {ExtensionTarget as CheckoutExtensionTarget} from '@shopify/ui-extensions/checkout';
+
 import type {AnyExtensionTarget, ApiForTarget} from '../targets';
 import {isCheckoutTarget} from '../targets';
-import {createMockCheckoutTargetApi} from '../checkout';
+import {createMockCheckoutTargetApi} from '../checkout/factories';
 
 /**
- * Returns the default mock API values for a given target, or an empty
- * object if no mock has been implemented yet.
+ * Returns the default mock API values for a given target.
  */
-export function createMockTargetApi<T extends AnyExtensionTarget>(
+export function createMockTargetApi<T extends CheckoutExtensionTarget>(
   target: T,
-): Partial<ApiForTarget<T>> {
+): ApiForTarget<T>;
+export function createMockTargetApi(target: AnyExtensionTarget): never;
+export function createMockTargetApi(target: AnyExtensionTarget): object {
   let api: object;
   if (isCheckoutTarget(target)) {
     api = createMockCheckoutTargetApi(target);
