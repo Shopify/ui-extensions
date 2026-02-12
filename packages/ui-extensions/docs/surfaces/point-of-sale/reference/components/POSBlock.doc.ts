@@ -14,7 +14,8 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the POSBlock component.',
+      description:
+        'Configure the following properties on the POSBlock component.',
       type: 'POSBlockProps',
     },
   ],

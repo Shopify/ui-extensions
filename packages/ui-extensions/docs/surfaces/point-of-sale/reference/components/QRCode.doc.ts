@@ -15,7 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the QRCode component.',
+      description:
+        'Configure the following properties on the QRCode component.',
       type: 'QRCodeProps',
     },
   ],

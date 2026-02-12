@@ -10,7 +10,8 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the EmailField component.',
+      description:
+        'Configure the following properties on the EmailField component.',
       type: 'EmailFieldProps',
     },
   ],

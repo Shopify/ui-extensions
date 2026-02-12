@@ -13,7 +13,8 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the CameraScanner component.',
+      description:
+        'Configure the following properties on the CameraScanner component.',
       type: 'CameraScannerProps',
     },
   ],

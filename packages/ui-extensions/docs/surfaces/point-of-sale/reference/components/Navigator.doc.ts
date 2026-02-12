@@ -13,7 +13,8 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the Navigator component.',
+      description:
+        'Configure the following properties on the Navigator component.',
       type: 'NavigatorProps',
     },
   ],

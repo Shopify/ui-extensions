@@ -13,7 +13,8 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the Dialog component.',
+      description:
+        'Configure the following properties on the Dialog component.',
       type: 'DialogProps',
     },
   ],
