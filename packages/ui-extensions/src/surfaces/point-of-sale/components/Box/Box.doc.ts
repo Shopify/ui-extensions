@@ -3,15 +3,15 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Box',
   description:
-    'The `Box` component provides a container for layout and visual styling. Use it to apply padding, borders, and background colors, or to nest and group other components.' +
-    '\n\nFor user interaction, use `Box` in combination with interactive components like [`Button`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/button) or [`Clickable`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/clickable). For scrollable content, use [`ScrollBox`](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/layout-and-structure/scrollbox).',
+    'The Box component provides a container for layout and visual styling. Use it to apply padding, borders, and background colors, or to nest and group other components.' +
+    '\n\nFor user interaction, use Box in combination with interactive components like [Button](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/button) or [Clickable](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/clickable). For scrollable content, use [ScrollBox](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/layout-and-structure/scrollbox).',
   thumbnail: 'box-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the `Box` component.',
+      description: 'Configure the following properties on the Box component.',
       type: 'Box',
     },
   ],
@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'box-default.png',
     description:
-      'Create layouts using a `Box` component. This example demonstrates a basic box container with padding and styling.',
+      'Create layouts using a Box component. This example demonstrates a basic box container with padding and styling.',
     codeblock: {
       title: 'Create a container with a box',
       tabs: [

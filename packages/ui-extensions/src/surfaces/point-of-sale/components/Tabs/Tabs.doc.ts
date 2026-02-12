@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Tabs',
   description:
-    'The `Tabs` component organizes content into separate views, allowing merchants to switch between related information without leaving the current page. Use tabs when you need to present multiple categories of content in a space-efficient manner.' +
+    'The Tabs component organizes content into separate views, allowing merchants to switch between related information without leaving the current page. Use tabs when you need to present multiple categories of content in a space-efficient manner.' +
     '\n\nTabs consist of a tab list containing clickable tab buttons and corresponding tab panels that display the content. Only one panel is visible at a time, reducing cognitive load and keeping the interface clean.',
   thumbnail: 'tab-thumbnail.png',
   isVisualComponent: true,
@@ -11,32 +11,31 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Tabs Properties',
-      description:
-        'Configure the following properties on the `Tabs` component.',
+      description: 'Configure the following properties on the Tabs component.',
       type: 'Tabs',
     },
     {
       title: 'Tabs Events',
       description:
-        'The `Tabs` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The Tabs component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TabsEvents',
     },
     {
       title: 'TabList',
       description:
-        'The `TabList` component contains the tab buttons. It must be a direct child of the `Tabs` component.',
+        'The TabList component contains the tab buttons. It must be a direct child of the Tabs component.',
       type: 'TabListJSXProps',
     },
     {
       title: 'Tab',
       description:
-        'The `Tab` component represents an individual tab button. It must be placed within a `TabList` and should use the `controls` property to associate it with a corresponding `TabPanel`.',
+        'The Tab component represents an individual tab button. It must be placed within a TabList and should use the `controls` property to associate it with a corresponding TabPanel.',
       type: 'Tab',
     },
     {
       title: 'TabPanel',
       description:
-        'The `TabPanel` component contains the content for each tab. It must have an `id` that matches the `controls` property of the corresponding `Tab`.',
+        'The TabPanel component contains the content for each tab. It must have an `id` that matches the `controls` property of the corresponding Tab.',
       type: 'TabPanel',
     },
   ],
@@ -45,7 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'tab-default.png',
     description:
-      'Organize content into tabs using the `Tabs` component with `TabList`, `Tab`, and `TabPanel` components. This example shows a basic tabbed interface with two tabs.',
+      'Organize content into tabs using the Tabs component with TabList, Tab, and TabPanel components. This example shows a basic tabbed interface with two tabs.',
     codeblock: {
       title: 'Create a tabbed interface',
       tabs: [
@@ -62,7 +61,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'accessibility',
       title: 'Accessibility',
       sectionContent: `
-- **Provide accessibility labels:** Use the \`accessibilityLabel\` prop on the \`Tabs\` component to describe the purpose of the tab group.
+- **Provide accessibility labels:** Use the \`accessibilityLabel\` prop on the Tabs component to describe the purpose of the tab group.
 - **Ensure keyboard navigation:** The component supports arrow key navigation between tabs and Enter/Space to activate tabs.
 - **Connect tabs and panels:** Always use matching \`controls\` (on Tab) and \`id\` (on TabPanel) properties to maintain proper semantic relationships.
 `,
