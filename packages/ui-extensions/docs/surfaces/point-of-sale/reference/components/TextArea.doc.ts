@@ -50,7 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `
 - TextArea has a maximum of 8 visible rows—content requiring more vertical space should use scrolling within the text area or alternative layouts with ScrollView components.
 - The component provides multi-line text input but doesn't include rich text formatting capabilities—complex formatting like bold, italic, or lists requires alternative solutions or plain text representations.
-- The `required` property adds semantic meaning only—it doesn't trigger automatic error display or validation, so you must implement validation logic manually.
+- The \`required\` property adds semantic meaning only—it doesn't trigger automatic error display or validation, so you must implement validation logic manually.
 - Action buttons are limited to simple press callbacks—complex action workflows require custom implementation or additional components.
       `,
     },

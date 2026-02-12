@@ -27,8 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the Stack component.',
+      description: 'Configure the following properties on the Stack component.',
       type: 'StackProps',
     },
   ],

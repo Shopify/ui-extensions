@@ -50,7 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- TimePicker requires external visibility state management through the `visibleState` tuple—automatic show/hide behavior based on field focus is not built-in.
+- TimePicker requires external visibility state management through the \`visibleState\` tuple—automatic show/hide behavior based on field focus is not built-in.
 - The \`inputMode\` property has platform limitations—iOS only supports spinner mode regardless of the \`inputMode\` setting, which may affect cross-platform consistency.
 - The \`is24Hour\` property only affects Android devices—iOS and other platforms use their system-level time format preferences regardless of this setting.
 - The component provides time selection but doesn't include field labels, help text, or error messaging—combine with other UI elements or text components to provide complete form field experiences.
