@@ -40,9 +40,10 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'icon-default.png',
+    description:
+      'Display common icons for navigation and actions. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Display icons',
       tabs: [
         {
           code: './examples/default.html',
@@ -61,31 +62,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Standard icons for common merchant interface actions and navigation. Demonstrates rendering multiple icons in an inline stack, showing different types of icons used for navigation and actions.',
+              'Apply color-coded tones to convey status and semantic meaning. Click to interact with the preview.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Icons with color-coded tones to convey status and semantic meaning.',
-            codeblock: {
-              title: 'With semantic tone',
+              title: 'Apply semantic tones',
               tabs: [
                 {
                   code: './examples/with-semantic-tone.html',
@@ -101,9 +84,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Compact icon sizing for space-constrained interfaces and inline usage. Shows how to render a small-sized icon that takes up minimal space while maintaining clarity.',
+              'Use compact sizing for space-constrained interfaces. Click to interact with the preview.',
             codeblock: {
-              title: 'Small size',
+              title: 'Reduce the size',
               tabs: [
                 {
                   code: './examples/small-size.html',
@@ -119,9 +102,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Lower contrast icon for secondary actions and supporting information.',
+              'Use lower contrast for secondary actions and supporting information. Click to interact with the preview.',
             codeblock: {
-              title: 'Subdued color',
+              title: 'Apply subdued color',
               tabs: [
                 {
                   code: './examples/subdued-color.html',
@@ -137,9 +120,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Icon with unique identifier for JavaScript targeting and styling. Demonstrates adding a specific ID to an icon, which can be used for JavaScript interactions, CSS styling, or accessibility purposes.',
+              'Add an ID for JavaScript targeting or CSS styling. Click to interact with the preview.',
             codeblock: {
-              title: 'With id property',
+              title: 'Add an ID',
               tabs: [
                 {
                   code: './examples/with-id-property.html',
@@ -155,9 +138,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Icon associated with interactive elements for enhanced accessibility context.',
+              'Associate icons with interactive elements for enhanced accessibility. Click to interact with the preview.',
             codeblock: {
-              title: 'With interest relationship',
+              title: 'Link to related content',
               tabs: [
                 {
                   code: './examples/with-interest-relationship.html',
@@ -176,9 +159,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              "Icons integrated within button components for clear action identification. Shows how icons can be added to buttons to visually reinforce the button's action, using both positive (add) and negative (delete) tones.",
+              'Add icons to buttons to reinforce the action visually. Click to interact with the preview.',
             codeblock: {
-              title: 'In button components',
+              title: 'Use in buttons',
               tabs: [
                 {
                   code: './examples/in-button-components.html',
@@ -194,9 +177,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Icons combined with badges to enhance status communication and visual hierarchy. Demonstrates using icons with badges to provide visual status indicators, using success and warning tones to convey different states.',
+              'Combine icons with badges to enhance status communication. Click to interact with the preview.',
             codeblock: {
-              title: 'In badge components',
+              title: 'Use in badges',
               tabs: [
                 {
                   code: './examples/in-badge-components.html',
