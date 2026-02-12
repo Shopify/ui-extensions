@@ -4,14 +4,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'RadioButtonList',
   description:
-    'The `RadioButtonList` component presents radio button options for single selection from a list of string values. Use it when merchants need to choose exactly one option from a defined set of choices.\n\nThe component ensures single-selection behavior with clear visual indication of the selected option and disabled states for unavailable choices, making it suitable for settings, preferences, and any scenario requiring exclusive choice from multiple options.',
+    'The RadioButtonList component presents radio button options for single selection from a list of string values. Use it when merchants need to choose exactly one option from a defined set of choices.\n\nThe component ensures single-selection behavior with clear visual indication of the selected option and disabled states for unavailable choices, making it suitable for settings, preferences, and any scenario requiring exclusive choice from multiple options.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `RadioButtonList` component.',
+        'Configure the following properties on the RadioButtonList component.',
       type: 'RadioButtonListProps',
     },
   ],
@@ -41,7 +41,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent: `\n- \`RadioButtonList\` accepts only string arrays for options—complex option objects with additional metadata or custom rendering require alternative components or additional state management.\n- The component is designed for single selection only—multiple selection scenarios require alternative approaches or custom implementation.\n- \`RadioButtonList\` requires you to manage the selected value in your app must update \`initialSelectedItem\` in response to \`onItemSelected\` events to reflect the new selection in the UI.\n`,
+      sectionContent: `\n- RadioButtonList accepts only string arrays for options—complex option objects with additional metadata or custom rendering require alternative components or additional state management.\n- The component is designed for single selection only—multiple selection scenarios require alternative approaches or custom implementation.\n- RadioButtonList requires you to manage the selected value in your app must update \`initialSelectedItem\` in response to \`onItemSelected\` events to reflect the new selection in the UI.\n`,
     },
   ],
 };

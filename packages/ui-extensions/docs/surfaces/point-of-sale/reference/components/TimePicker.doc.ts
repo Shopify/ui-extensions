@@ -8,14 +8,14 @@ const generateCodeBlockForTimePicker = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'TimePicker',
   description:
-    'The `TimePicker` component allows merchants to select a specific time using an interactive picker interface. Use it to provide visual time selection for improved user experience and reduced input errors.\n\n`TimePicker` offers a more visual and touch-friendly alternative to text-based time input, making time selection faster and more accurate. The picker interface provides an intuitive way to select hours and minutes through an interactive interface.',
+    'The TimePicker component allows merchants to select a specific time using an interactive picker interface. Use it to provide visual time selection for improved user experience and reduced input errors.\n\nTimePicker offers a more visual and touch-friendly alternative to text-based time input, making time selection faster and more accurate. The picker interface provides an intuitive way to select hours and minutes through an interactive interface.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `TimePicker` component.',
+        'Configure the following properties on the TimePicker component.',
       type: 'TimePickerProps',
     },
   ],
@@ -44,7 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent: `\n- \`TimePicker\` requires external visibility state management through the \`visibleState\` tuple—automatic show/hide behavior based on field focus is not built-in.\n- The \`inputMode\` property has platform limitations—iOS only supports spinner mode regardless of the \`inputMode\` setting, which may affect cross-platform consistency.\n- The \`is24Hour\` property only affects Android devices—iOS and other platforms use their system-level time format preferences regardless of this setting.\n- The component provides time selection but doesn't include field labels, help text, or error messaging—combine with other UI elements or text components to provide complete form field experiences.\n`,
+      sectionContent: `\n- TimePicker requires external visibility state management through the \`visibleState\` tuple—automatic show/hide behavior based on field focus is not built-in.\n- The \`inputMode\` property has platform limitations—iOS only supports spinner mode regardless of the \`inputMode\` setting, which may affect cross-platform consistency.\n- The \`is24Hour\` property only affects Android devices—iOS and other platforms use their system-level time format preferences regardless of this setting.\n- The component provides time selection but doesn't include field labels, help text, or error messaging—combine with other UI elements or text components to provide complete form field experiences.\n`,
     },
   ],
 };

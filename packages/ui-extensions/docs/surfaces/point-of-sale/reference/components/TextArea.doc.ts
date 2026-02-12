@@ -4,14 +4,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextArea',
   description:
-    'The `TextArea` component captures longer text content with a multi-line, resizable text input area. Use it to collect descriptions, notes, comments, or other extended text input in forms and data entry workflows.\n\nThe component provides a multi-line text input area that accommodates longer content. It supports validation and multi-line formatting, making it ideal for capturing detailed information such as order notes, product descriptions, or customer feedback that requires more than single-line input.',
+    'The TextArea component captures longer text content with a multi-line, resizable text input area. Use it to collect descriptions, notes, comments, or other extended text input in forms and data entry workflows.\n\nThe component provides a multi-line text input area that accommodates longer content. It supports validation and multi-line formatting, making it ideal for capturing detailed information such as order notes, product descriptions, or customer feedback that requires more than single-line input.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `TextArea` component.',
+        'Configure the following properties on the TextArea component.',
       type: 'TextAreaProps',
     },
   ],
@@ -41,7 +41,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent: `\n- \`TextArea\` has a maximum of 8 visible rows—content requiring more vertical space should use scrolling within the text area or alternative layouts with \`ScrollView\` components.\n- The component provides multi-line text input but doesn't include rich text formatting capabilities—complex formatting like bold, italic, or lists requires alternative solutions or plain text representations.\n- The \`required\` property adds semantic meaning only—it doesn't trigger automatic error display or validation, so you must implement validation logic manually.\n- Action buttons are limited to simple press callbacks—complex action workflows require custom implementation or additional components.\n`,
+      sectionContent: `\n- TextArea has a maximum of 8 visible rows—content requiring more vertical space should use scrolling within the text area or alternative layouts with ScrollView components.\n- The component provides multi-line text input but doesn't include rich text formatting capabilities—complex formatting like bold, italic, or lists requires alternative solutions or plain text representations.\n- The \`required\` property adds semantic meaning only—it doesn't trigger automatic error display or validation, so you must implement validation logic manually.\n- Action buttons are limited to simple press callbacks—complex action workflows require custom implementation or additional components.\n`,
     },
   ],
 };
