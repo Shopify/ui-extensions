@@ -7,14 +7,14 @@ const generateCodeBlockForComponent = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Screen',
   description:
-    'The `Screen` component represents a screen in the navigation stack with full control over presentation, actions, and navigation lifecycle. Use it to create navigable screens with titles, loading states, and custom navigation behavior.\n\nThe component manages full-screen presentations with proper navigation stack integration, allowing extensions to push and pop screens as part of the POS navigation flow. It handles transitions, back button behavior, and safe area padding automatically, ensuring extensions provide native-feeling navigation experiences on both iOS and Android devices.\n\n`Screen` components maintain scroll position across navigation operations where appropriate, allowing merchants to return to their previous location after viewing details or completing sub-tasks.',
+    'The Screen component represents a screen in the navigation stack with full control over presentation, actions, and navigation lifecycle. Use it to create navigable screens with titles, loading states, and custom navigation behavior.\n\nThe component manages full-screen presentations with proper navigation stack integration, allowing extensions to push and pop screens as part of the POS navigation flow. It handles transitions, back button behavior, and safe area padding automatically, ensuring extensions provide native-feeling navigation experiences on both iOS and Android devices.\n\nScreen components maintain scroll position across navigation operations where appropriate, allowing merchants to return to their previous location after viewing details or completing sub-tasks.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `Screen` component.',
+        'Configure the following properties on the Screen component.',
       type: 'ScreenProps',
     },
   ],

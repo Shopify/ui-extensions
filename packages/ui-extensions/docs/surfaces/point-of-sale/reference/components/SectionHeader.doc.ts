@@ -4,14 +4,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'SectionHeader',
   description:
-    'The `SectionHeader` component displays a title with an optional action button and divider line. Use it to create consistent section headings with interactive elements that organize content and provide contextual actions.\n\nThe component provides a consistent header layout for section groupings with support for titles, actions, and dividers following POS design specifications. It ensures proper visual hierarchy and spacing within forms and settings interfaces, helping merchants understand content organization and providing quick access to section-level actions.\n\n`SectionHeader` components ensure consistent header styling and spacing across all sections while allowing action button customization, maintaining visual unity while supporting context-specific functionality.',
+    'The SectionHeader component displays a title with an optional action button and divider line. Use it to create consistent section headings with interactive elements that organize content and provide contextual actions.\n\nThe component provides a consistent header layout for section groupings with support for titles, actions, and dividers following POS design specifications. It ensures proper visual hierarchy and spacing within forms and settings interfaces, helping merchants understand content organization and providing quick access to section-level actions.\n\nSectionHeader components ensure consistent header styling and spacing across all sections while allowing action button customization, maintaining visual unity while supporting context-specific functionality.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `SectionHeader` component.',
+        'Configure the following properties on the SectionHeader component.',
       type: 'SectionHeaderProps',
     },
   ],
@@ -44,10 +44,10 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Action buttons require a title to function properly—\`SectionHeader\` can't display actions without an accompanying title.
-- Only one action button is supported per \`SectionHeader\` to maintain clean, focused interfaces that don't overwhelm users.
+- Action buttons require a title to function properly—SectionHeader can't display actions without an accompanying title.
+- Only one action button is supported per SectionHeader to maintain clean, focused interfaces that don't overwhelm users.
 - The component's visual styling and layout are controlled by the POS design system—custom header styling beyond the provided properties is not supported.
-- \`SectionHeader\` is a standalone component separate from \`Section\`—it doesn't automatically integrate with \`Section\` component functionality or provide the same semantic benefits.
+- SectionHeader is a standalone component separate from Section—it doesn't automatically integrate with Section component functionality or provide the same semantic benefits.
       `,
     },
   ],
