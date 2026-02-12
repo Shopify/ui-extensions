@@ -4,14 +4,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextField',
   description:
-    'The `TextField` component captures single-line text input. Use it to collect short, free-form information in forms and data entry workflows.\n\nThe component supports various input configurations including placeholders, character limits, and validation. It includes built-in support for labels, helper text, and error states to guide merchants through data entry, ensuring accurate and efficient information capture across different retail scenarios.',
+    'The TextField component captures single-line text input. Use it to collect short, free-form information in forms and data entry workflows.\n\nThe component supports various input configurations including placeholders, character limits, and validation. It includes built-in support for labels, helper text, and error states to guide merchants through data entry, ensuring accurate and efficient information capture across different retail scenarios.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `TextField` component.',
+        'Configure the following properties on the TextField component.',
       type: 'NewTextFieldProps',
     },
   ],
@@ -45,7 +45,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- \`TextField\` provides single-line text input only—multi-line text entry requires the \`TextArea\` component.
+- TextField provides single-line text input only—multi-line text entry requires the TextArea component.
 - The \`required\` property adds semantic meaning only—it doesn't trigger automatic error display or validation, so you must implement validation logic manually.
 - Action buttons are limited to simple press callbacks—complex action workflows require custom implementation or additional components.
       `,

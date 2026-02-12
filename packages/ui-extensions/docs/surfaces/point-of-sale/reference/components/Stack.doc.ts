@@ -16,14 +16,14 @@ const generateCodeBlockForStack = (title: string, fileName: string) => {
 const data: ReferenceEntityTemplateSchema = {
   name: 'Stack',
   description:
-    'The `Stack` component organizes elements horizontally or vertically along the block or inline axis. Use it to structure layouts, group related components, or control spacing between elements with flexible alignment options.\n\nThe component simplifies layout creation by automatically managing spacing between child elements through gap properties, eliminating the need for manual margin management. It supports both horizontal and vertical arrangements, flexible alignment options, and wrapping behavior, making it the foundation for building consistent, responsive layouts throughout POS extensions.\n\n`Stack` components support responsive gap values that automatically adjust spacing based on screen size, ensuring layouts remain visually balanced and maintain proper element separation across different devices.',
+    'The Stack component organizes elements horizontally or vertically along the block or inline axis. Use it to structure layouts, group related components, or control spacing between elements with flexible alignment options.\n\nThe component simplifies layout creation by automatically managing spacing between child elements through gap properties, eliminating the need for manual margin management. It supports both horizontal and vertical arrangements, flexible alignment options, and wrapping behavior, making it the foundation for building consistent, responsive layouts throughout POS extensions.\n\nStack components support responsive gap values that automatically adjust spacing based on screen size, ensuring layouts remain visually balanced and maintain proper element separation across different devices.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `Stack` component.',
+        'Configure the following properties on the Stack component.',
       type: 'StackProps',
     },
   ],
@@ -109,7 +109,7 @@ const data: ReferenceEntityTemplateSchema = {
 - **Apply consistent spacing using numeric values:** Use the predefined numeric spacing values (0.5 through 16) to maintain consistency across your interface. Start with 3 or 4 for standard spacing and adjust up or down based on your content hierarchy needs.
 - **Use semantic padding for consistent layouts:** Apply \`paddingVertical\` and \`paddingHorizontal\` using the semantic spacing values (\`HalfPoint\` through \`ExtraLarge\`) to create consistent padding patterns that align with the POS design system.
 - **Use alignment properties for professional layouts:** Use the \`alignment\` property to control cross-axis positioning. Choose \`'flex-start'\` for natural alignment, \`'center'\` for centered layouts, or distribution values like \`'space-between'\` for evenly distributed content.
-- **Control flex behavior strategically:** Use the \`flex\` property to make \`Stack\` components grow or shrink within their containers, and \`flexChildren\` to stretch child elements to fill available cross-axis space when needed.
+- **Control flex behavior strategically:** Use the \`flex\` property to make Stack components grow or shrink within their containers, and \`flexChildren\` to stretch child elements to fill available cross-axis space when needed.
 - **Manage wrapping behavior appropriately:** Use \`flexWrap\` to control how children behave when they exceed container space. Choose \`'wrap'\` for responsive layouts, \`'nowrap'\` for fixed layouts, or \`'wrap-reverse'\` for specialized arrangements.
       `,
     },
@@ -118,9 +118,9 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Direction is limited to vertical and horizontal orientations—diagonal or complex arrangements require multiple nested \`Stack\` components or alternative layout approaches.
+- Direction is limited to vertical and horizontal orientations—diagonal or complex arrangements require multiple nested Stack components or alternative layout approaches.
 - Spacing values are predefined numeric constants—custom spacing values outside the provided scale aren't supported to maintain design consistency.
-- Flex behavior follows standard CSS flexbox rules—complex layout requirements may need multiple \`Stack\` components with different configurations for optimal results.
+- Flex behavior follows standard CSS flexbox rules—complex layout requirements may need multiple Stack components with different configurations for optimal results.
       `,
     },
   ],
