@@ -1,0 +1,10 @@
+{
+  "name": "point-of-sale-testing-example-ext",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@shopify/ui-extensions": "file:../../../../packages/ui-extensions",
+    "preact": "^10.10.x"
+  }
+}

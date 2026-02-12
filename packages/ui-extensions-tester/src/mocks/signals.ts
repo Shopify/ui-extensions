@@ -14,3 +14,24 @@ export function createSubscribableSignalLike<T>(
     destroy: async () => {},
   };
 }
+
+/**
+ * A minimal read-only signal for surfaces (like POS) that use
+ * `ReadonlySignalLike` instead of `SubscribableSignalLike`.
+ */
+export interface MockReadonlySignalLike<T> {
+  readonly value: T;
+  subscribe(fn: (value: T) => void): () => void;
+}
+
+/**
+ * Creates a mock `ReadonlySignalLike` that wraps a static value.
+ */
+export function createReadonlySignalLike<T>(
+  value: T,
+): MockReadonlySignalLike<T> {
+  return {
+    value,
+    subscribe: () => () => {},
+  };
+}

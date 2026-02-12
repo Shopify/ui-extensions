@@ -91,6 +91,18 @@ describe('extension.fetch', () => {
     expect(globalThis.fetch).toBe(customFetch);
   });
 
+  it('installs fetch for non-checkout targets without capabilities check', async () => {
+    sandbox.placeToml({target: 'pos.home.tile.render'});
+    const extension = getExtension('pos.home.tile.render', {
+      configSearchDir: sandbox.tempDir,
+    });
+    extension.setUp();
+    expect(extension.fetch).toBeInstanceOf(Function);
+    expect(globalThis.fetch).toBe(extension.fetch);
+    const response = await extension.fetch('https://example.com');
+    expect(response.ok).toBe(true);
+  });
+
   it('does not remove a pre-existing Response global during tearDown', () => {
     const originalResponse = (globalThis as any).Response;
     const FakeResponse = function FakeResponse() {} as any;
