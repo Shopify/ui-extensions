@@ -14,6 +14,10 @@ export default createPackage((pkg) => {
   pkg.entry({root: './src/index.ts'});
   pkg.entry({name: 'checkout', root: './src/checkout/index.ts'});
   pkg.entry({name: 'point-of-sale', root: './src/point-of-sale/index.ts'});
+  pkg.entry({
+    name: 'customer-account',
+    root: './src/customer-account/index.ts',
+  });
   pkg.use(
     defaultProjectPlugin(),
     rollupPlugins([
