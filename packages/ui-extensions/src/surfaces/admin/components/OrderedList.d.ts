@@ -8,7 +8,7 @@
 import type {ComponentChildren, OrderedListProps$1} from './shared.d.ts';
 
 /**
- * The properties for the `OrderedList` component. These properties define a numbered list of items with automatic numbering and proper list semantics.
+ * The properties for the OrderedList component. These properties define a numbered list of items with automatic numbering and proper list semantics.
  */
 export interface OrderedListProps extends OrderedListProps$1 {}
 
@@ -129,7 +129,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * A custom element for displaying a numbered list of items with automatic numbering and proper list semantics. Use `OrderedList` when the sequence or order of items matters, such as instructions, rankings, or step-by-step processes.
+ * A custom element for displaying a numbered list of items with automatic numbering and proper list semantics. Use OrderedList when the sequence or order of items matters, such as instructions, rankings, or step-by-step processes.
  */
 declare class OrderedList
   extends PreactCustomElement
@@ -153,13 +153,13 @@ declare module 'preact' {
 
 declare const tagName = 's-ordered-list';
 /**
- * The JSX properties for the `OrderedList` component. These properties define how an ordered list is rendered in Preact or JSX.
+ * The JSX properties for the OrderedList component. These properties define how an ordered list is rendered in Preact or JSX.
  */
 export interface OrderedListJSXProps
   extends Partial<OrderedListProps>,
     Pick<OrderedListProps$1, 'id'> {
   /**
-   * The items in the ordered list. Only `ListItem` components are accepted.
+   * The items in the ordered list. Only ListItem components are accepted.
    */
   children?: ComponentChildren;
 }

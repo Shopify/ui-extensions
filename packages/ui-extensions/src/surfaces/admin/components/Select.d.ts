@@ -303,7 +303,7 @@ declare class Select extends PreactInputElement implements SelectProps {
    */
   [hasInitialValueSymbol]: boolean;
   /**
-   * The value of the currently selected option. When setting this property programmatically, it updates which option appears selected in the dropdown. When reading it, you get the `value` attribute of the currently selected `Option` component.
+   * The value of the currently selected option. When setting this property programmatically, it updates which option appears selected in the dropdown. When reading it, you get the `value` attribute of the currently selected Option component.
    */
   get value(): string;
   set value(value: string);
@@ -325,7 +325,7 @@ declare module 'preact' {
 
 declare const tagName = 's-select';
 /**
- * Properties for using the `Select` component in JSX with React-style event handlers.
+ * Properties for using the Select component in JSX with React-style event handlers.
  */
 export interface SelectJSXProps
   extends Partial<SelectProps>,
@@ -333,7 +333,7 @@ export interface SelectJSXProps
   /**
    * The selectable options displayed in the dropdown list.
    *
-   * Accepts `Option` components for individual selectable items, and `OptionGroup` components to organize related options into logical groups with labels.
+   * Accepts Option components for individual selectable items, and OptionGroup components to organize related options into logical groups with labels.
    */
   children?: ComponentChildren;
   /**

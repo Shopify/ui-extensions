@@ -9,7 +9,7 @@
 import type {ComponentChildren, ParagraphProps$1} from './shared.d.ts';
 
 /**
- * The properties for the `Paragraph` component. These properties define blocks of text content with consistent spacing and styling for readable body copy.
+ * The properties for the Paragraph component. These properties define blocks of text content with consistent spacing and styling for readable body copy.
  */
 export interface ParagraphProps
   extends Required<
@@ -161,7 +161,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * A custom element for displaying blocks of text content with consistent spacing and styling for readable body copy. Use `Paragraph` to render longer text content with proper line height and spacing between paragraphs.
+ * A custom element for displaying blocks of text content with consistent spacing and styling for readable body copy. Use Paragraph to render longer text content with proper line height and spacing between paragraphs.
  */
 declare class Paragraph extends PreactCustomElement implements ParagraphProps {
   /**
@@ -213,7 +213,7 @@ declare module 'preact' {
 
 declare const tagName = 's-paragraph';
 /**
- * The JSX properties for the `Paragraph` component. These properties define how a paragraph is rendered in Preact or JSX.
+ * The JSX properties for the Paragraph component. These properties define how a paragraph is rendered in Preact or JSX.
  */
 export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,

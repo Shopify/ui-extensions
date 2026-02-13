@@ -9,7 +9,7 @@
 import type {IconProps$1, IconType, ComponentChildren} from './shared.d.ts';
 
 /**
- * The properties for the `Icon` component. An `Icon` displays a graphical symbol with configurable appearance, color, and semantic meaning.
+ * The properties for the Icon component. An Icon displays a graphical symbol with configurable appearance, color, and semantic meaning.
  */
 export interface IconProps
   extends Pick<
@@ -177,7 +177,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 
 /**
- * An `Icon` displays a graphical symbol from the icon library.
+ * An Icon displays a graphical symbol from the icon library.
  */
 declare class Icon extends PreactCustomElement implements IconProps {
   /**
@@ -217,7 +217,7 @@ declare module 'preact' {
 
 declare const tagName = 's-icon';
 /**
- * The properties for the `Icon` component when it's used in JSX.
+ * The properties for the Icon component when it's used in JSX.
  */
 export interface IconJSXProps
   extends Partial<IconProps>,

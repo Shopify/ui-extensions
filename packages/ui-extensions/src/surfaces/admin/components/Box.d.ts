@@ -39,11 +39,11 @@ export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
 };
 
 /**
- * A version of the `Box` properties with all fields required.
+ * A version of the Box properties with all fields required.
  */
 export type RequiredBoxProps = Required<BoxProps$1>;
 /**
- * The allowed border radius values for a `Box` component.
+ * The allowed border radius values for a Box component.
  */
 export type BoxBorderRadii = Extract<
   RequiredBoxProps['borderRadius'],
@@ -57,14 +57,14 @@ export type BoxBorderRadii = Extract<
   | 'large-200'
 >;
 /**
- * The allowed border style values for a `Box` component.
+ * The allowed border style values for a Box component.
  */
 export type BoxBorderStyles = Extract<
   RequiredBoxProps['borderStyle'],
   'none' | 'solid' | 'dashed' | 'auto'
 >;
 /**
- * The `Box` properties that support responsive values through container queries.
+ * The Box properties that support responsive values through container queries.
  */
 export type ResponsiveBoxProps = MakeResponsivePick<
   RequiredBoxProps,
@@ -78,7 +78,7 @@ export type ResponsiveBoxProps = MakeResponsivePick<
   | 'display'
 >;
 /**
- * The properties for the `Box` component. A `Box` provides control over layout, spacing, sizing, borders, and background styling for its content.
+ * The properties for the Box component. A Box provides control over layout, spacing, sizing, borders, and background styling for its content.
  */
 export interface BoxProps
   extends Pick<
@@ -349,7 +349,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 /**
- * The base element class for `Box` components with all `Box` properties as accessors.
+ * The base element class for Box components with all Box properties as accessors.
  */
 declare class BoxElement extends PreactCustomElement implements BoxProps {
   constructor(renderImpl: RenderImpl);
@@ -396,7 +396,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
    */
   accessor overflow: BoxProps['overflow'];
   /**
-   * The padding on all sides of the `Box`.
+   * The padding on all sides of the Box.
    */
   accessor padding: BoxProps['padding'];
   /**
@@ -405,7 +405,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
    */
   accessor paddingBlock: BoxProps['paddingBlock'];
   /**
-   * The block-start padding of the `Box`.
+   * The block-start padding of the Box.
    */
   accessor paddingBlockStart: BoxProps['paddingBlockStart'];
   /**
@@ -450,7 +450,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
    */
   accessor accessibilityLabel: BoxProps['accessibilityLabel'];
   /**
-   * The accessibility visibility of the `Box`.
+   * The accessibility visibility of the Box.
    */
   accessor accessibilityVisibility: BoxProps['accessibilityVisibility'];
   /**
@@ -486,7 +486,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * A `Box` is a container component that provides control over layout, spacing, and styling.
+ * A Box is a container component that provides control over layout, spacing, and styling.
  */
 declare class Box extends BoxElement implements BoxProps {
   constructor();
@@ -506,13 +506,13 @@ declare module 'preact' {
 
 declare const tagName = 's-box';
 /**
- * The properties for the `Box` component when it's used in JSX.
+ * The properties for the Box component when it's used in JSX.
  */
 export interface BoxJSXProps
   extends Partial<BoxProps>,
     Pick<BoxProps$1, 'id' | 'children'> {
   /**
-   * The child elements to render inside the `Box`.
+   * The child elements to render inside the Box.
    */
   children?: ComponentChildren;
 }

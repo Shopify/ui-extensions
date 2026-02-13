@@ -328,7 +328,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
  */
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 /**
- * The properties for the `MoneyField` component. These properties configure a specialized input field for entering monetary amounts with automatic currency formatting, decimal handling, and range validation.
+ * The properties for the MoneyField component. These properties configure a specialized input field for entering monetary amounts with automatic currency formatting, decimal handling, and range validation.
  */
 export interface MoneyFieldProps
   extends Omit<PreactFieldProps, 'value'>,
@@ -340,7 +340,7 @@ export interface MoneyFieldProps
 }
 
 /**
- * The `MoneyField` custom element class that renders a monetary input field in the Shopify admin interface. This component allows merchants to enter currency amounts with automatic formatting, decimal precision, and validation against minimum and maximum values.
+ * The MoneyField custom element class that renders a monetary input field in the Shopify admin interface. This component allows merchants to enter currency amounts with automatic formatting, decimal precision, and validation against minimum and maximum values.
  */
 declare class MoneyField
   extends PreactFieldElement<MoneyFieldProps['autocomplete']>
@@ -376,7 +376,7 @@ declare module 'preact' {
 
 declare const tagName = 's-money-field';
 /**
- * The JSX props for the `MoneyField` component. These properties extend `MoneyFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact.
+ * The JSX props for the MoneyField component. These properties extend `MoneyFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact.
  */
 export interface MoneyFieldJSXProps
   extends Partial<MoneyFieldProps>,

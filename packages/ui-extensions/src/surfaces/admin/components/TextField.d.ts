@@ -320,7 +320,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 }
 
 /**
- * The properties for the `TextField` component. Extends `PreactFieldProps` with text-specific features like icons, length constraints, and prefix/suffix content.
+ * The properties for the TextField component. Extends `PreactFieldProps` with text-specific features like icons, length constraints, and prefix/suffix content.
  */
 export type TextFieldProps = PreactFieldProps<
   /** @default 'on' */
@@ -334,7 +334,7 @@ export type TextFieldProps = PreactFieldProps<
   >;
 
 /**
- * The `TextField` custom element class that renders a single-line text input field in the Shopify admin interface. This component allows merchants to enter and edit text with support for labels, validation, icons, and prefix/suffix content.
+ * The TextField custom element class that renders a single-line text input field in the Shopify admin interface. This component allows merchants to enter and edit text with support for labels, validation, icons, and prefix/suffix content.
  */
 declare class TextField
   extends PreactFieldElement<TextFieldProps['autocomplete']>
@@ -383,7 +383,7 @@ declare module 'preact' {
 
 declare const tagName = 's-text-field';
 /**
- * The JSX props for the `TextField` component. These properties extend `TextFieldProps` with JSX-specific event callbacks and an accessory slot for rendering additional content at the end of the field.
+ * The JSX props for the TextField component. These properties extend `TextFieldProps` with JSX-specific event callbacks and an accessory slot for rendering additional content at the end of the field.
  */
 export interface TextFieldJSXProps
   extends Partial<Omit<TextFieldProps, 'accessory'>>,

@@ -124,7 +124,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 /**
- * The properties you can set on a `QueryContainer` component.
+ * The properties you can set on a QueryContainer component.
  */
 export interface QueryContainerProps
   extends Required<Pick<QueryContainerProps$1, 'id' | 'containerName'>> {}
@@ -143,7 +143,7 @@ declare class QueryContainer
   /** @private */
   static globalStylesApplied: boolean;
   /**
-   * Creates a new `QueryContainer` instance.
+   * Creates a new QueryContainer instance.
    */
   constructor();
 }
@@ -162,11 +162,11 @@ declare module 'preact' {
 }
 
 /**
- * The custom element tag name for the `QueryContainer` component.
+ * The custom element tag name for the QueryContainer component.
  */
 declare const tagName = 's-query-container';
 /**
- * The JSX properties you can set on a `QueryContainer` component.
+ * The JSX properties you can set on a QueryContainer component.
  */
 export interface QueryContainerJSXProps
   extends Partial<QueryContainerProps$1>,

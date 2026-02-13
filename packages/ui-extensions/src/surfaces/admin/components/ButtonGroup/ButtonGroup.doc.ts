@@ -22,13 +22,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `ButtonGroup` component.',
+        'Configure the following properties on the ButtonGroup component.',
       type: 'ButtonGroup',
     },
     {
       title: 'Slots',
       description:
-        'The `ButtonGroup` component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The ButtonGroup component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ButtonGroupSlots',
     },
   ],

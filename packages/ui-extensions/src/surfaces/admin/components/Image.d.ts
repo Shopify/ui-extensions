@@ -76,11 +76,11 @@ export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
 };
 
 /**
- * The `Box` properties with all fields marked as required.
+ * The Box properties with all fields marked as required.
  */
 export type RequiredBoxProps = Required<BoxProps$1>;
 /**
- * The available border radius values for `Box` components.
+ * The available border radius values for Box components.
  */
 export type BoxBorderRadii = Extract<
   RequiredBoxProps['borderRadius'],
@@ -94,14 +94,14 @@ export type BoxBorderRadii = Extract<
   | 'large-200'
 >;
 /**
- * The available border style values for `Box` components.
+ * The available border style values for Box components.
  */
 export type BoxBorderStyles = Extract<
   RequiredBoxProps['borderStyle'],
   'none' | 'solid' | 'dashed' | 'auto'
 >;
 /**
- * The `Box` properties that support responsive values through container queries.
+ * The Box properties that support responsive values through container queries.
  */
 export type ResponsiveBoxProps = MakeResponsivePick<
   RequiredBoxProps,
@@ -327,7 +327,7 @@ export interface BoxProps
 }
 
 /**
- * The properties for the `Image` component. An `Image` displays pictures with configurable sizing, loading behavior, and borders. Properties include `src` for the image URL, `alt` for accessibility text, `aspectRatio` for sizing, `loading` for lazy loading, and border styling options.
+ * The properties for the Image component. An Image displays pictures with configurable sizing, loading behavior, and borders. Properties include `src` for the image URL, `alt` for accessibility text, `aspectRatio` for sizing, `loading` for lazy loading, and border styling options.
  */
 export interface ImageProps
   extends Required<
@@ -506,7 +506,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 /**
- * An `Image` displays pictures with configurable sizing, loading behavior, and borders.
+ * An Image displays pictures with configurable sizing, loading behavior, and borders.
  */
 declare class Image extends PreactCustomElement implements ImageProps {
   /**
@@ -590,7 +590,7 @@ declare module 'preact' {
 
 declare const tagName = 's-image';
 /**
- * The properties for the `Image` component when it's used in JSX.
+ * The properties for the Image component when it's used in JSX.
  */
 export interface ImageJSXProps
   extends Partial<ImageProps>,

@@ -20,7 +20,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `Divider` component.',
+        'Configure the following properties on the Divider component.',
       type: 'Divider',
     },
   ],

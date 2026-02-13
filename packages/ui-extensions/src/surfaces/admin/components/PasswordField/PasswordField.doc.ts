@@ -28,13 +28,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `PasswordField` component.',
+        'Configure the following properties on the PasswordField component.',
       type: 'PasswordField',
     },
     {
       title: 'Events',
       description:
-        'The `PasswordField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The PasswordField component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'PasswordFieldEvents',
     },
   ],
