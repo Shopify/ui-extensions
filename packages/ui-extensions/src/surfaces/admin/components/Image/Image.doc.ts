@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Image',
   description:
-    'The `Image` component displays an image from a URL. It supports accessibility labels (or alt text), lazy loading, load and error callbacks, and a decorative mode for images that should be ignored by screen readers.\n\nFor rendering Polaris icons, use [`Icon`](/docs/api/admin-extensions/{API_VERSION}/ui-components/media-and-visuals/icon).',
+    'The Image component displays an image from a URL. It supports accessibility labels (or alt text), lazy loading, load and error callbacks, and a decorative mode for images that should be ignored by screen readers.\n\nFor rendering Polaris icons, use [Icon](/docs/api/admin-extensions/{API_VERSION}/ui-components/media-and-visuals/icon).',
   requires: '',
   thumbnail: 'image-thumbnail.png',
   isVisualComponent: true,
@@ -11,8 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the `Image` component.',
+      description: 'Configure the following properties on the Image component.',
       type: 'ImageProps',
     },
   ],
@@ -49,8 +48,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
-      sectionContent: `- \`Image\` doesn't support responsive image techniques like srcset or the picture element. A single image URL is used at all resolutions.
-- \`Image\` doesn't support built-in cropping, aspect ratio control, or object-fit behavior. The image renders at its natural size unless constrained by a parent container.`,
+      sectionContent: `- Image doesn't support responsive image techniques like srcset or the picture element. A single image URL is used at all resolutions.
+- Image doesn't support built-in cropping, aspect ratio control, or object-fit behavior. The image renders at its natural size unless constrained by a parent container.`,
     },
   ],
   related: [],

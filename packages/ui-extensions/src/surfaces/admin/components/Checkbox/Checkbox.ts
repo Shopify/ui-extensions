@@ -2,7 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import {AccessibilityLabelProps} from '../shared';
 
 /**
- * Props for the `Checkbox` component, which renders a toggleable input
+ * Props for the Checkbox component, which renders a toggleable input
  * that lets the merchant choose between a checked and unchecked state.
  */
 export interface CheckboxProps extends AccessibilityLabelProps {
@@ -42,7 +42,7 @@ export interface CheckboxProps extends AccessibilityLabelProps {
 
   /**
    * An identifier for the checkbox that is unique within the nearest
-   * containing `Form` component. Use this to identify the checkbox's
+   * containing Form component. Use this to identify the checkbox's
    * value when the form is submitted.
    */
   name?: string;
@@ -65,7 +65,7 @@ export interface CheckboxProps extends AccessibilityLabelProps {
 }
 
 /**
- * `Checkbox` renders a toggleable input that lets the merchant choose
+ * Checkbox renders a toggleable input that lets the merchant choose
  * between a checked and unchecked state.
  */
 export const Checkbox = createRemoteComponent<'Checkbox', CheckboxProps>(

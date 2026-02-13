@@ -3,7 +3,7 @@ import {IconName} from './IconName';
 import {AccessibilityLabelProps} from '../shared';
 
 /**
- * Props for the `Icon` component, which renders a Polaris icon by name.
+ * Props for the Icon component, which renders a Polaris icon by name.
  * Inherits accessibility label support from `AccessibilityLabelProps`.
  */
 export interface IconProps extends AccessibilityLabelProps {

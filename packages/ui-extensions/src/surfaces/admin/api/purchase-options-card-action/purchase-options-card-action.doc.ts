@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   type: 'API',
   requires:
-    'the [`AdminAction`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminaction) component.',
+    'the [AdminAction](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminaction) component.',
   defaultExample: {
     description:
       'Update a subscription by sending product and selling plan IDs to your backend. This example demonstrates checking for `sellingPlanId` presence, posting the update request, and closing the modal on success.',

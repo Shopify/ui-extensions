@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   type: 'API',
   requires:
-    'the [`FunctionSettings`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
+    'the [FunctionSettings](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
   defaultExample: {
     description:
       'Save a minimum purchase threshold to a metafield with decimal number validation. This example uses a [text field](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) for input, calls `applyMetafieldChange`, and displays a success or error [banner](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/banner).',
