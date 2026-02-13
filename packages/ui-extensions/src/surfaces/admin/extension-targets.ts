@@ -473,7 +473,7 @@ export type ApiForRenderExtension<ID extends keyof RenderExtensions> =
   ExtractedApiFromRenderExtension<RenderExtensions[ID]>;
 
 /**
- * Extracts the component set for a specific render extension target. Use this to get the union of UI components (like `Text`, `Button`, `AdminBlock`, etc.) available for your extension target. This helps you write type-safe code that only uses components supported by your target.
+ * Extracts the component set for a specific render extension target. Use this to get the union of UI components (like Text, Button, AdminBlock, etc.) available for your extension target. This helps you write type-safe code that only uses components supported by your target.
  */
 export type AllowedComponentsForRenderExtension<
   ID extends keyof RenderExtensions,
