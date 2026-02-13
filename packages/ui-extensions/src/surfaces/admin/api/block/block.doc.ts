@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   type: 'API',
   requires:
-    'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
+    'the [AdminBlock](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
   defaultExample: {
     description:
       "Fetch and display a product's title, inventory, and status in a block extension. This example queries the [GraphQL Admin API](/docs/api/admin-graphql/) when the extension loads and shows a loading indicator while fetching.",

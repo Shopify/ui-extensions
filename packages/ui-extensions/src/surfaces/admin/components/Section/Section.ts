@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 /**
- * Props for the `Section` component, which groups related content under an
+ * Props for the Section component, which groups related content under an
  * optional heading. Sections provide both visual and semantic structure,
  * making it easier for users (and assistive technologies) to navigate
  * through distinct areas of an extension.
@@ -30,7 +30,7 @@ export interface SectionProps {
    *   right design decision for a particular placement.
    * - `none`: Removes all padding from the section. This is useful when
    *   child elements need to span to the section's edges (for example, a
-   *   full-width image). Use `Box` or another layout component to restore
+   *   full-width image). Use Box or another layout component to restore
    *   padding for the remaining content.
    *
    * @defaultValue 'base'
@@ -38,7 +38,7 @@ export interface SectionProps {
   padding?: 'base' | 'none';
 }
 
-/** A `Section` component that groups related content under an optional heading. */
+/** A Section component that groups related content under an optional heading. */
 export const Section = createRemoteComponent<'Section', SectionProps>(
   'Section',
 );
