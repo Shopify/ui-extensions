@@ -9,7 +9,7 @@ import {
 } from '../shared';
 
 /**
- * Props for the `NumberField` component, a text input for numeric values.
+ * Props for the NumberField component, a text input for numeric values.
  * Inherits standard input props, number constraints (min, max, step),
  * autocomplete support, and field decoration props.
  */

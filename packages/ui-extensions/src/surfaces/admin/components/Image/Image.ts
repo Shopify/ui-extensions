@@ -2,7 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {AccessibilityRole} from '../shared';
 
 /**
- * Props for the `Image` component. Requires either `accessibilityLabel`
+ * Props for the Image component. Requires either `accessibilityLabel`
  * or `alt` for alternative text, and either `source` or `src` for the
  * image URL.
  */
@@ -11,7 +11,7 @@ export type ImageProps = (ImageAccessibilityLabelProp | ImageAltProp) &
   ImageBaseProps;
 
 /**
- * Base props shared by all `Image` variants.
+ * Base props shared by all Image variants.
  */
 interface ImageBaseProps {
   /**

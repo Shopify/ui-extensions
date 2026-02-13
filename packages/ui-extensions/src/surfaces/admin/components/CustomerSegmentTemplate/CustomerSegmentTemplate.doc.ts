@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'CustomerSegmentTemplate',
   description:
-    'The `CustomerSegmentTemplate` component configures a segment template rendered in the **Customers** section of the Shopify admin. Use `CustomerSegmentTemplate` to define reusable segment queries that merchants can apply in the customer segment editor.\n\nThis component is required for all customer segmentation template extensions and provides a standardized structure for segment template cards.\n\nLearn how to [build a customer segment template extension](/docs/apps/build/marketing-analytics/customer-segments/build-a-template-extension).',
+    'The CustomerSegmentTemplate component configures a segment template rendered in the **Customers** section of the Shopify admin. Use CustomerSegmentTemplate to define reusable segment queries that merchants can apply in the customer segment editor.\n\nThis component is required for all customer segmentation template extensions and provides a standardized structure for segment template cards.\n\nLearn how to [build a customer segment template extension](/docs/apps/build/marketing-analytics/customer-segments/build-a-template-extension).',
   requires:
     'the [admin.customers.segmentation-templates.render](/docs/api/admin-extensions/{API_VERSION}/targets/customers#customer-segmentation-templates-) target.',
   isVisualComponent: true,
@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `CustomerSegmentTemplate` component.',
+        'Configure the following properties on the CustomerSegmentTemplate component.',
       type: 'CustomerSegmentTemplateProps',
     },
   ],

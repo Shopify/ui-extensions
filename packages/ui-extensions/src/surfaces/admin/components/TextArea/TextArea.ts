@@ -8,7 +8,7 @@ import {
 } from '../shared';
 
 /**
- * Props for the `TextArea` component, a multi-line text input for entering
+ * Props for the TextArea component, a multi-line text input for entering
  * longer-form content such as descriptions, comments, or notes. It extends
  * standard input props with min/max length constraints and autocomplete support.
  */
@@ -26,7 +26,7 @@ export interface TextAreaProps
   rows?: number;
 }
 
-/** A `TextArea` component for multi-line text input. */
+/** A TextArea component for multi-line text input. */
 export const TextArea = createRemoteComponent<'TextArea', TextAreaProps>(
   'TextArea',
 );

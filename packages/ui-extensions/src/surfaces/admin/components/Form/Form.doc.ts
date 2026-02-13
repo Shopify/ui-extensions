@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Form',
   description:
-    "The `Form` component wraps form controls and enables implicit submission, allowing users to submit from any input by pressing **Enter**. Use `Form` to group related input fields and handle form submission through JavaScript event handlers.\n\nUnlike HTML forms, `Form` doesn't automatically submit data using HTTP—you must register an `onSubmit` event to process form data programmatically.",
+    "The Form component wraps form controls and enables implicit submission, allowing users to submit from any input by pressing **Enter**. Use Form to group related input fields and handle form submission through JavaScript event handlers.\n\nUnlike HTML forms, Form doesn't automatically submit data using HTTP—you must register an `onSubmit` event to process form data programmatically.",
   requires: '',
   thumbnail: 'form-thumbnail.png',
   isVisualComponent: true,
@@ -11,8 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the `Form` component.',
+      description: 'Configure the following properties on the Form component.',
       type: 'FormProps',
     },
   ],
@@ -41,15 +40,15 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Best practices',
       anchorLink: 'best-practices',
-      sectionContent: `- **Use \`Form\` to use the save bar:** Wrapping inputs in a \`Form\` component enables automatic integration with the Shopify admin's save bar, providing a consistent save/discard experience for merchants.`,
+      sectionContent: `- **Use Form to use the save bar:** Wrapping inputs in a Form component enables automatic integration with the Shopify admin's save bar, providing a consistent save/discard experience for merchants.`,
     },
     {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
-      sectionContent: `- \`Form\` doesn't provide built-in form state management or validation. You must manage field values, errors, and dirty state yourself.
+      sectionContent: `- Form doesn't provide built-in form state management or validation. You must manage field values, errors, and dirty state yourself.
 - The save bar appearance and behavior is controlled by the Shopify admin. You can't customize its position, text, or button labels.
-- \`Form\` doesn't support nested forms. Only one \`Form\` component should be used per extension view.`,
+- Form doesn't support nested forms. Only one Form component should be used per extension view.`,
     },
   ],
   related: [],

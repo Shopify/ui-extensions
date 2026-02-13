@@ -8,7 +8,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 type CustomerStandardMetafieldDependency = 'facts.birth_date';
 
 /**
- * Props for the `CustomerSegmentTemplate` component, which defines a
+ * Props for the CustomerSegmentTemplate component, which defines a
  * reusable segment template that merchants can apply in the customer
  * segment editor.
  */
