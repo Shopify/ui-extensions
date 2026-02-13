@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'AdminBlock',
   description:
-    'The `AdminBlock` component enables admin block extensions to appear inline on resource pages. Use `AdminBlock` to create embedded extension experiences that feel native to the Shopify admin interface.\n\nThis component is required for all admin block extensions and handles automatic height management, expansion controls, and content overflow for inline rendering contexts.\n\nLearn how to [build an admin block extension](/docs/apps/build/admin/actions-blocks/build-admin-block).',
+    'The AdminBlock component enables admin block extensions to appear inline on resource pages. Use AdminBlock to create embedded extension experiences that feel native to the Shopify admin interface.\n\nThis component is required for all admin block extensions and handles automatic height management, expansion controls, and content overflow for inline rendering contexts.\n\nLearn how to [build an admin block extension](/docs/apps/build/admin/actions-blocks/build-admin-block).',
   requires: '',
   thumbnail: 'adminblock-thumbnail.png',
   isVisualComponent: true,
@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `AdminBlock` component.',
+        'Configure the following properties on the AdminBlock component.',
       type: 'AdminBlockProps',
     },
   ],

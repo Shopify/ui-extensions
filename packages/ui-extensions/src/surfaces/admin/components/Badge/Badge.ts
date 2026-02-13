@@ -3,7 +3,7 @@ import type {AccessibilityLabelProps, SizeScale, Tone} from '../shared';
 import {IconName} from '../Icon/IconName';
 
 /**
- * Base props shared by all `Badge` variants. Controls the semantic tone
+ * Base props shared by all Badge variants. Controls the semantic tone
  * and size of the badge.
  */
 interface BadgeBaseProps extends AccessibilityLabelProps {
@@ -68,14 +68,14 @@ interface BadgeNoIconProps {
 }
 
 /**
- * Props for the `Badge` component. A badge can optionally include an icon
+ * Props for the Badge component. A badge can optionally include an icon
  * (`BadgeIconProps`) or omit one (`BadgeNoIconProps`). This union ensures
  * type safety so that `iconPosition` can only be set when `icon` is present.
  */
 export type BadgeProps = BadgeBaseProps & (BadgeIconProps | BadgeNoIconProps);
 
 /**
- * `Badge` renders a small label used to highlight the status or category of
+ * Badge renders a small label used to highlight the status or category of
  * an item, with optional icon support and configurable tone and size.
  */
 export const Badge = createRemoteComponent<'Badge', BadgeProps>('Badge');

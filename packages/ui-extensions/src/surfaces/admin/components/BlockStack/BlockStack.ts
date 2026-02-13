@@ -12,8 +12,8 @@ import {
 } from '../shared';
 
 /**
- * Props for the `BlockStack` component, which arranges its children in a
- * vertical stack (block axis). Use `BlockStack` to lay out components
+ * Props for the BlockStack component, which arranges its children in a
+ * vertical stack (block axis). Use BlockStack to lay out components
  * vertically with consistent spacing and alignment.
  */
 export interface BlockStackProps
@@ -43,7 +43,7 @@ export interface BlockStackProps
 }
 
 /**
- * `BlockStack` arranges its children in a vertical stack (block axis) with
+ * BlockStack arranges its children in a vertical stack (block axis) with
  * configurable spacing and alignment.
  */
 export const BlockStack = createRemoteComponent<'BlockStack', BlockStackProps>(

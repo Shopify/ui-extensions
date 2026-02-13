@@ -2,7 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {RemoteFragment} from '@remote-ui/core';
 
 /**
- * Props for the `AdminAction` component, used by Admin Action extensions to
+ * Props for the AdminAction component, used by Admin Action extensions to
  * configure the title, primary and secondary action buttons, and loading
  * state of the action modal.
  */
@@ -16,14 +16,14 @@ export interface AdminActionProps {
 
   /**
    * The primary action button in the modal's footer, rendered as a
-   * `Button`. Use this for the main action the user can take, such as
+   * Button. Use this for the main action the user can take, such as
    * "Save" or "Submit".
    */
   primaryAction?: RemoteFragment;
 
   /**
    * The secondary action button in the modal's footer, rendered as a
-   * `Button`. Use this for an alternative action, such as "Cancel" or
+   * Button. Use this for an alternative action, such as "Cancel" or
    * "Discard".
    */
   secondaryAction?: RemoteFragment;
@@ -37,7 +37,7 @@ export interface AdminActionProps {
   loading?: boolean;
 }
 /**
- * `AdminAction` is a component used by Admin Action extensions to configure a primary and secondary action and title.
+ * AdminAction is a component used by Admin Action extensions to configure a primary and secondary action and title.
  */
 export const AdminAction = createRemoteComponent<
   'AdminAction',

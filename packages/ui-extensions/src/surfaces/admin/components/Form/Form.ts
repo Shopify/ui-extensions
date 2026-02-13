@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 /**
- * Props for the `Form` component, a container that groups related input
+ * Props for the Form component, a container that groups related input
  * fields and manages submission and reset behavior through the
  * save bar.
  */

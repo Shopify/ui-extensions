@@ -7,7 +7,7 @@ import {
 } from '../shared';
 
 /**
- * Props for the `PasswordField` component, a text input that masks its
+ * Props for the PasswordField component, a text input that masks its
  * content for secure entry of sensitive values like passwords or PINs.
  * It extends standard input props with min/max length constraints and
  * autocomplete support for password managers.
@@ -30,7 +30,7 @@ export type PasswordAutocompleteField = Extract<
   'new-password' | 'current-password'
 >;
 
-/** A `PasswordField` component for secure, masked text entry. */
+/** A PasswordField component for secure, masked text entry. */
 export const PasswordField = createRemoteComponent<
   'PasswordField',
   PasswordFieldProps
