@@ -3,8 +3,8 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'NumberField',
   description:
-    'The `NumberField` component captures numeric input with built-in number validation. Use it to collect quantities, prices, or other numeric information.' +
-    '\n\nThe component supports min/max constraints and step increments for guided numeric entry. For monetary values with currency formatting, use [`MoneyField`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/moneyfield).',
+    'The NumberField component captures numeric input with built-in number validation. Use it to collect quantities, prices, or other numeric information.' +
+    '\n\nThe component supports min/max constraints and step increments for guided numeric entry. For monetary values with currency formatting, use [MoneyField](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/moneyfield).',
   category: 'Polaris web components',
   subCategory: 'Forms',
   related: [],

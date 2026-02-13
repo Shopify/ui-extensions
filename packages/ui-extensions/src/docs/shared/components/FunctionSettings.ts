@@ -3,8 +3,8 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'FunctionSettings',
   description:
-    'The `FunctionSettings` component configures metafield settings for [Shopify Functions](/docs/api/functions). Use `FunctionSettings` to create configuration interfaces that allow merchants to customize function behavior through structured input fields and controls.' +
-    '\n\nThis component provides a standardized layout for settings forms and integrates with the native save bar to handle form submission and reset actions automatically. For general form submission, use [`Form`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/form).',
+    'The FunctionSettings component configures metafield settings for [Shopify Functions](/docs/api/functions). Use FunctionSettings to create configuration interfaces that allow merchants to customize function behavior through structured input fields and controls.' +
+    '\n\nThis component provides a standardized layout for settings forms and integrates with the native save bar to handle form submission and reset actions automatically. For general form submission, use [Form](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/form).',
   category: 'Polaris web components',
   subCategory: 'Forms',
   related: [],

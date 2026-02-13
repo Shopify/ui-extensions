@@ -3,8 +3,8 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Text',
   description:
-    'The `Text` component displays inline text with specific visual styles or tones. Use `Text` to emphasize or differentiate words or phrases within paragraphs or other block-level components, applying weight, color, or semantic styling.' +
-    '\n\nText supports multiple visual variants, alignment options, and line clamping for flexible inline typography control. For block-level text content, use [`Paragraph`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/paragraph).',
+    'The Text component displays inline text with specific visual styles or tones. Use Text to emphasize or differentiate words or phrases within paragraphs or other block-level components, applying weight, color, or semantic styling.' +
+    '\n\nText supports multiple visual variants, alignment options, and line clamping for flexible inline typography control. For block-level text content, use [Paragraph](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/paragraph).',
   category: 'Polaris web components',
   subCategory: 'Typography and content',
   related: [],
