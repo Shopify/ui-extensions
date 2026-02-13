@@ -1,7 +1,9 @@
 import {ScannerApi} from '../scanner-api/scanner-api';
+import type {OcrApi} from '../ocr-api/ocr-api';
 import {StandardApi} from '../standard/standard-api';
 
 export type ActionTargetApi<T> = {[key: string]: any} & {
   extensionPoint: T;
 } & StandardApi<T> &
-  ScannerApi;
+  ScannerApi &
+  OcrApi;

@@ -22,6 +22,21 @@ export type {
 } from './api/camera-api/camera-api';
 
 export type {
+  Point2D,
+  OcrBoundingBox,
+  OcrTextWord,
+  OcrTextLine,
+  OcrTextBlock,
+  OcrResult,
+  OcrOptions,
+  OcrCapabilities,
+  OcrErrorCode,
+  OcrError,
+  OcrApiContent,
+  OcrApi,
+} from './api/ocr-api/ocr-api';
+
+export type {
   ConnectivityStateSeverity,
   ConnectivityState,
   ConnectivityApiContent,
