@@ -49,7 +49,12 @@ export type {
   DraftOrderApiContent,
 } from './api/draft-order-api/draft-order-api';
 
-export type {PrintApi, PrintApiContent} from './api/print-api/print-api';
+export type {
+  PrintApi,
+  PrintApiContent,
+  PrintOptions,
+  PrintDestination,
+} from './api/print-api/print-api';
 
 export type {
   PaginationParams,

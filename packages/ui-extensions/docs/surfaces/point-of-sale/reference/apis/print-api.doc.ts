@@ -22,6 +22,17 @@ const data: ReferenceEntityTemplateSchema = {
         'The `PrintApi` object provides properties for triggering document printing. Access these properties through `shopify.print` to initiate print operations with various document types.',
       type: 'PrintApiContent',
     },
+    {
+      title: 'PrintOptions',
+      description:
+        'Options for configuring print behavior, such as selecting the print destination.',
+      type: 'PrintOptions',
+    },
+    {
+      title: 'PrintDestination',
+      description: 'The target destination for printing.',
+      type: 'PrintDestination',
+    },
   ],
   category: 'Target APIs',
   subCategory: 'Platform APIs',
