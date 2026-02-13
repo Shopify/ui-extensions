@@ -8,7 +8,7 @@ import type {
 } from '../shared';
 
 /**
- * Props for the `MoneyField` component, a specialized input for entering
+ * Props for the MoneyField component, a specialized input for entering
  * monetary values. It extends standard input props with number constraints
  * and autocomplete support for transaction amounts.
  */

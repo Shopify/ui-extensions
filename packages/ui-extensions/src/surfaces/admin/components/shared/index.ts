@@ -47,7 +47,7 @@ export interface InputProps<T> {
 
   /**
    * An identifier for the field that is unique within the nearest
-   * containing `Form` component.
+   * containing Form component.
    */
   name?: string;
 
@@ -227,7 +227,7 @@ export type AccessibilityRole =
 
   /**
    * A role that indicates a generic section.
-   * Sections should always have a `Heading` or an accessible name provided in the `accessibilityLabel` property.
+   * Sections should always have a Heading or an accessible name provided in the `accessibilityLabel` property.
    *
    * In an HTML host `section` will render a `<section>` element.
    * Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
@@ -663,7 +663,7 @@ export type AnyAutocompleteField =
 
 /**
  * The subset of autocomplete field tokens relevant to plain-text inputs
- * such as `TextField` and `TextArea`. Excludes tokens for passwords,
+ * such as TextField and TextArea. Excludes tokens for passwords,
  * phone numbers, URLs, dates, and monetary amounts.
  */
 export type TextAutocompleteField = Extract<
@@ -702,7 +702,7 @@ export type TextAutocompleteField = Extract<
 
 /**
  * The subset of autocomplete field tokens relevant to monetary amount
- * inputs such as `MoneyField`. Currently limited to `transaction-amount`.
+ * inputs such as MoneyField. Currently limited to `transaction-amount`.
  */
 export type MoneyAutocomplete = Extract<
   AnyAutocompleteField,
@@ -922,7 +922,7 @@ export type Tone = 'info' | 'success' | 'warning' | 'critical' | 'default';
 
 /**
  * Props for elements that can navigate to a URL or respond to press events.
- * Used by interactive components such as `Link`, `Button`, and `Pressable`.
+ * Used by interactive components such as Link, Button, and Pressable.
  */
 export interface AnchorProps {
   /**
@@ -985,7 +985,7 @@ export interface BackgroundProps {
 
 /**
  * Props for constraining numeric input values with minimum, maximum,
- * and step boundaries. Used by `NumberField` and `MoneyField`.
+ * and step boundaries. Used by NumberField and MoneyField.
  */
 export interface NumberConstraintsProps {
   /**
@@ -1022,7 +1022,7 @@ export interface NumberConstraintsProps {
 
 /**
  * Represents a monetary value with an amount and currency code. Used as
- * the value type for the `MoneyField` component.
+ * the value type for the MoneyField component.
  */
 export interface Money {
   /**
@@ -1223,7 +1223,7 @@ export type TextOverflow = 'ellipsis';
 export type FontStyle = 'italic' | 'normal';
 
 /**
- * Accessibility roles that can be applied to the `Text` component to
+ * Accessibility roles that can be applied to the Text component to
  * convey additional semantic meaning to assistive technologies. Each
  * role maps to a corresponding HTML element or ARIA role in web-based hosts.
  *
@@ -1338,7 +1338,7 @@ export type FontWeight =
   | 'bold-300';
 /**
  * Shared typographic props used by block-level text components such as
- * `Paragraph` and `Heading`. Provides font size, weight, style, and
+ * Paragraph and Heading. Provides font size, weight, style, and
  * overflow controls.
  */
 export interface BaseTypographyProps {

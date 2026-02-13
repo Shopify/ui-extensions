@@ -8,7 +8,7 @@ import {
 } from '../shared';
 
 /**
- * Props for the `EmailField` component, a text input optimized for email
+ * Props for the EmailField component, a text input optimized for email
  * addresses. It inherits common input props (like `label`, `value`,
  * `onChange`, and `error`) from `InputProps`, length validation from
  * `MinMaxLengthProps`, and browser autofill hints from `AutocompleteProps`.
