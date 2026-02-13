@@ -2,7 +2,7 @@ import {RemoteFragment, createRemoteComponent} from '@remote-ui/core';
 import {GlobalProps, Tone} from '../shared';
 
 /**
- * Props for the `Banner` component, which displays a prominent message to
+ * Props for the Banner component, which displays a prominent message to
  * the merchant. Banners communicate important information, status updates,
  * warnings, or errors, with optional primary and secondary actions.
  */
@@ -31,14 +31,14 @@ export interface BannerProps extends GlobalProps {
   onDismiss?: () => void;
 
   /**
-   * The primary action for the banner, rendered as a `Button`. Use this
+   * The primary action for the banner, rendered as a Button. Use this
    * for the main action related to the banner message, such as "Review"
    * or "Fix issue".
    */
   primaryAction?: RemoteFragment;
 
   /**
-   * The secondary action for the banner, rendered as a `Button`. Use
+   * The secondary action for the banner, rendered as a Button. Use
    * this for an alternative or less prominent action, such as "Learn
    * more" or "Dismiss".
    */
@@ -46,7 +46,7 @@ export interface BannerProps extends GlobalProps {
 }
 
 /**
- * `Banner` displays a prominent message to the merchant with optional
+ * Banner displays a prominent message to the merchant with optional
  * actions. Use banners for important information, status updates,
  * warnings, or errors.
  */

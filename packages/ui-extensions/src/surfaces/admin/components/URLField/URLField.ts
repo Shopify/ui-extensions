@@ -9,7 +9,7 @@ import {
 } from '../shared';
 
 /**
- * Props for the `URLField` component, a text input optimized for entering
+ * Props for the URLField component, a text input optimized for entering
  * URLs. It extends standard input props with min/max length constraints
  * and autocomplete support for URL-related fields.
  */
@@ -30,7 +30,7 @@ export type URLAutocompleteField = Extract<
   | `${AutocompleteAddressGroup} ${AutocompleteFieldInstantMessageAlias}`
 >;
 
-/** A `URLField` component for entering and validating URLs. */
+/** A URLField component for entering and validating URLs. */
 export const URLField = createRemoteComponent<'URLField', URLFieldProps>(
   'URLField',
 );

@@ -2,9 +2,9 @@ import {createRemoteComponent} from '@remote-ui/core';
 import {AccessibilityLabelProps, InputProps} from '../shared';
 
 /**
- * Props for an individual choice within a `ChoiceList`. Each choice
+ * Props for an individual choice within a ChoiceList. Each choice
  * represents a selectable option rendered as either a radio button or
- * a checkbox, depending on the `multiple` setting of the parent `ChoiceList`.
+ * a checkbox, depending on the `multiple` setting of the parent ChoiceList.
  */
 export interface ChoiceProps
   extends AccessibilityLabelProps,
@@ -21,7 +21,7 @@ export interface ChoiceProps
 }
 
 /**
- * Props for the `ChoiceList` component, which renders a group of selectable
+ * Props for the ChoiceList component, which renders a group of selectable
  * choices as either radio buttons (single selection) or checkboxes
  * (multiple selection).
  */
@@ -52,7 +52,7 @@ export interface ChoiceListProps
 }
 
 /**
- * `ChoiceList` renders a group of selectable choices as either radio
+ * ChoiceList renders a group of selectable choices as either radio
  * buttons or checkboxes.
  */
 export const ChoiceList = createRemoteComponent<'ChoiceList', ChoiceListProps>(

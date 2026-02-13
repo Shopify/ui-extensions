@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 /**
- * Props for the `AdminPrintAction` component, used by Admin Print Action
+ * Props for the AdminPrintAction component, used by Admin Print Action
  * extensions to configure a source document to preview and print.
  */
 export interface AdminPrintActionProps {
@@ -17,7 +17,7 @@ export interface AdminPrintActionProps {
 }
 
 /**
- * `AdminPrintAction` is a component used by Admin Print Action extensions to configure a src document to preview and print.
+ * AdminPrintAction is a component used by Admin Print Action extensions to configure a src document to preview and print.
  */
 export const AdminPrintAction = createRemoteComponent<
   'AdminPrintAction',
