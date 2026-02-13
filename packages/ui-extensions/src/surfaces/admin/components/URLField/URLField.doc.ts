@@ -31,13 +31,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'URLField',
       description:
-        'Configure the following properties on the `URLField` component.',
+        'Configure the following properties on the URLField component.',
       type: 'URLField',
     },
     {
       title: 'Events',
       description:
-        'The `URLField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The URLField component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'URLFieldEvents',
     },
   ],

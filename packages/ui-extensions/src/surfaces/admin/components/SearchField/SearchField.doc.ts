@@ -22,13 +22,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'SearchField',
       description:
-        'Configure the following properties on the `SearchField` component.',
+        'Configure the following properties on the SearchField component.',
       type: 'SearchField',
     },
     {
       title: 'Events',
       description:
-        'The `SearchField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The SearchField component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'SearchFieldEvents',
     },
   ],

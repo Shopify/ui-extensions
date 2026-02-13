@@ -13,7 +13,7 @@ import type {
 } from './shared.d.ts';
 
 /**
- * The properties you can set on a `Table` component.
+ * The properties you can set on a Table component.
  */
 export interface TableProps
   extends Required<
@@ -36,7 +36,7 @@ export type HeaderFormat = Extract<
   'base' | 'currency' | 'numeric'
 >;
 /**
- * The properties you can set on a `TableHeader` component.
+ * The properties you can set on a TableHeader component.
  */
 export interface TableHeaderProps
   extends Pick<TableHeaderProps$1, 'listSlot' | 'format'> {
@@ -321,21 +321,21 @@ declare module 'preact' {
 }
 
 /**
- * The custom element tag name for the `Table` component.
+ * The custom element tag name for the Table component.
  */
 declare const tagName = 's-table';
 /**
- * The JSX properties you can set on a `Table` component.
+ * The JSX properties you can set on a Table component.
  */
 export interface TableJSXProps
   extends Partial<TableProps>,
     Pick<TableProps$1, 'id' | 'children' | 'onNextPage' | 'onPreviousPage'> {
   /**
-   * The content to display inside the table, which should include `TableHeaderRow`, `TableBody`, and `TableRow` components.
+   * The content to display inside the table, which should include TableHeaderRow, TableBody, and TableRow components.
    */
   children?: ComponentChildren;
   /**
-   * Additional filters to display in the table. For example, you can use the `SearchField` component to filter the table data.
+   * Additional filters to display in the table. For example, you can use the SearchField component to filter the table data.
    */
   filters?: ComponentChildren;
 }

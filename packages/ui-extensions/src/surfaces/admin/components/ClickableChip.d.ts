@@ -58,7 +58,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * The properties for the `ClickableChip` component. These properties define an interactive chip that can be clicked or removed.
+ * The properties for the ClickableChip component. These properties define an interactive chip that can be clicked or removed.
  */
 export interface ClickableChipProps
   extends Required<
@@ -260,7 +260,7 @@ declare module 'preact' {
 
 declare const tagName = 's-clickable-chip';
 /**
- * The JSX properties for the `ClickableChip` component. These properties define how a clickable chip is rendered in Preact or JSX.
+ * The JSX properties for the ClickableChip component. These properties define how a clickable chip is rendered in Preact or JSX.
  */
 export interface ClickableChipJSXProps
   extends Partial<ClickableChipProps>,
@@ -270,7 +270,7 @@ export interface ClickableChipJSXProps
    */
   children?: ComponentChildren;
   /**
-   * An optional icon to display at the start of the chip. Accepts only `Icon` components.
+   * An optional icon to display at the start of the chip. Accepts only Icon components.
    */
   graphic?: ComponentChildren;
   /**

@@ -158,13 +158,13 @@ declare module 'preact' {
 
 declare const tagName = 's-option-group';
 /**
- * Properties for using the `OptionGroup` component in JSX with React-style props.
+ * Properties for using the OptionGroup component in JSX with React-style props.
  */
 export interface OptionGroupJSXProps
   extends Partial<OptionGroupProps>,
     Pick<OptionGroupProps$1, 'id' | 'children'> {
   /**
-   * The selectable options displayed in the dropdown list. Accepts `Option` components for individual selectable items within this group.
+   * The selectable options displayed in the dropdown list. Accepts Option components for individual selectable items within this group.
    */
   children?: ComponentChildren;
 }

@@ -9,7 +9,7 @@
 import type {ComponentChildren, TextProps$1} from './shared.d.ts';
 
 /**
- * The properties for the `Text` component. These properties define inline or small blocks of text content with various visual styles and semantic meanings.
+ * The properties for the Text component. These properties define inline or small blocks of text content with various visual styles and semantic meanings.
  */
 export interface TextProps
   extends Required<
@@ -33,7 +33,7 @@ export interface TextProps
   /**
    * The semantic type and styling treatment for the text content.
    *
-   * Other presentation properties on `Text` override the default styling.
+   * Other presentation properties on Text override the default styling.
    *
    * - `strong`: Emphasizes the text with strong importance, typically displayed in bold.
    * - `generic`: Standard text with no special semantic meaning or styling.
@@ -192,7 +192,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * A custom element for displaying inline or small blocks of text with various visual styles and semantic meanings. Use `Text` to render short pieces of content with appropriate styling, emphasis, and color treatment.
+ * A custom element for displaying inline or small blocks of text with various visual styles and semantic meanings. Use Text to render short pieces of content with appropriate styling, emphasis, and color treatment.
  */
 declare class Text extends PreactCustomElement implements TextProps {
   /**
@@ -253,7 +253,7 @@ declare module 'preact' {
 
 declare const tagName = 's-text';
 /**
- * The JSX properties for the `Text` component. These properties define how text is rendered in Preact or JSX.
+ * The JSX properties for the Text component. These properties define how text is rendered in Preact or JSX.
  */
 export interface TextJSXProps
   extends Partial<TextProps>,

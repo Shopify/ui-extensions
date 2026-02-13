@@ -13,7 +13,7 @@ import type {
 } from './shared.d.ts';
 
 /**
- * The properties you can set on a `Menu` component.
+ * The properties you can set on a Menu component.
  */
 export interface MenuProps
   extends Required<Pick<MenuProps$1, 'id' | 'accessibilityLabel'>> {}
@@ -234,7 +234,7 @@ declare class Menu extends PreactOverlayElement implements MenuProps {
    */
   accessor accessibilityLabel: string;
   /**
-   * Creates a new `Menu` instance.
+   * Creates a new Menu instance.
    */
   constructor();
   /** @private */
@@ -256,17 +256,17 @@ declare module 'preact' {
 }
 
 /**
- * The custom element tag name for the `Menu` component.
+ * The custom element tag name for the Menu component.
  */
 declare const tagName = 's-menu';
 /**
- * The JSX properties you can set on a `Menu` component.
+ * The JSX properties you can set on a Menu component.
  */
 export interface MenuJSXProps
   extends Partial<MenuProps>,
     Pick<MenuProps$1, 'id' | 'children'> {
   /**
-   * The menu items to display, which should include `Button` and `Section` components.
+   * The menu items to display, which should include Button and Section components.
    */
   children?: ComponentChildren;
 }

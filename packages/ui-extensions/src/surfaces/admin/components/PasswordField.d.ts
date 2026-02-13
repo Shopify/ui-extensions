@@ -329,7 +329,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 }
 
 /**
- * The properties for the `PasswordField` component. These properties configure a secure input field that collects sensitive password input from merchants with masked characters.
+ * The properties for the PasswordField component. These properties configure a secure input field that collects sensitive password input from merchants with masked characters.
  */
 export type PasswordFieldProps = PreactFieldProps<
   Required<PasswordFieldProps$1>['autocomplete']
@@ -354,7 +354,7 @@ export type PasswordFieldProps = PreactFieldProps<
   >;
 
 /**
- * The `PasswordField` custom element class that renders a password input field in the Shopify admin interface. This component allows merchants to enter passwords securely with characters automatically masked for privacy.
+ * The PasswordField custom element class that renders a password input field in the Shopify admin interface. This component allows merchants to enter passwords securely with characters automatically masked for privacy.
  */
 declare class PasswordField
   extends PreactFieldElement<PasswordFieldProps['autocomplete']>
@@ -390,7 +390,7 @@ declare module 'preact' {
 
 declare const tagName = 's-password-field';
 /**
- * The JSX props for the `PasswordField` component. These properties extend `PasswordFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact.
+ * The JSX props for the PasswordField component. These properties extend `PasswordFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact.
  */
 export interface PasswordFieldJSXProps
   extends Partial<PasswordFieldProps>,

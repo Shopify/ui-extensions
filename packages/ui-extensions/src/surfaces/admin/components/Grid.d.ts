@@ -297,18 +297,18 @@ export interface BoxProps
 }
 
 /**
- * A version of the `Grid` properties with all fields required.
+ * A version of the Grid properties with all fields required.
  */
 export type RequiredAlignedProps = Required<GridProps$1>;
 /**
- * The `Grid` properties that support responsive values through container queries.
+ * The Grid properties that support responsive values through container queries.
  */
 export type ResponsiveGridProps = MakeResponsivePick<
   RequiredAlignedProps,
   'rowGap' | 'columnGap' | 'gap' | 'gridTemplateColumns' | 'gridTemplateRows'
 >;
 /**
- * The properties for the `Grid` component. A `Grid` provides precise control over rows and columns, with powerful alignment and sizing options for both individual items and the entire grid structure.
+ * The properties for the Grid component. A Grid provides precise control over rows and columns, with powerful alignment and sizing options for both individual items and the entire grid structure.
  */
 export interface GridProps
   extends BoxProps,
@@ -623,7 +623,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
 }
 
 /**
- * A `Grid` is a layout component that arranges its children in rows and columns with precise control over sizing and alignment.
+ * A Grid is a layout component that arranges its children in rows and columns with precise control over sizing and alignment.
  */
 declare class Grid extends BoxElement implements GridProps {
   constructor();
@@ -687,13 +687,13 @@ declare module 'preact' {
 
 declare const tagName = 's-grid';
 /**
- * The properties for the `Grid` component when it's used in JSX.
+ * The properties for the Grid component when it's used in JSX.
  */
 export interface GridJSXProps
   extends Partial<GridProps>,
     Pick<GridProps$1, 'id' | 'children'> {
   /**
-   * The child elements to render inside the `Grid`.
+   * The child elements to render inside the Grid.
    */
   children?: ComponentChildren;
 }

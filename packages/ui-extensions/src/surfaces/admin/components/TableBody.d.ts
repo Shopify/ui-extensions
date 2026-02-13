@@ -8,7 +8,7 @@
 import type {ComponentChildren, TableBodyProps$1} from './shared.d.ts';
 
 /**
- * The properties you can set on a `TableBody` component.
+ * The properties you can set on a TableBody component.
  */
 export interface TableBodyProps extends TableBodyProps$1 {}
 
@@ -132,7 +132,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
  */
 declare class TableBody extends PreactCustomElement implements TableBodyProps {
   /**
-   * Creates a new `TableBody` instance.
+   * Creates a new TableBody instance.
    */
   constructor();
 }
@@ -151,17 +151,17 @@ declare module 'preact' {
 }
 
 /**
- * The custom element tag name for the `TableBody` component.
+ * The custom element tag name for the TableBody component.
  */
 declare const tagName = 's-table-body';
 /**
- * The JSX properties you can set on a `TableBody` component.
+ * The JSX properties you can set on a TableBody component.
  */
 export interface TableBodyJSXProps
   extends Partial<TableBodyProps>,
     Pick<TableBodyProps$1, 'id' | 'children'> {
   /**
-   * The body content of the table, which should include `TableRow` components. This content might not have any semantic meaning when the table uses the `list` variant.
+   * The body content of the table, which should include TableRow components. This content might not have any semantic meaning when the table uses the `list` variant.
    */
   children?: ComponentChildren;
 }

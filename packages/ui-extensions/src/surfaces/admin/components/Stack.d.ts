@@ -296,18 +296,18 @@ export interface BoxProps
 }
 
 /**
- * A version of the `Stack` properties with all fields required.
+ * A version of the Stack properties with all fields required.
  */
 export type AlignedStackProps = Required<StackProps$1>;
 /**
- * The `Stack` properties that support responsive values through container queries.
+ * The Stack properties that support responsive values through container queries.
  */
 export type ResponsiveStackProps = MakeResponsivePick<
   AlignedStackProps,
   'gap' | 'rowGap' | 'columnGap' | 'direction'
 >;
 /**
- * The properties for the `Stack` component. A `Stack` arranges its children in a single direction with controlled spacing and alignment along both axes.
+ * The properties for the Stack component. A Stack arranges its children in a single direction with controlled spacing and alignment along both axes.
  */
 export interface StackProps
   extends BoxProps,
@@ -340,7 +340,7 @@ export interface StackProps
    */
   alignContent: AlignContentKeyword;
   /**
-   * The spacing between children in the `Stack`. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value to apply the same spacing to both axes (for example, `'large-100'`), or a pair of values (for example, `'large-100 large-500'`) to set different spacing for the block and inline axes. This property also accepts [responsive values](/docs/api/polaris/using-polaris-web-components#responsive-values) using container query syntax.
+   * The spacing between children in the Stack. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value to apply the same spacing to both axes (for example, `'large-100'`), or a pair of values (for example, `'large-100 large-500'`) to set different spacing for the block and inline axes. This property also accepts [responsive values](/docs/api/polaris/using-polaris-web-components#responsive-values) using container query syntax.
    *
    * @default 'none'
    */
@@ -358,7 +358,7 @@ export interface StackProps
    */
   columnGap: ResponsiveStackProps['columnGap'];
   /**
-   * The direction in which the `Stack`'s children are laid out. Use `'inline'` to arrange children horizontally (with wrapping enabled), or `'block'` to arrange them vertically (without wrapping). This property also accepts [responsive values](/docs/api/polaris/using-polaris-web-components#responsive-values) using container query syntax.
+   * The direction in which the Stack's children are laid out. Use `'inline'` to arrange children horizontally (with wrapping enabled), or `'block'` to arrange them vertically (without wrapping). This property also accepts [responsive values](/docs/api/polaris/using-polaris-web-components#responsive-values) using container query syntax.
    *
    * @default 'block'
    *
@@ -597,12 +597,12 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * A `Stack` is a layout component that arranges its children in a single direction with controlled spacing and alignment.
+ * A Stack is a layout component that arranges its children in a single direction with controlled spacing and alignment.
  */
 declare class Stack extends BoxElement implements StackProps {
   constructor();
   /**
-   * The direction in which the `Stack`'s children are arranged.
+   * The direction in which the Stack's children are arranged.
    */
   accessor direction: StackProps['direction'];
   /**
@@ -618,15 +618,15 @@ declare class Stack extends BoxElement implements StackProps {
    */
   accessor alignContent: StackProps['alignContent'];
   /**
-   * The spacing between the `Stack`'s children.
+   * The spacing between the Stack's children.
    */
   accessor gap: StackProps['gap'];
   /**
-   * The spacing between rows in the `Stack`.
+   * The spacing between rows in the Stack.
    */
   accessor rowGap: StackProps['rowGap'];
   /**
-   * The spacing between columns in the `Stack`.
+   * The spacing between columns in the Stack.
    */
   accessor columnGap: StackProps['columnGap'];
 }
@@ -645,13 +645,13 @@ declare module 'preact' {
 
 declare const tagName = 's-stack';
 /**
- * The properties for the `Stack` component when it's used in JSX.
+ * The properties for the Stack component when it's used in JSX.
  */
 export interface StackJSXProps
   extends Partial<StackProps>,
     Pick<StackProps$1, 'id' | 'children'> {
   /**
-   * The child elements to render inside the `Stack`.
+   * The child elements to render inside the Stack.
    */
   children?: ComponentChildren;
 }

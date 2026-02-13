@@ -21,13 +21,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `DateField` component.',
+        'Configure the following properties on the DateField component.',
       type: 'DateField',
     },
     {
       title: 'Events',
       description:
-        'The `DateField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The DateField component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'DateFieldEvents',
     },
   ],

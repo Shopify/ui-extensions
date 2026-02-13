@@ -9,7 +9,7 @@
 import type {ColorPickerProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
- * An event object with a strongly-typed currentTarget property that references the specific HTML element type.
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element type.
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   /**

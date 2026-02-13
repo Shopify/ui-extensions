@@ -164,7 +164,7 @@ declare module 'preact' {
 
 declare const tagName = 's-option';
 /**
- * Properties for using the `Option` component in JSX with React-style props.
+ * Properties for using the Option component in JSX with React-style props.
  */
 export interface OptionJSXProps
   extends Partial<OptionProps>,

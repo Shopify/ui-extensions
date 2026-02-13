@@ -28,13 +28,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `EmailField` component.',
+        'Configure the following properties on the EmailField component.',
       type: 'EmailField',
     },
     {
       title: 'Events',
       description:
-        'The `EmailField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The EmailField component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'EmailFieldEvents',
     },
   ],

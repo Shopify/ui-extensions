@@ -8,7 +8,7 @@
 import type {ComponentChildren, TableHeaderRowProps$1} from './shared.d.ts';
 
 /**
- * The properties you can set on a `TableHeaderRow` component.
+ * The properties you can set on a TableHeaderRow component.
  */
 export interface TableHeaderRowProps extends TableHeaderRowProps$1 {}
 
@@ -128,14 +128,14 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * A component that wraps the header row of a table, which contains the `TableHeader` components that define the column structure.
+ * A component that wraps the header row of a table, which contains the TableHeader components that define the column structure.
  */
 declare class TableHeaderRow
   extends PreactCustomElement
   implements TableHeaderRowProps
 {
   /**
-   * Creates a new `TableHeaderRow` instance.
+   * Creates a new TableHeaderRow instance.
    */
   constructor();
   /** @private */
@@ -158,17 +158,17 @@ declare module 'preact' {
 }
 
 /**
- * The custom element tag name for the `TableHeaderRow` component.
+ * The custom element tag name for the TableHeaderRow component.
  */
 declare const tagName = 's-table-header-row';
 /**
- * The JSX properties you can set on a `TableHeaderRow` component.
+ * The JSX properties you can set on a TableHeaderRow component.
  */
 export interface TableHeaderRowJSXProps
   extends Partial<TableHeaderRowProps>,
     Pick<TableHeaderRowProps$1, 'id' | 'children'> {
   /**
-   * The content to display inside the table header row, which should include `TableHeader` components.
+   * The content to display inside the table header row, which should include TableHeader components.
    */
   children?: ComponentChildren;
 }
