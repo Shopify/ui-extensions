@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Badge',
   description:
-    'The `Badge` component displays a small label that communicates the status of an object, such as an order, product, or payment. It supports multiple tones to convey meaning at a glance and can include an icon for additional visual context.\n\nFor prominent, dismissible messages with actions, use [`Banner`](/docs/api/admin-extensions/{API_VERSION}/ui-components/feedback-and-status-indicators/banner).',
+    'The Badge component displays a small label that communicates the status of an object, such as an order, product, or payment. It supports multiple tones to convey meaning at a glance and can include an icon for additional visual context.\n\nFor prominent, dismissible messages with actions, use [Banner](/docs/api/admin-extensions/{API_VERSION}/ui-components/feedback-and-status-indicators/banner).',
   requires: '',
   thumbnail: 'badge-thumbnail.png',
   isVisualComponent: true,
@@ -11,8 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the `Badge` component.',
+      description: 'Configure the following properties on the Badge component.',
       type: 'BadgeProps',
     },
   ],
@@ -51,10 +50,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
-      sectionContent: `- \`Badge\` only supports two sizes: \`small-100\` and \`base\`. There is no large badge option.
-- \`Badge\` text doesn't wrap to multiple lines. Long labels will be clipped, so keep text concise.
+      sectionContent: `- Badge only supports two sizes: \`small-100\` and \`base\`. There is no large badge option.
+- Badge text doesn't wrap to multiple lines. Long labels will be clipped, so keep text concise.
 - Only icons from the Shopify admin icon set are supported through the \`icon\` prop. Custom icons or images can't be used inside a badge.
-- \`Badge\` isn't interactive. It doesn't support click handlers or navigation. For interactive status indicators, combine a badge with a [\`Pressable\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/pressable) or [\`Button\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/button) component.`,
+- Badge isn't interactive. It doesn't support click handlers or navigation. For interactive status indicators, combine a badge with a [Pressable](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/pressable) or [Button](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/button) component.`,
     },
   ],
   related: [],

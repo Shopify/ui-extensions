@@ -2,7 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {AccessibilityRole, AnchorProps} from '../shared';
 
 /**
- * Props for the `Button` component. A button can either be a standard action
+ * Props for the Button component. A button can either be a standard action
  * button (`ButtonBaseProps`) or an anchor-style button that navigates to a
  * URL (`ButtonAnchorProps`).
  */
@@ -172,7 +172,7 @@ interface ButtonAnchorProps extends CommonProps {
 }
 
 /**
- * `Button` triggers an action or navigates to a URL when pressed. It supports
+ * Button triggers an action or navigates to a URL when pressed. It supports
  * multiple visual variants, tones, and can behave as either a standard
  * button or an anchor link.
  */

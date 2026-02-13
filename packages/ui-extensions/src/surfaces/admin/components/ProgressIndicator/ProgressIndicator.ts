@@ -2,7 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import {GlobalProps, SizeScale, AccessibilityLabelProps} from '../shared';
 
 /**
- * Props for the `ProgressIndicator` component, which renders a visual cue
+ * Props for the ProgressIndicator component, which renders a visual cue
  * (such as a spinner) to communicate that a process is underway. Use this
  * component to reassure users that content is loading or an action is being
  * processed.
@@ -41,7 +41,7 @@ export interface ProgressIndicatorProps
   variant?: 'spinner';
 }
 
-/** A `ProgressIndicator` component that renders a loading spinner or similar visual cue. */
+/** A ProgressIndicator component that renders a loading spinner or similar visual cue. */
 export const ProgressIndicator = createRemoteComponent<
   'ProgressIndicator',
   ProgressIndicatorProps
