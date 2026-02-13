@@ -26,27 +26,26 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- The component doesn't include built-in sorting or search functionality. You'll need to implement these features yourself if merchants need to organize data within the table. For filtering, use the \`filters\` slot to add filter UI such as a \`SearchField\`.
+      sectionContent: `- The component doesn't include built-in sorting or search functionality. You'll need to implement these features yourself if merchants need to organize data within the table. For filtering, use the \`filters\` slot to add filter UI such as a SearchField.
 - The component doesn't support sticky headers that remain visible during scrolling. If merchants need to reference column headers while viewing data further down the table, consider using pagination to keep datasets smaller.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the `Table` component.',
+      description: 'Configure the following properties on the Table component.',
       type: 'Table',
     },
     {
       title: 'Slots',
       description:
-        'The `Table` component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The Table component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TableSlots',
     },
     {
       title: 'Events',
       description:
-        'The `Table` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The Table component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TableEvents',
     },
     {
@@ -57,7 +56,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The `TableBody` component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The TableBody component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TableBodySlots',
     },
     {
@@ -68,7 +67,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The `TableCell` component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The TableCell component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TableCellSlots',
     },
     {
@@ -79,7 +78,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The `TableHeader` component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The TableHeader component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TableHeaderSlots',
     },
     {
@@ -90,7 +89,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The `TableHeaderRow` component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The TableHeaderRow component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TableHeaderRowSlots',
     },
     {
@@ -101,7 +100,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The `TableRow` component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The TableRow component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TableRowSlots',
     },
   ],

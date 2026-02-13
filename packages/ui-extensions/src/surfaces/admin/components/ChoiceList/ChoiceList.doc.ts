@@ -22,23 +22,23 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- The component doesn't include search, filtering, or lazy loading. For large option sets (20+ choices), consider using a [\`Select\`](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/select) dropdown instead.
+      sectionContent: `- The component doesn't include search, filtering, or lazy loading. For large option sets (20+ choices), consider using a [Select](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/select) dropdown instead.
 - Rendering 50+ checkboxes or radio buttons can cause noticeable performance issues, especially on mobile devices. Consider pagination, virtualization, or alternative UI patterns for large lists.
 - The component is either single-selection (radio buttons) or multiple-selection (checkboxes) for all choices. You can't mix both types in the same list.
-- Component types other than \`Choice\` can't be used as options within the choice list.`,
+- Component types other than Choice can't be used as options within the choice list.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `ChoiceList` component.',
+        'Configure the following properties on the ChoiceList component.',
       type: 'ChoiceList',
     },
     {
       title: 'Events',
       description:
-        'The `ChoiceList` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The ChoiceList component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ChoiceListEvents',
     },
     {
@@ -49,7 +49,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The `ChoiceList` component supports slots for additional content placement within each choice. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The ChoiceList component supports slots for additional content placement within each choice. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ChoiceSlots',
     },
   ],

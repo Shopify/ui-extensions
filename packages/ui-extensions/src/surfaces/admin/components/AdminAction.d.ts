@@ -8,7 +8,7 @@
 import type {ComponentChildren, AdminActionProps$1} from './shared.d.ts';
 
 /**
- * The properties for the `AdminAction` component. These properties configure the heading and loading state of the admin action extension interface.
+ * The properties for the AdminAction component. These properties configure the heading and loading state of the admin action extension interface.
  */
 export interface AdminActionProps
   extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
@@ -16,17 +16,17 @@ export interface AdminActionProps
 declare const tagName = 's-admin-action';
 
 /**
- * The JSX props for the `AdminAction` component. These properties extend `AdminActionProps` with slots for primary and secondary action buttons that merchants can interact with.
+ * The JSX props for the AdminAction component. These properties extend `AdminActionProps` with slots for primary and secondary action buttons that merchants can interact with.
  */
 export interface AdminActionJSXProps
   extends Partial<AdminActionProps>,
     Pick<AdminActionProps$1, 'id'> {
   /**
-   * The primary action button or link to display in the admin action area. This is the main call-to-action that appears prominently in the interface. Typically uses a `Button` component with `variant="primary"` to complete or advance the workflow.
+   * The primary action button or link to display in the admin action area. This is the main call-to-action that appears prominently in the interface. Typically uses a Button component with `variant="primary"` to complete or advance the workflow.
    */
   primaryAction: ComponentChildren;
   /**
-   * The secondary action buttons or links to display in the admin action area. These are supporting actions like cancel, back, or alternative operations. Typically uses `Button` components with `variant="secondary"` or `variant="tertiary"`.
+   * The secondary action buttons or links to display in the admin action area. These are supporting actions like cancel, back, or alternative operations. Typically uses Button components with `variant="secondary"` or `variant="tertiary"`.
    */
   secondaryActions: ComponentChildren;
 }
@@ -122,7 +122,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 /**
- * The `AdminAction` custom element class that renders action controls in the Shopify admin interface. This component creates a standardized action area with a heading and slots for primary and secondary action buttons, used exclusively in admin action extensions.
+ * The AdminAction custom element class that renders action controls in the Shopify admin interface. This component creates a standardized action area with a heading and slots for primary and secondary action buttons, used exclusively in admin action extensions.
  */
 declare class AdminAction
   extends PreactCustomElement

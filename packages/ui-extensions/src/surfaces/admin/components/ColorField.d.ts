@@ -329,7 +329,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 }
 
 /**
- * The properties for the `ColorField` component. These properties configure an input field that allows merchants to select colors using an integrated visual color picker with text input, hex color format, and optional alpha (transparency) channel support.
+ * The properties for the ColorField component. These properties configure an input field that allows merchants to select colors using an integrated visual color picker with text input, hex color format, and optional alpha (transparency) channel support.
  */
 export type ColorFieldProps = Omit<
   PreactFieldProps<Required<ColorFieldProps$1>['autocomplete']>,
@@ -338,7 +338,7 @@ export type ColorFieldProps = Omit<
   Required<Pick<ColorFieldProps$1, 'alpha' | 'value' | 'defaultValue'>>;
 
 /**
- * The `ColorField` custom element class that renders a color input field with integrated visual picker in the Shopify admin interface. This component allows merchants to select colors by typing hex values or using an interactive color picker, with optional support for transparency (alpha channel).
+ * The ColorField custom element class that renders a color input field with integrated visual picker in the Shopify admin interface. This component allows merchants to select colors by typing hex values or using an interactive color picker, with optional support for transparency (alpha channel).
  */
 declare class ColorField
   extends PreactFieldElement<ColorFieldProps['autocomplete']>
@@ -376,7 +376,7 @@ declare module 'preact' {
 
 declare const tagName = 's-color-field';
 /**
- * The JSX props for the `ColorField` component. These properties extend `ColorFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact, including callbacks for color changes as the merchant interacts with the picker.
+ * The JSX props for the ColorField component. These properties extend `ColorFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact, including callbacks for color changes as the merchant interacts with the picker.
  */
 export interface ColorFieldJSXProps
   extends Partial<

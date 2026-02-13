@@ -30,14 +30,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the `Menu` component.',
+      description: 'Configure the following properties on the Menu component.',
       type: 'Menu',
     },
     {
       title: 'Slots',
       description:
-        'The `Menu` component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The Menu component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'MenuSlots',
     },
   ],

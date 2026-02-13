@@ -12,7 +12,7 @@ import type {
 } from './shared.d.ts';
 
 /**
- * The properties you can set on a `TableCell` component.
+ * The properties you can set on a TableCell component.
  */
 export interface TableCellProps extends TableCellProps$1 {}
 
@@ -147,7 +147,7 @@ export type HeaderFormat = Extract<
  */
 declare class TableCell extends PreactCustomElement implements TableCellProps {
   /**
-   * Creates a new `TableCell` instance.
+   * Creates a new TableCell instance.
    */
   constructor();
   /** @private */
@@ -170,11 +170,11 @@ declare module 'preact' {
 }
 
 /**
- * The custom element tag name for the `TableCell` component.
+ * The custom element tag name for the TableCell component.
  */
 declare const tagName = 's-table-cell';
 /**
- * The JSX properties you can set on a `TableCell` component.
+ * The JSX properties you can set on a TableCell component.
  */
 export interface TableCellJSXProps
   extends Partial<TableCellProps>,

@@ -63,7 +63,7 @@ export interface ChipJSXProps
    */
   children?: ComponentChildren;
   /**
-   * An optional icon to display at the start of the chip. Accepts only `Icon` components.
+   * An optional icon to display at the start of the chip. Accepts only Icon components.
    */
   graphic?: ComponentChildren;
 }

@@ -50,14 +50,14 @@ export type CallbackExtendableEventListener<
   | null;
 
 /**
- * The properties for the `Form` component. These properties configure the form's identifier for targeting and referencing within the admin extension.
+ * The properties for the Form component. These properties configure the form's identifier for targeting and referencing within the admin extension.
  */
 export interface FormProps extends Pick<FormProps$1, 'id'> {}
 
 declare const tagName = 's-form';
 
 /**
- * The JSX props for the `Form` component. These properties extend `FormProps` with event callbacks for form submission and reset actions in JSX rendering.
+ * The JSX props for the Form component. These properties extend `FormProps` with event callbacks for form submission and reset actions in JSX rendering.
  */
 export interface FormJSXProps extends Partial<FormProps> {
   /**
@@ -161,7 +161,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 /**
- * The `Form` custom element class that renders a form container in the Shopify admin interface. This component manages form submission, validation, and reset behavior for collecting merchant input.
+ * The Form custom element class that renders a form container in the Shopify admin interface. This component manages form submission, validation, and reset behavior for collecting merchant input.
  */
 declare class Form extends PreactCustomElement implements FormProps {
   constructor();

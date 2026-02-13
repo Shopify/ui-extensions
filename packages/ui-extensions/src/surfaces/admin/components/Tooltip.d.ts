@@ -13,7 +13,7 @@ import type {
 } from './shared.d.ts';
 
 /**
- * The properties you can set on a `Tooltip` component.
+ * The properties you can set on a Tooltip component.
  */
 export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
 
@@ -229,7 +229,7 @@ declare class PreactOverlayElement extends PreactCustomElement {
  */
 declare class Tooltip extends PreactOverlayElement implements TooltipProps {
   /**
-   * Creates a new `Tooltip` instance.
+   * Creates a new Tooltip instance.
    */
   constructor();
 }
@@ -247,17 +247,17 @@ declare module 'preact' {
 }
 
 /**
- * The custom element tag name for the `Tooltip` component.
+ * The custom element tag name for the Tooltip component.
  */
 declare const tagName = 's-tooltip';
 /**
- * The JSX properties you can set on a `Tooltip` component.
+ * The JSX properties you can set on a Tooltip component.
  */
 export interface TooltipJSXProps
   extends Partial<TooltipProps>,
     Pick<TooltipProps$1, 'id' | 'children'> {
   /**
-   * The content to display inside the tooltip, which should include `Text` or `Paragraph` components, or raw text content.
+   * The content to display inside the tooltip, which should include Text or Paragraph components, or raw text content.
    */
   children?: ComponentChildren;
 }

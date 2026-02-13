@@ -24,11 +24,11 @@ export interface ActionProps {
 }
 export interface ActionSlots {
   /**
-   * The primary action element, typically a `Button` or `Link` component representing the main call-to-action.
+   * The primary action element, typically a Button or Link component representing the main call-to-action.
    */
   primaryAction?: ComponentChildren;
   /**
-   * The secondary action elements, typically `Button` or `Link` components representing alternative or supporting actions.
+   * The secondary action elements, typically Button or Link components representing alternative or supporting actions.
    */
   secondaryActions?: ComponentChildren;
 }
@@ -875,7 +875,7 @@ export type AnyString = string & {};
 export type optionalSpace = '' | ' ';
 interface BadgeProps$1 extends GlobalProps {
   /**
-   * The text or elements displayed inside the `Badge` component.
+   * The text or elements displayed inside the Badge component.
    */
   children?: ComponentChildren;
   /**
@@ -927,7 +927,7 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
    */
   heading?: string;
   /**
-   * The main content displayed within the `Banner` component, typically descriptive text or other elements providing details about the message or alert.
+   * The main content displayed within the Banner component, typically descriptive text or other elements providing details about the message or alert.
    */
   children?: ComponentChildren;
   /**
@@ -1073,7 +1073,7 @@ export type AccessibilityRole =
   | 'footer'
   /**
    * Used to indicate a generic section.
-   * Sections should always have a `Heading` or an accessible name provided in the `accessibilityLabel` property.
+   * Sections should always have a Heading or an accessible name provided in the `accessibilityLabel` property.
    *
    * In an HTML host `section` will render a `<section>` element.
    * Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
@@ -1479,7 +1479,7 @@ export interface BaseBoxPropsWithRole
 interface BoxProps$1 extends BaseBoxPropsWithRole, GlobalProps {}
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
-   * The behavioral type of the `Button` component, which determines what action it performs when activated.
+   * The behavioral type of the Button component, which determines what action it performs when activated.
    *
    * - `submit`: Submits the nearest containing form.
    * - `button`: Performs no default action, relying on the `onClick` handler for behavior.
@@ -1491,7 +1491,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   type?: 'submit' | 'button' | 'reset';
   /**
-   * A callback fired when the `Button` is activated, before performing the action indicated by `type`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
+   * A callback fired when the Button is activated, before performing the action indicated by `type`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
    */
   onClick?: (event: Event) => void;
   /**
@@ -1501,7 +1501,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   disabled?: boolean;
   /**
-   * Whether the `Button` is in a loading state, which replaces the button content with a loading indicator and disables interactions.
+   * Whether the Button is in a loading state, which replaces the button content with a loading indicator and disables interactions.
    *
    * @default false
    */
@@ -1572,7 +1572,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   accessibilityLabel?: string;
   /**
-   * The content displayed within the `Button` component.
+   * The content displayed within the Button component.
    */
   children?: ComponentChildren;
   /**
@@ -1584,7 +1584,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   icon?: IconType | AnyString;
   /**
-   * The inline width (horizontal size) of the `Button` component.
+   * The inline width (horizontal size) of the Button component.
    *
    * - `auto`: The button size depends on the surface and context.
    * - `fill`: The button takes up 100% of the available inline space.
@@ -1594,7 +1594,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   inlineSize?: 'auto' | 'fill' | 'fit-content';
   /**
-   * The visual style variant of the `Button` component, which controls its prominence and emphasis in the interface.
+   * The visual style variant of the Button component, which controls its prominence and emphasis in the interface.
    *
    * @default 'auto' - the variant is automatically determined by the Button's context
    */
@@ -1616,7 +1616,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 }
 interface ButtonGroupProps$1 extends GlobalProps, ActionSlots {
   /**
-   * The content of the `ButtonGroup`, typically a collection of `Button` or `Link` components.
+   * The content of the ButtonGroup, typically a collection of Button or Link components.
    */
   children?: ComponentChildren;
   /**
@@ -1676,7 +1676,7 @@ export interface MultipleInputProps extends BaseInputProps {
   /**
    * An array of `value` attributes for the currently selected options.
    *
-   * When provided, this property automatically sets the `selected` state on child `Option` components that have matching `value` attributes. Options with values included in this array will be marked as selected, while others will be unselected.
+   * When provided, this property automatically sets the `selected` state on child Option components that have matching `value` attributes. Options with values included in this array will be marked as selected, while others will be unselected.
    */
   values?: string[];
 }
@@ -1777,7 +1777,7 @@ export interface FieldDecorationProps {
   /**
    * Additional interactive content displayed within the field.
    *
-   * Accepts `Button` and `Clickable` components with text content only. Commonly used for actions like clearing the field or opening additional information.
+   * Accepts Button and Clickable components with text content only. Commonly used for actions like clearing the field or opening additional information.
    */
   accessory?: ComponentChildren;
 }
@@ -1887,7 +1887,7 @@ export interface BaseCheckableProps
    */
   defaultChecked?: boolean;
   /**
-   * The name attribute for the control, which must be unique within the nearest containing `Form` component. This name is used to identify the control's value when the form is submitted.
+   * The name attribute for the control, which must be unique within the nearest containing Form component. This name is used to identify the control's value when the form is submitted.
    */
   name?: string;
   /**
@@ -1976,7 +1976,7 @@ interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
    */
   details?: ComponentChildren;
   /**
-   * Whether this choice should be associated with an error state from the parent `ChoiceList`.
+   * Whether this choice should be associated with an error state from the parent ChoiceList.
    *
    * @default false
    */
@@ -2002,13 +2002,13 @@ interface ChoiceListProps$1
    */
   multiple?: boolean;
   /**
-   * The collection of `Choice` components that users can select from.
+   * The collection of Choice components that users can select from.
    */
   children?: ComponentChildren;
   /**
    * Whether the entire choice list is disabled, preventing any user interaction.
    *
-   * When `true`, the `disabled` property on individual child `Choice` components is ignored.
+   * When `true`, the `disabled` property on individual child Choice components is ignored.
    *
    * @default false
    */
@@ -2582,7 +2582,7 @@ export type EmailAutocompleteField = ExtractStrict<
 >;
 interface FormProps$1 extends GlobalProps {
   /**
-   * The form fields and content to be wrapped in the `Form` element.
+   * The form fields and content to be wrapped in the Form element.
    */
   children?: ComponentChildren;
   /**
@@ -3059,7 +3059,7 @@ interface MenuProps$1 extends GlobalProps {
    */
   accessibilityLabel?: string;
   /**
-   * The collection of `Button` components displayed as menu actions. Only `Button` components are allowed as children, which can perform actions using `onClick` or link to other parts of the application using `href`. Any other component type will be ignored.
+   * The collection of Button components displayed as menu actions. Only Button components are allowed as children, which can perform actions using `onClick` or link to other parts of the application using `href`. Any other component type will be ignored.
    */
   children?: ComponentChildren;
 }
@@ -3087,7 +3087,7 @@ interface ModalProps$1
    * `base`: applies padding that is appropriate for the element.
    *
    * `none`: removes all padding from the element. This can be useful when elements inside the Modal need to span
-   * to the edge of the Modal. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
+   * to the edge of the Modal. For example, a full-width image. In this case, rely on Box with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
    * @default 'base'
@@ -3168,7 +3168,7 @@ interface OptionGroupProps$1 extends GlobalProps {
    */
   label?: string;
   /**
-   * The collection of `Option` components that users can select from within this group.
+   * The collection of Option components that users can select from within this group.
    */
   children?: ComponentChildren;
 }
@@ -3274,7 +3274,7 @@ interface QueryContainerProps$1 extends GlobalProps {
   /**
    * An identifier for this container that you can reference in CSS container queries to apply styles based on this specific container's size.
    *
-   * All `QueryContainer` components automatically receive a container name of `s-default`. You can omit the container name in your queries, so `@container (inline-size <= 300px)` is equivalent to `@container s-default (inline-size <= 300px)`.
+   * All QueryContainer components automatically receive a container name of `s-default`. You can omit the container name in your queries, so `@container (inline-size <= 300px)` is equivalent to `@container s-default (inline-size <= 300px)`.
    *
    * When you provide a custom `containerName`, it's added alongside `s-default`. For example, `containerName="product-card"` results in `s-default product-card` being set on the `container-name` CSS property, allowing you to target this container with `@container product-card (inline-size <= 300px)`.
    *
@@ -3303,7 +3303,7 @@ interface SectionProps$1 extends GlobalProps, ActionSlots {
    * The amount of padding applied to all edges of the section.
    *
    * - `base`: Applies standard padding appropriate for the section. Note that this might result in no padding if that's the right design decision for the context.
-   * - `none`: Removes all padding, useful when content like images needs to extend to the section's edges. Use `Box` with `padding="base"` for individual content areas that need padding.
+   * - `none`: Removes all padding, useful when content like images needs to extend to the section's edges. Use Box with `padding="base"` for individual content areas that need padding.
    *
    * @default 'base'
    */
@@ -3318,7 +3318,7 @@ interface SelectProps$1
   /**
    * The selectable options displayed in the dropdown list.
    *
-   * Accepts `Option` components for individual selectable items, and `OptionGroup` components to organize related options into logical groups with labels.
+   * Accepts Option components for individual selectable items, and OptionGroup components to organize related options into logical groups with labels.
    */
   children?: ComponentChildren;
 }
@@ -3420,13 +3420,13 @@ interface TableProps$1 extends GlobalProps, PaginationProps {
   /**
    * The table structure defining headers and data rows.
    *
-   * Accepts `TableHeaderRow` (for column headers) and `TableBody` (for data rows) components. Structure your table with a `TableHeaderRow` first, followed by `TableBody`.
+   * Accepts TableHeaderRow (for column headers) and TableBody (for data rows) components. Structure your table with a TableHeaderRow first, followed by TableBody.
    */
   children?: ComponentChildren;
   /**
    * Filter controls displayed above the table.
    *
-   * Accepts input components like `SearchField` or `Select` for filtering table data. These controls appear in a dedicated area above the table content.
+   * Accepts input components like SearchField or Select for filtering table data. These controls appear in a dedicated area above the table content.
    */
   filters?: ComponentChildren;
   /**
@@ -3444,7 +3444,7 @@ interface TableBodyProps$1 extends GlobalProps {
   /**
    * The data rows displayed in the table body.
    *
-   * Accepts `TableRow` components, with each row representing a single record or entry in the table.
+   * Accepts TableRow components, with each row representing a single record or entry in the table.
    */
   children?: ComponentChildren;
 }
@@ -3505,7 +3505,7 @@ interface TableHeaderRowProps$1 extends GlobalProps {
   /**
    * The column headers displayed in the table header row.
    *
-   * Accepts `TableHeader` components, with each header defining a column and providing its label.
+   * Accepts TableHeader components, with each header defining a column and providing its label.
    */
   children?: ComponentChildren;
 }
@@ -3513,7 +3513,7 @@ interface TableRowProps$1 extends GlobalProps {
   /**
    * The data cells displayed in this table row.
    *
-   * Accepts `TableCell` components, with each cell containing a data value for the corresponding column.
+   * Accepts TableCell components, with each cell containing a data value for the corresponding column.
    */
   children?: ComponentChildren;
   /**

@@ -30,13 +30,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `Thumbnail` component.',
+        'Configure the following properties on the Thumbnail component.',
       type: 'Thumbnail',
     },
     {
       title: 'Events',
       description:
-        'The `Thumbnail` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The Thumbnail component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ThumbnailEvents',
     },
   ],

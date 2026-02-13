@@ -172,25 +172,25 @@ declare module 'preact' {
 declare const tagName = 's-button-group';
 
 /**
- * Properties for using the `ButtonGroup` component in JSX with React-style props.
+ * Properties for using the ButtonGroup component in JSX with React-style props.
  */
 export interface ButtonGroupJSXProps
   extends Partial<ButtonGroupProps>,
     Pick<ButtonGroupProps$1, 'id' | 'children'> {
   /**
-   * The buttons that should be grouped together, provided as `Button` components.
+   * The buttons that should be grouped together, provided as Button components.
    */
   children?: ComponentChildren;
   /**
    * A single primary action button that's visually emphasized as the most important action in the group.
    *
-   * Accepts a single `Button` element with a `variant` of `primary`. Can't be used when `gap` is set to `none`.
+   * Accepts a single Button element with a `variant` of `primary`. Can't be used when `gap` is set to `none`.
    */
   primaryAction?: ComponentChildren;
   /**
    * One or more secondary action buttons that provide alternative or less prominent actions.
    *
-   * Accepts `Button` elements with a `variant` of `secondary` or `auto`.
+   * Accepts Button elements with a `variant` of `secondary` or `auto`.
    */
   secondaryActions?: ComponentChildren;
 }

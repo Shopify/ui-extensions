@@ -9,7 +9,7 @@
 import type {ComponentChildren, HeadingProps$1} from './shared.d.ts';
 
 /**
- * The properties for the `Heading` component. These properties define hierarchical section titles and headings with appropriate semantic meaning and visual hierarchy.
+ * The properties for the Heading component. These properties define hierarchical section titles and headings with appropriate semantic meaning and visual hierarchy.
  */
 export interface HeadingProps
   extends Required<
@@ -136,7 +136,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * A custom element for displaying hierarchical section titles and headings with appropriate semantic meaning and visual styling. Use `Heading` to structure your content with proper heading levels for both visual hierarchy and accessibility.
+ * A custom element for displaying hierarchical section titles and headings with appropriate semantic meaning and visual styling. Use Heading to structure your content with proper heading levels for both visual hierarchy and accessibility.
  */
 declare class Heading extends PreactCustomElement implements HeadingProps {
   /**
@@ -168,7 +168,7 @@ declare module 'preact' {
 
 declare const tagName = 's-heading';
 /**
- * The JSX properties for the `Heading` component. These properties define how a heading is rendered in Preact or JSX.
+ * The JSX properties for the Heading component. These properties define how a heading is rendered in Preact or JSX.
  */
 export interface HeadingJSXProps
   extends Partial<HeadingProps>,
