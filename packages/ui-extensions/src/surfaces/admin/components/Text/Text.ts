@@ -71,8 +71,8 @@ type FontWeight =
   | 'bold-300';
 
 /**
- * Props for the `Text` component, an inline element for rendering and styling
- * a run of text. Use `Text` to apply typographic treatments such as font
+ * Props for the Text component, an inline element for rendering and styling
+ * a run of text. Use Text to apply typographic treatments such as font
  * weight, style, variant, and overflow behavior to a portion of content.
  */
 export interface TextProps {
@@ -112,5 +112,5 @@ export interface TextProps {
   accessibilityRole?: TextAccessibilityRole;
 }
 
-/** A `Text` component for rendering and styling inline text content. */
+/** A Text component for rendering and styling inline text content. */
 export const Text = createRemoteComponent<'Text', TextProps>('Text');

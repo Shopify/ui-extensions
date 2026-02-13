@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 /**
- * Props for the `Link` component, an interactive text element that navigates
+ * Props for the Link component, an interactive text element that navigates
  * to a URL or triggers an action when pressed.
  */
 export interface LinkProps {

@@ -47,7 +47,7 @@ export interface InputProps<T> {
 
   /**
    * An identifier for the field that is unique within the nearest
-   * containing `Form` component.
+   * containing Form component.
    */
   name?: string;
 
@@ -206,7 +206,7 @@ export type AccessibilityRole =
 
   /**
    * A role that indicates a generic section.
-   * Sections should always have a `Heading` or an accessible name provided in the `accessibilityLabel` property.
+   * Sections should always have a Heading or an accessible name provided in the `accessibilityLabel` property.
    *
    * In an HTML host `section` will render a `<section>` element.
    * Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
@@ -642,7 +642,7 @@ export type AnyAutocompleteField =
 
 /**
  * The subset of autocomplete field tokens relevant to plain-text inputs
- * such as `TextField` and `TextArea`. Excludes tokens for passwords,
+ * such as TextField and TextArea. Excludes tokens for passwords,
  * phone numbers, URLs, dates, and monetary amounts.
  */
 export type TextAutocompleteField = Extract<
@@ -869,7 +869,7 @@ export type SpaceScale =
 
 /**
  * Props for elements that can navigate to a URL or respond to press events.
- * Used by interactive components such as `Link` and `Pressable`.
+ * Used by interactive components such as Link and Pressable.
  */
 export interface AnchorProps {
   /**

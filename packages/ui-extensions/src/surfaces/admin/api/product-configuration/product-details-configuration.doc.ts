@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   type: 'API',
   requires:
-    'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
+    'the [AdminBlock](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
   defaultExample: {
     description:
       "Query a product's [bundle](/docs/apps/build/product-merchandising/bundles) metafield and parse the JSON components array. This example fetches bundle data using the [GraphQL Admin API](/docs/api/admin-graphql/), parses the stored configuration, and displays the component count.",

@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 /**
- * Props for the `Select` component, a form control that lets the user choose
+ * Props for the Select component, a form control that lets the user choose
  * one value from a predefined list of options presented in a dropdown menu.
  */
 export interface SelectProps {
@@ -32,7 +32,7 @@ export interface SelectProps {
 
   /**
    * An identifier for the field that is unique within the nearest
-   * containing `Form` component. This value is used when submitting
+   * containing Form component. This value is used when submitting
    * the form data.
    */
   name?: string;
@@ -97,7 +97,7 @@ export interface SelectProps {
 }
 
 /**
- * Props for an individual `Option` component rendered as a child of `Select`.
+ * Props for an individual `Option` component rendered as a child of Select.
  */
 export interface OptionProps {
   /**
@@ -116,7 +116,7 @@ export interface OptionProps {
 
 /**
  * Props for an `OptionGroup` component that visually groups related
- * options under a shared label within a `Select`.
+ * options under a shared label within a Select.
  */
 export interface OptionGroupProps {
   /**
@@ -134,7 +134,7 @@ export interface OptionGroupProps {
 
 /**
  * Describes a single selectable option when using the `options` prop
- * on a `Select` component.
+ * on a Select component.
  */
 export interface OptionDescription {
   /**
@@ -157,7 +157,7 @@ export interface OptionDescription {
 
 /**
  * Describes a group of related options when using the `options` prop
- * on a `Select` component. Groups display a non-selectable heading
+ * on a Select component. Groups display a non-selectable heading
  * label above their nested options.
  */
 export interface OptionGroupDescription {
@@ -180,5 +180,5 @@ export interface OptionGroupDescription {
   options?: OptionDescription[];
 }
 
-/** A `Select` component that renders a dropdown menu for choosing from a list of options. */
+/** A Select component that renders a dropdown menu for choosing from a list of options. */
 export const Select = createRemoteComponent<'Select', SelectProps>('Select');

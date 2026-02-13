@@ -2,7 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import {IconName} from './IconName';
 
 /**
- * Props for the `Icon` component, which renders a Polaris icon by name.
+ * Props for the Icon component, which renders a Polaris icon by name.
  */
 export interface IconProps {
   /**

@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Checkbox',
   description:
-    'The `Checkbox` component provides a binary toggle for a single option that merchants can turn on or off. Use it for boolean settings like agreeing to terms, enabling a feature, or opting into a notification.',
+    'The Checkbox component provides a binary toggle for a single option that merchants can turn on or off. Use it for boolean settings like agreeing to terms, enabling a feature, or opting into a notification.',
   requires: '',
   thumbnail: 'checkbox-thumbnail.png',
   isVisualComponent: true,
@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `Checkbox` component.',
+        'Configure the following properties on the Checkbox component.',
       type: 'CheckboxProps',
     },
   ],
@@ -50,10 +50,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
-      sectionContent: `- \`Checkbox\` doesn't support an indeterminate (mixed) state. It is either checked or unchecked.
+      sectionContent: `- Checkbox doesn't support an indeterminate (mixed) state. It is either checked or unchecked.
 - The \`label\` prop only accepts a string. Rich content like links or formatted text inside the label isn't supported.
-- \`Checkbox\` has both \`checked\` and \`value\` props that serve the same purpose (\`value\` is an alias for \`checked\`). Use one or the other, not both, to avoid confusion.
-- \`Checkbox\` doesn't include a description or helper text prop. To add explanatory text below the checkbox, place a [\`Text\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/text) component adjacent to it.`,
+- Checkbox has both \`checked\` and \`value\` props that serve the same purpose (\`value\` is an alias for \`checked\`). Use one or the other, not both, to avoid confusion.
+- Checkbox doesn't include a description or helper text prop. To add explanatory text below the checkbox, place a [Text](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/text) component adjacent to it.`,
     },
   ],
   related: [],

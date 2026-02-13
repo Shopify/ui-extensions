@@ -7,7 +7,7 @@ import {
 } from '../shared';
 
 /**
- * Props for the `TextField` component, a single-line text input for entering
+ * Props for the TextField component, a single-line text input for entering
  * short-form content such as names, emails, or search queries. It extends
  * standard input props with min/max length constraints, autocomplete support,
  * and field decoration options like prefix and suffix.
@@ -17,7 +17,7 @@ export interface TextFieldProps
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField> {}
 
-/** A `TextField` component for single-line text input. */
+/** A TextField component for single-line text input. */
 export const TextField = createRemoteComponent<'TextField', TextFieldProps>(
   'TextField',
 );

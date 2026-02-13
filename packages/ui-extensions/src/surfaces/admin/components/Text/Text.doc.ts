@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Text',
   description:
-    'The `Text` component renders inline text with support for font weight, style, variant, overflow behavior, and accessibility roles. Use it for non-heading text that needs typographic control, such as labels, metadata, or emphasized words within a sentence.\n\nFor titles and section headings, use [`Heading`](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/heading).',
+    'The Text component renders inline text with support for font weight, style, variant, overflow behavior, and accessibility roles. Use it for non-heading text that needs typographic control, such as labels, metadata, or emphasized words within a sentence.\n\nFor titles and section headings, use [Heading](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/heading).',
   requires: '',
   thumbnail: 'text-thumbnail.png',
   isVisualComponent: true,
@@ -11,8 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the `Text` component.',
+      description: 'Configure the following properties on the Text component.',
       type: 'TextProps',
     },
   ],
@@ -47,9 +46,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
-      sectionContent: `- \`Text\` renders inline and flows with surrounding content. It doesn't add vertical spacing or block-level behavior.
+      sectionContent: `- Text renders inline and flows with surrounding content. It doesn't add vertical spacing or block-level behavior.
 - The \`textOverflow\` prop only takes effect when the parent container constrains the available width. Without a width constraint, text will wrap rather than truncate.
-- \`Text\` doesn't support color or tone props.`,
+- Text doesn't support color or tone props.`,
     },
   ],
   related: [],

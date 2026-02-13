@@ -11,7 +11,7 @@ import {
 } from '../shared';
 
 /**
- * Props for the `InlineStack` component, a horizontal layout container that
+ * Props for the InlineStack component, a horizontal layout container that
  * arranges children in a row along the inline axis. Inherits accessibility,
  * sizing, padding, and gap props from shared utilities.
  */

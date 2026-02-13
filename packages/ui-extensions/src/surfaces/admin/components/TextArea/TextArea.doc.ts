@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextArea',
   description:
-    'The `TextArea` component provides a multi-line text input for collecting longer-form content from merchants, such as descriptions, notes, or feedback. It supports configurable visible rows, length constraints, and autocomplete hints.\n\nFor single-line input, use [`TextField`](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/textfield).',
+    'The TextArea component provides a multi-line text input for collecting longer-form content from merchants, such as descriptions, notes, or feedback. It supports configurable visible rows, length constraints, and autocomplete hints.\n\nFor single-line input, use [TextField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/textfield).',
   requires: '',
   thumbnail: 'textarea-thumbnail.png',
   isVisualComponent: true,
@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `TextArea` component.',
+        'Configure the following properties on the TextArea component.',
       type: 'TextAreaProps',
     },
   ],
@@ -43,16 +43,16 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       anchorLink: 'best-practices',
       sectionContent: `- **Always provide a label:** The \`label\` prop is required. Write a clear, descriptive label that tells the merchant what content to enter.
-- **Use for multi-line content only:** If the expected input is a single line (like a name or title), use [\`TextField\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/textfield) instead. \`TextArea\` should be reserved for content that benefits from multiple lines.`,
+- **Use for multi-line content only:** If the expected input is a single line (like a name or title), use [TextField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/textfield) instead. TextArea should be reserved for content that benefits from multiple lines.`,
     },
     {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
       sectionContent: `- The \`rows\` prop sets the initial visible height but doesn't prevent the textarea from growing. Content that exceeds the visible rows will scroll.
-- \`TextArea\` doesn't support rich text formatting. All input is treated as plain text. For rich text editing, a custom solution is needed.
+- TextArea doesn't support rich text formatting. All input is treated as plain text. For rich text editing, a custom solution is needed.
 - The \`minLength\` and \`maxLength\` props validate length but don't display a character counter. Implement a counter separately if merchants need to see remaining characters.
-- \`TextArea\` doesn't support the \`suffix\` prop that [\`TextField\`](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/textfield) offers. There is no built-in way to add a decoration or unit indicator.`,
+- TextArea doesn't support the \`suffix\` prop that [TextField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/textfield) offers. There is no built-in way to add a decoration or unit indicator.`,
     },
   ],
   related: [],
