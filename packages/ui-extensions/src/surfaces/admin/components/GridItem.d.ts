@@ -131,7 +131,7 @@ export interface BoxProps
       >
     | Extract<RequiredBoxProps['borderWidth'], ''>;
   /**
-   * The visual style of the border (solid, dashed, dotted, or none).
+   * The visual style of the border (solid, dashed, auto, or none).
    *
    * @default '' - meaning no override
    */
@@ -423,11 +423,13 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
    */
   accessor blockSize: BoxProps['blockSize'];
   /**
-   * The minimum block size of the Box.
+   * The minimum height of the grid item in horizontal writing modes, or minimum width in vertical writing modes.
+   * Prevents the grid item from shrinking below this size.
    */
   accessor minBlockSize: BoxProps['minBlockSize'];
   /**
-   * The maximum block size of the Box.
+   * The maximum height of the grid item in horizontal writing modes, or maximum width in vertical writing modes.
+   * Prevents the grid item from growing beyond this size.
    */
   accessor maxBlockSize: BoxProps['maxBlockSize'];
   /**
@@ -436,11 +438,13 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
    */
   accessor inlineSize: BoxProps['inlineSize'];
   /**
-   * The minimum inline size of the Box.
+   * The minimum width of the grid item in horizontal writing modes, or minimum height in vertical writing modes.
+   * Prevents the grid item from shrinking below this size.
    */
   accessor minInlineSize: BoxProps['minInlineSize'];
   /**
-   * The maximum inline size of the Box.
+   * The maximum width of the grid item in horizontal writing modes, or maximum height in vertical writing modes.
+   * Prevents the grid item from growing beyond this size.
    */
   accessor maxInlineSize: BoxProps['maxInlineSize'];
   /**
@@ -452,11 +456,12 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
    */
   accessor padding: BoxProps['padding'];
   /**
-   * The block padding of the Box.
+   * The vertical padding (top and bottom) in horizontal writing modes.
+   * Use this for flow-relative padding that adapts to text direction.
    */
   accessor paddingBlock: BoxProps['paddingBlock'];
   /**
-   * The block-start padding of the Box.
+   * The padding at the top in horizontal writing modes, or at the start edge in vertical writing modes.
    */
   accessor paddingBlockStart: BoxProps['paddingBlockStart'];
   /**
@@ -477,7 +482,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
    */
   accessor paddingInlineEnd: BoxProps['paddingInlineEnd'];
   /**
-   * The border of the Box.
+   * Applies a border using shorthand syntax to specify width, color, and style in a single property.
    */
   accessor border: BoxProps['border'];
   /**

@@ -140,7 +140,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
  */
 declare class Heading extends PreactCustomElement implements HeadingProps {
   /**
-   * The ARIA role for the heading, which determines its semantic level (`heading1` through `heading6`).
+   * The ARIA role for the heading. Set to `'heading'` (the default) for standard heading semantics, or `'presentation'` / `'none'` to remove heading semantics for decorative use.
    */
   accessor accessibilityRole: HeadingProps['accessibilityRole'];
   /**
