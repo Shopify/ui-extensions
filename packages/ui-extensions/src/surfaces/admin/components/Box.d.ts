@@ -132,7 +132,7 @@ export interface BoxProps
       >
     | Extract<RequiredBoxProps['borderWidth'], ''>;
   /**
-   * Controls the visual style of the border on all sides, such as solid, dashed, or dotted.
+   * Controls the visual style of the border on all sides (solid, dashed, auto, or none).
    *
    * When set, this overrides the style value specified in the `border` property.
    * Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box)for specifying different styles per side: one value applies to all sides,
@@ -396,7 +396,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
    */
   accessor overflow: BoxProps['overflow'];
   /**
-   * The padding on all sides of the Box.
+   * The padding on all sides of the box.
    */
   accessor padding: BoxProps['padding'];
   /**
@@ -405,7 +405,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
    */
   accessor paddingBlock: BoxProps['paddingBlock'];
   /**
-   * The block-start padding of the Box.
+   * The padding at the top in horizontal writing modes, or at the start edge in vertical writing modes.
    */
   accessor paddingBlockStart: BoxProps['paddingBlockStart'];
   /**
@@ -434,7 +434,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
    */
   accessor borderWidth: BoxProps['borderWidth'];
   /**
-   * Controls the visual style of the border on all sides, such as solid, dashed, or dotted. When set, this overrides the style value specified in the `border` property.
+   * Controls the visual style of the border on all sides (solid, dashed, auto, or none). When set, this overrides the style value specified in the `border` property.
    */
   accessor borderStyle: BoxProps['borderStyle'];
   /**
@@ -450,7 +450,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
    */
   accessor accessibilityLabel: BoxProps['accessibilityLabel'];
   /**
-   * The accessibility visibility of the Box.
+   * Controls the visibility of the box for both visual and assistive technology users. Use `hidden` to hide from screen readers or `exclusive` to hide visually but announce to screen readers.
    */
   accessor accessibilityVisibility: BoxProps['accessibilityVisibility'];
   /**

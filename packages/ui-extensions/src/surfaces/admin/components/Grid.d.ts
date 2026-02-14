@@ -128,7 +128,7 @@ export interface BoxProps
       >
     | Extract<RequiredBoxProps['borderWidth'], ''>;
   /**
-   * Controls the visual style of the border on all sides, such as solid, dashed, or dotted.
+   * Controls the visual style of the border on all sides (solid, dashed, auto, or none).
    *
    * When set, this overrides the style value specified in the `border` property.
    * Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) for specifying different styles per side.
@@ -568,7 +568,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
    */
   accessor paddingBlock: BoxProps['paddingBlock'];
   /**
-   * The block-start padding of the Box.
+   * The padding at the top in horizontal writing modes, or at the start edge in vertical writing modes.
    */
   accessor paddingBlockStart: BoxProps['paddingBlockStart'];
   /**
@@ -597,7 +597,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
    */
   accessor borderWidth: BoxProps['borderWidth'];
   /**
-   * Controls the visual style of the border on all sides, such as solid, dashed, or dotted. When set, this overrides the style value specified in the `border` property.
+   * Controls the visual style of the border on all sides (solid, dashed, auto, or none). When set, this overrides the style value specified in the `border` property.
    */
   accessor borderStyle: BoxProps['borderStyle'];
   /**

@@ -166,7 +166,7 @@ export interface BoxProps
       >
     | Extract<RequiredBoxProps['borderWidth'], ''>;
   /**
-   * The visual style of the border (solid, dashed, dotted, or none).
+   * The visual style of the border (solid, dashed, auto, or none).
    *
    * @default '' - meaning no override
    */
