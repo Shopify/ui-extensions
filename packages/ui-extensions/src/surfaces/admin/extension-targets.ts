@@ -294,7 +294,7 @@ export interface ExtensionTargets {
   // Bulk Actions
 
   /**
-   * An action target that appears in the **More actions** menu on the product index page when multiple products are selected. Use this to create workflows for bulk product operations, batch updates, or mass data processing.
+   * A selection action target that appears in the **More actions** menu on the product index page when multiple products are selected. Use this to create workflows for bulk product operations, batch updates, or mass data processing.
    *
    */
   'admin.product-index.selection-action.render': RenderExtension<
@@ -303,7 +303,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * An action target that appears in the **More actions** menu on the order index page when multiple orders are selected. Use this to create workflows for bulk order operations, batch fulfillment, or mass order processing.
+   * A selection action target that appears in the **More actions** menu on the order index page when multiple orders are selected. Use this to create workflows for bulk order operations, batch fulfillment, or mass order processing.
    *
    */
   'admin.order-index.selection-action.render': RenderExtension<
@@ -312,7 +312,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * An action target that appears in the **More actions** menu on the customer index page when multiple customers are selected. Use this to create workflows for bulk customer operations, mass email campaigns, or batch data updates.
+   * A selection action target that appears in the **More actions** menu on the customer index page when multiple customers are selected. Use this to create workflows for bulk customer operations, mass email campaigns, or batch data updates.
    *
    */
   'admin.customer-index.selection-action.render': RenderExtension<
@@ -321,7 +321,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * An action target that appears in the **More actions** menu on the draft order index page when multiple draft orders are selected. Use this to create workflows for bulk draft order operations, batch conversions, or mass order processing.
+   * A selection action target that appears in the **More actions** menu on the draft order index page when multiple draft orders are selected. Use this to create workflows for bulk draft order operations, batch conversions, or mass order processing.
    *
    */
   'admin.draft-order-index.selection-action.render': RenderExtension<
