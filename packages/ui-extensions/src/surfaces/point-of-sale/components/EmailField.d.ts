@@ -109,7 +109,7 @@ export interface EmailFieldJSXProps
    */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * Additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
+   * Additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only Button and Clickable components are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
    */
   accessory?: ComponentChild;
 }

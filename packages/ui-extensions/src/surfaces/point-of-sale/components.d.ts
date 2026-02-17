@@ -34,11 +34,11 @@ export interface GlobalProps {
  */
 export interface ActionSlots {
   /**
-   * The primary action element to display, typically a `Button` or clickable link representing the most important action the user can take in the current context. This action should align with the user's primary goal or the main purpose of the interface. For example, "Save changes", "Checkout", "Add to cart", or "Submit order". The primary action typically receives visual emphasis through styling to draw user attention. Only one primary action should be provided to avoid confusion about the main call-to-action. If no primary action is needed, omit this property rather than providing an empty or placeholder action.
+   * The primary action element to display, typically a Button or clickable link representing the most important action the user can take in the current context. This action should align with the user's primary goal or the main purpose of the interface. For example, "Save changes", "Checkout", "Add to cart", or "Submit order". The primary action typically receives visual emphasis through styling to draw user attention. Only one primary action should be provided to avoid confusion about the main call-to-action. If no primary action is needed, omit this property rather than providing an empty or placeholder action.
    */
   primaryAction?: ComponentChildren;
   /**
-   * Secondary action elements to display, typically `Button` or clickable link elements representing alternative or supporting actions that are less important than the primary action. These might include "Cancel", "Save draft", "Skip", "Learn more", or other optional actions. Secondary actions receive less visual prominence than the primary action to maintain clear hierarchy. Multiple secondary actions can be provided and will typically be displayed together, often in a different visual style or position than the primary action. If no secondary actions are needed, omit this property. The order of actions in the array may affect their display order depending on the component.
+   * Secondary action elements to display, typically a Button or clickable link elements representing alternative or supporting actions that are less important than the primary action. These might include "Cancel", "Save draft", "Skip", "Learn more", or other optional actions. Secondary actions receive less visual prominence than the primary action to maintain clear hierarchy. Multiple secondary actions can be provided and will typically be displayed together, often in a different visual style or position than the primary action. If no secondary actions are needed, omit this property. The order of actions in the array may affect their display order depending on the component.
    */
   secondaryActions?: ComponentChildren;
 }
@@ -884,7 +884,7 @@ export type AccessibilityRole =
   | 'footer'
   /**
    * Used to indicate a generic section.
-   * Sections should always have a `Heading` or an accessible name provided in the `accessibilityLabel` property.
+   * Sections should always have a Heading or an accessible name provided in the `accessibilityLabel` property.
    *
    * In an HTML host `section` will render a `<section>` element.
    * Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
@@ -1437,7 +1437,7 @@ export interface MultipleInputProps extends BaseInputProps {
    */
   onInput?: (event: Event) => void;
   /**
-   * An array containing the values of currently selected options in a multi-select choice list. When provided, this creates a controlled component where this array must be updated in response to user selections using the `onChange` callback. The array should contain the `value` properties of selected child `Choice` components. For single-select lists (`multiple={false}`), this array should contain zero or one items. For multi-select lists, it can contain multiple items. This is a convenience property that automatically sets the `selected` state on matching child choices based on their `value` properties. When a choice's value appears in this array, it's automatically marked as selected. Update this array immutably in callbacks (create new arrays rather than mutating).
+   * An array containing the values of currently selected options in a multi-select choice list. When provided, this creates a controlled component where this array must be updated in response to user selections using the `onChange` callback. The array should contain the `value` properties of selected child Choice components. For single-select lists (`multiple={false}`), this array should contain zero or one items. For multi-select lists, it can contain multiple items. This is a convenience property that automatically sets the `selected` state on matching child choices based on their `value` properties. When a choice's value appears in this array, it's automatically marked as selected. Update this array immutably in callbacks (create new arrays rather than mutating).
    */
   values?: string[];
 }
@@ -1523,7 +1523,7 @@ export interface FieldDecorationProps {
    */
   icon?: IconType | AnyString;
   /**
-   * Additional interactive content displayed within the field, typically positioned at the end of the field after the input area. Only text-only `Button` and `Clickable` components are supported—no icons or complex content. Use the `slot="accessory"` attribute to place elements here. Common uses include action buttons (for example, "Copy" button, "Generate" button, "Clear" button), toggle visibility controls (for example, "Show password" button), or quick actions related to the field (for example, "Paste from clipboard"). The accessory must not interfere with the field's primary input functionality. Ensure sufficient contrast and touch target sizes for mobile usability.
+   * Additional interactive content displayed within the field, typically positioned at the end of the field after the input area. Only text-only Button and Clickable components are supported—no icons or complex content. Use the `slot="accessory"` attribute to place elements here. Common uses include action buttons (for example, "Copy" button, "Generate" button, "Clear" button), toggle visibility controls (for example, "Show password" button), or quick actions related to the field (for example, "Paste from clipboard"). The accessory must not interfere with the field's primary input functionality. Ensure sufficient contrast and touch target sizes for mobile usability.
    */
   accessory?: ComponentChildren;
 }
@@ -1592,7 +1592,7 @@ export interface BaseSelectableProps {
    */
   disabled?: boolean;
   /**
-   * The unique value associated with this selectable option. This value is what gets submitted with forms when the option is selected, and is used to identify which options are selected in the parent `ChoiceList`'s `values` array. The value should be unique among siblings within the same choice list to avoid selection ambiguity. When a choice is selected, this value appears in form data and in the parent's `values` array. Use meaningful, stable values that identify the choice semantically (for example, `"small"`, `"express-shipping"`, `"agree-to-terms"`) rather than display text which may change or be localized. The value isn't displayed to users—use the choice's `children` or label for visible text.
+   * The unique value associated with this selectable option. This value is what gets submitted with forms when the option is selected, and is used to identify which options are selected in the parent ChoiceList's `values` array. The value should be unique among siblings within the same choice list to avoid selection ambiguity. When a choice is selected, this value appears in form data and in the parent's `values` array. Use meaningful, stable values that identify the choice semantically (for example, `"small"`, `"express-shipping"`, `"agree-to-terms"`) rather than display text which may change or be localized. The value isn't displayed to users—use the choice's `children` or label for visible text.
    */
   value?: string;
 }
@@ -1667,7 +1667,7 @@ export interface ChoiceListProps
    */
   multiple?: boolean;
   /**
-   * The child elements to render within this component. Within `ChoiceList`, use only `Choice` components as children. Other component types can't be used as options within the choice list.
+   * The child elements to render within this component. Within ChoiceList, use only Choice components as children. Other component types can't be used as options within the choice list.
    */
   children?: ComponentChildren;
   /**
@@ -2413,7 +2413,7 @@ export interface PageProps extends GlobalProps, ActionSlots {
    */
   subheading?: string;
   /**
-   * The additional content displayed in the header area. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
+   * The additional content displayed in the header area. Commonly used to display clickable text or action elements. Only Button and Clickable components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
    */
   accessory?: ComponentChildren;
   /**
@@ -3964,7 +3964,7 @@ interface TextFieldJSXProps
    */
   onFocus?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
   /**
-   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
+   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only Button and Clickable components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
    */
   accessory?: ComponentChild;
 }
@@ -4046,7 +4046,7 @@ interface EmailFieldJSXProps
    */
   onFocus?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
   /**
-   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
+   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only Button and Clickable components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
    */
   accessory?: ComponentChild;
 }
@@ -4120,7 +4120,7 @@ interface TextAreaJSXProps
    */
   onFocus?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
   /**
-   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
+   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only Button and Clickable components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
    */
   accessory?: ComponentChild;
 }
@@ -4188,7 +4188,7 @@ interface NumberFieldJSXProps
    */
   placeholder?: NumberFieldProps['placeholder'];
   /**
-   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
+   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only Button and Clickable components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
    */
   accessory?: ComponentChild;
   /**
@@ -4635,7 +4635,7 @@ interface Badge {
 }
 
 /**
- * The `Banner` component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The Banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  */
 interface BannerSlots {
   /**
@@ -4774,7 +4774,7 @@ interface Box {
 }
 
 /**
- * The `Button` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The Button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface ButtonEvents {
   /**
@@ -4864,7 +4864,7 @@ interface Choice {
 }
 
 /**
- * The `ChoiceList` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The ChoiceList component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface ChoiceListEvents {
   /**
@@ -4895,7 +4895,7 @@ interface ChoiceList {
 }
 
 /**
- * The `Clickable` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The Clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface ClickableEvents {
   /**
@@ -4916,7 +4916,7 @@ interface Clickable {
 }
 
 /**
- * The `DateField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The DateField component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface DateFieldEvents {
   /**
@@ -4967,7 +4967,7 @@ interface DateField {
 }
 
 /**
- * The `DatePicker` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The DatePicker component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface DatePickerEvents {
   /**
@@ -5002,7 +5002,7 @@ interface DatePicker {
 }
 
 /**
- * The `DateSpinner` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The DateSpinner component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface DateSpinnerEvents {
   /**
@@ -5052,7 +5052,7 @@ interface Divider {
 }
 
 /**
- * The `EmailField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The EmailField component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface EmailFieldEvents {
   /**
@@ -5074,11 +5074,11 @@ interface EmailFieldEvents {
 }
 
 /**
- * The `EmailField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The EmailField component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  */
 interface EmailFieldSlots {
   /**
-   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
+   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only Button and Clickable components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
    */
   accessory?: HTMLElement;
 }
@@ -5199,7 +5199,7 @@ interface Image {
 }
 
 /**
- * The `Modal` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The Modal component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface ModalEvents {
   /**
@@ -5213,7 +5213,7 @@ interface ModalEvents {
 }
 
 /**
- * The `Modal` component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The Modal component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  */
 interface ModalSlots {
   /**
@@ -5238,7 +5238,7 @@ interface Modal {
 }
 
 /**
- * The `NumberField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The NumberField component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface NumberFieldEvents {
   /**
@@ -5260,11 +5260,11 @@ interface NumberFieldEvents {
 }
 
 /**
- * The `NumberField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The NumberField component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  */
 interface NumberFieldSlots {
   /**
-   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
+   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only Button and Clickable components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
    */
   accessory?: HTMLElement;
 }
@@ -5342,7 +5342,7 @@ interface NumberField {
 }
 
 /**
- * The `Page` component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The Page component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  */
 interface PageSlots {
   /**
@@ -5373,7 +5373,7 @@ interface Page {
 }
 
 /**
- * The `PosBlock` component supports slots for additional content placement within the block. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The PosBlock component supports slots for additional content placement within the block. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  */
 interface PosBlockSlots {
   /**
@@ -5503,7 +5503,7 @@ interface ScrollBox {
 }
 
 /**
- * The `SearchField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The SearchField component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface SearchFieldEvents {
   /**
@@ -5546,7 +5546,7 @@ interface SearchField {
 }
 
 /**
- * The `Section` component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The Section component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  */
 interface SectionSlots {
   /**
@@ -5752,7 +5752,7 @@ interface Text {
 }
 
 /**
- * The `TextArea` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The TextArea component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface TextAreaEvents {
   /**
@@ -5774,11 +5774,11 @@ interface TextAreaEvents {
 }
 
 /**
- * The `TextArea` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The TextArea component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  */
 interface TextAreaSlots {
   /**
-   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
+   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only Button and Clickable components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
    */
   accessory?: HTMLElement;
 }
@@ -5835,7 +5835,7 @@ interface TextArea {
 }
 
 /**
- * The `TextField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The TextField component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface TextFieldEvents {
   /**
@@ -5857,11 +5857,11 @@ interface TextFieldEvents {
 }
 
 /**
- * The `TextField` component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The TextField component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  */
 interface TextFieldSlots {
   /**
-   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
+   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only Button and Clickable components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
    */
   accessory?: HTMLElement;
 }
@@ -5954,7 +5954,7 @@ interface Tile {
 }
 
 /**
- * The `TimeField` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The TimeField component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface TimeFieldEvents {
   /**
@@ -6005,7 +6005,7 @@ interface TimeField {
 }
 
 /**
- * The `TimePicker` component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The TimePicker component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  */
 interface TimePickerEvents {
   /**

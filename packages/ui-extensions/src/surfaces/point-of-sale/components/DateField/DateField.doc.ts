@@ -3,8 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'DateField',
   description:
-    'The `DateField` component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.' +
-    '\n\nThe component supports manual text entry. For visual calendar-based selection, consider using [`DatePicker`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datepicker) or [`DateSpinner`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datespinner) components.',
+    'The DateField component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.' +
+    '\n\nThe component supports manual text entry. For visual calendar-based selection, consider using [DatePicker](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datepicker) or [DateSpinner](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datespinner) components.',
   thumbnail: 'date-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -12,13 +12,13 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `DateField` component.',
+        'Configure the following properties on the DateField component.',
       type: 'DateField',
     },
     {
       title: 'Events',
       description:
-        'The `DateField` component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The DateField component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'DateFieldEvents',
     },
   ],
@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'date-field-default.png',
     description:
-      'Capture date input using a `DateField` component with built-in validation and picker integration. This example shows a basic date field with label and placeholder text.',
+      'Capture date input using a DateField component with built-in validation and picker integration. This example shows a basic date field with label and placeholder text.',
     codeblock: {
       title: 'Capture date input with a date field',
       tabs: [
@@ -44,7 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent: `
-- **Choose for direct text input:** Use \`DateField\` when users know the exact date and can type it efficiently. Use [\`DatePicker\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datepicker) for calendar selection or [\`DateSpinner\`](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datespinner) for space-constrained layouts.
+- **Choose for direct text input:** Use DateField when users know the exact date and can type it efficiently. Use [DatePicker](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datepicker) for calendar selection or [DateSpinner](/docs/api/pos-ui-extensions/2025-10/polaris-web-components/forms/datespinner) for space-constrained layouts.
 - **Explain date constraints:** Use \`details\` to clarify requirements like "Select a date within the next 30 days" or "Must be a future date."
 - **Write actionable error messages:** Provide clear validation messages for invalid dates that help users correct their input.
 `,
