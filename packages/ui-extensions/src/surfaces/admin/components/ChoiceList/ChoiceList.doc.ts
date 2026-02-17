@@ -128,17 +128,17 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Showcases a multiple-selection ChoiceList with each option including detailed information.',
+              'Shows a ChoiceList in a disabled state, preventing any user interaction. Use when selections should be visible but not editable.',
             codeblock: {
-              title: 'Multiple choices with details',
+              title: 'Disabled state',
               tabs: [
                 {
-                  code: './examples/multiple-choices-with-details.html',
+                  code: './examples/disabled-state.html',
                   language: 'html',
                 },
 
                 {
-                  code: './examples/multiple-choices-with-details.jsx',
+                  code: './examples/disabled-state.jsx',
                   language: 'preview-jsx',
                 },
               ],
