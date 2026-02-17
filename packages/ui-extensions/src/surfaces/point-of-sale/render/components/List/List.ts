@@ -80,7 +80,7 @@ export interface ListRowRightSide {
 }
 
 /**
- * Defines the structure and content options for individual rows within the `List` component.
+ * Defines the structure and content options for individual rows within the List component.
  */
 export interface ListRow {
   /**

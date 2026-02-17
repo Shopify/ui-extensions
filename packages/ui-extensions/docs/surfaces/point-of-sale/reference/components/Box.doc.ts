@@ -7,13 +7,13 @@ const generateCodeBlockForBanner = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Box',
   description:
-    'The `Box` component is a generic container that provides flexible layout with consistent spacing and styling. Use it to apply padding, to nest and group other components, or as the foundation for building structured layouts.\n\nThe component provides granular control over spacing through padding properties and sizing through width/height properties, serving as a building block for precise layouts. It simplifies the creation of containers with consistent spacing by using design system tokens, ensuring visual consistency and reducing the need for custom CSS in most layout scenarios.\n\n`Box` components provide shorthand properties for common padding patterns like equal padding on all sides or symmetric horizontal/vertical padding, reducing verbose property specifications for simpler layouts.',
+    'The Box component is a generic container that provides flexible layout with consistent spacing and styling. Use it to apply padding, to nest and group other components, or as the foundation for building structured layouts.\n\nThe component provides granular control over spacing through padding properties and sizing through width/height properties, serving as a building block for precise layouts. It simplifies the creation of containers with consistent spacing by using design system tokens, ensuring visual consistency and reducing the need for custom CSS in most layout scenarios.\n\nBox components provide shorthand properties for common padding patterns like equal padding on all sides or symmetric horizontal/vertical padding, reducing verbose property specifications for simpler layouts.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the `Box` component.',
+      description: 'Configure the following properties on the Box component.',
       type: 'BoxProps',
     },
   ],
@@ -38,9 +38,9 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `
 - **Apply consistent padding using the numeric scale:** Use the predefined numeric padding values (for example, \`'100'\`, \`'300'\`, \`'500'\`) to maintain consistency across your interface. Start with \`'300'\` for standard content and adjust up or down based on the visual hierarchy and spacing needs of your layout.
 - **Use directional padding for precise control:** Use specific padding properties like \`paddingInline\` and \`paddingBlock\` when you need different spacing on different sides. This is particularly useful for creating asymmetric layouts or aligning content with other interface elements.
-- **Combine Box with other layout components strategically:** Use \`Box\` as a foundation with other layout components like \`Stack\` for optimal results. \`Box\` handles spacing and sizing, while \`Stack\` manages the arrangement and alignment of child elements within the container.
+- **Combine Box with other layout components strategically:** Use Box as a foundation with other layout components like Stack for optimal results. Box handles spacing and sizing, while Stack manages the arrangement and alignment of child elements within the container.
 - **Consider content flow and reading patterns:** When using directional properties, remember that \`block\` refers to the main content flow direction (usually vertical) and \`inline\` refers to the text direction (usually horizontal).
-- **Optimize for touch interfaces:** Ensure adequate padding around interactive elements within \`Box\` containers. POS interfaces are primarily touch-based, so generous padding improves usability and reduces accidental interactions. Consider using padding values of \`'300'\` or higher for touch targets.
+- **Optimize for touch interfaces:** Ensure adequate padding around interactive elements within Box containers. POS interfaces are primarily touch-based, so generous padding improves usability and reduces accidental interactions. Consider using padding values of \`'300'\` or higher for touch targets.
       `,
     },
     {
@@ -48,9 +48,9 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- Box is a layout container and doesn't provide interactive functionality—use it in combination with interactive components like \`Button\` for user interactions.
+- Box is a layout container and doesn't provide interactive functionality—use it in combination with interactive components like Button for user interactions.
 - Padding values are limited to the predefined numeric scale—custom pixel values for padding aren't supported to maintain design consistency.
-- Box doesn't provide scrolling capabilities for overflow content—use \`ScrollView\` when content might exceed container dimensions.
+- Box doesn't provide scrolling capabilities for overflow content—use ScrollView when content might exceed container dimensions.
       `,
     },
   ],
