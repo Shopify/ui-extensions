@@ -7,7 +7,7 @@ const generateCodeBlockForPOSBlock = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'POSBlock',
   description:
-    'The `POSBlock` component creates a container to place content with an action button. Use it to display structured content within POS block targets.\n\nThe component provides a standardized layout specifically designed for content blocks within POS detail views, with consistent padding, spacing, and optional action buttons. It integrates with the native POS design language, ensuring extension content feels cohesive with the core POS interface while maintaining clear content boundaries.\n\n`PosBlock` components provide consistent interaction patterns for action buttons across different block types, ensuring merchants can predict button behavior and location regardless of the specific POS context.',
+    'The POSBlock component creates a container to place content with an action button. Use it to display structured content within POS block targets.\n\nThe component provides a standardized layout specifically designed for content blocks within POS detail views, with consistent padding, spacing, and optional action buttons. It integrates with the native POS design language, ensuring extension content feels cohesive with the core POS interface while maintaining clear content boundaries.\n\nPOSBlock components provide consistent interaction patterns for action buttons across different block types, ensuring merchants can predict button behavior and location regardless of the specific POS context.',
   isVisualComponent: true,
   type: 'component',
   thumbnail: 'pos-block-thumbnail.png',
@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `POSBlock` component.',
+        'Configure the following properties on the POSBlock component.',
       type: 'POSBlockProps',
     },
   ],
@@ -39,9 +39,9 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `
 - **Design meaningful action buttons:** When providing an action, use clear and descriptive button titles that indicate exactly what will happen when pressed. Avoid generic terms like "Click here" in favor of specific actions like "View Details" or "Update Status."
 - **Handle action states appropriately:** Use the disabled property to prevent user interaction when actions are not available or appropriate. Provide clear feedback through your extension's description or other UI elements when actions are disabled.
-- **Design for the block context:** \`POSBlock\` appears within existing POS screens alongside other content.
+- **Design for the block context:** POSBlock appears within existing POS screens alongside other content.
 - **Implement responsive action callbacks:**  Consider showing loading states or confirmation messages when actions require network requests or significant processing time.
-- **Maintain consistent action patterns:** Use similar action patterns across different \`POSBlock\` instances in your extension to create predictable user experiences. Consistent button titles and behaviors help merchants understand and trust your extension.
+- **Maintain consistent action patterns:** Use similar action patterns across different POSBlock instances in your extension to create predictable user experiences. Consistent button titles and behaviors help merchants understand and trust your extension.
       `,
     },
     {
@@ -49,10 +49,10 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-- \`POSBlock\` is designed specifically for block targets—it can't be used in modal or action (menu item) targets.
+- POSBlock is designed specifically for block targets—it can't be used in modal or action (menu item) targets.
 - The component's visual styling and layout are controlled by the POS design system—custom styling isn't supported.
 - Content display is determined by the extension's description rather than custom content properties—ensure your extension description is clear and informative.
-- Only one action button is supported for each \`POSBlock\` instance to maintain clean, focused interfaces that integrate well with existing POS workflows.
+- Only one action button is supported for each POSBlock instance to maintain clean, focused interfaces that integrate well with existing POS workflows.
       `,
     },
   ],

@@ -4,14 +4,13 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Icon',
   description:
-    'The `Icon` component displays standardized visual symbols from the POS catalog to represent actions, statuses, or categories consistently. Use icons to enhance navigation or provide visual context alongside text in POS interfaces.\n\nIcons help merchants quickly understand interface elements and actions without relying solely on text labels. Icons are optimized for readability at standard sizes and automatically scale to maintain visual consistency across different screen densities and device types.',
+    'The Icon component displays standardized visual symbols from the POS catalog to represent actions, statuses, or categories consistently. Use icons to enhance navigation or provide visual context alongside text in POS interfaces.\n\nIcons help merchants quickly understand interface elements and actions without relying solely on text labels. Icons are optimized for readability at standard sizes and automatically scale to maintain visual consistency across different screen densities and device types.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the `Icon` component.',
+      description: 'Configure the following properties on the Icon component.',
       type: 'IconProps',
     },
   ],

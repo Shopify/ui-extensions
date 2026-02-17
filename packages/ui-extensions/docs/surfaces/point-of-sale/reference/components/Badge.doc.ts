@@ -7,14 +7,13 @@ const generateCodeBlockForBadge = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Badge',
   description:
-    'The `Badge` component uses color and text to communicate status information for orders, products, customers, and other business data. Use badges to create visual hierarchy and help merchants quickly identify important information or status changes within your POS interface.\n\nThe component automatically adjusts its appearance based on the specified `tone` property, ensuring consistent visual communication across the POS interface. Badges support different sizes and can display text, numbers, or status indicators, making them versatile for representing everything from order counts to inventory alerts in a compact, scannable format.',
+    'The Badge component uses color and text to communicate status information for orders, products, customers, and other business data. Use badges to create visual hierarchy and help merchants quickly identify important information or status changes within your POS interface.\n\nThe component automatically adjusts its appearance based on the specified `tone` property, ensuring consistent visual communication across the POS interface. Badges support different sizes and can display text, numbers, or status indicators, making them versatile for representing everything from order counts to inventory alerts in a compact, scannable format.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the `Badge` component.',
+      description: 'Configure the following properties on the Badge component.',
       type: 'BadgeProps',
     },
   ],

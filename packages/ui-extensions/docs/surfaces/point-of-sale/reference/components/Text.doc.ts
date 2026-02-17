@@ -4,14 +4,13 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Text',
   description:
-    'The `Text` component displays text with specific visual styles and colors. Use it to present content with appropriate typography hierarchy and semantic coloring for different types of information.\n\nText provides a comprehensive typography system that ensures consistent styling and proper visual hierarchy across POS interfaces.\n\n`Text` components ensure proper text rendering across different device types and screen sizes while maintaining readability through appropriate line heights, letter spacing, and color contrast ratios. The component automatically adjusts line length for optimal readability based on container width, preventing overly long lines that reduce reading speed and comprehension in wider layouts.',
+    'The Text component displays text with specific visual styles and colors. Use it to present content with appropriate typography hierarchy and semantic coloring for different types of information.\n\nText provides a comprehensive typography system that ensures consistent styling and proper visual hierarchy across POS interfaces.\n\nText components ensure proper text rendering across different device types and screen sizes while maintaining readability through appropriate line heights, letter spacing, and color contrast ratios. The component automatically adjusts line length for optimal readability based on container width, preventing overly long lines that reduce reading speed and comprehension in wider layouts.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the `Text` component.',
+      description: 'Configure the following properties on the Text component.',
       type: 'TextProps',
     },
   ],
@@ -48,7 +47,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `
 - Text content is provided through child components rather than direct text properties—organize your text content through component composition.
 - Typography and color options are limited to the predefined design system variants—custom fonts, sizes, or colors beyond the available options aren't supported.
-- Complex rich text formatting requires multiple \`Text\` components with different variants and colors rather than inline formatting options.
+- Complex rich text formatting requires multiple Text components with different variants and colors rather than inline formatting options.
       `,
     },
   ],
