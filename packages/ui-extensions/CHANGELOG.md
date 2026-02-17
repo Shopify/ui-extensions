@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.1.2
+
+### Patch Changes
+
+- [#3864](https://github.com/Shopify/ui-extensions/pull/3864) [`24cc179`](https://github.com/Shopify/ui-extensions/commit/24cc17924ef9965c9c1bc5ebcb3a0bfb8742b794) Thanks [@avocadomayo](https://github.com/avocadomayo)! - Add deprecation warning to checkout metafield read API in Checkout UI Extensions
+
 ## 2026.1.1
 
 ### Patch Changes
