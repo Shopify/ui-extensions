@@ -21,14 +21,13 @@ const generateCodeBlockForStack = (title: string, fileName: string) => {
 const data: ReferenceEntityTemplateSchema = {
   name: 'Stack',
   description:
-    'The `Stack` component organizes elements horizontally or vertically along the block or inline axis. Use it to structure layouts, group related components, or control spacing between elements with flexible alignment options.\n\nThe component simplifies layout creation by automatically managing spacing between child elements through gap properties, eliminating the need for manual margin management. It supports both horizontal and vertical arrangements, flexible alignment options, and wrapping behavior, making it the foundation for building consistent, responsive layouts throughout POS extensions.\n\n`Stack` components support responsive gap values that automatically adjust spacing based on screen size, ensuring layouts remain visually balanced and maintain proper element separation across different devices.',
+    'The Stack component organizes elements horizontally or vertically along the block or inline axis. Use it to structure layouts, group related components, or control spacing between elements with flexible alignment options.\n\nThe component simplifies layout creation by automatically managing spacing between child elements through gap properties, eliminating the need for manual margin management. It supports both horizontal and vertical arrangements, flexible alignment options, and wrapping behavior, making it the foundation for building consistent, responsive layouts throughout POS extensions.\n\nStack components support responsive gap values that automatically adjust spacing based on screen size, ensuring layouts remain visually balanced and maintain proper element separation across different devices.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the `Stack` component.',
+      description: 'Configure the following properties on the Stack component.',
       type: 'StackProps',
     },
   ],
@@ -129,7 +128,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best practices',
-      sectionContent: `\n- **Apply consistent spacing using the numeric scale:** Use the predefined numeric spacing values (for example, \`'100'\`, \`'300'\`, \`'500'\`) to maintain consistency across your interface. Start with \`'300'\` for standard spacing and adjust up or down based on your content hierarchy needs.\n- **Use alignment properties for professional layouts:** Use the\`justifyContent\` property to control main axis distribution. Use \`alignItems\` for cross axis positioning of individual items, and \`alignContent\` for cross axis distribution when there's extra space.\n- **Use gap properties for precise spacing control:** Take advantage of the flexible gap system - use \`gap\` for uniform spacing, \`rowGap\` for block axis control, and \`columnGap\` for inline axis control.\n- **Combine with other layout components strategically:** Use the \`Stack\` component in combination with \`Box\` and \`Section\` components. Stack handles element arrangement and spacing, while other components provide additional layout capabilities.\n`,
+      sectionContent: `\n- **Apply consistent spacing using the numeric scale:** Use the predefined numeric spacing values (for example, \`'100'\`, \`'300'\`, \`'500'\`) to maintain consistency across your interface. Start with \`'300'\` for standard spacing and adjust up or down based on your content hierarchy needs.\n- **Use alignment properties for professional layouts:** Use the\`justifyContent\` property to control main axis distribution. Use \`alignItems\` for cross axis positioning of individual items, and \`alignContent\` for cross axis distribution when there's extra space.\n- **Use gap properties for precise spacing control:** Take advantage of the flexible gap system - use \`gap\` for uniform spacing, \`rowGap\` for block axis control, and \`columnGap\` for inline axis control.\n- **Combine with other layout components strategically:** Use the Stack component in combination with Box and Section components. Stack handles element arrangement and spacing, while other components provide additional layout capabilities.\n`,
     },
     {
       type: 'Generic',

@@ -4,14 +4,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'NumberField',
   description:
-    'The `NumberField` component captures numeric input with built-in validation. Use it to collect quantity, price, or other numeric information with proper validation.\n\nThe component includes built-in number validation, optional min/max constraints, and step increments to ensure accurate numeric data entry. It supports various number formats including integers and decimals, with validation feedback to prevent entry errors during high-volume retail operations.',
+    'The NumberField component captures numeric input with built-in validation. Use it to collect quantity, price, or other numeric information with proper validation.\n\nThe component includes built-in number validation, optional min/max constraints, and step increments to ensure accurate numeric data entry. It supports various number formats including integers and decimals, with validation feedback to prevent entry errors during high-volume retail operations.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `NumberField` component.',
+        'Configure the following properties on the NumberField component.',
       type: 'NumberFieldProps',
     },
   ],
@@ -41,7 +41,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent: `\n- \`NumberField\` provides numeric input but doesn't enforce \`min\`/\`max\` constraints for keyboard input—you must implement validation logic to enforce bounds and display appropriate errors.\n- The \`required\` property adds semantic meaning only—it doesn't trigger automatic error display or prevent form submission without additional validation logic.\n- Action buttons are limited to simple press callbacks—complex action workflows require custom implementation or additional components.\n`,
+      sectionContent: `\n- NumberField provides numeric input but doesn't enforce \`min\`/\`max\` constraints for keyboard input—you must implement validation logic to enforce bounds and display appropriate errors.\n- The \`required\` property adds semantic meaning only—it doesn't trigger automatic error display or prevent form submission without additional validation logic.\n- Action buttons are limited to simple press callbacks—complex action workflows require custom implementation or additional components.\n`,
     },
   ],
 };

@@ -4,14 +4,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'DateField',
   description:
-    'The `DateField` component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.\n\n`DateField` components support both manual text entry and picker selection, giving merchants flexibility to choose their preferred input method based on personal preference and specific date entry scenarios.\n\nFor visual calendar-based selection, consider `DatePicker`. The component validates dates in real-time and provides clear error messages for invalid entries, preventing form submission errors and reducing the need for merchants to correct date inputs multiple times.',
+    'The DateField component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.\n\nDateField components support both manual text entry and picker selection, giving merchants flexibility to choose their preferred input method based on personal preference and specific date entry scenarios.\n\nFor visual calendar-based selection, consider DatePicker. The component validates dates in real-time and provides clear error messages for invalid entries, preventing form submission errors and reducing the need for merchants to correct date inputs multiple times.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `DateField` component.',
+        'Configure the following properties on the DateField component.',
       type: 'DateFieldProps',
     },
   ],
@@ -39,7 +39,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent: `\n- \`DateField\` provides text-based date input—for calendar-style visual date selection, use the \`DatePicker\` component which offers an interactive calendar interface.\n- The field defaults to the current date rather than being empty—if you need an empty initial state, explicitly set the \`value\` property to an empty string.\n- Action buttons are limited to simple press callbacks—complex action workflows require custom implementation or additional components.\n`,
+      sectionContent: `\n- DateField provides text-based date input—for calendar-style visual date selection, use the DatePicker component which offers an interactive calendar interface.\n- The field defaults to the current date rather than being empty—if you need an empty initial state, explicitly set the \`value\` property to an empty string.\n- Action buttons are limited to simple press callbacks—complex action workflows require custom implementation or additional components.\n`,
     },
   ],
   thumbnail: 'date-field-thumbnail.png',
