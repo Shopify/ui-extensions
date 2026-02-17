@@ -32,24 +32,16 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
+    image: 'datefield-default.png',
+    description:
+      'Add a date field to let merchants select a date using a built-in calendar picker. This example shows a basic date field with a default view and pre-selected value.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a basic date field',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-          layout: 'alignStart',
-          customStyles: {
-            minHeight: '300px',
-          },
-        },
-        {
-          code: './examples/default.jsx',
-          layout: 'alignStart',
-          customStyles: {
-            minHeight: '300px',
-          },
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -58,228 +50,130 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Simple date field for collecting a single date with a descriptive label.',
+              'Collect a date from merchants with a labeled input and placeholder text. This example shows a date field configured with a label, name, and placeholder.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Collect a date with a label and placeholder',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '350px',
-                  },
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Date field pre-populated with a specific date for editing existing data.',
+              'Pre-populate a date field so merchants can review or edit a provided date. This example shows a date field with a value already set.',
             codeblock: {
-              title: 'With default value',
+              title: 'Pre-populate with an existing date',
               tabs: [
                 {
                   code: './examples/with-default-value.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-default-value.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '350px',
-                  },
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Shows how to restrict selectable dates to weekdays only.',
+              'Restrict which days of the week merchants can select, such as excluding weekends. This example shows a date field that only allows weekday selections.',
             codeblock: {
-              title: 'With date restrictions',
+              title: 'Restrict selectable days of the week',
               tabs: [
                 {
                   code: './examples/with-date-restrictions.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-date-restrictions.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '350px',
-                  },
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates allowing only specific dates from a predefined list.',
+              'Limit selection to a specific set of dates, such as available appointment slots. This example shows a date field that only allows dates from a predefined list.',
             codeblock: {
-              title: 'With specific allowed dates',
+              title: 'Allow only specific dates',
               tabs: [
                 {
                   code: './examples/with-specific-allowed-dates.html',
-                  language: 'html',
-                },
-                {
-                  code: './examples/with-specific-allowed-dates.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '350px',
-                  },
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Date field showing validation error for required field or invalid date entry.',
+              'Display an error message when a required date is missing or an invalid date is entered. This example shows a date field with a static error and the required attribute.',
             codeblock: {
-              title: 'With error state',
+              title: 'Show a validation error',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '350px',
-                  },
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Shows date fields in different interaction states for viewing-only or disabled forms.',
+              'Prevent editing by making a date field read-only or fully disabled. This example shows a read-only field for viewing a creation date and a disabled field for an archived date.',
             codeblock: {
-              title: 'Disabled and read-only states',
+              title: 'Disable or make a date field read-only',
               tabs: [
                 {
                   code: './examples/disabled-and-read-only-states.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-and-read-only-states.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '350px',
-                  },
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Complete form example showing date field with other form elements.',
+              'Combine date fields with other form elements like text fields and buttons. This example shows a complete order form with a required date, a weekday-restricted delivery date, and a submit button.',
             codeblock: {
-              title: 'Form integration',
+              title: 'Use date fields in a form',
               tabs: [
                 {
                   code: './examples/form-integration.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/form-integration.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '350px',
-                  },
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Example showing two date fields for selecting a date range.',
+              'Pair two date fields to let merchants define a start and end date for a range. This example shows side-by-side date fields for selecting a report period.',
             codeblock: {
-              title: 'Date range selection',
+              title: 'Select a date range with two fields',
               tabs: [
                 {
                   code: './examples/date-range-selection.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/date-range-selection.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '350px',
-                  },
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates date fields with business logic restrictions and validation.',
+              'Validate a date field in real time and update the error message as the merchant interacts. This example shows a required date field that clears its error once a valid date is selected.',
             codeblock: {
-              title: 'Date fields with validation',
-              tabs: [
-                {
-                  code: './examples/date-fields-with-validation.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/date-fields-with-validation.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '550px',
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-      {
-        title: 'Form validation',
-        examples: [
-          {
-            description:
-              'Interactive example showing required date field validation with dynamic error messages.',
-            codeblock: {
-              title: 'Date field validation',
+              title: 'Validate a date field dynamically',
               tabs: [
                 {
                   code: './examples/validation-example.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/validation-example.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '450px',
-                  },
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

@@ -39,17 +39,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'textarea-default.png',
+    description:
+      'Add a multi-line text input for collecting longer content from merchants. This example shows a text area with a pre-filled shipping address and a set number of visible rows.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a basic text area',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -58,76 +56,60 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple text area for collecting product descriptions with a placeholder and autocomplete disabled.',
+              'Collect longer text like product descriptions with a placeholder to guide input. This example shows an empty text area with placeholder text and autocomplete disabled.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Collect text with a placeholder',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Showcases a text area for writing SEO meta descriptions with a character limit of 160, providing guidance text and a multi-line input.',
+              'Set a maximum character length to keep input concise, such as for SEO meta descriptions. This example shows a text area with a 160-character limit and help text explaining the constraint.',
             codeblock: {
-              title: 'Seo meta description with character limit',
+              title: 'Limit input length with a character cap',
               tabs: [
                 {
                   code: './examples/seo-meta-description-with-character-limit.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/seo-meta-description-with-character-limit.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates the error state of a text area with a minimum length requirement, showing how validation errors are displayed in a commerce context.',
+              'Display an error message when the entered text does not meet validation requirements. This example shows a text area with a minimum length constraint and an error explaining what is needed.',
             codeblock: {
-              title: 'With error state',
+              title: 'Show a validation error',
               tabs: [
                 {
                   code: './examples/error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/error-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates a text area for entering detailed product care instructions, with an expanded height and supporting guidance text.',
+              'Prevent editing by making a text area read-only or fully disabled. This example shows a read-only field for viewing order notes and a disabled field for internal comments.',
             codeblock: {
-              title: 'Product care instructions',
+              title: 'Disable or make a text area read-only',
               tabs: [
                 {
-                  code: './examples/product-care-instructions.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/product-care-instructions.jsx',
-                  language: 'preview-jsx',
+                  code: './examples/disabled-and-read-only.html',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

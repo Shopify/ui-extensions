@@ -55,17 +55,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'choicelist-default.png',
+    description:
+      'Present a group of options for merchants to choose from using radio buttons. This example shows a single-select choice list component with a label, help text, and an `onChange` handler.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a single-select choice list',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -74,95 +72,60 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a basic choice list with single selection, showing how to create a group of radio button choices.',
+              'Set a default selection so merchants see a pre-selected option when the form loads. This example shows a single-select choice list with one option already selected.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Pre-select a default option',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates a choice list with multiple selection enabled, allowing merchants to choose multiple options with additional descriptive details for each choice.',
+              'Allow merchants to select more than one option using checkboxes instead of radio buttons. This example shows a multi-select choice list with descriptive details on each option.',
             codeblock: {
-              title: 'Multiple selections',
+              title: 'Enable multiple selections with details',
               tabs: [
                 {
                   code: './examples/multiple-selections.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/multiple-selections.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Shows how to display an error message in a choice list when an invalid selection is made or a validation constraint is not met.',
+              'Display an error message when a selection is invalid or a required choice has not been made. This example shows a choice list with a static error message.',
             codeblock: {
-              title: 'With error state',
+              title: 'Show a validation error',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Showcases a multiple-selection choice list with each option including detailed information.',
+              'Disable a choice list to prevent interaction while keeping the current selection visible. This example shows a disabled choice list with a pre-selected option.',
             codeblock: {
-              title: 'Multiple choices with details',
+              title: 'Disable a choice list',
               tabs: [
                 {
-                  code: './examples/multiple-choices-with-details.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/multiple-choices-with-details.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-        ],
-      },
-      {
-        title: 'Form validation',
-        examples: [
-          {
-            description:
-              'Interactive example showing required choice validation with dynamic error messages.',
-            codeblock: {
-              title: 'Choice list validation',
-              tabs: [
-                {
-                  code: './examples/validation-example.jsx',
-                  language: 'preview-jsx',
-                  layout: 'formWrapper',
+                  code: './examples/disabled-state.html',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
