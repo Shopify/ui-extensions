@@ -641,8 +641,10 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * Once the order is created, you can query these metafields using the
    * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
    *
-   * > Tip:
-   * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.
+   * > Caution:
+   * `metafields` is deprecated. Use `appMetafields` with cart metafields instead.
+   *
+   * @deprecated Use `appMetafields` with cart metafields instead.
    */
   metafields: SubscribableSignalLike<Metafield[]>;
 
