@@ -46,6 +46,23 @@ export const replaceFileContent = async ({
   }
 };
 
+const GENERATED_DOCS_DATA_V2 = 'generated_docs_data_v2.json';
+
+/**
+ * Resolves the path to the generated docs data file. Prefers the legacy
+ * filename (e.g. generated_docs_data.json); falls back to
+ * generated_docs_data_v2.json when @shopify/generate-docs writes only v2.
+ */
+export const resolveGeneratedDocsDataPath = (
+  rootPath,
+  outputDir,
+  generatedDocsDataFile,
+) => {
+  const legacyPath = path.join(rootPath, outputDir, generatedDocsDataFile);
+  const v2Path = path.join(rootPath, outputDir, GENERATED_DOCS_DATA_V2);
+  return existsSync(legacyPath) ? legacyPath : v2Path;
+};
+
 export const generateFiles = async ({
   scripts,
   outputDir,
@@ -65,9 +82,20 @@ export const generateFiles = async ({
     }),
   );
 
-  const generatedFiles = [path.join(outputDir, generatedDocsDataFile)];
+  const actualDocsDataPath = resolveGeneratedDocsDataPath(
+    rootPath,
+    outputDir,
+    generatedDocsDataFile,
+  );
+  if (actualDocsDataPath.includes(GENERATED_DOCS_DATA_V2)) {
+    console.warn(
+      `Using ${GENERATED_DOCS_DATA_V2} (${generatedDocsDataFile} not found). @shopify/generate-docs should output the legacy filename for backward compatibility.`,
+    );
+  }
+
+  const generatedFiles = [actualDocsDataPath];
   if (generatedStaticPagesFile) {
-    generatedFiles.push(path.join(outputDir, generatedStaticPagesFile));
+    generatedFiles.push(path.join(rootPath, outputDir, generatedStaticPagesFile));
   }
 
   // Make sure https://shopify.dev URLs are relative so they work in Spin.
@@ -79,7 +107,7 @@ export const generateFiles = async ({
   });
 
   if (transformJson) {
-    await transformJson(path.join(outputDir, generatedDocsDataFile));
+    await transformJson(actualDocsDataPath);
   }
 };
 

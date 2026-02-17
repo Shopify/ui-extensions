@@ -1,5 +1,7 @@
 /**
  * Represents a monetary amount with currency information.
+ *
+ * @publicDocs
  */
 export interface Money {
   /**
@@ -14,6 +16,8 @@ export interface Money {
 
 /**
  * Represents a monetary amount as a string with explicit currency code.
+ *
+ * @publicDocs
  */
 export interface MoneyV2 {
   /**

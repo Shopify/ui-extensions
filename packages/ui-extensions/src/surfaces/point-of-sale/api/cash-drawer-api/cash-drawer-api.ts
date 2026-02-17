@@ -1,5 +1,7 @@
 /**
  * The `CashDrawerApi` object provides methods for controlling cash drawer hardware. Access these methods through `shopify.cashDrawer` to trigger cash drawer operations.
+ *
+ * @publicDocs
  */
 export interface CashDrawerApiContent {
   /**
@@ -12,6 +14,8 @@ export interface CashDrawerApiContent {
 
 /**
  * The `CashDrawerApi` object provides methods for controlling cash drawer hardware. Access these methods through `shopify.cashDrawer` to trigger cash drawer operations.
+ *
+ * @publicDocs
  */
 export interface CashDrawerApi {
   /**

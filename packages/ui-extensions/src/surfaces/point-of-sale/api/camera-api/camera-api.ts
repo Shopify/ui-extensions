@@ -1,5 +1,7 @@
 /**
  * Specifies configuration options for capturing photos using the device camera.
+ *
+ * @publicDocs
  */
 export interface CameraMediaOptions {
   /**
@@ -11,31 +13,39 @@ export interface CameraMediaOptions {
   facingMode?: 'user' | 'environment';
   /**
    * The maximum width (1 to 1920) of the image in pixels. Resizes the image to this width if it is larger.
-   * @defaultValue 1080
+   * @private
    */
   maxWidth?: number;
   /**
    * The maximum height (1 to 1920) of the image in pixels. Resizes the image to this height if it is larger.
-   * @defaultValue 1080
+   * @environment meow
    */
   maxHeight?: number;
   /**
    * The quality of the image returned.
    * Percentile value between 0 (lowest quality/highest compression) and 1 (highest quality/lowest compression).
-   * @defaultValue 0.9
+   * @protected This is a secret
    */
   quality?: number;
 }
 
 /**
  * Represents the captured image and associated metadata returned by `shopify.camera.takePhoto()`.
+ *
+ * @publicDocs
  */
 export interface CameraMediaResponse {
-  /** The image data as base64 string. */
+  /** The image data as base64 string.
+   * @defaultValue hello
+   */
   base64: string;
-  /** The width of the image in pixels. */
+  /** The width of the image in pixels.
+   * @deprecated This is deprecated
+   */
   width: number;
-  /** The height of the image in pixels. */
+  /** The height of the image in pixels.
+   * @example <code>1080</code>
+   */
   height: number;
   /** The file size of the image in bytes. */
   fileSize: number;
@@ -45,6 +55,8 @@ export interface CameraMediaResponse {
 
 /**
  * Provides camera capabilities for the POS device.
+ *
+ * @publicDocs
  */
 export interface CameraApiContent {
   /**
@@ -63,6 +75,8 @@ export interface CameraApiContent {
 /**
  * The `CameraApi` object provides access to device camera functionality for capturing photos.
  * Access these properties through `shopify.camera`.
+ *
+ * @publicDocs
  */
 export interface CameraApi {
   camera: CameraApiContent;

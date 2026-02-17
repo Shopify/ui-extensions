@@ -12,6 +12,8 @@ import type {
 
 /**
  * The `CartApi` object provides access to cart management functionality and real-time cart state monitoring. Access these properties through `shopify.cart` to interact with the current POS cart.
+ *
+ * @publicDocs
  */
 export interface CartApi {
   cart: CartApiContent;
@@ -19,14 +21,21 @@ export interface CartApi {
 
 /**
  * Defines the type of discount applied at the cart level. Specifies whether the discount is percentage-based, fixed amount, or discount code redemption.
+ *
+ * @publicDocs
  */
 export type CartDiscountType = 'Percentage' | 'FixedAmount' | 'Code';
 
 /**
  * Defines the type of discount applied to individual line items. Specifies whether the discount is percentage-based or a fixed amount reduction.
+ *
+ * @publicDocs
  */
 export type LineItemDiscountType = 'Percentage' | 'FixedAmount';
 
+/**
+ * @publicDocs
+ */
 export interface CartApiContent {
   /**
    * Provides read-only access to the current cart state and allows subscribing to cart changes. The `value` property provides the current cart state, and `subscribe` allows listening to changes with improved performance and memory management.

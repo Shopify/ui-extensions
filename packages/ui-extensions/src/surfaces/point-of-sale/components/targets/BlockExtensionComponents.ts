@@ -1,3 +1,6 @@
+/**
+ * @publicDocs
+ */
 export type BlockExtensionComponents =
   | 'Badge'
   | 'Box'

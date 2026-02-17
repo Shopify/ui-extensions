@@ -10,6 +10,7 @@ import {
   copyGeneratedToShopifyDev,
   replaceFileContent,
   resolveShopifyDevPath,
+  resolveGeneratedDocsDataPath,
 } from '../build-doc-shared.mjs';
 
 const EXTENSIONS_API_VERSION = process.argv[2];
@@ -37,6 +38,7 @@ const shopifyDevDBPath = path.join(
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
+// Build scripts expect this name; shared build resolves generated_docs_data_v2.json when absent.
 const generatedDocsDataFile = 'generated_docs_data.json';
 const generatedStaticPagesFile = 'generated_static_pages.json';
 
@@ -48,7 +50,10 @@ const tsconfig = 'tsconfig.docs.json';
 const transformJson = async (filePath) => {
   let jsonData = JSON.parse((await fs.readFile(filePath, 'utf8')).toString());
 
-  jsonData = jsonData.filter(Boolean);
+  // Legacy format is an array; v2 format (generated_docs_data_v2.json) is an object.
+  if (Array.isArray(jsonData)) {
+    jsonData = jsonData.filter(Boolean);
+  }
   await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
 };
 
@@ -136,8 +141,13 @@ const generateExtensionsDocs = async () => {
   });
 
   // Update API version in relative doc links
+  const docsDataPath = resolveGeneratedDocsDataPath(
+    rootPath,
+    outputDir,
+    generatedDocsDataFile,
+  );
   await replaceFileContent({
-    filePaths: path.join(outputDir, generatedDocsDataFile),
+    filePaths: docsDataPath,
     searchValue: '/docs/api/pos-ui-extensions/[^/]*/',
     replaceValue: `/docs/api/pos-ui-extensions/${EXTENSIONS_API_VERSION}/`,
   });

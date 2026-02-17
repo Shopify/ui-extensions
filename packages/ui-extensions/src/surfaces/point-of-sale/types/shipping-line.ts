@@ -3,6 +3,8 @@ import type {TaxLine} from './tax-line';
 
 /**
  * Represents a shipping charge applied to an order, including the price and applicable taxes.
+ *
+ * @publicDocs
  */
 export interface ShippingLine {
   /**
@@ -25,6 +27,8 @@ export interface ShippingLine {
 
 /**
  * Represents a calculated shipping line with specific shipping or retail method type.
+ *
+ * @publicDocs
  */
 export interface CalculatedShippingLine extends ShippingLine {
   /**
@@ -41,6 +45,8 @@ export interface CalculatedShippingLine extends ShippingLine {
 
 /**
  * Represents a custom shipping line with merchant-defined shipping charges.
+ *
+ * @publicDocs
  */
 export interface CustomShippingLine extends ShippingLine {
   /**

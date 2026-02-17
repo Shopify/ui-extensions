@@ -1,3 +1,6 @@
+/**
+ * @publicDocs
+ */
 export class StorageError extends Error {
   public name = 'StorageError';
   constructor(
@@ -7,8 +10,11 @@ export class StorageError extends Error {
     super(message);
   }
 }
+
 /**
  * Defines the storage interface for persisting extension data across sessions.
+ *
+ * @publicDocs
  */
 export interface Storage<
   BaseStorageTypes extends Record<string, any> = Record<string, unknown>,

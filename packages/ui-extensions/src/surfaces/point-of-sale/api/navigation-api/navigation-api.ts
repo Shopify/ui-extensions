@@ -1,5 +1,7 @@
 /**
  * Specifies configuration options for navigation operations. Allows passing state data that persists across navigation transitions.
+ *
+ * @publicDocs
  */
 export interface NavigationNavigateOptions {
   /**
@@ -10,6 +12,8 @@ export interface NavigationNavigateOptions {
 
 /**
  * Represents a single entry in the navigation history stack. Contains the URL and unique identifier for tracking navigation state and implementing history-based navigation.
+ *
+ * @publicDocs
  */
 export interface NavigationHistoryEntry {
   /**
@@ -28,6 +32,8 @@ export interface NavigationHistoryEntry {
 
 /**
  * The event object for the `currententrychange` event, which fires when `Navigation.currentEntry` has changed due to navigation within the extension modal. Use to access information about the previous navigation entry when responding to navigation changes.
+ *
+ * @publicDocs
  */
 export interface NavigationCurrentEntryChangeEvent {
   /**
@@ -36,6 +42,9 @@ export interface NavigationCurrentEntryChangeEvent {
   from: NavigationHistoryEntry;
 }
 
+/**
+ * @publicDocs
+ */
 export interface Navigation {
   /**
    * Navigates to a specific URL, updating any provided state in the history entries list. Returns a promise that resolves when navigation is complete. Use for programmatic navigation between screens, implementing custom navigation controls, or deep-linking to specific modal states.
@@ -71,6 +80,8 @@ export interface Navigation {
 
 /**
  * The global `window` object provides control over the extension modal lifecycle. Access these properties and methods directly through the global `window` object to manage the modal interface programmatically.
+ *
+ * @publicDocs
  */
 export interface Window {
   /**
@@ -81,6 +92,8 @@ export interface Window {
 
 /**
  * The global `window` object provides control over the extension modal lifecycle. Access these properties and methods directly through the global `window` object to manage the modal interface programmatically.
+ *
+ * @publicDocs
  */
 export interface Window {
   /**
