@@ -1,1 +1,17 @@
-<s-button icon="plus" accessibilityLabel="Add product" />
+<s-stack direction="inline" gap="base">
+  <s-button
+    icon="duplicate"
+    variant="tertiary"
+    accessibilityLabel="Duplicate product"
+   />
+  <s-button
+    icon="view"
+    variant="tertiary"
+    accessibilityLabel="Preview product"
+   />
+  <s-button
+    icon="menu-horizontal"
+    variant="tertiary"
+    accessibilityLabel="More actions"
+   />
+</s-stack>

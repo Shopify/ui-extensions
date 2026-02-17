@@ -80,24 +80,6 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a simple button with default styling, automatically determining its visual variant and using a clear, action-oriented label.',
-            codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
               'Showcases different button variants with varying visual emphasis, helping merchants understand action priorities through distinct styling.',
             codeblock: {
               title: 'Variants',
@@ -224,24 +206,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates a button group with carefully aligned actions, showing how to create a clear visual hierarchy for form submission and cancellation.',
-            codeblock: {
-              title: 'Form submission buttons',
-              tabs: [
-                {
-                  code: './examples/product-save-form.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/product-save-form.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
               'Illustrates a button pair for destructive actions, using a critical tone to emphasize the potentially irreversible nature of the operation.',
             codeblock: {
               title: 'Delete confirmation',
@@ -253,60 +217,6 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/delete-confirmation.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Showcases a navigation button with an icon, enabling quick access to different sections of the interface.',
-            codeblock: {
-              title: 'Navigation button with icon',
-              tabs: [
-                {
-                  code: './examples/navigation-to-admin-sections.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/navigation-to-admin-sections.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates a button group for executing operations on multiple selected items.',
-            codeblock: {
-              title: 'Button group for bulk operations',
-              tabs: [
-                {
-                  code: './examples/bulk-actions.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/bulk-actions.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Showcases a set of compact, icon-only buttons with accessibility labels, perfect for creating dense interfaces.',
-            codeblock: {
-              title: 'Icon-only buttons with labels',
-              tabs: [
-                {
-                  code: './examples/toolbar-icon-buttons.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/toolbar-icon-buttons.jsx',
                   language: 'preview-jsx',
                 },
               ],

@@ -1,6 +1,0 @@
-<s-stack direction="inline" gap="base">
-  <s-button variant="secondary">Export selected</s-button>
-  <s-button variant="primary" tone="critical">
-    Delete selected
-  </s-button>
-</s-stack>
