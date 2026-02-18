@@ -171,8 +171,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * A block target that displays inline content within the product details page. Use this to show product-specific tools or reorderable content sections.
-   *
+   * A block target that provides custom reordering functionality on the product details page. Use this to help merchants rearrange product data.
    */
   'admin.product-details.reorder.render': RenderExtension<
     BlockExtensionApi<'admin.product-details.reorder.render'>,
