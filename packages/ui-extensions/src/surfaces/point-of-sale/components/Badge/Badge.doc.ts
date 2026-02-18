@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Badge',
   description:
-    'The Badge component uses color and text to communicate status information for orders, products, customers, and other business data. Use badges to create visual hierarchy and help merchants quickly identify important information or status changes.' +
+    'The badge component uses color and text to communicate status information for orders, products, customers, and other business data. Use badges to create visual hierarchy and help merchants quickly identify important information or status changes.' +
     "\n\nBadges aren't interactive elements. They display information but don't respond to user interactions like clicks or taps.",
   thumbnail: 'badge-thumbnail.png',
   isVisualComponent: true,
@@ -11,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the Badge component.',
+      description: 'Configure the following properties on the badge component.',
       type: 'Badge',
     },
   ],
@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'badge-default.png',
     description:
-      'Display status information using a Badge component with customizable tone and content. This example shows a basic badge with a tone property to indicate status through color.',
+      'Display status information using a badge component with customizable tone and content. This example shows a basic badge with a tone property to indicate status through color.',
     codeblock: {
       title: 'Display status information with a badge',
       tabs: [

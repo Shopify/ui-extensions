@@ -110,7 +110,7 @@ export interface TextAreaJSXProps
    */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only Button and Clickable components are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
+   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only button and clickable components are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
    */
   accessory?: ComponentChild;
 }
