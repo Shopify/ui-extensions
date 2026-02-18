@@ -54,7 +54,6 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
-
 };
 
 export default data;
