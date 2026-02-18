@@ -20,7 +20,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Create a text field optimized for URL input with a label and placeholder. Click to interact with the preview.',
+      'Capture web addresses from users with URL-specific input. This example shows a labeled field with placeholder text guiding the expected format. Click to interact with the preview.',
     codeblock: {
       title: 'Collect a URL',
       tabs: [
@@ -43,7 +43,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Set required status, length constraints, and custom error messages. Click to interact with the preview.',
+              'Enforce URL requirements before form submission. This example shows required validation with length constraints and custom error messages. Click to interact with the preview.',
             codeblock: {
               title: 'Set validation constraints',
               tabs: [
@@ -61,7 +61,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Pre-populate the field with a URL in read-only mode. Click to interact with the preview.',
+              'Display a URL for reference without allowing changes. This example shows a read-only field pre-populated with a store URL. Click to interact with the preview.',
             codeblock: {
               title: 'Pre-fill a URL',
               tabs: [
@@ -79,7 +79,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display a pre-filled URL that can\'t be edited. Click to interact with the preview.',
+              'Display a URL that users can view but not change. This example shows a disabled field with a pre-filled value that prevents editing. Click to interact with the preview.',
             codeblock: {
               title: 'Show a disabled field',
               tabs: [
@@ -102,7 +102,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Validate the URL format in real time as the user types. Click to interact with the preview.',
+              'Provide immediate feedback on URL validity. This example shows real-time validation that checks the URL format as the user types. Click to interact with the preview.',
             codeblock: {
               title: 'Validate URL in real time',
               tabs: [

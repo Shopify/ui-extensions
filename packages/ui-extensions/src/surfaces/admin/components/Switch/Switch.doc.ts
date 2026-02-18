@@ -20,7 +20,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Create a toggle switch for on/off settings or to enable a preference. Click to interact with the preview.',
+      'Give users a clear way to turn a feature on or off. This example shows a labeled toggle switch for enabling a preference. Click to interact with the preview.',
     codeblock: {
       title: 'Toggle a setting',
       tabs: [
@@ -44,7 +44,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Indicate an unavailable feature with a locked switch. Click to interact with the preview.',
+              'Indicate when a feature isn\'t available. This example shows a locked switch that prevents interaction while showing its current state. Click to interact with the preview.',
             codeblock: {
               title: 'Show a disabled switch',
               tabs: [
@@ -62,7 +62,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Group switches in a form for batch submission with a save action. Click to interact with the preview.',
+              'Collect multiple settings that save together. This example shows switches grouped in a form for batch submission. Click to interact with the preview.',
             codeblock: {
               title: 'Submit multiple settings in a form',
               tabs: [
@@ -80,7 +80,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Arrange switches that take effect instantly without form submission. Click to interact with the preview.',
+              'Apply changes instantly without a save button. This example shows switches arranged in a panel where each toggle takes effect immediately. Click to interact with the preview.',
             codeblock: {
               title: 'Apply multiple settings immediately',
               tabs: [
@@ -98,7 +98,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Hide the label visually while keeping it accessible to screen readers. Click to interact with the preview.',
+              'Keep switches accessible when labels aren\'t visually needed. This example shows a visually hidden label that screen readers can still announce. Click to interact with the preview.',
             codeblock: {
               title: 'Hide the label visually',
               tabs: [
@@ -116,7 +116,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display helper text and an error message when validation fails. Click to interact with the preview.',
+              'Communicate switch-related problems clearly. This example shows helper text with an error message when a required switch isn\'t enabled. Click to interact with the preview.',
             codeblock: {
               title: 'Show validation errors',
               tabs: [
@@ -134,7 +134,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Provide additional context for screen reader users beyond the visible label. Click to interact with the preview.',
+              'Provide extra context for screen reader users. This example shows an accessibility label that gives more detail than the visible label alone. Click to interact with the preview.',
             codeblock: {
               title: 'Add an accessibility label',
               tabs: [
@@ -157,7 +157,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Track switch state changes and display current values. Click to interact with the preview.',
+              'Respond to toggle changes with custom logic. This example shows state tracking that displays the current value when the switch is toggled. Click to interact with the preview.',
             codeblock: {
               title: 'Track toggle state',
               tabs: [

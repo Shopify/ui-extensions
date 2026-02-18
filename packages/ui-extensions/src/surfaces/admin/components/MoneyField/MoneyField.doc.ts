@@ -21,7 +21,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Create a money field with a label and currency formatting. Click to interact with the preview.',
+      'Capture monetary values with automatic currency formatting. This example shows a labeled money field with placeholder text and helper details. Click to interact with the preview.',
     codeblock: {
       title: 'Collect a currency value',
       tabs: [
@@ -45,7 +45,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Add a label, initial value, min/max constraints, and helper text to guide input. Click to interact with the preview.',
+              'Guide users with constraints and helpful context. This example shows a money field with min/max limits and helper text explaining the valid range. Click to interact with the preview.',
             codeblock: {
               title: 'Add a label and constraints',
               tabs: [
@@ -63,7 +63,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display an error message when validation fails. Click to interact with the preview.',
+              'Communicate input problems clearly to users. This example shows an error message displayed when the entered value is invalid. Click to interact with the preview.',
             codeblock: {
               title: 'Handle validation errors',
               tabs: [
@@ -81,7 +81,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Combine multiple money fields in a form with different currencies and constraints. Click to interact with the preview.',
+              'Collect multiple monetary values in a single form. This example shows money fields for price, compare-at price, and cost with individual constraints. Click to interact with the preview.',
             codeblock: {
               title: 'Combine multiple fields in a form',
               tabs: [
@@ -104,7 +104,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Validate input in real time with min/max limits and dynamic error messages. Click to interact with the preview.',
+              'Provide immediate feedback as users type. This example shows real-time validation with dynamic error messages when values exceed min/max limits. Click to interact with the preview.',
             codeblock: {
               title: 'Validate input in real time',
               tabs: [

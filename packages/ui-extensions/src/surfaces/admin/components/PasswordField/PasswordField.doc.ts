@@ -21,7 +21,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Create a password field with masked input and a label. Click to interact with the preview.',
+      'Securely collect sensitive credentials from users. This example shows a labeled password field with masked input. Click to interact with the preview.',
     codeblock: {
       title: 'Collect a password',
       tabs: [
@@ -45,7 +45,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Add a label, required validation, and minimum length of 8 characters with autocomplete for new passwords. Click to interact with the preview.',
+              'Enforce password requirements before submission. This example shows a required field with minimum length validation and autocomplete for new passwords. Click to interact with the preview.',
             codeblock: {
               title: 'Set validation rules',
               tabs: [
@@ -63,7 +63,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display an error message when the password doesn\'t meet length requirements. Click to interact with the preview.',
+              'Communicate password problems clearly to users. This example shows an error message when the password doesn\'t meet length requirements. Click to interact with the preview.',
             codeblock: {
               title: 'Show validation errors',
               tabs: [
@@ -81,7 +81,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Add helper text to guide users on password requirements. Click to interact with the preview.',
+              'Help users understand password requirements upfront. This example shows helper text beneath the field explaining what makes a valid password. Click to interact with the preview.',
             codeblock: {
               title: 'Add helper text',
               tabs: [
@@ -99,7 +99,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Combine the password field with an email field to create a login or registration form. Click to interact with the preview.',
+              'Create a complete authentication form. This example shows a password field combined with an email field for login or registration. Click to interact with the preview.',
             codeblock: {
               title: 'Build a login form',
               tabs: [
@@ -117,7 +117,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display a static checklist of password requirements. Click to interact with the preview.',
+              'Show users exactly what their password needs. This example shows a static checklist of requirements like character length and case requirements. Click to interact with the preview.',
             codeblock: {
               title: 'Display a requirement checklist',
               tabs: [
@@ -140,7 +140,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Validate password strength in real time as the user types. Click to interact with the preview.',
+              'Provide immediate feedback on password quality. This example shows real-time validation that checks requirements as the user types. Click to interact with the preview.',
             codeblock: {
               title: 'Validate password strength',
               tabs: [
