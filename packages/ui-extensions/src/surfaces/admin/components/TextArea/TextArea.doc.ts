@@ -97,17 +97,17 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a text area for entering detailed product care instructions, with an expanded height and supporting guidance text.',
+              'Shows text areas in read-only and disabled states. Use `readOnly` for content that should be visible but not editable, and `disabled` when the field should not be interactive.',
             codeblock: {
-              title: 'Product care instructions',
+              title: 'Disabled and read-only states',
               tabs: [
                 {
-                  code: './examples/product-care-instructions.html',
+                  code: './examples/disabled-and-read-only.html',
                   language: 'html',
                 },
 
                 {
-                  code: './examples/product-care-instructions.jsx',
+                  code: './examples/disabled-and-read-only.jsx',
                   language: 'preview-jsx',
                 },
               ],
