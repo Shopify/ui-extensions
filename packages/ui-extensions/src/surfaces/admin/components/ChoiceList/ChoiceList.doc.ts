@@ -53,9 +53,11 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     examples: [
       {
+        description:
+          'Present a group of options for merchants to choose from using radio buttons. This example shows a single-select choice list with a label, help text, and an onChange handler.',
         image: 'choicelist-default.png',
         codeblock: {
-          title: 'Default',
+          title: 'Add a single-select choice list',
           tabs: [
             {
               code: './examples/default.html',
@@ -70,9 +72,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates a basic ChoiceList with single selection, showing how to create a group of radio button choices.',
+          'Set a default selection so merchants see a pre-selected option when the form loads. This example shows a single-select choice list with one option already selected.',
         codeblock: {
-          title: 'Basic usage',
+          title: 'Pre-select a default option',
           tabs: [
             {
               code: './examples/basic-usage.html',
@@ -87,9 +89,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Illustrates a ChoiceList with multiple selection enabled, allowing users to choose multiple options with additional descriptive details for each choice.',
+          'Allow merchants to select more than one option using checkboxes instead of radio buttons. This example shows a multi-select choice list with descriptive details on each option.',
         codeblock: {
-          title: 'Multiple selections',
+          title: 'Enable multiple selections with details',
           tabs: [
             {
               code: './examples/multiple-selections.html',
@@ -104,9 +106,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Shows how to display an error message in a ChoiceList when an invalid selection is made or a validation constraint is not met.',
+          'Display an error message when a selection is invalid or a required choice has not been made. This example shows a choice list with a static error message.',
         codeblock: {
-          title: 'With error state',
+          title: 'Show a validation error',
           tabs: [
             {
               code: './examples/with-error-state.html',
@@ -121,9 +123,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Shows a ChoiceList in a disabled state, preventing any user interaction. Use when selections should be visible but not editable.',
+          'Disable a choice list to prevent interaction while keeping the current selection visible. This example shows a disabled choice list with a pre-selected option.',
         codeblock: {
-          title: 'Disabled state',
+          title: 'Disable a choice list',
           tabs: [
             {
               code: './examples/disabled-state.html',
@@ -138,9 +140,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Interactive example showing required choice validation with dynamic error messages.',
+          'Validate selections in real time and show or clear error messages as the merchant interacts. This example shows a required choice list that updates its error state dynamically.',
         codeblock: {
-          title: 'Choice list validation',
+          title: 'Validate selections dynamically',
           tabs: [
             {
               code: './examples/validation-example.jsx',
