@@ -50,9 +50,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
-      sectionContent: `- Badge only supports two sizes: \`small-100\` and \`base\`. There is no large badge option.
+      sectionContent: `- Badge only supports two sizes: \`small-100\` and \`base\`.
 - Badge text doesn't wrap to multiple lines. Long labels will be clipped, so keep text concise.
-- Only icons from the Shopify admin icon set are supported through the \`icon\` prop. Custom icons or images can't be used inside a badge.
+- Only icons from the [Polaris icon set](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/icon#available-icons) are supported through the \`icon\` prop. Custom icons or images can't be used inside a badge.
 - Badge isn't interactive. It doesn't support click handlers or navigation. For interactive status indicators, combine a badge with a [Pressable](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/pressable) or [Button](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/button) component.`,
     },
   ],

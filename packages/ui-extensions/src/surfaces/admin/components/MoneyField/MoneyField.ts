@@ -17,10 +17,9 @@ export interface MoneyFieldProps
     NumberConstraintsProps,
     AutocompleteProps<MoneyAutocompleteField> {
   /**
-   * The [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) currency code that determines the currency symbol,
-   * formatting rules, and decimal precision for the money field.
+   * The [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) currency code associated with the monetary value.
+   * This code is included in the `Money` object returned by `onChange`.
    * For example, `'USD'` for US Dollars or `'EUR'` for Euros.
-   *
    */
   currencyCode?: CurrencyCode;
 }

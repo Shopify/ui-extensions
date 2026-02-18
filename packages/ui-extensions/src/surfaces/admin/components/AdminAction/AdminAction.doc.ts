@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'AdminAction',
   description:
-    'The AdminAction component configures the primary action, secondary action, and title for admin action extensions. Use AdminAction to define the core interaction points and header content that merchants see when your extension renders.\n\nThis component is required for all admin action extensions and provides a standardized structure for action-based extension interfaces.\n\nLearn how to [build an admin action extension](/docs/apps/build/admin/actions-blocks/build-admin-action).',
+    'The AdminAction component configures the modal that appears when users trigger your admin action extension. Use AdminAction to set the title, primary button, secondary button, and loading state for the modal.\n\nLearn how to [build an admin action extension](/docs/apps/build/admin/actions-blocks/build-admin-action).',
   requires: '',
   thumbnail: 'adminaction-thumbnail.png',
   isVisualComponent: true,

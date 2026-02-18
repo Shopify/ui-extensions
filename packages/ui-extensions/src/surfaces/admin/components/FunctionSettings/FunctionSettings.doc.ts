@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'FunctionSettings',
   description:
-    'The FunctionSettings component configures metafield settings for [Shopify Functions](/docs/api/functions). Use FunctionSettings to create configuration interfaces that allow merchants to customize function behavior through structured input fields and controls.\n\nThis component provides a standardized layout for settings forms and integrates with the native save bar to handle form submission and reset actions automatically. For general form submission, use [Form](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/form).',
+    'The FunctionSettings component configures metafield settings for [Shopify Functions](/docs/api/functions). Use FunctionSettings to create configuration interfaces that allow merchants to customize function behavior through structured input fields and controls.\n\nThis component provides a standardized layout for settings forms and integrates with the native save bar to handle form submission. For general form submission, use [Form](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/form).',
   requires: '',
   thumbnail: 'form-thumbnail.png',
   isVisualComponent: true,

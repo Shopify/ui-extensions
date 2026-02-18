@@ -89,7 +89,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       anchorLink: 'limitations',
       sectionContent: `- DatePicker doesn't support time selection. Dates are returned as strings in YYYY-MM-DD format without time information.
-- The calendar displays one month at a time. There is no built-in way to show two months side-by-side for range selection.
+- The calendar displays one month at a time. There's no built-in way to show two months side-by-side for range selection.
 - DatePicker doesn't include a built-in label or form field wrapper. When using it standalone, pair it with a [Heading](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/heading) or [Text](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/text) component to provide context.`,
     },
   ],

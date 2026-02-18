@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Form',
   description:
-    "The Form component wraps form controls and enables implicit submission, allowing users to submit from any input by pressing **Enter**. Use Form to group related input fields and handle form submission through JavaScript event handlers.\n\nUnlike HTML forms, Form doesn't automatically submit data using HTTP—you must register an `onSubmit` event to process form data programmatically. For Shopify Functions configuration forms, use [FunctionSettings](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/functionsettings).",
+    "The Form component wraps form controls and manages submission and reset behavior through the Shopify admin's save bar.\n\nUnlike HTML forms, Form doesn't automatically submit data using HTTP—you must handle form data programmatically in your `onSubmit` callback. For Shopify Functions configuration forms, use [FunctionSettings](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/functionsettings).",
   requires: '',
   thumbnail: 'form-thumbnail.png',
   isVisualComponent: true,
@@ -36,12 +36,6 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
   subSections: [
-    {
-      type: 'Generic',
-      title: 'Best practices',
-      anchorLink: 'best-practices',
-      sectionContent: `- **Use Form to use the save bar:** Wrapping inputs in a Form component enables automatic integration with the Shopify admin's save bar, providing a consistent save/discard experience for merchants.`,
-    },
     {
       type: 'Generic',
       title: 'Limitations',
