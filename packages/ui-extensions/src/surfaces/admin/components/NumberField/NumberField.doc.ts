@@ -43,24 +43,6 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a simple number field for entering order quantity with a predefined range and step value.',
-            codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
               'Illustrates a number field for entering product prices with currency prefix and suffix, using decimal input mode.',
             codeblock: {
               title: 'With prefix and suffix',
@@ -79,17 +61,35 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Showcases multiple number fields for different use cases: inventory tracking, percentage discount, and shipping weight, demonstrating various input modes and configurations.',
+              'Shows a number field with a validation error for values outside the accepted range. Use `error` to display a message and `required` to indicate the field must be filled.',
             codeblock: {
-              title: 'Multiple examples',
+              title: 'With error state',
               tabs: [
                 {
-                  code: './examples/multiple-examples.html',
+                  code: './examples/with-error-state.html',
                   language: 'html',
                 },
 
                 {
-                  code: './examples/multiple-examples.jsx',
+                  code: './examples/with-error-state.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows number fields in read-only and disabled states. Use `readOnly` for values that should be visible but not editable, and `disabled` when the field should not be interactive.',
+            codeblock: {
+              title: 'Disabled and read-only states',
+              tabs: [
+                {
+                  code: './examples/disabled-and-read-only.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/disabled-and-read-only.jsx',
                   language: 'preview-jsx',
                 },
               ],
