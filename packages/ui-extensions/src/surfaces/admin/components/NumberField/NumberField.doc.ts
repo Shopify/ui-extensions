@@ -23,9 +23,11 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     examples: [
       {
+        description:
+          'Collect a numeric value from merchants with step controls and a defined range. This example shows a number field with a label, placeholder, step increment, and min/max bounds.',
         image: 'numberfield-default.png',
         codeblock: {
-          title: 'Default',
+          title: 'Add a basic number field',
           tabs: [
             {
               code: './examples/default.html',
@@ -40,9 +42,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Illustrates a number field for entering product prices with currency prefix and suffix, using decimal input mode.',
+          'Add a prefix and suffix to provide context for the expected value, such as a currency symbol or unit. This example shows a price field with a dollar sign prefix, currency suffix, and decimal input mode.',
         codeblock: {
-          title: 'With prefix and suffix',
+          title: 'Add a prefix and suffix for currency input',
           tabs: [
             {
               code: './examples/with-prefix-and-suffix.html',
@@ -57,9 +59,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Shows a number field with a validation error for values outside the accepted range. Use `error` to display a message and `required` to indicate the field must be filled.',
+          'Display an error message when a value is outside the accepted range or a required field is empty. This example shows a required number field with an error indicating the minimum allowed value.',
         codeblock: {
-          title: 'With error state',
+          title: 'Show a validation error',
           tabs: [
             {
               code: './examples/with-error-state.html',
@@ -74,9 +76,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Shows number fields in read-only and disabled states. Use `readOnly` for values that should be visible but not editable, and `disabled` when the field should not be interactive.',
+          'Prevent editing by making a number field read-only or fully disabled. This example shows a read-only price field and a disabled tax rate field, both with pre-filled values.',
         codeblock: {
-          title: 'Disabled and read-only states',
+          title: 'Disable or make a number field read-only',
           tabs: [
             {
               code: './examples/disabled-and-read-only.html',
