@@ -23,9 +23,11 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     examples: [
       {
+        description:
+          'Collect an email address from merchants with a labeled input and helper text. This example shows a basic email field with a placeholder and details text.',
         image: 'emailfield-default.png',
         codeblock: {
-          title: 'Default',
+          title: 'Add a basic email field',
           tabs: [
             { code: './examples/default.html', language: 'html' },
             { code: './examples/default.jsx', language: 'preview-jsx' },
@@ -34,9 +36,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Showcases an email field with additional details and an error message, illustrating how to provide contextual information and validation feedback.',
+          'Display an error message and help text to guide merchants toward entering a valid email. This example shows a required email field with both a details hint and an error message.',
         codeblock: {
-          title: 'With error and help text',
+          title: 'Show an error with help text',
           tabs: [
             { code: './examples/with-error-and-help-text.html', language: 'html' },
             { code: './examples/with-error-and-help-text.jsx', language: 'preview-jsx' },
@@ -45,9 +47,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Shows how to render an email field in a read-only state, useful for displaying existing email addresses that cannot be modified.',
+          'Display an existing email address that merchants can see but not edit. This example shows a read-only email field with a pre-filled value.',
         codeblock: {
-          title: 'Read-only display',
+          title: 'Make an email field read-only',
           tabs: [
             { code: './examples/read-only-display.html', language: 'html' },
             { code: './examples/read-only-display.jsx', language: 'preview-jsx' },
@@ -56,9 +58,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Shows a disabled email field that displays a value but prevents any user interaction. Use when the email is managed elsewhere or cannot be changed in the current context.',
+          'Disable an email field to prevent all interaction while keeping the value visible. This example shows a disabled field with a pre-filled email address.',
         codeblock: {
-          title: 'Disabled state',
+          title: 'Disable an email field',
           tabs: [
             { code: './examples/disabled-state.html', language: 'html' },
             { code: './examples/disabled-state.jsx', language: 'preview-jsx' },
@@ -67,9 +69,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates setting minimum and maximum length constraints for the email input, providing additional validation beyond the standard email format check.',
+          'Set minimum and maximum character lengths to add validation beyond the standard email format check. This example shows a required email field with minLength and maxLength constraints.',
         codeblock: {
-          title: 'With length constraints',
+          title: 'Set character length constraints',
           tabs: [
             { code: './examples/with-length-constraints.html', language: 'html' },
             { code: './examples/with-length-constraints.jsx', language: 'preview-jsx' },
@@ -78,9 +80,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Interactive example showing real-time email validation with error messages that update as the user types.',
+          'Validate the email address in real time and update the error message as the merchant types. This example shows an email field with dynamic validation using a regex pattern.',
         codeblock: {
-          title: 'Email validation',
+          title: 'Validate an email address dynamically',
           tabs: [
             {
               code: './examples/validation-example.jsx',
