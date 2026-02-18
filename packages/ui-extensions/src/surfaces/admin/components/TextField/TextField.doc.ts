@@ -50,24 +50,6 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a simple text input field for entering a store name with autocomplete turned off, providing a clean and straightforward input experience.',
-            codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
               'Showcases a text field enhanced with a search icon and a placeholder, creating a visually intuitive input for searching products.',
             codeblock: {
               title: 'With icon',
@@ -103,24 +85,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             },
           },
           {
-            description:
-              'Illustrates a text field marked as required, ensuring that users must provide input before form submission, with built-in validation support.',
-            codeblock: {
-              title: 'Required field with validation',
-              tabs: [
-                {
-                  code: './examples/required-field-with-validation.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/required-field-with-validation.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
             description: 'Displays text field usage with prefix and suffix',
             codeblock: {
               title: 'With prefix and suffix',
@@ -150,6 +114,24 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/with-accessory.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Shows text fields in read-only and disabled states. Use `readOnly` for values that should be visible but not editable, and `disabled` when the field should not be interactive.',
+            codeblock: {
+              title: 'Disabled and read-only states',
+              tabs: [
+                {
+                  code: './examples/disabled-and-read-only.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/disabled-and-read-only.jsx',
                   language: 'preview-jsx',
                 },
               ],
