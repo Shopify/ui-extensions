@@ -1,6 +1,5 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {generateJsxCodeBlock} from '../helpers/generateCodeBlock';
-import {TargetLink} from '../types/ExtensionTargetType';
 
 const generateCodeBlockForScannerApi = (title: string, fileName: string) =>
   generateJsxCodeBlock(title, 'scanner-api', fileName);
@@ -8,7 +7,7 @@ const generateCodeBlockForScannerApi = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Scanner API',
   description:
-    'The Scanner API provides access to barcode and QR code scanning functionality on POS devices, allowing you to subscribe to scan events, monitor available scanner sources, and process scanned data in real-time. The API enables integration with device cameras, external scanners, and embedded scanning hardware.',
+    'The Scanner API provides barcode and QR code scanning on POS devices. Use it to show the camera scanner, subscribe to scan events, or detect available scanner hardware (camera, external, or embedded).',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
@@ -28,11 +27,10 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent: `
-- **Handle scan events reactively:** Use \`subscribe\` methods to process scan events as they occur for immediate feedback.
-- **Validate scanned data:** Validate before processing and handle invalid codes, unsupported formats, or errors.
-- **Provide clear feedback:** Show success confirmations, error messages, and guidance when scans fail.
-- **Adapt to available sources:** Check available scanner sources and provide alternatives when preferred methods aren't available.
-- **Handle scan data processing:** Scan data processing is reactive and requires proper subscription management to avoid memory leaks or unexpected behavior when components unmount.
+- **Deduplicate scan events:** The subscription can fire multiple times for the same code, including stale data from a previous scan when re-subscribing after a component remount. Track the last processed value and skip duplicates.
+- **Manage camera lifecycle:** Call \`hideCameraScanner()\` before showing results or a loading state. Call \`showCameraScanner()\` when the user is ready to scan again.
+- **Clean up subscriptions:** Call the unsubscribe function returned by \`subscribe()\` in your cleanup or unmount handler to prevent memory leaks.
+- **Validate scanned data:** Check the format of scanned data before processing. Show clear feedback for invalid codes, network errors, and unsupported formats.
 `,
     },
     {
@@ -40,21 +38,31 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-The Scanner API is only available in action (modal) targets where scanning functionality is supported and can't be used in other targets.
+- The Scanner API is only available in action (modal) targets.
+- \`showCameraScanner()\` displays a full-screen system camera overlay. It doesn't return a value or promise, so there's no way to detect if the camera activated successfully.
+- Calling \`scannerData.current.subscribe()\` may immediately emit the value from a previous scan because unsubscribing does not clear the signal.
 `,
     },
   ],
   examples: {
     description:
-      'Learn how to handle barcode and QR code scans and access scanner information.',
+      'Learn how to scan codes, process results, and detect available scanner hardware.',
     examples: [
       {
         codeblock: generateCodeBlockForScannerApi(
-          'Respond to scan events based on scanner source',
+          'Verify a scanned code with a backend',
+          'verify-scanned-code',
+        ),
+        description:
+          'Build a scan-and-verify workflow. Open the camera on mount, send scanned data to a backend for validation, and show loading, success, or error states. Hide the camera during verification and restore it when the user taps **Scan next**.',
+      },
+      {
+        codeblock: generateCodeBlockForScannerApi(
+          'Detect available scanner sources',
           'conditional-scanner-example',
         ),
         description:
-          'Subscribe to scan events and adapt behavior based on the scanner source. This example shows how to use `shopify.scanner.subscribe()` to receive scan events and check `shopify.scanner.source` to determine which scanner type was used (camera, external scanner, or embedded hardware). By identifying the scanner type, you can customize handling based on the scanning method.',
+          'Subscribe to `shopify.scanner.sources.current` to detect which scanner hardware is available (camera, external, or embedded) and to `shopify.scanner.scannerData.current` to receive scan results. By identifying the scanner type, you can customize handling based on the scanning method.',
       },
     ],
   },
