@@ -3,22 +3,22 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Tile',
   description:
-    'The Tile component displays interactive buttons for the POS smart grid. Use tiles as customizable shortcuts that allow merchants to quickly access workflows, actions, and information from the smart grid.' +
+    'The tile component displays interactive buttons for the POS smart grid. Use tiles as customizable shortcuts that allow merchants to quickly access workflows, actions, and information from the smart grid.' +
     '\n\nTiles can change their appearance, content, and enabled state based on surrounding context such as cart contents, device conditions, or runtime state. They can display contextual information through titles, subtitles, and badge values.' +
-    '\n\nEach POS UI extension can only render one Tile component for each [home screen tile target](/docs/api/pos-ui-extensions/2026-01-rc/targets/home-screen#home-screen-tile-).',
+    '\n\nEach POS UI extension can only render one tile component for each [home screen tile target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/home-screen#home-screen-tile-).',
   thumbnail: 'tile-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the Tile component.',
+      description: 'Configure the following properties on the tile component.',
       type: 'Tile',
     },
     {
       title: 'Events',
       description:
-        'The Tile component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The tile component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TileEvents',
     },
   ],
@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'tile-default.png',
     description:
-      'Create interactive smart grid shortcuts using a Tile component with customizable title, subtitle, and badge. This example shows a basic tile for the POS smart grid.',
+      'Create interactive smart grid shortcuts using a tile component with customizable title, subtitle, and badge. This example shows a basic tile for the POS smart grid.',
     codeblock: {
       title: 'Create a smart grid tile',
       tabs: [
@@ -55,7 +55,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-The Tile component supports click and long press interactions only. Swipe, drag, and other gestures aren't supported.
+The tile component supports click and long press interactions only. Swipe, drag, and other gestures aren't supported.
 `,
     },
   ],

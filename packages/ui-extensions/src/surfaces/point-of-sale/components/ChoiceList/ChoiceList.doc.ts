@@ -1,9 +1,9 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'ChoiceList',
+  name: 'Choice list',
   description:
-    'The ChoiceList component presents multiple options for single or multiple selections. Use it when merchants need to choose from a defined set of options, such as filtering results or collecting preferences.' +
+    'The choice list component presents multiple options for single or multiple selections. Use it when merchants need to choose from a defined set of options, such as filtering results or collecting preferences.' +
     '\n\nThe component supports both single selection (radio button behavior) and multiple selection (checkbox behavior) modes. It offers multiple layout variants including list, inline, block, and grid formats to suit different space constraints and visual requirements.',
   thumbnail: 'choicelist-thumbnail.png',
   isVisualComponent: true,
@@ -12,19 +12,19 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the ChoiceList component.',
+        'Configure the following properties on the choice list component.',
       type: 'ChoiceList',
     },
     {
       title: 'Events',
       description:
-        'The ChoiceList component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ChoiceListEvents',
     },
     {
       title: 'Choice',
       description:
-        'The Choice component creates options that let merchants select one or multiple items from a list of choices.',
+        'The choice component creates options that let merchants select one or multiple items from a list of choices.',
       type: 'Choice',
     },
   ],
@@ -33,7 +33,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'choicelist-default.png',
     description:
-      'Present options using a ChoiceList component. This example shows a basic choice list for single selection.',
+      'Present options using a choice list component. This example shows a basic choice list for single selection.',
     codeblock: {
       title: 'Create a choice list for selections',
       tabs: [
@@ -59,7 +59,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-ChoiceList component types other than Choice can't be used as options within the choice list.`,
+Choice list component types other than choice can't be used as options within the choice list.`,
     },
   ],
   related: [],
@@ -95,7 +95,7 @@ ChoiceList component types other than Choice can't be used as options within the
       },
       {
         description:
-          'Compose rich choice content by nesting other components within Choice elements. This example demonstrates combining images, text, and layout components to create visually enhanced choice options with descriptions and supporting images.',
+          'Compose rich choice content by nesting other components within choice elements. This example demonstrates combining images, text, and layout components to create visually enhanced choice options with descriptions and supporting images.',
         codeblock: {
           title: 'Compose rich choice content',
           tabs: [

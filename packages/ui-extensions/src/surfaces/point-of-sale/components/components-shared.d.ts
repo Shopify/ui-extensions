@@ -723,11 +723,11 @@ export type AnyString = string & {};
 export type optionalSpace = '' | ' ';
 export interface BadgeProps extends GlobalProps {
   /**
-   * The content of the Badge.
+   * The content of the badge.
    */
   children?: ComponentChildren;
   /**
-   * Sets the tone of the Badge, based on the intention of the information being conveyed.
+   * Sets the tone of the badge, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
@@ -763,11 +763,11 @@ export interface BannerProps extends GlobalProps, ActionSlots {
    */
   heading?: string;
   /**
-   * The content of the Banner.
+   * The content of the banner.
    */
   children?: ComponentChildren;
   /**
-   * Sets the tone of the Banner, based on the intention of the information being conveyed.
+   * Sets the tone of the banner, based on the intention of the information being conveyed.
    *
    * The banner is a live region and the type of status will be dictated by the Tone selected.
    *
@@ -879,7 +879,7 @@ export type AccessibilityRole =
   | 'footer'
   /**
    * Used to indicate a generic section.
-   * Sections should always have a Heading or an accessible name provided in the `accessibilityLabel` property.
+   * Sections should always have a heading or an accessible name provided in the `accessibilityLabel` property.
    *
    * In an HTML host `section` will render a `<section>` element.
    * Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
@@ -1250,7 +1250,7 @@ export interface BaseBoxProps
     BorderProps,
     OverflowProps {
   /**
-   * The content of the Box.
+   * The content of the box.
    */
   children?: ComponentChildren;
   /**
@@ -1266,7 +1266,7 @@ export interface BaseBoxPropsWithRole
     AccessibilityRoleProps {}
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
-   * The behavior of the Button.
+   * The behavior of the button.
    *
    * - `submit`: Used to indicate the component acts as a submit button, meaning it submits the closest form.
    * - `button`: Used to indicate the component acts as a button, meaning it has no default action.
@@ -1278,14 +1278,14 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   type?: 'submit' | 'button' | 'reset';
   /**
-   * Callback when the Button is activated.
+   * Callback when the button is activated.
    * This will be called before the action indicated by `type`.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
    */
   onClick?: (event: Event) => void;
   /**
-   * Disables the Button meaning it cannot be clicked or receive focus.
+   * Disables the button meaning it cannot be clicked or receive focus.
    *
    * @default false
    */
@@ -1293,7 +1293,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * Replaces content with a loading indicator while a background action is being performed.
    *
-   * This also disables the Button.
+   * This also disables the button.
    *
    * @default false
    */
@@ -1370,24 +1370,24 @@ export interface BaseClickableProps
     LinkBehaviorProps {}
 export interface ButtonProps extends GlobalProps, BaseClickableProps {
   /**
-   * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
+   * A label that describes the purpose or contents of the button. It will be read to users using assistive technologies such as screen readers.
    *
-   * Use this when using only an icon or the Button text is not enough context
+   * Use this when using only an icon or the button text is not enough context
    * for users using assistive technologies.
    */
   accessibilityLabel?: string;
   /**
-   * The content of the Button.
+   * The content of the button.
    */
   children?: ComponentChildren;
   /**
-   * The type of icon to be displayed in the Button.
+   * The type of icon to be displayed in the button.
    *
    * @default ''
    */
   icon?: IconType | AnyString;
   /**
-   * The displayed inline width of the Button.
+   * The displayed inline width of the button.
    *
    * - `auto`: the size of the button depends on the surface and context.
    * - `fill`: the button will takes up 100% of the available inline size.
@@ -1397,13 +1397,13 @@ export interface ButtonProps extends GlobalProps, BaseClickableProps {
    */
   inlineSize?: 'auto' | 'fill' | 'fit-content';
   /**
-   * Changes the visual appearance of the Button.
+   * Changes the visual appearance of the button.
    *
-   * @default 'auto' - the variant is automatically determined by the Button's context
+   * @default 'auto' - the variant is automatically determined by the button's context
    */
   variant?: 'auto' | 'primary' | 'secondary' | 'tertiary';
   /**
-   * Sets the tone of the Button based on the intention of the information being conveyed.
+   * Sets the tone of the button based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
@@ -2249,7 +2249,7 @@ export interface EmbedProps extends GlobalProps, SizingProps {
    */
   src?: string;
   /**
-   * A label that describes the purpose or contents of the Embed. It will be read to users
+   * A label that describes the purpose or contents of the embed. It will be read to users
    * using assistive technologies such as screen readers.
    *
    * @implementation for web-based implementations, this should map to the [title](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/title) attribute
@@ -2258,15 +2258,15 @@ export interface EmbedProps extends GlobalProps, SizingProps {
 }
 export interface EmptyStateProps extends GlobalProps, ActionSlots {
   /**
-   * The heading of the EmptyState.
+   * The heading of the empty state.
    */
   heading?: string;
   /**
-   * The subheading of the EmptyState.
+   * The subheading of the empty state.
    */
   subheading?: ComponentChildren | StringChildren;
   /**
-   * The graphic to display in the EmptyState. The only supported components are Image and Icon.
+   * The graphic to display in the empty state. The only supported components are image and icon.
    */
   graphic?: ComponentChildren;
 }
@@ -2400,7 +2400,7 @@ export interface HeadingProps
     AccessibilityVisibilityProps,
     BlockTypographyProps {
   /**
-   * The content of the Heading.
+   * The content of the heading.
    */
   children?: ComponentChildren;
   /**
@@ -2569,17 +2569,17 @@ export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
 }
 export interface LinkProps extends GlobalProps, LinkBehaviorProps {
   /**
-   * The content of the Link.
+   * The content of the link.
    */
   children?: ComponentChildren;
   /**
-   * Sets the tone of the Link, based on the intention of the information being conveyed.
+   * Sets the tone of the link, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * A label that describes the purpose or contents of the Link. It will be read to users using assistive technologies such as screen readers.
+   * A label that describes the purpose or contents of the link. It will be read to users using assistive technologies such as screen readers.
    *
    * Use this when using only an icon or the content of the link is not enough context
    * for users using assistive technologies.
@@ -2606,32 +2606,32 @@ export interface ModalProps
    */
   accessibilityLabel?: string;
   /**
-   * A title that describes the content of the Modal.
+   * A title that describes the content of the modal.
    *
    */
   heading?: string;
   /**
-   * Adjust the padding around the Modal content.
+   * Adjust the padding around the modal content.
    *
    * `base`: applies padding that is appropriate for the element.
    *
-   * `none`: removes all padding from the element. This can be useful when elements inside the Modal need to span
-   * to the edge of the Modal. For example, a full-width image. In this case, rely on Box with a padding of 'base'
+   * `none`: removes all padding from the element. This can be useful when elements inside the modal need to span
+   * to the edge of the modal. For example, a full-width image. In this case, rely on Box with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
    * @default 'base'
    */
   padding?: 'base' | 'none';
   /**
-   * Adjust the size of the Modal.
+   * Adjust the size of the modal.
    *
-   * `max`: expands the Modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
+   * `max`: expands the modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
    *
    * @default 'base'
    */
   size?: SizeKeyword | 'max';
   /**
-   * The content of the Modal.
+   * The content of the modal.
    */
   children?: ComponentChildren;
 }
@@ -2670,7 +2670,7 @@ export type NumberAutocompleteField = ExtractStrict<
 >;
 export interface PageProps extends GlobalProps, ActionSlots {
   /**
-   * The content of the Page.
+   * The content of the page.
    */
   children?: ComponentChildren;
   /**
@@ -2836,14 +2836,14 @@ export interface SearchFieldProps
 export type SearchAutocompleteField = TextAutocompleteField;
 export interface SectionProps extends GlobalProps, ActionSlots {
   /**
-   * The content of the Section.
+   * The content of the section.
    */
   children?: ComponentChildren;
   /**
    * A label used to describe the section that will be announced by assistive technologies.
    *
-   * When no `heading` property is provided or included as a children of the Section, you **must** provide an
-   * `accessibilityLabel` to describe the Section. This is important as it allows assistive technologies to provide
+   * When no `heading` property is provided or included as a children of the section, you **must** provide an
+   * `accessibilityLabel` to describe the section. This is important as it allows assistive technologies to provide
    * the right context to users.
    */
   accessibilityLabel?: string;
@@ -2856,8 +2856,8 @@ export interface SectionProps extends GlobalProps, ActionSlots {
    *
    * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
    * this is the right design decision in a particular context.
-   * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
-   * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
+   * - `none`: removes all padding from the element. This can be useful when elements inside the section need to span
+   * to the edge of the section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
    * @default 'base'
@@ -2885,11 +2885,11 @@ export interface StackProps
     BaseBoxPropsWithRole,
     GapProps {
   /**
-   * The content of the Stack.
+   * The content of the stack.
    */
   children?: ComponentChildren;
   /**
-   * Sets how the children are placed within the Stack. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+   * Sets how the children are placed within the stack. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
    *
    * @default 'block'
    *
@@ -2897,21 +2897,21 @@ export interface StackProps
    */
   direction?: MaybeResponsive<'block' | 'inline'>;
   /**
-   * Aligns the Stack along the main axis.
+   * Aligns the stack along the main axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
    * @default 'normal'
    */
   justifyContent?: MaybeResponsive<JustifyContentKeyword>;
   /**
-   * Aligns the Stack's children along the cross axis.
+   * Aligns the stack's children along the cross axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
    * @default 'normal'
    */
   alignItems?: MaybeResponsive<AlignItemsKeyword>;
   /**
-   * Aligns the Stack along the cross axis.
+   * Aligns the stack along the cross axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
    * @default 'normal'
@@ -2926,7 +2926,7 @@ export interface SwitchProps
     FieldErrorProps {}
 export interface TabProps extends GlobalProps {
   /**
-   * Corresponds to the `id` property of the TabPanel component that will be displayed when selected
+   * Corresponds to the `id` property of the tab panel component that will be displayed when selected
    */
   controls?: string;
   /**
@@ -2950,18 +2950,18 @@ export interface TabProps extends GlobalProps {
 }
 export interface TabListProps extends GlobalProps {
   /**
-   * Accepts only Tabs components.
+   * Accepts only tabs components.
    */
   children?: ComponentChildren;
 }
 export interface TabPanelProps extends GlobalProps {
   /**
-   * The id of the TabPanel used for identification in the Tabs component.
-   * Must match the `controls` prop of the corresponding Tab component.
+   * The id of the tab panel used for identification in the tabs component.
+   * Must match the `controls` prop of the corresponding tab component.
    */
   id?: string;
   /**
-   * The content of the TabPanel.
+   * The content of the tab panel.
    */
   children?: ComponentChildren;
 }
@@ -2974,20 +2974,20 @@ export interface TabsProps
    */
   accessibilityLabel?: string;
   /**
-   * Accepts only TabList and TabPanel components.
+   * Accepts only tab list and tab panel components.
    */
   children?: ComponentChildren;
   /**
    * The value of the selected tab.
    *
-   * This should match the `id` prop of one of the TabPanel components.
+   * This should match the `id` prop of one of the tab panel components.
    * If not provided, the first tab will be selected by default.
    */
   value?: string;
   /**
    * The default value of the selected tab.
    *
-   * This should match the `id` prop of one of the TabPanel components.
+   * This should match the `id` prop of one of the tab panel components.
    * If not provided, the first tab will be selected by default.
    *
    * Reflects to the `value` attribute
@@ -3127,7 +3127,7 @@ export interface TileProps
   extends GlobalProps,
     Pick<BaseClickableProps, 'onClick' | 'disabled'> {
   /**
-   * A title that describes the content of the Tile.
+   * A title that describes the content of the tile.
    *
    * @default ''
    */
@@ -3139,7 +3139,7 @@ export interface TileProps
    */
   subheading?: string;
   /**
-   * A numeric indicator rendered within the Tile (for example, a count or a step number).
+   * A numeric indicator rendered within the tile (for example, a count or a step number).
    *
    * - When provided, the indicator is displayed inside the tile.
    * - Intended for small integers. It may clamp, truncate, or abbreviate larger values.
@@ -3147,7 +3147,7 @@ export interface TileProps
    */
   itemCount?: number;
   /**
-   * Sets the tone of the Tile, based on the intention of the information being conveyed.
+   * Sets the tone of the tile, based on the intention of the information being conveyed.
    * @default 'auto'
    */
   tone?: ExtractStrict<ToneKeyword, 'auto' | 'neutral' | 'accent'>;
