@@ -29,9 +29,11 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     examples: [
       {
+        description:
+          'Add a single-line text input for collecting short-form information from merchants. This example shows a text field with a label, pre-filled value, and placeholder.',
         image: 'text-field-default.png',
         codeblock: {
-          title: 'Default',
+          title: 'Add a basic text field',
           tabs: [
             {
               code: './examples/default.html',
@@ -46,9 +48,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Showcases a text field enhanced with a search icon and a placeholder, creating a visually intuitive input for searching products.',
+          'Add an icon to a text field to help merchants quickly identify its purpose. This example shows a text field with a search icon and placeholder text.',
         codeblock: {
-          title: 'With icon',
+          title: 'Add an icon to a text field',
           tabs: [
             {
               code: './examples/with-icon.html',
@@ -63,9 +65,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates the importance of providing clear, actionable, and context-specific error messages that guide merchants toward correct input and understanding.',
+          'Provide specific error messages to tell merchants what went wrong and what correction is needed. This example shows three text fields contrasting a vague error, a specific validation error, and a business rule error.',
         codeblock: {
-          title: 'Specific error messages for merchant context',
+          title: 'Provide specific error messages for merchant context',
           tabs: [
             {
               code: './examples/specific-error-messages-for-merchant-context.html',
@@ -79,9 +81,10 @@ const data: AdminReferenceEntityTemplateSchema = {
         },
       },
       {
-        description: 'Displays text field usage with prefix and suffix',
+        description:
+          'Add a prefix or suffix to provide context for the expected value, such as a country code or card type. This example shows a phone number field with a prefix and a credit card field with a suffix.',
         codeblock: {
-          title: 'With prefix and suffix',
+          title: 'Add a prefix and suffix',
           tabs: [
             {
               code: './examples/with-prefix-and-suffix.html',
@@ -96,9 +99,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates the flexibility of adding interactive elements like buttons to text fields, enabling immediate actions based on the entered input.',
+          'Place an interactive element like an icon or button inside a text field using the accessory slot. This example shows a text field with an info icon that triggers a tooltip.',
         codeblock: {
-          title: 'With accessory',
+          title: 'Add an accessory to a text field',
           tabs: [
             {
               code: './examples/with-accessory.html',
@@ -113,9 +116,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Shows text fields in read-only and disabled states. Use `readOnly` for values that should be visible but not editable, and `disabled` when the field should not be interactive.',
+          'Prevent editing by making a text field read-only or fully disabled. This example shows a read-only store URL that merchants can copy and a disabled account ID.',
         codeblock: {
-          title: 'Disabled and read-only states',
+          title: 'Disable or make a text field read-only',
           tabs: [
             {
               code: './examples/disabled-and-read-only.html',
