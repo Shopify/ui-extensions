@@ -52,24 +52,6 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a standard search input field for product discovery, with a clear label, name, and placeholder text to guide user interaction.',
-            codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
               "Illustrates how the search field handles and displays an error state when no results are found or when there's a search-related issue.",
             codeblock: {
               title: 'With error state',
