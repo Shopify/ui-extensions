@@ -76,7 +76,7 @@ export interface TextJSXProps extends Pick<TextProps, 'id'> {
     'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
   >;
   /**
-   * The Text content. Supports nested text elements.
+   * The text content. Supports nested text elements.
    */
   children?: ComponentChildren;
 }

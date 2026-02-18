@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Divider',
   description:
-    'The Divider component creates visual separation between content sections by rendering a horizontal or vertical line. Use it to organize information and improve content hierarchy.',
+    'The divider component creates visual separation between content sections by rendering a horizontal or vertical line. Use it to organize information and improve content hierarchy.',
   thumbnail: 'divider-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -11,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the Divider component.',
+        'Configure the following properties on the divider component.',
       type: 'Divider',
     },
   ],
@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'divider-default.png',
     description:
-      'Separate content sections using a Divider component. This example shows a basic horizontal divider.',
+      'Separate content sections using a divider component. This example shows a basic horizontal divider.',
     codeblock: {
       title: 'Separate content sections with a divider',
       tabs: [
