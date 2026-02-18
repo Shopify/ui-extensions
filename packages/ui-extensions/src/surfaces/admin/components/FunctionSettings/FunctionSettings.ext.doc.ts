@@ -3,6 +3,8 @@ import shared from '../../../../docs/shared/components/FunctionSettings';
 
 const data: ReferenceEntityTemplateSchema = {
   ...shared,
+  requires:
+    'the [Discount Function Settings API](/docs/api/admin-extensions/{API_VERSION}/target-apis/contextual-apis/discount-function-settings-api), [Validation Settings API](/docs/api/admin-extensions/{API_VERSION}/target-apis/contextual-apis/validation-settings-api), or [Order Routing Rule API](/docs/api/admin-extensions/{API_VERSION}/target-apis/contextual-apis/order-routing-rule-api).',
   category: 'Polaris web components',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/form.png',
   isVisualComponent: true,

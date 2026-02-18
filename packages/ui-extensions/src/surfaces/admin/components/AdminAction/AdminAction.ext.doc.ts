@@ -4,9 +4,9 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'AdminAction',
   description:
     'The AdminAction component configures the primary action, secondary action, and title for admin action extensions. Use AdminAction to define the core interaction points and header content that merchants see when your extension renders.' +
-    '\n\nThis component is required for all admin action extensions and provides a standardized structure for action-based extension interfaces.' +
     '\n\nLearn how to [build an admin action extension](/docs/apps/build/admin/actions-blocks/build-admin-action).',
-  requires: '',
+  requires:
+    'the [Action Extension API](/docs/api/admin-extensions/{API_VERSION}/target-apis/core-apis/action-extension-api) or [Purchase Options Card Configuration API](/docs/api/admin-extensions/{API_VERSION}/target-apis/contextual-apis/purchase-options-card-configuration-api).',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/adminaction.png',
   isVisualComponent: true,

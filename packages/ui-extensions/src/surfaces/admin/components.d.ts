@@ -2558,9 +2558,8 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
   /**
    * The initially selected date(s) when the component first renders. An empty string means no date is initially selected.
    *
-   * - `type="single"`: Single date in `YYYY-MM-DD` format
-   * - `type="multiple"`: Comma-separated dates in `YYYY-MM-DD` format
-   * - `type="range"`: Date range in `YYYY-MM-DD--YYYY-MM-DD` format (inclusive)
+   * - Single date in `YYYY-MM-DD` format when `type` is set to `"single"`
+   * - Date range in `YYYY-MM-DD--YYYY-MM-DD` format (inclusive) when `type` is set to `"range"`
    *
    * @default ""
    */
@@ -2568,27 +2567,18 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
   /**
    * The currently selected date(s). An empty string means no date is selected.
    *
-   * - `type="single"`: Single date in `YYYY-MM-DD` format
-   * - `type="multiple"`: Comma-separated dates in `YYYY-MM-DD` format
-   * - `type="range"`: Date range in `YYYY-MM-DD--YYYY-MM-DD` format (inclusive)
+   * - Single date in `YYYY-MM-DD` format when `type` is set to `"single"`
+   * - Date range in `YYYY-MM-DD--YYYY-MM-DD` format (inclusive) when `type` is set to `"range"`
    *
    * @default ""
    */
   value?: string;
   /**
-   * A callback fired when any date is selected.
-   *
-   * - If `type="single"`, fires when a date is selected, before `onChange`.
-   * - If `type="multiple"`, fires when a date is selected, before `onChange`.
-   * - If `type="range"`, fires when the first date is selected (with partial value formatted as `YYYY-MM-DD--`), and when the last date is selected, before `onChange`.
+   * A callback fired when any date is selected, before `onChange`. When `type` is set to `"range"`, also fires when the first date is selected with a partial value formatted as `YYYY-MM-DD--`.
    */
   onInput?: (event: Event) => void;
   /**
-   * A callback fired when the date selection is committed and complete.
-   *
-   * - If `type="single"`, fires when a date is selected, after `onInput`.
-   * - If `type="multiple"`, fires when a date is selected, after `onInput`.
-   * - If `type="range"`, fires when the range is completed by selecting the end date, after `onInput`.
+   * A callback fired when the date selection is committed and complete, after `onInput`. When `type` is set to `"range"`, fires only when the range is completed by selecting the end date.
    */
   onChange?: (event: Event) => void;
 }
@@ -2599,8 +2589,6 @@ interface DateFieldProps$1
       DatePickerProps$1,
       | 'view'
       | 'defaultView'
-      | 'value'
-      | 'defaultValue'
       | 'allow'
       | 'disallow'
       | 'allowDays'
@@ -2608,6 +2596,18 @@ interface DateFieldProps$1
       | 'onViewChange'
     >,
     AutocompleteProps<DateAutocompleteField> {
+  /**
+   * The initial date value when the field first renders, in `YYYY-MM-DD` format. An empty string means no date is initially selected.
+   *
+   * @default ""
+   */
+  defaultValue?: string;
+  /**
+   * The currently selected date in `YYYY-MM-DD` format. An empty string means no date is selected.
+   *
+   * @default ""
+   */
+  value?: string;
   /**
    * A callback fired when the user makes any changes in the field, including when selecting a date using the date picker popup. This fires before `onChange`.
    */
