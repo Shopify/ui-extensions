@@ -32,8 +32,9 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
+    image: 'checkbox-default.png',
     description:
-      'Create a checkbox for selecting an option with a label and helper text. Click to interact with the preview.',
+      'Let users toggle a single option on or off. This example shows a checkbox with a label and helper text providing additional context. Click to interact with the preview.',
     codeblock: {
       title: 'Select an option',
       tabs: [
@@ -57,7 +58,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Show a partially selected state for "select all" when some items are checked. Click to interact with the preview.',
+              'Indicate partial selection in bulk actions. This example shows a "select all" checkbox that displays an indeterminate state when some items are checked. Click to interact with the preview.',
             codeblock: {
               title: 'Show an indeterminate state',
               tabs: [
@@ -70,7 +71,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display a validation error when a required checkbox isn\'t checked. Click to interact with the preview.',
+              'Communicate when a required selection is missing. This example shows an error message displayed when the terms checkbox isn\'t checked. Click to interact with the preview.',
             codeblock: {
               title: 'Show a validation error',
               tabs: [
@@ -88,25 +89,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Add helper text to provide additional context about an option. Click to interact with the preview.',
-            codeblock: {
-              title: 'Add helper text',
-              tabs: [
-                {
-                  code: './examples/help-text.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/help-text.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Indicate an unavailable option with a disabled checkbox. Click to interact with the preview.',
+              'Indicate when an option isn\'t available. This example shows a disabled checkbox with helper text explaining how to enable it. Click to interact with the preview.',
             codeblock: {
               title: 'Show a disabled checkbox',
               tabs: [
@@ -124,7 +107,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Group multiple checkboxes for related settings. Click to interact with the preview.',
+              'Organize related options together. This example shows multiple checkboxes grouped in a settings panel with individual helper text. Click to interact with the preview.',
             codeblock: {
               title: 'Group multiple checkboxes',
               tabs: [
@@ -147,7 +130,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Validate a required checkbox in real time with dynamic error messages. Click to interact with the preview.',
+              'Provide immediate feedback on required selections. This example shows real-time validation with a dynamic error message when the checkbox is unchecked. Click to interact with the preview.',
             codeblock: {
               title: 'Validate in real time',
               tabs: [
