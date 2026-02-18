@@ -4,7 +4,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'FunctionSettings',
   description:
     'The FunctionSettings component configures metafield settings for [Shopify Functions](/docs/api/functions). Use FunctionSettings to create configuration interfaces that allow merchants to customize function behavior through structured input fields and controls.\n\nThis component provides a standardized layout for settings forms and integrates with the native save bar to handle form submission. For general form submission, use [Form](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/form).',
-  requires: '',
+  requires:
+    'the [Validation Settings API](/docs/api/admin-extensions/{API_VERSION}/target-apis/contextual-apis/validation-settings-api) or [Order Routing Rule API](/docs/api/admin-extensions/{API_VERSION}/target-apis/contextual-apis/order-routing-rule-api).',
   thumbnail: 'form-thumbnail.png',
   isVisualComponent: true,
   type: '',
