@@ -32,7 +32,12 @@ const data: AdminReferenceEntityTemplateSchema = {
     'Text',
     'TextField',
   ],
-  recommendedApis: ['Modal API', 'Navigation API', 'Resource Picker API', 'Toast API'],
+  recommendedApis: [
+    'Modal API',
+    'Navigation API',
+    'Resource Picker API',
+    'Toast API',
+  ],
   recommendedTemplates: ['Details'],
   defaultExample: {
     description:

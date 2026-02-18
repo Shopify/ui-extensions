@@ -3,7 +3,7 @@ import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 const data: AdminReferenceEntityTemplateSchema = {
   name: 'Settings',
   overviewPreviewDescription:
-    'All apps will have settings merchants will want to configure to control your app\'s behavior.',
+    "All apps will have settings merchants will want to configure to control your app's behavior.",
 
   description: `All apps have settings merchants need to configure to control your app's behavior. For React Router-based Shopify apps, this will be defined in a route file like \`app.settings.jsx\`. 
   
@@ -32,7 +32,11 @@ const data: AdminReferenceEntityTemplateSchema = {
     'Text',
   ],
   recommendedApis: ['Modal API', 'Save Bar API', 'Toast API'],
-  recommendedCompositions: ['Account connection', 'Footer help', 'Interstitial nav'],
+  recommendedCompositions: [
+    'Account connection',
+    'Footer help',
+    'Interstitial nav',
+  ],
   defaultExample: {
     description:
       'This example demonstrates a settings page for a Product Quality Auditor app. The main column contains quality criteria toggles with weight controls and notification preferences. The aside column provides contextual help explaining the scoring system.\n\nAdd `data-save-bar` to your form element to enable the [Save Bar API](/docs/api/app-home/apis/save-bar), which displays save/discard controls when the form has unsaved changes.',

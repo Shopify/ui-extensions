@@ -97,7 +97,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use the [Intents API](/docs/api/app-home/apis/intents) to open Shopify\'s resource editor when merchants click the edit button.',
+              "Use the [Intents API](/docs/api/app-home/apis/intents) to open Shopify's resource editor when merchants click the edit button.",
             codeblock: {
               title: 'Edit resources with Intents API',
               tabs: [
