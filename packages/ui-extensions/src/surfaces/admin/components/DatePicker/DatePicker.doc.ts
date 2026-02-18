@@ -32,8 +32,10 @@ const data: ReferenceEntityTemplateSchema = {
     description: 'Component examples',
     examples: [
       {
+        description:
+          'Add a calendar picker for selecting a date or date range. This example shows a range-type date picker with a pre-selected date range and a specific month view.',
         codeblock: {
-          title: 'Code',
+          title: 'Add a date range picker',
           tabs: [
             {
               code: './examples/default.html',
@@ -48,9 +50,9 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates a date picker configured for selecting a single date with a default value and specific month view.',
+          'Configure the picker for single date selection when merchants need to choose one specific date. This example shows a single-type date picker with a pre-selected date and month view.',
         codeblock: {
-          title: 'Single date selection',
+          title: 'Select a single date',
           tabs: [
             {
               code: './examples/single-date-selection.html',
@@ -65,9 +67,9 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Illustrates how to restrict date selection to a specific date range, preventing selection of past or future dates outside the allowed period.',
+          'Restrict which dates merchants can select by defining an allowed range. This example shows a date picker that blocks past dates and limits selection to a specific month.',
         codeblock: {
-          title: 'With date restrictions',
+          title: 'Restrict selectable dates to a range',
           tabs: [
             {
               code: './examples/with-date-restrictions.html',
@@ -82,9 +84,9 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates how to handle onChange callbacks for both single and range date pickers, showing how to extract and process the selected values.',
+          'Capture the selected date when the merchant makes a change so you can update your app state. This example shows a range picker inside a form with an onChange handler that stores the selected value.',
         codeblock: {
-          title: 'Handling onChange callbacks',
+          title: 'Capture date selections with onChange',
           tabs: [
             {
               code: './examples/form-integration.html',
@@ -99,9 +101,9 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Illustrates a date picker with quick preset buttons and onChange callback to capture user selections and update the displayed value.',
+          'Add preset buttons so merchants can quickly select common date ranges like "Last 7 days" or "This month." This example shows a range picker with quick-selection buttons that programmatically update the selected value.',
         codeblock: {
-          title: 'With quick date selection',
+          title: 'Add quick preset date range buttons',
           tabs: [
             {
               code: './examples/analytics-dashboard.html',

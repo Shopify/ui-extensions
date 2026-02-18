@@ -81,7 +81,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Pre-populate a date field so merchants can review or edit an existing date. This example shows a date field with a value already set.',
+          'Pre-populate a date field so merchants can review or edit a provided date. This example shows a date field with a value already set.',
         codeblock: {
           title: 'Pre-populate with an existing date',
           tabs: [
