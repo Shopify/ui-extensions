@@ -34,7 +34,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `Popover` component.',
+        'Configure the following properties on the Popover component.',
       type: 'Popover',
     },
     {
@@ -52,7 +52,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Show a menu of actions from a trigger button. Click to interact with the preview.',
+      'Show contextual options without navigating away from the current page. This example shows an action menu with edit and delete options.',
     codeblock: {
       title: 'Show a menu of actions',
       tabs: [
@@ -83,7 +83,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Display a notification list with new orders, inventory alerts, and payment confirmations. Click to interact with the preview.',
+              'Surface time-sensitive information on demand. This example shows a notification list with order, inventory, and payment alerts.',
             codeblock: {
               title: 'Display notification list',
               tabs: [
@@ -108,7 +108,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Configure settings with a choice list and apply button. Click to interact with the preview.',
+              'Let merchants customize their view without leaving the page. This example shows a column visibility picker with an apply button.',
             codeblock: {
               title: 'Configure table display options',
               tabs: [
@@ -133,7 +133,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Show detailed inventory information using `Box` padding instead of `Section`. Click to interact with the preview.',
+              'Show supplementary information without cluttering the main view. This example shows stock levels across multiple warehouse locations.',
             codeblock: {
               title: 'Show inventory details',
               tabs: [
@@ -163,7 +163,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Build a filter popover with a choice list, apply and clear buttons, and dynamic trigger text. Click to interact with the preview.',
+              'Build inline filtering without navigating to a separate page. This example shows a choice list with apply and clear buttons, plus dynamic trigger text.',
             codeblock: {
               title: 'Filter with apply and clear',
               tabs: [

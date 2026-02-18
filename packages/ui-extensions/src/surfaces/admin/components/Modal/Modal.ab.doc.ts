@@ -46,7 +46,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `Modal` component.',
+        'Configure the following properties on the Modal component.',
       type: 'Modal',
     },
     {
@@ -64,7 +64,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Confirm a merchant action with a modal dialog. Click to interact with the preview.',
+      'Focus merchant attention on a critical decision before proceeding. This example shows a delete confirmation with cancel and confirm buttons.',
     codeblock: {
       title: 'Confirm a merchant action',
       tabs: [
@@ -93,7 +93,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Show information in a modal with a heading and basic content. Click to interact with the preview.',
+              'Present information that needs merchant acknowledgment. This example shows a simple announcement with a heading and body text.',
             codeblock: {
               title: 'Show information in a modal',
               tabs: [
@@ -116,7 +116,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Confirm an action with primary and secondary buttons. Click to interact with the preview.',
+              'Provide clear choices with action buttons in the modal footer. This example shows primary and secondary buttons for confirming or canceling.',
             codeblock: {
               title: 'Confirm an action with buttons',
               tabs: [
@@ -139,7 +139,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Collect input with form fields inside a modal. Click to interact with the preview.',
+              'Gather information without leaving the current context. This example shows a feedback form with text inputs and a submit button.',
             codeblock: {
               title: 'Collect input with a form',
               tabs: [
@@ -162,7 +162,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Choose from different modal sizes for various content requirements. Click to interact with the preview.',
+              'Adjust modal width to match your content needs. This example shows small, base, and large size variations.',
             codeblock: {
               title: 'Choose modal size',
               tabs: [
@@ -185,7 +185,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display full-width content by removing modal padding. Click to interact with the preview.',
+              'Display media or tables that need edge-to-edge space. This example shows the padding property set to false for full-width content.',
             codeblock: {
               title: 'Display full-width content',
               tabs: [
@@ -213,7 +213,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Handle a destructive action with async confirmation, loading state, and error handling. Click to interact with the preview.',
+              'Safely handle destructive operations with proper feedback. This example shows loading states, error handling, and async confirmation.',
             codeblock: {
               title: 'Delete with async handling',
               tabs: [

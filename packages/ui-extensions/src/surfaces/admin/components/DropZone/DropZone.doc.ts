@@ -28,7 +28,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `DropZone` component.',
+        'Configure the following properties on the DropZone component.',
       type: 'DropZone',
     },
     {
@@ -40,7 +40,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Accept file uploads with drag-and-drop or click to browse. Click to interact with the preview.',
+      'Let users upload files by dragging or clicking to browse. This example shows a basic upload area with default prompts.',
     codeblock: {
       title: 'Accept file uploads',
       tabs: [
@@ -65,7 +65,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Allow multiple file uploads with a simple label. Click to interact with the preview.',
+              'Accept multiple files in a single interaction. This example shows the multiple attribute with a custom label.',
             codeblock: {
               title: 'Allow multiple file uploads',
               tabs: [
@@ -84,7 +84,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Upload multiple image files with visual preview. Click to interact with the preview.',
+              'Preview uploaded images before submission. This example shows thumbnails generated after file selection.',
             codeblock: {
               title: 'Upload images',
               tabs: [
@@ -103,7 +103,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Mark file upload as required for form validation. Click to interact with the preview.',
+              'Ensure files are provided before form submission. This example shows validation using the required attribute.',
             codeblock: {
               title: 'Require file upload',
               tabs: [
@@ -122,7 +122,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Prevent file uploads while processing. Click to interact with the preview.',
+              'Block uploads while files are being processed. This example shows the disabled state during an active upload.',
             codeblock: {
               title: 'Disable uploads during processing',
               tabs: [
@@ -141,7 +141,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Restrict uploads to specific document types like PDF and DOC. Click to interact with the preview.',
+              'Accept only specific file formats. This example restricts uploads to PDF and DOC files using the accept property.',
             codeblock: {
               title: 'Restrict file types',
               tabs: [
@@ -160,7 +160,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Show validation errors for invalid file uploads. Click to interact with the preview.',
+              'Communicate why an upload failed. This example shows error messaging when files are rejected.',
             codeblock: {
               title: 'Show upload errors',
               tabs: [
@@ -179,7 +179,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Configure custom accessibility labels for screen readers. Click to interact with the preview.',
+              'Support screen reader users with clear labels. This example shows custom accessibility announcements.',
             codeblock: {
               title: 'Configure accessibility labels',
               tabs: [
@@ -203,7 +203,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Build a file upload workflow with size and type validation, error handling, and disabled state during processing. Click to interact with the preview.',
+              'Handle the complete upload lifecycle with validation and feedback. This example combines type and size validation, error states, and disabled state during processing.',
             codeblock: {
               title: 'Upload with validation',
               tabs: [

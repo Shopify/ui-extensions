@@ -30,7 +30,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `Page` component.',
+        'Configure the following properties on the Page component.',
       type: 'Page',
     },
     {
@@ -42,7 +42,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Organize content with sections inside a page layout. Click to interact with the preview.',
+      'Create a consistent page structure with automatic spacing. This example shows a heading with organized content sections.',
     codeblock: {
       title: 'Organize content with sections',
       tabs: [
@@ -68,7 +68,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Use small width for forms and focused content. Note: Width differences may not be visible in this preview. Click to interact with the preview.',
+              'Create a focused layout for forms and simple workflows. This example uses the small inlineSize setting for narrower content.',
             codeblock: {
               title: 'Use small width for forms',
               tabs: [
@@ -90,7 +90,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use large width for analytics and dashboards with multiple sections. Note: Width differences may not be visible in this preview. Click to interact with the preview.',
+              'Display data-rich content like dashboards or analytics. This example uses the large inlineSize setting for wider layouts.',
             codeblock: {
               title: 'Use large width for dashboards',
               tabs: [
@@ -112,7 +112,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Add breadcrumb navigation to help users understand their location. Click to interact with the preview.',
+              'Help merchants understand where they are in your app. This example shows a breadcrumb link back to a parent page.',
             codeblock: {
               title: 'Add breadcrumb navigation',
               tabs: [
@@ -131,7 +131,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Add primary and secondary actions to the page header. Click to interact with the preview.',
+              'Provide quick access to common operations from the page header. This example shows primary and secondary action buttons.',
             codeblock: {
               title: 'Add page actions',
               tabs: [
@@ -158,7 +158,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Build an edit page using all available slots including breadcrumbs, actions, form content, and aside. Click to interact with the preview.',
+              'Combine all Page features for complex editing workflows. This example shows breadcrumbs, actions, form content, and an aside panel working together.',
             codeblock: {
               title: 'Edit page with all slots',
               tabs: [
