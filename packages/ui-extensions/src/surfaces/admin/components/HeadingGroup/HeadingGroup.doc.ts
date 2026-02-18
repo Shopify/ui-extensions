@@ -34,7 +34,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       anchorLink: 'best-practices',
       sectionContent: `- **Use HeadingGroup to build document structure:** Nest HeadingGroup components to create a logical heading hierarchy rather than manually setting heading sizes. This ensures assistive technologies can navigate the content correctly.
-- **Pair with Section for semantic sections:** Use HeadingGroup inside [Section](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/section) components to create both a visual and semantic grouping of content. Section also increments the heading level, so you typically choose one or the other for a given nesting layer.
+- **Choose HeadingGroup or Section per nesting layer:** Both HeadingGroup and [Section](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/section) increment the heading level, so use one or the other at each layer to avoid double-incrementing. Use Section when you want a visible content grouping, and HeadingGroup when you only need to adjust the heading hierarchy.
 - **Keep nesting shallow:** Avoid deeply nesting HeadingGroup components beyond three or four levels. Deeply nested headings (h5, h6) are rarely useful and can signal that the content structure needs simplification.`,
     },
     {
