@@ -48,8 +48,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
-      sectionContent: `- NumberField doesn't include built-in increment/decrement stepper buttons. The \`step\` prop defines the granularity of valid values but doesn't render clickable controls.
-- The \`min\` and \`max\` props define valid value boundaries but don't prevent merchants from typing values outside the range. You must validate the value in your \`onChange\` handler and set the \`error\` prop accordingly.
+      sectionContent: `- The \`min\` and \`max\` props define valid value boundaries but don't prevent merchants from typing values outside the range. You must validate the value in your \`onChange\` handler and set the \`error\` prop accordingly.
 - NumberField returns a numeric value through \`onChange\`, not a string. Non-numeric input (like letters) isn't passed through to the callback.`,
     },
   ],
