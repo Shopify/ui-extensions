@@ -4,7 +4,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'AdminAction',
   description:
     'The AdminAction component configures the modal that appears when users trigger your admin action extension. Use AdminAction to set the title, primary button, secondary button, and loading state for the modal.\n\nLearn how to [build an admin action extension](/docs/apps/build/admin/actions-blocks/build-admin-action).',
-  requires: '',
+  requires:
+    'the [Action Extension API](/docs/api/admin-extensions/{API_VERSION}/target-apis/core-apis/action-extension-api) or [Purchase Options Card Configuration API](/docs/api/admin-extensions/{API_VERSION}/target-apis/contextual-apis/purchase-options-card-configuration-api).',
   thumbnail: 'adminaction-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -49,8 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
-      sectionContent: `- This component can only be used in admin action extension targets. It doesn't work in block extensions or other extension types.
-- The modal dimensions are managed by the Shopify admin and can't be customized by the extension.
+      sectionContent: `- The modal dimensions are managed by the Shopify admin and can't be customized by the extension.
 - The modal renders as an overlay that blocks interaction with the underlying admin page until the merchant completes or dismisses the action.`,
     },
   ],
