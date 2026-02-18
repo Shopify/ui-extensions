@@ -67,14 +67,12 @@ interface ImageAccessibilityLabelProp {
    * is available as an alias.
    *
    * Learn more about [writing effective alternative text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204).
-   *
-   * @defaultValue ''
    */
   accessibilityLabel: string;
   /**
    * The alternative text for the image. Typed as `never` on this variant
-   * because `accessibilityLabel` is set. Use `alt` instead if you prefer
-   * the shorter prop name.
+   * because `accessibilityLabel` is already set. To use `alt` instead,
+   * omit `accessibilityLabel`.
    */
   alt?: never;
 }
@@ -94,8 +92,8 @@ interface ImageAltProp {
   alt: string;
   /**
    * The alternative text for the image. Typed as `never` on this variant
-   * because `alt` is set. Use `accessibilityLabel` instead if you prefer
-   * the longer prop name.
+   * because `alt` is already set. To use `accessibilityLabel` instead,
+   * omit `alt`.
    */
   accessibilityLabel?: never;
 }
@@ -112,8 +110,7 @@ interface ImageSrcProp {
   src: string;
   /**
    * The URL of the image to display. Typed as `never` on this variant
-   * because `src` is set. Use `source` instead if you prefer the longer
-   * prop name.
+   * because `src` is already set. To use `source` instead, omit `src`.
    */
   source?: never;
 }
@@ -130,8 +127,7 @@ interface ImageSourceProp {
   source: string;
   /**
    * The URL of the image to display. Typed as `never` on this variant
-   * because `source` is set. Use `src` instead if you prefer the
-   * shorter prop name.
+   * because `source` is already set. To use `src` instead, omit `source`.
    */
   src?: never;
 }

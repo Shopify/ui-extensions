@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'MoneyField',
   description:
-    'The MoneyField component provides a specialized numeric input for monetary values. It supports currency code selection, minimum and maximum constraints, and returns values as either a number or a Money object.\n\nFor plain numeric input without currency handling, use [NumberField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/numberfield).',
+    'The MoneyField component provides a specialized numeric input for monetary values. It accepts a currency code, minimum and maximum constraints, and returns values as either a number or a `Money` object.\n\nFor plain numeric input without currency handling, use [NumberField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/numberfield).',
   requires: '',
   thumbnail: 'moneyfield-thumbnail.png',
   isVisualComponent: true,

@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'DateField',
   description:
-    'The DateField component combines a text input with a [DatePicker](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/datepicker) dropdown, giving merchants a compact way to select a single date. It supports all the standard form field props along with calendar navigation controls.\n\nFor multi-date or range selection, use [DatePicker](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/datepicker) directly.',
+    'The DateField component combines a text input with a [DatePicker](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/datepicker) dropdown, giving merchants a compact way to select a single date. It supports common form field props (label, error, and change handlers) along with calendar navigation controls.\n\nFor multi-date or range selection, use [DatePicker](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/datepicker) directly.',
   requires: '',
   thumbnail: 'datefield-thumbnail.png',
   isVisualComponent: true,
