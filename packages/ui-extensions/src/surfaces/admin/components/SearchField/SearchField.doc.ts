@@ -28,83 +28,50 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'SearchFieldEvents',
     },
   ],
-  defaultExample: {
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
-        },
-      ],
-    },
-  },
   examples: {
     description: 'Component examples',
-    exampleGroups: [
+    examples: [
       {
-        title: 'Basic usage',
-        examples: [
-          {
-            description:
-              "Illustrates how the search field handles and displays an error state when no results are found or when there's a search-related issue.",
-            codeblock: {
-              title: 'With error state',
-              tabs: [
-                {
-                  code: './examples/with-error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates the appearance and behavior of a search field when it is disabled, preventing user interaction.',
-            codeblock: {
-              title: 'Disabled state',
-              tabs: [
-                {
-                  code: './examples/disabled-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Showcases a search field with minimum and maximum character length constraints, providing guidance on input requirements.',
-            codeblock: {
-              title: 'With character limits',
-              tabs: [
-                {
-                  code: './examples/with-character-limits.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-character-limits.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-        ],
+        codeblock: {
+          title: 'Default',
+          tabs: [
+            { code: './examples/default.html', language: 'html' },
+            { code: './examples/default.jsx', language: 'preview-jsx' },
+          ],
+        },
+      },
+      {
+        description:
+          "Illustrates how the search field handles and displays an error state when no results are found or when there's a search-related issue.",
+        codeblock: {
+          title: 'With error state',
+          tabs: [
+            { code: './examples/with-error-state.html', language: 'html' },
+            { code: './examples/with-error-state.jsx', language: 'preview-jsx' },
+          ],
+        },
+      },
+      {
+        description:
+          'Demonstrates the appearance and behavior of a search field when it is disabled, preventing user interaction.',
+        codeblock: {
+          title: 'Disabled state',
+          tabs: [
+            { code: './examples/disabled-state.html', language: 'html' },
+            { code: './examples/disabled-state.jsx', language: 'preview-jsx' },
+          ],
+        },
+      },
+      {
+        description:
+          'Showcases a search field with minimum and maximum character length constraints, providing guidance on input requirements.',
+        codeblock: {
+          title: 'With character limits',
+          tabs: [
+            { code: './examples/with-character-limits.html', language: 'html' },
+            { code: './examples/with-character-limits.jsx', language: 'preview-jsx' },
+          ],
+        },
       },
     ],
   },

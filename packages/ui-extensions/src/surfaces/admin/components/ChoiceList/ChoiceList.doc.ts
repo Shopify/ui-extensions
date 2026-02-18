@@ -49,121 +49,106 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'ChoiceSlots',
     },
   ],
-  defaultExample: {
-    image: 'choicelist-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
-        },
-      ],
-    },
-  },
   examples: {
     description: 'Component examples',
-    exampleGroups: [
+    examples: [
       {
-        title: 'Basic usage',
-        examples: [
-          {
-            description:
-              'Demonstrates a basic ChoiceList with single selection, showing how to create a group of radio button choices.',
-            codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
+        image: 'choicelist-default.png',
+        codeblock: {
+          title: 'Default',
+          tabs: [
+            {
+              code: './examples/default.html',
+              language: 'html',
             },
-          },
-          {
-            description:
-              'Illustrates a ChoiceList with multiple selection enabled, allowing users to choose multiple options with additional descriptive details for each choice.',
-            codeblock: {
-              title: 'Multiple selections',
-              tabs: [
-                {
-                  code: './examples/multiple-selections.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/multiple-selections.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
+            {
+              code: './examples/default.jsx',
+              language: 'preview-jsx',
             },
-          },
-          {
-            description:
-              'Shows how to display an error message in a ChoiceList when an invalid selection is made or a validation constraint is not met.',
-            codeblock: {
-              title: 'With error state',
-              tabs: [
-                {
-                  code: './examples/with-error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows a ChoiceList in a disabled state, preventing any user interaction. Use when selections should be visible but not editable.',
-            codeblock: {
-              title: 'Disabled state',
-              tabs: [
-                {
-                  code: './examples/disabled-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-        ],
+          ],
+        },
       },
       {
-        title: 'Form validation',
-        examples: [
-          {
-            description:
-              'Interactive example showing required choice validation with dynamic error messages.',
-            codeblock: {
-              title: 'Choice list validation',
-              tabs: [
-                {
-                  code: './examples/validation-example.jsx',
-                  language: 'preview-jsx',
-                  layout: 'formWrapper',
-                },
-              ],
+        description:
+          'Demonstrates a basic ChoiceList with single selection, showing how to create a group of radio button choices.',
+        codeblock: {
+          title: 'Basic usage',
+          tabs: [
+            {
+              code: './examples/basic-usage.html',
+              language: 'html',
             },
-          },
-        ],
+            {
+              code: './examples/basic-usage.jsx',
+              language: 'preview-jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Illustrates a ChoiceList with multiple selection enabled, allowing users to choose multiple options with additional descriptive details for each choice.',
+        codeblock: {
+          title: 'Multiple selections',
+          tabs: [
+            {
+              code: './examples/multiple-selections.html',
+              language: 'html',
+            },
+            {
+              code: './examples/multiple-selections.jsx',
+              language: 'preview-jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Shows how to display an error message in a ChoiceList when an invalid selection is made or a validation constraint is not met.',
+        codeblock: {
+          title: 'With error state',
+          tabs: [
+            {
+              code: './examples/with-error-state.html',
+              language: 'html',
+            },
+            {
+              code: './examples/with-error-state.jsx',
+              language: 'preview-jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Shows a ChoiceList in a disabled state, preventing any user interaction. Use when selections should be visible but not editable.',
+        codeblock: {
+          title: 'Disabled state',
+          tabs: [
+            {
+              code: './examples/disabled-state.html',
+              language: 'html',
+            },
+            {
+              code: './examples/disabled-state.jsx',
+              language: 'preview-jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Interactive example showing required choice validation with dynamic error messages.',
+        codeblock: {
+          title: 'Choice list validation',
+          tabs: [
+            {
+              code: './examples/validation-example.jsx',
+              language: 'preview-jsx',
+              layout: 'formWrapper',
+            },
+          ],
+        },
       },
     ],
   },
