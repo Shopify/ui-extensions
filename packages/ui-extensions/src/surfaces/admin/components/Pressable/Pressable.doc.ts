@@ -50,7 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       anchorLink: 'limitations',
       sectionContent: `- Pressable doesn't render any visual styling beyond a cursor change on hover. All visual feedback, such as background color changes or borders, must be handled by the child components.
-- Pressable inherits from both [Box](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/box) and [Link](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/link), but it doesn't support \`accessibilityRole\` values beyond what [Link](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/link) provides. If you need a semantically distinct role (such as \`submit\` or \`reset\`), use a [Button](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/button) instead.
+- Pressable doesn't support form submission or reset behavior. Use a [Button](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/button) to submit or reset forms.
 - When using \`href\` for navigation, the \`onClick\` callback fires before navigation. You can't conditionally prevent navigation from within the callback.`,
     },
   ],
