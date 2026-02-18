@@ -10,6 +10,11 @@ interface BadgeBaseProps extends AccessibilityLabelProps {
   /**
    * The color and semantic tone of the badge. Use this to communicate
    * the status or importance of the information the badge represents.
+   *
+   * - `info`: Neutral informational content with no implied urgency.
+   * - `success`: A positive outcome or completed action.
+   * - `warning`: Something that needs attention but isn't blocking.
+   * - `critical`: A serious problem that needs immediate action.
    */
   tone?: Tone;
   /**

@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Link',
   description:
-    'The Link component lets merchants navigate to internal admin pages, external URLs, or relative paths within your app. Links render as inline text styled to indicate interactivity, and support custom tones and accessibility labels.\n\nFor action-oriented interactions like submitting or deleting, use [Button](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/button). To make a custom area clickable with layout control, use [Pressable](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/pressable).',
+    'The Link component lets merchants navigate to a URL or trigger an action when pressed. Links render as inline text styled to indicate interactivity, and support custom tones and accessibility labels.\n\nFor action-oriented interactions like submitting or deleting, use [Button](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/button). To make a custom area clickable with layout control, use [Pressable](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/pressable).',
   requires: '',
   thumbnail: 'link-thumbnail.png',
   isVisualComponent: true,

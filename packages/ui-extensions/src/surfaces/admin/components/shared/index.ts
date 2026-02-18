@@ -110,7 +110,7 @@ export interface InputProps<T> {
    * The initial value of the field when it isn't controlled by state.
    * Use this instead of `value` when you don't need to manage the
    * field's state yourself. The component tracks its own value
-   * internally and report changes through `onChange`.
+   * internally and reports changes through `onChange`.
    */
   defaultValue?: string | string[];
 
@@ -123,7 +123,7 @@ export interface InputProps<T> {
   required?: boolean;
 
   /**
-   * The current value for the field. If omitted, the field will be empty. You should
+   * The current value for the field. If omitted, then the field will be empty. You should
    * update this value in response to the `onChange` callback.
    */
   value?: T;
@@ -137,7 +137,7 @@ export interface InputProps<T> {
 export interface MinMaxLengthProps {
   /**
    * The maximum number of characters the user can enter. If the current value
-   * exceeds this limit, the field will be in a validation error state. This
+   * exceeds this limit, then the field will be in an error state. This
    * doesn't prevent the user from typing beyond the limit. Use the `error`
    * prop to communicate the constraint.
    */
@@ -145,7 +145,7 @@ export interface MinMaxLengthProps {
 
   /**
    * The minimum number of characters required for a valid input. If the
-   * current value is shorter than this limit, the field will be in a
+   * current value is shorter than this limit, then the field will be in a
    * validation error state. This doesn't prevent the user from submitting
    * a shorter value. Use the `error` prop to communicate the constraint.
    */
@@ -213,7 +213,7 @@ export type AccessibilityRole =
    * A role that indicates the component is a header.
    *
    * In an HTML host `header` will render a `<header>` element.
-   * Learn more about the [`<header>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/main_role) in the MDN web docs.
+   * Learn more about the [`<header>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/banner_role) in the MDN web docs.
    */
   | 'header'
 
@@ -469,7 +469,7 @@ export interface PaddingProps {
 
 /**
  * A shorthand type that accepts one to four spacing values following the
- * CSS box-edge shorthand convention (top, right, bottom, left).
+ * CSS box-edge shorthand convention (block-start, inline-end, block-end, inline-start).
  *
  * - One value (such as `base`): Applied to all four edges.
  * - Two values (such as `base none`): The first is applied to block-start and block-end, the second to inline-start and inline-end.

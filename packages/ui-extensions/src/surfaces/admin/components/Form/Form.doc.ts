@@ -38,12 +38,6 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       type: 'Generic',
-      title: 'Best practices',
-      anchorLink: 'best-practices',
-      sectionContent: `- **Use Form to use the save bar:** Wrapping inputs in a Form component enables automatic integration with the Shopify admin's save bar, providing a consistent save/discard experience for merchants.`,
-    },
-    {
-      type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
       sectionContent: `- Form doesn't provide built-in form state management or validation. You must manage field values, errors, and dirty state yourself.

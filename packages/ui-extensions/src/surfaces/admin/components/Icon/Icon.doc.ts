@@ -55,7 +55,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       anchorLink: 'limitations',
       sectionContent: `- Only icons from the Polaris icon set are available. Custom SVGs or external icon libraries can't be used.
-- Icon size and color are determined by the parent context and can't be directly customized through the Icon component's props.
+- Icon supports limited \`tone\` options (\`inherit\` and \`critical\`) and \`size\` options (\`base\` and \`fill\`). Arbitrary pixel sizes and custom colors aren't supported.
 - Icons are rendered as visual elements only. They don't support click handlers or interactive behavior. To make an icon clickable, wrap it in a [Button](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/button) or [Pressable](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/pressable) component.`,
     },
   ],
