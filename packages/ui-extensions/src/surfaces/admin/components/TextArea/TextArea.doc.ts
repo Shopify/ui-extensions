@@ -18,102 +18,94 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'TextAreaEvents',
     },
   ],
-  defaultExample: {
-    image: 'textarea-default.png',
-    codeblock: {
-      title: 'Code',
-      tabs: [
-        {
-          code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
-        },
-      ],
-    },
-  },
   examples: {
     description: 'Component examples',
-    exampleGroups: [
+    examples: [
       {
-        title: 'Basic usage',
-        examples: [
-          {
-            description:
-              'Demonstrates a simple text area for collecting product descriptions with a placeholder and autocomplete disabled.',
-            codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
+        description:
+          'Add a multi-line text input for collecting longer content from merchants. This example shows a text area with a pre-filled shipping address and a set number of visible rows.',
+        image: 'textarea-default.png',
+        codeblock: {
+          title: 'Add a basic text area',
+          tabs: [
+            {
+              code: './examples/default.html',
+              language: 'html',
             },
-          },
-          {
-            description:
-              'Showcases a text area for writing SEO meta descriptions with a character limit of 160, providing guidance text and a multi-line input.',
-            codeblock: {
-              title: 'Seo meta description with character limit',
-              tabs: [
-                {
-                  code: './examples/seo-meta-description-with-character-limit.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/seo-meta-description-with-character-limit.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
+            {
+              code: './examples/default.jsx',
+              language: 'preview-jsx',
             },
-          },
-          {
-            description:
-              'Demonstrates the error state of a text area with a minimum length requirement, showing how validation errors are displayed in a commerce context.',
-            codeblock: {
-              title: 'With error state',
-              tabs: [
-                {
-                  code: './examples/error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/error-state.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
+          ],
+        },
+      },
+      {
+        description:
+          'Collect longer text like product descriptions with a placeholder to guide input. This example shows an empty text area with placeholder text and autocomplete disabled.',
+        codeblock: {
+          title: 'Collect text with a placeholder',
+          tabs: [
+            {
+              code: './examples/basic-usage.html',
+              language: 'html',
             },
-          },
-          {
-            description:
-              'Shows text areas in read-only and disabled states. Use `readOnly` for content that should be visible but not editable, and `disabled` when the field should not be interactive.',
-            codeblock: {
-              title: 'Disabled and read-only states',
-              tabs: [
-                {
-                  code: './examples/disabled-and-read-only.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-and-read-only.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
+            {
+              code: './examples/basic-usage.jsx',
+              language: 'preview-jsx',
             },
-          },
-        ],
+          ],
+        },
+      },
+      {
+        description:
+          'Set a maximum character length to keep input concise, such as for SEO meta descriptions. This example shows a text area with a 160-character limit and help text explaining the constraint.',
+        codeblock: {
+          title: 'Limit input length with a character cap',
+          tabs: [
+            {
+              code: './examples/seo-meta-description-with-character-limit.html',
+              language: 'html',
+            },
+            {
+              code: './examples/seo-meta-description-with-character-limit.jsx',
+              language: 'preview-jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Display an error message when the entered text does not meet validation requirements. This example shows a text area with a minimum length constraint and an error explaining what is needed.',
+        codeblock: {
+          title: 'Show a validation error',
+          tabs: [
+            {
+              code: './examples/error-state.html',
+              language: 'html',
+            },
+            {
+              code: './examples/error-state.jsx',
+              language: 'preview-jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Prevent editing by making a text area read-only or fully disabled. This example shows a read-only field for viewing order notes and a disabled field for internal comments.',
+        codeblock: {
+          title: 'Disable or make a text area read-only',
+          tabs: [
+            {
+              code: './examples/disabled-and-read-only.html',
+              language: 'html',
+            },
+            {
+              code: './examples/disabled-and-read-only.jsx',
+              language: 'preview-jsx',
+            },
+          ],
+        },
       },
     ],
   },
