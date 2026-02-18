@@ -29,8 +29,8 @@ const data: AdminReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Add a basic email field',
           tabs: [
-            { code: './examples/default.html', language: 'html' },
-            { code: './examples/default.jsx', language: 'preview-jsx' },
+            {code: './examples/default.html', language: 'html'},
+            {code: './examples/default.jsx', language: 'preview-jsx'},
           ],
         },
       },
@@ -40,8 +40,14 @@ const data: AdminReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Show an error with help text',
           tabs: [
-            { code: './examples/with-error-and-help-text.html', language: 'html' },
-            { code: './examples/with-error-and-help-text.jsx', language: 'preview-jsx' },
+            {
+              code: './examples/with-error-and-help-text.html',
+              language: 'html',
+            },
+            {
+              code: './examples/with-error-and-help-text.jsx',
+              language: 'preview-jsx',
+            },
           ],
         },
       },
@@ -51,8 +57,8 @@ const data: AdminReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Make an email field read-only',
           tabs: [
-            { code: './examples/read-only-display.html', language: 'html' },
-            { code: './examples/read-only-display.jsx', language: 'preview-jsx' },
+            {code: './examples/read-only-display.html', language: 'html'},
+            {code: './examples/read-only-display.jsx', language: 'preview-jsx'},
           ],
         },
       },
@@ -62,8 +68,8 @@ const data: AdminReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Disable an email field',
           tabs: [
-            { code: './examples/disabled-state.html', language: 'html' },
-            { code: './examples/disabled-state.jsx', language: 'preview-jsx' },
+            {code: './examples/disabled-state.html', language: 'html'},
+            {code: './examples/disabled-state.jsx', language: 'preview-jsx'},
           ],
         },
       },
@@ -73,8 +79,11 @@ const data: AdminReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Set character length constraints',
           tabs: [
-            { code: './examples/with-length-constraints.html', language: 'html' },
-            { code: './examples/with-length-constraints.jsx', language: 'preview-jsx' },
+            {code: './examples/with-length-constraints.html', language: 'html'},
+            {
+              code: './examples/with-length-constraints.jsx',
+              language: 'preview-jsx',
+            },
           ],
         },
       },

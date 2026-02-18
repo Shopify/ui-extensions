@@ -37,8 +37,8 @@ const data: AdminReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Add a basic search field',
           tabs: [
-            { code: './examples/default.html', language: 'html' },
-            { code: './examples/default.jsx', language: 'preview-jsx' },
+            {code: './examples/default.html', language: 'html'},
+            {code: './examples/default.jsx', language: 'preview-jsx'},
           ],
         },
       },
@@ -48,8 +48,8 @@ const data: AdminReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Show a search error',
           tabs: [
-            { code: './examples/with-error-state.html', language: 'html' },
-            { code: './examples/with-error-state.jsx', language: 'preview-jsx' },
+            {code: './examples/with-error-state.html', language: 'html'},
+            {code: './examples/with-error-state.jsx', language: 'preview-jsx'},
           ],
         },
       },
@@ -59,8 +59,8 @@ const data: AdminReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Disable a search field',
           tabs: [
-            { code: './examples/disabled-state.html', language: 'html' },
-            { code: './examples/disabled-state.jsx', language: 'preview-jsx' },
+            {code: './examples/disabled-state.html', language: 'html'},
+            {code: './examples/disabled-state.jsx', language: 'preview-jsx'},
           ],
         },
       },
@@ -70,8 +70,11 @@ const data: AdminReferenceEntityTemplateSchema = {
         codeblock: {
           title: 'Set character length limits',
           tabs: [
-            { code: './examples/with-character-limits.html', language: 'html' },
-            { code: './examples/with-character-limits.jsx', language: 'preview-jsx' },
+            {code: './examples/with-character-limits.html', language: 'html'},
+            {
+              code: './examples/with-character-limits.jsx',
+              language: 'preview-jsx',
+            },
           ],
         },
       },
