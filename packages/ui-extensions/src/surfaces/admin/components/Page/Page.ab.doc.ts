@@ -22,7 +22,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'Generic' as const,
       anchorLink: 'limitations',
       sectionContent: `- The \`inlineSize\` property only accepts \`small\`, \`base\` (default), or \`large\` values
-- Breadcrumb actions only support \`Link\` and \`Button\` components
+- Breadcrumb actions only support link and button components
 - The \`aside\` slot is only visible when \`inlineSize\` is set to \`large\``,
     },
   ],
@@ -30,7 +30,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the Page component.',
+        'Configure the following properties on the page component.',
       type: 'Page',
     },
     {
@@ -158,7 +158,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Combine all Page features for complex editing workflows. This example shows breadcrumbs, actions, form content, and an aside panel working together.',
+              'Combine all page features for complex editing workflows. This example shows breadcrumbs, actions, form content, and an aside panel working together.',
             codeblock: {
               title: 'Edit page with all slots',
               tabs: [

@@ -27,14 +27,14 @@ const data: AdminReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       sectionContent: `- Popovers can only be opened by user interaction, not programmatically on page load
 - The popover position is determined by the trigger button and cannot be manually overridden
-- Content within the popover does not scroll automatically; use \`Box\` or \`Section\` for internal scrolling if needed`,
+- Content within the popover does not scroll automatically; use box or section for internal scrolling if needed`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the Popover component.',
+        'Configure the following properties on the popover component.',
       type: 'Popover',
     },
     {

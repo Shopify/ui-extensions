@@ -28,7 +28,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the DropZone component.',
+        'Configure the following properties on the drop zone component.',
       type: 'DropZone',
     },
     {
