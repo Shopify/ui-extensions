@@ -2,9 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Settings',
-  overviewPreviewDescription:
-    'All apps will have settings merchants will want to configure to control your app\'s behavior.',
-
+  overviewPreviewDescription: `All apps will have settings merchants will want to configure to control your app's behavior.`,
   description: `All apps have settings merchants need to configure to control your app's behavior. For React Router-based Shopify apps, this will be defined in a route file like \`app.settings.jsx\`. 
   
   The settings template organizes related options into logical groups that provides contextual help alongside form controls. It also leverages the Save Bar API to protect unsaved changes from being lost.
