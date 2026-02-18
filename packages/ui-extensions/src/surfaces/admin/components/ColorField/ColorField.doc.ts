@@ -31,8 +31,9 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
+    image: 'color-field-default.png',
     description:
-      'Create a color input field with a placeholder and hex value. Click to interact with the preview.',
+      'Let users select colors using a visual picker or text input. This example shows a color field with a placeholder and pre-selected hex value. Click to interact with the preview.',
     codeblock: {
       title: 'Pick a color',
       tabs: [
@@ -56,7 +57,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Add a label and name for form submission. Click to interact with the preview.',
+              'Identify the color field\'s purpose clearly. This example shows a labeled color field with a name attribute for form submission. Click to interact with the preview.',
             codeblock: {
               title: 'Add a label',
               tabs: [
@@ -74,7 +75,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Mark a color field as required to ensure a value is provided. Click to interact with the preview.',
+              'Ensure users provide a color value before submitting. This example shows a required color field that must have a value. Click to interact with the preview.',
             codeblock: {
               title: 'Mark as required',
               tabs: [
@@ -92,7 +93,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Enable the alpha channel to allow transparent color selection. Click to interact with the preview.',
+              'Allow selection of semi-transparent colors. This example shows a color field with alpha enabled, displaying an RGBA value with 50% opacity. Click to interact with the preview.',
             codeblock: {
               title: 'Enable alpha transparency',
               tabs: [
@@ -110,7 +111,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display a validation error for invalid color format inputs. Click to interact with the preview.',
+              'Communicate color format problems clearly. This example shows an error message when an invalid hex code is entered. Click to interact with the preview.',
             codeblock: {
               title: 'Show a validation error',
               tabs: [
@@ -128,7 +129,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Add helper text to provide guidance about color selection. Click to interact with the preview.',
+              'Guide users on how the color will be used. This example shows helper text beneath the field explaining the color\'s purpose. Click to interact with the preview.',
             codeblock: {
               title: 'Add helper text',
               tabs: [
@@ -146,25 +147,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Add placeholder text to hint at expected input format. Click to interact with the preview.',
-            codeblock: {
-              title: 'Add placeholder text',
-              tabs: [
-                {
-                  code: './examples/with-placeholder.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-placeholder.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Display a color value that can\'t be edited. Click to interact with the preview.',
+              'Show a color value without allowing changes. This example shows a read-only color field displaying a locked value. Click to interact with the preview.',
             codeblock: {
               title: 'Show a read-only field',
               tabs: [
@@ -182,7 +165,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Combine multiple color fields in a form for theme customization. Click to interact with the preview.',
+              'Build a complete theme customization interface. This example shows multiple color fields for primary, secondary, and overlay colors with helper text. Click to interact with the preview.',
             codeblock: {
               title: 'Combine multiple fields in a form',
               tabs: [
@@ -205,7 +188,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Validate hex color format in real time as the user types. Click to interact with the preview.',
+              'Provide immediate feedback on color format validity. This example shows real-time validation that checks hex format as the user types. Click to interact with the preview.',
             codeblock: {
               title: 'Validate in real time',
               tabs: [

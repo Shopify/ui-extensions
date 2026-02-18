@@ -48,8 +48,9 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
+    image: 'avatar-default.png',
     description:
-      'Display an avatar with initials when no profile image is available. Click to interact with the preview.',
+      'Identify users visually when no profile image is available. This example shows an avatar displaying initials derived from a name. Click to interact with the preview.',
     codeblock: {
       title: 'Display initials',
       tabs: [
@@ -74,7 +75,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Show a generic person icon when no user information is available. Click to interact with the preview.',
+              'Represent unknown users with a generic icon. This example shows a placeholder avatar when no initials or image are provided. Click to interact with the preview.',
             codeblock: {
               title: 'Show a placeholder avatar',
               tabs: [
@@ -92,7 +93,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Load a profile image with automatic fallback to initials if it fails. Click to interact with the preview.',
+              'Display profile photos with graceful error handling. This example shows an avatar with a source image that falls back to initials if the image fails to load. Click to interact with the preview.',
             codeblock: {
               title: 'Load an image with fallback',
               tabs: [
@@ -110,7 +111,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display avatars in different sizes for various interface contexts. Click to interact with the preview.',
+              'Adapt avatar prominence to different UI contexts. This example shows all five available sizes from small-200 to large-200. Click to interact with the preview.',
             codeblock: {
               title: 'Adjust the size',
               tabs: [
@@ -128,7 +129,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Handle long business names by truncating initials appropriately. Click to interact with the preview.',
+              'Display initials of varying lengths consistently. This example shows avatars with 2, 3, and 4 character initials. Click to interact with the preview.',
             codeblock: {
               title: 'Handle long names',
               tabs: [
@@ -146,7 +147,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Identical initials always receive the same color for visual consistency. Click to interact with the preview.',
+              'Ensure visual consistency across the interface. This example shows that avatars with identical initials always display the same background color. Click to interact with the preview.',
             codeblock: {
               title: 'Maintain color consistency',
               tabs: [
@@ -164,25 +165,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Automatically fall back to initials when profile images fail to load. Click to interact with the preview.',
-            codeblock: {
-              title: 'Handle image errors',
-              tabs: [
-                {
-                  code: './examples/error-handling-example.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/error-handling-example.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Display customer avatars in a list layout. Click to interact with the preview.',
+              'Show customer identities in list views. This example shows avatars paired with customer names in a vertical stack layout. Click to interact with the preview.',
             codeblock: {
               title: 'Display in a customer list',
               tabs: [
@@ -200,25 +183,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Show staff member avatars in admin interface contexts. Click to interact with the preview.',
-            codeblock: {
-              title: 'Display staff members',
-              tabs: [
-                {
-                  code: './examples/staff-member-profiles.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/staff-member-profiles.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Integrate avatars with Section components for merchant layouts. Click to interact with the preview.',
+              'Build rich merchant profile cards. This example shows an avatar combined with Section, Heading, and Text components for a complete layout. Click to interact with the preview.',
             codeblock: {
               title: 'Combine with Section',
               tabs: [
@@ -229,24 +194,6 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/with-section-component.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Display avatars for fulfillment partners in the Shopify ecosystem. Click to interact with the preview.',
-            codeblock: {
-              title: 'Display fulfillment partners',
-              tabs: [
-                {
-                  code: './examples/fulfillment-partner-avatars.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/fulfillment-partner-avatars.jsx',
                   language: 'preview-jsx',
                 },
               ],
