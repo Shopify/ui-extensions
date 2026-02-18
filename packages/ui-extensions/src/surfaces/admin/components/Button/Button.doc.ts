@@ -58,9 +58,28 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     examples: [
       {
+        description:
+          'Create a button with a text label to let merchants trigger an action. This example shows the basic button component with default styling.',
+        codeblock: {
+          title: 'Add a basic button',
+          tabs: [
+            {
+              code: './examples/basic-button.html',
+              language: 'html',
+            },
+            {
+              code: './examples/basic-button.jsx',
+              language: 'preview-jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Create buttons for actions like saving, creating, or navigating. This example shows primary and secondary buttons with clear, action-oriented labels.',
         image: 'button-default.png',
         codeblock: {
-          title: 'Default',
+          title: 'Add primary and secondary buttons',
           tabs: [
             {
               code: './examples/default.html',
@@ -77,9 +96,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Showcases different button variants with varying visual emphasis, helping merchants understand action priorities through distinct styling.',
+          'Use variants to establish a clear visual hierarchy between primary, secondary, and supplementary actions. This example shows all four variant options: primary, secondary, tertiary, and auto.',
         codeblock: {
-          title: 'Variants',
+          title: 'Set visual emphasis with variants',
           tabs: [
             {
               code: './examples/variants.html',
@@ -94,9 +113,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Illustrates button tones that signal the semantic importance and potential impact of different actions through color and styling.',
+          'Apply tones to signal the purpose and potential impact of an action through color. This example shows critical tone for destructive actions, neutral tone for less prominent actions, and the default auto tone.',
         codeblock: {
-          title: 'Tones',
+          title: 'Communicate intent with tones',
           tabs: [
             {
               code: './examples/tones.html',
@@ -111,9 +130,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Showcases a button that combines a descriptive text label with an intuitive icon, enhancing visual communication of the action.',
+          'Combine an icon with a text label to help merchants quickly identify what a button does. This example shows a button with both a text label and an icon to reinforce the action.',
         codeblock: {
-          title: 'With icon',
+          title: 'Add an icon alongside a text label',
           tabs: [
             {
               code: './examples/with-icon.html',
@@ -128,9 +147,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates an icon-only button with an accessibility label, providing a compact interface that remains screen reader friendly.',
+          'Create icon-only buttons to save space in dense interfaces like toolbars and action bars. This example shows multiple icon-only buttons with accessibilityLabel for screen reader support.',
         codeblock: {
-          title: 'Icon-only button',
+          title: 'Create compact icon-only buttons for toolbars',
           tabs: [
             {
               code: './examples/icon-only-button.html',
@@ -145,9 +164,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Illustrates buttons in various loading states, providing visual feedback during asynchronous operations.',
+          'Add a loading state to prevent duplicate submissions and reassure merchants that an action is being processed. This example shows buttons with the loading prop across different variants.',
         codeblock: {
-          title: 'Loading state',
+          title: 'Show loading feedback during async operations',
           tabs: [
             {
               code: './examples/loading-state-for-merchant-actions.html',
@@ -162,9 +181,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates buttons in different interaction states, showing how to represent disabled controls and submit actions within forms.',
+          'Disable buttons to prevent interaction when prerequisites are not met, and set type to submit to integrate with HTML forms. This example shows a disabled button alongside a submit button.',
         codeblock: {
-          title: 'Form states',
+          title: 'Disable buttons and submit forms',
           tabs: [
             {
               code: './examples/form-states.html',
@@ -179,9 +198,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Showcases buttons that act as hyperlinks, supporting navigation to different pages, external resources, and file downloads.',
+          'Set href to make buttons navigate like links while maintaining button styling. This example shows internal navigation, opening external URLs in new tabs, and triggering file downloads.',
         codeblock: {
-          title: 'Link buttons',
+          title: 'Use buttons for navigation and downloads',
           tabs: [
             {
               code: './examples/link-buttons.html',
@@ -196,9 +215,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Illustrates a button pair for destructive actions, using a critical tone to emphasize the potentially irreversible nature of the operation.',
+          'Pair a cancel button with a critical-toned action button to help merchants avoid accidental destructive operations. This example shows a confirmation pattern for deleting a resource.',
         codeblock: {
-          title: 'Delete confirmation',
+          title: 'Confirm destructive actions with critical tone',
           tabs: [
             {
               code: './examples/delete-confirmation.html',
@@ -213,9 +232,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates advanced button capabilities using `command`, `commandFor`, and `interestFor` properties to enable dynamic component communication.',
+          'Connect buttons to other components so they can trigger actions like toggling visibility or requesting data. This example shows a button that navigates to a page and another that interacts with a specific element on the screen.',
         codeblock: {
-          title: 'Component interactions',
+          title: 'Trigger actions on other components',
           tabs: [
             {
               code: './examples/component-interactions.html',
