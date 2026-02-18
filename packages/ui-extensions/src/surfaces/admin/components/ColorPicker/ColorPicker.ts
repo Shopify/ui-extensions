@@ -15,8 +15,8 @@ export interface ColorPickerProps {
   /**
    * Whether to show an alpha (transparency) slider, allowing the merchant
    * to select a color with transparency. When `true`, `onChange` emits an
-   * 8-value hex string (`#RRGGBBAA`). When `false`, `onChange` emits a
-   * 6-value hex string (`#RRGGBB`).
+   * 8-character hex string (`#RRGGBBAA`). When `false`, `onChange` emits a
+   * 6-character hex string (`#RRGGBB`).
    * @defaultValue false
    */
   allowAlpha?: boolean;
