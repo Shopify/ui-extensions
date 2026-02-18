@@ -38,7 +38,7 @@ export type HtmlElementTagNameProps<T> = T & HTMLElement;
 declare const tagName = 's-empty-state';
 export interface EmptyStateJSXProps extends Pick<EmptyStateProps, 'heading'> {
   /**
-   * The subheading of the EmptyState.
+   * The subheading of the empty state.
    */
   subheading?: string;
   /**
@@ -50,7 +50,7 @@ export interface EmptyStateJSXProps extends Pick<EmptyStateProps, 'heading'> {
    */
   secondaryActions?: ComponentChild;
   /**
-   * The graphic to display in the EmptyState. The only supported components is Icon, with a type of `alert-circle`, `search`, `info`, or `circle-info`.
+   * The graphic to display in the empty state. The only supported components is icon, with a type of `alert-circle`, `search`, `info`, or `circle-info`.
    */
   graphic?: ComponentChild;
 }
