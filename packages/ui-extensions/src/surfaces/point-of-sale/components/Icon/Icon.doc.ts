@@ -3,15 +3,15 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Icon',
   description:
-    'The Icon component displays standardized visual symbols from the POS catalog to represent actions, statuses, or categories. Use icons to enhance navigation or provide visual context alongside text.' +
-    '\n\nFor interactive icons, wrap them in [Button](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/button) or [Clickable](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/clickable) components.',
+    'The icon component displays standardized visual symbols from the POS catalog to represent actions, statuses, or categories. Use icons to enhance navigation or provide visual context alongside text.' +
+    '\n\nFor interactive icons, wrap them in [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components.',
   thumbnail: 'icon-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the Icon component.',
+      description: 'Configure the following properties on the icon component.',
       type: 'Icon',
     },
   ],
@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'icon-default.png',
     description:
-      'Display standardized visual symbols using an Icon component from the POS icon catalog. This example shows a basic icon with proper sizing and accessibility.',
+      'Display standardized visual symbols using an icon component from the POS icon catalog. This example shows a basic icon with proper sizing and accessibility.',
     codeblock: {
       title: 'Display icons from the POS catalog',
       tabs: [

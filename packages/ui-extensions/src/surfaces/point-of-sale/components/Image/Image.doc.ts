@@ -3,15 +3,15 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Image',
   description:
-    'The Image component displays visual content. Use images to showcase products, illustrate concepts, or provide visual context in POS workflows.' +
-    '\n\nImages are display-only components. For interactive functionality, wrap them in [Button](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/button) or [Clickable](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/actions/clickable) components.',
+    'The image component displays visual content. Use images to showcase products, illustrate concepts, or provide visual context in POS workflows.' +
+    '\n\nImages are display-only components. For interactive functionality, wrap them in [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components.',
   thumbnail: 'image-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the Image component.',
+      description: 'Configure the following properties on the image component.',
       type: 'Image',
     },
   ],
@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'image-default.png',
     description:
-      'Display visual content using an Image component with automatic loading optimization and error handling. This example shows a basic image with source URL and alt text for accessibility.',
+      'Display visual content using an image component with automatic loading optimization and error handling. This example shows a basic image with source URL and alt text for accessibility.',
     codeblock: {
       title: 'Display an image',
       tabs: [
