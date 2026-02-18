@@ -234,28 +234,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               ],
             },
           },
-          {
-            description:
-              'Demonstrates date fields with business logic restrictions and validation.',
-            codeblock: {
-              title: 'Date fields with validation',
-              tabs: [
-                {
-                  code: './examples/date-fields-with-validation.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/date-fields-with-validation.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '550px',
-                  },
-                },
-              ],
-            },
-          },
         ],
       },
       {
