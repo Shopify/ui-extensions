@@ -113,7 +113,7 @@ export interface ButtonJSXProps
    * - `primary`: Creates a prominent call-to-action button with high visual emphasis for the most important action on a screen.
    * - `secondary`: Provides a less prominent button appearance for supporting actions and secondary interactions.
    *
-   * @default 'auto' - the variant is automatically determined by the Button's context
+   * @default 'auto' - the variant is automatically determined by the button's context
    */
   variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
   /**

@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Spinner',
   description:
-    'The Spinner component indicates ongoing processes or loading states. Use it to provide visual feedback when content is loading or an operation is in progress, helping users understand that the system is working.',
+    'The spinner component indicates ongoing processes or loading states. Use it to provide visual feedback when content is loading or an operation is in progress, helping users understand that the system is working.',
   thumbnail: 'spinner-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -11,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the Spinner component.',
+        'Configure the following properties on the spinner component.',
       type: 'Spinner',
     },
   ],
@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'spinner-default.png',
     description:
-      'Display loading states using a Spinner component. This example shows a basic spinner that indicates an ongoing process.',
+      'Display loading states using a spinner component. This example shows a basic spinner that indicates an ongoing process.',
     codeblock: {
       title: 'Show loading state with a spinner',
       tabs: [

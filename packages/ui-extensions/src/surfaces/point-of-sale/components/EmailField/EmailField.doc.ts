@@ -1,10 +1,10 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'EmailField',
+  name: 'Email field',
   description:
-    'The EmailField component captures email address input. Use it to collect email information in forms, customer profiles, or contact workflows.' +
-    "\n\nEmailField doesn't perform automatic email validation. Implement your own validation logic, and use the `error` property to display validation results.",
+    'The email field component captures email address input. Use it to collect email information in forms, customer profiles, or contact workflows.' +
+    "\n\nEmail field doesn't perform automatic email validation. Implement your own validation logic, and use the `error` property to display validation results.",
   thumbnail: 'email-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -12,13 +12,13 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the EmailField component.',
+        'Configure the following properties on the email field component.',
       type: 'EmailField',
     },
     {
       title: 'Events',
       description:
-        'The EmailField component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The email field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'EmailFieldEvents',
     },
   ],
@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'email-field-default.png',
     description:
-      'Capture email address input using an EmailField component. This example shows a basic email field with a label for collecting email information.',
+      'Capture email address input using an email field component. This example shows a basic email field with a label for collecting email information.',
     codeblock: {
       title: 'Capture email addresses with an email field',
       tabs: [
