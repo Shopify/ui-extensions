@@ -49,7 +49,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           title: '',
           code: './examples/basic-usage.html',
-          language: 'html',
+          language: 'preview',
         },
       ],
     },
@@ -69,7 +69,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   title: '',
                   code: './examples/responsive-layout-with-aspect-ratio.html',
-                  language: 'html',
+                  language: 'preview',
                 },
               ],
             },
@@ -83,7 +83,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   title: '',
                   code: './examples/responsive-images-with-srcset.html',
-                  language: 'html',
+                  language: 'preview',
                 },
               ],
             },
@@ -97,7 +97,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   title: '',
                   code: './examples/with-border-styling.html',
-                  language: 'html',
+                  language: 'preview',
                 },
               ],
             },
@@ -111,7 +111,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   title: '',
                   code: './examples/decorative-image.html',
-                  language: 'html',
+                  language: 'preview',
                 },
               ],
             },
@@ -125,7 +125,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   title: '',
                   code: './examples/auto-sized-image.html',
-                  language: 'html',
+                  language: 'preview',
                 },
               ],
             },
@@ -139,7 +139,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   title: '',
                   code: './examples/default.html',
-                  language: 'html',
+                  language: 'preview',
                 },
               ],
             },
@@ -153,7 +153,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   title: '',
                   code: './examples/within-layout-components.html',
-                  language: 'html',
+                  language: 'preview',
                 },
               ],
             },

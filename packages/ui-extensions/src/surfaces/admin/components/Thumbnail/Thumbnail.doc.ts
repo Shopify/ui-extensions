@@ -50,7 +50,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           title: '',
           code: './examples/default.html',
-          language: 'html',
+          language: 'preview',
         },
       ],
     },
@@ -70,7 +70,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   title: '',
                   code: './examples/empty-state.html',
-                  language: 'html',
+                  language: 'preview',
                 },
               ],
             },
@@ -84,7 +84,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   title: '',
                   code: './examples/different-sizes.html',
-                  language: 'html',
+                  language: 'preview',
                 },
               ],
             },
@@ -98,7 +98,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   title: '',
                   code: './examples/with-event-handling.html',
-                  language: 'html',
+                  language: 'preview',
                 },
               ],
             },
