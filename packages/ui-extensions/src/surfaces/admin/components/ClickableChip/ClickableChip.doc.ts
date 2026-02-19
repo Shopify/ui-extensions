@@ -38,17 +38,16 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'clickable-chip-default.png',
+    image: 'clickablechip-default.png',
+    description:
+      'Create an interactive chip that merchants can click to trigger an action. This example shows a clickable chip component with default styling.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a clickable chip with default styling',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -57,94 +56,60 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple clickable chip with a base color and interactive functionality.',
+              'Use the `color` property to visually distinguish chips by importance or category. This example shows three chips with `base`, `subdued`, and `strong` color variants.',
             codeblock: {
-              title: 'Basic Usage',
+              title: 'Apply color variants to chips',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Showcases a strong-colored clickable chip with a check circle icon and a removable state.',
+              'Add an icon and a remove button so merchants can see the status and dismiss the chip. This example shows a removable chip with a check circle icon in the graphic slot.',
             codeblock: {
-              title: 'With Icon and Remove Button',
+              title: 'Add an icon and a remove button to a chip',
               tabs: [
                 {
                   code: './examples/with-icon-and-remove-button.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-icon-and-remove-button.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates a subdued clickable chip configured as a link with a product icon.',
+              'Set the `href` property to make a chip link to another page when clicked. This example shows a subdued chip with a product icon that acts as a link.',
             codeblock: {
-              title: 'As a Link',
+              title: 'Use a chip as a link',
               tabs: [
                 {
                   code: './examples/as-a-link.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/as-a-link.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates a clickable chip in a disabled state, preventing interaction while displaying an inactive status.',
+              'Disable a chip to prevent interaction while keeping it visible. This example shows a disabled chip with an accessibility label explaining the inactive state.',
             codeblock: {
-              title: 'Disabled State',
+              title: 'Disable a clickable chip',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates how multiple clickable chips with different colors, icons, and states can be arranged using an inline stack for consistent layout and spacing.',
-            codeblock: {
-              title: 'Multiple Chips with Proper Spacing',
-              tabs: [
-                {
-                  code: './examples/multiple-chips-with-proper-spacing.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/multiple-chips-with-proper-spacing.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
