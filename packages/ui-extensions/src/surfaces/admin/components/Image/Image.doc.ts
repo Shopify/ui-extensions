@@ -41,16 +41,18 @@ const data: AdminReferenceEntityTemplateSchema = {
   subCategory: 'Media and visuals',
   defaultExample: {
     image: 'image-default.png',
+    description:
+      'Add visual content to enhance your interface. This example shows a basic image with source URL and alt text for accessibility. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Display an image',
       tabs: [
         {
-          code: './examples/default.html',
+          code: './examples/basic-usage.html',
           language: 'html',
         },
 
         {
-          code: './examples/default.jsx',
+          code: './examples/basic-usage.jsx',
           language: 'preview-jsx',
         },
       ],
@@ -60,31 +62,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates the simplest implementation of an image component with a source and alt text.',
+              'Control image proportions with a fixed aspect ratio. This example shows a 16:9 image with cover fit and lazy loading for performance. Click to interact with the preview.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows how to create a responsive image with a fixed 16:9 aspect ratio, set to cover the container, and loaded lazily.',
-            codeblock: {
-              title: 'Responsive layout with aspect ratio',
+              title: 'Set an aspect ratio',
               tabs: [
                 {
                   code: './examples/responsive-layout-with-aspect-ratio.html',
@@ -100,9 +84,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates how to provide multiple image sources for different screen sizes and resolutions using srcSet and sizes attributes.',
+              'Serve optimized images for different screen sizes. This example shows srcSet with sizes attributes for responsive image delivery. Click to interact with the preview.',
             codeblock: {
-              title: 'Responsive images with srcset',
+              title: 'Use responsive srcset',
               tabs: [
                 {
                   code: './examples/responsive-images-with-srcset.html',
@@ -118,9 +102,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates how to apply border styling to an image, including width, style, color, and radius, using border-related properties.',
+              'Add visual emphasis with border styling. This example shows an image with border width, color, and rounded corners. Click to interact with the preview.',
             codeblock: {
-              title: 'With border styling',
+              title: 'Add border styling',
               tabs: [
                 {
                   code: './examples/with-border-styling.html',
@@ -136,9 +120,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows how to mark an image as decorative, which will make screen readers ignore the image by setting an empty alt text and presentation role.',
+              'Hide images from screen readers when purely decorative. This example shows an image with empty alt text and presentation role for accessibility. Click to interact with the preview.',
             codeblock: {
-              title: 'Decorative image',
+              title: 'Mark as decorative',
               tabs: [
                 {
                   code: './examples/decorative-image.html',
@@ -154,9 +138,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              "Demonstrates an image with auto-sizing, which allows the image to adjust its size based on its container's width.",
+              'Let images size naturally based on their container. This example shows an image with auto inline size that adapts to available width. Click to interact with the preview.',
             codeblock: {
-              title: 'Auto-sized image',
+              title: 'Enable auto-sizing',
               tabs: [
                 {
                   code: './examples/auto-sized-image.html',
@@ -172,9 +156,27 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows how to use images within a grid layout, creating a consistent grid of images with equal size, aspect ratio, and styling.',
+              'Combine images with aspectRatio and inlineSize for precise control. This example shows an image with custom proportions that fills available width. Click to interact with the preview.',
             codeblock: {
-              title: 'Within layout components',
+              title: 'Combine aspect ratio and sizing',
+              tabs: [
+                {
+                  code: './examples/default.html',
+                  language: 'html',
+                },
+
+                {
+                  code: './examples/default.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Create consistent image galleries with grid layouts. This example shows three images in a grid with matching size, aspect ratio, and border radius. Click to interact with the preview.',
+            codeblock: {
+              title: 'Use in a grid layout',
               tabs: [
                 {
                   code: './examples/within-layout-components.html',

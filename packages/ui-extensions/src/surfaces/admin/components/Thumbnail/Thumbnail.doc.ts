@@ -42,8 +42,10 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'thumbnail-default.png',
+    description:
+      'Display small preview images for products or items. This example shows a basic thumbnail with source URL and alt text. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Display a thumbnail',
       tabs: [
         {
           code: './examples/default.html',
@@ -62,31 +64,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a basic thumbnail component with a product image, showing the default base size and an alt text for accessibility.',
+              'Show a placeholder when no image is available. This example shows a thumbnail without a source that displays a default icon. Click to interact with the preview.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows the thumbnail component in an empty state, displaying a placeholder icon when no image source is provided.',
-            codeblock: {
-              title: 'Empty state',
+              title: 'Show an empty state',
               tabs: [
                 {
                   code: './examples/empty-state.html',
@@ -102,9 +86,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates the various size options for the thumbnail component, showcasing small-200, base, and large sizes in a stack layout.',
+              'Adapt thumbnail prominence to different contexts. This example shows small-200, base, and large sizes in a vertical stack. Click to interact with the preview.',
             codeblock: {
-              title: 'Different sizes',
+              title: 'Adjust the size',
               tabs: [
                 {
                   code: './examples/different-sizes.html',
@@ -120,9 +104,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates how event handlers like onload or onerror can be attached to the thumbnail component via JavaScript to handle image loading states.',
+              'Respond to image loading success or failure. This example shows an onLoad handler that updates UI when the image finishes loading. Click to interact with the preview.',
             codeblock: {
-              title: 'With event handling',
+              title: 'Handle load events',
               tabs: [
                 {
                   code: './examples/with-event-handling.html',
