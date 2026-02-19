@@ -48,7 +48,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       anchorLink: 'limitations',
       sectionContent: `- InlineStack doesn't support explicit column counts or grid-like layouts. For more complex grid arrangements, nest [BlockStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/blockstack) and InlineStack components together.
-- InlineStack doesn't render any visible background, border, or shadow. It's purely a layout container. For visual containment, wrap it in a [Box](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/box).
+- InlineStack doesn't render any visible background, border, or shadow. It's purely a layout container.
 - Children that are wider than the container will overflow. InlineStack doesn't automatically resize children to fit.`,
     },
   ],

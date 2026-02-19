@@ -43,7 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       anchorLink: 'best-practices',
       sectionContent: `- **Use positive, clear labels:** Write checkbox labels as positive statements that describe what happens when checked. For example, use "Send email notifications" instead of "Disable email notifications".
-- **Use for independent choices:** Each checkbox should control a single, independent setting. If options are mutually exclusive, consider using radio buttons instead.
+- **Use for independent choices:** Each checkbox should control a single, independent setting. Don't use checkboxes for mutually exclusive options.
 - **Don't require checkboxes to be unchecked:** Requiring that a checkbox must remain unchecked creates a confusing experience. Checkboxes should feel optional even when they are required for submission.`,
     },
     {
