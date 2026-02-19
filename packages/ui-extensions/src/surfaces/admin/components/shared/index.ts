@@ -889,7 +889,7 @@ export interface AnchorProps {
 
   /**
    * A callback fired when the element is activated (clicked or tapped). If
-   * `href` is also set, this callback runs first and navigation follows.
+   * `href` is also set, then this callback runs first and navigation follows.
    * When `href` isn't set, use this to handle the action entirely in your
    * extension code.
    */
@@ -897,7 +897,7 @@ export interface AnchorProps {
 
   /**
    * An alias for `onClick`. A callback fired when the element is activated
-   * (clicked or tapped). If `href` is also set, this callback runs first
+   * (clicked or tapped). If `href` is also set, then this callback runs first
    * and navigation follows.
    */
   onPress?(): void;

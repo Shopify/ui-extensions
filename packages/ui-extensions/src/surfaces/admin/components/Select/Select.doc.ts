@@ -46,7 +46,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `- **Use Select for 4 or more options:** When there are only two or three options, consider using radio buttons instead, since all options are visible without interaction.
 - **Order options logically:** Arrange options in an order that makes sense to merchants, such as alphabetically, by popularity, or by a natural sequence. Place the most common choice first when there's no inherent order.
 - **Use option groups for long lists:** When the list has many options, group related items using option groups to make scanning easier.
-- **Provide a clear label:** The \`label\` prop is required. Write a label that describes what the selection controls, such as "Country" or "Sort by".
+- **Write a clear label:** The required \`label\` prop describes what the selection controls. Use specific labels like "Country" or "Sort by".
 - **Use a placeholder when no default makes sense:** Set the \`placeholder\` prop (like "Select a country") when there's no obvious default value. This communicates that the merchant needs to make a choice.`,
     },
     {

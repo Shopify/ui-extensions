@@ -20,7 +20,7 @@ export interface CheckboxProps {
   checked?: boolean;
 
   /**
-   * Whether the checkbox is disabled. When `true`, the checkbox can't be
+   * Whether the checkbox is disabled. When `true`, then the checkbox can't be
    * interacted with and appears in a muted style to indicate it isn't
    * available.
    * @defaultValue false
@@ -65,7 +65,7 @@ export interface CheckboxProps {
    * Whether the checkbox is checked. This is an alias for `checked` and
    * can be useful in form libraries that provide a normalized API for
    * handling both `boolean` and `string` values. If both `value` and
-   * `checked` are set, `checked` takes precedence.
+   * `checked` are set, then `checked` takes precedence.
    */
   value?: boolean;
 }
