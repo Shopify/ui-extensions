@@ -125,23 +125,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           ],
         },
       },
-      {
-        description:
-          'Demonstrates how multiple clickable chips with different colors, icons, and states can be arranged using an inline stack for consistent layout and spacing.',
-        codeblock: {
-          title: 'Multiple Chips with Proper Spacing',
-          tabs: [
-            {
-              code: './examples/multiple-chips-with-proper-spacing.html',
-              language: 'html',
-            },
-            {
-              code: './examples/multiple-chips-with-proper-spacing.jsx',
-              language: 'preview-jsx',
-            },
-          ],
-        },
-      },
     ],
   },
 };
