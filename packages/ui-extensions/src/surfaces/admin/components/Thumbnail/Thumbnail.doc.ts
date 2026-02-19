@@ -43,19 +43,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'thumbnail-default.png',
     description:
-      'Display small preview images for products or items. This example shows a basic thumbnail with source URL and alt text for accessibility. Click to interact with the preview.',
+      'Display small preview images for products or items. This example shows a basic thumbnail with source URL and alt text for accessibility.',
     codeblock: {
       title: 'Display a thumbnail',
       tabs: [
         {
           code: './examples/default.html',
           language: 'html',
-          layout: 'inline',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
         },
       ],
     },
@@ -68,7 +62,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Show a placeholder when no image is available. This example shows a thumbnail without a source that displays a default icon. Click to interact with the preview.',
+              'Show a placeholder when no image is available. This example shows a thumbnail without a source that displays a default icon.',
             codeblock: {
               title: 'Show an empty state',
               tabs: [
@@ -76,17 +70,12 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/empty-state.html',
                   language: 'html',
                 },
-
-                {
-                  code: './examples/empty-state.jsx',
-                  language: 'preview-jsx',
-                },
               ],
             },
           },
           {
             description:
-              'Adapt thumbnail prominence to different contexts. This example shows small-200, base, and large sizes in a vertical stack. Click to interact with the preview.',
+              'Adapt thumbnail prominence to different contexts. This example shows `small-200`, `base`, and `large` sizes in a vertical stack.',
             codeblock: {
               title: 'Adjust the size',
               tabs: [
@@ -94,28 +83,18 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/different-sizes.html',
                   language: 'html',
                 },
-
-                {
-                  code: './examples/different-sizes.jsx',
-                  language: 'preview-jsx',
-                },
               ],
             },
           },
           {
             description:
-              'Respond to image loading success or failure. This example shows an onLoad handler that updates UI when the image finishes loading. Click to interact with the preview.',
+              'Respond to image loading success or failure. This example shows an `onLoad` handler that updates UI when the image finishes loading.',
             codeblock: {
               title: 'Handle load events',
               tabs: [
                 {
                   code: './examples/with-event-handling.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/with-event-handling.jsx',
-                  language: 'preview-jsx',
                 },
               ],
             },

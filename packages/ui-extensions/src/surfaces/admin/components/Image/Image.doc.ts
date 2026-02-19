@@ -42,18 +42,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'image-default.png',
     description:
-      'Add visual content to enhance your interface. This example shows a basic image with source URL and alt text for accessibility. Click to interact with the preview.',
+      'Add visual content to enhance your interface. This example shows a basic image with source URL and alt text for accessibility.',
     codeblock: {
       title: 'Display an image',
       tabs: [
         {
           code: './examples/basic-usage.html',
           language: 'html',
-        },
-
-        {
-          code: './examples/basic-usage.jsx',
-          language: 'preview-jsx',
         },
       ],
     },
@@ -66,7 +61,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Control image proportions with a fixed aspect ratio. This example shows a 16:9 image with cover fit and lazy loading for performance. Click to interact with the preview.',
+              'Control image proportions with a fixed aspect ratio. This example shows a 16:9 image with cover fit and lazy loading for performance.',
             codeblock: {
               title: 'Set an aspect ratio',
               tabs: [
@@ -74,17 +69,12 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/responsive-layout-with-aspect-ratio.html',
                   language: 'html',
                 },
-
-                {
-                  code: './examples/responsive-layout-with-aspect-ratio.jsx',
-                  language: 'preview-jsx',
-                },
               ],
             },
           },
           {
             description:
-              'Serve optimized images for different screen sizes. This example shows how to use the `srcSet` property with sizes attributes for responsive image delivery. Click to interact with the preview.',
+              'Serve optimized images for different screen sizes. This example shows how to use the `srcSet` property with `sizes` attributes for responsive image delivery.',
             codeblock: {
               title: 'Use responsive images',
               tabs: [
@@ -92,17 +82,12 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/responsive-images-with-srcset.html',
                   language: 'html',
                 },
-
-                {
-                  code: './examples/responsive-images-with-srcset.jsx',
-                  language: 'preview-jsx',
-                },
               ],
             },
           },
           {
             description:
-              'Add visual emphasis with border styling. This example shows an image with border width, color, and rounded corners. Click to interact with the preview.',
+              'Add visual emphasis with border styling. This example shows an image with border width, color, and rounded corners.',
             codeblock: {
               title: 'Add border styling',
               tabs: [
@@ -110,17 +95,12 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/with-border-styling.html',
                   language: 'html',
                 },
-
-                {
-                  code: './examples/with-border-styling.jsx',
-                  language: 'preview-jsx',
-                },
               ],
             },
           },
           {
             description:
-              'Hide images from screen readers when purely decorative. This example shows an image with empty alt text and presentation role for accessibility. Click to interact with the preview.',
+              'Hide images from screen readers when purely decorative. This example shows an image with empty `alt` text and `presentation` role for accessibility.',
             codeblock: {
               title: 'Mark as decorative',
               tabs: [
@@ -128,17 +108,12 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/decorative-image.html',
                   language: 'html',
                 },
-
-                {
-                  code: './examples/decorative-image.jsx',
-                  language: 'preview-jsx',
-                },
               ],
             },
           },
           {
             description:
-              'Let images size naturally based on their container. This example shows an image with auto inline size that adapts to available width. Click to interact with the preview.',
+              'Let images size naturally based on their container. This example shows an image with `auto` inline size that adapts to available width.',
             codeblock: {
               title: 'Enable auto-sizing',
               tabs: [
@@ -146,17 +121,12 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/auto-sized-image.html',
                   language: 'html',
                 },
-
-                {
-                  code: './examples/auto-sized-image.jsx',
-                  language: 'preview-jsx',
-                },
               ],
             },
           },
           {
             description:
-              'Combine images with aspectRatio and inlineSize for precise control. This example shows an image with custom proportions that fills available width. Click to interact with the preview.',
+              'Combine `aspectRatio` and `inlineSize` for precise control. This example shows an image with custom proportions that fills available width.',
             codeblock: {
               title: 'Combine aspect ratio and sizing',
               tabs: [
@@ -164,28 +134,18 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/default.html',
                   language: 'html',
                 },
-
-                {
-                  code: './examples/default.jsx',
-                  language: 'preview-jsx',
-                },
               ],
             },
           },
           {
             description:
-              'Create consistent image galleries with grid layouts. This example shows three images in a grid with matching size, aspect ratio, and border radius. Click to interact with the preview.',
+              'Create consistent image galleries with grid layouts. This example shows three images in a grid with matching size, aspect ratio, and border radius.',
             codeblock: {
               title: 'Use in a grid layout',
               tabs: [
                 {
                   code: './examples/within-layout-components.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/within-layout-components.jsx',
-                  language: 'preview-jsx',
                 },
               ],
             },
