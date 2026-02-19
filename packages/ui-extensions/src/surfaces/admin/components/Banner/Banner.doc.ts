@@ -52,7 +52,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       sectionContent: `- The dismissed state doesn't persist across page loads or sessions. You must implement your own persistence logic using app storage or server-side state if you want a banner to stay dismissed.
 - Multiple banners stack vertically without built-in prioritization or queueing. If you show several banners at once, they all appear simultaneously. Implement your own queueing logic if you need to show one at a time.
-- Banner supports only plain text strings, [Text](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/text) components, and [Link](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/link) components as content. For complex layouts with multiple elements, use a [Section](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/section) component instead.`,
+- Banner doesn't support complex layouts in its content area. Use simple text, [Text](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/text), or [Link](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/link) components as children.`,
     },
   ],
   related: [],

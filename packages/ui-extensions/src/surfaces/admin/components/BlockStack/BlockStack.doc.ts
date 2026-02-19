@@ -50,7 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       anchorLink: 'limitations',
       sectionContent: `- BlockStack doesn't support wrapping. All children are placed in a single column.
-- BlockStack doesn't render any visible background, border, or shadow. It is purely a layout container. For visual styling, wrap it in a [Box](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/box) or [Section](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/section).`,
+- BlockStack doesn't render any visible background, border, or shadow. It is purely a layout container. For visual styling, wrap it in a [Box](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/box).`,
     },
   ],
 };

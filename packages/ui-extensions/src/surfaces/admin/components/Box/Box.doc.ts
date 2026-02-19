@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Box',
   description:
-    'The Box component is a foundational layout primitive that controls padding, sizing, and visibility of its children. Use Box to add spacing around content, constrain dimensions, or toggle visibility without introducing stacking or alignment behavior.\n\nFor arranging multiple children in a vertical or horizontal flow, use [BlockStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/blockstack) or [InlineStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/inlinestack). For semantic grouping with a heading, use [Section](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/section).',
+    'The Box component is a foundational layout primitive that controls padding, sizing, and visibility of its children. Use Box to add spacing around content, constrain dimensions, or toggle visibility without introducing stacking or alignment behavior.\n\nFor arranging multiple children in a vertical or horizontal flow, use [BlockStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/blockstack) or [InlineStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/inlinestack).',
   requires: '',
   thumbnail: 'box-thumbnail.png',
   isVisualComponent: true,

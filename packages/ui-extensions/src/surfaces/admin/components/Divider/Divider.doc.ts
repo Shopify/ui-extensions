@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Divider',
   description:
-    'The Divider component renders a thin line to visually separate groups of content. It can be oriented horizontally (inline) or vertically (block), making it useful for separating items in both vertical stacks and horizontal rows.\n\nFor semantic grouping with a heading, use [Section](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/section) instead.',
+    'The Divider component renders a thin line to visually separate groups of content. It can be oriented horizontally (inline) or vertically (block), making it useful for separating items in both vertical stacks and horizontal rows.',
   requires: '',
   thumbnail: 'divider-thumbnail.png',
   isVisualComponent: true,
@@ -43,8 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       anchorLink: 'best-practices',
       sectionContent: `- **Use dividers to separate distinct groups:** Place a Divider between logical groups of content to help merchants scan and distinguish between sections.
-- **Don't overuse dividers:** Too many dividers can make the interface feel cluttered. Consider using spacing (using [BlockStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/blockstack) or [InlineStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/inlinestack)) instead of dividers when a subtle separation is sufficient.
-- **Use Section for semantic separation:** If the content groups have headings or represent distinct sections, use [Section](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/section) components instead of Divider. Divider is purely visual and doesn't convey semantic meaning.`,
+- **Don't overuse dividers:** Too many dividers can make the interface feel cluttered. Consider using spacing (using [BlockStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/blockstack) or [InlineStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/inlinestack)) instead of dividers when a subtle separation is sufficient.`,
     },
     {
       type: 'Generic',
