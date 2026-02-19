@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   type: 'API',
   requires:
-    'the [`FunctionSettings`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
+    'the [FunctionSettings](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
   defaultExample: {
     description:
       'Save a minimum quantity validation rule with a [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/numberfield) input. This example calls `applyMetafieldChange`, checks the result type, and displays success or error banners based on the response.',

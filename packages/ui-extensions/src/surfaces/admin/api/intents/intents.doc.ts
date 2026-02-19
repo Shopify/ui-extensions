@@ -172,9 +172,9 @@ The following tables show which resource types you can create or edit, and what 
     {
       title: 'IntentResponse',
       description: `The result returned when an intent workflow completes. Check the \`code\` property to determine the outcome:
-- \`'ok'\` - The merchant completed the workflow successfully.
-- \`'error'\` - The workflow failed due to validation or other errors.
-- \`'closed'\` - The merchant cancelled without completing.`,
+- \`'ok'\`: The merchant completed the workflow successfully.
+- \`'error'\`: The workflow failed due to validation or other errors.
+- \`'closed'\`: The merchant cancelled without completing.`,
       type: 'IntentResponse',
     },
   ],
