@@ -1,37 +1,60 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 /**
- * Reserved namespace and key for the customer standard metafield used in the template's query.
- * More info - https://shopify.dev/docs/apps/custom-data/metafields/definitions/standard
+ * A reserved namespace and key for a customer standard metafield that
+ * the template's query depends on. Learn more about
+ * [standard metafield definitions](https://shopify.dev/docs/apps/custom-data/metafields/definitions/standard).
  */
 type CustomerStandardMetafieldDependency = 'facts.birth_date';
 
+/**
+ * Props for the CustomerSegmentTemplate component, which defines a
+ * reusable segment template that merchants can apply in the customer
+ * segment editor.
+ */
 export interface CustomerSegmentTemplateProps {
   /**
-   * The localized title of the template.
+   * The localized title displayed on the template card, such as
+   * "Customers with birthdays this month".
    */
   title: string;
   /**
-   * The localized description of the template. An array can be used for multiple paragraphs.
+   * The localized description displayed below the title. Explains what
+   * customers the segment targets. Pass an array of strings to render
+   * multiple paragraphs.
    */
   description: string | string[];
   /**
-   * The code snippet to render in the template with syntax highlighting. The `query` is not validated in the template.
+   * The segment query displayed on the template card with syntax
+   * highlighting. This query isn't validated at render time.
    */
   query: string;
   /**
-   * The code snippet to insert in the segment editor. If missing, `query` will be used. The `queryToInsert` is not validated in the template.
+   * The segment query inserted into the editor when the merchant applies
+   * the template. Defaults to `query` if not provided. This query isn't
+   * validated at render time.
    */
   queryToInsert?: string;
   /**
-   * The list of customer standard metafields or custom metafields used in the template's query.
+   * The metafields that the template's query depends on. Declaring
+   * dependencies lets the admin verify that the required metafield
+   * definitions exist before the merchant applies the template.
    */
   dependencies?: {
+    /**
+     * A list of customer standard metafield keys that the query
+     * depends on, such as `'facts.birth_date'`.
+     */
     standardMetafields?: CustomerStandardMetafieldDependency[];
+    /**
+     * A list of custom metafield keys that the query depends on.
+     */
     customMetafields?: string[];
   };
   /**
-   * ISO 8601-encoded date and time string. A "New" badge will be rendered for templates introduced in the last month.
+   * The date the template was introduced, as an ISO 8601 string (such
+   * as `'2025-01-15'`). Templates created within the last month display
+   * a "New" badge.
    */
   createdOn?: string;
 }
