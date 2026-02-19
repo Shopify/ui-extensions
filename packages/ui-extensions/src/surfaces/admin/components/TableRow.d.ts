@@ -8,7 +8,7 @@
 import type {ComponentChildren, TableRowProps$1} from './shared.d.ts';
 
 /**
- * The properties you can set on a TableRow component.
+ * The properties you can set on a table row component.
  */
 export interface TableRowProps
   extends Pick<TableRowProps$1, 'children' | 'clickDelegate'> {}
@@ -156,17 +156,17 @@ declare module 'preact' {
 }
 
 /**
- * The custom element tag name for the TableRow component.
+ * The custom element tag name for the table row component.
  */
 declare const tagName = 's-table-row';
 /**
- * The JSX properties you can set on a TableRow component.
+ * The JSX properties you can set on a table row component.
  */
 export interface TableRowJSXProps
   extends Partial<TableRowProps>,
     Pick<TableRowProps$1, 'id' | 'children'> {
   /**
-   * The content to display inside the row, which should include TableCell components.
+   * The content to display inside the row, which should include table cell components.
    */
   children?: ComponentChildren;
 }

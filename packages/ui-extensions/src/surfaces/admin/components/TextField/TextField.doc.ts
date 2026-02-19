@@ -21,26 +21,26 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'Generic' as const,
       anchorLink: 'limitations',
       sectionContent: `- The \`maxLength\` attribute prevents typing beyond the limit, but in some edge cases, pasted or programmatically set content might exceed \`maxLength\`. Always validate length server-side.
-- The \`accessory\` slot renders content at the end of the field. For best results, use [Button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) or [Clickable](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/clickable) components with text content.`,
+- The \`accessory\` slot renders content at the end of the field. For best results, use [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) or [clickable](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/clickable) components with text content.`,
     },
   ],
   definitions: [
     {
       title: 'TextField',
       description:
-        'Configure the following properties on the TextField component.',
+        'Configure the following properties on the text field component.',
       type: 'TextField',
     },
     {
       title: 'Slots',
       description:
-        'The TextField component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The text field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TextFieldSlots',
     },
     {
       title: 'Events',
       description:
-        'The TextField component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The text field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TextFieldEvents',
     },
   ],

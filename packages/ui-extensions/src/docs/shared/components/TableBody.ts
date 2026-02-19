@@ -1,10 +1,10 @@
 import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
-  name: 'TableBody',
+  name: 'Table body',
   description:
-    'The TableBody component represents the main content area of a table, containing the data rows. Use TableBody as a child of Table to structure your table data, with each TableRow within the body representing a single record or entry.' +
-    '\n\nTableBody must contain TableRow components, which in turn contain TableCell components for the actual data values.',
+    'The table body component represents the main content area of a table, containing the data rows. Use table body as a child of table to structure your table data, with each table row within the body representing a single record or entry.' +
+    '\n\nTable body must contain table row components, which in turn contain table cell components for the actual data values.',
   category: 'Polaris web components',
   subCategory: 'Structure',
   related: [],

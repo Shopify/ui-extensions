@@ -324,7 +324,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 }
 
 /**
- * The properties for the EmailField component. These properties configure a specialized text input field for entering email addresses with built-in validation and appropriate keyboard support.
+ * The properties for the email field component. These properties configure a specialized text input field for entering email addresses with built-in validation and appropriate keyboard support.
  */
 export type EmailFieldProps = PreactFieldProps<
   Required<EmailFieldProps$1>['autocomplete']
@@ -332,7 +332,7 @@ export type EmailFieldProps = PreactFieldProps<
   Required<Pick<EmailFieldProps$1, 'maxLength' | 'minLength'>>;
 
 /**
- * The EmailField custom element class that renders an email input field in the Shopify admin interface. This component allows merchants to enter email addresses with automatic validation and optimized mobile keyboard layouts.
+ * The email field custom element class that renders an email input field in the Shopify admin interface. This component allows merchants to enter email addresses with automatic validation and optimized mobile keyboard layouts.
  */
 declare class EmailField
   extends PreactFieldElement<EmailFieldProps['autocomplete']>
@@ -374,7 +374,7 @@ declare module 'preact' {
 
 declare const tagName = 's-email-field';
 /**
- * The JSX props for the EmailField component. These properties extend `EmailFieldProps` with JSX-specific event callbacks for React-style event handling.
+ * The JSX props for the email field component. These properties extend `EmailFieldProps` with JSX-specific event callbacks for React-style event handling.
  */
 export interface EmailFieldJSXProps
   extends Partial<Omit<EmailFieldProps, 'accessory'>>,

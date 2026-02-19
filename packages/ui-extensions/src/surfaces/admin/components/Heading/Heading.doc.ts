@@ -28,13 +28,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the Heading component.',
+        'Configure the following properties on the heading component.',
       type: 'Heading',
     },
     {
       title: 'Slots',
       description:
-        'The Heading component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The heading component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'HeadingSlots',
     },
   ],

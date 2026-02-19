@@ -29,13 +29,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the Paragraph component.',
+        'Configure the following properties on the paragraph component.',
       type: 'Paragraph',
     },
     {
       title: 'Slots',
       description:
-        'The Paragraph component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The paragraph component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ParagraphSlots',
     },
   ],

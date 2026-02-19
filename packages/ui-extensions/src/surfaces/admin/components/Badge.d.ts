@@ -60,7 +60,7 @@ export interface IconProps
 }
 
 /**
- * The properties for the Badge component. Badges display status information through compact visual indicators with customizable tones, sizes, and optional icons.
+ * The properties for the badge component. Badges display status information through compact visual indicators with customizable tones, sizes, and optional icons.
  */
 export interface BadgeProps
   extends Pick<BadgeProps$1, 'color' | 'icon' | 'size' | 'tone'> {
@@ -224,7 +224,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * The Badge custom element class that renders status indicators in the Shopify admin interface. This component displays compact visual indicators with customizable tones, sizes, and optional icons to communicate status information to merchants.
+ * The badge custom element class that renders status indicators in the Shopify admin interface. This component displays compact visual indicators with customizable tones, sizes, and optional icons to communicate status information to merchants.
  */
 declare class Badge extends PreactCustomElement implements BadgeProps {
   /**
@@ -260,7 +260,7 @@ declare module 'preact' {
 
 declare const tagName = 's-badge';
 /**
- * The JSX props for the Badge component. These properties extend `BadgeProps` with an optional `id` and `children` for rendering badge content in JSX.
+ * The JSX props for the badge component. These properties extend `BadgeProps` with an optional `id` and `children` for rendering badge content in JSX.
  */
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,

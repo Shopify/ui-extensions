@@ -24,11 +24,11 @@ export interface ActionProps {
 }
 export interface ActionSlots {
   /**
-   * The primary action element, typically a Button or Link component representing the main call-to-action.
+   * The primary action element, typically a button or link component representing the main call-to-action.
    */
   primaryAction?: ComponentChildren;
   /**
-   * The secondary action elements, typically Button or Link components representing alternative or supporting actions.
+   * The secondary action elements, typically button or link components representing alternative or supporting actions.
    */
   secondaryActions?: ComponentChildren;
 }
@@ -875,7 +875,7 @@ export type AnyString = string & {};
 export type optionalSpace = '' | ' ';
 interface BadgeProps$1 extends GlobalProps {
   /**
-   * The text or elements displayed inside the Badge component.
+   * The text or elements displayed inside the badge component.
    */
   children?: ComponentChildren;
   /**
@@ -927,7 +927,7 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
    */
   heading?: string;
   /**
-   * The main content displayed within the Banner component, typically descriptive text or other elements providing details about the message or alert.
+   * The main content displayed within the banner component, typically descriptive text or other elements providing details about the message or alert.
    */
   children?: ComponentChildren;
   /**
@@ -1073,7 +1073,7 @@ export type AccessibilityRole =
   | 'footer'
   /**
    * Used to indicate a generic section.
-   * Sections should always have a Heading or an accessible name provided in the `accessibilityLabel` property.
+   * Sections should always have a heading or an accessible name provided in the `accessibilityLabel` property.
    *
    * In an HTML host `section` will render a `<section>` element.
    * Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
@@ -1465,7 +1465,7 @@ export interface BaseBoxProps
     BorderProps,
     OverflowProps {
   /**
-   * The content of the Box.
+   * The content of the box.
    */
   children?: ComponentChildren;
   /**
@@ -1479,7 +1479,7 @@ export interface BaseBoxPropsWithRole
 interface BoxProps$1 extends BaseBoxPropsWithRole, GlobalProps {}
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
-   * The behavioral type of the Button component, which determines what action it performs when activated.
+   * The behavioral type of the button component, which determines what action it performs when activated.
    *
    * - `submit`: Submits the nearest containing form.
    * - `button`: Performs no default action, relying on the `onClick` handler for behavior.
@@ -1491,7 +1491,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   type?: 'submit' | 'button' | 'reset';
   /**
-   * A callback fired when the Button is activated, before performing the action indicated by `type`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
+   * A callback fired when the button is activated, before performing the action indicated by `type`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
    */
   onClick?: (event: Event) => void;
   /**
@@ -1501,7 +1501,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   disabled?: boolean;
   /**
-   * Whether the Button is in a loading state, which replaces the button content with a loading indicator and disables interactions.
+   * Whether the button is in a loading state, which replaces the button content with a loading indicator and disables interactions.
    *
    * @default false
    */
@@ -1572,7 +1572,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   accessibilityLabel?: string;
   /**
-   * The content displayed within the Button component.
+   * The content displayed within the button component.
    */
   children?: ComponentChildren;
   /**
@@ -1584,7 +1584,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   icon?: IconType | AnyString;
   /**
-   * The inline width (horizontal size) of the Button component.
+   * The inline width (horizontal size) of the button component.
    *
    * - `auto`: The button size depends on the surface and context.
    * - `fill`: The button takes up 100% of the available inline space.
@@ -1594,9 +1594,9 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   inlineSize?: 'auto' | 'fill' | 'fit-content';
   /**
-   * The visual style variant of the Button component, which controls its prominence and emphasis in the interface.
+   * The visual style variant of the button component, which controls its prominence and emphasis in the interface.
    *
-   * @default 'auto' - the variant is automatically determined by the Button's context
+   * @default 'auto' - the variant is automatically determined by the button's context
    */
   variant?: 'auto' | 'primary' | 'secondary' | 'tertiary';
   /**
@@ -1616,7 +1616,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 }
 interface ButtonGroupProps$1 extends GlobalProps, ActionSlots {
   /**
-   * The content of the ButtonGroup, typically a collection of Button or Link components.
+   * The content of the button group, typically a collection of button or link components.
    */
   children?: ComponentChildren;
   /**
@@ -2582,7 +2582,7 @@ export type EmailAutocompleteField = ExtractStrict<
 >;
 interface FormProps$1 extends GlobalProps {
   /**
-   * The form fields and content to be wrapped in the Form element.
+   * The form fields and content to be wrapped in the form element.
    */
   children?: ComponentChildren;
   /**
@@ -2855,7 +2855,7 @@ interface HeadingProps$1
     AccessibilityVisibilityProps,
     BlockTypographyProps {
   /**
-   * The content of the Heading.
+   * The content of the heading.
    */
   children?: ComponentChildren;
   /**
@@ -3077,32 +3077,32 @@ interface ModalProps$1
    */
   accessibilityLabel?: string;
   /**
-   * A title that describes the content of the Modal.
+   * A title that describes the content of the modal.
    *
    */
   heading?: string;
   /**
-   * Adjust the padding around the Modal content.
+   * Adjust the padding around the modal content.
    *
    * `base`: applies padding that is appropriate for the element.
    *
-   * `none`: removes all padding from the element. This can be useful when elements inside the Modal need to span
-   * to the edge of the Modal. For example, a full-width image. In this case, rely on Box with a padding of 'base'
+   * `none`: removes all padding from the element. This can be useful when elements inside the modal need to span
+   * to the edge of the modal. For example, a full-width image. In this case, rely on box with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
    * @default 'base'
    */
   padding?: 'base' | 'none';
   /**
-   * Adjust the size of the Modal.
+   * Adjust the size of the modal.
    *
-   * `max`: expands the Modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
+   * `max`: expands the modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
    *
    * @default 'base'
    */
   size?: SizeKeyword | 'max';
   /**
-   * The content of the Modal.
+   * The content of the modal.
    */
   children?: ComponentChildren;
 }
@@ -3168,14 +3168,14 @@ interface OptionGroupProps$1 extends GlobalProps {
    */
   label?: string;
   /**
-   * The collection of Option components that users can select from within this group.
+   * The collection of option components that users can select from within this group.
    */
   children?: ComponentChildren;
 }
 interface OrderedListProps$1 extends GlobalProps {}
 interface PageProps$1 extends GlobalProps, ActionSlots {
   /**
-   * The content of the Page.
+   * The content of the page.
    */
   children?: ComponentChildren;
   /**
@@ -3288,7 +3288,7 @@ interface QueryContainerProps$1 extends GlobalProps {
 }
 interface SectionProps$1 extends GlobalProps, ActionSlots {
   /**
-   * The content of the Section.
+   * The content of the section.
    */
   children?: ComponentChildren;
   /**
@@ -3420,13 +3420,13 @@ interface TableProps$1 extends GlobalProps, PaginationProps {
   /**
    * The table structure defining headers and data rows.
    *
-   * Accepts TableHeaderRow (for column headers) and TableBody (for data rows) components. Structure your table with a TableHeaderRow first, followed by TableBody.
+   * Accepts table header row (for column headers) and table body (for data rows) components. Structure your table with a table header row first, followed by table body.
    */
   children?: ComponentChildren;
   /**
    * Filter controls displayed above the table.
    *
-   * Accepts input components like SearchField or Select for filtering table data. These controls appear in a dedicated area above the table content.
+   * Accepts input components like search field or select for filtering table data. These controls appear in a dedicated area above the table content.
    */
   filters?: ComponentChildren;
   /**

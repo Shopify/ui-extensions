@@ -9,7 +9,7 @@
 import type {AvatarProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
- * The properties for the Avatar component. An Avatar displays a user or entity image with fallback initials when the image isn't available. Properties include `src` for the image URL, `initials` for the fallback text, `alt` for accessibility text, and `size` for controlling the avatar dimensions.
+ * The properties for the avatar component. An avatar displays a user or entity image with fallback initials when the image isn't available. Properties include `src` for the image URL, `initials` for the fallback text, `alt` for accessibility text, and `size` for controlling the avatar dimensions.
  */
 export interface AvatarProps
   extends Required<Pick<AvatarProps$1, 'initials' | 'src' | 'alt' | 'size'>> {
@@ -165,7 +165,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 
 /**
- * An Avatar displays a user or entity image with fallback initials when the image isn't available.
+ * An avatar displays a user or entity image with fallback initials when the image isn't available.
  */
 declare class Avatar extends PreactCustomElement implements AvatarProps {
   /**
@@ -209,7 +209,7 @@ declare module 'preact' {
 
 declare const tagName = 's-avatar';
 /**
- * The properties for the Avatar component when it's used in JSX.
+ * The properties for the avatar component when it's used in JSX.
  */
 export interface AvatarJSXProps
   extends Partial<AvatarProps>,
