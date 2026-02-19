@@ -3,15 +3,17 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'AdminAction',
   description:
-    'AdminAction is a component used by Admin action extensions to configure a primary and secondary action and title. Use of this component is required in order to use Admin action extensions.',
-  requires: '',
+    'The AdminAction component configures the modal that appears when users trigger your admin action extension. Use AdminAction to set the title, primary button, secondary button, and loading state for the modal.\n\nLearn how to [build an admin action extension](/docs/apps/build/admin/actions-blocks/build-admin-action).',
+  requires:
+    'the [Action Extension API](/docs/api/admin-extensions/{API_VERSION}/target-apis/core-apis/action-extension-api).',
   thumbnail: 'adminaction-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
-      title: 'AdminActionProps',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the AdminAction component.',
       type: 'AdminActionProps',
     },
   ],
@@ -35,13 +37,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [
+  subSections: [
     {
-      type: 'component',
-      name: 'AdminBlock',
-      url: '/docs/api/admin-extensions/components/other/adminblock',
+      type: 'Generic',
+      title: 'Best practices',
+      anchorLink: 'best-practices',
+      sectionContent: `- **Keep the modal focused on a single task:** Each action extension should handle one specific workflow so merchants can complete it quickly without confusion.
+- **Show a loading state while fetching initial data:** Use the loading state to prevent merchants from interacting with incomplete content while your extension initializes.
+- **Place the most important action as the primary action:** The primary action should be the main submit or confirm action. Use the secondary action for cancel or dismiss.`,
+    },
+    {
+      type: 'Generic',
+      title: 'Limitations',
+      anchorLink: 'limitations',
+      sectionContent: `- The Shopify admin controls the modal dimensions. Extensions can't adjust the width or height.
+- The Shopify admin renders the modal as a blocking overlay. The underlying page isn't interactive until the merchant completes or dismisses the action.`,
     },
   ],
+  related: [],
 };
 
 export default data;
