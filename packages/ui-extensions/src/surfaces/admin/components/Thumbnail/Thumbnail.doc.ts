@@ -48,6 +48,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Display a thumbnail',
       tabs: [
         {
+          title: '',
           code: './examples/default.html',
           language: 'html',
         },
@@ -67,6 +68,7 @@ const data: AdminReferenceEntityTemplateSchema = {
               title: 'Show an empty state',
               tabs: [
                 {
+                  title: '',
                   code: './examples/empty-state.html',
                   language: 'html',
                 },
@@ -80,6 +82,7 @@ const data: AdminReferenceEntityTemplateSchema = {
               title: 'Adjust the size',
               tabs: [
                 {
+                  title: '',
                   code: './examples/different-sizes.html',
                   language: 'html',
                 },
@@ -93,6 +96,7 @@ const data: AdminReferenceEntityTemplateSchema = {
               title: 'Handle load events',
               tabs: [
                 {
+                  title: '',
                   code: './examples/with-event-handling.html',
                   language: 'html',
                 },

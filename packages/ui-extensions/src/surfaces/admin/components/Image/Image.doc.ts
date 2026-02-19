@@ -47,6 +47,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Display an image',
       tabs: [
         {
+          title: '',
           code: './examples/basic-usage.html',
           language: 'html',
         },
@@ -66,6 +67,7 @@ const data: AdminReferenceEntityTemplateSchema = {
               title: 'Set an aspect ratio',
               tabs: [
                 {
+                  title: '',
                   code: './examples/responsive-layout-with-aspect-ratio.html',
                   language: 'html',
                 },
@@ -79,6 +81,7 @@ const data: AdminReferenceEntityTemplateSchema = {
               title: 'Use responsive images',
               tabs: [
                 {
+                  title: '',
                   code: './examples/responsive-images-with-srcset.html',
                   language: 'html',
                 },
@@ -92,6 +95,7 @@ const data: AdminReferenceEntityTemplateSchema = {
               title: 'Add border styling',
               tabs: [
                 {
+                  title: '',
                   code: './examples/with-border-styling.html',
                   language: 'html',
                 },
@@ -105,6 +109,7 @@ const data: AdminReferenceEntityTemplateSchema = {
               title: 'Mark as decorative',
               tabs: [
                 {
+                  title: '',
                   code: './examples/decorative-image.html',
                   language: 'html',
                 },
@@ -118,6 +123,7 @@ const data: AdminReferenceEntityTemplateSchema = {
               title: 'Enable auto-sizing',
               tabs: [
                 {
+                  title: '',
                   code: './examples/auto-sized-image.html',
                   language: 'html',
                 },
@@ -131,6 +137,7 @@ const data: AdminReferenceEntityTemplateSchema = {
               title: 'Combine aspect ratio and sizing',
               tabs: [
                 {
+                  title: '',
                   code: './examples/default.html',
                   language: 'html',
                 },
@@ -144,6 +151,7 @@ const data: AdminReferenceEntityTemplateSchema = {
               title: 'Use in a grid layout',
               tabs: [
                 {
+                  title: '',
                   code: './examples/within-layout-components.html',
                   language: 'html',
                 },
