@@ -39,8 +39,10 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'avatar-default.png',
+    description:
+      'Identify users visually when no profile image is available. This example shows an avatar displaying initials derived from a name. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Display initials',
       tabs: [
         {
           code: './examples/default.html',
@@ -59,31 +61,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Displays a customer avatar with their initials when no profile image is available.',
+              'Represent unknown users with a generic icon. This example shows a placeholder avatar when no initials or image are provided. Click to interact with the preview.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows a generic person icon placeholder when no user information is available.',
-            codeblock: {
-              title: 'Default avatar (no props)',
+              title: 'Show a placeholder avatar',
               tabs: [
                 {
                   code: './examples/default-avatar-no-props.html',
@@ -99,9 +83,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Loads a customer profile image with automatic fallback to initials if the image fails to load.',
+              'Display profile photos with graceful error handling. This example shows an avatar with a source image that falls back to initials if the image fails to load. Click to interact with the preview.',
             codeblock: {
-              title: 'With image source and fallback',
+              title: 'Load an image with fallback',
               tabs: [
                 {
                   code: './examples/with-image-source-and-fallback.html',
@@ -117,9 +101,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Displays customer and merchant avatars in different sizes for various interface contexts.',
+              'Adapt avatar prominence to different UI contexts. This example shows all five available sizes from small-200 to large-200. Click to interact with the preview.',
             codeblock: {
-              title: 'Size variations',
+              title: 'Adjust the size',
               tabs: [
                 {
                   code: './examples/size-variations.html',
@@ -135,9 +119,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows how the component handles store and business names of varying lengths in commerce contexts.',
+              'Display initials of varying lengths consistently. This example shows avatars with 2, 3, and 4 character initials. Click to interact with the preview.',
             codeblock: {
-              title: 'Long initials handling',
+              title: 'Handle long names',
               tabs: [
                 {
                   code: './examples/long-initials-handling.html',
@@ -153,9 +137,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates that identical initials always receive the same color assignment across different store types.',
+              'Ensure visual consistency across the interface. This example shows that avatars with identical initials always display the same background color. Click to interact with the preview.',
             codeblock: {
-              title: 'Color consistency demo',
+              title: 'Maintain color consistency',
               tabs: [
                 {
                   code: './examples/color-consistency-demo.html',
@@ -171,27 +155,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows automatic fallback to initials when customer or merchant profile images fail to load.',
+              'Show customer identities in list views. This example shows avatars paired with customer names in a vertical stack layout. Click to interact with the preview.',
             codeblock: {
-              title: 'Error handling example',
-              tabs: [
-                {
-                  code: './examples/error-handling-example.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/error-handling-example.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Typical usage pattern for displaying customer avatars in order lists or customer listings.',
-            codeblock: {
-              title: 'In customer list context',
+              title: 'Display in a customer list',
               tabs: [
                 {
                   code: './examples/in-customer-list-context.html',
@@ -207,27 +173,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows staff member avatars in different admin interface contexts.',
+              'Build rich merchant profile cards. This example shows an avatar combined with Section, Heading, and Text components for a complete layout. Click to interact with the preview.',
             codeblock: {
-              title: 'Staff member profiles',
-              tabs: [
-                {
-                  code: './examples/staff-member-profiles.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/staff-member-profiles.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates avatar integration with other admin-ui components in a merchant section layout.',
-            codeblock: {
-              title: 'With Section component',
+              title: 'Combine with Section',
               tabs: [
                 {
                   code: './examples/with-section-component.html',
@@ -236,24 +184,6 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/with-section-component.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows avatars for different types of fulfillment partners in the Shopify ecosystem.',
-            codeblock: {
-              title: 'Fulfillment partner avatars',
-              tabs: [
-                {
-                  code: './examples/fulfillment-partner-avatars.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/fulfillment-partner-avatars.jsx',
                   language: 'preview-jsx',
                 },
               ],

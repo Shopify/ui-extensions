@@ -33,8 +33,10 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'checkbox-default.png',
+    description:
+      'Let users toggle a single option on or off. This example shows a checkbox with a label and helper text providing additional context. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Select an option',
       tabs: [
         {
           code: './examples/default.html',
@@ -52,13 +54,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Checkbox in indeterminate state, commonly used for "select all" functionality when some items are selected.',
+              'Indicate partial selection in bulk actions. This example shows a "select all" checkbox that displays an indeterminate state when some items are checked. Click to interact with the preview.',
             codeblock: {
-              title: 'Indeterminate state',
+              title: 'Show an indeterminate state',
               tabs: [
                 {
                   code: './examples/indeterminate-state.jsx',
@@ -69,9 +71,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Checkbox with validation error message for required form fields.',
+              'Communicate when a required selection is missing. This example shows an error message displayed when the terms checkbox isn\'t checked. Click to interact with the preview.',
             codeblock: {
-              title: 'Error state',
+              title: 'Show a validation error',
               tabs: [
                 {
                   code: './examples/error-state.html',
@@ -87,27 +89,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Checkbox with descriptive details text to provide additional context about the option.',
+              'Indicate when an option isn\'t available. This example shows a disabled checkbox with helper text explaining how to enable it. Click to interact with the preview.',
             codeblock: {
-              title: 'Help text',
-              tabs: [
-                {
-                  code: './examples/help-text.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/help-text.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              "Checkbox in disabled state with explanatory details about why it's unavailable.",
-            codeblock: {
-              title: 'Disabled state',
+              title: 'Show a disabled checkbox',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
@@ -123,9 +107,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Multiple checkboxes for different configuration options with helpful details.',
+              'Organize related options together. This example shows multiple checkboxes grouped in a settings panel with individual helper text. Click to interact with the preview.',
             codeblock: {
-              title: 'Settings group',
+              title: 'Group multiple checkboxes',
               tabs: [
                 {
                   code: './examples/settings-group.html',
@@ -142,13 +126,13 @@ const data: AdminReferenceEntityTemplateSchema = {
         ],
       },
       {
-        title: 'Form validation',
+        title: '',
         examples: [
           {
             description:
-              'Interactive example showing required checkbox validation with dynamic error messages.',
+              'Provide immediate feedback on required selections. This example shows real-time validation with a dynamic error message when the checkbox is unchecked. Click to interact with the preview.',
             codeblock: {
-              title: 'Checkbox validation',
+              title: 'Validate in real time',
               tabs: [
                 {
                   code: './examples/validation-example.jsx',
