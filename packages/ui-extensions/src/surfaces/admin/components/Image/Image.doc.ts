@@ -86,7 +86,7 @@ const data: AdminReferenceEntityTemplateSchema = {
             description:
               'Serve optimized images for different screen sizes. This example shows how to use the `srcSet` property with sizes attributes for responsive image delivery. Click to interact with the preview.',
             codeblock: {
-              title: 'Use responsive srcset',
+              title: 'Use responsive images',
               tabs: [
                 {
                   code: './examples/responsive-images-with-srcset.html',
