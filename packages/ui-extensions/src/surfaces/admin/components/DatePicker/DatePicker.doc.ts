@@ -3,15 +3,16 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'DatePicker',
   description:
-    'Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify.    ',
+    'The DatePicker component renders a visual calendar that lets merchants select a single date, multiple dates, or a date range. It supports disabling specific dates, days of the week, or date ranges.\n\nFor a compact form field with a calendar dropdown, use [DateField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/datefield).',
   requires: '',
   thumbnail: 'datepicker-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
-      title: 'DatePickerProps',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the DatePicker component.',
       type: 'DatePickerProps',
     },
   ],
@@ -76,7 +77,22 @@ const data: ReferenceEntityTemplateSchema = {
       },
     ],
   },
-
+  subSections: [
+    {
+      type: 'Generic',
+      title: 'Best practices',
+      anchorLink: 'best-practices',
+      sectionContent: `- **Use DateField in forms:** When the date picker is part of a form, use [DateField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/datefield) instead of a standalone DatePicker. DateField combines the calendar with a labeled text input.`,
+    },
+    {
+      type: 'Generic',
+      title: 'Limitations',
+      anchorLink: 'limitations',
+      sectionContent: `- DatePicker doesn't support time selection. Dates are returned as strings in YYYY-MM-DD format without time information.
+- The calendar displays one month at a time. There's no built-in way to show two months side-by-side for range selection.
+- DatePicker doesn't include a built-in label or form field wrapper. When using it standalone, pair it with a [Heading](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/heading) or [Text](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/text) component to provide context.`,
+    },
+  ],
   related: [],
 };
 
