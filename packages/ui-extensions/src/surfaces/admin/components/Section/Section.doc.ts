@@ -49,7 +49,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
-      sectionContent: `- Section's visual appearance is controlled by Shopify and can't be customized. It may render differently in different component contexts ([AdminBlock](/docs/api/admin-extensions/{API_VERSION}/ui-components/settings-and-templates/adminblock) versus [AdminAction](/docs/api/admin-extensions/{API_VERSION}/ui-components/settings-and-templates/adminaction)).
+      sectionContent: `- Section's visual appearance is controlled by Shopify and can't be customized. It might render differently in different component contexts ([AdminBlock](/docs/api/admin-extensions/{API_VERSION}/ui-components/settings-and-templates/adminblock) versus [AdminAction](/docs/api/admin-extensions/{API_VERSION}/ui-components/settings-and-templates/adminaction)).
 - The heading level auto-increment stops at h6. Nesting sections beyond six levels deep will still render h6 headings.`,
     },
   ],

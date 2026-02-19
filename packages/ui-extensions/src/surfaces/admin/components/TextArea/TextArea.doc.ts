@@ -42,7 +42,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Best practices',
       anchorLink: 'best-practices',
-      sectionContent: `- **Always provide a label:** The \`label\` prop is required. Write a clear, descriptive label that tells the merchant what content to enter.
+      sectionContent: `- **Write a clear label:** The required \`label\` prop tells merchants what content to enter. Use specific, descriptive labels like "Description" or "Return instructions".
 - **Use for multi-line content only:** If the expected input is a single line (like a name or title), use [TextField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/textfield) instead. TextArea should be reserved for content that benefits from multiple lines.`,
     },
     {

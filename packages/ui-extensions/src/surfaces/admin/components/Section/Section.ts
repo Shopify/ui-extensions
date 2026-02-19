@@ -9,7 +9,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 export interface SectionProps {
   /**
    * A label that describes the section for assistive technologies such as
-   * screen readers. When no `heading` prop is provided, you **must** provide
+   * screen readers. When no `heading` prop is provided, then you **must** provide
    * an `accessibilityLabel` so that assistive technologies can announce
    * meaningful context about the section to users.
    */

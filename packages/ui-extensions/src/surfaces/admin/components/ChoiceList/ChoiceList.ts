@@ -43,8 +43,8 @@ export interface ChoiceListProps
    */
   choices?: ChoiceProps[];
   /**
-   * Whether the merchant can select more than one choice. When `true`, each
-   * choice is rendered as a checkbox. When `false`, choices are rendered as
+   * Whether the merchant can select more than one choice. When `true`, then each
+   * choice is rendered as a checkbox. When `false`, then choices are rendered as
    * radio buttons and only one can be selected at a time.
    * @defaultValue false
    */

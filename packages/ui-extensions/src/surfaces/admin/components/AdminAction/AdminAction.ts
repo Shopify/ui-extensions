@@ -9,7 +9,7 @@ import type {RemoteFragment} from '@remote-ui/core';
 export interface AdminActionProps {
   /**
    * The title displayed at the top of the action modal. If not provided,
-   * the extension's name is used instead. Titles longer than 40 characters
+   * then the extension's name is used instead. Titles longer than 40 characters
    * will be truncated.
    */
   title?: string;

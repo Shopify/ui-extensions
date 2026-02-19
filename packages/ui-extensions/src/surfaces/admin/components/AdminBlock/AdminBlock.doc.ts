@@ -43,7 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       anchorLink: 'best-practices',
       sectionContent: `- **Keep content concise:** Blocks share space with other admin UI on resource pages. Focus on the most relevant information and avoid overwhelming the page.
-- **Design for both expanded and collapsed states:** Merchants may interact with the block in either state. Provide meaningful content in the collapsed summary so they can quickly scan the information.
+- **Design for both expanded and collapsed states:** Merchants might interact with the block in either state. Provide meaningful content in the collapsed summary so they can quickly scan the information.
 - **Provide meaningful collapsed state content:** Show the most important piece of information (like a status or key value) in the collapsed summary so merchants can decide whether to expand the block.`,
     },
     {
@@ -51,7 +51,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       anchorLink: 'limitations',
       sectionContent: `- The block's visual style and position on the resource page are determined by the merchant's configuration and can't be controlled programmatically.
-- This component doesn't control whether the block starts expanded or collapsed. The initial state is managed by the Shopify admin and may vary by context.`,
+- This component doesn't control whether the block starts expanded or collapsed. The initial state is managed by the Shopify admin and might vary by context.`,
     },
   ],
   related: [],
