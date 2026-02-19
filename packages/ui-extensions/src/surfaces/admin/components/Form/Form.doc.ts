@@ -3,15 +3,15 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Form',
   description:
-    'Use this component when you want to collect input from users. It provides a structure for various input fields and controls, such as text fields, checkboxes, and buttons. It also integrates with the native Contextual Save Bar to handle form submission and reset actions.',
+    "The Form component wraps form controls and enables implicit submission, allowing users to submit from any input by pressing **Enter**. Use Form to group related input fields and handle form submission through JavaScript event handlers.\n\nUnlike HTML forms, Form doesn't automatically submit data using HTTP—you must register an `onSubmit` event to process form data programmatically.",
   requires: '',
   thumbnail: 'form-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
-      title: 'FormProps',
-      description: '',
+      title: 'Properties',
+      description: 'Configure the following properties on the Form component.',
       type: 'FormProps',
     },
   ],
@@ -35,23 +35,17 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [
+  subSections: [
     {
-      type: 'component',
-      name: 'TextField',
-      url: '/docs/api/admin-extensions/components/forms/textfield',
-    },
-    {
-      type: 'component',
-      name: 'NumberField',
-      url: '/docs/api/admin-extensions/components/forms/numberfield',
-    },
-    {
-      type: 'component',
-      name: 'EmailField',
-      url: '/docs/api/admin-extensions/components/forms/emailfield',
+      type: 'Generic',
+      title: 'Limitations',
+      anchorLink: 'limitations',
+      sectionContent: `- Form doesn't provide built-in form state management or validation. You must manage field values, errors, and dirty state yourself.
+- The save bar appearance and behavior is controlled by the Shopify admin. You can't customize its position, text, or button labels.
+- Form doesn't support nested forms. Only one Form component should be used per extension view.`,
     },
   ],
+  related: [],
 };
 
 export default data;
