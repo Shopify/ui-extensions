@@ -9,7 +9,7 @@
 import type {SpinnerProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
- * The properties you can set on a Spinner component.
+ * The properties you can set on a spinner component.
  */
 export interface SpinnerProps
   extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
@@ -158,11 +158,11 @@ declare module 'preact' {
 }
 
 /**
- * The custom element tag name for the Spinner component.
+ * The custom element tag name for the spinner component.
  */
 declare const tagName = 's-spinner';
 /**
- * The JSX properties you can set on a Spinner component.
+ * The JSX properties you can set on a spinner component.
  */
 export interface SpinnerJSXProps
   extends Partial<SpinnerProps>,

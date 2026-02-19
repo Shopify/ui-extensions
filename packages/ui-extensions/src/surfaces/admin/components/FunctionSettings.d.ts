@@ -69,7 +69,7 @@ export type CallbackExtendableEventListener<
   | null;
 
 /**
- * The properties for the FunctionSettings component. These properties configure the form's identifier for configuring Shopify Function settings in the admin interface.
+ * The properties for the function settings component. These properties configure the form's identifier for configuring Shopify Function settings in the admin interface.
  */
 export interface FunctionSettingsProps
   extends Pick<FunctionSettingsProps$1, 'id'> {}
@@ -77,7 +77,7 @@ export interface FunctionSettingsProps
 declare const tagName = 's-function-settings';
 
 /**
- * The JSX props for the FunctionSettings component. These properties extend `FunctionSettingsProps` with event callbacks for form submission, reset, and error handling in JSX rendering.
+ * The JSX props for the function settings component. These properties extend `FunctionSettingsProps` with event callbacks for form submission, reset, and error handling in JSX rendering.
  */
 export interface FunctionSettingsJSXProps
   extends Partial<
@@ -189,14 +189,14 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 /**
- * The error event type that's passed to the `onError` callback of FunctionSettings. This event contains validation errors that occurred when committing function settings to Shopify's servers.
+ * The error event type that's passed to the `onError` callback of function settings. This event contains validation errors that occurred when committing function settings to Shopify's servers.
  */
 export type FunctionSettingsErrorEvent = Parameters<
   NonNullable<FunctionSettingsProps$1['onError']>
 >[0];
 
 /**
- * The FunctionSettings custom element class that renders a specialized form for configuring Shopify Function settings in the admin interface. This component manages function configuration submission, validation, and error handling.
+ * The function settings custom element class that renders a specialized form for configuring Shopify Function settings in the admin interface. This component manages function configuration submission, validation, and error handling.
  */
 declare class FunctionSettings
   extends PreactCustomElement

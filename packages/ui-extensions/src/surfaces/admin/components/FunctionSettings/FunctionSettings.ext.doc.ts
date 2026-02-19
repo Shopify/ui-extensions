@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       sectionContent: `- **Label settings clearly:** Instead of technical names like **Max threshold**, use merchant-friendly labels like **Maximum discount amount** or **Order value limit**.
 - **Validate with specific feedback:** Check that percentages are between 0-100, that monetary values are positive, and that required fields are filled. Provide clear error messages when validation fails.
-- **Explain impact with field details:** Use the \`details\` property on individual field components (for example, [TextField](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/textfield) or [NumberField](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/numberfield)) to explain what each setting does and how it affects the user's workflow.
+- **Explain impact with field details:** Use the \`details\` property on individual field components (for example, [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/textfield) or [number field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/numberfield)) to explain what each setting does and how it affects the user's workflow.
 - **Set appropriate defaults:** Pre-select the most common configuration to reduce setup friction for merchants.
 - **Group related settings:** Use sections to organize settings by function so merchants can find what they need quickly.`,
     },
@@ -24,7 +24,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'The FunctionSettings component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The function settings component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'FormEvents',
     },
   ],

@@ -325,7 +325,7 @@ declare module 'preact' {
 
 declare const tagName = 's-select';
 /**
- * Properties for using the Select component in JSX with React-style event handlers.
+ * Properties for using the select component in JSX with React-style event handlers.
  */
 export interface SelectJSXProps
   extends Partial<SelectProps>,
@@ -333,7 +333,7 @@ export interface SelectJSXProps
   /**
    * The selectable options displayed in the dropdown list.
    *
-   * Accepts Option components for individual selectable items, and OptionGroup components to organize related options into logical groups with labels.
+   * Accepts option components for individual selectable items, and option group components to organize related options into logical groups with labels.
    */
   children?: ComponentChildren;
   /**

@@ -8,11 +8,11 @@
 import type {ComponentChildren, SectionProps$1} from './shared.d.ts';
 
 /**
- * A version of the Section properties with all fields required.
+ * A version of the section properties with all fields required.
  */
 export type RequiredSectionProps = Required<SectionProps$1>;
 /**
- * The properties for the Section component. A Section groups related content together with an optional heading, providing semantic structure and visual separation.
+ * The properties for the section component. A section groups related content together with an optional heading, providing semantic structure and visual separation.
  */
 export interface SectionProps
   extends Pick<
@@ -152,7 +152,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * A Section is a container that groups related content together with an optional heading.
+ * A section is a container that groups related content together with an optional heading.
  */
 declare class Section extends PreactCustomElement implements SectionProps {
   constructor();
@@ -186,13 +186,13 @@ declare module 'preact' {
 
 declare const tagName = 's-section';
 /**
- * The properties for the Section component when it's used in JSX.
+ * The properties for the section component when it's used in JSX.
  */
 export interface SectionJSXProps
   extends Partial<SectionProps>,
     Pick<SectionProps$1, 'id' | 'children'> {
   /**
-   * The child elements to render inside the Section.
+   * The child elements to render inside the section.
    */
   children?: ComponentChildren;
 }

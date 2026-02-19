@@ -9,7 +9,7 @@
 import type {ComponentChildren, TextProps$1} from './shared.d.ts';
 
 /**
- * The properties for the Text component. These properties define inline or small blocks of text content with various visual styles and semantic meanings.
+ * The properties for the text component. These properties define inline or small blocks of text content with various visual styles and semantic meanings.
  */
 export interface TextProps
   extends Required<
@@ -253,7 +253,7 @@ declare module 'preact' {
 
 declare const tagName = 's-text';
 /**
- * The JSX properties for the Text component. These properties define how text is rendered in Preact or JSX.
+ * The JSX properties for the text component. These properties define how text is rendered in Preact or JSX.
  */
 export interface TextJSXProps
   extends Partial<TextProps>,

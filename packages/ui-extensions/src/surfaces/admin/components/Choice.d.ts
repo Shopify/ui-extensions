@@ -181,7 +181,7 @@ declare module 'preact' {
 
 declare const tagName = 's-choice';
 /**
- * Properties for using the Choice component in JSX with React-style props.
+ * Properties for using the choice component in JSX with React-style props.
  */
 export interface ChoiceJSXProps
   extends Partial<ChoiceProps>,
