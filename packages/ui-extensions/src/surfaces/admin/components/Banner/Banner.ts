@@ -18,7 +18,7 @@ export interface BannerProps extends GlobalProps {
    */
   tone?: Tone;
   /**
-   * Whether the banner can be dismissed by the merchant. When `true`, a
+   * Whether the banner can be dismissed by the merchant. When `true`, then a
    * close button is rendered that allows the merchant to hide the banner.
    * @defaultValue false
    */

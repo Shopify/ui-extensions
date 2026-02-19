@@ -15,8 +15,8 @@ export interface FunctionSettingsProps {
   /**
    * A callback that fires when the merchant saves their changes in the
    * admin-rendered function settings experience. If you return a `Promise`,
-   * the Shopify admin waits for it to resolve before committing changes to
-   * Shopify's servers. If the promise rejects, the Shopify admin aborts the save
+   * then the Shopify admin waits for it to resolve before committing changes to
+   * Shopify's servers. If the promise rejects, then the Shopify admin aborts the save
    * and displays an error using the `message` property of the rejected value.
    */
   onSave?(): void | Promise<void>;

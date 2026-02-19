@@ -42,7 +42,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Best practices',
       anchorLink: 'best-practices',
-      sectionContent: `- **Always provide a clear label:** Use labels like "Password", "Current password", or "API secret key" so merchants know exactly what to enter.
+      sectionContent: `- **Write a clear label:** The required \`label\` prop tells merchants what credential to enter. Use specific labels like "Password", "Current password", or "API secret key".
 - **Pair with a confirmation field when creating passwords:** When merchants set a new password, provide a second PasswordField for confirmation and validate that both values match.`,
     },
     {

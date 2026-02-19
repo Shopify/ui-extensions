@@ -48,9 +48,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
-      sectionContent: `- Links to external domains outside of the Shopify admin may be blocked or display a redirect confirmation page depending on the merchant's browser settings and the extension context.
+      sectionContent: `- Links to external domains outside of the Shopify admin might be blocked or display a redirect confirmation page depending on the merchant's browser settings and the extension context.
 - The Link component renders inline with surrounding text. To create a block-level clickable area with custom layout, use the [Pressable](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/pressable) component instead.
-- The \`onClick\` callback fires before navigation occurs. If the callback throws an error, navigation may still proceed. You can't use \`onClick\` to conditionally prevent navigation.`,
+- The \`onClick\` callback fires before navigation occurs. If the callback throws an error, navigation might still proceed. You can't use \`onClick\` to conditionally prevent navigation.`,
     },
   ],
   examples: {
