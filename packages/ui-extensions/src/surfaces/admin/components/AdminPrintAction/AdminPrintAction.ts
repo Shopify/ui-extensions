@@ -1,10 +1,17 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/**
+ * Props for the AdminPrintAction component, used by Admin Print Action
+ * extensions to configure a source document to preview and print.
+ */
 export interface AdminPrintActionProps {
   /**
-   * Sets the src URL of the preview and the document to print.
-   * If not provided, the preview will show an empty state and the print button will be disabled.
-   * HTML, PDFs and images are supported.
+   * The URL of the document to preview and print. Supported formats include
+   * HTML, PDF, and image files. If not provided, then the preview displays an
+   * empty state and the print button is disabled.
+   *
+   * Set this to the URL of the generated document once it's ready for the
+   * merchant to review and print.
    */
   src?: string;
 }
