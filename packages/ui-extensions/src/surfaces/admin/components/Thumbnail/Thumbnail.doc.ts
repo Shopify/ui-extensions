@@ -43,7 +43,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'thumbnail-default.png',
     description:
-      'Display small preview images for products or items. This example shows a basic thumbnail with source URL and alt text. Click to interact with the preview.',
+      'Display small preview images for products or items. This example shows a basic thumbnail with source URL and alt text for accessibility. Click to interact with the preview.',
     codeblock: {
       title: 'Display a thumbnail',
       tabs: [
