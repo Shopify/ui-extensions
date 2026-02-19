@@ -1,63 +1,89 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import {AccessibilityLabelProps} from '../shared';
 
+/**
+ * Props for the Link component, an interactive text element that navigates
+ * to a URL or triggers an action when pressed. Inherits accessibility
+ * label support from `AccessibilityLabelProps`.
+ */
 export interface LinkProps extends AccessibilityLabelProps {
   /**
-   * A unique identifier for the link.
+   * A unique identifier for the link. When not set,
+   * a globally unique value will be used instead.
    */
   id?: string;
 
   /**
-   * The URL to link to.
-   * If set, it will navigate to the location specified by `href` after executing the `onClick` callback.
+   * The URL to link to. If set, the link will navigate to the specified
+   * location after executing the `onClick` callback. Use this prop for
+   * standard navigation links within or outside the Shopify admin.
    */
   href?: string;
 
   /**
-   * Alias for `href`
-   * If set, it will navigate to the location specified by `to` after executing the `onClick` callback.
+   * An alias for `href`. If set, the link will navigate to the specified
+   * location after executing the `onClick` callback.
    */
   to?: string;
 
   /**
-   * Sets the link color.
+   * The color of the link text.
    *
-   * - `inherit` will take the color value from its parent,
-   * giving the link a monochrome appearance. In some cases,
-   * its important to pair this property with another stylistic treatment,
-   * like an underline, to differentiate the link from a normal text.
+   * - `default`: Uses the standard link color to indicate an interactive element.
+   * - `inherit`: Takes the color value from its parent, giving the link a
+   *   monochrome appearance. Pair this with another stylistic
+   *   treatment, like an underline, to differentiate the link from normal text.
+   * - `critical`: Uses a critical (destructive) color to indicate a potentially
+   *   dangerous action, such as deleting a resource.
+   *
+   * @defaultValue 'default'
    */
   tone?: 'default' | 'inherit' | 'critical';
 
   /**
-   * Callback when a link is pressed. If `href` is set,
-   * it will execute the callback and then navigate to the location specified by `href`.
+   * A callback that fires when the link is pressed. If `href` is set,
+   * the callback executes first and then the link navigates to the
+   * specified location.
    */
   onClick?(): void;
 
   /**
-   * Alias for `onClick`
-   * Callback when a link is pressed. If `href` is set,
-   * it will execute the callback and then navigate to the location specified by `href`.
+   * An alias for `onClick`. A callback that fires when the link is pressed.
+   * If `href` is set, the callback executes first and then the link
+   * navigates to the specified location.
    */
   onPress?(): void;
 
   /**
-   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
-   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
-   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
+   * The language of the link's text content. Use this when the
+   * link text is in a different language than the rest of the page so
+   * assistive technologies can invoke the correct pronunciation.
+   * Must be a valid [IANA language subtag](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry).
    */
   language?: string;
 
   /**
-   * Alias for `language`
+   * An alias for `language`.
+   * The language of the link's text content. Use this when the
+   * link text is in a different language than the rest of the page so
+   * assistive technologies can invoke the correct pronunciation.
+   * Must be a valid [IANA language subtag](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry).
    */
   lang?: string;
+
   /**
-   * Specifies where to display the linked URL
-   * @default '_self'
+   * The browsing context for opening the linked URL.
+   *
+   * - `_blank`: Opens the link in a new tab or window.
+   * - `_self`: Opens the link in the current page (default behavior).
+   *
+   * @defaultValue '_self'
    */
   target?: '_blank' | '_self';
 }
 
+/**
+ * An interactive text element that navigates to a URL or triggers an
+ * action when pressed.
+ */
 export const Link = createRemoteComponent<'Link', LinkProps>('Link');
