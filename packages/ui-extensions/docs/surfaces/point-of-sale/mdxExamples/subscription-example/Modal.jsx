@@ -1,5 +1,7 @@
 import {render} from 'preact';
 import {useState, useEffect} from 'preact/hooks';
+// Allows the use of `shopify.cart.current.value` as a stateful subscription.
+import '@shopify/ui-extensions/preact';
 import {fetchSellingPlans} from './FetchSellingPlans';
 
 export default function extension() {
