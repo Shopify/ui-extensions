@@ -1,9 +1,22 @@
-  <s-stack direction="inline" gap="base">
-    <s-thumbnail
-      src="https://cdn.shopify.com/static/sample-product/House-Plant1.png"
-      alt="Product"
-      size="small-200"
-      onLoad="setLoading(false)"
-    />
-    <s-paragraph>Image loaded</s-paragraph>
- </s-stack>
+<s-stack direction="inline" gap="base" alignItems="center">
+  <s-thumbnail
+    id="product-thumbnail"
+    src="https://cdn.shopify.com/static/sample-product/House-Plant1.png"
+    alt="Image of indoor plant"
+    size="small-200"
+  />
+  <s-text id="status-text">Loading...</s-text>
+</s-stack>
+
+<script>
+  const thumbnail = document.getElementById('product-thumbnail');
+  const statusText = document.getElementById('status-text');
+
+  thumbnail.addEventListener('load', () => {
+    statusText.textContent = 'Image loaded';
+  });
+
+  thumbnail.addEventListener('error', () => {
+    statusText.textContent = 'Failed to load image';
+  });
+</script>
