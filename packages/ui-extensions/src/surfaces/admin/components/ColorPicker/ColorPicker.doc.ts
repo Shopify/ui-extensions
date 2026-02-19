@@ -13,7 +13,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       sectionContent: `- **Initialize with current values:** When editing existing colors, always set the picker's initial value to the current color. This shows merchants what they're changing from and maintains context.
 - **Show preview of final result:** If possible, show how the selected color will look in its actual context (like previewing a button color on a button) alongside the picker.
-- **Pair with color field for precision:** Use the component for visual selection combined with a [color field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/colorfield) for precise hex input. This gives merchants both visual intuition and exact control.`,
+- **Pair with color field for precision:** Use the component for visual selection combined with a [color field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/color-field) for precise hex input. This gives merchants both visual intuition and exact control.`,
     },
     {
       title: 'Limitations',
