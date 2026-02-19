@@ -8,6 +8,9 @@
 /// <reference lib="DOM" />
 import type {ComponentChildren, ChoiceProps$1} from './shared.d.ts';
 
+/**
+ * Properties for rendering a single choice within a choice list that can be selected using a radio button or checkbox.
+ */
 export interface ChoiceProps
   extends Required<
     Pick<
@@ -20,20 +23,50 @@ export interface ChoiceProps
     >
   > {}
 
+/**
+ * CSS styles that will be applied to the component's shadow DOM.
+ */
 export type Styles = string;
+/**
+ * Configuration for rendering a custom element with Preact and shadow DOM.
+ */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  /**
+   * A function that renders the component's content inside the shadow root.
+   */
   ShadowRoot: (element: any) => ComponentChildren;
+  /**
+   * CSS styles that will be applied to the shadow DOM.
+   */
   styles?: Styles;
 };
+/**
+ * Information about modifier keys and mouse buttons that were active during an interaction.
+ */
 export interface ActivationEventEsque {
+  /**
+   * Whether the Shift key was held down during the interaction.
+   */
   shiftKey: boolean;
+  /**
+   * Whether the Meta key (Command on Mac, Windows key on PC) was held down during the interaction.
+   */
   metaKey: boolean;
+  /**
+   * Whether the Control key was held down during the interaction.
+   */
   ctrlKey: boolean;
+  /**
+   * The mouse button that was pressed during the interaction.
+   */
   button: number;
 }
+/**
+ * Options for influencing how a programmatic click behaves.
+ */
 export interface ClickOptions {
   /**
-   * The event you want to influence the synthetic click.
+   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
    */
   sourceEvent?: ActivationEventEsque;
 }
@@ -82,11 +115,17 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 /** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
+  /**
+   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   */
   key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
+  /**
+   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   */
   ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
+  /**
+   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   */
   slot?: Lowercase<string>;
 }
 /** Used when an element has children. */
@@ -95,12 +134,30 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+/**
+ * A single choice within a choice list that can be selected with a radio button or checkbox.
+ */
 declare class Choice extends PreactCustomElement implements ChoiceProps {
+  /**
+   * Whether the choice is disabled and can't be selected.
+   */
   accessor disabled: ChoiceProps['disabled'];
+  /**
+   * Whether the choice is currently selected.
+   */
   get selected(): boolean;
   set selected(selected: ChoiceProps['selected']);
+  /**
+   * The value that's submitted with the form when this choice is selected.
+   */
   accessor value: ChoiceProps['value'];
+  /**
+   * A label that's only visible to screen readers, used when the visual label isn't descriptive enough.
+   */
   accessor accessibilityLabel: ChoiceProps['accessibilityLabel'];
+  /**
+   * Whether the choice should be selected when it's first rendered.
+   */
   accessor defaultSelected: ChoiceProps['defaultSelected'];
   constructor();
   /** @private */
@@ -123,22 +180,22 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-choice';
+/**
+ * Properties for using the Choice component in JSX with React-style props.
+ */
 export interface ChoiceJSXProps
   extends Partial<ChoiceProps>,
     Pick<ChoiceProps$1, 'id' | 'children' | 'details'> {
   /**
-   * Content to use as the choice label.
+   * The content that's used as the choice label, extracted as plain text from any provided markup.
    *
-   * The label is produced by extracting and
-   * concatenating the text nodes from the provided content;
-   * any markup or element structure is ignored.
+   * The label is produced by extracting and concatenating the text nodes from the provided content; any markup or element structure is ignored.
    */
   children?: ComponentChildren;
   /**
-   * Additional text to provide context or guidance for the input.
+   * Additional text that provides context or guidance for the input, displayed alongside the choice label.
    *
-   * This text is displayed along with the input and its label
-   * to offer more information or instructions to the user.
+   * This text is displayed along with the input and its label to offer more information or instructions to the user.
    *
    * @implementation this content should be linked to the input with an `aria-describedby` attribute.
    */

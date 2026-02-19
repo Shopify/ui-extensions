@@ -114,9 +114,7 @@ export interface ChipJSXProps
    */
   children?: ComponentChildren;
   /**
-   * The graphic to display in the chip.
-   *
-   * Only accepts `Icon` components.
+   * An optional icon to display at the start of the chip. Accepts only Icon components.
    */
   graphic?: ComponentChildren;
 }

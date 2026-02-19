@@ -3,7 +3,8 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Chip',
   description:
-    'Represents a set of user-supplied keywords that help label, organize, and categorize objects. Used to categorize or highlight content attributes. They are often displayed near the content they classify, enhancing discoverability by allowing users to identify items with similar properties.',
+    'The Chip component displays static labels, categories, or attributes that help classify and organize content. Use Chip to show product tags, categories, or metadata near the items they describe, helping users identify items with similar properties.' +
+    '\n\nChips support multiple visual variants for different levels of emphasis and can include icons to provide additional visual context. For system-generated status indicators, use [Badge](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge). For interactive or removable chips, use [ClickableChip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/clickablechip).',
   category: 'Polaris web components',
   subCategory: 'Typography and content',
   related: [],

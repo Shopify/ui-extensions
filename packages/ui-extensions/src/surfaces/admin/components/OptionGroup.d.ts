@@ -8,23 +8,56 @@
 /// <reference lib="DOM" />
 import type {ComponentChildren, OptionGroupProps$1} from './shared.d.ts';
 
+/**
+ * Properties for rendering a group of related options within a select dropdown, organized under a shared label.
+ */
 export interface OptionGroupProps
   extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
 
+/**
+ * CSS styles that will be applied to the component's shadow DOM.
+ */
 export type Styles = string;
+/**
+ * Configuration for rendering a custom element with Preact and shadow DOM.
+ */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  /**
+   * A function that renders the component's content inside the shadow root.
+   */
   ShadowRoot: (element: any) => ComponentChildren;
+  /**
+   * CSS styles that will be applied to the shadow DOM.
+   */
   styles?: Styles;
 };
+/**
+ * Information about modifier keys and mouse buttons that were active during an interaction.
+ */
 export interface ActivationEventEsque {
+  /**
+   * Whether the Shift key was held down during the interaction.
+   */
   shiftKey: boolean;
+  /**
+   * Whether the Meta key (Command on Mac, Windows key on PC) was held down during the interaction.
+   */
   metaKey: boolean;
+  /**
+   * Whether the Control key was held down during the interaction.
+   */
   ctrlKey: boolean;
+  /**
+   * The mouse button that was pressed during the interaction.
+   */
   button: number;
 }
+/**
+ * Options for influencing how a programmatic click behaves.
+ */
 export interface ClickOptions {
   /**
-   * The event you want to influence the synthetic click.
+   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
    */
   sourceEvent?: ActivationEventEsque;
 }
@@ -73,11 +106,17 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 /** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
+  /**
+   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   */
   key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
+  /**
+   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   */
   ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
+  /**
+   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   */
   slot?: Lowercase<string>;
 }
 /** Used when an element has children. */
@@ -86,11 +125,20 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+/**
+ * A group of related options within a select dropdown, displayed with a label.
+ */
 declare class OptionGroup
   extends PreactCustomElement
   implements OptionGroupProps
 {
+  /**
+   * Whether all options in the group are disabled and can't be selected.
+   */
   accessor disabled: OptionGroupProps['disabled'];
+  /**
+   * The text that describes what this group of options represents.
+   */
   accessor label: OptionGroupProps['label'];
   constructor();
 }
@@ -109,13 +157,14 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-option-group';
+/**
+ * Properties for using the OptionGroup component in JSX with React-style props.
+ */
 export interface OptionGroupJSXProps
   extends Partial<OptionGroupProps>,
     Pick<OptionGroupProps$1, 'id' | 'children'> {
   /**
-   * The options a user can select from.
-   *
-   * Accepts `Option` components.
+   * The selectable options displayed in the dropdown list. Accepts Option components for individual selectable items within this group.
    */
   children?: ComponentChildren;
 }

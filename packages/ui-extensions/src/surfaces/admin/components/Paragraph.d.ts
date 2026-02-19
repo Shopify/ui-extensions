@@ -8,6 +8,9 @@
 /// <reference lib="DOM" />
 import type {ComponentChildren, ParagraphProps$1} from './shared.d.ts';
 
+/**
+ * The properties for the Paragraph component. These properties define blocks of text content with consistent spacing and styling for readable body copy.
+ */
 export interface ParagraphProps
   extends Required<
     Pick<
@@ -20,23 +23,72 @@ export interface ParagraphProps
       | 'lineClamp'
     >
   > {
+  /**
+   * The semantic tone that's applied to the paragraph text, which changes its color to convey meaning.
+   *
+   * - `info`: Informational content or helpful tips (blue).
+   * - `success`: Positive outcomes or successful states (green).
+   * - `warning`: Important warnings about potential issues (orange).
+   * - `critical`: Urgent problems or destructive actions (red).
+   * - `caution`: Advisory notices that need attention (yellow).
+   */
+  tone: Extract<
+    ParagraphProps$1['tone'],
+    'info' | 'success' | 'caution' | 'warning' | 'critical'
+  >;
+  /**
+   * The color of the paragraph text. Available options:
+   * - `'base'` - The default text color.
+   * - `'subdued'` - A lighter text color for secondary information.
+   */
   color: Extract<ParagraphProps$1['color'], 'base' | 'subdued'>;
 }
 
+/**
+ * A string containing CSS styles.
+ */
 export type Styles = string;
+/**
+ * The configuration for rendering a custom element with a shadow DOM.
+ */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  /**
+   * The function that renders the component's shadow DOM content.
+   */
   ShadowRoot: (element: any) => ComponentChildren;
+  /**
+   * Optional CSS styles to apply to the shadow DOM.
+   */
   styles?: Styles;
 };
+/**
+ * An object that represents the state of modifier keys and mouse button
+ * during an activation event like a click.
+ */
 export interface ActivationEventEsque {
+  /**
+   * Whether the shift key was pressed during the event.
+   */
   shiftKey: boolean;
+  /**
+   * Whether the meta (Command on Mac, Windows key on PC) key was pressed.
+   */
   metaKey: boolean;
+  /**
+   * Whether the control key was pressed during the event.
+   */
   ctrlKey: boolean;
+  /**
+   * The mouse button that was pressed (0 for left, 1 for middle, 2 for right).
+   */
   button: number;
 }
+/**
+ * Options for customizing click behavior on an element.
+ */
 export interface ClickOptions {
   /**
-   * The event you want to influence the synthetic click.
+   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
    */
   sourceEvent?: ActivationEventEsque;
 }
@@ -83,31 +135,65 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-/** Used when an element does not have children. */
+/**
+ * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
+  /**
+   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   */
   key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
+  /**
+   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   */
   ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
+  /**
+   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. */
+/**
+ * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
 }
 
+/**
+ * A custom element for displaying blocks of text content with consistent spacing and styling for readable body copy. Use Paragraph to render longer text content with proper line height and spacing between paragraphs.
+ */
 declare class Paragraph extends PreactCustomElement implements ParagraphProps {
+  /**
+   * The numeric font variant for the paragraph text.
+   */
   accessor fontVariantNumeric: ParagraphProps['fontVariantNumeric'];
+  /**
+   * The maximum number of lines to display before the text is truncated with an ellipsis.
+   */
   accessor lineClamp: ParagraphProps['lineClamp'];
-  accessor tone: Extract<
-    ParagraphProps['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
-  >;
+  /**
+   * The semantic tone that's applied to the paragraph text, which changes its color to convey meaning.
+   *
+   * - `info`: Informational content or helpful tips (blue).
+   * - `success`: Positive outcomes or successful states (green).
+   * - `warning`: Important warnings about potential issues (orange).
+   * - `critical`: Urgent problems or destructive actions (red).
+   * - `caution`: Advisory notices that need attention (yellow).
+   */
+  accessor tone: ParagraphProps['tone'];
 
+  /**
+   * The color of the paragraph text.
+   */
   accessor color: ParagraphProps['color'];
+  /**
+   * The text direction (left-to-right or right-to-left).
+   */
   accessor dir: ParagraphProps['dir'];
+  /**
+   * The visibility of the element to assistive technologies.
+   */
   accessor accessibilityVisibility: ParagraphProps['accessibilityVisibility'];
   constructor();
 }
@@ -126,11 +212,14 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-paragraph';
+/**
+ * The JSX properties for the Paragraph component. These properties define how a paragraph is rendered in Preact or JSX.
+ */
 export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,
     Pick<ParagraphProps$1, 'id' | 'children'> {
   /**
-   * The content of the Paragraph.
+   * The content of the paragraph.
    */
   children?: ComponentChildren;
 }
