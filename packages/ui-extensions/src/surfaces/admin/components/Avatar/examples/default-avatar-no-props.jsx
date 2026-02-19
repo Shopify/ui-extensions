@@ -1,1 +1,0 @@
-<s-avatar alt="Customer" />

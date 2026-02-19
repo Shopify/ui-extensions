@@ -10,9 +10,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- **Choose appropriate sizes:** Use smaller sizes for compact contexts like tables and lists, and larger sizes for profile pages where the person is the primary focus.
-- **Provide meaningful alt text:** Describe the avatar content like **Sarah Chen** or **Acme Corporation**, or use empty alt text if the name appears next to the avatar as text.
-- **Position near related content:** Place avatars adjacent to the names or entities they represent for clear associations in lists, tables, or cards.`,
+      sectionContent: `- **Choose appropriate sizes**: Use smaller sizes for compact contexts like tables and lists, and larger sizes for profile pages where the person is the primary focus.
+- **Provide meaningful alt text**: Describe the avatar content like **Sarah Chen** or **Acme Corporation**, or use empty alt text if the name appears next to the avatar as text.
+- **Position near related content**: Place avatars adjacent to the names or entities they represent for clear associations in lists, tables, or cards.`,
     },
     {
       title: 'Limitations',
@@ -39,18 +39,14 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'avatar-default.png',
+    description:
+      'Identify users visually when no profile image is available. This example displays an avatar with initials derived from a name.',
     codeblock: {
-      title: 'Code',
+      title: 'Display initials',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-          layout: 'inline',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -59,202 +55,95 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Displays a customer avatar with their initials when no profile image is available.',
+              'Represent unknown users with a generic icon. This example displays a placeholder avatar when no initials or image are provided.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows a generic person icon placeholder when no user information is available.',
-            codeblock: {
-              title: 'Default avatar (no props)',
+              title: 'Show a placeholder avatar',
               tabs: [
                 {
                   code: './examples/default-avatar-no-props.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/default-avatar-no-props.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Loads a customer profile image with automatic fallback to initials if the image fails to load.',
+              'Display profile photos with graceful error handling. This example presents an avatar with a source image that falls back to initials if the image fails to load.',
             codeblock: {
-              title: 'With image source and fallback',
+              title: 'Load an image with fallback',
               tabs: [
                 {
                   code: './examples/with-image-source-and-fallback.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-image-source-and-fallback.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Displays customer and merchant avatars in different sizes for various interface contexts.',
+              'Adapt avatar prominence to different UI contexts. This example demonstrates all five available sizes from `small-200` to `large-200`.',
             codeblock: {
-              title: 'Size variations',
+              title: 'Adjust the size',
               tabs: [
                 {
                   code: './examples/size-variations.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/size-variations.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Shows how the component handles store and business names of varying lengths in commerce contexts.',
+              'Display initials of varying lengths consistently. This example presents avatars with two, three, and four character initials.',
             codeblock: {
-              title: 'Long initials handling',
+              title: 'Handle long names',
               tabs: [
                 {
                   code: './examples/long-initials-handling.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/long-initials-handling.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates that identical initials always receive the same color assignment across different store types.',
+              'Ensure visual consistency across the interface. This example demonstrates that avatars with identical initials always display the same background color.',
             codeblock: {
-              title: 'Color consistency demo',
+              title: 'Maintain color consistency',
               tabs: [
                 {
                   code: './examples/color-consistency-demo.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/color-consistency-demo.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Shows automatic fallback to initials when customer or merchant profile images fail to load.',
+              'Show customer identities in list views. This example pairs avatars with customer names in a vertical stack layout.',
             codeblock: {
-              title: 'Error handling example',
-              tabs: [
-                {
-                  code: './examples/error-handling-example.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/error-handling-example.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Typical usage pattern for displaying customer avatars in order lists or customer listings.',
-            codeblock: {
-              title: 'In customer list context',
+              title: 'Display in a customer list',
               tabs: [
                 {
                   code: './examples/in-customer-list-context.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/in-customer-list-context.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Shows staff member avatars in different admin interface contexts.',
+              'Create a profile layout with multiple components. This example combines an avatar with [section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section), [heading](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/heading), and [text](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/text) components.',
             codeblock: {
-              title: 'Staff member profiles',
-              tabs: [
-                {
-                  code: './examples/staff-member-profiles.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/staff-member-profiles.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates avatar integration with other admin-ui components in a merchant section layout.',
-            codeblock: {
-              title: 'With Section component',
+              title: 'Build a merchant profile card',
               tabs: [
                 {
                   code: './examples/with-section-component.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-section-component.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows avatars for different types of fulfillment partners in the Shopify ecosystem.',
-            codeblock: {
-              title: 'Fulfillment partner avatars',
-              tabs: [
-                {
-                  code: './examples/fulfillment-partner-avatars.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/fulfillment-partner-avatars.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
