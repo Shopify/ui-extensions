@@ -12,7 +12,7 @@ import type {
 import {AnyComponentBuilder} from '../../shared';
 
 /**
- * The set of UI components available for customer segment template extensions. Includes only the `CustomerSegmentTemplate` and `InternalCustomerSegmentTemplate` components used to define segment query builders.
+ * The set of UI components available for customer segment template extensions. Includes only the CustomerSegmentTemplate and InternalCustomerSegmentTemplate components used to define segment query builders.
  */
 type CustomerSegmentTemplateComponent = AnyComponentBuilder<
   Pick<
@@ -22,7 +22,7 @@ type CustomerSegmentTemplateComponent = AnyComponentBuilder<
 >;
 
 /**
- * The set of UI components available for product configuration extensions. Includes layout components (`Box`, `InlineStack`, `BlockStack`), content components (`Heading`, `Text`, `Link`, `Image`, `Icon`), and resource display components (`ResourceList`, `ResourceItem`, `Thumbnail`) for building product bundle and configuration interfaces.
+ * The set of UI components available for product configuration extensions. Includes layout components (Box, InlineStack, BlockStack), content components (Heading, Text, Link, Image, Icon), and resource display components (ResourceList, ResourceItem, Thumbnail) for building product bundle and configuration interfaces.
  */
 type ProductConfigurationComponents = AnyComponentBuilder<
   Pick<
@@ -155,7 +155,7 @@ export interface ExtensionTargets {
   // Bulk Actions
 
   /**
-   * An action target that appears in the **More actions** menu on the product index page when multiple products are selected. Use this to create workflows for bulk product operations, batch updates, or mass data processing.
+   * A selection action target that appears in the **More actions** menu on the product index page when multiple products are selected. Use this to create workflows for bulk product operations, batch updates, or mass data processing.
    */
   'admin.product-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.product-index.selection-action.render'>,
@@ -163,7 +163,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * An action target that appears in the **More actions** menu on the order index page when multiple orders are selected. Use this to create workflows for bulk order operations, batch fulfillment, or mass order processing.
+   * A selection action target that appears in the **More actions** menu on the order index page when multiple orders are selected. Use this to create workflows for bulk order operations, batch fulfillment, or mass order processing.
    */
   'admin.order-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.order-index.selection-action.render'>,
@@ -171,7 +171,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * An action target that appears in the **More actions** menu on the customer index page when multiple customers are selected. Use this to create workflows for bulk customer operations, mass email campaigns, or batch data updates.
+   * A selection action target that appears in the **More actions** menu on the customer index page when multiple customers are selected. Use this to create workflows for bulk customer operations, mass email campaigns, or batch data updates.
    */
   'admin.customer-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-index.selection-action.render'>,
@@ -260,7 +260,7 @@ export type ApiForRenderExtension<ID extends keyof RenderExtensions> =
   ExtractedApiFromRenderExtension<RenderExtensions[ID]>;
 
 /**
- * Extracts the component set for a specific render extension target. Use this to get the union of UI components (for example, `Text`, `Button`, or `AdminBlock`) available for your extension target. This helps you write type-safe code that only uses components supported by your target.
+ * Extracts the component set for a specific render extension target. Use this to get the union of UI components (for example, Text, Button, or AdminBlock) available for your extension target. This helps you write type-safe code that only uses components supported by your target.
  */
 export type AllowedComponentsForRenderExtension<
   ID extends keyof RenderExtensions,

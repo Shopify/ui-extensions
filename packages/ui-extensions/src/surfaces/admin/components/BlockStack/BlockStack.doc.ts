@@ -3,18 +3,20 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'BlockStack',
   description:
-    "This structures layout elements along the vertical axis of the page. It's useful for vertical alignment.",
+    'The BlockStack component arranges its children vertically (along the block axis) with configurable spacing between them. Use it to stack elements like headings, paragraphs, form fields, and buttons in a column layout.\n\nFor horizontal arrangement, use [InlineStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/inlinestack).',
   requires: '',
   thumbnail: 'blockstack-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
-      title: 'BlockStackProps',
-      description: '',
+      title: 'Properties',
+      description:
+        'Configure the following properties on the BlockStack component.',
       type: 'BlockStackProps',
     },
   ],
+  related: [],
   category: 'UI components',
   subCategory: 'Layout and structure',
   defaultExample: {
@@ -36,11 +38,18 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [
+  subSections: [
     {
-      type: 'component',
-      name: 'InlineStack',
-      url: '/docs/api/admin-extensions/components/structure/Stack',
+      type: 'Generic',
+      title: 'Best practices',
+      anchorLink: 'best-practices',
+      sectionContent: `- **Combine with InlineStack for complex layouts:** Use BlockStack for vertical arrangement and nest [InlineStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/inlinestack) components inside it for horizontal rows, creating grid-like layouts.`,
+    },
+    {
+      type: 'Generic',
+      title: 'Limitations',
+      anchorLink: 'limitations',
+      sectionContent: `- BlockStack doesn't render any visible background, border, or shadow. It is purely a layout container.`,
     },
   ],
 };
