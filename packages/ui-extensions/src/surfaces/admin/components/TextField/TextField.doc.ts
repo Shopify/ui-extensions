@@ -42,8 +42,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Best practices',
       anchorLink: 'best-practices',
-      sectionContent: `- **Always provide a label:** Every TextField must have a \`label\` that clearly describes what information is expected. Labels are required and help screen reader users understand the field's purpose.
-- **Use placeholder text as a hint, not a label:** Placeholders disappear when the merchant starts typing, so they should only provide formatting hints (like "Summer Sale") rather than replace the label.`,
+      sectionContent: `- **Write a clear label:** The required \`label\` prop tells merchants and screen reader users what information the field expects. Use specific, concise labels like "Product title" or "Order note".
+- **Use placeholder text as a hint, not a label:** Placeholders disappear when the merchant starts typing, so use them for formatting hints (like "Summer Sale") rather than as a replacement for the label.`,
     },
     {
       type: 'Generic',

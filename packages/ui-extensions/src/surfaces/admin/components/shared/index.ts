@@ -942,7 +942,7 @@ export interface AnchorProps {
 
   /**
    * A callback fired when the element is activated (clicked or tapped). If
-   * `href` is also set, this callback runs first and navigation follows.
+   * `href` is also set, then this callback runs first and navigation follows.
    * When `href` isn't set, use this to handle the action entirely in your
    * extension code.
    */
@@ -950,7 +950,7 @@ export interface AnchorProps {
 
   /**
    * An alias for `onClick`. A callback fired when the element is activated
-   * (clicked or tapped). If `href` is also set, this callback runs first
+   * (clicked or tapped). If `href` is also set, then this callback runs first
    * and navigation follows.
    */
   onPress?(): void;
@@ -991,7 +991,7 @@ export interface NumberConstraintsProps {
   /**
    * The highest decimal or integer to be accepted for the field. When
    * using the stepper buttons, the value won't exceed this limit. If
-   * `step` would overshoot, the value rounds down to `max`. A user
+   * `step` would overshoot, then the value rounds down to `max`. A user
    * can still type a number higher than `max` using the keyboard, so
    * add appropriate validation with the `error` prop.
    */
@@ -1000,7 +1000,7 @@ export interface NumberConstraintsProps {
   /**
    * The lowest decimal or integer to be accepted for the field. When
    * using the stepper buttons, the value won't go below this limit. If
-   * `step` would undershoot, the value rounds up to `min`. A user
+   * `step` would undershoot, then the value rounds up to `min`. A user
    * can still type a number lower than `min` using the keyboard, so
    * add appropriate validation with the `error` prop.
    *
@@ -1361,7 +1361,7 @@ export interface BaseTypographyProps {
 
   /**
    * The behavior for signaling text that overflows its container to users.
-   * Currently only supports `ellipsis`, which truncates the text and
+   * Currently supports only `ellipsis`, which truncates the text and
    * appends an ellipsis (`…`). The element must also constrain its size
    * (such as through `maxInlineSize`) for truncation to take effect.
    *
