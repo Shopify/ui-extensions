@@ -3,7 +3,8 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'QueryContainer',
   description:
-    'Establishes a query container for responsive design. Use `s-query-container` to define an element as a containment context, enabling child components or styles to adapt based on the container’s size.',
+    "The QueryContainer component establishes a container query context for responsive design. Use QueryContainer to define an element as a containment context, enabling child components or styles to adapt based on the container's size rather than viewport width." +
+    '\n\nQuery containers support modern responsive patterns where components respond to their container dimensions, creating more flexible and reusable layouts.',
   category: 'Polaris web components',
   subCategory: 'Layout and structure',
   related: [],
