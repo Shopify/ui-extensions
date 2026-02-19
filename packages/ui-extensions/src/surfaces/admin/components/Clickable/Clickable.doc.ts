@@ -57,23 +57,6 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'A simple clickable button with a base border and padding, demonstrating the default button behavior of the clickable component.',
-        codeblock: {
-          title: 'Basic Button Usage',
-          tabs: [
-            {
-              code: './examples/basic-button-usage.html',
-              language: 'html',
-            },
-            {
-              code: './examples/basic-button-usage.jsx',
-              language: 'preview-jsx',
-            },
-          ],
-        },
-      },
-      {
-        description:
           "Demonstrates the clickable component's ability to function as a link, opening the specified URL in a new browser tab when clicked.",
         codeblock: {
           title: 'Link Mode',
