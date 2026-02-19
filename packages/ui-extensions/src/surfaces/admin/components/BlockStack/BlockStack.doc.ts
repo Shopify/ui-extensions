@@ -43,8 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Best practices',
       anchorLink: 'best-practices',
-      sectionContent: `- **Use BlockStack as your default layout container:** Most UI elements in admin extensions stack vertically. Wrap related elements in a BlockStack for uniform spacing.
-- **Combine with InlineStack for complex layouts:** Use BlockStack for vertical arrangement and nest [InlineStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/inlinestack) components inside it for horizontal rows, creating grid-like layouts.`,
+      sectionContent: `- **Combine with InlineStack for complex layouts:** Use BlockStack for vertical arrangement and nest [InlineStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/inlinestack) components inside it for horizontal rows, creating grid-like layouts.`,
     },
     {
       type: 'Generic',

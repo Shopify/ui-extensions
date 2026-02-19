@@ -42,8 +42,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Best practices',
       anchorLink: 'best-practices',
-      sectionContent: `- **Use FunctionSettings instead of Form for Shopify Functions:** FunctionSettings provides Function-specific error handling and integrates with the metafield configuration flow. Use it in any extension target related to Shopify Function settings.
-- **Group related settings logically:** Organize the input fields inside FunctionSettings with [Section](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/section) and [Heading](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/heading) components to create a clear, scannable settings interface.`,
+      sectionContent: `- **Group related settings logically:** Organize the input fields inside FunctionSettings with [Section](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/section) and [Heading](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/heading) components to create a clear, scannable settings interface.`,
     },
     {
       type: 'Generic',
@@ -51,7 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       sectionContent: `- FunctionSettings doesn't include a built-in reset callback like [Form](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/form). The save bar's discard behavior is managed by the Shopify admin.
 - FunctionSettings doesn't validate input values before save. You must implement your own validation logic and display errors on individual fields.
-- Only one FunctionSettings component should be used per extension view. Nesting or duplicating FunctionSettings isn't supported.`,
+- Only one FunctionSettings component should be used per extension view. Each FunctionSettings binds to the admin's save bar, and multiple instances would create conflicting save states.`,
     },
   ],
   related: [],

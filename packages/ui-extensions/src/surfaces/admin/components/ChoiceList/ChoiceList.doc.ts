@@ -42,9 +42,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Best practices',
       anchorLink: 'best-practices',
-      sectionContent: `- **Use radio buttons for mutually exclusive options:** When only one choice is allowed, leave \`multiple\` unset or set it to \`false\`. ChoiceList renders radio buttons by default.
-- **Use checkboxes for multiple selections:** Set \`multiple\` to \`true\` when merchants can select more than one option. ChoiceList renders checkboxes in this mode.
-- **Keep the list short and scannable:** Display 2-6 options. For longer lists, consider using a [Select](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/select) dropdown instead, which takes up less vertical space.
+      sectionContent: `- **Keep the list short and scannable:** Display 2-6 options. For longer lists, consider using a [Select](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/select) dropdown instead, which takes up less vertical space.
 - **Write clear, parallel labels:** Each choice label should be written in a consistent format. For example, all labels should start with a verb or all should be noun phrases.
 - **Provide a default selection for radio buttons:** When using single selection, pre-select the most common or recommended option so merchants don't have to make a choice when the default works.`,
     },
