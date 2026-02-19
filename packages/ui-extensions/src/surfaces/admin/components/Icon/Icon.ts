@@ -2,37 +2,51 @@ import {createRemoteComponent} from '@remote-ui/core';
 import {IconName} from './IconName';
 import {AccessibilityLabelProps} from '../shared';
 
+/**
+ * Props for the Icon component, which renders a Polaris icon by name.
+ * Inherits accessibility label support from `AccessibilityLabelProps`.
+ */
 export interface IconProps extends AccessibilityLabelProps {
   /**
-   * Set the color of the icon.
+   * The color of the icon.
    *
-   * - `inherit` will take the color value from its parent,
-   * giving the link a monochrome appearance.
+   * - `inherit`: Uses the color from the icon's parent, giving it a
+   *   monochrome appearance that matches surrounding text.
+   * - `critical`: Applies a red, attention-grabbing color for error or
+   *   destructive contexts.
    *
    * @defaultValue 'inherit'
    */
   tone?: 'inherit' | 'critical';
 
-  /** A unique identifier for the icon. */
+  /**
+   * A unique identifier for the icon.
+   */
   id?: string;
 
   /**
-   * Adjusts the size of the icon.
+   * The size of the icon.
+   *
+   * - `base`: Renders the icon at its standard size.
+   * - `fill`: Stretches the icon to fill the available space in its
+   *   container while preserving its aspect ratio.
    *
    * @defaultValue 'base'
    */
-  size?:
-    | 'base'
-    /**
-     * `fill` will take the space available in the container and keep the icon's proportion.
-     */
-    | 'fill';
+  size?: 'base' | 'fill';
 
   /**
-   * Specifies the name of the icon that will be displayed.
+   * The name of the icon to display.
    */
   name: IconName;
 }
+/**
+ * Re-export of the `IconName` type, which enumerates all available
+ * Polaris icon names.
+ */
 export type {IconName};
 
+/**
+ * Renders a Polaris icon by name, with optional tone and size overrides.
+ */
 export const Icon = createRemoteComponent<'Icon', IconProps>('Icon');

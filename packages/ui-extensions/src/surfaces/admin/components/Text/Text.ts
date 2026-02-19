@@ -7,39 +7,46 @@ import type {
   TextAccessibilityRole,
 } from '../shared';
 
+/**
+ * Props for the Text component, an inline element for rendering and styling
+ * a run of text. Use Text to apply typographic treatments such as font
+ * weight, style, variant, and overflow behavior to a portion of content.
+ */
 export interface TextProps {
-  /** A unique identifier for the field. */
+  /**
+   * A unique identifier for the text element. When not set,
+   * a globally unique value is used instead.
+   */
   id?: string;
 
   /**
-   * Sets the weight (or boldness) of the font.
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
-   * */
+   * The weight (or boldness) of the font. Use heavier weights
+   * to create visual emphasis or establish hierarchy in your content.
+   */
   fontWeight?: FontWeight;
 
   /**
-   * Set how hidden overflow content is signaled to users.
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow
-   * */
+   * The behavior for signaling hidden overflow content to users.
+   */
   textOverflow?: TextOverflow;
 
   /**
-   * Set all the variants for a font with a shorthand property.
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant
+   * The font variant options that control the usage of alternate glyphs.
+   * You can pass a single value or an array of values to combine
+   * multiple variants.
    */
   fontVariant?: FontVariantOptions | FontVariantOptions[];
 
   /**
-   *  Use to emphasize a word or a group of words.
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-style
+   * The styling of the font's letter forms.
    */
   fontStyle?: FontStyle;
 
   /**
-   * Provide semantic meaning to content and improve support for assistive technologies.
-   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles
+   * The semantic meaning of the component’s content. When set, the role will be used by assistive technologies to help users navigate the page.
    */
   accessibilityRole?: TextAccessibilityRole;
 }
 
+/** A Text component for rendering and styling inline text content. */
 export const Text = createRemoteComponent<'Text', TextProps>('Text');

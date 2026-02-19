@@ -1,3 +1,9 @@
+/**
+ * The name of a Polaris icon. Each value corresponds to a specific icon from
+ * the Polaris icon set. Names follow the pattern `{IconName}{Major|Minor}`,
+ * where `Major` icons are intended for primary use and `Minor` icons are
+ * smaller variants for inline or secondary use.
+ */
 export type IconName =
   | 'AbandonedCartFilledMajor'
   | 'AbandonedCartMajor'
