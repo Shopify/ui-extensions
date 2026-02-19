@@ -22,23 +22,23 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- The component doesn't include search, filtering, or lazy loading. For large option sets (20+ choices), consider using a [Select](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/select) dropdown instead.
+      sectionContent: `- The component doesn't include search, filtering, or lazy loading. For large option sets (20+ choices), consider using a [select](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/select) dropdown instead.
 - Rendering 50+ checkboxes or radio buttons can cause noticeable performance issues, especially on mobile devices. Consider pagination, virtualization, or alternative UI patterns for large lists.
 - The component is either single-selection (radio buttons) or multiple-selection (checkboxes) for all choices. You can't mix both types in the same list.
-- Component types other than Choice can't be used as options within the choice list.`,
+- Component types other than choice can't be used as options within the choice list.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the ChoiceList component.',
+        'Configure the following properties on the choice list component.',
       type: 'ChoiceList',
     },
     {
       title: 'Events',
       description:
-        'The ChoiceList component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ChoiceListEvents',
     },
     {
@@ -49,7 +49,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The ChoiceList component supports slots for additional content placement within each choice. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The choice list component supports slots for additional content placement within each choice. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ChoiceSlots',
     },
   ],
@@ -78,7 +78,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a basic ChoiceList with single selection, showing how to create a group of radio button choices.',
+              'Demonstrates a basic choice list with single selection, showing how to create a group of radio button choices.',
             codeblock: {
               title: 'Basic usage',
               tabs: [
@@ -96,7 +96,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a ChoiceList with multiple selection enabled, allowing merchants to choose multiple options with additional descriptive details for each choice.',
+              'Illustrates a choice list with multiple selection enabled, allowing merchants to choose multiple options with additional descriptive details for each choice.',
             codeblock: {
               title: 'Multiple selections',
               tabs: [
@@ -114,7 +114,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows how to display an error message in a ChoiceList when an invalid selection is made or a validation constraint is not met.',
+              'Shows how to display an error message in a choice list when an invalid selection is made or a validation constraint is not met.',
             codeblock: {
               title: 'With error state',
               tabs: [
@@ -132,7 +132,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Showcases a multiple-selection ChoiceList with each option including detailed information.',
+              'Showcases a multiple-selection choice list with each option including detailed information.',
             codeblock: {
               title: 'Multiple choices with details',
               tabs: [

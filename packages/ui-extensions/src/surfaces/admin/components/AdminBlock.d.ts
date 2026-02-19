@@ -8,7 +8,7 @@
 import type {AdminBlockProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
- * The properties for the AdminBlock component. These properties configure the heading and collapsed summary of collapsible content blocks in the admin interface.
+ * The properties for the admin block component. These properties configure the heading and collapsed summary of collapsible content blocks in the admin interface.
  */
 export interface AdminBlockProps
   extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {}
@@ -16,7 +16,7 @@ export interface AdminBlockProps
 declare const tagName = 's-admin-block';
 
 /**
- * The JSX props for the AdminBlock component. These properties extend `AdminBlockProps` with an optional `id` for element identification in JSX rendering.
+ * The JSX props for the admin block component. These properties extend `AdminBlockProps` with an optional `id` for element identification in JSX rendering.
  */
 export interface AdminBlockJSXProps
   extends Partial<AdminBlockProps>,
@@ -113,7 +113,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 /**
- * The AdminBlock custom element class that renders a collapsible content block in the Shopify admin interface. This component organizes content into expandable sections with headings and provides a summary when collapsed.
+ * The admin block custom element class that renders a collapsible content block in the Shopify admin interface. This component organizes content into expandable sections with headings and provides a summary when collapsed.
  */
 declare class AdminBlock
   extends PreactCustomElement

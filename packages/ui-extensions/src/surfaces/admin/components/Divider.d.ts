@@ -9,7 +9,7 @@
 import type {DividerProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
- * The properties for the Divider component. A Divider creates a visual separator to distinguish different sections of content.
+ * The properties for the divider component. A divider creates a visual separator to distinguish different sections of content.
  */
 export interface DividerProps
   extends Pick<DividerProps$1, 'direction' | 'color'> {
@@ -145,7 +145,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 
 /**
- * A Divider is a visual separator that creates a line between different sections of content.
+ * A divider is a visual separator that creates a line between different sections of content.
  */
 declare class Divider extends PreactCustomElement implements DividerProps {
   /**
@@ -183,7 +183,7 @@ declare module 'preact' {
 
 declare const tagName = 's-divider';
 /**
- * The properties for the Divider component when it's used in JSX.
+ * The properties for the divider component when it's used in JSX.
  */
 export interface DividerJSXProps
   extends Partial<DividerProps>,

@@ -297,7 +297,7 @@ declare module 'preact' {
 
 declare const tagName = 's-checkbox';
 /**
- * Props for using the Checkbox component in JSX with React-style event handlers.
+ * Props for using the checkbox component in JSX with React-style event handlers.
  */
 export interface CheckboxJSXProps
   extends Partial<CheckboxProps>,

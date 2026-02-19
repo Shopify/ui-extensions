@@ -10,8 +10,8 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- **Use for layout and grouping:** The component provides spacing, borders, and backgrounds for organizing content. When you need specific layout patterns like rows or columns, use [Stack](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/stack) or [Grid](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/grid) instead. The component works best as a general-purpose container.
-- **Consider semantic alternatives first:** Before using the component, check whether a more specific component like [Section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section) or [Banner](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/banner) better describes your content's purpose. Semantic components provide better accessibility and clearer intent.
+      sectionContent: `- **Use for layout and grouping:** The component provides spacing, borders, and backgrounds for organizing content. When you need specific layout patterns like rows or columns, use [stack](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/stack) or [grid](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/grid) instead. The component works best as a general-purpose container.
+- **Consider semantic alternatives first:** Before using the component, check whether a more specific component like [section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section) or [banner](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/banner) better describes your content's purpose. Semantic components provide better accessibility and clearer intent.
 - **Design for different screen sizes:** Layouts that work on desktop might not work on mobile. Use responsive properties to adjust spacing and layout based on available space rather than creating fixed layouts.
 - **Make interactive containers accessible:** When boxes contain interactive content or represent distinct regions, provide appropriate ARIA roles and labels so screen reader users can navigate and understand the interface structure.
 - **Avoid excessive nesting:** Deep nesting of boxes creates complex DOM structures and makes styling harder to manage. Look for opportunities to simplify your layout or use more appropriate layout components.`,
@@ -20,13 +20,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the Box component.',
+      description: 'Configure the following properties on the box component.',
       type: 'Box',
     },
     {
       title: 'Slots',
       description:
-        'The Box component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The box component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'BoxSlots',
     },
   ],

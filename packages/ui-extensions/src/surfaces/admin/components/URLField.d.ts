@@ -329,7 +329,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 }
 
 /**
- * The properties for the URLField component. These properties configure an input field that allows merchants to enter and validate web addresses (URLs) with built-in validation.
+ * The properties for the URL field component. These properties configure an input field that allows merchants to enter and validate web addresses (URLs) with built-in validation.
  */
 export type URLFieldProps = PreactFieldProps<
   Required<URLFieldProps$1>['autocomplete']
@@ -337,7 +337,7 @@ export type URLFieldProps = PreactFieldProps<
   Required<Pick<URLFieldProps$1, 'maxLength' | 'minLength'>>;
 
 /**
- * The URLField custom element class that renders a URL input field in the Shopify admin interface. This component allows merchants to enter web addresses with automatic URL validation and appropriate mobile keyboard layouts.
+ * The URL field custom element class that renders a URL input field in the Shopify admin interface. This component allows merchants to enter web addresses with automatic URL validation and appropriate mobile keyboard layouts.
  */
 declare class URLField
   extends PreactFieldElement<URLFieldProps['autocomplete']>
@@ -379,7 +379,7 @@ declare module 'preact' {
 
 declare const tagName = 's-url-field';
 /**
- * The JSX props for the URLField component. These properties extend `URLFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact.
+ * The JSX props for the URL field component. These properties extend `URLFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact.
  */
 export interface URLFieldJSXProps
   extends Partial<Omit<URLFieldProps, 'accessory'>>,

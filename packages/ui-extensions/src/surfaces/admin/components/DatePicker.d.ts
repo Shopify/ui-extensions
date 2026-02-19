@@ -9,7 +9,7 @@
 import type {DatePickerProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
- * The properties for the DatePicker component. These properties configure a standalone calendar interface for selecting single dates or date ranges, with support for date constraints, day-of-week restrictions, and month/year navigation.
+ * The properties for the date picker component. These properties configure a standalone calendar interface for selecting single dates or date ranges, with support for date constraints, day-of-week restrictions, and month/year navigation.
  */
 export interface DatePickerProps
   extends Required<
@@ -178,7 +178,7 @@ declare class BaseClass extends PreactCustomElement {
   [internals]: ElementInternals;
 }
 /**
- * The DatePicker custom element class that renders a standalone calendar interface in the Shopify admin. This component allows merchants to select single dates or date ranges using an interactive calendar with month/year navigation, date constraints, and day-of-week restrictions.
+ * The date picker custom element class that renders a standalone calendar interface in the Shopify admin. This component allows merchants to select single dates or date ranges using an interactive calendar with month/year navigation, date constraints, and day-of-week restrictions.
  */
 declare class DatePicker extends BaseClass implements DatePickerProps {
   /**
@@ -270,7 +270,7 @@ declare module 'preact' {
 
 declare const tagName = 's-date-picker';
 /**
- * The JSX props for the DatePicker component. These properties extend `DatePickerProps` with JSX-specific event callbacks for React-style event handling when used in Preact, including callbacks for date selection, focus events, and view changes.
+ * The JSX props for the date picker component. These properties extend `DatePickerProps` with JSX-specific event callbacks for React-style event handling when used in Preact, including callbacks for date selection, focus events, and view changes.
  */
 export interface DatePickerJSXProps
   extends Partial<DatePickerProps>,

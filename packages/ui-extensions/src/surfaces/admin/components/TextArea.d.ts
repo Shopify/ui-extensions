@@ -324,7 +324,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 }
 
 /**
- * The properties for the TextArea component. These properties configure a multi-line text input field that allows merchants to enter and edit longer text content.
+ * The properties for the text area component. These properties configure a multi-line text input field that allows merchants to enter and edit longer text content.
  */
 export type TextAreaProps = PreactFieldProps<
   Required<TextAreaProps$1>['autocomplete']
@@ -332,7 +332,7 @@ export type TextAreaProps = PreactFieldProps<
   Required<Pick<TextAreaProps$1, 'maxLength' | 'minLength' | 'rows'>>;
 
 /**
- * The TextArea custom element class that renders a multi-line text input field in the Shopify admin interface. This component allows merchants to enter and edit longer text content with support for labels, validation, and length constraints.
+ * The text area custom element class that renders a multi-line text input field in the Shopify admin interface. This component allows merchants to enter and edit longer text content with support for labels, validation, and length constraints.
  */
 declare class TextArea
   extends PreactFieldElement<TextAreaProps['autocomplete']>
@@ -372,7 +372,7 @@ declare module 'preact' {
 
 declare const tagName = 's-text-area';
 /**
- * The JSX props for the TextArea component. These properties extend `TextAreaProps` with JSX-specific event callbacks for React-style event handling.
+ * The JSX props for the text area component. These properties extend `TextAreaProps` with JSX-specific event callbacks for React-style event handling.
  */
 export interface TextAreaJSXProps
   extends Partial<TextAreaProps>,

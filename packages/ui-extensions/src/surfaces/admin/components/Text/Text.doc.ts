@@ -19,21 +19,21 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- Text renders inline by default and flows with surrounding content. For block-level text with spacing, use the [Paragraph](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/paragraph) component or wrap in layout components.
-- The component doesn't include text truncation or ellipsis. Long text will wrap or overflow depending on the container. Use other components like [Heading](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/heading) with line clamping if truncation is needed.
+      sectionContent: `- Text renders inline by default and flows with surrounding content. For block-level text with spacing, use the [paragraph](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/paragraph) component or wrap in layout components.
+- The component doesn't include text truncation or ellipsis. Long text will wrap or overflow depending on the container. Use other components like [heading](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/heading) with line clamping if truncation is needed.
 - Tone colors are optimized for light backgrounds. Using tones on dark or colored backgrounds might not meet accessibility contrast requirements.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the Text component.',
+      description: 'Configure the following properties on the text component.',
       type: 'Text',
     },
     {
       title: 'Slots',
       description:
-        'The Text component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The text component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TextSlots',
     },
   ],

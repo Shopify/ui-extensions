@@ -8,7 +8,7 @@
 import type {AdminPrintActionProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
- * The properties for the AdminPrintAction component. These properties configure the source URL for printing content within admin extensions.
+ * The properties for the admin print action component. These properties configure the source URL for printing content within admin extensions.
  */
 export interface AdminPrintActionProps
   extends Pick<AdminPrintActionProps$1, 'src'> {}
@@ -16,7 +16,7 @@ export interface AdminPrintActionProps
 declare const tagName = 's-admin-print-action';
 
 /**
- * The JSX props for the AdminPrintAction component. These properties extend `AdminPrintActionProps` with an optional `id` for element identification in JSX rendering.
+ * The JSX props for the admin print action component. These properties extend `AdminPrintActionProps` with an optional `id` for element identification in JSX rendering.
  */
 export interface AdminPrintActionJSXProps
   extends Partial<AdminPrintActionProps>,
@@ -113,7 +113,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 /**
- * The AdminPrintAction custom element class that renders a print interface in the Shopify admin. This component enables merchants to print content from a specified source URL using the browser's print functionality.
+ * The admin print action custom element class that renders a print interface in the Shopify admin. This component enables merchants to print content from a specified source URL using the browser's print functionality.
  */
 declare class AdminPrintAction
   extends PreactCustomElement

@@ -28,13 +28,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the EmailField component.',
+        'Configure the following properties on the email field component.',
       type: 'EmailField',
     },
     {
       title: 'Events',
       description:
-        'The EmailField component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The email field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'EmailFieldEvents',
     },
   ],
@@ -63,7 +63,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Demonstrates a simple email field with a label and required attribute, showing the most fundamental way to use the EmailField component.',
+              'Demonstrates a simple email field with a label and required attribute, showing the most fundamental way to use the email field component.',
             codeblock: {
               title: 'Basic usage',
               tabs: [

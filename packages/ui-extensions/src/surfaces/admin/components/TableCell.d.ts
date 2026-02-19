@@ -12,7 +12,7 @@ import type {
 } from './shared.d.ts';
 
 /**
- * The properties you can set on a TableCell component.
+ * The properties you can set on a table cell component.
  */
 export interface TableCellProps extends TableCellProps$1 {}
 
@@ -170,11 +170,11 @@ declare module 'preact' {
 }
 
 /**
- * The custom element tag name for the TableCell component.
+ * The custom element tag name for the table cell component.
  */
 declare const tagName = 's-table-cell';
 /**
- * The JSX properties you can set on a TableCell component.
+ * The JSX properties you can set on a table cell component.
  */
 export interface TableCellJSXProps
   extends Partial<TableCellProps>,
