@@ -50,8 +50,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
-      sectionContent: `- The modal dimensions are managed by the Shopify admin and can't be customized by the extension.
-- The modal renders as an overlay that blocks interaction with the underlying admin page until the merchant completes or dismisses the action.`,
+      sectionContent: `- The Shopify admin controls the modal dimensions. Extensions can't adjust the width or height.
+- The Shopify admin renders the modal as a blocking overlay. The underlying page isn't interactive until the merchant completes or dismisses the action.`,
     },
   ],
   related: [],

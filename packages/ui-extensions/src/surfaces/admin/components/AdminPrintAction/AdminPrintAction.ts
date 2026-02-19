@@ -7,7 +7,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 export interface AdminPrintActionProps {
   /**
    * The URL of the document to preview and print. Supported formats include
-   * HTML, PDF, and image files. If not provided, the preview displays an
+   * HTML, PDF, and image files. If not provided, then the preview displays an
    * empty state and the print button is disabled.
    *
    * Set this to the URL of the generated document once it's ready for the

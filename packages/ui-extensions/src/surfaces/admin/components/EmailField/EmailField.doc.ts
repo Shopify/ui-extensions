@@ -50,7 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       sectionContent: `- EmailField doesn't perform built-in email validation. The \`error\` prop is purely visual. You must validate the email format yourself and set the \`error\` prop accordingly.
 - The component doesn't support multiple email addresses in a single field. For multiple recipients, render multiple EmailField components or use a custom pattern.
-- EmailField doesn't display an email icon or prefix. It renders as a plain text input that only differs from [TextField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/textfield) in its virtual keyboard and autocomplete behavior.`,
+- EmailField doesn't display an email icon or prefix. It renders as a plain text input that differs from [TextField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/textfield) only in its virtual keyboard and autocomplete behavior.`,
     },
   ],
   related: [],

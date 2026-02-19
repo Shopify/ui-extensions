@@ -50,7 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Limitations',
       anchorLink: 'limitations',
       sectionContent: `- Paragraph doesn't support color or tone props. Text inside a Paragraph always renders in the default body text color.
-- The \`textOverflow\` prop only takes effect when the parent container constrains width. Without a width constraint, text will wrap normally rather than truncate.
+- The \`textOverflow\` prop takes effect only when the parent container constrains width. Without a width constraint, text will wrap normally rather than truncate.
 - Paragraph doesn't support alignment (center, right). Text always renders with the default start alignment for the current locale direction.`,
     },
   ],
