@@ -42,14 +42,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       anchorLink: 'best-practices',
       sectionContent: `- **Use MoneyField instead of NumberField for prices:** MoneyField handles currency-specific formatting and provides the currency code alongside the amount, making it the right choice for any monetary input.
-- **Handle both number and Money return types:** The \`onChange\` callback may return either a number or a Money object depending on how the value is set. Make sure your handler accounts for both.`,
+- **Narrow the onChange value type:** The \`onChange\` callback receives \`number | Money\`. When \`currencyCode\` is set, the value is a \`Money\` object with \`amount\` and \`currencyCode\` properties. Otherwise, it's a plain number. Use a type check (for example, \`typeof value === 'object'\`) to narrow the type before reading the value.`,
     },
     {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
       sectionContent: `- MoneyField doesn't automatically format the displayed value with thousands separators or decimal places based on the currency. The raw numeric input is shown as entered.
-- The currency code isn't visually displayed inside the field. If you want to show the currency symbol or code, you may need to use the label or a nearby [Text](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/text) component.
+- The currency code isn't visually displayed inside the field. If you want to show the currency symbol or code, you might need to use the label or a nearby [Text](/docs/api/admin-extensions/{API_VERSION}/ui-components/typography-and-content/text) component.
 - MoneyField supports a large set of ISO 4217 currency codes, but currency-specific rules (like the number of decimal places for JPY vs USD) aren't automatically enforced. You must validate decimal precision yourself.
 - The \`min\` and \`max\` props define valid boundaries but don't prevent typing values outside the range. Validate in your \`onChange\` handler and set \`error\` accordingly.`,
     },

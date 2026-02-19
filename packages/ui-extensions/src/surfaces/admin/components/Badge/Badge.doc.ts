@@ -41,7 +41,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       anchorLink: 'best-practices',
       sectionContent: `- **Keep labels to one or two words:** Use concise labels like **Fulfilled**, **Pending**, or **Out of stock**. Use past tense for completed actions: **Refunded**, not **Refund**.
-- **Use tones consistently:** Apply \`critical\` for errors or issues needing immediate action, \`warning\` for problems that need attention, \`success\` for positive confirmations, and \`info\` for neutral statuses. Use the same tone for the same status across your entire extension.
+- **Use tones consistently:** Use the same tone for the same status across your entire extension. Don't mix \`warning\` and \`critical\` for the same severity level — merchants will lose trust in the signal if tones are inconsistent.
 - **Position badges near the content they describe:** In list items, place badges adjacent to the title. This makes them easy to scan without disrupting the reading flow.
 - **Don't use badges for interactive elements:** Badges are static, system-generated indicators. For removable tags or merchant-created labels, use a different pattern.
 - **Use icons to reinforce meaning:** When adding an icon, choose one that reinforces the badge's message.`,
@@ -50,7 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
-      sectionContent: `- Badge only supports two sizes: \`small-100\` and \`base\`.
+      sectionContent: `- Badge supports only two sizes: \`small-100\` and \`base\`.
 - Badge text doesn't wrap to multiple lines. Long labels will be clipped, so keep text concise.
 - Only icons from the [Polaris icon set](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/icon#available-icons) are supported through the \`icon\` prop. Custom icons or images can't be used inside a badge.
 - Badge isn't interactive. It doesn't support click handlers or navigation. For interactive status indicators, combine a badge with a [Pressable](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/pressable) or [Button](/docs/api/admin-extensions/{API_VERSION}/ui-components/actions/button) component.`,

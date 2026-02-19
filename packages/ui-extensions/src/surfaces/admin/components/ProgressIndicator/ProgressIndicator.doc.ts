@@ -41,14 +41,14 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Best practices',
       anchorLink: 'best-practices',
-      sectionContent: `- **Choose an appropriate size:** Use smaller sizes (\`small-100\`, \`small-200\`) for inline indicators next to buttons or fields. Use larger sizes (\`large-100\` and above) for full-section or full-page loading states.
+      sectionContent: `- **Match the size to the context:** Use smaller sizes for inline indicators next to buttons or fields, and larger sizes for full-section or full-page loading states.
 - **Show spinners only when needed:** Display the ProgressIndicator only while an operation is in progress. Remove it immediately when loading completes or an error occurs. Avoid leaving a spinner visible indefinitely.`,
     },
     {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
-      sectionContent: `- ProgressIndicator only supports the \`spinner\` variant. There is no progress bar or determinate progress indicator available.
+      sectionContent: `- ProgressIndicator supports only the \`spinner\` variant. There is no progress bar or determinate progress indicator available.
 - ProgressIndicator doesn't communicate progress percentage or estimated time remaining. For operations where progress can be measured, consider pairing the spinner with a text description of the current status.
 - The spinner animation can't be paused or customized. It always displays the same continuous rotation animation.`,
     },

@@ -41,8 +41,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       title: 'Best practices',
       anchorLink: 'best-practices',
-      sectionContent: `- **Always provide an accessibility label or alt text:** Every meaningful image must have a text description for screen reader users.
-- **Mark decorative images appropriately:** Images that are purely decorative and convey no information (like background patterns or divider graphics) should be marked as decorative so screen readers skip them.`,
+      sectionContent: `- **Write meaningful alt text:** The required \`accessibilityLabel\` (or \`alt\`) prop is announced by screen readers and displayed when the image fails to load. Describe what the image shows, not how it looks — for example, "Product photo of a red wool scarf" rather than "image123.jpg". Learn more about [writing effective alternative text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204).
+- **Use \`decorative\` only for non-informational images:** Set \`accessibilityRole="decorative"\` for background patterns, dividers, or visual flourishes that don't add meaning. If the image helps the merchant understand content or make a decision (like a product photo or a status illustration), then it needs alt text — don't mark it as decorative.`,
     },
     {
       type: 'Generic',

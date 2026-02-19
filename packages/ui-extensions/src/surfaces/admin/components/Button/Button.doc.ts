@@ -43,16 +43,16 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       sectionContent: `- **Label buttons clearly:** Use strong, actionable verbs that describe the action, such as **Save**, **Edit**, or **Add tags**. Write labels in sentence case and avoid unnecessary articles like **a**, **an**, or **the**.
 - **Use appropriate tones:** Apply \`critical\` tone only for destructive actions that are difficult or impossible to undo, such as deleting a resource. Leave the tone as \`default\` for all other actions.
-- **Establish clear hierarchy:** Use \`primary\` variant for the main action, \`secondary\` for supporting actions, and \`tertiary\` for supplementary or low-emphasis actions. Avoid placing multiple primary buttons in the same view.
-- **Position consistently:** Place buttons in predictable locations. In [AdminAction](/docs/api/admin-extensions/{API_VERSION}/ui-components/settings-and-templates/adminaction) components, use the \`primaryAction\` and \`secondaryAction\` properties. In forms, place submit buttons at the bottom of the form.
-- **Provide accessibility labels for icon-only usage:** When using a Button without visible text content, always set \`accessibilityLabel\` so screen reader users understand the button's purpose.`,
+- **Establish clear hierarchy:** Avoid placing multiple primary buttons in the same view. Reserve \`primary\` for the single most important action, use \`secondary\` for supporting actions, and \`tertiary\` for low-emphasis or supplementary actions.
+- **Position consistently:** Place buttons in predictable locations. In [AdminAction](/docs/api/admin-extensions/{API_VERSION}/ui-components/settings-and-templates/adminaction) components, use the \`primaryAction\` and \`secondaryAction\` properties. In [Form](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/form) components, place submit buttons at the bottom of the form.
+- **Provide accessibility labels for icon-only usage:** When using a Button without visible text, always set \`accessibilityLabel\` so screen reader users understand the button's purpose.`,
     },
     {
       type: 'Generic',
       title: 'Limitations',
       anchorLink: 'limitations',
       sectionContent: `- The Button component doesn't include a built-in loading state. To indicate that an async operation is in progress, consider disabling the button and displaying a nearby [ProgressIndicator](/docs/api/admin-extensions/{API_VERSION}/ui-components/feedback-and-status-indicators/progressindicator) component.
-- When using \`href\` for navigation, external URLs (domains outside the Shopify admin) may be blocked or trigger a confirmation dialog depending on the extension context and browser security settings.
+- When using \`href\` for navigation, external URLs (domains outside the Shopify admin) might be blocked or trigger a confirmation dialog depending on the extension context and browser security settings.
 - Disabled buttons (\`disabled={true}\`) can't receive focus or be triggered by keyboard, which may cause confusion if the reason for disabling isn't clear to the merchant. Pair disabled states with visible helper text explaining why the action is unavailable.`,
     },
   ],

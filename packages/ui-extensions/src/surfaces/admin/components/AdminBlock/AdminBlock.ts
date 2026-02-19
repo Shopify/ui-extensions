@@ -8,7 +8,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 export interface AdminBlockProps {
   /**
    * The title displayed at the top of the app block. If not provided,
-   * the extension's name is used instead. Use this to give the block a
+   * then the extension's name is used instead. Use this to give the block a
    * contextual heading. Titles longer than 40 characters will be truncated.
    */
   title?: string;
