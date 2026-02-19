@@ -12,7 +12,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- **Use when order doesn't matter:** Unordered lists communicate a collection of related items without sequence or ranking. Use them for features, options, or benefits where the order isn't meaningful. When sequence matters, use [ordered list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/orderedlist) instead.
+      sectionContent: `- **Use when order doesn't matter:** Unordered lists communicate a collection of related items without sequence or ranking. Use them for features, options, or benefits where the order isn't meaningful. When sequence matters, use [ordered list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/ordered-list) instead.
 - **Keep items parallel in structure:** Consistent grammar and structure across list items makes content easier to scan and understand. Mixing different writing styles within a list creates cognitive friction for readers.
 - **Write concise items:** List items work best as brief, scannable content. When items become long or complex, they lose the clarity and efficiency that makes lists valuable. Consider restructuring long items into separate sections.
 - **Limit nesting depth:** Nested lists help organize hierarchical content, but deep nesting becomes difficult to follow. When you find yourself nesting beyond two levels, the content structure might be too complex for a list format.`,
