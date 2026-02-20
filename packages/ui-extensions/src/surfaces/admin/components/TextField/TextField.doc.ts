@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'textfield-default.png',
     codeblock: {
-      title: 'Simple TextField example',
+      title: 'Collect product metadata',
       tabs: [
         {
           title: 'React',
@@ -29,14 +29,56 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-textfield.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
   },
-
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Validate SKU format on each keystroke using the `error` prop and `onChange` callback. This example checks minimum length and character restrictions as the merchant types, displaying inline error messages that prevent invalid data from being submitted.',
+        codeblock: {
+          title: 'Validate input with error messages',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/TextField/examples/textfield-validation.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/textfield-validation.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          "Display a unit or domain label after the editable portion of the field with the `suffix` prop. This example adds `kg` to a weight field and `.myshopify.com` to a handle field, making the implied format visible so merchants don't need to type it.",
+        codeblock: {
+          title: 'Add suffix labels to fields',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/TextField/examples/textfield-suffix.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/textfield-suffix.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

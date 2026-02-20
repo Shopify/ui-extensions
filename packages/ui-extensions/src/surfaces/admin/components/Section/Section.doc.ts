@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'section-default.png',
     codeblock: {
-      title: 'Section to an app page',
+      title: 'Group content with a heading',
       tabs: [
         {
           title: 'React',
@@ -29,12 +29,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-Section.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Nest sections to create multi-level content grouping with automatic heading level adjustment. This example places a "Safety certifications" section inside a "Product compliance" parent section, with heading levels adapting to reflect the hierarchy.',
+        codeblock: {
+          title: 'Nest sections for content hierarchy',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Section/examples/section-nested.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/section-nested.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Provide screen readers with a more descriptive section context than the visible heading alone using `accessibilityLabel`. This example labels a shipping configuration section with form fields, so assistive technology announces the full purpose of the form group.',
+        codeblock: {
+          title: 'Add accessible section descriptions',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Section/examples/section-accessible.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/section-accessible.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {
