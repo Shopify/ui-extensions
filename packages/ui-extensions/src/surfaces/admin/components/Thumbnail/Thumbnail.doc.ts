@@ -91,7 +91,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Respond to image loading success or failure. This example shows an `onLoad` handler that updates UI when the image finishes loading.',
+              'Respond to image loading success or failure. This example uses `load` and `error` event listeners to update the UI based on the loading result.',
             codeblock: {
               title: 'Handle load events',
               tabs: [

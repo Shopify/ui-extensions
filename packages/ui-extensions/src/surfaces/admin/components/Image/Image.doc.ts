@@ -42,9 +42,9 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'image-default.png',
     description:
-      'Add visual content to enhance your interface. This example shows a basic image with source URL and alt text for accessibility.',
+      'Display a product thumbnail with metadata in a grid layout. This example shows how to control image sizing with `aspectRatio`, `objectFit`, and `inlineSize`, and round corners with `borderRadius`.',
     codeblock: {
-      title: 'Display an image',
+      title: 'Display a product thumbnail',
       tabs: [
         {
           title: '',
@@ -62,7 +62,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Control image proportions with a fixed aspect ratio. This example shows a 16:9 image with cover fit and lazy loading for performance.',
+              'Control image proportions with a fixed aspect ratio. This example shows a 16:9 image that scales to fill its container using `objectFit="cover"`, with lazy loading for performance.',
             codeblock: {
               title: 'Set an aspect ratio',
               tabs: [
@@ -76,7 +76,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Serve optimized images for different screen sizes. This example shows how to use the `srcSet` property with `sizes` attributes for responsive image delivery.',
+              'Set up responsive image sources using `srcSet` and `sizes`. This example shows how to configure the browser to select appropriate image sources based on viewport width.',
             codeblock: {
               title: 'Use responsive images',
               tabs: [
@@ -118,35 +118,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Let images size naturally based on their container. This example shows an image with `auto` inline size that adapts to available width.',
-            codeblock: {
-              title: 'Enable auto-sizing',
-              tabs: [
-                {
-                  title: '',
-                  code: './examples/auto-sized-image.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Combine `aspectRatio` and `inlineSize` for precise control. This example shows an image with custom proportions that fills available width.',
-            codeblock: {
-              title: 'Combine aspect ratio and sizing',
-              tabs: [
-                {
-                  title: '',
-                  code: './examples/default.html',
-                  language: 'preview',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Create consistent image galleries with grid layouts. This example shows three images in a grid with matching size, aspect ratio, and border radius.',
+              'Build a product image gallery with consistent sizing using [Grid](/docs/api/app-home/polaris-web-components/s-grid). This example arranges three product photos in a row, each constrained to a square with rounded corners so they line up evenly.',
             codeblock: {
               title: 'Use in a grid layout',
               tabs: [
