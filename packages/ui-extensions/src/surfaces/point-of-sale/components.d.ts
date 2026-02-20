@@ -5572,6 +5572,7 @@ interface Spinner {
   accessibilityLabel?: string;
 }
 
+/** @publicDocs */
 interface SwitchEvents {
   input?: (event: CallbackEvent<typeof tagName$6>) => void;
   change?: (event: CallbackEvent<typeof tagName$6>) => void;
@@ -5629,6 +5630,7 @@ interface Switch {
   >;
 }
 
+/** @publicDocs */
 interface TabsEvents {
   change?: (event: CallbackEvent<typeof tagName$5>) => void;
 }
@@ -5672,6 +5674,7 @@ interface TabPanel {
   id?: string;
 }
 
+/** @publicDocs */
 interface TextAreaEvents {
   /** Callback when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$f>) => void;
@@ -5730,6 +5733,7 @@ interface TextArea {
   rows?: number;
 }
 
+/** @publicDocs */
 interface EmailFieldEvents {
   /** Callback when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$t>) => void;
@@ -5783,6 +5787,7 @@ interface EmailField {
   details?: string;
 }
 
+/** @publicDocs */
 interface ButtonEvents {
   /** Called when the button is activated. */
   click?: (event: CallbackEvent<typeof tagName$B>) => void;
