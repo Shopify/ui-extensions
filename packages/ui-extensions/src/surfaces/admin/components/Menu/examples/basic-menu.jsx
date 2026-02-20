@@ -1,9 +1,0 @@
-<>
-  <s-button commandFor="product-menu">Product actions</s-button>
-
-  <s-menu id="product-menu" accessibilityLabel="Product actions">
-    <s-button icon="edit">Edit product</s-button>
-    <s-button icon="duplicate">Duplicate product</s-button>
-    <s-button icon="archive">Archive product</s-button>
-  </s-menu>
-</>

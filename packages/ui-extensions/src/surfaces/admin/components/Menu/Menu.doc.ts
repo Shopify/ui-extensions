@@ -68,48 +68,6 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates a simple menu with basic action buttons and shows how to link it to a trigger button.',
-        codeblock: {
-          title: 'Basic Menu',
-          tabs: [
-            {
-              code: './examples/basic-menu.html',
-              language: 'html',
-            },
-            {
-              code: './examples/basic-menu.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '300px',
-              },
-            },
-          ],
-        },
-      },
-      {
-        description:
-          'Illustrates a menu with icons for each action, providing visual context for different menu items and showing how to use the caret-down icon on the trigger button.',
-        codeblock: {
-          title: 'Menu with Icons',
-          tabs: [
-            {
-              code: './examples/menu-with-icons.html',
-              language: 'html',
-            },
-            {
-              code: './examples/menu-with-icons.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '300px',
-              },
-            },
-          ],
-        },
-      },
-      {
-        description:
           'Shows how to organize menu items into logical sections with headings, helping to group related actions and improve menu readability.',
         codeblock: {
           title: 'Menu with Sections',
@@ -187,6 +145,27 @@ const data: AdminReferenceEntityTemplateSchema = {
               layout: 'alignStart',
               customStyles: {
                 minHeight: '350px',
+              },
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Use an icon-only button as the menu trigger for a compact "more actions" pattern commonly used in toolbars and table rows.',
+        codeblock: {
+          title: 'Icon-only trigger',
+          tabs: [
+            {
+              code: './examples/icon-only-trigger.html',
+              language: 'html',
+            },
+            {
+              code: './examples/icon-only-trigger.jsx',
+              language: 'preview-jsx',
+              layout: 'alignStart',
+              customStyles: {
+                minHeight: '300px',
               },
             },
           ],
