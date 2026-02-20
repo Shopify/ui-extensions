@@ -21,20 +21,63 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'banner-default.png',
     codeblock: {
-      title: 'Simple Banner example',
+      title: 'Warn about API sync failure',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Banner/examples/basic-Banner.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Banner/examples/basic-banner.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-Banner.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-banner.example.ts',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Show a `success` banner after completing a product update to give merchants immediate visual confirmation. This example renders a dismissible banner with a message that includes the product ID, so merchants know exactly which resource was updated.',
+        codeblock: {
+          title: 'Confirm successful product update',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Banner/examples/banner-success.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/banner-success.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Show `warning` validation issues at the top of an [action modal](/docs/api/admin-extensions/{API_VERSION}/components/settings-and-templates/adminaction) before merchants submit. This example combines a banner with `secondaryAction` to let merchants review or dismiss the warning before proceeding.',
+        codeblock: {
+          title: 'Display form validation warnings',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Banner/examples/banner-warning.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/banner-warning.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

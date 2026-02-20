@@ -20,20 +20,63 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'badge-default.png',
     codeblock: {
-      title: 'Simple Badge example',
+      title: 'Display order fulfillment status',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Badge/examples/basic-Badge.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Badge/examples/basic-badge.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-Badge.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-badge.example.ts',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Pair a status `icon` with `tone` to create scannable inventory alerts in a [block extension](/docs/api/admin-extensions/{API_VERSION}/components/settings-and-templates/adminblock). This example renders badges with contextual icons like `CircleTickMajor` and `DiamondAlertMajor`, giving merchants a compact visual summary of product availability.',
+        codeblock: {
+          title: 'Add icons to stock alerts',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Badge/examples/badge-icons.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/badge-icons.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Display compact sales channel labels alongside product metadata. This example uses `size="small-100"` and renders multiple badges in an [InlineStack](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/inlinestack), using `tone` to differentiate active channels from pending ones.',
+        codeblock: {
+          title: 'Label product sales channels',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Badge/examples/badge-sizes.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/badge-sizes.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

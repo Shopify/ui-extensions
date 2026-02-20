@@ -21,20 +21,63 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'moneyfield-default.png',
     codeblock: {
-      title: 'Simple MoneyField example',
+      title: 'Set product cost price',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/MoneyField/examples/basic-MoneyField.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/MoneyField/examples/basic-moneyfield.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-MoneyField.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-moneyfield.example.ts',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Display multiple money fields with different `label` values for regional pricing. This example renders USD, EUR, and GBP price fields in a [BlockStack](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/blockstack), each automatically formatted with the correct currency symbol and decimal precision for their locale.',
+        codeblock: {
+          title: 'Configure regional currency pricing',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/MoneyField/examples/moneyfield-currencies.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/moneyfield-currencies.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          "Enforce minimum price constraints using `min` and the `error` prop for inline validation. This example prevents merchants from setting a wholesale price at zero or below, displaying an error until they've entered a valid amount.",
+        codeblock: {
+          title: 'Validate minimum price amount',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/MoneyField/examples/moneyfield-validation.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/moneyfield-validation.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {
