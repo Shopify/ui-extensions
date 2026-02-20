@@ -383,7 +383,7 @@ declare module 'preact' {
 
 declare const tagName = 's-search-field';
 /**
- * Props for using the SearchField component in JSX with React-style event handlers.
+ * Props for using the search field component in JSX with React-style event handlers.
  */
 export interface SearchFieldJSXProps
   extends Partial<SearchFieldProps>,

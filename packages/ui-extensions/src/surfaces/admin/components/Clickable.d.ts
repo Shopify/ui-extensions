@@ -335,7 +335,7 @@ export type ClickableBaseProps = Required<
   >
 >;
 /**
- * The properties for the Clickable component. These properties define a low-level interactive container element that responds to user clicks while inheriting all Box styling capabilities. The component serves as a foundation for building custom interactive components.
+ * The properties for the clickable component. These properties define a low-level interactive container element that responds to user clicks while inheriting all box styling capabilities. The component serves as a foundation for building custom interactive components.
  */
 export interface ClickableProps
   extends Required<BoxProps>,
@@ -487,7 +487,7 @@ declare module 'preact' {
 
 declare const tagName = 's-clickable';
 /**
- * The JSX properties for the Clickable component. These properties define how a clickable container is rendered in Preact or JSX.
+ * The JSX properties for the clickable component. These properties define how a clickable container is rendered in Preact or JSX.
  */
 export interface ClickableJSXProps
   extends Partial<ClickableProps>,

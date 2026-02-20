@@ -9,7 +9,7 @@
 import type {ComponentChildren, ParagraphProps$1} from './shared.d.ts';
 
 /**
- * The properties for the Paragraph component. These properties define blocks of text content with consistent spacing and styling for readable body copy.
+ * The properties for the paragraph component. These properties define blocks of text content with consistent spacing and styling for readable body copy.
  */
 export interface ParagraphProps
   extends Required<
@@ -213,7 +213,7 @@ declare module 'preact' {
 
 declare const tagName = 's-paragraph';
 /**
- * The JSX properties for the Paragraph component. These properties define how a paragraph is rendered in Preact or JSX.
+ * The JSX properties for the paragraph component. These properties define how a paragraph is rendered in Preact or JSX.
  */
 export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,

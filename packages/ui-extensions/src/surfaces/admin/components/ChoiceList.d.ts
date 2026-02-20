@@ -236,7 +236,7 @@ declare module 'preact' {
 
 declare const tagName = 's-choice-list';
 /**
- * Properties for using the ChoiceList component in JSX with React-style event handlers.
+ * Properties for using the choice list component in JSX with React-style event handlers.
  */
 export interface ChoiceListJSXProps
   extends Partial<ChoiceListProps>,

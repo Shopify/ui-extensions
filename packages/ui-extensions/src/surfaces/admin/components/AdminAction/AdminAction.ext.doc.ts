@@ -1,9 +1,9 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'AdminAction',
+  name: 'Admin action',
   description:
-    'The AdminAction component configures the primary action, secondary action, and title for admin action extensions. Use AdminAction to define the core interaction points and header content that merchants see when your extension renders.' +
+    'The admin action component configures the primary action, secondary action, and title for admin action extensions. Use admin action to define the core interaction points and header content that merchants see when your extension renders.' +
     '\n\nLearn how to [build an admin action extension](/docs/apps/build/admin/actions-blocks/build-admin-action).',
   requires:
     'the [Action Extension API](/docs/api/admin-extensions/{API_VERSION}/target-apis/core-apis/action-extension-api) or [Purchase Options Card Configuration API](/docs/api/admin-extensions/{API_VERSION}/target-apis/contextual-apis/purchase-options-card-configuration-api).',
@@ -15,13 +15,13 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the AdminAction component.',
+        'Configure the following properties on the admin action component.',
       type: 'AdminActionProps',
     },
     {
       title: 'Slots',
       description:
-        'The AdminAction component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The admin action component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'AdminActionSlots',
     },
   ],

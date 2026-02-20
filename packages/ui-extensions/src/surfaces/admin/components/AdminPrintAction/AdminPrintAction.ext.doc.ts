@@ -1,9 +1,9 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'AdminPrintAction',
+  name: 'Admin print action',
   description:
-    'The AdminPrintAction component specifies a URL for print operations in admin print action extensions. Use AdminPrintAction to define the print target when merchants trigger print actions from the Shopify admin, enabling custom print views optimized for physical or PDF printing.' +
+    'The admin print action component specifies a URL for print operations in admin print action extensions. Use admin print action to define the print target when merchants trigger print actions from the Shopify admin, enabling custom print views optimized for physical or PDF printing.' +
     '\n\nLearn how to [build an admin print action extension](/docs/apps/build/admin/actions-blocks/build-admin-print-action).',
   requires:
     'the [Print Action Extension API](/docs/api/admin-extensions/{API_VERSION}/target-apis/core-apis/print-action-extension-api).',
@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the AdminPrintAction component.',
+        'Configure the following properties on the admin print action component.',
       type: 'AdminPrintActionProps',
     },
   ],

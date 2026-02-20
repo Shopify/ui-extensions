@@ -8,7 +8,7 @@
 import type {ComponentChildren, ListItemProps$1} from './shared.d.ts';
 
 /**
- * The properties that you can set on a ListItem component.
+ * The properties that you can set on a list item component.
  */
 export interface ListItemProps extends ListItemProps$1 {}
 
@@ -129,9 +129,9 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * A component that represents a single item within an OrderedList or UnorderedList.
+ * A component that represents a single item within an ordered list or unordered list.
  *
- * Use ListItem as a child of OrderedList or UnorderedList to create properly structured and accessible list content.
+ * Use list item as a child of ordered list or unordered list to create properly structured and accessible list content.
  */
 declare class ListItem extends PreactCustomElement implements ListItemProps {
   constructor();
@@ -152,7 +152,7 @@ declare module 'preact' {
 
 declare const tagName = 's-list-item';
 /**
- * The JSX properties you can set on a ListItem component.
+ * The JSX properties you can set on a list item component.
  */
 export interface ListItemJSXProps
   extends Partial<ListItemProps>,

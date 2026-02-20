@@ -61,7 +61,7 @@ export type LinkBaseProps = Required<
   >
 >;
 /**
- * The properties for the Link component. These properties define a clickable link that navigates users to different pages or sections with customizable visual styles and semantic meaning.
+ * The properties for the link component. These properties define a clickable link that navigates users to different pages or sections with customizable visual styles and semantic meaning.
  */
 export interface LinkProps extends LinkBaseProps {
   /**
@@ -190,7 +190,7 @@ declare module 'preact' {
 
 declare const tagName = 's-link';
 /**
- * The JSX properties for the Link component. These properties define how a link is rendered in Preact or JSX.
+ * The JSX properties for the link component. These properties define how a link is rendered in Preact or JSX.
  */
 export interface LinkJSXProps
   extends Partial<LinkProps>,

@@ -25,13 +25,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the ColorField component.',
+        'Configure the following properties on the color field component.',
       type: 'ColorField',
     },
     {
       title: 'Events',
       description:
-        'The ColorField component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The color field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ColorFieldEvents',
     },
   ],
@@ -185,7 +185,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'A multi-color field form section demonstrating how ColorField can be used to capture different color settings in a single form.',
+              'A multi-color field form section demonstrating how color field can be used to capture different color settings in a single form.',
             codeblock: {
               title: 'Form Integration',
               tabs: [

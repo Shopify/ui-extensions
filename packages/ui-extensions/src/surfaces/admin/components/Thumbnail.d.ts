@@ -44,7 +44,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 
 /**
- * The properties for the Thumbnail component. A Thumbnail displays a small preview image with configurable sizing. Properties include `src` for the image URL, `alt` for accessibility text, and `size` for controlling the thumbnail dimensions.
+ * The properties for the thumbnail component. A thumbnail displays a small preview image with configurable sizing. Properties include `src` for the image URL, `alt` for accessibility text, and `size` for controlling the thumbnail dimensions.
  */
 export interface ThumbnailProps
   extends Required<Pick<ThumbnailProps$1, 'src' | 'alt' | 'size'>> {
@@ -161,7 +161,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 /**
- * A Thumbnail displays a small preview image with configurable sizing.
+ * A thumbnail displays a small preview image with configurable sizing.
  */
 declare class Thumbnail extends PreactCustomElement implements ThumbnailProps {
   /**
@@ -201,7 +201,7 @@ declare module 'preact' {
 
 declare const tagName = 's-thumbnail';
 /**
- * The properties for the Thumbnail component when it's used in JSX.
+ * The properties for the thumbnail component when it's used in JSX.
  */
 export interface ThumbnailJSXProps
   extends Partial<ThumbnailProps>,

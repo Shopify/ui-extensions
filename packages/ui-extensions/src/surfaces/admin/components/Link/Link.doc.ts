@@ -25,19 +25,19 @@ const data: AdminReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the Link component.',
+      description: 'Configure the following properties on the link component.',
       type: 'Link',
     },
     {
       title: 'Events',
       description:
-        'The Link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'LinkEvents',
     },
     {
       title: 'Slots',
       description:
-        'The Link component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The link component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'LinkSlots',
     },
   ],

@@ -26,13 +26,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the Grid component.',
+      description: 'Configure the following properties on the grid component.',
       type: 'Grid',
     },
     {
       title: 'Slots',
       description:
-        'The Grid component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The grid component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'GridSlots',
     },
     {
@@ -43,7 +43,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The GridItem component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The grid item component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'GridItemSlots',
     },
   ],

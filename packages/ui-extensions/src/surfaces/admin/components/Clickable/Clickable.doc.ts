@@ -20,19 +20,19 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the Clickable component.',
+        'Configure the following properties on the clickable component.',
       type: 'Clickable',
     },
     {
       title: 'Events',
       description:
-        'The Clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ClickableEvents',
     },
     {
       title: 'Slots',
       description:
-        'The Clickable component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The clickable component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ClickableSlots',
     },
   ],
@@ -60,7 +60,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'A simple clickable button with a base border and padding, demonstrating the default button behavior of the Clickable component.',
+              'A simple clickable button with a base border and padding, demonstrating the default button behavior of the clickable component.',
             codeblock: {
               title: 'Basic Button Usage',
               tabs: [
@@ -78,7 +78,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              "Demonstrates the Clickable component's ability to function as a link, opening the specified URL in a new browser tab when clicked.",
+              "Demonstrates the clickable component's ability to function as a link, opening the specified URL in a new browser tab when clicked.",
             codeblock: {
               title: 'Link Mode',
               tabs: [
@@ -114,7 +114,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates how the Clickable component can be integrated into a section layout to provide an interactive action button.',
+              'Illustrates how the clickable component can be integrated into a section layout to provide an interactive action button.',
             codeblock: {
               title: 'Section with Clickable Action',
               tabs: [

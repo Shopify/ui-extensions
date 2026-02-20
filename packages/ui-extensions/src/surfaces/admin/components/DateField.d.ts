@@ -308,7 +308,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 }
 
 /**
- * The properties for the DateField component. These properties configure an input field that allows merchants to select dates using an integrated calendar picker with optional text input, date constraints, and day-of-week restrictions.
+ * The properties for the date field component. These properties configure an input field that allows merchants to select dates using an integrated calendar picker with optional text input, date constraints, and day-of-week restrictions.
  */
 export interface DateFieldProps
   extends Omit<
@@ -330,7 +330,7 @@ export interface DateFieldProps
     > {}
 
 /**
- * The DateField custom element class that renders a date input field with integrated calendar picker in the Shopify admin interface. This component allows merchants to select dates by typing or using a visual calendar, with support for date range restrictions and day-of-week constraints.
+ * The date field custom element class that renders a date input field with integrated calendar picker in the Shopify admin interface. This component allows merchants to select dates by typing or using a visual calendar, with support for date range restrictions and day-of-week constraints.
  */
 declare class DateField
   extends PreactFieldElement<DateFieldProps['autocomplete']>
@@ -389,7 +389,7 @@ declare module 'preact' {
 
 declare const tagName = 's-date-field';
 /**
- * The JSX props for the DateField component. These properties extend `DateFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact, including specialized callbacks for view changes and invalid date attempts.
+ * The JSX props for the date field component. These properties extend `DateFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact, including specialized callbacks for view changes and invalid date attempts.
  */
 export interface DateFieldJSXProps
   extends Partial<Omit<DateFieldProps, 'value' | 'defaultValue'>>,

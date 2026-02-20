@@ -11,7 +11,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'Generic' as const,
       anchorLink: 'best-practices',
       sectionContent: `- **Always provide descriptive alternative text:** Write alt text that describes what's in the image, not what the image is for. Use "Blue cotton t-shirt with crew neck" instead of "Product image." For decorative images that don't add information, use an empty alt attribute.
-- **Use images for meaningful content, not decoration:** Display product photos, diagrams, charts, or instructional screenshots. For icons or decorative elements, use the [Icon](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/icon) component instead.
+- **Use images for meaningful content, not decoration:** Display product photos, diagrams, charts, or instructional screenshots. For icons or decorative elements, use the [icon](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/icon) component instead.
 - **Ensure images are accessible and performant:** Use appropriate image formats (WebP for photos, PNG for graphics with transparency, SVG for logos). Ensure images load from reliable sources with proper CORS configuration if cross-origin.
 - **Consider the image's purpose and context:** Use images to help merchants understand products, visualize data, or follow instructions. Every image should serve a clear purpose in your interface.`,
     },
@@ -27,13 +27,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the Image component.',
+      description: 'Configure the following properties on the image component.',
       type: 'Image',
     },
     {
       title: 'Events',
       description:
-        'The Image component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The image component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ImageEvents',
     },
   ],
