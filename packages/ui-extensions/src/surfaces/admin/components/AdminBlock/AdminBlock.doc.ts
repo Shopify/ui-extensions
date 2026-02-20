@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'adminblock-default.png',
     codeblock: {
-      title: 'Simple AdminBlock implementation',
+      title: 'Display warehouse status block',
       tabs: [
         {
           title: 'React',
@@ -30,12 +30,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-adminblock.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Fetch product data from the [GraphQL Admin API](/docs/api/admin-graphql/) and display it inside the block after loading. This example shows a loading message while the query runs, then replaces it with the product title, variant count, and inventory total.',
+        codeblock: {
+          title: 'Load data into block extension',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/AdminBlock/examples/adminblock-data.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/adminblock-data.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Organize block content into themed groups using content grouping components with headings. This example splits product specifications into compliance and shipping sections separated by a [Divider](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/divider).',
+        codeblock: {
+          title: 'Organize block with sections',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/AdminBlock/examples/adminblock-sections.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/adminblock-sections.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'NumberField',
   description:
-    'The NumberField component provides a text input optimized for numeric values. It supports minimum and maximum constraints, step increments, a suffix decoration, and configurable virtual keyboard modes.\n\nFor general text, use [TextField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/textfield).',
+    'The NumberField component provides a text input optimized for numeric values. It supports minimum and maximum constraints, step increments, and configurable virtual keyboard modes.\n\nFor general text, use [TextField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/textfield).',
   requires: '',
   thumbnail: 'numberfield-thumbnail.png',
   isVisualComponent: true,
@@ -21,20 +21,63 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'numberfield-default.png',
     codeblock: {
-      title: 'Simple NumberField example',
+      title: 'Set inventory restock quantity',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/NumberField/examples/basic-NumberField.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/NumberField/examples/basic-numberfield.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-NumberField.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-numberfield.example.ts',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Collect fractional values like cost pricing and profit margins from merchants. This example uses `inputMode="decimal"` with `step` and `placeholder` to guide merchants through entering currency amounts and percentages with the correct precision.',
+        codeblock: {
+          title: 'Configure decimal pricing fields',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/NumberField/examples/numberfield-decimal.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/numberfield-decimal.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Enforce warehouse-specific limits using `min`, `max`, and `step` constraints with inline `error` feedback. This example validates slot numbers against a maximum capacity and shows an error when the value exceeds the allowed range.',
+        codeblock: {
+          title: 'Enforce numeric constraints with errors',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/NumberField/examples/numberfield-constraints.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/numberfield-constraints.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
 
   subSections: [

@@ -26,20 +26,63 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'icon-default.png',
     codeblock: {
-      title: 'Simple Icon example',
+      title: 'Show action status indicators',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Icon/examples/basic-Icon.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Icon/examples/basic-icon.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-Icon.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-icon.example.ts',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Apply the `critical` tone to icons that represent failures or items requiring attention. This example shows passing and failing compliance checks, using the default tone for passes and `tone="critical"` for failures so merchants can spot problems at a glance.',
+        codeblock: {
+          title: 'Apply critical tone to warning icons',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Icon/examples/icon-tones.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/icon-tones.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Scale an icon to match its parent container for larger displays like status badges or app logos. This example places an icon with `size="fill"` inside a fixed-size [Box](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/box), allowing it to scale proportionally.',
+        codeblock: {
+          title: 'Fill a container with an icon',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Icon/examples/icon-fill.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/icon-fill.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

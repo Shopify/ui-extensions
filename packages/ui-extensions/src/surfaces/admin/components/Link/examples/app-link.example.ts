@@ -1,17 +1,28 @@
-import {
-  extension,
-  Link,
-} from '@shopify/ui-extensions/admin';
+import {extension, Link, Text, BlockStack} from '@shopify/ui-extensions/admin';
 
 export default extension(
-  'Playground',
+  'admin.product-details.block.render',
   (root) => {
-    const link = root.createComponent(
+
+    const stack = root.createComponent(BlockStack, {gap: true});
+
+    const heading = root.createComponent(Text, {fontWeight: 'bold'}, 'Manage this product');
+
+    const settingsLink = root.createComponent(
       Link,
-      {href: 'app://baz'},
-      'Link to app path',
+      {href: 'extension://settings'},
+      'Extension settings',
     );
 
-    root.appendChild(link);
+    const dashboardLink = root.createComponent(
+      Link,
+      {href: 'extension://dashboard'},
+      'Sync dashboard',
+    );
+
+    stack.appendChild(heading);
+    stack.appendChild(settingsLink);
+    stack.appendChild(dashboardLink);
+    root.appendChild(stack);
   },
 );

@@ -22,22 +22,64 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'select-default.png',
     codeblock: {
-      title: 'Simple Select example',
+      title: 'Assign warehouse location',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Select/examples/basic-Select.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Select/examples/basic-select.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-Select.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-select.example.ts',
+          language: 'ts',
         },
       ],
     },
   },
-
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Guide merchants to make a selection by adding a `placeholder` that appears before any option is chosen. This example uses a placeholder message in a product classification dropdown, making it clear that a selection is expected.',
+        codeblock: {
+          title: 'Add placeholder prompt text',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Select/examples/select-placeholder.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/select-placeholder.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Validate that a `required` select field has a value before submission using the `error` prop. This example shows an inline error when merchants attempt to save without choosing a shipping class, preventing incomplete data from reaching your backend.',
+        codeblock: {
+          title: 'Validate required selection on submit',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Select/examples/select-error.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/select-error.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

@@ -22,22 +22,64 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'blockstack-default.png',
     codeblock: {
-      title: 'Laying out elements in a column',
+      title: 'Stack extension content vertically',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/BlockStack/examples/basic-BlockStack.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/BlockStack/examples/basic-blockstack.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-BlockStack.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-blockstack.example.ts',
+          language: 'ts',
         },
       ],
     },
   },
-
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Center a status display within the extension using `inlineAlignment="center"` on the `BlockStack`. This example centers an [InlineStack](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/inlinestack) of status indicator indicators, creating a focused status row.',
+        codeblock: {
+          title: 'Center-align block content',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/BlockStack/examples/blockstack-alignment.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/blockstack-alignment.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Separate compliance sections with spacing and a divider inside a block layout. This example applies `padding` and `paddingBlock` on nested `BlockStack` components, separated by a [Divider](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/divider).',
+        codeblock: {
+          title: 'Add padding between sections',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/BlockStack/examples/blockstack-padding.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/blockstack-padding.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

@@ -21,20 +21,63 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'urlfield-default.png',
     codeblock: {
-      title: 'Simple URLField example',
+      title: 'Set external product source URL',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/URLField/examples/basic-URLField.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/URLField/examples/basic-urlfield.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-URLField.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-urlfield.example.ts',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Validate that a webhook endpoint uses HTTPS using the `error` prop and `required` attribute. This example checks the URL protocol on each keystroke and displays an inline error for non-HTTPS URLs, so merchants can only register secure webhook endpoints.',
+        codeblock: {
+          title: 'Validate webhook endpoint protocol',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/URLField/examples/urlfield-validation.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/urlfield-validation.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          "Pre-populate a URL field with the product's storefront address using `data.selected` and the `readOnly` prop. This example shows the product storefront URL as a reference alongside an editable field for the external catalog link.",
+        codeblock: {
+          title: 'Pre-fill product storefront link',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/URLField/examples/urlfield-prefilled.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/urlfield-prefilled.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

@@ -21,20 +21,63 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'button-default.png',
     codeblock: {
-      title: 'Add a simple button to your app.',
+      title: 'Sync product to backend',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Button/examples/basic-Button.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Button/examples/basic-button.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-Button.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-button.example.ts',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Present publish, archive, and delete actions for a product using `variant` and `tone` props to communicate intent. This example uses `primary` for the main action, `tertiary` for a low-emphasis option, and `critical` tone for the destructive delete.',
+        codeblock: {
+          title: 'Set button variants and tones',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Button/examples/button-variants.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/button-variants.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Link to the product storefront page and documentation using `href` and `target` props. This example renders buttons as external links that open in new tabs, and uses `accessibilityLabel` to provide screen reader context.',
+        codeblock: {
+          title: 'Open external links',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Button/examples/button-link.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/button-link.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

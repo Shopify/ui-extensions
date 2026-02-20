@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'pressable-default.png',
     codeblock: {
-      title: 'Simple pressable example',
+      title: 'Build custom action rows',
       tabs: [
         {
           title: 'React',
@@ -29,12 +29,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-pressable.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          "Use `href` and `target` props to make a `Pressable` behave as a link, wrapping rich content like [Image](/docs/api/admin-extensions/{API_VERSION}/components/media-and-visuals/image) and text. This example creates a clickable card that opens the product's storefront page in a new tab.",
+        codeblock: {
+          title: 'Create a clickable product card',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Pressable/examples/pressable-link.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/pressable-link.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Label custom tappable areas for screen readers using `accessibilityLabel`. This example renders warehouse location rows with status indicator indicators, where each row announces its stock level and location name to assistive technology.',
+        codeblock: {
+          title: 'Add accessible interactive regions',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Pressable/examples/pressable-accessible.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/pressable-accessible.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {
