@@ -79,57 +79,6 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates links within subdued paragraph, showing how links can be used in less prominent paragraph contexts for additional guidance or support.',
-        codeblock: {
-          title: 'Links in Subdued Paragraph',
-          tabs: [
-            {
-              code: './examples/links-in-subdued-paragraph.html',
-              language: 'html',
-            },
-            {
-              code: './examples/links-in-subdued-paragraph.jsx',
-              language: 'preview-jsx',
-            },
-          ],
-        },
-      },
-      {
-        description:
-          'Illustrates how links can be used in critical or urgent text contexts, drawing attention to important actions that require immediate user intervention.',
-        codeblock: {
-          title: 'Critical Context Links',
-          tabs: [
-            {
-              code: './examples/critical-context-links.html',
-              language: 'html',
-            },
-            {
-              code: './examples/critical-context-links.jsx',
-              language: 'preview-jsx',
-            },
-          ],
-        },
-      },
-      {
-        description:
-          'Shows how links automatically adapt their tone to the surrounding text context, maintaining visual consistency while providing navigation.',
-        codeblock: {
-          title: 'Links with Auto Tone',
-          tabs: [
-            {
-              code: './examples/links-with-auto-tone.html',
-              language: 'html',
-            },
-            {
-              code: './examples/links-with-auto-tone.jsx',
-              language: 'preview-jsx',
-            },
-          ],
-        },
-      },
-      {
-        description:
           'Demonstrates how links can be integrated within banner components to highlight important information and provide direct action paths.',
         codeblock: {
           title: 'Links in Banner',
@@ -157,23 +106,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             },
             {
               code: './examples/links-in-box-container.jsx',
-              language: 'preview-jsx',
-            },
-          ],
-        },
-      },
-      {
-        description:
-          'Shows how links can be used within warning banners to provide immediate actions related to critical notifications.',
-        codeblock: {
-          title: 'Links in Banner Context',
-          tabs: [
-            {
-              code: './examples/links-in-banner-context.html',
-              language: 'html',
-            },
-            {
-              code: './examples/links-in-banner-context.jsx',
               language: 'preview-jsx',
             },
           ],
