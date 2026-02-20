@@ -1,6 +1,0 @@
-<s-money-field
-  label="Product cost"
-  value="29.99"
-  min={0.01}
-  error="Product cost is required"
- />

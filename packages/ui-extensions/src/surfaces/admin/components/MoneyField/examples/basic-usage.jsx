@@ -1,7 +1,0 @@
-<s-money-field
-  label="Price"
-  value="19.99"
-  min={0}
-  max={1000}
-  details="Enter a value between $0 and $1,000"
-/>

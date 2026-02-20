@@ -43,17 +43,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Capture web addresses from users with URL-specific input. This example shows a labeled field with placeholder text guiding the expected format. Click to interact with the preview.',
+      'Capture web addresses from users with URL-specific input. This example shows a labeled field with placeholder text guiding the expected format.',
     codeblock: {
       title: 'Collect a URL',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -66,54 +62,39 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Enforce URL requirements before form submission. This example shows required validation with length constraints and custom error messages. Click to interact with the preview.',
+              'Enforce URL requirements before form submission. This example shows required validation with length constraints and custom error messages.',
             codeblock: {
               title: 'Set validation constraints',
               tabs: [
                 {
                   code: './examples/with-validation.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-validation.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Display a URL for reference without allowing changes. This example shows a read-only field pre-populated with a store URL. Click to interact with the preview.',
+              'Display a URL for reference without allowing changes. This example shows a read-only field pre-populated with a store URL.',
             codeblock: {
               title: 'Pre-fill a URL',
               tabs: [
                 {
                   code: './examples/with-default-value.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-default-value.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Display a URL that users can view but not change. This example shows a disabled field with a pre-filled value that prevents editing. Click to interact with the preview.',
+              'Display a URL that users can view but not change. This example shows a disabled field with a pre-filled value that prevents editing.',
             codeblock: {
               title: 'Show a disabled field',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
@@ -125,7 +106,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Provide immediate feedback on URL validity. This example shows real-time validation that checks the URL format as the user types. Click to interact with the preview.',
+              'Provide immediate feedback on URL validity. This example shows real-time validation that checks the URL format as the user types.',
             codeblock: {
               title: 'Validate URL in real time',
               tabs: [

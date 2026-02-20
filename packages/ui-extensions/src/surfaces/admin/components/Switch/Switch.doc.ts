@@ -33,18 +33,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Give users a clear way to turn a feature on or off. This example shows a labeled toggle switch for enabling a preference. Click to interact with the preview.',
+      'Give users a clear way to turn a feature on or off. This example shows a labeled toggle switch for enabling a preference.',
     codeblock: {
       title: 'Toggle a setting',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -63,12 +58,7 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/disabled-switch.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-switch.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
@@ -81,84 +71,59 @@ const data: AdminReferenceEntityTemplateSchema = {
               tabs: [
                 {
                   code: './examples/form-integration.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/form-integration.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Apply changes instantly without a save button. This example shows switches arranged in a panel where each toggle takes effect immediately. Click to interact with the preview.',
+              'Apply changes instantly without a save button. This example shows switches arranged in a panel where each toggle takes effect immediately.',
             codeblock: {
               title: 'Apply multiple settings immediately',
               tabs: [
                 {
                   code: './examples/settings-panel-with-stack.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/settings-panel-with-stack.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Keep switches accessible when labels aren\'t visually needed. This example shows a visually hidden label that screen readers can still announce. Click to interact with the preview.',
+              'Keep switches accessible when labels aren\'t visually needed. This example shows a visually hidden label that screen readers can still announce.',
             codeblock: {
               title: 'Hide the label visually',
               tabs: [
                 {
                   code: './examples/hidden-label-for-accessibility.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/hidden-label-for-accessibility.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Communicate switch-related problems clearly. This example shows helper text with an error message when a required switch isn\'t enabled. Click to interact with the preview.',
+              'Communicate switch-related problems clearly. This example shows helper text with an error message when a required switch isn\'t enabled.',
             codeblock: {
               title: 'Show validation errors',
               tabs: [
                 {
                   code: './examples/with-details-and-error.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-details-and-error.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Provide extra context for screen reader users. This example shows an accessibility label that gives more detail than the visible label alone. Click to interact with the preview.',
+              'Provide extra context for screen reader users. This example shows an accessibility label that gives more detail than the visible label alone.',
             codeblock: {
               title: 'Add an accessibility label',
               tabs: [
                 {
                   code: './examples/switch-with-accessibility-label.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/switch-with-accessibility-label.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
@@ -170,7 +135,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Respond to toggle changes with custom logic. This example shows state tracking that displays the current value when the switch is toggled. Click to interact with the preview.',
+              'Respond to toggle changes with custom logic. This example shows state tracking that displays the current value when the switch is toggled.',
             codeblock: {
               title: 'Track toggle state',
               tabs: [

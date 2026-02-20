@@ -1,5 +1,0 @@
-<s-money-field
-  label="Regional Price"
-  placeholder="99.99"
-  details="Recommended price for the European market"
- />

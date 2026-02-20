@@ -73,18 +73,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Let users pick one option from a predefined list. This example shows a labeled dropdown with selectable options. Click to interact with the preview.',
+      'Let users pick one option from a predefined list. This example shows a labeled dropdown with selectable options.',
     codeblock: {
       title: 'Create a dropdown menu',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -97,108 +92,78 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Provide sorting controls for lists or tables. This example shows a dropdown with sort options and a pre-selected default value. Click to interact with the preview.',
+              'Provide sorting controls for lists or tables. This example shows a dropdown with sort options and a pre-selected default value.',
             codeblock: {
               title: 'Add sorting options',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Guide users before they make a selection. This example shows placeholder text that describes what the user should choose. Click to interact with the preview.',
+              'Guide users before they make a selection. This example shows placeholder text that describes what the user should choose.',
             codeblock: {
               title: 'Add placeholder text',
               tabs: [
                 {
                   code: './examples/with-placeholder.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-placeholder.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Communicate selection problems clearly to users. This example shows an error message when a required selection is missing. Click to interact with the preview.',
+              'Communicate selection problems clearly to users. This example shows an error message when a required selection is missing.',
             codeblock: {
               title: 'Show validation errors',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Make long option lists easier to scan. This example shows options organized into logical groups like geographical regions. Click to interact with the preview.',
+              'Make long option lists easier to scan. This example shows options organized into logical groups like geographical regions.',
             codeblock: {
               title: 'Group options by category',
               tabs: [
                 {
                   code: './examples/with-option-groups.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-option-groups.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Visually indicate the purpose of a select field. This example shows a sort icon that signals filtering functionality. Click to interact with the preview.',
+              'Visually indicate the purpose of a select field. This example shows a sort icon that signals filtering functionality.',
             codeblock: {
               title: 'Add an icon',
               tabs: [
                 {
                   code: './examples/with-icon.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-icon.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Lock a selection when changes aren\'t allowed. This example shows a disabled dropdown that preserves its selected value but prevents interaction. Click to interact with the preview.',
+              'Lock a selection when changes aren\'t allowed. This example shows a disabled dropdown that preserves its selected value but prevents interaction.',
             codeblock: {
               title: 'Disable the select',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
@@ -210,7 +175,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Respond to user selections with custom logic. This example shows the onChange event triggering an action when the user picks an option. Click to interact with the preview.',
+              'Respond to user selections with custom logic. This example shows the onChange event triggering an action when the user picks an option.',
             codeblock: {
               title: 'Handle selection changes',
               tabs: [

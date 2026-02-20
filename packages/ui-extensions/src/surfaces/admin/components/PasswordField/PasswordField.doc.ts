@@ -40,18 +40,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Securely collect sensitive credentials from users. This example shows a labeled password field with masked input. Click to interact with the preview.',
+      'Securely collect sensitive credentials from users. This example shows a labeled password field with masked input.',
     codeblock: {
       title: 'Collect a password',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -64,90 +59,65 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Enforce password requirements before submission. This example shows a required field with minimum length validation and autocomplete for new passwords. Click to interact with the preview.',
+              'Enforce password requirements before submission. This example shows a required field with minimum length validation and autocomplete for new passwords.',
             codeblock: {
               title: 'Set validation rules',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Communicate password problems clearly to users. This example shows an error message when the password doesn\'t meet length requirements. Click to interact with the preview.',
+              'Communicate password problems clearly to users. This example shows an error message when the password doesn\'t meet length requirements.',
             codeblock: {
               title: 'Show validation errors',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Help users understand password requirements upfront. This example shows helper text beneath the field explaining what makes a valid password. Click to interact with the preview.',
+              'Help users understand password requirements upfront. This example shows helper text beneath the field explaining what makes a valid password.',
             codeblock: {
               title: 'Add helper text',
               tabs: [
                 {
                   code: './examples/with-helper-text.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-helper-text.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Create a complete authentication form. This example shows a password field combined with an email field for login or registration. Click to interact with the preview.',
+              'Create a complete authentication form. This example shows a password field combined with an email field for login or registration.',
             codeblock: {
               title: 'Build a login form',
               tabs: [
                 {
                   code: './examples/in-form-layout.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/in-form-layout.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Show users exactly what their password needs. This example shows a static checklist of requirements like character length and case requirements. Click to interact with the preview.',
+              'Show users exactly what their password needs. This example shows a static checklist of requirements like character length and case requirements.',
             codeblock: {
               title: 'Display a requirement checklist',
               tabs: [
                 {
                   code: './examples/with-password-strength-requirements.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-password-strength-requirements.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
@@ -159,7 +129,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Provide immediate feedback on password quality. This example shows real-time validation that checks requirements as the user types. Click to interact with the preview.',
+              'Provide immediate feedback on password quality. This example shows real-time validation that checks requirements as the user types.',
             codeblock: {
               title: 'Validate password strength',
               tabs: [

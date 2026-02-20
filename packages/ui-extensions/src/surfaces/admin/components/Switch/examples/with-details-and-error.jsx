@@ -1,9 +1,0 @@
-<s-switch
-  id="terms-switch"
-  label="Agree to terms and conditions"
-  details="You must agree to continue with the purchase"
-  error="Agreement is required"
-  name="termsAgreement"
-  required={true}
-  value="agreed"
- />

@@ -1,6 +1,0 @@
-<s-switch
-  id="hidden-label-switch"
-  labelAccessibilityVisibility="exclusive"
-  label="Toggle feature"
-  checked={true}
- />

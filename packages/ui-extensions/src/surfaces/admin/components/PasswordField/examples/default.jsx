@@ -1,6 +1,0 @@
-<s-password-field
-  label="Password"
-  placeholder="Enter your password"
-  details="Must be at least 8 characters long"
-  minLength={8}
- />
