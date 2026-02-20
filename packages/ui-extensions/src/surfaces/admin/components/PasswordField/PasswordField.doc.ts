@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'passwordfield-default.png',
     codeblock: {
-      title: 'Simple PasswordField example',
+      title: 'Enter API credentials securely',
       tabs: [
         {
           title: 'React',
@@ -29,14 +29,56 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-passwordfield.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
   },
-
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Enforce minimum length requirements on sensitive inputs using the `error` prop. This example validates that a webhook secret is at least 16 characters, displaying an inline error until the requirement is met to prevent merchants from saving weak secrets.',
+        codeblock: {
+          title: 'Validate secret length requirements',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/PasswordField/examples/passwordfield-validation.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/passwordfield-validation.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Combine `PasswordField` with [TextField](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) and [EmailField](/docs/api/admin-extensions/{API_VERSION}/components/forms/emailfield) to build a complete service connection form. This example collects an API endpoint, account email, and token in a single modal to connect a fulfillment provider.',
+        codeblock: {
+          title: 'Build a service connection form',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/PasswordField/examples/passwordfield-integration.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/passwordfield-integration.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

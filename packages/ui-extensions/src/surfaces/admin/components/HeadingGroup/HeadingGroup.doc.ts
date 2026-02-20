@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'headinggroup-default.png',
     codeblock: {
-      title: 'Simple HeadingGroup example',
+      title: 'Group related heading content',
       tabs: [
         {
           title: 'React',
@@ -21,9 +21,9 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-headinggroup.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
