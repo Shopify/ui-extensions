@@ -12,6 +12,7 @@ export interface ConnectivityState {
   internetConnected: ConnectivityStateSeverity;
 }
 
+/** @publicDocs */
 export interface ConnectivityApiContent {
   /**
    * Provides read-only access to the current connectivity state and allows subscribing to connectivity changes. Use for implementing connectivity-aware functionality and reactive connectivity handling.
@@ -21,6 +22,7 @@ export interface ConnectivityApiContent {
 
 /**
  * The `ConnectivityApi` object provides access to current connectivity information and change notifications. Access these properties through `shopify.connectivity` to monitor network status.
+ * @publicDocs
  */
 export interface ConnectivityApi {
   connectivity: ConnectivityApiContent;

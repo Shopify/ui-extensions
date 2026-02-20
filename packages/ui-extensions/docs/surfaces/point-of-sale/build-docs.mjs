@@ -36,20 +36,12 @@ const shopifyDevDBPath = path.join(
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
-const generatedDocsDataFile = 'generated_docs_data.json';
 const generatedStaticPagesFile = 'generated_static_pages.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
 const tempComponentDefs = path.join(srcPath, 'components.ts');
 
 const tsconfig = 'tsconfig.docs.json';
-
-const transformJson = async (filePath) => {
-  let jsonData = JSON.parse((await fs.readFile(filePath, 'utf8')).toString());
-
-  jsonData = jsonData.filter(Boolean);
-  await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
-};
 
 const cleanup = async () => {
   try {
@@ -129,16 +121,7 @@ const generateExtensionsDocs = async () => {
     scripts,
     outputDir,
     rootPath,
-    generatedDocsDataFile,
     generatedStaticPagesFile,
-    transformJson,
-  });
-
-  // Update API version in relative doc links
-  await replaceFileContent({
-    filePaths: path.join(outputDir, generatedDocsDataFile),
-    searchValue: '/docs/api/pos-ui-extensions/[^/]*/',
-    replaceValue: `/docs/api/pos-ui-extensions/${EXTENSIONS_API_VERSION}/`,
   });
 
   await fs.cp(

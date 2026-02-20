@@ -45,6 +45,7 @@ export interface CameraMediaResponse {
 
 /**
  * Provides camera capabilities for the POS device.
+ * @publicDocs
  */
 export interface CameraApiContent {
   /**
@@ -63,6 +64,7 @@ export interface CameraApiContent {
 /**
  * The `CameraApi` object provides access to device camera functionality for capturing photos.
  * Access these properties through `shopify.camera`.
+ * @publicDocs
  */
 export interface CameraApi {
   camera: CameraApiContent;

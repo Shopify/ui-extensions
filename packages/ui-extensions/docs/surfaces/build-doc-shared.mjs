@@ -65,21 +65,30 @@ export const generateFiles = async ({
     }),
   );
 
-  const generatedFiles = [path.join(outputDir, generatedDocsDataFile)];
+  const generatedFiles = [];
+  if (generatedDocsDataFile) {
+    generatedFiles.push(path.join(outputDir, generatedDocsDataFile));
+  }
   if (generatedStaticPagesFile) {
     generatedFiles.push(path.join(outputDir, generatedStaticPagesFile));
   }
+  const existingGeneratedFiles = generatedFiles.filter((f) => existsSync(f));
 
   // Make sure https://shopify.dev URLs are relative so they work in Spin.
   // See https://github.com/Shopify/generate-docs/issues/181
-  await replaceFileContent({
-    filePaths: generatedFiles,
-    searchValue: 'https://shopify.dev',
-    replaceValue: '',
-  });
+  if (existingGeneratedFiles.length > 0) {
+    await replaceFileContent({
+      filePaths: existingGeneratedFiles,
+      searchValue: 'https://shopify.dev',
+      replaceValue: '',
+    });
+  }
 
-  if (transformJson) {
-    await transformJson(path.join(outputDir, generatedDocsDataFile));
+  if (transformJson && generatedDocsDataFile) {
+    const docsDataPath = path.join(outputDir, generatedDocsDataFile);
+    if (existsSync(docsDataPath)) {
+      await transformJson(docsDataPath);
+    }
   }
 };
 
