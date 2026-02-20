@@ -5445,6 +5445,7 @@ export type {
   TimePickerJSXProps,
 };
 
+/** @publicDocs */
 interface LinkEvents {
   /** Called when the link is activated. */
   click?: (event: CallbackEvent<typeof tagName$a>) => void;
@@ -5483,6 +5484,7 @@ interface Link {
   accessibilityLabel?: string;
 }
 
+/** @publicDocs */
 interface EmptyStateSlots {
   /** The primary action to perform, provided as a button or link type element. */
   'primary-action'?: HTMLElement;
@@ -5963,6 +5965,7 @@ interface ScrollBox {
   id?: string;
 }
 
+/** @publicDocs */
 interface TileEvents {
   /** Callback when the tile is activated. */
   click?: (event: CallbackEvent<typeof tagName$d>) => void;
@@ -6000,6 +6003,7 @@ interface Tile {
   subheading?: string;
 }
 
+/** @publicDocs */
 interface BannerSlots {
   /** The action taken when the banner is pressed. */
   'primary-action'?: HTMLElement;
@@ -6312,6 +6316,7 @@ interface Badge {
   id?: string;
 }
 
+/** @publicDocs */
 interface ChoiceListEvents {
   /** Callback when the user changes a choice. Fires simultaneously with onChange. */
   input?: (event: CallbackEvent<typeof tagName$z>) => void;
@@ -6352,6 +6357,7 @@ interface Choice {
   selected?: boolean;
 }
 
+/** @publicDocs */
 interface DateFieldEvents {
   /** Callback when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$x>) => void;
@@ -6398,6 +6404,7 @@ interface DateField {
   required?: boolean;
 }
 
+/** @publicDocs */
 interface ModalEvents {
   /** Callback when the modal is hidden. */
   hide?: (event: CallbackEvent<typeof tagName$p>) => void | null;
@@ -6405,6 +6412,7 @@ interface ModalEvents {
   show?: (event: CallbackEvent<typeof tagName$p>) => void | null;
 }
 
+/** @publicDocs */
 interface ModalSlots {
   /**
    * The primary action button displayed in the modal.
@@ -6425,6 +6433,7 @@ interface Modal {
   heading?: string;
 }
 
+/** @publicDocs */
 interface TextFieldEvents {
   /** Callback when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$e>) => void;
@@ -6436,6 +6445,7 @@ interface TextFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$e>) => void;
 }
 
+/** @publicDocs */
 interface TextFieldSlots {
   /** Additional content to be displayed in the field. Commonly used to display clickable text. */
   accessory?: HTMLElement;
@@ -6483,6 +6493,7 @@ interface TextField {
   maxLength?: number;
 }
 
+/** @publicDocs */
 interface SearchFieldEvents {
   /** Callback when the user changes the value in the field. */
   input?: (event: CallbackEvent<typeof tagName$j>) => void;
@@ -6508,6 +6519,7 @@ interface SearchField {
   value?: string;
 }
 
+/** @publicDocs */
 interface ClickableEvents {
   /** Callback when the element is activated. */
   click?: (event: CallbackEvent<typeof tagName$y>) => void;
@@ -6530,6 +6542,7 @@ interface Clickable {
   disabled?: boolean;
 }
 
+/** @publicDocs */
 interface TimeFieldEvents {
   /** Callback when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$c>) => void;
@@ -6589,6 +6602,7 @@ interface TimeField {
   required?: boolean;
 }
 
+/** @publicDocs */
 interface NumberFieldEvents {
   /** Callback when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$o>) => void;
@@ -6600,6 +6614,7 @@ interface NumberFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$o>) => void;
 }
 
+/** @publicDocs */
 interface NumberFieldSlots {
   /**
    * Additional content to be displayed in the field. Commonly used to display clickable text.
@@ -6697,6 +6712,7 @@ interface NumberField {
   min?: number;
 }
 
+/** @publicDocs */
 interface DatePickerEvents {
   /** Callback when the user selects a date from the picker. */
   input?: (event: CallbackEvent<typeof tagName$w>) => void | null;
@@ -6728,6 +6744,7 @@ interface DatePicker {
   value?: string;
 }
 
+/** @publicDocs */
 interface DateSpinnerEvents {
   /** Callback when the user makes a selection. */
   input?: (event: CallbackEvent<typeof tagName$v>) => void | null;
@@ -6751,6 +6768,7 @@ interface DateSpinner {
   value?: string;
 }
 
+/** @publicDocs */
 interface SectionSlots {
   /** Button element to display in the section heading. A single button is supported. */
   'secondary-actions'?: HTMLElement;
@@ -6772,6 +6790,7 @@ interface Heading {
   id?: string;
 }
 
+/** @publicDocs */
 interface TimePickerEvents {
   /** Callback when the user selects a time from the picker. */
   input?: (event: CallbackEvent<typeof tagName$b>) => void | null;
@@ -6855,6 +6874,7 @@ interface Image {
   alt?: string;
 }
 
+/** @publicDocs */
 interface PageSlots {
   /** Button element to display in the action bar. Only a single button is supported. */
   'secondary-actions'?: HTMLElement;
@@ -6874,6 +6894,7 @@ interface Page {
   id?: string;
 }
 
+/** @publicDocs */
 interface PosBlockSlots {
   /** The secondary actions to perform, provided as button or link type elements. */
   'secondary-actions'?: HTMLElement;
