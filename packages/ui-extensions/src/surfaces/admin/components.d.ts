@@ -288,7 +288,7 @@ export interface BackgroundProps {
  * Defines the semantic color treatment of a component to convey specific intent or status.
  *
  * Tones apply coordinated color schemes (text, background, icons) across the component.
- * Some components, like Banner, also use tone to determine accessibility attributes and screen reader announcements.
+ * Some components, like banner, also use tone to determine accessibility attributes and screen reader announcements.
  *
  * - `auto`: Automatically determined based on context.
  * - `neutral`: General-purpose information without specific sentiment.
@@ -972,7 +972,7 @@ interface BadgeProps$1 extends GlobalProps {
    */
   iconPosition?: 'start' | 'end';
   /**
-   * The size of the Badge component. Available sizes range from `small-500` (smallest) to `large-500` (largest), with `base` providing the default medium size.
+   * The size of the badge component. Available sizes range from `small-500` (smallest) to `large-500` (largest), with `base` providing the default medium size.
    *
    * @default 'base'
    */
@@ -1127,7 +1127,7 @@ export type AccessibilityRole =
   /**
    * An accessibility role used to indicate a generic section.
    *
-   * Sections should always have a Heading or an accessible name provided in the `accessibilityLabel` property.
+   * sections should always have a heading or an accessible name provided in the `accessibilityLabel` property.
    *
    * In an HTML host `section` will render a `<section>` element.
    * Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
@@ -1557,7 +1557,7 @@ export interface BaseBoxProps
     BorderProps,
     OverflowProps {
   /**
-   * The content displayed within the Box component, which serves as a flexible container for organizing and styling other components.
+   * The content displayed within the box component, which serves as a flexible container for organizing and styling other components.
    */
   children?: ComponentChildren;
   /**
@@ -1571,7 +1571,7 @@ export interface BaseBoxPropsWithRole
 interface BoxProps$1 extends BaseBoxPropsWithRole, GlobalProps {}
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
-   * The behavior of the Button component.
+   * The behavior of the button component.
    *
    * - `button`: Used to indicate the component acts as a button, meaning it has no default action.
    * - `reset`: Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
@@ -1583,7 +1583,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   type?: 'submit' | 'button' | 'reset';
   /**
-   * A callback fired when the Button is activated, before performing the action indicated by `type`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
+   * A callback fired when the button is activated, before performing the action indicated by `type`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
    */
   onClick?: (event: Event) => void;
   /**
@@ -1595,7 +1595,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * Whether to replace the button content with a loading indicator while a background action is being performed.
    *
-   * This also disables the Button component.
+   * This also disables the button component.
    *
    * @default false
    */
@@ -1672,7 +1672,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   accessibilityLabel?: string;
   /**
-   * The label text or elements displayed inside the Button component, describing the action that will be performed when clicked.
+   * The label text or elements displayed inside the button component, describing the action that will be performed when clicked.
    */
   children?: ComponentChildren;
   /**
@@ -1684,7 +1684,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   icon?: IconType | AnyString;
   /**
-   * The displayed inline width of the Button.
+   * The displayed inline width of the button.
    *
    * - `auto`: the size of the button depends on the surface and context.
    * - `fill`: the button will takes up 100% of the available inline size.
@@ -1694,9 +1694,9 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    */
   inlineSize?: 'auto' | 'fill' | 'fit-content';
   /**
-   * The visual appearance of the Button component.
+   * The visual appearance of the button component.
    *
-   * - `auto`: The variant is automatically determined by the Button component's context.
+   * - `auto`: The variant is automatically determined by the button component's context.
    * - `primary`: High emphasis button for the primary action on the page. Should be used sparingly.
    * - `secondary`: Medium emphasis button for secondary actions.
    * - `tertiary`: Low emphasis button for less important actions.
@@ -1721,7 +1721,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 }
 interface ButtonGroupProps$1 extends GlobalProps, ActionSlots {
   /**
-   * The buttons displayed within the ButtonGroup component, which are arranged together as a cohesive set of related actions.
+   * The buttons displayed within the button group component, which are arranged together as a cohesive set of related actions.
    */
   children?: ComponentChildren;
   /**
@@ -1779,7 +1779,7 @@ export interface MultipleInputProps extends BaseInputProps {
    */
   onInput?: (event: Event) => void;
   /**
-   * An array of `value` attributes for the currently selected options. When provided, this property automatically sets the `selected` state on child Option components that have matching `value` attributes. Options with values included in this array will be marked as selected, while others will be unselected.
+   * An array of `value` attributes for the currently selected options. When provided, this property automatically sets the `selected` state on child option components that have matching `value` attributes. Options with values included in this array will be marked as selected, while others will be unselected.
    */
   values?: string[];
 }
@@ -2057,7 +2057,7 @@ interface CheckboxProps$1
 }
 export interface ChipProps$1 extends GlobalProps {
   /**
-   * The text label displayed within the Chip component, typically representing a selected filter, tag, or removable item.
+   * The text label displayed within the chip component, typically representing a selected filter, tag, or removable item.
    */
   children?: ComponentChildren;
   /**
@@ -2101,7 +2101,7 @@ interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
    */
   details?: ComponentChildren;
   /**
-   * Whether to associate this choice with the error passed to ChoiceList.
+   * Whether to associate this choice with the error passed to choice list.
    *
    * @default false
    */
@@ -2131,7 +2131,7 @@ interface ChoiceListProps$1
   /**
    * The selectable options displayed to the user, each representing a choice they can make.
    *
-   * Only accepts Choice components as children. Each Choice represents an individual selectable option with its own label and value.
+   * Only accepts choice components as children. Each choice represents an individual selectable option with its own label and value.
    */
   children?: ComponentChildren;
   /**
@@ -2728,7 +2728,7 @@ export type EmailAutocompleteField = ExtractStrict<
 >;
 interface FormProps$1 extends GlobalProps {
   /**
-   * The form fields and controls displayed within the Form component, typically including input fields, buttons, and other form elements.
+   * The form fields and controls displayed within the form component, typically including input fields, buttons, and other form elements.
    */
   children?: ComponentChildren;
   /**
@@ -3092,7 +3092,7 @@ interface HeadingProps$1
     AccessibilityVisibilityProps,
     BlockTypographyProps {
   /**
-   * The heading text displayed within the Heading component, which provides a title or section header for content.
+   * The heading text displayed within the heading component, which provides a title or section header for content.
    */
   children?: ComponentChildren;
   /**
@@ -3276,7 +3276,7 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
 }
 interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
   /**
-   * The text or elements displayed within the Link component, which navigates users to a different location when activated.
+   * The text or elements displayed within the link component, which navigates users to a different location when activated.
    */
   children?: ComponentChildren;
   /**
@@ -3310,7 +3310,7 @@ interface MenuProps$1 extends GlobalProps {
    */
   accessibilityLabel?: string;
   /**
-   * The children define the actions to render inside the Menu. Only Button components are allowed as children of a Menu, and these Buttons can perform actions (using `onClick`) or link to other parts of the application (using `to`/ `href`). Any other component placed here will be ignored.
+   * The children define the actions to render inside the menu. Only button components are allowed as children of a menu, and these buttons can perform actions (using `onClick`) or link to other parts of the application (using `to`/ `href`). Any other component placed here will be ignored.
    */
   children?: ComponentChildren;
 }
@@ -3328,32 +3328,32 @@ interface ModalProps$1
    */
   accessibilityLabel?: string;
   /**
-   * A title that describes the content of the Modal.
+   * A title that describes the content of the modal.
    *
    */
   heading?: string;
   /**
-   * Adjust the padding around the Modal content.
+   * Adjust the padding around the modal content.
    *
    * `base`: applies padding that is appropriate for the element.
    *
-   * `none`: removes all padding from the element. This can be useful when elements inside the Modal need to span
-   * to the edge of the Modal. For example, a full-width image. In this case, rely on Box with a padding of 'base'
+   * `none`: removes all padding from the element. This can be useful when elements inside the modal need to span
+   * to the edge of the modal. For example, a full-width image. In this case, rely on box with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
    * @default 'base'
    */
   padding?: 'base' | 'none';
   /**
-   * Adjust the size of the Modal.
+   * Adjust the size of the modal.
    *
-   * `max`: expands the Modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
+   * `max`: expands the modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
    *
    * @default 'base'
    */
   size?: SizeKeyword | 'max';
   /**
-   * The content of the Modal.
+   * The content of the modal.
    */
   children?: ComponentChildren;
 }
@@ -3427,14 +3427,14 @@ interface OptionGroupProps$1 extends GlobalProps {
    */
   label?: string;
   /**
-   * The selectable options displayed in the dropdown list. Only accepts Option components as children. Each Option represents an individual selectable item with its own label and value.
+   * The selectable options displayed in the dropdown list. Only accepts option components as children. Each option represents an individual selectable item with its own label and value.
    */
   children?: ComponentChildren;
 }
 interface OrderedListProps$1 extends GlobalProps {}
 interface PageProps$1 extends GlobalProps, ActionSlots {
   /**
-   * The content of the Page.
+   * The content of the page.
    */
   children?: ComponentChildren;
   /**
@@ -3474,7 +3474,7 @@ interface ParagraphProps$1
     BlockTypographyProps,
     AccessibilityVisibilityProps {
   /**
-   * The paragraph text content displayed within the Paragraph component, which presents a block of related text with appropriate styling.
+   * The paragraph text content displayed within the paragraph component, which presents a block of related text with appropriate styling.
    */
   children?: ComponentChildren;
   /**
@@ -3533,13 +3533,13 @@ interface PopoverProps$1
 }
 interface QueryContainerProps$1 extends GlobalProps {
   /**
-   * The content displayed within the QueryContainer component, which enables container queries for responsive styling based on the container's size rather than the viewport.
+   * The content displayed within the query container component, which enables container queries for responsive styling based on the container's size rather than the viewport.
    */
   children?: ComponentChildren;
   /**
    * An identifier for this container that you can reference in CSS container queries to apply styles based on this specific container's size.
    *
-   * All QueryContainer components automatically receive a container name of `s-default`. You can omit the container name in your queries, so `@container (inline-size <= 300px)` is equivalent to `@container s-default (inline-size <= 300px)`.
+   * All query container components automatically receive a container name of `s-default`. You can omit the container name in your queries, so `@container (inline-size <= 300px)` is equivalent to `@container s-default (inline-size <= 300px)`.
    *
    * When you provide a custom `containerName`, it's added alongside `s-default`. For example, `containerName="product-card"` results in `s-default product-card` being set on the `container-name` CSS property, allowing you to target this container with `@container product-card (inline-size <= 300px)`.
    *
@@ -3553,7 +3553,7 @@ interface QueryContainerProps$1 extends GlobalProps {
 }
 interface SectionProps$1 extends GlobalProps, ActionSlots {
   /**
-   * The content displayed within the Section component, which groups related elements together in a logical unit with an optional heading.
+   * The content displayed within the section component, which groups related elements together in a logical unit with an optional heading.
    */
   children?: ComponentChildren;
   /**
@@ -3569,8 +3569,8 @@ interface SectionProps$1 extends GlobalProps, ActionSlots {
    *
    * - `base`: applies padding that is appropriate for the element. Note that it might result in no padding if
    * this is the right design decision in a particular context.
-   * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
-   * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
+   * - `none`: removes all padding from the element. This can be useful when elements inside the section need to span
+   * to the edge of the section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
    * @default 'base'
@@ -3584,7 +3584,7 @@ interface SelectProps$1
     Omit<FieldProps, 'defaultValue'>,
     FocusEventProps {
   /**
-   * The selectable options displayed in the dropdown list. Accepts Option components for individual selectable items, and OptionGroup components to organize related options into logical groups with labels.
+   * The selectable options displayed in the dropdown list. Accepts option components for individual selectable items, and option group components to organize related options into logical groups with labels.
    */
   children?: ComponentChildren;
 }
@@ -3602,11 +3602,11 @@ interface SpinnerProps$1 extends GlobalProps {
 }
 interface StackProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
   /**
-   * The child elements displayed within the Stack component, which are arranged vertically or horizontally with consistent spacing.
+   * The child elements displayed within the stack component, which are arranged vertically or horizontally with consistent spacing.
    */
   children?: ComponentChildren;
   /**
-   * The direction in which children are arranged within the Stack.
+   * The direction in which children are arranged within the stack.
    *
    * - `block`: Arranges children vertically in a column (in horizontal writing modes). Children will not wrap.
    * - `inline`: Arranges children horizontally in a row (in horizontal writing modes). Children will wrap to the next line if needed.
@@ -3617,7 +3617,7 @@ interface StackProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
    */
   direction?: MaybeResponsive<'block' | 'inline'>;
   /**
-   * The distribution of children along the Stack component's main axis (the direction of stacking).
+   * The distribution of children along the stack component's main axis (the direction of stacking).
    *
    * For example, in a vertical stack (block direction), this controls vertical distribution.
    * Use this to space out children or align them to the start, center, or end.
@@ -3628,7 +3628,7 @@ interface StackProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
    */
   justifyContent?: MaybeResponsive<JustifyContentKeyword>;
   /**
-   * The alignment of individual children along the Stack component's cross axis (perpendicular to the stacking direction).
+   * The alignment of individual children along the stack component's cross axis (perpendicular to the stacking direction).
    *
    * For example, in a vertical stack (block direction), this controls horizontal alignment of each child.
    *
@@ -3638,7 +3638,7 @@ interface StackProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
    */
   alignItems?: MaybeResponsive<AlignItemsKeyword>;
   /**
-   * The alignment of multiple lines of content along the Stack component's cross axis.
+   * The alignment of multiple lines of content along the stack component's cross axis.
    *
    * This only applies when content wraps to multiple lines (typically in inline direction).
    *
@@ -3691,15 +3691,15 @@ export interface PaginationProps {
 }
 interface TableProps$1 extends GlobalProps, PaginationProps {
   /**
-   * The table structure displayed within the Table component, including table headers, rows, and cells that organize data in a grid format.
+   * The table structure displayed within the table component, including table headers, rows, and cells that organize data in a grid format.
    */
   children?: ComponentChildren;
   /**
-   * The filter controls displayed above the table, such as SearchField or other input components for searching and filtering table data.
+   * The filter controls displayed above the table, such as search field or other input components for searching and filtering table data.
    */
   filters?: ComponentChildren;
   /**
-   * The layout variant of the Table component.
+   * The layout variant of the table component.
    *
    * - `list`: Always displays as a list layout.
    * - `table`: Always displays as a traditional table layout.
@@ -3767,14 +3767,14 @@ interface TableHeaderProps$1 extends GlobalProps {
 interface TableHeaderRowProps$1 extends GlobalProps {
   /**
    * The header cells that define the columns of the table.
-   * Only accepts TableHeader components as children, with each header representing a column and providing its label.
+   * Only accepts table header components as children, with each header representing a column and providing its label.
    */
   children?: ComponentChildren;
 }
 interface TableRowProps$1 extends GlobalProps {
   /**
    * The data cells displayed within this table row, with each cell containing content for its corresponding column.
-   * Only accepts TableCell components as children.
+   * Only accepts table cell components as children.
    */
   children?: ComponentChildren;
   /**
@@ -3796,13 +3796,13 @@ interface TextProps$1
     DisplayProps,
     Pick<InteractionProps, 'interestFor'> {
   /**
-   * The text content displayed within the Text component, which applies semantic meaning and styling appropriate to the specified text type.
+   * The text content displayed within the text component, which applies semantic meaning and styling appropriate to the specified text type.
    */
   children?: ComponentChildren;
   /**
    * The semantic type and styling treatment for the text content.
    *
-   * Other presentation properties on Text override the default styling.
+   * Other presentation properties on text override the default styling.
    *
    * @default 'generic'
    */
@@ -3923,7 +3923,7 @@ interface ThumbnailProps$1 extends GlobalProps, BaseImageProps {
 }
 interface TooltipProps$1 extends GlobalProps {
   /**
-   * The informational text or elements displayed within the Tooltip overlay, providing helpful context or explanations when users interact with the associated element.
+   * The informational text or elements displayed within the tooltip overlay, providing helpful context or explanations when users interact with the associated element.
    */
   children?: ComponentChildren;
 }
@@ -5049,13 +5049,13 @@ export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id' | 'children'> {
   /**
-   * The text label displayed within the Badge component, typically a short status indicator or category label.
+   * The text label displayed within the badge component, typically a short status indicator or category label.
    */
   children?: ComponentChildren;
 }
 
 /**
- * Represents the Banner component props with all properties marked as required.
+ * Represents the banner component props with all properties marked as required.
  */
 export type RequiredBannerProps = Required<BannerProps$1>;
 export interface BannerProps
@@ -5095,12 +5095,12 @@ export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id' | 'children'> {
   /**
-   * The main message content displayed within the Banner component, providing important information or guidance to users.
+   * The main message content displayed within the banner component, providing important information or guidance to users.
    */
   children?: ComponentChildren;
   /**
    * Action buttons displayed at the bottom of the banner that let users respond to the message.
-   * Accepts up to two Button components with `variant="secondary"` or `variant="auto"`.
+   * Accepts up to two button components with `variant="secondary"` or `variant="auto"`.
    */
   secondaryActions?: ComponentChildren;
   /**
@@ -5141,7 +5141,7 @@ export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
 };
 
 /**
- * Represents the Box component props with all properties marked as required.
+ * Represents the box component props with all properties marked as required.
  */
 export type RequiredBoxProps = Required<BoxProps$1>;
 /**
@@ -5168,7 +5168,7 @@ export type BoxBorderRadii = Extract<
   | 'large-200'
 >;
 /**
- * Represents the subset of border style values supported by the Box component.
+ * Represents the subset of border style values supported by the box component.
  *
  * - `auto`: Default border style determined by the system.
  * - `none`: No border style (removes the border).
@@ -5180,7 +5180,7 @@ export type BoxBorderStyles = Extract<
   'none' | 'solid' | 'dashed' | 'auto'
 >;
 /**
- * Represents Box props with responsive capabilities for layout properties.
+ * Represents box props with responsive capabilities for layout properties.
  *
  * This enables conditional styling based on container queries.
  */
@@ -5472,13 +5472,13 @@ export interface BoxJSXProps
   extends Partial<BoxProps>,
     Pick<BoxProps$1, 'id' | 'children'> {
   /**
-   * The content displayed within the Box component, which serves as a flexible container for organizing and styling other components.
+   * The content displayed within the box component, which serves as a flexible container for organizing and styling other components.
    */
   children?: ComponentChildren;
 }
 
 /**
- * Represents Button props that are specific to button-type elements only.
+ * Represents button props that are specific to button-type elements only.
  * Extracts the subset of `ButtonProps` that includes the `type` property.
  */
 export type ButtonOnlyProps = Extract<
@@ -5488,7 +5488,7 @@ export type ButtonOnlyProps = Extract<
   }
 >;
 /**
- * Represents the base Button props with all properties marked as required.
+ * Represents the base button props with all properties marked as required.
  */
 export type ButtonBaseProps = Required<
   Pick<
@@ -5575,7 +5575,7 @@ export interface ButtonJSXProps
   extends Partial<ButtonProps>,
     Pick<ButtonProps$1, 'id' | 'children'> {
   /**
-   * The label text or elements displayed inside the Button component, describing the action that will be performed when clicked.
+   * The label text or elements displayed inside the button component, describing the action that will be performed when clicked.
    */
   children?: ComponentChildren;
   /**
@@ -5625,19 +5625,19 @@ export interface ButtonGroupJSXProps
   extends Partial<ButtonGroupProps>,
     Pick<ButtonGroupProps$1, 'id' | 'children'> {
   /**
-   * The buttons displayed within the ButtonGroup component, which are arranged together as a cohesive set of related actions.
+   * The buttons displayed within the button group component, which are arranged together as a cohesive set of related actions.
    */
   children?: ComponentChildren;
   /**
    * The main action for this group, displayed with high visual emphasis.
-   * Accepts a single Button with `variant="primary"`.
+   * Accepts a single button with `variant="primary"`.
    *
    * Use this for the primary action you want users to take. This can't be used when `gap="none"`.
    */
   primaryAction?: ComponentChildren;
   /**
    * Supporting actions displayed with less emphasis than the primary action.
-   * Accepts one or more Button components with `variant="secondary"` or `variant="auto"`.
+   * Accepts one or more button components with `variant="secondary"` or `variant="auto"`.
    *
    * Use these for alternative or less critical actions.
    */
@@ -5793,11 +5793,11 @@ export interface ChipJSXProps
   extends Partial<ChipProps>,
     Pick<ChipProps$2, 'id' | 'children'> {
   /**
-   * The text label displayed within the Chip component, typically representing a selected filter, tag, or removable item.
+   * The text label displayed within the chip component, typically representing a selected filter, tag, or removable item.
    */
   children?: ComponentChildren;
   /**
-   * An optional icon to display at the start of the chip. Accepts only Icon components.
+   * An optional icon to display at the start of the chip. Accepts only icon components.
    */
   graphic?: ComponentChildren;
 }
@@ -5925,7 +5925,7 @@ export interface ChoiceListJSXProps
   /**
    * The choices a user can select from.
    *
-   * Accepts Choice components.
+   * Accepts choice components.
    */
   children?: ComponentChildren;
   /**
@@ -5939,7 +5939,7 @@ export interface ChoiceListJSXProps
 }
 
 /**
- * Represents the base Clickable props with all properties marked as required.
+ * Represents the base clickable props with all properties marked as required.
  */
 export type ClickableBaseProps = Required<
   Pick<
@@ -5993,7 +5993,7 @@ export interface ClickableJSXProps
   extends Partial<ClickableProps>,
     Pick<ClickableProps$1, 'id' | 'children'> {
   /**
-   * The content displayed within the Clickable component, which makes any content interactive and clickable without the semantic meaning of a button or link.
+   * The content displayed within the clickable component, which makes any content interactive and clickable without the semantic meaning of a button or link.
    */
   children?: ComponentChildren;
   /**
@@ -6065,7 +6065,7 @@ export interface ClickableChipJSXProps
    */
   children?: ComponentChildren;
   /**
-   * An optional icon to display at the start of the chip. Accepts only Icon components.
+   * An optional icon to display at the start of the chip. Accepts only icon components.
    */
   graphic?: ComponentChildren;
   /**
@@ -6537,7 +6537,7 @@ export interface DropZoneJSXProps
   extends Partial<DropZoneProps>,
     Pick<DropZoneProps$1, 'id'> {
   /**
-   * The content to include inside the DropZone container
+   * The content to include inside the drop zone container
    */
   children?: ComponentChildren;
   /**
@@ -6597,11 +6597,11 @@ export interface EmailFieldJSXProps
     FieldReactProps<typeof tagName$H> {}
 
 /**
- * Represents the Grid component props with all properties marked as required.
+ * Represents the grid component props with all properties marked as required.
  */
 export type RequiredAlignedProps = Required<GridProps$1>;
 /**
- * Represents Grid props with responsive capabilities for layout properties.
+ * Represents grid props with responsive capabilities for layout properties.
  *
  * This enables conditional styling based on container queries.
  */
@@ -6745,13 +6745,13 @@ export interface GridJSXProps
   extends Partial<GridProps>,
     Pick<GridProps$1, 'id' | 'children'> {
   /**
-   * The child elements displayed within the Grid component, which are arranged in a flexible grid layout with configurable columns, rows, and spacing.
+   * The child elements displayed within the grid component, which are arranged in a flexible grid layout with configurable columns, rows, and spacing.
    */
   children?: ComponentChildren;
 }
 
 /**
- * Represents the GridItem component props with all properties marked as required.
+ * Represents the grid item component props with all properties marked as required.
  */
 export type RequiredGridItemProps = Required<GridItemProps$1>;
 export interface GridItemProps
@@ -6785,7 +6785,7 @@ export interface GridItemJSXProps
   extends Partial<GridItemProps>,
     Pick<GridItemProps$1, 'id' | 'children'> {
   /**
-   * The content displayed within the GridItem component, which represents a single cell in the grid layout and can span multiple columns or rows.
+   * The content displayed within the grid item component, which represents a single cell in the grid layout and can span multiple columns or rows.
    */
   children?: ComponentChildren;
 }
@@ -6823,7 +6823,7 @@ export interface HeadingJSXProps
   extends Partial<HeadingProps>,
     Pick<HeadingProps$1, 'id' | 'children'> {
   /**
-   * The heading text displayed within the Heading component, which provides a title or section header for content.
+   * The heading text displayed within the heading component, which provides a title or section header for content.
    */
   children?: ComponentChildren;
 }
@@ -6940,11 +6940,11 @@ export interface ImageJSXProps
 }
 
 /**
- * Represents the Link component props with all properties marked as required.
+ * Represents the link component props with all properties marked as required.
  */
 export type RequiredLinkProps = Required<LinkProps$1>;
 /**
- * Represents the base Link props with all core properties marked as required.
+ * Represents the base link props with all core properties marked as required.
  */
 export type LinkBaseProps = Required<
   Pick<
@@ -6995,7 +6995,7 @@ export interface LinkJSXProps
   extends Partial<LinkProps>,
     Pick<LinkProps$1, 'id' | 'lang' | 'children'> {
   /**
-   * The text or elements displayed within the Link component, which navigates users to a different location when activated.
+   * The text or elements displayed within the link component, which navigates users to a different location when activated.
    */
   children?: ComponentChildren;
   /**
@@ -7039,7 +7039,7 @@ export interface MenuProps
 /**
  * Shared symbols for overlay control functionality.
  * These symbols are used by components that implement overlay behavior
- * (like Popover, Tooltip, or Modal) to communicate with the overlay control system.
+ * (like popover, tooltip, or modal) to communicate with the overlay control system.
  */
 /**
  * Symbol used to track the open or closed state of the overlay.
@@ -7110,13 +7110,13 @@ export interface MenuJSXProps
   extends Partial<MenuProps>,
     Pick<MenuProps$1, 'id' | 'children'> {
   /**
-   * The items displayed within the menu. Only accepts Button and Section components. Use Button for individual menu actions and Section to group related items.
+   * The items displayed within the menu. Only accepts button and section components. Use button for individual menu actions and section to group related items.
    */
   children?: ComponentChildren;
 }
 
 /**
- * Represents the Modal component props with all properties marked as required.
+ * Represents the modal component props with all properties marked as required.
  */
 export type RequiredAlignedModalProps = Required<ModalProps$1>;
 export interface ModalProps
@@ -7131,7 +7131,7 @@ export interface ModalProps
     | 'toggleOverlay'
   > {
   /**
-   * The size of the Modal component, controlling its width and height. Larger sizes provide more space for content while smaller sizes are more compact.
+   * The size of the modal component, controlling its width and height. Larger sizes provide more space for content while smaller sizes are more compact.
    */
   size: Extract<
     ModalProps$1['size'],
@@ -7259,19 +7259,19 @@ export interface ModalJSXProps
   extends Partial<ModalProps>,
     Pick<ModalProps$1, 'id' | 'children'> {
   /**
-   * The content displayed within the Modal component, typically including form fields, information, or interactive elements.
+   * The content displayed within the modal component, typically including form fields, information, or interactive elements.
    */
   children?: ComponentChildren;
   /**
    * The main action button displayed in the modal footer, representing the primary action users should take.
    *
-   * Only accepts a single Button component with a `variant` of `primary`. This action should align with the modal's main purpose.
+   * Only accepts a single button component with a `variant` of `primary`. This action should align with the modal's main purpose.
    */
   primaryAction?: ComponentChildren;
   /**
    * Additional action buttons displayed in the modal footer, providing alternative or supporting actions.
    *
-   * Only accepts Button components with a `variant` of `secondary` or `auto`. These are visually de-emphasized to establish clear hierarchy.
+   * Only accepts button components with a `variant` of `secondary` or `auto`. These are visually de-emphasized to establish clear hierarchy.
    */
   secondaryActions?: ComponentChildren;
   /**
@@ -7293,7 +7293,7 @@ export interface ModalJSXProps
 }
 
 /**
- * Represents the MoneyField component props with all properties marked as required.
+ * Represents the money field component props with all properties marked as required.
  */
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 export interface MoneyFieldProps
@@ -7449,7 +7449,7 @@ export interface OptionGroupJSXProps
   extends Partial<OptionGroupProps>,
     Pick<OptionGroupProps$1, 'id' | 'children'> {
   /**
-   * The selectable options displayed in the dropdown list. Accepts Option components for individual selectable items within this group.
+   * The selectable options displayed in the dropdown list. Accepts option components for individual selectable items within this group.
    */
   children?: ComponentChildren;
 }
@@ -7481,7 +7481,7 @@ export interface OrderedListJSXProps
   extends Partial<OrderedListProps>,
     Pick<OrderedListProps$1, 'id'> {
   /**
-   * The list entries displayed within the ordered list, where each item is numbered sequentially. Only accepts ListItem components as children. Each ListItem represents a single numbered entry in the sequence.
+   * The list entries displayed within the ordered list, where each item is numbered sequentially. Only accepts list item components as children. Each list item represents a single numbered entry in the sequence.
    */
   children?: ComponentChildren;
 }
@@ -7522,7 +7522,7 @@ export interface PageJSXProps
   extends Partial<PageProps>,
     Pick<PageProps$1, 'id' | 'children'> {
   /**
-   * The main page content displayed within the Page component, which serves as the primary container for the page's information and interface elements.
+   * The main page content displayed within the page component, which serves as the primary container for the page's information and interface elements.
    */
   children?: ComponentChildren;
   /**
@@ -7534,20 +7534,20 @@ export interface PageJSXProps
   /**
    * The primary action for the page.
    *
-   * Only accepts a single Button component with a `variant` of `primary`.
+   * Only accepts a single button component with a `variant` of `primary`.
    *
    */
   primaryAction?: ComponentChildren;
   /**
    * The secondary actions for the page.
    *
-   * Only accepts ButtonGroup and Button components with a `variant` of `secondary` or `auto`.
+   * Only accepts button group and button components with a `variant` of `secondary` or `auto`.
    */
   secondaryActions?: ComponentChildren;
   /**
    * The navigation back actions for the page.
    *
-   * Only accepts Link components.
+   * Only accepts link components.
    */
   breadcrumbActions?: ComponentChildren;
 }
@@ -7618,7 +7618,7 @@ export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,
     Pick<ParagraphProps$1, 'id' | 'children'> {
   /**
-   * The paragraph text content displayed within the Paragraph component, which presents a block of related text with appropriate styling.
+   * The paragraph text content displayed within the paragraph component, which presents a block of related text with appropriate styling.
    */
   children?: ComponentChildren;
 }
@@ -7733,7 +7733,7 @@ export interface PopoverJSXProps
   extends Partial<PopoverProps>,
     Pick<PopoverProps$1, 'id' | 'children'> {
   /**
-   * The content displayed within the Popover component, which appears in an overlay positioned relative to its trigger element.
+   * The content displayed within the popover component, which appears in an overlay positioned relative to its trigger element.
    */
   children?: ComponentChildren;
   /**
@@ -7793,7 +7793,7 @@ export interface QueryContainerJSXProps
   extends Partial<QueryContainerProps$1>,
     Pick<QueryContainerProps$1, 'id' | 'children'> {
   /**
-   * The content displayed within the QueryContainer component, which enables container queries for responsive styling based on the container's size rather than the viewport.
+   * The content displayed within the query container component, which enables container queries for responsive styling based on the container's size rather than the viewport.
    */
   children?: ComponentChildren;
 }
@@ -7860,7 +7860,7 @@ export interface SearchFieldJSXProps
     FieldReactProps<typeof tagName$n> {}
 
 /**
- * Represents the Section component props with all properties marked as required.
+ * Represents the section component props with all properties marked as required.
  */
 export type RequiredSectionProps = Required<SectionProps$1>;
 export interface SectionProps
@@ -7900,7 +7900,7 @@ export interface SectionJSXProps
   extends Partial<SectionProps>,
     Pick<SectionProps$1, 'id' | 'children'> {
   /**
-   * The content displayed within the Section component, which groups related elements together in a logical unit with an optional heading.
+   * The content displayed within the section component, which groups related elements together in a logical unit with an optional heading.
    */
   children?: ComponentChildren;
 }
@@ -7956,7 +7956,7 @@ declare class Select extends PreactInputElement implements SelectProps {
    */
   [hasInitialValueSymbol]: boolean;
   /**
-   * The value of the currently selected option. When setting this property programmatically, it updates which option appears selected in the dropdown. When reading it, you get the `value` attribute of the currently selected Option component.
+   * The value of the currently selected option. When setting this property programmatically, it updates which option appears selected in the dropdown. When reading it, you get the `value` attribute of the currently selected option component.
    */
   get value(): string;
   set value(value: string);
@@ -7981,7 +7981,7 @@ export interface SelectJSXProps
   extends Partial<SelectProps>,
     Pick<SelectProps$1, 'id' | 'children'> {
   /**
-   * The selectable options displayed in the dropdown list. Accepts Option components for individual selectable items, and OptionGroup components to organize related options into logical groups with labels.
+   * The selectable options displayed in the dropdown list. Accepts option components for individual selectable items, and option group components to organize related options into logical groups with labels.
    */
   children?: ComponentChildren;
   onChange?: (event: CallbackEvent<typeof tagName$l>) => void;
@@ -8026,11 +8026,11 @@ export interface SpinnerJSXProps
     Pick<SpinnerProps$1, 'id'> {}
 
 /**
- * Represents the Stack component props with all properties marked as required.
+ * Represents the stack component props with all properties marked as required.
  */
 export type AlignedStackProps = Required<StackProps$1>;
 /**
- * Represents Stack props with responsive capabilities for layout properties.
+ * Represents stack props with responsive capabilities for layout properties.
  *
  * This enables conditional styling based on container queries.
  */
@@ -8100,7 +8100,7 @@ export interface StackProps
    */
   columnGap: ResponsiveStackProps['columnGap'];
   /**
-   * The direction in which the Stack's children are placed within the Stack.
+   * The direction in which the stack's children are placed within the stack.
    *
    * Accepts:
    * - A single value, either `inline` or `block`
@@ -8141,7 +8141,7 @@ export interface StackJSXProps
   extends Partial<StackProps>,
     Pick<StackProps$1, 'id' | 'children'> {
   /**
-   * The child elements displayed within the Stack component, which are arranged vertically or horizontally with consistent spacing.
+   * The child elements displayed within the stack component, which are arranged vertically or horizontally with consistent spacing.
    */
   children?: ComponentChildren;
 }
@@ -8215,7 +8215,7 @@ export interface TableHeaderProps
 declare const actualTableVariantSymbol: unique symbol;
 declare const tableHeadersSharedDataSymbol: unique symbol;
 /**
- * Represents the actual rendered variant of a Table component.
+ * Represents the actual rendered variant of a table component.
  * - `table`: Displays as a traditional table layout.
  * - `list`: Displays as a list layout.
  */
@@ -8262,7 +8262,7 @@ export interface TableJSXProps
   extends Partial<TableProps>,
     Pick<TableProps$1, 'id' | 'children' | 'onNextPage' | 'onPreviousPage'> {
   /**
-   * The table structure displayed within the Table component, including table headers, rows, and cells that organize data in a grid format.
+   * The table structure displayed within the table component, including table headers, rows, and cells that organize data in a grid format.
    */
   children?: ComponentChildren;
   /**
@@ -8400,7 +8400,7 @@ export interface TableHeaderRowJSXProps
     Pick<TableHeaderRowProps$1, 'id' | 'children'> {
   /**
    * The header cells that define the columns of the table.
-   * Only accepts TableHeader components as children, with each header representing a column and providing its label.
+   * Only accepts table header components as children, with each header representing a column and providing its label.
    */
   children?: ComponentChildren;
 }
@@ -8432,7 +8432,7 @@ export interface TableRowJSXProps
     Pick<TableRowProps$1, 'id' | 'children'> {
   /**
    * The data cells displayed within this table row, with each cell containing content for its corresponding column.
-   * Only accepts TableCell components as children.
+   * Only accepts table cell components as children.
    */
   children?: ComponentChildren;
 }
@@ -8454,7 +8454,7 @@ export interface TextProps
   /**
    * The semantic type and styling treatment for the text content.
    *
-   * Other presentation properties on Text override the default styling.
+   * Other presentation properties on text override the default styling.
    *
    * - `strong`: Emphasizes the text with strong importance, typically displayed in bold.
    * - `generic`: Standard text with no special semantic meaning or styling.
@@ -8537,7 +8537,7 @@ export interface TextJSXProps
   extends Partial<TextProps>,
     Pick<TextProps$1, 'id' | 'children'> {
   /**
-   * The text content displayed within the Text component, which applies semantic meaning and styling appropriate to the specified text type.
+   * The text content displayed within the text component, which applies semantic meaning and styling appropriate to the specified text type.
    */
   children?: ComponentChildren;
 }
@@ -8715,9 +8715,9 @@ export interface TooltipJSXProps
   extends Partial<TooltipProps>,
     Pick<TooltipProps$1, 'id' | 'children'> {
   /**
-   * The informational text or elements displayed within the Tooltip overlay, providing helpful context or explanations when users interact with the associated element.
+   * The informational text or elements displayed within the tooltip overlay, providing helpful context or explanations when users interact with the associated element.
    *
-   * Only accepts Text, Paragraph components, and raw `textContent`.
+   * Only accepts text, paragraph components, and raw `textContent`.
    */
   children?: ComponentChildren;
 }
@@ -8791,7 +8791,7 @@ export interface UnorderedListJSXProps
   extends Partial<UnorderedListProps>,
     Pick<UnorderedListProps$1, 'id'> {
   /**
-   * The list entries displayed within the unordered list, where each item is marked with a bullet point. Only accepts ListItem components as children. Each ListItem represents a single bulleted entry in the list.
+   * The list entries displayed within the unordered list, where each item is marked with a bullet point. Only accepts list item components as children. Each list item represents a single bulleted entry in the list.
    */
   children?: ComponentChildren;
 }
@@ -9151,7 +9151,7 @@ export interface AvatarEvents {
 
 export interface BadgeSlots {
   /**
-   * The text label displayed within the Badge component, typically a short status indicator or category label.
+   * The text label displayed within the badge component, typically a short status indicator or category label.
    */
   children?: HTMLElement;
 }
@@ -9169,19 +9169,19 @@ export interface BannerEvents {
 
 export interface BannerSlots {
   /**
-   * The main message content displayed within the Banner component, providing important information or guidance to users.
+   * The main message content displayed within the banner component, providing important information or guidance to users.
    */
   children?: HTMLElement;
   /**
    * Action buttons displayed at the bottom of the banner that let users respond to the message.
-   * Accepts up to two Button components with `variant="secondary"` or `variant="auto"`.
+   * Accepts up to two button components with `variant="secondary"` or `variant="auto"`.
    */
   'secondary-actions'?: HTMLElement;
 }
 
 export interface BoxSlots {
   /**
-   * The content displayed within the Box component, which serves as a flexible container for organizing and styling other components.
+   * The content displayed within the box component, which serves as a flexible container for organizing and styling other components.
    */
   children?: HTMLElement;
 }
@@ -9209,26 +9209,26 @@ export interface ButtonEvents {
 
 export interface ButtonSlots {
   /**
-   * The label text or elements displayed inside the Button component, describing the action that will be performed when clicked.
+   * The label text or elements displayed inside the button component, describing the action that will be performed when clicked.
    */
   children?: HTMLElement;
 }
 
 export interface ButtonGroupSlots {
   /**
-   * The buttons displayed within the ButtonGroup component, which are arranged together as a cohesive set of related actions.
+   * The buttons displayed within the button group component, which are arranged together as a cohesive set of related actions.
    */
   children?: HTMLElement;
   /**
    * The main action for this group, displayed with high visual emphasis.
-   * Accepts a single Button with `variant="primary"`.
+   * Accepts a single button with `variant="primary"`.
    *
    * Use this for the primary action you want users to take. This can't be used when `gap="none"`.
    */
   'primary-action'?: HTMLElement;
   /**
    * Supporting actions displayed with less emphasis than the primary action.
-   * Accepts one or more Button components with `variant="secondary"` or `variant="auto"`.
+   * Accepts one or more button components with `variant="secondary"` or `variant="auto"`.
    *
    * Use these for alternative or less critical actions.
    */
@@ -9252,11 +9252,11 @@ export interface CheckboxEvents {
 
 export interface ChipSlots {
   /**
-   * The text label displayed within the Chip component, typically representing a selected filter, tag, or removable item.
+   * The text label displayed within the chip component, typically representing a selected filter, tag, or removable item.
    */
   children?: HTMLElement;
   /**
-   * An optional icon to display at the start of the chip. Accepts only Icon components.
+   * An optional icon to display at the start of the chip. Accepts only icon components.
    */
   graphic?: HTMLElement;
 }
@@ -9300,7 +9300,7 @@ export interface ChoiceListSlots {
   /**
    * The choices a user can select from.
    *
-   * Accepts Choice components.
+   * Accepts choice components.
    */
   children?: HTMLElement;
 }
@@ -9328,7 +9328,7 @@ export interface ClickableEvents {
 
 export interface ClickableSlots {
   /**
-   * The content displayed within the Clickable component, which makes any content interactive and clickable without the semantic meaning of a button or link.
+   * The content displayed within the clickable component, which makes any content interactive and clickable without the semantic meaning of a button or link.
    */
   children?: HTMLElement;
 }
@@ -9356,7 +9356,7 @@ export interface ClickableChipSlots {
    */
   children?: HTMLElement;
   /**
-   * An optional icon to display at the start of the chip. Accepts only Icon components.
+   * An optional icon to display at the start of the chip. Accepts only icon components.
    */
   graphic?: HTMLElement;
 }
@@ -9492,7 +9492,7 @@ export interface DropZoneEvents {
 
 export interface DropZoneSlots {
   /**
-   * The content to include inside the DropZone container
+   * The content to include inside the drop zone container
    */
   children?: HTMLElement;
 }
@@ -9526,21 +9526,21 @@ export interface EmailFieldEvents {
 
 export interface GridSlots {
   /**
-   * The child elements displayed within the Grid component, which are arranged in a flexible grid layout with configurable columns, rows, and spacing.
+   * The child elements displayed within the grid component, which are arranged in a flexible grid layout with configurable columns, rows, and spacing.
    */
   children?: HTMLElement;
 }
 
 export interface GridItemSlots {
   /**
-   * The content displayed within the GridItem component, which represents a single cell in the grid layout and can span multiple columns or rows.
+   * The content displayed within the grid item component, which represents a single cell in the grid layout and can span multiple columns or rows.
    */
   children?: HTMLElement;
 }
 
 export interface HeadingSlots {
   /**
-   * The heading text displayed within the Heading component, which provides a title or section header for content.
+   * The heading text displayed within the heading component, which provides a title or section header for content.
    */
   children?: HTMLElement;
 }
@@ -9571,7 +9571,7 @@ export interface LinkEvents {
 
 export interface LinkSlots {
   /**
-   * The text or elements displayed within the Link component, which navigates users to a different location when activated.
+   * The text or elements displayed within the link component, which navigates users to a different location when activated.
    */
   children?: HTMLElement;
 }
@@ -9585,7 +9585,7 @@ export interface ListItemSlots {
 
 export interface MenuSlots {
   /**
-   * The items displayed within the menu. Only accepts Button and Section components. Use Button for individual menu actions and Section to group related items.
+   * The items displayed within the menu. Only accepts button and section components. Use button for individual menu actions and section to group related items.
    */
   children?: HTMLElement;
 }
@@ -9611,19 +9611,19 @@ export interface ModalEvents {
 
 export interface ModalSlots {
   /**
-   * The content displayed within the Modal component, typically including form fields, information, or interactive elements.
+   * The content displayed within the modal component, typically including form fields, information, or interactive elements.
    */
   children?: HTMLElement;
   /**
    * The main action button displayed in the modal footer, representing the primary action users should take.
    *
-   * Only accepts a single Button component with a `variant` of `primary`. This action should align with the modal's main purpose.
+   * Only accepts a single button component with a `variant` of `primary`. This action should align with the modal's main purpose.
    */
   'primary-action'?: HTMLElement;
   /**
    * Additional action buttons displayed in the modal footer, providing alternative or supporting actions.
    *
-   * Only accepts Button components with a `variant` of `secondary` or `auto`. These are visually de-emphasized to establish clear hierarchy.
+   * Only accepts button components with a `variant` of `secondary` or `auto`. These are visually de-emphasized to establish clear hierarchy.
    */
   'secondary-actions'?: HTMLElement;
 }
@@ -9691,21 +9691,21 @@ export interface OptionSlots {
 
 export interface OptionGroupSlots {
   /**
-   * The selectable options displayed in the dropdown list. Accepts Option components for individual selectable items within this group.
+   * The selectable options displayed in the dropdown list. Accepts option components for individual selectable items within this group.
    */
   children?: HTMLElement;
 }
 
 export interface OrderedListSlots {
   /**
-   * The list entries displayed within the ordered list, where each item is numbered sequentially. Only accepts ListItem components as children. Each ListItem represents a single numbered entry in the sequence.
+   * The list entries displayed within the ordered list, where each item is numbered sequentially. Only accepts list item components as children. Each list item represents a single numbered entry in the sequence.
    */
   children?: HTMLElement;
 }
 
 export interface PageSlots {
   /**
-   * The main page content displayed within the Page component, which serves as the primary container for the page's information and interface elements.
+   * The main page content displayed within the page component, which serves as the primary container for the page's information and interface elements.
    */
   children?: HTMLElement;
   /**
@@ -9717,27 +9717,27 @@ export interface PageSlots {
   /**
    * The primary action for the page.
    *
-   * Only accepts a single Button component with a `variant` of `primary`.
+   * Only accepts a single button component with a `variant` of `primary`.
    *
    */
   'primary-action'?: HTMLElement;
   /**
    * The secondary actions for the page.
    *
-   * Only accepts ButtonGroup and Button components with a `variant` of `secondary` or `auto`.
+   * Only accepts button group and button components with a `variant` of `secondary` or `auto`.
    */
   'secondary-actions'?: HTMLElement;
   /**
    * The navigation back actions for the page.
    *
-   * Only accepts Link components.
+   * Only accepts link components.
    */
   'breadcrumb-actions'?: HTMLElement;
 }
 
 export interface ParagraphSlots {
   /**
-   * The paragraph text content displayed within the Paragraph component, which presents a block of related text with appropriate styling.
+   * The paragraph text content displayed within the paragraph component, which presents a block of related text with appropriate styling.
    */
   children?: HTMLElement;
 }
@@ -9798,14 +9798,14 @@ export interface PopoverEvents {
 
 export interface PopoverSlots {
   /**
-   * The content displayed within the Popover component, which appears in an overlay positioned relative to its trigger element.
+   * The content displayed within the popover component, which appears in an overlay positioned relative to its trigger element.
    */
   children?: HTMLElement;
 }
 
 export interface QueryContainerSlots {
   /**
-   * The content displayed within the QueryContainer component, which enables container queries for responsive styling based on the container's size rather than the viewport.
+   * The content displayed within the query container component, which enables container queries for responsive styling based on the container's size rather than the viewport.
    */
   children?: HTMLElement;
 }
@@ -9839,7 +9839,7 @@ export interface SearchFieldEvents {
 
 export interface SectionSlots {
   /**
-   * The content displayed within the Section component, which groups related elements together in a logical unit with an optional heading.
+   * The content displayed within the section component, which groups related elements together in a logical unit with an optional heading.
    */
   children?: HTMLElement;
 }
@@ -9861,14 +9861,14 @@ export interface SelectEvents {
 
 export interface SelectSlots {
   /**
-   * The selectable options displayed in the dropdown list. Accepts Option components for individual selectable items, and OptionGroup components to organize related options into logical groups with labels.
+   * The selectable options displayed in the dropdown list. Accepts option components for individual selectable items, and option group components to organize related options into logical groups with labels.
    */
   children?: HTMLElement;
 }
 
 export interface StackSlots {
   /**
-   * The child elements displayed within the Stack component, which are arranged vertically or horizontally with consistent spacing.
+   * The child elements displayed within the stack component, which are arranged vertically or horizontally with consistent spacing.
    */
   children?: HTMLElement;
 }
@@ -9903,13 +9903,13 @@ export interface TableSlots {
   /**
    * The table structure defining headers and data rows.
    *
-   * Accepts TableHeaderRow (for column headers) and TableBody (for data rows) components. Structure your table with a TableHeaderRow first, followed by TableBody.
+   * Accepts table header row (for column headers) and table body (for data rows) components. Structure your table with a table header row first, followed by table body.
    */
   children?: HTMLElement;
   /**
    * Filter controls displayed above the table.
    *
-   * Accepts input components like SearchField or Select for filtering table data. These controls appear in a dedicated area above the table content.
+   * Accepts input components like search field or select for filtering table data. These controls appear in a dedicated area above the table content.
    */
   filters?: HTMLElement;
 }
@@ -9918,7 +9918,7 @@ export interface TableBodySlots {
   /**
    * The data rows displayed in the table body.
    *
-   * Accepts TableRow components, with each row representing a single record or entry in the table.
+   * Accepts table row components, with each row representing a single record or entry in the table.
    */
   children?: HTMLElement;
 }
@@ -9945,7 +9945,7 @@ export interface TableHeaderRowSlots {
   /**
    * The column headers displayed in the table header row.
    *
-   * Accepts TableHeader components, with each header defining a column and providing its label.
+   * Accepts table header components, with each header defining a column and providing its label.
    */
   children?: HTMLElement;
 }
@@ -9954,14 +9954,14 @@ export interface TableRowSlots {
   /**
    * The data cells displayed in this table row.
    *
-   * Accepts TableCell components, with each cell containing a data value for the corresponding column.
+   * Accepts table cell components, with each cell containing a data value for the corresponding column.
    */
   children?: HTMLElement;
 }
 
 export interface TextSlots {
   /**
-   * The text content displayed within the Text component, which applies semantic meaning and styling appropriate to the specified text type.
+   * The text content displayed within the text component, which applies semantic meaning and styling appropriate to the specified text type.
    */
   children?: HTMLElement;
 }
@@ -10024,7 +10024,7 @@ export interface TextFieldSlots {
   /**
    * Additional interactive content displayed within the text field.
    *
-   * Accepts Button and Clickable components with text content only. Other component types or complex layouts are not supported.
+   * Accepts button and clickable components with text content only. Other component types or complex layouts are not supported.
    */
   accessory?: HTMLElement;
 }
@@ -10046,9 +10046,9 @@ export interface ThumbnailEvents {
 
 export interface TooltipSlots {
   /**
-   * The informational text or elements displayed within the Tooltip overlay, providing helpful context or explanations when users interact with the associated element.
+   * The informational text or elements displayed within the tooltip overlay, providing helpful context or explanations when users interact with the associated element.
    *
-   * Only accepts Text, Paragraph components, and raw `textContent`.
+   * Only accepts text, paragraph components, and raw `textContent`.
    */
   children?: HTMLElement;
 }
@@ -10082,7 +10082,7 @@ export interface URLFieldEvents {
 
 export interface UnorderedListSlots {
   /**
-   * The list entries displayed within the unordered list, where each item is marked with a bullet point. Only accepts ListItem components as children. Each ListItem represents a single bulleted entry in the list.
+   * The list entries displayed within the unordered list, where each item is marked with a bullet point. Only accepts list item components as children. Each list item represents a single bulleted entry in the list.
    */
   children?: HTMLElement;
 }

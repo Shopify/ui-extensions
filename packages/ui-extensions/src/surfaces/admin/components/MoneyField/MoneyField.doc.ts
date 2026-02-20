@@ -31,13 +31,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the MoneyField component.',
+        'Configure the following properties on the money field component.',
       type: 'MoneyField',
     },
     {
       title: 'Events',
       description:
-        'The MoneyField component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The money field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'MoneyFieldEvents',
     },
   ],

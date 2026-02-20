@@ -110,7 +110,7 @@ export interface ChipJSXProps
   extends Partial<ChipProps>,
     Pick<ChipProps$1, 'id' | 'children'> {
   /**
-   * The content of the Chip.
+   * The content of the chip.
    */
   children?: ComponentChildren;
   /**

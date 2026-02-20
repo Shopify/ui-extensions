@@ -54,11 +54,11 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * All properties for the Banner component marked as required.
+ * All properties for the banner component marked as required.
  */
 export type RequiredBannerProps = Required<BannerProps$1>;
 /**
- * The properties for the Banner component. These properties define an important message or notification with visual styling that conveys its semantic meaning.
+ * The properties for the banner component. These properties define an important message or notification with visual styling that conveys its semantic meaning.
  */
 export interface BannerProps
   extends Pick<
@@ -212,7 +212,7 @@ declare module 'preact' {
 
 declare const tagName = 's-banner';
 /**
- * The JSX properties for the Banner component. These properties define how a banner is rendered in Preact or JSX.
+ * The JSX properties for the banner component. These properties define how a banner is rendered in Preact or JSX.
  */
 export interface BannerJSXProps
   extends Partial<BannerProps>,

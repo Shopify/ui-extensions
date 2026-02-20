@@ -115,7 +115,7 @@ export type ButtonOnlyProps = Extract<
   }
 >;
 /**
- * The base required properties for the Button component, including all essential button configuration options. This type ensures all button properties have default values.
+ * The base required properties for the button component, including all essential button configuration options. This type ensures all button properties have default values.
  */
 export type ButtonBaseProps = Required<
   Pick<
@@ -137,7 +137,7 @@ export type ButtonBaseProps = Required<
   >
 >;
 /**
- * The properties for the Button component. Buttons trigger actions or navigation when clicked, with customizable visual styles, states, and optional icons.
+ * The properties for the button component. Buttons trigger actions or navigation when clicked, with customizable visual styles, states, and optional icons.
  */
 export interface ButtonProps extends ButtonBaseProps {
   /**
@@ -278,14 +278,14 @@ export interface PreactOverlayControlProps
 }
 
 /**
- * The base class for the Button component, combining Preact custom element functionality with overlay control capabilities.
+ * The base class for the button component, combining Preact custom element functionality with overlay control capabilities.
  */
 declare const Button_base: (abstract new (
   args_0: RenderImpl,
 ) => PreactCustomElement & PreactOverlayControlProps) &
   Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
 /**
- * The Button custom element class that renders interactive buttons in the Shopify admin interface. This component triggers actions or navigation when clicked, with customizable visual styles, states, and optional icons.
+ * The button custom element class that renders interactive buttons in the Shopify admin interface. This component triggers actions or navigation when clicked, with customizable visual styles, states, and optional icons.
  */
 declare class Button extends Button_base implements ButtonProps {
   /**
@@ -357,7 +357,7 @@ declare module 'preact' {
 
 declare const tagName = 's-button';
 /**
- * The JSX props for the Button component. These properties extend `ButtonProps` with event callbacks and additional options for rendering buttons in JSX.
+ * The JSX props for the button component. These properties extend `ButtonProps` with event callbacks and additional options for rendering buttons in JSX.
  */
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,

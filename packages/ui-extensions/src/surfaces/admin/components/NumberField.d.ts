@@ -324,7 +324,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 }
 
 /**
- * The properties for the NumberField component. These properties configure a specialized input field for entering numeric values with support for validation, formatting, range constraints, and optimized mobile input modes.
+ * The properties for the number field component. These properties configure a specialized input field for entering numeric values with support for validation, formatting, range constraints, and optimized mobile input modes.
  */
 export interface NumberFieldProps
   extends Omit<
@@ -344,7 +344,7 @@ export interface NumberFieldProps
 }
 
 /**
- * The NumberField custom element class that renders a numeric input field in the Shopify admin interface. This component allows merchants to enter numbers with automatic validation and prefix/suffix display.
+ * The number field custom element class that renders a numeric input field in the Shopify admin interface. This component allows merchants to enter numbers with automatic validation and prefix/suffix display.
  */
 declare class NumberField
   extends PreactFieldElement<NumberFieldProps['autocomplete']>
@@ -399,7 +399,7 @@ declare module 'preact' {
 
 declare const tagName = 's-number-field';
 /**
- * The JSX props for the NumberField component. These properties extend `NumberFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact.
+ * The JSX props for the number field component. These properties extend `NumberFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact.
  */
 export interface NumberFieldJSXProps
   extends Partial<NumberFieldProps>,

@@ -8,7 +8,7 @@
 import type {ComponentChildren, UnorderedListProps$1} from './shared.d.ts';
 
 /**
- * The properties for the UnorderedList component. These properties define a bulleted list of items where the order doesn't matter.
+ * The properties for the unordered list component. These properties define a bulleted list of items where the order doesn't matter.
  */
 export interface UnorderedListProps extends UnorderedListProps$1 {}
 
@@ -129,7 +129,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * A custom element for displaying a bulleted list of items where the order doesn't matter. Use UnorderedList when you have a collection of related items without a specific sequence, such as features, options, or bullet points.
+ * A custom element for displaying a bulleted list of items where the order doesn't matter. Use unordered list when you have a collection of related items without a specific sequence, such as features, options, or bullet points.
  */
 declare class UnorderedList
   extends PreactCustomElement
@@ -153,13 +153,13 @@ declare module 'preact' {
 
 declare const tagName = 's-unordered-list';
 /**
- * The JSX properties for the UnorderedList component. These properties define how an unordered list is rendered in Preact or JSX.
+ * The JSX properties for the unordered list component. These properties define how an unordered list is rendered in Preact or JSX.
  */
 export interface UnorderedListJSXProps
   extends Partial<UnorderedListProps>,
     Pick<UnorderedListProps$1, 'id'> {
   /**
-   * The items in the unordered list. Only ListItem components are accepted.
+   * The items in the unordered list. Only list item components are accepted.
    */
   children?: ComponentChildren;
 }
