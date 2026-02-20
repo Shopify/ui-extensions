@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'adminaction-default.png',
     codeblock: {
-      title: 'Set the primary and secondary action of the Action modal.',
+      title: 'Configure action modal with buttons',
       tabs: [
         {
           title: 'React',
@@ -30,12 +30,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-adminaction.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Build a form inside an action modal with [TextField](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) and [Select](/docs/api/admin-extensions/{API_VERSION}/components/forms/select) inputs. This example collects a warehouse SKU and location assignment, submitting the form data through the primary action button.',
+        codeblock: {
+          title: 'Build a modal form',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/AdminAction/examples/adminaction-form.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/adminaction-form.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          "Show a [ProgressIndicator](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/progressindicator) while fetching data from the [GraphQL Admin API](/docs/api/admin-graphql/), then replace it with product details. This example queries product information when the modal opens and displays the results after they've loaded.",
+        codeblock: {
+          title: 'Load data into action modal',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/AdminAction/examples/adminaction-loading.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/adminaction-loading.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {
