@@ -210,7 +210,7 @@ declare module 'preact' {
 
 declare const tagName = 's-color-picker';
 /**
- * The JSX props interface for the ColorPicker component when used in React/Preact.
+ * The JSX props interface for the color picker component when used in React/Preact.
  */
 export interface ColorPickerJSXProps
   extends Partial<ColorPickerProps>,

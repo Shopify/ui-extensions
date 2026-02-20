@@ -27,13 +27,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the TextArea component.',
+        'Configure the following properties on the text area component.',
       type: 'TextArea',
     },
     {
       title: 'Events',
       description:
-        'The TextArea component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TextAreaEvents',
     },
   ],

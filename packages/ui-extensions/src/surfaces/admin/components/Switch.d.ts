@@ -286,7 +286,7 @@ declare module 'preact' {
 
 declare const tagName = 's-switch';
 /**
- * Properties for using the Switch component in JSX with React-style event handlers.
+ * Properties for using the switch component in JSX with React-style event handlers.
  */
 export interface SwitchJSXProps
   extends Partial<SwitchProps>,

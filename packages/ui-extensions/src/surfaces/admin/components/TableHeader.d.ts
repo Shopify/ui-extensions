@@ -16,7 +16,7 @@ export type HeaderFormat = Extract<
   'base' | 'currency' | 'numeric'
 >;
 /**
- * The properties you can set on a TableHeader component.
+ * The properties you can set on a table header component.
  */
 export interface TableHeaderProps
   extends Pick<TableHeaderProps$1, 'listSlot' | 'format'> {
@@ -183,11 +183,11 @@ declare module 'preact' {
 }
 
 /**
- * The custom element tag name for the TableHeader component.
+ * The custom element tag name for the table header component.
  */
 declare const tagName = 's-table-header';
 /**
- * The JSX properties you can set on a TableHeader component.
+ * The JSX properties you can set on a table header component.
  */
 export interface TableHeaderJSXProps
   extends Partial<TableHeaderProps>,

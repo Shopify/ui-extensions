@@ -172,7 +172,7 @@ declare module 'preact' {
 declare const tagName = 's-button-group';
 
 /**
- * Properties for using the ButtonGroup component in JSX with React-style props.
+ * Properties for using the button group component in JSX with React-style props.
  */
 export interface ButtonGroupJSXProps
   extends Partial<ButtonGroupProps>,

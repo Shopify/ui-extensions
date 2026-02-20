@@ -41,11 +41,11 @@ export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
 };
 
 /**
- * A version of the Box properties with all fields required.
+ * A version of the box properties with all fields required.
  */
 export type RequiredBoxProps = Required<BoxProps$1>;
 /**
- * The allowed border radius values for a Box component.
+ * The allowed border radius values for a box component.
  */
 export type BoxBorderRadii = Extract<
   RequiredBoxProps['borderRadius'],
@@ -59,14 +59,14 @@ export type BoxBorderRadii = Extract<
   | 'large-200'
 >;
 /**
- * The allowed border style values for a Box component.
+ * The allowed border style values for a box component.
  */
 export type BoxBorderStyles = Extract<
   RequiredBoxProps['borderStyle'],
   'none' | 'solid' | 'dashed' | 'auto'
 >;
 /**
- * The Box properties that support responsive values through container queries.
+ * The box properties that support responsive values through container queries.
  */
 export type ResponsiveBoxProps = MakeResponsivePick<
   RequiredBoxProps,
@@ -292,11 +292,11 @@ export interface BoxProps
 }
 
 /**
- * A version of the GridItem properties with all fields required.
+ * A version of the grid item properties with all fields required.
  */
 export type RequiredGridItemProps = Required<GridItemProps$1>;
 /**
- * The properties for the GridItem component. A GridItem can be positioned within specific rows and columns of a Grid, with control over how many rows or columns it spans.
+ * The properties for the grid item component. A grid item can be positioned within specific rows and columns of a grid, with control over how many rows or columns it spans.
  */
 export interface GridItemProps
   extends BoxProps,
@@ -541,7 +541,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * A GridItem is a child of a Grid that can be positioned within specific rows and columns.
+ * A grid item is a child of a grid that can be positioned within specific rows and columns.
  */
 declare class GridItem extends BoxElement implements GridItemProps {
   /**
@@ -570,13 +570,13 @@ declare module 'preact' {
 
 declare const tagName = 's-grid-item';
 /**
- * The properties for the GridItem component when it's used in JSX.
+ * The properties for the grid item component when it's used in JSX.
  */
 export interface GridItemJSXProps
   extends Partial<GridItemProps>,
     Pick<GridItemProps$1, 'id' | 'children'> {
   /**
-   * The child elements to render inside the GridItem.
+   * The child elements to render inside the grid item.
    */
   children?: ComponentChildren;
 }

@@ -39,11 +39,11 @@ export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
 };
 
 /**
- * A version of the Box properties with all fields required.
+ * A version of the box properties with all fields required.
  */
 export type RequiredBoxProps = Required<BoxProps$1>;
 /**
- * The allowed border radius values for a Box component.
+ * The allowed border radius values for a box component.
  */
 export type BoxBorderRadii = Extract<
   RequiredBoxProps['borderRadius'],
@@ -57,14 +57,14 @@ export type BoxBorderRadii = Extract<
   | 'large-200'
 >;
 /**
- * The allowed border style values for a Box component.
+ * The allowed border style values for a box component.
  */
 export type BoxBorderStyles = Extract<
   RequiredBoxProps['borderStyle'],
   'none' | 'solid' | 'dashed' | 'auto'
 >;
 /**
- * The Box properties that support responsive values through container queries.
+ * The box properties that support responsive values through container queries.
  */
 export type ResponsiveBoxProps = MakeResponsivePick<
   RequiredBoxProps,
@@ -78,7 +78,7 @@ export type ResponsiveBoxProps = MakeResponsivePick<
   | 'display'
 >;
 /**
- * The properties for the Box component. A Box provides control over layout, spacing, sizing, borders, and background styling for its content.
+ * The properties for the box component. A box provides control over layout, spacing, sizing, borders, and background styling for its content.
  */
 export interface BoxProps
   extends Pick<
@@ -486,7 +486,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * A Box is a container component that provides control over layout, spacing, and styling.
+ * A box is a container component that provides control over layout, spacing, and styling.
  */
 declare class Box extends BoxElement implements BoxProps {
   constructor();
@@ -506,13 +506,13 @@ declare module 'preact' {
 
 declare const tagName = 's-box';
 /**
- * The properties for the Box component when it's used in JSX.
+ * The properties for the box component when it's used in JSX.
  */
 export interface BoxJSXProps
   extends Partial<BoxProps>,
     Pick<BoxProps$1, 'id' | 'children'> {
   /**
-   * The child elements to render inside the Box.
+   * The child elements to render inside the box.
    */
   children?: ComponentChildren;
 }
