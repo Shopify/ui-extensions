@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'choicelist-default.png',
     codeblock: {
-      title: 'Simple ChoiceList example',
+      title: 'Choose a shipping method',
       tabs: [
         {
           title: 'React',
@@ -29,14 +29,56 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-choicelist.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
   },
-
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Enable multi-select with the `multiple` prop to let merchants pick several options at once. This example renders checkboxes for product tags like "Seasonal" and "Best seller", collecting an array of selected values to save as product metadata.',
+        codeblock: {
+          title: 'Select multiple product tags',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/ChoiceList/examples/choicelist-multiple.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/choicelist-multiple.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Validate that a selection has been made before submission using the `error` prop. This example shows an inline error when merchants attempt to save without selecting a compliance region, so a region is always chosen before the data reaches your backend.',
+        codeblock: {
+          title: 'Validate required selection',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/ChoiceList/examples/choicelist-error.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/choicelist-error.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',
