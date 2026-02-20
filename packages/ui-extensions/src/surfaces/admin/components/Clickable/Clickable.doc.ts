@@ -41,8 +41,10 @@ const data: AdminReferenceEntityTemplateSchema = {
     examples: [
       {
         image: 'clickable-default.png',
+        description:
+          "Build custom interactive elements with flexible styling that Button or Link don't support. This example shows two clickable elements with different background and border styles.",
         codeblock: {
-          title: 'Default',
+          title: 'Create a custom interactive element',
           tabs: [
             {
               code: './examples/default.html',
@@ -57,9 +59,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          "Demonstrates the clickable component's ability to function as a link, opening the specified URL in a new browser tab when clicked.",
+          'Set href to make a clickable element navigate like a link. This example shows a clickable that opens a URL in a new browser tab.',
         codeblock: {
-          title: 'Link Mode',
+          title: 'Navigate to a URL',
           tabs: [
             {
               code: './examples/link-mode.html',
@@ -74,9 +76,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          "A disabled submit button that can be used within a form, showing the component's form integration capabilities and disabled state.",
+          'Use a clickable as a form submit button with a disabled state to prevent premature submission. This example shows a disabled submit-type clickable with border and padding.',
         codeblock: {
-          title: 'Form Submit Button',
+          title: 'Create a form submit button',
           tabs: [
             {
               code: './examples/form-submit-button.html',
@@ -91,9 +93,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Illustrates how the clickable component can be integrated into a section layout to provide an interactive action button.',
+          'Embed a clickable element within a content section to provide an interactive action alongside text. This example shows a styled clickable button inside a box with a heading and description.',
         codeblock: {
-          title: 'Section with Clickable Action',
+          title: 'Add a clickable action to a section',
           tabs: [
             {
               code: './examples/section-with-clickable-action.html',
@@ -108,9 +110,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          "Demonstrates the use of an accessibility label to provide context for screen readers, enhancing the component's usability for users with assistive technologies.",
+          'Add an accessibility label to provide screen readers with more context than the visible text alone. This example shows a clickable delete button with a descriptive label for assistive technologies.',
         codeblock: {
-          title: 'Accessibility with ARIA Attributes',
+          title: 'Add an accessibility label',
           tabs: [
             {
               code: './examples/accessibility-with-aria-attributes.html',
@@ -125,9 +127,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Shows a disabled link with an accessibility label, explaining the unavailability of a feature to users of assistive technologies.',
+          'Disable a clickable link while providing an accessibility label that explains why the feature is unavailable. This example shows a disabled navigation element with a descriptive label for screen readers.',
         codeblock: {
-          title: 'Disabled Link with ARIA',
+          title: 'Describe a disabled link with an accessibility label',
           tabs: [
             {
               code: './examples/disabled-link-with-aria.html',

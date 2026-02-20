@@ -37,8 +37,10 @@ const data: AdminReferenceEntityTemplateSchema = {
     examples: [
       {
         image: 'button-default.png',
+        description:
+          'Group related buttons together with a primary action and secondary options. This example shows a button group with a save button and a cancel button using the slot layout.',
         codeblock: {
-          title: 'Default',
+          title: 'Group a primary and secondary action',
           tabs: [
             {
               code: './examples/default.html',
@@ -55,9 +57,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Action buttons for selected items with destructive option.',
+          'Present multiple secondary actions for operating on selected items. This example shows archive, export, and delete buttons grouped together for bulk operations.',
         codeblock: {
-          title: 'Bulk action buttons',
+          title: 'Add bulk action buttons',
           tabs: [
             {
               code: './examples/bulk-actions-in-data-tables.html',
@@ -71,9 +73,10 @@ const data: AdminReferenceEntityTemplateSchema = {
         },
       },
       {
-        description: 'Icon-labeled buttons for common actions.',
+        description:
+          'Add icons to grouped buttons to help merchants quickly identify each action. This example shows duplicate, archive, and delete buttons with icons.',
         codeblock: {
-          title: 'Buttons with icons',
+          title: 'Add icons to grouped buttons',
           tabs: [
             {
               code: './examples/toolbar-buttons-with-icons.html',
@@ -88,9 +91,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Tightly grouped buttons for view switching and filter options.',
+          'Remove the gap between buttons to create a segmented control for toggling between views or options. This example shows day, week, and month buttons joined together with no spacing.',
         codeblock: {
-          title: 'Segmented appearance',
+          title: 'Create a segmented button group',
           tabs: [
             {
               code: './examples/segmented-appearance.html',
@@ -105,9 +108,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Confirmation dialog style with cancel option and destructive action.',
+          'Pair a cancel button with a critical action for destructive confirmation flows. This example shows a cancel and delete button grouped together for a confirmation dialog.',
         codeblock: {
-          title: 'Destructive actions pattern',
+          title: 'Confirm a destructive action',
           tabs: [
             {
               code: './examples/destructive-actions-pattern.html',

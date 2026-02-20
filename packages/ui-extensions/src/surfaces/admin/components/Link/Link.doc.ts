@@ -46,8 +46,10 @@ const data: AdminReferenceEntityTemplateSchema = {
     examples: [
       {
         image: 'link-default.png',
+        description:
+          'Add an inline link to let merchants navigate to another page. This example shows a basic text link with an `href` property.',
         codeblock: {
-          title: 'Default',
+          title: 'Add a basic link',
           tabs: [
             {
               code: './examples/default.html',
@@ -62,9 +64,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Links automatically inherit the tone from their surrounding paragraph context.',
+          'Embed links within paragraph text so merchants can navigate to related content inline. This example shows two links inside a paragraph that inherit the surrounding text tone.',
         codeblock: {
-          title: 'Basic Links in Paragraph',
+          title: 'Embed links in paragraph text',
           tabs: [
             {
               code: './examples/basic-links-in-paragraph.html',
@@ -79,9 +81,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates how links can be integrated within banner components to highlight important information and provide direct action paths.',
+          'Place links inside banners to provide direct actions alongside important notifications. This example shows a link inside an info banner prompting merchants to create a campaign.',
         codeblock: {
-          title: 'Links in Banner',
+          title: 'Add links inside a banner',
           tabs: [
             {
               code: './examples/links-in-banner.html',
@@ -96,9 +98,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Illustrates using links within a box container to provide contextual navigation and additional information in a visually contained area.',
+          'Place links inside a box container to provide navigation within a visually distinct content area. This example shows two links inside a bordered box with background and padding.',
         codeblock: {
-          title: 'Links in Box Container',
+          title: 'Add links inside a box container',
           tabs: [
             {
               code: './examples/links-in-box-container.html',
@@ -113,9 +115,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates how to create links that trigger file downloads, useful for exporting data or providing downloadable resources.',
+          'Use the download attribute to trigger a file download when the link is clicked. This example shows a link that downloads a CSV file for customer data export.',
         codeblock: {
-          title: 'Download Links',
+          title: 'Trigger a file download',
           tabs: [
             {
               code: './examples/download-links.html',
@@ -130,9 +132,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Illustrates linking to external resources with different targets, showing how to open links in new tabs and provide navigation to external documentation.',
+          'Open external URLs in a new tab so merchants stay on the current page. This example shows two links with `target="_blank"` pointing to external documentation.',
         codeblock: {
-          title: 'External Links',
+          title: 'Open external links in a new tab',
           tabs: [
             {
               code: './examples/external-links.html',
@@ -147,9 +149,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Shows how to use the `lang` attribute to specify the language of a link, supporting internationalization and proper screen reader pronunciation.',
+          'Set the `lang` attribute so screen readers pronounce the link text correctly. This example shows a French-language link with the `lang` attribute set.',
         codeblock: {
-          title: 'Links with Language Attribute',
+          title: 'Set the language for a link',
           tabs: [
             {
               code: './examples/links-with-language-attribute.html',
@@ -164,9 +166,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Demonstrates how links can have different visual tones, including default, neutral, and critical, allowing for varied contextual styling.',
+          'Configure links to inherit the tone of their parent paragraph to match the surrounding context. This example shows links inside paragraphs with six different tones.',
         codeblock: {
-          title: 'Links with Different Tones',
+          title: 'Match link tone to surrounding context',
           tabs: [
             {
               code: './examples/links-with-different-tones.html',

@@ -44,8 +44,10 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     examples: [
       {
+        description:
+          'Add a dropdown menu of actions triggered by a button. This example shows a menu with three icon buttons including a critical delete action.',
         codeblock: {
-          title: 'Default',
+          title: 'Add a basic actions menu',
           tabs: [
             {
               code: './examples/default.html',
@@ -68,9 +70,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Shows how to organize menu items into logical sections with headings, helping to group related actions and improve menu readability.',
+          'Organize menu items into labeled groups so merchants can quickly find related actions. This example shows two sections with headings separating product actions from export options.',
         codeblock: {
-          title: 'Menu with Sections',
+          title: 'Organize items into sections',
           tabs: [
             {
               code: './examples/menu-with-sections.html',
@@ -89,9 +91,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          "Demonstrates a menu with a mix of link-based buttons, standard buttons, and a disabled button, showcasing the menu's flexibility in handling different interaction states.",
+          'Mix link-based, standard, and disabled buttons in a single menu. This example shows a menu with a link that opens in a new tab, a disabled action, and a download link.',
         codeblock: {
-          title: 'Menu with Links and Disabled Items',
+          title: 'Add links and disabled items to a menu',
           tabs: [
             {
               code: './examples/menu-with-links-and-disabled-items.html',
@@ -110,9 +112,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          "Presents a comprehensive menu showing how to create sections with different action groups and include a critical action at the menu's root level.",
+          'Combine sections with root-level items to separate grouped actions from standalone ones like a destructive action. This example shows two sections for customer management alongside a root-level delete button.',
         codeblock: {
-          title: 'Actions menu with sections',
+          title: 'Mix sections with root-level actions',
           tabs: [
             {
               code: './examples/customer-actions-menu.html',
@@ -131,9 +133,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Illustrates a complex menu with nested sections, demonstrating how to organize multiple related actions with icons.',
+          'Build a settings-style menu with multiple sections and a standalone action at the bottom. This example shows account and store settings sections with a root-level sign-out link.',
         codeblock: {
-          title: 'Menu with nested sections',
+          title: 'Build a settings menu with sections',
           tabs: [
             {
               code: './examples/settings-menu.html',
@@ -152,9 +154,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Use an icon-only button as the menu trigger for a compact "more actions" pattern commonly used in toolbars and table rows.',
+          'Use an icon-only button as the menu trigger for a compact "more actions" pattern. This example shows a three-dot icon button that opens a menu with common product actions.',
         codeblock: {
-          title: 'Icon-only trigger',
+          title: 'Trigger a menu from an icon-only button',
           tabs: [
             {
               code: './examples/icon-only-trigger.html',
