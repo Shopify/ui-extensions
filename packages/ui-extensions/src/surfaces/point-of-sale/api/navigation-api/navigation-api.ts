@@ -36,6 +36,7 @@ export interface NavigationCurrentEntryChangeEvent {
   from: NavigationHistoryEntry;
 }
 
+/** @publicDocs */
 export interface Navigation {
   /**
    * Navigates to a specific URL, updating any provided state in the history entries list. Returns a promise that resolves when navigation is complete. Use for programmatic navigation between screens, implementing custom navigation controls, or deep-linking to specific modal states.
@@ -72,6 +73,7 @@ export interface Navigation {
 /**
  * The global `window` object provides control over the extension modal lifecycle. Access these properties and methods directly through the global `window` object to manage the modal interface programmatically.
  */
+/** @publicDocs */
 export interface Window {
   /**
    * Closes the extension screen and dismisses the modal interface. Use to programmatically close the modal after completing a workflow, canceling an operation, or when user action is no longer required. This provides the same behavior as the user dismissing the modal through the UI.
@@ -82,6 +84,7 @@ export interface Window {
 /**
  * The global `window` object provides control over the extension modal lifecycle. Access these properties and methods directly through the global `window` object to manage the modal interface programmatically.
  */
+/** @publicDocs */
 export interface Window {
   /**
    * Closes the extension screen and dismisses the modal interface. Use to programmatically close the modal after completing a workflow, canceling an operation, or when user action is no longer required. This provides the same behavior as the user dismissing the modal through the UI.

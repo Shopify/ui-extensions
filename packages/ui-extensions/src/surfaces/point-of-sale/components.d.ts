@@ -2228,6 +2228,7 @@ export type EmailAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'email' | `${AutocompleteAddressGroup} email`
 >;
+/** @publicDocs */
 export interface EmbedProps extends GlobalProps, SizingProps {
   /**
    * The content type of the file to display.
@@ -5262,6 +5263,7 @@ declare module 'preact' {
 }
 
 declare const tagName$4 = 's-tab-list';
+/** @publicDocs */
 interface TabListJSXProps extends Pick<TabListProps, 'children'> {
   children?: ComponentChildren;
 }
@@ -5451,6 +5453,7 @@ interface LinkEvents {
   click?: (event: CallbackEvent<typeof tagName$a>) => void;
 }
 
+/** @publicDocs */
 interface Link {
   /** A unique identifier for the element. */
   id?: string;
@@ -5494,6 +5497,7 @@ interface EmptyStateSlots {
   graphic?: HTMLElement;
 }
 
+/** @publicDocs */
 interface EmptyState {
   /** The subheading of the empty state. */
   subheading?: string;
@@ -5501,6 +5505,7 @@ interface EmptyState {
   heading?: string;
 }
 
+/** @publicDocs */
 interface Embed {
   /**
    * Adjust the block size.
@@ -5559,6 +5564,7 @@ interface Embed {
   accessibilityLabel?: string;
 }
 
+/** @publicDocs */
 interface Spinner {
   /** A unique identifier for the element. */
   id?: string;
@@ -5578,6 +5584,7 @@ interface SwitchEvents {
   change?: (event: CallbackEvent<typeof tagName$6>) => void;
 }
 
+/** @publicDocs */
 interface Switch {
   /** The value used in form data when the control is checked. */
   value?: string;
@@ -5635,6 +5642,7 @@ interface TabsEvents {
   change?: (event: CallbackEvent<typeof tagName$5>) => void;
 }
 
+/** @publicDocs */
 interface Tabs {
   /**
    * The value of the selected tab.
@@ -5656,6 +5664,7 @@ interface Tabs {
   disabled?: boolean;
 }
 
+/** @publicDocs */
 interface Tab {
   /** Corresponds to the `id` property of the tab panel component that will be displayed when selected */
   controls?: string;
@@ -5666,6 +5675,7 @@ interface Tab {
   disabled?: boolean;
 }
 
+/** @publicDocs */
 interface TabPanel {
   /**
    * The id of the tab panel used for identification in the tabs component.
@@ -5686,6 +5696,7 @@ interface TextAreaEvents {
   focus?: (event: CallbackEvent<typeof tagName$f>) => void;
 }
 
+/** @publicDocs */
 interface TextArea {
   /** A unique identifier for the element. */
   id?: string;
@@ -5745,6 +5756,7 @@ interface EmailFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$t>) => void;
 }
 
+/** @publicDocs */
 interface EmailField {
   /** A unique identifier for the element. */
   id?: string;
@@ -5793,6 +5805,7 @@ interface ButtonEvents {
   click?: (event: CallbackEvent<typeof tagName$B>) => void;
 }
 
+/** @publicDocs */
 interface Button {
   /**
    * Sets the action the `commandFor` should take when this clickable is activated.
@@ -5840,6 +5853,7 @@ interface Button {
   loading?: boolean;
 }
 
+/** @publicDocs */
 interface Text {
   /**
    * Modify the color to be more or less intense.
@@ -5869,6 +5883,7 @@ interface Text {
   id?: string;
 }
 
+/** @publicDocs */
 interface ScrollBox {
   /**
    * Adjust the block size.
@@ -5976,6 +5991,7 @@ interface TileEvents {
   click?: (event: CallbackEvent<typeof tagName$d>) => void;
 }
 
+/** @publicDocs */
 interface Tile {
   /**
    * Disables the tile meaning it cannot be clicked or receive focus.
@@ -6014,6 +6030,7 @@ interface BannerSlots {
   'primary-action'?: HTMLElement;
 }
 
+/** @publicDocs */
 interface Banner {
   /**
    * Determines whether the banner is hidden.
@@ -6034,6 +6051,7 @@ interface Banner {
   id?: string;
 }
 
+/** @publicDocs */
 interface Box {
   /** A unique identifier for the element. */
   id?: string;
@@ -6135,6 +6153,7 @@ interface Box {
   paddingInlineEnd?: '' | PaddingKeyword;
 }
 
+/** @publicDocs */
 interface Icon {
   /**
    * The type of icon to display.
@@ -6160,6 +6179,7 @@ interface Icon {
   size?: SizeKeyword;
 }
 
+/** @publicDocs */
 interface Stack {
   /**
    * Adjust the padding of all edges.
@@ -6304,6 +6324,7 @@ interface Stack {
   id?: string;
 }
 
+/** @publicDocs */
 interface Badge {
   /**
    * Sets the tone of the badge, based on the intention of the information being conveyed.
@@ -6329,6 +6350,7 @@ interface ChoiceListEvents {
   change?: (event: CallbackEvent<typeof tagName$z>) => void;
 }
 
+/** @publicDocs */
 interface ChoiceList {
   /** A unique identifier for the element. */
   id?: string;
@@ -6345,6 +6367,7 @@ interface ChoiceList {
   multiple?: boolean;
 }
 
+/** @publicDocs */
 interface Choice {
   /** A unique identifier for the element. */
   id?: string;
@@ -6374,6 +6397,7 @@ interface DateFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$x>) => void;
 }
 
+/** @publicDocs */
 interface DateField {
   /** A unique identifier for the element. */
   id?: string;
@@ -6431,6 +6455,7 @@ interface ModalSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/** @publicDocs */
 interface Modal {
   /** A unique identifier for the element. */
   id?: string;
@@ -6456,6 +6481,7 @@ interface TextFieldSlots {
   accessory?: HTMLElement;
 }
 
+/** @publicDocs */
 interface TextField {
   /** A unique identifier for the element. */
   id?: string;
@@ -6510,6 +6536,7 @@ interface SearchFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$j>) => void;
 }
 
+/** @publicDocs */
 interface SearchField {
   /** A unique identifier for the element. */
   id?: string;
@@ -6530,6 +6557,7 @@ interface ClickableEvents {
   click?: (event: CallbackEvent<typeof tagName$y>) => void;
 }
 
+/** @publicDocs */
 interface Clickable {
   /** A unique identifier for the element. */
   id?: string;
@@ -6559,6 +6587,7 @@ interface TimeFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$c>) => void;
 }
 
+/** @publicDocs */
 interface TimeField {
   /** A unique identifier for the element. */
   id?: string;
@@ -6629,6 +6658,7 @@ interface NumberFieldSlots {
   accessory?: HTMLElement;
 }
 
+/** @publicDocs */
 interface NumberField {
   /**
    * Content to use as the field label.
@@ -6729,6 +6759,7 @@ interface DatePickerEvents {
   focus?: (event: CallbackEvent<typeof tagName$w>) => void | null;
 }
 
+/** @publicDocs */
 interface DatePicker {
   /** A unique identifier for the element. */
   id?: string;
@@ -6761,6 +6792,7 @@ interface DateSpinnerEvents {
   focus?: (event: CallbackEvent<typeof tagName$v>) => void | null;
 }
 
+/** @publicDocs */
 interface DateSpinner {
   /** A unique identifier for the element. */
   id?: string;
@@ -6779,6 +6811,7 @@ interface SectionSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/** @publicDocs */
 interface Section {
   /**
    * A title that describes the content of the section.
@@ -6790,6 +6823,7 @@ interface Section {
   id?: string;
 }
 
+/** @publicDocs */
 interface Heading {
   /** A unique identifier for the element. */
   id?: string;
@@ -6807,6 +6841,7 @@ interface TimePickerEvents {
   focus?: (event: CallbackEvent<typeof tagName$b>) => void | null;
 }
 
+/** @publicDocs */
 interface TimePicker {
   /** A unique identifier for the element. */
   id?: string;
@@ -6830,6 +6865,7 @@ interface TimePicker {
   value?: string;
 }
 
+/** @publicDocs */
 interface Image {
   /**
    * The displayed inline width of the image.
@@ -6887,6 +6923,7 @@ interface PageSlots {
   aside?: HTMLElement;
 }
 
+/** @publicDocs */
 interface Page {
   /**
    * The main page heading, displayed in the action bar at the top of the page.
@@ -6905,6 +6942,7 @@ interface PosBlockSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/** @publicDocs */
 interface PosBlock {
   /** A unique identifier for the element. */
   id?: string;
@@ -6916,6 +6954,7 @@ interface PosBlock {
   heading?: string;
 }
 
+/** @publicDocs */
 interface QrCode {
   /** A unique identifier for the element. */
   id?: string;
@@ -6927,6 +6966,7 @@ interface QrCode {
   content?: string;
 }
 
+/** @publicDocs */
 interface Divider {
   /** A unique identifier for the element. */
   id?: string;
