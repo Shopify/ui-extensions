@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'datefield-default.png',
     codeblock: {
-      title: 'Add a single-date DateField',
+      title: 'Schedule product launch date',
       tabs: [
         {
           title: 'React',
@@ -30,14 +30,56 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-datefield.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
   },
-
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          "Validate that a selected date is in the future using the `error` prop. This example checks the expiration date against today's date on each change and displays an inline error for past dates, so merchants can only set valid expiry windows.",
+        codeblock: {
+          title: 'Validate future date selection',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/DateField/examples/datefield-validation.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/datefield-validation.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Display historical dates as read-only reference fields using the `readOnly` prop. This example shows the product creation date and last warehouse sync date as non-editable fields, providing merchants with timeline context in a [block extension](/docs/api/admin-extensions/{API_VERSION}/components/settings-and-templates/adminblock).',
+        codeblock: {
+          title: 'Display read-only date references',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/DateField/examples/datefield-readonly.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/datefield-readonly.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

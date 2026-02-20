@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'numberfield-default.png',
     codeblock: {
-      title: 'Simple NumberField example',
+      title: 'Set inventory restock quantity',
       tabs: [
         {
           title: 'React',
@@ -29,12 +29,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-numberfield.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Collect fractional values like cost pricing and profit margins from merchants. This example uses `inputMode="decimal"` and combines `step` with `suffix` to guide merchants through entering currency amounts and percentages with the correct precision.',
+        codeblock: {
+          title: 'Configure decimal pricing fields',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/NumberField/examples/numberfield-decimal.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/numberfield-decimal.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Enforce warehouse-specific limits using `min`, `max`, and `step` constraints with inline `error` feedback. This example validates slot numbers against a maximum capacity and shows an error when the value exceeds the allowed range.',
+        codeblock: {
+          title: 'Enforce numeric constraints with errors',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/NumberField/examples/numberfield-constraints.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/numberfield-constraints.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
 
   subSections: [

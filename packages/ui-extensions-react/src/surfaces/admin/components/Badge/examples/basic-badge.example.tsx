@@ -1,13 +1,18 @@
-import {render, Badge} from '@shopify/ui-extensions-react/admin';
-
-render('Playground', () => <App />);
+import {reactExtension, Badge, BlockStack, Text} from '@shopify/ui-extensions-react/admin';
 
 function App() {
+
   return (
-    <Badge
-      tone="info"
-    >
-      Fulfilled
-    </Badge>
+    <BlockStack>
+      <Text fontWeight="bold">Order status:</Text>
+      <Badge tone="success">Fulfilled</Badge>
+      <Badge tone="warning">Partially fulfilled</Badge>
+      <Badge tone="critical">Unfulfilled</Badge>
+    </BlockStack>
   );
 }
+
+export default reactExtension(
+  'admin.product-details.block.render',
+  () => <App />,
+);
