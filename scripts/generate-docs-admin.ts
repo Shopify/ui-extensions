@@ -1,3 +1,5 @@
+import {resolve} from 'path';
+import * as fs from 'fs';
 import {components, adminExtensionApi} from './typedoc/shopify-dev-renderer';
 
 const paths = {
@@ -31,3 +33,30 @@ Each component has general guidelines for usage as well as additional informatio
 adminExtensionApi(paths, {
   componentsToSkip: ['ContainerApi', 'DataApi'],
 });
+
+// Copy static MDX pages to shopify-dev.
+// These MDX files are the source of truth for the admin extensions static landing pages,
+// replacing the old doc.ts -> generated_static_pages.json pipeline.
+const version = process.argv[2] || 'unstable';
+const staticPagesInput = resolve(
+  './packages/ui-extensions/docs/surfaces/admin/staticPages',
+);
+const staticPagesOutput = resolve(
+  `../shopify-dev/content/api/admin-extensions/${version}`,
+);
+
+if (fs.existsSync(staticPagesInput)) {
+  fs.mkdirSync(staticPagesOutput, {recursive: true});
+  const mdxFiles = fs
+    .readdirSync(staticPagesInput)
+    .filter((f) => f.endsWith('.mdx'));
+  for (const file of mdxFiles) {
+    fs.copyFileSync(
+      resolve(staticPagesInput, file),
+      resolve(staticPagesOutput, file),
+    );
+  }
+  console.log(
+    `📄  Copied ${mdxFiles.length} MDX static pages to ${staticPagesOutput}`,
+  );
+}

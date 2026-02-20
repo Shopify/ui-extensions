@@ -1,0 +1,267 @@
+---
+gid: network-features
+title: Network Features
+description: |
+  Admin UI extensions make it possible to surface contextual app functionality within the Shopify Admin interface.
+
+---
+
+<Hero
+  title="Network Features"
+  removeBackgroundColor
+  horizontalRule
+>
+  Admin UI extensions make it possible to surface contextual app functionality within the Shopify Admin interface.
+  <DownloadMarkdown />
+</Hero>
+
+## Overview
+
+Extend the Shopify Admin with UI Extensions.
+
+<ResourceCard title="Make authenticated requests to your app's backend" icon="pickaxe-1" href="#app-authentication" isCompact>
+  App authentication
+</ResourceCard>
+<ResourceCard title="Access the Shopify GraphQL API directly" icon="pickaxe-1" href="#direct-api-access" isCompact>
+  Direct API access
+</ResourceCard>
+<ResourceCard title="Easily construct URLs to navigate to common locations" icon="gear" href="#custom-protocols" isCompact>
+  Custom protocols
+</ResourceCard>
+
+<Image src="/images/api/admin-extensions/2026-01/action-extension-example.gif" alt="Overview" displayRightColumn />
+
+## App Authentication
+
+Admin UI extensions can also make authenticated calls to your app's backend. When you use `fetch()` to make a request to your app's configured auth domain or any of its subdomains, an `Authorization` header is automatically added with a Shopify [OpenID Connect ID Token](/docs/api/app-home/apis/id-token). There's no need to manually manage ID tokens.
+
+Relative URLs passed to `fetch()` are resolved against your app's `app_url`. This means if your app's backend is on the same domain as your `app_url`, you can make requests to it using `fetch('/path')`.
+
+If you need to make requests to a different domain, you can use the [`auth.idToken()` method](/docs/api/admin-extensions/api/standard-api#standardapi-propertydetail-auth) to retrieve the ID token and manually add it to your request headers.
+
+<CodeBlocks title="Make requests to your app's backend" displayRightColumn>
+
+<CodeBlock title="Get Product Data">
+```tsx
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
+
+export default async () => {
+  render(<Extension />, document.body);
+}
+
+// Get product info from app backend
+async function getProductInfo(id) {
+  const res = await fetch(`/api/products/${id}`);
+  return res.json();
+}
+
+function Extension() {
+  // Contextual "input" data passed to this extension:
+  const {data} = shopify;
+  const productId = data.selected?.[0]?.id;
+
+  const [productInfo, setProductInfo] = useState();
+  useEffect(() => {
+    getProductInfo(productId).then(setProductInfo);
+  }, [productId]);
+
+  return (
+    <s-admin-block title="Product Info">
+      <s-text>Info: {productInfo?.title}</s-text>
+    </s-admin-block>
+  );
+}
+```
+</CodeBlock>
+
+<CodeBlock title="Get Data from a different domain">
+```tsx
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
+
+export default async () => {
+  render(<Extension />, document.body);
+}
+
+// Get product info from a different app backend
+async function getProductInfo(id, auth) {
+  const token = await auth.idToken();
+  const res = await fetch(`https://app.example.com/api/products/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return res.json();
+}
+
+function Extension() {
+  // Contextual "input" data passed to this extension:
+  const {data, auth} = shopify;
+  const productId = data.selected?.[0]?.id;
+
+  const [productInfo, setProductInfo] = useState();
+  useEffect(() => {
+    getProductInfo(productId, auth).then(setProductInfo);
+  }, [productId, auth]);
+
+  return (
+    <s-admin-block title="Product Info">
+      <s-text>Info: {productInfo?.title}</s-text>
+    </s-admin-block>
+  );
+}
+```
+</CodeBlock>
+
+</CodeBlocks>
+
+## Direct API access
+
+You can make Shopify Admin API requests directly from your extension using the [query API](/docs/api/admin-extensions/api/standard-api#standardapi-propertydetail-query) or the standard [web fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch)!
+
+Any `fetch()` calls from your extension to Shopify's Admin GraphQL API are automatically authenticated by default. These calls are fast too, because Shopify handles requests directly.
+
+Direct API requests use [online access](/docs/apps/build/authentication-authorization/access-token-types/online-access-tokens) mode by default. If you want to use [offline access](/docs/apps/build/authentication-authorization/access-token-types/offline-access-tokens) mode, you can set the `direct_api_mode` property to `offline` in your [app TOML file](/docs/apps/tools/cli/configuration#admin).
+
+Note: Direct API can't be used to manage storefront access tokens.
+
+<ResourceCard title="Direct API can't be used to manage storefront access tokens." icon="information" href="/docs/api/admin-extensions#direct-api-access" isCompact>
+  Note
+</ResourceCard>
+<ResourceCard title="Learn more about access scopes" icon="information" href="/docs/api/usage/access-scopes" isCompact>
+  Developer guide
+</ResourceCard>
+
+<CodeBlocks title="Query Shopify data" displayRightColumn>
+
+<CodeBlock title="Fetch Product data">
+```tsx
+import {render} from 'preact';
+
+export default async () => {
+  const productId = shopify.data.selected?.[0]?.id;
+  const product = await getProduct(productId);
+  render(<Extension product={product} />, document.body);
+};
+
+async function getProduct(id) {
+  const res = await fetch('shopify:admin/api/graphql.json', {
+    method: 'POST',
+    body: JSON.stringify({
+      query: `
+        query GetProduct($id: ID!) {
+          product(id: $id) {
+            title
+          }
+        }
+      `,
+      variables: {id},
+    }),
+  });
+  const {data} = await res.json();
+  return data.product;
+}
+
+function Extension({product}) {
+  return (
+    <s-admin-block heading="Product Info">
+      <s-text>The selected product title is {product.title}</s-text>
+    </s-admin-block>
+  );
+}
+```
+</CodeBlock>
+
+<CodeBlock title="Query Product data">
+```tsx
+import {render} from 'preact';
+
+export default async () => {
+  const productId = shopify.data.selected?.[0]?.id;
+  const {
+    data: {product},
+  } = await shopify.query(
+    `
+    query GetProduct($id: ID!) {
+      product(id: $id) {
+        title
+      }
+    }
+  `,
+    {variables: {id: productId}},
+  );
+  render(<Extension product={product} />, document.body);
+};
+
+function Extension({product}) {
+  return (
+    <s-admin-block heading="Product Info">
+      <s-text>The selected product title is {product.title}</s-text>
+    </s-admin-block>
+  );
+}
+```
+</CodeBlock>
+
+</CodeBlocks>
+
+## Custom Protocols
+
+Custom protocols make it easier to navigate to common locations, and construct URLs.
+
+<Accordion title="Custom Protocols">
+  <AccordionLabel isOpen>Shopify Protocol</AccordionLabel>
+  Use the `shopify:admin` protocol when you want to construct a URL with a root of the Shopify Admin.
+  <CodeBlocks title="shopify:admin" displayRightColumn>
+
+  <CodeBlock title="Link to Product Page">
+  ```tsx
+  <s-link href="shopify:admin/products/1234567890">Link to Product Page</s-link>;
+  ```
+  </CodeBlock>
+
+  <CodeBlock title="Fetch data">
+  ```ts
+  fetch('shopify:admin/api/graphql.json', {
+    method: 'POST',
+    body: JSON.stringify(simpleProductQuery),
+  });
+  ```
+  </CodeBlock>
+
+  </CodeBlocks>
+
+  <AccordionLabel>App Protocol</AccordionLabel>
+  Use the `app:` protocol to construct a URL for your app. Shopify will handle constructing the base URL for your app. This works for both embedded and non-embedded apps.
+  <CodeBlock title="app:" subtitle="Link to Settings" displayRightColumn>
+  ```tsx
+  <Link to="app:settings/advanced" />;
+  ```
+  </CodeBlock>
+
+  <AccordionLabel>Extension Protocol</AccordionLabel>
+  Triggers an action extension from a block extension using the `extension:` protocol. The `extensionTarget` is the target of the action extension. The handle is the handle of the action extension that will be opened.
+  <CodeBlock title="extension:" subtitle="Trigger Action Extension from a Block extension" displayRightColumn>
+  ```tsx
+  <Link to={`extension:${extension.handle}/${extensionTarget}`} />;
+  ```
+  </CodeBlock>
+
+  <AccordionLabel>Relative Urls</AccordionLabel>
+  Relative urls are relative to your app and are useful when you want to link to a route within your app. This works for both embedded and non-embedded apps.
+  <CodeBlock title="/relative/urls" subtitle="Link to route in your app" displayRightColumn>
+  ```tsx
+  <Link to={`/reviews/${product.id}`} />;
+  ```
+  </CodeBlock>
+
+</Accordion>
+
+## Security
+
+UI Extensions run on a different origin than the Shopify Admin. For network calls to succeed, your server must support [cross-origin resource sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) for the origin `https://extensions.shopifycdn.com`.
+
+If you have a custom [`Access-Control-Allow-Origin` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) set, you must include `https://extensions.shopifycdn.com` in the list of allowed origins.
+
+If you are using the [Shopify App Remix Template](https://github.com/Shopify/shopify-app-template-remix), this is done automatically for you.
