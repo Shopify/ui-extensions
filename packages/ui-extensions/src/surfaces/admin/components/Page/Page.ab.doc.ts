@@ -36,7 +36,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The page component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'PageSlots',
     },
   ],
@@ -49,11 +49,6 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.html',
           language: 'preview',
-          layout: 'none',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
           layout: 'none',
         },
       ],
@@ -77,14 +72,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                   language: 'preview',
                   layout: 'none',
                 },
-                {
-                  code: './examples/small-inline-size-for-focused-content.jsx',
-                  language: 'preview-jsx',
-                  layout: 'none',
-                  customStyles: {
-                    minHeight: '400px',
-                  },
-                },
               ],
             },
           },
@@ -98,14 +85,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/large-inline-size-for-wide-content.html',
                   language: 'preview',
                   layout: 'none',
-                },
-                {
-                  code: './examples/large-inline-size-for-wide-content.jsx',
-                  language: 'preview-jsx',
-                  layout: 'none',
-                  customStyles: {
-                    minHeight: '400px',
-                  },
                 },
               ],
             },
@@ -121,11 +100,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                   language: 'preview',
                   layout: 'none',
                 },
-                {
-                  code: './examples/page-with-breadcrumbs-and-title.jsx',
-                  language: 'preview-jsx',
-                  layout: 'none',
-                },
               ],
             },
           },
@@ -139,14 +113,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/page-with-secondary-actions.html',
                   language: 'preview',
                   layout: 'none',
-                },
-                {
-                  code: './examples/page-with-secondary-actions.jsx',
-                  language: 'preview-jsx',
-                  layout: 'none',
-                  customStyles: {
-                    minHeight: '400px',
-                  },
                 },
               ],
             },
@@ -165,14 +131,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/edit-page-with-all-slots.html',
                   language: 'preview',
-                  layout: 'none',
-                  customStyles: {
-                    minHeight: '500px',
-                  },
-                },
-                {
-                  code: './examples/edit-page-with-all-slots.jsx',
-                  language: 'preview-jsx',
                   layout: 'none',
                   customStyles: {
                     minHeight: '500px',

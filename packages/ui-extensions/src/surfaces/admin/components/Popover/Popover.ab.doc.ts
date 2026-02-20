@@ -40,13 +40,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/polaris/using-polaris-web-components#event-handling).',
+        'The popover component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'PopoverEvents',
     },
     {
       title: 'Slots',
       description:
-        'Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The popover component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'PopoverSlots',
     },
   ],
@@ -56,14 +56,6 @@ const data: AdminReferenceEntityTemplateSchema = {
     codeblock: {
       title: 'Show a menu of actions',
       tabs: [
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
-          layout: 'alignStart',
-          customStyles: {
-            minHeight: '300px',
-          },
-        },
         {
           code: './examples/default.html',
           language: 'preview',
@@ -88,14 +80,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               title: 'Display notification list',
               tabs: [
                 {
-                  code: './examples/notifications.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '350px',
-                  },
-                },
-                {
                   code: './examples/notifications.html',
                   language: 'preview',
                   layout: 'alignStart',
@@ -113,14 +97,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               title: 'Configure table display options',
               tabs: [
                 {
-                  code: './examples/table-display-options.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '400px',
-                  },
-                },
-                {
                   code: './examples/table-display-options.html',
                   language: 'preview',
                   layout: 'alignStart',
@@ -137,14 +113,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             codeblock: {
               title: 'Show inventory details',
               tabs: [
-                {
-                  code: './examples/inventory-stock-details.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '350px',
-                  },
-                },
                 {
                   code: './examples/inventory-stock-details.html',
                   language: 'preview',
@@ -170,14 +138,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/filter-with-apply-and-clear.html',
                   language: 'preview',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '320px',
-                  },
-                },
-                {
-                  code: './examples/filter-with-apply-and-clear.jsx',
-                  language: 'preview-jsx',
                   layout: 'alignStart',
                   customStyles: {
                     minHeight: '320px',

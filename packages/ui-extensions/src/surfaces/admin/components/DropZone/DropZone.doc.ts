@@ -34,7 +34,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/polaris/using-polaris-web-components#event-handling).',
+        'The drop zone component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'DropZoneEvents',
     },
   ],
@@ -47,11 +47,6 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.html',
           language: 'preview',
-          layout: 'padding',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
           layout: 'padding',
         },
       ],
@@ -74,11 +69,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                   language: 'preview',
                   layout: 'padding',
                 },
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
-                },
               ],
             },
           },
@@ -91,11 +81,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/image-upload.html',
                   language: 'preview',
-                  layout: 'padding',
-                },
-                {
-                  code: './examples/image-upload.jsx',
-                  language: 'preview-jsx',
                   layout: 'padding',
                 },
               ],
@@ -112,11 +97,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                   language: 'preview',
                   layout: 'padding',
                 },
-                {
-                  code: './examples/required-field.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
-                },
               ],
             },
           },
@@ -129,11 +109,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/disabled-state.html',
                   language: 'preview',
-                  layout: 'padding',
-                },
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
                   layout: 'padding',
                 },
               ],
@@ -150,11 +125,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                   language: 'preview',
                   layout: 'padding',
                 },
-                {
-                  code: './examples/file-type-restrictions.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
-                },
               ],
             },
           },
@@ -169,11 +139,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                   language: 'preview',
                   layout: 'padding',
                 },
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
-                },
               ],
             },
           },
@@ -186,11 +151,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-accessibility-options.html',
                   language: 'preview',
-                  layout: 'padding',
-                },
-                {
-                  code: './examples/with-accessibility-options.jsx',
-                  language: 'preview-jsx',
                   layout: 'padding',
                 },
               ],
@@ -210,14 +170,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/upload-with-validation.html',
                   language: 'preview',
-                  layout: 'padding',
-                  customStyles: {
-                    minHeight: '300px',
-                  },
-                },
-                {
-                  code: './examples/upload-with-validation.jsx',
-                  language: 'preview-jsx',
                   layout: 'padding',
                   customStyles: {
                     minHeight: '300px',

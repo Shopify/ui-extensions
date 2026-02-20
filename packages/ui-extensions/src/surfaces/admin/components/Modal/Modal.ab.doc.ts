@@ -52,13 +52,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/polaris/using-polaris-web-components#event-handling).',
+        'The modal component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ModalEvents',
     },
     {
       title: 'Slots',
       description:
-        'Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The modal component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ModalSlots',
     },
   ],
@@ -71,13 +71,6 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.html',
           language: 'preview',
-          customStyles: {
-            minHeight: '300px',
-          },
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
           customStyles: {
             minHeight: '300px',
           },
@@ -104,13 +97,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                     minHeight: '300px',
                   },
                 },
-                {
-                  code: './examples/basic-modal.jsx',
-                  language: 'preview-jsx',
-                  customStyles: {
-                    minHeight: '300px',
-                  },
-                },
               ],
             },
           },
@@ -123,13 +109,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/confirmation-modal-with-actions.html',
                   language: 'preview',
-                  customStyles: {
-                    minHeight: '300px',
-                  },
-                },
-                {
-                  code: './examples/confirmation-modal-with-actions.jsx',
-                  language: 'preview-jsx',
                   customStyles: {
                     minHeight: '300px',
                   },
@@ -150,13 +129,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                     minHeight: '300px',
                   },
                 },
-                {
-                  code: './examples/form-modal.jsx',
-                  language: 'preview-jsx',
-                  customStyles: {
-                    minHeight: '300px',
-                  },
-                },
               ],
             },
           },
@@ -173,13 +145,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                     minHeight: '300px',
                   },
                 },
-                {
-                  code: './examples/different-modal-sizes.jsx',
-                  language: 'preview-jsx',
-                  customStyles: {
-                    minHeight: '300px',
-                  },
-                },
               ],
             },
           },
@@ -192,13 +157,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/modal-without-padding.html',
                   language: 'preview',
-                  customStyles: {
-                    minHeight: '300px',
-                  },
-                },
-                {
-                  code: './examples/modal-without-padding.jsx',
-                  language: 'preview-jsx',
                   customStyles: {
                     minHeight: '300px',
                   },
@@ -220,13 +178,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/delete-with-async-handling.html',
                   language: 'preview',
-                  customStyles: {
-                    minHeight: '300px',
-                  },
-                },
-                {
-                  code: './examples/delete-with-async-handling.jsx',
-                  language: 'preview-jsx',
                   customStyles: {
                     minHeight: '300px',
                   },
