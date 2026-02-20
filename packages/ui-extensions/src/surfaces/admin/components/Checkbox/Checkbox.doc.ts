@@ -34,18 +34,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'checkbox-default.png',
     description:
-      'Let users toggle a single option on or off. This example shows a checkbox with a label and helper text providing additional context. Click to interact with the preview.',
+      'Let users toggle a single option on or off. This example shows a checkbox with a label and helper text providing additional context.',
     codeblock: {
       title: 'Select an option',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -58,7 +53,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Indicate partial selection in bulk actions. This example shows a "select all" checkbox that displays an indeterminate state when some items are checked. Click to interact with the preview.',
+              'Indicate partial selection in bulk actions. This example shows a "select all" checkbox that displays an indeterminate state when some items are checked.',
             codeblock: {
               title: 'Show an indeterminate state',
               tabs: [
@@ -71,54 +66,39 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Communicate when a required selection is missing. This example shows an error message displayed when the terms checkbox isn\'t checked. Click to interact with the preview.',
+              'Communicate when a required selection is missing. This example shows an error message displayed when the terms checkbox isn\'t checked.',
             codeblock: {
               title: 'Show a validation error',
               tabs: [
                 {
                   code: './examples/error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/error-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Indicate when an option isn\'t available. This example shows a disabled checkbox with helper text explaining how to enable it. Click to interact with the preview.',
+              'Indicate when an option isn\'t available. This example shows a disabled checkbox with helper text explaining how to enable it.',
             codeblock: {
               title: 'Show a disabled checkbox',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Organize related options together. This example shows multiple checkboxes grouped in a settings panel with individual helper text. Click to interact with the preview.',
+              'Organize related options together. This example shows multiple checkboxes grouped in a settings panel with individual helper text.',
             codeblock: {
               title: 'Group multiple checkboxes',
               tabs: [
                 {
                   code: './examples/settings-group.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/settings-group.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
@@ -130,7 +110,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Provide immediate feedback on required selections. This example shows real-time validation with a dynamic error message when the checkbox is unchecked. Click to interact with the preview.',
+              'Provide immediate feedback on required selections. This example shows real-time validation with a dynamic error message when the checkbox is unchecked.',
             codeblock: {
               title: 'Validate in real time',
               tabs: [

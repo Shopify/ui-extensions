@@ -1,1 +1,0 @@
-<s-color-field placeholder="Select a color (e.g., #FF0000)" value="#FF0000" />

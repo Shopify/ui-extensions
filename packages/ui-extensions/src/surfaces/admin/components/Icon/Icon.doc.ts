@@ -42,19 +42,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'icon-default.png',
     description:
-      'Add visual cues to help users understand available actions. This example shows common icons for home, orders, products, and settings. Click to interact with the preview.',
+      'Add visual cues to help users understand available actions. This example shows common icons for home, orders, products, and settings.',
     codeblock: {
       title: 'Display icons',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-          layout: 'inline',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -67,129 +61,91 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Communicate status through color-coded icons. This example shows icons with warning, success, info, and caution tones. Click to interact with the preview.',
+              'Communicate status through color-coded icons. This example shows icons with warning, success, info, and caution tones.',
             codeblock: {
               title: 'Apply semantic tones',
               tabs: [
                 {
                   code: './examples/with-semantic-tone.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-semantic-tone.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Fit icons into tight layouts without losing clarity. This example shows a small-sized icon that takes up minimal space. Click to interact with the preview.',
+              'Fit icons into tight layouts without losing clarity. This example shows a small-sized icon that takes up minimal space.',
             codeblock: {
               title: 'Reduce the size',
               tabs: [
                 {
                   code: './examples/small-size.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/small-size.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'De-emphasize icons for secondary content. This example shows a subdued icon with lower contrast for supporting information. Click to interact with the preview.',
+              'De-emphasize icons for secondary content. This example shows a subdued icon with lower contrast for supporting information.',
             codeblock: {
               title: 'Apply subdued color',
               tabs: [
                 {
                   code: './examples/subdued-color.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/subdued-color.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Enable programmatic access to specific icons. This example shows an icon with an ID attribute for JavaScript targeting or CSS styling. Click to interact with the preview.',
+              'Enable programmatic access to specific icons. This example shows an icon with an ID attribute for JavaScript targeting or CSS styling.',
             codeblock: {
               title: 'Add an ID',
               tabs: [
                 {
                   code: './examples/with-id-property.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-id-property.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Improve accessibility by connecting icons to related elements. This example shows an icon associated with interactive content for screen readers. Click to interact with the preview.',
+              'Improve accessibility by connecting icons to related elements. This example shows an icon associated with interactive content for screen readers.',
             codeblock: {
               title: 'Link to related content',
               tabs: [
                 {
                   code: './examples/with-interest-relationship.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-interest-relationship.jsx',
-                  language: 'preview-jsx',
-                  customStyles: {
-                    minHeight: '200px',
-                  },
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Reinforce button actions with visual cues. This example shows icons in buttons for add and delete actions with appropriate tones. Click to interact with the preview.',
+              'Reinforce button actions with visual cues. This example shows icons in buttons for add and delete actions with appropriate tones.',
             codeblock: {
               title: 'Use in buttons',
               tabs: [
                 {
                   code: './examples/in-button-components.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/in-button-components.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Enhance status badges with visual indicators. This example shows badges with icons for active and pending states. Click to interact with the preview.',
+              'Enhance status badges with visual indicators. This example shows badges with icons for active and pending states.',
             codeblock: {
               title: 'Use in badges',
               tabs: [
                 {
                   code: './examples/in-badge-components.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/in-badge-components.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },

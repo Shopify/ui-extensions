@@ -41,18 +41,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'color-picker-default.png',
     description:
-      'Let users visually select colors with an interactive picker. This example shows a basic color picker with hue and saturation controls. Click to interact with the preview.',
+      'Let users visually select colors with an interactive picker. This example shows a basic color picker with hue and saturation controls.',
     codeblock: {
       title: 'Pick a color',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -65,18 +60,13 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Allow users to select semi-transparent colors. This example shows a color picker with an alpha slider for adjusting opacity levels. Click to interact with the preview.',
+              'Allow users to select semi-transparent colors. This example shows a color picker with an alpha slider for adjusting opacity levels.',
             codeblock: {
               title: 'Enable alpha transparency',
               tabs: [
                 {
                   code: './examples/with-alpha-transparency.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-alpha-transparency.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
