@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'form-default.png',
     codeblock: {
-      title: 'Simple form implementation',
+      title: 'Submit product metadata form',
       tabs: [
         {
           title: 'React',
@@ -28,12 +28,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-form.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Handle cancellation with the `onReset` callback to close the modal without saving. This example pairs submit and reset actions using [InlineStack](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/inlinestack) to right-align the cancel and save buttons, following standard dialog patterns.',
+        codeblock: {
+          title: 'Handle form submit and cancel',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Form/examples/form-reset.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/form-reset.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Organize complex forms with [Section](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/section) components to group related fields together. This example splits a fulfillment provider setup into "Provider details" and "Contact information" sections, making long forms easier to scan.',
+        codeblock: {
+          title: 'Organize form with sections',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Form/examples/form-sections.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/form-sections.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

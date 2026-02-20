@@ -1,29 +1,21 @@
-import {
-  extension,
-  FunctionSettings,
-  TextField,
-  Section,
-} from '@shopify/ui-extensions/admin';
+import {extension, FunctionSettings, TextField, Section} from '@shopify/ui-extensions/admin';
 
 export default extension(
   'admin.settings.validation.render',
   async (root, api) => {
-    // Use Direct API access to fetch initial
-    // metafields from the server if we are
-    // rendering against a pre-existing `Validation`
     const initialSettings = api.data.validation
       ? await fetchSettings(api.data.validation.id)
       : {};
 
-    const textField = root.createComponent(TextField, {
-      value: initialSettings.name,
-      label: 'Name',
+    const nameField = root.createComponent(TextField, {
+      value: initialSettings.name || '',
+      label: 'Rule name',
       name: 'name',
       onChange(value) {
-        textField.updateProps({value, error: undefined});
+        nameField.updateProps({value, error: undefined});
         api.applyMetafieldsChange({
           type: 'updateMetafield',
-          namespace: '$app:my_namespace',
+          namespace: '$app:validation',
           key: 'name',
           value,
           valueType: 'single_line_text_field',
@@ -32,16 +24,17 @@ export default extension(
     });
 
     const section = root.createComponent(Section, {
-      heading: 'Settings',
+      heading: 'Validation settings',
     });
 
     const settings = root.createComponent(FunctionSettings, {
       onError(errors) {
-        textField.updateProps({error: errors[0]?.message});
+        nameField.updateProps({error: errors[0]?.message});
       },
     });
 
-    section.append(textField);
-    settings.append(section);
+    section.appendChild(nameField);
+    settings.appendChild(section);
+    root.appendChild(settings);
   },
 );

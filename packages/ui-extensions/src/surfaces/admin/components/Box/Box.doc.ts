@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'box-default.png',
     codeblock: {
-      title: 'Use Box to build your layout',
+      title: 'Create a padded content container',
       tabs: [
         {
           title: 'React',
@@ -28,14 +28,56 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-box.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
   },
-
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Constrain an [Image](/docs/api/admin-extensions/{API_VERSION}/components/media-and-visuals/image) to a fixed size using `inlineSize` and `blockSize` props. This example creates a thumbnail container alongside product details in an [InlineStack](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/inlinestack), preventing the image from stretching beyond its bounds.',
+        codeblock: {
+          title: 'Constrain image dimensions',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Box/examples/box-sizing.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/box-sizing.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Hide supplementary content from the visible layout while keeping it in the DOM. This example uses `display="none"` on a `Box` with `accessibilityRole="status"` to remove a compliance message visually without deleting it from the page.',
+        codeblock: {
+          title: 'Control visibility with display',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Box/examples/box-display.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/box-display.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',
