@@ -49,14 +49,11 @@ if (fs.existsSync(staticPagesInput)) {
   fs.mkdirSync(staticPagesOutput, {recursive: true});
   const mdxFiles = fs
     .readdirSync(staticPagesInput)
-    .filter((f) => f.endsWith('.mdx'));
+    .filter((fileName) => fileName.endsWith('.mdx'));
   for (const file of mdxFiles) {
     fs.copyFileSync(
       resolve(staticPagesInput, file),
       resolve(staticPagesOutput, file),
     );
   }
-  console.log(
-    `📄  Copied ${mdxFiles.length} MDX static pages to ${staticPagesOutput}`,
-  );
 }
