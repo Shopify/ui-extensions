@@ -9134,7 +9134,6 @@ export type {
   UnorderedListJSXProps,
 };
 
-/** @publicDocs */
 export interface AvatarEvents {
   /**
    * A callback fired when the avatar image successfully loads.
@@ -9150,7 +9149,6 @@ export interface AvatarEvents {
   error: OnErrorEventHandler = null;
 }
 
-/** @publicDocs */
 export interface BadgeSlots {
   /**
    * The text label displayed within the badge component, typically a short status indicator or category label.
@@ -9158,7 +9156,6 @@ export interface BadgeSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface BannerEvents {
   /**
    * A callback fired when the banner is dismissed.
@@ -9170,7 +9167,6 @@ export interface BannerEvents {
   afterhide: CallbackEventListener<typeof tagName> | null = null;
 }
 
-/** @publicDocs */
 export interface BannerSlots {
   /**
    * The main message content displayed within the banner component, providing important information or guidance to users.
@@ -9183,7 +9179,6 @@ export interface BannerSlots {
   'secondary-actions'?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface BoxSlots {
   /**
    * The content displayed within the box component, which serves as a flexible container for organizing and styling other components.
@@ -9191,7 +9186,6 @@ export interface BoxSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface ButtonEvents {
   /**
    * A callback fired when the button is clicked.
@@ -9213,7 +9207,6 @@ export interface ButtonEvents {
   focus: CallbackEventListener<typeof tagName> | null = null;
 }
 
-/** @publicDocs */
 export interface ButtonSlots {
   /**
    * The label text or elements displayed inside the button component, describing the action that will be performed when clicked.
@@ -9221,7 +9214,6 @@ export interface ButtonSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface ButtonGroupSlots {
   /**
    * The buttons displayed within the button group component, which are arranged together as a cohesive set of related actions.
@@ -9243,7 +9235,6 @@ export interface ButtonGroupSlots {
   'secondary-actions'?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface CheckboxEvents {
   /**
    * A callback fired when the checkbox value changes.
@@ -9259,7 +9250,6 @@ export interface CheckboxEvents {
   input: CallbackEventListener<'input'>;
 }
 
-/** @publicDocs */
 export interface ChipSlots {
   /**
    * The text label displayed within the chip component, typically representing a selected filter, tag, or removable item.
@@ -9271,7 +9261,6 @@ export interface ChipSlots {
   graphic?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface ChoiceSlots {
   /**
    * The label text or elements that identify this selectable choice to users.
@@ -9292,7 +9281,6 @@ export interface ChoiceSlots {
   details?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface ChoiceListEvents {
   /**
    * A callback fired when the choice list selection changes.
@@ -9308,7 +9296,6 @@ export interface ChoiceListEvents {
   input: CallbackEventListener<typeof tagName> | null = null;
 }
 
-/** @publicDocs */
 export interface ChoiceListSlots {
   /**
    * The choices a user can select from.
@@ -9318,7 +9305,6 @@ export interface ChoiceListSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface ClickableEvents {
   /**
    * A callback fired when the component is clicked.
@@ -9340,7 +9326,6 @@ export interface ClickableEvents {
   focus: CallbackEventListener<typeof tagName> | null = null;
 }
 
-/** @publicDocs */
 export interface ClickableSlots {
   /**
    * The content displayed within the clickable component, which makes any content interactive and clickable without the semantic meaning of a button or link.
@@ -9348,7 +9333,6 @@ export interface ClickableSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface ClickableChipEvents {
   /**
    * A callback fired when the chip is clicked.
@@ -9366,7 +9350,6 @@ export interface ClickableChipEvents {
   afterhide: CallbackEventListener<typeof tagName> | null = null;
 }
 
-/** @publicDocs */
 export interface ClickableChipSlots {
   /**
    * The text label displayed within the chip, which represents an interactive filter, tag, or selectable item.
@@ -9378,7 +9361,6 @@ export interface ClickableChipSlots {
   graphic?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface ColorFieldEvents {
   /**
    * A callback fired when the color field value changes.
@@ -9406,7 +9388,6 @@ export interface ColorFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
-/** @publicDocs */
 export interface ColorPickerEvents {
   /**
    * A callback fired when the color picker value changes.
@@ -9422,7 +9403,6 @@ export interface ColorPickerEvents {
   input: CallbackEventListener<typeof tagName> | null = null;
 }
 
-/** @publicDocs */
 export interface DateFieldEvents {
   /**
    * A callback fired when the date field value changes.
@@ -9460,7 +9440,6 @@ export interface DateFieldEvents {
   invalid: CallbackEventListener<typeof tagName> | null = null;
 }
 
-/** @publicDocs */
 export interface DatePickerEvents {
   /**
    * A callback fired when the calendar view changes, such as when navigating between months.
@@ -9492,7 +9471,6 @@ export interface DatePickerEvents {
   change: CallbackEventListener<typeof tagName> | null = null;
 }
 
-/** @publicDocs */
 export interface DropZoneEvents {
   /**
    * A callback fired when the drop zone value changes.
@@ -9512,7 +9490,6 @@ export interface DropZoneEvents {
   droprejected: CallbackEventListener<typeof tagName> = null;
 }
 
-/** @publicDocs */
 export interface DropZoneSlots {
   /**
    * The content to include inside the drop zone container
@@ -9520,7 +9497,6 @@ export interface DropZoneSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface EmailFieldEvents {
   /**
    * A callback fired when the email field value changes.
@@ -9548,7 +9524,6 @@ export interface EmailFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
-/** @publicDocs */
 export interface GridSlots {
   /**
    * The child elements displayed within the grid component, which are arranged in a flexible grid layout with configurable columns, rows, and spacing.
@@ -9556,7 +9531,6 @@ export interface GridSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface GridItemSlots {
   /**
    * The content displayed within the grid item component, which represents a single cell in the grid layout and can span multiple columns or rows.
@@ -9564,7 +9538,6 @@ export interface GridItemSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface HeadingSlots {
   /**
    * The heading text displayed within the heading component, which provides a title or section header for content.
@@ -9572,7 +9545,6 @@ export interface HeadingSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface ImageEvents {
   /**
    * A callback fired when the image successfully loads.
@@ -9588,7 +9560,6 @@ export interface ImageEvents {
   error: OnErrorEventHandler = null;
 }
 
-/** @publicDocs */
 export interface LinkEvents {
   /**
    * A callback fired when the link is clicked.
@@ -9598,7 +9569,6 @@ export interface LinkEvents {
   click: CallbackEventListener<typeof tagName> | null = null;
 }
 
-/** @publicDocs */
 export interface LinkSlots {
   /**
    * The text or elements displayed within the link component, which navigates users to a different location when activated.
@@ -9606,7 +9576,6 @@ export interface LinkSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface ListItemSlots {
   /**
    * The content displayed within the list item, which represents a single entry in an ordered or unordered list.
@@ -9614,7 +9583,6 @@ export interface ListItemSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface MenuSlots {
   /**
    * The items displayed within the menu. Only accepts button and section components. Use button for individual menu actions and section to group related items.
@@ -9622,7 +9590,6 @@ export interface MenuSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface ModalEvents {
   /**
    * A callback fired when the modal is hidden.
@@ -9642,7 +9609,6 @@ export interface ModalEvents {
   aftershow: CallbackEventListener<typeof tagName> | null = null;
 }
 
-/** @publicDocs */
 export interface ModalSlots {
   /**
    * The content displayed within the modal component, typically including form fields, information, or interactive elements.
@@ -9662,7 +9628,6 @@ export interface ModalSlots {
   'secondary-actions'?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface MoneyFieldEvents {
   /**
    * A callback fired when the money field value changes.
@@ -9690,7 +9655,6 @@ export interface MoneyFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
-/** @publicDocs */
 export interface NumberFieldEvents {
   /**
    * A callback fired when the number field value changes.
@@ -9718,7 +9682,6 @@ export interface NumberFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
-/** @publicDocs */
 export interface OptionSlots {
   /**
    * The text or elements displayed as the option label, which identifies the selectable choice to users in a dropdown or selection list.
@@ -9726,7 +9689,6 @@ export interface OptionSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface OptionGroupSlots {
   /**
    * The selectable options displayed in the dropdown list. Accepts option components for individual selectable items within this group.
@@ -9734,7 +9696,6 @@ export interface OptionGroupSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface OrderedListSlots {
   /**
    * The list entries displayed within the ordered list, where each item is numbered sequentially. Only accepts list item components as children. Each list item represents a single numbered entry in the sequence.
@@ -9742,7 +9703,6 @@ export interface OrderedListSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface PageSlots {
   /**
    * The main page content displayed within the page component, which serves as the primary container for the page's information and interface elements.
@@ -9775,7 +9735,6 @@ export interface PageSlots {
   'breadcrumb-actions'?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface ParagraphSlots {
   /**
    * The paragraph text content displayed within the paragraph component, which presents a block of related text with appropriate styling.
@@ -9783,7 +9742,6 @@ export interface ParagraphSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface PasswordFieldEvents {
   /**
    * A callback fired when the password field value changes.
@@ -9811,7 +9769,6 @@ export interface PasswordFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
-/** @publicDocs */
 export interface PopoverEvents {
   /**
    * A callback fired when the popover is shown.
@@ -9839,7 +9796,6 @@ export interface PopoverEvents {
   aftertoggle: CallbackEventListener<TTagName> | null;
 }
 
-/** @publicDocs */
 export interface PopoverSlots {
   /**
    * The content displayed within the popover component, which appears in an overlay positioned relative to its trigger element.
@@ -9847,7 +9803,6 @@ export interface PopoverSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface QueryContainerSlots {
   /**
    * The content displayed within the query container component, which enables container queries for responsive styling based on the container's size rather than the viewport.
@@ -9855,7 +9810,6 @@ export interface QueryContainerSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface SearchFieldEvents {
   /**
    * A callback fired when the search field value changes.
@@ -9883,7 +9837,6 @@ export interface SearchFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
-/** @publicDocs */
 export interface SectionSlots {
   /**
    * The content displayed within the section component, which groups related elements together in a logical unit with an optional heading.
@@ -9891,7 +9844,6 @@ export interface SectionSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface SelectEvents {
   /**
    * A callback fired when the select value changes.
@@ -9907,7 +9859,6 @@ export interface SelectEvents {
   input: CallbackEventListener<'input'>;
 }
 
-/** @publicDocs */
 export interface SelectSlots {
   /**
    * The selectable options displayed in the dropdown list. Accepts option components for individual selectable items, and option group components to organize related options into logical groups with labels.
@@ -9915,7 +9866,6 @@ export interface SelectSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface StackSlots {
   /**
    * The child elements displayed within the stack component, which are arranged vertically or horizontally with consistent spacing.
@@ -9923,7 +9873,6 @@ export interface StackSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface SwitchEvents {
   /**
    * A callback fired when the switch value changes.
@@ -9939,7 +9888,6 @@ export interface SwitchEvents {
   input: CallbackEventListener<'input'>;
 }
 
-/** @publicDocs */
 export interface TableEvents {
   /**
    * A callback fired when the user navigates to the previous page.
@@ -9951,7 +9899,6 @@ export interface TableEvents {
   nextpage: CallbackEventListener<typeof tagName> | null = null;
 }
 
-/** @publicDocs */
 export interface TableSlots {
   /**
    * The table structure defining headers and data rows.
@@ -9967,7 +9914,6 @@ export interface TableSlots {
   filters?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface TableBodySlots {
   /**
    * The data rows displayed in the table body.
@@ -9977,7 +9923,6 @@ export interface TableBodySlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface TableCellSlots {
   /**
    * The data value displayed in this cell.
@@ -9987,7 +9932,6 @@ export interface TableCellSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface TableHeaderSlots {
   /**
    * The column heading text.
@@ -9997,7 +9941,6 @@ export interface TableHeaderSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface TableHeaderRowSlots {
   /**
    * The column headers displayed in the table header row.
@@ -10007,7 +9950,6 @@ export interface TableHeaderRowSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface TableRowSlots {
   /**
    * The data cells displayed in this table row.
@@ -10017,7 +9959,6 @@ export interface TableRowSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface TextSlots {
   /**
    * The text content displayed within the text component, which applies semantic meaning and styling appropriate to the specified text type.
@@ -10025,7 +9966,6 @@ export interface TextSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface TextAreaEvents {
   /**
    * A callback fired when the text area value changes.
@@ -10053,7 +9993,6 @@ export interface TextAreaEvents {
   focus: CallbackEventListener<'input'>;
 }
 
-/** @publicDocs */
 export interface TextFieldEvents {
   /**
    * A callback fired when the text field value changes.
@@ -10081,7 +10020,6 @@ export interface TextFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
-/** @publicDocs */
 export interface TextFieldSlots {
   /**
    * Additional interactive content displayed within the text field.
@@ -10091,7 +10029,6 @@ export interface TextFieldSlots {
   accessory?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface ThumbnailEvents {
   /**
    * A callback fired when the thumbnail image successfully loads.
@@ -10107,7 +10044,6 @@ export interface ThumbnailEvents {
   error: OnErrorEventHandler = null;
 }
 
-/** @publicDocs */
 export interface TooltipSlots {
   /**
    * The informational text or elements displayed within the tooltip overlay, providing helpful context or explanations when users interact with the associated element.
@@ -10117,7 +10053,6 @@ export interface TooltipSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface URLFieldEvents {
   /**
    * A callback fired when the URL field value changes.
@@ -10145,7 +10080,6 @@ export interface URLFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
-/** @publicDocs */
 export interface UnorderedListSlots {
   /**
    * The list entries displayed within the unordered list, where each item is marked with a bullet point. Only accepts list item components as children. Each list item represents a single bulleted entry in the list.
@@ -10153,7 +10087,6 @@ export interface UnorderedListSlots {
   children?: HTMLElement;
 }
 
-/** @publicDocs */
 export interface AdminActionSlots {
   /**
    * The main action button or link displayed in the admin action modal.
@@ -10167,7 +10100,6 @@ export interface AdminActionSlots {
   'secondary-actions': HTMLElement;
 }
 
-/** @publicDocs */
 export interface FormEvents {
   /**
    * A callback that is run when the form is submitted.
@@ -10179,7 +10111,6 @@ export interface FormEvents {
   reset: CallbackEventListener<typeof tagName> | null = null;
 }
 
-/** @publicDocs */
 export interface FunctionSettingsEvents {
   /**
    * An optional callback function that will be run by the admin when the user
