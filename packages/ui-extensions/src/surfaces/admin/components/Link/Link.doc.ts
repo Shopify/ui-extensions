@@ -149,7 +149,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Set the `lang` attribute so screen readers pronounce the link text correctly. This example shows a French-language link with the `lang` attribute set.',
+          'Set the `lang` property so screen readers pronounce the link text correctly. This example shows a French-language link with the `lang` attribute set.',
         codeblock: {
           title: 'Set the language for a link',
           tabs: [
