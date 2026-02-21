@@ -115,7 +115,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Use the download attribute to trigger a file download when the link is clicked. This example shows a link that downloads a CSV file for customer data export.',
+          'Use the `download` property to trigger a file download when the link is clicked. This example shows a link that downloads a CSV file for customer data export.',
         codeblock: {
           title: 'Trigger a file download',
           tabs: [
