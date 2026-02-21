@@ -1,43 +1,48 @@
-import {
-  extend,
-  Form,
-  TextField,
-} from '@shopify/ui-extensions/admin';
+import {extension, Form, TextField, Button, BlockStack} from '@shopify/ui-extensions/admin';
 
-extend('admin.product-details.block.render', (root) => {
-  let name = '';
+export default extension(
+  'admin.product-details.action.render',
+  (root, api) => {
+    const {data, close} = api;
+    const productId = data.selected[0]?.id;
 
-  const textField = root.createComponent(
-    TextField,
-    {
-      label: 'name',
-      value: name,
-      onChange: (value) => {
-        textField.updateProps({value});
-        name = value;
+    const form = root.createComponent(Form, {
+      onSubmit: async () => {
+        await fetch('/api/products/metadata', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({productId}),
+        });
+        close();
       },
-    }
-  );
+      onReset: () => {
+        close();
+      },
+    });
 
-  const onSubmit = async () => {
-    // API call to save the values
-    const res = await fetch('/save', {method:'POST', body: JSON.stringify({name})});
-    if (!res.ok) {
-      const json = await res.json();
-      // The Host can catch these errors and do something with them.
-      throw Error(`There were errors: ${json.errors.join(',')}`);
-    }
-  };
+    const stack = root.createComponent(BlockStack, {gap: true});
 
-  const onReset = async () => {
-    name = '';
-  };
+    const skuField = root.createComponent(TextField, {
+      label: 'Warehouse SKU',
+      name: 'warehouseSku',
+      required: true,
+    });
 
-  const form = root.createComponent(
-    Form,
-    {onSubmit, onReset}
-  );
+    const locationField = root.createComponent(TextField, {
+      label: 'Storage location',
+      name: 'location',
+    });
 
-  form.appendChild(textField);
-  root.appendChild(form);
-});
+    const submitButton = root.createComponent(
+      Button,
+      {variant: 'primary'},
+      'Save product metadata',
+    );
+
+    stack.appendChild(skuField);
+    stack.appendChild(locationField);
+    stack.appendChild(submitButton);
+    form.appendChild(stack);
+    root.appendChild(form);
+  },
+);

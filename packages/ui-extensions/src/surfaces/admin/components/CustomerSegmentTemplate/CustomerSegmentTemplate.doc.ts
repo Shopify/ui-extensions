@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'customersegmenttemplate-default',
     codeblock: {
-      title: 'Simple CustomerSegmentTemplate implementation',
+      title: 'Create a repeat buyer segment template',
       tabs: [
         {
           title: 'React',
@@ -30,12 +30,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/customersegmenttemplate.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Use `queryToInsert` to provide a different query than what is displayed in the template preview. This example shows a complete query with a US region filter in the template card, but inserts a version with an empty region placeholder so merchants can customize the filter for their market.',
+        codeblock: {
+          title: 'Customize the inserted query',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/CustomerSegmentTemplate/examples/customersegmenttemplate-queryinsert.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/customersegmenttemplate-queryinsert.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Declare custom metafield dependencies using the `dependencies` prop so the segment editor knows which metafields your query references. This example filters customers by a `loyalty.tier` custom metafield, enabling the editor to validate the query and show relevant autocomplete suggestions.',
+        codeblock: {
+          title: 'Declare metafield dependencies',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/CustomerSegmentTemplate/examples/customersegmenttemplate-metafields.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/customersegmenttemplate-metafields.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'emailfield-default.png',
     codeblock: {
-      title: 'Simple EmailField example',
+      title: 'Collect notification email',
       tabs: [
         {
           title: 'React',
@@ -29,12 +29,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-emailfield.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Validate email format on each keystroke using the `error` prop and `required` attribute. This example checks for the presence of an `@` symbol as the merchant types and displays an inline error message, preventing invalid email addresses from being saved.',
+        codeblock: {
+          title: 'Validate email format inline',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/EmailField/examples/emailfield-validation.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/emailfield-validation.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Pre-fill an email field with a default value using the `value` prop for edit workflows. This example combines an `EmailField` with a [TextField](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) to build a complete fulfillment contact form, with a primary email pre-populated and an optional CC field.',
+        codeblock: {
+          title: 'Pre-fill contact form fields',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/EmailField/examples/emailfield-prefilled.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/emailfield-prefilled.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {
