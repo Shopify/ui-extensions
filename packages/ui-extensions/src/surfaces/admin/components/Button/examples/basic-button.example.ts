@@ -1,11 +1,39 @@
-import {extend, Button} from '@shopify/ui-extensions/admin';
+import {extension, Button, Text, BlockStack} from '@shopify/ui-extensions/admin';
 
-extend('Playground', (root) => {
-  const button = root.createComponent(
-    Button,
-    {onPress: () => console.log('onPress event')},
-    'Click here',
-  );
+export default extension(
+  'admin.product-details.action.render',
+  (root, api) => {
+    const {data, close} = api;
+    const productId = data.selected[0]?.id;
 
-  root.appendChild(button);
-});
+    const stack = root.createComponent(BlockStack);
+
+    const info = root.createComponent(
+      Text,
+      {},
+      `Product: ${productId}`,
+    );
+
+    const saveButton = root.createComponent(Button, {
+      variant: 'primary',
+      onPress: async () => {
+        await fetch('/api/products/sync', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({productId}),
+        });
+        close();
+      },
+    }, 'Sync to warehouse');
+
+    const cancelButton = root.createComponent(Button, {
+      variant: 'secondary',
+      onPress: () => close(),
+    }, 'Cancel');
+
+    stack.appendChild(info);
+    stack.appendChild(saveButton);
+    stack.appendChild(cancelButton);
+    root.appendChild(stack);
+  },
+);

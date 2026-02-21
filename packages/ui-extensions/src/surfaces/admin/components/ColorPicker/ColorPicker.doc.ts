@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'colorpicker-default.png',
     codeblock: {
-      title: 'Simple ColorPicker example',
+      title: 'Select product accent color',
       tabs: [
         {
           title: 'React',
@@ -29,14 +29,56 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-colorpicker.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
   },
-
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Enable the alpha (transparency) channel by setting `allowAlpha` to `true`. This example lets merchants pick an overlay color with adjustable opacity, returning a hex color string with alpha (for example, `#RRGGBBAA`) for use on product pages.',
+        codeblock: {
+          title: 'Enable alpha transparency selection',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/ColorPicker/examples/colorpicker-alpha.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/colorpicker-alpha.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Present multiple color pickers for a complete brand color configuration. This example renders primary and secondary brand color pickers separated by a [Divider](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/divider), letting merchants define a full product page color scheme.',
+        codeblock: {
+          title: 'Configure brand color palette',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/ColorPicker/examples/colorpicker-branding.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/colorpicker-branding.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',
