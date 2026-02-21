@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Box',
   description:
-    'The Box component is a foundational layout primitive that controls padding, sizing, and visibility of its children. Use Box to add spacing around content, constrain dimensions, or toggle visibility without introducing stacking or alignment behavior.\n\nFor arranging multiple children in a vertical or horizontal flow, use [BlockStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/blockstack) or [InlineStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/inlinestack).',
+    'The Box component is a foundational layout primitive that controls padding, sizing, and accessibility roles for its children. Use Box to add spacing around content, constrain dimensions, or assign semantic roles without introducing stacking or alignment behavior.\n\nFor arranging multiple children in a vertical or horizontal flow, use [BlockStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/blockstack) or [InlineStack](/docs/api/admin-extensions/{API_VERSION}/ui-components/layout-and-structure/inlinestack).',
   requires: '',
   thumbnail: 'box-thumbnail.png',
   isVisualComponent: true,
@@ -20,22 +20,64 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'box-default.png',
     codeblock: {
-      title: 'Use Box to build your layout',
+      title: 'Create a padded content container',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Box/examples/basic-Box.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Box/examples/basic-box.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-Box.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-box.example.ts',
+          language: 'ts',
         },
       ],
     },
   },
-
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Constrain an [Image](/docs/api/admin-extensions/{API_VERSION}/components/media-and-visuals/image) to a fixed size using `inlineSize` and `blockSize` props. This example creates a thumbnail container alongside product details in an [InlineStack](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/inlinestack), preventing the image from stretching beyond its bounds.',
+        codeblock: {
+          title: 'Constrain image dimensions',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Box/examples/box-sizing.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/box-sizing.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Assign semantic meaning to layout containers using `accessibilityRole`. This example wraps a compliance status message in a Box with `accessibilityRole="status"` and shipping details in a Box with `accessibilityRole="section"`, helping screen readers understand the structure of the content.',
+        codeblock: {
+          title: 'Add semantic roles to containers',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Box/examples/box-display.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/box-display.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

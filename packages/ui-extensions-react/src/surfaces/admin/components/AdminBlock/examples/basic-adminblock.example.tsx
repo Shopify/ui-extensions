@@ -1,12 +1,23 @@
 import React from 'react';
-import {reactExtension, AdminBlock} from '@shopify/ui-extensions-react/admin';
+import {reactExtension, AdminBlock, Text, InlineStack, BlockStack} from '@shopify/ui-extensions-react/admin';
 
 function App() {
+
   return (
-    <AdminBlock title="My App Block" summary="5 items active">
-      Block content
+    <AdminBlock title="Warehouse integration">
+      <BlockStack gap>
+        <InlineStack gap>
+          <Text>Sync status:</Text>
+          <Text fontWeight="bold">Connected</Text>
+        </InlineStack>
+        <Text>Last synced 5 minutes ago</Text>
+        <Text>Warehouse inventory: 247 units across 3 locations</Text>
+      </BlockStack>
     </AdminBlock>
   );
 }
 
-export default reactExtension('Playground', () => <App />);
+export default reactExtension(
+  'admin.product-details.block.render',
+  () => <App />,
+);

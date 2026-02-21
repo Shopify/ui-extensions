@@ -21,20 +21,63 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'heading-default.png',
     codeblock: {
-      title: 'Simple Heading example',
+      title: 'Label extension sections',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Heading/examples/basic-Heading.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Heading/examples/basic-heading.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-Heading.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-heading.example.ts',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          "Control heading size using the `size` prop to create visual hierarchy. This example renders a size-2 heading for the extension title and a size-3 sub-heading for a detail section, mirroring the Shopify admin's native content structure.",
+        codeblock: {
+          title: 'Create hierarchical content sections',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Heading/examples/heading-sizes.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/heading-sizes.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Create accessible section labels using the `id` prop inside a content grouping component. This example nests a heading within a section to maintain proper document outline so screen readers announce the section context correctly.',
+        codeblock: {
+          title: 'Build accessible section labels',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Heading/examples/heading-accessible.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/heading-accessible.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

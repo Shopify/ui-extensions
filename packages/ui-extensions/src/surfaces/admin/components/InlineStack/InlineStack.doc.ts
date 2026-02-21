@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'inlinestack-default.png',
     codeblock: {
-      title: 'Laying out elements in a row',
+      title: 'Arrange metadata in rows',
       tabs: [
         {
           title: 'React',
@@ -29,12 +29,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-inlinestack.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Right-align action buttons using `inlineAlignment="end"`. This example positions cancel and confirm [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) components at the trailing edge of an [action modal](/docs/api/admin-extensions/{API_VERSION}/components/settings-and-templates/adminaction), following standard dialog patterns.',
+        codeblock: {
+          title: 'Right-align action buttons',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/InlineStack/examples/inlinestack-alignment.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/inlinestack-alignment.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Vertically center [Icon](/docs/api/admin-extensions/{API_VERSION}/components/media-and-visuals/icon) and text pairs using `blockAlignment="center"`. This example places order and inventory icons inline with their stat labels, so they stay aligned regardless of icon and text height differences.',
+        codeblock: {
+          title: 'Center-align icon and text pairs',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/InlineStack/examples/inlinestack-spacing.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/inlinestack-spacing.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

@@ -21,22 +21,64 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'divider-default.png',
     codeblock: {
-      title: 'Simple Divider example',
+      title: 'Separate content sections',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Divider/examples/basic-Divider.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Divider/examples/basic-divider.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-Divider.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-divider.example.ts',
+          language: 'ts',
         },
       ],
     },
   },
-
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Render a vertical divider between inline elements using `direction="block"`. This example separates a product price from its SKU inside an [InlineStack](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/inlinestack), creating a compact metadata row.',
+        codeblock: {
+          title: 'Add vertical inline dividers',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Divider/examples/divider-inline.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/divider-inline.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Break a multi-section form into visually distinct groups using dividers between [TextField](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) clusters. This example separates shipping details from customs information in an [action modal](/docs/api/admin-extensions/{API_VERSION}/components/settings-and-templates/adminaction), making it easier for merchants to find fields.',
+        codeblock: {
+          title: 'Divide form groups',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Divider/examples/divider-sections.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/divider-sections.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextField',
   description:
-    'The TextField component provides a single-line text input for collecting short-form text from merchants, such as names, titles, or search queries. It supports labels, placeholder text, validation errors, read-only and disabled states, autocomplete hints, and a suffix decoration.\n\nFor multi-line input, use [TextArea](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/textarea). For specialized input types, use [EmailField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/emailfield), [URLField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/urlfield), [NumberField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/numberfield), or [PasswordField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/passwordfield).',
+    'The TextField component provides a single-line text input for collecting short-form text from merchants, such as names, titles, or search queries. It supports labels, placeholder text, validation errors, read-only and disabled states, and autocomplete hints.\n\nFor multi-line input, use [TextArea](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/textarea). For specialized input types, use [EmailField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/emailfield), [URLField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/urlfield), [NumberField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/numberfield), or [PasswordField](/docs/api/admin-extensions/{API_VERSION}/ui-components/forms/passwordfield).',
   requires: '',
   thumbnail: 'textfield-thumbnail.png',
   isVisualComponent: true,
@@ -21,22 +21,64 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'textfield-default.png',
     codeblock: {
-      title: 'Simple TextField example',
+      title: 'Collect product metadata',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/TextField/examples/basic-TextField.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/TextField/examples/basic-textfield.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-TextField.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-textfield.example.ts',
+          language: 'ts',
         },
       ],
     },
   },
-
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Validate SKU format on each keystroke using the `error` prop and `onChange` callback. This example checks minimum length and character restrictions as the merchant types, displaying inline error messages that prevent invalid data from being submitted.',
+        codeblock: {
+          title: 'Validate input with error messages',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/TextField/examples/textfield-validation.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/textfield-validation.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Set a field to read-only with `readOnly` and guide input with `placeholder` text. This example locks a store handle field so merchants can view but not edit it, and uses a placeholder on the weight field to suggest the expected format.',
+        codeblock: {
+          title: 'Configure read-only and placeholder fields',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/TextField/examples/textfield-readonly.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/textfield-readonly.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',
