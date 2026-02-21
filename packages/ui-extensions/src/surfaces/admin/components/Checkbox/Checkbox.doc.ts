@@ -21,22 +21,64 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'checkbox-default.png',
     codeblock: {
-      title: 'Add a simple Checkbox',
+      title: 'Toggle feature settings',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Checkbox/examples/basic-Checkbox.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Checkbox/examples/basic-checkbox.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-Checkbox.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-checkbox.example.ts',
+          language: 'ts',
         },
       ],
     },
   },
-
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Require merchants to agree to terms before connecting a service using the `error` prop for validation. This example shows an inline error when the merchant attempts to submit without checking the box, which requires explicit consent before proceeding.',
+        codeblock: {
+          title: 'Validate required agreement',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Checkbox/examples/checkbox-error.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/checkbox-error.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Present multiple independent options as a group of checkboxes for channel publishing. This example renders three checkboxes (Online Store, Point of Sale, and Wholesale), letting merchants select any combination of sales channels for a product.',
+        codeblock: {
+          title: 'Select multiple channel options',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Checkbox/examples/checkbox-multiple.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/checkbox-multiple.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

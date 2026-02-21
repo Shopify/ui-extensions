@@ -1,18 +1,20 @@
-import React from 'react';
-import {
-  render,
-  BlockStack,
-} from '@shopify/ui-extensions-react/admin';
-
-render('Playground', () => <App />);
+import {reactExtension, BlockStack, Text, Button} from '@shopify/ui-extensions-react/admin';
 
 function App() {
+
   return (
     <BlockStack gap>
-      <>Child 1</>
-      <>Child 2</>
-      <>Child 3</>
-      <>Child 4</>
+      <Text fontWeight="bold">Warehouse sync</Text>
+      <Text>Last synced 10 minutes ago</Text>
+      <Text>12 variants, 3 locations updated</Text>
+      <Button variant="secondary" onPress={() => console.log('Viewing sync log')}>
+        View sync log
+      </Button>
     </BlockStack>
   );
 }
+
+export default reactExtension(
+  'admin.product-details.block.render',
+  () => <App />,
+);

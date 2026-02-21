@@ -21,20 +21,63 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'progressindicator-default.png',
     codeblock: {
-      title: 'Simple spinner example',
+      title: 'Show loading during API query',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/ProgressIndicator/examples/basic-ProgressIndicator.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/ProgressIndicator/examples/basic-progressindicator.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-ProgressIndicator.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-progressindicator.example.ts',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Show a prominent loading indicator while a sync is in progress inside an [action modal](/docs/api/admin-extensions/{API_VERSION}/components/settings-and-templates/adminaction). This example pairs a `base`-sized indicator with a status message and a cancel [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button), keeping merchants informed and in control.',
+        codeblock: {
+          title: 'Display sync progress in action modal',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/ProgressIndicator/examples/progressindicator-sizes.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/progressindicator-sizes.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Place a compact `small-300` spinner inline with status text using `tone="inherit"` to match the surrounding text color. This example renders the indicator alongside a description inside an [InlineStack](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/inlinestack), creating a subtle loading cue.',
+        codeblock: {
+          title: 'Add inline loading indicator',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/ProgressIndicator/examples/progressindicator-inline.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/progressindicator-inline.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

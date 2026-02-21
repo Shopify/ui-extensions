@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'paragraph-default.png',
     codeblock: {
-      title: 'Simple Paragraph example',
+      title: 'Display product sync summary',
       tabs: [
         {
           title: 'React',
@@ -29,12 +29,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-paragraph.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Present fulfillment instructions that include an inline [Link](/docs/api/admin-extensions/{API_VERSION}/components/actions/link) to external documentation. This example shows how to nest interactive elements inside a paragraph to provide contextual help alongside instructional text.',
+        codeblock: {
+          title: 'Embed inline links in help text',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Paragraph/examples/paragraph-with-links.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/paragraph-with-links.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Show or hide guidance based on product status retrieved from the [GraphQL Admin API](/docs/api/admin-graphql/). This example queries the product status and conditionally renders a paragraph with publishing instructions when the product is in draft, helping merchants understand what steps remain.',
+        codeblock: {
+          title: 'Show conditional help text',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Paragraph/examples/paragraph-conditional.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/paragraph-conditional.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

@@ -20,22 +20,64 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'image-default.png',
     codeblock: {
-      title: 'Simple Image example',
+      title: 'Display product featured image',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Image/examples/basic-Image.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Image/examples/basic-image.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-Image.example.ts',
-          language: 'js',
+          title: 'TS',
+          code: './examples/basic-image.example.ts',
+          language: 'ts',
         },
       ],
     },
   },
-
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Handle image loading and error states using `onLoad` and `onError` callbacks. This example shows a [ProgressIndicator](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/progressindicator) while the image loads and displays an error message if the image fails to load, preventing broken image placeholders.',
+        codeblock: {
+          title: 'Handle image loading states',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Image/examples/image-loading.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/image-loading.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Mark non-essential images as decorative using `accessibilityRole="decorative"` with an empty `accessibilityLabel`. This example renders a partner branding banner that screen readers skip, keeping the focus on meaningful content.',
+        codeblock: {
+          title: 'Add decorative branding images',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Image/examples/image-decorative.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/image-decorative.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

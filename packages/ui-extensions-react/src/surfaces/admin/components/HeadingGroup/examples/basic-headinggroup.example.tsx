@@ -1,23 +1,22 @@
-import {
-    render,
-    HeadingGroup,
-    Heading,
-  } from '@shopify/ui-extensions-react/admin';
+import {reactExtension, HeadingGroup, Heading, Text, BlockStack} from '@shopify/ui-extensions-react/admin';
 
-  render('Playground', () => <App />);
+function App() {
 
-  function App() {
-    return (
-      <>
-        <Heading>Heading &lt;h1&gt;</Heading>
+  return (
+    <BlockStack>
+      <Heading>Warehouse integration</Heading>
+      <HeadingGroup>
+        <Heading>Sync configuration</Heading>
+        <Text>
+          Configure how product data flows between Shopify and your warehouse
+          management system.
+        </Text>
+      </HeadingGroup>
+    </BlockStack>
+  );
+}
 
-        <HeadingGroup>
-          <Heading>Heading &lt;h2&gt;</Heading>
-
-          <HeadingGroup>
-            <Heading>Heading &lt;h3&gt;</Heading>
-          </HeadingGroup>
-        </HeadingGroup>
-      </>
-    );
-  }
+export default reactExtension(
+  'admin.product-details.block.render',
+  () => <App />,
+);
