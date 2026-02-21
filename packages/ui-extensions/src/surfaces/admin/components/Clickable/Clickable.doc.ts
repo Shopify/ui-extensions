@@ -59,7 +59,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Set href to make a clickable element navigate like a link. This example shows a clickable that opens a URL in a new browser tab.',
+          'Set the `href` property to make a clickable element navigate like a link. This example shows a clickable component that opens a URL in a new browser tab.',
         codeblock: {
           title: 'Navigate to a URL',
           tabs: [
