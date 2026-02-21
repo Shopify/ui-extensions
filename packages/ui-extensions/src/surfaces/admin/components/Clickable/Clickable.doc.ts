@@ -76,7 +76,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Use a clickable as a form submit button with a disabled state to prevent premature submission. This example shows a disabled submit-type clickable with border and padding.',
+          'Use a clickable component as a form submit button with a disabled state to prevent premature submission. This example shows a disabled submit-type clickable component with a border and padding.',
         codeblock: {
           title: 'Create a form submit button',
           tabs: [
