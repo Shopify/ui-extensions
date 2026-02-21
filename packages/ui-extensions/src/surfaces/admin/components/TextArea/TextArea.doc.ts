@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'textarea-default.png',
     codeblock: {
-      title: 'Simple TextArea example',
+      title: 'Collect internal product notes',
       tabs: [
         {
           title: 'React',
@@ -29,12 +29,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-textarea.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Enforce a character limit using `maxLength` with a live counter and inline `error` feedback. This example tracks the description length on each keystroke and shows an error when the limit is exceeded, helping merchants keep descriptions within the allowed length.',
+        codeblock: {
+          title: 'Validate description length',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/TextArea/examples/textarea-validation.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/textarea-validation.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          "Pre-fill a text area with existing metafield data from the [GraphQL Admin API](/docs/api/admin-graphql/) and display it as read-only. This example queries the product's shipping instructions metafield and renders the value in a `readOnly` text area for reference.",
+        codeblock: {
+          title: 'Display existing metafield content',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/TextArea/examples/textarea-prefilled.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/textarea-prefilled.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
 
   subSections: [
