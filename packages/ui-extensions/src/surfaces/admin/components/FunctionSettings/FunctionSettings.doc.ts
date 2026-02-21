@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'form-default.png',
     codeblock: {
-      title: 'Simple function settings form implementation',
+      title: 'Configure function validation settings',
       tabs: [
         {
           title: 'React',
@@ -30,12 +30,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-functionsettings.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Collect multiple metafield values in a single settings form using [NumberField](/docs/api/admin-extensions/{API_VERSION}/components/forms/numberfield) and [TextField](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) components. This example manages minimum quantity, maximum quantity, and a custom error message, writing each change to its own metafield key through `applyMetafieldsChange`.',
+        codeblock: {
+          title: 'Manage multiple metafield settings',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/FunctionSettings/examples/functionsettings-multiple.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/functionsettings-multiple.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Use the `onSave` callback to notify your backend when the admin saves changes. This example configures a discount function with a title and type [ChoiceList](/docs/api/admin-extensions/{API_VERSION}/components/forms/choicelist), calling your validation endpoint during save and surfacing any errors through `onError`.',
+        codeblock: {
+          title: 'Validate settings on save',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/FunctionSettings/examples/functionsettings-save.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/functionsettings-save.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

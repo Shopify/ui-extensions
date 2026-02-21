@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'datepicker-default.png',
     codeblock: {
-      title: 'Add a single-date DatePicker',
+      title: 'Schedule promotion start date',
       tabs: [
         {
           title: 'React',
@@ -29,9 +29,9 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-datepicker.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
@@ -40,9 +40,10 @@ const data: ReferenceEntityTemplateSchema = {
     description: '',
     examples: [
       {
-        description: 'Use this when merchants need to select multiple dates.',
+        description:
+          "Enable multi-date selection by passing an array to `selected` to let merchants pick multiple individual dates. This example collects shipping blackout dates (specific days when a product can't be shipped) and saves them as an array to your fulfillment backend.",
         codeblock: {
-          title: 'Add a multi-date DatePicker',
+          title: 'Select multiple blackout dates',
           tabs: [
             {
               title: 'React',
@@ -50,17 +51,18 @@ const data: ReferenceEntityTemplateSchema = {
               language: 'tsx',
             },
             {
-              title: 'JS',
+              title: 'TS',
               code: './examples/multiple-datepicker.example.ts',
-              language: 'js',
+              language: 'ts',
             },
           ],
         },
       },
       {
-        description: 'Use this when merchants need to select a range of dates.',
+        description:
+          'Select a date range by passing an object with `start` and `end` properties to `selected`. This example lets merchants define a sale period by picking start and end dates on the calendar, then saves the range to configure time-limited pricing.',
         codeblock: {
-          title: 'Add a range DatePicker',
+          title: 'Define a sale date range',
           tabs: [
             {
               title: 'React',
@@ -68,9 +70,9 @@ const data: ReferenceEntityTemplateSchema = {
               language: 'tsx',
             },
             {
-              title: 'JS',
+              title: 'TS',
               code: './examples/range-datepicker.example.ts',
-              language: 'js',
+              language: 'ts',
             },
           ],
         },
