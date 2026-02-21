@@ -94,7 +94,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Set `href` to make a chip link to another page when clicked. This example shows a subdued chip with a product icon that acts as a link.',
+          'Set the `href` property to make a chip link to another page when clicked. This example shows a subdued chip with a product icon that acts as a link.',
         codeblock: {
           title: 'Use a chip as a link',
           tabs: [
