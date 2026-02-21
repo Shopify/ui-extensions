@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'link-default.png',
     codeblock: {
-      title: 'Link to an app page',
+      title: 'Navigate to app pages',
       tabs: [
         {
           title: 'React',
@@ -28,12 +28,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/app-link.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Open external URLs in new tabs using `target="_blank"`. This example links to the product\'s storefront page and Shopify documentation, building the storefront URL from the product ID in `data.selected`.',
+        codeblock: {
+          title: 'Open external links in new tabs',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/external-link.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/external-link.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Navigate to Shopify admin pages using the `shopify://` protocol. This example links to the orders list, the product\'s inventory page, and the product editor, using `tone="critical"` on the edit link to draw attention to it.',
+        codeblock: {
+          title: 'Link to Shopify admin sections',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/shopify-section-link.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/shopify-section-link.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {
@@ -53,68 +96,6 @@ const data: ReferenceEntityTemplateSchema = {
 - The \`onClick\` callback fires before navigation occurs. If the callback throws an error, navigation might still proceed. You can't use \`onClick\` to conditionally prevent navigation.`,
     },
   ],
-  examples: {
-    description: '',
-    examples: [
-      {
-        description: 'Link to an external URL',
-        image: 'external-link.png',
-        codeblock: {
-          tabs: [
-            {
-              title: 'React',
-              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/external-link.example.tsx',
-              language: 'typescript',
-            },
-            {
-              title: 'JS',
-              code: './examples/external-link.example.ts',
-              language: 'typescript',
-            },
-          ],
-          title: 'External Link',
-        },
-      },
-      {
-        description: 'Link to a relative URL',
-        image: 'relative-link.png',
-        codeblock: {
-          tabs: [
-            {
-              title: 'React',
-              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/relative-link.example.tsx',
-              language: 'typescript',
-            },
-            {
-              title: 'JS',
-              code: './examples/relative-link.example.ts',
-              language: 'typescript',
-            },
-          ],
-          title: 'Relative Link',
-        },
-      },
-      {
-        description: 'Link to a Shopify admin page',
-        image: 'shopify-section-link.png',
-        codeblock: {
-          tabs: [
-            {
-              title: 'React',
-              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/shopify-section-link.example.tsx',
-              language: 'typescript',
-            },
-            {
-              title: 'JS',
-              code: './examples/shopify-section-link.example.ts',
-              language: 'typescript',
-            },
-          ],
-          title: 'Shopify Section Link',
-        },
-      },
-    ],
-  },
   related: [],
 };
 

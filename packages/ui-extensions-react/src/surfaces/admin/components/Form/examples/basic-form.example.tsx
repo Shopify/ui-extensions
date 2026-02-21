@@ -1,51 +1,31 @@
-import React, { useCallback, useState } from 'react';
-import {
-  reactExtension,
-  Form,
-  TextField,
-} from '@shopify/ui-extensions-react/admin';
-
-export default reactExtension("admin.product-details.block.render", () => <App />);
+import {reactExtension, useApi, Form, TextField, Button, BlockStack} from '@shopify/ui-extensions-react/admin';
 
 function App() {
-  const [value, setValue] = useState("");
-  const [error, setError] = useState('');
-
-  const onSubmit = useCallback(
-    async () => {
-      // API call to save the values
-      const res = await fetch('/save', {method:'POST', body: JSON.stringify({name: value})});
-      if (!res.ok) {
-        const json = await res.json();
-        const errors = json.errors.join(',');
-        setError(errors);
-      }
-    },
-    [value]
-  );
-
-  const onReset = useCallback(async () => {
-     // Reset to initial value
-     setValue('')
-     // Clear errors
-     setError('')
-  }, []);
-
-  const onInput = useCallback((nameValue) => {
-    if (!nameValue) {
-      setError("Please enter a name.");
-    }
-  }, [])
-
-  // Field values can only be updated on change when using Remote UI.
-  const onChange = useCallback((nameValue) => {
-    setValue(nameValue);
-  }, [])
-
+  const {data, close} = useApi('admin.product-details.action.render');
+  const productId = data.selected[0]?.id;
 
   return (
-    <Form id="form" onSubmit={onSubmit} onReset={onReset}>
-      <TextField label="name" value={value} onInput={onInput} onChange={onChange} error={error} />
+    <Form
+      onSubmit={async () => {
+        await fetch('/api/products/metadata', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({productId}),
+        });
+        close();
+      }}
+      onReset={() => close()}
+    >
+      <BlockStack gap>
+        <TextField label="Warehouse SKU" name="warehouseSku" required />
+        <TextField label="Storage location" name="location" />
+        <Button variant="primary">Save product metadata</Button>
+      </BlockStack>
     </Form>
   );
 }
+
+export default reactExtension(
+  'admin.product-details.action.render',
+  () => <App />,
+);

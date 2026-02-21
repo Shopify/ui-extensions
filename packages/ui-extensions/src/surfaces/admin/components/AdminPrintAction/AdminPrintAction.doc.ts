@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'adminprintaction-default.png',
     codeblock: {
-      title: 'Set the source URL of the print action extension.',
+      title: 'Generate product packing slip',
       tabs: [
         {
           title: 'React',
@@ -30,12 +30,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-adminprintaction.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          "Print a shipping label by passing format parameters in the `src` URL query string. This example constructs a URL with the product's numeric ID and a `4x6` format parameter, letting your print endpoint generate labels in the correct dimensions.",
+        codeblock: {
+          title: 'Print formatted shipping label',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/AdminPrintAction/examples/adminprintaction-label.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/adminprintaction-label.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Show a [ProgressIndicator](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/progressindicator) while your app generates a complex wholesale invoice. This example displays a spinner alongside a status message while the `src` endpoint prepares the invoice document with pricing and tax details.',
+        codeblock: {
+          title: 'Generate wholesale invoice with loading',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/AdminPrintAction/examples/adminprintaction-invoice.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/adminprintaction-invoice.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

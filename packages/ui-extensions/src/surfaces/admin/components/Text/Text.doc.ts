@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'text-default.png',
     codeblock: {
-      title: 'Simple Text example',
+      title: 'Highlight product pricing',
       tabs: [
         {
           title: 'React',
@@ -28,12 +28,55 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
+          title: 'TS',
           code: './examples/basic-text.example.ts',
-          language: 'js',
+          language: 'ts',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Communicate product status warnings with proper screen reader semantics using `fontStyle` and `accessibilityRole`. This example marks a draft status notice with `emphasis` and an action-required message with `strong`, so assistive technology conveys the visual urgency correctly.',
+        codeblock: {
+          title: 'Emphasize text for screen readers',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Text/examples/text-emphasis.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/text-emphasis.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'Prevent long product descriptions from breaking your layout using `textOverflow="ellipsis"`. This example truncates content that exceeds its container width, keeping the block extension UI compact while still displaying the beginning of the text.',
+        codeblock: {
+          title: 'Truncate long descriptions',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Text/examples/text-overflow.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'TS',
+              code: './examples/text-overflow.example.ts',
+              language: 'ts',
+            },
+          ],
+        },
+      },
+    ],
   },
   subSections: [
     {

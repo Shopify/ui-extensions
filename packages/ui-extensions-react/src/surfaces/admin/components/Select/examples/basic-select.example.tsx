@@ -1,45 +1,43 @@
-import React from 'react';
-import {
-  render,
-  Select,
-} from '@shopify/ui-extensions-react/admin';
-
-render('Playground', () => <App />);
+import {useState} from 'react';
+import {reactExtension, useApi, Select, Button, BlockStack} from '@shopify/ui-extensions-react/admin';
 
 function App() {
-  const [value, setValue] = React.useState('2');
+  const {data, close} = useApi('admin.product-details.action.render');
+  const productId = data.selected[0]?.id;
+  const [warehouse, setWarehouse] = useState('');
 
   return (
-    <Select
-      label="Country"
-      value={value}
-      onChange={setValue}
-      options={[
-        {
-          value: '1',
-          label: 'Australia',
-        },
-        {
-          value: '2',
-          label: 'Canada',
-        },
-        {
-          value: '3',
-          label: 'France',
-        },
-        {
-          value: '4',
-          label: 'Japan',
-        },
-        {
-          value: '5',
-          label: 'Nigeria',
-        },
-        {
-          value: '6',
-          label: 'United States',
-        },
-      ]}
-    />
+    <BlockStack>
+      <Select
+        label="Assign warehouse"
+        name="warehouse"
+        value={warehouse}
+        options={[
+          {label: 'East Coast — New York', value: 'nyc'},
+          {label: 'West Coast — Los Angeles', value: 'lax'},
+          {label: 'Central — Chicago', value: 'chi'},
+          {label: 'International — London', value: 'lon'},
+        ]}
+        onChange={setWarehouse}
+      />
+      <Button
+        variant="primary"
+        onPress={async () => {
+          await fetch('/api/products/warehouse', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({productId, warehouse}),
+          });
+          close();
+        }}
+      >
+        Assign warehouse
+      </Button>
+    </BlockStack>
   );
 }
+
+export default reactExtension(
+  'admin.product-details.action.render',
+  () => <App />,
+);
