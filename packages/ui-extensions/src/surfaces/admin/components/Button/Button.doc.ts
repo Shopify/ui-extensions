@@ -198,7 +198,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Set href to make buttons navigate like links while maintaining button styling. This example shows internal navigation, opening external URLs in new tabs, and triggering file downloads.',
+          'Set the `href` property to make buttons navigate like links while maintaining button styling. This example shows internal navigation, opening external URLs in new tabs, and triggering file downloads.',
         codeblock: {
           title: 'Use buttons for navigation and downloads',
           tabs: [
