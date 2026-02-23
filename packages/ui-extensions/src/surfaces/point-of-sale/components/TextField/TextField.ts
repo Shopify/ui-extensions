@@ -60,6 +60,7 @@ export type EmbeddedElementProps =
   | SuccessProps
   | PasswordProps;
 
+/** @publicDocs */
 export interface NewTextFieldProps extends InputProps {}
 
 /**

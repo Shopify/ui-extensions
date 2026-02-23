@@ -5,6 +5,7 @@ export interface OrderApi {
   order: OrderApiContent;
 }
 
+/** @publicDocs */
 export interface OrderApiContent {
   /**
    * The unique identifier for the order. Use for order lookups, implementing order-specific functionality, and integrating with external systems.

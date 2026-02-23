@@ -1,3 +1,4 @@
+/** @publicDocs */
 export interface NavigationApiContent {
   /**
    * Navigate to a route in current navigation tree. Pushes the specified screen if it isn't present in the navigation tree, goes back to a created screen otherwise. Use for implementing multi-screen workflows with parameter passing between screens.

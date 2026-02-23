@@ -107,6 +107,7 @@ export interface ListRow {
   onPress?: () => void;
 }
 
+/** @publicDocs */
 export interface ListProps {
   /**
    * A large display title shown at the top of the list.

@@ -1,3 +1,4 @@
+/** @publicDocs */
 export type VerticalSpacing =
   | 'HalfPoint'
   | 'ExtraSmall'
@@ -6,6 +7,7 @@ export type VerticalSpacing =
   | 'Large'
   | 'ExtraLarge';
 
+/** @publicDocs */
 export type HorizontalSpacing =
   | 'HalfPoint'
   | 'ExtraSmall'

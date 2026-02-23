@@ -46,6 +46,7 @@ export type ColorType =
   | 'TextInteractive'
   | 'TextHighlight';
 
+/** @publicDocs */
 export interface TextProps {
   /**
    * The typography variant that determines the size, weight, and styling of the text within the design system hierarchy.
