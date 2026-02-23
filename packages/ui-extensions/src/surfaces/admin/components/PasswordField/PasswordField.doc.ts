@@ -39,18 +39,15 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'password-field-default.png',
+    description:
+      'Securely collect sensitive credentials from users. This example pairs a label with masked input.',
     codeblock: {
-      title: 'Code',
+      title: 'Collect a password',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -59,94 +56,74 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a basic password field with a label, name, and required validation. Sets a minimum length of 8 characters and configures autocomplete for a new password.',
+              'Enforce password requirements before submission. This example configures a required field with minimum length validation and autocomplete for new passwords.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Set validation rules',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Shows a password field in an error state, displaying a custom error message when the password does not meet the minimum length requirement.',
+              "Communicate password problems clearly to users. This example displays an error message when the password doesn't meet length requirements.",
             codeblock: {
-              title: 'With error state',
+              title: 'Show validation errors',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates a password field with additional details providing guidance about password creation requirements.',
+              'Help users understand password requirements upfront. This example adds helper text beneath the field explaining what makes a valid password.',
             codeblock: {
-              title: 'With helper text',
+              title: 'Add helper text',
               tabs: [
                 {
                   code: './examples/with-helper-text.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-helper-text.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Shows how the password field can be integrated into a form alongside other input fields, such as an email field, to create a complete login or registration form.',
+              'Create a complete authentication form. This example combines a password field with an email field for login or registration.',
             codeblock: {
-              title: 'In form layout',
+              title: 'Build a login form',
               tabs: [
                 {
                   code: './examples/in-form-layout.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/in-form-layout.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates a password field with dynamic password strength validation, showing real-time feedback on password complexity requirements.',
+              'Display a password requirements checklist alongside the field. This example lists requirements like character length and case requirements.',
             codeblock: {
-              title: 'With password strength requirements',
+              title: 'Display a requirement checklist',
               tabs: [
                 {
                   code: './examples/with-password-strength-requirements.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-password-strength-requirements.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
