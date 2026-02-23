@@ -147,7 +147,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Create icon-only buttons to save space in dense interfaces like toolbars and action bars. This example shows multiple icon-only buttons with accessibilityLabel for screen reader support.',
+          'Create icon-only buttons to save space in dense interfaces like toolbars and action bars. This example shows multiple icon-only buttons with an `accessibilityLabel` for screen reader support.',
         codeblock: {
           title: 'Create compact icon-only buttons for toolbars',
           tabs: [
