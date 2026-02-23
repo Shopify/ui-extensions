@@ -1,5 +1,8 @@
 import type {Session} from '../../types/session';
 
+/**
+ * @publicDocs
+ */
 export interface SessionApiContent {
   /**
    * Provides comprehensive information about the current POS session including shop details, user authentication, location data, staff member information, currency settings, and POS version. This data is static for the duration of the session and updates when users switch locations or staff members change.

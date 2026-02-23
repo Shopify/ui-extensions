@@ -1,5 +1,8 @@
 import {PinPadOptions, PinValidationResult} from '../types/pin-pad';
 
+/**
+ * @publicDocs
+ */
 export interface PinPadApiContent {
   /**
    * Shows a PIN pad to the user in a modal dialog. The `onSubmit` function is called when the PIN is submitted and should validate the PIN, returning `'accept'` or `'reject'`.

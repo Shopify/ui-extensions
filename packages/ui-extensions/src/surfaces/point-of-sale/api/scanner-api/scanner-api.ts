@@ -41,6 +41,9 @@ export interface ScannerData {
   current: ReadonlySignalLike<ScannerSubscriptionResult>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ScannerApiContent {
   /**
    * Access current scan data and subscribe to new scan events. Use to receive real-time scan results.

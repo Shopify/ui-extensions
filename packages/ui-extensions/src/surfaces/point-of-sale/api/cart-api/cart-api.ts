@@ -27,6 +27,9 @@ export type CartDiscountType = 'Percentage' | 'FixedAmount' | 'Code';
  */
 export type LineItemDiscountType = 'Percentage' | 'FixedAmount';
 
+/**
+ * @publicDocs
+ */
 export interface CartApiContent {
   /**
    * Provides read-only access to the current cart state and allows subscribing to cart changes. The `value` property provides the current cart state, and `subscribe` allows listening to changes with improved performance and memory management.

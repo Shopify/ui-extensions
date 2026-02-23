@@ -5,6 +5,9 @@ export interface CustomerApi {
   customer: CustomerApiContent;
 }
 
+/**
+ * @publicDocs
+ */
 export interface CustomerApiContent {
   /**
    * The unique identifier for the customer. Use for customer lookups, applying customer-specific pricing, enabling personalized features, and integrating with external systems.
