@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/** @publicDocs */
 export interface SelectableProps {
   /**
    * The callback function that's executed when the user taps or presses the selectable component. This is the primary way to handle user interactions with the wrapped content. The function receives no parameters and should contain the logic for what happens when the selection occurs, such as navigation, state updates, or triggering other actions.

@@ -1,3 +1,4 @@
+/** @publicDocs */
 export type AutoCapitalizationType =
   | 'none'
   | 'sentences'

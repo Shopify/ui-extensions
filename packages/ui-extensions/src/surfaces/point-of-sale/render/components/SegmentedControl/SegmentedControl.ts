@@ -17,6 +17,7 @@ export interface Segment {
   disabled: boolean;
 }
 
+/** @publicDocs */
 export interface SegmentedControlProps {
   /**
    * An array of segment objects that define the available options in the segmented control.

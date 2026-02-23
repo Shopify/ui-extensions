@@ -23,6 +23,7 @@ export interface ScannerSubscriptionResult {
   source?: ScannerSource;
 }
 
+/** @publicDocs */
 export interface ScannerApiContent {
   /**
    * Subscribe to scan events to receive barcode and QR code data when scanned. Supports one subscription at a time. Use for receiving real-time scan results.

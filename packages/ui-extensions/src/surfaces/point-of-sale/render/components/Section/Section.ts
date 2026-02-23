@@ -14,6 +14,7 @@ export interface SectionHeaderAction {
   onPress: () => void;
 }
 
+/** @publicDocs */
 export interface SectionProps {
   /**
    * The title text displayed at the top of the section to describe its content.

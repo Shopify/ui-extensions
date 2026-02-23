@@ -2,7 +2,9 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {AutoCapitalizationType} from '../shared/auto-capitalization-type';
 import type {BaseTextFieldProps} from '../shared/BaseTextField';
 
+/** @publicDocs */
 export type InputType = 'text' | 'number' | 'currency' | 'giftcard' | 'email';
+/** @publicDocs */
 export interface FormattedTextFieldProps extends BaseTextFieldProps {
   /**
    * Defines the input type options that determine which specialized keyboard layout is displayed.

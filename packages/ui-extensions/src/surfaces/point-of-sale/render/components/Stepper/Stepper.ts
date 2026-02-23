@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/** @publicDocs */
 export interface StepperProps {
   /**
    * The initial value of the stepper that sets the starting numeric value when the component is first rendered.
