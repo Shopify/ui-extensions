@@ -72,9 +72,10 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'select-default.png',
+    description:
+      'Let users pick one option from a predefined list. This example shows a labeled dropdown with selectable options. Click to interact with the preview.',
     codeblock: {
-      title: 'Code',
+      title: 'Create a dropdown menu',
       tabs: [
         {
           code: './examples/default.html',
@@ -92,13 +93,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'A simple select dropdown with pre-selected value for product sorting options.',
+              'Provide sorting controls for lists or tables. This example shows a dropdown with sort options and a pre-selected default value. Click to interact with the preview.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Add sorting options',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
@@ -114,9 +115,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Select dropdown with helpful placeholder text guiding category selection.',
+              'Guide users before they make a selection. This example shows placeholder text that describes what the user should choose. Click to interact with the preview.',
             codeblock: {
-              title: 'With placeholder',
+              title: 'Add placeholder text',
               tabs: [
                 {
                   code: './examples/with-placeholder.html',
@@ -132,9 +133,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Select in error state showing specific business context and actionable error message.',
+              'Communicate selection problems clearly to users. This example shows an error message when a required selection is missing. Click to interact with the preview.',
             codeblock: {
-              title: 'With error state',
+              title: 'Show validation errors',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
@@ -150,9 +151,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Grouped select options organized by geographical regions for international shipping.',
+              'Make long option lists easier to scan. This example shows options organized into logical groups like geographical regions. Click to interact with the preview.',
             codeblock: {
-              title: 'With option groups',
+              title: 'Group options by category',
               tabs: [
                 {
                   code: './examples/with-option-groups.html',
@@ -168,9 +169,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Select dropdown with sort icon for filtering order management views.',
+              'Visually indicate the purpose of a select field. This example shows a sort icon that signals filtering functionality. Click to interact with the preview.',
             codeblock: {
-              title: 'With icon',
+              title: 'Add an icon',
               tabs: [
                 {
                   code: './examples/with-icon.html',
@@ -186,9 +187,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Select in disabled state preventing user interaction with pre-selected value.',
+              'Lock a selection when changes aren\'t allowed. This example shows a disabled dropdown that preserves its selected value but prevents interaction. Click to interact with the preview.',
             codeblock: {
-              title: 'Disabled state',
+              title: 'Disable the select',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
@@ -197,6 +198,24 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/disabled-state.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Respond to user selections with custom logic. This example shows the onChange event triggering an action when the user picks an option. Click to interact with the preview.',
+            codeblock: {
+              title: 'Handle selection changes',
+              tabs: [
+                {
+                  code: './examples/handle-selection-change.jsx',
                   language: 'preview-jsx',
                 },
               ],

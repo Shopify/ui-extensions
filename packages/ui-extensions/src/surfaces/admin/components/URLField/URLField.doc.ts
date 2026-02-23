@@ -29,7 +29,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   definitions: [
     {
-      title: 'URLField',
+      title: 'Properties',
       description:
         'Configure the following properties on the URL field component.',
       type: 'URLField',
@@ -42,12 +42,12 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'urlfield-default.png',
+    description:
+      'Capture web addresses from users with URL-specific input. This example shows a labeled field with placeholder text guiding the expected format.',
     codeblock: {
-      title: 'Code',
+      title: 'Collect a URL',
       tabs: [
         {
-          title: 'HTML',
           code: './examples/default.html',
           language: 'html',
         },
@@ -62,31 +62,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple URL input field with a label and placeholder, showing the minimal configuration needed for collecting a URL.',
+              'Enforce URL requirements before form submission. This example shows required validation with length constraints and custom error messages.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows a URL input field with built-in validation, including required status, minimum and maximum length constraints, and a custom error message for invalid inputs.',
-            codeblock: {
-              title: 'With validation',
+              title: 'Set validation constraints',
               tabs: [
                 {
                   code: './examples/with-validation.html',
@@ -102,9 +84,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a URL field pre-populated with a default value, set to read-only mode to prevent user modifications.',
+              'Display a URL for reference without allowing changes. This example shows a read-only field pre-populated with a store URL.',
             codeblock: {
-              title: 'With default value',
+              title: 'Pre-fill a URL',
               tabs: [
                 {
                   code: './examples/with-default-value.html',
@@ -120,9 +102,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows a URL field in a disabled state, displaying a pre-filled URL that cannot be edited by the user.',
+              'Display a URL that users can view but not change. This example shows a disabled field with a pre-filled value that prevents editing.',
             codeblock: {
-              title: 'Disabled state',
+              title: 'Show a disabled field',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
@@ -131,6 +113,24 @@ const data: AdminReferenceEntityTemplateSchema = {
 
                 {
                   code: './examples/disabled-state.jsx',
+                  language: 'preview-jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Provide immediate feedback on URL validity. This example shows real-time validation that checks the URL format as the user types.',
+            codeblock: {
+              title: 'Validate URL in real time',
+              tabs: [
+                {
+                  code: './examples/validate-url-input.jsx',
                   language: 'preview-jsx',
                 },
               ],
