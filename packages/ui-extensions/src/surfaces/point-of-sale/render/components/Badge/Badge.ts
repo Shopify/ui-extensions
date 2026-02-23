@@ -8,6 +8,7 @@ export type BadgeVariant =
   | 'highlight';
 
 export type BadgeStatus = 'empty' | 'partial' | 'complete';
+/** @publicDocs */
 export interface BadgeProps {
   /**
    * The text content displayed within the badge. Keep this concise and descriptive to clearly communicate status or category information. Examples include "Paid," "Pending," "Out of Stock," or "VIP Customer."

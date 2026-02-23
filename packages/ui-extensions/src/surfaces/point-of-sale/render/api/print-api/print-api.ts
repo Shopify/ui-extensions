@@ -1,5 +1,6 @@
 /**
  * Access the print API for printing functionality
+ * @publicDocs
  */
 export interface PrintApiContent {
   /**
