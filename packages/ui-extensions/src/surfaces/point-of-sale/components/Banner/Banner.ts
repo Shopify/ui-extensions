@@ -2,6 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 export type BannerVariant = 'confirmation' | 'alert' | 'error' | 'information';
 
+/** @publicDocs */
 export interface BannerProps {
   /**
    * The title text displayed prominently on the banner. This should be concise and clearly communicate the main message or purpose of the banner to merchants.

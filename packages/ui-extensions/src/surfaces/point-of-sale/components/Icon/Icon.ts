@@ -96,6 +96,7 @@ export type IconName =
  */
 export type IconSize = 'minor' | 'major' | 'spot' | 'caption' | 'badge';
 
+/** @publicDocs */
 export interface IconProps {
   /**
    * A name used to render the icon. Choose from the available icon set including commerce-specific symbols like `'cart'`, `'payment'`, `'search'`, navigation arrows, and system indicators.

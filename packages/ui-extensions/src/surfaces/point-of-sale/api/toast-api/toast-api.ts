@@ -10,6 +10,7 @@ export interface ShowToastOptions {
   duration?: number;
 }
 
+/** @publicDocs */
 export interface ToastApiContent {
   /**
    * Displays a toast notification with the specified text content. The message appears as a temporary overlay that automatically dismisses after the specified duration. Use for providing immediate user feedback, confirming actions, or communicating status updates without interrupting the user's workflow.

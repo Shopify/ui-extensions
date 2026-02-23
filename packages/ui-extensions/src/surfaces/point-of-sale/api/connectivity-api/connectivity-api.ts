@@ -16,6 +16,7 @@ export interface ConnectivityState {
   internetConnected: ConnectivityStateSeverity;
 }
 
+/** @publicDocs */
 export interface ConnectivityApiContent {
   /**
    * Creates a subscription to changes in connectivity. Provides an initial value and a callback to subscribe to value changes. Use for implementing offline-aware functionality and reactive connectivity handling.

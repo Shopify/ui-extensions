@@ -5,6 +5,7 @@ export interface DraftOrderApi {
   draftOrder: DraftOrderApiContent;
 }
 
+/** @publicDocs */
 export interface DraftOrderApiContent {
   /**
    * The unique identifier for the draft order. Use for draft order lookups, implementing order-specific functionality, and integrating with external systems.

@@ -1,5 +1,6 @@
 import type {RemoteSubscribable} from '@remote-ui/async-subscription';
 
+/** @publicDocs */
 export interface LocaleApiContent {
   /**
    * Provides the current IETF-formatted locale (for example, "en-US") and allows you to subscribe to locale changes. Supports only one subscription at a time. To enable multiple subscriptions, use `makeStatefulSubscribable` on the `RemoteSubscribable` object. Using `makeStatefulSubscribable` or related hooks counts as an active subscription.

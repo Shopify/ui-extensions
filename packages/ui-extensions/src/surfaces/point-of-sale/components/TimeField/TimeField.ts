@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import {InputProps} from '../shared/InputField';
 
+/** @publicDocs */
 export interface TimeFieldProps
   extends Pick<
     InputProps,
