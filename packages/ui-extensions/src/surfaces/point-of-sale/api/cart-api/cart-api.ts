@@ -11,6 +11,7 @@ import type {
 /**
  * Access and modify the merchant’s current cart.
  */
+/** @publicDocs */
 export interface CartApi {
   cart: CartApiContent;
 }
@@ -30,6 +31,7 @@ export type CartDiscountType = 'Percentage' | 'FixedAmount' | 'Code';
 
 export type LineItemDiscountType = 'Percentage' | 'FixedAmount';
 
+/** @publicDocs */
 export interface CartApiContent {
   /** Provides a subscription to POS cart changes.
    * Provides an initial value and a callback to subsribe to value changes. Currently supports only one subscription.

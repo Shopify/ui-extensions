@@ -11,6 +11,7 @@ export type ProductSortType =
 /**
  * Base interface for pagination.
  */
+/** @publicDocs */
 export interface PaginationParams {
   /**
    * Specifies the number of results to be returned in this page. The maximum number of items that will be returned is 50.
@@ -25,6 +26,7 @@ export interface PaginationParams {
 /**
  * Interface for product search
  */
+/** @publicDocs */
 export interface ProductSearchParams extends PaginationParams {
   /**
    * The search term to be used to search for POS products.
@@ -36,6 +38,7 @@ export interface ProductSearchParams extends PaginationParams {
   sortType?: ProductSortType;
 }
 
+/** @publicDocs */
 export interface ProductSearchApiContent {
   /** Search for products on the POS device.
    * @param searchParams The parameters for the product search.
@@ -89,6 +92,7 @@ export interface ProductSearchApiContent {
 /**
  * Access Point of Sale's native product search functionality.
  */
+/** @publicDocs */
 export interface ProductSearchApi {
   productSearch: ProductSearchApiContent;
 }

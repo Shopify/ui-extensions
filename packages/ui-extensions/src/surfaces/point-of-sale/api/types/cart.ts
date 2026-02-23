@@ -1,5 +1,6 @@
 import {CountryCode} from './country-code';
 
+/** @publicDocs */
 export interface Cart {
   subtotal: string;
   taxTotal: string;
@@ -12,6 +13,7 @@ export interface Cart {
   properties: Record<string, string>;
 }
 
+/** @publicDocs */
 export interface Customer {
   id: number;
   email?: string;
@@ -20,6 +22,7 @@ export interface Customer {
   note?: string;
 }
 
+/** @publicDocs */
 export interface LineItem {
   uuid: string;
   price?: number;
@@ -35,6 +38,7 @@ export interface LineItem {
   isGiftCard: boolean;
 }
 
+/** @publicDocs */
 export interface Discount {
   amount: number;
   discountDescription?: string;
@@ -44,6 +48,7 @@ export interface Discount {
 /**
  * Parameters for adding custom properties to a line item.
  */
+/** @publicDocs */
 export interface SetLineItemPropertiesInput {
   /**
    * The uuid belonging to the line item which should receive the custom properties.
@@ -58,6 +63,7 @@ export interface SetLineItemPropertiesInput {
 /**
  * Parameters for adding a line item discount.
  */
+/** @publicDocs */
 export interface SetLineItemDiscountInput {
   /**
    * The uuid belonging to the line item which should receive the discount.
@@ -69,6 +75,7 @@ export interface SetLineItemDiscountInput {
   lineItemDiscount: LineItemDiscount;
 }
 
+/** @publicDocs */
 export interface LineItemDiscount {
   /**
    * The title of the line item discount.
@@ -84,6 +91,7 @@ export interface LineItemDiscount {
   amount: string;
 }
 
+/** @publicDocs */
 export interface CustomSale {
   quantity: number;
   title: string;
@@ -91,6 +99,7 @@ export interface CustomSale {
   taxable: boolean;
 }
 
+/** @publicDocs */
 export interface Address {
   address1?: string;
   address2?: string;

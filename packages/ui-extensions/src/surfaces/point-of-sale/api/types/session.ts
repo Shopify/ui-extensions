@@ -1,3 +1,4 @@
+/** @publicDocs */
 export interface Session {
   /**
    * The shop ID associated with the shop currently logged into POS.

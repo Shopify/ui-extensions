@@ -1,6 +1,7 @@
 /**
  * Interface to access the order
  */
+/** @publicDocs */
 export interface OrderApi {
   order: OrderAPIContent;
 }
@@ -8,6 +9,7 @@ export interface OrderApi {
 /**
  * Interface for Order details
  */
+/** @publicDocs */
 export interface OrderAPIContent {
   /**
    * The unique identifier for the order

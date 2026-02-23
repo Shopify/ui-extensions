@@ -1,6 +1,7 @@
 /**
  * Contains a page of fetched results.
  */
+/** @publicDocs */
 export interface PaginatedResult<T> {
   /**
    * The items returned from the fetch.

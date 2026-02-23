@@ -2,6 +2,7 @@ import type {RemoteSubscribable} from '@remote-ui/async-subscription';
 
 export type ConnectivityStateSeverity = 'Connected' | 'Disconnected';
 
+/** @publicDocs */
 export interface ConnectivityState {
   /**
    * Whether the device is connected to the internet
@@ -9,6 +10,7 @@ export interface ConnectivityState {
   internetConnected: ConnectivityStateSeverity;
 }
 
+/** @publicDocs */
 export interface ConnectivityApiContent {
   /**
    * Creates a subscription to changes in connectivity.
@@ -20,6 +22,7 @@ export interface ConnectivityApiContent {
 /**
  * Access information about the device connectivity
  */
+/** @publicDocs */
 export interface ConnectivityApi {
   connectivity: ConnectivityApiContent;
 }

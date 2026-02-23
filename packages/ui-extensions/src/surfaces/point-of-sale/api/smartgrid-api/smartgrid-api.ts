@@ -1,6 +1,7 @@
 /**
  * @deprecated Use `ActionApi` instead.
  */
+/** @publicDocs */
 export interface SmartGridApiContent {
   /** Presents the `pos.home.modal.render` extension target on top of the Smart Grid.
    */
@@ -12,6 +13,7 @@ export interface SmartGridApiContent {
  *
  * @deprecated Use `ActionApi` instead.
  */
+/** @publicDocs */
 export interface SmartGridApi {
   smartGrid: SmartGridApiContent;
 }

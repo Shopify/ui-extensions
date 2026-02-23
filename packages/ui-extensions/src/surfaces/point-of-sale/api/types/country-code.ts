@@ -1,5 +1,6 @@
 /* eslint @shopify/typescript/prefer-pascal-case-enums: off */
 
+/** @publicDocs */
 export enum CountryCode {
   AF = 'AF',
   AX = 'AX',

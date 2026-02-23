@@ -1,5 +1,6 @@
 import type {Session} from '../types/session';
 
+/** @publicDocs */
 export interface SessionApiContent {
   /**
    * Access information on the current POS session.
@@ -15,6 +16,7 @@ export interface SessionApiContent {
 /**
  * Access information on the current Session, including data on the current shop, user, staff and location.
  */
+/** @publicDocs */
 export interface SessionApi {
   session: SessionApiContent;
 }

@@ -1,7 +1,9 @@
+/** @publicDocs */
 export interface ShowToastOptions {
   duration?: number;
 }
 
+/** @publicDocs */
 export interface ToastApiContent {
   /**
    * Show a toast.
@@ -11,6 +13,7 @@ export interface ToastApiContent {
   show: (content: string, options?: ShowToastOptions) => void;
 }
 
+/** @publicDocs */
 export interface ToastApi {
   toast: ToastApiContent;
 }

@@ -1,3 +1,4 @@
+/** @publicDocs */
 export interface DeviceApiContent {
   /**
    * The name of the device
@@ -16,6 +17,7 @@ export interface DeviceApiContent {
 /**
  * Access information about the device, like name and ID
  */
+/** @publicDocs */
 export interface DeviceApi {
   device: DeviceApiContent;
 }

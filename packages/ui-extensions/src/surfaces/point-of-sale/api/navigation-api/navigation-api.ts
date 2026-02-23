@@ -1,3 +1,4 @@
+/** @publicDocs */
 export interface NavigationApiContent {
   /** Navigate to a route in current navigation tree.
    * Pushes the specified screen if it isn't present in the navigation tree, goes back to a created screen otherwise.
@@ -16,6 +17,7 @@ export interface NavigationApiContent {
 /**
  * Access the navigation API for navigation functionality from a full screen modal.
  */
+/** @publicDocs */
 export interface NavigationApi {
   navigation: NavigationApiContent;
 }

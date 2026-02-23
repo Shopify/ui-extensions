@@ -1,3 +1,4 @@
+/** @publicDocs */
 export interface Product {
   id: number;
   createdAt: string;
@@ -24,6 +25,7 @@ export interface Product {
   onlineStoreUrl?: string;
 }
 
+/** @publicDocs */
 export interface ProductVariant {
   id: number;
   createdAt: string;
@@ -47,6 +49,7 @@ export interface ProductVariant {
   position: number;
 }
 
+/** @publicDocs */
 export interface ProductVariantOption {
   name: string;
   value: string;
@@ -54,6 +57,7 @@ export interface ProductVariantOption {
 
 export type ProductVariantInventoryPolicy = 'DENY' | 'CONTINUE';
 
+/** @publicDocs */
 export interface ProductOption {
   id: number;
   name: string;

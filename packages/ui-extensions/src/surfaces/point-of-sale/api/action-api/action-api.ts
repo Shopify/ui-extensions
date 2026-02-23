@@ -1,3 +1,4 @@
+/** @publicDocs */
 export interface ActionApiContent {
   /** Presents the `action-overlay.render` extension target on top of present view.
    *
@@ -10,6 +11,7 @@ export interface ActionApiContent {
 /**
  * Access the Action API to present your app in a full screen modal.
  */
+/** @publicDocs */
 export interface ActionApi {
   action: ActionApiContent;
 }
