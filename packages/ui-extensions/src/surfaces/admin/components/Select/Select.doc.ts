@@ -187,7 +187,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Lock a selection when changes aren\'t allowed. This example shows a disabled dropdown that preserves its selected value but prevents interaction. Click to interact with the preview.',
+              "Lock a selection when changes aren't allowed. This example shows a disabled dropdown that preserves its selected value but prevents interaction. Click to interact with the preview.",
             codeblock: {
               title: 'Disable the select',
               tabs: [
