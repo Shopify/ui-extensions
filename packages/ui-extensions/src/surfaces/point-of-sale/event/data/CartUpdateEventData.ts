@@ -3,6 +3,7 @@ import {Cart} from '../../api';
 
 /**
  * The data object provided to cart update extension targets. Contains the current cart state along with device, session, and connectivity information. This data is passed to extensions whenever the cart changes, enabling real-time cart monitoring and cart-based business logic.
+ * @publicDocs
  */
 export interface CartUpdateEventData extends BaseData {
   /**

@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import type {InputProps} from '../shared/InputField';
 
+/** @publicDocs */
 export interface NumberFieldProps extends InputProps {
   /**
    * The virtual keyboard layout to display:

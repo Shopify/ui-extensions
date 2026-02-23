@@ -23,6 +23,7 @@ export type FillResizeMode =
   | 'repeat'
   | 'center';
 
+/** @publicDocs */
 export interface ImageProps {
   /**
    * The source of the image to be displayed. Provide a valid URL to a remote image or a local file resource. When no `src` is provided or the image is loading, a placeholder will be rendered.

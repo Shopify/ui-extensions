@@ -6,6 +6,7 @@ import type {ReprintReceiptData} from './ReprintReceiptData';
 
 /**
  * The data object provided to receipt targets containing transaction details.
+ * @publicDocs
  */
 export interface TransactionCompleteData extends BaseData {
   /**

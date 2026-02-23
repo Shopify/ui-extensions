@@ -1,3 +1,4 @@
+/** @publicDocs */
 export interface PrintApiContent {
   /**
    * Triggers a print dialog for the specified document source. The `print()` method accepts either:

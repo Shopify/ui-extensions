@@ -21,6 +21,7 @@ export type Spacing =
 /**
  * Deprecated vertical spacing values using named size keywords.
  * @deprecated Use `SizeKeyword` from `./sizes` instead for consistent spacing across the design system.
+ * @publicDocs
  */
 export type VerticalSpacing =
   | 'HalfPoint'
@@ -33,6 +34,7 @@ export type VerticalSpacing =
 /**
  * Deprecated horizontal spacing values using named size keywords.
  * @deprecated Use `SizeKeyword` from `./sizes` instead for consistent spacing across the design system.
+ * @publicDocs
  */
 export type HorizontalSpacing =
   | 'HalfPoint'

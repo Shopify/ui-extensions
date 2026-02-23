@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/** @publicDocs */
 export interface SectionHeaderProps {
   /**
    * The title text displayed in the section header. Provide clear, descriptive text that accurately represents the content section below.

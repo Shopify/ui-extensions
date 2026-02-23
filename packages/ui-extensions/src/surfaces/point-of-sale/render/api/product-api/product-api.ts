@@ -5,6 +5,7 @@ export interface ProductApi {
   product: ProductApiContent;
 }
 
+/** @publicDocs */
 export interface ProductApiContent {
   /**
    * The unique identifier for the product. Use for product lookups, implementing product-specific functionality, and integrating with external systems.
