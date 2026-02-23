@@ -19,6 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Actions',
   defaultExample: {
     image: 'link-default.png',
+    description:
+      'Navigate to extension settings and a sync dashboard without leaving the admin. This example uses `Link` with `extension://` URLs to open internal extension pages from a product details block.',
     codeblock: {
       title: 'Navigate to app pages',
       tabs: [

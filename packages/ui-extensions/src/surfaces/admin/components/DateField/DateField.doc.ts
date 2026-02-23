@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'datefield-default.png',
+    description:
+      'Schedule a product launch date and save it from an action modal. This example uses `DateField` to capture the date, with a [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that schedules the launch.',
     codeblock: {
       title: 'Schedule product launch date',
       tabs: [

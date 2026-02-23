@@ -12,6 +12,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Typography and content',
   defaultExample: {
     image: 'headinggroup-default.png',
+    description:
+      'Create a two-level title hierarchy for accessible screen reader navigation. This example uses `HeadingGroup` to nest a subsection under a parent [Heading](/docs/api/admin-extensions/{API_VERSION}/components/typography-and-content/heading), so screen readers announce the correct levels.',
     codeblock: {
       title: 'Group related heading content',
       tabs: [
