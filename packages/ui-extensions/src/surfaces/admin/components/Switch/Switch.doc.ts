@@ -91,7 +91,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Keep switches accessible when labels aren\'t visually needed. This example shows a visually hidden label that screen readers can still announce.',
+              "Keep switches accessible when labels aren't visually needed. This example shows a visually hidden label that screen readers can still announce.",
             codeblock: {
               title: 'Hide the label visually',
               tabs: [
@@ -104,7 +104,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Communicate switch-related problems clearly. This example shows helper text with an error message when a required switch isn\'t enabled.',
+              "Communicate switch-related problems clearly. This example shows helper text with an error message when a required switch isn't enabled.",
             codeblock: {
               title: 'Show validation errors',
               tabs: [

@@ -72,7 +72,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Communicate password problems clearly to users. This example shows an error message when the password doesn\'t meet length requirements.',
+              "Communicate password problems clearly to users. This example shows an error message when the password doesn't meet length requirements.",
             codeblock: {
               title: 'Show validation errors',
               tabs: [
