@@ -54,7 +54,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Present a group of options for merchants to choose from using radio buttons. This example shows a single-select choice list with a label, help text, and an onChange handler.',
+          'Present a group of options for merchants to choose from using radio buttons. This example shows a single-select choice list component with a label, help text, and an `onChange` handler.',
         image: 'choicelist-default.png',
         codeblock: {
           title: 'Add a single-select choice list',
