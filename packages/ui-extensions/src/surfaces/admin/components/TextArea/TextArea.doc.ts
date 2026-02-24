@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'textarea-default.png',
+    description:
+      'Write internal product notes and save them from an action modal. This example uses `TextArea` with a `rows` prop to set the input height, and a [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that saves the notes.',
     codeblock: {
       title: 'Collect internal product notes',
       tabs: [
