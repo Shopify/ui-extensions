@@ -8,42 +8,50 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Identifying items visually in lists, tables, or cards.
+- Seeing a preview of images before uploading or publishing.
+- Distinguishing between similar items by their appearance.
+- Confirming the correct item is selected.`,
+    },
+    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- **Design for square cropping:** Thumbnails automatically crop images to a 1:1 aspect ratio from the center. If your images aren't square, important content near the edges might be cut off.
-- **Maintain visual consistency in groups:** Use the same thumbnail size throughout a single list, table, or grid. Mixing sizes creates visual chaos and makes interfaces harder to scan.
-- **Always provide descriptive alternative text:** Write alt text that describes the image content, not generic labels like "thumbnail" or "product image." Good alt text helps all merchants understand what they're looking at.
-- **Choose appropriate sizes for your context:** Smaller thumbnails work better in dense layouts like tables, while larger sizes suit product-focused interfaces. Consider the merchant's task and the information density when choosing a size.`,
+      sectionContent: `- \`small-200\`: use in very small areas.
+- \`small\`: use in small areas.
+- \`base\`: use as the default size.
+- \`large\`: use when thumbnail is a focal point.`,
     },
     {
-      title: 'Limitations',
+      title: 'Content guidelines',
       type: 'Generic' as const,
-      anchorLink: 'limitations',
-      sectionContent: `- Thumbnails always render as 1:1 squares and will crop non-square images to fit. The component uses center cropping, which might cut off important image details.
-- Images can be loaded from remote URLs or local file resources. Cross-origin images require proper CORS headers from the image host.
-- The component shows a generic placeholder icon when images fail to load or no source is provided. Custom placeholder graphics or branded fallbacks aren't available.
-- Thumbnails don't include built-in lazy loading. In long lists with many thumbnails, all images load immediately, which might impact performance.`,
+      anchorLink: 'content-guidelines',
+      sectionContent: `Alternative text should be accurate, concise, and descriptive:
+- Use "Image of", "Photo of" prefix.
+- Be primary visual content: "Image of a woman with curly brown hair smiling".
+- Include relevant emotions: "Image of a woman laughing with her hand on her face".`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the thumbnail component.',
+      description: '',
       type: 'Thumbnail',
     },
     {
       title: 'Events',
       description:
-'The thumbnail component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The thumbnail component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ThumbnailEvents',
     },
   ],
   defaultExample: {
     image: 'thumbnail-default.png',
     description:
-      'Display small preview images for products or items. This example shows a basic thumbnail with source URL and alt text for accessibility.',
+      'Display small preview images for products or items. This example presents a basic thumbnail with source URL and alt text for accessibility.',
     codeblock: {
       title: 'Display a thumbnail',
       tabs: [
@@ -63,7 +71,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Show a placeholder when no image is available. This example shows a thumbnail without a source that displays a default icon.',
+              'Show a placeholder when no image is available. This example displays a thumbnail without a source that renders a default icon.',
             codeblock: {
               title: 'Show an empty state',
               tabs: [
@@ -77,7 +85,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Adapt thumbnail prominence to different contexts. This example shows `small-200`, `base`, and `large` sizes in a vertical stack.',
+              'Adapt thumbnail prominence to different contexts. This example displays `small-200`, `base`, and `large` sizes in a vertical stack.',
             codeblock: {
               title: 'Adjust the size',
               tabs: [
