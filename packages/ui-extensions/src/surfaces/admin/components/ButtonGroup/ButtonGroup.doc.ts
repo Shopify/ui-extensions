@@ -36,7 +36,6 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     examples: [
       {
-        image: 'button-default.png',
         description:
           'Group related buttons together with a primary action and secondary options. This example shows a button group with a save button and a cancel button using the slot layout.',
         codeblock: {

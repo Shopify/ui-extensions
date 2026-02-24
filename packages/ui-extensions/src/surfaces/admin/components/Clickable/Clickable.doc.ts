@@ -40,7 +40,6 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     examples: [
       {
-        image: 'clickable-default.png',
         description:
           "Build custom interactive elements with flexible styling that [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) or [link](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/link) don't support. This example shows two clickable elements with different background and border styles.",
         codeblock: {

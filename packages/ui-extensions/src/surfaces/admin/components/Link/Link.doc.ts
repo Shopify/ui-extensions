@@ -45,7 +45,6 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     examples: [
       {
-        image: 'link-default.png',
         description:
           'Add an inline link to let merchants navigate to another page. This example shows a basic text link with an `href` property.',
         codeblock: {

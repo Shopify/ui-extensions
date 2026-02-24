@@ -43,7 +43,6 @@ const data: AdminReferenceEntityTemplateSchema = {
       {
         description:
           'Create an interactive chip that merchants can click to trigger an action. This example shows a clickable chip component with default styling.',
-        image: 'clickable-chip-default.png',
         codeblock: {
           title: 'Add a clickable chip with default styling',
           tabs: [
