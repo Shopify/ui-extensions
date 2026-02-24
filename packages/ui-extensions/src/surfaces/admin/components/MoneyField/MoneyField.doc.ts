@@ -42,18 +42,15 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'moneyfield-default.png',
+    description:
+      'Capture monetary values with automatic currency formatting. This example pairs a label with placeholder text and helper details.',
     codeblock: {
-      title: 'Code',
+      title: 'Collect a currency value',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -62,95 +59,46 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple money field with a label, initial value, and numeric constraints.',
+              'Set input boundaries for valid amounts. This example configures min/max limits to constrain the accepted value range.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Add a label and constraints',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Showcases a money field with explicit minimum and maximum value limits, and a detailed description for user guidance.',
+              'Communicate input problems clearly to users. This example displays an error message when the entered value is invalid.',
             codeblock: {
-              title: 'With validation limits',
-              tabs: [
-                {
-                  code: './examples/with-validation-limits.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-validation-limits.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Illustrates a money field demonstrating basic error handling and validation.',
-            codeblock: {
-              title: 'Basic field',
+              title: 'Handle validation errors',
               tabs: [
                 {
                   code: './examples/basic-field.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-field.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Displays multiple money fields in a vertical stack, showing how to integrate multiple currency inputs in a form with varied details and constraints.',
+              'Collect multiple monetary values in a single form. This example groups money fields for price, compare-at price, and cost with individual constraints.',
             codeblock: {
-              title: 'Currency formatting with form integration',
+              title: 'Combine multiple fields in a form',
               tabs: [
                 {
                   code: './examples/currency-formatting-with-form-integration.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/currency-formatting-with-form-integration.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-        ],
-      },
-      {
-        title: 'Form validation',
-        examples: [
-          {
-            description:
-              'Interactive example showing real-time validation with min/max limits and dynamic error messages.',
-            codeblock: {
-              title: 'Money field validation',
-              tabs: [
-                {
-                  code: './examples/validation-example.jsx',
-                  language: 'preview-jsx',
-                  layout: 'formWrapper',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

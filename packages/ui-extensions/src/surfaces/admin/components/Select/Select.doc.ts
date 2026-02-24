@@ -72,18 +72,15 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'select-default.png',
+    description:
+      'Let users pick one option from a predefined list. This example pairs a label with selectable options.',
     codeblock: {
-      title: 'Code',
+      title: 'Create a dropdown menu',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -92,112 +89,88 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'A simple select dropdown with pre-selected value for product sorting options.',
+              'Provide sorting controls for lists or tables. This example configures sort options with a pre-selected default value.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Add sorting options',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Select dropdown with helpful placeholder text guiding category selection.',
+              'Show instructional text before a selection is made. This example uses placeholder text to describe what the user should choose.',
             codeblock: {
-              title: 'With placeholder',
+              title: 'Add placeholder text',
               tabs: [
                 {
                   code: './examples/with-placeholder.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-placeholder.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Select in error state showing specific business context and actionable error message.',
+              'Communicate selection problems clearly to users. This example displays an error message when a required selection is missing.',
             codeblock: {
-              title: 'With error state',
+              title: 'Show validation errors',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Grouped select options organized by geographical regions for international shipping.',
+              'Make long option lists easier to scan. This example organizes options into logical groups like geographical regions.',
             codeblock: {
-              title: 'With option groups',
+              title: 'Group options by category',
               tabs: [
                 {
                   code: './examples/with-option-groups.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-option-groups.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Select dropdown with sort icon for filtering order management views.',
+              'Visually indicate the purpose of a select field. This example adds a sort icon that signals filtering functionality.',
             codeblock: {
-              title: 'With icon',
+              title: 'Add an icon',
               tabs: [
                 {
                   code: './examples/with-icon.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-icon.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Select in disabled state preventing user interaction with pre-selected value.',
+              "Lock a selection when changes aren't allowed. This example disables a dropdown while preserving its selected value.",
             codeblock: {
-              title: 'Disabled state',
+              title: 'Disable the select',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
