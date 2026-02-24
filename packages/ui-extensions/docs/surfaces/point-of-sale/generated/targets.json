@@ -1,0 +1,1487 @@
+{
+  "pos.home.tile.render": {
+    "components": [
+      "Tile"
+    ],
+    "apis": [
+      "ActionApi",
+      "CartApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.home.modal.render": {
+    "components": [
+      "Badge",
+      "Banner",
+      "Box",
+      "Button",
+      "CameraScanner",
+      "DateField",
+      "DatePicker",
+      "Dialog",
+      "EmailField",
+      "Icon",
+      "Image",
+      "List",
+      "Navigator",
+      "NumberField",
+      "POSBlock",
+      "POSBlockRow",
+      "PinPad",
+      "PrintPreview",
+      "RadioButtonList",
+      "Screen",
+      "ScrollView",
+      "SearchBar",
+      "Section",
+      "SectionHeader",
+      "SegmentedControl",
+      "Selectable",
+      "Stack",
+      "Stepper",
+      "Text",
+      "TextArea",
+      "TextField",
+      "TimeField",
+      "TimePicker"
+    ],
+    "apis": [
+      "CartApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "NavigationApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "ScannerApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.return.post.action.menu-item.render": {
+    "components": [
+      "Button"
+    ],
+    "apis": [
+      "ActionApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "OrderApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.return.post.action.render": {
+    "components": [
+      "Badge",
+      "Banner",
+      "Box",
+      "Button",
+      "CameraScanner",
+      "DateField",
+      "DatePicker",
+      "Dialog",
+      "EmailField",
+      "Icon",
+      "Image",
+      "List",
+      "Navigator",
+      "NumberField",
+      "POSBlock",
+      "POSBlockRow",
+      "PinPad",
+      "PrintPreview",
+      "RadioButtonList",
+      "Screen",
+      "ScrollView",
+      "SearchBar",
+      "Section",
+      "SectionHeader",
+      "SegmentedControl",
+      "Selectable",
+      "Stack",
+      "Stepper",
+      "Text",
+      "TextArea",
+      "TextField",
+      "TimeField",
+      "TimePicker"
+    ],
+    "apis": [
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "NavigationApi",
+      "OrderApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "ScannerApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.return.post.block.render": {
+    "components": [
+      "Badge",
+      "Button",
+      "DatePicker",
+      "Dialog",
+      "Icon",
+      "Image",
+      "POSBlock",
+      "POSBlockRow",
+      "Stack",
+      "Text",
+      "TimePicker"
+    ],
+    "apis": [
+      "ActionApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "OrderApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.exchange.post.action.menu-item.render": {
+    "components": [
+      "Button"
+    ],
+    "apis": [
+      "ActionApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "OrderApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.exchange.post.action.render": {
+    "components": [
+      "Badge",
+      "Banner",
+      "Box",
+      "Button",
+      "CameraScanner",
+      "DateField",
+      "DatePicker",
+      "Dialog",
+      "EmailField",
+      "Icon",
+      "Image",
+      "List",
+      "Navigator",
+      "NumberField",
+      "POSBlock",
+      "POSBlockRow",
+      "PinPad",
+      "PrintPreview",
+      "RadioButtonList",
+      "Screen",
+      "ScrollView",
+      "SearchBar",
+      "Section",
+      "SectionHeader",
+      "SegmentedControl",
+      "Selectable",
+      "Stack",
+      "Stepper",
+      "Text",
+      "TextArea",
+      "TextField",
+      "TimeField",
+      "TimePicker"
+    ],
+    "apis": [
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "NavigationApi",
+      "OrderApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "ScannerApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.exchange.post.block.render": {
+    "components": [
+      "Badge",
+      "Button",
+      "DatePicker",
+      "Dialog",
+      "Icon",
+      "Image",
+      "POSBlock",
+      "POSBlockRow",
+      "Stack",
+      "Text",
+      "TimePicker"
+    ],
+    "apis": [
+      "ActionApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "OrderApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.purchase.post.action.menu-item.render": {
+    "components": [
+      "Button"
+    ],
+    "apis": [
+      "ActionApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "OrderApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.purchase.post.action.render": {
+    "components": [
+      "Badge",
+      "Banner",
+      "Box",
+      "Button",
+      "CameraScanner",
+      "DateField",
+      "DatePicker",
+      "Dialog",
+      "EmailField",
+      "Icon",
+      "Image",
+      "List",
+      "Navigator",
+      "NumberField",
+      "POSBlock",
+      "POSBlockRow",
+      "PinPad",
+      "PrintPreview",
+      "RadioButtonList",
+      "Screen",
+      "ScrollView",
+      "SearchBar",
+      "Section",
+      "SectionHeader",
+      "SegmentedControl",
+      "Selectable",
+      "Stack",
+      "Stepper",
+      "Text",
+      "TextArea",
+      "TextField",
+      "TimeField",
+      "TimePicker"
+    ],
+    "apis": [
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "NavigationApi",
+      "OrderApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "ScannerApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.purchase.post.block.render": {
+    "components": [
+      "Badge",
+      "Button",
+      "DatePicker",
+      "Dialog",
+      "Icon",
+      "Image",
+      "POSBlock",
+      "POSBlockRow",
+      "Stack",
+      "Text",
+      "TimePicker"
+    ],
+    "apis": [
+      "ActionApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "OrderApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.product-details.action.menu-item.render": {
+    "components": [
+      "Button"
+    ],
+    "apis": [
+      "ActionApi",
+      "CartApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "PrintApi",
+      "ProductApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.product-details.action.render": {
+    "components": [
+      "Badge",
+      "Banner",
+      "Box",
+      "Button",
+      "CameraScanner",
+      "DateField",
+      "DatePicker",
+      "Dialog",
+      "EmailField",
+      "Icon",
+      "Image",
+      "List",
+      "Navigator",
+      "NumberField",
+      "POSBlock",
+      "POSBlockRow",
+      "PinPad",
+      "PrintPreview",
+      "RadioButtonList",
+      "Screen",
+      "ScrollView",
+      "SearchBar",
+      "Section",
+      "SectionHeader",
+      "SegmentedControl",
+      "Selectable",
+      "Stack",
+      "Stepper",
+      "Text",
+      "TextArea",
+      "TextField",
+      "TimeField",
+      "TimePicker"
+    ],
+    "apis": [
+      "CartApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "NavigationApi",
+      "PrintApi",
+      "ProductApi",
+      "ProductSearchApi",
+      "ScannerApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.product-details.block.render": {
+    "components": [
+      "Badge",
+      "Button",
+      "DatePicker",
+      "Dialog",
+      "Icon",
+      "Image",
+      "POSBlock",
+      "POSBlockRow",
+      "Stack",
+      "Text",
+      "TimePicker"
+    ],
+    "apis": [
+      "ActionApi",
+      "CartApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "PrintApi",
+      "ProductApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.order-details.action.menu-item.render": {
+    "components": [
+      "Button"
+    ],
+    "apis": [
+      "ActionApi",
+      "CartApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "OrderApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.order-details.action.render": {
+    "components": [
+      "Badge",
+      "Banner",
+      "Box",
+      "Button",
+      "CameraScanner",
+      "DateField",
+      "DatePicker",
+      "Dialog",
+      "EmailField",
+      "Icon",
+      "Image",
+      "List",
+      "Navigator",
+      "NumberField",
+      "POSBlock",
+      "POSBlockRow",
+      "PinPad",
+      "PrintPreview",
+      "RadioButtonList",
+      "Screen",
+      "ScrollView",
+      "SearchBar",
+      "Section",
+      "SectionHeader",
+      "SegmentedControl",
+      "Selectable",
+      "Stack",
+      "Stepper",
+      "Text",
+      "TextArea",
+      "TextField",
+      "TimeField",
+      "TimePicker"
+    ],
+    "apis": [
+      "CartApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "NavigationApi",
+      "OrderApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "ScannerApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.order-details.block.render": {
+    "components": [
+      "Badge",
+      "Button",
+      "DatePicker",
+      "Dialog",
+      "Icon",
+      "Image",
+      "POSBlock",
+      "POSBlockRow",
+      "Stack",
+      "Text",
+      "TimePicker"
+    ],
+    "apis": [
+      "ActionApi",
+      "CartApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "LocaleApi",
+      "OrderApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.draft-order-details.action.menu-item.render": {
+    "components": [
+      "Button"
+    ],
+    "apis": [
+      "ActionApi",
+      "CartApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "DraftOrderApi",
+      "LocaleApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.draft-order-details.action.render": {
+    "components": [
+      "Badge",
+      "Banner",
+      "Box",
+      "Button",
+      "CameraScanner",
+      "DateField",
+      "DatePicker",
+      "Dialog",
+      "EmailField",
+      "Icon",
+      "Image",
+      "List",
+      "Navigator",
+      "NumberField",
+      "POSBlock",
+      "POSBlockRow",
+      "PinPad",
+      "PrintPreview",
+      "RadioButtonList",
+      "Screen",
+      "ScrollView",
+      "SearchBar",
+      "Section",
+      "SectionHeader",
+      "SegmentedControl",
+      "Selectable",
+      "Stack",
+      "Stepper",
+      "Text",
+      "TextArea",
+      "TextField",
+      "TimeField",
+      "TimePicker"
+    ],
+    "apis": [
+      "CartApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "DraftOrderApi",
+      "LocaleApi",
+      "NavigationApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "ScannerApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.draft-order-details.block.render": {
+    "components": [
+      "Button"
+    ],
+    "apis": [
+      "ActionApi",
+      "CartApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "DraftOrderApi",
+      "LocaleApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.customer-details.action.menu-item.render": {
+    "components": [
+      "Button"
+    ],
+    "apis": [
+      "ActionApi",
+      "CartApi",
+      "ConnectivityApi",
+      "CustomerApi",
+      "DeviceApi",
+      "LocaleApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.customer-details.action.render": {
+    "components": [
+      "Badge",
+      "Banner",
+      "Box",
+      "Button",
+      "CameraScanner",
+      "DateField",
+      "DatePicker",
+      "Dialog",
+      "EmailField",
+      "Icon",
+      "Image",
+      "List",
+      "Navigator",
+      "NumberField",
+      "POSBlock",
+      "POSBlockRow",
+      "PinPad",
+      "PrintPreview",
+      "RadioButtonList",
+      "Screen",
+      "ScrollView",
+      "SearchBar",
+      "Section",
+      "SectionHeader",
+      "SegmentedControl",
+      "Selectable",
+      "Stack",
+      "Stepper",
+      "Text",
+      "TextArea",
+      "TextField",
+      "TimeField",
+      "TimePicker"
+    ],
+    "apis": [
+      "CartApi",
+      "ConnectivityApi",
+      "CustomerApi",
+      "DeviceApi",
+      "LocaleApi",
+      "NavigationApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "ScannerApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.customer-details.block.render": {
+    "components": [
+      "Badge",
+      "Button",
+      "DatePicker",
+      "Dialog",
+      "Icon",
+      "Image",
+      "POSBlock",
+      "POSBlockRow",
+      "Stack",
+      "Text",
+      "TimePicker"
+    ],
+    "apis": [
+      "ActionApi",
+      "CartApi",
+      "ConnectivityApi",
+      "CustomerApi",
+      "DeviceApi",
+      "LocaleApi",
+      "PrintApi",
+      "ProductSearchApi",
+      "SessionApi",
+      "ToastApi"
+    ]
+  },
+  "pos.receipt-footer.block.render": {
+    "components": [
+      "POSReceiptBlock",
+      "QRCode",
+      "Text"
+    ],
+    "apis": []
+  },
+  "ActionApi": {
+    "targets": [
+      "pos.customer-details.action.menu-item.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.menu-item.render",
+      "pos.draft-order-details.block.render",
+      "pos.exchange.post.action.menu-item.render",
+      "pos.exchange.post.block.render",
+      "pos.home.tile.render",
+      "pos.order-details.action.menu-item.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.menu-item.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.menu-item.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.menu-item.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "CartApi": {
+    "targets": [
+      "pos.customer-details.action.menu-item.render",
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.menu-item.render",
+      "pos.draft-order-details.action.render",
+      "pos.draft-order-details.block.render",
+      "pos.home.modal.render",
+      "pos.home.tile.render",
+      "pos.order-details.action.menu-item.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.menu-item.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render"
+    ]
+  },
+  "ConnectivityApi": {
+    "targets": [
+      "pos.customer-details.action.menu-item.render",
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.menu-item.render",
+      "pos.draft-order-details.action.render",
+      "pos.draft-order-details.block.render",
+      "pos.exchange.post.action.menu-item.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.home.tile.render",
+      "pos.order-details.action.menu-item.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.menu-item.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.menu-item.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.menu-item.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "DeviceApi": {
+    "targets": [
+      "pos.customer-details.action.menu-item.render",
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.menu-item.render",
+      "pos.draft-order-details.action.render",
+      "pos.draft-order-details.block.render",
+      "pos.exchange.post.action.menu-item.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.home.tile.render",
+      "pos.order-details.action.menu-item.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.menu-item.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.menu-item.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.menu-item.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "LocaleApi": {
+    "targets": [
+      "pos.customer-details.action.menu-item.render",
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.menu-item.render",
+      "pos.draft-order-details.action.render",
+      "pos.draft-order-details.block.render",
+      "pos.exchange.post.action.menu-item.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.home.tile.render",
+      "pos.order-details.action.menu-item.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.menu-item.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.menu-item.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.menu-item.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "PrintApi": {
+    "targets": [
+      "pos.customer-details.action.menu-item.render",
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.menu-item.render",
+      "pos.draft-order-details.action.render",
+      "pos.draft-order-details.block.render",
+      "pos.exchange.post.action.menu-item.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.home.tile.render",
+      "pos.order-details.action.menu-item.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.menu-item.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.menu-item.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.menu-item.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "ProductSearchApi": {
+    "targets": [
+      "pos.customer-details.action.menu-item.render",
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.menu-item.render",
+      "pos.draft-order-details.action.render",
+      "pos.draft-order-details.block.render",
+      "pos.exchange.post.action.menu-item.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.home.tile.render",
+      "pos.order-details.action.menu-item.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.menu-item.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.menu-item.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.menu-item.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "SessionApi": {
+    "targets": [
+      "pos.customer-details.action.menu-item.render",
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.menu-item.render",
+      "pos.draft-order-details.action.render",
+      "pos.draft-order-details.block.render",
+      "pos.exchange.post.action.menu-item.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.home.tile.render",
+      "pos.order-details.action.menu-item.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.menu-item.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.menu-item.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.menu-item.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "ToastApi": {
+    "targets": [
+      "pos.customer-details.action.menu-item.render",
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.menu-item.render",
+      "pos.draft-order-details.action.render",
+      "pos.draft-order-details.block.render",
+      "pos.exchange.post.action.menu-item.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.home.tile.render",
+      "pos.order-details.action.menu-item.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.menu-item.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.menu-item.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.menu-item.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "NavigationApi": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "ScannerApi": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "OrderApi": {
+    "targets": [
+      "pos.exchange.post.action.menu-item.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.order-details.action.menu-item.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.purchase.post.action.menu-item.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.menu-item.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "ProductApi": {
+    "targets": [
+      "pos.product-details.action.menu-item.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render"
+    ]
+  },
+  "DraftOrderApi": {
+    "targets": [
+      "pos.draft-order-details.action.menu-item.render",
+      "pos.draft-order-details.action.render",
+      "pos.draft-order-details.block.render"
+    ]
+  },
+  "CustomerApi": {
+    "targets": [
+      "pos.customer-details.action.menu-item.render",
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render"
+    ]
+  },
+  "Tile": {
+    "targets": [
+      "pos.home.tile.render"
+    ]
+  },
+  "Badge": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "Banner": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "Box": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "Button": {
+    "targets": [
+      "pos.customer-details.action.menu-item.render",
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.menu-item.render",
+      "pos.draft-order-details.action.render",
+      "pos.draft-order-details.block.render",
+      "pos.exchange.post.action.menu-item.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.menu-item.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.menu-item.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.menu-item.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.menu-item.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "CameraScanner": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "DateField": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "DatePicker": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "Dialog": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "EmailField": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "Icon": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "Image": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "List": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "Navigator": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "NumberField": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "POSBlock": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "POSBlockRow": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "PinPad": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "PrintPreview": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "RadioButtonList": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "Screen": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "ScrollView": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "SearchBar": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "Section": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "SectionHeader": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "SegmentedControl": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "Selectable": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "Stack": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "Stepper": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "Text": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.receipt-footer.block.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "TextArea": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "TextField": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "TimeField": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.return.post.action.render"
+    ]
+  },
+  "TimePicker": {
+    "targets": [
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.render",
+      "pos.exchange.post.action.render",
+      "pos.exchange.post.block.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.return.post.action.render",
+      "pos.return.post.block.render"
+    ]
+  },
+  "POSReceiptBlock": {
+    "targets": [
+      "pos.receipt-footer.block.render"
+    ]
+  },
+  "QRCode": {
+    "targets": [
+      "pos.receipt-footer.block.render"
+    ]
+  }
+}
