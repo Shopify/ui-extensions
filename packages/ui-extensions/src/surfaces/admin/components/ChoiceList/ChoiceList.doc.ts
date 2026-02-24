@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'choicelist-default.png',
+    description:
+      'Pick a shipping speed from standard, express, and overnight radio options. This example renders a `ChoiceList` with three tiers as radio buttons, and a [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that saves the selected method.',
     codeblock: {
       title: 'Choose a shipping method',
       tabs: [

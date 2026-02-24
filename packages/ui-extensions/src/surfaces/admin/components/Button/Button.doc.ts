@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Actions',
   defaultExample: {
     image: 'button-default.png',
+    description:
+      'Sync product data to a warehouse and close the action modal, or cancel. This example renders a `primary` `Button` that posts to a backend API and calls `close()`, alongside a `secondary` cancel button.',
     codeblock: {
       title: 'Sync product to backend',
       tabs: [

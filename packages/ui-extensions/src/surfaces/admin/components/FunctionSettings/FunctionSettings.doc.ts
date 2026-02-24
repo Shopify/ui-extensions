@@ -21,6 +21,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'form-default.png',
+    description:
+      'Build a settings page for a [Shopify Function](/docs/api/functions) that saves configuration as metafields. This example uses `FunctionSettings` with `applyMetafieldsChange` to save a validation rule name entered in a [TextField](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield).',
     codeblock: {
       title: 'Configure function validation settings',
       tabs: [
