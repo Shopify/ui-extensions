@@ -165,24 +165,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
         ],
       },
-      {
-        title: '',
-        examples: [
-          {
-            description:
-              'Respond to toggle changes with custom logic. This example shows state tracking that displays the current value when the switch is toggled.',
-            codeblock: {
-              title: 'Track toggle state',
-              tabs: [
-                {
-                  code: './examples/toggle-with-feedback.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-        ],
-      },
     ],
   },
 };

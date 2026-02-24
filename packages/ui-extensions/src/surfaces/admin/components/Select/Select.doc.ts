@@ -205,24 +205,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
         ],
       },
-      {
-        title: '',
-        examples: [
-          {
-            description:
-              'Respond to user selections with custom logic. This example shows the onChange event triggering an action when the user picks an option. Click to interact with the preview.',
-            codeblock: {
-              title: 'Handle selection changes',
-              tabs: [
-                {
-                  code: './examples/handle-selection-change.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-        ],
-      },
     ],
   },
 };

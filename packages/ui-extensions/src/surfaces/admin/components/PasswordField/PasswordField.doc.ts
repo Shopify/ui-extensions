@@ -154,24 +154,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
         ],
       },
-      {
-        title: '',
-        examples: [
-          {
-            description:
-              'Provide immediate feedback on password quality. This example shows real-time validation that checks requirements as the user types. Click to interact with the preview.',
-            codeblock: {
-              title: 'Validate password strength',
-              tabs: [
-                {
-                  code: './examples/password-strength-validation.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-        ],
-      },
     ],
   },
 };

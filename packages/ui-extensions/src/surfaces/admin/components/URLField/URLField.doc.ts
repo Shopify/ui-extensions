@@ -120,24 +120,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
         ],
       },
-      {
-        title: '',
-        examples: [
-          {
-            description:
-              'Provide immediate feedback on URL validity. This example shows real-time validation that checks the URL format as the user types.',
-            codeblock: {
-              title: 'Validate URL in real time',
-              tabs: [
-                {
-                  code: './examples/validate-url-input.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-        ],
-      },
     ],
   },
 };
