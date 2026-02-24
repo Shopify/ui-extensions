@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'passwordfield-default.png',
+    description:
+      'Store a warehouse API key without exposing it on screen. This example uses `PasswordField` to mask the input, with a [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that saves the credentials.',
     codeblock: {
       title: 'Enter API credentials securely',
       tabs: [

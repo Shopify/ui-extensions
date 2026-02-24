@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Layout and structure',
   defaultExample: {
     image: 'divider-default.png',
+    description:
+      'Separate a sync status summary from a recent changes list with a horizontal rule. This example places a `Divider` between two sections, each with its own [Heading](/docs/api/admin-extensions/{API_VERSION}/components/typography-and-content/heading) and detail text.',
     codeblock: {
       title: 'Separate content sections',
       tabs: [

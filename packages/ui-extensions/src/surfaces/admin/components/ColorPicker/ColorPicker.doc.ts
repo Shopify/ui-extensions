@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'colorpicker-default.png',
+    description:
+      'Pick a product accent color from a visual selector and save it. This example uses `ColorPicker` to capture the selected hex value, with a [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that saves the color.',
     codeblock: {
       title: 'Select product accent color',
       tabs: [
