@@ -130,7 +130,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Combine an icon with a text label to help merchants quickly identify what a button does. This example shows a button with both a text label and an icon to reinforce the action.',
+          'Combine an icon with a text label to help merchants identify what a button does. This example shows a button with both a text label and an icon to reinforce the action.',
         codeblock: {
           title: 'Add an icon alongside a text label',
           tabs: [
