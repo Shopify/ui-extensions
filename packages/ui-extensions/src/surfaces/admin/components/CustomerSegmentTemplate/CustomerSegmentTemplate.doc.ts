@@ -21,6 +21,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Settings and templates',
   defaultExample: {
     image: 'customersegmenttemplate-default',
+    description:
+      'Define a reusable customer segment for high-value repeat buyers. This example creates a `CustomerSegmentTemplate` with a `query` that filters by order count and total spend, plus a `title`, `description`, and `createdOn` date.',
     codeblock: {
       title: 'Create a repeat buyer segment template',
       tabs: [
