@@ -1,0 +1,430 @@
+[
+  {
+    "title": "POS UI extensions",
+    "description": "The UI Extensions library enables individuals to build extensions that use interface elements and behaviors that mirror the look and feel of the POS retail experience. These elements render natively, providing the performance and accessibility inherent to a native app.",
+    "id": "pos-ui-extensions",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "api-versioning",
+        "title": "API versioning",
+        "sectionContent": "POS UI extensions are built on a versioned API that receives regular updates with new features, improvements, and additional targets. We recommend using the latest supported API version to access the most current capabilities and ensure optimal compatibility with POS devices.\n\nYou can track new releases and update your extensions by referencing the [developer changelog](/changelog)."
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "overview",
+        "title": "Overview",
+        "sectionContent": "Extend the Shopify POS with UI Extensions.",
+        "sectionCard": [
+          {
+            "subtitle": "Extension targets",
+            "name": "See all available extension targets",
+            "url": "/docs/api/pos-ui-extensions/targets",
+            "type": "pickaxe-1"
+          },
+          {
+            "subtitle": "APIs",
+            "name": "See all available APIs",
+            "url": "/docs/api/pos-ui-extensions/apis",
+            "type": "pickaxe-2"
+          },
+          {
+            "subtitle": "Components",
+            "name": "See all available components",
+            "url": "/docs/api/pos-ui-extensions/polaris-web-components",
+            "type": "blocks"
+          }
+        ]
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "getting-started",
+        "title": "Getting Started",
+        "sectionContent": "Get started with POS UI Extensions with Shopify CLI.",
+        "sectionCard": [
+          {
+            "name": "Getting started guide",
+            "subtitle": "Set up your development environment",
+            "url": "/docs/apps/build/pos/getting-started",
+            "type": "blocks"
+          }
+        ],
+        "sectionNotice": [
+          {
+            "title": "AI development assistance",
+            "type": "note",
+            "sectionContent": "Connect your AI assistant to the [Shopify Dev MCP](/docs/apps/build/devmcp) to build POS UI extensions. Try asking \"Build a new POS UI extension ...\""
+          }
+        ]
+      },
+      {
+        "type": "Generic",
+        "title": "App Authentication",
+        "sectionContent": "POS UI extensions can also make authenticated calls to your app's backend. When you use `fetch()` to make a request to your app's configured auth domain or any of its subdomains, an `Authorization` header is automatically added with a Shopify [OpenID Connect ID Token (formerly known as a Session Token)](/docs/api/app-bridge-library/reference/id-token). There's no need to manually manage ID tokens.\n\nRelative URLs passed to `fetch()` are resolved against your app's `app_url`. This means if your app's backend is on the same domain as your `app_url`, you can make requests to it using `fetch('/path')`.\n\nIf you need to make requests to a different domain, you can use the [`session.getSessionToken()` method](apis/session-api#sessionapi-propertydetail-getsessiontoken) to retrieve the ID token and manually add it to your request headers.\n\n**Important**: ID tokens are only returned for authenticated users who are permitted to use your app. When the authenticated user (the user that logged into Shopify POS with their email address) doesn't have the correct app permission enabled for your app, the token will be null. This is irrelevant of which POS Staff member is pinned in, as those are not authenticated users. For more information on configuring app permissions, see the [Shopify app permissions documentation](https://help.shopify.com/en/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).",
+        "anchorLink": "app-authentication",
+        "codeblock": {
+          "title": "Make requests to your app's backend",
+          "tabs": [
+            {
+              "code": "import {render} from 'preact';\nimport {useState, useEffect} from 'preact/hooks';\n\nexport default async () =&gt; {\n  render(&lt;CustomerDetailsBlock /&gt;, document.body);\n};\n\nexport function CustomerDetailsBlock() {\n  const [loyaltyInfo, setLoyaltyInfo] = useState('');\n  useEffect(() =&gt; {\n    getLoyaltyInfo();\n  }, [shopify.customer.id]);\n\n  async function getLoyaltyInfo() {\n    console.log('fetching', `${URL}/api/loyalty/${shopify.customer.id}`)\n    const res = await fetch(`${URL}/api/loyalty/${shopify.customer.id}`);\n    const json = await res.json();\n    setLoyaltyInfo(json.loyaltySummary);\n  }\n  return (\n    &lt;s-pos-block&gt;\n      &lt;s-box padding=\"large\"&gt;\n        &lt;s-text&gt;{loyaltyInfo}&lt;/s-text&gt;\n      &lt;/s-box&gt;\n    &lt;/s-pos-block&gt;\n  );\n}",
+              "language": "jsx",
+              "title": "JSX"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Generic",
+        "title": "Direct API access",
+        "sectionNotice": [
+          {
+            "title": "Access scopes",
+            "type": "note",
+            "sectionContent": "Be sure to declare all required access scopes in your app's TOML file. For local development, access scopes are only registered or updated when the app is deployed and installed on your test store."
+          }
+        ],
+        "sectionContent": "You can make Shopify Admin API requests directly from your extension using the standard [web fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch)!\n\nAny `fetch()` calls from your extension to Shopify's Admin GraphQL API are automatically authenticated by default. These calls are fast too, because Shopify handles requests directly.\n\nDirect API requests use [online access](/docs/apps/build/authentication-authorization/access-token-types/online-access-tokens) mode by default.",
+        "anchorLink": "direct-api-access",
+        "codeblock": {
+          "title": "Query Shopify data directly",
+          "tabs": [
+            {
+              "code": "import {render} from 'preact';\nimport {useState, useEffect} from 'preact/hooks';\n\n\n// This mutation requires the `write_products` access scope.\n// /docs/api/admin-graphql/latest/mutations/metafieldsset\nasync function mutateMetafield(productId) {\n  const requestBody = {\n    query: `#graphql\n        mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) {\n          metafieldsSet(metafields: $metafields) {\n            metafields {\n              key\n              namespace\n              value\n              createdAt\n              updatedAt\n            }\n          }\n        }\n      `,\n    variables: {\n      metafields: [\n        {\n          key: 'direct_api',\n          namespace: 'custom',\n          ownerId: `gid://shopify/Product/${productId}`,\n          value: 'Example Value',\n          type: 'single_line_text_field',\n        },\n      ],\n    },\n  };\n\n  await fetch('shopify:admin/api/graphql.json', {\n    method: 'POST',\n    body: JSON.stringify(requestBody),\n  });\n}\n\n// This query requires the `read_products` access scope.\n// /docs/api/admin-graphql/latest/queries/product\nasync function queryProductMetafields(productId) {\n  const requestBody = {\n    query: `#graphql\n      query GetProduct($id: ID!) {\n        product(id: $id) {\n          id\n          metafields(first: 10) {\n            edges {\n              node {\n                id\n                namespace\n                key\n                value\n              }\n            }\n          }\n        }\n      }\n    `,\n    variables: {id: `gid://shopify/Product/${productId}`},\n  };\n  const res = await fetch('shopify:admin/api/graphql.json', {\n    method: 'POST',\n    body: JSON.stringify(requestBody),\n  });\n  return res.json();\n}\n\nexport default async () =&gt; {\n  render(&lt;ProductDetailsBlock /&gt;, document.body);\n};\n\nexport function ProductDetailsBlock() {\n  const [productInfo, setProductInfo] = useState('');\n  useEffect(() =&gt; {\n    async function getProductInfo() {\n      const result = await queryProductMetafields(shopify.product.id);\n      setProductInfo(JSON.stringify(result, null, 2));\n    }\n    getProductInfo();\n  }, [shopify.product.id]);\n\n  return (\n    &lt;s-pos-block&gt;\n      &lt;s-box padding=\"large\"&gt;\n        &lt;s-text&gt;Metafields: {productInfo}&lt;/s-text&gt;\n      &lt;/s-box&gt;\n      &lt;s-box padding=\"large\"&gt;\n        &lt;s-text&gt;Set Metafields: {productInfo}&lt;/s-text&gt;\n        &lt;s-button onClick={() =&gt; mutateMetafield(shopify.product.id)}&gt;Set Metafields&lt;/s-button&gt;\n      &lt;/s-box&gt;\n    &lt;/s-pos-block&gt;\n  );\n}",
+              "language": "jsx",
+              "title": "JSX"
+            }
+          ]
+        },
+        "sectionCard": [
+          {
+            "name": "Learn more about access scopes",
+            "subtitle": "Developer guide",
+            "url": "/docs/api/usage/access-scopes",
+            "type": "information"
+          }
+        ]
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "limitations",
+        "title": "Limitations",
+        "sectionContent": "\nAs of `2025-10`, UI extensions have the following limitations:\n- **File size limit**: Extensions are limited to a maximum of 64 KB when deployed. This limit helps ensure fast loading times and optimal performance for POS devices.\n",
+        "sectionNotice": [
+          {
+            "title": "Note",
+            "sectionContent": "\nThe 64 KB limit applies to the compiled extension bundle size upon deployment.\n",
+            "type": "info"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Targets Overview",
+    "description": "\nA [target](/docs/apps/app-extensions/configuration#targets) represents where your POS UI extension will appear.\n\nYou register targets in your `shopify.extension.toml` and inside the Javascript file denoted by your toml's `module` property.\n  ",
+    "id": "extension-targets-overview",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "GenericAccordion",
+        "title": "POS tile locations",
+        "anchorLink": "tile-locations",
+        "sectionContent": "POS tile extensions appear on the smart grid. Learn more about [the smart grid](/docs/apps/pos#home-screen).",
+        "accordionContent": [
+          {
+            "title": "Smart grid",
+            "description": "\nDisplays a tile on the smart grid.\n\nSee [an example](targets/tile/pos-home-tile-render).\n",
+            "image": "smart-grid.png"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "POS action locations",
+        "anchorLink": "action-locations",
+        "sectionContent": "POS action extensions appear as menu items throughout the POS and display modally when tapped.",
+        "accordionContent": [
+          {
+            "title": "Post-purchase",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the post-purchase screen.\n\nSee [an example](targets/action/pos-purchase-post-action-render).\n",
+            "image": "post-purchase-action.png"
+          },
+          {
+            "title": "Post-return",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the post-return screen.\n\nSee [an example](targets/action/pos-return-post-action-render).\n",
+            "image": "post-return-action.png"
+          },
+          {
+            "title": "Post-exchange",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the post-exchange screen.\n\nSee [an example](targets/action/pos-exchange-post-action-render).\n",
+            "image": "post-exchange-action.png"
+          },
+          {
+            "title": "Customer details",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the customer details screen.\n\nSee [an example](targets/action/pos-customer-details-action-render).\n",
+            "image": "customer-details-action-menu.png"
+          },
+          {
+            "title": "Product details",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the product details screen.\n\nSee [an example](targets/action/pos-product-details-action-render).\n",
+            "image": "product-details-action-menu.png"
+          },
+          {
+            "title": "Order details",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the order details screen.\n\nSee [an example](targets/action/pos-order-details-action-render).\n",
+            "image": "order-details-action-menu.png"
+          },
+          {
+            "title": "Draft order details",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the draft order details screen.\n\nSee [an example](targets/action/pos-draft-order-details-action-render).\n",
+            "image": "draft-order-action-menu.png"
+          },
+          {
+            "title": "Cart line item details",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the cart line item details screen.\n\nSee [an example](targets/action/pos-cart-line-item-details-action-render).\n",
+            "image": "cart-lineitem-action.png"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "POS block locations",
+        "anchorLink": "block-locations",
+        "sectionContent": "POS block extensions render custom sections within native POS screens.",
+        "accordionContent": [
+          {
+            "title": "Post-purchase",
+            "description": "\nRenders a custom section within the native post purchase screen.\n\nSee [an example](targets/block/pos-purchase-post-block-render).\n",
+            "image": "post-purchase-block.png"
+          },
+          {
+            "title": "Post-return",
+            "description": "\nRenders a custom section within the native post return screen.\n\nSee [an example](targets/block/pos-return-post-block-render).\n",
+            "image": "post-return-block.png"
+          },
+          {
+            "title": "Post-exchange",
+            "description": "\nRenders a custom section within the native post exchange screen.\n\nSee [an example](targets/block/pos-exchange-post-block-render).\n",
+            "image": "post-exchange-block.png"
+          },
+          {
+            "title": "Customer details",
+            "description": "\nRenders a custom section within the customer details screen.\n\nSee [an example](targets/block/pos-customer-details-block-render).\n",
+            "image": "customer-details-block.png"
+          },
+          {
+            "title": "Product details",
+            "description": "\nRenders a custom section within the native product details screen.\n\nSee [an example](targets/block/pos-product-details-block-render).\n",
+            "image": "product-details-block.png"
+          },
+          {
+            "title": "Order details",
+            "description": "\nRenders a custom section within the native order details screen.\n\nSee [an example](targets/block/pos-order-details-block-render).\n",
+            "image": "order-details-block.png"
+          },
+          {
+            "title": "Draft order details",
+            "description": "\nRenders a custom section within the native draft order details screen.\n\nSee [an example](targets/block/pos-draft-order-details-block-render).\n",
+            "image": "draft-order-block.png"
+          },
+          {
+            "title": "Receipt header",
+            "description": "\nRenders a custom section in the header of printed receipts.\n\nSee [an example](targets/block/pos-receipt-header-block-render).\n",
+            "image": "posreceipt-header.png"
+          },
+          {
+            "title": "Receipt footer",
+            "description": "\nRenders a custom section in the footer of printed receipts.\n\nSee [an example](targets/block/pos-receipt-footer-block-render).\n",
+            "image": "posreceipt-footer.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Using Polaris web components",
+    "description": "Polaris web components are Shopify's UI toolkit for building interfaces that match the Shopify Point of Sale design system. This toolkit provides a set of custom HTML elements (web components) that you can use to create consistent, accessible, and performant user interfaces for the POS UI Extensions.",
+    "id": "using-polaris-components",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "styling",
+        "title": "Styling",
+        "sectionContent": "Polaris web components come with built-in styling that follows Shopify's design system. The components will automatically apply the correct styling based on the properties you set and the context in which they are used. For example, headings automatically display at progressively less prominent sizes based on how many levels deep they are nested inside of sections. All components inherit a merchant's brand settings and the CSS cannot be altered or overridden.",
+        "codeblock": {
+          "title": "Example",
+          "tabs": [
+            {
+              "title": "JSX",
+              "code": "&lt;s-box\n  padding=\"base\"\n  background=\"subdued\"\n  border=\"base\"\n  borderRadius=\"base\"\n  class=\"my-custom-class\"\n&gt;\n  Content\n&lt;/s-box&gt;;\n",
+              "language": "jsx"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "custom-layout",
+        "title": "Custom layout",
+        "sectionContent": "When you need to build custom layouts you can use `s-stack` and `s-box`. \n\n- `s-stack` do not include spacing between children by default. To apply white space between children use the `gap` property\n- When `s-stack` is `direction=\"inline\"` it will automatically wrap children to a new line when space is limited."
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "scale",
+        "title": "Scale",
+        "sectionContent": "Our components use a middle-out scale for multiple properties like `padding`, `size` and `gap`.\n\nOur scale moves from the middle out:\n  - `small-300` is smaller than `small-100`\n  - `large-300` is bigger than `large-100`\n  - `small-100` and `large-100` have aliases of `small` and `large`\n  - `base` is the default value",
+        "codeblock": {
+          "title": "Example",
+          "tabs": [
+            {
+              "code": "export type Scale =\n  | 'small-300'\n  | 'small-200'\n  | 'small-100'\n  | 'small' // alias of small-100\n  | 'base'\n  | 'large' // alias of large-100\n  | 'large-100'\n  | 'large-200'\n  | 'large-300';\n",
+              "language": "ts"
+            }
+          ]
+        },
+        "initialLanguage": "ts"
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "variant-tone-and-color",
+        "title": "Variant tone and color",
+        "sectionContent": "The `tone` is used to apply a group of color design tokens to the component such as `critical`, `success` or `info`.\n\nThe `color` adjusts the intensity of the `tone` making it more `subdued` or `strong`.\n\nThe `variant` is used to change how the component is rendered to match the design language this is different for each component.",
+        "codeblock": {
+          "title": "Example",
+          "tabs": [
+            {
+              "code": "&lt;s-button tone=\"critical\" variant=\"primary\"&gt;\n  Primary Critical Button\n&lt;/s-button&gt;\n&lt;s-badge tone=\"success\" color=\"strong\"&gt;\n  Success Strong Badge\n&lt;/s-badge&gt;\n",
+              "language": "jsx"
+            }
+          ]
+        },
+        "initialLanguage": "html"
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "using-with-preact",
+        "title": "Using with Preact",
+        "sectionContent": "For UI Extensions, Shopify provides Preact as the framework of choice. Using Polaris web components with Preact is very similar to using them with React.  ",
+        "codeblock": {
+          "title": "Example",
+          "tabs": [
+            {
+              "title": "JSX",
+              "code": "export function ProductExtension() {\n  return (\n    &lt;s-box padding=\"base\"&gt;\n      &lt;s-stack gap=\"base\"&gt;\n        &lt;s-text&gt;Enable special pricing&lt;/s-text&gt;\n        &lt;s-number-field\n          label=\"Discount percentage\"\n          suffix=\"%\"\n          min=\"0\"\n          max=\"100\"\n        /&gt;\n      &lt;/s-stack&gt;\n    &lt;/s-box&gt;\n  );\n}\n",
+              "language": "jsx"
+            }
+          ]
+        }
+      },
+      {
+        "type": "GenericAccordion",
+        "anchorLink": "properties-vs-attributes",
+        "title": "Properties vs attributes",
+        "sectionContent": "Polaris web components follow the same property and attribute patterns as standard HTML elements. Understanding this distinction is important for using the components effectively.",
+        "accordionContent": [
+          {
+            "title": "Key concepts",
+            "description": "1. **Attributes** are HTML attributes that appear in the HTML markup.\n2. **Properties** are JavaScript object properties accessed directly on the DOM element.\n3. Most attributes in Polaris web components are reflected as properties, with a few exceptions like `value` and `checked` which follow HTML's standard behavior.",
+            "codeblock": {
+              "tabs": [],
+              "title": "",
+              "links": []
+            },
+            "initialLanguage": ""
+          },
+          {
+            "title": "How JSX properties are applied",
+            "description": "When using Polaris web components in JSX, the framework determines how to apply your props based on whether the element has a matching property name.\n\nIf the element has a property with the exact same name as your prop, the value is set as a property. Otherwise, it's applied as an attribute. Here's how this works in pseudocode:",
+            "codeblock": {
+              "tabs": [
+                {
+                  "title": "JavaScript",
+                  "code": "if (propName in element) {\n  // Set as a property\n  element[propName] = propValue;\n} else {\n  // Set as an attribute\n  element.setAttribute(propName, propValue);\n}\n",
+                  "language": "ts"
+                }
+              ],
+              "title": "Pseudocode",
+              "links": []
+            },
+            "initialLanguage": ""
+          },
+          {
+            "title": "Examples",
+            "description": "For Polaris web components, you can generally just use the property names as documented, and everything will work as expected.",
+            "codeblock": {
+              "tabs": [
+                {
+                  "title": "JSX",
+                  "code": "{/* This works as expected - the \"gap\" property accepts string values */}\n&lt;s-stack gap=\"base\"&gt;...&lt;/s-stack&gt;;\n\n{/* This also works - the \"checked\" property accepts boolean values */}\n&lt;s-checkbox checked={true}&gt;...&lt;/s-checkbox&gt;;\n",
+                  "language": "jsx"
+                }
+              ],
+              "title": "Examples",
+              "links": []
+            },
+            "initialLanguage": ""
+          }
+        ]
+      },
+      {
+        "type": "Generic",
+        "title": "Handling events",
+        "sectionContent": "Handling events in UI extensions are the same as you would handle them in a web app. You can use the `addEventListener` method to listen for events on the components or use the `on[event]` property to listen for events from the components.\n        \n\nWhen using Preact, event handlers can be registered by passing props beginning with `on`, and the event handler name is case-insensitive. For example, the JSX `<s-button onClick={fn}>` registers `fn` as a \"click\" event listener on the button.",
+        "anchorLink": "handling-events",
+        "codeblock": {
+          "title": "Handling events",
+          "tabs": [
+            {
+              "code": "export default function HandlingEvents() {\n  const handleClick = () =&gt; {\n    console.log('s-button clicked');\n  };\n\n  return &lt;s-button onClick={handleClick}&gt;Click me&lt;/s-button&gt;;\n}\n\n// or\n\nexport default function HandlingEvents() {\n  const handleClick = () =&gt; {\n    console.log('s-button clicked');\n  };\n\n  const button = document.createElement('s-button');\n  button.addEventListener('click', handleClick);\n  document.body.appendChild(button);\n}\n",
+              "language": "jsx",
+              "title": "JSX"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "slots",
+        "title": "Slots",
+        "sectionContent": "Slots allow you to insert custom content into specific areas of Polaris web components. Use the `slot` attribute to specify where your content should appear within a component.\n\nKey points:\n- Named slots (e.g., `slot=\"title\"`) place content in designated areas\n- Multiple elements can share the same slot name\n- Elements without a slot attribute go into the default (unnamed) slot",
+        "codeblock": {
+          "title": "Examples",
+          "tabs": [
+            {
+              "title": "Banner",
+              "code": "&lt;s-banner heading=\"Order created\" status=\"success\"&gt;\n  The order has been created successfully.\n  &lt;s-button slot=\"primary-action\"&gt;View order&lt;/s-button&gt;\n&lt;/s-banner&gt;;\n",
+              "language": "jsx"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "commands",
+        "title": "Commands",
+        "sectionContent": "Commands provide a declarative way for components to control other components without JavaScript. Using the `commandFor` and `command` properties, you can create interactive behaviors directly in your markup.\n\nKey points:\n- `commandFor` specifies the ID of the target component to control\n- `command` defines the action to perform on the target (e.g., `--toggle`, `--show`, `--hide`)\n- Commands work with components that support being controlled (like modals, popovers, and other interactive elements)\n- The default command is `--auto`, which performs the most appropriate action for the target component\n- No JavaScript event handlers are required—the browser handles the interaction automatically",
+        "codeblock": {
+          "title": "Examples",
+          "tabs": [
+            {
+              "title": "Commands",
+              "code": "&lt;s-box&gt;\n  {/* Modal that will be controlled by the buttons */}\n  &lt;s-modal id=\"example-modal\" heading=\"Product Details\"&gt;\n    &lt;s-text&gt;\n      This modal is controlled using the commands API. No JavaScript event\n      handlers are needed—the browser handles all interactions automatically.\n    &lt;/s-text&gt;\n\n    &lt;s-stack slot=\"primaryAction\"&gt;\n      {/* Button inside modal that can hide it */}\n      &lt;s-button commandFor=\"example-modal\" command=\"--hide\"&gt;\n        Close\n      &lt;/s-button&gt;\n    &lt;/s-stack&gt;\n  &lt;/s-modal&gt;\n\n  {/* Button controls using different command actions */}\n  &lt;s-stack gap=\"small\"&gt;\n    &lt;s-heading&gt;Modal Controls&lt;/s-heading&gt;\n\n    {/* Toggle button - most common use case */}\n    &lt;s-button\n      commandFor=\"example-modal\"\n      command=\"--toggle\"\n      variant=\"primary\"&gt;\n      Toggle Modal\n    &lt;/s-button&gt;\n\n    {/* Explicit show button */}\n    &lt;s-button\n      commandFor=\"example-modal\"\n      command=\"--show\"\n      tone=\"success\"&gt;\n      Show Modal\n    &lt;/s-button&gt;\n\n    {/* Explicit hide button */}\n    &lt;s-button\n      commandFor=\"example-modal\"\n      command=\"--hide\"\n      tone=\"critical\"&gt;\n      Hide Modal\n    &lt;/s-button&gt;\n\n    {/* Auto command (default) - performs the most appropriate action */}\n    &lt;s-button\n      commandFor=\"example-modal\"\n      command=\"--auto\"&gt;\n      Auto Command (Toggle)\n    &lt;/s-button&gt;\n  &lt;/s-stack&gt;\n&lt;/s-box&gt;\n",
+              "language": "jsx"
+            }
+          ]
+        }
+      }
+    ]
+  }
+]
