@@ -19,6 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Media and visuals',
   defaultExample: {
     image: 'image-default.png',
+    description:
+      "Fetch a product's featured image from the [GraphQL Admin API](/docs/api/admin-graphql/) and show it with alt text. This example queries the `product.featuredImage` field and displays the result in an `Image` component with an `accessibilityLabel` that falls back to the product title.",
     codeblock: {
       title: 'Display product featured image',
       tabs: [

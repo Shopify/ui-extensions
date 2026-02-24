@@ -21,6 +21,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Settings and templates',
   defaultExample: {
     image: 'adminprintaction-default.png',
+    description:
+      'Generate a printable document from a product details page. This example configures an `AdminPrintAction` with a `src` prop that builds a packing slip URL from the selected product ID, and shows a status message while the document loads.',
     codeblock: {
       title: 'Generate product packing slip',
       tabs: [

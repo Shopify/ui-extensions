@@ -19,6 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Feedback and status indicators',
   defaultExample: {
     image: 'badge-default.png',
+    description:
+      'Indicate fulfilled, partially fulfilled, and unfulfilled order states with color-coded labels. This example renders three `Badge` components using `success`, `warning`, and `critical` tones to visually distinguish each state.',
     codeblock: {
       title: 'Display order fulfillment status',
       tabs: [
