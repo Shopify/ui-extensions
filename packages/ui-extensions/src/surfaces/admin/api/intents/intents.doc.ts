@@ -166,7 +166,19 @@ The following tables show which resource types you can create or edit, and what 
 | \`edit\` | \`shopify/ProductVariant\` | \`gid://shopify/ProductVariant/{id}\` | \`{ productId: 'gid://shopify/Product/{id}' }\` |
 
 > Note:
-> When editing products with variants, query the [\`product.hasOnlyDefaultVariant\`](/docs/api/admin-graphql/latest/objects/Product#field-Product.fields.hasOnlyDefaultVariant) field first. If \`true\`, then use the \`shopify/Product\` edit intent. If \`false\`, then use the \`shopify/ProductVariant\` edit intent for specific variants.`,
+> When editing products with variants, query the [\`product.hasOnlyDefaultVariant\`](/docs/api/admin-graphql/latest/objects/Product#field-Product.fields.hasOnlyDefaultVariant) field first. If \`true\`, then use the \`shopify/Product\` edit intent. If \`false\`, then use the \`shopify/ProductVariant\` edit intent for specific variants.
+
+#### Settings
+
+Settings are the configuration options for the store. Use this to invoke and edit settings.
+
+| Action | Type | Value | Data |
+|--------|------|-------|------|
+| \`edit\` | \`settings/StoreDetails\` | — | — |
+| \`edit\` | \`settings/StoreDefaults\` | — | — |
+| \`edit\` | \`settings/OrderIdFormat\` | — | — |
+| \`edit\` | \`settings/OrderProcessing\` | — | — |`,
+
       type: 'IntentInvokeApi',
     },
     {
@@ -589,6 +601,67 @@ The following tables show which resource types you can create or edit, and what 
                 {
                   title: 'jsx',
                   code: './examples/edit-variant.jsx',
+                  language: 'jsx',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Launch the store details editor to update the store name, email, or phone number. This example invokes the edit intent, manages loading state, and displays feedback on completion.',
+            codeblock: {
+              title: 'Edit store details',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/edit-store-details.jsx',
+                  language: 'jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Open the store defaults editor to update the store currency, timezone, or country. This example retrieves the store defaults GID from extension context, invokes the edit intent, and handles the completion response.',
+            codeblock: {
+              title: 'Edit store defaults',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/edit-store-defaults.jsx',
+                  language: 'jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Launch the order id format editor to update the order id format. This example invokes the edit intent, manages loading state, and displays feedback on completion.',
+            codeblock: {
+              title: 'Edit Order ID Format',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/edit-order-id-format.jsx',
+                  language: 'jsx',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Open the order processing editor to update the order processing settings. This example retrieves the order processing GID from extension context, invokes the edit intent, and handles the completion response.',
+            codeblock: {
+              title: 'Edit order processing',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/edit-order-processing.jsx',
                   language: 'jsx',
                 },
               ],
