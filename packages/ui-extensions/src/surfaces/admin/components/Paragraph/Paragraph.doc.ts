@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Typography and content',
   defaultExample: {
     image: 'paragraph-default.png',
+    description:
+      'Show a sync status message with bolded key figures like the completion time and field count. This example nests [Text](/docs/api/admin-extensions/{API_VERSION}/components/typography-and-content/text) with `fontWeight` props inside a `Paragraph` to emphasize specific details within a sentence.',
     codeblock: {
       title: 'Display product sync summary',
       tabs: [
