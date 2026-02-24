@@ -11,17 +11,17 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Set clear file type and size restrictions using the \`accept\` property
-- Use the \`droprejected\` event to display meaningful error messages when uploads fail validation
-- Consider using \`disabled\` to prevent uploads during processing`,
+      sectionContent: `- Set clear file type and size restrictions using the \`accept\` property.
+- Use the \`droprejected\` event to display meaningful error messages when uploads fail validation.
+- Consider using \`disabled\` to prevent uploads during processing.`,
     },
     {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- File size validation must be handled in your event handler; the component only validates file types
-- The \`change\` event provides the file list but does not automatically upload files
-- Multiple file selection requires the \`multiple\` attribute to be set`,
+      sectionContent: `- File size validation must be handled in your event handler; the component only validates file types.
+- The \`change\` event provides the file list but does not automatically upload files.
+- Multiple file selection requires the \`multiple\` attribute to be set.`,
     },
   ],
   definitions: [
@@ -40,7 +40,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Let users upload files by dragging or clicking to browse. This example shows a basic upload area with default prompts.',
+      'Let users upload files by dragging or clicking to browse. This example creates a basic upload area with default prompts.',
     codeblock: {
       title: 'Accept file uploads',
       tabs: [
@@ -60,7 +60,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Accept multiple files in a single interaction. This example shows the multiple attribute with a custom label.',
+              'Accept multiple files in a single interaction. This example uses the `multiple` attribute with a custom label.',
             codeblock: {
               title: 'Allow multiple file uploads',
               tabs: [
@@ -74,7 +74,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Preview uploaded images before submission. This example shows thumbnails generated after file selection.',
+              'Preview uploaded images before submission. This example generates thumbnails after file selection.',
             codeblock: {
               title: 'Upload images',
               tabs: [
@@ -88,7 +88,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Ensure files are provided before form submission. This example shows validation using the required attribute.',
+              'Ensure files are provided before form submission. This example enforces validation using the `required` attribute.',
             codeblock: {
               title: 'Require file upload',
               tabs: [
@@ -102,7 +102,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Block uploads while files are being processed. This example shows the disabled state during an active upload.',
+              'Block uploads while files are being processed. This example demonstrates the `disabled` state during an active upload.',
             codeblock: {
               title: 'Disable uploads during processing',
               tabs: [
@@ -116,7 +116,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Accept only specific file formats. This example restricts uploads to PDF and DOC files using the accept property.',
+              'Accept only specific file formats. This example restricts uploads to PDF and DOC files using the `accept` property.',
             codeblock: {
               title: 'Restrict file types',
               tabs: [
@@ -130,7 +130,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Communicate why an upload failed. This example shows error messaging when files are rejected.',
+              'Communicate why an upload failed. This example displays error messaging when files are rejected.',
             codeblock: {
               title: 'Show upload errors',
               tabs: [
@@ -144,7 +144,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Support screen reader users with clear labels. This example shows custom accessibility announcements.',
+              'Support screen reader users with clear labels. This example configures custom accessibility announcements.',
             codeblock: {
               title: 'Configure accessibility labels',
               tabs: [

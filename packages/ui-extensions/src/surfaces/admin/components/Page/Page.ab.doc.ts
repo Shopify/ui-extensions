@@ -11,19 +11,19 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Always provide a title that describes the current page
-- Include breadcrumbs when the page is part of a flow
-- Include page actions in the header only if they are relevant to the entire page
-- Include no more than one primary action and 3 secondary actions per page
-- Don't include any actions at the bottom of the page`,
+      sectionContent: `- Always provide a title that describes the current page.
+- Include breadcrumbs when the page is part of a flow.
+- Include page actions in the header only if they are relevant to the entire page.
+- Include no more than one primary action and 3 secondary actions per page.
+- Don't include any actions at the bottom of the page.`,
     },
     {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- The \`inlineSize\` property only accepts \`small\`, \`base\` (default), or \`large\` values
-- Breadcrumb actions only support link and button components
-- The \`aside\` slot is only visible when \`inlineSize\` is set to \`large\``,
+      sectionContent: `- The \`inlineSize\` property only accepts \`small\`, \`base\` (default), or \`large\` values.
+- Breadcrumb actions only support link and button components.
+- The \`aside\` slot is only visible when \`inlineSize\` is set to \`large\`.`,
     },
   ],
   definitions: [
@@ -42,7 +42,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Create a consistent page structure with automatic spacing. This example shows a heading with organized content sections.',
+      'Create a consistent page structure with automatic spacing. This example combines a heading with organized content sections.',
     codeblock: {
       title: 'Organize content with sections',
       tabs: [
@@ -63,7 +63,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Create a focused layout for forms and simple workflows. This example uses the small inlineSize setting for narrower content.',
+              'Create a focused layout for forms and simple workflows. This example uses the `inlineSize="small"` setting for narrower content.',
             codeblock: {
               title: 'Use small width for forms',
               tabs: [
@@ -77,7 +77,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display data-rich content like dashboards or analytics. This example uses the large inlineSize setting for wider layouts.',
+              'Display data-rich content like dashboards or analytics. This example uses the `inlineSize="large"` setting for wider layouts.',
             codeblock: {
               title: 'Use large width for dashboards',
               tabs: [
@@ -91,7 +91,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Help merchants understand where they are in your app. This example shows a breadcrumb link back to a parent page.',
+              'Help merchants understand where they are in your app. This example adds a breadcrumb link back to a parent page.',
             codeblock: {
               title: 'Add breadcrumb navigation',
               tabs: [
@@ -105,7 +105,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Provide quick access to common operations from the page header. This example shows primary and secondary action buttons.',
+              'Provide quick access to common operations from the page header. This example adds primary and secondary action buttons.',
             codeblock: {
               title: 'Add page actions',
               tabs: [
@@ -124,7 +124,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Combine all page features for complex editing workflows. This example shows breadcrumbs, actions, form content, and an aside panel working together.',
+              'Combine all page features for complex editing workflows. This example integrates breadcrumbs, actions, form content, and an aside panel.',
             codeblock: {
               title: 'Edit page with all slots',
               tabs: [

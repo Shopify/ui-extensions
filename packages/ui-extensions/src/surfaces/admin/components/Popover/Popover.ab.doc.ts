@@ -8,26 +8,20 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Usage',
-      type: 'Generic' as const,
-      anchorLink: 'usage',
-      sectionContent: `Popovers are closed by default and should be triggered by a button using the \`commandFor\` attribute. The button's \`commandFor\` value should match the popover's \`id\`. The popover's position is determined by the button that triggers it.`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use for secondary or less important information and actions since they're hidden until triggered
-- Contain actions that share a relationship to each other
-- Be triggered by a clearly labeled default or tertiary button`,
+      sectionContent: `- Use for secondary or less important information and actions since they're hidden until triggered.
+- Contain actions that share a relationship to each other.
+- Be triggered by a clearly labeled default or tertiary button.`,
     },
     {
       title: 'Limitations',
       type: 'Generic' as const,
       anchorLink: 'limitations',
-      sectionContent: `- Popovers can only be opened by user interaction, not programmatically on page load
-- The popover position is determined by the trigger button and cannot be manually overridden
-- Content within the popover does not scroll automatically; use box or section for internal scrolling if needed`,
+      sectionContent: `- Popovers can only be opened by user interaction, not programmatically on page load.
+- The popover position is determined by the trigger button and cannot be manually overridden.
+- Content within the popover does not scroll automatically; use box or section for internal scrolling if needed.`,
     },
   ],
   definitions: [
@@ -52,7 +46,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Show contextual options without navigating away from the current page. This example shows an action menu with edit and delete options.',
+      'Show contextual options without navigating away from the current page. This example presents an action menu with edit and delete options.',
     codeblock: {
       title: 'Show a menu of actions',
       tabs: [
@@ -75,7 +69,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Surface time-sensitive information on demand. This example shows a notification list with order, inventory, and payment alerts.',
+              'Surface time-sensitive information on demand. This example displays a notification list with order, inventory, and payment alerts.',
             codeblock: {
               title: 'Display notification list',
               tabs: [
@@ -92,7 +86,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Let merchants customize their view without leaving the page. This example shows a column visibility picker with an apply button.',
+              'Let merchants customize their view without leaving the page. This example presents a column visibility picker with an apply button.',
             codeblock: {
               title: 'Configure table display options',
               tabs: [
@@ -109,7 +103,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Show supplementary information without cluttering the main view. This example shows stock levels across multiple warehouse locations.',
+              'Show supplementary information without cluttering the main view. This example displays stock levels across multiple warehouse locations.',
             codeblock: {
               title: 'Show inventory details',
               tabs: [
@@ -131,7 +125,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Build inline filtering without navigating to a separate page. This example shows a choice list with apply and clear buttons, plus dynamic trigger text.',
+              'Build inline filtering without navigating to a separate page. This example combines a choice list with apply and clear buttons, plus dynamic trigger text.',
             codeblock: {
               title: 'Filter with apply and clear',
               tabs: [
