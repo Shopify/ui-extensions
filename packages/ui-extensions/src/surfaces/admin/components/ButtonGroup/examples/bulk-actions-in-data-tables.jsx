@@ -1,7 +1,0 @@
-<s-button-group>
-  <s-button slot="secondary-actions">Archive</s-button>
-  <s-button slot="secondary-actions">Export</s-button>
-  <s-button slot="secondary-actions" tone="critical">
-    Delete
-  </s-button>
-</s-button-group>

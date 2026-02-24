@@ -57,14 +57,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                 minHeight: '300px',
               },
             },
-            {
-              code: './examples/default.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '300px',
-              },
-            },
           ],
         },
       },
@@ -77,14 +69,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/menu-with-sections.html',
               language: 'html',
-            },
-            {
-              code: './examples/menu-with-sections.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '400px',
-              },
             },
           ],
         },
@@ -99,14 +83,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/menu-with-links-and-disabled-items.html',
               language: 'html',
             },
-            {
-              code: './examples/menu-with-links-and-disabled-items.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '300px',
-              },
-            },
           ],
         },
       },
@@ -119,14 +95,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/customer-actions-menu.html',
               language: 'html',
-            },
-            {
-              code: './examples/customer-actions-menu.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '300px',
-              },
             },
           ],
         },
@@ -141,14 +109,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/settings-menu.html',
               language: 'html',
             },
-            {
-              code: './examples/settings-menu.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '350px',
-              },
-            },
           ],
         },
       },
@@ -161,14 +121,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/icon-only-trigger.html',
               language: 'html',
-            },
-            {
-              code: './examples/icon-only-trigger.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '300px',
-              },
             },
           ],
         },

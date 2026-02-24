@@ -47,11 +47,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           code: './examples/default.html',
           language: 'html',
         },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
-        },
       ],
     },
   },
@@ -71,11 +66,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/basic-usage.html',
                   language: 'html',
                 },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
               ],
             },
           },
@@ -88,11 +78,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-icon-graphic.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/with-icon-graphic.jsx',
-                  language: 'preview-jsx',
                 },
               ],
             },
@@ -107,11 +92,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/color-variants.html',
                   language: 'html',
                 },
-
-                {
-                  code: './examples/color-variants.jsx',
-                  language: 'preview-jsx',
-                },
               ],
             },
           },
@@ -125,11 +105,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                   code: './examples/product-status.html',
                   language: 'html',
                 },
-
-                {
-                  code: './examples/product-status.jsx',
-                  language: 'preview-jsx',
-                },
               ],
             },
           },
@@ -142,11 +117,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/text-truncation.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/text-truncation.jsx',
-                  language: 'preview-jsx',
                 },
               ],
             },

@@ -55,10 +55,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/default.html',
               language: 'html',
             },
-            {
-              code: './examples/default.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -71,10 +67,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/basic-links-in-paragraph.html',
               language: 'html',
-            },
-            {
-              code: './examples/basic-links-in-paragraph.jsx',
-              language: 'preview-jsx',
             },
           ],
         },
@@ -89,10 +81,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/links-in-banner.html',
               language: 'html',
             },
-            {
-              code: './examples/links-in-banner.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -105,10 +93,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/links-in-box-container.html',
               language: 'html',
-            },
-            {
-              code: './examples/links-in-box-container.jsx',
-              language: 'preview-jsx',
             },
           ],
         },
@@ -123,10 +107,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/download-links.html',
               language: 'html',
             },
-            {
-              code: './examples/download-links.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -139,10 +119,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/external-links.html',
               language: 'html',
-            },
-            {
-              code: './examples/external-links.jsx',
-              language: 'preview-jsx',
             },
           ],
         },
@@ -157,10 +133,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/links-with-language-attribute.html',
               language: 'html',
             },
-            {
-              code: './examples/links-with-language-attribute.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -173,10 +145,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/links-with-different-tones.html',
               language: 'html',
-            },
-            {
-              code: './examples/links-with-different-tones.jsx',
-              language: 'preview-jsx',
             },
           ],
         },

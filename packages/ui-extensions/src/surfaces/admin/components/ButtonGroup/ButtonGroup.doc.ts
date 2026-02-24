@@ -47,11 +47,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               language: 'html',
               layout: 'inline',
             },
-            {
-              code: './examples/default.jsx',
-              language: 'preview-jsx',
-              layout: 'inline',
-            },
           ],
         },
       },
@@ -64,10 +59,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/bulk-actions-in-data-tables.html',
               language: 'html',
-            },
-            {
-              code: './examples/bulk-actions-in-data-tables.jsx',
-              language: 'preview-jsx',
             },
           ],
         },
@@ -82,10 +73,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/toolbar-buttons-with-icons.html',
               language: 'html',
             },
-            {
-              code: './examples/toolbar-buttons-with-icons.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -99,10 +86,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/segmented-appearance.html',
               language: 'html',
             },
-            {
-              code: './examples/segmented-appearance.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -115,10 +98,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/destructive-actions-pattern.html',
               language: 'html',
-            },
-            {
-              code: './examples/destructive-actions-pattern.jsx',
-              language: 'preview-jsx',
             },
           ],
         },

@@ -1,1 +1,0 @@
-<s-chip>Chip</s-chip>
