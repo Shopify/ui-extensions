@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'moneyfield-default.png',
+    description:
+      'Set a cost-per-item price in USD and save it from an action modal. This example uses `MoneyField` with `currencyCode` set to USD, with a [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that saves the price and closes the modal.',
     codeblock: {
       title: 'Set product cost price',
       tabs: [

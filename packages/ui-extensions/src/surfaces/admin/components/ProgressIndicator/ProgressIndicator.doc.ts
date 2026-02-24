@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Feedback and status indicators',
   defaultExample: {
     image: 'progressindicator-default.png',
+    description:
+      'Show a loading indicator while querying product data from the [GraphQL Admin API](/docs/api/admin-graphql/), then replace it with the results. This example uses `ProgressIndicator` with `size` and `accessibilityLabel` props during the query, then displays the product title and inventory count.',
     codeblock: {
       title: 'Show loading during API query',
       tabs: [
