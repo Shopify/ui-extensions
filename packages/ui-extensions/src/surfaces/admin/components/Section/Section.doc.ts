@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Layout and structure',
   defaultExample: {
     image: 'section-default.png',
+    description:
+      'Group warehouse location details under a labeled heading. This example uses `Section` with a `heading` prop to bundle a warehouse name, storage slot, and stock count into one content area.',
     codeblock: {
       title: 'Group content with a heading',
       tabs: [
