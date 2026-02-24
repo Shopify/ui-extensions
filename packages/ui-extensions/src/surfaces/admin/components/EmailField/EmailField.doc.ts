@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'emailfield-default.png',
+    description:
+      'Set a low-stock notification email address and save it. This example uses `EmailField` to capture the address, with a [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that saves the notification email.',
     codeblock: {
       title: 'Collect notification email',
       tabs: [

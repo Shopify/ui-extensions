@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Feedback and status indicators',
   defaultExample: {
     image: 'banner-default.png',
+    description:
+      'Show a product sync failure with a retry action. This example renders a dismissible `Banner` with a `critical` tone, a primary action [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that retries the sync, and a message explaining the issue.',
     codeblock: {
       title: 'Warn about API sync failure',
       tabs: [

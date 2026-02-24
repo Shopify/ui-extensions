@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'checkbox-default.png',
+    description:
+      'Toggle automatic inventory sync on or off. This example uses `Checkbox` with a `checked` state, and a [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that saves the setting and closes the modal.',
     codeblock: {
       title: 'Toggle feature settings',
       tabs: [
