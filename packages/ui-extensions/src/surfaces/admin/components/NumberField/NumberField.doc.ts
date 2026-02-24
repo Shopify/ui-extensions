@@ -33,10 +33,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/default.html',
               language: 'html',
             },
-            {
-              code: './examples/default.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -49,10 +45,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/with-prefix-and-suffix.html',
               language: 'html',
-            },
-            {
-              code: './examples/with-prefix-and-suffix.jsx',
-              language: 'preview-jsx',
             },
           ],
         },
@@ -67,10 +59,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/with-error-state.html',
               language: 'html',
             },
-            {
-              code: './examples/with-error-state.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -83,10 +71,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/disabled-and-read-only.html',
               language: 'html',
-            },
-            {
-              code: './examples/disabled-and-read-only.jsx',
-              language: 'preview-jsx',
             },
           ],
         },

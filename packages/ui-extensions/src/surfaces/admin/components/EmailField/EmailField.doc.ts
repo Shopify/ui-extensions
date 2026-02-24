@@ -28,10 +28,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         image: 'emailfield-default.png',
         codeblock: {
           title: 'Add a basic email field',
-          tabs: [
-            {code: './examples/default.html', language: 'html'},
-            {code: './examples/default.jsx', language: 'preview-jsx'},
-          ],
+          tabs: [{code: './examples/default.html', language: 'html'}],
         },
       },
       {
@@ -44,10 +41,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/with-error-and-help-text.html',
               language: 'html',
             },
-            {
-              code: './examples/with-error-and-help-text.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -58,7 +51,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           title: 'Make an email field read-only',
           tabs: [
             {code: './examples/read-only-display.html', language: 'html'},
-            {code: './examples/read-only-display.jsx', language: 'preview-jsx'},
           ],
         },
       },
@@ -69,7 +61,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           title: 'Disable an email field',
           tabs: [
             {code: './examples/disabled-state.html', language: 'html'},
-            {code: './examples/disabled-state.jsx', language: 'preview-jsx'},
           ],
         },
       },
@@ -80,24 +71,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           title: 'Set character length constraints',
           tabs: [
             {code: './examples/with-length-constraints.html', language: 'html'},
-            {
-              code: './examples/with-length-constraints.jsx',
-              language: 'preview-jsx',
-            },
-          ],
-        },
-      },
-      {
-        description:
-          'Validate the email address in real time and update the error message as the merchant types. This example shows an email field with dynamic validation using a regex pattern.',
-        codeblock: {
-          title: 'Validate an email address dynamically',
-          tabs: [
-            {
-              code: './examples/validation-example.jsx',
-              language: 'preview-jsx',
-              layout: 'formWrapper',
-            },
           ],
         },
       },

@@ -36,10 +36,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           'Add a search input so merchants can find items quickly. This example shows a search field with a visually hidden label and placeholder text.',
         codeblock: {
           title: 'Add a basic search field',
-          tabs: [
-            {code: './examples/default.html', language: 'html'},
-            {code: './examples/default.jsx', language: 'preview-jsx'},
-          ],
+          tabs: [{code: './examples/default.html', language: 'html'}],
         },
       },
       {
@@ -49,7 +46,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           title: 'Show a search error',
           tabs: [
             {code: './examples/with-error-state.html', language: 'html'},
-            {code: './examples/with-error-state.jsx', language: 'preview-jsx'},
           ],
         },
       },
@@ -60,7 +56,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           title: 'Disable a search field',
           tabs: [
             {code: './examples/disabled-state.html', language: 'html'},
-            {code: './examples/disabled-state.jsx', language: 'preview-jsx'},
           ],
         },
       },
@@ -71,10 +66,6 @@ const data: AdminReferenceEntityTemplateSchema = {
           title: 'Set character length limits',
           tabs: [
             {code: './examples/with-character-limits.html', language: 'html'},
-            {
-              code: './examples/with-character-limits.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },

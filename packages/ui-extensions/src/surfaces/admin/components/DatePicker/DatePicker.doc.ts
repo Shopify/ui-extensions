@@ -41,10 +41,6 @@ const data: ReferenceEntityTemplateSchema = {
               code: './examples/default.html',
               language: 'html',
             },
-            {
-              code: './examples/default.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -57,10 +53,6 @@ const data: ReferenceEntityTemplateSchema = {
             {
               code: './examples/single-date-selection.html',
               language: 'html',
-            },
-            {
-              code: './examples/single-date-selection.jsx',
-              language: 'preview-jsx',
             },
           ],
         },
@@ -75,10 +67,6 @@ const data: ReferenceEntityTemplateSchema = {
               code: './examples/with-date-restrictions.html',
               language: 'html',
             },
-            {
-              code: './examples/with-date-restrictions.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -92,10 +80,6 @@ const data: ReferenceEntityTemplateSchema = {
               code: './examples/form-integration.html',
               language: 'html',
             },
-            {
-              code: './examples/form-integration.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -108,10 +92,6 @@ const data: ReferenceEntityTemplateSchema = {
             {
               code: './examples/analytics-dashboard.html',
               language: 'html',
-            },
-            {
-              code: './examples/analytics-dashboard.jsx',
-              language: 'preview-jsx',
             },
           ],
         },

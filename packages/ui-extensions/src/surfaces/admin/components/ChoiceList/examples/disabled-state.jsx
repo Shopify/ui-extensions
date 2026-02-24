@@ -1,7 +1,0 @@
-<s-choice-list label="Account type" name="account-type" disabled>
-  <s-choice value="basic" selected>
-    Basic
-  </s-choice>
-  <s-choice value="advanced">Advanced</s-choice>
-  <s-choice value="enterprise">Enterprise</s-choice>
-</s-choice-list>

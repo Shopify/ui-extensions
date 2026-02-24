@@ -67,10 +67,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/basic-button.html',
               language: 'html',
             },
-            {
-              code: './examples/basic-button.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -86,11 +82,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               language: 'html',
               layout: 'inline',
             },
-            {
-              code: './examples/default.jsx',
-              language: 'preview-jsx',
-              layout: 'inline',
-            },
           ],
         },
       },
@@ -103,10 +94,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/variants.html',
               language: 'html',
-            },
-            {
-              code: './examples/variants.jsx',
-              language: 'preview-jsx',
             },
           ],
         },
@@ -121,10 +108,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/tones.html',
               language: 'html',
             },
-            {
-              code: './examples/tones.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -137,10 +120,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/with-icon.html',
               language: 'html',
-            },
-            {
-              code: './examples/with-icon.jsx',
-              language: 'preview-jsx',
             },
           ],
         },
@@ -155,10 +134,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/icon-only-button.html',
               language: 'html',
             },
-            {
-              code: './examples/icon-only-button.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -171,10 +146,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/loading-state-for-merchant-actions.html',
               language: 'html',
-            },
-            {
-              code: './examples/loading-state-for-merchant-actions.jsx',
-              language: 'preview-jsx',
             },
           ],
         },
@@ -189,10 +160,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/form-states.html',
               language: 'html',
             },
-            {
-              code: './examples/form-states.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -205,10 +172,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/link-buttons.html',
               language: 'html',
-            },
-            {
-              code: './examples/link-buttons.jsx',
-              language: 'preview-jsx',
             },
           ],
         },
@@ -223,10 +186,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/delete-confirmation.html',
               language: 'html',
             },
-            {
-              code: './examples/delete-confirmation.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -239,10 +198,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/component-interactions.html',
               language: 'html',
-            },
-            {
-              code: './examples/component-interactions.jsx',
-              language: 'preview-jsx',
             },
           ],
         },

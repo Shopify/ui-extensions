@@ -1,9 +1,0 @@
-<s-number-field
-  label="Order quantity"
-  value="0"
-  min={1}
-  max={999}
-  step={1}
-  required
-  error="Quantity must be at least 1"
- />

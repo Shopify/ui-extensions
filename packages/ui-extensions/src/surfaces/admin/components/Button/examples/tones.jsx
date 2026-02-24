@@ -1,5 +1,0 @@
-<s-stack direction="inline" gap="base">
-  <s-button tone="critical">Delete</s-button>
-  <s-button tone="neutral">Save draft</s-button>
-  <s-button>Continue</s-button>
-</s-stack>

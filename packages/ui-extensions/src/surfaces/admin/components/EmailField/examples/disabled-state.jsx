@@ -1,5 +1,0 @@
-<s-email-field
-  label="Account email"
-  value="admin@example.com"
-  disabled
- />

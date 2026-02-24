@@ -63,10 +63,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/default.html',
               language: 'html',
             },
-            {
-              code: './examples/default.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -79,10 +75,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/basic-usage.html',
               language: 'html',
-            },
-            {
-              code: './examples/basic-usage.jsx',
-              language: 'preview-jsx',
             },
           ],
         },
@@ -97,10 +89,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/multiple-selections.html',
               language: 'html',
             },
-            {
-              code: './examples/multiple-selections.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -114,10 +102,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/with-error-state.html',
               language: 'html',
             },
-            {
-              code: './examples/with-error-state.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -130,24 +114,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/disabled-state.html',
               language: 'html',
-            },
-            {
-              code: './examples/disabled-state.jsx',
-              language: 'preview-jsx',
-            },
-          ],
-        },
-      },
-      {
-        description:
-          'Validate selections in real time and show or clear error messages as the merchant interacts. This example shows a required choice list that updates its error state dynamically.',
-        codeblock: {
-          title: 'Validate selections dynamically',
-          tabs: [
-            {
-              code: './examples/validation-example.jsx',
-              language: 'preview-jsx',
-              layout: 'formWrapper',
             },
           ],
         },

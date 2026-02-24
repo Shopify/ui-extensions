@@ -39,10 +39,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/default.html',
               language: 'html',
             },
-            {
-              code: './examples/default.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -55,10 +51,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/with-icon.html',
               language: 'html',
-            },
-            {
-              code: './examples/with-icon.jsx',
-              language: 'preview-jsx',
             },
           ],
         },
@@ -73,10 +65,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/specific-error-messages-for-merchant-context.html',
               language: 'html',
             },
-            {
-              code: './examples/specific-error-messages-for-merchant-context.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -89,10 +77,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/with-prefix-and-suffix.html',
               language: 'html',
-            },
-            {
-              code: './examples/with-prefix-and-suffix.jsx',
-              language: 'preview-jsx',
             },
           ],
         },
@@ -107,10 +91,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/with-accessory.html',
               language: 'html',
             },
-            {
-              code: './examples/with-accessory.jsx',
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -123,10 +103,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/disabled-and-read-only.html',
               language: 'html',
-            },
-            {
-              code: './examples/disabled-and-read-only.jsx',
-              language: 'preview-jsx',
             },
           ],
         },

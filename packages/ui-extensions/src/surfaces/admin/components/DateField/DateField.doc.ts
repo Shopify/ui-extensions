@@ -47,14 +47,6 @@ const data: AdminReferenceEntityTemplateSchema = {
                 minHeight: '300px',
               },
             },
-            {
-              code: './examples/default.jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '300px',
-              },
-              language: 'preview-jsx',
-            },
           ],
         },
       },
@@ -67,14 +59,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/basic-usage.html',
               language: 'html',
-            },
-            {
-              code: './examples/basic-usage.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '350px',
-              },
             },
           ],
         },
@@ -89,14 +73,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/with-default-value.html',
               language: 'html',
             },
-            {
-              code: './examples/with-default-value.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '350px',
-              },
-            },
           ],
         },
       },
@@ -109,14 +85,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/with-date-restrictions.html',
               language: 'html',
-            },
-            {
-              code: './examples/with-date-restrictions.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '350px',
-              },
             },
           ],
         },
@@ -131,14 +99,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/with-specific-allowed-dates.html',
               language: 'html',
             },
-            {
-              code: './examples/with-specific-allowed-dates.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '350px',
-              },
-            },
           ],
         },
       },
@@ -151,14 +111,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/with-error-state.html',
               language: 'html',
-            },
-            {
-              code: './examples/with-error-state.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '350px',
-              },
             },
           ],
         },
@@ -173,14 +125,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/disabled-and-read-only-states.html',
               language: 'html',
             },
-            {
-              code: './examples/disabled-and-read-only-states.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '350px',
-              },
-            },
           ],
         },
       },
@@ -193,14 +137,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/form-integration.html',
               language: 'html',
-            },
-            {
-              code: './examples/form-integration.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '350px',
-              },
             },
           ],
         },
@@ -215,14 +151,6 @@ const data: AdminReferenceEntityTemplateSchema = {
               code: './examples/date-range-selection.html',
               language: 'html',
             },
-            {
-              code: './examples/date-range-selection.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '350px',
-              },
-            },
           ],
         },
       },
@@ -235,14 +163,6 @@ const data: AdminReferenceEntityTemplateSchema = {
             {
               code: './examples/validation-example.html',
               language: 'html',
-            },
-            {
-              code: './examples/validation-example.jsx',
-              language: 'preview-jsx',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '450px',
-              },
             },
           ],
         },
