@@ -73,7 +73,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Let users pick one option from a predefined list. This example shows a labeled dropdown with selectable options. Click to interact with the preview.',
+      'Let users pick one option from a predefined list. This example shows a labeled dropdown with selectable options.',
     codeblock: {
       title: 'Create a dropdown menu',
       tabs: [
@@ -93,7 +93,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Provide sorting controls for lists or tables. This example shows a dropdown with sort options and a pre-selected default value. Click to interact with the preview.',
+              'Provide sorting controls for lists or tables. This example shows a dropdown with sort options and a pre-selected default value.',
             codeblock: {
               title: 'Add sorting options',
               tabs: [
@@ -107,7 +107,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Guide users before they make a selection. This example shows placeholder text that describes what the user should choose. Click to interact with the preview.',
+              'Guide users before they make a selection. This example shows placeholder text that describes what the user should choose.',
             codeblock: {
               title: 'Add placeholder text',
               tabs: [
@@ -121,7 +121,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Communicate selection problems clearly to users. This example shows an error message when a required selection is missing. Click to interact with the preview.',
+              'Communicate selection problems clearly to users. This example shows an error message when a required selection is missing.',
             codeblock: {
               title: 'Show validation errors',
               tabs: [
@@ -135,7 +135,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Make long option lists easier to scan. This example shows options organized into logical groups like geographical regions. Click to interact with the preview.',
+              'Make long option lists easier to scan. This example shows options organized into logical groups like geographical regions.',
             codeblock: {
               title: 'Group options by category',
               tabs: [
@@ -149,7 +149,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Visually indicate the purpose of a select field. This example shows a sort icon that signals filtering functionality. Click to interact with the preview.',
+              'Visually indicate the purpose of a select field. This example shows a sort icon that signals filtering functionality.',
             codeblock: {
               title: 'Add an icon',
               tabs: [
@@ -163,7 +163,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              "Lock a selection when changes aren't allowed. This example shows a disabled dropdown that preserves its selected value but prevents interaction. Click to interact with the preview.",
+              "Lock a selection when changes aren't allowed. This example shows a disabled dropdown that preserves its selected value but prevents interaction.",
             codeblock: {
               title: 'Disable the select',
               tabs: [

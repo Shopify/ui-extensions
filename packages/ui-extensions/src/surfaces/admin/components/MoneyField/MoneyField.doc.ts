@@ -43,7 +43,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Capture monetary values with automatic currency formatting. This example shows a labeled money field with placeholder text and helper details. Click to interact with the preview.',
+      'Capture monetary values with automatic currency formatting. This example shows a labeled money field with placeholder text and helper details.',
     codeblock: {
       title: 'Collect a currency value',
       tabs: [
@@ -63,7 +63,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Guide users with constraints and helpful context. This example shows a money field with min/max limits and helper text explaining the valid range. Click to interact with the preview.',
+              'Guide users with constraints and helpful context. This example shows a money field with min/max limits and helper text explaining the valid range.',
             codeblock: {
               title: 'Add a label and constraints',
               tabs: [
@@ -77,7 +77,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Communicate input problems clearly to users. This example shows an error message displayed when the entered value is invalid. Click to interact with the preview.',
+              'Communicate input problems clearly to users. This example shows an error message displayed when the entered value is invalid.',
             codeblock: {
               title: 'Handle validation errors',
               tabs: [
@@ -91,7 +91,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Collect multiple monetary values in a single form. This example shows money fields for price, compare-at price, and cost with individual constraints. Click to interact with the preview.',
+              'Collect multiple monetary values in a single form. This example shows money fields for price, compare-at price, and cost with individual constraints.',
             codeblock: {
               title: 'Combine multiple fields in a form',
               tabs: [
