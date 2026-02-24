@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'numberfield-default.png',
+    description:
+      'Specify a restock quantity between 1 and 10,000. This example uses `NumberField` with `min` and `max` props to constrain the input, and a [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that submits the restock and closes the modal.',
     codeblock: {
       title: 'Set inventory restock quantity',
       tabs: [

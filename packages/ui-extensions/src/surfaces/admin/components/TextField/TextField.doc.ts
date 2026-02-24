@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'textfield-default.png',
+    description:
+      'Tag a product with a custom warehouse label and save it from an action modal. This example uses `TextField` to capture the value, with a [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that saves the label.',
     codeblock: {
       title: 'Collect product metadata',
       tabs: [

@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Actions',
   defaultExample: {
     image: 'pressable-default.png',
+    description:
+      'Trigger an inventory sync or a data export from icon-labeled action rows. This example uses `Pressable` with `onPress` callbacks and [Icon](/docs/api/admin-extensions/{API_VERSION}/components/media-and-visuals/icon) labels to create clickable rows that call backend APIs without visible button styling.',
     codeblock: {
       title: 'Build custom action rows',
       tabs: [

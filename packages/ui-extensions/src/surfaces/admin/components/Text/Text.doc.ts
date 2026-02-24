@@ -19,6 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Typography and content',
   defaultExample: {
     image: 'text-default.png',
+    description:
+      'Differentiate a current price from a compare-at price with bold and italic styling. This example uses `Text` with `fontWeight` for the current price and `fontStyle` for the compare-at value, showing how props change the visual weight of inline content.',
     codeblock: {
       title: 'Highlight product pricing',
       tabs: [

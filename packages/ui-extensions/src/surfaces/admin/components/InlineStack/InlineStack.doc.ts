@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Layout and structure',
   defaultExample: {
     image: 'inlinestack-default.png',
+    description:
+      'Arrange metadata labels and values in a horizontal row. This example uses `InlineStack` with the `gap` prop to space product IDs, SKUs, weights, and a bold [Text](/docs/api/admin-extensions/{API_VERSION}/components/typography-and-content/text) status label side by side.',
     codeblock: {
       title: 'Arrange metadata in rows',
       tabs: [
