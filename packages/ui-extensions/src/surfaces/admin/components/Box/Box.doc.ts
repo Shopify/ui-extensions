@@ -19,6 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Layout and structure',
   defaultExample: {
     image: 'box-default.png',
+    description:
+      'Add padding around a warehouse slot name, aisle reference, and unit count. This example uses `Box` with `padding` inside a [BlockStack](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/blockstack) to inset the slot details from the heading above.',
     codeblock: {
       title: 'Create a padded content container',
       tabs: [

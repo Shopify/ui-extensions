@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Typography and content',
   defaultExample: {
     image: 'heading-default.png',
+    description:
+      'Add a title and description to a product analytics block. This example renders a `Heading` above descriptive [Text](/docs/api/admin-extensions/{API_VERSION}/components/typography-and-content/text) inside a [BlockStack](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/blockstack).',
     codeblock: {
       title: 'Label extension sections',
       tabs: [
