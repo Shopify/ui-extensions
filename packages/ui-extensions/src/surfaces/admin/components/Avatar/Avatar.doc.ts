@@ -10,9 +10,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- **Choose appropriate sizes:** Use smaller sizes for compact contexts like tables and lists, and larger sizes for profile pages where the person is the primary focus.
-- **Provide meaningful alt text:** Describe the avatar content like **Sarah Chen** or **Acme Corporation**, or use empty alt text if the name appears next to the avatar as text.
-- **Position near related content:** Place avatars adjacent to the names or entities they represent for clear associations in lists, tables, or cards.`,
+      sectionContent: `- **Choose appropriate sizes**: Use smaller sizes for compact contexts like tables and lists, and larger sizes for profile pages where the person is the primary focus.
+- **Provide meaningful alt text**: Describe the avatar content like **Sarah Chen** or **Acme Corporation**, or use empty alt text if the name appears next to the avatar as text.
+- **Position near related content**: Place avatars adjacent to the names or entities they represent for clear associations in lists, tables, or cards.`,
     },
     {
       title: 'Limitations',
@@ -40,7 +40,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'avatar-default.png',
     description:
-      'Identify users visually when no profile image is available. This example shows an avatar displaying initials derived from a name.',
+      'Identify users visually when no profile image is available. This example displays an avatar with initials derived from a name.',
     codeblock: {
       title: 'Display initials',
       tabs: [
@@ -59,7 +59,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Represent unknown users with a generic icon. This example shows a placeholder avatar when no initials or image are provided.',
+              'Represent unknown users with a generic icon. This example displays a placeholder avatar when no initials or image are provided.',
             codeblock: {
               title: 'Show a placeholder avatar',
               tabs: [
@@ -72,7 +72,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display profile photos with graceful error handling. This example shows an avatar with a source image that falls back to initials if the image fails to load.',
+              'Display profile photos with graceful error handling. This example presents an avatar with a source image that falls back to initials if the image fails to load.',
             codeblock: {
               title: 'Load an image with fallback',
               tabs: [
@@ -85,7 +85,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Adapt avatar prominence to different UI contexts. This example shows all five available sizes from `small-200` to `large-200`.',
+              'Adapt avatar prominence to different UI contexts. This example demonstrates all five available sizes from `small-200` to `large-200`.',
             codeblock: {
               title: 'Adjust the size',
               tabs: [
@@ -98,7 +98,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display initials of varying lengths consistently. This example shows avatars with 2, 3, and 4 character initials.',
+              'Display initials of varying lengths consistently. This example presents avatars with two, three, and four character initials.',
             codeblock: {
               title: 'Handle long names',
               tabs: [
@@ -111,7 +111,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Ensure visual consistency across the interface. This example shows that avatars with identical initials always display the same background color.',
+              'Ensure visual consistency across the interface. This example demonstrates that avatars with identical initials always display the same background color.',
             codeblock: {
               title: 'Maintain color consistency',
               tabs: [
@@ -124,7 +124,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Show customer identities in list views. This example shows avatars paired with customer names in a vertical stack layout.',
+              'Show customer identities in list views. This example pairs avatars with customer names in a vertical stack layout.',
             codeblock: {
               title: 'Display in a customer list',
               tabs: [
@@ -137,9 +137,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Build rich merchant profile cards. This example shows an avatar combined with Section, Heading, and Text components for a complete layout.',
+              'Create a profile layout with multiple components. This example combines an avatar with [section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section), [heading](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/heading), and [text](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/text) components.',
             codeblock: {
-              title: 'Combine with Section',
+              title: 'Build a merchant profile card',
               tabs: [
                 {
                   code: './examples/with-section-component.html',

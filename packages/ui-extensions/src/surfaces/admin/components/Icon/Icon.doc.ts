@@ -17,11 +17,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- **Use icons to support actions and status, not decorate:** Icons should clarify what an action does or indicate state. Use the trash icon for delete actions, a checkmark for completed status, or a warning icon for errors. Avoid adding icons purely for visual interest.
-- **Maintain consistency across your interface:** Always use the same icon for the same action or concept throughout your extension. If you use a pencil for edit in one place, use it everywhere. Inconsistent icon usage confuses merchants.
-- **Pair icons with text labels whenever possible:** Icons work best as visual reinforcement alongside text. Without text, even common icons can be ambiguous—a gear might mean settings, preferences, or configuration. Only use icons alone in space-constrained contexts like icon-only buttons with proper accessibility labels.
-- **Choose icons that are universally recognizable:** Stick to icons with established meanings like magnifying glass (search), trash (delete), and plus (add). Test any icon you're unsure about—if it needs explanation, it's not the right choice.
-- **Use semantic tones to communicate meaning:** Apply tones like \`critical\` for destructive actions, \`success\` for positive states, and \`warning\` for caution. Tones should convey information, not serve as decoration.`,
+      sectionContent: `- **Use icons to support actions and status, not decorate**: Icons should clarify what an action does or indicate state. Use the trash icon for delete actions, a checkmark for completed status, or a warning icon for errors. Avoid adding icons purely for visual interest.
+- **Maintain consistency across your interface**: Always use the same icon for the same action or concept throughout your extension. If you use a pencil for edit in one place, use it everywhere. Inconsistent icon usage confuses merchants.
+- **Pair icons with text labels whenever possible**: Icons work best as visual reinforcement alongside text. Without text, even common icons can be ambiguous—a gear might mean settings, preferences, or configuration. Only use icons alone in space-constrained contexts like icon-only buttons with proper accessibility labels.
+- **Choose icons that are universally recognizable**: Stick to icons with established meanings like magnifying glass (search), trash (delete), and plus (add). Test any icon you're unsure about—if it needs explanation, it's not the right choice.
+- **Use semantic tones to communicate meaning**: Apply tones like \`critical\` for destructive actions, \`success\` for positive states, and \`warning\` for caution. Tones should convey information, not serve as decoration.`,
     },
     {
       title: 'Limitations',
@@ -42,7 +42,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'icon-default.png',
     description:
-      'Add visual cues to help users understand available actions. This example shows common icons for home, orders, products, and settings.',
+      'Add visual cues to help users understand available actions. This example displays common icons for home, orders, products, and settings.',
     codeblock: {
       title: 'Display icons',
       tabs: [
@@ -61,7 +61,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Communicate status through color-coded icons. This example shows icons with warning, success, info, and caution tones.',
+              'Communicate status through color-coded icons. This example displays icons with warning, success, info, and caution tones.',
             codeblock: {
               title: 'Apply semantic tones',
               tabs: [
@@ -74,7 +74,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Fit icons into tight layouts without losing clarity. This example shows a small-sized icon that takes up minimal space.',
+              'Fit icons into tight layouts without losing clarity. This example uses a small-sized icon that takes up minimal space.',
             codeblock: {
               title: 'Reduce the size',
               tabs: [
@@ -87,7 +87,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'De-emphasize icons for secondary content. This example shows a subdued icon with lower contrast for supporting information.',
+              'De-emphasize icons for secondary content. This example displays a subdued icon with lower contrast for supporting information.',
             codeblock: {
               title: 'Apply subdued color',
               tabs: [
@@ -100,7 +100,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Enable programmatic access to specific icons. This example shows an icon with an ID attribute for JavaScript targeting or CSS styling.',
+              'Target icons in scripts or stylesheets. This example adds an ID attribute for JavaScript event handling or custom CSS styling.',
             codeblock: {
               title: 'Add an ID',
               tabs: [
@@ -113,9 +113,9 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Improve accessibility by connecting icons to related elements. This example shows an icon associated with interactive content for screen readers.',
+              'Improve accessibility for screen reader users. This example connects an icon to related interactive content using the `interest` attribute.',
             codeblock: {
-              title: 'Link to related content',
+              title: 'Connect to related content',
               tabs: [
                 {
                   code: './examples/with-interest-relationship.html',
@@ -126,7 +126,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Reinforce button actions with visual cues. This example shows icons in buttons for add and delete actions with appropriate tones.',
+              'Reinforce button actions with visual cues. This example places icons in buttons for add and delete actions with appropriate tones.',
             codeblock: {
               title: 'Use in buttons',
               tabs: [
@@ -139,7 +139,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Enhance status badges with visual indicators. This example shows badges with icons for active and pending states.',
+              'Enhance status badges with visual indicators. This example pairs badges with icons for active and pending states.',
             codeblock: {
               title: 'Use in badges',
               tabs: [

@@ -170,7 +170,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-'Build a complete theme customization interface. This example combines multiple color fields for primary, secondary, and overlay colors with helper text.',
+              'Build a complete theme customization interface. This example combines multiple color fields for primary, secondary, and overlay colors with helper text.',
             codeblock: {
               title: 'Combine multiple fields in a form',
               tabs: [
