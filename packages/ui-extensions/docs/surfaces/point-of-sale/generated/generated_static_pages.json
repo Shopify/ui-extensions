@@ -1,0 +1,202 @@
+[
+  {
+    "title": "Targets overview",
+    "description": "\nA [target](/docs/apps/app-extensions/configuration#targets) represents where your POS UI extension will appear.\n",
+    "id": "extension-targets-overview",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "GenericAccordion",
+        "title": "Smart grid",
+        "anchorLink": "smart-grid",
+        "sectionContent": "The smart grid. Learn more about [the smart grid](/docs/apps/pos#home-screen).",
+        "accordionContent": [
+          {
+            "title": "Tile",
+            "description": "\nDisplays a tile on the smart grid.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Modal",
+            "description": "\nDisplays a modal when a tile is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Post-purchase",
+        "anchorLink": "post-purchase",
+        "sectionContent": "The post-purchase screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the post-purchase screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays a modal when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Block",
+            "description": "\nRenders a custom section within the native post purchase screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Customer details",
+        "anchorLink": "customer-details",
+        "sectionContent": "The customer details screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the customer details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Block",
+            "description": "\nRenders a custom section within the customer details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Product details",
+        "anchorLink": "product-details",
+        "sectionContent": "The product details screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the product details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Block",
+            "description": "\nRenders a custom section within the native product details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Order details",
+        "anchorLink": "order-details",
+        "sectionContent": "The order details screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Block",
+            "description": "\nRenders a custom section within the native order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Draft Order details",
+        "anchorLink": "draft-order-details",
+        "sectionContent": "The draft order details screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the draft order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Block",
+            "description": "\nRenders a custom section within the native draft order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Cart line item details",
+        "anchorLink": "cart-line-item-details",
+        "sectionContent": "The cart line item details screen",
+        "accordionContent": [
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target in the cart line item details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "POS UI extensions",
+    "description": "The UI Extensions library enables individuals to build extensions that use interface elements and behaviors that mirror the look and feel of the POS retail experience. These elements render natively, providing the performance and accessibility inherent to a native app.",
+    "id": "pos-ui-extensions",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "api-versioning",
+        "title": "API versioning",
+        "sectionContent": "POS UI extensions are built on a versioned API that receives regular updates with new features, improvements, and additional targets. We recommend using the latest supported API version to access the most current capabilities and ensure optimal compatibility with POS devices.\n\nYou can track new releases and update your extensions by referencing the [developer changelog](/changelog)."
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "overview",
+        "title": "Overview",
+        "sectionContent": "Extend the Shopify POS with UI Extensions.",
+        "sectionCard": [
+          {
+            "subtitle": "Extension targets",
+            "name": "See all available extension targets",
+            "url": "targets",
+            "type": "pickaxe-1"
+          },
+          {
+            "subtitle": "APIs",
+            "name": "See all available APIs",
+            "url": "apis",
+            "type": "pickaxe-2"
+          },
+          {
+            "subtitle": "Components",
+            "name": "See all available components",
+            "url": "components",
+            "type": "blocks"
+          }
+        ]
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "getting-started",
+        "title": "Getting Started",
+        "sectionContent": "Get started with POS UI Extensions with Shopify CLI.",
+        "sectionCard": [
+          {
+            "name": "Getting started guide",
+            "subtitle": "Set up your development environment",
+            "url": "/docs/apps/build/pos/getting-started",
+            "type": "blocks"
+          }
+        ]
+      }
+    ]
+  }
+]
