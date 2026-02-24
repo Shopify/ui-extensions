@@ -80,11 +80,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.html',
           language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          title: '',
         },
       ],
     },
@@ -104,11 +100,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/basic-usage.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
@@ -122,11 +114,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-placeholder.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/with-placeholder.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
@@ -140,11 +128,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-error-state.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
@@ -158,11 +142,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-option-groups.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/with-option-groups.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
@@ -176,11 +156,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-icon.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/with-icon.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
@@ -194,11 +170,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/disabled-state.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },

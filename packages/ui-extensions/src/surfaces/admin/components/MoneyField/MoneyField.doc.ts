@@ -50,11 +50,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.html',
           language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          title: '',
         },
       ],
     },
@@ -74,11 +70,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/basic-usage.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
@@ -92,11 +84,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/basic-field.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/basic-field.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
@@ -110,30 +98,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/currency-formatting-with-form-integration.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/currency-formatting-with-form-integration.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-        ],
-      },
-      {
-        title: '',
-        examples: [
-          {
-            description:
-              'Provide immediate feedback as users type. This example shows real-time validation with dynamic error messages when values exceed min/max limits. Click to interact with the preview.',
-            codeblock: {
-              title: 'Validate input in real time',
-              tabs: [
-                {
-                  code: './examples/validation-example.jsx',
-                  language: 'preview-jsx',
-                  layout: 'formWrapper',
+                  title: '',
                 },
               ],
             },

@@ -50,10 +50,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.html',
           language: 'html',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          title: '',
         },
       ],
     },
@@ -73,11 +70,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-validation.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/with-validation.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
@@ -91,11 +84,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-default-value.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/with-default-value.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
@@ -109,11 +98,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/disabled-state.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },

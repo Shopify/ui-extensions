@@ -47,11 +47,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         {
           code: './examples/default.html',
           language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          title: '',
         },
       ],
     },
@@ -71,11 +67,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/basic-usage.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
@@ -89,11 +81,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-error-state.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
@@ -107,11 +95,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-helper-text.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/with-helper-text.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
@@ -125,11 +109,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/in-form-layout.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/in-form-layout.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
@@ -143,11 +123,7 @@ const data: AdminReferenceEntityTemplateSchema = {
                 {
                   code: './examples/with-password-strength-requirements.html',
                   language: 'html',
-                },
-
-                {
-                  code: './examples/with-password-strength-requirements.jsx',
-                  language: 'preview-jsx',
+                  title: '',
                 },
               ],
             },
