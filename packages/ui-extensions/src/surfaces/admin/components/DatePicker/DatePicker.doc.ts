@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'datepicker-default.png',
+    description:
+      'Schedule a promotion start date using an inline calendar. This example renders a `DatePicker` that captures the selected date, with a [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that schedules the promotion.',
     codeblock: {
       title: 'Schedule promotion start date',
       tabs: [

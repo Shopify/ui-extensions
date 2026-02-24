@@ -21,6 +21,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Layout and structure',
   defaultExample: {
     image: 'blockstack-default.png',
+    description:
+      'Stack a sync status label, two detail lines, and an action button in a vertical column with consistent spacing. This example uses `BlockStack` with the `gap` prop to control the vertical rhythm, and includes a secondary [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) for viewing the sync log.',
     codeblock: {
       title: 'Stack extension content vertically',
       tabs: [
