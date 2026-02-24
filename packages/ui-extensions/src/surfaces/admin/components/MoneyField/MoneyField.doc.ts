@@ -43,13 +43,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Capture monetary values with automatic currency formatting. This example shows a labeled money field with placeholder text and helper details.',
+      'Capture monetary values with automatic currency formatting. This example pairs a label with placeholder text and helper details.',
     codeblock: {
       title: 'Collect a currency value',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
+          language: 'preview',
           title: '',
         },
       ],
@@ -63,13 +63,13 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Guide users with constraints and helpful context. This example shows a money field with min/max limits and helper text explaining the valid range.',
+              'Set input boundaries for valid amounts. This example configures min/max limits to constrain the accepted value range.',
             codeblock: {
               title: 'Add a label and constraints',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'html',
+                  language: 'preview',
                   title: '',
                 },
               ],
@@ -77,13 +77,13 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Communicate input problems clearly to users. This example shows an error message displayed when the entered value is invalid.',
+              'Communicate input problems clearly to users. This example displays an error message when the entered value is invalid.',
             codeblock: {
               title: 'Handle validation errors',
               tabs: [
                 {
                   code: './examples/basic-field.html',
-                  language: 'html',
+                  language: 'preview',
                   title: '',
                 },
               ],
@@ -91,13 +91,13 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Collect multiple monetary values in a single form. This example shows money fields for price, compare-at price, and cost with individual constraints.',
+              'Collect multiple monetary values in a single form. This example groups money fields for price, compare-at price, and cost with individual constraints.',
             codeblock: {
               title: 'Combine multiple fields in a form',
               tabs: [
                 {
                   code: './examples/currency-formatting-with-form-integration.html',
-                  language: 'html',
+                  language: 'preview',
                   title: '',
                 },
               ],

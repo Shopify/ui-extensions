@@ -33,13 +33,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Give users a clear way to turn a feature on or off. This example shows a labeled toggle switch for enabling a preference.',
+      'Give users a clear way to turn a feature on or off. This example pairs a label with a toggle switch.',
     codeblock: {
       title: 'Toggle a setting',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
+          language: 'preview',
           title: '',
         },
       ],
@@ -53,13 +53,13 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              "Indicate when a feature isn't available. This example shows a locked switch that prevents interaction while showing its current state.",
+              "Indicate when a feature isn't available. This example locks a switch to prevent interaction while displaying its current state.",
             codeblock: {
               title: 'Show a disabled switch',
               tabs: [
                 {
                   code: './examples/disabled-switch.html',
-                  language: 'html',
+                  language: 'preview',
                   title: '',
                 },
               ],
@@ -67,13 +67,13 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Collect multiple settings that save together. This example shows switches grouped in a form for batch submission.',
+              'Collect multiple settings that save together. This example groups switches in a form for batch submission.',
             codeblock: {
               title: 'Submit multiple settings in a form',
               tabs: [
                 {
                   code: './examples/form-integration.html',
-                  language: 'html',
+                  language: 'preview',
                   title: '',
                 },
               ],
@@ -81,13 +81,13 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Apply changes instantly without a save button. This example shows switches arranged in a panel where each toggle takes effect immediately.',
+              'Organize settings in a panel layout. This example arranges switches in a stack to display related preferences together.',
             codeblock: {
               title: 'Apply multiple settings immediately',
               tabs: [
                 {
                   code: './examples/settings-panel-with-stack.html',
-                  language: 'html',
+                  language: 'preview',
                   title: '',
                 },
               ],
@@ -95,13 +95,13 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              "Keep switches accessible when labels aren't visually needed. This example shows a visually hidden label that screen readers can still announce.",
+              "Keep switches accessible when labels aren't visually needed. This example uses a visually hidden label that screen readers can still announce.",
             codeblock: {
               title: 'Hide the label visually',
               tabs: [
                 {
                   code: './examples/hidden-label-for-accessibility.html',
-                  language: 'html',
+                  language: 'preview',
                   title: '',
                 },
               ],
@@ -109,13 +109,13 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              "Communicate switch-related problems clearly. This example shows helper text with an error message when a required switch isn't enabled.",
+              "Communicate switch-related problems clearly. This example displays helper text with an error message when a required switch isn't enabled.",
             codeblock: {
               title: 'Show validation errors',
               tabs: [
                 {
                   code: './examples/with-details-and-error.html',
-                  language: 'html',
+                  language: 'preview',
                   title: '',
                 },
               ],
@@ -123,13 +123,13 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Provide extra context for screen reader users. This example shows an accessibility label that gives more detail than the visible label alone.',
+              'Provide extra context for screen reader users. This example adds an accessibility label that gives more detail than the visible label alone.',
             codeblock: {
               title: 'Add an accessibility label',
               tabs: [
                 {
                   code: './examples/switch-with-accessibility-label.html',
-                  language: 'html',
+                  language: 'preview',
                   title: '',
                 },
               ],

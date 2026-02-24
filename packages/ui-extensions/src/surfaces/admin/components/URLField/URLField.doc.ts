@@ -43,13 +43,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Capture web addresses from users with URL-specific input. This example shows a labeled field with placeholder text guiding the expected format.',
+      'Capture web addresses from users with URL-specific input. This example pairs a label with placeholder text guiding the expected format.',
     codeblock: {
       title: 'Collect a URL',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
+          language: 'preview',
           title: '',
         },
       ],
@@ -63,13 +63,13 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Enforce URL requirements before form submission. This example shows required validation with length constraints and custom error messages.',
+              'Enforce URL requirements before form submission. This example configures required validation with length constraints and custom error messages.',
             codeblock: {
               title: 'Set validation constraints',
               tabs: [
                 {
                   code: './examples/with-validation.html',
-                  language: 'html',
+                  language: 'preview',
                   title: '',
                 },
               ],
@@ -77,13 +77,13 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display a URL for reference without allowing changes. This example shows a read-only field pre-populated with a store URL.',
+              'Display a URL that users can copy but not edit. This example uses readOnly to prevent changes while keeping the value selectable and included in form submissions.',
             codeblock: {
               title: 'Pre-fill a URL',
               tabs: [
                 {
                   code: './examples/with-default-value.html',
-                  language: 'html',
+                  language: 'preview',
                   title: '',
                 },
               ],
@@ -91,13 +91,13 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display a URL that users can view but not change. This example shows a pre-filled, disabled field that prevents editing.',
+              'Show a URL in a non-interactive state. This example uses disabled to gray out the field and exclude it from form submission.',
             codeblock: {
               title: 'Show a disabled field',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
-                  language: 'html',
+                  language: 'preview',
                   title: '',
                 },
               ],
