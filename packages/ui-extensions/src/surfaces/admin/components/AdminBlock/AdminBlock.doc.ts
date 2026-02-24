@@ -21,6 +21,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Settings and templates',
   defaultExample: {
     image: 'adminblock-default.png',
+    description:
+      "Show a warehouse connection status, sync timestamp, and inventory count in a product details block. This example renders an `AdminBlock` titled 'Warehouse integration' with a `success` tone [Badge](/docs/api/admin-extensions/{API_VERSION}/components/feedback-and-status-indicators/badge) and status lines inside a [BlockStack](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/blockstack).",
     codeblock: {
       title: 'Display warehouse status block',
       tabs: [

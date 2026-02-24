@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'urlfield-default.png',
+    description:
+      'Record an external product source URL and save it from an action modal. This example uses `URLField` to capture the address, with a [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that saves the source URL.',
     codeblock: {
       title: 'Set external product source URL',
       tabs: [

@@ -25,6 +25,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Media and visuals',
   defaultExample: {
     image: 'icon-default.png',
+    description:
+      'Pair status icons with text labels to indicate sync success and pricing errors. This example uses `Icon` with `CircleTickMajor` and `CircleAlertMajor` names inside an [InlineStack](/docs/api/admin-extensions/{API_VERSION}/components/layout-and-structure/inlinestack), with `accessibilityLabel` props for screen readers.',
     codeblock: {
       title: 'Show action status indicators',
       tabs: [
