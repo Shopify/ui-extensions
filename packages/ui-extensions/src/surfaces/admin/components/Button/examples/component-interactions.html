@@ -1,7 +1,9 @@
-<s-stack direction="inline" gap="base">
-  <!-- Button that navigates using Shopify's navigation system. Use shopify:navigate for navigation. Refer to [handling navigation events](/docs/api/app-home?accordionItem=getting-started-existing-remix-application) for implementation details and framework-specific examples. -->
-  <s-button href="javascript:void(0)">Edit details</s-button>
+<s-button commandFor="actions-popover">More actions</s-button>
 
-  <!-- Button that expresses interest in specific data -->
-  <s-button interestFor="selected-products">Bulk edit</s-button>
-</s-stack>
+<s-popover id="actions-popover">
+  <s-stack direction="block">
+    <s-button variant="tertiary">Export products</s-button>
+    <s-button variant="tertiary">Import products</s-button>
+    <s-button variant="tertiary">Print labels</s-button>
+  </s-stack>
+</s-popover>

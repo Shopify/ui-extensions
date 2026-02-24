@@ -232,7 +232,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'Connect buttons to other components so they can trigger actions like toggling visibility or requesting data. This example shows a button that navigates to a page and another that interacts with a specific element on the screen.',
+          'Use `commandFor` to connect a button to another component by ID, triggering built-in actions like toggling a popover or showing a modal. This example shows a button that opens a popover with a list of additional actions.',
         codeblock: {
           title: 'Trigger actions on other components',
           tabs: [
