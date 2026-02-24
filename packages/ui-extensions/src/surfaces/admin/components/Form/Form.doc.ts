@@ -19,6 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'form-default.png',
+    description:
+      'Submit a warehouse SKU and storage location, or cancel to close the modal. This example uses `Form` with `onSubmit` and `onReset` callbacks around two [TextField](/docs/api/admin-extensions/{API_VERSION}/components/forms/textfield) inputs, where `onReset` calls `close()` to dismiss the modal.',
     codeblock: {
       title: 'Submit product metadata form',
       tabs: [

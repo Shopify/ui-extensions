@@ -21,6 +21,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Settings and templates',
   defaultExample: {
     image: 'adminaction-default.png',
+    description:
+      'Sync product data to a warehouse system from a modal with primary and cancel actions. This example uses `AdminAction` with `primaryAction` and `secondaryAction` [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) props to confirm or dismiss the sync.',
     codeblock: {
       title: 'Configure action modal with buttons',
       tabs: [

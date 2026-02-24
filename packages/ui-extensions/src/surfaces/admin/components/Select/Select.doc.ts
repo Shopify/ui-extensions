@@ -20,6 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Forms',
   defaultExample: {
     image: 'select-default.png',
+    description:
+      'Assign a product to a warehouse location from a dropdown of four regions. This example uses `Select` with four warehouse options, and a [Button](/docs/api/admin-extensions/{API_VERSION}/components/actions/button) that assigns the warehouse and closes the modal.',
     codeblock: {
       title: 'Assign warehouse location',
       tabs: [
