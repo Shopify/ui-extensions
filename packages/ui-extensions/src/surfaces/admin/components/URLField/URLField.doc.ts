@@ -91,7 +91,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display a URL that users can view but not change. This example shows a disabled field with a pre-filled value that prevents editing.',
+              'Display a URL that users can view but not change. This example shows a pre-filled, disabled field that prevents editing.',
             codeblock: {
               title: 'Show a disabled field',
               tabs: [
