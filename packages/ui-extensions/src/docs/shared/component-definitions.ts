@@ -32,13 +32,6 @@ interface ComponentDoc {
   extraExamples?: ReferenceEntityTemplateSchema['examples'];
 }
 
-function toPascalCase(name: string): string {
-  return name
-    .split(' ')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join('');
-}
-
 function buildDefinitions({
   name,
   description,
@@ -48,14 +41,13 @@ function buildDefinitions({
   description?: string;
   definitions: DefinitionsConfiguration;
 }) {
-  const typeName = toPascalCase(name);
   return [
     ...(description
       ? [
           {
             title: `${name}`,
             description,
-            type: `${typeName}ElementProps`,
+            type: `${name}ElementProps`,
           },
         ]
       : []),
@@ -65,7 +57,7 @@ function buildDefinitions({
           {
             title: 'Properties',
             description: '',
-            type: `${typeName}ElementProps`,
+            type: `${name}ElementProps`,
           },
         ]
       : []),
@@ -75,7 +67,7 @@ function buildDefinitions({
           {
             title: 'Events',
             description: `Learn more about [registering events](${CHECKOUT_PATH}#event-handling).`,
-            type: `${typeName}ElementEvents`,
+            type: `${name}ElementEvents`,
           },
         ]
       : []),
@@ -85,7 +77,7 @@ function buildDefinitions({
           {
             title: 'Slots',
             description: `Learn more about [component slots](${CHECKOUT_PATH}#slots).`,
-            type: `${typeName}ElementSlots`,
+            type: `${name}ElementSlots`,
           },
         ]
       : []),
@@ -95,7 +87,7 @@ function buildDefinitions({
           {
             title: 'Methods',
             description: `Learn more about [component methods](${CHECKOUT_PATH}#methods).`,
-            type: `${typeName}ElementMethods`,
+            type: `${name}ElementMethods`,
           },
         ]
       : []),
@@ -120,7 +112,6 @@ export function createComponentDoc({
   extraExamples,
 }: ComponentDoc): ReferenceEntityTemplateSchema {
   const kebabCasedName = name
-    .replace(/\s+/g, '-')
     .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
     .replace(/([a-z])([A-Z])/g, '$1-$2')
     .toLowerCase();
