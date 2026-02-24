@@ -1,0 +1,3 @@
+<s-chip color="base" accessibilityLabel="Product status indicator">
+  Active
+</s-chip>
