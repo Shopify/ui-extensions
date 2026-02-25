@@ -631,22 +631,6 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   localization: Localization;
 
   /**
-   * The metafields that apply to the current checkout.
-   *
-   * Metafields are stored locally on the client and are applied to the order object after the checkout completes.
-   *
-   * These metafields are shared by all extensions running on checkout, and
-   * persist for as long as the customer is working on this checkout.
-   *
-   * Once the order is created, you can query these metafields using the
-   * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
-   *
-   * > Tip:
-   * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.
-   */
-  metafields: SubscribableSignalLike<Metafield[]>;
-
-  /**
    * A note left by the customer to the merchant, either in their cart or during checkout.
    */
   note: SubscribableSignalLike<string | undefined>;

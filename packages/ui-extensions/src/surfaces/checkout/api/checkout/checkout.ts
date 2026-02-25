@@ -352,28 +352,10 @@ export interface GiftCardChangeResultError {
   message: string;
 }
 
-/** Removes a metafield. */
-export interface MetafieldRemoveChange {
-  /**
-   * The type of the `MetafieldRemoveChange` API.
-   */
-  type: 'removeMetafield';
-
-  /**
-   * The name of the metafield to remove.
-   */
-  key: string;
-
-  /**
-   * The namespace of the metafield to remove.
-   */
-  namespace: string;
-}
-
 /** Removes a cart metafield. */
 export interface MetafieldRemoveCartChange {
   /**
-   * The type of the `MetafieldRemoveChange` API.
+   * The type of the `MetafieldRemoveCartChange` API.
    */
   type: 'removeCartMetafield';
 
@@ -389,37 +371,12 @@ export interface MetafieldRemoveCartChange {
 }
 
 /**
- * Updates a metafield. If a metafield with the
- * provided key and namespace does not already exist, it gets created.
- */
-export interface MetafieldUpdateChange {
-  /**
-   * The type of the `MetafieldUpdateChange` API.
-   */
-  type: 'updateMetafield';
-
-  /** The name of the metafield to update. */
-  key: string;
-
-  /** The namespace of the metafield to add. */
-  namespace: string;
-
-  /** The new information to store in the metafield. */
-  value: string | number;
-
-  /**
-   * The metafield’s information type.
-   */
-  valueType: 'integer' | 'string' | 'json_string';
-}
-
-/**
  * Updates a cart metafield. If a metafield with the
  * provided key and namespace does not already exist, it gets created.
  */
 export interface MetafieldUpdateCartChange {
   /**
-   * The type of the `MetafieldUpdateChange` API.
+   * The type of the `MetafieldUpdateCartChange` API.
    */
   type: 'updateCartMetafield';
 
@@ -442,8 +399,6 @@ export interface MetafieldUpdateCartChange {
 }
 
 export type MetafieldChange =
-  | MetafieldRemoveChange
-  | MetafieldUpdateChange
   | MetafieldRemoveCartChange
   | MetafieldUpdateCartChange;
 
@@ -544,6 +499,8 @@ export interface CheckoutApi {
    * through the [`attributes`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/attributes#standardapi-propertydetail-attributes) property.
    *
    * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `attributes.canUpdateAttributes` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
+   *
+   * @deprecated - Consumers should use cart metafields instead.
    */
   applyAttributeChange(change: AttributeChange): Promise<AttributeChangeResult>;
 
@@ -588,6 +545,8 @@ export interface CheckoutApi {
    * Performs an update on a piece of metadata attached to the checkout. If
    * successful, this mutation results in an update to the value retrieved
    * through the [`metafields`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/metafields#standardapi-propertydetail-metafields) property.
+   *
+   * Cart metafields will be copied to order metafields at order creation time if there is a matching order metafield definition with the [`cart to order copyable`](https://shopify.dev/docs/apps/build/metafields/use-metafield-capabilities#cart-to-order-copyable) capability enabled.
    *
    * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `metafields.canSetCartMetafields` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
    */
