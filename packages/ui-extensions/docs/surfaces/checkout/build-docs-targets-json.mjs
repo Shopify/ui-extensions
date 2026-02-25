@@ -21,10 +21,7 @@ if (!API_VERSION) {
 // Configuration for checkout surface
 const config = {
   basePath: path.join(__dirname, '../../../src/surfaces/checkout'),
-  outputPath: path.join(
-    __dirname,
-    `generated/checkout_extensions/${API_VERSION}/targets.json`,
-  ),
+  outputPath: path.join(__dirname, `generated/targets.json`),
   componentTypesPath: null,
   hasComponentTypes: false,
 };
