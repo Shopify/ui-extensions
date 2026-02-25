@@ -18,14 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'UI components',
   subCategory: 'Navigation and content',
-  related: [
-    {
-      name: 'ProductSearch API',
-      subtitle:
-        'See how to use the ProductSearch API with a SearchBar to search for products.',
-      url: '/api/pos-ui-extensions/apis/productsearch-api#example-search-for-products-with-a-search-bar',
-    },
-  ],
+  related: [],
   thumbnail: 'search-bar-thumbnail.png',
   defaultExample: {
     image: 'search-bar-default.png',
