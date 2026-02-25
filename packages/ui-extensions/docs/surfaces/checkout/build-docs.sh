@@ -72,20 +72,29 @@ if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
 
+# Generate targets.json
+echo "Generating targets.json..."
+node $DOCS_PATH/build-docs-targets-json.mjs $API_VERSION
+targets_exit=$?
+if [ $targets_exit -ne 0 ]; then
+  echo "Warning: Failed to generate targets.json"
+fi
+
+
 copy_generated_docs_to_shopify_dev() {
 # Copy the generated docs to shopify-dev
 if [ -d $SHOPIFY_DEV_PATH ]; then
-  mkdir -p $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
-  cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+  mkdir -p $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+  cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
   # Replace 'unstable' with the exact API version in relative doc links
   run_sed \
     "s/\/docs\/api\/checkout-ui-extensions\/unstable/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
-    $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data.json
+    $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data.json
   sed_exit=$?
   if [ $sed_exit -ne 0 ]; then
     fail_and_exit $sed_exit
   fi
-  rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/app/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
+  rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
 
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
     echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/checkout-ui-extensions"

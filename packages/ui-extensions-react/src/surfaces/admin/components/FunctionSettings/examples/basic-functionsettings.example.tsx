@@ -1,48 +1,35 @@
-import {
-  reactExtension,
-  useApi,
-  FunctionSettings,
-  TextField,
-  Section,
-} from '@shopify/ui-extensions-react/admin';
+import {useState} from 'react';
+import {reactExtension, useApi, FunctionSettings, TextField, Section} from '@shopify/ui-extensions-react/admin';
 
 export default reactExtension(
   'admin.settings.validation.render',
   async (api) => {
-    // Use Direct API access to fetch initial
-    // metafields from the server if we are
-    // rendering against a pre-existing `Validation`
     const initialSettings = api.data.validation
       ? await fetchSettings(api.data.validation.id)
       : {};
-
     return <App settings={initialSettings} />;
-});
+  },
+);
 
 function App({settings}) {
-  const [value, setValue] = useState(settings);
+  const [name, setName] = useState(settings.name || '');
   const [error, setError] = useState();
-
   const {applyMetafieldsChange} = useApi();
 
   return (
-    <FunctionSettings
-      onError={(errors) => {
-        setError(errors[0]?.message);
-      }}
-    >
-      <Section heading="Settings">
+    <FunctionSettings onError={(errors) => setError(errors[0]?.message)}>
+      <Section heading="Validation settings">
         <TextField
-          label="Name"
+          label="Rule name"
           name="name"
-          value={value}
+          value={name}
           error={error}
           onChange={(value) => {
-            setValue(value);
+            setName(value);
             setError(undefined);
             applyMetafieldsChange({
               type: 'updateMetafield',
-              namespace: '$app:my_namespace',
+              namespace: '$app:validation',
               key: 'name',
               value,
               valueType: 'single_line_text_field',

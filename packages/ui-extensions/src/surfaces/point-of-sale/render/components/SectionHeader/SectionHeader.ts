@@ -6,7 +6,7 @@ export interface SectionHeaderProps {
    */
   title: string;
   /**
-   * An optional action button configuration to be displayed alongside the title. The `SectionHeader` must have a title for the action to work properly.
+   * An optional action button configuration to be displayed alongside the title. The SectionHeader must have a title for the action to work properly.
    */
   action?: {
     /**
@@ -23,7 +23,7 @@ export interface SectionHeaderProps {
     disabled?: boolean;
   };
   /**
-   * A boolean that controls whether the divider line under the `SectionHeader` should be hidden.
+   * A boolean that controls whether the divider line under the SectionHeader should be hidden.
    */
   hideDivider?: boolean;
 }

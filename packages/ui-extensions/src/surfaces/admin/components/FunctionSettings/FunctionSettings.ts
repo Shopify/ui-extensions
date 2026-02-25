@@ -1,51 +1,64 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/**
+ * Props for the FunctionSettings component, a form container designed
+ * for Shopify Function configuration experiences. It provides hooks for
+ * saving settings and handling server-side validation errors.
+ */
 export interface FunctionSettingsProps {
   /**
-   * A unique identifier for the form.
+   * A unique identifier for the function settings form. Use this when you
+   * need to reference the form from elements outside its tree.
    */
   id?: string;
 
   /**
-   * An optional callback function that will be run by the admin when the user
-   * commits their changes in the admin-rendered part of the function settings
-   * experience. If this function returns a promise, the admin will wait for the
-   * promise to resolve before committing any changes to Shopify’s servers. If
-   * the promise rejects, the admin will abort the changes and display an error,
-   * using the `message` property of the error you reject with.
+   * A callback that fires when the merchant saves their changes in the
+   * admin-rendered function settings experience. If you return a `Promise`,
+   * then the Shopify admin waits for it to resolve before committing changes to
+   * Shopify's servers. If the promise rejects, then the Shopify admin aborts the save
+   * and displays an error using the `message` property of the rejected value.
    */
   onSave?(): void | Promise<void>;
 
   /**
-   * An optional callback function that will be run by the admin when the
-   * committing the changes to Shopify’s servers fails. The errors you receive
-   * in the `errors` argument will only be those that were caused by data your
-   * extension provided; network errors and user errors that are out of your
-   * control will not be reported here.
+   * A callback that fires when committing the saved changes to Shopify's
+   * servers fails. The `errors` array only contains errors caused by data
+   * your extension provided. Network errors and other issues outside your
+   * control aren't reported here.
    *
-   * In the `onError` callback, you should update your extension’s UI to
-   * highlight the fields that caused the errors, and display the error messages
-   * to the user.
+   * Use this callback to highlight the fields that caused the errors and
+   * display the error messages to the merchant.
    */
   onError?(errors: FunctionSettingsError[]): void;
 }
 
+/**
+ * Describes an error that occurred when committing function settings to
+ * Shopify's servers. These errors are scoped to data the extension
+ * provided and can be displayed directly to the merchant.
+ */
 export interface FunctionSettingsError {
   /**
-   * A unique identifier describing the “class” of error. These will match
-   * the GraphQL error codes as closely as possible. For example the enums
-   * returned by the `metafieldsSet` mutation
+   * A machine-readable identifier for the category of error. These match
+   * GraphQL error codes as closely as possible. For example, the values
+   * returned by the `metafieldsSet` mutation.
    *
-   * @see https://shopify.dev/docs/api/admin-graphql/latest/enums/MetafieldsSetUserErrorCode
+   * Learn more about the [MetafieldsSetUserErrorCode](https://shopify.dev/docs/api/admin-graphql/latest/enums/MetafieldsSetUserErrorCode) enum.
    */
   code: string;
 
   /**
-   * A translated message describing the error.
+   * A human-readable, translated message describing the error. You can
+   * display this directly to the merchant.
    */
   message: string;
 }
 
+/**
+ * A form container for configuring Shopify Function settings. Integrates
+ * with the Shopify admin's save flow and surfaces server-side validation errors.
+ */
 export const FunctionSettings = createRemoteComponent<
   'FunctionSettings',
   FunctionSettingsProps

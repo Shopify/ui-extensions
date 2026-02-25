@@ -1,10 +1,16 @@
+/**
+ * The `Data` object provides access to currently viewed or selected resources in the admin context.
+ */
 export interface Data {
   /**
-   * Information about the currently viewed or selected items.
+   * An array of currently viewed or selected resource identifiers. Use this to access the IDs of items in the current context, such as selected products in an index page or the product being viewed on a details page. The available IDs depend on the extension target and user interactions.
    */
   selected: {id: string}[];
 }
 
+/**
+ * The supported [metafield definition types](/docs/apps/build/metafields/list-of-data-types) for storing extension configuration data. Use these types to specify how metafield values should be formatted, validated, and displayed. Types prefixed with `list.` store arrays of values, while other types store single values. Choose a type that matches your data format (for example, use `'number_integer'` for whole numbers, `'single_line_text_field'` for short text, or `'json'` for complex structured data).
+ */
 export type SupportedDefinitionType =
   | 'boolean'
   | 'collection_reference'

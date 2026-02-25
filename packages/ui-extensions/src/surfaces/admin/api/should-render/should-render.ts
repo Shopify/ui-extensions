@@ -2,10 +2,13 @@ import type {StandardApi} from '../standard/standard';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
 import type {Data} from '../shared';
 
+/**
+ * The `ShouldRenderApi` object provides methods for controlling action extension visibility. Access the following properties on the `ShouldRenderApi` object to determine whether an associated action should appear based on the current context.
+ */
 export interface ShouldRenderApi<ExtensionTarget extends AnyExtensionTarget>
   extends StandardApi<ExtensionTarget> {
   /**
-   * Information about the currently viewed or selected items.
+   * An array of currently viewed or selected resource identifiers. Use this data to determine whether the action extension should appear based on the current context.
    */
   data: Data;
 }

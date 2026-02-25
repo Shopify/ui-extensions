@@ -7,14 +7,13 @@ const generateCodeBlockForTile = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Tile',
   description:
-    'The `Tile` component displays interactive buttons for the POS smart grid that allow merchants to complete actions quickly. Tiles serve as customizable shortcuts that provide contextual information and enable merchants to quickly access workflows, actions, and information from the smart grid.\n\nTiles are dynamic components that can change their appearance, content, and enabled state based on surrounding context such as cart contents, device conditions, or runtime state. They support tap interactions, visual feedback, and can display contextual information through titles, subtitles, and badge values.',
+    'The Tile component displays interactive buttons for the POS smart grid that allow merchants to complete actions quickly. Tiles serve as customizable shortcuts that provide contextual information and enable merchants to quickly access workflows, actions, and information from the smart grid.\n\nTiles are dynamic components that can change their appearance, content, and enabled state based on surrounding context such as cart contents, device conditions, or runtime state. They support tap interactions, visual feedback, and can display contextual information through titles, subtitles, and badge values.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the `Tile` component.',
+      description: 'Configure the following properties on the Tile component.',
       type: 'TileProps',
     },
   ],
@@ -43,7 +42,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent: `\n- Each POS UI extension can only render one \`Tile\` component.\n- Badge values must be numeric-string or text badges aren't supported.\n- Custom icons, images, or visual styling beyond built-in properties aren't supported.\n- Tile size and layout is determined by the smart grid and can't be customized.\n- The \`Tile\` component is limited to tap interactions only. There's no support for long press, swipe, or other gestures.\n- Title and subtitle text must be plain strings-no HTML, markdown, or rich text formatting.\n`,
+      sectionContent: `\n- Each POS UI extension can only render one Tile component.\n- Badge values must be numeric-string or text badges aren't supported.\n- Custom icons, images, or visual styling beyond built-in properties aren't supported.\n- Tile size and layout is determined by the smart grid and can't be customized.\n- The Tile component is limited to tap interactions only. There's no support for long press, swipe, or other gestures.\n- Title and subtitle text must be plain strings-no HTML, markdown, or rich text formatting.\n`,
     },
   ],
 };

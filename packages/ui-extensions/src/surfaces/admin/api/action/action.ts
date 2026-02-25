@@ -4,25 +4,28 @@ import type {Data} from '../shared';
 import type {ResourcePickerApi} from '../resource-picker/resource-picker';
 import type {PickerApi} from '../picker/picker';
 
+/**
+ * The `ActionExtensionApi` object provides methods for action extensions that render in modal overlays. Access the following properties on the `ActionExtensionApi` object to interact with the current context, control the modal, and display picker dialogs.
+ */
 export interface ActionExtensionApi<ExtensionTarget extends AnyExtensionTarget>
   extends StandardApi<ExtensionTarget> {
   /**
-   * Closes the extension. Calling this method is equivalent to the merchant clicking the "x" in the corner of the overlay.
+   * Closes the extension modal. Use this when your extension completes its task or the merchant wants to exit. Equivalent to clicking the close button in the overlay corner.
    */
   close: () => void;
 
   /**
-   * Information about the currently viewed or selected items.
+   * An array of currently viewed or selected resource identifiers. Use this to access the IDs of items in the current context, such as selected products in an index page or the product being viewed on a details page. The available IDs depend on the extension target and user interactions.
    */
   data: Data;
 
   /**
-   * Renders the [Resource Picker](resource-picker), allowing users to select a resource for the extension to use as part of its flow.
+   * Opens the [Resource Picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) modal for selecting products, variants, or collections. Use this to let merchants choose resources that your extension needs to work with.
    */
   resourcePicker: ResourcePickerApi;
 
   /**
-   * Renders a custom [Picker](picker) dialog allowing users to select values from a list.
+   * Opens a custom [Picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) dialog for selecting from a list of custom options. Use this when you need merchants to choose from app-specific data that isn't a standard Shopify resource.
    */
   picker: PickerApi;
 }

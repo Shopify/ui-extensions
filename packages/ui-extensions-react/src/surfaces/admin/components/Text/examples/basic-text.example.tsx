@@ -1,12 +1,19 @@
-import {render, Text, BlockStack} from '@shopify/ui-extensions-react/admin';
-
-render('Playground', () => <App />);
+import {reactExtension, Text, BlockStack} from '@shopify/ui-extensions-react/admin';
 
 function App() {
+
   return (
-    <BlockStack inlineAlignment="center" gap>
-      <Text fontWeight="bold">Name:</Text>
-      <Text>Jane Doe</Text>
+    <BlockStack>
+      <Text>Current price: </Text>
+      <Text fontWeight="bold">$49.99</Text>
+      <Text fontWeight="bold" fontStyle="italic">
+        Compare at: $64.99
+      </Text>
     </BlockStack>
   );
 }
+
+export default reactExtension(
+  'admin.product-details.block.render',
+  () => <App />,
+);

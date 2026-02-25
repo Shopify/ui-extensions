@@ -12,9 +12,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'DeviceApi',
+      title: 'Properties',
       description:
-        'The `DeviceApi` object provides access to device information and capabilities. Access these properties and methods through `api.device` to retrieve device details and check device characteristics.',
+        'The `DeviceApi` object provides access to device information and capabilities. Access these properties through `api.device` to retrieve device details and check device characteristics.',
       type: 'DeviceApiContent',
     },
   ],

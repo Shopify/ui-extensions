@@ -13,9 +13,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'NavigationApi',
+      title: 'Properties',
       description:
-        'The global `navigation` object provides web-standard navigation functionality. Access these properties and methods directly through the global `navigation` object to manage navigation within modal interfaces.',
+        'The global `navigation` object provides web-standard navigation functionality. Access these properties directly through the global `navigation` object to manage navigation within modal interfaces.',
       type: 'NavigationApiContent',
     },
   ],

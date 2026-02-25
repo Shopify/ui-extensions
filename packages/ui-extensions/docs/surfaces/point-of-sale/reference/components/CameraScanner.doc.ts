@@ -7,14 +7,14 @@ const generateCodeBlockForCameraScanner = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'CameraScanner',
   description:
-    'The `CameraScanner` component provides camera-based scanning functionality with optional banner messaging. Use it to enable barcode scanning, QR code reading, or other camera-based input methods with contextual user feedback.\n\n`CameraScanner` works in conjunction with the Scanner API to capture scan data from device cameras, providing both the visual interface and the data handling capabilities for complete scanning workflows.\n\n`CameraScanner` components provide real-time feedback during scanning operations with visual guides for optimal positioning, helping merchants quickly capture barcodes even in challenging lighting conditions or with damaged labels. The component provides audio feedback during scanning operations, confirming successful scans without requiring visual confirmation.',
+    'The CameraScanner component provides camera-based scanning functionality with optional banner messaging. Use it to enable barcode scanning, QR code reading, or other camera-based input methods with contextual user feedback.\n\nCameraScanner works in conjunction with the Scanner API to capture scan data from device cameras, providing both the visual interface and the data handling capabilities for complete scanning workflows.\n\nCameraScanner components provide real-time feedback during scanning operations with visual guides for optimal positioning, helping merchants quickly capture barcodes even in challenging lighting conditions or with damaged labels. The component provides audio feedback during scanning operations, confirming successful scans without requiring visual confirmation.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `CameraScanner` component.',
+        'Configure the following properties on the CameraScanner component.',
       type: 'CameraScannerProps',
     },
   ],
@@ -42,7 +42,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent: `\n- \`CameraScanner\` requires device camera access and appropriate permissions—functionality is limited on devices without cameras or when permissions are denied.\n- Banner messaging is the only built-in user feedback mechanism—complex scanning feedback or custom UI elements require additional components or external state management.\n- The component handles basic camera functionality—advanced camera controls, image processing, or custom scanning algorithms aren't supported within the component itself.\n`,
+      sectionContent: `\n- CameraScanner requires device camera access and appropriate permissions—functionality is limited on devices without cameras or when permissions are denied.\n- Banner messaging is the only built-in user feedback mechanism—complex scanning feedback or custom UI elements require additional components or external state management.\n- The component handles basic camera functionality—advanced camera controls, image processing, or custom scanning algorithms aren't supported within the component itself.\n`,
     },
   ],
 };

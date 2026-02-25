@@ -13,9 +13,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'OrderApi',
+      title: 'Properties',
       description:
-        'The `OrderApi` object provides access to order data. Access this property through `api.order` to interact with the current order context.',
+        'The `OrderApi` object provides access to order data. Access these properties through `api.order` to interact with the current order context.',
       type: 'OrderApiContent',
     },
   ],

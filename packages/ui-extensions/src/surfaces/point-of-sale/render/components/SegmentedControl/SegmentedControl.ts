@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 /**
- * Defines the structure and configuration options for individual segments within the `SegmentedControl` component.
+ * Defines the structure and configuration options for individual segments within the SegmentedControl component.
  */
 export interface Segment {
   /**

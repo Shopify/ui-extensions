@@ -22,7 +22,7 @@ type DeprecatedStackDirection = 'vertical' | 'horizontal';
 
 export interface StackProps extends PaddingProps, SizingProps, GapProps {
   /**
-   * The direction in which children are placed within the `Stack` component. Use `'block'` for vertical arrangement along the block axis without wrapping, or `'inline'` for horizontal arrangement along the inline axis with automatic wrapping.
+   * The direction in which children are placed within the Stack component. Use `'block'` for vertical arrangement along the block axis without wrapping, or `'inline'` for horizontal arrangement along the inline axis with automatic wrapping.
    *
    * @default 'inline'
    */
@@ -37,7 +37,7 @@ export interface StackProps extends PaddingProps, SizingProps, GapProps {
   alignment?: ContentPosition | ContentDistribution;
 
   /**
-   * The alignment of the `Stack` component along the main axis, controlling how space is distributed between and around content items.
+   * The alignment of the Stack component along the main axis, controlling how space is distributed between and around content items.
    * Learn more about [justify-content on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
    *
    * @default 'start'
@@ -45,7 +45,7 @@ export interface StackProps extends PaddingProps, SizingProps, GapProps {
   justifyContent?: ContentPosition | ContentDistribution;
 
   /**
-   * The alignment of the `Stack` component along the cross axis, controlling how content is distributed when there's extra space.
+   * The alignment of the Stack component along the cross axis, controlling how content is distributed when there's extra space.
    * Learn more about [align-content on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
    *
    * @default 'start'
@@ -53,7 +53,7 @@ export interface StackProps extends PaddingProps, SizingProps, GapProps {
   alignContent?: 'stretch' | ContentPosition | ContentDistribution;
 
   /**
-   * The alignment of the `Stack` component's children along the cross axis, controlling how individual items are positioned.
+   * The alignment of the Stack component's children along the cross axis, controlling how individual items are positioned.
    * Learn more about [align-items on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
    *
    * @default 'stretch'
@@ -61,7 +61,7 @@ export interface StackProps extends PaddingProps, SizingProps, GapProps {
   alignItems?: 'stretch' | 'baseline' | ContentPosition;
 
   /**
-   * The vertical padding around the `Stack` component.
+   * The vertical padding around the Stack component.
    *
    * @deprecated Use the `paddingBlock` prop instead.
    */
@@ -69,7 +69,7 @@ export interface StackProps extends PaddingProps, SizingProps, GapProps {
   paddingVertical?: VerticalSpacing;
 
   /**
-   * The horizontal padding around the `Stack` component.
+   * The horizontal padding around the Stack component.
    *
    * @deprecated Use the `paddingInline` prop instead.
    */
@@ -77,7 +77,7 @@ export interface StackProps extends PaddingProps, SizingProps, GapProps {
   paddingHorizontal?: HorizontalSpacing;
 
   /**
-   * The spacing between each child in the `Stack` component.
+   * The spacing between each child in the Stack component.
    *
    * @defaultValue 1
    * @deprecated Use the `gap` prop instead.
@@ -86,7 +86,7 @@ export interface StackProps extends PaddingProps, SizingProps, GapProps {
   spacing?: Spacing;
 
   /**
-   * The size of the gap between each child in the `Stack` component.
+   * The size of the gap between each child in the Stack component.
    *
    * @defaultValue '0'
    */
@@ -112,12 +112,12 @@ export interface StackProps extends PaddingProps, SizingProps, GapProps {
   flexChildren?: boolean;
 
   /**
-   * The flex value for the `Stack` component. A value of 1 will stretch the component to fill the parent container.
+   * The flex value for the Stack component. A value of 1 will stretch the component to fill the parent container.
    */
   flex?: number;
 
   /**
-   * The wrap behavior for the children of the `Stack` component.
+   * The wrap behavior for the children of the Stack component.
    *
    * @deprecated This property has no effect as content will always wrap.
    */

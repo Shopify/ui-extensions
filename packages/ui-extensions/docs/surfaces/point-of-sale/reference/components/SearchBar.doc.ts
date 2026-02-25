@@ -5,14 +5,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 const data: ReferenceEntityTemplateSchema = {
   name: 'SearchBar',
   description:
-    'The `SearchBar` component provides a specialized input field for search functionality with built-in search button and text change handling. Use it to enable product searches, customer lookups, or other search-driven workflows in POS interfaces.\n\nThe component includes a dedicated search input with built-in search icon, clear button, and cancel functionality following platform-specific search patterns. It provides visual feedback for search states, supports voice input where available, and integrates with platform search behaviors to deliver familiar search experiences on both iOS and Android POS devices.\n\n`SearchBar` components maintain search focus during typing and automatically dismisses the keyboard when search is submitted, streamlining the search workflow and reducing unnecessary interaction steps.',
+    'The SearchBar component provides a specialized input field for search functionality with built-in search button and text change handling. Use it to enable product searches, customer lookups, or other search-driven workflows in POS interfaces.\n\nThe component includes a dedicated search input with built-in search icon, clear button, and cancel functionality following platform-specific search patterns. It provides visual feedback for search states, supports voice input where available, and integrates with platform search behaviors to deliver familiar search experiences on both iOS and Android POS devices.\n\nSearchBar components maintain search focus during typing and automatically dismisses the keyboard when search is submitted, streamlining the search workflow and reducing unnecessary interaction steps.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the `SearchBar` component.',
+        'Configure the following properties on the SearchBar component.',
       type: 'SearchBarProps',
     },
   ],
@@ -48,7 +48,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent: `\n- \`SearchBar\` provides the input interface but requires integration with the Product Search API or custom search logic for actual search functionality.\n- The component handles basic text input and search button interactions—advanced search features like filters, sorting controls, or search history require additional components or custom implementation.\n- Search result display and management are not included in the \`SearchBar\` component—use other components like List or custom layouts to present search results to users.\n`,
+      sectionContent: `\n- SearchBar provides the input interface but requires integration with the Product Search API or custom search logic for actual search functionality.\n- The component handles basic text input and search button interactions—advanced search features like filters, sorting controls, or search history require additional components or custom implementation.\n- Search result display and management are not included in the SearchBar component—use other components like List or custom layouts to present search results to users.\n`,
     },
   ],
 };

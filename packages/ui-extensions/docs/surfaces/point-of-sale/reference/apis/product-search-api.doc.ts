@@ -14,9 +14,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'ProductSearchApi',
+      title: 'Properties',
       description:
-        'The `ProductSearchApi` object provides methods for searching and fetching product data. Access these methods through `api.productSearch` to perform product searches and lookups.',
+        'The `ProductSearchApi` object provides properties for searching and fetching product data. Access these properties through `api.productSearch` to perform product searches and lookups.',
       type: 'ProductSearchApiContent',
     },
   ],

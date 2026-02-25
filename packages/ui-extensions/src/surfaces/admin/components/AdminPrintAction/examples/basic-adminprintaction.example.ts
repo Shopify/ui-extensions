@@ -1,14 +1,23 @@
-import {extension, AdminPrintAction, Text} from '@shopify/ui-extensions/admin';
+import {extension, AdminPrintAction, Text, BlockStack} from '@shopify/ui-extensions/admin';
 
-export default extension('Playground', (root) => {
-  const adminPrintAction = root.createComponent(
-    AdminPrintAction,
-    {
-      src: 'https://example.com',
-    },
-    root.createComponent(Text, {fontWeight: 'bold'}, 'Modal content'),
-  );
+export default extension(
+  'admin.product-details.action.render',
+  (root, api) => {
+    const {data} = api;
+    const productId = data.selected[0]?.id;
 
-  root.append(adminPrintAction);
-  root.mount();
-});
+    const content = root.createComponent(BlockStack, {gap: true});
+    const message = root.createComponent(
+      Text,
+      {},
+      'Generating packing slip for this product...',
+    );
+    content.appendChild(message);
+
+    const printAction = root.createComponent(AdminPrintAction, {
+      src: `https://your-app.com/print/packing-slip?product=${productId}`,
+    });
+    printAction.appendChild(content);
+    root.appendChild(printAction);
+  },
+);
