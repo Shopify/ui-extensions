@@ -37,73 +37,84 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'ClickableChipSlots',
     },
   ],
+  defaultExample: {
+    image: 'clickablechip-default.png',
+    description:
+      'Create an interactive chip that merchants can click to trigger an action. This example shows a clickable chip component with default styling.',
+    codeblock: {
+      title: 'Add a clickable chip with default styling',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+          title: '',
+        },
+      ],
+    },
+  },
   examples: {
     description: 'Component examples',
-    examples: [
+    exampleGroups: [
       {
-        description:
-          'Create an interactive chip that merchants can click to trigger an action. This example shows a clickable chip component with default styling.',
-        codeblock: {
-          title: 'Add a clickable chip with default styling',
-          tabs: [
-            {
-              code: './examples/default.html',
-              language: 'html',
+        title: '',
+        examples: [
+          {
+            description:
+              'Use the `color` property to visually distinguish chips by importance or category. This example shows three chips with base, subdued, and strong color variants.',
+            codeblock: {
+              title: 'Apply color variants to chips',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Use the `color` property to visually distinguish chips by importance or category. This example shows three chips with base, subdued, and strong color variants.',
-        codeblock: {
-          title: 'Apply color variants to chips',
-          tabs: [
-            {
-              code: './examples/basic-usage.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Add an icon and a remove button so merchants can see status at a glance and dismiss the chip. This example shows a removable chip with a check circle icon in the graphic slot.',
+            codeblock: {
+              title: 'Add an icon and a remove button to a chip',
+              tabs: [
+                {
+                  code: './examples/with-icon-and-remove-button.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Add an icon and a remove button so merchants can see status at a glance and dismiss the chip. This example shows a removable chip with a check circle icon in the graphic slot.',
-        codeblock: {
-          title: 'Add an icon and a remove button to a chip',
-          tabs: [
-            {
-              code: './examples/with-icon-and-remove-button.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Set the `href` property to make a chip link to another page when clicked. This example shows a subdued chip with a product icon that acts as a link.',
+            codeblock: {
+              title: 'Use a chip as a link',
+              tabs: [
+                {
+                  code: './examples/as-a-link.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Set the `href` property to make a chip link to another page when clicked. This example shows a subdued chip with a product icon that acts as a link.',
-        codeblock: {
-          title: 'Use a chip as a link',
-          tabs: [
-            {
-              code: './examples/as-a-link.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Disable a chip to prevent interaction while keeping it visible. This example shows a disabled chip with an accessibility label explaining the inactive state.',
+            codeblock: {
+              title: 'Disable a clickable chip',
+              tabs: [
+                {
+                  code: './examples/disabled-state.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Disable a chip to prevent interaction while keeping it visible. This example shows a disabled chip with an accessibility label explaining the inactive state.',
-        codeblock: {
-          title: 'Disable a clickable chip',
-          tabs: [
-            {
-              code: './examples/disabled-state.html',
-              language: 'html',
-            },
-          ],
-        },
+          },
+        ],
       },
     ],
   },

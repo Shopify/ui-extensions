@@ -40,90 +40,98 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'MenuSlots',
     },
   ],
+  defaultExample: {
+    image: 'menu-default.png',
+    description:
+      'Add a dropdown menu of actions triggered by a button. This example shows a menu with three icon buttons including a critical delete action.',
+    codeblock: {
+      title: 'Add a basic actions menu',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+          title: '',
+        },
+      ],
+    },
+  },
   examples: {
     description: 'Component examples',
-    examples: [
+    exampleGroups: [
       {
-        description:
-          'Add a dropdown menu of actions triggered by a button. This example shows a menu with three icon buttons including a critical delete action.',
-        codeblock: {
-          title: 'Add a basic actions menu',
-          tabs: [
-            {
-              code: './examples/default.html',
-              language: 'html',
-              layout: 'alignStart',
-              customStyles: {
-                minHeight: '300px',
-              },
+        title: '',
+        examples: [
+          {
+            description:
+              'Organize menu items into labeled groups so merchants can quickly find related actions. This example shows two sections with headings separating product actions from export options.',
+            codeblock: {
+              title: 'Organize items into sections',
+              tabs: [
+                {
+                  code: './examples/menu-with-sections.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Organize menu items into labeled groups so merchants can quickly find related actions. This example shows two sections with headings separating product actions from export options.',
-        codeblock: {
-          title: 'Organize items into sections',
-          tabs: [
-            {
-              code: './examples/menu-with-sections.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Mix link-based, standard, and disabled buttons in a single menu. This example shows a menu with a link that opens in a new tab, a disabled action, and a download link.',
+            codeblock: {
+              title: 'Add links and disabled items to a menu',
+              tabs: [
+                {
+                  code: './examples/menu-with-links-and-disabled-items.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Mix link-based, standard, and disabled buttons in a single menu. This example shows a menu with a link that opens in a new tab, a disabled action, and a download link.',
-        codeblock: {
-          title: 'Add links and disabled items to a menu',
-          tabs: [
-            {
-              code: './examples/menu-with-links-and-disabled-items.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Combine sections with root-level items to separate grouped actions from standalone ones like a destructive action. This example shows two sections for customer management alongside a root-level delete button.',
+            codeblock: {
+              title: 'Mix sections with root-level actions',
+              tabs: [
+                {
+                  code: './examples/customer-actions-menu.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Combine sections with root-level items to separate grouped actions from standalone ones like a destructive action. This example shows two sections for customer management alongside a root-level delete button.',
-        codeblock: {
-          title: 'Mix sections with root-level actions',
-          tabs: [
-            {
-              code: './examples/customer-actions-menu.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Build a settings-style menu with multiple sections and a standalone action at the bottom. This example shows account and store settings sections with a root-level sign-out link.',
+            codeblock: {
+              title: 'Build a settings menu with sections',
+              tabs: [
+                {
+                  code: './examples/settings-menu.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Build a settings-style menu with multiple sections and a standalone action at the bottom. This example shows account and store settings sections with a root-level sign-out link.',
-        codeblock: {
-          title: 'Build a settings menu with sections',
-          tabs: [
-            {
-              code: './examples/settings-menu.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Use an icon-only button as the menu trigger for a compact "more actions" pattern. This example shows a three-dot icon button that opens a menu with common product actions.',
+            codeblock: {
+              title: 'Trigger a menu from an icon-only button',
+              tabs: [
+                {
+                  code: './examples/icon-only-trigger.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Use an icon-only button as the menu trigger for a compact "more actions" pattern. This example shows a three-dot icon button that opens a menu with common product actions.',
-        codeblock: {
-          title: 'Trigger a menu from an icon-only button',
-          tabs: [
-            {
-              code: './examples/icon-only-trigger.html',
-              language: 'html',
-            },
-          ],
-        },
+          },
+        ],
       },
     ],
   },

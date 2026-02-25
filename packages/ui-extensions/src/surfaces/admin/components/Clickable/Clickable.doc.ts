@@ -36,86 +36,98 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'ClickableSlots',
     },
   ],
+  defaultExample: {
+    image: 'clickable-default.png',
+    description:
+      "Build custom interactive elements with flexible styling that [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) or [link](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/link) don't support. This example shows two clickable elements with different background and border styles.",
+    codeblock: {
+      title: 'Create a custom interactive element',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+          title: '',
+        },
+      ],
+    },
+  },
   examples: {
     description: 'Component examples',
-    examples: [
+    exampleGroups: [
       {
-        description:
-          "Build custom interactive elements with flexible styling that [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) or [link](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/link) don't support. This example shows two clickable elements with different background and border styles.",
-        codeblock: {
-          title: 'Create a custom interactive element',
-          tabs: [
-            {
-              code: './examples/default.html',
-              language: 'html',
+        title: '',
+        examples: [
+          {
+            description:
+              'Set the `href` property to make a clickable element navigate like a link. This example shows a clickable component that opens a URL in a new browser tab.',
+            codeblock: {
+              title: 'Navigate to a URL',
+              tabs: [
+                {
+                  code: './examples/link-mode.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Set the `href` property to make a clickable element navigate like a link. This example shows a clickable component that opens a URL in a new browser tab.',
-        codeblock: {
-          title: 'Navigate to a URL',
-          tabs: [
-            {
-              code: './examples/link-mode.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Use a clickable component as a form submit button with a disabled state to prevent premature submission. This example shows a disabled submit-type clickable component with a border and padding.',
+            codeblock: {
+              title: 'Create a form submit button',
+              tabs: [
+                {
+                  code: './examples/form-submit-button.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Use a clickable component as a form submit button with a disabled state to prevent premature submission. This example shows a disabled submit-type clickable component with a border and padding.',
-        codeblock: {
-          title: 'Create a form submit button',
-          tabs: [
-            {
-              code: './examples/form-submit-button.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Embed a clickable component within a content section to provide an interactive action alongside text. This example shows a styled clickable button inside a box with a heading and description.',
+            codeblock: {
+              title: 'Add a clickable action to a section',
+              tabs: [
+                {
+                  code: './examples/section-with-clickable-action.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Embed a clickable component within a content section to provide an interactive action alongside text. This example shows a styled clickable button inside a box with a heading and description.',
-        codeblock: {
-          title: 'Add a clickable action to a section',
-          tabs: [
-            {
-              code: './examples/section-with-clickable-action.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Add an accessibility label to provide screen readers with more context than the visible text alone. This example shows a clickable delete button with a descriptive label for assistive technologies.',
+            codeblock: {
+              title: 'Add an accessibility label',
+              tabs: [
+                {
+                  code: './examples/accessibility-with-aria-attributes.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Add an accessibility label to provide screen readers with more context than the visible text alone. This example shows a clickable delete button with a descriptive label for assistive technologies.',
-        codeblock: {
-          title: 'Add an accessibility label',
-          tabs: [
-            {
-              code: './examples/accessibility-with-aria-attributes.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Disable a clickable link while providing an accessibility label that explains why the feature is unavailable. This example shows a disabled navigation element with a descriptive label for screen readers.',
+            codeblock: {
+              title: 'Describe a disabled link with an accessibility label',
+              tabs: [
+                {
+                  code: './examples/disabled-link-with-aria.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Disable a clickable link while providing an accessibility label that explains why the feature is unavailable. This example shows a disabled navigation element with a descriptive label for screen readers.',
-        codeblock: {
-          title: 'Describe a disabled link with an accessibility label',
-          tabs: [
-            {
-              code: './examples/disabled-link-with-aria.html',
-              language: 'html',
-            },
-          ],
-        },
+          },
+        ],
       },
     ],
   },
