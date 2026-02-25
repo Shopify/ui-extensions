@@ -62,7 +62,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Identify the color field\'s purpose clearly. This example displays a labeled color field with a name attribute for form submission.',
+              "Identify the color field's purpose clearly. This example displays a labeled color field with a name attribute for form submission.",
             codeblock: {
               title: 'Add a label',
               tabs: [
@@ -134,7 +134,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Guide users on how the color will be used. This example adds helper text beneath the field explaining the color\'s purpose.',
+              "Guide users on how the color will be used. This example adds helper text beneath the field explaining the color's purpose.",
             codeblock: {
               title: 'Add helper text',
               tabs: [

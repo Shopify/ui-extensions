@@ -66,7 +66,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Communicate when a required selection is missing. This example displays an error message when the terms checkbox isn\'t checked.',
+              "Communicate when a required selection is missing. This example displays an error message when the terms checkbox isn't checked.",
             codeblock: {
               title: 'Show a validation error',
               tabs: [
@@ -79,7 +79,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Indicate when an option isn\'t available. This example presents a disabled checkbox with helper text explaining how to enable it.',
+              "Indicate when an option isn't available. This example presents a disabled checkbox with helper text explaining how to enable it.",
             codeblock: {
               title: 'Show a disabled checkbox',
               tabs: [
