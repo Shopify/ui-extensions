@@ -1,1 +1,0 @@
-<s-drop-zone label="Drop files to upload" multiple />

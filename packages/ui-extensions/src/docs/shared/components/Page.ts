@@ -3,7 +3,7 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Page',
   description:
-    ' Use `s-page` as the main container for placing content in your app. Page comes with preset layouts and automatically adds spacing between elements.',
+    "The page component provides a styled page layout within your app, including breadcrumbs, page actions, and content areas with automatic spacing.\n\nUse page when you need a complete page layout with Polaris styling. For apps that need to set the Shopify admin's native title bar (title, breadcrumbs, actions) without a styled page layout, use the [title bar](/docs/api/{API_NAME}/{API_VERSION}/app-bridge-web-components/title-bar) App Bridge component instead.",
   category: 'Polaris web components',
   subCategory: 'Layout and structure',
   related: [],

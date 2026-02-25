@@ -1,1 +1,0 @@
-<s-drop-zone name="file" required label="Upload file" />
