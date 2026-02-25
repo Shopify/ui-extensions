@@ -41,16 +41,84 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image:
       '/assets/templated-apis-screenshots/admin/components/adminaction-example.png',
+    description:
+      'Set up the modal header and action [buttons](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button) for an admin action extension. This example shows a titled modal with primary and secondary action buttons.',
     codeblock: {
-      title: '',
+      title: 'Configure an admin action modal',
       tabs: [
         {
-          title: 'JSX',
-          code: './examples/default.tsx',
-          language: 'jsx',
+          title: '',
+          code: './examples/default.html',
+          language: 'preview',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Show a loading indicator while data is being fetched or processed. This example sets the `loading` property to display a loading state and disables the primary [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button).',
+            codeblock: {
+              title: 'Show a loading state',
+              tabs: [
+                {
+                  title: '',
+                  code: './examples/loading-state.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Embed a [form](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/form) inside the action modal to collect merchant input before saving. This example includes a [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/text-field) and [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/number-field) wrapped in a form component.',
+            codeblock: {
+              title: 'Add form fields to the modal',
+              tabs: [
+                {
+                  title: '',
+                  code: './examples/with-form-content.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Warn merchants before a permanent operation like deleting a resource. This example uses a critical [banner](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/banner) and a destructive primary [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button) to confirm deletion.',
+            codeblock: {
+              title: 'Confirm a destructive action',
+              tabs: [
+                {
+                  title: '',
+                  code: './examples/destructive-action.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Display read-only resource information inside a modal before the merchant takes action. This example shows an order summary with [badges](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge), [dividers](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/divider), and a fulfillment [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button).',
+            codeblock: {
+              title: 'Show resource details in a modal',
+              tabs: [
+                {
+                  title: '',
+                  code: './examples/with-resource-details.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
   related: [],
 };

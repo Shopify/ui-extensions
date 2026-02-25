@@ -1,0 +1,23 @@
+<s-function-settings>
+  <s-stack direction="block" gap="base">
+    <s-number-field
+      step="1"
+      suffix="%"
+      label="Discount percentage"
+      name="percentage"
+      min="0"
+      max="100"
+      required
+      error="Enter a percentage between 0 and 100"
+    ></s-number-field>
+    <s-number-field
+      step="0.01"
+      prefix="$"
+      label="Maximum discount amount"
+      name="maxDiscount"
+      min="0"
+      required
+      error="Enter a positive dollar amount"
+    ></s-number-field>
+  </s-stack>
+</s-function-settings>
