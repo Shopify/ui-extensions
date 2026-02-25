@@ -1,1 +1,0 @@
-<s-button icon="plus" accessibilityLabel="Add product" />
