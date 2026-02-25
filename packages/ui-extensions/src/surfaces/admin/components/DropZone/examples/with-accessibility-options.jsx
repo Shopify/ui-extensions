@@ -1,6 +1,0 @@
-<s-drop-zone
-  label="Upload files"
-  accessibilityLabel="Upload files using drag and drop or file selector"
-  labelAccessibilityVisibility="exclusive"
-  multiple
- />

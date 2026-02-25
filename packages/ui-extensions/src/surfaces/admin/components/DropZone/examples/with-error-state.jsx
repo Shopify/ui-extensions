@@ -1,4 +1,0 @@
-<s-drop-zone
-  label="Upload file"
-  error="File size must be less than 5mb"
- />
