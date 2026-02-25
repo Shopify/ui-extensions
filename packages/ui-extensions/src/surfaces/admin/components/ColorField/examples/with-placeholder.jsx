@@ -1,0 +1,7 @@
+<s-stack gap="base">
+  <s-color-field
+    label="Theme color"
+    placeholder="Enter a hex color (e.g., #FF0000)"
+    value="#000000"
+   />
+</s-stack>

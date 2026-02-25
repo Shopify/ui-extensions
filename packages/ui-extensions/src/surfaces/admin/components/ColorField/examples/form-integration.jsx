@@ -1,0 +1,28 @@
+<s-stack gap="base">
+  <s-section>
+    <s-heading>Theme settings</s-heading>
+    <s-stack gap="base">
+      <s-color-field
+        label="Primary brand color"
+        name="primaryColor"
+        value="#1a73e8"
+        defaultValue="#1a73e8"
+        details="This color will be used for buttons, links, and brand elements"
+        required
+       />
+      <s-color-field
+        label="Secondary color"
+        name="secondaryColor"
+        value="#34a853"
+        details="Used for secondary actions and accents"
+       />
+      <s-color-field
+        label="Background overlay"
+        name="overlayColor"
+        value="rgba(0, 0, 0, 0.5)"
+        alpha
+        details="Background color for modal overlays and dropdowns"
+       />
+    </s-stack>
+  </s-section>
+</s-stack>
