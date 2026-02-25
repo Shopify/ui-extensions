@@ -37,8 +37,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'color-field-default.png',
-    description:
-      'Display a labeled color field with a pre-selected hex value.',
+    description: 'Display a labeled color field with a pre-selected hex value.',
     codeblock: {
       title: 'Pick a color',
       tabs: [
