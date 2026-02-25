@@ -1,10 +1,10 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'DateSpinner',
+  name: 'Date spinner',
   description:
-    'The DateSpinner component enables merchants to select dates using a spinner interface with scrollable columns for month, day, and year. Use it for compact date selection in space-constrained layouts or when selecting dates close to the current date.' +
-    '\n\nFor visual calendar context, consider using [DatePicker](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) instead. For text date entry, use [DateField](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datefield).',
+    'The date spinner component enables merchants to select dates using a spinner interface with scrollable columns for month, day, and year. Use it for compact date selection in space-constrained layouts or when selecting dates close to the current date.' +
+    '\n\nFor visual calendar context, consider using [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-picker) instead. For text date entry, use [date field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-field).',
   thumbnail: 'date-spinner-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -12,13 +12,13 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the DateSpinner component.',
+        'Configure the following properties on the date spinner component.',
       type: 'DateSpinner',
     },
     {
       title: 'Events',
       description:
-        'The DateSpinner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The date spinner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'DateSpinnerEvents',
     },
   ],
@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'date-spinner-default.png',
     description:
-      'Enable compact date selection using a DateSpinner component with scrollable columns for month, day, and year. This example shows a basic date spinner for space-constrained layouts.',
+      'Enable compact date selection using a date spinner component with scrollable columns for month, day, and year. This example shows a basic date spinner for space-constrained layouts.',
     codeblock: {
       title: 'Select dates with a spinner',
       tabs: [
@@ -44,8 +44,8 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent: `
-- **Use for space-constrained layouts:** Choose DateSpinner for narrow layouts or split-screen interfaces where a calendar view would be impractical.
-- **Best for nearby dates:** Use when selecting dates close to the current date. For distant dates, [DatePicker](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/datepicker) provides faster navigation.
+- **Use for space-constrained layouts:** Choose date spinner for narrow layouts or split-screen interfaces where a calendar view would be impractical.
+- **Best for nearby dates:** Use when selecting dates close to the current date. For distant dates, [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-picker) provides faster navigation.
 - **Provide interaction cues:** Consider labels or instructions to help first-time users understand the scrollable column interface.
 `,
     },
@@ -57,7 +57,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Control DateSpinner visibility programmatically using the command system with `show` and `hide` methods. This example demonstrates using button commands to display or dismiss the spinner picker, enabling custom trigger patterns for date selection in constrained layouts.',
+          'Control date spinner visibility programmatically using the command system with `show` and `hide` methods. This example demonstrates using button commands to display or dismiss the spinner picker, enabling custom trigger patterns for date selection in constrained layouts.',
         codeblock: {
           title: 'Control spinner visibility',
           tabs: [

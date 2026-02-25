@@ -5,16 +5,35 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/textarea.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- **Set appropriate initial height:** The visible row count sets merchants' expectations for how much content to provide. A small textarea suggests brief input, while a larger one indicates more detailed content is expected.
+- **Set realistic length constraints:** Define maximum and minimum character limits that reflect actual requirements. Communicate these limits clearly so merchants understand how much content they need to provide.
+- **Provide helpful placeholder examples:** Show merchants what kind of content and level of detail you expect. Good placeholder text demonstrates format and tone rather than just stating the field's purpose.
+- **Give real-time feedback on length limits:** When enforcing maximum length, show merchants how many characters they have remaining. This helps them craft their content within constraints without exceeding limits.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- The \`maxLength\` attribute prevents typing but doesn't reliably prevent pasting longer content. Browsers handle this differently. Always validate length server-side.
+- The component only accepts plain text. If you need bold, italics, lists, or other formatting, you must implement a rich text editor or use plain text with Markdown syntax.`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the text area component.',
       type: 'TextArea',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TextAreaEvents',
     },
   ],

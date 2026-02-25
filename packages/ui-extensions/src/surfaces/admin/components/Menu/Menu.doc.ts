@@ -7,38 +7,36 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Presenting a set of actions or selectable options to merchants
-- Creating dropdown menus with related actions
-- Organizing actions into logical groupings using sections`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use for secondary or less important actions since they're hidden until merchants open them
-- Contain actions that are related to each other`,
+      sectionContent: `- **Reserve for secondary actions:** Place primary actions directly in the UI (like **Save** in the page header). Use menus for less frequent or destructive actions (like **Archive**, **Duplicate**, or **Export data**) that shouldn't take up permanent space.
+- **Write action-oriented labels:** Use the \`{verb}+{noun}\` format: **Edit details**, **Export as CSV**, **Duplicate product**, **Archive order**. Never use vague labels like **Options**, **More**, or **Settings**.
+- **Group related actions with sections:** When you have 4+ menu items, organize into sections with headings: group **Edit details**, **Duplicate product** under **Manage**, and **Archive product**, **Delete product** under **Danger zone**.
+- **Use icons to reinforce meaning:** Add icons to menu items to provide visual recognition: use an edit icon for **Edit**, trash icon for **Delete**, or download icon for **Export**. Icons should clarify, not replace, text labels.
+- **Only disable temporarily unavailable actions:** Use disabled items when an action's contextually unavailable (like **Refund order** when already refunded). If an action's never available, remove it from the menu entirely.`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `- Each item should be clear and predictable
-- Lead with a strong verb using the {verb}+{noun} format (e.g., "Buy shipping label", "Edit HTML")
-- Avoid unnecessary words and articles like "the", "an", or "a"`,
+      anchorLink: 'limitations',
+      sectionContent: `- Menus automatically reposition to stay within the viewport boundaries, but in extremely constrained spaces (like narrow mobile screens or small modals), the menu might partially overflow or be cut off.
+- While there's no hard technical limit on menu items, menus with more than 10-12 items become difficult to scan. Performance remains acceptable up to ~50 items, but beyond this, consider pagination, search, or alternative UI patterns.
+- The component doesn't support nested submenus (like cascading dropdowns). All menu items must be at a single level, organized into sections if needed.
+- When navigating with arrow keys, focus moves sequentially through all items regardless of section boundaries. Section headings aren't focusable and serve only as visual separators.
+- The menu renders in a popover layer with a specific z-index. If placed within containers that have their own stacking contexts (like modals, sticky headers, or elements with transforms), the menu might appear behind other elements or clip unexpectedly.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description: 'Configure the following properties on the menu component.',
       type: 'Menu',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The menu component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'MenuSlots',
     },
   ],

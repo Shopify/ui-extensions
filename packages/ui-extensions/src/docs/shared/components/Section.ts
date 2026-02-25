@@ -3,7 +3,8 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Section',
   description:
-    'Groups related content into clearly-defined thematic areas. Sections have contextual styling that automatically adapts based on nesting depth. They also adjust heading levels to maintain a meaningful and accessible page structure.',
+    'The section component groups related content into clearly-defined thematic areas with consistent styling and structure. Use section to organize page content into logical blocks, each with its own heading and visual container.' +
+    '\n\nSections automatically adapt their styling based on nesting depth and adjust heading levels to maintain meaningful, accessible page hierarchies. For simple visual separation without headings, use [divider](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/divider).',
   category: 'Polaris web components',
   subCategory: 'Layout and structure',
   related: [],

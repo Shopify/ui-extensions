@@ -1,10 +1,10 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'TextArea',
+  name: 'Text area',
   description:
-    'The TextArea component captures multi-line text input. Use it to collect descriptions, notes, comments, or other extended text content.' +
-    '\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [TextField](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/textfield).',
+    'The text area component captures multi-line text input. Use it to collect descriptions, notes, comments, or other extended text content.' +
+    '\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [text field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/text-field).',
   thumbnail: 'text-area-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -12,13 +12,13 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the TextArea component.',
+        'Configure the following properties on the text area component.',
       type: 'TextArea',
     },
     {
       title: 'Events',
       description:
-        'The TextArea component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TextAreaEvents',
     },
   ],
@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'text-area-default.png',
     description:
-      'Capture multi-line text input using a TextArea component. This example shows a basic text area with a label for extended content.',
+      'Capture multi-line text input using a text area component. This example shows a basic text area with a label for extended content.',
     codeblock: {
       title: 'Capture multi-line text with a text area',
       tabs: [

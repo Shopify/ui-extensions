@@ -11,19 +11,30 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use the alpha slider if you want to allow merchants to select a transparent color`,
+      sectionContent: `- **Initialize with current values:** When editing existing colors, always set the picker's initial value to the current color. This shows merchants what they're changing from and maintains context.
+- **Show preview of final result:** If possible, show how the selected color will look in its actual context (like previewing a button color on a button) alongside the picker.
+- **Pair with color field for precision:** Use the component for visual selection combined with a [color field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/color-field) for precise hex input. This gives merchants both visual intuition and exact control.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- The 2D color gradient area requires mouse/touch interaction. Keyboard users can only navigate between major UI elements (hue slider, alpha slider) but can't make fine-grained color adjustments in the gradient itself.
+- The picker operates in the HSL color space and outputs values in hex format. Colors from other color spaces (like CMYK or LAB) might not be precisely represented, and might shift during conversion.
+- On touch devices, selecting precise colors in the gradient can be difficult due to finger size obscuring the selection point. The picker works best with mouse or stylus input for fine color selection.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the color picker component.',
       type: 'ColorPicker',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The color picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ColorPickerEvents',
     },
   ],

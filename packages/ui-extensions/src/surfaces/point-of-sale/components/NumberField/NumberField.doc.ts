@@ -1,9 +1,9 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'NumberField',
+  name: 'Number field',
   description:
-    'The NumberField component captures numeric input with built-in number validation. Use it to collect quantities, prices, or other numeric information.' +
+    'The number field component captures numeric input with built-in number validation. Use it to collect quantities, prices, or other numeric information.' +
     '\n\nThe component supports optional stepper controls, min/max constraints, and step increments for guided numeric entry.',
   thumbnail: 'number-field-thumbnail.png',
   isVisualComponent: true,
@@ -12,19 +12,19 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the NumberField component.',
+        'Configure the following properties on the number field component.',
       type: 'NumberField',
     },
     {
       title: 'Slots',
       description:
-        'The NumberField component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The number field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'NumberFieldSlots',
     },
     {
       title: 'Events',
       description:
-        'The NumberField component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The number field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'NumberFieldEvents',
     },
   ],
@@ -33,7 +33,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'number-field-default.png',
     description:
-      'Capture numeric input using a NumberField component. This example shows a basic number field with a label for collecting numeric values.',
+      'Capture numeric input using a number field component. This example shows a basic number field with a label for collecting numeric values.',
     codeblock: {
       title: 'Capture numeric input with a number field',
       tabs: [

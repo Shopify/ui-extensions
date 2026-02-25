@@ -7,45 +7,34 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Communicating the state of an object
-- Identifying objects that need attention or action
-- Quickly scanning complex lists to find specific object states`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- \`base\`: use in tables where many badges are displayed
-- \`large\`: use when badge needs to stand out prominently
-- Text truncates automatically, keep labels short to avoid truncation
-- Badges are static indicators, not interactive or dismissible
-- Use \`critical\` or \`warning\` tones for errors needing immediate attention
-- Use consistent styles and icons for common statuses
-- When using badges in line items, integrate them with the full content group rather than attaching only to the header
-- Don't use badges for merchant-created information. Instead, use a Chip or ClickableChip`,
+      sectionContent: `- **Choose the right size:** Use \`base\` size in table cells, list items, or when showing multiple badges together. Use \`large\` size for standalone badges that need emphasis, like a primary status indicator at the top of a page.
+- **Keep labels to 1-2 words:** Use concise labels like **Fulfilled**, **Partially refunded**, or **Out of stock**. Always use past tense for status labels: **Refunded** not **Refund**.
+- **Use appropriate tones:** Apply \`critical\` for errors or urgent issues needing action, \`warning\` for problems requiring attention, \`success\` for positive confirmations, and \`info\` for neutral statuses. Use consistent tones for the same status across your app.
+- **Position in content flow:** Place badges adjacent to the items they describe. In list items, position them near the title. In tables, place them in their own column for scannability.
+- **Know when not to use badges:** Badges are static, system-generated indicators. Don't use badges for merchant-created tags or removable items.`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `Badge labels should:
-- Use 1-2 words maximum: \`Fulfilled\`, \`Partially refunded\`
-- Always use past tense: \`Refunded\` not \`Refund\`
-`,
+      anchorLink: 'limitations',
+      sectionContent: `- Badge text truncates with an ellipsis when it exceeds the available width. Truncated text isn't accessible via tooltip, so keep labels concise.
+- Badge text never wraps to multiple lines. Long labels will truncate rather than expand the badge height.
+- Only specific predefined icons from the admin icon set are supported. Custom icons or images can't be used. The icon always appears to the left of the text and can't be repositioned.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description: 'Configure the following properties on the badge component.',
       type: 'Badge',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The badge component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'BadgeSlots',
     },
   ],

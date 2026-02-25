@@ -3,15 +3,15 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Stack',
   description:
-    'The Stack component organizes elements along the block (vertical) or inline (horizontal) axis. Use it to structure layouts and control spacing between elements.' +
-    '\n\nThe component automatically manages spacing through gap properties and supports flexible alignment and wrapping behavior. Complex grid-like layouts may require multiple nested Stack components or alternative layout approaches.',
+    'The stack component organizes elements along the block (vertical) or inline (horizontal) axis. Use it to structure layouts and control spacing between elements.' +
+    '\n\nThe component automatically manages spacing through gap properties and supports flexible alignment and wrapping behavior. Complex grid-like layouts may require multiple nested stack components or alternative layout approaches.',
   thumbnail: 'stack-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
-      description: 'Configure the following properties on the Stack component.',
+      description: 'Configure the following properties on the stack component.',
       type: 'Stack',
     },
   ],
@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'stack-default.png',
     description:
-      'Organize elements using a Stack component. This example shows a basic stack with spacing between child elements.',
+      'Organize elements using a stack component. This example shows a basic stack with spacing between child elements.',
     codeblock: {
       title: 'Organize elements with a stack',
       tabs: [

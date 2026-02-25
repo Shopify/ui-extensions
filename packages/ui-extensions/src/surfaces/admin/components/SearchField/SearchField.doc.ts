@@ -11,20 +11,24 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- The SearchField automatically includes a clear button when text is entered, so you should not create your own clear button`,
+      sectionContent: `- **Use for inline search:** Choose the component for filtering content within specific sections or lists. For global navigation or complex multi-step searches, use a more robust search pattern.
+- **Make the search scope clear:** Users need to understand what they're searching through. Use specific labels and placeholders that explain what content will be searched and what attributes they can search by.
+- **Provide immediate feedback:** Show search results or filtered content as merchants type when possible. Immediate feedback helps merchants refine their search query and builds confidence in the search functionality.
+- **Handle empty states gracefully:** When the search field is cleared or returns no results, show appropriate messaging. For cleared searches, restore the full content list. For no results, suggest alternative actions or broaden the search criteria.
+- **Set appropriate search thresholds:** Prevent searches that would return overwhelming or meaningless results. Starting searches after 2-3 characters gives the system enough information to provide useful results.`,
     },
   ],
   definitions: [
     {
       title: 'SearchField',
       description:
-        'A search input field that allows users to enter a search term.',
+        'Configure the following properties on the search field component.',
       type: 'SearchField',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The search field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'SearchFieldEvents',
     },
   ],

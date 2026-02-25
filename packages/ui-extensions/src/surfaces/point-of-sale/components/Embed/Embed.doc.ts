@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Embed',
   description:
-    'The Embed component displays a preview of printable content from a specified source URL. Use it to show users what will be printed before triggering the actual print operation.\n\nEmbed works in conjunction with the Print API to provide complete print functionality from preview to execution.\n\nSupported document types:\n\n- **HTML documents** (`.html`, `.htm`) - Best printing experience with full CSS styling, embedded images, and complex layouts. Use for receipts, invoices, and formatted reports.\n\n- **Text files** (`.txt`, `.csv`) - Plain text with basic content and tabular data support. Use for simple receipts and data exports.\n\n- **PDF files** (`.pdf`) - Behavior varies by platform: prints directly on iOS/desktop, but downloads to external viewer on Android. Use for complex documents and compliance requirements.\n\n[Learn how to build a print extension in POS](/docs/apps/build/pos/build-print-extension).',
+    'The embed component displays a preview of printable content from a specified source URL. Use it to show users what will be printed before triggering the actual print operation.\n\nEmbed works in conjunction with the Print API to provide complete print functionality from preview to execution.\n\nSupported document types:\n\n- **HTML documents** (`.html`, `.htm`) - Best printing experience with full CSS styling, embedded images, and complex layouts. Use for receipts, invoices, and formatted reports.\n\n- **Text files** (`.txt`, `.csv`) - Plain text with basic content and tabular data support. Use for simple receipts and data exports.\n\n- **PDF files** (`.pdf`) - Behavior varies by platform: prints directly on iOS/desktop, but downloads to external viewer on Android. Use for complex documents and compliance requirements.\n\n[Learn how to build a print extension in POS](/docs/apps/build/pos/build-print-extension).',
   isVisualComponent: true,
   type: 'component',
   thumbnail: 'embed-thumbnail.png',
@@ -11,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the Embed component. This component must be a direct child of the Screen component.',
+        'Configure the following properties on the embed component. This component must be a direct child of the screen component.',
       type: 'EmbedProps',
     },
   ],
@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'embed-default.png',
     description:
-      'Display a preview of printable content before triggering the print operation. This example shows how to use Embed with HTML documents, PDFs, or text files, supporting various document formats with proper rendering for receipts, invoices, and formatted reports.',
+      'Display a preview of printable content before triggering the print operation. This example shows how to use embed with HTML documents, PDFs, or text files, supporting various document formats with proper rendering for receipts, invoices, and formatted reports.',
     codeblock: {
       title: 'Preview printable content',
       tabs: [{code: './examples/embed.html', language: 'html'}],
@@ -39,7 +39,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'limitations',
       title: 'Limitations',
-      sectionContent: `\n- Embed must be a direct child of the Screen component and can't be nested inside any other component—this structural requirement ensures proper preview rendering and print functionality.\n- The component requires network access to fetch content from the specified source URL—offline functionality isn't supported for remote content.\n- Content is displayed as-is from the source—real-time content modification or editing within the preview isn't supported.\n- PDF printing on Android devices requires external applications—the component can't handle PDF printing natively on all platforms, which may affect user experience consistency across different POS devices.\n`,
+      sectionContent: `\n- Embed must be a direct child of the screen component and can't be nested inside any other component—this structural requirement ensures proper preview rendering and print functionality.\n- The component requires network access to fetch content from the specified source URL—offline functionality isn't supported for remote content.\n- Content is displayed as-is from the source—real-time content modification or editing within the preview isn't supported.\n- PDF printing on Android devices requires external applications—the component can't handle PDF printing natively on all platforms, which may affect user experience consistency across different POS devices.\n`,
     },
   ],
 };

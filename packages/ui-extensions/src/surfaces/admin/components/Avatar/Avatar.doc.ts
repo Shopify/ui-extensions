@@ -7,43 +7,33 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Identifying individuals or businesses
-- Representing merchants, customers, or other entities visually
-- Seeing visual indicators of people or businesses in lists, tables, or cards`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- \`small-200\`: use in tightly condensed layouts
-- \`small\`: use when the base size is too big for the layout, or when the avatar has less importance
-- \`base\`: use as the default size
-- \`large\`: use when an avatar is a focal point, such as on a single customer card
-- \`large-200\`: use when extra emphasis is required`,
+      sectionContent: `- **Choose appropriate sizes:** Use smaller sizes for compact contexts like tables and lists, and larger sizes for profile pages where the person is the primary focus.
+- **Provide meaningful alt text:** Describe the avatar content like **Sarah Chen** or **Acme Corporation**, or use empty alt text if the name appears next to the avatar as text.
+- **Position near related content:** Place avatars adjacent to the names or entities they represent for clear associations in lists, tables, or cards.`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `For avatars, we recommend using a format that describes what will show in the image:
-- alt="Person's name" if avatar represents a person
-- alt="Business's name" if avatar represents a business
-- alt="" if the name appears next to the avatar as text`,
+      anchorLink: 'limitations',
+      sectionContent: `- Avatar images must be served from URLs accessible by the merchant's browser. If the image is hosted on a different domain, the server must include appropriate \`Access-Control-Allow-Origin\` headers or the image might fail to load.
+- Only standard web image formats (JPEG, PNG, GIF, WebP, SVG) are supported. Unsupported formats will fall back to initials.
+- The \`initials\` prop accepts a string that displays when no image is available. Characters beyond the first two might be truncated. Special characters, emojis, or non-Latin scripts might not render as expected.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the avatar component.',
       type: 'Avatar',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The avatar component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'AvatarEvents',
     },
   ],

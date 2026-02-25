@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Banner',
   description:
-    'The Banner component highlights important information or required actions. Use banners to communicate critical updates, warnings, informational messages, or success notifications that require merchant attention.' +
+    'The banner component highlights important information or required actions. Use banners to communicate critical updates, warnings, informational messages, or success notifications that require merchant attention.' +
     '\n\nBanners provide persistent visibility with support for dismissible and non-dismissible states.',
   thumbnail: 'banner-thumbnail.png',
   isVisualComponent: true,
@@ -12,13 +12,13 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the Banner component.',
+        'Configure the following properties on the banner component.',
       type: 'Banner',
     },
     {
       title: 'Slots',
       description:
-        'The Banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'BannerSlots',
     },
   ],
@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'banner-default.png',
     description:
-      'Display important messages using a Banner component with automatic color coding based on message severity. This example shows a basic banner with a heading and descriptive text.',
+      'Display important messages using a banner component with automatic color coding based on message severity. This example shows a basic banner with a heading and descriptive text.',
     codeblock: {
       title: 'Display important messages with a banner',
       tabs: [

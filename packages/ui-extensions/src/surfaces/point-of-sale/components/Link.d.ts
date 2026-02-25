@@ -44,7 +44,7 @@ export interface LinkJSXProps extends Pick<LinkProps, 'id' | 'commandFor' | 'com
      */
     onClick?: (event: CallbackEvent<typeof tagName>) => void;
     /**
-     * The Link content.
+     * The link content.
      */
     children?: ComponentChildren;
 }

@@ -1,10 +1,10 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'TimeField',
+  name: 'Time field',
   description:
-    'The TimeField component captures time input through direct text entry. Use it when merchants know the exact time they want to enter or for quick time data entry.' +
-    '\n\nFor visual time selection with clock or spinner interfaces, use [TimePicker](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/timepicker).',
+    'The time field component captures time input through direct text entry. Use it when merchants know the exact time they want to enter or for quick time data entry.' +
+    '\n\nFor visual time selection with clock or spinner interfaces, use [time picker](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/time-picker).',
   thumbnail: 'time-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -12,13 +12,13 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the TimeField component.',
+        'Configure the following properties on the time field component.',
       type: 'TimeField',
     },
     {
       title: 'Events',
       description:
-        'The TimeField component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The time field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TimeFieldEvents',
     },
   ],
@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'time-field-default.png',
     description:
-      'Capture time input using a TimeField component. This example shows a basic time field with a label for time entry.',
+      'Capture time input using a time field component. This example shows a basic time field with a label for time entry.',
     codeblock: {
       title: 'Capture time input with a time field',
       tabs: [

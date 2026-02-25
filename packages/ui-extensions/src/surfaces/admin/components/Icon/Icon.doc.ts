@@ -14,26 +14,28 @@ const data: AdminReferenceEntityTemplateSchema = {
         'Search and filter across all the available icons: {{ICON_PREVIEW_IFRAME}}',
     },
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Orienting themselves and understanding available actions
-- Quickly identifying information and recognizing patterns`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `Icons should:
-- Use the same icon consistently for the same meaning
-- Appear next to related text labels
-- Only be used when their meaning is clear`,
+      sectionContent: `- **Use icons to support actions and status, not decorate:** Icons should clarify what an action does or indicate state. Use the trash icon for delete actions, a checkmark for completed status, or a warning icon for errors. Avoid adding icons purely for visual interest.
+- **Maintain consistency across your interface:** Always use the same icon for the same action or concept throughout your extension. If you use a pencil for edit in one place, use it everywhere. Inconsistent icon usage confuses merchants.
+- **Pair icons with text labels whenever possible:** Icons work best as visual reinforcement alongside text. Without text, even common icons can be ambiguous—a gear might mean settings, preferences, or configuration. Only use icons alone in space-constrained contexts like icon-only buttons with proper accessibility labels.
+- **Choose icons that are universally recognizable:** Stick to icons with established meanings like magnifying glass (search), trash (delete), and plus (add). Test any icon you're unsure about—if it needs explanation, it's not the right choice.
+- **Use semantic tones to communicate meaning:** Apply tones like \`critical\` for destructive actions, \`success\` for positive states, and \`warning\` for caution. Tones should convey information, not serve as decoration.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- Icons are limited to the predefined set provided by the component. Custom SVG icons, icon fonts, or external icon libraries aren't supported.
+- Icons can't be animated or include interactive states beyond color changes. For complex graphics or illustrations, use the [image](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/image) component instead.
+- Icon color is determined by the \`tone\` and \`color\` properties. Custom colors or gradients aren't available.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description: 'Configure the following properties on the icon component.',
       type: 'Icon',
     },
   ],

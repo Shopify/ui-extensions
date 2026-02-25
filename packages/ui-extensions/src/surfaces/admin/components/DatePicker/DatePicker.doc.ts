@@ -11,20 +11,25 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use smart defaults and highlight common selections
-- Don't use to enter a date that is many years in the future or the past`,
+      sectionContent: `- **Use smart defaults:** Pre-populate the picker with sensible dates to speed up the selection process.
+- **Provide quick selections:** Offer preset date options for common selections (like **Today**, **Last 7 days**, or **This month**) to improve usability.
+- **Use date ranges when appropriate:** Enable range selection mode when merchants need to select start and end dates for reports, analytics, or time-based filters.
+- **Restrict dates appropriately:** Use the \`allow\` and \`disallow\` properties to prevent selection of invalid dates for your specific use case.
+- **Provide adequate space:** Ensure sufficient spacing around the picker to avoid interfering with on-screen keyboards or other interactive elements.
+- **Consider alternatives for distant dates:** Navigating month-by-month becomes impractical for dates more than a few years away. For dates outside a 5-10 year range, consider providing date presets or manual year input.`,
     },
   ],
   definitions: [
     {
       title: 'DatePicker',
-      description: '',
+      description:
+        'Configure the following properties on the date picker component.',
       type: 'DatePicker',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The date picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'DatePickerEvents',
     },
   ],

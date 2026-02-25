@@ -7,50 +7,42 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Taking primary actions like saving or creating resources
-- Taking secondary actions like canceling forms or filtering results
-- Triggering destructive operations like deletion or disconnection
-- Accessing supplementary actions via tertiary buttons`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Be clearly and accurately labeled with strong, actionable verbs
-- Use established button tones appropriately (e.g., critical tone only for actions that are difficult to undo)
-- Prioritize the most important actions to avoid confusion
-- Be positioned in consistent locations in the interface
-- Use buttons for actions and links for navigation`,
+      sectionContent: `- **Label buttons clearly:** Use strong, actionable verbs that clearly and accurately describe the action (like **Save**, **Edit**, or **Add tags**). Write labels in sentence case and avoid unnecessary words and articles (like **a**, **an**, **the**). Don't use punctuation.
+- **Use appropriate button tones:** Apply established button tones appropriately. Use critical tone only for destructive actions that are difficult or impossible to undo. Match the tone to the action's impact and importance.
+- **Establish clear hierarchy:** Prioritize the most important actions to avoid confusion. Use primary buttons for main actions, secondary buttons for supporting actions, and tertiary buttons for supplementary actions.
+- **Position consistently:** Place buttons in consistent locations throughout the interface to create predictable interaction patterns.
+- **Icon-only buttons:** For icon-only buttons, always use \`accessibilityLabel\` to describe the action for screen reader users.`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `- Use simple, concise verbs (e.g., "Save", "Edit", "Add tags")
-- Write in sentence case
-- Avoid unnecessary words and articles (e.g., "a", "an", "the")
-- Don't use punctuation
-- For icon-only buttons, use \`accessibilityLabel\` to describe the action`,
+      anchorLink: 'limitations',
+      sectionContent: `- When using \`href\` for navigation, external URLs (domains outside Shopify admin) might be blocked or show security warnings depending on the extension context and merchant's browser security settings.
+- Setting \`loading={true}\` provides visual feedback and prevents form submission or multiple clicks. You must implement additional logic to debounce or disable the button action during async operations.
+- Icon-only buttons have a minimum touch target size but don't expand to fill available space. They maintain a fixed size based on the icon and padding, which might create layout inconsistencies if mixed with text buttons in the same container.
+- Disabled buttons (\`disabled={true}\`) are removed from the tab order and can't receive keyboard focus. If you disable a button temporarily (for example, while waiting for form validation), then provide visible text explaining why it's disabled. For async operations, use \`loading\` over \`disabled\` because \`loading\` communicates that an action is in progress.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the button component.',
       type: 'Button',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ButtonEvents',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The button component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ButtonSlots',
     },
   ],

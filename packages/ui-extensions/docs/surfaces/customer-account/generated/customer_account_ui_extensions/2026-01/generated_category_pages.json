@@ -1,0 +1,21 @@
+[
+  {
+    "category": "Polaris web components",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "additional-components",
+        "title": "Components for customer accounts",
+        "sectionContent": "The components on this page are for customer account UI extensions. For more options, you can also use components from the larger checkout library.",
+        "sectionCard": [
+          {
+            "type": "blocks",
+            "name": "Checkout components",
+            "subtitle": "More components",
+            "url": "/docs/api/checkout-ui-extensions/polaris-web-components"
+          }
+        ]
+      }
+    ]
+  }
+]

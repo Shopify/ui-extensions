@@ -16,27 +16,36 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use when displaying data with 3 or more attributes per item
-- All items should share the same structure and attributes
-- Don't use when data varies significantly between items (use a list instead)
-- Tables automatically transform into lists on mobile devices`,
+      sectionContent: `- **Use for structured, comparable data:** The component works best when displaying multiple records with consistent attributes that merchants need to scan and compare. For simple lists without comparison needs, consider using a simpler component.
+- **Design for mobile transformation:** The component automatically converts to a list layout on mobile devices. Ensure your column headers and data make sense when displayed as stacked key-value pairs rather than a grid.
+- **Keep column counts reasonable:** Tables with many columns become difficult to scan and require horizontal scrolling. Aim for the minimum columns needed to support user tasks, and consider whether some data could be revealed on demand.
+- **Provide clear column headers:** Column headers help merchants understand what each column represents. Write concise, descriptive headers that clearly identify the data type or attribute.
+- **Consider data volume:** Large tables impact performance and user experience. Use pagination for datasets with more than 50-100 rows, or consider whether filtering or search would help merchants find specific records more efficiently.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- The component doesn't include built-in sorting or search functionality. You'll need to implement these features yourself if merchants need to organize data within the table. For filtering, use the \`filters\` slot to add filter UI such as a search field.
+- The component doesn't support sticky headers that remain visible during scrolling. If merchants need to reference column headers while viewing data further down the table, consider using pagination to keep datasets smaller.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description: 'Configure the following properties on the table component.',
       type: 'Table',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The table component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TableSlots',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The table component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TableEvents',
     },
     {
@@ -46,7 +55,8 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The table body component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TableBodySlots',
     },
     {
@@ -56,7 +66,8 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The table cell component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TableCellSlots',
     },
     {
@@ -66,7 +77,8 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The table header component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TableHeaderSlots',
     },
     {
@@ -76,7 +88,8 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The table header row component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TableHeaderRowSlots',
     },
     {
@@ -86,7 +99,8 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The table row component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TableRowSlots',
     },
   ],
@@ -108,14 +122,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [
-    {
-      name: 'Index table',
-      subtitle: 'Composition',
-      url: '/docs/api/app-home/patterns/compositions/index-table',
-      type: 'component',
-    },
-  ],
+  related: [],
   examples: {
     description: 'Component examples',
     exampleGroups: [

@@ -3,8 +3,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Heading',
   description:
-    'The Heading component renders hierarchical titles to communicate the structure and organization of page content and help users navigate complex interfaces.' +
-    '\n\nHeading levels adjust automatically based on nesting within parent [Section](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/layout-and-structure/section) components, ensuring a meaningful page outline.',
+    'The heading component renders hierarchical titles to communicate the structure and organization of page content and help users navigate complex interfaces.' +
+    '\n\nHeading levels adjust automatically based on nesting within parent [section](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/section) components, ensuring a meaningful page outline.',
   thumbnail: 'heading-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the Heading component.',
+        'Configure the following properties on the heading component.',
       type: 'Heading',
     },
   ],
@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'heading-default.png',
     description:
-      'Create hierarchical titles using a Heading component that adjusts levels automatically based on nesting. This example shows a basic heading with automatic level management.',
+      'Create hierarchical titles using a heading component that adjusts levels automatically based on nesting. This example shows a basic heading with automatic level management.',
     codeblock: {
       title: 'Display hierarchical headings',
       tabs: [

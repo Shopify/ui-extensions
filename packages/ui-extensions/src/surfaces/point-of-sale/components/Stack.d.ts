@@ -134,46 +134,46 @@ export interface StackJSXProps extends PickedProps {
    */
   paddingInlineEnd?: PaddingKeyword | '';
   /**
-   * The block size of the Stack component. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The block size of the stack component. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
    *
    * Learn more about [block-size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
    * @default 'auto'
    */
   blockSize?: SizeUnitsOrAuto;
   /**
-   * The maximum block size constraint for the Stack component. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The maximum block size constraint for the stack component. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
    *
    * Learn more about [max-block-size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
    * @default 'none'
    */
   maxBlockSize?: SizeUnitsOrNone;
   /**
-   * The maximum inline size constraint for the Stack component. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The maximum inline size constraint for the stack component. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
    *
    * Learn more about [max-inline-size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
    * @default 'none'
    */
   maxInlineSize?: SizeUnitsOrNone;
   /**
-   * The minimum block size constraint for the Stack component. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The minimum block size constraint for the stack component. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
    *
    * Learn more about [min-block-size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
    * @default '0'
    */
   minBlockSize?: SizeUnits;
   /**
-   * The minimum inline size constraint for the Stack component. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
+   * The minimum inline size constraint for the stack component. On mobile surfaces, avoid using percentage-based sizes as they don't behave as expected when placed within a scrollable container.
    *
    * Learn more about [min-inline-size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
    * @default '0'
    */
   minInlineSize?: SizeUnits;
   /**
-   * The alignment of the Stack component's children along the cross axis.
+   * The alignment of the stack component's children along the cross axis.
    */
   alignItems?: AlignItemsKeyword;
   /**
-   * The alignment of the Stack component along the cross axis.
+   * The alignment of the stack component along the cross axis.
    */
   alignContent?: AlignContentKeyword;
   /**
@@ -189,20 +189,20 @@ export interface StackJSXProps extends PickedProps {
    */
   columnGap?: SpacingKeyword | '';
   /**
-   * The direction in which children are placed within the Stack component using logical properties. Use `'block'` for vertical arrangement where children are placed along the block axis (typically top to bottom) without wrapping. Use `'inline'` for horizontal arrangement where children are placed along the inline axis (typically left to right) with automatic wrapping when space is insufficient.
+   * The direction in which children are placed within the stack component using logical properties. Use `'block'` for vertical arrangement where children are placed along the block axis (typically top to bottom) without wrapping. Use `'inline'` for horizontal arrangement where children are placed along the inline axis (typically left to right) with automatic wrapping when space is insufficient.
    *
    * @default 'block'
    */
   direction?: 'block' | 'inline';
   /**
-   * The inline size of the Stack component.
+   * The inline size of the stack component.
    *
    * Learn more about [inline-size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
    * @default 'auto'
    */
   inlineSize?: SizeUnitsOrAuto;
   /**
-   * The alignment of the Stack component along the main axis.
+   * The alignment of the stack component along the main axis.
    *
    * Learn more about [justify-content on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
    * @default 'normal'

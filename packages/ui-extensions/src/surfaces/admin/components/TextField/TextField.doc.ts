@@ -6,22 +6,41 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/textfield.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- **Make expected input clear:** Merchants should immediately understand what to enter and in what format. Ambiguous labels and placeholders force merchants to guess, leading to validation errors and frustration.
+- **Provide visual context:** Prefixes and suffixes help merchants understand the type of value expected and its format. Without context, merchants might not know whether they're entering a complete URL or just a subdomain, a full price or just the amount.
+- **Set constraints that match requirements:** Define character limits and validation rules based on actual business needs, not arbitrary numbers. Communicate these constraints clearly so merchants know what's expected.
+- **Give helpful feedback:** Show merchants whether their input is valid as they type, not just after they submit. When input is invalid, explain specifically what's wrong and how to fix it rather than showing generic error messages.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- The \`maxLength\` attribute prevents typing beyond the limit, but in some edge cases, pasted or programmatically set content might exceed \`maxLength\`. Always validate length server-side.
+- The \`accessory\` slot renders content at the end of the field. For best results, use [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) or [clickable](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/clickable) components with text content.`,
+    },
+  ],
   definitions: [
     {
       title: 'TextField',
       description:
-        'A text input field that allows users to enter and edit text.',
+        'Configure the following properties on the text field component.',
       type: 'TextField',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The text field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'TextFieldSlots',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The text field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TextFieldEvents',
     },
   ],

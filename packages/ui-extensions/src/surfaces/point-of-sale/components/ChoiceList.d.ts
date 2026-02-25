@@ -85,7 +85,7 @@ export interface ChoiceListJSXProps
    */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * The child elements to render within this component. Should be one or more Choice elements.
+   * The child elements to render within this component. Should be one or more choice elements.
    */
   children?: ComponentChildren;
 }

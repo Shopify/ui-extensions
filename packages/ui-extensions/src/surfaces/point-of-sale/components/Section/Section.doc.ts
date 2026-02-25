@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Section',
   description:
-    'The Section component groups related content into clearly-defined thematic areas. Use it to organize content and provide clear navigation landmarks.' +
+    'The section component groups related content into clearly-defined thematic areas. Use it to organize content and provide clear navigation landmarks.' +
     '\n\nThe component manages heading levels automatically, ensuring nested sections maintain proper semantic structure. Only one secondary action button is supported for each section.',
   thumbnail: 'section-thumbnail.png',
   isVisualComponent: true,
@@ -12,13 +12,13 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the Section component.',
+        'Configure the following properties on the section component.',
       type: 'Section',
     },
     {
       title: 'Slots',
       description:
-        'The Section component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The section component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'SectionSlots',
     },
   ],
@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'section-default.png',
     description:
-      'Group related content using a Section component. This example shows a basic section with a heading and content area.',
+      'Group related content using a section component. This example shows a basic section with a heading and content area.',
     codeblock: {
       title: 'Group related content into sections',
       tabs: [

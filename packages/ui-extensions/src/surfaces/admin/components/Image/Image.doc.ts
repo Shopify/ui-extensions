@@ -7,40 +7,38 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Adding illustrations and photos.`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use high-resolution, optimized images
-- Use intentionally to add clarity and guide users`,
+      sectionContent: `- **Always provide descriptive alternative text:** Write alt text that describes what's in the image, not what the image is for. Use "Blue cotton t-shirt with crew neck" instead of "Product image." For decorative images that don't add information, use an empty alt attribute.
+- **Use images for meaningful content, not decoration:** Display product photos, diagrams, charts, or instructional screenshots. For icons or decorative elements, use the [icon](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/icon) component instead.
+- **Ensure images are accessible and performant:** Use appropriate image formats (WebP for photos, PNG for graphics with transparency, SVG for logos). Ensure images load from reliable sources with proper CORS configuration if cross-origin.
+- **Consider the image's purpose and context:** Use images to help merchants understand products, visualize data, or follow instructions. Every image should serve a clear purpose in your interface.`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `Alt text should be accurate, concise, and descriptive:
-- Indicate it's an image: "Image of", "Photo of"
-- Focus on description: "Image of a woman with curly brown hair smiling"`,
+      anchorLink: 'limitations',
+      sectionContent: `- Images can be loaded from remote URLs or local file resources. Cross-origin images require proper CORS headers from the image host.
+- The component displays images at their intrinsic aspect ratio. Use \`aspectRatio\` (for example, \`'16/9'\`) to set a fixed ratio, and \`objectFit\` (\`'cover'\` or \`'contain'\`) to control how the image resizes within its container.
+- The component provides a basic placeholder while images load but doesn't include built-in loading skeletons or progressive loading features.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description: 'Configure the following properties on the image component.',
       type: 'Image',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The image component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ImageEvents',
     },
   ],
+  category: 'Polaris web components',
+  subCategory: 'Media and visuals',
   defaultExample: {
     image: 'image-default.png',
     codeblock: {

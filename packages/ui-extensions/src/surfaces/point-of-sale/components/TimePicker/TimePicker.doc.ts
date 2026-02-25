@@ -1,10 +1,10 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'TimePicker',
+  name: 'Time picker',
   description:
-    'The TimePicker component allows merchants to select times using an interactive picker interface. Use it when merchants benefit from visual time selection rather than typing exact times.' +
-    '\n\nFor direct text entry when merchants know the exact time, use [TimeField](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/timefield).',
+    'The time picker component allows merchants to select times using an interactive picker interface. Use it when merchants benefit from visual time selection rather than typing exact times.' +
+    '\n\nFor direct text entry when merchants know the exact time, use [time field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/time-field).',
   thumbnail: 'time-spinner-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -12,13 +12,13 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the TimePicker component.',
+        'Configure the following properties on the time picker component.',
       type: 'TimePicker',
     },
     {
       title: 'Events',
       description:
-        'The TimePicker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The time picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'TimePickerEvents',
     },
   ],
@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'time-spinner-default.png',
     description:
-      'Select times using a TimePicker component. This example shows a basic time picker for selecting hours and minutes.',
+      'Select times using a time picker component. This example shows a basic time picker for selecting hours and minutes.',
     codeblock: {
       title: 'Select times with a time picker',
       tabs: [
@@ -44,7 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent: `
-- **Choose for visual time selection:** Use TimePicker when users benefit from a visual picker interface. Use [TimeField](/docs/api/pos-ui-extensions/2026-01-rc/polaris-web-components/forms/timefield) when users know the exact time.
+- **Choose for visual time selection:** Use time picker when users benefit from a visual picker interface. Use [time field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/time-field) when users know the exact time.
 - **Use correct format:** Always use \`HH:mm:ss\` format with leading zeros. The internal format is always 24-hour regardless of UI presentation.
 - **Validate before setting values:** Invalid values reset to empty string. Implement validation to show appropriate error messages.
 `,
@@ -57,7 +57,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'Control TimePicker visibility programmatically using the command system with `show` and `hide` methods. This example demonstrates using button commands to display or dismiss the time picker, enabling custom trigger patterns for time selection workflows.',
+          'Control time picker visibility programmatically using the command system with `show` and `hide` methods. This example demonstrates using button commands to display or dismiss the time picker, enabling custom trigger patterns for time selection workflows.',
         codeblock: {
           title: 'Control picker visibility',
           tabs: [

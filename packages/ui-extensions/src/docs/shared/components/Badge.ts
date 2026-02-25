@@ -3,7 +3,8 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Badge',
   description:
-    'Inform users about the status of an object or indicate that an action has been completed.',
+    'The badge component displays status information or indicates completed actions through compact visual indicators. Use badge to communicate object states, order statuses, or system-generated classifications that help users quickly understand item conditions.' +
+    '\n\nBadges support multiple tones and sizes, with optional icons to reinforce status meaning and improve scannability in lists and tables. For user-created labels, categories, or tags, use [chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/chip) instead.',
   category: 'Polaris web components',
   subCategory: 'Feedback and status indicators',
   related: [],

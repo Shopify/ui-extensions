@@ -1,9 +1,9 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'ScrollBox',
+  name: 'Scroll box',
   description:
-    'The ScrollBox component creates a scrollable area for content that exceeds container bounds. Use it to display large amounts of content within constrained spaces while maintaining usability.' +
+    'The scroll box component creates a scrollable area for content that exceeds container bounds. Use it to display large amounts of content within constrained spaces while maintaining usability.' +
     '\n\nThe component creates a defined scrollable area with customizable dimensions and scroll behavior.',
   thumbnail: 'scrollbox-thumbnail.png',
   isVisualComponent: true,
@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the ScrollBox component.',
+        'Configure the following properties on the scroll box component.',
       type: 'ScrollBox',
     },
   ],
@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'scrollbox-default.png',
     description:
-      'Create scrollable content areas using a ScrollBox component for content that exceeds container bounds. This example shows a basic scrollable area with customizable dimensions.',
+      'Create scrollable content areas using a scroll box component for content that exceeds container bounds. This example shows a basic scrollable area with customizable dimensions.',
     codeblock: {
       title: 'Create a scrollable content area',
       tabs: [
@@ -39,7 +39,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       sectionContent: `
 - **Set clear dimensions:** Use percentage values for responsive layouts or pixels for exact dimensions.
-- **Use for appropriate content:** Reserve ScrollBox for long lists or dynamic content that genuinely needs scrolling, not short content that fits within available space.
+- **Use for appropriate content:** Reserve scroll box for long lists or dynamic content that genuinely needs scrolling, not short content that fits within available space.
 `,
     },
   ],

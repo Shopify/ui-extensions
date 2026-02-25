@@ -10,31 +10,24 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use ChoiceList when rendering multiple checkboxes to provide a consistent and accessible selection interface
-- Work independently from each other
-- Be framed positively (e.g., "Publish store" not "Hide store")
-- Always have a label when used to activate or deactivate a setting
-- Be listed in a logical order (alphabetical, numerical, time-based, etc.)`,
-    },
-    {
-      title: 'Content guidelines',
-      type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `- Start each option with a capital letter
-- Don't use commas or semicolons at the end of each line
-- Use first person when asking merchants to agree to terms (e.g., "I agree to the Terms of Service")`,
+      sectionContent: `- **Ensure independence:** Each checkbox should work independently from others, allowing merchants to select any combination of options.
+- **Always include labels:** Provide descriptive labels when checkboxes activate or deactivate settings to ensure clarity.
+- **Order logically:** List checkboxes in a logical sequence like alphabetical, numerical, or time-based to help merchants find options easily.
+- **Use indeterminate state appropriately:** Apply the indeterminate state for "select all" functionality when only some items in a group are selected.
+- **Provide help text:** Include descriptive details text to give additional context about checkbox options when needed.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the checkbox component.',
       type: 'Checkbox',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The checkbox component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'CheckboxEvents',
     },
   ],
