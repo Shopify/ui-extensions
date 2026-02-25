@@ -25,6 +25,11 @@ Use this API to build workflows like adding products to collections from bulk ac
           code: './examples/create-article.jsx',
           language: 'jsx',
         },
+        {
+          title: 'js',
+          code: './examples/create-article.js',
+          language: 'js',
+        },
       ],
     },
   },
@@ -207,6 +212,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/edit-article.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/edit-article.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -226,6 +236,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/create-catalog.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-catalog.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -239,6 +254,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   title: 'jsx',
                   code: './examples/edit-catalog.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-catalog.js',
+                  language: 'js',
                 },
               ],
             },
@@ -259,6 +279,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/create-collection.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-collection.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -272,6 +297,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   title: 'jsx',
                   code: './examples/edit-collection.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-collection.js',
+                  language: 'js',
                 },
               ],
             },
@@ -292,6 +322,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/create-customer.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-customer.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -305,6 +340,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   title: 'jsx',
                   code: './examples/edit-customer.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-customer.js',
+                  language: 'js',
                 },
               ],
             },
@@ -325,6 +365,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/create-discount.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-discount.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -338,6 +383,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   title: 'jsx',
                   code: './examples/edit-discount.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-discount.js',
+                  language: 'js',
                 },
               ],
             },
@@ -358,6 +408,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/create-market.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-market.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -371,6 +426,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   title: 'jsx',
                   code: './examples/edit-market.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-market.js',
+                  language: 'js',
                 },
               ],
             },
@@ -391,6 +451,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/create-menu.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-menu.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -404,6 +469,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   title: 'jsx',
                   code: './examples/edit-menu.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-menu.js',
+                  language: 'js',
                 },
               ],
             },
@@ -424,6 +494,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/create-metafield-definition.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-metafield-definition.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -437,6 +512,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   title: 'jsx',
                   code: './examples/edit-metafield-definition.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-metafield-definition.js',
+                  language: 'js',
                 },
               ],
             },
@@ -457,6 +537,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/create-metaobject.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-metaobject.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -470,6 +555,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   title: 'jsx',
                   code: './examples/edit-metaobject.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-metaobject.js',
+                  language: 'js',
                 },
               ],
             },
@@ -490,6 +580,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/create-metaobject-definition.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-metaobject-definition.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -503,6 +598,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   title: 'jsx',
                   code: './examples/edit-metaobject-definition.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-metaobject-definition.js',
+                  language: 'js',
                 },
               ],
             },
@@ -523,6 +623,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/create-page.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-page.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -536,6 +641,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   title: 'jsx',
                   code: './examples/edit-page.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-page.js',
+                  language: 'js',
                 },
               ],
             },
@@ -556,6 +666,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/create-product.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-product.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -569,6 +684,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   title: 'jsx',
                   code: './examples/edit-product.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-product.js',
+                  language: 'js',
                 },
               ],
             },
@@ -589,6 +709,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/create-variant.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-variant.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -603,6 +728,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/edit-variant.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/edit-variant.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -613,7 +743,7 @@ Settings are the configuration options for the store. Use this to invoke and edi
         examples: [
           {
             description:
-              'Launch the store details editor to update the store name, email, or phone number. This example invokes the edit intent, manages loading state, and displays feedback on completion.',
+              'Launch store details in Settings to update the store name, email, or phone number.',
             codeblock: {
               title: 'Edit store details',
               tabs: [
@@ -622,12 +752,17 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/edit-store-details.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/edit-store-details.js',
+                  language: 'js',
+                },
               ],
             },
           },
           {
             description:
-              'Open the store defaults editor to update the store currency, timezone, or country. This example retrieves the store defaults GID from extension context, invokes the edit intent, and handles the completion response.',
+              'Launch store defaults in Settings to update the store currency, timezone, or country.',
             codeblock: {
               title: 'Edit store defaults',
               tabs: [
@@ -636,12 +771,16 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/edit-store-defaults.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/edit-store-defaults.js',
+                  language: 'js',
+                },
               ],
             },
           },
           {
-            description:
-              'Launch the order id format editor to update the order id format. This example invokes the edit intent, manages loading state, and displays feedback on completion.',
+            description: 'Launch order ID in Settings to update the format.',
             codeblock: {
               title: 'Edit Order ID Format',
               tabs: [
@@ -650,12 +789,17 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   code: './examples/edit-order-id-format.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/edit-order-id-format.js',
+                  language: 'js',
+                },
               ],
             },
           },
           {
             description:
-              'Open the order processing editor to update the order processing settings. This example retrieves the order processing GID from extension context, invokes the edit intent, and handles the completion response.',
+              'Launch order processing in Settings to update the store order processing preferences.',
             codeblock: {
               title: 'Edit order processing',
               tabs: [
@@ -663,6 +807,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
                   title: 'jsx',
                   code: './examples/edit-order-processing.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-order-processing.js',
+                  language: 'js',
                 },
               ],
             },
