@@ -1,4 +1,0 @@
-<s-checkbox
-  label="Send order notifications"
-  details="You'll receive emails when orders are placed, fulfilled, or cancelled"
- />

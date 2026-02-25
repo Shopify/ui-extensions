@@ -1,7 +1,0 @@
-<s-stack direction="inline" gap="base">
-  <s-avatar initials="AB" alt="Apparel boutique" size="base" />
-  <s-avatar initials="CD" alt="Coffee direct" size="base" />
-  <s-avatar initials="EF" alt="Electronics franchise" size="base" />
-  <s-avatar initials="AB" alt="Art books store" size="base" />
-  {/* Note: Both AB avatars will have the same color */}
-</s-stack>
