@@ -64,7 +64,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Embed links within paragraph text so merchants can navigate to related content inline. This example shows two links inside a paragraph that inherit the surrounding text tone.',
+              'Embed links within a [Paragraph](/docs/api/app-home/polaris-web-components/typography-and-content/paragraph) so merchants can navigate to related content inline. This example shows two links inside a paragraph that inherit the surrounding text tone.',
             codeblock: {
               title: 'Embed links in paragraph text',
               tabs: [
@@ -148,7 +148,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Configure links to inherit the tone of their parent paragraph to match the surrounding context. This example shows links inside paragraphs with six different tones.',
+              'Configure links that inherit the tone of their parent paragraph and match the surrounding context. This example shows links inside paragraphs with six different tones.',
             codeblock: {
               title: 'Match link tone to surrounding context',
               tabs: [

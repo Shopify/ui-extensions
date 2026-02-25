@@ -87,7 +87,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Embed a clickable component within a content section to provide an interactive action alongside text. This example shows a styled clickable button inside a box with a heading and description.',
+              'Add a clickable button alongside descriptive content in a section. This example shows a styled clickable button inside a box with a heading and description.',
             codeblock: {
               title: 'Add a clickable action to a section',
               tabs: [

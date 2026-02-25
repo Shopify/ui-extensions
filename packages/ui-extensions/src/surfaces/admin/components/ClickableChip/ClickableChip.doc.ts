@@ -60,7 +60,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Use the `color` property to visually distinguish chips by importance or category. This example shows three chips with base, subdued, and strong color variants.',
+              'Use the `color` property to visually distinguish chips by importance or category. This example shows three chips with `base`, `subdued`, and `strong` color variants.',
             codeblock: {
               title: 'Apply color variants to chips',
               tabs: [
@@ -74,7 +74,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Add an icon and a remove button so merchants can see status at a glance and dismiss the chip. This example shows a removable chip with a check circle icon in the graphic slot.',
+              'Add an icon and a remove button so merchants can see the status and dismiss the chip. This example shows a removable chip with a check circle icon in the graphic slot.',
             codeblock: {
               title: 'Add an icon and a remove button to a chip',
               tabs: [

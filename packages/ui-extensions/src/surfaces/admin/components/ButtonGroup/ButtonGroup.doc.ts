@@ -35,7 +35,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'buttongroup-default.png',
     description:
-      'Group related buttons together with a primary action and secondary options. This example shows a button group with a save button and a cancel button using the slot layout.',
+      'Group related buttons together with a primary action and secondary options. This example shows a button group with a save button and a cancel button.',
     codeblock: {
       title: 'Group a primary and secondary action',
       tabs: [
@@ -69,7 +69,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Add icons to grouped buttons to help merchants quickly identify each action. This example shows duplicate, archive, and delete buttons with icons.',
+              'Add icons to grouped buttons to help merchants identify each action. This example shows duplicate, archive, and delete buttons with icons.',
             codeblock: {
               title: 'Add icons to grouped buttons',
               tabs: [

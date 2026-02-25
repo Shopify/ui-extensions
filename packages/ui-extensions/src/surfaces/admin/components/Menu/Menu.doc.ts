@@ -63,7 +63,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Organize menu items into labeled groups so merchants can quickly find related actions. This example shows two sections with headings separating product actions from export options.',
+              'Organize menu items into labeled groups so merchants can find related actions. This example shows two sections with headings separating product actions from export options.',
             codeblock: {
               title: 'Organize items into sections',
               tabs: [
