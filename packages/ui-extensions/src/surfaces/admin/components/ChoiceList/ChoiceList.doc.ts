@@ -49,74 +49,84 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'ChoiceSlots',
     },
   ],
+  defaultExample: {
+    image: 'choicelist-default.png',
+    description:
+      'Present a group of options for merchants to choose from using radio buttons. This example shows a single-select choice list component with a label, help text, and an `onChange` handler.',
+    codeblock: {
+      title: 'Add a single-select choice list',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+          title: '',
+        },
+      ],
+    },
+  },
   examples: {
     description: 'Component examples',
-    examples: [
+    exampleGroups: [
       {
-        description:
-          'Present a group of options for merchants to choose from using radio buttons. This example shows a single-select choice list component with a label, help text, and an `onChange` handler.',
-        image: 'choicelist-default.png',
-        codeblock: {
-          title: 'Add a single-select choice list',
-          tabs: [
-            {
-              code: './examples/default.html',
-              language: 'html',
+        title: '',
+        examples: [
+          {
+            description:
+              'Set a default selection so merchants see a pre-selected option when the form loads. This example shows a single-select choice list with one option already selected.',
+            codeblock: {
+              title: 'Pre-select a default option',
+              tabs: [
+                {
+                  code: './examples/basic-usage.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Set a default selection so merchants see a pre-selected option when the form loads. This example shows a single-select choice list with one option already selected.',
-        codeblock: {
-          title: 'Pre-select a default option',
-          tabs: [
-            {
-              code: './examples/basic-usage.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Allow merchants to select more than one option using checkboxes instead of radio buttons. This example shows a multi-select choice list with descriptive details on each option.',
+            codeblock: {
+              title: 'Enable multiple selections with details',
+              tabs: [
+                {
+                  code: './examples/multiple-selections.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Allow merchants to select more than one option using checkboxes instead of radio buttons. This example shows a multi-select choice list with descriptive details on each option.',
-        codeblock: {
-          title: 'Enable multiple selections with details',
-          tabs: [
-            {
-              code: './examples/multiple-selections.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Display an error message when a selection is invalid or a required choice has not been made. This example shows a choice list with a static error message.',
+            codeblock: {
+              title: 'Show a validation error',
+              tabs: [
+                {
+                  code: './examples/with-error-state.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Display an error message when a selection is invalid or a required choice has not been made. This example shows a choice list with a static error message.',
-        codeblock: {
-          title: 'Show a validation error',
-          tabs: [
-            {
-              code: './examples/with-error-state.html',
-              language: 'html',
+          },
+          {
+            description:
+              'Disable a choice list to prevent interaction while keeping the current selection visible. This example shows a disabled choice list with a pre-selected option.',
+            codeblock: {
+              title: 'Disable a choice list',
+              tabs: [
+                {
+                  code: './examples/disabled-state.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
             },
-          ],
-        },
-      },
-      {
-        description:
-          'Disable a choice list to prevent interaction while keeping the current selection visible. This example shows a disabled choice list with a pre-selected option.',
-        codeblock: {
-          title: 'Disable a choice list',
-          tabs: [
-            {
-              code: './examples/disabled-state.html',
-              language: 'html',
-            },
-          ],
-        },
+          },
+        ],
       },
     ],
   },
