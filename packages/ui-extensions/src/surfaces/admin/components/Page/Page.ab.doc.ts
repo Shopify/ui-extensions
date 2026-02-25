@@ -29,8 +29,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the page component.',
+      description: 'Configure the following properties on the page component.',
       type: 'Page',
     },
     {

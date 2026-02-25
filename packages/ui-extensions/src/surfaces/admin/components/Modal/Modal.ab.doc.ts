@@ -30,8 +30,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description:
-        'Configure the following properties on the modal component.',
+      description: 'Configure the following properties on the modal component.',
       type: 'Modal',
     },
     {
