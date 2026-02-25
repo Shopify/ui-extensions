@@ -1,6 +1,0 @@
-<s-date-field
-  label="Available appointment dates"
-  name="appointmentDate"
-  allow='["2024-03-20", "2024-03-22", "2024-03-25", "2024-03-27"]'
-  details="Select from available time slots"
- />

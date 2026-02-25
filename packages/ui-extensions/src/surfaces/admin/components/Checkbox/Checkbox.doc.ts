@@ -10,11 +10,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- **Ensure independence:** Each checkbox should work independently from others, allowing merchants to select any combination of options.
-- **Always include labels:** Provide descriptive labels when checkboxes activate or deactivate settings to ensure clarity.
-- **Order logically:** List checkboxes in a logical sequence like alphabetical, numerical, or time-based to help merchants find options easily.
-- **Use indeterminate state appropriately:** Apply the indeterminate state for "select all" functionality when only some items in a group are selected.
-- **Provide help text:** Include descriptive details text to give additional context about checkbox options when needed.`,
+      sectionContent: `- **Ensure independence**: Each checkbox should work independently from others, allowing merchants to select any combination of options.
+- **Always include labels**: Provide descriptive labels when checkboxes activate or deactivate settings to ensure clarity.
+- **Order logically**: List checkboxes in a logical sequence like alphabetical, numerical, or time-based to help merchants find options easily.
+- **Use indeterminate state appropriately**: Apply the indeterminate state for "select all" functionality when only some items in a group are selected.
+- **Provide help text**: Include descriptive details text to give additional context about checkbox options when needed.`,
     },
   ],
   definitions: [
@@ -33,17 +33,14 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'checkbox-default.png',
+    description:
+      'Let users toggle a single option on or off. This example displays a checkbox with a label and helper text providing additional context.',
     codeblock: {
-      title: 'Code',
+      title: 'Select an option',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -52,89 +49,56 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Checkbox in indeterminate state, commonly used for "select all" functionality when some items are selected.',
+              'Indicate partial selection in bulk actions. This example displays a "select all" checkbox in an indeterminate state when some items are checked.',
             codeblock: {
-              title: 'Indeterminate state',
+              title: 'Show an indeterminate state',
               tabs: [
                 {
-                  code: './examples/indeterminate-state.jsx',
-                  language: 'preview-jsx',
+                  code: './examples/indeterminate-state.html',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Checkbox with validation error message for required form fields.',
+              "Communicate when a required selection is missing. This example displays an error message when the terms checkbox isn't checked.",
             codeblock: {
-              title: 'Error state',
+              title: 'Show a validation error',
               tabs: [
                 {
                   code: './examples/error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/error-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Checkbox with descriptive details text to provide additional context about the option.',
+              "Indicate when an option isn't available. This example presents a disabled checkbox with helper text explaining how to enable it.",
             codeblock: {
-              title: 'Help text',
-              tabs: [
-                {
-                  code: './examples/help-text.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/help-text.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              "Checkbox in disabled state with explanatory details about why it's unavailable.",
-            codeblock: {
-              title: 'Disabled state',
+              title: 'Show a disabled checkbox',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Multiple checkboxes for different configuration options with helpful details.',
+              'Organize related options together. This example groups multiple checkboxes in a settings panel with individual helper text.',
             codeblock: {
-              title: 'Settings group',
+              title: 'Group multiple checkboxes',
               tabs: [
                 {
                   code: './examples/settings-group.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/settings-group.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
@@ -142,18 +106,17 @@ const data: AdminReferenceEntityTemplateSchema = {
         ],
       },
       {
-        title: 'Form validation',
+        title: '',
         examples: [
           {
             description:
-              'Interactive example showing required checkbox validation with dynamic error messages.',
+              'Provide immediate feedback on required selections. This example demonstrates validation with an error message when the checkbox is unchecked.',
             codeblock: {
-              title: 'Checkbox validation',
+              title: 'Validate in real time',
               tabs: [
                 {
-                  code: './examples/validation-example.jsx',
-                  language: 'preview-jsx',
-                  layout: 'formWrapper',
+                  code: './examples/validation-example.html',
+                  language: 'preview',
                 },
               ],
             },
