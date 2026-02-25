@@ -1,1 +1,0 @@
-<s-icon type="question-circle" color="subdued" />

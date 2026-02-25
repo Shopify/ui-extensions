@@ -1,5 +1,0 @@
-<s-stack direction="inline" gap="base">
-  <s-avatar initials="TC" alt="Tech customer" size="base" />
-  <s-avatar initials="VIP" alt="VIP customer store" size="base" />
-  <s-avatar initials="SHOP" alt="Shopify partner store" size="base" />
-</s-stack>
