@@ -33,17 +33,16 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
+    image: 'searchfield-default.png',
+    description:
+      'Add a search input so merchants can find items quickly. This example shows a search field with a visually hidden label and placeholder text.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a basic search field',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -52,76 +51,46 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a standard search input field for product discovery, with a clear label, name, and placeholder text to guide user interaction.',
+              'Display an error message when a search query is invalid or encounters a problem. This example shows a search field with a pre-filled query and a static error message.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              "Illustrates how the search field handles and displays an error state when no results are found or when there's a search-related issue.",
-            codeblock: {
-              title: 'With error state',
+              title: 'Show a search error',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates the appearance and behavior of a search field when it is disabled, preventing user interaction.',
+              'Disable a search field to prevent interaction when search is temporarily unavailable. This example shows a disabled search field with placeholder text explaining the state.',
             codeblock: {
-              title: 'Disabled state',
+              title: 'Disable a search field',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Showcases a search field with minimum and maximum character length constraints, providing guidance on input requirements.',
+              'Set minimum and maximum character lengths to control the search query length. This example shows a search field that requires at least 3 characters and allows up to 50.',
             codeblock: {
-              title: 'With character limits',
+              title: 'Set character length limits',
               tabs: [
                 {
                   code: './examples/with-character-limits.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-character-limits.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

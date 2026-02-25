@@ -38,16 +38,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'clickable-default.png',
+    description:
+      "Build custom interactive elements with flexible styling that [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) or [link](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/link) don't support. This example shows two clickable elements with different background and border styles.",
     codeblock: {
-      title: 'Code',
+      title: 'Create a custom interactive element',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -56,112 +55,74 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'A simple clickable button with a base border and padding, demonstrating the default button behavior of the clickable component.',
+              'Set the `href` property to make a clickable element navigate like a link. This example shows a clickable component that opens a URL in a new browser tab.',
             codeblock: {
-              title: 'Basic Button Usage',
-              tabs: [
-                {
-                  code: './examples/basic-button-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-button-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              "Demonstrates the clickable component's ability to function as a link, opening the specified URL in a new browser tab when clicked.",
-            codeblock: {
-              title: 'Link Mode',
+              title: 'Navigate to a URL',
               tabs: [
                 {
                   code: './examples/link-mode.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/link-mode.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              "A disabled submit button that can be used within a form, showing the component's form integration capabilities and disabled state.",
+              'Use a clickable component as a form submit button with a disabled state to prevent premature submission. This example shows a disabled submit-type clickable component with a border and padding.',
             codeblock: {
-              title: 'Form Submit Button',
+              title: 'Create a form submit button',
               tabs: [
                 {
                   code: './examples/form-submit-button.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/form-submit-button.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates how the clickable component can be integrated into a section layout to provide an interactive action button.',
+              'Add a clickable button alongside descriptive content in a section. This example shows a styled clickable button inside a box with a heading and description.',
             codeblock: {
-              title: 'Section with Clickable Action',
+              title: 'Add a clickable action to a section',
               tabs: [
                 {
                   code: './examples/section-with-clickable-action.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/section-with-clickable-action.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              "Demonstrates the use of an accessibility label to provide context for screen readers, enhancing the component's usability for users with assistive technologies.",
+              'Add an accessibility label to provide screen readers with more context than the visible text alone. This example shows a clickable delete button with a descriptive label for assistive technologies.',
             codeblock: {
-              title: 'Accessibility with ARIA Attributes',
+              title: 'Add an accessibility label',
               tabs: [
                 {
                   code: './examples/accessibility-with-aria-attributes.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/accessibility-with-aria-attributes.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Shows a disabled link with an accessibility label, explaining the unavailability of a feature to users of assistive technologies.',
+              'Disable a clickable link while providing an accessibility label that explains why the feature is unavailable. This example shows a disabled navigation element with a descriptive label for screen readers.',
             codeblock: {
-              title: 'Disabled Link with ARIA',
+              title: 'Describe a disabled link with an accessibility label',
               tabs: [
                 {
                   code: './examples/disabled-link-with-aria.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-link-with-aria.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

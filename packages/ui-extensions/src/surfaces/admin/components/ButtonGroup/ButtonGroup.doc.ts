@@ -33,19 +33,16 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'button-default.png',
+    image: 'buttongroup-default.png',
+    description:
+      'Group related buttons together with a primary action and secondary options. This example shows a button group with a save button and a cancel button.',
     codeblock: {
-      title: 'Code',
+      title: 'Group a primary and secondary action',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-          layout: 'inline',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
-          layout: 'inline',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -54,111 +51,60 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Standard button group with cancel and primary action for form workflows.',
+              'Present multiple secondary actions for operating on selected items. This example shows archive, export, and delete buttons grouped together for bulk operations.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Action buttons for selected items with destructive option.',
-            codeblock: {
-              title: 'Bulk action buttons',
+              title: 'Add bulk action buttons',
               tabs: [
                 {
                   code: './examples/bulk-actions-in-data-tables.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/bulk-actions-in-data-tables.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Typical form completion actions with clear visual hierarchy.',
+              'Add icons to grouped buttons to help merchants identify each action. This example shows duplicate, archive, and delete buttons with icons.',
             codeblock: {
-              title: 'Form action buttons',
-              tabs: [
-                {
-                  code: './examples/form-action-buttons.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/form-action-buttons.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description: 'Icon-labeled buttons for common actions.',
-            codeblock: {
-              title: 'Buttons with icons',
+              title: 'Add icons to grouped buttons',
               tabs: [
                 {
                   code: './examples/toolbar-buttons-with-icons.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/toolbar-buttons-with-icons.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Tightly grouped buttons for view switching and filter options.',
+              'Remove the gap between buttons to create a segmented control for toggling between views or options. This example shows day, week, and month buttons joined together with no spacing.',
             codeblock: {
-              title: 'Segmented appearance',
+              title: 'Create a segmented button group',
               tabs: [
                 {
                   code: './examples/segmented-appearance.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/segmented-appearance.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Confirmation dialog style with cancel option and destructive action.',
+              'Pair a cancel button with a critical action for destructive confirmation flows. This example shows a cancel and delete button grouped together for a confirmation dialog.',
             codeblock: {
-              title: 'Destructive actions pattern',
+              title: 'Confirm a destructive action',
               tabs: [
                 {
                   code: './examples/destructive-actions-pattern.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/destructive-actions-pattern.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

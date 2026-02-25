@@ -1,14 +1,17 @@
 <form>
-  <s-switch
-    id="email-notifications"
-    label="Email notifications"
-    name="emailNotifications"
-    value="enabled"
-  ></s-switch>
-  <s-switch
-    id="sms-notifications"
-    label="SMS notifications"
-    name="smsNotifications"
-    value="enabled"
-  ></s-switch>
+  <s-stack gap="base">
+    <s-switch
+      id="email-notifications"
+      label="Email notifications"
+      name="emailNotifications"
+      value="enabled"
+    ></s-switch>
+    <s-switch
+      id="sms-notifications"
+      label="SMS notifications"
+      name="smsNotifications"
+      value="enabled"
+    ></s-switch>
+    <s-button type="submit">Save preferences</s-button>
+  </s-stack>
 </form>

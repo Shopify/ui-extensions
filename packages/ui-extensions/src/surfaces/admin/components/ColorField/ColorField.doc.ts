@@ -37,17 +37,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'color-field-default.png',
+    description: 'Display a labeled color field with a pre-selected hex value.',
     codeblock: {
-      title: 'Code',
+      title: 'Pick a color',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -56,147 +52,95 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
-            description: 'Standard color input field with hex value.',
+            description:
+              "Identify the color field's purpose clearly. This example displays a labeled color field with a name attribute for form submission.",
             codeblock: {
-              title: 'Basic Usage',
+              title: 'Add a label',
               tabs: [
                 {
                   code: './examples/basic-usage-web-component.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage-web-component.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Required color field ensuring essential color values are provided.',
+              'Ensure users provide a color value before submitting. This example presents a required color field that must have a value.',
             codeblock: {
-              title: 'Required',
+              title: 'Mark as required',
               tabs: [
                 {
                   code: './examples/basic-usage-required.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage-required.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Color field supporting alpha channel for transparency control.',
+              'Allow selection of semi-transparent colors. This example displays a color field with alpha enabled, presenting an RGBA value with 50% opacity.',
             codeblock: {
-              title: 'With Alpha Transparency',
+              title: 'Enable alpha transparency',
               tabs: [
                 {
                   code: './examples/with-alpha-transparency.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-alpha-transparency.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Color field with validation error for invalid color format inputs.',
+              'Communicate color format problems clearly. This example demonstrates an error message when an invalid hex code is entered.',
             codeblock: {
-              title: 'With Error State',
+              title: 'Show a validation error',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Color field with contextual details providing additional guidance.',
+              "Guide users on how the color will be used. This example adds helper text beneath the field explaining the color's purpose.",
             codeblock: {
-              title: 'With Help Text',
+              title: 'Add helper text',
               tabs: [
                 {
                   code: './examples/with-help-text.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-help-text.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Color field demonstrating how to use a placeholder to guide user input for color selection.',
+              'Show a color value without allowing changes. This example presents a read-only color field displaying a locked value.',
             codeblock: {
-              title: 'With Placeholder',
-              tabs: [
-                {
-                  code: './examples/with-placeholder.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-placeholder.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Color field in a read-only mode, preventing user modifications to the color value.',
-            codeblock: {
-              title: 'Read Only State',
+              title: 'Show a read-only field',
               tabs: [
                 {
                   code: './examples/read-only-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/read-only-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'A multi-color field form section demonstrating how color field can be used to capture different color settings in a single form.',
+              'Build a complete theme customization interface. This example combines multiple color fields for primary, secondary, and overlay colors with helper text.',
             codeblock: {
-              title: 'Form Integration',
+              title: 'Combine multiple fields in a form',
               tabs: [
                 {
                   code: './examples/form-integration.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/form-integration.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
@@ -204,17 +148,17 @@ const data: AdminReferenceEntityTemplateSchema = {
         ],
       },
       {
-        title: 'Form validation',
+        title: '',
         examples: [
           {
             description:
-              'Interactive example showing real-time hex color validation with error messages.',
+              'Provide immediate feedback on color format validity. This example demonstrates real-time validation that checks hex format as the user types.',
             codeblock: {
-              title: 'Color validation',
+              title: 'Validate in real time',
               tabs: [
                 {
-                  code: './examples/validation-example.jsx',
-                  language: 'preview-jsx',
+                  code: './examples/validation-example.html',
+                  language: 'preview',
                   layout: 'formWrapper',
                 },
               ],

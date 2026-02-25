@@ -43,16 +43,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'link-default.png',
+    description:
+      'Add an inline link to let merchants navigate to another page. This example shows a basic text link with an `href` property.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a basic link',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -61,202 +60,102 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Links automatically inherit the tone from their surrounding paragraph context.',
+              'Embed links within a [Paragraph](/docs/api/app-home/polaris-web-components/typography-and-content/paragraph) so merchants can navigate to related content inline. This example shows two links inside a paragraph that inherit the surrounding text tone.',
             codeblock: {
-              title: 'Basic Links in Paragraph',
+              title: 'Embed links in paragraph text',
               tabs: [
                 {
                   code: './examples/basic-links-in-paragraph.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-links-in-paragraph.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates links within subdued paragraph, showing how links can be used in less prominent paragraph contexts for additional guidance or support.',
+              'Place links inside banners to provide direct actions alongside important notifications. This example shows a link inside an info banner prompting merchants to create a campaign.',
             codeblock: {
-              title: 'Links in Subdued Paragraph',
-              tabs: [
-                {
-                  code: './examples/links-in-subdued-paragraph.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/links-in-subdued-paragraph.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Illustrates how links can be used in critical or urgent text contexts, drawing attention to important actions that require immediate user intervention.',
-            codeblock: {
-              title: 'Critical Context Links',
-              tabs: [
-                {
-                  code: './examples/critical-context-links.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/critical-context-links.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows how links automatically adapt their tone to the surrounding text context, maintaining visual consistency while providing navigation.',
-            codeblock: {
-              title: 'Links with Auto Tone',
-              tabs: [
-                {
-                  code: './examples/links-with-auto-tone.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/links-with-auto-tone.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates how links can be integrated within banner components to highlight important information and provide direct action paths.',
-            codeblock: {
-              title: 'Links in Banner',
+              title: 'Add links inside a banner',
               tabs: [
                 {
                   code: './examples/links-in-banner.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/links-in-banner.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates using links within a box container to provide contextual navigation and additional information in a visually contained area.',
+              'Place links inside a box container to provide navigation within a visually distinct content area. This example shows two links inside a bordered box with background and padding.',
             codeblock: {
-              title: 'Links in Box Container',
+              title: 'Add links inside a box container',
               tabs: [
                 {
                   code: './examples/links-in-box-container.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/links-in-box-container.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Shows how links can be used within warning banners to provide immediate actions related to critical notifications.',
+              'Use the `download` property to trigger a file download when the link is clicked. This example shows a link that downloads a CSV file for customer data export.',
             codeblock: {
-              title: 'Links in Banner Context',
-              tabs: [
-                {
-                  code: './examples/links-in-banner-context.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/links-in-banner-context.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates how to create links that trigger file downloads, useful for exporting data or providing downloadable resources.',
-            codeblock: {
-              title: 'Download Links',
+              title: 'Trigger a file download',
               tabs: [
                 {
                   code: './examples/download-links.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/download-links.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates linking to external resources with different targets, showing how to open links in new tabs and provide navigation to external documentation.',
+              'Open external URLs in a new tab so merchants stay on the current page. This example shows two links with `target="_blank"` pointing to external documentation.',
             codeblock: {
-              title: 'External Links',
+              title: 'Open external links in a new tab',
               tabs: [
                 {
                   code: './examples/external-links.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/external-links.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Shows how to use the `lang` attribute to specify the language of a link, supporting internationalization and proper screen reader pronunciation.',
+              'Set the `lang` property so screen readers pronounce the link text correctly. This example shows a French-language link with the `lang` attribute set.',
             codeblock: {
-              title: 'Links with Language Attribute',
+              title: 'Set the language for a link',
               tabs: [
                 {
                   code: './examples/links-with-language-attribute.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/links-with-language-attribute.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates how links can have different visual tones, including default, neutral, and critical, allowing for varied contextual styling.',
+              'Configure links that inherit the tone of their parent paragraph and match the surrounding context. This example shows links inside paragraphs with six different tones.',
             codeblock: {
-              title: 'Links with Different Tones',
+              title: 'Match link tone to surrounding context',
               tabs: [
                 {
                   code: './examples/links-with-different-tones.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/links-with-different-tones.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

@@ -29,7 +29,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   definitions: [
     {
-      title: 'URLField',
+      title: 'Properties',
       description:
         'Configure the following properties on the URL field component.',
       type: 'URLField',
@@ -42,18 +42,15 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'urlfield-default.png',
+    description:
+      'Capture web addresses from users with URL-specific input. This example pairs a label with placeholder text guiding the expected format.',
     codeblock: {
-      title: 'Code',
+      title: 'Collect a URL',
       tabs: [
         {
-          title: 'HTML',
           code: './examples/default.html',
-          language: 'html',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -62,76 +59,46 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple URL input field with a label and placeholder, showing the minimal configuration needed for collecting a URL.',
+              'Enforce URL requirements before form submission. This example configures required validation with length constraints and custom error messages.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows a URL input field with built-in validation, including required status, minimum and maximum length constraints, and a custom error message for invalid inputs.',
-            codeblock: {
-              title: 'With validation',
+              title: 'Set validation constraints',
               tabs: [
                 {
                   code: './examples/with-validation.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-validation.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates a URL field pre-populated with a default value, set to read-only mode to prevent user modifications.',
+              'Display a URL that users can copy but not edit. This example uses readOnly to prevent changes while keeping the value selectable and included in form submissions.',
             codeblock: {
-              title: 'With default value',
+              title: 'Pre-fill a URL',
               tabs: [
                 {
                   code: './examples/with-default-value.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-default-value.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Shows a URL field in a disabled state, displaying a pre-filled URL that cannot be edited by the user.',
+              'Show a URL in a non-interactive state. This example uses disabled to gray out the field and exclude it from form submission.',
             codeblock: {
-              title: 'Disabled state',
+              title: 'Show a disabled field',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
