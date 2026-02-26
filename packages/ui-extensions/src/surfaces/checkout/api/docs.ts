@@ -44,7 +44,7 @@ export interface Docs_Standard_LocalizedFieldsApi
   extends Pick<StandardApi, 'localizedFields'> {}
 
 export interface Docs_Standard_MetafieldsApi
-  extends Pick<StandardApi, 'appMetafields' | 'metafields'> {}
+  extends Pick<StandardApi, 'appMetafields'> {}
 export interface Docs_Checkout_MetafieldsApi
   extends Pick<CheckoutApi, 'applyMetafieldChange'> {}
 
