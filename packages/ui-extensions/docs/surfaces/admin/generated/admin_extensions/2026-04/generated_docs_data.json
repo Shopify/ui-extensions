@@ -120003,22 +120003,18 @@
     ],
     "defaultExample": {
       "image": "box-default.png",
+      "description": "Create a container with padding and optional visual styling. This example shows a plain box and a styled box with background, border, and rounded corners.",
       "codeblock": {
-        "title": "Code",
+        "title": "Add a content container",
         "tabs": [
           {
-            "title": "jsx",
-            "code": "&lt;&gt;\n  &lt;s-box padding=\"base\"&gt;Available for iPad, iPhone, and Android.&lt;/s-box&gt;\n\n  &lt;s-box padding=\"base\" background=\"subdued\" border=\"base\" borderRadius=\"base\"&gt;\n    Available for iPad, iPhone, and Android.\n  &lt;/s-box&gt;\n&lt;/&gt;",
-            "language": "jsx",
+            "title": "html",
+            "code": "&lt;s-box padding=\"base\"&gt;Available for iPad, iPhone, and Android.&lt;/s-box&gt;\n\n&lt;s-box padding=\"base\" background=\"subdued\" border=\"base\" borderRadius=\"base\"&gt;\n  Available for iPad, iPhone, and Android.\n&lt;/s-box&gt;\n",
+            "language": "html",
             "editable": false
           },
           {
-            "code": "&lt;s-box padding=\"base\"&gt;Available for iPad, iPhone, and Android.&lt;/s-box&gt;\n\n&lt;s-box padding=\"base\" background=\"subdued\" border=\"base\" borderRadius=\"base\"&gt;\n  Available for iPad, iPhone, and Android.\n&lt;/s-box&gt;\n",
-            "language": "html",
-            "title": "html"
-          },
-          {
-            "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<>\n  <s-box padding=\"base\">Available for iPad, iPhone, and Android.</s-box>\n\n  <s-box padding=\"base\" background=\"subdued\" border=\"base\" borderRadius=\"base\">\n    Available for iPad, iPhone, and Android.\n  </s-box>\n</>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+            "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><div id=\"wrapper-element\"><s-box padding=\"base\">Available for iPad, iPhone, and Android.</s-box>\n\n<s-box padding=\"base\" background=\"subdued\" border=\"base\" borderRadius=\"base\">\n  Available for iPad, iPhone, and Android.\n</s-box>\n</div></body></html>",
             "language": "preview"
           }
         ]
@@ -120028,95 +120024,71 @@
       "description": "Component examples",
       "exampleGroups": [
         {
-          "title": "Basic usage",
+          "title": "",
           "examples": [
             {
-              "description": "Demonstrates creating a simple container with padding, base background, border, and rounded corners to group and highlight product information.",
+              "description": "Use responsive padding values with container queries to adapt spacing based on available width. This example shows a shipping notice that adjusts its padding depending on the container size.",
               "codeblock": {
-                "title": "Basic container",
+                "title": "Adapt spacing with responsive padding",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-box\n  padding=\"base\"\n  background=\"base\"\n  borderWidth=\"base\"\n  borderColor=\"base\"\n  borderRadius=\"base\"\n&gt;\n  &lt;s-paragraph&gt;Product information&lt;/s-paragraph&gt;\n&lt;/s-box&gt;\n",
-                    "language": "jsx"
-                  },
-                  {
-                    "title": "html",
-                    "code": "&lt;s-box\n  padding=\"base\"\n  background=\"base\"\n  borderWidth=\"base\"\n  borderColor=\"base\"\n  borderRadius=\"base\"\n&gt;\n  &lt;s-paragraph&gt;Product information&lt;/s-paragraph&gt;\n&lt;/s-box&gt;\n",
-                    "language": "html",
-                    "editable": false
-                  },
-                  {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-box\n  padding=\"base\"\n  background=\"base\"\n  borderWidth=\"base\"\n  borderColor=\"base\"\n  borderRadius=\"base\"\n>\n  <s-paragraph>Product information</s-paragraph>\n</s-box>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
-                    "language": "preview"
-                  }
-                ]
-              }
-            },
-            {
-              "description": "Illustrates using a box with responsive padding to create an adaptable container for shipping information that can adjust to different screen or container sizes.",
-              "codeblock": {
-                "title": "Responsive shipping notice",
-                "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-query-container&gt;\n  &lt;s-box\n    padding=\"@container (inline-size &gt; 400px) base, large-200\"\n    background=\"base\"\n    borderWidth=\"base\"\n    borderColor=\"base\"\n  &gt;\n    &lt;s-text&gt;Your order will be processed within 2-3 business days&lt;/s-text&gt;\n  &lt;/s-box&gt;\n&lt;/s-query-container&gt;",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-query-container&gt;\n  &lt;s-box\n    padding=\"@container (inline-size &gt; 400px) base, large-200\"\n    background=\"base\"\n    borderWidth=\"base\"\n    borderColor=\"base\"\n  &gt;\n    &lt;s-paragraph&gt;Your order will be processed within 2-3 business days&lt;/s-paragraph&gt;\n  &lt;/s-box&gt;\n&lt;/s-query-container&gt;",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\", inlineSize=\"100%\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-query-container>\n  <s-box\n    padding=\"@container (inline-size > 400px) base, large-200\"\n    background=\"base\"\n    borderWidth=\"base\"\n    borderColor=\"base\"\n  >\n    <s-text>Your order will be processed within 2-3 business days</s-text>\n  </s-box>\n</s-query-container>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\", inlineSize=\"100%\" id=\"wrapper-element\"><s-query-container>\n  <s-box\n    padding=\"@container (inline-size > 400px) base, large-200\"\n    background=\"base\"\n    borderWidth=\"base\"\n    borderColor=\"base\"\n  >\n    <s-paragraph>Your order will be processed within 2-3 business days</s-paragraph>\n  </s-box>\n</s-query-container></s-box></body></html>",
                     "language": "preview"
                   }
                 ]
               }
             },
             {
-              "description": "Shows how to use boxes with ARIA roles and visibility controls to create semantic, screen-reader-friendly status and informational messages.",
+              "description": "Set the `accessibilityRole` property to `status` to create a live region. When your code updates the text inside this box , screen readers automatically announce the new content. Use this for any content that updates dynamically.",
               "codeblock": {
-                "title": "Accessible status messages",
+                "title": "Announce dynamic updates with a live region",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-stack gap=\"base\"&gt;\n  &lt;s-box\n    accessibilityRole=\"status\"\n    padding=\"base\"\n    background=\"strong\"\n    borderRadius=\"base\"\n  &gt;\n    &lt;s-paragraph&gt;Payment failed&lt;/s-paragraph&gt;\n  &lt;/s-box&gt;\n\n  &lt;s-box accessibilityVisibility=\"exclusive\"&gt;\n    &lt;s-paragraph&gt;Price includes tax and shipping&lt;/s-paragraph&gt;\n  &lt;/s-box&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
-                    "code": "&lt;s-stack gap=\"base\"&gt;\n  &lt;s-box\n    accessibilityRole=\"status\"\n    padding=\"base\"\n    background=\"strong\"\n    borderRadius=\"base\"\n  &gt;\n    &lt;s-paragraph&gt;Payment failed&lt;/s-paragraph&gt;\n  &lt;/s-box&gt;\n\n  &lt;s-box accessibilityVisibility=\"exclusive\"&gt;\n    &lt;s-paragraph&gt;Price includes tax and shipping&lt;/s-paragraph&gt;\n  &lt;/s-box&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "code": "&lt;s-box\n  accessibilityRole=\"status\"\n  padding=\"base\"\n  background=\"strong\"\n  borderRadius=\"base\"\n&gt;\n  &lt;s-paragraph&gt;Syncing inventory: 3 of 10 products updated&lt;/s-paragraph&gt;\n&lt;/s-box&gt;\n",
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-stack gap=\"base\">\n  <s-box\n    accessibilityRole=\"status\"\n    padding=\"base\"\n    background=\"strong\"\n    borderRadius=\"base\"\n  >\n    <s-paragraph>Payment failed</s-paragraph>\n  </s-box>\n\n  <s-box accessibilityVisibility=\"exclusive\">\n    <s-paragraph>Price includes tax and shipping</s-paragraph>\n  </s-box>\n</s-stack>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-box\n  accessibilityRole=\"status\"\n  padding=\"base\"\n  background=\"strong\"\n  borderRadius=\"base\"\n>\n  <s-paragraph>Syncing inventory: 3 of 10 products updated</s-paragraph>\n</s-box>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
               }
             },
             {
-              "description": "Demonstrates creating nested, hierarchical layouts using multiple boxes, showing how boxes can be combined to organize related content sections with different styling.",
+              "description": "Set the `accessibilityVisibility` property to `exclusive` to hide content visually while keeping it available to screen readers. This example shows a box with pricing context that only assistive technology users can access.",
               "codeblock": {
-                "title": "Nested hierarchical containers",
+                "title": "Add screen-reader-only content",
                 "tabs": [
                   {
-                    "title": "jsx",
-                    "code": "&lt;s-stack gap=\"base\"&gt;\n  {/* Inventory status section */}\n  &lt;s-box\n    padding=\"base\"\n    background=\"base\"\n    borderRadius=\"base\"\n    borderWidth=\"base\"\n    borderColor=\"base\"\n  &gt;\n    &lt;s-stack gap=\"base\"&gt;\n      &lt;s-box padding=\"small-100\" background=\"subdued\" borderRadius=\"small\"&gt;\n        &lt;s-paragraph&gt;In stock: 45 units&lt;/s-paragraph&gt;\n      &lt;/s-box&gt;\n      &lt;s-box padding=\"small-100\" background=\"subdued\" borderRadius=\"small\"&gt;\n        &lt;s-paragraph&gt;Low stock alert: 5 units&lt;/s-paragraph&gt;\n      &lt;/s-box&gt;\n    &lt;/s-stack&gt;\n  &lt;/s-box&gt;\n\n  {/* Product information section */}\n  &lt;s-box\n    padding=\"base\"\n    background=\"base\"\n    borderRadius=\"base\"\n    borderWidth=\"base\"\n    borderColor=\"base\"\n  &gt;\n    &lt;s-stack gap=\"base\"&gt;\n      &lt;s-heading&gt;Product sales&lt;/s-heading&gt;\n      &lt;s-paragraph color=\"subdued\"&gt;No recent sales of this product&lt;/s-paragraph&gt;\n      &lt;s-link&gt;View details&lt;/s-link&gt;\n    &lt;/s-stack&gt;\n  &lt;/s-box&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "jsx"
+                    "title": "html",
+                    "code": "&lt;s-box accessibilityVisibility=\"exclusive\"&gt;\n  &lt;s-paragraph&gt;Price includes tax and shipping&lt;/s-paragraph&gt;\n&lt;/s-box&gt;\n",
+                    "language": "html"
                   },
+                  {
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-box accessibilityVisibility=\"exclusive\">\n  <s-paragraph>Price includes tax and shipping</s-paragraph>\n</s-box>\n</s-box></body></html>",
+                    "language": "preview"
+                  }
+                ]
+              }
+            },
+            {
+              "description": "Nest boxes to create hierarchical layouts with distinct visual sections. This example shows an inventory status section and a product sales section organized as cards within a vertical stack.",
+              "codeblock": {
+                "title": "Build nested card layouts",
+                "tabs": [
                   {
                     "title": "html",
                     "code": "&lt;s-stack gap=\"base\"&gt;\n  &lt;!-- Inventory status section --&gt;\n  &lt;s-box\n    padding=\"base\"\n    background=\"base\"\n    borderRadius=\"base\"\n    borderWidth=\"base\"\n    borderColor=\"base\"\n  &gt;\n    &lt;s-stack gap=\"base\"&gt;\n      &lt;s-box padding=\"small-100\" background=\"subdued\" borderRadius=\"small\"&gt;\n        &lt;s-paragraph&gt;In stock: 45 units&lt;/s-paragraph&gt;\n      &lt;/s-box&gt;\n      &lt;s-box padding=\"small-100\" background=\"subdued\" borderRadius=\"small\"&gt;\n        &lt;s-paragraph&gt;Low stock alert: 5 units&lt;/s-paragraph&gt;\n      &lt;/s-box&gt;\n    &lt;/s-stack&gt;\n  &lt;/s-box&gt;\n\n  &lt;!-- Product information section --&gt;\n  &lt;s-box\n    padding=\"base\"\n    background=\"base\"\n    borderRadius=\"base\"\n    borderWidth=\"base\"\n    borderColor=\"base\"\n  &gt;\n    &lt;s-stack gap=\"base\"&gt;\n      &lt;s-heading&gt;Product sales&lt;/s-heading&gt;\n      &lt;s-paragraph color=\"subdued\"&gt;No recent sales of this product&lt;/s-paragraph&gt;\n      &lt;s-link&gt;View details&lt;/s-link&gt;\n    &lt;/s-stack&gt;\n  &lt;/s-box&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\", inlineSize=\"100%\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-stack gap=\"base\">\n  {/* Inventory status section */}\n  <s-box\n    padding=\"base\"\n    background=\"base\"\n    borderRadius=\"base\"\n    borderWidth=\"base\"\n    borderColor=\"base\"\n  >\n    <s-stack gap=\"base\">\n      <s-box padding=\"small-100\" background=\"subdued\" borderRadius=\"small\">\n        <s-paragraph>In stock: 45 units</s-paragraph>\n      </s-box>\n      <s-box padding=\"small-100\" background=\"subdued\" borderRadius=\"small\">\n        <s-paragraph>Low stock alert: 5 units</s-paragraph>\n      </s-box>\n    </s-stack>\n  </s-box>\n\n  {/* Product information section */}\n  <s-box\n    padding=\"base\"\n    background=\"base\"\n    borderRadius=\"base\"\n    borderWidth=\"base\"\n    borderColor=\"base\"\n  >\n    <s-stack gap=\"base\">\n      <s-heading>Product sales</s-heading>\n      <s-paragraph color=\"subdued\">No recent sales of this product</s-paragraph>\n      <s-link>View details</s-link>\n    </s-stack>\n  </s-box>\n</s-stack>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\", inlineSize=\"100%\" id=\"wrapper-element\"><s-stack gap=\"base\">\n  <!-- Inventory status section -->\n  <s-box\n    padding=\"base\"\n    background=\"base\"\n    borderRadius=\"base\"\n    borderWidth=\"base\"\n    borderColor=\"base\"\n  >\n    <s-stack gap=\"base\">\n      <s-box padding=\"small-100\" background=\"subdued\" borderRadius=\"small\">\n        <s-paragraph>In stock: 45 units</s-paragraph>\n      </s-box>\n      <s-box padding=\"small-100\" background=\"subdued\" borderRadius=\"small\">\n        <s-paragraph>Low stock alert: 5 units</s-paragraph>\n      </s-box>\n    </s-stack>\n  </s-box>\n\n  <!-- Product information section -->\n  <s-box\n    padding=\"base\"\n    background=\"base\"\n    borderRadius=\"base\"\n    borderWidth=\"base\"\n    borderColor=\"base\"\n  >\n    <s-stack gap=\"base\">\n      <s-heading>Product sales</s-heading>\n      <s-paragraph color=\"subdued\">No recent sales of this product</s-paragraph>\n      <s-link>View details</s-link>\n    </s-stack>\n  </s-box>\n</s-stack>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
@@ -125776,23 +125748,18 @@
     ],
     "defaultExample": {
       "image": "divider-default.png",
+      "description": "Create a horizontal divider to visually separate content sections. This example shows the default divider with base color and inline direction.",
       "codeblock": {
-        "title": "Code",
+        "title": "Add a horizontal divider",
         "tabs": [
           {
-            "title": "jsx",
-            "code": "&lt;s-divider /&gt;",
-            "language": "jsx",
+            "title": "html",
+            "code": "&lt;s-divider&gt;&lt;/s-divider&gt;\n",
+            "language": "html",
             "editable": false
           },
           {
-            "code": "&lt;s-divider&gt;&lt;/s-divider&gt;\n",
-            "language": "html",
-            "layout": "wrapped",
-            "title": "html"
-          },
-          {
-            "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><div style=\"width: 100%;\" id=\"wrapper-element\"></div><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-divider />) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+            "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><div style=\"width: 100%;\" id=\"wrapper-element\"><s-divider></s-divider>\n</div></body></html>",
             "language": "preview"
           }
         ]
@@ -125802,164 +125769,54 @@
       "description": "Component examples",
       "exampleGroups": [
         {
-          "title": "Basic usage",
+          "title": "",
           "examples": [
             {
-              "description": "Demonstrates the default divider with standard base color and inline direction.",
+              "description": "Use the `color` property to display a more prominent divider that marks a major section break. This example shows a strong-colored divider for increased visual emphasis.",
               "codeblock": {
-                "title": "Basic usage",
+                "title": "Increase visual emphasis with a strong divider",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-divider /&gt;\n",
-                    "language": "jsx"
-                  },
-                  {
-                    "title": "html",
-                    "code": "&lt;s-divider&gt;&lt;/s-divider&gt;\n",
-                    "language": "html",
-                    "editable": false
-                  },
-                  {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><div style=\"width: 100%;\" id=\"wrapper-element\"></div><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-divider />\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
-                    "language": "preview"
-                  }
-                ]
-              }
-            },
-            {
-              "description": "Shows a divider with a strong color variant for increased visual emphasis.",
-              "codeblock": {
-                "title": "Custom color",
-                "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-divider color=\"strong\" /&gt;\n",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-divider color=\"strong\"&gt;&lt;/s-divider&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><div style=\"width: 100%;\" id=\"wrapper-element\"></div><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-divider color=\"strong\" />\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><div style=\"width: 100%;\" id=\"wrapper-element\"><s-divider color=\"strong\"></s-divider>\n</div></body></html>",
                     "language": "preview"
                   }
                 ]
               }
             },
             {
-              "description": "Illustrates using a block-direction divider within an inline stack to create vertical separation between items.",
+              "description": "Use the `direction` property to create a vertical divider between horizontally arranged items. This example shows a vertical divider separating text items in an inline stack.",
               "codeblock": {
-                "title": "Custom direction",
+                "title": "Create a vertical divider between inline items",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-stack direction=\"inline\" gap=\"base\"&gt;\n  &lt;s-text&gt;Item 1&lt;/s-text&gt;\n  &lt;s-divider direction=\"block\" /&gt;\n  &lt;s-text&gt;Item 2&lt;/s-text&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-stack direction=\"inline\" gap=\"base\"&gt;\n  &lt;s-text&gt;Item 1&lt;/s-text&gt;\n  &lt;s-divider direction=\"block\"&gt;&lt;/s-divider&gt;\n  &lt;s-text&gt;Item 2&lt;/s-text&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-stack direction=\"inline\" gap=\"base\">\n  <s-text>Item 1</s-text>\n  <s-divider direction=\"block\" />\n  <s-text>Item 2</s-text>\n</s-stack>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-stack direction=\"inline\" gap=\"base\">\n  <s-text>Item 1</s-text>\n  <s-divider direction=\"block\"></s-divider>\n  <s-text>Item 2</s-text>\n</s-stack>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
               }
             },
             {
-              "description": "Uses a divider to visually group and separate different sections of a form, improving readability and user comprehension.",
+              "description": "Place a divider between groups of form fields to visually distinguish related sections. This example shows a divider separating store details from contact information fields.",
               "codeblock": {
-                "title": "Separating form sections",
+                "title": "Separate form sections with a divider",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-stack gap=\"base\"&gt;\n  &lt;s-text-field label=\"Store name\" /&gt;\n  &lt;s-text-field label=\"Description\" /&gt;\n  &lt;s-divider /&gt;\n  &lt;s-text-field label=\"Email address\" /&gt;\n  &lt;s-text-field label=\"Phone number\" /&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-stack gap=\"base\"&gt;\n  &lt;s-text-field label=\"Store name\"&gt;&lt;/s-text-field&gt;\n  &lt;s-text-field label=\"Description\"&gt;&lt;/s-text-field&gt;\n  &lt;s-divider&gt;&lt;/s-divider&gt;\n  &lt;s-text-field label=\"Email address\"&gt;&lt;/s-text-field&gt;\n  &lt;s-text-field label=\"Phone number\"&gt;&lt;/s-text-field&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-stack gap=\"base\">\n  <s-text-field label=\"Store name\" />\n  <s-text-field label=\"Description\" />\n  <s-divider />\n  <s-text-field label=\"Email address\" />\n  <s-text-field label=\"Phone number\" />\n</s-stack>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
-                    "language": "preview"
-                  }
-                ]
-              }
-            },
-            {
-              "description": "Demonstrates using a divider to logically separate basic and advanced settings in a configuration panel.",
-              "codeblock": {
-                "title": "Organizing settings panels",
-                "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-box padding=\"base\"&gt;\n  &lt;s-stack gap=\"base\"&gt;\n    &lt;s-switch label=\"Email notifications\" /&gt;\n    &lt;s-switch label=\"Auto-save\" /&gt;\n    &lt;s-divider /&gt;\n    &lt;s-switch label=\"Advanced settings\" /&gt;\n    &lt;s-switch label=\"Developer tools\" /&gt;\n  &lt;/s-stack&gt;\n&lt;/s-box&gt;\n",
-                    "language": "jsx"
-                  },
-                  {
-                    "title": "html",
-                    "code": "&lt;s-box padding=\"base\"&gt;\n  &lt;s-stack gap=\"base\"&gt;\n    &lt;s-switch label=\"Email notifications\"&gt;&lt;/s-switch&gt;\n    &lt;s-switch label=\"Auto-save\"&gt;&lt;/s-switch&gt;\n    &lt;s-divider&gt;&lt;/s-divider&gt;\n    &lt;s-switch label=\"Advanced settings\"&gt;&lt;/s-switch&gt;\n    &lt;s-switch label=\"Developer tools\"&gt;&lt;/s-switch&gt;\n  &lt;/s-stack&gt;\n&lt;/s-box&gt;\n",
-                    "language": "html",
-                    "editable": false
-                  },
-                  {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-box padding=\"base\">\n  <s-stack gap=\"base\">\n    <s-switch label=\"Email notifications\" />\n    <s-switch label=\"Auto-save\" />\n    <s-divider />\n    <s-switch label=\"Advanced settings\" />\n    <s-switch label=\"Developer tools\" />\n  </s-stack>\n</s-box>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
-                    "language": "preview"
-                  }
-                ]
-              }
-            },
-            {
-              "description": "Shows how dividers can be used to create clean, segmented sections within a section, improving information hierarchy.",
-              "codeblock": {
-                "title": "Visual breaks in section layouts",
-                "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-box padding=\"large-400\" background=\"base\"&gt;\n  &lt;s-stack gap=\"base\"&gt;\n    &lt;s-heading&gt;Order summary&lt;/s-heading&gt;\n    &lt;s-text&gt;3 items&lt;/s-text&gt;\n    &lt;s-divider /&gt;\n    &lt;s-heading&gt;Shipping address&lt;/s-heading&gt;\n    &lt;s-text&gt;123 Main Street, Toronto ON&lt;/s-text&gt;\n    &lt;s-divider /&gt;\n    &lt;s-heading&gt;Payment method&lt;/s-heading&gt;\n    &lt;s-text&gt;•••• 4242&lt;/s-text&gt;\n  &lt;/s-stack&gt;\n&lt;/s-box&gt;\n",
-                    "language": "jsx"
-                  },
-                  {
-                    "title": "html",
-                    "code": "&lt;s-box padding=\"large-400\" background=\"base\"&gt;\n  &lt;s-stack gap=\"base\"&gt;\n    &lt;s-heading&gt;Order summary&lt;/s-heading&gt;\n    &lt;s-text&gt;3 items&lt;/s-text&gt;\n    &lt;s-divider&gt;&lt;/s-divider&gt;\n    &lt;s-heading&gt;Shipping address&lt;/s-heading&gt;\n    &lt;s-text&gt;123 Main Street, Toronto ON&lt;/s-text&gt;\n    &lt;s-divider&gt;&lt;/s-divider&gt;\n    &lt;s-heading&gt;Payment method&lt;/s-heading&gt;\n    &lt;s-text&gt;•••• 4242&lt;/s-text&gt;\n  &lt;/s-stack&gt;\n&lt;/s-box&gt;\n",
-                    "language": "html",
-                    "editable": false
-                  },
-                  {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-box padding=\"large-400\" background=\"base\">\n  <s-stack gap=\"base\">\n    <s-heading>Order summary</s-heading>\n    <s-text>3 items</s-text>\n    <s-divider />\n    <s-heading>Shipping address</s-heading>\n    <s-text>123 Main Street, Toronto ON</s-text>\n    <s-divider />\n    <s-heading>Payment method</s-heading>\n    <s-text>•••• 4242</s-text>\n  </s-stack>\n</s-box>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
-                    "language": "preview"
-                  }
-                ]
-              }
-            },
-            {
-              "description": "Illustrates using dividers to create clear, visually distinct sections for different metrics or content blocks.",
-              "codeblock": {
-                "title": "Separating content sections",
-                "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-stack gap=\"base\"&gt;\n  &lt;s-box padding=\"base\"&gt;\n    &lt;s-text&gt;150 orders&lt;/s-text&gt;\n  &lt;/s-box&gt;\n  &lt;s-divider /&gt;\n  &lt;s-box padding=\"base\"&gt;\n    &lt;s-text&gt;$2,400 revenue&lt;/s-text&gt;\n  &lt;/s-box&gt;\n  &lt;s-divider /&gt;\n  &lt;s-box padding=\"base\"&gt;\n    &lt;s-text&gt;89 customers&lt;/s-text&gt;\n  &lt;/s-box&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "jsx"
-                  },
-                  {
-                    "title": "html",
-                    "code": "&lt;s-stack gap=\"base\"&gt;\n  &lt;s-box padding=\"base\"&gt;\n    &lt;s-text&gt;150 orders&lt;/s-text&gt;\n  &lt;/s-box&gt;\n  &lt;s-divider&gt;&lt;/s-divider&gt;\n  &lt;s-box padding=\"base\"&gt;\n    &lt;s-text&gt;$2,400 revenue&lt;/s-text&gt;\n  &lt;/s-box&gt;\n  &lt;s-divider&gt;&lt;/s-divider&gt;\n  &lt;s-box padding=\"base\"&gt;\n    &lt;s-text&gt;89 customers&lt;/s-text&gt;\n  &lt;/s-box&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "html",
-                    "editable": false
-                  },
-                  {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-stack gap=\"base\">\n  <s-box padding=\"base\">\n    <s-text>150 orders</s-text>\n  </s-box>\n  <s-divider />\n  <s-box padding=\"base\">\n    <s-text>\\$2,400 revenue</s-text>\n  </s-box>\n  <s-divider />\n  <s-box padding=\"base\">\n    <s-text>89 customers</s-text>\n  </s-box>\n</s-stack>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-stack gap=\"base\">\n  <s-text-field label=\"Store name\"></s-text-field>\n  <s-text-field label=\"Description\"></s-text-field>\n  <s-divider></s-divider>\n  <s-text-field label=\"Email address\"></s-text-field>\n  <s-text-field label=\"Phone number\"></s-text-field>\n</s-stack>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
@@ -128746,22 +128603,18 @@
     ],
     "defaultExample": {
       "image": "grid-default.png",
+      "description": "Create a grid layout with columns and grid items that span them. This example shows a two-column grid with a full-width header row and two equal columns below.",
       "codeblock": {
-        "title": "Code",
+        "title": "Add a grid layout with column spans",
         "tabs": [
           {
-            "title": "jsx",
-            "code": "&lt;s-grid\n  gridTemplateColumns=\"repeat(2, 1fr)\"\n  gap=\"small\"\n  justifyContent=\"center\"\n&gt;\n  &lt;s-grid-item gridColumn=\"span 2\" border=\"base\" borderStyle=\"dashed\"&gt;\n    Summary of sales\n  &lt;/s-grid-item&gt;\n  &lt;s-grid-item gridColumn=\"span 1\" border=\"base\" borderStyle=\"dashed\"&gt;\n    Orders\n  &lt;/s-grid-item&gt;\n  &lt;s-grid-item gridColumn=\"auto\" border=\"base\" borderStyle=\"dashed\"&gt;\n    Customers\n  &lt;/s-grid-item&gt;\n&lt;/s-grid&gt;",
-            "language": "jsx",
+            "title": "html",
+            "code": "&lt;s-grid\n  gridTemplateColumns=\"repeat(2, 1fr)\"\n  gap=\"small\"\n  justifyContent=\"center\"\n&gt;\n  &lt;s-grid-item gridColumn=\"span 2\" border=\"base\" borderStyle=\"dashed\"&gt;\n    Summary of sales\n  &lt;/s-grid-item&gt;\n  &lt;s-grid-item gridColumn=\"span 1\" border=\"base\" borderStyle=\"dashed\"&gt;\n    Orders\n  &lt;/s-grid-item&gt;\n  &lt;s-grid-item gridColumn=\"auto\" border=\"base\" borderStyle=\"dashed\"&gt;\n    Customers\n  &lt;/s-grid-item&gt;\n&lt;/s-grid&gt;\n",
+            "language": "html",
             "editable": false
           },
           {
-            "code": "&lt;s-grid\n  gridTemplateColumns=\"repeat(2, 1fr)\"\n  gap=\"small\"\n  justifyContent=\"center\"\n&gt;\n  &lt;s-grid-item gridColumn=\"span 2\" border=\"base\" borderStyle=\"dashed\"&gt;\n    Summary of sales\n  &lt;/s-grid-item&gt;\n  &lt;s-grid-item gridColumn=\"span 1\" border=\"base\" borderStyle=\"dashed\"&gt;\n    Orders\n  &lt;/s-grid-item&gt;\n  &lt;s-grid-item gridColumn=\"auto\" border=\"base\" borderStyle=\"dashed\"&gt;\n    Customers\n  &lt;/s-grid-item&gt;\n&lt;/s-grid&gt;\n",
-            "language": "html",
-            "title": "html"
-          },
-          {
-            "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-grid\n  gridTemplateColumns=\"repeat(2, 1fr)\"\n  gap=\"small\"\n  justifyContent=\"center\"\n>\n  <s-grid-item gridColumn=\"span 2\" border=\"base\" borderStyle=\"dashed\">\n    Summary of sales\n  </s-grid-item>\n  <s-grid-item gridColumn=\"span 1\" border=\"base\" borderStyle=\"dashed\">\n    Orders\n  </s-grid-item>\n  <s-grid-item gridColumn=\"auto\" border=\"base\" borderStyle=\"dashed\">\n    Customers\n  </s-grid-item>\n</s-grid>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+            "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><div id=\"wrapper-element\"><s-grid\n  gridTemplateColumns=\"repeat(2, 1fr)\"\n  gap=\"small\"\n  justifyContent=\"center\"\n>\n  <s-grid-item gridColumn=\"span 2\" border=\"base\" borderStyle=\"dashed\">\n    Summary of sales\n  </s-grid-item>\n  <s-grid-item gridColumn=\"span 1\" border=\"base\" borderStyle=\"dashed\">\n    Orders\n  </s-grid-item>\n  <s-grid-item gridColumn=\"auto\" border=\"base\" borderStyle=\"dashed\">\n    Customers\n  </s-grid-item>\n</s-grid>\n</div></body></html>",
             "language": "preview"
           }
         ]
@@ -128771,72 +128624,54 @@
       "description": "Component examples",
       "exampleGroups": [
         {
-          "title": "Basic usage",
+          "title": "",
           "examples": [
             {
-              "description": "Simple 12-column grid system with equal-width left and right columns.",
+              "description": "Create a simple two-column layout. This example uses a 12-column grid system with equal-width columns.",
               "codeblock": {
-                "title": "Basic two-column layout",
+                "title": "Create a two-column layout",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-grid gridTemplateColumns=\"repeat(12, 1fr)\" gap=\"base\"&gt;\n  &lt;s-grid-item gridColumn=\"span 6\" gridRow=\"span 1\"&gt;\n    &lt;s-section&gt;\n      &lt;s-text&gt;Left column&lt;/s-text&gt;\n    &lt;/s-section&gt;\n  &lt;/s-grid-item&gt;\n  &lt;s-grid-item gridColumn=\"span 6\" gridRow=\"span 1\"&gt;\n    &lt;s-section&gt;\n      &lt;s-text&gt;Right column&lt;/s-text&gt;\n    &lt;/s-section&gt;\n  &lt;/s-grid-item&gt;\n&lt;/s-grid&gt;\n",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-grid gridTemplateColumns=\"repeat(12, 1fr)\" gap=\"base\"&gt;\n  &lt;s-grid-item gridColumn=\"span 6\" gridRow=\"span 1\"&gt;\n    &lt;s-section&gt;\n      &lt;s-text&gt;Left column&lt;/s-text&gt;\n    &lt;/s-section&gt;\n  &lt;/s-grid-item&gt;\n  &lt;s-grid-item gridColumn=\"span 6\" gridRow=\"span 1\"&gt;\n    &lt;s-section&gt;\n      &lt;s-text&gt;Right column&lt;/s-text&gt;\n    &lt;/s-section&gt;\n  &lt;/s-grid-item&gt;\n&lt;/s-grid&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-grid gridTemplateColumns=\"repeat(12, 1fr)\" gap=\"base\">\n  <s-grid-item gridColumn=\"span 6\" gridRow=\"span 1\">\n    <s-section>\n      <s-text>Left column</s-text>\n    </s-section>\n  </s-grid-item>\n  <s-grid-item gridColumn=\"span 6\" gridRow=\"span 1\">\n    <s-section>\n      <s-text>Right column</s-text>\n    </s-section>\n  </s-grid-item>\n</s-grid>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-grid gridTemplateColumns=\"repeat(12, 1fr)\" gap=\"base\">\n  <s-grid-item gridColumn=\"span 6\" gridRow=\"span 1\">\n    <s-section>\n      <s-text>Left column</s-text>\n    </s-section>\n  </s-grid-item>\n  <s-grid-item gridColumn=\"span 6\" gridRow=\"span 1\">\n    <s-section>\n      <s-text>Right column</s-text>\n    </s-section>\n  </s-grid-item>\n</s-grid>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
               }
             },
             {
-              "description": "Grid layout with full-width, half-width, and third-width column arrangements.",
+              "description": "Use a 12-column grid system with spans to create full-width, half-width, and third-width column arrangements. This example shows multiple rows with progressively narrower columns.",
               "codeblock": {
-                "title": "Layout with spans",
+                "title": "Build layouts with column spans",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-stack gap=\"base\"&gt;\n  &lt;s-grid gridTemplateColumns=\"repeat(12, 1fr)\" gap=\"base\"&gt;\n    &lt;s-grid-item gridColumn=\"span 12\" gridRow=\"span 1\"&gt;\n      &lt;s-section&gt;\n        &lt;s-text&gt;Full width field&lt;/s-text&gt;\n      &lt;/s-section&gt;\n    &lt;/s-grid-item&gt;\n    &lt;s-grid-item gridColumn=\"span 6\" gridRow=\"span 2\"&gt;\n      &lt;s-section&gt;\n        &lt;s-text&gt;Half width field&lt;/s-text&gt;\n      &lt;/s-section&gt;\n    &lt;/s-grid-item&gt;\n    &lt;s-grid-item gridColumn=\"span 6\" gridRow=\"span 2\"&gt;\n      &lt;s-section&gt;\n        &lt;s-text&gt;Half width field&lt;/s-text&gt;\n      &lt;/s-section&gt;\n    &lt;/s-grid-item&gt;\n    &lt;s-grid-item gridColumn=\"span 4\" gridRow=\"span 3\"&gt;\n      &lt;s-section&gt;\n        &lt;s-text&gt;Third width field&lt;/s-text&gt;\n      &lt;/s-section&gt;\n    &lt;/s-grid-item&gt;\n    &lt;s-grid-item gridColumn=\"span 4\" gridRow=\"span 3\"&gt;\n      &lt;s-section&gt;\n        &lt;s-text&gt;Third width field&lt;/s-text&gt;\n      &lt;/s-section&gt;\n    &lt;/s-grid-item&gt;\n    &lt;s-grid-item gridColumn=\"span 4\" gridRow=\"span 3\"&gt;\n      &lt;s-section&gt;\n        &lt;s-text&gt;Third width field&lt;/s-text&gt;\n      &lt;/s-section&gt;\n    &lt;/s-grid-item&gt;\n  &lt;/s-grid&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-stack gap=\"base\"&gt;\n  &lt;s-grid gridTemplateColumns=\"repeat(12, 1fr)\" gap=\"base\"&gt;\n    &lt;s-grid-item gridColumn=\"span 12\" gridRow=\"span 1\"&gt;\n      &lt;s-section&gt;\n        &lt;s-text&gt;Full width field&lt;/s-text&gt;\n      &lt;/s-section&gt;\n    &lt;/s-grid-item&gt;\n    &lt;s-grid-item gridColumn=\"span 6\" gridRow=\"span 2\"&gt;\n      &lt;s-section&gt;\n        &lt;s-text&gt;Half width field&lt;/s-text&gt;\n      &lt;/s-section&gt;\n    &lt;/s-grid-item&gt;\n    &lt;s-grid-item gridColumn=\"span 6\" gridRow=\"span 2\"&gt;\n      &lt;s-section&gt;\n        &lt;s-text&gt;Half width field&lt;/s-text&gt;\n      &lt;/s-section&gt;\n    &lt;/s-grid-item&gt;\n    &lt;s-grid-item gridColumn=\"span 4\" gridRow=\"span 3\"&gt;\n      &lt;s-section&gt;\n        &lt;s-text&gt;Third width field&lt;/s-text&gt;\n      &lt;/s-section&gt;\n    &lt;/s-grid-item&gt;\n    &lt;s-grid-item gridColumn=\"span 4\" gridRow=\"span 3\"&gt;\n      &lt;s-section&gt;\n        &lt;s-text&gt;Third width field&lt;/s-text&gt;\n      &lt;/s-section&gt;\n    &lt;/s-grid-item&gt;\n    &lt;s-grid-item gridColumn=\"span 4\" gridRow=\"span 3\"&gt;\n      &lt;s-section&gt;\n        &lt;s-text&gt;Third width field&lt;/s-text&gt;\n      &lt;/s-section&gt;\n    &lt;/s-grid-item&gt;\n  &lt;/s-grid&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-stack gap=\"base\">\n  <s-grid gridTemplateColumns=\"repeat(12, 1fr)\" gap=\"base\">\n    <s-grid-item gridColumn=\"span 12\" gridRow=\"span 1\">\n      <s-section>\n        <s-text>Full width field</s-text>\n      </s-section>\n    </s-grid-item>\n    <s-grid-item gridColumn=\"span 6\" gridRow=\"span 2\">\n      <s-section>\n        <s-text>Half width field</s-text>\n      </s-section>\n    </s-grid-item>\n    <s-grid-item gridColumn=\"span 6\" gridRow=\"span 2\">\n      <s-section>\n        <s-text>Half width field</s-text>\n      </s-section>\n    </s-grid-item>\n    <s-grid-item gridColumn=\"span 4\" gridRow=\"span 3\">\n      <s-section>\n        <s-text>Third width field</s-text>\n      </s-section>\n    </s-grid-item>\n    <s-grid-item gridColumn=\"span 4\" gridRow=\"span 3\">\n      <s-section>\n        <s-text>Third width field</s-text>\n      </s-section>\n    </s-grid-item>\n    <s-grid-item gridColumn=\"span 4\" gridRow=\"span 3\">\n      <s-section>\n        <s-text>Third width field</s-text>\n      </s-section>\n    </s-grid-item>\n  </s-grid>\n</s-stack>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-stack gap=\"base\">\n  <s-grid gridTemplateColumns=\"repeat(12, 1fr)\" gap=\"base\">\n    <s-grid-item gridColumn=\"span 12\" gridRow=\"span 1\">\n      <s-section>\n        <s-text>Full width field</s-text>\n      </s-section>\n    </s-grid-item>\n    <s-grid-item gridColumn=\"span 6\" gridRow=\"span 2\">\n      <s-section>\n        <s-text>Half width field</s-text>\n      </s-section>\n    </s-grid-item>\n    <s-grid-item gridColumn=\"span 6\" gridRow=\"span 2\">\n      <s-section>\n        <s-text>Half width field</s-text>\n      </s-section>\n    </s-grid-item>\n    <s-grid-item gridColumn=\"span 4\" gridRow=\"span 3\">\n      <s-section>\n        <s-text>Third width field</s-text>\n      </s-section>\n    </s-grid-item>\n    <s-grid-item gridColumn=\"span 4\" gridRow=\"span 3\">\n      <s-section>\n        <s-text>Third width field</s-text>\n      </s-section>\n    </s-grid-item>\n    <s-grid-item gridColumn=\"span 4\" gridRow=\"span 3\">\n      <s-section>\n        <s-text>Third width field</s-text>\n      </s-section>\n    </s-grid-item>\n  </s-grid>\n</s-stack>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
               }
             },
             {
-              "description": "Adaptive grid that automatically adjusts column count based on screen size.",
+              "description": "Use the `gridTemplateColumns` property with container queries to automatically adjust the column count based on available width. This example shows a grid that switches from a single column in narrow containers to three columns in wider ones.",
               "codeblock": {
-                "title": "Responsive grid",
+                "title": "Create a responsive grid with container queries",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-stack gap=\"base\"&gt;\n  &lt;s-text type=\"strong\"&gt;Narrow container (375px)&lt;/s-text&gt;\n  &lt;s-box inlineSize=\"375px\"&gt;\n    &lt;s-query-container&gt;\n      &lt;s-grid\n        gridTemplateColumns=\"@container (inline-size &gt; 400px) 1fr 1fr 1fr, 1fr\"\n        gap=\"base\"\n      &gt;\n        &lt;s-grid-item&gt;\n          &lt;s-box padding=\"small\" background=\"subdued\"&gt;\n            &lt;s-text&gt;Item 1&lt;/s-text&gt;\n          &lt;/s-box&gt;\n        &lt;/s-grid-item&gt;\n        &lt;s-grid-item&gt;\n          &lt;s-box padding=\"small\" background=\"subdued\"&gt;\n            &lt;s-text&gt;Item 2&lt;/s-text&gt;\n          &lt;/s-box&gt;\n        &lt;/s-grid-item&gt;\n        &lt;s-grid-item&gt;\n          &lt;s-box padding=\"small\" background=\"subdued\"&gt;\n            &lt;s-text&gt;Item 3&lt;/s-text&gt;\n          &lt;/s-box&gt;\n        &lt;/s-grid-item&gt;\n      &lt;/s-grid&gt;\n    &lt;/s-query-container&gt;\n  &lt;/s-box&gt;\n\n  &lt;s-text type=\"strong\"&gt;Wide container (450px)&lt;/s-text&gt;\n  &lt;s-box inlineSize=\"450px\"&gt;\n    &lt;s-query-container&gt;\n      &lt;s-grid\n        gridTemplateColumns=\"@container (inline-size &gt; 400px) 1fr 1fr 1fr, 1fr\"\n        gap=\"base\"\n      &gt;\n        &lt;s-grid-item&gt;\n          &lt;s-box padding=\"small\" background=\"subdued\"&gt;\n            &lt;s-text&gt;Item 1&lt;/s-text&gt;\n          &lt;/s-box&gt;\n        &lt;/s-grid-item&gt;\n        &lt;s-grid-item&gt;\n          &lt;s-box padding=\"small\" background=\"subdued\"&gt;\n            &lt;s-text&gt;Item 2&lt;/s-text&gt;\n          &lt;/s-box&gt;\n        &lt;/s-grid-item&gt;\n        &lt;s-grid-item&gt;\n          &lt;s-box padding=\"small\" background=\"subdued\"&gt;\n            &lt;s-text&gt;Item 3&lt;/s-text&gt;\n          &lt;/s-box&gt;\n        &lt;/s-grid-item&gt;\n      &lt;/s-grid&gt;\n    &lt;/s-query-container&gt;\n  &lt;/s-box&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-stack gap=\"base\"&gt;\n  &lt;s-text type=\"strong\"&gt;Narrow container (375px)&lt;/s-text&gt;\n  &lt;s-box inlineSize=\"375px\"&gt;\n    &lt;s-query-container&gt;\n      &lt;s-grid\n        gridTemplateColumns=\"@container (inline-size &gt; 400px) 1fr 1fr 1fr, 1fr\"\n        gap=\"base\"\n      &gt;\n        &lt;s-grid-item&gt;\n          &lt;s-box padding=\"small\" background=\"subdued\"&gt;\n            &lt;s-text&gt;Item 1&lt;/s-text&gt;\n          &lt;/s-box&gt;\n        &lt;/s-grid-item&gt;\n        &lt;s-grid-item&gt;\n          &lt;s-box padding=\"small\" background=\"subdued\"&gt;\n            &lt;s-text&gt;Item 2&lt;/s-text&gt;\n          &lt;/s-box&gt;\n        &lt;/s-grid-item&gt;\n        &lt;s-grid-item&gt;\n          &lt;s-box padding=\"small\" background=\"subdued\"&gt;\n            &lt;s-text&gt;Item 3&lt;/s-text&gt;\n          &lt;/s-box&gt;\n        &lt;/s-grid-item&gt;\n      &lt;/s-grid&gt;\n    &lt;/s-query-container&gt;\n  &lt;/s-box&gt;\n\n  &lt;s-text type=\"strong\"&gt;Wide container (450px)&lt;/s-text&gt;\n  &lt;s-box inlineSize=\"450px\"&gt;\n    &lt;s-query-container&gt;\n      &lt;s-grid\n        gridTemplateColumns=\"@container (inline-size &gt; 400px) 1fr 1fr 1fr, 1fr\"\n        gap=\"base\"\n      &gt;\n        &lt;s-grid-item&gt;\n          &lt;s-box padding=\"small\" background=\"subdued\"&gt;\n            &lt;s-text&gt;Item 1&lt;/s-text&gt;\n          &lt;/s-box&gt;\n        &lt;/s-grid-item&gt;\n        &lt;s-grid-item&gt;\n          &lt;s-box padding=\"small\" background=\"subdued\"&gt;\n            &lt;s-text&gt;Item 2&lt;/s-text&gt;\n          &lt;/s-box&gt;\n        &lt;/s-grid-item&gt;\n        &lt;s-grid-item&gt;\n          &lt;s-box padding=\"small\" background=\"subdued\"&gt;\n            &lt;s-text&gt;Item 3&lt;/s-text&gt;\n          &lt;/s-box&gt;\n        &lt;/s-grid-item&gt;\n      &lt;/s-grid&gt;\n    &lt;/s-query-container&gt;\n  &lt;/s-box&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-stack gap=\"base\">\n  <s-text type=\"strong\">Narrow container (375px)</s-text>\n  <s-box inlineSize=\"375px\">\n    <s-query-container>\n      <s-grid\n        gridTemplateColumns=\"@container (inline-size > 400px) 1fr 1fr 1fr, 1fr\"\n        gap=\"base\"\n      >\n        <s-grid-item>\n          <s-box padding=\"small\" background=\"subdued\">\n            <s-text>Item 1</s-text>\n          </s-box>\n        </s-grid-item>\n        <s-grid-item>\n          <s-box padding=\"small\" background=\"subdued\">\n            <s-text>Item 2</s-text>\n          </s-box>\n        </s-grid-item>\n        <s-grid-item>\n          <s-box padding=\"small\" background=\"subdued\">\n            <s-text>Item 3</s-text>\n          </s-box>\n        </s-grid-item>\n      </s-grid>\n    </s-query-container>\n  </s-box>\n\n  <s-text type=\"strong\">Wide container (450px)</s-text>\n  <s-box inlineSize=\"450px\">\n    <s-query-container>\n      <s-grid\n        gridTemplateColumns=\"@container (inline-size > 400px) 1fr 1fr 1fr, 1fr\"\n        gap=\"base\"\n      >\n        <s-grid-item>\n          <s-box padding=\"small\" background=\"subdued\">\n            <s-text>Item 1</s-text>\n          </s-box>\n        </s-grid-item>\n        <s-grid-item>\n          <s-box padding=\"small\" background=\"subdued\">\n            <s-text>Item 2</s-text>\n          </s-box>\n        </s-grid-item>\n        <s-grid-item>\n          <s-box padding=\"small\" background=\"subdued\">\n            <s-text>Item 3</s-text>\n          </s-box>\n        </s-grid-item>\n      </s-grid>\n    </s-query-container>\n  </s-box>\n</s-stack>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-stack gap=\"base\">\n  <s-text type=\"strong\">Narrow container (375px)</s-text>\n  <s-box inlineSize=\"375px\">\n    <s-query-container>\n      <s-grid\n        gridTemplateColumns=\"@container (inline-size > 400px) 1fr 1fr 1fr, 1fr\"\n        gap=\"base\"\n      >\n        <s-grid-item>\n          <s-box padding=\"small\" background=\"subdued\">\n            <s-text>Item 1</s-text>\n          </s-box>\n        </s-grid-item>\n        <s-grid-item>\n          <s-box padding=\"small\" background=\"subdued\">\n            <s-text>Item 2</s-text>\n          </s-box>\n        </s-grid-item>\n        <s-grid-item>\n          <s-box padding=\"small\" background=\"subdued\">\n            <s-text>Item 3</s-text>\n          </s-box>\n        </s-grid-item>\n      </s-grid>\n    </s-query-container>\n  </s-box>\n\n  <s-text type=\"strong\">Wide container (450px)</s-text>\n  <s-box inlineSize=\"450px\">\n    <s-query-container>\n      <s-grid\n        gridTemplateColumns=\"@container (inline-size > 400px) 1fr 1fr 1fr, 1fr\"\n        gap=\"base\"\n      >\n        <s-grid-item>\n          <s-box padding=\"small\" background=\"subdued\">\n            <s-text>Item 1</s-text>\n          </s-box>\n        </s-grid-item>\n        <s-grid-item>\n          <s-box padding=\"small\" background=\"subdued\">\n            <s-text>Item 2</s-text>\n          </s-box>\n        </s-grid-item>\n        <s-grid-item>\n          <s-box padding=\"small\" background=\"subdued\">\n            <s-text>Item 3</s-text>\n          </s-box>\n        </s-grid-item>\n      </s-grid>\n    </s-query-container>\n  </s-box>\n</s-stack>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
@@ -132177,22 +132012,18 @@
     ],
     "defaultExample": {
       "image": "ordered-list-default.png",
+      "description": "Create a numbered list of sequential steps. This example shows a basic ordered list with three setup instructions.",
       "codeblock": {
-        "title": "Code",
+        "title": "Add a numbered step list",
         "tabs": [
           {
-            "title": "jsx",
-            "code": "&lt;s-ordered-list&gt;\n  &lt;s-list-item&gt;Red shirt&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Green shirt&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Blue shirt&lt;/s-list-item&gt;\n&lt;/s-ordered-list&gt;",
-            "language": "jsx",
+            "title": "html",
+            "code": "&lt;s-ordered-list&gt;\n  &lt;s-list-item&gt;Add products to your catalog&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Set up payment methods&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Configure shipping zones&lt;/s-list-item&gt;\n&lt;/s-ordered-list&gt;\n",
+            "language": "html",
             "editable": false
           },
           {
-            "code": "&lt;s-ordered-list&gt;\n  &lt;s-list-item&gt;Red shirt&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Green shirt&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Blue shirt&lt;/s-list-item&gt;\n&lt;/s-ordered-list&gt;\n",
-            "language": "html",
-            "title": "html"
-          },
-          {
-            "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-ordered-list>\n  <s-list-item>Red shirt</s-list-item>\n  <s-list-item>Green shirt</s-list-item>\n  <s-list-item>Blue shirt</s-list-item>\n</s-ordered-list>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+            "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><div id=\"wrapper-element\"><s-ordered-list>\n  <s-list-item>Add products to your catalog</s-list-item>\n  <s-list-item>Set up payment methods</s-list-item>\n  <s-list-item>Configure shipping zones</s-list-item>\n</s-ordered-list>\n</div></body></html>",
             "language": "preview"
           }
         ]
@@ -132202,95 +132033,20 @@
       "description": "Component examples",
       "exampleGroups": [
         {
-          "title": "Basic usage",
+          "title": "",
           "examples": [
             {
-              "description": "Demonstrates a simple ordered list with three sequential steps.",
+              "description": "Nest ordered lists inside list items to break down complex steps into sub-steps. This example shows a product setup workflow where the first step has nested instructions.",
               "codeblock": {
-                "title": "Basic usage",
+                "title": "Create nested steps with sub-instructions",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-ordered-list&gt;\n  &lt;s-list-item&gt;Add products to your catalog&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Set up payment methods&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Configure shipping zones&lt;/s-list-item&gt;\n&lt;/s-ordered-list&gt;\n",
-                    "language": "jsx"
-                  },
-                  {
-                    "title": "html",
-                    "code": "&lt;s-ordered-list&gt;\n  &lt;s-list-item&gt;Add products to your catalog&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Set up payment methods&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Configure shipping zones&lt;/s-list-item&gt;\n&lt;/s-ordered-list&gt;\n",
-                    "language": "html",
-                    "editable": false
-                  },
-                  {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-ordered-list>\n  <s-list-item>Add products to your catalog</s-list-item>\n  <s-list-item>Set up payment methods</s-list-item>\n  <s-list-item>Configure shipping zones</s-list-item>\n</s-ordered-list>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
-                    "language": "preview"
-                  }
-                ]
-              }
-            },
-            {
-              "description": "Shows an ordered list with multiple steps in a workflow process.",
-              "codeblock": {
-                "title": "Order processing steps",
-                "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-ordered-list&gt;\n  &lt;s-list-item&gt;Review order details and customer information&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Verify payment and billing address&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Check inventory availability for all items&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Generate fulfillment labels and packing slip&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Package items and update tracking information&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Send shipment confirmation to customer&lt;/s-list-item&gt;\n&lt;/s-ordered-list&gt;\n",
-                    "language": "jsx"
-                  },
-                  {
-                    "title": "html",
-                    "code": "&lt;s-ordered-list&gt;\n  &lt;s-list-item&gt;Review order details and customer information&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Verify payment and billing address&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Check inventory availability for all items&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Generate fulfillment labels and packing slip&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Package items and update tracking information&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Send shipment confirmation to customer&lt;/s-list-item&gt;\n&lt;/s-ordered-list&gt;\n",
-                    "language": "html",
-                    "editable": false
-                  },
-                  {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-ordered-list>\n  <s-list-item>Review order details and customer information</s-list-item>\n  <s-list-item>Verify payment and billing address</s-list-item>\n  <s-list-item>Check inventory availability for all items</s-list-item>\n  <s-list-item>Generate fulfillment labels and packing slip</s-list-item>\n  <s-list-item>Package items and update tracking information</s-list-item>\n  <s-list-item>Send shipment confirmation to customer</s-list-item>\n</s-ordered-list>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
-                    "language": "preview"
-                  }
-                ]
-              }
-            },
-            {
-              "description": "Illustrates a nested ordered list with sub-steps within main steps.",
-              "codeblock": {
-                "title": "Product setup instructions",
-                "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-ordered-list&gt;\n  &lt;s-list-item&gt;\n    Create product listing with title and description\n    &lt;s-ordered-list&gt;\n      &lt;s-list-item&gt;Add high-quality product images&lt;/s-list-item&gt;\n      &lt;s-list-item&gt;Set SEO title and meta description&lt;/s-list-item&gt;\n    &lt;/s-ordered-list&gt;\n  &lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Configure pricing and inventory tracking&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Set up product variants (size, color, material)&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Enable inventory tracking and set stock levels&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Review and publish product to storefront&lt;/s-list-item&gt;\n&lt;/s-ordered-list&gt;\n",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-ordered-list&gt;\n  &lt;s-list-item&gt;\n    Create product listing with title and description\n    &lt;s-ordered-list&gt;\n      &lt;s-list-item&gt;Add high-quality product images&lt;/s-list-item&gt;\n      &lt;s-list-item&gt;Set SEO title and meta description&lt;/s-list-item&gt;\n    &lt;/s-ordered-list&gt;\n  &lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Configure pricing and inventory tracking&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Set up product variants (size, color, material)&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Enable inventory tracking and set stock levels&lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Review and publish product to storefront&lt;/s-list-item&gt;\n&lt;/s-ordered-list&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-ordered-list>\n  <s-list-item>\n    Create product listing with title and description\n    <s-ordered-list>\n      <s-list-item>Add high-quality product images</s-list-item>\n      <s-list-item>Set SEO title and meta description</s-list-item>\n    </s-ordered-list>\n  </s-list-item>\n  <s-list-item>Configure pricing and inventory tracking</s-list-item>\n  <s-list-item>Set up product variants (size, color, material)</s-list-item>\n  <s-list-item>Enable inventory tracking and set stock levels</s-list-item>\n  <s-list-item>Review and publish product to storefront</s-list-item>\n</s-ordered-list>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
-                    "language": "preview"
-                  }
-                ]
-              }
-            },
-            {
-              "description": "Displays a complex nested list with multiple levels of sub-steps.",
-              "codeblock": {
-                "title": "Fulfillment process",
-                "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-ordered-list&gt;\n  &lt;s-list-item&gt;\n    Process payment\n    &lt;s-ordered-list&gt;\n      &lt;s-list-item&gt;Verify card details&lt;/s-list-item&gt;\n      &lt;s-list-item&gt;Apply discount codes&lt;/s-list-item&gt;\n      &lt;s-list-item&gt;Calculate taxes&lt;/s-list-item&gt;\n    &lt;/s-ordered-list&gt;\n  &lt;/s-list-item&gt;\n  &lt;s-list-item&gt;\n    Prepare shipment\n    &lt;s-ordered-list&gt;\n      &lt;s-list-item&gt;Print shipping label&lt;/s-list-item&gt;\n      &lt;s-list-item&gt;Pack items securely&lt;/s-list-item&gt;\n    &lt;/s-ordered-list&gt;\n  &lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Update customer with tracking info&lt;/s-list-item&gt;\n&lt;/s-ordered-list&gt;\n",
-                    "language": "jsx"
-                  },
-                  {
-                    "title": "html",
-                    "code": "&lt;s-ordered-list&gt;\n  &lt;s-list-item&gt;\n    Process payment\n    &lt;s-ordered-list&gt;\n      &lt;s-list-item&gt;Verify card details&lt;/s-list-item&gt;\n      &lt;s-list-item&gt;Apply discount codes&lt;/s-list-item&gt;\n      &lt;s-list-item&gt;Calculate taxes&lt;/s-list-item&gt;\n    &lt;/s-ordered-list&gt;\n  &lt;/s-list-item&gt;\n  &lt;s-list-item&gt;\n    Prepare shipment\n    &lt;s-ordered-list&gt;\n      &lt;s-list-item&gt;Print shipping label&lt;/s-list-item&gt;\n      &lt;s-list-item&gt;Pack items securely&lt;/s-list-item&gt;\n    &lt;/s-ordered-list&gt;\n  &lt;/s-list-item&gt;\n  &lt;s-list-item&gt;Update customer with tracking info&lt;/s-list-item&gt;\n&lt;/s-ordered-list&gt;\n",
-                    "language": "html",
-                    "editable": false
-                  },
-                  {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-ordered-list>\n  <s-list-item>\n    Process payment\n    <s-ordered-list>\n      <s-list-item>Verify card details</s-list-item>\n      <s-list-item>Apply discount codes</s-list-item>\n      <s-list-item>Calculate taxes</s-list-item>\n    </s-ordered-list>\n  </s-list-item>\n  <s-list-item>\n    Prepare shipment\n    <s-ordered-list>\n      <s-list-item>Print shipping label</s-list-item>\n      <s-list-item>Pack items securely</s-list-item>\n    </s-ordered-list>\n  </s-list-item>\n  <s-list-item>Update customer with tracking info</s-list-item>\n</s-ordered-list>\n) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-ordered-list>\n  <s-list-item>\n    Create product listing with title and description\n    <s-ordered-list>\n      <s-list-item>Add high-quality product images</s-list-item>\n      <s-list-item>Set SEO title and meta description</s-list-item>\n    </s-ordered-list>\n  </s-list-item>\n  <s-list-item>Configure pricing and inventory tracking</s-list-item>\n  <s-list-item>Set up product variants (size, color, material)</s-list-item>\n  <s-list-item>Enable inventory tracking and set stock levels</s-list-item>\n  <s-list-item>Review and publish product to storefront</s-list-item>\n</s-ordered-list>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]

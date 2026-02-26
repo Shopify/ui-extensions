@@ -45,17 +45,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'ordered-list-default.png',
+    description:
+      'Create a numbered list of sequential steps. This example shows a basic ordered list with three setup instructions.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a numbered step list',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -64,76 +62,18 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple ordered list with three sequential steps.',
+              'Nest ordered lists inside list items to break down complex steps into sub-steps. This example shows a product setup workflow where the first step has nested instructions.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows an ordered list with multiple steps in a workflow process.',
-            codeblock: {
-              title: 'Order processing steps',
-              tabs: [
-                {
-                  code: './examples/order-processing-steps.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/order-processing-steps.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Illustrates a nested ordered list with sub-steps within main steps.',
-            codeblock: {
-              title: 'Product setup instructions',
+              title: 'Create nested steps with sub-instructions',
               tabs: [
                 {
                   code: './examples/product-setup-instructions.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/product-setup-instructions.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Displays a complex nested list with multiple levels of sub-steps.',
-            codeblock: {
-              title: 'Fulfillment process',
-              tabs: [
-                {
-                  code: './examples/fulfillment-process.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/fulfillment-process.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
