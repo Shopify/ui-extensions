@@ -1,7 +1,7 @@
 {
   "customer-account.order-status.block.render": {
     "components": [
-      "Abbreviation",
+      "Abbreviation!!!",
       "Announcement",
       "Avatar",
       "Badge",

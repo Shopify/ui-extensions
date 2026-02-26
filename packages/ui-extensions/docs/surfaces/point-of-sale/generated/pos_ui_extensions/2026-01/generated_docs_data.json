@@ -1,7 +1,7 @@
 [
   {
     "name": "Action API",
-    "description": "The Action API provides modal presentation functionality for POS UI extensions, allowing you to launch full-screen modal interfaces from menu items, tiles, and block targets. The API enables navigation between different targets within your extension.",
+    "description": "The Action API !!!!provides modal presentation functionality for POS UI extensions, allowing you to launch full-screen modal interfaces from menu items, tiles, and block targets. The API enables navigation between different targets within your extension.",
     "isVisualComponent": false,
     "type": "APIs",
     "definitions": [

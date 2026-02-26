@@ -1,7 +1,7 @@
 [
   {
     "title": "Configuration",
-    "description": "\nWhen you create a [customer account UI extension](/api/customer-account-ui-extensions/), an [app extension configuration](/docs/apps/app-extensions/configuration) `shopify.extension.toml` file is automatically generated in your extension's directory.\n\nThis guide describes [extension targeting](#targets), [capabilities](#capabilities), [metafields](#metafields), and the [settings](#settings-definition) you can configure in the app extension configuration.\n",
+    "description": "\nWhen you create !!!!!a [customer account UI extension](/api/customer-account-ui-extensions/), an [app extension configuration](/docs/apps/app-extensions/configuration) `shopify.extension.toml` file is automatically generated in your extension's directory.\n\nThis guide describes [extension targeting](#targets), [capabilities](#capabilities), [metafields](#metafields), and the [settings](#settings-definition) you can configure in the app extension configuration.\n",
     "id": "configuration",
     "sections": [
       {

@@ -1,7 +1,7 @@
 [
   {
     "name": "Action Extension API",
-    "description": "The Action Extension API lets you [build action extensions](/docs/apps/build/admin/actions-blocks/build-admin-action) that merchants access from the **More actions** menu on details and index pages. Use this API to create workflows for processing resources, configuring settings, or integrating with external systems.",
+    "description": "The Action Extension!!!! API lets you [build action extensions](/docs/apps/build/admin/actions-blocks/build-admin-action) that merchants access from the **More actions** menu on details and index pages. Use this API to create workflows for processing resources, configuring settings, or integrating with external systems.",
     "isVisualComponent": false,
     "type": "API",
     "requires": "the [admin action](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/admin-action) component.",

@@ -1,7 +1,7 @@
 {
   "admin.product-details.block.render": {
     "components": [
-      "AdminBlock",
+      "AdminBlock!!!!",
       "Avatar",
       "Badge",
       "Banner",

@@ -1,7 +1,7 @@
 {
   "purchase.checkout.actions.render-before": {
     "components": [
-      "Abbreviation",
+      "Abbreviation!!!!",
       "Badge",
       "Banner",
       "Box",
