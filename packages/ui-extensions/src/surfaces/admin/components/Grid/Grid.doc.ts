@@ -49,17 +49,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'grid-default.png',
+    description:
+      'Create a grid layout with columns and spanning grid items. This example shows a two-column grid with a full-width header row and two equal columns below.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a grid layout with column spans',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -68,58 +66,32 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Simple 12-column grid system with equal-width left and right columns.',
+              'Use a 12-column grid system with `gridColumn` spans to create full-width, half-width, and third-width column arrangements. This example shows multiple rows with progressively narrower columns.',
             codeblock: {
-              title: 'Basic two-column layout',
-              tabs: [
-                {
-                  code: './examples/basic-two-column-layout.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-two-column-layout.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Grid layout with full-width, half-width, and third-width column arrangements.',
-            codeblock: {
-              title: 'Layout with spans',
+              title: 'Build layouts with column spans',
               tabs: [
                 {
                   code: './examples/col-span-layouts.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/col-span-layouts.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Adaptive grid that automatically adjusts column count based on screen size.',
+              'Use responsive `gridTemplateColumns` with container queries to automatically adjust the column count based on available width. This example shows a grid that switches from a single column in narrow containers to three columns in wider ones.',
             codeblock: {
-              title: 'Responsive grid',
+              title: 'Create a responsive grid with container queries',
               tabs: [
                 {
                   code: './examples/mobile-first-responsive-grid.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/mobile-first-responsive-grid.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

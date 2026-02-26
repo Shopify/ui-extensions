@@ -26,18 +26,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'divider-default.png',
+    description:
+      'Create a horizontal divider to visually separate content sections. This example shows the default divider with base color and inline direction.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a horizontal divider',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-          layout: 'wrapped',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
           layout: 'wrapped',
         },
       ],
@@ -47,41 +44,18 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates the default divider with standard base color and inline direction.',
+              'Use `color` set to strong for a more prominent divider that marks a major section break. This example shows a strong-colored divider for increased visual emphasis.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                  layout: 'wrapped',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows a divider with a strong color variant for increased visual emphasis.',
-            codeblock: {
-              title: 'Custom color',
+              title: 'Increase visual emphasis with a strong divider',
               tabs: [
                 {
                   code: './examples/custom-color.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/custom-color.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                   layout: 'wrapped',
                 },
               ],
@@ -89,90 +63,28 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates using a block-direction divider within an inline stack to create vertical separation between items.',
+              'Set `direction` to block to create a vertical divider between horizontally arranged items. This example shows a vertical divider separating text items in an inline stack.',
             codeblock: {
-              title: 'Custom direction',
+              title: 'Create a vertical divider between inline items',
               tabs: [
                 {
                   code: './examples/custom-direction.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/custom-direction.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Uses a divider to visually group and separate different sections of a form, improving readability and user comprehension.',
+              'Place a divider between groups of form fields to visually distinguish related sections. This example shows a divider separating store details from contact information fields.',
             codeblock: {
-              title: 'Separating form sections',
+              title: 'Separate form sections with a divider',
               tabs: [
                 {
                   code: './examples/separating-form-sections.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/separating-form-sections.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates using a divider to logically separate basic and advanced settings in a configuration panel.',
-            codeblock: {
-              title: 'Organizing settings panels',
-              tabs: [
-                {
-                  code: './examples/organizing-settings-panels.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/organizing-settings-panels.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows how dividers can be used to create clean, segmented sections within a section, improving information hierarchy.',
-            codeblock: {
-              title: 'Visual breaks in section layouts',
-              tabs: [
-                {
-                  code: './examples/visual-breaks-in-section-layouts.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/visual-breaks-in-section-layouts.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Illustrates using dividers to create clear, visually distinct sections for different metrics or content blocks.',
-            codeblock: {
-              title: 'Separating content sections',
-              tabs: [
-                {
-                  code: './examples/separating-content-sections.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/separating-content-sections.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
