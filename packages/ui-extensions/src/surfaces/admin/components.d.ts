@@ -6456,23 +6456,91 @@ export interface DividerJSXProps
   extends Partial<DividerProps>,
     Pick<DividerProps$1, 'id'> {}
 
-export interface DropZoneProps
-  extends Required<
-    Pick<
-      DropZoneProps$1,
-      | 'accept'
-      | 'accessibilityLabel'
-      | 'disabled'
-      | 'files'
-      | 'name'
-      | 'error'
-      | 'label'
-      | 'labelAccessibilityVisibility'
-      | 'multiple'
-      | 'required'
-      | 'value'
-    >
-  > {}
+export interface DropZoneProps {
+  /**
+   * Specifies which file types the drop zone accepts. Uses standard MIME types like `'image/*'`
+   * for all images, `'application/pdf'` for PDFs, or comma-separated values like
+   * `'image/png, image/jpeg'` for specific types. When set, files that don't match are rejected
+   * and trigger the `onDropRejected` event. When empty or not set, all file types are accepted.
+   * Common patterns include `'image/*'` for images, `'.csv, .xlsx'` for spreadsheets, and
+   * `'video/*'` for video files.
+   */
+  accept: RequiredAlignedDropZoneProps['accept'];
+  /**
+   * A descriptive label announced to screen reader users when interacting with the drop zone,
+   * providing additional context beyond the visible `label`. When set, this value is used for
+   * assistive technology announcements while the visible `label` remains unchanged. For example,
+   * a visible `label` of "Logo" could have an accessibility label of "Upload your store logo image".
+   */
+  accessibilityLabel: RequiredAlignedDropZoneProps['accessibilityLabel'];
+  /**
+   * When `true`, prevents file selection and drag-and-drop interactions. The drop zone appears
+   * visually muted and does not respond to user input. The disabled state is communicated to
+   * assistive technologies. Useful during file processing or when upload limits are reached.
+   *
+   * @default false
+   */
+  disabled: RequiredAlignedDropZoneProps['disabled'];
+  /**
+   * Read-only array of `File` objects currently selected in the drop zone. Updated when users
+   * select files using the file picker or drag-and-drop. Each `File` object contains standard
+   * properties including `name`, `size`, `type`, and `lastModified`. Access this property through
+   * `event.currentTarget.files` in event handlers, or directly on an element reference. Useful
+   * for processing uploads, displaying file previews, or validating file contents. This property
+   * can't be set directly. To clear the selection, set `value` to `''` or `null`.
+   */
+  files: RequiredAlignedDropZoneProps['files'];
+  /**
+   * The form field name used when the drop zone is part of a form. When the form is submitted,
+   * selected files are included in the form data under this name. When `multiple` is `true`,
+   * each file is submitted with the same name, following standard HTML file input behavior.
+   */
+  name: RequiredAlignedDropZoneProps['name'];
+  /**
+   * Error message displayed below the drop zone. When set to a non-empty string, the drop zone
+   * displays in an error state with the message visible to users. Setting to an empty string
+   * or `undefined` clears the error state. Useful for communicating validation errors like
+   * file size limits or unsupported file types.
+   */
+  error: RequiredAlignedDropZoneProps['error'];
+  /**
+   * The visible label displayed above or within the drop zone, describing what type of files
+   * can be uploaded. The label is associated with the file input for accessibility. For additional
+   * context beyond the visible label, the `accessibilityLabel` property can be set separately.
+   */
+  label: RequiredAlignedDropZoneProps['label'];
+  /**
+   * Controls how the label is displayed. When set to `'visible'` (the default), the label is
+   * shown visually. When set to `'exclusive'`, the label is hidden visually but remains accessible
+   * to screen readers. Useful when the drop zone's purpose is clear from context.
+   *
+   * @default 'visible'
+   */
+  labelAccessibilityVisibility: RequiredAlignedDropZoneProps['labelAccessibilityVisibility'];
+  /**
+   * When `true`, allows users to select multiple files at once. The file picker dialog enables
+   * multi-select, and drag-and-drop accepts multiple files. When `false`, only one file can be
+   * selected at a time—choosing a new file replaces the previous selection.
+   *
+   * @default false
+   */
+  multiple: RequiredAlignedDropZoneProps['multiple'];
+  /**
+   * When `true`, marks the drop zone as a required form field. The form cannot be submitted until
+   * at least one file is selected. Visual indicators communicate the required state to users.
+   *
+   * @default false
+   */
+  required: RequiredAlignedDropZoneProps['required'];
+  /**
+   * The current value of the drop zone, following standard HTML file input behavior. Returns a
+   * fake path string like `'C:\\fakepath\\filename.jpg'` when files are selected, or an empty
+   * string when no files are selected. Can only be set to `''` or `null` to clear the selection—
+   * attempting to set any other value throws an error. To access actual file data, read the
+   * `files` property instead.
+   */
+  value: RequiredAlignedDropZoneProps['value'];
+}
 
 /**
  * A utility type that replaces occurrences of one type with another within a union type.
@@ -7122,16 +7190,39 @@ export type RequiredAlignedModalProps = Required<ModalProps$1>;
 export interface ModalProps
   extends Pick<
     RequiredAlignedModalProps,
-    | 'accessibilityLabel'
-    | 'heading'
-    | 'padding'
-    | 'size'
-    | 'hideOverlay'
-    | 'showOverlay'
-    | 'toggleOverlay'
+    'hideOverlay' | 'showOverlay' | 'toggleOverlay'
   > {
   /**
-   * The size of the modal component, controlling its width and height. Larger sizes provide more space for content while smaller sizes are more compact.
+   * A descriptive label announced to screen reader users when the modal opens, providing additional
+   * context beyond the visible heading. When set, this overrides the `heading` for assistive
+   * technology announcements while keeping the visual heading unchanged. For example, a heading
+   * of "Confirm" could have an accessibility label of "Confirm product deletion" for additional
+   * context.
+   */
+  accessibilityLabel: RequiredAlignedModalProps['accessibilityLabel'];
+  /**
+   * The title displayed at the top of the modal, rendered in the modal header alongside the close
+   * button. When `accessibilityLabel` is not set, this value is announced to screen reader users
+   * when the modal opens. Common examples include "Delete product" or "Add discount".
+   */
+  heading: RequiredAlignedModalProps['heading'];
+  /**
+   * Controls the internal spacing around the modal's content area. When set to `'base'`, standard
+   * padding is applied around the content. When set to `'none'`, all padding is removed, allowing
+   * content to extend edge-to-edge—useful for full-width images, tables, or custom layouts that
+   * need to control their own spacing.
+   *
+   * @default 'base'
+   */
+  padding: RequiredAlignedModalProps['padding'];
+  /**
+   * Controls the width of the modal dialog. Available sizes from smallest to largest:
+   * `'small-100'`, `'small'`, `'base'`, `'large'`, `'large-100'`. Smaller sizes work well for
+   * simple confirmations or brief messages, while larger sizes accommodate forms or content
+   * that benefits from more horizontal space. The modal height adjusts automatically based on
+   * content. All sizes are responsive and adapt to smaller viewports.
+   *
+   * @default 'base'
    */
   size: Extract<
     ModalProps$1['size'],
@@ -7486,9 +7577,24 @@ export interface OrderedListJSXProps
   children?: ComponentChildren;
 }
 
-export interface PageProps
-  extends Required<Pick<PageProps$1, 'inlineSize' | 'heading'>> {
+export interface PageProps {
+  /**
+   * Controls the maximum width of the page content area. Available sizes: `'small'` for narrow
+   * content like settings forms, `'base'` for standard page layouts with optional aside content,
+   * and `'large'` for wider content like data tables or dashboards. The `aside` slot is only
+   * rendered when `inlineSize` is set to `'base'`. All sizes are responsive and adapt to smaller
+   * viewports.
+   *
+   * @default 'base'
+   */
   inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large' | 'small'>;
+  /**
+   * The main title displayed in the page header. Renders prominently at the top of the page
+   * alongside any action buttons. For pages that represent a specific resource, including the
+   * resource name (such as "Order #1001") helps provide context. The heading is used for
+   * accessibility and appears in the browser tab when the app is embedded.
+   */
+  heading: RequiredAlignedPageProps['heading'];
 }
 
 declare class Page extends PreactCustomElement implements PageProps {
@@ -7682,18 +7788,59 @@ export interface PasswordFieldJSXProps
     Pick<PasswordFieldProps$1, 'id'>,
     FieldReactProps<typeof tagName$q> {}
 
-export interface PopoverProps
-  extends Required<
-    Pick<
-      PopoverProps$1,
-      | 'blockSize'
-      | 'inlineSize'
-      | 'maxBlockSize'
-      | 'maxInlineSize'
-      | 'minBlockSize'
-      | 'minInlineSize'
-    >
-  > {}
+export interface PopoverProps {
+  /**
+   * Controls the height of the popover content area. Accepts CSS size values like `'200px'`,
+   * `'50%'`, or `'auto'`. When set to `'auto'` (the default), the popover height adjusts
+   * automatically to fit its content. Fixed values are useful for scrollable lists or when
+   * consistent dimensions are needed regardless of content.
+   *
+   * @default 'auto'
+   */
+  blockSize: RequiredBasePopoverProps['blockSize'];
+  /**
+   * Controls the width of the popover content area. Accepts CSS size values like `'300px'`,
+   * `'100%'`, or `'auto'`. When set to `'auto'` (the default), the popover width adjusts
+   * to fit its content. Fixed values are useful for menus or action lists where a consistent
+   * width prevents layout shifts as content changes.
+   *
+   * @default 'auto'
+   */
+  inlineSize: RequiredBasePopoverProps['inlineSize'];
+  /**
+   * Sets the maximum height the popover can grow to. Accepts CSS size values like `'400px'`
+   * or `'80vh'`, or `'none'` for no limit. When content exceeds this height, the popover
+   * becomes scrollable. Viewport-relative values like `'50vh'` help ensure the popover
+   * doesn't cover too much screen space.
+   *
+   * @default 'none'
+   */
+  maxBlockSize: RequiredBasePopoverProps['maxBlockSize'];
+  /**
+   * Sets the maximum width the popover can grow to. Accepts CSS size values like `'400px'`
+   * or `'90vw'`, or `'none'` for no limit. Useful when content length varies and text should
+   * wrap rather than extend horizontally.
+   *
+   * @default 'none'
+   */
+  maxInlineSize: RequiredBasePopoverProps['maxInlineSize'];
+  /**
+   * Sets the minimum height the popover must maintain. Accepts CSS size values like `'100px'`
+   * or `'0'` for no minimum. Useful for reserving space during loading states or when content
+   * updates dynamically.
+   *
+   * @default '0'
+   */
+  minBlockSize: RequiredBasePopoverProps['minBlockSize'];
+  /**
+   * Sets the minimum width the popover must maintain. Accepts CSS size values like `'200px'`
+   * or `'0'` for no minimum. Useful for ensuring the popover is at least as wide as its
+   * activator element.
+   *
+   * @default '0'
+   */
+  minInlineSize: RequiredBasePopoverProps['minInlineSize'];
+}
 
 declare class PreactPopoverElement<TTagName extends keyof HTMLElementTagNameMap>
   extends PreactOverlayElement
@@ -9473,26 +9620,29 @@ export interface DatePickerEvents {
 
 export interface DropZoneEvents {
   /**
-   * A callback fired when the drop zone value changes.
-   *
-   * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
+   * A callback fired when the user selects files through the file picker or drops valid
+   * files onto the drop zone. Access the selected files through `event.currentTarget.files`.
+   * Use to process uploads, generate previews, or validate file contents.
    */
   change: CallbackEventListener<typeof tagName> = null;
   /**
-   * A callback fired when the user inputs data into the drop zone.
-   *
-   * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).
+   * A callback fired when files are selected or dropped. Similar to `onChange` but may
+   * fire more frequently during drag operations. Use when you need immediate feedback as
+   * files are being dragged over the drop zone.
    */
   input: CallbackEventListener<typeof tagName> = null;
   /**
-   * A callback fired when a dropped file is rejected due to file type or size restrictions.
+   * A callback fired when dropped or selected files don't match the `accept` criteria.
+   * Use to display error messages explaining which file types are allowed. Rejected files
+   * are not added to the `files` array.
    */
   droprejected: CallbackEventListener<typeof tagName> = null;
 }
 
 export interface DropZoneSlots {
   /**
-   * The content to include inside the drop zone container
+   * Content to display inside the drop zone, such as upload instructions, file type icons,
+   * or previews of selected files. When provided, replaces the default upload prompt.
    */
   children?: HTMLElement;
 }
@@ -9592,38 +9742,44 @@ export interface MenuSlots {
 
 export interface ModalEvents {
   /**
-   * A callback fired when the modal is hidden.
+   * A callback fired when the modal starts to close, before any exit animation begins.
+   * Use to perform validation or prevent closing by calling `event.preventDefault()`.
    */
   hide: CallbackEventListener<typeof tagName> | null = null;
   /**
-   * A callback fired when the modal is shown.
+   * A callback fired when the modal starts to open, before any entrance animation begins.
+   * Use to prepare content or fetch data needed for the modal.
    */
   show: CallbackEventListener<typeof tagName> | null = null;
   /**
-   * A callback fired after the modal is hidden.
+   * A callback fired after the modal has fully closed and any exit animation completes.
+   * Use to reset form state, clear temporary data, or update the page after dismissal.
    */
   afterhide: CallbackEventListener<typeof tagName> | null = null;
   /**
-   * A callback fired after the modal is shown.
+   * A callback fired after the modal has fully opened and any entrance animation completes.
+   * Use to focus an input field or initialize content once the modal is visible.
    */
   aftershow: CallbackEventListener<typeof tagName> | null = null;
 }
 
 export interface ModalSlots {
   /**
-   * The content displayed within the modal component, typically including form fields, information, or interactive elements.
+   * The content displayed within the modal, typically including form fields, informational
+   * text, or interactive elements that require focused user attention.
    */
   children?: HTMLElement;
   /**
-   * The main action button displayed in the modal footer, representing the primary action users should take.
-   *
-   * Only accepts a single button component with a `variant` of `primary`. This action should align with the modal's main purpose.
+   * The main action button displayed in the modal footer, representing the primary action
+   * users should take. Only accepts a `Button` with a `variant` of `primary`. This action
+   * should align with the modal's main purpose, such as "Save", "Confirm", or "Submit".
    */
   'primary-action'?: HTMLElement;
   /**
-   * Additional action buttons displayed in the modal footer, providing alternative or supporting actions.
-   *
-   * Only accepts button components with a `variant` of `secondary` or `auto`. These are visually de-emphasized to establish clear hierarchy.
+   * Additional action buttons displayed in the modal footer, providing alternative or
+   * supporting actions such as "Cancel" or "Learn more". Only accepts `Button` elements
+   * with a `variant` of `secondary` or `auto`. These are visually de-emphasized compared
+   * to the primary action to establish clear hierarchy.
    */
   'secondary-actions'?: HTMLElement;
 }
@@ -9705,32 +9861,32 @@ export interface OrderedListSlots {
 
 export interface PageSlots {
   /**
-   * The main page content displayed within the page component, which serves as the primary container for the page's information and interface elements.
+   * The main content of the page, typically containing the primary information, forms,
+   * or interactive elements that fulfill the page's purpose.
    */
   children?: HTMLElement;
   /**
-   * The content to display in the aside section of the page.
-   *
-   * This slot is only rendered when `inlineSize` is "base".
+   * Supplementary content displayed in a sidebar alongside the main content. Use for
+   * related information, navigation aids, or contextual actions that support the main content.
+   * This slot is only rendered when `inlineSize` is set to `base`.
    */
   aside?: HTMLElement;
   /**
-   * The primary action for the page.
-   *
-   * Only accepts a single button component with a `variant` of `primary`.
-   *
+   * The main action button displayed in the page header, representing the primary action
+   * users can take on this page. Only accepts a single `Button` with a `variant` of `primary`.
+   * Common examples include "Create", "Save", or "Add".
    */
   'primary-action'?: HTMLElement;
   /**
-   * The secondary actions for the page.
-   *
-   * Only accepts button group and button components with a `variant` of `secondary` or `auto`.
+   * Additional action buttons displayed in the page header, providing alternative or supporting
+   * actions. Only accepts `ButtonGroup` and `Button` components with a `variant` of `secondary`
+   * or `auto`. These are visually de-emphasized compared to the primary action.
    */
   'secondary-actions'?: HTMLElement;
   /**
-   * The navigation back actions for the page.
-   *
-   * Only accepts link components.
+   * Navigation links that help users understand their location within the app and navigate
+   * back to parent pages. Only accepts `Link` components. Typically displays as a back arrow
+   * or breadcrumb trail in the page header.
    */
   'breadcrumb-actions'?: HTMLElement;
 }
@@ -9771,34 +9927,42 @@ export interface PasswordFieldEvents {
 
 export interface PopoverEvents {
   /**
-   * A callback fired when the popover is shown.
+   * A callback fired immediately when the popover starts to show, before any entrance animation.
+   * Use to prepare content or update positioning logic.
    */
   show: CallbackEventListener<TTagName> | null;
   /**
-   * A callback fired when the popover is hidden.
+   * A callback fired immediately when the popover starts to hide, before any exit animation.
+   * Use to perform cleanup or save state before the popover dismisses.
    */
   hide: CallbackEventListener<TTagName> | null;
   /**
-   * A callback fired after the popover is shown.
+   * A callback fired after the popover has fully shown and any entrance animation completes.
+   * Use to focus an element inside the popover or announce content to screen readers.
    */
   aftershow: CallbackEventListener<TTagName> | null;
   /**
-   * A callback fired after the popover is hidden.
+   * A callback fired after the popover has fully hidden and any exit animation completes.
+   * Use to reset selections or update the trigger button state.
    */
   afterhide: CallbackEventListener<TTagName> | null;
   /**
-   * A callback fired when the popover is toggled.
+   * A callback fired when the popover visibility toggles, providing the new state in
+   * `event.detail.newState`. Use for unified open/close handling when you don't need
+   * separate show and hide logic.
    */
   toggle: CallbackEventListener<TTagName> | null;
   /**
-   * A callback fired after the popover is toggled.
+   * A callback fired after the popover visibility toggle completes and any animation finishes.
+   * The new state is available in `event.detail.newState`. Use for post-transition updates.
    */
   aftertoggle: CallbackEventListener<TTagName> | null;
 }
 
 export interface PopoverSlots {
   /**
-   * The content displayed within the popover component, which appears in an overlay positioned relative to its trigger element.
+   * The content displayed within the popover, which appears in an overlay positioned relative
+   * to its trigger element. Typically contains menus, action lists, or supplementary information.
    */
   children?: HTMLElement;
 }
