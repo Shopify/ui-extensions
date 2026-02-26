@@ -42,16 +42,56 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image:
       '/assets/templated-apis-screenshots/admin/components/adminprintaction-example.png',
+    description:
+      'Set the print source URL for an admin print action extension. This example shows the component pointing to an external URL for printing.',
     codeblock: {
-      title: '',
+      title: 'Set a print source URL',
       tabs: [
         {
-          title: 'JSX',
-          code: './examples/default.tsx',
-          language: 'jsx',
+          title: '',
+          code: './examples/default.html',
+          language: 'preview',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Point directly to a PDF file for printing invoices or receipts. This example sets the `src` to a PDF URL that the browser renders in the print preview.',
+            codeblock: {
+              title: 'Print a PDF document',
+              tabs: [
+                {
+                  title: '',
+                  code: './examples/pdf-source.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Build the print URL with query parameters to customize the output per order or template. This example passes order ID, template name, and locale as URL parameters.',
+            codeblock: {
+              title: 'Use a dynamic print URL',
+              tabs: [
+                {
+                  title: '',
+                  code: './examples/dynamic-url.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
   related: [],
 };
