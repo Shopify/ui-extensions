@@ -28,7 +28,6 @@ export * from './instructions';
 export * from './language';
 export * from './localized-fields';
 export * from './market';
-export * from './metafield';
 export * from './metafields';
 export * from './note';
 export * from './payment-method';

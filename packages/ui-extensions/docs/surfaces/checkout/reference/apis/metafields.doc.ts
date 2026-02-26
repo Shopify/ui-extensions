@@ -28,17 +28,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseAppMetafieldsGeneratedType',
     },
     {
-      title: 'useMetafield',
-      description: 'Returns a single filtered `Metafield` or `undefined`.',
-      type: 'UseMetafieldGeneratedType',
-    },
-    {
-      title: 'useMetafields',
-      description:
-        'Returns the current array of `metafields` applied to the checkout. You can optionally filter the list.',
-      type: 'UseMetafieldsGeneratedType',
-    },
-    {
       title: 'CheckoutApi',
       description: CHECKOUT_API_PROPERTIES_DESCRIPTION,
       type: 'Docs_Checkout_MetafieldsApi',

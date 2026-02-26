@@ -9,7 +9,6 @@ import type {
   I18n,
   Language,
   Market,
-  Metafield,
   SessionToken,
   Shop,
   Storage,
@@ -92,18 +91,6 @@ export interface AddressAutocompleteStandardApi<
    * object instead.
    */
   localization: Localization;
-
-  /**
-   * The metafields that apply to the current checkout.
-   *
-   * Metafields are stored locally on the client and are applied to the order object after the checkout completes.
-   * They are shared by all extensions running on checkout, and
-   * persist for as long as the customer is working on this checkout.
-   *
-   * Once the order is created, you can query these metafields using the
-   * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
-   */
-  metafields: Metafield[];
 
   /**
    * The method used to query the Storefront GraphQL API with a prefetched token.
