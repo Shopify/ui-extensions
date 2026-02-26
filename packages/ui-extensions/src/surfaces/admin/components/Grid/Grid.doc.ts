@@ -70,6 +70,20 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
+              'Create a simple two-column layout. This example uses a 12-column grid system with equal-width columns.',
+            codeblock: {
+              title: 'Create a two-column layout',
+              tabs: [
+                {
+                  code: './examples/basic-two-column-layout.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
+            },
+          },
+          {
+            description:
               'Use a 12-column grid system with spans to create full-width, half-width, and third-width column arrangements. This example shows multiple rows with progressively narrower columns.',
             codeblock: {
               title: 'Build layouts with column spans',
