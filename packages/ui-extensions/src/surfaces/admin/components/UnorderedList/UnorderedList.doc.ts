@@ -46,7 +46,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'unordered-list-default.png',
     description:
-      'Create a bulleted list of related items where order is not significant. This example shows a simple list of product color options.',
+      'Create a bulleted list of related items. This example shows a simple list of product color options.',
     codeblock: {
       title: 'Add a bulleted list',
       tabs: [

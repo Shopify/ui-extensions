@@ -57,7 +57,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Set `direction` to inline to arrange items horizontally. This example shows badges laid out side by side with spacing between them.',
+              'Use the `direction` property to arrange items horizontally. This example shows badges laid out side by side with spacing between them.',
             codeblock: {
               title: 'Arrange items horizontally with an inline stack',
               tabs: [
@@ -71,7 +71,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use `justifyContent` and `alignItems` to control how items are positioned within the stack. This example shows items distributed with space between them and vertically centered.',
+              'Use the `justifyContent` and `alignItems` properties to control how items are positioned within the stack. This example shows items vertically centered and aligned at the right, center, and left positions in the stack.',
             codeblock: {
               title: 'Control item alignment and distribution',
               tabs: [
@@ -86,7 +86,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use `gap`, `rowGap`, and `columnGap` to fine-tune spacing between items in different directions. This example shows a stack with separate row and column gap values.',
+              'Use the ``gap`, `rowGap`, and `columnGap properties` to fine-tune spacing between items in different directions. This example shows a stack with separate row and column gap values.',
             codeblock: {
               title: 'Fine-tune spacing with row and column gaps',
               tabs: [

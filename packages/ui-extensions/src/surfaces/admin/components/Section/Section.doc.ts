@@ -62,6 +62,20 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
+              'Use a section with a heading and form fields to group related inputs. This example shows a customer information form with text and email fields inside a top-level section.',
+            codeblock: {
+              title: 'Group form fields in a section',
+              tabs: [
+                {
+                  code: './examples/top-level-section-with-form-elements.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
+            },
+          },
+          {
+            description:
               'Nest sections to create visual and semantic hierarchy that automatically adjusts heading levels and styling. This example shows three levels of nesting for order details, customer information, and a billing address.',
             codeblock: {
               title: 'Create nested sections with automatic visual hierarchy',
@@ -76,7 +90,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use `accessibilityLabel` to provide screen readers with additional context beyond the visible heading. This example shows a payment summary section where the label describes the full purpose of the section.',
+              'Use the `accessibilityLabel` property to provide screen readers with additional context beyond the visible heading. This example shows a payment summary section and a label describing the contents of the section.',
             codeblock: {
               title: 'Add an accessibility label for screen readers',
               tabs: [
@@ -90,7 +104,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Set `padding` to none to let content like tables extend to the section edges. This example shows a product table rendered full-width within a section.',
+              'Set the `padding` property to `none` so that content like tables can extend to the section edges. This example shows a product table rendered full-width within a section.',
             codeblock: {
               title: 'Remove padding for full-width content',
               tabs: [

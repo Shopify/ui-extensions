@@ -63,7 +63,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Use `containerName` to target a specific query container when multiple containers are present. This example shows the same named container at two different widths (375px and 450px) to demonstrate how the responsive padding changes at the 400px breakpoint.',
+              'Use the `containerName` property to target a specific query container when multiple containers are present. This example shows the same named container at two different widths (375px and 450px) to demonstrate how the responsive padding changes at the 400px breakpoint.',
             codeblock: {
               title: 'Target a named container for responsive queries',
               tabs: [

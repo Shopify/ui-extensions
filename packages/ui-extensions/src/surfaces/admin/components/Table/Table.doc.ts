@@ -129,7 +129,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Use `listSlot` on table headers to control how columns display when the table converts to a list layout on mobile. This example shows a product table with badges and appropriate slot assignments for mobile readability.',
+              'Use the `listSlot` property on table headers to control how columns are displayed when the table is converted to a list layout on mobile. This example shows a product table with badges and appropriate slot assignments for mobile readability.',
             codeblock: {
               title: 'Configure columns for mobile list layout',
               tabs: [
@@ -143,7 +143,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Add `paginate`, `hasPreviousPage`, and `hasNextPage` to display pagination controls for navigating large datasets. This example shows a paginated product table with next and previous page buttons.',
+              'Use the `paginate`, `hasPreviousPage`, and `hasNextPage` properties to display pagination controls for navigating large datasets. This example shows a paginated product table with next and previous page buttons.',
             codeblock: {
               title: 'Add pagination for large datasets',
               tabs: [
@@ -185,7 +185,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Set `variant` to list to display data as stacked key-value pairs instead of a grid. This is the default layout on mobile devices. This example shows a customer table rendered in list format.',
+              'Use the `variant` property to display data as stacked key-value pairs instead of as a grid. This is the default layout on mobile devices. This example shows a customer table rendered in list format.',
             codeblock: {
               title: 'Display data in list format',
               tabs: [
