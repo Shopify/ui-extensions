@@ -61,7 +61,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Use color variants to control the visual emphasis of chips. This example shows subdued chips for secondary metadata, base chips for standard tags, and strong chips for important information.',
+              'Use color variants to control the visual emphasis of chips. This example shows `subdued` chips for secondary metadata, `base` chips for standard tags, and `strong` chips for important information.',
             codeblock: {
               title: 'Set visual weight with color variants',
               tabs: [
@@ -75,7 +75,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Combine an icon with a text label to make chip meanings clearer at a glance. This example shows a chip with an icon in the graphic slot to visually reinforce the category.',
+              'Combine an icon with a text label to make chip meanings clearer. This example shows a chip with an icon in the graphic slot to visually reinforce the category.',
             codeblock: {
               title: 'Add an icon to reinforce meaning',
               tabs: [

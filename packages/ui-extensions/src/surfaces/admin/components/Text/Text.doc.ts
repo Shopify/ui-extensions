@@ -60,7 +60,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Apply semantic tones to signal different statuses inline. This example shows success, critical, and warning tones for common order and inventory states.',
+              'Apply semantic tones to signal different statuses inline. This example shows `success`, `critical`, and `warning` tones for common order and inventory states.',
             codeblock: {
               title: 'Communicate status with tones',
               tabs: [
@@ -74,7 +74,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use `type` set to address to render contact information with proper semantic meaning. This example shows a formatted address that screen readers identify as address content.',
+              'Set the `type` property to `address` to render contact information with proper semantic meaning. This example shows a formatted address that screen readers identify as address content.',
             codeblock: {
               title: 'Display a semantic address',
               tabs: [
@@ -88,7 +88,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use `color` set to subdued for secondary metadata like timestamps and supplementary details. This example shows a subdued text element for a last-updated indicator.',
+              'Set the `color` property to `subdued` for secondary metadata like timestamps and supplementary details. This example shows a subdued text element for a last-updated indicator.',
             codeblock: {
               title: 'De-emphasize secondary information',
               tabs: [
@@ -102,7 +102,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use `fontVariantNumeric` set to tabular-nums to render numbers with consistent widths for even alignment in data displays. This example shows tabular number formatting for a price.',
+              'Set the `fontVariantNumeric` property to `tabular-nums` to render numbers with consistent widths for even alignment in data displays. This example shows tabular number formatting for a price.',
             codeblock: {
               title: 'Align numbers with tabular formatting',
               tabs: [
@@ -116,7 +116,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use `accessibilityVisibility` set to exclusive to provide additional context for screen readers without affecting the visual layout. This example shows hidden text that communicates pricing context to assistive technologies.',
+              'Use the `accessibilityVisibility` property to provide additional context for screen readers without affecting the visual layout. This example shows hidden text that communicates pricing context to assistive technologies.',
             codeblock: {
               title: 'Add screen-reader-only text',
               tabs: [
@@ -130,7 +130,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use the `interestFor` attribute to connect text to a tooltip, displaying additional context on hover or focus. This example shows explanatory text that triggers a tooltip with SKU details.',
+              'Use the `interestFor` property to connect text to a tooltip, displaying additional context on hover or focus. This example shows explanatory text that triggers a tooltip with SKU details.',
             codeblock: {
               title: 'Associate text with a tooltip',
               tabs: [
@@ -147,7 +147,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Set the `dir` property to rtl for right-to-left languages like Arabic and Hebrew. This example shows text rendered in Arabic with right-to-left direction.',
+              'Set the `dir` property to `rtl` for right-to-left languages like Arabic and Hebrew. This example shows text rendered in Arabic with right-to-left direction.',
             codeblock: {
               title: 'Render right-to-left text',
               tabs: [

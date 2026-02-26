@@ -77,7 +77,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Add a tooltip to an icon-only button to clarify its action for sighted users and provide an accessible description. This example shows an info button that displays a tooltip with product details on hover.',
+              'Add a tooltip to an icon-only button to clarify its action and provide an accessible description. This example shows an info button that displays a tooltip with product details on hover.',
             codeblock: {
               title: 'Describe an icon-only button with a tooltip',
               tabs: [

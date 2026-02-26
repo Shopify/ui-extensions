@@ -42,7 +42,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'paragraph-default.png',
     description:
-      'Create a paragraph with default styling for body text content. This example shows the basic paragraph component rendering a block of text.',
+      'Create a paragraph for body text content. This example shows the basic paragraph component using default styling.',
     codeblock: {
       title: 'Add a basic paragraph',
       tabs: [
@@ -62,7 +62,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Apply semantic tones to convey different types of information through color. This example shows all five tones—info, success, caution, warning, and critical—for common merchant-facing messages.',
+              'Apply semantic tones to convey different types of information through color. This example shows all five tones—`info`, `success`, `caution`, `warning`, and `critical`—for common merchant-facing messages.',
             codeblock: {
               title: 'Communicate status with tones',
               tabs: [
@@ -104,7 +104,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use `accessibilityVisibility` set to exclusive to create text that is only available to screen readers. This example shows a paragraph providing sort context that assistive technologies can announce.',
+              'Use the `accessibilityVisibility` property to create text that is only available to screen readers. This example shows a paragraph providing sort context for a table that assistive technologies can read.',
             codeblock: {
               title: 'Add screen-reader-only text',
               tabs: [
@@ -118,7 +118,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use `color` set to subdued for secondary information like helper text, disclaimers, and supplementary descriptions. This example shows a subdued paragraph providing guidance below a form action.',
+              'Set the `color` property to `subdued` for secondary information like helper text, disclaimers, and supplementary descriptions. This example shows a subdued paragraph providing guidance below a form action.',
             codeblock: {
               title: 'De-emphasize secondary text with subdued color',
               tabs: [
