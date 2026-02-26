@@ -60,7 +60,11 @@ export type EmbeddedElementProps =
   | SuccessProps
   | PasswordProps;
 
-/** @publicDocs */
+/**
+ * Configure the following properties on the TextField component.
+ *
+ * @publicDocs
+ */
 export interface NewTextFieldProps extends InputProps {}
 
 /**

@@ -17,7 +17,11 @@ export type Spacing =
   | 13
   | 16;
 
-/** @publicDocs */
+/**
+ * Configure the following properties on the Stack component.
+ *
+ * @publicDocs
+ */
 export interface StackProps {
   /**
    * The direction of the stack.

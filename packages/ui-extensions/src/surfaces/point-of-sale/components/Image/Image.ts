@@ -1,6 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-/** @publicDocs */
+/**
+ * Configure the following properties on the Image component.
+ *
+ * @publicDocs
+ */
 export interface ImageProps {
   /**
    * The source of the image to be displayed.
