@@ -48,17 +48,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'banner-default.png',
+    description:
+      'Create an informational banner with a heading and body text. This example shows a basic banner communicating a status update that merchants can dismiss.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a dismissible info banner',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -67,94 +65,46 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple informational banner used to communicate status updates or completed actions, providing clear and concise feedback to the user.',
+              'Use a warning-toned banner with secondary action buttons to highlight a problem and give merchants clear next steps. This example shows a shipping weight issue with links to review products and access a setup guide.',
             codeblock: {
-              title: 'Basic information banner',
-              tabs: [
-                {
-                  code: './examples/basic-information-banner.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-information-banner.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Illustrates a warning banner that highlights a potential issue and provides actionable buttons to help merchants resolve the problem quickly and effectively.',
-            codeblock: {
-              title: 'Warning banner with specific actions',
+              title: 'Create a warning banner with buttons for next steps',
               tabs: [
                 {
                   code: './examples/warning-banner-with-specific-actions.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/warning-banner-with-specific-actions.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates an urgent banner design that signals a critical issue requiring immediate action, with clear and prominent secondary action buttons to guide merchants.',
+              'Use a critical-toned banner to signal an urgent issue that requires immediate merchant action. This example shows a fraud review alert with buttons to review order details and adjust settings.',
             codeblock: {
-              title: 'Critical banner with clear next steps',
+              title: 'Alert merchants to critical issues requiring action',
               tabs: [
                 {
                   code: './examples/critical-banner-with-clear-next-steps.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/critical-banner-with-clear-next-steps.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Success confirmation with dismiss option for completed operations.',
+              'Use a success-toned banner with the `dismissible` property to confirm a completed operation. This example shows a product import confirmation that merchants can dismiss once acknowledged.',
             codeblock: {
-              title: 'Dismissible success banner',
+              title: 'Confirm a completed action with a dismissible banner',
               tabs: [
                 {
                   code: './examples/dismissible-success-banner.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/dismissible-success-banner.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Informational banner highlighting app updates with clear benefits and actions.',
-            codeblock: {
-              title: 'Info banner with clear value proposition',
-              tabs: [
-                {
-                  code: './examples/info-banner-with-clear-value-proposition.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/info-banner-with-clear-value-proposition.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

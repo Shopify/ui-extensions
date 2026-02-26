@@ -40,18 +40,16 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'badge-default.png',
+    description:
+      'Create badges with different tones to represent statuses. This example shows all available badge tones from `neutral` to `critical`.',
     codeblock: {
-      title: 'Code',
+      title: 'Add status badges with tones',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
+          language: 'preview',
+          title: '',
           layout: 'inline',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
         },
       ],
     },
@@ -60,76 +58,46 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates how different badge tones can visually represent various order fulfillment states, enabling merchants to quickly understand order progress at a glance.',
+              'Combine tones with icons to provide stronger visual cues. This example shows product and inventory status badges with icons that reinforce meaning.',
             codeblock: {
-              title: 'Order status badges',
-              tabs: [
-                {
-                  code: './examples/order-status-badges.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/order-status-badges.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Showcases how badges can incorporate both tones and icons to provide contextual information across different merchant scenarios, such as product management, inventory tracking, and payment status.',
-            codeblock: {
-              title: 'Status indicators with icons',
+              title: 'Add icons to status badges',
               tabs: [
                 {
                   code: './examples/status-indicators-with-icons.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/status-indicators-with-icons.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates how badges can be seamlessly integrated into table layouts to provide quick, visually distinct status indicators for individual table rows.',
+              'Place badges inside table cells to give merchants a scannable overview of status information. This example shows fulfillment and payment badges in an order table.',
             codeblock: {
-              title: 'Within table context',
+              title: 'Display badges in a table',
               tabs: [
                 {
                   code: './examples/within-table-context.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/within-table-context.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates the two available badge sizes for creating visual hierarchy.',
+              'Use the `size` property to create visual hierarchy between badges. This example shows the base size for standard usage and the large size for badges that need more prominence.',
             codeblock: {
-              title: 'Different sizes for emphasis',
+              title: 'Control badge size for emphasis',
               tabs: [
                 {
                   code: './examples/different-sizes-for-emphasis.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/different-sizes-for-emphasis.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
