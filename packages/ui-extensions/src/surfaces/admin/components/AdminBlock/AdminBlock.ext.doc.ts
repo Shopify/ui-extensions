@@ -45,7 +45,7 @@ const data: ReferenceEntityTemplateSchema = {
     image:
       '/assets/templated-apis-screenshots/admin/components/adminblock-example.png',
     description:
-      'Display an inline block on an admin resource page. This example shows a simple block with a [heading](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/typography-and-content/heading) and [text](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/typography-and-content/text) content.',
+      'Display an inline block on an admin resource page. This example shows a simple block with a `heading` property and [text](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/typography-and-content/text) content.',
     codeblock: {
       title: 'Display an inline admin block',
       tabs: [
