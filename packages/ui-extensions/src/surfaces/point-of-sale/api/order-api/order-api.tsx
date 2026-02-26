@@ -5,7 +5,11 @@ export interface OrderApi {
   order: OrderApiContent;
 }
 
-/** @publicDocs */
+/**
+ * The `OrderApi` object provides access to order data. Access these properties through `api.order` to interact with the current order context.
+ *
+ * @publicDocs
+ */
 export interface OrderApiContent {
   /**
    * The unique identifier for the order. Use for order lookups, implementing order-specific functionality, and integrating with external systems.
