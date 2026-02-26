@@ -68,12 +68,26 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use `accessibilityRole` and `accessibilityVisibility` to create screen-reader-friendly containers. This example shows a status region announced by assistive technologies and a visually hidden box with screen-reader-only content.',
+              'Set the `accessibilityRole` property to `status` to create a live region. When your code updates the text inside this box , screen readers automatically announce the new content. Use this for any content that updates dynamically.',
             codeblock: {
-              title: 'Create accessible status containers',
+              title: 'Announce dynamic updates with a live region',
               tabs: [
                 {
                   code: './examples/accessible-status-messages.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Set the `accessibilityVisibility` property to `exclusive` to hide content visually while keeping it available to screen readers. This example shows a box with pricing context that only assistive technology users can access.',
+            codeblock: {
+              title: 'Add screen-reader-only content',
+              tabs: [
+                {
+                  code: './examples/screen-reader-only-content.html',
                   language: 'preview',
                   title: '',
                 },

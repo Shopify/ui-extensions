@@ -46,7 +46,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'ordered-list-default.png',
     description:
-      'Create a numbered list of sequential steps. This example shows a basic ordered list with three setup instructions where the order of operations matters.',
+      'Create a numbered list of sequential steps. This example shows a basic ordered list with three setup instructions.',
     codeblock: {
       title: 'Add a numbered step list',
       tabs: [
@@ -66,7 +66,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Nest ordered lists inside list items to break down complex steps into sub-steps. This example shows a product setup workflow where the first step has nested instructions for images and SEO.',
+              'Nest ordered lists inside list items to break down complex steps into sub-steps. This example shows a product setup workflow where the first step has nested instructions.',
             codeblock: {
               title: 'Create nested steps with sub-instructions',
               tabs: [

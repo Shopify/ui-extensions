@@ -48,7 +48,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Use `color` set to strong for a more prominent divider that marks a major section break. This example shows a strong-colored divider for increased visual emphasis.',
+              'Use the `color` property to display a more prominent divider that marks a major section break. This example shows a strong-colored divider for increased visual emphasis.',
             codeblock: {
               title: 'Increase visual emphasis with a strong divider',
               tabs: [
@@ -63,7 +63,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Set `direction` to block to create a vertical divider between horizontally arranged items. This example shows a vertical divider separating text items in an inline stack.',
+              'Use the `direction` property to create a vertical divider between horizontally arranged items. This example shows a vertical divider separating text items in an inline stack.',
             codeblock: {
               title: 'Create a vertical divider between inline items',
               tabs: [

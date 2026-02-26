@@ -50,7 +50,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'grid-default.png',
     description:
-      'Create a grid layout with columns and spanning grid items. This example shows a two-column grid with a full-width header row and two equal columns below.',
+      'Create a grid layout with columns and grid items that span them. This example shows a two-column grid with a full-width header row and two equal columns below.',
     codeblock: {
       title: 'Add a grid layout with column spans',
       tabs: [
@@ -70,7 +70,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Use a 12-column grid system with `gridColumn` spans to create full-width, half-width, and third-width column arrangements. This example shows multiple rows with progressively narrower columns.',
+              'Use a 12-column grid system with spans to create full-width, half-width, and third-width column arrangements. This example shows multiple rows with progressively narrower columns.',
             codeblock: {
               title: 'Build layouts with column spans',
               tabs: [
@@ -84,7 +84,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use responsive `gridTemplateColumns` with container queries to automatically adjust the column count based on available width. This example shows a grid that switches from a single column in narrow containers to three columns in wider ones.',
+              'Use the `gridTemplateColumns` property with container queries to automatically adjust the column count based on available width. This example shows a grid that switches from a single column in narrow containers to three columns in wider ones.',
             codeblock: {
               title: 'Create a responsive grid with container queries',
               tabs: [
