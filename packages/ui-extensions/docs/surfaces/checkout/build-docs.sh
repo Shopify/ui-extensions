@@ -89,11 +89,16 @@ fi
 
 # Make sure https://shopify.dev URLs are relative.
 # See https://github.com/Shopify/generate-docs/issues/181
-run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
-sed_exit=$?
-if [ $sed_exit -ne 0 ]; then
-  fail_and_exit $sed_exit
-fi
+# Process both array format (generated_docs_data.json) and type-map v2 format when present.
+for docs_file in generated_docs_data.json generated_docs_data_v2.json; do
+  if [ -f "./$DOCS_PATH/generated/$docs_file" ]; then
+    run_sed 's|https://shopify.dev||gi' "./$DOCS_PATH/generated/$docs_file"
+    sed_exit=$?
+    if [ $sed_exit -ne 0 ]; then
+      fail_and_exit $sed_exit
+    fi
+  fi
+done
 
 # Generate targets.json
 echo "Generating targets.json..."
@@ -111,13 +116,15 @@ if [ -d $SHOPIFY_DEV_PATH ]; then
   cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
 
   # Replace 'latest' with the exact API version in relative doc links
-  for file in generated_docs_data.json generated_static_pages.json; do
-    run_sed \
-      "s/\/docs\/api\/checkout-ui-extensions\/latest/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
-      "$SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/$file"
-    sed_exit=$?
-    if [ $sed_exit -ne 0 ]; then
-      fail_and_exit $sed_exit
+  for file in generated_docs_data.json generated_docs_data_v2.json generated_static_pages.json; do
+    if [ -f "$SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/$file" ]; then
+      run_sed \
+        "s/\/docs\/api\/checkout-ui-extensions\/latest/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
+        "$SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/$file"
+      sed_exit=$?
+      if [ $sed_exit -ne 0 ]; then
+        fail_and_exit $sed_exit
+      fi
     fi
   done
 
