@@ -44,16 +44,84 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image:
       '/assets/templated-apis-screenshots/admin/components/adminblock-example.png',
+    description:
+      'Display an inline block on an admin resource page. This example shows a simple block with a [heading](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/typography-and-content/heading) and [text](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/typography-and-content/text) content.',
     codeblock: {
-      title: '',
+      title: 'Display an inline admin block',
       tabs: [
         {
-          title: 'JSX',
-          code: './examples/default.tsx',
-          language: 'jsx',
+          title: '',
+          code: './examples/default.html',
+          language: 'preview',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Provide a preview of the block content when it is collapsed. This example uses the `collapsed-summary` attribute to show a short [text](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/typography-and-content/text) summary in the block header.',
+            codeblock: {
+              title: 'Show a collapsed summary',
+              tabs: [
+                {
+                  title: '',
+                  code: './examples/with-collapsed-summary.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Present structured data in rows and columns within a block. This example displays inventory levels across locations using a [table](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/table).',
+            codeblock: {
+              title: 'Display a data table',
+              tabs: [
+                {
+                  title: '',
+                  code: './examples/with-data-table.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Highlight key status information with visual indicators. This example shows an order risk assessment with a warning [badge](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge) and a list of risk factors.',
+            codeblock: {
+              title: 'Show status with badges',
+              tabs: [
+                {
+                  title: '',
+                  code: './examples/with-badges.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Include interactive buttons so merchants can take action directly from the block. This example shows subscription details with a [button group](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button-group) for pause and cancel actions.',
+            codeblock: {
+              title: 'Add action buttons to a block',
+              tabs: [
+                {
+                  title: '',
+                  code: './examples/with-actions.html',
+                  language: 'preview',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
   related: [],
 };

@@ -1,0 +1,21 @@
+<s-form>
+  <s-stack direction="block" gap="large">
+    <s-section heading="Contact information">
+      <s-stack direction="block" gap="base">
+        <s-text-field label="Full name" name="name" required></s-text-field>
+        <s-email-field label="Email address" name="email" required></s-email-field>
+      </s-stack>
+    </s-section>
+    <s-section heading="Shipping preferences">
+      <s-stack direction="block" gap="base">
+        <s-select label="Shipping speed" name="speed">
+          <s-option value="standard">Standard (5–7 days)</s-option>
+          <s-option value="express">Express (2–3 days)</s-option>
+          <s-option value="overnight">Overnight</s-option>
+        </s-select>
+        <s-checkbox label="Require signature on delivery" name="signature"></s-checkbox>
+      </s-stack>
+    </s-section>
+    <s-button variant="primary" accessibilityRole="submit">Save preferences</s-button>
+  </s-stack>
+</s-form>
