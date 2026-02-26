@@ -27,6 +27,8 @@ export interface NavigationHistoryEntry {
 }
 
 /**
+ * The global `navigation` object provides web-standard navigation functionality. Access these properties directly through the global `navigation` object to manage navigation within modal interfaces.
+ *
  * @publicDocs
  */
 export interface Navigation {

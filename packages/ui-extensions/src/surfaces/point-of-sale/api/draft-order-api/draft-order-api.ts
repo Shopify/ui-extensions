@@ -6,6 +6,8 @@ export interface DraftOrderApi {
 }
 
 /**
+ * The `DraftOrderApi` object provides access to draft order data. Access these properties through `api.draftOrder` to interact with the current draft order context.
+ *
  * @publicDocs
  */
 export interface DraftOrderApiContent {

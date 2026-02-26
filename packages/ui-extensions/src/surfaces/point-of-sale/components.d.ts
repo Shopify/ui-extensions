@@ -4607,6 +4607,8 @@ export type {
 };
 
 /**
+ * Configure the following properties on the Badge component.
+ *
  * @publicDocs
  */
 interface Badge {
@@ -4649,6 +4651,8 @@ interface BannerSlots {
 }
 
 /**
+ * Configure the following properties on the Banner component.
+ *
  * @publicDocs
  */
 interface Banner {
@@ -4683,6 +4687,8 @@ interface Banner {
 }
 
 /**
+ * Configure the following properties on the Box component.
+ *
  * @publicDocs
  */
 interface Box {
@@ -4795,6 +4801,8 @@ interface ButtonEvents {
 }
 
 /**
+ * Configure the following properties on the Button component.
+ *
  * @publicDocs
  */
 interface Button {
@@ -4855,6 +4863,8 @@ interface Button {
 }
 
 /**
+ * Configure the following properties on the Choice component.
+ *
  * @publicDocs
  */
 interface Choice {
@@ -4896,6 +4906,8 @@ interface ChoiceListEvents {
 }
 
 /**
+ * Configure the following properties on the ChoiceList component.
+ *
  * @publicDocs
  */
 interface ChoiceList {
@@ -4927,6 +4939,8 @@ interface ClickableEvents {
 }
 
 /**
+ * Configure the following properties on the Clickable component.
+ *
  * @publicDocs
  */
 interface Clickable {
@@ -4964,6 +4978,8 @@ interface DateFieldEvents {
 }
 
 /**
+ * Configure the following properties on the DateField component.
+ *
  * @publicDocs
  */
 interface DateField {
@@ -5019,6 +5035,8 @@ interface DatePickerEvents {
 }
 
 /**
+ * Configure the following properties on the DatePicker component.
+ *
  * @publicDocs
  */
 interface DatePicker {
@@ -5058,6 +5076,8 @@ interface DateSpinnerEvents {
 }
 
 /**
+ * Configure the following properties on the DateSpinner component.
+ *
  * @publicDocs
  */
 interface DateSpinner {
@@ -5074,6 +5094,8 @@ interface DateSpinner {
 }
 
 /**
+ * Configure the following properties on the Divider component.
+ *
  * @publicDocs
  */
 interface Divider {
@@ -5126,6 +5148,8 @@ interface EmailFieldSlots {
 }
 
 /**
+ * Configure the following properties on the EmailField component.
+ *
  * @publicDocs
  */
 interface EmailField {
@@ -5174,6 +5198,8 @@ interface EmailField {
 }
 
 /**
+ * Configure the following properties on the Heading component.
+ *
  * @publicDocs
  */
 interface Heading {
@@ -5184,6 +5210,8 @@ interface Heading {
 }
 
 /**
+ * Configure the following properties on the Icon component.
+ *
  * @publicDocs
  */
 interface Icon {
@@ -5218,6 +5246,8 @@ interface Icon {
 }
 
 /**
+ * Configure the following properties on the Image component.
+ *
  * @publicDocs
  */
 interface Image {
@@ -5283,6 +5313,8 @@ interface ModalSlots {
 }
 
 /**
+ * Configure the following properties on the Modal component.
+ *
  * @publicDocs
  */
 interface Modal {
@@ -5331,6 +5363,8 @@ interface NumberFieldSlots {
 }
 
 /**
+ * Configure the following properties on the NumberField component.
+ *
  * @publicDocs
  */
 interface NumberField {
@@ -5421,6 +5455,8 @@ interface PageSlots {
 }
 
 /**
+ * Configure the following properties on the Page component.
+ *
  * @publicDocs
  */
 interface Page {
@@ -5452,6 +5488,8 @@ interface PosBlockSlots {
 }
 
 /**
+ * Configure the following properties on the PosBlock component.
+ *
  * @publicDocs
  */
 interface PosBlock {
@@ -5466,6 +5504,8 @@ interface PosBlock {
 }
 
 /**
+ * Configure the following properties on the QRCode component.
+ *
  * @publicDocs
  */
 interface QrCode {
@@ -5480,6 +5520,8 @@ interface QrCode {
 }
 
 /**
+ * Configure the following properties on the ScrollBox component.
+ *
  * @publicDocs
  */
 interface ScrollBox {
@@ -5604,6 +5646,8 @@ interface SearchFieldEvents {
 }
 
 /**
+ * Configure the following properties on the SearchField component.
+ *
  * @publicDocs
  */
 interface SearchField {
@@ -5639,6 +5683,8 @@ interface SectionSlots {
 }
 
 /**
+ * Configure the following properties on the Section component.
+ *
  * @publicDocs
  */
 interface Section {
@@ -5653,6 +5699,8 @@ interface Section {
 }
 
 /**
+ * Configure the following properties on the Stack component.
+ *
  * @publicDocs
  */
 interface Stack {
@@ -5797,6 +5845,8 @@ interface Stack {
 }
 
 /**
+ * Configure the following properties on the Text component.
+ *
  * @publicDocs
  */
 interface Text {
@@ -5878,6 +5928,8 @@ interface TextAreaSlots {
 }
 
 /**
+ * Configure the following properties on the TextArea component.
+ *
  * @publicDocs
  */
 interface TextArea {
@@ -5966,6 +6018,8 @@ interface TextFieldSlots {
 }
 
 /**
+ * Configure the following properties on the TextField component.
+ *
  * @publicDocs
  */
 interface TextField {
@@ -6014,6 +6068,8 @@ interface TextField {
 }
 
 /**
+ * The tile component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
  * @publicDocs
  */
 interface TileEvents {
@@ -6024,6 +6080,8 @@ interface TileEvents {
 }
 
 /**
+ * Configure the following properties on the Tile component.
+ *
  * @publicDocs
  */
 interface Tile {
@@ -6085,6 +6143,8 @@ interface TimeFieldEvents {
 }
 
 /**
+ * Configure the following properties on the TimeField component.
+ *
  * @publicDocs
  */
 interface TimeField {
@@ -6140,6 +6200,8 @@ interface TimePickerEvents {
 }
 
 /**
+ * Configure the following properties on the TimePicker component.
+ *
  * @publicDocs
  */
 interface TimePicker {

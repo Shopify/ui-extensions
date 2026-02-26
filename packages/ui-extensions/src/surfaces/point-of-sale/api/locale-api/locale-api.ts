@@ -1,6 +1,8 @@
 import type {ReadonlySignalLike} from '../../../../shared';
 
 /**
+ * The `LocaleApi` object provides access to current locale information and change notifications. Access these properties through `api.locale` to retrieve and monitor locale data.
+ *
  * @publicDocs
  */
 export interface LocaleApiContent {

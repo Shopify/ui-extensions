@@ -37,6 +37,8 @@ export interface ProductSearchParams extends PaginationParams {
 }
 
 /**
+ * The `ProductSearchApi` object provides properties for searching and fetching product data. Access these properties through `api.productSearch` to perform product searches and lookups.
+ *
  * @publicDocs
  */
 export interface ProductSearchApiContent {

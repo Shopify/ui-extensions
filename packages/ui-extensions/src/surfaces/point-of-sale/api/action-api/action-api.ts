@@ -1,4 +1,6 @@
 /**
+ * The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `api.action` to launch full-screen modal experiences.
+ *
  * @publicDocs
  */
 export interface ActionApiContent {

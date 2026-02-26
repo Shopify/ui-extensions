@@ -1,6 +1,8 @@
 import {PinPadOptions, PinValidationResult} from '../types/pin-pad';
 
 /**
+ * The `PinPadApi` object provides methods for displaying secure PIN entry interfaces. Access these methods through `api.pinPad` to show PIN pad modals and handle PIN validation.
+ *
  * @publicDocs
  */
 export interface PinPadApiContent {

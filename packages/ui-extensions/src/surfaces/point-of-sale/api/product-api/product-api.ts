@@ -6,6 +6,8 @@ export interface ProductApi {
 }
 
 /**
+ * The `ProductApi` object provides access to product data. Access these properties through `api.product` to interact with the current product context.
+ *
  * @publicDocs
  */
 export interface ProductApiContent {

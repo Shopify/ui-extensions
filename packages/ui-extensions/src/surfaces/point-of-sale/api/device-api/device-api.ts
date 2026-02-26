@@ -1,4 +1,6 @@
 /**
+ * The `DeviceApi` object provides access to device information and capabilities. Access these properties through `api.device` to retrieve device details and check device characteristics.
+ *
  * @publicDocs
  */
 export interface DeviceApiContent {
