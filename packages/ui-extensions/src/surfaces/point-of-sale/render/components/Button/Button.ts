@@ -7,7 +7,11 @@ export type ButtonType =
   /** @deprecated No longer supported as of POS 10.0.0. */
   | 'plain';
 
-/** @publicDocs */
+/**
+ * Configure the following properties on the Button component.
+ *
+ * @publicDocs
+ */
 export interface ButtonProps {
   /**
    * The text set on the button. When using a button for action (menu item) targets, the title will be ignored. The text on the menu item will be the extension's description.

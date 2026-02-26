@@ -1,6 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-/** @publicDocs */
+/**
+ * Configure the following properties on the DatePicker component.
+ *
+ * @publicDocs
+ */
 export interface DatePickerProps {
   /**
    * The currently selected date value. Defaults to the current date when not specified.

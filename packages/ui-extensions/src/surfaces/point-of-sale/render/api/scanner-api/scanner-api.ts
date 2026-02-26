@@ -23,7 +23,11 @@ export interface ScannerSubscriptionResult {
   source?: ScannerSource;
 }
 
-/** @publicDocs */
+/**
+ * The `ScannerApi` object provides access to scanning functionality and scanner source information. Access these properties through `api.scanner` to monitor scan events and available scanner sources.
+ *
+ * @publicDocs
+ */
 export interface ScannerApiContent {
   /**
    * Subscribe to scan events to receive barcode and QR code data when scanned. Supports one subscription at a time. Use for receiving real-time scan results.

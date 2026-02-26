@@ -17,7 +17,11 @@ export interface CameraScannerBannerProps {
   visible: boolean;
 }
 
-/** @publicDocs */
+/**
+ * Configure the following properties on the CameraScanner component.
+ *
+ * @publicDocs
+ */
 export interface CameraScannerProps {
   /**
    * An optional banner configuration object that displays contextual messages during scanning operations.

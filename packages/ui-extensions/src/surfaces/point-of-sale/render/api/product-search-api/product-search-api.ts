@@ -36,7 +36,11 @@ export interface ProductSearchParams extends PaginationParams {
   sortType?: ProductSortType;
 }
 
-/** @publicDocs */
+/**
+ * The `ProductSearchApi` object provides properties for searching and fetching product data. Access these properties through `api.productSearch` to perform product searches and lookups.
+ *
+ * @publicDocs
+ */
 export interface ProductSearchApiContent {
   /**
    * Searches for products on the POS device using text queries and sorting options. Returns paginated results with up to 50 products per page. When a query string is provided, results are sorted by relevance. Use for implementing custom search interfaces, product discovery features, or filtered product listings.

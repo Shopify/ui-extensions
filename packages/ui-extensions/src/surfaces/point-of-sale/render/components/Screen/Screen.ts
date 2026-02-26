@@ -28,7 +28,11 @@ export interface SecondaryActionProps {
   isEnabled?: boolean;
 }
 
-/** @publicDocs */
+/**
+ * Configure the following properties on the Screen component.
+ *
+ * @publicDocs
+ */
 export interface ScreenProps {
   /**
    * The unique identifier used to identify this screen as a destination in the navigation stack.
