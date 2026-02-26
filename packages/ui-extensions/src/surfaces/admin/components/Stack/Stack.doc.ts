@@ -36,16 +36,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'stack-default.png',
+    description:
+      'Create a vertical stack to arrange items with consistent spacing. This example shows badges stacked vertically with base gap spacing.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a vertical stack',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -54,79 +53,32 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Default vertical stacking layout with consistent spacing between text elements.',
+              'Set `direction` to inline to arrange items horizontally. This example shows badges laid out side by side with spacing between them.',
             codeblock: {
-              title: 'Basic block stack (vertical)',
-              tabs: [
-                {
-                  code: './examples/basic-block-stack-vertical.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-block-stack-vertical.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Horizontal layout for arranging badges or similar elements side by side.',
-            codeblock: {
-              title: 'Inline stack (horizontal)',
+              title: 'Arrange items horizontally with an inline stack',
               tabs: [
                 {
                   code: './examples/inline-stack-horizontal.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/inline-stack-horizontal.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Advanced responsive layout that changes direction and spacing based on container size.',
+              'Use `justifyContent` and `alignItems` to control how items are positioned within the stack. This example shows items distributed with space between them and vertically centered.',
             codeblock: {
-              title: 'Responsive stack with container queries',
-              tabs: [
-                {
-                  code: './examples/responsive-stack-with-container-queries.html',
-                  language: 'html',
-                  layout: 'fullWidth',
-                },
-
-                {
-                  code: './examples/responsive-stack-with-container-queries.jsx',
-                  language: 'preview-jsx',
-                  layout: 'fullWidth',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Horizontal stack with space-between justification and center alignment for balanced layouts.',
-            codeblock: {
-              title: 'Custom alignment',
+              title: 'Control item alignment and distribution',
               tabs: [
                 {
                   code: './examples/custom-alignment.html',
-                  language: 'html',
-                  layout: 'fullWidth',
-                },
-
-                {
-                  code: './examples/custom-alignment.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                   layout: 'fullWidth',
                 },
               ],
@@ -134,18 +86,29 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Stack with custom gap values and separate row/column gap controls for precise spacing.',
+              'Use `gap`, `rowGap`, and `columnGap` to fine-tune spacing between items in different directions. This example shows a stack with separate row and column gap values.',
             codeblock: {
-              title: 'Custom spacing',
+              title: 'Fine-tune spacing with row and column gaps',
               tabs: [
                 {
                   code: './examples/custom-spacing.html',
-                  language: 'html',
+                  language: 'preview',
+                  title: '',
                 },
-
+              ],
+            },
+          },
+          {
+            description:
+              'Use container queries to change the stack direction and gap based on available width. This example shows a stack that switches from vertical to horizontal when the container exceeds 500px.',
+            codeblock: {
+              title: 'Create a responsive stack with container queries',
+              tabs: [
                 {
-                  code: './examples/custom-spacing.jsx',
-                  language: 'preview-jsx',
+                  code: './examples/responsive-stack-with-container-queries.html',
+                  language: 'preview',
+                  title: '',
+                  layout: 'fullWidth',
                 },
               ],
             },

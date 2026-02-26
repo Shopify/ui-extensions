@@ -40,18 +40,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'ordered-list-default.png',
+    description:
+      'Wrap content in a query container to enable responsive styling based on the container\'s width. This example shows a box whose padding changes when the container exceeds 500px.',
     codeblock: {
-      title: '',
+      title: 'Add a responsive container',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-          layout: 'none',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
           layout: 'none',
         },
       ],
@@ -62,21 +59,18 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates the simplest way to use query container, wrapping content with a named container context.',
+              'Use `containerName` to target a specific query container when multiple containers are present. This example shows the same named container at two different widths (375px and 450px) to demonstrate how the responsive padding changes at the 400px breakpoint.',
             codeblock: {
-              title: 'Basic Usage',
+              title: 'Target a named container for responsive queries',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
