@@ -35,7 +35,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'Create a tooltip that provides supplementary information when a user hovers or focuses on a trigger element. This example shows a tooltip describing a toolbar button\'s action.',
+      "Create a tooltip that provides supplementary information when a user hovers or focuses on a trigger element. This example shows a tooltip describing a toolbar button's action.",
     codeblock: {
       title: 'Add a basic tooltip',
       tabs: [

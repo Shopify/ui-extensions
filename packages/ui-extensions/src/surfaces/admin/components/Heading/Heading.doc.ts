@@ -75,7 +75,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Configure the heading\'s ARIA role and visibility for assistive technologies. This example shows a heading with `accessibilityRole` set to presentation and `accessibilityVisibility` set to hidden, removing it from the document outline.',
+              "Configure the heading's ARIA role and visibility for assistive technologies. This example shows a heading with `accessibilityRole` set to presentation and `accessibilityVisibility` set to hidden, removing it from the document outline.",
             codeblock: {
               title: 'Customize accessibility roles and visibility',
               tabs: [
