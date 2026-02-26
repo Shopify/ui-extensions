@@ -40,17 +40,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'heading-default.png',
+    description:
+      'Create a heading to title a content section. This example shows the basic heading component with default styling and automatic heading level assignment.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a basic heading',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -59,76 +57,46 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Standard heading for section titles and page content organization that creates a simple, clean title for a content section.',
+              'Limit the number of visible lines in a heading using the `lineClamp` property. This example shows a heading truncated to two lines with an ellipsis, useful for long product names in constrained layouts.',
             codeblock: {
-              title: 'Basic heading',
-              tabs: [
-                {
-                  code: './examples/basic-heading.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-heading.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Truncated heading that limits text to a specified number of lines, using ellipsis to indicate additional content for long product names or constrained layouts.',
-            codeblock: {
-              title: 'Heading with line clamping',
+              title: 'Truncate long headings with line clamping',
               tabs: [
                 {
                   code: './examples/heading-with-line-clamping.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/heading-with-line-clamping.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Heading configured with custom ARIA roles and visibility settings to meet specific accessibility requirements or design constraints.',
+              'Configure the heading\'s ARIA role and visibility for assistive technologies. This example shows a heading with `accessibilityRole` set to presentation and `accessibilityVisibility` set to hidden, removing it from the document outline.',
             codeblock: {
-              title: 'Heading with custom accessibility',
+              title: 'Customize accessibility roles and visibility',
               tabs: [
                 {
                   code: './examples/heading-with-custom-accessibility.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/heading-with-custom-accessibility.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates nested heading structure that automatically adjusts heading levels (h2, h3, h4) based on the current section depth, ensuring proper semantic document structure.',
+              'Nest headings inside section components to automatically assign appropriate heading levels (h2, h3, h4). This example shows how the heading level increments with each nested section, creating proper document structure for screen readers.',
             codeblock: {
-              title: 'Heading within section hierarchy',
+              title: 'Create a heading hierarchy with nested sections',
               tabs: [
                 {
                   code: './examples/heading-within-section-hierarchy.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/heading-within-section-hierarchy.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

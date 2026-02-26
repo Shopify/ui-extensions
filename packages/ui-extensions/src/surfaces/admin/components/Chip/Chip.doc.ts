@@ -40,17 +40,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'chip-default.png',
+    description:
+      'Create a chip with a text label to categorize or tag content. This example shows the basic chip component with default styling.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a basic chip',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -59,94 +57,46 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Simple chip displaying product status without an icon.',
+              'Use color variants to control the visual emphasis of chips. This example shows subdued chips for secondary metadata, base chips for standard tags, and strong chips for important information.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Chip enhanced with an icon to provide visual context for the category.',
-            codeblock: {
-              title: 'With icon graphic',
-              tabs: [
-                {
-                  code: './examples/with-icon-graphic.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-icon-graphic.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates all three color variants for different levels of visual emphasis.',
-            codeblock: {
-              title: 'Color variants',
+              title: 'Set visual weight with color variants',
               tabs: [
                 {
                   code: './examples/color-variants.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/color-variants.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Common status indicators demonstrating chips in real-world product management scenarios.',
+              'Combine an icon with a text label to make chip meanings clearer at a glance. This example shows a chip with an icon in the graphic slot to visually reinforce the category.',
             codeblock: {
-              title: 'Product status',
+              title: 'Add an icon to reinforce meaning',
               tabs: [
                 {
-                  code: './examples/product-status.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/product-status.jsx',
-                  language: 'preview-jsx',
+                  code: './examples/with-icon-graphic.html',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates automatic text truncation for long content within a constrained width.',
+              'Display chips with long labels in constrained spaces. This example shows how chip text automatically truncates with an ellipsis when the content exceeds the container width.',
             codeblock: {
-              title: 'Text truncation',
+              title: 'Handle long text with truncation',
               tabs: [
                 {
                   code: './examples/text-truncation.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/text-truncation.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

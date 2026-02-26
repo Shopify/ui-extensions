@@ -41,17 +41,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'paragraph-default.png',
+    description:
+      'Create a paragraph with default styling for body text content. This example shows the basic paragraph component rendering a block of text.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a basic paragraph',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -60,130 +58,88 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple paragraph with default styling, showing how to use the paragraph component for standard text content.',
+              'Apply semantic tones to convey different types of information through color. This example shows all five tones—info, success, caution, warning, and critical—for common merchant-facing messages.',
             codeblock: {
-              title: 'Basic Usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Illustrates how to apply different tones and color variations to convey different types of information, such as informational and success messages.',
-            codeblock: {
-              title: 'With Tone and Color',
+              title: 'Communicate status with tones',
               tabs: [
                 {
                   code: './examples/with-tone-and-color.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-tone-and-color.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Shows how to limit the number of lines displayed using the lineClamp prop, which truncates long text with an ellipsis after the specified number of lines.',
+              'Limit the number of visible lines in a paragraph using the `lineClamp` property. This example shows a product description truncated to a single line with an ellipsis in a constrained container.',
             codeblock: {
-              title: 'Line Clamping',
+              title: 'Truncate long text with line clamping',
               tabs: [
                 {
                   code: './examples/line-clamping.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/line-clamping.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates the use of tabular numbers with fontVariantNumeric, ensuring consistent alignment and readability for numerical data.',
+              'Use `fontVariantNumeric` set to tabular-nums to render numbers with consistent widths for even alignment. This example shows tabular number formatting for financial data.',
             codeblock: {
-              title: 'Tabular Numbers',
+              title: 'Align numbers with tabular formatting',
               tabs: [
                 {
                   code: './examples/tabular-numbers.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/tabular-numbers.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates right-to-left (RTL) text rendering, showing how the paragraph component supports internationalization and different text directions.',
+              'Use `accessibilityVisibility` set to exclusive to create text that is only available to screen readers. This example shows a paragraph providing sort context that assistive technologies can announce.',
             codeblock: {
-              title: 'RTL Support',
-              tabs: [
-                {
-                  code: './examples/rtl-support.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/rtl-support.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows how to use the accessibilityVisibility prop to create text that is exclusively available to screen readers, improving accessibility for assistive technologies.',
-            codeblock: {
-              title: 'Screen Reader Text',
+              title: 'Add screen-reader-only text',
               tabs: [
                 {
                   code: './examples/screen-reader-text.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/screen-reader-text.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Showcases various tone and color combinations for different administrative messages, illustrating how paragraph can communicate different types of information in a user interface.',
+              'Use `color` set to subdued for secondary information like helper text, disclaimers, and supplementary descriptions. This example shows a subdued paragraph providing guidance below a form action.',
             codeblock: {
-              title: 'Admin UI Patterns',
+              title: 'De-emphasize secondary text with subdued color',
               tabs: [
                 {
-                  code: './examples/admin-ui-patterns.html',
-                  language: 'html',
+                  code: './examples/subdued-color.html',
+                  language: 'preview',
+                  title: '',
                 },
-
+              ],
+            },
+          },
+          {
+            description:
+              'Set the `dir` property to rtl for right-to-left languages like Arabic and Hebrew. This example shows a paragraph rendered in Arabic with right-to-left text direction.',
+            codeblock: {
+              title: 'Render right-to-left text',
+              tabs: [
                 {
-                  code: './examples/admin-ui-patterns.jsx',
-                  language: 'preview-jsx',
+                  code: './examples/rtl-support.html',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

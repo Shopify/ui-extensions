@@ -34,20 +34,15 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
+    description:
+      'Create a tooltip that provides supplementary information when a user hovers or focuses on a trigger element. This example shows a tooltip describing a toolbar button\'s action.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a basic tooltip',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-          layout: 'inline',
-          customStyles: {
-            minHeight: '200px',
-          },
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
           layout: 'inline',
           customStyles: {
             minHeight: '200px',
@@ -60,25 +55,18 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple tooltip that provides additional context for a text element when hovered or focused.',
+              'Attach a tooltip to inline text to provide a definition or additional context on hover. This example shows a tooltip triggered by a text label that explains the shipping status.',
             codeblock: {
-              title: 'Basic Usage',
+              title: 'Explain a term with a tooltip on text',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'html',
-                  layout: 'inline',
-                  customStyles: {
-                    minHeight: '200px',
-                  },
-                },
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                   layout: 'inline',
                   customStyles: {
                     minHeight: '200px',
@@ -89,21 +77,32 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              "Shows how to add a tooltip to an icon button, providing a clear explanation of the button's action when hovered.",
+              'Add a tooltip to an icon-only button to clarify its action for sighted users and provide an accessible description. This example shows an info button that displays a tooltip with product details on hover.',
             codeblock: {
-              title: 'With Icon Button',
+              title: 'Describe an icon-only button with a tooltip',
               tabs: [
                 {
                   code: './examples/with-icon-button.html',
-                  language: 'html',
+                  language: 'preview',
+                  title: '',
                   layout: 'inline',
                   customStyles: {
                     minHeight: '200px',
                   },
                 },
+              ],
+            },
+          },
+          {
+            description:
+              'Include a keyboard shortcut in a tooltip to help merchants discover faster ways to perform actions. This example shows a Save button with a tooltip that displays the keyboard shortcut.',
+            codeblock: {
+              title: 'Show a keyboard shortcut in a tooltip',
+              tabs: [
                 {
-                  code: './examples/with-icon-button.jsx',
-                  language: 'preview-jsx',
+                  code: './examples/keyboard-shortcut.html',
+                  language: 'preview',
+                  title: '',
                   layout: 'inline',
                   customStyles: {
                     minHeight: '200px',
