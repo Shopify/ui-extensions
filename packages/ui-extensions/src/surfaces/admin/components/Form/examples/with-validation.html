@@ -1,0 +1,7 @@
+<s-form>
+  <s-stack direction="block" gap="base">
+    <s-text-field label="Product title" name="title" required error="Product title is required"></s-text-field>
+    <s-number-field label="Price" name="price" min="0" step="0.01" prefix="$" error="Price must be greater than 0"></s-number-field>
+    <s-button variant="primary" accessibilityRole="submit">Create product</s-button>
+  </s-stack>
+</s-form>
