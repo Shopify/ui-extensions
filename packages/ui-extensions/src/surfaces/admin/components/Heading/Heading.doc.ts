@@ -41,7 +41,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'heading-default.png',
     description:
-      'Create a heading to title a content section. This example shows the basic heading component with default styling and automatic heading level assignment.',
+      'Create a heading for a content section. This example shows the basic heading component with default styling and automatic heading level assignment.',
     codeblock: {
       title: 'Add a basic heading',
       tabs: [
