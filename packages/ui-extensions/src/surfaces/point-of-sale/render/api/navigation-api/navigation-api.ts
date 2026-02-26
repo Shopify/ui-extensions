@@ -1,4 +1,8 @@
-/** @publicDocs */
+/**
+ * The global `navigation` object provides web-standard navigation functionality. Access these properties directly through the global `navigation` object to manage navigation within modal interfaces.
+ *
+ * @publicDocs
+ */
 export interface NavigationApiContent {
   /**
    * Navigate to a route in current navigation tree. Pushes the specified screen if it isn't present in the navigation tree, goes back to a created screen otherwise. Use for implementing multi-screen workflows with parameter passing between screens.

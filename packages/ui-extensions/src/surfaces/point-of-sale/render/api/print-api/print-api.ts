@@ -1,5 +1,6 @@
 /**
- * Access the print API for printing functionality
+ * The `PrintApi` object provides properties for triggering document printing. Access these properties through `api.print` to initiate print operations with various document types.
+ *
  * @publicDocs
  */
 export interface PrintApiContent {

@@ -264,7 +264,11 @@ export type IconTone =
   | 'icon-subnavigation-inactive' /** Inactive sub-navigation icon color. Use for unselected items in secondary navigation menus. */
   | 'icon-primary-pressed' /** Pressed primary icon color. Use for the pressed state of primary interactive icons. */;
 
-/** @publicDocs */
+/**
+ * Configure the following properties on the Icon component.
+ *
+ * @publicDocs
+ */
 export interface IconProps {
   /**
    * A name used to render the icon. Choose from the available icon set including commerce-specific symbols like `'cart'`, `'payment'`, `'search'`, navigation arrows, and system indicators.

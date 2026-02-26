@@ -2,7 +2,11 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 export type DialogType = 'default' | 'alert' | 'error' | 'destructive';
 
-/** @publicDocs */
+/**
+ * Configure the following properties on the Dialog component.
+ *
+ * @publicDocs
+ */
 export interface DialogProps {
   /**
    * The text displayed in the title of the dialog. This should be concise and clearly communicate the purpose or action being confirmed.
