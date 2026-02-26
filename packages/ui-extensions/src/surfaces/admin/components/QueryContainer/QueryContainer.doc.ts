@@ -41,7 +41,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'ordered-list-default.png',
     description:
-      'Wrap content in a query container to enable responsive styling based on the container\'s width. This example shows a box whose padding changes when the container exceeds 500px.',
+      "Wrap content in a query container to enable responsive styling based on the container's width. This example shows a box whose padding changes when the container exceeds 500px.",
     codeblock: {
       title: 'Add a responsive container',
       tabs: [
