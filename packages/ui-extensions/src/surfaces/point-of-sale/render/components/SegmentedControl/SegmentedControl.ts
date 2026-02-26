@@ -17,7 +17,11 @@ export interface Segment {
   disabled: boolean;
 }
 
-/** @publicDocs */
+/**
+ * Configure the following properties on the SegmentedControl component.
+ *
+ * @publicDocs
+ */
 export interface SegmentedControlProps {
   /**
    * An array of segment objects that define the available options in the segmented control.

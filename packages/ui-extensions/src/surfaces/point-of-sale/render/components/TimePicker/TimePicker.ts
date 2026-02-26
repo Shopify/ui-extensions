@@ -1,6 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-/** @publicDocs */
+/**
+ * Configure the following properties on the TimePicker component.
+ *
+ * @publicDocs
+ */
 export interface TimePickerProps {
   /**
    * The currently selected time value. Defaults to the current time when not specified.

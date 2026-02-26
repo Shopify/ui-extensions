@@ -5,7 +5,11 @@ export interface ProductApi {
   product: ProductApiContent;
 }
 
-/** @publicDocs */
+/**
+ * The `ProductApi` object provides access to product data. Access these properties through `api.product` to interact with the current product context.
+ *
+ * @publicDocs
+ */
 export interface ProductApiContent {
   /**
    * The unique identifier for the product. Use for product lookups, implementing product-specific functionality, and integrating with external systems.

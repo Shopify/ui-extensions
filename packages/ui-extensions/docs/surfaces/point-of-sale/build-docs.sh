@@ -47,10 +47,16 @@ fi
 
 # Make sure https://shopify.dev URLs are relative so they work in Spin.
 # See https://github.com/Shopify/generate-docs/issues/181
-run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
-sed_exit=$?
-if [ $sed_exit -ne 0 ]; then
-  fail_and_exit $sed_exit
+DOCS_JSON="./$DOCS_PATH/generated/generated_docs_data_v2.json"
+if [ ! -f "$DOCS_JSON" ]; then
+  DOCS_JSON="./$DOCS_PATH/generated/generated_docs_data.json"
+fi
+if [ -f "$DOCS_JSON" ]; then
+  run_sed 's/https:\/\/shopify.dev//gi' "$DOCS_JSON"
+  sed_exit=$?
+  if [ $sed_exit -ne 0 ]; then
+    fail_and_exit $sed_exit
+  fi
 fi
 
 # Generate targets.json
@@ -65,12 +71,18 @@ if [ -d $SHOPIFY_DEV_PATH ]; then
   mkdir -p $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION
   cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION
   # Replace 'unstable' with the exact API version in relative doc links
-  run_sed \
-    "s/\/docs\/api\/pos-ui-extensions\/unstable/\/docs\/api\/pos-ui-extensions\/$API_VERSION/gi" \
-    $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION/generated_docs_data.json
-  sed_exit=$?
-  if [ $sed_exit -ne 0 ]; then
-    fail_and_exit $sed_exit
+  DEST_DOCS_JSON="$SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION/generated_docs_data_v2.json"
+  if [ ! -f "$DEST_DOCS_JSON" ]; then
+    DEST_DOCS_JSON="$SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION/generated_docs_data.json"
+  fi
+  if [ -f "$DEST_DOCS_JSON" ]; then
+    run_sed \
+      "s/\/docs\/api\/pos-ui-extensions\/unstable/\/docs\/api\/pos-ui-extensions\/$API_VERSION/gi" \
+      "$DEST_DOCS_JSON"
+    sed_exit=$?
+    if [ $sed_exit -ne 0 ]; then
+      fail_and_exit $sed_exit
+    fi
   fi
   rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/pos-ui-extensions/$API_VERSION
 
