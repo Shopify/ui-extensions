@@ -32,17 +32,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'box-default.png',
+    description:
+      'Create a container with padding and optional visual styling. This example shows a plain box and a styled box with background, border, and rounded corners.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a content container',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -51,41 +49,18 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates creating a simple container with padding, base background, border, and rounded corners to group and highlight product information.',
+              'Use responsive padding values with container queries to adapt spacing based on available width. This example shows a shipping notice that adjusts its padding depending on the container size.',
             codeblock: {
-              title: 'Basic container',
-              tabs: [
-                {
-                  code: './examples/basic-container.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-container.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Illustrates using a box with responsive padding to create an adaptable container for shipping information that can adjust to different screen or container sizes.',
-            codeblock: {
-              title: 'Responsive shipping notice',
+              title: 'Adapt spacing with responsive padding',
               tabs: [
                 {
                   code: './examples/responsive-shipping-notice.html',
-                  language: 'html',
-                  layout: 'fullWidth',
-                },
-
-                {
-                  code: './examples/responsive-shipping-notice.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                   layout: 'fullWidth',
                 },
               ],
@@ -93,37 +68,42 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Shows how to use boxes with ARIA roles and visibility controls to create semantic, screen-reader-friendly status and informational messages.',
+              'Set the `accessibilityRole` property to `status` to create a live region. When your code updates the text inside this box , screen readers automatically announce the new content. Use this for any content that updates dynamically.',
             codeblock: {
-              title: 'Accessible status messages',
+              title: 'Announce dynamic updates with a live region',
               tabs: [
                 {
                   code: './examples/accessible-status-messages.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/accessible-status-messages.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates creating nested, hierarchical layouts using multiple boxes, showing how boxes can be combined to organize related content sections with different styling.',
+              'Set the `accessibilityVisibility` property to `exclusive` to hide content visually while keeping it available to screen readers. This example shows a box with pricing context that only assistive technology users can access.',
             codeblock: {
-              title: 'Nested hierarchical containers',
+              title: 'Add screen-reader-only content',
+              tabs: [
+                {
+                  code: './examples/screen-reader-only-content.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Nest boxes to create hierarchical layouts with distinct visual sections. This example shows an inventory status section and a product sales section organized as cards within a vertical stack.',
+            codeblock: {
+              title: 'Build nested card layouts',
               tabs: [
                 {
                   code: './examples/complex-merchant-dashboard-layout.html',
-                  language: 'html',
-                  layout: 'fullWidth',
-                },
-
-                {
-                  code: './examples/complex-merchant-dashboard-layout.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                   layout: 'fullWidth',
                 },
               ],

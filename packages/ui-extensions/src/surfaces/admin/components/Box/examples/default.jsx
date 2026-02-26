@@ -1,7 +1,0 @@
-<>
-  <s-box padding="base">Available for iPad, iPhone, and Android.</s-box>
-
-  <s-box padding="base" background="subdued" border="base" borderRadius="base">
-    Available for iPad, iPhone, and Android.
-  </s-box>
-</>
