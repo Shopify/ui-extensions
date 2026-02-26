@@ -117800,23 +117800,18 @@
     ],
     "defaultExample": {
       "image": "badge-default.png",
+      "description": "Create badges with different tones to represent statuses. This example shows the tones `auto` (implicit default), `info`, `success`, `caution`, `warning`, and `critical`.",
       "codeblock": {
-        "title": "Code",
+        "title": "Add status badges with tones",
         "tabs": [
           {
-            "title": "jsx",
-            "code": "&lt;&gt;\n  &lt;s-badge&gt;Fulfilled&lt;/s-badge&gt;\n  &lt;s-badge tone=\"info\"&gt;Draft&lt;/s-badge&gt;\n  &lt;s-badge tone=\"success\"&gt;Active&lt;/s-badge&gt;\n  &lt;s-badge tone=\"caution\"&gt;Open&lt;/s-badge&gt;\n  &lt;s-badge tone=\"warning\"&gt;On hold&lt;/s-badge&gt;\n  &lt;s-badge tone=\"critical\"&gt;Action required&lt;/s-badge&gt;\n&lt;/&gt;",
-            "language": "jsx",
+            "title": "html",
+            "code": "&lt;s-badge&gt;Fulfilled&lt;/s-badge&gt;\n&lt;s-badge tone=\"info\"&gt;Draft&lt;/s-badge&gt;\n&lt;s-badge tone=\"success\"&gt;Active&lt;/s-badge&gt;\n&lt;s-badge tone=\"caution\"&gt;Open&lt;/s-badge&gt;\n&lt;s-badge tone=\"warning\"&gt;On hold&lt;/s-badge&gt;\n&lt;s-badge tone=\"critical\"&gt;Action required&lt;/s-badge&gt;\n",
+            "language": "html",
             "editable": false
           },
           {
-            "code": "&lt;s-badge&gt;Fulfilled&lt;/s-badge&gt;\n&lt;s-badge tone=\"info\"&gt;Draft&lt;/s-badge&gt;\n&lt;s-badge tone=\"success\"&gt;Active&lt;/s-badge&gt;\n&lt;s-badge tone=\"caution\"&gt;Open&lt;/s-badge&gt;\n&lt;s-badge tone=\"warning\"&gt;On hold&lt;/s-badge&gt;\n&lt;s-badge tone=\"critical\"&gt;Action required&lt;/s-badge&gt;\n",
-            "language": "html",
-            "layout": "inline",
-            "title": "html"
-          },
-          {
-            "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<>\n  <s-badge>Fulfilled</s-badge>\n  <s-badge tone=\"info\">Draft</s-badge>\n  <s-badge tone=\"success\">Active</s-badge>\n  <s-badge tone=\"caution\">Open</s-badge>\n  <s-badge tone=\"warning\">On hold</s-badge>\n  <s-badge tone=\"critical\">Action required</s-badge>\n</>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+            "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><div id=\"wrapper-element\"><s-badge>Fulfilled</s-badge>\n<s-badge tone=\"info\">Draft</s-badge>\n<s-badge tone=\"success\">Active</s-badge>\n<s-badge tone=\"caution\">Open</s-badge>\n<s-badge tone=\"warning\">On hold</s-badge>\n<s-badge tone=\"critical\">Action required</s-badge>\n</div></body></html>",
             "language": "preview"
           }
         ]
@@ -117826,95 +117821,54 @@
       "description": "Component examples",
       "exampleGroups": [
         {
-          "title": "Basic usage",
+          "title": "",
           "examples": [
             {
-              "description": "Demonstrates how different badge tones can visually represent various order fulfillment states, enabling merchants to quickly understand order progress at a glance.",
+              "description": "Combine tones with icons to provide stronger visual cues. This example shows product and inventory status badges with icons that reinforce meaning.",
               "codeblock": {
-                "title": "Order status badges",
+                "title": "Add icons to status badges",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-stack direction=\"inline\" gap=\"base\"&gt;\n  &lt;s-badge tone=\"success\"&gt;Fulfilled&lt;/s-badge&gt;\n  &lt;s-badge tone=\"warning\"&gt;Partially fulfilled&lt;/s-badge&gt;\n  &lt;s-badge tone=\"neutral\"&gt;Unfulfilled&lt;/s-badge&gt;\n  &lt;s-badge tone=\"critical\"&gt;Cancelled&lt;/s-badge&gt;\n&lt;/s-stack&gt;",
-                    "language": "jsx"
-                  },
-                  {
-                    "title": "html",
-                    "code": "&lt;s-stack direction=\"inline\" gap=\"base\"&gt;\n  &lt;s-badge tone=\"success\"&gt;Fulfilled&lt;/s-badge&gt;\n  &lt;s-badge tone=\"warning\"&gt;Partially fulfilled&lt;/s-badge&gt;\n  &lt;s-badge tone=\"neutral\"&gt;Unfulfilled&lt;/s-badge&gt;\n  &lt;s-badge tone=\"critical\"&gt;Cancelled&lt;/s-badge&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "html",
-                    "editable": false
-                  },
-                  {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-stack direction=\"inline\" gap=\"base\">\n  <s-badge tone=\"success\">Fulfilled</s-badge>\n  <s-badge tone=\"warning\">Partially fulfilled</s-badge>\n  <s-badge tone=\"neutral\">Unfulfilled</s-badge>\n  <s-badge tone=\"critical\">Cancelled</s-badge>\n</s-stack>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
-                    "language": "preview"
-                  }
-                ]
-              }
-            },
-            {
-              "description": "Showcases how badges can incorporate both tones and icons to provide contextual information across different merchant scenarios, such as product management, inventory tracking, and payment status.",
-              "codeblock": {
-                "title": "Status indicators with icons",
-                "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-stack gap=\"base\"&gt;\n  {/* Product status */}\n  &lt;s-stack direction=\"inline\" gap=\"base\"&gt;\n    &lt;s-badge tone=\"success\" icon=\"view\"&gt;\n      Active\n    &lt;/s-badge&gt;\n    &lt;s-badge tone=\"warning\" icon=\"clock\"&gt;\n      Scheduled\n    &lt;/s-badge&gt;\n    &lt;s-badge tone=\"critical\"&gt;Archived&lt;/s-badge&gt;\n  &lt;/s-stack&gt;\n\n  {/* Inventory status */}\n  &lt;s-stack direction=\"inline\" gap=\"base\"&gt;\n    &lt;s-badge tone=\"success\"&gt;In stock&lt;/s-badge&gt;\n    &lt;s-badge tone=\"warning\" icon=\"alert-triangle\"&gt;\n      Low stock\n    &lt;/s-badge&gt;\n    &lt;s-badge tone=\"critical\"&gt;Out of stock&lt;/s-badge&gt;\n  &lt;/s-stack&gt;\n&lt;/s-stack&gt;",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-stack gap=\"base\"&gt;\n  &lt;!-- Product status --&gt;\n  &lt;s-stack direction=\"inline\" gap=\"base\"&gt;\n    &lt;s-badge tone=\"success\" icon=\"view\"&gt;Active&lt;/s-badge&gt;\n    &lt;s-badge tone=\"warning\" icon=\"clock\"&gt;Scheduled&lt;/s-badge&gt;\n    &lt;s-badge tone=\"critical\"&gt;Archived&lt;/s-badge&gt;\n  &lt;/s-stack&gt;\n\n  &lt;!-- Inventory status --&gt;\n  &lt;s-stack direction=\"inline\" gap=\"base\"&gt;\n    &lt;s-badge tone=\"success\"&gt;In stock&lt;/s-badge&gt;\n    &lt;s-badge tone=\"warning\" icon=\"alert-triangle\"&gt;Low stock&lt;/s-badge&gt;\n    &lt;s-badge tone=\"critical\"&gt;Out of stock&lt;/s-badge&gt;\n  &lt;/s-stack&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-stack gap=\"base\">\n  {/* Product status */}\n  <s-stack direction=\"inline\" gap=\"base\">\n    <s-badge tone=\"success\" icon=\"view\">\n      Active\n    </s-badge>\n    <s-badge tone=\"warning\" icon=\"clock\">\n      Scheduled\n    </s-badge>\n    <s-badge tone=\"critical\">Archived</s-badge>\n  </s-stack>\n\n  {/* Inventory status */}\n  <s-stack direction=\"inline\" gap=\"base\">\n    <s-badge tone=\"success\">In stock</s-badge>\n    <s-badge tone=\"warning\" icon=\"alert-triangle\">\n      Low stock\n    </s-badge>\n    <s-badge tone=\"critical\">Out of stock</s-badge>\n  </s-stack>\n</s-stack>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-stack gap=\"base\">\n  <!-- Product status -->\n  <s-stack direction=\"inline\" gap=\"base\">\n    <s-badge tone=\"success\" icon=\"view\">Active</s-badge>\n    <s-badge tone=\"warning\" icon=\"clock\">Scheduled</s-badge>\n    <s-badge tone=\"critical\">Archived</s-badge>\n  </s-stack>\n\n  <!-- Inventory status -->\n  <s-stack direction=\"inline\" gap=\"base\">\n    <s-badge tone=\"success\">In stock</s-badge>\n    <s-badge tone=\"warning\" icon=\"alert-triangle\">Low stock</s-badge>\n    <s-badge tone=\"critical\">Out of stock</s-badge>\n  </s-stack>\n</s-stack>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
               }
             },
             {
-              "description": "Illustrates how badges can be seamlessly integrated into table layouts to provide quick, visually distinct status indicators for individual table rows.",
+              "description": "Place badges inside [table cells](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/table) to give merchants a scannable overview of status information. This example shows fulfillment and payment badges in an order table.",
               "codeblock": {
-                "title": "Within table context",
+                "title": "Display badges in a table",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-table&gt;\n  &lt;s-table-header-row&gt;\n    &lt;s-table-header&gt;Order&lt;/s-table-header&gt;\n    &lt;s-table-header&gt;Fulfillment&lt;/s-table-header&gt;\n    &lt;s-table-header&gt;Payment&lt;/s-table-header&gt;\n  &lt;/s-table-header-row&gt;\n  &lt;s-table-body&gt;\n    &lt;s-table-row&gt;\n      &lt;s-table-cell&gt;#1001&lt;/s-table-cell&gt;\n      &lt;s-table-cell&gt;\n        &lt;s-badge tone=\"success\"&gt;Fulfilled&lt;/s-badge&gt;\n      &lt;/s-table-cell&gt;\n      &lt;s-table-cell&gt;\n        &lt;s-badge tone=\"success\"&gt;Paid&lt;/s-badge&gt;\n      &lt;/s-table-cell&gt;\n    &lt;/s-table-row&gt;\n  &lt;/s-table-body&gt;\n&lt;/s-table&gt;",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-table&gt;\n  &lt;s-table-header-row&gt;\n    &lt;s-table-header&gt;Order&lt;/s-table-header&gt;\n    &lt;s-table-header&gt;Fulfillment&lt;/s-table-header&gt;\n    &lt;s-table-header&gt;Payment&lt;/s-table-header&gt;\n  &lt;/s-table-header-row&gt;\n  &lt;s-table-body&gt;\n    &lt;s-table-row&gt;\n      &lt;s-table-cell&gt;#1001&lt;/s-table-cell&gt;\n      &lt;s-table-cell&gt;\n        &lt;s-badge tone=\"success\"&gt;Fulfilled&lt;/s-badge&gt;\n      &lt;/s-table-cell&gt;\n      &lt;s-table-cell&gt;\n        &lt;s-badge tone=\"success\"&gt;Paid&lt;/s-badge&gt;\n      &lt;/s-table-cell&gt;\n    &lt;/s-table-row&gt;\n  &lt;/s-table-body&gt;\n&lt;/s-table&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-table>\n  <s-table-header-row>\n    <s-table-header>Order</s-table-header>\n    <s-table-header>Fulfillment</s-table-header>\n    <s-table-header>Payment</s-table-header>\n  </s-table-header-row>\n  <s-table-body>\n    <s-table-row>\n      <s-table-cell>#1001</s-table-cell>\n      <s-table-cell>\n        <s-badge tone=\"success\">Fulfilled</s-badge>\n      </s-table-cell>\n      <s-table-cell>\n        <s-badge tone=\"success\">Paid</s-badge>\n      </s-table-cell>\n    </s-table-row>\n  </s-table-body>\n</s-table>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-table>\n  <s-table-header-row>\n    <s-table-header>Order</s-table-header>\n    <s-table-header>Fulfillment</s-table-header>\n    <s-table-header>Payment</s-table-header>\n  </s-table-header-row>\n  <s-table-body>\n    <s-table-row>\n      <s-table-cell>#1001</s-table-cell>\n      <s-table-cell>\n        <s-badge tone=\"success\">Fulfilled</s-badge>\n      </s-table-cell>\n      <s-table-cell>\n        <s-badge tone=\"success\">Paid</s-badge>\n      </s-table-cell>\n    </s-table-row>\n  </s-table-body>\n</s-table>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
               }
             },
             {
-              "description": "Demonstrates the two available badge sizes for creating visual hierarchy.",
+              "description": "Use the `size` property to create visual hierarchy between badges. This example shows the base size for standard usage and the large size for badges that need more prominence.",
               "codeblock": {
-                "title": "Different sizes for emphasis",
+                "title": "Control badge size for emphasis",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-stack direction=\"inline\" gap=\"base\"&gt;\n  &lt;s-badge size=\"base\"&gt;New&lt;/s-badge&gt;\n  &lt;s-badge size=\"large\"&gt;Attention needed&lt;/s-badge&gt;\n&lt;/s-stack&gt;",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-stack direction=\"inline\" gap=\"base\"&gt;\n  &lt;s-badge size=\"base\"&gt;New&lt;/s-badge&gt;\n  &lt;s-badge size=\"large\"&gt;Attention needed&lt;/s-badge&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-stack direction=\"inline\" gap=\"base\">\n  <s-badge size=\"base\">New</s-badge>\n  <s-badge size=\"large\">Attention needed</s-badge>\n</s-stack>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-stack direction=\"inline\" gap=\"base\">\n  <s-badge size=\"base\">New</s-badge>\n  <s-badge size=\"large\">Attention needed</s-badge>\n</s-stack>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
@@ -118197,22 +118151,18 @@
     ],
     "defaultExample": {
       "image": "banner-default.png",
+      "description": "Create an informational banner with a heading and body text. This example shows a basic banner communicating a status update that merchants can dismiss.",
       "codeblock": {
-        "title": "Code",
+        "title": "Add a dismissible info banner",
         "tabs": [
           {
-            "title": "jsx",
-            "code": "&lt;s-banner heading=\"Order archived\" tone=\"info\" dismissible&gt;\n  This order was archived on March 7, 2017 at 3:12pm EDT.\n&lt;/s-banner&gt;",
-            "language": "jsx",
+            "title": "html",
+            "code": "&lt;s-banner heading=\"Order archived\" tone=\"info\" dismissible&gt;\n  This order was archived on March 7, 2017 at 3:12pm EDT.\n&lt;/s-banner&gt;\n",
+            "language": "html",
             "editable": false
           },
           {
-            "code": "&lt;s-banner heading=\"Order archived\" tone=\"info\" dismissible&gt;\n  This order was archived on March 7, 2017 at 3:12pm EDT.\n&lt;/s-banner&gt;\n",
-            "language": "html",
-            "title": "html"
-          },
-          {
-            "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-banner heading=\"Order archived\" tone=\"info\" dismissible>\n  This order was archived on March 7, 2017 at 3:12pm EDT.\n</s-banner>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+            "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><div id=\"wrapper-element\"><s-banner heading=\"Order archived\" tone=\"info\" dismissible>\n  This order was archived on March 7, 2017 at 3:12pm EDT.\n</s-banner>\n</div></body></html>",
             "language": "preview"
           }
         ]
@@ -118222,118 +118172,54 @@
       "description": "Component examples",
       "exampleGroups": [
         {
-          "title": "Basic usage",
+          "title": "",
           "examples": [
             {
-              "description": "Demonstrates a simple informational banner used to communicate status updates or completed actions, providing clear and concise feedback to the user.",
+              "description": "Use a warning-toned banner with secondary action [buttons](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) to highlight a problem and give merchants clear next steps. This example shows a shipping weight issue with links to review products and access a setup guide.",
               "codeblock": {
-                "title": "Basic information banner",
+                "title": "Create a warning banner with buttons for next steps",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-banner heading=\"Order archived\"&gt;\n  This order was archived on March 7, 2017 at 3:12pm EDT.\n&lt;/s-banner&gt;",
-                    "language": "jsx"
-                  },
-                  {
-                    "title": "html",
-                    "code": "&lt;s-banner heading=\"Order archived\"&gt;\n  This order was archived on March 7, 2017 at 3:12pm EDT.\n&lt;/s-banner&gt;\n",
-                    "language": "html",
-                    "editable": false
-                  },
-                  {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-banner heading=\"Order archived\">\n  This order was archived on March 7, 2017 at 3:12pm EDT.\n</s-banner>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
-                    "language": "preview"
-                  }
-                ]
-              }
-            },
-            {
-              "description": "Illustrates a warning banner that highlights a potential issue and provides actionable buttons to help merchants resolve the problem quickly and effectively.",
-              "codeblock": {
-                "title": "Warning banner with specific actions",
-                "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-banner heading=\"127 products missing shipping weights\" tone=\"warning\"&gt;\n  Products without weights may show inaccurate shipping rates, leading to\n  checkout abandonment.\n  &lt;s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/products?filter=missing-weights\"\n  &gt;\n    Review products\n  &lt;/s-button&gt;\n  &lt;s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"javascript:void(0)\"\n  &gt;\n    Setup guide\n  &lt;/s-button&gt;\n&lt;/s-banner&gt;",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-banner heading=\"127 products missing shipping weights\" tone=\"warning\"&gt;\n  Products without weights may show inaccurate shipping rates, leading to\n  checkout abandonment.\n  &lt;s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/products?filter=missing-weights\"\n  &gt;\n    Review products\n  &lt;/s-button&gt;\n  &lt;s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"javascript:void(0)\"\n  &gt;\n    Setup guide\n  &lt;/s-button&gt;\n&lt;/s-banner&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-banner heading=\"127 products missing shipping weights\" tone=\"warning\">\n  Products without weights may show inaccurate shipping rates, leading to\n  checkout abandonment.\n  <s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/products?filter=missing-weights\"\n  >\n    Review products\n  </s-button>\n  <s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"javascript:void(0)\"\n  >\n    Setup guide\n  </s-button>\n</s-banner>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-banner heading=\"127 products missing shipping weights\" tone=\"warning\">\n  Products without weights may show inaccurate shipping rates, leading to\n  checkout abandonment.\n  <s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/products?filter=missing-weights\"\n  >\n    Review products\n  </s-button>\n  <s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"javascript:void(0)\"\n  >\n    Setup guide\n  </s-button>\n</s-banner>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
               }
             },
             {
-              "description": "Demonstrates an urgent banner design that signals a critical issue requiring immediate action, with clear and prominent secondary action buttons to guide merchants.",
+              "description": "Use a critical-toned banner to signal an urgent issue that requires immediate merchant action. This example shows a fraud review alert with [buttons](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) to review order details and adjust settings.",
               "codeblock": {
-                "title": "Critical banner with clear next steps",
+                "title": "Alert merchants to critical issues requiring action",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-banner heading=\"Order #1024 flagged for fraud review\" tone=\"critical\"&gt;\n  This order shows multiple risk indicators and cannot be auto-fulfilled. Review\n  required within 24 hours to prevent automatic cancellation.\n  &lt;s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/orders/1024/risk\"\n  &gt;\n    Review order details\n  &lt;/s-button&gt;\n  &lt;s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/settings/payments/fraud\"\n  &gt;\n    Adjust fraud settings\n  &lt;/s-button&gt;\n&lt;/s-banner&gt;",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-banner heading=\"Order #1024 flagged for fraud review\" tone=\"critical\"&gt;\n  This order shows multiple risk indicators and cannot be auto-fulfilled. Review\n  required within 24 hours to prevent automatic cancellation.\n  &lt;s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/orders/1024/risk\"\n  &gt;\n    Review order details\n  &lt;/s-button&gt;\n  &lt;s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/settings/payments/fraud\"\n  &gt;\n    Adjust fraud settings\n  &lt;/s-button&gt;\n&lt;/s-banner&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-banner heading=\"Order #1024 flagged for fraud review\" tone=\"critical\">\n  This order shows multiple risk indicators and cannot be auto-fulfilled. Review\n  required within 24 hours to prevent automatic cancellation.\n  <s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/orders/1024/risk\"\n  >\n    Review order details\n  </s-button>\n  <s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/settings/payments/fraud\"\n  >\n    Adjust fraud settings\n  </s-button>\n</s-banner>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-banner heading=\"Order #1024 flagged for fraud review\" tone=\"critical\">\n  This order shows multiple risk indicators and cannot be auto-fulfilled. Review\n  required within 24 hours to prevent automatic cancellation.\n  <s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/orders/1024/risk\"\n  >\n    Review order details\n  </s-button>\n  <s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/settings/payments/fraud\"\n  >\n    Adjust fraud settings\n  </s-button>\n</s-banner>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
               }
             },
             {
-              "description": "Success confirmation with dismiss option for completed operations.",
+              "description": "Use a success-toned banner with the `dismissible` property to confirm a completed operation. This example shows a product import confirmation that merchants can dismiss once acknowledged.",
               "codeblock": {
-                "title": "Dismissible success banner",
+                "title": "Confirm a completed action with a dismissible banner",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-banner heading=\"Products imported\" tone=\"success\" dismissible={true}&gt;\n  Successfully imported 50 products to your store.\n&lt;/s-banner&gt;",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-banner heading=\"Products imported\" tone=\"success\" dismissible=\"true\"&gt;\n  Successfully imported 50 products to your store.\n&lt;/s-banner&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-banner heading=\"Products imported\" tone=\"success\" dismissible={true}>\n  Successfully imported 50 products to your store.\n</s-banner>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
-                    "language": "preview"
-                  }
-                ]
-              }
-            },
-            {
-              "description": "Informational banner highlighting app updates with clear benefits and actions.",
-              "codeblock": {
-                "title": "Info banner with clear value proposition",
-                "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-banner heading=\"Point of Sale v2.4 available\" tone=\"info\" dismissible&gt;\n  New version includes faster checkout processing and inventory sync\n  improvements.\n  &lt;s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/apps/pos/changelog\"\n  &gt;\n    View changes\n  &lt;/s-button&gt;\n  &lt;s-button slot=\"secondary-actions\" variant=\"secondary\"&gt;\n    Install update\n  &lt;/s-button&gt;\n&lt;/s-banner&gt;",
-                    "language": "jsx"
-                  },
-                  {
-                    "title": "html",
-                    "code": "&lt;s-banner heading=\"Point of Sale v2.4 available\" tone=\"info\" dismissible&gt;\n  New version includes faster checkout processing and inventory sync\n  improvements.\n  &lt;s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/apps/pos/changelog\"\n  &gt;\n    View changes\n  &lt;/s-button&gt;\n  &lt;s-button slot=\"secondary-actions\" variant=\"secondary\"&gt;\n    Install update\n  &lt;/s-button&gt;\n&lt;/s-banner&gt;\n",
-                    "language": "html",
-                    "editable": false
-                  },
-                  {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-banner heading=\"Point of Sale v2.4 available\" tone=\"info\" dismissible>\n  New version includes faster checkout processing and inventory sync\n  improvements.\n  <s-button\n    slot=\"secondary-actions\"\n    variant=\"secondary\"\n    href=\"/admin/apps/pos/changelog\"\n  >\n    View changes\n  </s-button>\n  <s-button slot=\"secondary-actions\" variant=\"secondary\">\n    Install update\n  </s-button>\n</s-banner>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-banner heading=\"Products imported\" tone=\"success\" dismissible=\"true\">\n  Successfully imported 50 products to your store.\n</s-banner>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
@@ -134077,22 +133963,18 @@
     ],
     "defaultExample": {
       "image": "spinner-default.png",
+      "description": "Create a spinner with an accessibility label to indicate a loading state. This example shows an extra large spinner with a descriptive label for screen readers.",
       "codeblock": {
-        "title": "Code",
+        "title": "Add a loading spinner",
         "tabs": [
           {
-            "title": "jsx",
-            "code": "&lt;s-spinner accessibilityLabel=\"Loading\" size=\"large-100\" /&gt;",
-            "language": "jsx",
+            "title": "html",
+            "code": "&lt;s-spinner accessibilityLabel=\"Loading\" size=\"large-100\"&gt;&lt;/s-spinner&gt;\n",
+            "language": "html",
             "editable": false
           },
           {
-            "code": "&lt;s-spinner accessibilityLabel=\"Loading\" size=\"large-100\"&gt;&lt;/s-spinner&gt;\n",
-            "language": "html",
-            "title": "html"
-          },
-          {
-            "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-spinner accessibilityLabel=\"Loading\" size=\"large-100\" />) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+            "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><div id=\"wrapper-element\"><s-spinner accessibilityLabel=\"Loading\" size=\"large-100\"></s-spinner>\n</div></body></html>",
             "language": "preview"
           }
         ]
@@ -134102,72 +133984,54 @@
       "description": "Component examples",
       "exampleGroups": [
         {
-          "title": "Basic usage",
+          "title": "",
           "examples": [
             {
-              "description": "Standard loading spinner with accessibility label for screen readers.",
+              "description": "Use the `size` property to match the spinner to its context. This example shows all three sizes—base for inline use, large for section loading, and large-100 for full-page states.",
               "codeblock": {
-                "title": "Basic usage",
+                "title": "Use spinners of different sizes",
                 "tabs": [
                   {
-                    "title": "jsx",
-                    "code": "&lt;s-spinner accessibilityLabel=\"Loading content\" /&gt;",
-                    "language": "jsx"
-                  },
-                  {
                     "title": "html",
-                    "code": "&lt;s-spinner accessibilityLabel=\"Loading content\"&gt;&lt;/s-spinner&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "code": "&lt;s-stack direction=\"inline\" alignItems=\"center\" gap=\"large\"&gt;\n  &lt;s-spinner accessibilityLabel=\"Loading\" size=\"base\"&gt;&lt;/s-spinner&gt;\n  &lt;s-spinner accessibilityLabel=\"Loading\" size=\"large\"&gt;&lt;/s-spinner&gt;\n  &lt;s-spinner accessibilityLabel=\"Loading\" size=\"large-100\"&gt;&lt;/s-spinner&gt;\n&lt;/s-stack&gt;\n",
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-spinner accessibilityLabel=\"Loading content\" />) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-stack direction=\"inline\" alignItems=\"center\" gap=\"large\">\n  <s-spinner accessibilityLabel=\"Loading\" size=\"base\"></s-spinner>\n  <s-spinner accessibilityLabel=\"Loading\" size=\"large\"></s-spinner>\n  <s-spinner accessibilityLabel=\"Loading\" size=\"large-100\"></s-spinner>\n</s-stack>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
               }
             },
             {
-              "description": "Centered loading indicator with text in a section layout for content loading states.",
+              "description": "Center a spinner with a text label in a section to communicate when content is loading. This example shows a vertically stacked spinner and status message for a product list.",
               "codeblock": {
-                "title": "Loading state in section",
+                "title": "Show a loading state in a content section",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-stack alignItems=\"center\" gap=\"base\" padding=\"large\"&gt;\n  &lt;s-spinner accessibilityLabel=\"Loading products\" size=\"large\" /&gt;\n  &lt;s-text&gt;Loading products...&lt;/s-text&gt;\n&lt;/s-stack&gt;",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-stack alignItems=\"center\" gap=\"base\" padding=\"large\"&gt;\n  &lt;s-spinner accessibilityLabel=\"Loading products\" size=\"large\"&gt;&lt;/s-spinner&gt;\n  &lt;s-text&gt;Loading products...&lt;/s-text&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-stack alignItems=\"center\" gap=\"base\" padding=\"large\">\n  <s-spinner accessibilityLabel=\"Loading products\" size=\"large\" />\n  <s-text>Loading products...</s-text>\n</s-stack>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-stack alignItems=\"center\" gap=\"base\" padding=\"large\">\n  <s-spinner accessibilityLabel=\"Loading products\" size=\"large\"></s-spinner>\n  <s-text>Loading products...</s-text>\n</s-stack>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
               }
             },
             {
-              "description": "Compact inline loading indicator for form submissions and quick actions.",
+              "description": "Place a compact spinner inline with a text label for form submissions and quick actions. This example shows a horizontal layout with a spinner and saving status message.",
               "codeblock": {
-                "title": "Inline loading with text",
+                "title": "Display an inline loading indicator",
                 "tabs": [
-                  {
-                    "title": "jsx",
-                    "code": "&lt;s-stack direction=\"inline\" alignItems=\"center\" gap=\"small\"&gt;\n  &lt;s-spinner accessibilityLabel=\"Saving\" /&gt;\n  &lt;s-text&gt;Saving...&lt;/s-text&gt;\n&lt;/s-stack&gt;",
-                    "language": "jsx"
-                  },
                   {
                     "title": "html",
                     "code": "&lt;s-stack direction=\"inline\" alignItems=\"center\" gap=\"small\"&gt;\n  &lt;s-spinner accessibilityLabel=\"Saving\"&gt;&lt;/s-spinner&gt;\n  &lt;s-text&gt;Saving...&lt;/s-text&gt;\n&lt;/s-stack&gt;\n",
-                    "language": "html",
-                    "editable": false
+                    "language": "html"
                   },
                   {
-                    "code": "<!DOCTYPE html> <html> <head> <style> html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;} </style> <script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script> <script src=\"https://cdn.shopify.com/shopifycloud/jsx-builder/jsx-builder.min.js\"></script> </head>\n  <body><s-box padding=\"base\" id=\"wrapper-element\"></s-box><script> (function() { const {render, h, Fragment, Component, useState} = window.preact; const jsxCode = `const App = () => { return (<s-stack direction=\"inline\" alignItems=\"center\" gap=\"small\">\n  <s-spinner accessibilityLabel=\"Saving\" />\n  <s-text>Saving...</s-text>\n</s-stack>) };`; try { const {code} = window.sucrase.transform(jsxCode, { transforms: ['jsx'], jsxPragma: 'h', jsxFragmentPragma: 'Fragment', production: true }); const fn = new Function('h', 'Fragment', 'Component', 'useState', code + '; return App;'); const App = fn(h, Fragment, Component, useState); const target = document.getElementById('wrapper-element') || document.body; if (target) render(h(App), target); } catch(e) { console.error('JSX Transform Error:', e); const body = document.body; if (body) body.innerHTML = '<div style=\"color:red;padding:1rem;\">Error rendering example: ' + e.message + '</div>'; } })();\n    </script>\n</body>\n</html>\n",
+                    "code": "<!DOCTYPE html><html><head><style>html, body {height:100%} body {box-sizing: border-box; margin: 0; padding: 0.5rem; display: grid; place-items: center; gap: 0.5rem;}</style><script src=\"https://cdn.shopify.com/shopifycloud/polaris.js\"></script></head><body><s-box padding=\"base\" id=\"wrapper-element\"><s-stack direction=\"inline\" alignItems=\"center\" gap=\"small\">\n  <s-spinner accessibilityLabel=\"Saving\"></s-spinner>\n  <s-text>Saving...</s-text>\n</s-stack>\n</s-box></body></html>",
                     "language": "preview"
                   }
                 ]
