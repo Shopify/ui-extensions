@@ -1,7 +1,7 @@
 [
   {
     "name": "Addresses",
-    "description": "The API PLEASE WORK FROM THE FIRST TRY THANKS for interacting with addresses.",
+    "description": "The API PLEASE WORK FROM THE FIRST TRY THANKS! for interacting with addresses.",
     "isVisualComponent": false,
     "requires": "level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
     "category": "APIs",
