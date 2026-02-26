@@ -1,6 +1,0 @@
-<>
-  <s-tooltip id="shipping-status-tooltip">
-    <s-text>This order has shipping labels.</s-text>
-  </s-tooltip>
-  <s-text interestFor="shipping-status-tooltip">Shipping status</s-text>
-</>

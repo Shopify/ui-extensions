@@ -39,18 +39,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'text-default.png',
+    description:
+      'Create inline text elements with semantic types to add structure and meaning. This example shows strong text for a label paired with regular text for the value.',
     codeblock: {
-      title: 'Code',
+      title: 'Add inline text with emphasis',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-          layout: 'wrapped',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -59,172 +56,105 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Standard text content for general interface messaging and descriptions.',
+              'Apply semantic tones to signal different statuses inline. This example shows `success`, `critical`, and `warning` tones for common order and inventory states.',
             codeblock: {
-              title: 'Basic Usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Emphasized text for important messages and call-to-actions.',
-            codeblock: {
-              title: 'Strong Text',
-              tabs: [
-                {
-                  code: './examples/strong-text.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/strong-text.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Structured address text with proper semantic meaning for screen readers.',
-            codeblock: {
-              title: 'Semantic Address',
-              tabs: [
-                {
-                  code: './examples/semantic-address.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/semantic-address.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Monospace number formatting for consistent alignment in tables and financial data.',
-            codeblock: {
-              title: 'Tabular Numbers',
-              tabs: [
-                {
-                  code: './examples/tabular-numbers.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/tabular-numbers.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Color-coded text indicating different status states and semantic meanings.',
-            codeblock: {
-              title: 'Status Tones',
+              title: 'Communicate status with tones',
               tabs: [
                 {
                   code: './examples/status-tones.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/status-tones.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Text visible only to screen readers for providing additional context.',
+              'Set the `type` property to `address` to render contact information with proper semantic meaning. This example shows a formatted address that screen readers identify as address content.',
             codeblock: {
-              title: 'Accessibility Hidden Text',
+              title: 'Display a semantic address',
               tabs: [
                 {
-                  code: './examples/accessibility-hidden-text.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/accessibility-hidden-text.jsx',
-                  language: 'preview-jsx',
+                  code: './examples/semantic-address.html',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Text direction support for RTL languages like Arabic and Hebrew.',
+              'Set the `color` property to `subdued` for secondary metadata like timestamps and supplementary details. This example shows a subdued text element for a last-updated indicator.',
             codeblock: {
-              title: 'Right-to-Left Text',
-              tabs: [
-                {
-                  code: './examples/right-to-left-text.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/right-to-left-text.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Lower contrast text for secondary information and timestamps.',
-            codeblock: {
-              title: 'Subdued Color',
+              title: 'De-emphasize secondary information',
               tabs: [
                 {
                   code: './examples/subdued-color.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/subdued-color.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Text element associated with tooltips using the `interestFor` attribute to show additional information on hover or focus.',
+              'Set the `fontVariantNumeric` property to `tabular-nums` to render numbers with consistent widths for even alignment in data displays. This example shows tabular number formatting for a price.',
             codeblock: {
-              title: 'Interest For Association',
+              title: 'Align numbers with tabular formatting',
+              tabs: [
+                {
+                  code: './examples/tabular-numbers.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the `accessibilityVisibility` property to provide additional context for screen readers without affecting the visual layout. This example shows hidden text that communicates pricing context to assistive technologies.',
+            codeblock: {
+              title: 'Add screen-reader-only text',
+              tabs: [
+                {
+                  code: './examples/accessibility-hidden-text.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the `interestFor` property to connect text to a tooltip, displaying additional context on hover or focus. This example shows explanatory text that triggers a tooltip with SKU details.',
+            codeblock: {
+              title: 'Associate text with a tooltip',
               tabs: [
                 {
                   code: './examples/interest-for-association.html',
-                  language: 'html',
+                  language: 'preview',
+                  title: '',
                   customStyles: {
                     minHeight: '200px',
                   },
                 },
-
+              ],
+            },
+          },
+          {
+            description:
+              'Set the `dir` property to `rtl` for right-to-left languages like Arabic and Hebrew. This example shows text rendered in Arabic with right-to-left direction.',
+            codeblock: {
+              title: 'Render right-to-left text',
+              tabs: [
                 {
-                  code: './examples/interest-for-association.jsx',
-                  language: 'preview-jsx',
-                  customStyles: {
-                    minHeight: '200px',
-                  },
+                  code: './examples/right-to-left-text.html',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
