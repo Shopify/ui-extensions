@@ -10107,7 +10107,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$4@6786",
+                "name": "__@internals$4@6788",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -10851,7 +10851,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$3@6838",
+                "name": "__@internals$3@6840",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -12735,7 +12735,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$4@6786",
+                "name": "__@internals$4@6788",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -13297,7 +13297,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$2@6939",
+                "name": "__@internals$2@6941",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -13591,7 +13591,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$4@6786",
+                "name": "__@internals$4@6788",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -14218,7 +14218,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@dirtyStateSymbol@6983",
+                "name": "__@dirtyStateSymbol@6985",
                 "value": "boolean",
                 "description": "",
                 "isPrivate": true,
@@ -14227,7 +14227,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$1@6982",
+                "name": "__@internals$1@6984",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -15023,7 +15023,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "MethodDeclaration",
-                "name": "__@getFileInput@7020",
+                "name": "__@getFileInput@7022",
                 "value": "() => HTMLInputElement",
                 "description": "",
                 "isPrivate": true,
@@ -15032,7 +15032,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals@7019",
+                "name": "__@internals@7021",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -15041,7 +15041,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "MethodDeclaration",
-                "name": "__@setFiles@7018",
+                "name": "__@setFiles@7020",
                 "value": "(files: File[]) => void",
                 "description": "",
                 "isPrivate": true,
@@ -15535,7 +15535,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$4@6786",
+                "name": "__@internals$4@6788",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -19077,7 +19077,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@overlayActivator@7160",
+                "name": "__@overlayActivator@7162",
                 "value": "HTMLElement",
                 "description": "",
                 "isPrivate": true,
@@ -19086,7 +19086,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@overlayHidden@7159",
+                "name": "__@overlayHidden@7161",
                 "value": "boolean",
                 "description": "",
                 "isPrivate": true,
@@ -19095,7 +19095,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@overlayHideFrameId@7161",
+                "name": "__@overlayHideFrameId@7163",
                 "value": "number",
                 "description": "",
                 "isPrivate": true,
@@ -19468,7 +19468,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@abortController@7213",
+                "name": "__@abortController@7215",
                 "value": "AbortController",
                 "description": "",
                 "isPrivate": true,
@@ -19477,7 +19477,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@childrenRerenderObserver@7215",
+                "name": "__@childrenRerenderObserver@7217",
                 "value": "MutationObserver",
                 "description": "",
                 "isPrivate": true,
@@ -19486,7 +19486,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@dialog@7207",
+                "name": "__@dialog@7209",
                 "value": "HTMLDialogElement",
                 "description": "",
                 "isPrivate": true,
@@ -19495,7 +19495,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "MethodDeclaration",
-                "name": "__@dismiss@7208",
+                "name": "__@dismiss@7210",
                 "value": "() => void",
                 "description": "",
                 "isPrivate": true,
@@ -19504,7 +19504,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@focusedElement@7209",
+                "name": "__@focusedElement@7211",
                 "value": "HTMLElement",
                 "description": "",
                 "isPrivate": true,
@@ -19513,7 +19513,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "GetAccessor",
-                "name": "__@hasOpenChildModal@7203",
+                "name": "__@hasOpenChildModal@7205",
                 "value": "boolean",
                 "description": "",
                 "isPrivate": true,
@@ -19522,7 +19522,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "MethodDeclaration",
-                "name": "__@hide@7205",
+                "name": "__@hide@7207",
                 "value": "() => Promise<void>",
                 "description": "",
                 "isPrivate": true,
@@ -19531,7 +19531,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "GetAccessor",
-                "name": "__@isOpen@7206",
+                "name": "__@isOpen@7208",
                 "value": "boolean",
                 "description": "",
                 "isPrivate": true,
@@ -19540,7 +19540,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@nestedModals@7211",
+                "name": "__@nestedModals@7213",
                 "value": "Map<Modal, boolean>",
                 "description": "",
                 "isPrivate": true,
@@ -19549,7 +19549,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@onBackdropClick@7212",
+                "name": "__@onBackdropClick@7214",
                 "value": "(event: MouseEvent) => void",
                 "description": "",
                 "isPrivate": true,
@@ -19558,7 +19558,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@onChildModalChange@7214",
+                "name": "__@onChildModalChange@7216",
                 "value": "EventListenerOrEventListenerObject",
                 "description": "",
                 "isPrivate": true,
@@ -19567,7 +19567,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@onEscape@7210",
+                "name": "__@onEscape@7212",
                 "value": "(event: KeyboardEvent) => void",
                 "description": "",
                 "isPrivate": true,
@@ -19576,7 +19576,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@overlayActivator@7160",
+                "name": "__@overlayActivator@7162",
                 "value": "HTMLElement",
                 "description": "",
                 "isPrivate": true,
@@ -19585,7 +19585,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@overlayHidden@7159",
+                "name": "__@overlayHidden@7161",
                 "value": "boolean",
                 "description": "",
                 "isPrivate": true,
@@ -19594,7 +19594,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@overlayHideFrameId@7161",
+                "name": "__@overlayHideFrameId@7163",
                 "value": "number",
                 "description": "",
                 "isPrivate": true,
@@ -19603,7 +19603,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@shadowDomRerenderObserver@7216",
+                "name": "__@shadowDomRerenderObserver@7218",
                 "value": "MutationObserver",
                 "description": "",
                 "isPrivate": true,
@@ -19612,7 +19612,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "MethodDeclaration",
-                "name": "__@show@7204",
+                "name": "__@show@7206",
                 "value": "() => Promise<void>",
                 "description": "",
                 "isPrivate": true,
@@ -20073,7 +20073,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$4@6786",
+                "name": "__@internals$4@6788",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -20544,7 +20544,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$4@6786",
+                "name": "__@internals$4@6788",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -22106,7 +22106,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$4@6786",
+                "name": "__@internals$4@6788",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -22618,7 +22618,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@overlayActivator@7160",
+                "name": "__@overlayActivator@7162",
                 "value": "HTMLElement",
                 "description": "",
                 "isPrivate": true,
@@ -22627,7 +22627,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@overlayHidden@7159",
+                "name": "__@overlayHidden@7161",
                 "value": "boolean",
                 "description": "",
                 "isPrivate": true,
@@ -22636,7 +22636,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@overlayHideFrameId@7161",
+                "name": "__@overlayHideFrameId@7163",
                 "value": "number",
                 "description": "",
                 "isPrivate": true,
@@ -23323,7 +23323,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$4@6786",
+                "name": "__@internals$4@6788",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -24135,7 +24135,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@hasInitialValueSymbol@7434",
+                "name": "__@hasInitialValueSymbol@7436",
                 "value": "boolean",
                 "description": "",
                 "isPrivate": true,
@@ -24144,7 +24144,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$4@6786",
+                "name": "__@internals$4@6788",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -24153,7 +24153,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@usedFirstOptionSymbol@7433",
+                "name": "__@usedFirstOptionSymbol@7435",
                 "value": "boolean",
                 "description": "A flag used to determine if no value or defaultValue was set, in which case the first non-disabled option was used.\n\nThis is important because we need to use the placeholder in these situations, even though the first value will be submitted as part of the form.",
                 "isPrivate": true,
@@ -26023,7 +26023,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$4@6786",
+                "name": "__@internals$4@6788",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -26476,7 +26476,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@actualTableVariantSymbol@7509",
+                "name": "__@actualTableVariantSymbol@7511",
                 "value": "AddedContext<ActualTableVariant>",
                 "description": "",
                 "isPrivate": true,
@@ -26485,7 +26485,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@tableHeadersSharedDataSymbol@7510",
+                "name": "__@tableHeadersSharedDataSymbol@7512",
                 "value": "AddedContext<{ listSlot: ListSlotType; textContent: string; format: HeaderFormat; }[]>",
                 "description": "",
                 "isPrivate": true,
@@ -26967,7 +26967,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "GetAccessor",
-                "name": "__@headerFormatSymbol@7532",
+                "name": "__@headerFormatSymbol@7534",
                 "value": "HeaderFormat",
                 "description": "",
                 "isPrivate": true,
@@ -28216,7 +28216,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$4@6786",
+                "name": "__@internals$4@6788",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -28721,7 +28721,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$4@6786",
+                "name": "__@internals$4@6788",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -29734,7 +29734,7 @@
               {
                 "filePath": "src/surfaces/admin/components.ts",
                 "syntaxKind": "PropertyDeclaration",
-                "name": "__@internals$4@6786",
+                "name": "__@internals$4@6788",
                 "value": "ElementInternals",
                 "description": "",
                 "isPrivate": true,
@@ -30441,7 +30441,7 @@
     "name": "Account connection",
     "isOneColumnLayout": false,
     "overviewPreviewDescription": "Enable merchants to connect or disconnect their store from external accounts or services.",
-    "description": "The account connection component is used so merchants can connect or disconnect their store to various accounts. For example, if merchants want to use the Facebook sales channel, they need to connect their Facebook account to their Shopify store.\n\n  | Used to | Examples |\n  | --- | --- |\n  | Display connection status | Show if a sales channel is connected or disconnected |\n  | Allow merchants to disconnect accounts  | Enable merchants to disconnect from a marketing platform |\n\n  ---\n  \n\n  \n",
+    "description": "Many apps integrate with external services like marketing platforms, sales channels, or analytics providers. The account connection composition gives merchants a clear interface to connect or disconnect these integrations.\n\n  Display connection status, the connected account name, and provide actions to connect or disconnect. Place this composition in your settings or on a dedicated integrations page.\n",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Compositions",
@@ -30481,7 +30481,7 @@
     "name": "App card",
     "isOneColumnLayout": false,
     "overviewPreviewDescription": "Introduce and promote relevant apps to merchants within your app experience.",
-    "description": "App cards provide a consistent layout for presenting another app to merchants. They are used to highlight apps that can extend functionality or help merchants accomplish related tasks. App cards should educate merchants about the value of the suggested app and provide a clear, actionable way to learn more or install it.\n\n  | Used to | Examples |\n  | --- | --- |\n  | Suggest complementary apps | Recommend an email marketing app to subscription service users |\n  | Promote integrations | Highlight a social media scheduler that connects with your app |\n  | Guide merchants to explore new solutions | Introduce a reporting tool for advanced analytics |\n\n  ---\n  \n\n  \n",
+    "description": "Some tasks are better handled by specialized apps. The app card composition provides a consistent way to recommend complementary apps that extend your functionality or help merchants accomplish related tasks.\n\n  Use app cards to suggest integrations, recommend partners, or highlight apps that work well alongside yours. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.\n",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Compositions",
@@ -30521,7 +30521,7 @@
     "name": "Callout card",
     "isOneColumnLayout": false,
     "overviewPreviewDescription": "Encourage merchants to take action on new features or opportunities.",
-    "description": "Callout cards are used to encourage merchants to take an action related to a new feature or opportunity. They are most commonly displayed in the sales channels section of Shopify.\n \n  | Used to | Examples |\n  | --- | --- |\n  | Promote new features or integrations | Dismissible feature announcement |\n  | Drive adoption of app functionality | Common first actions |\n  ---\n",
+    "description": "When you release a new feature or want to highlight an opportunity, the callout card composition draws attention without being intrusive. It encourages merchants to take action with a clear message and prominent button.\n\n  Use callout cards sparingly to announce features, promote functionality, or guide merchants through common first actions. Remove them once merchants have engaged. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.\n",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Compositions",
@@ -30559,8 +30559,8 @@
   },
   {
     "name": "Details",
-    "overviewPreviewDescription": "Edit and view objects with efficient dual-column layout.",
-    "description": "The details page allows merchants to view, create and edit objects. Use the right column to provide editable fields, and the right column for supporting information such as status, metadata, and summaries.\n \n  | Used to | Examples |\n  | --- | --- |\n  | View, edit and create objects  | Discounts, shipping labels, newsletters, templates. |\n\n  ![Preview of the details page pattern](/assets/templated-apis-screenshots/admin/patterns/details-example.png)\n\n  This pattern uses `Badge`, `Box`, `Button`, `Grid`, `Heading`, `Image`, `Link`, `MoneyField`, `NumberField`, `SearchField`, `Section`, `Select`, `Stack`, `Switch`, `Table`, `TextArea`, `TextField`, `UnorderedList`, and `URLField` components.\n\n  ---\n\n  ## Design guidelines\n  Design details pages that enable users to create, view, and edit resource objects.\n\n  ### Navigation\n\n  * Users must be able to return to the previous page without using the browser button. To achieve this, your app can provide breadcrumbs or a Back button on the page.\n  * Use tabs sparingly for secondary navigation purposes when the nav menu isn't sufficient.\n    * Clicking a tab should only change the content below it, not above.\n    * Tabs should never wrap onto multiple lines.\n    * Navigating between tabs shouldn't cause the tabs to change position or move.\n    * Offer users clear and predictable action labels.\n\n  ---\n\n  ### Layout\n\n  * Design your app to be responsive and adapt to different screen sizes and devices. This ensures a seamless user experience across various platforms.\n  * Use looser spacing for low-density layouts. Use tighter spacing for high-density layouts.\n  * Always use the default width. Full width tends to waste space and make the page harder to parse\n  * In the primary column: Put information that defines the resource object\n  * In the secondary column: Put supporting information such as status, metadata, and summaries\n  * Arrange content in order of importance\n  * Group similar content in the same card\n  * Place unique page actions at the top of the actions list and typical object actions at the bottom\n\n  ---\n\n  ### Forms\n\n  * For more than five inputs, use sections with titles in one card or use multiple cards with headers.\n  * Form inputs should be saved using the App Bridge Contextual Save Bar API. This also applies to forms within max modals. Continuous data validation or auto-save for forms is consistent with the standard Shopify admin save UX.\n\n  ---\n\n  <style>\n    div[class*=\"CodeBlock-module-CodeBlock_\"] {\n      max-height: calc(100vh - 80px) !important;\n    }\n    div[class*=\"Tabs-module-TabsContent_\"] {\n      overflow: auto !important;\n    }\n    div[class*=\"Screenshot-module-Screenshot_\"] {\n      display: none !important;\n    }\n  </style>",
+    "overviewPreviewDescription": "From the index, edit and view individual resources within an efficient dual-column layout.",
+    "description": "From the index, merchants need to edit and view individual resources. For React Router-based Shopify apps, a resource type's details route file will use the pattern `app.[resource].$id.jsx`. For example, `app.product.$id.jsx` for managing a single product through your app.\n  \n  The details template provides an efficient dual-column layout that puts editable content front and center while keeping supporting information visible in the sidebar. Use the primary column for information that defines the resource. Use the secondary column for supporting information such as status, metadata, and summaries. Provide breadcrumb navigation so merchants can return to the previous page without using the browser back button.\n\n  The details pattern follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.\n  ",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Templates",
@@ -30600,7 +30600,7 @@
     "name": "Empty state",
     "isOneColumnLayout": false,
     "overviewPreviewDescription": "Provide guidance and encourage action when no data or items are available.",
-    "description": "Empty states are used when a list, table, or chart has no items or data to show. This is an opportunity to provide explanation or guidance to help merchants progress. The empty state component is intended for use when a full page in the admin is empty, and not for individual elements or areas in the interface.\n\n  | Used to | Examples |\n  | --- | --- |\n  | Offer a clear next step when no data is present | Prompt merchants to create their first campaign |\n  | Encourage activation of features | Suggest setting up a subscription plan when none exist |\n  ---\n",
+    "description": "Every app has moments when there's nothing to show yet and some action is required of the merchant before they can manage resources. The empty state composition turns these blank screens into opportunities by guiding merchants toward their first action.\n\n  Include a clear explanation of what will appear here and a prominent call-to-action to help merchants get started. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.\n",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Compositions",
@@ -30645,7 +30645,7 @@
     "name": "Footer help",
     "isOneColumnLayout": false,
     "overviewPreviewDescription": "Footer help is used to refer merchants to more information related to the product or feature they’re using.",
-    "description": "Footer help is used to refer merchants to more information related to the product or feature they’re using.\n\n  | Used to | Examples |\n  | --- | --- |\n  | Refer merchants to related help docs |  Learn more about [shipping zones]|\n  | Offer support as a secondary option  | [Contact us] about email marketing |\n\n  ---\n  \n\n  \n",
+    "description": "Merchants sometimes need more context than a page can provide. The footer help composition offers a subtle way to link to documentation, support, or related information at the bottom of a page.\n\n  Place footer help at the bottom of the page or section it relates to with clear, descriptive link text that tells merchants where they'll go. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.\n",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Compositions",
@@ -30688,8 +30688,8 @@
   },
   {
     "name": "Homepage",
-    "overviewPreviewDescription": "Design your app homepage for daily merchant value.",
-    "description": "The app URL specified in the Partner Dashboard should point to your app homepage. The home page of your app is the first thing merchants will see, and it should provide daily value to them. Design the page to provide status updates and show merchants what actions they can take.\n \n  | Used to | Examples |\n  | --- | --- |\n  | Teach merchants how to use the app | Onboarding, how-to guides |\n  | Display app functionalities | Call-to-actions to app features, resource tables |\n  | Show updates | Status banners, company news |\n\n  ![Preview of the homepage pattern](/assets/templated-apis-screenshots/admin/patterns/homepage-example.png)\n\n  This pattern uses `Badge`, `Banner`, `Box`, `Button`, `Checkbox`, `Clickable`, `Divider`, `Grid`, `Heading`, `Image`, `Link`, `Paragraph`, `Section`, `Stack`, and `Text` components.\n\n  ---\n\n  ## Design guidelines\n  Your app home page should be designed to provide users with relevant, timely information like quick statistics, status updates, or information that’s immediately actionable.\n\n  ### Onboarding\n\n  The onboarding experience quickly introduces users to your app's essential features. A good onboarding should be self-guided, easy to follow and make users feel they understand how the app works after finishing it. If the onboarding is long or complex, give users the option to complete it at a later time to avoid stopping their workflow.\n\n  * Onboarding must be brief and direct. Provide clear instructions and guide users to completion\n  * Only request information from users if it's necessary\n  * If your onboarding isn't essential, then make it dismissible\n  * Don't have more than five steps in your onboarding process. This can lead users to drop off and not use your app\n\n  ---\n\n  ### Visual design\n\n  * Design your app to be responsive and adapt to different screen sizes and devices. This ensures a seamless user experience across various platforms.\n  * Use looser spacing for low-density layouts. Use tighter spacing for high-density layouts.\n  * Use high-resolution photos and images to ensure a professional, high-quality experience.\n\n  ---\n\n  <style>\n    div[class*=\"CodeBlock-module-CodeBlock_\"] {\n      max-height: calc(100vh - 80px) !important;\n    }\n    div[class*=\"Tabs-module-TabsContent_\"] {\n      overflow: auto !important;\n    }\n    div[class*=\"Screenshot-module-Screenshot_\"] {\n      display: none !important;\n    }\n  </style>",
+    "overviewPreviewDescription": "The primary landing page for your app, providing quick access to key information and actions.",
+    "description": "The first thing merchants see when they open your app in App Home is a landing page, associated with the route file `app._index.jsx` in React Router-based Shopify apps.\n\n  It provides a clear entry point for merchants, and an opportunity to provide daily value through status updates, metrics, and clear actions merchants can take.  Surface key information at a glance like performance metrics, items needing attention, and onboarding guidance for new users.\n\n  The homepage pattern provides this foundation while following proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.\n",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Templates",
@@ -30727,8 +30727,8 @@
   },
   {
     "name": "Index",
-    "overviewPreviewDescription": "Manage objects efficiently with dynamic table actions.",
-    "description": "The index layout lets merchants view and manage all their objects at once in a table format. They can filter, sort and do quick actions on their objects. To prevent tables from becoming visually cluttered, reveal actions only when the row is hovered over or selected\n\n  | Used to | Examples |\n  | --- | --- |\n  | View all objects at once | Products, orders, customers, discounts |\n  | Perform bulk actions | Delete products, pause/activate campaigns |\n\n  ![Preview of the index pattern](/assets/templated-apis-screenshots/admin/patterns/index-example.png)\n\n  This pattern uses `Badge`, `Box`, `Button`, `Clickable`, `Grid`, `Heading`, `Image`, `Link`, `Paragraph`, `Section`, `Stack`, and `Table` components.\n\n  ---\n\n  ## Design guidelines\n  Design your index page so users can organize and take action on resource objects.\n\n  ### Navigation\n\n  * Users must be able to return to the previous page without using the browser button. To achieve this, your app can provide breadcrumbs or a Back button on the page.\n  * Offer users clear and predictable action labels.\n\n  ---\n\n  ### Layout\n\n  * Design your app to be responsive and adapt to different screen sizes and devices. This ensures a seamless user experience across various platforms.\n  * For resource index pages, use a full-width page. This is helpful when users are dealing with lists of data that have many columns.\n\n  ---\n\n  <style>\n          div[class*=\"CodeBlock-module-CodeBlock_\"] {\n        max-height: calc(100vh - 400px) !important;\n    }\n    div[class*=\"Tabs-module-TabsContent_\"] {\n      overflow: auto !important;\n    }\n    div[class*=\"Screenshot-module-Screenshot_\"] {\n      display: none !important;\n    }\n  </style>",
+    "overviewPreviewDescription": "Most apps need a way for merchants to manage collections of resources and perform actions on them.",
+    "description": "Most apps need a way for merchants to manage collections of resources and perform actions on them. For React Router-based Shopify apps, that index route file (`app.[resources].jsx`) should use a plural noun for the resource type. For example, `app.products.jsx` for managing products through your app. \n\n  The index pattern provides this foundation while following proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.\n  ",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Templates",
@@ -30768,7 +30768,7 @@
     "name": "Index table",
     "isOneColumnLayout": false,
     "overviewPreviewDescription": "Display and manage data with powerful table interactions.",
-    "description": "An index table displays a collection of objects of the same type, like orders or products. The main job of an index table is to help merchants get an at-a-glance of the objects to perform actions or navigate to a full-page representation of it.\n  | Used to | Examples |\n  | --- | --- |\n  | Display collections of similar objects | Products, orders, customers, discounts |\n  | Perform bulk actions | Delete products, pause/activate campaigns |\n  ---\n\n  ",
+    "description": "Most apps need a way for merchants to manage collections of items. The index table composition provides a scannable list with search, filtering, sorting, and bulk actions.\n\n  Use checkboxes for bulk selection, reveal row actions on hover, and include pagination for large data sets. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.\n  ",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Compositions",
@@ -30814,7 +30814,7 @@
     "name": "Interstitial nav",
     "isOneColumnLayout": false,
     "overviewPreviewDescription": "Provide deeper navigation by linking merchants to related pages within a section.",
-    "description": "Interstitial navigation is used to connect merchants to deeper pages—such as settings, features, or resources—within a section of your app. It helps keep navigation clean and focused by avoiding multiple nested items, making it easier for merchants to discover and access important functionality.\n \n  | Used to | Examples |\n  | --- | --- |\n  | Link to individual settings pages | Navigate from a settings overview to product settings or notification preferences |\n  | Connect to feature-specific pages | Direct merchants from campaign overview to reporting or automation setup |\n  | Guide merchants to supporting resources | Link to help documentation or integration guides from a central section |\n  | Simplify navigation structure | Reduce clutter by providing access to deeper pages without multi-level menus |\n  ---\n",
+    "description": "As your app grows, merchants need clear paths to deeper pages without cluttering your main navigation. The interstitial nav composition provides a clean way to link to settings, features, or resources within a section.\n\n  Use this pattern on pages that serve as hubs for related functionality, like a settings overview that links to individual settings pages. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details.\n",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Compositions",
@@ -30854,7 +30854,7 @@
     "name": "Media card",
     "isOneColumnLayout": false,
     "overviewPreviewDescription": "Present visual information alongside actionable, educational content.",
-    "description": "Media cards provide a consistent layout to present visual information to merchants. Visual media is used to provide additional context to the written information it's paired with.\n\n  | Used to | Examples |\n  | --- | --- |\n  | Educate merchants on key actions | Show how to connect a social account with a demo image |\n  | Provide clear calls to action | Show campaign preview with a \"Send campaign\" button |\n\n  ---\n  \n\n  \n",
+    "description": "The media card composition pattern pairs visual content (images, videos, illustrations) with actionable text to help merchants understand features or follow tutorials.\n\n  Use media cards on your homepage to introduce features, in settings to explain options, or anywhere visual context helps merchants make decisions. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.\n",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Compositions",
@@ -30894,7 +30894,7 @@
     "name": "Metrics card",
     "isOneColumnLayout": false,
     "overviewPreviewDescription": "Display key metrics, statistics, or trends at a glance.",
-    "description": "Metrics cards are used to highlight important numbers, statistics, or trends from your app, so merchants can quickly understand their activity and performance.\n  \n  \n  | Used to | Examples |\n  | --- | --- |\n  | Show app-specific metrics | Email open rates, active subscribers |\n  | Visualize user engagement | Social media followers, campaign clicks |\n  ---\n",
+    "description": "Merchants want to see how they're doing at a glance. The metrics card composition highlights important numbers, statistics, or trends so merchants can quickly understand their activity and performance.\n\n  Use metrics cards on your homepage or dashboard to surface the data merchants care about most. Include trend indicators when historical comparison adds context. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.\n",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Compositions",
@@ -30934,7 +30934,7 @@
     "name": "Resource list",
     "isOneColumnLayout": false,
     "overviewPreviewDescription": "A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.",
-    "description": "A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.\n.\n\n  | Used to | Examples |\n  | --- | --- |\n  | Display collections of similar resources |  Campaigns, subscribers, social posts, templates|\n  | Help merchants find and select items  | Search subscribers by email; Filter campaigns by status |\n  | Perform bulk actions on selected items  | Tag subscribers; Archive campaigns; Publish selected posts |\n\n  ---\n  \n\n  \n",
+    "description": "When merchants need to browse and select from a collection of similar items, a resource list provides a compact, scannable format. It helps merchants find an object and navigate to its full-page representation.\n\n  Use resource lists for smaller collections, or when you need a simpler selection interface within a card or modal. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.\n",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Compositions",
@@ -30977,8 +30977,8 @@
   },
   {
     "name": "Settings",
-    "overviewPreviewDescription": "Organize settings into categories for easy navigation.",
-    "description": "Make settings pages easy to scan by grouping related information in a logical order. For complex or lengthy settings, organize content into distinct, themed sections that link to their own pages.\n  | Used to | Examples |\n  | --- | --- |\n  | Find and change app settings | Membership settings, app appearance, set up theme blocks |\n\n  ![Preview of the settings pattern](/assets/templated-apis-screenshots/admin/patterns/settings-example.png)\n\n  This pattern uses `Box`, `Button`, `ChoiceList`, `Clickable`, `Divider`, `Grid`, `Heading`, `Icon`, `Paragraph`, `Section`, `Select`, `Stack`, and `TextField` components.\n\n  ---\n\n  ## Design guidelines\n  Design scannable settings pages with groups of related information placed in logical order.\n\n  ### Navigation\n\n  * Users must be able to return to the previous page without using the browser button. To achieve this, your app can provide breadcrumbs or a Back button on the page.\n  * Offer users clear and predictable action labels.\n\n  ---\n\n  ### Visual design\n\n  Design your app to be responsive and adapt to different screen sizes and devices. This ensures a seamless user experience across various platforms.\n\n  * Use looser spacing for low-density layouts. Use tighter spacing for high-density layouts.\n  * Use high-resolution photos and images to ensure a professional, high-quality experience.\n\n  ---\n\n  <style>\n    div[class*=\"CodeBlock-module-CodeBlock_\"] {\n      max-height: calc(100vh - 80px) !important;\n    }\n    div[class*=\"Tabs-module-TabsContent_\"] {\n      overflow: auto !important;\n    }\n    div[class*=\"Screenshot-module-Screenshot_\"] {\n      display: none !important;\n    }\n  </style>",
+    "overviewPreviewDescription": "All apps will have settings merchants will want to configure to control your app's behavior.",
+    "description": "All apps have settings merchants need to configure to control your app's behavior. For React Router-based Shopify apps, this will be defined in a route file like `app.settings.jsx`. \n  \n  The settings template organizes related options into logical groups that provide contextual help alongside form controls. It also leverages the Save Bar API to protect unsaved changes from being lost.\n\n  The settings pattern follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.\n  ",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Templates",
@@ -31018,7 +31018,7 @@
     "name": "Setup guide",
     "isOneColumnLayout": false,
     "overviewPreviewDescription": "Guide merchants through onboarding and setup with interactive checklists and progress tracking.",
-    "description": "Setup guide provides an interactive checklist to guide merchants through essential onboarding or configuration tasks. Progress is tracked visually, helping merchants complete all required steps and understand what remains.\n  | Used to | Examples |\n  | --- | --- |\n  | Onboard merchants | Initial app setup |\n  | Track completion of multi-step processes | Necessary setup steps |\n  ---\n",
+    "description": "New merchants need guidance to get started with your app. The setup guide composition provides an interactive checklist with visual progress tracking to walk them through essential onboarding or configuration tasks.\n\n  Use this composition on your homepage or a dedicated onboarding page. Mark tasks as complete when merchants finish them to reinforce progress. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.\n",
     "isVisualComponent": true,
     "category": "Patterns",
     "subCategory": "Compositions",
