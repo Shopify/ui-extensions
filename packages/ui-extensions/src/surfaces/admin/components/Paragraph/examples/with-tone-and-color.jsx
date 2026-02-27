@@ -1,9 +1,0 @@
-<s-section>
-  <s-paragraph tone="info" color="base">
-    Your order will be processed within 2-3 business days.
-  </s-paragraph>
-
-  <s-paragraph tone="success" color="subdued">
-    Payment successfully processed.
-  </s-paragraph>
-</s-section>
