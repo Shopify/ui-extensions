@@ -41,25 +41,16 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
+    image: 'menu-default.png',
+    description:
+      'Add a dropdown menu of actions triggered by a button. This example shows a menu with three icon buttons including a critical delete action.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a basic actions menu',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-          layout: 'alignStart',
-          customStyles: {
-            minHeight: '300px',
-          },
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
-          layout: 'alignStart',
-          customStyles: {
-            minHeight: '300px',
-          },
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -68,136 +59,74 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple menu with basic action buttons and shows how to link it to a trigger button.',
+              'Organize menu items into labeled groups so merchants can find related actions. This example shows two sections with headings separating product actions from export options.',
             codeblock: {
-              title: 'Basic Menu',
-              tabs: [
-                {
-                  code: './examples/basic-menu.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-menu.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '300px',
-                  },
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Illustrates a menu with icons for each action, providing visual context for different menu items and showing how to use the caret-down icon on the trigger button.',
-            codeblock: {
-              title: 'Menu with Icons',
-              tabs: [
-                {
-                  code: './examples/menu-with-icons.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/menu-with-icons.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '300px',
-                  },
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows how to organize menu items into logical sections with headings, helping to group related actions and improve menu readability.',
-            codeblock: {
-              title: 'Menu with Sections',
+              title: 'Organize items into sections',
               tabs: [
                 {
                   code: './examples/menu-with-sections.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/menu-with-sections.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '400px',
-                  },
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              "Demonstrates a menu with a mix of link-based buttons, standard buttons, and a disabled button, showcasing the menu's flexibility in handling different interaction states.",
+              'Mix link-based, standard, and disabled buttons in a single menu. This example shows a menu with a link that opens in a new tab, a disabled action, and a download link.',
             codeblock: {
-              title: 'Menu with Links and Disabled Items',
+              title: 'Add links and disabled items to a menu',
               tabs: [
                 {
                   code: './examples/menu-with-links-and-disabled-items.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/menu-with-links-and-disabled-items.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '300px',
-                  },
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              "Presents a comprehensive menu showing how to create sections with different action groups and include a critical action at the menu's root level.",
+              'Combine sections with root-level items to separate grouped actions from standalone ones like a destructive action. This example shows two sections for customer management alongside a root-level delete button.',
             codeblock: {
-              title: 'Actions menu with sections',
+              title: 'Mix sections with root-level actions',
               tabs: [
                 {
                   code: './examples/customer-actions-menu.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/customer-actions-menu.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '300px',
-                  },
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates a complex menu with nested sections, demonstrating how to organize multiple related actions with icons.',
+              'Build a settings-style menu with multiple sections and a standalone action at the bottom. This example shows account and store settings sections with a root-level sign-out link.',
             codeblock: {
-              title: 'Menu with nested sections',
+              title: 'Build a settings menu with sections',
               tabs: [
                 {
                   code: './examples/settings-menu.html',
-                  language: 'html',
+                  language: 'preview',
+                  title: '',
                 },
-
+              ],
+            },
+          },
+          {
+            description:
+              'Use an icon-only button as the menu trigger for a compact "more actions" pattern. This example shows a three-dot icon button that opens a menu with common product actions.',
+            codeblock: {
+              title: 'Trigger a menu from an icon-only button',
+              tabs: [
                 {
-                  code: './examples/settings-menu.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '350px',
-                  },
+                  code: './examples/icon-only-trigger.html',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

@@ -1,3 +1,0 @@
-<s-clickable border="base" padding="base">
-  Click me
-</s-clickable>
