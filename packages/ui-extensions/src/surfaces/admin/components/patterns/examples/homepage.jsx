@@ -373,6 +373,7 @@ return (
                   <s-image
                     src="https://cdn.shopify.com/static/images/polaris/patterns/callout.png"
                     alt="Customize checkout illustration"
+                    inlineSize="fill"
                     aspectRatio="1/0.5"
                    />
                 </s-box>
@@ -405,6 +406,7 @@ return (
               accessibilityLabel="4-pieces puzzle template"
             >
               <s-image
+                inlineSize="fill"
                 aspectRatio="1/1"
                 objectFit="cover"
                 alt="4-pieces puzzle template"
@@ -440,6 +442,7 @@ return (
               accessibilityLabel="9-pieces puzzle template"
             >
               <s-image
+                inlineSize="fill"
                 aspectRatio="1/1"
                 objectFit="cover"
                 alt="9-pieces puzzle template"
@@ -475,6 +478,7 @@ return (
               accessibilityLabel="16-pieces puzzle template"
             >
               <s-image
+                inlineSize="fill"
                 aspectRatio="1/1"
                 objectFit="cover"
                 alt="16-pieces puzzle template"

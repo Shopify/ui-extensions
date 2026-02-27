@@ -24,6 +24,7 @@
           <s-image
             src="https://cdn.shopify.com/static/images/polaris/patterns/callout.png"
             alt="Customize checkout illustration"
+            inlineSize="fill"
             aspectRatio="1/0.5"
            />
         </s-box>

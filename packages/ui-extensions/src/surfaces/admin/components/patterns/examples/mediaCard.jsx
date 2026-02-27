@@ -6,6 +6,7 @@
 >
   <s-clickable href="">
     <s-image
+      inlineSize="fill"
       aspectRatio="1/1"
       objectFit="cover"
       alt="Illustration of characters with a 4-piece puzzle"
