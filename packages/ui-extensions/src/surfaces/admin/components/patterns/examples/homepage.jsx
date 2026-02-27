@@ -662,5 +662,12 @@ return (
           </s-grid>
         </s-section>
       )}
+
+    {/* Footer help */}
+    <s-stack alignItems="center" paddingBlock="large">
+      <s-text color="subdued">
+        Learn more about <s-link href="https://help.shopify.com" target="_blank">creating engaging puzzles</s-link>.
+      </s-text>
+    </s-stack>
 </s-page>
 )

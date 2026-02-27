@@ -10,11 +10,11 @@
     <!-- === -->
     <!-- Details page pattern -->
     <!-- === -->
-    <form data-save-bar>
+    <form>
       <s-page heading="Mountain view">
         <s-link slot="breadcrumb-actions" href="/app/puzzles">Puzzles</s-link>
         <s-button slot="secondary-actions">Duplicate</s-button>
-        <s-button slot="secondary-actions">Delete</s-button>
+        <s-button slot="secondary-actions" tone="critical">Delete</s-button>
         <!-- === -->
         <!-- Puzzle information -->
         <!-- === -->
@@ -222,7 +222,12 @@
             </s-unordered-list>
           </s-section>
         </s-box>
-      </s-page>
+      
+      <!-- Footer help -->
+      <s-stack alignItems="center" paddingBlock="large">
+        <s-text color="subdued">Learn more about <s-link href="https://help.shopify.com" target="_blank">puzzle best practices</s-link>.</s-text>
+      </s-stack>
+  </s-page>
     </form>
   </body>
 </html>

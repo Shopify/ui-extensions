@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Setup guide',
   isOneColumnLayout: false,
   overviewPreviewDescription:
@@ -13,9 +13,25 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Patterns',
   subCategory: 'Compositions',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/setupGuide.png',
+  usedComponents: [
+    'Box',
+    'Button',
+    'Checkbox',
+    'Divider',
+    'Grid',
+    'Heading',
+    'Image',
+    'Paragraph',
+    'Section',
+    'Stack',
+  ],
+  recommendedApis: ['Navigation API', 'Toast API'],
+  recommendedTemplates: ['Homepage'],
   defaultExample: {
+    description:
+      'New merchants need an interactive checklist to complete onboarding or setup tasks. This pattern guides merchants through setup with expandable steps and completion tracking. The [checkbox](/docs/api/app-home/polaris-web-components/forms/checkbox) tracks completion status. Each step includes a heading, description, illustration, and action button, with a progress indicator for overall completion.',
     codeblock: {
-      title: 'Setup guide',
+      title: 'Guide merchants through setup with expandable steps',
       tabs: [
         {
           title: 'html',
@@ -26,19 +42,64 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: 'examples/setupGuide.jsx',
           language: 'preview-jsx',
+          layout: 'compositionPattern',
         },
       ],
     },
   },
+  examples: {
+    description: `The examples below show how you can extend the setup guide with additional functionality:
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
+- [Navigation API](#example-navigate-to-step-actions): Navigate to relevant pages from step action buttons.
+- [Toast API](#example-show-step-completion-with-toast): Show feedback when merchants complete setup steps.`,
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Use `href` attributes on step action buttons to navigate merchants to relevant pages for completing each step.',
+            codeblock: {
+              title: 'Navigate to step actions',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/setupGuide-nav.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/setupGuide-nav.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the [Toast API](/docs/api/app-home/apis/toast) to show feedback when merchants complete setup steps.',
+            codeblock: {
+              title: 'Show step completion with Toast',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/setupGuide-toast.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/setupGuide-toast.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;

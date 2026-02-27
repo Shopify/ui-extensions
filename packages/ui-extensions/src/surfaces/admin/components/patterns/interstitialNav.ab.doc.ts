@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Interstitial nav',
   isOneColumnLayout: false,
   overviewPreviewDescription:
@@ -14,9 +14,22 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Compositions',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/patterns/interstitialNav.png',
+  usedComponents: [
+    'Box',
+    'Clickable',
+    'Divider',
+    'Grid',
+    'Heading',
+    'Icon',
+    'Paragraph',
+    'Section',
+  ],
+  recommendedTemplates: ['Settings'],
   defaultExample: {
+    description:
+      'Merchants need clear paths to deeper pages (e.g. settings, features) without cluttering main navigation. This pattern displays a navigation menu with drill-down rows. [Clickable](/docs/api/app-home/polaris-web-components/actions/clickable) rows sit in a bordered [box](/docs/api/app-home/polaris-web-components/layout-and-structure/box). Each row uses the [icon](/docs/api/app-home/polaris-web-components/images/icon) with `name="chevron-right"` to indicate navigation.',
     codeblock: {
-      title: 'Interstitial nav',
+      title: 'Display a navigation menu with drill-down rows',
       tabs: [
         {
           title: 'html',
@@ -27,19 +40,11 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: 'examples/interstitialNav.jsx',
           language: 'preview-jsx',
+          layout: 'compositionPattern',
         },
       ],
     },
   },
-
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

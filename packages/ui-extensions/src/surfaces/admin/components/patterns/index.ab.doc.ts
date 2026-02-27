@@ -1,6 +1,6 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Index',
   overviewPreviewDescription:
     'Most apps need a way for merchants to manage collections of resources and perform actions on them.',
@@ -11,10 +11,43 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   category: 'Patterns',
   subCategory: 'Templates',
+  isOneColumnLayout: true,
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/index.png',
+  usedComponents: [
+    'Badge',
+    'Box',
+    'Button',
+    'ButtonGroup',
+    'Checkbox',
+    'Choice',
+    'ChoiceList',
+    'Grid',
+    'Heading',
+    'Icon',
+    'Image',
+    'Link',
+    'Paragraph',
+    'Popover',
+    'Section',
+    'Stack',
+    'Table',
+    'TableBody',
+    'TableCell',
+    'TableHeader',
+    'TableHeaderRow',
+    'TableRow',
+    'Text',
+    'TextField',
+    'Thumbnail',
+    'Tooltip',
+  ],
+  recommendedApis: ['Intents API', 'Modal API', 'Navigation API', 'Toast API'],
+  recommendedCompositions: ['Empty state', 'Footer help', 'Metrics card'],
   defaultExample: {
+    description:
+      'Merchants need to manage a collection of resources and perform actions on them. This example displays an index table for a Product Quality Auditor app with filter tabs, search, sortable columns, bulk selection, and bulk actions. The table shows product thumbnails, quality scores, issue counts, and status badges.',
     codeblock: {
-      title: 'Index',
+      title: 'Display an index table with filters, search, and bulk actions',
       tabs: [
         {
           title: 'html',
@@ -25,19 +58,46 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: './examples/index.jsx',
           language: 'preview-jsx',
+          layout: 'templatePattern',
+          customStyles: {
+            minHeight: '400px',
+          },
         },
       ],
     },
   },
+  examples: {
+    description: `The examples below show how you can extend the index template with additional functionality:
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
+- [Intents API](#example-make-empty-states-actionable-using-intents): Open native Shopify editors to create resources without leaving your app.`,
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Use the [Intents API](/docs/api/app-home/apis/intents) to open native Shopify interfaces for creating products directly from an empty state.',
+            codeblock: {
+              title: 'Make empty states actionable using Intents',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/index-intents.jsx',
+                  language: 'preview-jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: './examples/index-intents.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
