@@ -40,17 +40,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'section-default.png',
+    description:
+      'Create a section with a heading to group related content. This example shows a basic section with a title and description text.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a content section with a heading',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-          layout: 'page',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
           layout: 'page',
         },
       ],
@@ -60,76 +58,60 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a level 1 section with a heading and multiple form fields. This example shows how sections provide visual hierarchy and structure for input elements.',
+              'Use a section with a heading and form fields to group related inputs. This example shows a customer information form with text and email fields inside a top-level section.',
             codeblock: {
-              title: 'Top-Level Section with Form Elements',
+              title: 'Group form fields in a section',
               tabs: [
                 {
                   code: './examples/top-level-section-with-form-elements.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/top-level-section-with-form-elements.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates how sections can be nested to create a hierarchical layout, with each nested section automatically adjusting its visual style. This example demonstrates the automatic visual leveling of nested sections.',
+              'Nest sections to create visual and semantic hierarchy that automatically adjusts heading levels and styling. This example shows three levels of nesting for order details, customer information, and a billing address.',
             codeblock: {
-              title: 'Nested Sections with Visual Level Differences',
+              title: 'Create nested sections with automatic visual hierarchy',
               tabs: [
                 {
                   code: './examples/nested-sections-with-visual-level-differences.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/nested-sections-with-visual-level-differences.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Shows how to add an accessibility label to a section, providing an additional hidden heading for screen readers while maintaining a visible heading.',
+              'Use the `accessibilityLabel` property to provide screen readers with additional context beyond the visible heading. This example shows a payment summary section and a label describing the contents of the section.',
             codeblock: {
-              title: 'Section with Accessibility Label',
+              title: 'Add an accessibility label for screen readers',
               tabs: [
                 {
                   code: './examples/section-with-accessibility-label.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/section-with-accessibility-label.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates using a section with `padding="none"` to create a full-width layout, ideal for displaying tables or other content that requires edge-to-edge rendering.',
+              'Set the `padding` property to `none` so that content like tables can extend to the section edges. This example shows a product table rendered full-width within a section.',
             codeblock: {
-              title: 'Full-width Content Layout',
+              title: 'Remove padding for full-width content',
               tabs: [
                 {
                   code: './examples/full-width-content-layout.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/full-width-content-layout.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

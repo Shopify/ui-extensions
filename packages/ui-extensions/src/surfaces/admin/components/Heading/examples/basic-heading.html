@@ -1,1 +1,0 @@
-<s-heading>Product details</s-heading>
