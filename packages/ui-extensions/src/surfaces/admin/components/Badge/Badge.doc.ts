@@ -41,7 +41,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'badge-default.png',
     description:
-      'Create badges with different tones to represent statuses. This example shows all available badge tones from `neutral` to `critical`.',
+      'Create badges with different tones to represent statuses. This example shows the tones `auto` (implicit default), `info`, `success`, `caution`, `warning`, and `critical`.',
     codeblock: {
       title: 'Add status badges with tones',
       tabs: [

@@ -36,7 +36,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'spinner-default.png',
     description:
-      'Create a spinner with an accessibility label to indicate a loading state. This example shows a large spinner with a descriptive label for screen readers.',
+      'Create a spinner with an accessibility label to indicate a loading state. This example shows an extra large spinner with a descriptive label for screen readers.',
     codeblock: {
       title: 'Add a loading spinner',
       tabs: [
