@@ -1,6 +1,0 @@
-<>
-  <s-tooltip id="info-tooltip">
-    SKU must be unique across all products and cannot be changed after creation
-  </s-tooltip>
-  <s-icon type="info" tone="info" interestFor="info-tooltip" />
-</>

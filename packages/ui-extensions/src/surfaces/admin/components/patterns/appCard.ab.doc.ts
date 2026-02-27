@@ -27,7 +27,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Homepage'],
   defaultExample: {
     description:
-      'This pattern uses [`s-clickable`](/docs/api/app-home/polaris-web-components/actions/clickable) as the card container to make the entire card tappable. The [`s-thumbnail`](/docs/api/app-home/polaris-web-components/images/thumbnail) displays the app icon, and [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) aligns the content.',
+      'This pattern displays a tappable app card with thumbnail and content layout. The [clickable](/docs/api/app-home/polaris-web-components/actions/clickable) component wraps the card, the [thumbnail](/docs/api/app-home/polaris-web-components/images/thumbnail) shows the app icon, and the [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) aligns the content.',
     codeblock: {
       title: 'App card',
       tabs: [

@@ -1,1 +1,0 @@
-<s-icon type="search" size="small" />

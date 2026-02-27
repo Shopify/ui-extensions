@@ -7,10 +7,10 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   type: 'API',
   requires:
-    'the [`FunctionSettings`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
+    'the [function settings](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/function-settings) component.',
   defaultExample: {
     description:
-      'Set preferred and fallback fulfillment locations with [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/textfield) inputs. This example applies two metafield changes in a single batch operation to configure location priority for order routing.',
+      'Set preferred and fallback fulfillment locations with [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/text-field) inputs. This example applies two metafield changes in a single batch operation to configure location priority for order routing.',
     codeblock: {
       title: 'Configure location priority',
       tabs: [

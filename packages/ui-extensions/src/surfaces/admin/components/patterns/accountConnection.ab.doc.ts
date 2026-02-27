@@ -8,7 +8,7 @@ const data: AdminReferenceEntityTemplateSchema = {
 
   description: `Many apps integrate with external services like marketing platforms, sales channels, or analytics providers. The account connection composition gives merchants a clear interface to connect or disconnect these integrations.
 
-  Display connection status, the connected account name, and provide actions to connect or disconnect. Place this composition in your settings or on a dedicated integrations page. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.
+  Display connection status, the connected account name, and provide actions to connect or disconnect. Place this composition in your settings or on a dedicated integrations page.
 `,
   isVisualComponent: true,
   category: 'Patterns',
@@ -28,7 +28,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Settings'],
   defaultExample: {
     description:
-      'This pattern uses [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) to align account information with a connect button. The [`s-section`](/docs/api/app-home/polaris-web-components/layout-and-structure/section) provides consistent padding and the terms text below informs merchants of the connection agreement.',
+      'This pattern displays account connection layout with a connect button and terms. The [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) aligns account information and button, the [section](/docs/api/app-home/polaris-web-components/layout-and-structure/section) provides padding, and the terms text below describes the connection agreement.',
     codeblock: {
       title: 'Account connection',
       tabs: [

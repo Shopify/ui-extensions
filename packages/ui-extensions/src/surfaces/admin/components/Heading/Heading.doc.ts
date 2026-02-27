@@ -7,39 +7,34 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Creating titles and subtitles for your content that are consistent across your app.
-- Helping users with visual impairments navigate through content effectively using assistive technologies like screen readers.`,
-    },
-    {
-      title: 'Considerations',
-      type: 'Generic' as const,
-      anchorLink: 'considerations',
-      sectionContent: `- The level of the heading is automatically determined by how deeply it's nested inside other components, starting from h2.
-- Default to using the \`heading\` property in \`s-section\`. The \`s-heading\` component should only be used if you need to implement a custom layout for your heading in the UI.`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use short headings to make your content scannable.
-- Use plain and clear terms.
-- Don't use jargon or technical language.
-- Don't use different terms to describe the same thing.
-- Don't duplicate content.`,
+      sectionContent: `- **Use headings to structure content hierarchy:** The component creates a clear outline of your interface that helps merchants navigate and understand content organization. Every major section should have a heading.
+- **Let the component handle semantic levels:** The component automatically assigns appropriate HTML heading levels (h2, h3, h4) based on nesting depth. This ensures proper document structure for screen readers without manual management.
+- **Write clear, descriptive headings:** Headings should clearly describe the section they introduce. Avoid vague headings like "Details" when "Product details" or "Customer details" would be clearer.
+- **Use line clamping sparingly:** Line clamping helps manage long headings in constrained spaces like cards, but truncated headings can hide important information. Only clamp when it's absolutely necessary.
+- **Maintain consistent styling within contexts:** Use similar heading styles for similar content types. For example, all card headings in a list should look the same.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- Heading levels (h2, h3, h4) are determined automatically based on nesting depth. You can't set a specific heading level, but you can remove heading semantics entirely by setting \`accessibilityRole\` to \`"presentation"\` or \`"none"\`.
+- Line clamping truncates text visually but doesn't provide a way to show the full heading text on hover or through other interactions. Truncated content might not be fully accessible to screen readers.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the heading component.',
       type: 'Heading',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The heading component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'HeadingSlots',
     },
   ],

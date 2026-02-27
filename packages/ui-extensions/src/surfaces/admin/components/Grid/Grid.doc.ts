@@ -9,25 +9,16 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Always configure layout properties when using Grid. At minimum, set gridTemplateColumns to define your column structure (e.g., repeat(12, 1fr) for a 12-column grid)
-- Use gap to add spacing between grid items rather than adding margins to individual items
-- Combine gridTemplateColumns with gridColumn on GridItem components to control how items span across columns`,
+      sectionContent: `- **Design for different screen sizes:** Layouts that work well on desktop often fail on mobile. Plan how your grid should reflow or reconfigure for smaller screens rather than creating a fixed layout that doesn't adapt.
+- **Keep spacing consistent:** Consistent spacing between grid items creates visual rhythm and makes layouts easier to scan. Avoid mixing different spacing approaches within the same grid.
+- **Consider content overflow:** Grid cells have fixed dimensions, but content length varies. Plan how your layout handles content that's too long or too wide, whether through wrapping, truncation, or scrolling.
+- **Use semantic alternatives when appropriate:** Before using the component, consider whether simpler layout components would work. Grid's power comes with complexity, so use it when you need its specific capabilities.`,
     },
     {
-      title: 'Useful for',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Building form layouts where you want more than one field on the same row.
-- Organizing content into a grid-like layout with columns and rows with consistent alignment and spacing.
-- Creating responsive layouts with consistent spacing.`,
-    },
-    {
-      title: 'Considerations',
-      type: 'Generic' as const,
-      anchorLink: 'considerations',
-      sectionContent: `- Grid doesn't include any padding by default. If you need padding around your grid, use \`base\` to apply the default padding.
-- Grid will allow children to overflow unless template rows/columns are properly set.
-- Grid will always wrap children to a new line. If you need to control the wrapping behavior, use \`s-stack\` or \`s-box\`.`,
+      anchorLink: 'limitations',
+      sectionContent: `- The component doesn't support CSS subgrid for aligning nested grid tracks with parent grids. If you need nested grids to align with parent grid lines, you'll need to manually coordinate the sizing or use a different layout approach.`,
     },
   ],
   thumbnail: '/assets/templated-apis-screenshots/admin/components/grid.png',
@@ -35,12 +26,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description: 'Configure the following properties on the grid component.',
       type: 'Grid',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The grid component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'GridSlots',
     },
     {
@@ -50,7 +42,8 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The grid item component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'GridItemSlots',
     },
   ],

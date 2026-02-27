@@ -1,0 +1,16 @@
+<s-function-settings>
+  <s-stack direction="block" gap="base">
+    <s-section heading="Tier 1">
+      <s-stack direction="inline" gap="base">
+        <s-number-field label="Minimum quantity" name="tier1Qty" value="5" min="1" step="1"></s-number-field>
+        <s-number-field label="Discount" name="tier1Discount" value="10" min="0" max="100" step="1" suffix="%"></s-number-field>
+      </s-stack>
+    </s-section>
+    <s-section heading="Tier 2">
+      <s-stack direction="inline" gap="base">
+        <s-number-field label="Minimum quantity" name="tier2Qty" value="10" min="1" step="1"></s-number-field>
+        <s-number-field label="Discount" name="tier2Discount" value="20" min="0" max="100" step="1" suffix="%"></s-number-field>
+      </s-stack>
+    </s-section>
+  </s-stack>
+</s-function-settings>

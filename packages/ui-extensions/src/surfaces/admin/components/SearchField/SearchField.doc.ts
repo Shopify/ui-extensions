@@ -11,35 +11,38 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- The SearchField automatically includes a clear button when text is entered, so you should not create your own clear button`,
+      sectionContent: `- **Use for inline search:** Choose the component for filtering content within specific sections or lists. For global navigation or complex multi-step searches, use a more robust search pattern.
+- **Make the search scope clear:** Users need to understand what they're searching through. Use specific labels and placeholders that explain what content will be searched and what attributes they can search by.
+- **Provide immediate feedback:** Show search results or filtered content as merchants type when possible. Immediate feedback helps merchants refine their search query and builds confidence in the search functionality.
+- **Handle empty states gracefully:** When the search field is cleared or returns no results, show appropriate messaging. For cleared searches, restore the full content list. For no results, suggest alternative actions or broaden the search criteria.
+- **Set appropriate search thresholds:** Prevent searches that would return overwhelming or meaningless results. Starting searches after 2-3 characters gives the system enough information to provide useful results.`,
     },
   ],
   definitions: [
     {
       title: 'SearchField',
       description:
-        'A search input field that allows users to enter a search term.',
+        'Configure the following properties on the search field component.',
       type: 'SearchField',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The search field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'SearchFieldEvents',
     },
   ],
   defaultExample: {
+    image: 'searchfield-default.png',
+    description:
+      'Add a search input so merchants can find items quickly. This example shows a search field with a visually hidden label and placeholder text.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a basic search field',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -48,76 +51,46 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a standard search input field for product discovery, with a clear label, name, and placeholder text to guide user interaction.',
+              'Display an error message when a search query is invalid or encounters a problem. This example shows a search field with a pre-filled query and a static error message.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              "Illustrates how the search field handles and displays an error state when no results are found or when there's a search-related issue.",
-            codeblock: {
-              title: 'With error state',
+              title: 'Show a search error',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates the appearance and behavior of a search field when it is disabled, preventing user interaction.',
+              'Disable a search field to prevent interaction when search is temporarily unavailable. This example shows a disabled search field with placeholder text explaining the state.',
             codeblock: {
-              title: 'Disabled state',
+              title: 'Disable a search field',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Showcases a search field with minimum and maximum character length constraints, providing guidance on input requirements.',
+              'Set minimum and maximum character lengths to control the search query length. This example shows a search field that requires at least 3 characters and allows up to 50.',
             codeblock: {
-              title: 'With character limits',
+              title: 'Set character length limits',
               tabs: [
                 {
                   code: './examples/with-character-limits.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-character-limits.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

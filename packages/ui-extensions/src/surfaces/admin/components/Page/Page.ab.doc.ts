@@ -11,47 +11,43 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Always provide a title that describes the current page
-- Include breadcrumbs when the page is part of a flow
-- Include page actions in the header only if they are relevant to the entire page
-- Include no more than one primary action and 3 secondary actions per page
-- Don't include any actions at the bottom of the page`,
+      sectionContent: `- Always provide a title that describes the current page.
+- Include breadcrumbs when the page is part of a flow.
+- Include page actions in the header only if they are relevant to the entire page.
+- Include no more than one primary action and 3 secondary actions per page.
+- Don't include any actions at the bottom of the page.`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `- Use sentence case and avoid unnecessary words
-- Don't include punctuation like periods or exclamation marks
-- Page titles should clearly communicate the page purpose
-- Page actions should use a verb or verb + noun phrase (e.g., "Create store", "Edit product")`,
+      anchorLink: 'limitations',
+      sectionContent: `- The \`inlineSize\` property only accepts \`small\`, \`base\` (default), or \`large\` values.
+- Breadcrumb actions only support link and button components.
+- The \`aside\` slot is only visible when \`inlineSize\` is set to \`large\`.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: 'Use as the outer wrapper of a page',
+      description: 'Configure the following properties on the page component.',
       type: 'Page',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The page component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'PageSlots',
     },
   ],
   defaultExample: {
-    image: 'ordered-list-default.png',
+    description:
+      'Create a consistent page structure with automatic spacing. This example combines a heading with organized content sections.',
     codeblock: {
-      title: '',
+      title: 'Organize content with sections',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-          layout: 'none',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
           layout: 'none',
         },
       ],
@@ -62,85 +58,45 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Shows a page with a clear heading and descriptive text, illustrating how to use the page component with a title.',
+              'Create a focused layout for forms and simple workflows. This example uses the `inlineSize="small"` setting for narrower content.',
             codeblock: {
-              title: 'Page with heading',
-              tabs: [
-                {
-                  code: './examples/page-with-heading.html',
-                  language: 'html',
-                  layout: 'none',
-                },
-                {
-                  code: './examples/page-with-heading.jsx',
-                  language: 'preview-jsx',
-                  layout: 'none',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Illustrates a page with a small inline size, ideal for focused, compact content like settings or forms with minimal information.',
-            codeblock: {
-              title: 'Small inline size for focused content',
+              title: 'Use small width for forms',
               tabs: [
                 {
                   code: './examples/small-inline-size-for-focused-content.html',
-                  language: 'html',
+                  language: 'preview',
                   layout: 'none',
-                },
-                {
-                  code: './examples/small-inline-size-for-focused-content.jsx',
-                  language: 'preview-jsx',
-                  layout: 'none',
-                  customStyles: {
-                    minHeight: '400px',
-                  },
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates a page with a large inline size, perfect for displaying broader content like analytics or dashboards with multiple information sections.',
+              'Display data-rich content like dashboards or analytics. This example uses the `inlineSize="large"` setting for wider layouts.',
             codeblock: {
-              title: 'Large inline size for wide content',
+              title: 'Use large width for dashboards',
               tabs: [
                 {
                   code: './examples/large-inline-size-for-wide-content.html',
-                  language: 'html',
+                  language: 'preview',
                   layout: 'none',
-                },
-                {
-                  code: './examples/large-inline-size-for-wide-content.jsx',
-                  language: 'preview-jsx',
-                  layout: 'none',
-                  customStyles: {
-                    minHeight: '400px',
-                  },
                 },
               ],
             },
           },
           {
             description:
-              'Shows a page with breadcrumb navigation and a descriptive heading, helping users understand their location in the navigation hierarchy.',
+              'Help merchants understand where they are in your app. This example adds a breadcrumb link back to a parent page.',
             codeblock: {
-              title: 'Page with breadcrumbs and title',
+              title: 'Add breadcrumb navigation',
               tabs: [
                 {
                   code: './examples/page-with-breadcrumbs-and-title.html',
-                  language: 'html',
-                  layout: 'none',
-                },
-                {
-                  code: './examples/page-with-breadcrumbs-and-title.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                   layout: 'none',
                 },
               ],
@@ -148,21 +104,35 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates a page with a primary action button and secondary action buttons, showing how to provide main and related actions alongside the page heading.',
+              'Provide quick access to common operations from the page header. This example adds primary and secondary action buttons.',
             codeblock: {
-              title: 'Page with primary and secondary actions',
+              title: 'Add page actions',
               tabs: [
                 {
                   code: './examples/page-with-secondary-actions.html',
-                  language: 'html',
+                  language: 'preview',
                   layout: 'none',
                 },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Complete workflow',
+        examples: [
+          {
+            description:
+              'Combine all page features for complex editing workflows. This example integrates breadcrumbs, actions, form content, and an aside panel.',
+            codeblock: {
+              title: 'Edit page with all slots',
+              tabs: [
                 {
-                  code: './examples/page-with-secondary-actions.jsx',
-                  language: 'preview-jsx',
+                  code: './examples/edit-page-with-all-slots.html',
+                  language: 'preview',
                   layout: 'none',
                   customStyles: {
-                    minHeight: '400px',
+                    minHeight: '500px',
                   },
                 },
               ],

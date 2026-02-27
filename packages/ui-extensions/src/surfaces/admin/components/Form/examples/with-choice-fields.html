@@ -1,0 +1,12 @@
+<s-form>
+  <s-stack direction="block" gap="base">
+    <s-text-field label="Discount code" name="code" required></s-text-field>
+    <s-select label="Discount type" name="type">
+      <s-option value="percentage">Percentage</s-option>
+      <s-option value="fixed">Fixed amount</s-option>
+      <s-option value="shipping">Free shipping</s-option>
+    </s-select>
+    <s-checkbox label="Apply to all products" name="allProducts" checked></s-checkbox>
+    <s-button variant="primary" type="submit">Create discount</s-button>
+  </s-stack>
+</s-form>

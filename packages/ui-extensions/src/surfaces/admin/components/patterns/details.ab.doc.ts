@@ -47,7 +47,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedCompositions: ['Footer help', 'Resource list'],
   defaultExample: {
     description:
-      "This example demonstrates the details template with a Product Quality Auditor app that scores product data for SEO and completeness. The main column contains editable fields that contribute to a product's quality score, while the sidebar displays its image and resulting score.",
+      'This example presents a product details view for a Product Quality Auditor app with editable quality score fields in the main column and image and score in the sidebar.',
     codeblock: {
       title: 'Details',
       tabs: [

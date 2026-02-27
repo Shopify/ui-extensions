@@ -5,11 +5,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   subSections: [
     {
-      title: 'Useful for',
+      title: 'Best practices',
       type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Separating elements inside sections.
-- Visually grouping related content in forms and lists.`,
+      anchorLink: 'best-practices',
+      sectionContent: `- **Use for truly distinct boundaries:** Dividers work best when separating fundamentally different content sections. Overusing dividers creates visual clutter and makes interfaces feel fragmented. Consider whether whitespace alone could achieve the same grouping.
+- **Match visual weight to hierarchy:** The divider's prominence should reflect the importance of the separation. Major section breaks can support stronger visual dividers, while minor groupings need subtler separation or just whitespace.
+- **Align with layout direction:** The divider's orientation should match your content flow. A horizontal divider between vertically stacked items or a vertical divider between horizontally arranged items creates clear, predictable separation.
+- **Prefer whitespace for subtle grouping:** Whitespace often provides cleaner visual grouping than dividers. Before adding a divider, try using spacing properties on your layout components. Dividers should enhance clarity, not replace thoughtful spacing.`,
     },
   ],
   thumbnail: '/assets/templated-apis-screenshots/admin/components/divider.png',
@@ -17,7 +19,8 @@ const data: AdminReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the divider component.',
       type: 'Divider',
     },
   ],

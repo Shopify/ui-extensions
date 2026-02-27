@@ -8,30 +8,27 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Accessing related actions in a consistent layout
-- Making secondary actions visible alongside primary actions`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Group together related calls to action
-- Avoid too many actions that may cause uncertainty
-- Consider how buttons will work on small screens`,
+      sectionContent: `- **Group related actions:** Organize related calls to action together to create clear action hierarchies and help merchants understand available options.
+- **Maintain visual hierarchy:** Use primary variants for main actions and secondary or tertiary variants for supporting actions to guide merchant attention.
+- **Limit action count:** Avoid including too many buttons, which can overwhelm merchants and create decision paralysis.
+- **Use segmented appearance for toggles:** Apply the segmented appearance for tightly related options like view switching or filter controls.
+- **Separate destructive actions:** Position destructive actions appropriately and use critical tone to prevent accidental activation.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the button group component.',
       type: 'ButtonGroup',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The button group component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ButtonGroupSlots',
     },
   ],

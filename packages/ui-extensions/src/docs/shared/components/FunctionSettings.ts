@@ -1,28 +1,13 @@
 import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
-  name: 'FunctionSettings',
+  name: 'Function settings',
   description:
-    'FunctionSettings should be used when configuring the metafield configuration of a Shopify Function. It provides a structure for various input fields and controls, such as text fields, checkboxes, and selections. It also integrates with the native Contextual Save Bar to handle form submission and reset actions.',
+    'The function settings component configures metafield settings for [Shopify Functions](/docs/api/functions). Use function settings to create configuration interfaces that allow merchants to customize function behavior through structured input fields and controls.' +
+    '\n\nThis component provides a standardized layout for settings forms and integrates with the native save bar to handle form submission and reset actions automatically. For general form submission, use [form](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/form).',
   category: 'Polaris web components',
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: '/docs/api/admin-extensions/components/forms/textfield',
-    },
-    {
-      type: 'component',
-      name: 'NumberField',
-      url: '/docs/api/admin-extensions/components/forms/numberfield',
-    },
-    {
-      type: 'component',
-      name: 'ChoiceList',
-      url: '/docs/api/admin-extensions/components/forms/choicelist',
-    },
-  ],
+  related: [],
 };
 
 export default data;

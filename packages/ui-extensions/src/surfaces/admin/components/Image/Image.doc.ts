@@ -16,16 +16,16 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use high-resolution, optimized images
-- Use intentionally to add clarity and guide users`,
+      sectionContent: `- Use high-resolution, optimized images.
+- Use intentionally to add clarity and guide users.`,
     },
     {
       title: 'Content guidelines',
       type: 'Generic' as const,
       anchorLink: 'content-guidelines',
       sectionContent: `Alt text should be accurate, concise, and descriptive:
-- Indicate it's an image: "Image of", "Photo of"
-- Focus on description: "Image of a woman with curly brown hair smiling"`,
+- Indicate it's an image: "Image of", "Photo of".
+- Focus on description: "Image of a woman with curly brown hair smiling".`,
     },
   ],
   definitions: [
@@ -37,23 +37,21 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The image component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ImageEvents',
     },
   ],
   defaultExample: {
     image: 'image-default.png',
+    description:
+      'Display a product thumbnail with metadata in a grid layout. This example demonstrates how to control image sizing with `aspectRatio`, `objectFit`, and `inlineSize`, and round corners with `borderRadius`.',
     codeblock: {
-      title: 'Code',
+      title: 'Display a product thumbnail',
       tabs: [
         {
-          code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          title: '',
+          code: './examples/basic-usage.html',
+          language: 'preview',
         },
       ],
     },
@@ -62,130 +60,74 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates the simplest implementation of an image component with a source and alt text.',
+              'Control image proportions with a fixed aspect ratio. This example displays a 16:9 image that scales to fill its container using `objectFit="cover"`, with lazy loading for performance.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Set an aspect ratio',
               tabs: [
                 {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows how to create a responsive image with a fixed 16:9 aspect ratio, set to cover the container, and loaded lazily.',
-            codeblock: {
-              title: 'Responsive layout with aspect ratio',
-              tabs: [
-                {
+                  title: '',
                   code: './examples/responsive-layout-with-aspect-ratio.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/responsive-layout-with-aspect-ratio.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates how to provide multiple image sources for different screen sizes and resolutions using srcSet and sizes attributes.',
+              'Set up responsive image sources using `srcSet` and `sizes`. This example demonstrates how to configure the browser to select appropriate image sources based on viewport width.',
             codeblock: {
-              title: 'Responsive images with srcset',
+              title: 'Use responsive images',
               tabs: [
                 {
+                  title: '',
                   code: './examples/responsive-images-with-srcset.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/responsive-images-with-srcset.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates how to apply border styling to an image, including width, style, color, and radius, using border-related properties.',
+              'Add visual emphasis with border styling. This example displays an image with border width, color, and rounded corners.',
             codeblock: {
-              title: 'With border styling',
+              title: 'Add border styling',
               tabs: [
                 {
+                  title: '',
                   code: './examples/with-border-styling.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-border-styling.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Shows how to mark an image as decorative, which will make screen readers ignore the image by setting an empty alt text and presentation role.',
+              'Hide images from screen readers when purely decorative. This example presents an image with empty `alt` text and `presentation` role for accessibility.',
             codeblock: {
-              title: 'Decorative image',
+              title: 'Mark as decorative',
               tabs: [
                 {
+                  title: '',
                   code: './examples/decorative-image.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/decorative-image.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              "Demonstrates an image with auto-sizing, which allows the image to adjust its size based on its container's width.",
+              'Build a product image gallery with consistent sizing using [grid](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/grid). This example arranges three product photos in a row, each constrained to a square with rounded corners so they line up evenly.',
             codeblock: {
-              title: 'Auto-sized image',
+              title: 'Use in a grid layout',
               tabs: [
                 {
-                  code: './examples/auto-sized-image.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/auto-sized-image.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows how to use images within a grid layout, creating a consistent grid of images with equal size, aspect ratio, and styling.',
-            codeblock: {
-              title: 'Within layout components',
-              tabs: [
-                {
+                  title: '',
                   code: './examples/within-layout-components.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/within-layout-components.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },

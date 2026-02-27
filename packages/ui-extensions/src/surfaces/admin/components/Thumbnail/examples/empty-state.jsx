@@ -1,1 +1,0 @@
-<s-thumbnail alt="No image available" size="base" />

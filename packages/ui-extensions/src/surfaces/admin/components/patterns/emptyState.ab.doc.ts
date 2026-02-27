@@ -7,7 +7,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     'Provide guidance and encourage action when no data or items are available.',
   description: `Every app has moments when there's nothing to show yet and some action is required of the merchant before they can manage resources. The empty state composition turns these blank screens into opportunities by guiding merchants toward their first action.
 
-  Include a clear explanation of what will appear here and a prominent call-to-action to help merchants get started. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.
+  Include a clear explanation of what will appear here and a prominent call-to-action to help merchants get started. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.
 `,
   isVisualComponent: true,
   category: 'Patterns',
@@ -28,7 +28,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Index'],
   defaultExample: {
     description:
-      'This pattern centers content vertically and horizontally using [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid), with an optional illustration, heading, body text, and action buttons. Use [`s-button-group`](/docs/api/app-home/polaris-web-components/actions/button-group) with `slot="primary-action"` and `slot="secondary-actions"` to provide clear next steps.',
+      'This pattern displays an empty state with centered content and primary and secondary actions. The [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) centers content vertically and horizontally. Use the [button group](/docs/api/app-home/polaris-web-components/actions/button-group) with `slot="primary-action"` and `slot="secondary-actions"` for clear next steps.',
     codeblock: {
       title: 'Empty state',
       tabs: [
