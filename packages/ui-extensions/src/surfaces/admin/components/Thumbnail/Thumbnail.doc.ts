@@ -11,28 +11,28 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Useful for',
       type: 'Generic' as const,
       anchorLink: 'useful-for',
-      sectionContent: `- Identifying items visually in lists, tables, or cards
-- Seeing a preview of images before uploading or publishing
-- Distinguishing between similar items by their appearance
-- Confirming the correct item is selected`,
+      sectionContent: `- Identifying items visually in lists, tables, or cards.
+- Seeing a preview of images before uploading or publishing.
+- Distinguishing between similar items by their appearance.
+- Confirming the correct item is selected.`,
     },
     {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- \`small-200\`: use in very small areas
-- \`small\`: use in small areas
-- \`base\`: use as the default size
-- \`large\`: use when thumbnail is a focal point`,
+      sectionContent: `- \`small-200\`: use in very small areas.
+- \`small\`: use in small areas.
+- \`base\`: use as the default size.
+- \`large\`: use when thumbnail is a focal point.`,
     },
     {
       title: 'Content guidelines',
       type: 'Generic' as const,
       anchorLink: 'content-guidelines',
       sectionContent: `Alternative text should be accurate, concise, and descriptive:
-- Use "Image of", "Photo of" prefix
-- Be primary visual content: "Image of a woman with curly brown hair smiling"
-- Include relevant emotions: "Image of a woman laughing with her hand on her face"`,
+- Use "Image of", "Photo of" prefix.
+- Be primary visual content: "Image of a woman with curly brown hair smiling".
+- Include relevant emotions: "Image of a woman laughing with her hand on her face".`,
     },
   ],
   definitions: [
@@ -44,24 +44,21 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The thumbnail component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ThumbnailEvents',
     },
   ],
   defaultExample: {
     image: 'thumbnail-default.png',
+    description:
+      'Display small preview images for products or items. This example presents a basic thumbnail with source URL and alt text for accessibility.',
     codeblock: {
-      title: 'Code',
+      title: 'Display a thumbnail',
       tabs: [
         {
+          title: '',
           code: './examples/default.html',
-          language: 'html',
-          layout: 'inline',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -70,76 +67,46 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a basic thumbnail component with a product image, showing the default base size and an alt text for accessibility.',
+              'Show a placeholder when no image is available. This example displays a thumbnail without a source that renders a default icon.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Show an empty state',
               tabs: [
                 {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows the thumbnail component in an empty state, displaying a placeholder icon when no image source is provided.',
-            codeblock: {
-              title: 'Empty state',
-              tabs: [
-                {
+                  title: '',
                   code: './examples/empty-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/empty-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates the various size options for the thumbnail component, showcasing small-200, base, and large sizes in a stack layout.',
+              'Adapt thumbnail prominence to different contexts. This example displays `small-200`, `base`, and `large` sizes in a vertical stack.',
             codeblock: {
-              title: 'Different sizes',
+              title: 'Adjust the size',
               tabs: [
                 {
+                  title: '',
                   code: './examples/different-sizes.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/different-sizes.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates how event handlers like onload or onerror can be attached to the thumbnail component via JavaScript to handle image loading states.',
+              'Respond to image loading success or failure. This example uses `load` and `error` event listeners to update the UI based on the loading result.',
             codeblock: {
-              title: 'With event handling',
+              title: 'Handle load events',
               tabs: [
                 {
+                  title: '',
                   code: './examples/with-event-handling.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-event-handling.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },

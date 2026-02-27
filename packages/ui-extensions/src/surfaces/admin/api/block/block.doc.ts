@@ -7,10 +7,10 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   type: 'API',
   requires:
-    'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
+    'the [admin block](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/admin-block) component.',
   defaultExample: {
     description:
-      "Fetch and display a product's title, inventory, and status in a [block extension](/docs/api/admin-extensions/{API_VERSION}#building-your-extension). This example uses `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql/) when the page loads and renders a loading [`Spinner`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/spinner) component while fetching.",
+      "Fetch and display a product's title, inventory, and status in a [block extension](/docs/api/admin-extensions/{API_VERSION}#building-your-extension). This example uses `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql/) when the page loads and renders a loading [spinner](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/spinner) component while fetching.",
     codeblock: {
       title: 'Display product information',
       tabs: [

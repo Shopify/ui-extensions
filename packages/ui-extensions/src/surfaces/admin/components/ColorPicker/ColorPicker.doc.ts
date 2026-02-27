@@ -11,35 +11,43 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use the alpha slider if you want to allow merchants to select a transparent color`,
+      sectionContent: `- **Initialize with current values:** When editing existing colors, always set the picker's initial value to the current color. This shows merchants what they're changing from and maintains context.
+- **Show preview of final result:** If possible, show how the selected color will look in its actual context (like previewing a button color on a button) alongside the picker.
+- **Pair with color field for precision:** Use the component for visual selection combined with a [color field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/color-field) for precise hex input. This gives merchants both visual intuition and exact control.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- The 2D color gradient area requires mouse/touch interaction. Keyboard users can only navigate between major UI elements (hue slider, alpha slider) but can't make fine-grained color adjustments in the gradient itself.
+- The picker operates in the HSL color space and outputs values in hex format. Colors from other color spaces (like CMYK or LAB) might not be precisely represented, and might shift during conversion.
+- On touch devices, selecting precise colors in the gradient can be difficult due to finger size obscuring the selection point. The picker works best with mouse or stylus input for fine color selection.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the color picker component.',
       type: 'ColorPicker',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The color picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ColorPickerEvents',
     },
   ],
   defaultExample: {
     image: 'color-picker-default.png',
+    description:
+      'Display the default color picker with hue and saturation controls.',
     codeblock: {
-      title: 'Code',
+      title: 'Pick a color',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -48,40 +56,17 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple color picker with a pre-selected red color, showing the basic implementation without alpha transparency.',
+              'Allow users to select semi-transparent colors. This example displays a color picker with an alpha slider for adjusting opacity levels.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Illustrates a color picker with alpha transparency enabled, allowing selection of colors with varying opacity levels.',
-            codeblock: {
-              title: 'With alpha transparency',
+              title: 'Enable alpha transparency',
               tabs: [
                 {
                   code: './examples/with-alpha-transparency.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-alpha-transparency.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },

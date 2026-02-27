@@ -8,57 +8,48 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Usage',
-      type: 'Generic' as const,
-      anchorLink: 'usage',
-      sectionContent: `Popovers are closed by default and should be triggered by a button using the \`commandFor\` attribute. The button's \`commandFor\` value should match the popover's \`id\`. The popover's position is determined by the button that triggers it.`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use for secondary or less important information and actions since they're hidden until triggered
-- Contain actions that share a relationship to each other
-- Be triggered by a clearly labeled default or tertiary button`,
+      sectionContent: `- Use for secondary or less important information and actions since they're hidden until triggered.
+- Contain actions that share a relationship to each other.
+- Be triggered by a clearly labeled default or tertiary button.`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `- Use clear action verbs in the {verb}+{noun} format (e.g., "Create order", "Edit HTML")
-- Avoid unnecessary words like "the", "an", or "a"`,
+      anchorLink: 'limitations',
+      sectionContent: `- Popovers can only be opened by user interaction, not programmatically on page load.
+- The popover position is determined by the trigger button and cannot be manually overridden.
+- Content within the popover does not scroll automatically; use box or section for internal scrolling if needed.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the popover component.',
       type: 'Popover',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The popover component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'PopoverEvents',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The popover component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'PopoverSlots',
     },
   ],
   defaultExample: {
+    description:
+      'Show contextual options without navigating away from the current page. This example presents an action menu with edit and delete options.',
     codeblock: {
-      title: 'Code',
+      title: 'Show a menu of actions',
       tabs: [
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
-          layout: 'alignStart',
-          customStyles: {
-            minHeight: '300px',
-          },
-        },
         {
           code: './examples/default.html',
           language: 'preview',
@@ -74,22 +65,14 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Popover displaying admin notifications such as new orders, inventory alerts, and payment confirmations, demonstrating how popovers can show informational content without cluttering the main interface.',
+              'Surface time-sensitive information on demand. This example displays a notification list with order, inventory, and payment alerts.',
             codeblock: {
-              title: 'Popover with notifications',
+              title: 'Display notification list',
               tabs: [
-                {
-                  code: './examples/notifications.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '350px',
-                  },
-                },
                 {
                   code: './examples/notifications.html',
                   language: 'preview',
@@ -103,18 +86,10 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Popover containing a choice list and action button demonstrating how popovers can be used for settings and configuration interfaces.',
+              'Let merchants customize their view without leaving the page. This example presents a column visibility picker with an apply button.',
             codeblock: {
-              title: 'Popover with choice list',
+              title: 'Configure table display options',
               tabs: [
-                {
-                  code: './examples/table-display-options.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '400px',
-                  },
-                },
                 {
                   code: './examples/table-display-options.html',
                   language: 'preview',
@@ -128,24 +103,38 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Popover displaying detailed inventory information using Box padding instead of Section, demonstrating an alternative layout approach for data-focused content.',
+              'Show supplementary information without cluttering the main view. This example displays stock levels across multiple warehouse locations.',
             codeblock: {
-              title: 'Popover with inventory details',
+              title: 'Show inventory details',
               tabs: [
-                {
-                  code: './examples/inventory-stock-details.jsx',
-                  language: 'preview-jsx',
-                  layout: 'alignStart',
-                  customStyles: {
-                    minHeight: '350px',
-                  },
-                },
                 {
                   code: './examples/inventory-stock-details.html',
                   language: 'preview',
                   layout: 'alignStart',
                   customStyles: {
                     minHeight: '350px',
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Complete workflow',
+        examples: [
+          {
+            description:
+              'Build inline filtering without navigating to a separate page. This example combines a choice list with apply and clear buttons, plus dynamic trigger text.',
+            codeblock: {
+              title: 'Filter with apply and clear',
+              tabs: [
+                {
+                  code: './examples/filter-with-apply-and-clear.html',
+                  language: 'preview',
+                  layout: 'alignStart',
+                  customStyles: {
+                    minHeight: '320px',
                   },
                 },
               ],

@@ -10,26 +10,34 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use links for navigation and buttons for actions
-- Use default links whenever possible to avoid disorienting merchants
-- Open external links in a new tab only when merchants are performing a task or navigating outside the Shopify admin`,
+      sectionContent: `- **Open external links in new tabs:** Use \`target="_blank"\` only for external URLs (like help documentation or partner sites). Keep internal admin links in the same tab to maintain workflow context.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- Links within extensions have limited control over navigation behavior in the Shopify admin. Some admin navigation patterns might override link behavior for consistency.
+- Links with \`target="_blank"\` automatically get \`rel="noopener noreferrer"\` for security, but external URLs are still subject to browser security policies. Some browsers might block external navigation from extensions or show security warnings.
+- Links don't have a built-in loading or disabled state. If clicking a link triggers a slow navigation or async operation, you must implement loading feedback yourself.
+- The \`download\` attribute for forcing file downloads has inconsistent browser support. It works reliably for same-origin files but might be ignored for cross-origin resources. Safari on iOS doesn't support the download attribute at all.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description: 'Configure the following properties on the link component.',
       type: 'Link',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'LinkEvents',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The link component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'LinkSlots',
     },
   ],

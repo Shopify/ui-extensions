@@ -7,63 +7,42 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Showing important information or changes
-- Prompting merchants to take a specific action
-- Displaying warnings, errors, or critical information
-- Communicating persistent conditions that need attention
-`,
-    },
-    {
-      title: 'Outside of a section',
-      type: 'Generic' as const,
-      anchorLink: 'outside-of-a-section',
-      sectionContent: `Banners placed outside of a section will display in their own card and should be located at the top of the page. They're useful for conveying messages that apply to the entire page or areas not visible within the viewport, such as validation errors further down the page.`,
-    },
-    {
-      title: 'In a section',
-      type: 'Generic' as const,
-      anchorLink: 'in-a-section',
-      sectionContent: `Banners placed inside a section will have styles applied contextually. They're useful for conveying messages relevant to a specific section or piece of content.`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Seeing these banners can be stressful, so use them sparingly to avoid overwhelming users.
-- Focus on a single piece of information or required action to avoid overwhelming users.
-- Make the message concise and scannable. Users shouldn’t need to spend a lot of time figuring out what they need to know and do.
-- Info, Warning and Critical banners should contain a call to action and clear next steps. Users should know what to do after seeing the banner.
-- Avoid banners that can't be dismissed unless the user is required to take action.`,
+      sectionContent: `- **Focus on single actions:** Present one piece of information or required action per banner to maintain clarity and prevent confusion.
+- **Keep messages concise:** Write scannable content that merchants can quickly understand without spending time deciphering meaning or next steps.
+- **Provide clear actions:** Info, warning, and critical banners should include a call to action with specific next steps so merchants know how to proceed.
+- **Make dismissible when appropriate:** Allow merchants to dismiss banners unless immediate action's required. Avoid persistent banners that can't be closed.
+- **Position contextually:** Place banners outside sections for page-wide messages or inside sections for contextual messages relevant to specific content.`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `- Keep titles concise and clear
-- Limit body content to 1-2 sentences where possible
-- Use action-led buttons with strong verbs (e.g., "Activate Apple Pay" not "Try Apple Pay")
-- Avoid unnecessary words and articles in button text
-- For warning and critical banners, explain how to resolve the issue`,
+      anchorLink: 'limitations',
+      sectionContent: `- The dismissed state doesn't persist across page loads or sessions. You must implement your own persistence logic using local storage, cookies, or server-side state.
+- Multiple banners stack vertically without built-in prioritization or queueing. If you show multiple banners at once, all appear simultaneously. You must implement banner queueing logic yourself to show one at a time.
+- Banners can't be fixed or sticky at the top of the viewport. They scroll with page content.
+- Banners don't have built-in truncation or "read more" functionality. Very long banner messages will wrap to multiple lines, creating tall banners that dominate the screen.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the banner component.',
       type: 'Banner',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The banner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'BannerEvents',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'BannerSlots',
     },
   ],
@@ -110,7 +89,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Illustrates a warning banner that highlights a potential issue and provides actionable buttons to help users resolve the problem quickly and effectively.',
+              'Illustrates a warning banner that highlights a potential issue and provides actionable buttons to help merchants resolve the problem quickly and effectively.',
             codeblock: {
               title: 'Warning banner with specific actions',
               tabs: [
@@ -128,7 +107,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Demonstrates an urgent banner design that signals a critical issue requiring immediate action, with clear and prominent secondary action buttons to guide users.',
+              'Demonstrates an urgent banner design that signals a critical issue requiring immediate action, with clear and prominent secondary action buttons to guide merchants.',
             codeblock: {
               title: 'Critical banner with clear next steps',
               tabs: [

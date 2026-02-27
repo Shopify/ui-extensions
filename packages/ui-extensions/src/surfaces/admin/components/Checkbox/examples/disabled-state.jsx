@@ -1,5 +1,0 @@
-<s-checkbox
-  label="Advanced settings"
-  disabled
-  details="Contact your administrator to enable advanced settings"
- />

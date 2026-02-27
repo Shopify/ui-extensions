@@ -1,7 +1,0 @@
-<s-stack direction="inline" gap="base">
-  {/* Button that navigates using Shopify's navigation system. Use shopify:navigate for navigation. Refer to [handling navigation events](/docs/api/app-home?accordionItem=getting-started-existing-remix-application) for implementation details and framework-specific examples. */}
-  <s-button href="javascript:void(0)">Edit details</s-button>
-
-  {/* Button that expresses interest in specific data */}
-  <s-button interestFor="selected-products">Bulk edit</s-button>
-</s-stack>

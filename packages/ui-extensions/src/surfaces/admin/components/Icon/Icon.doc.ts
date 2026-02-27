@@ -14,43 +14,41 @@ const data: AdminReferenceEntityTemplateSchema = {
         'Search and filter across all the available icons: {{ICON_PREVIEW_IFRAME}}',
     },
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Orienting themselves and understanding available actions
-- Quickly identifying information and recognizing patterns`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `Icons should:
-- Use the same icon consistently for the same meaning
-- Appear next to related text labels
-- Only be used when their meaning is clear`,
+      sectionContent: `- **Use icons to support actions and status, not decorate**: Icons should clarify what an action does or indicate state. Use the trash icon for delete actions, a checkmark for completed status, or a warning icon for errors. Avoid adding icons purely for visual interest.
+- **Maintain consistency across your interface**: Always use the same icon for the same action or concept throughout your extension. If you use a pencil for edit in one place, use it everywhere. Inconsistent icon usage confuses merchants.
+- **Pair icons with text labels whenever possible**: Icons work best as visual reinforcement alongside text. Without text, even common icons can be ambiguous—a gear might mean settings, preferences, or configuration. Only use icons alone in space-constrained contexts like icon-only buttons with proper accessibility labels.
+- **Choose icons that are universally recognizable**: Stick to icons with established meanings like magnifying glass (search), trash (delete), and plus (add). Test any icon you're unsure about—if it needs explanation, it's not the right choice.
+- **Use semantic tones to communicate meaning**: Apply tones like \`critical\` for destructive actions, \`success\` for positive states, and \`warning\` for caution. Tones should convey information, not serve as decoration.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- Icons are limited to the predefined set provided by the component. Custom SVG icons, icon fonts, or external icon libraries aren't supported.
+- Icons can't be animated or include interactive states beyond color changes. For complex graphics or illustrations, use the [image](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/image) component instead.
+- Icon color is determined by the \`tone\` and \`color\` properties. Custom colors or gradients aren't available.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description: 'Configure the following properties on the icon component.',
       type: 'Icon',
     },
   ],
   defaultExample: {
     image: 'icon-default.png',
+    description:
+      'Add visual cues to help users understand available actions. This example displays common icons for home, orders, products, and settings.',
     codeblock: {
-      title: 'Code',
+      title: 'Display icons',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-          layout: 'inline',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -59,151 +57,95 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Standard icons for common merchant interface actions and navigation. Demonstrates rendering multiple icons in an inline stack, showing different types of icons used for navigation and actions.',
+              'Communicate status through color-coded icons. This example displays icons with warning, success, info, and caution tones.',
             codeblock: {
-              title: 'Basic usage',
-              tabs: [
-                {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Icons with color-coded tones to convey status and semantic meaning.',
-            codeblock: {
-              title: 'With semantic tone',
+              title: 'Apply semantic tones',
               tabs: [
                 {
                   code: './examples/with-semantic-tone.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-semantic-tone.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Compact icon sizing for space-constrained interfaces and inline usage. Shows how to render a small-sized icon that takes up minimal space while maintaining clarity.',
+              'Fit icons into tight layouts without losing clarity. This example uses a small-sized icon that takes up minimal space.',
             codeblock: {
-              title: 'Small size',
+              title: 'Reduce the size',
               tabs: [
                 {
                   code: './examples/small-size.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/small-size.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Lower contrast icon for secondary actions and supporting information.',
+              'De-emphasize icons for secondary content. This example displays a subdued icon with lower contrast for supporting information.',
             codeblock: {
-              title: 'Subdued color',
+              title: 'Apply subdued color',
               tabs: [
                 {
                   code: './examples/subdued-color.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/subdued-color.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Icon with unique identifier for JavaScript targeting and styling. Demonstrates adding a specific ID to an icon, which can be used for JavaScript interactions, CSS styling, or accessibility purposes.',
+              'Target icons in scripts or stylesheets. This example adds an ID attribute for JavaScript event handling or custom CSS styling.',
             codeblock: {
-              title: 'With id property',
+              title: 'Add an ID',
               tabs: [
                 {
                   code: './examples/with-id-property.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-id-property.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Icon associated with interactive elements for enhanced accessibility context.',
+              'Improve accessibility for screen reader users. This example connects an icon to related interactive content using the `interest` attribute.',
             codeblock: {
-              title: 'With interest relationship',
+              title: 'Connect to related content',
               tabs: [
                 {
                   code: './examples/with-interest-relationship.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-interest-relationship.jsx',
-                  language: 'preview-jsx',
-                  customStyles: {
-                    minHeight: '200px',
-                  },
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              "Icons integrated within button components for clear action identification. Shows how icons can be added to buttons to visually reinforce the button's action, using both positive (add) and negative (delete) tones.",
+              'Reinforce button actions with visual cues. This example places icons in buttons for add and delete actions with appropriate tones.',
             codeblock: {
-              title: 'In button components',
+              title: 'Use in buttons',
               tabs: [
                 {
                   code: './examples/in-button-components.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/in-button-components.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Icons combined with badges to enhance status communication and visual hierarchy. Demonstrates using icons with badges to provide visual status indicators, using success and warning tones to convey different states.',
+              'Enhance status badges with visual indicators. This example pairs badges with icons for active and pending states.',
             codeblock: {
-              title: 'In badge components',
+              title: 'Use in badges',
               tabs: [
                 {
                   code: './examples/in-badge-components.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/in-badge-components.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },

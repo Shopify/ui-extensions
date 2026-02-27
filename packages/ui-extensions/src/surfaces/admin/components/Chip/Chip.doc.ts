@@ -7,45 +7,34 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Labeling, organizing, and categorizing objects
-- Highlighting content attributes
-- Enhancing discoverability by identifying items with similar properties`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- \`subdued\`: use for secondary or less important information
-- \`base\`: use as default color
-- \`strong\`: use for important or verified status
-- Text truncates automatically, keep labels short to avoid truncation
-- Chips are static indicators, not interactive or dismissible. For interactive chips, use ClickableChip
-- Add icons to \`graphic\` slot to provide visual context
-- Display chips near the content they classify`,
+      sectionContent: `- **Use chips to label and categorize content:** [chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/chip) works best for displaying tags, statuses, and categories that help merchants quickly understand content attributes. Don't use chips for actions—they're visual indicators, not buttons.
+- **Keep chip text concise and scannable:** Short labels like "Featured" or "On sale" are instantly recognizable. Long chip text defeats the purpose of quick scanning and might truncate, hiding important information.
+- **Choose the right visual weight:** Use subdued chips for secondary metadata, standard chips for typical tags and categories, and strong chips for important or verified information that needs emphasis.
+- **Position chips near what they describe:** Place chips adjacent to the items they categorize for immediate context. In lists, position chips consistently to help merchants scan efficiently.
+- **Add icons to reinforce meaning:** Icons can make chip meanings clearer at a glance, especially for status indicators or commonly recognized categories.`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `Chip labels should:
-- Be short and concise to avoid truncation
-- Use \`accessibilityLabel\` to describe purpose for screen readers
-- Common status labels: \`Active\`, \`Draft\`, \`Published\`, \`Verified\`
-- Common category labels: \`Product type\`, \`Collection\`, \`Tag name\``,
+      anchorLink: 'limitations',
+      sectionContent: `- Chip text is single-line only and truncates with an ellipsis when space is limited. There's no built-in way to show the full text on hover or through tooltips.
+- Only predefined style variants are available. Custom colors, borders, or backgrounds can't be applied to chips.
+- Icons in chips must come from the standard icon library. Custom icons, images, or other graphics aren't supported.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description: 'Configure the following properties on the chip component.',
       type: 'Chip',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ChipSlots',
     },
   ],

@@ -7,67 +7,56 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Taking primary actions like saving or creating resources
-- Taking secondary actions like canceling forms or filtering results
-- Triggering destructive operations like deletion or disconnection
-- Accessing supplementary actions via tertiary buttons`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Be clearly and accurately labeled with strong, actionable verbs
-- Use established button tones appropriately (e.g., critical tone only for actions that are difficult to undo)
-- Prioritize the most important actions to avoid confusion
-- Be positioned in consistent locations in the interface
-- Use buttons for actions and links for navigation`,
+      sectionContent: `- **Label buttons clearly:** Use strong, actionable verbs that clearly and accurately describe the action (like **Save**, **Edit**, or **Add tags**). Write labels in sentence case and avoid unnecessary words and articles (like **a**, **an**, **the**). Don't use punctuation.
+- **Use appropriate button tones:** Apply established button tones appropriately. Use critical tone only for destructive actions that are difficult or impossible to undo. Match the tone to the action's impact and importance.
+- **Establish clear hierarchy:** Prioritize the most important actions to avoid confusion. Use primary buttons for main actions, secondary buttons for supporting actions, and tertiary buttons for supplementary actions.
+- **Position consistently:** Place buttons in consistent locations throughout the interface to create predictable interaction patterns.
+- **Icon-only buttons:** For icon-only buttons, always use \`accessibilityLabel\` to describe the action for screen reader users.`,
     },
     {
-      title: 'Content guidelines',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'content-guidelines',
-      sectionContent: `- Use simple, concise verbs (e.g., "Save", "Edit", "Add tags")
-- Write in sentence case
-- Avoid unnecessary words and articles (e.g., "a", "an", "the")
-- Don't use punctuation
-- For icon-only buttons, use \`accessibilityLabel\` to describe the action`,
+      anchorLink: 'limitations',
+      sectionContent: `- When using \`href\` for navigation, external URLs (domains outside Shopify admin) might be blocked or show security warnings depending on the extension context and merchant's browser security settings.
+- Setting \`loading={true}\` provides visual feedback and prevents form submission or multiple clicks. You must implement additional logic to debounce or disable the button action during async operations.
+- Icon-only buttons have a minimum touch target size but don't expand to fill available space. They maintain a fixed size based on the icon and padding, which might create layout inconsistencies if mixed with text buttons in the same container.
+- Disabled buttons (\`disabled={true}\`) are removed from the tab order and can't receive keyboard focus. If you disable a button temporarily (for example, while waiting for form validation), then provide visible text explaining why it's disabled. For async operations, use \`loading\` over \`disabled\` because \`loading\` communicates that an action is in progress.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the button component.',
       type: 'Button',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ButtonEvents',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The button component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ButtonSlots',
     },
   ],
   defaultExample: {
     image: 'button-default.png',
+    description:
+      'Create a button with a text label to let merchants trigger an action. This example shows the basic button component with default styling.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a basic button',
       tabs: [
         {
-          code: './examples/default.html',
-          language: 'html',
-          layout: 'inline',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
-          layout: 'inline',
+          code: './examples/basic-button.html',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -76,256 +65,144 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a simple button with default styling, automatically determining its visual variant and using a clear, action-oriented label.',
+              'Create buttons for actions like saving, creating, or navigating. This example shows primary and secondary buttons with clear, action-oriented labels.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Add primary and secondary buttons',
               tabs: [
                 {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  code: './examples/default.html',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Showcases different button variants with varying visual emphasis, helping merchants understand action priorities through distinct styling.',
+              'Use variants to establish a clear visual hierarchy between primary, secondary, and supplementary actions. This example shows all four variant options: primary, secondary, tertiary, and auto.',
             codeblock: {
-              title: 'Variants',
+              title: 'Set visual emphasis with variants',
               tabs: [
                 {
                   code: './examples/variants.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/variants.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates button tones that signal the semantic importance and potential impact of different actions through color and styling.',
+              'Apply tones to signal the purpose and potential impact of an action through color. This example shows critical tone for destructive actions, neutral tone for less prominent actions, and the default auto tone.',
             codeblock: {
-              title: 'Tones',
+              title: 'Communicate intent with tones',
               tabs: [
                 {
                   code: './examples/tones.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/tones.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Showcases a button that combines a descriptive text label with an intuitive icon, enhancing visual communication of the action.',
+              'Combine an icon with a text label to help merchants identify what a button does. This example shows a button with both a text label and an icon to reinforce the action.',
             codeblock: {
-              title: 'With icon',
+              title: 'Add an icon alongside a text label',
               tabs: [
                 {
                   code: './examples/with-icon.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-icon.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates an icon-only button with an accessibility label, providing a compact interface that remains screen reader friendly.',
+              'Create icon-only buttons to save space in dense interfaces like toolbars and action bars. This example shows multiple icon-only buttons with an `accessibilityLabel` for screen reader support.',
             codeblock: {
-              title: 'Icon-only button',
+              title: 'Create compact icon-only buttons for toolbars',
               tabs: [
                 {
                   code: './examples/icon-only-button.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/icon-only-button.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates buttons in various loading states, providing visual feedback during asynchronous operations.',
+              'Add a loading state to prevent duplicate submissions and reassure merchants that an action is being processed. This example shows buttons with the loading prop across different variants.',
             codeblock: {
-              title: 'Loading state',
+              title: 'Show loading feedback during async operations',
               tabs: [
                 {
                   code: './examples/loading-state-for-merchant-actions.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/loading-state-for-merchant-actions.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates buttons in different interaction states, showing how to represent disabled controls and submit actions within forms.',
+              'Disable buttons to prevent interaction when prerequisites are not met, and set type to submit to integrate with HTML forms. This example shows a disabled button alongside a submit button.',
             codeblock: {
-              title: 'Form states',
+              title: 'Disable buttons and submit forms',
               tabs: [
                 {
                   code: './examples/form-states.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/form-states.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Showcases buttons that act as hyperlinks, supporting navigation to different pages, external resources, and file downloads.',
+              'Set the `href` property to make buttons navigate like links while maintaining button styling. This example shows internal navigation, opening external URLs in new tabs, and triggering file downloads.',
             codeblock: {
-              title: 'Link buttons',
+              title: 'Use buttons for navigation and downloads',
               tabs: [
                 {
                   code: './examples/link-buttons.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/link-buttons.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates a button group with carefully aligned actions, showing how to create a clear visual hierarchy for form submission and cancellation.',
+              'Pair a cancel button with a critical-toned action button to help merchants avoid accidental destructive operations. This example shows a confirmation pattern for deleting a resource.',
             codeblock: {
-              title: 'Form submission buttons',
-              tabs: [
-                {
-                  code: './examples/product-save-form.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/product-save-form.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Illustrates a button pair for destructive actions, using a critical tone to emphasize the potentially irreversible nature of the operation.',
-            codeblock: {
-              title: 'Delete confirmation',
+              title: 'Confirm destructive actions with critical tone',
               tabs: [
                 {
                   code: './examples/delete-confirmation.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/delete-confirmation.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Showcases a navigation button with an icon, enabling quick access to different sections of the interface.',
+              'Use `commandFor` to connect a button to another component by ID, triggering built-in actions like toggling a popover or showing a modal. This example shows a button that opens a popover with a list of additional actions.',
             codeblock: {
-              title: 'Navigation button with icon',
-              tabs: [
-                {
-                  code: './examples/navigation-to-admin-sections.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/navigation-to-admin-sections.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates a button group for executing operations on multiple selected items.',
-            codeblock: {
-              title: 'Button group for bulk operations',
-              tabs: [
-                {
-                  code: './examples/bulk-actions.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/bulk-actions.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Showcases a set of compact, icon-only buttons with accessibility labels, perfect for creating dense interfaces.',
-            codeblock: {
-              title: 'Icon-only buttons with labels',
-              tabs: [
-                {
-                  code: './examples/toolbar-icon-buttons.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/toolbar-icon-buttons.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Demonstrates advanced button capabilities using `command`, `commandFor`, and `interestFor` properties to enable dynamic component communication.',
-            codeblock: {
-              title: 'Component interactions',
+              title: 'Trigger actions on other components',
               tabs: [
                 {
                   code: './examples/component-interactions.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/component-interactions.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   type: 'API',
   requires:
-    'the [`AdminBlock`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/adminblock) component.',
+    'the [admin block](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/admin-block) component.',
   defaultExample: {
     description:
       'Open the product [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select up to five components for a [bundle](/docs/apps/build/product-merchandising/bundles). This example filters out draft and archived products, saves the bundle configuration to your backend, and tracks the selection count.',

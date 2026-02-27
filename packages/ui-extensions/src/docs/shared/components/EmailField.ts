@@ -1,9 +1,10 @@
 import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
-  name: 'EmailField',
+  name: 'Email field',
   description:
-    'Let users enter email addresses with optimized keyboard settings.',
+    'The email field component captures email address input. Use it to collect email information in forms, customer profiles, or contact workflows.' +
+    "\n\nEmail field doesn't perform automatic email validation. Implement your own validation logic, and use the `error` property to display validation results. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field).",
   category: 'Polaris web components',
   subCategory: 'Forms',
   related: [],
