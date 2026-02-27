@@ -23,12 +23,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     'Stack',
     'Thumbnail',
   ],
-  recommendedTemplates: ['Details'],
+  recommendedApis: ['Navigation API'],
+  recommendedTemplates: ['Homepage'],
   defaultExample: {
     description:
-      'This pattern displays a tappable app card with thumbnail and content layout. The [clickable](/docs/api/app-home/polaris-web-components/actions/clickable) component wraps the card, the [thumbnail](/docs/api/app-home/polaris-web-components/images/thumbnail) shows the app icon, and the [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) aligns the content.',
+      "Merchants can discover and install complementary apps that extend your app's functionality. This pattern displays a tappable app card with thumbnail and content layout. The [clickable](/docs/api/app-home/polaris-web-components/actions/clickable) component wraps the card, the [thumbnail](/docs/api/app-home/polaris-web-components/images/thumbnail) shows the app icon, and the [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) aligns the content.",
     codeblock: {
-      title: 'App card',
+      title: 'Display a tappable app card with thumbnail and content',
       tabs: [
         {
           title: 'html',
@@ -43,6 +44,38 @@ const data: AdminReferenceEntityTemplateSchema = {
         },
       ],
     },
+  },
+  examples: {
+    description: `The examples below show how you can extend the app card with additional functionality:
+
+- [Navigation API](#example-navigate-to-app-store): Provide a link a recommended app when merchants click the card or its install button.`,
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Use `href` attributes to navigate merchants to the App Store when they click the card or install button.',
+            codeblock: {
+              title: 'Navigate to App Store',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/appCard-nav.jsx',
+                  language: 'preview-jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/appCard-nav.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
 };
 

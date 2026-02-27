@@ -1,0 +1,109 @@
+<!-- Index table with bulk selection pattern -->
+<!-- This example shows the bulk action bar visible (items selected state) -->
+<s-section padding="none" accessibilityLabel="Puzzles table with bulk selection">
+  <s-table>
+    <!-- Bulk action bar - shown when items are selected -->
+    <s-box slot="filters" padding="small" background="strong">
+      <s-stack direction="inline" gap="base" alignItems="center" justifyContent="space-between">
+        <s-text fontWeight="semibold">2 of 3 selected</s-text>
+        <s-stack direction="inline" gap="small">
+          <s-button variant="secondary">Bulk edit</s-button>
+          <s-button variant="secondary" tone="critical">Delete</s-button>
+        </s-stack>
+      </s-stack>
+    </s-box>
+
+    <s-table-header-row>
+      <s-table-header listSlot="primary">
+        <s-stack direction="inline" gap="small" alignItems="center">
+          <!-- Indeterminate state: some items selected -->
+          <s-checkbox indeterminate accessibilityLabel="Select all puzzles"></s-checkbox>
+          <s-text>Puzzle</s-text>
+        </s-stack>
+      </s-table-header>
+      <s-table-header format="numeric">Pieces</s-table-header>
+      <s-table-header>Created</s-table-header>
+      <s-table-header listSlot="secondary">Status</s-table-header>
+    </s-table-header-row>
+
+    <s-table-body>
+      <!-- Selected row -->
+      <s-table-row selected>
+        <s-table-cell>
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-checkbox checked accessibilityLabel="Select Mountain View"></s-checkbox>
+            <s-clickable
+              href=""
+              accessibilityLabel="Mountain View puzzle thumbnail"
+              border="base"
+              borderRadius="base"
+              overflow="hidden"
+              inlineSize="40px"
+              blockSize="40px"
+            >
+              <s-image objectFit="cover" src="https://picsum.photos/id/29/80/80"></s-image>
+            </s-clickable>
+            <s-link href="">Mountain View</s-link>
+          </s-stack>
+        </s-table-cell>
+        <s-table-cell>16</s-table-cell>
+        <s-table-cell>Today</s-table-cell>
+        <s-table-cell>
+          <s-badge color="base" tone="success">Active</s-badge>
+        </s-table-cell>
+      </s-table-row>
+
+      <!-- Selected row -->
+      <s-table-row selected>
+        <s-table-cell>
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-checkbox checked accessibilityLabel="Select Ocean Sunset"></s-checkbox>
+            <s-clickable
+              href=""
+              accessibilityLabel="Ocean Sunset puzzle thumbnail"
+              border="base"
+              borderRadius="base"
+              overflow="hidden"
+              inlineSize="40px"
+              blockSize="40px"
+            >
+              <s-image objectFit="cover" src="https://picsum.photos/id/12/80/80"></s-image>
+            </s-clickable>
+            <s-link href="">Ocean Sunset</s-link>
+          </s-stack>
+        </s-table-cell>
+        <s-table-cell>9</s-table-cell>
+        <s-table-cell>Yesterday</s-table-cell>
+        <s-table-cell>
+          <s-badge color="base" tone="success">Active</s-badge>
+        </s-table-cell>
+      </s-table-row>
+
+      <!-- Unselected row -->
+      <s-table-row>
+        <s-table-cell>
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-checkbox accessibilityLabel="Select Forest Animals"></s-checkbox>
+            <s-clickable
+              href=""
+              accessibilityLabel="Forest Animals puzzle thumbnail"
+              border="base"
+              borderRadius="base"
+              overflow="hidden"
+              inlineSize="40px"
+              blockSize="40px"
+            >
+              <s-image objectFit="cover" src="https://picsum.photos/id/324/80/80"></s-image>
+            </s-clickable>
+            <s-link href="">Forest Animals</s-link>
+          </s-stack>
+        </s-table-cell>
+        <s-table-cell>25</s-table-cell>
+        <s-table-cell>Last week</s-table-cell>
+        <s-table-cell>
+          <s-badge color="base" tone="neutral">Draft</s-badge>
+        </s-table-cell>
+      </s-table-row>
+    </s-table-body>
+  </s-table>
+</s-section>

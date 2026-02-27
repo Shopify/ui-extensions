@@ -43,13 +43,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     'UnorderedList',
     'URLField',
   ],
-  recommendedApis: ['Save Bar API', 'Modal API', 'Intents API'],
-  recommendedCompositions: ['Empty state', 'Footer help', 'Media card'],
+  recommendedApis: ['Modal API', 'Save Bar API'],
+  recommendedCompositions: ['Footer help', 'Resource list'],
   defaultExample: {
     description:
-      'This example presents a product details view for a Product Quality Auditor app with editable quality score fields in the main column and image and score in the sidebar.',
+      'Merchants need to edit and view a single resource with supporting info in the sidebar. This example presents a product details view for a Product Quality Auditor app with editable quality score fields in the main column and image and score in the sidebar.',
     codeblock: {
-      title: 'Details',
+      title: 'Present a product details view with editable fields and sidebar',
       tabs: [
         {
           title: 'html',
@@ -67,6 +67,59 @@ const data: AdminReferenceEntityTemplateSchema = {
         },
       ],
     },
+  },
+  examples: {
+    description: `The examples below show how you can extend the details template with additional functionality:
+
+- [Modal API](#example-confirm-destructive-actions-with-modal-api): Confirm before performing destructive actions, like deleting a resource.
+- [Save Bar API](#example-retain-unsaved-changes-with-save-bar): Display save and discard controls when forms have unsaved changes.`,
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Use the [Modal API](/docs/api/app-home/apis/modal) to confirm destructive actions like deleting a resource. The modal prevents accidental data loss by requiring explicit confirmation.',
+            codeblock: {
+              title: 'Confirm destructive actions with Modal API',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/details-modal.jsx',
+                  language: 'preview-jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: './examples/details-modal.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Add `data-save-bar` to your form element to enable the [Save Bar API](/docs/api/app-home/apis/save-bar), which displays save/discard controls when the form has unsaved changes.',
+            codeblock: {
+              title: 'Retain unsaved changes with Save Bar',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/details-save-bar.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: './examples/details-save-bar.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
 };
 

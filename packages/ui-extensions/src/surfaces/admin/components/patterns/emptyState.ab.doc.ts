@@ -24,13 +24,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     'Section',
     'Stack',
   ],
-  recommendedApis: ['Navigation API', 'Intents API'],
-  recommendedTemplates: ['Details'],
+  recommendedApis: ['Intents API', 'Navigation API'],
+  recommendedTemplates: ['Index'],
   defaultExample: {
     description:
-      'This pattern displays an empty state with centered content and primary and secondary actions. The [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) centers content vertically and horizontally. Use the [button group](/docs/api/app-home/polaris-web-components/actions/button-group) with `slot="primary-action"` and `slot="secondary-actions"` for clear next steps.',
+      'Merchants need guidance and a clear next step when a list or page is empty. This pattern displays an empty state with centered content and primary and secondary actions. The [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) centers content vertically and horizontally. Use the [button group](/docs/api/app-home/polaris-web-components/actions/button-group) with `slot="primary-action"` and `slot="secondary-actions"` for clear next steps.',
     codeblock: {
-      title: 'Empty state',
+      title: 'Display an empty state with centered content and actions',
       tabs: [
         {
           title: 'Preview',
@@ -45,6 +45,59 @@ const data: AdminReferenceEntityTemplateSchema = {
         },
       ],
     },
+  },
+  examples: {
+    description: `The examples below show how you can extend the empty state with additional functionality:
+
+- [Intents API](#example-open-shopify-interfaces-with-intents): Open native Shopify interfaces for browsing or creating resources.
+- [Navigation API](#example-navigate-to-create-page): Navigate to a create page from the empty state action.`,
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Use `href` attributes to navigate merchants to a create page when they click the primary action button.',
+            codeblock: {
+              title: 'Navigate to create page',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/emptyState-nav.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/emptyState-nav.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the [Intents API](/docs/api/app-home/apis/intents) to make empty state actions open native Shopify interfaces, allowing merchants to browse existing resources or create new ones without leaving your app.',
+            codeblock: {
+              title: 'Open Shopify interfaces with Intents',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/emptyState-intents.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/emptyState-intents.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
 };
 

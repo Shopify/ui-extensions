@@ -1,0 +1,126 @@
+<s-section padding="none" accessibilityLabel="Puzzles table section">
+  <s-table>
+    <s-grid slot="filters" gap="small-200" gridTemplateColumns="1fr auto">
+      <s-text-field
+        label="Search puzzles"
+        labelAccessibilityVisibility="exclusive"
+        icon="search"
+        placeholder="Searching all puzzles"
+      />
+      <s-button
+        icon="sort"
+        variant="secondary"
+        accessibilityLabel="Sort"
+        commandFor="sort-actions"
+      />
+      <s-popover id="sort-actions">
+        <s-stack gap="none">
+          <s-box padding="small">
+            <s-choice-list label="Sort by" name="Sort by">
+              <s-choice value="puzzle-name" selected>Puzzle name</s-choice>
+              <s-choice value="pieces">Pieces</s-choice>
+            </s-choice-list>
+          </s-box>
+        </s-stack>
+      </s-popover>
+    </s-grid>
+    <s-stack slot="bulkActions" direction="inline" gap="small-200">
+      <s-button
+        onClick={() => {
+          shopify.toast.show('2 puzzles archived');
+        }}
+      >
+        Archive
+      </s-button>
+      <s-button
+        tone="critical"
+        commandFor="delete-modal"
+        command="--show"
+      >
+        Delete
+      </s-button>
+    </s-stack>
+    <s-table-header-row>
+      <s-table-header listSlot="primary">Puzzle</s-table-header>
+      <s-table-header format="numeric">Pieces</s-table-header>
+      <s-table-header listSlot="secondary">Status</s-table-header>
+    </s-table-header-row>
+    <s-table-body>
+      <s-table-row clickDelegate="mountain-view-checkbox">
+        <s-table-cell>
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-checkbox id="mountain-view-checkbox" checked />
+            <s-clickable
+              href=""
+              accessibilityLabel="Mountain View puzzle thumbnail"
+              border="base"
+              borderRadius="base"
+              overflow="hidden"
+              inlineSize="40px"
+              blockSize="40px"
+            >
+              <s-image
+                objectFit="cover"
+                src="https://picsum.photos/id/29/80/80"
+              />
+            </s-clickable>
+            <s-link href="">Mountain View</s-link>
+          </s-stack>
+        </s-table-cell>
+        <s-table-cell>16</s-table-cell>
+        <s-table-cell>
+          <s-badge color="base" tone="success">Active</s-badge>
+        </s-table-cell>
+      </s-table-row>
+      <s-table-row clickDelegate="ocean-sunset-checkbox">
+        <s-table-cell>
+          <s-stack direction="inline" gap="small" alignItems="center">
+            <s-checkbox id="ocean-sunset-checkbox" checked />
+            <s-clickable
+              href=""
+              accessibilityLabel="Ocean Sunset puzzle thumbnail"
+              border="base"
+              borderRadius="base"
+              overflow="hidden"
+              inlineSize="40px"
+              blockSize="40px"
+            >
+              <s-image
+                objectFit="cover"
+                src="https://picsum.photos/id/12/80/80"
+              />
+            </s-clickable>
+            <s-link href="">Ocean Sunset</s-link>
+          </s-stack>
+        </s-table-cell>
+        <s-table-cell>9</s-table-cell>
+        <s-table-cell>
+          <s-badge color="base" tone="success">Active</s-badge>
+        </s-table-cell>
+      </s-table-row>
+    </s-table-body>
+  </s-table>
+
+  <s-modal id="delete-modal" heading="Delete 2 puzzles?">
+    <s-text>
+      Are you sure you want to delete the selected puzzles? This action cannot be undone.
+    </s-text>
+    <s-button
+      slot="primary-action"
+      variant="primary"
+      tone="critical"
+      onClick={() => {
+        shopify.toast.show('2 puzzles deleted');
+      }}
+    >
+      Delete
+    </s-button>
+    <s-button
+      slot="secondary-actions"
+      commandFor="delete-modal"
+      command="--hide"
+    >
+      Cancel
+    </s-button>
+  </s-modal>
+</s-section>

@@ -24,12 +24,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     'Section',
     'Stack',
   ],
-  recommendedTemplates: ['Details'],
+  recommendedApis: ['Navigation API', 'Toast API'],
+  recommendedTemplates: ['Homepage'],
   defaultExample: {
     description:
-      'This pattern presents a callout card that stacks content on smaller screens with a prominent illustration and call-to-action. The [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) uses responsive column templates. The illustration and button draw attention to important actions or promotions.',
+      'Merchants can take action on new features or opportunities you highlight. This pattern presents a callout card that stacks content on smaller screens with a prominent illustration and call-to-action. The [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) uses responsive column templates. The illustration and button draw attention to important actions or promotions.',
     codeblock: {
-      title: 'Callout card',
+      title: 'Display a callout card with illustration and call-to-action',
       tabs: [
         {
           title: 'html',
@@ -44,6 +45,59 @@ const data: AdminReferenceEntityTemplateSchema = {
         },
       ],
     },
+  },
+  examples: {
+    description: `The examples below show how you can extend the callout card with additional functionality:
+
+- [Navigation API](#example-navigate-to-feature-pages): Add links to the pattern for CTA navigation.
+- [Toast API](#example-show-dismiss-feedback-with-toast): Dismiss feedback.`,
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Use `href` attributes on buttons to navigate merchants to feature pages when they click CTA buttons.',
+            codeblock: {
+              title: 'Navigate to feature pages',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/calloutCard-nav.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/calloutCard-nav.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the [Toast API](/docs/api/app-home/apis/toast) to show feedback when the callout card is dismissed.',
+            codeblock: {
+              title: 'Show dismiss feedback with Toast',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/calloutCard-toast.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/calloutCard-toast.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
 };
 
