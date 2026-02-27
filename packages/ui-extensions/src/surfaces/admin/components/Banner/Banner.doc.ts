@@ -69,7 +69,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Use a warning-toned banner with secondary action buttons to highlight a problem and give merchants clear next steps. This example shows a shipping weight issue with links to review products and access a setup guide.',
+              'Use a warning-toned banner with secondary action [buttons](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) to highlight a problem and give merchants clear next steps. This example shows a shipping weight issue with links to review products and access a setup guide.',
             codeblock: {
               title: 'Create a warning banner with buttons for next steps',
               tabs: [
