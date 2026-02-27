@@ -1,6 +1,0 @@
-<s-date-picker
-  type="single"
-  name="delivery-date"
-  value="2024-01-15"
-  view="2024-01"
- />

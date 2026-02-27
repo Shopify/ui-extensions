@@ -1,6 +1,0 @@
-<s-date-field
-  label="Delivery date"
-  name="deliveryDate"
-  disallowDays="[0, 6]"
-  details="Delivery available Monday through Friday only"
- />

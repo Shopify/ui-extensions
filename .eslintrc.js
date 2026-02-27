@@ -61,7 +61,10 @@ module.exports = {
       },
     },
     {
-      files: ['packages/ui-extensions/src/surfaces/checkout/preact/*.ts'],
+      files: [
+        'packages/ui-extensions/src/surfaces/checkout/preact/*.ts',
+        'packages/ui-extensions/src/surfaces/customer-account/preact/*.ts',
+      ],
       rules: {
         // Support use of deprecated hooks until removal
         'import/no-deprecated': 'off',

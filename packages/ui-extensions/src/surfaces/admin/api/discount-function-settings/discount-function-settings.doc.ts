@@ -7,10 +7,10 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   type: 'API',
   requires:
-    'the [`FunctionSettings`](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/functionsettings) component.',
+    'the [function settings](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/function-settings) component.',
   defaultExample: {
     description:
-      'Save a minimum purchase threshold to a metafield with decimal number validation. This example uses a [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/textfield) for input, calls `applyMetafieldChange`, and displays success or error feedback.',
+      'Save a minimum purchase threshold to a metafield with decimal number validation. This example uses a [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/text-field) for input, calls `applyMetafieldChange`, and displays success or error feedback.',
     codeblock: {
       title: 'Configure discount threshold',
       tabs: [

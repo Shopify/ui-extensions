@@ -6,30 +6,48 @@ const data: AdminReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/dropzone.png',
   isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Set clear file type and size restrictions using the \`accept\` property.
+- Use the \`droprejected\` event to display meaningful error messages when uploads fail validation.
+- Consider using \`disabled\` to prevent uploads during processing.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- File size validation must be handled in your event handler; the component only validates file types.
+- The \`change\` event provides the file list but does not automatically upload files.
+- Multiple file selection requires the \`multiple\` attribute to be set.`,
+    },
+  ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the drop zone component.',
       type: 'DropZone',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The drop zone component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'DropZoneEvents',
     },
   ],
   defaultExample: {
+    description:
+      'Let users upload files by dragging or clicking to browse. This example creates a basic upload area with default prompts.',
     codeblock: {
-      title: 'Code',
+      title: 'Accept file uploads',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          layout: 'padding',
         },
       ],
     },
@@ -38,137 +56,124 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a basic drop zone that allows multiple file uploads with a simple label.',
+              'Accept multiple files in a single interaction. This example uses the `multiple` attribute with a custom label.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Allow multiple file uploads',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
                   language: 'preview',
                   layout: 'padding',
                 },
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
-                },
               ],
             },
           },
           {
             description:
-              'Shows a drop zone configured specifically for uploading multiple image files.',
+              'Preview uploaded images before submission. This example generates thumbnails after file selection.',
             codeblock: {
-              title: 'Image upload',
+              title: 'Upload images',
               tabs: [
                 {
                   code: './examples/image-upload.html',
                   language: 'preview',
                   layout: 'padding',
                 },
-                {
-                  code: './examples/image-upload.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
-                },
               ],
             },
           },
           {
             description:
-              'Illustrates a drop zone when the file upload is required.',
+              'Ensure files are provided before form submission. This example enforces validation using the `required` attribute.',
             codeblock: {
-              title: 'With required field',
+              title: 'Require file upload',
               tabs: [
                 {
                   code: './examples/required-field.html',
                   language: 'preview',
                   layout: 'padding',
                 },
-                {
-                  code: './examples/required-field.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
-                },
               ],
             },
           },
           {
             description:
-              'Displays a drop zone in a disabled state, preventing file uploads.',
+              'Block uploads while files are being processed. This example demonstrates the `disabled` state during an active upload.',
             codeblock: {
-              title: 'Disabled state',
+              title: 'Disable uploads during processing',
               tabs: [
                 {
                   code: './examples/disabled-state.html',
                   language: 'preview',
                   layout: 'padding',
                 },
-                {
-                  code: './examples/disabled-state.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
-                },
               ],
             },
           },
           {
             description:
-              'Demonstrates restricting file uploads to specific document types like PDF and DOC.',
+              'Accept only specific file formats. This example restricts uploads to PDF and DOC files using the `accept` property.',
             codeblock: {
-              title: 'File type restrictions',
+              title: 'Restrict file types',
               tabs: [
                 {
                   code: './examples/file-type-restrictions.html',
                   language: 'preview',
                   layout: 'padding',
                 },
-                {
-                  code: './examples/file-type-restrictions.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
-                },
               ],
             },
           },
           {
             description:
-              'Shows a drop zone with an error message, useful for indicating file upload validation issues.',
+              'Communicate why an upload failed. This example displays error messaging when files are rejected.',
             codeblock: {
-              title: 'With error state',
+              title: 'Show upload errors',
               tabs: [
                 {
                   code: './examples/with-error-state.html',
                   language: 'preview',
                   layout: 'padding',
                 },
-                {
-                  code: './examples/with-error-state.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
-                },
               ],
             },
           },
           {
             description:
-              'Illustrates advanced accessibility configuration for the drop zone, including custom accessibility labels.',
+              'Support screen reader users with clear labels. This example configures custom accessibility announcements.',
             codeblock: {
-              title: 'With accessibility options',
+              title: 'Configure accessibility labels',
               tabs: [
                 {
                   code: './examples/with-accessibility-options.html',
                   language: 'preview',
                   layout: 'padding',
                 },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Complete workflow',
+        examples: [
+          {
+            description:
+              'Handle the complete upload lifecycle with validation and feedback. This example combines type and size validation, error states, and disabled state during processing.',
+            codeblock: {
+              title: 'Upload with validation',
+              tabs: [
                 {
-                  code: './examples/with-accessibility-options.jsx',
-                  language: 'preview-jsx',
+                  code: './examples/upload-with-validation.html',
+                  language: 'preview',
                   layout: 'padding',
+                  customStyles: {
+                    minHeight: '300px',
+                  },
                 },
               ],
             },

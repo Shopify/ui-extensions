@@ -7,31 +7,34 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail: '/assets/templated-apis-screenshots/admin/components/section.png',
   subSections: [
     {
-      title: 'Useful for',
+      title: 'Best practices',
       type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Organizing your page in a logical structure based on nesting levels.
-- Creating consistency across pages.`,
+      anchorLink: 'best-practices',
+      sectionContent: `- **Use to group related content:** The component provides semantic structure and visual hierarchy for grouping related content. Each section should contain a cohesive set of information or controls that belong together.
+- **Provide meaningful headings:** Section headings help merchants scan and navigate content. Write headings that clearly describe what's in the section rather than using vague labels.
+- **Nest thoughtfully:** Nested sections create visual and semantic hierarchy, but excessive nesting creates overly complex structures. Limit nesting to 2-3 levels where the hierarchy is meaningful and helps merchants understand the content organization.
+- **Consider when to remove padding:** Full-width content like tables or images might need to extend to section edges. Remove padding when the content design requires it, but ensure nested content within has appropriate spacing.
+- **Use accessibility labels when needed:** When the visible heading doesn't fully convey the section's purpose to screen reader users, provide an accessibility label with additional context.`,
     },
     {
-      title: 'Considerations',
+      title: 'Limitations',
       type: 'Generic' as const,
-      anchorLink: 'considerations',
-      sectionContent: `- When adding headings inside sections they automatically use a specific style, which helps keep the content organized and clear.
-- Built-in spacing is added between nested sections, as well as between heading and content.
-- **Level 1:** Display as responsive cards with background color, rounded corners, and shadow effects. Includes outer padding that can be removed when content like \`s-table\` needs to expand to the full width of the section.
-- **Nested sections:** Don't have any background color or effects by default.`,
+      anchorLink: 'limitations',
+      sectionContent: `- The component doesn't include expand/collapse functionality. If you need collapsible sections, you'll need to implement this using additional state management and accessibility attributes.
+- Section headings automatically increment their semantic level based on nesting depth, but they stop at h4 for deeply nested sections. Content nested beyond three levels might have less clear document structure.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the section component.',
       type: 'Section',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The section component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'SectionSlots',
     },
   ],

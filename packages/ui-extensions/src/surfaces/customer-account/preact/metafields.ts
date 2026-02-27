@@ -20,6 +20,7 @@ interface MetafieldsFilters {
  * Returns the current array of `metafields` applied to the checkout.
  * You can optionally filter the list.
  * @arg {MetafieldsFilters} - filter the list of returned metafields
+ * @deprecated `useMetafields` is deprecated. Use `useAppMetafields` instead.
  */
 export function useMetafields<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,

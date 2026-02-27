@@ -3,10 +3,10 @@ import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 const data: AdminReferenceEntityTemplateSchema = {
   name: 'Index',
   overviewPreviewDescription:
-    'Most apps need a way for merchants to manage collections of resources, and perform actions on them.',
+    'Most apps need a way for merchants to manage collections of resources and perform actions on them.',
   description: `Most apps need a way for merchants to manage collections of resources and perform actions on them. For React Router-based Shopify apps, that index route file (\`app.[resources].jsx\`) should use a plural noun for the resource type. For example, \`app.products.jsx\` for managing products through your app. 
 
-  The index pattern provides this foundation while following proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.
+  The index pattern provides this foundation while following proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.
   `,
   isVisualComponent: true,
   category: 'Patterns',

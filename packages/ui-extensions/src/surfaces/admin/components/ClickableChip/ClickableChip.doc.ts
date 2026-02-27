@@ -8,39 +8,32 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Creating interactive filters or tags that can be clicked or removed
-- Navigating to related content when configured as a link
-- Allowing merchants to dismiss or remove applied filters or selections`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use for interactive chips that merchants can click or dismiss
-- Use Chip component instead for static, non-interactive indicators
-- Keep labels short to avoid truncation
-- Use color variants to indicate importance (subdued, base, strong)
-- Add icons to provide visual context`,
+      sectionContent: `- **Keep labels to 1-3 words:** Aim for labels like **Electronics**, **Summer sale**, or **Clearance items**.
+- **Choose color variants by importance:** Use \`subdued\` for less important or secondary chips, \`base\` (default) for standard selections, and \`strong\` to emphasize primary or active selections.
+- **Make remove action clear:** When chips are removable, ensure the remove button's visible and has clear hover/focus states.
+- **Group related chips together:** Use an inline [stack](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/stack) to arrange multiple chips horizontally with consistent spacing.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the clickable chip component.',
       type: 'ClickableChip',
     },
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'The clickable chip component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ClickableChipEvents',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The clickable chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ClickableChipSlots',
     },
   ],

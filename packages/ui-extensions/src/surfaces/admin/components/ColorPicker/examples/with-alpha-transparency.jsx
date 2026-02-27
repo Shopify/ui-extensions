@@ -1,7 +1,0 @@
-<s-box padding="large" border="base" borderRadius="base">
-  <s-color-picker
-    value="#FF0000FF"
-    alpha
-    name="color-with-alpha"
-   />
-</s-box>

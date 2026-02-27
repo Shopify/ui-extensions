@@ -7,37 +7,30 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Placing non-form items in rows or columns when sections don't work for your layout.
-- Controlling the spacing between elements.
-- For form layouts where you need multiple input fields on the same row, use \`s-grid\` instead.`,
-    },
-    {
-      title: 'Considerations',
-      type: 'Generic' as const,
-      anchorLink: 'considerations',
-      sectionContent: `- Stack doesn't add any padding by default. If you want padding around your stacked elements, use \`base\` to apply the default padding.
-- When spacing becomes limited, Stack will always wrap children to a new line.`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use smaller gaps between small elements and larger gaps between big ones.
-- Maintain consistent spacing in stacks across all pages of your app.`,
+      sectionContent: `- **Match spacing to content relationships:** Spacing communicates how closely related items are. Tight spacing suggests items belong together, while generous spacing separates distinct groups. Choose spacing that reflects your content hierarchy.
+- **Understand wrapping behavior:** Inline stacks wrap automatically when content doesn't fit. This is often desired, but if you need precise control over line breaks or multi-row layouts, consider alternative layout approaches.
+- **Use alignment intentionally:** Alignment properties determine how items distribute within the stack. Default alignment works for most cases, but consider alignment when items have different sizes or when you need specific positioning.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- The component doesn't support variable spacing between individual items. All items in a stack have uniform gap spacing. If you need different spacing between specific items, you'll need to nest multiple stacks or use a different layout approach.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description: 'Configure the following properties on the stack component.',
       type: 'Stack',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The stack component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'StackSlots',
     },
   ],

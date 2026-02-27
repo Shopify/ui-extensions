@@ -8,32 +8,34 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Useful for',
-      type: 'Generic' as const,
-      anchorLink: 'useful-for',
-      sectionContent: `- Displaying text content in a paragraph format.
-- Grouping elements with the same style. For instance, icons inside a paragraph will automatically adopt the paragraph's tone.`,
-    },
-    {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use short paragraphs to make your content scannable.
-- Use plain and clear terms.
-- Don't use jargon or technical language.
-- Don't use different terms to describe the same thing.
-- Don't duplicate content.`,
+      sectionContent: `- **Write in short, scannable blocks:** Keep paragraphs to 2-4 sentences to improve readability. Merchants scan more than they read, so break long content into digestible chunks. Use plain language and avoid jargon.
+- **Apply tones to communicate intent:** Use semantic tones like critical for errors, caution for warnings, and success for confirmations. Tones help merchants quickly understand the nature of information, but don't rely on color alone—pair with clear language.
+- **Consider accessibility in all contexts:** Use screen-reader-only text to provide context that sighted merchants get from layout or icons. Make sure tone colors have sufficient contrast for readability.
+- **Use line clamping strategically:** Line clamping helps manage space in constrained layouts like cards or previews, but truncated content should never hide critical information.`,
+    },
+    {
+      title: 'Limitations',
+      type: 'Generic' as const,
+      anchorLink: 'limitations',
+      sectionContent: `- Paragraphs render as block-level elements with spacing above and below. This spacing is designed for body content and might create unwanted gaps in tightly packed layouts.
+- Line clamping truncates text visually but doesn't provide tooltips or expandable content. Truncated information isn't fully accessible unless you provide an alternative way to view the complete text.
+- Tone colors are optimized for light backgrounds. Using toned paragraphs on dark or colored backgrounds might result in insufficient contrast for accessibility.`,
     },
   ],
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description:
+        'Configure the following properties on the paragraph component.',
       type: 'Paragraph',
     },
     {
       title: 'Slots',
-      description: '',
+      description:
+        'The paragraph component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
       type: 'ParagraphSlots',
     },
   ],

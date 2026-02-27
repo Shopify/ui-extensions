@@ -59,13 +59,11 @@ export interface ChipJSXProps
   extends Partial<ChipProps>,
     Pick<ChipProps$1, 'id' | 'children'> {
   /**
-   * The content of the Chip.
+   * The content of the chip.
    */
   children?: ComponentChildren;
   /**
-   * The graphic to display in the chip.
-   *
-   * Only accepts `Icon` components.
+   * An optional icon to display at the start of the chip. Accepts only Icon components.
    */
   graphic?: ComponentChildren;
 }

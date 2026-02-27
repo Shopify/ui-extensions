@@ -1,5 +1,0 @@
-<s-date-picker
-  view="2025-05"
-  type="range"
-  value="2025-05-28--2025-05-31"
- />
