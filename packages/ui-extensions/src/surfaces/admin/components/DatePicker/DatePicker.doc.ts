@@ -84,7 +84,7 @@ const data: ReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Capture the selected date when the merchant makes a change so you can update your app state. This example shows a range picker inside a form with an `onChange` handler that stores the selected value.',
+              'Combine a date picker with other form elements. This example shows a range picker inside a form with a text field and submit button.',
             codeblock: {
               title: 'Capture date selections with onChange',
               tabs: [

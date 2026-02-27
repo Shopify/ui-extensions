@@ -74,7 +74,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Preview uploaded images before submission. This example generates thumbnails after file selection.',
+              'Accept image files for upload. This example restricts file types to images using the `accept` property.',
             codeblock: {
               title: 'Upload images',
               tabs: [

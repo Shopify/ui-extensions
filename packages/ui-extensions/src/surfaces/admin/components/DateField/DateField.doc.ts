@@ -166,7 +166,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Validate a date field in real time and update the error message as the merchant interacts. This example shows a required date field that clears its error once a valid date is selected.',
+              'Display a validation error on a required date field. This example shows a date field with a static error message and the `required` attribute.',
             codeblock: {
               title: 'Validate a date field dynamically',
               tabs: [

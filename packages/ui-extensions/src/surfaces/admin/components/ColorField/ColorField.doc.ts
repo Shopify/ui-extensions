@@ -152,7 +152,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Provide immediate feedback on color format validity. This example demonstrates real-time validation that checks hex format as the user types.',
+              'Display a validation error for an invalid color value. This example shows a color field with a static error message for a malformed hex code.',
             codeblock: {
               title: 'Validate in real time',
               tabs: [
