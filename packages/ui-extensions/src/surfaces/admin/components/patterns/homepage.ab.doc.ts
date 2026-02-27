@@ -41,9 +41,9 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     description:
-      'This example surfaces a homepage for a Product Quality Auditor app with a score banner, metrics cards, setup guide, common issues summary, and a list of products needing attention.',
+      'Merchants need a clear entry point with key information and actions. This example surfaces a homepage for a Product Quality Auditor app with a score banner, metrics cards, setup guide, common issues summary, and a list of products needing attention.',
     codeblock: {
-      title: 'Homepage',
+      title: 'Surface a homepage with score banner, metrics, and product list',
       tabs: [
         {
           title: 'html',

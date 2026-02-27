@@ -47,9 +47,9 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedCompositions: ['Footer help', 'Resource list'],
   defaultExample: {
     description:
-      'This example presents a product details view for a Product Quality Auditor app with editable quality score fields in the main column and image and score in the sidebar.',
+      'Merchants need to edit and view a single resource with supporting info in the sidebar. This example presents a product details view for a Product Quality Auditor app with editable quality score fields in the main column and image and score in the sidebar.',
     codeblock: {
-      title: 'Details',
+      title: 'Present a product details view with editable fields and sidebar',
       tabs: [
         {
           title: 'html',

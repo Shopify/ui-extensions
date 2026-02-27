@@ -45,9 +45,9 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedCompositions: ['Empty state', 'Footer help', 'Metrics card'],
   defaultExample: {
     description:
-      'This example displays an index table for a Product Quality Auditor app with filter tabs, search, sortable columns, bulk selection, and bulk actions. The table shows product thumbnails, quality scores, issue counts, and status badges.',
+      'Merchants need to manage a collection of resources and perform actions on them. This example displays an index table for a Product Quality Auditor app with filter tabs, search, sortable columns, bulk selection, and bulk actions. The table shows product thumbnails, quality scores, issue counts, and status badges.',
     codeblock: {
-      title: 'Index',
+      title: 'Display an index table with filters, search, and bulk actions',
       tabs: [
         {
           title: 'html',

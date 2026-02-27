@@ -18,9 +18,9 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Homepage', 'Index', 'Details', 'Settings'],
   defaultExample: {
     description:
-      'This pattern displays centered help text with an external documentation link. The [stack](/docs/api/app-home/polaris-web-components/layout-and-structure/stack) uses `alignItems="center"` to center the text, and the [link](/docs/api/app-home/polaris-web-components/navigation/link) uses `target="_blank"` for links that open in a new tab.',
+      'Merchants can find documentation or support when they need more context than a page provides. This pattern displays centered help text with an external documentation link. The [stack](/docs/api/app-home/polaris-web-components/layout-and-structure/stack) uses `alignItems="center"` to center the text, and the [link](/docs/api/app-home/polaris-web-components/navigation/link) uses `target="_blank"` for links that open in a new tab.',
     codeblock: {
-      title: 'Footer help',
+      title: 'Display centered help text with documentation link',
       tabs: [
         {
           title: 'Preview',
