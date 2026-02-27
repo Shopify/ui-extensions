@@ -83,7 +83,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use a critical-toned banner to signal an urgent issue that requires immediate merchant action. This example shows a fraud review alert with buttons to review order details and adjust settings.',
+              'Use a critical-toned banner to signal an urgent issue that requires immediate merchant action. This example shows a fraud review alert with [buttons](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) to review order details and adjust settings.',
             codeblock: {
               title: 'Alert merchants to critical issues requiring action',
               tabs: [
