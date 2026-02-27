@@ -5713,7 +5713,7 @@ interface Tabs {
 }
 
 /**
- * Configure the following properties on the tab component.
+ * The tab component represents an individual tab button. It must be placed within a tab list and should use the `controls` property to associate it with a corresponding tab panel.
  *
  * @publicDocs
  */
@@ -5728,7 +5728,7 @@ interface Tab {
 }
 
 /**
- * Configure the following properties on the tab panel component.
+ * The tab panel component contains the content for each tab. It must have an `id` that matches the `controls` property of the corresponding tab.
  *
  * @publicDocs
  */
@@ -6496,7 +6496,7 @@ interface ChoiceList {
 }
 
 /**
- * Configure the following properties on the Choice component.
+ * The choice component creates options that let merchants select one or multiple items from a list of choices.
  *
  * @publicDocs
  */
@@ -7211,7 +7211,7 @@ interface PosBlock {
 }
 
 /**
- * Configure the following properties on the QRCode component.
+ * The POS block component renders a QR code when the block is used within a receipt target.
  *
  * @publicDocs
  */

@@ -1,6 +1,10 @@
 import {PinPadOptions, PinValidationResult} from '../types/pin-pad';
 
-/** @publicDocs */
+/**
+ * The `PinPadApi` object provides properties for displaying secure PIN entry interfaces. Access these properties through `shopify.pinPad` to show PIN pad modals and handle PIN validation.
+ *
+ * @publicDocs
+ */
 export interface PinPadApiContent {
   /**
    * Shows a PIN pad to the user in a modal dialog. The `onSubmit` function is called when the PIN is submitted and should validate the PIN, returning `'accept'` or `'reject'`.
@@ -19,10 +23,7 @@ export interface PinPadApiContent {
   ): void;
 }
 
-/**
- * The `PinPadApi` object provides methods for displaying secure PIN entry interfaces. Access these methods through `shopify.pinPad` to show PIN pad modals and handle PIN validation.
- * @publicDocs
- */
+/** @publicDocs */
 export interface PinPadApi {
   pinPad: PinPadApiContent;
 }

@@ -10,10 +10,7 @@ import type {
   SetLineItemSellingPlanInput,
 } from '../../types/cart';
 
-/**
- * The `CartApi` object provides access to cart management functionality and real-time cart state monitoring. Access these properties through `shopify.cart` to interact with the current POS cart.
- * @publicDocs
- */
+/** @publicDocs */
 export interface CartApi {
   cart: CartApiContent;
 }
@@ -28,7 +25,11 @@ export type CartDiscountType = 'Percentage' | 'FixedAmount' | 'Code';
  */
 export type LineItemDiscountType = 'Percentage' | 'FixedAmount';
 
-/** @publicDocs */
+/**
+ * The `CartApi` object provides access to cart management functionality and real-time cart state monitoring. Access these properties through `shopify.cart` to interact with the current POS cart.
+ *
+ * @publicDocs
+ */
 export interface CartApiContent {
   /**
    * Provides read-only access to the current cart state and allows subscribing to cart changes. The `value` property provides the current cart state, and `subscribe` allows listening to changes with improved performance and memory management.
