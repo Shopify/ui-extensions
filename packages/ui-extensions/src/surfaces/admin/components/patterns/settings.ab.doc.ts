@@ -5,9 +5,9 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription: `All apps will have settings merchants will want to configure to control your app's behavior.`,
   description: `All apps have settings merchants need to configure to control your app's behavior. For React Router-based Shopify apps, this will be defined in a route file like \`app.settings.jsx\`. 
   
-  The settings template organizes related options into logical groups that provides contextual help alongside form controls. It also leverages the Save Bar API to protect unsaved changes from being lost.
+  The settings template organizes related options into logical groups that provide contextual help alongside form controls. It also leverages the Save Bar API to protect unsaved changes from being lost.
 
-  The settings pattern follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.
+  The settings pattern follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.
   `,
   isVisualComponent: true,
   category: 'Patterns',
