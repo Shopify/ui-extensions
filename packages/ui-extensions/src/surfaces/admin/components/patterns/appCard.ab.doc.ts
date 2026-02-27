@@ -27,7 +27,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Homepage'],
   defaultExample: {
     description:
-      'Merchants can discover and install complementary apps that extend your app\'s functionality. This pattern displays a tappable app card with thumbnail and content layout. The [clickable](/docs/api/app-home/polaris-web-components/actions/clickable) component wraps the card, the [thumbnail](/docs/api/app-home/polaris-web-components/images/thumbnail) shows the app icon, and the [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) aligns the content.',
+      "Merchants can discover and install complementary apps that extend your app's functionality. This pattern displays a tappable app card with thumbnail and content layout. The [clickable](/docs/api/app-home/polaris-web-components/actions/clickable) component wraps the card, the [thumbnail](/docs/api/app-home/polaris-web-components/images/thumbnail) shows the app icon, and the [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) aligns the content.",
     codeblock: {
       title: 'Display a tappable app card with thumbnail and content',
       tabs: [
