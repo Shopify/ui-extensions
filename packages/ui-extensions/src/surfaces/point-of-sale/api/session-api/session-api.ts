@@ -1,7 +1,7 @@
 import type {Session} from '../../types/session';
 
 /**
- * The `SessionApi` object provides access to current session information and authentication. Access these properties through `api.session` to retrieve shop data and generate secure tokens. These properties enable secure API calls while maintaining user privacy and [app permissions](https://help.shopify.com/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).
+ * The `SessionApi` object provides access to current session information and authentication. Access these properties through `shopify.session` to retrieve shop data and generate secure tokens. These properties enable secure API calls while maintaining user privacy and [app permissions](https://help.shopify.com/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).
  *
  * @publicDocs
  */
@@ -17,7 +17,7 @@ export interface SessionApiContent {
 }
 
 /**
- * The `SessionApi` object provides access to current session information and authentication methods. Access these properties and methods through `shopify.session` to retrieve shop data and generate secure tokens. These methods enable secure API calls while maintaining user privacy and [app permissions](https://help.shopify.com/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).
+ * The `SessionApi` object provides access to current session information and authentication. Access these properties through `shopify.session` to retrieve shop data and generate secure tokens. These properties enable secure API calls while maintaining user privacy and [app permissions](https://help.shopify.com/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).
  */
 export interface SessionApi {
   session: SessionApiContent;

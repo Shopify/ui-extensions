@@ -1,5 +1,5 @@
 /**
- * The `DraftOrderApi` object provides access to draft order data in draft order-specific extension contexts. Access this property through `shopify.draftOrder` to retrieve information about the draft order currently being viewed or interacted with in the POS interface.
+ * The `DraftOrderApi` object provides access to draft order data. Access these properties through `api.draftOrder` to interact with the current draft order context.
  */
 export interface DraftOrderApi {
   draftOrder: DraftOrderApiContent;

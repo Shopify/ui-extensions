@@ -4863,7 +4863,7 @@ interface Button {
 }
 
 /**
- * Configure the following properties on the Choice component.
+ * The choice component creates options that let merchants select one or multiple items from a list of choices.
  *
  * @publicDocs
  */
@@ -4891,7 +4891,8 @@ interface Choice {
 }
 
 /**
- * The choice list component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
  * @publicDocs
  */
 interface ChoiceListEvents {
@@ -4955,7 +4956,7 @@ interface Clickable {
 }
 
 /**
- * The date field component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The date field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface DateFieldEvents {
@@ -5012,7 +5013,7 @@ interface DateField {
 }
 
 /**
- * The date picker component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The date picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface DatePickerEvents {
@@ -5053,7 +5054,7 @@ interface DatePicker {
 }
 
 /**
- * The date spinner component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The date spinner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface DateSpinnerEvents {
@@ -5114,7 +5115,7 @@ interface Divider {
 }
 
 /**
- * The email field component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The email field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface EmailFieldEvents {
@@ -5329,7 +5330,7 @@ interface Modal {
 }
 
 /**
- * The number field component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The number field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface NumberFieldEvents {
@@ -5504,7 +5505,7 @@ interface PosBlock {
 }
 
 /**
- * Configure the following properties on the QRCode component.
+ * The POS block component renders a QR code when the block is used within a receipt target.
  *
  * @publicDocs
  */
@@ -5623,7 +5624,7 @@ interface ScrollBox {
 }
 
 /**
- * The search field component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The search field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface SearchFieldEvents {
@@ -5894,7 +5895,7 @@ interface Text {
 }
 
 /**
- * The text area component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface TextAreaEvents {
@@ -5984,7 +5985,7 @@ interface TextArea {
 }
 
 /**
- * The text field component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The text field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface TextFieldEvents {
@@ -6120,7 +6121,7 @@ interface Tile {
 }
 
 /**
- * The time field component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The time field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface TimeFieldEvents {
@@ -6177,7 +6178,7 @@ interface TimeField {
 }
 
 /**
- * The time picker component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * The time picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface TimePickerEvents {

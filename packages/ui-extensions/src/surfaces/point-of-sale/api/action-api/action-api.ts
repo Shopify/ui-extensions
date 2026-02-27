@@ -1,5 +1,5 @@
 /**
- * The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `api.action` to launch full-screen modal experiences.
+ * The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `shopify.action` to launch full-screen modal experiences.
  *
  * @publicDocs
  */
@@ -11,7 +11,7 @@ export interface ActionApiContent {
 }
 
 /**
- * The `ActionApi` object provides methods for presenting modal interfaces. Access these methods through `shopify.action` to launch full-screen modal experiences.
+ * The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `shopify.action` to launch full-screen modal experiences.
  */
 export interface ActionApi {
   action: ActionApiContent;

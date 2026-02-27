@@ -42,7 +42,7 @@ export interface ScannerData {
 }
 
 /**
- * The `ScannerApi` object provides access to scanning functionality and scanner source information. Access these properties through `api.scanner` to monitor scan events and available scanner sources.
+ * The `ScannerApi` object provides access to scanning functionality and scanner source information. Access these properties through `shopify.scanner` to monitor scan events and available scanner sources.
  *
  * @publicDocs
  */

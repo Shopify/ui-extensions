@@ -1,12 +1,12 @@
 /**
- * The `ProductApi` object provides access to product and variant data in product-specific extension contexts. Access this property through `shopify.product` to retrieve information about the product or variant currently being viewed or interacted with in the POS interface.
+ * The `ProductApi` object provides access to product data. Access these properties through `shopify.product` to interact with the current product context.
  */
 export interface ProductApi {
   product: ProductApiContent;
 }
 
 /**
- * The `ProductApi` object provides access to product data. Access these properties through `api.product` to interact with the current product context.
+ * The `ProductApi` object provides access to product data. Access these properties through `shopify.product` to interact with the current product context.
  *
  * @publicDocs
  */

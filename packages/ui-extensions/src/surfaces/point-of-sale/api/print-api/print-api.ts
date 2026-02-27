@@ -1,5 +1,5 @@
 /**
- * The `PrintApi` object provides properties for triggering document printing. Access these properties through `api.print` to initiate print operations with various document types.
+ * The `PrintApi` object provides properties for triggering document printing. Access these properties through `shopify.print` to initiate print operations with various document types.
  *
  * @publicDocs
  */
@@ -20,11 +20,8 @@ export interface PrintApiContent {
 }
 
 /**
- * The `PrintApi` object provides methods for triggering document printing. Access these methods through `shopify.print` to initiate print operations with various document types.
+ * The `PrintApi` object provides properties for triggering document printing. Access these properties through `shopify.print` to initiate print operations with various document types.
  */
 export interface PrintApi {
-  /**
-   * The `PrintApi` object provides methods for triggering document printing. Access these methods through `shopify.print` to initiate print operations with various document types.
-   */
   print: PrintApiContent;
 }

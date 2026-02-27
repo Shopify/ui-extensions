@@ -1,7 +1,7 @@
 import {PinPadOptions, PinValidationResult} from '../types/pin-pad';
 
 /**
- * The `PinPadApi` object provides methods for displaying secure PIN entry interfaces. Access these methods through `api.pinPad` to show PIN pad modals and handle PIN validation.
+ * The `PinPadApi` object provides properties for displaying secure PIN entry interfaces. Access these properties through `shopify.pinPad` to show PIN pad modals and handle PIN validation.
  *
  * @publicDocs
  */
@@ -24,7 +24,7 @@ export interface PinPadApiContent {
 }
 
 /**
- * The `PinPadApi` object provides methods for displaying secure PIN entry interfaces. Access these methods through `shopify.pinPad` to show PIN pad modals and handle PIN validation.
+ * The `PinPadApi` object provides properties for displaying secure PIN entry interfaces. Access these properties through `shopify.pinPad` to show PIN pad modals and handle PIN validation.
  */
 export interface PinPadApi {
   pinPad: PinPadApiContent;

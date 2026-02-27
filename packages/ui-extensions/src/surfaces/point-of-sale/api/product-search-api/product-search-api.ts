@@ -37,7 +37,7 @@ export interface ProductSearchParams extends PaginationParams {
 }
 
 /**
- * The `ProductSearchApi` object provides properties for searching and fetching product data. Access these properties through `api.productSearch` to perform product searches and lookups.
+ * The `ProductSearchApi` object provides properties for searching and retrieving product information. Access these properties through `shopify.productSearch` to search products and fetch detailed product data.
  *
  * @publicDocs
  */
@@ -106,7 +106,7 @@ export interface ProductSearchApiContent {
 }
 
 /**
- * The `ProductSearchApi` object provides methods for searching and retrieving product information. Access these methods through `shopify.productSearch` to search products and fetch detailed product data.
+ * The `ProductSearchApi` object provides properties for searching and retrieving product information. Access these properties through `shopify.productSearch` to search products and fetch detailed product data.
  */
 export interface ProductSearchApi {
   productSearch: ProductSearchApiContent;

@@ -1,7 +1,7 @@
 import type {LineItem} from '../../types/cart';
 
 /**
- * The `CartLineItemApi` object provides access to the current line item. Access this property through `api.cartLineItem` to interact with the current line item context.
+ * The `CartLineItemApi` object provides access to the current line item. Access these properties through `api.cartLineItem` to interact with the current line item context.
  *
  * @publicDocs
  */
