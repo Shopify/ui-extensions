@@ -25,12 +25,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     'Section',
     'Stack',
   ],
-  recommendedTemplates: ['Details'],
+  recommendedApis: ['Navigation API', 'Toast API'],
+  recommendedTemplates: ['Homepage'],
   defaultExample: {
     description:
-      'This pattern guides merchants through setup with expandable steps and completion tracking. The [checkbox](/docs/api/app-home/polaris-web-components/forms/checkbox) tracks completion status. Each step includes a heading, description, illustration, and action button, with a progress indicator for overall completion.',
+      'New merchants need an interactive checklist to complete onboarding or setup tasks. This pattern guides merchants through setup with expandable steps and completion tracking. The [checkbox](/docs/api/app-home/polaris-web-components/forms/checkbox) tracks completion status. Each step includes a heading, description, illustration, and action button, with a progress indicator for overall completion.',
     codeblock: {
-      title: 'Setup guide',
+      title: 'Guide merchants through setup with expandable steps',
       tabs: [
         {
           title: 'html',
@@ -45,6 +46,59 @@ const data: AdminReferenceEntityTemplateSchema = {
         },
       ],
     },
+  },
+  examples: {
+    description: `The examples below show how you can extend the setup guide with additional functionality:
+
+- [Navigation API](#example-navigate-to-step-actions): Navigate to relevant pages from step action buttons.
+- [Toast API](#example-show-step-completion-with-toast): Show feedback when merchants complete setup steps.`,
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Use `href` attributes on step action buttons to navigate merchants to relevant pages for completing each step.',
+            codeblock: {
+              title: 'Navigate to step actions',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/setupGuide-nav.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/setupGuide-nav.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the [Toast API](/docs/api/app-home/apis/toast) to show feedback when merchants complete setup steps.',
+            codeblock: {
+              title: 'Show step completion with Toast',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: 'examples/setupGuide-toast.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: 'examples/setupGuide-toast.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
 };
 

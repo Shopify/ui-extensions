@@ -1,251 +1,240 @@
-<form
-  data-save-bar
-  onSubmit={(event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const formEntries = Object.fromEntries(formData);
-    console.log("Form data", formEntries);
-  }}
-  onReset={(event) => {
-    console.log("Handle discarded changes if necessary");
-  }}
->
+<form>
   <s-page heading="Mountain view">
     <s-link slot="breadcrumb-actions" href="/app/puzzles">
       Puzzles
     </s-link>
-        <s-button slot="secondary-actions">Duplicate</s-button>
-        <s-button slot="secondary-actions">Delete</s-button>
-        {/* === */}
-        {/* Puzzle information */}
-        {/* === */}
-        <s-section heading="Puzzle information">
-          <s-grid gap="base">
-            <s-text-field
-              label="Puzzle name"
-              name="name"
-              labelAccessibilityVisibility="visible"
-              placeholder="Enter puzzle name"
-              value="Mountain view"
-              details="Players will see this name when browsing puzzles."
-             />
-            <s-text-area
-              label="Description"
-              name="description"
-              labelAccessibilityVisibility="visible"
-              placeholder="Brief description of your puzzle"
-              value="A beautiful mountain landscape puzzle"
-              details="Help players understand what your puzzle features"
-             />
-            <s-money-field
-              label="Price"
-              name="price"
-              labelAccessibilityVisibility="visible"
-              placeholder="0.00"
-              value="9.99"
-              details="Set the price for this puzzle"
-             />
-            <s-url-field
-              label="Reference image URL"
-              name="reference-image-url"
-              labelAccessibilityVisibility="visible"
-              placeholder="https://example.com/image.jpg"
-              details="Optional link to original image"
-             />
-          </s-grid>
-        </s-section>
+    <s-button slot="secondary-actions">Duplicate</s-button>
+    <s-button slot="secondary-actions" tone="critical">Delete</s-button>
+    {/* === */}
+    {/* Puzzle information */}
+    {/* === */}
+    <s-section heading="Puzzle information">
+      <s-grid gap="base">
+        <s-text-field
+          label="Puzzle name"
+          name="name"
+          labelAccessibilityVisibility="visible"
+          placeholder="Enter puzzle name"
+          value="Mountain view"
+          details="Players will see this name when browsing puzzles."
+        />
+        <s-text-area
+          label="Description"
+          name="description"
+          labelAccessibilityVisibility="visible"
+          placeholder="Brief description of your puzzle"
+          value="A beautiful mountain landscape puzzle"
+          details="Help players understand what your puzzle features"
+        />
+        <s-money-field
+          label="Price"
+          name="price"
+          labelAccessibilityVisibility="visible"
+          placeholder="0.00"
+          value="9.99"
+          details="Set the price for this puzzle"
+        />
+        <s-url-field
+          label="Reference image URL"
+          name="reference-image-url"
+          labelAccessibilityVisibility="visible"
+          placeholder="https://example.com/image.jpg"
+          details="Optional link to original image"
+        />
+      </s-grid>
+    </s-section>
 
-        {/* === */}
-        {/* Puzzle templates */}
-        {/* === */}
-        <s-section heading="Puzzle templates">
-          <s-grid gap="base">
-            <s-grid
-              gridTemplateColumns="1fr auto"
-              gap="base"
-              alignItems="center"
-            >
-              <s-grid-item>
-                <s-search-field
-                  label="Search templates"
-                  labelAccessibilityVisibility="exclusive"
-                  placeholder="Search templates"
-                 />
-              </s-grid-item>
-              <s-grid-item>
-                <s-button>Browse</s-button>
-              </s-grid-item>
-            </s-grid>
-            <s-box
-              background="strong"
-              border="base"
-              borderRadius="base"
-              borderStyle="solid"
-              overflow="hidden"
-            >
-              <s-table>
-                <s-table-header-row>
-                  <s-table-header listSlot="primary">Template</s-table-header>
-                  <s-table-header>
-                    <s-stack alignItems="end">Actions</s-stack>
-                  </s-table-header>
-                  <s-table-header listSlot="secondary">
-                    <s-stack direction="inline" alignItems="end" />
-                  </s-table-header>
-                </s-table-header-row>
-                <s-table-body>
-                  <s-table-row>
-                    <s-table-cell>
-                      <s-stack
-                        direction="inline"
-                        gap="base"
-                        alignItems="center"
-                      >
-                        <s-box
-                          border="base"
-                          borderRadius="base"
-                          overflow="hidden"
-                          maxInlineSize="40px"
-                          maxBlockSize="40px"
-                        >
-                          <s-image
-                            alt="16-pieces puzzle template"
-                            src="https://cdn.shopify.com/static/images/polaris/patterns/16-pieces.png"
-                           />
-                        </s-box>
-                        16-pieces puzzle
-                      </s-stack>
-                    </s-table-cell>
-                    <s-table-cell>
-                      <s-stack alignItems="end">
-                        <s-link>Preview</s-link>
-                      </s-stack>
-                    </s-table-cell>
-                    <s-table-cell>
-                      <s-stack alignItems="end">
-                        <s-button
-                          icon="x"
-                          tone="neutral"
-                          variant="tertiary"
-                          accessibilityLabel="Remove 16-Pieces Puzzle template"
-                         />
-                      </s-stack>
-                    </s-table-cell>
-                  </s-table-row>
-                  <s-table-row>
-                    <s-table-cell>
-                      <s-stack
-                        direction="inline"
-                        gap="base"
-                        alignItems="center"
-                      >
-                        <s-box
-                          border="base"
-                          borderRadius="base"
-                          overflow="hidden"
-                          maxInlineSize="40px"
-                          maxBlockSize="40px"
-                        >
-                          <s-image
-                            alt="9-pieces puzzle template"
-                            src="https://cdn.shopify.com/static/images/polaris/patterns/9-pieces.png"
-                           />
-                        </s-box>
-                        9-pieces puzzle
-                      </s-stack>
-                    </s-table-cell>
-                    <s-table-cell>
-                      <s-stack
-                        direction="inline"
-                        gap="base"
-                        justifyContent="end"
-                      >
-                        <s-link>Preview</s-link>
-                      </s-stack>
-                    </s-table-cell>
-                    <s-table-cell>
-                      <s-stack alignItems="end">
-                        <s-button
-                          icon="x"
-                          tone="neutral"
-                          variant="tertiary"
-                          accessibilityLabel="Remove 9-Pieces Puzzle template"
-                         />
-                      </s-stack>
-                    </s-table-cell>
-                  </s-table-row>
-                  {/* Add more rows as needed here */}
-                  {/* If more than 10 rows are needed, details page tables should use the paginate, hasPreviousPage, hasNextPage, onPreviousPage, and onNextPage attributes to display and handle pagination) */}
-                </s-table-body>
-              </s-table>
-            </s-box>
-          </s-grid>
-        </s-section>
+    {/* === */}
+    {/* Puzzle templates */}
+    {/* === */}
+    <s-section heading="Puzzle templates">
+      <s-grid gap="base">
+        <s-grid
+          gridTemplateColumns="1fr auto"
+          gap="base"
+          alignItems="center"
+        >
+          <s-grid-item>
+            <s-search-field
+              label="Search templates"
+              labelAccessibilityVisibility="exclusive"
+              placeholder="Search templates"
+            />
+          </s-grid-item>
+          <s-grid-item>
+            <s-button>Browse</s-button>
+          </s-grid-item>
+        </s-grid>
+        <s-box
+          background="strong"
+          border="base"
+          borderRadius="base"
+          borderStyle="solid"
+          overflow="hidden"
+        >
+          <s-table>
+            <s-table-header-row>
+              <s-table-header listSlot="primary">Template</s-table-header>
+              <s-table-header>
+                <s-stack alignItems="end">Actions</s-stack>
+              </s-table-header>
+              <s-table-header listSlot="secondary">
+                <s-stack direction="inline" alignItems="end" />
+              </s-table-header>
+            </s-table-header-row>
+            <s-table-body>
+              <s-table-row>
+                <s-table-cell>
+                  <s-stack
+                    direction="inline"
+                    gap="base"
+                    alignItems="center"
+                  >
+                    <s-box
+                      border="base"
+                      borderRadius="base"
+                      overflow="hidden"
+                      maxInlineSize="40px"
+                      maxBlockSize="40px"
+                    >
+                      <s-image
+                        alt="16-pieces puzzle template"
+                        src="https://cdn.shopify.com/static/images/polaris/patterns/16-pieces.png"
+                      />
+                    </s-box>
+                    16-pieces puzzle
+                  </s-stack>
+                </s-table-cell>
+                <s-table-cell>
+                  <s-stack alignItems="end">
+                    <s-link>Preview</s-link>
+                  </s-stack>
+                </s-table-cell>
+                <s-table-cell>
+                  <s-stack alignItems="end">
+                    <s-button
+                      icon="x"
+                      tone="neutral"
+                      variant="tertiary"
+                      accessibilityLabel="Remove 16-Pieces Puzzle template"
+                    />
+                  </s-stack>
+                </s-table-cell>
+              </s-table-row>
+              <s-table-row>
+                <s-table-cell>
+                  <s-stack
+                    direction="inline"
+                    gap="base"
+                    alignItems="center"
+                  >
+                    <s-box
+                      border="base"
+                      borderRadius="base"
+                      overflow="hidden"
+                      maxInlineSize="40px"
+                      maxBlockSize="40px"
+                    >
+                      <s-image
+                        alt="9-pieces puzzle template"
+                        src="https://cdn.shopify.com/static/images/polaris/patterns/9-pieces.png"
+                      />
+                    </s-box>
+                    9-pieces puzzle
+                  </s-stack>
+                </s-table-cell>
+                <s-table-cell>
+                  <s-stack
+                    direction="inline"
+                    gap="base"
+                    justifyContent="end"
+                  >
+                    <s-link>Preview</s-link>
+                  </s-stack>
+                </s-table-cell>
+                <s-table-cell>
+                  <s-stack alignItems="end">
+                    <s-button
+                      icon="x"
+                      tone="neutral"
+                      variant="tertiary"
+                      accessibilityLabel="Remove 9-Pieces Puzzle template"
+                    />
+                  </s-stack>
+                </s-table-cell>
+              </s-table-row>
+              {/* Add more rows as needed here */}
+              {/* If more than 10 rows are needed, details page tables should use the paginate, hasPreviousPage, hasNextPage, onPreviousPage, and onNextPage attributes to display and handle pagination) */}
+            </s-table-body>
+          </s-table>
+        </s-box>
+      </s-grid>
+    </s-section>
 
-        {/* === */}
-        {/* Settings */}
-        {/* === */}
-        <s-section heading="Settings">
-          <s-grid gap="base">
-            <s-select label="Puzzle size" name="puzzle-size">
-              <s-option value="small">Small (9" x 9")</s-option>
-              <s-option value="medium" selected>
-                Medium (18" x 24")
-              </s-option>
-              <s-option value="large">Large (24" x 36")</s-option>
-            </s-select>
-            <s-select label="Piece count" name="piece-count">
-              <s-option value="250">250 pieces (Easy)</s-option>
-              <s-option value="500" selected>
-                500 pieces (Medium)
-              </s-option>
-              <s-option value="1000">1000 pieces (Hard)</s-option>
-              <s-option value="2000">2000 pieces (Expert)</s-option>
-            </s-select>
-            <s-select label="Material" name="material">
-              <s-option value="standard" selected>
-                Standard cardboard
-              </s-option>
-              <s-option value="premium">Premium cardboard</s-option>
-              <s-option value="wooden">Wooden pieces</s-option>
-            </s-select>
-            <s-number-field
-              label="Quantity in stock"
-              name="quantity-in-stock"
-              labelAccessibilityVisibility="visible"
-              value="50"
-              min={0}
-              placeholder="0"
-              details="Current inventory quantity"
-             />
-            <s-switch
-              label="Include reference image"
-              name="include-reference-image"
-              details="Ship a reference image with the puzzle"
-             />
-          </s-grid>
-        </s-section>
-        {/* Use the aside slot for sidebar content */}
-        <s-box slot="aside">
-          {/* === */}
-          {/* Puzzle summary */}
-          {/* === */}
-          <s-section heading="Puzzle summary">
-            <s-heading>Mountain view</s-heading>
-            <s-unordered-list>
-              <s-list-item>16-piece puzzle with medium difficulty</s-list-item>
-              <s-list-item>Pieces can be rotated</s-list-item>
-              <s-list-item>No time limit</s-list-item>
-              <s-list-item>
-                <s-stack direction="inline" gap="small">
-                  <s-text>Current status:</s-text>
-                  <s-badge color="base" tone="success">
-                    Active
-                  </s-badge>
-                </s-stack>
-              </s-list-item>
-            </s-unordered-list>
-          </s-section>
+    {/* === */}
+    {/* Settings */}
+    {/* === */}
+    <s-section heading="Settings">
+      <s-grid gap="base">
+        <s-select label="Puzzle size" name="puzzle-size">
+          <s-option value="small">Small (9" x 9")</s-option>
+          <s-option value="medium" selected>
+            Medium (18" x 24")
+          </s-option>
+          <s-option value="large">Large (24" x 36")</s-option>
+        </s-select>
+        <s-select label="Piece count" name="piece-count">
+          <s-option value="250">250 pieces (Easy)</s-option>
+          <s-option value="500" selected>
+            500 pieces (Medium)
+          </s-option>
+          <s-option value="1000">1000 pieces (Hard)</s-option>
+          <s-option value="2000">2000 pieces (Expert)</s-option>
+        </s-select>
+        <s-select label="Material" name="material">
+          <s-option value="standard" selected>
+            Standard cardboard
+          </s-option>
+          <s-option value="premium">Premium cardboard</s-option>
+          <s-option value="wooden">Wooden pieces</s-option>
+        </s-select>
+        <s-number-field
+          label="Quantity in stock"
+          name="quantity-in-stock"
+          labelAccessibilityVisibility="visible"
+          value="50"
+          min={0}
+          placeholder="0"
+          details="Current inventory quantity"
+        />
+        <s-switch
+          label="Include reference image"
+          name="include-reference-image"
+          details="Ship a reference image with the puzzle"
+        />
+      </s-grid>
+    </s-section>
+    {/* Use the aside slot for sidebar content */}
+    <s-box slot="aside">
+      {/* === */}
+      {/* Puzzle summary */}
+      {/* === */}
+      <s-section heading="Puzzle summary">
+        <s-heading>Mountain view</s-heading>
+        <s-unordered-list>
+          <s-list-item>16-piece puzzle with medium difficulty</s-list-item>
+          <s-list-item>Pieces can be rotated</s-list-item>
+          <s-list-item>No time limit</s-list-item>
+          <s-list-item>
+            <s-stack direction="inline" gap="small">
+              <s-text>Current status:</s-text>
+              <s-badge color="base" tone="success">
+                Active
+              </s-badge>
+            </s-stack>
+          </s-list-item>
+        </s-unordered-list>
+      </s-section>
     </s-box>
 
     {/* Footer help */}
