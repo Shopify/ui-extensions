@@ -29,6 +29,7 @@ interface AdminCodeblockType {
 
 type AdminExampleType = Omit<ExampleType, 'codeblock'> & {
   codeblock: AdminCodeblockType | AdminCodeblockType[];
+  description?: string;
 };
 
 type AdminExampleGroupType = Omit<ExampleGroupType, 'examples'> & {
@@ -36,10 +37,18 @@ type AdminExampleGroupType = Omit<ExampleGroupType, 'examples'> & {
 };
 
 export interface AdminReferenceEntityTemplateSchema
-  extends Omit<ReferenceEntityTemplateSchema, 'defaultExample' | 'examples'> {
+  extends Omit<
+    ReferenceEntityTemplateSchema,
+    'defaultExample' | 'examples' | 'related'
+  > {
+  related?: ReferenceEntityTemplateSchema['related'];
   defaultExample?: AdminExampleType;
   examples?: Omit<ExampleSectionSchema, 'exampleGroups' | 'examples'> & {
     exampleGroups?: AdminExampleGroupType[] | null;
     examples?: AdminExampleType[] | null;
   };
+  usedComponents?: string[];
+  recommendedApis?: string[];
+  recommendedTemplates?: string[];
+  recommendedCompositions?: string[];
 }

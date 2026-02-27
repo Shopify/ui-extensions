@@ -1,28 +1,35 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Interstitial nav',
   isOneColumnLayout: false,
   overviewPreviewDescription:
     'Provide deeper navigation by linking merchants to related pages within a section.',
-  description: `Interstitial navigation is used to connect merchants to deeper pages—such as settings, features, or resources—within a section of your app. It helps keep navigation clean and focused by avoiding multiple nested items, making it easier for merchants to discover and access important functionality.
- 
-  | Used to | Examples |
-  | --- | --- |
-  | Link to individual settings pages | Navigate from a settings overview to product settings or notification preferences |
-  | Connect to feature-specific pages | Direct merchants from campaign overview to reporting or automation setup |
-  | Guide merchants to supporting resources | Link to help documentation or integration guides from a central section |
-  | Simplify navigation structure | Reduce clutter by providing access to deeper pages without multi-level menus |
-  ---
+  description: `As your app grows, merchants need clear paths to deeper pages without cluttering your main navigation. The interstitial nav composition provides a clean way to link to settings, features, or resources within a section.
+
+  Use this pattern on pages that serve as hubs for related functionality, like a settings overview that links to individual settings pages. This composition follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details.
 `,
   isVisualComponent: true,
   category: 'Patterns',
   subCategory: 'Compositions',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/patterns/interstitialNav.png',
+  usedComponents: [
+    'Box',
+    'Clickable',
+    'Divider',
+    'Grid',
+    'Heading',
+    'Icon',
+    'Paragraph',
+    'Section',
+  ],
+  recommendedTemplates: ['Settings'],
   defaultExample: {
+    description:
+      'Merchants need clear paths to deeper pages (e.g. settings, features) without cluttering main navigation. This pattern displays a navigation menu with drill-down rows. [Clickable](/docs/api/app-home/polaris-web-components/actions/clickable) rows sit in a bordered [box](/docs/api/app-home/polaris-web-components/layout-and-structure/box). Each row uses the [icon](/docs/api/app-home/polaris-web-components/images/icon) with `name="chevron-right"` to indicate navigation.',
     codeblock: {
-      title: 'Interstitial nav',
+      title: 'Display a navigation menu with drill-down rows',
       tabs: [
         {
           title: 'html',
@@ -33,19 +40,11 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: 'examples/interstitialNav.jsx',
           language: 'preview-jsx',
+          layout: 'compositionPattern',
         },
       ],
     },
   },
-
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

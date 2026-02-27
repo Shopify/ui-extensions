@@ -1,63 +1,49 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Homepage',
   overviewPreviewDescription:
-    'Design your app homepage for daily merchant value.',
-  description: `The app URL specified in the Partner Dashboard should point to your app homepage. The home page of your app is the first thing merchants will see, and it should provide daily value to them. Design the page to provide status updates and show merchants what actions they can take.
- 
-  | Used to | Examples |
-  | --- | --- |
-  | Teach merchants how to use the app | Onboarding, how-to guides |
-  | Display app functionalities | Call-to-actions to app features, resource tables |
-  | Show updates | Status banners, company news |
+    'The primary landing page for your app, providing quick access to key information and actions.',
+  description: `The first thing merchants see when they open your app in App Home is a landing page, associated with the route file \`app._index.jsx\` in React Router-based Shopify apps.
 
-  ![Preview of the homepage pattern](/assets/templated-apis-screenshots/admin/patterns/homepage-example.png)
+  It provides a clear entry point for merchants, and an opportunity to provide daily value through status updates, metrics, and clear actions merchants can take.  Surface key information at a glance like performance metrics, items needing attention, and onboarding guidance for new users.
 
-  This pattern uses \`Badge\`, \`Banner\`, \`Box\`, \`Button\`, \`Checkbox\`, \`Clickable\`, \`Divider\`, \`Grid\`, \`Heading\`, \`Image\`, \`Link\`, \`Paragraph\`, \`Section\`, \`Stack\`, and \`Text\` components.
-
-  ---
-
-  ## Design guidelines
-  Your app home page should be designed to provide users with relevant, timely information like quick statistics, status updates, or information that’s immediately actionable.
-
-  ### Onboarding
-
-  The onboarding experience quickly introduces users to your app's essential features. A good onboarding should be self-guided, easy to follow and make users feel they understand how the app works after finishing it. If the onboarding is long or complex, give users the option to complete it at a later time to avoid stopping their workflow.
-
-  * Onboarding must be brief and direct. Provide clear instructions and guide users to completion
-  * Only request information from users if it's necessary
-  * If your onboarding isn't essential, then make it dismissible
-  * Don't have more than five steps in your onboarding process. This can lead users to drop off and not use your app
-
-  ---
-
-  ### Visual design
-
-  * Design your app to be responsive and adapt to different screen sizes and devices. This ensures a seamless user experience across various platforms.
-  * Use looser spacing for low-density layouts. Use tighter spacing for high-density layouts.
-  * Use high-resolution photos and images to ensure a professional, high-quality experience.
-
-  ---
-
-  <style>
-    div[class*="CodeBlock-module-CodeBlock_"] {
-      max-height: calc(100vh - 80px) !important;
-    }
-    div[class*="Tabs-module-TabsContent_"] {
-      overflow: auto !important;
-    }
-    div[class*="Screenshot-module-Screenshot_"] {
-      display: none !important;
-    }
-  </style>`,
+  The homepage pattern provides this foundation while following proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines for apps.
+`,
   isVisualComponent: true,
   category: 'Patterns',
   subCategory: 'Templates',
+  isOneColumnLayout: true,
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/homepage.png',
+  usedComponents: [
+    'Badge',
+    'Banner',
+    'Box',
+    'Button',
+    'Clickable',
+    'Divider',
+    'Grid',
+    'Heading',
+    'Icon',
+    'Link',
+    'Paragraph',
+    'Section',
+    'Stack',
+    'Text',
+  ],
+  recommendedApis: ['Navigation API', 'Toast API'],
+  recommendedCompositions: [
+    'App card',
+    'Callout card',
+    'Media card',
+    'Setup guide',
+    'Footer help',
+  ],
   defaultExample: {
+    description:
+      'Merchants need a clear entry point with key information and actions. This example surfaces a homepage for a Product Quality Auditor app with a score banner, metrics cards, setup guide, common issues summary, and a list of products needing attention.',
     codeblock: {
-      title: 'Homepage',
+      title: 'Surface a homepage with score banner, metrics, and product list',
       tabs: [
         {
           title: 'html',
@@ -68,18 +54,14 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: './examples/homepage.jsx',
           language: 'preview-jsx',
+          layout: 'templatePattern',
+          customStyles: {
+            minHeight: '400px',
+          },
         },
       ],
     },
   },
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
 };
 
 export default data;

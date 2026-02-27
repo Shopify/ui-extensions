@@ -1,73 +1,55 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   name: 'Details',
   overviewPreviewDescription:
-    'Edit and view objects with efficient dual-column layout.',
-  description: `The details page allows merchants to view, create and edit objects. Use the right column to provide editable fields, and the right column for supporting information such as status, metadata, and summaries.
- 
-  | Used to | Examples |
-  | --- | --- |
-  | View, edit and create objects  | Discounts, shipping labels, newsletters, templates. |
+    'From the index, edit and view individual resources within an efficient dual-column layout.',
 
-  ![Preview of the details page pattern](/assets/templated-apis-screenshots/admin/patterns/details-example.png)
+  description: `From the index, merchants need to edit and view individual resources. For React Router-based Shopify apps, a resource type's details route file will use the pattern \`app.[resource].$id.jsx\`. For example, \`app.product.$id.jsx\` for managing a single product through your app.
+  
+  The details template provides an efficient dual-column layout that puts editable content front and center while keeping supporting information visible in the sidebar. Use the primary column for information that defines the resource. Use the secondary column for supporting information such as status, metadata, and summaries. Provide breadcrumb navigation so merchants can return to the previous page without using the browser back button.
 
-  This pattern uses \`Badge\`, \`Box\`, \`Button\`, \`Grid\`, \`Heading\`, \`Image\`, \`Link\`, \`MoneyField\`, \`NumberField\`, \`SearchField\`, \`Section\`, \`Select\`, \`Stack\`, \`Switch\`, \`Table\`, \`TextArea\`, \`TextField\`, \`UnorderedList\`, and \`URLField\` components.
-
-  ---
-
-  ## Design guidelines
-  Design details pages that enable users to create, view, and edit resource objects.
-
-  ### Navigation
-
-  * Users must be able to return to the previous page without using the browser button. To achieve this, your app can provide breadcrumbs or a Back button on the page.
-  * Use tabs sparingly for secondary navigation purposes when the nav menu isn't sufficient.
-    * Clicking a tab should only change the content below it, not above.
-    * Tabs should never wrap onto multiple lines.
-    * Navigating between tabs shouldn't cause the tabs to change position or move.
-    * Offer users clear and predictable action labels.
-
-  ---
-
-  ### Layout
-
-  * Design your app to be responsive and adapt to different screen sizes and devices. This ensures a seamless user experience across various platforms.
-  * Use looser spacing for low-density layouts. Use tighter spacing for high-density layouts.
-  * Always use the default width. Full width tends to waste space and make the page harder to parse
-  * In the primary column: Put information that defines the resource object
-  * In the secondary column: Put supporting information such as status, metadata, and summaries
-  * Arrange content in order of importance
-  * Group similar content in the same card
-  * Place unique page actions at the top of the actions list and typical object actions at the bottom
-
-  ---
-
-  ### Forms
-
-  * For more than five inputs, use sections with titles in one card or use multiple cards with headers.
-  * Form inputs should be saved using the App Bridge Contextual Save Bar API. This also applies to forms within max modals. Continuous data validation or auto-save for forms is consistent with the standard Shopify admin save UX.
-
-  ---
-
-  <style>
-    div[class*="CodeBlock-module-CodeBlock_"] {
-      max-height: calc(100vh - 80px) !important;
-    }
-    div[class*="Tabs-module-TabsContent_"] {
-      overflow: auto !important;
-    }
-    div[class*="Screenshot-module-Screenshot_"] {
-      display: none !important;
-    }
-  </style>`,
+  The details pattern follows proven design guidelines that help your app feel native to the Shopify admin. See [Built for Shopify requirements](/docs/apps/launch/built-for-shopify/requirements) for more details on these guidelines.
+  `,
   isVisualComponent: true,
   category: 'Patterns',
   subCategory: 'Templates',
+  isOneColumnLayout: true,
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/details.png',
+  usedComponents: [
+    'Badge',
+    'Banner',
+    'Box',
+    'Button',
+    'Divider',
+    'Grid',
+    'Heading',
+    'Icon',
+    'Image',
+    'Link',
+    'Modal',
+    'MoneyField',
+    'NumberField',
+    'SearchField',
+    'Section',
+    'Select',
+    'Stack',
+    'Switch',
+    'Table',
+    'Text',
+    'TextArea',
+    'TextField',
+    'Thumbnail',
+    'UnorderedList',
+    'URLField',
+  ],
+  recommendedApis: ['Modal API', 'Save Bar API'],
+  recommendedCompositions: ['Footer help', 'Resource list'],
   defaultExample: {
+    description:
+      'Merchants need to edit and view a single resource with supporting info in the sidebar. This example presents a product details view for a Product Quality Auditor app with editable quality score fields in the main column and image and score in the sidebar.',
     codeblock: {
-      title: 'Details',
+      title: 'Present a product details view with editable fields and sidebar',
       tabs: [
         {
           title: 'html',
@@ -78,19 +60,67 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'jsx',
           code: './examples/details.jsx',
           language: 'preview-jsx',
+          layout: 'templatePattern',
+          customStyles: {
+            minHeight: '400px',
+          },
         },
       ],
     },
   },
+  examples: {
+    description: `The examples below show how you can extend the details template with additional functionality:
 
-  related: [
-    {
-      name: 'Built for Shopify',
-      subtitle: 'Requirements',
-      url: '/docs/apps/launch/built-for-shopify/requirements',
-      type: 'component',
-    },
-  ],
+- [Modal API](#example-confirm-destructive-actions-with-modal-api): Confirm before performing destructive actions, like deleting a resource.
+- [Save Bar API](#example-retain-unsaved-changes-with-save-bar): Display save and discard controls when forms have unsaved changes.`,
+    exampleGroups: [
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Use the [Modal API](/docs/api/app-home/apis/modal) to confirm destructive actions like deleting a resource. The modal prevents accidental data loss by requiring explicit confirmation.',
+            codeblock: {
+              title: 'Confirm destructive actions with Modal API',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/details-modal.jsx',
+                  language: 'preview-jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: './examples/details-modal.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Add `data-save-bar` to your form element to enable the [Save Bar API](/docs/api/app-home/apis/save-bar), which displays save/discard controls when the form has unsaved changes.',
+            codeblock: {
+              title: 'Retain unsaved changes with Save Bar',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/details-save-bar.jsx',
+                  language: 'jsx',
+                  layout: 'compositionPattern',
+                },
+                {
+                  title: 'html',
+                  code: './examples/details-save-bar.html',
+                  language: 'html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 export default data;
