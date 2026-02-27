@@ -27,7 +27,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Details'],
   defaultExample: {
     description:
-      'This pattern uses [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) with responsive column templates to display metrics side-by-side on larger screens and stacked on smaller screens. The [`s-badge`](/docs/api/app-home/polaris-web-components/feedback/badge) component shows trend indicators.',
+      'This pattern displays metrics in a responsive grid with trend indicators. The [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) uses responsive column templates for side-by-side layout on large screens and stacked layout on small screens. The [badge](/docs/api/app-home/polaris-web-components/feedback/badge) component shows trend indicators.',
     codeblock: {
       title: 'Metrics card',
       tabs: [

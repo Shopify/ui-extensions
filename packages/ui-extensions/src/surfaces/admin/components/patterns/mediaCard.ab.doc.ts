@@ -26,7 +26,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Details'],
   defaultExample: {
     description:
-      'This pattern uses [`s-box`](/docs/api/app-home/polaris-web-components/layout-and-structure/box) with `border` and `borderRadius` for the card container, [`s-clickable`](/docs/api/app-home/polaris-web-components/actions/clickable) to make the image tappable, and [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) for the footer layout with a title and action button.',
+      'This pattern displays a media card with a tappable image and footer layout. The [box](/docs/api/app-home/polaris-web-components/layout-and-structure/box) uses `border` and `borderRadius` for the container, the [clickable](/docs/api/app-home/polaris-web-components/actions/clickable) component makes the image tappable, and the [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) lays out the footer with title and action button.',
     codeblock: {
       title: 'Media card',
       tabs: [

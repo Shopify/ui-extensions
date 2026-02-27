@@ -27,7 +27,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Details'],
   defaultExample: {
     description:
-      'This pattern uses [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) to align account information with a connect button. The [`s-section`](/docs/api/app-home/polaris-web-components/layout-and-structure/section) provides consistent padding and the terms text below informs merchants of the connection agreement.',
+      'This pattern displays account connection layout with a connect button and terms. The [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) aligns account information and button, the [section](/docs/api/app-home/polaris-web-components/layout-and-structure/section) provides padding, and the terms text below describes the connection agreement.',
     codeblock: {
       title: 'Account connection',
       tabs: [

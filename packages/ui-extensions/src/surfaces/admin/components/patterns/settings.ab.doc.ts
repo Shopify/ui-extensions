@@ -33,7 +33,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedCompositions: ['Footer help', 'Interstitial nav'],
   defaultExample: {
     description:
-      'This example demonstrates a settings page for a Product Quality Auditor app. The main column contains quality criteria toggles with weight controls and notification preferences. The aside column provides contextual help explaining the scoring system.\n\nAdd `data-save-bar` to your form element to enable the [Save Bar API](/docs/api/app-home/apis/save-bar), which displays save/discard controls when the form has unsaved changes.',
+      'This example configures a settings page for a Product Quality Auditor app with quality criteria toggles, weight controls, and notification preferences in the main column and contextual help in the aside. Add `data-save-bar` to your form element to enable the [Save Bar API](/docs/api/app-home/apis/save-bar), which displays save/discard controls when the form has unsaved changes.',
     codeblock: {
       title: 'Settings',
       tabs: [

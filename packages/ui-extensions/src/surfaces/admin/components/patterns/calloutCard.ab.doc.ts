@@ -27,7 +27,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Details'],
   defaultExample: {
     description:
-      'This pattern uses [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) with responsive column templates to stack content on smaller screens. The illustration and call-to-action button draw attention to important actions or promotions.',
+      'This pattern presents a callout card that stacks content on smaller screens with a prominent illustration and call-to-action. The [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) uses responsive column templates. The illustration and button draw attention to important actions or promotions.',
     codeblock: {
       title: 'Callout card',
       tabs: [

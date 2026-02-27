@@ -28,7 +28,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Details'],
   defaultExample: {
     description:
-      'This pattern uses expandable sections with [`s-checkbox`](/docs/api/app-home/polaris-web-components/forms/checkbox) to track completion status. Each step includes a heading, description, illustration, and action button. The progress indicator shows overall completion.',
+      'This pattern guides merchants through setup with expandable steps and completion tracking. The [checkbox](/docs/api/app-home/polaris-web-components/forms/checkbox) tracks completion status. Each step includes a heading, description, illustration, and action button, with a progress indicator for overall completion.',
     codeblock: {
       title: 'Setup guide',
       tabs: [

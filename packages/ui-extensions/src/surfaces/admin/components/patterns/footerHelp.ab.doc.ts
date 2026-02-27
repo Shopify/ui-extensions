@@ -18,7 +18,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Details'],
   defaultExample: {
     description:
-      'This pattern uses [`s-stack`](/docs/api/app-home/polaris-web-components/layout-and-structure/stack) with `alignItems="center"` to center the help text. Use [`s-link`](/docs/api/app-home/polaris-web-components/navigation/link) with `target="_blank"` for external documentation links that open in a new tab.',
+      'This pattern displays centered help text with an external documentation link. The [stack](/docs/api/app-home/polaris-web-components/layout-and-structure/stack) uses `alignItems="center"` to center the text, and the [link](/docs/api/app-home/polaris-web-components/navigation/link) uses `target="_blank"` for links that open in a new tab.',
     codeblock: {
       title: 'Footer help',
       tabs: [

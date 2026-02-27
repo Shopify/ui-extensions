@@ -28,7 +28,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Details'],
   defaultExample: {
     description:
-      'This pattern centers content vertically and horizontally using [`s-grid`](/docs/api/app-home/polaris-web-components/layout-and-structure/grid), with an optional illustration, heading, body text, and action buttons. Use [`s-button-group`](/docs/api/app-home/polaris-web-components/actions/button-group) with `slot="primary-action"` and `slot="secondary-actions"` to provide clear next steps.',
+      'This pattern displays an empty state with centered content and primary and secondary actions. The [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) centers content vertically and horizontally. Use the [button group](/docs/api/app-home/polaris-web-components/actions/button-group) with `slot="primary-action"` and `slot="secondary-actions"` for clear next steps.',
     codeblock: {
       title: 'Empty state',
       tabs: [
