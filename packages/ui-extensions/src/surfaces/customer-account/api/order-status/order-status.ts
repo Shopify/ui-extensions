@@ -262,6 +262,9 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   localization: OrderStatusLocalization;
 
   /**
+   * > Caution:
+   * `metafields` is deprecated. Use `appMetafields` instead.
+   *
    * The metafields that apply to the current order. The actual resource
    * on which these metafields exist depends on the source of the order:
    *
@@ -280,6 +283,8 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    *
    * Once the order is created, you can query these metafields using the
    * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
+   *
+   * @deprecated Use `appMetafields` instead.
    */
   metafields: SubscribableSignalLike<Metafield[]>;
 
