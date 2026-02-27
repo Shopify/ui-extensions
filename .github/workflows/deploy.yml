@@ -50,6 +50,7 @@ jobs:
           NPM_TOKEN: ''
           NPM_CONFIG_PROVENANCE: true
         with:
+          post_install_script: yarn changeset:exit-pre-mode
           build_script: yarn build
           comment_command: /snapit
 
