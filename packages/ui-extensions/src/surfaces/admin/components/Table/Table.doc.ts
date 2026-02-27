@@ -106,17 +106,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'table-default.png',
+    description:
+      'Create a data table with header columns and rows of structured content. This example shows a customer table with name, email, order count, and phone columns.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a data table',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-          layout: 'section',
-        },
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
           layout: 'section',
         },
       ],
@@ -127,97 +125,74 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
-            description: 'Tables expand to full width by default.',
+            description:
+              'Use the `listSlot` property on table headers to control how columns are displayed when the table is converted to a list layout on mobile. This example shows a product table with badges and appropriate slot assignments for mobile readability.',
             codeblock: {
-              title: 'Basic Usage',
+              title: 'Configure columns for mobile list layout',
               tabs: [
                 {
                   code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Add pagination controls for navigating large datasets.',
+              'Use the `paginate`, `hasPreviousPage`, and `hasNextPage` properties to display pagination controls for navigating large datasets. This example shows a paginated product table with next and previous page buttons.',
             codeblock: {
-              title: 'With Pagination',
+              title: 'Add pagination for large datasets',
               tabs: [
                 {
                   code: './examples/with-pagination.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-pagination.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
-                },
-              ],
-            },
-          },
-          {
-            description: 'Display a loading state while fetching data.',
-            codeblock: {
-              title: 'With Loading State',
-              tabs: [
-                {
-                  code: './examples/with-loading-state.html',
-                  language: 'html',
-                },
-                {
-                  code: './examples/with-loading-state.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
-                },
-              ],
-            },
-          },
-          {
-            description: 'Display multiple columns in a full-width table.',
-            codeblock: {
-              title: 'Full-width table with multiple columns',
-              tabs: [
-                {
-                  code: './examples/full-width-product-inventory-table.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/full-width-product-inventory-table.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
-                  customStyles: {
-                    minHeight: '400px',
-                  },
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Display data using the list variant with specialized slot types. List is the default variant on mobile devices.',
+              'Set the `loading` property to display a loading overlay while fetching or refreshing table data. This example shows a product table with the loading state active.',
             codeblock: {
-              title: 'List Variant',
+              title: 'Show a loading state while fetching data',
+              tabs: [
+                {
+                  code: './examples/with-loading-state.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the `filters` slot to add search or filter controls above the table. This example shows a search field that lets merchants filter products by name.',
+            codeblock: {
+              title: 'Add a search filter to a table',
+              tabs: [
+                {
+                  code: './examples/with-filters.html',
+                  language: 'preview',
+                  title: '',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Use the `variant` property to display data as stacked key-value pairs instead of as a grid. This is the default layout on mobile devices. This example shows a customer table rendered in list format.',
+            codeblock: {
+              title: 'Display data in list format',
               tabs: [
                 {
                   code: './examples/list-variant.html',
-                  language: 'html',
-                },
-                {
-                  code: './examples/list-variant.jsx',
-                  language: 'preview-jsx',
-                  layout: 'padding',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

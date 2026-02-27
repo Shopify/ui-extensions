@@ -1,5 +1,0 @@
-<s-stack gap="base">
-  <s-text>First item</s-text>
-  <s-text>Second item</s-text>
-  <s-text>Third item</s-text>
-</s-stack>
