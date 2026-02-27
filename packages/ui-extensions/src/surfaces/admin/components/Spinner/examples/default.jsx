@@ -1,1 +1,0 @@
-<s-spinner accessibilityLabel="Loading" size="large-100" />

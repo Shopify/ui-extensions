@@ -35,17 +35,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'spinner-default.png',
+    description:
+      'Create a spinner with an accessibility label to indicate a loading state. This example shows an extra large spinner with a descriptive label for screen readers.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a loading spinner',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -54,58 +52,46 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Standard loading spinner with accessibility label for screen readers.',
+              'Use the `size` property to match the spinner to its context. This example shows all three sizes—base for inline use, large for section loading, and large-100 for full-page states.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Use spinners of different sizes',
               tabs: [
                 {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
+                  code: './examples/spinner-sizes.html',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Centered loading indicator with text in a section layout for content loading states.',
+              'Center a spinner with a text label in a section to communicate when content is loading. This example shows a vertically stacked spinner and status message for a product list.',
             codeblock: {
-              title: 'Loading state in section',
+              title: 'Show a loading state in a content section',
               tabs: [
                 {
                   code: './examples/loading-state-in-section.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/loading-state-in-section.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
           },
           {
             description:
-              'Compact inline loading indicator for form submissions and quick actions.',
+              'Place a compact spinner inline with a text label for form submissions and quick actions. This example shows a horizontal layout with a spinner and saving status message.',
             codeblock: {
-              title: 'Inline loading with text',
+              title: 'Display an inline loading indicator',
               tabs: [
                 {
                   code: './examples/inline-loading-with-text.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/inline-loading-with-text.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },
