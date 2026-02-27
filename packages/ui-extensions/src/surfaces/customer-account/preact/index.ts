@@ -8,8 +8,6 @@ export {useTimezone} from './timezone';
 export {useExtensionCapabilities, useExtensionCapability} from './capabilities';
 export {useExtensionLanguage} from './extension-language';
 export {useCheckoutSettings} from './checkout-settings';
-export {useMetafield} from './metafield';
-export {useMetafields} from './metafields';
 export {useNote} from './note';
 export {useAttributes, useAttributeValues} from './attributes';
 export {useShippingAddress} from './shipping-address';

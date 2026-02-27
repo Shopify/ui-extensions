@@ -12,32 +12,6 @@ import type {ExtensionTarget} from '../../extension-targets';
 import {Extension} from '../shared';
 
 /**
- * Metadata associated with the checkout.
- */
-export interface Metafield {
-  /**
-   * The name of the metafield. It must be between 3 and 30 characters in
-   * length (inclusive).
-   */
-  key: string;
-
-  /**
-   * A container for a set of metafields. You need to define a custom
-   * namespace for your metafields to distinguish them from the metafields
-   * used by other apps. This must be between 2 and 20 characters in length (inclusive).
-   */
-  namespace: string;
-
-  /**
-   * The information to be stored as metadata.
-   */
-  value: string | number;
-
-  /** The metafield’s information type. */
-  valueType: 'integer' | 'string' | 'json_string';
-}
-
-/**
  * Represents a custom metadata attached to a resource.
  */
 export interface AppMetafield {
@@ -194,6 +168,8 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * file. These metafields are updated when there's a change in the merchandise items
    * being purchased by the customer.
    *
+   * App owned metafields are supported and are returned using the `$app` format. The fully qualified reserved namespace format such as `app--{your-app-id}[--{optional-namespace}]` is not supported. See [app owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.
+   *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   appMetafields: SubscribableSignalLike<AppMetafieldEntry[]>;
@@ -260,28 +236,6 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * object instead.
    */
   localization: OrderStatusLocalization;
-
-  /**
-   * The metafields that apply to the current order. The actual resource
-   * on which these metafields exist depends on the source of the order:
-   *
-   * - If the source is an order, then the metafields are on the order.
-   *
-   * - If the source is a draft order, then the initial value of metafields are
-   *   from the draft order, and any new metafields you write are applied
-   *   to the order created by the checkout.
-   *
-   * - For all other sources, the metafields are only stored locally on the
-   *   client creating the checkout, and are applied to the order that
-   *   results from checkout.
-   *
-   * These metafields are shared by all extensions running on checkout, and
-   * persist for as long as the customer is working on this checkout.
-   *
-   * Once the order is created, you can query these metafields using the
-   * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
-   */
-  metafields: SubscribableSignalLike<Metafield[]>;
 
   /**
    * A note left by the customer to the merchant, either in their cart or during checkout.

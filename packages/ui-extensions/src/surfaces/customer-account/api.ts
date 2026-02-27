@@ -10,7 +10,6 @@ export type {
   SelectedOption,
   Money,
   Shop,
-  Metafield,
   AppMetafield,
   AppMetafieldEntryTarget,
   AppMetafieldEntry,
