@@ -45,17 +45,15 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     image: 'unordered-list-default.png',
+    description:
+      'Create a bulleted list of related items. This example shows a simple list of product color options.',
     codeblock: {
-      title: 'Code',
+      title: 'Add a bulleted list',
       tabs: [
         {
           code: './examples/default.html',
-          language: 'html',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
+          title: '',
         },
       ],
     },
@@ -64,22 +62,18 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'A standard unordered list with nested items demonstrating hierarchical content structure.',
+              'Nest unordered lists inside list items to organize hierarchical content with sub-items. This example shows a store setup checklist with nested shipping options under a parent item.',
             codeblock: {
-              title: 'Unordered list with nested items',
+              title: 'Create nested lists with sub-items',
               tabs: [
                 {
                   code: './examples/store-setup-checklist.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/store-setup-checklist.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
+                  title: '',
                 },
               ],
             },

@@ -1,1 +1,0 @@
-<s-divider color="strong" />
