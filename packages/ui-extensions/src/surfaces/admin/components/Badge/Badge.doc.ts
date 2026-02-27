@@ -76,7 +76,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Place badges inside table cells to give merchants a scannable overview of status information. This example shows fulfillment and payment badges in an order table.',
+              'Place badges inside [table cells](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/table) to give merchants a scannable overview of status information. This example shows fulfillment and payment badges in an order table.',
             codeblock: {
               title: 'Display badges in a table',
               tabs: [
