@@ -24,14 +24,7 @@ interface Metafield {
 /**
  * The discount class that determines where the discount applies in the purchase flow. Use this to understand what type of discount the merchant is configuring (product-level, order-level, or shipping).
  */
-export enum DiscountClass {
-  /** The discount applies to specific products or product variants. Use this for discounts that reduce the price of individual line items (for example, "20% off selected products"). */
-  Product = 'PRODUCT',
-  /** The discount applies to the entire order total. Use this for cart-wide discounts that reduce the subtotal (for example, "$10 off orders over $50"). */
-  Order = 'ORDER',
-  /** The discount applies to shipping costs. Use this for free shipping or reduced shipping rate discounts (for example, "Free shipping on orders over $100"). */
-  Shipping = 'SHIPPING',
-}
+export type DiscountClass = 'product' | 'order' | 'shipping';
 
 /**
  * The method used to apply a discount. Use `'automatic'` for discounts that apply automatically at checkout, or `'code'` for discounts that require a code entered by the customer.
