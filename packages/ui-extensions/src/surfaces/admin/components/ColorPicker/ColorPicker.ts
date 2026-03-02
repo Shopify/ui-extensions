@@ -4,6 +4,8 @@ import {createRemoteComponent} from '@remote-ui/core';
  * Props for the ColorPicker component, which provides a visual interface
  * for the merchant to select a color, with optional alpha (transparency)
  * support.
+ *
+ * @publicDocs
  */
 export interface ColorPickerProps {
   /**

@@ -5,6 +5,8 @@ import type {AccessibilityRole, AnchorProps} from '../shared';
  * Props for the Button component. A button can either be a standard action
  * button (`ButtonBaseProps`) or an anchor-style button that navigates to a
  * URL (`ButtonAnchorProps`).
+ *
+ * @publicDocs
  */
 export type ButtonProps = ButtonBaseProps | ButtonAnchorProps;
 

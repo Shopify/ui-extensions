@@ -5,6 +5,8 @@ import type {AccessibilityRole} from '../shared';
  * Props for the Image component. Requires either `accessibilityLabel`
  * or `alt` for alternative text, and either `source` or `src` for the
  * image URL.
+ *
+ * @publicDocs
  */
 export type ImageProps = (ImageAccessibilityLabelProp | ImageAltProp) &
   (ImageSourceProp | ImageSrcProp) &

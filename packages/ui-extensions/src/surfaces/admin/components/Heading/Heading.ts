@@ -12,6 +12,8 @@ type Level = 1 | 2 | 3 | 4 | 5 | 6;
  * determined automatically by the nesting depth of HeadingGroup or
  * Section ancestors; use the `size` prop to control its visual
  * appearance independently.
+ *
+ * @publicDocs
  */
 export interface HeadingProps {
   /**

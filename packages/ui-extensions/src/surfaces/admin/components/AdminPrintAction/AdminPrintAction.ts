@@ -3,6 +3,8 @@ import {createRemoteComponent} from '@remote-ui/core';
 /**
  * Props for the AdminPrintAction component, used by Admin Print Action
  * extensions to configure a source document to preview and print.
+ *
+ * @publicDocs
  */
 export interface AdminPrintActionProps {
   /**

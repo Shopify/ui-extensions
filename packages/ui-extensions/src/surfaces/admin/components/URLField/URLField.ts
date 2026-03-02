@@ -12,6 +12,8 @@ import {
  * Props for the URLField component, a text input optimized for entering
  * URLs. It extends standard input props with min/max length constraints
  * and autocomplete support for URL-related fields.
+ *
+ * @publicDocs
  */
 export interface URLFieldProps
   extends InputProps<string>,

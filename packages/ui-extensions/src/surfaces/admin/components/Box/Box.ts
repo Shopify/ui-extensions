@@ -10,6 +10,8 @@ import {DisplayProps} from '../shared/display';
  * Props for the Box component, a generic layout container. Box doesn't
  * define any props of its own. It inherits accessibility, sizing, padding,
  * and display props from shared interfaces.
+ *
+ * @publicDocs
  */
 export interface BoxProps
   extends AccessibilityRoleProps,

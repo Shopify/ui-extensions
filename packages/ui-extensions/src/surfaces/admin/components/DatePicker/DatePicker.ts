@@ -4,6 +4,8 @@ import {createRemoteComponent} from '@remote-ui/core';
  * Props for the DatePicker component, a calendar-based date selection control.
  * The generic parameter `T` determines the selection mode: pass a `DateString`
  * for single-date, a `DateString[]` for multi-date, or a `Range` for range selection.
+ *
+ * @publicDocs
  */
 export interface DatePickerProps<T extends Selected> {
   /**
