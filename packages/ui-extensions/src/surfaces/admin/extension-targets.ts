@@ -16,6 +16,7 @@ import {AnyComponentBuilder} from '../../shared';
 
 /**
  * The specialized set of components available for customer segment template extensions. This includes only the CustomerSegmentTemplate component used for defining segment query templates in the customer segmentation editor.
+ * @publicDocs
  */
 type CustomerSegmentTemplateComponent = AnyComponentBuilder<
   Pick<
@@ -26,6 +27,7 @@ type CustomerSegmentTemplateComponent = AnyComponentBuilder<
 
 /**
  * The specialized set of components available for product configuration extensions. This includes layout and display components for building product and variant configuration interfaces.
+ * @publicDocs
  */
 type ProductConfigurationComponents = AnyComponentBuilder<
   Pick<
@@ -48,6 +50,7 @@ type ProductConfigurationComponents = AnyComponentBuilder<
 
 /**
  * The specialized set of components available for order routing rule extensions. This includes components for displaying and configuring fulfillment location lists in order routing settings.
+ * @publicDocs
  */
 type OrderRoutingComponents = AnyComponentBuilder<
   Pick<Components, 'InternalLocationList'>
@@ -55,6 +58,7 @@ type OrderRoutingComponents = AnyComponentBuilder<
 
 /**
  * The set of UI components available for all Admin UI extension targets. This includes all standard Polaris components except for specialized components used in specific contexts. Use this type to define which components can be rendered in your extension.
+ * @publicDocs
  */
 type AllComponents = AnyComponentBuilder<
   Omit<
@@ -67,6 +71,7 @@ type AllComponents = AnyComponentBuilder<
 
 /**
  * Maps extension target identifiers to their corresponding extension types. Each target represents a specific location or context in the Shopify admin where extensions can render or execute. Use these targets to define where your extension appears and what capabilities it has access to.
+ * @publicDocs
  */
 export interface ExtensionTargets {
   /**
@@ -409,29 +414,34 @@ export interface ExtensionTargets {
 
 /**
  * A string literal union of all valid extension target identifiers. Use this type to specify where your Admin UI extension should render, such as `admin.product-details.block.render` for a block on product details pages or `admin.order-details.action.render` for an action on order details pages. The target determines the extension's location, available APIs, and UI components.
+ * @publicDocs
  */
 export type ExtensionTarget = keyof ExtensionTargets;
 
 /**
  * Maps an extension target identifier to its corresponding extension type (either RenderExtension or RunnableExtension). Use this to get the full extension type definition for a specific target.
+ * @publicDocs
  */
 export type ExtensionForExtensionTarget<T extends ExtensionTarget> =
   ExtensionTargets[T];
 
 /**
  * Extracts the return type from an extension target's callback function. Use this utility type when you need to know what type of value an extension should return, such as `void` for render extensions or specific output types for runnable extensions.
+ * @publicDocs
  */
 export type ReturnTypeForExtension<ID extends keyof ExtensionTargets> =
   ReturnType<ExtensionTargets[ID]>;
 
 /**
  * Extracts the parameter types from an extension target's callback function. Use this utility type to get the tuple of arguments (connection/root and API) that are passed to your extension function.
+ * @publicDocs
  */
 export type ArgumentsForExtension<ID extends keyof ExtensionTargets> =
   Parameters<ExtensionTargets[ID]>;
 
 /**
  * A filtered union of extension target identifiers that only includes render extension targets (those that display UI). Use this to constrain types to only rendering targets, excluding runnable extensions that return data without UI.
+ * @publicDocs
  */
 export type RenderExtensionTarget = {
   [ID in keyof ExtensionTargets]: ExtensionTargets[ID] extends RenderExtension<
@@ -444,6 +454,7 @@ export type RenderExtensionTarget = {
 
 /**
  * A mapping that associates each render extension target identifier with its corresponding extension type. Use this to work specifically with render extensions while filtering out runnable extensions.
+ * @publicDocs
  */
 export type RenderExtensions = {
   [ID in RenderExtensionTarget]: ExtensionTargets[ID];
@@ -451,6 +462,7 @@ export type RenderExtensions = {
 
 /**
  * A utility type that extracts the API type from a `RenderExtension`. Use this to get the API interface that a render extension receives at runtime.
+ * @publicDocs
  */
 type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
   infer Api,
@@ -461,18 +473,21 @@ type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
 
 /**
  * A utility type that extracts the allowed component set from a `RenderExtension`. Use this to get the components type that a render extension can use in its UI.
+ * @publicDocs
  */
 type ExtractedAllowedComponentsFromRenderExtension<T> =
   T extends RenderExtension<any, infer Components> ? Components : never;
 
 /**
  * Extracts the API type for a specific render extension target. Use this to get the API interface (like `ActionExtensionApi`, `BlockExtensionApi`, etc.) that your extension receives, including methods like `query`, `i18n`, and target-specific properties. This helps you write type-safe code that accesses the correct API methods for your extension target.
+ * @publicDocs
  */
 export type ApiForRenderExtension<ID extends keyof RenderExtensions> =
   ExtractedApiFromRenderExtension<RenderExtensions[ID]>;
 
 /**
  * Extracts the component set for a specific render extension target. Use this to get the union of UI components (like Text, Button, AdminBlock, etc.) available for your extension target. This helps you write type-safe code that only uses components supported by your target.
+ * @publicDocs
  */
 export type AllowedComponentsForRenderExtension<
   ID extends keyof RenderExtensions,

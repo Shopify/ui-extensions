@@ -4,6 +4,7 @@ import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-target
 
 /**
  * Information provided to the receiver of an intent. Use this to access data passed from other extensions or parts of the admin when your extension is launched through intent-based navigation.
+ * @publicDocs
  */
 export interface Intents {
   /**
@@ -14,6 +15,7 @@ export interface Intents {
 
 /**
  * The GraphQL error returned by the [GraphQL Admin API](/docs/api/admin-graphql).
+ * @publicDocs
  */
 export interface GraphQLError {
   /**
@@ -43,6 +45,7 @@ interface Auth {
 
 /**
  * The `StandardApi` object provides core methods available to all extension targets. Access the following properties on the `StandardApi` object to authenticate users, query the [GraphQL Admin API](/docs/api/admin-graphql), translate content, handle intents, and persist data.
+ * @publicDocs
  */
 export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
   /**

@@ -4,6 +4,7 @@ import type {Data} from '../shared';
 
 /**
  * The `ActionExtensionApi` object provides methods for action extensions that render in modal overlays. Access the following properties on the `ActionExtensionApi` object to interact with the current context, control the modal, and display picker dialogs.
+ * @publicDocs
  */
 export interface ActionExtensionApi<ExtensionTarget extends AnyExtensionTarget>
   extends StandardApi<ExtensionTarget> {

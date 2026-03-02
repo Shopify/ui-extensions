@@ -9,6 +9,7 @@ type CustomerSegmentationFeature =
 
 /**
  * The `CustomerSegmentTemplateApi` object provides methods for creating customer segment templates. Access the following properties on the `CustomerSegmentTemplateApi` object to build templates with translated content.
+ * @publicDocs
  */
 export interface CustomerSegmentTemplateApi<
   ExtensionTarget extends AnyExtensionTarget,

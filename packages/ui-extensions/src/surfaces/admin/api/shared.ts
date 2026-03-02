@@ -1,5 +1,6 @@
 /**
  * The `Data` object provides access to currently viewed or selected resources in the admin context.
+ * @publicDocs
  */
 export interface Data {
   /**

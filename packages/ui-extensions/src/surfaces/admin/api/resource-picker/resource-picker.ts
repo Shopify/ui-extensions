@@ -360,6 +360,7 @@ interface Filters {
 
 /**
  * The `ResourcePickerOptions` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items. Access the following properties on the `ResourcePickerOptions` object to configure the resource picker's appearance and functionality.
+ * @publicDocs
  */
 export interface ResourcePickerOptions {
   /**
@@ -394,6 +395,7 @@ export interface ResourcePickerOptions {
 
 /**
  * Opens the resource picker modal for selecting products, variants, or collections. Returns a Promise that resolves to the selected resources when the merchant confirms, or `undefined` if they cancel. The returned selection includes full resource data with properties like title, price, images, and IDs.
+ * @publicDocs
  */
 export type ResourcePickerApi = (
   options: ResourcePickerOptions,
