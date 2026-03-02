@@ -76,6 +76,8 @@ interface BadgeNoIconProps {
  * Props for the Badge component. A badge can optionally include an icon
  * (`BadgeIconProps`) or omit one (`BadgeNoIconProps`). This union ensures
  * type safety so that `iconPosition` can only be set when `icon` is present.
+ *
+ * @publicDocs
  */
 export type BadgeProps = BadgeBaseProps & (BadgeIconProps | BadgeNoIconProps);
 

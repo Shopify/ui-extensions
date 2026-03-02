@@ -12,6 +12,8 @@ import {
  * addresses. It inherits common input props (like `label`, `value`,
  * `onChange`, and `error`) from `InputProps`, length validation from
  * `MinMaxLengthProps`, and browser autofill hints from `AutocompleteProps`.
+ *
+ * @publicDocs
  */
 export interface EmailFieldProps
   extends InputProps<string>,

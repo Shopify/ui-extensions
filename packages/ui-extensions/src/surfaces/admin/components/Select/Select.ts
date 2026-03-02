@@ -3,6 +3,8 @@ import {createRemoteComponent} from '@remote-ui/core';
 /**
  * Props for the Select component, a form control that lets the user choose
  * one value from a predefined list of options presented in a dropdown menu.
+ *
+ * @publicDocs
  */
 export interface SelectProps {
   /**
