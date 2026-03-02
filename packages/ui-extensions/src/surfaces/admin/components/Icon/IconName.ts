@@ -3,6 +3,8 @@
  * the Polaris icon set. Names follow the pattern `{IconName}{Major|Minor}`,
  * where `Major` icons are intended for primary use and `Minor` icons are
  * smaller variants for inline or secondary use.
+ *
+ * @publicDocs
  */
 export type IconName =
   | 'AbandonedCartFilledMajor'

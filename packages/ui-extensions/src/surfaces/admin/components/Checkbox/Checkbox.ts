@@ -4,6 +4,8 @@ import {AccessibilityLabelProps} from '../shared';
 /**
  * Props for the Checkbox component, which renders a toggleable input
  * that lets the merchant choose between a checked and unchecked state.
+ *
+ * @publicDocs
  */
 export interface CheckboxProps extends AccessibilityLabelProps {
   /**

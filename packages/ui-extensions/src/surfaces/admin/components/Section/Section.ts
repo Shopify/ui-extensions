@@ -5,6 +5,8 @@ import {createRemoteComponent} from '@remote-ui/core';
  * optional heading. Sections provide both visual and semantic structure,
  * making it easier for users (and assistive technologies) to navigate
  * through distinct areas of an extension.
+ *
+ * @publicDocs
  */
 export interface SectionProps {
   /**

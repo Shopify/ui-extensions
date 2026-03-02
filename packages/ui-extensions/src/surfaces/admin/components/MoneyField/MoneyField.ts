@@ -11,6 +11,8 @@ import type {
  * Props for the MoneyField component, a specialized input for entering
  * monetary values. It extends standard input props with number constraints
  * and autocomplete support for transaction amounts.
+ *
+ * @publicDocs
  */
 export interface MoneyFieldProps
   extends InputProps<number | Money>,

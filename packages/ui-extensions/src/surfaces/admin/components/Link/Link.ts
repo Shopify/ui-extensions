@@ -5,6 +5,8 @@ import {AccessibilityLabelProps} from '../shared';
  * Props for the Link component, an interactive text element that navigates
  * to a URL or triggers an action when pressed. Inherits accessibility
  * label support from `AccessibilityLabelProps`.
+ *
+ * @publicDocs
  */
 export interface LinkProps extends AccessibilityLabelProps {
   /**

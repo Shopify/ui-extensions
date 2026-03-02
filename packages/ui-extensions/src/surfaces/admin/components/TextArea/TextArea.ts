@@ -11,6 +11,8 @@ import {
  * Props for the TextArea component, a multi-line text input for entering
  * longer-form content such as descriptions, comments, or notes. It extends
  * standard input props with min/max length constraints and autocomplete support.
+ *
+ * @publicDocs
  */
 export interface TextAreaProps
   extends InputProps<string>,
