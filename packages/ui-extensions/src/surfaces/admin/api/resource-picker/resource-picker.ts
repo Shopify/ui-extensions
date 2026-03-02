@@ -323,6 +323,7 @@ type WithSelection<T> = T & {
 
 /**
  * The payload returned when resources are selected from the picker.
+ * @publicDocs
  */
 type SelectPayload<Type extends keyof ResourceTypes> = WithSelection<
   ResourceSelection<Type>[]
