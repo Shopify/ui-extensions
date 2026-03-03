@@ -11,6 +11,8 @@ import type {
  * Props for the Text component, an inline element for rendering and styling
  * a run of text. Use Text to apply typographic treatments such as font
  * weight, style, variant, and overflow behavior to a portion of content.
+ *
+ * @publicDocs
  */
 export interface TextProps {
   /**

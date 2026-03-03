@@ -5,6 +5,8 @@ import type {RemoteFragment} from '@remote-ui/core';
  * Props for the AdminAction component, used by Admin Action extensions to
  * configure the title, primary and secondary action buttons, and loading
  * state of the action modal.
+ *
+ * @publicDocs
  */
 export interface AdminActionProps {
   /**

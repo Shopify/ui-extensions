@@ -4,6 +4,8 @@ import {createRemoteComponent} from '@remote-ui/core';
  * Props for the AdminBlock component, used by Admin Block extensions to
  * configure the title and collapsed summary of an app block rendered on
  * a resource page in the Shopify admin.
+ *
+ * @publicDocs
  */
 export interface AdminBlockProps {
   /**

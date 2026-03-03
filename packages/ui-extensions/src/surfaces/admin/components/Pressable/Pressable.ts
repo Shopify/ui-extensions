@@ -7,6 +7,8 @@ import type {BoxProps} from '../Box/Box';
  * of Box with the interactive behavior of Link. Use Pressable when you
  * need a custom interactive area that can navigate to a URL or respond to
  * press events while supporting flexible layout and styling options.
+ *
+ * @publicDocs
  */
 export interface PressableProps extends BoxProps, LinkProps {}
 

@@ -13,6 +13,8 @@ import {
  * Props for the NumberField component, a text input for numeric values.
  * Inherits standard input props, number constraints (min, max, step),
  * autocomplete support, and field decoration props.
+ *
+ * @publicDocs
  */
 export interface NumberFieldProps
   extends InputProps<number>,
