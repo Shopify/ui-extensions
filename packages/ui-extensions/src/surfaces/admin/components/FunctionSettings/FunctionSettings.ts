@@ -4,6 +4,8 @@ import {createRemoteComponent} from '@remote-ui/core';
  * Props for the FunctionSettings component, a form container designed
  * for Shopify Function configuration experiences. It provides hooks for
  * saving settings and handling server-side validation errors.
+ *
+ * @publicDocs
  */
 export interface FunctionSettingsProps {
   /**

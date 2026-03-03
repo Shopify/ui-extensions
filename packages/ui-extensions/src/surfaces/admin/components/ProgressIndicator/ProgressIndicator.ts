@@ -6,6 +6,8 @@ import {GlobalProps, SizeScale, AccessibilityLabelProps} from '../shared';
  * (such as a spinner) to communicate that a process is underway. Use this
  * component to reassure users that content is loading or an action is being
  * processed.
+ *
+ * @publicDocs
  */
 export interface ProgressIndicatorProps
   extends GlobalProps,

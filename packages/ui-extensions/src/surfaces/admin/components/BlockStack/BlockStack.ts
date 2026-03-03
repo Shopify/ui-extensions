@@ -15,6 +15,8 @@ import {
  * Props for the BlockStack component, which arranges its children in a
  * vertical stack (block axis). Use BlockStack to lay out components
  * vertically with consistent spacing and alignment.
+ *
+ * @publicDocs
  */
 export interface BlockStackProps
   extends AccessibilityRoleProps,

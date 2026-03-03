@@ -5,6 +5,8 @@ import type {BaseTypographyProps, GlobalProps} from '../shared';
  * Props for the Paragraph component, which renders a block of text
  * as a distinct paragraph. Use Paragraph to structure your content
  * into readable sections with appropriate spacing.
+ *
+ * @publicDocs
  */
 export interface ParagraphProps extends BaseTypographyProps, GlobalProps {
   /**

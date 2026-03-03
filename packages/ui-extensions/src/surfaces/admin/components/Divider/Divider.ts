@@ -3,6 +3,8 @@ import {createRemoteComponent} from '@remote-ui/core';
 /**
  * Props for the Divider component, a visual separator used to distinguish
  * adjacent sections of content.
+ *
+ * @publicDocs
  */
 export interface DividerProps {
   /**

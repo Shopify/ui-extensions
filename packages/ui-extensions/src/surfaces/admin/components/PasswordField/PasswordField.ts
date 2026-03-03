@@ -11,6 +11,8 @@ import {
  * content for secure entry of sensitive values like passwords or PINs.
  * It extends standard input props with min/max length constraints and
  * autocomplete support for password managers.
+ *
+ * @publicDocs
  */
 export interface PasswordFieldProps
   extends InputProps<string>,
