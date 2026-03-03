@@ -12,9 +12,15 @@ import type {
   InteractionProps,
 } from './shared.d.ts';
 
+/**
+ * @publicDocs
+ */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
 };
+/**
+ * @publicDocs
+ */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
       (event: CallbackEvent<T>): void;
@@ -22,6 +28,7 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -39,13 +46,20 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export type RequiredLinkProps = Required<LinkProps$1>;
+/**
+ * @publicDocs
+ */
 export type LinkBaseProps = Required<
   Pick<
     LinkProps$1,
@@ -62,6 +76,7 @@ export type LinkBaseProps = Required<
 >;
 /**
  * The properties for the link component. These properties define a clickable link that navigates users to different pages or sections with customizable visual styles and semantic meaning.
+ * @publicDocs
  */
 export interface LinkProps extends LinkBaseProps {
   /**
@@ -75,17 +90,29 @@ export interface LinkProps extends LinkBaseProps {
   tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
 }
 
+/**
+ * @publicDocs
+ */
 export type Styles = string;
+/**
+ * @publicDocs
+ */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
+/**
+ * @publicDocs
+ */
 export interface ActivationEventEsque {
   shiftKey: boolean;
   metaKey: boolean;
   ctrlKey: boolean;
   button: number;
 }
+/**
+ * @publicDocs
+ */
 export interface ClickOptions {
   /**
    * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
@@ -135,6 +162,9 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
+/**
+ * @publicDocs
+ */
 export interface PreactOverlayControlProps
   extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
   /**
@@ -191,6 +221,7 @@ declare module 'preact' {
 declare const tagName = 's-link';
 /**
  * The JSX properties for the link component. These properties define how a link is rendered in Preact or JSX.
+ * @publicDocs
  */
 export interface LinkJSXProps
   extends Partial<LinkProps>,
@@ -241,4 +272,7 @@ export interface LinkJSXProps
 }
 
 export {Link};
+/**
+ * @publicDocs
+ */
 export type {LinkJSXProps};

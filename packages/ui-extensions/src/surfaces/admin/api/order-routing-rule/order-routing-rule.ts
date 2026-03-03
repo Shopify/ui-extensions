@@ -6,6 +6,8 @@ import {Data} from './data';
 
 /**
  * The `OrderRoutingRuleApi` object provides methods for configuring order routing rules. Access the following properties on the `OrderRoutingRuleApi` object to manage rule settings and metafields.
+ *
+ * @publicDocs
  */
 export interface OrderRoutingRuleApi<ExtensionTarget extends AnyExtensionTarget>
   extends StandardRenderingExtensionApi<ExtensionTarget> {

@@ -31,7 +31,7 @@ const shopifyDevDBPath = path.join(
 
 const shopifyDevExists = existsSync(shopifyDevPath);
 
-const generatedDocsDataFile = 'generated_docs_data.json';
+const generatedDocsDataFile = 'generated_docs_data_v2.json';
 const generatedStaticPagesFile = 'generated_static_pages.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
@@ -258,8 +258,58 @@ const templates = {
   }),
 };
 
+const v2ToArray = (v2) =>
+  Object.values(v2).flatMap((byFilePath) => Object.values(byFilePath));
+
+const arrayToV2 = (entries) => {
+  const v2 = {};
+  for (const entry of entries) {
+    const name = entry.name;
+    const filePath = entry.filePath;
+    if (!name || !filePath) continue;
+    if (!v2[name]) v2[name] = {};
+    v2[name][filePath] = entry;
+  }
+  return v2;
+};
+
 const transformJson = async (filePath, isExtensions) => {
   let jsonData = JSON.parse((await fs.readFile(filePath, 'utf8')).toString());
+  const outputDir = path.dirname(filePath);
+
+  if (!Array.isArray(jsonData)) {
+    jsonData = v2ToArray(jsonData);
+  }
+
+  if (isExtensions) {
+    const docPagesPath = path.join(outputDir, 'doc-pages.json');
+    if (existsSync(docPagesPath)) {
+      const docPages = JSON.parse(
+        (await fs.readFile(docPagesPath, 'utf8')).toString(),
+      );
+      const names = new Set(jsonData.map((e) => e.name));
+      for (const entry of Array.isArray(docPages) ? docPages : []) {
+        if (!entry.name) continue;
+        const {
+          name: _n,
+          members: _m,
+          filePath: _f,
+          syntaxKind: _s,
+          value: _v,
+          ...docFields
+        } = entry;
+        const existingEntries = jsonData.filter((e) => e.name === entry.name);
+        if (existingEntries.length > 0) {
+          existingEntries.forEach((existing) =>
+            Object.assign(existing, docFields),
+          );
+        } else {
+          jsonData.push(entry);
+          names.add(entry.name);
+        }
+      }
+    }
+  }
 
   const iconEntry = jsonData.find(
     (entry) => entry.name === 'Icon' && entry.subSections,
@@ -440,7 +490,21 @@ const transformJson = async (filePath, isExtensions) => {
     jsonData = [...filteredDocs, ...jsonData];
   }
 
-  await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
+  if (isExtensions) {
+    await fs.writeFile(
+      filePath,
+      JSON.stringify(arrayToV2(jsonData), null, 2),
+    );
+    const arrayPath = path.join(outputDir, 'generated_docs_data.json');
+    await fs.writeFile(arrayPath, JSON.stringify(jsonData, null, 2));
+    await replaceFileContent({
+      filePaths: arrayPath,
+      searchValue: 'https://shopify.dev',
+      replaceValue: '',
+    });
+  } else {
+    await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
+  }
 };
 
 const generateExtensionsDocs = async () => {
@@ -459,6 +523,7 @@ const generateExtensionsDocs = async () => {
   const scripts = [
     `yarn tsc --project ${docsRelativePath}/${tsconfigExtensions} --moduleResolution node  --target esNext  --module CommonJS`,
     `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
+    `node ${docsRelativePath}/collect-doc-pages.mjs ./${outputDir}`,
     `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS`,
     `yarn generate-docs --isLandingPage --input ./${docsRelativePath}/staticPages --output ./${outputDir}`,
   ];
@@ -472,12 +537,22 @@ const generateExtensionsDocs = async () => {
     transformJson: (filePath) => transformJson(filePath, true),
   });
 
-  // Replace 'unstable' with the exact API version in relative doc links
-  await replaceFileContent({
-    filePaths: path.join(outputDir, generatedDocsDataFile),
-    searchValue: '/docs/api/admin-extensions/unstable/',
-    replaceValue: `/docs/api/admin-extensions/${EXTENSIONS_API_VERSION}`,
-  });
+  // Replace 'unstable' with the exact API version in relative doc links (v2 and array)
+  const extensionsOutputDir = path.join(
+    rootPath,
+    `${docsGeneratedRelativePath}/admin_extensions/${EXTENSIONS_API_VERSION}`,
+  );
+  const replacePaths = [
+    path.join(extensionsOutputDir, 'generated_docs_data_v2.json'),
+    path.join(extensionsOutputDir, 'generated_docs_data.json'),
+  ].filter((p) => existsSync(p));
+  if (replacePaths.length > 0) {
+    await replaceFileContent({
+      filePaths: replacePaths,
+      searchValue: '/docs/api/admin-extensions/unstable/',
+      replaceValue: `/docs/api/admin-extensions/${EXTENSIONS_API_VERSION}`,
+    });
+  }
 };
 
 const generateAppBridgeDocs = async () => {

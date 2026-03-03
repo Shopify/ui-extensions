@@ -13,9 +13,15 @@ import type {
   RenderImpl,
 } from './shared.d.ts';
 
+/**
+ * @publicDocs
+ */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
 };
+/**
+ * @publicDocs
+ */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
       (event: CallbackEvent<T>): void;
@@ -36,6 +42,9 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface DropZoneProps
   extends Required<
     Pick<
@@ -58,6 +67,9 @@ declare class PolarisCustomElement extends PreactCustomElement {
   constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
 }
 
+/**
+ * @publicDocs
+ */
 export type ReplaceType<TType, TFrom, TTo> = Exclude<TType, TFrom> | TTo;
 
 declare const setFiles: unique symbol;
@@ -117,6 +129,9 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-drop-zone';
+/**
+ * @publicDocs
+ */
 export interface DropZoneJSXProps
   extends Partial<DropZoneProps>,
     Pick<DropZoneProps$1, 'id'> {
@@ -130,4 +145,7 @@ export interface DropZoneJSXProps
 }
 
 export {DropZone};
+/**
+ * @publicDocs
+ */
 export type {DropZoneJSXProps};

@@ -9,6 +9,7 @@ import type {ComponentChildren, AdminActionProps$1} from './shared.d.ts';
 
 /**
  * The properties for the admin action component. These properties configure the heading and loading state of the admin action extension interface.
+ * @publicDocs
  */
 export interface AdminActionProps
   extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
@@ -17,6 +18,7 @@ declare const tagName = 's-admin-action';
 
 /**
  * The JSX props for the admin action component. These properties extend `AdminActionProps` with slots for primary and secondary action buttons that merchants can interact with.
+ * @publicDocs
  */
 export interface AdminActionJSXProps
   extends Partial<AdminActionProps>,
@@ -33,10 +35,12 @@ export interface AdminActionJSXProps
 
 /**
  * The CSS styles as a string, used for styling web components within their shadow DOM.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation configuration for rendering a Preact component into a shadow root. Defines the render function that returns JSX elements and optional CSS styles to apply to the component's shadow DOM.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -50,6 +54,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * The properties of an activation event (such as a click or keyboard press) that describe which modifier keys and mouse buttons were involved. This is used to determine intended behavior like opening links in new tabs when Command/Control is pressed.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -71,6 +76,7 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for controlling how a synthetic click behaves. Allows passing modifier key states and button information from an original event to influence link behavior such as opening in new tabs or background tabs.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -161,4 +167,7 @@ declare module 'preact' {
 }
 
 export {AdminAction};
+/**
+ * @publicDocs
+ */
 export type {AdminActionJSXProps};

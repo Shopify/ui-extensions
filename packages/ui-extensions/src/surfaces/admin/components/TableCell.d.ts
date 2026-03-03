@@ -13,15 +13,18 @@ import type {
 
 /**
  * The properties you can set on a table cell component.
+ * @publicDocs
  */
 export interface TableCellProps extends TableCellProps$1 {}
 
 /**
  * A string that contains CSS styles to apply to the component.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation details for rendering a Preact custom element with a shadow root.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -35,6 +38,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * An object that resembles an activation event, containing information about which modifier keys were pressed and which mouse button was used.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -56,6 +60,7 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for customizing how a synthetic click is performed.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -108,6 +113,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -125,6 +131,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
@@ -136,6 +143,7 @@ declare const headerFormatSymbol: unique symbol;
 
 /**
  * The format type for a table header, which determines how the cell content is displayed.
+ * @publicDocs
  */
 export type HeaderFormat = Extract<
   TableHeaderProps['format'],
@@ -175,6 +183,7 @@ declare module 'preact' {
 declare const tagName = 's-table-cell';
 /**
  * The JSX properties you can set on a table cell component.
+ * @publicDocs
  */
 export interface TableCellJSXProps
   extends Partial<TableCellProps>,
@@ -186,4 +195,7 @@ export interface TableCellJSXProps
 }
 
 export {TableCell};
+/**
+ * @publicDocs
+ */
 export type {TableCellJSXProps};

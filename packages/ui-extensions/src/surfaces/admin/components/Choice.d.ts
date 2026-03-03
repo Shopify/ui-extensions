@@ -10,6 +10,7 @@ import type {ComponentChildren, ChoiceProps$1} from './shared.d.ts';
 
 /**
  * Properties for rendering a single choice within a choice list that can be selected using a radio button or checkbox.
+ * @publicDocs
  */
 export interface ChoiceProps
   extends Required<
@@ -25,10 +26,12 @@ export interface ChoiceProps
 
 /**
  * CSS styles that will be applied to the component's shadow DOM.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * Configuration for rendering a custom element with Preact and shadow DOM.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -42,6 +45,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * Information about modifier keys and mouse buttons that were active during an interaction.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -63,6 +67,7 @@ export interface ActivationEventEsque {
 }
 /**
  * Options for influencing how a programmatic click behaves.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -117,6 +122,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
    * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * @publicDocs
    */
   key?: preact.Key;
   /**
@@ -136,6 +142,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 
 /**
  * A single choice within a choice list that can be selected with a radio button or checkbox.
+ * @publicDocs
  */
 declare class Choice extends PreactCustomElement implements ChoiceProps {
   /**
@@ -182,6 +189,7 @@ declare module 'preact' {
 declare const tagName = 's-choice';
 /**
  * Properties for using the choice component in JSX with React-style props.
+ * @publicDocs
  */
 export interface ChoiceJSXProps
   extends Partial<ChoiceProps>,
@@ -203,4 +211,7 @@ export interface ChoiceJSXProps
 }
 
 export {Choice};
+/**
+ * @publicDocs
+ */
 export type {ChoiceJSXProps};

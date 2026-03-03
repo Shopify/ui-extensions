@@ -37,6 +37,8 @@ export interface ErrorIntentResponse {
 
 /**
  * The result of an intent workflow. Check the `code` property to determine the outcome: `'ok'` for success, `'error'` for failure, or `'closed'` if the merchant cancelled.
+ *
+ * @publicDocs
  */
 export type IntentResponse =
   | SuccessIntentResponse
@@ -127,6 +129,8 @@ export interface IntentQuery extends IntentQueryOptions {
  * });
  * const response = await activity.complete;
  * ```
+ *
+ * @publicDocs
  */
 export interface IntentInvokeApi {
   (query: IntentQuery): Promise<IntentActivity>;

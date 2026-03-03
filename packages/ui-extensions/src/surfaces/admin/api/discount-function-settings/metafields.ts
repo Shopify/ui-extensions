@@ -60,6 +60,8 @@ type MetafieldChangeResult =
 
 /**
  * A function that applies metafield changes to discount function settings. Call this function with an update or removal operation, then await the Promise to receive a result indicating success or failure. Use the result to provide feedback or handle errors in your settings interface.
+ *
+ * @publicDocs
  */
 export type ApplyMetafieldChange = (
   change: MetafieldChange,

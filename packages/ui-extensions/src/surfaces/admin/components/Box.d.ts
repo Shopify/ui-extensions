@@ -16,6 +16,7 @@ import type {
 
 /**
  * A type that allows a value to be responsive using container query syntax.
+ * @publicDocs
  */
 export type MakeResponsive<T> = T | `@container${string}`;
 /**
@@ -33,6 +34,7 @@ export type MakeResponsive<T> = T | `@container${string}`;
  *   margin: string | `@container${string}`;
  *   padding: number | `@container${string}`;
  * }
+ * @publicDocs
  */
 export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
   [P in TProperty]: MakeResponsive<TType[P]>;
@@ -40,10 +42,12 @@ export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
 
 /**
  * A version of the box properties with all fields required.
+ * @publicDocs
  */
 export type RequiredBoxProps = Required<BoxProps$1>;
 /**
  * The allowed border radius values for a box component.
+ * @publicDocs
  */
 export type BoxBorderRadii = Extract<
   RequiredBoxProps['borderRadius'],
@@ -58,6 +62,7 @@ export type BoxBorderRadii = Extract<
 >;
 /**
  * The allowed border style values for a box component.
+ * @publicDocs
  */
 export type BoxBorderStyles = Extract<
   RequiredBoxProps['borderStyle'],
@@ -65,6 +70,7 @@ export type BoxBorderStyles = Extract<
 >;
 /**
  * The box properties that support responsive values through container queries.
+ * @publicDocs
  */
 export type ResponsiveBoxProps = MakeResponsivePick<
   RequiredBoxProps,
@@ -79,6 +85,7 @@ export type ResponsiveBoxProps = MakeResponsivePick<
 >;
 /**
  * The properties for the box component. A box provides control over layout, spacing, sizing, borders, and background styling for its content.
+ * @publicDocs
  */
 export interface BoxProps
   extends Pick<
@@ -257,10 +264,12 @@ export interface BoxProps
 
 /**
  * A string containing CSS styles for a custom element.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The configuration for rendering a custom element with Preact.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -274,6 +283,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * The properties of an activation event, such as a click or keypress. These properties capture which modifier keys were pressed and which mouse button was used during the event.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -295,6 +305,7 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for triggering a synthetic click event.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -461,6 +472,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
 
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -478,6 +490,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
@@ -507,6 +520,7 @@ declare module 'preact' {
 declare const tagName = 's-box';
 /**
  * The properties for the box component when it's used in JSX.
+ * @publicDocs
  */
 export interface BoxJSXProps
   extends Partial<BoxProps>,
@@ -518,4 +532,7 @@ export interface BoxJSXProps
 }
 
 export {Box};
+/**
+ * @publicDocs
+ */
 export type {BoxJSXProps};
