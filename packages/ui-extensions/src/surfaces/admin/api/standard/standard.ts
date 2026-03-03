@@ -43,11 +43,6 @@ export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
   };
 
   /**
-   * Provides methods for authenticating calls to your app backend. Use the `idToken()` method to retrieve a signed JWT token that verifies the current user's identity for secure server-side operations.
-   */
-  auth: Auth;
-
-  /**
    * Utilities for translating content according to the current localization of the admin. Use these methods to provide translated strings that match the merchant's language preferences, ensuring your extension is accessible to a global audience.
    */
   i18n: I18n;
