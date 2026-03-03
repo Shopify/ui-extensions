@@ -79,6 +79,8 @@ export type ResponsiveBoxProps = MakeResponsivePick<
 >;
 /**
  * The properties for the box component. A box provides control over layout, spacing, sizing, borders, and background styling for its content.
+ *
+ * @publicDocs
  */
 export interface BoxProps
   extends Pick<

@@ -9,6 +9,8 @@ import type {ComponentChildren, AdminActionProps$1} from './shared.d.ts';
 
 /**
  * The properties for the admin action component. These properties configure the heading and loading state of the admin action extension interface.
+ *
+ * @publicDocs
  */
 export interface AdminActionProps
   extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}

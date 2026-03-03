@@ -31,7 +31,7 @@ const shopifyDevDBPath = path.join(
 
 const shopifyDevExists = existsSync(shopifyDevPath);
 
-const generatedDocsDataFile = 'generated_docs_data.json';
+const generatedDocsDataFile = 'generated_docs_data_v2.json';
 const generatedStaticPagesFile = 'generated_static_pages.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
@@ -250,8 +250,26 @@ const templates = {
   }),
 };
 
+/**
+ * Converts v2 generated docs format (object keyed by type then file path) into
+ * the array format expected by transformJson and downstream (e.g. shopify-dev).
+ */
+const v2ToArray = (data) => {
+  if (Array.isArray(data)) return data;
+  const entries = [];
+  for (const byPath of Object.values(data)) {
+    if (typeof byPath === 'object' && byPath !== null) {
+      for (const entry of Object.values(byPath)) {
+        entries.push(entry);
+      }
+    }
+  }
+  return entries;
+};
+
 const transformJson = async (filePath, isExtensions) => {
   let jsonData = JSON.parse((await fs.readFile(filePath, 'utf8')).toString());
+  jsonData = v2ToArray(jsonData);
 
   const iconEntry = jsonData.find(
     (entry) => entry.name === 'Icon' && entry.subSections,
@@ -449,9 +467,9 @@ const generateExtensionsDocs = async () => {
   const outputDir = `${docsGeneratedRelativePath}/admin_extensions/${EXTENSIONS_API_VERSION}`;
 
   const scripts = [
-    `yarn tsc --project ${docsRelativePath}/${tsconfigExtensions} --moduleResolution node  --target esNext  --module CommonJS`,
+    `yarn tsc --project ${docsRelativePath}/${tsconfigExtensions} --moduleResolution node  --target esNext  --module CommonJS --skipLibCheck`,
     `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
-    `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS`,
+    `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS --skipLibCheck`,
     `yarn generate-docs --isLandingPage --input ./${docsRelativePath}/staticPages --output ./${outputDir}`,
   ];
 
@@ -477,7 +495,7 @@ const generateAppBridgeDocs = async () => {
 
   const outputDir = `${docsGeneratedRelativePath}/app_home`;
   const scripts = [
-    `yarn tsc --project ${docsRelativePath}/${tsconfigAppBridge} --moduleResolution node  --target esNext  --module CommonJS`,
+    `yarn tsc --project ${docsRelativePath}/${tsconfigAppBridge} --moduleResolution node  --target esNext  --module CommonJS --skipLibCheck`,
     `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
   ];
 

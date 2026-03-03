@@ -10,6 +10,8 @@ import type {DividerProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
  * The properties for the divider component. A divider creates a visual separator to distinguish different sections of content.
+ *
+ * @publicDocs
  */
 export interface DividerProps
   extends Pick<DividerProps$1, 'direction' | 'color'> {

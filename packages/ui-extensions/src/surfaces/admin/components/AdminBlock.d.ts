@@ -9,6 +9,8 @@ import type {AdminBlockProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
  * The properties for the admin block component. These properties configure the heading and collapsed summary of collapsible content blocks in the admin interface.
+ *
+ * @publicDocs
  */
 export interface AdminBlockProps
   extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {}

@@ -59,6 +59,8 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 export type RequiredBannerProps = Required<BannerProps$1>;
 /**
  * The properties for the banner component. These properties define an important message or notification with visual styling that conveys its semantic meaning.
+ *
+ * @publicDocs
  */
 export interface BannerProps
   extends Pick<

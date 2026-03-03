@@ -321,6 +321,8 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 
 /**
  * The properties for the text field component. Extends `PreactFieldProps` with text-specific features like icons, length constraints, and prefix/suffix content.
+ *
+ * @publicDocs
  */
 export type TextFieldProps = PreactFieldProps<
   /** @default 'on' */

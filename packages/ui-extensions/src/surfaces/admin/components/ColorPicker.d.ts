@@ -48,6 +48,8 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 
 /**
  * Properties for rendering a color picker that provides a visual interface for selecting colors with optional transparency control.
+ *
+ * @publicDocs
  */
 export interface ColorPickerProps
   extends Required<

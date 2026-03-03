@@ -13,6 +13,8 @@ import type {ComponentChildren, SectionProps$1} from './shared.d.ts';
 export type RequiredSectionProps = Required<SectionProps$1>;
 /**
  * The properties for the section component. A section groups related content together with an optional heading, providing semantic structure and visual separation.
+ *
+ * @publicDocs
  */
 export interface SectionProps
   extends Pick<

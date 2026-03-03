@@ -138,6 +138,8 @@ export type ButtonBaseProps = Required<
 >;
 /**
  * The properties for the button component. Buttons trigger actions or navigation when clicked, with customizable visual styles, states, and optional icons.
+ *
+ * @publicDocs
  */
 export interface ButtonProps extends ButtonBaseProps {
   /**

@@ -325,6 +325,8 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 
 /**
  * The properties for the text area component. These properties configure a multi-line text input field that allows merchants to enter and edit longer text content.
+ *
+ * @publicDocs
  */
 export type TextAreaProps = PreactFieldProps<
   Required<TextAreaProps$1>['autocomplete']

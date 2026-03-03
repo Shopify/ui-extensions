@@ -10,6 +10,8 @@ import type {ComponentChildren, HeadingProps$1} from './shared.d.ts';
 
 /**
  * The properties for the heading component. These properties define hierarchical section titles and headings with appropriate semantic meaning and visual hierarchy.
+ *
+ * @publicDocs
  */
 export interface HeadingProps
   extends Required<

@@ -328,6 +328,8 @@ export interface BoxProps
 
 /**
  * The properties for the image component. An image displays pictures with configurable sizing, loading behavior, and borders. Properties include `src` for the image URL, `alt` for accessibility text, `aspectRatio` for sizing, `loading` for lazy loading, and border styling options.
+ *
+ * @publicDocs
  */
 export interface ImageProps
   extends Required<

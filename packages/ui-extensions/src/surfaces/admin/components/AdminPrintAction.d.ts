@@ -9,6 +9,8 @@ import type {AdminPrintActionProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
  * The properties for the admin print action component. These properties configure the source URL for printing content within admin extensions.
+ *
+ * @publicDocs
  */
 export interface AdminPrintActionProps
   extends Pick<AdminPrintActionProps$1, 'src'> {}

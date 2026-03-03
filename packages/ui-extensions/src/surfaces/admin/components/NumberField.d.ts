@@ -325,6 +325,8 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 
 /**
  * The properties for the number field component. These properties configure a specialized input field for entering numeric values with support for validation, formatting, range constraints, and optimized mobile input modes.
+ *
+ * @publicDocs
  */
 export interface NumberFieldProps
   extends Omit<
