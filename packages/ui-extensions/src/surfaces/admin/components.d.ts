@@ -19,6 +19,9 @@ export type ComponentChildren = preact.ComponentChildren;
  * Represents string-only children for components that specifically require text content.
  */
 export type StringChildren = string;
+/**
+ * @publicDocs
+ */
 export interface GlobalProps {
   /**
    * A unique identifier for the element. Use this to reference the element in JavaScript,
@@ -26,12 +29,18 @@ export interface GlobalProps {
    */
   id?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface ActionProps {
   /**
    * The text to use as the action modal's title. If not provided, the name of the extension will be used.
    */
   heading?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface ActionSlots {
   /**
    * The primary action button or link, representing the main or most important action available in this context.
@@ -70,6 +79,9 @@ interface AdminPrintActionProps$1 extends GlobalProps {
    */
   src?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseOverlayProps {
   /**
    * A callback fired immediately after the overlay is shown.
@@ -94,6 +106,8 @@ export interface BaseOverlayProps {
  * All methods are required (not optional) because components implementing this interface must provide
  * consistent JavaScript APIs. Unlike props/attributes, methods are not rendered in HTML and consumers
  * expect them to be available on all component instances.
+ *
+ * @publicDocs
  */
 export interface BaseOverlayMethods {
   /**
@@ -115,6 +129,11 @@ export interface BaseOverlayMethods {
    */
   toggleOverlay: () => void;
 }
+/**
+ * Props for focus and blur event callbacks on focusable components.
+ *
+ * @publicDocs
+ */
 export interface FocusEventProps {
   /**
    * A callback fired when the component loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
@@ -125,6 +144,11 @@ export interface FocusEventProps {
    */
   onFocus?: (event: FocusEvent) => void;
 }
+/**
+ * Props for toggle event callbacks on elements that can open and close.
+ *
+ * @publicDocs
+ */
 export interface ToggleEventProps {
   /**
    * A callback fired when the element state changes, after any toggle animations have finished.
@@ -154,6 +178,8 @@ export interface ToggleEventProps {
  *
  * - `open`: The element is visible or expanded.
  * - `closed`: The element is hidden or collapsed.
+ *
+ * @publicDocs
  */
 export type ToggleState = 'open' | 'closed';
 interface ToggleEvent$1 extends Event {
@@ -166,6 +192,9 @@ interface ToggleEvent$1 extends Event {
    */
   readonly oldState: ToggleState;
 }
+/**
+ * @publicDocs
+ */
 export interface ExtendableEvent extends Event {
   /**
    * A method that accepts a promise signaling the duration and eventual success or failure of event-related actions.
@@ -175,6 +204,9 @@ export interface ExtendableEvent extends Event {
    */
   waitUntil?: (promise: Promise<void>) => void;
 }
+/**
+ * @publicDocs
+ */
 export interface AggregateError<T extends Error> extends Error {
   /**
    * An array of individual errors that have been aggregated together.
@@ -182,6 +214,9 @@ export interface AggregateError<T extends Error> extends Error {
    */
   errors: T[];
 }
+/**
+ * @publicDocs
+ */
 export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
   /**
    * The aggregated error object containing multiple individual errors.
@@ -273,6 +308,9 @@ interface AvatarProps$1 extends GlobalProps {
  *
  */
 export type BackgroundColorKeyword = 'transparent' | ColorKeyword;
+/**
+ * @publicDocs
+ */
 export interface BackgroundProps {
   /**
    * The background color of the element. Use `transparent` for no background, `subdued` for a subtle background, `base` for standard background, or `strong` for a prominent background.
@@ -1046,6 +1084,9 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
    */
   hidden?: boolean;
 }
+/**
+ * @publicDocs
+ */
 export interface DisplayProps {
   /**
    * The outer display type of the component, The outer type sets a component’s participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
@@ -1059,6 +1100,9 @@ export interface DisplayProps {
    */
   display?: MaybeResponsive<'auto' | 'none'>;
 }
+/**
+ * @publicDocs
+ */
 export interface AccessibilityRoleProps {
   /**
    * The semantic meaning of the component’s content. When set,
@@ -1218,6 +1262,9 @@ export type AccessibilityRole =
    * Learn more about the [`none` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/none_role) in the MDN web docs.
    */
   | 'none';
+/**
+ * @publicDocs
+ */
 export interface AccessibilityVisibilityProps {
   /**
    * The visibility mode of the element for both visual and assistive technology users.
@@ -1230,6 +1277,9 @@ export interface AccessibilityVisibilityProps {
    */
   accessibilityVisibility?: 'visible' | 'hidden' | 'exclusive';
 }
+/**
+ * @publicDocs
+ */
 export interface LabelAccessibilityVisibilityProps {
   /**
    * Controls whether the label is visible to all users or only to screen readers.
@@ -1254,6 +1304,9 @@ export interface LabelAccessibilityVisibilityProps {
  * - `none`: No padding.
  */
 export type PaddingKeyword = SizeKeyword | 'none';
+/**
+ * @publicDocs
+ */
 export interface PaddingProps {
   /**
    * The padding applied to all edges of the component.
@@ -1354,6 +1407,9 @@ export type SizeUnitsOrAuto = SizeUnits | 'auto';
  * - `none`: No size constraint, allowing unlimited growth.
  */
 export type SizeUnitsOrNone = SizeUnits | 'none';
+/**
+ * @publicDocs
+ */
 export interface SizingProps {
   /**
    * The vertical size of the element in standard layouts (height in left-to-right or right-to-left writing modes).
@@ -1457,6 +1513,9 @@ export type BorderShorthand =
   | BorderSizeKeyword
   | `${BorderSizeKeyword} ${ColorKeyword}`
   | `${BorderSizeKeyword} ${ColorKeyword} ${BorderStyleKeyword}`;
+/**
+ * @publicDocs
+ */
 export interface BorderProps {
   /**
    * A border applied using shorthand syntax to specify width, color, and style in a single property.
@@ -1535,6 +1594,9 @@ export interface BorderProps {
    */
   borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
 }
+/**
+ * @publicDocs
+ */
 export interface OverflowProps {
   /**
    * The overflow behavior of the element.
@@ -1548,6 +1610,9 @@ export interface OverflowProps {
    */
   overflow?: 'hidden' | 'visible';
 }
+/**
+ * @publicDocs
+ */
 export interface BaseBoxProps
   extends AccessibilityVisibilityProps,
     BackgroundProps,
@@ -1565,10 +1630,16 @@ export interface BaseBoxProps
    */
   accessibilityLabel?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseBoxPropsWithRole
   extends BaseBoxProps,
     AccessibilityRoleProps {}
 interface BoxProps$1 extends BaseBoxPropsWithRole, GlobalProps {}
+/**
+ * @publicDocs
+ */
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The behavior of the button component.
@@ -1601,6 +1672,9 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   loading?: boolean;
 }
+/**
+ * @publicDocs
+ */
 export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.
@@ -1639,6 +1713,9 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
    */
   onClick?: (event: Event) => void;
 }
+/**
+ * @publicDocs
+ */
 export interface InteractionProps {
   /**
    * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
@@ -1663,6 +1740,9 @@ export interface InteractionProps {
    */
   interestFor?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseClickableProps
   extends ButtonBehaviorProps,
     LinkBehaviorProps {}
@@ -1740,6 +1820,9 @@ interface ButtonGroupProps$1 extends GlobalProps, ActionSlots {
    */
   accessibilityLabel?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseInputProps {
   /**
    * The name attribute for the field, used to identify the field's value when the form is submitted. Must be unique within the nearest containing form.
@@ -1752,6 +1835,9 @@ export interface BaseInputProps {
    */
   disabled?: boolean;
 }
+/**
+ * @publicDocs
+ */
 export interface InputProps extends BaseInputProps {
   /**
    * A callback fired when the user has finished editing the field, such as when they blur the field or press Enter. Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
@@ -1769,6 +1855,9 @@ export interface InputProps extends BaseInputProps {
    */
   defaultValue?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface MultipleInputProps extends BaseInputProps {
   /**
    * A callback fired when the user has selected one or more options. Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
@@ -1783,6 +1872,9 @@ export interface MultipleInputProps extends BaseInputProps {
    */
   values?: string[];
 }
+/**
+ * @publicDocs
+ */
 export interface FileInputProps extends BaseInputProps {
   /**
    * A callback fired when the user has finished selecting one or more files.
@@ -1812,6 +1904,9 @@ export interface FileInputProps extends BaseInputProps {
    */
   files?: ReadonlyArray<File>;
 }
+/**
+ * @publicDocs
+ */
 export interface FieldErrorProps {
   /**
    * An error message displayed below the checkbox to indicate validation problems.
@@ -1819,6 +1914,9 @@ export interface FieldErrorProps {
    */
   error?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BasicFieldProps
   extends FieldErrorProps,
     LabelAccessibilityVisibilityProps {
@@ -1834,6 +1932,9 @@ export interface BasicFieldProps
    */
   label?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface FieldDetailsProps {
   /**
    * Supplementary text displayed below the checkbox to provide additional context, instructions, or help.
@@ -1842,6 +1943,9 @@ export interface FieldDetailsProps {
    */
   details?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface FieldProps
   extends BasicFieldProps,
     InputProps,
@@ -1852,6 +1956,9 @@ export interface FieldProps
    */
   placeholder?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseTextFieldProps extends FieldProps {
   /**
    * Whether the field is read-only and can't be edited. Read-only fields remain focusable and their content is announced by screen readers.
@@ -1860,6 +1967,9 @@ export interface BaseTextFieldProps extends FieldProps {
    */
   readOnly?: boolean;
 }
+/**
+ * @publicDocs
+ */
 export interface FieldDecorationProps {
   /**
    * A non-editable text value displayed immediately after the editable portion of the field. This is useful for displaying an implied part of the value, such as `@shopify.com` or `%`.
@@ -1891,6 +2001,9 @@ export interface FieldDecorationProps {
    */
   accessory?: ComponentChildren;
 }
+/**
+ * @publicDocs
+ */
 export interface NumberConstraintsProps {
   /**
    * The highest decimal or integer value accepted for the field. When used with `step`, the value rounds down to the maximum number.
@@ -1929,6 +2042,9 @@ export interface NumberConstraintsProps {
    */
   controls?: 'auto' | 'stepper' | 'none';
 }
+/**
+ * @publicDocs
+ */
 export interface MinMaxLengthProps {
   /**
    * The maximum number of characters allowed in the field.
@@ -1943,6 +2059,9 @@ export interface MinMaxLengthProps {
    */
   minLength?: number;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseSelectableProps {
   /**
    * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey the component's purpose.
@@ -1961,6 +2080,9 @@ export interface BaseSelectableProps {
    */
   value?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseOptionProps extends BaseSelectableProps {
   /**
    * Whether the option is currently selected. Use this for controlled components where you manage the selection state.
@@ -1978,6 +2100,9 @@ export interface BaseOptionProps extends BaseSelectableProps {
    */
   defaultSelected?: boolean;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseCheckableProps
   extends BaseSelectableProps,
     InteractionProps {
@@ -2055,6 +2180,9 @@ interface CheckboxProps$1
    */
   required?: boolean;
 }
+/**
+ * @publicDocs
+ */
 export interface ChipProps$1 extends GlobalProps {
   /**
    * The text label displayed within the chip component, typically representing a selected filter, tag, or removable item.
@@ -2263,6 +2391,9 @@ interface ColorPickerProps$1
    */
   defaultValue?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface AutocompleteProps<
   AutocompleteField extends AnyAutocompleteField,
 > {
@@ -2783,6 +2914,7 @@ interface FunctionSettingsProps$1 extends GlobalProps, FormProps$1 {
  * These errors are returned when the extension-provided data fails validation or causes
  * issues during the commit process to Shopify's servers. Handle these errors in the
  * `onError` callback to provide feedback to users about what went wrong.
+ * @publicDocs
  */
 export interface FunctionSettingsError extends Error {
   /**
@@ -2804,6 +2936,9 @@ export interface FunctionSettingsError extends Error {
  * Defines the spacing size between elements, using the standard size scale or `none` for no spacing.
  */
 export type SpacingKeyword = SizeKeyword | 'none';
+/**
+ * @publicDocs
+ */
 export interface GapProps {
   /**
    * The spacing between child elements.
@@ -3015,6 +3150,9 @@ interface GridItemProps$1 extends GlobalProps, BaseBoxPropsWithRole {
    */
   gridRow?: `span ${number}` | 'auto';
 }
+/**
+ * @publicDocs
+ */
 export interface BaseTypographyProps {
   /**
    * The color emphasis level that controls visual intensity.
@@ -3077,6 +3215,9 @@ export interface BaseTypographyProps {
    */
   dir?: 'ltr' | 'rtl' | 'auto' | '';
 }
+/**
+ * @publicDocs
+ */
 export interface BlockTypographyProps {
   /**
    * The maximum number of lines to display before truncating the text content.
@@ -3151,6 +3292,9 @@ interface IconProps$1
    */
   type?: IconType | AnyString;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseImageProps {
   /**
    * Alternative text that describes the image for accessibility.
@@ -3654,6 +3798,9 @@ interface SwitchProps$1
     BasicFieldProps,
     FieldDetailsProps,
     FieldErrorProps {}
+/**
+ * @publicDocs
+ */
 export interface PaginationProps {
   /**
    * Whether to use pagination controls.
@@ -3953,6 +4100,9 @@ export type URLAutocompleteField = ExtractStrict<
 //
 // Preact Virtual DOM
 // -----------------------------------
+/**
+ * @publicDocs
+ */
 export interface VNode<P = {}> {
   /**
    * The component type or HTML element tag name that this VNode represents.
@@ -3993,6 +4143,9 @@ export interface VNode<P = {}> {
  * Can be a string, number, or any other value.
  */
 export type Key = string | number | any;
+/**
+ * @publicDocs
+ */
 export interface RefObject<T> {
   /**
    * The current value of the ref, which holds a reference to the DOM element or component instance.
@@ -4023,6 +4176,9 @@ export type ComponentChild =
   | null
   | undefined;
 type ComponentChildren$1 = ComponentChild[] | ComponentChild;
+/**
+ * @publicDocs
+ */
 export interface Attributes {
   /**
    * A unique key used to identify this element in lists for efficient reconciliation during re-renders.
@@ -4033,6 +4189,9 @@ export interface Attributes {
    */
   jsx?: boolean | undefined;
 }
+/**
+ * @publicDocs
+ */
 export interface ErrorInfo {
   /**
    * A string representation of the component stack trace at the point where an error occurred.
@@ -4060,6 +4219,9 @@ export type RenderableProps<P, RefType = any> = P &
  * Represents any valid component type, either a class component or a function component.
  */
 export type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
+/**
+ * @publicDocs
+ */
 export interface FunctionComponent<P = {}> {
   (props: RenderableProps<P>, context?: any): ComponentChildren$1;
   /**
@@ -4071,6 +4233,9 @@ export interface FunctionComponent<P = {}> {
    */
   defaultProps?: Partial<P> | undefined;
 }
+/**
+ * @publicDocs
+ */
 export interface ComponentClass<P = {}, S = {}> {
   new (props: P, context?: any): Component<P, S>;
   /**
@@ -4091,6 +4256,9 @@ export interface ComponentClass<P = {}, S = {}> {
   ): Partial<S> | null;
   getDerivedStateFromError?(error: any): Partial<S> | null;
 }
+/**
+ * @publicDocs
+ */
 export interface Component<P = {}, S = {}> {
   componentWillMount?(): void;
   componentDidMount?(): void;
@@ -4171,6 +4339,9 @@ declare abstract class Component<P, S> {
 //
 // Context
 // -----------------------------------
+/**
+ * @publicDocs
+ */
 export interface Consumer<T>
   extends FunctionComponent<{
     /**
@@ -4179,6 +4350,9 @@ export interface Consumer<T>
      */
     children: (value: T) => ComponentChildren$1;
   }> {}
+/**
+ * @publicDocs
+ */
 export interface Provider<T>
   extends FunctionComponent<{
     /**
@@ -4190,6 +4364,9 @@ export interface Provider<T>
      */
     children?: ComponentChildren$1;
   }> {}
+/**
+ * @publicDocs
+ */
 export interface Context<T> extends Provider<T> {
   /**
    * A component that consumes the context value and re-renders when it changes.
@@ -4717,6 +4894,9 @@ type IconType$1 =
   | 'x'
   | 'x-circle';
 
+/**
+ * @publicDocs
+ */
 export interface AvatarProps
   extends Required<Pick<AvatarProps$1, 'initials' | 'src' | 'size'>> {
   /**
@@ -4761,6 +4941,9 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
+/**
+ * @publicDocs
+ */
 export interface ActivationEventEsque {
   /**
    * Whether the Shift key was pressed when the event occurred.
@@ -4779,6 +4962,9 @@ export interface ActivationEventEsque {
    */
   button: number;
 }
+/**
+ * @publicDocs
+ */
 export interface ClickOptions {
   /**
    * The event you want to influence the synthetic click.
@@ -4878,6 +5064,9 @@ export type CallbackErrorEventListener<
       ): void;
     })
   | null;
+/**
+ * @publicDocs
+ */
 export interface CallbackExtendableEvent<
   TTagName extends keyof HTMLElementTagNameMap,
 > extends CallbackEvent<TTagName>,
@@ -4893,6 +5082,9 @@ export type CallbackExtendableEventListener<
       (event: CallbackExtendableEvent<TTagName>): void;
     })
   | null;
+/**
+ * @publicDocs
+ */
 export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
   /**
    * A callback fired when the user makes changes to the field value. This fires before `onChange`.
@@ -4914,6 +5106,7 @@ export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
 /**
  * Base props for Preact custom elements without children support.
  * Includes common properties like key, ref, and slot for elements that don't accept child content.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -4936,6 +5129,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 /**
  * Base props for Preact custom elements with children support.
  * Extends PreactBaseElementProps with the ability to render child elements.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
@@ -4966,6 +5160,9 @@ declare module 'preact' {
 }
 
 declare const tagName$Z = 's-avatar';
+/**
+ * @publicDocs
+ */
 export interface AvatarJSXProps
   extends Partial<AvatarProps>,
     Pick<AvatarProps$1, 'id'> {
@@ -4979,6 +5176,9 @@ export interface AvatarJSXProps
   onError?: () => void;
 }
 
+/**
+ * @publicDocs
+ */
 export interface IconProps
   extends Pick<
     IconProps$1,
@@ -5006,6 +5206,9 @@ export interface IconProps
   size: Extract<IconProps$1['size'], 'small' | 'base'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface BadgeProps
   extends Pick<BadgeProps$1, 'color' | 'icon' | 'size' | 'tone'> {
   color: Extract<BadgeProps$1['color'], 'base' | 'strong'>;
@@ -5045,6 +5248,9 @@ declare module 'preact' {
 }
 
 declare const tagName$Y = 's-badge';
+/**
+ * @publicDocs
+ */
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id' | 'children'> {
@@ -5058,6 +5264,9 @@ export interface BadgeJSXProps
  * Represents the banner component props with all properties marked as required.
  */
 export type RequiredBannerProps = Required<BannerProps$1>;
+/**
+ * @publicDocs
+ */
 export interface BannerProps
   extends Pick<
     RequiredBannerProps,
@@ -5091,6 +5300,9 @@ declare module 'preact' {
 }
 
 declare const tagName$X = 's-banner';
+/**
+ * @publicDocs
+ */
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id' | 'children'> {
@@ -5195,6 +5407,9 @@ export type ResponsiveBoxProps = MakeResponsivePick<
   | 'paddingInlineEnd'
   | 'display'
 >;
+/**
+ * @publicDocs
+ */
 export interface BoxProps
   extends Pick<
     RequiredBoxProps,
@@ -5468,6 +5683,9 @@ declare module 'preact' {
 }
 
 declare const tagName$W = 's-box';
+/**
+ * @publicDocs
+ */
 export interface BoxJSXProps
   extends Partial<BoxProps>,
     Pick<BoxProps$1, 'id' | 'children'> {
@@ -5509,11 +5727,17 @@ export type ButtonBaseProps = Required<
     | 'download'
   >
 >;
+/**
+ * @publicDocs
+ */
 export interface ButtonProps extends ButtonBaseProps {
   tone: Extract<ButtonProps$1['tone'], 'neutral' | 'critical' | 'auto'>;
   icon: IconProps['type'];
 }
 
+/**
+ * @publicDocs
+ */
 export interface PreactOverlayControlProps
   extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
   /**
@@ -5571,6 +5795,9 @@ declare module 'preact' {
 }
 
 declare const tagName$V = 's-button';
+/**
+ * @publicDocs
+ */
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
     Pick<ButtonProps$1, 'id' | 'children'> {
@@ -5592,6 +5819,9 @@ export interface ButtonJSXProps
   onBlur?: ((event: CallbackEvent<typeof tagName$V>) => void) | null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ButtonGroupProps
   extends Required<Pick<ButtonGroupProps$1, 'gap' | 'accessibilityLabel'>> {}
 
@@ -5621,6 +5851,9 @@ declare module 'preact' {
 }
 
 declare const tagName$U = 's-button-group';
+/**
+ * @publicDocs
+ */
 export interface ButtonGroupJSXProps
   extends Partial<ButtonGroupProps>,
     Pick<ButtonGroupProps$1, 'id' | 'children'> {
@@ -5667,6 +5900,9 @@ declare class PreactInputElement
   constructor(renderImpl: RenderImpl);
 }
 
+/**
+ * @publicDocs
+ */
 export interface PreactCheckboxProps
   extends Required<
     Pick<
@@ -5710,6 +5946,9 @@ declare class PreactCheckboxElement
   constructor(renderImpl: RenderImpl);
 }
 
+/**
+ * @publicDocs
+ */
 export interface CheckboxProps extends PreactCheckboxProps {
   /**
    * Whether the checkbox displays in an indeterminate state (neither checked nor unchecked),
@@ -5753,6 +5992,9 @@ declare module 'preact' {
 }
 
 declare const tagName$T = 's-checkbox';
+/**
+ * @publicDocs
+ */
 export interface CheckboxJSXProps
   extends Partial<CheckboxProps>,
     Pick<CheckboxProps$1, 'id'> {
@@ -5766,6 +6008,9 @@ export interface CheckboxJSXProps
   onInput?: ((event: CallbackEvent<typeof tagName$T>) => void) | null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ChipProps
   extends Required<Pick<ChipProps$2, 'color' | 'accessibilityLabel'>> {}
 
@@ -5789,6 +6034,9 @@ declare module 'preact' {
 }
 
 declare const tagName$S = 's-chip';
+/**
+ * @publicDocs
+ */
 export interface ChipJSXProps
   extends Partial<ChipProps>,
     Pick<ChipProps$2, 'id' | 'children'> {
@@ -5802,6 +6050,9 @@ export interface ChipJSXProps
   graphic?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ChoiceProps
   extends Required<
     Pick<
@@ -5842,6 +6093,9 @@ declare module 'preact' {
 }
 
 declare const tagName$R = 's-choice';
+/**
+ * @publicDocs
+ */
 export interface ChoiceJSXProps
   extends Partial<ChoiceProps>,
     Pick<ChoiceProps$1, 'id' | 'children' | 'details'> {
@@ -5864,6 +6118,9 @@ export interface ChoiceJSXProps
   details?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ChoiceListProps
   extends Required<
     Pick<
@@ -5919,6 +6176,9 @@ declare module 'preact' {
 }
 
 declare const tagName$Q = 's-choice-list';
+/**
+ * @publicDocs
+ */
 export interface ChoiceListJSXProps
   extends Partial<ChoiceListProps>,
     Pick<ChoiceListProps$1, 'id' | 'children'> {
@@ -5957,6 +6217,9 @@ export type ClickableBaseProps = Required<
     | 'type'
   >
 >;
+/**
+ * @publicDocs
+ */
 export interface ClickableProps
   extends Required<BoxProps>,
     ClickableBaseProps {}
@@ -5989,6 +6252,9 @@ declare module 'preact' {
 }
 
 declare const tagName$P = 's-clickable';
+/**
+ * @publicDocs
+ */
 export interface ClickableJSXProps
   extends Partial<ClickableProps>,
     Pick<ClickableProps$1, 'id' | 'children'> {
@@ -6010,6 +6276,9 @@ export interface ClickableJSXProps
   onBlur?: ((event: CallbackEvent<typeof tagName$P>) => void) | null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ClickableChipProps
   extends Required<
     Pick<
@@ -6057,6 +6326,9 @@ declare module 'preact' {
 }
 
 declare const tagName$O = 's-clickable-chip';
+/**
+ * @publicDocs
+ */
 export interface ClickableChipJSXProps
   extends Partial<ClickableChipProps>,
     Pick<ClickableChipProps$1, 'id' | 'children'> {
@@ -6202,6 +6474,9 @@ declare module 'preact' {
 }
 
 declare const tagName$N = 's-color-field';
+/**
+ * @publicDocs
+ */
 export interface ColorFieldJSXProps
   extends Partial<
       Omit<ColorFieldProps, 'accessory' | 'value' | 'defaultValue'>
@@ -6212,6 +6487,9 @@ export interface ColorFieldJSXProps
   onChange?: (event: CallbackEvent<typeof tagName$N>) => void;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ColorPickerProps
   extends Required<
     Pick<ColorPickerProps$1, 'id' | 'alpha' | 'value' | 'defaultValue' | 'name'>
@@ -6250,6 +6528,9 @@ declare module 'preact' {
 }
 
 declare const tagName$M = 's-color-picker';
+/**
+ * @publicDocs
+ */
 export interface ColorPickerJSXProps
   extends Partial<ColorPickerProps>,
     Pick<
@@ -6260,6 +6541,9 @@ export interface ColorPickerJSXProps
   onChange?: (event: CallbackEvent<typeof tagName$M>) => void | null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface DateFieldProps
   extends Omit<
       PreactFieldProps<DateAutocompleteField>,
@@ -6306,6 +6590,9 @@ declare module 'preact' {
 }
 
 declare const tagName$L = 's-date-field';
+/**
+ * @publicDocs
+ */
 export interface DateFieldJSXProps
   extends Partial<Omit<DateFieldProps, 'value' | 'defaultValue'>>,
     Pick<DateFieldProps$1, 'id' | 'value' | 'defaultValue'> {
@@ -6335,6 +6622,9 @@ export interface DateFieldJSXProps
   onViewChange?: ((event: CallbackEvent<typeof tagName$L>) => void) | null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface DatePickerProps
   extends Required<
     Pick<
@@ -6402,6 +6692,9 @@ declare module 'preact' {
 }
 
 declare const tagName$K = 's-date-picker';
+/**
+ * @publicDocs
+ */
 export interface DatePickerJSXProps
   extends Partial<DatePickerProps>,
     Pick<DatePickerProps$1, 'id'> {
@@ -6427,6 +6720,9 @@ export interface DatePickerJSXProps
   onChange?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface DividerProps
   extends Pick<DividerProps$1, 'direction' | 'color'> {
   direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
@@ -6452,10 +6748,16 @@ declare module 'preact' {
 }
 
 declare const tagName$J = 's-divider';
+/**
+ * @publicDocs
+ */
 export interface DividerJSXProps
   extends Partial<DividerProps>,
     Pick<DividerProps$1, 'id'> {}
 
+/**
+ * @publicDocs
+ */
 export interface DropZoneProps
   extends Required<
     Pick<
@@ -6533,6 +6835,9 @@ declare module 'preact' {
 }
 
 declare const tagName$I = 's-drop-zone';
+/**
+ * @publicDocs
+ */
 export interface DropZoneJSXProps
   extends Partial<DropZoneProps>,
     Pick<DropZoneProps$1, 'id'> {
@@ -6591,6 +6896,9 @@ declare module 'preact' {
 }
 
 declare const tagName$H = 's-email-field';
+/**
+ * @publicDocs
+ */
 export interface EmailFieldJSXProps
   extends Partial<Omit<EmailFieldProps, 'accessory'>>,
     Pick<EmailFieldProps$1, 'id'>,
@@ -6609,6 +6917,9 @@ export type ResponsiveGridProps = MakeResponsivePick<
   RequiredAlignedProps,
   'rowGap' | 'columnGap' | 'gap' | 'gridTemplateColumns' | 'gridTemplateRows'
 >;
+/**
+ * @publicDocs
+ */
 export interface GridProps
   extends BoxProps,
     Required<
@@ -6741,6 +7052,9 @@ declare module 'preact' {
 }
 
 declare const tagName$G = 's-grid';
+/**
+ * @publicDocs
+ */
 export interface GridJSXProps
   extends Partial<GridProps>,
     Pick<GridProps$1, 'id' | 'children'> {
@@ -6754,6 +7068,9 @@ export interface GridJSXProps
  * Represents the grid item component props with all properties marked as required.
  */
 export type RequiredGridItemProps = Required<GridItemProps$1>;
+/**
+ * @publicDocs
+ */
 export interface GridItemProps
   extends BoxProps,
     Required<Pick<GridItemProps$1, 'gridColumn' | 'gridRow'>> {
@@ -6781,6 +7098,9 @@ declare module 'preact' {
 }
 
 declare const tagName$F = 's-grid-item';
+/**
+ * @publicDocs
+ */
 export interface GridItemJSXProps
   extends Partial<GridItemProps>,
     Pick<GridItemProps$1, 'id' | 'children'> {
@@ -6790,6 +7110,9 @@ export interface GridItemJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface HeadingProps
   extends Required<
     Pick<
@@ -6819,6 +7142,9 @@ declare module 'preact' {
 }
 
 declare const tagName$E = 's-heading';
+/**
+ * @publicDocs
+ */
 export interface HeadingJSXProps
   extends Partial<HeadingProps>,
     Pick<HeadingProps$1, 'id' | 'children'> {
@@ -6850,10 +7176,16 @@ declare module 'preact' {
 }
 
 declare const tagName$D = 's-icon';
+/**
+ * @publicDocs
+ */
 export interface IconJSXProps
   extends Partial<IconProps>,
     Pick<IconProps$1, 'id'> {}
 
+/**
+ * @publicDocs
+ */
 export interface ImageProps
   extends Required<
       Pick<
@@ -6926,6 +7258,9 @@ declare module 'preact' {
 }
 
 declare const tagName$C = 's-image';
+/**
+ * @publicDocs
+ */
 export interface ImageJSXProps
   extends Partial<ImageProps>,
     Pick<ImageProps$1, 'id'> {
@@ -6960,6 +7295,9 @@ export type LinkBaseProps = Required<
     | 'tone'
   >
 >;
+/**
+ * @publicDocs
+ */
 export interface LinkProps extends LinkBaseProps {
   tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
 }
@@ -6991,6 +7329,9 @@ declare module 'preact' {
 }
 
 declare const tagName$B = 's-link';
+/**
+ * @publicDocs
+ */
 export interface LinkJSXProps
   extends Partial<LinkProps>,
     Pick<LinkProps$1, 'id' | 'lang' | 'children'> {
@@ -7004,6 +7345,9 @@ export interface LinkJSXProps
   onClick?: ((event: CallbackEvent<typeof tagName$B>) => void) | null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ListItemProps extends ListItemProps$1 {}
 
 declare class ListItem extends PreactCustomElement implements ListItemProps {
@@ -7024,6 +7368,9 @@ declare module 'preact' {
 }
 
 declare const tagName$A = 's-list-item';
+/**
+ * @publicDocs
+ */
 export interface ListItemJSXProps
   extends Partial<ListItemProps>,
     Pick<ListItemProps$1, 'id' | 'children'> {
@@ -7033,6 +7380,9 @@ export interface ListItemJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface MenuProps
   extends Required<Pick<MenuProps$1, 'id' | 'accessibilityLabel'>> {}
 
@@ -7106,6 +7456,9 @@ declare module 'preact' {
 }
 
 declare const tagName$z = 's-menu';
+/**
+ * @publicDocs
+ */
 export interface MenuJSXProps
   extends Partial<MenuProps>,
     Pick<MenuProps$1, 'id' | 'children'> {
@@ -7119,6 +7472,9 @@ export interface MenuJSXProps
  * Represents the modal component props with all properties marked as required.
  */
 export type RequiredAlignedModalProps = Required<ModalProps$1>;
+/**
+ * @publicDocs
+ */
 export interface ModalProps
   extends Pick<
     RequiredAlignedModalProps,
@@ -7139,6 +7495,9 @@ export interface ModalProps
   >;
 }
 
+/**
+ * @publicDocs
+ */
 export interface Context<T> {
   /**
    * The default value for this context, used when no Provider is found in the component tree.
@@ -7255,6 +7614,9 @@ declare module 'preact' {
 }
 
 declare const tagName$y = 's-modal';
+/**
+ * @publicDocs
+ */
 export interface ModalJSXProps
   extends Partial<ModalProps>,
     Pick<ModalProps$1, 'id' | 'children'> {
@@ -7296,6 +7658,9 @@ export interface ModalJSXProps
  * Represents the money field component props with all properties marked as required.
  */
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
+/**
+ * @publicDocs
+ */
 export interface MoneyFieldProps
   extends Omit<PreactFieldProps, 'value'>,
     Pick<RequiredMoneyFieldProps, 'max' | 'min'> {
@@ -7329,11 +7694,17 @@ declare module 'preact' {
 }
 
 declare const tagName$x = 's-money-field';
+/**
+ * @publicDocs
+ */
 export interface MoneyFieldJSXProps
   extends Partial<MoneyFieldProps>,
     FieldReactProps<typeof tagName$x>,
     Pick<MoneyFieldProps$1, 'id'> {}
 
+/**
+ * @publicDocs
+ */
 export interface NumberFieldProps
   extends Omit<
       PreactFieldProps<Required<NumberFieldProps$1>['autocomplete']>,
@@ -7379,11 +7750,17 @@ declare module 'preact' {
 }
 
 declare const tagName$w = 's-number-field';
+/**
+ * @publicDocs
+ */
 export interface NumberFieldJSXProps
   extends Partial<NumberFieldProps>,
     Pick<NumberFieldProps$1, 'id'>,
     FieldReactProps<typeof tagName$w> {}
 
+/**
+ * @publicDocs
+ */
 export interface OptionProps
   extends Required<
     Pick<OptionProps$1, 'disabled' | 'value' | 'selected' | 'defaultSelected'>
@@ -7410,6 +7787,9 @@ declare module 'preact' {
 }
 
 declare const tagName$v = 's-option';
+/**
+ * @publicDocs
+ */
 export interface OptionJSXProps
   extends Partial<OptionProps>,
     Pick<OptionProps$1, 'id' | 'children'> {
@@ -7419,6 +7799,9 @@ export interface OptionJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface OptionGroupProps
   extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
 
@@ -7445,6 +7828,9 @@ declare module 'preact' {
 }
 
 declare const tagName$u = 's-option-group';
+/**
+ * @publicDocs
+ */
 export interface OptionGroupJSXProps
   extends Partial<OptionGroupProps>,
     Pick<OptionGroupProps$1, 'id' | 'children'> {
@@ -7454,6 +7840,9 @@ export interface OptionGroupJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface OrderedListProps extends OrderedListProps$1 {}
 
 declare class OrderedList
@@ -7477,6 +7866,9 @@ declare module 'preact' {
 }
 
 declare const tagName$t = 's-ordered-list';
+/**
+ * @publicDocs
+ */
 export interface OrderedListJSXProps
   extends Partial<OrderedListProps>,
     Pick<OrderedListProps$1, 'id'> {
@@ -7486,6 +7878,9 @@ export interface OrderedListJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface PageProps
   extends Required<Pick<PageProps$1, 'inlineSize' | 'heading'>> {
   inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large' | 'small'>;
@@ -7518,6 +7913,9 @@ declare module 'preact' {
 }
 
 declare const tagName$s = 's-page';
+/**
+ * @publicDocs
+ */
 export interface PageJSXProps
   extends Partial<PageProps>,
     Pick<PageProps$1, 'id' | 'children'> {
@@ -7552,6 +7950,9 @@ export interface PageJSXProps
   breadcrumbActions?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ParagraphProps
   extends Required<
     Pick<
@@ -7614,6 +8015,9 @@ declare module 'preact' {
 }
 
 declare const tagName$r = 's-paragraph';
+/**
+ * @publicDocs
+ */
 export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,
     Pick<ParagraphProps$1, 'id' | 'children'> {
@@ -7677,11 +8081,17 @@ declare module 'preact' {
 }
 
 declare const tagName$q = 's-password-field';
+/**
+ * @publicDocs
+ */
 export interface PasswordFieldJSXProps
   extends Partial<PasswordFieldProps>,
     Pick<PasswordFieldProps$1, 'id'>,
     FieldReactProps<typeof tagName$q> {}
 
+/**
+ * @publicDocs
+ */
 export interface PopoverProps
   extends Required<
     Pick<
@@ -7729,6 +8139,9 @@ declare module 'preact' {
 }
 
 declare const tagName$p = 's-popover';
+/**
+ * @publicDocs
+ */
 export interface PopoverJSXProps
   extends Partial<PopoverProps>,
     Pick<PopoverProps$1, 'id' | 'children'> {
@@ -7762,6 +8175,9 @@ export interface PopoverJSXProps
   onAfterToggle?: (event: CallbackToggleEvent<typeof tagName$p>) => void | null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface QueryContainerProps
   extends Required<Pick<QueryContainerProps$1, 'id' | 'containerName'>> {}
 
@@ -7789,6 +8205,9 @@ declare module 'preact' {
 }
 
 declare const tagName$o = 's-query-container';
+/**
+ * @publicDocs
+ */
 export interface QueryContainerJSXProps
   extends Partial<QueryContainerProps$1>,
     Pick<QueryContainerProps$1, 'id' | 'children'> {
@@ -7854,6 +8273,9 @@ declare module 'preact' {
 }
 
 declare const tagName$n = 's-search-field';
+/**
+ * @publicDocs
+ */
 export interface SearchFieldJSXProps
   extends Partial<SearchFieldProps>,
     Pick<TextFieldProps$1, 'id'>,
@@ -7863,6 +8285,9 @@ export interface SearchFieldJSXProps
  * Represents the section component props with all properties marked as required.
  */
 export type RequiredSectionProps = Required<SectionProps$1>;
+/**
+ * @publicDocs
+ */
 export interface SectionProps
   extends Pick<
     RequiredSectionProps,
@@ -7896,6 +8321,9 @@ declare module 'preact' {
 }
 
 declare const tagName$m = 's-section';
+/**
+ * @publicDocs
+ */
 export interface SectionJSXProps
   extends Partial<SectionProps>,
     Pick<SectionProps$1, 'id' | 'children'> {
@@ -7905,6 +8333,9 @@ export interface SectionJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface SelectProps
   extends Omit<PreactInputProps, 'value'>,
     Required<
@@ -7977,6 +8408,9 @@ declare module 'preact' {
 }
 
 declare const tagName$l = 's-select';
+/**
+ * @publicDocs
+ */
 export interface SelectJSXProps
   extends Partial<SelectProps>,
     Pick<SelectProps$1, 'id' | 'children'> {
@@ -7990,6 +8424,9 @@ export interface SelectJSXProps
   onFocus?: (event: CallbackEvent<typeof tagName$l>) => void;
 }
 
+/**
+ * @publicDocs
+ */
 export interface SpinnerProps
   extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
   /**
@@ -8021,6 +8458,9 @@ declare module 'preact' {
 }
 
 declare const tagName$k = 's-spinner';
+/**
+ * @publicDocs
+ */
 export interface SpinnerJSXProps
   extends Partial<SpinnerProps>,
     Pick<SpinnerProps$1, 'id'> {}
@@ -8038,6 +8478,9 @@ export type ResponsiveStackProps = MakeResponsivePick<
   AlignedStackProps,
   'gap' | 'rowGap' | 'columnGap' | 'direction'
 >;
+/**
+ * @publicDocs
+ */
 export interface StackProps
   extends BoxProps,
     Pick<
@@ -8137,6 +8580,9 @@ declare module 'preact' {
 }
 
 declare const tagName$j = 's-stack';
+/**
+ * @publicDocs
+ */
 export interface StackJSXProps
   extends Partial<StackProps>,
     Pick<StackProps$1, 'id' | 'children'> {
@@ -8146,6 +8592,9 @@ export interface StackJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface SwitchProps
   extends PreactCheckboxProps,
     Required<Pick<SwitchProps$1, 'labelAccessibilityVisibility'>> {}
@@ -8168,6 +8617,9 @@ declare module 'preact' {
 }
 
 declare const tagName$i = 's-switch';
+/**
+ * @publicDocs
+ */
 export interface SwitchJSXProps
   extends Partial<SwitchProps>,
     Pick<SwitchProps$1, 'id'> {
@@ -8181,6 +8633,9 @@ export interface SwitchJSXProps
   onInput?: ((event: CallbackEvent<typeof tagName$i>) => void) | null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TableProps
   extends Required<
     Pick<
@@ -8203,6 +8658,9 @@ export type HeaderFormat = Extract<
   TableHeaderProps$1['format'],
   'base' | 'currency' | 'numeric'
 >;
+/**
+ * @publicDocs
+ */
 export interface TableHeaderProps
   extends Pick<TableHeaderProps$1, 'listSlot' | 'format'> {
   listSlot: Extract<
@@ -8258,6 +8716,9 @@ declare module 'preact' {
 }
 
 declare const tagName$h = 's-table';
+/**
+ * @publicDocs
+ */
 export interface TableJSXProps
   extends Partial<TableProps>,
     Pick<TableProps$1, 'id' | 'children' | 'onNextPage' | 'onPreviousPage'> {
@@ -8271,6 +8732,9 @@ export interface TableJSXProps
   filters?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TableBodyProps extends TableBodyProps$1 {}
 
 declare class TableBody extends PreactCustomElement implements TableBodyProps {
@@ -8291,6 +8755,9 @@ declare module 'preact' {
 }
 
 declare const tagName$g = 's-table-body';
+/**
+ * @publicDocs
+ */
 export interface TableBodyJSXProps
   extends Partial<TableBodyProps>,
     Pick<TableBodyProps$1, 'id' | 'children'> {
@@ -8301,6 +8768,9 @@ export interface TableBodyJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TableCellProps extends TableCellProps$1 {}
 
 declare const headerFormatSymbol: unique symbol;
@@ -8327,6 +8797,9 @@ declare module 'preact' {
 }
 
 declare const tagName$f = 's-table-cell';
+/**
+ * @publicDocs
+ */
 export interface TableCellJSXProps
   extends Partial<TableCellProps>,
     Pick<TableCellProps$1, 'id' | 'children'> {
@@ -8359,6 +8832,9 @@ declare module 'preact' {
 }
 
 declare const tagName$e = 's-table-header';
+/**
+ * @publicDocs
+ */
 export interface TableHeaderJSXProps
   extends Partial<TableHeaderProps>,
     Pick<TableHeaderProps$1, 'id' | 'children'> {
@@ -8368,6 +8844,9 @@ export interface TableHeaderJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TableHeaderRowProps extends TableHeaderRowProps$1 {}
 
 declare class TableHeaderRow
@@ -8395,6 +8874,9 @@ declare module 'preact' {
 }
 
 declare const tagName$d = 's-table-header-row';
+/**
+ * @publicDocs
+ */
 export interface TableHeaderRowJSXProps
   extends Partial<TableHeaderRowProps>,
     Pick<TableHeaderRowProps$1, 'id' | 'children'> {
@@ -8405,6 +8887,9 @@ export interface TableHeaderRowJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TableRowProps
   extends Pick<TableRowProps$1, 'children' | 'clickDelegate'> {}
 
@@ -8427,6 +8912,9 @@ declare module 'preact' {
 }
 
 declare const tagName$c = 's-table-row';
+/**
+ * @publicDocs
+ */
 export interface TableRowJSXProps
   extends Partial<TableRowProps>,
     Pick<TableRowProps$1, 'id' | 'children'> {
@@ -8437,6 +8925,9 @@ export interface TableRowJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TextProps
   extends Required<
     Pick<
@@ -8533,6 +9024,9 @@ declare module 'preact' {
 }
 
 declare const tagName$b = 's-text';
+/**
+ * @publicDocs
+ */
 export interface TextJSXProps
   extends Partial<TextProps>,
     Pick<TextProps$1, 'id' | 'children'> {
@@ -8579,6 +9073,9 @@ declare module 'preact' {
 }
 
 declare const tagName$a = 's-text-area';
+/**
+ * @publicDocs
+ */
 export interface TextAreaJSXProps
   extends Partial<TextAreaProps>,
     Pick<TextAreaProps$1, 'id'>,
@@ -8630,6 +9127,9 @@ declare module 'preact' {
 }
 
 declare const tagName$9 = 's-text-field';
+/**
+ * @publicDocs
+ */
 export interface TextFieldJSXProps
   extends Partial<Omit<TextFieldProps, 'accessory'>>,
     Pick<TextFieldProps$1, 'id'>,
@@ -8640,6 +9140,9 @@ export interface TextFieldJSXProps
   accessory?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ThumbnailProps
   extends Required<Pick<ThumbnailProps$1, 'src' | 'alt' | 'size'>> {
   /**
@@ -8678,6 +9181,9 @@ declare module 'preact' {
 }
 
 declare const tagName$8 = 's-thumbnail';
+/**
+ * @publicDocs
+ */
 export interface ThumbnailJSXProps
   extends Partial<ThumbnailProps>,
     Pick<ThumbnailProps$1, 'id'> {
@@ -8691,6 +9197,9 @@ export interface ThumbnailJSXProps
   onError?: ((event: CallbackEvent<typeof tagName$8>) => void) | null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
 
 declare class Tooltip extends PreactOverlayElement implements TooltipProps {
@@ -8711,6 +9220,9 @@ declare module 'preact' {
 }
 
 declare const tagName$7 = 's-tooltip';
+/**
+ * @publicDocs
+ */
 export interface TooltipJSXProps
   extends Partial<TooltipProps>,
     Pick<TooltipProps$1, 'id' | 'children'> {
@@ -8759,11 +9271,17 @@ declare module 'preact' {
 }
 
 declare const tagName$6 = 's-url-field';
+/**
+ * @publicDocs
+ */
 export interface URLFieldJSXProps
   extends Partial<Omit<URLFieldProps, 'accessory'>>,
     Pick<URLFieldProps$1, 'id'>,
     FieldReactProps<typeof tagName$6> {}
 
+/**
+ * @publicDocs
+ */
 export interface UnorderedListProps extends UnorderedListProps$1 {}
 
 declare class UnorderedList
@@ -8787,6 +9305,9 @@ declare module 'preact' {
 }
 
 declare const tagName$5 = 's-unordered-list';
+/**
+ * @publicDocs
+ */
 export interface UnorderedListJSXProps
   extends Partial<UnorderedListProps>,
     Pick<UnorderedListProps$1, 'id'> {
@@ -8796,10 +9317,16 @@ export interface UnorderedListJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export interface AdminActionProps
   extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
 
 declare const tagName$4 = 's-admin-action';
+/**
+ * @publicDocs
+ */
 export interface AdminActionJSXProps
   extends Partial<AdminActionProps>,
     Pick<AdminActionProps$1, 'id'> {
@@ -8848,10 +9375,16 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export interface AdminBlockProps
   extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {}
 
 declare const tagName$3 = 's-admin-block';
+/**
+ * @publicDocs
+ */
 export interface AdminBlockJSXProps
   extends Partial<AdminBlockProps>,
     Pick<AdminBlockProps$1, 'id'> {}
@@ -8885,10 +9418,16 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export interface AdminPrintActionProps
   extends Pick<AdminPrintActionProps$1, 'src'> {}
 
 declare const tagName$2 = 's-admin-print-action';
+/**
+ * @publicDocs
+ */
 export interface AdminPrintActionJSXProps
   extends Partial<AdminPrintActionProps>,
     Pick<AdminPrintActionProps$1, 'id'> {}
@@ -8920,9 +9459,15 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export interface FormProps extends Pick<FormProps$1, 'id'> {}
 
 declare const tagName$1 = 's-form';
+/**
+ * @publicDocs
+ */
 export interface FormJSXProps extends Partial<FormProps> {
   /**
    * A callback that is run when the form is submitted.
@@ -8954,10 +9499,16 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export interface FunctionSettingsProps
   extends Pick<FunctionSettingsProps$1, 'id'> {}
 
 declare const tagName = 's-function-settings';
+/**
+ * @publicDocs
+ */
 export interface FunctionSettingsJSXProps
   extends Partial<
     FunctionSettingsProps & Pick<FunctionSettingsProps$1, 'onError'>
@@ -9134,6 +9685,9 @@ export type {
   UnorderedListJSXProps,
 };
 
+/**
+ * @publicDocs
+ */
 export interface AvatarEvents {
   /**
    * A callback fired when the avatar image successfully loads.
@@ -9149,6 +9703,9 @@ export interface AvatarEvents {
   error: OnErrorEventHandler = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface BadgeSlots {
   /**
    * The text label displayed within the badge component, typically a short status indicator or category label.
@@ -9156,6 +9713,9 @@ export interface BadgeSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface BannerEvents {
   /**
    * A callback fired when the banner is dismissed.
@@ -9167,6 +9727,9 @@ export interface BannerEvents {
   afterhide: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface BannerSlots {
   /**
    * The main message content displayed within the banner component, providing important information or guidance to users.
@@ -9179,6 +9742,9 @@ export interface BannerSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface BoxSlots {
   /**
    * The content displayed within the box component, which serves as a flexible container for organizing and styling other components.
@@ -9186,6 +9752,9 @@ export interface BoxSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ButtonEvents {
   /**
    * A callback fired when the button is clicked.
@@ -9207,6 +9776,9 @@ export interface ButtonEvents {
   focus: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ButtonSlots {
   /**
    * The label text or elements displayed inside the button component, describing the action that will be performed when clicked.
@@ -9214,6 +9786,9 @@ export interface ButtonSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ButtonGroupSlots {
   /**
    * The buttons displayed within the button group component, which are arranged together as a cohesive set of related actions.
@@ -9235,6 +9810,9 @@ export interface ButtonGroupSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface CheckboxEvents {
   /**
    * A callback fired when the checkbox value changes.
@@ -9250,6 +9828,9 @@ export interface CheckboxEvents {
   input: CallbackEventListener<'input'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ChipSlots {
   /**
    * The text label displayed within the chip component, typically representing a selected filter, tag, or removable item.
@@ -9261,6 +9842,9 @@ export interface ChipSlots {
   graphic?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ChoiceSlots {
   /**
    * The label text or elements that identify this selectable choice to users.
@@ -9281,6 +9865,9 @@ export interface ChoiceSlots {
   details?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ChoiceListEvents {
   /**
    * A callback fired when the choice list selection changes.
@@ -9296,6 +9883,9 @@ export interface ChoiceListEvents {
   input: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ChoiceListSlots {
   /**
    * The choices a user can select from.
@@ -9305,6 +9895,9 @@ export interface ChoiceListSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ClickableEvents {
   /**
    * A callback fired when the component is clicked.
@@ -9326,6 +9919,9 @@ export interface ClickableEvents {
   focus: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ClickableSlots {
   /**
    * The content displayed within the clickable component, which makes any content interactive and clickable without the semantic meaning of a button or link.
@@ -9333,6 +9929,9 @@ export interface ClickableSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ClickableChipEvents {
   /**
    * A callback fired when the chip is clicked.
@@ -9350,6 +9949,9 @@ export interface ClickableChipEvents {
   afterhide: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ClickableChipSlots {
   /**
    * The text label displayed within the chip, which represents an interactive filter, tag, or selectable item.
@@ -9361,6 +9963,9 @@ export interface ClickableChipSlots {
   graphic?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ColorFieldEvents {
   /**
    * A callback fired when the color field value changes.
@@ -9388,6 +9993,9 @@ export interface ColorFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ColorPickerEvents {
   /**
    * A callback fired when the color picker value changes.
@@ -9403,6 +10011,9 @@ export interface ColorPickerEvents {
   input: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface DateFieldEvents {
   /**
    * A callback fired when the date field value changes.
@@ -9440,6 +10051,9 @@ export interface DateFieldEvents {
   invalid: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface DatePickerEvents {
   /**
    * A callback fired when the calendar view changes, such as when navigating between months.
@@ -9471,6 +10085,9 @@ export interface DatePickerEvents {
   change: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface DropZoneEvents {
   /**
    * A callback fired when the drop zone value changes.
@@ -9490,6 +10107,9 @@ export interface DropZoneEvents {
   droprejected: CallbackEventListener<typeof tagName> = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface DropZoneSlots {
   /**
    * The content to include inside the drop zone container
@@ -9497,6 +10117,9 @@ export interface DropZoneSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface EmailFieldEvents {
   /**
    * A callback fired when the email field value changes.
@@ -9524,6 +10147,9 @@ export interface EmailFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface GridSlots {
   /**
    * The child elements displayed within the grid component, which are arranged in a flexible grid layout with configurable columns, rows, and spacing.
@@ -9531,6 +10157,9 @@ export interface GridSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface GridItemSlots {
   /**
    * The content displayed within the grid item component, which represents a single cell in the grid layout and can span multiple columns or rows.
@@ -9538,6 +10167,9 @@ export interface GridItemSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface HeadingSlots {
   /**
    * The heading text displayed within the heading component, which provides a title or section header for content.
@@ -9545,6 +10177,9 @@ export interface HeadingSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ImageEvents {
   /**
    * A callback fired when the image successfully loads.
@@ -9560,6 +10195,9 @@ export interface ImageEvents {
   error: OnErrorEventHandler = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface LinkEvents {
   /**
    * A callback fired when the link is clicked.
@@ -9569,6 +10207,9 @@ export interface LinkEvents {
   click: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface LinkSlots {
   /**
    * The text or elements displayed within the link component, which navigates users to a different location when activated.
@@ -9576,6 +10217,9 @@ export interface LinkSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ListItemSlots {
   /**
    * The content displayed within the list item, which represents a single entry in an ordered or unordered list.
@@ -9583,6 +10227,9 @@ export interface ListItemSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface MenuSlots {
   /**
    * The items displayed within the menu. Only accepts button and section components. Use button for individual menu actions and section to group related items.
@@ -9590,6 +10237,9 @@ export interface MenuSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ModalEvents {
   /**
    * A callback fired when the modal is hidden.
@@ -9609,6 +10259,9 @@ export interface ModalEvents {
   aftershow: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ModalSlots {
   /**
    * The content displayed within the modal component, typically including form fields, information, or interactive elements.
@@ -9628,6 +10281,9 @@ export interface ModalSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface MoneyFieldEvents {
   /**
    * A callback fired when the money field value changes.
@@ -9655,6 +10311,9 @@ export interface MoneyFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface NumberFieldEvents {
   /**
    * A callback fired when the number field value changes.
@@ -9682,6 +10341,9 @@ export interface NumberFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface OptionSlots {
   /**
    * The text or elements displayed as the option label, which identifies the selectable choice to users in a dropdown or selection list.
@@ -9689,6 +10351,9 @@ export interface OptionSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface OptionGroupSlots {
   /**
    * The selectable options displayed in the dropdown list. Accepts option components for individual selectable items within this group.
@@ -9696,6 +10361,9 @@ export interface OptionGroupSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface OrderedListSlots {
   /**
    * The list entries displayed within the ordered list, where each item is numbered sequentially. Only accepts list item components as children. Each list item represents a single numbered entry in the sequence.
@@ -9703,6 +10371,9 @@ export interface OrderedListSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface PageSlots {
   /**
    * The main page content displayed within the page component, which serves as the primary container for the page's information and interface elements.
@@ -9735,6 +10406,9 @@ export interface PageSlots {
   'breadcrumb-actions'?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ParagraphSlots {
   /**
    * The paragraph text content displayed within the paragraph component, which presents a block of related text with appropriate styling.
@@ -9742,6 +10416,9 @@ export interface ParagraphSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface PasswordFieldEvents {
   /**
    * A callback fired when the password field value changes.
@@ -9769,6 +10446,9 @@ export interface PasswordFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface PopoverEvents {
   /**
    * A callback fired when the popover is shown.
@@ -9796,6 +10476,9 @@ export interface PopoverEvents {
   aftertoggle: CallbackEventListener<TTagName> | null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface PopoverSlots {
   /**
    * The content displayed within the popover component, which appears in an overlay positioned relative to its trigger element.
@@ -9803,6 +10486,9 @@ export interface PopoverSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface QueryContainerSlots {
   /**
    * The content displayed within the query container component, which enables container queries for responsive styling based on the container's size rather than the viewport.
@@ -9810,6 +10496,9 @@ export interface QueryContainerSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface SearchFieldEvents {
   /**
    * A callback fired when the search field value changes.
@@ -9837,6 +10526,9 @@ export interface SearchFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface SectionSlots {
   /**
    * The content displayed within the section component, which groups related elements together in a logical unit with an optional heading.
@@ -9844,6 +10536,9 @@ export interface SectionSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface SelectEvents {
   /**
    * A callback fired when the select value changes.
@@ -9859,6 +10554,9 @@ export interface SelectEvents {
   input: CallbackEventListener<'input'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface SelectSlots {
   /**
    * The selectable options displayed in the dropdown list. Accepts option components for individual selectable items, and option group components to organize related options into logical groups with labels.
@@ -9866,6 +10564,9 @@ export interface SelectSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface StackSlots {
   /**
    * The child elements displayed within the stack component, which are arranged vertically or horizontally with consistent spacing.
@@ -9873,6 +10574,9 @@ export interface StackSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface SwitchEvents {
   /**
    * A callback fired when the switch value changes.
@@ -9888,6 +10592,9 @@ export interface SwitchEvents {
   input: CallbackEventListener<'input'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TableEvents {
   /**
    * A callback fired when the user navigates to the previous page.
@@ -9899,6 +10606,9 @@ export interface TableEvents {
   nextpage: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TableSlots {
   /**
    * The table structure defining headers and data rows.
@@ -9914,6 +10624,9 @@ export interface TableSlots {
   filters?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TableBodySlots {
   /**
    * The data rows displayed in the table body.
@@ -9923,6 +10636,9 @@ export interface TableBodySlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TableCellSlots {
   /**
    * The data value displayed in this cell.
@@ -9932,6 +10648,9 @@ export interface TableCellSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TableHeaderSlots {
   /**
    * The column heading text.
@@ -9941,6 +10660,9 @@ export interface TableHeaderSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TableHeaderRowSlots {
   /**
    * The column headers displayed in the table header row.
@@ -9950,6 +10672,9 @@ export interface TableHeaderRowSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TableRowSlots {
   /**
    * The data cells displayed in this table row.
@@ -9959,6 +10684,9 @@ export interface TableRowSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TextSlots {
   /**
    * The text content displayed within the text component, which applies semantic meaning and styling appropriate to the specified text type.
@@ -9966,6 +10694,9 @@ export interface TextSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TextAreaEvents {
   /**
    * A callback fired when the text area value changes.
@@ -9993,6 +10724,9 @@ export interface TextAreaEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TextFieldEvents {
   /**
    * A callback fired when the text field value changes.
@@ -10020,6 +10754,9 @@ export interface TextFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TextFieldSlots {
   /**
    * Additional interactive content displayed within the text field.
@@ -10029,6 +10766,9 @@ export interface TextFieldSlots {
   accessory?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ThumbnailEvents {
   /**
    * A callback fired when the thumbnail image successfully loads.
@@ -10044,6 +10784,9 @@ export interface ThumbnailEvents {
   error: OnErrorEventHandler = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TooltipSlots {
   /**
    * The informational text or elements displayed within the tooltip overlay, providing helpful context or explanations when users interact with the associated element.
@@ -10053,6 +10796,9 @@ export interface TooltipSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface URLFieldEvents {
   /**
    * A callback fired when the URL field value changes.
@@ -10080,6 +10826,9 @@ export interface URLFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface UnorderedListSlots {
   /**
    * The list entries displayed within the unordered list, where each item is marked with a bullet point. Only accepts list item components as children. Each list item represents a single bulleted entry in the list.
@@ -10087,6 +10836,9 @@ export interface UnorderedListSlots {
   children?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface AdminActionSlots {
   /**
    * The main action button or link displayed in the admin action modal.
@@ -10100,6 +10852,9 @@ export interface AdminActionSlots {
   'secondary-actions': HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface FormEvents {
   /**
    * A callback that is run when the form is submitted.
@@ -10111,6 +10866,9 @@ export interface FormEvents {
   reset: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * @publicDocs
+ */
 export interface FunctionSettingsEvents {
   /**
    * An optional callback function that will be run by the admin when the user
