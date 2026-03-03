@@ -252,7 +252,7 @@ const templates = {
 
 /**
  * Converts v2 generated docs format (object keyed by type then file path) into
- * the array format expected by transformJson and downstream (e.g. shopify-dev).
+ * the array format expected by transformJson.
  */
 const v2ToArray = (data) => {
   if (Array.isArray(data)) return data;
@@ -265,6 +265,22 @@ const v2ToArray = (data) => {
     }
   }
   return entries;
+};
+
+/**
+ * Converts the transformed array back to v2 format (object keyed by type name
+ * then file path) so consumers can look up types by top-level key (e.g. ActionExtensionApi).
+ */
+const arrayToV2 = (entries) => {
+  const v2 = {};
+  for (const entry of entries) {
+    const name = entry.name;
+    const filePath = entry.filePath;
+    if (!name || !filePath) continue;
+    if (!v2[name]) v2[name] = {};
+    v2[name][filePath] = entry;
+  }
+  return v2;
 };
 
 const transformJson = async (filePath, isExtensions) => {
@@ -450,7 +466,14 @@ const transformJson = async (filePath, isExtensions) => {
     jsonData = [...filteredDocs, ...jsonData];
   }
 
-  await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
+  if (isExtensions) {
+    await fs.writeFile(
+      filePath,
+      JSON.stringify(arrayToV2(jsonData), null, 2),
+    );
+  } else {
+    await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
+  }
 };
 
 const generateExtensionsDocs = async () => {

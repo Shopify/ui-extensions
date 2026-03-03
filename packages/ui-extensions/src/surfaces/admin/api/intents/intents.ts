@@ -127,6 +127,7 @@ export interface IntentQuery extends IntentQueryOptions {
  * });
  * const response = await activity.complete;
  * ```
+ * @publicDocs
  */
 export interface IntentInvokeApi {
   (query: IntentQuery): Promise<IntentActivity>;

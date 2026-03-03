@@ -6,6 +6,7 @@ import type {PickerApi} from '../picker/picker';
 
 /**
  * The `PrintActionExtensionApi` object provides methods for print action extensions that generate custom printable documents. Access the following properties on the `PrintActionExtensionApi` object to access selected resources and display picker dialogs for print configuration.
+ * @publicDocs
  */
 export interface PrintActionExtensionApi<
   ExtensionTarget extends AnyExtensionTarget,
