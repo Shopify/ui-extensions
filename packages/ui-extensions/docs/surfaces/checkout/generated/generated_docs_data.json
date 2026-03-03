@@ -205450,7 +205450,7 @@
     "thumbnail": "payment-icon-thumbnail.png",
     "requires": "",
     "type": "",
-    "subCategory": "Media",
+    "subCategory": "Media and visuals",
     "definitions": [
       {
         "title": "Properties",
@@ -206113,7 +206113,7 @@
     "thumbnail": "product-thumbnail-thumbnail.png",
     "requires": "",
     "type": "",
-    "subCategory": "Media",
+    "subCategory": "Media and visuals",
     "definitions": [
       {
         "title": "Properties",
@@ -206503,7 +206503,7 @@
     "thumbnail": "scroll-box-thumbnail.png",
     "requires": "",
     "type": "",
-    "subCategory": "Structure",
+    "subCategory": "Layout and structure",
     "definitions": [
       {
         "title": "Properties",
