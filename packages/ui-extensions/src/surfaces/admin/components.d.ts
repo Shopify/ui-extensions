@@ -9351,6 +9351,9 @@ export interface CheckboxEvents {
   input: CallbackEventListener<'input'>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ChipSlots {
   /**
    * The text label displayed within the chip component, typically representing a selected filter, tag, or removable item.
