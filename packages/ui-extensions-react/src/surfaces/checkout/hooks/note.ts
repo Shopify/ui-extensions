@@ -11,6 +11,8 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns the proposed `note` applied to the checkout.
+ *
+ * @publicDocs
  */
 export function useNote<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -20,6 +22,8 @@ export function useNote<
 
 /**
  * Returns a function to mutate the `note` property of the checkout.
+ *
+ * @publicDocs
  */
 export function useApplyNoteChange<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

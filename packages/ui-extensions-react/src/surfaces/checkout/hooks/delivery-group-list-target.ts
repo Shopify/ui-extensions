@@ -8,6 +8,8 @@ import {useSubscription} from './subscription';
  * extension targets:
  * - purchase.checkout.shipping-option-list.render-before
  * - purchase.checkout.shipping-option-list.render-after
+ *
+ * @publicDocs
  */
 export function useDeliveryGroupListTarget(): DeliveryGroupList | undefined {
   const api = useApi<

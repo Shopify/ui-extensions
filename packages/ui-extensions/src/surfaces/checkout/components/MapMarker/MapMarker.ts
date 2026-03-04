@@ -2,6 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {OverlayActivatorProps} from '../shared';
 
+/** @publicDocs */
 export interface MapMarkerProps extends OverlayActivatorProps {
   /**
    * The latitude of the marker.

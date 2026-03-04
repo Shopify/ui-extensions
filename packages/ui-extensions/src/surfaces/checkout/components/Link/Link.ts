@@ -6,6 +6,7 @@ import type {
   DisclosureActivatorProps,
 } from '../shared';
 
+/** @publicDocs */
 export interface LinkProps
   extends OverlayActivatorProps,
     DisclosureActivatorProps {

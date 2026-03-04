@@ -9,6 +9,8 @@ import {useApi} from './api';
 
 /**
  * Returns a function to apply a change to add a redeemable.
+ *
+ * @publicDocs
  */
 export function useApplyRedeemableChange(): (
   change: RedeemableChange,

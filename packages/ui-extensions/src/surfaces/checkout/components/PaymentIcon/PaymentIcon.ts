@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 // Copied from https://github.com/Shopify/ui-api-design/blob/main/components/PaymentIcon/PaymentIcon.ts
+/** @publicDocs */
 export type PaymentMethod =
   | 'visa'
   | 'master'
@@ -447,6 +448,7 @@ export type PaymentMethod =
   | 'cetelem'
   | 'paid';
 
+/** @publicDocs */
 export interface PaymentIconProps {
   /**
    * The name of the payment method.

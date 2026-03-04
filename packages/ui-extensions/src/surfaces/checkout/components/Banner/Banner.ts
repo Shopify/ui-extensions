@@ -2,6 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps, Status} from '../shared';
 
+/** @publicDocs */
 export interface BannerProps extends IdProps {
   /**
    * Banners have an optional title. Use a title to grab the buyer’s attention

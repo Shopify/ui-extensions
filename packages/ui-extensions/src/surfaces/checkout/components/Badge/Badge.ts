@@ -5,6 +5,7 @@ import type {IconSource} from '../Icon/Icon';
 
 type Tone = 'default' | 'critical' | 'subdued';
 
+/** @publicDocs */
 export interface BadgeProps extends VisibilityProps {
   /**
    * The tone of the badge being rendered. Indicates its level of importance,

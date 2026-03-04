@@ -1,6 +1,7 @@
 import type {RemoteFragment} from '@remote-ui/core';
 import {createRemoteComponent} from '@remote-ui/core';
 
+/** @publicDocs */
 export interface ChoiceProps {
   /**
    * A unique identifier for the choice.

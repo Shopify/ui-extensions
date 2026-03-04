@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/** @publicDocs */
 export interface ToggleButtonGroupProps<T extends string> {
   /**
    * An id of the selected button.

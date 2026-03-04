@@ -4,6 +4,7 @@ import type {InlineAlignment, AccessibilityRole} from '../shared';
 
 type Level = 1 | 2 | 3;
 
+/** @publicDocs */
 export interface HeadingProps {
   /**
    * Unique identifier.

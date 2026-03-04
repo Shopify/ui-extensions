@@ -14,6 +14,8 @@ import {useSubscription} from './subscription';
 /**
  * Returns the current discount codes applied to the cart, and automatically re-renders
  * your component if discount codes are added or removed.
+ *
+ * @publicDocs
  */
 export function useDiscountCodes<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -26,6 +28,8 @@ export function useDiscountCodes<
 /**
  * Returns the current discount allocations applied to the cart, and automatically re-renders
  * your component if discount allocations changed.
+ *
+ * @publicDocs
  */
 export function useDiscountAllocations<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -40,6 +44,8 @@ export function useDiscountAllocations<
  *
  * > Caution:
  * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves discount codes through a network call.
+ *
+ * @publicDocs
  */
 export function useApplyDiscountCodeChange<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

@@ -4,6 +4,7 @@ import type {PhoneFieldProps} from '../PhoneField/PhoneField';
 
 export type ConsentPolicy = 'sms-marketing';
 
+/** @publicDocs */
 export interface ConsentPhoneFieldProps extends Omit<PhoneFieldProps, 'value'> {
   /**
    * The policy for which buyer consent is being collected for.

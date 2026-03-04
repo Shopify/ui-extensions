@@ -17,6 +17,7 @@ import type {
   IdProps,
 } from '../shared';
 
+/** @publicDocs */
 export interface PressableProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,

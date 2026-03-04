@@ -14,6 +14,7 @@ import type {
   ViewLikeAccessibilityRole,
 } from '../shared';
 
+/** @publicDocs */
 export interface InlineStackProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,

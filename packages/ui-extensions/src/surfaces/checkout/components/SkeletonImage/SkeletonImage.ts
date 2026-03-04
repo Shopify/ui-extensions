@@ -3,6 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 import type {IdProps} from '../shared';
 
+/** @publicDocs */
 export interface SkeletonImageProps extends IdProps {
   /**
    * Adjust the block size of the skeleton.

@@ -9,6 +9,7 @@ import type {
   DisclosureActivatorProps,
 } from '../shared';
 
+/** @publicDocs */
 export interface ButtonProps
   extends OverlayActivatorProps,
     DisclosureActivatorProps,

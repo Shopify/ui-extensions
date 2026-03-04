@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/** @publicDocs */
 export interface FormProps {
   /**
    * Whether the form is able to be submitted. When set to `true`, this will

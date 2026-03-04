@@ -23,6 +23,8 @@ type AppMetafieldFilterKeys = keyof AppMetafieldFilters;
 /**
  * Returns the metafields configured with `shopify.extension.toml`.
  * @arg {AppMetafieldFilters} - filter the list of returned metafields
+ *
+ * @publicDocs
  */
 export function useAppMetafields<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
