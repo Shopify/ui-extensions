@@ -12,7 +12,7 @@ Use this API to build workflows like adding products to collections from bulk ac
   subCategory: 'Utility APIs',
   thumbnail: 'intents.png',
   requires:
-    'an Admin UI [block or action](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
+    'an admin UI [block or action](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
     description:
       'Launch the article creation workflow from a button click. This example uses `shopify.intents.invoke()` to open the article editor, awaits the workflow completion, and displays success or cancellation feedback based on the response code.',

@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Utility APIs',
   thumbnail: 'picker.png',
   requires:
-    'an Admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
+    'an admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
     description:
       'Build a custom picker for email templates with multiple columns and status badges. This example shows defining column headers, populating items with searchable data fields, adding visual status indicators, and handling the selection promise. Use this pattern for app-specific resources like templates, product reviews, or subscription options where you need custom data structures beyond standard Shopify resources.',
