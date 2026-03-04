@@ -47,7 +47,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-box';
 /**
@@ -157,7 +157,7 @@ export interface BoxJSXProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: BoxJSXProps;
+    [tagName]: BoxJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {

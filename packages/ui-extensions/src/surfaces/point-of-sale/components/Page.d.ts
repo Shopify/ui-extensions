@@ -43,7 +43,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-page';
 export interface PageJSXProps extends Pick<PageProps, 'id'> {
@@ -73,7 +73,7 @@ export interface PageJSXProps extends Pick<PageProps, 'id'> {
 export type ElementProps = Omit<PageJSXProps, 'secondaryActions' | 'aside'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ElementProps;
+    [tagName]: ElementProps & HTMLElement;
   }
 }
 declare module 'preact' {

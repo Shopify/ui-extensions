@@ -48,7 +48,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 /**
  * Defines the available padding size options using a semantic scale. Provides consistent spacing values that align with the POS design system.
@@ -154,7 +154,7 @@ export interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ScrollBoxJSXProps;
+    [tagName]: ScrollBoxJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {
