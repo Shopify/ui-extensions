@@ -211,7 +211,7 @@ declare class PreactInputElement
 }
 
 /**
- * The common props shared by all form field components in the Admin UI.
+ * The common props shared by all form field components in the admin UI.
  */
 export type PreactFieldProps<Autocomplete extends string = string> =
   PreactInputProps &
