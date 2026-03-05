@@ -43,7 +43,7 @@ type OrderRoutingComponents = AnyComponentBuilder<
 >;
 
 /**
- * The set of UI components available for all Admin UI extension targets. This includes all standard Polaris components except for specialized components used in specific contexts. Use this type to define which components can be rendered in your extension.
+ * The set of UI components available for all admin UI extension targets. This includes all standard Polaris components except for specialized components used in specific contexts. Use this type to define which components can be rendered in your extension.
  */
 type AllComponents = AnyComponentBuilder<
   Omit<
@@ -677,7 +677,7 @@ export interface ExtensionTargets {
 }
 
 /**
- * A string literal union of all valid extension target identifiers. Use this type to specify where your Admin UI extension should render, such as `admin.product-details.block.render` for a block on product details pages or `admin.order-details.action.render` for an action on order details pages. The target determines the extension's location, available APIs, and UI components.
+ * A string literal union of all valid extension target identifiers. Use this type to specify where your admin UI extension should render, such as `admin.product-details.block.render` for a block on product details pages or `admin.order-details.action.render` for an action on order details pages. The target determines the extension's location, available APIs, and UI components.
  */
 export type ExtensionTarget = keyof ExtensionTargets;
 
