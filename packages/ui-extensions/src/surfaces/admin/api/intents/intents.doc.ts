@@ -98,6 +98,15 @@ The following tables show which resource types you can create or edit, and what 
 | \`create\` | \`shopify/Discount\` | — | \`{ type: 'amount-off-product' \\| 'amount-off-order' \\| 'buy-x-get-y' \\| 'free-shipping' }\` |
 | \`edit\` | \`shopify/Discount\` | \`gid://shopify/Discount/{id}\` | — |
 
+#### Location
+
+[Locations](/docs/api/admin-graphql/latest/objects/Location) are physical or virtual places where merchants store inventory and fulfill orders. Use this to create or edit locations for managing stock and fulfillment.
+
+| Action | Type | Value | Data |
+|--------|------|-------|------|
+| \`create\` | \`shopify/Location\` | — | — |
+| \`edit\` | \`shopify/Location\` | \`gid://shopify/Location/{id}\` | — |
+
 #### Market
 
 [Markets](/docs/api/admin-graphql/latest/objects/Market) are geographic regions with customized pricing, languages, and domains. Use this to create or edit markets for international selling.
@@ -179,10 +188,11 @@ Settings are the configuration options for the store. Use this to invoke and edi
 
 | Action | Type | Value | Data |
 |--------|------|-------|------|
-| \`edit\` | \`settings/StoreDetails\` | — | — |
-| \`edit\` | \`settings/StoreDefaults\` | — | — |
+| \`edit\` | \`settings/LocationDefault\` | — | — |
 | \`edit\` | \`settings/OrderIdFormat\` | — | — |
-| \`edit\` | \`settings/OrderProcessing\` | — | — |`,
+| \`edit\` | \`settings/OrderProcessing\` | — | — |
+| \`edit\` | \`settings/StoreDefaults\` | — | — |
+| \`edit\` | \`settings/StoreDetails\` | — | — |`,
 
       type: 'IntentInvokeApi',
     },
@@ -387,6 +397,49 @@ Settings are the configuration options for the store. Use this to invoke and edi
                 {
                   title: 'js',
                   code: './examples/edit-discount.js',
+                  language: 'js',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Launch the location creation workflow to add a new physical or virtual fulfillment location. This example invokes the create intent, manages loading state, and displays feedback on completion.',
+            codeblock: {
+              title: 'Create a new location',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/create-location.jsx',
+                  language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/create-location.js',
+                  language: 'js',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Open the location editor to update address details, fulfillment settings, or inventory tracking. This example retrieves the location GID from extension context, invokes the edit intent, and handles the completion response.',
+            codeblock: {
+              title: 'Edit an existing location',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/edit-location.jsx',
+                  language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-location.js',
                   language: 'js',
                 },
               ],
@@ -741,6 +794,25 @@ Settings are the configuration options for the store. Use this to invoke and edi
       {
         title: '',
         examples: [
+          {
+            description:
+              'Launch locations in Settings to update the store\'s default location.',
+            codeblock: {
+              title: 'Edit default location',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/edit-location-default.jsx',
+                  language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-location-default.js',
+                  language: 'js',
+                },
+              ],
+            },
+          },
           {
             description:
               'Launch store details in Settings to update the store name, email, or phone number.',
