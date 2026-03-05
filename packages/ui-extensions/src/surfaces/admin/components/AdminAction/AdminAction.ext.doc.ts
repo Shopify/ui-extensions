@@ -76,7 +76,7 @@ const data: ReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Embed a [form](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/form) inside the action modal to collect merchant input before saving. This example includes a [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/text-field) and [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/number-field) wrapped in a form component.',
+              'Collect merchant input inside the action modal using form fields. This example includes a [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/text-field) and [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/number-field) arranged in a [stack](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/stack).',
             codeblock: {
               title: 'Add form fields to the modal',
               tabs: [
