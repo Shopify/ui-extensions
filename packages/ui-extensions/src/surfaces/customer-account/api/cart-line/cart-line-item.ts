@@ -2,6 +2,7 @@ import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 import {CartLine} from '../order-status/order-status';
 
+/** @publicDocs */
 export interface CartLineItemApi {
   /**
    * The cart line the extension is attached to.

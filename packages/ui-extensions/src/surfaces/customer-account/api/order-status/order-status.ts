@@ -392,6 +392,7 @@ export interface Localization {
   market: StatefulRemoteSubscribable<Market | undefined>;
 }
 
+/** @publicDocs */
 export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
    * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.

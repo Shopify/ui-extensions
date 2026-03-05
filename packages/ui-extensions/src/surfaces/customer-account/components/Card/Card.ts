@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/** @publicDocs */
 export interface CardProps {
   /**
    * Adjust the padding of all edges.

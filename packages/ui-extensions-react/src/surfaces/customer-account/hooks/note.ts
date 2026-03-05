@@ -5,6 +5,8 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns the proposed `note` applied to the checkout.
+ *
+ * @publicDocs
  */
 export function useNote<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

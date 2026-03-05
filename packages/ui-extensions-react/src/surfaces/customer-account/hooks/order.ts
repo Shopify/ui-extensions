@@ -10,6 +10,8 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns the order information that's available post-checkout.
+ *
+ * @publicDocs
  */
 export function useOrder<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

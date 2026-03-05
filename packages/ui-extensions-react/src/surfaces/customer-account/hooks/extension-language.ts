@@ -8,6 +8,8 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns the buyer's language, as supported by the extension.
+ *
+ * @publicDocs
  */
 export function useExtensionLanguage<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

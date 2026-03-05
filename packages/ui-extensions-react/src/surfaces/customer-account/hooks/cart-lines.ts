@@ -9,6 +9,8 @@ import {useSubscription} from './subscription';
 /**
  * Returns the current line items for the checkout, and automatically re-renders
  * your component if line items are added, removed, or updated.
+ *
+ * @publicDocs
  */
 export function useCartLines<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

@@ -7,6 +7,8 @@ import {useApi} from './api';
 
 /**
  * Returns the `Shop` where the checkout is taking place.
+ *
+ * @publicDocs
  */
 export function useShop<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

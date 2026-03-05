@@ -11,6 +11,8 @@ import type {RenderExtension} from './extension';
  * and is expected to return a value in a specific shape.
  * The input arguments and the output type are different
  * for each extension target.
+ *
+ * @publicDocs
  */
 export interface ExtensionTargets {
   /**
@@ -50,11 +52,13 @@ export interface ExtensionTargets {
   >;
 }
 
+/** @publicDocs */
 export type ExtensionTarget = keyof ExtensionTargets;
 
 /**
  * For a given extension target, returns the value that is expected to be
  * returned by that extension target’s callback type.
+ * @publicDocs
  */
 export type ReturnTypeForExtension<Target extends keyof ExtensionTargets> =
   ReturnType<ExtensionTargets[Target]>;
@@ -62,6 +66,7 @@ export type ReturnTypeForExtension<Target extends keyof ExtensionTargets> =
 /**
  * For a given extension target, returns the tuple of arguments that would
  * be provided to that extension target’s callback type.
+ * @publicDocs
  */
 export type ArgumentsForExtension<Target extends keyof ExtensionTargets> =
   Parameters<ExtensionTargets[Target]>;
@@ -71,6 +76,7 @@ export type ArgumentsForExtension<Target extends keyof ExtensionTargets> =
  * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/core)
  * and an additional `api` argument, and using those arguments to render
  * UI.
+ * @publicDocs
  */
 export type RenderExtensionTarget = {
   [Target in keyof ExtensionTargets]: ExtensionTargets[Target] extends RenderExtension<
@@ -83,6 +89,7 @@ export type RenderExtensionTarget = {
 
 /**
  * A mapping of each “render extension” name to its callback type.
+ * @publicDocs
  */
 export type RenderExtensions = {
   [Target in RenderExtensionTarget]: ExtensionTargets[Target];
@@ -103,6 +110,7 @@ type ExtractedAllowedComponentsFromRenderExtension<T> =
  * extension will receive at runtime. This API type is the second argument to
  * the callback for that extension target. The first callback for all of the rendering
  * extension targets each receive a `RemoteRoot` object.
+ * @publicDocs
  */
 export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
   ExtractedApiFromRenderExtension<RenderExtensions[Target]>;
@@ -110,6 +118,7 @@ export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
 /**
  * For a given rendering extension target, returns the UI components that the
  * extension target supports.
+ * @publicDocs
  */
 export type AllowedComponentsForRenderExtension<
   Target extends keyof RenderExtensions,

@@ -10,6 +10,8 @@ import {useSubscription} from './subscription';
 /**
  * Returns the current discount codes applied to the cart, and automatically re-renders
  * your component if discount codes are added or removed.
+ *
+ * @publicDocs
  */
 export function useDiscountCodes<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -22,6 +24,8 @@ export function useDiscountCodes<
 /**
  * Returns the current discount allocations applied to the cart, and automatically re-renders
  * your component if discount allocations changed.
+ *
+ * @publicDocs
  */
 export function useDiscountAllocations<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
