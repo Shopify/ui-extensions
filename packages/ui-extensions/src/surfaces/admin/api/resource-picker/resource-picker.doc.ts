@@ -167,7 +167,7 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Utility APIs',
   thumbnail: 'resource-picker.png',
   requires:
-    'an Admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
+    'an admin UI [block, action, or print](/docs/api/admin-extensions/{API_VERSION}#building-your-extension) extension.',
   defaultExample: {
     description:
       'Open the product resource picker to select items from the store catalog. This example invokes `shopify.resourcePicker` with `type: "product"`, handles the async selection, and displays the count of selected products. When merchants confirm their selection, the resource picker returns an array of product objects with GIDs, titles, and handles for use in your extension.',
