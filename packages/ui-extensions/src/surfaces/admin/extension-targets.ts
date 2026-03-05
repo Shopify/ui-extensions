@@ -52,7 +52,7 @@ type OrderRoutingComponents = AnyComponentBuilder<
 >;
 
 /**
- * The full set of UI components available for most Admin UI extension targets. This includes all components except those restricted to specific targets.
+ * The full set of UI components available for most admin UI extension targets. This includes all components except those restricted to specific targets.
  */
 type AllComponents = AnyComponentBuilder<
   Omit<
@@ -218,7 +218,7 @@ export interface ExtensionTargets {
 }
 
 /**
- * A string literal union of all valid extension target identifiers. Use this type to specify where your Admin UI extension should render, such as `admin.product-details.block.render` for a block on product details pages or `admin.order-details.action.render` for an action on order details pages. The target determines the extension's location, available APIs, and UI components.
+ * A string literal union of all valid extension target identifiers. Use this type to specify where your admin UI extension should render, such as `admin.product-details.block.render` for a block on product details pages or `admin.order-details.action.render` for an action on order details pages. The target determines the extension's location, available APIs, and UI components.
  */
 export type ExtensionTarget = keyof ExtensionTargets;
 
