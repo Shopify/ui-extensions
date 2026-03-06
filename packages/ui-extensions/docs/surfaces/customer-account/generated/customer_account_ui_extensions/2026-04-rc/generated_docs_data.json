@@ -57721,7 +57721,7 @@
       }
     ],
     "category": "Polaris web components",
-    "subCategory": "Media",
+    "subCategory": "Media and visuals",
     "defaultExample": {
       "image": "avatar-default.png",
       "altText": "An example of the Avatar component shows the initials of the user.",
@@ -57746,8 +57746,8 @@
     "related": []
   },
   {
-    "name": "ButtonGroup",
-    "description": "ButtonGroup is used to display multiple buttons in a layout that is contextual based on the screen width or parent component. When there is more than one secondary action, they get collapsed.\n    \nWhen used within a [Section](/docs/api/customer-account-ui-extensions/polaris-web-components/structure/section) component, the buttons will fill the width of the section.\n",
+    "name": "Button group",
+    "description": "The button group component is used to display multiple buttons in a layout that is contextual based on the screen width or parent component. When there is more than one secondary action, they get collapsed.\n    \nWhen used within a [Section](/docs/api/customer-account-ui-extensions/polaris-web-components/structure/section) component, the buttons will fill the width of the section.\n",
     "thumbnail": "buttongroup-thumbnail.png",
     "requires": "",
     "isVisualComponent": true,
@@ -57844,7 +57844,7 @@
     "related": []
   },
   {
-    "name": "CustomerAccountAction",
+    "name": "Customer account action",
     "description": "A modal to complete an order action flow. This component can only be used to populate the [customer-account.order.action.render](/docs/api/customer-account-ui-extensions/unstable/targets/order-action-menu/customer-account-order-action-render) extension target, which renders as a result of the customer clicking the order action button rendered via the [customer-account.order.action.menu-item.render](/docs/api/customer-account-ui-extensions/unstable/targets/order-action-menu/customer-account-order-action-menu-item-render) extension target.",
     "thumbnail": "customeraccountaction-thumbnail.png",
     "requires": "",
@@ -58029,7 +58029,7 @@
     "related": []
   },
   {
-    "name": "ImageGroup",
+    "name": "Image group",
     "description": "Display up to 4 images in a grid or stacked layout. The images are displayed as a grid when used within a [Section](/docs/api/customer-account-ui-extensions/polaris-web-components/structure/section) component. For example, images of products in a wishlist or subscription. When there are more than 4 images, the component indicates how many more images are not displayed.",
     "thumbnail": "imagegroup-thumbnail.png",
     "requires": "",
@@ -58070,7 +58070,7 @@
       }
     ],
     "category": "Polaris web components",
-    "subCategory": "Media",
+    "subCategory": "Media and visuals",
     "defaultExample": {
       "image": "imagegroup-default.png",
       "altText": "An example of the ImageGroup component shows a group of four images of plants, arranged in a 2x2 grid.",
@@ -58608,7 +58608,7 @@
       }
     ],
     "category": "Polaris web components",
-    "subCategory": "Structure",
+    "subCategory": "Layout and structure",
     "defaultExample": {
       "image": "page-default.png",
       "altText": "An example of the Page component shows the page title, description, and order action buttons on the Order status page.",
