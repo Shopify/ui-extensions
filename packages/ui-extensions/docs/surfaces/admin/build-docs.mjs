@@ -33,6 +33,8 @@ const shopifyDevDBPath = path.join(
 const shopifyDevExists = existsSync(shopifyDevPath);
 
 const generatedDocsDataFile = 'generated_docs_data.json';
+const generatedDocsDataV2File = 'generated_docs_data_v2.json';
+const generatedStaticPagesFile = 'generated_static_pages.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
 const tempComponentDefs = path.join(srcPath, 'components.ts');
@@ -120,8 +122,8 @@ const htmlWrapper = (htmlString, layoutStyles = '', customStyles = '') => {
   )}</body></html>`;
 };
 
-/* 
-Using JSX Builder to self-host Preact and Sucrase. 
+/*
+Using JSX Builder to self-host Preact and Sucrase.
 https://github.com/shopify-playground/jsx-builder
 */
 const jsxWrapper = (
@@ -252,6 +254,12 @@ const templates = {
 
 const transformJson = async (filePath, isExtensions) => {
   let jsonData = JSON.parse((await fs.readFile(filePath, 'utf8')).toString());
+
+  // V2 format is an object keyed by symbol name; transforms only apply to legacy array format
+  if (!Array.isArray(jsonData)) {
+    await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
+    return;
+  }
 
   const iconEntry = jsonData.find(
     (entry) => entry.name === 'Icon' && entry.subSections,
@@ -451,8 +459,10 @@ const generateExtensionsDocs = async () => {
   const outputDir = `${docsGeneratedRelativePath}/admin_extensions/${EXTENSIONS_API_VERSION}`;
 
   const scripts = [
-    `yarn tsc --project ${docsRelativePath}/${tsconfigExtensions} --moduleResolution node  --target esNext  --module CommonJS`,
+    `yarn tsc --project ${docsRelativePath}/${tsconfigExtensions} --moduleResolution node  --target esNext  --module CommonJS --skipLibCheck`,
     `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
+    `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS --skipLibCheck`,
+    `yarn generate-docs --isLandingPage --input ./${docsRelativePath}/staticPages --output ./${outputDir}`,
   ];
 
   await generateFiles({
@@ -460,15 +470,30 @@ const generateExtensionsDocs = async () => {
     outputDir,
     rootPath,
     generatedDocsDataFile,
+    generatedDocsDataV2File,
+    generatedStaticPagesFile,
     transformJson: (filePath) => transformJson(filePath, true),
   });
 
   // Replace 'unstable' with the exact API version in relative doc links
+  const generatedDocsPathForVersion = path.join(rootPath, outputDir);
   await replaceFileContent({
-    filePaths: path.join(outputDir, generatedDocsDataFile),
+    filePaths: path.join(generatedDocsPathForVersion, generatedDocsDataFile),
     searchValue: '/docs/api/admin-extensions/unstable/',
     replaceValue: `/docs/api/admin-extensions/${EXTENSIONS_API_VERSION}`,
   });
+
+  // Generate generated_docs_data_v2.json for shopify-dev (same content as generated_docs_data.json)
+  const docsDataPath = path.join(
+    generatedDocsPathForVersion,
+    generatedDocsDataFile,
+  );
+  const docsDataV2Path = path.join(
+    generatedDocsPathForVersion,
+    generatedDocsDataV2File,
+  );
+  const docsDataContent = await fs.readFile(docsDataPath, 'utf8');
+  await fs.writeFile(docsDataV2Path, docsDataContent);
 
   // Generate targets.json (extension targets + APIs + components mapping)
   const targetsScriptPath = path.join(__dirname, 'build-docs-targets-json.mjs');
@@ -483,7 +508,7 @@ const generateAppBridgeDocs = async () => {
 
   const outputDir = `${docsGeneratedRelativePath}/app_home`;
   const scripts = [
-    `yarn tsc --project ${docsRelativePath}/${tsconfigAppBridge} --moduleResolution node  --target esNext  --module CommonJS`,
+    `yarn tsc --project ${docsRelativePath}/${tsconfigAppBridge} --moduleResolution node  --target esNext  --module CommonJS --skipLibCheck`,
     `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
   ];
 
@@ -492,6 +517,7 @@ const generateAppBridgeDocs = async () => {
     outputDir,
     rootPath,
     generatedDocsDataFile,
+    generatedDocsDataV2File,
     transformJson: (filePath) => transformJson(filePath, false),
   });
 };
@@ -521,9 +547,14 @@ try {
     'app_home',
   );
   const targetsJsonPath = path.join(adminExtensionsOutput, 'targets.json');
+  const generatedDocsDataV2Path = path.join(
+    adminExtensionsOutput,
+    generatedDocsDataV2File,
+  );
   console.log('\nGenerated docs at:');
   console.log('  Admin extensions:', adminExtensionsOutput);
   console.log('  targets.json:', targetsJsonPath);
+  console.log('  generated_docs_data_v2.json:', generatedDocsDataV2Path);
   console.log('  App Home:', appHomeOutput);
 
   await copyGeneratedToShopifyDev({

@@ -51,10 +51,13 @@ export const generateFiles = async ({
   outputDir,
   rootPath,
   generatedDocsDataFile,
+  generatedDocsDataV2File,
   generatedStaticPagesFile,
   transformJson,
 }) => {
-  scripts.forEach((script) => childProcess.execSync(script, {stdio: 'pipe'}));
+  scripts.forEach((script) =>
+    childProcess.execSync(script, {stdio: 'inherit', cwd: rootPath}),
+  );
 
   const srcFiles = await fs.readdir(rootPath, {recursive: true});
   const builtFiles = srcFiles.filter((file) => file.endsWith('.ts'));
@@ -65,9 +68,25 @@ export const generateFiles = async ({
     }),
   );
 
-  const generatedFiles = [path.join(outputDir, generatedDocsDataFile)];
+  const outputPath = path.join(rootPath, outputDir);
+  const generatedDocsPath = path.join(outputPath, generatedDocsDataFile);
+  if (!existsSync(generatedDocsPath) && generatedDocsDataV2File) {
+    const v2Path = path.join(outputPath, generatedDocsDataV2File);
+    if (existsSync(v2Path)) {
+      await fs.copyFile(v2Path, generatedDocsPath);
+    }
+  }
+  if (!existsSync(generatedDocsPath)) {
+    throw new Error(
+      `Generated docs file not found at ${generatedDocsPath}. ` +
+        'The first tsc step may have failed (check output above). ' +
+        'Ensure the admin docs build uses --skipLibCheck for tsc to avoid @types/node errors.',
+    );
+  }
+
+  const generatedFiles = [generatedDocsPath];
   if (generatedStaticPagesFile) {
-    generatedFiles.push(path.join(outputDir, generatedStaticPagesFile));
+    generatedFiles.push(path.join(outputPath, generatedStaticPagesFile));
   }
 
   // Make sure https://shopify.dev URLs are relative so they work in Spin.
@@ -79,7 +98,7 @@ export const generateFiles = async ({
   });
 
   if (transformJson) {
-    await transformJson(path.join(outputDir, generatedDocsDataFile));
+    await transformJson(path.join(outputPath, generatedDocsDataFile));
   }
 };
 
