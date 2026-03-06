@@ -11,9 +11,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- **Define file restrictions:** Set clear file type and size restrictions using the \`accept\` property.
-- **Provide meaningful error messages:** Use the \`droprejected\` event to display meaningful error messages when uploads fail validation.
-- **Prevent duplicate uploads:** Consider using \`disabled\` to prevent uploads during processing.`,
+      sectionContent: `- **Define file restrictions**: Set clear file type and size restrictions using the \`accept\` property.
+- **Provide meaningful error messages**: Use the \`droprejected\` event to display meaningful error messages when uploads fail validation.
+- **Prevent duplicate uploads**: Consider using \`disabled\` to prevent uploads during processing.`,
     },
     {
       title: 'Limitations',
