@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   type: 'API',
   requires:
-    'the [CustomerSegmentTemplate](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/customersegmenttemplate) component.',
+    'the [CustomerSegmentTemplate](/docs/api/admin-extensions/{API_VERSION}/ui-components/settings-and-templates/customersegmenttemplate) component.',
   defaultExample: {
     description:
       'Create a segment template targeting customers who spent $500+ across 5+ orders. This example uses `total_spent` and `orders_count` queries to identify high-value customers, and demonstrates `shopify.i18n.translate` for internationalized template titles and descriptions.',
