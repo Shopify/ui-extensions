@@ -13,6 +13,10 @@ import {
 import {extractIconList} from './build-doc-extract-icons.mjs';
 
 const EXTENSIONS_API_VERSION = process.argv[2] || 'unstable';
+/** Folder name for admin_extensions when copying to shopify-dev. Defaults to EXTENSIONS_API_VERSION; for 2026-04 we use 2026-04-rc so docs land in the rc folder. */
+const SHOPIFY_DEV_EXTENSIONS_FOLDER =
+  process.argv[3] ??
+  (EXTENSIONS_API_VERSION === '2026-04' ? '2026-04-rc' : null);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -455,6 +459,11 @@ const generateExtensionsDocs = async () => {
       "You can add a calver version argument (e.g. 'yarn docs:admin 2023-07') to generate the docs for a stable version.",
     );
   }
+  if (SHOPIFY_DEV_EXTENSIONS_FOLDER) {
+    console.log(
+      `Shopify-dev admin_extensions folder will be: ${SHOPIFY_DEV_EXTENSIONS_FOLDER}`,
+    );
+  }
 
   const outputDir = `${docsGeneratedRelativePath}/admin_extensions/${EXTENSIONS_API_VERSION}`;
 
@@ -562,6 +571,32 @@ try {
     shopifyDevPath,
     shopifyDevDBPath,
   });
+
+  if (
+    SHOPIFY_DEV_EXTENSIONS_FOLDER &&
+    SHOPIFY_DEV_EXTENSIONS_FOLDER !== EXTENSIONS_API_VERSION &&
+    shopifyDevExists
+  ) {
+    const adminExtSource = path.join(
+      shopifyDevDBPath,
+      'admin_extensions',
+      EXTENSIONS_API_VERSION,
+    );
+    const adminExtDest = path.join(
+      shopifyDevDBPath,
+      'admin_extensions',
+      SHOPIFY_DEV_EXTENSIONS_FOLDER,
+    );
+    if (existsSync(adminExtSource)) {
+      if (existsSync(adminExtDest)) {
+        await fs.rm(adminExtDest, {recursive: true});
+      }
+      await fs.rename(adminExtSource, adminExtDest);
+      console.log(
+        `  Renamed admin_extensions/${EXTENSIONS_API_VERSION} → admin_extensions/${SHOPIFY_DEV_EXTENSIONS_FOLDER} in shopify-dev`,
+      );
+    }
+  }
 
   await fs.cp(
     path.join(docsPath, 'screenshots'),
