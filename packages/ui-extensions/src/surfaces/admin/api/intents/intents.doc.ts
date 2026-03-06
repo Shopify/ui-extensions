@@ -796,7 +796,7 @@ Settings are the configuration options for the store. Use this to invoke and edi
         examples: [
           {
             description:
-              'Launch locations in Settings to update the store\'s default location.',
+              'Launch locations in Settings to update the default location of the store.',
             codeblock: {
               title: 'Edit default location',
               tabs: [
