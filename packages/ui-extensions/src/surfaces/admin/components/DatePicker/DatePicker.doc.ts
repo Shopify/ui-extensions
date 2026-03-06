@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   definitions: [
     {
-      title: 'DatePicker',
+      title: 'Properties',
       description:
         'Configure the following properties on the date picker component.',
       type: 'DatePicker',
