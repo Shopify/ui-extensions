@@ -38,7 +38,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-text';
 export interface TextJSXProps extends Pick<TextProps, 'id'> {
@@ -82,7 +82,7 @@ export interface TextJSXProps extends Pick<TextProps, 'id'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: TextJSXProps;
+    [tagName]: TextJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {

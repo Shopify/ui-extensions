@@ -38,7 +38,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-heading';
 export interface HeadingJSXProps extends Pick<HeadingProps, 'id'> {
@@ -49,7 +49,7 @@ export interface HeadingJSXProps extends Pick<HeadingProps, 'id'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: HeadingJSXProps;
+    [tagName]: HeadingJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {
