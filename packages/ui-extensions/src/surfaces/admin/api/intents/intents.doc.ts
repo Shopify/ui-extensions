@@ -25,6 +25,11 @@ Use this API to build workflows like adding products to collections from bulk ac
           code: './examples/create-article.jsx',
           language: 'jsx',
         },
+        {
+          title: 'js',
+          code: './examples/create-article.js',
+          language: 'js',
+        },
       ],
     },
   },
@@ -92,6 +97,15 @@ The following tables show which resource types you can create or edit, and what 
 |--------|------|-------|------|
 | \`create\` | \`shopify/Discount\` | — | \`{ type: 'amount-off-product' \\| 'amount-off-order' \\| 'buy-x-get-y' \\| 'free-shipping' }\` |
 | \`edit\` | \`shopify/Discount\` | \`gid://shopify/Discount/{id}\` | — |
+
+#### Location
+
+[Locations](/docs/api/admin-graphql/latest/objects/Location) are physical or virtual places where merchants store inventory and fulfill orders. Use this to create or edit locations for managing stock and fulfillment.
+
+| Action | Type | Value | Data |
+|--------|------|-------|------|
+| \`create\` | \`shopify/Location\` | — | — |
+| \`edit\` | \`shopify/Location\` | \`gid://shopify/Location/{id}\` | — |
 
 #### Market
 
@@ -166,7 +180,20 @@ The following tables show which resource types you can create or edit, and what 
 | \`edit\` | \`shopify/ProductVariant\` | \`gid://shopify/ProductVariant/{id}\` | \`{ productId: 'gid://shopify/Product/{id}' }\` |
 
 > Note:
-> When editing products with variants, query the [\`product.hasOnlyDefaultVariant\`](/docs/api/admin-graphql/latest/objects/Product#field-Product.fields.hasOnlyDefaultVariant) field first. If \`true\`, then use the \`shopify/Product\` edit intent. If \`false\`, then use the \`shopify/ProductVariant\` edit intent for specific variants.`,
+> When editing products with variants, query the [\`product.hasOnlyDefaultVariant\`](/docs/api/admin-graphql/latest/objects/Product#field-Product.fields.hasOnlyDefaultVariant) field first. If \`true\`, then use the \`shopify/Product\` edit intent. If \`false\`, then use the \`shopify/ProductVariant\` edit intent for specific variants.
+
+#### Settings
+
+Settings are the configuration options for the store. Use this to invoke and edit settings.
+
+| Action | Type | Value | Data |
+|--------|------|-------|------|
+| \`edit\` | \`settings/LocationDefault\` | — | — |
+| \`edit\` | \`settings/OrderIdFormat\` | — | — |
+| \`edit\` | \`settings/OrderProcessing\` | — | — |
+| \`edit\` | \`settings/StoreDefaults\` | — | — |
+| \`edit\` | \`settings/StoreDetails\` | — | — |`,
+
       type: 'IntentInvokeApi',
     },
     {
@@ -195,6 +222,11 @@ The following tables show which resource types you can create or edit, and what 
                   code: './examples/edit-article.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/edit-article.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -214,6 +246,11 @@ The following tables show which resource types you can create or edit, and what 
                   code: './examples/create-catalog.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-catalog.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -227,6 +264,11 @@ The following tables show which resource types you can create or edit, and what 
                   title: 'jsx',
                   code: './examples/edit-catalog.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-catalog.js',
+                  language: 'js',
                 },
               ],
             },
@@ -247,6 +289,11 @@ The following tables show which resource types you can create or edit, and what 
                   code: './examples/create-collection.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-collection.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -260,6 +307,11 @@ The following tables show which resource types you can create or edit, and what 
                   title: 'jsx',
                   code: './examples/edit-collection.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-collection.js',
+                  language: 'js',
                 },
               ],
             },
@@ -280,6 +332,11 @@ The following tables show which resource types you can create or edit, and what 
                   code: './examples/create-customer.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-customer.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -293,6 +350,11 @@ The following tables show which resource types you can create or edit, and what 
                   title: 'jsx',
                   code: './examples/edit-customer.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-customer.js',
+                  language: 'js',
                 },
               ],
             },
@@ -313,6 +375,11 @@ The following tables show which resource types you can create or edit, and what 
                   code: './examples/create-discount.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-discount.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -326,6 +393,54 @@ The following tables show which resource types you can create or edit, and what 
                   title: 'jsx',
                   code: './examples/edit-discount.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-discount.js',
+                  language: 'js',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Launch the location creation workflow to add a new physical or virtual fulfillment location. This example invokes the create intent, manages loading state, and displays feedback on completion.',
+            codeblock: {
+              title: 'Create a new location',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/create-location.jsx',
+                  language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/create-location.js',
+                  language: 'js',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Open the location editor to update address details, fulfillment settings, or inventory tracking. This example retrieves the location GID from extension context, invokes the edit intent, and handles the completion response.',
+            codeblock: {
+              title: 'Edit an existing location',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/edit-location.jsx',
+                  language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-location.js',
+                  language: 'js',
                 },
               ],
             },
@@ -346,6 +461,11 @@ The following tables show which resource types you can create or edit, and what 
                   code: './examples/create-market.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-market.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -359,6 +479,11 @@ The following tables show which resource types you can create or edit, and what 
                   title: 'jsx',
                   code: './examples/edit-market.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-market.js',
+                  language: 'js',
                 },
               ],
             },
@@ -379,6 +504,11 @@ The following tables show which resource types you can create or edit, and what 
                   code: './examples/create-menu.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-menu.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -392,6 +522,11 @@ The following tables show which resource types you can create or edit, and what 
                   title: 'jsx',
                   code: './examples/edit-menu.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-menu.js',
+                  language: 'js',
                 },
               ],
             },
@@ -412,6 +547,11 @@ The following tables show which resource types you can create or edit, and what 
                   code: './examples/create-metafield-definition.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-metafield-definition.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -425,6 +565,11 @@ The following tables show which resource types you can create or edit, and what 
                   title: 'jsx',
                   code: './examples/edit-metafield-definition.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-metafield-definition.js',
+                  language: 'js',
                 },
               ],
             },
@@ -445,6 +590,11 @@ The following tables show which resource types you can create or edit, and what 
                   code: './examples/create-metaobject.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-metaobject.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -458,6 +608,11 @@ The following tables show which resource types you can create or edit, and what 
                   title: 'jsx',
                   code: './examples/edit-metaobject.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-metaobject.js',
+                  language: 'js',
                 },
               ],
             },
@@ -478,6 +633,11 @@ The following tables show which resource types you can create or edit, and what 
                   code: './examples/create-metaobject-definition.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-metaobject-definition.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -491,6 +651,11 @@ The following tables show which resource types you can create or edit, and what 
                   title: 'jsx',
                   code: './examples/edit-metaobject-definition.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-metaobject-definition.js',
+                  language: 'js',
                 },
               ],
             },
@@ -511,6 +676,11 @@ The following tables show which resource types you can create or edit, and what 
                   code: './examples/create-page.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-page.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -524,6 +694,11 @@ The following tables show which resource types you can create or edit, and what 
                   title: 'jsx',
                   code: './examples/edit-page.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-page.js',
+                  language: 'js',
                 },
               ],
             },
@@ -544,6 +719,11 @@ The following tables show which resource types you can create or edit, and what 
                   code: './examples/create-product.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-product.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -557,6 +737,11 @@ The following tables show which resource types you can create or edit, and what 
                   title: 'jsx',
                   code: './examples/edit-product.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-product.js',
+                  language: 'js',
                 },
               ],
             },
@@ -577,6 +762,11 @@ The following tables show which resource types you can create or edit, and what 
                   code: './examples/create-variant.jsx',
                   language: 'jsx',
                 },
+                {
+                  title: 'js',
+                  code: './examples/create-variant.js',
+                  language: 'js',
+                },
               ],
             },
           },
@@ -590,6 +780,110 @@ The following tables show which resource types you can create or edit, and what 
                   title: 'jsx',
                   code: './examples/edit-variant.jsx',
                   language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-variant.js',
+                  language: 'js',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: '',
+        examples: [
+          {
+            description:
+              'Launch locations in Settings to update the default location of the store.',
+            codeblock: {
+              title: 'Edit default location',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/edit-location-default.jsx',
+                  language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-location-default.js',
+                  language: 'js',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Launch store details in Settings to update the store name, email, or phone number.',
+            codeblock: {
+              title: 'Edit store details',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/edit-store-details.jsx',
+                  language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-store-details.js',
+                  language: 'js',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Launch store defaults in Settings to update the store currency, timezone, or country.',
+            codeblock: {
+              title: 'Edit store defaults',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/edit-store-defaults.jsx',
+                  language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-store-defaults.js',
+                  language: 'js',
+                },
+              ],
+            },
+          },
+          {
+            description: 'Launch order ID in Settings to update the format.',
+            codeblock: {
+              title: 'Edit Order ID Format',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/edit-order-id-format.jsx',
+                  language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-order-id-format.js',
+                  language: 'js',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Launch order processing in Settings to update the store order processing preferences.',
+            codeblock: {
+              title: 'Edit order processing',
+              tabs: [
+                {
+                  title: 'jsx',
+                  code: './examples/edit-order-processing.jsx',
+                  language: 'jsx',
+                },
+                {
+                  title: 'js',
+                  code: './examples/edit-order-processing.js',
+                  language: 'js',
                 },
               ],
             },

@@ -11,6 +11,7 @@ packages/**/*.mjs
 !components.d.ts
 packages/**/*.js
 !packages/**/__mocks__/**/*.js
+!packages/**/intents/examples/*.js
 packages/**/bin
 !packages/**/.eslintrc.js
 *.log

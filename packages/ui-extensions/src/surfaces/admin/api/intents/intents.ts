@@ -67,6 +67,7 @@ export type IntentType =
   | 'shopify/Collection'
   | 'shopify/Customer'
   | 'shopify/Discount'
+  | 'shopify/Location'
   | 'shopify/Market'
   | 'shopify/Menu'
   | 'shopify/MetafieldDefinition'
