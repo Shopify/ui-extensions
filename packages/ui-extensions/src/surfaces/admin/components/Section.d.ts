@@ -9,15 +9,11 @@ import type {ComponentChildren, SectionProps$1} from './shared.d.ts';
 
 /**
  * A version of the section properties with all fields required.
- * 
- * 
  * @publicDocs
  */
 export type RequiredSectionProps = Required<SectionProps$1>;
 /**
  * The properties for the section component. A section groups related content together with an optional heading, providing semantic structure and visual separation.
- * 
- * 
  * @publicDocs
  */
 export interface SectionProps
@@ -41,15 +37,11 @@ export interface SectionProps
 
 /**
  * A string containing CSS styles for a custom element.
- * 
- * 
  * @publicDocs
  */
 export type Styles = string;
 /**
  * The configuration for rendering a custom element with Preact.
- * 
- * 
  * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -64,8 +56,6 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * An interface representing the properties of an activation event, such as a click or keypress.
- * 
- * 
  * @publicDocs
  */
 export interface ActivationEventEsque {
@@ -88,8 +78,6 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for triggering a synthetic click event.
- * 
- * 
  * @publicDocs
  */
 export interface ClickOptions {
@@ -146,8 +134,6 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
- * 
- * 
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
@@ -166,8 +152,6 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements that have children, extending the base element properties to include child content.
- * 
- * 
  * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
@@ -211,8 +195,6 @@ declare module 'preact' {
 declare const tagName = 's-section';
 /**
  * The properties for the section component when it's used in JSX.
- * 
- * 
  * @publicDocs
  */
 export interface SectionJSXProps

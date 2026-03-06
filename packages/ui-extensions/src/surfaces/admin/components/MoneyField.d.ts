@@ -14,8 +14,6 @@ import type {
 
 /**
  * An event with a strongly-typed currentTarget property for a specific HTML element.
- * 
- * 
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
@@ -26,8 +24,6 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 };
 /**
  * A callback function that receives a strongly-typed event for a specific HTML element.
- * 
- * 
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
@@ -37,8 +33,6 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * The React-style event callback props for form field components.
- * 
- * 
  * @publicDocs
  */
 export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
@@ -61,8 +55,6 @@ export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
 }
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
- * 
- * 
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
@@ -82,15 +74,11 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 
 /**
  * A string containing CSS styles for the component's shadow DOM.
- * 
- * 
  * @publicDocs
  */
 export type Styles = string;
 /**
  * The configuration for rendering a Preact component in a shadow root.
- * 
- * 
  * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -105,8 +93,6 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * The properties from an event that indicate how the user activated an element.
- * 
- * 
  * @publicDocs
  */
 export interface ActivationEventEsque {
@@ -129,8 +115,6 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for influencing a programmatic click event.
- * 
- * 
  * @publicDocs
  */
 export interface ClickOptions {
@@ -185,8 +169,6 @@ declare abstract class PreactCustomElement extends BaseClass {
 declare const internals: unique symbol;
 /**
  * The base properties for an input element that participates in form submission.
- * 
- * 
  * @publicDocs
  */
 export type PreactInputProps = Required<
@@ -232,8 +214,6 @@ declare class PreactInputElement
 
 /**
  * The base properties for form field elements that support labels, validation, and autocomplete.
- * 
- * 
  * @publicDocs
  */
 export type PreactFieldProps<Autocomplete extends string = string> =
@@ -355,15 +335,11 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 
 /**
  * The required properties from the `MoneyFieldProps$1` definition. This type ensures all properties from the shared definition are marked as required.
- * 
- * 
  * @publicDocs
  */
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 /**
  * The properties for the money field component. These properties configure a specialized input field for entering monetary amounts with automatic currency formatting, decimal handling, and range validation.
- * 
- * 
  * @publicDocs
  */
 export interface MoneyFieldProps
@@ -413,8 +389,6 @@ declare module 'preact' {
 declare const tagName = 's-money-field';
 /**
  * The JSX props for the money field component. These properties extend `MoneyFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact.
- * 
- * 
  * @publicDocs
  */
 export interface MoneyFieldJSXProps

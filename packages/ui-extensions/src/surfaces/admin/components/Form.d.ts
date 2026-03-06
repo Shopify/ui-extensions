@@ -13,8 +13,6 @@ import type {
 
 /**
  * A callback event with a strongly-typed `currentTarget` property that corresponds to a specific HTML element. This provides better type safety when handling events from custom elements.
- * 
- * 
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
@@ -26,8 +24,6 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 
 /**
  * An event listener function type for callback events with a strongly-typed `currentTarget`. This ensures the event handler receives the correct element type.
- * 
- * 
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
@@ -38,8 +34,6 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
 
 /**
  * A callback event that includes the `waitUntil` method for extending asynchronous operations. This allows you to delay form submission until promises resolve, enabling async validation or data processing before the form completes its action.
- * 
- * 
  * @publicDocs
  */
 export interface CallbackExtendableEvent<
@@ -49,8 +43,6 @@ export interface CallbackExtendableEvent<
 
 /**
  * An event listener function type for extendable callback events. This combines strong typing with the ability to extend the event lifecycle using `waitUntil`.
- * 
- * 
  * @publicDocs
  */
 export type CallbackExtendableEventListener<
@@ -63,8 +55,6 @@ export type CallbackExtendableEventListener<
 
 /**
  * The properties for the form component. These properties configure the form's identifier for targeting and referencing within the admin extension.
- * 
- * 
  * @publicDocs
  */
 export interface FormProps extends Pick<FormProps$1, 'id'> {}
@@ -73,8 +63,6 @@ declare const tagName = 's-form';
 
 /**
  * The JSX props for the form component. These properties extend `FormProps` with event callbacks for form submission and reset actions in JSX rendering.
- * 
- * 
  * @publicDocs
  */
 export interface FormJSXProps extends Partial<FormProps> {
@@ -90,15 +78,11 @@ export interface FormJSXProps extends Partial<FormProps> {
 
 /**
  * The CSS styles as a string, used for styling web components within their shadow DOM.
- * 
- * 
  * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation configuration for rendering a Preact component into a shadow root. Defines the render function that returns JSX elements and optional CSS styles to apply to the component's shadow DOM.
- * 
- * 
  * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -113,8 +97,6 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * The properties of an activation event (such as a click or keyboard press) that describe which modifier keys and mouse buttons were involved. This is used to determine intended behavior like opening links in new tabs when Command/Control is pressed.
- * 
- * 
  * @publicDocs
  */
 export interface ActivationEventEsque {
@@ -137,8 +119,6 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for controlling how a synthetic click behaves. Allows passing modifier key states and button information from an original event to influence link behavior such as opening in new tabs or background tabs.
- * 
- * 
  * @publicDocs
  */
 export interface ClickOptions {

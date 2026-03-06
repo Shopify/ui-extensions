@@ -9,8 +9,6 @@ import type {AdminPrintActionProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
  * The properties for the admin print action component. These properties configure the source URL for printing content within admin extensions.
- * 
- * 
  * @publicDocs
  */
 export interface AdminPrintActionProps
@@ -20,8 +18,6 @@ declare const tagName = 's-admin-print-action';
 
 /**
  * The JSX props for the admin print action component. These properties extend `AdminPrintActionProps` with an optional `id` for element identification in JSX rendering.
- * 
- * 
  * @publicDocs
  */
 export interface AdminPrintActionJSXProps
@@ -30,15 +26,11 @@ export interface AdminPrintActionJSXProps
 
 /**
  * The CSS styles as a string, used for styling web components within their shadow DOM.
- * 
- * 
  * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation configuration for rendering a Preact component into a shadow root. Defines the render function that returns JSX elements and optional CSS styles to apply to the component's shadow DOM.
- * 
- * 
  * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -53,8 +45,6 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * The properties of an activation event (such as a click or keyboard press) that describe which modifier keys and mouse buttons were involved. This is used to determine intended behavior like opening links in new tabs when Command/Control is pressed.
- * 
- * 
  * @publicDocs
  */
 export interface ActivationEventEsque {
@@ -77,8 +67,6 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for controlling how a synthetic click behaves. Allows passing modifier key states and button information from an original event to influence link behavior such as opening in new tabs or background tabs.
- * 
- * 
  * @publicDocs
  */
 export interface ClickOptions {

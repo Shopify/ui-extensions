@@ -10,8 +10,6 @@ import type {TextFieldProps, ComponentChildren} from './shared.d.ts';
 
 /**
  * An event that includes a strongly-typed reference to the element that triggered it.
- * 
- * 
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
@@ -22,8 +20,6 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 };
 /**
  * A function that handles events for a specific element type, or null if no handler is set.
- * 
- * 
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
@@ -33,8 +29,6 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * Event handlers for field interactions in React-style syntax.
- * 
- * 
  * @publicDocs
  */
 export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
@@ -55,9 +49,7 @@ export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
    */
   onBlur?: ((event: CallbackEvent<T>) => void) | null;
 }
-/** Used when an element does not have children. * 
- * 
- * @publicDocs
+/** Used when an element does not have children. * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -76,15 +68,11 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 
 /**
  * CSS styles that will be applied to the component's shadow DOM.
- * 
- * 
  * @publicDocs
  */
 export type Styles = string;
 /**
  * Configuration for rendering a custom element with Preact and shadow DOM.
- * 
- * 
  * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -99,8 +87,6 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * Information about modifier keys and mouse buttons that were active during an interaction.
- * 
- * 
  * @publicDocs
  */
 export interface ActivationEventEsque {
@@ -123,8 +109,6 @@ export interface ActivationEventEsque {
 }
 /**
  * Options for influencing how a programmatic click behaves.
- * 
- * 
  * @publicDocs
  */
 export interface ClickOptions {
@@ -179,8 +163,6 @@ declare abstract class PreactCustomElement extends BaseClass {
 declare const internals: unique symbol;
 /**
  * The core properties that all input elements need to function within forms.
- * 
- * 
  * @publicDocs
  */
 export type PreactInputProps = Required<
@@ -229,8 +211,6 @@ declare class PreactInputElement
 
 /**
  * Properties that are common to all text-based field components.
- * 
- * 
  * @publicDocs
  */
 export type PreactFieldProps<Autocomplete extends string = string> =
@@ -350,8 +330,6 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 
 /**
  * Properties for rendering a search field that lets users enter search queries with validation constraints and autofill support.
- * 
- * 
  * @publicDocs
  */
 export type SearchFieldProps = PreactFieldProps<
@@ -417,8 +395,6 @@ declare module 'preact' {
 declare const tagName = 's-search-field';
 /**
  * Props for using the search field component in JSX with React-style event handlers.
- * 
- * 
  * @publicDocs
  */
 export interface SearchFieldJSXProps

@@ -27,8 +27,6 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
- * 
- * 
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
@@ -47,8 +45,6 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements that have children, extending the base element properties to include child content.
- * 
- * 
  * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
@@ -73,8 +69,6 @@ export type MakeResponsive<T> = T | `@container${string}`;
  *   margin: string | `@container${string}`;
  *   padding: number | `@container${string}`;
  * }
- * 
- * 
  * @publicDocs
  */
 export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
@@ -347,8 +341,6 @@ export type ClickableBaseProps = Required<
 >;
 /**
  * The properties for the clickable component. These properties define a low-level interactive container element that responds to user clicks while inheriting all box styling capabilities. The component serves as a foundation for building custom interactive components.
- * 
- * 
  * @publicDocs
  */
 export interface ClickableProps
@@ -367,7 +359,7 @@ export interface ActivationEventEsque {
   ctrlKey: boolean;
   button: number;
 }
-/**  * 
+/**  *
  * @publicDocs
  */
 export interface ClickOptions {
@@ -507,8 +499,6 @@ declare module 'preact' {
 declare const tagName = 's-clickable';
 /**
  * The JSX properties for the clickable component. These properties define how a clickable container is rendered in Preact or JSX.
- * 
- * 
  * @publicDocs
  */
 export interface ClickableJSXProps

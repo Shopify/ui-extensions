@@ -22,8 +22,6 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
- * 
- * 
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
@@ -42,8 +40,6 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements that have children, extending the base element properties to include child content.
- * 
- * 
  * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
@@ -69,8 +65,6 @@ export type LinkBaseProps = Required<
 >;
 /**
  * The properties for the link component. These properties define a clickable link that navigates users to different pages or sections with customizable visual styles and semantic meaning.
- * 
- * 
  * @publicDocs
  */
 export interface LinkProps extends LinkBaseProps {
@@ -97,7 +91,7 @@ export interface ActivationEventEsque {
   ctrlKey: boolean;
   button: number;
 }
-/**  * 
+/**  *
  * @publicDocs
  */
 export interface ClickOptions {
@@ -206,8 +200,6 @@ declare module 'preact' {
 declare const tagName = 's-link';
 /**
  * The JSX properties for the link component. These properties define how a link is rendered in Preact or JSX.
- * 
- * 
  * @publicDocs
  */
 export interface LinkJSXProps

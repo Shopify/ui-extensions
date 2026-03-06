@@ -15,8 +15,6 @@ import type {
 
 /**
  * The configuration for icons used within Badge components. Defines the visual appearance, size, and semantic meaning of icons displayed in badges.
- * 
- * 
  * @publicDocs
  */
 export interface IconProps
@@ -64,8 +62,6 @@ export interface IconProps
 
 /**
  * The properties for the badge component. Badges display status information through compact visual indicators with customizable tones, sizes, and optional icons.
- * 
- * 
  * @publicDocs
  */
 export interface BadgeProps
@@ -113,15 +109,11 @@ export interface BadgeProps
 
 /**
  * The CSS styles as a string, used for styling web components within their shadow DOM.
- * 
- * 
  * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation configuration for rendering a Preact component into a shadow root. Defines the render function that returns JSX elements and optional CSS styles to apply to the component's shadow DOM.
- * 
- * 
  * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -136,8 +128,6 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * The properties of an activation event (such as a click or keyboard press) that describe which modifier keys and mouse buttons were involved. This is used to determine intended behavior like opening links in new tabs when Command/Control is pressed.
- * 
- * 
  * @publicDocs
  */
 export interface ActivationEventEsque {
@@ -160,8 +150,6 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for controlling how a synthetic click behaves. Allows passing modifier key states and button information from an original event to influence link behavior such as opening in new tabs or background tabs.
- * 
- * 
  * @publicDocs
  */
 export interface ClickOptions {
@@ -215,8 +203,6 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 /**
  * The base properties for Preact elements without children. Provides key, ref, and slot properties for element identification, DOM access, and slot-based positioning.
- * 
- * 
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
@@ -235,8 +221,6 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements with children. Extends `PreactBaseElementProps` with the ability to render child elements.
- * 
- * 
  * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
@@ -285,8 +269,6 @@ declare module 'preact' {
 declare const tagName = 's-badge';
 /**
  * The JSX props for the badge component. These properties extend `BadgeProps` with an optional `id` and `children` for rendering badge content in JSX.
- * 
- * 
  * @publicDocs
  */
 export interface BadgeJSXProps

@@ -20,9 +20,7 @@ declare class PolarisCustomElement extends PreactCustomElement {
   constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
 }
 
-/** Used when an element does not have children. * 
- * 
- * @publicDocs
+/** Used when an element does not have children. * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
@@ -32,9 +30,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. * 
- * 
- * @publicDocs
+/** Used when an element has children. * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {

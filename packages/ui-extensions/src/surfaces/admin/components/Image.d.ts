@@ -18,8 +18,6 @@ import type {
 
 /**
  * A callback event that's typed to a specific HTML element. This type provides access to the element that triggered the event.
- * 
- * 
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
@@ -30,8 +28,6 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 };
 /**
  * An event listener for callback events, typed to a specific HTML element.
- * 
- * 
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
@@ -41,8 +37,6 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
- * 
- * 
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
@@ -62,8 +56,6 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 
 /**
  * Makes a type value responsive by allowing container query strings.
- * 
- * 
  * @publicDocs
  */
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -82,8 +74,6 @@ export type MakeResponsive<T> = T | `@container${string}`;
  *   margin: string | `@container${string}`;
  *   padding: number | `@container${string}`;
  * }
- * 
- * 
  * @publicDocs
  */
 export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
@@ -92,15 +82,11 @@ export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
 
 /**
  * The box properties with all fields marked as required.
- * 
- * 
  * @publicDocs
  */
 export type RequiredBoxProps = Required<BoxProps$1>;
 /**
  * The available border radius values for Box components.
- * 
- * 
  * @publicDocs
  */
 export type BoxBorderRadii = Extract<
@@ -116,8 +102,6 @@ export type BoxBorderRadii = Extract<
 >;
 /**
  * The available border style values for Box components.
- * 
- * 
  * @publicDocs
  */
 export type BoxBorderStyles = Extract<
@@ -126,8 +110,6 @@ export type BoxBorderStyles = Extract<
 >;
 /**
  * The box properties that support responsive values through container queries.
- * 
- * 
  * @publicDocs
  */
 export type ResponsiveBoxProps = MakeResponsivePick<
@@ -355,8 +337,6 @@ export interface BoxProps
 
 /**
  * The properties for the image component. An image displays pictures with configurable sizing, loading behavior, and borders. Properties include `src` for the image URL, `alt` for accessibility text, `aspectRatio` for sizing, `loading` for lazy loading, and border styling options.
- * 
- * 
  * @publicDocs
  */
 export interface ImageProps
@@ -444,15 +424,11 @@ export interface ImageProps
 
 /**
  * A string containing CSS styles for a custom element.
- * 
- * 
  * @publicDocs
  */
 export type Styles = string;
 /**
  * The configuration for rendering a custom element with Preact.
- * 
- * 
  * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -467,8 +443,6 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * The properties of an activation event, such as a click or keypress. These properties capture which modifier keys were pressed and which mouse button was used during the event.
- * 
- * 
  * @publicDocs
  */
 export interface ActivationEventEsque {
@@ -491,8 +465,6 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for triggering a synthetic click event.
- * 
- * 
  * @publicDocs
  */
 export interface ClickOptions {
@@ -633,8 +605,6 @@ declare module 'preact' {
 declare const tagName = 's-image';
 /**
  * The properties for the image component when it's used in JSX.
- * 
- * 
  * @publicDocs
  */
 export interface ImageJSXProps

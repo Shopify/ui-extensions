@@ -10,8 +10,6 @@ import type {ComponentChildren, OptionProps$1} from './shared.d.ts';
 
 /**
  * Properties for rendering a single option within a select dropdown that users can choose from.
- * 
- * 
  * @publicDocs
  */
 export interface OptionProps
@@ -21,15 +19,11 @@ export interface OptionProps
 
 /**
  * CSS styles that will be applied to the component's shadow DOM.
- * 
- * 
  * @publicDocs
  */
 export type Styles = string;
 /**
  * Configuration for rendering a custom element with Preact and shadow DOM.
- * 
- * 
  * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -44,8 +38,6 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * Information about modifier keys and mouse buttons that were active during an interaction.
- * 
- * 
  * @publicDocs
  */
 export interface ActivationEventEsque {
@@ -68,8 +60,6 @@ export interface ActivationEventEsque {
 }
 /**
  * Options for influencing how a programmatic click behaves.
- * 
- * 
  * @publicDocs
  */
 export interface ClickOptions {
@@ -121,9 +111,7 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-/** Used when an element does not have children. * 
- * 
- * @publicDocs
+/** Used when an element does not have children. * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -139,9 +127,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
    */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. * 
- * 
- * @publicDocs
+/** Used when an element has children. * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
@@ -186,8 +172,6 @@ declare module 'preact' {
 declare const tagName = 's-option';
 /**
  * Properties for using the option component in JSX with React-style props.
- * 
- * 
  * @publicDocs
  */
 export interface OptionJSXProps
