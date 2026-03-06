@@ -10,6 +10,9 @@ import type {ComponentChildren, ChoiceListProps$1} from './shared.d.ts';
 
 /**
  * An event that includes a strongly-typed reference to the element that triggered it.
+ * 
+ * 
+ * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   /**
@@ -19,13 +22,19 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 };
 /**
  * A function that handles events for a specific element type, or null if no handler is set.
+ * 
+ * 
+ * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
       (event: CallbackEvent<T>): void;
     })
   | null;
-/** Used when an element does not have children. */
+/** Used when an element does not have children. * 
+ * 
+ * @publicDocs
+ */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
    * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
@@ -40,7 +49,10 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
    */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. */
+/** Used when an element has children. * 
+ * 
+ * @publicDocs
+ */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
@@ -48,6 +60,9 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 
 /**
  * Properties for rendering a list of choices that lets users select one or more options using radio buttons or checkboxes.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ChoiceListProps
   extends Required<
@@ -66,10 +81,16 @@ export interface ChoiceListProps
 
 /**
  * CSS styles that will be applied to the component's shadow DOM.
+ * 
+ * 
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * Configuration for rendering a custom element with Preact and shadow DOM.
+ * 
+ * 
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -83,6 +104,9 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * Information about modifier keys and mouse buttons that were active during an interaction.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -104,6 +128,9 @@ export interface ActivationEventEsque {
 }
 /**
  * Options for influencing how a programmatic click behaves.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -237,6 +264,9 @@ declare module 'preact' {
 declare const tagName = 's-choice-list';
 /**
  * Properties for using the choice list component in JSX with React-style event handlers.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ChoiceListJSXProps
   extends Partial<ChoiceListProps>,

@@ -10,6 +10,9 @@ import type {DividerProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
  * The properties for the divider component. A divider creates a visual separator to distinguish different sections of content.
+ * 
+ * 
+ * @publicDocs
  */
 export interface DividerProps
   extends Pick<DividerProps$1, 'direction' | 'color'> {
@@ -35,10 +38,16 @@ export interface DividerProps
 
 /**
  * A string containing CSS styles for a custom element.
+ * 
+ * 
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The configuration for rendering a custom element with Preact.
+ * 
+ * 
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -52,6 +61,9 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * An interface representing the properties of an activation event, such as a click or keypress.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -73,6 +85,9 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for triggering a synthetic click event.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -128,6 +143,9 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * 
+ * 
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -184,6 +202,9 @@ declare module 'preact' {
 declare const tagName = 's-divider';
 /**
  * The properties for the divider component when it's used in JSX.
+ * 
+ * 
+ * @publicDocs
  */
 export interface DividerJSXProps
   extends Partial<DividerProps>,

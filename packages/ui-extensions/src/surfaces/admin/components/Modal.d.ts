@@ -22,7 +22,10 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
-/** Used when an element does not have children. */
+/** Used when an element does not have children. * 
+ * 
+ * @publicDocs
+ */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -31,12 +34,16 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. */
+/** Used when an element has children. * 
+ * 
+ * @publicDocs
+ */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
 }
-
+/**  * @publicDocs
+ */
 export type RequiredAlignedModalProps = Required<ModalProps$1>;
 export interface ModalProps
   extends Pick<
@@ -61,7 +68,8 @@ export interface ModalProps
 declare class PolarisCustomElement extends PreactCustomElement {
   constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
 }
-
+/**  * @publicDocs
+ */
 export interface PreactOverlayControlProps
   extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
   /**

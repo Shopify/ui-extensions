@@ -15,6 +15,9 @@ import type {
 
 /**
  * An event that includes a strongly-typed reference to the element that triggered it.
+ * 
+ * 
+ * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   /**
@@ -24,13 +27,19 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 };
 /**
  * A function that handles events for a specific element type, or null if no handler is set.
+ * 
+ * 
+ * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
       (event: CallbackEvent<T>): void;
     })
   | null;
-/** Used when an element does not have children. */
+/** Used when an element does not have children. * 
+ * 
+ * @publicDocs
+ */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
    * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
@@ -48,10 +57,16 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 
 /**
  * CSS styles that will be applied to the component's shadow DOM.
+ * 
+ * 
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * Configuration for rendering a custom element with Preact and shadow DOM.
+ * 
+ * 
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -65,6 +80,9 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * Information about modifier keys and mouse buttons that were active during an interaction.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -86,6 +104,9 @@ export interface ActivationEventEsque {
 }
 /**
  * Options for influencing how a programmatic click behaves.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -139,6 +160,9 @@ declare abstract class PreactCustomElement extends BaseClass {
 declare const internals: unique symbol;
 /**
  * The core properties that all input elements need to function within forms.
+ * 
+ * 
+ * @publicDocs
  */
 export type PreactInputProps = Required<
   Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
@@ -186,6 +210,9 @@ declare class PreactInputElement
 
 /**
  * Properties that are common to checkbox-style components.
+ * 
+ * 
+ * @publicDocs
  */
 export interface PreactCheckboxProps
   extends Required<
@@ -256,6 +283,9 @@ declare class PreactCheckboxElement
 
 /**
  * Properties for rendering a switch that lets users toggle a setting on or off with a sliding control interface.
+ * 
+ * 
+ * @publicDocs
  */
 export interface SwitchProps
   extends PreactCheckboxProps,
@@ -287,6 +317,9 @@ declare module 'preact' {
 declare const tagName = 's-switch';
 /**
  * Properties for using the switch component in JSX with React-style event handlers.
+ * 
+ * 
+ * @publicDocs
  */
 export interface SwitchJSXProps
   extends Partial<SwitchProps>,

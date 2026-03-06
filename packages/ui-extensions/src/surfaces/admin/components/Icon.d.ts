@@ -10,6 +10,9 @@ import type {IconProps$1, IconType, ComponentChildren} from './shared.d.ts';
 
 /**
  * The properties for the icon component. An icon displays a graphical symbol with configurable appearance, color, and semantic meaning.
+ * 
+ * 
+ * @publicDocs
  */
 export interface IconProps
   extends Pick<
@@ -45,10 +48,16 @@ export interface IconProps
 
 /**
  * A string containing CSS styles for the component.
+ * 
+ * 
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation details for rendering a custom element with Preact.
+ * 
+ * 
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -62,6 +71,9 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * The properties of an activation event, such as a click or keypress. These properties capture which modifier keys were pressed and which mouse button was used during the event.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -83,6 +95,9 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for customizing synthetic click behavior.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -138,6 +153,9 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * 
+ * 
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -196,6 +214,9 @@ declare module 'preact' {
 declare const tagName = 's-icon';
 /**
  * The properties for the icon component when it's used in JSX.
+ * 
+ * 
+ * @publicDocs
  */
 export interface IconJSXProps
   extends Partial<IconProps>,

@@ -10,16 +10,25 @@ import type {ComponentChildren, OptionGroupProps$1} from './shared.d.ts';
 
 /**
  * Properties for rendering a group of related options within a select dropdown, organized under a shared label.
+ * 
+ * 
+ * @publicDocs
  */
 export interface OptionGroupProps
   extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
 
 /**
  * CSS styles that will be applied to the component's shadow DOM.
+ * 
+ * 
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * Configuration for rendering a custom element with Preact and shadow DOM.
+ * 
+ * 
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -33,6 +42,9 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * Information about modifier keys and mouse buttons that were active during an interaction.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -54,6 +66,9 @@ export interface ActivationEventEsque {
 }
 /**
  * Options for influencing how a programmatic click behaves.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -104,7 +119,10 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-/** Used when an element does not have children. */
+/** Used when an element does not have children. * 
+ * 
+ * @publicDocs
+ */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
    * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
@@ -119,7 +137,10 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
    */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. */
+/** Used when an element has children. * 
+ * 
+ * @publicDocs
+ */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
@@ -159,6 +180,9 @@ declare module 'preact' {
 declare const tagName = 's-option-group';
 /**
  * Properties for using the option group component in JSX with React-style props.
+ * 
+ * 
+ * @publicDocs
  */
 export interface OptionGroupJSXProps
   extends Partial<OptionGroupProps>,

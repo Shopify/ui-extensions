@@ -10,6 +10,9 @@ import type {DatePickerProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
  * The properties for the date picker component. These properties configure a standalone calendar interface for selecting single dates or date ranges, with support for date constraints, day-of-week restrictions, and month/year navigation.
+ * 
+ * 
+ * @publicDocs
  */
 export interface DatePickerProps
   extends Required<
@@ -39,6 +42,9 @@ export interface DatePickerProps
 
 /**
  * An event object with a strongly-typed currentTarget property that references the specific HTML element type.
+ * 
+ * 
+ * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   /**
@@ -48,6 +54,9 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 };
 /**
  * An event listener function or null that receives a typed callback event.
+ * 
+ * 
+ * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -57,7 +66,10 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
-/** Used when an element does not have children. */
+/** Used when an element does not have children. * 
+ * 
+ * @publicDocs
+ */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
    * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
@@ -75,10 +87,16 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 
 /**
  * A string containing CSS styles to be applied to the component.
+ * 
+ * 
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation details for rendering a custom element with a shadow DOM.
+ * 
+ * 
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -92,6 +110,9 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * An object containing information about keyboard and mouse button states during an activation event.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -113,6 +134,9 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for programmatically triggering a click event on an element.
+ * 
+ * 
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -271,6 +295,9 @@ declare module 'preact' {
 declare const tagName = 's-date-picker';
 /**
  * The JSX props for the date picker component. These properties extend `DatePickerProps` with JSX-specific event callbacks for React-style event handling when used in Preact, including callbacks for date selection, focus events, and view changes.
+ * 
+ * 
+ * @publicDocs
  */
 export interface DatePickerJSXProps
   extends Partial<DatePickerProps>,
