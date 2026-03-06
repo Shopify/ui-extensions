@@ -20,7 +20,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ],
   definitions: [
     {
-      title: 'SearchField',
+      title: 'Properties',
       description:
         'Configure the following properties on the search field component.',
       type: 'SearchField',
