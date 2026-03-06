@@ -200238,7 +200238,7 @@
     "thumbnail": "abbreviation-thumbnail.png",
     "requires": "",
     "type": "",
-    "subCategory": "Titles and text",
+    "subCategory": "Typography and content",
     "definitions": [
       {
         "title": "Properties",
@@ -204368,8 +204368,8 @@
     "subSections": []
   },
   {
-    "name": "DropZone",
-    "description": "Lets users upload files through drag-and-drop functionality into a designated area on a page, or by activating a button.",
+    "name": "Drop zone",
+    "description": "The drop zone component lets users upload files through drag-and-drop or by clicking to browse. Use for file uploads such as images, documents, or CSV imports.\n\nThe component provides visual feedback during drag operations and supports file type validation through the `accept` property. Rejected files trigger the `droprejected` event for custom error handling.",
     "category": "Polaris web components",
     "related": [],
     "isVisualComponent": true,
@@ -207538,7 +207538,7 @@
   },
   {
     "name": "Modal",
-    "description": "Displays content in an overlay. Use to create a distraction-free experience such as a confirmation dialog or a settings panel.",
+    "description": "The modal component displays content in an overlay. Use to create a distraction-free experience such as a confirmation dialog or a settings panel.\n\nA button triggers the modal using the `commandFor` attribute. Content within the modal scrolls if it exceeds available height.",
     "category": "Polaris web components",
     "related": [],
     "isVisualComponent": true,
@@ -209062,7 +209062,7 @@
   },
   {
     "name": "Popover",
-    "description": "Popovers are used to display content in an overlay that can be triggered by a button.",
+    "description": "The popover component displays contextual content in an overlay triggered by a button using the [`commandFor`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#commandfor) attribute. Use for secondary actions, settings, or information that doesn't require a full modal.\n\nFor interactions that need more space or user focus, such as confirmations or complex forms, use [modal](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/overlays/modal) instead.",
     "category": "Polaris web components",
     "related": [],
     "isVisualComponent": true,
@@ -212584,7 +212584,7 @@
     "thumbnail": "time-thumbnail.png",
     "requires": "",
     "type": "",
-    "subCategory": "Titles and text",
+    "subCategory": "Typography and content",
     "definitions": [
       {
         "title": "Properties",
