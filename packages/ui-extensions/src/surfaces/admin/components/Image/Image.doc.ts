@@ -27,7 +27,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description: 'Configure the following properties on the image component.',
       type: 'Image',
     },
     {

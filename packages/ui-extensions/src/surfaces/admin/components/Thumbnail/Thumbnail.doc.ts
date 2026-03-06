@@ -30,30 +30,27 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description:
-        'Configure the following properties on the Thumbnail component.',
+        'Configure the following properties on the thumbnail component.',
       type: 'Thumbnail',
     },
     {
       title: 'Events',
       description:
-        'The Thumbnail component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The thumbnail component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'ThumbnailEvents',
     },
   ],
   defaultExample: {
     image: 'thumbnail-default.png',
+    description:
+      'Display small preview images for products or items. This example presents a basic thumbnail with source URL and alt text for accessibility.',
     codeblock: {
-      title: 'Code',
+      title: 'Display a thumbnail',
       tabs: [
         {
+          title: '',
           code: './examples/default.html',
-          language: 'html',
-          layout: 'inline',
-        },
-
-        {
-          code: './examples/default.jsx',
-          language: 'preview-jsx',
+          language: 'preview',
         },
       ],
     },
@@ -62,76 +59,46 @@ const data: AdminReferenceEntityTemplateSchema = {
     description: 'Component examples',
     exampleGroups: [
       {
-        title: 'Basic usage',
+        title: '',
         examples: [
           {
             description:
-              'Demonstrates a basic thumbnail component with a product image, showing the default base size and an alt text for accessibility.',
+              'Show a placeholder when no image is available. This example displays a thumbnail without a source that renders a default icon.',
             codeblock: {
-              title: 'Basic usage',
+              title: 'Show an empty state',
               tabs: [
                 {
-                  code: './examples/basic-usage.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/basic-usage.jsx',
-                  language: 'preview-jsx',
-                },
-              ],
-            },
-          },
-          {
-            description:
-              'Shows the thumbnail component in an empty state, displaying a placeholder icon when no image source is provided.',
-            codeblock: {
-              title: 'Empty state',
-              tabs: [
-                {
+                  title: '',
                   code: './examples/empty-state.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/empty-state.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Illustrates the various size options for the thumbnail component, showcasing small-200, base, and large sizes in a stack layout.',
+              'Adapt thumbnail prominence to different contexts. This example displays `small-200`, `base`, and `large` sizes in a vertical stack.',
             codeblock: {
-              title: 'Different sizes',
+              title: 'Adjust the size',
               tabs: [
                 {
+                  title: '',
                   code: './examples/different-sizes.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/different-sizes.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
           },
           {
             description:
-              'Demonstrates how event handlers like onload or onerror can be attached to the thumbnail component via JavaScript to handle image loading states.',
+              'Respond to image loading success or failure. This example uses `load` and `error` event listeners to update the UI based on the loading result.',
             codeblock: {
-              title: 'With event handling',
+              title: 'Handle load events',
               tabs: [
                 {
+                  title: '',
                   code: './examples/with-event-handling.html',
-                  language: 'html',
-                },
-
-                {
-                  code: './examples/with-event-handling.jsx',
-                  language: 'preview-jsx',
+                  language: 'preview',
                 },
               ],
             },
