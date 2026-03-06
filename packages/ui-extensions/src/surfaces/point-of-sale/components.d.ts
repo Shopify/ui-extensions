@@ -5862,10 +5862,7 @@ interface Text {
   id?: string;
 }
 
-/**
- * The banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).
- */
-interface BannerSlots {
+interface ScrollBox {
   /**
    * Adjust the block size.
    * @default 'auto'
@@ -6127,368 +6124,6 @@ interface Box {
    * @default '' - meaning no override
    */
   paddingInlineEnd?: '' | PaddingKeyword;
-}
-
-/**
- * The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
-interface ButtonEvents {
-  /**
-   * The callback when the element is activated.
-   */
-  click?: (event: CallbackEvent<typeof tagName$t>) => void;
-}
-
-interface Button {
-  /**
-   * The action to perform on the target element specified by `commandFor`:
-   * - `'--auto'`: Execute the target's default action
-   * - `'--show'`: Display the target element
-   * - `'--hide'`: Hide the target element
-   * - `'--toggle'`: Switch the target's visibility state
-   *
-   * Learn more about [`command` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
-   *
-   * @default '--auto'
-   *
-   */
-  command?: '--auto' | '--show' | '--hide' | '--toggle';
-  /**
-   * Sets the tone of the button, based on the intention of the information being conveyed.
-   *
-   * - `'auto'` - Automatically determines the appropriate tone based on context.
-   * - `'neutral'` - The standard tone for general actions and interactions.
-   * - `'caution'` - Indicates actions that require careful consideration.
-   * - `'warning'` - Alerts users to potential issues or important information.
-   * - `'critical'` - Used for destructive actions like deleting or removing content.
-   *
-   * @default 'auto'
-   */
-  tone?: 'auto' | 'neutral' | 'caution' | 'warning' | 'critical';
-  /**
-   * The visual appearance and prominence of the button:
-   * - `'primary'`: High visual emphasis for the most important action
-   * - `'secondary'`: Less prominent appearance for supporting actions
-   *
-   * @default 'auto' - the variant is automatically determined by context
-   */
-  variant?: 'primary' | 'secondary';
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
-   *
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * The ID of the target element that should respond to interactions (such as clicks) on this element. Used with `command` to control other components.
-   * Learn more about [`commandfor` on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
-   */
-  commandFor?: string;
-  /**
-   * Indicates whether the button action is currently in progress. When `true`, typically displays a loading indicator and may disable interaction.
-   *
-   * @default false
-   */
-  loading?: boolean;
-}
-
-interface Choice {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * The unique value associated with this choice option. This value is used to identify the option and gets submitted with forms when selected. Use meaningful values like `"small"`, `"medium"`, or `"large"` rather than display text.
-   */
-  value?: string;
-  /**
-   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
-   *
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * Whether the choice control is currently active or selected.
-   *
-   * @default false
-   */
-  selected?: boolean;
-}
-
-/**
- * The choice list component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
-interface ChoiceListEvents {
-  /**
-   * Called when the user makes any changes in the field.
-   */
-  input?: (event: CallbackEvent<typeof tagName$k>) => void;
-  /**
-   * Called after editing completes, typically on blur.
-   */
-  change?: (event: CallbackEvent<typeof tagName$k>) => void;
-}
-
-interface ChoiceList {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * An array of the values of the selected options. This is a convenience property for setting the selected state on child choice components.
-   */
-  values?: string[];
-  /**
-   * Whether multiple choices can be selected simultaneously.
-   *
-   * @default false
-   */
-  multiple?: boolean;
-}
-
-/**
- * The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
-interface ClickableEvents {
-  /**
-   * The callback when the element is activated.
-   */
-  click?: (event: CallbackEvent<typeof tagName$e>) => void;
-}
-
-interface Clickable {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
-   */
-  disabled?: boolean;
-}
-
-/**
- * The date field component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
-interface DateFieldEvents {
-  /**
-   * Called when the user makes any changes in the field.
-   */
-  input?: (event: CallbackEvent<typeof tagName$b>) => void;
-  /**
-   * Called after editing completes, typically on blur.
-   */
-  change?: (event: CallbackEvent<typeof tagName$b>) => void;
-  /**
-   * Called when the element loses focus.
-   */
-  blur?: (event: CallbackEvent<typeof tagName$b>) => void;
-  /**
-   * Called when the element receives focus.
-   */
-  focus?: (event: CallbackEvent<typeof tagName$b>) => void;
-}
-
-interface DateField {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * The content to use as the field label that describes the date information being requested.
-   */
-  label?: string;
-  /**
-   * The additional text to provide context or guidance for the field. This text is displayed along with the field and its label to offer more information or instructions to the user. This will also be exposed to screen reader users.
-   */
-  details?: string;
-  /**
-   * The currently selected date value in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DD`, for example, `"2024-05-15"`). An empty string means no date is selected. Other date formats require conversion before setting this property. Validation occurs when the user finishes editing (on blur), rather than on every keystroke, so invalid dates are flagged after completing entry.
-   */
-  value?: string;
-  /**
-   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
-   *
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * An error message to indicate a problem to the user. The field will be given specific stylistic treatment to communicate issues that must be resolved immediately.
-   */
-  error?: string;
-}
-
-/**
- * The date picker component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
-interface DatePickerEvents {
-  /**
-   * Called when the user makes any changes in the field.
-   */
-  input?: (event: CallbackEvent<typeof tagName$a>) => void | null;
-  /**
-   * Called after editing completes, typically on blur.
-   */
-  change?: (event: CallbackEvent<typeof tagName$a>) => void | null;
-  /**
-   * Called when the element loses focus.
-   */
-  blur?: (event: CallbackEvent<typeof tagName$a>) => void | null;
-  /**
-   * Called when the element receives focus.
-   */
-  focus?: (event: CallbackEvent<typeof tagName$a>) => void | null;
-}
-
-interface DatePicker {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * The currently selected date value in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DD`, for example, `"2024-05-15"`). An empty string means no date is selected. Other date formats require conversion before setting this property. Validation occurs when the user finishes editing (on blur), rather than on every keystroke, so invalid dates are flagged after completing entry.
-   *
-   * @default ""
-   */
-  value?: string;
-}
-
-/**
- * The date spinner component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
-interface DateSpinnerEvents {
-  /**
-   * Called when the user makes any changes in the field.
-   */
-  input?: (event: CallbackEvent<typeof tagName$9>) => void | null;
-  /**
-   * Called after editing completes, typically on blur.
-   */
-  change?: (event: CallbackEvent<typeof tagName$9>) => void | null;
-  /**
-   * Called when the element loses focus.
-   */
-  blur?: (event: CallbackEvent<typeof tagName$9>) => void | null;
-  /**
-   * Called when the element receives focus.
-   */
-  focus?: (event: CallbackEvent<typeof tagName$9>) => void | null;
-}
-
-interface DateSpinner {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * The currently selected date value in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format (`YYYY-MM-DD`, for example, `"2024-05-15"`). An empty string means no date is selected. Other date formats require conversion before setting this property. Validation occurs when the user finishes editing (on blur), rather than on every keystroke, so invalid dates are flagged after completing entry.
-   *
-   * @default ""
-   */
-  value?: string;
-}
-
-interface Divider {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * The direction in which children are laid out using logical properties:
-   * - `'block'`: Vertical arrangement along the block axis (typically top to bottom) without wrapping
-   * - `'inline'`: Horizontal arrangement along the inline axis (typically left to right) with automatic wrapping when space is insufficient
-   *
-   * @default 'inline'
-   */
-  direction?: 'inline' | 'block';
-}
-
-/**
- * The email field component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
-interface EmailFieldEvents {
-  /**
-   * Called when the user makes any changes in the field.
-   */
-  input?: (event: CallbackEvent<typeof tagName$f>) => void;
-  /**
-   * Called after editing completes, typically on blur.
-   */
-  change?: (event: CallbackEvent<typeof tagName$f>) => void;
-  /**
-   * Called when the element loses focus.
-   */
-  blur?: (event: CallbackEvent<typeof tagName$f>) => void;
-  /**
-   * Called when the element receives focus.
-   */
-  focus?: (event: CallbackEvent<typeof tagName$f>) => void;
-}
-
-/**
- * The email field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).
- */
-interface EmailFieldSlots {
-  /**
-   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only button and clickable components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
-   */
-  accessory?: HTMLElement;
-}
-
-interface EmailField {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * The content to use as the field label that describes the email information being requested.
-   */
-  label?: string;
-  /**
-   * The current email address entered in the field. An empty string means no email is entered.
-   */
-  value?: string;
-  /**
-   * A short hint that provides guidance about the expected value of the field.
-   */
-  placeholder?: string;
-  /**
-   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
-   *
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * An error message to indicate a problem to the user. The field will be given specific stylistic treatment to communicate issues that must be resolved immediately.
-   */
-  error?: string;
-  /**
-   * Whether the field needs a value. This requirement adds semantic value to the field but doesn't cause an error to appear automatically. Use the `error` property to present validation errors.
-   *
-   * @default false
-   */
-  required?: boolean;
-  /**
-   * The maximum number of characters allowed in the text field.
-   *
-   * @default Infinity
-   */
-  maxLength?: number;
-  /**
-   * The additional text to provide context or guidance for the field. This text is displayed along with the field and its label to offer more information or instructions to the user. This will also be exposed to screen reader users.
-   */
-  details?: string;
-}
-
-interface Heading {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
 }
 
 interface Icon {
@@ -6763,9 +6398,6 @@ interface DateField {
   required?: boolean;
 }
 
-/**
- * The modal component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
 interface ModalEvents {
   /** Callback when the modal is hidden. */
   hide?: (event: CallbackEvent<typeof tagName$p>) => void | null;
@@ -6773,9 +6405,6 @@ interface ModalEvents {
   show?: (event: CallbackEvent<typeof tagName$p>) => void | null;
 }
 
-/**
- * The modal component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).
- */
 interface ModalSlots {
   /**
    * The primary action button displayed in the modal.
@@ -6796,10 +6425,27 @@ interface Modal {
   heading?: string;
 }
 
-/**
- * The number field component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
-interface NumberFieldEvents {
+interface TextFieldEvents {
+  /** Callback when the user makes any changes in the field. */
+  input?: (event: CallbackEvent<typeof tagName$e>) => void;
+  /** Callback after editing completes (typically on blur). */
+  change?: (event: CallbackEvent<typeof tagName$e>) => void;
+  /** Callback when the element loses focus. */
+  blur?: (event: CallbackEvent<typeof tagName$e>) => void;
+  /** Callback when the element receives focus. */
+  focus?: (event: CallbackEvent<typeof tagName$e>) => void;
+}
+
+interface TextFieldSlots {
+  /** Additional content to be displayed in the field. Commonly used to display clickable text. */
+  accessory?: HTMLElement;
+}
+
+interface TextField {
+  /** A unique identifier for the element. */
+  id?: string;
+  /** Content to use as the field label. */
+  label?: string;
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -6895,9 +6541,65 @@ interface TimeFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$c>) => void;
 }
 
-/**
- * The number field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).
- */
+interface TimeField {
+  /** A unique identifier for the element. */
+  id?: string;
+  /** Content to use as the field label. */
+  label?: string;
+  /**
+   * Disables the field, disallowing any interaction.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * Current selected value.
+   *
+   * The default, `''`, means no time is selected.
+   *
+   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros.
+   *
+   * Examples: `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`.
+   *
+   * This follows the HTML time input value format, which is always 24-hour with
+   * leading zeros regardless of UI presentation.
+   *
+   * See: https://developer.mozilla.org/docs/Web/HTML/Element/input/time
+   */
+  value?: string;
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string;
+  /**
+   * Additional text to provide context or guidance for the field.
+   * This text is displayed along with the field and its label
+   * to offer more information or instructions to the user.
+   *
+   * This will also be exposed to screen reader users.
+   */
+  details?: string;
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` property.
+   * @default false
+   */
+  required?: boolean;
+}
+
+interface NumberFieldEvents {
+  /** Callback when the user makes any changes in the field. */
+  input?: (event: CallbackEvent<typeof tagName$o>) => void;
+  /** Callback after editing completes (typically on blur). */
+  change?: (event: CallbackEvent<typeof tagName$o>) => void;
+  /** Callback when the element loses focus. */
+  blur?: (event: CallbackEvent<typeof tagName$o>) => void;
+  /** Callback when the element receives focus. */
+  focus?: (event: CallbackEvent<typeof tagName$o>) => void;
+}
+
 interface NumberFieldSlots {
   /**
    * Additional content to be displayed in the field. Commonly used to display clickable text.
@@ -6995,51 +6697,19 @@ interface NumberField {
   min?: number;
 }
 
-/**
- * The page component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).
- */
-interface PageSlots {
-  /**
-   * A button element to display in the action bar. Only a single button is supported. Use the `slot="secondary-actions"` attribute to place content in this area.
-   */
-  'secondary-actions'?: HTMLElement;
-  /**
-   * The content to display in the page's sidebar. This area is for content that is tangentially related to the main content, such as navigation or contextual information. Use the `slot="aside"` attribute to place content in this area.
-   */
-  aside?: HTMLElement;
+interface DatePickerEvents {
+  /** Callback when the user selects a date from the picker. */
+  input?: (event: CallbackEvent<typeof tagName$w>) => void | null;
+  /** Callback when the user selects a date from the picker that is different to the current value. */
+  change?: (event: CallbackEvent<typeof tagName$w>) => void | null;
+  /** Callback when the date picker is dismissed. */
+  blur?: (event: CallbackEvent<typeof tagName$w>) => void | null;
+  /** Callback when the date picker is revealed. */
+  focus?: (event: CallbackEvent<typeof tagName$w>) => void | null;
 }
 
-interface Page {
-  /**
-   * A title that describes the content of the section. If omitted and no secondary actions are provided, the section will be rendered without a header.
-   *
-   * @default : ''
-   */
-  heading?: string;
-  /**
-   * A secondary page heading displayed under the main heading in the action bar.
-   */
-  subheading?: string;
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-}
-
-/**
- * The POS block component supports slots for additional content placement within the block. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).
- */
-interface PosBlockSlots {
-  /**
-   * The secondary actions to perform, provided as button or link type elements. Use the `slot="secondary-actions"` attribute to place interactive elements that allow users to take actions related to the block's content.
-   */
-  'secondary-actions'?: HTMLElement;
-}
-
-interface PosBlock {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
+interface DatePicker {
+  /** A unique identifier for the element. */
   id?: string;
   /**
    * Current selected value.
@@ -7050,129 +6720,28 @@ interface PosBlock {
    *
    * Otherwise:
    *
-   * @default 'none'
-   */
-  maxInlineSize?: SizeUnitsOrNone;
-  /**
-   * The minimum block size constraint for the scrollable container.
-   *
-   * @default '0'
-   */
-  minBlockSize?: SizeUnits;
-  /**
-   * The minimum inline size constraint for the scrollable container.
-   *
-   * @default '0'
-   */
-  minInlineSize?: SizeUnits;
-  /**
-   * The padding applied to all edges of the scrollable container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
-   *
-   * - 4 values: `block-start inline-end block-end inline-start`
-   * - 3 values: `block-start inline block-end`
-   * - 2 values: `block inline`
-   *
-   * For example:
-   *
-   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
-   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
-   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
-   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
-   *
-   * An `auto` value inherits the default padding from the closest container that has removed its usual padding.
-   *
-   * @default 'none'
-   */
-  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
-  /**
-   * The block-axis padding for the scrollable container. Overrides the block value of the `padding` property.
-   *
-   * @default '' - meaning no override
-   */
-  paddingBlock?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
-  /**
-   * The block-start padding for the scrollable container. Overrides the block-start value of the `paddingBlock` property.
-   *
-   * @default '' - meaning no override
-   */
-  paddingBlockStart?: '' | PaddingKeyword;
-  /**
-   * The block-end padding for the scrollable container. Overrides the block-end value of the `paddingBlock` property.
-   *
-   * @default '' - meaning no override
-   */
-  paddingBlockEnd?: '' | PaddingKeyword;
-  /**
-   * The inline-axis padding for the scrollable container. Supports two-value syntax where `large none` sets inline-start to `large` and inline-end to `none`. Overrides the inline value of the `padding` property.
-   *
-   * @default '' - meaning no override
-   */
-  paddingInline?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
-  /**
-   * The inline-start padding for the scrollable container. Overrides the inline-start value of the `paddingInline` property.
-   *
-   * @default '' - meaning no override
-   */
-  paddingInlineStart?: '' | PaddingKeyword;
-  /**
-   * The inline-end padding for the scrollable container. Overrides the inline-end value of the `paddingInline` property.
-   *
-   * @default '' - meaning no override
-   */
-  paddingInlineEnd?: '' | PaddingKeyword;
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-}
-
-/**
- * The search field component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
-interface SearchFieldEvents {
-  /**
-   * Called when the user makes any changes in the field.
-   */
-  input?: (event: CallbackEvent<typeof tagName$g>) => void;
-  /**
-   * Called after editing completes, typically on blur.
-   */
-  change?: (event: CallbackEvent<typeof tagName$g>) => void;
-  /**
-   * Called when the element loses focus.
-   */
-  blur?: (event: CallbackEvent<typeof tagName$g>) => void;
-  /**
-   * Called when the element receives focus.
-   */
-  focus?: (event: CallbackEvent<typeof tagName$g>) => void;
-}
-
-interface SearchField {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
-   *
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * A short hint that provides guidance about the expected value of the field.
-   */
-  placeholder?: string;
-  /**
-   * The current search query text entered in the field. An empty string means no search query is entered.
+   * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+   * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+   * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+   * @default ""
    */
   value?: string;
 }
 
-/**
- * The section component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).
- */
-interface SectionSlots {
+interface DateSpinnerEvents {
+  /** Callback when the user makes a selection. */
+  input?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+  /** Callback when the value changes. Only called when a different value is selected. */
+  change?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+  /** Callback when the date spinner is dismissed. */
+  blur?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+  /** Callback when the date spinner is revealed. */
+  focus?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+}
+
+interface DateSpinner {
+  /** A unique identifier for the element. */
+  id?: string;
   /**
    * Current selected value for the spinner.
    *
@@ -7203,306 +6772,6 @@ interface Heading {
   id?: string;
 }
 
-interface Text {
-  /**
-   * The color intensity of the text. Controls how prominent or subtle the text appears within the interface.
-   *
-   * @default 'base'
-   */
-  color?: ColorKeyword;
-  /**
-   * The semantic meaning and default styling of the text. Other presentation properties override the default styling provided by the type. Available options:
-   *
-   * - `'generic'` - The default text type for general content without specific semantic meaning or emphasis.
-   * - `'strong'` - A text type that provides emphasis and importance, typically rendered with increased font weight or visual prominence.
-   * - `'small'` - A text type for secondary or supplementary content, typically rendered with reduced size for captions, fine print, or less important information.
-   *
-   * @default 'generic'
-   */
-  type?: 'strong' | 'small' | 'generic';
-  /**
-   * Determines the visual appearance and semantic meaning of the text. Available options:
-   *
-   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context. Use when you want the system to determine the most appropriate styling.
-   * - `'neutral'` - Gray styling for general status information that doesn't require emphasis. Use for general status updates and standard information.
-   * - `'info'` - Blue styling for informational content and neutral updates. Use for informational content that provides helpful context.
-   * - `'success'` - Green styling for positive states, completed actions, and successful operations. Use for positive outcomes and successful processes.
-   * - `'caution'` - Yellow styling for situations that need attention but aren't urgent. Use for potential issues that require awareness.
-   * - `'warning'` - Orange styling for important notices that require merchant awareness. Use for situations that need attention but aren't critical.
-   * - `'critical'` - Red styling for errors, failures, and urgent issues requiring immediate action. Use for urgent issues that need immediate merchant attention.
-   *
-   * @default 'auto'
-   */
-  tone?:
-    | 'auto'
-    | 'neutral'
-    | 'info'
-    | 'success'
-    | 'caution'
-    | 'warning'
-    | 'critical';
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-}
-
-/**
- * The text area component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
-interface TextAreaEvents {
-  /**
-   * Called when the user makes any changes in the field.
-   */
-  input?: (event: CallbackEvent<typeof tagName$d>) => void;
-  /**
-   * Called after editing completes, typically on blur.
-   */
-  change?: (event: CallbackEvent<typeof tagName$d>) => void;
-  /**
-   * Called when the element loses focus.
-   */
-  blur?: (event: CallbackEvent<typeof tagName$d>) => void;
-  /**
-   * Called when the element receives focus.
-   */
-  focus?: (event: CallbackEvent<typeof tagName$d>) => void;
-}
-
-/**
- * The text area component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).
- */
-interface TextAreaSlots {
-  /**
-   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only button and clickable components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
-   */
-  accessory?: HTMLElement;
-}
-
-interface TextArea {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * The content to use as the field label that describes the text information being requested.
-   */
-  label?: string;
-  /**
-   * The additional text to provide context or guidance for the field. This text is displayed along with the field and its label to offer more information or instructions to the user. This will also be exposed to screen reader users.
-   */
-  details?: string;
-  /**
-   * The current text content entered in the field. An empty string means no text is entered.
-   */
-  value?: string;
-  /**
-   * A short hint that provides guidance about the expected value of the field.
-   */
-  placeholder?: string;
-  /**
-   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
-   *
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * An error message to indicate a problem to the user. The field will be given specific stylistic treatment to communicate issues that must be resolved immediately.
-   */
-  error?: string;
-  /**
-   * Whether the field needs a value. This requirement adds semantic value to the field but doesn't cause an error to appear automatically. Use the `error` property to present validation errors.
-   *
-   * @default false
-   */
-  required?: boolean;
-  /**
-   * The maximum number of characters allowed in the text field.
-   *
-   * @default Infinity
-   */
-  maxLength?: number;
-  /**
-   * The number of visible text lines that determines the initial height of the text area.
-   *
-   * @default 2
-   */
-  rows?: number;
-}
-
-/**
- * The text field component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
-interface TextFieldEvents {
-  /**
-   * Called when the user makes any changes in the field.
-   */
-  input?: (event: CallbackEvent<typeof tagName$h>) => void;
-  /**
-   * Called after editing completes, typically on blur.
-   */
-  change?: (event: CallbackEvent<typeof tagName$h>) => void;
-  /**
-   * Called when the element loses focus.
-   */
-  blur?: (event: CallbackEvent<typeof tagName$h>) => void;
-  /**
-   * Called when the element receives focus.
-   */
-  focus?: (event: CallbackEvent<typeof tagName$h>) => void;
-}
-
-/**
- * The text field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).
- */
-interface TextFieldSlots {
-  /**
-   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only button and clickable components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
-   */
-  accessory?: HTMLElement;
-}
-
-interface TextField {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * The content to use as the field label that describes the text information being requested.
-   */
-  label?: string;
-  /**
-   * The additional text to provide context or guidance for the field. This text is displayed along with the field and its label to offer more information or instructions to the user. This will also be exposed to screen reader users.
-   */
-  details?: string;
-  /**
-   * The current text content entered in the field. An empty string means no text is entered.
-   */
-  value?: string;
-  /**
-   * A short hint that provides guidance about the expected value of the field.
-   */
-  placeholder?: string;
-  /**
-   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
-   *
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * An error message to indicate a problem to the user. The field will be given specific stylistic treatment to communicate issues that must be resolved immediately.
-   */
-  error?: string;
-  /**
-   * Whether the field needs a value. This requirement adds semantic value to the field but doesn't cause an error to appear automatically. Use the `error` property to present validation errors.
-   *
-   * @default false
-   */
-  required?: boolean;
-  /**
-   * The maximum number of characters allowed in the text field.
-   *
-   * @default Infinity
-   */
-  maxLength?: number;
-}
-
-interface TileEvents {
-  /**
-   * The callback when the element is activated.
-   */
-  click?: (event: CallbackEvent<typeof tagName$q>) => void;
-}
-
-interface Tile {
-  /**
-   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
-   *
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * A title that describes the content of the section. If omitted and no secondary actions are provided, the section will be rendered without a header.
-   *
-   * @default ''
-   */
-  heading?: string;
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * A numeric value displayed as a counter or badge. Used for showing quantities, notifications, or step numbers.
-   */
-  itemCount?: number;
-  /**
-   * Sets the visual tone of the tile based on the intention of the information being conveyed. Use `'accent'` to highlight important or primary actions, `'neutral'` for standard actions, or `'auto'` (default) to let the system determine the appropriate tone based on context.
-   *
-   * @default 'auto'
-   */
-  tone?: ExtractStrict<ToneKeyword, 'auto' | 'neutral' | 'accent'>;
-  /**
-   * A secondary page heading displayed under the main heading in the action bar.
-   *
-   * @default ''
-   */
-  subheading?: string;
-}
-
-/**
- * The time field component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
-interface TimeFieldEvents {
-  /**
-   * Called when the user makes any changes in the field.
-   */
-  input?: (event: CallbackEvent<typeof tagName$3>) => void;
-  /**
-   * Called after editing completes, typically on blur.
-   */
-  change?: (event: CallbackEvent<typeof tagName$3>) => void;
-  /**
-   * Called when the element loses focus.
-   */
-  blur?: (event: CallbackEvent<typeof tagName$3>) => void;
-  /**
-   * Called when the element receives focus.
-   */
-  focus?: (event: CallbackEvent<typeof tagName$3>) => void;
-}
-
-interface TimeField {
-  /**
-   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
-   */
-  id?: string;
-  /**
-   * The content to use as the field label that describes the time information being requested.
-   */
-  label?: string;
-  /**
-   * Whether the field is disabled, preventing user interaction. Use when the field is temporarily unavailable due to application state, permissions, or dependencies.
-   *
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * The current selected value in 24-hour format. An empty string means no time is selected. The value must be in `HH:mm:ss` format with leading zeros (for example, `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`). This follows the [HTML time input value format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#value), which is always 24-hour with leading zeros regardless of UI presentation.
-   */
-  value?: string;
-  /**
-   * An error message to indicate a problem to the user. The field will be given specific stylistic treatment to communicate issues that must be resolved immediately.
-   */
-  error?: string;
-  /**
-   * The additional text to provide context or guidance for the field. This text is displayed along with the field and its label to offer more information or instructions to the user. This will also be exposed to screen reader users.
-   */
-  details?: string;
-}
-
-/**
- * The time picker component provides event callbacks for handling user interactions and validation. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).
- */
 interface TimePickerEvents {
   /** Callback when the user selects a time from the picker. */
   input?: (event: CallbackEvent<typeof tagName$b>) => void | null;
