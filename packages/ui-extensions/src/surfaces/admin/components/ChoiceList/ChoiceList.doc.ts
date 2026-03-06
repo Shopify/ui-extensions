@@ -38,7 +38,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).',
       type: 'ChoiceListEvents',
     },
     {
@@ -49,7 +49,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The choice list component supports slots for additional content placement within each choice. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The choice list component supports slots for additional content placement within each choice. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).',
       type: 'ChoiceSlots',
     },
   ],
