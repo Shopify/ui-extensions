@@ -38,7 +38,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-icon';
 /**
@@ -183,7 +183,7 @@ export interface IconJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: IconJSXProps;
+    [tagName]: IconJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {

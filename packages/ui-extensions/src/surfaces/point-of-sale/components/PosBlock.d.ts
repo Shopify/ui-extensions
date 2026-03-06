@@ -43,7 +43,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-pos-block';
 export interface PosBlockJSXProps
@@ -60,7 +60,7 @@ export interface PosBlockJSXProps
 export type ElementProps = Omit<PosBlockJSXProps, 'secondaryActions'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ElementProps;
+    [tagName]: ElementProps & HTMLElement;
   }
 }
 declare module 'preact' {

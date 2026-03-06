@@ -38,7 +38,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-image';
 export interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
@@ -58,7 +58,7 @@ export interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ImageJSXProps;
+    [tagName]: ImageJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {

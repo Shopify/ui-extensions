@@ -52,7 +52,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-stack';
 /**
@@ -221,7 +221,7 @@ export interface StackJSXProps extends PickedProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: StackJSXProps;
+    [tagName]: StackJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {

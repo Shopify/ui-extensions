@@ -38,7 +38,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 /**
  * Represents an event triggered by user interaction with the tile. Provides information about the event and access to the tile element that triggered it.
  */
@@ -92,7 +92,7 @@ export interface TileJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: TileJSXProps;
+    [tagName]: TileJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {
