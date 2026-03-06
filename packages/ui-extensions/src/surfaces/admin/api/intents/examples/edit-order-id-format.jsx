@@ -25,7 +25,7 @@ function Extension() {
         {loading ? 'Editing...' : 'Launch Order ID Format Editor'}
       </s-button>
       {result?.code === 'ok' && (
-        <s-banner status="success">Order ID format updated successfully!</s-banner>
+        <s-banner status="success">Settings updated</s-banner>
       )}
       {result?.code === 'closed' && (
         <s-text>Edit order ID format cancelled</s-text>

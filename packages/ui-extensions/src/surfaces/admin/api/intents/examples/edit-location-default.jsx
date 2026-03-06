@@ -25,7 +25,7 @@ function Extension() {
         {loading ? 'Editing...' : 'Launch Default Location Editor'}
       </s-button>
       {result?.code === 'ok' && (
-        <s-banner status="success">Default location updated successfully!</s-banner>
+        <s-banner status="success">Settings updated</s-banner>
       )}
       {result?.code === 'closed' && (
         <s-text>Edit default location cancelled</s-text>

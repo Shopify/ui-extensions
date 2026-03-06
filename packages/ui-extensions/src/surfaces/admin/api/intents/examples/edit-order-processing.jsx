@@ -25,7 +25,7 @@ function Extension() {
         {loading ? 'Editing...' : 'Launch Order Processing Editor'}
       </s-button>
       {result?.code === 'ok' && (
-        <s-banner status="success">Order processing updated successfully!</s-banner>
+        <s-banner status="success">Settings updated</s-banner>
       )}
       {result?.code === 'closed' && (
         <s-text>Edit order processing cancelled</s-text>
