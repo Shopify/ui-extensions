@@ -13,7 +13,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       sectionContent: `- **Use breadcrumbs for navigation**: Include breadcrumbs when the page is part of a flow.
 - **Scope header actions appropriately**: Include page actions in the header only if they are relevant to the entire page.
-- **Limit action count**: Include no more than one primary action and 3 secondary actions per page.
+- **Limit action count**: Include no more than one primary action and three secondary actions per page.
 - **Avoid bottom actions**: Don't include any actions at the bottom of the page.`,
     },
     {

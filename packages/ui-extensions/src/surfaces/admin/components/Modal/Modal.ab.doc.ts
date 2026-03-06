@@ -12,7 +12,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       sectionContent: `- **Focus on critical decisions**: Use for focused, specific tasks that require merchants to make a decision or acknowledge critical information.
 - **Avoid nesting modals**: Don't nest modals (avoid launching one modal from another).
-- **Use specific action verbs**: Label buttons with clear verbs like "Delete," "Save," or "Continue" rather than vague terms like "Yes," "OK," or "Submit."
+- **Use specific action verbs**: Label buttons with clear verbs like "Delete," "Save," or "Continue" rather than vague terms like "Yes" or "OK."
 - **Explain destructive consequences**: For destructive actions, explain the consequences in the modal body.
 - **Reserve for important decisions**: Use as a last resort for important decisions, not for contextual tools or actions that could happen on the page directly.`,
     },
