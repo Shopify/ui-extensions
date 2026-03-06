@@ -36,6 +36,7 @@ export interface ActionProps {
 }
 
 /**
+ * The action component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ActionSlots {
@@ -8897,6 +8898,10 @@ export interface UnorderedListJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * Configure the following properties on the admin action component.
+ * @publicDocs
+ */
 export interface AdminActionProps
   extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
 
@@ -8949,6 +8954,10 @@ declare module 'preact' {
   }
 }
 
+/**
+ * Configure the following properties on the admin block component.
+ * @publicDocs
+ */
 export interface AdminBlockProps
   extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {}
 
@@ -8986,6 +8995,10 @@ declare module 'preact' {
   }
 }
 
+/**
+ * Configure the following properties on the admin print action component.
+ * @publicDocs
+ */
 export interface AdminPrintActionProps
   extends Pick<AdminPrintActionProps$1, 'src'> {}
 
@@ -9240,6 +9253,7 @@ export type {
 };
 
 /**
+ * The avatar component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface AvatarEvents {
@@ -9258,6 +9272,7 @@ export interface AvatarEvents {
 }
 
 /**
+ * The badge component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface BadgeSlots {
@@ -9268,6 +9283,7 @@ export interface BadgeSlots {
 }
 
 /**
+ * The banner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface BannerEvents {
@@ -9282,6 +9298,7 @@ export interface BannerEvents {
 }
 
 /**
+ * The banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface BannerSlots {
@@ -9297,6 +9314,7 @@ export interface BannerSlots {
 }
 
 /**
+ * The box component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface BoxSlots {
@@ -9307,6 +9325,7 @@ export interface BoxSlots {
 }
 
 /**
+ * The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ButtonEvents {
@@ -9331,6 +9350,7 @@ export interface ButtonEvents {
 }
 
 /**
+ * The button component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ButtonSlots {
@@ -9341,6 +9361,7 @@ export interface ButtonSlots {
 }
 
 /**
+ * The button group component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ButtonGroupSlots {
@@ -9365,6 +9386,7 @@ export interface ButtonGroupSlots {
 }
 
 /**
+ * The checkbox component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface CheckboxEvents {
@@ -9383,6 +9405,7 @@ export interface CheckboxEvents {
 }
 
 /**
+ * The chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ChipSlots {
@@ -9397,6 +9420,7 @@ export interface ChipSlots {
 }
 
 /**
+ * The choice list component supports slots for additional content placement within each choice. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ChoiceSlots {
@@ -9420,6 +9444,7 @@ export interface ChoiceSlots {
 }
 
 /**
+ * The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ChoiceListEvents {
@@ -9438,6 +9463,7 @@ export interface ChoiceListEvents {
 }
 
 /**
+ * The choice list component supports slots for additional content placement within each choice. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ChoiceListSlots {
@@ -9450,6 +9476,7 @@ export interface ChoiceListSlots {
 }
 
 /**
+ * The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ClickableEvents {
@@ -9474,6 +9501,7 @@ export interface ClickableEvents {
 }
 
 /**
+ * The clickable component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ClickableSlots {
@@ -9484,6 +9512,7 @@ export interface ClickableSlots {
 }
 
 /**
+ * The clickable chip component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ClickableChipEvents {
@@ -9504,6 +9533,7 @@ export interface ClickableChipEvents {
 }
 
 /**
+ * The clickable chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ClickableChipSlots {
@@ -9518,6 +9548,7 @@ export interface ClickableChipSlots {
 }
 
 /**
+ * The color field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ColorFieldEvents {
@@ -9548,6 +9579,7 @@ export interface ColorFieldEvents {
 }
 
 /**
+ * The color picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ColorPickerEvents {
@@ -9566,6 +9598,7 @@ export interface ColorPickerEvents {
 }
 
 /**
+ * The date field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface DateFieldEvents {
@@ -9606,6 +9639,7 @@ export interface DateFieldEvents {
 }
 
 /**
+ * The date picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface DatePickerEvents {
@@ -9640,6 +9674,7 @@ export interface DatePickerEvents {
 }
 
 /**
+ * The drop zone component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface DropZoneEvents {
@@ -9662,6 +9697,7 @@ export interface DropZoneEvents {
 }
 
 /**
+ * The drop zone component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface DropZoneSlots {
@@ -9672,6 +9708,7 @@ export interface DropZoneSlots {
 }
 
 /**
+ * The email field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface EmailFieldEvents {
@@ -9702,6 +9739,7 @@ export interface EmailFieldEvents {
 }
 
 /**
+ * The grid component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface GridSlots {
@@ -9712,6 +9750,7 @@ export interface GridSlots {
 }
 
 /**
+ * The grid item component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface GridItemSlots {
@@ -9722,6 +9761,7 @@ export interface GridItemSlots {
 }
 
 /**
+ * The heading component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface HeadingSlots {
@@ -9732,6 +9772,7 @@ export interface HeadingSlots {
 }
 
 /**
+ * The image component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ImageEvents {
@@ -9750,6 +9791,7 @@ export interface ImageEvents {
 }
 
 /**
+ * The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface LinkEvents {
@@ -9762,6 +9804,7 @@ export interface LinkEvents {
 }
 
 /**
+ * The link component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface LinkSlots {
@@ -9772,6 +9815,7 @@ export interface LinkSlots {
 }
 
 /**
+ * The list item component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ListItemSlots {
@@ -9782,6 +9826,7 @@ export interface ListItemSlots {
 }
 
 /**
+ * The menu component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface MenuSlots {
@@ -9792,6 +9837,7 @@ export interface MenuSlots {
 }
 
 /**
+ * The modal component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ModalEvents {
@@ -9814,6 +9860,7 @@ export interface ModalEvents {
 }
 
 /**
+ * The modal component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ModalSlots {
@@ -9836,6 +9883,7 @@ export interface ModalSlots {
 }
 
 /**
+ * The money field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface MoneyFieldEvents {
@@ -9866,6 +9914,7 @@ export interface MoneyFieldEvents {
 }
 
 /**
+ * The number field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface NumberFieldEvents {
@@ -9896,6 +9945,7 @@ export interface NumberFieldEvents {
 }
 
 /**
+ * The option component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface OptionSlots {
@@ -9906,6 +9956,7 @@ export interface OptionSlots {
 }
 
 /**
+ * The option group component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface OptionGroupSlots {
@@ -9916,6 +9967,7 @@ export interface OptionGroupSlots {
 }
 
 /**
+ * The ordered list component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface OrderedListSlots {
@@ -9926,6 +9978,7 @@ export interface OrderedListSlots {
 }
 
 /**
+ * The page component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface PageSlots {
@@ -9961,6 +10014,7 @@ export interface PageSlots {
 }
 
 /**
+ * The paragraph component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ParagraphSlots {
@@ -9971,6 +10025,7 @@ export interface ParagraphSlots {
 }
 
 /**
+ * The password field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface PasswordFieldEvents {
@@ -10001,6 +10056,7 @@ export interface PasswordFieldEvents {
 }
 
 /**
+ * The popover component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface PopoverEvents {
@@ -10031,6 +10087,7 @@ export interface PopoverEvents {
 }
 
 /**
+ * The popover component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface PopoverSlots {
@@ -10041,6 +10098,7 @@ export interface PopoverSlots {
 }
 
 /**
+ * The query container component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface QueryContainerSlots {
@@ -10051,6 +10109,7 @@ export interface QueryContainerSlots {
 }
 
 /**
+ * The search field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface SearchFieldEvents {
@@ -10081,6 +10140,7 @@ export interface SearchFieldEvents {
 }
 
 /**
+ * The section component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface SectionSlots {
@@ -10091,6 +10151,7 @@ export interface SectionSlots {
 }
 
 /**
+ * The select component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface SelectEvents {
@@ -10109,6 +10170,7 @@ export interface SelectEvents {
 }
 
 /**
+ * The select component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface SelectSlots {
@@ -10119,6 +10181,7 @@ export interface SelectSlots {
 }
 
 /**
+ * The stack component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface StackSlots {
@@ -10129,6 +10192,7 @@ export interface StackSlots {
 }
 
 /**
+ * The switch component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface SwitchEvents {
@@ -10147,6 +10211,7 @@ export interface SwitchEvents {
 }
 
 /**
+ * The table component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface TableEvents {
@@ -10161,6 +10226,7 @@ export interface TableEvents {
 }
 
 /**
+ * The table component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TableSlots {
@@ -10179,6 +10245,7 @@ export interface TableSlots {
 }
 
 /**
+ * The table body component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TableBodySlots {
@@ -10191,6 +10258,7 @@ export interface TableBodySlots {
 }
 
 /**
+ * The table cell component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TableCellSlots {
@@ -10203,6 +10271,7 @@ export interface TableCellSlots {
 }
 
 /**
+ * The table header component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TableHeaderSlots {
@@ -10215,6 +10284,7 @@ export interface TableHeaderSlots {
 }
 
 /**
+ * The table header row component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TableHeaderRowSlots {
@@ -10227,6 +10297,7 @@ export interface TableHeaderRowSlots {
 }
 
 /**
+ * The table row component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TableRowSlots {
@@ -10239,6 +10310,7 @@ export interface TableRowSlots {
 }
 
 /**
+ * The text component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TextSlots {
@@ -10249,6 +10321,7 @@ export interface TextSlots {
 }
 
 /**
+ * The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface TextAreaEvents {
@@ -10279,6 +10352,7 @@ export interface TextAreaEvents {
 }
 
 /**
+ * The text field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface TextFieldEvents {
@@ -10309,6 +10383,7 @@ export interface TextFieldEvents {
 }
 
 /**
+ * The text field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TextFieldSlots {
@@ -10321,6 +10396,7 @@ export interface TextFieldSlots {
 }
 
 /**
+ * The thumbnail component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ThumbnailEvents {
@@ -10339,6 +10415,7 @@ export interface ThumbnailEvents {
 }
 
 /**
+ * The tooltip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TooltipSlots {
@@ -10351,6 +10428,7 @@ export interface TooltipSlots {
 }
 
 /**
+ * The URL field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface URLFieldEvents {
@@ -10381,6 +10459,7 @@ export interface URLFieldEvents {
 }
 
 /**
+ * The unordered list component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface UnorderedListSlots {
@@ -10391,6 +10470,7 @@ export interface UnorderedListSlots {
 }
 
 /**
+ * The admin action component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface AdminActionSlots {
@@ -10407,6 +10487,7 @@ export interface AdminActionSlots {
 }
 
 /**
+ * The form component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface FormEvents {
@@ -10421,6 +10502,7 @@ export interface FormEvents {
 }
 
 /**
+ * The function settings component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface FunctionSettingsEvents {
