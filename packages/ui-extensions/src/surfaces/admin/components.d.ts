@@ -39,6 +39,7 @@ export interface ActionProps {
   heading?: string;
 }
 /**
+ * The admin action component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ActionSlots {
@@ -5139,6 +5140,10 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+/**
+ * Configure the following properties on the avatar component.
+ * @publicDocs
+ */
 declare class Avatar extends PreactCustomElement implements AvatarProps {
   accessor initials: AvatarProps['initials'];
   accessor src: AvatarProps['src'];
@@ -5227,6 +5232,10 @@ export interface BadgeProps
   >;
 }
 
+/**
+ * Configure the following properties on the badge component.
+ * @publicDocs
+ */
 declare class Badge extends PreactCustomElement implements BadgeProps {
   accessor color: BadgeProps['color'];
   accessor icon: BadgeProps['icon'];
@@ -5278,6 +5287,10 @@ export interface BannerProps
   >;
 }
 
+/**
+ * Configure the following properties on the banner component.
+ * @publicDocs
+ */
 declare class Banner extends PreactCustomElement implements BannerProps {
   accessor heading: BannerProps['heading'];
   accessor tone: BannerProps['tone'];
@@ -5666,6 +5679,10 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
   accessor display: BoxProps['display'];
 }
 
+/**
+ * Configure the following properties on the box component.
+ * @publicDocs
+ */
 declare class Box extends BoxElement implements BoxProps {
   constructor();
 }
@@ -5768,6 +5785,10 @@ declare const Button_base: (abstract new (
   args_0: RenderImpl,
 ) => PreactCustomElement & PreactOverlayControlProps) &
   Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+/**
+ * Configure the following properties on the button component.
+ * @publicDocs
+ */
 declare class Button extends Button_base implements ButtonProps {
   accessor disabled: ButtonProps['disabled'];
   accessor icon: ButtonProps['icon'];
@@ -5825,6 +5846,10 @@ export interface ButtonJSXProps
 export interface ButtonGroupProps
   extends Required<Pick<ButtonGroupProps$1, 'gap' | 'accessibilityLabel'>> {}
 
+/**
+ * Configure the following properties on the button group component.
+ * @publicDocs
+ */
 declare class ButtonGroup
   extends PreactCustomElement
   implements ButtonGroupProps
@@ -5972,6 +5997,10 @@ export interface CheckboxProps extends PreactCheckboxProps {
   defaultIndeterminate: Required<CheckboxProps$1>['defaultIndeterminate'];
 }
 
+/**
+ * Configure the following properties on the checkbox component.
+ * @publicDocs
+ */
 declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
   get indeterminate(): CheckboxProps['indeterminate'];
   set indeterminate(indeterminate: CheckboxProps['indeterminate']);
@@ -6014,6 +6043,10 @@ export interface CheckboxJSXProps
 export interface ChipProps
   extends Required<Pick<ChipProps$2, 'color' | 'accessibilityLabel'>> {}
 
+/**
+ * Configure the following properties on the chip component.
+ * @publicDocs
+ */
 declare class Chip extends PreactCustomElement implements ChipProps {
   accessor color: ChipProps['color'];
   accessor accessibilityLabel: ChipProps['accessibilityLabel'];
@@ -6065,6 +6098,10 @@ export interface ChoiceProps
     >
   > {}
 
+/**
+ * Configure the following properties on the choice component.
+ * @publicDocs
+ */
 declare class Choice extends PreactCustomElement implements ChoiceProps {
   accessor disabled: ChoiceProps['disabled'];
   get selected(): boolean;
@@ -6143,6 +6180,10 @@ declare class BaseClass$3 extends PreactCustomElement {
   /** @private */
   [internals$3]: ElementInternals;
 }
+/**
+ * Configure the following properties on the choice list component.
+ * @publicDocs
+ */
 declare class ChoiceList extends BaseClass$3 implements ChoiceListProps {
   accessor disabled: ChoiceListProps['disabled'];
   accessor name: ChoiceListProps['name'];
@@ -6228,6 +6269,10 @@ declare const Clickable_base: (abstract new (
   renderImpl: RenderImpl,
 ) => BoxElement & PreactOverlayControlProps) &
   Pick<typeof BoxElement, 'prototype' | 'observedAttributes'>;
+/**
+ * Configure the following properties on the clickable component.
+ * @publicDocs
+ */
 declare class Clickable extends Clickable_base implements ClickableProps {
   accessor disabled: ClickableProps['disabled'];
   accessor loading: ClickableProps['loading'];
@@ -6299,6 +6344,10 @@ declare const ClickableChip_base: (abstract new (
   args_0: RenderImpl,
 ) => PreactCustomElement & PreactOverlayControlProps) &
   Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+/**
+ * Configure the following properties on the clickable chip component.
+ * @publicDocs
+ */
 declare class ClickableChip
   extends ClickableChip_base
   implements ClickableChipProps
@@ -6447,6 +6496,10 @@ export type ColorFieldProps = Omit<
 > &
   Required<Pick<ColorFieldProps$1, 'alpha' | 'value' | 'defaultValue'>>;
 
+/**
+ * Configure the following properties on the color field component.
+ * @publicDocs
+ */
 declare class ColorField
   extends PreactFieldElement<ColorFieldProps['autocomplete']>
   implements ColorFieldProps
@@ -6502,6 +6555,10 @@ declare class BaseClass$2 extends PreactCustomElement {
   /** @private */
   [internals$2]: ElementInternals;
 }
+/**
+ * Configure the following properties on the color picker component.
+ * @publicDocs
+ */
 declare class ColorPicker extends BaseClass$2 implements ColorPickerProps {
   accessor alpha: boolean;
   accessor name: string;
@@ -6563,6 +6620,10 @@ export interface DateFieldProps
       >
     > {}
 
+/**
+ * Configure the following properties on the date field component.
+ * @publicDocs
+ */
 declare class DateField
   extends PreactFieldElement<DateFieldProps['autocomplete']>
   implements DateFieldProps
@@ -6659,6 +6720,10 @@ declare class BaseClass$1 extends PreactCustomElement {
   /** @private */
   [internals$1]: ElementInternals;
 }
+/**
+ * Configure the following properties on the date picker component.
+ * @publicDocs
+ */
 declare class DatePicker extends BaseClass$1 implements DatePickerProps {
   accessor defaultView: string;
   set view(view: string);
@@ -6729,6 +6794,10 @@ export interface DividerProps
   color: Extract<DividerProps$1['color'], 'base' | 'strong'>;
 }
 
+/**
+ * Configure the following properties on the divider component.
+ * @publicDocs
+ */
 declare class Divider extends PreactCustomElement implements DividerProps {
   accessor direction: DividerProps['direction'];
   accessor color: DividerProps['color'];
@@ -6792,6 +6861,10 @@ declare class BaseClass extends PreactCustomElement {
   /** @private */
   [internals]: ElementInternals;
 }
+/**
+ * Configure the following properties on the drop zone component.
+ * @publicDocs
+ */
 declare class DropZone extends BaseClass implements DropZoneProps {
   accessor accept: DropZoneProps['accept'];
   accessor accessibilityLabel: DropZoneProps['accessibilityLabel'];
@@ -6868,6 +6941,10 @@ export type EmailFieldProps = PreactFieldProps<
 > &
   Required<Pick<EmailFieldProps$1, 'maxLength' | 'minLength'>>;
 
+/**
+ * Configure the following properties on the email field component.
+ * @publicDocs
+ */
 declare class EmailField
   extends PreactFieldElement<EmailFieldProps['autocomplete']>
   implements EmailFieldProps
@@ -7024,6 +7101,10 @@ export interface GridProps
   gridTemplateRows: ResponsiveGridProps['gridTemplateRows'];
 }
 
+/**
+ * Configure the following properties on the grid component.
+ * @publicDocs
+ */
 declare class Grid extends BoxElement implements GridProps {
   constructor();
   accessor gridTemplateColumns: GridProps['gridTemplateColumns'];
@@ -7078,6 +7159,10 @@ export interface GridItemProps
   gridRow: RequiredGridItemProps['gridRow'];
 }
 
+/**
+ * Configure the following properties on the grid item component.
+ * @publicDocs
+ */
 declare class GridItem extends BoxElement implements GridItemProps {
   accessor gridColumn: GridItemProps['gridColumn'];
   accessor gridRow: GridItemProps['gridRow'];
@@ -7121,6 +7206,10 @@ export interface HeadingProps
     >
   > {}
 
+/**
+ * Configure the following properties on the heading component.
+ * @publicDocs
+ */
 declare class Heading extends PreactCustomElement implements HeadingProps {
   accessor accessibilityRole: HeadingProps['accessibilityRole'];
   accessor lineClamp: HeadingProps['lineClamp'];
@@ -7154,6 +7243,10 @@ export interface HeadingJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * Configure the following properties on the icon component.
+ * @publicDocs
+ */
 declare class Icon extends PreactCustomElement implements IconProps {
   accessor color: IconProps['color'];
   accessor tone: IconProps['tone'];
@@ -7212,6 +7305,10 @@ export interface ImageProps
       >
     > {}
 
+/**
+ * Configure the following properties on the image component.
+ * @publicDocs
+ */
 declare class Image extends PreactCustomElement implements ImageProps {
   accessor src: ImageProps['src'];
   accessor srcSet: ImageProps['srcSet'];
@@ -7306,6 +7403,10 @@ declare const Link_base: (abstract new (
   args_0: RenderImpl,
 ) => PreactCustomElement & PreactOverlayControlProps) &
   Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+/**
+ * Configure the following properties on the link component.
+ * @publicDocs
+ */
 declare class Link extends Link_base implements LinkProps {
   accessor tone: LinkProps['tone'];
   accessor accessibilityLabel: LinkProps['accessibilityLabel'];
@@ -7350,6 +7451,12 @@ export interface LinkJSXProps
  */
 export interface ListItemProps extends ListItemProps$1 {}
 
+/**
+ * The list item component represents a single entry within an ordered list or unordered list. Use list item to structure individual points, steps, or items within a list, with each item automatically receiving appropriate list markers (bullets or numbers) from its parent list.
+ *
+ * List item must be used as a direct child of ordered list or unordered list components. Each list item can contain text, inline formatting, or other components to create rich list content.
+ * @publicDocs
+ */
 declare class ListItem extends PreactCustomElement implements ListItemProps {
   constructor();
 }
@@ -7434,6 +7541,10 @@ declare class PreactOverlayElement extends PreactCustomElement {
   [overlayHideFrameId]?: number;
 }
 
+/**
+ * Configure the following properties on the menu component.
+ * @publicDocs
+ */
 declare class Menu extends PreactOverlayElement implements MenuProps {
   accessor accessibilityLabel: string;
   constructor();
@@ -7557,6 +7668,10 @@ declare const abortController: unique symbol;
 declare const onChildModalChange: unique symbol;
 declare const childrenRerenderObserver: unique symbol;
 declare const shadowDomRerenderObserver: unique symbol;
+/**
+ * Configure the following properties on the modal component.
+ * @publicDocs
+ */
 declare class Modal extends PreactOverlayElement implements ModalProps {
   accessor accessibilityLabel: ModalProps['accessibilityLabel'];
   accessor heading: ModalProps['heading'];
@@ -7667,6 +7782,10 @@ export interface MoneyFieldProps
   value: Required<MoneyFieldProps$1>['value'];
 }
 
+/**
+ * Configure the following properties on the money field component.
+ * @publicDocs
+ */
 declare class MoneyField
   extends PreactFieldElement<MoneyFieldProps['autocomplete']>
   implements MoneyFieldProps
@@ -7719,6 +7838,10 @@ export interface NumberFieldProps
   value: Required<NumberFieldProps$1>['value'];
 }
 
+/**
+ * Configure the following properties on the number field component.
+ * @publicDocs
+ */
 declare class NumberField
   extends PreactFieldElement<NumberFieldProps['autocomplete']>
   implements NumberFieldProps
@@ -7766,6 +7889,10 @@ export interface OptionProps
     Pick<OptionProps$1, 'disabled' | 'value' | 'selected' | 'defaultSelected'>
   > {}
 
+/**
+ * Configure the following properties on the option component.
+ * @publicDocs
+ */
 declare class Option extends PreactCustomElement implements OptionProps {
   accessor selected: OptionProps['selected'];
   accessor defaultSelected: OptionProps['defaultSelected'];
@@ -7805,6 +7932,10 @@ export interface OptionJSXProps
 export interface OptionGroupProps
   extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
 
+/**
+ * Configure the following properties on the option group component.
+ * @publicDocs
+ */
 declare class OptionGroup
   extends PreactCustomElement
   implements OptionGroupProps
@@ -7845,6 +7976,10 @@ export interface OptionGroupJSXProps
  */
 export interface OrderedListProps extends OrderedListProps$1 {}
 
+/**
+ * Configure the following properties on the ordered list component.
+ * @publicDocs
+ */
 declare class OrderedList
   extends PreactCustomElement
   implements OrderedListProps
@@ -7886,6 +8021,10 @@ export interface PageProps
   inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large' | 'small'>;
 }
 
+/**
+ * Configure the following properties on the page component.
+ * @publicDocs
+ */
 declare class Page extends PreactCustomElement implements PageProps {
   accessor inlineSize: PageProps['inlineSize'];
   accessor heading: PageProps['heading'];
@@ -7981,6 +8120,10 @@ export interface ParagraphProps
   color: Extract<ParagraphProps$1['color'], 'base' | 'subdued'>;
 }
 
+/**
+ * Configure the following properties on the paragraph component.
+ * @publicDocs
+ */
 declare class Paragraph extends PreactCustomElement implements ParagraphProps {
   accessor fontVariantNumeric: ParagraphProps['fontVariantNumeric'];
   accessor lineClamp: ParagraphProps['lineClamp'];
@@ -8053,6 +8196,10 @@ export type PasswordFieldProps = PreactFieldProps<
     >
   >;
 
+/**
+ * Configure the following properties on the password field component.
+ * @publicDocs
+ */
 declare class PasswordField
   extends PreactFieldElement<PasswordFieldProps['autocomplete']>
   implements PasswordFieldProps
@@ -8118,6 +8265,10 @@ declare class PreactPopoverElement<TTagName extends keyof HTMLElementTagNameMap>
   accessor maxInlineSize: BoxProps['maxInlineSize'];
 }
 
+/**
+ * Configure the following properties on the popover component.
+ * @publicDocs
+ */
 declare class Popover
   extends PreactPopoverElement<typeof tagName$p>
   implements PopoverProps
@@ -8181,6 +8332,10 @@ export interface PopoverJSXProps
 export interface QueryContainerProps
   extends Required<Pick<QueryContainerProps$1, 'id' | 'containerName'>> {}
 
+/**
+ * Configure the following properties on the query container component.
+ * @publicDocs
+ */
 declare class QueryContainer
   extends PreactCustomElement
   implements QueryContainerProps
@@ -8246,6 +8401,10 @@ export type SearchFieldProps = PreactFieldProps<
     >
   >;
 
+/**
+ * Configure the following properties on the search field component.
+ * @publicDocs
+ */
 declare class SearchField
   extends PreactFieldElement<SearchFieldProps['autocomplete']>
   implements SearchFieldProps
@@ -8298,6 +8457,10 @@ export interface SectionProps
   padding: RequiredSectionProps['padding'];
 }
 
+/**
+ * Configure the following properties on the section component.
+ * @publicDocs
+ */
 declare class Section extends PreactCustomElement implements SectionProps {
   constructor();
   /** @private */
@@ -8359,6 +8522,10 @@ export interface SelectProps
 declare const usedFirstOptionSymbol: unique symbol;
 declare const hasInitialValueSymbol: unique symbol;
 
+/**
+ * Configure the following properties on the select component.
+ * @publicDocs
+ */
 declare class Select extends PreactInputElement implements SelectProps {
   accessor icon: SelectProps['icon'];
   accessor details: SelectProps['details'];
@@ -8439,6 +8606,10 @@ export interface SpinnerProps
   size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
 }
 
+/**
+ * Configure the following properties on the spinner component.
+ * @publicDocs
+ */
 declare class Spinner extends PreactCustomElement implements SpinnerProps {
   accessor accessibilityLabel: string;
   accessor size: SpinnerProps['size'];
@@ -8556,6 +8727,10 @@ export interface StackProps
   direction: ResponsiveStackProps['direction'];
 }
 
+/**
+ * Configure the following properties on the stack component.
+ * @publicDocs
+ */
 declare class Stack extends BoxElement implements StackProps {
   constructor();
   accessor direction: StackProps['direction'];
@@ -8599,6 +8774,10 @@ export interface SwitchProps
   extends PreactCheckboxProps,
     Required<Pick<SwitchProps$1, 'labelAccessibilityVisibility'>> {}
 
+/**
+ * Configure the following properties on the switch component.
+ * @publicDocs
+ */
 declare class Switch extends PreactCheckboxElement implements SwitchProps {
   accessor labelAccessibilityVisibility: SwitchProps['labelAccessibilityVisibility'];
   constructor();
@@ -8659,6 +8838,9 @@ export type HeaderFormat = Extract<
   'base' | 'currency' | 'numeric'
 >;
 /**
+ * The table header component represents a single column header within a table header row. Use table header as a child of table header row to define column headings and optionally enable column sorting.
+ *
+ * Table header provides semantic meaning for screen readers and can include sorting controls when configured. Each header corresponds to a column in the table body.
  * @publicDocs
  */
 export interface TableHeaderProps
@@ -8679,6 +8861,10 @@ declare const tableHeadersSharedDataSymbol: unique symbol;
  */
 export type ActualTableVariant = 'table' | 'list';
 
+/**
+ * Configure the following properties on the table component.
+ * @publicDocs
+ */
 declare class Table extends PreactCustomElement implements TableProps {
   accessor variant: TableProps['variant'];
   accessor loading: TableProps['loading'];
@@ -8733,10 +8919,19 @@ export interface TableJSXProps
 }
 
 /**
+ * The table body component represents the main content area of a table, containing the data rows. Use table body as a child of table to structure your table data, with each table row within the body representing a single record or entry.
+ *
+ * Table body must contain table row components, which in turn contain table cell components for the actual data values.
  * @publicDocs
  */
 export interface TableBodyProps extends TableBodyProps$1 {}
 
+/**
+ * The table body component represents the main content area of a table, containing the data rows. Use table body as a child of table to structure your table data, with each table row within the body representing a single record or entry.
+ *
+ * Table body must contain table row components, which in turn contain table cell components for the actual data values.
+ * @publicDocs
+ */
 declare class TableBody extends PreactCustomElement implements TableBodyProps {
   constructor();
 }
@@ -8769,12 +8964,21 @@ export interface TableBodyJSXProps
 }
 
 /**
+ * The table cell component represents a single data cell within a table row. Use table cell as a child of table row to display individual data values, with each cell corresponding to a column in the table.
+ *
+ * Table cell automatically inherits styling and alignment from its parent table structure and supports text content or other inline components.
  * @publicDocs
  */
 export interface TableCellProps extends TableCellProps$1 {}
 
 declare const headerFormatSymbol: unique symbol;
 
+/**
+ * The table cell component represents a single data cell within a table row. Use table cell as a child of table row to display individual data values, with each cell corresponding to a column in the table.
+ *
+ * Table cell automatically inherits styling and alignment from its parent table structure and supports text content or other inline components.
+ * @publicDocs
+ */
 declare class TableCell extends PreactCustomElement implements TableCellProps {
   constructor();
   /** @private */
@@ -8809,6 +9013,12 @@ export interface TableCellJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * The table header component represents a single column header within a table header row. Use table header as a child of table header row to define column headings and optionally enable column sorting.
+ *
+ * Table header provides semantic meaning for screen readers and can include sorting controls when configured. Each header corresponds to a column in the table body.
+ * @publicDocs
+ */
 declare class TableHeader
   extends PreactCustomElement
   implements TableHeaderProps
@@ -8845,10 +9055,19 @@ export interface TableHeaderJSXProps
 }
 
 /**
+ * The table header row component represents the header row of a table, containing column headings. Use table header row as the first child of table (before table body) to define the table structure and provide column labels.
+ *
+ * Table header row must contain table header components for each column. These headers provide context for the data columns and can support sorting functionality.
  * @publicDocs
  */
 export interface TableHeaderRowProps extends TableHeaderRowProps$1 {}
 
+/**
+ * The table header row component represents the header row of a table, containing column headings. Use table header row as the first child of table (before table body) to define the table structure and provide column labels.
+ *
+ * Table header row must contain table header components for each column. These headers provide context for the data columns and can support sorting functionality.
+ * @publicDocs
+ */
 declare class TableHeaderRow
   extends PreactCustomElement
   implements TableHeaderRowProps
@@ -8888,11 +9107,20 @@ export interface TableHeaderRowJSXProps
 }
 
 /**
+ * The table row component represents a single row of data within a table body. Use table row as a child of table body to structure individual records or entries in the table.
+ *
+ * Table row must contain table cell components, with each cell representing a data value for the corresponding column. The number of cells should match the number of headers in the table.
  * @publicDocs
  */
 export interface TableRowProps
   extends Pick<TableRowProps$1, 'children' | 'clickDelegate'> {}
 
+/**
+ * The table row component represents a single row of data within a table body. Use table row as a child of table body to structure individual records or entries in the table.
+ *
+ * Table row must contain table cell components, with each cell representing a data value for the corresponding column. The number of cells should match the number of headers in the table.
+ * @publicDocs
+ */
 declare class TableRow extends PreactCustomElement implements TableRowProps {
   constructor();
   accessor clickDelegate: string;
@@ -8981,6 +9209,10 @@ export interface TextProps
   >;
 }
 
+/**
+ * Configure the following properties on the text component.
+ * @publicDocs
+ */
 declare class Text extends PreactCustomElement implements TextProps {
   accessor fontVariantNumeric: TextProps['fontVariantNumeric'];
   accessor color: TextProps['color'];
@@ -9045,6 +9277,10 @@ export type TextAreaProps = PreactFieldProps<
 > &
   Required<Pick<TextAreaProps$1, 'maxLength' | 'minLength' | 'rows'>>;
 
+/**
+ * Configure the following properties on the text area component.
+ * @publicDocs
+ */
 declare class TextArea
   extends PreactFieldElement<TextAreaProps['autocomplete']>
   implements TextAreaProps
@@ -9096,6 +9332,10 @@ export type TextFieldProps = PreactFieldProps<
     >
   >;
 
+/**
+ * Configure the following properties on the text field component.
+ * @publicDocs
+ */
 declare class TextField
   extends PreactFieldElement<TextFieldProps['autocomplete']>
   implements TextFieldProps
@@ -9161,6 +9401,10 @@ export interface ThumbnailProps
   >;
 }
 
+/**
+ * Configure the following properties on the thumbnail component.
+ * @publicDocs
+ */
 declare class Thumbnail extends PreactCustomElement implements ThumbnailProps {
   accessor src: ThumbnailProps['src'];
   accessor alt: ThumbnailProps['alt'];
@@ -9202,6 +9446,10 @@ export interface ThumbnailJSXProps
  */
 export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
 
+/**
+ * Configure the following properties on the tooltip component.
+ * @publicDocs
+ */
 declare class Tooltip extends PreactOverlayElement implements TooltipProps {
   constructor();
 }
@@ -9243,6 +9491,10 @@ export type URLFieldProps = PreactFieldProps<
 > &
   Required<Pick<URLFieldProps$1, 'maxLength' | 'minLength'>>;
 
+/**
+ * Configure the following properties on the URL field component.
+ * @publicDocs
+ */
 declare class URLField
   extends PreactFieldElement<URLFieldProps['autocomplete']>
   implements URLFieldProps
@@ -9284,6 +9536,10 @@ export interface URLFieldJSXProps
  */
 export interface UnorderedListProps extends UnorderedListProps$1 {}
 
+/**
+ * Configure the following properties on the unordered list component.
+ * @publicDocs
+ */
 declare class UnorderedList
   extends PreactCustomElement
   implements UnorderedListProps
@@ -9318,6 +9574,7 @@ export interface UnorderedListJSXProps
 }
 
 /**
+ * Configure the following properties on the admin action component.
  * @publicDocs
  */
 export interface AdminActionProps
@@ -9342,6 +9599,10 @@ export interface AdminActionJSXProps
   secondaryActions: ComponentChildren;
 }
 
+/**
+ * Configure the following properties on the admin action component.
+ * @publicDocs
+ */
 declare class AdminAction
   extends PreactCustomElement
   implements AdminActionProps
@@ -9376,6 +9637,7 @@ declare module 'preact' {
 }
 
 /**
+ * Configure the following properties on the admin block component.
  * @publicDocs
  */
 export interface AdminBlockProps
@@ -9389,6 +9651,10 @@ export interface AdminBlockJSXProps
   extends Partial<AdminBlockProps>,
     Pick<AdminBlockProps$1, 'id'> {}
 
+/**
+ * Configure the following properties on the admin block component.
+ * @publicDocs
+ */
 declare class AdminBlock
   extends PreactCustomElement
   implements AdminBlockProps
@@ -9419,6 +9685,7 @@ declare module 'preact' {
 }
 
 /**
+ * Configure the following properties on the admin print action component.
  * @publicDocs
  */
 export interface AdminPrintActionProps
@@ -9432,6 +9699,10 @@ export interface AdminPrintActionJSXProps
   extends Partial<AdminPrintActionProps>,
     Pick<AdminPrintActionProps$1, 'id'> {}
 
+/**
+ * Configure the following properties on the admin print action component.
+ * @publicDocs
+ */
 declare class AdminPrintAction
   extends PreactCustomElement
   implements AdminPrintActionProps
@@ -9481,6 +9752,10 @@ export interface FormJSXProps extends Partial<FormProps> {
   onReset?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
 }
 
+/**
+ * Configure the following properties on the form component.
+ * @publicDocs
+ */
 declare class Form extends PreactCustomElement implements FormProps {
   constructor();
 }
@@ -9535,6 +9810,10 @@ export interface FunctionSettingsJSXProps
 export type FunctionSettingsErrorEvent = Parameters<
   NonNullable<FunctionSettingsProps$1['onError']>
 >[0];
+/**
+ * Configure the following properties on the function settings component.
+ * @publicDocs
+ */
 declare class FunctionSettings
   extends PreactCustomElement
   implements FunctionSettingsProps
@@ -9686,6 +9965,7 @@ export type {
 };
 
 /**
+ * The avatar component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface AvatarEvents {
@@ -9704,6 +9984,7 @@ export interface AvatarEvents {
 }
 
 /**
+ * The badge component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface BadgeSlots {
@@ -9714,6 +9995,7 @@ export interface BadgeSlots {
 }
 
 /**
+ * The banner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface BannerEvents {
@@ -9728,6 +10010,7 @@ export interface BannerEvents {
 }
 
 /**
+ * The banner component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface BannerSlots {
@@ -9743,6 +10026,7 @@ export interface BannerSlots {
 }
 
 /**
+ * The box component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface BoxSlots {
@@ -9753,6 +10037,7 @@ export interface BoxSlots {
 }
 
 /**
+ * The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ButtonEvents {
@@ -9777,6 +10062,7 @@ export interface ButtonEvents {
 }
 
 /**
+ * The button component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ButtonSlots {
@@ -9787,6 +10073,7 @@ export interface ButtonSlots {
 }
 
 /**
+ * The button group component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ButtonGroupSlots {
@@ -9811,6 +10098,7 @@ export interface ButtonGroupSlots {
 }
 
 /**
+ * The checkbox component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface CheckboxEvents {
@@ -9829,6 +10117,7 @@ export interface CheckboxEvents {
 }
 
 /**
+ * The chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ChipSlots {
@@ -9843,6 +10132,7 @@ export interface ChipSlots {
 }
 
 /**
+ * The choice component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ChoiceSlots {
@@ -9866,6 +10156,7 @@ export interface ChoiceSlots {
 }
 
 /**
+ * The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ChoiceListEvents {
@@ -9884,6 +10175,7 @@ export interface ChoiceListEvents {
 }
 
 /**
+ * The choice list component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ChoiceListSlots {
@@ -9896,6 +10188,7 @@ export interface ChoiceListSlots {
 }
 
 /**
+ * The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ClickableEvents {
@@ -9920,6 +10213,7 @@ export interface ClickableEvents {
 }
 
 /**
+ * The clickable component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ClickableSlots {
@@ -9930,6 +10224,7 @@ export interface ClickableSlots {
 }
 
 /**
+ * The clickable chip component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ClickableChipEvents {
@@ -9950,6 +10245,7 @@ export interface ClickableChipEvents {
 }
 
 /**
+ * The clickable chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ClickableChipSlots {
@@ -9964,6 +10260,7 @@ export interface ClickableChipSlots {
 }
 
 /**
+ * The color field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ColorFieldEvents {
@@ -9994,6 +10291,7 @@ export interface ColorFieldEvents {
 }
 
 /**
+ * The color picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ColorPickerEvents {
@@ -10012,6 +10310,7 @@ export interface ColorPickerEvents {
 }
 
 /**
+ * The date field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface DateFieldEvents {
@@ -10052,6 +10351,7 @@ export interface DateFieldEvents {
 }
 
 /**
+ * The date picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface DatePickerEvents {
@@ -10086,6 +10386,7 @@ export interface DatePickerEvents {
 }
 
 /**
+ * The drop zone component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface DropZoneEvents {
@@ -10108,6 +10409,7 @@ export interface DropZoneEvents {
 }
 
 /**
+ * The drop zone component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface DropZoneSlots {
@@ -10118,6 +10420,7 @@ export interface DropZoneSlots {
 }
 
 /**
+ * The email field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface EmailFieldEvents {
@@ -10148,6 +10451,7 @@ export interface EmailFieldEvents {
 }
 
 /**
+ * The grid component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface GridSlots {
@@ -10158,6 +10462,7 @@ export interface GridSlots {
 }
 
 /**
+ * The grid item component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface GridItemSlots {
@@ -10168,6 +10473,7 @@ export interface GridItemSlots {
 }
 
 /**
+ * The heading component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface HeadingSlots {
@@ -10178,6 +10484,7 @@ export interface HeadingSlots {
 }
 
 /**
+ * The image component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ImageEvents {
@@ -10196,6 +10503,7 @@ export interface ImageEvents {
 }
 
 /**
+ * The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface LinkEvents {
@@ -10208,6 +10516,7 @@ export interface LinkEvents {
 }
 
 /**
+ * The link component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface LinkSlots {
@@ -10218,6 +10527,7 @@ export interface LinkSlots {
 }
 
 /**
+ * The list item component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ListItemSlots {
@@ -10228,6 +10538,7 @@ export interface ListItemSlots {
 }
 
 /**
+ * The menu component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface MenuSlots {
@@ -10238,6 +10549,7 @@ export interface MenuSlots {
 }
 
 /**
+ * The modal component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ModalEvents {
@@ -10260,6 +10572,7 @@ export interface ModalEvents {
 }
 
 /**
+ * The modal component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ModalSlots {
@@ -10282,6 +10595,7 @@ export interface ModalSlots {
 }
 
 /**
+ * The money field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface MoneyFieldEvents {
@@ -10312,6 +10626,7 @@ export interface MoneyFieldEvents {
 }
 
 /**
+ * The number field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface NumberFieldEvents {
@@ -10342,6 +10657,7 @@ export interface NumberFieldEvents {
 }
 
 /**
+ * The option component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface OptionSlots {
@@ -10352,6 +10668,7 @@ export interface OptionSlots {
 }
 
 /**
+ * The option group component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface OptionGroupSlots {
@@ -10362,6 +10679,7 @@ export interface OptionGroupSlots {
 }
 
 /**
+ * The ordered list component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface OrderedListSlots {
@@ -10372,6 +10690,7 @@ export interface OrderedListSlots {
 }
 
 /**
+ * The page component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface PageSlots {
@@ -10407,6 +10726,7 @@ export interface PageSlots {
 }
 
 /**
+ * The paragraph component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ParagraphSlots {
@@ -10417,6 +10737,7 @@ export interface ParagraphSlots {
 }
 
 /**
+ * The password field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface PasswordFieldEvents {
@@ -10447,6 +10768,7 @@ export interface PasswordFieldEvents {
 }
 
 /**
+ * The popover component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface PopoverEvents {
@@ -10477,6 +10799,7 @@ export interface PopoverEvents {
 }
 
 /**
+ * The popover component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface PopoverSlots {
@@ -10487,6 +10810,7 @@ export interface PopoverSlots {
 }
 
 /**
+ * The query container component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface QueryContainerSlots {
@@ -10497,6 +10821,7 @@ export interface QueryContainerSlots {
 }
 
 /**
+ * The search field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface SearchFieldEvents {
@@ -10527,6 +10852,7 @@ export interface SearchFieldEvents {
 }
 
 /**
+ * The section component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface SectionSlots {
@@ -10537,6 +10863,7 @@ export interface SectionSlots {
 }
 
 /**
+ * The select component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface SelectEvents {
@@ -10555,6 +10882,7 @@ export interface SelectEvents {
 }
 
 /**
+ * The select component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface SelectSlots {
@@ -10565,6 +10893,7 @@ export interface SelectSlots {
 }
 
 /**
+ * The stack component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface StackSlots {
@@ -10575,6 +10904,7 @@ export interface StackSlots {
 }
 
 /**
+ * The switch component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface SwitchEvents {
@@ -10593,6 +10923,7 @@ export interface SwitchEvents {
 }
 
 /**
+ * The table component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface TableEvents {
@@ -10607,6 +10938,7 @@ export interface TableEvents {
 }
 
 /**
+ * The table component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TableSlots {
@@ -10625,6 +10957,7 @@ export interface TableSlots {
 }
 
 /**
+ * The table body component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TableBodySlots {
@@ -10637,6 +10970,7 @@ export interface TableBodySlots {
 }
 
 /**
+ * The table cell component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TableCellSlots {
@@ -10649,6 +10983,7 @@ export interface TableCellSlots {
 }
 
 /**
+ * The table header component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TableHeaderSlots {
@@ -10661,6 +10996,7 @@ export interface TableHeaderSlots {
 }
 
 /**
+ * The table header row component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TableHeaderRowSlots {
@@ -10673,6 +11009,7 @@ export interface TableHeaderRowSlots {
 }
 
 /**
+ * The table row component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TableRowSlots {
@@ -10685,6 +11022,7 @@ export interface TableRowSlots {
 }
 
 /**
+ * The text component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TextSlots {
@@ -10695,6 +11033,7 @@ export interface TextSlots {
 }
 
 /**
+ * The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface TextAreaEvents {
@@ -10725,6 +11064,7 @@ export interface TextAreaEvents {
 }
 
 /**
+ * The text field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface TextFieldEvents {
@@ -10755,6 +11095,7 @@ export interface TextFieldEvents {
 }
 
 /**
+ * The text field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TextFieldSlots {
@@ -10767,6 +11108,7 @@ export interface TextFieldSlots {
 }
 
 /**
+ * The thumbnail component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ThumbnailEvents {
@@ -10785,6 +11127,7 @@ export interface ThumbnailEvents {
 }
 
 /**
+ * The tooltip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TooltipSlots {
@@ -10797,6 +11140,7 @@ export interface TooltipSlots {
 }
 
 /**
+ * The URL field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface URLFieldEvents {
@@ -10827,6 +11171,7 @@ export interface URLFieldEvents {
 }
 
 /**
+ * The unordered list component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface UnorderedListSlots {
@@ -10837,6 +11182,7 @@ export interface UnorderedListSlots {
 }
 
 /**
+ * The admin action component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface AdminActionSlots {
@@ -10853,6 +11199,7 @@ export interface AdminActionSlots {
 }
 
 /**
+ * The form component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface FormEvents {
@@ -10867,6 +11214,7 @@ export interface FormEvents {
 }
 
 /**
+ * The function settings component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface FunctionSettingsEvents {
