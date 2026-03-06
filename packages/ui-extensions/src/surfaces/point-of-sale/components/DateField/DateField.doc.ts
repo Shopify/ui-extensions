@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'The date field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).',
+        'The date field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
       type: 'DateFieldEvents',
     },
   ],
