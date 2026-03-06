@@ -31,13 +31,13 @@ const data: AdminReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description: 'Configure the following properties on the image component.',
       type: 'Image',
     },
     {
       title: 'Events',
       description:
-        'The image component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The image component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).',
       type: 'ImageEvents',
     },
   ],

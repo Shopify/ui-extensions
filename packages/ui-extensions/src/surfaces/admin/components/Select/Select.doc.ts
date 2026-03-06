@@ -39,13 +39,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'The select component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The select component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).',
       type: 'SelectEvents',
     },
     {
       title: 'Slots',
       description:
-        'The select component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The select component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).',
       type: 'SelectSlots',
     },
     {
@@ -56,7 +56,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The option component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The option component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).',
       type: 'OptionSlots',
     },
     {
@@ -67,7 +67,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The option group component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The option group component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).',
       type: 'OptionGroupSlots',
     },
   ],
