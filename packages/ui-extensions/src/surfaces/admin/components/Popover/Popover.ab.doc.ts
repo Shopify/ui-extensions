@@ -11,9 +11,9 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Use for secondary or less important information and actions since they're hidden until triggered.
-- Contain actions that share a relationship to each other.
-- Be triggered by a clearly labeled default or tertiary button.`,
+      sectionContent: `- **Reserve for secondary content:** Use for secondary or less important information and actions since they're hidden until triggered.
+- **Group related actions:** Contain actions that share a relationship to each other.
+- **Use clear trigger labels:** Be triggered by a clearly labeled default or tertiary button.`,
     },
     {
       title: 'Limitations',

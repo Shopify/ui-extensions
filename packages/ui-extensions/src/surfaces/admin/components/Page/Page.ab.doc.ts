@@ -11,11 +11,10 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Best practices',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
-      sectionContent: `- Always provide a title that describes the current page.
-- Include breadcrumbs when the page is part of a flow.
-- Include page actions in the header only if they are relevant to the entire page.
-- Include no more than one primary action and 3 secondary actions per page.
-- Don't include any actions at the bottom of the page.`,
+      sectionContent: `- **Use breadcrumbs for navigation:** Include breadcrumbs when the page is part of a flow.
+- **Scope header actions appropriately:** Include page actions in the header only if they are relevant to the entire page.
+- **Limit action count:** Include no more than one primary action and 3 secondary actions per page.
+- **Avoid bottom actions:** Don't include any actions at the bottom of the page.`,
     },
     {
       title: 'Limitations',
