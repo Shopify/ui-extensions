@@ -24,7 +24,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
    */
   ref?: Ref<TClass>;
   /**
-   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
+   * The named [slot](/docs/api/app-ui/using-polaris-web-components#slots) this element should be placed in when used within a web component.
    */
   slot?: Lowercase<string>;
 }
