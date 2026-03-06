@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   definitions: [
     {
-      title: 'DatePicker',
+      title: 'Properties',
       description:
         'Configure the following properties on the date picker component.',
       type: 'DatePicker',
@@ -29,7 +29,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'The date picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The date picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).',
       type: 'DatePickerEvents',
     },
   ],
