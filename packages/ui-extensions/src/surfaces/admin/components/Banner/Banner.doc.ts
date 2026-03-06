@@ -36,13 +36,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'The banner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The banner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).',
       type: 'BannerEvents',
     },
     {
       title: 'Slots',
       description:
-        'The banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).',
       type: 'BannerSlots',
     },
   ],
