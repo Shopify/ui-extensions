@@ -38,7 +38,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Properties',
-      description: '',
+      description: 'Configure the properties for the thumbnail component.',
       type: 'Thumbnail',
     },
     {
