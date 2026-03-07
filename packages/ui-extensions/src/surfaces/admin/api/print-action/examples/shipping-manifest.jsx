@@ -8,6 +8,7 @@ export default async () => {
 function Extension() {
   const {data} = shopify;
   const [orders, setOrders] = useState([]);
+  const [printUrl, setPrintUrl] = useState(null);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -31,24 +32,22 @@ function Extension() {
       );
 
       setOrders(ordersData.nodes);
+
+      const response = await fetch('/api/generate-shipping-manifest', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({orders: ordersData.nodes}),
+      });
+
+      const {printUrl: url} = await response.json();
+      setPrintUrl(url);
     };
 
     fetchOrders();
   }, [data]);
 
-  const handleGenerate = async () => {
-    const response = await fetch('/api/generate-shipping-manifest', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({orders}),
-    });
-
-    const {printUrl} = await response.json();
-    return printUrl;
-  };
-
   return (
-    <s-admin-print-action onPrint={handleGenerate}>
+    <s-admin-print-action src={printUrl}>
       <s-text>Shipping manifest for {orders.length} orders</s-text>
       {orders.map((order) => (
         <s-text key={order.id}>{order.name}</s-text>
