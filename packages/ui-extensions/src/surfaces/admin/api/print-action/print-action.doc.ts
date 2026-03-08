@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
     'the [admin print action](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/admin-print-action) component.',
   defaultExample: {
     description:
-      "Generate a packing slip PDF for selected orders by calling your app's backend service. This example shows extracting order IDs from the selected resources, making an API call to your backend to generate the PDF, and returning the printable URL to display the document.",
+      "Generate a packing slip PDF for selected orders by calling your app's backend service. This example shows extracting order IDs from the selected resources, making an API call to your backend to generate the PDF, and setting the printable URL as the `src` prop to display the document.",
     codeblock: {
       title: 'Generate packing slip',
       tabs: [
@@ -81,7 +81,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent:
-        "- Print action extensions must return a URL string. You can't render the print UI directly within the extension or control the print preview appearance.\n" +
+        "- Print action extensions must provide a URL string through the `src` prop. You can't render the print UI directly within the extension or control the print preview appearance.\n" +
         '- URLs must be publicly accessible with CORS headers allowing the Shopify admin origin. Authentication tokens in URLs can expire while merchants have the preview open.\n' +
         "- Extensions don't have access to printer settings. You can't configure print options like page orientation, margins, or paper size. Merchants control these through browser print dialogs.",
     },
