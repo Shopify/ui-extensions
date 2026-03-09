@@ -9,7 +9,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Metafields',
+  name: 'Metafields API',
   description: 'The API for interacting with metafields.',
   isVisualComponent: false,
   requires: REQUIRES_PROTECTED_CUSTOMER_DATA,

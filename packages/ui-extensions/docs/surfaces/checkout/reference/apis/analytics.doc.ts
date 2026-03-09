@@ -7,7 +7,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Analytics',
+  name: 'Analytics API',
   description: 'The API for interacting with web pixels.',
   isVisualComponent: false,
   category: 'APIs',

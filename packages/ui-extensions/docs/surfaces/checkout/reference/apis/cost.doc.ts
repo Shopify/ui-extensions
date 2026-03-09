@@ -6,7 +6,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Cost',
+  name: 'Cost API',
   description: 'The API for interacting with the cost of a checkout.',
   isVisualComponent: false,
   category: 'APIs',
