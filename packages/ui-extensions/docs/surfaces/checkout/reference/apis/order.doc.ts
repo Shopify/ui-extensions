@@ -16,7 +16,7 @@ import {
 interface OrderStatusApiEmpty {}
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Order',
+  name: 'Order API',
   description:
     'The API for interacting with the order confirmation, available on the **Thank You** page.',
   isVisualComponent: false,
