@@ -64,7 +64,8 @@ export interface AppMetafieldEntryTarget {
     | 'variant'
     | 'company'
     | 'companyLocation'
-    | 'cart';
+    | 'cart'
+    | 'order';
 
   /** The numeric owner ID that is associated with the metafield. */
   id: string;
