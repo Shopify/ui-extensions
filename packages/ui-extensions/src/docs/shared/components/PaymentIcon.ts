@@ -5,7 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description:
     'Displays icons representing payment methods. Use to visually communicate available or saved payment options clearly',
   category: 'Polaris web components',
-  subCategory: 'Media',
+  subCategory: 'Media and visuals',
   related: [],
 };
 
