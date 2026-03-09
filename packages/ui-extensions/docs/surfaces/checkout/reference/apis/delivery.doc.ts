@@ -8,7 +8,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Delivery',
+  name: 'Delivery API',
   description: `
   The APIs for interacting with delivery and shipping options.
 

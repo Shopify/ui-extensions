@@ -7,7 +7,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Note',
+  name: 'Note API',
   description: 'The API for interacting with the note applied to checkout.',
   isVisualComponent: false,
   category: 'APIs',

@@ -7,7 +7,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Cart Instructions',
+  name: 'Cart Instructions API',
   description: 'Instructions used to create the checkout.',
   isVisualComponent: false,
   category: 'APIs',

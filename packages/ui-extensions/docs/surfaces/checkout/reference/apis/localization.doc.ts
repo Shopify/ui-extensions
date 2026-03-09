@@ -7,7 +7,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Localization',
+  name: 'Localization API',
   description: 'The APIs for localizing your extension.',
   isVisualComponent: false,
   category: 'APIs',

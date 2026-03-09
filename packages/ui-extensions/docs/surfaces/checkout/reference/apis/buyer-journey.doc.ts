@@ -7,7 +7,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Buyer Journey',
+  name: 'Buyer Journey API',
   description: 'The API for interacting with the buyer journey.',
   isVisualComponent: false,
   category: 'APIs',

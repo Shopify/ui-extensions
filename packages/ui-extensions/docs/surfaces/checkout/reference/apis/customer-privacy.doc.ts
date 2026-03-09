@@ -8,7 +8,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Customer Privacy',
+  name: 'Customer Privacy API',
   description:
     "The API for interacting with a customer's privacy consent. It is similar to the [Customer Privacy API in storefront](/docs/api/customer-privacy).",
   isVisualComponent: false,
