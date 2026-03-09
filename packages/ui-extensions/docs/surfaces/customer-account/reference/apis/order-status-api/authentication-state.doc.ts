@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'useAuthenticationState',
       description: 'Returns authentication state of Order status page.',
-      type: 'UseAuthenticationStateGeneratedType',
+      type: 'UseApiGeneratedType',
     },
   ],
   related: [],
