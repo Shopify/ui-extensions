@@ -14,7 +14,7 @@
           "tabs": [
             {
               "title": "shopify.extension.toml",
-              "code": "api_version =\"2026-01\"\n\n[[extensions]]\ntype = \"ui_extension\"\nname = \"My checkout extension\"\nhandle = \"checkout-ui\"\nuid = \"fddfc370-27c7-c30f-4ee0-a927194e2accadefd40c\"\n\n[[extensions.targeting]]\ntarget = \"purchase.checkout.block.render\"\nmodule = \"./Checkout.jsx\"\n\n[extensions.capabilities]\nnetwork_access = true\nblock_progress = true\napi_access = true\n\n[extensions.capabilities.collect_buyer_consent]\nsms_marketing = true\ncustomer_privacy = true\n\n[[extensions.metafields]]\nnamespace = \"my-namespace\"\nkey = \"my-key\"\n[[extensions.metafields]]\nnamespace = \"my-namespace\"\nkey = \"my-other-key\"\n\n[extensions.settings]\n[[extensions.settings.fields]]\nkey = \"field_key\"\ntype = \"boolean\"\nname = \"field-name\"\n[[extensions.settings.fields]]\nkey = \"field_key_2\"\ntype = \"number_integer\"\nname = \"field-name-2\"\n",
+              "code": "api_version =\"2026-04\"\n\n[[extensions]]\ntype = \"ui_extension\"\nname = \"My checkout extension\"\nhandle = \"checkout-ui\"\nuid = \"fddfc370-27c7-c30f-4ee0-a927194e2accadefd40c\"\n\n[[extensions.targeting]]\ntarget = \"purchase.checkout.block.render\"\nmodule = \"./Checkout.jsx\"\n\n[extensions.capabilities]\nnetwork_access = true\nblock_progress = true\napi_access = true\n\n[extensions.capabilities.collect_buyer_consent]\nsms_marketing = true\ncustomer_privacy = true\n\n[[extensions.metafields]]\nnamespace = \"my-namespace\"\nkey = \"my-key\"\n[[extensions.metafields]]\nnamespace = \"my-namespace\"\nkey = \"my-other-key\"\n\n[extensions.settings]\n[[extensions.settings.fields]]\nkey = \"field_key\"\ntype = \"boolean\"\nname = \"field-name\"\n[[extensions.settings.fields]]\nkey = \"field_key_2\"\ntype = \"number_integer\"\nname = \"field-name-2\"\n",
               "language": "toml"
             }
           ]
@@ -321,7 +321,7 @@
           "tabs": [
             {
               "title": "shopify.extension.toml",
-              "code": "api_version = \"2026-01\"\n\n[[extensions]]\ntype = \"ui_extension\"\nname = \"My checkout extension\"\nhandle = \"checkout-ui\"\nuid = \"fddfc370-27c7-c30f-4ee0-a927194e2accadefd40c\"\n\n[extensions.settings]\n\n[[extensions.settings.fields]]\nkey = \"banner_title\"\ntype = \"single_line_text_field\"\nname = \"Banner title\"\ndescription = \"Enter a title for the banner.\"\n\n[[extensions.settings.fields.validations]]\nname = \"min\"\nvalue = \"5\"\n[[extensions.settings.fields.validations]]\nname = \"max\"\nvalue = \"20\"\n",
+              "code": "api_version = \"2026-04\"\n\n[[extensions]]\ntype = \"ui_extension\"\nname = \"My checkout extension\"\nhandle = \"checkout-ui\"\nuid = \"fddfc370-27c7-c30f-4ee0-a927194e2accadefd40c\"\n\n[extensions.settings]\n\n[[extensions.settings.fields]]\nkey = \"banner_title\"\ntype = \"single_line_text_field\"\nname = \"Banner title\"\ndescription = \"Enter a title for the banner.\"\n\n[[extensions.settings.fields.validations]]\nname = \"min\"\nvalue = \"5\"\n[[extensions.settings.fields.validations]]\nname = \"max\"\nvalue = \"20\"\n",
               "language": "toml"
             }
           ]
@@ -576,7 +576,7 @@
           "title": "shopify.extension.toml",
           "tabs": [
             {
-              "code": "api_version = \"2026-01\"\n\n[[extensions]]\ntype = \"ui_extension\"\nname = \"Your checkout extension\"\nhandle = \"checkout-ui\"\nuid = \"fddfc370-27c7-c30f-4ee0-a927194e2accadefd40c\"\n\n[[extensions.targeting]]\ntarget = \"purchase.checkout.block.render\"\nmodule = \"./Extension.jsx\"\n",
+              "code": "api_version = \"2026-04\"\n\n[[extensions]]\ntype = \"ui_extension\"\nname = \"Your checkout extension\"\nhandle = \"checkout-ui\"\nuid = \"fddfc370-27c7-c30f-4ee0-a927194e2accadefd40c\"\n\n[[extensions.targeting]]\ntarget = \"purchase.checkout.block.render\"\nmodule = \"./Extension.jsx\"\n",
               "language": "toml"
             }
           ]
@@ -771,7 +771,7 @@
           "tabs": [
             {
               "title": "shopify.extension.toml",
-              "code": "api_version = \"2026-01\"\n\n[[extensions]]\nname = \"your-extension\"\nhandle = \"your-extension\"\ntype = \"ui_extension\"\n\n# Contents of your existing file...",
+              "code": "api_version = \"2026-04\"\n\n[[extensions]]\nname = \"your-extension\"\nhandle = \"your-extension\"\ntype = \"ui_extension\"\n\n# Contents of your existing file...",
               "language": "toml"
             }
           ]
