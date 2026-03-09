@@ -22,6 +22,7 @@ import {ApiVersion} from '../../../../shared';
  * The storage backend is implemented with `localStorage` and
  * should persist across the buyer's checkout session.
  * However, data persistence isn't guaranteed.
+ * @publicDocs
  */
 export interface Storage {
   /**
@@ -55,11 +56,13 @@ export interface Storage {
  * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
  *
  * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
+ * @publicDocs
  */
 export type Capability = 'api_access' | 'network_access' | 'block_progress';
 
 /**
  * Meta information about an extension target.
+ * @publicDocs
  */
 export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
@@ -127,6 +130,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   version?: string;
 }
 
+/** @publicDocs */
 export interface Editor {
   /**
    * Indicates whether the extension is rendering in the checkout editor.
@@ -136,6 +140,7 @@ export interface Editor {
 
 /**
  * Metadata associated with the checkout.
+ * @publicDocs
  */
 export interface Metafield {
   /**
@@ -162,6 +167,7 @@ export interface Metafield {
 
 /**
  * Represents a custom metadata attached to a resource.
+ * @publicDocs
  */
 export interface AppMetafield {
   /** The key name of a metafield. */
@@ -182,6 +188,7 @@ export interface AppMetafield {
 
 /**
  * Represents a custom metadata attached to a resource.
+ * @publicDocs
  */
 export interface CartMetafield {
   /** The key name of a metafield. */
@@ -199,6 +206,7 @@ export interface CartMetafield {
 
 /**
  * The metafield owner.
+ * @publicDocs
  */
 export interface AppMetafieldEntryTarget {
   /**
@@ -221,6 +229,7 @@ export interface AppMetafieldEntryTarget {
 
 /**
  * A metafield associated with the shop or a resource on the checkout.
+ * @publicDocs
  */
 export interface AppMetafieldEntry {
   /**
@@ -236,12 +245,14 @@ export interface AppMetafieldEntry {
 
 export type {ApiVersion} from '../../../../shared';
 
+/** @publicDocs */
 export type Version = string;
 
 /**
  * This returns a translated string matching a key in a locale file.
  *
  * @example translate("banner.title")
+ * @publicDocs
  */
 export type I18nTranslate<ReplacementType = string> = (
   key: string,
@@ -250,6 +261,7 @@ export type I18nTranslate<ReplacementType = string> = (
   ? string
   : (string | ReplacementType)[];
 
+/** @publicDocs */
 export interface I18n {
   /**
    * Returns a localized number.
@@ -306,6 +318,7 @@ export interface I18n {
   translate: I18nTranslate;
 }
 
+/** @publicDocs */
 export interface Language {
   /**
    * The BCP-47 language tag. It may contain a dash followed by an ISO 3166-1 alpha-2 region code.
@@ -317,6 +330,7 @@ export interface Language {
   isoCode: string;
 }
 
+/** @publicDocs */
 export interface Currency {
   /**
    * The ISO-4217 code for this currency.
@@ -325,6 +339,7 @@ export interface Currency {
   isoCode: CurrencyCode;
 }
 
+/** @publicDocs */
 export interface Country {
   /**
    * The ISO-3166-1 code for this country.
@@ -333,6 +348,7 @@ export interface Country {
   isoCode: CountryCode;
 }
 
+/** @publicDocs */
 export interface Market {
   /**
    * A globally-unique identifier for a market.
@@ -345,6 +361,7 @@ export interface Market {
   handle: string;
 }
 
+/** @publicDocs */
 export interface Localization {
   /**
    * The currency that the buyer sees for money amounts in the checkout.
@@ -588,12 +605,14 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   version: Version;
 }
 
+/** @publicDocs */
 export interface Ui {
   overlay: {
     close(overlayId: string): void;
   };
 }
 
+/** @publicDocs */
 export interface SessionToken {
   /**
    * Requests a session token that hasn't expired. You should call this method every
@@ -604,6 +623,7 @@ export interface SessionToken {
   get(): Promise<string>;
 }
 
+/** @publicDocs */
 export interface BuyerIdentity {
   /**
    * The buyer's customer account. The value is undefined if the buyer isn’t a
@@ -641,6 +661,7 @@ export interface BuyerIdentity {
 
 /**
  * Information about a company that the business customer is purchasing on behalf of.
+ * @publicDocs
  */
 export interface PurchasingCompany {
   /**
@@ -657,6 +678,7 @@ export interface PurchasingCompany {
   location: CompanyLocation;
 }
 
+/** @publicDocs */
 export interface Company {
   /**
    * The company ID.
@@ -678,6 +700,7 @@ export interface Company {
   externalId?: string;
 }
 
+/** @publicDocs */
 export interface CompanyLocation {
   /**
    * The company location ID.
@@ -699,6 +722,7 @@ export interface CompanyLocation {
   externalId?: string;
 }
 
+/** @publicDocs */
 export interface AppliedGiftCard {
   /**
    * The last four characters of the applied gift card's code.
@@ -716,6 +740,7 @@ export interface AppliedGiftCard {
   balance: Money;
 }
 
+/** @publicDocs */
 export interface Shop {
   /**
    * The shop ID.
@@ -736,6 +761,7 @@ export interface Shop {
   myshopifyDomain: string;
 }
 
+/** @publicDocs */
 export interface CartCost {
   /**
    * A `Money` value representing the subtotal value of the items in the cart at the current
@@ -765,6 +791,7 @@ export interface CartCost {
   totalAmount: StatefulRemoteSubscribable<Money>;
 }
 
+/** @publicDocs */
 export interface CartLine {
   /**
    * These line item IDs are not stable at the moment, they might change after
@@ -808,6 +835,7 @@ export interface CartLine {
 
 type CartLineComponentType = CartBundleLineComponent;
 
+/** @publicDocs */
 export interface CartBundleLineComponent {
   type: 'bundle';
 
@@ -843,6 +871,7 @@ export interface CartBundleLineComponent {
   attributes: Attribute[];
 }
 
+/** @publicDocs */
 export interface CartLineCost {
   /**
    * The total amount after reductions the buyer can expect to pay that is directly attributable to a single
@@ -851,6 +880,7 @@ export interface CartLineCost {
   totalAmount: Money;
 }
 
+/** @publicDocs */
 export interface Money {
   /**
    * The price amount.
@@ -863,8 +893,10 @@ export interface Money {
   currencyCode: CurrencyCode;
 }
 
+/** @publicDocs */
 export type Merchandise = ProductVariant;
 
+/** @publicDocs */
 export interface BaseMerchandise {
   /**
    * The merchandise ID.
@@ -872,6 +904,7 @@ export interface BaseMerchandise {
   id: string;
 }
 
+/** @publicDocs */
 export interface ProductVariant extends BaseMerchandise {
   type: 'variant';
 
@@ -918,6 +951,7 @@ export interface ProductVariant extends BaseMerchandise {
   sellingPlan?: SellingPlan;
 }
 
+/** @publicDocs */
 export interface Product {
   /**
    * A globally-unique identifier.
@@ -935,6 +969,7 @@ export interface Product {
   productType: string;
 }
 
+/** @publicDocs */
 export interface ImageDetails {
   /**
    * The image URL.
@@ -947,6 +982,7 @@ export interface ImageDetails {
   altText?: string;
 }
 
+/** @publicDocs */
 export interface SelectedOption {
   /**
    * The name of the merchandise option.
@@ -961,6 +997,7 @@ export interface SelectedOption {
 
 /**
  * A payment option presented to the buyer.
+ * @publicDocs
  */
 export interface PaymentOption {
   /**
@@ -1003,6 +1040,7 @@ export interface PaymentOption {
 
 /**
  * A payment option selected by the buyer.
+ * @publicDocs
  */
 export interface SelectedPaymentOption {
   /**
@@ -1013,17 +1051,21 @@ export interface SelectedPaymentOption {
   handle: string;
 }
 
+/** @publicDocs */
 export interface CartDiscountCode {
   /**
    * The code for the discount
    */
   code: string;
 }
+
+/** @publicDocs */
 export type CartDiscountAllocation =
   | CartCodeDiscountAllocation
   | CartAutomaticDiscountAllocation
   | CartCustomDiscountAllocation;
 
+/** @publicDocs */
 export interface CartDiscountAllocationBase {
   /**
    * The money amount that has been discounted from the order
@@ -1031,6 +1073,7 @@ export interface CartDiscountAllocationBase {
   discountedAmount: Money;
 }
 
+/** @publicDocs */
 export interface CartCodeDiscountAllocation extends CartDiscountAllocationBase {
   /**
    * The code for the discount
@@ -1043,6 +1086,7 @@ export interface CartCodeDiscountAllocation extends CartDiscountAllocationBase {
   type: 'code';
 }
 
+/** @publicDocs */
 export interface CartAutomaticDiscountAllocation
   extends CartDiscountAllocationBase {
   /**
@@ -1056,6 +1100,7 @@ export interface CartAutomaticDiscountAllocation
   type: 'automatic';
 }
 
+/** @publicDocs */
 export interface CartCustomDiscountAllocation
   extends CartDiscountAllocationBase {
   /**
@@ -1073,6 +1118,7 @@ export interface CartCustomDiscountAllocation
  * Information about a customer who has previously purchased from this shop.
  *
  * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+ * @publicDocs
  */
 export interface Customer {
   /**
@@ -1135,10 +1181,12 @@ export interface Customer {
   storeCreditAccounts: StoreCreditAccount[];
 }
 
+/** @publicDocs */
 export type CheckoutToken = string;
 
 /**
  * Settings describing the behavior of the buyer's checkout.
+ * @publicDocs
  */
 export interface CheckoutSettings {
   /**
@@ -1157,6 +1205,7 @@ export interface CheckoutSettings {
 
 /**
  * Settings describing the behavior of the shipping address.
+ * @publicDocs
  */
 export interface ShippingAddressSettings {
   /**
@@ -1167,6 +1216,7 @@ export interface ShippingAddressSettings {
 
 /**
  * Represents the payment terms template object.
+ * @publicDocs
  */
 export interface PaymentTermsTemplate {
   /**
@@ -1190,6 +1240,7 @@ export interface PaymentTermsTemplate {
 
 /**
  * Information about a Store Credit Account.
+ * @publicDocs
  */
 export interface StoreCreditAccount {
   /**
@@ -1205,11 +1256,13 @@ export interface StoreCreditAccount {
 
 /**
  * The merchant-defined setting values for the extension.
+ * @publicDocs
  */
 export interface ExtensionSettings {
   [key: string]: string | number | boolean | undefined;
 }
 
+/** @publicDocs */
 export interface Analytics {
   /**
    * Publish method to emit analytics events to [Web Pixels](https://shopify.dev/docs/apps/marketing).
@@ -1220,6 +1273,7 @@ export interface Analytics {
 /**
  * Represents the delivery information and options available for one or
  * more cart lines.
+ * @publicDocs
  */
 export interface DeliveryGroup {
   /**
@@ -1250,11 +1304,13 @@ export interface DeliveryGroup {
 
 /**
  * The possible types of a delivery group.
+ * @publicDocs
  */
 export type DeliveryGroupType = 'oneTimePurchase' | 'subscription';
 
 /**
  * Represents a reference to a cart line.
+ * @publicDocs
  */
 export interface CartLineReference {
   /**
@@ -1265,6 +1321,7 @@ export interface CartLineReference {
 
 /**
  * Represents a reference to a delivery option.
+ * @publicDocs
  */
 export interface DeliveryOptionReference {
   /**
@@ -1275,6 +1332,7 @@ export interface DeliveryOptionReference {
 
 /**
  * Represents a base interface for a single delivery option.
+ * @publicDocs
  */
 export interface DeliveryOption {
   /**
@@ -1295,6 +1353,7 @@ export interface DeliveryOption {
 
 /**
  * Represents a delivery option that is a shipping option.
+ * @publicDocs
  */
 export interface ShippingOption extends DeliveryOption {
   /**
@@ -1323,6 +1382,7 @@ export interface ShippingOption extends DeliveryOption {
   deliveryEstimate: DeliveryEstimate;
 }
 
+/** @publicDocs */
 export interface DeliveryEstimate {
   /**
    * The estimated time in transit for the delivery in seconds.
@@ -1330,6 +1390,7 @@ export interface DeliveryEstimate {
   timeInTransit?: NumberRange;
 }
 
+/** @publicDocs */
 export interface ShippingOptionCarrier {
   /**
    * The name of the carrier.
@@ -1337,6 +1398,7 @@ export interface ShippingOptionCarrier {
   name?: string;
 }
 
+/** @publicDocs */
 export interface PickupPointOption extends DeliveryOption {
   /**
    * The type of this delivery option.
@@ -1364,6 +1426,7 @@ export interface PickupPointOption extends DeliveryOption {
   location: PickupPointLocation;
 }
 
+/** @publicDocs */
 export interface PickupLocationOption extends DeliveryOption {
   /**
    * The type of this delivery option.
@@ -1417,6 +1480,7 @@ interface PickupPointCarrier {
   name?: string;
 }
 
+/** @publicDocs */
 export interface NumberRange {
   /**
    * The lower bound of the number range.
@@ -1431,6 +1495,7 @@ export interface NumberRange {
 
 /**
  * Information about an order that was placed.
+ * @publicDocs
  */
 export interface Order {
   /**

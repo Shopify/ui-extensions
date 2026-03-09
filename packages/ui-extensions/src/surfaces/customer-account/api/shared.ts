@@ -18,6 +18,7 @@ export {
 
 export type ValueOrPromise<T> = T extends PromiseLike<any> ? T : T | Promise<T>;
 
+/** @publicDocs */
 export interface SellingPlan {
   /**
    * A globally-unique identifier.
@@ -26,6 +27,7 @@ export interface SellingPlan {
   id: string;
 }
 
+/** @publicDocs */
 export interface Attribute {
   /**
    * The key for the attribute.
@@ -38,6 +40,7 @@ export interface Attribute {
   value: string;
 }
 
+/** @publicDocs */
 export interface MailingAddress {
   /**
    * The buyer's full name.
