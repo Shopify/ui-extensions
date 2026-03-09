@@ -7,7 +7,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Settings',
+  name: 'Settings API',
   description: 'The API for interacting with merchant settings.',
   isVisualComponent: false,
   category: 'APIs',

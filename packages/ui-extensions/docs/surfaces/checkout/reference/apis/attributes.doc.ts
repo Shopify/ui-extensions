@@ -9,7 +9,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Attributes',
+  name: 'Attributes API',
   description: 'The API for interacting with cart and checkout attributes.',
   isVisualComponent: false,
   category: 'APIs',

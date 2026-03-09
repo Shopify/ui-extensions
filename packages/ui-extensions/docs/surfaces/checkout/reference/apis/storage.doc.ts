@@ -7,7 +7,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Storage',
+  name: 'Storage API',
   description: 'The API for interacting with local storage.',
   isVisualComponent: false,
   category: 'APIs',

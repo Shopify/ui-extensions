@@ -7,7 +7,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Buyer Identity',
+  name: 'Buyer Identity API',
   description: 'The API for interacting with the buyer identity.',
   requires: REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2,
   isVisualComponent: false,

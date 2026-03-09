@@ -6,7 +6,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Checkout Token',
+  name: 'Checkout Token API',
   description: 'The API for interacting with the token of a checkout.',
   isVisualComponent: false,
   category: 'APIs',
