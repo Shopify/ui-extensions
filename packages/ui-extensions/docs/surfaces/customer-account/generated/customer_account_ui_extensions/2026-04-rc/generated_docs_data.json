@@ -4406,11 +4406,11 @@
                 "filePath": "src/surfaces/customer-account/api/order-status/order-status.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "type",
-                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'",
+                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order'",
                 "description": "The type of the metafield owner.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
               }
             ],
-            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
+            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
           }
         }
       }
@@ -6958,11 +6958,11 @@
                 "filePath": "src/surfaces/customer-account/api/order-status/order-status.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "type",
-                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'",
+                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order'",
                 "description": "The type of the metafield owner.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
               }
             ],
-            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
+            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
           },
           "Attribute": {
             "filePath": "src/surfaces/customer-account/api/shared.ts",
@@ -11532,11 +11532,11 @@
                 "filePath": "src/surfaces/customer-account/api/order-status/order-status.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "type",
-                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'",
+                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order'",
                 "description": "The type of the metafield owner.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
               }
             ],
-            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
+            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
           },
           "Attribute": {
             "filePath": "src/surfaces/customer-account/api/shared.ts",
@@ -14759,11 +14759,11 @@
                 "filePath": "src/surfaces/customer-account/api/order-status/order-status.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "type",
-                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'",
+                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order'",
                 "description": "The type of the metafield owner.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
               }
             ],
-            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
+            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
           },
           "Attribute": {
             "filePath": "src/surfaces/customer-account/api/shared.ts",
@@ -18579,11 +18579,11 @@
                 "filePath": "src/surfaces/customer-account/api/order-status/order-status.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "type",
-                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'",
+                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order'",
                 "description": "The type of the metafield owner.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
               }
             ],
-            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
+            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
           },
           "Attribute": {
             "filePath": "src/surfaces/customer-account/api/shared.ts",
@@ -21799,11 +21799,11 @@
                 "filePath": "src/surfaces/customer-account/api/order-status/order-status.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "type",
-                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'",
+                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order'",
                 "description": "The type of the metafield owner.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
               }
             ],
-            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
+            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
           },
           "Attribute": {
             "filePath": "src/surfaces/customer-account/api/shared.ts",
@@ -25019,11 +25019,11 @@
                 "filePath": "src/surfaces/customer-account/api/order-status/order-status.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "type",
-                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'",
+                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order'",
                 "description": "The type of the metafield owner.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
               }
             ],
-            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
+            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
           },
           "Attribute": {
             "filePath": "src/surfaces/customer-account/api/shared.ts",
@@ -28239,11 +28239,11 @@
                 "filePath": "src/surfaces/customer-account/api/order-status/order-status.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "type",
-                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'",
+                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order'",
                 "description": "The type of the metafield owner.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
               }
             ],
-            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
+            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
           },
           "Attribute": {
             "filePath": "src/surfaces/customer-account/api/shared.ts",
@@ -31481,11 +31481,11 @@
                 "filePath": "src/surfaces/customer-account/api/order-status/order-status.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "type",
-                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'",
+                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order'",
                 "description": "The type of the metafield owner.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
               }
             ],
-            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
+            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
           },
           "Attribute": {
             "filePath": "src/surfaces/customer-account/api/shared.ts",
@@ -34701,11 +34701,11 @@
                 "filePath": "src/surfaces/customer-account/api/order-status/order-status.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "type",
-                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'",
+                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order'",
                 "description": "The type of the metafield owner.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
               }
             ],
-            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
+            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
           },
           "Attribute": {
             "filePath": "src/surfaces/customer-account/api/shared.ts",
@@ -37921,11 +37921,11 @@
                 "filePath": "src/surfaces/customer-account/api/order-status/order-status.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "type",
-                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'",
+                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order'",
                 "description": "The type of the metafield owner.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
               }
             ],
-            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
+            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
           },
           "Attribute": {
             "filePath": "src/surfaces/customer-account/api/shared.ts",
@@ -43985,11 +43985,11 @@
                 "filePath": "src/surfaces/customer-account/api/order-status/order-status.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "type",
-                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'",
+                "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order'",
                 "description": "The type of the metafield owner.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
               }
             ],
-            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
+            "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The type of the metafield owner.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'\n    | 'order';\n\n  /** The numeric owner ID that is associated with the metafield. */\n  id: string;\n}"
           },
           "Attribute": {
             "filePath": "src/surfaces/customer-account/api/shared.ts",
