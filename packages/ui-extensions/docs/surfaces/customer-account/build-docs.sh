@@ -64,12 +64,20 @@ fi
 
 find ./ -name '*.doc*.js' -exec rm -r {} \;
 
+# @shopify/generate-docs v1.0.0 outputs generated_docs_data.json; downstream expects generated_docs_data_v2.json
+if [ -f "./$DOCS_PATH/generated/generated_docs_data.json" ]; then
+  cp "./$DOCS_PATH/generated/generated_docs_data.json" "./$DOCS_PATH/generated/generated_docs_data_v2.json"
+fi
+
 # Make sure https://shopify.dev URLs are relative so they work in Spin.
 # See https://github.com/Shopify/generate-docs/issues/181
-run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data_v2.json
-sed_exit=$?
-if [ $sed_exit -ne 0 ]; then
-  fail_and_exit $sed_exit
+DOCS_JSON="./$DOCS_PATH/generated/generated_docs_data_v2.json"
+if [ -f "$DOCS_JSON" ]; then
+  run_sed 's/https:\/\/shopify.dev//gi' "$DOCS_JSON"
+  sed_exit=$?
+  if [ $sed_exit -ne 0 ]; then
+    fail_and_exit $sed_exit
+  fi
 fi
 
 # Generate targets.json
@@ -83,13 +91,16 @@ fi
 if [ -d $SHOPIFY_DEV_PATH ]; then
   mkdir -p $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/customer_account_ui_extensions/$API_VERSION
   cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/customer_account_ui_extensions/$API_VERSION
-  # Replace 'unstable' with the exact API version in relative doc links
-  run_sed \
-    "s/\/docs\/api\/customer-account-ui-extensions\/unstable/\/docs\/api\/customer-account-ui-extensions\/$API_VERSION/gi" \
-    $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/customer_account_ui_extensions/$API_VERSION/generated_docs_data_v2.json
-  sed_exit=$?
-  if [ $sed_exit -ne 0 ]; then
-    fail_and_exit $sed_exit
+  # Replace 'unstable' with the exact API version in relative doc links (downstream expects generated_docs_data_v2.json)
+  DEST_DOCS_JSON="$SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/customer_account_ui_extensions/$API_VERSION/generated_docs_data_v2.json"
+  if [ -f "$DEST_DOCS_JSON" ]; then
+    run_sed \
+      "s/\/docs\/api\/customer-account-ui-extensions\/unstable/\/docs\/api\/customer-account-ui-extensions\/$API_VERSION/gi" \
+      "$DEST_DOCS_JSON"
+    sed_exit=$?
+    if [ $sed_exit -ne 0 ]; then
+      fail_and_exit $sed_exit
+    fi
   fi
   rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/customer-account-ui-extensions/$API_VERSION
 
