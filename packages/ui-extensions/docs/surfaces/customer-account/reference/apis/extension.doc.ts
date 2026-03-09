@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.title,
       description: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.description,
-      type: 'Docs_Standard_ExtensionApi',
+      type: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.type,
     },
     {
       title: 'useExtension',

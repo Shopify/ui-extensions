@@ -30,7 +30,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'useI18n',
       description:
         'Returns utilities for translating content and formatting values according to the current localization of the user.',
-      type: 'UseI18nGeneratedType',
+      type: 'UseTranslateGeneratedType',
     },
     {
       title: 'useTranslate',

@@ -31,7 +31,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'useNavigationCurrentEntry',
       description: 'Returns the live navigation current entry',
-      type: 'UseNavigationCurrentEntryGeneratedType',
+      type: 'UseApiGeneratedType',
     },
   ],
   defaultExample: {
