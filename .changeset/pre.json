@@ -5,15 +5,20 @@
     "@shopify/ui-extensions": "2026.1.0-rc.0"
   },
   "changesets": [
+    "add-admin-tools-data-target",
     "brave-falcons-perform",
     "chilly-ghosts-beam",
+    "eager-dogs-carry",
     "eleven-mammals-allow",
     "funny-moons-share",
     "hip-shirts-drum",
+    "hot-olives-act",
     "legal-eggs-roll",
     "old-geese-smoke",
     "proud-paths-listen",
+    "serious-keys-trade",
     "slimy-foxes-hide",
-    "vast-planes-flow"
+    "vast-planes-flow",
+    "wet-cycles-punch"
   ]
 }

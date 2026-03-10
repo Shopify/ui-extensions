@@ -1,5 +1,21 @@
 # @shopify/ui-extensions
 
+## 2026.1.0-rc.6
+
+### Minor Changes
+
+- [#3738](https://github.com/Shopify/ui-extensions/pull/3738) [`cf12217`](https://github.com/Shopify/ui-extensions/commit/cf12217ba05f86ecc886a3471c26afbccfce914f) Thanks [@jolenehayes](https://github.com/jolenehayes)! - Add registerName field to the Device Api
+
+- [#3641](https://github.com/Shopify/ui-extensions/pull/3641) [`9440bde`](https://github.com/Shopify/ui-extensions/commit/9440bde5390d2940befc1037370217d16455dff2) Thanks [@jonathanhamel4](https://github.com/jonathanhamel4)! - Added subscribable discounts api. Update the type for `data.id` to string to fix a previously incorrect type.
+
+### Patch Changes
+
+- [#3729](https://github.com/Shopify/ui-extensions/pull/3729) [`2920d36`](https://github.com/Shopify/ui-extensions/commit/2920d36f66735f552b6cd9fe3738f934618b7b4f) Thanks [@kbav](https://github.com/kbav)! - Add admin.app.tools.data extension target
+
+- [#3695](https://github.com/Shopify/ui-extensions/pull/3695) [`397d749`](https://github.com/Shopify/ui-extensions/commit/397d7496e9cab5634da11dca5b78a3bde1b5ffe1) Thanks [@jonathanhamel4](https://github.com/jonathanhamel4)! - Remove unsupported fields for the Discount API. Those fields will be added in a later API.
+
+- [#3730](https://github.com/Shopify/ui-extensions/pull/3730) [`280778e`](https://github.com/Shopify/ui-extensions/commit/280778e6a873f70635e2b43e4bc3ec4617cb2520) Thanks [@lrsterrett](https://github.com/lrsterrett)! - recommend merchant friendly warning for enabling checkout extension to block progress
+
 ## 2026.1.0-rc.5
 
 ### Patch Changes
