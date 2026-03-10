@@ -1,14 +1,13 @@
 import {
-  DropZone,
   reactExtension,
+  DropZone,
 } from '@shopify/ui-extensions-react/customer-account';
-import React from 'react';
 
 export default reactExtension(
   'customer-account.page.render',
-  () => <App />,
+  () => <Extension />,
 );
 
-function App() {
+function Extension() {
   return <DropZone accept="image/*" />;
 }
