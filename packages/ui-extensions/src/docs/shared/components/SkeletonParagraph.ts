@@ -5,7 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description:
     'Displays a placeholder representation of text content while it loads. Use to improve perceived performance by showing users where text will appear.',
   category: 'Polaris web components',
-  subCategory: 'Feedback and status indicators',
+  subCategory: 'Typography and content',
   related: [],
 };
 
