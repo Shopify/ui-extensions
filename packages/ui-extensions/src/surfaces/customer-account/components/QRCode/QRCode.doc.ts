@@ -55,17 +55,9 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       getExample('ui-components/qrcode-image', ['jsx', 'js']),
       getExample('ui-components/qrcode-fill-size', ['jsx', 'js']),
-      getExample('ui-components/clipboarditem-qrcode', ['jsx', 'js']),
     ],
   },
-  related: [
-    {
-      name: 'ClipboardItem',
-      subtitle: 'Component',
-      url: 'clipboarditem',
-      type: 'Component',
-    },
-  ],
+  related: [],
 };
 
 export default data;
