@@ -27,7 +27,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Docs_Page_Button_SecondaryAction',
     },
   ],
-  category: 'components',
+  category: 'UI components',
+  subCategory: 'Layout and structure',
   defaultExample: {
     image: 'page-preview.png',
     altText:

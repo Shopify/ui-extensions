@@ -27,7 +27,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Docs_CustomerAccountAction_Button_SecondaryAction',
     },
   ],
-  category: 'components',
+  category: 'UI components',
+  subCategory: 'Actions',
   defaultExample: {
     image: 'customeraccountaction-preview.png',
     altText:
