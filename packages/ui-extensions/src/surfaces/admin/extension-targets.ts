@@ -320,6 +320,14 @@ export interface ExtensionTargets {
   >;
 
   /**
+   * An action target that appears in the **More actions** menu on the discount index page when multiple discounts are selected. Use this to create workflows for bulk discount operations or batch data updates.
+   */
+  'admin.discount-index.selection-action.render': RenderExtension<
+    ActionExtensionApi<'admin.discount-index.selection-action.render'>,
+    ActionExtensionComponents
+  >;
+
+  /**
    * A selection action target that appears in the **More actions** menu on the draft order index page when multiple draft orders are selected. Use this to create workflows for bulk draft order operations, batch conversions, or mass order processing.
    */
   'admin.draft-order-index.selection-action.render': RenderExtension<
@@ -595,6 +603,14 @@ export interface ExtensionTargets {
    */
   'admin.customer-index.selection-action.should-render': RunnableExtension<
     ShouldRenderApi<'admin.customer-index.selection-action.should-render'>,
+    ShouldRenderOutput
+  >;
+
+  /**
+   * A non-rendering target that controls whether the discount index selection action appears in the **More actions** menu. Use this to conditionally show or hide your bulk action based on selection criteria, user permissions, or external data.
+   */
+  'admin.discount-index.selection-action.should-render': RunnableExtension<
+    ShouldRenderApi<'admin.discount-index.selection-action.should-render'>,
     ShouldRenderOutput
   >;
 

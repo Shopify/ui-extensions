@@ -121,7 +121,7 @@ interface ButtonProps {
 }
 
 export interface Docs_OrderStatus_MetafieldsApi
-  extends Pick<OrderStatusApi<any>, 'appMetafields' | 'metafields'> {}
+  extends Pick<OrderStatusApi<any>, 'appMetafields'> {}
 
 export interface Docs_OrderStatus_AttributesApi
   extends Pick<OrderStatusApi<any>, 'attributes'> {}
