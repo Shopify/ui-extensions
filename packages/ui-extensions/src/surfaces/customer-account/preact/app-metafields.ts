@@ -1,7 +1,7 @@
 import type {RenderOrderStatusExtensionTarget} from '../extension-targets';
 import type {
+  AppMetafield,
   AppMetafieldEntryTarget,
-  Metafield,
   AppMetafieldEntry,
 } from '../api';
 import {useMemo} from 'preact/hooks';
@@ -17,8 +17,8 @@ import {useSubscription} from './subscription';
 interface AppMetafieldFilters {
   id?: AppMetafieldEntryTarget['id'];
   type?: AppMetafieldEntryTarget['type'];
-  namespace?: Metafield['namespace'];
-  key?: Metafield['key'];
+  namespace?: AppMetafield['namespace'];
+  key?: AppMetafield['key'];
 }
 
 type AppMetafieldFilterKeys = keyof AppMetafieldFilters;
