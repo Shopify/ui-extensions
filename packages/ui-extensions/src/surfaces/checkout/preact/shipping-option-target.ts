@@ -1,7 +1,7 @@
 import {useMemo} from 'preact/hooks';
 
 import type {ShippingOption} from '../api/standard/standard';
-import type {ShippingOptionItemRenderMode} from '../api/shipping/shipping-option-item';
+import type {RenderMode} from '../api/shared';
 
 import {useApi} from './api';
 import {ExtensionHasNoTargetError} from './errors';
@@ -16,7 +16,7 @@ import {useSubscription} from './subscription';
 export function useShippingOptionTarget(): {
   shippingOptionTarget: ShippingOption;
   isTargetSelected: boolean;
-  renderMode: ShippingOptionItemRenderMode;
+  renderMode: RenderMode;
 } {
   const api = useApi<
     | 'purchase.checkout.shipping-option-item.render-after'

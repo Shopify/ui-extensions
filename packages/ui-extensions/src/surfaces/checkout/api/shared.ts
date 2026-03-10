@@ -148,3 +148,10 @@ export interface ShippingAddress extends MailingAddress {
    */
   oneTimeUse?: boolean;
 }
+
+export interface RenderMode {
+  /**
+   * Whether the extension is rendered in an overlay.
+   */
+  overlay: boolean;
+}
