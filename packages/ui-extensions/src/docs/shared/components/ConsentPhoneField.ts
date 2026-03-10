@@ -1,7 +1,7 @@
 import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
-  name: 'ConsentPhoneField',
+  name: 'Consent phone field',
   description:
     'Display a phone field for customers to sign up for text message marketing, noting that the phone field value will be automatically saved during checkout.',
   category: 'Polaris web components',
