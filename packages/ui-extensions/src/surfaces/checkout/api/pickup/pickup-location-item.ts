@@ -2,6 +2,7 @@ import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 import type {PickupLocationOption} from '../standard/standard';
 
+/** @publicDocs */
 export interface PickupLocationItemApi {
   /**
    * The pickup location the extension is attached to.

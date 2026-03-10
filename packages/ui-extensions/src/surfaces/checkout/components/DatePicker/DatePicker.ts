@@ -28,6 +28,7 @@ export type YearMonth = {year: number; month: number} | YearMonthString;
 export type SelectedDate = DateString | DateString[] | DateRange;
 export type DisabledDate = DateString | DateRange | DayString;
 
+/** @publicDocs */
 export interface DatePickerProps<T extends SelectedDate> {
   /**
    * [Controlled](https://reactjs.org/docs/forms.html#controlled-components) year and month to display.

@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/** @publicDocs */
 export interface ToggleButtonProps {
   /**
    * A unique identifier for the toggle button.

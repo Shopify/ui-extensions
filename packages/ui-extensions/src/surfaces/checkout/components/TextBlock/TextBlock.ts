@@ -8,6 +8,7 @@ import type {
   TextSize,
 } from '../shared';
 
+/** @publicDocs */
 export interface TextBlockProps extends IdProps {
   /**
    * Size of the text

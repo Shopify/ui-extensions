@@ -8,6 +8,8 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns the cart instructions used to create the checkout and possibly limit extension capabilities.
+ *
+ * @publicDocs
  */
 export function useInstructions<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

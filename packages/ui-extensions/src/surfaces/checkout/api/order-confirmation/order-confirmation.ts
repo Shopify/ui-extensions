@@ -14,6 +14,7 @@ export interface OrderConfirmation {
   number?: string;
 }
 
+/** @publicDocs */
 export interface OrderConfirmationApi {
   /**
    * Order information that's available post-checkout.

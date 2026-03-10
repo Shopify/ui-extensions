@@ -8,6 +8,7 @@ import type {
   VisibilityProps,
 } from '../shared';
 
+/** @publicDocs */
 export interface TextProps extends VisibilityProps {
   /**
    * Size of the text

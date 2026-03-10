@@ -22,6 +22,8 @@ class ExtensionHasNoTargetError extends Error {
  * > Caution: Deprecated as of version `2023-10`, use `useCartLineTarget()` instead.
  *
  * @deprecated Deprecated as of version `2023-10`, use `useCartLineTarget()` instead.
+ *
+ * @publicDocs
  */
 export function useTarget(): CartLine {
   const api = useApi<

@@ -12,6 +12,8 @@ import {useSubscription} from './subscription';
  * - `purchase.checkout.cart-line-item.render-after`
  * - `purchase.thank-you.cart-line-item.render-after`
  * - 'customer-account.order-status.cart-line-item.render-after'
+ *
+ * @publicDocs
  */
 export function useCartLineTarget(): CartLine {
   const api = useApi<

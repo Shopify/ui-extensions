@@ -3,6 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {IconSource} from '../Icon/Icon';
 import type {IdProps} from '../shared';
 
+/** @publicDocs */
 export interface TagProps extends IdProps {
   children?: string;
   /**

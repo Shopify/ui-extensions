@@ -3,6 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {DatePickerProps, SelectedDate} from '../DatePicker/DatePicker';
 import type {TextFieldProps} from '../TextField/TextField';
 
+/** @publicDocs */
 export interface DateFieldProps
   extends Pick<
       TextFieldProps<string>,

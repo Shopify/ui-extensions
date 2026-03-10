@@ -2,6 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IconSource} from '../Icon/Icon';
 
+/** @publicDocs */
 export interface StepperProps {
   /**
    * A detailed description for screen readers.

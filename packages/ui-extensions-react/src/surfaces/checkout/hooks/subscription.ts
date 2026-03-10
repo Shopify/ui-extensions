@@ -11,6 +11,8 @@ type Subscriber<T> = Parameters<StatefulRemoteSubscribable<T>['subscribe']>[0];
  * > Note:
  * > You generally shouldn’t need to use this directly, as there are dedicated hooks
  * > for accessing the current value of each individual resource in the checkout.
+ *
+ * @publicDocs
  */
 export function useSubscription<Value>(
   subscription: StatefulRemoteSubscribable<Value>,

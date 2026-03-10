@@ -24,6 +24,7 @@ import type {
   Timezone,
 } from '../../../../shared';
 
+/** @publicDocs */
 export interface AddressAutocompleteStandardApi<
   Target extends
     | 'purchase.address-autocomplete.suggest'

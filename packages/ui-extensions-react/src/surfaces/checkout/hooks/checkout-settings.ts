@@ -8,6 +8,8 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns the `checkoutSettings` applied to the checkout.
+ *
+ * @publicDocs
  */
 export function useCheckoutSettings<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
