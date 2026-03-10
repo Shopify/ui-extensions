@@ -1,7 +1,7 @@
 import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
-  name: 'PhoneField',
+  name: 'Phone field',
   description: 'Use PhoneField to allow users to enter phone numbers.',
   category: 'Polaris web components',
   subCategory: 'Forms',
