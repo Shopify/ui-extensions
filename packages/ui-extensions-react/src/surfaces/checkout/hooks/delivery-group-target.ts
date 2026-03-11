@@ -12,6 +12,8 @@ import {useSubscription} from './subscription';
  * > Caution: Deprecated as of version `2024-07`, use `useDeliveryGroupListTarget()` instead.
  *
  * @deprecated Deprecated as of version `2024-07`, use `useDeliveryGroupListTarget()` instead.
+ *
+ * @publicDocs
  */
 export function useDeliveryGroupTarget(): DeliveryGroup | undefined {
   const api = useApi<

@@ -31,6 +31,7 @@ export interface ScrollViewEvent {
   };
 }
 
+/** @publicDocs */
 export interface ScrollViewProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,

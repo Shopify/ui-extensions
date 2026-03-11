@@ -2,6 +2,7 @@ import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 import type {ShippingOption} from '../standard/standard';
 
+/** @publicDocs */
 export interface ShippingOptionItemApi {
   /**
    * The shipping option the extension is attached to.

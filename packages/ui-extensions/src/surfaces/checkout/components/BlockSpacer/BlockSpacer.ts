@@ -3,6 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 import type {IdProps, Spacing} from '../shared';
 
+/** @publicDocs */
 export interface BlockSpacerProps extends IdProps {
   /**
    * Adjust size of the spacer

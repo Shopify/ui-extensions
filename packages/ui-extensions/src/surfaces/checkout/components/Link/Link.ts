@@ -7,6 +7,7 @@ import type {
   InteractionProps,
 } from '../shared';
 
+/** @publicDocs */
 export interface LinkProps
   extends OverlayActivatorProps,
     DisclosureActivatorProps,

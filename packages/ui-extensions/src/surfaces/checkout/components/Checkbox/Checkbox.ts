@@ -2,6 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {DisclosureActivatorProps} from '../shared';
 
+/** @publicDocs */
 export interface CheckboxProps extends DisclosureActivatorProps {
   /**
    * A unique identifier for the field. When no `id` is set,

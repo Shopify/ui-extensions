@@ -9,6 +9,8 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns all available payment options.
+ *
+ * @publicDocs
  */
 export function useAvailablePaymentOptions<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -19,6 +21,8 @@ export function useAvailablePaymentOptions<
 
 /**
  * Returns payment options selected by the buyer.
+ *
+ * @publicDocs
  */
 export function useSelectedPaymentOptions<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

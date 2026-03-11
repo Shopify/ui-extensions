@@ -10,6 +10,7 @@ import type {
   InteractionProps,
 } from '../shared';
 
+/** @publicDocs */
 export interface ButtonProps
   extends OverlayActivatorProps,
     DisclosureActivatorProps,

@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/** @publicDocs */
 export interface ChoiceListProps<T extends string | string[]> {
   /**
    * A unique identifier for the field in the closest `Form` component.

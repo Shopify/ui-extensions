@@ -1,5 +1,6 @@
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
+/** @publicDocs */
 export interface PickupLocationListApi {
   /**
    * Whether the customer location input form is shown to the buyer.

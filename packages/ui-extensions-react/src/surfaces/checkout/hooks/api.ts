@@ -16,6 +16,8 @@ import {ExtensionApiContext} from '../context';
  * which contains a basic set of properties about the checkout.
  *
  * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensiontargets).
+ *
+ * @publicDocs
  */
 export function useApi<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -43,6 +45,8 @@ export function useApi<
  * > Caution: This is deprecated, use `useApi` instead.
  *
  * @deprecated This is deprecated, use `useApi` instead.
+ *
+ * @publicDocs
  */
 export function useExtensionApi<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

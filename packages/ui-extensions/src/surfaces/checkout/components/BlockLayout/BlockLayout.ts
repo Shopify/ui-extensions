@@ -4,6 +4,7 @@ import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 import type {Rows} from '../shared';
 import type {GridProps} from '../Grid/Grid';
 
+/** @publicDocs */
 export interface BlockLayoutProps extends Omit<GridProps, 'columns' | 'rows'> {
   /**
    * Sizes for each row of the layout.

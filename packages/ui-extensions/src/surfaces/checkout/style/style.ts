@@ -88,6 +88,7 @@ const when: WhenFunction = function when<
 
 // This interface is only used to provide documentation for the Style helper.
 // It is not used in the implementation.
+/** @publicDocs */
 export interface DocsStyle {
   /**
    * Sets an optional default value to use when no other condition is met.
