@@ -1,4 +1,4 @@
-/** VERSION: 1.38.0 **/
+/** VERSION: 1.42.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6880,6 +6880,10 @@ export interface ParagraphProps
     >
   > {
   color: Extract<ParagraphProps$1['color'], 'base' | 'subdued'>;
+  tone: Extract<
+    ParagraphProps$1['tone'],
+    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
+  >;
 }
 
 declare abstract class ParagraphBase
@@ -6889,7 +6893,6 @@ declare abstract class ParagraphBase
       ParagraphProps,
       | 'fontVariantNumeric'
       | 'lineClamp'
-      | 'tone'
       | 'color'
       | 'dir'
       | 'accessibilityVisibility'
@@ -6897,11 +6900,7 @@ declare abstract class ParagraphBase
 {
   fontVariantNumeric: ParagraphProps['fontVariantNumeric'];
   lineClamp: ParagraphProps['lineClamp'];
-  tone: Extract<
-    ParagraphProps['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
-  >;
-
+  abstract tone: string;
   color: ParagraphProps['color'];
   dir: ParagraphProps['dir'];
   accessibilityVisibility: ParagraphProps['accessibilityVisibility'];
@@ -6909,6 +6908,7 @@ declare abstract class ParagraphBase
 }
 
 declare class Paragraph extends ParagraphBase implements ParagraphProps {
+  tone: ParagraphProps['tone'];
   constructor();
 }
 declare global {
@@ -7343,6 +7343,8 @@ declare abstract class SectionBase
   constructor(renderImpl: RenderImpl);
   /** @private */
   connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
   accessibilityLabel: SectionProps['accessibilityLabel'];
   heading: SectionProps['heading'];
   padding: SectionProps['padding'];
