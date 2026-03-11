@@ -7,7 +7,12 @@ description: Use when validating that documentation links in the ui-extensions r
 
 Validates that documentation links point to real shopify.dev pages. This skill uses MCP tools and adds time to validation — run it separately from content validation skills.
 
-**How to use:** For each link found in the files provided, use `mcp__shopify-dev-mcp__search_docs_chunks` to verify the path exists and is correct for the surface being documented (admin, checkout, customer account). Report broken or suspicious links.
+**How to use:** For each link found in the files provided, verify the path exists and is correct for the surface being documented (admin, checkout, customer account).
+
+- Use `mcp__shopify-dev-mcp__search_docs_chunks` to find a page when you're not sure of the exact path.
+- Use `mcp__shopify-dev-mcp__fetch_full_docs` when you have a candidate path and need to confirm the page exists and that the linked section or content is actually there.
+
+Use both tools together: search to locate, fetch to confirm.
 
 ## What to Check
 
