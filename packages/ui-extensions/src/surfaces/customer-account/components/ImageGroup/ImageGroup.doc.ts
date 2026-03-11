@@ -15,7 +15,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ImageGroupProps',
     },
   ],
-  category: 'components',
+  category: 'UI components',
+  subCategory: 'Media and visuals',
   defaultExample: {
     image: 'imagegroup-preview.png',
     altText:
