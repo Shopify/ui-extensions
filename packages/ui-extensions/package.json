@@ -1,6 +1,6 @@
 {
   "name": "@shopify/ui-extensions",
-  "version": "2025.7.4",
+  "version": "2025.7.5",
   "scripts": {
     "docs:admin": "bash ./docs/surfaces/admin/build-docs.sh",
     "docs:admin:dev": "nodemon --watch src/surfaces/admin -e ts,tsx,json --exec 'yarn docs:admin'",
