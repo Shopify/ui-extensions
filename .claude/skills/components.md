@@ -7,7 +7,7 @@ description: Use when validating component documentation updates in the ui-exten
 
 Run after `ui-extensions:universal`. Also run `ui-extensions:type-definitions` and `ui-extensions:cross-surface`.
 
-**How to use:** Evaluate each item against the files provided. Skip items that clearly don't apply. Flag anything you can't definitively verify rather than guessing. Works for all surfaces (admin, checkout, customer account).
+**How to use:** Evaluate each item against the files provided. Skip items that clearly don't apply. Flag anything you can't definitively verify rather than guessing. Covers checkout and customer account surfaces.
 
 ## Example Files (HTML Only)
 

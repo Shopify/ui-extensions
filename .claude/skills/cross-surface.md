@@ -1,6 +1,6 @@
 ---
 name: ui-extensions-validate-cross-surface
-description: Use when validating consistency of component or API documentation across multiple surfaces (Admin, Checkout, POS) in the ui-extensions repo. Covers description parity, terminology, and shared component consistency.
+description: Use when validating consistency of component or API documentation across checkout and customer account surfaces in the ui-extensions repo. Covers description parity, terminology, and shared component consistency.
 ---
 
 # Cross-Surface Consistency Validation
@@ -11,14 +11,14 @@ Use when a component or shared description appears on multiple surfaces.
 
 ## Description Consistency
 
-- [ ] Compare descriptions with the same component on other surfaces (Admin, Checkout, POS)
+- [ ] Compare descriptions with the same component on checkout and customer account surfaces
 - [ ] Descriptions should be aligned in scope and quality — not necessarily identical, but consistent in what they cover
 - [ ] Surface-specific nuances should be explicitly noted where applicable
 
 ## Terminology
 
 - [ ] Terminology is consistent across surfaces (same words for the same concepts)
-- [ ] Extension type names use the correct domain prefix, lowercased: admin UI extension, checkout UI extension, POS UI extension
+- [ ] Extension type names use the correct domain prefix, lowercased: checkout UI extension, customer account UI extension
 
 ## Shared Components
 

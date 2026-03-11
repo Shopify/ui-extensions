@@ -7,7 +7,7 @@ description: Use when validating API documentation updates in the ui-extensions 
 
 Run after `ui-extensions:universal`. Also run `ui-extensions:type-definitions`.
 
-**How to use:** Evaluate each item against the files provided. Skip items that clearly don't apply. Flag anything you can't definitively verify rather than guessing. Works for all surfaces (admin, checkout, customer account).
+**How to use:** Evaluate each item against the files provided. Skip items that clearly don't apply. Flag anything you can't definitively verify rather than guessing. Covers checkout and customer account surfaces.
 
 ## API Descriptions
 
@@ -26,7 +26,7 @@ Run after `ui-extensions:universal`. Also run `ui-extensions:type-definitions`.
 ### Surface-specific `.doc.ts` files
 
 - [ ] Use `{API_VERSION}` placeholder (surface name is hardcoded)
-- [ ] Format: `/docs/api/admin-extensions/{API_VERSION}/...`
+- [ ] Format: `/docs/api/checkout-ui-extensions/{API_VERSION}/...` or `/docs/api/customer-account-ui-extensions/{API_VERSION}/...`
 
 ### Shared component files (`src/docs/shared/components/*.ts`)
 
@@ -37,7 +37,7 @@ Run after `ui-extensions:universal`. Also run `ui-extensions:type-definitions`.
 
 ### `requires` field
 
-- [ ] Links to required component: `'the [component name](/docs/api/admin-extensions/{API_VERSION}/...) component.'`
+- [ ] Links to required component using the correct surface path, e.g. `'the [component name](/docs/api/checkout-ui-extensions/{API_VERSION}/...) component.'`
 
 ### `defaultExample`
 

@@ -7,7 +7,7 @@ description: Use when validating .d.ts type definition files in the ui-extension
 
 Run after `ui-extensions:universal`.
 
-**How to use:** Evaluate each item against the files provided. Skip items that clearly don't apply. Flag anything you can't definitively verify rather than guessing. Works for all surfaces (admin, checkout, customer account).
+**How to use:** Evaluate each item against the files provided. Skip items that clearly don't apply. Flag anything you can't definitively verify rather than guessing. Covers checkout and customer account surfaces.
 
 ## Property Descriptions (JSDoc)
 

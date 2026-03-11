@@ -23,7 +23,7 @@ description: Use when validating any documentation update in the ui-extensions r
 
 ## Capitalization
 
-- [ ] Extension types include the domain, lowercased: *admin UI extension*, *checkout UI extension*, *customer account UI extension*, *POS UI extension*
+- [ ] Extension types include the domain, lowercased: *checkout UI extension*, *customer account UI extension*
 - [ ] "Shopify CLI", not "the CLI"
 - [ ] **"checkout" and "customer account" are lowercase in prose.** The only valid exceptions are:
   - First word of a sentence in rendered text (e.g., "Checkout UI extensions let you...")
