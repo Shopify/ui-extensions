@@ -3,11 +3,11 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {ORDER_STATUS_API_DEFINITION} from '../../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Require Login',
+  name: 'Require Login API',
   description: 'The API for interacting with the authentication.',
   isVisualComponent: false,
-  category: 'APIs',
-  subCategory: 'Order Status API',
+  category: 'Target APIs',
+  subCategory: 'Account APIs',
   type: 'API',
   definitions: [
     {

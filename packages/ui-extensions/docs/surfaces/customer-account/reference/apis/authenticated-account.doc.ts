@@ -3,11 +3,12 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Authenticated Account',
+  name: 'Authenticated Account API',
   description:
     'The API for interacting with an account in which the customer is fully authenticated.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Account APIs',
   type: 'API',
   defaultExample: {
     codeblock: {

@@ -4,7 +4,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Customer Account API',
   description: `Create unique customer experiences with the Customer Account API. The API offers a full range of options making it possible for customers to view their orders, manage their profile and much more.`,
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Account APIs',
   type: 'API',
   examples: {
     description: '',
