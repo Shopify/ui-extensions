@@ -8,11 +8,12 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Localized Fields',
+  name: 'Localized Fields API',
   description: 'The API for interacting with localized fields.',
   isVisualComponent: false,
   requires: REQUIRES_PROTECTED_CUSTOMER_DATA,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Checkout APIs',
   type: 'API',
   definitions: [
     {

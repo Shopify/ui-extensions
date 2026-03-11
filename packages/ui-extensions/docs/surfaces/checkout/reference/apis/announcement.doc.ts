@@ -3,7 +3,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Announcement',
+  name: 'Announcement API',
   description: 'The API for interacting with the announcement bar.',
   isVisualComponent: false,
   category: 'APIs',

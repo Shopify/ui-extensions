@@ -8,7 +8,7 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'UI',
+  name: 'UI API',
   description: 'The API for interacting with the extension’s UI.',
   isVisualComponent: false,
   category: 'APIs',
