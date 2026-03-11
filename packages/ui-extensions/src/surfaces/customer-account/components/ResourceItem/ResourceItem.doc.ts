@@ -21,7 +21,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Docs_ResourceItem_Button_Action',
     },
   ],
-  category: 'components',
+  category: 'UI components',
+  subCategory: 'Actions',
   defaultExample: {
     image: 'resourceitem-preview.png',
     altText:
