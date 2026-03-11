@@ -6,13 +6,13 @@ import {
 } from '../../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Buyer Identity',
+  name: 'Buyer Identity API',
   description: 'The API for interacting with the buyer identity.',
   requires: REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2,
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Account APIs',
   type: 'API',
-  subCategory: 'Order Status API',
   definitions: [
     {
       title: ORDER_STATUS_API_DEFINITION.title,
