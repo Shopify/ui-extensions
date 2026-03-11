@@ -5,7 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description:
     'Use Map to display a map on a page. This component is useful for displaying a map of a location, such as a store or a customer’s address.',
   category: 'Polaris web components',
-  subCategory: 'Interactive',
+  subCategory: 'Media and visuals',
   related: [],
 };
 
