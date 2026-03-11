@@ -22,7 +22,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Docs_Menu_Button_Action',
     },
   ],
-  category: 'components',
+  category: 'UI components',
+  subCategory: 'Actions',
   defaultExample: {
     image: 'menu-default.png',
     altText: 'An example of a Menu with three actions.',
