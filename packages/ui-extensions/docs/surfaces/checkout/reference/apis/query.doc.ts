@@ -10,7 +10,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Storefront API',
   description: 'Querying the Storefront API.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   type: 'API',
   definitions: [
     {

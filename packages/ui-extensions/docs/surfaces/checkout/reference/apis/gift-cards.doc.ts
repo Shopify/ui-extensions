@@ -7,10 +7,11 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Gift Cards',
+  name: 'Gift Cards API',
   description: 'The API for interacting with gift cards.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Checkout APIs',
   type: 'API',
   definitions: [
     {
