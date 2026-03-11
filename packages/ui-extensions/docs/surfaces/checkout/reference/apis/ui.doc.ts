@@ -11,7 +11,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'UI API',
   description: 'The API for interacting with the extension’s UI.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   type: 'API',
   definitions: [
     {

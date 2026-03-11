@@ -6,7 +6,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Announcement API',
   description: 'The API for interacting with the announcement bar.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   type: 'API',
   definitions: [
     {
