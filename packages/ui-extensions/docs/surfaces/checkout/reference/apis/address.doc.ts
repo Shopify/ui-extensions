@@ -12,7 +12,8 @@ const data: ReferenceEntityTemplateSchema = {
   description: 'The API for interacting with addresses.',
   isVisualComponent: false,
   requires: REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Checkout APIs',
   type: 'API',
   definitions: [
     {

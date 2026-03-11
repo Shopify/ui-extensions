@@ -10,7 +10,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Cart Instructions API',
   description: 'Instructions used to create the checkout.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Checkout APIs',
   type: 'API',
   definitions: [
     {

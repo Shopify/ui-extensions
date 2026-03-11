@@ -13,7 +13,8 @@ const data: ReferenceEntityTemplateSchema = {
     "The API for interacting with a customer's privacy consent. It is similar to the [Customer Privacy API in storefront](/docs/api/customer-privacy).",
   isVisualComponent: false,
   requires: REQUIRES_PROTECTED_CUSTOMER_DATA,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Checkout APIs',
   type: 'API',
   definitions: [
     {

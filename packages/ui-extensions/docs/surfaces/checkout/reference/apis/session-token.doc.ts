@@ -10,7 +10,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Session Token API',
   description: 'The API for interacting with session tokens.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   type: 'API',
   definitions: [
     {
