@@ -71,7 +71,7 @@ Use short labels (ideally two words) that start with a verb, use sentence case, 
     {
       name: 'Popover',
       subtitle: 'Component',
-      url: '/docs/api/checkout-ui-extensions/polaris-web-components/overlays/popover',
+      url: '/docs/api/customer-account-ui-extensions/polaris-web-components/overlays/popover',
       type: 'Component',
     },
   ],

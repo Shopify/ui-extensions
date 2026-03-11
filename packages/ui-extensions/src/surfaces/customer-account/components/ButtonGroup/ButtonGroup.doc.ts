@@ -1,7 +1,7 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'ButtonGroup',
+  name: 'Button group',
   description: `ButtonGroup is used to display multiple buttons in a layout that is contextual based on the screen width or parent component. When there is more than one secondary action, they get collapsed.
     
 When used within a [Section](/docs/api/customer-account-ui-extensions/polaris-web-components/structure/section) component, the buttons will fill the width of the section.
