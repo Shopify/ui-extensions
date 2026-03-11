@@ -10,7 +10,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Localization API',
   description: 'The APIs for localizing your extension.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   type: 'API',
   definitions: [
     {

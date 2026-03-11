@@ -11,7 +11,8 @@ const data: ReferenceEntityTemplateSchema = {
   description: 'The API for interacting with the buyer identity.',
   requires: REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2,
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Checkout APIs',
   type: 'API',
   definitions: [
     {

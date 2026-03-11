@@ -20,7 +20,8 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'The API for interacting with the order confirmation, available on the **Thank You** page.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Checkout APIs',
   type: 'API',
   defaultExample: getExample('order-confirmation/default', ['jsx']),
   definitions: [

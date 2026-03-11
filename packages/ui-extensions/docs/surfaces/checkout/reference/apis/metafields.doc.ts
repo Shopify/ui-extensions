@@ -13,7 +13,8 @@ const data: ReferenceEntityTemplateSchema = {
   description: 'The API for interacting with metafields.',
   isVisualComponent: false,
   requires: REQUIRES_PROTECTED_CUSTOMER_DATA,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   type: 'API',
   definitions: [
     {

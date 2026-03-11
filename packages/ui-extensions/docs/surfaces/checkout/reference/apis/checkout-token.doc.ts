@@ -9,7 +9,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Checkout Token API',
   description: 'The API for interacting with the token of a checkout.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Checkout APIs',
   type: 'API',
   definitions: [
     {

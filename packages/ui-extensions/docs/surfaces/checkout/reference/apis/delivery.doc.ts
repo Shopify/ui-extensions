@@ -17,7 +17,8 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'The APIs for interacting with delivery and shipping options.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Checkout APIs',
   type: 'API',
   definitions: [
     {
