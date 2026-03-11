@@ -11,7 +11,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Cart Lines API',
   description: 'The API for interacting with the cart lines.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Checkout APIs',
   type: 'API',
   definitions: [
     {
