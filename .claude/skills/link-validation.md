@@ -38,11 +38,14 @@ Validates that documentation links point to real shopify.dev pages. This skill u
 ## Link Validation Report
 
 ### Valid links
+
 - [list of verified links]
 
 ### Broken or suspicious
+
 - [link] — [reason: not found / wrong surface / hardcoded version]
 
 ### Flagged for human review
+
 - [link] — [reason: MDN link / can't verify / ambiguous]
 ```

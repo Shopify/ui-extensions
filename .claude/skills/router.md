@@ -9,14 +9,14 @@ Determines which validation skills to use based on page type.
 
 ## Quick Navigation
 
-| Updating...                       | Invoke these skills (in order)                                                                                                                              |
-|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Any page**                      | `ui-extensions:style-lint`                                                                                                                                  |
-| **Any page with example changes** | `ui-extensions:style-lint` → `ui-extensions:examples`                                                                                                      |
-| **Component**                     | `ui-extensions:style-lint` → `ui-extensions:examples` → `ui-extensions:components` → `ui-extensions:type-definitions` → `ui-extensions:cross-surface`      |
-| **API**                           | `ui-extensions:style-lint` → `ui-extensions:examples` → `ui-extensions:apis` → `ui-extensions:type-definitions`                                            |
-| **Links**                         | `ui-extensions:link-validation` (run separately — uses MCP tools, adds time)                                                                               |
-| **Build output**                  | `ui-extensions:build-verification`                                                                                                                          |
+| Updating...                       | Invoke these skills (in order)                                                                                                                        |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Any page**                      | `ui-extensions:style-lint`                                                                                                                            |
+| **Any page with example changes** | `ui-extensions:style-lint` → `ui-extensions:examples`                                                                                                 |
+| **Component**                     | `ui-extensions:style-lint` → `ui-extensions:examples` → `ui-extensions:components` → `ui-extensions:type-definitions` → `ui-extensions:cross-surface` |
+| **API**                           | `ui-extensions:style-lint` → `ui-extensions:examples` → `ui-extensions:apis` → `ui-extensions:type-definitions`                                       |
+| **Links**                         | `ui-extensions:link-validation` (run separately — uses MCP tools, adds time)                                                                          |
+| **Build output**                  | `ui-extensions:build-verification`                                                                                                                    |
 
 ## How to Identify Page Type
 

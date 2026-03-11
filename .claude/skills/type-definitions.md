@@ -12,6 +12,7 @@ Run after `ui-extensions:universal`.
 ## Property Descriptions (JSDoc)
 
 ### Quality Standards
+
 - [ ] Every property has a JSDoc description (not just a type)
 - [ ] Descriptions explain **what it does**, not just **what it is**
   - ❌ "The heading"
@@ -20,12 +21,14 @@ Run after `ui-extensions:universal`.
 - [ ] Include `@see` links to MDN for web platform concepts
 
 ### Content Guidelines
+
 - [ ] Describe **when/why** to use, not just **what**
 - [ ] Include practical examples in prose (e.g., "such as 'Order #1001'")
 - [ ] Mention related properties when relevant
 - [ ] For enum values, explain each option's use case
 
 ### Common Patterns
+
 - [ ] **Size props**: List available values and when to use each
 - [ ] **Boolean props**: Explain both true/false behaviors
 - [ ] **Callback props**: Describe when fired, what event contains, typical use cases

@@ -23,20 +23,24 @@ Run after `ui-extensions:universal`. Also run `ui-extensions:type-definitions` a
 - [ ] Uses friendly term for component names, not code syntax ("button", not `Button` or `s-button`)
 
 **Good:**
+
 > "The button component triggers actions or events, such as submitting forms, opening dialogs, or navigating to other pages. Use button to let users perform specific tasks or initiate interactions throughout the interface."
 
 **Avoid:**
+
 > "The button component provides access to action extension functionality."
 
 ## subSections
 
 ### Best Practices
+
 - [ ] Each bullet starts with `**Action verb phrase**:` (bold, colon outside)
 - [ ] Each bullet ends with a period
 - [ ] Flag any best practice that appears generic or not specific to this component — the author should confirm traceability to Built for Shopify requirements, Polaris guidelines, or documented UX research
 - [ ] No generic advice — each item addresses scenarios specific to this component, or remove it
 
 ### Limitations
+
 - [ ] Each limitation describes a real technical or UX constraint, not obvious behavior
 - [ ] No filler — if a limitation isn't a real constraint, remove it
 

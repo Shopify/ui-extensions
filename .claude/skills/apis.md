@@ -16,9 +16,11 @@ Run after `ui-extensions:universal`. Also run `ui-extensions:type-definitions`.
 - [ ] Explains purpose and use cases (not just "provides access to...")
 
 **Good:**
+
 > "The Action Extension API lets you build action extensions that merchants access from the More actions menu on details and index pages. Use this API to create workflows for processing resources, configuring settings, or integrating with external systems."
 
 **Avoid:**
+
 > "The Action Extension API provides access to action extension functionality."
 
 ## URL Placeholders
@@ -109,14 +111,18 @@ Run after `ui-extensions:universal`. Also run `ui-extensions:type-definitions`.
 ## Validation Report
 
 ### What's good
+
 - [passing items]
 
 ### Needs attention
+
 - [items that may need work]
 
 ### Must fix
+
 - [items that must be fixed before merging]
 
 ### Recommendation
+
 [Ready to merge / Needs changes / Major revision needed]
 ```
