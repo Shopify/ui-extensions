@@ -9,7 +9,8 @@ const data: ReferenceEntityTemplateSchema = {
   The \`API_VERSION\` specified in the URL determines which version of the Customer Account API is used.
   `,
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Account APIs',
   type: 'API',
   defaultExample: {
     codeblock: {
