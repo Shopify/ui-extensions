@@ -18,6 +18,7 @@ export interface SelectOptionProps {
   disabled?: boolean;
 }
 
+/** @publicDocs */
 export interface SelectProps {
   /**
    * A unique identifier for the field. When no `id` is set,

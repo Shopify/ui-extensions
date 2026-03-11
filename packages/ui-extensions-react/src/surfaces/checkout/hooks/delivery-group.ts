@@ -13,6 +13,8 @@ import {useSubscription} from './subscription';
 /**
  * Returns the full expanded details of a delivery group and automatically re-renders
  * your component when that delivery group changes.
+ *
+ * @publicDocs
  */
 export function useDeliveryGroup<
   ID extends RenderExtensionTarget = RenderExtensionTarget,

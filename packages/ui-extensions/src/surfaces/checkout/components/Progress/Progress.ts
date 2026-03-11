@@ -4,6 +4,7 @@ import type {IdProps} from '../shared';
 
 type Tone = 'auto' | 'critical';
 
+/** @publicDocs */
 export interface ProgressProps extends IdProps {
   /**
    * Specify how much of the task that has been completed.

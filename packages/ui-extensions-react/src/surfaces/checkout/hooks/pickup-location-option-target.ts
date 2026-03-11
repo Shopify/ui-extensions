@@ -10,6 +10,8 @@ import {useSubscription} from './subscription';
  * Returns the pickup location option the extension is attached to. This hook can only be used by extensions in the following
  * extension target:
  * - `purchase.checkout.pickup-location-option-item.render-after`
+ *
+ * @publicDocs
  */
 export function usePickupLocationOptionTarget(): {
   pickupLocationOptionTarget: PickupLocationOption;

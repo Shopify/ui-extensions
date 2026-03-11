@@ -5,6 +5,7 @@ import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 
 export type Marker = 'none' | 'bullet' | 'number';
 
+/** @publicDocs */
 export interface ListProps extends IdProps {
   /**
    * Adjust spacing between list items

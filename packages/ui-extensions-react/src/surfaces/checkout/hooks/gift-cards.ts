@@ -13,6 +13,8 @@ import {useSubscription} from './subscription';
 /**
  * Returns the current gift cards applied to the cart, and automatically re-renders
  * your component if gift cards are added or removed.
+ *
+ * @publicDocs
  */
 export function useAppliedGiftCards<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -27,6 +29,8 @@ export function useAppliedGiftCards<
  *
  * > Caution:
  * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves gift card codes through a network call.
+ *
+ * @publicDocs
  */
 export function useApplyGiftCardChange<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

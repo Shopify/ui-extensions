@@ -77,6 +77,7 @@ export type IconSource =
   | 'warning'
   | 'warningFill';
 
+/** @publicDocs */
 export interface IconProps extends IdProps {
   /**
    * A label that describes the purpose or contents of the icon. When set,

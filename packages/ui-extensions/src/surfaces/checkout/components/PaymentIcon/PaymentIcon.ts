@@ -2,6 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 // Copied from https://github.com/Shopify/ui-api-design/blob/main/components/PaymentIcon/PaymentIcon.ts
 // NOTE: Add new entries to the PaymentMethod type in alphabetical order
+/** @publicDocs */
 export type PaymentMethod =
   | '7-eleven'
   | 'acima-leasing'
@@ -448,6 +449,7 @@ export type PaymentMethod =
   | 'zip'
   | 'zoodpay';
 
+/** @publicDocs */
 export interface PaymentIconProps {
   /**
    * The name of the payment method.

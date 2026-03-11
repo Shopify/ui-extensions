@@ -12,6 +12,8 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns the proposed `shippingAddress` applied to the checkout.
+ *
+ * @publicDocs
  */
 export function useShippingAddress<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -29,6 +31,8 @@ export function useShippingAddress<
 
 /**
  * Returns a function to mutate the `shippingAddress` property of checkout.
+ *
+ * @publicDocs
  */
 export function useApplyShippingAddressChange<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

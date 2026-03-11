@@ -12,6 +12,8 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns the proposed `attributes` applied to the checkout.
+ *
+ * @publicDocs
  */
 export function useAttributes<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -23,6 +25,8 @@ export function useAttributes<
  * Returns the values for the specified `attributes` applied to the checkout.
  *
  * @param keys - An array of attribute keys.
+ *
+ * @publicDocs
  */
 export function useAttributeValues<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -41,6 +45,8 @@ export function useAttributeValues<
 
 /**
  * Returns a function to mutate the `attributes` property of the checkout.
+ *
+ * @publicDocs
  */
 export function useApplyAttributeChange<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

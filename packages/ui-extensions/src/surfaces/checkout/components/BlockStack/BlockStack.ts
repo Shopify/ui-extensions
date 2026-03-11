@@ -13,6 +13,7 @@ import type {
 } from '../shared';
 import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 
+/** @publicDocs */
 export interface BlockStackProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,

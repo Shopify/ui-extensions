@@ -15,6 +15,7 @@ import type {
   IdProps,
 } from '../shared';
 
+/** @publicDocs */
 export interface ImageProps extends BorderProps, CornerProps, IdProps {
   /**
    * The URL of the image. Supports the `resolution` and `viewportInlineSize` conditional styles only.

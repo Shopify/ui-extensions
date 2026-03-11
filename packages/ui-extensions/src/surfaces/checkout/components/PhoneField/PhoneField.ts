@@ -4,6 +4,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {Autocomplete} from '../shared';
 import type {IconSource} from '../Icon/Icon';
 
+/** @publicDocs */
 export interface PhoneFieldProps {
   /**
    * Any content to render at the end of the text field. Commonly used
