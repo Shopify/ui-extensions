@@ -1,7 +1,7 @@
-# This workflow dispatches a docs sync event to shopify-dev when generated docs files change.
+# This workflow dispatches a docs sync event to shop/world when generated docs files change.
 # It monitors changes to generated docs files in PRs across all UI extension surfaces.
 #
-# The shopify-dev repository will then sync these docs files for preview.
+# The shop/world repository will then sync these docs files for preview.
 #
 # Supports both flat structure (e.g., 2025-04, 2025-07):
 #   packages/ui-extensions/docs/surfaces/<surface>/generated/*.json
@@ -48,7 +48,7 @@ concurrency:
 
 jobs:
   dispatch-docs-sync:
-    name: Dispatch docs sync to shopify-dev
+    name: Dispatch docs sync to shop/world
     runs-on: ubuntu-latest
     timeout-minutes: 10
     if: github.repository_owner == 'Shopify'
@@ -65,34 +65,34 @@ jobs:
         with:
           app-id: ${{ secrets.SHOPIFY_DEV_DOCS_SYNC_APP_ID }}
           private-key: ${{ secrets.SHOPIFY_DEV_DOCS_SYNC_APP_PRIVATE_KEY }}
-          owner: Shopify
+          owner: Shop
           repositories: |
-            shopify-dev
+            world
 
-      - name: Debug - Check token access to shopify-dev
+      - name: Debug - Check token access to shop/world
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          echo "Testing token access to Shopify/shopify-dev repository..."
+          echo "Testing token access to shop/world repository..."
           HTTP_STATUS=$(curl -s -o repo_check.txt -w "%{http_code}" \
             -H "Authorization: Bearer $GH_TOKEN" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/Shopify/shopify-dev)
+            https://api.github.com/repos/shop/world)
 
           echo "HTTP Status: $HTTP_STATUS"
 
           if [ "$HTTP_STATUS" -eq 200 ]; then
-            echo "✓ Token has access to shopify-dev repository"
+            echo "Token has access to shop/world repository"
             echo "Repository info:"
             cat repo_check.txt | jq '.name, .private, .permissions'
           elif [ "$HTTP_STATUS" -eq 404 ]; then
-            echo "✗ Token does NOT have access to shopify-dev (404 Not Found)"
+            echo "Token does NOT have access to shop/world (404 Not Found)"
             cat repo_check.txt
           elif [ "$HTTP_STATUS" -eq 401 ]; then
-            echo "✗ Token is invalid or expired (401 Unauthorized)"
+            echo "Token is invalid or expired (401 Unauthorized)"
             cat repo_check.txt
           else
-            echo "✗ Unexpected response (HTTP $HTTP_STATUS)"
+            echo "Unexpected response (HTTP $HTTP_STATUS)"
             cat repo_check.txt
           fi
 
@@ -158,7 +158,7 @@ jobs:
             echo "files=$JSON_ARRAY" >> $GITHUB_OUTPUT
           fi
 
-      - name: Dispatch to shopify-dev
+      - name: Dispatch to shop/world
         if: github.event.action == 'closed' || steps.changed-files.outputs.has_changes == 'true'
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
@@ -195,7 +195,7 @@ jobs:
               }
             }')
 
-          echo "Dispatching to shopify-dev with payload:"
+          echo "Dispatching to shop/world with payload:"
           echo "$PAYLOAD" | jq .
 
           # Send the dispatch request
@@ -203,11 +203,11 @@ jobs:
             -X POST \
             -H "Authorization: Bearer $GH_TOKEN" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/Shopify/shopify-dev/dispatches \
+            https://api.github.com/repos/shop/world/dispatches \
             -d "$PAYLOAD")
 
           if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
-            echo "Successfully dispatched docs $ACTION event to shopify-dev (HTTP $HTTP_STATUS)"
+            echo "Successfully dispatched docs $ACTION event to shop/world (HTTP $HTTP_STATUS)"
           else
             echo "Failed to dispatch docs $ACTION event (HTTP $HTTP_STATUS)"
             cat response.txt
