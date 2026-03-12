@@ -3,11 +3,11 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {ORDER_STATUS_API_DEFINITION} from '../../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Gift Cards',
+  name: 'Gift Cards API',
   description: 'The API for interacting with gift cards.',
   isVisualComponent: false,
-  category: 'APIs',
-  subCategory: 'Order Status API',
+  category: 'Target APIs',
+  subCategory: 'Order APIs',
   type: 'API',
   definitions: [
     {

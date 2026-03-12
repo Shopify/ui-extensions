@@ -1,12 +1,13 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Navigation',
+  name: 'Navigation API',
   overviewPreviewDescription:
     'The API provided to extensions to navigate to extensions or host page.',
   description: `The API provided to extensions to navigate to extensions or host page.`,
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   type: 'API',
   definitions: [
     {

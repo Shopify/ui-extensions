@@ -3,11 +3,11 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {ORDER_STATUS_API_DEFINITION} from '../../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Attributes',
+  name: 'Attributes API',
   description: 'The API for interacting with cart and checkout attributes.',
   isVisualComponent: false,
-  category: 'APIs',
-  subCategory: 'Order Status API',
+  category: 'Target APIs',
+  subCategory: 'Order APIs',
   type: 'API',
   definitions: [
     {
