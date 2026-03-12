@@ -66,6 +66,10 @@ jobs:
         run: npm install && npm run typecheck && npm test
         working-directory: examples/testing/point-of-sale-testing-example
 
+      - name: Testing example (customer-account)
+        run: npm install && npm run typecheck && npm test
+        working-directory: examples/testing/customer-account-testing-example
+
   test-build:
     runs-on: ubuntu-latest
 

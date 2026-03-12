@@ -7,7 +7,10 @@ import type {
   ExtensionTarget as PosExtensionTarget,
   ExtensionTargets as PointOfSaleExtensionTargets,
 } from '@shopify/ui-extensions/point-of-sale';
-import type {ExtensionTargets as CustomerAccountExtensionTargets} from '@shopify/ui-extensions/customer-account';
+import type {
+  CustomerAccountExtensionTarget,
+  ExtensionTargets as CustomerAccountExtensionTargets,
+} from '@shopify/ui-extensions/customer-account';
 
 /**
  * Combined extension targets from all surfaces.
@@ -49,4 +52,10 @@ export function isCheckoutTarget(
 
 export function isPosTarget(target: string): target is PosExtensionTarget {
   return target.startsWith('pos.');
+}
+
+export function isCustomerAccountTarget(
+  target: string,
+): target is CustomerAccountExtensionTarget {
+  return target.startsWith('customer-account.');
 }

@@ -23,6 +23,12 @@
       "esnext": "./point-of-sale.esnext",
       "import": "./point-of-sale.mjs",
       "require": "./point-of-sale.js"
+    },
+    "./customer-account": {
+      "types": "./build/ts/customer-account/index.d.ts",
+      "esnext": "./customer-account.esnext",
+      "import": "./customer-account.mjs",
+      "require": "./customer-account.js"
     }
   },
   "typesVersions": {
@@ -32,6 +38,9 @@
       ],
       "point-of-sale": [
         "./build/ts/point-of-sale/index.d.ts"
+      ],
+      "customer-account": [
+        "./build/ts/customer-account/index.d.ts"
       ]
     }
   },
