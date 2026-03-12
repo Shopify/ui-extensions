@@ -1,0 +1,27 @@
+{
+  "extends": "../../config/typescript/tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "build/ts",
+    "stripInternal": true,
+    "lib": ["es2018", "esnext", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@shopify/ui-extensions/checkout": [
+        "../ui-extensions/build/ts/surfaces/checkout"
+      ],
+      "@shopify/ui-extensions/admin": [
+        "../ui-extensions/build/ts/surfaces/admin"
+      ],
+      "@shopify/ui-extensions/customer-account": [
+        "../ui-extensions/build/ts/surfaces/customer-account"
+      ],
+      "@shopify/ui-extensions/point-of-sale": [
+        "../ui-extensions/build/ts/surfaces/point-of-sale"
+      ]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/tests/**"],
+  "references": [{"path": "../ui-extensions"}]
+}
