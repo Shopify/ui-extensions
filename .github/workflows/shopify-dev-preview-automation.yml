@@ -1,0 +1,215 @@
+# This workflow dispatches a docs sync event to shop/world when generated docs files change.
+# It monitors changes to generated docs files in PRs across all UI extension surfaces.
+#
+# The shop/world repository will then sync these docs files for preview.
+#
+# Supports both flat structure (e.g., 2025-04, 2025-07):
+#   packages/ui-extensions/docs/surfaces/<surface>/generated/*.json
+# And nested structure (e.g., 2025-10+):
+#   packages/ui-extensions/docs/surfaces/<surface>/generated/<reference>/<version>/*.json
+#
+# ============================================================================
+# CONFIGURATION: Enable/disable surfaces by commenting out lines below
+# ============================================================================
+# To disable a surface, comment out its line in BOTH the 'paths' trigger AND
+# the ENABLED_SURFACES env var below. They must match!
+#
+# Available surfaces:
+#   admin          -> admin_extensions
+#   checkout       -> checkout_extensions
+#   customer-account -> customer_account_ui_extensions
+#   point-of-sale  -> pos_ui_extensions
+# ============================================================================
+
+name: Shopify Dev Docs Sync
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, closed]
+    paths:
+      - 'packages/ui-extensions/docs/surfaces/admin/generated/**/*.json'
+      - 'packages/ui-extensions/docs/surfaces/checkout/generated/**/*.json'
+      - 'packages/ui-extensions/docs/surfaces/customer-account/generated/**/*.json'
+      - 'packages/ui-extensions/docs/surfaces/point-of-sale/generated/**/*.json'
+
+env:
+  # ============================================================================
+  # ENABLED SURFACES: Comment/uncomment to match the paths trigger above
+  # ============================================================================
+  ENABLED_SURFACES: |
+    admin
+    checkout
+    customer-account
+    point-of-sale
+
+concurrency:
+  group: shopify-dev-docs-sync-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  dispatch-docs-sync:
+    name: Dispatch docs sync to shop/world
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: github.repository_owner == 'Shopify'
+    steps:
+      - name: Checkout repository
+        if: github.event.action != 'closed'
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        with:
+          fetch-depth: 1
+
+      - name: Create GitHub App Token
+        id: app-token
+        uses: actions/create-github-app-token@af35edadc00be37caa72ed9f3e6d5f7801bfdf09 # v1.11.7
+        with:
+          app-id: ${{ secrets.SHOPIFY_DEV_DOCS_SYNC_APP_ID }}
+          private-key: ${{ secrets.SHOPIFY_DEV_DOCS_SYNC_APP_PRIVATE_KEY }}
+          owner: Shop
+          repositories: |
+            world
+
+      - name: Debug - Check token access to shop/world
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          echo "Testing token access to shop/world repository..."
+          HTTP_STATUS=$(curl -s -o repo_check.txt -w "%{http_code}" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/shop/world)
+
+          echo "HTTP Status: $HTTP_STATUS"
+
+          if [ "$HTTP_STATUS" -eq 200 ]; then
+            echo "Token has access to shop/world repository"
+            echo "Repository info:"
+            cat repo_check.txt | jq '.name, .private, .permissions'
+          elif [ "$HTTP_STATUS" -eq 404 ]; then
+            echo "Token does NOT have access to shop/world (404 Not Found)"
+            cat repo_check.txt
+          elif [ "$HTTP_STATUS" -eq 401 ]; then
+            echo "Token is invalid or expired (401 Unauthorized)"
+            cat repo_check.txt
+          else
+            echo "Unexpected response (HTTP $HTTP_STATUS)"
+            cat repo_check.txt
+          fi
+
+      - name: Get changed files
+        id: changed-files
+        if: github.event.action != 'closed'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # Build monitored patterns from ENABLED_SURFACES env var
+          MONITORED_PATTERNS=()
+          while IFS= read -r surface; do
+            # Skip empty lines
+            [[ -z "$surface" ]] && continue
+            MONITORED_PATTERNS+=("packages/ui-extensions/docs/surfaces/${surface}/generated/")
+          done <<< "$ENABLED_SURFACES"
+
+          echo "Monitoring surfaces: ${MONITORED_PATTERNS[*]}"
+
+          # Only match these specific JSON files
+          VALID_FILENAMES=(
+            "generated_docs_data.json"
+            "generated_static_pages.json"
+            "generated_category_pages.json"
+            "targets.json"
+          )
+
+          # Get the list of changed files in this PR using GitHub API
+          echo "Fetching changed files from GitHub API for PR #$PR_NUMBER"
+          CHANGED_FILES=$(gh api repos/${{ github.repository }}/pulls/$PR_NUMBER/files --paginate --jq '.[].filename')
+
+          # Filter to only include files that:
+          # 1. Are under one of our monitored directories
+          # 2. Have one of our valid filenames
+          MATCHING_FILES=()
+          while IFS= read -r file; do
+            # Skip empty lines
+            [[ -z "$file" ]] && continue
+            # Check if file is under a monitored directory
+            for pattern in "${MONITORED_PATTERNS[@]}"; do
+              if [[ "$file" == ${pattern}* ]]; then
+                # Check if the filename is one we care about
+                filename=$(basename "$file")
+                for valid_name in "${VALID_FILENAMES[@]}"; do
+                  if [[ "$filename" == "$valid_name" ]]; then
+                    MATCHING_FILES+=("$file")
+                    break 2
+                  fi
+                done
+              fi
+            done
+          done <<< "$CHANGED_FILES"
+
+          # Convert to JSON array
+          if [ ${#MATCHING_FILES[@]} -eq 0 ]; then
+            echo "No monitored files changed"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            JSON_ARRAY=$(printf '%s\n' "${MATCHING_FILES[@]}" | jq -R . | jq -s -c .)
+            echo "Changed files: $JSON_ARRAY"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "files=$JSON_ARRAY" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Dispatch to shop/world
+        if: github.event.action == 'closed' || steps.changed-files.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          SOURCE_BRANCH: ${{ github.event.pull_request.base.ref }}
+          SOURCE_REF: ${{ github.event.pull_request.head.ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          CHANGED_FILES: ${{ steps.changed-files.outputs.files }}
+        run: |
+          # Determine action based on PR event
+          if [ "${{ github.event.action }}" = "closed" ]; then
+            ACTION="close"
+            CHANGED_FILES='[]'
+          else
+            ACTION="sync"
+          fi
+
+          # Build the payload
+          PAYLOAD=$(jq -n \
+            --arg action "$ACTION" \
+            --arg source_repo "Shopify/ui-extensions" \
+            --arg source_branch "$SOURCE_BRANCH" \
+            --arg source_ref "$SOURCE_REF" \
+            --argjson source_pr_number "$PR_NUMBER" \
+            --argjson changed_files "$CHANGED_FILES" \
+            '{
+              event_type: "templated-api-docs-sync",
+              client_payload: {
+                action: $action,
+                source_repo: $source_repo,
+                source_branch: $source_branch,
+                source_ref: $source_ref,
+                source_pr_number: $source_pr_number,
+                changed_files: $changed_files
+              }
+            }')
+
+          echo "Dispatching to shop/world with payload:"
+          echo "$PAYLOAD" | jq .
+
+          # Send the dispatch request
+          HTTP_STATUS=$(curl -s -o response.txt -w "%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/shop/world/dispatches \
+            -d "$PAYLOAD")
+
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
+            echo "Successfully dispatched docs $ACTION event to shop/world (HTTP $HTTP_STATUS)"
+          else
+            echo "Failed to dispatch docs $ACTION event (HTTP $HTTP_STATUS)"
+            cat response.txt
+            exit 1
+          fi
