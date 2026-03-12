@@ -59,12 +59,14 @@ function Extension() {
   async function onCheckboxChange(isChecked) {
     setChecked(isChecked);
     const result =
-      await shopify.applyMetafieldsChange({
-        type: 'updateMetafield',
-        namespace: metafieldNamespace,
-        key: metafieldKey,
-        value: isChecked ? 'yes' : 'no',
-        valueType: 'string',
+      await shopify.applyMetafieldChange({
+        type: 'updateCartMetafield',
+        metafield: {
+          namespace: metafieldNamespace,
+          key: metafieldKey,
+          value: isChecked ? 'yes' : 'no',
+          type: 'single_line_text_field',
+        },
       });
     console.log(
       'applyMetafieldsChange result',

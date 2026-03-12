@@ -1,4 +1,4 @@
-import {SharedReferenceEntityTemplateSchema} from '../docs-type';
+import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Thumbnail',
