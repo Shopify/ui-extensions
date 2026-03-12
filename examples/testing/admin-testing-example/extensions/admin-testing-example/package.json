@@ -1,0 +1,10 @@
+{
+  "name": "admin-testing-example",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "preact": "^10.10.x",
+    "@shopify/ui-extensions": "2026.4.x"
+  }
+}
