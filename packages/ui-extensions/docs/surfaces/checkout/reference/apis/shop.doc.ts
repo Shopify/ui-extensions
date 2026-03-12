@@ -6,10 +6,11 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Shop',
+  name: 'Shop API',
   description: 'The API for interacting with shop.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   type: 'API',
   definitions: [
     {

@@ -7,10 +7,11 @@ import {
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Discounts',
+  name: 'Discounts API',
   description: 'The API for interacting with discounts.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Checkout APIs',
   type: 'API',
   definitions: [
     {
