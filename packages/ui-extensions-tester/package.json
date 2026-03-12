@@ -1,5 +1,6 @@
 {
   "name": "@shopify/ui-extensions-tester",
+  "private": true,
   "version": "2026.4.0-rc.1",
   "main": "index.js",
   "module": "index.mjs",
