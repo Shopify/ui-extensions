@@ -1,12 +1,13 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Intents',
+  name: 'Intents API',
   overviewPreviewDescription:
     'The API for invoking Shopify intents to request workflows.',
   description: `The Intents API provides a way to invoke existing customer account workflows for managing buyer information.`,
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   type: 'API',
   defaultExample: {
     description: '',
