@@ -3,8 +3,11 @@ import type {
   ExtensionTarget as CheckoutExtensionTarget,
 } from '@shopify/ui-extensions/checkout';
 import type {ExtensionTargets as AdminExtensionTargets} from '@shopify/ui-extensions/admin';
+import type {
+  ExtensionTarget as PosExtensionTarget,
+  ExtensionTargets as PointOfSaleExtensionTargets,
+} from '@shopify/ui-extensions/point-of-sale';
 import type {ExtensionTargets as CustomerAccountExtensionTargets} from '@shopify/ui-extensions/customer-account';
-import type {ExtensionTargets as PointOfSaleExtensionTargets} from '@shopify/ui-extensions/point-of-sale';
 
 /**
  * Combined extension targets from all surfaces.
@@ -22,6 +25,9 @@ export type AnyExtensionTarget = keyof AllExtensionTargets;
 
 /**
  * Extracts the API type for a given extension target.
+ *
+ * For render targets this is the `api` property of the `RenderExtension`.
+ * For event targets (functions) this is the `data` parameter type.
  */
 export type ApiForTarget<T extends AnyExtensionTarget> =
   AllExtensionTargets[T] extends {api: infer A}
@@ -39,4 +45,8 @@ export function isCheckoutTarget(
     target.startsWith('purchase.cart-line-item') ||
     target.startsWith('Checkout::')
   );
+}
+
+export function isPosTarget(target: string): target is PosExtensionTarget {
+  return target.startsWith('pos.');
 }
