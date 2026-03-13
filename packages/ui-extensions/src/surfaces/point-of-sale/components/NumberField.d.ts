@@ -15,9 +15,11 @@ import type {
   ComponentChild,
 } from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * The base props for elements without children, providing key, ref, and slot properties.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
   /**
@@ -35,6 +37,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base props for elements with children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
@@ -43,9 +46,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
+/** @publicDocs */
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 /**
  * Represents the event object passed to callback functions when interactive events occur. Contains metadata about the event, including the target element, event phase, and propagation behavior.
+ * @publicDocs
  */
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   /**
@@ -79,6 +84,7 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-number-field';
+/** @publicDocs */
 export interface NumberFieldJSXProps
   extends Pick<
     NumberFieldProps,
@@ -156,6 +162,7 @@ export interface NumberFieldJSXProps
    */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
+/** @publicDocs */
 export type ElementProps = Omit<NumberFieldJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {

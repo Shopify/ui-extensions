@@ -24,9 +24,11 @@ import type {
   Ref,
 } from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * The base props for elements without children, providing key, ref, and slot properties.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
   /**
@@ -44,6 +46,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base props for elements with children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
@@ -52,13 +55,16 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
+/** @publicDocs */
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-stack';
 /**
  * Defines the available padding size options using a semantic scale. Provides consistent spacing values that align with the POS design system.
+ * @publicDocs
  */
 export type PaddingKeyword = SizeKeyword | 'none';
+/** @publicDocs */
 export type PickedProps = Pick<
   StackProps,
   | 'id'
@@ -76,6 +82,7 @@ export type PickedProps = Pick<
   | 'justifyContent'
   | 'rowGap'
 >;
+/** @publicDocs */
 export interface StackJSXProps extends PickedProps {
   /**
    * The padding applied to all edges of the container. Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Shorthand_properties#edges_of_a_box) using flow-relative values in the order:
