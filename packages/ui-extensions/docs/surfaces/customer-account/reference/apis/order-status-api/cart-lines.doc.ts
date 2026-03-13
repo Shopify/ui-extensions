@@ -6,11 +6,11 @@ import {
 } from '../../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Cart Lines',
+  name: 'Cart Lines API',
   description: 'The APIs for interacting with the cart lines.',
   isVisualComponent: false,
-  category: 'APIs',
-  subCategory: 'Order Status API',
+  category: 'Target APIs',
+  subCategory: 'Order APIs',
   type: 'API',
   definitions: [
     {

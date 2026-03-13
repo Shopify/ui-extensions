@@ -3,10 +3,11 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'UI',
+  name: 'UI API',
   description: 'The API for interacting with UI.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   type: 'API',
   definitions: [
     {

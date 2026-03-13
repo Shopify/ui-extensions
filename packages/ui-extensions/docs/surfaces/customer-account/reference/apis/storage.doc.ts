@@ -3,10 +3,11 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Storage',
+  name: 'Storage API',
   description: 'The API for interacting with local storage.',
   isVisualComponent: false,
-  category: 'APIs',
+  category: 'Target APIs',
+  subCategory: 'Platform APIs',
   type: 'API',
   definitions: [
     {

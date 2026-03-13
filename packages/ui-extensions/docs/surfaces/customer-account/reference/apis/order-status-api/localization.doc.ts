@@ -3,11 +3,11 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {ORDER_STATUS_API_DEFINITION} from '../../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Localization (Order Status API)',
+  name: 'Localization API (Order Status)',
   description: 'The API for localizing your extension.',
   isVisualComponent: false,
-  category: 'APIs',
-  subCategory: 'Order Status API',
+  category: 'Target APIs',
+  subCategory: 'Order APIs',
   type: 'API',
   definitions: [
     {
