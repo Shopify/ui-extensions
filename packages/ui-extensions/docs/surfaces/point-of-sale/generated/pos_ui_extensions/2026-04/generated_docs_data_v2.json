@@ -1,0 +1,3326 @@
+{
+  "DataGeneratedType": {
+    "docs/surfaces/point-of-sale/reference/apis/action-api.doc.ts": {
+      "filePath": "docs/surfaces/point-of-sale/reference/apis/action-api.doc.ts",
+      "name": "DataGeneratedType",
+      "description": "Template schema for reference entity documentation pages.",
+      "isPublicDocs": true,
+      "value": "data: ReferenceEntityTemplateSchema = {\n  name: 'Action API',\n  description:\n    'The Action API provides modal presentation functionality for POS UI extensions, allowing you to launch full-screen modal interfaces from menu items, tiles, and block targets. The API enables navigation between different targets within your extension.',\n  isVisualComponent: false,\n  type: 'APIs',\n  definitions: [\n    {\n      title: 'Properties',\n      description:\n        'The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `shopify.action` to launch full-screen modal experiences.',\n      type: 'ActionApiContent',\n    },\n  ],\n  category: 'Target APIs',\n  subCategory: 'Standard APIs',\n  related: [],\n  subSections: [\n    {\n      type: 'Generic',\n      anchorLink: 'best-practices',\n      title: 'Best practices',\n      sectionContent:\n        \"- **Use modals for complex workflows:** Reserve modals for operations that genuinely require more screen space, multiple steps, or complex interactions that can't be handled by simple button actions.\\n\" +\n        '- **Provide clear entry points:** Use descriptive button labels and titles that clearly indicate what the modal will contain or what action it will perform, helping users understand what to expect.\\n' +\n        '- **Handle modal dismissal gracefully:** Ensure your modal-based workflows handle user dismissal, saving progress when possible and providing clear feedback about incomplete operations.',\n    },\n    {\n      type: 'Generic',\n      anchorLink: 'limitations',\n      title: 'Limitations',\n      sectionContent: `\nThe \\`presentModal()\\` method must be called from a user interaction (such as a button click or tile tap) and can't be invoked programmatically during extension initialization or from background operations.\n`,\n    },\n  ],\n  examples: {\n    description:\n      'Learn how to present full-screen modals from tiles and menu items using the Action API.',\n    examples: [\n      {\n        codeblock: generateJsxCodeBlockForActionApi(\n          'Open a modal from a post-purchase action',\n          'present-modal',\n        ),\n        description:\n          'Present a full-screen modal from menu item actions in detail screens. This example shows how to use `shopify.action.presentModal()` to launch a modal workflow from post-purchase, order details, or other action menu item contexts. With this pattern, you can implement complex, multi-step operations.',\n      },\n      {\n        codeblock: generateJsxCodeBlockForActionApi(\n          'Open a modal from a smart grid tile',\n          'present-modal-tile',\n        ),\n        description:\n          'Present a full-screen modal from smart grid tiles on the POS home screen. This example demonstrates using `shopify.action.presentModal()` to launch modal workflows from tile interactions. This pattern is well-suited for high-frequency tasks that require additional UI beyond the tile itself.',\n      },\n    ],\n  },\n}"
+    }
+  },
+  "ActionApi": {
+    "src/surfaces/point-of-sale/api/action-api/action-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
+      "name": "ActionApi",
+      "description": "The `ActionApi` object provides methods for presenting modal interfaces. Access these methods through `shopify.action` to launch full-screen modal experiences.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "action",
+          "value": "ActionApiContent",
+          "description": ""
+        }
+      ],
+      "value": "export interface ActionApi {\n  action: ActionApiContent;\n}"
+    }
+  },
+  "ActionApiContent": {
+    "src/surfaces/point-of-sale/api/action-api/action-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
+      "name": "ActionApiContent",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "presentModal",
+          "value": "() => void",
+          "description": "Presents the corresponding action (modal) target on top of the current view as a full-screen modal. For example, calling this method from `pos.purchase.post.action.menu-item.render` presents `pos.purchase.post.action.render`. Use to launch detailed workflows, complex forms, or multi-step processes that require more screen space than simple components provide."
+        }
+      ],
+      "value": "export interface ActionApiContent {\n  /**\n   * Presents the corresponding action (modal) target on top of the current view as a full-screen modal. For example, calling this method from `pos.purchase.post.action.menu-item.render` presents `pos.purchase.post.action.render`. Use to launch detailed workflows, complex forms, or multi-step processes that require more screen space than simple components provide.\n   */\n  presentModal(): void;\n}"
+    }
+  },
+  "Link": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "Link",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "A label that describes the purpose or contents of the link. It will be read to users using assistive technologies such as screen readers.\n\nUse this when using only an icon or the content of the link is not enough context for users using assistive technologies.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "command",
+          "value": "'--auto' | '--show' | '--hide' | '--toggle' | '--copy'",
+          "description": "Sets the action the `commandFor` should take when this clickable is activated.\n\nSee the documentation of particular components for the actions they support.\n\n- `--auto`: a default action for the target component.\n- `--show`: shows the target component.\n- `--hide`: hides the target component.\n- `--toggle`: toggles the target component.\n- `--copy`: copies the target ClipboardItem.",
+          "isOptional": true,
+          "defaultValue": "'--auto'"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "commandFor",
+          "value": "string",
+          "description": "ID of a component that should respond to activations (e.g. clicks) on this component.\n\nSee `command` for how to control the behavior of the target.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface Link {\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * ID of a component that should respond to activations (e.g. clicks) on this component.\n   *\n   * See `command` for how to control the behavior of the target.\n   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor\n   */\n  commandFor?: string;\n  /**\n   * Sets the action the `commandFor` should take when this clickable is activated.\n   *\n   * See the documentation of particular components for the actions they support.\n   *\n   * - `--auto`: a default action for the target component.\n   * - `--show`: shows the target component.\n   * - `--hide`: hides the target component.\n   * - `--toggle`: toggles the target component.\n   * - `--copy`: copies the target ClipboardItem.\n   * @default '--auto'\n   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command\n   */\n  command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';\n  /**\n   * A label that describes the purpose or contents of the link. It will be read to users using assistive technologies such as screen readers.\n   *\n   * Use this when using only an icon or the content of the link is not enough context\n   * for users using assistive technologies.\n   */\n  accessibilityLabel?: string;\n}"
+    }
+  },
+  "Modal": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "Modal",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "heading",
+          "value": "string",
+          "description": "A title that describes the content of the modal.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface Modal {\n  /** A unique identifier for the element. */\n  id?: string;\n  /** A title that describes the content of the modal. */\n  heading?: string;\n}"
+    }
+  },
+  "CartApiContent": {
+    "src/surfaces/point-of-sale/api/cart-api/cart-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+      "name": "CartApiContent",
+      "description": "The `CartApi` object provides access to cart management functionality and real-time cart state monitoring. Access these properties through `shopify.cart` to interact with the current POS cart.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addAddress",
+          "value": "(address: Address) => Promise<void>",
+          "description": "Add a new address to the customer associated with the cart. The customer must be present in the cart before adding addresses with enhanced address validation and formatting."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addCartCodeDiscount",
+          "value": "(code: string) => Promise<void>",
+          "description": "Apply a discount code to the cart. The system will validate the code and apply the appropriate discount if the code is valid and applicable to the current cart contents with improved error messaging."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addCartProperties",
+          "value": "(properties: Record<string, string>) => Promise<void>",
+          "description": "Add custom key-value properties to the cart for storing metadata, tracking information, or integration data. Properties are merged with existing cart properties with enhanced validation and conflict resolution."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addCustomSale",
+          "value": "(customSale: CustomSale) => Promise<string>",
+          "description": "Add a custom sale item to the cart with specified quantity, title, price, and taxable status. Returns the `UUID` of the created line item for future operations and property management."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addLineItem",
+          "value": "(variantId: number, quantity: number) => Promise<string>",
+          "description": "Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addLineItemProperties",
+          "value": "(uuid: string, properties: Record<string, string>) => Promise<void>",
+          "description": "Add custom properties to a specific line item using its `UUID`. Properties are merged with existing line item properties for metadata storage and tracking with enhanced validation."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addLineItemSellingPlan",
+          "value": "(input: SetLineItemSellingPlanInput) => Promise<void>",
+          "description": "Add a selling plan to a line item in the cart using the line item `UUID`, selling plan `ID`, and selling plan name. Optionally provide delivery interval and interval count for improved performance, otherwise POS will fetch them after syncing the cart."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "applyCartDiscount",
+          "value": "(type: CartDiscountType, title: string, amount?: string) => Promise<void>",
+          "description": "Apply a cart-level discount with the specified type (`'Percentage'`, `'FixedAmount'`, or `'Code'`), title, and optional amount. For discount codes, omit the `amount` parameter. Enhanced validation ensures proper discount application."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "bulkAddLineItemProperties",
+          "value": "(lineItemProperties: SetLineItemPropertiesInput[]) => Promise<void>",
+          "description": "Add properties to multiple line items simultaneously using an array of inputs containing line item `UUIDs` and their respective properties for efficient bulk operations with enhanced validation and error reporting."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "bulkCartUpdate",
+          "value": "(cartState: CartUpdateInput) => Promise<Cart>",
+          "description": "Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes with enhanced validation and error handling."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "bulkSetLineItemDiscounts",
+          "value": "(lineItemDiscounts: SetLineItemDiscountInput[]) => Promise<void>",
+          "description": "Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "clearCart",
+          "value": "() => Promise<void>",
+          "description": "Remove all line items and reset the cart to an empty state. This action can't be undone and will clear all cart contents including line items, discounts, properties, and selling plans."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "current",
+          "value": "ReadonlySignalLike<Cart>",
+          "description": "Provides read-only access to the current cart state and allows subscribing to cart changes. The `value` property provides the current cart state, and `subscribe` allows listening to changes with improved performance and memory management."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "deleteAddress",
+          "value": "(addressId: number) => Promise<void>",
+          "description": "Delete an existing address from the customer using the address `ID`. The customer must be present in the cart to perform this operation with improved error handling for invalid address `IDs`."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeAllDiscounts",
+          "value": "(disableAutomaticDiscounts: boolean) => Promise<void>",
+          "description": "Remove all discounts from both the cart and individual line items. Set `disableAutomaticDiscounts` to `true` to prevent automatic discounts from being reapplied after removal with enhanced discount allocation handling."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeCartDiscount",
+          "value": "() => Promise<void>",
+          "description": "Remove the current cart-level discount. This only affects cart-level discounts and does not impact line item discounts or automatic discount eligibility."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeCartProperties",
+          "value": "(keys: string[]) => Promise<void>",
+          "description": "Remove specific cart properties by their keys. Only the specified property keys will be removed while other properties remain intact with improved error handling for non-existent keys."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeCustomer",
+          "value": "() => Promise<void>",
+          "description": "Remove the currently associated customer from the cart, converting it back to a guest cart without customer-specific benefits or information while preserving cart contents."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeLineItem",
+          "value": "(uuid: string) => Promise<void>",
+          "description": "Remove a specific line item from the cart using its `UUID`. The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeLineItemDiscount",
+          "value": "(uuid: string) => Promise<void>",
+          "description": "Remove all discounts from a specific line item identified by its `UUID`. This will clear any custom discounts applied to the line item while preserving discount allocation history."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeLineItemProperties",
+          "value": "(uuid: string, keys: string[]) => Promise<void>",
+          "description": "Remove specific properties from a line item by `UUID` and property keys. Only the specified keys will be removed while other properties remain intact with improved error handling."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeLineItemSellingPlan",
+          "value": "(uuid: string) => Promise<void>",
+          "description": "Remove the selling plan from a line item in the cart using the line item `UUID`. This will clear any subscription or recurring purchase configuration from the line item."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setAttributedStaff",
+          "value": "(staffId: number) => Promise<void>",
+          "description": "Set the attributed staff member for all line items in the cart using the staff `ID`. Pass `undefined` to clear staff attribution from all line items with enhanced staff validation and tracking."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setAttributedStaffToLineItem",
+          "value": "(staffId: number, lineItemUuid: string) => Promise<void>",
+          "description": "Set the attributed staff member for a specific line item using the staff `ID` and line item `UUID`. Pass `undefined` as `staffId` to clear attribution from the line item with improved validation and error handling."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setCustomer",
+          "value": "(customer: Customer) => Promise<void>",
+          "description": "Associate a customer with the current cart using the customer object containing the customer `ID`. This enables customer-specific pricing, discounts, and checkout features with enhanced customer data validation."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setLineItemDiscount",
+          "value": "(uuid: string, type: LineItemDiscountType, title: string, amount: string) => Promise<void>",
+          "description": "Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "updateDefaultAddress",
+          "value": "(addressId: number) => Promise<void>",
+          "description": "Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation."
+        }
+      ],
+      "value": "export interface CartApiContent {\n  /**\n   * Provides read-only access to the current cart state and allows subscribing to cart changes. The `value` property provides the current cart state, and `subscribe` allows listening to changes with improved performance and memory management.\n   */\n  current: ReadonlySignalLike<Cart>;\n\n  /**\n   * Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes with enhanced validation and error handling.\n   *\n   * @param cartState the cart state to set\n   * @returns the updated cart\n   */\n  bulkCartUpdate(cartState: CartUpdateInput): Promise<Cart>;\n\n  /**\n   * Apply a cart-level discount with the specified type (`'Percentage'`, `'FixedAmount'`, or `'Code'`), title, and optional amount. For discount codes, omit the `amount` parameter. Enhanced validation ensures proper discount application.\n   *\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discount. Pass in `undefined` if using discount codes.\n   */\n  applyCartDiscount(\n    type: CartDiscountType,\n    title: string,\n    amount?: string,\n  ): Promise<void>;\n\n  /**\n   * Apply a discount code to the cart. The system will validate the code and apply the appropriate discount if the code is valid and applicable to the current cart contents with improved error messaging.\n   *\n   * @param code the code for the discount to add to the cart\n   */\n  addCartCodeDiscount(code: string): Promise<void>;\n\n  /**\n   * Remove the current cart-level discount. This only affects cart-level discounts and does not impact line item discounts or automatic discount eligibility.\n   */\n  removeCartDiscount(): Promise<void>;\n\n  /**\n   * Remove all discounts from both the cart and individual line items. Set `disableAutomaticDiscounts` to `true` to prevent automatic discounts from being reapplied after removal with enhanced discount allocation handling.\n   *\n   * @param disableAutomaticDiscounts Whether or not automatic discounts should be enabled after removing the discounts.\n   */\n  removeAllDiscounts(disableAutomaticDiscounts: boolean): Promise<void>;\n\n  /**\n   * Remove all line items and reset the cart to an empty state. This action can't be undone and will clear all cart contents including line items, discounts, properties, and selling plans.\n   */\n  clearCart(): Promise<void>;\n\n  /**\n   * Associate a customer with the current cart using the customer object containing the customer `ID`. This enables customer-specific pricing, discounts, and checkout features with enhanced customer data validation.\n   *\n   * @param customer the customer object to add to the cart\n   */\n  setCustomer(customer: Customer): Promise<void>;\n\n  /**\n   * Remove the currently associated customer from the cart, converting it back to a guest cart without customer-specific benefits or information while preserving cart contents.\n   */\n  removeCustomer(): Promise<void>;\n\n  /**\n   * Add a custom sale item to the cart with specified quantity, title, price, and taxable status. Returns the `UUID` of the created line item for future operations and property management.\n   *\n   * @param customSale the custom sale object to add to the cart\n   * @returns {string} the UUID of the line item added\n   */\n  addCustomSale(customSale: CustomSale): Promise<string>;\n\n  /**\n   * Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors.\n   *\n   * @param variantId the product variant's numeric ID to add to the cart\n   * @param quantity the number of this variant to add to the cart\n   * @returns {string} the UUID of the line item added, or the empty string if the user dismissed an oversell guard modal\n   * @throws {Error} if POS fails to add the line item\n   */\n  addLineItem(variantId: number, quantity: number): Promise<string>;\n\n  /**\n   * Remove a specific line item from the cart using its `UUID`. The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans.\n   *\n   * @param uuid the uuid of the line item that should be removed\n   */\n  removeLineItem(uuid: string): Promise<void>;\n\n  /**\n   * Add custom key-value properties to the cart for storing metadata, tracking information, or integration data. Properties are merged with existing cart properties with enhanced validation and conflict resolution.\n   *\n   * @param properties the custom key to value object to attribute to the cart\n   */\n  addCartProperties(properties: Record<string, string>): Promise<void>;\n\n  /**\n   * Remove specific cart properties by their keys. Only the specified property keys will be removed while other properties remain intact with improved error handling for non-existent keys.\n   *\n   * @param keys the collection of keys to be removed from the cart properties\n   */\n  removeCartProperties(keys: string[]): Promise<void>;\n\n  /**\n   * Add custom properties to a specific line item using its `UUID`. Properties are merged with existing line item properties for metadata storage and tracking with enhanced validation.\n   *\n   * @param uuid the uuid of the line item to which the properties should be stringd\n   * @param properties the custom key to value object to attribute to the line item\n   */\n  addLineItemProperties(\n    uuid: string,\n    properties: Record<string, string>,\n  ): Promise<void>;\n\n  /**\n   * Add properties to multiple line items simultaneously using an array of inputs containing line item `UUIDs` and their respective properties for efficient bulk operations with enhanced validation and error reporting.\n   *\n   * @param lineItemProperties the collection of custom line item properties to apply to their respective line items.\n   */\n  bulkAddLineItemProperties(\n    lineItemProperties: SetLineItemPropertiesInput[],\n  ): Promise<void>;\n\n  /**\n   * Remove specific properties from a line item by `UUID` and property keys. Only the specified keys will be removed while other properties remain intact with improved error handling.\n   *\n   * @param uuid the uuid of the line item to which the properties should be removed\n   * @param keys the collection of keys to be removed from the line item properties\n   */\n  removeLineItemProperties(uuid: string, keys: string[]): Promise<void>;\n\n  /**\n   * Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking.\n   *\n   * @param uuid the uuid of the line item that should receive a discount\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discout\n   */\n  setLineItemDiscount(\n    uuid: string,\n    type: LineItemDiscountType,\n    title: string,\n    amount: string,\n  ): Promise<void>;\n\n  /**\n   * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking.\n   *\n   * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.\n   */\n  bulkSetLineItemDiscounts(\n    lineItemDiscounts: SetLineItemDiscountInput[],\n  ): Promise<void>;\n\n  /**\n   * Set the attributed staff member for all line items in the cart using the staff `ID`. Pass `undefined` to clear staff attribution from all line items with enhanced staff validation and tracking.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff from all line items.\n   */\n  setAttributedStaff(staffId: number | undefined): Promise<void>;\n\n  /**\n   * Set the attributed staff member for a specific line item using the staff `ID` and line item `UUID`. Pass `undefined` as `staffId` to clear attribution from the line item with improved validation and error handling.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff on the line item.\n   * @param lineItemUuid the UUID of the line item.\n   */\n  setAttributedStaffToLineItem(\n    staffId: number | undefined,\n    lineItemUuid: string,\n  ): Promise<void>;\n\n  /**\n   * Remove all discounts from a specific line item identified by its `UUID`. This will clear any custom discounts applied to the line item while preserving discount allocation history.\n   *\n   * @param uuid the uuid of the line item whose discounts should be removed\n   */\n  removeLineItemDiscount(uuid: string): Promise<void>;\n\n  /**\n   * Add a new address to the customer associated with the cart. The customer must be present in the cart before adding addresses with enhanced address validation and formatting.\n   *\n   * @param address the address object to add to the customer in cart\n   */\n  addAddress(address: Address): Promise<void>;\n\n  /**\n   * Delete an existing address from the customer using the address `ID`. The customer must be present in the cart to perform this operation with improved error handling for invalid address `IDs`.\n   *\n   * @param addressId the address ID to delete\n   */\n  deleteAddress(addressId: number): Promise<void>;\n\n  /**\n   * Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation.\n   *\n   * @param addressId the address ID to set as the default address\n   */\n  updateDefaultAddress(addressId: number): Promise<void>;\n\n  /**\n   * Add a selling plan to a line item in the cart using the line item `UUID`, selling plan `ID`, and selling plan name. Optionally provide delivery interval and interval count for improved performance, otherwise POS will fetch them after syncing the cart.\n   *\n   * @param uuid the uuid of the line item that should receive the selling plan\n   * @param sellingPlanId the ID of the selling plan to add to the line item\n   */\n  addLineItemSellingPlan(input: SetLineItemSellingPlanInput): Promise<void>;\n\n  /**\n   * Remove the selling plan from a line item in the cart using the line item `UUID`. This will clear any subscription or recurring purchase configuration from the line item.\n   *\n   * @param uuid the uuid of the line item whose selling plan should be removed\n   */\n  removeLineItemSellingPlan(uuid: string): Promise<void>;\n}"
+    }
+  },
+  "Address": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "Address",
+      "description": "Represents physical address information for customer shipping and billing. Contains standard address fields including street, city, region, postal code, and country data.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "address1",
+          "value": "string",
+          "description": "The primary street address line. Required for most shipping and billing operations. Should contain street number and name.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "address2",
+          "value": "string",
+          "description": "The secondary address line for apartment, suite, or unit information. Optional field for additional address details.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "city",
+          "value": "string",
+          "description": "The city name for the address. Required for shipping calculations and location-based services.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "company",
+          "value": "string",
+          "description": "The company name associated with the address. Optional field for business customers and B2B transactions.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "country",
+          "value": "string",
+          "description": "The country name for the address. Required for international shipping, tax calculations, and compliance.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "countryCode",
+          "value": "CountryCode",
+          "description": "The standardized country code (ISO format). Use for precise country identification and international shipping operations.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "firstName",
+          "value": "string",
+          "description": "The first name for the address contact. Used for personalized shipping labels and customer communication.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lastName",
+          "value": "string",
+          "description": "The last name for the address contact. Required for complete customer identification and shipping labels.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "name",
+          "value": "string",
+          "description": "The full name for the address contact. Use when first and last names are combined or unavailable as separate fields.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "phone",
+          "value": "string",
+          "description": "The phone number for the address contact. Used for delivery notifications, shipping updates, and customer communication.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "province",
+          "value": "string",
+          "description": "The province or state name for the address. Required for regional shipping rates and tax calculations.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "provinceCode",
+          "value": "string",
+          "description": "The standardized province or state code. Use for precise regional identification and automated shipping calculations.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "zip",
+          "value": "string",
+          "description": "The postal or ZIP code for the address. Required for accurate shipping rates and location-based services.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface Address {\n  /**\n   * The primary street address line. Required for most shipping and billing operations. Should contain street number and name.\n   */\n  address1?: string;\n  /**\n   * The secondary address line for apartment, suite, or unit information. Optional field for additional address details.\n   */\n  address2?: string;\n  /**\n   * The city name for the address. Required for shipping calculations and location-based services.\n   */\n  city?: string;\n  /**\n   * The company name associated with the address. Optional field for business customers and B2B transactions.\n   */\n  company?: string;\n  /**\n   * The first name for the address contact. Used for personalized shipping labels and customer communication.\n   */\n  firstName?: string;\n  /**\n   * The last name for the address contact. Required for complete customer identification and shipping labels.\n   */\n  lastName?: string;\n  /**\n   * The phone number for the address contact. Used for delivery notifications, shipping updates, and customer communication.\n   */\n  phone?: string;\n  /**\n   * The province or state name for the address. Required for regional shipping rates and tax calculations.\n   */\n  province?: string;\n  /**\n   * The country name for the address. Required for international shipping, tax calculations, and compliance.\n   */\n  country?: string;\n  /**\n   * The postal or ZIP code for the address. Required for accurate shipping rates and location-based services.\n   */\n  zip?: string;\n  /**\n   * The full name for the address contact. Use when first and last names are combined or unavailable as separate fields.\n   */\n  name?: string;\n  /**\n   * The standardized province or state code. Use for precise regional identification and automated shipping calculations.\n   */\n  provinceCode?: string;\n  /**\n   * The standardized country code (ISO format). Use for precise country identification and international shipping operations.\n   */\n  countryCode?: CountryCode;\n}"
+    }
+  },
+  "CountryCode": {
+    "src/surfaces/point-of-sale/types/country-code.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+      "syntaxKind": "EnumDeclaration",
+      "name": "CountryCode",
+      "value": "export enum CountryCode {\n  AF = 'AF',\n  AX = 'AX',\n  AL = 'AL',\n  DZ = 'DZ',\n  AD = 'AD',\n  AO = 'AO',\n  AI = 'AI',\n  AG = 'AG',\n  AR = 'AR',\n  AM = 'AM',\n  AW = 'AW',\n  AC = 'AC',\n  AU = 'AU',\n  AT = 'AT',\n  AZ = 'AZ',\n  BS = 'BS',\n  BH = 'BH',\n  BD = 'BD',\n  BB = 'BB',\n  BY = 'BY',\n  BE = 'BE',\n  BZ = 'BZ',\n  BJ = 'BJ',\n  BM = 'BM',\n  BT = 'BT',\n  BO = 'BO',\n  BA = 'BA',\n  BW = 'BW',\n  BV = 'BV',\n  BR = 'BR',\n  IO = 'IO',\n  BN = 'BN',\n  BG = 'BG',\n  BF = 'BF',\n  BI = 'BI',\n  KH = 'KH',\n  CA = 'CA',\n  CV = 'CV',\n  BQ = 'BQ',\n  KY = 'KY',\n  CF = 'CF',\n  TD = 'TD',\n  CL = 'CL',\n  CN = 'CN',\n  CX = 'CX',\n  CC = 'CC',\n  CO = 'CO',\n  KM = 'KM',\n  CG = 'CG',\n  CD = 'CD',\n  CK = 'CK',\n  CR = 'CR',\n  HR = 'HR',\n  CU = 'CU',\n  CW = 'CW',\n  CY = 'CY',\n  CZ = 'CZ',\n  CI = 'CI',\n  DK = 'DK',\n  DJ = 'DJ',\n  DM = 'DM',\n  DO = 'DO',\n  EC = 'EC',\n  EG = 'EG',\n  SV = 'SV',\n  GQ = 'GQ',\n  ER = 'ER',\n  EE = 'EE',\n  SZ = 'SZ',\n  ET = 'ET',\n  FK = 'FK',\n  FO = 'FO',\n  FJ = 'FJ',\n  FI = 'FI',\n  FR = 'FR',\n  GF = 'GF',\n  PF = 'PF',\n  TF = 'TF',\n  GA = 'GA',\n  GM = 'GM',\n  GE = 'GE',\n  DE = 'DE',\n  GH = 'GH',\n  GI = 'GI',\n  GR = 'GR',\n  GL = 'GL',\n  GD = 'GD',\n  GP = 'GP',\n  GT = 'GT',\n  GG = 'GG',\n  GN = 'GN',\n  GW = 'GW',\n  GY = 'GY',\n  HT = 'HT',\n  HM = 'HM',\n  VA = 'VA',\n  HN = 'HN',\n  HK = 'HK',\n  HU = 'HU',\n  IS = 'IS',\n  IN = 'IN',\n  ID = 'ID',\n  IR = 'IR',\n  IQ = 'IQ',\n  IE = 'IE',\n  IM = 'IM',\n  IL = 'IL',\n  IT = 'IT',\n  JM = 'JM',\n  JP = 'JP',\n  JE = 'JE',\n  JO = 'JO',\n  KZ = 'KZ',\n  KE = 'KE',\n  KI = 'KI',\n  KP = 'KP',\n  XK = 'XK',\n  KW = 'KW',\n  KG = 'KG',\n  LA = 'LA',\n  LV = 'LV',\n  LB = 'LB',\n  LS = 'LS',\n  LR = 'LR',\n  LY = 'LY',\n  LI = 'LI',\n  LT = 'LT',\n  LU = 'LU',\n  MO = 'MO',\n  MG = 'MG',\n  MW = 'MW',\n  MY = 'MY',\n  MV = 'MV',\n  ML = 'ML',\n  MT = 'MT',\n  MQ = 'MQ',\n  MR = 'MR',\n  MU = 'MU',\n  YT = 'YT',\n  MX = 'MX',\n  MD = 'MD',\n  MC = 'MC',\n  MN = 'MN',\n  ME = 'ME',\n  MS = 'MS',\n  MA = 'MA',\n  MZ = 'MZ',\n  MM = 'MM',\n  NA = 'NA',\n  NR = 'NR',\n  NP = 'NP',\n  NL = 'NL',\n  AN = 'AN',\n  NC = 'NC',\n  NZ = 'NZ',\n  NI = 'NI',\n  NE = 'NE',\n  NG = 'NG',\n  NU = 'NU',\n  NF = 'NF',\n  MK = 'MK',\n  NO = 'NO',\n  OM = 'OM',\n  PK = 'PK',\n  PS = 'PS',\n  PA = 'PA',\n  PG = 'PG',\n  PY = 'PY',\n  PE = 'PE',\n  PH = 'PH',\n  PN = 'PN',\n  PL = 'PL',\n  PT = 'PT',\n  QA = 'QA',\n  CM = 'CM',\n  RE = 'RE',\n  RO = 'RO',\n  RU = 'RU',\n  RW = 'RW',\n  BL = 'BL',\n  SH = 'SH',\n  KN = 'KN',\n  LC = 'LC',\n  MF = 'MF',\n  PM = 'PM',\n  WS = 'WS',\n  SM = 'SM',\n  ST = 'ST',\n  SA = 'SA',\n  SN = 'SN',\n  RS = 'RS',\n  SC = 'SC',\n  SL = 'SL',\n  SG = 'SG',\n  SX = 'SX',\n  SK = 'SK',\n  SI = 'SI',\n  SB = 'SB',\n  SO = 'SO',\n  ZA = 'ZA',\n  GS = 'GS',\n  KR = 'KR',\n  SS = 'SS',\n  ES = 'ES',\n  LK = 'LK',\n  VC = 'VC',\n  SD = 'SD',\n  SR = 'SR',\n  SJ = 'SJ',\n  SE = 'SE',\n  CH = 'CH',\n  SY = 'SY',\n  TW = 'TW',\n  TJ = 'TJ',\n  TZ = 'TZ',\n  TH = 'TH',\n  TL = 'TL',\n  TG = 'TG',\n  TK = 'TK',\n  TO = 'TO',\n  TT = 'TT',\n  TA = 'TA',\n  TN = 'TN',\n  TR = 'TR',\n  TM = 'TM',\n  TC = 'TC',\n  TV = 'TV',\n  UG = 'UG',\n  UA = 'UA',\n  AE = 'AE',\n  GB = 'GB',\n  US = 'US',\n  UM = 'UM',\n  UY = 'UY',\n  UZ = 'UZ',\n  VU = 'VU',\n  VE = 'VE',\n  VN = 'VN',\n  VG = 'VG',\n  WF = 'WF',\n  EH = 'EH',\n  YE = 'YE',\n  ZM = 'ZM',\n  ZW = 'ZW',\n  ZZ = 'ZZ',\n}",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AF",
+          "value": "AF"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AX",
+          "value": "AX"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AL",
+          "value": "AL"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "DZ",
+          "value": "DZ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AD",
+          "value": "AD"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AO",
+          "value": "AO"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AI",
+          "value": "AI"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AG",
+          "value": "AG"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AR",
+          "value": "AR"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AM",
+          "value": "AM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AW",
+          "value": "AW"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AC",
+          "value": "AC"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AU",
+          "value": "AU"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AT",
+          "value": "AT"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AZ",
+          "value": "AZ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BS",
+          "value": "BS"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BH",
+          "value": "BH"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BD",
+          "value": "BD"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BB",
+          "value": "BB"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BY",
+          "value": "BY"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BE",
+          "value": "BE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BZ",
+          "value": "BZ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BJ",
+          "value": "BJ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BM",
+          "value": "BM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BT",
+          "value": "BT"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BO",
+          "value": "BO"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BA",
+          "value": "BA"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BW",
+          "value": "BW"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BV",
+          "value": "BV"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BR",
+          "value": "BR"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "IO",
+          "value": "IO"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BN",
+          "value": "BN"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BG",
+          "value": "BG"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BF",
+          "value": "BF"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BI",
+          "value": "BI"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "KH",
+          "value": "KH"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CA",
+          "value": "CA"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CV",
+          "value": "CV"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BQ",
+          "value": "BQ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "KY",
+          "value": "KY"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CF",
+          "value": "CF"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TD",
+          "value": "TD"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CL",
+          "value": "CL"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CN",
+          "value": "CN"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CX",
+          "value": "CX"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CC",
+          "value": "CC"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CO",
+          "value": "CO"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "KM",
+          "value": "KM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CG",
+          "value": "CG"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CD",
+          "value": "CD"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CK",
+          "value": "CK"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CR",
+          "value": "CR"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "HR",
+          "value": "HR"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CU",
+          "value": "CU"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CW",
+          "value": "CW"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CY",
+          "value": "CY"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CZ",
+          "value": "CZ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CI",
+          "value": "CI"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "DK",
+          "value": "DK"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "DJ",
+          "value": "DJ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "DM",
+          "value": "DM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "DO",
+          "value": "DO"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "EC",
+          "value": "EC"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "EG",
+          "value": "EG"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SV",
+          "value": "SV"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GQ",
+          "value": "GQ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "ER",
+          "value": "ER"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "EE",
+          "value": "EE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SZ",
+          "value": "SZ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "ET",
+          "value": "ET"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "FK",
+          "value": "FK"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "FO",
+          "value": "FO"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "FJ",
+          "value": "FJ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "FI",
+          "value": "FI"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "FR",
+          "value": "FR"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GF",
+          "value": "GF"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "PF",
+          "value": "PF"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TF",
+          "value": "TF"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GA",
+          "value": "GA"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GM",
+          "value": "GM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GE",
+          "value": "GE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "DE",
+          "value": "DE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GH",
+          "value": "GH"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GI",
+          "value": "GI"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GR",
+          "value": "GR"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GL",
+          "value": "GL"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GD",
+          "value": "GD"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GP",
+          "value": "GP"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GT",
+          "value": "GT"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GG",
+          "value": "GG"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GN",
+          "value": "GN"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GW",
+          "value": "GW"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GY",
+          "value": "GY"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "HT",
+          "value": "HT"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "HM",
+          "value": "HM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "VA",
+          "value": "VA"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "HN",
+          "value": "HN"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "HK",
+          "value": "HK"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "HU",
+          "value": "HU"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "IS",
+          "value": "IS"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "IN",
+          "value": "IN"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "ID",
+          "value": "ID"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "IR",
+          "value": "IR"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "IQ",
+          "value": "IQ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "IE",
+          "value": "IE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "IM",
+          "value": "IM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "IL",
+          "value": "IL"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "IT",
+          "value": "IT"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "JM",
+          "value": "JM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "JP",
+          "value": "JP"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "JE",
+          "value": "JE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "JO",
+          "value": "JO"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "KZ",
+          "value": "KZ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "KE",
+          "value": "KE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "KI",
+          "value": "KI"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "KP",
+          "value": "KP"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "XK",
+          "value": "XK"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "KW",
+          "value": "KW"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "KG",
+          "value": "KG"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "LA",
+          "value": "LA"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "LV",
+          "value": "LV"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "LB",
+          "value": "LB"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "LS",
+          "value": "LS"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "LR",
+          "value": "LR"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "LY",
+          "value": "LY"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "LI",
+          "value": "LI"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "LT",
+          "value": "LT"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "LU",
+          "value": "LU"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MO",
+          "value": "MO"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MG",
+          "value": "MG"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MW",
+          "value": "MW"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MY",
+          "value": "MY"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MV",
+          "value": "MV"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "ML",
+          "value": "ML"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MT",
+          "value": "MT"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MQ",
+          "value": "MQ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MR",
+          "value": "MR"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MU",
+          "value": "MU"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "YT",
+          "value": "YT"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MX",
+          "value": "MX"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MD",
+          "value": "MD"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MC",
+          "value": "MC"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MN",
+          "value": "MN"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "ME",
+          "value": "ME"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MS",
+          "value": "MS"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MA",
+          "value": "MA"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MZ",
+          "value": "MZ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MM",
+          "value": "MM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "NA",
+          "value": "NA"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "NR",
+          "value": "NR"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "NP",
+          "value": "NP"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "NL",
+          "value": "NL"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AN",
+          "value": "AN"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "NC",
+          "value": "NC"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "NZ",
+          "value": "NZ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "NI",
+          "value": "NI"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "NE",
+          "value": "NE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "NG",
+          "value": "NG"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "NU",
+          "value": "NU"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "NF",
+          "value": "NF"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MK",
+          "value": "MK"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "NO",
+          "value": "NO"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "OM",
+          "value": "OM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "PK",
+          "value": "PK"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "PS",
+          "value": "PS"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "PA",
+          "value": "PA"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "PG",
+          "value": "PG"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "PY",
+          "value": "PY"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "PE",
+          "value": "PE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "PH",
+          "value": "PH"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "PN",
+          "value": "PN"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "PL",
+          "value": "PL"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "PT",
+          "value": "PT"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "QA",
+          "value": "QA"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CM",
+          "value": "CM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "RE",
+          "value": "RE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "RO",
+          "value": "RO"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "RU",
+          "value": "RU"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "RW",
+          "value": "RW"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "BL",
+          "value": "BL"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SH",
+          "value": "SH"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "KN",
+          "value": "KN"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "LC",
+          "value": "LC"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "MF",
+          "value": "MF"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "PM",
+          "value": "PM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "WS",
+          "value": "WS"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SM",
+          "value": "SM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "ST",
+          "value": "ST"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SA",
+          "value": "SA"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SN",
+          "value": "SN"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "RS",
+          "value": "RS"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SC",
+          "value": "SC"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SL",
+          "value": "SL"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SG",
+          "value": "SG"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SX",
+          "value": "SX"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SK",
+          "value": "SK"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SI",
+          "value": "SI"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SB",
+          "value": "SB"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SO",
+          "value": "SO"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "ZA",
+          "value": "ZA"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GS",
+          "value": "GS"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "KR",
+          "value": "KR"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SS",
+          "value": "SS"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "ES",
+          "value": "ES"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "LK",
+          "value": "LK"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "VC",
+          "value": "VC"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SD",
+          "value": "SD"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SR",
+          "value": "SR"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SJ",
+          "value": "SJ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SE",
+          "value": "SE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "CH",
+          "value": "CH"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "SY",
+          "value": "SY"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TW",
+          "value": "TW"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TJ",
+          "value": "TJ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TZ",
+          "value": "TZ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TH",
+          "value": "TH"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TL",
+          "value": "TL"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TG",
+          "value": "TG"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TK",
+          "value": "TK"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TO",
+          "value": "TO"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TT",
+          "value": "TT"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TA",
+          "value": "TA"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TN",
+          "value": "TN"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TR",
+          "value": "TR"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TM",
+          "value": "TM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TC",
+          "value": "TC"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "TV",
+          "value": "TV"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "UG",
+          "value": "UG"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "UA",
+          "value": "UA"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "AE",
+          "value": "AE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "GB",
+          "value": "GB"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "US",
+          "value": "US"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "UM",
+          "value": "UM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "UY",
+          "value": "UY"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "UZ",
+          "value": "UZ"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "VU",
+          "value": "VU"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "VE",
+          "value": "VE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "VN",
+          "value": "VN"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "VG",
+          "value": "VG"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "WF",
+          "value": "WF"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "EH",
+          "value": "EH"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "YE",
+          "value": "YE"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "ZM",
+          "value": "ZM"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "ZW",
+          "value": "ZW"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
+          "name": "ZZ",
+          "value": "ZZ"
+        }
+      ]
+    }
+  },
+  "CustomSale": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "CustomSale",
+      "description": "Represents a custom sale item that is not associated with a product in the catalog. Includes pricing, taxation, and descriptive information for manually created line items.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "price",
+          "value": "string",
+          "description": "The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "quantity",
+          "value": "number",
+          "description": "The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxable",
+          "value": "boolean",
+          "description": "Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "title",
+          "value": "string",
+          "description": "The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly."
+        }
+      ],
+      "value": "export interface CustomSale {\n  /**\n   * The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management.\n   */\n  quantity: number;\n  /**\n   * The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.\n   */\n  title: string;\n  /**\n   * The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing.\n   */\n  price: string;\n  /**\n   * Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes.\n   */\n  taxable: boolean;\n}"
+    }
+  },
+  "SetLineItemSellingPlanInput": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "SetLineItemSellingPlanInput",
+      "description": "Specifies the parameters for assigning selling plans to line items. Used to add subscription or purchase option configurations to products.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItemUuid",
+          "value": "string",
+          "description": "The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "sellingPlanId",
+          "value": "number",
+          "description": "The selling plan `ID` to apply to the line item. Must be a valid selling plan available for the product."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "sellingPlanName",
+          "value": "string",
+          "description": "The selling plan name for display purposes. Required for proper selling plan display in the cart.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface SetLineItemSellingPlanInput {\n  /**\n   * The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart.\n   */\n  lineItemUuid: string;\n  /**\n   * The selling plan `ID` to apply to the line item. Must be a valid selling plan available for the product.\n   */\n  sellingPlanId: number;\n  /**\n   * The selling plan name for display purposes. Required for proper selling plan display in the cart.\n   */\n  sellingPlanName?: string;\n}"
+    }
+  },
+  "CartDiscountType": {
+    "src/surfaces/point-of-sale/api/cart-api/cart-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CartDiscountType",
+      "value": "'Percentage' | 'FixedAmount' | 'Code'",
+      "description": "Defines the type of discount applied at the cart level. Specifies whether the discount is percentage-based, fixed amount, or discount code redemption."
+    }
+  },
+  "SetLineItemPropertiesInput": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "SetLineItemPropertiesInput",
+      "description": "Specifies the parameters for adding custom properties to line items. Properties are key-value pairs used for storing metadata, tracking information, or integration data.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItemUuid",
+          "value": "string",
+          "description": "The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "properties",
+          "value": "Record<string, string>",
+          "description": "The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values."
+        }
+      ],
+      "value": "export interface SetLineItemPropertiesInput {\n  /**\n   * The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart.\n   */\n  lineItemUuid: string;\n  /**\n   * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.\n   */\n  properties: Record<string, string>;\n}"
+    }
+  },
+  "CartUpdateInput": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "CartUpdateInput",
+      "description": "Specifies the parameters for updating cart information. Includes options for modifying customer data, notes, references, and other cart-level metadata.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cartDiscount",
+          "value": "Discount",
+          "description": "The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cartDiscounts",
+          "value": "Discount[]",
+          "description": "An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "customer",
+          "value": "Customer",
+          "description": "The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItems",
+          "value": "LineItem[]",
+          "description": "An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "note",
+          "value": "string",
+          "description": "The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "properties",
+          "value": "Record<string, string>",
+          "description": "The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values."
+        }
+      ],
+      "value": "export interface CartUpdateInput {\n  /**\n   * The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.\n   */\n  note?: string;\n  /**\n   * The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.\n   */\n  cartDiscount?: Discount;\n  /**\n   * An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array.\n   */\n  cartDiscounts: Discount[];\n  /**\n   * The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.\n   */\n  customer?: Customer;\n  /**\n   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones.\n   */\n  lineItems: LineItem[];\n  /**\n   * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.\n   */\n  properties: Record<string, string>;\n}"
+    }
+  },
+  "Discount": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "Discount",
+      "description": "Represents a discount applied to a cart or transaction, including amount and description.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "amount",
+          "value": "number",
+          "description": "The discount value to apply. For `'Percentage'` type, this represents the percentage value (For example, \"10\" for 10% off). For `'FixedAmount'` type, this represents the fixed monetary amount to deduct from the line item price. Commonly used for discount calculations and displaying the discount value to merchants."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "currency",
+          "value": "string",
+          "description": "The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "discountDescription",
+          "value": "string",
+          "description": "A human-readable description of the discount shown to merchants and customers. This typically includes the discount name, promotion details, or discount code (for example, \"SUMMER2024\", \"10% off entire order\", \"Buy 2 Get 1 Free\"). Returns `undefined` when no description is provided.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "string",
+          "description": "The [discount type](https://help.shopify.com/en/manual/discounts/discount-types) applied to this line item. Can be either `'Percentage'` for percentage-based discounts or `'FixedAmount'` for fixed monetary amount discounts. This determines how the discount amount is calculated and displayed.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface Discount {\n  /**\n   * The discount value to apply. For `'Percentage'` type, this represents the percentage value (For example, \"10\" for 10% off). For `'FixedAmount'` type, this represents the fixed monetary amount to deduct from the line item price. Commonly used for discount calculations and displaying the discount value to merchants.\n   */\n  amount: number;\n  /**\n   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.\n   */\n  currency?: string;\n  /**\n   * A human-readable description of the discount shown to merchants and customers. This typically includes the discount name, promotion details, or discount code (for example, \"SUMMER2024\", \"10% off entire order\", \"Buy 2 Get 1 Free\"). Returns `undefined` when no description is provided.\n   */\n  discountDescription?: string;\n  /**\n   * The [discount type](https://help.shopify.com/en/manual/discounts/discount-types) applied to this line item. Can be either `'Percentage'` for percentage-based discounts or `'FixedAmount'` for fixed monetary amount discounts. This determines how the discount amount is calculated and displayed.\n   */\n  type?: string;\n}"
+    }
+  },
+  "Customer": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "Customer",
+      "description": "Represents basic customer identification information. Contains the customer ID for linking to detailed customer data and enabling customer-specific features.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "number",
+          "description": "The unique numeric identifier for the customer in Shopify's system. This ID is consistent across all Shopify systems and APIs. Used to link this customer reference to the full customer record with complete profile information. Commonly used for customer lookups, applying customer-specific pricing or discounts, linking orders to customer accounts, or integrating with customer management systems."
+        }
+      ],
+      "value": "export interface Customer {\n  /**\n   * The unique numeric identifier for the customer in Shopify's system. This ID is consistent across all Shopify systems and APIs. Used to link this customer reference to the full customer record with complete profile information. Commonly used for customer lookups, applying customer-specific pricing or discounts, linking orders to customer accounts, or integrating with customer management systems.\n   */\n  id: number;\n}"
+    }
+  },
+  "LineItem": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "LineItem",
+      "description": "Represents an individual item in the shopping cart. Contains product information, pricing, quantity, discounts, and customization details for a single cart entry.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "attributedUserId",
+          "value": "number",
+          "description": "The staff member 'ID' attributed to this line item. Returns 'undefined' if no staff attribution is set. Use for commission tracking and performance analytics.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "components",
+          "value": "LineItemComponent[]",
+          "description": "Bundle components for this line item. Only present for [product bundles](/docs/apps/build/product-merchandising/bundles). Each component represents an individual item within the bundle with its own tax information.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "discountAllocations",
+          "value": "DiscountAllocation[]",
+          "description": "An array of discount allocations applied to this line item, providing detailed breakdown of how discounts are distributed. Returns 'undefined' if no allocations exist. Use for enhanced discount tracking and reporting.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "discounts",
+          "value": "Discount[]",
+          "description": "An array of discounts applied to this line item. Empty array if no discounts are active. Use for displaying line item savings and discount details."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "hasSellingPlanGroups",
+          "value": "boolean",
+          "description": "Determines whether this line item has selling plan groups (subscription options) available. Returns 'undefined' if selling plan information is unavailable. Use for displaying subscription options.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "isGiftCard",
+          "value": "boolean",
+          "description": "Determines whether this line item is a gift card. Gift cards have special handling requirements and business logic. Use for implementing gift card-specific workflows."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "price",
+          "value": "number",
+          "description": "The unit price of the line item. Returns 'undefined' for custom sales without set prices. Use for pricing calculations and displays.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "productId",
+          "value": "number",
+          "description": "The product 'ID' this line item represents. Returns 'undefined' for custom sales or non-product items. Use for product-specific operations and linking to product details.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "properties",
+          "value": "{ [key: string]: string; }",
+          "description": "The custom key-value properties attached to this line item. Empty object if no properties are set. Use for metadata, customization options, or integration data."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "quantity",
+          "value": "number",
+          "description": "The quantity of this item in the cart. Always a positive integer. Use for quantity displays, calculations, and inventory management."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "requiresSellingPlan",
+          "value": "boolean",
+          "description": "Determines whether this line item requires a selling plan (subscription) to be purchased. Returns 'undefined' if selling plan information is unavailable. Use for implementing subscription-based product handling.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "sellingPlan",
+          "value": "SellingPlan",
+          "description": "The currently selected selling plan for this line item. Returns 'undefined' if no selling plan is applied. Contains selling plan details including 'ID', name, and delivery intervals. Use for subscription management and recurring purchase functionality.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "sku",
+          "value": "string",
+          "description": "The Stock Keeping Unit (SKU) identifier for this line item. Returns 'undefined' if no SKU is configured. Use for inventory tracking and product identification.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxable",
+          "value": "boolean",
+          "description": "Determines whether this line item is subject to tax calculations. Use for tax computation, compliance, and pricing displays."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxLines",
+          "value": "TaxLine[]",
+          "description": "An array of tax lines applied to this line item, containing tax amounts and rates. Use for detailed tax reporting and compliance."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "title",
+          "value": "string",
+          "description": "The display title of the line item. Returns 'undefined' for items without titles. Use for customer-facing displays and cart item identification.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "uuid",
+          "value": "string",
+          "description": "The unique identifier for this line item within the cart. Use for line item-specific operations like updates, removals, or property modifications."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "variantId",
+          "value": "number",
+          "description": "The product variant 'ID' this line item represents. Returns 'undefined' for custom sales or non-variant items. Use for variant-specific operations and product details.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "vendor",
+          "value": "string",
+          "description": "The vendor or brand name for this line item. Returns 'undefined' if no vendor is set. Use for vendor-specific displays and organization.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface LineItem {\n  /**\n   * The unique identifier for this line item within the cart. Use for line item-specific operations like updates, removals, or property modifications.\n   */\n  uuid: string;\n  /**\n   * The unit price of the line item. Returns 'undefined' for custom sales without set prices. Use for pricing calculations and displays.\n   */\n  price?: number;\n  /**\n   * The quantity of this item in the cart. Always a positive integer. Use for quantity displays, calculations, and inventory management.\n   */\n  quantity: number;\n  /**\n   * The display title of the line item. Returns 'undefined' for items without titles. Use for customer-facing displays and cart item identification.\n   */\n  title?: string;\n  /**\n   * The product variant 'ID' this line item represents. Returns 'undefined' for custom sales or non-variant items. Use for variant-specific operations and product details.\n   */\n  variantId?: number;\n  /**\n   * The product 'ID' this line item represents. Returns 'undefined' for custom sales or non-product items. Use for product-specific operations and linking to product details.\n   */\n  productId?: number;\n  /**\n   * An array of discounts applied to this line item. Empty array if no discounts are active. Use for displaying line item savings and discount details.\n   */\n  discounts: Discount[];\n  /**\n   * An array of discount allocations applied to this line item, providing detailed breakdown of how discounts are distributed. Returns 'undefined' if no allocations exist. Use for enhanced discount tracking and reporting.\n   */\n  discountAllocations?: DiscountAllocation[];\n  /**\n   * Determines whether this line item is subject to tax calculations. Use for tax computation, compliance, and pricing displays.\n   */\n  taxable: boolean;\n  /**\n   * An array of tax lines applied to this line item, containing tax amounts and rates. Use for detailed tax reporting and compliance.\n   */\n  taxLines: TaxLine[];\n  /**\n   * The Stock Keeping Unit (SKU) identifier for this line item. Returns 'undefined' if no SKU is configured. Use for inventory tracking and product identification.\n   */\n  sku?: string;\n  /**\n   * The vendor or brand name for this line item. Returns 'undefined' if no vendor is set. Use for vendor-specific displays and organization.\n   */\n  vendor?: string;\n  /**\n   * The custom key-value properties attached to this line item. Empty object if no properties are set. Use for metadata, customization options, or integration data.\n   */\n  properties: {[key: string]: string};\n  /**\n   * Determines whether this line item is a gift card. Gift cards have special handling requirements and business logic. Use for implementing gift card-specific workflows.\n   */\n  isGiftCard: boolean;\n  /**\n   * The staff member 'ID' attributed to this line item. Returns 'undefined' if no staff attribution is set. Use for commission tracking and performance analytics.\n   */\n  attributedUserId?: number;\n  /**\n   * Determines whether this line item requires a selling plan (subscription) to be purchased. Returns 'undefined' if selling plan information is unavailable. Use for implementing subscription-based product handling.\n   */\n  requiresSellingPlan?: boolean;\n  /**\n   * Determines whether this line item has selling plan groups (subscription options) available. Returns 'undefined' if selling plan information is unavailable. Use for displaying subscription options.\n   */\n  hasSellingPlanGroups?: boolean;\n  /**\n   * The currently selected selling plan for this line item. Returns 'undefined' if no selling plan is applied. Contains selling plan details including 'ID', name, and delivery intervals. Use for subscription management and recurring purchase functionality.\n   */\n  sellingPlan?: SellingPlan;\n  /**\n   * Bundle components for this line item. Only present for [product bundles](/docs/apps/build/product-merchandising/bundles). Each component represents an individual item within the bundle with its own tax information.\n   */\n  components?: LineItemComponent[];\n}"
+    }
+  },
+  "LineItemComponent": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "LineItemComponent",
+      "description": "Represents a component of a [product bundle](/docs/apps/build/product-merchandising/bundles) line item. Bundle components contain the individual items that make up a bundle, each with their own pricing and tax information.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "price",
+          "value": "number",
+          "description": "The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "productId",
+          "value": "number",
+          "description": "The unique numeric identifier for the product this component represents, if applicable.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "quantity",
+          "value": "number",
+          "description": "The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxable",
+          "value": "boolean",
+          "description": "Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxLines",
+          "value": "TaxLine[]",
+          "description": "An array of tax lines applied to this component."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "title",
+          "value": "string",
+          "description": "The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "variantId",
+          "value": "number",
+          "description": "The unique numeric identifier for the product variant this component represents, if applicable.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface LineItemComponent {\n  /**\n   * The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.\n   */\n  title?: string;\n  /**\n   * The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management.\n   */\n  quantity: number;\n  /**\n   * The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing.\n   */\n  price?: number;\n  /**\n   * Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes.\n   */\n  taxable: boolean;\n  /**\n   * An array of tax lines applied to this component.\n   */\n  taxLines: TaxLine[];\n  /**\n   * The unique numeric identifier for the product variant this component represents, if applicable.\n   */\n  variantId?: number;\n  /**\n   * The unique numeric identifier for the product this component represents, if applicable.\n   */\n  productId?: number;\n}"
+    }
+  },
+  "TaxLine": {
+    "src/surfaces/point-of-sale/types/tax-line.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
+      "name": "TaxLine",
+      "description": "Represents a tax line applied to an item or transaction.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "enabled",
+          "value": "boolean",
+          "description": "Whether this tax is currently enabled.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "price",
+          "value": "Money",
+          "description": "The tax amount as a Money object."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "rate",
+          "value": "number",
+          "description": "The tax rate as a decimal number."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "rateRange",
+          "value": "{ min: number; max: number; }",
+          "description": "The range of tax rates if applicable.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "title",
+          "value": "string",
+          "description": "The title or name of the tax."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "uuid",
+          "value": "string",
+          "description": "The unique identifier for this tax line.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface TaxLine {\n  /**\n   * The title or name of the tax.\n   */\n  title: string;\n  /**\n   * The tax amount as a Money object.\n   */\n  price: Money;\n  /**\n   * The tax rate as a decimal number.\n   */\n  rate: number;\n  /**\n   * The unique identifier for this tax line.\n   */\n  uuid?: string;\n  /**\n   * The range of tax rates if applicable.\n   */\n  rateRange?: {min: number; max: number};\n  /**\n   * Whether this tax is currently enabled.\n   */\n  enabled?: boolean;\n}"
+    }
+  },
+  "Money": {
+    "src/surfaces/point-of-sale/types/money.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/money.ts",
+      "name": "Money",
+      "description": "Represents a monetary amount with currency information.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/money.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "amount",
+          "value": "number",
+          "description": "The monetary amount as a number."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/money.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "currency",
+          "value": "string",
+          "description": "The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS."
+        }
+      ],
+      "value": "export interface Money {\n  /**\n   * The monetary amount as a number.\n   */\n  amount: number;\n  /**\n   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.\n   */\n  currency: string;\n}"
+    }
+  },
+  "DiscountAllocation": {
+    "src/surfaces/point-of-sale/types/discount-allocation.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/discount-allocation.ts",
+      "name": "DiscountAllocation",
+      "description": "Represents the allocation of a discount to a specific line item.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/discount-allocation.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "allocatedAmount",
+          "value": "MoneyV2",
+          "description": "The amount of discount allocated."
+        }
+      ],
+      "value": "export interface DiscountAllocation {\n  /**\n   * The amount of discount allocated.\n   */\n  allocatedAmount: MoneyV2;\n}"
+    }
+  },
+  "MoneyV2": {
+    "src/surfaces/point-of-sale/types/money.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/money.ts",
+      "name": "MoneyV2",
+      "description": "Represents a monetary amount as a string with explicit currency code.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/money.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "amount",
+          "value": "string",
+          "description": "The monetary amount as a string."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/money.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "currencyCode",
+          "value": "string",
+          "description": "The ISO currency code (for example, USD, CAD)."
+        }
+      ],
+      "value": "export interface MoneyV2 {\n  /**\n   * The monetary amount as a string.\n   */\n  amount: string;\n  /**\n   * The ISO currency code (for example, USD, CAD).\n   */\n  currencyCode: string;\n}"
+    }
+  },
+  "SellingPlan": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "SellingPlan",
+      "description": "Represents a selling plan (subscription) associated with a line item, containing delivery schedule and plan identification details.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "deliveryInterval",
+          "value": "string",
+          "description": "The interval of the selling plan. (DAY, WEEK, MONTH, YEAR).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "deliveryIntervalCount",
+          "value": "number",
+          "description": "The number of intervals between deliveries.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "digest",
+          "value": "string",
+          "description": "The fingerprint of the applied selling plan within this cart session. Provided by POS. Not available during refund / exchanges.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "number",
+          "description": "The unique identifier of the selling plan."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "name",
+          "value": "string",
+          "description": "The name of the POS device."
+        }
+      ],
+      "value": "export interface SellingPlan {\n  /**\n   * The unique identifier of the selling plan.\n   */\n  id: number;\n  /**\n   * The name of the POS device.\n   */\n  name: string;\n  /**\n   * The fingerprint of the applied selling plan within this cart session. Provided by POS. Not available during refund / exchanges.\n   */\n  digest?: string;\n  /**\n   * The interval of the selling plan. (DAY, WEEK, MONTH, YEAR).\n   */\n  deliveryInterval?: string;\n  /**\n   * The number of intervals between deliveries.\n   */\n  deliveryIntervalCount?: number;\n}"
+    }
+  },
+  "Cart": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "Cart",
+      "description": "Represents the shopping cart state, including line items, pricing, customer information, and applied discounts. Provides comprehensive access to all cart data and operations.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cartDiscount",
+          "value": "Discount",
+          "description": "The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cartDiscounts",
+          "value": "Discount[]",
+          "description": "An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "customer",
+          "value": "Customer",
+          "description": "The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "editable",
+          "value": "boolean",
+          "description": "Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "grandTotal",
+          "value": "string",
+          "description": "The final total amount including all items, taxes, and discounts, formatted as a currency string."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItems",
+          "value": "LineItem[]",
+          "description": "An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "note",
+          "value": "string",
+          "description": "The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "properties",
+          "value": "Record<string, string>",
+          "description": "The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "subtotal",
+          "value": "string",
+          "description": "The subtotal amount of the cart before taxes and discounts, formatted as a currency string."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxTotal",
+          "value": "string",
+          "description": "The total tax amount for the cart, formatted as a currency string."
+        }
+      ],
+      "value": "export interface Cart {\n  /**\n   * Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.\n   */\n  editable?: boolean;\n  /**\n   * The subtotal amount of the cart before taxes and discounts, formatted as a currency string.\n   */\n  subtotal: string;\n  /**\n   * The total tax amount for the cart, formatted as a currency string.\n   */\n  taxTotal: string;\n  /**\n   * The final total amount including all items, taxes, and discounts, formatted as a currency string.\n   */\n  grandTotal: string;\n  /**\n   * The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.\n   */\n  note?: string;\n  /**\n   * The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.\n   */\n  cartDiscount?: Discount;\n  /**\n   * An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array.\n   */\n  cartDiscounts: Discount[];\n  /**\n   * The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.\n   */\n  customer?: Customer;\n  /**\n   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones.\n   */\n  lineItems: LineItem[];\n  /**\n   * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.\n   */\n  properties: Record<string, string>;\n}"
+    }
+  },
+  "SetLineItemDiscountInput": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "SetLineItemDiscountInput",
+      "description": "Specifies the parameters for applying discounts to individual line items. Includes the discount type, value, and reason for audit and reporting purposes.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItemDiscount",
+          "value": "LineItemDiscount",
+          "description": "The discount details to apply to the line item. Contains title, type (`'Percentage'` or `'FixedAmount'`), and amount value."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItemUuid",
+          "value": "string",
+          "description": "The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart."
+        }
+      ],
+      "value": "export interface SetLineItemDiscountInput {\n  /**\n   * The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart.\n   */\n  lineItemUuid: string;\n  /**\n   * The discount details to apply to the line item. Contains title, type (`'Percentage'` or `'FixedAmount'`), and amount value.\n   */\n  lineItemDiscount: LineItemDiscount;\n}"
+    }
+  },
+  "LineItemDiscount": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "LineItemDiscount",
+      "description": "Represents a discount applied to an individual line item in the cart.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "amount",
+          "value": "string",
+          "description": "The percentage or fixed amount for the discount."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "title",
+          "value": "string",
+          "description": "The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'Percentage' | 'FixedAmount'",
+          "description": "The discount type."
+        }
+      ],
+      "value": "export interface LineItemDiscount {\n  /**\n   * The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.\n   */\n  title: string;\n  /**\n   * The discount type.\n   */\n  type: 'Percentage' | 'FixedAmount';\n  /**\n   * The percentage or fixed amount for the discount.\n   */\n  amount: string;\n}"
+    }
+  },
+  "ReadonlySignalLike": {
+    "src/shared.ts": {
+      "filePath": "src/shared.ts",
+      "name": "ReadonlySignalLike",
+      "description": "Represents a reactive signal interface that provides both immediate value access and subscription-based updates. Enables real-time synchronization with changing data through the observer pattern.",
+      "members": [
+        {
+          "filePath": "src/shared.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "subscribe",
+          "value": "(fn: (value: T) => void) => () => void",
+          "description": "Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value."
+        },
+        {
+          "filePath": "src/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "T",
+          "description": "The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup."
+        }
+      ],
+      "value": "export interface ReadonlySignalLike<T> {\n  /**\n   * The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup.\n   */\n  readonly value: T;\n  /**\n   * Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value.\n   */\n  subscribe(fn: (value: T) => void): () => void;\n}"
+    }
+  },
+  "LineItemDiscountType": {
+    "src/surfaces/point-of-sale/api/cart-api/cart-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "LineItemDiscountType",
+      "value": "'Percentage' | 'FixedAmount'",
+      "description": "Defines the type of discount applied to individual line items. Specifies whether the discount is percentage-based or a fixed amount reduction."
+    }
+  },
+  "ActionSlots": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "ActionSlots",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "primaryAction",
+          "value": "ComponentChildren",
+          "description": "The primary action to perform, provided as a button or link type element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "secondaryActions",
+          "value": "ComponentChildren",
+          "description": "The secondary actions to perform, provided as button or link type elements.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ActionSlots {\n  /**\n   * The primary action to perform, provided as a button or link type element.\n   */\n  primaryAction?: ComponentChildren;\n  /**\n   * The secondary actions to perform, provided as button or link type elements.\n   */\n  secondaryActions?: ComponentChildren;\n}"
+    }
+  },
+  "ComponentChildren": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ComponentChildren",
+      "value": "any",
+      "description": "TODO: Update `any` type here after this is resolved https://github.com/Shopify/ui-api-design/issues/139"
+    }
+  },
+  "LinkEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "LinkEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "click",
+          "value": "(event: CallbackEvent<\"s-link\">) => void",
+          "description": "Called when the link is activated.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface LinkEvents {\n  /** Called when the link is activated. */\n  click?: (event: CallbackEvent<typeof tagName$a>) => void;\n}"
+    }
+  },
+  "CallbackEvent": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "CallbackEvent",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "bubbles",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cancelable",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "composed",
+          "value": "boolean",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "currentTarget",
+          "value": "HTMLElementTagNameMap[T]",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "detail",
+          "value": "any",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "eventPhase",
+          "value": "number",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "target",
+          "value": "HTMLElementTagNameMap[T] | null",
+          "description": ""
+        }
+      ],
+      "value": "interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {\n  currentTarget: HTMLElementTagNameMap[T];\n  bubbles?: boolean;\n  cancelable?: boolean;\n  composed?: boolean;\n  detail?: any;\n  eventPhase: number;\n  target: HTMLElementTagNameMap[T] | null;\n}"
+    }
+  },
+  "EmptyStateSlots": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "EmptyStateSlots",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "graphic",
+          "value": "HTMLElement",
+          "description": "The graphic to display in the empty state. The only supported components is Icon, with a type of `alert-circle`, `search`, `info`, or `circle-info`.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "primary-action",
+          "value": "HTMLElement",
+          "description": "The primary action to perform, provided as a button or link type element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "secondary-actions",
+          "value": "HTMLElement",
+          "description": "The secondary actions to perform, provided as button or link type elements.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface EmptyStateSlots {\n  /** The primary action to perform, provided as a button or link type element. */\n  'primary-action'?: HTMLElement;\n  /** The secondary actions to perform, provided as button or link type elements. */\n  'secondary-actions'?: HTMLElement;\n  /** The graphic to display in the empty state. The only supported components is Icon, with a type of `alert-circle`, `search`, `info`, or `circle-info`. */\n  graphic?: HTMLElement;\n}"
+    }
+  },
+  "SwitchEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "SwitchEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "(event: CallbackEvent<\"s-switch\">) => void",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "input",
+          "value": "(event: CallbackEvent<\"s-switch\">) => void",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "interface SwitchEvents {\n  input?: (event: CallbackEvent<typeof tagName$6>) => void;\n  change?: (event: CallbackEvent<typeof tagName$6>) => void;\n}"
+    }
+  },
+  "TabsEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "TabsEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "(event: CallbackEvent<\"s-tabs\">) => void",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "interface TabsEvents {\n  change?: (event: CallbackEvent<typeof tagName$5>) => void;\n}"
+    }
+  },
+  "TextAreaEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "TextAreaEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blur",
+          "value": "(event: CallbackEvent<\"s-text-area\">) => void",
+          "description": "Callback when the element loses focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "(event: CallbackEvent<\"s-text-area\">) => void",
+          "description": "Callback after editing completes (typically on blur).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "focus",
+          "value": "(event: CallbackEvent<\"s-text-area\">) => void",
+          "description": "Callback when the element receives focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "input",
+          "value": "(event: CallbackEvent<\"s-text-area\">) => void",
+          "description": "Callback when the user makes any changes in the field.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface TextAreaEvents {\n  /** Callback when the user makes any changes in the field. */\n  input?: (event: CallbackEvent<typeof tagName$f>) => void;\n  /** Callback after editing completes (typically on blur). */\n  change?: (event: CallbackEvent<typeof tagName$f>) => void;\n  /** Callback when the element loses focus. */\n  blur?: (event: CallbackEvent<typeof tagName$f>) => void;\n  /** Callback when the element receives focus. */\n  focus?: (event: CallbackEvent<typeof tagName$f>) => void;\n}"
+    }
+  },
+  "EmailFieldEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "EmailFieldEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blur",
+          "value": "(event: CallbackEvent<\"s-email-field\">) => void",
+          "description": "Callback when the element loses focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "(event: CallbackEvent<\"s-email-field\">) => void",
+          "description": "Callback after editing completes (typically on blur).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "focus",
+          "value": "(event: CallbackEvent<\"s-email-field\">) => void",
+          "description": "Callback when the element receives focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "input",
+          "value": "(event: CallbackEvent<\"s-email-field\">) => void",
+          "description": "Callback when the user makes any changes in the field.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface EmailFieldEvents {\n  /** Callback when the user makes any changes in the field. */\n  input?: (event: CallbackEvent<typeof tagName$t>) => void;\n  /** Callback after editing completes (typically on blur). */\n  change?: (event: CallbackEvent<typeof tagName$t>) => void;\n  /** Callback when the element loses focus. */\n  blur?: (event: CallbackEvent<typeof tagName$t>) => void;\n  /** Callback when the element receives focus. */\n  focus?: (event: CallbackEvent<typeof tagName$t>) => void;\n}"
+    }
+  },
+  "ButtonEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "ButtonEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "click",
+          "value": "(event: CallbackEvent<\"s-button\">) => void",
+          "description": "Called when the button is activated.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface ButtonEvents {\n  /** Called when the button is activated. */\n  click?: (event: CallbackEvent<typeof tagName$B>) => void;\n}"
+    }
+  },
+  "TileEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "TileEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "click",
+          "value": "(event: CallbackEvent<\"s-tile\">) => void",
+          "description": "Callback when the tile is activated.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface TileEvents {\n  /** Callback when the tile is activated. */\n  click?: (event: CallbackEvent<typeof tagName$d>) => void;\n}"
+    }
+  },
+  "BannerSlots": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "BannerSlots",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "primary-action",
+          "value": "HTMLElement",
+          "description": "The action taken when the banner is pressed.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface BannerSlots {\n  /** The action taken when the banner is pressed. */\n  'primary-action'?: HTMLElement;\n}"
+    }
+  },
+  "ChoiceListEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "ChoiceListEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "(event: CallbackEvent<\"s-choice-list\">) => void",
+          "description": "Callback when the user changes a choice. Fires simultaneously with onInput.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "input",
+          "value": "(event: CallbackEvent<\"s-choice-list\">) => void",
+          "description": "Callback when the user changes a choice. Fires simultaneously with onChange.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface ChoiceListEvents {\n  /** Callback when the user changes a choice. Fires simultaneously with onChange. */\n  input?: (event: CallbackEvent<typeof tagName$z>) => void;\n  /** Callback when the user changes a choice. Fires simultaneously with onInput. */\n  change?: (event: CallbackEvent<typeof tagName$z>) => void;\n}"
+    }
+  },
+  "DateFieldEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "DateFieldEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blur",
+          "value": "(event: CallbackEvent<\"s-date-field\">) => void",
+          "description": "Callback when the element loses focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "(event: CallbackEvent<\"s-date-field\">) => void",
+          "description": "Callback after editing completes (typically on blur).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "focus",
+          "value": "(event: CallbackEvent<\"s-date-field\">) => void",
+          "description": "Callback when the element receives focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "input",
+          "value": "(event: CallbackEvent<\"s-date-field\">) => void",
+          "description": "Callback when the user makes any changes in the field.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface DateFieldEvents {\n  /** Callback when the user makes any changes in the field. */\n  input?: (event: CallbackEvent<typeof tagName$x>) => void;\n  /** Callback after editing completes (typically on blur). */\n  change?: (event: CallbackEvent<typeof tagName$x>) => void;\n  /** Callback when the element loses focus. */\n  blur?: (event: CallbackEvent<typeof tagName$x>) => void;\n  /** Callback when the element receives focus. */\n  focus?: (event: CallbackEvent<typeof tagName$x>) => void;\n}"
+    }
+  },
+  "ModalEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "ModalEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "hide",
+          "value": "(event: CallbackEvent<\"s-modal\">) => void",
+          "description": "Callback when the modal is hidden.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "show",
+          "value": "(event: CallbackEvent<\"s-modal\">) => void",
+          "description": "Callback when the modal is shown.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface ModalEvents {\n  /** Callback when the modal is hidden. */\n  hide?: (event: CallbackEvent<typeof tagName$p>) => void | null;\n  /** Callback when the modal is shown. */\n  show?: (event: CallbackEvent<typeof tagName$p>) => void | null;\n}"
+    }
+  },
+  "ModalSlots": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "ModalSlots",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "primary-action",
+          "value": "HTMLElement",
+          "description": "The primary action button displayed in the modal.\n\nThe tone of the button is used to define the tone of the modal.\n\nIf omitted, the modal will default to an 'info' tone, and show an 'OK' button, translated according to the user's locale.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "secondary-actions",
+          "value": "HTMLElement",
+          "description": "The secondary action buttons displayed in the modal.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface ModalSlots {\n  /**\n   * The primary action button displayed in the modal.\n   *\n   * The tone of the button is used to define the tone of the modal.\n   *\n   * If omitted, the modal will default to an 'info' tone, and show an 'OK' button, translated according to the user's locale.\n   */\n  'primary-action'?: HTMLElement;\n  /** The secondary action buttons displayed in the modal. */\n  'secondary-actions'?: HTMLElement;\n}"
+    }
+  },
+  "TextFieldEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "TextFieldEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blur",
+          "value": "(event: CallbackEvent<\"s-text-field\">) => void",
+          "description": "Callback when the element loses focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "(event: CallbackEvent<\"s-text-field\">) => void",
+          "description": "Callback after editing completes (typically on blur).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "focus",
+          "value": "(event: CallbackEvent<\"s-text-field\">) => void",
+          "description": "Callback when the element receives focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "input",
+          "value": "(event: CallbackEvent<\"s-text-field\">) => void",
+          "description": "Callback when the user makes any changes in the field.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface TextFieldEvents {\n  /** Callback when the user makes any changes in the field. */\n  input?: (event: CallbackEvent<typeof tagName$e>) => void;\n  /** Callback after editing completes (typically on blur). */\n  change?: (event: CallbackEvent<typeof tagName$e>) => void;\n  /** Callback when the element loses focus. */\n  blur?: (event: CallbackEvent<typeof tagName$e>) => void;\n  /** Callback when the element receives focus. */\n  focus?: (event: CallbackEvent<typeof tagName$e>) => void;\n}"
+    }
+  },
+  "TextFieldSlots": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "TextFieldSlots",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessory",
+          "value": "HTMLElement",
+          "description": "Additional content to be displayed in the field. Commonly used to display clickable text.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface TextFieldSlots {\n  /** Additional content to be displayed in the field. Commonly used to display clickable text. */\n  accessory?: HTMLElement;\n}"
+    }
+  },
+  "SearchFieldEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "SearchFieldEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blur",
+          "value": "(event: CallbackEvent<\"s-search-field\">) => void",
+          "description": "Callback when the field loses focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "(event: CallbackEvent<\"s-search-field\">) => void",
+          "description": "Callback when the field loses focus after the user changes the value in the field.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "focus",
+          "value": "(event: CallbackEvent<\"s-search-field\">) => void",
+          "description": "Callback when the field is focused.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "input",
+          "value": "(event: CallbackEvent<\"s-search-field\">) => void",
+          "description": "Callback when the user changes the value in the field.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface SearchFieldEvents {\n  /** Callback when the user changes the value in the field. */\n  input?: (event: CallbackEvent<typeof tagName$j>) => void;\n  /** Callback when the field loses focus after the user changes the value in the field. */\n  change?: (event: CallbackEvent<typeof tagName$j>) => void;\n  /** Callback when the field loses focus. */\n  blur?: (event: CallbackEvent<typeof tagName$j>) => void;\n  /** Callback when the field is focused. */\n  focus?: (event: CallbackEvent<typeof tagName$j>) => void;\n}"
+    }
+  },
+  "ClickableEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "ClickableEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "click",
+          "value": "(event: CallbackEvent<\"s-clickable\">) => void",
+          "description": "Callback when the element is activated.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface ClickableEvents {\n  /** Callback when the element is activated. */\n  click?: (event: CallbackEvent<typeof tagName$y>) => void;\n}"
+    }
+  },
+  "TimeFieldEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "TimeFieldEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blur",
+          "value": "(event: CallbackEvent<\"s-time-field\">) => void",
+          "description": "Callback when the element loses focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "(event: CallbackEvent<\"s-time-field\">) => void",
+          "description": "Callback after editing completes (typically on blur).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "focus",
+          "value": "(event: CallbackEvent<\"s-time-field\">) => void",
+          "description": "Callback when the element receives focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "input",
+          "value": "(event: CallbackEvent<\"s-time-field\">) => void",
+          "description": "Callback when the user makes any changes in the field.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface TimeFieldEvents {\n  /** Callback when the user makes any changes in the field. */\n  input?: (event: CallbackEvent<typeof tagName$c>) => void;\n  /** Callback after editing completes (typically on blur). */\n  change?: (event: CallbackEvent<typeof tagName$c>) => void;\n  /** Callback when the element loses focus. */\n  blur?: (event: CallbackEvent<typeof tagName$c>) => void;\n  /** Callback when the element receives focus. */\n  focus?: (event: CallbackEvent<typeof tagName$c>) => void;\n}"
+    }
+  },
+  "NumberFieldEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "NumberFieldEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blur",
+          "value": "(event: CallbackEvent<\"s-number-field\">) => void",
+          "description": "Callback when the element loses focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "(event: CallbackEvent<\"s-number-field\">) => void",
+          "description": "Callback after editing completes (typically on blur).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "focus",
+          "value": "(event: CallbackEvent<\"s-number-field\">) => void",
+          "description": "Callback when the element receives focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "input",
+          "value": "(event: CallbackEvent<\"s-number-field\">) => void",
+          "description": "Callback when the user makes any changes in the field.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface NumberFieldEvents {\n  /** Callback when the user makes any changes in the field. */\n  input?: (event: CallbackEvent<typeof tagName$o>) => void;\n  /** Callback after editing completes (typically on blur). */\n  change?: (event: CallbackEvent<typeof tagName$o>) => void;\n  /** Callback when the element loses focus. */\n  blur?: (event: CallbackEvent<typeof tagName$o>) => void;\n  /** Callback when the element receives focus. */\n  focus?: (event: CallbackEvent<typeof tagName$o>) => void;\n}"
+    }
+  },
+  "NumberFieldSlots": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "NumberFieldSlots",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessory",
+          "value": "HTMLElement",
+          "description": "Additional content to be displayed in the field. Commonly used to display clickable text.\n\n> Note: Accessory is not supported when using Stepper controls",
+          "isOptional": true
+        }
+      ],
+      "value": "interface NumberFieldSlots {\n  /**\n   * Additional content to be displayed in the field. Commonly used to display clickable text.\n   *\n   * > Note: Accessory is not supported when using Stepper controls\n   */\n  accessory?: HTMLElement;\n}"
+    }
+  },
+  "DatePickerEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "DatePickerEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blur",
+          "value": "(event: CallbackEvent<\"s-date-picker\">) => void",
+          "description": "Callback when the date picker is dismissed.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "(event: CallbackEvent<\"s-date-picker\">) => void",
+          "description": "Callback when the user selects a date from the picker that is different to the current value.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "focus",
+          "value": "(event: CallbackEvent<\"s-date-picker\">) => void",
+          "description": "Callback when the date picker is revealed.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "input",
+          "value": "(event: CallbackEvent<\"s-date-picker\">) => void",
+          "description": "Callback when the user selects a date from the picker.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface DatePickerEvents {\n  /** Callback when the user selects a date from the picker. */\n  input?: (event: CallbackEvent<typeof tagName$w>) => void | null;\n  /** Callback when the user selects a date from the picker that is different to the current value. */\n  change?: (event: CallbackEvent<typeof tagName$w>) => void | null;\n  /** Callback when the date picker is dismissed. */\n  blur?: (event: CallbackEvent<typeof tagName$w>) => void | null;\n  /** Callback when the date picker is revealed. */\n  focus?: (event: CallbackEvent<typeof tagName$w>) => void | null;\n}"
+    }
+  },
+  "DateSpinnerEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "DateSpinnerEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blur",
+          "value": "(event: CallbackEvent<\"s-date-spinner\">) => void",
+          "description": "Callback when the date spinner is dismissed.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "(event: CallbackEvent<\"s-date-spinner\">) => void",
+          "description": "Callback when the value changes. Only called when a different value is selected.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "focus",
+          "value": "(event: CallbackEvent<\"s-date-spinner\">) => void",
+          "description": "Callback when the date spinner is revealed.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "input",
+          "value": "(event: CallbackEvent<\"s-date-spinner\">) => void",
+          "description": "Callback when the user makes a selection.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface DateSpinnerEvents {\n  /** Callback when the user makes a selection. */\n  input?: (event: CallbackEvent<typeof tagName$v>) => void | null;\n  /** Callback when the value changes. Only called when a different value is selected. */\n  change?: (event: CallbackEvent<typeof tagName$v>) => void | null;\n  /** Callback when the date spinner is dismissed. */\n  blur?: (event: CallbackEvent<typeof tagName$v>) => void | null;\n  /** Callback when the date spinner is revealed. */\n  focus?: (event: CallbackEvent<typeof tagName$v>) => void | null;\n}"
+    }
+  },
+  "SectionSlots": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "SectionSlots",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "secondary-actions",
+          "value": "HTMLElement",
+          "description": "Button element to display in the section heading. A single button is supported.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface SectionSlots {\n  /** Button element to display in the section heading. A single button is supported. */\n  'secondary-actions'?: HTMLElement;\n}"
+    }
+  },
+  "TimePickerEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "TimePickerEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blur",
+          "value": "(event: CallbackEvent<\"s-time-picker\">) => void",
+          "description": "Callback when the time picker is dismissed.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "(event: CallbackEvent<\"s-time-picker\">) => void",
+          "description": "Callback when the user selects a time from the picker that is different to the current value.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "focus",
+          "value": "(event: CallbackEvent<\"s-time-picker\">) => void",
+          "description": "Callback when the time picker is revealed.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "input",
+          "value": "(event: CallbackEvent<\"s-time-picker\">) => void",
+          "description": "Callback when the user selects a time from the picker.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface TimePickerEvents {\n  /** Callback when the user selects a time from the picker. */\n  input?: (event: CallbackEvent<typeof tagName$b>) => void | null;\n  /** Callback when the user selects a time from the picker that is different to the current value. */\n  change?: (event: CallbackEvent<typeof tagName$b>) => void | null;\n  /** Callback when the time picker is dismissed. */\n  blur?: (event: CallbackEvent<typeof tagName$b>) => void | null;\n  /** Callback when the time picker is revealed. */\n  focus?: (event: CallbackEvent<typeof tagName$b>) => void | null;\n}"
+    }
+  },
+  "PageSlots": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "PageSlots",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "aside",
+          "value": "HTMLElement",
+          "description": "Content to display in the page's sidebar.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "secondary-actions",
+          "value": "HTMLElement",
+          "description": "Button element to display in the action bar. Only a single button is supported.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface PageSlots {\n  /** Button element to display in the action bar. Only a single button is supported. */\n  'secondary-actions'?: HTMLElement;\n  /** Content to display in the page's sidebar. */\n  aside?: HTMLElement;\n}"
+    }
+  },
+  "PosBlockSlots": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "PosBlockSlots",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "secondary-actions",
+          "value": "HTMLElement",
+          "description": "The secondary actions to perform, provided as button or link type elements.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface PosBlockSlots {\n  /** The secondary actions to perform, provided as button or link type elements. */\n  'secondary-actions'?: HTMLElement;\n}"
+    }
+  }
+}
