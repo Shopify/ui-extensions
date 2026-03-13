@@ -45,6 +45,7 @@ export interface CameraMediaResponse {
 
 /**
  * Provides camera capabilities for the POS device.
+ * @publicDocs
  */
 export interface CameraApiContent {
   /**

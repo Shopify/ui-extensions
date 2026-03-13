@@ -7,6 +7,7 @@ export interface OrderApi {
 
 /**
  * The `OrderApi` object provides access to order data. Access this property through `shopify.order` to interact with the current order context.
+ * @publicDocs
  */
 export interface OrderApiContent {
   /**

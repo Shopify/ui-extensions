@@ -5502,6 +5502,10 @@ interface EmptyStateSlots {
   graphic?: HTMLElement;
 }
 
+/**
+ * Displays an empty-state message with optional actions and supporting graphics.
+ * @publicDocs
+ */
 interface EmptyState {
   /** The subheading of the empty state. */
   subheading?: string;
@@ -5567,6 +5571,10 @@ interface Embed {
   accessibilityLabel?: string;
 }
 
+/**
+ * Displays a loading indicator while content or actions are in progress.
+ * @publicDocs
+ */
 interface Spinner {
   /** A unique identifier for the element. */
   id?: string;
@@ -5588,6 +5596,10 @@ interface SwitchEvents {
   change?: (event: CallbackEvent<typeof tagName$6>) => void;
 }
 
+/**
+ * Allows merchants to toggle a setting on or off.
+ * @publicDocs
+ */
 interface Switch {
   /** The value used in form data when the control is checked. */
   value?: string;
@@ -5647,6 +5659,10 @@ interface TabsEvents {
   change?: (event: CallbackEvent<typeof tagName$5>) => void;
 }
 
+/**
+ * Groups related content into selectable tabbed views.
+ * @publicDocs
+ */
 interface Tabs {
   /**
    * The value of the selected tab.
@@ -5668,6 +5684,10 @@ interface Tabs {
   disabled?: boolean;
 }
 
+/**
+ * Represents an individual tab inside a tabs component.
+ * @publicDocs
+ */
 interface Tab {
   /** Corresponds to the `id` property of the tab panel component that will be displayed when selected */
   controls?: string;
@@ -5678,6 +5698,10 @@ interface Tab {
   disabled?: boolean;
 }
 
+/**
+ * Represents content associated with a selected tab.
+ * @publicDocs
+ */
 interface TabPanel {
   /**
    * The id of the tab panel used for identification in the tabs component.
@@ -5700,6 +5724,10 @@ interface TextAreaEvents {
   focus?: (event: CallbackEvent<typeof tagName$f>) => void;
 }
 
+/**
+ * Collects multi-line text input from the merchant.
+ * @publicDocs
+ */
 interface TextArea {
   /** A unique identifier for the element. */
   id?: string;
@@ -5761,6 +5789,10 @@ interface EmailFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$t>) => void;
 }
 
+/**
+ * Collects and validates email address input.
+ * @publicDocs
+ */
 interface EmailField {
   /** A unique identifier for the element. */
   id?: string;
@@ -5811,6 +5843,10 @@ interface ButtonEvents {
   click?: (event: CallbackEvent<typeof tagName$B>) => void;
 }
 
+/**
+ * Triggers actions when selected by the merchant.
+ * @publicDocs
+ */
 interface Button {
   /**
    * Sets the action the `commandFor` should take when this clickable is activated.
@@ -5858,6 +5894,10 @@ interface Button {
   loading?: boolean;
 }
 
+/**
+ * Renders styled textual content.
+ * @publicDocs
+ */
 interface Text {
   /**
    * Modify the color to be more or less intense.
@@ -5887,6 +5927,10 @@ interface Text {
   id?: string;
 }
 
+/**
+ * Provides a scrollable container for overflowing content.
+ * @publicDocs
+ */
 interface ScrollBox {
   /**
    * Adjust the block size.
@@ -5996,6 +6040,10 @@ interface TileEvents {
   click?: (event: CallbackEvent<typeof tagName$d>) => void;
 }
 
+/**
+ * Displays tappable content in a compact tile layout.
+ * @publicDocs
+ */
 interface Tile {
   /**
    * Disables the tile meaning it cannot be clicked or receive focus.
@@ -6036,6 +6084,10 @@ interface BannerSlots {
   'primary-action'?: HTMLElement;
 }
 
+/**
+ * Shows prominent status and messaging content with optional actions.
+ * @publicDocs
+ */
 interface Banner {
   /**
    * Determines whether the banner is hidden.
@@ -6056,6 +6108,10 @@ interface Banner {
   id?: string;
 }
 
+/**
+ * Provides a generic layout container with sizing and spacing controls.
+ * @publicDocs
+ */
 interface Box {
   /** A unique identifier for the element. */
   id?: string;
@@ -6157,6 +6213,10 @@ interface Box {
   paddingInlineEnd?: '' | PaddingKeyword;
 }
 
+/**
+ * Displays a predefined icon glyph.
+ * @publicDocs
+ */
 interface Icon {
   /**
    * The type of icon to display.
@@ -6182,6 +6242,10 @@ interface Icon {
   size?: SizeKeyword;
 }
 
+/**
+ * Arranges children in a horizontal or vertical stack.
+ * @publicDocs
+ */
 interface Stack {
   /**
    * Adjust the padding of all edges.
@@ -6326,6 +6390,10 @@ interface Stack {
   id?: string;
 }
 
+/**
+ * Displays compact status text with optional semantic tone.
+ * @publicDocs
+ */
 interface Badge {
   /**
    * Sets the tone of the badge, based on the intention of the information being conveyed.
@@ -6353,6 +6421,10 @@ interface ChoiceListEvents {
   change?: (event: CallbackEvent<typeof tagName$z>) => void;
 }
 
+/**
+ * Groups one or more selectable choices.
+ * @publicDocs
+ */
 interface ChoiceList {
   /** A unique identifier for the element. */
   id?: string;
@@ -6369,6 +6441,10 @@ interface ChoiceList {
   multiple?: boolean;
 }
 
+/**
+ * Represents a selectable option within a choice list.
+ * @publicDocs
+ */
 interface Choice {
   /** A unique identifier for the element. */
   id?: string;
@@ -6400,6 +6476,10 @@ interface DateFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$x>) => void;
 }
 
+/**
+ * Collects date input as text.
+ * @publicDocs
+ */
 interface DateField {
   /** A unique identifier for the element. */
   id?: string;
@@ -6490,6 +6570,10 @@ interface TextFieldSlots {
   accessory?: HTMLElement;
 }
 
+/**
+ * Collects single-line text input.
+ * @publicDocs
+ */
 interface TextField {
   /** A unique identifier for the element. */
   id?: string;
@@ -6546,6 +6630,10 @@ interface SearchFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$j>) => void;
 }
 
+/**
+ * Collects search queries for filtering and lookup workflows.
+ * @publicDocs
+ */
 interface SearchField {
   /** A unique identifier for the element. */
   id?: string;
@@ -6568,6 +6656,10 @@ interface ClickableEvents {
   click?: (event: CallbackEvent<typeof tagName$y>) => void;
 }
 
+/**
+ * Makes contained content interactive and clickable.
+ * @publicDocs
+ */
 interface Clickable {
   /** A unique identifier for the element. */
   id?: string;
@@ -6599,6 +6691,10 @@ interface TimeFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$c>) => void;
 }
 
+/**
+ * Collects a time value.
+ * @publicDocs
+ */
 interface TimeField {
   /** A unique identifier for the element. */
   id?: string;
@@ -6673,6 +6769,10 @@ interface NumberFieldSlots {
   accessory?: HTMLElement;
 }
 
+/**
+ * Collects numeric input with optional stepper controls.
+ * @publicDocs
+ */
 interface NumberField {
   /**
    * Content to use as the field label.
@@ -6775,6 +6875,10 @@ interface DatePickerEvents {
   focus?: (event: CallbackEvent<typeof tagName$w>) => void | null;
 }
 
+/**
+ * Lets merchants select one or more dates from a calendar.
+ * @publicDocs
+ */
 interface DatePicker {
   /** A unique identifier for the element. */
   id?: string;
@@ -6809,6 +6913,10 @@ interface DateSpinnerEvents {
   focus?: (event: CallbackEvent<typeof tagName$v>) => void | null;
 }
 
+/**
+ * Lets merchants select a date using spinner controls.
+ * @publicDocs
+ */
 interface DateSpinner {
   /** A unique identifier for the element. */
   id?: string;
@@ -6829,6 +6937,10 @@ interface SectionSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * Groups related content into a titled section.
+ * @publicDocs
+ */
 interface Section {
   /**
    * A title that describes the content of the section.
@@ -6840,6 +6952,10 @@ interface Section {
   id?: string;
 }
 
+/**
+ * Displays heading text for grouping and hierarchy.
+ * @publicDocs
+ */
 interface Heading {
   /** A unique identifier for the element. */
   id?: string;
@@ -6859,6 +6975,10 @@ interface TimePickerEvents {
   focus?: (event: CallbackEvent<typeof tagName$b>) => void | null;
 }
 
+/**
+ * Lets merchants select a time from a picker.
+ * @publicDocs
+ */
 interface TimePicker {
   /** A unique identifier for the element. */
   id?: string;
@@ -6882,6 +7002,10 @@ interface TimePicker {
   value?: string;
 }
 
+/**
+ * Displays an image with sizing and fit controls.
+ * @publicDocs
+ */
 interface Image {
   /**
    * The displayed inline width of the image.
@@ -6941,6 +7065,10 @@ interface PageSlots {
   aside?: HTMLElement;
 }
 
+/**
+ * Provides the top-level page layout for extension content.
+ * @publicDocs
+ */
 interface Page {
   /**
    * The main page heading, displayed in the action bar at the top of the page.
@@ -6961,6 +7089,10 @@ interface PosBlockSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * Displays content in a POS block container with optional heading.
+ * @publicDocs
+ */
 interface PosBlock {
   /** A unique identifier for the element. */
   id?: string;
@@ -6972,6 +7104,10 @@ interface PosBlock {
   heading?: string;
 }
 
+/**
+ * Renders a QR code from provided content.
+ * @publicDocs
+ */
 interface QrCode {
   /** A unique identifier for the element. */
   id?: string;
@@ -6983,6 +7119,10 @@ interface QrCode {
   content?: string;
 }
 
+/**
+ * Displays a visual separator between content sections.
+ * @publicDocs
+ */
 interface Divider {
   /** A unique identifier for the element. */
   id?: string;
