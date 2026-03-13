@@ -84,3 +84,19 @@ jobs:
       - id: test-build
         name: Build docs locally to ensure they can be built in CI
         run: yarn docs:admin
+
+  publish-ui-extensions-tester:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/workflows/actions/prepare
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Publish @shopify/ui-extensions-tester
+        run: npm publish --tag unreleased
+        working-directory: packages/ui-extensions-tester
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
