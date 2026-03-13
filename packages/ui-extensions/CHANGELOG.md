@@ -1,5 +1,22 @@
 # @shopify/ui-extensions
 
+## 2026.4.0-rc.2
+
+### Minor Changes
+
+- [#4079](https://github.com/Shopify/ui-extensions/pull/4079) [`db7cec2`](https://github.com/Shopify/ui-extensions/commit/db7cec21f1fd428115d4540158f235a714b585de) Thanks [@avocadomayo](https://github.com/avocadomayo)! - Remove checkout metafields in favour of cart metafields
+
+- [#4010](https://github.com/Shopify/ui-extensions/pull/4010) [`b60a9a1`](https://github.com/Shopify/ui-extensions/commit/b60a9a18a1da763fe8c9c01ce4911c4754926cce) Thanks [@avocadomayo](https://github.com/avocadomayo)! - - [Customer accounts] Remove checkout metafields in favour of app metafields
+  - [Customer accounts] Update component categories
+
+### Patch Changes
+
+- [#3970](https://github.com/Shopify/ui-extensions/pull/3970) [`6c3ac55`](https://github.com/Shopify/ui-extensions/commit/6c3ac5559c50553314cdea0993e39fcf853cc3d0) Thanks [@jonathanhamel4](https://github.com/jonathanhamel4)! - Api types for discount classes are incorrect with the admin-web
+
+- [#4072](https://github.com/Shopify/ui-extensions/pull/4072) [`12df6f9`](https://github.com/Shopify/ui-extensions/commit/12df6f92b68bca036132b3c54a69e28e15330a65) Thanks [@avocadomayo](https://github.com/avocadomayo)! - [Checkout] Update code examples
+
+- [#4078](https://github.com/Shopify/ui-extensions/pull/4078) [`21566b3`](https://github.com/Shopify/ui-extensions/commit/21566b391651653c8e3d626811d5b787b26f9fe3) Thanks [@jonathanhamel4](https://github.com/jonathanhamel4)! - Adds discount-index.selection-action extension point
+
 ## 2026.4.0-rc.1
 
 ### Minor Changes
