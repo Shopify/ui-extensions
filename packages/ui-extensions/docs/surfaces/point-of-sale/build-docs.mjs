@@ -13,6 +13,9 @@ import {
 } from '../build-doc-shared.mjs';
 
 const EXTENSIONS_API_VERSION = process.argv[2];
+const SHOPIFY_DEV_EXTENSIONS_FOLDER =
+  process.argv[3] ??
+  (EXTENSIONS_API_VERSION === '2026-04' ? '2026-04-rc' : null);
 
 if (!EXTENSIONS_API_VERSION) {
   console.error('Error: API_VERSION is required.');
@@ -38,6 +41,7 @@ const shopifyDevDBPath = path.join(
 );
 
 const generatedDocsDataFile = 'generated_docs_data.json';
+const generatedDocsDataV2File = 'generated_docs_data_v2.json';
 const generatedStaticPagesFile = 'generated_static_pages.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
@@ -47,6 +51,12 @@ const tsconfig = 'tsconfig.docs.json';
 
 const transformJson = async (filePath) => {
   let jsonData = JSON.parse((await fs.readFile(filePath, 'utf8')).toString());
+
+  // V2 format is keyed by symbol name; the legacy filter only applies to arrays.
+  if (!Array.isArray(jsonData)) {
+    await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
+    return;
+  }
 
   jsonData = jsonData.filter(Boolean);
   await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
@@ -117,12 +127,18 @@ const generateExtensionsDocs = async () => {
     `Building Point of Sale UI Extensions docs for ${EXTENSIONS_API_VERSION} version`,
   );
 
+  if (SHOPIFY_DEV_EXTENSIONS_FOLDER) {
+    console.log(
+      `Shopify-dev pos_ui_extensions folder will be: ${SHOPIFY_DEV_EXTENSIONS_FOLDER}`,
+    );
+  }
+
   const outputDir = `${docsGeneratedRelativePath}/pos_ui_extensions/${EXTENSIONS_API_VERSION}`;
 
   const scripts = [
-    `yarn tsc --project ${docsRelativePath}/${tsconfig} --moduleResolution node  --target esNext  --module CommonJS`,
+    `yarn tsc --project ${docsRelativePath}/${tsconfig} --moduleResolution node  --target esNext  --module CommonJS --skipLibCheck`,
     `yarn generate-docs --overridePath ./${docsRelativePath}/typeOverride.json --input ./${docsRelativePath}/reference ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
-    `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS`,
+    `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS --skipLibCheck`,
     `yarn generate-docs --isLandingPage --input ./${docsRelativePath}/staticPages --output ./${outputDir}`,
   ];
 
@@ -131,9 +147,20 @@ const generateExtensionsDocs = async () => {
     outputDir,
     rootPath,
     generatedDocsDataFile,
+    generatedDocsDataV2File,
     generatedStaticPagesFile,
     transformJson,
   });
+
+  // Keep parity with admin docs output for downstream consumers that read v2.
+  const docsDataPath = path.join(rootPath, outputDir, generatedDocsDataFile);
+  const docsDataV2Path = path.join(
+    rootPath,
+    outputDir,
+    generatedDocsDataV2File,
+  );
+  const docsDataContent = await fs.readFile(docsDataPath, 'utf8');
+  await fs.writeFile(docsDataV2Path, docsDataContent);
 
   // Update API version in relative doc links
   await replaceFileContent({
@@ -179,15 +206,47 @@ try {
     EXTENSIONS_API_VERSION,
   );
   const targetsJsonPath = path.join(posOutputDir, 'targets.json');
+  const generatedDocsDataV2Path = path.join(
+    posOutputDir,
+    generatedDocsDataV2File,
+  );
   console.log('\nGenerated docs at:');
   console.log('  POS UI extensions:', posOutputDir);
   console.log('  targets.json:', targetsJsonPath);
+  console.log('  generated_docs_data_v2.json:', generatedDocsDataV2Path);
 
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
     shopifyDevPath,
     shopifyDevDBPath,
   });
+
+  if (
+    SHOPIFY_DEV_EXTENSIONS_FOLDER &&
+    SHOPIFY_DEV_EXTENSIONS_FOLDER !== EXTENSIONS_API_VERSION
+  ) {
+    const posSource = path.join(
+      shopifyDevDBPath,
+      'pos_ui_extensions',
+      EXTENSIONS_API_VERSION,
+    );
+    const posDestination = path.join(
+      shopifyDevDBPath,
+      'pos_ui_extensions',
+      SHOPIFY_DEV_EXTENSIONS_FOLDER,
+    );
+
+    if (existsSync(posSource)) {
+      if (existsSync(posDestination)) {
+        await fs.rm(posDestination, {recursive: true});
+      }
+
+      await fs.rename(posSource, posDestination);
+      console.log(
+        `  Renamed pos_ui_extensions/${EXTENSIONS_API_VERSION} → pos_ui_extensions/${SHOPIFY_DEV_EXTENSIONS_FOLDER} in shopify-dev`,
+      );
+    }
+  }
 
   await cleanup();
 } catch (error) {
