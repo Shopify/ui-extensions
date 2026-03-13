@@ -2,10 +2,16 @@
   "mode": "pre",
   "tag": "rc",
   "initialVersions": {
-    "@shopify/ui-extensions": "2026.4.0-rc.0"
+    "@shopify/ui-extensions": "2026.4.0-rc.0",
+    "@shopify/ui-extensions-tester": "2026.4.0-rc.1"
   },
   "changesets": [
+    "brown-moose-visit",
+    "evil-oranges-attack",
     "expose-picker-apis-rendering-targets",
+    "five-rings-fly",
+    "grumpy-lamps-switch",
+    "shaggy-spoons-itch",
     "slick-hornets-decide",
     "thick-moles-hide"
   ]
