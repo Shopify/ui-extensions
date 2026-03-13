@@ -7,7 +7,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   subSections: [
     {
-      title: 'Best practices',
+      title: 'Best practices - TEST CHANGE',
       type: 'Generic' as const,
       anchorLink: 'best-practices',
       sectionContent: `- **Use for layout and grouping:** The component provides spacing, borders, and backgrounds for organizing content. When you need specific layout patterns like rows or columns, use [stack](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/stack) or [grid](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/grid) instead. The component works best as a general-purpose container.
