@@ -46,7 +46,8 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "Link",
-      "description": "",
+      "description": "The link component makes text interactive, allowing users to trigger actions through tappable text. Use it for lightweight interactions, navigation triggers, or actions embedded within text content.\n\nLinks support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) instead.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -89,7 +90,8 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "Modal",
-      "description": "",
+      "description": "The modal component displays content in an overlay that requires merchant attention. Use modals to present critical information, confirmations, or focused tasks while maintaining page context.\n\nModals block interaction with the underlying interface until the merchant resolves the modal content.\n\nModals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through [events](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/modal#events).",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -3881,7 +3883,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "ActionSlots",
-      "description": "",
+      "description": "Components with ActionSlots support passing primary and secondary action content.",
       "isPublicDocs": true,
       "members": [
         {
@@ -3913,11 +3915,81 @@
       "description": "TODO: Update `any` type here after this is resolved https://github.com/Shopify/ui-api-design/issues/139"
     }
   },
+  "IconType": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "IconType",
+      "value": "'camera' | 'external' | 'adjust' | 'affiliate' | 'airplane' | 'alert-bubble' | 'alert-circle' | 'alert-diamond' | 'alert-location' | 'alert-octagon' | 'alert-octagon-filled' | 'alert-triangle' | 'alert-triangle-filled' | 'align-horizontal-centers' | 'app-extension' | 'apps' | 'archive' | 'arrow-down' | 'arrow-down-circle' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-circle' | 'arrow-right' | 'arrow-right-circle' | 'arrow-up' | 'arrow-up-circle' | 'arrow-up-right' | 'arrows-in-horizontal' | 'arrows-out-horizontal' | 'asterisk' | 'attachment' | 'automation' | 'backspace' | 'bag' | 'bank' | 'barcode' | 'battery-low' | 'bill' | 'blank' | 'blog' | 'bolt' | 'bolt-filled' | 'book' | 'book-open' | 'bug' | 'bullet' | 'business-entity' | 'button' | 'button-press' | 'calculator' | 'calendar' | 'calendar-check' | 'calendar-compare' | 'calendar-list' | 'calendar-time' | 'camera-flip' | 'caret-down' | 'caret-left' | 'caret-right' | 'caret-up' | 'cart' | 'cart-abandoned' | 'cart-discount' | 'cart-down' | 'cart-filled' | 'cart-sale' | 'cart-send' | 'cart-up' | 'cash-dollar' | 'cash-euro' | 'cash-pound' | 'cash-rupee' | 'cash-yen' | 'catalog-product' | 'categories' | 'channels' | 'chart-cohort' | 'chart-donut' | 'chart-funnel' | 'chart-histogram-first' | 'chart-histogram-first-last' | 'chart-histogram-flat' | 'chart-histogram-full' | 'chart-histogram-growth' | 'chart-histogram-last' | 'chart-histogram-second-last' | 'chart-horizontal' | 'chart-line' | 'chart-popular' | 'chart-stacked' | 'chart-vertical' | 'chat' | 'chat-new' | 'chat-referral' | 'check' | 'check-circle' | 'check-circle-filled' | 'checkbox' | 'chevron-down' | 'chevron-down-circle' | 'chevron-left' | 'chevron-left-circle' | 'chevron-right' | 'chevron-right-circle' | 'chevron-up' | 'chevron-up-circle' | 'circle' | 'circle-dashed' | 'clipboard' | 'clipboard-check' | 'clipboard-checklist' | 'clock' | 'clock-list' | 'clock-revert' | 'code' | 'code-add' | 'collection' | 'collection-featured' | 'collection-list' | 'collection-reference' | 'color' | 'color-none' | 'compass' | 'complete' | 'compose' | 'confetti' | 'connect' | 'content' | 'contract' | 'corner-pill' | 'corner-round' | 'corner-square' | 'credit-card' | 'credit-card-cancel' | 'credit-card-percent' | 'credit-card-reader' | 'credit-card-reader-chip' | 'credit-card-reader-tap' | 'credit-card-secure' | 'credit-card-tap-chip' | 'crop' | 'currency-convert' | 'cursor' | 'cursor-banner' | 'cursor-option' | 'data-presentation' | 'data-table' | 'database' | 'database-add' | 'database-connect' | 'delete' | 'delivered' | 'delivery' | 'desktop' | 'disabled' | 'disabled-filled' | 'discount' | 'discount-add' | 'discount-automatic' | 'discount-code' | 'discount-remove' | 'dns-settings' | 'dock-floating' | 'dock-side' | 'domain' | 'domain-landing-page' | 'domain-new' | 'domain-redirect' | 'download' | 'drag-drop' | 'drag-handle' | 'drawer' | 'duplicate' | 'edit' | 'email' | 'email-follow-up' | 'email-newsletter' | 'empty' | 'enabled' | 'enter' | 'envelope' | 'envelope-soft-pack' | 'eraser' | 'exchange' | 'exit' | 'export' | 'eye-check-mark' | 'eye-dropper' | 'eye-dropper-list' | 'eye-first' | 'eyeglasses' | 'fav' | 'favicon' | 'file' | 'file-list' | 'filter' | 'filter-active' | 'flag' | 'flip-horizontal' | 'flip-vertical' | 'flower' | 'folder' | 'folder-add' | 'folder-down' | 'folder-remove' | 'folder-up' | 'food' | 'foreground' | 'forklift' | 'forms' | 'games' | 'gauge' | 'geolocation' | 'gift' | 'gift-card' | 'git-branch' | 'git-commit' | 'git-repository' | 'globe' | 'globe-asia' | 'globe-europe' | 'globe-lines' | 'globe-list' | 'graduation-hat' | 'grid' | 'hashtag' | 'hashtag-decimal' | 'hashtag-list' | 'heart' | 'hide' | 'hide-filled' | 'home' | 'home-filled' | 'icons' | 'identity-card' | 'image' | 'image-add' | 'image-alt' | 'image-explore' | 'image-magic' | 'image-none' | 'image-with-text-overlay' | 'images' | 'import' | 'in-progress' | 'incentive' | 'incoming' | 'incomplete' | 'info' | 'info-filled' | 'inheritance' | 'inventory' | 'inventory-edit' | 'inventory-list' | 'inventory-transfer' | 'inventory-updated' | 'iq' | 'key' | 'keyboard' | 'keyboard-filled' | 'keyboard-hide' | 'keypad' | 'label-printer' | 'language' | 'language-translate' | 'layout-block' | 'layout-buy-button' | 'layout-buy-button-horizontal' | 'layout-buy-button-vertical' | 'layout-column-1' | 'layout-columns-2' | 'layout-columns-3' | 'layout-footer' | 'layout-header' | 'layout-logo-block' | 'layout-popup' | 'layout-rows-2' | 'layout-section' | 'layout-sidebar-left' | 'layout-sidebar-right' | 'lightbulb' | 'link' | 'link-list' | 'list-bulleted' | 'list-bulleted-filled' | 'list-numbered' | 'live' | 'live-critical' | 'live-none' | 'location' | 'location-none' | 'lock' | 'map' | 'markets' | 'markets-euro' | 'markets-rupee' | 'markets-yen' | 'maximize' | 'measurement-size' | 'measurement-size-list' | 'measurement-volume' | 'measurement-volume-list' | 'measurement-weight' | 'measurement-weight-list' | 'media-receiver' | 'megaphone' | 'mention' | 'menu' | 'menu-filled' | 'menu-horizontal' | 'menu-vertical' | 'merge' | 'metafields' | 'metaobject' | 'metaobject-list' | 'metaobject-reference' | 'microphone' | 'microphone-muted' | 'minimize' | 'minus' | 'minus-circle' | 'mobile' | 'money' | 'money-none' | 'money-split' | 'moon' | 'nature' | 'note' | 'note-add' | 'notification' | 'number-one' | 'order' | 'order-batches' | 'order-draft' | 'order-filled' | 'order-first' | 'order-fulfilled' | 'order-repeat' | 'order-unfulfilled' | 'orders-status' | 'organization' | 'outdent' | 'outgoing' | 'package' | 'package-cancel' | 'package-fulfilled' | 'package-on-hold' | 'package-reassign' | 'package-returned' | 'page' | 'page-add' | 'page-attachment' | 'page-clock' | 'page-down' | 'page-heart' | 'page-list' | 'page-reference' | 'page-remove' | 'page-report' | 'page-up' | 'pagination-end' | 'pagination-start' | 'paint-brush-flat' | 'paint-brush-round' | 'paper-check' | 'partially-complete' | 'passkey' | 'paste' | 'pause-circle' | 'payment' | 'payment-capture' | 'payout' | 'payout-dollar' | 'payout-euro' | 'payout-pound' | 'payout-rupee' | 'payout-yen' | 'person' | 'person-add' | 'person-exit' | 'person-filled' | 'person-list' | 'person-lock' | 'person-remove' | 'person-segment' | 'personalized-text' | 'phablet' | 'phone' | 'phone-down' | 'phone-down-filled' | 'phone-in' | 'phone-out' | 'pin' | 'pin-remove' | 'plan' | 'play' | 'play-circle' | 'plus' | 'plus-circle' | 'plus-circle-down' | 'plus-circle-filled' | 'plus-circle-up' | 'point-of-sale' | 'point-of-sale-register' | 'price-list' | 'print' | 'product' | 'product-add' | 'product-cost' | 'product-filled' | 'product-list' | 'product-reference' | 'product-remove' | 'product-return' | 'product-unavailable' | 'profile' | 'profile-filled' | 'question-circle' | 'question-circle-filled' | 'radio-control' | 'receipt' | 'receipt-dollar' | 'receipt-euro' | 'receipt-folded' | 'receipt-paid' | 'receipt-pound' | 'receipt-refund' | 'receipt-rupee' | 'receipt-yen' | 'receivables' | 'redo' | 'referral-code' | 'refresh' | 'remove-background' | 'reorder' | 'replace' | 'replay' | 'reset' | 'return' | 'reward' | 'rocket' | 'rotate-left' | 'rotate-right' | 'sandbox' | 'save' | 'savings' | 'scan-qr-code' | 'search' | 'search-add' | 'search-list' | 'search-recent' | 'search-resource' | 'select' | 'send' | 'settings' | 'share' | 'shield-check-mark' | 'shield-none' | 'shield-pending' | 'shield-person' | 'shipping-label' | 'shipping-label-cancel' | 'shopcodes' | 'slideshow' | 'smiley-happy' | 'smiley-joy' | 'smiley-neutral' | 'smiley-sad' | 'social-ad' | 'social-post' | 'sort' | 'sort-ascending' | 'sort-descending' | 'sound' | 'split' | 'sports' | 'star' | 'star-circle' | 'star-filled' | 'star-half' | 'star-list' | 'status' | 'status-active' | 'stop-circle' | 'store' | 'store-import' | 'store-managed' | 'store-online' | 'sun' | 'table' | 'table-masonry' | 'tablet' | 'target' | 'tax' | 'team' | 'text' | 'text-align-center' | 'text-align-left' | 'text-align-right' | 'text-block' | 'text-bold' | 'text-color' | 'text-font' | 'text-font-list' | 'text-grammar' | 'text-in-columns' | 'text-in-rows' | 'text-indent' | 'text-indent-remove' | 'text-italic' | 'text-quote' | 'text-title' | 'text-underline' | 'text-with-image' | 'theme' | 'theme-edit' | 'theme-store' | 'theme-template' | 'three-d-environment' | 'thumbs-down' | 'thumbs-up' | 'tip-jar' | 'toggle-off' | 'toggle-on' | 'transaction' | 'transaction-fee-add' | 'transaction-fee-dollar' | 'transaction-fee-euro' | 'transaction-fee-pound' | 'transaction-fee-rupee' | 'transaction-fee-yen' | 'transfer' | 'transfer-in' | 'transfer-internal' | 'transfer-out' | 'truck' | 'undo' | 'unknown-device' | 'unlock' | 'upload' | 'variant' | 'variant-list' | 'video' | 'video-list' | 'view' | 'viewport-narrow' | 'viewport-short' | 'viewport-tall' | 'viewport-wide' | 'wallet' | 'wand' | 'watch' | 'wifi' | 'work' | 'work-list' | 'wrench' | 'x' | 'x-circle' | 'x-circle-filled'",
+      "description": "",
+      "isPublicDocs": true
+    }
+  },
+  "ExtractStrict": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ExtractStrict",
+      "value": "",
+      "description": "Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.",
+      "isPublicDocs": true
+    }
+  },
+  "MaybeAllValuesShorthandProperty": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "MaybeAllValuesShorthandProperty",
+      "value": "T | `${T} ${T}` | `${T} ${T} ${T}` | `${T} ${T} ${T} ${T}`",
+      "description": "",
+      "isPublicDocs": true
+    }
+  },
+  "MaybeTwoValuesShorthandProperty": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "MaybeTwoValuesShorthandProperty",
+      "value": "T | `${T} ${T}`",
+      "description": "",
+      "isPublicDocs": true
+    }
+  },
+  "MaybeResponsive": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "MaybeResponsive",
+      "value": "T | `@container${string}`",
+      "description": "",
+      "isPublicDocs": true
+    }
+  },
+  "AnyString": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AnyString",
+      "value": "string & {}",
+      "description": "Prevents widening string literal types in a union to `string`.",
+      "isPublicDocs": true
+    }
+  },
+  "optionalSpace": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "optionalSpace",
+      "value": "'' | ' '",
+      "description": "This is purely to give the ability to have a space or not in the string literal types.\n\nFor example in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.",
+      "isPublicDocs": true
+    }
+  },
   "LinkEvents": {
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "LinkEvents",
-      "description": "",
+      "description": "The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -3999,7 +4071,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "EmptyStateSlots",
-      "description": "",
+      "description": "The empty state component supports slots for adding graphics and actions. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -4057,6 +4129,123 @@
       "value": "interface EmptyState {\n  /** The subheading of the empty state. */\n  subheading?: string;\n  /** The heading of the empty state. */\n  heading?: string;\n}"
     }
   },
+  "Embed": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "Embed",
+      "description": "The embed component displays a preview of printable content from a specified source URL. Use it to show users what will be printed before triggering the actual print operation.\n\nEmbed works in conjunction with the Print API to provide complete print functionality from preview to execution.\n\nSupported document types:\n\n- **HTML documents** (`.html`, `.htm`) - Best printing experience with full CSS styling, embedded images, and complex layouts. Use for receipts, invoices, and formatted reports.\n\n- **Text files** (`.txt`, `.csv`) - Plain text with basic content and tabular data support. Use for simple receipts and data exports.\n\n- **PDF files** (`.pdf`) - Behavior varies by platform: prints directly on iOS/desktop, but downloads to external viewer on Android. Use for complex documents and compliance requirements.\n\n[Learn how to build a print extension in POS](/docs/apps/build/pos/build-print-extension).",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "A label that describes the purpose or contents of the embed. It will be read to users using assistive technologies such as screen readers.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blockSize",
+          "value": "SizeUnitsOrAuto",
+          "description": "Adjust the block size.",
+          "isOptional": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "inlineSize",
+          "value": "SizeUnitsOrAuto",
+          "description": "Adjust the inline size.",
+          "isOptional": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "maxBlockSize",
+          "value": "SizeUnitsOrNone",
+          "description": "Adjust the maximum block size.",
+          "isOptional": true,
+          "defaultValue": "'none'"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "maxInlineSize",
+          "value": "SizeUnitsOrNone",
+          "description": "Adjust the maximum inline size.",
+          "isOptional": true,
+          "defaultValue": "'none'"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "minBlockSize",
+          "value": "SizeUnits",
+          "description": "Adjust the minimum block size.",
+          "isOptional": true,
+          "defaultValue": "'0'"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "minInlineSize",
+          "value": "SizeUnits",
+          "description": "Adjust the minimum inline size.",
+          "isOptional": true,
+          "defaultValue": "'0'"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "src",
+          "value": "string",
+          "description": "The source of the file to preview.\n\nThe value must be either:\n- A relative path that will be appended to your app's `application_url`.\n- A full URL to your app's backend that will be used to return the file.\n\nSupported file types:\n- HTML files\n- Text files\n- PDF files",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'text/html' | 'text/plain' | 'application/pdf'",
+          "description": "The content type of the file to display.",
+          "isOptional": true,
+          "defaultValue": "'text/html'"
+        }
+      ],
+      "value": "interface Embed {\n  /**\n   * Adjust the block size.\n   * @default 'auto'\n   */\n  blockSize?: SizeUnitsOrAuto;\n  /**\n   * Adjust the minimum block size.\n   * @default '0'\n   */\n  minBlockSize?: SizeUnits;\n  /**\n   * Adjust the maximum block size.\n   * @default 'none'\n   */\n  maxBlockSize?: SizeUnitsOrNone;\n  /**\n   * Adjust the inline size.\n   * @default 'auto'\n   */\n  inlineSize?: SizeUnitsOrAuto;\n  /**\n   * Adjust the minimum inline size.\n   * @default '0'\n   */\n  minInlineSize?: SizeUnits;\n  /**\n   * Adjust the maximum inline size.\n   * @default 'none'\n   */\n  maxInlineSize?: SizeUnitsOrNone;\n  /**\n   * The content type of the file to display.\n   * @default 'text/html'\n   */\n  type?: 'text/html' | 'text/plain' | 'application/pdf';\n  /**\n   * The source of the file to preview.\n   *\n   * The value must be either:\n   * - A relative path that will be appended to your app's `application_url`.\n   * - A full URL to your app's backend that will be used to return the file.\n   *\n   * Supported file types:\n   * - HTML files\n   * - Text files\n   * - PDF files\n   * @implementation If this value is omitted, the component should render an empty state or nothing.\n   */\n  src?: string;\n  /**\n   * A label that describes the purpose or contents of the embed. It will be read to users\n   * using assistive technologies such as screen readers.\n   * @implementation for web-based implementations, this should map to the [title](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/title) attribute\n   */\n  accessibilityLabel?: string;\n}"
+    }
+  },
+  "SizeUnitsOrAuto": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "SizeUnitsOrAuto",
+      "value": "SizeUnits | 'auto'",
+      "description": ""
+    }
+  },
+  "SizeUnits": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "SizeUnits",
+      "value": "`${number}px` | `${number}%` | `0`",
+      "description": ""
+    }
+  },
+  "SizeUnitsOrNone": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "SizeUnitsOrNone",
+      "value": "SizeUnits | 'none'",
+      "description": ""
+    }
+  },
   "Spinner": {
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -4088,7 +4277,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "SwitchEvents",
-      "description": "",
+      "description": "The switch component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -4202,7 +4391,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "TabsEvents",
-      "description": "",
+      "description": "The tabs component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -4303,7 +4492,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "TextAreaEvents",
-      "description": "",
+      "description": "The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -4441,7 +4630,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "EmailFieldEvents",
-      "description": "",
+      "description": "The email field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -4570,7 +4759,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "ButtonEvents",
-      "description": "",
+      "description": "The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -4848,42 +5037,6 @@
       "value": "interface ScrollBox {\n  /**\n   * Adjust the block size.\n   * @default 'auto'\n   */\n  blockSize?: SizeUnitsOrAuto;\n  /**\n   * Adjust the inline size.\n   * @default 'auto'\n   */\n  inlineSize?: SizeUnitsOrAuto;\n  /**\n   * Adjust the maximum block size.\n   * @default 'none'\n   */\n  maxBlockSize?: SizeUnitsOrNone;\n  /**\n   * Adjust the maximum inline size.\n   * @default 'none'\n   */\n  maxInlineSize?: SizeUnitsOrNone;\n  /**\n   * Adjust the minimum block size.\n   * @default '0'\n   */\n  minBlockSize?: SizeUnits;\n  /**\n   * Adjust the minimum inline size.\n   * @default '0'\n   */\n  minInlineSize?: SizeUnits;\n  /**\n   * Adjust the padding of all edges.\n   *\n   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is\n   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:\n   *\n   * - 4 values: `block-start inline-end block-end inline-start`\n   * - 3 values: `block-start inline block-end`\n   * - 2 values: `block inline`\n   *\n   * For example:\n   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.\n   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.\n   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.\n   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.\n   *\n   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.\n   * @default 'none'\n   */\n  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;\n  /**\n   * Adjust the block-padding.\n   *\n   * - `large none` means block-start padding is `large`, block-end padding is `none`.\n   *\n   * This overrides the block value of `padding`.\n   * @default '' - meaning no override\n   */\n  paddingBlock?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;\n  /**\n   * Adjust the block-start padding.\n   *\n   * This overrides the block-start value of `paddingBlock`.\n   * @default '' - meaning no override\n   */\n  paddingBlockStart?: '' | PaddingKeyword;\n  /**\n   * Adjust the block-end padding.\n   *\n   * This overrides the block-end value of `paddingBlock`.\n   * @default '' - meaning no override\n   */\n  paddingBlockEnd?: '' | PaddingKeyword;\n  /**\n   * Adjust the inline padding.\n   *\n   * - `large none` means inline-start padding is `large`, inline-end padding is `none`.\n   *\n   * This overrides the inline value of `padding`.\n   * @default '' - meaning no override\n   */\n  paddingInline?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;\n  /**\n   * Adjust the inline-start padding.\n   *\n   * This overrides the inline-start value of `paddingInline`.\n   * @default '' - meaning no override\n   */\n  paddingInlineStart?: '' | PaddingKeyword;\n  /**\n   * Adjust the inline-end padding.\n   *\n   * This overrides the inline-end value of `paddingInline`.\n   * @default '' - meaning no override\n   */\n  paddingInlineEnd?: '' | PaddingKeyword;\n  /** A unique identifier for the element. */\n  id?: string;\n}"
     }
   },
-  "SizeUnitsOrAuto": {
-    "src/surfaces/point-of-sale/components.ts": {
-      "filePath": "src/surfaces/point-of-sale/components.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "SizeUnitsOrAuto",
-      "value": "SizeUnits | 'auto'",
-      "description": ""
-    }
-  },
-  "SizeUnits": {
-    "src/surfaces/point-of-sale/components.ts": {
-      "filePath": "src/surfaces/point-of-sale/components.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "SizeUnits",
-      "value": "`${number}px` | `${number}%` | `0`",
-      "description": ""
-    }
-  },
-  "SizeUnitsOrNone": {
-    "src/surfaces/point-of-sale/components.ts": {
-      "filePath": "src/surfaces/point-of-sale/components.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "SizeUnitsOrNone",
-      "value": "SizeUnits | 'none'",
-      "description": ""
-    }
-  },
-  "MaybeAllValuesShorthandProperty": {
-    "src/surfaces/point-of-sale/components.ts": {
-      "filePath": "src/surfaces/point-of-sale/components.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "MaybeAllValuesShorthandProperty",
-      "value": "T | `${T} ${T}` | `${T} ${T} ${T}` | `${T} ${T} ${T} ${T}`",
-      "description": ""
-    }
-  },
   "PaddingKeyword": {
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -4902,20 +5055,11 @@
       "description": ""
     }
   },
-  "MaybeTwoValuesShorthandProperty": {
-    "src/surfaces/point-of-sale/components.ts": {
-      "filePath": "src/surfaces/point-of-sale/components.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "MaybeTwoValuesShorthandProperty",
-      "value": "T | `${T} ${T}`",
-      "description": ""
-    }
-  },
   "TileEvents": {
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "TileEvents",
-      "description": "",
+      "description": "The tile component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -4997,7 +5141,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "BannerSlots",
-      "description": "",
+      "description": "The banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5568,7 +5712,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "ChoiceListEvents",
-      "description": "",
+      "description": "The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5676,7 +5820,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "DateFieldEvents",
-      "description": "",
+      "description": "The date field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5788,7 +5932,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "ModalEvents",
-      "description": "",
+      "description": "The modal component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5815,7 +5959,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "ModalSlots",
-      "description": "",
+      "description": "The modal component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5842,7 +5986,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "TextFieldEvents",
-      "description": "",
+      "description": "The text field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5885,7 +6029,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "TextFieldSlots",
-      "description": "",
+      "description": "The text field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5990,7 +6134,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "SearchFieldEvents",
-      "description": "",
+      "description": "The search field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6077,7 +6221,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "ClickableEvents",
-      "description": "",
+      "description": "The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6123,7 +6267,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "TimeFieldEvents",
-      "description": "",
+      "description": "The time field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6235,7 +6379,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "NumberFieldEvents",
-      "description": "",
+      "description": "The number field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6278,7 +6422,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "NumberFieldSlots",
-      "description": "",
+      "description": "The number field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6409,7 +6553,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "DatePickerEvents",
-      "description": "",
+      "description": "The date picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6480,7 +6624,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "DateSpinnerEvents",
-      "description": "",
+      "description": "The date spinner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6551,7 +6695,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "SectionSlots",
-      "description": "",
+      "description": "The section component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6616,7 +6760,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "TimePickerEvents",
-      "description": "",
+      "description": "The time picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6741,7 +6885,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "PageSlots",
-      "description": "",
+      "description": "The page component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6804,7 +6948,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "PosBlockSlots",
-      "description": "",
+      "description": "The POS block component supports slots for additional content placement within the block. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
       "isPublicDocs": true,
       "members": [
         {

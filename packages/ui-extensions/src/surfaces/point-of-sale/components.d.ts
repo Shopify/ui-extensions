@@ -22,6 +22,7 @@ export interface GlobalProps {
 }
 
 /**
+ * Components with ActionSlots support passing primary and secondary action content.
  * @publicDocs
  */
 export interface ActionSlots {
@@ -699,17 +700,22 @@ declare const privateIconArray: readonly [
   'x-circle',
   'x-circle-filled',
 ];
+/** @publicDocs */
 export type IconType = (typeof privateIconArray)[number];
 /**
  * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
+ * @publicDocs
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
+/** @publicDocs */
 export type MaybeAllValuesShorthandProperty<T extends string> =
   | T
   | `${T} ${T}`
   | `${T} ${T} ${T}`
   | `${T} ${T} ${T} ${T}`;
+/** @publicDocs */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
+/** @publicDocs */
 export type MaybeResponsive<T> = T | `@container${string}`;
 /**
  * Prevents widening string literal types in a union to `string`.
@@ -718,6 +724,7 @@ export type MaybeResponsive<T> = T | `@container${string}`;
  * //   ^? string
  * type PropName = 'foo' | 'bar' | (string & {})
  * //   ^? 'foo' | 'bar' | (string & {})
+ * @publicDocs
  */
 export type AnyString = string & {};
 /**
@@ -725,6 +732,7 @@ export type AnyString = string & {};
  * to have a space or not in the string literal types.
  *
  * For example in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.
+ * @publicDocs
  */
 export type optionalSpace = '' | ' ';
 export interface BadgeProps extends GlobalProps {
@@ -5450,6 +5458,7 @@ export type {
 };
 
 /**
+ * The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface LinkEvents {
@@ -5457,6 +5466,12 @@ interface LinkEvents {
   click?: (event: CallbackEvent<typeof tagName$a>) => void;
 }
 
+/**
+ * The link component makes text interactive, allowing users to trigger actions through tappable text. Use it for lightweight interactions, navigation triggers, or actions embedded within text content.
+ *
+ * Links support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) instead.
+ * @publicDocs
+ */
 interface Link {
   /** A unique identifier for the element. */
   id?: string;
@@ -5491,6 +5506,7 @@ interface Link {
 }
 
 /**
+ * The empty state component supports slots for adding graphics and actions. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 interface EmptyStateSlots {
@@ -5513,6 +5529,22 @@ interface EmptyState {
   heading?: string;
 }
 
+/**
+ * The embed component displays a preview of printable content from a specified source URL. Use it to show users what will be printed before triggering the actual print operation.
+ *
+ * Embed works in conjunction with the Print API to provide complete print functionality from preview to execution.
+ *
+ * Supported document types:
+ *
+ * - **HTML documents** (`.html`, `.htm`) - Best printing experience with full CSS styling, embedded images, and complex layouts. Use for receipts, invoices, and formatted reports.
+ *
+ * - **Text files** (`.txt`, `.csv`) - Plain text with basic content and tabular data support. Use for simple receipts and data exports.
+ *
+ * - **PDF files** (`.pdf`) - Behavior varies by platform: prints directly on iOS/desktop, but downloads to external viewer on Android. Use for complex documents and compliance requirements.
+ *
+ * [Learn how to build a print extension in POS](/docs/apps/build/pos/build-print-extension).
+ * @publicDocs
+ */
 interface Embed {
   /**
    * Adjust the block size.
@@ -5589,6 +5621,7 @@ interface Spinner {
 }
 
 /**
+ * The switch component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface SwitchEvents {
@@ -5653,6 +5686,7 @@ interface Switch {
 }
 
 /**
+ * The tabs component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface TabsEvents {
@@ -5711,6 +5745,7 @@ interface TabPanel {
 }
 
 /**
+ * The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface TextAreaEvents {
@@ -5776,6 +5811,7 @@ interface TextArea {
 }
 
 /**
+ * The email field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface EmailFieldEvents {
@@ -5836,6 +5872,7 @@ interface EmailField {
 }
 
 /**
+ * The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface ButtonEvents {
@@ -6033,6 +6070,7 @@ interface ScrollBox {
 }
 
 /**
+ * The tile component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface TileEvents {
@@ -6077,6 +6115,7 @@ interface Tile {
 }
 
 /**
+ * The banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 interface BannerSlots {
@@ -6412,6 +6451,7 @@ interface Badge {
 }
 
 /**
+ * The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface ChoiceListEvents {
@@ -6463,6 +6503,7 @@ interface Choice {
 }
 
 /**
+ * The date field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface DateFieldEvents {
@@ -6516,6 +6557,7 @@ interface DateField {
 }
 
 /**
+ * The modal component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface ModalEvents {
@@ -6526,6 +6568,7 @@ interface ModalEvents {
 }
 
 /**
+ * The modal component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 interface ModalSlots {
@@ -6541,6 +6584,14 @@ interface ModalSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * The modal component displays content in an overlay that requires merchant attention. Use modals to present critical information, confirmations, or focused tasks while maintaining page context.
+ *
+ * Modals block interaction with the underlying interface until the merchant resolves the modal content.
+ *
+ * Modals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through [events](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/modal#events).
+ * @publicDocs
+ */
 interface Modal {
   /** A unique identifier for the element. */
   id?: string;
@@ -6549,6 +6600,7 @@ interface Modal {
 }
 
 /**
+ * The text field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface TextFieldEvents {
@@ -6563,6 +6615,7 @@ interface TextFieldEvents {
 }
 
 /**
+ * The text field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 interface TextFieldSlots {
@@ -6617,6 +6670,7 @@ interface TextField {
 }
 
 /**
+ * The search field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface SearchFieldEvents {
@@ -6649,6 +6703,7 @@ interface SearchField {
 }
 
 /**
+ * The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface ClickableEvents {
@@ -6678,6 +6733,7 @@ interface Clickable {
 }
 
 /**
+ * The time field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface TimeFieldEvents {
@@ -6744,6 +6800,7 @@ interface TimeField {
 }
 
 /**
+ * The number field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface NumberFieldEvents {
@@ -6758,6 +6815,7 @@ interface NumberFieldEvents {
 }
 
 /**
+ * The number field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 interface NumberFieldSlots {
@@ -6862,6 +6920,7 @@ interface NumberField {
 }
 
 /**
+ * The date picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface DatePickerEvents {
@@ -6900,6 +6959,7 @@ interface DatePicker {
 }
 
 /**
+ * The date spinner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface DateSpinnerEvents {
@@ -6930,6 +6990,7 @@ interface DateSpinner {
 }
 
 /**
+ * The section component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 interface SectionSlots {
@@ -6962,6 +7023,7 @@ interface Heading {
 }
 
 /**
+ * The time picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface TimePickerEvents {
@@ -7056,6 +7118,7 @@ interface Image {
 }
 
 /**
+ * The page component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 interface PageSlots {
@@ -7082,6 +7145,7 @@ interface Page {
 }
 
 /**
+ * The POS block component supports slots for additional content placement within the block. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 interface PosBlockSlots {
