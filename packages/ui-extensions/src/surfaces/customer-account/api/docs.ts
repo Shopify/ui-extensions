@@ -183,33 +183,69 @@ export interface Docs_Standard_AuthenticatedAccountApi
 export interface Docs_Standard_VersionApi
   extends Pick<StandardApi<any>, 'version'> {}
 
+/**
+ * The base API object provided to this and other `customer-account` extension targets.
+ * @publicDocs
+ */
 export interface Docs_Standard_LocalizationApi
   extends Pick<StandardApi<any>, 'localization' | 'i18n'> {}
 
+/**
+ * The base API object provided to this and other `customer-account` extension targets.
+ * @publicDocs
+ */
 export interface Docs_Standard_SessionTokenApi
   extends Pick<StandardApi<any>, 'sessionToken'> {}
 
+/**
+ * The base API object provided to this and other `customer-account` extension targets.
+ * @publicDocs
+ */
 export interface Docs_Standard_AnalyticsApi
   extends Pick<StandardApi<any>, 'analytics'> {}
 
+/**
+ * The base API object provided to this and other `customer-account` extension targets.
+ * @publicDocs
+ */
 export interface Docs_Standard_SettingsApi
   extends Pick<StandardApi, 'settings'> {}
 
+/**
+ * The base API object provided to this and other `customer-account` extension targets.
+ * @publicDocs
+ */
 export interface Docs_Standard_StorageApi
   extends Pick<StandardApi<any>, 'storage'> {}
 
+/**
+ * The base API object provided to this and other `customer-account` extension targets.
+ * @publicDocs
+ */
 export interface Docs_Standard_CustomerPrivacyApi
   extends Pick<
     StandardApi<any>,
     'customerPrivacy' | 'applyTrackingConsentChange'
   > {}
 
+/**
+ * The base API object provided to this and other `customer-account` extension targets.
+ * @publicDocs
+ */
 export interface Docs_Standard_ToastApi
   extends Pick<StandardApi<any>, 'toast'> {}
 
+/**
+ * The base API object provided to this and other `customer-account` extension targets.
+ * @publicDocs
+ */
 export interface Docs_Standard_QueryApi
   extends Pick<StandardApi<any>, 'query'> {}
 
+/**
+ * The base API object provided to this and other `customer-account` extension targets.
+ * @publicDocs
+ */
 export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
 
 export interface Docs_Page_Button_PrimaryAction

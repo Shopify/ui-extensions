@@ -78,6 +78,10 @@ export interface Docs_Standard_GiftCardsApi
 export interface Docs_Checkout_GiftCardsApi
   extends Pick<CheckoutApi, 'applyGiftCardChange'> {}
 
+/**
+ * The base API object provided to `purchase` extension targets.
+ * @publicDocs
+ */
 export interface Docs_Standard_DiscountsApi
   extends Pick<StandardApi, 'discountAllocations' | 'discountCodes'> {}
 

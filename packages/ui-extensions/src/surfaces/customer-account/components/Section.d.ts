@@ -1,5 +1,7 @@
 import {BaseElementPropsWithChildren, IdProps} from './shared';
-
+/**
+ * @publicDocs
+ */
 export interface SectionProps extends IdProps {
   /**
    * A label used to describe the section that will be announced by assistive technologies.
@@ -16,6 +18,9 @@ export interface SectionProps extends IdProps {
   heading?: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface SectionElementSlots {
   /**
    * The primary action for the section. Accepts a single [Button](/docs/api/checkout-ui-extensions/web-components/actions/button) element.
@@ -27,6 +32,9 @@ export interface SectionElementSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface SectionElement extends SectionProps, Omit<HTMLElement, 'id'> {}
 
 declare global {

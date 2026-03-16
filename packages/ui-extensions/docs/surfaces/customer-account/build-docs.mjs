@@ -146,17 +146,24 @@ const generateExtensionsDocs = async () => {
   ]);
 
   // Merge the two generated_docs_data.json files
+  const generatedDocsDataV2File = 'generated_docs_data_v2.json';
   const [refData, compData] = await Promise.all([
     fs
-      .readFile(path.join(tempRefOutputDir, generatedDocsDataFile), 'utf8')
+      .readFile(path.join(tempRefOutputDir, generatedDocsDataV2File), 'utf8')
       .then(JSON.parse),
     fs
-      .readFile(path.join(tempCompOutputDir, generatedDocsDataFile), 'utf8')
+      .readFile(path.join(tempCompOutputDir, generatedDocsDataV2File), 'utf8')
       .then(JSON.parse),
   ]);
-  const mergedData = [...refData, ...compData].filter(Boolean);
+  // Both refData and compData are objects, not arrays. Merge their values.
+  const mergedData = [...Object.values(refData), ...Object.values(compData)].filter(Boolean);
   await fs.writeFile(
-    path.join(outputDir, generatedDocsDataFile),
+    path.join(outputDir, generatedDocsDataV2File),
+    JSON.stringify(mergedData, null, 2),
+  );
+  // Also write to generated_docs_data.json for backward compatibility
+  await fs.writeFile(
+    path.join(outputDir, 'generated_docs_data.json'),
     JSON.stringify(mergedData, null, 2),
   );
 
