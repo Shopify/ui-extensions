@@ -32,21 +32,19 @@ type Mutable<T> = T extends (...args: any[]) => any
   ? {-readonly [K in keyof T]: Mutable<T[K]>}
   : T;
 
-interface Extension<T extends AnyExtensionTarget> {
-  /**
-   * Sets up an extension environment for testing.
-   *
-   * For example, it creates a mock `shopify` global with some defaults.
-   */
-  setUp(): void;
+/**
+ * `Symbol.dispose` for runtimes that support it, with a polyfill
+ * fallback so the library works on older Node versions too.
+ */
+export const SymbolDispose: typeof Symbol.dispose = ((Symbol as any).dispose ??
+  Symbol.for('Symbol.dispose')) as typeof Symbol.dispose;
 
-  /**
-   * Tears down the extension environment.
-   *
-   * For example, it resets the `shopify` global and clears `document.body`.
-   */
-  tearDown(): void;
-
+/**
+ * Members shared by both {@link ExtensionHarness} (returned by
+ * `getExtension`) and {@link DisposableExtensionHarness} (returned
+ * by `setUpExtension`).
+ */
+interface BaseExtensionHarness<T extends AnyExtensionTarget> {
   /**
    * Imports and executes the extension module's default export,
    * rendering the extension into `document.body`.
@@ -95,6 +93,163 @@ interface Extension<T extends AnyExtensionTarget> {
 }
 
 /**
+ * Returned by `getExtension`.  The caller is responsible for calling
+ * `setUp()` before each test and `tearDown()` after.
+ */
+interface ExtensionHarness<T extends AnyExtensionTarget>
+  extends BaseExtensionHarness<T> {
+  /**
+   * Sets up an extension environment for testing.
+   *
+   * For example, it creates a mock `shopify` global with some defaults.
+   */
+  setUp(): void;
+
+  /**
+   * Tears down the extension environment.
+   *
+   * For example, it resets the `shopify` global and clears `document.body`.
+   */
+  tearDown(): void;
+}
+
+/**
+ * Returned by `setUpExtension`.  Already set up — tears down
+ * automatically via `Symbol.dispose` (the `using` keyword):
+ *
+ * ```ts
+ * using extension = setUpExtension('purchase.checkout.block.render');
+ * ```
+ */
+interface DisposableExtensionHarness<T extends AnyExtensionTarget>
+  extends BaseExtensionHarness<T> {
+  [SymbolDispose](): void;
+}
+
+class Extension<T extends AnyExtensionTarget> implements ExtensionHarness<T> {
+  #target: T;
+  #resolvedModule: string;
+  #modulePath: string;
+  #checkout: boolean;
+  #networkAccess: boolean;
+  #apiAccess: boolean;
+
+  #fetchImpl!: typeof globalThis.fetch;
+  #previousFetch: typeof globalThis.fetch | undefined;
+  #navigationImpl: Navigation = createMockNavigation();
+  #previousNavigation: any;
+
+  constructor(target: T, options?: {configSearchDir?: string}) {
+    const configSearchDir =
+      options?.configSearchDir ?? path.dirname(getCallerFile());
+    const tomlPath = findToml(configSearchDir);
+    const tomlDir = path.dirname(tomlPath);
+    const tomlContent = fs.readFileSync(tomlPath, 'utf-8');
+    validateApiVersion(tomlContent);
+    const modulePath = parseTargetModule(tomlContent, target);
+
+    this.#target = target;
+    this.#modulePath = modulePath;
+    this.#resolvedModule = path.resolve(tomlDir, modulePath);
+    this.#checkout = isCheckoutTarget(target);
+    this.#networkAccess = this.#checkout && parseNetworkAccess(tomlContent);
+    this.#apiAccess = this.#checkout && parseApiAccess(tomlContent);
+  }
+
+  setUp(): void {
+    installFetchPolyfills();
+
+    this.#fetchImpl =
+      this.#checkout && !this.#networkAccess && !this.#apiAccess
+        ? async () => {
+            // Checkout is the only surface that currently enforces
+            // fetch capabilities.
+            throw new Error(
+              'fetch() is not available. Add network_access = true or ' +
+                'api_access = true to [extensions.capabilities] in shopify.extension.toml.',
+            );
+          }
+        : async () => new Response();
+
+    this.#previousFetch = (globalThis as any).fetch;
+    this.#previousNavigation = (globalThis as any).navigation;
+    this.#navigationImpl = createMockNavigation();
+    (globalThis as any).shopify = deepWritableProxy(
+      createMockTargetApi(this.#target),
+    );
+    (globalThis as any).fetch = this.#fetchImpl;
+    (globalThis as any).navigation = this.#navigationImpl;
+  }
+
+  get shopify(): Mutable<ApiForTarget<T>> {
+    if (!(globalThis as any).shopify) {
+      throw new Error(
+        'You must call extension.setUp() before accessing extension.shopify.',
+      );
+    }
+    return (globalThis as any).shopify;
+  }
+
+  get fetch(): typeof globalThis.fetch {
+    return this.#fetchImpl;
+  }
+
+  set fetch(fn: typeof globalThis.fetch) {
+    this.#fetchImpl = fn;
+    (globalThis as any).fetch = fn;
+  }
+
+  get navigation() {
+    return this.#navigationImpl;
+  }
+
+  set navigation(obj: any) {
+    this.#navigationImpl = obj;
+    (globalThis as any).navigation = obj;
+  }
+
+  async render(): Promise<void> {
+    const mod = await import(this.#resolvedModule);
+    const renderFn = mod.default;
+    if (typeof renderFn !== 'function') {
+      throw new Error(
+        `Expected default export of ${
+          this.#modulePath
+        } to be a function, got ${typeof renderFn}`,
+      );
+    }
+    await renderFn();
+  }
+
+  tearDown(): void {
+    // Dynamically import preact to unmount cleanly without requiring
+    // the test file to depend on preact directly.
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const {render} = require('preact');
+      render(null, document.body);
+    } catch {
+      // Fallback if preact isn't available
+      document.body.innerHTML = '';
+    }
+    delete (globalThis as any).shopify;
+    if (this.#previousFetch === undefined) {
+      delete (globalThis as any).fetch;
+    } else {
+      (globalThis as any).fetch = this.#previousFetch;
+    }
+    if (this.#previousNavigation === undefined) {
+      delete (globalThis as any).navigation;
+    } else {
+      (globalThis as any).navigation = this.#previousNavigation;
+    }
+    uninstallFetchPolyfills();
+  }
+}
+
+const extensionCache = new Map<string, Extension<any>>();
+
+/**
  * Returns an extension test harness for the given target.
  *
  * It reads `shopify.extension.toml`, finds the module for the given target,
@@ -112,114 +267,52 @@ interface Extension<T extends AnyExtensionTarget> {
 export function getExtension<T extends AnyExtensionTarget>(
   target: T,
   options?: {configSearchDir?: string},
-): Extension<T> {
-  const configSearchDir =
+): ExtensionHarness<T> {
+  const resolvedConfigSearchDir =
     options?.configSearchDir ?? path.dirname(getCallerFile());
-  const tomlPath = findToml(configSearchDir);
-  const tomlDir = path.dirname(tomlPath);
-  const tomlContent = fs.readFileSync(tomlPath, 'utf-8');
-  validateApiVersion(tomlContent);
-  const modulePath = parseTargetModule(tomlContent, target);
-  const resolvedModule = path.resolve(tomlDir, modulePath);
-  const checkout = isCheckoutTarget(target);
-  const networkAccess = checkout && parseNetworkAccess(tomlContent);
-  const apiAccess = checkout && parseApiAccess(tomlContent);
+  const tomlPath = findToml(resolvedConfigSearchDir);
+  const tomlMtimeMs = fs.statSync(tomlPath).mtimeMs;
+  const cacheKey = JSON.stringify([target, tomlPath, tomlMtimeMs]);
 
-  let fetchImpl: typeof globalThis.fetch;
-  let previousFetch: typeof globalThis.fetch | undefined;
-  let navigationImpl = createMockNavigation();
-  let previousNavigation: any;
+  const cached = extensionCache.get(cacheKey);
+  if (cached) {
+    return cached as Extension<T>;
+  }
 
-  const ext = {
-    setUp(): void {
-      installFetchPolyfills();
+  const ext = new Extension<T>(target, {
+    configSearchDir: resolvedConfigSearchDir,
+  });
+  extensionCache.set(cacheKey, ext);
+  return ext;
+}
 
-      fetchImpl =
-        checkout && !networkAccess && !apiAccess
-          ? async () => {
-              // Checkout is the only surface that currently enforces
-              // fetch capabilities.
-              throw new Error(
-                'fetch() is not available. Add network_access = true or ' +
-                  'api_access = true to [extensions.capabilities] in shopify.extension.toml.',
-              );
-            }
-          : async () => new Response();
+/**
+ * Sets up an extension for testing and returns a disposable object
+ * that supports automatic teardown with the `using` keyword:
+ *
+ * ```ts
+ * test('rendering the extension', async () => {
+ *   using extension = setUpExtension(
+ *     'purchase.checkout.block.render',
+ *   );
+ *   await extension.render();
+ *   // tearDown() is called automatically at the end of the block
+ * });
+ * ```
+ *
+ * @param target - The extension target to mock.
+ * @param options - Optional configuration (same as {@link getExtension}).
+ */
+export function setUpExtension<T extends AnyExtensionTarget>(
+  target: T,
+  options?: {configSearchDir?: string},
+): DisposableExtensionHarness<T> {
+  const extension = getExtension(target, options);
+  extension.setUp();
 
-      previousFetch = (globalThis as any).fetch;
-      previousNavigation = (globalThis as any).navigation;
-      (globalThis as any).shopify = deepWritableProxy(
-        createMockTargetApi(target),
-      );
-      (globalThis as any).fetch = fetchImpl;
-      (globalThis as any).navigation = navigationImpl;
-    },
-
-    get shopify(): any {
-      if (!(globalThis as any).shopify) {
-        throw new Error(
-          'You must call extension.setUp() before accessing extension.shopify.',
-        );
-      }
-      return (globalThis as any).shopify;
-    },
-
-    get fetch(): typeof globalThis.fetch {
-      return fetchImpl;
-    },
-
-    set fetch(fn: typeof globalThis.fetch) {
-      fetchImpl = fn;
-      (globalThis as any).fetch = fn;
-    },
-
-    get navigation() {
-      return navigationImpl;
-    },
-
-    set navigation(obj: any) {
-      navigationImpl = obj;
-      (globalThis as any).navigation = obj;
-    },
-
-    async render(): Promise<void> {
-      const mod = await import(resolvedModule);
-      const renderFn = mod.default;
-      if (typeof renderFn !== 'function') {
-        throw new Error(
-          `Expected default export of ${modulePath} to be a function, got ${typeof renderFn}`,
-        );
-      }
-      await renderFn();
-    },
-
-    tearDown(): void {
-      // Dynamically import preact to unmount cleanly without requiring
-      // the test file to depend on preact directly.
-      try {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const {render} = require('preact');
-        render(null, document.body);
-      } catch {
-        // Fallback if preact isn't available
-        document.body.innerHTML = '';
-      }
-      delete (globalThis as any).shopify;
-      if (previousFetch === undefined) {
-        delete (globalThis as any).fetch;
-      } else {
-        (globalThis as any).fetch = previousFetch;
-      }
-      if (previousNavigation === undefined) {
-        delete (globalThis as any).navigation;
-      } else {
-        (globalThis as any).navigation = previousNavigation;
-      }
-      uninstallFetchPolyfills();
-    },
-  };
-
-  return ext as Extension<T>;
+  return Object.assign(extension, {
+    [SymbolDispose]: () => extension.tearDown(),
+  }) as DisposableExtensionHarness<T>;
 }
 
 function validateApiVersion(toml: string): void {
@@ -301,8 +394,10 @@ function getCallerFile(): string {
     let callerFile = '';
 
     Error.prepareStackTrace = (_err, stack) => {
-      // stack[0] is getCallerFile, stack[1] is getExtension, stack[2] is the caller
-      for (let i = 2; i < stack.length; i++) {
+      // Walk the stack, skipping all frames that originate from this
+      // package file.  This works regardless of whether the caller is
+      // getExtension() or setUpExtension() → getExtension().
+      for (let i = 1; i < stack.length; i++) {
         const fileName = stack[i]!.getFileName();
         if (fileName && fileName !== thisPackageFilePath) {
           callerFile = fileName;
