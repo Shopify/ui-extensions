@@ -38,10 +38,16 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-press-button";
+/**
+ * @publicDocs
+ */
 export interface PressButtonElementProps extends Pick<PressButtonProps$1, 'accessibilityLabel' | 'id' | 'inlineSize' | 'lang' | 'disabled' | 'loading' | 'pressed' | 'defaultPressed'> {
 }
 export interface PressButtonEvents extends Pick<PressButtonProps$1, 'onClick' | 'onBlur' | 'onFocus'> {
 }
+/**
+ * @publicDocs
+ */
 export interface PressButtonElementEvents {
     /**
      * Callback when the button is activated.

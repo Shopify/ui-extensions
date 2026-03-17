@@ -38,10 +38,16 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-choice-list";
+/**
+ * @publicDocs
+ */
 export interface ChoiceListElementProps extends Pick<ChoiceListProps$1, 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'multiple' | 'name' | 'values' | 'variant'> {
 }
 export interface ChoiceListEvents extends Pick<ChoiceListProps$1, 'onChange'> {
 }
+/**
+ * @publicDocs
+ */
 export interface ChoiceListElementEvents {
     /**
      * A callback that is run whenever the control is changed.

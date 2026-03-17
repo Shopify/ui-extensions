@@ -38,10 +38,18 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-select";
+/**
+ * Properties for the Select component element.
+ * @publicDocs
+ */
 export interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value'> {
 }
 export interface SelectEvents extends Pick<SelectProps$1, 'onBlur' | 'onChange' | 'onFocus'> {
 }
+/**
+ * Events for the Select component element.
+ * @publicDocs
+ */
 export interface SelectElementEvents {
     /**
      * Callback when the element loses focus.

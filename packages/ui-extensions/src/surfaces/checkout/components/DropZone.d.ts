@@ -32,10 +32,16 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-drop-zone";
+/**
+ * @publicDocs
+ */
 export interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required' | 'value'> {
 }
 export interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput' | 'onChange'> {
 }
+/**
+ * @publicDocs
+ */
 export interface DropZoneElementEvents {
     /**
      * Callback when rejected files are dropped. Files are rejected based on the `accept` prop.

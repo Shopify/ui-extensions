@@ -68,6 +68,10 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-text-field";
+/**
+ * Properties for the TextField component element.
+ * @publicDocs
+ */
 export interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
     /**
@@ -78,6 +82,10 @@ export interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocompl
 }
 export interface TextFieldEvents extends Pick<TextFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/**
+ * Events for the TextField component element.
+ * @publicDocs
+ */
 export interface TextFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -104,6 +112,10 @@ export interface TextFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
+/**
+ * Slots for the TextField component element.
+ * @publicDocs
+ */
 export interface TextFieldElementSlots {
     /**
      * Additional content to be displayed in the field.

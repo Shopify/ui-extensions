@@ -38,10 +38,16 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-password-field";
+/**
+ * @publicDocs
+ */
 export interface PasswordFieldElementProps extends Pick<PasswordFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
 export interface PasswordFieldEvents extends Pick<PasswordFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/**
+ * @publicDocs
+ */
 export interface PasswordFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -68,6 +74,9 @@ export interface PasswordFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
+/**
+ * @publicDocs
+ */
 export interface PasswordFieldElementSlots {
     /**
      * Additional content to be displayed in the field.

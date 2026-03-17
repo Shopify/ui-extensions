@@ -33,6 +33,10 @@ declare const CHECKOUT_AVAILABLE_ICONS: readonly ["alert-circle", "alert-triangl
 export type ReducedIconTypes = (typeof CHECKOUT_AVAILABLE_ICONS)[number];
 
 declare const tagName = "s-badge";
+/**
+ * Properties for the Badge component element.
+ * @publicDocs
+ */
 export interface BadgeElementProps extends Pick<BadgeProps$1, 'color' | 'icon' | 'iconPosition' | 'id' | 'size' | 'tone'> {
     size?: Extract<BadgeProps$1['size'], 'small' | 'small-100' | 'base'>;
     tone?: Extract<BadgeProps$1['tone'], 'auto' | 'neutral' | 'critical'>;

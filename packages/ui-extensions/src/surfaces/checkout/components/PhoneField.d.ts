@@ -38,6 +38,9 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-phone-field";
+/**
+ * @publicDocs
+ */
 export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value' | 'type'> {
     /**
      * @deprecated Use `label` instead.
@@ -47,6 +50,9 @@ export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocom
 }
 export interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/**
+ * @publicDocs
+ */
 export interface PhoneFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -73,6 +79,9 @@ export interface PhoneFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
+/**
+ * @publicDocs
+ */
 export interface PhoneFieldElementSlots {
     /**
      * Additional content to be displayed in the field.

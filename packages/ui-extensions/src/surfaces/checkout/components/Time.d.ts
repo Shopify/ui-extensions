@@ -26,6 +26,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-time";
+/**
+ * @publicDocs
+ */
 export interface TimeElementProps extends Pick<TimeProps$1, 'dateTime' | 'id'> {
 }
 export interface TimeElement extends TimeElementProps, Omit<HTMLElement, 'id'> {

@@ -38,10 +38,16 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-url-field";
+/**
+ * @publicDocs
+ */
 export interface URLFieldElementProps extends Pick<URLFieldProps, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
 export interface UrlFieldEvents extends Pick<URLFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/**
+ * @publicDocs
+ */
 export interface URLFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -68,6 +74,9 @@ export interface URLFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
+/**
+ * @publicDocs
+ */
 export interface URLFieldElementSlots {
     /**
      * Additional content to be displayed in the field.

@@ -38,12 +38,18 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-link";
+/**
+ * @publicDocs
+ */
 export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'interestFor' | 'lang' | 'target' | 'tone'> {
     target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
 }
 export interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
 }
+/**
+ * @publicDocs
+ */
 export interface LinkElementEvents {
     /**
      * Callback when the link is activated.

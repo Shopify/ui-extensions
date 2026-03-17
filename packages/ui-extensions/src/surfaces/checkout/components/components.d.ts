@@ -3708,6 +3708,9 @@ declare module 'preact' {
 }
 
 declare const tagName$Q = "s-choice-list";
+/**
+ * @publicDocs
+ */
 interface ChoiceListElementProps extends Pick<ChoiceListProps$1, 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'multiple' | 'name' | 'values' | 'variant'> {
 }
 interface ChoiceListEvents extends Pick<ChoiceListProps$1, 'onChange'> {

@@ -18524,6 +18524,348 @@
       "value": "export interface CheckboxElementEvents {\n    /**\n     * A callback that is run whenever the control is changed.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event\n     */\n    change?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
+  "TextFieldElementProps": {
+    "src/surfaces/checkout/components/TextField.ts": {
+      "filePath": "src/surfaces/checkout/components/TextField.ts",
+      "name": "TextFieldElementProps",
+      "description": "Properties for the TextField component element.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "autocomplete",
+          "value": "AutocompleteField | `${AutocompleteSection} ${AutocompleteField}` | `${AutocompleteGroup} ${AutocompleteField}` | `${AutocompleteSection} ${AutocompleteGroup} ${AutocompleteField}` | \"on\" | \"off\"",
+          "description": "A hint as to the intended content of the field.\n\nWhen set to `on` (the default), this property indicates that the field should support autofill, but you do not have any more semantic information on the intended contents.\n\nWhen set to `off`, you are indicating that this field contains sensitive information, or contents that are never saved, like one-time codes.\n\nAlternatively, you can provide value which describes the specific data you would like to be entered into this field during autofill.",
+          "isOptional": true,
+          "defaultValue": "'on' for everything else"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultValue",
+          "value": "string",
+          "description": "The default value for the field.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "disabled",
+          "value": "boolean",
+          "description": "Disables the field, disallowing any interaction.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "error",
+          "value": "string",
+          "description": "Indicate an error to the user. The field will be given a specific stylistic treatment to communicate problems that have to be resolved immediately.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "icon",
+          "value": "'' | 'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check-circle-filled' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+          "description": "The type of icon to be displayed in the field.",
+          "isOptional": true,
+          "defaultValue": "''"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "label",
+          "value": "string",
+          "description": "Content to use as the field label.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "labelAccessibilityVisibility",
+          "value": "'visible' | 'exclusive'",
+          "description": "Changes the visibility of the component's label.\n\n- `visible`: the label is visible to all users.\n- `exclusive`: the label is visually hidden but remains in the accessibility tree.",
+          "isOptional": true,
+          "defaultValue": "'visible'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "maxLength",
+          "value": "number",
+          "description": "Specifies the maximum number of characters allowed.",
+          "isOptional": true,
+          "defaultValue": "Infinity"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "minLength",
+          "value": "number",
+          "description": "Specifies the min number of characters allowed.",
+          "isOptional": true,
+          "defaultValue": "0"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "name",
+          "value": "string",
+          "description": "An identifier for the field that is unique within the nearest containing form.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "placeholder",
+          "value": "string",
+          "description": "",
+          "isOptional": true,
+          "deprecationMessage": "Use `label` instead.",
+          "isPrivate": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "prefix",
+          "value": "string",
+          "description": "A value to be displayed immediately before the editable portion of the field.\n\nThis is useful for displaying an implied part of the value, such as \"https://\" or \"+353\".\n\nThis cannot be edited by the user, and it isn't included in the value of the field.\n\nIt may not be displayed until the user has interacted with the input. For example, an inline label may take the place of the prefix until the user focuses the input.",
+          "isOptional": true,
+          "defaultValue": "''"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "readOnly",
+          "value": "boolean",
+          "description": "The field cannot be edited by the user. It is focusable will be announced by screen readers.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "required",
+          "value": "boolean",
+          "description": "Whether the field needs a value. This requirement adds semantic value to the field, but it will not cause an error to appear automatically. If you want to present an error when this field is empty, you can do so with the `error` property.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "suffix",
+          "value": "string",
+          "description": "A value to be displayed immediately after the editable portion of the field.\n\nThis is useful for displaying an implied part of the value, such as \"@shopify.com\", or \"%\".\n\nThis cannot be edited by the user, and it isn't included in the value of the field.\n\nIt may not be displayed until the user has interacted with the input. For example, an inline label may take the place of the suffix until the user focuses the input.",
+          "isOptional": true,
+          "defaultValue": "''"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "string",
+          "description": "The current value for the field. If omitted, the field will be empty.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {\n    icon?: IconProps['type'];\n    /**\n     * @deprecated Use `label` instead.\n     * @private\n     */\n    placeholder?: string;\n}"
+    }
+  },
+  "TextFieldElementEvents": {
+    "src/surfaces/checkout/components/TextField.ts": {
+      "filePath": "src/surfaces/checkout/components/TextField.ts",
+      "name": "TextFieldElementEvents",
+      "description": "Events for the TextField component element.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blur",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback when the element loses focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback when the user has **finished editing** a field, e.g. once they have blurred the field.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "focus",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback when the element receives focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "input",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback when the user makes any changes in the field.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface TextFieldElementEvents {\n    /**\n     * Callback when the element loses focus.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the element receives focus.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the user makes any changes in the field.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event\n     */\n    input?: CallbackEventListener<typeof tagName>;\n}"
+    }
+  },
+  "TextFieldElementSlots": {
+    "src/surfaces/checkout/components/TextField.ts": {
+      "filePath": "src/surfaces/checkout/components/TextField.ts",
+      "name": "TextFieldElementSlots",
+      "description": "Slots for the TextField component element.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/TextField.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessory",
+          "value": "HTMLElement",
+          "description": "Additional content to be displayed in the field. Commonly used to display an icon that activates a tooltip providing more information.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface TextFieldElementSlots {\n    /**\n     * Additional content to be displayed in the field.\n     * Commonly used to display an icon that activates a tooltip providing more information.\n     */\n    accessory?: HTMLElement;\n}"
+    }
+  },
+  "SelectElementProps": {
+    "src/surfaces/checkout/components/Select.ts": {
+      "filePath": "src/surfaces/checkout/components/Select.ts",
+      "name": "SelectElementProps",
+      "description": "Properties for the Select component element.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Select.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "autocomplete",
+          "value": "AutocompleteField | `${AutocompleteSection} ${AutocompleteField}` | `${AutocompleteGroup} ${AutocompleteField}` | `${AutocompleteSection} ${AutocompleteGroup} ${AutocompleteField}` | \"on\" | \"off\"",
+          "description": "A hint as to the intended content of the field.\n\nWhen set to `on` (the default), this property indicates that the field should support autofill, but you do not have any more semantic information on the intended contents.\n\nWhen set to `off`, you are indicating that this field contains sensitive information, or contents that are never saved, like one-time codes.\n\nAlternatively, you can provide value which describes the specific data you would like to be entered into this field during autofill.",
+          "isOptional": true,
+          "defaultValue": "'on' for everything else"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Select.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "disabled",
+          "value": "boolean",
+          "description": "Disables the field, disallowing any interaction.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Select.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "error",
+          "value": "string",
+          "description": "Indicate an error to the user. The field will be given a specific stylistic treatment to communicate problems that have to be resolved immediately.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Select.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Select.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "label",
+          "value": "string",
+          "description": "Content to use as the field label.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Select.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "name",
+          "value": "string",
+          "description": "An identifier for the field that is unique within the nearest containing form.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Select.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "placeholder",
+          "value": "string",
+          "description": "A short hint that describes the expected value of the field.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Select.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "required",
+          "value": "boolean",
+          "description": "Whether the field needs a value. This requirement adds semantic value to the field, but it will not cause an error to appear automatically. If you want to present an error when this field is empty, you can do so with the `error` property.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Select.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "string",
+          "description": "The current value for the field. If omitted, the field will be empty.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value'> {\n}"
+    }
+  },
+  "SelectElementEvents": {
+    "src/surfaces/checkout/components/Select.ts": {
+      "filePath": "src/surfaces/checkout/components/Select.ts",
+      "name": "SelectElementEvents",
+      "description": "Events for the Select component element.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Select.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blur",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback when the element loses focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Select.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback when the user has **finished editing** a field, e.g. once they have blurred the field.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Select.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "focus",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback when the element receives focus.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface SelectElementEvents {\n    /**\n     * Callback when the element loses focus.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the element receives focus.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
+    }
+  },
   "ClickableChipElementProps": {
     "src/surfaces/checkout/components/ClickableChip.ts": {
       "filePath": "src/surfaces/checkout/components/ClickableChip.ts",
@@ -20977,6 +21319,217 @@
       "value": "export interface ClickableChipElement extends ClickableChipElementProps, Omit<HTMLElement, 'id' | 'hidden' | 'onclick'> {\n    onafterhide: ClickableChipEvents['onAfterHide'];\n    onclick: ClickableChipEvents['onClick'];\n    onremove: ClickableChipEvents['onRemove'];\n}"
     }
   },
+  "BadgeElementProps": {
+    "src/surfaces/checkout/components/Badge.ts": {
+      "filePath": "src/surfaces/checkout/components/Badge.ts",
+      "name": "BadgeElementProps",
+      "description": "Properties for the Badge component element.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Badge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "color",
+          "value": "'base' | 'subdued'",
+          "description": "Modify the color to be more or less intense.",
+          "isOptional": true,
+          "defaultValue": "'base'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Badge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "icon",
+          "value": "'' | ReducedIconTypes",
+          "description": "The type of icon to be displayed in the badge.",
+          "isOptional": true,
+          "defaultValue": "''"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Badge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "iconPosition",
+          "value": "'start' | 'end'",
+          "description": "The position of the icon in relation to the text.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Badge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Badge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "size",
+          "value": "'base' | 'small' | 'small-100'",
+          "description": "Adjusts the size.",
+          "isOptional": true,
+          "defaultValue": "'base'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Badge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "tone",
+          "value": "'auto' | 'neutral' | 'critical'",
+          "description": "Sets the tone of the Badge, based on the intention of the information being conveyed.",
+          "isOptional": true,
+          "defaultValue": "'auto'"
+        }
+      ],
+      "value": "export interface BadgeElementProps extends Pick<BadgeProps$1, 'color' | 'icon' | 'iconPosition' | 'id' | 'size' | 'tone'> {\n    size?: Extract<BadgeProps$1['size'], 'small' | 'small-100' | 'base'>;\n    tone?: Extract<BadgeProps$1['tone'], 'auto' | 'neutral' | 'critical'>;\n    color?: Extract<BadgeProps$1['color'], 'base' | 'subdued'>;\n    icon?: '' | ReducedIconTypes;\n}"
+    }
+  },
+  "ReducedIconTypes": {
+    "src/surfaces/checkout/components/Badge.ts": {
+      "filePath": "src/surfaces/checkout/components/Badge.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ReducedIconTypes",
+      "value": "'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check-circle-filled' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+      "description": ""
+    }
+  },
+  "SpinnerElementProps": {
+    "src/surfaces/checkout/components/Spinner.ts": {
+      "filePath": "src/surfaces/checkout/components/Spinner.ts",
+      "name": "SpinnerElementProps",
+      "description": "Properties for the Spinner component element.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Spinner.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "A label that describes the purpose of the progress. When set, it will be announced to users using assistive technologies and will provide them with more context. Providing an `accessibilityLabel` is recommended if there is no accompanying text describing that something is loading.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Spinner.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Spinner.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "size",
+          "value": "'base' | 'small' | 'small-100' | 'large' | 'large-100'",
+          "description": "Adjusts the size of the spinner icon.",
+          "isOptional": true,
+          "defaultValue": "'base'"
+        }
+      ],
+      "value": "export interface SpinnerElementProps extends SpinnerProps$1 {\n    size?: Extract<SpinnerProps$1['size'], 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;\n}"
+    }
+  },
+  "TooltipElementProps": {
+    "src/surfaces/checkout/components/Tooltip.ts": {
+      "filePath": "src/surfaces/checkout/components/Tooltip.ts",
+      "name": "TooltipElementProps",
+      "description": "Properties for the Tooltip component element.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Tooltip.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface TooltipElementProps extends Pick<TooltipProps$1, 'id'> {\n}"
+    }
+  },
+  "ChipElementProps": {
+    "src/surfaces/checkout/components/Chip.ts": {
+      "filePath": "src/surfaces/checkout/components/Chip.ts",
+      "name": "ChipElementProps",
+      "description": "Properties for the Chip component element.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Chip.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "A label that describes the purpose or contents of the Chip. It will be read to users using assistive technologies such as screen readers.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chip.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ChipElementProps extends Pick<ChipProps$1, 'accessibilityLabel' | 'id'> {\n}"
+    }
+  },
+  "ChipElementSlots": {
+    "src/surfaces/checkout/components/Chip.ts": {
+      "filePath": "src/surfaces/checkout/components/Chip.ts",
+      "name": "ChipElementSlots",
+      "description": "Slots for the Chip component element.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Chip.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "graphic",
+          "value": "HTMLElement",
+          "description": "The graphic to display inside of the chip.\n\nOnly `s-icon` element and its `type` attribute are supported.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ChipElementSlots {\n    /**\n     * The graphic to display inside of the chip.\n     *\n     * Only `s-icon` element and its `type` attribute are supported.\n     */\n    graphic?: HTMLElement;\n}"
+    }
+  },
+  "UnorderedListElementProps": {
+    "src/surfaces/checkout/components/UnorderedList.ts": {
+      "filePath": "src/surfaces/checkout/components/UnorderedList.ts",
+      "name": "UnorderedListElementProps",
+      "description": "Properties for the UnorderedList component element.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/UnorderedList.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface UnorderedListElementProps extends UnorderedListProps$1 {\n}"
+    }
+  },
+  "OrderedListElementProps": {
+    "src/surfaces/checkout/components/OrderedList.ts": {
+      "filePath": "src/surfaces/checkout/components/OrderedList.ts",
+      "name": "OrderedListElementProps",
+      "description": "Properties for the OrderedList component element.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/OrderedList.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface OrderedListElementProps extends OrderedListProps$1 {\n}"
+    }
+  },
   "ComponentChildren": {
     "src/surfaces/checkout/components/components.ts": {
       "filePath": "src/surfaces/checkout/components/components.ts",
@@ -20984,6 +21537,24 @@
       "name": "ComponentChildren",
       "value": "any",
       "description": "TODO: Update `any` type here after this is resolved https://github.com/Shopify/ui-api-design/issues/139"
+    }
+  },
+  "AutocompleteSection": {
+    "src/surfaces/checkout/components/components.ts": {
+      "filePath": "src/surfaces/checkout/components/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AutocompleteSection",
+      "value": "`section-${string}`",
+      "description": "The “section” scopes the autocomplete data that should be inserted to a specific area of the page.\n\nCommonly used when there are multiple fields with the same autocomplete needs in the same page. For example: 2 shipping address forms in the same page."
+    }
+  },
+  "AutocompleteGroup": {
+    "src/surfaces/checkout/components/components.ts": {
+      "filePath": "src/surfaces/checkout/components/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AutocompleteGroup",
+      "value": "\"shipping\" | \"billing\"",
+      "description": "The contact information group the autocomplete data should be sourced from."
     }
   },
   "SharedReferenceEntityTemplateSchema": {
@@ -21032,6 +21603,185 @@
       "value": "export interface SharedReferenceEntityTemplateSchema\n  extends Pick<\n    ReferenceEntityTemplateSchema,\n    'name' | 'description' | 'category' | 'subCategory' | 'related'\n  > {}"
     }
   },
+  "AnnouncementElementEvents": {
+    "src/surfaces/checkout/components/Announcement.ts": {
+      "filePath": "src/surfaces/checkout/components/Announcement.ts",
+      "name": "AnnouncementElementEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Announcement.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "aftertoggle",
+          "value": "CallbackEventListener<typeof tagName, ToggleArgumentsEvent>",
+          "description": "Callback fired when the element state changes **after** any animations have finished.\n\n- If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the   `newState` property will be set to `open`.\n- If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the   `newState` will be `closed`.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Announcement.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "dismiss",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback fired when the announcement is dismissed by the user (either via the built-in dismiss button or programmatically).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Announcement.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "toggle",
+          "value": "CallbackEventListener<typeof tagName, ToggleArgumentsEvent>",
+          "description": "Callback straight after the element state changes.\n\n- If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the   `newState` property will be set to `open`.\n- If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the   `newState` will be `closed`.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface AnnouncementElementEvents {\n    /**\n     * Callback fired when the element state changes **after** any animations have finished.\n     *\n     * - If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the\n     *   `newState` property will be set to `open`.\n     * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the\n     *   `newState` will be `closed`.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState\n     */\n    aftertoggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;\n    /**\n     * Callback fired when the announcement is dismissed by the user\n     * (either via the built-in dismiss button or programmatically).\n     */\n    dismiss?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback straight after the element state changes.\n     *\n     * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the\n     *   `newState` property will be set to `open`.\n     * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the\n     *   `newState` will be `closed`.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState\n     */\n    toggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;\n}"
+    }
+  },
+  "ToggleArgumentsEvent": {
+    "src/surfaces/checkout/components/Announcement.ts": {
+      "filePath": "src/surfaces/checkout/components/Announcement.ts",
+      "name": "ToggleArgumentsEvent",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Announcement.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "newState",
+          "value": "ToggleState",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Announcement.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "oldState",
+          "value": "ToggleState",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ToggleArgumentsEvent {\n    oldState?: ToggleState;\n    newState?: ToggleState;\n}"
+    }
+  },
+  "ToggleState": {
+    "src/surfaces/checkout/components/Announcement.ts": {
+      "filePath": "src/surfaces/checkout/components/Announcement.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ToggleState",
+      "value": "'open' | 'closed'",
+      "description": ""
+    }
+  },
+  "AnnouncementElementMethods": {
+    "src/surfaces/checkout/components/Announcement.ts": {
+      "filePath": "src/surfaces/checkout/components/Announcement.ts",
+      "name": "AnnouncementElementMethods",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Announcement.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "dismiss",
+          "value": "() => void",
+          "description": ""
+        }
+      ],
+      "value": "export interface AnnouncementElementMethods {\n    dismiss: AnnouncementMethods['dismiss'];\n}"
+    }
+  },
+  "BannerElementProps": {
+    "src/surfaces/checkout/components/Banner.ts": {
+      "filePath": "src/surfaces/checkout/components/Banner.ts",
+      "name": "BannerElementProps",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Banner.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "collapsible",
+          "value": "boolean",
+          "description": "Makes the content collapsible. A collapsible banner will conceal child elements initially, but allow the user to expand the banner to see them.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Banner.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "dismissible",
+          "value": "boolean",
+          "description": "Determines whether the close button of the banner is present.\n\nWhen the close button is pressed, the `dismiss` event will fire, then `hidden` will be true, any animation will complete, and the `afterhide` event will fire.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Banner.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "heading",
+          "value": "string",
+          "description": "The title of the banner.",
+          "isOptional": true,
+          "defaultValue": "''"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Banner.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "hidden",
+          "value": "boolean",
+          "description": "Determines whether the banner is hidden.\n\nIf this property is being set on each framework render (as in 'controlled' usage), and the banner is `dismissible`, ensure you update app state for this property when the `dismiss` event fires.\n\nIf the banner is not `dismissible`, it can still be hidden by setting this property.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Banner.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Banner.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "tone",
+          "value": "'info' | 'auto' | 'success' | 'warning' | 'critical'",
+          "description": "Sets the tone of the Banner, based on the intention of the information being conveyed.\n\nThe banner is a live region and the type of status will be dictated by the Tone selected.\n\n- `critical` creates an [assertive live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) that is announced by screen readers immediately.\n- `neutral`, `info`, `success`, `warning` and `caution` creates an [informative live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) that is announced by screen readers after the current message.",
+          "isOptional": true,
+          "defaultValue": "'auto'"
+        }
+      ],
+      "value": "export interface BannerElementProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {\n    tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;\n}"
+    }
+  },
+  "BannerElementEvents": {
+    "src/surfaces/checkout/components/Banner.ts": {
+      "filePath": "src/surfaces/checkout/components/Banner.ts",
+      "name": "BannerElementEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Banner.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "afterhide",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Event handler when the banner has fully hidden.\n\nThe `hidden` property will be `true` when this event fires.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Banner.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "dismiss",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Event handler when the banner is dismissed by the user.\n\nThis does not fire when setting `hidden` manually.\n\nThe `hidden` property will be `false` when this event fires.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface BannerElementEvents {\n    /**\n     * Event handler when the banner has fully hidden.\n     *\n     * The `hidden` property will be `true` when this event fires.\n     *\n     * @implementation If implementations animate the hiding of the banner,\n     * this event must fire after the banner has fully hidden.\n     * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.\n     */\n    afterhide?: CallbackEventListener<typeof tagName>;\n    /**\n     * Event handler when the banner is dismissed by the user.\n     *\n     * This does not fire when setting `hidden` manually.\n     *\n     * The `hidden` property will be `false` when this event fires.\n     */\n    dismiss?: CallbackEventListener<typeof tagName>;\n}"
+    }
+  },
   "ReducedBorderSizeKeyword": {
     "src/surfaces/checkout/components/Box.ts": {
       "filePath": "src/surfaces/checkout/components/Box.ts",
@@ -21066,6 +21816,218 @@
       "name": "BorderStyleKeyword",
       "value": "\"none\" | \"solid\" | \"dashed\" | \"dotted\" | \"auto\"",
       "description": ""
+    }
+  },
+  "ChoiceElementProps": {
+    "src/surfaces/checkout/components/Choice.ts": {
+      "filePath": "src/surfaces/checkout/components/Choice.ts",
+      "name": "ChoiceElementProps",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Choice.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced. This can also be used to display a control without a visual label, while still providing context to users using screen readers.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Choice.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultSelected",
+          "value": "boolean",
+          "description": "Whether the control is active by default.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Choice.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "disabled",
+          "value": "boolean",
+          "description": "Disables the control, disallowing any interaction.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Choice.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "error",
+          "value": "boolean",
+          "description": "Set to `true` to associate a choice with the error passed to `ChoiceList`",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Choice.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Choice.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "selected",
+          "value": "boolean",
+          "description": "Whether the control is active.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Choice.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "string",
+          "description": "The value used in form data when the control is checked.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ChoiceElementProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'error' | 'value'> {\n}"
+    }
+  },
+  "ChoiceElementSlots": {
+    "src/surfaces/checkout/components/Choice.ts": {
+      "filePath": "src/surfaces/checkout/components/Choice.ts",
+      "name": "ChoiceElementSlots",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Choice.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "details",
+          "value": "HTMLElement",
+          "description": "Additional text to provide context or guidance for the input.\n\nThis text is displayed along with the input and its label to offer more information or instructions to the user.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Choice.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "secondaryContent",
+          "value": "HTMLElement",
+          "description": "Secondary content for a choice.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Choice.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "selectedContent",
+          "value": "HTMLElement",
+          "description": "Content to display when the option is selected.\n\nThis can be used to provide additional information or options related to the choice.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ChoiceElementSlots {\n    /**\n     * Additional text to provide context or guidance for the input.\n     *\n     * This text is displayed along with the input and its label\n     * to offer more information or instructions to the user.\n     *\n     * @implementation this content should be linked to the input with an `aria-describedby` attribute.\n     */\n    details?: HTMLElement;\n    /**\n     * Secondary content for a choice.\n     */\n    secondaryContent?: HTMLElement;\n    /**\n     * Content to display when the option is selected.\n     *\n     * This can be used to provide additional information or options related to the choice.\n     */\n    selectedContent?: HTMLElement;\n}"
+    }
+  },
+  "ChoiceListElementProps": {
+    "src/surfaces/checkout/components/ChoiceList.ts": {
+      "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
+      "name": "ChoiceListElementProps",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "disabled",
+          "value": "boolean",
+          "description": "Disables the field, disallowing any interaction.\n\n`disabled` on any child choices is ignored when this is true.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "error",
+          "value": "string",
+          "description": "Indicate an error to the user. The field will be given a specific stylistic treatment to communicate problems that have to be resolved immediately.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "label",
+          "value": "string",
+          "description": "Content to use as the field label.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "labelAccessibilityVisibility",
+          "value": "'visible' | 'exclusive'",
+          "description": "Changes the visibility of the component's label.\n\n- `visible`: the label is visible to all users.\n- `exclusive`: the label is visually hidden but remains in the accessibility tree.",
+          "isOptional": true,
+          "defaultValue": "'visible'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "multiple",
+          "value": "boolean",
+          "description": "Whether multiple choices can be selected.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "name",
+          "value": "string",
+          "description": "An identifier for the field that is unique within the nearest containing form.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "values",
+          "value": "string[]",
+          "description": "An array of the `value`s of the selected options.\n\nThis is a convenience prop for setting the `selected` prop on child options.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "variant",
+          "value": "'auto' | 'list' | 'inline' | 'block' | 'grid'",
+          "description": "The variant of the choice grid.\n\n- `auto`: The variant is determined by the context.\n- `list`: The choices are displayed in a list.\n- `inline`: The choices are displayed on the inline axis.\n- `block`: The choices are displayed on the block axis.\n- `grid`: The choices are displayed in a grid.",
+          "isOptional": true,
+          "defaultValue": "'auto'"
+        }
+      ],
+      "value": "export interface ChoiceListElementProps extends Pick<ChoiceListProps$1, 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'multiple' | 'name' | 'values' | 'variant'> {\n}"
+    }
+  },
+  "ChoiceListElementEvents": {
+    "src/surfaces/checkout/components/ChoiceList.ts": {
+      "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
+      "name": "ChoiceListElementEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "change",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "A callback that is run whenever the control is changed.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ChoiceListElementEvents {\n    /**\n     * A callback that is run whenever the control is changed.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event\n     */\n    change?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "ClickableElementProps": {
@@ -24374,6 +25336,334 @@
         }
       ],
       "value": "export interface ClickableElement extends ClickableElementProps, Omit<HTMLElement, 'id' | 'lang' | 'onblur' | 'onclick' | 'onfocus'> {\n    onblur: ClickableEvents['onBlur'];\n    onclick: ClickableEvents['onClick'];\n    onfocus: ClickableEvents['onFocus'];\n}"
+    }
+  },
+  "ClipboardItemElementProps": {
+    "src/surfaces/checkout/components/ClipboardItem.ts": {
+      "filePath": "src/surfaces/checkout/components/ClipboardItem.ts",
+      "name": "ClipboardItemElementProps",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/ClipboardItem.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/ClipboardItem.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "text",
+          "value": "string",
+          "description": "Plain text to be written to the clipboard.",
+          "isOptional": true,
+          "defaultValue": "''"
+        }
+      ],
+      "value": "export interface ClipboardItemElementProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {\n}"
+    }
+  },
+  "ClipboardItemElementEvents": {
+    "src/surfaces/checkout/components/ClipboardItem.ts": {
+      "filePath": "src/surfaces/checkout/components/ClipboardItem.ts",
+      "name": "ClipboardItemElementEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/ClipboardItem.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "copy",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback run when the copy to clipboard succeeds.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/ClipboardItem.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "copyerror",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback run when the copy to clipboard fails.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ClipboardItemElementEvents {\n    /**\n     * Callback run when the copy to clipboard succeeds.\n     */\n    copy?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback run when the copy to clipboard fails.\n     */\n    copyerror?: CallbackEventListener<typeof tagName>;\n}"
+    }
+  },
+  "LinkElementProps": {
+    "src/surfaces/checkout/components/Link.ts": {
+      "filePath": "src/surfaces/checkout/components/Link.ts",
+      "name": "LinkElementProps",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Link.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "A label that describes the purpose or contents of the Link. It will be read to users using assistive technologies such as screen readers.\n\nUse this when using only an icon or the content of the link is not enough context for users using assistive technologies.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Link.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "command",
+          "value": "'--auto' | '--show' | '--hide' | '--toggle' | '--copy'",
+          "description": "Sets the action the `commandFor` should take when this clickable is activated.\n\nSee the documentation of particular components for the actions they support.\n\n- `--auto`: a default action for the target component.\n- `--show`: shows the target component.\n- `--hide`: hides the target component.\n- `--toggle`: toggles the target component.\n- `--copy`: copies the target ClipboardItem.",
+          "isOptional": true,
+          "defaultValue": "'--auto'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Link.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "commandFor",
+          "value": "string",
+          "description": "ID of a component that should respond to activations (e.g. clicks) on this component.\n\nSee `command` for how to control the behavior of the target.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Link.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "href",
+          "value": "string",
+          "description": "The URL to link to.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Link.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Link.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "interestFor",
+          "value": "string",
+          "description": "ID of a component that should respond to interest (e.g. hover and focus) on this component.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Link.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lang",
+          "value": "string",
+          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Link.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "target",
+          "value": "'auto' | '_blank'",
+          "description": "Specifies where to display the linked URL.",
+          "isOptional": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Link.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "tone",
+          "value": "'auto' | 'neutral'",
+          "description": "Sets the tone of the Link, based on the intention of the information being conveyed.",
+          "isOptional": true,
+          "defaultValue": "'auto'"
+        }
+      ],
+      "value": "export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'interestFor' | 'lang' | 'target' | 'tone'> {\n    target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;\n    tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;\n}"
+    }
+  },
+  "LinkElementEvents": {
+    "src/surfaces/checkout/components/Link.ts": {
+      "filePath": "src/surfaces/checkout/components/Link.ts",
+      "name": "LinkElementEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Link.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "click",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback when the link is activated. This will be called before navigating to the location specified by `href`.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface LinkElementEvents {\n    /**\n     * Callback when the link is activated.\n     * This will be called before navigating to the location specified by `href`.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event\n     */\n    click?: CallbackEventListener<typeof tagName>;\n}"
+    }
+  },
+  "PressButtonElementProps": {
+    "src/surfaces/checkout/components/PressButton.ts": {
+      "filePath": "src/surfaces/checkout/components/PressButton.ts",
+      "name": "PressButtonElementProps",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/PressButton.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.\n\nUse this when using only an icon or the Button text is not enough context for users using assistive technologies.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/PressButton.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultPressed",
+          "value": "boolean",
+          "description": "Whether the button is pressed by default.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/PressButton.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "disabled",
+          "value": "boolean",
+          "description": "Disables the Button meaning it cannot be clicked or receive focus.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/PressButton.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/PressButton.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "inlineSize",
+          "value": "'auto' | 'fill' | 'fit-content'",
+          "description": "The displayed inline width of the Button.\n\n- `auto`: the size of the button depends on the surface and context.\n- `fill`: the button will takes up 100% of the available inline size.\n- `fit-content`: the button will take up the minimum inline-size required to fit its content.",
+          "isOptional": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/PressButton.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lang",
+          "value": "string",
+          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/PressButton.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "loading",
+          "value": "boolean",
+          "description": "Replaces content with a loading indicator while a background action is being performed.\n\nThis also disables the Button.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/PressButton.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pressed",
+          "value": "boolean",
+          "description": "Whether the button is pressed.",
+          "isOptional": true,
+          "defaultValue": "false"
+        }
+      ],
+      "value": "export interface PressButtonElementProps extends Pick<PressButtonProps$1, 'accessibilityLabel' | 'id' | 'inlineSize' | 'lang' | 'disabled' | 'loading' | 'pressed' | 'defaultPressed'> {\n}"
+    }
+  },
+  "PressButtonElementEvents": {
+    "src/surfaces/checkout/components/PressButton.ts": {
+      "filePath": "src/surfaces/checkout/components/PressButton.ts",
+      "name": "PressButtonElementEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/PressButton.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blur",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback when the button has lost focus.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/PressButton.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "click",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback when the button is activated.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/PressButton.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "focus",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "Callback when the button has received focus.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface PressButtonElementEvents {\n    /**\n     * Callback when the button is activated.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event\n     */\n    click?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the button has lost focus.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the button has received focus.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
+    }
+  },
+  "ProgressElementProps": {
+    "src/surfaces/checkout/components/Progress.ts": {
+      "filePath": "src/surfaces/checkout/components/Progress.ts",
+      "name": "ProgressElementProps",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Progress.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "A label that describes the purpose of the progress. When set, it will be announced to users using assistive technologies and will provide them with more context.\n\nUse it to provide context of what is progressing.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Progress.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Progress.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "max",
+          "value": "number",
+          "description": "This attribute describes how much work the task indicated by the progress element requires.\n\nThe `max` attribute, if present, must have a value greater than 0 and be a valid floating point number.",
+          "isOptional": true,
+          "defaultValue": "1"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Progress.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "tone",
+          "value": "'auto' | 'critical'",
+          "description": "Sets the tone of the progress, based on the intention of the information being conveyed.",
+          "isOptional": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Progress.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "number",
+          "description": "Specifies how much of the task has been completed.\n\nIt must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted. If there is no value attribute, the progress bar is indeterminate; this indicates that an activity is ongoing with no indication of how long it is expected to take.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ProgressElementProps extends Pick<ProgressProps$1, 'accessibilityLabel' | 'id' | 'max' | 'tone' | 'value'> {\n    tone?: Extract<ProgressProps$1['tone'], 'auto' | 'critical'>;\n}"
     }
   }
 }

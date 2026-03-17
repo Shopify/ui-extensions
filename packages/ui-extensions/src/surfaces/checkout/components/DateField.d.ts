@@ -32,6 +32,9 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-date-field";
+/**
+ * @publicDocs
+ */
 export interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 'allowDays' | 'autocomplete' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'error' | 'id' | 'label' | 'name' | 'readOnly' | 'required' | 'value' | 'view'> {
     /**
      * @deprecated Use `label` instead.
@@ -41,6 +44,9 @@ export interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 
 }
 export interface DateFieldEvents extends Pick<DateFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'> {
 }
+/**
+ * @publicDocs
+ */
 export interface DateFieldElementEvents {
     /**
      * Callback when the element loses focus.

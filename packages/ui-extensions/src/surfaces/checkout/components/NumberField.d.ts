@@ -68,6 +68,9 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-number-field";
+/**
+ * @publicDocs
+ */
 export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete' | 'controls' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'inputMode' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
     /**
@@ -78,6 +81,9 @@ export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autoc
 }
 export interface NumberFieldEvents extends Pick<NumberFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/**
+ * @publicDocs
+ */
 export interface NumberFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -104,6 +110,9 @@ export interface NumberFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
+/**
+ * @publicDocs
+ */
 export interface NumberFieldElementSlots {
     /**
      * Additional content to be displayed in the field.
