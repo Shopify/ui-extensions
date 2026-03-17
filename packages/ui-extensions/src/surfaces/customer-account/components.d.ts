@@ -1,11 +1,6 @@
 /**
  * @publicDocs
  */
-export type AvatarElementPropsDocs = AvatarElementProps;
-/**
- * @publicDocs
- */
-export type AvatarElementEventsDocs = AvatarEvents;
 /**
  * @fileoverview This file is used to generate the documentation for the customer-account surface. For component types, see the components folder.
  */
@@ -33,6 +28,18 @@ import {
   SectionElement,
   SectionElementSlots,
 } from './components/Section';
+
+export type AvatarElementPropsDocs = AvatarElementProps;
+/**
+ * @publicDocs
+ */
+export type AvatarElementEventsDocs = AvatarEvents;
+
+export type AvatarElementPropsDocs = AvatarElementProps;
+/**
+ * @publicDocs
+ */
+export type AvatarElementEventsDocs = AvatarEvents;
 
 /**
  * @publicDocs

@@ -920,7 +920,7 @@ export interface AccessibilityRoleProps {
 	 */
 	accessibilityRole?: AccessibilityRole;
 }
-export type AccessibilityRole = 
+export type AccessibilityRole =
 /**
  * Used to indicate the primary content.
  *
@@ -2445,64 +2445,64 @@ export type AlignContentKeyword = "normal" | BaselinePosition | ContentDistribut
 interface GridProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
 	/**
 	  Define columns and specify their size.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
 	  @default 'none'
 	*/
 	gridTemplateColumns?: MaybeResponsive<string>;
 	/**
 	  Define rows and specify their size.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
 	  @default 'none'
 	*/
 	gridTemplateRows?: MaybeResponsive<string>;
 	/**
 	  Aligns the grid items along the inline (row) axis.
-  
+
 	  This overrides the inline value of `placeItems`.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
 	  @default '' - meaning no override
 	*/
 	justifyItems?: MaybeResponsive<JustifyItemsKeyword | "">;
 	/**
 	  Aligns the grid items along the block (column) axis.
-  
+
 	  This overrides the block value of `placeItems`.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
 	  @default '' - meaning no override
 	*/
 	alignItems?: MaybeResponsive<AlignItemsKeyword | "">;
 	/**
 	  A shorthand property for `justify-items` and `align-items`.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-items
 	  @default 'normal normal'
 	*/
 	placeItems?: MaybeResponsive<`${AlignItemsKeyword} ${JustifyItemsKeyword}` | AlignItemsKeyword>;
 	/**
 	  Aligns the grid along the inline (row) axis.
-  
+
 	  This overrides the inline value of `placeContent`.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
 	  @default '' - meaning no override
 	*/
 	justifyContent?: MaybeResponsive<JustifyContentKeyword | "">;
 	/**
 	  Aligns the grid along the block (column) axis.
-  
+
 	  This overrides the block value of `placeContent`.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
 	  @default '' - meaning no override
 	*/
 	alignContent?: MaybeResponsive<AlignContentKeyword | "">;
 	/**
 	  A shorthand property for `justify-content` and `align-content`.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-content
 	  @default 'normal normal'
 	*/
@@ -2971,7 +2971,7 @@ interface ParagraphProps$1 extends GlobalProps, BaseTypographyProps, BlockTypogr
 	 */
 	type?: ParagraphType;
 }
-export type ParagraphType = 
+export type ParagraphType =
 /**
  * Indicate the text is a structural grouping of related content.
  *
@@ -3334,7 +3334,7 @@ interface TextProps$1 extends GlobalProps, AccessibilityVisibilityProps, BaseTyp
 	 */
 	type?: TextType;
 }
-export type TextType = 
+export type TextType =
 /**
  * Indicate the text is contact information. Typically used for addresses.
  *
@@ -3615,6 +3615,9 @@ declare module 'preact' {
 }
 
 declare const tagName$U = "s-button";
+/**
+ * @publicDocs
+ */
 interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
@@ -3758,6 +3761,9 @@ declare module 'preact' {
 }
 
 declare const tagName$O = "s-clickable-chip";
+/**
+ * @publicDocs
+ */
 interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'accessibilityLabel' | 'disabled' | 'hidden' | 'href' | 'id' | 'removable'> {
 }
 interface ClickableChipEvents extends Pick<ClickableChipProps$1, 'onAfterHide' | 'onClick' | 'onRemove'> {

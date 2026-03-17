@@ -38,6 +38,10 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-button";
+/**
+ * Properties for the Button component element.
+ * @publicDocs
+ */
 export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
@@ -46,6 +50,10 @@ export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLa
 }
 export interface ButtonEvents extends Pick<ButtonProps$1, 'onClick'> {
 }
+/**
+ * Events for the Button component element.
+ * @publicDocs
+ */
 export interface ButtonElementEvents {
     /**
      * Callback when the button is activated.
