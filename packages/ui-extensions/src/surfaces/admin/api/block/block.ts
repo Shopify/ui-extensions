@@ -4,6 +4,7 @@ import type {Data} from '../shared';
 
 /**
  * The `Navigation` object provides methods for navigating between extensions and admin pages.
+ * @publicDocs
  */
 export interface Navigation {
   /**
