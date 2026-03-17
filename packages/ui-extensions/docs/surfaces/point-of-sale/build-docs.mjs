@@ -31,7 +31,7 @@ const srcRelativePath = 'src/surfaces/point-of-sale';
 const docsPath = path.join(rootPath, docsRelativePath);
 const srcPath = path.join(rootPath, srcRelativePath);
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = await resolveShopifyDevPath(rootPath);
+const shopifyDevPath = await resolveShopifyDevPath();
 const shopifyDevDBPath = path.join(
   shopifyDevPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',

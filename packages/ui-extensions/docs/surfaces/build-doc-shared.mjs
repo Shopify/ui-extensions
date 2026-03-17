@@ -3,33 +3,22 @@ import childProcess from 'child_process';
 import fs from 'fs/promises';
 import {existsSync} from 'fs';
 import path from 'path';
-import readline from 'readline/promises';
-import process, {stdin as input, stdout as output} from 'process';
+import process from 'process';
 
-export const resolveShopifyDevPath = async (rootPath) => {
-  const defaultPath = path.resolve(rootPath, '../../../shopify-dev');
-  if (existsSync(defaultPath)) return defaultPath;
+export const resolveShopifyDevPath = async () => {
+  const worldPath = path.join(
+    process.env.HOME,
+    'world/trees/root/src/areas/platforms/shopify-dev',
+  );
 
-  const rl = readline.createInterface({input, output});
-  const answer = (
-    await rl.question(
-      `\n\x1b[33m⚠️  Shopify dev directory not found at:\x1b[0m \x1b[1m${defaultPath}\x1b[0m\n\x1b[32mPlease provide the absolute path to your "shopify-dev" repo:\x1b[0m `,
-    )
-  ).trim();
-  rl.close();
-
-  const shopifyDevPath = answer ? path.resolve(answer) : '';
-  if (!shopifyDevPath || !existsSync(shopifyDevPath)) {
+  if (!existsSync(worldPath)) {
     throw new Error(
-      `\x1b[31m❌ Error: ${
-        shopifyDevPath
-          ? `shopify-dev directory not found at ${shopifyDevPath}.`
-          : 'Path cannot be empty.'
-      } Check the path and try again!\x1b[0m`,
+      `\x1b[31m❌ Error: shopify-dev not found at ${worldPath}.\n` +
+        `Run: tec checkout add //areas/platforms/shopify-dev\x1b[0m`,
     );
   }
 
-  return shopifyDevPath;
+  return worldPath;
 };
 
 export const replaceFileContent = async ({
