@@ -14,6 +14,7 @@ This testing library provides strongly typed mocks of the extension API--like th
 ## 📋 Recommendations
 
 - **TypeScript** — we recommend TypeScript to enforce API compliance against mock objects
+- **Node.js ≥ 22.0.0** and **TypeScript ≥ 5.2** — to use ([Explicit Resource Management](https://github.com/tc39/proposal-explicit-resource-management))
 - **@testing-library/preact** — if your extension uses [Preact](https://preactjs.com/), we recommend installing [`@testing-library/preact`](https://preactjs.com/guide/v10/preact-testing-library/) for its `fireEvent` and `waitFor` helpers
 
 ## 📦 Installation
@@ -72,7 +73,7 @@ Your extension's own `package.json` (inside `extensions/my-extension/`) already 
   "devDependencies": {
     "@shopify/ui-extensions-tester": "latest",
     "@testing-library/preact": "^3.2.0",
-    "typescript": "^5.0.0",
+    "typescript": "^5.2.0",
     "vitest": "^3.0.0"
   }
 }
@@ -144,7 +145,34 @@ The path must match the target you pass to `getExtension()`.
 
 ## 🏊‍♀️ Getting started
 
-Every test file follows the same pattern: create an extension harness, call `extension.setUp()` before each test, call `extension.tearDown()` after.
+Every test file follows the same pattern:
+create an extension harness, set it up before
+each test, and tear it down after.
+
+### Quick start with `using` (Node ≥ 22.0.0)
+
+If your runtime supports
+[Explicit Resource Management](https://github.com/tc39/proposal-explicit-resource-management),
+use `setUpExtension` for zero-boilerplate
+setup and automatic teardown:
+
+```ts
+import {setUpExtension} from '@shopify/ui-extensions-tester';
+
+test('rendering the extension', async () => {
+  using extension = setUpExtension(
+    'purchase.checkout.block.render',
+  );
+  await extension.render();
+  // tearDown() is called automatically at the end of the block
+});
+```
+
+### Classic setup
+
+Alternatively, create the harness once and
+manage the lifecycle with `beforeEach` /
+`afterEach`:
 
 ```ts
 import {getExtension} from '@shopify/ui-extensions-tester';
@@ -339,25 +367,31 @@ Each surface exports some helpers:
 
 Exports from `@shopify/ui-extensions-tester`:
 
-### `getExtension(target, options?)`
+### `setUpExtension(target, options?)`
 
-Returns an extension test harness for the given target. It reads `shopify.extension.toml`, finds the module for the given target, and provides helpers to mock the environment and render the extension. It locates `shopify.extension.toml` by walking up from the calling test file's directory, and falls back to searching `extensions/` under the current working directory.
+Sets up an extension for testing and returns a
+disposable object that supports automatic
+teardown with the `using` keyword:
+
+```ts
+test('example', async () => {
+  using extension = setUpExtension(
+    'purchase.checkout.block.render',
+  );
+  await extension.render();
+  // tearDown() called automatically
+});
+```
+
+It reads `shopify.extension.toml`, finds the module for the given target, and provides helpers to mock the environment and render the extension. It locates `shopify.extension.toml` by walking up from the calling test file's directory, and falls back to searching `extensions/` under the current working directory. Results are cached: calling `getExtension` twice with the same target and the same resolved TOML returns the same instance.
 
 | Option            | Type     | Default                       | Description                                                |
 | ----------------- | -------- | ----------------------------- | ---------------------------------------------------------- |
 | `configSearchDir` | `string` | calling test file's directory | Directory to start searching for `shopify.extension.toml`. |
 
-By default `getExtension` walks up from the test file's directory to find `shopify.extension.toml`.
+By default, it walks up from the test file's directory to find `shopify.extension.toml`.
 
-**Returns** an `Extension<T>` object with the following members:
-
-#### `extension.setUp()`
-
-Sets up an extension environment for testing. Creates a mock `shopify` global with some defaults.
-
-#### `extension.tearDown()`
-
-Tears down the extension environment. Resets the `shopify` global and clears `document.body`.
+**Returns** an `Extension` object with the following members:
 
 #### `extension.render()`
 
@@ -401,6 +435,22 @@ extension.navigation.currentEntry =
 ```
 
 Assigning to `extension.navigation` also updates `globalThis.navigation`, so extension code that calls `navigation.navigate()` directly will use the mock.
+
+### `getExtension(target, options?)`
+
+> ⚠️ Prefer [`setUpExtension`](#setupextensiontarget-options) on Node ≥ 22.0.0. Use `getExtension` only if your runtime does not support [Explicit Resource Management](https://github.com/tc39/proposal-explicit-resource-management).
+
+Accepts the same arguments as `setUpExtension`. You must call `extension.setUp()` and `extension.tearDown()` explicitly.
+
+**Returns** an `Extension` object with the following additional members:
+
+#### `extension.setUp()`
+
+Sets up an extension environment for testing. Creates a mock `shopify` global with some defaults.
+
+#### `extension.tearDown()`
+
+Tears down the extension environment. Resets the `shopify` global and clears `document.body`.
 
 ### `createNavigationHistoryEntry(options?)`
 
