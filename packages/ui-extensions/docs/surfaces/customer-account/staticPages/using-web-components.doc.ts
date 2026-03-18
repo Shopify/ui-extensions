@@ -343,7 +343,8 @@ Use methods when you need to trigger actions that can't be achieved through prop
       type: 'GenericAccordion',
       anchorLink: 'troubleshooting',
       title: 'Troubleshooting',
-      sectionContent: 'Common issues and debugging tips for using web components.',
+      sectionContent:
+        'Common issues and debugging tips for using web components.',
       accordionContent: [
         {
           title: 'Common issues',
