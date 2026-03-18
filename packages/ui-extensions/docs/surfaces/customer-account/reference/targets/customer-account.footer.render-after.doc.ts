@@ -9,7 +9,7 @@ the footer on all customer account pages (**Order index**, **Order status**, **P
   
 > Tip:
 > To prevent layout shifting, avoid dynamic data fetching & rendering in this target. If you need to render dynamic content, consider reserving space for your content while it is loading.
-> See: [Spinner](/docs/api/checkout-ui-extensions/polaris-web-components/feedback/spinner), [SkeletonParagraph](/docs/api/checkout-ui-extensions/polaris-web-components/feedback/skeletonparagraph), or [Stack](/docs/api/checkout-ui-extensions/polaris-web-components/structure/stack).
+> See: [Spinner](/docs/api/checkout-ui-extensions/web-components/feedback/spinner), [SkeletonParagraph](/docs/api/checkout-ui-extensions/web-components/feedback/skeletonparagraph), or [Stack](/docs/api/checkout-ui-extensions/web-components/structure/stack).
 `,
   category: 'Targets',
   isVisualComponent: false,
