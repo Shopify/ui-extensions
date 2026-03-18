@@ -26,7 +26,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Docs_CustomerAccountAction_SlotButton',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Actions',
   defaultExample: {
     image: 'customeraccountaction-default.png',
