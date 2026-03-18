@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'EmptyStateSlots',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Layout and structure',
   defaultExample: {
     image: 'emptystate-default.png',

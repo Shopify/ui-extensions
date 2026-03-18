@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'TileEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Actions',
   defaultExample: {
     image: 'tile-default.png',

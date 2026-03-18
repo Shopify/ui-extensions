@@ -28,7 +28,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Choice',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'choicelist-default.png',
