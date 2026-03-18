@@ -19,7 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AdminBlockProps',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Settings and templates',
   subSections: [
     {
@@ -45,7 +45,7 @@ const data: ReferenceEntityTemplateSchema = {
     image:
       '/assets/templated-apis-screenshots/admin/components/adminblock-example.png',
     description:
-      'Display an inline block on an admin resource page. This example shows a simple block with a `heading` property and [text](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/typography-and-content/text) content.',
+      'Display an inline block on an admin resource page. This example shows a simple block with a `heading` property and [text](/docs/api/admin-extensions/{API_VERSION}/web-components/typography-and-content/text) content.',
     codeblock: {
       title: 'Display an inline admin block',
       tabs: [
@@ -65,7 +65,7 @@ const data: ReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Provide a preview of the block content when it is collapsed. This example uses the `collapsed-summary` attribute to show a short [text](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/typography-and-content/text) summary in the block header.',
+              'Provide a preview of the block content when it is collapsed. This example uses the `collapsed-summary` attribute to show a short [text](/docs/api/admin-extensions/{API_VERSION}/web-components/typography-and-content/text) summary in the block header.',
             codeblock: {
               title: 'Show a collapsed summary',
               tabs: [
@@ -79,7 +79,7 @@ const data: ReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Present structured data in rows and columns within a block. This example displays inventory levels across locations using a [table](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/table).',
+              'Present structured data in rows and columns within a block. This example displays inventory levels across locations using a [table](/docs/api/admin-extensions/{API_VERSION}/web-components/layout-and-structure/table).',
             codeblock: {
               title: 'Display a data table',
               tabs: [
@@ -93,7 +93,7 @@ const data: ReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Highlight key status information with visual indicators. This example shows an order risk assessment with a warning [badge](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge) and a list of risk factors.',
+              'Highlight key status information with visual indicators. This example shows an order risk assessment with a warning [badge](/docs/api/admin-extensions/{API_VERSION}/web-components/feedback-and-status-indicators/badge) and a list of risk factors.',
             codeblock: {
               title: 'Show status with badges',
               tabs: [
@@ -107,7 +107,7 @@ const data: ReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Include interactive buttons so merchants can take action directly from the block. This example shows subscription details with a [button group](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button-group) for pause and cancel actions.',
+              'Include interactive buttons so merchants can take action directly from the block. This example shows subscription details with a [button group](/docs/api/admin-extensions/{API_VERSION}/web-components/actions/button-group) for pause and cancel actions.',
             codeblock: {
               title: 'Add action buttons to a block',
               tabs: [

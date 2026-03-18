@@ -59,7 +59,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
    */
   ref?: preact.Ref<TClass>;
   /**
-   * The named slot this element should be placed in when used within a web component. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).
+   * The named slot this element should be placed in when used within a web component. Learn more about [using slots](/docs/api/app-ui/using-web-components#slots).
    */
   slot?: Lowercase<string>;
 }
