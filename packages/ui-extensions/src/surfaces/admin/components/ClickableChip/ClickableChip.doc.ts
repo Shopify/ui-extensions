@@ -14,7 +14,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       sectionContent: `- **Keep labels to 1-3 words:** Aim for labels like **Electronics**, **Summer sale**, or **Clearance items**.
 - **Choose color variants by importance:** Use \`subdued\` for less important or secondary chips, \`base\` (default) for standard selections, and \`strong\` to emphasize primary or active selections.
 - **Make remove action clear:** When chips are removable, ensure the remove button's visible and has clear hover/focus states.
-- **Group related chips together:** Use an inline [stack](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/stack) to arrange multiple chips horizontally with consistent spacing.`,
+- **Group related chips together:** Use an inline [stack](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/stack) to arrange multiple chips horizontally with consistent spacing.`,
     },
   ],
   definitions: [
@@ -27,13 +27,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'The clickable chip component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).',
+        'The clickable chip component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-web-components#handling-events).',
       type: 'ClickableChipEvents',
     },
     {
       title: 'Slots',
       description:
-        'The clickable chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).',
+        'The clickable chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/app-ui/using-web-components#slots).',
       type: 'ClickableChipSlots',
     },
   ],

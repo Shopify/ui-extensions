@@ -19,7 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AdminPrintActionProps',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Settings and templates',
   subSections: [
     {
