@@ -26,8 +26,14 @@ import {
   SectionElementSlots,
 } from './components/Section';
 
+/**
+ * @publicDocs
+ */
 export type CustomerAccountActionPropsDocs = CustomerAccountActionProps;
 export type CustomerAccountActionElementDocs = CustomerAccountActionElement;
+/**
+ * @publicDocs
+ */
 export type CustomerAccountActionElementSlotsDocs =
   CustomerAccountActionElementSlots;
 
@@ -50,6 +56,9 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export type ImageGroupPropsDocs = ImageGroupProps;
 export type ImageGroupElementDocs = ImageGroupElement;
 
@@ -71,8 +80,14 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export type PagePropsDocs = PageProps;
 export type PageElementDocs = PageElement;
+/**
+ * @publicDocs
+ */
 export type PageElementSlotsDocs = PageElementSlots;
 
 declare global {
@@ -94,9 +109,16 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export type AvatarElementPropsDocs = AvatarElementProps;
 export type AvatarPropsDocs = AvatarProps;
 export type AvatarElementDocs = AvatarElement;
+/**
+ * Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export type AvatarEventsDocs = AvatarEvents;
 
 declare global {
@@ -115,6 +137,9 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export type MenuPropsDocs = MenuProps;
 export type MenuElementDocs = MenuElement;
 
@@ -136,8 +161,14 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export type ButtonGroupPropsDocs = ButtonGroupProps;
 export type ButtonGroupElementDocs = ButtonGroupElement;
+/**
+ * @publicDocs
+ */
 export type ButtonGroupElementSlotsDocs = ButtonGroupElementSlots;
 
 declare global {
@@ -159,8 +190,14 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export type SectionPropsDocs = SectionProps;
 export type SectionElementDocs = SectionElement;
+/**
+ * @publicDocs
+ */
 export type SectionElementSlotsDocs = SectionElementSlots;
 
 declare global {

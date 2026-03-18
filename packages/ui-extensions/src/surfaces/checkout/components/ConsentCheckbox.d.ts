@@ -56,11 +56,13 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-consent-checkbox";
+/** @publicDocs */
 export interface ConsentCheckboxElementProps extends Pick<ConsentCheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'policy' | 'value'> {
     command?: Extract<ConsentCheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
 export interface ConsentCheckboxEvents extends Pick<CheckboxEvents, 'onChange'> {
 }
+/** @publicDocs */
 export interface ConsentCheckboxElementEvents {
     /**
      * A callback that is run whenever the control is changed.

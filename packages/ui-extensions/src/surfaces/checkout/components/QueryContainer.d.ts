@@ -30,6 +30,7 @@ export interface QueryContainerElementProps extends Pick<QueryContainerProps$1, 
 }
 export interface QueryContainerElement extends QueryContainerElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface QueryContainerProps extends QueryContainerElementProps {
 }
 declare global {

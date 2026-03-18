@@ -69,6 +69,7 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-consent-phone-field";
+/** @publicDocs */
 export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'policy' | 'readOnly' | 'required' | 'type' | 'value'> {
     /**
      * @deprecated Use `label` instead.
@@ -78,6 +79,7 @@ export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldPro
 }
 export interface ConsentPhoneFieldEvents extends Pick<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 export interface ConsentPhoneFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -110,6 +112,7 @@ export interface ConsentPhoneFieldElement extends ConsentPhoneFieldElementProps,
     onfocus: ConsentPhoneFieldEvents['onFocus'];
     oninput: ConsentPhoneFieldEvents['onInput'];
 }
+/** @publicDocs */
 export interface ConsentPhoneFieldElementSlots {
     /**
      * Additional content to be displayed in the field.

@@ -20,6 +20,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-skeleton-paragraph";
+/** @publicDocs */
 export interface SkeletonParagraphProps extends SkeletonParagraphProps$1 {
 }
 export interface SkeletonParagraphElement extends SkeletonParagraphProps, Omit<HTMLElement, 'id'> {

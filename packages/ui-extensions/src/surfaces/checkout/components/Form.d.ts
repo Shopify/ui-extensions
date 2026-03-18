@@ -38,6 +38,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-form";
+/** @publicDocs */
 export interface FormElementProps extends Pick<FormProps$1, 'disabled' | 'id'> {
 }
 export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
@@ -46,6 +47,7 @@ export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
      */
     onSubmit?: () => void;
 }
+/** @publicDocs */
 export interface FormElementEvents {
     /**
      * A callback that is run when the form is submitted.

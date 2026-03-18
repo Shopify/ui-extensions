@@ -38,10 +38,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-clickable-chip";
+/** @publicDocs */
 export interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'accessibilityLabel' | 'disabled' | 'hidden' | 'href' | 'id' | 'removable'> {
 }
 export interface ClickableChipEvents extends Pick<ClickableChipProps$1, 'onAfterHide' | 'onClick' | 'onRemove'> {
 }
+/** @publicDocs */
 export interface ClickableChipElementEvents {
     /**
      * Event handler when the chip has fully hidden.
@@ -58,6 +60,7 @@ export interface ClickableChipElementEvents {
      */
     remove?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface ClickableChipElementSlots {
     /**
      * The graphic to display inside of the chip.

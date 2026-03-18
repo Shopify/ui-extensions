@@ -26,6 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-unordered-list";
+/** @publicDocs */
 export interface UnorderedListProps extends UnorderedListProps$1 {
 }
 export interface UnorderedListElement extends UnorderedListProps, Omit<HTMLElement, 'id'> {

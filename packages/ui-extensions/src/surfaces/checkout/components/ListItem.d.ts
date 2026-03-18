@@ -26,6 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-list-item";
+/** @publicDocs */
 export interface ListItemProps extends Pick<ListItemProps$1, 'id'> {
 }
 export interface ListItemElement extends ListItemProps, Omit<HTMLElement, 'id'> {

@@ -26,6 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-divider";
+/** @publicDocs */
 export interface DividerProps extends Pick<DividerProps$1, 'direction' | 'id'> {
 }
 export interface DividerElement extends DividerProps, Omit<HTMLElement, 'id'> {

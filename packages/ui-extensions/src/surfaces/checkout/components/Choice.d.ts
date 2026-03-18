@@ -26,8 +26,10 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-choice";
+/** @publicDocs */
 export interface ChoiceProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'error' | 'value'> {
 }
+/** @publicDocs */
 export interface ChoiceElementSlots {
     /**
      * Additional text to provide context or guidance for the input.

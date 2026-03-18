@@ -32,11 +32,13 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-switch";
+/** @publicDocs */
 export interface SwitchElementProps extends Pick<SwitchProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'id' | 'label' | 'name' | 'value'> {
     command?: Extract<SwitchProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
 export interface SwitchEvents extends Pick<SwitchProps$1, 'onChange'> {
 }
+/** @publicDocs */
 export interface SwitchElementEvents {
     /**
      * A callback that is run whenever the control is changed.

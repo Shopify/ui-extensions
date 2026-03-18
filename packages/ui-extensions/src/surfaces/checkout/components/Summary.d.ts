@@ -11,6 +11,7 @@
 import type {SummaryProps$1} from './components-shared.d.ts';
 
 declare const tagName = "s-summary";
+/** @publicDocs */
 export interface SummaryProps extends Pick<SummaryProps$1, 'id'> {
 }
 export interface SummaryElement extends SummaryProps, Omit<HTMLElement, 'id'> {

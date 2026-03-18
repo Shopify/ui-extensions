@@ -28,6 +28,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 declare const tagName = "s-chip";
 export interface ChipElementProps extends Pick<ChipProps$1, 'accessibilityLabel' | 'id'> {
 }
+/** @publicDocs */
 export interface ChipElementSlots {
     /**
      * The graphic to display inside of the chip.
@@ -36,6 +37,7 @@ export interface ChipElementSlots {
      */
     graphic?: HTMLElement;
 }
+/** @publicDocs */
 export interface ChipProps extends ChipElementProps {
 }
 export interface ChipElement extends ChipProps, Omit<HTMLElement, 'id'> {
