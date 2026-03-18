@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Text area',
   description:
     'The text area component captures multi-line text input. Use it to collect descriptions, notes, comments, or other extended text content.' +
-    '\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [text field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/text-field).',
+    '\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [text field](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/text-field).',
   thumbnail: 'text-area-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -28,7 +28,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'TextAreaEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'text-area-default.png',
@@ -60,7 +60,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-The \`accessory\` slot supports only [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) and [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components. Other component types can't be used for field accessories.
+The \`accessory\` slot supports only [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) and [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable) components. Other component types can't be used for field accessories.
 `,
     },
   ],
@@ -71,7 +71,7 @@ The \`accessory\` slot supports only [button](/docs/api/pos-ui-extensions/{API_V
     examples: [
       {
         description:
-          'Add action buttons to the text area using the accessory slot for quick actions like clearing text or formatting content. This example shows how to use [s-button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) and [s-clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components in the accessory slot, providing inline functionality within the multi-line input context.',
+          'Add action buttons to the text area using the accessory slot for quick actions like clearing text or formatting content. This example shows how to use [s-button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) and [s-clickable](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable) components in the accessory slot, providing inline functionality within the multi-line input context.',
         codeblock: {
           title: 'Add accessory buttons',
           tabs: [

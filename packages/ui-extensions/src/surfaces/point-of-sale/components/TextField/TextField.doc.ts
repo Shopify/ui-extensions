@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Text field',
   description:
     'The text field component captures single-line text input. Use it to collect short, free-form information like names, titles, or identifiers.' +
-    '\n\nThe component supports various input configurations including placeholders, character limits, and validation. For multi-line text entry, use the [text area](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/text-area) component.',
+    '\n\nThe component supports various input configurations including placeholders, character limits, and validation. For multi-line text entry, use the [text area](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/text-area) component.',
   thumbnail: 'text-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -28,7 +28,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'TextFieldEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'text-field-default.png',
@@ -50,7 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent: `
-- **Use for single-line text input:** Choose text field for short values like names, titles, or identifiers. For multi-line content, use [text area](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/text-area).
+- **Use for single-line text input:** Choose text field for short values like names, titles, or identifiers. For multi-line content, use [text area](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/text-area).
 - **Show character limit feedback:** When approaching \`maxLength\`, display remaining characters in the \`details\` text.
 - **Write descriptive labels:** Use specific labels like "Product Name" or "Reference Code" rather than generic terms.
 `,
@@ -60,7 +60,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-The \`accessory\` slot supports only [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) and [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components with text content only—other component types or complex layouts can't be used for field accessories.
+The \`accessory\` slot supports only [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) and [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable) components with text content only—other component types or complex layouts can't be used for field accessories.
 `,
     },
   ],
@@ -71,7 +71,7 @@ The \`accessory\` slot supports only [button](/docs/api/pos-ui-extensions/{API_V
     examples: [
       {
         description:
-          'Add action buttons to the text field using the accessory slot for quick actions like clearing text or submitting input. This example shows how to use [s-button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) and [s-clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components with text content in the accessory slot, enabling inline actions without leaving the input context.',
+          'Add action buttons to the text field using the accessory slot for quick actions like clearing text or submitting input. This example shows how to use [s-button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) and [s-clickable](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable) components with text content in the accessory slot, enabling inline actions without leaving the input context.',
         codeblock: {
           title: 'Add accessory buttons',
           tabs: [

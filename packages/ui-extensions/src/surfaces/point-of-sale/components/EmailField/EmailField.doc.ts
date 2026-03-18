@@ -28,7 +28,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'EmailFieldEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'email-field-default.png',
@@ -60,7 +60,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'limitations',
       title: 'Limitations',
       sectionContent: `
-The \`accessory\` slot supports only [\`button\`](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) and [\`clickable\`](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components—other component types can't be used in the accessory slot.
+The \`accessory\` slot supports only [\`button\`](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) and [\`clickable\`](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable) components—other component types can't be used in the accessory slot.
 `,
     },
   ],
@@ -71,7 +71,7 @@ The \`accessory\` slot supports only [\`button\`](/docs/api/pos-ui-extensions/{A
     examples: [
       {
         description:
-          'Add action buttons to the email field using the accessory slot for quick actions like clearing input or verifying email addresses. This example shows how to use [s-button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) and [s-clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components in the accessory slot, providing inline functionality within the email input context.',
+          'Add action buttons to the email field using the accessory slot for quick actions like clearing input or verifying email addresses. This example shows how to use [s-button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) and [s-clickable](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable) components in the accessory slot, providing inline functionality within the email input context.',
         codeblock: {
           title: 'Add accessory buttons',
           tabs: [

@@ -1,9 +1,9 @@
 import type {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
-  title: 'Using Polaris web components',
+  title: 'Using web components',
   description:
-    "Polaris web components are Shopify's UI toolkit for building interfaces that match the Shopify Point of Sale design system. This toolkit provides a set of custom HTML elements (web components) that you can use to create consistent, accessible, and performant user interfaces for the POS UI Extensions.",
+    "Web components are Shopify's UI toolkit for building interfaces that match the Shopify Point of Sale design system. This toolkit provides a set of custom HTML elements (web components) that you can use to create consistent, accessible, and performant user interfaces for the POS UI Extensions.",
   id: 'using-polaris-components',
   sections: [
     {
@@ -11,7 +11,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'styling',
       title: 'Styling',
       sectionContent:
-        "Polaris web components come with built-in styling that follows Shopify's design system. The components will automatically apply the correct styling based on the properties you set and the context in which they are used. For example, headings automatically display at progressively less prominent sizes based on how many levels deep they are nested inside of sections. All components inherit a merchant's brand settings and the CSS cannot be altered or overridden.",
+        "Web components come with built-in styling that follows Shopify's design system. The components will automatically apply the correct styling based on the properties you set and the context in which they are used. For example, headings automatically display at progressively less prominent sizes based on how many levels deep they are nested inside of sections. All components inherit a merchant's brand settings and the CSS cannot be altered or overridden.",
       codeblock: {
         title: 'Example',
         tabs: [
@@ -69,7 +69,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'using-with-preact',
       title: 'Using with Preact',
       sectionContent:
-        'For UI Extensions, Shopify provides Preact as the framework of choice. Using Polaris web components with Preact is very similar to using them with React.  ',
+        'For UI Extensions, Shopify provides Preact as the framework of choice. Using web components with Preact is very similar to using them with React.  ',
       codeblock: {
         title: 'Example',
         tabs: [
@@ -86,12 +86,12 @@ const data: LandingTemplateSchema = {
       anchorLink: 'properties-vs-attributes',
       title: 'Properties vs attributes',
       sectionContent:
-        'Polaris web components follow the same property and attribute patterns as standard HTML elements. Understanding this distinction is important for using the components effectively.',
+        'Web components follow the same property and attribute patterns as standard HTML elements. Understanding this distinction is important for using the components effectively.',
       accordionContent: [
         {
           title: 'Key concepts',
           description:
-            "1. **Attributes** are HTML attributes that appear in the HTML markup.\n2. **Properties** are JavaScript object properties accessed directly on the DOM element.\n3. Most attributes in Polaris web components are reflected as properties, with a few exceptions like `value` and `checked` which follow HTML's standard behavior.",
+            "1. **Attributes** are HTML attributes that appear in the HTML markup.\n2. **Properties** are JavaScript object properties accessed directly on the DOM element.\n3. Most attributes in web components are reflected as properties, with a few exceptions like `value` and `checked` which follow HTML's standard behavior.",
           codeblock: {
             tabs: [],
             title: '',
@@ -102,7 +102,7 @@ const data: LandingTemplateSchema = {
         {
           title: 'How JSX properties are applied',
           description:
-            "When using Polaris web components in JSX, the framework determines how to apply your props based on whether the element has a matching property name.\n\nIf the element has a property with the exact same name as your prop, the value is set as a property. Otherwise, it's applied as an attribute. Here's how this works in pseudocode:",
+            "When using web components in JSX, the framework determines how to apply your props based on whether the element has a matching property name.\n\nIf the element has a property with the exact same name as your prop, the value is set as a property. Otherwise, it's applied as an attribute. Here's how this works in pseudocode:",
           codeblock: {
             tabs: [
               {
@@ -119,7 +119,7 @@ const data: LandingTemplateSchema = {
         {
           title: 'Examples',
           description:
-            'For Polaris web components, you can generally just use the property names as documented, and everything will work as expected.',
+            'For web components, you can generally just use the property names as documented, and everything will work as expected.',
           codeblock: {
             tabs: [
               {
@@ -157,7 +157,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'slots',
       title: 'Slots',
       sectionContent:
-        'Slots allow you to insert custom content into specific areas of Polaris web components. Use the `slot` attribute to specify where your content should appear within a component.\n\nKey points:\n- Named slots (e.g., `slot="title"`) place content in designated areas\n- Multiple elements can share the same slot name\n- Elements without a slot attribute go into the default (unnamed) slot',
+        'Slots allow you to insert custom content into specific areas of web components. Use the `slot` attribute to specify where your content should appear within a component.\n\nKey points:\n- Named slots (e.g., `slot="title"`) place content in designated areas\n- Multiple elements can share the same slot name\n- Elements without a slot attribute go into the default (unnamed) slot',
       codeblock: {
         title: 'Examples',
         tabs: [
