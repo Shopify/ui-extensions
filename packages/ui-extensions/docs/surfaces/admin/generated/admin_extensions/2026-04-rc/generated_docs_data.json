@@ -4,7 +4,7 @@
     "description": "The Action Extension API lets you [build action extensions](/docs/apps/build/admin/actions-blocks/build-admin-action) that merchants access from the **More actions** menu on details and index pages. Use this API to create workflows for processing resources, configuring settings, or integrating with external systems.",
     "isVisualComponent": false,
     "type": "API",
-    "requires": "the [admin action](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/admin-action) component.",
+    "requires": "the [admin action](/docs/api/admin-extensions/{API_VERSION}/web-components/settings-and-templates/admin-action) component.",
     "defaultExample": {
       "description": "Send selected product IDs to your backend for bulk processing. This example shows how to map selected items, make an authenticated API call, and close the modal when the operation completes.",
       "codeblock": {
@@ -11620,7 +11620,7 @@
         "type": "Generic",
         "anchorLink": "best-practices",
         "title": "Best practices",
-        "sectionContent": "- **Check array length for bulk operations:** When actions appear on index pages with bulk selection, `api.data.selected` can contain multiple resources. Check the array length and handle batch operations accordingly.\n- **Use `loading` state on buttons:** Modal actions don't show loading indicators automatically. Use the `loading` prop on [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button) components during async operations to prevent duplicate submissions."
+        "sectionContent": "- **Check array length for bulk operations:** When actions appear on index pages with bulk selection, `api.data.selected` can contain multiple resources. Check the array length and handle batch operations accordingly.\n- **Use `loading` state on buttons:** Modal actions don't show loading indicators automatically. Use the `loading` prop on [button](/docs/api/admin-extensions/{API_VERSION}/web-components/actions/button) components during async operations to prevent duplicate submissions."
       },
       {
         "type": "Generic",
@@ -11635,9 +11635,9 @@
     "description": "The Block Extension API lets you [build block extensions](/docs/apps/build/admin/actions-blocks/build-admin-block) that display inline content directly within admin pages. Use this API to show contextual information, tools, or actions related to the current page without requiring merchants to open a modal.",
     "isVisualComponent": false,
     "type": "API",
-    "requires": "the [admin block](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/admin-block) component.",
+    "requires": "the [admin block](/docs/api/admin-extensions/{API_VERSION}/web-components/settings-and-templates/admin-block) component.",
     "defaultExample": {
-      "description": "Fetch and display a product's title, inventory, and status in a [block extension](/docs/api/admin-extensions/{API_VERSION}#building-your-extension). This example uses `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql/) when the page loads and renders a loading [spinner](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/spinner) component while fetching.",
+      "description": "Fetch and display a product's title, inventory, and status in a [block extension](/docs/api/admin-extensions/{API_VERSION}#building-your-extension). This example uses `useEffect` to query the [GraphQL Admin API](/docs/api/admin-graphql/) when the page loads and renders a loading [spinner](/docs/api/admin-extensions/{API_VERSION}/web-components/feedback-and-status-indicators/spinner) component while fetching.",
       "codeblock": {
         "title": "Display product information",
         "tabs": [
@@ -23216,7 +23216,7 @@
       "description": "Common block extension patterns",
       "examples": [
         {
-          "description": "Check product eligibility with your backend API before launching an action extension. This example validates that the product meets criteria, shows a loading state during the check, and conditionally displays a navigation [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button).",
+          "description": "Check product eligibility with your backend API before launching an action extension. This example validates that the product meets criteria, shows a loading state during the check, and conditionally displays a navigation [button](/docs/api/admin-extensions/{API_VERSION}/web-components/actions/button).",
           "codeblock": {
             "title": "Navigate to action extension",
             "tabs": [
@@ -23266,9 +23266,9 @@
     "description": "The Validation Settings API lets you [create complex validation rules](/docs/apps/build/checkout/cart-checkout-validation/create-admin-ui-validation) for cart and checkout validation. Use this API to build custom settings interfaces for [Shopify Functions](/docs/apps/build/functions) that implement validation logic.",
     "isVisualComponent": false,
     "type": "API",
-    "requires": "the [function settings](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/function-settings) component.",
+    "requires": "the [function settings](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/function-settings) component.",
     "defaultExample": {
-      "description": "Save a minimum quantity validation rule with a [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/number-field) input. This example calls `applyMetafieldChange`, checks the result type, and displays success or error banners based on the response.",
+      "description": "Save a minimum quantity validation rule with a [number field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/number-field) input. This example calls `applyMetafieldChange`, checks the result type, and displays success or error banners based on the response.",
       "codeblock": {
         "title": "Set minimum quantity",
         "tabs": [
@@ -35243,9 +35243,9 @@
     "description": "The Discount Function Settings API lets you build UI extensions that provide custom configuration interfaces for [discount functions](/docs/apps/build/discounts/build-ui-extension). Use this API to create settings pages for [Shopify Functions](/docs/apps/build/functions) that implement discount logic.",
     "isVisualComponent": false,
     "type": "API",
-    "requires": "the [function settings](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/function-settings) component.",
+    "requires": "the [function settings](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/function-settings) component.",
     "defaultExample": {
-      "description": "Save a minimum purchase threshold to a metafield with decimal number validation. This example uses a [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/text-field) for input, calls `applyMetafieldChange`, and displays success or error feedback.",
+      "description": "Save a minimum purchase threshold to a metafield with decimal number validation. This example uses a [text field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/text-field) for input, calls `applyMetafieldChange`, and displays success or error feedback.",
       "codeblock": {
         "title": "Configure discount threshold",
         "tabs": [
@@ -36113,9 +36113,9 @@
     "description": "The Order Routing Rule API provides access to [order routing rule](/docs/apps/build/orders-fulfillment/order-routing-apps) configuration and settings management. Use this API to build custom configuration interfaces for order routing rules that determine fulfillment locations.",
     "isVisualComponent": false,
     "type": "API",
-    "requires": "the [function settings](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/function-settings) component.",
+    "requires": "the [function settings](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/function-settings) component.",
     "defaultExample": {
-      "description": "Set preferred and fallback fulfillment locations with [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/text-field) inputs. This example applies two metafield changes in a single batch operation to configure location priority for order routing.",
+      "description": "Set preferred and fallback fulfillment locations with [text field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/text-field) inputs. This example applies two metafield changes in a single batch operation to configure location priority for order routing.",
       "codeblock": {
         "title": "Configure location priority",
         "tabs": [
@@ -48121,7 +48121,7 @@
     "description": "The Print Action Extension API lets you [build print action extensions](/docs/apps/build/admin/actions-blocks/build-admin-print-action) that generate custom printable documents for orders, products, and other resources. Use this API to create branded labels, packing slips, custom invoices, or specialty documents.",
     "isVisualComponent": false,
     "type": "API",
-    "requires": "the [admin print action](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/admin-print-action) component.",
+    "requires": "the [admin print action](/docs/api/admin-extensions/{API_VERSION}/web-components/settings-and-templates/admin-print-action) component.",
     "defaultExample": {
       "description": "Generate a packing slip PDF for selected orders by calling your app's backend service. This example shows extracting order IDs from the selected resources, making an API call to your backend to generate the PDF, and returning the printable URL to display the document.",
       "codeblock": {
@@ -59752,7 +59752,7 @@
     "description": "The Product Details Configuration API lets you [build product configuration extensions for bundles](/docs/apps/build/product-merchandising/bundles/product-configuration-extension/add-merchant-config-ui) that define product relationships and manage [bundle](/docs/apps/build/product-merchandising/bundles) compositions. Use this API to build configuration interfaces for bundle and component product experiences.",
     "isVisualComponent": false,
     "type": "API",
-    "requires": "the [admin block](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/admin-block) component.",
+    "requires": "the [admin block](/docs/api/admin-extensions/{API_VERSION}/web-components/settings-and-templates/admin-block) component.",
     "defaultExample": {
       "description": "Open the product [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select up to five components for a [bundle](/docs/apps/build/product-merchandising/bundles). This example filters out draft and archived products, saves the bundle configuration to your backend, and tracks the selection count.",
       "codeblock": {
@@ -71383,7 +71383,7 @@
     "description": "The Product Variant Details Configuration API lets you [build product configuration extensions for bundles](/docs/apps/build/product-merchandising/bundles/product-configuration-extension/add-merchant-config-ui) that define variant relationships and manage [bundle](/docs/apps/build/product-merchandising/bundles) compositions. Use this API to build configuration interfaces for bundle and component product experiences at the variant level.",
     "isVisualComponent": false,
     "type": "API",
-    "requires": "the [admin block](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/admin-block) component.",
+    "requires": "the [admin block](/docs/api/admin-extensions/{API_VERSION}/web-components/settings-and-templates/admin-block) component.",
     "defaultExample": {
       "description": "Use the product variant [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) to select component variants for a [bundle](/docs/apps/build/product-merchandising/bundles). This example picks product variants, tracks selections, and posts the product variant IDs to configure the bundle.",
       "codeblock": {
@@ -83014,7 +83014,7 @@
     "description": "The Purchase Options Card Configuration API provides access to purchase option selection data for products with [subscription](/docs/apps/build/purchase-options/subscriptions) and [selling plan](/docs/apps/build/purchase-options/subscriptions/selling-plans) configurations. Use this API to build action extensions that interact with selected [purchase options](/docs/apps/build/purchase-options) on product and product variant details pages.",
     "isVisualComponent": false,
     "type": "API",
-    "requires": "the [admin action](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/settings-and-templates/admin-action) component.",
+    "requires": "the [admin action](/docs/api/admin-extensions/{API_VERSION}/web-components/settings-and-templates/admin-action) component.",
     "defaultExample": {
       "description": "Update a subscription by sending product and selling plan IDs to your backend. This example checks for selling plan presence, posts the update request, and shows a success banner before auto-closing the modal.",
       "codeblock": {
@@ -118295,7 +118295,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Settings and templates",
     "subSections": [
       {
@@ -118307,7 +118307,7 @@
     ],
     "defaultExample": {
       "image": "/assets/templated-apis-screenshots/admin/components/adminaction-example.png",
-      "description": "Set up the modal header and action [buttons](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button) for an admin action extension. This example shows a titled modal with primary and secondary action buttons.",
+      "description": "Set up the modal header and action [buttons](/docs/api/admin-extensions/{API_VERSION}/web-components/actions/button) for an admin action extension. This example shows a titled modal with primary and secondary action buttons.",
       "codeblock": {
         "title": "Configure an admin action modal",
         "tabs": [
@@ -118331,7 +118331,7 @@
           "title": "",
           "examples": [
             {
-              "description": "Show a loading indicator while data is being fetched or processed. This example sets the `loading` property to display a loading state and disables the primary [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button).",
+              "description": "Show a loading indicator while data is being fetched or processed. This example sets the `loading` property to display a loading state and disables the primary [button](/docs/api/admin-extensions/{API_VERSION}/web-components/actions/button).",
               "codeblock": {
                 "title": "Show a loading state",
                 "tabs": [
@@ -118348,7 +118348,7 @@
               }
             },
             {
-              "description": "Embed a [form](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/form) inside the action modal to collect merchant input before saving. This example includes a [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/text-field) and [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/number-field) wrapped in a form component.",
+              "description": "Embed a [form](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/form) inside the action modal to collect merchant input before saving. This example includes a [text field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/text-field) and [number field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/number-field) wrapped in a form component.",
               "codeblock": {
                 "title": "Add form fields to the modal",
                 "tabs": [
@@ -118365,7 +118365,7 @@
               }
             },
             {
-              "description": "Warn merchants before a permanent operation like deleting a resource. This example uses a critical [banner](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/banner) and a destructive primary [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button) to confirm deletion.",
+              "description": "Warn merchants before a permanent operation like deleting a resource. This example uses a critical [banner](/docs/api/admin-extensions/{API_VERSION}/web-components/feedback-and-status-indicators/banner) and a destructive primary [button](/docs/api/admin-extensions/{API_VERSION}/web-components/actions/button) to confirm deletion.",
               "codeblock": {
                 "title": "Confirm a destructive action",
                 "tabs": [
@@ -118382,7 +118382,7 @@
               }
             },
             {
-              "description": "Display read-only resource information inside a modal before the merchant takes action. This example shows an order summary with [badges](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge), [dividers](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/divider), and a fulfillment [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button).",
+              "description": "Display read-only resource information inside a modal before the merchant takes action. This example shows an order summary with [badges](/docs/api/admin-extensions/{API_VERSION}/web-components/feedback-and-status-indicators/badge), [dividers](/docs/api/admin-extensions/{API_VERSION}/web-components/layout-and-structure/divider), and a fulfillment [button](/docs/api/admin-extensions/{API_VERSION}/web-components/actions/button).",
               "codeblock": {
                 "title": "Show resource details in a modal",
                 "tabs": [
@@ -118444,7 +118444,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Settings and templates",
     "subSections": [
       {
@@ -118462,7 +118462,7 @@
     ],
     "defaultExample": {
       "image": "/assets/templated-apis-screenshots/admin/components/adminblock-example.png",
-      "description": "Display an inline block on an admin resource page. This example shows a simple block with a `heading` property and [text](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/typography-and-content/text) content.",
+      "description": "Display an inline block on an admin resource page. This example shows a simple block with a `heading` property and [text](/docs/api/admin-extensions/{API_VERSION}/web-components/typography-and-content/text) content.",
       "codeblock": {
         "title": "Display an inline admin block",
         "tabs": [
@@ -118486,7 +118486,7 @@
           "title": "",
           "examples": [
             {
-              "description": "Provide a preview of the block content when it is collapsed. This example uses the `collapsed-summary` attribute to show a short [text](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/typography-and-content/text) summary in the block header.",
+              "description": "Provide a preview of the block content when it is collapsed. This example uses the `collapsed-summary` attribute to show a short [text](/docs/api/admin-extensions/{API_VERSION}/web-components/typography-and-content/text) summary in the block header.",
               "codeblock": {
                 "title": "Show a collapsed summary",
                 "tabs": [
@@ -118503,7 +118503,7 @@
               }
             },
             {
-              "description": "Present structured data in rows and columns within a block. This example displays inventory levels across locations using a [table](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/table).",
+              "description": "Present structured data in rows and columns within a block. This example displays inventory levels across locations using a [table](/docs/api/admin-extensions/{API_VERSION}/web-components/layout-and-structure/table).",
               "codeblock": {
                 "title": "Display a data table",
                 "tabs": [
@@ -118520,7 +118520,7 @@
               }
             },
             {
-              "description": "Highlight key status information with visual indicators. This example shows an order risk assessment with a warning [badge](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge) and a list of risk factors.",
+              "description": "Highlight key status information with visual indicators. This example shows an order risk assessment with a warning [badge](/docs/api/admin-extensions/{API_VERSION}/web-components/feedback-and-status-indicators/badge) and a list of risk factors.",
               "codeblock": {
                 "title": "Show status with badges",
                 "tabs": [
@@ -118537,7 +118537,7 @@
               }
             },
             {
-              "description": "Include interactive buttons so merchants can take action directly from the block. This example shows subscription details with a [button group](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button-group) for pause and cancel actions.",
+              "description": "Include interactive buttons so merchants can take action directly from the block. This example shows subscription details with a [button group](/docs/api/admin-extensions/{API_VERSION}/web-components/actions/button-group) for pause and cancel actions.",
               "codeblock": {
                 "title": "Add action buttons to a block",
                 "tabs": [
@@ -118591,7 +118591,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Settings and templates",
     "subSections": [
       {
@@ -118674,8 +118674,8 @@
   },
   {
     "name": "Avatar",
-    "description": "The avatar component displays profile images or initials for users, customers, and businesses in a compact visual format. Use avatar to represent people or entities throughout the interface, with automatic fallback to initials when images aren't available.\n\nAvatars support multiple sizes for different contexts and provide consistent color assignment for initials based on the name provided. For product or content preview images, use [thumbnail](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/thumbnail). For full-size images, use [image](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/image).",
-    "category": "Polaris web components",
+    "description": "The avatar component displays profile images or initials for users, customers, and businesses in a compact visual format. Use avatar to represent people or entities throughout the interface, with automatic fallback to initials when images aren't available.\n\nAvatars support multiple sizes for different contexts and provide consistent color assignment for initials based on the name provided. For product or content preview images, use [thumbnail](/docs/api/{API_NAME}/{API_VERSION}/web-components/media-and-visuals/thumbnail). For full-size images, use [image](/docs/api/{API_NAME}/{API_VERSION}/web-components/media-and-visuals/image).",
+    "category": "Web components",
     "subCategory": "Media and visuals",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/avatar.png",
@@ -119036,7 +119036,7 @@
               }
             },
             {
-              "description": "Create a profile layout with multiple components. This example combines an avatar with [section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section), [heading](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/heading), and [text](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/text) components.",
+              "description": "Create a profile layout with multiple components. This example combines an avatar with [section](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/section), [heading](/docs/api/{API_NAME}/{API_VERSION}/web-components/typography-and-content/heading), and [text](/docs/api/{API_NAME}/{API_VERSION}/web-components/typography-and-content/text) components.",
               "codeblock": {
                 "title": "Build a merchant profile card",
                 "tabs": [
@@ -119059,8 +119059,8 @@
   },
   {
     "name": "Badge",
-    "description": "The badge component displays status information or indicates completed actions through compact visual indicators. Use badge to communicate object states, order statuses, or system-generated classifications that help users quickly understand item conditions.\n\nBadges support multiple tones and sizes, with optional icons to reinforce status meaning and improve scannability in lists and tables. For user-created labels, categories, or tags, use [chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/chip) instead.",
-    "category": "Polaris web components",
+    "description": "The badge component displays status information or indicates completed actions through compact visual indicators. Use badge to communicate object states, order statuses, or system-generated classifications that help users quickly understand item conditions.\n\nBadges support multiple tones and sizes, with optional icons to reinforce status meaning and improve scannability in lists and tables. For user-created labels, categories, or tags, use [chip](/docs/api/{API_NAME}/{API_VERSION}/web-components/typography-and-content/chip) instead.",
+    "category": "Web components",
     "subCategory": "Feedback and status indicators",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/badge.png",
@@ -119316,7 +119316,7 @@
               }
             },
             {
-              "description": "Place badges inside [table cells](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/table) to give merchants a scannable overview of status information. This example shows fulfillment and payment badges in an order table.",
+              "description": "Place badges inside [table cells](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/table) to give merchants a scannable overview of status information. This example shows fulfillment and payment badges in an order table.",
               "codeblock": {
                 "title": "Display badges in a table",
                 "tabs": [
@@ -119356,8 +119356,8 @@
   },
   {
     "name": "Banner",
-    "description": "The banner component highlights important information or required actions prominently within the interface. Use banner to communicate statuses, provide feedback, draw attention to critical updates, or guide users toward necessary actions.\n\nBanners support multiple tones to convey urgency levels, optional actions for next steps, and can be positioned contextually within sections or page-wide at the top. For inline status indicators on individual items, use [badge](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge).",
-    "category": "Polaris web components",
+    "description": "The banner component highlights important information or required actions prominently within the interface. Use banner to communicate statuses, provide feedback, draw attention to critical updates, or guide users toward necessary actions.\n\nBanners support multiple tones to convey urgency levels, optional actions for next steps, and can be positioned contextually within sections or page-wide at the top. For inline status indicators on individual items, use [badge](/docs/api/{API_NAME}/{API_VERSION}/web-components/feedback-and-status-indicators/badge).",
+    "category": "Web components",
     "subCategory": "Feedback and status indicators",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/banner.png",
@@ -119650,7 +119650,7 @@
           "title": "",
           "examples": [
             {
-              "description": "Use a warning-toned banner with secondary action [buttons](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) to highlight a problem and give merchants clear next steps. This example shows a shipping weight issue with links to review products and access a setup guide.",
+              "description": "Use a warning-toned banner with secondary action [buttons](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) to highlight a problem and give merchants clear next steps. This example shows a shipping weight issue with links to review products and access a setup guide.",
               "codeblock": {
                 "title": "Create a warning banner with buttons for next steps",
                 "tabs": [
@@ -119667,7 +119667,7 @@
               }
             },
             {
-              "description": "Use a critical-toned banner to signal an urgent issue that requires immediate merchant action. This example shows a fraud review alert with [buttons](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) to review order details and adjust settings.",
+              "description": "Use a critical-toned banner to signal an urgent issue that requires immediate merchant action. This example shows a fraud review alert with [buttons](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) to review order details and adjust settings.",
               "codeblock": {
                 "title": "Alert merchants to critical issues requiring action",
                 "tabs": [
@@ -119707,8 +119707,8 @@
   },
   {
     "name": "Box",
-    "description": "The box component provides a generic, flexible container for custom designs and layouts. Use box to apply styling like backgrounds, padding, borders, or border radius when existing components don't meet your needs, or to nest and group other components.\n\nBox contents maintain their natural size, making it especially useful within layout components that would otherwise stretch their children. For structured layouts, use [stack](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/stack) or [grid](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/grid).",
-    "category": "Polaris web components",
+    "description": "The box component provides a generic, flexible container for custom designs and layouts. Use box to apply styling like backgrounds, padding, borders, or border radius when existing components don't meet your needs, or to nest and group other components.\n\nBox contents maintain their natural size, making it especially useful within layout components that would otherwise stretch their children. For structured layouts, use [stack](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/stack) or [grid](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/grid).",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/box.png",
@@ -119718,7 +119718,7 @@
         "title": "Best practices",
         "type": "Generic",
         "anchorLink": "best-practices",
-        "sectionContent": "- **Use for layout and grouping:** The component provides spacing, borders, and backgrounds for organizing content. When you need specific layout patterns like rows or columns, use [stack](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/stack) or [grid](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/grid) instead. The component works best as a general-purpose container.\n- **Consider semantic alternatives first:** Before using the component, check whether a more specific component like [section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section) or [banner](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/banner) better describes your content's purpose. Semantic components provide better accessibility and clearer intent.\n- **Design for different screen sizes:** Layouts that work on desktop might not work on mobile. Use responsive properties to adjust spacing and layout based on available space rather than creating fixed layouts.\n- **Make interactive containers accessible:** When boxes contain interactive content or represent distinct regions, provide appropriate ARIA roles and labels so screen reader users can navigate and understand the interface structure.\n- **Avoid excessive nesting:** Deep nesting of boxes creates complex DOM structures and makes styling harder to manage. Look for opportunities to simplify your layout or use more appropriate layout components."
+        "sectionContent": "- **Use for layout and grouping:** The component provides spacing, borders, and backgrounds for organizing content. When you need specific layout patterns like rows or columns, use [stack](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/stack) or [grid](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/grid) instead. The component works best as a general-purpose container.\n- **Consider semantic alternatives first:** Before using the component, check whether a more specific component like [section](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/section) or [banner](/docs/api/{API_NAME}/{API_VERSION}/web-components/feedback-and-status-indicators/banner) better describes your content's purpose. Semantic components provide better accessibility and clearer intent.\n- **Design for different screen sizes:** Layouts that work on desktop might not work on mobile. Use responsive properties to adjust spacing and layout based on available space rather than creating fixed layouts.\n- **Make interactive containers accessible:** When boxes contain interactive content or represent distinct regions, provide appropriate ARIA roles and labels so screen reader users can navigate and understand the interface structure.\n- **Avoid excessive nesting:** Deep nesting of boxes creates complex DOM structures and makes styling harder to manage. Look for opportunities to simplify your layout or use more appropriate layout components."
       }
     ],
     "definitions": [
@@ -120319,8 +120319,8 @@
   },
   {
     "name": "Button",
-    "description": "The button component triggers actions or events, such as submitting forms, opening dialogs, or navigating to other pages. Use button to let users perform specific tasks or initiate interactions throughout the interface.\n\nButtons support various visual styles, tones, and interaction patterns to communicate intent and hierarchy. They can also function as links, guiding users to internal or external destinations. For navigation-focused interactions within text, use [link](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/link). For grouping multiple related buttons, use [button group](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button-group).",
-    "category": "Polaris web components",
+    "description": "The button component triggers actions or events, such as submitting forms, opening dialogs, or navigating to other pages. Use button to let users perform specific tasks or initiate interactions throughout the interface.\n\nButtons support various visual styles, tones, and interaction patterns to communicate intent and hierarchy. They can also function as links, guiding users to internal or external destinations. For navigation-focused interactions within text, use [link](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/link). For grouping multiple related buttons, use [button group](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button-group).",
+    "category": "Web components",
     "subCategory": "Actions",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/button.png",
@@ -120871,8 +120871,8 @@
   },
   {
     "name": "Button group",
-    "description": "The button group component displays multiple related buttons in a structured layout. Use button group to organize action buttons together, creating clear visual hierarchies and helping users understand available options.\n\nButton groups support various layouts including segmented appearances for tightly related options like view switching or filter controls. For individual actions, use [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button).",
-    "category": "Polaris web components",
+    "description": "The button group component displays multiple related buttons in a structured layout. Use button group to organize action buttons together, creating clear visual hierarchies and helping users understand available options.\n\nButton groups support various layouts including segmented appearances for tightly related options like view switching or filter controls. For individual actions, use [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button).",
+    "category": "Web components",
     "subCategory": "Actions",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/buttongroup.png",
@@ -121177,8 +121177,8 @@
   },
   {
     "name": "Checkbox",
-    "description": "The checkbox component provides a clear way for users to make selections, such as agreeing to terms, enabling settings, or choosing multiple items from a list. Use checkbox to create binary on/off controls or multi-select interfaces where users can select any combination of options.\n\nCheckboxes support labels, help text, error states, and an indeterminate state for \"select all\" functionality when working with grouped selections. For settings that take effect immediately, use [switch](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/switch) instead.",
-    "category": "Polaris web components",
+    "description": "The checkbox component provides a clear way for users to make selections, such as agreeing to terms, enabling settings, or choosing multiple items from a list. Use checkbox to create binary on/off controls or multi-select interfaces where users can select any combination of options.\n\nCheckboxes support labels, help text, error states, and an indeterminate state for \"select all\" functionality when working with grouped selections. For settings that take effect immediately, use [switch](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/switch) instead.",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/checkbox.png",
@@ -121621,8 +121621,8 @@
   },
   {
     "name": "Chip",
-    "description": "The chip component displays static labels, categories, or attributes that help classify and organize content. Use chip to show product tags, categories, or metadata near the items they describe, helping users identify items with similar properties.\n\nChips support multiple visual variants for different levels of emphasis and can include icons to provide additional visual context. For system-generated status indicators, use [badge](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge). For interactive or removable chips, use [clickable chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/clickable-chip).",
-    "category": "Polaris web components",
+    "description": "The chip component displays static labels, categories, or attributes that help classify and organize content. Use chip to show product tags, categories, or metadata near the items they describe, helping users identify items with similar properties.\n\nChips support multiple visual variants for different levels of emphasis and can include icons to provide additional visual context. For system-generated status indicators, use [badge](/docs/api/{API_NAME}/{API_VERSION}/web-components/feedback-and-status-indicators/badge). For interactive or removable chips, use [clickable chip](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/clickable-chip).",
+    "category": "Web components",
     "subCategory": "Typography and content",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/chip.png",
@@ -121632,7 +121632,7 @@
         "title": "Best practices",
         "type": "Generic",
         "anchorLink": "best-practices",
-        "sectionContent": "- **Use chips to label and categorize content:** Chip works best for displaying tags, statuses, and categories that help merchants quickly understand content attributes. Don't use chips for actions—they're visual indicators, not buttons. For interactive or dismissible chips, use [clickable chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/clickable-chip) instead.\n- **Keep chip text concise and scannable:** Short labels like \"Featured\" or \"On sale\" are instantly recognizable. Long chip text defeats the purpose of quick scanning and might truncate, hiding important information.\n- **Choose the right visual weight:** Use subdued chips for secondary metadata, standard chips for typical tags and categories, and strong chips for important or verified information that needs emphasis.\n- **Position chips near what they describe:** Place chips adjacent to the items they categorize for immediate context. In lists, position chips consistently to help merchants scan efficiently.\n- **Add icons to reinforce meaning:** Icons can make chip meanings clearer at a glance, especially for status indicators or commonly recognized categories."
+        "sectionContent": "- **Use chips to label and categorize content:** Chip works best for displaying tags, statuses, and categories that help merchants quickly understand content attributes. Don't use chips for actions—they're visual indicators, not buttons. For interactive or dismissible chips, use [clickable chip](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/clickable-chip) instead.\n- **Keep chip text concise and scannable:** Short labels like \"Featured\" or \"On sale\" are instantly recognizable. Long chip text defeats the purpose of quick scanning and might truncate, hiding important information.\n- **Choose the right visual weight:** Use subdued chips for secondary metadata, standard chips for typical tags and categories, and strong chips for important or verified information that needs emphasis.\n- **Position chips near what they describe:** Place chips adjacent to the items they categorize for immediate context. In lists, position chips consistently to help merchants scan efficiently.\n- **Add icons to reinforce meaning:** Icons can make chip meanings clearer at a glance, especially for status indicators or commonly recognized categories."
       },
       {
         "title": "Limitations",
@@ -121915,8 +121915,8 @@
   },
   {
     "name": "Choice list",
-    "description": "The choice list component presents multiple options for single or multiple selections. Use it when merchants need to choose from a defined set of options, such as filtering results or collecting preferences.\n\nThe component supports both single selection (radio button behavior) and multiple selection (checkbox behavior) modes. It includes configurable labels, help text, and validation. For compact dropdown selection with four or more options, use [select](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/select).",
-    "category": "Polaris web components",
+    "description": "The choice list component presents multiple options for single or multiple selections. Use it when merchants need to choose from a defined set of options, such as filtering results or collecting preferences.\n\nThe component supports both single selection (radio button behavior) and multiple selection (checkbox behavior) modes. It includes configurable labels, help text, and validation. For compact dropdown selection with four or more options, use [select](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/select).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/choicelist.png",
@@ -121932,7 +121932,7 @@
         "title": "Limitations",
         "type": "Generic",
         "anchorLink": "limitations",
-        "sectionContent": "- The component doesn't include search, filtering, or lazy loading. For large option sets (20+ choices), consider using a [select](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/select) dropdown instead.\n- Rendering 50+ checkboxes or radio buttons can cause noticeable performance issues, especially on mobile devices. Consider pagination, virtualization, or alternative UI patterns for large lists.\n- The component is either single-selection (radio buttons) or multiple-selection (checkboxes) for all choices. You can't mix both types in the same list.\n- Component types other than choice can't be used as options within the choice list."
+        "sectionContent": "- The component doesn't include search, filtering, or lazy loading. For large option sets (20+ choices), consider using a [select](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/select) dropdown instead.\n- Rendering 50+ checkboxes or radio buttons can cause noticeable performance issues, especially on mobile devices. Consider pagination, virtualization, or alternative UI patterns for large lists.\n- The component is either single-selection (radio buttons) or multiple-selection (checkboxes) for all choices. You can't mix both types in the same list.\n- Component types other than choice can't be used as options within the choice list."
       }
     ],
     "definitions": [
@@ -122509,8 +122509,8 @@
   },
   {
     "name": "Clickable",
-    "description": "The clickable component wraps content to make it interactive and clickable. Use it when you need more styling control than [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) or [link](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/link) provide, such as custom backgrounds, padding, or borders around your clickable content.\n\nClickable supports button, link, and submit modes with built-in accessibility properties for keyboard navigation and screen reader support.",
-    "category": "Polaris web components",
+    "description": "The clickable component wraps content to make it interactive and clickable. Use it when you need more styling control than [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) or [link](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/link) provide, such as custom backgrounds, padding, or borders around your clickable content.\n\nClickable supports button, link, and submit modes with built-in accessibility properties for keyboard navigation and screen reader support.",
+    "category": "Web components",
     "subCategory": "Actions",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/clickable.png",
@@ -123158,7 +123158,7 @@
     ],
     "defaultExample": {
       "image": "clickable-default.png",
-      "description": "Build custom interactive elements with flexible styling that [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) or [link](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/link) don't support. This example shows two clickable elements with different background and border styles.",
+      "description": "Build custom interactive elements with flexible styling that [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) or [link](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/link) don't support. This example shows two clickable elements with different background and border styles.",
       "codeblock": {
         "title": "Create a custom interactive element",
         "tabs": [
@@ -123273,8 +123273,8 @@
   },
   {
     "name": "Clickable chip",
-    "description": "The clickable chip component displays interactive labels or categories that users can click or remove. Use clickable chip to show filter tags, selected options, or merchant-created labels that users need to interact with or dismiss.\n\nClickable chips support multiple visual variants, optional icons, and can function as both clickable buttons and removable tags for flexible interaction patterns. For non-interactive labels, use [chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/chip).",
-    "category": "Polaris web components",
+    "description": "The clickable chip component displays interactive labels or categories that users can click or remove. Use clickable chip to show filter tags, selected options, or merchant-created labels that users need to interact with or dismiss.\n\nClickable chips support multiple visual variants, optional icons, and can function as both clickable buttons and removable tags for flexible interaction patterns. For non-interactive labels, use [chip](/docs/api/{API_NAME}/{API_VERSION}/web-components/typography-and-content/chip).",
+    "category": "Web components",
     "subCategory": "Actions",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/clickable-chip.png",
@@ -123284,7 +123284,7 @@
         "title": "Best practices",
         "type": "Generic",
         "anchorLink": "best-practices",
-        "sectionContent": "- **Keep labels to 1-3 words:** Aim for labels like **Electronics**, **Summer sale**, or **Clearance items**.\n- **Choose color variants by importance:** Use `subdued` for less important or secondary chips, `base` (default) for standard selections, and `strong` to emphasize primary or active selections.\n- **Make remove action clear:** When chips are removable, ensure the remove button's visible and has clear hover/focus states.\n- **Group related chips together:** Use an inline [stack](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/stack) to arrange multiple chips horizontally with consistent spacing."
+        "sectionContent": "- **Keep labels to 1-3 words:** Aim for labels like **Electronics**, **Summer sale**, or **Clearance items**.\n- **Choose color variants by importance:** Use `subdued` for less important or secondary chips, `base` (default) for standard selections, and `strong` to emphasize primary or active selections.\n- **Make remove action clear:** When chips are removable, ensure the remove button's visible and has clear hover/focus states.\n- **Group related chips together:** Use an inline [stack](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/stack) to arrange multiple chips horizontally with consistent spacing."
       }
     ],
     "definitions": [
@@ -123691,8 +123691,8 @@
   },
   {
     "name": "Color field",
-    "description": "The color field component allows users to select colors through an integrated color picker or direct text input. Use color field for theme colors, brand colors, or any color selection to provide both visual and text-based color input methods.\n\nColor fields support hex color codes, color preview swatches, and validation to ensure users select or enter valid color values. For a standalone visual color palette interface without text input, use [color picker](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/color-picker).",
-    "category": "Polaris web components",
+    "description": "The color field component allows users to select colors through an integrated color picker or direct text input. Use color field for theme colors, brand colors, or any color selection to provide both visual and text-based color input methods.\n\nColor fields support hex color codes, color preview swatches, and validation to ensure users select or enter valid color values. For a standalone visual color palette interface without text input, use [color picker](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/color-picker).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/color-field.png",
@@ -124253,8 +124253,8 @@
   },
   {
     "name": "Color picker",
-    "description": "The color picker component allows users to select colors from a visual color palette interface. Use color picker to provide an intuitive, visual way for users to choose colors for themes, branding, or design customization.\n\nColor pickers support multiple color formats, predefined color swatches, and interactive selection to make color choice easy and accurate. For combined visual and text-based color input with validation, use [color field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/color-field).",
-    "category": "Polaris web components",
+    "description": "The color picker component allows users to select colors from a visual color palette interface. Use color picker to provide an intuitive, visual way for users to choose colors for themes, branding, or design customization.\n\nColor pickers support multiple color formats, predefined color swatches, and interactive selection to make color choice easy and accurate. For combined visual and text-based color input with validation, use [color field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/color-field).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/color-picker.png",
@@ -124264,7 +124264,7 @@
         "title": "Best practices",
         "type": "Generic",
         "anchorLink": "best-practices",
-        "sectionContent": "- **Initialize with current values:** When editing existing colors, always set the picker's initial value to the current color. This shows merchants what they're changing from and maintains context.\n- **Show preview of final result:** If possible, show how the selected color will look in its actual context (like previewing a button color on a button) alongside the picker.\n- **Pair with color field for precision:** Use the component for visual selection combined with a [color field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/color-field) for precise hex input. This gives merchants both visual intuition and exact control."
+        "sectionContent": "- **Initialize with current values:** When editing existing colors, always set the picker's initial value to the current color. This shows merchants what they're changing from and maintains context.\n- **Show preview of final result:** If possible, show how the selected color will look in its actual context (like previewing a button color on a button) alongside the picker.\n- **Pair with color field for precision:** Use the component for visual selection combined with a [color field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/color-field) for precise hex input. This gives merchants both visual intuition and exact control."
       },
       {
         "title": "Limitations",
@@ -124553,8 +124553,8 @@
   },
   {
     "name": "Date field",
-    "description": "The date field component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.\n\nThe component supports manual text entry. For visual calendar-based selection, consider using [date picker](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/date-picker).",
-    "category": "Polaris web components",
+    "description": "The date field component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.\n\nThe component supports manual text entry. For visual calendar-based selection, consider using [date picker](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/date-picker).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/datefield.png",
@@ -125180,8 +125180,8 @@
   },
   {
     "name": "Date picker",
-    "description": "The date picker component allows merchants to select dates using a calendar interface. Use it when merchants benefit from seeing dates in context of the full month, such as selecting dates relative to today or needing weekday context.\n\nThe component supports single dates, multiple dates, and date ranges. For text date entry, use [date field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/date-field).",
-    "category": "Polaris web components",
+    "description": "The date picker component allows merchants to select dates using a calendar interface. Use it when merchants benefit from seeing dates in context of the full month, such as selecting dates relative to today or needing weekday context.\n\nThe component supports single dates, multiple dates, and date ranges. For text date entry, use [date field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/date-field).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/datepicker.png",
@@ -125613,8 +125613,8 @@
   },
   {
     "name": "Divider",
-    "description": "The divider component creates clear visual separation between elements in the interface. Use divider to separate distinct content groups in forms, settings panels, lists, or page sections, helping users scan and understand content organization.\n\nDividers support both horizontal and vertical orientations, along with different visual strengths for varying levels of emphasis. For more structured content grouping with headings, use [section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section).",
-    "category": "Polaris web components",
+    "description": "The divider component creates clear visual separation between elements in the interface. Use divider to separate distinct content groups in forms, settings panels, lists, or page sections, helping users scan and understand content organization.\n\nDividers support both horizontal and vertical orientations, along with different visual strengths for varying levels of emphasis. For more structured content grouping with headings, use [section](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/section).",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "related": [],
     "subSections": [
@@ -125865,7 +125865,7 @@
   {
     "name": "Drop zone",
     "description": "The drop zone component lets users upload files through drag-and-drop or by clicking to browse. Use for file uploads such as images, documents, or CSV imports.\n\nThe component provides visual feedback during drag operations and supports file type validation through the `accept` property. Rejected files trigger the `droprejected` event for custom error handling.",
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/dropzone.png",
@@ -126376,8 +126376,8 @@
   },
   {
     "name": "Email field",
-    "description": "The email field component captures email address input. Use it to collect email information in forms, customer profiles, or contact workflows.\n\nEmail field doesn't perform automatic email validation. Implement your own validation logic, and use the `error` property to display validation results. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field).",
-    "category": "Polaris web components",
+    "description": "The email field component captures email address input. Use it to collect email information in forms, customer profiles, or contact workflows.\n\nEmail field doesn't perform automatic email validation. Implement your own validation logic, and use the `error` property to display validation results. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/text-field).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/emailfield.png",
@@ -126872,8 +126872,8 @@
   },
   {
     "name": "Form",
-    "description": "The form component wraps form controls and enables implicit submission, allowing users to submit from any input by pressing **Enter**. Use form to group related input fields and handle form submission through JavaScript event handlers.\n\nUnlike HTML forms, form doesn't automatically submit data using HTTP—you must register a `submit` event to process form data programmatically. For Shopify Functions configuration forms, use [function settings](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/function-settings).",
-    "category": "Polaris web components",
+    "description": "The form component wraps form controls and enables implicit submission, allowing users to submit from any input by pressing **Enter**. Use form to group related input fields and handle form submission through JavaScript event handlers.\n\nUnlike HTML forms, form doesn't automatically submit data using HTTP—you must register a `submit` event to process form data programmatically. For Shopify Functions configuration forms, use [function settings](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/function-settings).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/form.png",
@@ -126883,7 +126883,7 @@
         "title": "Best practices",
         "type": "Generic",
         "anchorLink": "best-practices",
-        "sectionContent": "- **Group related fields logically:** Organize fields by category or workflow step so merchants can complete forms efficiently.\n- **Validate with specific error messages:** Instead of **Invalid input**, provide actionable feedback like **Email must include @ symbol** or **Password must be at least 8 characters**.\n- **Mark required fields clearly:** Use the `required` property and show validation errors only after user interaction or submission attempt.\n- **Choose field types that match data:** Use [email field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/email-field) for emails, [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/number-field) for quantities, and [date field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/date-field) for dates to provide appropriate keyboards and pickers.\n- **Provide submission feedback:** Show loading states during processing and clear success or error messages after completion. Prevent duplicate submissions while processing.\n- **Handle unsaved changes:** For long or complex forms, consider auto-saving drafts or prompting before navigation when changes exist."
+        "sectionContent": "- **Group related fields logically:** Organize fields by category or workflow step so merchants can complete forms efficiently.\n- **Validate with specific error messages:** Instead of **Invalid input**, provide actionable feedback like **Email must include @ symbol** or **Password must be at least 8 characters**.\n- **Mark required fields clearly:** Use the `required` property and show validation errors only after user interaction or submission attempt.\n- **Choose field types that match data:** Use [email field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/email-field) for emails, [number field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/number-field) for quantities, and [date field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/date-field) for dates to provide appropriate keyboards and pickers.\n- **Provide submission feedback:** Show loading states during processing and clear success or error messages after completion. Prevent duplicate submissions while processing.\n- **Handle unsaved changes:** For long or complex forms, consider auto-saving drafts or prompting before navigation when changes exist."
       },
       {
         "title": "Limitations",
@@ -127143,7 +127143,7 @@
       }
     ],
     "defaultExample": {
-      "description": "Group input fields that submit together when a merchant presses Enter or clicks a submit button. This example shows a basic form with a [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/text-field) and submit [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button).",
+      "description": "Group input fields that submit together when a merchant presses Enter or clicks a submit button. This example shows a basic form with a [text field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/text-field) and submit [button](/docs/api/admin-extensions/{API_VERSION}/web-components/actions/button).",
       "codeblock": {
         "title": "Submit a basic form",
         "tabs": [
@@ -127167,7 +127167,7 @@
           "title": "",
           "examples": [
             {
-              "description": "Use specialized field types like [date field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/date-field) and [money field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/money-field) to collect structured campaign data. This example includes a reset button alongside submit so merchants can clear and start over.",
+              "description": "Use specialized field types like [date field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/date-field) and [money field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/money-field) to collect structured campaign data. This example includes a reset button alongside submit so merchants can clear and start over.",
               "codeblock": {
                 "title": "Build a campaign form with date and money fields",
                 "tabs": [
@@ -127184,7 +127184,7 @@
               }
             },
             {
-              "description": "Display specific error messages on individual fields to guide merchants toward valid input. This example shows a required [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/text-field) and [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/number-field) with inline validation errors.",
+              "description": "Display specific error messages on individual fields to guide merchants toward valid input. This example shows a required [text field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/text-field) and [number field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/number-field) with inline validation errors.",
               "codeblock": {
                 "title": "Show field validation errors",
                 "tabs": [
@@ -127201,7 +127201,7 @@
               }
             },
             {
-              "description": "Mix text inputs with [selects](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/select) and [checkboxes](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/checkbox) to capture different kinds of merchant decisions. This example combines a text field, a select dropdown, and a checkbox for creating a discount.",
+              "description": "Mix text inputs with [selects](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/select) and [checkboxes](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/checkbox) to capture different kinds of merchant decisions. This example combines a text field, a select dropdown, and a checkbox for creating a discount.",
               "codeblock": {
                 "title": "Use select and checkbox fields",
                 "tabs": [
@@ -127218,7 +127218,7 @@
               }
             },
             {
-              "description": "Organize a longer form into labeled groups so merchants can scan and complete it more easily. This example uses [sections](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/section) to separate contact information from shipping preferences.",
+              "description": "Organize a longer form into labeled groups so merchants can scan and complete it more easily. This example uses [sections](/docs/api/admin-extensions/{API_VERSION}/web-components/layout-and-structure/section) to separate contact information from shipping preferences.",
               "codeblock": {
                 "title": "Group fields into sections",
                 "tabs": [
@@ -127241,8 +127241,8 @@
   },
   {
     "name": "Function settings",
-    "description": "The function settings component configures metafield settings for [Shopify Functions](/docs/api/functions). Use function settings to create configuration interfaces that allow merchants to customize function behavior through structured input fields and controls.\n\nThis component provides a standardized layout for settings forms and integrates with the native save bar to handle form submission and reset actions automatically. For general form submission, use [form](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/form).",
-    "category": "Polaris web components",
+    "description": "The function settings component configures metafield settings for [Shopify Functions](/docs/api/functions). Use function settings to create configuration interfaces that allow merchants to customize function behavior through structured input fields and controls.\n\nThis component provides a standardized layout for settings forms and integrates with the native save bar to handle form submission and reset actions automatically. For general form submission, use [form](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/form).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "requires": "the [Discount Function Settings API](/docs/api/admin-extensions/{API_VERSION}/target-apis/contextual-apis/discount-function-settings-api), [Validation Settings API](/docs/api/admin-extensions/{API_VERSION}/target-apis/contextual-apis/validation-settings-api), or [Order Routing Rule API](/docs/api/admin-extensions/{API_VERSION}/target-apis/contextual-apis/order-routing-rule-api).",
@@ -127253,7 +127253,7 @@
         "title": "Best practices",
         "type": "Generic",
         "anchorLink": "best-practices",
-        "sectionContent": "- **Label settings clearly:** Instead of technical names like **Max threshold**, use merchant-friendly labels like **Maximum discount amount** or **Order value limit**.\n- **Validate with specific feedback:** Check that percentages are between 0-100, that monetary values are positive, and that required fields are filled. Provide clear error messages when validation fails.\n- **Explain impact with field details:** Use the `details` property on individual field components (for example, [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/text-field) or [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/number-field)) to explain what each setting does and how it affects the user's workflow.\n- **Set appropriate defaults:** Pre-select the most common configuration to reduce setup friction for merchants.\n- **Group related settings:** Use sections to organize settings by function so merchants can find what they need quickly."
+        "sectionContent": "- **Label settings clearly:** Instead of technical names like **Max threshold**, use merchant-friendly labels like **Maximum discount amount** or **Order value limit**.\n- **Validate with specific feedback:** Check that percentages are between 0-100, that monetary values are positive, and that required fields are filled. Provide clear error messages when validation fails.\n- **Explain impact with field details:** Use the `details` property on individual field components (for example, [text field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/text-field) or [number field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/number-field)) to explain what each setting does and how it affects the user's workflow.\n- **Set appropriate defaults:** Pre-select the most common configuration to reduce setup friction for merchants.\n- **Group related settings:** Use sections to organize settings by function so merchants can find what they need quickly."
       }
     ],
     "definitions": [
@@ -127507,7 +127507,7 @@
       }
     ],
     "defaultExample": {
-      "description": "Configure a [Shopify Function](/docs/api/functions/) with a settings form that integrates with the native save bar. This example shows a [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/number-field) for a discount percentage input inside a function settings component.",
+      "description": "Configure a [Shopify Function](/docs/api/functions/) with a settings form that integrates with the native save bar. This example shows a [number field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/number-field) for a discount percentage input inside a function settings component.",
       "codeblock": {
         "title": "Add a settings field for a function",
         "tabs": [
@@ -127531,7 +127531,7 @@
           "title": "",
           "examples": [
             {
-              "description": "Organize settings into repeating groups for tiered or multi-level configurations. This example uses [sections](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/section) to define two volume discount tiers, each with a quantity threshold and percentage.",
+              "description": "Organize settings into repeating groups for tiered or multi-level configurations. This example uses [sections](/docs/api/admin-extensions/{API_VERSION}/web-components/layout-and-structure/section) to define two volume discount tiers, each with a quantity threshold and percentage.",
               "codeblock": {
                 "title": "Set up tiered discount rules",
                 "tabs": [
@@ -127548,7 +127548,7 @@
               }
             },
             {
-              "description": "Display validation errors when settings values are out of range or missing. This example shows required [number fields](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/number-field) with inline error messages.",
+              "description": "Display validation errors when settings values are out of range or missing. This example shows required [number fields](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/number-field) with inline error messages.",
               "codeblock": {
                 "title": "Show validation errors on settings",
                 "tabs": [
@@ -127565,7 +127565,7 @@
               }
             },
             {
-              "description": "Let merchants choose from predefined options to control function behavior. This example uses a [select](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/select) dropdown to pick a discount target and a [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/text-field) for a filter value.",
+              "description": "Let merchants choose from predefined options to control function behavior. This example uses a [select](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/select) dropdown to pick a discount target and a [text field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/text-field) for a filter value.",
               "codeblock": {
                 "title": "Add a select dropdown to settings",
                 "tabs": [
@@ -127582,7 +127582,7 @@
               }
             },
             {
-              "description": "Let merchants enable or disable a feature with a [switch](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/switch) and configure its threshold. This example pairs a toggle for free shipping with a minimum order amount [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/number-field).",
+              "description": "Let merchants enable or disable a feature with a [switch](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/switch) and configure its threshold. This example pairs a toggle for free shipping with a minimum order amount [number field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/number-field).",
               "codeblock": {
                 "title": "Toggle a feature with a switch",
                 "tabs": [
@@ -127605,8 +127605,8 @@
   },
   {
     "name": "Grid",
-    "description": "The grid component organizes content in a matrix of rows and columns to create responsive page layouts. Use grid to build complex, multi-column layouts that adapt to different screen sizes and maintain consistent alignment.\n\nGrid follows the CSS grid layout pattern and supports flexible column configurations, gap spacing, and alignment properties for precise layout control. For simpler linear layouts (horizontal or vertical), use [stack](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/stack).",
-    "category": "Polaris web components",
+    "description": "The grid component organizes content in a matrix of rows and columns to create responsive page layouts. Use grid to build complex, multi-column layouts that adapt to different screen sizes and maintain consistent alignment.\n\nGrid follows the CSS grid layout pattern and supports flexible column configurations, gap spacing, and alignment properties for precise layout control. For simpler linear layouts (horizontal or vertical), use [stack](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/stack).",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "related": [],
     "subSections": [
@@ -128882,8 +128882,8 @@
   },
   {
     "name": "Heading",
-    "description": "The heading component renders hierarchical titles to communicate the structure and organization of page content. Use heading to create section titles and content headers that help users understand information hierarchy and navigate content.\n\nHeading levels adjust automatically based on nesting within parent [section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section) components, ensuring meaningful and accessible page outlines without manual level management.",
-    "category": "Polaris web components",
+    "description": "The heading component renders hierarchical titles to communicate the structure and organization of page content. Use heading to create section titles and content headers that help users understand information hierarchy and navigate content.\n\nHeading levels adjust automatically based on nesting within parent [section](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/section) components, ensuring meaningful and accessible page outlines without manual level management.",
+    "category": "Web components",
     "subCategory": "Typography and content",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/heading.png",
@@ -129171,8 +129171,8 @@
   },
   {
     "name": "Icon",
-    "description": "The icon component renders graphic symbols to visually communicate actions, status, and navigation throughout the interface. Use icon to reinforce button actions, indicate status states, or provide wayfinding cues that help users understand available functionality.\n\nIcons support multiple sizes, tones for semantic meaning, and can be integrated with other components like [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button), [badge](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge), and [chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/chip) to enhance visual communication.",
-    "category": "Polaris web components",
+    "description": "The icon component renders graphic symbols to visually communicate actions, status, and navigation throughout the interface. Use icon to reinforce button actions, indicate status states, or provide wayfinding cues that help users understand available functionality.\n\nIcons support multiple sizes, tones for semantic meaning, and can be integrated with other components like [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button), [badge](/docs/api/{API_NAME}/{API_VERSION}/web-components/feedback-and-status-indicators/badge), and [chip](/docs/api/{API_NAME}/{API_VERSION}/web-components/typography-and-content/chip) to enhance visual communication.",
+    "category": "Web components",
     "subCategory": "Media and visuals",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/icon.png",
@@ -129194,7 +129194,7 @@
         "title": "Limitations",
         "type": "Generic",
         "anchorLink": "limitations",
-        "sectionContent": "- Icons are limited to the predefined set provided by the component. Custom SVG icons, icon fonts, or external icon libraries aren't supported.\n- Icons can't be animated or include interactive states beyond color changes. For complex graphics or illustrations, use the [image](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/image) component instead.\n- Icon color is determined by the `tone` and `color` properties. Custom colors or gradients aren't available."
+        "sectionContent": "- Icons are limited to the predefined set provided by the component. Custom SVG icons, icon fonts, or external icon libraries aren't supported.\n- Icons can't be animated or include interactive states beyond color changes. For complex graphics or illustrations, use the [image](/docs/api/{API_NAME}/{API_VERSION}/web-components/media-and-visuals/image) component instead.\n- Icon color is determined by the `tone` and `color` properties. Custom colors or gradients aren't available."
       }
     ],
     "definitions": [
@@ -129527,8 +129527,8 @@
   },
   {
     "name": "Image",
-    "description": "The image component embeds images within the interface with control over presentation and loading behavior. Use image to visually illustrate concepts, showcase products, display user content, or support tasks and interactions with visual context.\n\nImages support responsive sizing, alt text for accessibility, aspect ratio control, and loading states for progressive enhancement. For small preview images in lists or tables, use [thumbnail](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/thumbnail). For profile images, use [avatar](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/avatar).",
-    "category": "Polaris web components",
+    "description": "The image component embeds images within the interface with control over presentation and loading behavior. Use image to visually illustrate concepts, showcase products, display user content, or support tasks and interactions with visual context.\n\nImages support responsive sizing, alt text for accessibility, aspect ratio control, and loading states for progressive enhancement. For small preview images in lists or tables, use [thumbnail](/docs/api/{API_NAME}/{API_VERSION}/web-components/media-and-visuals/thumbnail). For profile images, use [avatar](/docs/api/{API_NAME}/{API_VERSION}/web-components/media-and-visuals/avatar).",
+    "category": "Web components",
     "subCategory": "Media and visuals",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/image.png",
@@ -130019,7 +130019,7 @@
               }
             },
             {
-              "description": "Build a product image gallery with consistent sizing using [grid](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/grid). This example arranges three product photos in a row, each constrained to a square with rounded corners so they line up evenly.",
+              "description": "Build a product image gallery with consistent sizing using [grid](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/grid). This example arranges three product photos in a row, each constrained to a square with rounded corners so they line up evenly.",
               "codeblock": {
                 "title": "Use in a grid layout",
                 "tabs": [
@@ -130042,8 +130042,8 @@
   },
   {
     "name": "Link",
-    "description": "The link component makes text interactive, allowing users to navigate to other pages or perform specific actions. Use link for navigation, external references, or triggering actions while maintaining standard link semantics and accessibility.\n\nLinks support standard URLs, custom protocols, navigation within Shopify admin pages, and can open in new windows for external destinations. For prominent actions or form submissions, use [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) instead.",
-    "category": "Polaris web components",
+    "description": "The link component makes text interactive, allowing users to navigate to other pages or perform specific actions. Use link for navigation, external references, or triggering actions while maintaining standard link semantics and accessibility.\n\nLinks support standard URLs, custom protocols, navigation within Shopify admin pages, and can open in new windows for external destinations. For prominent actions or form submissions, use [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) instead.",
+    "category": "Web components",
     "subCategory": "Actions",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/link.png",
@@ -130366,7 +130366,7 @@
           "title": "",
           "examples": [
             {
-              "description": "Embed links within a [Paragraph](/docs/api/app-home/polaris-web-components/typography-and-content/paragraph) so merchants can navigate to related content inline. This example shows two links inside a paragraph that inherit the surrounding text tone.",
+              "description": "Embed links within a [Paragraph](/docs/api/app-home/web-components/typography-and-content/paragraph) so merchants can navigate to related content inline. This example shows two links inside a paragraph that inherit the surrounding text tone.",
               "codeblock": {
                 "title": "Embed links in paragraph text",
                 "tabs": [
@@ -130492,7 +130492,7 @@
   {
     "name": "Menu",
     "description": "The menu component displays a list of actions that can be performed on a resource or within a specific context. Use menu to present multiple related actions in a compact dropdown format, reducing visual clutter while maintaining discoverability.\n\nMenus support action grouping, icons for visual clarity, and keyboard navigation for efficient interaction.",
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Actions",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/menu.png",
@@ -130822,8 +130822,8 @@
   },
   {
     "name": "Money field",
-    "description": "The money field component collects monetary values from users with built-in currency formatting and validation. Use money field for prices, costs, or financial amounts to provide proper currency symbols, decimal handling, and numeric validation.\n\nMoney fields support currency codes, automatic formatting, and min/max constraints to ensure users enter valid monetary values. For non-currency numeric input, use [number field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/number-field).",
-    "category": "Polaris web components",
+    "description": "The money field component collects monetary values from users with built-in currency formatting and validation. Use money field for prices, costs, or financial amounts to provide proper currency symbols, decimal handling, and numeric validation.\n\nMoney fields support currency codes, automatic formatting, and min/max constraints to ensure users enter valid monetary values. For non-currency numeric input, use [number field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/number-field).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/moneyfield.png",
@@ -131293,8 +131293,8 @@
   },
   {
     "name": "Number field",
-    "description": "The number field component captures numeric input with built-in number validation. Use it to collect quantities, prices, or other numeric information.\n\nThe component supports min/max constraints and step increments for guided numeric entry. For monetary values with currency formatting, use [money field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/money-field).",
-    "category": "Polaris web components",
+    "description": "The number field component captures numeric input with built-in number validation. Use it to collect quantities, prices, or other numeric information.\n\nThe component supports min/max constraints and step increments for guided numeric entry. For monetary values with currency formatting, use [money field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/money-field).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/numberfield.png",
@@ -131304,7 +131304,7 @@
         "title": "Best practices",
         "type": "Generic",
         "anchorLink": "best-practices",
-        "sectionContent": "- **Use for numeric-only input:** Choose the component when you need strictly numeric values like quantities, measurements, or percentages. For values that might contain letters or symbols (like product codes or phone numbers), use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field) instead.\n- **Provide context with units:** Display units of measurement using prefix or suffix to clarify what the number represents. Without context, merchants might not know if they're entering dollars, kilograms, or percentages.\n- **Set realistic constraints:** Define minimum and maximum values that reflect actual business rules. This guides merchants toward valid inputs and prevents unrealistic values before form submission.\n- **Validate and provide clear feedback:** Always validate numeric input and show specific error messages that explain what went wrong and how to fix it. Generic error messages don't help merchants understand what value to enter."
+        "sectionContent": "- **Use for numeric-only input:** Choose the component when you need strictly numeric values like quantities, measurements, or percentages. For values that might contain letters or symbols (like product codes or phone numbers), use [text field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/text-field) instead.\n- **Provide context with units:** Display units of measurement using prefix or suffix to clarify what the number represents. Without context, merchants might not know if they're entering dollars, kilograms, or percentages.\n- **Set realistic constraints:** Define minimum and maximum values that reflect actual business rules. This guides merchants toward valid inputs and prevents unrealistic values before form submission.\n- **Validate and provide clear feedback:** Always validate numeric input and show specific error messages that explain what went wrong and how to fix it. Generic error messages don't help merchants understand what value to enter."
       },
       {
         "title": "Limitations",
@@ -131808,8 +131808,8 @@
   },
   {
     "name": "Ordered list",
-    "description": "The ordered list component displays a numbered list of related items in a specific sequence. Use ordered list to present step-by-step instructions, ranked items, procedures, or any content where order and sequence matter to understanding.\n\nOrdered lists automatically number items and support nested lists for hierarchical content organization. For items where order doesn't matter, use [unordered list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/unordered-list).",
-    "category": "Polaris web components",
+    "description": "The ordered list component displays a numbered list of related items in a specific sequence. Use ordered list to present step-by-step instructions, ranked items, procedures, or any content where order and sequence matter to understanding.\n\nOrdered lists automatically number items and support nested lists for hierarchical content organization. For items where order doesn't matter, use [unordered list](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/unordered-list).",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/ordered-list.png",
@@ -131819,7 +131819,7 @@
         "title": "Best practices",
         "type": "Generic",
         "anchorLink": "best-practices",
-        "sectionContent": "- **Use when order matters:** Ordered lists communicate sequence, priority, or ranking. Use them for step-by-step instructions, prioritized recommendations, or any content where the numbering provides meaningful information. When order doesn't matter, use [unordered list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/unordered-list) instead.\n- **Keep items parallel in structure:** Consistent grammar and structure across list items makes content easier to scan and understand. Mixing different writing styles within a list creates cognitive friction for readers.\n- **Write concise items:** List items work best as brief, scannable content. When items become long or complex, they lose the clarity and efficiency that makes lists valuable. Consider restructuring long items into separate sections.\n- **Limit nesting depth:** Nested lists help organize hierarchical content, but deep nesting becomes difficult to follow. When you find yourself nesting beyond two levels, the content structure might be too complex for a list format."
+        "sectionContent": "- **Use when order matters:** Ordered lists communicate sequence, priority, or ranking. Use them for step-by-step instructions, prioritized recommendations, or any content where the numbering provides meaningful information. When order doesn't matter, use [unordered list](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/unordered-list) instead.\n- **Keep items parallel in structure:** Consistent grammar and structure across list items makes content easier to scan and understand. Mixing different writing styles within a list creates cognitive friction for readers.\n- **Write concise items:** List items work best as brief, scannable content. When items become long or complex, they lose the clarity and efficiency that makes lists valuable. Consider restructuring long items into separate sections.\n- **Limit nesting depth:** Nested lists help organize hierarchical content, but deep nesting becomes difficult to follow. When you find yourself nesting beyond two levels, the content structure might be too complex for a list format."
       },
       {
         "title": "Limitations",
@@ -132059,8 +132059,8 @@
   },
   {
     "name": "Paragraph",
-    "description": "The paragraph component displays blocks of text content and can contain inline elements like buttons, links, or emphasized text. Use paragraph to present standalone blocks of readable content, descriptions, or explanatory text.\n\nParagraphs support alignment options and can wrap inline components to create rich, formatted content blocks. For inline text styling, use [text](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/text).",
-    "category": "Polaris web components",
+    "description": "The paragraph component displays blocks of text content and can contain inline elements like buttons, links, or emphasized text. Use paragraph to present standalone blocks of readable content, descriptions, or explanatory text.\n\nParagraphs support alignment options and can wrap inline components to create rich, formatted content blocks. For inline text styling, use [text](/docs/api/{API_NAME}/{API_VERSION}/web-components/typography-and-content/text).",
+    "category": "Web components",
     "subCategory": "Typography and content",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/paragraph.png",
@@ -132426,8 +132426,8 @@
   },
   {
     "name": "Password field",
-    "description": "The password field component securely collects sensitive information from users. Use password field for password entry, where input characters are automatically masked for privacy.\n\nPassword fields support validation, help text, and accessibility features to create secure and user-friendly authentication experiences. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field).",
-    "category": "Polaris web components",
+    "description": "The password field component securely collects sensitive information from users. Use password field for password entry, where input characters are automatically masked for privacy.\n\nPassword fields support validation, help text, and accessibility features to create secure and user-friendly authentication experiences. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/text-field).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/passwordfield.png",
@@ -132939,7 +132939,7 @@
   {
     "name": "Query container",
     "description": "The query container component establishes a container query context for responsive design. Use query container to define an element as a containment context, enabling child components or styles to adapt based on the container's size rather than viewport width.\n\nQuery containers support modern responsive patterns where components respond to their container dimensions, creating more flexible and reusable layouts.",
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "related": [],
     "requires": "",
@@ -133176,8 +133176,8 @@
   },
   {
     "name": "Search field",
-    "description": "The search field component captures search terms for filtering and search functionality. Use it to enable inline search within specific sections or lists, like filtering products or searching customers. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field).",
-    "category": "Polaris web components",
+    "description": "The search field component captures search terms for filtering and search functionality. Use it to enable inline search within specific sections or lists, like filtering products or searching customers. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/text-field).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/searchfield.png",
@@ -133649,8 +133649,8 @@
   },
   {
     "name": "Section",
-    "description": "The section component groups related content into clearly-defined thematic areas with consistent styling and structure. Use section to organize page content into logical blocks, each with its own heading and visual container.\n\nSections automatically adapt their styling based on nesting depth and adjust heading levels to maintain meaningful, accessible page hierarchies. For simple visual separation without headings, use [divider](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/divider).",
-    "category": "Polaris web components",
+    "description": "The section component groups related content into clearly-defined thematic areas with consistent styling and structure. Use section to organize page content into logical blocks, each with its own heading and visual container.\n\nSections automatically adapt their styling based on nesting depth and adjust heading levels to maintain meaningful, accessible page hierarchies. For simple visual separation without headings, use [divider](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/divider).",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "related": [],
     "isVisualComponent": true,
@@ -133953,8 +133953,8 @@
   },
   {
     "name": "Select",
-    "description": "The select component allows users to choose one option from a dropdown menu. Use select when presenting four or more choices to keep interfaces uncluttered and scannable, or when space is limited.\n\nSelect components support option grouping, placeholder text, help text, and validation states to create clear selection interfaces. For more visual selection layouts with radio buttons or checkboxes, use [choice list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/choice-list).",
-    "category": "Polaris web components",
+    "description": "The select component allows users to choose one option from a dropdown menu. Use select when presenting four or more choices to keep interfaces uncluttered and scannable, or when space is limited.\n\nSelect components support option grouping, placeholder text, help text, and validation states to create clear selection interfaces. For more visual selection layouts with radio buttons or checkboxes, use [choice list](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/choice-list).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/select.png",
@@ -133964,13 +133964,13 @@
         "title": "Best practices",
         "type": "Generic",
         "anchorLink": "best-practices",
-        "sectionContent": "- **Use for choosing from predefined options:** Select works best when merchants pick from a known list of options. When merchants need to enter custom values or search through many options, consider [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field) with autocomplete or a searchable dropdown pattern instead.\n- **Organize options thoughtfully:** The order of options affects how quickly merchants find what they need. Group related options together, put common choices first, or use alphabetical order when no natural hierarchy exists.\n- **Make options scannable:** Merchants should be able to quickly distinguish between options. Include enough context in each option label so merchants don't need to open and read multiple options to find the right one.\n- **Handle default selections appropriately:** Pre-select an option when there's a clear default choice, but use a placeholder when merchants should make an intentional selection. Avoid confusing merchants with unclear initial states.\n- **Provide clear validation feedback:** When selection is required or invalid, explain what the merchant needs to do. Context-specific error messages help merchants complete forms faster than generic validation messages."
+        "sectionContent": "- **Use for choosing from predefined options:** Select works best when merchants pick from a known list of options. When merchants need to enter custom values or search through many options, consider [text field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/text-field) with autocomplete or a searchable dropdown pattern instead.\n- **Organize options thoughtfully:** The order of options affects how quickly merchants find what they need. Group related options together, put common choices first, or use alphabetical order when no natural hierarchy exists.\n- **Make options scannable:** Merchants should be able to quickly distinguish between options. Include enough context in each option label so merchants don't need to open and read multiple options to find the right one.\n- **Handle default selections appropriately:** Pre-select an option when there's a clear default choice, but use a placeholder when merchants should make an intentional selection. Avoid confusing merchants with unclear initial states.\n- **Provide clear validation feedback:** When selection is required or invalid, explain what the merchant needs to do. Context-specific error messages help merchants complete forms faster than generic validation messages."
       },
       {
         "title": "Limitations",
         "type": "Generic",
         "anchorLink": "limitations",
-        "sectionContent": "- The component doesn't include search or filtering functionality. For option lists where merchants need to search (like country selection with 200+ countries), implement a custom autocomplete or searchable dropdown pattern.\n- The component only supports selecting one option at a time. For multi-select scenarios, use a [choice list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/choice-list) with checkboxes or build a custom multi-select component.\n- Rendering 500+ options can cause performance issues, especially on mobile devices. The browser must render all options in the DOM even though only one's visible.\n- Browser native select dropdowns have limited styling capabilities. Dropdown appearance varies by browser and OS, and can't be fully customized with CSS. For custom-styled dropdowns, you must build a custom component using [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) and [menu](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/menu).\n- Options only support plain text. You can't include icons, images, badges, or formatted text within option labels. For rich option content, build a custom dropdown using [menu](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/menu) components."
+        "sectionContent": "- The component doesn't include search or filtering functionality. For option lists where merchants need to search (like country selection with 200+ countries), implement a custom autocomplete or searchable dropdown pattern.\n- The component only supports selecting one option at a time. For multi-select scenarios, use a [choice list](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/choice-list) with checkboxes or build a custom multi-select component.\n- Rendering 500+ options can cause performance issues, especially on mobile devices. The browser must render all options in the DOM even though only one's visible.\n- Browser native select dropdowns have limited styling capabilities. Dropdown appearance varies by browser and OS, and can't be fully customized with CSS. For custom-styled dropdowns, you must build a custom component using [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) and [menu](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/menu).\n- Options only support plain text. You can't include icons, images, badges, or formatted text within option labels. For rich option content, build a custom dropdown using [menu](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/menu) components."
       }
     ],
     "definitions": [
@@ -134803,8 +134803,8 @@
   },
   {
     "name": "Spinner",
-    "description": "The spinner component displays an animated indicator showing users that content or actions are loading. Use spinner to communicate ongoing processes like fetching data, processing requests, or waiting for operations to complete.\n\nSpinners support multiple sizes and should be used for page or section loading states. For button loading states, use the `loading` property on the [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) component instead.",
-    "category": "Polaris web components",
+    "description": "The spinner component displays an animated indicator showing users that content or actions are loading. Use spinner to communicate ongoing processes like fetching data, processing requests, or waiting for operations to complete.\n\nSpinners support multiple sizes and should be used for page or section loading states. For button loading states, use the `loading` property on the [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) component instead.",
+    "category": "Web components",
     "subCategory": "Feedback and status indicators",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/spinner.png",
@@ -134820,7 +134820,7 @@
         "title": "Limitations",
         "type": "Generic",
         "anchorLink": "limitations",
-        "sectionContent": "- The component shows indeterminate loading only. It can't display progress percentage or time remaining. For operations with known duration or measurable progress, consider using a progress bar component or custom solution.\n- The component continues spinning indefinitely until you remove it. It doesn't automatically stop after a timeout or show error states. You must implement timeout logic and error handling yourself.\n- Rendering many spinners simultaneously (like in a table with 50+ rows each showing a spinner) can cause performance issues, especially on older mobile devices.\n- The component itself doesn't provide a way to cancel the loading operation. If merchants need to cancel, you must implement separate UI controls like a **Cancel** [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) alongside the spinner."
+        "sectionContent": "- The component shows indeterminate loading only. It can't display progress percentage or time remaining. For operations with known duration or measurable progress, consider using a progress bar component or custom solution.\n- The component continues spinning indefinitely until you remove it. It doesn't automatically stop after a timeout or show error states. You must implement timeout logic and error handling yourself.\n- Rendering many spinners simultaneously (like in a table with 50+ rows each showing a spinner) can cause performance issues, especially on older mobile devices.\n- The component itself doesn't provide a way to cancel the loading operation. If merchants need to cancel, you must implement separate UI controls like a **Cancel** [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) alongside the spinner."
       }
     ],
     "definitions": [
@@ -135059,8 +135059,8 @@
   },
   {
     "name": "Stack",
-    "description": "The stack component organizes elements horizontally or vertically along the block or inline axis. Use stack to structure layouts, group related components, control spacing between elements, or create flexible arrangements that adapt to content.\n\nStacks support gap spacing, alignment, wrapping, and distribution properties to create consistent, responsive layouts without custom CSS. For complex multi-column layouts with precise grid positioning, use [grid](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/grid).",
-    "category": "Polaris web components",
+    "description": "The stack component organizes elements horizontally or vertically along the block or inline axis. Use stack to structure layouts, group related components, control spacing between elements, or create flexible arrangements that adapt to content.\n\nStacks support gap spacing, alignment, wrapping, and distribution properties to create consistent, responsive layouts without custom CSS. For complex multi-column layouts with precise grid positioning, use [grid](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/grid).",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/stack.png",
@@ -135796,8 +135796,8 @@
   },
   {
     "name": "Switch",
-    "description": "The switch component provides a clear way for users to toggle options or settings on and off. Use switch for binary controls that take effect immediately, like enabling features, activating settings, or controlling visibility.\n\nSwitches provide instant visual feedback and are ideal for settings that don't require a save action to apply changes. For selections that require explicit submission, use [checkbox](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/checkbox) instead.",
-    "category": "Polaris web components",
+    "description": "The switch component provides a clear way for users to toggle options or settings on and off. Use switch for binary controls that take effect immediately, like enabling features, activating settings, or controlling visibility.\n\nSwitches provide instant visual feedback and are ideal for settings that don't require a save action to apply changes. For selections that require explicit submission, use [checkbox](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/checkbox) instead.",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/switch.png",
@@ -136244,7 +136244,7 @@
   {
     "name": "Table",
     "description": "The table component displays data clearly in rows and columns, helping users view, analyze, and compare structured information. Use table to present datasets, product lists, order details, or any tabular content that benefits from organized rows and columns.\n\nTables automatically adapt to screen size, rendering as lists on small screens and tables on larger ones for optimal readability across devices.",
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/table.png",
@@ -137556,8 +137556,8 @@
   },
   {
     "name": "Text",
-    "description": "The text component displays inline text with specific visual styles or tones. Use text to emphasize or differentiate words or phrases within paragraphs or other block-level components, applying weight, color, or semantic styling.\n\nText supports multiple visual variants, alignment options, and line clamping for flexible inline typography control. For block-level text content, use [paragraph](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/paragraph).",
-    "category": "Polaris web components",
+    "description": "The text component displays inline text with specific visual styles or tones. Use text to emphasize or differentiate words or phrases within paragraphs or other block-level components, applying weight, color, or semantic styling.\n\nText supports multiple visual variants, alignment options, and line clamping for flexible inline typography control. For block-level text content, use [paragraph](/docs/api/{API_NAME}/{API_VERSION}/web-components/typography-and-content/paragraph).",
+    "category": "Web components",
     "subCategory": "Typography and content",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/text.png",
@@ -137573,7 +137573,7 @@
         "title": "Limitations",
         "type": "Generic",
         "anchorLink": "limitations",
-        "sectionContent": "- Text renders inline by default and flows with surrounding content. For block-level text with spacing, use the [paragraph](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/paragraph) component or wrap in layout components.\n- The component doesn't include text truncation or ellipsis. Long text will wrap or overflow depending on the container. Use other components like [heading](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/heading) with line clamping if truncation is needed.\n- Tone colors are optimized for light backgrounds. Using tones on dark or colored backgrounds might not meet accessibility contrast requirements."
+        "sectionContent": "- Text renders inline by default and flows with surrounding content. For block-level text with spacing, use the [paragraph](/docs/api/{API_NAME}/{API_VERSION}/web-components/typography-and-content/paragraph) component or wrap in layout components.\n- The component doesn't include text truncation or ellipsis. Long text will wrap or overflow depending on the container. Use other components like [heading](/docs/api/{API_NAME}/{API_VERSION}/web-components/typography-and-content/heading) with line clamping if truncation is needed.\n- Tone colors are optimized for light backgrounds. Using tones on dark or colored backgrounds might not meet accessibility contrast requirements."
       }
     ],
     "definitions": [
@@ -137948,8 +137948,8 @@
   },
   {
     "name": "Text area",
-    "description": "The text area component captures multi-line text input. Use it to collect descriptions, notes, comments, or other extended text content.\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field).",
-    "category": "Polaris web components",
+    "description": "The text area component captures multi-line text input. Use it to collect descriptions, notes, comments, or other extended text content.\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/text-field).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/textarea.png",
@@ -138453,8 +138453,8 @@
   },
   {
     "name": "Text field",
-    "description": "The text field component captures single-line text input. Use it to collect short, free-form information like names, titles, or identifiers.\n\nThe component supports various input configurations including placeholders, character limits, and validation. For multi-line text entry, use [text area](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-area). For specialized input types, use [email field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/email-field), [URL field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/url-field), [password field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/password-field), or [search field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/search-field).",
-    "category": "Polaris web components",
+    "description": "The text field component captures single-line text input. Use it to collect short, free-form information like names, titles, or identifiers.\n\nThe component supports various input configurations including placeholders, character limits, and validation. For multi-line text entry, use [text area](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/text-area). For specialized input types, use [email field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/email-field), [URL field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/url-field), [password field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/password-field), or [search field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/search-field).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/textfield.png",
@@ -138470,7 +138470,7 @@
         "title": "Limitations",
         "type": "Generic",
         "anchorLink": "limitations",
-        "sectionContent": "- The `maxLength` attribute prevents typing beyond the limit, but in some edge cases, pasted or programmatically set content might exceed `maxLength`. Always validate length server-side.\n- The `accessory` slot renders content at the end of the field. For best results, use [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) or [clickable](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/clickable) components with text content."
+        "sectionContent": "- The `maxLength` attribute prevents typing beyond the limit, but in some edge cases, pasted or programmatically set content might exceed `maxLength`. Always validate length server-side.\n- The `accessory` slot renders content at the end of the field. For best results, use [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) or [clickable](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/clickable) components with text content."
       }
     ],
     "definitions": [
@@ -139023,8 +139023,8 @@
   },
   {
     "name": "Thumbnail",
-    "description": "The thumbnail component displays small preview images representing content, products, or media items. Use thumbnail to provide visual identification in lists, tables, or cards where space is constrained and quick recognition is important.\n\nThumbnails support multiple sizes, alt text for accessibility, and fallback states for missing images. For full-size images, use [image](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/image). For user profile images, use [avatar](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/avatar).",
-    "category": "Polaris web components",
+    "description": "The thumbnail component displays small preview images representing content, products, or media items. Use thumbnail to provide visual identification in lists, tables, or cards where space is constrained and quick recognition is important.\n\nThumbnails support multiple sizes, alt text for accessibility, and fallback states for missing images. For full-size images, use [image](/docs/api/{API_NAME}/{API_VERSION}/web-components/media-and-visuals/image). For user profile images, use [avatar](/docs/api/{API_NAME}/{API_VERSION}/web-components/media-and-visuals/avatar).",
+    "category": "Web components",
     "subCategory": "Media and visuals",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/thumbnail.png",
@@ -139340,7 +139340,7 @@
   {
     "name": "Tooltip",
     "description": "The tooltip component displays helpful information in a small overlay when users hover over or focus on an element. Use tooltip to provide additional context, explain functionality, or clarify terms without cluttering the interface with permanent text.\n\nTooltips support keyboard accessibility, positioning options, and activation on both hover and focus for inclusive interaction patterns.",
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Typography and content",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/tooltip.png",
@@ -139466,8 +139466,8 @@
   },
   {
     "name": "URL field",
-    "description": "The URL field component collects URLs from users with built-in formatting and validation. Use URL field for website addresses, link destinations, or any URL input to provide URL-specific keyboard layouts and automatic validation.\n\nURL fields support protocol prefixing, validation, and help text to guide users toward entering properly formatted web addresses. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field).",
-    "category": "Polaris web components",
+    "description": "The URL field component collects URLs from users with built-in formatting and validation. Use URL field for website addresses, link destinations, or any URL input to provide URL-specific keyboard layouts and automatic validation.\n\nURL fields support protocol prefixing, validation, and help text to guide users toward entering properly formatted web addresses. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/text-field).",
+    "category": "Web components",
     "subCategory": "Forms",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/urlfield.png",
@@ -139944,8 +139944,8 @@
   },
   {
     "name": "Unordered list",
-    "description": "The unordered list component displays a bulleted list of related items where sequence isn't critical. Use unordered list to present collections of features, options, requirements, or any group of items where order doesn't affect meaning.\n\nUnordered lists automatically add bullet points and support nested lists for hierarchical content organization. For sequential items where order is important, use [ordered list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/ordered-list).",
-    "category": "Polaris web components",
+    "description": "The unordered list component displays a bulleted list of related items where sequence isn't critical. Use unordered list to present collections of features, options, requirements, or any group of items where order doesn't affect meaning.\n\nUnordered lists automatically add bullet points and support nested lists for hierarchical content organization. For sequential items where order is important, use [ordered list](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/ordered-list).",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "related": [],
     "thumbnail": "/assets/templated-apis-screenshots/admin/components/unordered-list.png",
@@ -139955,7 +139955,7 @@
         "title": "Best practices",
         "type": "Generic",
         "anchorLink": "best-practices",
-        "sectionContent": "- **Use when order doesn't matter:** Unordered lists communicate a collection of related items without sequence or ranking. Use them for features, options, or benefits where the order isn't meaningful. When sequence matters, use [ordered list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/ordered-list) instead.\n- **Keep items parallel in structure:** Consistent grammar and structure across list items makes content easier to scan and understand. Mixing different writing styles within a list creates cognitive friction for readers.\n- **Write concise items:** List items work best as brief, scannable content. When items become long or complex, they lose the clarity and efficiency that makes lists valuable. Consider restructuring long items into separate sections.\n- **Limit nesting depth:** Nested lists help organize hierarchical content, but deep nesting becomes difficult to follow. When you find yourself nesting beyond two levels, the content structure might be too complex for a list format."
+        "sectionContent": "- **Use when order doesn't matter:** Unordered lists communicate a collection of related items without sequence or ranking. Use them for features, options, or benefits where the order isn't meaningful. When sequence matters, use [ordered list](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/ordered-list) instead.\n- **Keep items parallel in structure:** Consistent grammar and structure across list items makes content easier to scan and understand. Mixing different writing styles within a list creates cognitive friction for readers.\n- **Write concise items:** List items work best as brief, scannable content. When items become long or complex, they lose the clarity and efficiency that makes lists valuable. Consider restructuring long items into separate sections.\n- **Limit nesting depth:** Nested lists help organize hierarchical content, but deep nesting becomes difficult to follow. When you find yourself nesting beyond two levels, the content structure might be too complex for a list format."
       },
       {
         "title": "Limitations",
