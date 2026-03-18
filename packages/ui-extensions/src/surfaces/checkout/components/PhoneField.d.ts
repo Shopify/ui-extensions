@@ -51,6 +51,7 @@ export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocom
 export interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface PhoneFieldElementEvents {
@@ -80,6 +81,7 @@ export interface PhoneFieldElementEvents {
     input?: CallbackEventListener<typeof tagName>;
 }
 /**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
  * @publicDocs
  */
 export interface PhoneFieldElementSlots {

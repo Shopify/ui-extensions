@@ -51,6 +51,9 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-popover";
 /**
+ * The popover component displays contextual content in an overlay triggered by a button using the [`commandFor`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#commandfor) attribute. Use for secondary actions, settings, or information that doesn't require a full modal.
+ *
+ * For interactions that need more space or user focus, such as confirmations or complex forms, use [modal](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/overlays/modal) instead.
  * @publicDocs
  */
 export interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
@@ -97,6 +100,7 @@ export interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
 export interface PopoverEvents extends Pick<PopoverProps$1, 'onHide' | 'onShow'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface PopoverElementEvents {

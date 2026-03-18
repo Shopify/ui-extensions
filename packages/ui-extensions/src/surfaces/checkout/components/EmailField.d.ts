@@ -39,6 +39,9 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-email-field";
 /**
+ * The email field component captures email address input. Use it to collect email information in forms, customer profiles, or contact workflows.
+ *
+ * Email field doesn't perform automatic email validation. Implement your own validation logic, and use the `error` property to display validation results. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field).
  * @publicDocs
  */
 export interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'maxLength' | 'minLength' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value'> {
@@ -51,6 +54,7 @@ export interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocom
 export interface EmailFieldEvents extends Pick<EmailFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface EmailFieldElementEvents {
@@ -80,6 +84,7 @@ export interface EmailFieldElementEvents {
     input?: CallbackEventListener<typeof tagName>;
 }
 /**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
  * @publicDocs
  */
 export interface EmailFieldElementSlots {

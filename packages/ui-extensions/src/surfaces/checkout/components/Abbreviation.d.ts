@@ -27,6 +27,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 
 declare const tagName = "s-abbreviation";
 /**
+ * Displays abbreviated text or acronyms, revealing their full meaning or additional context through a tooltip on hover or focus. Use to clarify shortened terms, initialisms, or technical language without interrupting the reading flow.
  * @publicDocs
  */
 export interface AbbreviationElementProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {

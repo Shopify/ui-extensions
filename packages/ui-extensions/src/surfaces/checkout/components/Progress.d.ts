@@ -21,6 +21,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 
 declare const tagName = "s-progress";
 /**
+ * Displays an indicator showing the completion status of a task. Use to visually communicate progress in either determinate (known percentage) or indeterminate (unknown duration) states.
  * @publicDocs
  */
 export interface ProgressElementProps extends Pick<ProgressProps$1, 'accessibilityLabel' | 'id' | 'max' | 'tone' | 'value'> {

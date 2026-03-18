@@ -33,6 +33,9 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-date-field";
 /**
+ * The date field component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.
+ *
+ * The component supports manual text entry. For visual calendar-based selection, consider using [date picker](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/date-picker).
  * @publicDocs
  */
 export interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 'allowDays' | 'autocomplete' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'error' | 'id' | 'label' | 'name' | 'readOnly' | 'required' | 'value' | 'view'> {
@@ -45,6 +48,7 @@ export interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 
 export interface DateFieldEvents extends Pick<DateFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface DateFieldElementEvents {

@@ -70,6 +70,7 @@ declare module 'preact' {
 
 declare const tagName = "s-consent-phone-field";
 /**
+ * Display a phone field for customers to sign up for text message marketing, noting that the phone field value will be automatically saved during checkout.
  * @publicDocs
  */
 export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'policy' | 'readOnly' | 'required' | 'type' | 'value'> {
@@ -82,6 +83,7 @@ export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldPro
 export interface ConsentPhoneFieldEvents extends Pick<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface ConsentPhoneFieldElementEvents {
@@ -117,6 +119,7 @@ export interface ConsentPhoneFieldElement extends ConsentPhoneFieldElementProps,
     oninput: ConsentPhoneFieldEvents['onInput'];
 }
 /**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
  * @publicDocs
  */
 export interface ConsentPhoneFieldElementSlots {

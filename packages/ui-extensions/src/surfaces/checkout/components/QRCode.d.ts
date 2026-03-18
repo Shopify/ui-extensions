@@ -42,6 +42,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-qr-code";
 /**
+ * Displays a scannable QR code representing data such as URLs or text. Use to let users quickly access information by scanning with a smartphone or other device.
  * @publicDocs
  */
 export interface QRCodeElementProps extends QRCodeProps$1 {
@@ -52,6 +53,7 @@ export interface QRCodeElementProps extends QRCodeProps$1 {
 export interface QRCodeEvents extends Pick<QRCodeProps$1, 'onError'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface QRCodeElementEvents {

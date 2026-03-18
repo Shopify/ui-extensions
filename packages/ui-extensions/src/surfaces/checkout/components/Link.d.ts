@@ -39,6 +39,9 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-link";
 /**
+ * The link component makes text interactive, allowing users to navigate to other pages or perform specific actions. Use link for navigation, external references, or triggering actions while maintaining standard link semantics and accessibility.
+ *
+ * Links support standard URLs, custom protocols, navigation within Shopify admin pages, and can open in new windows for external destinations. For prominent actions or form submissions, use [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) instead.
  * @publicDocs
  */
 export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'interestFor' | 'lang' | 'target' | 'tone'> {
@@ -48,6 +51,7 @@ export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel'
 export interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface LinkElementEvents {

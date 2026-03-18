@@ -33,6 +33,9 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-money-field";
 /**
+ * The money field component collects monetary values from users with built-in currency formatting and validation. Use money field for prices, costs, or financial amounts to provide proper currency symbols, decimal handling, and numeric validation.
+ *
+ * Money fields support currency codes, automatic formatting, and min/max constraints to ensure users enter valid monetary values. For non-currency numeric input, use [number field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/number-field).
  * @publicDocs
  */
 export interface MoneyFieldElementProps extends Pick<MoneyFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'readOnly' | 'required' | 'step' | 'value'> {
@@ -40,6 +43,7 @@ export interface MoneyFieldElementProps extends Pick<MoneyFieldProps$1, 'autocom
 export interface MoneyFieldEvents extends Pick<MoneyFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface MoneyFieldElementEvents {

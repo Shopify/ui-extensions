@@ -69,6 +69,9 @@ declare module 'preact' {
 
 declare const tagName = "s-number-field";
 /**
+ * The number field component captures numeric input with built-in number validation. Use it to collect quantities, prices, or other numeric information.
+ *
+ * The component supports min/max constraints and step increments for guided numeric entry. For monetary values with currency formatting, use [money field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/money-field).
  * @publicDocs
  */
 export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete' | 'controls' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'inputMode' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
@@ -82,6 +85,7 @@ export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autoc
 export interface NumberFieldEvents extends Pick<NumberFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface NumberFieldElementEvents {
@@ -111,6 +115,7 @@ export interface NumberFieldElementEvents {
     input?: CallbackEventListener<typeof tagName>;
 }
 /**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
  * @publicDocs
  */
 export interface NumberFieldElementSlots {

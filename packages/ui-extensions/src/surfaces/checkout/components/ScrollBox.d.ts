@@ -44,6 +44,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 
 declare const tagName = "s-scroll-box";
 /**
+ * Provides a scrollable container for long content that exceeds the available space. Use to display lists, order summaries, or other lengthy content while maintaining a constrained layout.
  * @publicDocs
  */
 export interface ScrollBoxElementProps extends Pick<ScrollBoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {

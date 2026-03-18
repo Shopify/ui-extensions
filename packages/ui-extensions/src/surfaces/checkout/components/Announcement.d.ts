@@ -46,6 +46,7 @@ declare const tagName = "s-announcement";
 export interface AnnouncementEvents extends Pick<AnnouncementProps$1, 'onAfterToggle' | 'onDismiss' | 'onToggle'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface AnnouncementElementEvents {
@@ -91,6 +92,7 @@ export interface AnnouncementMethods {
     dismiss: () => void;
 }
 /**
+ * Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).
  * @publicDocs
  */
 export interface AnnouncementElementMethods {

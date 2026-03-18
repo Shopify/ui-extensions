@@ -39,6 +39,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-press-button";
 /**
+ * Allows users to toggle between active/inactive states. Use to represent a persistent on/off or selected/unselected status.
  * @publicDocs
  */
 export interface PressButtonElementProps extends Pick<PressButtonProps$1, 'accessibilityLabel' | 'id' | 'inlineSize' | 'lang' | 'disabled' | 'loading' | 'pressed' | 'defaultPressed'> {
@@ -46,6 +47,7 @@ export interface PressButtonElementProps extends Pick<PressButtonProps$1, 'acces
 export interface PressButtonEvents extends Pick<PressButtonProps$1, 'onClick' | 'onBlur' | 'onFocus'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface PressButtonElementEvents {

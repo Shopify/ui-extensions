@@ -27,13 +27,17 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 
 declare const tagName = "s-choice";
 /**
+ * The choice component creates individual selectable options within a choice list. Use choice to define each option that merchants can select, supporting both single selection (radio buttons) and multiple selection (checkboxes) modes.
+ *
+ * Choice components support labels, help text, and custom content through slots, providing flexible option presentation within choice lists.
  * @publicDocs
  */
 export interface ChoiceElementProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'error' | 'value'> {
 }
 /**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
  * @publicDocs
-*/
+ */
 export interface ChoiceElementSlots {
     /**
      * Additional text to provide context or guidance for the input.

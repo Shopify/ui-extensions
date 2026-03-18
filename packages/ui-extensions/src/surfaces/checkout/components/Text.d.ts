@@ -27,6 +27,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 
 declare const tagName = "s-text";
 /**
+ * The text component displays inline text with specific visual styles or tones. Use text to emphasize or differentiate words or phrases within paragraphs or other block-level components, applying weight, color, or semantic styling.
+ *
+ * Text supports multiple visual variants, alignment options, and line clamping for flexible inline typography control. For block-level text content, use [paragraph](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/paragraph).
  * @publicDocs
  */
 export interface TextElementProps extends Pick<TextProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'display' | 'id' | 'lang' | 'tone' | 'type'> {

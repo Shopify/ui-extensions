@@ -44,6 +44,7 @@ export interface ToggleArgumentsEvent {
 
 declare const tagName = "s-details";
 /**
+ * Creates a collapsible content area that can be expanded or collapsed by users. Use with Summary to provide expandable sections for additional information or settings.
  * @publicDocs
  */
 export interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'id' | 'open' | 'toggleTransition'> {
@@ -51,6 +52,7 @@ export interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' 
 export interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle' | 'onAfterToggle'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface DetailsElementEvents {

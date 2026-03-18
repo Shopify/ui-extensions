@@ -44,6 +44,9 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 
 declare const tagName = "s-stack";
 /**
+ * The stack component organizes elements horizontally or vertically along the block or inline axis. Use stack to structure layouts, group related components, control spacing between elements, or create flexible arrangements that adapt to content.
+ *
+ * Stacks support gap spacing, alignment, wrapping, and distribution properties to create consistent, responsive layouts without custom CSS. For complex multi-column layouts with precise grid positioning, use [grid](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/grid).
  * @publicDocs
  */
 export interface StackElementProps extends Pick<StackProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'direction' | 'display' | 'gap' | 'id' | 'inlineSize' | 'justifyContent' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'rowGap'> {

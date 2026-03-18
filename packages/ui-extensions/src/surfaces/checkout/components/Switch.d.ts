@@ -33,6 +33,9 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-switch";
 /**
+ * The switch component provides a clear way for users to toggle options or settings on and off. Use switch for binary controls that take effect immediately, like enabling features, activating settings, or controlling visibility.
+ *
+ * Switches provide instant visual feedback and are ideal for settings that don't require a save action to apply changes. For selections that require explicit submission, use [checkbox](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/checkbox) instead.
  * @publicDocs
  */
 export interface SwitchElementProps extends Pick<SwitchProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'id' | 'label' | 'name' | 'value'> {
@@ -41,6 +44,7 @@ export interface SwitchElementProps extends Pick<SwitchProps$1, 'accessibilityLa
 export interface SwitchEvents extends Pick<SwitchProps$1, 'onChange'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface SwitchElementEvents {

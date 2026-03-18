@@ -51,6 +51,9 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-sheet";
 /**
+ * The Sheet component displays essential information for customers at the bottom of the screen, appearing above other elements. Use it sparingly to avoid distracting customers during checkout. This component requires access to [Customer Privacy API](/docs/api/checkout-ui-extensions/latest/configuration#collect-buyer-consent) to be rendered.
+ *
+ * The library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the sheet content.
  * @publicDocs
  */
 export interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'heading' | 'id'> {
@@ -65,6 +68,7 @@ export interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'h
 export interface SheetEvents extends Pick<SheetProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
 /**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
  * @publicDocs
  */
 export interface SheetElementEvents {
@@ -86,6 +90,7 @@ export interface SheetElementEvents {
     show?: CallbackEventListener<typeof tagName>;
 }
 /**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
  * @publicDocs
  */
 export interface SheetElementSlots {
@@ -99,6 +104,7 @@ export interface SheetElementSlots {
     'secondary-actions'?: HTMLElement;
 }
 /**
+ * Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).
  * @publicDocs
  */
 export interface SheetElementMethods extends Pick<SheetProps$1, 'hideOverlay'> {
