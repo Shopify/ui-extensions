@@ -34,7 +34,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The badge component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).',
+        'The badge component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/app-ui/using-web-components#slots).',
       type: 'BadgeSlots',
     },
   ],
@@ -76,7 +76,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Place badges inside [table cells](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/table) to give merchants a scannable overview of status information. This example shows fulfillment and payment badges in an order table.',
+              'Place badges inside [table cells](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/table) to give merchants a scannable overview of status information. This example shows fulfillment and payment badges in an order table.',
             codeblock: {
               title: 'Display badges in a table',
               tabs: [

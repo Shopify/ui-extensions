@@ -41,7 +41,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Details'],
   defaultExample: {
     description:
-      'Merchants need to browse and select from a collection of items and navigate to details. This pattern provides search, filtering, and row selection for a resource list. The [text field](/docs/api/app-home/polaris-web-components/forms/text-field) uses `icon="search"` for filtering, the [popover](/docs/api/app-home/polaris-web-components/overlays/popover) holds filter options, and the [checkbox](/docs/api/app-home/polaris-web-components/forms/checkbox) enables row selection.',
+      'Merchants need to browse and select from a collection of items and navigate to details. This pattern provides search, filtering, and row selection for a resource list. The [text field](/docs/api/app-home/web-components/forms/text-field) uses `icon="search"` for filtering, the [popover](/docs/api/app-home/web-components/overlays/popover) holds filter options, and the [checkbox](/docs/api/app-home/web-components/forms/checkbox) enables row selection.',
     codeblock: {
       title: 'Provide search, filtering, and row selection for a resource list',
       tabs: [

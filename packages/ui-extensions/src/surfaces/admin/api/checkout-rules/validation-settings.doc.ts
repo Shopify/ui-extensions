@@ -7,10 +7,10 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   type: 'API',
   requires:
-    'the [function settings](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/function-settings) component.',
+    'the [function settings](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/function-settings) component.',
   defaultExample: {
     description:
-      'Save a minimum quantity validation rule with a [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/number-field) input. This example calls `applyMetafieldChange`, checks the result type, and displays success or error banners based on the response.',
+      'Save a minimum quantity validation rule with a [number field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/number-field) input. This example calls `applyMetafieldChange`, checks the result type, and displays success or error banners based on the response.',
     codeblock: {
       title: 'Set minimum quantity',
       tabs: [

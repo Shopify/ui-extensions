@@ -36,7 +36,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Index'],
   defaultExample: {
     description:
-      'Merchants need to view, search, filter, and take bulk actions on collections of items. This pattern displays an index table with search, sort, and bulk actions. Key attributes include `slot="filters"` on the [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) to place controls in the filters area, `clickDelegate` on [table rows](/docs/api/app-home/polaris-web-components/layout-and-structure/table) to connect clicks to checkboxes, and `listSlot` on [table headers](/docs/api/app-home/polaris-web-components/layout-and-structure/table) to control responsive stacking. Use the [Navigation API](/docs/api/app-home/apis/navigation) for programmatic navigation and the [Toast API](/docs/api/app-home/apis/toast) for confirming successful actions.',
+      'Merchants need to view, search, filter, and take bulk actions on collections of items. This pattern displays an index table with search, sort, and bulk actions. Key attributes include `slot="filters"` on the [grid](/docs/api/app-home/web-components/layout-and-structure/grid) to place controls in the filters area, `clickDelegate` on [table rows](/docs/api/app-home/web-components/layout-and-structure/table) to connect clicks to checkboxes, and `listSlot` on [table headers](/docs/api/app-home/web-components/layout-and-structure/table) to control responsive stacking. Use the [Navigation API](/docs/api/app-home/apis/navigation) for programmatic navigation and the [Toast API](/docs/api/app-home/apis/toast) for confirming successful actions.',
     codeblock: {
       title: 'Display an index table with search, sort, and bulk actions',
       tabs: [

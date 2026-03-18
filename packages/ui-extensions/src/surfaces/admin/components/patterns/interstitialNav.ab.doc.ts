@@ -27,7 +27,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Settings'],
   defaultExample: {
     description:
-      'Merchants need clear paths to deeper pages (e.g. settings, features) without cluttering main navigation. This pattern displays a navigation menu with drill-down rows. [Clickable](/docs/api/app-home/polaris-web-components/actions/clickable) rows sit in a bordered [box](/docs/api/app-home/polaris-web-components/layout-and-structure/box). Each row uses the [icon](/docs/api/app-home/polaris-web-components/images/icon) with `name="chevron-right"` to indicate navigation.',
+      'Merchants need clear paths to deeper pages (e.g. settings, features) without cluttering main navigation. This pattern displays a navigation menu with drill-down rows. [Clickable](/docs/api/app-home/web-components/actions/clickable) rows sit in a bordered [box](/docs/api/app-home/web-components/layout-and-structure/box). Each row uses the [icon](/docs/api/app-home/web-components/images/icon) with `name="chevron-right"` to indicate navigation.',
     codeblock: {
       title: 'Display a navigation menu with drill-down rows',
       tabs: [
