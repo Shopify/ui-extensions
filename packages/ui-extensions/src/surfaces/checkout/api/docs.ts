@@ -100,5 +100,3 @@ export interface Docs_Standard_AnalyticsApi
 
 export interface Docs_Standard_CustomerPrivacyApi
   extends Pick<StandardApi, 'customerPrivacy' | 'applyTrackingConsentChange'> {}
-
-export interface Docs_Standard_Ui extends Pick<StandardApi, 'ui'> {}
