@@ -48,7 +48,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       name: 'Table',
       subtitle: 'Component',
-      url: '/docs/api/app-home/polaris-web-components/structure/table',
+      url: '/docs/api/app-home/web-components/structure/table',
       type: 'component',
     },
   ],
