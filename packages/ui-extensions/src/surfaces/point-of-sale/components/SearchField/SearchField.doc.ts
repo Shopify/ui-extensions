@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'SearchFieldEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'search-field-default.png',

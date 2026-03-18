@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Text area',
   description:
     'The text area component captures multi-line text input. Use it to collect descriptions, notes, comments, or other extended text content.' +
-    '\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [text field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/text-field).',
+    '\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [text field](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/text-field).',
   thumbnail: 'text-area-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'TextAreaEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'text-area-default.png',

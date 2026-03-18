@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Link',
   description:
     'The link component makes text interactive, allowing users to trigger actions through tappable text. Use it for lightweight interactions, navigation triggers, or actions embedded within text content.' +
-    '\n\nLinks support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) instead.',
+    '\n\nLinks support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) instead.',
   thumbnail: 'link-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'LinkEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Actions',
   defaultExample: {
     image: 'link-default.png',

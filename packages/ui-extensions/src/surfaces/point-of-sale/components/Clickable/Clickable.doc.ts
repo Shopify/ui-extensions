@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Clickable',
   description:
     'The clickable component makes any content interactive. Use it to add click interactions to non-interactive elements while maintaining full control over their visual presentation.' +
-    "\n\nUnlike the [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) component, clickable doesn't impose visual styling, allowing you to create custom interactive elements. You must implement focus indicators and other visual cues yourself.",
+    "\n\nUnlike the [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) component, clickable doesn't impose visual styling, allowing you to create custom interactive elements. You must implement focus indicators and other visual cues yourself.",
   thumbnail: 'clickable-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ClickableEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Actions',
   defaultExample: {
     image: 'clickable-default.png',

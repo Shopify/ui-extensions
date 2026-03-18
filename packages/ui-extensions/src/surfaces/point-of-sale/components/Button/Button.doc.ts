@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ButtonEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Actions',
   defaultExample: {
     image: 'button-default.png',

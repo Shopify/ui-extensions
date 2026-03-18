@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Date picker',
   description:
     'The date picker component allows merchants to select dates using a calendar interface. Use it when merchants benefit from seeing dates in context of the full month, such as selecting dates relative to today or needing weekday context.' +
-    '\n\nThe component supports single dates, multiple dates, and date ranges. For tight spaces, consider using [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-spinner) instead. For text date entry, use [date field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-field).',
+    '\n\nThe component supports single dates, multiple dates, and date ranges. For tight spaces, consider using [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-spinner) instead. For text date entry, use [date field](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-field).',
   thumbnail: 'date-picker-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DatePickerEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'date-picker-default.png',
@@ -44,7 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent: `
-- **Choose for calendar-based selection:** Use date picker when users benefit from seeing a calendar view, like selecting dates relative to today or needing weekday context. Use [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-spinner) for tight spaces or [date field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-field) when users know the exact date.
+- **Choose for calendar-based selection:** Use date picker when users benefit from seeing a calendar view, like selecting dates relative to today or needing weekday context. Use [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-spinner) for tight spaces or [date field](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-field) when users know the exact date.
 - **Provide adequate space:** Ensure sufficient spacing around the picker to avoid interfering with on-screen keyboards or other interactive elements.
 `,
     },
