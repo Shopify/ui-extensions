@@ -40,7 +40,7 @@ You can track new releases and update your extensions by referencing the [develo
         {
           subtitle: 'Components',
           name: 'See all available components',
-          url: '/docs/api/pos-ui-extensions/polaris-web-components',
+          url: '/docs/api/pos-ui-extensions/web-components',
           type: 'blocks',
         },
       ],

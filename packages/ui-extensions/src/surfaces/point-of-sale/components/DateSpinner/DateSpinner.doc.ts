@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Date spinner',
   description:
     'The date spinner component enables merchants to select dates using a spinner interface with scrollable columns for month, day, and year. Use it for compact date selection in space-constrained layouts or when selecting dates close to the current date.' +
-    '\n\nFor visual calendar context, consider using [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-picker) instead. For text date entry, use [date field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-field).',
+    '\n\nFor visual calendar context, consider using [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-picker) instead. For text date entry, use [date field](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-field).',
   thumbnail: 'date-spinner-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DateSpinnerEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'date-spinner-default.png',
@@ -45,7 +45,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       sectionContent: `
 - **Use for space-constrained layouts:** Choose date spinner for narrow layouts or split-screen interfaces where a calendar view would be impractical.
-- **Best for nearby dates:** Use when selecting dates close to the current date. For distant dates, [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-picker) provides faster navigation.
+- **Best for nearby dates:** Use when selecting dates close to the current date. For distant dates, [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-picker) provides faster navigation.
 - **Provide interaction cues:** Consider labels or instructions to help first-time users understand the scrollable column interface.
 `,
     },

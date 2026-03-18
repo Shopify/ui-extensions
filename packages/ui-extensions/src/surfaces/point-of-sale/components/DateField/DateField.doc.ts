@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Date field',
   description:
     'The date field component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.' +
-    '\n\nThe component supports manual text entry. For visual calendar-based selection, consider using [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-picker) or [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-spinner) components.',
+    '\n\nThe component supports manual text entry. For visual calendar-based selection, consider using [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-picker) or [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-spinner) components.',
   thumbnail: 'date-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DateFieldEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'date-field-default.png',
@@ -44,7 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best practices',
       sectionContent: `
-- **Choose for direct text input:** Use date field when users know the exact date and can type it efficiently. Use [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-picker) for calendar selection or [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-spinner) for space-constrained layouts.
+- **Choose for direct text input:** Use date field when users know the exact date and can type it efficiently. Use [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-picker) for calendar selection or [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-spinner) for space-constrained layouts.
 - **Explain date constraints:** Use \`details\` to clarify requirements like "Select a date within the next 30 days" or "Must be a future date."
 - **Write actionable error messages:** Provide clear validation messages for invalid dates that help users correct their input.
 `,

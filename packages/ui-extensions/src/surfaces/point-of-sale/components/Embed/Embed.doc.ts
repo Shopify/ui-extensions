@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'EmbedProps',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Media and visuals',
   related: [],
   defaultExample: {
