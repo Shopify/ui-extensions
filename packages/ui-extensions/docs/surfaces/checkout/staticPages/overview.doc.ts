@@ -164,7 +164,7 @@ Checkout components are designed to be flexible, enabling you to layer and mix t
         {
           name: 'Component library',
           subtitle: 'API reference',
-          url: '/docs/api/checkout-ui-extensions/latest/polaris-web-components',
+          url: '/docs/api/checkout-ui-extensions/latest/web-components',
           type: 'blocks',
         },
         {
