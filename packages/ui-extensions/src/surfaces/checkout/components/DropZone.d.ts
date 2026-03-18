@@ -37,7 +37,10 @@ export interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | '
 }
 export interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput' | 'onChange'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface DropZoneElementEvents {
     /**
      * Callback when rejected files are dropped. Files are rejected based on the `accept` prop.

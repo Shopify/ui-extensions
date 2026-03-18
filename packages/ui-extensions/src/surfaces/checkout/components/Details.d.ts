@@ -48,7 +48,10 @@ export interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' 
 }
 export interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle' | 'onAfterToggle'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface DetailsElementEvents {
     /**
      * Callback straight after the element state changes.

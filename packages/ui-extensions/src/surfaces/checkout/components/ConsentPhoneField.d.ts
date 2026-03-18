@@ -79,7 +79,10 @@ export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldPro
 }
 export interface ConsentPhoneFieldEvents extends Pick<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface ConsentPhoneFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -112,7 +115,10 @@ export interface ConsentPhoneFieldElement extends ConsentPhoneFieldElementProps,
     onfocus: ConsentPhoneFieldEvents['onFocus'];
     oninput: ConsentPhoneFieldEvents['onInput'];
 }
-/** @publicDocs */
+/**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
+ * @publicDocs
+ */
 export interface ConsentPhoneFieldElementSlots {
     /**
      * Additional content to be displayed in the field.

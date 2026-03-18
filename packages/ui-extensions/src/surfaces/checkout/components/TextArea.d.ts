@@ -42,7 +42,10 @@ export interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'labe
 }
 export interface TextAreaEvents extends Pick<TextAreaProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface TextAreaElementEvents {
     /**
      * Callback when the element loses focus.

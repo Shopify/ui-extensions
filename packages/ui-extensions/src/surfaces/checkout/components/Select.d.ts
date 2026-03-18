@@ -43,7 +43,10 @@ export interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' |
 }
 export interface SelectEvents extends Pick<SelectProps$1, 'onBlur' | 'onChange' | 'onFocus'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface SelectElementEvents {
     /**
      * Callback when the element loses focus.

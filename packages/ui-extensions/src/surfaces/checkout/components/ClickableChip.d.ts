@@ -43,7 +43,10 @@ export interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'a
 }
 export interface ClickableChipEvents extends Pick<ClickableChipProps$1, 'onAfterHide' | 'onClick' | 'onRemove'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface ClickableChipElementEvents {
     /**
      * Event handler when the chip has fully hidden.
@@ -60,7 +63,10 @@ export interface ClickableChipElementEvents {
      */
     remove?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
+/**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
+ * @publicDocs
+ */
 export interface ClickableChipElementSlots {
     /**
      * The graphic to display inside of the chip.

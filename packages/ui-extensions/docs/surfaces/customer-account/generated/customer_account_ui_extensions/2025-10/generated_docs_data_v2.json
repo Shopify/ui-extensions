@@ -4325,7 +4325,7 @@
     "src/surfaces/checkout/components/Announcement.ts": {
       "filePath": "src/surfaces/checkout/components/Announcement.ts",
       "name": "AnnouncementElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -4395,7 +4395,7 @@
     "src/surfaces/checkout/components/Announcement.ts": {
       "filePath": "src/surfaces/checkout/components/Announcement.ts",
       "name": "AnnouncementElementMethods",
-      "description": "",
+      "description": "Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).",
       "isPublicDocs": true,
       "members": [
         {
@@ -4549,7 +4549,7 @@
     "src/surfaces/checkout/components/Banner.ts": {
       "filePath": "src/surfaces/checkout/components/Banner.ts",
       "name": "BannerElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5053,7 +5053,7 @@
     "src/surfaces/checkout/components/Button.ts": {
       "filePath": "src/surfaces/checkout/components/Button.ts",
       "name": "ButtonElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5184,7 +5184,7 @@
     "src/surfaces/checkout/components/Checkbox.ts": {
       "filePath": "src/surfaces/checkout/components/Checkbox.ts",
       "name": "CheckboxElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5323,7 +5323,7 @@
     "src/surfaces/checkout/components/Chip.ts": {
       "filePath": "src/surfaces/checkout/components/Chip.ts",
       "name": "ChipElementSlots",
-      "description": "",
+      "description": "Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5440,7 +5440,7 @@
     "src/surfaces/checkout/components/Choice.ts": {
       "filePath": "src/surfaces/checkout/components/Choice.ts",
       "name": "ChoiceElementSlots",
-      "description": "",
+      "description": "Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5562,7 +5562,7 @@
     "src/surfaces/checkout/components/ChoiceList.ts": {
       "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
       "name": "ChoiceListElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6298,7 +6298,7 @@
     "src/surfaces/checkout/components/Clickable.ts": {
       "filePath": "src/surfaces/checkout/components/Clickable.ts",
       "name": "ClickableElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6395,7 +6395,7 @@
     "src/surfaces/checkout/components/ClickableChip.ts": {
       "filePath": "src/surfaces/checkout/components/ClickableChip.ts",
       "name": "ClickableChipElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6430,7 +6430,7 @@
     "src/surfaces/checkout/components/ClickableChip.ts": {
       "filePath": "src/surfaces/checkout/components/ClickableChip.ts",
       "name": "ClickableChipElementSlots",
-      "description": "",
+      "description": "Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6477,7 +6477,7 @@
     "src/surfaces/checkout/components/ClipboardItem.ts": {
       "filePath": "src/surfaces/checkout/components/ClipboardItem.ts",
       "name": "ClipboardItemElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6624,7 +6624,7 @@
     "src/surfaces/checkout/components/ConsentCheckbox.ts": {
       "filePath": "src/surfaces/checkout/components/ConsentCheckbox.ts",
       "name": "ConsentCheckboxElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6914,7 +6914,7 @@
     "src/surfaces/checkout/components/ConsentPhoneField.ts": {
       "filePath": "src/surfaces/checkout/components/ConsentPhoneField.ts",
       "name": "ConsentPhoneFieldElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6957,7 +6957,7 @@
     "src/surfaces/checkout/components/ConsentPhoneField.ts": {
       "filePath": "src/surfaces/checkout/components/ConsentPhoneField.ts",
       "name": "ConsentPhoneFieldElementSlots",
-      "description": "",
+      "description": "Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -7181,7 +7181,7 @@
     "src/surfaces/checkout/components/DateField.ts": {
       "filePath": "src/surfaces/checkout/components/DateField.ts",
       "name": "DateFieldElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -7403,7 +7403,7 @@
     "src/surfaces/checkout/components/DatePicker.ts": {
       "filePath": "src/surfaces/checkout/components/DatePicker.ts",
       "name": "DatePickerElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -7500,7 +7500,7 @@
     "src/surfaces/checkout/components/Details.ts": {
       "filePath": "src/surfaces/checkout/components/Details.ts",
       "name": "DetailsElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -7651,7 +7651,7 @@
     "src/surfaces/checkout/components/DropZone.ts": {
       "filePath": "src/surfaces/checkout/components/DropZone.ts",
       "name": "DropZoneElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -7818,7 +7818,7 @@
     "src/surfaces/checkout/components/EmailField.ts": {
       "filePath": "src/surfaces/checkout/components/EmailField.ts",
       "name": "EmailFieldElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -7861,7 +7861,7 @@
     "src/surfaces/checkout/components/EmailField.ts": {
       "filePath": "src/surfaces/checkout/components/EmailField.ts",
       "name": "EmailFieldElementSlots",
-      "description": "",
+      "description": "Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -7910,7 +7910,7 @@
     "src/surfaces/checkout/components/Form.ts": {
       "filePath": "src/surfaces/checkout/components/Form.ts",
       "name": "FormElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -8887,7 +8887,7 @@
     "src/surfaces/checkout/components/Link.ts": {
       "filePath": "src/surfaces/checkout/components/Link.ts",
       "name": "LinkElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -9153,7 +9153,7 @@
     "src/surfaces/checkout/components/Map.ts": {
       "filePath": "src/surfaces/checkout/components/Map.ts",
       "name": "MapElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -9365,7 +9365,7 @@
     "src/surfaces/checkout/components/MapMarker.ts": {
       "filePath": "src/surfaces/checkout/components/MapMarker.ts",
       "name": "MapMarkerElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -9384,7 +9384,7 @@
     "src/surfaces/checkout/components/MapMarker.ts": {
       "filePath": "src/surfaces/checkout/components/MapMarker.ts",
       "name": "MapMarkerElementSlots",
-      "description": "",
+      "description": "Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -9456,7 +9456,7 @@
     "src/surfaces/checkout/components/Modal.ts": {
       "filePath": "src/surfaces/checkout/components/Modal.ts",
       "name": "ModalElementSlots",
-      "description": "",
+      "description": "Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -9483,7 +9483,7 @@
     "src/surfaces/checkout/components/Modal.ts": {
       "filePath": "src/surfaces/checkout/components/Modal.ts",
       "name": "ModalElementMethods",
-      "description": "",
+      "description": "Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).",
       "isPublicDocs": true,
       "members": [
         {
@@ -9501,7 +9501,7 @@
     "src/surfaces/checkout/components/Modal.ts": {
       "filePath": "src/surfaces/checkout/components/Modal.ts",
       "name": "ModalElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -9675,7 +9675,7 @@
     "src/surfaces/checkout/components/MoneyField.ts": {
       "filePath": "src/surfaces/checkout/components/MoneyField.ts",
       "name": "MoneyFieldElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -9904,7 +9904,7 @@
     "src/surfaces/checkout/components/NumberField.ts": {
       "filePath": "src/surfaces/checkout/components/NumberField.ts",
       "name": "NumberFieldElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -9947,7 +9947,7 @@
     "src/surfaces/checkout/components/NumberField.ts": {
       "filePath": "src/surfaces/checkout/components/NumberField.ts",
       "name": "NumberFieldElementSlots",
-      "description": "",
+      "description": "Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -10251,7 +10251,7 @@
     "src/surfaces/checkout/components/PasswordField.ts": {
       "filePath": "src/surfaces/checkout/components/PasswordField.ts",
       "name": "PasswordFieldElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -10294,7 +10294,7 @@
     "src/surfaces/checkout/components/PasswordField.ts": {
       "filePath": "src/surfaces/checkout/components/PasswordField.ts",
       "name": "PasswordFieldElementSlots",
-      "description": "",
+      "description": "Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -10367,7 +10367,7 @@
     "src/surfaces/checkout/components/PhoneField.ts": {
       "filePath": "src/surfaces/checkout/components/PhoneField.ts",
       "name": "PhoneFieldElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -10410,7 +10410,7 @@
     "src/surfaces/checkout/components/PhoneField.ts": {
       "filePath": "src/surfaces/checkout/components/PhoneField.ts",
       "name": "PhoneFieldElementSlots",
-      "description": "",
+      "description": "Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -10502,7 +10502,7 @@
     "src/surfaces/checkout/components/Popover.ts": {
       "filePath": "src/surfaces/checkout/components/Popover.ts",
       "name": "PopoverElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -10609,7 +10609,7 @@
     "src/surfaces/checkout/components/PressButton.ts": {
       "filePath": "src/surfaces/checkout/components/PressButton.ts",
       "name": "PressButtonElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -10828,7 +10828,7 @@
     "src/surfaces/checkout/components/QRCode.ts": {
       "filePath": "src/surfaces/checkout/components/QRCode.ts",
       "name": "QRCodeElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -11216,7 +11216,7 @@
     "src/surfaces/checkout/components/Select.ts": {
       "filePath": "src/surfaces/checkout/components/Select.ts",
       "name": "SelectElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -11295,7 +11295,7 @@
     "src/surfaces/checkout/components/Sheet.ts": {
       "filePath": "src/surfaces/checkout/components/Sheet.ts",
       "name": "SheetElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -11338,7 +11338,7 @@
     "src/surfaces/checkout/components/Sheet.ts": {
       "filePath": "src/surfaces/checkout/components/Sheet.ts",
       "name": "SheetElementSlots",
-      "description": "",
+      "description": "Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -11365,7 +11365,7 @@
     "src/surfaces/checkout/components/Sheet.ts": {
       "filePath": "src/surfaces/checkout/components/Sheet.ts",
       "name": "SheetElementMethods",
-      "description": "",
+      "description": "Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).",
       "isPublicDocs": true,
       "members": [
         {
@@ -11852,7 +11852,7 @@
     "src/surfaces/checkout/components/Switch.ts": {
       "filePath": "src/surfaces/checkout/components/Switch.ts",
       "name": "SwitchElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -12094,7 +12094,7 @@
     "src/surfaces/checkout/components/TextArea.ts": {
       "filePath": "src/surfaces/checkout/components/TextArea.ts",
       "name": "TextAreaElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -12296,7 +12296,7 @@
     "src/surfaces/checkout/components/TextField.ts": {
       "filePath": "src/surfaces/checkout/components/TextField.ts",
       "name": "TextFieldElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -12339,7 +12339,7 @@
     "src/surfaces/checkout/components/TextField.ts": {
       "filePath": "src/surfaces/checkout/components/TextField.ts",
       "name": "TextFieldElementSlots",
-      "description": "",
+      "description": "Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -12546,7 +12546,7 @@
     "src/surfaces/checkout/components/UrlField.ts": {
       "filePath": "src/surfaces/checkout/components/UrlField.ts",
       "name": "UrlFieldElementEvents",
-      "description": "",
+      "description": "Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).",
       "isPublicDocs": true,
       "members": [
         {
@@ -12589,7 +12589,7 @@
     "src/surfaces/checkout/components/UrlField.ts": {
       "filePath": "src/surfaces/checkout/components/UrlField.ts",
       "name": "UrlFieldElementSlots",
-      "description": "",
+      "description": "Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).",
       "isPublicDocs": true,
       "members": [
         {

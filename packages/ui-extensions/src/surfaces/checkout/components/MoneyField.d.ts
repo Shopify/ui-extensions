@@ -37,7 +37,10 @@ export interface MoneyFieldElementProps extends Pick<MoneyFieldProps$1, 'autocom
 }
 export interface MoneyFieldEvents extends Pick<MoneyFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface MoneyFieldElementEvents {
     /**
      * Callback when the element loses focus.

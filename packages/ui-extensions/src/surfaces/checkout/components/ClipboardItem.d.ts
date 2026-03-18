@@ -37,7 +37,10 @@ export interface ClipboardItemElementProps extends Pick<ClipboardItemProps$1, 'i
 }
 export interface ClipboardItemEvents extends Pick<ClipboardItemProps$1, 'onCopy' | 'onCopyError'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface ClipboardItemElementEvents {
     /**
      * Callback run when the copy to clipboard succeeds.

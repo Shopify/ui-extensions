@@ -43,7 +43,10 @@ export interface PressButtonElementProps extends Pick<PressButtonProps$1, 'acces
 }
 export interface PressButtonEvents extends Pick<PressButtonProps$1, 'onClick' | 'onBlur' | 'onFocus'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface PressButtonElementEvents {
     /**
      * Callback when the button is activated.

@@ -107,7 +107,10 @@ export interface MapViewChangeEvent extends MapLocationEvent {
      */
     zoom?: number;
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface MapElementEvents {
     /**
      * A callback fired when the visible map boundaries change, such as after a pan or zoom completes.

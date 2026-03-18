@@ -77,7 +77,10 @@ export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autoc
 }
 export interface NumberFieldEvents extends Pick<NumberFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface NumberFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -104,7 +107,10 @@ export interface NumberFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
+/**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
+ * @publicDocs
+ */
 export interface NumberFieldElementSlots {
     /**
      * Additional content to be displayed in the field.

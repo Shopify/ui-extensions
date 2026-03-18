@@ -45,7 +45,10 @@ export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel'
 }
 export interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface LinkElementEvents {
     /**
      * Callback when the link is activated.

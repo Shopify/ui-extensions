@@ -66,7 +66,10 @@ export interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibi
 }
 export interface ClickableEvents extends Pick<ClickableProps$1, 'onBlur' | 'onClick' | 'onFocus'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface ClickableElementEvents {
     /**
      * Callback when the element loses focus.

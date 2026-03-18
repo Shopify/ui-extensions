@@ -37,7 +37,10 @@ export interface DatePickerElementProps extends Pick<DatePickerProps$1, 'allow' 
 }
 export interface DatePickerEvents extends Pick<DatePickerProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface DatePickerElementEvents {
     /**
      * Callback when the element loses focus.

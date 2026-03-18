@@ -47,7 +47,10 @@ export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLa
 }
 export interface ButtonEvents extends Pick<ButtonProps$1, 'onClick'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface ButtonElementEvents {
     /**
      * Callback when the button is activated.

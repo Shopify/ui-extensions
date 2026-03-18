@@ -42,7 +42,10 @@ export interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 
 }
 export interface DateFieldEvents extends Pick<DateFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface DateFieldElementEvents {
     /**
      * Callback when the element loses focus.

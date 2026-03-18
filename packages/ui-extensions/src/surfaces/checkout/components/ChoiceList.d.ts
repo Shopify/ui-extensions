@@ -43,7 +43,10 @@ export interface ChoiceListElementProps extends Pick<ChoiceListProps$1, 'disable
 }
 export interface ChoiceListEvents extends Pick<ChoiceListProps$1, 'onChange'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface ChoiceListElementEvents {
     /**
      * A callback that is run whenever the control is changed.

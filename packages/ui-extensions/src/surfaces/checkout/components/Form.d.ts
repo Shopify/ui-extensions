@@ -47,7 +47,10 @@ export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
      */
     onSubmit?: () => void;
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface FormElementEvents {
     /**
      * A callback that is run when the form is submitted.

@@ -28,7 +28,10 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 declare const tagName = "s-chip";
 export interface ChipElementProps extends Pick<ChipProps$1, 'accessibilityLabel' | 'id'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
+ * @publicDocs
+ */
 export interface ChipElementSlots {
     /**
      * The graphic to display inside of the chip.

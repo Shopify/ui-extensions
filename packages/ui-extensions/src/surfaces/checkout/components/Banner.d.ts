@@ -44,7 +44,10 @@ export interface BannerElementProps extends Pick<BannerProps$1, 'collapsible' | 
 }
 export interface BannerEvents extends Pick<BannerProps$1, 'onAfterHide' | 'onDismiss'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface BannerElementEvents {
     /**
      * Event handler when the banner has fully hidden.

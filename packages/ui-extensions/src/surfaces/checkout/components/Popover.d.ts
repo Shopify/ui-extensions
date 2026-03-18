@@ -94,7 +94,10 @@ export interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
  */
 export interface PopoverEvents extends Pick<PopoverProps$1, 'onHide' | 'onShow'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface PopoverElementEvents {
     /**
      * A callback fired immediately after the popover is hidden.

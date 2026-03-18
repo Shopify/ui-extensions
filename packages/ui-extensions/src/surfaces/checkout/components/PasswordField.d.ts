@@ -43,7 +43,10 @@ export interface PasswordFieldElementProps extends Pick<PasswordFieldProps$1, 'a
 }
 export interface PasswordFieldEvents extends Pick<PasswordFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface PasswordFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -70,7 +73,10 @@ export interface PasswordFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
+/**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
+ * @publicDocs
+ */
 export interface PasswordFieldElementSlots {
     /**
      * Additional content to be displayed in the field.

@@ -62,7 +62,10 @@ export interface ConsentCheckboxElementProps extends Pick<ConsentCheckboxProps$1
 }
 export interface ConsentCheckboxEvents extends Pick<CheckboxEvents, 'onChange'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface ConsentCheckboxElementEvents {
     /**
      * A callback that is run whenever the control is changed.

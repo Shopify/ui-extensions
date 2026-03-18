@@ -43,7 +43,10 @@ export interface UrlFieldElementProps extends Pick<URLFieldProps, 'autocomplete'
 }
 export interface UrlFieldEvents extends Pick<URLFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface UrlFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -70,7 +73,10 @@ export interface UrlFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
+/**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
+ * @publicDocs
+ */
 export interface UrlFieldElementSlots {
     /**
      * Additional content to be displayed in the field.

@@ -38,7 +38,10 @@ export interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibili
 }
 export interface CheckboxEvents extends Pick<CheckboxProps$1, 'onChange'> {
 }
-/** @publicDocs */
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface CheckboxElementEvents {
     /**
      * A callback that is run whenever the control is changed.
