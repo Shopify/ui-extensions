@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'SectionSlots',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Layout and structure',
   defaultExample: {
     image: 'section-default.png',

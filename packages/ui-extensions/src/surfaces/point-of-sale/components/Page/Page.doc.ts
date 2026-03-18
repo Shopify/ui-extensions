@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PageSlots',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Layout and structure',
   defaultExample: {
     image: 'page-default.png',
