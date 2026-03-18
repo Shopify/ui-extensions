@@ -32,7 +32,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-date-picker";
-/** @publicDocs */
+/**
+ * The date picker component allows merchants to select dates using a calendar interface. Use it when merchants benefit from seeing dates in context of the full month, such as selecting dates relative to today or needing weekday context.
+ *
+ * The component supports single dates, multiple dates, and date ranges. For text date entry, use [date field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/date-field).
+ * @publicDocs
+ */
 export interface DatePickerElementProps extends Pick<DatePickerProps$1, 'allow' | 'allowDays' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'id' | 'name' | 'type' | 'value' | 'view'> {
 }
 export interface DatePickerEvents extends Pick<DatePickerProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'> {

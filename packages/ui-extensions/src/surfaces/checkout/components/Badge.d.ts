@@ -33,7 +33,12 @@ declare const CHECKOUT_AVAILABLE_ICONS: readonly ["alert-circle", "alert-triangl
 export type ReducedIconTypes = (typeof CHECKOUT_AVAILABLE_ICONS)[number];
 
 declare const tagName = "s-badge";
-/** @publicDocs */
+/**
+ * The badge component displays status information or indicates completed actions through compact visual indicators. Use badge to communicate object states, order statuses, or system-generated classifications that help users quickly understand item conditions.
+ *
+ * Badges support multiple tones and sizes, with optional icons to reinforce status meaning and improve scannability in lists and tables. For user-created labels, categories, or tags, use [chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/chip) instead.
+ * @publicDocs
+ */
 export interface BadgeProps extends Pick<BadgeProps$1, 'color' | 'icon' | 'iconPosition' | 'id' | 'size' | 'tone'> {
     size?: Extract<BadgeProps$1['size'], 'small' | 'small-100' | 'base'>;
     tone?: Extract<BadgeProps$1['tone'], 'auto' | 'neutral' | 'critical'>;

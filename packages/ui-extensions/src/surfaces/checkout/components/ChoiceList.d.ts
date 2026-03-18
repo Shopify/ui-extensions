@@ -38,7 +38,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-choice-list";
-/** @publicDocs */
+/**
+ * The choice list component presents multiple options for single or multiple selections. Use it when merchants need to choose from a defined set of options, such as filtering results or collecting preferences.
+ *
+ * The component supports both single selection (radio button behavior) and multiple selection (checkbox behavior) modes. It includes configurable labels, help text, and validation. For compact dropdown selection with four or more options, use [select](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/select).
+ * @publicDocs
+ */
 export interface ChoiceListElementProps extends Pick<ChoiceListProps$1, 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'multiple' | 'name' | 'values' | 'variant'> {
 }
 export interface ChoiceListEvents extends Pick<ChoiceListProps$1, 'onChange'> {

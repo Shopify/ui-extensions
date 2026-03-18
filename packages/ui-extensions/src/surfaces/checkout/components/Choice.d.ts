@@ -26,7 +26,12 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-choice";
-/** @publicDocs */
+/**
+ * The choice component creates individual selectable options within a choice list. Use choice to define each option that merchants can select, supporting both single selection (radio buttons) and multiple selection (checkboxes) modes.
+ *
+ * Choice components support labels, help text, and custom content through slots, providing flexible option presentation within choice lists.
+ * @publicDocs
+ */
 export interface ChoiceProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'error' | 'value'> {
 }
 /**

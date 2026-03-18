@@ -49,7 +49,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-image";
-/** @publicDocs */
+/**
+ * The image component embeds images within the interface with control over presentation and loading behavior. Use image to visually illustrate concepts, showcase products, display user content, or support tasks and interactions with visual context.
+ *
+ * Images support responsive sizing, alt text for accessibility, aspect ratio control, and loading states for progressive enhancement. For small preview images in lists or tables, use [thumbnail](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/thumbnail). For profile images, use [avatar](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/avatar).
+ * @publicDocs
+ */
 export interface ImageProps extends Pick<ImageProps$1, 'accessibilityRole' | 'alt' | 'aspectRatio' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'id' | 'inlineSize' | 'loading' | 'objectFit' | 'sizes' | 'src' | 'srcSet'> {
     /**
      * A shorthand for setting the border around the image. Accepts a size keyword alone (for example, `'base'`), a size and color (for example, `'base base'`), or a size, color, and style (for example, `'base base solid'`). Use `'none'` to remove the border.

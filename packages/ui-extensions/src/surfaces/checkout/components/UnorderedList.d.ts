@@ -26,7 +26,12 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-unordered-list";
-/** @publicDocs */
+/**
+ * The unordered list component displays a bulleted list of related items where sequence isn't critical. Use unordered list to present collections of features, options, requirements, or any group of items where order doesn't affect meaning.
+ *
+ * Unordered lists automatically add bullet points and support nested lists for hierarchical content organization. For sequential items where order is important, use [ordered list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/ordered-list).
+ * @publicDocs
+ */
 export interface UnorderedListProps extends UnorderedListProps$1 {
 }
 export interface UnorderedListElement extends UnorderedListProps, Omit<HTMLElement, 'id'> {

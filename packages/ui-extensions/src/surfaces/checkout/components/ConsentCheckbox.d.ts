@@ -56,7 +56,10 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-consent-checkbox";
-/** @publicDocs */
+/**
+ * Use buyer consent checkboxes for collecting the buyer’s approval for a given policy.
+ * @publicDocs
+ */
 export interface ConsentCheckboxElementProps extends Pick<ConsentCheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'policy' | 'value'> {
     command?: Extract<ConsentCheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }

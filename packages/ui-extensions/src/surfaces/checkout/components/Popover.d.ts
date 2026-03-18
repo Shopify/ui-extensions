@@ -50,7 +50,10 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-popover";
-/** @publicDocs */
+/**
+ * Popovers are used to display content in an overlay that can be triggered by a button.
+ * @publicDocs
+ */
 export interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
     /**
      * The block size of the popover (height in horizontal writing modes). Learn more about the [block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).

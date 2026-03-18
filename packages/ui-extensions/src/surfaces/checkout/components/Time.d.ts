@@ -26,7 +26,10 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-time";
-/** @publicDocs */
+/**
+ * Represents a specific point or duration in time. Use to display dates, times, or durations clearly and consistently. May include a machine-readable `datetime` attribute for improved accessibility and functionality.
+ * @publicDocs
+ */
 export interface TimeProps extends Pick<TimeProps$1, 'dateTime' | 'id'> {
 }
 export interface TimeElement extends TimeProps, Omit<HTMLElement, 'id'> {

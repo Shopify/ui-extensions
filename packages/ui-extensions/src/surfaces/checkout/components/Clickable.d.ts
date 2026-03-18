@@ -55,7 +55,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-clickable";
-/** @publicDocs */
+/**
+ * The clickable component wraps content to make it interactive and clickable. Use it when you need more styling control than [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) or [link](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/link) provide, such as custom backgrounds, padding, or borders around your clickable content.
+ *
+ * Clickable supports button, link, and submit modes with built-in accessibility properties for keyboard navigation and screen reader support.
+ * @publicDocs
+ */
 export interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibilityLabel' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'command' | 'commandFor' | 'disabled' | 'display' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'lang' | 'loading' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'target' | 'type'> {
     background?: Extract<ClickableProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;

@@ -41,7 +41,10 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-qr-code";
-/** @publicDocs */
+/**
+ * Displays a scannable QR code representing data such as URLs or text. Use to let users quickly access information by scanning with a smartphone or other device.
+ * @publicDocs
+ */
 export interface QRCodeElementProps extends QRCodeProps$1 {
 }
 /**

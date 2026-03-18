@@ -38,7 +38,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-password-field";
-/** @publicDocs */
+/**
+ * The password field component securely collects sensitive information from users. Use password field for password entry, where input characters are automatically masked for privacy.
+ *
+ * Password fields support validation, help text, and accessibility features to create secure and user-friendly authentication experiences. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field).
+ * @publicDocs
+ */
 export interface PasswordFieldElementProps extends Pick<PasswordFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
 export interface PasswordFieldEvents extends Pick<PasswordFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {

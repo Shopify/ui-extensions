@@ -32,7 +32,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-checkbox";
-/** @publicDocs */
+/**
+ * The checkbox component provides a clear way for users to make selections, such as agreeing to terms, enabling settings, or choosing multiple items from a list. Use checkbox to create binary on/off controls or multi-select interfaces where users can select any combination of options.
+ *
+ * Checkboxes support labels, help text, error states, and an indeterminate state for "select all" functionality when working with grouped selections. For settings that take effect immediately, use [switch](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/switch) instead.
+ * @publicDocs
+ */
 export interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
     command?: Extract<CheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }

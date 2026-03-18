@@ -50,7 +50,10 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-modal";
-/** @publicDocs */
+/**
+ * Displays content in an overlay. Use to create a distraction-free experience such as a confirmation dialog or a settings panel.
+ * @publicDocs
+ */
 export interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
     /**
      * The size of the modal.

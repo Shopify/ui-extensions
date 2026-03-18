@@ -38,7 +38,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-banner";
-/** @publicDocs */
+/**
+ * The banner component highlights important information or required actions prominently within the interface. Use banner to communicate statuses, provide feedback, draw attention to critical updates, or guide users toward necessary actions.
+ *
+ * Banners support multiple tones to convey urgency levels, optional actions for next steps, and can be positioned contextually within sections or page-wide at the top. For inline status indicators on individual items, use [badge](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge).
+ * @publicDocs
+ */
 export interface BannerElementProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {
     tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;
 }

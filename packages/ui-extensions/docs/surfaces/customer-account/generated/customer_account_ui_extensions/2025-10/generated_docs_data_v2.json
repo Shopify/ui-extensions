@@ -4297,7 +4297,7 @@
     "src/surfaces/checkout/components/Abbreviation.ts": {
       "filePath": "src/surfaces/checkout/components/Abbreviation.ts",
       "name": "AbbreviationProps",
-      "description": "",
+      "description": "Displays abbreviated text or acronyms, revealing their full meaning or additional context through a tooltip on hover or focus. Use to clarify shortened terms, initialisms, or technical language without interrupting the reading flow.",
       "isPublicDocs": true,
       "members": [
         {
@@ -4413,7 +4413,7 @@
     "src/surfaces/checkout/components/Badge.ts": {
       "filePath": "src/surfaces/checkout/components/Badge.ts",
       "name": "BadgeProps",
-      "description": "",
+      "description": "The badge component displays status information or indicates completed actions through compact visual indicators. Use badge to communicate object states, order statuses, or system-generated classifications that help users quickly understand item conditions.\n\nBadges support multiple tones and sizes, with optional icons to reinforce status meaning and improve scannability in lists and tables. For user-created labels, categories, or tags, use [chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/chip) instead.",
       "isPublicDocs": true,
       "members": [
         {
@@ -4485,7 +4485,7 @@
     "src/surfaces/checkout/components/Banner.ts": {
       "filePath": "src/surfaces/checkout/components/Banner.ts",
       "name": "BannerElementProps",
-      "description": "",
+      "description": "The banner component highlights important information or required actions prominently within the interface. Use banner to communicate statuses, provide feedback, draw attention to critical updates, or guide users toward necessary actions.\n\nBanners support multiple tones to convey urgency levels, optional actions for next steps, and can be positioned contextually within sections or page-wide at the top. For inline status indicators on individual items, use [badge](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge).",
       "isPublicDocs": true,
       "members": [
         {
@@ -4576,7 +4576,7 @@
     "src/surfaces/checkout/components/Box.ts": {
       "filePath": "src/surfaces/checkout/components/Box.ts",
       "name": "BoxProps",
-      "description": "",
+      "description": "The box component provides a generic, flexible container for custom designs and layouts. Use box to apply styling like backgrounds, padding, borders, or border radius when existing components don't meet your needs, or to nest and group other components.\n\nBox contents maintain their natural size, making it especially useful within layout components that would otherwise stretch their children. For structured layouts, use [stack](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/stack) or [grid](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/grid).",
       "isPublicDocs": true,
       "members": [
         {
@@ -4930,7 +4930,7 @@
     "src/surfaces/checkout/components/Button.ts": {
       "filePath": "src/surfaces/checkout/components/Button.ts",
       "name": "ButtonElementProps",
-      "description": "",
+      "description": "The button component triggers actions or events, such as submitting forms, opening dialogs, or navigating to other pages. Use buttons to let users perform specific tasks or initiate interactions throughout the interface.\n\nButtons support various visual styles, tones, and interaction patterns to communicate intent and hierarchy. They can also function as links, guiding users to internal or external destinations. For navigation-focused interactions within text, use [link](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/link). For grouping multiple related buttons, use [button group](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button-group).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5072,7 +5072,7 @@
     "src/surfaces/checkout/components/Checkbox.ts": {
       "filePath": "src/surfaces/checkout/components/Checkbox.ts",
       "name": "CheckboxElementProps",
-      "description": "",
+      "description": "The checkbox component provides a clear way for users to make selections, such as agreeing to terms, enabling settings, or choosing multiple items from a list. Use checkbox to create binary on/off controls or multi-select interfaces where users can select any combination of options.\n\nCheckboxes support labels, help text, error states, and an indeterminate state for \"select all\" functionality when working with grouped selections. For settings that take effect immediately, use [switch](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/switch) instead.",
       "isPublicDocs": true,
       "members": [
         {
@@ -5342,7 +5342,7 @@
     "src/surfaces/checkout/components/Chip.ts": {
       "filePath": "src/surfaces/checkout/components/Chip.ts",
       "name": "ChipProps",
-      "description": "",
+      "description": "The chip component displays static labels, categories, or attributes that help classify and organize content. Use chip to show product tags, categories, or metadata near the items they describe, helping users identify items with similar properties.\n\nChips support multiple visual variants for different levels of emphasis and can include icons to provide additional visual context. For system-generated status indicators, use [badge](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge). For interactive or removable chips, use [clickable chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/clickable-chip).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5369,7 +5369,7 @@
     "src/surfaces/checkout/components/Choice.ts": {
       "filePath": "src/surfaces/checkout/components/Choice.ts",
       "name": "ChoiceProps",
-      "description": "",
+      "description": "The choice component creates individual selectable options within a choice list. Use choice to define each option that merchants can select, supporting both single selection (radio buttons) and multiple selection (checkboxes) modes.\n\nChoice components support labels, help text, and custom content through slots, providing flexible option presentation within choice lists.",
       "isPublicDocs": true,
       "members": [
         {
@@ -5475,7 +5475,7 @@
     "src/surfaces/checkout/components/ChoiceList.ts": {
       "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
       "name": "ChoiceListElementProps",
-      "description": "",
+      "description": "The choice list component presents multiple options for single or multiple selections. Use it when merchants need to choose from a defined set of options, such as filtering results or collecting preferences.\n\nThe component supports both single selection (radio button behavior) and multiple selection (checkbox behavior) modes. It includes configurable labels, help text, and validation. For compact dropdown selection with four or more options, use [select](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/select).",
       "isPublicDocs": true,
       "members": [
         {
@@ -5676,7 +5676,7 @@
     "src/surfaces/checkout/components/Clickable.ts": {
       "filePath": "src/surfaces/checkout/components/Clickable.ts",
       "name": "ClickableElementProps",
-      "description": "",
+      "description": "The clickable component wraps content to make it interactive and clickable. Use it when you need more styling control than [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) or [link](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/link) provide, such as custom backgrounds, padding, or borders around your clickable content.\n\nClickable supports button, link, and submit modes with built-in accessibility properties for keyboard navigation and screen reader support.",
       "isPublicDocs": true,
       "members": [
         {
@@ -6333,7 +6333,7 @@
     "src/surfaces/checkout/components/ClickableChip.ts": {
       "filePath": "src/surfaces/checkout/components/ClickableChip.ts",
       "name": "ClickableChipElementProps",
-      "description": "",
+      "description": "The clickable chip component displays interactive labels or categories that users can click or remove. Use clickable chip to show filter tags, selected options, or merchant-created labels that users need to interact with or dismiss.\n\nClickable chips support multiple visual variants, optional icons, and can function as both clickable buttons and removable tags for flexible interaction patterns. For non-interactive labels, use [chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/chip).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6449,7 +6449,7 @@
     "src/surfaces/checkout/components/ClipboardItem.ts": {
       "filePath": "src/surfaces/checkout/components/ClipboardItem.ts",
       "name": "ClipboardItemElementProps",
-      "description": "",
+      "description": "Enables copying text to the user’s clipboard. Use alongside Button or Link components to let users easily copy content. `<s-clipboard-item>` doesn’t render visually.",
       "isPublicDocs": true,
       "members": [
         {
@@ -6504,7 +6504,7 @@
     "src/surfaces/checkout/components/ConsentCheckbox.ts": {
       "filePath": "src/surfaces/checkout/components/ConsentCheckbox.ts",
       "name": "ConsentCheckboxElementProps",
-      "description": "",
+      "description": "Use buyer consent checkboxes for collecting the buyer’s approval for a given policy.",
       "isPublicDocs": true,
       "members": [
         {
@@ -6783,7 +6783,7 @@
     "src/surfaces/checkout/components/ConsentPhoneField.ts": {
       "filePath": "src/surfaces/checkout/components/ConsentPhoneField.ts",
       "name": "ConsentPhoneFieldElementProps",
-      "description": "",
+      "description": "Display a phone field for customers to sign up for text message marketing, noting that the phone field value will be automatically saved during checkout.",
       "isPublicDocs": true,
       "members": [
         {
@@ -6976,7 +6976,7 @@
     "src/surfaces/checkout/components/DateField.ts": {
       "filePath": "src/surfaces/checkout/components/DateField.ts",
       "name": "DateFieldElementProps",
-      "description": "",
+      "description": "The date field component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.\n\nThe component supports manual text entry. For visual calendar-based selection, consider using [date picker](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/date-picker).",
       "isPublicDocs": true,
       "members": [
         {
@@ -7240,7 +7240,7 @@
     "src/surfaces/checkout/components/DatePicker.ts": {
       "filePath": "src/surfaces/checkout/components/DatePicker.ts",
       "name": "DatePickerElementProps",
-      "description": "",
+      "description": "The date picker component allows merchants to select dates using a calendar interface. Use it when merchants benefit from seeing dates in context of the full month, such as selecting dates relative to today or needing weekday context.\n\nThe component supports single dates, multiple dates, and date ranges. For text date entry, use [date field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/date-field).",
       "isPublicDocs": true,
       "members": [
         {
@@ -7454,7 +7454,7 @@
     "src/surfaces/checkout/components/Details.ts": {
       "filePath": "src/surfaces/checkout/components/Details.ts",
       "name": "DetailsElementProps",
-      "description": "",
+      "description": "Creates a collapsible content area that can be expanded or collapsed by users. Use with Summary to provide expandable sections for additional information or settings.",
       "isPublicDocs": true,
       "members": [
         {
@@ -7527,7 +7527,7 @@
     "src/surfaces/checkout/components/Divider.ts": {
       "filePath": "src/surfaces/checkout/components/Divider.ts",
       "name": "DividerProps",
-      "description": "",
+      "description": "The divider component creates clear visual separation between elements in the interface. Use divider to separate distinct content groups in forms, settings panels, lists, or page sections, helping users scan and understand content organization.\n\nDividers support both horizontal and vertical orientations, along with different visual strengths for varying levels of emphasis. For more structured content grouping with headings, use [section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section).",
       "isPublicDocs": true,
       "members": [
         {
@@ -7555,7 +7555,7 @@
     "src/surfaces/checkout/components/DropZone.ts": {
       "filePath": "src/surfaces/checkout/components/DropZone.ts",
       "name": "DropZoneElementProps",
-      "description": "",
+      "description": "The drop zone component lets users upload files through drag-and-drop or by clicking to browse. Use for file uploads such as images, documents, or CSV imports.\n\nThe component provides visual feedback during drag operations and supports file type validation through the `accept` property. Rejected files trigger the `droprejected` event for custom error handling.",
       "isPublicDocs": true,
       "members": [
         {
@@ -7686,7 +7686,7 @@
     "src/surfaces/checkout/components/EmailField.ts": {
       "filePath": "src/surfaces/checkout/components/EmailField.ts",
       "name": "EmailFieldElementProps",
-      "description": "",
+      "description": "The email field component captures email address input. Use it to collect email information in forms, customer profiles, or contact workflows.\n\nEmail field doesn't perform automatic email validation. Implement your own validation logic, and use the `error` property to display validation results. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field).",
       "isPublicDocs": true,
       "members": [
         {
@@ -7880,7 +7880,7 @@
     "src/surfaces/checkout/components/Form.ts": {
       "filePath": "src/surfaces/checkout/components/Form.ts",
       "name": "FormElementProps",
-      "description": "",
+      "description": "The form component wraps form controls and enables implicit submission, allowing users to submit from any input by pressing **Enter**. Use form to group related input fields and handle form submission through JavaScript event handlers.\n\nUnlike HTML forms, form doesn't automatically submit data using HTTP—you must register a `submit` event to process form data programmatically. For Shopify Functions configuration forms, use [function settings](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/function-settings).",
       "isPublicDocs": true,
       "members": [
         {
@@ -7929,7 +7929,7 @@
     "src/surfaces/checkout/components/Grid.ts": {
       "filePath": "src/surfaces/checkout/components/Grid.ts",
       "name": "GridProps",
-      "description": "",
+      "description": "The grid component organizes content in a matrix of rows and columns to create responsive page layouts. Use grid to build complex, multi-column layouts that adapt to different screen sizes and maintain consistent alignment.\n\nGrid follows the CSS grid layout pattern and supports flexible column configurations, gap spacing, and alignment properties for precise layout control. For simpler linear layouts (horizontal or vertical), use [stack](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/stack).",
       "isPublicDocs": true,
       "members": [
         {
@@ -8319,7 +8319,7 @@
     "src/surfaces/checkout/components/GridItem.ts": {
       "filePath": "src/surfaces/checkout/components/GridItem.ts",
       "name": "GridItemProps",
-      "description": "",
+      "description": "The grid item component represents a single cell within a grid layout, allowing you to control how content is positioned and sized within the grid. Use grid item as a child of grid to specify column span, row span, and positioning for individual content areas.\n\nGrid item supports precise placement control through column and row properties, enabling you to create complex layouts where different items occupy varying amounts of space or appear in specific grid positions.",
       "isPublicDocs": true,
       "members": [
         {
@@ -8583,7 +8583,7 @@
     "src/surfaces/checkout/components/Heading.ts": {
       "filePath": "src/surfaces/checkout/components/Heading.ts",
       "name": "HeadingProps",
-      "description": "",
+      "description": "The heading component renders hierarchical titles to communicate the structure and organization of page content. Use heading to create section titles and content headers that help users understand information hierarchy and navigate content.\n\nHeading levels adjust automatically based on nesting within parent [section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section) components, ensuring meaningful and accessible page outlines without manual level management.",
       "isPublicDocs": true,
       "members": [
         {
@@ -8611,7 +8611,7 @@
     "src/surfaces/checkout/components/Icon.ts": {
       "filePath": "src/surfaces/checkout/components/Icon.ts",
       "name": "IconProps",
-      "description": "",
+      "description": "The icon component renders graphic symbols to visually communicate actions, status, and navigation throughout the interface. Use icon to reinforce button actions, indicate status states, or provide wayfinding cues that help users understand available functionality.\n\nIcons support multiple sizes, tones for semantic meaning, and can be integrated with other components like [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button), [badge](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge), and [chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/chip) to enhance visual communication.",
       "isPublicDocs": true,
       "members": [
         {
@@ -8656,7 +8656,7 @@
     "src/surfaces/checkout/components/Image.ts": {
       "filePath": "src/surfaces/checkout/components/Image.ts",
       "name": "ImageProps",
-      "description": "",
+      "description": "The image component embeds images within the interface with control over presentation and loading behavior. Use image to visually illustrate concepts, showcase products, display user content, or support tasks and interactions with visual context.\n\nImages support responsive sizing, alt text for accessibility, aspect ratio control, and loading states for progressive enhancement. For small preview images in lists or tables, use [thumbnail](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/thumbnail). For profile images, use [avatar](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/avatar).",
       "isPublicDocs": true,
       "members": [
         {
@@ -8801,7 +8801,7 @@
     "src/surfaces/checkout/components/Link.ts": {
       "filePath": "src/surfaces/checkout/components/Link.ts",
       "name": "LinkElementProps",
-      "description": "",
+      "description": "The link component makes text interactive, allowing users to navigate to other pages or perform specific actions. Use link for navigation, external references, or triggering actions while maintaining standard link semantics and accessibility.\n\nLinks support standard URLs, custom protocols, navigation within Shopify admin pages, and can open in new windows for external destinations. For prominent actions or form submissions, use [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) instead.",
       "isPublicDocs": true,
       "members": [
         {
@@ -9000,7 +9000,7 @@
     "src/surfaces/checkout/components/ListItem.ts": {
       "filePath": "src/surfaces/checkout/components/ListItem.ts",
       "name": "ListItemProps",
-      "description": "",
+      "description": "The list item component represents a single entry within an ordered list or unordered list. Use list item to structure individual points, steps, or items within a list, with each item automatically receiving appropriate list markers (bullets or numbers) from its parent list.\n\nList item must be used as a direct child of ordered list or unordered list components. Each list item can contain text, inline formatting, or other components to create rich list content.",
       "isPublicDocs": true,
       "members": [
         {
@@ -9019,7 +9019,7 @@
     "src/surfaces/checkout/components/Map.ts": {
       "filePath": "src/surfaces/checkout/components/Map.ts",
       "name": "MapElementProps",
-      "description": "",
+      "description": "Use Map to display a map on a page. This component is useful for displaying a map of a location, such as a store or a customer’s address.",
       "isPublicDocs": true,
       "members": [
         {
@@ -9284,7 +9284,7 @@
     "src/surfaces/checkout/components/MapMarker.ts": {
       "filePath": "src/surfaces/checkout/components/MapMarker.ts",
       "name": "MapMarkerElementProps",
-      "description": "",
+      "description": "Use MapMarker to display a marker on a map. Use only as a child of `s-map` component.",
       "isPublicDocs": true,
       "members": [
         {
@@ -9403,7 +9403,7 @@
     "src/surfaces/checkout/components/Modal.ts": {
       "filePath": "src/surfaces/checkout/components/Modal.ts",
       "name": "ModalElementProps",
-      "description": "",
+      "description": "Displays content in an overlay. Use to create a distraction-free experience such as a confirmation dialog or a settings panel.",
       "isPublicDocs": true,
       "members": [
         {
@@ -9544,7 +9544,7 @@
     "src/surfaces/checkout/components/MoneyField.ts": {
       "filePath": "src/surfaces/checkout/components/MoneyField.ts",
       "name": "MoneyFieldElementProps",
-      "description": "",
+      "description": "The money field component collects monetary values from users with built-in currency formatting and validation. Use money field for prices, costs, or financial amounts to provide proper currency symbols, decimal handling, and numeric validation.\n\nMoney fields support currency codes, automatic formatting, and min/max constraints to ensure users enter valid monetary values. For non-currency numeric input, use [number field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/number-field).",
       "isPublicDocs": true,
       "members": [
         {
@@ -9718,7 +9718,7 @@
     "src/surfaces/checkout/components/NumberField.ts": {
       "filePath": "src/surfaces/checkout/components/NumberField.ts",
       "name": "NumberFieldElementProps",
-      "description": "",
+      "description": "The number field component captures numeric input with built-in number validation. Use it to collect quantities, prices, or other numeric information.\n\nThe component supports min/max constraints and step increments for guided numeric entry. For monetary values with currency formatting, use [money field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/money-field).",
       "isPublicDocs": true,
       "members": [
         {
@@ -9966,7 +9966,7 @@
     "src/surfaces/checkout/components/Option.ts": {
       "filePath": "src/surfaces/checkout/components/Option.ts",
       "name": "OptionProps",
-      "description": "",
+      "description": "Represents a single option within a select component. Use only as a child of `s-select` components.",
       "isPublicDocs": true,
       "members": [
         {
@@ -10028,7 +10028,7 @@
     "src/surfaces/checkout/components/OrderedList.ts": {
       "filePath": "src/surfaces/checkout/components/OrderedList.ts",
       "name": "OrderedListProps",
-      "description": "",
+      "description": "The ordered list component displays a numbered list of related items in a specific sequence. Use ordered list to present step-by-step instructions, ranked items, procedures, or any content where order and sequence matter to understanding.\n\nOrdered lists automatically number items and support nested lists for hierarchical content organization. For items where order doesn't matter, use [unordered list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/unordered-list).",
       "isPublicDocs": true,
       "members": [
         {
@@ -10047,7 +10047,7 @@
     "src/surfaces/checkout/components/Paragraph.ts": {
       "filePath": "src/surfaces/checkout/components/Paragraph.ts",
       "name": "ParagraphProps",
-      "description": "",
+      "description": "The paragraph component displays blocks of text content and can contain inline elements like buttons, links, or emphasized text. Use paragraph to present standalone blocks of readable content, descriptions, or explanatory text.\n\nParagraphs support alignment options and can wrap inline components to create rich, formatted content blocks. For inline text styling, use [text](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/text).",
       "isPublicDocs": true,
       "members": [
         {
@@ -10129,7 +10129,7 @@
     "src/surfaces/checkout/components/PasswordField.ts": {
       "filePath": "src/surfaces/checkout/components/PasswordField.ts",
       "name": "PasswordFieldElementProps",
-      "description": "",
+      "description": "The password field component securely collects sensitive information from users. Use password field for password entry, where input characters are automatically masked for privacy.\n\nPassword fields support validation, help text, and accessibility features to create secure and user-friendly authentication experiences. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field).",
       "isPublicDocs": true,
       "members": [
         {
@@ -10313,7 +10313,7 @@
     "src/surfaces/checkout/components/PaymentIcon.ts": {
       "filePath": "src/surfaces/checkout/components/PaymentIcon.ts",
       "name": "PaymentIconProps",
-      "description": "",
+      "description": "Displays icons representing payment methods. Use to visually communicate available or saved payment options clearly",
       "isPublicDocs": true,
       "members": [
         {
@@ -10429,7 +10429,7 @@
     "src/surfaces/checkout/components/Popover.ts": {
       "filePath": "src/surfaces/checkout/components/Popover.ts",
       "name": "PopoverElementProps",
-      "description": "",
+      "description": "Popovers are used to display content in an overlay that can be triggered by a button.",
       "isPublicDocs": true,
       "members": [
         {
@@ -10529,7 +10529,7 @@
     "src/surfaces/checkout/components/PressButton.ts": {
       "filePath": "src/surfaces/checkout/components/PressButton.ts",
       "name": "PressButtonElementProps",
-      "description": "",
+      "description": "Allows users to toggle between active/inactive states. Use to represent a persistent on/off or selected/unselected status.",
       "isPublicDocs": true,
       "members": [
         {
@@ -10644,7 +10644,7 @@
     "src/surfaces/checkout/components/ProductThumbnail.ts": {
       "filePath": "src/surfaces/checkout/components/ProductThumbnail.ts",
       "name": "ProductThumbnailProps",
-      "description": "",
+      "description": "Use ProductThumbnail to display a product thumbnail",
       "isPublicDocs": true,
       "members": [
         {
@@ -10705,7 +10705,7 @@
     "src/surfaces/checkout/components/Progress.ts": {
       "filePath": "src/surfaces/checkout/components/Progress.ts",
       "name": "ProgressProps",
-      "description": "",
+      "description": "Displays an indicator showing the completion status of a task. Use to visually communicate progress in either determinate (known percentage) or indeterminate (unknown duration) states.",
       "isPublicDocs": true,
       "members": [
         {
@@ -10758,7 +10758,7 @@
     "src/surfaces/checkout/components/QRCode.ts": {
       "filePath": "src/surfaces/checkout/components/QRCode.ts",
       "name": "QRCodeElementProps",
-      "description": "",
+      "description": "Displays a scannable QR code representing data such as URLs or text. Use to let users quickly access information by scanning with a smartphone or other device.",
       "isPublicDocs": true,
       "members": [
         {
@@ -10847,7 +10847,7 @@
     "src/surfaces/checkout/components/QueryContainer.ts": {
       "filePath": "src/surfaces/checkout/components/QueryContainer.ts",
       "name": "QueryContainerProps",
-      "description": "",
+      "description": "The query container component establishes a container query context for responsive design. Use query container to define an element as a containment context, enabling child components or styles to adapt based on the container's size rather than viewport width.\n\nQuery containers support modern responsive patterns where components respond to their container dimensions, creating more flexible and reusable layouts.",
       "isPublicDocs": true,
       "members": [
         {
@@ -10875,7 +10875,7 @@
     "src/surfaces/checkout/components/ScrollBox.ts": {
       "filePath": "src/surfaces/checkout/components/ScrollBox.ts",
       "name": "ScrollBoxProps",
-      "description": "",
+      "description": "Provides a scrollable container for long content that exceeds the available space. Use to display lists, order summaries, or other lengthy content while maintaining a constrained layout.",
       "isPublicDocs": true,
       "members": [
         {
@@ -11130,7 +11130,7 @@
     "src/surfaces/checkout/components/Select.ts": {
       "filePath": "src/surfaces/checkout/components/Select.ts",
       "name": "SelectElementProps",
-      "description": "",
+      "description": "The select component allows users to choose one option from a dropdown menu. Use select when presenting four or more choices to keep interfaces uncluttered and scannable, or when space is limited.\n\nSelect components support option grouping, placeholder text, help text, and validation states to create clear selection interfaces. For more visual selection layouts with radio buttons or checkboxes, use [choice list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/choice-list).",
       "isPublicDocs": true,
       "members": [
         {
@@ -11383,7 +11383,7 @@
     "src/surfaces/checkout/components/SkeletonParagraph.ts": {
       "filePath": "src/surfaces/checkout/components/SkeletonParagraph.ts",
       "name": "SkeletonParagraphProps",
-      "description": "",
+      "description": "Displays a placeholder representation of text content while it loads. Use to improve perceived performance by showing users where text will appear.",
       "isPublicDocs": true,
       "members": [
         {
@@ -11411,7 +11411,7 @@
     "src/surfaces/checkout/components/Spinner.ts": {
       "filePath": "src/surfaces/checkout/components/Spinner.ts",
       "name": "SpinnerProps",
-      "description": "",
+      "description": "The spinner component displays an animated indicator showing users that content or actions are loading. Use spinner to communicate ongoing processes like fetching data, processing requests, or waiting for operations to complete.\n\nSpinners support multiple sizes and should be used for page or section loading states. For button loading states, use the `loading` property on the [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) component instead.",
       "isPublicDocs": true,
       "members": [
         {
@@ -11447,7 +11447,7 @@
     "src/surfaces/checkout/components/Stack.ts": {
       "filePath": "src/surfaces/checkout/components/Stack.ts",
       "name": "StackProps",
-      "description": "",
+      "description": "The stack component organizes elements horizontally or vertically along the block or inline axis. Use stack to structure layouts, group related components, control spacing between elements, or create flexible arrangements that adapt to content.\n\nStacks support gap spacing, alignment, wrapping, and distribution properties to create consistent, responsive layouts without custom CSS. For complex multi-column layouts with precise grid positioning, use [grid](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/grid).",
       "isPublicDocs": true,
       "members": [
         {
@@ -11738,7 +11738,7 @@
     "src/surfaces/checkout/components/Summary.ts": {
       "filePath": "src/surfaces/checkout/components/Summary.ts",
       "name": "SummaryProps",
-      "description": "",
+      "description": "Provides a clickable label for collapsible Details content. Use to create clear, accessible disclosure controls that show or hide additional information.",
       "isPublicDocs": true,
       "members": [
         {
@@ -11757,7 +11757,7 @@
     "src/surfaces/checkout/components/Switch.ts": {
       "filePath": "src/surfaces/checkout/components/Switch.ts",
       "name": "SwitchElementProps",
-      "description": "",
+      "description": "The switch component provides a clear way for users to toggle options or settings on and off. Use switch for binary controls that take effect immediately, like enabling features, activating settings, or controlling visibility.\n\nSwitches provide instant visual feedback and are ideal for settings that don't require a save action to apply changes. For selections that require explicit submission, use [checkbox](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/checkbox) instead.",
       "isPublicDocs": true,
       "members": [
         {
@@ -11871,7 +11871,7 @@
     "src/surfaces/checkout/components/Text.ts": {
       "filePath": "src/surfaces/checkout/components/Text.ts",
       "name": "TextProps",
-      "description": "",
+      "description": "The text component displays inline text with specific visual styles or tones. Use text to emphasize or differentiate words or phrases within paragraphs or other block-level components, applying weight, color, or semantic styling.\n\nText supports multiple visual variants, alignment options, and line clamping for flexible inline typography control. For block-level text content, use [paragraph](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/paragraph).",
       "isPublicDocs": true,
       "members": [
         {
@@ -11953,7 +11953,7 @@
     "src/surfaces/checkout/components/TextArea.ts": {
       "filePath": "src/surfaces/checkout/components/TextArea.ts",
       "name": "TextAreaElementProps",
-      "description": "",
+      "description": "The text area component captures multi-line text input. Use it to collect descriptions, notes, comments, or other extended text content.\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field).",
       "isPublicDocs": true,
       "members": [
         {
@@ -12137,7 +12137,7 @@
     "src/surfaces/checkout/components/TextField.ts": {
       "filePath": "src/surfaces/checkout/components/TextField.ts",
       "name": "TextFieldElementProps",
-      "description": "",
+      "description": "The text field component captures single-line text input. Use it to collect short, free-form information like names, titles, or identifiers.\n\nThe component supports various input configurations including placeholders, character limits, and validation. For multi-line text entry, use [text area](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-area). For specialized input types, use [email field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/email-field), [URL field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/url-field), [password field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/password-field), or [search field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/search-field).",
       "isPublicDocs": true,
       "members": [
         {
@@ -12358,7 +12358,7 @@
     "src/surfaces/checkout/components/Time.ts": {
       "filePath": "src/surfaces/checkout/components/Time.ts",
       "name": "TimeProps",
-      "description": "",
+      "description": "Represents a specific point or duration in time. Use to display dates, times, or durations clearly and consistently. May include a machine-readable `datetime` attribute for improved accessibility and functionality.",
       "isPublicDocs": true,
       "members": [
         {
@@ -12386,7 +12386,7 @@
     "src/surfaces/checkout/components/Tooltip.ts": {
       "filePath": "src/surfaces/checkout/components/Tooltip.ts",
       "name": "TooltipProps",
-      "description": "",
+      "description": "The tooltip component displays helpful information in a small overlay when users hover over or focus on an element. Use tooltip to provide additional context, explain functionality, or clarify terms without cluttering the interface with permanent text.\n\nTooltips support keyboard accessibility, positioning options, and activation on both hover and focus for inclusive interaction patterns.",
       "isPublicDocs": true,
       "members": [
         {
@@ -12405,7 +12405,7 @@
     "src/surfaces/checkout/components/UnorderedList.ts": {
       "filePath": "src/surfaces/checkout/components/UnorderedList.ts",
       "name": "UnorderedListProps",
-      "description": "",
+      "description": "The unordered list component displays a bulleted list of related items where sequence isn't critical. Use unordered list to present collections of features, options, requirements, or any group of items where order doesn't affect meaning.\n\nUnordered lists automatically add bullet points and support nested lists for hierarchical content organization. For sequential items where order is important, use [ordered list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/ordered-list).",
       "isPublicDocs": true,
       "members": [
         {
@@ -12424,7 +12424,7 @@
     "src/surfaces/checkout/components/UrlField.ts": {
       "filePath": "src/surfaces/checkout/components/UrlField.ts",
       "name": "UrlFieldElementProps",
-      "description": "",
+      "description": "The URL field component collects URLs from users with built-in formatting and validation. Use URL field for website addresses, link destinations, or any URL input to provide URL-specific keyboard layouts and automatic validation.\n\nURL fields support protocol prefixing, validation, and help text to guide users toward entering properly formatted web addresses. For general text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field).",
       "isPublicDocs": true,
       "members": [
         {

@@ -38,7 +38,10 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-phone-field";
-/** @publicDocs */
+/**
+ * Use PhoneField to allow users to enter phone numbers.
+ * @publicDocs
+ */
 export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value' | 'type'> {
     /**
      * @deprecated Use `label` instead.

@@ -32,7 +32,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-drop-zone";
-/** @publicDocs */
+/**
+ * The drop zone component lets users upload files through drag-and-drop or by clicking to browse. Use for file uploads such as images, documents, or CSV imports.
+ *
+ * The component provides visual feedback during drag operations and supports file type validation through the `accept` property. Rejected files trigger the `droprejected` event for custom error handling.
+ * @publicDocs
+ */
 export interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required' | 'value'> {
 }
 export interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput' | 'onChange'> {

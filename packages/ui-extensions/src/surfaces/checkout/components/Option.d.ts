@@ -26,7 +26,10 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-option";
-/** @publicDocs */
+/**
+ * Represents a single option within a select component. Use only as a child of `s-select` components.
+ * @publicDocs
+ */
 export interface OptionProps extends Pick<OptionProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'value'> {
 }
 export interface OptionElement extends OptionProps, Omit<HTMLElement, 'id'> {

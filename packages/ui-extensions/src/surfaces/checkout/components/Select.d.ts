@@ -38,7 +38,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-select";
-/** @publicDocs */
+/**
+ * The select component allows users to choose one option from a dropdown menu. Use select when presenting four or more choices to keep interfaces uncluttered and scannable, or when space is limited.
+ *
+ * Select components support option grouping, placeholder text, help text, and validation states to create clear selection interfaces. For more visual selection layouts with radio buttons or checkboxes, use [choice list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/choice-list).
+ * @publicDocs
+ */
 export interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value'> {
 }
 export interface SelectEvents extends Pick<SelectProps$1, 'onBlur' | 'onChange' | 'onFocus'> {

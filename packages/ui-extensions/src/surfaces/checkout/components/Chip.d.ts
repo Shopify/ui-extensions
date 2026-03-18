@@ -40,7 +40,12 @@ export interface ChipElementSlots {
      */
     graphic?: HTMLElement;
 }
-/** @publicDocs */
+/**
+ * The chip component displays static labels, categories, or attributes that help classify and organize content. Use chip to show product tags, categories, or metadata near the items they describe, helping users identify items with similar properties.
+ *
+ * Chips support multiple visual variants for different levels of emphasis and can include icons to provide additional visual context. For system-generated status indicators, use [badge](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge). For interactive or removable chips, use [clickable chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/clickable-chip).
+ * @publicDocs
+ */
 export interface ChipProps extends ChipElementProps {
 }
 export interface ChipElement extends ChipProps, Omit<HTMLElement, 'id'> {

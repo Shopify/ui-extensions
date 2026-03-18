@@ -32,7 +32,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-text-area";
-/** @publicDocs */
+/**
+ * The text area component captures multi-line text input. Use it to collect descriptions, notes, comments, or other extended text content.
+ *
+ * The component supports configurable height, character limits, and validation. For single-line text input, use [text field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/text-field).
+ * @publicDocs
+ */
 export interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'name' | 'required' | 'value' | 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'readOnly' | 'rows' | 'maxLength' | 'minLength' | 'labelAccessibilityVisibility'> {
     /**
      * @deprecated Use `label` instead.

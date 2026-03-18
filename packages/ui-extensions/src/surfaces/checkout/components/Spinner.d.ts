@@ -20,7 +20,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-spinner";
-/** @publicDocs */
+/**
+ * The spinner component displays an animated indicator showing users that content or actions are loading. Use spinner to communicate ongoing processes like fetching data, processing requests, or waiting for operations to complete.
+ *
+ * Spinners support multiple sizes and should be used for page or section loading states. For button loading states, use the `loading` property on the [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) component instead.
+ * @publicDocs
+ */
 export interface SpinnerProps extends SpinnerProps$1 {
     size?: Extract<SpinnerProps$1['size'], 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
 }

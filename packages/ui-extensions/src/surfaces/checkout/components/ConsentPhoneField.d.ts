@@ -69,7 +69,10 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-consent-phone-field";
-/** @publicDocs */
+/**
+ * Display a phone field for customers to sign up for text message marketing, noting that the phone field value will be automatically saved during checkout.
+ * @publicDocs
+ */
 export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'policy' | 'readOnly' | 'required' | 'type' | 'value'> {
     /**
      * @deprecated Use `label` instead.

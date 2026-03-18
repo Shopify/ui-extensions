@@ -32,7 +32,10 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-clipboard-item";
-/** @publicDocs */
+/**
+ * Enables copying text to the user’s clipboard. Use alongside Button or Link components to let users easily copy content. `<s-clipboard-item>` doesn’t render visually.
+ * @publicDocs
+ */
 export interface ClipboardItemElementProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
 }
 export interface ClipboardItemEvents extends Pick<ClipboardItemProps$1, 'onCopy' | 'onCopyError'> {
