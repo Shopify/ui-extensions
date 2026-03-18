@@ -34,7 +34,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'SheetElementMethods',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Overlays',
   defaultExample: {
     image: 'sheet-default.png',
