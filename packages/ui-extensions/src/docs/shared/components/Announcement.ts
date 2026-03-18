@@ -4,7 +4,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   name: 'Announcement',
   description:
     'The Announcement component provides a less disruptive alternative to auto-open modals for capturing user attention. It provides a standardized way to engage users without being too intrusive.',
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Feedback and status indicators',
   related: [],
 };
