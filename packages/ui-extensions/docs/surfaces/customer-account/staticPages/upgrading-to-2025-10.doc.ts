@@ -5,7 +5,7 @@ import type {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
   title: 'Upgrading to 2025-10',
-  description: `This guide describes how to upgrade your customer account UI extension to API version \`2025-10\` and adopt [Polaris](/beta/next-gen-dev-platform/polaris) web components.`,
+  description: `This guide describes how to upgrade your customer account UI extension to API version \`2025-10\` and adopt web components.`,
   // The id for the page that is used for routing. If this documentation is for a primary landing page, confirm the id matches the reference name.
   id: 'upgrading-to-2025-10',
   sections: [
@@ -14,7 +14,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'update-api-version',
       title: 'Update API version',
       sectionContent:
-        'Set the API version to `2025-10` in `shopify.extension.toml` to use Polaris web components.',
+        'Set the API version to `2025-10` in `shopify.extension.toml` to use web components.',
       codeblock: {
         title: 'shopify.extension.toml',
         tabs: [
@@ -223,10 +223,10 @@ If your app is using ESLint, update your configuration to include the new global
     },
     {
       type: 'GenericAccordion',
-      anchorLink: 'migrate-to-polaris-web-components',
-      title: 'Migrate to Polaris web components',
+      anchorLink: 'migrate-to-web-components',
+      title: 'Migrate to web components',
       sectionContent:
-        'Polaris web components are exposed as custom HTML elements. Update your React or JavaScript components to custom elements.',
+        'Web components are exposed as custom HTML elements. Update your React or JavaScript components to custom elements.',
       accordionContent: [
         {
           title: 'New components in Preact',
@@ -274,19 +274,19 @@ If your app is using ESLint, update your configuration to include the new global
     },
     {
       type: 'Markdown',
-      anchorLink: 'mapping-legacy-components-to-polaris-web',
-      title: 'Mapping Legacy components to Polaris web',
+      anchorLink: 'mapping-legacy-components-to-web',
+      title: 'Mapping legacy components to web components',
       sectionContent: `
-|   **Legacy Component**   |   **Polaris Web Component**   |   **Migration Notes**   |
+|   **Legacy Component**   |   **Web Component**   |   **Migration Notes**   |
 | :----------------------: | :-------------------------------: | :---------------------: |
-|   \`Avatar\`                |   [Avatar](/api/customer-account-ui-extensions/polaris-web-components/media/avatar)   |   Available today   |
-|                             |  [ButtonGroup](/api/customer-account-ui-extensions/polaris-web-components/actions/buttongroup)   |   Available today   |
-|   \`Card\`                  |  [Section](/api/customer-account-ui-extensions/polaris-web-components/structure/section)   |   Available today   |
-|   \`CustomerAccountAction\`  |  [CustomerAccountAction](/api/customer-account-ui-extensions/polaris-web-components/actions/customeraccountaction)   |   Available today       |
-|   \`ImageGroup\`            |  [ImageGroup](/api/customer-account-ui-extensions/polaris-web-components/media/imagegroup)                         |   Available today       |
-|   \`Menu\`                  |  [Menu](/api/customer-account-ui-extensions/polaris-web-components/actions/menu)    |   Available today   |
-|   \`Page\`                  |  [Page](/api/customer-account-ui-extensions/polaris-web-components/structure/page)    |   Available today |
-|   \`ResourceItem\`          |                                |   Removed. Use [Section](/api/customer-account-ui-extensions/polaris-web-components/structure/section)   |
+|   \`Avatar\`                |   [Avatar](/api/customer-account-ui-extensions/web-components/media/avatar)   |   Available today   |
+|                             |  [ButtonGroup](/api/customer-account-ui-extensions/web-components/actions/buttongroup)   |   Available today   |
+|   \`Card\`                  |  [Section](/api/customer-account-ui-extensions/web-components/structure/section)   |   Available today   |
+|   \`CustomerAccountAction\`  |  [CustomerAccountAction](/api/customer-account-ui-extensions/web-components/actions/customeraccountaction)   |   Available today       |
+|   \`ImageGroup\`            |  [ImageGroup](/api/customer-account-ui-extensions/web-components/media/imagegroup)                         |   Available today       |
+|   \`Menu\`                  |  [Menu](/api/customer-account-ui-extensions/web-components/actions/menu)    |   Available today   |
+|   \`Page\`                  |  [Page](/api/customer-account-ui-extensions/web-components/structure/page)    |   Available today |
+|   \`ResourceItem\`          |                                |   Removed. Use [Section](/api/customer-account-ui-extensions/web-components/structure/section)   |
 `,
     },
     {
@@ -294,13 +294,13 @@ If your app is using ESLint, update your configuration to include the new global
       anchorLink: 'additional-components',
       title: 'Additional components',
       sectionContent:
-        'In addition to the components above, you can also use Polaris web components in the Checkout library to build customer account UI extensions.',
+        'In addition to the components above, you can also use web components in the Checkout library to build customer account UI extensions.',
       sectionCard: [
         {
           type: 'blocks',
           name: 'Checkout components',
-          subtitle: 'More Polaris web components',
-          url: '/docs/api/checkout-ui-extensions/polaris-web-components',
+          subtitle: 'More web components',
+          url: '/docs/api/checkout-ui-extensions/web-components',
         },
       ],
     },
