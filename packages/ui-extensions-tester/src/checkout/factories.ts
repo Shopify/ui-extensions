@@ -111,7 +111,6 @@ function createMockStandardApi<T extends ExtensionTarget>(
     query: async () => ({data: undefined, errors: []}),
     selectedPaymentOptions: createSubscribableSignalLike([]),
     settings: createSubscribableSignalLike({}),
-    ui: {overlay: {close: () => {}}},
     version: '0.0.0',
     customerPrivacy: createSubscribableSignalLike({
       allowedProcessing: {

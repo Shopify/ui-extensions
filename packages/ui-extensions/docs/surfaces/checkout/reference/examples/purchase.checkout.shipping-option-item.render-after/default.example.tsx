@@ -50,9 +50,9 @@ function Extension() {
         </s-paragraph>
         <s-button
           variant="primary"
-          onClick={() =>
-            shopify.ui.overlay.close('my-modal')
-          }
+          command="--hide"
+          commandFor="my-modal"
+          slot="primary-action"
         >
           Close
         </s-button>
