@@ -21,11 +21,11 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Slots',
       description:
-        'The admin action component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).',
+        'The admin action component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/app-ui/using-web-components#slots).',
       type: 'AdminActionSlots',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Settings and templates',
   subSections: [
     {
@@ -42,7 +42,7 @@ const data: ReferenceEntityTemplateSchema = {
     image:
       '/assets/templated-apis-screenshots/admin/components/adminaction-example.png',
     description:
-      'Set up the modal header and action [buttons](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button) for an admin action extension. This example shows a titled modal with primary and secondary action buttons.',
+      'Set up the modal header and action [buttons](/docs/api/admin-extensions/{API_VERSION}/web-components/actions/button) for an admin action extension. This example shows a titled modal with primary and secondary action buttons.',
     codeblock: {
       title: 'Configure an admin action modal',
       tabs: [
@@ -62,7 +62,7 @@ const data: ReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Show a loading indicator while data is being fetched or processed. This example sets the `loading` property to display a loading state and disables the primary [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button).',
+              'Show a loading indicator while data is being fetched or processed. This example sets the `loading` property to display a loading state and disables the primary [button](/docs/api/admin-extensions/{API_VERSION}/web-components/actions/button).',
             codeblock: {
               title: 'Show a loading state',
               tabs: [
@@ -76,7 +76,7 @@ const data: ReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Collect merchant input inside the action modal using form fields. This example includes a [text field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/text-field) and [number field](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/forms/number-field) arranged in a [stack](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/stack).',
+              'Collect merchant input inside the action modal using form fields. This example includes a [text field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/text-field) and [number field](/docs/api/admin-extensions/{API_VERSION}/web-components/forms/number-field) arranged in a [stack](/docs/api/admin-extensions/{API_VERSION}/web-components/layout-and-structure/stack).',
             codeblock: {
               title: 'Add form fields to the modal',
               tabs: [
@@ -90,7 +90,7 @@ const data: ReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Warn merchants before a permanent operation like deleting a resource. This example uses a critical [banner](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/banner) and a destructive primary [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button) to confirm deletion.',
+              'Warn merchants before a permanent operation like deleting a resource. This example uses a critical [banner](/docs/api/admin-extensions/{API_VERSION}/web-components/feedback-and-status-indicators/banner) and a destructive primary [button](/docs/api/admin-extensions/{API_VERSION}/web-components/actions/button) to confirm deletion.',
             codeblock: {
               title: 'Confirm a destructive action',
               tabs: [
@@ -104,7 +104,7 @@ const data: ReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Display read-only resource information inside a modal before the merchant takes action. This example shows an order summary with [badges](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge), [dividers](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/divider), and a fulfillment [button](/docs/api/admin-extensions/{API_VERSION}/polaris-web-components/actions/button).',
+              'Display read-only resource information inside a modal before the merchant takes action. This example shows an order summary with [badges](/docs/api/admin-extensions/{API_VERSION}/web-components/feedback-and-status-indicators/badge), [dividers](/docs/api/admin-extensions/{API_VERSION}/web-components/layout-and-structure/divider), and a fulfillment [button](/docs/api/admin-extensions/{API_VERSION}/web-components/actions/button).',
             codeblock: {
               title: 'Show resource details in a modal',
               tabs: [

@@ -26,7 +26,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Homepage'],
   defaultExample: {
     description:
-      'Merchants can see visual content (images, illustrations) paired with actions, like tutorials or feature highlights. This pattern displays a media card with a tappable image and footer layout. The [box](/docs/api/app-home/polaris-web-components/layout-and-structure/box) uses `border` and `borderRadius` for the container, the [clickable](/docs/api/app-home/polaris-web-components/actions/clickable) component makes the image tappable, and the [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) lays out the footer with title and action button.',
+      'Merchants can see visual content (images, illustrations) paired with actions, like tutorials or feature highlights. This pattern displays a media card with a tappable image and footer layout. The [box](/docs/api/app-home/web-components/layout-and-structure/box) uses `border` and `borderRadius` for the container, the [clickable](/docs/api/app-home/web-components/actions/clickable) component makes the image tappable, and the [grid](/docs/api/app-home/web-components/layout-and-structure/grid) lays out the footer with title and action button.',
     codeblock: {
       title: 'Display a media card with tappable image and footer',
       tabs: [

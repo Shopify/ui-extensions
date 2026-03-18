@@ -3,7 +3,7 @@ import sharedContent from '../../../../docs/shared/components/Popover';
 
 const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
-  category: 'Polaris web components',
+  category: 'Web components',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/popover.png',
   isVisualComponent: true,
   subSections: [
@@ -34,13 +34,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'The popover component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).',
+        'The popover component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-web-components#handling-events).',
       type: 'PopoverEvents',
     },
     {
       title: 'Slots',
       description:
-        'The popover component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).',
+        'The popover component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-web-components#slots).',
       type: 'PopoverSlots',
     },
   ],

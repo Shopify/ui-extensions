@@ -29,7 +29,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Homepage'],
   defaultExample: {
     description:
-      'New merchants need an interactive checklist to complete onboarding or setup tasks. This pattern guides merchants through setup with expandable steps and completion tracking. The [checkbox](/docs/api/app-home/polaris-web-components/forms/checkbox) tracks completion status. Each step includes a heading, description, illustration, and action button, with a progress indicator for overall completion.',
+      'New merchants need an interactive checklist to complete onboarding or setup tasks. This pattern guides merchants through setup with expandable steps and completion tracking. The [checkbox](/docs/api/app-home/web-components/forms/checkbox) tracks completion status. Each step includes a heading, description, illustration, and action button, with a progress indicator for overall completion.',
     codeblock: {
       title: 'Guide merchants through setup with expandable steps',
       tabs: [

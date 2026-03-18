@@ -4,7 +4,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   name: 'Consent checkbox',
   description:
     'Use buyer consent checkboxes for collecting the buyer’s approval for a given policy.',
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   related: [],
 };

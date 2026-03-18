@@ -26,20 +26,20 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).',
+        'The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-web-components#handling-events).',
       type: 'ClickableEvents',
     },
     {
       title: 'Slots',
       description:
-        'The clickable component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).',
+        'The clickable component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/app-ui/using-web-components#slots).',
       type: 'ClickableSlots',
     },
   ],
   defaultExample: {
     image: 'clickable-default.png',
     description:
-      "Build custom interactive elements with flexible styling that [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) or [link](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/link) don't support. This example shows two clickable elements with different background and border styles.",
+      "Build custom interactive elements with flexible styling that [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) or [link](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/link) don't support. This example shows two clickable elements with different background and border styles.",
     codeblock: {
       title: 'Create a custom interactive element',
       tabs: [

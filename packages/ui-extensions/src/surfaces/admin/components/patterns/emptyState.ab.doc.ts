@@ -28,7 +28,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   recommendedTemplates: ['Index'],
   defaultExample: {
     description:
-      'Merchants need guidance and a clear next step when a list or page is empty. This pattern displays an empty state with centered content and primary and secondary actions. The [grid](/docs/api/app-home/polaris-web-components/layout-and-structure/grid) centers content vertically and horizontally. Use the [button group](/docs/api/app-home/polaris-web-components/actions/button-group) with `slot="primary-action"` and `slot="secondary-actions"` for clear next steps.',
+      'Merchants need guidance and a clear next step when a list or page is empty. This pattern displays an empty state with centered content and primary and secondary actions. The [grid](/docs/api/app-home/web-components/layout-and-structure/grid) centers content vertically and horizontally. Use the [button group](/docs/api/app-home/web-components/actions/button-group) with `slot="primary-action"` and `slot="secondary-actions"` for clear next steps.',
     codeblock: {
       title: 'Display an empty state with centered content and actions',
       tabs: [
