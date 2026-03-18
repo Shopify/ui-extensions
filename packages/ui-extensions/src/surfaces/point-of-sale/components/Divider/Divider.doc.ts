@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Divider',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Layout and structure',
   defaultExample: {
     image: 'divider-default.png',

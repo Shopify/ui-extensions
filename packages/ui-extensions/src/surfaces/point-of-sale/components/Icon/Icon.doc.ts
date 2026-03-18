@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Icon',
   description:
     'The icon component displays standardized visual symbols from the POS catalog to represent actions, statuses, or categories. Use icons to enhance navigation or provide visual context alongside text.' +
-    '\n\nFor interactive icons, wrap them in [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components.',
+    '\n\nFor interactive icons, wrap them in [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable) components.',
   thumbnail: 'icon-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Icon',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Media and visuals',
   defaultExample: {
     image: 'icon-default.png',

@@ -9340,7 +9340,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Feedback and status indicators",
     "defaultExample": {
       "image": "badge-default.png",
@@ -9452,7 +9452,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Feedback and status indicators",
     "defaultExample": {
       "image": "banner-default.png",
@@ -9479,7 +9479,7 @@
   },
   {
     "name": "Box",
-    "description": "The box component provides a container for layout and visual styling. Use it to apply padding, borders, and background colors, or to nest and group other components.\n\nFor user interaction, use box in combination with interactive components like [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable). For scrollable content, use [scroll box](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/scroll-box).",
+    "description": "The box component provides a container for layout and visual styling. Use it to apply padding, borders, and background colors, or to nest and group other components.\n\nFor user interaction, use box in combination with interactive components like [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable). For scrollable content, use [scroll box](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/layout-and-structure/scroll-box).",
     "thumbnail": "box-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -9674,7 +9674,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "defaultExample": {
       "image": "box-default.png",
@@ -9867,7 +9867,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Actions",
     "defaultExample": {
       "image": "button-default.png",
@@ -10081,7 +10081,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Forms",
     "defaultExample": {
       "image": "choicelist-default.png",
@@ -10155,7 +10155,7 @@
   },
   {
     "name": "Clickable",
-    "description": "The clickable component makes any content interactive. Use it to add click interactions to non-interactive elements while maintaining full control over their visual presentation.\n\nUnlike the [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) component, clickable doesn't impose visual styling, allowing you to create custom interactive elements. You must implement focus indicators and other visual cues yourself.",
+    "description": "The clickable component makes any content interactive. Use it to add click interactions to non-interactive elements while maintaining full control over their visual presentation.\n\nUnlike the [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) component, clickable doesn't impose visual styling, allowing you to create custom interactive elements. You must implement focus indicators and other visual cues yourself.",
     "thumbnail": "clickable-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -10276,7 +10276,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Actions",
     "defaultExample": {
       "image": "clickable-default.png",
@@ -10309,7 +10309,7 @@
   },
   {
     "name": "Date field",
-    "description": "The date field component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.\n\nThe component supports manual text entry. For visual calendar-based selection, consider using [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-picker) or [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-spinner) components.",
+    "description": "The date field component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.\n\nThe component supports manual text entry. For visual calendar-based selection, consider using [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-picker) or [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-spinner) components.",
     "thumbnail": "date-field-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -10496,7 +10496,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Forms",
     "defaultExample": {
       "image": "date-field-default.png",
@@ -10516,7 +10516,7 @@
         "type": "Generic",
         "anchorLink": "best-practices",
         "title": "Best practices",
-        "sectionContent": "\n- **Choose for direct text input:** Use date field when users know the exact date and can type it efficiently. Use [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-picker) for calendar selection or [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-spinner) for space-constrained layouts.\n- **Explain date constraints:** Use `details` to clarify requirements like \"Select a date within the next 30 days\" or \"Must be a future date.\"\n- **Write actionable error messages:** Provide clear validation messages for invalid dates that help users correct their input.\n"
+        "sectionContent": "\n- **Choose for direct text input:** Use date field when users know the exact date and can type it efficiently. Use [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-picker) for calendar selection or [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-spinner) for space-constrained layouts.\n- **Explain date constraints:** Use `details` to clarify requirements like \"Select a date within the next 30 days\" or \"Must be a future date.\"\n- **Write actionable error messages:** Provide clear validation messages for invalid dates that help users correct their input.\n"
       }
     ],
     "related": [],
@@ -10540,7 +10540,7 @@
   },
   {
     "name": "Date picker",
-    "description": "The date picker component allows merchants to select dates using a calendar interface. Use it when merchants benefit from seeing dates in context of the full month, such as selecting dates relative to today or needing weekday context.\n\nThe component supports single dates, multiple dates, and date ranges. For tight spaces, consider using [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-spinner) instead. For text date entry, use [date field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-field).",
+    "description": "The date picker component allows merchants to select dates using a calendar interface. Use it when merchants benefit from seeing dates in context of the full month, such as selecting dates relative to today or needing weekday context.\n\nThe component supports single dates, multiple dates, and date ranges. For tight spaces, consider using [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-spinner) instead. For text date entry, use [date field](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-field).",
     "thumbnail": "date-picker-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -10686,7 +10686,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Forms",
     "defaultExample": {
       "image": "date-picker-default.png",
@@ -10706,7 +10706,7 @@
         "type": "Generic",
         "anchorLink": "best-practices",
         "title": "Best practices",
-        "sectionContent": "\n- **Choose for calendar-based selection:** Use date picker when users benefit from seeing a calendar view, like selecting dates relative to today or needing weekday context. Use [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-spinner) for tight spaces or [date field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-field) when users know the exact date.\n- **Provide adequate space:** Ensure sufficient spacing around the picker to avoid interfering with on-screen keyboards or other interactive elements.\n"
+        "sectionContent": "\n- **Choose for calendar-based selection:** Use date picker when users benefit from seeing a calendar view, like selecting dates relative to today or needing weekday context. Use [date spinner](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-spinner) for tight spaces or [date field](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-field) when users know the exact date.\n- **Provide adequate space:** Ensure sufficient spacing around the picker to avoid interfering with on-screen keyboards or other interactive elements.\n"
       }
     ],
     "related": [],
@@ -10742,7 +10742,7 @@
   },
   {
     "name": "Date spinner",
-    "description": "The date spinner component enables merchants to select dates using a spinner interface with scrollable columns for month, day, and year. Use it for compact date selection in space-constrained layouts or when selecting dates close to the current date.\n\nFor visual calendar context, consider using [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-picker) instead. For text date entry, use [date field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-field).",
+    "description": "The date spinner component enables merchants to select dates using a spinner interface with scrollable columns for month, day, and year. Use it for compact date selection in space-constrained layouts or when selecting dates close to the current date.\n\nFor visual calendar context, consider using [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-picker) instead. For text date entry, use [date field](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-field).",
     "thumbnail": "date-spinner-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -10888,7 +10888,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Forms",
     "defaultExample": {
       "image": "date-spinner-default.png",
@@ -10908,7 +10908,7 @@
         "type": "Generic",
         "anchorLink": "best-practices",
         "title": "Best practices",
-        "sectionContent": "\n- **Use for space-constrained layouts:** Choose date spinner for narrow layouts or split-screen interfaces where a calendar view would be impractical.\n- **Best for nearby dates:** Use when selecting dates close to the current date. For distant dates, [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/date-picker) provides faster navigation.\n- **Provide interaction cues:** Consider labels or instructions to help first-time users understand the scrollable column interface.\n"
+        "sectionContent": "\n- **Use for space-constrained layouts:** Choose date spinner for narrow layouts or split-screen interfaces where a calendar view would be impractical.\n- **Best for nearby dates:** Use when selecting dates close to the current date. For distant dates, [date picker](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/date-picker) provides faster navigation.\n- **Provide interaction cues:** Consider labels or instructions to help first-time users understand the scrollable column interface.\n"
       }
     ],
     "related": [],
@@ -10982,7 +10982,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "defaultExample": {
       "image": "divider-default.png",
@@ -11213,7 +11213,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Forms",
     "defaultExample": {
       "image": "email-field-default.png",
@@ -11393,7 +11393,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Media and visuals",
     "related": [],
     "defaultExample": {
@@ -11502,7 +11502,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "defaultExample": {
       "image": "emptystate-default.png",
@@ -11522,7 +11522,7 @@
   },
   {
     "name": "Heading",
-    "description": "The heading component renders hierarchical titles to communicate the structure and organization of page content and help users navigate complex interfaces.\n\nHeading levels adjust automatically based on nesting within parent [section](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/section) components, ensuring a meaningful page outline.",
+    "description": "The heading component renders hierarchical titles to communicate the structure and organization of page content and help users navigate complex interfaces.\n\nHeading levels adjust automatically based on nesting within parent [section](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/layout-and-structure/section) components, ensuring a meaningful page outline.",
     "thumbnail": "heading-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -11551,7 +11551,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "defaultExample": {
       "image": "heading-default.png",
@@ -11578,7 +11578,7 @@
   },
   {
     "name": "Icon",
-    "description": "The icon component displays standardized visual symbols from the POS catalog to represent actions, statuses, or categories. Use icons to enhance navigation or provide visual context alongside text.\n\nFor interactive icons, wrap them in [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components.",
+    "description": "The icon component displays standardized visual symbols from the POS catalog to represent actions, statuses, or categories. Use icons to enhance navigation or provide visual context alongside text.\n\nFor interactive icons, wrap them in [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable) components.",
     "thumbnail": "icon-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -11671,7 +11671,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Media and visuals",
     "defaultExample": {
       "image": "icon-default.png",
@@ -11698,7 +11698,7 @@
   },
   {
     "name": "Image",
-    "description": "The image component displays visual content. Use images to showcase products, illustrate concepts, or provide visual context in POS workflows.\n\nImages are display-only components. For interactive functionality, wrap them in [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components.",
+    "description": "The image component displays visual content. Use images to showcase products, illustrate concepts, or provide visual context in POS workflows.\n\nImages are display-only components. For interactive functionality, wrap them in [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable) components.",
     "thumbnail": "image-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -11762,7 +11762,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Media and visuals",
     "defaultExample": {
       "image": "image-default.png",
@@ -11795,7 +11795,7 @@
   },
   {
     "name": "Link",
-    "description": "The link component makes text interactive, allowing users to trigger actions through tappable text. Use it for lightweight interactions, navigation triggers, or actions embedded within text content.\n\nLinks support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) instead.",
+    "description": "The link component makes text interactive, allowing users to trigger actions through tappable text. Use it for lightweight interactions, navigation triggers, or actions embedded within text content.\n\nLinks support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) instead.",
     "thumbnail": "link-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -11933,7 +11933,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Actions",
     "defaultExample": {
       "image": "link-default.png",
@@ -11960,7 +11960,7 @@
   },
   {
     "name": "Modal",
-    "description": "The modal component displays content in an overlay that requires merchant attention. Use modals to present critical information, confirmations, or focused tasks while maintaining page context.\n\nModals block interaction with the underlying interface until the merchant resolves the modal content.\n\nModals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through [events](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/modal#events).",
+    "description": "The modal component displays content in an overlay that requires merchant attention. Use modals to present critical information, confirmations, or focused tasks while maintaining page context.\n\nModals block interaction with the underlying interface until the merchant resolves the modal content.\n\nModals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through [events](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/feedback-and-status-indicators/modal#events).",
     "thumbnail": "modal-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -12120,7 +12120,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Feedback and status indicators",
     "defaultExample": {
       "image": "modal-default.png",
@@ -12406,7 +12406,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Forms",
     "defaultExample": {
       "image": "number-field-default.png",
@@ -12539,7 +12539,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "defaultExample": {
       "image": "page-default.png",
@@ -12663,7 +12663,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "defaultExample": {
       "image": "pos-block-default.png",
@@ -12885,7 +12885,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "defaultExample": {
       "image": "scrollbox-default.png",
@@ -13074,7 +13074,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Forms",
     "defaultExample": {
       "image": "search-field-default.png",
@@ -13178,7 +13178,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "defaultExample": {
       "image": "section-default.png",
@@ -13242,7 +13242,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Feedback and status indicators",
     "defaultExample": {
       "image": "spinner-default.png",
@@ -13581,7 +13581,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "defaultExample": {
       "image": "stack-default.png",
@@ -13797,7 +13797,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Forms",
     "defaultExample": {
       "image": "switch-default.png",
@@ -14055,7 +14055,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "defaultExample": {
       "image": "tab-default.png",
@@ -14162,7 +14162,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Layout and structure",
     "defaultExample": {
       "image": "text-default.png",
@@ -14195,7 +14195,7 @@
   },
   {
     "name": "Text area",
-    "description": "The text area component captures multi-line text input. Use it to collect descriptions, notes, comments, or other extended text content.\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [text field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/text-field).",
+    "description": "The text area component captures multi-line text input. Use it to collect descriptions, notes, comments, or other extended text content.\n\nThe component supports configurable height, character limits, and validation. For single-line text input, use [text field](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/text-field).",
     "thumbnail": "text-area-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -14408,7 +14408,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Forms",
     "defaultExample": {
       "image": "text-area-default.png",
@@ -14464,7 +14464,7 @@
   },
   {
     "name": "Text field",
-    "description": "The text field component captures single-line text input. Use it to collect short, free-form information like names, titles, or identifiers.\n\nThe component supports various input configurations including placeholders, character limits, and validation. For multi-line text entry, use the [text area](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/text-area) component.",
+    "description": "The text field component captures single-line text input. Use it to collect short, free-form information like names, titles, or identifiers.\n\nThe component supports various input configurations including placeholders, character limits, and validation. For multi-line text entry, use the [text area](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/text-area) component.",
     "thumbnail": "text-field-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -14691,7 +14691,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Forms",
     "defaultExample": {
       "image": "text-field-default.png",
@@ -14711,13 +14711,13 @@
         "type": "Generic",
         "anchorLink": "best-practices",
         "title": "Best practices",
-        "sectionContent": "\n- **Use for single-line text input:** Choose text field for short values like names, titles, or identifiers. For multi-line content, use [text area](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/text-area).\n- **Show character limit feedback:** When approaching `maxLength`, display remaining characters in the `details` text.\n- **Write descriptive labels:** Use specific labels like \"Product Name\" or \"Reference Code\" rather than generic terms.\n"
+        "sectionContent": "\n- **Use for single-line text input:** Choose text field for short values like names, titles, or identifiers. For multi-line content, use [text area](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/text-area).\n- **Show character limit feedback:** When approaching `maxLength`, display remaining characters in the `details` text.\n- **Write descriptive labels:** Use specific labels like \"Product Name\" or \"Reference Code\" rather than generic terms.\n"
       },
       {
         "type": "Generic",
         "anchorLink": "limitations",
         "title": "Limitations",
-        "sectionContent": "\nThe `accessory` slot supports only [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) and [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components with text content only—other component types or complex layouts can't be used for field accessories.\n"
+        "sectionContent": "\nThe `accessory` slot supports only [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) and [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable) components with text content only—other component types or complex layouts can't be used for field accessories.\n"
       }
     ],
     "related": [],
@@ -14725,7 +14725,7 @@
       "description": "Learn how to add accessory buttons, configure validation properties, and handle events.",
       "examples": [
         {
-          "description": "Add action buttons to the text field using the accessory slot for quick actions like clearing text or submitting input. This example shows how to use [`s-button`](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) and [`s-clickable`](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components with text content in the accessory slot, enabling inline actions without leaving the input context.",
+          "description": "Add action buttons to the text field using the accessory slot for quick actions like clearing text or submitting input. This example shows how to use [`s-button`](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) and [`s-clickable`](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable) components with text content in the accessory slot, enabling inline actions without leaving the input context.",
           "codeblock": {
             "title": "Add accessory buttons",
             "tabs": [
@@ -14922,7 +14922,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Actions",
     "defaultExample": {
       "image": "tile-default.png",
@@ -14955,7 +14955,7 @@
   },
   {
     "name": "Time field",
-    "description": "The time field component captures time input through direct text entry. Use it when merchants know the exact time they want to enter or for quick time data entry.\n\nFor visual time selection with clock or spinner interfaces, use [time picker](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/time-picker).",
+    "description": "The time field component captures time input through direct text entry. Use it when merchants know the exact time they want to enter or for quick time data entry.\n\nFor visual time selection with clock or spinner interfaces, use [time picker](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/time-picker).",
     "thumbnail": "time-field-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -15142,7 +15142,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Forms",
     "defaultExample": {
       "image": "time-field-default.png",
@@ -15186,7 +15186,7 @@
   },
   {
     "name": "Time picker",
-    "description": "The time picker component allows merchants to select times using an interactive picker interface. Use it when merchants benefit from visual time selection rather than typing exact times.\n\nFor direct text entry when merchants know the exact time, use [time field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/time-field).",
+    "description": "The time picker component allows merchants to select times using an interactive picker interface. Use it when merchants benefit from visual time selection rather than typing exact times.\n\nFor direct text entry when merchants know the exact time, use [time field](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/time-field).",
     "thumbnail": "time-spinner-thumbnail.png",
     "isVisualComponent": true,
     "type": "",
@@ -15332,7 +15332,7 @@
         }
       }
     ],
-    "category": "Polaris web components",
+    "category": "Web components",
     "subCategory": "Forms",
     "defaultExample": {
       "image": "time-spinner-default.png",
@@ -15352,7 +15352,7 @@
         "type": "Generic",
         "anchorLink": "best-practices",
         "title": "Best practices",
-        "sectionContent": "\n- **Choose for visual time selection:** Use time picker when users benefit from a visual picker interface. Use [time field](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/time-field) when users know the exact time.\n- **Use correct format:** Always use `HH:mm:ss` format with leading zeros. The internal format is always 24-hour regardless of UI presentation.\n- **Validate before setting values:** Invalid values reset to empty string. Implement validation to show appropriate error messages.\n"
+        "sectionContent": "\n- **Choose for visual time selection:** Use time picker when users benefit from a visual picker interface. Use [time field](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/time-field) when users know the exact time.\n- **Use correct format:** Always use `HH:mm:ss` format with leading zeros. The internal format is always 24-hour regardless of UI presentation.\n- **Validate before setting values:** Invalid values reset to empty string. Implement validation to show appropriate error messages.\n"
       }
     ],
     "related": [],
