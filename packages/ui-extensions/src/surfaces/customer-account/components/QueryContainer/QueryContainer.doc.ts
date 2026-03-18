@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = createComponentDoc({
     {
       name: 'Responsive values',
       subtitle: 'Utility',
-      url: '/docs/api/customer-account-ui-extensions/latest/using-polaris-components#responsive-values',
+      url: '/docs/api/customer-account-ui-extensions/latest/using-web-components#responsive-values',
       type: 'utility',
     },
   ],
