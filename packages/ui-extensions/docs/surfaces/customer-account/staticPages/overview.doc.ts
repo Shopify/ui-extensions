@@ -164,14 +164,14 @@ APIs with a \`value\` property are [Preact Signals](https://preactjs.com/guide/v
       image: 'ui-components.gif',
       altText:
         "An animation of a card that contains an image, heading, description, and button, shifting and transforming into highly customized versions of the same UI to reflect each merchant's unique branding.",
-      sectionContent: `Customer account UI extensions declare their interface using [Polaris web components](/docs/api/customer-account-ui-extensions/using-polaris-components). Shopify renders the UI natively, so it’s performant, accessible, and works in all of customer account’s supported browsers.
+      sectionContent: `Customer account UI extensions declare their interface using [web components](/docs/api/customer-account-ui-extensions/using-web-components). Shopify renders the UI natively, so it’s performant, accessible, and works in all of customer account’s supported browsers.
 
 Customer account components are designed to be flexible, enabling you to layer and mix them to create highly-customized app extensions that feel seamless within the customer account experience. All components inherit a merchant’s brand settings and the CSS cannot be altered or overridden.`,
       sectionCard: [
         {
           name: 'Component library',
           subtitle: 'API Reference',
-          url: '/api/customer-account-ui-extensions/polaris-web-components',
+          url: '/api/customer-account-ui-extensions/web-components',
           type: 'blocks',
         },
         {

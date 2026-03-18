@@ -9,11 +9,11 @@ export interface ButtonGroupProps extends IdProps {
 
 export interface ButtonGroupElementSlots {
   /**
-   * The primary action for the group. Accepts a single [Button](/docs/api/checkout-ui-extensions/polaris-web-components/actions/button) element.
+   * The primary action for the group. Accepts a single [Button](/docs/api/checkout-ui-extensions/web-components/actions/button) element.
    */
   'primary-action'?: HTMLElement;
   /**
-   * The secondary actions for the group. Accepts multiple [Button](/docs/api/checkout-ui-extensions/polaris-web-components/actions/button) elements.
+   * The secondary actions for the group. Accepts multiple [Button](/docs/api/checkout-ui-extensions/web-components/actions/button) elements.
    */
   'secondary-actions'?: HTMLElement;
 }

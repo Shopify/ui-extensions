@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Docs_Menu_Button_Action',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Actions',
   defaultExample: {
     image: 'menu-default.png',
@@ -71,7 +71,7 @@ Use short labels (ideally two words) that start with a verb, use sentence case, 
     {
       name: 'Popover',
       subtitle: 'Component',
-      url: '/docs/api/customer-account-ui-extensions/polaris-web-components/overlays/popover',
+      url: '/docs/api/customer-account-ui-extensions/web-components/overlays/popover',
       type: 'Component',
     },
   ],

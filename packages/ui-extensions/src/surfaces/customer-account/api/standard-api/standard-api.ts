@@ -120,7 +120,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * - Use noun + past tense verb format. For example, \`Changes saved\`.
    *
-   * For errors, or information that needs to persist on the page, use a [banner](/docs/api/checkout-ui-extensions/polaris-web-components/feedback/banner) component.
+   * For errors, or information that needs to persist on the page, use a [banner](/docs/api/checkout-ui-extensions/web-components/feedback/banner) component.
    */
   toast: ToastApi;
 
