@@ -1,17 +1,17 @@
 import type {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
-  title: 'Using Polaris web components',
+  title: 'Using web components',
   description:
-    "Polaris web components are Shopify's UI toolkit for building interfaces that match the Shopify Checkout design system. This toolkit provides a set of custom HTML elements (web components) that you can use to create consistent, accessible, and performant user interfaces for Customer Account UI Extensions.",
-  id: 'using-polaris-components',
+    "Web components are Shopify's UI toolkit for building interfaces that match the Shopify Checkout design system. This toolkit provides a set of custom HTML elements (web components) that you can use to create consistent, accessible, and performant user interfaces for Customer Account UI Extensions.",
+  id: 'using-web-components',
   sections: [
     {
       type: 'Generic',
       anchorLink: 'styling',
       title: 'Styling',
       sectionContent:
-        "Polaris web components come with built-in styling that follows Shopify's design system. The components will automatically apply the correct styling based on the properties you set and the context in which they are used. For example, headings automatically display at progressively less prominent sizes based on how many levels deep they are nested inside of sections. All components inherit a merchant's brand settings and the CSS cannot be altered or overridden.",
+        "Web components come with built-in styling that follows Shopify's design system. The components will automatically apply the correct styling based on the properties you set and the context in which they are used. For example, headings automatically display at progressively less prominent sizes based on how many levels deep they are nested inside of sections. All components inherit a merchant's brand settings and the CSS cannot be altered or overridden.",
       codeblock: {
         title: 'Example',
         tabs: [
@@ -179,7 +179,7 @@ By default, the responsive value will query against the closest parent; to look 
       anchorLink: 'using-with-preact',
       title: 'Using with Preact',
       sectionContent:
-        'For UI Extensions, Shopify provides Preact as the framework of choice. Using Polaris web components with Preact is very similar to using them with React.  ',
+        'For UI Extensions, Shopify provides Preact as the framework of choice. Using web components with Preact is very similar to using them with React.  ',
       codeblock: {
         title: 'Example',
         tabs: [
@@ -195,12 +195,12 @@ By default, the responsive value will query against the closest parent; to look 
       anchorLink: 'properties-vs-attributes',
       title: 'Properties vs attributes',
       sectionContent:
-        'Polaris web components follow the same property and attribute patterns as standard HTML elements. Understanding this distinction is important for using the components effectively.',
+        'Web components follow the same property and attribute patterns as standard HTML elements. Understanding this distinction is important for using the components effectively.',
       accordionContent: [
         {
           title: 'Key concepts',
           description:
-            "1. **Attributes** are HTML attributes that appear in the HTML markup.\n2. **Properties** are JavaScript object properties accessed directly on the DOM element.\n3. Most attributes in Polaris web components are reflected as properties, with a few exceptions like `value` and `checked` which follow HTML's standard behavior.",
+            "1. **Attributes** are HTML attributes that appear in the HTML markup.\n2. **Properties** are JavaScript object properties accessed directly on the DOM element.\n3. Most attributes in web components are reflected as properties, with a few exceptions like `value` and `checked` which follow HTML's standard behavior.",
           codeblock: {
             tabs: [],
             title: '',
@@ -211,7 +211,7 @@ By default, the responsive value will query against the closest parent; to look 
         {
           title: 'How JSX properties are applied',
           description:
-            "When using Polaris web components in JSX, the framework determines how to apply your props based on whether the element has a matching property name.\n\nIf the element has a property with the exact same name as your prop, the value is set as a property. Otherwise, it's applied as an attribute. Here's how this works in pseudocode:",
+            "When using web components in JSX, the framework determines how to apply your props based on whether the element has a matching property name.\n\nIf the element has a property with the exact same name as your prop, the value is set as a property. Otherwise, it's applied as an attribute. Here's how this works in pseudocode:",
           codeblock: {
             tabs: [
               {
@@ -228,7 +228,7 @@ By default, the responsive value will query against the closest parent; to look 
         {
           title: 'Examples',
           description:
-            'For Polaris web components, you can generally just use the property names as documented, and everything will work as expected.',
+            'For web components, you can generally just use the property names as documented, and everything will work as expected.',
           codeblock: {
             tabs: [
               {
@@ -265,7 +265,7 @@ By default, the responsive value will query against the closest parent; to look 
       anchorLink: 'slots',
       title: 'Slots',
       sectionContent:
-        'Slots allow you to insert custom content into specific areas of Polaris web components. Use the `slot` attribute to specify where your content should appear within a component.\n\nKey points:\n- Named slots (e.g., `slot="title"`) place content in designated areas\n- Multiple elements can share the same slot name\n- Elements without a slot attribute go into the default (unnamed) slot',
+        'Slots allow you to insert custom content into specific areas of web components. Use the `slot` attribute to specify where your content should appear within a component.\n\nKey points:\n- Named slots (e.g., `slot="title"`) place content in designated areas\n- Multiple elements can share the same slot name\n- Elements without a slot attribute go into the default (unnamed) slot',
       codeblock: {
         title: 'Examples',
         tabs: [
@@ -282,7 +282,7 @@ By default, the responsive value will query against the closest parent; to look 
       title: 'Methods',
       sectionContent: `Methods are functions available on components for programmatic control. Components like \`Modal\`, \`Sheet\`, and \`Announcement\` provide methods such as \`hideOverlay()\` or \`dismiss()\` to control their behavior imperatively when needed.
 
-Use methods when you need to trigger actions that can’t be achieved through property changes alone, such as closing an overlay after an async operation or resetting component state.`,
+Use methods when you need to trigger actions that can't be achieved through property changes alone, such as closing an overlay after an async operation or resetting component state.`,
       codeblock: {
         title: 'Example',
         tabs: [
@@ -302,7 +302,7 @@ Use methods when you need to trigger actions that can’t be achieved through pr
     {
       type: 'Generic',
       title: 'Using Forms',
-      sectionContent: `The [Form](https://shopify.dev/docs/api/checkout-ui-extensions/polaris-web-components/forms/form) component provides a way to manage form state and submit data to your app's backend or directly to Shopify using Direct API access.\n\nWhen the form is submitted or reset the relevant callback in the form component will get triggered.\n\nUsing this, you can control what defines a component to be dirty by utilizing the input's defaultValue property.\n\nRules:\n\n- When the defaultValue is set, the component will be considered dirty if the value of the input is different from the defaultValue. You may update the defaultValue when the form is submitted to reset the dirty state of the form.\n\n- When the defaultValue is not set, the component will be considered dirty if the value of the input is different from the initial value or from the last dynamic update to the input's value that wasn't triggered by user input.
+      sectionContent: `The [Form](/docs/api/customer-account-ui-extensions/web-components/forms/form) component provides a way to manage form state and submit data to your app's backend or directly to Shopify using Direct API access.\n\nWhen the form is submitted or reset the relevant callback in the form component will get triggered.\n\nUsing this, you can control what defines a component to be dirty by utilizing the input's defaultValue property.\n\nRules:\n\n- When the defaultValue is set, the component will be considered dirty if the value of the input is different from the defaultValue. You may update the defaultValue when the form is submitted to reset the dirty state of the form.\n\n- When the defaultValue is not set, the component will be considered dirty if the value of the input is different from the initial value or from the last dynamic update to the input's value that wasn't triggered by user input.
 
         Note: In order to trigger the dirty state, each input must have a name attribute.
         `,
@@ -328,7 +328,7 @@ Use methods when you need to trigger actions that can’t be achieved through pr
       anchorLink: 'accessibility',
       title: 'Accessibility',
       sectionContent:
-        'Polaris web components are built with accessibility in mind. They:\n\n- Use semantic HTML under the hood\n- Support keyboard navigation\n- Include proper ARIA attributes\n- Manage focus appropriately\n- Provide appropriate color contrast\n- Log warnings when component properties are missing and required for accessibility\n\nTo ensure your application remains accessible, follow these best practices:\n\n1. Always use the `label` and `error` properties for form elements\n2. Use appropriate heading levels with `s-heading` or the `heading` property\n3. Ensure sufficient color contrast\n4. Test keyboard navigation\n5. Use `labelAccessibilityVisibility` to hide labels and keep them visible to assistive technologies\n6. Use `accessibilityRole` to specify the `aria-role` of the component',
+        'Web components are built with accessibility in mind. They:\n\n- Use semantic HTML under the hood\n- Support keyboard navigation\n- Include proper ARIA attributes\n- Manage focus appropriately\n- Provide appropriate color contrast\n- Log warnings when component properties are missing and required for accessibility\n\nTo ensure your application remains accessible, follow these best practices:\n\n1. Always use the `label` and `error` properties for form elements\n2. Use appropriate heading levels with `s-heading` or the `heading` property\n3. Ensure sufficient color contrast\n4. Test keyboard navigation\n5. Use `labelAccessibilityVisibility` to hide labels and keep them visible to assistive technologies\n6. Use `accessibilityRole` to specify the `aria-role` of the component',
       codeblock: {
         title: 'Example',
         tabs: [
@@ -344,7 +344,7 @@ Use methods when you need to trigger actions that can’t be achieved through pr
       anchorLink: 'troubleshooting',
       title: 'Troubleshooting',
       sectionContent:
-        'Common issues and debugging tips for using Polaris web components.',
+        'Common issues and debugging tips for using web components.',
       accordionContent: [
         {
           title: 'Common issues',

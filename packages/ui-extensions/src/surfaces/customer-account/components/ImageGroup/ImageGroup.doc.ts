@@ -3,7 +3,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Image group',
   description:
-    'Display up to 4 images in a grid or stacked layout. The images are displayed as a grid when used within a [Section](/docs/api/customer-account-ui-extensions/polaris-web-components/structure/section) component. For example, images of products in a wishlist or subscription. When there are more than 4 images, the component indicates how many more images are not displayed.',
+    'Display up to 4 images in a grid or stacked layout. The images are displayed as a grid when used within a [Section](/docs/api/customer-account-ui-extensions/web-components/structure/section) component. For example, images of products in a wishlist or subscription. When there are more than 4 images, the component indicates how many more images are not displayed.',
   thumbnail: 'imagegroup-thumbnail.png',
   requires: '',
   isVisualComponent: true,
@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ImageGroupPropsDocs',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Media and visuals',
   defaultExample: {
     image: 'imagegroup-default.png',

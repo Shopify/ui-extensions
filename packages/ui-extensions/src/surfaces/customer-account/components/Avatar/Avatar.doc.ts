@@ -17,11 +17,11 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+        'Learn more about [registering events](/docs/api/customer-account-ui-extensions/using-web-components#handling-events).',
       type: 'AvatarEventsDocs',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Media and visuals',
   defaultExample: {
     image: 'avatar-default.png',
