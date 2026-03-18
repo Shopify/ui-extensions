@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Spinner',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Feedback and status indicators',
   defaultExample: {
     image: 'spinner-default.png',

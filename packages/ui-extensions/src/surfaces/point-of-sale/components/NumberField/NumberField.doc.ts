@@ -28,7 +28,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'NumberFieldEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'number-field-default.png',

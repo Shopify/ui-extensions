@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'EmailFieldEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'email-field-default.png',

@@ -28,7 +28,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PosBlockSlots',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Layout and structure',
   defaultExample: {
     image: 'pos-block-default.png',

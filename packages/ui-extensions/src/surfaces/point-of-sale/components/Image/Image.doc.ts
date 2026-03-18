@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Image',
   description:
     'The image component displays visual content. Use images to showcase products, illustrate concepts, or provide visual context in POS workflows.' +
-    '\n\nImages are display-only components. For interactive functionality, wrap them in [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable) components.',
+    '\n\nImages are display-only components. For interactive functionality, wrap them in [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable) components.',
   thumbnail: 'image-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Image',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Media and visuals',
   defaultExample: {
     image: 'image-default.png',

@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Box',
   description:
     'The box component provides a container for layout and visual styling. Use it to apply padding, borders, and background colors, or to nest and group other components.' +
-    '\n\nFor user interaction, use box in combination with interactive components like [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/clickable). For scrollable content, use [scroll box](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/scroll-box).',
+    '\n\nFor user interaction, use box in combination with interactive components like [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) or [clickable](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/clickable). For scrollable content, use [scroll box](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/layout-and-structure/scroll-box).',
   thumbnail: 'box-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Box',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Layout and structure',
   defaultExample: {
     image: 'box-default.png',

@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'BannerSlots',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Feedback and status indicators',
   defaultExample: {
     image: 'banner-default.png',
