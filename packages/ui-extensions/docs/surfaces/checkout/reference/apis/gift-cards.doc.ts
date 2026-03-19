@@ -2,6 +2,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import {
   CHECKOUT_API_PROPERTIES_DESCRIPTION,
+  getExample,
   getLinksByTag,
   STANDARD_API_PROPERTIES_DESCRIPTION,
 } from '../helper.docs';
@@ -35,6 +36,11 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseApplyGiftCardChangeGeneratedType',
     },
   ],
+  defaultExample: getExample('gift-cards/applied-gift-cards', ['jsx']),
+  examples: {
+    description: '',
+    examples: [getExample('gift-cards/apply-gift-card', ['jsx'])],
+  },
   related: getLinksByTag('apis'),
 };
 

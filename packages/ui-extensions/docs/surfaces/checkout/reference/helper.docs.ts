@@ -154,7 +154,7 @@ export function getExamples(
     'shipping-option-item/default': {
       description: '',
       codeblock: {
-        title: 'Reading the selected shipping option',
+        title: 'Read the selected shipping option',
         tabs: getExtensionCodeTabs('shipping-option-item/default'),
       },
     },
@@ -168,7 +168,7 @@ export function getExamples(
     'purchase.checkout.pickup-location-option-item.render-after/default': {
       description: '',
       codeblock: {
-        title: 'Reading the selected pickup location option',
+        title: 'Read the selected pickup location option',
         tabs: getExtensionCodeTabs(
           'purchase.checkout.pickup-location-option-item.render-after/default',
         ),
@@ -177,7 +177,7 @@ export function getExamples(
     'order-confirmation/default': {
       description: '',
       codeblock: {
-        title: 'Order confirmation',
+        title: 'Display order confirmation details',
         tabs: getExtensionCodeTabs('order-confirmation/default'),
       },
     },
@@ -352,14 +352,14 @@ See [Storefront GraphQL API endpoints](/docs/api/storefront#endpoints) for more 
     'payments/use-available-payment-options': {
       description: '',
       codeblock: {
-        title: 'Available payment options',
+        title: 'Read available payment options',
         tabs: getExtensionCodeTabs('payments/use-available-payment-options'),
       },
     },
     'payments/use-selected-payment-options': {
       description: '',
       codeblock: {
-        title: 'Selected payment options',
+        title: 'Read selected payment options',
         tabs: getExtensionCodeTabs('payments/use-selected-payment-options'),
       },
     },
@@ -435,21 +435,21 @@ The contents of the token are signed using your shared app secret.  The optional
     'delivery-groups': {
       description: '',
       codeblock: {
-        title: 'Delivery groups',
+        title: 'Read delivery groups',
         tabs: getExtensionCodeTabs('delivery-groups'),
       },
     },
     'delivery-group': {
       description: '',
       codeblock: {
-        title: 'Delivery group',
+        title: 'Read a delivery group',
         tabs: getExtensionCodeTabs('delivery-group'),
       },
     },
     'attribute-values': {
       description: '',
       codeblock: {
-        title: 'Attribute values',
+        title: 'Read attribute values',
         tabs: getExtensionCodeTabs('attribute-values'),
       },
     },
@@ -457,7 +457,7 @@ The contents of the token are signed using your shared app secret.  The optional
       description:
         'You can add or remove cart and checkout attributes by using the `applyAttributeChange` API.',
       codeblock: {
-        title: 'Applying changes to attributes',
+        title: 'Apply changes to attributes',
         tabs: getExtensionCodeTabs('attributes/attribute-change'),
       },
     },
@@ -501,6 +501,91 @@ The contents of the token are signed using your shared app secret.  The optional
       title: 'Use app owned metafields',
       description:
         'Use the `$app` format to request metafields that are owned by your app in your extension configuration file. Your app exclusively controls structure, data, permissions and optional features for this type of metafield. See [app owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.',
+    }),
+    ...createExample('address/shipping-address', {
+      title: 'Read the shipping address',
+      description:
+        "Use the `useShippingAddress` hook to access the buyer's shipping destination. The city, province, and country code are displayed, with a fallback banner when no address has been entered yet.",
+    }),
+    ...createExample('address/billing-address', {
+      title: 'Read the billing address',
+      description:
+        'Use the `useBillingAddress` hook to access the billing address. Optional fields like address line, city, province, and country are filtered and joined into a single formatted string.',
+    }),
+    ...createExample('buyer-identity/customer-info', {
+      title: 'Display customer information',
+      description:
+        "Use the `useCustomer` hook to greet returning buyers by name. The customer's order count is included in a welcome banner, with a safe fallback when `fullName` is unavailable.",
+    }),
+    ...createExample('buyer-identity/purchasing-company', {
+      title: 'Display B2B purchasing company details',
+      description:
+        'Use the `usePurchasingCompany` hook to identify business buyers during checkout. The company name and location are displayed in a banner, and the extension renders nothing for non-B2B sessions.',
+    }),
+    ...createExample('checkout-token/default', {
+      title: 'Access the checkout token',
+      description:
+        'Use the `useCheckoutToken` hook to retrieve the stable identifier for the current checkout session. The token renders as inline text and can be sent to backend systems for event correlation.',
+    }),
+    ...createExample('checkout-token/support-message', {
+      title: 'Display a checkout reference for support',
+      description:
+        'Use the `useCheckoutToken` hook to present a reference ID in a help banner. Buyers can share this token with customer support to speed up issue resolution.',
+    }),
+    ...createExample('cost/order-summary', {
+      title: 'Display an order cost summary',
+      description:
+        'Use `useSubtotalAmount`, `useTotalShippingAmount`, `useTotalTaxAmount`, and `useTotalAmount` to render a full cost breakdown. Shipping and tax are conditionally rendered since they may be unavailable on earlier checkout steps.',
+    }),
+    ...createExample('cost/free-shipping-goal', {
+      title: 'Show progress toward free shipping',
+      description:
+        'Use the `useSubtotalAmount` hook to compare the cart total against a threshold. The remaining amount is calculated and displayed, switching to a success banner once the buyer qualifies.',
+    }),
+    ...createExample('discounts/discount-codes', {
+      title: 'Display applied discount codes',
+      description:
+        'Use the `useDiscountCodes` hook to list all active codes on the checkout. Each code is rendered in a stack, and the extension returns nothing when no codes are applied.',
+    }),
+    ...createExample('discounts/apply-discount', {
+      title: 'Apply and remove discount codes',
+      description:
+        'Use the `applyDiscountCodeChange` API to submit a discount code entered by the buyer. The extension checks [`instructions.discounts.canUpdateDiscountCodes`](/docs/api/checkout-ui-extensions/apis/cart-instructions) before rendering, and clears the input on success.',
+    }),
+    ...createExample('gift-cards/applied-gift-cards', {
+      title: 'Display applied gift cards',
+      description:
+        'Use the `useAppliedGiftCards` hook to list each gift card on the checkout. The last four characters and amount deducted are displayed side by side for each card.',
+    }),
+    ...createExample('gift-cards/apply-gift-card', {
+      title: 'Apply a gift card',
+      description:
+        'Use the `applyGiftCardChange` API to submit a gift card code entered by the buyer. The input is cleared on success, and errors are logged when the code is invalid.',
+    }),
+    ...createExample('note/display-note', {
+      title: 'Display the order note',
+      description:
+        'Use the `useNote` hook to read the note attached to the checkout. The note is displayed in a banner only when one exists, and the extension renders nothing otherwise.',
+    }),
+    ...createExample('note/update-note', {
+      title: 'Add or update an order note',
+      description:
+        'Use the `applyNoteChange` API to let buyers write delivery or gift instructions. The extension checks [`instructions.notes.canUpdateNote`](/docs/api/checkout-ui-extensions/apis/cart-instructions) before rendering, and supports both updating and removing the note.',
+    }),
+    ...createExample('cart-lines/summary', {
+      title: 'Display cart line item details',
+      description:
+        'Use the `useCartLines` hook to render a breakdown of all items in the cart. Each line shows its merchandise title, quantity, and total price, with a summary count at the top.',
+    }),
+    ...createExample('customer-privacy/consent-banner', {
+      title: 'Display a consent banner',
+      description:
+        'Use the `useCustomerPrivacy` hook to check whether the buyer has responded to analytics and marketing consent. A banner is shown when either preference is still undefined. See the [`customer_privacy` capability](/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent) for configuration.',
+    }),
+    ...createExample('order-confirmation/first-order', {
+      title: 'Display a first-time buyer offer',
+      description:
+        "Use `shopify.orderConfirmation` to check whether this is the buyer's first order. A success banner with a discount code is shown for new customers, and a standard confirmation message is shown for returning buyers.",
     }),
   };
 }

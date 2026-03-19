@@ -2,6 +2,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import {
   CHECKOUT_API_PROPERTIES_DESCRIPTION,
+  getExample,
   getLinksByTag,
   STANDARD_API_PROPERTIES_DESCRIPTION,
 } from '../helper.docs';
@@ -41,6 +42,11 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseDiscountCodesGeneratedType',
     },
   ],
+  defaultExample: getExample('discounts/discount-codes', ['jsx']),
+  examples: {
+    description: '',
+    examples: [getExample('discounts/apply-discount', ['jsx'])],
+  },
   related: getLinksByTag('apis'),
 };
 

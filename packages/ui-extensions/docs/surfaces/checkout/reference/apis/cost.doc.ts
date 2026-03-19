@@ -2,6 +2,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import {
   getLinksByTag,
+  getExample,
   STANDARD_API_PROPERTIES_DESCRIPTION,
 } from '../helper.docs';
 
@@ -43,6 +44,11 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseTotalAmountGeneratedType',
     },
   ],
+  defaultExample: getExample('cost/order-summary', ['jsx']),
+  examples: {
+    description: '',
+    examples: [getExample('cost/free-shipping-goal', ['jsx'])],
+  },
   related: getLinksByTag('apis'),
 };
 

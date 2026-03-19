@@ -2,6 +2,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import {
   getLinksByTag,
+  getExample,
   STANDARD_API_PROPERTIES_DESCRIPTION,
   CHECKOUT_API_PROPERTIES_DESCRIPTION,
   REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2,
@@ -45,6 +46,11 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseApplyShippingAddressChangeGeneratedType',
     },
   ],
+  defaultExample: getExample('address/shipping-address', ['jsx']),
+  examples: {
+    description: '',
+    examples: [getExample('address/billing-address', ['jsx'])],
+  },
   related: getLinksByTag('apis'),
 };
 
