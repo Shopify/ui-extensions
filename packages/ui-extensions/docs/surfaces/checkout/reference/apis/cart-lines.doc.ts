@@ -57,6 +57,10 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: getExample('cart-line-item/default', ['jsx']),
+  examples: {
+    description: '',
+    examples: [getExample('cart-lines/summary', ['jsx'])],
+  },
   related: getLinksByTag('apis'),
 };
 

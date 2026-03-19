@@ -3,6 +3,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {
   STANDARD_API_PROPERTIES_DESCRIPTION,
   REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2,
+  getExample,
   getLinksByTag,
 } from '../helper.docs';
 
@@ -45,6 +46,11 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UsePurchasingCompanyGeneratedType',
     },
   ],
+  defaultExample: getExample('buyer-identity/customer-info', ['jsx']),
+  examples: {
+    description: '',
+    examples: [getExample('buyer-identity/purchasing-company', ['jsx'])],
+  },
   related: getLinksByTag('apis'),
 };
 
