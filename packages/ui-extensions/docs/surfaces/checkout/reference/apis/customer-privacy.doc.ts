@@ -32,6 +32,10 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: getExample('customer-privacy/default', ['jsx']),
+  examples: {
+    description: '',
+    examples: [getExample('customer-privacy/consent-banner', ['jsx'])],
+  },
   related: getLinksByTag('apis'),
 };
 

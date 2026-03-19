@@ -2,6 +2,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import {
   getLinksByTag,
+  getExample,
   STANDARD_API_PROPERTIES_DESCRIPTION,
 } from '../helper.docs';
 
@@ -24,6 +25,11 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseCheckoutTokenGeneratedType',
     },
   ],
+  defaultExample: getExample('checkout-token/default', ['jsx']),
+  examples: {
+    description: '',
+    examples: [getExample('checkout-token/support-message', ['jsx'])],
+  },
   related: getLinksByTag('apis'),
 };
 

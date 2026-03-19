@@ -2,6 +2,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import {
   CHECKOUT_API_PROPERTIES_DESCRIPTION,
+  getExample,
   getLinksByTag,
   STANDARD_API_PROPERTIES_DESCRIPTION,
 } from '../helper.docs';
@@ -36,6 +37,11 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseApplyNoteChangeGeneratedType',
     },
   ],
+  defaultExample: getExample('note/display-note', ['jsx']),
+  examples: {
+    description: '',
+    examples: [getExample('note/update-note', ['jsx'])],
+  },
   related: getLinksByTag('apis'),
 };
 

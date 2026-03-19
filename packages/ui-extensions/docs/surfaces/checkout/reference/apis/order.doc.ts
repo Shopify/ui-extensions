@@ -24,6 +24,10 @@ const data: ReferenceEntityTemplateSchema = {
   subCategory: 'Checkout APIs',
   type: 'API',
   defaultExample: getExample('order-confirmation/default', ['jsx']),
+  examples: {
+    description: '',
+    examples: [getExample('order-confirmation/first-order', ['jsx'])],
+  },
   definitions: [
     {
       title: 'OrderConfirmationApi',
