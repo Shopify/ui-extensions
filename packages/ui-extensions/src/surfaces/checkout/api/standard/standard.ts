@@ -706,11 +706,6 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   storage: Storage;
 
   /**
-   * Methods to interact with the extension’s UI.
-   */
-  ui: Ui;
-
-  /**
    * The renderer version being used for the extension.
    *
    * @example '2025-10'
@@ -736,22 +731,6 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * For example, some countries require additional fields for customs information or tax identification numbers.
    */
   localizedFields?: SubscribableSignalLike<LocalizedField[]>;
-}
-
-export interface Ui {
-  /**
-   * Allows the extension to close an overlay programmatically.
-   *
-   * Supported overlay components are [Modal](/docs/api/checkout-ui-extensions/latest/components/overlays/modal), [Sheet](/docs/api/checkout-ui-extensions/latest/components/overlays/sheet) and [Popover](/docs/api/checkout-ui-extensions/latest/components/overlays/popover).
-   */
-  overlay: Overlay;
-}
-
-interface Overlay {
-  /**
-   * Closes the overlay with the given ID.
-   */
-  close(overlayId: string): void;
 }
 
 export interface SessionToken {
