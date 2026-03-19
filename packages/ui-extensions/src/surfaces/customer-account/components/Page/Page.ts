@@ -1,6 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import type {RemoteFragment} from '@remote-ui/core';
 
+/**
+ * Display the page layout with a title, actions, and content.
+ * @publicDocs
+ */
 export interface PageProps {
   /**
    * The text to be used as title.

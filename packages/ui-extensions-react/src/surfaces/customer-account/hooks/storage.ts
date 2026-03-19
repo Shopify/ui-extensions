@@ -7,6 +7,7 @@ import {useApi} from './api';
 
 /**
  * Returns the key-value `Storage` interface for the extension target.
+ * @publicDocs
  */
 export function useStorage<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

@@ -10,6 +10,7 @@ import {ExtensionHasNoFieldError} from '../errors';
 /**
  * Returns the currency of the checkout, and automatically re-renders
  * your component if the currency changes.
+ * @publicDocs
  */
 export function useCurrency<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,

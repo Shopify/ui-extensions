@@ -6,6 +6,7 @@ import {ExtensionHasNoFieldError} from '../errors';
 
 /**
  * Returns the proposed `note` applied to the checkout.
+ * @publicDocs
  */
 export function useNote<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,

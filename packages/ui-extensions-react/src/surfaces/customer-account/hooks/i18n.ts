@@ -7,6 +7,7 @@ import {useApi} from './api';
 /**
  Returns utilities for translating content and formatting values
     according to the current localization of the user.
+ * @publicDocs
  */
 export function useI18n<
   Target extends RenderCustomerAccountExtensionTarget = RenderCustomerAccountExtensionTarget,

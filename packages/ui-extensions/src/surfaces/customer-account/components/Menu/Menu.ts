@@ -1,6 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import type {IdProps} from '../shared';
 
+/**
+ * Display a menu with a list of actions.
+ * @publicDocs
+ */
 export interface MenuProps extends IdProps {
   /**
    * A label to describe the purpose of the menu that is announced by screen readers.

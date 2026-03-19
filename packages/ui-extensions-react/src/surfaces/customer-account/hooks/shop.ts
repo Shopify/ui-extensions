@@ -8,6 +8,7 @@ import {ExtensionHasNoFieldError} from '../errors';
 
 /**
  * Returns the `Shop` where the checkout is taking place.
+ * @publicDocs
  */
 export function useShop<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,

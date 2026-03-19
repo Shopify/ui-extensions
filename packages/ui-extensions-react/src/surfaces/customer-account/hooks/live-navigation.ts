@@ -5,6 +5,9 @@ import {
 import {useApi} from './api';
 import {useEffect, useReducer} from 'react';
 
+/**
+ * @publicDocs
+ */
 export function useNavigationCurrentEntry<
   Target extends RenderCustomerAccountFullPageExtensionTarget = RenderCustomerAccountFullPageExtensionTarget,
 >(): NavigationHistoryEntry {

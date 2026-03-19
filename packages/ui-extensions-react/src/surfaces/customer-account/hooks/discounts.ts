@@ -11,6 +11,7 @@ import {ExtensionHasNoFieldError} from '../errors';
 /**
  * Returns the current discount codes applied to the cart, and automatically re-renders
  * your component if discount codes are added or removed.
+ * @publicDocs
  */
 export function useDiscountCodes<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
@@ -28,6 +29,7 @@ export function useDiscountCodes<
 /**
  * Returns the current discount allocations applied to the cart, and automatically re-renders
  * your component if discount allocations changed.
+ * @publicDocs
  */
 export function useDiscountAllocations<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
