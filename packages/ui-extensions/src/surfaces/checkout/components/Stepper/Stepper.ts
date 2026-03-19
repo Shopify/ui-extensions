@@ -2,6 +2,10 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IconSource} from '../Icon/Icon';
 
+/**
+ * Use a stepper to increase or decrease a value, like changing the quantity from 1 to 2.
+ * @publicDocs
+ */
 export interface StepperProps {
   /**
    * A detailed description for screen readers.

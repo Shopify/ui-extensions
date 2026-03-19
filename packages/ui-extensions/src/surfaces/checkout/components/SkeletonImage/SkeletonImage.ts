@@ -3,6 +3,10 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 import type {IdProps} from '../shared';
 
+/**
+ * SkeletonImage is used to provide a low fidelity representation of an image before it appears on the page.
+ * @publicDocs
+ */
 export interface SkeletonImageProps extends IdProps {
   /**
    * The block size (height in horizontal writing modes) of the skeleton placeholder.

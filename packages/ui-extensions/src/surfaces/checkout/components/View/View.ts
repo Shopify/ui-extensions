@@ -125,6 +125,10 @@ export interface Translate {
   inline?: number | `${number}%`;
 }
 
+/**
+ * View is a generic container component. Its contents will always be their “natural” size, so this component can be useful in layout components (like `Grid`, `BlockStack`, `InlineStack`) that would otherwise stretch their children to fit.
+ * @publicDocs
+ */
 export interface ViewProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,

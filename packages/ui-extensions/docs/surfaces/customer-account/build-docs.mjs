@@ -36,7 +36,7 @@ const shopifyDevDBPath = path.join(
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
-const generatedDocsDataFile = 'generated_docs_data.json';
+const generatedDocsDataFile = 'generated_docs_data_v2.json';
 const generatedStaticPagesFile = 'generated_static_pages.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
@@ -151,7 +151,7 @@ const generateExtensionsDocs = async () => {
       .readFile(path.join(tempCompOutputDir, generatedDocsDataFile), 'utf8')
       .then(JSON.parse),
   ]);
-  const mergedData = [...refData, ...compData].filter(Boolean);
+  const mergedData = {...refData, ...compData};
   await fs.writeFile(
     path.join(outputDir, generatedDocsDataFile),
     JSON.stringify(mergedData, null, 2),

@@ -4,6 +4,10 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {Autocomplete} from '../shared';
 import type {IconSource} from '../Icon/Icon';
 
+/**
+ * A PhoneField is an input field that merchants can type into optimized for phone numbers with a country code base auto-formatting. The country code is required for the initial render of the field but it can be overriden later by the user either by selecting a country in the country selection dropdown or by manually editing the country phone code directly in the text field.
+ * @publicDocs
+ */
 export interface PhoneFieldProps {
   /**
    * Any content to render at the end of the text field. Commonly used

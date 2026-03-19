@@ -2,6 +2,12 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps, TextSize} from '../shared';
 
+/**
+ * SkeletonTextBlock is used to provide a low fidelity representation of a block of text before it appears on the page. 
+
+Optionally you can use any text content inside `SkeletonTextBlock` to be used as a base for the rendered skeleton
+ * @publicDocs
+ */
 export interface SkeletonTextBlockProps extends IdProps {
   /**
    * @private

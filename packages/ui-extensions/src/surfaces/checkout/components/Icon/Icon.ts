@@ -81,6 +81,10 @@ export type IconSource =
   | 'warning'
   | 'warningFill';
 
+/**
+ * Icons are pictograms or graphic symbols. They can act as wayfinding tools or as a means of communicating functionality.
+ * @publicDocs
+ */
 export interface IconProps extends IdProps {
   /**
    * A label that describes the purpose or contents of the icon. When set,

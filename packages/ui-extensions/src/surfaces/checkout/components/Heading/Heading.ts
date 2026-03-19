@@ -4,6 +4,12 @@ import type {InlineAlignment, AccessibilityRole} from '../shared';
 
 type Level = 1 | 2 | 3 | 4;
 
+/**
+ * Headings control the visual style of headings. Use headings to introduce major sections, like Contact information, Shipping address, or Shipping method.
+
+Unlike HTML headings, you don’t explicitly specify the position of the heading in the document outline. Nest headings within the heading group component to control the document outline structure used by assistive technologies.
+ * @publicDocs
+ */
 export interface HeadingProps {
   /**
    * Unique identifier.

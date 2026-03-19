@@ -2,6 +2,10 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {Autocomplete} from '../shared';
 
+/**
+ * Selects let buyers choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
+ * @publicDocs
+ */
 export interface SelectOptionProps {
   /**
    * The value that will be passed to the select’s `onChange` callback
@@ -18,6 +22,10 @@ export interface SelectOptionProps {
   disabled?: boolean;
 }
 
+/**
+ * Selects let buyers choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
+ * @publicDocs
+ */
 export interface SelectProps {
   /**
    * A unique identifier for the field. When no `id` is set,

@@ -10,6 +10,12 @@ import type {
 } from '../shared';
 import type {GridProps} from '../Grid/Grid';
 
+/**
+ * InlineLayout is used to lay out content over multiple columns.
+
+By default, all columns are of equal size and fill the available inline space. Content does not wrap on new rows when not enough columns have been explicitly set, instead they are added as new column and fill the remaining inline space.
+ * @publicDocs
+ */
 export interface InlineLayoutProps
   extends Omit<GridProps, 'columns' | 'rows'>,
     BorderProps,

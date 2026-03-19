@@ -2,6 +2,10 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {Appearance, IdProps, Size} from '../shared';
 
+/**
+ * Spinner is used to notify buyers that their action is being processed. The Spinner is usually used when sending or receiving data from a server.
+ * @publicDocs
+ */
 export interface SpinnerProps extends IdProps {
   /**
    * Adjusts the size of the icon.
