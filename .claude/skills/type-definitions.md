@@ -38,7 +38,7 @@ Run after `ui-extensions:universal`.
 
 - [ ] Every slot has a description explaining its purpose
 - [ ] Slot descriptions mention accepted child components
-- [ ] Link to child component docs (e.g., "Accepts a [Button](/docs/api/...)")
+- [ ] Link to child component docs (e.g., "Accepts a [button](/docs/api/...)")
 - [ ] Note any restrictions on children (e.g., "single Button element with restricted properties")
 
 ## Event Descriptions
