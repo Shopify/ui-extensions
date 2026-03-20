@@ -1,0 +1,32 @@
+<s-stack gap="base">
+  <s-button tone="critical" command="--show" commandfor="delete-modal">
+    Cancel order
+  </s-button>
+
+  <s-modal id="delete-modal" heading="Cancel this order?" size="small">
+    <s-stack>
+      <s-text>Are you sure you want to cancel order #1042?</s-text>
+      <s-text tone="warning">
+        This will release all reserved inventory. This action cannot be undone.
+      </s-text>
+    </s-stack>
+
+    <s-button
+      slot="primary-action"
+      variant="primary"
+      tone="critical"
+      command="--hide"
+      commandfor="delete-modal"
+    >
+      Cancel order
+    </s-button>
+    <s-button
+      slot="secondary-actions"
+      variant="secondary"
+      command="--hide"
+      commandfor="delete-modal"
+    >
+      Keep order
+    </s-button>
+  </s-modal>
+</s-stack>
