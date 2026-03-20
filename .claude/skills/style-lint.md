@@ -41,7 +41,6 @@ description: Use when validating any documentation update in the ui-extensions r
 ## Final Checks
 
 - [ ] Run `yarn lint` and fix any errors introduced
-- [ ] No unintended changes from other branches are present
 
 ---
 

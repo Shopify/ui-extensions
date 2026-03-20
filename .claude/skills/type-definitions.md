@@ -51,16 +51,10 @@ Run after `ui-extensions:universal`.
 - [ ] Suggests typical use cases (e.g., "Use to perform cleanup or reset form state")
 - [ ] For related events (onShow/onAfterShow), explains the difference
 
-## Source of Truth Verification
-
-- [ ] Check if types or descriptions originate from a different source such as `ui-api-design`
-- [ ] If so, **flag before updating** — descriptions must go there first, not directly in this repo
-
 ## Architecture Awareness
 
 - [ ] Identify if types use `extends Pick<BaseType, ...>` pattern
 - [ ] If expanding an interface to add JSDoc, document the workaround in comments
-- [ ] Check VERSION headers match the expected version
 
 ---
 
