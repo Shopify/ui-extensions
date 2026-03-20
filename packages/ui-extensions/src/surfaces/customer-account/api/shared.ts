@@ -618,6 +618,7 @@ export interface ToastApi {
  * When invoking via URL syntax, `action` and `type` are parsed from the
  * string. This companion type captures the remaining optional fields that can
  * be provided alongside the URL.
+ * @publicDocs
  */
 export interface IntentQueryOptions {
   /**
@@ -641,6 +642,7 @@ export interface IntentQueryOptions {
  * Common actions include:
  * - `'create'`: Initiate creation of a new resource.
  * - `'open'`: Modify an existing resource.
+ * @publicDocs
  */
 export type IntentAction = 'create' | 'open' | string;
 
@@ -649,6 +651,7 @@ export type IntentAction = 'create' | 'open' | string;
  *
  * Use this object form when programmatically composing an intent at runtime.
  * It pairs an action (verb) with a resource type and optional inputs.
+ * @publicDocs
  */
 export interface IntentQuery extends IntentQueryOptions {
   /**
@@ -719,6 +722,7 @@ export interface ClosedIntentResponse {
  *
  * Discriminated union representing all possible completion outcomes for an
  * invoked intent.
+ * @publicDocs
  */
 export type IntentResponse =
   | SuccessIntentResponse
@@ -727,6 +731,7 @@ export type IntentResponse =
 
 /**
  * Activity handle for tracking intent workflow progress.
+ * @publicDocs
  */
 export interface IntentActivity {
   /**
@@ -740,6 +745,7 @@ export interface IntentActivity {
  *
  * Intents pair an `action` (verb) with a resource `type` and optional `value`
  * and `data` to request a workflow.
+ * @publicDocs
  */
 export interface Intents {
   /**

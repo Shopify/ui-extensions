@@ -1,10 +1,10 @@
 {
   "DataGeneratedType": {
-    "src/docs/shared/components/Abbreviation.ts": {
-      "filePath": "src/docs/shared/components/Abbreviation.ts",
+    "src/docs/shared/components/Announcement.ts": {
+      "filePath": "src/docs/shared/components/Announcement.ts",
       "name": "DataGeneratedType",
       "description": "",
-      "value": "data: SharedReferenceEntityTemplateSchema = {\n  name: 'Abbreviation',\n  description:\n    'Displays abbreviated text or acronyms, revealing their full meaning or additional context through a tooltip on hover or focus. Use to clarify shortened terms, initialisms, or technical language without interrupting the reading flow.',\n  category: 'Web components',\n  subCategory: 'Typography and content',\n  related: [],\n}"
+      "value": "data: SharedReferenceEntityTemplateSchema = {\n  name: 'Announcement',\n  description:\n    'The Announcement component provides a less disruptive alternative to auto-open modals for capturing user attention. It provides a standardized way to engage users without being too intrusive.',\n  category: 'Web components',\n  subCategory: 'Feedback and status indicators',\n  related: [],\n}"
     }
   },
   "Navigation": {
@@ -142,6 +142,227 @@
         }
       ],
       "value": "export interface NavigationUpdateCurrentEntryOptions {\n  state: unknown;\n}"
+    }
+  },
+  "IntentQueryOptions": {
+    "src/surfaces/customer-account/api/shared.ts": {
+      "filePath": "src/surfaces/customer-account/api/shared.ts",
+      "name": "IntentQueryOptions",
+      "description": "Options for URL-based invocations.\n\nWhen invoking via URL syntax, `action` and `type` are parsed from the string. This companion type captures the remaining optional fields that can be provided alongside the URL.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "data",
+          "value": "Record<string, unknown>",
+          "description": "Optional input payload passed to the intent.\n\nUsed to seed forms or supply parameters. The accepted shape is intent-specific. For example:\n- Replacing a payment method on a subscription contract requires   { field: 'paymentMethod' }",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "string",
+          "description": "The resource identifier for edit actions (e.g. `gid://shopify/SubscriptionContract/123`).",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface IntentQueryOptions {\n  /**\n   * The resource identifier for edit actions (e.g. `gid://shopify/SubscriptionContract/123`).\n   */\n  value?: string;\n  /**\n   * Optional input payload passed to the intent.\n   *\n   * Used to seed forms or supply parameters. The accepted shape is\n   * intent-specific. For example:\n   * - Replacing a payment method on a subscription contract requires\n   *   { field: 'paymentMethod' }\n   */\n  data?: Record<string, unknown>;\n}"
+    }
+  },
+  "IntentAction": {
+    "src/surfaces/customer-account/api/shared.ts": {
+      "filePath": "src/surfaces/customer-account/api/shared.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "IntentAction",
+      "value": "'create' | 'open' | string",
+      "description": "Allowed actions that can be performed by an intent.\n\nCommon actions include:\n- `'create'`: Initiate creation of a new resource.\n- `'open'`: Modify an existing resource.",
+      "isPublicDocs": true
+    }
+  },
+  "IntentQuery": {
+    "src/surfaces/customer-account/api/shared.ts": {
+      "filePath": "src/surfaces/customer-account/api/shared.ts",
+      "name": "IntentQuery",
+      "description": "Structured description of an intent to invoke.\n\nUse this object form when programmatically composing an intent at runtime. It pairs an action (verb) with a resource type and optional inputs.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "action",
+          "value": "IntentAction",
+          "description": "Verb describing the operation to perform on the target resource.\n\nCommon values include `create` and `open`. The set of allowed verbs is intent-specific; unknown verbs will fail validation."
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "data",
+          "value": "Record<string, unknown>",
+          "description": "Optional input payload passed to the intent.\n\nUsed to seed forms or supply parameters. The accepted shape is intent-specific. For example:\n- Replacing a payment method on a subscription contract requires   { field: 'paymentMethod' }",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "string",
+          "description": "The resource type (e.g. `shopify/SubscriptionContract`)."
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "string",
+          "description": "The resource identifier for edit actions (e.g. `gid://shopify/SubscriptionContract/123`).",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface IntentQuery extends IntentQueryOptions {\n  /**\n   * Verb describing the operation to perform on the target resource.\n   *\n   * Common values include `create` and `open`. The set of\n   * allowed verbs is intent-specific; unknown verbs will fail validation.\n   */\n  action: IntentAction;\n  /**\n   * The resource type (e.g. `shopify/SubscriptionContract`).\n   */\n  type: string;\n}"
+    }
+  },
+  "IntentResponse": {
+    "src/surfaces/customer-account/api/shared.ts": {
+      "filePath": "src/surfaces/customer-account/api/shared.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "IntentResponse",
+      "value": "SuccessIntentResponse | ErrorIntentResponse | ClosedIntentResponse",
+      "description": "Result of an intent activity.\n\nDiscriminated union representing all possible completion outcomes for an invoked intent.",
+      "isPublicDocs": true
+    }
+  },
+  "SuccessIntentResponse": {
+    "src/surfaces/customer-account/api/shared.ts": {
+      "filePath": "src/surfaces/customer-account/api/shared.ts",
+      "name": "SuccessIntentResponse",
+      "description": "Successful intent completion.\n\n- `code` is always `'ok'`\n- `data` contains the output payload",
+      "members": [
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "code",
+          "value": "'ok'",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "data",
+          "value": "Record<string, unknown>",
+          "description": "Validated output payload produced by the workflow.\n\nThe shape is intent-specific. Consumers should narrow by `code === 'ok'` before accessing."
+        }
+      ],
+      "value": "export interface SuccessIntentResponse {\n  code: 'ok';\n  /**\n   * Validated output payload produced by the workflow.\n   *\n   * The shape is intent-specific. Consumers should narrow by `code === 'ok'` before accessing.\n   */\n  data: Record<string, unknown>;\n}"
+    }
+  },
+  "ErrorIntentResponse": {
+    "src/surfaces/customer-account/api/shared.ts": {
+      "filePath": "src/surfaces/customer-account/api/shared.ts",
+      "name": "ErrorIntentResponse",
+      "description": "Failed intent completion.\n\n- `code` is always `'error'`\n- `message` summarizes the failure\n- `issues` optionally provides structured details for validation or   field-specific problems following the Standard Schema convention",
+      "members": [
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "code",
+          "value": "'error'",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "issues",
+          "value": "{ path?: string[]; message?: string; }[]",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "message",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ErrorIntentResponse {\n  code?: 'error';\n  message?: string;\n  issues?: {\n    /**\n     * The path to the field with the issue.\n     */\n    path?: string[];\n    /**\n     * The error message for the issue.\n     */\n    message?: string;\n  }[];\n}"
+    }
+  },
+  "ClosedIntentResponse": {
+    "src/surfaces/customer-account/api/shared.ts": {
+      "filePath": "src/surfaces/customer-account/api/shared.ts",
+      "name": "ClosedIntentResponse",
+      "description": "User dismissed or closed the workflow without completing it.\n\nDistinct from `error`: no failure occurred, the activity was simply abandoned by the user.",
+      "members": [
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "code",
+          "value": "'closed'",
+          "description": ""
+        }
+      ],
+      "value": "export interface ClosedIntentResponse {\n  code: 'closed';\n}"
+    }
+  },
+  "IntentActivity": {
+    "src/surfaces/customer-account/api/shared.ts": {
+      "filePath": "src/surfaces/customer-account/api/shared.ts",
+      "name": "IntentActivity",
+      "description": "Activity handle for tracking intent workflow progress.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "complete",
+          "value": "Promise<IntentResponse>",
+          "description": "A Promise that resolves when the intent workflow completes, returning the response."
+        }
+      ],
+      "value": "export interface IntentActivity {\n  /**\n   * A Promise that resolves when the intent workflow completes, returning the response.\n   */\n  complete: Promise<IntentResponse>;\n}"
+    }
+  },
+  "Intents": {
+    "src/surfaces/customer-account/api/shared.ts": {
+      "filePath": "src/surfaces/customer-account/api/shared.ts",
+      "name": "Intents",
+      "description": "Entry point for Shopify intents.\n\nIntents pair an `action` (verb) with a resource `type` and optional `value` and `data` to request a workflow.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "invoke",
+          "value": "{ (query: IntentQuery): Promise<IntentActivity>; (intentURL: string, options?: IntentQueryOptions): Promise<IntentActivity>; }",
+          "description": "Invoke an intent using the object or URL syntax.\n\nObject format: `{action, type, value?, data?}`\n\nURL format: `action:type[,value][?params]`",
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "const activity = await shopify.intents.invoke(\n  {\n    action: 'open',\n    type: 'shopify/SubscriptionContract',\n    value: 'gid://shopify/SubscriptionContract/69372608568',\n    data: { field: 'paymentMethod' },\n  }\n);",
+                  "title": "Example"
+                }
+              ]
+            },
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "const activity = await shopify.intents.invoke('open:shopify/SubscriptionContract,gid://shopify/SubscriptionContract/69372608568?field=paymentMethod');\n\n// Or using a query string and options\nconst activity = await shopify.intents.invoke(\n  'open:shopify/SubscriptionContract',\n  {\n   value: 'gid://shopify/SubscriptionContract/69372608568',\n   data: { field: 'paymentMethod' },\n  }\n);\nconst response = await activity.complete;",
+                  "title": "Using query string syntax"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "value": "export interface Intents {\n  /**\n   * Invoke an intent using the object or URL syntax.\n   *\n   * Object format: `{action, type, value?, data?}`\n   *\n   * @param query - Structured intent description, including `action` and `type`.\n   * @returns A promise for an {@link IntentActivity} that completes with an\n   *          {@link IntentResponse}.\n   *\n   * @example\n   * ```javascript\n   * const activity = await shopify.intents.invoke(\n   *   {\n   *     action: 'open',\n   *     type: 'shopify/SubscriptionContract',\n   *     value: 'gid://shopify/SubscriptionContract/69372608568',\n   *     data: { field: 'paymentMethod' },\n   *   }\n   * );\n   * ```\n   */\n  invoke(query: IntentQuery): Promise<IntentActivity>;\n  /**\n   * URL format: `action:type[,value][?params]`\n   *\n   * @param intentURL - Intent in URL form\n   * @param options - Optional supplemental inputs such as `value` or `data`.\n   * @returns A promise for an {@link IntentActivity} that completes with an\n   *          {@link IntentResponse}.\n   *\n   * @example\n   * ```javascript\n   * // Using query string syntax\n   * const activity = await shopify.intents.invoke('open:shopify/SubscriptionContract,gid://shopify/SubscriptionContract/69372608568?field=paymentMethod');\n   *\n   * // Or using a query string and options\n   * const activity = await shopify.intents.invoke(\n   *   'open:shopify/SubscriptionContract',\n   *   {\n   *    value: 'gid://shopify/SubscriptionContract/69372608568',\n   *    data: { field: 'paymentMethod' },\n   *   }\n   * );\n   * const response = await activity.complete;\n   * ```\n   */\n  invoke(\n    intentURL: string,\n    options?: IntentQueryOptions,\n  ): Promise<IntentActivity>;\n}"
     }
   },
   "CustomerAccountActionPropsDocs": {
@@ -20239,6 +20460,23 @@
         }
       ],
       "value": "export interface SharedReferenceEntityTemplateSchema\n  extends Pick<\n    ReferenceEntityTemplateSchema,\n    'name' | 'description' | 'category' | 'subCategory' | 'related'\n  > {}"
+    }
+  },
+  "Announcement": {
+    "src/surfaces/checkout/api/announcement/announcement.ts": {
+      "filePath": "src/surfaces/checkout/api/announcement/announcement.ts",
+      "name": "Announcement",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/api/announcement/announcement.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "announcement",
+          "value": "{ close(): void; addEventListener(type: \"close\", cb: () => void): void; removeEventListener(type: \"close\", cb: () => void): void; }",
+          "description": ""
+        }
+      ],
+      "value": "export interface Announcement {\n  announcement: {\n    close(): void;\n    addEventListener(type: 'close', cb: () => void): void;\n    removeEventListener(type: 'close', cb: () => void): void;\n  };\n}"
     }
   },
   "AbbreviationElementProps": {
