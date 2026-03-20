@@ -27,6 +27,10 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: getExample('storage', ['jsx']),
+  examples: {
+    description: '',
+    examples: [getExample('storage/delete-entry', ['jsx'])],
+  },
   related: getLinksByTag('apis'),
 };
 
