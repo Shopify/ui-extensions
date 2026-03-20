@@ -1,0 +1,23 @@
+<s-stack>
+  <s-stack direction="inline" gap="small-400" alignItems="center">
+    <s-text>Estimated delivery: 3-5 business days</s-text>
+    <s-clickable interestFor="delivery-tooltip">
+      <s-icon type="info" />
+    </s-clickable>
+    <s-tooltip id="delivery-tooltip">
+      Based on standard shipping to your region.
+      Express options are available at checkout.
+    </s-tooltip>
+  </s-stack>
+
+  <s-stack direction="inline" gap="small-400" alignItems="center">
+    <s-text>Duties and taxes: included</s-text>
+    <s-clickable interestFor="duties-tooltip">
+      <s-icon type="info" />
+    </s-clickable>
+    <s-tooltip id="duties-tooltip">
+      All applicable duties and import taxes are calculated
+      and collected at checkout. No surprises on delivery.
+    </s-tooltip>
+  </s-stack>
+</s-stack>

@@ -1,0 +1,22 @@
+<!-- This component requires access to Customer Privacy API to be rendered. -->
+<s-button commandFor="consent-form">Manage preferences</s-button>
+
+<s-sheet
+  id="consent-form"
+  heading="Cookie preferences"
+  accessibilityLabel="Manage cookie consent preferences"
+>
+  <s-stack>
+    <s-paragraph>
+      We use cookies to personalize your experience and analyze site traffic.
+      You can change your preferences at any time.
+    </s-paragraph>
+    <s-checkbox defaultChecked label="Essential cookies (required)"></s-checkbox>
+    <s-checkbox label="Analytics cookies"></s-checkbox>
+    <s-checkbox label="Marketing cookies"></s-checkbox>
+  </s-stack>
+
+  <s-button variant="primary" slot="primary-actions">Save preferences</s-button>
+  <s-button variant="secondary" slot="primary-actions">Reject all</s-button>
+  <s-button variant="secondary" slot="secondary-actions">Learn more</s-button>
+</s-sheet>

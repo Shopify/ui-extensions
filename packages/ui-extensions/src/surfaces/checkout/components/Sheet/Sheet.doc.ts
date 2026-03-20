@@ -48,6 +48,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Add decision buttons to a consent sheet for cookie preferences. This example demonstrates primary and secondary action slots with accept, reject, and learn-more buttons, plus an `accessibilityLabel` for screen readers.',
+        codeblock: {
+          title: 'Add action buttons to a consent sheet',
+          tabs: [
+            {
+              code: './examples/sheet-with-actions.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',
