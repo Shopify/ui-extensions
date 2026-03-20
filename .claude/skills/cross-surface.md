@@ -9,6 +9,8 @@ Use when a component or shared description appears on multiple surfaces.
 
 **How to use:** Evaluate each item against the files provided. Skip items that clearly don't apply. Flag anything you can't definitively verify rather than guessing.
 
+**Verification:** Where possible, verify claims against the actual source code (`.d.ts` types, source files). If you can't verify a claim, flag it explicitly. If you don't know what the correct value should be, recommend the author verify or remove the claim.
+
 ## Description Consistency
 
 - [ ] Compare descriptions with the same component on checkout and customer account surfaces
@@ -38,6 +40,9 @@ Use when a component or shared description appears on multiple surfaces.
 
 ### Needs attention
 - [items that may need work]
+
+### Can't verify
+- [claims that couldn't be verified against source — recommend author confirm or remove]
 
 ### Must fix
 - [items that must be fixed before merging]

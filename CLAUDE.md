@@ -21,7 +21,7 @@ Not sure which to use? Invoke `ui-extensions:router`.
 - **`ui-extensions:style-lint`** — Mechanical text checks: contractions, punctuation, bolding, backticks, capitalization, file references. Always run first.
 - **`ui-extensions:examples`** — Example description quality, titles, accessibility, uniqueness, usefulness. Only when example files are changed.
 - **`ui-extensions:components`** — Component descriptions, example file format, best practices/limitations.
-- **`ui-extensions:apis`** — API descriptions, `.doc.ts` structure, properties, methods, helper docs.
+- **`ui-extensions:apis`** — API descriptions, JSDoc authoring, supported tags, properties, methods, shared component docs.
 - **`ui-extensions:type-definitions`** — JSDoc quality, slots, events, source of truth, architecture patterns.
 - **`ui-extensions:cross-surface`** — Description and terminology consistency across Admin, Checkout, POS.
 - **`ui-extensions:link-validation`** — Verifies documentation links via MCP tools. Run separately due to overhead.

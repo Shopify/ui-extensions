@@ -9,6 +9,8 @@ Run after `ui-extensions:universal`. Also run `ui-extensions:type-definitions` a
 
 **How to use:** Evaluate each item against the files provided. Skip items that clearly don't apply. Flag anything you can't definitively verify rather than guessing. Covers checkout and customer account surfaces.
 
+**Verification:** Where possible, verify claims against the actual source code (`.d.ts` types, source files). If you can't verify a claim, flag it explicitly. If you don't know what the correct value should be, recommend the author verify or remove the claim.
+
 ## Example Files (HTML Only)
 
 - [ ] Remove all `.jsx` example files from the `examples/` folder
@@ -63,6 +65,9 @@ Run after `ui-extensions:universal`. Also run `ui-extensions:type-definitions` a
 
 ### Needs attention
 - [items that may need work]
+
+### Can't verify
+- [claims that couldn't be verified against source — recommend author confirm or remove]
 
 ### Must fix
 - [items that must be fixed before merging]
