@@ -9,7 +9,7 @@ Run after `ui-extensions:universal`. Also run `ui-extensions:type-definitions` a
 
 **How to use:** Evaluate each item against the files provided. Skip items that clearly don't apply. Flag anything you can't definitively verify rather than guessing. Covers checkout and customer account surfaces.
 
-**Verification:** Where possible, verify claims against the actual source code (`.d.ts` types, source files). If you can't verify a claim, flag it explicitly. If you don't know what the correct value should be, recommend the author verify or remove the claim.
+**Verification:** Cross-reference every description against the actual type definition. For each component description, confirm that every prop, slot, behavior, or value it mentions actually exists in the component's `.d.ts` interface. If a description references something that doesn't exist in the type, flag it as a must-fix. If you can't verify a claim, flag it explicitly. If you don't know what the correct value should be, recommend the author verify or remove the claim.
 
 ## Example Files (HTML Only)
 
@@ -45,6 +45,13 @@ Run after `ui-extensions:universal`. Also run `ui-extensions:type-definitions` a
 
 - [ ] Each limitation describes a real technical or UX constraint, not obvious behavior
 - [ ] No filler — if a limitation isn't a real constraint, remove it
+
+## Live Schema Validation
+
+Use `mcp__shopify-dev-mcp__validate_component_codeblocks` to verify example HTML against the live component schema. This catches invalid component names, wrong props, and bad prop values.
+
+- Pass `api: 'polaris-checkout-extensions'` or `'polaris-customer-account-extensions'` depending on the surface
+- Requires a `conversationId` from `mcp__shopify-dev-mcp__learn_shopify_api`
 
 ## Sections to Remove
 

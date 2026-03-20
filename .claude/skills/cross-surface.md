@@ -9,7 +9,7 @@ Use when a component or shared description appears on multiple surfaces.
 
 **How to use:** Evaluate each item against the files provided. Skip items that clearly don't apply. Flag anything you can't definitively verify rather than guessing.
 
-**Verification:** Where possible, verify claims against the actual source code (`.d.ts` types, source files). If you can't verify a claim, flag it explicitly. If you don't know what the correct value should be, recommend the author verify or remove the claim.
+**Verification:** Cross-reference descriptions against the actual type definitions on each surface. If a shared description mentions a prop or behavior that exists on one surface but not the other, flag it. If you can't verify a claim, flag it explicitly. If you don't know what the correct value should be, recommend the author verify or remove the claim.
 
 ## Description Consistency
 

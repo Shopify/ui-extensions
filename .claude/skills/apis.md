@@ -9,7 +9,7 @@ Run after `ui-extensions:style-lint`. Also run `ui-extensions:type-definitions`.
 
 **How to use:** Evaluate each item against the files provided. Skip items that clearly don't apply. Flag anything you can't definitively verify rather than guessing. Covers checkout and customer account surfaces.
 
-**Verification:** Where possible, verify claims against the actual source code (`.d.ts` types, source files). If you can't verify a claim, flag it explicitly. If you don't know what the correct value should be, recommend the author verify or remove the claim.
+**Verification:** Cross-reference every description against the actual type definition. For each API description, confirm that every property, method, or behavior it mentions actually exists in the corresponding `.d.ts` interface. If a description references something that doesn't exist in the type, flag it as a must-fix. If you can't verify a claim, flag it explicitly. If you don't know what the correct value should be, recommend the author verify or remove the claim.
 
 ## API Descriptions
 

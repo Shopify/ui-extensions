@@ -57,6 +57,13 @@ The script checks syntax. These must be checked manually:
 
 - [ ] No placeholder text (Lorem ipsum, TODO, sample text, etc.)
 
+## Live Schema Validation
+
+Use `mcp__shopify-dev-mcp__validate_component_codeblocks` to verify example HTML against the live component schema. This catches invalid component names, wrong props, and bad prop values that may not be caught by the local build script.
+
+- Pass `api: 'polaris-checkout-extensions'` or `'polaris-customer-account-extensions'` depending on the surface
+- Requires a `conversationId` from `mcp__shopify-dev-mcp__learn_shopify_api`
+
 ## What the Script Already Checks (Don't Repeat)
 
 The repo's automated validation script covers:
