@@ -33,6 +33,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Pre-enable a setting by rendering the switch in its active state on first load. This example shows an order notifications switch with `defaultChecked` that the buyer can toggle off.',
+        codeblock: {
+          title: 'Pre-enable a switch',
+          tabs: [
+            {
+              code: './examples/switch-default-checked.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;

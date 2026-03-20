@@ -39,6 +39,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Validate that a phone number is provided with a message explaining why it is needed. This example shows a required contact number field with an error about delivery updates.',
+        codeblock: {
+          title: 'Require a phone number with validation',
+          tabs: [
+            {
+              code: './examples/phone-field-required.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;

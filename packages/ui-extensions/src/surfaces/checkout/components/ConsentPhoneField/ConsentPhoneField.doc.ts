@@ -40,6 +40,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Validate that a phone number is provided before the buyer opts in to SMS marketing. This example shows a consent phone field with `required` and an error message for missing input.',
+        codeblock: {
+          title: 'Require a phone number for SMS consent',
+          tabs: [
+            {
+              code: './examples/consent-phone-field-required.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;

@@ -39,6 +39,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Validate that a URL is provided with a message explaining what link is expected. This example shows a required return policy URL field with an error message.',
+        codeblock: {
+          title: 'Require a URL with validation',
+          tabs: [
+            {
+              code: './examples/url-field-required.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;

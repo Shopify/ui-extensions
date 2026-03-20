@@ -39,15 +39,33 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Add contextual labels around input values using `prefix` and `suffix`. This example demonstrates a discount code field with a "PROMO-" prefix and a tip field with a "%" suffix.',
+        codeblock: {
+          title: 'Add a prefix and suffix to text fields',
+          tabs: [
+            {
+              code: './examples/text-field-prefix-suffix.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent: `
-- Clearly label text fields so that it’s obvious what customers should enter.
-- Label text fields as optional when input isn’t required. For example, use the label <b>First name (optional)</b>.
-- Don’t have optional fields pass true to the required property.
+- Clearly label text fields so that it's obvious what customers should enter.
+- Label text fields as optional when input isn't required. For example, use the label <b>First name (optional)</b>.
+- Don't have optional fields pass true to the required property.
       `,
     },
   ],

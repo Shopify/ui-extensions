@@ -33,6 +33,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Group multiple input fields for submission using `s-form`. This example demonstrates a form with a text field, email field, text area, and a submit button.',
+        codeblock: {
+          title: 'Build a form with multiple fields',
+          tabs: [
+            {
+              code: './examples/form-with-fields.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

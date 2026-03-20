@@ -33,6 +33,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Restrict selectable dates by excluding past dates and specific days of the week. This example displays a delivery date field with `disallow="past"` and `disallowDays` set to exclude weekends.',
+        codeblock: {
+          title: 'Restrict selectable dates',
+          tabs: [
+            {
+              code: './examples/date-field-restricted.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;

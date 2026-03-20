@@ -34,6 +34,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Collect analytics consent by setting `policy` to `customer-privacy`. This example shows a consent checkbox configured for the customer privacy policy instead of SMS marketing.',
+        codeblock: {
+          title: 'Collect analytics consent',
+          tabs: [
+            {
+              code: './examples/consent-checkbox-privacy.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;

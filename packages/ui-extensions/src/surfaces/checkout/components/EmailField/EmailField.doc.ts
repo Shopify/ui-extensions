@@ -39,6 +39,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Validate that an email address is provided before the form can be submitted. This example shows a required email field with an error message for missing input.',
+        codeblock: {
+          title: 'Validate a required email address',
+          tabs: [
+            {
+              code: './examples/email-field-required.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;

@@ -35,6 +35,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Accept multiple file uploads at once with a descriptive label. This example shows a drop zone for multiple image uploads with `accept="image/*"` and a `label`.',
+        codeblock: {
+          title: 'Accept multiple file uploads',
+          tabs: [
+            {
+              code: './examples/drop-zone-multiple.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',
@@ -47,7 +65,7 @@ File storage for uploads must be implemented separately. Metafields and the corr
 
 ### Mobile
 
-Remember that the drag and drop feature won’t be effective on mobile devices. Adding a button can offer additional context and guide users through the next steps.
+Remember that the drag and drop feature won't be effective on mobile devices. Adding a button can offer additional context and guide users through the next steps.
 
 <img src='/assets/landing-pages/templated-apis/checkout-ui-extensions/ui-components/dropzone-mobile-example.png' alt="An example showing DropZone with custom content optimized for mobile devices" />
 
