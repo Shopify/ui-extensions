@@ -122,17 +122,17 @@ export function getExamples(
     ...createExample('purchase.thank-you.announcement.render/default'),
     'analytics-publish': {
       description:
-        'You can publish analytics events to the Shopify analytics frameworks and they will be propagated to all web pixels on the page.',
+        'Use `shopify.analytics.publish()` to send custom events to all web pixels registered on the page. The event name and payload are forwarded to the Shopify analytics framework, where web pixels can listen and react.',
       codeblock: {
-        title: 'Publish',
+        title: 'Publish a custom analytics event',
         tabs: getExtensionCodeTabs('analytics-publish'),
       },
     },
     'analytics-visitor': {
       description:
-        'You can submit visitor information to Shopify, these will be sent to the shop backend and not be propagated to web pixels on the page.',
+        'Use `shopify.analytics.visitor()` to submit buyer contact details to the shop backend. Unlike published events, visitor data is not propagated to web pixels on the page.',
       codeblock: {
-        title: 'Visitor',
+        title: 'Submit visitor information',
         tabs: getExtensionCodeTabs('analytics-visitor'),
       },
     },
@@ -288,12 +288,10 @@ See [settings](/docs/api/checkout-ui-extensions/configuration#settings-definitio
       },
     },
     'settings-access': {
-      description: `
-You can retrieve settings values within your extension. In React, the \`useSettings()\` hook re-renders your extension with the latest values.
-In JavaScript, subscribe to changes and update your UI directly.
-      `,
+      description:
+        'Use `shopify.settings.value` to read merchant-configured values at runtime. The extension re-renders automatically when the merchant changes settings in the checkout editor.',
       codeblock: {
-        title: 'Accessing merchant settings',
+        title: 'Access merchant settings',
         tabs: getExtensionCodeTabs('settings-access'),
       },
     },
@@ -398,12 +396,12 @@ You can apply changes to customer consent by using the \`applyTrackingConsentCha
     },
     'session-token': {
       description: `
-You can request a session token from Shopify to use on your application server.  The contents of the token claims are signed using your shared app secret so you can trust the claims came from Shopify unaltered.
+Request a session token from Shopify and pass it to your application server as a Bearer token. The claims are signed with your app secret, so your server can trust they came from Shopify unaltered.
 
 > Note: You will need to [enable the \`network_access\` capability](/docs/api/checkout-ui-extensions/configuration#network-access) to use \`fetch()\`.
 `,
       codeblock: {
-        title: 'Using a session token with fetch()',
+        title: 'Use a session token with fetch()',
         tabs: getExtensionCodeTabs('session-token'),
       },
     },
@@ -426,9 +424,10 @@ The contents of the token are signed using your shared app secret.  The optional
       },
     },
     storage: {
-      description: '',
+      description:
+        'Use `shopify.storage` to persist data across page loads within the same checkout session. A terms-of-service checkbox is stored and restored so the buyer does not need to re-check it after navigating.',
       codeblock: {
-        title: 'Storage',
+        title: 'Read and write to storage',
         tabs: getExtensionCodeTabs('storage'),
       },
     },
@@ -498,9 +497,29 @@ The contents of the token are signed using your shared app secret.  The optional
       `,
     }),
     ...createExample('metafields/default', {
-      title: 'Use app owned metafields',
+      title: 'Read app-owned metafields',
       description:
-        'Use the `$app` format to request metafields that are owned by your app in your extension configuration file. Your app exclusively controls structure, data, permissions and optional features for this type of metafield. See [app owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.',
+        'Use the `$app` namespace to request metafields owned by your app in `shopify.extension.toml`. Your app exclusively controls structure, data, and permissions for these metafields. See [app-owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for configuration details.',
+    }),
+    ...createExample('metafields/update-cart-metafield', {
+      title: 'Write a cart metafield',
+      description:
+        'Use `shopify.applyMetafieldChange()` with the `updateCartMetafield` type to write a key-value pair to the cart. The metafield requires a namespace, key, type, and string value. Check [`instructions.metafields.canSetCartMetafields`](/docs/api/checkout-ui-extensions/apis/cart-instructions) before writing.',
+    }),
+    ...createExample('extension/metadata', {
+      title: 'Read extension metadata',
+      description:
+        'Use the `useExtension` hook to access the current target name, API version, and published version. The version is `undefined` for unpublished extensions in development.',
+    }),
+    ...createExample('extension/capabilities', {
+      title: 'Check extension capabilities',
+      description:
+        'Use `useExtensionCapability` to test whether a specific capability has been granted, and `useExtensionEditor` to detect if the extension is being previewed in the checkout editor. A warning banner renders when `block_progress` is required but not enabled.',
+    }),
+    ...createExample('storage/delete-entry', {
+      title: 'Delete a storage entry',
+      description:
+        'Use `shopify.storage.delete()` to remove a previously stored value. A dismissible promotion banner is persisted with `write()` and cleared with `delete()`, letting the buyer reset the dismissed state.',
     }),
   };
 }

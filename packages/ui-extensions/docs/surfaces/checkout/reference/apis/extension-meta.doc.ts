@@ -1,6 +1,7 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import {
+  getExample,
   getLinksByTag,
   STANDARD_API_PROPERTIES_DESCRIPTION,
 } from '../helper.docs';
@@ -46,6 +47,11 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseExtensionEditorGeneratedType',
     },
   ],
+  defaultExample: getExample('extension/metadata', ['jsx']),
+  examples: {
+    description: '',
+    examples: [getExample('extension/capabilities', ['jsx'])],
+  },
   related: getLinksByTag('apis'),
 };
 
