@@ -1,0 +1,30 @@
+<s-stack gap="base">
+  <s-button command="--show" commandfor="gift-modal">
+    Add gift message
+  </s-button>
+
+  <s-modal id="gift-modal" heading="Gift message" size="base">
+    <s-stack>
+      <s-text-field label="Recipient name" required></s-text-field>
+      <s-text-area label="Message" rows={3} maxLength={200}></s-text-area>
+      <s-checkbox label="Include gift receipt"></s-checkbox>
+    </s-stack>
+
+    <s-button
+      slot="primary-action"
+      variant="primary"
+      command="--hide"
+      commandfor="gift-modal"
+    >
+      Save message
+    </s-button>
+    <s-button
+      slot="secondary-actions"
+      variant="secondary"
+      command="--hide"
+      commandfor="gift-modal"
+    >
+      Cancel
+    </s-button>
+  </s-modal>
+</s-stack>
