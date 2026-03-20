@@ -33,6 +33,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Open external URLs in a new tab by setting `target="_blank"`. This example shows a terms of service link that navigates outside the checkout flow.',
+        codeblock: {
+          title: 'Open an external link in a new tab',
+          tabs: [
+            {
+              code: './examples/link-external.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',
