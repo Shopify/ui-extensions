@@ -20,20 +20,20 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
- * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-ordered-list";
-/** @publicDocs */
+/**
+ * The element props interface for the OrderedList component.
+ * @publicDocs
+ */
 export interface OrderedListElementProps extends OrderedListProps$1 {
 }
-/** @publicDocs */
 export interface OrderedListElement extends OrderedListElementProps, Omit<HTMLElement, 'id'> {
 }
-/** @publicDocs */
 export interface OrderedListProps extends OrderedListElementProps {
 }
 declare global {

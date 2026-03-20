@@ -20,13 +20,14 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-skeleton-paragraph";
-/** @publicDocs */
+/**
+ * The element props interface for the SkeletonParagraph component.
+ * @publicDocs
+ */
 export interface SkeletonParagraphElementProps extends SkeletonParagraphProps$1 {
 }
-/** @publicDocs */
 export interface SkeletonParagraphElement extends SkeletonParagraphElementProps, Omit<HTMLElement, 'id'> {
 }
-/** @publicDocs */
 export interface SkeletonParagraphProps extends SkeletonParagraphElementProps {
 }
 declare global {

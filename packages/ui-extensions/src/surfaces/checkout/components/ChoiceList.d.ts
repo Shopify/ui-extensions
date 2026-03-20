@@ -20,28 +20,30 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
- * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
-/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-choice-list";
-/** @publicDocs */
+/**
+ * The element props interface for the ChoiceList component.
+ * @publicDocs
+ */
 export interface ChoiceListElementProps extends Pick<ChoiceListProps$1, 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'multiple' | 'name' | 'values' | 'variant'> {
 }
-/** @publicDocs */
 export interface ChoiceListEvents extends Pick<ChoiceListProps$1, 'onChange'> {
 }
-/** @publicDocs */
+/**
+ * The events interface for the ChoiceList component.
+ * @publicDocs
+ */
 export interface ChoiceListElementEvents {
     /**
      * A callback that is run whenever the control is changed.
@@ -50,11 +52,9 @@ export interface ChoiceListElementEvents {
      */
     change?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
 export interface ChoiceListElement extends ChoiceListElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: ChoiceListEvents['onChange'];
 }
-/** @publicDocs */
 export interface ChoiceListProps extends ChoiceListElementProps, ChoiceListEvents {
 }
 declare global {

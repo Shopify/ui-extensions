@@ -20,20 +20,20 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
- * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-list-item";
-/** @publicDocs */
+/**
+ * The element props interface for the ListItem component.
+ * @publicDocs
+ */
 export interface ListItemElementProps extends Pick<ListItemProps$1, 'id'> {
 }
-/** @publicDocs */
 export interface ListItemElement extends ListItemElementProps, Omit<HTMLElement, 'id'> {
 }
-/** @publicDocs */
 export interface ListItemProps extends ListItemElementProps {
 }
 declare global {

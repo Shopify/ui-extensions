@@ -20,28 +20,30 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
- * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
-/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-password-field";
-/** @publicDocs */
+/**
+ * The element props interface for the PasswordField component.
+ * @publicDocs
+ */
 export interface PasswordFieldElementProps extends Pick<PasswordFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
-/** @publicDocs */
 export interface PasswordFieldEvents extends Pick<PasswordFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/** @publicDocs */
+/**
+ * The events interface for the PasswordField component.
+ * @publicDocs
+ */
 export interface PasswordFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -68,7 +70,10 @@ export interface PasswordFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
+/**
+ * The slots interface for the PasswordField component.
+ * @publicDocs
+ */
 export interface PasswordFieldElementSlots {
     /**
      * Additional content to be displayed in the field.
@@ -76,14 +81,12 @@ export interface PasswordFieldElementSlots {
      */
     accessory?: HTMLElement;
 }
-/** @publicDocs */
 export interface PasswordFieldElement extends PasswordFieldProps, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: PasswordFieldEvents['onBlur'];
     onchange: PasswordFieldEvents['onChange'];
     onfocus: PasswordFieldEvents['onFocus'];
     oninput: PasswordFieldEvents['onInput'];
 }
-/** @publicDocs */
 export interface PasswordFieldProps extends PasswordFieldElementProps, PasswordFieldEvents {
 }
 declare global {

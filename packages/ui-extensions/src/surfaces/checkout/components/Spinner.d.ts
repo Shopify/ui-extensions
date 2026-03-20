@@ -20,14 +20,15 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-spinner";
-/** @publicDocs */
+/**
+ * The element props interface for the Spinner component.
+ * @publicDocs
+ */
 export interface SpinnerElementProps extends SpinnerProps$1 {
     size?: Extract<SpinnerProps$1['size'], 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
 }
-/** @publicDocs */
 export interface SpinnerElement extends SpinnerElementProps, Omit<HTMLElement, 'id'> {
 }
-/** @publicDocs */
 export interface SpinnerProps extends SpinnerElementProps {
 }
 declare global {

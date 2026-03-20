@@ -18,23 +18,26 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
-/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-date-picker";
-/** @publicDocs */
+/**
+ * The element props interface for the DatePicker component.
+ * @publicDocs
+ */
 export interface DatePickerElementProps extends Pick<DatePickerProps$1, 'allow' | 'allowDays' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'id' | 'name' | 'type' | 'value' | 'view'> {
 }
-/** @publicDocs */
 export interface DatePickerEvents extends Pick<DatePickerProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'> {
 }
-/** @publicDocs */
+/**
+ * The events interface for the DatePicker component.
+ * @publicDocs
+ */
 export interface DatePickerElementEvents {
     /**
      * Callback when the element loses focus.
@@ -57,7 +60,6 @@ export interface DatePickerElementEvents {
      */
     viewChange?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
 export interface DatePickerElement extends DatePickerElementProps, Omit<DatePickerEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
     onblur: DatePickerEvents['onBlur'];
     onchange: DatePickerEvents['onChange'];
@@ -65,7 +67,6 @@ export interface DatePickerElement extends DatePickerElementProps, Omit<DatePick
     oninput: DatePickerEvents['onInput'];
     onviewchange: DatePickerEvents['onViewChange'];
 }
-/** @publicDocs */
 export interface DatePickerProps extends DatePickerElementProps, DatePickerEvents {
 }
 declare global {

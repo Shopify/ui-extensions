@@ -10,11 +10,8 @@
 /// <reference lib="DOM" />
 import type {ImageProps$1,BorderSizeKeyword, BorderStyleKeyword,ColorKeyword,MaybeAllValuesShorthandProperty} from './components-shared.d.ts';
 
-/** @publicDocs */
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
-/** @publicDocs */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
-/** @publicDocs */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
  * Used when an element does not have children.
@@ -26,16 +23,17 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-image";
-/** @publicDocs */
+/**
+ * The element props interface for the Image component.
+ * @publicDocs
+ */
 export interface ImageElementProps extends Pick<ImageProps$1, 'accessibilityRole' | 'alt' | 'aspectRatio' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'id' | 'inlineSize' | 'loading' | 'objectFit' | 'sizes' | 'src' | 'srcSet'> {
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<ImageProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
 }
-/** @publicDocs */
 export interface ImageElement extends ImageElementProps, Omit<HTMLElement, 'id'> {
 }
-/** @publicDocs */
 export interface ImageProps extends ImageElementProps {
 }
 declare global {

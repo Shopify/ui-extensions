@@ -20,13 +20,14 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-payment-icon";
-/** @publicDocs */
+/**
+ * The element props interface for the PaymentIcon component.
+ * @publicDocs
+ */
 export interface PaymentIconElementProps extends PaymentIconProps$1 {
 }
-/** @publicDocs */
 export interface PaymentIconElement extends PaymentIconElementProps, Omit<HTMLElement, 'id'> {
 }
-/** @publicDocs */
 export interface PaymentIconProps extends PaymentIconElementProps {
 }
 declare global {

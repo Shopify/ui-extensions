@@ -20,28 +20,30 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
- * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
-/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-press-button";
-/** @publicDocs */
+/**
+ * The element props interface for the PressButton component.
+ * @publicDocs
+ */
 export interface PressButtonElementProps extends Pick<PressButtonProps$1, 'accessibilityLabel' | 'id' | 'inlineSize' | 'lang' | 'disabled' | 'loading' | 'pressed' | 'defaultPressed'> {
 }
-/** @publicDocs */
 export interface PressButtonEvents extends Pick<PressButtonProps$1, 'onClick' | 'onBlur' | 'onFocus'> {
 }
-/** @publicDocs */
+/**
+ * The events interface for the PressButton component.
+ * @publicDocs
+ */
 export interface PressButtonElementEvents {
     /**
      * Callback when the button is activated.
@@ -62,13 +64,11 @@ export interface PressButtonElementEvents {
      */
     focus?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
 export interface PressButtonElement extends PressButtonElementProps, Omit<HTMLElement, 'children' | 'lang' | 'id' | 'onblur' | 'onclick' | 'onfocus'> {
     onblur: PressButtonEvents['onBlur'];
     onclick: PressButtonEvents['onClick'];
     onfocus: PressButtonEvents['onFocus'];
 }
-/** @publicDocs */
 export interface PressButtonProps extends PressButtonElementProps, PressButtonEvents {
 }
 declare global {
