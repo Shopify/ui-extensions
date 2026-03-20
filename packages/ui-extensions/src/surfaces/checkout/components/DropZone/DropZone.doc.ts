@@ -5,6 +5,24 @@ import {createComponentDoc} from '../../../../docs/shared/component-definitions'
 
 const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
+  extraExamples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Accept multiple file uploads at once with a descriptive label. This example shows a drop zone for multiple image uploads with `accept="image/*"` and a `label`.',
+        codeblock: {
+          title: 'Accept multiple file uploads',
+          tabs: [
+            {
+              code: './examples/drop-zone-multiple.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   type: '',
   definitions: {properties: true, events: true},
   bestPractices: `
