@@ -1,5 +1,18 @@
 # @shopify/ui-extensions-tester
 
+## 2026.4.0-rc.3
+
+### Minor Changes
+
+- [#4114](https://github.com/Shopify/ui-extensions/pull/4114) [`9556ec6`](https://github.com/Shopify/ui-extensions/commit/9556ec6da13bc810bb1967f61afda2e9b4613884) Thanks [@kumar303](https://github.com/kumar303)! - Add `setUpExtension()` for Explicit Resource Management (`using` keyword) support.
+
+### Patch Changes
+
+- [#4148](https://github.com/Shopify/ui-extensions/pull/4148) [`3b9614b`](https://github.com/Shopify/ui-extensions/commit/3b9614b572b7eb84715dc7656364ad38c9a4ead2) Thanks [@lrsterrett](https://github.com/lrsterrett)! - Remove types for `ui` from checkout ui extension api as `ui` wasn't supported since 2025.10.0 For reference, closing a modal can be done declaritively on the modal polaris component, instead of the deprecated `ui.overlay.close`
+
+- Updated dependencies [[`3b9614b`](https://github.com/Shopify/ui-extensions/commit/3b9614b572b7eb84715dc7656364ad38c9a4ead2), [`7408712`](https://github.com/Shopify/ui-extensions/commit/7408712b9d85eb4464560bf2078aa2a81a1ff3af)]:
+  - @shopify/ui-extensions@2026.4.0-rc.3
+
 ## 2026.4.0-rc.2
 
 ### Patch Changes
