@@ -53,6 +53,10 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: getExample('metafields/default', ['jsx', 'toml']),
+  examples: {
+    description: '',
+    examples: [getExample('metafields/update-cart-metafield', ['jsx'])],
+  },
   related: getLinksByTag('apis'),
 };
 
