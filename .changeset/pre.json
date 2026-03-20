@@ -7,11 +7,14 @@
   },
   "changesets": [
     "brown-moose-visit",
+    "bumpy-buttons-poke",
     "evil-oranges-attack",
+    "explicit-resource-management",
     "expose-picker-apis-rendering-targets",
     "five-rings-fly",
     "grumpy-lamps-switch",
     "shaggy-spoons-itch",
+    "silly-cheetahs-bake",
     "slick-hornets-decide",
     "thick-moles-hide"
   ]
