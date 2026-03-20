@@ -1,11 +1,11 @@
 ---
 name: ui-extensions-validate-components
-description: Use when validating component documentation updates in the ui-extensions repo. Covers example file format, component descriptions, best practices, limitations, and sections to remove. Run after ui-extensions:universal.
+description: Use when validating component documentation updates in the ui-extensions repo. Covers example file format, component descriptions, best practices, limitations, and sections to remove. Run after ui-extensions:style-lint.
 ---
 
 # Components Validation
 
-Run after `ui-extensions:universal`. Also run `ui-extensions:type-definitions` and `ui-extensions:cross-surface`.
+Run after `ui-extensions:style-lint`. Also run `ui-extensions:type-definitions` and `ui-extensions:cross-surface`.
 
 **How to use:** Evaluate each item against the files provided. Skip items that clearly don't apply. Flag anything you can't definitively verify rather than guessing. Covers checkout and customer account surfaces.
 
