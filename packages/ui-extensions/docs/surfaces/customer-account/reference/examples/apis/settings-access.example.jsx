@@ -7,7 +7,7 @@ export default async () => {
 
 function Extension() {
   const bannerTitle =
-    shopify.settings.value?.banner_title || '';
+    String(shopify.settings.value?.banner_title || '');
 
-  return <s-banner title={bannerTitle} />;
+  return <s-banner heading={bannerTitle} />;
 }

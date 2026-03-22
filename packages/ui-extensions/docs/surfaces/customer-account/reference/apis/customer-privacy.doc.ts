@@ -1,32 +1,34 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {
-  CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION,
-  REQUIRES_PROTECTED_CUSTOMER_DATA,
-} from '../helper.docs';
+import {CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Customer Privacy API',
   description:
-    "The API for interacting with a customer's privacy consent. It is similar to the [Customer Privacy API in storefront](/docs/api/customer-privacy).",
+    "The Customer Privacy API provides access to the buyer's tracking consent preferences and lets your extension apply consent changes. Use this API to build consent banners, check current consent decisions for analytics, marketing, and data sale, and save updated preferences.",
   isVisualComponent: false,
-  requires: REQUIRES_PROTECTED_CUSTOMER_DATA,
+  requires:
+    'access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data). The `region` property requires level 1 access. The `applyTrackingConsentChange` property requires the [`customer_privacy` capability](/docs/api/customer-account-ui-extensions/latest#configuration).',
   category: 'Target APIs',
   subCategory: 'Account APIs',
   type: 'API',
   definitions: [
     {
-      title: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.title,
-      description: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.description,
+      title: 'Properties',
+      description:
+        'The `StandardApi` object provides the customer privacy data and consent management methods. Access the following properties on the `StandardApi` object to read privacy consent settings and apply consent changes.',
       type: 'Docs_Standard_CustomerPrivacyApi',
     },
   ],
   defaultExample: {
+    description:
+      'Check whether to show a cookie consent banner and allow the buyer to accept or decline tracking. This example reads `shopify.customerPrivacy.shouldShowBanner` and renders accept/decline buttons that call `shopify.applyTrackingConsentChange`.',
     codeblock: {
-      title: 'Extension.jsx',
+      title: 'Display a consent banner',
       tabs: [
         {
-          code: '../examples/apis/customer-privacy.example.jsx',
+          code: '../examples/apis/customer-privacy-banner.example.jsx',
           language: 'jsx',
+          title: 'jsx',
         },
       ],
     },
@@ -35,23 +37,51 @@ const data: ReferenceEntityTemplateSchema = {
     description: '',
     examples: [
       {
-        description: `
-        You can apply changes to customer consent by using the \`applyTrackingConsentChanges\` API.
-
-> Note: Requires the [\`customer_privacy\` capability](/docs/api/customer-account-ui-extensions/configuration#collect-buyer-consent) to be set to \`true\`.`,
+        description:
+          "Display the buyer's current consent preferences for each tracking category. This example reads `shopify.customerPrivacy` and renders the status of analytics, marketing, preferences, and sale of data consent.",
         codeblock: {
-          title: 'Use a Sheet to manage customer privacy consent',
+          title: 'Read the current consent state',
           tabs: [
             {
-              code: '../examples/apis/sheet-consent-banner-with-form.example.jsx',
+              code: '../examples/apis/customer-privacy-consent-state.example.jsx',
               language: 'jsx',
-              title: 'Extension.jsx',
+              title: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          "Save updated tracking consent preferences after the buyer interacts with your consent UI. This example calls `shopify.applyTrackingConsentChange` with the buyer's selections and displays a success or error message based on the result.",
+        codeblock: {
+          title: 'Apply consent changes',
+          tabs: [
+            {
+              code: '../examples/apis/customer-privacy-apply-consent.example.jsx',
+              language: 'jsx',
+              title: 'jsx',
             },
           ],
         },
       },
     ],
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best practices',
+      sectionContent:
+        "- **Use `shouldShowBanner` for initial state**: Check the `shouldShowBanner` property to determine whether to display a consent banner when the page loads, rather than always showing one.\n- **Respect regional requirements**: Use `saleOfDataRegion` and `region` to determine if additional opt-out controls are required for the buyer's location.",
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'limitations',
+      title: 'Limitations',
+      sectionContent:
+        "- Applying tracking consent changes requires the [`customer_privacy` capability](/docs/api/customer-account-ui-extensions/latest#configuration) to be enabled in your extension's configuration.\n- The `region` property requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data). Without this access, the visitor's location is unavailable.",
+    },
+  ],
   related: [],
 };
 

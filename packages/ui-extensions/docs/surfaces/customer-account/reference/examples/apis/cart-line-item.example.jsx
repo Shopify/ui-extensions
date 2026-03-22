@@ -6,8 +6,8 @@ export default async () => {
 };
 
 function Extension() {
-  const title =
-    shopify.target.value.merchandise?.title;
+  const lines = shopify.lines.value ?? [];
+  const title = lines[0]?.merchandise?.title;
 
   return (
     <s-text>Line item title: {title}</s-text>

@@ -851,8 +851,9 @@ export type CountryCode =
 
 export interface Country {
   /**
-   * The ISO-3166-1 code for this country.
-   * @see https://www.iso.org/iso-3166-country-codes.html
+   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format. This is the internationally recognized standard for representing countries and territories.
+   *
+   * @example 'CA' for Canada, 'US' for United States.
    */
   isoCode: CountryCode;
 }
@@ -922,8 +923,9 @@ export type StorefrontApiVersion =
 
 export interface Country {
   /**
-   * The ISO-3166-1 code for this country.
-   * @see https://www.iso.org/iso-3166-country-codes.html
+   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format. This is the internationally recognized standard for representing countries and territories.
+   *
+   * @example 'CA' for Canada, 'US' for United States.
    */
   isoCode: CountryCode;
 }
