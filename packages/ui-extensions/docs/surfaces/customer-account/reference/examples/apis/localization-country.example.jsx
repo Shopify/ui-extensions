@@ -1,4 +1,3 @@
-/* See the locales/en.default.json tab for the translation keys and values for this example */
 import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 
@@ -7,12 +6,12 @@ export default async () => {
 };
 
 function Extension() {
-  const countryCode =
+  const territoryCode =
     shopify.localization?.country?.value?.isoCode;
 
-  if (countryCode === 'CA') {
+  if (territoryCode === 'CA') {
     return (
-      <s-banner status="warning">
+      <s-banner tone="warning">
         {shopify.i18n.translate(
           'canadaPostWarningMessage',
         )}
