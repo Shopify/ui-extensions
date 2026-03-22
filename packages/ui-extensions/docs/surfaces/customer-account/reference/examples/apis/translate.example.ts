@@ -1,4 +1,3 @@
-/* See the locales/en.default.json tab for the translation keys and values for this example */
 import {extension} from '@shopify/ui-extensions/customer-account';
 
 export default extension(

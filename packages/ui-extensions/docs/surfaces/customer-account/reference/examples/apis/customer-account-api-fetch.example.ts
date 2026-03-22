@@ -23,9 +23,10 @@ export default extension(
       },
       body: JSON.stringify(getCustomerNameQuery),
     }).then((response) => response.json())
-    .then(({data: {customer: {firstName}}}) => {
-      if (firstName) {
-        root.appendChild(root.createComponent(Banner, {}, `${api.i18n.translate('welcomeMsg', {name: firstName})}` ));
+    .then(({data: {customer}}) => {
+      if (!customer) return;
+      if (customer.firstName) {
+        root.appendChild(root.createComponent(Banner, {}, `${api.i18n.translate('welcomeMsg', {name: customer.firstName})}` ));
       }
     }).catch(console.error);
 });

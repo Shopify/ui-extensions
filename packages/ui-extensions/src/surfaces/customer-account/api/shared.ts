@@ -24,44 +24,30 @@ export {
 };
 
 /**
- * A key-value storage object for extension targets.
- *
- * Stored data is only available to this specific app
- * but can be shared across multiple extension targets.
- *
- * The storage backend is implemented with `localStorage` and
- * should persist for ... days
- * However, data persistence isn't guaranteed.
+ * A key-value storage object for the extension. Data is scoped to your app and shared across all of your extension targets. The storage backend uses `localStorage`, so data persistence isn't guaranteed across sessions.
  */
 export interface Storage {
   /**
-   * Read and return a stored value by key.
-   *
-   * The stored data is deserialized from JSON and returned as
-   * its original primitive.
-   *
-   * Returns `null` if no stored data exists.
+   * Reads and returns a stored value by key. The stored data is deserialized from JSON and returned as its original type. Returns `null` if no data exists for the given key.
    */
   read<T = unknown>(key: string): Promise<T | null>;
 
   /**
-   * Write stored data for this key.
-   *
-   * The data must be serializable to JSON.
+   * Writes data for the given key. The data must be serializable to JSON.
    */
   write(key: string, data: any): Promise<void>;
 
   /**
-   * Delete stored data by key.
+   * Deletes the stored data for the given key.
    */
   delete(key: string): Promise<void>;
 }
 
 export interface Language {
   /**
-   * The BCP-47 language tag. It may contain a dash followed by an ISO 3166-1 alpha-2 region code.
+   * The [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag. May include a region subtag following a dash.
    *
-   * @example 'en' for English, or 'en-US' for English local to United States.
+   * @example 'en' for English, or 'en-US' for English as used in the United States.
    * @see https://en.wikipedia.org/wiki/IETF_language_tag
    * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
    */
@@ -69,7 +55,7 @@ export interface Language {
 }
 
 /**
- * This defines the i18n.translate() signature.
+ * The signature for the `i18n.translate()` function, which returns translated content matching a key in a locale file.
  */
 export interface I18nTranslate {
   /**
@@ -87,10 +73,10 @@ export interface I18nTranslate {
 
 export interface I18n {
   /**
-   * Returns a localized number.
+   * Returns a localized number string.
    *
-   * This function behaves like the standard `Intl.NumberFormat()`
-   * with a style of `decimal` applied. It uses the buyer's locale by default.
+   * This function behaves like the standard [`Intl.NumberFormat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)
+   * with a style of `decimal` applied. Uses the buyer's locale by default.
    *
    * @param options.inExtensionLocale - if true, use the extension's locale
    */
@@ -100,10 +86,10 @@ export interface I18n {
   ) => string;
 
   /**
-   * Returns a localized currency value.
+   * Returns a localized currency string.
    *
-   * This function behaves like the standard `Intl.NumberFormat()`
-   * with a style of `currency` applied. It uses the buyer's locale by default.
+   * This function behaves like the standard [`Intl.NumberFormat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)
+   * with a style of `currency` applied. Uses the buyer's locale by default.
    *
    * @param options.inExtensionLocale - if true, use the extension's locale
    */
@@ -113,9 +99,9 @@ export interface I18n {
   ) => string;
 
   /**
-   * Returns a localized date value.
+   * Returns a localized date string.
    *
-   * This function behaves like the standard `Intl.DateTimeFormatOptions()` and uses
+   * This function behaves like the standard [`Intl.DateTimeFormat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) and uses
    * the buyer's locale by default. Formatting options can be passed in as
    * options.
    *
@@ -142,7 +128,7 @@ export interface I18n {
 }
 
 /**
- * Meta information about an extension target.
+ * Metadata about the running extension, including its API version, capabilities, and target.
  */
 export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
@@ -154,7 +140,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * The allowed capabilities of the extension, defined
-   * in your [shopify.ui.extension.toml](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
+   * in your [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/latest#configuration) file.
    *
    * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
    *
@@ -167,25 +153,21 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Information about the editor where the extension is being rendered.
    *
-   * The value is undefined if the extension is not rendering in an editor.
+   * The value is undefined if the extension isn’t rendering in an editor.
    */
   editor?: Editor;
 
   /**
    * Whether your extension is currently rendered to the screen.
    *
-   * Shopify might render your extension before it's visible in the UI,
-   * typically to pre-render extensions that will appear on a later step of the
-   * checkout.
-   *
-   * Your extension might also continue to run after the buyer has navigated away
-   * from where it was rendered. The extension continues running so that
-   * your extension is immediately available to render if the buyer navigates back.
+   * Shopify may render your extension before it's visible in the UI
+   * to pre-render content. Your extension may also continue running after
+   * the buyer navigates away so it's immediately available if they return.
    */
   rendered: StatefulRemoteSubscribable<boolean>;
 
   /**
-   * The URL to the script that started the extension target.
+   * The URL of the JavaScript file that powers this extension target.
    */
   scriptUrl: string;
 
@@ -201,7 +183,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   target: Target;
 
   /**
-   * The published version of the running extension target.
+   * The published version of the running extension.
    *
    * For unpublished extensions, the value is `undefined`.
    *
@@ -217,11 +199,12 @@ export interface Editor {
   type: 'checkout';
 }
 
+/** A utility type that accepts either a value of type `T` or a `Promise` that resolves to `T`. */
 export type ValueOrPromise<T> = T extends PromiseLike<any> ? T : T | Promise<T>;
 
 export interface SellingPlan {
   /**
-   * A globally-unique identifier.
+   * A globally-unique identifier for the selling plan.
    * @example 'gid://shopify/SellingPlan/1'
    */
   id: string;
@@ -234,111 +217,92 @@ export interface SellingPlan {
 
 export interface Attribute {
   /**
-   * The key for the attribute.
+   * The attribute name. Keys are unique within the attribute list.
    */
   key: string;
 
   /**
-   * The value for the attribute.
+   * The attribute value as a string.
    */
   value: string;
 }
 
+/**
+ * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data). Most properties require level 2 access. The `company` property requires level 1 access.
+ */
 export interface MailingAddress {
   /**
-   * The buyer's full name.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The buyer's full name, typically the first and last name combined.
    *
    * @example 'John Doe'
    */
   name?: string;
 
   /**
-   * The buyer's first name.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The buyer's given name.
    *
    * @example 'John'
    */
   firstName?: string;
 
   /**
-   * The buyer's last name.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The buyer's family name.
    *
    * @example 'Doe'
    */
   lastName?: string;
 
   /**
-   * The buyer's company name.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The company or organization name associated with the address.
    *
    * @example 'Shopify'
    */
   company?: string;
 
   /**
-   * The first line of the buyer's address, including street name and number.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The first line of the street address, including the street number and name.
    *
    * @example '151 O'Connor Street'
    */
   address1?: string;
 
   /**
-   * The second line of the buyer's address, like apartment number, suite, etc.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The second line of the street address, such as apartment number, suite, or unit.
    *
    * @example 'Ground floor'
    */
   address2?: string;
 
   /**
-   * The buyer's city.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The city, town, or village name.
    *
    * @example 'Ottawa'
    */
   city?: string;
 
   /**
-   * The buyer's postal or ZIP code.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The postal code or ZIP code.
    *
    * @example 'K2P 2L8'
    */
   zip?: string;
 
   /**
-   * The ISO 3166 Alpha-2 format for the buyer's country. Refer to https://www.iso.org/iso-3166-country-codes.html.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The [ISO 3166-1 Alpha-2](https://www.iso.org/iso-3166-country-codes.html) country code.
    *
    * @example 'CA' for Canada.
    */
   countryCode?: CountryCode;
 
   /**
-   * The buyer's province code, such as state, province, prefecture, or region.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The buyer's province, state, or region code.
    *
    * @example 'ON' for Ontario.
    */
   provinceCode?: string;
 
   /**
-   * The buyer's phone number.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The phone number associated with the address.
    *
    * @example '+1 613 111 2222'.
    */
@@ -347,24 +311,23 @@ export interface MailingAddress {
 
 export interface AuthenticatedAccount {
   /**
-   * Provides the company info of the authenticated business customer.
-   * If the customer is not authenticated or is not a business customer, this value is `undefined`.
+   * The B2B company information for the authenticated business customer. The value is `undefined` if the customer isn't authenticated or isn't a B2B customer.
    */
   purchasingCompany: StatefulRemoteSubscribable<PurchasingCompany | undefined>;
   /**
-   * Provides the customer information of the authenticated customer.
+   * The authenticated customer's account information, including their globally-unique ID.
    */
   customer: StatefulRemoteSubscribable<Customer | undefined>;
 }
 
 /**
- * Information about the authenticated customer.
+ * The authenticated customer's account information.
  *
  * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
  */
 export interface Customer {
   /**
-   * Customer ID.
+   * A globally-unique identifier for the customer.
    *
    * @example 'gid://shopify/Customer/123'
    */
@@ -373,26 +336,26 @@ export interface Customer {
 
 export interface PurchasingCompany {
   /**
-   * Include information of the company of the logged in business customer.
+   * The company that the authenticated B2B customer belongs to.
    */
   company: Company;
 
   /**
-   * Include information of the company location of the logged in business customer.
+   * The company location that the authenticated B2B customer is purchasing for.
    */
   location?: CompanyLocation;
 }
 
 export interface Company {
   /**
-   * Company ID.
+   * A globally-unique identifier for the company.
    */
   id: string;
 }
 
 export interface CompanyLocation {
   /**
-   * Company location ID.
+   * A globally-unique identifier for the company location.
    */
   id: string;
 }
@@ -450,12 +413,12 @@ export interface SessionToken {
 
 export interface Analytics {
   /**
-   * Publish method to emit analytics events to [Web Pixels](https://shopify.dev/docs/apps/marketing).
+   * Publishes analytics events to [Web Pixels](/docs/apps/build/marketing). Events are forwarded to all subscribed pixels.
    */
   publish(name: string, data: Record<string, unknown>): Promise<boolean>;
 
   /**
-   * A method for capturing details about a visitor on the online store.
+   * Captures visitor identity data (email or phone) for analytics and marketing attribution.
    */
   visitor(data: {email?: string; phone?: string}): Promise<VisitorResult>;
 }
@@ -469,7 +432,7 @@ export type VisitorResult = VisitorSuccess | VisitorError;
  */
 export interface VisitorSuccess {
   /**
-   * Indicates that the visitor information was validated and submitted.
+   * Indicates the visitor information was successfully validated and submitted.
    */
   type: 'success';
 }
@@ -479,8 +442,7 @@ export interface VisitorSuccess {
  */
 export interface VisitorError {
   /**
-   * Indicates that the visitor information is invalid and wasn't submitted.
-   * Examples are using the wrong data type or missing a required property.
+   * Indicates the visitor information was invalid and wasn't submitted, such as using an incorrect data type or missing a required property.
    */
   type: 'error';
 
@@ -494,38 +456,38 @@ export interface VisitorError {
 
 export interface AllowedProcessing {
   /**
-   * Can collect customer analytics about how the shop was used and interactions made on the shop.
+   * Whether the app can collect analytics about how the buyer interacted with the shop.
    */
   analytics: boolean;
   /**
-   * Can collect customer preference for marketing, attribution and targeted advertising from the merchant.
+   * Whether the app can use the buyer's data for marketing, attribution, and targeted advertising.
    */
   marketing: boolean;
   /**
-   * Can collect customer preferences such as language, currency, size, and more.
+   * Whether the app can store the buyer's preferences, such as language, currency, and size.
    */
   preferences: boolean;
   /**
-   * Can collect customer preference for sharing data with third parties, usually for behavioral advertising.
+   * Whether the buyer has opted out of data sharing with third parties for behavioral advertising.
    */
   saleOfData: boolean;
 }
 
 export interface VisitorConsent {
   /**
-   * Visitor consents to recording data to understand how customers interact with the site.
+   * Whether the visitor consents to analytics tracking that measures how they interact with the site.
    */
   analytics?: boolean;
   /**
-   * Visitor consents to ads and marketing communications based on customer interests.
+   * Whether the visitor consents to ads and marketing communications based on their interests.
    */
   marketing?: boolean;
   /**
-   * Visitor consent to remembering customer preferences, such as country or language, to personalize visits to the website.
+   * Whether the visitor consents to storing preferences, such as country or language, to personalize their experience.
    */
   preferences?: boolean;
   /**
-   * Opts the visitor out of data sharing / sales.
+   * Whether the visitor opts out of data sharing or sale of their personal data.
    */
   saleOfData?: boolean;
 }
@@ -537,7 +499,7 @@ export interface TrackingConsentMetafield {
    */
   key: string;
   /**
-   * The information to be stored as metadata.
+   * The stored consent preference value, such as a consent level or a stringified JSON object with granular settings.
    *
    * @example 'any string', '', or a stringified JSON object
    */
@@ -567,6 +529,7 @@ export interface VisitorConsentChange extends VisitorConsent {
    * @example `[{key: 'granularAnalytics', value: 'true'}, {key: 'granularMarketing', value: 'false'}]`
    */
   metafields?: TrackingConsentMetafieldChange[];
+  /** The type of consent change. Always `'changeVisitorConsent'`. */
   type: 'changeVisitorConsent';
 }
 
@@ -597,33 +560,30 @@ export interface CustomerPrivacyRegion {
 
 export interface CustomerPrivacy {
   /**
-   * An object containing flags for each consent property denoting whether they can be processed based on visitor consent, merchant configuration, and user location.
+   * Flags indicating which data processing activities are allowed, based on the visitor's consent, merchant configuration, and the visitor's location.
    */
   allowedProcessing: AllowedProcessing;
   /**
-   * Stored tracking consent metafield data.
+   * Custom key-value pairs that store additional tracking consent preferences, such as granular opt-in choices for analytics or marketing categories. The array is empty when no consent metafields have been set.
    *
    * @example `[{key: 'analyticsType', value: 'granular'}, {key: 'marketingType', value: 'granular'}]`, or `[]`
    */
   metafields: TrackingConsentMetafield[];
   /**
-   * An object containing the customer's current privacy consent settings.
-   * *
-   * @example `true` — the customer has actively granted consent, `false` — the customer has actively denied consent, or `undefined` — the customer has not yet made a decision.
+   * The visitor's explicit consent choices for analytics, marketing, preferences, and sale of data. Each flag is `true` (granted), `false` (denied), or `undefined` (no decision yet).
+   * @example `true` — the customer has actively granted consent, `false` — the customer has actively denied consent, or `undefined` — the customer hasn’t yet made a decision.
    */
   visitorConsent: VisitorConsent;
   /**
-   * Whether a consent banner should be displayed by default when the page loads. Use this as the initial open/expanded state of the consent banner.
-   *
-   * This is determined by the visitor's current privacy consent, the shop's [region visibility configuration](https://help.shopify.com/en/manual/privacy-and-security/privacy/customer-privacy-settings/privacy-settings#add-a-cookie-banner) settings, and the region in which the visitor is located.
+   * Whether a consent banner should display when the page loads. Determined by the visitor's current consent, the shop's [region visibility configuration](https://help.shopify.com/en/manual/privacy-and-security/privacy/customer-privacy-settings/privacy-settings#add-a-cookie-banner), and the visitor's location.
    */
   shouldShowBanner: boolean;
   /**
-   * Whether the visitor is in a region requiring data sale opt-outs.
+   * Whether the visitor is in a region that requires explicit opt-out controls for the sale of personal data.
    */
   saleOfDataRegion: boolean;
   /**
-   * Details about the visitor's current location for use in evaluating if more granular consent controls should render.
+   * The visitor's geolocation data, used to determine whether region-specific consent controls should be displayed.
    *
    * @example `{countryCode: 'CA', provinceCode: 'ON'}` for a visitor in Ontario, Canada; `{countryCode: 'US', provinceCode: undefined}` for a visitor in the United States if geolocation fails to detect the state; or `undefined` if neither country nor province is detected or geolocation fails.
    *
@@ -637,28 +597,27 @@ export type TrackingConsentChangeResult =
   | TrackingConsentChangeResultError;
 
 /**
- * The returned result of a successful tracking consent preference update.
+ * The result returned when a tracking consent preference update succeeds.
  */
 export interface TrackingConsentChangeResultSuccess {
   /**
-   * The type of the `TrackingConsentChangeResultSuccess` API.
+   * Always `'success'`, indicating the consent change was applied.
    */
   type: 'success';
 }
 
 /**
- * The returned result of an unsuccessful tracking consent preference update
- * with a message detailing the type of error that occurred.
+ * The result returned when a tracking consent preference update fails, including an error message.
  */
 export interface TrackingConsentChangeResultError {
   /**
-   * The type of the `TrackingConsentChangeResultError` API.
+   * Always `'error'`, indicating the consent change failed.
    */
   type: 'error';
 
   /**
    * A message that explains the error. This message is useful for debugging.
-   * It is **not** localized, and therefore should not be presented directly
+   * It isn’t localized, and therefore shouldn’t be presented directly
    * to the buyer.
    */
   message: string;

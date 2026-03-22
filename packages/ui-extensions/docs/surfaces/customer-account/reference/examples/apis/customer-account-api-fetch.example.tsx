@@ -30,8 +30,9 @@ function BlockExtension() {
         },
         body: JSON.stringify(getCustomerNameQuery),
       }).then((response) => response.json())
-      .then(({data: { customer: {firstName}}}) => {
-        setCustomerName(firstName)
+      .then(({data: { customer}}) => {
+        if (!customer) return;
+        setCustomerName(customer.firstName)
       }).catch(console.error);
   });
 

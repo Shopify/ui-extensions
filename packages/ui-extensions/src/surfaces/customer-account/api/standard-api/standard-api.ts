@@ -18,13 +18,13 @@ import type {ExtensionTarget} from '../../targets';
 import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 /**
- * The merchant-defined setting values for the extension.
+ * The merchant-defined setting values for the extension, as configured in the [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/latest#configuration) file.
  */
 export interface ExtensionSettings {
   [key: string]: string | number | boolean | undefined;
 }
 /**
- * The following APIs are provided to all extension targets.
+ * The base API object provided to all customer account extension targets.
  */
 export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
@@ -41,74 +41,73 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   extensionPoint: Target;
 
   /**
-   * Meta information about the extension.
+   * Metadata about the running extension, including its target, capabilities, and version.
    */
   extension: Extension;
 
   /**
-   * Information about the authenticated account.
+   * The authenticated customer's account information, including their customer ID and B2B company details.
    */
   authenticatedAccount: AuthenticatedAccount;
 
   /**
-   * The renderer version being used for the extension.
+   * The API version being used for the extension.
    *
-   * @example 'unstable'
+   * @example '2025-07'
    */
   version: Version;
 
   /**
-   * Details about the language of the buyer.
+   * The buyer's language and country context. For formatting utilities, use the `i18n` object instead.
    */
   localization: Localization;
 
   /**
-   * Utilities for translating content and formatting values according to the current `localization`
-   * of the user.
+   * Utilities for translating content and formatting values according to the buyer's locale.
    */
   i18n: I18n;
 
   /**
-   * Key-value storage for the extension target.
+   * Persistent key-value storage scoped to your app. Data is shared across all of your extension targets.
    */
   storage: Storage;
 
   /**
-   * Provides access to session tokens, which can be used to verify token claims on your app's server.
+   * Provides access to session tokens for authenticating requests to your app's backend server.
    *
-   * See [session token examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/session-token#examples) for more information.
+   * See [session token examples](/docs/api/customer-account-ui-extensions/apis/session-token#examples) for more information.
    */
   sessionToken: SessionToken;
 
   /**
-   * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
+   * Methods for interacting with [Web Pixels](/docs/apps/build/marketing), such as publishing analytics events.
    *
-   * > Note: Requires to [connect a third-party domain](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-customer-account) to Shopify for your customer account pages.
+   * > Note: Requires a [connected third-party domain](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-customer-account) for your customer account pages.
    */
   analytics: Analytics;
 
   /**
-   * The settings matching the settings definition written in the
-   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration) file.
+   * The merchant-configured settings for this extension, as defined in the
+   * [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/latest#configuration) file.
    *
-   *  See [settings examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/order-status-api/settings#examples) for more information.
-   *
-   * > Note: When an extension is being installed in the editor, the settings will be empty until
-   * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
+   * > Note: When an extension is first installed, settings are empty until the merchant configures them. Values update in real time as the merchant saves changes.
    */
   settings: StatefulRemoteSubscribable<ExtensionSettings>;
 
   /**
-   * Methods to interact with the extension's UI.
+   * Methods to interact with the extension's UI, including overlays, toasts, and data refresh.
    */
   ui: Ui;
 
+  /**
+   * Methods for navigating within the customer account, including URL-based navigation and history management.
+   */
   navigation: StandardExtensionNavigation;
 
   /**
-   * Used to query the Storefront GraphQL API with a prefetched token.
+   * Queries the Storefront GraphQL API using a prefetched token.
    *
-   * See [storefront api access examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/storefront-api#examples) for more information.
+   * See [Storefront API access examples](/docs/api/customer-account-ui-extensions/apis/storefront-api#examples) for more information.
    */
   query: <Data = unknown, Variables = {[key: string]: unknown}>(
     query: string,
@@ -116,45 +115,55 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
 
   /**
-   * Customer privacy consent settings and a flag denoting if consent has previously been collected.
+   * The buyer's current privacy consent settings, including consent flags, allowed processing activities, and region information.
    */
   customerPrivacy: StatefulRemoteSubscribable<CustomerPrivacy>;
 
   /**
-   * Allows setting and updating customer privacy consent settings and tracking consent metafields.
+   * Applies changes to the buyer's tracking consent preferences and consent metafields.
    *
-   * > Note: Requires the [`customer_privacy` capability](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#collect-buyer-consent) to be set to `true`.
+   * > Note: Requires the [`customer_privacy` capability](/docs/api/customer-account-ui-extensions/latest#configuration#collect-buyer-consent) to be set to `true`.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   applyTrackingConsentChange: ApplyTrackingConsentChangeType;
 }
 
+/**
+ * Provides access to the company location context for B2B extension targets.
+ */
 export interface CompanyLocationApi {
+  /** A globally-unique identifier for the company location. */
   locationId: string;
 }
 
+/**
+ * Provides access to the fulfillment context for fulfillment-scoped extension targets.
+ */
 export interface FulfillmentApi {
-  /**
-   * Id of a single fulfillment.
-   */
+  /** A globally-unique identifier for the fulfillment. */
   fulfillmentId: string;
 }
 
+/**
+ * Provides access to the return context for return-scoped extension targets.
+ */
 export interface ReturnApi {
-  /**
-   * Id of a single return.
-   */
+  /** A globally-unique identifier for the return. */
   returnId: string;
 }
 
+/**
+ * Provides access to the order context for order-scoped extension targets.
+ */
 export interface OrderApi {
+  /** A globally-unique identifier for the order. */
   orderId: string;
 }
 
 export interface Localization {
   /**
-   * The language the buyer sees in the customer account hub.
+   * The language the buyer sees in the customer account pages.
    */
   language: StatefulRemoteSubscribable<Language>;
 
@@ -165,22 +174,24 @@ export interface Localization {
    *
    * For example, if the buyer's language is 'fr-CA' but your extension
    * only supports translations for 'fr', then the `isoCode` for this
-   * language is 'fr'. If your extension does not provide french
+   * language is 'fr'. If your extension doesn’t provide French
    * translations at all, this value is the default locale for your
    * extension (that is, the one matching your .default.json file).
    */
   extensionLanguage: StatefulRemoteSubscribable<Language>;
 
   /**
-   * The country context of the buyer sees in the customer account.
-   * It will update if the buyer changes the country in the customer account
-   * If the country is unknown, then the value is undefined.
+   * The buyer's country context in the customer account. Updates if the buyer changes their country. The value is `undefined` if the country is unknown.
    */
   country: StatefulRemoteSubscribable<Country | undefined>;
 }
 
 /**
- * An enumerated value representing the type of navigation.
+ * An enumerated value representing the type of navigation:
+ *
+ * - `'push'`: A new entry is added to the history stack.
+ * - `'replace'`: The current entry in the history stack is replaced.
+ * - `'traverse'`: The user navigated to an existing entry in the history stack (back or forward).
  */
 export type NavigationType = 'push' | 'replace' | 'traverse';
 
@@ -190,7 +201,11 @@ export interface NavigationOptions {
    */
   state?: Record<string, any>;
   /**
-   * An enumerated value that sets the history behavior of this navigation.
+   * An enumerated value that sets the history behavior of this navigation:
+   *
+   * - `'auto'`: The default behavior, which is equivalent to `'push'`.
+   * - `'push'`: Adds a new entry to the history stack.
+   * - `'replace'`: Replaces the current entry in the history stack.
    */
   history: 'auto' | 'push' | 'replace';
 }
@@ -227,7 +242,7 @@ export interface NavigationCurrentEntryChangeEvent {
 
 export interface StandardExtensionNavigation {
   /**
-   * The navigate() method navigates to a specific URL, updating any provided state in the history entries list.
+   * Navigates to a specific URL within the customer account, updating the history entries list.
    */
   navigate: NavigateFunction;
 }
@@ -241,10 +256,12 @@ export interface FullExtensionNavigation extends StandardExtensionNavigation {
    * The updateCurrentEntry() method of the Navigation interface updates the state of the currentEntry; used in cases where the state change will be independent of a navigation or reload.
    */
   updateCurrentEntry(options: {state: Record<string, any>}): void;
+  /** Registers a callback that fires whenever the current navigation entry changes. */
   addEventListener(
     type: 'currententrychange',
     cb: (event: NavigationCurrentEntryChangeEvent) => void,
   ): void;
+  /** Removes a previously registered `currententrychange` event listener. */
   removeEventListener(
     type: 'currententrychange',
     cb: (event: NavigationCurrentEntryChangeEvent) => void,
@@ -259,4 +276,5 @@ export interface NavigateFunction {
   (url: string, options?: NavigationOptions): void;
 }
 
+/** The API version string for the extension, such as `'2025-07'`. */
 export type Version = string;
