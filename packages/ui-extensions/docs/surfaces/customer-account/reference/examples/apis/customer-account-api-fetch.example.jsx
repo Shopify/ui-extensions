@@ -6,7 +6,7 @@ export default async () => {
   render(<Extension />, document.body);
 };
 
-const API_VERSION = '2026-01';
+const API_VERSION = '2026-04';
 
 function Extension() {
   const [customerName, setCustomerName] =
@@ -34,15 +34,10 @@ function Extension() {
       },
     )
       .then((response) => response.json())
-      .then(
-        ({
-          data: {
-            customer: {firstName},
-          },
-        }) => {
-          setCustomerName(firstName);
-        },
-      )
+      .then(({data: {customer}}) => {
+        if (!customer) return;
+        setCustomerName(customer.firstName);
+      })
       .catch(console.error);
   });
 

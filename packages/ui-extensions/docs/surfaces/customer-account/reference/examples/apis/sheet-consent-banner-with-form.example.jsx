@@ -29,8 +29,8 @@ function Extension() {
 
   const sheetId = 'sheet-consent';
   const modalId = 'modal-consent';
-  const sheetRef = useRef();
-  const modalRef = useRef();
+  const sheetRef = useRef(null);
+  const modalRef = useRef(null);
 
   const getCheckboxOnChangeHandler = (key) => {
     return function (event) {
@@ -65,14 +65,14 @@ function Extension() {
 
   const consentFormMarkup = (
     <s-form
-      onSubmit={() => handleConsentChange()}
+      onSubmit={() => handleConsentChange(undefined)}
     >
       <s-stack direction="block">
         <s-grid gap="base">
           <s-checkbox
             id="marketing"
             label="Marketing"
-            value={consentFormValues.marketing}
+            value={String(consentFormValues.marketing)}
             onChange={getCheckboxOnChangeHandler(
               'marketing',
             )}
@@ -80,7 +80,7 @@ function Extension() {
           <s-checkbox
             id="analytics"
             label="Analytics"
-            value={consentFormValues.analytics}
+            value={String(consentFormValues.analytics)}
             onChange={getCheckboxOnChangeHandler(
               'analytics',
             )}
@@ -88,7 +88,7 @@ function Extension() {
           <s-checkbox
             id="preferences"
             label="Preferences"
-            value={consentFormValues.preferences}
+            value={String(consentFormValues.preferences)}
             onChange={getCheckboxOnChangeHandler(
               'preferences',
             )}
@@ -96,7 +96,7 @@ function Extension() {
           <s-checkbox
             id="saleOfData"
             label="Sale of data"
-            value={consentFormValues.saleOfData}
+            value={String(consentFormValues.saleOfData)}
             onChange={getCheckboxOnChangeHandler(
               'saleOfData',
             )}

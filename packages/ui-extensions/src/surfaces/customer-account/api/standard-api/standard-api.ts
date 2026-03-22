@@ -47,7 +47,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   extension: Extension;
 
   /**
-   * Information about the authenticated account.
+   * The logged-in customer's account information, including their customer ID and B2B company details. Use this to personalize your extension based on who is viewing the page.
    */
   authenticatedAccount: AuthenticatedAccount;
 
@@ -98,7 +98,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * The settings matching the settings definition written in the
-   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration) file.
+   * [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration) file.
    *
    *  See [settings examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/order-status-api/settings#examples) for more information.
    *
@@ -135,16 +135,14 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
 
   /**
-   * Customer privacy consent settings and a flag denoting if consent has previously been collected.
+   * The buyer's current privacy consent settings, including their consent decisions for analytics, marketing, and data sale, whether a consent banner should be displayed, and whether the buyer is in a region that requires specific opt-out controls. Use this to read the buyer's consent state and determine how to display privacy-related UI.
    */
   customerPrivacy: SubscribableSignalLike<CustomerPrivacy>;
 
   /**
-   * Allows setting and updating customer privacy consent settings and tracking consent metafields.
+   * Applies updated tracking consent preferences for the buyer, including their decisions for analytics, marketing, and data sale, along with any custom tracking consent [metafields](/docs/apps/build/custom-data/metafields). Returns a promise that resolves with the result of the consent update.
    *
-   * > Note: Requires the [`customer_privacy` capability](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration#collect-buyer-consent) to be set to `true`.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires the [`customer_privacy` capability](/docs/api/customer-account-ui-extensions/latest#configuration) and access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   applyTrackingConsentChange: ApplyTrackingConsentChangeType;
 }
@@ -179,12 +177,12 @@ export interface Localization {
 
   /**
    * This is the buyer's language, as supported by the extension.
-   * If the buyer's actual language is not supported by the extension,
+   * If the buyer's actual language isn't supported by the extension,
    * this is the fallback locale used for translations.
    *
    * For example, if the buyer's language is 'fr-CA' but your extension
    * only supports translations for 'fr', then the `isoCode` for this
-   * language is 'fr'. If your extension does not provide french
+   * language is 'fr'. If your extension doesn't provide french
    * translations at all, this value is the default locale for your
    * extension (that is, the one matching your .default.json file).
    */
