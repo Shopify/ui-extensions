@@ -1,11 +1,11 @@
 ---
 name: ui-extensions-validate-type-definitions
-description: Use when validating .d.ts type definition files in the ui-extensions repo. Covers JSDoc quality, slot descriptions, event descriptions, source of truth verification, and architecture patterns. Run after ui-extensions:universal.
+description: Use when validating .d.ts type definition files in the ui-extensions repo. Covers JSDoc quality, slot descriptions, event descriptions, source of truth verification, and architecture patterns. Run after ui-extensions:style-lint.
 ---
 
 # Type Definitions Validation (`.d.ts` files)
 
-Run after `ui-extensions:universal`.
+Run after `ui-extensions:style-lint`.
 
 **How to use:** Evaluate each item against the files provided. Skip items that clearly don't apply. Flag anything you can't definitively verify rather than guessing. Covers checkout and customer account surfaces.
 
