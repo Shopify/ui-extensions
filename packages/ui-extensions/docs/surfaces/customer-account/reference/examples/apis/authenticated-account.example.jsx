@@ -8,10 +8,10 @@ export default async () => {
 function Extension() {
   const orderStatusCustomerId =
     shopify.authenticatedAccount.customer.value
-      .id;
+      ?.id;
   const authenticatedCustomerId =
     shopify.authenticatedAccount.customer.value
-      .id;
+      ?.id;
 
   if (
     authenticatedCustomerId &&
