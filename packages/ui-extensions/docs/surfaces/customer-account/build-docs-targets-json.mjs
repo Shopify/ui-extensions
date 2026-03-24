@@ -9,13 +9,10 @@ const EXTENSIONS_API_VERSION = process.argv[2] || 'unstable';
 
 // Configuration for customer-account surface
 const config = {
-  basePath: path.join(
-    __dirname,
-    '../../../src/surfaces/customer-account',
-  ),
+  basePath: path.join(__dirname, '../../../src/surfaces/customer-account'),
   outputPath: path.join(
     __dirname,
-    'generated/targets.json',
+    `generated/customer_account_ui_extensions/${EXTENSIONS_API_VERSION}/targets.json`,
   ),
   componentTypesPath: 'components',
   hasComponentTypes: true,
@@ -36,21 +33,21 @@ let customerAccountComponentsCache = null;
 function hasInternalMarker(content, matchIndex) {
   // Find the start of the current line
   const lineStart = content.lastIndexOf('\n', matchIndex - 1) + 1;
-  
+
   // If this is the first line (no newline before it), there's no previous line
   if (lineStart === 0 && matchIndex < content.indexOf('\n')) {
     return false;
   }
-  
+
   // Find the previous line
   const prevLineEnd = lineStart - 1;
   if (prevLineEnd < 0) {
-    return false; // No previous line
+    return false;
   }
-  
+
   const prevLineStart = content.lastIndexOf('\n', prevLineEnd - 1) + 1;
   const prevLine = content.slice(prevLineStart, prevLineEnd);
-  
+
   return prevLine.includes('@internal');
 }
 
@@ -72,7 +69,7 @@ function isValidComponentName(name) {
 /**
  * Recursively parse exports from a file and collect component names
  * Follows both `export * from` and `export { } from` patterns
- * 
+ *
  * @param {string} filePath - Path to the file to parse
  * @param {Set} components - Set to collect component names into
  * @param {Set} visited - Set of already visited files to prevent cycles
@@ -81,30 +78,30 @@ function isValidComponentName(name) {
 function parseExportsRecursively(filePath, components, visited, baseDir) {
   // Normalize path
   const normalizedPath = path.resolve(filePath);
-  
+
   // Resolve to actual file path (handle directories and missing extensions)
   let actualPath = normalizedPath;
-  
+
   if (fs.existsSync(actualPath)) {
     // Check if it's a directory - if so, look for index.ts
     const stats = fs.statSync(actualPath);
     if (stats.isDirectory()) {
       actualPath = path.join(actualPath, 'index.ts');
       if (!fs.existsSync(actualPath)) {
-        return; // No index.ts in directory
+        return;
       }
     }
   } else {
     // Path doesn't exist - try adding .ts extension or looking for index.ts
-    if (fs.existsSync(normalizedPath + '.ts')) {
-      actualPath = normalizedPath + '.ts';
+    if (fs.existsSync(`${normalizedPath}.ts`)) {
+      actualPath = `${normalizedPath}.ts`;
     } else if (fs.existsSync(path.join(normalizedPath, 'index.ts'))) {
       actualPath = path.join(normalizedPath, 'index.ts');
     } else {
       return; // File not found
     }
   }
-  
+
   // Check if already visited (using resolved actual path)
   if (visited.has(actualPath)) {
     return;
@@ -125,13 +122,13 @@ function parseExportsRecursively(filePath, components, visited, baseDir) {
       }
 
       const exportPath = match[1];
-      
+
       // If it's a relative path, recurse into it
       if (exportPath.startsWith('.')) {
         const resolvedPath = path.resolve(currentDir, exportPath);
         parseExportsRecursively(resolvedPath, components, visited, baseDir);
       }
-      // If it's an external module path (like '../../checkout/components'), 
+      // If it's an external module path (like '../../checkout/components'),
       // try to parse named exports from that module
       else if (!exportPath.startsWith('@')) {
         const resolvedPath = path.resolve(currentDir, exportPath);
@@ -144,7 +141,7 @@ function parseExportsRecursively(filePath, components, visited, baseDir) {
     while ((match = namedExportRegex.exec(content)) !== null) {
       const exportContent = match[1];
       const exportPath = match[2];
-      
+
       // Check for @internal marker
       if (hasInternalMarker(content, match.index)) {
         continue;
@@ -178,7 +175,6 @@ function parseExportsRecursively(filePath, components, visited, baseDir) {
         components.add(componentName);
       }
     }
-
   } catch (error) {
     // Silently skip files that can't be read
   }
@@ -207,7 +203,9 @@ function parseCustomerAccountComponents() {
 
     if (components.size > 0) {
       customerAccountComponentsCache = Array.from(components);
-      console.log(`Parsed ${customerAccountComponentsCache.length} customer-account components (from ${visited.size} files)`);
+      console.log(
+        `Parsed ${customerAccountComponentsCache.length} customer-account components (from ${visited.size} files)`,
+      );
       return customerAccountComponentsCache;
     }
 
@@ -240,19 +238,23 @@ function parseCheckoutComponents() {
 
     if (fs.existsSync(componentsPath)) {
       const content = fs.readFileSync(componentsPath, 'utf-8');
-      
-      const exportMatches = content.matchAll(/export\s*\{\s*(\w+)\s*\}\s*from/g);
+
+      const exportMatches = content.matchAll(
+        /export\s*\{\s*(\w+)\s*\}\s*from/g,
+      );
       const components = [];
-      
+
       for (const match of exportMatches) {
         const componentName = match[1];
-        if (!componentName.endsWith('Props') && 
-            !componentName.includes('Type') &&
-            componentName.charAt(0) === componentName.charAt(0).toUpperCase()) {
+        if (
+          !componentName.endsWith('Props') &&
+          !componentName.includes('Type') &&
+          componentName.charAt(0) === componentName.charAt(0).toUpperCase()
+        ) {
           components.push(componentName);
         }
       }
-      
+
       if (components.length > 0) {
         checkoutComponentsCache = components;
         return checkoutComponentsCache;
@@ -275,7 +277,7 @@ function parseCheckoutComponents() {
 function parseStringUnionType(filePath, componentTypesMap = {}) {
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
-    
+
     // Extract all quoted component names from the file (but not from import statements)
     // Remove import lines first
     const contentWithoutImports = content.replace(/^import.*?;$/gm, '');
@@ -283,20 +285,20 @@ function parseStringUnionType(filePath, componentTypesMap = {}) {
     const quotedComponents = componentNames
       ? componentNames.map((name) => name.replace(/'/g, ''))
       : [];
-    
+
     // Check if the type references other types (like StandardComponents or AnyComponent)
     // Look for patterns like: StandardComponents | 'OtherComponent'
     const typeRefPattern = /export type \w+ =\s*([\s\S]*?);/;
     const typeDefMatch = content.match(typeRefPattern);
-    
+
     if (typeDefMatch) {
       const typeDef = typeDefMatch[1];
       // Find references to other types (capitalized words that aren't in quotes)
       const typeRefs = typeDef.match(/\b([A-Z]\w+(?:Components?)?)\b/g);
-      
+
       if (typeRefs) {
         const allComponents = [...quotedComponents];
-        
+
         for (const typeRef of typeRefs) {
           // Check if this is AnyComponent - use customer-account's own components
           if (typeRef === 'AnyComponent') {
@@ -308,12 +310,12 @@ function parseStringUnionType(filePath, componentTypesMap = {}) {
             allComponents.push(...componentTypesMap[typeRef]);
           }
         }
-        
+
         // Remove duplicates
         return [...new Set(allComponents)];
       }
     }
-    
+
     return quotedComponents.length > 0 ? quotedComponents : null;
   } catch (error) {
     console.error(`Error reading component file ${filePath}:`, error.message);
@@ -406,7 +408,9 @@ function parseInlineComponentTypes(content, componentTypesMap) {
     const customerAccountComponents = parseCustomerAccountComponents();
     if (customerAccountComponents.length > 0) {
       componentTypesMap[typeName] = customerAccountComponents;
-      console.log(`Parsed ${typeName}: ${customerAccountComponents.length} components (from customer-account exports)`);
+      console.log(
+        `Parsed ${typeName}: ${customerAccountComponents.length} components (from customer-account exports)`,
+      );
     }
   }
 }
@@ -451,7 +455,11 @@ function parseTargetsFile() {
   return targets;
 }
 
-function parseTargetsFromInterfaceBody(interfaceBody, targets, componentTypesMap) {
+function parseTargetsFromInterfaceBody(
+  interfaceBody,
+  targets,
+  componentTypesMap,
+) {
   // Parse each target definition (handle multi-line)
   const targetRegex = /'([^']+)':\s*RenderExtension<([\s\S]*?)>;/g;
 
@@ -469,7 +477,10 @@ function parseTargetsFromInterfaceBody(interfaceBody, targets, componentTypesMap
       if (between === '') {
         const jsDocStart = beforeMatch.lastIndexOf('/**');
         if (jsDocStart !== -1) {
-          const jsDocContent = beforeMatch.substring(jsDocStart, lastJsDocEnd + 2);
+          const jsDocContent = beforeMatch.substring(
+            jsDocStart,
+            lastJsDocEnd + 2,
+          );
           if (jsDocContent.includes('@private')) {
             continue; // Skip this target
           }
@@ -612,7 +623,7 @@ function getNestedApis(apiName) {
     }
 
     // Find the end position (semicolon at the correct nesting level)
-    let startPos = startMatch.index + startMatch[0].length;
+    const startPos = startMatch.index + startMatch[0].length;
     let endPos = startPos;
     let braceDepth = 0;
     let angleDepth = 0;
@@ -653,6 +664,40 @@ function getNestedApis(apiName) {
   }
 }
 
+// APIs that are composites — list their documented constituent APIs instead of themselves
+const COMPOSITE_API_DECOMPOSITION = {
+  StandardApi: [
+    'AnalyticsApi',
+    'AuthenticatedAccountApi',
+    'CustomerPrivacyApi',
+    'ExtensionApi',
+    'LocalizationApi',
+    'QueryApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'StorageApi',
+    'ToastApi',
+    'VersionApi',
+  ],
+  OrderStatusApi: [
+    'OrderStatusAddressApi',
+    'OrderStatusAttributesApi',
+    'OrderStatusAuthenticationStateApi',
+    'OrderStatusBuyerIdentityApi',
+    'OrderStatusCartLinesApi',
+    'OrderStatusCheckoutSettingsApi',
+    'OrderStatusCostApi',
+    'OrderStatusDiscountsApi',
+    'OrderStatusGiftCardsApi',
+    'OrderStatusLocalizationApi',
+    'OrderStatusMetafieldsApi',
+    'OrderStatusNoteApi',
+    'OrderStatusOrderApi',
+    'OrderStatusRequireLoginApi',
+    'OrderStatusShopApi',
+  ],
+};
+
 function parseApis(apiString) {
   const apisSet = new Set();
 
@@ -684,16 +729,22 @@ function parseApis(apiString) {
     }
 
     if (apiName) {
-      // Add the API itself
-      apisSet.add(apiName);
+      if (COMPOSITE_API_DECOMPOSITION[apiName]) {
+        for (const constituent of COMPOSITE_API_DECOMPOSITION[apiName]) {
+          apisSet.add(constituent);
+        }
+      } else {
+        // Add the API itself
+        apisSet.add(apiName);
 
-      // Get nested APIs from this API (recursively)
-      const nestedApis = getNestedApis(apiName);
-      for (const nestedApi of nestedApis) {
-        apisSet.add(nestedApi);
-        // Recursively get nested APIs of nested APIs
-        const deepNestedApis = getNestedApis(nestedApi);
-        deepNestedApis.forEach((api) => apisSet.add(api));
+        // Get nested APIs from this API (recursively)
+        const nestedApis = getNestedApis(apiName);
+        for (const nestedApi of nestedApis) {
+          apisSet.add(nestedApi);
+          // Recursively get nested APIs of nested APIs
+          const deepNestedApis = getNestedApis(nestedApi);
+          deepNestedApis.forEach((api) => apisSet.add(api));
+        }
       }
     }
   }
@@ -710,7 +761,9 @@ function parseComponents(componentString, componentTypesMap) {
   componentString = componentString.replace(/\s+/g, ' ').trim();
 
   // Handle AnyCheckoutComponentExcept<'Component1' | 'Component2'>
-  const checkoutExceptMatch = componentString.match(/AnyCheckoutComponentExcept<([^>]+)>/);
+  const checkoutExceptMatch = componentString.match(
+    /AnyCheckoutComponentExcept<([^>]+)>/,
+  );
   if (checkoutExceptMatch) {
     const excludedUnion = checkoutExceptMatch[1];
     // Get all checkout components
@@ -786,7 +839,10 @@ function resolveComponentType(typeName, componentTypesMap) {
     return parseCustomerAccountComponents();
   }
   // AnyCheckoutComponent and AnyThankYouComponent refer to full checkout component set
-  if (typeName === 'AnyCheckoutComponent' || typeName === 'AnyThankYouComponent') {
+  if (
+    typeName === 'AnyCheckoutComponent' ||
+    typeName === 'AnyThankYouComponent'
+  ) {
     return parseCheckoutComponents();
   }
 
@@ -856,21 +912,23 @@ try {
   // Write to output file
   const outputDir = path.dirname(config.outputPath);
   if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+    fs.mkdirSync(outputDir, {recursive: true});
   }
   fs.writeFileSync(config.outputPath, JSON.stringify(combinedJson, null, 2));
 
   console.log('✅ Generated combined targets JSON at:', config.outputPath);
-  
+
   // Count the different types of entries
   const targetEntries = Object.keys(targetsJson).length;
   const apiEntries = Object.keys(combinedJson).filter(
-    (key) => combinedJson[key].targets && !targetsJson[key] && key.endsWith('Api')
+    (key) =>
+      combinedJson[key].targets && !targetsJson[key] && key.endsWith('Api'),
   ).length;
   const componentEntries = Object.keys(combinedJson).filter(
-    (key) => combinedJson[key].targets && !targetsJson[key] && !key.endsWith('Api')
+    (key) =>
+      combinedJson[key].targets && !targetsJson[key] && !key.endsWith('Api'),
   ).length;
-  
+
   console.log('\n📋 Summary:');
   console.log(`  Extension targets: ${targetEntries}`);
   console.log(`  API reverse mappings: ${apiEntries}`);

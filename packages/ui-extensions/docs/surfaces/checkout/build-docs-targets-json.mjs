@@ -276,6 +276,39 @@ function splitByTopLevelComma(str) {
   return parts;
 }
 
+// APIs that are composites — list their documented constituent APIs instead of themselves
+const COMPOSITE_API_DECOMPOSITION = {
+  StandardApi: [
+    'AnalyticsApi',
+    'BuyerIdentityApi',
+    'BuyerJourneyApi',
+    'CartInstructionsApi',
+    'CheckoutSettingsApi',
+    'CheckoutTokenApi',
+    'CostApi',
+    'CustomerPrivacyApi',
+    'DeliveryApi',
+    'ExtensionMetaApi',
+    'LocalizationApi',
+    'LocalizedFieldsApi',
+    'PaymentOptionsApi',
+    'QueryApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'ShopApi',
+    'StorageApi',
+  ],
+  CheckoutApi: [
+    'AddressesApi',
+    'AttributesApi',
+    'CartLinesApi',
+    'DiscountsApi',
+    'GiftCardsApi',
+    'MetafieldsApi',
+    'NoteApi',
+  ],
+};
+
 function parseApis(apiString) {
   const apisSet = new Set();
 
@@ -307,7 +340,13 @@ function parseApis(apiString) {
     }
 
     if (apiName) {
-      apisSet.add(apiName);
+      if (COMPOSITE_API_DECOMPOSITION[apiName]) {
+        for (const constituent of COMPOSITE_API_DECOMPOSITION[apiName]) {
+          apisSet.add(constituent);
+        }
+      } else {
+        apisSet.add(apiName);
+      }
     }
   }
 
@@ -423,7 +462,7 @@ try {
   // Write to output file
   const outputPath = path.join(
     __dirname,
-    'generated/targets.json',
+    `generated/checkout_ui_extensions/${API_VERSION}/targets.json`,
   );
   const outputDir = path.dirname(outputPath);
   if (!fs.existsSync(outputDir)) {
