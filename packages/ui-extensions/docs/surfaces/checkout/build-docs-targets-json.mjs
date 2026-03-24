@@ -297,6 +297,7 @@ const COMPOSITE_API_DECOMPOSITION = {
     'SettingsApi',
     'ShopApi',
     'StorageApi',
+    'UiApi',
   ],
   CheckoutApi: [
     'AddressesApi',

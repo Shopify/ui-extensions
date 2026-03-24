@@ -680,6 +680,7 @@ const COMPOSITE_API_DECOMPOSITION = {
     'StorageApi',
     'StorefrontApi',
     'ToastApi',
+    'UiApi',
     'VersionApi',
   ],
   OrderStatusApi: [
