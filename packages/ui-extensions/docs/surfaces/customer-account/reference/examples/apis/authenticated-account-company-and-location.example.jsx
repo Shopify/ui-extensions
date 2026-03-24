@@ -1,4 +1,3 @@
-/* See the locales/en.default.json tab for the translation keys and values for this example */
 import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 
@@ -11,14 +10,14 @@ function Extension() {
     shopify.authenticatedAccount
       ?.purchasingCompany?.value;
   const companyLocationId =
-    purchasingCompany?.location.id;
+    purchasingCompany?.location?.id;
 
   if (
     companyLocationId &&
     isLocationClosed(companyLocationId)
   ) {
     return (
-      <s-banner status="warning">
+      <s-banner tone="warning">
         {shopify.i18n.translate(
           'closedLocationMessage',
         )}
