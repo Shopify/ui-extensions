@@ -33,13 +33,28 @@ function findGeneratedDocsPath() {
   return docsPath || generatedDir; // Fallback to generated root if not found
 }
 
+// Accept an API version argument (e.g. 2026-01) to output targets.json into
+// a versioned directory. Falls back to the directory containing
+// generated_docs_data.json if not provided.
+const apiVersion = process.argv[2];
+
+function resolveOutputPath() {
+  if (apiVersion) {
+    return path.join(
+      __dirname,
+      'generated',
+      'customer_account_ui_extensions',
+      apiVersion,
+      'targets.json',
+    );
+  }
+  return path.join(findGeneratedDocsPath(), 'targets.json');
+}
+
 // Configuration for customer-account surface
 const config = {
   basePath: path.join(__dirname, '../../../src/surfaces/customer-account'),
-  outputPath: path.join(
-    findGeneratedDocsPath(),
-    'targets.json',
-  ),
+  outputPath: resolveOutputPath(),
   componentTypesPath: 'components',
   hasComponentTypes: true,
 };
@@ -424,32 +439,35 @@ const COMPOSITE_API_DECOMPOSITION = {
   StandardApi: [
     'AnalyticsApi',
     'AuthenticatedAccountApi',
+    'CustomerAccountApi',
     'CustomerPrivacyApi',
     'ExtensionApi',
+    'IntentsApi',
     'LocalizationApi',
-    'QueryApi',
+    'NavigationApi',
     'SessionTokenApi',
     'SettingsApi',
     'StorageApi',
+    'StorefrontApi',
     'ToastApi',
     'VersionApi',
   ],
   OrderStatusApi: [
-    'OrderStatusAddressApi',
-    'OrderStatusAttributesApi',
-    'OrderStatusAuthenticationStateApi',
-    'OrderStatusBuyerIdentityApi',
-    'OrderStatusCartLinesApi',
-    'OrderStatusCheckoutSettingsApi',
-    'OrderStatusCostApi',
-    'OrderStatusDiscountsApi',
-    'OrderStatusGiftCardsApi',
+    'AddressesApi',
+    'AttributesApi',
+    'AuthenticationStateApi',
+    'BuyerIdentityApi',
+    'CartLinesApi',
+    'CheckoutSettingsApi',
+    'CostApi',
+    'DiscountsApi',
+    'GiftCardsApi',
+    'MetafieldsApi',
+    'NoteApi',
+    'OrderApi',
     'OrderStatusLocalizationApi',
-    'OrderStatusMetafieldsApi',
-    'OrderStatusNoteApi',
-    'OrderStatusOrderApi',
-    'OrderStatusRequireLoginApi',
-    'OrderStatusShopApi',
+    'RequireLoginApi',
+    'ShopApi',
   ],
 };
 
