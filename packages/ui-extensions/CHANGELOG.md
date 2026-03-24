@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2025.10.14
+
+### Patch Changes
+
+- [#4150](https://github.com/Shopify/ui-extensions/pull/4150) [`237e01b`](https://github.com/Shopify/ui-extensions/commit/237e01b57f3a26c9fdf3e5a5bcff6ef9902c2343) Thanks [@lrsterrett](https://github.com/lrsterrett)! - Remove types for `ui` from checkout ui extension api as `ui` wasn't supported since 2025.10.0 For reference, closing a modal can be done declaritively on the modal polaris component, instead of the deprecated `ui.overlay.close`
+
+- [#4181](https://github.com/Shopify/ui-extensions/pull/4181) [`5897937`](https://github.com/Shopify/ui-extensions/commit/58979378e04c2f3c371349e1805417cdcacffe08) Thanks [@mauriciosierra](https://github.com/mauriciosierra)! - Add optional refundId, returnId, exchangeId, lineItemsAdded, and lineItemsRemoved fields to ReprintReceiptData to support reprinting return and exchange receipts.
+
 ## 2025.10.13
 
 ### Patch Changes
