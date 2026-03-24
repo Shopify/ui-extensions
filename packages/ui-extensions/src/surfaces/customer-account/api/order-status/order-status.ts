@@ -13,76 +13,95 @@ import type {ExtensionTarget} from '../../targets';
 import {Extension} from '../shared';
 
 /**
- * Metadata associated with the checkout.
+ * Represents a custom metadata field attached to a resource. Metafields let you store additional structured data on Shopify resources like orders and products.
  */
 export interface Metafield {
   /**
-   * The name of the metafield. It must be between 3 and 30 characters in
-   * length (inclusive).
+   * The unique identifier for the metafield within its namespace. Must be between 3 and 30 characters in length (inclusive).
    */
   key: string;
 
   /**
-   * A container for a set of metafields. You need to define a custom
-   * namespace for your metafields to distinguish them from the metafields
-   * used by other apps. This must be between 2 and 20 characters in length (inclusive).
+   * A container for a group of metafields. Namespaces distinguish your app's metafields from those created by other apps. Must be between 2 and 20 characters in length (inclusive).
    */
   namespace: string;
 
   /**
-   * The information to be stored as metadata.
+   * The metafield's value. The data type depends on the `valueType`: integers are returned as numbers, while strings and JSON strings are returned as strings.
    */
   value: string | number;
 
-  /** The metafield’s information type. */
+  /**
+   * The metafield’s value type, which determines how the `value` is interpreted:
+   *
+   * - `'integer'`: A whole number.
+   * - `'string'`: A plain text string.
+   * - `'json_string'`: A JSON-encoded string.
+   */
   valueType: 'integer' | 'string' | 'json_string';
 }
 
 /**
- * Represents a custom metadata attached to a resource.
+ * Represents a custom metadata field attached to a resource, requested through the [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/latest#configuration) file.
  */
 export interface AppMetafield {
-  /** The key name of a metafield. */
+  /** The unique identifier for the metafield within its namespace. */
   key: string;
 
-  /** The namespace for a metafield. */
+  /** A container that groups related metafields. Must be between 2 and 255 characters in length. */
   namespace: string;
 
-  /** The value of a metafield. */
+  /** The metafield's value. The data type depends on the `valueType`: booleans, numbers, and strings are returned in their respective types, while JSON strings are returned as strings. */
   value: string | number | boolean;
 
-  /** The metafield’s information type. */
+  /**
+   * The metafield’s value type, which determines how the `value` is interpreted:
+   *
+   * - `'boolean'`: A true or false value.
+   * - `'float'`: A decimal number.
+   * - `'integer'`: A whole number.
+   * - `'json_string'`: A JSON-encoded string.
+   * - `'string'`: A plain text string.
+   */
   valueType: 'boolean' | 'float' | 'integer' | 'json_string' | 'string';
 
-  /** The metafield's type name. */
+  /** The metafield's content type as defined in the [metafield definition](/docs/apps/build/custom-data/metafields), such as `single_line_text_field` or `number_integer`. */
   type: string;
 }
 
 /**
- * Represents a custom metadata attached to a resource.
+ * Represents a custom metadata field attached to the cart.
  */
 export interface CartMetafield {
-  /** The key name of a metafield. */
+  /** The unique identifier for the metafield within its namespace. */
   key: string;
 
-  /** The namespace for a metafield. */
+  /** A container that groups related metafields. Must be between 2 and 255 characters in length. */
   namespace: string;
 
-  /** The value of a metafield. */
+  /** The metafield's value, always returned as a string. Parse the value based on the `type` if you need structured data. */
   value: string;
 
-  /** The metafield's type name. */
+  /** The [metafield type](/docs/apps/build/custom-data/metafields/definitions/types) that defines the format of the metafield's value. */
   type: string;
 }
 
 /**
- * The metafield owner.
+ * The resource that owns the metafield.
  */
 export interface AppMetafieldEntryTarget {
   /**
-   * The type of the metafield owner.
+   * The type of resource that owns the metafield:
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.
+   * - `'customer'`: A customer resource.
+   * - `'product'`: A product resource.
+   * - `'shop'`: The shop resource.
+   * - `'variant'`: A product variant resource.
+   * - `'company'`: A B2B company resource.
+   * - `'companyLocation'`: A B2B company location resource.
+   * - `'cart'`: The cart resource.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company`, or `companyLocation`.
    */
   type:
     | 'customer'
@@ -93,60 +112,58 @@ export interface AppMetafieldEntryTarget {
     | 'companyLocation'
     | 'cart';
 
-  /** The numeric owner ID that is associated with the metafield. */
+  /** The globally-unique identifier of the resource that owns the metafield. */
   id: string;
 }
 
 /**
- * A metafield associated with the shop or a resource on the checkout.
+ * A metafield associated with a resource on the order. Each entry contains both the metafield data and a reference to the resource that owns it.
  */
 export interface AppMetafieldEntry {
   /**
-   * The target that is associated to the metadata.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.
+   * The resource that owns the metafield.
    */
   target: AppMetafieldEntryTarget;
 
-  /** The metadata information. */
+  /** The metafield data, including its key, namespace, value, and type. */
   metafield: AppMetafield;
 }
 
+/** The API version string for the extension, such as `'2025-07'`. */
 export type Version = string;
 
 export interface Currency {
   /**
-   * The ISO-4217 code for this currency.
-   * @see https://www.iso.org/iso-4217-currency-codes.html
+   * The [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) currency code, such as `USD` or `EUR`.
    */
   isoCode: CurrencyCode;
 }
 
 export interface Market {
   /**
-   * A globally-unique identifier for a market.
+   * A globally-unique identifier for a Shopify [market](/docs/apps/build/markets).
    */
   id: string;
 
   /**
-   * The human-readable, shop-scoped identifier for the market.
+   * The human-readable, shop-scoped identifier for the market. This handle is unique within the shop but isn't globally unique.
    */
   handle: string;
 }
 
 export interface OrderStatusLocalization {
   /**
-   * The currency that the buyer sees for money amounts in the checkout.
+   * The currency that the buyer sees for money amounts on the **Order status** page.
    */
   currency: StatefulRemoteSubscribable<Currency>;
 
   /**
-   * The buyer’s time zone.
+   * The buyer’s time zone, based on their browser settings or IP address.
    */
   timezone: StatefulRemoteSubscribable<Timezone>;
 
   /**
-   * The language the buyer sees in the checkout.
+   * The language the buyer sees on the **Order status** page.
    */
   language: StatefulRemoteSubscribable<Language>;
 
@@ -157,42 +174,45 @@ export interface OrderStatusLocalization {
    *
    * For example, if the buyer's language is 'fr-CA' but your extension
    * only supports translations for 'fr', then the `isoCode` for this
-   * language is 'fr'. If your extension does not provide french
+   * language is 'fr'. If your extension doesn’t provide French
    * translations at all, this value is the default locale for your
    * extension (that is, the one matching your .default.json file).
    */
   extensionLanguage: StatefulRemoteSubscribable<Language>;
 
   /**
-   * The country context of the checkout. This value carries over from the
-   * context of the cart, where it was used to contextualize the storefront
-   * experience. It will update if the buyer changes the country of their
-   * shipping address. The value is undefined if unknown.
+   * The country context of the order. This value carries over from the
+   * storefront context and may update if the buyer changes their shipping
+   * country. The value is `undefined` if unknown.
    */
   country: StatefulRemoteSubscribable<Country | undefined>;
 
   /**
-   * The [market](https://shopify.dev/docs/apps/markets) context of the
-   * checkout. This value carries over from the context of the cart, where it
-   * was used to contextualize the storefront experience. It will update if the
-   * buyer changes the country of their shipping address. The value is undefined
-   * if unknown.
+   * The [market](/docs/apps/build/markets) context of the order. This value
+   * carries over from the storefront context and may update if the buyer changes
+   * their shipping country. The value is `undefined` if unknown.
    */
   market: StatefulRemoteSubscribable<Market | undefined>;
 }
 
+/**
+ * The buyer’s authentication state on the **Order status** page:
+ *
+ * - `'fully_authenticated'`: The buyer has logged in to their customer account.
+ * - `'pre_authenticated'`: The buyer accessed the page through a tokenized link without logging in.
+ */
 export type AuthenticationState = 'fully_authenticated' | 'pre_authenticated';
 
 export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
-   * Gift Cards that have been applied to the order.
+   * Gift cards that have been applied to the order. Each entry includes the amount used and the remaining balance.
    */
   appliedGiftCards: StatefulRemoteSubscribable<AppliedGiftCard[]>;
 
   /**
    * The metafields requested in the
-   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration)
-   * file. These metafields are updated when there's a change in the merchandise items
+   * [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/latest#configuration)
+   * file. These metafields are updated when there’s a change in the merchandise items
    * being purchased by the customer.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
@@ -200,39 +220,37 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
 
   /**
-   * Custom attributes left by the customer to the merchant, either in their cart or during checkout.
+   * Custom key-value pairs that the buyer attached to the order during cart or checkout, commonly used for special instructions or order customization.
    */
   attributes: StatefulRemoteSubscribable<Attribute[] | undefined>;
 
   /**
-   * Information about the buyer that is interacting with the order.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * Information about the buyer who placed the order, including their customer account, email, phone, and B2B company details.
    */
   buyerIdentity?: OrderStatusBuyerIdentity;
 
   /**
-   * Settings applied to the buyer's checkout.
+   * The merchant's checkout configuration that was active when the buyer placed the order, including the order type, payment terms, and shipping address settings.
    */
   checkoutSettings: StatefulRemoteSubscribable<CheckoutSettings>;
 
   /**
-   * Details on the costs of the purchase for the buyer.
+   * The cost breakdown for the order, including subtotal, shipping, tax, and total amounts.
    */
   cost: CartCost;
 
   /**
-   * A list of discount codes applied to the purchase.
+   * The discount codes that the buyer applied to the order at checkout.
    */
   discountCodes: StatefulRemoteSubscribable<CartDiscountCode[]>;
 
   /**
-   * Discounts that have been applied to the entire cart.
+   * The order-level discount allocations, including code-based, automatic, and custom discounts. Each allocation includes the discounted amount and the discount source.
    */
   discountAllocations: StatefulRemoteSubscribable<CartDiscountAllocation[]>;
 
   /**
-   * Meta information about the extension.
+   * Information about the running extension, including its editor context, extension point, script URL, and localization settings.
    */
   extension: Extension<Target>;
 
@@ -250,124 +268,100 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   extensionPoint: Target;
 
   /**
-   * A list of lines containing information about the items the customer intends to purchase.
+   * The line items in the order, including product details, quantities, costs, and any applied discounts.
    */
   lines: StatefulRemoteSubscribable<CartLine[]>;
 
   /**
-   * Details about the location, language, and currency of the buyer. For utilities to easily
-   * format and translate content based on these details, you can use the
-   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-i18n)
-   * object instead.
+   * Details about the buyer's location, language, and currency on the **Order status** page. For utilities to format and translate content based on these details, use the `i18n` object from the [Localization API](/docs/api/customer-account-ui-extensions/target-apis/platform-apis/localization-api) instead.
    */
   localization: OrderStatusLocalization;
 
   /**
-   * The metafields that apply to the current order. The actual resource
-   * on which these metafields exist depends on the source of the order:
-   *
-   * - If the source is an order, then the metafields are on the order.
-   *
-   * - If the source is a draft order, then the initial value of metafields are
-   *   from the draft order, and any new metafields you write are applied
-   *   to the order created by the checkout.
-   *
-   * - For all other sources, the metafields are only stored locally on the
-   *   client creating the checkout, and are applied to the order that
-   *   results from checkout.
-   *
-   * These metafields are shared by all extensions running on checkout, and
-   * persist for as long as the customer is working on this checkout.
+   * The metafields that apply to the current order. These metafields are shared
+   * by all extensions running on the **Order status** page and persist for the
+   * duration of the buyer's session.
    *
    * Once the order is created, you can query these metafields using the
-   * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
+   * [GraphQL Admin API](/docs/api/admin-graphql).
    */
   metafields: StatefulRemoteSubscribable<Metafield[]>;
 
   /**
-   * A note left by the customer to the merchant, either in their cart or during checkout.
+   * A free-form text note that the buyer left for the merchant during cart or checkout, commonly used for special delivery instructions or order requests.
    */
   note: StatefulRemoteSubscribable<string | undefined>;
 
   /**
-   * Information about the order that was placed.
+   * Information about the placed order, including its ID, display name, confirmation number, and timestamps.
    */
   order: StatefulRemoteSubscribable<Order | undefined>;
 
   /**
-   * id that represents the checkout used to create the order.
+   * The token that represents the checkout session used to create this order.
    *
-   * Matches the `token` field in the [WebPixel checkout payload](https://shopify.dev/docs/api/pixels/customer-events#checkout)
-   * and the `checkout_token` field in the [Admin REST API Order resource](https://shopify.dev/docs/api/admin-rest/unstable/resources/order#resource-object).
+   * Matches the `token` field in the [WebPixel checkout payload](/docs/api/pixels/customer-events#checkout)
+   * and the `checkout_token` field in the [Admin REST API Order resource](/docs/api/admin-rest/unstable/resources/order#resource-object).
    */
   checkoutToken: StatefulRemoteSubscribable<CheckoutToken | undefined>;
 
   /**
-   * The buyer shipping address used for the order.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The shipping address that the buyer provided for the order.
    */
   shippingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
 
   /**
-   * The buyer billing address used for the order.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The billing address associated with the buyer's payment method.
    */
   billingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
 
-  /** Shop where the purchase took place. */
+  /** The shop where the order was placed, including its name, ID, storefront URL, and `myshopify.com` domain. */
   shop: Shop;
 
   /**
-   * The renderer version being used for the extension.
+   * The API version being used for the extension.
    *
-   * @example 'unstable'
+   * @example '2025-07'
    */
   version: Version;
 
   /**
-   * The requireLogin() method triggers login if the customer is viewing pre-authenticated Order status page.
+   * Triggers a login prompt if the buyer is viewing a pre-authenticated **Order status** page. Returns a promise that resolves when the login prompt is dismissed or completed.
    */
   requireLogin: () => Promise<void>;
 
   /**
-   * The authentication state of Order status page.
+   * The buyer's current authentication state on the **Order status** page. The value is either `'fully_authenticated'` (the buyer is logged in) or `'pre_authenticated'` (the buyer is viewing through a tokenized link).
    */
   authenticationState: StatefulRemoteSubscribable<AuthenticationState>;
 }
 
+/**
+ * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data). The `customer` and `purchasingCompany` properties require level 1 access. The `email` and `phone` properties require level 2 access.
+ */
 export interface OrderStatusBuyerIdentity {
   /**
    * The buyer's customer account. The value is undefined if the buyer isn’t a
    * known customer for this shop or if they haven't logged in yet.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   customer: StatefulRemoteSubscribable<OrderStatusCustomer | undefined>;
 
   /**
-   * The email address of the buyer that is interacting with the cart.
-   * The value is `undefined` if the app does not have access to customer data.
+   * The buyer's email address associated with the order. The value is `undefined` if the app doesn't have access to customer data.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   email: StatefulRemoteSubscribable<string | undefined>;
 
   /**
-   * The phone number of the buyer that is interacting with the cart.
-   * The value is `undefined` if the app does not have access to customer data.
+   * The buyer's phone number associated with the order. The value is `undefined` if the app doesn't have access to customer data.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   phone: StatefulRemoteSubscribable<string | undefined>;
 
   /**
-   * Provides details of the company and the company location that the business customer is purchasing on behalf of.
-   * This includes information that can be used to identify the company and the company location that the business
-   * customer belongs to.
+   * The company and company location that the B2B customer is purchasing on behalf of. The value is `undefined` if the buyer isn't a B2B customer.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   purchasingCompany: StatefulRemoteSubscribable<
     OrderStatusPurchasingCompany | undefined
@@ -375,147 +369,126 @@ export interface OrderStatusBuyerIdentity {
 }
 
 /**
- * Information about a company that the business customer is purchasing on behalf of.
+ * The B2B company and location that the business customer is purchasing on behalf of.
+ *
+ * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
  */
 export interface OrderStatusPurchasingCompany {
   /**
-   * Includes information of the company that the business customer is purchasing on behalf of.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The company that the B2B customer belongs to.
    */
   company: OrderStatusCompany;
   /**
-   * Includes information of the company location that the business customer is purchasing on behalf of.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The company location that the B2B customer is purchasing for.
    */
   location: OrderStatusCompanyLocation;
 }
 
+/**
+ * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+ */
 export interface OrderStatusCompany {
   /**
-   * The company ID.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * A globally-unique identifier for the company.
    */
   id: string;
   /**
-   * The name of the company.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The display name of the company.
    */
   name: string;
   /**
-   * The external ID of the company that can be set by the merchant.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * A custom external identifier for the company, set by the merchant. Useful for syncing with external systems.
    */
   externalId?: string;
 }
 
+/**
+ * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+ */
 export interface OrderStatusCompanyLocation {
   /**
-   * The company location ID.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * A globally-unique identifier for the company location.
    */
   id: string;
   /**
-   * The name of the company location.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The display name of the company location.
    */
   name: string;
   /**
-   * The external ID of the company location that can be set by the merchant.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * A custom external identifier for the company location, set by the merchant. Useful for syncing with external systems.
    */
   externalId?: string;
 }
 
 export interface AppliedGiftCard {
   /**
-   * The last four characters of the applied gift card's code.
+   * The last four characters of the gift card code, used to identify the card without exposing the full code.
    */
   lastCharacters: string;
 
   /**
-   * The amount of the applied gift card that will be used when the checkout is completed.
+   * The amount of the gift card that was applied to this order.
    */
   amountUsed: Money;
 
   /**
-   * The current balance of the applied gift card prior to checkout completion.
+   * The remaining balance on the gift card after the applied amount is deducted.
    */
   balance: Money;
 }
 
 export interface Shop {
   /**
-   * The shop ID.
+   * A globally-unique identifier for the shop.
    * @example 'gid://shopify/Shop/123'
    */
   id: string;
   /**
-   * The name of the shop.
+   * The merchant's store name as configured in the Shopify admin.
    */
   name: string;
 
   /**
-   * The primary storefront URL.
-   *
-   * > Caution:
-   * As of version `2024-10` this value will no longer have a trailing slash.
+   * The primary storefront URL for the shop. This reflects the merchant's custom domain if one is configured.
    */
   storefrontUrl?: string;
   /**
-   * The shop's myshopify.com domain.
+   * The shop's `myshopify.com` domain. This is a stable identifier that doesn't change when the merchant updates their custom domain.
    */
   myshopifyDomain: string;
 }
 
 export interface CartCost {
   /**
-   * A `Money` value representing the subtotal value of the items in the cart at the current
-   * step of checkout.
+   * The subtotal cost of all line items in the order before shipping, taxes, and discounts.
    */
   subtotalAmount: StatefulRemoteSubscribable<Money>;
 
   /**
-   * A `Money` value representing the total shipping a buyer can expect to pay at the current
-   * step of checkout. This value includes shipping discounts. Returns undefined if shipping
-   * has not been negotiated yet, such as on the information step.
+   * The total shipping cost for the order, including any shipping discounts. Returns `undefined` if shipping hasn't been calculated.
    */
   totalShippingAmount: StatefulRemoteSubscribable<Money | undefined>;
 
   /**
-   * A `Money` value representing the total tax a buyer can expect to pay at the current
-   * step of checkout or the total tax included in product and shipping prices. Returns
-   * undefined if taxes are unavailable.
+   * The total tax amount for the order, including taxes on products and shipping. Returns `undefined` if taxes haven't been calculated.
    */
   totalTaxAmount: StatefulRemoteSubscribable<Money | undefined>;
 
   /**
-   * A `Money` value representing the minimum a buyer can expect to pay at the current
-   * step of checkout. This value excludes amounts yet to be negotiated. For example,
-   * the information step might not have delivery costs calculated.
+   * The total amount the buyer paid for the order, including all line items, shipping, taxes, and discounts.
    */
   totalAmount: StatefulRemoteSubscribable<Money>;
 }
 
 export interface CartLine {
   /**
-   * These line item IDs are not stable at the moment, they might change after
-   * any operations on the line items. You should always look up for an updated
-   * ID before any call to `applyCartLinesChange` because you'll need the ID to
-   * create a `CartLineChange` object.
+   * A unique identifier for the cart line. This ID isn't guaranteed to be stable across operations.
    * @example 'gid://shopify/CartLine/123'
    */
   id: string;
 
   /**
-   * The merchandise being purchased.
+   * The product variant being purchased in this line item.
    */
   merchandise: Merchandise;
 
@@ -525,22 +498,22 @@ export interface CartLine {
   quantity: number;
 
   /**
-   * The details about the cost components attributed to the cart line.
+   * The cost breakdown for this line item, including the total amount after discounts.
    */
   cost: CartLineCost;
 
   /**
-   * The line item additional custom attributes.
+   * Custom key-value pairs attached to this line item, such as engraving text or gift messages.
    */
   attributes: Attribute[];
 
   /**
-   * Discounts applied to the cart line.
+   * The discounts allocated to this line item, including code-based, automatic, and custom discounts.
    */
   discountAllocations: CartDiscountAllocation[];
 
   /**
-   * Sub lines of the merchandise line. If no sub lines are present, this will be an empty array.
+   * The individual components of a [bundle](/docs/apps/build/product-merchandising/bundles) line item. Returns an empty array if the line item isn't a bundle.
    */
   lineComponents: CartLineComponentType[];
 }
@@ -548,34 +521,35 @@ export interface CartLine {
 type CartLineComponentType = CartBundleLineComponent;
 
 export interface CartBundleLineComponent {
+  /** Always `'bundle'` for bundle line components. */
   type: 'bundle';
 
   /**
    * A unique identifier for the bundle line component.
    *
-   * This ID is not stable. If an operation updates the line items in any way, all IDs could change.
+   * This ID isn't stable and may change if line items are modified.
    *
    * @example 'gid://shopify/CartLineComponent/123'
    */
   id: string;
 
   /**
-   * The merchandise of this bundle line component.
+   * The product variant included in this bundle component.
    */
   merchandise: Merchandise;
 
   /**
-   * The quantity of merchandise being purchased.
+   * The quantity of this product variant within the bundle.
    */
   quantity: number;
 
   /**
-   * The cost attributed to this bundle line component.
+   * The cost breakdown for this bundle component.
    */
   cost: CartLineCost;
 
   /**
-   * Additional custom attributes for the bundle line component.
+   * Custom key-value pairs attached to this bundle component.
    *
    * @example [{key: 'engraving', value: 'hello world'}]
    */
@@ -584,19 +558,18 @@ export interface CartBundleLineComponent {
 
 export interface CartLineCost {
   /**
-   * The total amount after reductions the buyer can expect to pay that is directly attributable to a single
-   * cart line.
+   * The total amount for the line item after all discounts have been applied.
    */
   totalAmount: Money;
 }
 
 export interface Money {
   /**
-   * The price amount.
+   * The decimal money amount, such as `29.99`.
    */
   amount: number;
   /**
-   * The ISO 4217 format for the currency.
+   * The [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) currency code.
    * @example 'CAD' for Canadian dollar
    */
   currencyCode: CurrencyCode;
@@ -606,16 +579,17 @@ export type Merchandise = ProductVariant;
 
 export interface BaseMerchandise {
   /**
-   * The merchandise ID.
+   * A globally-unique identifier for the merchandise item.
    */
   id: string;
 }
 
 export interface ProductVariant extends BaseMerchandise {
+  /** Always `'variant'` for product variant merchandise. */
   type: 'variant';
 
   /**
-   * A globally-unique identifier.
+   * A globally-unique identifier for the product variant.
    * @example 'gid://shopify/ProductVariant/123'
    */
   id: string;
@@ -626,45 +600,44 @@ export interface ProductVariant extends BaseMerchandise {
   title: string;
 
   /**
-   * The product variant's sku.
+   * The product variant's stock keeping unit (SKU), used for inventory tracking.
    */
   sku?: string;
 
   /**
-   * The product variant's subtitle.
+   * A secondary title for the product variant, typically showing selected option values.
    */
   subtitle?: string;
 
   /**
-   * Image associated with the product variant. This field falls back to the product
-   * image if no image is available.
+   * The image associated with this product variant. Falls back to the product's featured image if no variant-specific image is available.
    */
   image?: ImageDetails;
 
   /**
-   * List of product options applied to the variant.
+   * The product options selected for this variant, such as size and color.
    */
   selectedOptions: SelectedOption[];
 
   /**
-   * The product object that the product variant belongs to.
+   * The parent product that this variant belongs to.
    */
   product: Product;
 
   /**
-   * Whether or not the product requires shipping.
+   * Whether this product variant requires physical shipping.
    */
   requiresShipping: boolean;
 
   /**
-   * The selling plan associated with the merchandise.
+   * The selling plan associated with this line item, such as a subscription or pre-order plan.
    */
   sellingPlan?: SellingPlan;
 }
 
 export interface Product {
   /**
-   * A globally-unique identifier.
+   * A globally-unique identifier for the product.
    */
   id: string;
 
@@ -674,31 +647,31 @@ export interface Product {
   vendor: string;
 
   /**
-   * A categorization that a product can be tagged with, commonly used for filtering and searching.
+   * A product classification used for filtering and organization, set by the merchant in the Shopify admin.
    */
   productType: string;
 }
 
 export interface ImageDetails {
   /**
-   * The image URL.
+   * The fully-qualified URL of the image.
    */
   url: string;
 
   /**
-   * The alternative text for the image.
+   * The alternative text for the image, used for accessibility and displayed when the image can't be loaded.
    */
   altText?: string;
 }
 
 export interface SelectedOption {
   /**
-   * The name of the merchandise option.
+   * The name of the product option, such as "Size" or "Color".
    */
   name: string;
 
   /**
-   * The value of the merchandise option.
+   * The selected value for the option, such as "Large" or "Blue".
    */
   value: string;
 }
@@ -740,7 +713,7 @@ export interface PaymentOption {
   /**
    * The unique handle for the payment option.
    *
-   * This is not a globally unique identifier. It may be an identifier specific to the given checkout session or the current shop.
+   * This isn’t a globally unique identifier. It may be an identifier specific to the given checkout session or the current shop.
    */
   handle: string;
 }
@@ -759,10 +732,17 @@ export interface SelectedPaymentOption {
 
 export interface CartDiscountCode {
   /**
-   * The code for the discount
+   * The discount code string entered by the buyer at checkout.
    */
   code: string;
 }
+/**
+ * A discount allocation applied to the order or a line item. There are three types:
+ *
+ * - `CartCodeDiscountAllocation`: A discount applied via a code entered by the buyer.
+ * - `CartAutomaticDiscountAllocation`: An automatic discount applied by Shopify based on merchant-configured rules.
+ * - `CartCustomDiscountAllocation`: A custom discount applied by a Shopify Script or discount function.
+ */
 export type CartDiscountAllocation =
   | CartCodeDiscountAllocation
   | CartAutomaticDiscountAllocation
@@ -770,19 +750,19 @@ export type CartDiscountAllocation =
 
 export interface CartDiscountAllocationBase {
   /**
-   * The money amount that has been discounted from the order
+   * The monetary amount deducted from the order by this discount allocation.
    */
   discountedAmount: Money;
 }
 
 export interface CartCodeDiscountAllocation extends CartDiscountAllocationBase {
   /**
-   * The code for the discount
+   * The discount code that the buyer entered at checkout.
    */
   code: string;
 
   /**
-   * The type of the code discount
+   * The type of discount allocation. Always `'code'` for code-based discounts.
    */
   type: 'code';
 }
@@ -790,12 +770,12 @@ export interface CartCodeDiscountAllocation extends CartDiscountAllocationBase {
 export interface CartAutomaticDiscountAllocation
   extends CartDiscountAllocationBase {
   /**
-   * The title of the automatic discount
+   * The merchant-defined title of the automatic discount, such as "Buy 2 Get 1 Free".
    */
   title: string;
 
   /**
-   * The type of the automatic discount
+   * The type of discount allocation. Always `'automatic'` for automatic discounts.
    */
   type: 'automatic';
 }
@@ -803,146 +783,132 @@ export interface CartAutomaticDiscountAllocation
 export interface CartCustomDiscountAllocation
   extends CartDiscountAllocationBase {
   /**
-   * The title of the custom discount
+   * The title of the custom discount applied by a Shopify Script or discount function.
    */
   title: string;
 
   /**
-   * The type of the custom discount
+   * The type of discount allocation. Always `'custom'` for custom discounts.
    */
   type: 'custom';
 }
 
 /**
- * Information about a customer who has previously purchased from this shop.
+ * The customer associated with the order.
  *
- * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+ * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data). The `id`, `image`, `acceptsMarketing`, and `storeCreditAccounts` properties require level 1 access. The `email`, `phone`, `fullName`, `firstName`, and `lastName` properties require level 2 access.
  */
 export interface OrderStatusCustomer {
   /**
-   * Customer ID.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * A globally-unique identifier for the customer.
    *
    * @example 'gid://shopify/Customer/123'
    */
   id: string;
   /**
-   * The email of the customer.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The customer's email address.
    */
   email?: string;
   /**
-   * The phone number of the customer.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The customer's phone number.
    */
   phone?: string;
   /**
-   * The full name of the customer.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The customer's full name, combining first and last name.
    */
   fullName?: string;
   /**
-   * The first name of the customer.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The customer's first name.
    */
   firstName?: string;
   /**
-   * The last name of the customer.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The customer's last name.
    */
   lastName?: string;
   /**
-   * The image associated with the customer.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The customer's profile image, such as a Gravatar.
    */
   image: ImageDetails;
   /**
-   * Defines if the customer accepts marketing activities.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * Whether the customer has opted in to receive marketing communications from the merchant.
    */
   acceptsMarketing: boolean;
   /**
-   * The Store Credit Accounts owned by the customer and usable during the checkout process.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * The store credit accounts owned by the customer that can be applied during checkout.
    *
    * @private
    */
   storeCreditAccounts: StoreCreditAccount[];
 }
 
+/** A string token that uniquely identifies the checkout session used to create this order. */
 export type CheckoutToken = string;
 
 /**
- * Settings describing the behavior of the buyer's checkout.
+ * The merchant's checkout configuration that was active when the buyer placed the order.
  */
 export interface CheckoutSettings {
   /**
-   * The type of order that will be created once the buyer completes checkout.
+   * The type of order created when the buyer completes checkout:
+   *
+   * - `'DRAFT_ORDER'`: A draft order that requires merchant approval before processing.
+   * - `'ORDER'`: A standard order that’s processed immediately.
    */
   orderSubmission: 'DRAFT_ORDER' | 'ORDER';
   /**
-   * Represents the merchant configured payment terms.
+   * The merchant-configured payment terms for the order, such as net 30 or net 60 terms. Only present for B2B orders with deferred payment.
    */
   paymentTermsTemplate?: PaymentTermsTemplate;
   /**
-   * Settings describing the behavior of the shipping address.
+   * Configuration for the shipping address behavior, including whether the buyer can edit it.
    */
   shippingAddress: ShippingAddressSettings;
 }
 
 /**
- * Settings describing the behavior of the shipping address.
+ * Configuration for the shipping address on the checkout.
  */
 export interface ShippingAddressSettings {
   /**
-   * Describes whether the buyer can ship to any address during checkout.
+   * Whether the buyer was allowed to edit the shipping address during checkout.
    */
   isEditable: boolean;
 }
 
 /**
- * Represents the payment terms template object.
+ * A payment terms template that defines when payment is due for the order, commonly used in B2B transactions.
  */
 export interface PaymentTermsTemplate {
   /**
-   * A globally-unique ID.
+   * A globally-unique identifier for the payment terms template.
    * @example 'gid://shopify/PaymentTermsTemplate/1'
    */
   id: string;
   /**
-   * The name of the payment terms translated to the buyer's current language. See [localization.language](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-localization).
+   * The name of the payment terms translated to the buyer's current language.
    */
   name: string;
   /**
-   * The due date for net payment terms as a ISO 8601 formatted string `YYYY-MM-DDTHH:mm:ss.sssZ`.
+   * The due date for net payment terms as an ISO 8601 formatted string (`YYYY-MM-DDTHH:mm:ss.sssZ`).
    */
   dueDate?: string;
   /**
-   * The number of days between the issued date and due date if using net payment terms.
+   * The number of days between the order date and the payment due date for net payment terms.
    */
   dueInDays?: number;
 }
 
 /**
- * Information about a Store Credit Account.
+ * A store credit account that the customer can use to pay for orders.
  */
 export interface StoreCreditAccount {
   /**
-   * A globally-unique identifier.
+   * A globally-unique identifier for the store credit account.
    * @example 'gid://shopify/StoreCreditAccount/1'
    */
   id: string;
   /**
-   * The current balance of the Store Credit Account.
+   * The current balance available in the store credit account.
    */
   balance: Money;
 }
@@ -979,7 +945,10 @@ export interface DeliveryGroup {
 }
 
 /**
- * The possible types of a delivery group.
+ * The possible types of a delivery group:
+ *
+ * - `'oneTimePurchase'`: A one-time purchase delivery.
+ * - `'subscription'`: A recurring subscription delivery.
  */
 export type DeliveryGroupType = 'oneTimePurchase' | 'subscription';
 
@@ -1160,31 +1129,29 @@ export interface NumberRange {
 }
 
 /**
- * Information about an order that was placed.
+ * Details about the placed order, including its identifier, display name, and processing timestamps.
  */
 export interface Order {
   /**
-   * A globally-unique identifier.
+   * A globally-unique identifier for the order.
    * @example 'gid://shopify/Order/1'
    */
   id: string;
   /**
-   * Unique identifier for the order that appears on the order.
+   * The merchant-facing order number that appears in the Shopify admin and on the order confirmation page.
    * @example '#1000'
    */
   name: string;
   /**
-   * If cancelled, the time at which the order was cancelled.
+   * The date and time when the order was cancelled, in ISO 8601 format. Returns `undefined` if the order hasn't been cancelled.
    */
   cancelledAt?: string;
   /**
-   * The date and time when the order was processed.
-   * Processing happens after the checkout has completed, and indicates that the order is available in the admin.
+   * The date and time when the order was processed, in ISO 8601 format. Processing happens after checkout completes and indicates the order is available in the Shopify admin.
    */
   processedAt?: string;
   /**
-   * A randomly generated alpha-numeric identifier for the order.
-   * For orders created in 2024 and onwards, the number will always be present. For orders created before that date, the number might not be present.
+   * A randomly generated alpha-numeric confirmation code for the order. Always present for orders created in 2024 and later; may be absent for older orders.
    */
   confirmationNumber?: string;
 }

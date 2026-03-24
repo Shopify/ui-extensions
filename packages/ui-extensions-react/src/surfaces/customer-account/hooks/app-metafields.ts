@@ -15,9 +15,23 @@ import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 interface AppMetafieldFilters {
+  /** Filter by the globally-unique identifier of the resource that owns the metafield. */
   id?: AppMetafieldEntryTarget['id'];
+  /**
+   * Filter by the resource type that owns the metafield:
+   *
+   * - `'customer'`: A customer resource.
+   * - `'product'`: A product resource.
+   * - `'shop'`: The shop resource.
+   * - `'variant'`: A product variant resource.
+   * - `'company'`: A B2B company resource.
+   * - `'companyLocation'`: A B2B company location resource.
+   * - `'cart'`: The cart resource.
+   */
   type?: AppMetafieldEntryTarget['type'];
+  /** Filter by the metafield namespace. Must be used together with `key`. */
   namespace?: Metafield['namespace'];
+  /** Filter by the metafield key. Requires `namespace` to also be provided. */
   key?: Metafield['key'];
 }
 

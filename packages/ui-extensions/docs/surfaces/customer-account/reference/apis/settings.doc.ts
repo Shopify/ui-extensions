@@ -44,7 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'You can define settings that merchants can edit within the checkout editor. See [settings](/docs/api/customer-account-ui-extensions/configuration#settings-definition) for more information on how to define these.',
+          'You can define settings that merchants can edit within the checkout editor. See [settings](/docs/api/customer-account-ui-extensions/latest#configuration#settings-definition) for more information on how to define these.',
         codeblock: {
           title: 'Define merchant settings',
           tabs: [

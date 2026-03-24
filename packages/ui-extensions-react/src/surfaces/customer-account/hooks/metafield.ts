@@ -5,7 +5,9 @@ import {CustomerAccountUIExtensionError} from '../errors';
 import {useMetafields} from './metafields';
 
 interface MetafieldFilter {
+  /** The namespace of the metafield to retrieve. */
   namespace: string;
+  /** The key of the metafield to retrieve. */
   key: string;
 }
 
