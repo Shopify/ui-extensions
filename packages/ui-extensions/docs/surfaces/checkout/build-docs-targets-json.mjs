@@ -367,10 +367,10 @@ const COMPOSITE_API_DECOMPOSITION = {
     'CostApi',
     'CustomerPrivacyApi',
     'DeliveryApi',
-    'ExtensionMetaApi',
+    'ExtensionApi',
     'LocalizationApi',
     'LocalizedFieldsApi',
-    'PaymentOptionsApi',
+    'PaymentsApi',
     'QueryApi',
     'SessionTokenApi',
     'SettingsApi',
@@ -386,6 +386,9 @@ const COMPOSITE_API_DECOMPOSITION = {
     'MetafieldsApi',
     'NoteApi',
   ],
+  // OrderConfirmationApi is the top-level API object for purchase.thank-you targets.
+  // It decomposes to 'OrderApi' to match the customer-account surface naming pattern.
+  OrderConfirmationApi: ['OrderApi'],
 };
 
 function parseApis(apiString) {
