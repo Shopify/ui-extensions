@@ -35,10 +35,28 @@ function findGeneratedDocsPath() {
   return docsPath || generatedDir; // Fallback to generated root if not found
 }
 
+// Accept an API version argument (e.g. 2026-04-rc) to output targets.json into
+// a versioned directory matching the customer-account pattern.
+// Falls back to the directory containing generated_docs_data.json if not provided.
+const apiVersion = process.argv[2];
+
+function resolveOutputPath() {
+  if (apiVersion) {
+    return path.join(
+      __dirname,
+      'generated',
+      'checkout_ui_extensions',
+      apiVersion,
+      'targets.json',
+    );
+  }
+  return path.join(findGeneratedDocsPath(), 'targets.json');
+}
+
 // Configuration for checkout surface
 const config = {
   basePath: path.join(__dirname, '../../../src/surfaces/checkout'),
-  outputPath: path.join(findGeneratedDocsPath(), 'targets.json'),
+  outputPath: resolveOutputPath(),
   componentTypesPath: null,
   hasComponentTypes: false,
 };

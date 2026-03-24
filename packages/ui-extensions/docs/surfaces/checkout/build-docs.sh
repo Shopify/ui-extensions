@@ -96,7 +96,7 @@ if [ $sed_exit -ne 0 ]; then
 fi
 
 # Generate targets.json (extension targets + APIs + components mapping)
-node ./$DOCS_PATH/build-docs-targets-json.mjs
+node ./$DOCS_PATH/build-docs-targets-json.mjs $API_VERSION
 targets_exit=$?
 if [ $targets_exit -ne 0 ]; then
   fail_and_exit $targets_exit
