@@ -77,18 +77,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.cart-line-list.render-after": {
@@ -169,18 +169,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.cart-line-item.render-after": {
@@ -262,18 +262,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.contact.render-after": {
@@ -354,18 +354,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.delivery-address.render-before": {
@@ -446,18 +446,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.delivery-address.render-after": {
@@ -538,18 +538,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.block.render": {
@@ -630,18 +630,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.block.render": {
@@ -718,16 +718,16 @@
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
-      "OrderConfirmationApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "OrderApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.cart-line-item.render-after": {
@@ -805,16 +805,16 @@
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
-      "OrderConfirmationApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "OrderApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.cart-line-list.render-after": {
@@ -891,16 +891,16 @@
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
-      "OrderConfirmationApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "OrderApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.customer-information.render-after": {
@@ -977,16 +977,16 @@
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
-      "OrderConfirmationApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "OrderApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.payment-method-list.render-before": {
@@ -1067,18 +1067,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.payment-method-list.render-after": {
@@ -1159,18 +1159,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.reductions.render-before": {
@@ -1251,18 +1251,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.reductions.render-after": {
@@ -1343,18 +1343,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.shipping-option-list.render-before": {
@@ -1435,19 +1435,19 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShippingOptionListApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.shipping-option-list.render-after": {
@@ -1528,19 +1528,19 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShippingOptionListApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.pickup-location-list.render-before": {
@@ -1621,19 +1621,19 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
+      "PaymentsApi",
       "PickupLocationListApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.pickup-location-list.render-after": {
@@ -1714,19 +1714,19 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
+      "PaymentsApi",
       "PickupLocationListApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.shipping-option-item.render-after": {
@@ -1807,19 +1807,19 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShippingOptionItemApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.shipping-option-item.details.render": {
@@ -1900,19 +1900,19 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShippingOptionItemApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.pickup-point-list.render-before": {
@@ -1993,19 +1993,19 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
+      "PaymentsApi",
       "PickupPointListApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.pickup-point-list.render-after": {
@@ -2086,19 +2086,19 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
+      "PaymentsApi",
       "PickupPointListApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.pickup-location-option-item.render-after": {
@@ -2179,19 +2179,19 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
+      "PaymentsApi",
       "PickupLocationItemApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.header.render-after": {
@@ -2272,18 +2272,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.footer.render-after": {
@@ -2364,18 +2364,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.chat.render": {
@@ -2396,18 +2396,18 @@
       "CustomerPrivacyApi",
       "DeliveryApi",
       "DiscountsApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
       "MetafieldsApi",
       "NoteApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.header.render-after": {
@@ -2484,16 +2484,16 @@
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
-      "OrderConfirmationApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "OrderApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.footer.render-after": {
@@ -2570,16 +2570,16 @@
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
-      "OrderConfirmationApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "OrderApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.chat.render": {
@@ -2596,16 +2596,16 @@
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
-      "OrderConfirmationApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "OrderApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.announcement.render": {
@@ -2683,16 +2683,16 @@
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
-      "ExtensionMetaApi",
+      "ExtensionApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
-      "OrderConfirmationApi",
-      "PaymentOptionsApi",
-      "QueryApi",
+      "OrderApi",
+      "PaymentsApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.address-autocomplete.suggest": {
@@ -3132,7 +3132,7 @@
       "purchase.checkout.shipping-option-list.render-before"
     ]
   },
-  "ExtensionMetaApi": {
+  "ExtensionApi": {
     "targets": [
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
@@ -3318,42 +3318,7 @@
       "purchase.checkout.shipping-option-list.render-before"
     ]
   },
-  "PaymentOptionsApi": {
-    "targets": [
-      "purchase.checkout.actions.render-before",
-      "purchase.checkout.block.render",
-      "purchase.checkout.cart-line-item.render-after",
-      "purchase.checkout.cart-line-list.render-after",
-      "purchase.checkout.chat.render",
-      "purchase.checkout.contact.render-after",
-      "purchase.checkout.delivery-address.render-after",
-      "purchase.checkout.delivery-address.render-before",
-      "purchase.checkout.footer.render-after",
-      "purchase.checkout.header.render-after",
-      "purchase.checkout.payment-method-list.render-after",
-      "purchase.checkout.payment-method-list.render-before",
-      "purchase.checkout.pickup-location-list.render-after",
-      "purchase.checkout.pickup-location-list.render-before",
-      "purchase.checkout.pickup-location-option-item.render-after",
-      "purchase.checkout.pickup-point-list.render-after",
-      "purchase.checkout.pickup-point-list.render-before",
-      "purchase.checkout.reductions.render-after",
-      "purchase.checkout.reductions.render-before",
-      "purchase.checkout.shipping-option-item.details.render",
-      "purchase.checkout.shipping-option-item.render-after",
-      "purchase.checkout.shipping-option-list.render-after",
-      "purchase.checkout.shipping-option-list.render-before",
-      "purchase.thank-you.announcement.render",
-      "purchase.thank-you.block.render",
-      "purchase.thank-you.cart-line-item.render-after",
-      "purchase.thank-you.cart-line-list.render-after",
-      "purchase.thank-you.chat.render",
-      "purchase.thank-you.customer-information.render-after",
-      "purchase.thank-you.footer.render-after",
-      "purchase.thank-you.header.render-after"
-    ]
-  },
-  "QueryApi": {
+  "PaymentsApi": {
     "targets": [
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
@@ -3528,13 +3493,48 @@
       "purchase.thank-you.header.render-after"
     ]
   },
+  "StorefrontApi": {
+    "targets": [
+      "purchase.checkout.actions.render-before",
+      "purchase.checkout.block.render",
+      "purchase.checkout.cart-line-item.render-after",
+      "purchase.checkout.cart-line-list.render-after",
+      "purchase.checkout.chat.render",
+      "purchase.checkout.contact.render-after",
+      "purchase.checkout.delivery-address.render-after",
+      "purchase.checkout.delivery-address.render-before",
+      "purchase.checkout.footer.render-after",
+      "purchase.checkout.header.render-after",
+      "purchase.checkout.payment-method-list.render-after",
+      "purchase.checkout.payment-method-list.render-before",
+      "purchase.checkout.pickup-location-list.render-after",
+      "purchase.checkout.pickup-location-list.render-before",
+      "purchase.checkout.pickup-location-option-item.render-after",
+      "purchase.checkout.pickup-point-list.render-after",
+      "purchase.checkout.pickup-point-list.render-before",
+      "purchase.checkout.reductions.render-after",
+      "purchase.checkout.reductions.render-before",
+      "purchase.checkout.shipping-option-item.details.render",
+      "purchase.checkout.shipping-option-item.render-after",
+      "purchase.checkout.shipping-option-list.render-after",
+      "purchase.checkout.shipping-option-list.render-before",
+      "purchase.thank-you.announcement.render",
+      "purchase.thank-you.block.render",
+      "purchase.thank-you.cart-line-item.render-after",
+      "purchase.thank-you.cart-line-list.render-after",
+      "purchase.thank-you.chat.render",
+      "purchase.thank-you.customer-information.render-after",
+      "purchase.thank-you.footer.render-after",
+      "purchase.thank-you.header.render-after"
+    ]
+  },
   "CartLineItemApi": {
     "targets": [
       "purchase.checkout.cart-line-item.render-after",
       "purchase.thank-you.cart-line-item.render-after"
     ]
   },
-  "OrderConfirmationApi": {
+  "OrderApi": {
     "targets": [
       "purchase.thank-you.announcement.render",
       "purchase.thank-you.block.render",

@@ -326,11 +326,11 @@ const COMPOSITE_API_DECOMPOSITION = {
     'CostApi',
     'CustomerPrivacyApi',
     'DeliveryApi',
-    'ExtensionMetaApi',
+    'ExtensionApi',
     'LocalizationApi',
     'LocalizedFieldsApi',
-    'PaymentOptionsApi',
-    'QueryApi',
+    'PaymentsApi',
+    'StorefrontApi',
     'SessionTokenApi',
     'SettingsApi',
     'ShopApi',
@@ -345,6 +345,7 @@ const COMPOSITE_API_DECOMPOSITION = {
     'MetafieldsApi',
     'NoteApi',
   ],
+  OrderConfirmationApi: ['OrderApi'],
 };
 
 function parseApis(apiString) {
