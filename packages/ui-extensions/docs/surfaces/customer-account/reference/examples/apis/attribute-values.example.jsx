@@ -6,11 +6,11 @@ export default async () => {
 };
 
 function Extension() {
+  const attributes = shopify.attributes.value ?? [];
   const buyerSelectedFreeTShirt =
-    shopify.attributes.value
-      ?.buyerSelectedFreeTShirt || false;
+    attributes.find((a) => a.key === 'buyerSelectedFreeTShirt')?.value || false;
   const tshirtSize =
-    shopify.attributes.value?.tshirtSize || '';
+    attributes.find((a) => a.key === 'tshirtSize')?.value || '';
 
   if (Boolean(buyerSelectedFreeTShirt) === true) {
     return (
