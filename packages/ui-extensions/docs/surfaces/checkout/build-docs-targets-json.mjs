@@ -331,6 +331,45 @@ function getNestedApis(apiName) {
   }
 }
 
+// APIs that are composites — list their documented constituent APIs instead of themselves.
+// StandardApi and CheckoutApi are plain interfaces (not type intersections), so the
+// decomposition must be explicit, matching the Docs_Standard_*Api / Docs_Checkout_*Api
+// interfaces defined in src/surfaces/checkout/api/docs.ts.
+// CheckoutApi properties are all documented on the same pages as their StandardApi
+// counterparts (e.g., "Addresses API" covers both Docs_Standard_AddressApi and
+// Docs_Checkout_AddressApi), so CheckoutApi maps to those combined doc page names.
+const COMPOSITE_API_DECOMPOSITION = {
+  StandardApi: [
+    'AnalyticsApi',
+    'BuyerIdentityApi',
+    'BuyerJourneyApi',
+    'CartInstructionsApi',
+    'CheckoutSettingsApi',
+    'CheckoutTokenApi',
+    'CostApi',
+    'CustomerPrivacyApi',
+    'DeliveryApi',
+    'ExtensionMetaApi',
+    'LocalizationApi',
+    'LocalizedFieldsApi',
+    'PaymentOptionsApi',
+    'QueryApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'ShopApi',
+    'StorageApi',
+  ],
+  CheckoutApi: [
+    'AddressesApi',
+    'AttributesApi',
+    'CartLinesApi',
+    'DiscountsApi',
+    'GiftCardsApi',
+    'MetafieldsApi',
+    'NoteApi',
+  ],
+};
+
 function parseApis(apiString) {
   const apisSet = new Set();
 
@@ -362,16 +401,23 @@ function parseApis(apiString) {
     }
 
     if (apiName) {
-      // Add the API itself
-      apisSet.add(apiName);
+      if (COMPOSITE_API_DECOMPOSITION[apiName]) {
+        // Replace composite with its documented constituent APIs
+        for (const constituent of COMPOSITE_API_DECOMPOSITION[apiName]) {
+          apisSet.add(constituent);
+        }
+      } else {
+        // Add the API itself
+        apisSet.add(apiName);
 
-      // Get nested APIs from this API (recursively)
-      const nestedApis = getNestedApis(apiName);
-      for (const nestedApi of nestedApis) {
-        apisSet.add(nestedApi);
-        // Recursively get nested APIs of nested APIs
-        const deepNestedApis = getNestedApis(nestedApi);
-        deepNestedApis.forEach((api) => apisSet.add(api));
+        // Get nested APIs from this API (recursively)
+        const nestedApis = getNestedApis(apiName);
+        for (const nestedApi of nestedApis) {
+          apisSet.add(nestedApi);
+          // Recursively get nested APIs of nested APIs
+          const deepNestedApis = getNestedApis(nestedApi);
+          deepNestedApis.forEach((api) => apisSet.add(api));
+        }
       }
     }
   }

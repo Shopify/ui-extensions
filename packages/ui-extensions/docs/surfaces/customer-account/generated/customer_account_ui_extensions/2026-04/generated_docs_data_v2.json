@@ -1,10 +1,10 @@
 {
   "DataGeneratedType": {
-    "src/docs/shared/components/Announcement.ts": {
-      "filePath": "src/docs/shared/components/Announcement.ts",
+    "src/docs/shared/components/Abbreviation.ts": {
+      "filePath": "src/docs/shared/components/Abbreviation.ts",
       "name": "DataGeneratedType",
       "description": "",
-      "value": "data: SharedReferenceEntityTemplateSchema = {\n  name: 'Announcement',\n  description:\n    'The Announcement component provides a less disruptive alternative to auto-open modals for capturing user attention. It provides a standardized way to engage users without being too intrusive.',\n  category: 'Web components',\n  subCategory: 'Feedback and status indicators',\n  related: [],\n}"
+      "value": "data: SharedReferenceEntityTemplateSchema = {\n  name: 'Abbreviation',\n  description:\n    'Displays abbreviated text or acronyms, revealing their full meaning or additional context through a tooltip on hover or focus. Use to clarify shortened terms, initialisms, or technical language without interrupting the reading flow.',\n  category: 'Web components',\n  subCategory: 'Typography and content',\n  related: [],\n}"
     }
   },
   "Navigation": {
@@ -20460,23 +20460,6 @@
         }
       ],
       "value": "export interface SharedReferenceEntityTemplateSchema\n  extends Pick<\n    ReferenceEntityTemplateSchema,\n    'name' | 'description' | 'category' | 'subCategory' | 'related'\n  > {}"
-    }
-  },
-  "Announcement": {
-    "src/surfaces/checkout/api/announcement/announcement.ts": {
-      "filePath": "src/surfaces/checkout/api/announcement/announcement.ts",
-      "name": "Announcement",
-      "description": "",
-      "members": [
-        {
-          "filePath": "src/surfaces/checkout/api/announcement/announcement.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "announcement",
-          "value": "{ close(): void; addEventListener(type: \"close\", cb: () => void): void; removeEventListener(type: \"close\", cb: () => void): void; }",
-          "description": ""
-        }
-      ],
-      "value": "export interface Announcement {\n  announcement: {\n    close(): void;\n    addEventListener(type: 'close', cb: () => void): void;\n    removeEventListener(type: 'close', cb: () => void): void;\n  };\n}"
     }
   },
   "AbbreviationElementProps": {
