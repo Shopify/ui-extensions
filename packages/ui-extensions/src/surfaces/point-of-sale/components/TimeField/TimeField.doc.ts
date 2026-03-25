@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Time field',
   description:
     'The time field component captures time input through direct text entry. Use it when merchants know the exact time they want to enter or for quick time data entry.' +
-    '\n\nFor visual time selection with clock or spinner interfaces, use [time picker](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/forms/time-picker).',
+    '\n\nFor visual time selection with clock or spinner interfaces, use [time picker](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/forms/time-picker).',
   thumbnail: 'time-field-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'TimeFieldEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'time-field-default.png',

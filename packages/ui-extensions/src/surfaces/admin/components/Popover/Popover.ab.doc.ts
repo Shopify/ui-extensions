@@ -3,7 +3,7 @@ import sharedContent from '../../../../docs/shared/components/Popover';
 
 const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
-  category: 'Polaris web components',
+  category: 'Web components',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/popover.png',
   isVisualComponent: true,
   subSections: [

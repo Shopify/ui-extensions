@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'SwitchEvents',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Forms',
   defaultExample: {
     image: 'switch-default.png',

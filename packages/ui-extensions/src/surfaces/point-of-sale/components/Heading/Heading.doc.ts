@@ -4,7 +4,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'Heading',
   description:
     'The heading component renders hierarchical titles to communicate the structure and organization of page content and help users navigate complex interfaces.' +
-    '\n\nHeading levels adjust automatically based on nesting within parent [section](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/layout-and-structure/section) components, ensuring a meaningful page outline.',
+    '\n\nHeading levels adjust automatically based on nesting within parent [section](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/layout-and-structure/section) components, ensuring a meaningful page outline.',
   thumbnail: 'heading-thumbnail.png',
   isVisualComponent: true,
   type: '',
@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Heading',
     },
   ],
-  category: 'Polaris web components',
+  category: 'Web components',
   subCategory: 'Layout and structure',
   defaultExample: {
     image: 'heading-default.png',

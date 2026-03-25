@@ -36,13 +36,13 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'The banner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).',
+        'The banner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-web-components#handling-events).',
       type: 'BannerEvents',
     },
     {
       title: 'Slots',
       description:
-        'The banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/app-ui/using-polaris-web-components#slots).',
+        'The banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/app-ui/using-web-components#slots).',
       type: 'BannerSlots',
     },
   ],
@@ -69,7 +69,7 @@ const data: AdminReferenceEntityTemplateSchema = {
         examples: [
           {
             description:
-              'Use a warning-toned banner with secondary action [buttons](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) to highlight a problem and give merchants clear next steps. This example shows a shipping weight issue with links to review products and access a setup guide.',
+              'Use a warning-toned banner with secondary action [buttons](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) to highlight a problem and give merchants clear next steps. This example shows a shipping weight issue with links to review products and access a setup guide.',
             codeblock: {
               title: 'Create a warning banner with buttons for next steps',
               tabs: [
@@ -83,7 +83,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Use a critical-toned banner to signal an urgent issue that requires immediate merchant action. This example shows a fraud review alert with [buttons](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) to review order details and adjust settings.',
+              'Use a critical-toned banner to signal an urgent issue that requires immediate merchant action. This example shows a fraud review alert with [buttons](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) to review order details and adjust settings.',
             codeblock: {
               title: 'Alert merchants to critical issues requiring action',
               tabs: [

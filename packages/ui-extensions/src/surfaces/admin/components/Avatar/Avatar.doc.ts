@@ -33,7 +33,7 @@ const data: AdminReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'The avatar component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-polaris-web-components#handling-events).',
+        'The avatar component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/app-ui/using-web-components#handling-events).',
       type: 'AvatarEvents',
     },
   ],
@@ -137,7 +137,7 @@ const data: AdminReferenceEntityTemplateSchema = {
           },
           {
             description:
-              'Create a profile layout with multiple components. This example combines an avatar with [section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section), [heading](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/heading), and [text](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/typography-and-content/text) components.',
+              'Create a profile layout with multiple components. This example combines an avatar with [section](/docs/api/{API_NAME}/{API_VERSION}/web-components/layout-and-structure/section), [heading](/docs/api/{API_NAME}/{API_VERSION}/web-components/typography-and-content/heading), and [text](/docs/api/{API_NAME}/{API_VERSION}/web-components/typography-and-content/text) components.',
             codeblock: {
               title: 'Build a merchant profile card',
               tabs: [

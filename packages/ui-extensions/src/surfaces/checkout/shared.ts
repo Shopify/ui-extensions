@@ -95,24 +95,21 @@ export type AnyCheckoutComponentExcept<Except extends AnyCheckoutComponent> =
   Exclude<AnyCheckoutComponent, Except>;
 
 /**
- * Represents a read-only value managed on the main thread that an extension can subscribe to.
- *
- * Example: Checkout uses this to manage the state of an object and
- * communicate state changes to extensions running in a sandboxed web worker.
- *
- * This interface is compatible with [Preact's ReadonlySignal](https://github.com/preactjs/signals/blob/a023a132a81bd4ba4a0bebb8cbbeffbd8c8bbafc/packages/core/src/index.ts#L700-L709).
- *
- * Some fields are deprecated but still supported for backwards compatibility.
- * In version 2025-10, [`StatefulRemoteSubscribable`](https://github.com/Shopify/remote-dom/blob/03929aa8418a89d41d294005f219837582718df8/packages/async-subscription/src/types.ts#L17) was replaced with `ReadonlySignalLike`. Checkout will remove the old fields some time in the future.
- *
+ * Represents a reactive signal interface that provides both immediate value access and subscription-based updates. Enables real-time synchronization with changing data through the observer pattern. This interface extends `ReadonlySignalLike` with deprecated fields that are still supported for backwards compatibility.
  */
 export interface SubscribableSignalLike<T> extends ReadonlySignalLike<T> {
   /**
+   * The current value of the signal. This property provides synchronous access to the
+   * latest value without subscribing to changes.
+   *
    * @deprecated Use `.value` instead.
    */
   readonly current: T;
   /**
-   * @deprecated No longer needed. Use Preact Signal management instead.
+   * Cleans up the subscription and releases any resources held by this signal. After calling
+   * `destroy()`, the signal stops receiving updates from the main thread.
+   *
+   * @deprecated No longer needed. Use [Preact Signals](https://preactjs.com/guide/v10/signals) to manage reactive state instead.
    */
   destroy(): Promise<void>;
 }
