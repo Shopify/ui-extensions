@@ -28,11 +28,22 @@ const srcRelativePath = 'src/surfaces/admin';
 const docsPath = path.join(rootPath, docsRelativePath);
 const srcPath = path.join(rootPath, srcRelativePath);
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
-const shopifyDevDBPath = path.join(
-  shopifyDevPath,
+const worldPath = path.join(process.env.HOME, 'world/trees/root/src');
+const worldDBPath = path.join(
+  worldPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
+const worldExists = existsSync(worldPath);
+
+const shopifyDevPath = worldExists
+  ? worldPath
+  : path.join(rootPath, '../../../shopify-dev');
+const shopifyDevDBPath = worldExists
+  ? worldDBPath
+  : path.join(
+      shopifyDevPath,
+      'areas/platforms/shopify-dev/db/data/docs/templated_apis',
+    );
 
 const shopifyDevExists = existsSync(shopifyDevPath);
 
