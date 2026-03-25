@@ -1,5 +1,17 @@
 # @shopify/ui-extensions
 
+## 2026.1.3
+
+### Patch Changes
+
+- [#4149](https://github.com/Shopify/ui-extensions/pull/4149) [`21e42fa`](https://github.com/Shopify/ui-extensions/commit/21e42fabb0451f44c66ae1245ebdfaa1ecf64300) Thanks [@lrsterrett](https://github.com/lrsterrett)! - Remove types for `ui` from checkout ui extension api as `ui` wasn't supported since 2025.10.0 For reference, closing a modal can be done declaritively on the modal polaris component, instead of the deprecated `ui.overlay.close`
+
+- [#3953](https://github.com/Shopify/ui-extensions/pull/3953) [`53e6e36`](https://github.com/Shopify/ui-extensions/commit/53e6e36ffcb51ed9e594b09578511845cf6d9b9c) Thanks [@jonathanhamel4](https://github.com/jonathanhamel4)! - Wrong types for discount classes
+
+- [#3976](https://github.com/Shopify/ui-extensions/pull/3976) [`6beda12`](https://github.com/Shopify/ui-extensions/commit/6beda125a8a7b329527d6ba5807d44b103b1f445) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Updates the POS event base data connectivity type to a signal interface"
+
+- [#4180](https://github.com/Shopify/ui-extensions/pull/4180) [`6fddd3f`](https://github.com/Shopify/ui-extensions/commit/6fddd3ff530f72d2e300b153c21a9d5a540cac26) Thanks [@mauriciosierra](https://github.com/mauriciosierra)! - Add optional refundId, returnId, exchangeId, lineItemsAdded, and lineItemsRemoved fields to ReprintReceiptData to support reprinting return and exchange receipts.
+
 ## 2026.1.2
 
 ### Patch Changes
