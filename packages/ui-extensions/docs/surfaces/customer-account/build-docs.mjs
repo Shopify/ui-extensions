@@ -9,6 +9,7 @@ import {promisify} from 'util';
 import {
   copyGeneratedToShopifyDev,
   replaceFileContent,
+  resolveShopifyDevPath,
 } from '../build-doc-shared.mjs';
 
 const execAsync = promisify(execCb);
@@ -29,7 +30,7 @@ const srcPath = path.join(rootPath, srcRelativePath);
 const checkoutSrcPath = path.join(rootPath, checkoutSrcRelativePath);
 const checkoutComponentsDir = path.join(checkoutSrcPath, 'components');
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
+const shopifyDevPath = await resolveShopifyDevPath(rootPath);
 const shopifyDevDBPath = path.join(
   shopifyDevPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
