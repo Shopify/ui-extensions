@@ -102,7 +102,7 @@ export const copyGeneratedToShopifyDev = async ({
     console.log(
       `Not copying docs to shopify-dev because it was not found at ${shopifyDevPath}.`,
     );
-    process.exit();
+    return;
   }
 
   await fs.cp(generatedDocsPath, shopifyDevDBPath, {recursive: true});

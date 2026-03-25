@@ -23,13 +23,12 @@ const srcRelativePath = 'src/surfaces/admin';
 const docsPath = path.join(rootPath, docsRelativePath);
 const srcPath = path.join(rootPath, srcRelativePath);
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
-const shopifyDevDBPath = path.join(
-  shopifyDevPath,
+const worldPath = path.join(process.env.HOME, 'world/trees/root/src');
+const worldDBPath = path.join(
+  worldPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
-
-const shopifyDevExists = existsSync(shopifyDevPath);
+const worldExists = existsSync(worldPath);
 
 const generatedDocsDataFile = 'generated_docs_data_v2.json';
 const generatedStaticPagesFile = 'generated_static_pages.json';
@@ -468,33 +467,31 @@ const transformJson = async (filePath, isExtensions) => {
     }
   });
 
-  // Merge the App Bridge docs with the Shopify Dev docs
-  if (!isExtensions && shopifyDevExists) {
-    const shopifyDevDocs = path.join(
-      shopifyDevDBPath,
-      'app_home/generated_docs_data.json',
+  // Merge the App Bridge docs with the world repo docs
+  if (!isExtensions && worldExists) {
+    const worldDocs = path.join(
+      worldDBPath,
+      'app_home/generated_docs_data_v2.json',
     );
-    const shopifyDevDocsContent = await fs.readFile(shopifyDevDocs, 'utf8');
-    const shopifyDevDocsDocsParsed = JSON.parse(
-      shopifyDevDocsContent.toString(),
-    );
+    const worldDocsContent = await fs.readFile(worldDocs, 'utf8');
+    const worldDocsParsed = JSON.parse(worldDocsContent.toString());
+    const worldDocsArray = Array.isArray(worldDocsParsed)
+      ? worldDocsParsed
+      : v2ToArray(worldDocsParsed);
 
-    const filteredDocs = shopifyDevDocsDocsParsed.filter(
+    const filteredDocs = worldDocsArray.filter(
       (entry) =>
         entry.category !== 'Web components' &&
         entry.category !== 'Polaris web components' &&
         entry.category !== 'Patterns',
     );
 
-    // Combine arrays with shopify dev docs first, followed by new data
+    // Combine arrays with world docs first, followed by new data
     jsonData = [...filteredDocs, ...jsonData];
   }
 
   if (isExtensions) {
-    await fs.writeFile(
-      filePath,
-      JSON.stringify(arrayToV2(jsonData), null, 2),
-    );
+    await fs.writeFile(filePath, JSON.stringify(arrayToV2(jsonData), null, 2));
     const arrayPath = path.join(outputDir, 'generated_docs_data.json');
     await fs.writeFile(arrayPath, JSON.stringify(jsonData, null, 2));
     await replaceFileContent({
@@ -503,7 +500,7 @@ const transformJson = async (filePath, isExtensions) => {
       replaceValue: '',
     });
   } else {
-    await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
+    await fs.writeFile(filePath, JSON.stringify(arrayToV2(jsonData), null, 2));
   }
 };
 
@@ -523,7 +520,6 @@ const generateExtensionsDocs = async () => {
   const scripts = [
     `yarn tsc --project ${docsRelativePath}/${tsconfigExtensions} --moduleResolution node  --target esNext  --module CommonJS`,
     `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
-    `node ${docsRelativePath}/collect-doc-pages.mjs ./${outputDir}`,
     `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS`,
     `yarn generate-docs --isLandingPage --input ./${docsRelativePath}/staticPages --output ./${outputDir}`,
   ];
@@ -585,7 +581,7 @@ try {
   });
   await generateExtensionsDocs();
   await generateAppBridgeDocs();
-  
+
   // Generate targets.json
   console.log('Generating targets.json...');
   try {
@@ -596,19 +592,22 @@ try {
     });
     console.log('✅ Generated targets.json');
   } catch (targetsError) {
-    console.warn('Warning: Failed to generate targets.json:', targetsError.message);
+    console.warn(
+      'Warning: Failed to generate targets.json:',
+      targetsError.message,
+    );
   }
-  
+
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
-    shopifyDevPath,
-    shopifyDevDBPath,
+    shopifyDevPath: worldPath,
+    shopifyDevDBPath: worldDBPath,
   });
 
   await fs.cp(
     path.join(docsPath, 'screenshots'),
     path.join(
-      shopifyDevPath,
+      worldPath,
       'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/admin',
     ),
     {recursive: true},
