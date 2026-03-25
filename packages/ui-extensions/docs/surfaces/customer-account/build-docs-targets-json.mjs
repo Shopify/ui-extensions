@@ -913,6 +913,16 @@ try {
   // Create the combined JSON with reverse mappings
   const combinedJson = createCombinedMapping(targetsJson);
 
+  // These components have doc pages but are not exported from the TypeScript source,
+  // so the script cannot discover them automatically. Add them manually with all targets.
+  const allTargetNames = Object.keys(targetsJson).sort();
+  const UNDISCOVERABLE_COMPONENTS = ['Chat', 'ConsentCheckbox', 'ConsentPhoneField', 'StyleHelper'];
+  for (const component of UNDISCOVERABLE_COMPONENTS) {
+    if (!combinedJson[component]) {
+      combinedJson[component] = {targets: allTargetNames};
+    }
+  }
+
   // Write to output file
   const outputDir = path.dirname(config.outputPath);
   if (!fs.existsSync(outputDir)) {

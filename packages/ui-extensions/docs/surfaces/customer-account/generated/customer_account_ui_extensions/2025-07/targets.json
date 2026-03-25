@@ -4777,7 +4777,7 @@
       "customer-account.profile.payment.render-after"
     ]
   },
-  "StyleHelper": {
+  "Chat": {
     "targets": [
       "CustomerAccount::KitchenSink",
       "customer-account.footer.render-after",
@@ -4864,7 +4864,7 @@
       "customer-account.profile.payment.render-after"
     ]
   },
-  "Chat": {
+  "StyleHelper": {
     "targets": [
       "CustomerAccount::KitchenSink",
       "customer-account.footer.render-after",

@@ -461,6 +461,16 @@ try {
   // Create the extended JSON with reverse mappings
   const extendedJson = createReverseMapping(targetsJson);
 
+  // These components have doc pages but are not exported from the TypeScript source,
+  // so the script cannot discover them automatically. Add them manually with all targets.
+  const allTargetNames = Object.keys(targetsJson).sort();
+  const UNDISCOVERABLE_COMPONENTS = ['StyleHelper'];
+  for (const component of UNDISCOVERABLE_COMPONENTS) {
+    if (!extendedJson[component]) {
+      extendedJson[component] = {targets: allTargetNames};
+    }
+  }
+
   // Write to output file
   const outputPath = path.join(
     __dirname,
