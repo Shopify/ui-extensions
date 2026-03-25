@@ -115,9 +115,7 @@ jobs:
 
           # Only match these specific JSON files
           VALID_FILENAMES=(
-            "generated_docs_data.json"
-            "generated_static_pages.json"
-            "generated_category_pages.json"
+            "generated_docs_data_v2.json"
             "targets.json"
           )
 

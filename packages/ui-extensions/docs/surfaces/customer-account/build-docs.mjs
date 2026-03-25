@@ -29,9 +29,9 @@ const srcPath = path.join(rootPath, srcRelativePath);
 const checkoutSrcPath = path.join(rootPath, checkoutSrcRelativePath);
 const checkoutComponentsDir = path.join(checkoutSrcPath, 'components');
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
-const shopifyDevDBPath = path.join(
-  shopifyDevPath,
+const worldPath = path.join(process.env.HOME, 'world/trees/root/src');
+const worldDBPath = path.join(
+  worldPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
@@ -234,7 +234,7 @@ const generateExtensionsDocs = async () => {
   await fs.cp(
     path.join(docsPath, 'screenshots'),
     path.join(
-      shopifyDevPath,
+      worldPath,
       'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/customer-account-ui-extensions',
       EXTENSIONS_API_VERSION,
     ),
@@ -276,8 +276,8 @@ try {
 
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
-    shopifyDevPath,
-    shopifyDevDBPath,
+    shopifyDevPath: worldPath,
+    shopifyDevDBPath: worldDBPath,
   });
 
   await fs.rm(tempComponentDefs);

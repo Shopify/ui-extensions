@@ -128,15 +128,6 @@ else
 fi
 }
 
-# Assume we have a relative path to shopify-dev (for non-local environments like CI, and Github Actions)
-SHOPIFY_DEV_PATH="../../../shopify-dev"
-
-if [ -d $SHOPIFY_DEV_PATH ]; then
-  copy_generated_docs_to_shopify_dev
-else
-  # We could be in the shop/world repo and it's in a different location on your local machine
-  # This is a best guess as to where it might be located in local dev environments
-  SHOPIFY_DEV_PATH="$HOME/src/github.com/Shopify/shopify-dev"
-  copy_generated_docs_to_shopify_dev
-fi
+SHOPIFY_DEV_PATH="$HOME/world/trees/root/src"
+copy_generated_docs_to_shopify_dev
 
