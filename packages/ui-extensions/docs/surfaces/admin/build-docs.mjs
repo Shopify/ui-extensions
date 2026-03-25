@@ -33,7 +33,6 @@ const shopifyDevDBPath = path.join(
 const shopifyDevExists = existsSync(shopifyDevPath);
 
 const generatedDocsDataFile = 'generated_docs_data.json';
-const generatedStaticPagesFile = 'generated_static_pages.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
 const tempComponentDefs = path.join(srcPath, 'components.ts');
@@ -454,8 +453,6 @@ const generateExtensionsDocs = async () => {
   const scripts = [
     `yarn tsc --project ${docsRelativePath}/${tsconfigExtensions} --moduleResolution node  --target esNext  --module CommonJS`,
     `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
-    `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS`,
-    `yarn generate-docs --isLandingPage --input ./${docsRelativePath}/staticPages --output ./${outputDir}`,
   ];
 
   await generateFiles({
@@ -463,7 +460,6 @@ const generateExtensionsDocs = async () => {
     outputDir,
     rootPath,
     generatedDocsDataFile,
-    generatedStaticPagesFile,
     transformJson: (filePath) => transformJson(filePath, true),
   });
 
