@@ -349,47 +349,9 @@ function getNestedApis(apiName) {
   }
 }
 
-// APIs that are composites — list their documented constituent APIs instead of themselves.
-// StandardApi and CheckoutApi are plain interfaces (not type intersections), so the
-// decomposition must be explicit, matching the Docs_Standard_*Api / Docs_Checkout_*Api
-// interfaces defined in src/surfaces/checkout/api/docs.ts.
-// CheckoutApi properties are all documented on the same pages as their StandardApi
-// counterparts (e.g., "Addresses API" covers both Docs_Standard_AddressApi and
-// Docs_Checkout_AddressApi), so CheckoutApi maps to those combined doc page names.
-const COMPOSITE_API_DECOMPOSITION = {
-  StandardApi: [
-    'AnalyticsApi',
-    'BuyerIdentityApi',
-    'BuyerJourneyApi',
-    'CartInstructionsApi',
-    'CheckoutSettingsApi',
-    'CheckoutTokenApi',
-    'CostApi',
-    'CustomerPrivacyApi',
-    'DeliveryApi',
-    'ExtensionApi',
-    'LocalizationApi',
-    'LocalizedFieldsApi',
-    'PaymentsApi',
-    'QueryApi',
-    'SessionTokenApi',
-    'SettingsApi',
-    'ShopApi',
-    'StorageApi',
-  ],
-  CheckoutApi: [
-    'AddressesApi',
-    'AttributesApi',
-    'CartLinesApi',
-    'DiscountsApi',
-    'GiftCardsApi',
-    'MetafieldsApi',
-    'NoteApi',
-  ],
-  // OrderConfirmationApi is the top-level API object for purchase.thank-you targets.
-  // It decomposes to 'OrderApi' to match the customer-account surface naming pattern.
-  OrderConfirmationApi: ['OrderApi'],
-};
+// No composite API decomposition — StandardApi, CheckoutApi, and OrderConfirmationApi
+// are plain interfaces and are rendered as-is in the targets.json.
+const COMPOSITE_API_DECOMPOSITION = {};
 
 function parseApis(apiString) {
   const apisSet = new Set();
@@ -563,6 +525,16 @@ try {
 
   // Create the combined JSON with reverse mappings
   const combinedJson = createCombinedMapping(targetsJson);
+
+  // These components have doc pages but are not exported from the TypeScript source,
+  // so the script cannot discover them automatically. Add them manually with all targets.
+  const allTargetNames = Object.keys(targetsJson).sort();
+  const UNDISCOVERABLE_COMPONENTS = ['StyleHelper'];
+  for (const component of UNDISCOVERABLE_COMPONENTS) {
+    if (!combinedJson[component]) {
+      combinedJson[component] = {targets: allTargetNames};
+    }
+  }
 
   // Write to output file
   const outputDir = path.dirname(config.outputPath);
