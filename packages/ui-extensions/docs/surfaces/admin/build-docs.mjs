@@ -23,20 +23,12 @@ const srcRelativePath = 'src/surfaces/admin';
 const docsPath = path.join(rootPath, docsRelativePath);
 const srcPath = path.join(rootPath, srcRelativePath);
 const generatedDocsPath = path.join(docsPath, 'generated');
-const relativeShopifyDevPath = path.join(rootPath, '../../../shopify-dev');
-const worldShopifyDevPath = path.join(
-  process.env.HOME || '',
-  'src/github.com/Shopify/shopify-dev',
-);
-const shopifyDevPath = existsSync(relativeShopifyDevPath)
-  ? relativeShopifyDevPath
-  : worldShopifyDevPath;
-const shopifyDevDBPath = path.join(
-  shopifyDevPath,
+const worldPath = path.join(process.env.HOME, 'world/trees/root/src');
+const worldDBPath = path.join(
+  worldPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
-
-const shopifyDevExists = existsSync(shopifyDevPath);
+const worldExists = existsSync(worldPath);
 
 const generatedDocsDataFile = 'generated_docs_data_v2.json';
 const generatedStaticPagesFile = 'generated_static_pages.json';
@@ -470,26 +462,26 @@ const transformJson = async (filePath, isExtensions) => {
     }
   });
 
-  // Merge the App Bridge docs with the Shopify Dev docs
-  if (!isExtensions && shopifyDevExists) {
-    const shopifyDevDocs = path.join(
-      shopifyDevDBPath,
-      'app_home/generated_docs_data.json',
+  // Merge the App Bridge docs with the world repo docs
+  if (!isExtensions && worldExists) {
+    const worldDocs = path.join(
+      worldDBPath,
+      'app_home/generated_docs_data_v2.json',
     );
-    const shopifyDevDocsContent = await fs.readFile(shopifyDevDocs, 'utf8');
-    let shopifyDevDocsDocsParsed = JSON.parse(shopifyDevDocsContent.toString());
-    if (!Array.isArray(shopifyDevDocsDocsParsed)) {
-      shopifyDevDocsDocsParsed = v2ToArray(shopifyDevDocsDocsParsed);
-    }
+    const worldDocsContent = await fs.readFile(worldDocs, 'utf8');
+    const worldDocsParsed = JSON.parse(worldDocsContent.toString());
+    const worldDocsArray = Array.isArray(worldDocsParsed)
+      ? worldDocsParsed
+      : v2ToArray(worldDocsParsed);
 
-    const filteredDocs = shopifyDevDocsDocsParsed.filter(
+    const filteredDocs = worldDocsArray.filter(
       (entry) =>
         entry.category !== 'Web components' &&
         entry.category !== 'Polaris web components' &&
         entry.category !== 'Patterns',
     );
 
-    // Combine arrays with shopify dev docs first, followed by new data
+    // Combine arrays with world docs first, followed by new data
     jsonData = [...filteredDocs, ...jsonData];
   }
 
@@ -503,7 +495,7 @@ const transformJson = async (filePath, isExtensions) => {
       replaceValue: '',
     });
   } else {
-    await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
+    await fs.writeFile(filePath, JSON.stringify(arrayToV2(jsonData), null, 2));
   }
 };
 
@@ -536,12 +528,22 @@ const generateExtensionsDocs = async () => {
     transformJson: (filePath) => transformJson(filePath, true),
   });
 
-  // Replace 'unstable' with the exact API version in relative doc links
-  await replaceFileContent({
-    filePaths: path.join(outputDir, generatedDocsDataFile),
-    searchValue: '/docs/api/admin-extensions/unstable/',
-    replaceValue: `/docs/api/admin-extensions/${EXTENSIONS_API_VERSION}`,
-  });
+  // Replace 'unstable' with the exact API version in relative doc links (v2 and array)
+  const extensionsOutputDir = path.join(
+    rootPath,
+    `${docsGeneratedRelativePath}/admin_extensions/${EXTENSIONS_API_VERSION}`,
+  );
+  const replacePaths = [
+    path.join(extensionsOutputDir, 'generated_docs_data_v2.json'),
+    path.join(extensionsOutputDir, 'generated_docs_data.json'),
+  ].filter((filePath) => existsSync(filePath));
+  if (replacePaths.length > 0) {
+    await replaceFileContent({
+      filePaths: replacePaths,
+      searchValue: '/docs/api/admin-extensions/unstable/',
+      replaceValue: `/docs/api/admin-extensions/${EXTENSIONS_API_VERSION}`,
+    });
+  }
 };
 
 const generateAppBridgeDocs = async () => {
@@ -599,14 +601,14 @@ try {
 
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
-    shopifyDevPath,
-    shopifyDevDBPath,
+    shopifyDevPath: worldPath,
+    shopifyDevDBPath: worldDBPath,
   });
 
   await fs.cp(
     path.join(docsPath, 'screenshots'),
     path.join(
-      shopifyDevPath,
+      worldPath,
       'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/admin',
     ),
     {recursive: true},

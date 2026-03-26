@@ -29,16 +29,9 @@ const srcRelativePath = 'src/surfaces/point-of-sale';
 const docsPath = path.join(rootPath, docsRelativePath);
 const srcPath = path.join(rootPath, srcRelativePath);
 const generatedDocsPath = path.join(docsPath, 'generated');
-const relativeShopifyDevPath = path.join(rootPath, '../../../shopify-dev');
-const worldShopifyDevPath = path.join(
-  process.env.HOME || '',
-  'src/github.com/Shopify/shopify-dev',
-);
-const shopifyDevPath = existsSync(relativeShopifyDevPath)
-  ? relativeShopifyDevPath
-  : worldShopifyDevPath;
-const shopifyDevDBPath = path.join(
-  shopifyDevPath,
+const worldPath = path.join(process.env.HOME, 'world/trees/root/src');
+const worldDBPath = path.join(
+  worldPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
@@ -152,7 +145,7 @@ const generateExtensionsDocs = async () => {
   await fs.cp(
     path.join(docsPath, 'screenshots'),
     path.join(
-      shopifyDevPath,
+      worldPath,
       'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/pos-ui-extensions',
       EXTENSIONS_API_VERSION,
     ),
@@ -195,8 +188,8 @@ try {
 
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
-    shopifyDevPath,
-    shopifyDevDBPath,
+    shopifyDevPath: worldPath,
+    shopifyDevDBPath: worldDBPath,
   });
 
   await cleanup();
