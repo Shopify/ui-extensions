@@ -4,6 +4,7 @@ import fs from 'fs/promises';
 import {existsSync} from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
+import os from 'os';
 import {promisify} from 'util';
 
 import {
@@ -30,7 +31,7 @@ const srcPath = path.join(rootPath, srcRelativePath);
 const checkoutSrcPath = path.join(rootPath, checkoutSrcRelativePath);
 const checkoutComponentsDir = path.join(checkoutSrcPath, 'components');
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
+const shopifyDevPath = path.join(os.homedir(), 'world/trees/root/src');
 const shopifyDevDBPath = path.join(
   shopifyDevPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',

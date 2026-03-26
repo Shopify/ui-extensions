@@ -1,7 +1,7 @@
 API_VERSION=$1
 DOCS_PATH=docs/surfaces/checkout
 SRC_PATH=src/surfaces/checkout
-SHOPIFY_DEV_PATH="../../../shopify-dev"
+SHOPIFY_DEV_PATH="$HOME/world/trees/root/src"
 
 fail_and_exit() {
   echo "** Failed to generate docs"
@@ -106,10 +106,4 @@ else
   fi
 }
 
-if [ -d $SHOPIFY_DEV_PATH ]; then
-  copy_generated_docs_to_shopify_dev
-else
-  # We could be in the monorepo and need to go up several more directories to find shopify-dev
-  SHOPIFY_DEV_PATH="../../../../../../shopify-dev"
-  copy_generated_docs_to_shopify_dev
-fi
+copy_generated_docs_to_shopify_dev

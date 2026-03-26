@@ -3,7 +3,7 @@ DOCS_PATH=docs/surfaces/point-of-sale
 SRC_PATH=src/surfaces/point-of-sale
 # Generated output (including generated_docs_data_v2.json) is intended for the shopify-dev repo.
 # Override with SHOPIFY_DEV_PATH in CI or when shopify-dev is not a sibling of ui-extensions.
-SHOPIFY_DEV_PATH="${SHOPIFY_DEV_PATH:-../../../shopify-dev}"
+SHOPIFY_DEV_PATH="$HOME/world/trees/root/src"
 
 fail_and_exit() {
   echo "** Failed to generate docs"
