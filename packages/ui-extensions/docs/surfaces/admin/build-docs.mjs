@@ -23,7 +23,14 @@ const srcRelativePath = 'src/surfaces/admin';
 const docsPath = path.join(rootPath, docsRelativePath);
 const srcPath = path.join(rootPath, srcRelativePath);
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
+const relativeShopifyDevPath = path.join(rootPath, '../../../shopify-dev');
+const worldShopifyDevPath = path.join(
+  process.env.HOME || '',
+  'src/github.com/Shopify/shopify-dev',
+);
+const shopifyDevPath = existsSync(relativeShopifyDevPath)
+  ? relativeShopifyDevPath
+  : worldShopifyDevPath;
 const shopifyDevDBPath = path.join(
   shopifyDevPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
@@ -120,8 +127,8 @@ const htmlWrapper = (htmlString, layoutStyles = '', customStyles = '') => {
   )}</body></html>`;
 };
 
-/* 
-Using JSX Builder to self-host Preact and Sucrase. 
+/*
+Using JSX Builder to self-host Preact and Sucrase.
 https://github.com/shopify-playground/jsx-builder
 */
 const jsxWrapper = (
@@ -470,9 +477,10 @@ const transformJson = async (filePath, isExtensions) => {
       'app_home/generated_docs_data.json',
     );
     const shopifyDevDocsContent = await fs.readFile(shopifyDevDocs, 'utf8');
-    const shopifyDevDocsDocsParsed = JSON.parse(
-      shopifyDevDocsContent.toString(),
-    );
+    let shopifyDevDocsDocsParsed = JSON.parse(shopifyDevDocsContent.toString());
+    if (!Array.isArray(shopifyDevDocsDocsParsed)) {
+      shopifyDevDocsDocsParsed = v2ToArray(shopifyDevDocsDocsParsed);
+    }
 
     const filteredDocs = shopifyDevDocsDocsParsed.filter(
       (entry) =>
@@ -486,10 +494,7 @@ const transformJson = async (filePath, isExtensions) => {
   }
 
   if (isExtensions) {
-    await fs.writeFile(
-      filePath,
-      JSON.stringify(arrayToV2(jsonData), null, 2),
-    );
+    await fs.writeFile(filePath, JSON.stringify(arrayToV2(jsonData), null, 2));
     const arrayPath = path.join(outputDir, 'generated_docs_data.json');
     await fs.writeFile(arrayPath, JSON.stringify(jsonData, null, 2));
     await replaceFileContent({
@@ -518,7 +523,6 @@ const generateExtensionsDocs = async () => {
   const scripts = [
     `yarn tsc --project ${docsRelativePath}/${tsconfigExtensions} --moduleResolution node  --target esNext  --module CommonJS`,
     `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
-    `node ${docsRelativePath}/collect-doc-pages.mjs ./${outputDir}`,
     `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS`,
     `yarn generate-docs --isLandingPage --input ./${docsRelativePath}/staticPages --output ./${outputDir}`,
   ];
@@ -570,20 +574,29 @@ try {
   });
   await generateExtensionsDocs();
   await generateAppBridgeDocs();
-  
+
   // Generate targets.json
   console.log('Generating targets.json...');
   try {
     const {execSync} = await import('child_process');
-    execSync(`node ${path.join(docsPath, 'build-docs-targets-json.mjs')} ${EXTENSIONS_API_VERSION}`, {
-      stdio: 'inherit',
-      cwd: rootPath,
-    });
+    execSync(
+      `node ${path.join(
+        docsPath,
+        'build-docs-targets-json.mjs',
+      )} ${EXTENSIONS_API_VERSION}`,
+      {
+        stdio: 'inherit',
+        cwd: rootPath,
+      },
+    );
     console.log('✅ Generated targets.json');
   } catch (targetsError) {
-    console.warn('Warning: Failed to generate targets.json:', targetsError.message);
+    console.warn(
+      'Warning: Failed to generate targets.json:',
+      targetsError.message,
+    );
   }
-  
+
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
     shopifyDevPath,

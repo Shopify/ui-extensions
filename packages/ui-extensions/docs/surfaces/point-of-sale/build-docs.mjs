@@ -29,7 +29,14 @@ const srcRelativePath = 'src/surfaces/point-of-sale';
 const docsPath = path.join(rootPath, docsRelativePath);
 const srcPath = path.join(rootPath, srcRelativePath);
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
+const relativeShopifyDevPath = path.join(rootPath, '../../../shopify-dev');
+const worldShopifyDevPath = path.join(
+  process.env.HOME || '',
+  'src/github.com/Shopify/shopify-dev',
+);
+const shopifyDevPath = existsSync(relativeShopifyDevPath)
+  ? relativeShopifyDevPath
+  : worldShopifyDevPath;
 const shopifyDevDBPath = path.join(
   shopifyDevPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',

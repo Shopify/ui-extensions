@@ -29,7 +29,14 @@ const srcPath = path.join(rootPath, srcRelativePath);
 const checkoutSrcPath = path.join(rootPath, checkoutSrcRelativePath);
 const checkoutComponentsDir = path.join(checkoutSrcPath, 'components');
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
+const relativeShopifyDevPath = path.join(rootPath, '../../../shopify-dev');
+const worldShopifyDevPath = path.join(
+  process.env.HOME || '',
+  'src/github.com/Shopify/shopify-dev',
+);
+const shopifyDevPath = existsSync(relativeShopifyDevPath)
+  ? relativeShopifyDevPath
+  : worldShopifyDevPath;
 const shopifyDevDBPath = path.join(
   shopifyDevPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
@@ -66,9 +73,7 @@ const copyCheckoutTypesToTemp = async () => {
 
 const cleanupTempFiles = async (tempFiles) => {
   await Promise.all(
-    tempFiles
-      .filter((file) => existsSync(file))
-      .map((file) => fs.rm(file)),
+    tempFiles.filter((file) => existsSync(file)).map((file) => fs.rm(file)),
   );
 };
 
@@ -223,10 +228,16 @@ try {
   // Generate targets.json
   console.log('Generating targets.json...');
   try {
-    execSync(`node ${path.join(docsPath, 'build-docs-targets-json.mjs')} ${EXTENSIONS_API_VERSION}`, {
-      stdio: 'inherit',
-      cwd: rootPath,
-    });
+    execSync(
+      `node ${path.join(
+        docsPath,
+        'build-docs-targets-json.mjs',
+      )} ${EXTENSIONS_API_VERSION}`,
+      {
+        stdio: 'inherit',
+        cwd: rootPath,
+      },
+    );
     console.log('✅ Generated targets.json');
   } catch (targetsError) {
     console.warn(
