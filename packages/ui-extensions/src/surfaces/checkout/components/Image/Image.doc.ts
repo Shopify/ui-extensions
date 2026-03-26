@@ -27,6 +27,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Display a banner-style image with controlled proportions. This example uses `aspectRatio` and `objectFit="cover"` to crop the image, `inlineSize="fill"` to span the container, and `loading="lazy"` for below-the-fold performance.',
+        codeblock: {
+          title: 'Display a banner image with aspect ratio and cover fit',
+          tabs: [
+            {
+              code: './examples/image-banner.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       title: 'Best practices',
