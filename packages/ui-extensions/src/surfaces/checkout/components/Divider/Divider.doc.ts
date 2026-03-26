@@ -27,6 +27,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Use `direction="block"` to draw a rule along the block axis between vertically stacked content. This example shows a checkout summary with a divider between subtotal and tax.',
+        codeblock: {
+          title: 'Separate stacked labels with a block divider',
+          tabs: [
+            {
+              code: './examples/divider-block.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [],
 };
 

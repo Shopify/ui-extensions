@@ -27,6 +27,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Uses `background="base"` with `border`, `borderRadius="large"`, and `padding="large"` to create a prominent callout. The `accessibilityLabel` provides context for assistive technology when the content alone is insufficient.',
+        codeblock: {
+          title: 'Highlight a callout with a bordered box',
+          tabs: [
+            {
+              code: './examples/box-callout.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

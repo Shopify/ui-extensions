@@ -27,6 +27,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Use `justifyContent="space-between"` with `direction="block"` to push the first and last items to opposite ends of the stack. This pattern is common in checkout summary rows.',
+        codeblock: {
+          title: 'Space items apart with block direction',
+          tabs: [
+            {
+              code: './examples/stack-space-between.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       title: 'Useful for',
