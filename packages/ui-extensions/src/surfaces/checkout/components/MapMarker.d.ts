@@ -11,7 +11,7 @@
 import type {MapMarkerProps$1} from './components-shared.d.ts';
 
 /**
- * Used when an element does not have children.
+ * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -19,14 +19,20 @@ export interface BaseElementProps<TClass = HTMLElement> {
     slot?: Lowercase<string>;
 }
 /**
- * Used when an element has children.
+ * The base properties for elements that have children, extending `BaseElementProps` with children support.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/**
+ * A callback event typed to a specific HTML element, with a strongly typed `currentTarget`.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * An event listener typed to a specific HTML element, with a strongly typed `currentTarget`.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
@@ -39,6 +45,9 @@ declare const tagName = "s-map-marker";
 export interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'command' | 'commandFor' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
     command?: Extract<MapMarkerProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
+/**
+ * The event handlers for the map marker component.
+ */
 export interface MapMarkerEvents extends Pick<MapMarkerProps$1, 'onClick'> {
 }
 /**
@@ -47,27 +56,29 @@ export interface MapMarkerEvents extends Pick<MapMarkerProps$1, 'onClick'> {
  */
 export interface MapMarkerElementEvents {
     /**
-     * Callback when a marker is clicked.
-     *
-     * It does not trigger a click event on the map itself.
+     * A callback fired when the user clicks on the marker. This event does not propagate to the parent map — only the marker receives the click.
      */
     click?: CallbackEventListener<typeof tagName>;
 }
 /**
- * The slots interface for the MapMarker component.
+ * The named slots for the map marker component. Slots allow you to insert custom content into specific areas of the marker.
  * @publicDocs
  */
 export interface MapMarkerElementSlots {
     /**
-     * The graphic to use as the marker.
-     *
-     * If unset, it will default to the provider’s default marker.
+     * A custom graphic element to use as the marker. If not provided, the map provider’s default marker pin is displayed.
      */
     graphic?: HTMLElement;
 }
+/**
+ * The HTML element interface for the `s-map-marker` custom element.
+ */
 export interface MapMarkerElement extends MapMarkerElementProps, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: MapMarkerEvents['onClick'];
 }
+/**
+ * The properties for the map marker component when it's used in JSX.
+ */
 export interface MapMarkerProps extends MapMarkerElementProps, MapMarkerEvents {
 }
 declare global {
