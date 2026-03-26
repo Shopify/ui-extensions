@@ -6,6 +6,24 @@ import {createComponentDoc} from '../../../../docs/shared/component-definitions'
 const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
   definitions: {properties: true},
+  extraExamples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Use `justifyContent="space-between"` with `direction="block"` to push the first and last items to opposite ends of the stack. This pattern is common in checkout summary rows.',
+        codeblock: {
+          title: 'Space items apart with block direction',
+          tabs: [
+            {
+              code: './examples/stack-space-between.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   usefulFor: `
 - Placing items in rows or columns when sections don't work for your layout.
 - Controlling the spacing between elements.`,
