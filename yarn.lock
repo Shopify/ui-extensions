@@ -1918,6 +1918,14 @@
     globby "^11.1.0"
     typescript "^4.8.3 || ^5.0.0"
 
+"@shopify/generate-docs@https://registry.npmjs.org/@shopify/generate-docs/-/generate-docs-1.1.0.tgz":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@shopify/generate-docs/-/generate-docs-1.1.0.tgz#a4775ea3930f4f014a0ccf31ddfdc056b4f8c236"
+  dependencies:
+    "@types/react" "^18.0.21"
+    globby "^11.1.0"
+    typescript "^4.8.3 || ^5.0.0"
+
 "@shopify/loom-cli@^1.0.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@shopify/loom-cli/-/loom-cli-1.1.0.tgz"

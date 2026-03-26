@@ -1,191 +1,202 @@
-{
-  "DataGeneratedType": {
-    "docs/surfaces/point-of-sale/staticPages/pages/extension-targets.doc.ts": {
-      "filePath": "docs/surfaces/point-of-sale/staticPages/pages/extension-targets.doc.ts",
-      "importMap": {
-        "LandingTemplateSchema": "node_modules/@shopify/generate-docs/dist/types.d.ts"
+[
+  {
+    "title": "Targets overview",
+    "description": "\nA [target](/docs/apps/app-extensions/configuration#targets) represents where your POS UI extension will appear.\n",
+    "id": "extension-targets-overview",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "GenericAccordion",
+        "title": "Smart grid",
+        "anchorLink": "smart-grid",
+        "sectionContent": "The smart grid. Learn more about [the smart grid](/docs/apps/pos#home-screen).",
+        "accordionContent": [
+          {
+            "title": "Tile",
+            "description": "\nDisplays a tile on the smart grid.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Modal",
+            "description": "\nDisplays a modal when a tile is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
       },
-      "name": "DataGeneratedType",
-      "description": "Template schema for landing documentation pages.",
-      "isPublicDocs": true,
-      "value": "data: LandingTemplateSchema = {\n  title: 'Targets overview',\n  description: `\nA [target](/docs/apps/app-extensions/configuration#targets) represents where your POS UI extension will appear.\n`,\n  id: 'extension-targets-overview',\n  image: '/assets/landing-pages/templated-apis/hero.png',\n  darkImage: '/assets/landing-pages/templated-apis/hero-dark.png',\n  tabletImage: '/assets/landing-pages/templated-apis/hero.png',\n  tabletDarkImage: '/assets/landing-pages/templated-apis/hero-dark.png',\n  mobileImage: '/assets/landing-pages/templated-apis/hero.png',\n  mobileDarkImage: '/assets/landing-pages/templated-apis/hero-dark.png',\n  sections: [\n    {\n      type: 'GenericAccordion',\n      title: 'Smart grid',\n      anchorLink: 'smart-grid',\n      sectionContent:\n        'The smart grid. Learn more about [the smart grid](/docs/apps/pos#home-screen).',\n      accordionContent: [\n        {\n          title: 'Tile',\n          description: `\nDisplays a tile on the smart grid.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n        {\n          title: 'Modal',\n          description: `\nDisplays a modal when a tile is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n      ],\n    },\n    {\n      type: 'GenericAccordion',\n      title: 'Post-purchase',\n      anchorLink: 'post-purchase',\n      sectionContent: 'The post-purchase screen',\n      accordionContent: [\n        {\n          title: 'Menu item',\n          description: `\nDisplays a menu item on the post-purchase screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n        {\n          title: 'Action',\n          description: `\nDisplays a modal when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n        {\n          title: 'Block',\n          description: `\nRenders a custom section within the native post purchase screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n      ],\n    },\n\n    {\n      type: 'GenericAccordion',\n      title: 'Customer details',\n      anchorLink: 'customer-details',\n      sectionContent: 'The customer details screen',\n      accordionContent: [\n        {\n          title: 'Menu item',\n          description: `\nDisplays a menu item on the customer details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n        {\n          title: 'Action',\n          description: `\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n        {\n          title: 'Block',\n          description: `\nRenders a custom section within the customer details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n      ],\n    },\n    {\n      type: 'GenericAccordion',\n      title: 'Product details',\n      anchorLink: 'product-details',\n      sectionContent: 'The product details screen',\n      accordionContent: [\n        {\n          title: 'Menu item',\n          description: `\nDisplays a menu item on the product details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n        {\n          title: 'Action',\n          description: `\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n        {\n          title: 'Block',\n          description: `\nRenders a custom section within the native product details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n      ],\n    },\n    {\n      type: 'GenericAccordion',\n      title: 'Order details',\n      anchorLink: 'order-details',\n      sectionContent: 'The order details screen',\n      accordionContent: [\n        {\n          title: 'Menu item',\n          description: `\nDisplays a menu item on the order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n        {\n          title: 'Action',\n          description: `\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n        {\n          title: 'Block',\n          description: `\nRenders a custom section within the native order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n      ],\n    },\n    {\n      type: 'GenericAccordion',\n      title: 'Draft Order details',\n      anchorLink: 'draft-order-details',\n      sectionContent: 'The draft order details screen',\n      accordionContent: [\n        {\n          title: 'Menu item',\n          description: `\nDisplays a menu item on the draft order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n        {\n          title: 'Action',\n          description: `\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n        {\n          title: 'Block',\n          description: `\nRenders a custom section within the native draft order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n      ],\n    },\n    {\n      type: 'GenericAccordion',\n      title: 'Cart line item details',\n      anchorLink: 'cart-line-item-details',\n      sectionContent: 'The cart line item details screen',\n      accordionContent: [\n        {\n          title: 'Action',\n          description: `\nDisplays an action target in the cart line item details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n`,\n        },\n      ],\n    },\n  ],\n}"
-    },
-    "docs/surfaces/point-of-sale/staticPages/pages/pos-overview.doc.ts": {
-      "filePath": "docs/surfaces/point-of-sale/staticPages/pages/pos-overview.doc.ts",
-      "importMap": {
-        "LandingTemplateSchema": "node_modules/@shopify/generate-docs/dist/types.d.ts"
+      {
+        "type": "GenericAccordion",
+        "title": "Post-purchase",
+        "anchorLink": "post-purchase",
+        "sectionContent": "The post-purchase screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the post-purchase screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays a modal when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Block",
+            "description": "\nRenders a custom section within the native post purchase screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
       },
-      "name": "DataGeneratedType",
-      "description": "Template schema for landing documentation pages.",
-      "isPublicDocs": true,
-      "value": "data: LandingTemplateSchema = {\n  title: 'POS UI extensions',\n  description: `The UI Extensions library enables individuals to build extensions that use interface elements and behaviors that mirror the look and feel of the POS retail experience. These elements render natively, providing the performance and accessibility inherent to a native app.`,\n  id: 'pos-ui-extensions',\n  image: '/assets/landing-pages/templated-apis/hero.png',\n  darkImage: '/assets/landing-pages/templated-apis/hero-dark.png',\n  tabletImage: '/assets/landing-pages/templated-apis/hero.png',\n  tabletDarkImage: '/assets/landing-pages/templated-apis/hero-dark.png',\n  mobileImage: '/assets/landing-pages/templated-apis/hero.png',\n  mobileDarkImage: '/assets/landing-pages/templated-apis/hero-dark.png',\n  sections: [\n    {\n      type: 'Generic',\n      anchorLink: 'api-versioning',\n      title: 'API versioning',\n      sectionContent: `POS UI extensions are built on a versioned API that receives regular updates with new features, improvements, and additional targets. We recommend using the latest supported API version to access the most current capabilities and ensure optimal compatibility with POS devices.\n\nYou can track new releases and update your extensions by referencing the [developer changelog](/changelog).`,\n    },\n    {\n      type: 'Generic',\n      anchorLink: 'overview',\n      title: 'Overview',\n      sectionContent: 'Extend the Shopify POS with UI Extensions.',\n      sectionCard: [\n        {\n          subtitle: 'Extension targets',\n          name: 'See all available extension targets',\n          url: 'targets',\n          type: 'pickaxe-1',\n        },\n        {\n          subtitle: 'APIs',\n          name: 'See all available APIs',\n          url: 'apis',\n          type: 'pickaxe-2',\n        },\n        {\n          subtitle: 'Components',\n          name: 'See all available components',\n          url: 'components',\n          type: 'blocks',\n        },\n      ],\n    },\n    {\n      type: 'Generic',\n      anchorLink: 'getting-started',\n      title: 'Getting Started',\n      sectionContent: 'Get started with POS UI Extensions with Shopify CLI.',\n      sectionCard: [\n        {\n          name: 'Getting started guide',\n          subtitle: 'Set up your development environment',\n          url: '/docs/apps/build/pos/getting-started',\n          type: 'blocks',\n        },\n      ],\n    },\n  ],\n}"
-    }
+      {
+        "type": "GenericAccordion",
+        "title": "Customer details",
+        "anchorLink": "customer-details",
+        "sectionContent": "The customer details screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the customer details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Block",
+            "description": "\nRenders a custom section within the customer details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Product details",
+        "anchorLink": "product-details",
+        "sectionContent": "The product details screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the product details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Block",
+            "description": "\nRenders a custom section within the native product details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Order details",
+        "anchorLink": "order-details",
+        "sectionContent": "The order details screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Block",
+            "description": "\nRenders a custom section within the native order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Draft Order details",
+        "anchorLink": "draft-order-details",
+        "sectionContent": "The draft order details screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the draft order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Block",
+            "description": "\nRenders a custom section within the native draft order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Cart line item details",
+        "anchorLink": "cart-line-item-details",
+        "sectionContent": "The cart line item details screen",
+        "accordionContent": [
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target in the cart line item details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      }
+    ]
   },
-  "CustomerDetailsBlockGeneratedType": {
-    "docs/surfaces/point-of-sale/staticPages/examples/authenticated-fetch/authenticated-fetch.tsx": {
-      "filePath": "docs/surfaces/point-of-sale/staticPages/examples/authenticated-fetch/authenticated-fetch.tsx",
-      "importMap": {
-        "reactExtension": "",
-        "useApi": "",
-        "Text": "",
-        "POSBlock": "",
-        "POSBlockRow": "",
-        "useEffect": "../../node_modules/@types/react/ts5.0/index.d.ts",
-        "useState": "../../node_modules/@types/react/ts5.0/index.d.ts"
+  {
+    "title": "POS UI extensions",
+    "description": "The UI Extensions library enables individuals to build extensions that use interface elements and behaviors that mirror the look and feel of the POS retail experience. These elements render natively, providing the performance and accessibility inherent to a native app.",
+    "id": "pos-ui-extensions",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "api-versioning",
+        "title": "API versioning",
+        "sectionContent": "POS UI extensions are built on a versioned API that receives regular updates with new features, improvements, and additional targets. We recommend using the latest supported API version to access the most current capabilities and ensure optimal compatibility with POS devices.\n\nYou can track new releases and update your extensions by referencing the [developer changelog](/changelog)."
       },
-      "name": "CustomerDetailsBlockGeneratedType",
-      "description": "",
-      "params": [],
-      "returns": {
-        "filePath": "docs/surfaces/point-of-sale/staticPages/examples/authenticated-fetch/authenticated-fetch.tsx",
-        "description": "",
-        "name": "",
-        "value": ""
+      {
+        "type": "Generic",
+        "anchorLink": "overview",
+        "title": "Overview",
+        "sectionContent": "Extend the Shopify POS with UI Extensions.",
+        "sectionCard": [
+          {
+            "subtitle": "Extension targets",
+            "name": "See all available extension targets",
+            "url": "targets",
+            "type": "pickaxe-1"
+          },
+          {
+            "subtitle": "APIs",
+            "name": "See all available APIs",
+            "url": "apis",
+            "type": "pickaxe-2"
+          },
+          {
+            "subtitle": "Components",
+            "name": "See all available components",
+            "url": "components",
+            "type": "blocks"
+          }
+        ]
       },
-      "value": "CustomerDetailsBlock = () => {\n  const {customer} = useApi<'pos.customer-details.block.render'>();\n  const [loyaltyInfo, setLoyaltyInfo] = useState<any>();\n  useEffect(() => {\n    getLoyaltyInfo();\n  }, [customer.id]);\n\n  async function getLoyaltyInfo() {\n    const res = await fetch(`${URL}/api/loyalty/${customer.id}`);\n    const json = await res.json();\n    setLoyaltyInfo(json.loyaltySummary);\n  }\n\n  return (\n    <POSBlock>\n      <POSBlockRow>\n        <Text>{loyaltyInfo}</Text>\n      </POSBlockRow>\n    </POSBlock>\n  );\n}"
-    }
-  },
-  "MutateMetafieldGeneratedType": {
-    "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.ts": {
-      "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.ts",
-      "importMap": {
-        "extension": "build/ts/surfaces/point-of-sale.d.ts",
-        "POSBlock": "build/ts/surfaces/point-of-sale.d.ts",
-        "POSBlockRow": "build/ts/surfaces/point-of-sale.d.ts",
-        "Text": "build/ts/surfaces/point-of-sale.d.ts",
-        "DirectApiRequestBody": "build/ts/surfaces/point-of-sale.d.ts"
-      },
-      "name": "MutateMetafieldGeneratedType",
-      "description": "",
-      "params": [
-        {
-          "name": "productId",
-          "description": "",
-          "value": "number",
-          "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.ts"
-        }
-      ],
-      "returns": {
-        "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.ts",
-        "description": "",
-        "name": "",
-        "value": ""
-      },
-      "value": "async function mutateMetafield(productId: number) {\n  const requestBody: DirectApiRequestBody = {\n    query: `#graphql\n        mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) {\n          metafieldsSet(metafields: $metafields) {\n            metafields {\n              key\n              namespace\n              value\n              createdAt\n              updatedAt\n            }\n          }\n        }\n      `,\n    variables: {\n      metafields: [\n        {\n          key: 'direct_api',\n          namespace: 'custom',\n          ownerId: `gid://shopify/Product/${productId}`,\n          value: 'Example Value',\n        },\n      ],\n    },\n  };\n\n  await fetch('shopify:admin/api/graphql.json', {\n    method: 'POST',\n    body: JSON.stringify(requestBody),\n  });\n}"
-    },
-    "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.tsx": {
-      "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.tsx",
-      "importMap": {
-        "reactExtension": "",
-        "useApi": "",
-        "POSBlock": "",
-        "POSBlockRow": "",
-        "Text": "",
-        "DirectApiRequestBody": "build/ts/surfaces/point-of-sale.d.ts",
-        "useEffect": "../../node_modules/@types/react/ts5.0/index.d.ts",
-        "useState": "../../node_modules/@types/react/ts5.0/index.d.ts"
-      },
-      "name": "MutateMetafieldGeneratedType",
-      "description": "",
-      "params": [
-        {
-          "name": "productId",
-          "description": "",
-          "value": "number",
-          "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.tsx"
-        }
-      ],
-      "returns": {
-        "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.tsx",
-        "description": "",
-        "name": "",
-        "value": ""
-      },
-      "value": "async function mutateMetafield(productId: number) {\n  const requestBody: DirectApiRequestBody = {\n    query: `#graphql\n        mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) {\n          metafieldsSet(metafields: $metafields) {\n            metafields {\n              key\n              namespace\n              value\n              createdAt\n              updatedAt\n            }\n          }\n        }\n      `,\n    variables: {\n      metafields: [\n        {\n          key: 'direct_api',\n          namespace: 'custom',\n          ownerId: `gid://shopify/Product/${productId}`,\n          value: 'Example Value',\n        },\n      ],\n    },\n  };\n\n  await fetch('shopify:admin/api/graphql.json', {\n    method: 'POST',\n    body: JSON.stringify(requestBody),\n  });\n}"
-    }
-  },
-  "QueryProductMetafieldsGeneratedType": {
-    "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.ts": {
-      "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.ts",
-      "importMap": {
-        "extension": "build/ts/surfaces/point-of-sale.d.ts",
-        "POSBlock": "build/ts/surfaces/point-of-sale.d.ts",
-        "POSBlockRow": "build/ts/surfaces/point-of-sale.d.ts",
-        "Text": "build/ts/surfaces/point-of-sale.d.ts",
-        "DirectApiRequestBody": "build/ts/surfaces/point-of-sale.d.ts"
-      },
-      "name": "QueryProductMetafieldsGeneratedType",
-      "description": "",
-      "params": [
-        {
-          "name": "productId",
-          "description": "",
-          "value": "number",
-          "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.ts"
-        }
-      ],
-      "returns": {
-        "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.ts",
-        "description": "",
-        "name": "",
-        "value": ""
-      },
-      "value": "async function queryProductMetafields(productId: number) {\n  const requestBody: DirectApiRequestBody = {\n    query: `#graphql\n      query GetProduct($id: ID!) {\n        product(id: $id) {\n          id\n          metafields(first: 10) {\n            edges {\n              node {\n                id\n                namespace\n                key\n                value\n              }\n            }\n          }\n        }\n      }\n    `,\n    variables: {id: `gid://shopify/Product/${productId}`},\n  };\n  const res = await fetch('shopify:admin/api/graphql.json', {\n    method: 'POST',\n    body: JSON.stringify(requestBody),\n  });\n  return res.json();\n}"
-    },
-    "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.tsx": {
-      "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.tsx",
-      "importMap": {
-        "reactExtension": "",
-        "useApi": "",
-        "POSBlock": "",
-        "POSBlockRow": "",
-        "Text": "",
-        "DirectApiRequestBody": "build/ts/surfaces/point-of-sale.d.ts",
-        "useEffect": "../../node_modules/@types/react/ts5.0/index.d.ts",
-        "useState": "../../node_modules/@types/react/ts5.0/index.d.ts"
-      },
-      "name": "QueryProductMetafieldsGeneratedType",
-      "description": "",
-      "params": [
-        {
-          "name": "productId",
-          "description": "",
-          "value": "number",
-          "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.tsx"
-        }
-      ],
-      "returns": {
-        "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.tsx",
-        "description": "",
-        "name": "",
-        "value": ""
-      },
-      "value": "async function queryProductMetafields(productId: number) {\n  const requestBody: DirectApiRequestBody = {\n    query: `#graphql\n      query GetProduct($id: ID!) {\n        product(id: $id) {\n          id\n          metafields(first: 10) {\n            edges {\n              node {\n                id\n                namespace\n                key\n                value\n              }\n            }\n          }\n        }\n      }\n    `,\n    variables: {id: `gid://shopify/Product/${productId}`},\n  };\n  const res = await fetch('shopify:admin/api/graphql.json', {\n    method: 'POST',\n    body: JSON.stringify(requestBody),\n  });\n  return res.json();\n}"
-    }
-  },
-  "ProductDetailsBlockGeneratedType": {
-    "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.tsx": {
-      "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.tsx",
-      "importMap": {
-        "reactExtension": "",
-        "useApi": "",
-        "POSBlock": "",
-        "POSBlockRow": "",
-        "Text": "",
-        "DirectApiRequestBody": "build/ts/surfaces/point-of-sale.d.ts",
-        "useEffect": "../../node_modules/@types/react/ts5.0/index.d.ts",
-        "useState": "../../node_modules/@types/react/ts5.0/index.d.ts"
-      },
-      "name": "ProductDetailsBlockGeneratedType",
-      "description": "",
-      "params": [],
-      "returns": {
-        "filePath": "docs/surfaces/point-of-sale/staticPages/examples/direct-api-access/direct-api-access.tsx",
-        "description": "",
-        "name": "",
-        "value": ""
-      },
-      "value": "ProductDetailsBlock = () => {\n  const {product} = useApi<'pos.product-details.block.render'>();\n  const [productInfo, setProductInfo] = useState<string>('');\n  useEffect(() => {\n    async function getProductInfo() {\n      const result = await queryProductMetafields(product.id);\n      setProductInfo(JSON.stringify(result, null, 2));\n    }\n    getProductInfo();\n  }, [product.id]);\n\n  return (\n    <POSBlock>\n      <POSBlockRow>\n        <Text>Metafields: {productInfo}</Text>\n      </POSBlockRow>\n      <POSBlockRow onPress={() => mutateMetafield(product.id)}>\n        <Text>Set metafield</Text>\n      </POSBlockRow>\n    </POSBlock>\n  );\n}"
-    }
+      {
+        "type": "Generic",
+        "anchorLink": "getting-started",
+        "title": "Getting Started",
+        "sectionContent": "Get started with POS UI Extensions with Shopify CLI.",
+        "sectionCard": [
+          {
+            "name": "Getting started guide",
+            "subtitle": "Set up your development environment",
+            "url": "/docs/apps/build/pos/getting-started",
+            "type": "blocks"
+          }
+        ]
+      }
+    ]
   }
-}
+]

@@ -10293,7 +10293,7 @@
           "filePath": "../ui-extensions-react/src/surfaces/customer-account/hooks/app-metafields.ts",
           "syntaxKind": "PropertySignature",
           "name": "key",
-          "value": "Metafield",
+          "value": "string",
           "description": "Filter by the metafield key. Requires `namespace` to also be provided.",
           "isOptional": true
         },
@@ -10301,7 +10301,7 @@
           "filePath": "../ui-extensions-react/src/surfaces/customer-account/hooks/app-metafields.ts",
           "syntaxKind": "PropertySignature",
           "name": "namespace",
-          "value": "Metafield",
+          "value": "string",
           "description": "Filter by the metafield namespace. Must be used together with `key`.",
           "isOptional": true
         },
@@ -10309,7 +10309,7 @@
           "filePath": "../ui-extensions-react/src/surfaces/customer-account/hooks/app-metafields.ts",
           "syntaxKind": "PropertySignature",
           "name": "type",
-          "value": "'customer' | 'product' | 'shop' | 'variant' | 'company' | 'companyLocation' | 'cart' | 'order'",
+          "value": "'customer' | 'product' | 'shop' | 'variant' | 'company' | 'companyLocation' | 'cart'",
           "description": "Filter by the resource type that owns the metafield:\n\n- `'customer'`: A customer resource.\n- `'product'`: A product resource.\n- `'shop'`: The shop resource.\n- `'variant'`: A product variant resource.\n- `'company'`: A B2B company resource.\n- `'companyLocation'`: A B2B company location resource.\n- `'cart'`: The cart resource.",
           "isOptional": true
         }
@@ -11293,7 +11293,7 @@
           "isOptional": true
         }
       ],
-      "value": "export interface AppBridge {\n  /**\n   * The static configuration values that will not change during runtime.\n   */\n  config?: Config;\n\n  /**\n   * The Shopify surface that the app is embedded within.\n   */\n  surface?: 'checkout';\n\n  /**\n   * The platform or application that the app is embedded within.\n   */\n  platform?: 'browser' | 'shop-app' | 'pos';\n\n  /**\n   * The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C)\n   * with a TTL of 5 minutes. It can be used to ensure that requests came from a Shopify authenticated user.\n   * See the [ID Token documentation](/docs/apps/build/authentication-authorization/session-tokens) for more information.\n   *\n   * @see /docs/api/checkout-ui-extensions/latest/apis/session-token\n   * @see /docs/apps/build/authentication-authorization/session-tokens\n   */\n  idToken?: () => Promise<string>;\n\n  /**\n   * The references and APIs to the UI extension that helped bootstrap the iframe.\n   */\n  extension?: Extension;\n\n  /**\n   * Information about the current visitor.\n   *\n   * @ignore async via our RPC endpoints to ensure a secure handshake between\n   * host and client is established.\n   */\n  visitor?: () => Promise<Visitor>;\n}"
+      "value": "interface AppBridge {\n  /**\n   * The static configuration values that will not change during runtime.\n   */\n  config?: Config;\n\n  /**\n   * The Shopify surface that the app is embedded within.\n   */\n  surface?: 'checkout';\n\n  /**\n   * The platform or application that the app is embedded within.\n   */\n  platform?: 'browser' | 'shop-app' | 'pos';\n\n  /**\n   * The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C)\n   * with a TTL of 5 minutes. It can be used to ensure that requests came from a Shopify authenticated user.\n   * See the [ID Token documentation](/docs/apps/build/authentication-authorization/session-tokens) for more information.\n   *\n   * @see /docs/api/checkout-ui-extensions/latest/apis/session-token\n   * @see /docs/apps/build/authentication-authorization/session-tokens\n   */\n  idToken?: () => Promise<string>;\n\n  /**\n   * The references and APIs to the UI extension that helped bootstrap the iframe.\n   */\n  extension?: Extension;\n\n  /**\n   * Information about the current visitor.\n   *\n   * @ignore async via our RPC endpoints to ensure a secure handshake between\n   * host and client is established.\n   */\n  visitor?: () => Promise<Visitor>;\n}"
     }
   },
   "Config": {
