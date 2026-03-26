@@ -8,6 +8,24 @@ const data: ReferenceEntityTemplateSchema = createComponentDoc({
   definitions: {
     properties: true,
   },
+  extraExamples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Uses `background="base"` with `border`, `borderRadius="large"`, and `padding="large"` to create a prominent callout. The `accessibilityLabel` provides context for assistive technology when the content alone is insufficient.',
+        codeblock: {
+          title: 'Highlight a callout with a bordered box',
+          tabs: [
+            {
+              code: './examples/box-callout.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   bestPractices: `
 - Use \`s-box\` when you need a container that preserves the natural size of its contents.
 - \`s-box\` is particularly useful in layout components like \`s-stack\` where you want to prevent children from stretching to fit.
