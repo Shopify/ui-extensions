@@ -33,6 +33,25 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description:
+      'Examples of additional ways to use the OrderedList component.',
+    examples: [
+      {
+        description:
+          'Display a sequential checklist. This example uses a two-step process that contrasts with the three-step cart flow in the default sample.',
+        codeblock: {
+          title: 'List numbered checkout steps',
+          tabs: [
+            {
+              code: './examples/ordered-list-steps.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

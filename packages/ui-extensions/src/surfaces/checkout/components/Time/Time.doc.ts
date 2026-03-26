@@ -27,6 +27,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Examples of additional ways to use the Time component.',
+    examples: [
+      {
+        description:
+          'Set `dateTime` to an ISO value for machine-readable time and use human-friendly text as the display content. This contrasts with the full-date format in the default sample.',
+        codeblock: {
+          title: 'Show a same-day pickup window',
+          tabs: [
+            {
+              code: './examples/time-pickup.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

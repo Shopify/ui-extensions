@@ -33,6 +33,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Examples of additional ways to use the Chip component.',
+    examples: [
+      {
+        description:
+          'Use the `graphic` slot with `s-icon` and `accessibilityLabel` for chips whose text alone doesn\'t convey the full meaning. The API restricts the `graphic` slot to icon elements.',
+        codeblock: {
+          title: 'Add an icon and a screen-reader label to a chip',
+          tabs: [
+            {
+              code: './examples/chip-icon.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [],
 };
 

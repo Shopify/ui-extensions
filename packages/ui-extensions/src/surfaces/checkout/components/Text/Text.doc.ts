@@ -27,6 +27,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Examples of additional ways to use the Text component.',
+    examples: [
+      {
+        description:
+          'Use `type="strong"` for default strong emphasis and `tone="neutral"` for informational policy text without success or warning coloring.',
+        codeblock: {
+          title: 'Emphasize a legal or policy line',
+          tabs: [
+            {
+              code: './examples/text-strong.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       title: 'Useful for',
@@ -42,9 +60,9 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       sectionContent: `
 - Use plain and clear terms.
-- Don’t use jargon or technical language.
-- Don’t use different terms to describe the same thing.
-- Don’t duplicate content.`,
+- Don't use jargon or technical language.
+- Don't use different terms to describe the same thing.
+- Don't duplicate content.`,
     },
   ],
 };

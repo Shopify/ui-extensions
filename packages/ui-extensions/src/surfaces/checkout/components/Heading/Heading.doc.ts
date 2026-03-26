@@ -27,6 +27,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Examples of additional ways to use the Heading component.',
+    examples: [
+      {
+        description:
+          'Set `accessibilityRole="presentation"` to suppress heading semantics. Use this when a parent region already provides the heading and this element serves only as a visual title.',
+        codeblock: {
+          title: 'Use presentation role for visual-only headings',
+          tabs: [
+            {
+              code: './examples/heading-presentation.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       title: 'Useful for',
