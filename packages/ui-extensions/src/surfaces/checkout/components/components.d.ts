@@ -164,7 +164,17 @@ interface AnnouncementProps$1 extends GlobalProps, ToggleEventProps {
 	 */
 	dismiss: () => void;
 }
+/**
+ * The design system's size scale, used to control the dimensions of components like avatars, icons, and thumbnails. Values range from `"small-500"` (smallest) through `"base"` (standard) to `"large-500"` (largest). Not all components support every size — check the component's `size` property type for its available options.
+ */
 export type SizeKeyword = "small-500" | "small-400" | "small-300" | "small-200" | "small-100" | "small" | "base" | "large" | "large-100" | "large-200" | "large-300" | "large-400" | "large-500";
+/**
+ * Defines the color intensity or emphasis level for text and UI elements.
+ *
+ * - `subdued`: Deemphasized color for secondary text, supporting labels, and less critical interface elements.
+ * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
+ * - `strong`: Emphasized color for headings, key labels, and interactive elements that need prominence.
+ */
 export type ColorKeyword = "subdued" | "base" | "strong";
 export type BackgroundColorKeyword = "transparent" | ColorKeyword;
 export interface BackgroundProps {
@@ -740,8 +750,28 @@ export type IconType = (typeof privateIconArray)[number];
  * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
+/**
+ * Represents CSS shorthand properties that accept one to four values, following the [CSS shorthand syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box). Supports specifying values for all four sides: top, right, bottom, and left.
+ *
+ * - `T`: Single value that applies to all four sides.
+ * - `${T} ${T}`: Two values for block axis (top/bottom) and inline axis (left/right).
+ * - `${T} ${T} ${T}`: Three values for block-start (top), inline axis (left/right), and block-end (bottom).
+ * - `${T} ${T} ${T} ${T}`: Four values for block-start (top), inline-end (right), block-end (bottom), and inline-start (left).
+ */
 export type MaybeAllValuesShorthandProperty<T extends string> = T | `${T} ${T}` | `${T} ${T} ${T}` | `${T} ${T} ${T} ${T}`;
+/**
+ * Represents CSS shorthand properties that accept one or two values. Supports specifying the same value for both dimensions or different values.
+ *
+ * - `T`: Single value that applies to both dimensions.
+ * - `${T} ${T}`: Two values for block axis (vertical) and inline axis (horizontal).
+ */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
+/**
+ * Makes a property responsive by allowing it to be set conditionally based on container query conditions. The value can be either a base value or a container query string.
+ *
+ * - `T`: Base value that applies in all conditions.
+ * - `@container${string}`: Container query string for conditional responsive styling based on container size.
+ */
 export type MaybeResponsive<T> = T | `@container${string}`;
 /**
  * Prevents widening string literal types in a union to `string`.
@@ -1031,6 +1061,12 @@ export interface LabelAccessibilityVisibilityProps {
 	 */
 	labelAccessibilityVisibility?: ExtractStrict<AccessibilityVisibilityProps["accessibilityVisibility"], "visible" | "exclusive">;
 }
+/**
+ * Defines the padding size for elements, using the standard size scale or `none` for no padding.
+ *
+ * - `SizeKeyword`: Standard padding sizes from the size scale for consistent spacing.
+ * - `none`: No padding.
+ */
 export type PaddingKeyword = SizeKeyword | "none";
 export interface PaddingProps {
 	/**
@@ -1107,8 +1143,27 @@ export interface PaddingProps {
 	 */
 	paddingInlineEnd?: MaybeResponsive<PaddingKeyword | "">;
 }
+/**
+ * Represents size values in pixels, percentages, or zero.
+ *
+ * - `${number}px`: Absolute size in pixels for fixed dimensions (such as `100px`, `24px`).
+ * - `${number}%`: Relative size as a percentage of the parent container (such as `50%`, `100%`).
+ * - `0`: Zero size, equivalent to no dimension.
+ */
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
+/**
+ * Represents size values that can also be set to `auto` for automatic sizing.
+ *
+ * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
+ * - `auto`: Automatically sizes based on content and layout constraints. Learn more about the [auto value](https://developer.mozilla.org/en-US/docs/Web/CSS/width#auto).
+ */
 export type SizeUnitsOrAuto = SizeUnits | "auto";
+/**
+ * Represents size values that can also be set to `none` to remove the size constraint.
+ *
+ * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
+ * - `none`: No size constraint, allowing unlimited growth. Learn more about the [none value](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width#none).
+ */
 export type SizeUnitsOrNone = SizeUnits | "none";
 export interface SizingProps {
 	/**
@@ -1160,8 +1215,29 @@ export interface SizingProps {
 	 */
 	maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
+/**
+ * The visual style of a border. Learn more about [border-style](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).
+ *
+ * - `none`: No border is rendered.
+ * - `solid`: A single continuous line.
+ * - `dashed`: A series of short dashes.
+ * - `dotted`: A series of round dots.
+ * - `auto`: The border style is determined automatically based on the surface's design system.
+ */
 export type BorderStyleKeyword = "none" | "solid" | "dashed" | "dotted" | "auto";
+/**
+ * Defines the width of borders, using the standard size scale or `none` for no border.
+ *
+ * - `SizeKeyword`: Standard border widths from the size scale for consistent thickness.
+ * - `none`: No border width (removes the border).
+ */
 export type BorderSizeKeyword = SizeKeyword | "none";
+/**
+ * The corner radius of a border, using the design system's `SizeKeyword` scale with additional options:
+ *
+ * - `max`: The maximum possible radius, creating a pill or circular shape.
+ * - `none`: No rounding — corners are sharp (0 radius).
+ */
 export type BorderRadiusKeyword = SizeKeyword | "max" | "none";
 /**
  * Represents a shorthand for defining a border. It can be a combination of size, optionally followed by color, optionally followed by style.
@@ -2526,7 +2602,7 @@ interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps, Bloc
 	 *
 	 * @default 'heading'
 	 *
-	 * @implementation The `heading` role doesn't need to be applied if
+	 * @implementation The `heading` role doesn’t need to be applied if
 	 * the host applies it for you; for example, an HTML host rendering
 	 * an `<h2>` element should not apply the `heading` role.
 	 */
@@ -2536,11 +2612,22 @@ interface IconProps$1 extends GlobalProps, Pick<InteractionProps, "interestFor">
 	/**
 	 * Sets the tone of the icon, based on the intention of the information being conveyed.
 	 *
+	 * - `'auto'`: Inherits the tone from its parent context.
+	 * - `'neutral'`: Standard, non-semantic color for general-purpose icons.
+	 * - `'info'`: Informational content.
+	 * - `'success'`: Positive outcomes or confirmations.
+	 * - `'warning'`: Cautionary messages or alerts.
+	 * - `'critical'`: Errors, destructive actions, or urgent warnings.
+	 * - `'custom'`: Inherits a custom color from its parent element's CSS.
+	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * Modify the color to be more or less intense.
+	 * The color emphasis of the icon.
+	 *
+	 * - `'base'`: Standard color intensity.
+	 * - `'subdued'`: A lighter, less prominent appearance.
 	 *
 	 * @default 'base'
 	 */
@@ -2548,124 +2635,91 @@ interface IconProps$1 extends GlobalProps, Pick<InteractionProps, "interestFor">
 	/**
 	 * Adjusts the size of the icon.
 	 *
+	 * - `'small-200'`: Extra extra small.
+	 * - `'small-100'`: Extra small.
+	 * - `'small'`: Small.
+	 * - `'base'`: Standard size.
+	 * - `'large'`: Large.
+	 * - `'large-100'`: Extra large.
+	 *
 	 * @default 'base'
 	 */
 	size?: SizeKeyword;
+	/**
+	 * The type of icon to display. You can specify an icon name from the available icon set, or use an empty string to show no icon.
+	 */
 	type?: IconType | AnyString;
 }
 export interface BaseImageProps {
 	/**
-	 * An alternative text description that describe the image for the reader to
-	 * understand what it is about. It is extremely useful for both users using
-	 * assistive technology and sighted users. A well written description
-	 * provides people with visual impairments the ability to participate in
-	 * consuming non-text content. When a screen readers encounters an `s-image`,
-	 * the description is read and announced aloud. If an image fails to load,
-	 * potentially due to a poor connection, the `alt` is displayed on
-	 * screen instead. This has the benefit of letting a sighted buyer know an
-	 * image was meant to load here, but as an alternative, they’re still able to
-	 * consume the text content. Read
-	 * [considerations when writing alternative text](https://www.shopify.com/ca/blog/image-alt-text#4)
-	 * to learn more.
+	 * Alternative text that describes the image for screen readers. This text should convey the meaning or content of the image to users who can't see it.
 	 *
 	 * @default `''`
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
 	 */
 	alt?: string;
 	/**
-	 * A set of media conditions and their corresponding sizes.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes
+	 * The sizes of the image at different viewport widths. Use this with `srcSet` to tell the browser which image to load (for example, `'(max-width: 320px) 280px, 640px'`).
 	 */
 	sizes?: string;
 	/**
-	 * The image source (either a remote URL or a local file resource).
-	 *
-	 * When the image is loading or no `src` is provided, a placeholder will be rendered.
-	 *
-	 * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
-	 * reserved, except in cases where the image area does not have a contextual inline or block size, which should be rare.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
+	 * The URL of the image to display. You can provide an absolute or relative URL pointing to the image file. When the image is loading or no `src` is provided, a placeholder is rendered in its place.
 	 */
 	src?: string;
 	/**
-	 * A set of image sources and their width or pixel density descriptors.
-	 *
-	 * This overrides the `src` property.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset
+	 * A set of source images with different sizes for responsive loading. Use this to provide multiple image sizes for different screen resolutions (for example, `'image-320w.jpg 320w, image-640w.jpg 640w'`). This overrides the `src` property when the browser can match a suitable source.
 	 */
 	srcSet?: string;
 }
 interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
 	/**
-	 * Sets the semantic meaning of the component’s content. When set,
-	 * the role will be used by assistive technologies to help users
-	 * navigate the page.
+	 * Sets the semantic meaning of the image content. When set, the role will be used by assistive technologies to help users navigate the page.
+	 *
+	 * - `'img'`: Identifies the element as an image that conveys meaningful information to users.
+	 * - `'none'`: Completely hides the element and its content from assistive technologies.
+	 * - `'presentation'`: Removes semantic meaning, making the image purely decorative and ignored by screen readers.
 	 *
 	 * @default 'img'
-	 *
-	 * @implementation The `img` role doesn't need to be applied if
-	 * the host applies it for you; for example, an HTML host rendering
-	 * an `<img>` element should not apply the `img` role.
 	 */
 	accessibilityRole?: "img" | ExtractStrict<AccessibilityRole, "presentation" | "none">;
 	/**
 	 * The displayed inline width of the image.
 	 *
-	 * - `fill`: the image will takes up 100% of the available inline size.
-	 * - `auto`: the image will be displayed at its natural size.
+	 * - `'fill'`: The image takes up 100% of the available inline size.
+	 * - `'auto'`: The image is displayed at its natural size.
 	 *
 	 * @default 'fill'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
 	 */
 	inlineSize?: "fill" | "auto";
 	/**
-	 * The aspect ratio of the image.
-	 *
-	 * The rendering of the image will depend on the `inlineSize` value:
-	 *
-	 * - `inlineSize="fill"`: the aspect ratio will be respected and the image will take the necessary space.
-	 * - `inlineSize="auto"`: the image will not render until it has loaded and the aspect ratio will be ignored.
-	 *
-	 * For example, if the value is set as `50 / 100`, the getter returns `50 / 100`.
-	 * If the value is set as `0.5`, the getter returns `0.5 / 1`.
+	 * The aspect ratio of the image as a width-to-height ratio (for example, `'16/9'` or `'1'`). This helps prevent layout shifts while the image loads.
 	 *
 	 * @default '1/1'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
 	 */
 	aspectRatio?: `${number}${optionalSpace}/${optionalSpace}${number}` | `${number}`;
 	/**
-	 * Determines how the content of the image is resized to fit its container.
-	 * The image is positioned in the center of the container.
+	 * How the image should be resized to fit its container. The image is positioned in the center of the container. Learn more about the [object-fit property](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
+	 *
+	 * - `'contain'`: Fits the entire image within the container, preserving aspect ratio. May leave empty space.
+	 * - `'cover'`: Fills the container while preserving aspect ratio, cropping the image if needed.
 	 *
 	 * @default 'contain'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
 	 */
 	objectFit?: "contain" | "cover";
 	/**
-	 * Determines the loading behavior of the image:
-	 * - `eager`: Immediately loads the image, irrespective of its position within the visible viewport.
-	 * - `lazy`: Delays loading the image until it approaches a specified distance from the viewport.
+	 * When the image should be loaded.
+	 *
+	 * - `'eager'`: Loads the image immediately.
+	 * - `'lazy'`: Defers loading until the image is near the viewport.
 	 *
 	 * @default 'eager'
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading
 	 */
 	loading?: "eager" | "lazy";
 	/**
-	 * Invoked when load completes successfully.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+	 * A callback that's fired when the image has loaded successfully.
 	 */
 	onLoad?: (event: Event) => void;
 	/**
-	 * Invoked on load error.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+	 * A callback that's fired when the image fails to load.
 	 */
 	onError?: (event: Event) => void;
 }
@@ -2703,126 +2757,154 @@ interface ListItemProps$1 extends GlobalProps {
 interface MapProps$1 extends GlobalProps, SizingProps {
 	/**
 	 * A valid API key for the map service provider.
-	 *
-	 * The map service provider may require an API key. Without an API key the map could be hidden or render in a limited developer mode.
 	 */
 	apiKey?: string;
 	/**
-	 * Map center’s latitude in degrees.
+	 * The latitude of the map's center point, in degrees.
 	 *
 	 * @default 0
 	 */
 	latitude?: number;
 	/**
-	 * Map center’s longitude in degrees.
+	 * The longitude of the map's center point, in degrees.
 	 *
 	 * @default 0
 	 */
 	longitude?: number;
 	/**
-	 * A label that describes the purpose or contents of the map.
-	 *
-	 * When set, it will be announced to users using assistive technologies and will provide them with more context.
+	 * A label that describes the purpose or contents of the map. When set, it will be announced to users using assistive technologies.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * The initial Map zoom level.
-	 *
-	 * Valid zoom values are numbers from zero up to 18.
-	 * Larger zoom values correspond to a higher resolution.
+	 * The initial zoom level of the map. Valid values are numbers from 0 to 18.
 	 *
 	 * @default 4
 	 */
 	zoom?: number;
 	/**
-	 * The maximum zoom level which will be displayed on the map.
-	 *
-	 * Valid zoom values are numbers from zero up to 18.
+	 * The maximum zoom level the user can reach on the map. Valid values are numbers from 0 to 18.
 	 *
 	 * @default 18
 	 */
 	maxZoom?: number;
 	/**
-	 * The minimum zoom level which will be displayed on the map.
-	 *
-	 * Valid zoom values are numbers from zero up to 18.
+	 * The minimum zoom level the user can reach on the map. Valid values are numbers from 0 to 18.
 	 *
 	 * @default 0
 	 */
 	minZoom?: number;
 	/**
-	 * Callback when the viewport bounds have changed or the map is resized.
+	 * A callback that's fired when the visible map boundaries change.
 	 */
 	onBoundsChange?: (event: MapBoundsChangeEvent) => void;
 	/**
-	 * Callback when the map view changes.
+	 * A callback that's fired when the map view changes, such as when the user pans or zooms.
 	 */
 	onViewChange?: (event: MapViewChangeEvent) => void;
 	/**
-	 * Callback when the user clicks on the map.
+	 * A callback that's fired when the user clicks on the map.
 	 */
 	onClick?: (event: MapClickEvent) => void;
 	/**
-	 * Callback when the user double-clicks on the map.
+	 * A callback that's fired when the user double-clicks on the map.
 	 */
 	onDblClick?: (event: MapDblClickEvent) => void;
 }
+/**
+ * A geographic coordinate pair representing a location on the map.
+ */
 interface Location$1 {
+	/**
+	 * The latitude of the location in degrees.
+	 */
 	latitude?: number;
+	/**
+	 * The longitude of the location in degrees.
+	 */
 	longitude?: number;
 }
+/**
+ * The geographic boundaries of a visible map area.
+ */
 export interface Bounds {
+	/**
+	 * The north-east corner of the bounded area.
+	 */
 	northEast?: Location$1;
+	/**
+	 * The south-west corner of the bounded area.
+	 */
 	southWest?: Location$1;
 }
+/**
+ * The event data for map view changes.
+ */
 export interface MapViewChangeEvent extends Event {
+	/**
+	 * The geographic location of the new map center.
+	 */
 	location?: Location$1;
+	/**
+	 * The current zoom level of the map after the view change.
+	 */
 	zoom?: number;
 }
+/**
+ * The event data for map bounds changes.
+ */
 export interface MapBoundsChangeEvent extends Event {
+	/**
+	 * The geographic boundaries of the visible map area after the change.
+	 */
 	bounds?: Bounds;
 }
+/**
+ * The event data for map click events.
+ */
 export interface MapClickEvent extends Event {
+	/**
+	 * The geographic location of the click.
+	 */
 	location?: Location$1;
 }
+/**
+ * The event data for map double-click events.
+ */
 export interface MapDblClickEvent extends Event {
+	/**
+	 * The geographic location of the double-click.
+	 */
 	location?: Location$1;
 }
 interface MapMarkerProps$1 extends GlobalProps, InteractionProps, Pick<SizingProps, "blockSize" | "inlineSize"> {
 	/**
-	 * Marker’s location latitude in degrees.
+	 * The latitude of the marker location, in degrees.
 	 *
 	 * @default 0
 	 */
 	latitude?: number;
 	/**
-	 * Marker’s longitude latitude in degrees.
+	 * The longitude of the marker location, in degrees.
 	 *
 	 * @default 0
 	 */
 	longitude?: number;
 	/**
-	 * A label that describes the purpose of the marker. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide them with more context.
+	 * A label that describes the purpose of the marker. When set, it will be announced to users using assistive technologies.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Allows grouping the marker in clusters when zoomed out.
+	 * Whether the marker can be grouped into clusters when zoomed out.
 	 *
 	 * @default false
 	 */
 	clusterable?: boolean;
 	/**
-	 * The graphic to use as the marker.
-	 *
-	 * If unset, it will default to the provider’s default marker.
+	 * The graphic to use as the marker. If unset, the default marker from the map provider is used.
 	 */
 	graphic?: ComponentChildren;
 	/**
-	 * Callback when a marker is clicked.
-	 *
-	 * It does not trigger a click event on the map itself.
+	 * A callback that's fired when the marker is clicked. This does not trigger a click event on the map.
 	 */
 	onClick?: (event: Event) => void;
 }
@@ -2923,17 +3005,13 @@ interface PasswordFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLe
 export type PasswordAutocompleteField = ExtractStrict<AnyAutocompleteField, "new-password" | "current-password">;
 interface PaymentIconProps$1 extends GlobalProps {
 	/**
-	 * The icon type of the payment method
+	 * The name of the payment method icon to display.
 	 *
 	 * @default ''
 	 */
 	type?: PaymentIconName | AnyString;
 	/**
-	 * A label that describes the purpose or contents of the icon.
-	 *
-	 * When set, it will be announced to users using assistive technologies and will provide them with more context.
-	 * This should only be used if the icon requires an alternative internationalised label
-	 * or if it is otherwise inappropriate to make use of the default label included with the icon.
+	 * A label that describes the purpose or contents of the payment icon. When set, it will be announced to users using assistive technologies.
 	 */
 	accessibilityLabel?: string;
 }
@@ -2962,25 +3040,28 @@ interface PressButtonProps$1 extends GlobalProps, Pick<ButtonProps$1, "accessibi
 }
 interface ProductThumbnailProps$1 extends GlobalProps, BaseImageProps {
 	/**
-	 * Decorates the product thumbnail with the quantity of the product.
+	 * The quantity badge displayed on the product thumbnail.
 	 */
 	totalItems?: number;
 	/**
-	 * Adjusts the size the product thumbnail image.
+	 * Adjusts the size of the product thumbnail image.
+	 *
+	 * - `'small-200'`: Extra extra small.
+	 * - `'small-100'`: Extra small.
+	 * - `'small'`: Small.
+	 * - `'base'`: Standard size.
+	 * - `'large'`: Large.
+	 * - `'large-100'`: Extra large.
 	 *
 	 * @default 'base'
 	 */
 	size?: SizeKeyword;
 	/**
-	 * Invoked when load of provided image completes successfully.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+	 * A callback that's fired when the thumbnail image has loaded successfully.
 	 */
 	onLoad?: (event: Event) => void;
 	/**
-	 * Invoked on load error of provided image.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+	 * A callback that's fired when the thumbnail image fails to load.
 	 */
 	onError?: (event: Event) => void;
 }
@@ -3026,46 +3107,39 @@ interface ProgressProps$1 extends GlobalProps {
 }
 interface QRCodeProps$1 extends GlobalProps {
 	/**
-	 * Set the border of the QR code.
+	 * The border style of the QR code.
 	 *
-	 * `base`: applies border that is appropriate for the element.
-	 * `none`: removes the border from the element.
+	 * - `'base'`: Applies a standard border.
+	 * - `'none'`: Removes the border.
 	 *
 	 * @default 'base'
 	 */
 	border?: "base" | "none";
 	/**
-	 * The content to be encoded in the QR code, which can be any string such as a URL, email address, plain text, etc.
-	 * Specific string formatting can trigger actions on the user's device when scanned, like opening geolocation
-	 * coordinates on a map, opening a preferred app or app store entry, preparing an email, text message, and more.
+	 * The data to encode in the QR code. This can be any string, such as a URL, email address, or plain text. When scanned, specific string formats can trigger device actions like opening a link, preparing an email, or launching an app.
 	 */
 	content?: string;
 	/**
 	 * The displayed size of the QR code.
 	 *
-	 * `fill`: the QR code will takes up 100% of the available inline-size and maintain a 1:1 aspect ratio.
-	 * `base`: the QR code will be displayed at its default size.
+	 * - `'fill'`: The QR code takes up 100% of the available inline size and maintains a 1:1 aspect ratio.
+	 * - `'base'`: The QR code is displayed at its default size.
 	 *
 	 * @default 'base'
 	 */
 	size?: "base" | "fill";
 	/**
-	 * A label that describes the purpose or contents of the QR code. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide more context about what the QR code may do when scanned.
+	 * A label that describes the purpose or contents of the QR code. When set, it will be announced to users using assistive technologies.
 	 *
 	 * @default 'QR code' (translated to the user's locale)
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Invoked when the conversion of `content` to a QR code fails.
-	 * If an error occurs, the QR code and its child elements will not be displayed.
+	 * A callback that's fired when the conversion of `content` to a QR code fails. If an error occurs, the QR code and its child elements will not be displayed.
 	 */
 	onError?: (event: Event) => void;
 	/**
-	 * URL of an image to be displayed in the center of the QR code.
-	 * This is useful for branding or to indicate to the user what scanning the QR code will do.
-	 * By default, no image is displayed.
+	 * URL of an image to display in the center of the QR code, typically used for branding or to indicate what scanning the code will do.
 	 */
 	logo?: string;
 }
