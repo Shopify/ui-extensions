@@ -66,11 +66,15 @@ fi
 
 # Make sure https://shopify.dev URLs are relative so they work in Spin.
 # See https://github.com/Shopify/generate-docs/issues/181
-run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
-sed_exit=$?
-if [ $sed_exit -ne 0 ]; then
-  fail_and_exit $sed_exit
-fi
+for docs_file in ./$DOCS_PATH/generated/generated_docs_data.json ./$DOCS_PATH/generated/generated_docs_data_v2.json; do
+  if [ -f "$docs_file" ]; then
+    run_sed 's/https:\/\/shopify.dev//gi' "$docs_file"
+    sed_exit=$?
+    if [ $sed_exit -ne 0 ]; then
+      fail_and_exit $sed_exit
+    fi
+  fi
+done
 
 # Generate targets.json
 echo "Generating targets.json..."
@@ -87,13 +91,19 @@ if [ -d $SHOPIFY_DEV_PATH ]; then
   mkdir -p $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
   cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
   # Replace 'unstable' with the exact API version in relative doc links
-  run_sed \
-    "s/\/docs\/api\/checkout-ui-extensions\/unstable/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
-    $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data.json
-  sed_exit=$?
-  if [ $sed_exit -ne 0 ]; then
-    fail_and_exit $sed_exit
-  fi
+  for docs_file in \
+    $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data.json \
+    $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data_v2.json; do
+    if [ -f "$docs_file" ]; then
+      run_sed \
+        "s/\/docs\/api\/checkout-ui-extensions\/unstable/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
+        "$docs_file"
+      sed_exit=$?
+      if [ $sed_exit -ne 0 ]; then
+        fail_and_exit $sed_exit
+      fi
+    fi
+  done
   rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
 
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then

@@ -3,7 +3,7 @@
     "docs/surfaces/checkout/staticPages/configuration.doc.ts": {
       "filePath": "docs/surfaces/checkout/staticPages/configuration.doc.ts",
       "importMap": {
-        "LandingTemplateSchema": "../../node_modules/@shopify/generate-docs/dist/types.d.ts"
+        "LandingTemplateSchema": "node_modules/@shopify/generate-docs/dist/types.d.ts"
       },
       "name": "DataGeneratedType",
       "description": "Template schema for landing documentation pages.",
@@ -13,7 +13,7 @@
     "docs/surfaces/checkout/staticPages/error-handling.doc.ts": {
       "filePath": "docs/surfaces/checkout/staticPages/error-handling.doc.ts",
       "importMap": {
-        "LandingTemplateSchema": "../../node_modules/@shopify/generate-docs/dist/types.d.ts"
+        "LandingTemplateSchema": "node_modules/@shopify/generate-docs/dist/types.d.ts"
       },
       "name": "DataGeneratedType",
       "description": "Template schema for landing documentation pages.",
@@ -23,7 +23,7 @@
     "docs/surfaces/checkout/staticPages/extension-overview.doc.ts": {
       "filePath": "docs/surfaces/checkout/staticPages/extension-overview.doc.ts",
       "importMap": {
-        "LandingTemplateSchema": "../../node_modules/@shopify/generate-docs/dist/types.d.ts"
+        "LandingTemplateSchema": "node_modules/@shopify/generate-docs/dist/types.d.ts"
       },
       "name": "DataGeneratedType",
       "description": "Template schema for landing documentation pages.",
@@ -33,7 +33,7 @@
     "docs/surfaces/checkout/staticPages/overview.doc.ts": {
       "filePath": "docs/surfaces/checkout/staticPages/overview.doc.ts",
       "importMap": {
-        "LandingTemplateSchema": "../../node_modules/@shopify/generate-docs/dist/types.d.ts"
+        "LandingTemplateSchema": "node_modules/@shopify/generate-docs/dist/types.d.ts"
       },
       "name": "DataGeneratedType",
       "description": "Template schema for landing documentation pages.",
