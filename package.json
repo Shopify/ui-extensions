@@ -44,7 +44,7 @@
     "@shopify/babel-preset": "^24.1.0",
     "@shopify/browserslist-config": "^3.0.0",
     "@shopify/eslint-plugin": "^42.0.0",
-    "@shopify/generate-docs": "1.0.0",
+    "@shopify/generate-docs": "https://registry.npmjs.org/@shopify/generate-docs/-/generate-docs-1.0.0.tgz",
     "@shopify/loom": "^1.0.0",
     "@shopify/loom-cli": "^1.0.0",
     "@shopify/loom-plugin-build-library": "^1.0.0",
