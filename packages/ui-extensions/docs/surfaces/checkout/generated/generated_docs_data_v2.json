@@ -349,14 +349,14 @@
     "src/surfaces/checkout/shared.ts": {
       "filePath": "src/surfaces/checkout/shared.ts",
       "name": "SubscribableSignalLike",
-      "description": "Represents a read-only value managed on the main thread that an extension can subscribe to.\n\nExample: Checkout uses this to manage the state of an object and communicate state changes to extensions running in a sandboxed web worker.\n\nThis interface is compatible with [Preact's ReadonlySignal](https://github.com/preactjs/signals/blob/a023a132a81bd4ba4a0bebb8cbbeffbd8c8bbafc/packages/core/src/index.ts#L700-L709).\n\nSome fields are deprecated but still supported for backwards compatibility. In version 2025-10, [`StatefulRemoteSubscribable`](https://github.com/Shopify/remote-dom/blob/03929aa8418a89d41d294005f219837582718df8/packages/async-subscription/src/types.ts#L17) was replaced with `ReadonlySignalLike`. Checkout will remove the old fields some time in the future.",
+      "description": "Represents a reactive signal interface that provides both immediate value access and subscription-based updates. Enables real-time synchronization with changing data through the observer pattern. This interface extends `ReadonlySignalLike` with deprecated fields that are still supported for backwards compatibility.",
       "members": [
         {
           "filePath": "src/surfaces/checkout/shared.ts",
           "syntaxKind": "PropertySignature",
           "name": "current",
           "value": "T",
-          "description": "",
+          "description": "The current value of the signal. This property provides synchronous access to the latest value without subscribing to changes.",
           "deprecationMessage": "Use `.value` instead."
         },
         {
@@ -364,8 +364,8 @@
           "syntaxKind": "MethodSignature",
           "name": "destroy",
           "value": "() => Promise<void>",
-          "description": "",
-          "deprecationMessage": "No longer needed. Use Preact Signal management instead."
+          "description": "Cleans up the subscription and releases any resources held by this signal. After calling `destroy()`, the signal stops receiving updates from the main thread.",
+          "deprecationMessage": "No longer needed. Use [Preact Signals](https://preactjs.com/guide/v10/signals) to manage reactive state instead."
         },
         {
           "filePath": "src/surfaces/checkout/shared.ts",
@@ -382,7 +382,7 @@
           "description": "The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup."
         }
       ],
-      "value": "export interface SubscribableSignalLike<T> extends ReadonlySignalLike<T> {\n  /**\n   * @deprecated Use `.value` instead.\n   */\n  readonly current: T;\n  /**\n   * @deprecated No longer needed. Use Preact Signal management instead.\n   */\n  destroy(): Promise<void>;\n}"
+      "value": "export interface SubscribableSignalLike<T> extends ReadonlySignalLike<T> {\n  /**\n   * The current value of the signal. This property provides synchronous access to the\n   * latest value without subscribing to changes.\n   *\n   * @deprecated Use `.value` instead.\n   */\n  readonly current: T;\n  /**\n   * Cleans up the subscription and releases any resources held by this signal. After calling\n   * `destroy()`, the signal stops receiving updates from the main thread.\n   *\n   * @deprecated No longer needed. Use [Preact Signals](https://preactjs.com/guide/v10/signals) to manage reactive state instead.\n   */\n  destroy(): Promise<void>;\n}"
     }
   },
   "AppliedGiftCard": {
@@ -3431,10 +3431,32 @@
           "syntaxKind": "PropertySignature",
           "name": "isoCode",
           "value": "CountryCode",
-          "description": "The ISO-3166-1 code for this country."
+          "description": "The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format. This is the internationally recognized standard for representing countries and territories.",
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'CA' for Canada, 'US' for United States.",
+                  "title": "Example"
+                }
+              ]
+            },
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'CA' for Canada, 'US' for United States.",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
         }
       ],
-      "value": "export interface Country {\n  /**\n   * The ISO-3166-1 code for this country.\n   * @see https://www.iso.org/iso-3166-country-codes.html\n   */\n  isoCode: CountryCode;\n}"
+      "value": "export interface Country {\n  /**\n   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format. This is the internationally recognized standard for representing countries and territories.\n   *\n   * @example 'CA' for Canada, 'US' for United States.\n   */\n  isoCode: CountryCode;\n}"
     }
   },
   "Currency": {
