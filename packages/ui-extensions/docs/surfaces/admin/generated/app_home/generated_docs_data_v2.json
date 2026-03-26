@@ -2456,7 +2456,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@6805",
+          "name": "__@internals$4@2229",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -2801,7 +2801,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$3@6858",
+          "name": "__@internals$3@2282",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -3483,7 +3483,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@6805",
+          "name": "__@internals$4@2229",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -3586,7 +3586,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$2@6959",
+          "name": "__@internals$2@2383",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -3845,7 +3845,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@6805",
+          "name": "__@internals$4@2229",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -4007,7 +4007,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@dirtyStateSymbol@7003",
+          "name": "__@dirtyStateSymbol@2427",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -4015,7 +4015,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$1@7002",
+          "name": "__@internals$1@2426",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -4182,7 +4182,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@setFiles@7038",
+          "name": "__@setFiles@2462",
           "value": "(files: File[]) => void",
           "description": "",
           "isPrivate": true
@@ -4190,7 +4190,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@getFileInput@7040",
+          "name": "__@getFileInput@2464",
           "value": "() => HTMLInputElement",
           "description": "",
           "isPrivate": true
@@ -4198,7 +4198,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals@7039",
+          "name": "__@internals@2463",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -4508,7 +4508,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@6805",
+          "name": "__@internals$4@2229",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -5926,7 +5926,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@7174",
+          "name": "__@overlayHidden@2598",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -5934,7 +5934,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@7175",
+          "name": "__@overlayActivator@2599",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true
@@ -5942,7 +5942,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@7176",
+          "name": "__@overlayHideFrameId@2600",
           "value": "number",
           "description": "",
           "isPrivate": true
@@ -6153,7 +6153,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@6805",
+          "name": "__@internals$4@2229",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -6404,7 +6404,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@6805",
+          "name": "__@internals$4@2229",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -6995,7 +6995,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@6805",
+          "name": "__@internals$4@2229",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -7299,7 +7299,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@6805",
+          "name": "__@internals$4@2229",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -7547,7 +7547,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@usedFirstOptionSymbol@7453",
+          "name": "__@usedFirstOptionSymbol@2877",
           "value": "boolean",
           "description": "A flag used to determine if no value or defaultValue was set, in which case the first non-disabled option was used.\n\nThis is important because we need to use the placeholder in these situations, even though the first value will be submitted as part of the form.",
           "isPrivate": true
@@ -7555,7 +7555,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@hasInitialValueSymbol@7454",
+          "name": "__@hasInitialValueSymbol@2878",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -7585,7 +7585,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@6805",
+          "name": "__@internals$4@2229",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -8149,7 +8149,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@6805",
+          "name": "__@internals$4@2229",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -8264,7 +8264,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@actualTableVariantSymbol@7529",
+          "name": "__@actualTableVariantSymbol@2953",
           "value": "AddedContext<ActualTableVariant>",
           "description": "",
           "isPrivate": true
@@ -8272,7 +8272,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@tableHeadersSharedDataSymbol@7530",
+          "name": "__@tableHeadersSharedDataSymbol@2954",
           "value": "AddedContext<{ listSlot: ListSlotType; textContent: string; format: HeaderFormat; }[]>",
           "description": "",
           "isPrivate": true
@@ -8482,7 +8482,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@headerFormatSymbol@7552",
+          "name": "__@headerFormatSymbol@2976",
           "value": "HeaderFormat",
           "description": "",
           "isPrivate": true
@@ -9062,7 +9062,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@6805",
+          "name": "__@internals$4@2229",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -9305,7 +9305,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@6805",
+          "name": "__@internals$4@2229",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -9462,7 +9462,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@7174",
+          "name": "__@overlayHidden@2598",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -9470,7 +9470,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@7175",
+          "name": "__@overlayActivator@2599",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true
@@ -9478,7 +9478,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@7176",
+          "name": "__@overlayHideFrameId@2600",
           "value": "number",
           "description": "",
           "isPrivate": true
@@ -9772,7 +9772,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@6805",
+          "name": "__@internals$4@2229",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -17800,7 +17800,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@abortController@7234",
+          "name": "__@abortController@2658",
           "value": "AbortController",
           "description": "",
           "isPrivate": true
@@ -17808,7 +17808,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@dialog@7228",
+          "name": "__@dialog@2652",
           "value": "HTMLDialogElement",
           "description": "",
           "isPrivate": true
@@ -17816,7 +17816,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@focusedElement@7230",
+          "name": "__@focusedElement@2654",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true
@@ -17824,7 +17824,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@nestedModals@7232",
+          "name": "__@nestedModals@2656",
           "value": "Map<Modal, boolean>",
           "description": "",
           "isPrivate": true
@@ -17832,7 +17832,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@childrenRerenderObserver@7236",
+          "name": "__@childrenRerenderObserver@2660",
           "value": "MutationObserver",
           "description": "",
           "isPrivate": true
@@ -17840,7 +17840,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowDomRerenderObserver@7237",
+          "name": "__@shadowDomRerenderObserver@2661",
           "value": "MutationObserver",
           "description": "",
           "isPrivate": true
@@ -17848,7 +17848,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onEscape@7231",
+          "name": "__@onEscape@2655",
           "value": "(event: KeyboardEvent) => void",
           "description": "",
           "isPrivate": true
@@ -17856,7 +17856,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onBackdropClick@7233",
+          "name": "__@onBackdropClick@2657",
           "value": "(event: MouseEvent) => void",
           "description": "",
           "isPrivate": true
@@ -17864,7 +17864,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onChildModalChange@7235",
+          "name": "__@onChildModalChange@2659",
           "value": "EventListenerOrEventListenerObject",
           "description": "",
           "isPrivate": true
@@ -17872,7 +17872,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@isOpen@7227",
+          "name": "__@isOpen@2651",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -17880,7 +17880,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@dismiss@7229",
+          "name": "__@dismiss@2653",
           "value": "() => void",
           "description": "",
           "isPrivate": true
@@ -17888,7 +17888,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@hasOpenChildModal@7224",
+          "name": "__@hasOpenChildModal@2648",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -17896,7 +17896,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@show@7225",
+          "name": "__@show@2649",
           "value": "() => Promise<void>",
           "description": "",
           "isPrivate": true
@@ -17904,7 +17904,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@hide@7226",
+          "name": "__@hide@2650",
           "value": "() => Promise<void>",
           "description": "",
           "isPrivate": true
@@ -17912,7 +17912,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@7174",
+          "name": "__@overlayHidden@2598",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -17920,7 +17920,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@7175",
+          "name": "__@overlayActivator@2599",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true
@@ -17928,7 +17928,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@7176",
+          "name": "__@overlayHideFrameId@2600",
           "value": "number",
           "description": "",
           "isPrivate": true
@@ -18316,7 +18316,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@7174",
+          "name": "__@overlayHidden@2598",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -18324,7 +18324,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@7175",
+          "name": "__@overlayActivator@2599",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true
@@ -18332,7 +18332,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@7176",
+          "name": "__@overlayHideFrameId@2600",
           "value": "number",
           "description": "",
           "isPrivate": true

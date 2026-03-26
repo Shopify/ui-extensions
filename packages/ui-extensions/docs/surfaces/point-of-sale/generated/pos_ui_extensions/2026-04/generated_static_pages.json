@@ -1,0 +1,265 @@
+[
+  {
+    "title": "POS UI extensions",
+    "description": "The UI Extensions library enables individuals to build extensions that use interface elements and behaviors that mirror the look and feel of the POS retail experience. These elements render natively, providing the performance and accessibility inherent to a native app.",
+    "id": "pos-ui-extensions",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "api-versioning",
+        "title": "API versioning",
+        "sectionContent": "POS UI extensions are built on a versioned API that receives regular updates with new features, improvements, and additional targets. We recommend using the latest supported API version to access the most current capabilities and ensure optimal compatibility with POS devices.\n\nYou can track new releases and update your extensions by referencing the [developer changelog](/changelog)."
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "overview",
+        "title": "Overview",
+        "sectionContent": "Extend the Shopify POS with UI Extensions.",
+        "sectionCard": [
+          {
+            "subtitle": "Extension targets",
+            "name": "See all available extension targets",
+            "url": "/docs/api/pos-ui-extensions/targets",
+            "type": "pickaxe-1"
+          },
+          {
+            "subtitle": "APIs",
+            "name": "See all available APIs",
+            "url": "/docs/api/pos-ui-extensions/apis",
+            "type": "pickaxe-2"
+          },
+          {
+            "subtitle": "Components",
+            "name": "See all available components",
+            "url": "/docs/api/pos-ui-extensions/web-components",
+            "type": "blocks"
+          }
+        ]
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "getting-started",
+        "title": "Getting Started",
+        "sectionContent": "Get started with POS UI Extensions with Shopify CLI.",
+        "sectionCard": [
+          {
+            "name": "Getting started guide",
+            "subtitle": "Set up your development environment",
+            "url": "/docs/apps/build/pos/getting-started",
+            "type": "blocks"
+          }
+        ],
+        "sectionNotice": [
+          {
+            "title": "AI development assistance",
+            "type": "note",
+            "sectionContent": "Connect your AI assistant to the [Shopify Dev MCP](/docs/apps/build/devmcp) to build POS UI extensions. Try asking \"Build a new POS UI extension ...\""
+          }
+        ]
+      },
+      {
+        "type": "Generic",
+        "title": "App Authentication",
+        "sectionContent": "POS UI extensions can also make authenticated calls to your app's backend. When you use `fetch()` to make a request to your app's configured auth domain or any of its subdomains, an `Authorization` header is automatically added with a Shopify [OpenID Connect ID Token (formerly known as a Session Token)](/docs/api/app-bridge-library/reference/id-token). There's no need to manually manage ID tokens.\n\nRelative URLs passed to `fetch()` are resolved against your app's `app_url`. This means if your app's backend is on the same domain as your `app_url`, you can make requests to it using `fetch('/path')`.\n\nIf you need to make requests to a different domain, you can use the [`session.getSessionToken()` method](apis/session-api#sessionapi-propertydetail-getsessiontoken) to retrieve the ID token and manually add it to your request headers.\n\n**Important**: ID tokens are only returned for authenticated users who are permitted to use your app. When the authenticated user (the user that logged into Shopify POS with their email address) doesn't have the correct app permission enabled for your app, the token will be null. This is irrelevant of which POS Staff member is pinned in, as those are not authenticated users. For more information on configuring app permissions, see the [Shopify app permissions documentation](https://help.shopify.com/en/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).",
+        "anchorLink": "app-authentication",
+        "codeblock": {
+          "title": "Make requests to your app's backend",
+          "tabs": [
+            {
+              "code": "import {render} from 'preact';\nimport {useState, useEffect} from 'preact/hooks';\n\nexport default async () =&gt; {\n  render(&lt;CustomerDetailsBlock /&gt;, document.body);\n};\n\nexport function CustomerDetailsBlock() {\n  const [loyaltyInfo, setLoyaltyInfo] = useState('');\n  useEffect(() =&gt; {\n    getLoyaltyInfo();\n  }, [shopify.customer.id]);\n\n  async function getLoyaltyInfo() {\n    console.log('fetching', `${URL}/api/loyalty/${shopify.customer.id}`)\n    const res = await fetch(`${URL}/api/loyalty/${shopify.customer.id}`);\n    const json = await res.json();\n    setLoyaltyInfo(json.loyaltySummary);\n  }\n  return (\n    &lt;s-pos-block&gt;\n      &lt;s-box padding=\"large\"&gt;\n        &lt;s-text&gt;{loyaltyInfo}&lt;/s-text&gt;\n      &lt;/s-box&gt;\n    &lt;/s-pos-block&gt;\n  );\n}",
+              "language": "jsx",
+              "title": "JSX"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Generic",
+        "title": "Direct API access",
+        "sectionNotice": [
+          {
+            "title": "Access scopes",
+            "type": "note",
+            "sectionContent": "Be sure to declare all required access scopes in your app's TOML file. For local development, access scopes are only registered or updated when the app is deployed and installed on your test store."
+          }
+        ],
+        "sectionContent": "You can make Shopify Admin API requests directly from your extension using the standard [web fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch)!\n\nAny `fetch()` calls from your extension to Shopify's Admin GraphQL API are automatically authenticated by default. These calls are fast too, because Shopify handles requests directly.\n\nDirect API requests use [online access](/docs/apps/build/authentication-authorization/access-token-types/online-access-tokens) mode by default.",
+        "anchorLink": "direct-api-access",
+        "codeblock": {
+          "title": "Query Shopify data directly",
+          "tabs": [
+            {
+              "code": "import {render} from 'preact';\nimport {useState, useEffect} from 'preact/hooks';\n\n\n// This mutation requires the `write_products` access scope.\n// /docs/api/admin-graphql/latest/mutations/metafieldsset\nasync function mutateMetafield(productId) {\n  const requestBody = {\n    query: `#graphql\n        mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) {\n          metafieldsSet(metafields: $metafields) {\n            metafields {\n              key\n              namespace\n              value\n              createdAt\n              updatedAt\n            }\n          }\n        }\n      `,\n    variables: {\n      metafields: [\n        {\n          key: 'direct_api',\n          namespace: 'custom',\n          ownerId: `gid://shopify/Product/${productId}`,\n          value: 'Example Value',\n          type: 'single_line_text_field',\n        },\n      ],\n    },\n  };\n\n  await fetch('shopify:admin/api/graphql.json', {\n    method: 'POST',\n    body: JSON.stringify(requestBody),\n  });\n}\n\n// This query requires the `read_products` access scope.\n// /docs/api/admin-graphql/latest/queries/product\nasync function queryProductMetafields(productId) {\n  const requestBody = {\n    query: `#graphql\n      query GetProduct($id: ID!) {\n        product(id: $id) {\n          id\n          metafields(first: 10) {\n            edges {\n              node {\n                id\n                namespace\n                key\n                value\n              }\n            }\n          }\n        }\n      }\n    `,\n    variables: {id: `gid://shopify/Product/${productId}`},\n  };\n  const res = await fetch('shopify:admin/api/graphql.json', {\n    method: 'POST',\n    body: JSON.stringify(requestBody),\n  });\n  return res.json();\n}\n\nexport default async () =&gt; {\n  render(&lt;ProductDetailsBlock /&gt;, document.body);\n};\n\nexport function ProductDetailsBlock() {\n  const [productInfo, setProductInfo] = useState('');\n  useEffect(() =&gt; {\n    async function getProductInfo() {\n      const result = await queryProductMetafields(shopify.product.id);\n      setProductInfo(JSON.stringify(result, null, 2));\n    }\n    getProductInfo();\n  }, [shopify.product.id]);\n\n  return (\n    &lt;s-pos-block&gt;\n      &lt;s-box padding=\"large\"&gt;\n        &lt;s-text&gt;Metafields: {productInfo}&lt;/s-text&gt;\n      &lt;/s-box&gt;\n      &lt;s-box padding=\"large\"&gt;\n        &lt;s-text&gt;Set Metafields: {productInfo}&lt;/s-text&gt;\n        &lt;s-button onClick={() =&gt; mutateMetafield(shopify.product.id)}&gt;Set Metafields&lt;/s-button&gt;\n      &lt;/s-box&gt;\n    &lt;/s-pos-block&gt;\n  );\n}",
+              "language": "jsx",
+              "title": "JSX"
+            }
+          ]
+        },
+        "sectionCard": [
+          {
+            "name": "Learn more about access scopes",
+            "subtitle": "Developer guide",
+            "url": "/docs/api/usage/access-scopes",
+            "type": "information"
+          }
+        ]
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "limitations",
+        "title": "Limitations",
+        "sectionContent": "\nAs of `2025-10`, UI extensions have the following limitations:\n- **File size limit**: Extensions are limited to a maximum of 64 KB when deployed. This limit helps ensure fast loading times and optimal performance for POS devices.\n",
+        "sectionNotice": [
+          {
+            "title": "Note",
+            "sectionContent": "\nThe 64 KB limit applies to the compiled extension bundle size upon deployment.\n",
+            "type": "info"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Targets Overview",
+    "description": "\nA [target](/docs/apps/app-extensions/configuration#targets) represents where your POS UI extension will appear.\n\nYou register targets in your `shopify.extension.toml` and inside the Javascript file denoted by your toml's `module` property.\n  ",
+    "id": "extension-targets-overview",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "GenericAccordion",
+        "title": "POS tile locations",
+        "anchorLink": "tile-locations",
+        "sectionContent": "POS tile extensions appear on the smart grid. Learn more about [the smart grid](/docs/apps/pos#home-screen).",
+        "accordionContent": [
+          {
+            "title": "Smart grid",
+            "description": "\nDisplays a tile on the smart grid.\n\nSee [an example](targets/tile/pos-home-tile-render).\n",
+            "image": "smart-grid.png"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "POS action locations",
+        "anchorLink": "action-locations",
+        "sectionContent": "POS action extensions appear as menu items throughout the POS and display modally when tapped.",
+        "accordionContent": [
+          {
+            "title": "Post-purchase",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the post-purchase screen.\n\nSee [an example](targets/action/pos-purchase-post-action-render).\n",
+            "image": "post-purchase-action.png"
+          },
+          {
+            "title": "Post-return",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the post-return screen.\n\nSee [an example](targets/action/pos-return-post-action-render).\n",
+            "image": "post-return-action.png"
+          },
+          {
+            "title": "Post-exchange",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the post-exchange screen.\n\nSee [an example](targets/action/pos-exchange-post-action-render).\n",
+            "image": "post-exchange-action.png"
+          },
+          {
+            "title": "Customer details",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the customer details screen.\n\nSee [an example](targets/action/pos-customer-details-action-render).\n",
+            "image": "customer-details-action-menu.png"
+          },
+          {
+            "title": "Product details",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the product details screen.\n\nSee [an example](targets/action/pos-product-details-action-render).\n",
+            "image": "product-details-action-menu.png"
+          },
+          {
+            "title": "Order details",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the order details screen.\n\nSee [an example](targets/action/pos-order-details-action-render).\n",
+            "image": "order-details-action-menu.png"
+          },
+          {
+            "title": "Draft order details",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the draft order details screen.\n\nSee [an example](targets/action/pos-draft-order-details-action-render).\n",
+            "image": "draft-order-action-menu.png"
+          },
+          {
+            "title": "Cart line item details",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the cart line item details screen.\n\nSee [an example](targets/action/pos-cart-line-item-details-action-render).\n",
+            "image": "cart-lineitem-action.png"
+          },
+          {
+            "title": "Register details",
+            "description": "\nDisplays an action target modally when a menu item is tapped on the register details screen.\n\nSee [an example](targets/action/pos-register-details-action-render).\n",
+            "image": "register-details-action-menu.png"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "POS block locations",
+        "anchorLink": "block-locations",
+        "sectionContent": "POS block extensions render custom sections within native POS screens.",
+        "accordionContent": [
+          {
+            "title": "Post-purchase",
+            "description": "\nRenders a custom section within the native post purchase screen.\n\nSee [an example](targets/block/pos-purchase-post-block-render).\n",
+            "image": "post-purchase-block.png"
+          },
+          {
+            "title": "Post-return",
+            "description": "\nRenders a custom section within the native post return screen.\n\nSee [an example](targets/block/pos-return-post-block-render).\n",
+            "image": "post-return-block.png"
+          },
+          {
+            "title": "Post-exchange",
+            "description": "\nRenders a custom section within the native post exchange screen.\n\nSee [an example](targets/block/pos-exchange-post-block-render).\n",
+            "image": "post-exchange-block.png"
+          },
+          {
+            "title": "Customer details",
+            "description": "\nRenders a custom section within the customer details screen.\n\nSee [an example](targets/block/pos-customer-details-block-render).\n",
+            "image": "customer-details-block.png"
+          },
+          {
+            "title": "Product details",
+            "description": "\nRenders a custom section within the native product details screen.\n\nSee [an example](targets/block/pos-product-details-block-render).\n",
+            "image": "product-details-block.png"
+          },
+          {
+            "title": "Order details",
+            "description": "\nRenders a custom section within the native order details screen.\n\nSee [an example](targets/block/pos-order-details-block-render).\n",
+            "image": "order-details-block.png"
+          },
+          {
+            "title": "Draft order details",
+            "description": "\nRenders a custom section within the native draft order details screen.\n\nSee [an example](targets/block/pos-draft-order-details-block-render).\n",
+            "image": "draft-order-block.png"
+          },
+          {
+            "title": "Receipt header",
+            "description": "\nRenders a custom section in the header of printed receipts.\n\nSee [an example](targets/block/pos-receipt-header-block-render).\n",
+            "image": "posreceipt-header.png"
+          },
+          {
+            "title": "Receipt footer",
+            "description": "\nRenders a custom section in the footer of printed receipts.\n\nSee [an example](targets/block/pos-receipt-footer-block-render).\n",
+            "image": "posreceipt-footer.png"
+          },
+          {
+            "title": "Register details",
+            "description": "\nRenders a custom section within the native register details screen.\n\nSee [an example](targets/block/pos-register-details-block-render).\n",
+            "image": "register-details-block.png"
+          }
+        ]
+      }
+    ]
+  }
+]
