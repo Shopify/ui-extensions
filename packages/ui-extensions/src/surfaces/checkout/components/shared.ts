@@ -135,17 +135,57 @@ export type Breakpoint = 'base' | 'extraSmall' | 'small' | 'medium' | 'large';
 
 export type Display = 'none' | 'auto' | 'inline' | 'block';
 
+/**
+ * A tuple type that accepts two or four values following the CSS shorthand
+ * convention for box edges.
+ *
+ * - `[T, T]`: The first value applies to block-start and block-end, the second to inline-start and inline-end.
+ * - `[T, T, T, T]`: Values apply to block-start, inline-end, block-end, and inline-start respectively.
+ */
 export type ShorthandProperty<T> = [T, T] | [T, T, T, T];
 
+/**
+ * A type that accepts either a single value applied to all edges or a
+ * shorthand tuple for per-edge control.
+ *
+ * - `T`: A single value applied uniformly to all edges.
+ * - `[T, T]`: The first value applies to block-start and block-end, the second to inline-start and inline-end.
+ * - `[T, T, T, T]`: Values apply to block-start, inline-end, block-end, and inline-start respectively.
+ */
 export type MaybeShorthandProperty<T> = T | ShorthandProperty<T>;
 
 /** @deprecated These values are deprecated and will eventually be removed.
  * Use CornerRadius instead
  */
 export type BorderRadius = 'base' | 'tight' | 'loose' | 'fullyRounded' | 'none';
+/**
+ * A keyword that maps to a predefined border style from the design system.
+ *
+ * - `base`: A solid border line, suitable for most use cases.
+ * - `dashed`: A dashed border line, often used for drop zones or placeholder boundaries.
+ * - `dotted`: A dotted border line.
+ * - `none`: No border is rendered.
+ */
 export type BorderStyle = 'base' | 'dashed' | 'dotted' | 'none';
+
+/**
+ * A keyword that maps to a predefined border width from the design system.
+ *
+ * - `base`: The default border width.
+ * - `medium`: A medium border width, thicker than `base`.
+ * - `thick`: The thickest available border width.
+ */
 export type BorderWidth = 'base' | 'medium' | 'thick';
 
+/**
+ * A keyword that maps to a predefined corner radius from the design system.
+ *
+ * - `base`: The default corner radius.
+ * - `small`: A subtle corner radius, smaller than `base`.
+ * - `large`: A pronounced corner radius, larger than `base`.
+ * - `fullyRounded`: Fully rounds the corners into a pill or circle shape.
+ * - `none`: No corner rounding; sharp square corners.
+ */
 export type CornerRadius =
   | 'base'
   | 'small'
@@ -154,42 +194,54 @@ export type CornerRadius =
   | 'none'
   | CornerRadiusDeprecated;
 
-/** @deprecated These values are deprecated and will eventually be removed.
- * Use the new values.
+/**
+ * @deprecated Use the standard `CornerRadius` keywords instead.
  *
- * `tight`: `small`
- * `loose`: `large`
+ * - `tight`: Use `small` instead.
+ * - `loose`: Use `large` instead.
  */
 export type CornerRadiusDeprecated = 'tight' | 'loose';
 
+/**
+ * Props for controlling the background appearance of a layout element.
+ */
 export interface BackgroundProps {
   /**
-   * Adjust the background.
+   * The background color of the element, set using a design-system keyword.
+   *
+   * - `transparent`: No background; the parent's background shows through.
+   * - `base`: The standard surface background color.
+   * - `subdued`: A muted background for de-emphasized or secondary content.
    *
    * @defaultValue 'transparent'
    */
   background?: MaybeConditionalStyle<Background>;
 
   /**
-   * Sets one or multiple responsive background images.
+   * Sets one or multiple responsive background images using URLs.
    */
   backgroundImage?: MaybeConditionalStyle<string>;
 
   /**
-   * Indicates if the background image should scale its container without cropping
-   * and stretching, or scale as large as possible to fill the container and stretching if necessary.
+   * Controls how the background image scales within its container.
+   *
+   * - `contain`: Scales the image to fit without cropping or stretching.
+   * - `cover`: Scales the image to fill the container; the image may be cropped.
    */
   backgroundFit?: BackgroundFit;
 
   /**
-   * Sets the initial position of the background image.
+   * Sets the initial position of the background image within its container.
    *
    * @defaultValue 'center'
    */
   backgroundPosition?: BackgroundPosition;
 
   /**
-   * Sets how background image are repeated.
+   * Controls how the background image is repeated within its container.
+   *
+   * - `repeat`: The image is tiled to fill the container.
+   * - `noRepeat`: The image is displayed once without repetition.
    *
    * @defaultValue 'noRepeat'
    */
@@ -198,7 +250,7 @@ export interface BackgroundProps {
 
 export interface BorderProps {
   /**
-   * Adjust the border style.
+   * The border style of the element.
    *
    * To shorten the code, it is possible to specify all the border style properties in one property.
    *
@@ -213,7 +265,7 @@ export interface BorderProps {
   border?: MaybeResponsiveConditionalStyle<MaybeShorthandProperty<BorderStyle>>;
 
   /**
-   * Adjust the border width.
+   * The border width of the element.
    *
    * To shorten the code, it is possible to specify all the border width properties in one property.
    *
@@ -232,28 +284,17 @@ export interface BorderProps {
 
 export interface CornerProps {
   /**
-   * @private
+   * @deprecated Use `cornerRadius` instead.
    *
-   * Adjust the border radius.
-   *
-   * Provide a single value to apply the same border radius to all four corners, two values to apply different border radii to opposing corners, or four values to apply different border radii to each individual corner.
-   *
-   * For example:
-   *
-   * - `base` means all 4 border radii are `base`
-   *
-   * - `['base', 'none']` means the StartStart and EndEnd border radii are `base`, StartEnd and EndStart border radii are `none`.
-   *    When the context’s language direction is left to right, StartStart and EndEnd borders are the top left and bottom right borders
-   *    while StartEnd and EndStart borders are the top right and bottom left borders.
-   *
-   * - `['base', 'none', 'small', 'base']` means StartStart border radius is `base`, StartEnd border radius is `none`, EndEnd border radius is `small` and  EndStart border radius is `base`
+   * The corner radius of the element. Accepts a single value for
+   * all corners or a shorthand tuple for per-corner control.
    */
   borderRadius?: MaybeResponsiveConditionalStyle<
     MaybeShorthandProperty<CornerRadius>
   >;
 
   /**
-   * Adjust the corner radius.
+   * The corner radius of the element.
    *
    * Provide a single value to apply the same corner radius to all four corners, two values to apply different corner radii to opposing corners, or four values to apply different corner radii to each individual corner.
    *
@@ -274,86 +315,107 @@ export interface CornerProps {
   >;
 }
 
+/**
+ * Props for controlling the dimensions of a layout element. All sizing
+ * props use logical (writing-mode-aware) properties rather than physical
+ * `width` / `height` so that layouts adapt correctly to different
+ * writing directions.
+ */
 export interface SizingProps {
   /**
-   * Adjust the maximum block size.
+   * The maximum block size (maximum height in horizontal writing modes).
+   * The element won't grow taller than this value even if its content is longer.
    *
-   * `number`: size in pixels.
+   * - `number`: The size in pixels.
+   * - `` `${number}%` ``: The size as a percentage of the parent container's block size.
+   * - `fill`: Takes all the available space.
    *
-   * `` `${number}%` ``: size in percentages.
-   *
-   * `fill`: takes all the available space.
-   *
-   * See [MDN explanation of maxBlockSize](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
+   * Learn more about the [max-block-size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size) property.
    */
   maxBlockSize?: MaybeResponsiveConditionalStyle<
     number | `${number}%` | 'fill'
   >;
 
   /**
-   * Adjust the maximum inline size.
+   * The maximum inline size (maximum width in horizontal writing modes).
+   * The element won't grow wider than this value.
    *
-   * `number`: size in pixels.
+   * - `number`: The size in pixels.
+   * - `` `${number}%` ``: The size as a percentage of the parent container's inline size.
+   * - `fill`: Takes all the available space.
    *
-   * `` `${number}%` ``: size in percentages.
-   *
-   * `fill`: takes all the available space.
-   *
-   * See [MDN explanation of maxInlineSize](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
+   * Learn more about the [max-inline-size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size) property.
    */
   maxInlineSize?: MaybeResponsiveConditionalStyle<
     number | `${number}%` | 'fill'
   >;
 
   /**
-   * Adjust the minimum inline size.
+   * The minimum inline size (minimum width in horizontal writing modes).
+   * The element won't shrink narrower than this value.
    *
-   * `number`: size in pixels.
+   * - `number`: The size in pixels.
+   * - `` `${number}%` ``: The size as a percentage of the parent container's inline size.
+   * - `fill`: Takes all the available space.
    *
-   * `` `${number}%` ``: size in percentages.
-   *
-   * `fill`: takes all the available space.\
-   *
-   * See [MDN explanation of minInlineSize](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
+   * Learn more about the [min-inline-size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size) property.
    */
   minInlineSize?: MaybeResponsiveConditionalStyle<
     number | `${number}%` | 'fill'
   >;
 
   /**
-   * Adjust the block size.
+   * The minimum block size (minimum height in horizontal writing modes).
+   * The element won't shrink smaller than this value even if its content is shorter.
    *
-   * `number`: size in pixels.
+   * - `number`: The size in pixels.
+   * - `` `${number}%` ``: The size as a percentage of the parent container's block size.
+   * - `fill`: Takes all the available space.
    *
-   * `` `${number}%` ``: size in percentages.
-   *
-   * `fill`: takes all the available space.
-   *
-   * See [MDN explanation of minBlockSize](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
+   * Learn more about the [min-block-size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size) property.
    */
   minBlockSize?: MaybeResponsiveConditionalStyle<
     number | `${number}%` | 'fill'
   >;
 }
 
+/**
+ * Props for setting internal padding on a layout element. Accepts a
+ * single spacing keyword applied to all edges or a shorthand tuple
+ * for per-edge control.
+ */
 export interface SpacingProps {
   /**
-   * Adjust the padding.
+   * The padding on all edges of the element, using a shorthand syntax.
+   * You can specify one, two, or four values following the CSS shorthand convention.
    *
-   * To shorten the code, it is possible to specify all the padding properties in one property.
-   *
-   *
-   * Examples:
-   *
-   * - `base` means blockStart, inlineEnd, blockEnd and inlineStart paddings are `base`
-   *
-   * - [`base`, `none`] means blockStart and blockEnd paddings are `base`, inlineStart and inlineEnd paddings are `none`
-   *
-   * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and blockStart padding is `tight`
+   * - `T`: A single value applied uniformly to all edges.
+   * - `[T, T]`: The first value applies to block-start and block-end, the second to inline-start and inline-end.
+   * - `[T, T, T, T]`: Values apply to block-start, inline-end, block-end, and inline-start respectively.
    */
   padding?: MaybeResponsiveConditionalStyle<MaybeShorthandProperty<Spacing>>;
 }
 
+/**
+ * The set of accessibility roles that can be applied to components
+ * to convey semantic meaning to assistive technologies. Each role maps
+ * to a corresponding HTML element or ARIA role in web-based hosts.
+ *
+ * - `main`: The primary content of the page.
+ * - `header`: A header section of the page.
+ * - `footer`: A section for copyright information, navigation links, and privacy statements.
+ * - `section`: A generic section; should have a heading or accessible label.
+ * - `complementary`: A supporting section related to the main content.
+ * - `navigation`: A major group of navigation links.
+ * - `orderedList`: A list of ordered items.
+ * - `listItem`: An item inside a list.
+ * - `unorderedList`: A list of unordered items.
+ * - `separator`: A divider separating sections of content.
+ * - `status`: A live region with advisory information that isn't urgent enough to be an alert.
+ * - `alert`: Important, usually time-sensitive information.
+ * - `decorative`: Marks the element as purely visual; assistive technologies skip it.
+ * - `presentation`: Strips semantic meaning but leaves visual styling intact.
+ */
 export type AccessibilityRole =
   /** Used to indicate the primary content. */
   | 'main'
@@ -467,6 +529,14 @@ export type TextAccessibilityRole =
    */
   | 'strong';
 
+/**
+ * The status communicates the intent or urgency of a message to the user.
+ *
+ * - `info`: Neutral informational content with no implied urgency.
+ * - `success`: Indicates a successful action or positive state.
+ * - `warning`: Indicates something that requires attention but isn’t blocking.
+ * - `critical`: Indicates a serious problem or error that needs immediate action.
+ */
 export type Status =
   /**
    * Use to convey general information or actions that aren’t critical or tied to
@@ -493,6 +563,18 @@ export type Status =
    */
   | 'critical';
 
+/**
+ * A keyword that maps to a predefined size from the design system's
+ * size scale. Components use a subset of these values depending on
+ * which sizes they support.
+ *
+ * - `extraSmall`: The smallest available size.
+ * - `small`: A compact size, smaller than the default.
+ * - `base`: The default size, appropriate for most contexts.
+ * - `large`: A larger size for increased visual prominence.
+ * - `extraLarge`: The largest available keyword size.
+ * - `fill`: Stretches to fill the available space in the container.
+ */
 export type Size =
   | 'extraSmall'
   | 'small'
@@ -501,6 +583,17 @@ export type Size =
   | 'extraLarge'
   | 'fill';
 
+/**
+ * A keyword that maps to a predefined spacing value from the design system.
+ * Use these instead of pixel values to ensure consistent spacing throughout the UI.
+ *
+ * - `none`: No spacing (0px).
+ * - `extraTight`: The smallest amount of spacing.
+ * - `tight`: A compact amount of spacing, suitable for tight layouts.
+ * - `base`: The default spacing, appropriate for most layouts.
+ * - `loose`: A generous amount of spacing, used to create visual separation.
+ * - `extraLoose`: The largest amount of spacing.
+ */
 export type Spacing =
   | 'none'
   | 'extraTight'
@@ -513,11 +606,65 @@ export type Alignment = 'start' | 'center' | 'end';
 export type InlineAlignment = 'start' | 'center' | 'end';
 export type BlockAlignment = Alignment | 'baseline';
 
+/**
+ * A keyword that maps to a predefined background color from the design system.
+ *
+ * - `transparent`: No background color; the parent's background shows through.
+ * - `base`: The standard surface background color.
+ * - `subdued`: A muted background color, typically used to de-emphasize content
+ *   or distinguish secondary areas from the primary surface.
+ */
 export type Background = 'transparent' | 'base' | 'subdued';
+
+/**
+ * Controls how the background image scales within its container.
+ *
+ * - `cover`: Scales the image as large as possible to fill the container. The image
+ *   may be cropped if its aspect ratio differs from the container.
+ * - `contain`: Scales the image to fit within the container without cropping or stretching.
+ *
+ * Learn more about the [background-size](https://developer.mozilla.org/en-US/docs/Web/CSS/background-size) property.
+ */
 export type BackgroundFit = 'cover' | 'contain';
+
+/**
+ * Sets the initial position of the background image within its container.
+ *
+ * - `top`: Positions the image at the top edge.
+ * - `bottom`: Positions the image at the bottom edge.
+ * - `left`: Positions the image at the left edge.
+ * - `right`: Positions the image at the right edge.
+ * - `center`: Centers the image within the container.
+ *
+ * Learn more about the [background-position](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position) property.
+ */
 export type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
+
+/**
+ * Controls how the background image is repeated within its container.
+ *
+ * - `repeat`: The image is tiled to fill the container.
+ * - `noRepeat`: The image is displayed once without repetition.
+ *
+ * Learn more about the [background-repeat](https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat) property.
+ */
 export type BackgroundRepeat = 'repeat' | 'noRepeat';
 
+/**
+ * A keyword that maps to a predefined color or visual treatment from the
+ * design system. Used to convey meaning or emphasis through color.
+ *
+ * - `base`: The default color for the element set within the theme.
+ * - `accent`: Conveys emphasis and draws attention to the element.
+ * - `decorative`: Uses the `decorative` color set within the theme.
+ * - `interactive`: Conveys that the element is pressable or hoverable. Deprecated; use `accent` instead.
+ * - `subdued`: Conveys a subdued or disabled state.
+ * - `info`: Conveys informational content.
+ * - `success`: Conveys a successful interaction.
+ * - `warning`: Conveys something needs attention or action.
+ * - `critical`: Conveys a problem has arisen.
+ * - `monochrome`: Takes the color of its parent, giving a uniform appearance.
+ */
 export type Appearance =
   /** Takes the default color for the element set within the theme*/
   | 'base'
@@ -545,6 +692,17 @@ export type Appearance =
 
 export type Direction = 'inline' | 'block';
 
+/**
+ * Controls how an image fits within its frame when the image's intrinsic
+ * dimensions differ from the frame's dimensions.
+ *
+ * - `cover`: The image fills the entire frame while maintaining its aspect ratio.
+ *   If the image is larger than the frame, it will be cropped.
+ * - `contain`: The image fits within the frame while maintaining its aspect ratio.
+ *   The frame may have empty space if the aspect ratios differ.
+ *
+ * Learn more about the [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) property.
+ */
 export type Fit =
   /**
    * Image maintains its aspect ratio while fitting within the frame.

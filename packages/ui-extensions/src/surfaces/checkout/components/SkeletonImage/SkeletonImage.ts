@@ -5,16 +5,30 @@ import type {IdProps} from '../shared';
 
 export interface SkeletonImageProps extends IdProps {
   /**
-   * Adjust the block size of the skeleton.
+   * The block size (height in horizontal writing modes) of the skeleton placeholder.
+   *
+   * - `number`: The size in pixels.
+   * - `` `${number}%` ``: The size as a percentage of the parent container's block size.
+   * - `fill`: Takes all the available space.
+   *
+   * Learn more about the [block-size](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size) property.
    */
   blockSize?: MaybeResponsiveConditionalStyle<number | `${number}%` | 'fill'>;
   /**
-   * Adjust the inline size of the skeleton.
+   * The inline size (width in horizontal writing modes) of the skeleton placeholder.
+   *
+   * - `number`: The size in pixels.
+   * - `` `${number}%` ``: The size as a percentage of the parent container's inline size.
+   * - `fill`: Takes all the available space.
+   *
+   * Learn more about the [inline-size](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size) property.
    */
   inlineSize?: MaybeResponsiveConditionalStyle<number | `${number}%` | 'fill'>;
   /**
-   * Displays the skeleton at the specified aspect ratio (fills the width of the
-   * parent container and sets the height accordingly).
+   * The aspect ratio to display the skeleton at (fills the width of the
+   * parent container and sets the height accordingly). Use this to reserve
+   * the correct space for an image before it loads, preventing content
+   * jumping.
    */
   aspectRatio?: number;
 }

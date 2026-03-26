@@ -2,6 +2,10 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {Appearance, IdProps, Size} from '../shared';
 
+/**
+ * The name of the icon to display. Each value maps to a specific
+ * pictogram from the checkout icon set.
+ */
 export type IconSource =
   | 'arrowLeft'
   | 'arrowRight'
@@ -80,29 +84,34 @@ export type IconSource =
 export interface IconProps extends IdProps {
   /**
    * A label that describes the purpose or contents of the icon. When set,
-   * it will be announced to buyers using assistive technologies and will
+   * it will be announced to users using assistive technologies and will
    * provide them with more context.
    */
   accessibilityLabel?: string;
 
   /**
-   * Sets the appearance (color) of the icon.
+   * The color of the icon, set using a design-system keyword.
    *
    * @defaultValue 'base'
    */
   appearance?: Appearance;
 
   /**
-   * Adjusts the size of the icon.
+   * The size of the icon.
+   *
+   * - `extraSmall`: The smallest available icon size.
+   * - `small`: A compact icon size, smaller than the default.
+   * - `large`: A larger icon for increased visual prominence.
+   * - `base`: Renders the icon at its standard size.
+   * - `fill`: Stretches the icon to fill the available space in its
+   *   container while preserving its aspect ratio.
    *
    * @defaultValue 'base'
    */
   size?: Extract<Size, 'extraSmall' | 'small' | 'base' | 'large' | 'fill'>;
 
   /**
-   * Specifies which icon to display
-   *
-   * Check the list of available icons [here](/docs/api/checkout-ui-extensions/components/media/icon#icons)
+   * The name of the icon to display.
    */
   source: IconSource;
 }

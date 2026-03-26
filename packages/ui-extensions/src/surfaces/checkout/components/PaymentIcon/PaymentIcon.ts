@@ -1,7 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-// Copied from https://github.com/Shopify/ui-api-design/blob/main/components/PaymentIcon/PaymentIcon.ts
-// NOTE: Add new entries to the PaymentMethod type in alphabetical order
+/**
+ * The name of a supported payment method. Each value maps to a
+ * recognizable brand icon (such as Visa, Mastercard, or PayPal).
+ * Entries are listed in alphabetical order.
+ */
 export type PaymentMethod =
   | '7-eleven'
   | 'acima-leasing'
@@ -450,26 +453,28 @@ export type PaymentMethod =
 
 export interface PaymentIconProps {
   /**
-   * The name of the payment method.
-   *
-   * Check the list of available payment methods [here](/docs/api/checkout-ui-extensions/components/media/paymenticon#paymentmethod).
+   * The name of the payment method whose icon should be displayed.
+   * Accepts any `PaymentMethod` value or a custom string for payment
+   * methods not yet in the predefined list.
    */
   name: PaymentMethod | string;
 
   /**
-   * A label that describes the purpose or contents of the icon.
-   *
-   * When set, it will be announced to users using assistive technologies and will provide them with more context.
-   * This should only be used if the icon requires an alternative internationalised label
-   * or if it is otherwise inappropriate to make use of the default label included with the icon.
+   * A label that describes the purpose or contents of the payment icon.
+   * When set, it will be announced to users using assistive technologies
+   * and will provide them with more context. Use this only when the icon
+   * requires an alternative internationalized label or when the default
+   * label included with the icon is not appropriate.
    */
   accessibilityLabel?: string;
 
   /**
-   * Changes the visibility of the icon to assistive technologies.
+   * The visibility of the icon to assistive technologies.
    *
-   * `hidden` hides the component from assistive technology (for example,
-   * a screen reader) but remains visually visible.
+   * - `hidden`: The icon is hidden from assistive technology (for example,
+   *   a screen reader) but remains visually visible.
+   * - `visible`: The icon is announced by assistive technologies
+   *   (the default behavior).
    *
    * @defaultValue 'visible'
    */

@@ -4,15 +4,17 @@ import type {IdProps, BorderStyle} from '../shared';
 
 export interface QRCodeProps extends IdProps {
   /**
-   * The content to be encoded in the QR code, which can be any string such as a URL, email address, plain text, etc.
-   * Specific string formatting can trigger actions on the user’s device when scanned, like opening geolocation
-   * coordinates on a map, opening a preferred app or app store entry, preparing an email, text message, and more.
+   * The data to encode in the QR code. Accepts any string, such as a URL,
+   * email address, or plain text. Specific string formats can trigger
+   * actions on the user’s device when scanned, like opening geolocation
+   * coordinates on a map, launching an app, preparing an email, or
+   * composing a text message.
    */
   content?: string;
 
   /**
-   * URL of an image to be displayed in the center of the QR code.
-   * This is useful for branding or to indicate to the user what scanning the QR code will do.
+   * The URL of an image to display in the center of the QR code. Use
+   * this for branding or to indicate what scanning the QR code will do.
    * By default, no image is displayed.
    */
   logo?: string;
@@ -20,33 +22,37 @@ export interface QRCodeProps extends IdProps {
   /**
    * The displayed size of the QR code.
    *
-   * `fill`: the QR code will takes up 100% of the available inline-size and maintain a 1:1 aspect ratio.
+   * - `auto`: The QR code is displayed at its default size.
+   * - `fill`: The QR code takes up 100% of the available inline size
+   *   and maintains a 1:1 aspect ratio.
    *
-   * `auto`: the QR code will be displayed at its default size.
-   *
-   * @default 'auto'
+   * @defaultValue 'auto'
    */
   size?: 'auto' | 'fill';
 
   /**
-   * Adjust the border style.
+   * The border style around the QR code.
    *
-   * @default 'base'
+   * - `base`: A standard border that visually frames the QR code.
+   * - `none`: No border is rendered.
+   *
+   * @defaultValue 'base'
    */
   border?: Extract<BorderStyle, 'none' | 'base'>;
 
   /**
-   * A label that describes the purpose or contents of the QR code. When set,
-   * it will be announced to users using assistive technologies and will
-   * provide more context about what the QR code may do when scanned.
+   * A label that describes the purpose or contents of the QR code. When
+   * set, it will be announced to users using assistive technologies and
+   * will provide them with more context.
    *
-   * @default 'QR code' (translated to the user’s locale)
+   * @defaultValue 'QR code' (translated to the user’s locale)
    */
   accessibilityLabel?: string;
 
   /**
-   * Invoked when the conversion of `content` to a QR code fails.
-   * If an error occurs, the QR code and its child elements will not be displayed.
+   * A callback that fires when the conversion of `content` to a QR code
+   * fails. When an error occurs, the QR code and its child elements are
+   * not displayed. Use this to show a fallback or error state.
    */
   onError?: () => void;
 }
