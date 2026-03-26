@@ -27,6 +27,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Track a spending goal with a labeled progress bar. This example uses the `max` and `value` properties alongside `accessibilityLabel` to show how close a buyer is to qualifying for free shipping.',
+        codeblock: {
+          title: 'Track progress toward free shipping',
+          tabs: [
+            {
+              code: './examples/progress-free-shipping.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',

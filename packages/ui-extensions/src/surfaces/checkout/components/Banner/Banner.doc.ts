@@ -33,6 +33,24 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'Show a warning banner that buyers can dismiss or expand. This example uses the `warning` tone with `dismissible` and `collapsible` properties to display an address verification message with expandable details.',
+        codeblock: {
+          title: 'Show a dismissible warning with collapsible details',
+          tabs: [
+            {
+              code: './examples/banner-warning-dismissible.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   subSections: [
     {
       type: 'Generic',
