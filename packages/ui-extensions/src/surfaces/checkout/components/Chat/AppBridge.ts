@@ -6,7 +6,7 @@ export {};
  */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-export interface AppBridge {
+interface AppBridge {
   /**
    * The static configuration values that will not change during runtime.
    */

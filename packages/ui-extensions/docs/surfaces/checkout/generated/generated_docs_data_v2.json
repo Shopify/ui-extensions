@@ -5131,7 +5131,7 @@
           "filePath": "src/surfaces/checkout/components/Icon/Icon.ts",
           "syntaxKind": "PropertySignature",
           "name": "size",
-          "value": "'extraSmall' | 'small' | 'large' | 'base' | 'fill'",
+          "value": "'small' | 'base' | 'extraSmall' | 'large' | 'fill'",
           "description": "Adjusts the size of the icon.",
           "isOptional": true,
           "defaultValue": "'base'"
@@ -7590,7 +7590,7 @@
           "filePath": "src/surfaces/checkout/components/Divider/Divider.ts",
           "syntaxKind": "PropertySignature",
           "name": "size",
-          "value": "'small' | 'large' | 'base' | 'extraLarge'",
+          "value": "'small' | 'base' | 'large' | 'extraLarge'",
           "description": "Use to create dividers with varying widths.",
           "isOptional": true,
           "defaultValue": "'small'"
@@ -9500,7 +9500,7 @@
           "filePath": "src/surfaces/checkout/components/QRCode/QRCode.ts",
           "syntaxKind": "PropertySignature",
           "name": "border",
-          "value": "'base' | 'none'",
+          "value": "'none' | 'base'",
           "description": "Adjust the border style.",
           "isOptional": true,
           "defaultValue": "'base'"
@@ -10131,7 +10131,7 @@
           "filePath": "src/surfaces/checkout/components/SkeletonText/SkeletonText.ts",
           "syntaxKind": "PropertySignature",
           "name": "inlineSize",
-          "value": "'small' | 'large' | 'base'",
+          "value": "'small' | 'base' | 'large'",
           "description": "Adjust the length of the text when no children are passed.",
           "isOptional": true
         },
@@ -10246,7 +10246,7 @@
           "filePath": "src/surfaces/checkout/components/Spinner/Spinner.ts",
           "syntaxKind": "PropertySignature",
           "name": "size",
-          "value": "'extraSmall' | 'small' | 'large' | 'base' | 'fill'",
+          "value": "'small' | 'base' | 'extraSmall' | 'large' | 'fill'",
           "description": "Adjusts the size of the icon.",
           "isOptional": true,
           "defaultValue": "'base'"
@@ -10572,7 +10572,7 @@
           "filePath": "src/surfaces/checkout/components/Text/Text.ts",
           "syntaxKind": "PropertySignature",
           "name": "appearance",
-          "value": "'subdued' | 'accent' | 'decorative' | 'info' | 'success' | 'warning' | 'critical'",
+          "value": "'success' | 'subdued' | 'accent' | 'decorative' | 'info' | 'warning' | 'critical'",
           "description": "Changes the visual appearance",
           "isOptional": true
         },
@@ -10641,7 +10641,7 @@
           "filePath": "src/surfaces/checkout/components/TextBlock/TextBlock.ts",
           "syntaxKind": "PropertySignature",
           "name": "appearance",
-          "value": "'subdued' | 'accent' | 'decorative' | 'info' | 'success' | 'warning' | 'critical'",
+          "value": "'success' | 'subdued' | 'accent' | 'decorative' | 'info' | 'warning' | 'critical'",
           "description": "Changes the visual appearance",
           "isOptional": true
         },
@@ -11287,7 +11287,7 @@
           "isOptional": true
         }
       ],
-      "value": "export interface AppBridge {\n  /**\n   * The static configuration values that will not change during runtime.\n   */\n  config?: Config;\n\n  /**\n   * The Shopify surface that the app is embedded within.\n   */\n  surface?: 'checkout';\n\n  /**\n   * The platform or application that the app is embedded within.\n   */\n  platform?: 'browser' | 'shop-app' | 'pos';\n\n  /**\n   * The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C)\n   * with a TTL of 5 minutes. It can be used to ensure that requests came from a Shopify authenticated user.\n   * See the [ID Token documentation](/docs/apps/build/authentication-authorization/session-tokens) for more information.\n   *\n   * @see /docs/api/checkout-ui-extensions/latest/apis/session-token\n   * @see /docs/apps/build/authentication-authorization/session-tokens\n   */\n  idToken?: () => Promise<string>;\n\n  /**\n   * The references and APIs to the UI extension that helped bootstrap the iframe.\n   */\n  extension?: Extension;\n\n  /**\n   * Information about the current visitor.\n   *\n   * @ignore async via our RPC endpoints to ensure a secure handshake between\n   * host and client is established.\n   */\n  visitor?: () => Promise<Visitor>;\n}"
+      "value": "interface AppBridge {\n  /**\n   * The static configuration values that will not change during runtime.\n   */\n  config?: Config;\n\n  /**\n   * The Shopify surface that the app is embedded within.\n   */\n  surface?: 'checkout';\n\n  /**\n   * The platform or application that the app is embedded within.\n   */\n  platform?: 'browser' | 'shop-app' | 'pos';\n\n  /**\n   * The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C)\n   * with a TTL of 5 minutes. It can be used to ensure that requests came from a Shopify authenticated user.\n   * See the [ID Token documentation](/docs/apps/build/authentication-authorization/session-tokens) for more information.\n   *\n   * @see /docs/api/checkout-ui-extensions/latest/apis/session-token\n   * @see /docs/apps/build/authentication-authorization/session-tokens\n   */\n  idToken?: () => Promise<string>;\n\n  /**\n   * The references and APIs to the UI extension that helped bootstrap the iframe.\n   */\n  extension?: Extension;\n\n  /**\n   * Information about the current visitor.\n   *\n   * @ignore async via our RPC endpoints to ensure a secure handshake between\n   * host and client is established.\n   */\n  visitor?: () => Promise<Visitor>;\n}"
     }
   },
   "Config": {
