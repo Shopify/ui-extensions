@@ -9,6 +9,24 @@ const data: ReferenceEntityTemplateSchema = createComponentDoc({
   usefulFor: `
 - Adding inline text elements such as labels or line errors.
 - Applying different visual tones and text styles to specific words or phrases within a \`s-paragraph\`, such as a \`strong\` type or \`critical\` tone.`,
+  extraExamples: {
+    description: 'Examples of additional ways to use the Text component.',
+    examples: [
+      {
+        description:
+          'Use `type="strong"` for default strong emphasis and `tone="neutral"` for informational policy text without success or warning coloring.',
+        codeblock: {
+          title: 'Emphasize a legal or policy line',
+          tabs: [
+            {
+              code: './examples/text-strong.example.html',
+              language: 'html',
+            },
+          ],
+        },
+      },
+    ],
+  },
   bestPractices: `
 - Use plain and clear terms.
 - Don’t use jargon or technical language.
