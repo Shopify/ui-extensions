@@ -1,13 +1,18 @@
 import {BaseElementPropsWithChildren, IdProps} from './shared';
 
+/**
+ * The properties for the image group component. An image group displays a collection of images in a grid layout with an optional overflow count, useful for showing multiple product images or gallery previews.
+ */
 export interface ImageGroupProps extends IdProps {
   /**
-   * Indicates the total number of items that could be displayed in the image group.
-   * It is used to determine the remaining number to show when all the available image slots have been filled.
+   * The total number of items that the image group represents. When this value exceeds the number of visible images, the component displays a badge showing the remaining count (for example, "+3"), indicating there are more images than currently displayed.
    */
   totalItems?: number;
 }
 
+/**
+ * The HTML element interface for the `s-image-group` custom element.
+ */
 export interface ImageGroupElement extends HTMLElement, ImageGroupProps {}
 
 declare global {

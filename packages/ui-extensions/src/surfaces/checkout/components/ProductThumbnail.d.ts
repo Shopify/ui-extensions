@@ -11,16 +11,34 @@
 import type {ProductThumbnailProps$1} from './components-shared.d.ts';
 
 /**
- * Used when an element does not have children.
+ * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
+    /**
+     * A unique identifier for this element within its parent. Used by the rendering engine for efficient reconciliation when lists change.
+     */
     key?: preact.Key;
+    /**
+     * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+     */
     ref?: preact.Ref<TClass>;
+    /**
+     * Assigns this element to a named slot in a parent component that uses slot-based composition patterns.
+     */
     slot?: Lowercase<string>;
 }
 
 declare const tagName = "s-product-thumbnail";
 export interface ProductThumbnailProps extends Pick<ProductThumbnailProps$1, 'alt' | 'size' | 'sizes' | 'src' | 'srcSet' | 'totalItems'> {
+    /**
+     * The size of the product thumbnail image.
+     *
+     * - `'base'`: Default size that works well in most contexts.
+     * - `'small'`: Small thumbnail, good for secondary contexts or tight layouts.
+     * - `'small-100'`: Extra small thumbnail for compact displays or dense lists.
+     *
+     * @default 'base'
+     */
     size?: Extract<ProductThumbnailProps$1['size'], 'small-100' | 'small' | 'base'>;
 }
 export interface ProductThumbnailElement extends ProductThumbnailProps, Omit<HTMLElement, 'id'> {
