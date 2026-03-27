@@ -68,19 +68,19 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * The allowed capabilities of the extension, defined
-   * in your [shopify.extension.toml](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
+   * in your [shopify.extension.toml](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration) file.
    *
-   * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
+   * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#api-access): the extension can access the Storefront API.
    *
-   * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
+   * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#network-access): the extension can make external network calls.
    *
-   * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a customer's progress and the merchant has allowed this blocking behavior.
+   * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#block-progress): the extension can block a customer's progress and the merchant has allowed this blocking behavior.
    *
-   * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect customer consent for SMS marketing.
+   * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#collect-buyer-consent): the extension can collect customer consent for SMS marketing.
    *
-   * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register customer consent decisions that are honored on Shopify-managed services.
+   * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#collect-buyer-consent): the extension can register customer consent decisions that are honored on Shopify-managed services.
    *
-   * * [`iframe.sources`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#iframe): the extension can embed an external URL in an iframe.
+   * * [`iframe.sources`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#iframe): the extension can embed an external URL in an iframe.
    */
   capabilities: SubscribableSignalLike<Capability[]>;
 
@@ -115,7 +115,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * extension's configuration file.
    *
    * @example 'purchase.checkout.block.render'
-   * @see https://shopify.dev/docs/api/checkout-ui-extensions/latest/extension-targets-overview
+   * @see https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/extension-targets-overview
    * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    */
   target: Target;
@@ -132,18 +132,17 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
 
 export interface Editor {
   /**
-   * Indicates whether the extension is rendering in the [checkout editor](/docs/apps/checkout). Always `'checkout'`.
+   * Indicates whether the extension is rendering in the [checkout editor](https://shopify.dev/docs/apps/checkout). Always `'checkout'`.
    */
   type: 'checkout';
 }
 
 /**
- * Metadata associated with the checkout. See the [metafields documentation](/docs/apps/build/custom-data/metafields) for more information on how metafields work.
+ * Metadata associated with the checkout. See the [metafields documentation](https://shopify.dev/docs/apps/build/custom-data/metafields) for more information on how metafields work.
  */
 export interface Metafield {
   /**
-   * The name of the metafield. It must be between three and 30 characters in
-   * length (inclusive).
+   * The name of the metafield.
    *
    * @example 'delivery_instructions'
    */
@@ -152,7 +151,7 @@ export interface Metafield {
   /**
    * A container for a set of metafields. You need to define a custom
    * namespace for your metafields to distinguish them from the metafields
-   * used by other apps. This must be between two and 20 characters in length (inclusive).
+   * used by other apps.
    *
    * @example 'my_app'
    */
@@ -174,7 +173,7 @@ export interface Metafield {
 }
 
 /**
- * Represents a custom [metafield](/docs/apps/build/custom-data/metafields) attached to a resource such as a product, variant, customer, or shop.
+ * Represents a custom [metafield](https://shopify.dev/docs/apps/build/custom-data/metafields) attached to a resource such as a product, variant, customer, or shop.
  */
 export interface AppMetafield {
   /**
@@ -185,7 +184,7 @@ export interface AppMetafield {
   /**
    * The namespace that the metafield belongs to. Namespaces group related metafields and prevent naming collisions between different apps.
    *
-   * App owned metafield namespaces are returned using the `$app` format. See [app owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.
+   * App owned metafield namespaces are returned using the `$app` format. See [app owned metafields](https://shopify.dev/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.
    */
   namespace: string;
 
@@ -206,7 +205,7 @@ export interface AppMetafield {
   valueType: 'boolean' | 'float' | 'integer' | 'json_string' | 'string';
 
   /**
-   * The metafield's [type name](/docs/apps/build/custom-data/metafields/list-of-data-types), such as `'single_line_text_field'` or `'json'`. This is the full type identifier, whereas `valueType` is a simplified category.
+   * The metafield's [type name](https://shopify.dev/docs/apps/build/custom-data/metafields/list-of-data-types), such as `'single_line_text_field'` or `'json'`. This is the full type identifier, whereas `valueType` is a simplified category.
    */
   type: string;
 }
@@ -214,7 +213,7 @@ export interface AppMetafield {
 /**
  * Represents a custom metadata attached to the cart. Unlike `AppMetafield`, cart metafield values are always strings and don't include a `valueType` discriminator.
  *
- * Cart [metafields](/docs/apps/build/custom-data/metafields) are set by extensions using `applyMetafieldChange()` and can be copied to order metafields at order creation time.
+ * Cart [metafields](https://shopify.dev/docs/apps/build/custom-data/metafields) are set by extensions using `applyMetafieldChange()` and can be copied to order metafields at order creation time.
  */
 export interface CartMetafield {
   /**
@@ -233,13 +232,13 @@ export interface CartMetafield {
   value: string;
 
   /**
-   * The metafield's [type name](/docs/apps/build/custom-data/metafields/list-of-data-types), such as `'single_line_text_field'` or `'json'`.
+   * The metafield's [type name](https://shopify.dev/docs/apps/build/custom-data/metafields/list-of-data-types), such as `'single_line_text_field'` or `'json'`.
    */
   type: string;
 }
 
 /**
- * The Shopify resource that a metafield is attached to. Each entry identifies a specific resource by its type and globally-unique ID, so your extension can determine where the metafield data originates.
+ * The Shopify resource that a metafield is attached to. Each entry identifies a specific resource by its type and globally-unique ID, so you can trace where the data comes from.
  */
 export interface AppMetafieldEntryTarget {
   /**
@@ -250,11 +249,11 @@ export interface AppMetafieldEntryTarget {
    * - `'shop'`: The merchant's shop.
    * - `'shopUser'`: A staff member or collaborator account on the shop.
    * - `'variant'`: A specific variant of a product.
-   * - `'company'`: A [B2B](/docs/apps/build/b2b) company associated with the order.
-   * - `'companyLocation'`: A location belonging to a [B2B](/docs/apps/build/b2b) company.
+   * - `'company'`: A [B2B](https://shopify.dev/docs/apps/build/b2b) company associated with the order.
+   * - `'companyLocation'`: A location belonging to a [B2B](https://shopify.dev/docs/apps/build/b2b) company.
    * - `'cart'`: The cart associated with the checkout.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.
    */
   type:
     | 'customer'
@@ -267,7 +266,7 @@ export interface AppMetafieldEntryTarget {
     | 'cart';
 
   /**
-   * The globally-unique identifier of the Shopify resource, in [GID](https://shopify.dev/docs/api/usage/gids) format. Use this value to match the metafield to a specific resource in your extension or when querying the GraphQL API.
+   * The globally-unique identifier of the Shopify resource, in [GID](https://shopify.dev/docs/api/usage/gids) format. Use this value to match the metafield to a specific resource in your extension or when querying the [Storefront API](https://shopify.dev/docs/api/storefront).
    *
    * @example 'gid://shopify/Product/123'
    */
@@ -275,13 +274,13 @@ export interface AppMetafieldEntryTarget {
 }
 
 /**
- * An entry that pairs a Shopify resource with one of its [metafields](/docs/apps/build/custom-data/metafields). Each entry contains a `target` identifying which resource the metafield belongs to and a `metafield` object with the actual data.
+ * An entry that pairs a Shopify resource with one of its [metafields](https://shopify.dev/docs/apps/build/custom-data/metafields). Each entry contains a `target` identifying which resource the metafield belongs to and a `metafield` object with the actual data.
  */
 export interface AppMetafieldEntry {
   /**
    * The Shopify resource that this metafield is attached to, including the resource type (such as `'product'` or `'customer'`) and its globally-unique ID.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.
    */
   target: AppMetafieldEntryTarget;
 
@@ -338,12 +337,9 @@ export interface I18n {
   /**
    * Returns a localized date value.
    *
-   * This function behaves like the standard `Intl.DateTimeFormatOptions()` and uses
-   * the buyer's locale by default. Formatting options can be passed in as
+   * This function behaves like the standard [`Intl.DateTimeFormat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) and uses
+   * the buyer's locale by default. Formatting [options](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#using_options) can be passed in as
    * options.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat0
-   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#using_options
    *
    * @param options.inExtensionLocale - If true, uses the extension's locale.
    */
@@ -379,7 +375,7 @@ export interface Currency {
 }
 
 /**
- * A [Shopify Market](/docs/apps/build/markets) that represents a group of one or more regions for international selling.
+ * A [Shopify Market](https://shopify.dev/docs/apps/build/markets) that represents a group of one or more regions for international selling.
  */
 export interface Market {
   /**
@@ -388,7 +384,7 @@ export interface Market {
   id: string;
 
   /**
-   * The human-readable, shop-scoped identifier for the market, such as `'us'` or `'eu'`. Merchants define these handles when configuring [Shopify Markets](/docs/apps/build/markets).
+   * The human-readable, shop-scoped identifier for the market, such as `'us'` or `'eu'`. Merchants define these handles when configuring [Shopify Markets](https://shopify.dev/docs/apps/build/markets).
    */
   handle: string;
 }
@@ -415,14 +411,14 @@ export interface Localization {
   extensionLanguage: SubscribableSignalLike<Language>;
 
   /**
-   * The country context of the checkout, carried over from the cart context where it was used to contextualize the storefront experience. It updates when the buyer changes the country of their shipping address. Use this value to display region-specific content such as local support information or regional policies. The value is `undefined` if the buyer's country is unknown.
+   * The country context of the checkout, carried over from the cart. It updates when the buyer changes their shipping address country. Use this value to display region-specific content such as local support information or regional policies. The value is `undefined` if the buyer's country is unknown.
    */
   country: SubscribableSignalLike<Country | undefined>;
 
   /**
-   * The [market](/docs/apps/build/markets) context of the checkout, carried over from the cart context. Markets group countries and regions with shared pricing, languages, and domains. It updates when the buyer changes the country of their shipping address. The value is `undefined` if the market is unknown.
+   * The [market](https://shopify.dev/docs/apps/build/markets) context of the checkout, carried over from the cart context. Markets group countries and regions with shared pricing, languages, and domains. It updates when the buyer changes the country of their shipping address. The value is `undefined` if the market is unknown.
    *
-   * > Caution: This field is deprecated and is removed in a future version.
+   * > Caution: Deprecated as of version `2025-04`. Merchants now manage which extensions load for each market, so extensions no longer need to check this value.
    *
    * @deprecated Deprecated as of version `2025-04`
    */
@@ -460,14 +456,13 @@ export interface BuyerJourney {
    * This returns a promise that resolves to a teardown function. Calling the
    * teardown function removes the interceptor.
    *
-   * To block checkout progress, you must set the [block_progress](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress)
+   * To block checkout progress, you must set the [block_progress](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#block-progress)
    * capability in your extension's configuration.
    *
    * If you do, then you're expected to inform the buyer why navigation was blocked,
    * either by passing validation errors to the checkout UI or rendering the errors in your extension.
    *
-   * It's good practice to show a warning in the checkout editor when the merchant hasn't given permission for your extension
-   * to block checkout progress.
+   * If the merchant hasn't allowed your extension to block checkout progress, show a warning in the [checkout editor](https://shopify.dev/docs/apps/build/checkout/test-checkout-ui-extensions#test-the-extension-in-the-checkout-editor).
    */
   intercept(interceptor: Interceptor): Promise<() => void>;
 
@@ -564,20 +559,20 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * check `discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.
    *
    * > Caution: As of version `2024-07`, UI extension code must check for instructions before calling select APIs in case those APIs aren't available.
-   *  See the [update guide](/docs/api/checkout-ui-extensions/apis/cart-instructions#examples) for more information.
+   *  See the [update guide](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#examples) for more information.
    *
    */
   instructions: SubscribableSignalLike<CartInstructions>;
 
   /**
    * The metafields requested in the
-   * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration)
+   * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration)
    * file. These metafields are updated when there's a change in the merchandise items
    * being purchased by the customer.
    *
-   * App owned metafields are supported and are returned using the `$app` format. The fully qualified reserved namespace format such as `app--{your-app-id}[--{optional-namespace}]` isn't supported. See [app owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.
+   * App owned metafields are supported and are returned using the `$app` format. The fully qualified reserved namespace format such as `app--{your-app-id}[--{optional-namespace}]` isn't supported. See [app owned metafields](https://shopify.dev/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   appMetafields: SubscribableSignalLike<AppMetafieldEntry[]>;
 
@@ -592,16 +587,16 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   availablePaymentOptions: SubscribableSignalLike<PaymentOption[]>;
 
   /**
-   * Information about the buyer that's interacting with the checkout.
+   * Information about the buyer that's interacting with the checkout. The property is available only if the extension has access to protected customer data.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   buyerIdentity?: BuyerIdentity;
 
   /**
    * Provides details on the buyer's progression through the checkout and lets you intercept navigation to validate data before the buyer continues.
    *
-   * Refer to [buyer journey](https://shopify.dev/docs/api/checkout-ui-extensions/apis/buyer-journey#examples)
+   * Refer to [buyer journey](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/buyer-journey#examples)
    * examples for more information.
    */
   buyerJourney: BuyerJourney;
@@ -624,7 +619,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   checkoutToken: SubscribableSignalLike<CheckoutToken | undefined>;
 
   /**
-   * The cost breakdown for the current checkout, including subtotal, shipping, tax, and total amounts. These values update as the buyer progresses through checkout and new costs are negotiated.
+   * The cost breakdown for the current checkout, including subtotal, shipping, tax, and total amounts. These values update as the buyer progresses through checkout and costs like shipping and tax are calculated.
    */
   cost: CartCost;
 
@@ -639,7 +634,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   discountCodes: SubscribableSignalLike<CartDiscountCode[]>;
 
   /**
-   * The discount allocations applied to the entire cart, including automatic discounts, code-based discounts, and custom discounts from Shopify Functions. Each allocation indicates how much was discounted and how the discount was triggered.
+   * The discount allocations applied to the entire cart, including automatic discounts, code-based discounts, and custom discounts from [Shopify Functions](https://shopify.dev/docs/apps/build/functions). Each allocation indicates how much was discounted and how the discount was triggered.
    */
   discountAllocations: SubscribableSignalLike<CartDiscountAllocation[]>;
 
@@ -654,7 +649,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * extension's configuration file.
    *
    * @example 'purchase.checkout.block.render'
-   * @see https://shopify.dev/docs/api/checkout-ui-extensions/latest/extension-targets-overview
+   * @see https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/extension-targets-overview
    * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    *
    * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
@@ -663,10 +658,10 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * Utilities for translating content and formatting values according to the current
-   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization)
+   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization)
    * of the checkout.
    *
-   * Refer to [`localization` examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#examples)
+   * Refer to [`localization` examples](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization#examples)
    * for more information.
    */
   i18n: I18n;
@@ -679,7 +674,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The details about the location, language, and currency of the customer. For utilities to easily
    * format and translate content based on these details, you can use the
-   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#standardapi-propertydetail-i18n)
+   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization#standardapi-propertydetail-i18n)
    * object instead.
    */
   localization: Localization;
@@ -710,7 +705,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The method used to query the Storefront GraphQL API with a prefetched token.
    *
-   * Refer to [Storefront API access examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/storefront-api) for more information.
+   * Refer to [Storefront API access examples](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/storefront-api) for more information.
    */
   query: <Data = unknown, Variables = Record<string, unknown>>(
     query: string,
@@ -729,15 +724,15 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * If the previous token expires, this value reflects a new session token with a new signature and expiry.
    *
-   * Refer to [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/session-token) for more information.
+   * Refer to [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/session-token) for more information.
    */
   sessionToken: SessionToken;
 
   /**
    * The settings matching the settings definition written in the
-   * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
+   * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration) file.
    *
-   *  Refer to [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/settings#examples) for more information.
+   *  Refer to [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/settings#examples) for more information.
    *
    * > Note: When an extension is being installed in the editor, the settings are empty until
    * a merchant sets a value. In that case, this object updates in real time as a merchant fills in the settings.
@@ -747,18 +742,20 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The proposed customer shipping address. During the information step, the address
    * updates when the field is committed (on change) rather than every keystroke.
-   * An address value is present only if delivery is required. Otherwise, the
-   * subscribable value is undefined.
+   * The property is available only if the extension has access to protected customer
+   * data. When available, the subscribable value is `undefined` if delivery isn't required.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   shippingAddress?: SubscribableSignalLike<ShippingAddress | undefined>;
 
   /**
    * The proposed customer billing address. The address updates when the field is
-   * committed (on change) rather than every keystroke.
+   * committed (on change) rather than every keystroke. The property is available only
+   * if the extension has access to protected customer data. The subscribable value is
+   * `undefined` if the billing address hasn't been provided yet.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   billingAddress?: SubscribableSignalLike<MailingAddress | undefined>;
 
@@ -792,14 +789,14 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Enables setting and updating customer privacy consent settings and tracking consent metafields.
    *
-   * > Note: Requires the [`customer_privacy` capability](https://shopify.dev/docs/api/checkout-ui-extensions/latest/configuration#collect-buyer-consent) to be set to `true`.
+   * > Note: Requires the [`customer_privacy` capability](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#collect-buyer-consent) to be set to `true`.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   applyTrackingConsentChange: ApplyTrackingConsentChangeType;
 
   /**
-   * Additional region-specific fields required during checkout, such as tax identification numbers (Brazil's CPF/CNPJ) or customs credentials. The value is `undefined` if the current checkout doesn't require any localized fields.
+   * Additional region-specific fields required during checkout, such as tax identification numbers (Brazil's CPF/CNPJ) or customs credentials. The property is available only if the extension has access to protected customer data. The array is empty if the current checkout doesn't require any localized fields.
    */
   localizedFields?: SubscribableSignalLike<LocalizedField[]>;
 }
@@ -817,53 +814,53 @@ export interface SessionToken {
 /**
  * Information about the buyer who is completing the checkout.
  *
- * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data). The `customer` and `purchasingCompany` properties require level 1 access. The `email` and `phone` properties require level 2 access.
+ * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data). The `customer` and `purchasingCompany` properties require level 1 access. The `email` and `phone` properties require level 2 access.
  */
 export interface BuyerIdentity {
   /**
    * The buyer's customer account, including their ID and whether they've accepted marketing. The value is `undefined` if the buyer isn't a
    * known customer for this shop or if they haven't logged in yet.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   customer: SubscribableSignalLike<Customer | undefined>;
 
   /**
-   * The email address associated with the checkout. This is the email the buyer provided during checkout for order confirmation and communication. The value is `undefined` if the app doesn't have access to customer data.
+   * The email address the buyer provided during checkout. The value is `undefined` if the app doesn't have access to customer data.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   email: SubscribableSignalLike<string | undefined>;
 
   /**
    * The phone number the buyer provided during checkout. The value is `undefined` if no phone number was provided or the app doesn't have access to customer data.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   phone: SubscribableSignalLike<string | undefined>;
 
   /**
    * The company and company location that a B2B (business-to-business) customer is purchasing on behalf of. Use this to identify the business context of the order. The value is `undefined` if the buyer isn't a B2B customer.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   purchasingCompany: SubscribableSignalLike<PurchasingCompany | undefined>;
 }
 
 /**
- * The company and location that the [B2B](/docs/apps/build/b2b) customer is purchasing on behalf of. This is present only when the buyer is logged in as a business customer.
+ * The company and location that the [B2B](https://shopify.dev/docs/apps/build/b2b) customer is purchasing on behalf of. This is present only when the buyer is logged in as a business customer.
  */
 export interface PurchasingCompany {
   /**
    * The company the B2B customer belongs to.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   company: Company;
   /**
    * The specific company location associated with this B2B purchase.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   location: CompanyLocation;
 }
@@ -872,7 +869,7 @@ export interface Company {
   /**
    * A globally-unique identifier for the company in the format `gid://shopify/Company/<id>`.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'gid://shopify/Company/123'
    */
@@ -880,13 +877,13 @@ export interface Company {
   /**
    * The company's display name.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   name: string;
   /**
    * A merchant-defined external identifier for the company. The value is `undefined` if the merchant hasn't set one.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   externalId?: string;
 }
@@ -895,7 +892,7 @@ export interface CompanyLocation {
   /**
    * A globally-unique identifier for the company location in the format `gid://shopify/CompanyLocation/<id>`.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'gid://shopify/CompanyLocation/123'
    */
@@ -903,13 +900,13 @@ export interface CompanyLocation {
   /**
    * The display name of the company location.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   name: string;
   /**
    * A merchant-defined external identifier for the company location. The value is `undefined` if the merchant hasn't set one.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   externalId?: string;
 }
@@ -962,7 +959,7 @@ export interface CartCost {
   subtotalAmount: SubscribableSignalLike<Money>;
 
   /**
-   * The total shipping cost after shipping discounts have been applied. The value is `undefined` if shipping hasn't been negotiated yet, such as when the buyer is still on the information step.
+   * The total shipping cost after shipping discounts have been applied. The value is `undefined` if shipping hasn't been calculated yet, such as when the buyer is still on the information step.
    */
   totalShippingAmount: SubscribableSignalLike<Money | undefined>;
 
@@ -972,7 +969,7 @@ export interface CartCost {
   totalTaxAmount: SubscribableSignalLike<Money | undefined>;
 
   /**
-   * The minimum total the buyer can expect to pay at the current step of checkout. This excludes amounts that haven't been negotiated yet. For example, on the information step this won't include delivery costs because the buyer hasn't selected a shipping method. Gift cards and store credits are excluded from this total.
+   * The minimum total at the current step of checkout. Costs not yet calculated, such as shipping on the information step, aren't included. Gift cards and store credits are excluded from this total.
    */
   totalAmount: SubscribableSignalLike<Money>;
 }
@@ -1011,7 +1008,7 @@ export interface CartLine {
   discountAllocations: CartDiscountAllocation[];
 
   /**
-   * The individual components of a [bundle](/docs/apps/build/product-merchandising/bundles) line item. Each component represents a separate product within the bundle. Returns an empty array if the line item isn't a bundle.
+   * The individual components of a [bundle](https://shopify.dev/docs/apps/build/product-merchandising/bundles) line item. Each component represents a separate product within the bundle. Returns an empty array if the line item isn't a bundle.
    */
   lineComponents: CartLineComponentType[];
 
@@ -1155,7 +1152,7 @@ export interface ProductVariant extends BaseMerchandise {
   requiresShipping: boolean;
 
   /**
-   * The [selling plan](/docs/apps/build/purchase-options/subscriptions) associated with this variant, such as a subscription or pre-order plan. The value is `undefined` if the item isn't being purchased through a selling plan.
+   * The [selling plan](https://shopify.dev/docs/apps/build/purchase-options/subscriptions) associated with this variant, such as a subscription or pre-order plan. The value is `undefined` if the item isn't being purchased through a selling plan.
    */
   sellingPlan?: SellingPlan;
 
@@ -1266,9 +1263,9 @@ export interface CartDiscountCode {
 /**
  * A discount allocation applied to the cart. Use the `type` property to determine how the discount was triggered:
  *
- * - `CartCodeDiscountAllocation` (`type: 'code'`) - Triggered by a discount code the buyer entered.
- * - `CartAutomaticDiscountAllocation` (`type: 'automatic'`) - Applied automatically based on merchant-configured rules.
- * - `CartCustomDiscountAllocation` (`type: 'custom'`) - Applied by a [Shopify Function](/docs/apps/build/discounts).
+ * - `CartCodeDiscountAllocation` (`type: 'code'`): Triggered by a discount code the buyer entered.
+ * - `CartAutomaticDiscountAllocation` (`type: 'automatic'`): Applied automatically based on merchant-configured rules.
+ * - `CartCustomDiscountAllocation` (`type: 'custom'`): Applied by a [Shopify Function](https://shopify.dev/docs/api/functions/latest/discount).
  */
 export type CartDiscountAllocation =
   | CartCodeDiscountAllocation
@@ -1310,12 +1307,12 @@ export interface CartAutomaticDiscountAllocation
 export interface CartCustomDiscountAllocation
   extends CartDiscountAllocationBase {
   /**
-   * The title of the custom discount, typically applied by a [Shopify Function](/docs/apps/build/discounts).
+   * The title of the custom discount, typically applied by a [Shopify Function](https://shopify.dev/docs/api/functions/latest/discount).
    */
   title: string;
 
   /**
-   * Identifies this as a custom discount applied by a [Shopify Function](/docs/apps/build/discounts).
+   * Identifies this as a custom discount applied by a [Shopify Function](https://shopify.dev/docs/api/functions/latest/discount).
    */
   type: 'custom';
 }
@@ -1394,9 +1391,9 @@ export interface InterceptorProps {
 /**
  * A function for intercepting and preventing navigation on checkout. You can block
  * navigation by returning an object with
- * `{behavior: 'block', reason: InvalidResultReason.InvalidExtensionState, errors?: ValidationErrors[]}`.
+ * `{behavior: 'block', reason: 'your reason here', errors?: ValidationError[]}`.
  * If you do, then you're expected to also update some part of your UI to reflect the reason why navigation
- * was blocked, either by targeting checkout UI fields, passing errors to the page level or rendering the errors in your extension.
+ * was blocked, either by targeting checkout UI fields, passing errors to the page level, or rendering the errors in your extension.
  */
 export type Interceptor = (
   interceptorProps: InterceptorProps,
@@ -1405,13 +1402,13 @@ export type Interceptor = (
 /**
  * Information about a customer who has previously purchased from this shop.
  *
- * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+ * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
  */
 export interface Customer {
   /**
    * A globally-unique identifier for the customer in the format `gid://shopify/Customer/<id>`.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'gid://shopify/Customer/123'
    */
@@ -1419,45 +1416,45 @@ export interface Customer {
   /**
    * The email address associated with the customer's account. The value is `undefined` if the app doesn't have the required access level.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   email?: string;
   /**
    * The phone number associated with the customer's account. The value is `undefined` if no phone number is on file or the app doesn't have the required access level.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   phone?: string;
   /**
    * The customer's full name, typically a combination of first and last name. The value is `undefined` if the app doesn't have the required access level.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   fullName?: string;
   /**
    * The customer's first name. The value is `undefined` if the app doesn't have the required access level.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   firstName?: string;
   /**
    * The customer's last name. The value is `undefined` if the app doesn't have the required access level.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   lastName?: string;
   /**
    * The customer's profile image, such as a Gravatar avatar. Use this to personalize the extension UI for the logged-in buyer.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   image: ImageDetails;
   /**
    * Whether the customer has opted in to receiving marketing communications from the merchant, such as email campaigns and promotional offers.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
-   * > Caution: This field is deprecated and is removed in a future version. Use `acceptsEmailMarketing` or `acceptsSmsMarketing` instead.
+   * > Caution: This field is deprecated and will be removed in a future version. Use `acceptsEmailMarketing` or `acceptsSmsMarketing` instead.
    *
    * @deprecated Use `acceptsEmailMarketing` or `acceptsSmsMarketing` instead.
    */
@@ -1465,19 +1462,19 @@ export interface Customer {
   /**
    * Whether the customer has opted in to email marketing.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   acceptsEmailMarketing: boolean;
   /**
    * Whether the customer has opted in to SMS marketing.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   acceptsSmsMarketing: boolean;
   /**
    * The store credit accounts owned by this customer that can be used as payment during checkout. Each account has a balance representing available store credit.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @private
    */
@@ -1485,7 +1482,7 @@ export interface Customer {
   /**
    * The number of orders the customer has previously placed with this shop.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   ordersCount: number;
 }
@@ -1617,7 +1614,7 @@ export interface VisitorError {
  */
 export interface DeliveryGroup {
   /**
-   * A unique identifier for the delivery group. The value is `undefined` on the Thank You page because delivery groups aren't available after order completion.
+   * A unique identifier for the delivery group. The value is `undefined` if the underlying delivery line doesn't have an ID assigned.
    */
   id?: string;
   /**
@@ -1652,7 +1649,7 @@ export interface DeliveryGroup {
  * The possible types of a delivery group.
  *
  * - `'oneTimePurchase'`: Items bought as a single, non-recurring purchase.
- * - `'subscription'`: Items bought through a [selling plan](/docs/apps/build/purchase-options/subscriptions) that results in recurring deliveries.
+ * - `'subscription'`: Items bought through a [selling plan](https://shopify.dev/docs/apps/build/purchase-options/subscriptions) that results in recurring deliveries.
  */
 export type DeliveryGroupType = 'oneTimePurchase' | 'subscription';
 
@@ -1679,9 +1676,9 @@ export interface DeliveryOptionReference {
 /**
  * A delivery option available to the buyer. Use the `type` property to determine which kind of option it is:
  *
- * - `ShippingOption` (`type: 'shipping' | 'local'`) - Items shipped by a carrier or delivered locally by the merchant.
- * - `PickupPointOption` (`type: 'pickupPoint'`) - Items shipped to a third-party collection point for the buyer to pick up.
- * - `PickupLocationOption` (`type: 'pickup'`) - Items picked up directly from a merchant's store or warehouse.
+ * - `ShippingOption` (`type: 'shipping' | 'local'`): Items shipped by a carrier or delivered locally by the merchant.
+ * - `PickupPointOption` (`type: 'pickupPoint'`): Items shipped to a third-party collection point for the buyer to pick up.
+ * - `PickupLocationOption` (`type: 'pickup'`): Items picked up directly from a merchant's store or warehouse.
  */
 export type DeliveryOption =
   | ShippingOption
@@ -1715,7 +1712,7 @@ export interface DeliveryOptionBase {
   code: string;
 
   /**
-   * Custom [metafields](/docs/apps/build/custom-data/metafields) attached to this delivery option by the carrier or a Shopify Function. Use these to display additional information about the option.
+   * Custom [metafields](https://shopify.dev/docs/apps/build/custom-data/metafields) attached to this delivery option by the carrier or a [Shopify Function](https://shopify.dev/docs/apps/build/functions). Use these to display additional information about the option.
    */
   metafields: Metafield[];
 }
@@ -1978,7 +1975,7 @@ export interface CustomerPrivacyRegion {
   /**
    * The buyer's country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format. The value is `undefined` if geolocation failed.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'CA' for Canada, 'US' for United States, 'GB' for Great Britain
    */
@@ -1986,7 +1983,7 @@ export interface CustomerPrivacyRegion {
   /**
    * The buyer's province, state, or region code in [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) format. The value is `undefined` if geolocation failed or only the country was detected.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'ON' for Ontario, 'ENG' for England, 'CA' for California
    */
@@ -2023,7 +2020,7 @@ export interface CustomerPrivacy {
    *
    * @example `{countryCode: 'CA', provinceCode: 'ON'}` for a visitor in Ontario, Canada; `{countryCode: 'US', provinceCode: undefined}` for a visitor in the United States if geolocation fails to detect the state; or `undefined` if neither country nor province is detected or geolocation fails.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   region?: CustomerPrivacyRegion;
 }
@@ -2104,9 +2101,9 @@ export interface AttributesCartInstructions {
 export interface DeliveryCartInstructions {
   /**
    * Whether the shipping address can be modified using
-   * `applyShippingAddressChange()`. When `true`, the buyer is using a
-   * standard checkout flow where the shipping address can be changed
-   * programmatically.
+   * `applyShippingAddressChange()`. When `false`, the buyer is using an
+   * accelerated checkout flow (Apple Pay, Google Pay) where the address
+   * can't be changed.
    */
   canSelectCustomAddress: boolean;
 }

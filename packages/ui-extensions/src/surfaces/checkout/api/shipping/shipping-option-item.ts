@@ -8,7 +8,7 @@ export interface ShippingOptionItemApi {
   target: SubscribableSignalLike<ShippingOption>;
 
   /**
-   * Whether the shipping option this extension is attached to is currently selected by the buyer. When `true`, the buyer has chosen this option. When `false`, the buyer has selected a different shipping option.
+   * Whether the buyer has selected the target shipping option. When `true`, the target option is the buyer's active choice. When `false`, the buyer has chosen a different shipping option.
    */
   isTargetSelected: SubscribableSignalLike<boolean>;
 
