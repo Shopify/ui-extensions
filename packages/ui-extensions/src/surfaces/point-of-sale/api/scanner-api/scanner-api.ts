@@ -33,10 +33,12 @@ export interface ScannerSources {
 
 /**
  * Represents the scanner interface for accessing scan events and subscription management. Provides real-time access to scanned data through a reactive signal pattern.
+ *
+ * Scan data is persisted for the lifetime of the extension — previous scan results remain accessible through the signal as long as the extension is running. When the extension is killed (for example, by the user closing the modal or navigating away), all accumulated scan data is cleared.
  */
 export interface ScannerData {
   /**
-   * Current available scanner sources with subscription support. The `value` property provides current sources, and `subscribe` listens for changes. Use to monitor which scanners are available.
+   * Current scan data with subscription support. The `value` property provides the latest scan result, and `subscribe` listens for new scan events. Scan data persists for the lifetime of the extension and is cleared when the extension is killed.
    */
   current: ReadonlySignalLike<ScannerSubscriptionResult>;
 }
