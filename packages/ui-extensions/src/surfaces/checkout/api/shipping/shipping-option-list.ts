@@ -28,7 +28,7 @@ export interface DeliveryGroupList {
    * The type of delivery groups in this list. This is the same `DeliveryGroupType` used on `DeliveryGroup.groupType`.
    *
    * - `'oneTimePurchase'`: Items bought as a single, non-recurring purchase.
-   * - `'subscription'`: Items bought through a [selling plan](/docs/apps/build/purchase-options/subscriptions) that results in recurring deliveries.
+   * - `'subscription'`: Items bought through a [selling plan](https://shopify.dev/docs/apps/build/purchase-options/subscriptions) that results in recurring deliveries.
    */
   groupType: DeliveryGroupType;
   /**

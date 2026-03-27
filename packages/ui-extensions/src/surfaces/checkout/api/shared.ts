@@ -14,14 +14,14 @@ export interface ValidationError {
    *
    * @example '$.cart.deliveryGroups[0].deliveryAddress.countryCode'
    *
-   * See the [supported targets](/docs/api/functions/reference/cart-checkout-validation/graphql#supported-targets)
+   * See the [supported targets](https://shopify.dev/docs/api/functions/reference/cart-checkout-validation/graphql#supported-targets)
    * for more information.
    */
   target?: string;
 }
 
 /**
- * A [selling plan](/docs/apps/build/purchase-options/subscriptions) represents a recurring or deferred purchasing option for a product, such as a subscription, pre-order, or try-before-you-buy plan. The merchant configures selling plans to define how and when the buyer is charged.
+ * A [selling plan](https://shopify.dev/docs/apps/build/purchase-options/subscriptions) represents a recurring or deferred purchasing option for a product, such as a subscription, pre-order, or try-before-you-buy plan. The merchant configures selling plans to define how and when the buyer is charged.
  */
 export interface SellingPlan {
   /**
@@ -66,7 +66,7 @@ export interface MailingAddress {
    * The buyer's full name, typically a combination of first and last name.
    * The value is `undefined` if the buyer didn't provide a name.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'John Doe'
    */
@@ -78,7 +78,7 @@ export interface MailingAddress {
    * the buyer didn't provide a first name or the store doesn't collect
    * split names.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'John'
    */
@@ -90,7 +90,7 @@ export interface MailingAddress {
    * the buyer didn't provide a last name or the store doesn't collect
    * split names.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'Doe'
    */
@@ -100,7 +100,7 @@ export interface MailingAddress {
    * The buyer's company name. The value is `undefined` if the buyer didn't
    * enter a company or the store doesn't collect company names.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'Shopify'
    */
@@ -110,7 +110,7 @@ export interface MailingAddress {
    * The first line of the street address, including the street number and
    * name. The value is `undefined` if the buyer hasn't entered an address yet.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example '151 O'Connor Street'
    */
@@ -121,7 +121,7 @@ export interface MailingAddress {
    * or unit. The value is `undefined` if the buyer didn't provide a second
    * address line.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'Ground floor'
    */
@@ -131,7 +131,7 @@ export interface MailingAddress {
    * The city, town, or village of the address. The value is `undefined` if
    * the buyer hasn't entered a city yet.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'Ottawa'
    */
@@ -142,7 +142,7 @@ export interface MailingAddress {
    * delivery routing. The value is `undefined` if the buyer hasn't entered
    * one yet or the country doesn't use postal codes.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'K2P 2L8'
    */
@@ -153,7 +153,7 @@ export interface MailingAddress {
    * format. The value is `undefined` if the buyer hasn't selected a country
    * yet.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'CA' for Canada.
    */
@@ -164,7 +164,7 @@ export interface MailingAddress {
    * format varies by country. The value is `undefined` if the buyer hasn't
    * selected one yet or the country doesn't have provinces.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'ON' for Ontario.
    */
@@ -175,7 +175,7 @@ export interface MailingAddress {
    * format. The value is `undefined` if the buyer didn't provide a phone
    * number or the store doesn't collect phone numbers.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example '+1 613 111 2222'
    */

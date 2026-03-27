@@ -4,7 +4,7 @@ export interface OrderConfirmation {
   order: {
     /**
      * A globally unique identifier for the order. This becomes the
-     * [`Order`](/docs/api/admin-graphql/latest/objects/Order) object ID in the
+     * [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order) object ID in the
      * GraphQL Admin API after the order is created.
      *
      * @example 'gid://shopify/Order/123'
