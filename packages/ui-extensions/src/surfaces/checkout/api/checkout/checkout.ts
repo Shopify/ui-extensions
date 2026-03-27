@@ -211,7 +211,7 @@ export interface CartLineAddChange {
   attributes?: Attribute[];
 
   /**
-   * The identifier of the [selling plan](/docs/apps/build/purchase-options/subscriptions) to associate with this line item, such as a subscription or pre-order plan.
+   * The identifier of the [selling plan](https://shopify.dev/docs/apps/build/purchase-options/subscriptions) to associate with this line item, such as a subscription or pre-order plan.
    */
   sellingPlanId?: SellingPlan['id'];
 
@@ -274,7 +274,7 @@ export interface CartLineUpdateChange {
   attributes?: Attribute[];
 
   /**
-   * The [selling plan](/docs/apps/build/purchase-options/subscriptions) to associate with this line item. Pass `null` to remove the item from its current selling plan.
+   * The [selling plan](https://shopify.dev/docs/apps/build/purchase-options/subscriptions) to associate with this line item. Pass `null` to remove the item from its current selling plan.
    */
   sellingPlanId?: SellingPlan['id'] | null;
 
@@ -412,13 +412,13 @@ export interface GiftCardChangeResultSuccess {
  */
 export interface GiftCardChangeResultError {
   /**
-   * Indicates that the gift card change couldn't be applied. Check the `message` property for details.
+   * Indicates that the gift card change couldn’t be applied. Check the `message` property for details.
    */
-  type: 'error';
+  type: ‘error’;
 
   /**
    * A message that explains the error. This message is useful for debugging.
-   * It isn't localized and shouldn't be displayed to the buyer.
+   * It isn’t localized and shouldn’t be displayed to the buyer.
    */
   message: string;
 }
@@ -432,7 +432,7 @@ export interface MetafieldRemoveChange {
   /**
    * The type of the `MetafieldRemoveChange` API.
    */
-  type: 'removeMetafield';
+  type: ‘removeMetafield’;
 
   /**
    * The name of the metafield to remove.
@@ -445,12 +445,12 @@ export interface MetafieldRemoveChange {
   namespace: string;
 }
 
-/** Removes a cart [metafield](/docs/apps/build/custom-data/metafields). Pass this to `applyMetafieldChange()` to delete a metafield by key and namespace. */
+/** Removes a cart [metafield](https://shopify.dev/docs/apps/build/custom-data/metafields). Pass this to `applyMetafieldChange()` to delete a metafield by key and namespace. */
 export interface MetafieldRemoveCartChange {
   /**
    * Identifies this as a cart metafield removal. Set this when creating a change to delete an existing metafield by key and namespace.
    */
-  type: 'removeCartMetafield';
+  type: ‘removeCartMetafield’;
 
   /**
    * The name of the metafield to remove.
@@ -474,7 +474,7 @@ export interface MetafieldUpdateChange {
   /**
    * The type of the `MetafieldUpdateChange` API.
    */
-  type: 'updateMetafield';
+  type: ‘updateMetafield’;
 
   /** The name of the metafield to update. */
   key: string;
@@ -488,11 +488,11 @@ export interface MetafieldUpdateChange {
   /**
    * The metafield’s information type.
    */
-  valueType: 'integer' | 'string' | 'json_string';
+  valueType: ‘integer’ | ‘string’ | ‘json_string’;
 }
 
 /**
- * Creates or updates a cart [metafield](/docs/apps/build/custom-data/metafields). Pass this to `applyMetafieldChange()` to set a metafield value. If a metafield with the provided key and namespace doesn’t already exist, then it gets created.
+ * Creates or updates a cart [metafield](https://shopify.dev/docs/apps/build/custom-data/metafields). Pass this to `applyMetafieldChange()` to set a metafield value. If a metafield with the provided key and namespace doesn’t already exist, then it gets created.
  */
 export interface MetafieldUpdateCartChange {
   /**
@@ -515,7 +515,7 @@ export interface MetafieldUpdateCartChange {
 
     /**
      * The metafield’s information type.
-     * See the [metafield types documentation](/docs/apps/build/custom-data/metafields/list-of-data-types) for a list of supported types.
+     * See the [metafield types documentation](https://shopify.dev/docs/apps/build/custom-data/metafields/list-of-data-types) for a list of supported types.
      */
     type: string;
   };
@@ -524,8 +524,10 @@ export interface MetafieldUpdateCartChange {
 /**
  * The input for `applyMetafieldChange()`. Use the `type` property to specify the operation.
  *
- * - `MetafieldRemoveCartChange` (`type: 'removeCartMetafield'`): Removes an existing cart [metafield](/docs/apps/build/custom-data/metafields).
- * - `MetafieldUpdateCartChange` (`type: 'updateCartMetafield'`): Creates or updates a cart metafield.
+ * - `MetafieldRemoveCartChange` (`type: ‘removeCartMetafield’`): Removes an existing cart [metafield](https://shopify.dev/docs/apps/build/custom-data/metafields).
+ * - `MetafieldUpdateCartChange` (`type: ‘updateCartMetafield’`): Creates or updates a cart metafield.
+ * - `MetafieldRemoveChange` (`type: ‘removeMetafield’`) - Deprecated. Use `MetafieldRemoveCartChange` instead.
+ * - `MetafieldUpdateChange` (`type: ‘updateMetafield’`) - Deprecated. Use `MetafieldUpdateCartChange` instead.
  */
 export type MetafieldChange =
   | MetafieldRemoveChange
@@ -534,13 +536,13 @@ export type MetafieldChange =
   | MetafieldUpdateCartChange;
 
 /**
- * The result of a successful metafield change. The `type` property is `'success'`.
+ * The result of a successful metafield change. The `type` property is `’success’`.
  */
 export interface MetafieldChangeResultSuccess {
   /**
    * Indicates that the metafield change was applied successfully.
    */
-  type: 'success';
+  type: ‘success’;
 }
 
 /**
@@ -548,13 +550,13 @@ export interface MetafieldChangeResultSuccess {
  */
 export interface MetafieldChangeResultError {
   /**
-   * Indicates that the metafield change couldn't be applied. Check the `message` property for details.
+   * Indicates that the metafield change couldn’t be applied. Check the `message` property for details.
    */
-  type: 'error';
+  type: ‘error’;
 
   /**
    * A message that explains the error. This message is useful for debugging.
-   * It isn't localized and shouldn't be displayed to the buyer.
+   * It isn’t localized and shouldn’t be displayed to the buyer.
    */
   message: string;
 }
@@ -567,35 +569,35 @@ export type MetafieldChangeResult =
   | MetafieldChangeResultError;
 
 /**
- * Updates the buyer's shipping address on the checkout. Pass this to `applyShippingAddressChange()` to modify specific address fields without replacing the entire address.
+ * Updates the buyer’s shipping address on the checkout. Pass this to `applyShippingAddressChange()` to modify specific address fields without replacing the entire address.
  */
 export interface ShippingAddressUpdateChange {
   /**
    * Identifies this as a shipping address update. This is the only supported change type for `applyShippingAddressChange()`.
    */
-  type: 'updateShippingAddress';
+  type: ‘updateShippingAddress’;
 
   /**
    * Fields to update in the shipping address. You only need to provide
-   * values for the fields you want to update. Any fields you don't list
+   * values for the fields you want to update. Any fields you don’t list
    * keep their current values.
    */
   address: Partial<ShippingAddress>;
 }
 
 /**
- * The input for `applyShippingAddressChange()`. Currently only supports `ShippingAddressUpdateChange` (with `type: 'updateShippingAddress'`).
+ * The input for `applyShippingAddressChange()`. Currently only supports `ShippingAddressUpdateChange` (with `type: ‘updateShippingAddress’`).
  */
 export type ShippingAddressChange = ShippingAddressUpdateChange;
 
 /**
- * The result of a successful shipping address change. The `type` property is `'success'` and `errors` is `null`.
+ * The result of a successful shipping address change. The `type` property is `’success’` and `errors` is `null`.
  */
 export interface ShippingAddressChangeResultSuccess {
   /**
    * Indicates that the shipping address change was applied successfully.
    */
-  type: 'success';
+  type: ‘success’;
 
   /**
    * Always `null` for a successful address change. Present so that you can
@@ -609,13 +611,13 @@ export interface ShippingAddressChangeResultSuccess {
  */
 export interface ShippingAddressChangeFieldError {
   /**
-   * The `MailingAddress` field that caused the error, such as `'countryCode'` or `'zip'`. The value is `undefined` if the error isn't specific to a single field.
+   * The `MailingAddress` field that caused the error, such as `’countryCode’` or `’zip’`. The value is `undefined` if the error isn’t specific to a single field.
    */
   field?: keyof MailingAddress;
 
   /**
    * A message that explains the error. This message is useful for debugging.
-   * It isn't localized and shouldn't be displayed to the buyer.
+   * It isn’t localized and shouldn’t be displayed to the buyer.
    */
   message: string;
 }
@@ -625,9 +627,9 @@ export interface ShippingAddressChangeFieldError {
  */
 export interface ShippingAddressChangeResultError {
   /**
-   * Indicates that the shipping address change couldn't be applied. Check the `errors` array for field-level details.
+   * Indicates that the shipping address change couldn’t be applied. Check the `errors` array for field-level details.
    */
-  type: 'error';
+  type: ‘error’;
 
   /**
    * The list of field-level errors that prevented the address change. Each entry identifies which address field failed and why.
@@ -648,38 +650,38 @@ export type ShippingAddressChangeResult =
 export interface CheckoutApi {
   /**
    * Updates or removes an attribute on the cart and checkout. On success, the
-   * [`attributes`](/docs/api/checkout-ui-extensions/apis/attributes#standardapi-propertydetail-attributes) property updates to reflect the change.
+   * [`attributes`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/attributes#standardapi-propertydetail-attributes) property updates to reflect the change.
    *
-   * > Note: This method returns an error if the [cart instruction](/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `attributes.canUpdateAttributes` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
+   * > Note: This method returns an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#standardapi-propertydetail-instructions) `attributes.canUpdateAttributes` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
    *
    * @deprecated Use cart metafields instead.
    */
   applyAttributeChange(change: AttributeChange): Promise<AttributeChangeResult>;
 
   /**
-   * Adds, removes, or updates line items in the cart. The returned promise resolves when the change has been applied by the server, and the [`lines`](/docs/api/checkout-ui-extensions/apis/cart-lines#standardapi-propertydetail-lines) property updates with the new state.
+   * Adds, removes, or updates line items in the cart. The returned promise resolves when the change has been applied by the server, and the [`lines`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-lines#standardapi-propertydetail-lines) property updates with the new state.
    *
-   * > Note: This method returns an error if the [cart instruction](/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `lines.canAddCartLine` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
+   * > Note: This method returns an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#standardapi-propertydetail-instructions) `lines.canAddCartLine` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
    */
   applyCartLinesChange(change: CartLineChange): Promise<CartLineChangeResult>;
 
   /**
-   * Adds or removes a discount code on the checkout. The returned promise resolves when the change has been applied by the server, and the [`discountCodes`](/docs/api/checkout-ui-extensions/apis/discounts#standardapi-propertydetail-discountcodes) property updates with the new state.
+   * Adds or removes a discount code on the checkout. The returned promise resolves when the change has been applied by the server, and the [`discountCodes`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/discounts#standardapi-propertydetail-discountcodes) property updates with the new state.
    *
    * > Caution:
-   * > See [security considerations](/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves discount codes through a network call.
+   * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#network-access) if your extension retrieves discount codes through a network call.
    *
-   * > Note: This method returns an error if the [cart instruction](/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `discounts.canUpdateDiscountCodes` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
+   * > Note: This method returns an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#standardapi-propertydetail-instructions) `discounts.canUpdateDiscountCodes` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
    */
   applyDiscountCodeChange(
     change: DiscountCodeChange,
   ): Promise<DiscountCodeChangeResult>;
 
   /**
-   * Adds or removes a gift card from the checkout. The returned promise resolves when the change has been applied by the server, and the [`appliedGiftCards`](/docs/api/checkout-ui-extensions/apis/gift-cards#standardapi-propertydetail-appliedgiftcards) property updates with the new state.
+   * Adds or removes a gift card from the checkout. The returned promise resolves when the change has been applied by the server, and the [`appliedGiftCards`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/gift-cards#standardapi-propertydetail-appliedgiftcards) property updates with the new state.
    *
    * > Caution:
-   * > See [security considerations](/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves gift card codes through a network call.
+   * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#network-access) if your extension retrieves gift card codes through a network call.
    *
    * > Note: This method returns an error if the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
    */
@@ -687,22 +689,22 @@ export interface CheckoutApi {
 
   /**
    * Creates, updates, or removes a cart metafield on the checkout. On success, the
-   * [`metafields`](/docs/api/checkout-ui-extensions/apis/metafields#standardapi-propertydetail-metafields) property updates to reflect the change.
+   * [`metafields`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/metafields#standardapi-propertydetail-metafields) property updates to reflect the change.
    *
-   * Cart metafields are copied to order metafields at order creation time if there’s a matching order metafield definition with the [`cart to order copyable`](/docs/apps/build/metafields/use-metafield-capabilities#cart-to-order-copyable) capability enabled.
+   * Cart metafields are copied to order metafields at order creation time if there’s a matching order metafield definition with the [`cart to order copyable`](https://shopify.dev/docs/apps/build/metafields/use-metafield-capabilities#cart-to-order-copyable) capability enabled.
    *
    * > Caution: `MetafieldRemoveChange` and `MetafieldUpdateChange` are deprecated. Use cart metafields with `MetafieldRemoveCartChange` and `MetafieldUpdateCartChange` instead. If `MetafieldUpdateChange` writes a metafield with the same namespace and key as a cart metafield that’s configured to copy, the cart metafield won’t be copied.
    *
-   * > Note: This method returns an error if the [cart instruction](/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `metafields.canSetCartMetafields` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
+   * > Note: This method returns an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#standardapi-propertydetail-instructions) `metafields.canSetCartMetafields` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
    */
   applyMetafieldChange(change: MetafieldChange): Promise<MetafieldChangeResult>;
 
   /**
-   * Sets or removes the buyer's note on the checkout. On success, the
-   * [`note`](/docs/api/checkout-ui-extensions/apis/note#standardapi-propertydetail-note)
+   * Sets or removes the buyer’s note on the checkout. On success, the
+   * [`note`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/note#standardapi-propertydetail-note)
    * property updates to reflect the change.
    *
-   * > Note: This method returns an error if the [cart instruction](/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `notes.canUpdateNote` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
+   * > Note: This method returns an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#standardapi-propertydetail-instructions) `notes.canUpdateNote` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
    */
   applyNoteChange(change: NoteChange): Promise<NoteChangeResult>;
 
@@ -716,9 +718,9 @@ export interface CheckoutApi {
    * are merged into the existing address without prompting the buyer. On success,
    * the `shippingAddress` property updates to reflect the change.
    *
-   * > Note: This method returns an error if the [cart instruction](/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `delivery.canSelectCustomAddress` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
+   * > Note: This method returns an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#standardapi-propertydetail-instructions) `delivery.canSelectCustomAddress` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    */
   applyShippingAddressChange?(
     change: ShippingAddressChange,
