@@ -8,7 +8,7 @@ export interface PickupLocationItemApi {
   target: SubscribableSignalLike<PickupLocationOption>;
 
   /**
-   * Whether the pickup location this extension is attached to is currently selected by the buyer. When `true`, the buyer has chosen this location. When `false`, the buyer has selected a different pickup location.
+   * Whether the buyer has selected the target pickup location. When `true`, the target location is the buyer's active choice. When `false`, the buyer has chosen a different pickup location.
    */
   isTargetSelected: SubscribableSignalLike<boolean>;
 }

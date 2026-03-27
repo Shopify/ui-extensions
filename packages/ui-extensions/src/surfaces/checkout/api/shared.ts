@@ -14,14 +14,14 @@ export interface ValidationError {
    *
    * @example '$.cart.deliveryGroups[0].deliveryAddress.countryCode'
    *
-   * See the [supported targets](https://shopify.dev/docs/api/functions/reference/cart-checkout-validation/graphql#supported-targets)
+   * See the [supported targets](/docs/api/functions/reference/cart-checkout-validation/graphql#supported-targets)
    * for more information.
    */
   target?: string;
 }
 
 /**
- * A [selling plan](/docs/apps/build/purchase-options/subscriptions) represents a recurring or deferred purchasing option for a product, such as a subscription, pre-order, or try-before-you-buy plan. Selling plans are configured by the merchant and define how and when the buyer is charged.
+ * A [selling plan](/docs/apps/build/purchase-options/subscriptions) represents a recurring or deferred purchasing option for a product, such as a subscription, pre-order, or try-before-you-buy plan. The merchant configures selling plans to define how and when the buyer is charged.
  */
 export interface SellingPlan {
   /**
