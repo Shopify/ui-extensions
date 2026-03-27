@@ -2,7 +2,9 @@ import type {SubscribableSignalLike} from '../../shared';
 
 export interface PickupPointListApi {
   /**
-   * Whether the customer location input form is shown to the buyer.
+   * Whether the location search form is currently visible to the buyer.
+   * Use this to conditionally render UI that depends on the buyer actively
+   * searching for pickup points.
    */
   isLocationFormVisible: SubscribableSignalLike<boolean>;
 }
