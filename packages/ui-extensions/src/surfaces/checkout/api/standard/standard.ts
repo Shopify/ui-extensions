@@ -1926,10 +1926,9 @@ export interface VisitorConsent {
    */
   preferences?: boolean;
   /**
-   * Whether the visitor has opted out of the sale or sharing of their personal
-   * data with third parties. `true` means the visitor has opted out, `false`
-   * means they haven't opted out, and `undefined` means no decision has been
-   * made yet.
+   * The visitor's consent for the sale or sharing of their personal data with
+   * third parties. `true` means the visitor actively granted consent, `false`
+   * means actively denied, and `undefined` means no decision has been made yet.
    */
   saleOfData?: boolean;
 }
