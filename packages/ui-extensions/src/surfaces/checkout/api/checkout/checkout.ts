@@ -498,7 +498,7 @@ export interface MetafieldUpdateCartChange {
   /**
    * Identifies this as a cart metafield creation or update. Set this when creating a change to set a metafield value.
    */
-  type: ‘updateCartMetafield’;
+  type: 'updateCartMetafield';
 
   /**
    * The metafield data to set on the cart. If a metafield with this key and namespace already exists, then its value is replaced.
