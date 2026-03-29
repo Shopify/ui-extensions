@@ -59,7 +59,7 @@ You can configure more than one type of extension within a configuration file.
 
 Along with the \`target\`, Shopify needs to know which code to execute for it. You specify the path to your code file by using the  \`module\` property.
 
-
+Each target has a limit of three active extensions. Once three extensions have been added to a specific target, the option will be deactivated for merchants
       `,
       accordionContent: [
         {
