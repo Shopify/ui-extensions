@@ -25,6 +25,8 @@ import type {FunctionSettingsComponents} from './components/FunctionSettingsComp
 
 /**
  * Maps extension target identifiers to their corresponding extension types. Each target represents a specific location or context in the Shopify admin where extensions can render or execute. Use these targets to define where your extension appears and what capabilities it has access to.
+ *
+ * @publicDocs
  */
 export interface ExtensionTargets {
   /**

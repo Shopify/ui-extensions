@@ -20,29 +20,31 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
- * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
-/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-map-marker";
-/** @publicDocs */
+/**
+ * The element props interface for the MapMarker component.
+ * @publicDocs
+ */
 export interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'command' | 'commandFor' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
     command?: Extract<MapMarkerProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
-/** @publicDocs */
 export interface MapMarkerEvents extends Pick<MapMarkerProps$1, 'onClick'> {
 }
-/** @publicDocs */
+/**
+ * The events interface for the MapMarker component.
+ * @publicDocs
+ */
 export interface MapMarkerElementEvents {
     /**
      * Callback when a marker is clicked.
@@ -51,7 +53,10 @@ export interface MapMarkerElementEvents {
      */
     click?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
+/**
+ * The slots interface for the MapMarker component.
+ * @publicDocs
+ */
 export interface MapMarkerElementSlots {
     /**
      * The graphic to use as the marker.
@@ -60,11 +65,9 @@ export interface MapMarkerElementSlots {
      */
     graphic?: HTMLElement;
 }
-/** @publicDocs */
 export interface MapMarkerElement extends MapMarkerElementProps, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: MapMarkerEvents['onClick'];
 }
-/** @publicDocs */
 export interface MapMarkerProps extends MapMarkerElementProps, MapMarkerEvents {
 }
 declare global {

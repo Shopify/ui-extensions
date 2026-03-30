@@ -20,31 +20,29 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
- * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
-/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 export type ToggleState = 'open' | 'closed';
-/** @publicDocs */
 export interface ToggleArgumentsEvent {
     oldState?: ToggleState;
     newState?: ToggleState;
 }
 
 declare const tagName = "s-announcement";
-/** @publicDocs */
 export interface AnnouncementEvents extends Pick<AnnouncementProps$1, 'onAfterToggle' | 'onDismiss' | 'onToggle'> {
 }
-/** @publicDocs */
+/**
+ * The events interface for the Announcement component.
+ * @publicDocs
+ */
 export interface AnnouncementElementEvents {
     /**
      * Callback fired when the element state changes **after** any animations have finished.
@@ -77,20 +75,20 @@ export interface AnnouncementElementEvents {
      */
     toggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;
 }
-/** @publicDocs */
 export interface AnnouncementElement extends AnnouncementMethods, Omit<HTMLElement, 'id' | 'ontoggle'> {
     onaftertoggle?: AnnouncementEvents['onAfterToggle'];
     ondismiss?: AnnouncementEvents['onDismiss'];
     ontoggle?: AnnouncementEvents['onToggle'];
 }
-/** @publicDocs */
 export interface AnnouncementProps extends AnnouncementEvents {
 }
-/** @publicDocs */
 export interface AnnouncementMethods {
     dismiss: () => void;
 }
-/** @publicDocs */
+/**
+ * The methods interface for the Announcement component.
+ * @publicDocs
+ */
 export interface AnnouncementElementMethods {
     dismiss: AnnouncementMethods['dismiss'];
 }

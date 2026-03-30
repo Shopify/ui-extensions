@@ -10,6 +10,7 @@ import type {ComponentChildren, TextFieldProps$1} from './shared.d.ts';
 
 /**
  * A callback event with a strongly-typed `currentTarget` property that corresponds to a specific HTML element. This provides better type safety when handling events from custom elements.
+ * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   /**
@@ -19,6 +20,7 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 };
 /**
  * An event listener function type for callback events with a strongly-typed `currentTarget`. This ensures the event handler receives the correct element type.
+ * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -27,6 +29,7 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * The JSX-style event callback props for form field components. These properties provide React-like event handling for input, change, focus, and blur events.
+ * @publicDocs
  */
 export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
   /**
@@ -48,6 +51,7 @@ export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
 }
 /**
  * The base properties for Preact elements without children. Provides `key`, `ref`, and `slot` properties for element identification, DOM access, and slot-based positioning.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -65,6 +69,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements with children. Extends `PreactBaseElementProps` with the ability to render child elements.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
@@ -76,10 +81,12 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 
 /**
  * The CSS styles as a string, used for styling web components within their shadow DOM.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation configuration for rendering a Preact component into a shadow root. Defines the render function that returns JSX elements and optional CSS styles to apply to the component's shadow DOM.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -93,6 +100,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * The properties of an activation event (such as a click or keyboard press) that describe which modifier keys and mouse buttons were involved. This is used to determine intended behavior like opening links in new tabs when Command/Control is pressed.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -114,6 +122,7 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for controlling how a synthetic click behaves. Allows passing modifier key states and button information from an original event to influence link behavior such as opening in new tabs or background tabs.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -167,6 +176,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 declare const internals: unique symbol;
 /**
  * The base properties for an input element that participates in form submission. Defines the core properties needed for form integration including identifier, name, value, and disabled state.
+ * @publicDocs
  */
 export type PreactInputProps = Required<
   Pick<TextFieldProps$1, 'disabled' | 'id' | 'name' | 'value'>
@@ -211,6 +221,7 @@ declare class PreactInputElement
 
 /**
  * The base properties for form field elements that support labels, validation, and autocomplete. Extends `PreactInputProps` with additional form field features like labels, placeholders, error messages, and autocomplete hints.
+ * @publicDocs
  */
 export type PreactFieldProps<Autocomplete extends string = string> =
   PreactInputProps &
@@ -321,6 +332,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 
 /**
  * The properties for the text field component. Extends `PreactFieldProps` with text-specific features like icons, length constraints, and prefix/suffix content.
+ * @publicDocs
  */
 export type TextFieldProps = PreactFieldProps<
   /** @default 'on' */
@@ -384,6 +396,7 @@ declare module 'preact' {
 declare const tagName = 's-text-field';
 /**
  * The JSX props for the text field component. These properties extend `TextFieldProps` with JSX-specific event callbacks and an accessory slot for rendering additional content at the end of the field.
+ * @publicDocs
  */
 export interface TextFieldJSXProps
   extends Partial<Omit<TextFieldProps, 'accessory'>>,

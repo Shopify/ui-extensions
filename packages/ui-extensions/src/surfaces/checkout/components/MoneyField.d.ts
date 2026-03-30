@@ -18,23 +18,26 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
-/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-money-field";
-/** @publicDocs */
+/**
+ * The element props interface for the MoneyField component.
+ * @publicDocs
+ */
 export interface MoneyFieldElementProps extends Pick<MoneyFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'readOnly' | 'required' | 'step' | 'value'> {
 }
-/** @publicDocs */
 export interface MoneyFieldEvents extends Pick<MoneyFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/** @publicDocs */
+/**
+ * The events interface for the MoneyField component.
+ * @publicDocs
+ */
 export interface MoneyFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -61,14 +64,12 @@ export interface MoneyFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
 export interface MoneyFieldElement extends MoneyFieldElementProps {
     onblur: MoneyFieldEvents['onBlur'];
     onchange: MoneyFieldEvents['onChange'];
     onfocus: MoneyFieldEvents['onFocus'];
     oninput: MoneyFieldEvents['onInput'];
 }
-/** @publicDocs */
 export interface MoneyFieldProps extends MoneyFieldElementProps, MoneyFieldEvents {
 }
 declare global {

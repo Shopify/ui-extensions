@@ -20,17 +20,22 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
- * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-chip";
-/** @publicDocs */
+/**
+ * The element props interface for the Chip component.
+ * @publicDocs
+ */
 export interface ChipElementProps extends Pick<ChipProps$1, 'accessibilityLabel' | 'id'> {
 }
-/** @publicDocs */
+/**
+ * The slots interface for the Chip component.
+ * @publicDocs
+ */
 export interface ChipElementSlots {
     /**
      * The graphic to display inside of the chip.
@@ -39,10 +44,8 @@ export interface ChipElementSlots {
      */
     graphic?: HTMLElement;
 }
-/** @publicDocs */
 export interface ChipProps extends ChipElementProps {
 }
-/** @publicDocs */
 export interface ChipElement extends ChipProps, Omit<HTMLElement, 'id'> {
 }
 declare global {

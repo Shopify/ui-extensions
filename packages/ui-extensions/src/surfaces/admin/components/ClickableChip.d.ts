@@ -14,6 +14,7 @@ import type {
 
 /**
  * A callback event that's typed to a specific HTML element.
+ * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   /**
@@ -23,6 +24,7 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 };
 /**
  * An event listener for callback events, typed to a specific HTML element.
+ * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -31,6 +33,7 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -48,6 +51,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
@@ -59,6 +63,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 
 /**
  * The properties for the clickable chip component. These properties define an interactive chip that can be clicked or removed.
+ * @publicDocs
  */
 export interface ClickableChipProps
   extends Required<
@@ -78,10 +83,12 @@ export interface ClickableChipProps
 
 /**
  * A string containing CSS styles for the component.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation details for rendering a custom element with Preact.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -95,6 +102,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * An event-like object that contains activation information for synthetic clicks.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -116,6 +124,7 @@ export interface ActivationEventEsque {
 }
 /**
  * Options for customizing synthetic click behavior.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -168,6 +177,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 /**
  * Props for controlling overlay components like popovers and dialogs.
+ * @publicDocs
  */
 export interface PreactOverlayControlProps
   extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
@@ -261,6 +271,7 @@ declare module 'preact' {
 declare const tagName = 's-clickable-chip';
 /**
  * The JSX properties for the clickable chip component. These properties define how a clickable chip is rendered in Preact or JSX.
+ * @publicDocs
  */
 export interface ClickableChipJSXProps
   extends Partial<ClickableChipProps>,

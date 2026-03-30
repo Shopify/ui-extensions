@@ -10,6 +10,7 @@ import type {ComponentChildren, BannerProps$1} from './shared.d.ts';
 
 /**
  * A callback event that's typed to a specific HTML element.
+ * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   /**
@@ -19,6 +20,7 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 };
 /**
  * An event listener for callback events, typed to a specific HTML element.
+ * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -27,6 +29,7 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -44,6 +47,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
@@ -55,10 +59,12 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 
 /**
  * All properties for the banner component marked as required.
+ * @publicDocs
  */
 export type RequiredBannerProps = Required<BannerProps$1>;
 /**
  * The properties for the banner component. These properties define an important message or notification with visual styling that conveys its semantic meaning.
+ * @publicDocs
  */
 export interface BannerProps
   extends Pick<
@@ -78,10 +84,12 @@ export interface BannerProps
 
 /**
  * A string containing CSS styles for the component.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation details for rendering a custom element with Preact.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -95,6 +103,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * An event-like object that contains activation information for synthetic clicks.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -116,6 +125,7 @@ export interface ActivationEventEsque {
 }
 /**
  * Options for customizing synthetic click behavior.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -213,6 +223,7 @@ declare module 'preact' {
 declare const tagName = 's-banner';
 /**
  * The JSX properties for the banner component. These properties define how a banner is rendered in Preact or JSX.
+ * @publicDocs
  */
 export interface BannerJSXProps
   extends Partial<BannerProps>,

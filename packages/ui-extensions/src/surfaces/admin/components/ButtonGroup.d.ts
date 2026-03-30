@@ -10,16 +10,19 @@ import type {ComponentChildren, ButtonGroupProps$1} from './shared.d.ts';
 
 /**
  * Properties for rendering a button group that arranges multiple buttons together with consistent spacing and semantic grouping.
+ * @publicDocs
  */
 export interface ButtonGroupProps
   extends Required<Pick<ButtonGroupProps$1, 'gap' | 'accessibilityLabel'>> {}
 
 /**
  * CSS styles that will be applied to the component's shadow DOM.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * Configuration for rendering a custom element with Preact and shadow DOM.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -33,6 +36,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * Information about modifier keys and mouse buttons that were active during an interaction.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -54,6 +58,7 @@ export interface ActivationEventEsque {
 }
 /**
  * Options for influencing how a programmatic click behaves.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -106,6 +111,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -124,6 +130,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 
 /**
  * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
@@ -173,6 +180,7 @@ declare const tagName = 's-button-group';
 
 /**
  * Properties for using the button group component in JSX with React-style props.
+ * @publicDocs
  */
 export interface ButtonGroupJSXProps
   extends Partial<ButtonGroupProps>,

@@ -10,6 +10,7 @@ import type {AvatarProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
  * The properties for the avatar component. An avatar displays a user or entity image with fallback initials when the image isn't available. Properties include `src` for the image URL, `initials` for the fallback text, `alt` for accessibility text, and `size` for controlling the avatar dimensions.
+ * @publicDocs
  */
 export interface AvatarProps
   extends Required<Pick<AvatarProps$1, 'initials' | 'src' | 'alt' | 'size'>> {
@@ -38,10 +39,12 @@ export interface AvatarProps
 
 /**
  * A string containing CSS styles for a custom element.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The configuration for rendering a custom element with Preact.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -55,6 +58,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * The properties of an activation event, such as a click or keypress. These properties capture which modifier keys were pressed and which mouse button was used during the event.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -76,6 +80,7 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for triggering a synthetic click event.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -131,6 +136,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 /**
  * A callback event that's typed to a specific HTML element.
+ * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   /**
@@ -140,6 +146,7 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 };
 /**
  * An event listener for callback events, typed to a specific HTML element.
+ * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -148,6 +155,7 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -210,6 +218,7 @@ declare module 'preact' {
 declare const tagName = 's-avatar';
 /**
  * The properties for the avatar component when it's used in JSX.
+ * @publicDocs
  */
 export interface AvatarJSXProps
   extends Partial<AvatarProps>,

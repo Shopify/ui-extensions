@@ -20,20 +20,20 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
- * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-divider";
-/** @publicDocs */
+/**
+ * The element props interface for the Divider component.
+ * @publicDocs
+ */
 export interface DividerElementProps extends Pick<DividerProps$1, 'direction' | 'id'> {
 }
-/** @publicDocs */
 export interface DividerElement extends DividerElementProps, Omit<HTMLElement, 'id'> {
 }
-/** @publicDocs */
 export interface DividerProps extends DividerElementProps {
 }
 declare global {

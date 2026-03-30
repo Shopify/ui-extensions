@@ -20,26 +20,29 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
- * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
-/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-modal";
-/** @publicDocs */
+/**
+ * The element props interface for the Modal component.
+ * @publicDocs
+ */
 export interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
     size?: Extract<ModalProps$1['size'], 'small-100' | 'small' | 'base' | 'large-100' | 'large' | 'max'>;
 }
-/** @publicDocs */
+/**
+ * The slots interface for the Modal component.
+ * @publicDocs
+ */
 export interface ModalElementSlots {
     /**
      * The primary action to perform, provided as a button type element.
@@ -52,9 +55,16 @@ export interface ModalElementSlots {
 }
 export interface ModalEvents extends Pick<ModalProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
+/**
+ * The methods interface for the Modal component.
+ * @publicDocs
+ */
 export interface ModalElementMethods extends Pick<ModalProps$1, 'hideOverlay'> {
 }
-/** @publicDocs */
+/**
+ * The events interface for the Modal component.
+ * @publicDocs
+ */
 export interface ModalElementEvents {
     /**
      * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
@@ -73,14 +83,12 @@ export interface ModalElementEvents {
      */
     show?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
 export interface ModalElement extends ModalElementProps, ModalElementMethods, Omit<HTMLElement, 'id'> {
     onafterhide: ModalEvents['onAfterHide'];
     onaftershow: ModalEvents['onAfterShow'];
     onhide: ModalEvents['onHide'];
     onshow: ModalEvents['onShow'];
 }
-/** @publicDocs */
 export interface ModalProps extends ModalElementProps, ModalEvents {
 }
 declare global {

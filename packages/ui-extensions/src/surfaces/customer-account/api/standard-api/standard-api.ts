@@ -246,6 +246,10 @@ export interface NavigationCurrentEntryChangeEvent {
   from: NavigationHistoryEntry;
 }
 
+/**
+ * The Navigation API for managing navigation history and state.
+ * @publicDocs
+ */
 export interface Navigation {
   /**
    * The navigate() method navigates to a specific URL, updating any provided state in the history entries list.

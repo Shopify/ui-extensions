@@ -18,24 +18,27 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
-/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-switch";
-/** @publicDocs */
+/**
+ * The element props interface for the Switch component.
+ * @publicDocs
+ */
 export interface SwitchElementProps extends Pick<SwitchProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'id' | 'label' | 'name' | 'value'> {
     command?: Extract<SwitchProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
-/** @publicDocs */
 export interface SwitchEvents extends Pick<SwitchProps$1, 'onChange'> {
 }
-/** @publicDocs */
+/**
+ * The events interface for the Switch component.
+ * @publicDocs
+ */
 export interface SwitchElementEvents {
     /**
      * A callback that is run whenever the control is changed.
@@ -44,11 +47,9 @@ export interface SwitchElementEvents {
      */
     change?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
 export interface SwitchElement extends SwitchElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: SwitchEvents['onChange'];
 }
-/** @publicDocs */
 export interface SwitchProps extends SwitchElementProps, SwitchEvents {
 }
 declare global {

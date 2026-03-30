@@ -20,29 +20,31 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
- * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
-/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-banner";
-/** @publicDocs */
+/**
+ * The element props interface for the Banner component.
+ * @publicDocs
+ */
 export interface BannerElementProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {
     tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;
 }
-/** @publicDocs */
 export interface BannerEvents extends Pick<BannerProps$1, 'onAfterHide' | 'onDismiss'> {
 }
-/** @publicDocs */
+/**
+ * The events interface for the Banner component.
+ * @publicDocs
+ */
 export interface BannerElementEvents {
     /**
      * Event handler when the banner has fully hidden.
@@ -63,12 +65,10 @@ export interface BannerElementEvents {
      */
     dismiss?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
 export interface BannerElement extends BannerElementProps, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {
     onafterhide: BannerEvents['onAfterHide'];
     ondismiss: BannerEvents['onDismiss'];
 }
-/** @publicDocs */
 export interface BannerProps extends BannerElementProps, BannerEvents {
 }
 declare global {

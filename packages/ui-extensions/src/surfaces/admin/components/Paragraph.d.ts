@@ -10,6 +10,7 @@ import type {ComponentChildren, ParagraphProps$1} from './shared.d.ts';
 
 /**
  * The properties for the paragraph component. These properties define blocks of text content with consistent spacing and styling for readable body copy.
+ * @publicDocs
  */
 export interface ParagraphProps
   extends Required<
@@ -46,10 +47,12 @@ export interface ParagraphProps
 
 /**
  * A string containing CSS styles.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The configuration for rendering a custom element with a shadow DOM.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -64,6 +67,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 /**
  * An object that represents the state of modifier keys and mouse button
  * during an activation event like a click.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -85,6 +89,7 @@ export interface ActivationEventEsque {
 }
 /**
  * Options for customizing click behavior on an element.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -137,6 +142,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -154,6 +160,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
@@ -214,6 +221,7 @@ declare module 'preact' {
 declare const tagName = 's-paragraph';
 /**
  * The JSX properties for the paragraph component. These properties define how a paragraph is rendered in Preact or JSX.
+ * @publicDocs
  */
 export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,

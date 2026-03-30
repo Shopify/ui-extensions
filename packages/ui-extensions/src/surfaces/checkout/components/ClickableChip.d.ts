@@ -20,28 +20,30 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
- * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
-/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
-/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-clickable-chip";
-/** @publicDocs */
+/**
+ * The element props interface for the ClickableChip component.
+ * @publicDocs
+ */
 export interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'accessibilityLabel' | 'disabled' | 'hidden' | 'href' | 'id' | 'removable'> {
 }
-/** @publicDocs */
 export interface ClickableChipEvents extends Pick<ClickableChipProps$1, 'onAfterHide' | 'onClick' | 'onRemove'> {
 }
-/** @publicDocs */
+/**
+ * The events interface for the ClickableChip component.
+ * @publicDocs
+ */
 export interface ClickableChipElementEvents {
     /**
      * Event handler when the chip has fully hidden.
@@ -58,7 +60,10 @@ export interface ClickableChipElementEvents {
      */
     remove?: CallbackEventListener<typeof tagName>;
 }
-/** @publicDocs */
+/**
+ * The slots interface for the ClickableChip component.
+ * @publicDocs
+ */
 export interface ClickableChipElementSlots {
     /**
      * The graphic to display inside of the chip.
@@ -67,13 +72,11 @@ export interface ClickableChipElementSlots {
      */
     graphic?: HTMLElement;
 }
-/** @publicDocs */
 export interface ClickableChipElement extends ClickableChipElementProps, Omit<HTMLElement, 'id' | 'hidden' | 'onclick'> {
     onafterhide: ClickableChipEvents['onAfterHide'];
     onclick: ClickableChipEvents['onClick'];
     onremove: ClickableChipEvents['onRemove'];
 }
-/** @publicDocs */
 export interface ClickableChipProps extends ClickableChipElementProps, ClickableChipEvents {
 }
 declare global {

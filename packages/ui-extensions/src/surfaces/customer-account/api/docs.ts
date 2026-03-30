@@ -80,7 +80,7 @@ interface ButtonProps {
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
    *
    * 'auto' - The target is automatically determined based on the origin of the URL. Surfaces can set specific rules on how they handle each URL.
-   * It’s expected that the behavior of `auto` is as `_self` except in specific cases.
+   * It's expected that the behavior of `auto` is as `_self` except in specific cases.
    * For example, a surface could decide to open cross-origin URLs in a new window (as `_blank`).
    *
    * @default 'auto'
@@ -120,92 +120,204 @@ interface ButtonProps {
   click?: ((event: CallbackEventListener<typeof buttonTagName>) => void) | null;
 }
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with metafields.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_MetafieldsApi
   extends Pick<OrderStatusApi<any>, 'appMetafields'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with attributes.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_AttributesApi
   extends Pick<OrderStatusApi<any>, 'attributes'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with buyer identity.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_BuyerIdentityApi
   extends Pick<OrderStatusApi<any>, 'buyerIdentity'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with checkout settings.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_CheckoutSettingsApi
   extends Pick<OrderStatusApi<any>, 'checkoutSettings'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with order cost.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_CostApi
   extends Pick<OrderStatusApi<any>, 'cost'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with localization.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_LocalizationApi
   extends Pick<OrderStatusApi<any>, 'localization'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with discounts.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_DiscountsApi
   extends Pick<OrderStatusApi<any>, 'discountAllocations' | 'discountCodes'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with gift cards.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_GiftCardsApi
   extends Pick<OrderStatusApi<any>, 'appliedGiftCards'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with the order note.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_NoteApi
   extends Pick<OrderStatusApi<any>, 'note'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with shipping and billing addresses.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_AddressApi
   extends Pick<OrderStatusApi<any>, 'shippingAddress' | 'billingAddress'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with shop information.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_ShopApi
   extends Pick<OrderStatusApi<any>, 'shop'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for requiring buyer login.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_RequireLoginApi
   extends Pick<OrderStatusApi<any>, 'requireLogin'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with authentication state.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_AuthenticationStateApi
   extends Pick<OrderStatusApi<any>, 'authenticationState'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with cart lines.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_CartLinesApi
   extends Pick<OrderStatusApi<any>, 'lines'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` cart line item extension targets.
+ * @publicDocs
+ */
 export interface Docs_CartLineItem_CartLinesApi
   extends Pick<CartLineItemApi, 'target'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with order details.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_OrderApi
   extends Pick<OrderStatusApi<any>, 'order'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with extension metadata.
+ * @publicDocs
+ */
 export interface Docs_Standard_ExtensionApi
   extends Pick<StandardApi<any>, 'extension'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with the authenticated account.
+ * @publicDocs
+ */
 export interface Docs_Standard_AuthenticatedAccountApi
   extends Pick<StandardApi<any>, 'authenticatedAccount'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for retrieving the renderer version.
+ * @publicDocs
+ */
 export interface Docs_Standard_VersionApi
   extends Pick<StandardApi<any>, 'version'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with localization.
+ * @publicDocs
+ */
 export interface Docs_Standard_LocalizationApi
   extends Pick<StandardApi<any>, 'localization' | 'i18n'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with session tokens.
+ * @publicDocs
+ */
 export interface Docs_Standard_SessionTokenApi
   extends Pick<StandardApi<any>, 'sessionToken'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with analytics.
+ * @publicDocs
+ */
 export interface Docs_Standard_AnalyticsApi
   extends Pick<StandardApi<any>, 'analytics'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with extension settings.
+ * @publicDocs
+ */
 export interface Docs_Standard_SettingsApi
   extends Pick<StandardApi, 'settings'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with key-value storage.
+ * @publicDocs
+ */
 export interface Docs_Standard_StorageApi
   extends Pick<StandardApi<any>, 'storage'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with customer privacy and tracking consent.
+ * @publicDocs
+ */
 export interface Docs_Standard_CustomerPrivacyApi
   extends Pick<
     StandardApi<any>,
     'customerPrivacy' | 'applyTrackingConsentChange'
   > {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for displaying toast notifications.
+ * @publicDocs
+ */
 export interface Docs_Standard_ToastApi
   extends Pick<StandardApi<any>, 'toast'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for querying the Storefront API.
+ * @publicDocs
+ */
 export interface Docs_Standard_QueryApi
   extends Pick<StandardApi<any>, 'query'> {}
 
 export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
 
+/**
+ * Supported props for Buttons used inside Page `primary-action` slot.
+ * @publicDocs
+ */
 export interface Docs_Page_Button_PrimaryAction
   extends Pick<
     ButtonProps,
@@ -217,6 +329,11 @@ export interface Docs_Page_Button_PrimaryAction
     | 'command'
     | 'commandFor'
   > {}
+
+/**
+ * Supported props for Buttons used inside Page `secondary-actions` slot.
+ * @publicDocs
+ */
 export interface Docs_Page_Button_SecondaryAction
   extends Pick<
     ButtonProps,
@@ -229,6 +346,10 @@ export interface Docs_Page_Button_SecondaryAction
     | 'commandFor'
   > {}
 
+/**
+ * Supported props for Buttons used inside Page `breadcrumb-actions` slot.
+ * @publicDocs
+ */
 export interface Docs_Page_Button_BreadcrumbAction
   extends Pick<ButtonProps, 'click' | 'href'> {
   /**
@@ -237,12 +358,20 @@ export interface Docs_Page_Button_BreadcrumbAction
   accessibilityLabel: ButtonProps['accessibilityLabel'];
 }
 
+/**
+ * The Menu component exclusively accepts Button elements with restricted props as its children.
+ * @publicDocs
+ */
 export interface Docs_Menu_Button_Action
   extends Omit<
     ButtonProps,
     'variant' | 'textDecoration' | 'inlineAlignment' | 'inlineSize' | 'size'
   > {}
 
+/**
+ * Supported props for Buttons used in order action menus.
+ * @publicDocs
+ */
 export interface Docs_OrderActionMenu_Button
   extends Pick<
     ButtonProps,
@@ -256,6 +385,10 @@ export interface Docs_OrderActionMenu_Button
   href: ButtonProps['href'];
 }
 
+/**
+ * Supported props for Buttons used inside CustomerAccountAction slots.
+ * @publicDocs
+ */
 export interface Docs_CustomerAccountAction_SlotButton
   extends Pick<
     ButtonProps,

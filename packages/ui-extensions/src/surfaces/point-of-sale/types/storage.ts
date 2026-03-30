@@ -9,6 +9,7 @@ export class StorageError extends Error {
 }
 /**
  * Defines the storage interface for persisting extension data across sessions.
+ * @publicDocs
  */
 export interface Storage<
   BaseStorageTypes extends Record<string, any> = Record<string, unknown>,

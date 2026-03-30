@@ -10,9 +10,11 @@
 /// <reference lib="DOM" />
 import type {EmailFieldProps,Key, Ref} from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: Key;
@@ -21,12 +23,16 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: ComponentChildren;
 }
+/** @publicDocs */
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
+/** @publicDocs */
 export type HtmlElementTagNameProps<T> = T & HTMLElement;
+/** @publicDocs */
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
     currentTarget: HTMLElementTagNameMap[T];
     bubbles?: boolean;
@@ -38,6 +44,7 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = "s-email-field";
+/** @publicDocs */
 export interface EmailFieldJSXProps extends Pick<EmailFieldProps, 'id' | 'label' | 'value' | 'placeholder' | 'disabled' | 'error' | 'required' | 'maxLength' | 'details'> {
     /**
      * Callback when the user makes any changes in the field.
@@ -56,6 +63,7 @@ export interface EmailFieldJSXProps extends Pick<EmailFieldProps, 'id' | 'label'
      */
     onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
+/** @publicDocs */
 export type ElementProps = EmailFieldJSXProps;
 declare global {
     interface HTMLElementTagNameMap {
