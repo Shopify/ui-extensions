@@ -20,18 +20,22 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName$1 = "s-phone-field";
+/** @publicDocs */
 export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value' | 'type'> {
     /**
      * @deprecated Use `label` instead.
@@ -39,14 +43,17 @@ export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocom
      */
     placeholder?: string;
 }
+/** @publicDocs */
 export interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 export interface PhoneFieldElement extends PhoneFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: PhoneFieldEvents['onBlur'];
     onchange: PhoneFieldEvents['onChange'];
     onfocus: PhoneFieldEvents['onFocus'];
     oninput: PhoneFieldEvents['onInput'];
 }
+/** @publicDocs */
 export interface PhoneFieldProps extends PhoneFieldElementProps, PhoneFieldEvents {
 }
 declare global {
@@ -63,6 +70,7 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-consent-phone-field";
+/** @publicDocs */
 export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'policy' | 'readOnly' | 'required' | 'type' | 'value'> {
     /**
      * @deprecated Use `label` instead.
@@ -70,8 +78,10 @@ export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldPro
      */
     placeholder?: string;
 }
+/** @publicDocs */
 export interface ConsentPhoneFieldEvents extends Pick<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 export interface ConsentPhoneFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -98,12 +108,14 @@ export interface ConsentPhoneFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface ConsentPhoneFieldElement extends ConsentPhoneFieldElementProps, Omit<ConsentPhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
     onblur: ConsentPhoneFieldEvents['onBlur'];
     onchange: ConsentPhoneFieldEvents['onChange'];
     onfocus: ConsentPhoneFieldEvents['onFocus'];
     oninput: ConsentPhoneFieldEvents['onInput'];
 }
+/** @publicDocs */
 export interface ConsentPhoneFieldElementSlots {
     /**
      * Additional content to be displayed in the field.
@@ -111,6 +123,7 @@ export interface ConsentPhoneFieldElementSlots {
      */
     accessory?: HTMLElement;
 }
+/** @publicDocs */
 export interface ConsentPhoneFieldProps extends ConsentPhoneFieldElementProps, ConsentPhoneFieldEvents {
 }
 declare global {

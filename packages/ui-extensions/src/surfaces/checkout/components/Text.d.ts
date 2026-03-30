@@ -20,19 +20,23 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-text";
+/** @publicDocs */
 export interface TextElementProps extends Pick<TextProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'display' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<TextProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<TextProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
     type?: Extract<TextProps$1['type'], 'address' | 'redundant' | 'mark' | 'emphasis' | 'offset' | 'small' | 'strong' | 'generic'>;
 }
+/** @publicDocs */
 export interface TextElement extends TextElementProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
 }
+/** @publicDocs */
 export interface TextProps extends TextElementProps {
 }
 declare global {

@@ -47,6 +47,7 @@ export interface PaymentMethodAttributesUpdateChange {
   attributes: PaymentMethodAttribute[];
 }
 
+/** @publicDocs */
 export interface PaymentOptionItemApi {
   /**
    * Sets the attributes of the related payment method.

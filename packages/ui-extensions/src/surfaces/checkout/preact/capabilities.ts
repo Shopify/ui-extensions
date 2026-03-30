@@ -5,6 +5,7 @@ import {useApi} from './api';
 
 /**
  * Returns a list of an extension's granted capabilities.
+ * @publicDocs
  */
 export function useExtensionCapabilities(): Capability[] {
   return useSubscription(useApi().extension.capabilities);
@@ -12,6 +13,7 @@ export function useExtensionCapabilities(): Capability[] {
 
 /**
  * Returns whether or not a given capability of an extension is granted.
+ * @publicDocs
  */
 export function useExtensionCapability(capability: Capability): boolean {
   return useExtensionCapabilities().includes(capability);

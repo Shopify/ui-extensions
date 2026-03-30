@@ -20,24 +20,30 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-link";
+/** @publicDocs */
 export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'interestFor' | 'lang' | 'target' | 'tone'> {
     target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
 }
+/** @publicDocs */
 export interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
 }
+/** @publicDocs */
 export interface LinkElementEvents {
     /**
      * Callback when the link is activated.
@@ -47,9 +53,11 @@ export interface LinkElementEvents {
      */
     click?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface LinkElement extends LinkElementProps, Omit<HTMLElement, 'id' | 'lang' | 'onclick'> {
     onclick: LinkEvents['onClick'];
 }
+/** @publicDocs */
 export interface LinkProps extends LinkElementProps, LinkEvents {
 }
 declare global {

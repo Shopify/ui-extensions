@@ -11,10 +11,13 @@
 import type {SummaryProps$1} from './components-shared.d.ts';
 
 declare const tagName = "s-summary";
+/** @publicDocs */
 export interface SummaryElementProps extends Pick<SummaryProps$1, 'id'> {
 }
+/** @publicDocs */
 export interface SummaryElement extends SummaryElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface SummaryProps extends SummaryElementProps {
 }
 declare global {

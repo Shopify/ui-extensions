@@ -20,14 +20,17 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-choice";
+/** @publicDocs */
 export interface ChoiceElementProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'error' | 'value'> {
 }
+/** @publicDocs */
 export interface ChoiceElementSlots {
     /**
      * Additional text to provide context or guidance for the input.
@@ -49,8 +52,10 @@ export interface ChoiceElementSlots {
      */
     selectedContent?: HTMLElement;
 }
+/** @publicDocs */
 export interface ChoiceElement extends ChoiceElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface ChoiceProps extends ChoiceElementProps {
 }
 declare global {

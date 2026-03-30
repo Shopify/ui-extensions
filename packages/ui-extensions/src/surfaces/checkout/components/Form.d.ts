@@ -20,35 +20,43 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-form";
+/** @publicDocs */
 export interface FormElementProps extends Pick<FormProps$1, 'disabled' | 'id'> {
 }
+/** @publicDocs */
 export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
     /**
      * A callback that is run when the form is submitted.
      */
     onSubmit?: () => void;
 }
+/** @publicDocs */
 export interface FormElementEvents {
     /**
      * A callback that is run when the form is submitted.
      */
     submit?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface FormElement extends FormElementProps, Omit<HTMLElement, 'id' | 'onsubmit'> {
     onsubmit: FormEvents['onSubmit'];
 }
+/** @publicDocs */
 export interface FormProps extends FormElementProps, FormEvents {
 }
 declare global {

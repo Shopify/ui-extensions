@@ -20,16 +20,20 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-abbreviation";
+/** @publicDocs */
 export interface AbbreviationElementProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {
 }
+/** @publicDocs */
 export interface AbbreviationElement extends AbbreviationElementProps, Omit<HTMLElement, 'id' | 'title'> {
 }
+/** @publicDocs */
 export interface AbbreviationProps extends AbbreviationElementProps {
 }
 declare global {

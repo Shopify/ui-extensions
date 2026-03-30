@@ -20,16 +20,20 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-time";
+/** @publicDocs */
 export interface TimeElementProps extends Pick<TimeProps$1, 'dateTime' | 'id'> {
 }
+/** @publicDocs */
 export interface TimeElement extends TimeElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface TimeProps extends TimeElementProps {
 }
 declare global {

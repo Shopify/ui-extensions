@@ -20,27 +20,34 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 export type ToggleState = 'open' | 'closed';
+/** @publicDocs */
 export interface ToggleArgumentsEvent {
     oldState?: ToggleState;
     newState?: ToggleState;
 }
 
 declare const tagName = "s-details";
+/** @publicDocs */
 export interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'id' | 'open' | 'toggleTransition'> {
 }
+/** @publicDocs */
 export interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle' | 'onAfterToggle'> {
 }
+/** @publicDocs */
 export interface DetailsElementEvents {
     /**
      * Callback straight after the element state changes.
@@ -68,10 +75,12 @@ export interface DetailsElementEvents {
      */
     aftertoggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;
 }
+/** @publicDocs */
 export interface DetailsElement extends Omit<HTMLElement, 'ontoggle' | 'id'> {
     ontoggle: DetailsEvents['onToggle'];
     onaftertoggle: DetailsEvents['onAfterToggle'];
 }
+/** @publicDocs */
 export interface DetailsProps extends DetailsElementProps, DetailsEvents {
 }
 declare global {

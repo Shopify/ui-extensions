@@ -20,16 +20,20 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-heading";
+/** @publicDocs */
 export interface HeadingElementProps extends Pick<HeadingProps$1, 'accessibilityRole' | 'id'> {
 }
+/** @publicDocs */
 export interface HeadingElement extends HeadingElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface HeadingProps extends HeadingElementProps {
 }
 declare global {

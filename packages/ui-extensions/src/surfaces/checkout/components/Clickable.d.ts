@@ -10,8 +10,11 @@
 /// <reference lib="DOM" />
 import type {ClickableProps$1,BorderSizeKeyword, BorderStyleKeyword,ColorKeyword,MaybeAllValuesShorthandProperty} from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
+/** @publicDocs */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
+/** @publicDocs */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
  * Used when an element does not have children.
@@ -23,18 +26,22 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-clickable";
+/** @publicDocs */
 export interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibilityLabel' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'command' | 'commandFor' | 'disabled' | 'display' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'lang' | 'loading' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'target' | 'type'> {
     background?: Extract<ClickableProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -43,8 +50,10 @@ export interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibi
     target?: Extract<ClickableProps$1['target'], 'auto' | '_blank'>;
     type?: Extract<ClickableProps$1['type'], 'submit' | 'button'>;
 }
+/** @publicDocs */
 export interface ClickableEvents extends Pick<ClickableProps$1, 'onBlur' | 'onClick' | 'onFocus'> {
 }
+/** @publicDocs */
 export interface ClickableElementEvents {
     /**
      * Callback when the element loses focus.
@@ -66,11 +75,13 @@ export interface ClickableElementEvents {
      */
     focus?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface ClickableElement extends ClickableElementProps, Omit<HTMLElement, 'id' | 'lang' | 'onblur' | 'onclick' | 'onfocus'> {
     onblur: ClickableEvents['onBlur'];
     onclick: ClickableEvents['onClick'];
     onfocus: ClickableEvents['onFocus'];
 }
+/** @publicDocs */
 export interface ClickableProps extends ClickableElementProps, ClickableEvents {
 }
 declare global {

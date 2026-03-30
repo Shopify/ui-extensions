@@ -18,18 +18,23 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-qr-code";
+/** @publicDocs */
 export interface QRCodeElementProps extends QRCodeProps$1 {
 }
+/** @publicDocs */
 export interface QRCodeEvents extends Pick<QRCodeProps$1, 'onError'> {
 }
+/** @publicDocs */
 export interface QRCodeElementEvents {
     /**
      * Invoked when the conversion of `content` to a QR code fails.
@@ -37,9 +42,11 @@ export interface QRCodeElementEvents {
      */
     error?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface QRCodelement extends QRCodeElementProps, Omit<HTMLElement, 'id' | 'onerror'> {
     onerror: QRCodeEvents['onError'];
 }
+/** @publicDocs */
 export interface QRCodeProps extends QRCodeElementProps, QRCodeEvents {
 }
 declare global {
