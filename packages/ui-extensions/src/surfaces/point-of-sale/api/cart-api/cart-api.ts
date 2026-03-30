@@ -158,12 +158,12 @@ export interface CartApiContent {
   removeLineItemProperties(uuid: string, keys: string[]): Promise<void>;
 
   /**
-   * Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking. For `FixedAmount` discounts, this is the per-unit amount. For example, passing `'5.00'` on a line item with quantity 2 results in $10.00 total discount.
+   * Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking.
    *
    * @param uuid the uuid of the line item that should receive a discount
    * @param type the type of discount applied (example: 'Percentage')
    * @param title the title attributed with the discount
-   * @param amount the percentage or fixed monetary amount deducted with the discount
+   * @param amount the percentage or fixed monetary amount deducted with the discout
    */
   setLineItemDiscount(
     uuid: string,
@@ -173,9 +173,9 @@ export interface CartApiContent {
   ): Promise<void>;
 
   /**
-   * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking. For `FixedAmount` discounts, the amount is applied per unit.
+   * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking.
    *
-   * @param lineItemDiscounts a map of discounts to add. The key is the uuid of the line item you want to add the discount to. The value is the discount input.
+   * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.
    */
   bulkSetLineItemDiscounts(
     lineItemDiscounts: SetLineItemDiscountInput[],
