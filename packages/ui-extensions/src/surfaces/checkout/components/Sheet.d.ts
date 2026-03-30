@@ -11,22 +11,40 @@
 import type {SheetProps$1} from './components-shared.d.ts';
 
 /**
- * Used when an element does not have children.
+ * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
+    /**
+     * A unique identifier for this element within its parent. Used by the rendering engine for efficient reconciliation when lists change.
+     */
     key?: preact.Key;
+    /**
+     * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+     */
     ref?: preact.Ref<TClass>;
+    /**
+     * Assigns this element to a named slot in a parent component that uses slot-based composition patterns.
+     */
     slot?: Lowercase<string>;
 }
 /**
- * Used when an element has children.
+ * The base properties for elements that have children, extending `BaseElementProps` with children support.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    /**
+     * The child elements to render within this component.
+     */
     children?: preact.ComponentChildren;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
@@ -34,46 +52,48 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 declare const tagName = "s-sheet";
 export interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'heading' | 'id'> {
     /**
-     * A label that describes the purpose of the modal. When set,
-     * it will be announced to users using assistive technologies and will
-     * provide them with more context.
-     *
-     * This overrides the `heading` prop for screen readers.
+     * A label that describes the purpose of the sheet, announced by assistive technologies. When set, screen readers will use this label instead of the `heading` to describe the sheet.
      */
     accessibilityLabel?: string;
 }
+/**
+ * The event callbacks for monitoring sheet visibility changes.
+ */
 export interface SheetEvents extends Pick<SheetProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
 export interface SheetElementEvents {
     /**
-     * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
+     * A callback fired when the sheet is hidden, after any hide animations have completed.
      */
     afterhide?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
+     * A callback fired when the sheet is shown, after any show animations have completed.
      */
     aftershow?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback fired after the overlay is hidden.
+     * A callback fired immediately after the sheet is hidden.
      */
     hide?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback fired after the overlay is shown.
+     * A callback fired immediately after the sheet is shown.
      */
     show?: CallbackEventListener<typeof tagName>;
 }
 export interface SheetElementSlots {
     /**
-     * The primary action to perform, provided as a button type element.
+     * The main action button displayed in the sheet footer, representing the primary action users should take. Only accepts a single button component.
      */
     'primary-action'?: HTMLElement;
     /**
-     * The secondary actions to perform, provided as a button type element.
+     * Additional action buttons displayed in the sheet footer, providing alternative or supporting actions.
      */
     'secondary-actions'?: HTMLElement;
 }
 export interface SheetElementMethods extends Pick<SheetProps$1, 'hideOverlay'> {
 }
+/**
+ * The HTML element interface for the `s-sheet` custom element.
+ */
 export interface SheetElement extends SheetElementProps, SheetElementMethods, Omit<HTMLElement, 'id'> {
     afterhide: SheetEvents['onAfterHide'];
     aftershow: SheetEvents['onAfterShow'];
@@ -82,6 +102,9 @@ export interface SheetElement extends SheetElementProps, SheetElementMethods, Om
     onafterhide: SheetEvents['onAfterHide'];
     onaftershow: SheetEvents['onAfterShow'];
 }
+/**
+ * The properties for the sheet component when it's used in JSX.
+ */
 export interface SheetProps extends SheetElementProps, SheetEvents {
 }
 declare global {
