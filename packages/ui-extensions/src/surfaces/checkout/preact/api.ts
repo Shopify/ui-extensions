@@ -18,6 +18,7 @@ import {CheckoutUIExtensionError} from './errors';
  * > Note:
  * > As of version 2025-10, you no longer need this hook. The full API object is accessible via
  * > the global `shopify` object.
+ * @publicDocs
  */
 export function useApi<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -45,6 +46,7 @@ export function useApi<
  * > Caution: This is deprecated, use `useApi` instead.
  *
  * @deprecated This is deprecated, use `useApi` instead.
+ * @publicDocs
  */
 export function useExtensionApi<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

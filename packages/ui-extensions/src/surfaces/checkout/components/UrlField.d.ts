@@ -20,22 +20,28 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-url-field";
+/** @publicDocs */
 export interface URLFieldElementProps extends Pick<URLFieldProps, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
+/** @publicDocs */
 export interface UrlFieldEvents extends Pick<URLFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 export interface URLFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -62,6 +68,7 @@ export interface URLFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface URLFieldElementSlots {
     /**
      * Additional content to be displayed in the field.
@@ -69,12 +76,14 @@ export interface URLFieldElementSlots {
      */
     accessory?: HTMLElement;
 }
+/** @publicDocs */
 export interface UrlFieldElement extends URLFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: UrlFieldEvents['onBlur'];
     onchange: UrlFieldEvents['onChange'];
     onfocus: UrlFieldEvents['onFocus'];
     oninput: UrlFieldEvents['onInput'];
 }
+/** @publicDocs */
 export interface UrlFieldProps extends URLFieldElementProps, UrlFieldEvents {
 }
 declare global {

@@ -3411,12 +3411,19 @@ export type URLAutocompleteField = ExtractStrict<AnyAutocompleteField, "url" | "
 
 
 
+/** @publicDocs */
 type ReducedAlignContentKeyword = Extract<AlignContentKeyword, 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
+/** @publicDocs */
 type ReducedAlignItemsKeyword = Extract<AlignItemsKeyword, 'normal' | 'stretch' | 'baseline' | 'center' | 'start' | 'end'>;
+/** @publicDocs */
 type ReducedJustifyContentKeyword = Extract<JustifyContentKeyword, 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
+/** @publicDocs */
 type ReducedJustifyItemsKeyword = Extract<JustifyItemsKeyword, 'normal' | 'stretch' | 'baseline' | 'center' | 'start' | 'end'>;
+/** @publicDocs */
 type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
+/** @publicDocs */
 type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
+/** @publicDocs */
 type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
  * Used when an element does not have children.
@@ -3428,6 +3435,7 @@ interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
@@ -3437,18 +3445,23 @@ interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElement
  *
  * @see https://github.com/Shopify/ui-api-design/blob/main/packages/ui-api-design/src/components/Icon/Icon.ts#L10
  */
-declare const CHECKOUT_AVAILABLE_ICONS: readonly ["alert-circle", "alert-triangle-filled", "alert-triangle", "arrow-down", "arrow-left", "arrow-right", "arrow-up-right", "arrow-up", "bag", "bullet", "calendar", "camera", "caret-down", "cart", "cash-dollar", "categories", "check-circle", "check-circle-filled", "check", "chevron-down", "chevron-left", "chevron-right", "chevron-up", "circle", "clipboard", "clock", "credit-card", "delete", "delivered", "delivery", "disabled", "discount", "edit", "email", "empty", "external", "filter", "geolocation", "gift-card", "globe", "grid", "image", "info-filled", "info", "list-bulleted", "location", "lock", "map", "menu-horizontal", "menu-vertical", "menu", "minus", "mobile", "note", "order", "organization", "plus", "profile", "question-circle-filled", "question-circle", "reorder", "reset", "return", "savings", "search", "settings", "star-filled", "star-half", "star", "store", "truck", "upload", "x-circle-filled", "x-circle", "x"];
+declare const CHECKOUT_AVAILABLE_ICONS: readonly ["alert-circle", "alert-triangle-filled", "alert-triangle", "arrow-down", "arrow-left", "arrow-right", "arrow-up-right", "arrow-up", "bag", "bullet", "calendar", "camera", "caret-down", "cart", "cash-dollar", "categories", "check-circle", "check-circle-filled", "check", "chevron-down", "chevron-left", "chevron-right", "chevron-up", "circle", "clipboard", "clock", "credit-card", "delete", "delivered", "delivery", "disabled", "discount", "edit", "email", "empty", "external", "filter", "geolocation", "gift", "gift-card", "globe", "grid", "image", "info-filled", "info", "list-bulleted", "location", "lock", "map", "menu-horizontal", "menu-vertical", "menu", "minus", "mobile", "note", "order", "organization", "plus", "profile", "question-circle-filled", "question-circle", "reorder", "reset", "return", "savings", "search", "settings", "star-filled", "star-half", "star", "store", "truck", "upload", "x-circle-filled", "x-circle", "x"];
+/** @publicDocs */
 type ReducedIconTypes = (typeof CHECKOUT_AVAILABLE_ICONS)[number];
 
 declare const tagName$Z = "s-abbreviation";
+/** @publicDocs */
 interface AbbreviationElementProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {
 }
+/** @publicDocs */
 interface AbbreviationElement extends AbbreviationElementProps, Omit<HTMLElement, 'id' | 'title'> {
 }
+/** @publicDocs */
 interface AbbreviationProps extends AbbreviationElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$Z]: AbbreviationElement;
     }
 }
 declare module 'preact' {
@@ -3460,15 +3473,19 @@ declare module 'preact' {
 }
 
 declare const tagName$Y = "s-announcement";
+/** @publicDocs */
 interface AnnouncementEvents extends Pick<AnnouncementProps$1, 'onAfterToggle' | 'onDismiss' | 'onToggle'> {
 }
+/** @publicDocs */
 interface AnnouncementElement extends AnnouncementMethods, Omit<HTMLElement, 'id' | 'ontoggle'> {
     onaftertoggle?: AnnouncementEvents['onAfterToggle'];
     ondismiss?: AnnouncementEvents['onDismiss'];
     ontoggle?: AnnouncementEvents['onToggle'];
 }
+/** @publicDocs */
 interface AnnouncementProps extends AnnouncementEvents {
 }
+/** @publicDocs */
 interface AnnouncementMethods {
     dismiss: () => void;
 }
@@ -3486,14 +3503,17 @@ declare module 'preact' {
 }
 
 declare const tagName$X = "s-badge";
+/** @publicDocs */
 interface BadgeElementProps extends Pick<BadgeProps$1, 'color' | 'icon' | 'iconPosition' | 'id' | 'size' | 'tone'> {
     size?: Extract<BadgeProps$1['size'], 'small' | 'small-100' | 'base'>;
     tone?: Extract<BadgeProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
     color?: Extract<BadgeProps$1['color'], 'base' | 'subdued'>;
     icon?: '' | ReducedIconTypes;
 }
+/** @publicDocs */
 interface BadgeElement extends BadgeElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface BadgeProps extends BadgeElementProps {
 }
 declare global {
@@ -3510,19 +3530,24 @@ declare module 'preact' {
 }
 
 declare const tagName$W = "s-banner";
+/** @publicDocs */
 interface BannerElementProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {
     tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;
 }
+/** @publicDocs */
 interface BannerEvents extends Pick<BannerProps$1, 'onAfterHide' | 'onDismiss'> {
 }
+/** @publicDocs */
 interface BannerElement extends BannerElementProps, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {
     onafterhide: BannerEvents['onAfterHide'];
     ondismiss: BannerEvents['onDismiss'];
 }
+/** @publicDocs */
 interface BannerProps extends BannerElementProps, BannerEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$W]: BannerElement;
     }
 }
 declare module 'preact' {
@@ -3534,18 +3559,22 @@ declare module 'preact' {
 }
 
 declare const tagName$V = "s-box";
+/** @publicDocs */
 interface BoxElementProps extends Pick<BoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<BoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<BoxProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
 }
+/** @publicDocs */
 interface BoxElement extends BoxElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface BoxProps extends BoxElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$V]: BoxElement;
     }
 }
 declare module 'preact' {
@@ -3557,21 +3586,26 @@ declare module 'preact' {
 }
 
 declare const tagName$U = "s-button";
+/** @publicDocs */
 interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
     type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;
     variant?: Extract<ButtonProps$1['variant'], 'auto' | 'primary' | 'secondary'>;
 }
+/** @publicDocs */
 interface ButtonEvents extends Pick<ButtonProps$1, 'onClick'> {
 }
+/** @publicDocs */
 interface ButtonElement extends ButtonElementProps, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: ButtonEvents['onClick'];
 }
+/** @publicDocs */
 interface ButtonProps extends ButtonElementProps, ButtonEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$U]: ButtonElement;
     }
 }
 declare module 'preact' {
@@ -3583,14 +3617,18 @@ declare module 'preact' {
 }
 
 declare const tagName$T = "s-checkbox";
+/** @publicDocs */
 interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
     command?: Extract<CheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
+/** @publicDocs */
 interface CheckboxEvents extends Pick<CheckboxProps$1, 'onChange'> {
 }
+/** @publicDocs */
 interface CheckboxElement extends CheckboxElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: CheckboxEvents['onChange'];
 }
+/** @publicDocs */
 interface CheckboxProps extends CheckboxElementProps, CheckboxEvents {
 }
 declare global {
@@ -3607,10 +3645,13 @@ declare module 'preact' {
 }
 
 declare const tagName$S = "s-chip";
+/** @publicDocs */
 interface ChipElementProps extends Pick<ChipProps$1, 'accessibilityLabel' | 'id'> {
 }
+/** @publicDocs */
 interface ChipProps extends ChipElementProps {
 }
+/** @publicDocs */
 interface ChipElement extends ChipProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
@@ -3627,10 +3668,13 @@ declare module 'preact' {
 }
 
 declare const tagName$R = "s-choice";
+/** @publicDocs */
 interface ChoiceElementProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'error' | 'value'> {
 }
+/** @publicDocs */
 interface ChoiceElement extends ChoiceElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface ChoiceProps extends ChoiceElementProps {
 }
 declare global {
@@ -3647,13 +3691,17 @@ declare module 'preact' {
 }
 
 declare const tagName$Q = "s-choice-list";
+/** @publicDocs */
 interface ChoiceListElementProps extends Pick<ChoiceListProps$1, 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'multiple' | 'name' | 'values' | 'variant'> {
 }
+/** @publicDocs */
 interface ChoiceListEvents extends Pick<ChoiceListProps$1, 'onChange'> {
 }
+/** @publicDocs */
 interface ChoiceListElement extends ChoiceListElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: ChoiceListEvents['onChange'];
 }
+/** @publicDocs */
 interface ChoiceListProps extends ChoiceListElementProps, ChoiceListEvents {
 }
 declare global {
@@ -3670,6 +3718,7 @@ declare module 'preact' {
 }
 
 declare const tagName$P = "s-clickable";
+/** @publicDocs */
 interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibilityLabel' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'command' | 'commandFor' | 'disabled' | 'display' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'lang' | 'loading' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'target' | 'type'> {
     background?: Extract<ClickableProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -3678,17 +3727,21 @@ interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibilityLab
     target?: Extract<ClickableProps$1['target'], 'auto' | '_blank'>;
     type?: Extract<ClickableProps$1['type'], 'submit' | 'button'>;
 }
+/** @publicDocs */
 interface ClickableEvents extends Pick<ClickableProps$1, 'onBlur' | 'onClick' | 'onFocus'> {
 }
+/** @publicDocs */
 interface ClickableElement extends ClickableElementProps, Omit<HTMLElement, 'id' | 'lang' | 'onblur' | 'onclick' | 'onfocus'> {
     onblur: ClickableEvents['onBlur'];
     onclick: ClickableEvents['onClick'];
     onfocus: ClickableEvents['onFocus'];
 }
+/** @publicDocs */
 interface ClickableProps extends ClickableElementProps, ClickableEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$P]: ClickableElement;
     }
 }
 declare module 'preact' {
@@ -3700,15 +3753,19 @@ declare module 'preact' {
 }
 
 declare const tagName$O = "s-clickable-chip";
+/** @publicDocs */
 interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'accessibilityLabel' | 'disabled' | 'hidden' | 'href' | 'id' | 'removable'> {
 }
+/** @publicDocs */
 interface ClickableChipEvents extends Pick<ClickableChipProps$1, 'onAfterHide' | 'onClick' | 'onRemove'> {
 }
+/** @publicDocs */
 interface ClickableChipElement extends ClickableChipElementProps, Omit<HTMLElement, 'id' | 'hidden' | 'onclick'> {
     onafterhide: ClickableChipEvents['onAfterHide'];
     onclick: ClickableChipEvents['onClick'];
     onremove: ClickableChipEvents['onRemove'];
 }
+/** @publicDocs */
 interface ClickableChipProps extends ClickableChipElementProps, ClickableChipEvents {
 }
 declare global {
@@ -3725,18 +3782,23 @@ declare module 'preact' {
 }
 
 declare const tagName$N = "s-clipboard-item";
+/** @publicDocs */
 interface ClipboardItemElementProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
 }
+/** @publicDocs */
 interface ClipboardItemEvents extends Pick<ClipboardItemProps$1, 'onCopy' | 'onCopyError'> {
 }
+/** @publicDocs */
 interface ClipboardItemElement extends ClipboardItemElementProps, Omit<HTMLElement, 'id' | 'oncopy'> {
     oncopy: ClipboardItemEvents['onCopy'];
     oncopyerror: ClipboardItemEvents['onCopyError'];
 }
+/** @publicDocs */
 interface ClipboardItemProps extends ClipboardItemElementProps, ClipboardItemEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$N]: ClipboardItemElement;
     }
 }
 declare module 'preact' {
@@ -3748,14 +3810,18 @@ declare module 'preact' {
 }
 
 declare const tagName$M = "s-consent-checkbox";
+/** @publicDocs */
 interface ConsentCheckboxElementProps extends Pick<ConsentCheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'policy' | 'value'> {
     command?: Extract<ConsentCheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
+/** @publicDocs */
 interface ConsentCheckboxEvents extends Pick<CheckboxEvents, 'onChange'> {
 }
+/** @publicDocs */
 interface ConsentCheckboxElement extends ConsentCheckboxElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: ConsentCheckboxEvents['onChange'];
 }
+/** @publicDocs */
 interface ConsentCheckboxProps extends ConsentCheckboxElementProps, ConsentCheckboxEvents {
 }
 declare global {
@@ -3772,6 +3838,7 @@ declare module 'preact' {
 }
 
 declare const tagName$L = "s-phone-field";
+/** @publicDocs */
 interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value' | 'type'> {
     /**
      * @deprecated Use `label` instead.
@@ -3779,14 +3846,17 @@ interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' 
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface PhoneFieldElement extends PhoneFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: PhoneFieldEvents['onBlur'];
     onchange: PhoneFieldEvents['onChange'];
     onfocus: PhoneFieldEvents['onFocus'];
     oninput: PhoneFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface PhoneFieldProps extends PhoneFieldElementProps, PhoneFieldEvents {
 }
 declare global {
@@ -3803,6 +3873,7 @@ declare module 'preact' {
 }
 
 declare const tagName$K = "s-consent-phone-field";
+/** @publicDocs */
 interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'policy' | 'readOnly' | 'required' | 'type' | 'value'> {
     /**
      * @deprecated Use `label` instead.
@@ -3810,14 +3881,17 @@ interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldProps$1, '
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface ConsentPhoneFieldEvents extends Pick<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface ConsentPhoneFieldElement extends ConsentPhoneFieldElementProps, Omit<ConsentPhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
     onblur: ConsentPhoneFieldEvents['onBlur'];
     onchange: ConsentPhoneFieldEvents['onChange'];
     onfocus: ConsentPhoneFieldEvents['onFocus'];
     oninput: ConsentPhoneFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface ConsentPhoneFieldProps extends ConsentPhoneFieldElementProps, ConsentPhoneFieldEvents {
 }
 declare global {
@@ -3834,6 +3908,7 @@ declare module 'preact' {
 }
 
 declare const tagName$J = "s-date-field";
+/** @publicDocs */
 interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 'allowDays' | 'autocomplete' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'error' | 'id' | 'label' | 'name' | 'readOnly' | 'required' | 'value' | 'view'> {
     /**
      * @deprecated Use `label` instead.
@@ -3841,8 +3916,10 @@ interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 'allowD
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface DateFieldEvents extends Pick<DateFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'> {
 }
+/** @publicDocs */
 interface DateFieldElement extends DateFieldElementProps, Omit<DateFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'oninvalid' | 'prefix'> {
     onblur: DateFieldEvents['onBlur'];
     onchange: DateFieldEvents['onChange'];
@@ -3851,6 +3928,7 @@ interface DateFieldElement extends DateFieldElementProps, Omit<DateFieldEvents, 
     oninvalid: DateFieldEvents['onInvalid'];
     onviewchange: DateFieldEvents['onViewChange'];
 }
+/** @publicDocs */
 interface DateFieldProps extends DateFieldElementProps, DateFieldEvents {
 }
 declare global {
@@ -3867,10 +3945,13 @@ declare module 'preact' {
 }
 
 declare const tagName$I = "s-date-picker";
+/** @publicDocs */
 interface DatePickerElementProps extends Pick<DatePickerProps$1, 'allow' | 'allowDays' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'id' | 'name' | 'type' | 'value' | 'view'> {
 }
+/** @publicDocs */
 interface DatePickerEvents extends Pick<DatePickerProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'> {
 }
+/** @publicDocs */
 interface DatePickerElement extends DatePickerElementProps, Omit<DatePickerEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
     onblur: DatePickerEvents['onBlur'];
     onchange: DatePickerEvents['onChange'];
@@ -3878,6 +3959,7 @@ interface DatePickerElement extends DatePickerElementProps, Omit<DatePickerEvent
     oninput: DatePickerEvents['onInput'];
     onviewchange: DatePickerEvents['onViewChange'];
 }
+/** @publicDocs */
 interface DatePickerProps extends DatePickerElementProps, DatePickerEvents {
 }
 declare global {
@@ -3894,14 +3976,18 @@ declare module 'preact' {
 }
 
 declare const tagName$H = "s-details";
+/** @publicDocs */
 interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'id' | 'open' | 'toggleTransition'> {
 }
+/** @publicDocs */
 interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle' | 'onAfterToggle'> {
 }
+/** @publicDocs */
 interface DetailsElement extends Omit<HTMLElement, 'ontoggle' | 'id'> {
     ontoggle: DetailsEvents['onToggle'];
     onaftertoggle: DetailsEvents['onAfterToggle'];
 }
+/** @publicDocs */
 interface DetailsProps extends DetailsElementProps, DetailsEvents {
 }
 declare global {
@@ -3918,10 +4004,13 @@ declare module 'preact' {
 }
 
 declare const tagName$G = "s-divider";
+/** @publicDocs */
 interface DividerElementProps extends Pick<DividerProps$1, 'direction' | 'id'> {
 }
+/** @publicDocs */
 interface DividerElement extends DividerElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface DividerProps extends DividerElementProps {
 }
 declare global {
@@ -3938,19 +4027,24 @@ declare module 'preact' {
 }
 
 declare const tagName$F = "s-drop-zone";
+/** @publicDocs */
 interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required' | 'value'> {
 }
+/** @publicDocs */
 interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput' | 'onChange'> {
 }
+/** @publicDocs */
 interface DropZoneElement extends DropZoneElementProps, Omit<HTMLElement, 'id' | 'oninput' | 'onchange'> {
     ondroprejected: DropZoneEvents['onDropRejected'];
     oninput: DropZoneEvents['onInput'];
     onchange: DropZoneEvents['onChange'];
 }
+/** @publicDocs */
 interface DropZoneProps extends DropZoneElementProps, DropZoneEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$F]: DropZoneElement;
     }
 }
 declare module 'preact' {
@@ -3962,6 +4056,7 @@ declare module 'preact' {
 }
 
 declare const tagName$E = "s-email-field";
+/** @publicDocs */
 interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'maxLength' | 'minLength' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value'> {
     /**
      * @deprecated Use `label` instead.
@@ -3969,14 +4064,17 @@ interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocomplete' 
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface EmailFieldEvents extends Pick<EmailFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface EmailFieldElement extends EmailFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: EmailFieldEvents['onBlur'];
     onchange: EmailFieldEvents['onChange'];
     onfocus: EmailFieldEvents['onFocus'];
     oninput: EmailFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface EmailFieldProps extends EmailFieldElementProps, EmailFieldEvents {
 }
 declare global {
@@ -3993,21 +4091,26 @@ declare module 'preact' {
 }
 
 declare const tagName$D = "s-form";
+/** @publicDocs */
 interface FormElementProps extends Pick<FormProps$1, 'disabled' | 'id'> {
 }
+/** @publicDocs */
 interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
     /**
      * A callback that is run when the form is submitted.
      */
     onSubmit?: () => void;
 }
+/** @publicDocs */
 interface FormElement extends FormElementProps, Omit<HTMLElement, 'id' | 'onsubmit'> {
     onsubmit: FormEvents['onSubmit'];
 }
+/** @publicDocs */
 interface FormProps extends FormElementProps, FormEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$D]: FormElement;
     }
 }
 declare module 'preact' {
@@ -4019,6 +4122,7 @@ declare module 'preact' {
 }
 
 declare const tagName$C = "s-grid-item";
+/** @publicDocs */
 interface GridItemElementProps extends Pick<GridItemProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'gridColumn' | 'gridRow' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<GridItemProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -4026,8 +4130,10 @@ interface GridItemElementProps extends Pick<GridItemProps$1, 'accessibilityLabel
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<GridItemProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
 }
+/** @publicDocs */
 interface GridItemElement extends GridItemElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface GridItemProps extends GridItemElementProps {
 }
 declare global {
@@ -4044,6 +4150,7 @@ declare module 'preact' {
 }
 
 declare const tagName$B = "s-grid";
+/** @publicDocs */
 interface GridElementProps extends Pick<GridProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'display' | 'gap' | 'gridTemplateColumns' | 'gridTemplateRows' | 'id' | 'inlineSize' | 'justifyContent' | 'justifyItems' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'placeContent' | 'placeItems' | 'rowGap'> {
     alignContent?: MaybeResponsive<ReducedAlignContentKeyword | ''>;
     alignItems?: MaybeResponsive<ReducedAlignItemsKeyword | ''>;
@@ -4057,8 +4164,10 @@ interface GridElementProps extends Pick<GridProps$1, 'accessibilityLabel' | 'acc
     placeContent?: MaybeResponsive<`${ReducedAlignContentKeyword} ${ReducedJustifyContentKeyword}` | ReducedAlignContentKeyword>;
     placeItems?: MaybeResponsive<`${ReducedAlignItemsKeyword} ${ReducedJustifyItemsKeyword}` | ReducedAlignItemsKeyword>;
 }
+/** @publicDocs */
 interface GridElement extends GridElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface GridProps extends GridElementProps {
 }
 declare global {
@@ -4075,14 +4184,18 @@ declare module 'preact' {
 }
 
 declare const tagName$A = "s-heading";
+/** @publicDocs */
 interface HeadingElementProps extends Pick<HeadingProps$1, 'accessibilityRole' | 'id'> {
 }
+/** @publicDocs */
 interface HeadingElement extends HeadingElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface HeadingProps extends HeadingElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$A]: HeadingElement;
     }
 }
 declare module 'preact' {
@@ -4094,17 +4207,21 @@ declare module 'preact' {
 }
 
 declare const tagName$z = "s-icon";
+/** @publicDocs */
 interface IconElementProps extends Pick<IconProps$1, 'id' | 'size' | 'tone' | 'type'> {
     tone?: Extract<IconProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
     size?: Extract<IconProps$1['size'], 'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
     type?: '' | ReducedIconTypes;
 }
+/** @publicDocs */
 interface IconElement extends IconElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface IconProps extends IconElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$z]: IconElement;
     }
 }
 declare module 'preact' {
@@ -4116,17 +4233,21 @@ declare module 'preact' {
 }
 
 declare const tagName$y = "s-image";
+/** @publicDocs */
 interface ImageElementProps extends Pick<ImageProps$1, 'accessibilityRole' | 'alt' | 'aspectRatio' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'id' | 'inlineSize' | 'loading' | 'objectFit' | 'sizes' | 'src' | 'srcSet'> {
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<ImageProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
 }
+/** @publicDocs */
 interface ImageElement extends ImageElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface ImageProps extends ImageElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$y]: ImageElement;
     }
 }
 declare module 'preact' {
@@ -4138,19 +4259,24 @@ declare module 'preact' {
 }
 
 declare const tagName$x = "s-link";
+/** @publicDocs */
 interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'interestFor' | 'lang' | 'target' | 'tone'> {
     target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
 }
+/** @publicDocs */
 interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
 }
+/** @publicDocs */
 interface LinkElement extends LinkElementProps, Omit<HTMLElement, 'id' | 'lang' | 'onclick'> {
     onclick: LinkEvents['onClick'];
 }
+/** @publicDocs */
 interface LinkProps extends LinkElementProps, LinkEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$x]: LinkElement;
     }
 }
 declare module 'preact' {
@@ -4162,14 +4288,18 @@ declare module 'preact' {
 }
 
 declare const tagName$w = "s-list-item";
+/** @publicDocs */
 interface ListItemElementProps extends Pick<ListItemProps$1, 'id'> {
 }
+/** @publicDocs */
 interface ListItemElement extends ListItemElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface ListItemProps extends ListItemElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$w]: ListItemElement;
     }
 }
 declare module 'preact' {
@@ -4181,14 +4311,18 @@ declare module 'preact' {
 }
 
 declare const tagName$v = "s-map-marker";
+/** @publicDocs */
 interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'command' | 'commandFor' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
     command?: Extract<MapMarkerProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
+/** @publicDocs */
 interface MapMarkerEvents extends Pick<MapMarkerProps$1, 'onClick'> {
 }
+/** @publicDocs */
 interface MapMarkerElement extends MapMarkerElementProps, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: MapMarkerEvents['onClick'];
 }
+/** @publicDocs */
 interface MapMarkerProps extends MapMarkerElementProps, MapMarkerEvents {
 }
 declare global {
@@ -4205,16 +4339,20 @@ declare module 'preact' {
 }
 
 declare const tagName$u = "s-map";
+/** @publicDocs */
 interface MapElementProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'zoom'> {
 }
+/** @publicDocs */
 interface MapEvents extends Pick<MapProps$1, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'> {
 }
+/** @publicDocs */
 interface MapElement extends MapElementProps, Omit<HTMLElement, 'id' | 'onclick' | 'ondblclick'> {
     onboundschange: MapEvents['onBoundsChange'];
     onclick: MapEvents['onClick'];
     ondblclick: MapEvents['onDblClick'];
     onviewchange: MapEvents['onViewChange'];
 }
+/** @publicDocs */
 interface MapProps extends MapElementProps, MapEvents {
 }
 declare global {
@@ -4231,6 +4369,7 @@ declare module 'preact' {
 }
 
 declare const tagName$t = "s-modal";
+/** @publicDocs */
 interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
     size?: Extract<ModalProps$1['size'], 'small-100' | 'small' | 'base' | 'large-100' | 'large' | 'max'>;
 }
@@ -4238,12 +4377,14 @@ interface ModalEvents extends Pick<ModalProps$1, 'onAfterHide' | 'onAfterShow' |
 }
 interface ModalElementMethods extends Pick<ModalProps$1, 'hideOverlay'> {
 }
+/** @publicDocs */
 interface ModalElement extends ModalElementProps, ModalElementMethods, Omit<HTMLElement, 'id'> {
     onafterhide: ModalEvents['onAfterHide'];
     onaftershow: ModalEvents['onAfterShow'];
     onhide: ModalEvents['onHide'];
     onshow: ModalEvents['onShow'];
 }
+/** @publicDocs */
 interface ModalProps extends ModalElementProps, ModalEvents {
 }
 declare global {
@@ -4260,16 +4401,20 @@ declare module 'preact' {
 }
 
 declare const tagName$s = "s-money-field";
+/** @publicDocs */
 interface MoneyFieldElementProps extends Pick<MoneyFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'readOnly' | 'required' | 'step' | 'value'> {
 }
+/** @publicDocs */
 interface MoneyFieldEvents extends Pick<MoneyFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface MoneyFieldElement extends MoneyFieldElementProps {
     onblur: MoneyFieldEvents['onBlur'];
     onchange: MoneyFieldEvents['onChange'];
     onfocus: MoneyFieldEvents['onFocus'];
     oninput: MoneyFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface MoneyFieldProps extends MoneyFieldElementProps, MoneyFieldEvents {
 }
 declare global {
@@ -4286,6 +4431,7 @@ declare module 'preact' {
 }
 
 declare const tagName$r = "s-number-field";
+/** @publicDocs */
 interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete' | 'controls' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'inputMode' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
     /**
@@ -4294,14 +4440,17 @@ interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface NumberFieldEvents extends Pick<NumberFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface NumberFieldElement extends NumberFieldElementProps, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: NumberFieldEvents['onBlur'];
     onchange: NumberFieldEvents['onChange'];
     onfocus: NumberFieldEvents['onFocus'];
     oninput: NumberFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface NumberFieldProps extends NumberFieldElementProps, NumberFieldEvents {
 }
 declare global {
@@ -4318,10 +4467,13 @@ declare module 'preact' {
 }
 
 declare const tagName$q = "s-option";
+/** @publicDocs */
 interface OptionElementProps extends Pick<OptionProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'value'> {
 }
+/** @publicDocs */
 interface OptionElement extends OptionElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface OptionProps extends OptionElementProps {
 }
 declare global {
@@ -4338,14 +4490,18 @@ declare module 'preact' {
 }
 
 declare const tagName$p = "s-ordered-list";
+/** @publicDocs */
 interface OrderedListElementProps extends OrderedListProps$1 {
 }
+/** @publicDocs */
 interface OrderedListElement extends OrderedListElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface OrderedListProps extends OrderedListElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$p]: OrderedListElement;
     }
 }
 declare module 'preact' {
@@ -4357,16 +4513,20 @@ declare module 'preact' {
 }
 
 declare const tagName$o = "s-paragraph";
+/** @publicDocs */
 interface ParagraphElementProps extends Pick<ParagraphProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<ParagraphProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<ParagraphProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'custom'>;
 }
+/** @publicDocs */
 interface ParagraphElement extends ParagraphElementProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
 }
+/** @publicDocs */
 interface ParagraphProps extends ParagraphElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$o]: ParagraphElement;
     }
 }
 declare module 'preact' {
@@ -4378,16 +4538,20 @@ declare module 'preact' {
 }
 
 declare const tagName$n = "s-password-field";
+/** @publicDocs */
 interface PasswordFieldElementProps extends Pick<PasswordFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
+/** @publicDocs */
 interface PasswordFieldEvents extends Pick<PasswordFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface PasswordFieldElement extends PasswordFieldProps, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: PasswordFieldEvents['onBlur'];
     onchange: PasswordFieldEvents['onChange'];
     onfocus: PasswordFieldEvents['onFocus'];
     oninput: PasswordFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface PasswordFieldProps extends PasswordFieldElementProps, PasswordFieldEvents {
 }
 declare global {
@@ -4404,14 +4568,18 @@ declare module 'preact' {
 }
 
 declare const tagName$m = "s-payment-icon";
+/** @publicDocs */
 interface PaymentIconElementProps extends PaymentIconProps$1 {
 }
+/** @publicDocs */
 interface PaymentIconElement extends PaymentIconElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface PaymentIconProps extends PaymentIconElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$m]: PaymentIconElement;
     }
 }
 declare module 'preact' {
@@ -4423,6 +4591,7 @@ declare module 'preact' {
 }
 
 declare const tagName$l = "s-popover";
+/** @publicDocs */
 interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
     /**
      * Adjust the block size.
@@ -4473,12 +4642,15 @@ interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
      */
     minInlineSize?: SizeUnits;
 }
+/** @publicDocs */
 interface PopoverEvents extends Pick<PopoverProps$1, 'onHide' | 'onShow'> {
 }
+/** @publicDocs */
 interface PopoverElement extends Omit<PopoverProps, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
     onhide: PopoverProps['onHide'];
     onshow: PopoverProps['onShow'];
 }
+/** @publicDocs */
 interface PopoverProps extends PopoverElementProps, PopoverEvents {
 }
 declare global {
@@ -4495,15 +4667,19 @@ declare module 'preact' {
 }
 
 declare const tagName$k = "s-press-button";
+/** @publicDocs */
 interface PressButtonElementProps extends Pick<PressButtonProps$1, 'accessibilityLabel' | 'id' | 'inlineSize' | 'lang' | 'disabled' | 'loading' | 'pressed' | 'defaultPressed'> {
 }
+/** @publicDocs */
 interface PressButtonEvents extends Pick<PressButtonProps$1, 'onClick' | 'onBlur' | 'onFocus'> {
 }
+/** @publicDocs */
 interface PressButtonElement extends PressButtonElementProps, Omit<HTMLElement, 'children' | 'lang' | 'id' | 'onblur' | 'onclick' | 'onfocus'> {
     onblur: PressButtonEvents['onBlur'];
     onclick: PressButtonEvents['onClick'];
     onfocus: PressButtonEvents['onFocus'];
 }
+/** @publicDocs */
 interface PressButtonProps extends PressButtonElementProps, PressButtonEvents {
 }
 declare global {
@@ -4520,11 +4696,14 @@ declare module 'preact' {
 }
 
 declare const tagName$j = "s-product-thumbnail";
+/** @publicDocs */
 interface ProductThumbnailElementProps extends Pick<ProductThumbnailProps$1, 'alt' | 'size' | 'sizes' | 'src' | 'srcSet' | 'totalItems'> {
     size?: Extract<ProductThumbnailProps$1['size'], 'small-100' | 'small' | 'base'>;
 }
+/** @publicDocs */
 interface ProductThumbnailElement extends ProductThumbnailElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface ProductThumbnailProps extends ProductThumbnailElementProps {
 }
 declare global {
@@ -4541,15 +4720,19 @@ declare module 'preact' {
 }
 
 declare const tagName$i = "s-progress";
+/** @publicDocs */
 interface ProgressElementProps extends Pick<ProgressProps$1, 'accessibilityLabel' | 'id' | 'max' | 'tone' | 'value'> {
     tone?: Extract<ProgressProps$1['tone'], 'auto' | 'critical'>;
 }
+/** @publicDocs */
 interface ProgressElement extends ProgressElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface ProgressProps extends ProgressElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$i]: ProgressElement;
     }
 }
 declare module 'preact' {
@@ -4561,13 +4744,17 @@ declare module 'preact' {
 }
 
 declare const tagName$h = "s-qr-code";
+/** @publicDocs */
 interface QRCodeElementProps extends QRCodeProps$1 {
 }
+/** @publicDocs */
 interface QRCodeEvents extends Pick<QRCodeProps$1, 'onError'> {
 }
+/** @publicDocs */
 interface QRCodelement extends QRCodeElementProps, Omit<HTMLElement, 'id' | 'onerror'> {
     onerror: QRCodeEvents['onError'];
 }
+/** @publicDocs */
 interface QRCodeProps extends QRCodeElementProps, QRCodeEvents {
 }
 declare global {
@@ -4584,10 +4771,13 @@ declare module 'preact' {
 }
 
 declare const tagName$g = "s-query-container";
+/** @publicDocs */
 interface QueryContainerElementProps extends Pick<QueryContainerProps$1, 'containerName' | 'id'> {
 }
+/** @publicDocs */
 interface QueryContainerElement extends QueryContainerElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface QueryContainerProps extends QueryContainerElementProps {
 }
 declare global {
@@ -4604,6 +4794,7 @@ declare module 'preact' {
 }
 
 declare const tagName$f = "s-scroll-box";
+/** @publicDocs */
 interface ScrollBoxElementProps extends Pick<ScrollBoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<ScrollBoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -4611,8 +4802,10 @@ interface ScrollBoxElementProps extends Pick<ScrollBoxProps$1, 'accessibilityLab
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<ScrollBoxProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
 }
+/** @publicDocs */
 interface ScrollBoxElement extends ScrollBoxElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface ScrollBoxProps extends ScrollBoxElementProps {
 }
 declare global {
@@ -4629,10 +4822,13 @@ declare module 'preact' {
 }
 
 declare const tagName$e = "s-section";
+/** @publicDocs */
 interface SectionElementProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id'> {
 }
+/** @publicDocs */
 interface SectionElement extends SectionElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface SectionProps extends SectionElementProps {
 }
 declare global {
@@ -4649,15 +4845,19 @@ declare module 'preact' {
 }
 
 declare const tagName$d = "s-select";
+/** @publicDocs */
 interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value'> {
 }
+/** @publicDocs */
 interface SelectEvents extends Pick<SelectProps$1, 'onBlur' | 'onChange' | 'onFocus'> {
 }
+/** @publicDocs */
 interface SelectElement extends SelectElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus'> {
     onblur: SelectEvents['onBlur'];
     onchange: SelectEvents['onChange'];
     onfocus: SelectEvents['onFocus'];
 }
+/** @publicDocs */
 interface SelectProps extends SelectElementProps, SelectEvents {
 }
 declare global {
@@ -4674,6 +4874,7 @@ declare module 'preact' {
 }
 
 declare const tagName$c = "s-sheet";
+/** @publicDocs */
 interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'heading' | 'id'> {
     /**
      * A label that describes the purpose of the modal. When set,
@@ -4684,10 +4885,12 @@ interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'heading'
      */
     accessibilityLabel?: string;
 }
+/** @publicDocs */
 interface SheetEvents extends Pick<SheetProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
 interface SheetElementMethods extends Pick<SheetProps$1, 'hideOverlay'> {
 }
+/** @publicDocs */
 interface SheetElement extends SheetElementProps, SheetElementMethods, Omit<HTMLElement, 'id'> {
     afterhide: SheetEvents['onAfterHide'];
     aftershow: SheetEvents['onAfterShow'];
@@ -4696,6 +4899,7 @@ interface SheetElement extends SheetElementProps, SheetElementMethods, Omit<HTML
     onafterhide: SheetEvents['onAfterHide'];
     onaftershow: SheetEvents['onAfterShow'];
 }
+/** @publicDocs */
 interface SheetProps extends SheetElementProps, SheetEvents {
 }
 declare global {
@@ -4712,10 +4916,13 @@ declare module 'preact' {
 }
 
 declare const tagName$b = "s-skeleton-paragraph";
+/** @publicDocs */
 interface SkeletonParagraphElementProps extends SkeletonParagraphProps$1 {
 }
+/** @publicDocs */
 interface SkeletonParagraphElement extends SkeletonParagraphElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface SkeletonParagraphProps extends SkeletonParagraphElementProps {
 }
 declare global {
@@ -4732,15 +4939,19 @@ declare module 'preact' {
 }
 
 declare const tagName$a = "s-spinner";
+/** @publicDocs */
 interface SpinnerElementProps extends SpinnerProps$1 {
     size?: Extract<SpinnerProps$1['size'], 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
 }
+/** @publicDocs */
 interface SpinnerElement extends SpinnerElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface SpinnerProps extends SpinnerElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$a]: SpinnerElement;
     }
 }
 declare module 'preact' {
@@ -4752,6 +4963,7 @@ declare module 'preact' {
 }
 
 declare const tagName$9 = "s-stack";
+/** @publicDocs */
 interface StackElementProps extends Pick<StackProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'direction' | 'display' | 'gap' | 'id' | 'inlineSize' | 'justifyContent' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'rowGap'> {
     accessibilityRole?: Extract<StackProps$1['accessibilityRole'], 'main' | 'header' | 'footer' | 'section' | 'aside' | 'navigation' | 'ordered-list' | 'list-item' | 'list-item-separator' | 'unordered-list' | 'separator' | 'status' | 'alert' | 'generic' | 'none'>;
     background?: Extract<StackProps$1['background'], 'transparent' | 'subdued' | 'base'>;
@@ -4762,12 +4974,15 @@ interface StackElementProps extends Pick<StackProps$1, 'accessibilityLabel' | 'a
     alignItems?: MaybeResponsive<Extract<StackProps$1['alignItems'], 'normal' | 'stretch' | 'center' | 'start' | 'end'>>;
     justifyContent?: MaybeResponsive<Extract<StackProps$1['justifyContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>>;
 }
+/** @publicDocs */
 interface StackElement extends StackElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface StackProps extends StackElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$9]: StackElement;
     }
 }
 declare module 'preact' {
@@ -4779,10 +4994,13 @@ declare module 'preact' {
 }
 
 declare const tagName$8 = "s-summary";
+/** @publicDocs */
 interface SummaryElementProps extends Pick<SummaryProps$1, 'id'> {
 }
+/** @publicDocs */
 interface SummaryElement extends SummaryElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface SummaryProps extends SummaryElementProps {
 }
 declare global {
@@ -4803,14 +5021,18 @@ declare module 'preact' {
 }
 
 declare const tagName$7 = "s-switch";
+/** @publicDocs */
 interface SwitchElementProps extends Pick<SwitchProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'id' | 'label' | 'name' | 'value'> {
     command?: Extract<SwitchProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
+/** @publicDocs */
 interface SwitchEvents extends Pick<SwitchProps$1, 'onChange'> {
 }
+/** @publicDocs */
 interface SwitchElement extends SwitchElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: SwitchEvents['onChange'];
 }
+/** @publicDocs */
 interface SwitchProps extends SwitchElementProps, SwitchEvents {
 }
 declare global {
@@ -4827,6 +5049,7 @@ declare module 'preact' {
 }
 
 declare const tagName$6 = "s-text-area";
+/** @publicDocs */
 interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'name' | 'required' | 'value' | 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'readOnly' | 'rows' | 'maxLength' | 'minLength' | 'labelAccessibilityVisibility'> {
     /**
      * @deprecated Use `label` instead.
@@ -4834,14 +5057,17 @@ interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'n
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface TextAreaEvents extends Pick<TextAreaProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface TextAreaElement extends TextAreaElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
     onblur: TextAreaEvents['onBlur'];
     onchange: TextAreaEvents['onChange'];
     onfocus: TextAreaEvents['onFocus'];
     oninput: TextAreaEvents['onInput'];
 }
+/** @publicDocs */
 interface TextAreaProps extends TextAreaElementProps, TextAreaEvents {
 }
 declare global {
@@ -4858,6 +5084,7 @@ declare module 'preact' {
 }
 
 declare const tagName$5 = "s-text-field";
+/** @publicDocs */
 interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
     /**
@@ -4866,18 +5093,22 @@ interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface TextFieldEvents extends Pick<TextFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface TextFieldElement extends TextFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: TextFieldEvents['onBlur'];
     onchange: TextFieldEvents['onChange'];
     onfocus: TextFieldEvents['onFocus'];
     oninput: TextFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface TextFieldProps extends TextFieldElementProps, TextFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$5]: TextFieldElement;
     }
 }
 declare module 'preact' {
@@ -4889,17 +5120,21 @@ declare module 'preact' {
 }
 
 declare const tagName$4 = "s-text";
+/** @publicDocs */
 interface TextElementProps extends Pick<TextProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'display' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<TextProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<TextProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
     type?: Extract<TextProps$1['type'], 'address' | 'redundant' | 'mark' | 'emphasis' | 'offset' | 'small' | 'strong' | 'generic'>;
 }
+/** @publicDocs */
 interface TextElement extends TextElementProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
 }
+/** @publicDocs */
 interface TextProps extends TextElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$4]: TextElement;
     }
 }
 declare module 'preact' {
@@ -4911,14 +5146,18 @@ declare module 'preact' {
 }
 
 declare const tagName$3 = "s-time";
+/** @publicDocs */
 interface TimeElementProps extends Pick<TimeProps$1, 'dateTime' | 'id'> {
 }
+/** @publicDocs */
 interface TimeElement extends TimeElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface TimeProps extends TimeElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$3]: TimeElement;
     }
 }
 declare module 'preact' {
@@ -4930,10 +5169,13 @@ declare module 'preact' {
 }
 
 declare const tagName$2 = "s-tooltip";
+/** @publicDocs */
 interface TooltipElementProps extends Pick<TooltipProps$1, 'id'> {
 }
+/** @publicDocs */
 interface TooltipElement extends TooltipElementProps {
 }
+/** @publicDocs */
 interface TooltipProps extends TooltipElementProps {
 }
 declare global {
@@ -4950,14 +5192,18 @@ declare module 'preact' {
 }
 
 declare const tagName$1 = "s-unordered-list";
+/** @publicDocs */
 interface UnorderedListElementProps extends UnorderedListProps$1 {
 }
+/** @publicDocs */
 interface UnorderedListElement extends UnorderedListElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface UnorderedListProps extends UnorderedListElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$1]: UnorderedListElement;
     }
 }
 declare module 'preact' {
@@ -4969,16 +5215,20 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-url-field";
+/** @publicDocs */
 interface URLFieldElementProps extends Pick<URLFieldProps, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
+/** @publicDocs */
 interface UrlFieldEvents extends Pick<URLFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface UrlFieldElement extends URLFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: UrlFieldEvents['onBlur'];
     onchange: UrlFieldEvents['onChange'];
     onfocus: UrlFieldEvents['onFocus'];
     oninput: UrlFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface UrlFieldProps extends URLFieldElementProps, UrlFieldEvents {
 }
 declare global {

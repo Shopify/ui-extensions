@@ -9,6 +9,7 @@ import {useApi} from './api';
 
 /**
  * Returns a function to mutate the `metafields` property of the checkout.
+ * @publicDocs
  */
 export function useApplyMetafieldsChange<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

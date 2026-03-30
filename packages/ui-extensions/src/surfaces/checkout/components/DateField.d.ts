@@ -18,14 +18,17 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-date-field";
+/** @publicDocs */
 export interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 'allowDays' | 'autocomplete' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'error' | 'id' | 'label' | 'name' | 'readOnly' | 'required' | 'value' | 'view'> {
     /**
      * @deprecated Use `label` instead.
@@ -33,8 +36,10 @@ export interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 
      */
     placeholder?: string;
 }
+/** @publicDocs */
 export interface DateFieldEvents extends Pick<DateFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'> {
 }
+/** @publicDocs */
 export interface DateFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -61,6 +66,7 @@ export interface DateFieldElementEvents {
      */
     viewChange?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface DateFieldElement extends DateFieldElementProps, Omit<DateFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'oninvalid' | 'prefix'> {
     onblur: DateFieldEvents['onBlur'];
     onchange: DateFieldEvents['onChange'];
@@ -69,6 +75,7 @@ export interface DateFieldElement extends DateFieldElementProps, Omit<DateFieldE
     oninvalid: DateFieldEvents['onInvalid'];
     onviewchange: DateFieldEvents['onViewChange'];
 }
+/** @publicDocs */
 export interface DateFieldProps extends DateFieldElementProps, DateFieldEvents {
 }
 declare global {

@@ -20,18 +20,22 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-popover";
+/** @publicDocs */
 export interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
     /**
      * Adjust the block size.
@@ -82,8 +86,10 @@ export interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
      */
     minInlineSize?: SizeUnits;
 }
+/** @publicDocs */
 export interface PopoverEvents extends Pick<PopoverProps$1, 'onHide' | 'onShow'> {
 }
+/** @publicDocs */
 export interface PopoverElementEvents {
     /**
      * Callback fired after the overlay is hidden.
@@ -94,10 +100,12 @@ export interface PopoverElementEvents {
      */
     show?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface PopoverElement extends Omit<PopoverProps, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
     onhide: PopoverProps['onHide'];
     onshow: PopoverProps['onShow'];
 }
+/** @publicDocs */
 export interface PopoverProps extends PopoverElementProps, PopoverEvents {
 }
 declare global {

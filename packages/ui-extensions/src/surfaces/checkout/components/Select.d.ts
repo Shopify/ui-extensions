@@ -20,22 +20,28 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-select";
+/** @publicDocs */
 export interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value'> {
 }
+/** @publicDocs */
 export interface SelectEvents extends Pick<SelectProps$1, 'onBlur' | 'onChange' | 'onFocus'> {
 }
+/** @publicDocs */
 export interface SelectElementEvents {
     /**
      * Callback when the element loses focus.
@@ -56,11 +62,13 @@ export interface SelectElementEvents {
      */
     focus?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface SelectElement extends SelectElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus'> {
     onblur: SelectEvents['onBlur'];
     onchange: SelectEvents['onChange'];
     onfocus: SelectEvents['onFocus'];
 }
+/** @publicDocs */
 export interface SelectProps extends SelectElementProps, SelectEvents {
 }
 declare global {

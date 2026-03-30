@@ -1,6 +1,7 @@
 import type {SubscribableSignalLike} from '../../shared';
 import type {ShippingOption} from '../standard/standard';
 
+/** @publicDocs */
 export interface ShippingOptionItemApi {
   /**
    * The shipping option the extension is attached to.

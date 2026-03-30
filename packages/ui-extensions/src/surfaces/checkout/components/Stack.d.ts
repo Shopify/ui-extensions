@@ -10,8 +10,11 @@
 /// <reference lib="DOM" />
 import type {StackProps$1,MaybeAllValuesShorthandProperty, MaybeResponsive,BorderSizeKeyword, BorderStyleKeyword,ColorKeyword} from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
+/** @publicDocs */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
+/** @publicDocs */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
  * Used when an element does not have children.
@@ -23,12 +26,14 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-stack";
+/** @publicDocs */
 export interface StackElementProps extends Pick<StackProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'direction' | 'display' | 'gap' | 'id' | 'inlineSize' | 'justifyContent' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'rowGap'> {
     accessibilityRole?: Extract<StackProps$1['accessibilityRole'], 'main' | 'header' | 'footer' | 'section' | 'aside' | 'navigation' | 'ordered-list' | 'list-item' | 'list-item-separator' | 'unordered-list' | 'separator' | 'status' | 'alert' | 'generic' | 'none'>;
     background?: Extract<StackProps$1['background'], 'transparent' | 'subdued' | 'base'>;
@@ -39,8 +44,10 @@ export interface StackElementProps extends Pick<StackProps$1, 'accessibilityLabe
     alignItems?: MaybeResponsive<Extract<StackProps$1['alignItems'], 'normal' | 'stretch' | 'center' | 'start' | 'end'>>;
     justifyContent?: MaybeResponsive<Extract<StackProps$1['justifyContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>>;
 }
+/** @publicDocs */
 export interface StackElement extends StackElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface StackProps extends StackElementProps {
 }
 declare global {

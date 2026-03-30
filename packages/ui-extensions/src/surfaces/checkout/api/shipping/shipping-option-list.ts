@@ -6,6 +6,7 @@ import type {
   Money,
 } from '../standard/standard';
 
+/** @publicDocs */
 export interface ShippingOptionListApi {
   /**
    * The delivery group list the extension is attached to. The target will be undefined when there are no groups for a given type.

@@ -20,38 +20,48 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-map";
+/** @publicDocs */
 export interface MapElementProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'zoom'> {
 }
+/** @publicDocs */
 export interface MapEvents extends Pick<MapProps$1, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'> {
 }
+/** @publicDocs */
 export interface MapLocation {
     latitude?: number;
     longitude?: number;
 }
+/** @publicDocs */
 export interface MapLocationEvent {
     location?: MapLocation;
 }
+/** @publicDocs */
 export interface MapBoundsEvent {
     bounds?: {
         northEast?: MapLocation;
         southWest?: MapLocation;
     };
 }
+/** @publicDocs */
 export interface MapViewChangeEvent extends MapLocationEvent {
     zoom?: number;
 }
+/** @publicDocs */
 export interface MapElementEvents {
     /**
      * Callback when the viewport bounds have changed or the map is resized.
@@ -70,12 +80,14 @@ export interface MapElementEvents {
      */
     viewchange?: CallbackEventListener<typeof tagName, MapViewChangeEvent>;
 }
+/** @publicDocs */
 export interface MapElement extends MapElementProps, Omit<HTMLElement, 'id' | 'onclick' | 'ondblclick'> {
     onboundschange: MapEvents['onBoundsChange'];
     onclick: MapEvents['onClick'];
     ondblclick: MapEvents['onDblClick'];
     onviewchange: MapEvents['onViewChange'];
 }
+/** @publicDocs */
 export interface MapProps extends MapElementProps, MapEvents {
 }
 declare global {

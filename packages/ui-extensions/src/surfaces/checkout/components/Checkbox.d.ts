@@ -18,19 +18,24 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-checkbox";
+/** @publicDocs */
 export interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
     command?: Extract<CheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
+/** @publicDocs */
 export interface CheckboxEvents extends Pick<CheckboxProps$1, 'onChange'> {
 }
+/** @publicDocs */
 export interface CheckboxElementEvents {
     /**
      * A callback that is run whenever the control is changed.
@@ -39,9 +44,11 @@ export interface CheckboxElementEvents {
      */
     change?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface CheckboxElement extends CheckboxElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: CheckboxEvents['onChange'];
 }
+/** @publicDocs */
 export interface CheckboxProps extends CheckboxElementProps, CheckboxEvents {
 }
 declare global {

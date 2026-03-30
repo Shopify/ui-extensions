@@ -20,11 +20,14 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-product-thumbnail";
+/** @publicDocs */
 export interface ProductThumbnailElementProps extends Pick<ProductThumbnailProps$1, 'alt' | 'size' | 'sizes' | 'src' | 'srcSet' | 'totalItems'> {
     size?: Extract<ProductThumbnailProps$1['size'], 'small-100' | 'small' | 'base'>;
 }
+/** @publicDocs */
 export interface ProductThumbnailElement extends ProductThumbnailElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface ProductThumbnailProps extends ProductThumbnailElementProps {
 }
 declare global {

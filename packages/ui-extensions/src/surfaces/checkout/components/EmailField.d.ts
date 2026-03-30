@@ -20,18 +20,22 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/** @publicDocs */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/** @publicDocs */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-email-field";
+/** @publicDocs */
 export interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'maxLength' | 'minLength' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value'> {
     /**
      * @deprecated Use `label` instead.
@@ -39,8 +43,10 @@ export interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocom
      */
     placeholder?: string;
 }
+/** @publicDocs */
 export interface EmailFieldEvents extends Pick<EmailFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 export interface EmailFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -67,6 +73,7 @@ export interface EmailFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface EmailFieldElementSlots {
     /**
      * Additional content to be displayed in the field.
@@ -74,12 +81,14 @@ export interface EmailFieldElementSlots {
      */
     accessory?: HTMLElement;
 }
+/** @publicDocs */
 export interface EmailFieldElement extends EmailFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: EmailFieldEvents['onBlur'];
     onchange: EmailFieldEvents['onChange'];
     onfocus: EmailFieldEvents['onFocus'];
     oninput: EmailFieldEvents['onInput'];
 }
+/** @publicDocs */
 export interface EmailFieldProps extends EmailFieldElementProps, EmailFieldEvents {
 }
 declare global {
