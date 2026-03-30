@@ -110,8 +110,6 @@ export interface ConditionalStyle<
 /**
  * A type that represents a value that can be a conditional style.
  * We highly recommend using the `Style` helper which simplifies the creation of conditional styles.
- *
- * To learn more check out the [conditional styles](/api/checkout-ui-extensions/components/utilities/stylehelper) documentation.
  */
 export type MaybeConditionalStyle<
   T,
@@ -121,8 +119,6 @@ export type MaybeConditionalStyle<
 /**
  * A type that represents a value that can be a conditional style. The conditions are based on the viewport size.
  * We highly recommend using the `Style` helper which simplifies the creation of conditional styles.
- *
- * To learn more check out the [conditional styles](/api/checkout-ui-extensions/components/utilities/stylehelper) documentation.
  */
 export type MaybeResponsiveConditionalStyle<T> =
   | T
