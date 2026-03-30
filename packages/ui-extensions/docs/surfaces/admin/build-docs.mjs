@@ -499,18 +499,6 @@ const generateExtensionsDocs = async () => {
     replaceValue: `/docs/api/admin-extensions/${EXTENSIONS_API_VERSION}`,
   });
 
-  // Generate generated_docs_data_v2.json for shopify-dev (same content as generated_docs_data.json)
-  const docsDataPath = path.join(
-    generatedDocsPathForVersion,
-    generatedDocsDataFile,
-  );
-  const docsDataV2Path = path.join(
-    generatedDocsPathForVersion,
-    generatedDocsDataV2File,
-  );
-  const docsDataContent = await fs.readFile(docsDataPath, 'utf8');
-  await fs.writeFile(docsDataV2Path, docsDataContent);
-
   // Generate targets.json (extension targets + APIs + components mapping)
   const targetsScriptPath = path.join(__dirname, 'build-docs-targets-json.mjs');
   childProcess.execSync(`node ${targetsScriptPath}`, {

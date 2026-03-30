@@ -152,16 +152,6 @@ const generateExtensionsDocs = async () => {
     transformJson,
   });
 
-  // Keep parity with admin docs output for downstream consumers that read v2.
-  const docsDataPath = path.join(rootPath, outputDir, generatedDocsDataFile);
-  const docsDataV2Path = path.join(
-    rootPath,
-    outputDir,
-    generatedDocsDataV2File,
-  );
-  const docsDataContent = await fs.readFile(docsDataPath, 'utf8');
-  await fs.writeFile(docsDataV2Path, docsDataContent);
-
   // Update API version in relative doc links
   await replaceFileContent({
     filePaths: path.join(outputDir, generatedDocsDataFile),
