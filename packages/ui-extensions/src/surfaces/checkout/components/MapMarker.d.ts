@@ -43,7 +43,21 @@ declare const tagName = "s-map-marker";
  * @publicDocs
  */
 export interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'command' | 'commandFor' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
+    /**
+     * Sets the action the `commandFor` target should take when this marker is activated. See the documentation of particular components for the actions they support. Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
+     *
+     * - `--auto`: a default action for the target component.
+     * - `--show`: shows the target component.
+     * - `--hide`: hides the target component.
+     * - `--toggle`: toggles the target component.
+     *
+     * @default '--auto'
+     */
     command?: Extract<MapMarkerProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
+    /**
+     * The ID of a component that should respond to activations (for example, clicks) on this component. Refer to the `command` property for how to control the behavior of the target. Learn more about the [`commandfor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+     */
+    commandFor?: MapMarkerProps$1['commandFor'];
 }
 /**
  * The event handlers for the map marker component.
