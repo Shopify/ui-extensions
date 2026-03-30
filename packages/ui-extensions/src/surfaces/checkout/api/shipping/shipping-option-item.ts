@@ -4,17 +4,17 @@ import type {ShippingOption} from '../standard/standard';
 /** @publicDocs */
 export interface ShippingOptionItemApi {
   /**
-   * The shipping option the extension is attached to.
+   * The shipping option that this extension is attached to. Use this to read the option's cost, carrier, delivery estimate, and other details.
    */
   target: SubscribableSignalLike<ShippingOption>;
 
   /**
-   * Whether the shipping option the extension is attached to is currently selected in the UI.
+   * Whether the buyer has selected the target shipping option. When `true`, the target option is the buyer's active choice. When `false`, the buyer has chosen a different shipping option.
    */
   isTargetSelected: SubscribableSignalLike<boolean>;
 
   /**
-   * The render mode of the shipping option.
+   * The render mode of this shipping option, indicating how the extension is displayed in the checkout UI.
    */
   renderMode: ShippingOptionItemRenderMode;
 }
@@ -24,7 +24,7 @@ export interface ShippingOptionItemApi {
  */
 export interface ShippingOptionItemRenderMode {
   /**
-   * Whether the shipping option is rendered in an overlay.
+   * Whether the shipping option is rendered in an overlay. When `true`, the extension appears in a modal or sheet on top of the checkout page. When `false`, the extension renders inline within the shipping options list.
    */
   overlay: boolean;
 }
