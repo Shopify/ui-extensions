@@ -90,6 +90,7 @@ fi
 # Make sure https://shopify.dev URLs are relative.
 # See https://github.com/Shopify/generate-docs/issues/181
 run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
+run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data_v2.json
 sed_exit=$?
 if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
@@ -122,7 +123,7 @@ if [ -d $SHOPIFY_DEV_PATH ]; then
   fi
 
   # Replace 'latest' with the exact API version in relative doc links
-  for file in generated_docs_data.json generated_static_pages.json; do
+  for file in generated_docs_data.json generated_docs_data_v2.json generated_static_pages.json; do
     run_sed \
       "s/\/docs\/api\/checkout-ui-extensions\/latest/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
       "$SHOPIFY_DEV_DEST/$file"
