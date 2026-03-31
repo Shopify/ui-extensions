@@ -12,6 +12,7 @@ import type {OrderedListProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,6 +21,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
@@ -32,8 +34,10 @@ declare const tagName = "s-ordered-list";
  */
 export interface OrderedListElementProps extends OrderedListProps$1 {
 }
+/** @publicDocs */
 export interface OrderedListElement extends OrderedListElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface OrderedListProps extends OrderedListElementProps {
 }
 declare global {

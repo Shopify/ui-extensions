@@ -17,8 +17,10 @@ declare const tagName = "s-summary";
  */
 export interface SummaryElementProps extends Pick<SummaryProps$1, 'id'> {
 }
+/** @publicDocs */
 export interface SummaryElement extends SummaryElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface SummaryProps extends SummaryElementProps {
 }
 declare global {

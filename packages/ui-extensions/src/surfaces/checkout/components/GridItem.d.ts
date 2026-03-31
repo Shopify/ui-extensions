@@ -18,17 +18,21 @@ import type {GridItemProps$1,BorderSizeKeyword, BorderStyleKeyword,ColorKeyword,
  * - `large-100`: Extra thick border for maximum prominence.
  * - `large-200`: The thickest available border.
  * - `none`: No border.
+ * @publicDocs
  */
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
 /**
  * The subset of border color values available for this component.
  *
  * - `base`: The standard border color for most contexts.
+ * @publicDocs
  */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
+/** @publicDocs */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -37,6 +41,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
@@ -56,8 +61,10 @@ export interface GridItemElementProps extends Pick<GridItemProps$1, 'accessibili
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<GridItemProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
 }
+/** @publicDocs */
 export interface GridItemElement extends GridItemElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface GridItemProps extends GridItemElementProps {
 }
 declare global {

@@ -9,6 +9,7 @@ import {useSubscription} from './subscription';
  * Returns the current `Customer`.
  *
  * The value is `undefined` if the buyer isn't a known customer for this shop or if they haven't logged in yet.
+ * @publicDocs
  */
 export function useCustomer<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -27,6 +28,7 @@ export function useCustomer<
 /**
  * Returns the email address of the buyer that is interacting with the cart.
  * The value is `undefined` if the app does not have access to customer data.
+ * @publicDocs
  */
 export function useEmail<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -45,6 +47,7 @@ export function useEmail<
 /**
  * Returns the phone number of the buyer that is interacting with the cart.
  * The value is `undefined` if the app does not have access to customer data.
+ * @publicDocs
  */
 export function usePhone<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -66,6 +69,7 @@ export function usePhone<
  * identify both the company and its corresponding location to which the business customer belongs.
  *
  * The value is `undefined` if a business customer isn't logged in. This function throws an error if the app doesn't have access to customer data.
+ * @publicDocs
  */
 export function usePurchasingCompany<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

@@ -12,6 +12,7 @@ import type {AbbreviationProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,6 +21,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
@@ -32,8 +34,10 @@ declare const tagName = "s-abbreviation";
  */
 export interface AbbreviationElementProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {
 }
+/** @publicDocs */
 export interface AbbreviationElement extends AbbreviationElementProps, Omit<HTMLElement, 'id' | 'title'> {
 }
+/** @publicDocs */
 export interface AbbreviationProps extends AbbreviationElementProps {
 }
 declare global {

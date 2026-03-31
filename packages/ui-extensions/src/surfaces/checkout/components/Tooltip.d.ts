@@ -12,6 +12,7 @@ import type {TooltipProps$1} from './components-shared.d.ts';
 
 /**
  * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
@@ -29,6 +30,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base properties for elements that have children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     /**
@@ -46,11 +48,13 @@ export interface TooltipElementProps extends Pick<TooltipProps$1, 'id'> {
 }
 /**
  * The HTML element interface for the `s-tooltip` custom element.
+ * @publicDocs
  */
 export interface TooltipElement extends TooltipElementProps {
 }
 /**
  * The properties for the tooltip component when it's used in JSX.
+ * @publicDocs
  */
 export interface TooltipProps extends TooltipElementProps {
 }

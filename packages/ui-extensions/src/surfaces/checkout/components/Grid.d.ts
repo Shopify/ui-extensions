@@ -10,9 +10,13 @@
 /// <reference lib="DOM" />
 import type {GridProps$1,MaybeResponsive, MaybeAllValuesShorthandProperty,BorderSizeKeyword, BorderStyleKeyword,AlignContentKeyword, AlignItemsKeyword, JustifyContentKeyword, JustifyItemsKeyword,ColorKeyword} from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ReducedAlignContentKeyword = Extract<AlignContentKeyword, 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
+/** @publicDocs */
 export type ReducedAlignItemsKeyword = Extract<AlignItemsKeyword, 'normal' | 'stretch' | 'baseline' | 'center' | 'start' | 'end'>;
+/** @publicDocs */
 export type ReducedJustifyContentKeyword = Extract<JustifyContentKeyword, 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
+/** @publicDocs */
 export type ReducedJustifyItemsKeyword = Extract<JustifyItemsKeyword, 'normal' | 'stretch' | 'baseline' | 'center' | 'start' | 'end'>;
 /**
  * The subset of border size values available for this component.
@@ -22,17 +26,21 @@ export type ReducedJustifyItemsKeyword = Extract<JustifyItemsKeyword, 'normal' |
  * - `large-100`: Extra thick border for maximum prominence.
  * - `large-200`: The thickest available border.
  * - `none`: No border.
+ * @publicDocs
  */
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
 /**
  * The subset of border color values available for this component.
  *
  * - `base`: The standard border color for most contexts.
+ * @publicDocs
  */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
+/** @publicDocs */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -41,6 +49,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
@@ -66,8 +75,10 @@ export interface GridElementProps extends Pick<GridProps$1, 'accessibilityLabel'
     placeContent?: MaybeResponsive<`${ReducedAlignContentKeyword} ${ReducedJustifyContentKeyword}` | ReducedAlignContentKeyword>;
     placeItems?: MaybeResponsive<`${ReducedAlignItemsKeyword} ${ReducedJustifyItemsKeyword}` | ReducedAlignItemsKeyword>;
 }
+/** @publicDocs */
 export interface GridElement extends GridElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface GridProps extends GridElementProps {
 }
 declare global {

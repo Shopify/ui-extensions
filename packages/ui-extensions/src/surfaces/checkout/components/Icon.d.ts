@@ -12,6 +12,7 @@ import type {IconProps$1} from './components-shared.d.ts';
 
 /**
  * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
@@ -33,6 +34,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 declare const CHECKOUT_AVAILABLE_ICONS: readonly ["alert-circle", "alert-triangle-filled", "alert-triangle", "arrow-down", "arrow-left", "arrow-right", "arrow-up-right", "arrow-up", "bag", "bullet", "calendar", "camera", "caret-down", "cart", "cash-dollar", "categories", "check-circle", "check-circle-filled", "check", "chevron-down", "chevron-left", "chevron-right", "chevron-up", "circle", "clipboard", "clock", "credit-card", "delete", "delivered", "delivery", "disabled", "discount", "edit", "email", "empty", "external", "filter", "geolocation", "gift-card", "globe", "grid", "image", "info-filled", "info", "list-bulleted", "location", "lock", "map", "menu-horizontal", "menu-vertical", "menu", "minus", "mobile", "note", "order", "organization", "plus", "profile", "question-circle-filled", "question-circle", "reorder", "reset", "return", "savings", "search", "settings", "star-filled", "star-half", "star", "store", "truck", "upload", "x-circle-filled", "x-circle", "x"];
 /**
  * The subset of icon types available in checkout and customer account surfaces. This is a narrowed set from the full Shopify icon library, containing only the icons supported in these contexts.
+ * @publicDocs
  */
 export type ReducedIconTypes = (typeof CHECKOUT_AVAILABLE_ICONS)[number];
 
@@ -75,11 +77,13 @@ export interface IconElementProps extends Pick<IconProps$1, 'id' | 'size' | 'ton
 }
 /**
  * The HTML element interface for the `s-icon` custom element.
+ * @publicDocs
  */
 export interface IconElement extends IconElementProps, Omit<HTMLElement, 'id'> {
 }
 /**
  * The properties for the icon component when it's used in JSX.
+ * @publicDocs
  */
 export interface IconProps extends IconElementProps {
 }

@@ -10,6 +10,7 @@ import {useApi} from './api';
  *
  * Data is shared across all activated extension targets of this extension. In versions `<=2023-07`,
  * each activated extension target had its own storage.
+ * @publicDocs
  */
 export function useStorage<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

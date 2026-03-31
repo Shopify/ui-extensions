@@ -12,6 +12,7 @@ import type {MapMarkerProps$1} from './components-shared.d.ts';
 
 /**
  * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,24 +21,28 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base properties for elements that have children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 /**
  * A callback event typed to a specific HTML element, with a strongly typed `currentTarget`.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * An event listener typed to a specific HTML element, with a strongly typed `currentTarget`.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-map-marker";
+/** @publicDocs */
 export interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'command' | 'commandFor' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
     /**
      * Sets the action the `commandFor` target should take when this marker is activated. See the documentation of particular components for the actions they support. Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
@@ -57,9 +62,11 @@ export interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibi
 }
 /**
  * The event handlers for the map marker component.
+ * @publicDocs
  */
 export interface MapMarkerEvents extends Pick<MapMarkerProps$1, 'onClick'> {
 }
+/** @publicDocs */
 export interface MapMarkerElementEvents {
     /**
      * A callback fired when the user clicks on the marker. This event does not propagate to the parent map — only the marker receives the click.
@@ -68,6 +75,7 @@ export interface MapMarkerElementEvents {
 }
 /**
  * The named slots for the map marker component. Slots allow you to insert custom content into specific areas of the marker.
+ * @publicDocs
  */
 export interface MapMarkerElementSlots {
     /**
@@ -77,12 +85,14 @@ export interface MapMarkerElementSlots {
 }
 /**
  * The HTML element interface for the `s-map-marker` custom element.
+ * @publicDocs
  */
 export interface MapMarkerElement extends MapMarkerElementProps, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: MapMarkerEvents['onClick'];
 }
 /**
  * The properties for the map marker component when it's used in JSX.
+ * @publicDocs
  */
 export interface MapMarkerProps extends MapMarkerElementProps, MapMarkerEvents {
 }
